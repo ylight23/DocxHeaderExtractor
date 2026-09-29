@@ -1,0 +1,1409 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1589:S0"
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_ID_ERROR",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0108",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "An identifier was used",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S3"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1574:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "incorrectly",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_SETTINGS_ERROR",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0109",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "SETTINGS frame contained",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S3"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1576:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "invalid values",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1577:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_MISSING_SETTINGS",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1577:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x010a",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1577:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "No SETTINGS frame received",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1577:S3"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1577:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1578:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_REQUEST_REJECTED",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1578:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x010b",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1578:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Request not processed",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1578:S3"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1578:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1579:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_REQUEST_CANCELLED",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1579:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x010c",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1579:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Data no longer needed",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1579:S3"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1579:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1580:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_REQUEST_INCOMPLETE",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1580:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x010d",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1580:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Stream terminated early",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1580:S3"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1580:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1581:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_MESSAGE_ERROR",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1581:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x010e",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1581:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Malformed message",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1581:S3"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1581:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1582:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_CONNECT_ERROR",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1582:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x010f",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1582:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "TCP reset or error on",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1582:S3"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1582:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1583:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "CONNECT request",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1584:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_VERSION_FALLBACK",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1584:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0110",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1584:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Retry over HTTP/1.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1584:S3"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1584:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1585:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Table 4: Initial HTTP/3 Error Codes",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1586:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Each code of the format 0x1f * N + 0x21 for non-negative integer values of N (that is, 0x21,",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1587:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "0x40, ..., through 0x3FFFFFfe) MUST NOT be assigned by IANA and MUST NOT appear in the",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1588:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "listing of assigned values.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1591:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11.2.4. Stream Types",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1592:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "This document establishes a registry for HTTP/3 unidirectional stream types. The \"HTTP/3 Stream",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1593:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Types\" registry governs a 62-bit space. This registry follows the QUIC registry policy; see Section",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1594:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "11.2. Permanent registrations in this registry are assigned using the Specification Required policy",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1595:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "([RFC8126]), except for values between 0x00 and 0x3f (in hexadecimal; inclusive), which are",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1596:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "assigned using Standards Action or IESG Approval as defined in Sections 4.9 and 4.10 of [RFC8126].",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1597:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "In addition to common fields as described in Section 11.2, permanent registrations in this registry",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1598:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "MUST include the following fields:",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1599:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Stream Type: A name or label for the stream type.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1600:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Sender: Which endpoint on an HTTP/3 connection may initiate a stream of this type. Values are",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1601:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "\"Client\", \"Server\", or \"Both\".",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1602:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Specifications for permanent registrations MUST include a description of the stream type,",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1603:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "including the layout and semantics of the stream contents.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1604:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "The entries in Table 5 are registered by this document.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1605:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Stream Type",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1605:S1"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1605:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Specification",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1605:S3"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Sender",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1606:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Control Stream",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1606:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x00",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1606:S2"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1606:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1606:S3"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Both",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1607:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Push Stream",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1607:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x01",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1607:S2"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1607:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1607:S3"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Server",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1608:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Table 5: Initial Stream Types",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1609:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Each code of the format 0x1f * N + 0x21 for non-negative integer values of N (that is, 0x21,",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1610:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "0x40, ..., through 0x3FFFFFfe) MUST NOT be assigned by IANA and MUST NOT appear in the",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1611:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "listing of assigned values.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1612:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "12. References",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1613:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "12.1.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1613:S1"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Normative References",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1614:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "[ALTSVC]",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1614:S1"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Nottingham, M., McManus, P., and J. Reschke, \"HTTP Alternative Services\", RFC",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1615:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "7838, DOI 10.17487/RFC7838, April 2016, <https://www.rfc-editor.org/info/rfc7838>.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1616:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "[COOKIES]",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1616:S1"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Barth, A., \"HTTP State Management Mechanism\", RFC 6265, DOI 10.17487/",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1617:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "RFC6265, April 2011, <https://www.rfc-editor.org/info/rfc6265>.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1618:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "[HTTP]",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1618:S1"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., \"HTTP Semantics\", STD",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1619:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "97, RFC 9110, DOI 10.17487/RFC9110, June 2022, <https://www.rfc-editor.org/info/",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1620:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "rfc9110>.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1622:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "RFC 9114 HTTP/3 June 2022",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1623:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "[HTTP-CACHING]",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1623:S1"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., \"HTTP Caching\", STD",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1624:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "98, RFC 9111, DOI 10.17487/RFC9111, June 2022, <https://www.rfc-editor.org/info/",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1625:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "rfc9111>.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1626:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "[HTTP-REPLAY] Thomson, M., Nottingham, M., and W. Tarreau, \"Using Early Data in HTTP\",",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1627:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "RFC 8470, DOI 10.17487/RFC8470, September 2018, <https://www.rfc-editor.org/",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1628:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "info/rfc8470>.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1629:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "[QPACK] Krasic, C., Bishop, M., and A. Frindell, Ed., \"QPACK: Field Compression for HTTP/3\",",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1630:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "RFC 9204, DOI 10.17487/RFC9204, June 2022, <https://www.rfc-editor.org/info/",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1631:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "rfc9204>.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1632:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "[QUIC-TRANSPORT] Iyengar, J., Ed. and M. Thomson, Ed., \"QUIC: A UDP-Based Multiplexed and",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1633:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Secure Transport\", RFC 9000, DOI 10.17487/RFC9000, May 2021, <https://www.rfc-",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1634:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "editor.org/info/rfc9000>.",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1635:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "[RFC0793]",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1635:S1"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Postel, J., \"Transmission Control Protocol\", STD 7, RFC 793, DOI 10.17487/RFC0793,",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

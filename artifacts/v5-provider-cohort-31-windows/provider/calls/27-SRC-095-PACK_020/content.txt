@@ -1,0 +1,466 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1655:S0",
+            "verbatimText": "12.2. Informative References"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Informative References Section Header",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1677:S0",
+            "verbatimText": "Appendix A. Considerations for Transitioning from HTTP/2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Appendix A Header",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1688:S0",
+            "verbatimText": "A. 1. Streams"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Appendix A.1 Subsection Header",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1710:S0",
+            "verbatimText": "A. 2. HTTP Frame Types"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Appendix A.2 Subsection Header",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1688:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1690:S0",
+            "verbatimText": "HTTP/3 permits use of a larger number of streams (2 -1) than HTTP/2."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1677:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1678:S0",
+            "verbatimText": "HTTP/3 is strongly informed by HTTP/2, and it bears many similarities."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1629:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1630:S0",
+            "verbatimText": "RFC 9204"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1632:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1633:S0",
+            "verbatimText": "RFC 9000"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1635:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1635:S1",
+            "verbatimText": "RFC 793"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1637:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1637:S1",
+            "verbatimText": "RFC 2119"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1640:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1641:S0",
+            "verbatimText": "RFC 6066"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1643:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1644:S0",
+            "verbatimText": "RFC 7301"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1646:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1647:S0",
+            "verbatimText": "RFC 8126"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1649:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1650:S0",
+            "verbatimText": "RFC 8174"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1652:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1653:S0",
+            "verbatimText": "RFC 3986"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1656:S0"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "BREACH: Reviving the CRIME Attack",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1661:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1661:S1",
+            "verbatimText": "RFC 8499"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1663:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1663:S1",
+            "verbatimText": "RFC 7541"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1665:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1665:S1",
+            "verbatimText": "RFC 9112"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1667:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1667:S1",
+            "verbatimText": "RFC 9113"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1669:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1669:S1",
+            "verbatimText": "RFC 6585"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1671:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1671:S1",
+            "verbatimText": "RFC 8164"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1673:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1673:S1",
+            "verbatimText": "RFC 7413"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1675:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1675:S1",
+            "verbatimText": "RFC 8446"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1622:S0"
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "RFC 9114 HTTP/3 June 2022",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

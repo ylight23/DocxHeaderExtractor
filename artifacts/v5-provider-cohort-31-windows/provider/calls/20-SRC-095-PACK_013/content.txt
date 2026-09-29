@@ -1,0 +1,214 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1096:S0",
+            "verbatimText": "values that might be violated by the client with its 0-RTT data . The server MUST include all settings"
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "RFC 9114 HTTP/3 June 2022",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1105:S0",
+            "verbatimText": "7.2.5. PUSH_PROMISE"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2.5: PUSH_PROMISE",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1143:S0",
+            "verbatimText": "7.2.6. GOAWAY"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2.6: GOAWAY",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1164:S0",
+            "verbatimText": "7.2.7. MAX_PUSH_ID"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2.7: MAX_PUSH_ID",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1189:S0",
+            "verbatimText": "7.2.8. Res erved Frame Types"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 7.2.8: Reserved Frame Types",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1105:S0",
+            "verbatimText": "7.2.5. PUSH_PROMISE"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1106:S0",
+            "verbatimText": "The PUSH_PROMISE frame (type=0x05) is used to c arry a promised request hea der section from"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1143:S0",
+            "verbatimText": "7.2.6. GOAWAY"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1144:S0",
+            "verbatimText": "The GOAWAY frame (type=0x07) is used to initiate gra c eful shutdown of an HTTP/3 c onnection by"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1164:S0",
+            "verbatimText": "7.2.7. MAX_PUSH_ID"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1165:S0",
+            "verbatimText": "The MAX_PUSH_ID frame (type=0x0d) is used by clients to c ontrol the number of server pushes"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1105:S0",
+            "verbatimText": "7.2.5. PUSH_PROMISE"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1117:S0",
+            "verbatimText": "push stream hea ders (Section 4.6) and CANCEL_PUSH frames."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1142:S0",
+            "verbatimText": "See Section 4.6 for a description of the overall server push mechanism."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1163:S0",
+            "verbatimText": "See Section 5.2 for more information on the use of the GOAWAY frame."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 5.2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1190:S0",
+            "verbatimText": "Frame types of the format 0 x 1 f * N \u002B 0 x2 1 for non-negative integer values of N are reserved to"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Reserved Frame Types",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1199:S0",
+            "verbatimText": "8. Error Handling"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 8: Error Handling",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

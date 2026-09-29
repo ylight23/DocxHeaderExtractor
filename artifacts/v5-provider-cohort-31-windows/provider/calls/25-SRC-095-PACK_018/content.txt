@@ -1,0 +1,1229 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1535:S0"
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "Table 3: Initial HTTP/3 Settings",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1529:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Setting Name",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1529:S1"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1529:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Specification",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1529:S3"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Default",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1534:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1534:S1"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1534:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1534:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1534:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1534:S3"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1534:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x06",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1534:S2"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.4.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1534:S3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Unlimited",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1558:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Name",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1558:S1"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1558:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Description",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1558:S3"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Specification",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1559:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1559:S1"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1559:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1559:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1559:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1559:S3"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1559:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0100",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1559:S2"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "No error",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1559:S3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1562:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Name",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1562:S1"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1562:S2"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Description",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1562:S3"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Specification",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1563:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1563:S1"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1563:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1563:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1563:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1563:S3"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1563:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0101",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1563:S2"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "General protocol error",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1563:S3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1564:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1564:S1"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1564:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1564:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1564:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1564:S3"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1564:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0102",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1564:S2"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Internal error",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1564:S3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1565:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1565:S1"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1565:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1565:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1565:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1565:S3"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1565:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0103",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1565:S2"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Stream creation error",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1565:S3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1566:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1566:S1"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1566:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1566:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1566:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1566:S3"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1566:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0104",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1566:S2"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Critical stream was closed",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1566:S3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1567:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1567:S1"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1567:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1567:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1567:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1567:S3"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1567:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0105",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1567:S2"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Frame not permitted in the current state",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1567:S3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1569:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1569:S1"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1569:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1569:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1569:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1569:S3"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1569:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0106",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1569:S2"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Frame violated layout or size rules",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1569:S3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1571:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1571:S1"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1571:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1571:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1571:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1571:S3"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1571:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0107",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1571:S2"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Peer generating excessive load",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1571:S3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S1"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S3"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0108",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S2"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "An identifier was used incorrectly",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1573:S3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S1"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S2"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S3"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "0x0109",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S2"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "SETTINGS frame contained",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1575:S3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

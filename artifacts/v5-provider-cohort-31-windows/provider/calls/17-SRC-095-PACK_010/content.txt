@@ -1,0 +1,354 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0852:S0",
+            "verbatimText": "6.2.1. Control Streams"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Control Streams",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0870:S0",
+            "verbatimText": "6.2.2. Push Streams"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Push Streams",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0893:S0",
+            "verbatimText": "6.2.3. Reserved Stream Types"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Reserved Stream Types",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0903:S0",
+            "verbatimText": "7. HTTP Framing Layer"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP Framing Layer",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0852:S0",
+            "verbatimText": "6.2.1. Control Streams"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0853:S0",
+            "verbatimText": "A control stream is indicated by a stream type of0x00."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0852:S0",
+            "verbatimText": "6.2.1. Control Streams"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0855:S0",
+            "verbatimText": "Each side MUST initiate a single control stream at the beginning ofthe connection and send its SETTINGS frame as the first frame on this stream."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0852:S0",
+            "verbatimText": "6.2.1. Control Streams"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0858:S0",
+            "verbatimText": "Only one control stream per peer is permitted; receipt of a second stream claiming to be a control stream MUST be treated as a connection error oftype H3_STREAM_CREATION_ERROR."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0852:S0",
+            "verbatimText": "6.2.1. Control Streams"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0860:S0",
+            "verbatimText": "The sender MUST NOT close the control stream, and the receiver MUST NOT request that the sender close the control stream."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0870:S0",
+            "verbatimText": "6.2.2. Push Streams"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0873:S0",
+            "verbatimText": "A push stream is indicated by a stream type of0x01, followed by the push ID ofthe promise that it fulfills, encoded as a variable-length integer."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0870:S0",
+            "verbatimText": "6.2.2. Push Streams"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0878:S0",
+            "verbatimText": "Only servers can push; if a server receives a client-initiated push stream, this MUST be treated as a connection error oftype H3_STREAM_CREATION_ERROR."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0893:S0",
+            "verbatimText": "6.2.3. Reserved Stream Types"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0894:S0",
+            "verbatimText": "Stream types ofthe format 0x1 f * N + 0x2 1 for non-negative integer values of N are reserved to exercise the requirement that unknown types be ignored."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0903:S0",
+            "verbatimText": "7. HTTP Framing Layer"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0904:S0",
+            "verbatimText": "HTTP frames are carried on QUIC streams, as described in Section 6. HTTP/3 defines three stream types: control stream, request stream, and push stream."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0852:S0",
+            "verbatimText": "6.2.1. Control Streams"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0863:S0",
+            "verbatimText": "Section 8."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0870:S0",
+            "verbatimText": "6.2.2. Push Streams"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0872:S0",
+            "verbatimText": "See Section 4.6 for more details."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0870:S0",
+            "verbatimText": "6.2.2. Push Streams"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0877:S0",
+            "verbatimText": "and push IDs are described in Section 4.6."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0903:S0",
+            "verbatimText": "7. HTTP Framing Layer"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0907:S0",
+            "verbatimText": "HTTP/2 and HTTP/3 frames is provided in Appendix A.2."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0853:S0",
+            "verbatimText": "A control stream is indicated by a stream type of0x00."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Stream Type 0x00 indicates a Control Stream",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0873:S0",
+            "verbatimText": "A push stream is indicated by a stream type of0x01"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Stream Type 0x01 indicates a Push Stream",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0894:S0",
+            "verbatimText": "Stream types ofthe format 0x1 f * N + 0x2 1 ... are reserved"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Reserved Stream Types (0x1f*N+0x21)",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

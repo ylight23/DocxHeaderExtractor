@@ -1,0 +1,900 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1807:S0",
+            "verbatimText": "SETTINGS_INITIAL_WINDOW_SIZE (0x04):"
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "RFC 9114 HTTP/3 June 2022",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1807:S0",
+            "verbatimText": "SETTINGS_INITIAL_WINDOW_SIZE (0x04):"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "SETTINGS Parameter Definition",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1807:S1",
+            "verbatimText": "QUIC requires both stream and connection flow-control window sizes to be specified in the initial transport handshake. Specifying a setting with the identifier 0x04 (corresponding to the SETTINGS_INITIAL_WINDOW_SIZE parameter) in the HTTP/3 SETTINGS frame is an error."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Error Condition for SETTINGS_INITIAL_WINDOW_SIZE",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1811:S0",
+            "verbatimText": "SETTINGS_MAX_FRAME_SIZE (0x05): This setting has no equivalent in HTTP/3. Specifying a setting with the identifier 0x05 (corresponding to the SETTINGS_MAX_FRAME_SIZE parameter) in the HTTP/3 SETTINGS frame is an error."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "SETTINGS Parameter Definition",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1811:S0",
+            "verbatimText": "SETTINGS_MAX_FRAME_SIZE (0x05): This setting has no equivalent in HTTP/3. Specifying a setting with the identifier 0x05 (corresponding to the SETTINGS_MAX_FRAME_SIZE parameter) in the HTTP/3 SETTINGS frame is an error."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Error Condition for SETTINGS_MAX_FRAME_SIZE",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1814:S0",
+            "verbatimText": "SETTINGS_MAX_HEADER_LIST_SIZE (0x06): This setting identifier has been renamed SETTINGS_MAX_FIELD_SECTION_SIZE."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "SETTINGS Parameter Definition",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1814:S0",
+            "verbatimText": "SETTINGS_MAX_HEADER_LIST_SIZE (0x06): This setting identifier has been renamed SETTINGS_MAX_FIELD_SECTION_SIZE."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Renamed Setting Identifier",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1821:S0",
+            "verbatimText": "Settings need to be defined separately for HTTP/2 and HTTP/3. The IDs of settings defined in [HTTP/2] have been reserved for simplicity. Note that the settings identifier space in HTTP/3 is substantially larger (62 bits versus 16 bits), so many HTTP/3 settings have no equivalent HTTP/2 code point. See Section 11.2.2."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "General Settings Policy",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1821:S0",
+            "verbatimText": "Settings need to be defined separately for HTTP/2 and HTTP/3. The IDs of settings defined in [HTTP/2] have been reserved for simplicity. Note that the settings identifier space in HTTP/3 is substantially larger (62 bits versus 16 bits), so many HTTP/3 settings have no equivalent HTTP/2 code point. See Section 11.2.2."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Reference to Section 11.2.2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1827:S0",
+            "verbatimText": "A.4. HTTP/2 Error Codes"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Appendix A.4 Heading",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1831:S0",
+            "verbatimText": "The HTTP/2 error codes defined in Section 7 of [HTTP/2] logically map to the HTTP/3 error codes as follows:"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code Mapping Introduction",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1833:S0",
+            "verbatimText": "NO_ERROR (0x00): H3_NO_ERROR in Section 8.1."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code NO_ERROR Mapping",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1834:S0",
+            "verbatimText": "PROTOCOL_ERROR (0x01): This is mapped to H3_GENERAL_PROTOCOL_ERROR except in cases where more specific error codes have been defined. Such cases include H3_FRAME_UNEXPECTED, H3_MESSAGE_ERROR, and H3_CLOSED_CRITICAL_STREAM defined in Section 8.1."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code PROTOCOL_ERROR Mapping",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1838:S0",
+            "verbatimText": "INTERNAL_ERROR (0x02): H3_INTERNAL_ERROR in Section 8.1."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code INTERNAL_ERROR Mapping",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1839:S0",
+            "verbatimText": "FLOW_CONTROL_ERROR (0x03):"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code FLOW_CONTROL_ERROR Header",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1839:S1",
+            "verbatimText": "Not applicable, since QUIC handles flow control."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Flow Control Error Applicability Note",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1840:S0",
+            "verbatimText": "SETTINGS_TIMEOUT (0x04):"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code SETTINGS_TIMEOUT Header",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1840:S1",
+            "verbatimText": "Not applicable, since no acknowledgment of SETTINGS is defined."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Settings Timeout Applicability Note",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1843:S0",
+            "verbatimText": "STREAM_CLOSED (0x05):"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code STREAM_CLOSED Header",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1843:S1",
+            "verbatimText": "Not applicable, since QUIC handles stream management."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Stream Closed Applicability Note",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1844:S0",
+            "verbatimText": "FRAME_SIZE_ERROR (0x06):"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code FRAME_SIZE_ERROR Header",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1844:S1",
+            "verbatimText": "H3_FRAME_ERROR error code defined in Section 8.1."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Frame Size Error Mapping Reference",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1845:S0",
+            "verbatimText": "REFUSED_STREAM (0x07): H3_REQUEST_REJECTED (in Section 8.1) is used to indicate that a request was not processed. Otherwise, not applicable because QUIC handles stream management."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code REFUSED_STREAM Mapping",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1848:S0",
+            "verbatimText": "CANCEL (0x08): H3_REQUEST_CANCELLED in Section 8.1."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code CANCEL Mapping",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1849:S0",
+            "verbatimText": "COMPRESSION_ERROR (0x09):"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code COMPRESSION_ERROR Header",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1849:S1",
+            "verbatimText": "Multiple error codes are defined in [QPACK]."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Compression Error Context Reference",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1850:S0",
+            "verbatimText": "CONNECT_ERROR (0x0a): H3_CONNECT_ERROR in Section 8.1."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code CONNECT_ERROR Mapping",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1851:S0",
+            "verbatimText": "ENHANCE_YOUR_CALM (0x0b):"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code ENHANCE_YOUR_CALM Header",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1851:S1",
+            "verbatimText": "H3_EXCESSIVE_LOAD in Section 8.1."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Enhance Your Calm Mapping Reference",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1852:S0",
+            "verbatimText": "INADEQUATE_SECURITY (0x0c):"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code INADEQUATE_SECURITY Header",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1852:S1",
+            "verbatimText": "Not applicable, since QUIC is assumed to provide sufficient security on all connections."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Inadequate Security Applicability Note",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1854:S0",
+            "verbatimText": "HTTP_1_1_REQUIRED (0x0d): H3_VERSION_FALLBACK in Section 8.1."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Code HTTP_1_1_REQUIRED Mapping",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1855:S0",
+            "verbatimText": "Error codes need to be defined for HTTP/2 and HTTP/3 separately. See Section 11.2.3."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Reference to Section 11.2.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1856:S0",
+            "verbatimText": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Subsection A.4.1 Heading",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1857:S0",
+            "verbatimText": "An intermediary that converts between HTTP/2 and HTTP/3 may encounter error conditions from either upstream. It is useful to communicate the occurrence of errors to the downstream,"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Intermediary Error Handling Context",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1862:S0",
+            "verbatimText": "an HTTP status code such as 502 (Bad Gateway), which is suitable for a broad class of errors."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "HTTP Status Code Example",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1865:S0",
+            "verbatimText": "stream error of type REFUSED_STREAM from the origin has a clear signal that the request was not processed and that the request is safe to retry. Propagating this error condition to the client as an HTTP/3 stream error of type H3_REQUEST_REJECTED allows the client to take the action it deems most appropriate."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Refused Stream Propagation Logic",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1870:S0",
+            "verbatimText": "H3_REQUEST_CANCELLED; see Section 4.1.1."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Reference to Section 4.1.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1871:S0",
+            "verbatimText": "Conversion between errors is described in the logical mapping. The error codes are defined in non-overlapping spaces in order to protect against accidental conversion that could result in the use of inappropriate or unknown error codes for the target version."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Error Conversion Safety Principle",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1875:S0",
+            "verbatimText": "connection for what might be a temporary or intermittent error."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Cost of Promoting Stream Errors",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1878:S0",
+            "verbatimText": "Acknowledgments"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Acknowledgments Section Heading",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1879:S0",
+            "verbatimText": "Robbie Shade and Mike Warres were the authors of draft-shade-quic-http2-mapping, a precursor of this document."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Precursor Document Reference",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1882:S0",
+            "verbatimText": "Among others, the following people provided substantial contributions to this document:"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributors List Introduction",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1883:S0",
+            "verbatimText": "• Bence Beky"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Bence Beky",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1884:S0",
+            "verbatimText": "• Daan De Meyer"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Daan De Meyer",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1885:S0",
+            "verbatimText": "• Martin Duke"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Martin Duke",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1886:S0",
+            "verbatimText": "• Roy Fielding"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Roy Fielding",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1887:S0",
+            "verbatimText": "• Alan Frindell"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Alan Frindell",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1888:S0",
+            "verbatimText": "• Alessandro Ghedini"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Alessandro Ghedini",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1889:S0",
+            "verbatimText": "• Nick Harper"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Nick Harper",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1890:S0",
+            "verbatimText": "• Ryan Hamilton"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Ryan Hamilton",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1891:S0",
+            "verbatimText": "• Christian Huitema"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Christian Huitema",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1892:S0",
+            "verbatimText": "• Subodh Iyengar"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Subodh Iyengar",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1893:S0",
+            "verbatimText": "• Robin Marx"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Robin Marx",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1894:S0",
+            "verbatimText": "• Patrick McManus"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Patrick McManus",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1895:S0",
+            "verbatimText": "• Luca Niccolini"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Luca Niccolini",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1896:S0",
+            "verbatimText": "• 奥一瑠 (Kazuho Oku)"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Kazuho Oku",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1897:S0",
+            "verbatimText": "• Lucas Pardue"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Lucas Pardue",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1898:S0",
+            "verbatimText": "• Roberto Peon"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Roberto Peon",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1899:S0",
+            "verbatimText": "• Julian Reschke"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Julian Reschke",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1900:S0",
+            "verbatimText": "• Eric Rescorla"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Eric Rescorla",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1901:S0",
+            "verbatimText": "• Martin Seemann"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Martin Seemann",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1902:S0",
+            "verbatimText": "• Ben Schwartz"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Ben Schwartz",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1903:S0",
+            "verbatimText": "• Ian Swett"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Contributor: Ian Swett",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

@@ -1,0 +1,627 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1467:S0",
+            "verbatimText": "in Section 22.1 of [QUIC-TRANSPORT]. These registries all include the common set of fields listed in"
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1468:S0",
+            "verbatimText": "Section 22.1.1 of [QUIC-TRANSPORT]. These registries are collected under the \"Hypertext Transfer"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 22.1.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1469:S0",
+            "verbatimText": "Protocol version 3 (HTTP/3)\" heading."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Protocol version 3 (HTTP/3)",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1473:S0",
+            "verbatimText": "This document establishes a registry for HTTP/3 frame type codes. The \"HTTP/3 Frame Types\""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP/3 Frame Types",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1474:S0",
+            "verbatimText": "registry governs a 62-bit space. This registry follows the QUIC registry policy; see Section 11.2."
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1467:S0",
+            "verbatimText": "in Section 22.1 of [QUIC-TRANSPORT]. These registries all include the common set of fields listed in"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1475:S0",
+            "verbatimText": "Permanent registrations in this registry are assigned using the Specification Required policy"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1477:S0",
+            "verbatimText": "assigned using Standards Action or IESG Approval as defined in Sections 4.9 and 4.10 of [RFC8126]."
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1478:S0",
+            "verbatimText": "While this registry is separate from the \"HTTP/2 Frame Type\" registry defined in [HTTP/2], it is"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "HTTP/2 Frame Type",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1489:S0",
+            "verbatimText": "Frame Type"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Table 2 Header: Frame Type",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1490:S0",
+            "verbatimText": "DATA"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP/3 Frame Type: DATA",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1490:S1",
+            "verbatimText": "0x00"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value: 0x00",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1490:S2",
+            "verbatimText": "Section 7.2.1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1491:S0",
+            "verbatimText": "HEADERS"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP/3 Frame Type: HEADERS",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1491:S1",
+            "verbatimText": "0x01"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value: 0x01",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1491:S2",
+            "verbatimText": "Section 7.2.2"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1492:S0",
+            "verbatimText": "Reserved"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP/3 Frame Type: Reserved",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1492:S1",
+            "verbatimText": "0x02"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value: 0x02",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1493:S0",
+            "verbatimText": "CANCEL_PUSH"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP/3 Frame Type: CANCEL_PUSH",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1493:S1",
+            "verbatimText": "0x03"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value: 0x03",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1493:S2",
+            "verbatimText": "Section 7.2.3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1494:S0",
+            "verbatimText": "SETTINGS"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP/3 Frame Type: SETTINGS",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1494:S1",
+            "verbatimText": "0x04"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value: 0x04",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1494:S2",
+            "verbatimText": "Section 7.2.4"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1504:S0",
+            "verbatimText": "Table 2: Initial HTTP/3 Frame Types"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Table 2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1498:S0",
+            "verbatimText": "PUSH_PROMISE"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP/3 Frame Type: PUSH_PROMISE",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1498:S1",
+            "verbatimText": "0x05"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value: 0x05",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1498:S2",
+            "verbatimText": "Section 7.2.5"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.5",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1500:S0",
+            "verbatimText": "GOAWAY"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP/3 Frame Type: GOAWAY",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1500:S1",
+            "verbatimText": "0x07"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value: 0x07",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1500:S2",
+            "verbatimText": "Section 7.2.6"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1503:S0",
+            "verbatimText": "MAX_PUSH_ID"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP/3 Frame Type: MAX_PUSH_ID",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1503:S1",
+            "verbatimText": "0x0d"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value: 0x0d",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1503:S2",
+            "verbatimText": "Section 7.2.7"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.7",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1508:S0",
+            "verbatimText": "11.2.2. Settings Parameters"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 11.2.2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1509:S0",
+            "verbatimText": "This document establishes a registry for HTTP/3 settings. The \"HTTP/3 Settings\" registry governs a"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP/3 Settings",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1519:S0",
+            "verbatimText": "In addition to common fields as described in Section 11.2, permanent registrations in this registry"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1467:S0",
+            "verbatimText": "in Section 22.1 of [QUIC-TRANSPORT]. These registries all include the common set of fields listed in"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1521:S0",
+            "verbatimText": "Setting Name: A symbolic name for the setting. Specifying a setting name is optional."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Field: Setting Name",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1522:S0",
+            "verbatimText": "Default: The value of the setting unless otherwise indicated. A default SHOULD be the most"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Field: Default",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1524:S0",
+            "verbatimText": "The entries in Table 3 are registered by this document."
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Table 3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1525:S0",
+            "verbatimText": "Setting Name"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Table 3 Header: Setting Name",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1526:S0",
+            "verbatimText": "Reserved"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP/3 Setting: Reserved",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1526:S1",
+            "verbatimText": "0x00"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Value: 0x00",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1526:S2",
+            "verbatimText": "This document"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "This Document",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1526:S3",
+            "verbatimText": "N/A"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Default: N/A",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

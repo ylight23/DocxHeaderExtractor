@@ -1,0 +1,361 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1912:S0",
+            "verbatimText": "Index",
+            "occurrence": 2128,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Index",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1915:S0",
+            "verbatimText": "CANCEL_PUSH Section 2, Paragraph 5; Section 4.6, Paragraph 6; Section 4.6, Paragraph",
+            "occurrence": 2131,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "CANCEL_PUSH references Sections 2, 4.6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1918:S0",
+            "verbatimText": "connection error",
+            "occurrence": 2134,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "connection error references Sections 2.2, 4.1, 4.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1932:S0",
+            "verbatimText": "control stream",
+            "occurrence": 2148,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "control stream references Sections 2, 3.2, 6.2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1941:S0",
+            "verbatimText": "DATA",
+            "occurrence": 2157,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "DATA references Sections 2, 4.1, 4.1.2, 4.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1948:S0",
+            "verbatimText": "GOAWAY",
+            "occurrence": 2164,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "GOAWAY references Sections 3.3, 5.2, 5.3, 5.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1962:S0",
+            "verbatimText": "H3_CLOSED_CRITICAL_STREAM Section 6.2.1, Paragraph 2; Section 8.1; Table 4;",
+            "occurrence": 2178,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_CLOSED_CRITICAL_STREAM references Sections 6.2.1, 8.1, Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1964:S0",
+            "verbatimText": "H3_CONNECT_ERROR",
+            "occurrence": 2180,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_CONNECT_ERROR references Sections 4.4, 8.1, Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1966:S0",
+            "verbatimText": "H3_EXCESSIVE_LOAD",
+            "occurrence": 2183,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_EXCESSIVE_LOAD references Sections 8.1, 10.5, Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1968:S0",
+            "verbatimText": "H3_FRAME_ERROR Section 7.1, Paragraph 5; Section 7.1, Paragraph 6; Section 8.1; Table",
+            "occurrence": 2186,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_FRAME_ERROR references Sections 7.1, 8.1, Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1970:S0",
+            "verbatimText": "H3_FRAME_UNEXPECTED",
+            "occurrence": 2188,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_FRAME_UNEXPECTED references Sections 4.1, 4.4, 7.2.1-7.2.8, 8.1, Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1977:S0",
+            "verbatimText": "H3_GENERAL_PROTOCOL_ERROR Section 7.2.5, Paragraph 6; Section 8.1; Table 4;",
+            "occurrence": 2195,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_GENERAL_PROTOCOL_ERROR references Sections 7.2.5, 8.1, Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1979:S0",
+            "verbatimText": "H3_ID_ERROR",
+            "occurrence": 2197,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_ID_ERROR references Sections 4.6, 5.2, 6.2.2, 7.2.3, 7.2.5, 7.2.6, 7.2.7, 8.1, Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1983:S0",
+            "verbatimText": "H3_INTERNAL_ERROR",
+            "occurrence": 2201,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_INTERNAL_ERROR references Sections 7.2.7, 8.1, Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1984:S0",
+            "verbatimText": "H3_MESSAGE_ERROR",
+            "occurrence": 2203,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_MESSAGE_ERROR references Sections 4.1.2, 8.1, Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1986:S0",
+            "verbatimText": "H3_MISSING_SETTINGS Section 6.2.1, Paragraph 2; Section 8.1; Table 4",
+            "occurrence": 2206,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_MISSING_SETTINGS references Sections 6.2.1, 8.1, Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1987:S0",
+            "verbatimText": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,",
+            "occurrence": 2207,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_NO_ERROR references Sections 4.1, 5.2, 6.2.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1990:S0",
+            "verbatimText": "H3_REQUEST_CANCELLED",
+            "occurrence": 2210,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_REQUEST_CANCELLED references Sections 4.1.1, 4.6, 7.2.3, 8.1, Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1994:S0",
+            "verbatimText": "H3_REQUEST_INCOMPLETE",
+            "occurrence": 2214,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "H3_REQUEST_INCOMPLETE references Sections 4.1, 8.1, Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1910:S0",
+            "verbatimText": "Bishop Standards Track Page 53",
+            "occurrence": 2126,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "RFC 9114 HTTP/3 June 2022 Page 53",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1911:S0",
+            "verbatimText": "RFC 9114 HTTP/3 June 2022",
+            "occurrence": 2127,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "RFC 9114 HTTP/3 June 2022",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

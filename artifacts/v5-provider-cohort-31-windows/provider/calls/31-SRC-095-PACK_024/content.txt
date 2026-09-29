@@ -1,0 +1,1236 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1995:S0",
+            "verbatimText": "Bishop Standards Track Page 55"
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1988:S0",
+            "verbatimText": "Paragraph 2; Section 8, Paragraph 5; Section 8.1; Section 8.1, Paragraph 3; Section 8.1,"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 8.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1990:S0",
+            "verbatimText": "H3_REQUEST_CANCELLED"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_REQUEST_CANCELLED",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1994:S0",
+            "verbatimText": "H3_REQUEST_INCOMPLETE"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_REQUEST_INCOMPLETE",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1997:S0",
+            "verbatimText": "H3_REQUEST_REJECTED"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_REQUEST_REJECTED",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2001:S0",
+            "verbatimText": "H3_SETTINGS_ERROR"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_SETTINGS_ERROR",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2003:S0",
+            "verbatimText": "H3_STREAM_CREATION_ERROR"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_STREAM_CREATION_ERROR",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2005:S0",
+            "verbatimText": "H3_VERSION_FALLBACK"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_VERSION_FALLBACK",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2006:S0",
+            "verbatimText": "HEADERS"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HEADERS",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2013:S0",
+            "verbatimText": "malformed"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "malformed",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2019:S0",
+            "verbatimText": "MAX_PUSH_ID"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "MAX_PUSH_ID",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2024:S0",
+            "verbatimText": "push ID"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "push ID",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2035:S0",
+            "verbatimText": "push stream"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "push stream",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2046:S0",
+            "verbatimText": "PUSH_PROMISE"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "PUSH_PROMISE",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2057:S0",
+            "verbatimText": "request stream"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "request stream",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2064:S0",
+            "verbatimText": "SETTINGS"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "SETTINGS",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2072:S0",
+            "verbatimText": "SETTINGS_MAX_FIELD_SECTION_SIZE"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "SETTINGS_MAX_FIELD_SECTION_SIZE",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2074:S0",
+            "verbatimText": "stream error"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "stream error",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1983:S0",
+            "verbatimText": "H3_INTERNAL_ERROR"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_INTERNAL_ERROR",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1984:S0",
+            "verbatimText": "H3_MESSAGE_ERROR"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_MESSAGE_ERROR",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1986:S0",
+            "verbatimText": "H3_MISSING_SETTINGS"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_MISSING_SETTINGS",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1987:S0",
+            "verbatimText": "H3_NO_ERROR"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "H3_NO_ERROR",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1991:S0",
+            "verbatimText": "Section 4.1.1, Paragraph 4; Section 4.1.1, Paragraph 5; Section 4.6, Paragraph 14;"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1992:S0",
+            "verbatimText": "Section 7.2.3, Paragraph 3; Section 7.2.3, Paragraph 4; Section 8.1; Table 4; Appendix A."
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1993:S0",
+            "verbatimText": "4, Paragraph 3.18.1; Appendix A.4.1, Paragraph 3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.4.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1994:S1",
+            "verbatimText": "Section 4.1, Paragraph 14; Section 8.1; Table 4"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1998:S0",
+            "verbatimText": "Section 4.1.1, Paragraph 3; Section 4.1.1, Paragraph 4; Section 4.1.1, Paragraph 5;"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1999:S0",
+            "verbatimText": "Section 4.1.1, Paragraph 5; Section 8.1; Table 4; Appendix A.4, Paragraph 3.16.1;"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2000:S0",
+            "verbatimText": "Appendix A.4.1, Paragraph 3"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.4.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2002:S0",
+            "verbatimText": "7.2.4.2, Paragraph 8; Section 7.2.4.2, Paragraph 8; Section 8.1; Table 4"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.4.2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2004:S0",
+            "verbatimText": "Section 6.2.1, Paragraph 2; Section 6.2.2, Paragraph 3; Section 8.1; Table 4"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 6.2.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2007:S0",
+            "verbatimText": "Section 2, Paragraph 3; Section 4.1, Paragraph 5, Item 1; Section 4.1, Paragraph 5, Item"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2008:S0",
+            "verbatimText": "3; Section 4.1, Paragraph 7; Section 4.1, Paragraph 7; Section 4.1, Paragraph 7; Section"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2009:S0",
+            "verbatimText": "4.1, Paragraph 10; Section 4.4, Paragraph 6; Section 4.6, Paragraph 12; Table 1; Section"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2010:S0",
+            "verbatimText": "7.2.2; Section 9, Paragraph 5; Table 2; Appendix A.2.1, Paragraph 1; Appendix A.2.5;"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 9",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2011:S0",
+            "verbatimText": "Appendix A.2.5, Paragraph 1.4.1; Appendix A.2.5, Paragraph 1.20.1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.2.5",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2014:S0",
+            "verbatimText": "Section 4.1, Paragraph 3; Section 4. 1.2; Section 4.2, Paragraph 2; Section 4.2, Paragraph"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1.2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2015:S0",
+            "verbatimText": "3; Section 4.2, Paragraph 5; Section 4.3, Paragraph 3; Section 4.3, Paragraph 4; Section"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2016:S0",
+            "verbatimText": "4.3.1, Paragraph 5; Section 4.3.2, Paragraph 1; Section 4.4, Paragraph 5; Section 8.1,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.3.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2017:S0",
+            "verbatimText": "Paragraph 2.30.1; Section 10.3, Paragraph 1; Section 10.3, Paragraph 2; Section 10.5.1,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 10.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2020:S0",
+            "verbatimText": "Section 2, Paragraph 5; Section 4.6, Paragraph 3; Section 4.6, Paragraph 3; Section 4.6,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2021:S0",
+            "verbatimText": "Paragraph 3; Section 4.6, Paragraph 3; Table 1; Section 7.2.5, Paragraph 5; Section"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.5",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2022:S0",
+            "verbatimText": "7.2. 7; Table 2; Appendix A.1, Paragraph 4; Appendix A.3, Paragraph 4.4.1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.7",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2025:S0",
+            "verbatimText": "Section 4. 6; Section 5.2, Paragraph 1; Section 5.2, Paragraph 5, Item 2; Section 5.2,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 5.2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2026:S0",
+            "verbatimText": "Paragraph 9; Section 6.2.2, Paragraph 2; Section 6.2.2, Paragraph 6; Section 6.2.2,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 6.2.2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2027:S0",
+            "verbatimText": "Paragraph 6; Section 7.2.3, Paragraph 1; Section 7.2.3, Paragraph 7; Section 7.2.3,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2028:S0",
+            "verbatimText": "Paragraph 7; Section 7.2.3, Paragraph 8; Section 7.2.3, Paragraph 8; Section 7.2.5,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2029:S0",
+            "verbatimText": "Paragraph 4.2.1; Section 7.2.5, Paragraph 5; Section 7.2.5, Paragraph 5; Section 7.2.5,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.5",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2030:S0",
+            "verbatimText": "Paragraph 6; Section 7.2.5, Paragraph 6; Section 7.2.5, Paragraph 7; Section 7.2.5,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.5",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2031:S0",
+            "verbatimText": "Paragraph 7; Section 7.2.5, Paragraph 7; Section 7.2.6, Paragraph 4; Section 7.2.7,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2032:S0",
+            "verbatimText": "Paragraph 1; Section 7.2.7, Paragraph 4; Section 7.2.7, Paragraph 4; Section 7.2.7,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.7",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2033:S0",
+            "verbatimText": "Paragraph 6; Section 7.2.7, Paragraph 6; Section 8.1, Paragraph 2.18.1; Appendix A.2.5,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.7",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2034:S0",
+            "verbatimText": "Paragraph 1.12.1; Appendix A.2.5, Paragraph 1.16.1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.2.5",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2036:S0",
+            "verbatimText": "Section 4.1, Paragraph 8; Section 4.1, Paragraph 9; Section 4.6, Paragraph 3; Section 4.6,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2037:S0",
+            "verbatimText": "Paragraph 5; Section 4.6, Paragraph 5; Section 4.6, Paragraph 13; Section 4.6,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2038:S0",
+            "verbatimText": "Paragraph 13; Section 4.6, Paragraph 13; Section 6.2, Paragraph 3; Section 6.2.2;"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2039:S0",
+            "verbatimText": "Section 7, Paragraph 1; Section 7.2.2, Paragraph 3; Section 7.2.3, Paragraph 1; Section"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2042:S0",
+            "verbatimText": "7.2.3, Paragraph 2; Section 7.2.3, Paragraph 2; Section 7.2.3, Paragraph 2; Section 7.2.3,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2043:S0",
+            "verbatimText": "Paragraph 2; Section 7.2.3, Paragraph 3; Section 7.2.3, Paragraph 4; Section 7.2.3,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2044:S0",
+            "verbatimText": "Paragraph 4; Section 7.2.3, Paragraph 4; Section 7.2.5, Paragraph 4.2.1; Section 7.2.7,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2045:S0",
+            "verbatimText": "Paragraph 1; Appendix A.2.5, Paragraph 1.12.1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.2.5",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2047:S0",
+            "verbatimText": "Section 2, Paragraph 5; Section 4.1, Paragraph 8; Section 4.1, Paragraph 8; Section 4.1,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2048:S0",
+            "verbatimText": "Paragraph 8; Section 4.1, Paragraph 8; Section 4.1, Paragraph 10; Section 4.6,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2049:S0",
+            "verbatimText": "Paragraph 4; Section 4.6, Paragraph 10; Section 4.6, Paragraph 11; Section 4.6,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2050:S0",
+            "verbatimText": "Paragraph 11; Section 4.6, Paragraph 12; Section 4.6, Paragraph 12; Section 4.6,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2051:S0",
+            "verbatimText": "Paragraph 13; Section 4.6, Paragraph 13; Section 4.6, Paragraph 13; Table 1; Section"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2052:S0",
+            "verbatimText": "7.2.3, Paragraph 8; Section 7.2.3, Paragraph 8; Section 7.2.5; Section 7.2.7, Paragraph 1;"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2053:S0",
+            "verbatimText": "Section 10.4, Paragraph 1; Section 10.5, Paragraph 2; Table 2; Appendix A.2.5; Appendix"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 10.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2054:S0",
+            "verbatimText": "A.2.5, Paragraph 1.12.1; Appendix A.2.5, Paragraph 1.12.1; Appendix A.2.5, Paragraph"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.2.5",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2055:S0",
+            "verbatimText": "1.20.1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.2.5",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2058:S0",
+            "verbatimText": "Section 4.1, Paragraph 1; Section 4.1, Paragraph 15; Section 4.1, Paragraph 15; Section"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2059:S0",
+            "verbatimText": "4.1.1, Paragraph 1; Section 4.1.1, Paragraph 5; Section 4.4, Paragraph 5; Section 4.4,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.1.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2060:S0",
+            "verbatimText": "Paragraph 9; Section 4.6, Paragraph 4; Section 4.6, Paragraph 4; Section 4.6, Paragraph"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2061:S0",
+            "verbatimText": "11; Section 4.6, Paragraph 11; Section 6. 1; Section 7, Paragraph 1; Section 7.2.2,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4.6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2062:S0",
+            "verbatimText": "Paragraph 3; Section 7.2.5, Paragraph 1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.5",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2065:S0",
+            "verbatimText": "Section 3.2, Paragraph 4; Section 3.2, Paragraph 4; Section 6.2.1, Paragraph 2; Table 1;"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 3.2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2066:S0",
+            "verbatimText": "Section 7, Paragraph 3; Section 7.2.4; Section 8.1, Paragraph 2.20.1; Section 8.1,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7.2.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2067:S0",
+            "verbatimText": "Paragraph 2.22.1; Section 9, Paragraph 4; Section 10.5, Paragraph 4; Table 2; Table 4;"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 10.5",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2068:S0",
+            "verbatimText": "Table 4; Appendix A.2.5; Appendix A.2.5, Paragraph 1.10.1; Appendix A.3, Paragraph 2;"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2069:S0",
+            "verbatimText": "Appendix A.3, Paragraph 3; Appendix A.3, Paragraph 4.4.1; Appendix A.3, Paragraph"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2070:S0",
+            "verbatimText": "4.6.1; Appendix A.3, Paragraph 4.8.1; Appendix A.3, Paragraph 4.10.1; Appendix A.4,"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2071:S0",
+            "verbatimText": "Paragraph 3.10.1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2073:S0",
+            "verbatimText": "10.5.1, Paragraph 2; Appendix A.3, Paragraph 4.12.1"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2075:S0",
+            "verbatimText": "Appendix A.4.1, Paragraph 3; Appendix A.4.1, Paragraph 3; Appendix A.4.1, Paragraph 4"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A.4.1",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2076:S0",
+            "verbatimText": "Author's Address"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Author's Address",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2077:S0",
+            "verbatimText": "Mike Bishop (editor)"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Mike Bishop",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2078:S0",
+            "verbatimText": "Akamai"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Akamai",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L2079:S0",
+            "verbatimText": "Email: mbishop@evequefou.be"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "mbishop@evequefou.be",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

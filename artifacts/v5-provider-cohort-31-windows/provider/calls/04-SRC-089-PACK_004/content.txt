@@ -1,0 +1,285 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0286:S0"
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-089",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0285:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Chapter III: PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0317:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0318:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0317:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Article 14. Grant, re-grant and revocation of publication import business licenses",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0350:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0351:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0350:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Article 15. Refusal to certify the registration of import of publications for commercial purposes",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0359:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0360:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0359:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Article 16. Responsibility of publication importers to appraise contents of imported publications",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0382:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Chapter IV: PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0384:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0385:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0384:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Article 17. Conditions for publishing and distribution of e-publications",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0286:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0285:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0317:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0286:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0350:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0317:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0359:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0350:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0382:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0359:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0384:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0382:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

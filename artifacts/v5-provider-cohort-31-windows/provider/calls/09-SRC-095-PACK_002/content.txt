@@ -1,0 +1,1940 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0129:S0",
+            "verbatimText": "1. Introduction",
+            "occurrence": 135,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 1: Introduction",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0162:S0",
+            "verbatimText": "2. HTTP/3 Protocol Overview",
+            "occurrence": 168,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 2: HTTP/3 Protocol Overview",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0185:S0",
+            "verbatimText": "2.1. Document Organization",
+            "occurrence": 191,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0162:S0",
+            "verbatimText": "2. HTTP/3 Protocol Overview",
+            "occurrence": 168,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0134:S0",
+            "verbatimText": "1.1. Prior Versions of HTTP",
+            "occurrence": 140,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0129:S0",
+            "verbatimText": "1. Introduction",
+            "occurrence": 135,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0146:S0",
+            "verbatimText": "1.2. Delegation to QUIC",
+            "occurrence": 152,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0129:S0",
+            "verbatimText": "1. Introduction",
+            "occurrence": 135,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0090:S0",
+            "verbatimText": "10.3. Intermediary-Encapsulation Attacks",
+            "occurrence": 96,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 10.3: Intermediary-Encapsulation Attacks",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0091:S0",
+            "verbatimText": "10.4. Cacheability of Pushed Responses",
+            "occurrence": 97,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 10.4: Cacheability of Pushed Responses",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0092:S0",
+            "verbatimText": "10.5. Denial-of-Service Considerations",
+            "occurrence": 98,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 10.5: Denial-of-Service Considerations",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0093:S0",
+            "verbatimText": "10.5.1. Limits on Field Section Size",
+            "occurrence": 99,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0092:S0",
+            "verbatimText": "10.5. Denial-of-Service Considerations",
+            "occurrence": 98,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0096:S0",
+            "verbatimText": "10.5.2. CONNECT Issues",
+            "occurrence": 102,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0092:S0",
+            "verbatimText": "10.5. Denial-of-Service Considerations",
+            "occurrence": 98,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0097:S0",
+            "verbatimText": "10.6. Use of Compression",
+            "occurrence": 103,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 10.6: Use of Compression",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0098:S0",
+            "verbatimText": "10.7. Padding and Traffic Analysis",
+            "occurrence": 104,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 10.7: Padding and Traffic Analysis",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0099:S0",
+            "verbatimText": "10.8. Frame Parsing",
+            "occurrence": 105,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 10.8: Frame Parsing",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0100:S0",
+            "verbatimText": "10.9. Early Data",
+            "occurrence": 106,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 10.9: Early Data",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0101:S0",
+            "verbatimText": "10.10. Migration",
+            "occurrence": 107,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 10.10: Migration",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0102:S0",
+            "verbatimText": "10.11. Privacy Considerations",
+            "occurrence": 108,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 10.11: Privacy Considerations",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0103:S0",
+            "verbatimText": "11. IANA Considerations",
+            "occurrence": 109,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 11: IANA Considerations",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0104:S0",
+            "verbatimText": "11.1. Registration of HTTP/3 Identification String",
+            "occurrence": 110,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0103:S0",
+            "verbatimText": "11. IANA Considerations",
+            "occurrence": 109,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0105:S0",
+            "verbatimText": "11.2. New Registries",
+            "occurrence": 111,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0103:S0",
+            "verbatimText": "11. IANA Considerations",
+            "occurrence": 109,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0106:S0",
+            "verbatimText": "11.2.1. Frame Types",
+            "occurrence": 112,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0105:S0",
+            "verbatimText": "11.2. New Registries",
+            "occurrence": 111,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0107:S0",
+            "verbatimText": "11.2.2. Settings Parameters",
+            "occurrence": 113,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0105:S0",
+            "verbatimText": "11.2. New Registries",
+            "occurrence": 111,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0108:S0",
+            "verbatimText": "11.2.3. Error Codes",
+            "occurrence": 114,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0105:S0",
+            "verbatimText": "11.2. New Registries",
+            "occurrence": 111,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0109:S0",
+            "verbatimText": "11.2.4. Stream Types",
+            "occurrence": 115,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0105:S0",
+            "verbatimText": "11.2. New Registries",
+            "occurrence": 111,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0110:S0",
+            "verbatimText": "12. References",
+            "occurrence": 116,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 12: References",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0111:S0",
+            "verbatimText": "12.1. Normative References",
+            "occurrence": 117,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0110:S0",
+            "verbatimText": "12. References",
+            "occurrence": 116,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0112:S0",
+            "verbatimText": "12.2. Informative References",
+            "occurrence": 118,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0110:S0",
+            "verbatimText": "12. References",
+            "occurrence": 116,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0113:S0",
+            "verbatimText": "Appendix A. Considerations for Transitioning from HTTP/2",
+            "occurrence": 119,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Appendix A: Considerations for Transitioning from HTTP/2",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0114:S0",
+            "verbatimText": "A.1. Streams",
+            "occurrence": 120,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0113:S0",
+            "verbatimText": "Appendix A. Considerations for Transitioning from HTTP/2",
+            "occurrence": 119,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0115:S0",
+            "verbatimText": "A.2. HTTP Frame Types",
+            "occurrence": 121,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0113:S0",
+            "verbatimText": "Appendix A. Considerations for Transitioning from HTTP/2",
+            "occurrence": 119,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0116:S0",
+            "verbatimText": "A.2.1. Prioritization Differences",
+            "occurrence": 122,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0115:S0",
+            "verbatimText": "A.2. HTTP Frame Types",
+            "occurrence": 121,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0117:S0",
+            "verbatimText": "A.2.2. Field Compression Differences",
+            "occurrence": 123,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0115:S0",
+            "verbatimText": "A.2. HTTP Frame Types",
+            "occurrence": 121,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0118:S0",
+            "verbatimText": "A.2.3. Flow-Control Differences",
+            "occurrence": 124,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0115:S0",
+            "verbatimText": "A.2. HTTP Frame Types",
+            "occurrence": 121,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0119:S0",
+            "verbatimText": "A.2.4. Guidance for New Frame Type Definitions",
+            "occurrence": 125,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0115:S0",
+            "verbatimText": "A.2. HTTP Frame Types",
+            "occurrence": 121,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0120:S0",
+            "verbatimText": "A.2.5. Comparison of HTTP/2 and HTTP/3 Frame Types",
+            "occurrence": 126,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0115:S0",
+            "verbatimText": "A.2. HTTP Frame Types",
+            "occurrence": 121,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0121:S0",
+            "verbatimText": "A.3. HTTP/2 SETTINGS Parameters",
+            "occurrence": 127,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0113:S0",
+            "verbatimText": "Appendix A. Considerations for Transitioning from HTTP/2",
+            "occurrence": 119,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0122:S0",
+            "verbatimText": "A.4. HTTP/2 Error Codes",
+            "occurrence": 128,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0113:S0",
+            "verbatimText": "Appendix A. Considerations for Transitioning from HTTP/2",
+            "occurrence": 119,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0123:S0",
+            "verbatimText": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+            "occurrence": 129,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0122:S0",
+            "verbatimText": "A.4. HTTP/2 Error Codes",
+            "occurrence": 128,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0124:S0",
+            "verbatimText": "Acknowledgments",
+            "occurrence": 130,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Acknowledgments",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0125:S0",
+            "verbatimText": "Index",
+            "occurrence": 131,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Index",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0127:S0",
+            "verbatimText": "RFC 9114 HTTP/3 June 2022",
+            "occurrence": 133,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "RFC 9114",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0129:S0",
+            "verbatimText": "1. Introduction",
+            "occurrence": 135,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0127:S0",
+            "verbatimText": "RFC 9114 HTTP/3 June 2022",
+            "occurrence": 133,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0162:S0",
+            "verbatimText": "2. HTTP/3 Protocol Overview",
+            "occurrence": 168,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0129:S0",
+            "verbatimText": "1. Introduction",
+            "occurrence": 135,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0185:S0",
+            "verbatimText": "2.1. Document Organization",
+            "occurrence": 191,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0162:S0",
+            "verbatimText": "2. HTTP/3 Protocol Overview",
+            "occurrence": 168,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0134:S0",
+            "verbatimText": "1.1. Prior Versions of HTTP",
+            "occurrence": 140,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0129:S0",
+            "verbatimText": "1. Introduction",
+            "occurrence": 135,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0146:S0",
+            "verbatimText": "1.2. Delegation to QUIC",
+            "occurrence": 152,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0134:S0",
+            "verbatimText": "1.1. Prior Versions of HTTP",
+            "occurrence": 140,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0091:S0",
+            "verbatimText": "10.4. Cacheability of Pushed Responses",
+            "occurrence": 97,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0090:S0",
+            "verbatimText": "10.3. Intermediary-Encapsulation Attacks",
+            "occurrence": 96,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0092:S0",
+            "verbatimText": "10.5. Denial-of-Service Considerations",
+            "occurrence": 98,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0091:S0",
+            "verbatimText": "10.4. Cacheability of Pushed Responses",
+            "occurrence": 97,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0093:S0",
+            "verbatimText": "10.5.1. Limits on Field Section Size",
+            "occurrence": 99,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0092:S0",
+            "verbatimText": "10.5. Denial-of-Service Considerations",
+            "occurrence": 98,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0096:S0",
+            "verbatimText": "10.5.2. CONNECT Issues",
+            "occurrence": 102,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0093:S0",
+            "verbatimText": "10.5.1. Limits on Field Section Size",
+            "occurrence": 99,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0097:S0",
+            "verbatimText": "10.6. Use of Compression",
+            "occurrence": 103,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0096:S0",
+            "verbatimText": "10.5.2. CONNECT Issues",
+            "occurrence": 102,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0098:S0",
+            "verbatimText": "10.7. Padding and Traffic Analysis",
+            "occurrence": 104,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0097:S0",
+            "verbatimText": "10.6. Use of Compression",
+            "occurrence": 103,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0099:S0",
+            "verbatimText": "10.8. Frame Parsing",
+            "occurrence": 105,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0098:S0",
+            "verbatimText": "10.7. Padding and Traffic Analysis",
+            "occurrence": 104,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0100:S0",
+            "verbatimText": "10.9. Early Data",
+            "occurrence": 106,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0099:S0",
+            "verbatimText": "10.8. Frame Parsing",
+            "occurrence": 105,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0101:S0",
+            "verbatimText": "10.10. Migration",
+            "occurrence": 107,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0100:S0",
+            "verbatimText": "10.9. Early Data",
+            "occurrence": 106,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0102:S0",
+            "verbatimText": "10.11. Privacy Considerations",
+            "occurrence": 108,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0101:S0",
+            "verbatimText": "10.10. Migration",
+            "occurrence": 107,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0103:S0",
+            "verbatimText": "11. IANA Considerations",
+            "occurrence": 109,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0102:S0",
+            "verbatimText": "10.11. Privacy Considerations",
+            "occurrence": 108,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0104:S0",
+            "verbatimText": "11.1. Registration of HTTP/3 Identification String",
+            "occurrence": 110,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0103:S0",
+            "verbatimText": "11. IANA Considerations",
+            "occurrence": 109,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0105:S0",
+            "verbatimText": "11.2. New Registries",
+            "occurrence": 111,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0104:S0",
+            "verbatimText": "11.1. Registration of HTTP/3 Identification String",
+            "occurrence": 110,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0106:S0",
+            "verbatimText": "11.2.1. Frame Types",
+            "occurrence": 112,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0105:S0",
+            "verbatimText": "11.2. New Registries",
+            "occurrence": 111,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0107:S0",
+            "verbatimText": "11.2.2. Settings Parameters",
+            "occurrence": 113,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0106:S0",
+            "verbatimText": "11.2.1. Frame Types",
+            "occurrence": 112,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0108:S0",
+            "verbatimText": "11.2.3. Error Codes",
+            "occurrence": 114,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0107:S0",
+            "verbatimText": "11.2.2. Settings Parameters",
+            "occurrence": 113,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0109:S0",
+            "verbatimText": "11.2.4. Stream Types",
+            "occurrence": 115,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0108:S0",
+            "verbatimText": "11.2.3. Error Codes",
+            "occurrence": 114,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0110:S0",
+            "verbatimText": "12. References",
+            "occurrence": 116,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0109:S0",
+            "verbatimText": "11.2.4. Stream Types",
+            "occurrence": 115,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0111:S0",
+            "verbatimText": "12.1. Normative References",
+            "occurrence": 117,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0110:S0",
+            "verbatimText": "12. References",
+            "occurrence": 116,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0112:S0",
+            "verbatimText": "12.2. Informative References",
+            "occurrence": 118,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0111:S0",
+            "verbatimText": "12.1. Normative References",
+            "occurrence": 117,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0113:S0",
+            "verbatimText": "Appendix A. Considerations for Transitioning from HTTP/2",
+            "occurrence": 119,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0112:S0",
+            "verbatimText": "12.2. Informative References",
+            "occurrence": 118,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0114:S0",
+            "verbatimText": "A.1. Streams",
+            "occurrence": 120,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0113:S0",
+            "verbatimText": "Appendix A. Considerations for Transitioning from HTTP/2",
+            "occurrence": 119,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0115:S0",
+            "verbatimText": "A.2. HTTP Frame Types",
+            "occurrence": 121,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0114:S0",
+            "verbatimText": "A.1. Streams",
+            "occurrence": 120,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0116:S0",
+            "verbatimText": "A.2.1. Prioritization Differences",
+            "occurrence": 122,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0115:S0",
+            "verbatimText": "A.2. HTTP Frame Types",
+            "occurrence": 121,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0117:S0",
+            "verbatimText": "A.2.2. Field Compression Differences",
+            "occurrence": 123,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0116:S0",
+            "verbatimText": "A.2.1. Prioritization Differences",
+            "occurrence": 122,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0118:S0",
+            "verbatimText": "A.2.3. Flow-Control Differences",
+            "occurrence": 124,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0117:S0",
+            "verbatimText": "A.2.2. Field Compression Differences",
+            "occurrence": 123,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0119:S0",
+            "verbatimText": "A.2.4. Guidance for New Frame Type Definitions",
+            "occurrence": 125,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0118:S0",
+            "verbatimText": "A.2.3. Flow-Control Differences",
+            "occurrence": 124,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0120:S0",
+            "verbatimText": "A.2.5. Comparison of HTTP/2 and HTTP/3 Frame Types",
+            "occurrence": 126,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0119:S0",
+            "verbatimText": "A.2.4. Guidance for New Frame Type Definitions",
+            "occurrence": 125,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0121:S0",
+            "verbatimText": "A.3. HTTP/2 SETTINGS Parameters",
+            "occurrence": 127,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0120:S0",
+            "verbatimText": "A.2.5. Comparison of HTTP/2 and HTTP/3 Frame Types",
+            "occurrence": 126,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0122:S0",
+            "verbatimText": "A.4. HTTP/2 Error Codes",
+            "occurrence": 128,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0121:S0",
+            "verbatimText": "A.3. HTTP/2 SETTINGS Parameters",
+            "occurrence": 127,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0123:S0",
+            "verbatimText": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+            "occurrence": 129,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0122:S0",
+            "verbatimText": "A.4. HTTP/2 Error Codes",
+            "occurrence": 128,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0124:S0",
+            "verbatimText": "Acknowledgments",
+            "occurrence": 130,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0123:S0",
+            "verbatimText": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+            "occurrence": 129,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0125:S0",
+            "verbatimText": "Index",
+            "occurrence": 131,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0124:S0",
+            "verbatimText": "Acknowledgments",
+            "occurrence": 130,
+            "leftExactContext": "",
+            "rightExactContext": ""
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

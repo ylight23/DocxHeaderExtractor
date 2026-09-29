@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "LOGICAL_CALL_STARTED",
+  "timestamp": "2026-09-29T13:15:49.5795123\u002B00:00",
+  "campaignId": "v5-provider-cohort-31",
+  "documentId": "SRC-089",
+  "stage": "V5_SEMANTIC_CLAIM",
+  "logicalCallId": "v5-claim-ba988a6c830d4089a42f34dd9530bb81",
+  "callOrdinal": 1,
+  "requestHash": "70d08d91e19c7602cff2ab8fa801c9c73ab036bdd7ff720fb7cca3a8b29a6623",
+  "requestBytes": 105411,
+  "estimatedInputTokens": 19342,
+  "maxOutputTokens": 25088,
+  "sourceItemCount": 1,
+  "currentNodeCount": 0,
+  "contextItemCount": 1,
+  "contextCharacterCount": 77251,
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3.7-flash"
+}

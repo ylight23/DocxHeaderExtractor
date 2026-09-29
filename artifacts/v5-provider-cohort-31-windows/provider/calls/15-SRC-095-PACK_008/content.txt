@@ -1,0 +1,1355 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0674:S0"
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "SRC-095",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0674:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 5: Connection Closure",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0677:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 5.1: Idle Connections",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0693:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 5.2: Connection Shutdown",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0760:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Section 5.3: Immediate Application Closure",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0677:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0678:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0693:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0694:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0693:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0695:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0695:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0696:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0696:S0"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "GOAWAY frame",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0678:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0679:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0679:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0680:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0680:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0681:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0681:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0682:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0682:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0683:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0694:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0695:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0695:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0696:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0696:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0697:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0697:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0698:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0698:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0699:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0699:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0700:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0700:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0701:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0701:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0702:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0702:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0703:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0703:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0704:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0704:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0705:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0705:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0706:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0706:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0707:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0707:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0708:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0708:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0709:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0709:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0710:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0710:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0711:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0711:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0712:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0712:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0713:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0713:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0714:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0714:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0715:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0715:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0716:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0716:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0717:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0717:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0718:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0718:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0719:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0719:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0720:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0720:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0721:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0721:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0722:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0722:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0723:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0723:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0724:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0724:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0725:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0725:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0726:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0726:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0727:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0727:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0728:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0728:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0729:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0729:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0730:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0730:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0731:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0731:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0732:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0732:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0733:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0733:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0734:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0734:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0735:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0735:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0736:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0736:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0737:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0737:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0738:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0738:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0739:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0739:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0740:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0740:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0741:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0741:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0742:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0742:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0743:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0743:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0744:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0744:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0745:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0745:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0746:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0746:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0747:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0747:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0748:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0748:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0749:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0749:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0750:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0750:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0751:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0751:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0752:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

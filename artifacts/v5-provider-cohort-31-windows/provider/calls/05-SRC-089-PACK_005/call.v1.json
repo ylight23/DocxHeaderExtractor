@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "v5-provider-cohort-31-call-v1",
+  "ordinal": 5,
+  "documentId": "SRC-089",
+  "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+  "providerRequestHash": "e43b1aa50116994398585f2421a53db026438f75a975d03e2ee2391dec745290",
+  "provider": "alibaba",
+  "model": "qwen/qwen3.7-flash",
+  "startedAt": "2026-09-29T13:17:20.9669814+00:00",
+  "endedAt": "2026-09-29T13:17:46.9627984+00:00",
+  "latencyMs": 25995.8118,
+  "transportSucceeded": true,
+  "transportError": null,
+  "finishReason": "stop",
+  "attempts": [
+    {
+      "attemptNumber": 1,
+      "attemptId": "boundary-cut-4866ff6dea2e4b18bfb1d8f958a48f98",
+      "startedAt": "2026-09-29T13:17:21.0072256\u002B00:00",
+      "endedAt": "2026-09-29T13:17:46.9525493\u002B00:00",
+      "httpStatus": 200,
+      "retryAfterSeconds": null,
+      "retryClassification": "SUCCESS",
+      "retryable": false,
+      "sseCompletion": "COMPLETE",
+      "finishReason": "stop",
+      "doneObserved": true,
+      "cleanEof": true,
+      "usage": {
+        "prompt_tokens": 36042,
+        "completion_tokens": 5358,
+        "total_tokens": 41400,
+        "cost": 0.0057474,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0057474,
+          "upstream_inference_prompt_cost": 0.0036042,
+          "upstream_inference_completions_cost": 0.0021432
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "rawSseSha256": "d529f3cd2a64664b913e93aefba7bb27efad63eb2c7823ef505046e2d479d927"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 36042,
+    "completion_tokens": 5358,
+    "total_tokens": 41400,
+    "cost": 0.0057474,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0057474,
+      "upstream_inference_prompt_cost": 0.0036042,
+      "upstream_inference_completions_cost": 0.0021432
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "reassembledContentSha256": "b111af8ad318c92ac83677979a2f2ad1613803167ac38ce18aad107f8bfa7eac",
+  "parsedResponseSha256": "fcbeabc38cefa3dc09ca1dc08348852322d4ff8370526912f2a51abdda0e5d0e"
+}

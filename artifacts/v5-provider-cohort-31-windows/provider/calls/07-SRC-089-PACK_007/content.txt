@@ -1,0 +1,147 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0574:S0",
+            "verbatimText": "chairpersons of provincial-level People’s Committees and related agencies and organizations"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Implementation Responsibility Scope",
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0576:S0",
+            "verbatimText": "ON BEHALF OF THE GOVERNMENT"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Signatory Authority",
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0577:S0",
+            "verbatimText": "PRIME MINISTER"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Signatory Title",
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0578:S0",
+            "verbatimText": "Nguyen Tan Dung"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Signatory Name",
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0579:S0",
+            "verbatimText": "(*) Công Báo Nos 225-226 (25/02/2014)"
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Publication Reference",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0575:S0",
+            "verbatimText": "shall implement this Decree.-"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0574:S0",
+            "verbatimText": "chairpersons of provincial-level People’s Committees and related agencies and organizations"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "IDENTITY_DISAMBIGUATION"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0576:S0",
+            "verbatimText": "ON BEHALF OF THE GOVERNMENT"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0577:S0",
+            "verbatimText": "PRIME MINISTER"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0577:S0",
+            "verbatimText": "PRIME MINISTER"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0578:S0",
+            "verbatimText": "Nguyen Tan Dung"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

@@ -1,0 +1,455 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0186:S0",
+            "verbatimText": "The following sections provide a detailed overview of the lifecycle of an HTTP/3 connection :",
+            "occurrence": 192
+          }
+        ]
+      },
+      "predicate": "DOCUMENT_IDENTITY",
+      "value": "RFC 9114 HTTP/3 June 2022",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0185:S0",
+            "verbatimText": "2. 1. Do cument Organization",
+            "occurrence": 191
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Document Organization",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0205:S0",
+            "verbatimText": "2. 2. Conventions and Terminology",
+            "occurrence": 211
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Conventions and Terminology",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0243:S0",
+            "verbatimText": "3. Connection Setup and Management",
+            "occurrence": 255
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Connection Setup and Management",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0244:S0",
+            "verbatimText": "3. 1. Discovering an HTTP/3 Endpoint",
+            "occurrence": 256
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0268:S0",
+            "verbatimText": "3.1.1. HTTP Alternative Services",
+            "occurrence": 280
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0244:S0",
+            "verbatimText": "3. 1. Discovering an HTTP/3 Endpoint",
+            "occurrence": 256
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0277:S0",
+            "verbatimText": "3.1.2. Other Schemes",
+            "occurrence": 289
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0187:S0",
+            "verbatimText": "“Connection Setup and Management” (Section 3) covers how an HTTP/3 endpoint is",
+            "occurrence": 193
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 3",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0189:S0",
+            "verbatimText": "“Expressing HTTP Semantics in HTTP/3” (Section 4) describes how HTTP semantics are",
+            "occurrence": 195
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 4",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0191:S0",
+            "verbatimText": "“Connection Clo sure” (Section 5) describes how HTTP/3 c onnections are terminated, either",
+            "occurrence": 197
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 5",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0195:S0",
+            "verbatimText": "“Stream Mapping and Usage” (Section 6) describes the way QUIC streams are used.",
+            "occurrence": 201
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 6",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0196:S0",
+            "verbatimText": "“HTTP Framing Layer” (Section 7) describes the frames used on mo st streams.",
+            "occurrence": 202
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 7",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0199:S0",
+            "verbatimText": "“Error Handling” (Section 8) describes how error c onditions are handled and expressed,",
+            "occurrence": 205
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 8",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0202:S0",
+            "verbatimText": "“Extensions to HTTP/3” (Section 9) describes how new c apabilities c an be a dded in future",
+            "occurrence": 208
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Section 9",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0204:S0",
+            "verbatimText": "A more detailed c omparison between HTTP/2 and HTTP/3 c an be found in Appendix A.",
+            "occurrence": 210
+          }
+        ]
+      },
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "value": "Appendix A",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0212:S0",
+            "verbatimText": "abort :",
+            "occurrence": 218
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: abort",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0213:S0",
+            "verbatimText": "client :",
+            "occurrence": 220
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: client",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0215:S0",
+            "verbatimText": "c onnection : A transport-layer c onnection between two endpoints using QUIC a s the transport",
+            "occurrence": 223
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: connection",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0217:S0",
+            "verbatimText": "c onnection error: An error that a\uFB00ects the entire HTTP/3 c onnection.",
+            "occurrence": 225
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: connection error",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0218:S0",
+            "verbatimText": "endpoint : Either the client or server of the c onnection .",
+            "occurrence": 226
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: endpoint",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0219:S0",
+            "verbatimText": "frame : The smallest unit of c ommunic ation on a stream in HTTP/3, c onsisting of a hea der and a",
+            "occurrence": 227
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: frame",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0225:S0",
+            "verbatimText": "HTTP/3 c onnection : A QUIC c onnection where the negotiated applic ation proto c ol is HTTP/3.",
+            "occurrence": 233
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: HTTP/3 connection",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0226:S0",
+            "verbatimText": "peer: An endpoint. When discussing a particular endpoint, “peer” refers to the endpoint that is",
+            "occurrence": 234
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: peer",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0228:S0",
+            "verbatimText": "rec eiver:",
+            "occurrence": 236
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: receiver",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0229:S0",
+            "verbatimText": "sender:",
+            "occurrence": 238
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: sender",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0232:S0",
+            "verbatimText": "server:",
+            "occurrence": 242
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: server",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0234:S0",
+            "verbatimText": "stream :",
+            "occurrence": 245
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: stream",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0237:S0",
+            "verbatimText": "stream error: An applic ation-level error on the individual stream.",
+            "occurrence": 249
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Definition: stream error",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0268:S0",
+            "verbatimText": "3.1.1. HTTP Alternative Services",
+            "occurrence": 280
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "HTTP Alternative Services",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L0277:S0",
+            "verbatimText": "3.1.2. Other Schemes",
+            "occurrence": 289
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "Other Schemes",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    }
+  ]
+}

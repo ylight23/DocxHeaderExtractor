@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "v5-provider-cohort-31-call-v1",
+  "ordinal": 8,
+  "documentId": "SRC-095",
+  "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+  "providerRequestHash": "fa7f708efbe8e8ca50c45a50ed230298eba32301c76dc24a3ec8fd1badc88baa",
+  "provider": "alibaba",
+  "model": "qwen/qwen3.7-flash",
+  "startedAt": "2026-09-29T13:18:21.6531888+00:00",
+  "endedAt": "2026-09-29T13:19:50.4268228+00:00",
+  "latencyMs": 88773.6301,
+  "transportSucceeded": true,
+  "transportError": null,
+  "finishReason": "stop",
+  "attempts": [
+    {
+      "attemptNumber": 1,
+      "attemptId": "boundary-cut-72f4e8599f414d9cb793c6e4fbc8d3b4",
+      "startedAt": "2026-09-29T13:18:21.6889973\u002B00:00",
+      "endedAt": "2026-09-29T13:18:22.5244356\u002B00:00",
+      "httpStatus": 429,
+      "retryAfterSeconds": null,
+      "retryClassification": "HTTP_ERROR",
+      "retryable": true,
+      "sseCompletion": "INCOMPLETE",
+      "finishReason": null,
+      "doneObserved": null,
+      "cleanEof": null,
+      "usage": null,
+      "rawSseSha256": "9c73d8570b216f68e6e391b01d0e527b2708693d1d8234976922b7e88000a843"
+    },
+    {
+      "attemptNumber": 2,
+      "attemptId": "boundary-cut-d8acf89723624386b964cca956714daa",
+      "startedAt": "2026-09-29T13:18:32.6537737\u002B00:00",
+      "endedAt": "2026-09-29T13:19:50.4150916\u002B00:00",
+      "httpStatus": 200,
+      "retryAfterSeconds": null,
+      "retryClassification": "SUCCESS",
+      "retryable": false,
+      "sseCompletion": "COMPLETE",
+      "finishReason": "stop",
+      "doneObserved": true,
+      "cleanEof": true,
+      "usage": {
+        "prompt_tokens": 30909,
+        "completion_tokens": 10719,
+        "total_tokens": 41628,
+        "cost": 0.00232074,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00232074,
+          "upstream_inference_prompt_cost": 0.00092727,
+          "upstream_inference_completions_cost": 0.00139347
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "rawSseSha256": "7416d08d4dbf4a3eb2baec440baa6d35e4b0fc9e4970db05fb67687448e5f7c0"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 30909,
+    "completion_tokens": 10719,
+    "total_tokens": 41628,
+    "cost": 0.00232074,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00232074,
+      "upstream_inference_prompt_cost": 0.00092727,
+      "upstream_inference_completions_cost": 0.00139347
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "reassembledContentSha256": "74c7122e2074600a2c4d27482e3656eb0de0a87f12319147c798dd41e5dd0f66",
+  "parsedResponseSha256": "975d7a5c430a7388710fa5172bc0a4afbe2c2ef44c6dce557bf34bb069614adb"
+}

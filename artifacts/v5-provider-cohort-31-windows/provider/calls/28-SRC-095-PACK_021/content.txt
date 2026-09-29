@@ -1,0 +1,1597 @@
+{
+  "claims": [
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1729:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.2.1. Prioritization Differences",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1736:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.2.2. Field Compression Differences",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1745:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.2.3. Flow-Control Differences",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1750:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.2.4. Guidance for New Frame Type Definitions",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1761:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.2.5. Comparison of HTTP/2 and HTTP/3 Frame Types",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1787:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.3. HTTP/2 SETTINGS Parameters",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1710:S0"
+          }
+        ]
+      },
+      "predicate": "STRUCTURAL_REGION",
+      "value": "A.2. HTTP Frame Types",
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1710:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1729:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1710:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1736:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1710:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1745:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1710:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1750:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1710:S0"
+          }
+        ]
+      },
+      "predicate": "PARENT_OF",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1761:S0"
+          }
+        ]
+      },
+      "state": "RESOLVED",
+      "evidenceNeeds": []
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1715:S0"
+          }
+        ]
+      },
+      "predicate": "REFERENCES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1716:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1717:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1715:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1718:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1717:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1719:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1718:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1720:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1719:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1721:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1720:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1722:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1721:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1723:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1722:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1724:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1723:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1725:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1724:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1726:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1725:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1727:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1726:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1728:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1727:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1730:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1729:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1731:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1730:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1732:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1731:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1733:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1732:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1737:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1736:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1738:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1737:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1739:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1738:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1740:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1739:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1741:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1740:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1742:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1741:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1743:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1742:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1744:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1743:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1746:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1745:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1747:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1746:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1748:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1747:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1749:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1748:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1751:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1750:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1752:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1751:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1753:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1752:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1754:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1753:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1755:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1754:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1756:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1755:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1757:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1756:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1758:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1757:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1759:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1758:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1760:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1759:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1762:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1761:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1763:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1762:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1765:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1764:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1767:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1766:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1772:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1771:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1774:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1773:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1776:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1775:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1777:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1776:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1779:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1778:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1781:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1780:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1783:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1782:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1784:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1783:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1785:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1784:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1786:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1785:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1788:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1787:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1789:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1788:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1790:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1789:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1791:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1790:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1792:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1791:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1793:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1792:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1794:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1793:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1795:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1794:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1796:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1795:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1797:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1796:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1799:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1798:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1801:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1800:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1803:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1802:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    },
+    {
+      "subject": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1807:S0"
+          }
+        ]
+      },
+      "predicate": "CONTINUES",
+      "object": {
+        "sourceParts": [
+          {
+            "sourceAlias": "L1806:S0"
+          }
+        ]
+      },
+      "state": "OPEN",
+      "evidenceNeeds": [
+        "GLOBAL_TARGET"
+      ]
+    }
+  ]
+}

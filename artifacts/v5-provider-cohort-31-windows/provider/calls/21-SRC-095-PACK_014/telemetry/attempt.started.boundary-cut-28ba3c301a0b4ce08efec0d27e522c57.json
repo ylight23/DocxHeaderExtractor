@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "provider-observability-v1",
+  "eventType": "ATTEMPT_STARTED",
+  "timestamp": "2026-09-29T13:24:26.9103305\u002B00:00",
+  "campaignId": "v5-provider-cohort-31",
+  "documentId": "SRC-095",
+  "stage": "V5_SEMANTIC_CLAIM",
+  "logicalCallId": "v5-claim-e44eb802db27495980cf6ab4f6d17391",
+  "callOrdinal": 1,
+  "attemptId": "boundary-cut-28ba3c301a0b4ce08efec0d27e522c57",
+  "requestHash": "341cc2e716de3c85527b6e61abba2395b0c15a6bb9ef85a23e319ef64be59895",
+  "requestBytes": 113401,
+  "estimatedInputTokens": 20838,
+  "maxOutputTokens": 25088,
+  "attemptStartedAt": "2026-09-29T13:24:26.9039033+00:00",
+  "attemptDeadlineAt": "2026-09-29T13:29:26.9039033+00:00"
+}
