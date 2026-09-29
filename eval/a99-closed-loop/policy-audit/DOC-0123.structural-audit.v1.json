@@ -196,13 +196,13 @@
     "distinctProposals": 529,
     "byCategory": {
       "STRUCTURAL_HEADING": 388,
-      "TABLE_LABEL": 80,
+      "TABLE_LABEL": 0,
       "TABLE_CAPTION": 10,
       "FIELD_LABEL": 20,
       "RUNNING_HEADER_FOOTER": 0,
       "FOOTNOTE_NOTE": 4,
-      "NAVIGATION": 10,
-      "OTHER_NON_HEADING": 17
+      "NAVIGATION": 0,
+      "OTHER_NON_HEADING": 107
     },
     "ambiguousProposed": 0,
     "structuralKeepProposedByModel": 324,
@@ -10054,8 +10054,8 @@
       "text": "Section III. Evaluation and Qualification Criteria 45",
       "modelRole": "section-heading",
       "section": "FRONT_MATTER",
-      "category": "NAVIGATION",
-      "reason": "table-of-contents entry",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10065,8 +10065,8 @@
       "text": "Section IV - Proposal Forms 53",
       "modelRole": "section-heading",
       "section": "FRONT_MATTER",
-      "category": "NAVIGATION",
-      "reason": "table-of-contents entry",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10076,8 +10076,8 @@
       "text": "Section V - Eligible Countries 111",
       "modelRole": "section-heading",
       "section": "FRONT_MATTER",
-      "category": "NAVIGATION",
-      "reason": "table-of-contents entry",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10087,8 +10087,8 @@
       "text": "Section VI - Fraud and Corruption 112",
       "modelRole": "section-heading",
       "section": "FRONT_MATTER",
-      "category": "NAVIGATION",
-      "reason": "table-of-contents entry",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10098,8 +10098,8 @@
       "text": "PART 2 –Employer’s Requirements 114",
       "modelRole": "part-heading",
       "section": "FRONT_MATTER",
-      "category": "NAVIGATION",
-      "reason": "table-of-contents entry",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10109,8 +10109,8 @@
       "text": "Section VII. Employer’s Requirements 115",
       "modelRole": "section-heading",
       "section": "FRONT_MATTER",
-      "category": "NAVIGATION",
-      "reason": "table-of-contents entry",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10120,8 +10120,8 @@
       "text": "PART 3 – Conditions of Contract and Contract Forms 133",
       "modelRole": "part-heading",
       "section": "FRONT_MATTER",
-      "category": "NAVIGATION",
-      "reason": "table-of-contents entry",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10131,8 +10131,8 @@
       "text": "Section VIII - General Conditions (GC) 134",
       "modelRole": "section-heading",
       "section": "FRONT_MATTER",
-      "category": "NAVIGATION",
-      "reason": "table-of-contents entry",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10142,8 +10142,8 @@
       "text": "Section IX - Particular Conditions (PC) 135",
       "modelRole": "section-heading",
       "section": "FRONT_MATTER",
-      "category": "NAVIGATION",
-      "reason": "table-of-contents entry",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10153,8 +10153,8 @@
       "text": "Section X - Contract Forms 194",
       "modelRole": "section-heading",
       "section": "FRONT_MATTER",
-      "category": "NAVIGATION",
-      "reason": "table-of-contents entry",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10285,8 +10285,8 @@
       "text": "PART 1 Request for Proposal Procedures",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10296,8 +10296,8 @@
       "text": "Section I - Instructions to Proposers (ITP)",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10307,8 +10307,8 @@
       "text": "Section II - Proposal Data Sheet (PDS)",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10318,8 +10318,8 @@
       "text": "Section III - Evaluation and Qualification Criteria",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10329,8 +10329,8 @@
       "text": "Section IV - Proposal Forms",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10340,8 +10340,8 @@
       "text": "Section V - Eligible Countries",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10351,8 +10351,8 @@
       "text": "Section VI - Fraud and Corruption",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10362,8 +10362,8 @@
       "text": "PART 2 Employer’s Requirements",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10373,8 +10373,8 @@
       "text": "Section VII - Employer’s Requirements",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10384,8 +10384,8 @@
       "text": "PART 3 Conditions of Contract and Contract Forms",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10395,8 +10395,8 @@
       "text": "Section VIII - General Conditions",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10406,8 +10406,8 @@
       "text": "Section IX - Particular Conditions",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -10417,8 +10417,8 @@
       "text": "Section X - Contract Forms",
       "modelRole": "section-heading",
       "section": "SECTION_I",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -11132,8 +11132,8 @@
       "text": "ITP 39.1",
       "modelRole": "section_label",
       "section": "SECTION_II",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -11143,8 +11143,8 @@
       "text": "ITP 40.1 (f)",
       "modelRole": "section_label",
       "section": "SECTION_II",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -11165,8 +11165,8 @@
       "text": "ITP 43.1",
       "modelRole": "section_label",
       "section": "SECTION_II",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -11176,8 +11176,8 @@
       "text": "ITP 44.1",
       "modelRole": "section_label",
       "section": "SECTION_II",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -11187,8 +11187,8 @@
       "text": "ITP 46.1",
       "modelRole": "section_label",
       "section": "SECTION_II",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -11209,8 +11209,8 @@
       "text": "ITP 54.1 and 54.2",
       "modelRole": "section_label",
       "section": "SECTION_II",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -11220,8 +11220,8 @@
       "text": "ITP 55.1",
       "modelRole": "section_label",
       "section": "SECTION_II",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12386,8 +12386,8 @@
       "text": "General Design Obligations",
       "modelRole": "section-title",
       "section": "SECTION_VII",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12575,8 +12575,8 @@
       "text": "If Sections are to be used, refer to Table: Summary of Sections below",
       "modelRole": "table-label",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12586,8 +12586,8 @@
       "text": "Milestones",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12597,8 +12597,8 @@
       "text": "Electronic transmission system",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12641,8 +12641,8 @@
       "text": "Governing Law",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12652,8 +12652,8 @@
       "text": "Ruling language",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12663,8 +12663,8 @@
       "text": "Language for communications",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12674,8 +12674,8 @@
       "text": "Time for the Parties to sign a Contract Agreement",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12685,8 +12685,8 @@
       "text": "Number of additional paper copies of Contractor’s Documents",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12696,8 +12696,8 @@
       "text": "Total liability of the Contractor to the Employer under or in connection with the Contract",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12707,8 +12707,8 @@
       "text": "Time for access to the Site",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12718,8 +12718,8 @@
       "text": "Option 1",
       "modelRole": "form-label",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12729,8 +12729,8 @@
       "text": "Option 2",
       "modelRole": "form-label",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12740,8 +12740,8 @@
       "text": "Engineer’s Duties and Authority",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12751,8 +12751,8 @@
       "text": "Cyber security- Contractor’s obligations",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12762,8 +12762,8 @@
       "text": "Performance Security",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12773,8 +12773,8 @@
       "text": "Environmental and Social (ES) Performance Security",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12784,8 +12784,8 @@
       "text": "Maximum allowable accumulated value of work subcontracted (as a percentage of the Accepted Contract Amount)",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12795,8 +12795,8 @@
       "text": "Parts of the Works for which subcontracting is not permitted",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12806,8 +12806,8 @@
       "text": "Period for notification of errors in the items of reference",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12817,8 +12817,8 @@
       "text": "Period of payment for temporary utilities",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12828,8 +12828,8 @@
       "text": "Number of additional paper copies of progress reports",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12839,8 +12839,8 @@
       "text": "Cyber security",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12850,8 +12850,8 @@
       "text": "Cyber security-immediate reporting",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12861,8 +12861,8 @@
       "text": "Normal working hours",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12872,8 +12872,8 @@
       "text": "Number of additional paper copies of program",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12883,8 +12883,8 @@
       "text": "Delay damages payable for each day of delay",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12894,8 +12894,8 @@
       "text": "Maximum amount of delay damages",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12905,8 +12905,8 @@
       "text": "Cyber security- Variation",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12916,8 +12916,8 @@
       "text": "Percentage rate to be applied to Provisional Sums for overhead charges and profit",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12927,8 +12927,8 @@
       "text": "Total advance payment",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12938,8 +12938,8 @@
       "text": "Repayment of Advance payment",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12949,8 +12949,8 @@
       "text": "Period of payment",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12960,8 +12960,8 @@
       "text": "Number of additional paper copies of Statements",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12971,8 +12971,8 @@
       "text": "Percentage of retention",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12982,8 +12982,8 @@
       "text": "Limit of Retention Money (as a percentage of Accepted Contract Amount)",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -12993,8 +12993,8 @@
       "text": "Plant and Materials",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13004,8 +13004,8 @@
       "text": "Minimum Amount of Interim Payment Certificates",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13015,8 +13015,8 @@
       "text": "Cyber security- withholding payments",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13026,8 +13026,8 @@
       "text": "Period of payment of Advance Payment to the Contractor",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13037,8 +13037,8 @@
       "text": "Period for the Employer to make interim payments to the Contractor under Sub-Clause 14.6 (interim Payment)",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13048,8 +13048,8 @@
       "text": "Period for the Employer to make interim payments to the Contractor under Sub-Clause 14.13 (Final Payment)",
       "modelRole": "table-header",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13059,8 +13059,8 @@
       "text": "Period for the Employer to make final payment to the Contractor",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13070,8 +13070,8 @@
       "text": "Number of additional paper copies of draft Final Statement",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13081,8 +13081,8 @@
       "text": "Forces of nature, the risks of which are allocated to the Contractor",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13092,8 +13092,8 @@
       "text": "Permitted deductible limits",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13103,8 +13103,8 @@
       "text": "Additional amount to be insured (as a percentage of the replacement value, if less or more than 15%)",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13114,8 +13114,8 @@
       "text": "List of risks arising from Exceptional Events which shall not be excluded from the insurance cover for the Works",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13125,8 +13125,8 @@
       "text": "Extent of insurance required for Goods",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13136,8 +13136,8 @@
       "text": "Amount of insurance required for Goods",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13147,8 +13147,8 @@
       "text": "Insurance required against liability for fitness for purpose",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13158,8 +13158,8 @@
       "text": "Period of insurance required for liability for breach of professional duty",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13169,8 +13169,8 @@
       "text": "Amount of insurance required for injury to persons and damage to property",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13180,8 +13180,8 @@
       "text": "Other insurances required by Laws and by local practice (give details)",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13191,8 +13191,8 @@
       "text": "Time for appointment of DAAB member(s)",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13202,8 +13202,8 @@
       "text": "The DAAB shall be comprised of",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13213,8 +13213,8 @@
       "text": "List of proposed members of DAAB",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13235,8 +13235,8 @@
       "text": "Place of arbitration",
       "modelRole": "section-title",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -13946,8 +13946,8 @@
       "text": "Sub-Clause 4.18 Protection of the Environment is replaced with:",
       "modelRole": "heading",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {
@@ -14001,8 +14001,8 @@
       "text": "The Sub-Clause is replaced with the following:",
       "modelRole": "heading",
       "section": "SECTION_IX",
-      "category": "TABLE_LABEL",
-      "reason": "table cell label",
+      "category": "OTHER_NON_HEADING",
+      "reason": "body text, date or qualifier line",
       "ambiguous": false
     },
     {

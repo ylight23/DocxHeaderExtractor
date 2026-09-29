@@ -165,9 +165,9 @@
           "page": 13,
           "atomOrdinal": 518,
           "scopes": [
-            "table",
             "document_body",
-            "table"
+            "document_body",
+            "document_body"
           ],
           "modelSemanticRole": "document-subtitle",
           "modelRelationHints": [
@@ -365,10 +365,10 @@
     "whyThird": "highest Gold risk - the rule has to separate rows that divide a schedule from rows that fill it, and nine kept headings sit in the same request as the one error.",
     "doNotCombine": "Three rules in one prompt change would make an improved score unattributable, which is the mistake this whole sequence has been avoiding."
   },
-  "candidateHints": {
-    "hintedAtoms": 650,
+  "candidateBoosts": {
+    "hintedAtoms": 0,
     "totalAtoms": 650,
     "inScope": false,
-    "note": "Still 650/650 and still non-discriminating, and still not causal for these five: the model rejected 18 scheduled rows that carry the same hint as the one it kept."
+    "note": "Candidate attention is no longer a source fact. This audit keeps the field only as a historical slot and does not treat markers/style/numbering as hint boosts."
   }
 }
