@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "v5-source-selection-remediation-canary-v1",
+  "sourceCohortCommit": "3a4f69a194f1e0a4598bda8c5eeed06b7c57bb40",
+  "protocolVersion": "v5-source-backed-claim-2.1",
+  "composerVersion": "v5-semantic-request-composer-2.1",
+  "selectionSourcedFrom": "frozen 31-pack counterfactual replay measurement, not Gold",
+  "packs": [
+    {
+      "role": "same-atom-normalization-heavy",
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "selectionRationale": "most Class-B (alias-only-safe same-atom) rows of any pack in the frozen counterfactual replay: 22",
+      "oldExactTextRefusalProfile": {
+        "classB": 22,
+        "classC": 2,
+        "z": 0,
+        "totalExactTextRefusals": 24
+      },
+      "ownedAliasCount": 96,
+      "visibleAliasCount": 110,
+      "newSemanticRequestHash": "1aee77de2662e24b2eee5ba880ecb683e21ceb827a325df7590a997d859fa204",
+      "newSemanticRequestBytes": 84894,
+      "newProviderRequestHash": "15205aaf91668fe04996abb414919f5fc522fdd8509db05d44a3d3894e057921",
+      "newProviderRequestBytes": 114894,
+      "newMaxCompletionTokens": 25088
+    },
+    {
+      "role": "true-multipart-heavy",
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "selectionRationale": "most Class-C (true multipart) rows of any pack in the frozen counterfactual replay: 10",
+      "oldExactTextRefusalProfile": {
+        "classB": 3,
+        "classC": 10,
+        "z": 2,
+        "totalExactTextRefusals": 13
+      },
+      "ownedAliasCount": 96,
+      "visibleAliasCount": 104,
+      "newSemanticRequestHash": "94e0ea2acd80472ec75c6835af71d145d22c338950656f95096c45a44924494e",
+      "newSemanticRequestBytes": 79027,
+      "newProviderRequestHash": "ffd290a28cc0c6c77647a72dd4bd792f16a1c884bae05f515466e7564ab399db",
+      "newProviderRequestBytes": 107551,
+      "newMaxCompletionTokens": 25088
+    },
+    {
+      "role": "mixed",
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "selectionRationale": "carries both Class-B (6) and Class-C (4) rows in the frozen counterfactual replay",
+      "oldExactTextRefusalProfile": {
+        "classB": 6,
+        "classC": 4,
+        "z": 12,
+        "totalExactTextRefusals": 22
+      },
+      "ownedAliasCount": 96,
+      "visibleAliasCount": 112,
+      "newSemanticRequestHash": "5c70d3bb648fa118fb7dd7da66bd88c4fb9607466c57d1d8baad6f5ec634a7e6",
+      "newSemanticRequestBytes": 79716,
+      "newProviderRequestHash": "d615ed21fca9d263ef99810413c4958a021f7dab3511f9b65138d58d48aca96e",
+      "newProviderRequestBytes": 110368,
+      "newMaxCompletionTokens": 25088
+    }
+  ],
+  "providerCalls": 0,
+  "goldRead": false,
+  "providerExecutionAuthorized": false
+}
