@@ -1,0 +1,215 @@
+{
+  "headings": [
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0852:S0",
+          "verbatimText": "6.2.1. Control Streams"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0870:S0",
+          "verbatimText": "6.2.2. Push Streams"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0893:S0",
+          "verbatimText": "6.2.3. Reserved Stream Types"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0903:S0",
+          "verbatimText": "7. HTTP Framing Layer"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0908:S0",
+          "verbatimText": "Frame"
+        },
+        {
+          "sourceAlias": "L0908:S1",
+          "verbatimText": "Control Stream"
+        },
+        {
+          "sourceAlias": "L0908:S2",
+          "verbatimText": "Request Stream"
+        },
+        {
+          "sourceAlias": "L0908:S3",
+          "verbatimText": "Push Stream"
+        },
+        {
+          "sourceAlias": "L0908:S4",
+          "verbatimText": "Section"
+        }
+      ],
+      "semanticFunction": "TABLE_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0909:S0",
+          "verbatimText": "DATA"
+        },
+        {
+          "sourceAlias": "L0909:S1",
+          "verbatimText": "No"
+        },
+        {
+          "sourceAlias": "L0909:S2",
+          "verbatimText": "Yes"
+        },
+        {
+          "sourceAlias": "L0909:S3",
+          "verbatimText": "Yes"
+        },
+        {
+          "sourceAlias": "L0909:S4",
+          "verbatimText": "Section 7.2.1"
+        }
+      ],
+      "semanticFunction": "TABLE_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0910:S0",
+          "verbatimText": "HEADERS"
+        },
+        {
+          "sourceAlias": "L0910:S1",
+          "verbatimText": "No"
+        },
+        {
+          "sourceAlias": "L0910:S2",
+          "verbatimText": "Yes"
+        },
+        {
+          "sourceAlias": "L0910:S3",
+          "verbatimText": "Yes"
+        },
+        {
+          "sourceAlias": "L0910:S4",
+          "verbatimText": "Section 7.2.2"
+        }
+      ],
+      "semanticFunction": "TABLE_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0911:S0",
+          "verbatimText": "CANCEL_PUSH"
+        },
+        {
+          "sourceAlias": "L0911:S1",
+          "verbatimText": "Yes"
+        },
+        {
+          "sourceAlias": "L0911:S2",
+          "verbatimText": "No"
+        },
+        {
+          "sourceAlias": "L0911:S3",
+          "verbatimText": "No"
+        },
+        {
+          "sourceAlias": "L0911:S4",
+          "verbatimText": "Section 7.2.3"
+        }
+      ],
+      "semanticFunction": "TABLE_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0912:S0",
+          "verbatimText": "SETTINGS"
+        },
+        {
+          "sourceAlias": "L0912:S1",
+          "verbatimText": "Yes (1)"
+        },
+        {
+          "sourceAlias": "L0912:S2",
+          "verbatimText": "No"
+        },
+        {
+          "sourceAlias": "L0912:S3",
+          "verbatimText": "No"
+        },
+        {
+          "sourceAlias": "L0912:S4",
+          "verbatimText": "Section 7.2.4"
+        }
+      ],
+      "semanticFunction": "TABLE_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0913:S0",
+          "verbatimText": "PUSH_PROMISE"
+        },
+        {
+          "sourceAlias": "L0913:S1",
+          "verbatimText": "No"
+        },
+        {
+          "sourceAlias": "L0913:S2",
+          "verbatimText": "Yes"
+        },
+        {
+          "sourceAlias": "L0913:S3",
+          "verbatimText": "No"
+        },
+        {
+          "sourceAlias": "L0913:S4",
+          "verbatimText": "Section 7.2.5"
+        }
+      ],
+      "semanticFunction": "TABLE_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0914:S0",
+          "verbatimText": "GOAWAY"
+        },
+        {
+          "sourceAlias": "L0914:S1",
+          "verbatimText": "Yes"
+        },
+        {
+          "sourceAlias": "L0914:S2",
+          "verbatimText": "No"
+        },
+        {
+          "sourceAlias": "L0914:S3",
+          "verbatimText": "No"
+        },
+        {
+          "sourceAlias": "L0914:S4",
+          "verbatimText": "Section 7.2.6"
+        }
+      ],
+      "semanticFunction": "TABLE_STRUCTURE"
+    }
+  ]
+}

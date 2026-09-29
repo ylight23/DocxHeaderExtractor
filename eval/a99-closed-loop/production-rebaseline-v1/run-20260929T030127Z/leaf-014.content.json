@@ -1,0 +1,35 @@
+{
+  "headings": [
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0557:S0",
+          "verbatimText": "4.4. The CONNECT Method"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0605:S0",
+          "verbatimText": "4.5. HTTP Upgrade"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L0608:S0",
+          "verbatimText": "4.6."
+        },
+        {
+          "sourceAlias": "L0608:S1",
+          "verbatimText": "Server Push"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    }
+  ]
+}

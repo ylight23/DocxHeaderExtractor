@@ -1,0 +1,38 @@
+{
+  "id": "stream-reassembled-leaf-025",
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "reasoning": "",
+        "content": "{\n  \u0022headings\u0022: [\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1529:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Setting Name\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1529:S1\u0022,\n          \u0022verbatimText\u0022: \u0022Value\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1529:S2\u0022,\n          \u0022verbatimText\u0022: \u0022Specification\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1529:S3\u0022,\n          \u0022verbatimText\u0022: \u0022Default\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022TABLE_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1534:S0\u0022,\n          \u0022verbatimText\u0022: \u0022MAX_FIELD_SECTION_SIZE\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022BODY_INFORMATION\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1535:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Table 3: InitialHTTP/3 Settings\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022OBJECT_CAPTION\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1540:S0\u0022,\n          \u0022verbatimText\u0022: \u002211.2.3. Error Codes\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022REGION_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1558:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Name\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1558:S1\u0022,\n          \u0022verbatimText\u0022: \u0022Value\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1558:S2\u0022,\n          \u0022verbatimText\u0022: \u0022Description\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1558:S3\u0022,\n          \u0022verbatimText\u0022: \u0022Specification\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022TABLE_STRUCTURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1560:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Bishop\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1560:S1\u0022,\n          \u0022verbatimText\u0022: \u0022Standards Track\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1560:S2\u0022,\n          \u0022verbatimText\u0022: \u0022Page 43\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022PAGE_FURNITURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1561:S0\u0022,\n          \u0022verbatimText\u0022: \u0022RFC 9114\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1561:S1\u0022,\n          \u0022verbatimText\u0022: \u0022HTTP/3\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1561:S2\u0022,\n          \u0022verbatimText\u0022: \u0022June 2022\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022PAGE_FURNITURE\u0022\n    },\n    {\n      \u0022sourceParts\u0022: [\n        {\n          \u0022sourceAlias\u0022: \u0022L1562:S0\u0022,\n          \u0022verbatimText\u0022: \u0022Name\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1562:S1\u0022,\n          \u0022verbatimText\u0022: \u0022Value\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1562:S2\u0022,\n          \u0022verbatimText\u0022: \u0022Description\u0022\n        },\n        {\n          \u0022sourceAlias\u0022: \u0022L1562:S3\u0022,\n          \u0022verbatimText\u0022: \u0022Specification\u0022\n        }\n      ],\n      \u0022semanticFunction\u0022: \u0022TABLE_STRUCTURE\u0022\n    }\n  ]\n}"
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 21099,
+    "completion_tokens": 896,
+    "total_tokens": 21995,
+    "cost": 0.00074945,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00074945,
+      "upstream_inference_prompt_cost": 0.00063297,
+      "upstream_inference_completions_cost": 0.00011648
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

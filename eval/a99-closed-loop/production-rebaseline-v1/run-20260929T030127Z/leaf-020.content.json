@@ -1,0 +1,49 @@
+{
+  "headings": [
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1105:S0",
+          "verbatimText": "7.2.5. PUSH_PROMISE"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1143:S0",
+          "verbatimText": "7.2.6. GOAWAY"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1164:S0",
+          "verbatimText": "7.2.7. MAX_PUSH_ID"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1189:S0",
+          "verbatimText": "7.2.8. Reserved Frame Types"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1199:S0",
+          "verbatimText": "8. Error Handling"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    }
+  ]
+}

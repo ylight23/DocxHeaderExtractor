@@ -1,0 +1,496 @@
+{
+  "headings": [
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1988:S0",
+          "verbatimText": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L1989:S0",
+          "verbatimText": "Paragraph 2; Section 8, Paragraph 5; Section 8.1; Section 8.1, Paragraph 3; Section 8.1,"
+        },
+        {
+          "sourceAlias": "L1990:S0",
+          "verbatimText": "Paragraph 3; Table 4; Appendix A.4, Paragraph 3.2.1"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1994:S0",
+          "verbatimText": "H3_REQUEST_INCOMPLETE",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L1994:S1",
+          "verbatimText": "Section 4.1, Paragraph 14; Section 8.1; Table 4"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L1997:S0",
+          "verbatimText": "H3_REQUEST_REJECTED",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L1998:S0",
+          "verbatimText": "Section 4.1.1, Paragraph 3; Section 4.1.1, Paragraph 4; Section 4.1.1, Paragraph 5;"
+        },
+        {
+          "sourceAlias": "L1999:S0",
+          "verbatimText": "Section 4.1.1, Paragraph 5; Section 8.1; Table 4; Appendix A.4, Paragraph 3.16.1;"
+        },
+        {
+          "sourceAlias": "L2000:S0",
+          "verbatimText": "Appendix A.4.1, Paragraph 3"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2001:S0",
+          "verbatimText": "H3_SETTINGS_ERROR Section 7.2.4, Paragraph 6; Section 7.2.4.1, Paragraph 5; Section",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2002:S0",
+          "verbatimText": "7.2.4.2, Paragraph 8; Section 7.2.4.2, Paragraph 8; Section 8.1; Table 4"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2003:S0",
+          "verbatimText": "H3_STREAM_CREATION_ERROR Section 6.1, Paragraph 3; Section 6.2, Paragraph 7;",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2004:S0",
+          "verbatimText": "Section 6.2.1, Paragraph 2; Section 6.2.2, Paragraph 3; Section 8.1; Table 4"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2005:S0",
+          "verbatimText": "H3_VERSION_FALLBACK Section 8.1; Table 4; Appendix A.4, Paragraph 3.28.1",
+          "occurrence": 1
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2006:S0",
+          "verbatimText": "HEADERS",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2007:S0",
+          "verbatimText": "Section 2, Paragraph 3; Section 4.1, Paragraph 5, Item 1; Section 4.1, Paragraph 5, Item",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2008:S0",
+          "verbatimText": "3; Section 4.1, Paragraph 7; Section 4.1, Paragraph 7; Section 4.1, Paragraph 7; Section",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2009:S0",
+          "verbatimText": "4.1, Paragraph 10; Section 4.4, Paragraph 6; Section 4.6, Paragraph 12; Table 1; Section",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2010:S0",
+          "verbatimText": "7.2.2; Section 9, Paragraph 5; Table 2; Appendix A.2.1, Paragraph 1; Appendix A.2.5;"
+        },
+        {
+          "sourceAlias": "L2011:S0",
+          "verbatimText": "Appendix A.2.5, Paragraph 1.4.1; Appendix A.2.5, Paragraph 1.20.1"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2012:S0",
+          "verbatimText": "M",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2013:S0",
+          "verbatimText": "malformed",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2014:S0",
+          "verbatimText": "Section 4.1, Paragraph 3; Section 4.1.2; Section 4.2, Paragraph 2; Section 4.2, Paragraph",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2015:S0",
+          "verbatimText": "3; Section 4.2, Paragraph 5; Section 4.3, Paragraph 3; Section 4.3, Paragraph 4; Section",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2016:S0",
+          "verbatimText": "4.3.1, Paragraph 5; Section 4.3.2, Paragraph 1; Section 4.4, Paragraph 5; Section 8.1,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2017:S0",
+          "verbatimText": "Paragraph 2.30.1; Section 10.3, Paragraph 1; Section 10.3, Paragraph 2; Section 10.5.1,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2018:S0",
+          "verbatimText": "Paragraph 2"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2019:S0",
+          "verbatimText": "MAX_PUSH_ID",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2020:S0",
+          "verbatimText": "Section 2, Paragraph 5; Section 4.6, Paragraph 3; Section 4.6, Paragraph 3; Section 4.6,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2021:S0",
+          "verbatimText": "Paragraph 3; Section 4.6, Paragraph 3; Table 1; Section 7.2.5, Paragraph 5; Section",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2022:S0",
+          "verbatimText": "7.2. 7; Table 2; Appendix A.1, Paragraph 4; Appendix A.3, Paragraph 4.4.1"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2023:S0",
+          "verbatimText": "P",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2024:S0",
+          "verbatimText": "push ID",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2025:S0",
+          "verbatimText": "Section 4.6; Section 5.2, Paragraph 1; Section 5.2, Paragraph 5, Item 2; Section 5.2,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2026:S0",
+          "verbatimText": "Paragraph 9; Section 6.2.2, Paragraph 2; Section 6.2.2, Paragraph 6; Section 6.2.2,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2027:S0",
+          "verbatimText": "Paragraph 6; Section 7.2.3, Paragraph 1; Section 7.2.3, Paragraph 7; Section 7.2.3,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2028:S0",
+          "verbatimText": "Paragraph 7; Section 7.2.3, Paragraph 8; Section 7.2.3, Paragraph 8; Section 7.2.5,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2029:S0",
+          "verbatimText": "Paragraph 4.2.1; Section 7.2.5, Paragraph 5; Section 7.2.5, Paragraph 5; Section 7.2.5,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2030:S0",
+          "verbatimText": "Paragraph 6; Section 7.2.5, Paragraph 6; Section 7.2.5, Paragraph 7; Section 7.2.5,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2031:S0",
+          "verbatimText": "Paragraph 7; Section 7.2.5, Paragraph 7; Section 7.2.6, Paragraph 4; Section 7.2.7,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2032:S0",
+          "verbatimText": "Paragraph 1; Section 7.2.7, Paragraph 4; Section 7.2.7, Paragraph 4; Section 7.2.7,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2033:S0",
+          "verbatimText": "Paragraph 6; Section 7.2.7, Paragraph 6; Section 8.1, Paragraph 2.18.1; Appendix A.2.5,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2034:S0",
+          "verbatimText": "Paragraph 1.12.1; Appendix A.2.5, Paragraph 1.16.1"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2035:S0",
+          "verbatimText": "push stream",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2036:S0",
+          "verbatimText": "Section 4.1, Paragraph 8; Section 4.1, Paragraph 9; Section 4.6, Paragraph 3; Section 4.6,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2037:S0",
+          "verbatimText": "Paragraph 5; Section 4.6, Paragraph 5; Section 4.6, Paragraph 13; Section 4.6,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2038:S0",
+          "verbatimText": "Paragraph 13; Section 4.6, Paragraph 13; Section 6.2, Paragraph 3; Section 6.2.2;",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2039:S0",
+          "verbatimText": "Section 7, Paragraph 1; Section 7.2.2, Paragraph 3; Section 7.2.3, Paragraph 1; Section",
+          "occurrence": 1
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2046:S0",
+          "verbatimText": "PUSH_PROMISE",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2047:S0",
+          "verbatimText": "Section 2, Paragraph 5; Section 4.1, Paragraph 8; Section 4.1, Paragraph 8; Section 4.1,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2048:S0",
+          "verbatimText": "Paragraph 8; Section 4.1, Paragraph 8; Section 4.1, Paragraph 10; Section 4.6,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2049:S0",
+          "verbatimText": "Paragraph 4; Section 4.6, Paragraph 10; Section 4.6, Paragraph 11; Section 4.6,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2050:S0",
+          "verbatimText": "Paragraph 11; Section 4.6, Paragraph 12; Section 4.6, Paragraph 12; Section 4.6,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2051:S0",
+          "verbatimText": "Paragraph 13; Section 4.6, Paragraph 13; Section 4.6, Paragraph 13; Table 1; Section",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2052:S0",
+          "verbatimText": "7.2.3, Paragraph 8; Section 7.2.3, Paragraph 8; Section 7.2.5; Section 7.2.7, Paragraph 1;",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2053:S0",
+          "verbatimText": "Section 10.4, Paragraph 1; Section 10.5, Paragraph 2; Table 2; Appendix A.2.5; Appendix",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2054:S0",
+          "verbatimText": "A.2.5, Paragraph 1.12.1; Appendix A.2.5, Paragraph 1.12.1; Appendix A.2.5, Paragraph",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2055:S0",
+          "verbatimText": "1.20.1"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2056:S0",
+          "verbatimText": "R",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2057:S0",
+          "verbatimText": "request stream",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2058:S0",
+          "verbatimText": "Section 4.1, Paragraph 1; Section 4.1, Paragraph 15; Section 4.1, Paragraph 15; Section",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2059:S0",
+          "verbatimText": "4.1.1, Paragraph 1; Section 4.1.1, Paragraph 5; Section 4.4, Paragraph 5; Section 4.4,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2060:S0",
+          "verbatimText": "Paragraph 9; Section 4.6, Paragraph 4; Section 4.6, Paragraph 4; Section 4.6, Paragraph",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2061:S0",
+          "verbatimText": "11; Section 4.6, Paragraph 11; Section 6.1; Section 7, Paragraph 1; Section 7.2.2,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2062:S0",
+          "verbatimText": "Paragraph 3; Section 7.2.5, Paragraph 1"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2063:S0",
+          "verbatimText": "S",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2064:S0",
+          "verbatimText": "SETTINGS",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2065:S0",
+          "verbatimText": "Section 3.2, Paragraph 4; Section 3.2, Paragraph 4; Section 6.2.1, Paragraph 2; Table 1;",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2066:S0",
+          "verbatimText": "Section 7, Paragraph 3; Section 7.2.4; Section 8.1, Paragraph 2.20.1; Section 8.1,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2067:S0",
+          "verbatimText": "Paragraph 2.22.1; Section 9, Paragraph 4; Section 10.5, Paragraph 4; Table 2; Table 4;",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2068:S0",
+          "verbatimText": "Table 4; Appendix A.2.5; Appendix A.2.5, Paragraph 1.10.1; Appendix A.3, Paragraph 2;",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2069:S0",
+          "verbatimText": "Appendix A.3, Paragraph 3; Appendix A.3, Paragraph 4.4.1; Appendix A.3, Paragraph",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2070:S0",
+          "verbatimText": "4.6.1; Appendix A.3, Paragraph 4.8.1; Appendix A.3, Paragraph 4.10.1; Appendix A.4,",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2071:S0",
+          "verbatimText": "Paragraph 3.10.1"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2072:S0",
+          "verbatimText": "SETTINGS_MAX_FIELD_SECTION_SIZE Section 4.2.2, Paragraph 2; Section 7.2.4.1; Section",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2073:S0",
+          "verbatimText": "10.5.1, Paragraph 2; Appendix A.3, Paragraph 4.12.1"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2074:S0",
+          "verbatimText": "stream error Section 2.2; Section 4.1.2, Paragraph 4; Section 4.4, Paragraph 10; Section 8;",
+          "occurrence": 1
+        },
+        {
+          "sourceAlias": "L2075:S0",
+          "verbatimText": "Appendix A.4.1, Paragraph 3; Appendix A.4.1, Paragraph 3; Appendix A.4.1, Paragraph 4"
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2076:S0",
+          "verbatimText": "Author's Address",
+          "occurrence": 1
+        }
+      ],
+      "semanticFunction": "REGION_STRUCTURE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2077:S0",
+          "verbatimText": "Mike Bishop (editor)",
+          "occurrence": 1
+        }
+      ],
+      "semanticFunction": "FOOTNOTE_OR_SOURCE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2078:S0",
+          "verbatimText": "Akamai",
+          "occurrence": 1
+        }
+      ],
+      "semanticFunction": "FOOTNOTE_OR_SOURCE"
+    },
+    {
+      "sourceParts": [
+        {
+          "sourceAlias": "L2079:S0",
+          "verbatimText": "Email: mbishop@evequefou.be",
+          "occurrence": 1
+        }
+      ],
+      "semanticFunction": "FOOTNOTE_OR_SOURCE"
+    }
+  ]
+}
