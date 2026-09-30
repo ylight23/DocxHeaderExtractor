@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "v5-openrouter-json-object-carrier-equivalence-v1",
+  "carrierId": "OpenRouterQwen37JsonObjectCarrierV2_1",
+  "gateway": "openrouter",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "alibaba",
+  "packsChecked": 31,
+  "semanticByteDriftCount": 0,
+  "semanticHashDriftCount": 0,
+  "providerByteDriftCount": 0,
+  "providerHashDriftCount": 0,
+  "perPack": [
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "byteDrift": false,
+      "hashDrift": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "byteDrift": false,
+      "hashDrift": false
+    }
+  ],
+  "providerCalls": 0,
+  "goldRead": false
+}

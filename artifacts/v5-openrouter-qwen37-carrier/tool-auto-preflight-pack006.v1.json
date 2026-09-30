@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "v5-openrouter-tool-auto-preflight-v1",
+  "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+  "semanticRequestHash": "1aee77de2662e24b2eee5ba880ecb683e21ceb827a325df7590a997d859fa204",
+  "providerRequestHash": "9928b6c5960f6f4133e8da8b7fbdfc4a2287814c2f5ef01bbe7810eb8548a06c",
+  "payloadBytes": 134989,
+  "toolName": "submit_semantic_claims",
+  "toolChoice": "auto",
+  "providerRoute": {
+    "gateway": "openrouter",
+    "model": "qwen/qwen3.7-flash",
+    "provider": "alibaba"
+  },
+  "providerCalls": 0,
+  "goldRead": false
+}

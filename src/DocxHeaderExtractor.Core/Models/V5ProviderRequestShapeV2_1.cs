@@ -81,48 +81,12 @@ public static class V5SystemPromptV2_1
 /// </summary>
 public sealed record V5ProviderRequestBodyV2_1(byte[] PayloadBytes, string Hash, int Bytes)
 {
+    /// <summary>
+    /// Legacy facade. The literal body shape now lives in exactly one place -
+    /// <see cref="OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRaw"/> - so this and the carrier can
+    /// never independently drift on the same wire body.
+    /// </summary>
     public static V5ProviderRequestBodyV2_1 Build(
-        string systemPrompt, string userMessage, int maxCompletionTokens, V5ProviderEnvelope envelope)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(systemPrompt);
-        ArgumentException.ThrowIfNullOrWhiteSpace(userMessage);
-        ArgumentNullException.ThrowIfNull(envelope);
-        if (maxCompletionTokens <= 0) throw new ArgumentOutOfRangeException(nameof(maxCompletionTokens));
-
-        object provider = string.IsNullOrWhiteSpace(envelope.Provider)
-            ? new
-            {
-                zdr = false,
-                data_collection = "deny",
-                require_parameters = true,
-                allow_fallbacks = true,
-            }
-            : new
-            {
-                order = new[] { envelope.Provider },
-                allow_fallbacks = false,
-                require_parameters = true,
-                data_collection = "deny",
-                zdr = false,
-            };
-
-        var body = new
-        {
-            model = envelope.Model,
-            temperature = 0,
-            max_tokens = maxCompletionTokens,
-            reasoning = new { effort = envelope.Reasoning },
-            messages = new object[]
-            {
-                new { role = "system", content = systemPrompt },
-                new { role = "user", content = userMessage },
-            },
-            response_format = new { type = envelope.ResponseFormat },
-            provider,
-            stream = envelope.Streaming,
-            usage = new { include = envelope.UsageInclude },
-        };
-        var bytes = JsonSerializer.SerializeToUtf8Bytes(body, CanonicalJson.Options);
-        return new V5ProviderRequestBodyV2_1(bytes, Hashing.Sha256(Encoding.UTF8.GetString(bytes)), bytes.Length);
-    }
+        string systemPrompt, string userMessage, int maxCompletionTokens, V5ProviderEnvelope envelope) =>
+        OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRaw(systemPrompt, userMessage, maxCompletionTokens, envelope);
 }
