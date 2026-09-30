@@ -42,6 +42,7 @@ public sealed record V5ComposedSemanticDecisionRequestV3(
 public sealed record V5SemanticDecisionResponseBoundsV3(
     int MaxDecisions,
     int MaxClaimsPerDecision,
+    int MaxClaimsTotal,
     int MaxSubjectParts,
     int MaxTargetParts,
     int MaxEvidenceNeeds,
@@ -51,11 +52,14 @@ public sealed record V5SemanticDecisionResponseBoundsV3(
     int MaxResponseUtf8Bytes)
 {
     public const int HistoricalMaxClaimsPerSubject = 10;
+    public const int HistoricalMaxClaimsPerResponse = 129;
     public const int HistoricalMaxSourceParts = 6;
     public const int HistoricalMaxValueUtf8Bytes = 543;
     public const int HistoricalMaxSelectionStringUtf8Bytes = 318;
     public const int DurableClaimIdUtf8Bytes = 42;
     public const int ProviderCompletionCeiling = 32768;
+    public const int ResponseByteBase = 1536;
+    public const int ResponseBytePerOwnedDecision = 496;
 
     public static V5SemanticDecisionResponseBoundsV3 ForOwnedCount(int ownedCount)
         => ForEvidenceCounts(ownedCount, ownedCount);
@@ -64,11 +68,17 @@ public sealed record V5SemanticDecisionResponseBoundsV3(
     {
         if (ownedCount < 0) throw new ArgumentOutOfRangeException(nameof(ownedCount));
         if (visibleCount < ownedCount) throw new ArgumentOutOfRangeException(nameof(visibleCount));
-        var maxResponseBytes = (int)Math.Min(ProviderCompletionCeiling,
-            (long)V5SemanticCompletionBudget.BaseTokens + (long)ownedCount * V5SemanticCompletionBudget.PerOwnedItemTokens);
+        // Bytes and tokens are separate units. The earlier P5E model incorrectly made a byte
+        // ceiling numerically no larger than max_tokens, which rejected two P5F 96-decision
+        // completions that were within their provider token budget. 48 KiB is the smallest 1 KiB
+        // aligned ceiling that contains the historical 48,705-byte response and P5F's largest
+        // cardinality-correct v3 response (42,923 bytes). The provider's independent max_tokens
+        // remains enforced by the carrier and is never inferred from a bytes/4 heuristic.
+        var maxResponseBytes = checked(ResponseByteBase + ownedCount * ResponseBytePerOwnedDecision);
         return new V5SemanticDecisionResponseBoundsV3(
             ownedCount,
             HistoricalMaxClaimsPerSubject,
+            Math.Min(HistoricalMaxClaimsPerResponse, checked(ownedCount * HistoricalMaxClaimsPerSubject)),
             Math.Min(HistoricalMaxSourceParts, Math.Max(1, ownedCount)),
             Math.Min(HistoricalMaxSourceParts, visibleCount),
             Enum.GetValues<EvidenceNeed>().Length,
@@ -118,7 +128,7 @@ public static class V5SemanticDecisionComposerV3
             responseBounds,
             V5SourceSelectionPolicy.Generate(),
             string.Join("\n", Instructions,
-                $"The complete response must serialize to at most {responseBounds.MaxResponseUtf8Bytes} UTF-8 bytes. Do not omit a supported claim just to meet the cap; an oversized complete response will be rejected. Never truncate, repair, or add commentary."),
+                $"The complete response must serialize to at most {responseBounds.MaxResponseUtf8Bytes} UTF-8 bytes and contain at most {responseBounds.MaxClaimsTotal} claims total. Do not omit a supported claim just to meet a cap; an oversized complete response will be rejected. Never truncate, repair, or add commentary."),
             packet);
     }
 
@@ -267,6 +277,7 @@ public static class V5SemanticDecisionContractV3
         {
             type = "object", additionalProperties = false,
             maxSerializedUtf8Bytes = bounds.MaxResponseUtf8Bytes,
+            maxClaimsTotal = bounds.MaxClaimsTotal,
             properties = new
             {
                 decisions = new
@@ -380,11 +391,13 @@ public static class V5SemanticDecisionContractV3
                 throw new InvalidOperationException($"decision-response-integer-bound-exceeded:{key}:occurrence");
         }
 
+        var totalClaims = 0;
         for (var decisionIndex = 0; decisionIndex < response.Decisions.Count; decisionIndex++)
         {
             var decision = response.Decisions[decisionIndex];
             if (decision.Claims is null || decision.Claims.Count > bounds.MaxClaimsPerDecision)
                 throw new InvalidOperationException($"decision-response-cardinality-bound-exceeded:decision-{decisionIndex}:claims");
+            totalClaims = checked(totalClaims + decision.Claims.Count);
             for (var claimIndex = 0; claimIndex < decision.Claims.Count; claimIndex++)
             {
                 var claim = decision.Claims[claimIndex];
@@ -412,13 +425,12 @@ public static class V5SemanticDecisionContractV3
                     CheckSelection(part?.Selection, $"{key}:target");
             }
         }
+        if (totalClaims > bounds.MaxClaimsTotal)
+            throw new InvalidOperationException($"decision-response-cardinality-bound-exceeded:total-claims:max={bounds.MaxClaimsTotal}:actual={totalClaims}");
 
         var canonicalBytes = JsonSerializer.SerializeToUtf8Bytes(response, CanonicalJson.Options).Length;
         if (canonicalBytes > bounds.MaxResponseUtf8Bytes)
             throw new InvalidOperationException($"decision-response-byte-budget-exceeded:max={bounds.MaxResponseUtf8Bytes}:actual={canonicalBytes}");
-        if (canonicalBytes > V5SemanticCompletionBudget.Compute(ownedCount, Math.Max(ownedCount, ownedCount + contextOnlyCount), 0,
-                V5SemanticDecisionResponseBoundsV3.ProviderCompletionCeiling))
-            throw new InvalidOperationException("decision-response-exceeds-completion-budget");
     }
 
     public static V5DecisionBindingResultV3 Bind(

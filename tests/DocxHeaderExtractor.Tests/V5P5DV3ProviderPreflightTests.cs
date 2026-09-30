@@ -10,7 +10,8 @@ namespace DocxHeaderExtractor.Tests;
 /// <summary>Offline v3 wire/runtime qualification; never reads Gold or sends provider requests.</summary>
 public sealed class V5P5DV3ProviderPreflightTests
 {
-    private const string ArtifactRoot = "artifacts/v5-p5d-v3-preflight";
+    // P5D is a frozen historical manifest. This regression test exercises the current
+    // runtime in memory; it must never rewrite P5D's bodies or manifest after P5G changes.
     private static readonly DocumentTaskContract Contract =
         DocxHeaderExtractor.DocumentProcessing.Projection.DocumentStructureTaskContract.Create();
     private static readonly V5ProviderEnvelope Envelope =
@@ -24,7 +25,6 @@ public sealed class V5P5DV3ProviderPreflightTests
             (Id: "SRC-089", Pdf: SourcePdfCorpus.Src089, Expected: 7),
             (Id: "SRC-095", Pdf: SourcePdfCorpus.Src095, Expected: 24),
         };
-        var rows = new List<object>();
         var allOwnedAliases = new List<string>();
         var maxDecisions = 0;
         var maxRequestBytes = 0;
@@ -40,7 +40,6 @@ public sealed class V5P5DV3ProviderPreflightTests
             var built = V5PdfPreflightBuilder.BuildV3(TestRepository.Path(doc.Pdf), doc.Id, Contract,
                 V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId, Envelope);
             var atoms = V5PdfPreflightBuilder.LoadAtoms(TestRepository.Path(doc.Pdf));
-            var pdfSha256 = V5CohortPreflightBuilder.Sha256(File.ReadAllBytes(TestRepository.Path(doc.Pdf)));
             Assert.Equal(doc.Expected, built.Count);
             var packOwned = built.SelectMany(item => item.OwnedAliases).ToArray();
             Assert.Equal(atoms.Select(atom => atom.Alias).ToHashSet(StringComparer.Ordinal), packOwned.ToHashSet(StringComparer.Ordinal));
@@ -73,13 +72,6 @@ public sealed class V5P5DV3ProviderPreflightTests
                 Assert.True(wire.GetProperty("stream").GetBoolean());
                 Assert.Equal("alibaba", wire.GetProperty("provider").GetProperty("order")[0].GetString());
                 Assert.False(wire.GetProperty("provider").GetProperty("allow_fallbacks").GetBoolean());
-                var bodyFileName = $"{doc.Id}_{pack.PackId.Replace(':', '_')}.json";
-                var bodyRelativePath = $"{ArtifactRoot}/wire-bodies/{bodyFileName}";
-                var bodyPath = TestRepository.Path(bodyRelativePath);
-                Directory.CreateDirectory(Path.GetDirectoryName(bodyPath)!);
-                File.WriteAllBytes(bodyPath, pack.ProviderBody);
-                Assert.Equal(pack.ProviderRequestHash, V5CohortPreflightBuilder.Sha256(File.ReadAllBytes(bodyPath)));
-
                 var oneClaim = new V5SemanticDecisionResponseV3(pack.OwnedAliases.Select(_ =>
                     new V5SemanticSubjectDecisionV3([new V5SemanticDecisionClaimV3("STRUCTURAL_REGION", "x", EvidenceNeeds: [])])).ToArray());
                 var responseBytes = JsonSerializer.SerializeToUtf8Bytes(oneClaim, CanonicalJson.Options).Length;
@@ -91,35 +83,18 @@ public sealed class V5P5DV3ProviderPreflightTests
                 maxProviderRequestBytes = Math.Max(maxProviderRequestBytes, pack.ProviderRequestBytes);
                 maxCompletionTokens = Math.Max(maxCompletionTokens, pack.MaxCompletionTokens);
                 maxVisible = Math.Max(maxVisible, pack.VisibleAliases.Count);
-                rows.Add(new
-                {
-                    documentId = doc.Id,
-                    sourcePdfSha256 = pdfSha256,
-                    packId = pack.PackId,
-                    ownedCount = pack.OwnedAliases.Count,
-                    contextOnlyCount = pack.Packet.ContextOnlyEvidence.Count,
-                    ownedAliases = pack.OwnedAliases,
-                    visibleAliases = pack.VisibleAliases,
-                    semanticRequestHash = pack.Request.RequestHash,
-                    schemaHash = pack.Request.SchemaHash,
-                    semanticRequestBytes = pack.Request.Utf8Bytes,
-                    providerRequestHash = pack.ProviderRequestHash,
-                    providerRequestBytes = pack.ProviderRequestBytes,
-                    providerBodyFile = $"wire-bodies/{bodyFileName}",
-                    maxCompletionTokens = pack.MaxCompletionTokens,
-                    expectedDecisionCount = pack.OwnedAliases.Count,
-                    emptyLedgerResponseBytes = JsonSerializer.SerializeToUtf8Bytes(
-                        new V5SemanticDecisionResponseV3(pack.OwnedAliases.Select(_ => new V5SemanticSubjectDecisionV3([])).ToArray()), CanonicalJson.Options).Length,
-                    oneSimpleClaimPerOwnedResponseBytes = responseBytes,
-                    oneSimpleClaimTokenEstimate = responseTokenEstimate,
-                    providerBodySha256 = pack.ProviderRequestHash,
-                });
             }
         }
 
         Assert.Equal(31, packs);
         Assert.Equal(2884, allOwnedAliases.Count);
         Assert.Equal(96, maxDecisions);
+        Assert.True(maxRequestBytes > 0);
+        Assert.True(maxProviderRequestBytes > 0);
+        Assert.True(maxCompletionTokens > 0);
+        Assert.True(maxSingleClaimBytes > 0);
+        Assert.True(maxSingleClaimTokenEstimate > 0);
+        Assert.True(maxVisible > 0);
 
         // The same v3 parser is exercised on a chunked content stream, then its typed response
         // traverses DocumentAgentRuntime and the production binder using a deterministic reasoner.
@@ -179,57 +154,6 @@ public sealed class V5P5DV3ProviderPreflightTests
                 new HashSet<string>(["OWN-0", "OWN-1", "HALO-0"], StringComparer.Ordinal));
         Assert.Contains(invalidRuntime.State.Conflicts, issue => issue.Code == "CLAIM_BINDING" && issue.Message.Contains("decision-cardinality-invalid", StringComparison.Ordinal));
 
-        Write("execution-manifest.v1.json", new
-        {
-            schemaVersion = "v5-p5d-v3-provider-execution-manifest-v1",
-            status = "PREPARED_NOT_AUTHORIZED",
-            protocol = V5Protocol.ClaimSchemaVersionV3,
-            route = new { gateway = "openrouter", api = "chat-completions", model = Envelope.Model, providerPin = Envelope.Provider,
-                temperature = 0, reasoning = Envelope.Reasoning, streaming = Envelope.Streaming, responseFormat = Envelope.ResponseFormat },
-            requestCount = packs,
-            providerRequestBodyFormat = "OpenRouter chat-completions, stream=true, json_object; exact UTF-8 body bytes stored under wire-bodies/ and hashed per pack below",
-            modelDocumentation = new
-            {
-                url = "https://openrouter.ai/qwen/qwen3.7-flash",
-                jsonObject = "SUPPORTED_WITHOUT_JSON_SCHEMA_ENFORCEMENT",
-                toolsAndToolChoice = "DOCUMENTED_SUPPORTED; NOT_EXERCISED_IN_THIS_PREFLIGHT",
-                maxCompletionTokens = 65536,
-                providerPin = "Alibaba Cloud Int.",
-                checkedOn = DateTimeOffset.UtcNow.ToString("yyyy-MM-dd"),
-            },
-            rows,
-            historicalBaseline = new { artifactProtocol = V5Protocol.ClaimSchemaVersionV2_1, value = "82/519/57", currentV3Score = false },
-            providerCalls = 0,
-            goldRead = false,
-        });
-        Write("summary.v1.json", new
-        {
-            schemaVersion = "v5-p5d-v3-provider-preflight-summary-v1",
-            v3Requests = packs,
-            ownedTotal = allOwnedAliases.Count,
-            ownedExactOnce = true,
-            positionalMappingStable = true,
-            haloSubjectRepresentable = false,
-            multiAtomRepresentable = true,
-            relationHaloTarget = true,
-            streamReassemblyV3 = "PASS",
-            malformedNullAndCardinalityResponses = "FAIL_CLOSED",
-            maxDecisionsPerRequest = maxDecisions,
-            maxVisiblePerRequest = maxVisible,
-            maxRequestBytes,
-            maxProviderRequestBytes,
-            maxCompletionBudget = maxCompletionTokens,
-            qwenDocumentedMaxCompletionTokens = 65536,
-            maxSimpleOneClaimResponseBytes = maxSingleClaimBytes,
-            maxSimpleOneClaimTokenEstimate = maxSingleClaimTokenEstimate,
-            completionBudgetFormula = $"max(1024, 512 + ownedCount*256, requestBytes/6), capped at 32768; max observed={maxCompletionTokens}",
-            truncationRisk = "OPEN_UNBOUNDED_SCHEMA: claims and optional selection-context strings have no finite schema maximum; simple one-claim-per-owned fixture fits budget, but offline preflight cannot guarantee provider completion",
-            qwenOpenRouterCarrier = "JSON_OBJECT_AND_STREAM_BODY_MATCH_QUALIFIED_ROUTE; V3_MODEL_COMPLIANCE_NOT_TESTED",
-            runtimeSynthetic = new { validResponseBound = true, invalidCardinalityRefused = true },
-            providerCalls = 0,
-            goldRead = false,
-            historicalBaseline = new { value = "82/519/57", protocol = "V2.1_ONLY_NOT_CURRENT_V3_SCORE" },
-        });
     }
 
     private static V5SemanticDecisionResponseV3 Parse(string json, int owned, int context) =>
@@ -261,10 +185,4 @@ public sealed class V5P5DV3ProviderPreflightTests
         stream.Feed(pending, final);
     }
 
-    private static void Write(string name, object content)
-    {
-        var path = TestRepository.Path($"{ArtifactRoot}/{name}");
-        Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-        File.WriteAllText(path, JsonSerializer.Serialize(content, new JsonSerializerOptions { WriteIndented = true }) + Environment.NewLine, new UTF8Encoding(false));
-    }
 }

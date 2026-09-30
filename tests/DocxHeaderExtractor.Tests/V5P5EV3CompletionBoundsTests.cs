@@ -6,10 +6,10 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
-/// <summary>Provider-free audit and proof of finite v3 response bounds.</summary>
+/// <summary>Provider-free P5G recalibration of the finite v3 response bounds.</summary>
 public sealed class V5P5EV3CompletionBoundsTests
 {
-    private const string ArtifactRoot = "artifacts/v5-p5e-v3-completion-bounds";
+    private const string ArtifactRoot = "artifacts/v5-p5g-v3-completion-bound-recalibration";
     private static readonly DocumentTaskContract Contract =
         DocxHeaderExtractor.DocumentProcessing.Projection.DocumentStructureTaskContract.Create();
     private static readonly V5ProviderEnvelope Envelope =
@@ -17,11 +17,12 @@ public sealed class V5P5EV3CompletionBoundsTests
     private static readonly string[] Docs = [SourcePdfCorpus.Src089, SourcePdfCorpus.Src095];
 
     [Fact]
-    public void Freeze_bounds_from_live_contract_and_historical_cohort_and_prove_serializer_ceiling()
+    public void Recalibrate_aggregate_bounds_from_historical_and_p5f_evidence_and_prove_serializer_ceiling()
     {
         var historical = AuditHistoricalResponses();
         Assert.Equal(31, historical.ResponseFiles);
         Assert.Equal(1448, historical.TotalClaims);
+        Assert.Equal(129, historical.MaxClaimsPerResponse);
         Assert.Equal(10, historical.MaxClaimsPerSubject);
         Assert.Equal(10, historical.MaxRelationsPerSubject);
         Assert.Equal(6, historical.MaxSubjectParts);
@@ -64,12 +65,11 @@ public sealed class V5P5EV3CompletionBoundsTests
                 var maxTokens = V5SemanticCompletionBudget.Compute(pack.OwnedAliases.Count, pack.VisibleAliases.Count,
                     pack.Request.Utf8Bytes, V5SemanticDecisionResponseBoundsV3.ProviderCompletionCeiling);
                 Assert.Equal(pack.OwnedAliases.Count, bounds.MaxDecisions);
-                Assert.True(bounds.MaxResponseUtf8Bytes <= maxTokens,
-                    $"{documentId}:{pack.PackId}:responseBytes={bounds.MaxResponseUtf8Bytes}:completionTokens={maxTokens}");
+                Assert.Equal(Math.Min(129, pack.OwnedAliases.Count * 10), bounds.MaxClaimsTotal);
                 Assert.True(maxTokens <= V5SemanticDecisionResponseBoundsV3.ProviderCompletionCeiling);
 
-                var responseSchema = JsonDocument.Parse(pack.Request.Prompt).RootElement
-                    .GetProperty("responseSchema").GetProperty("properties");
+                var responseSchemaRoot = JsonDocument.Parse(pack.Request.Prompt).RootElement.GetProperty("responseSchema");
+                var responseSchema = responseSchemaRoot.GetProperty("properties");
                 var decisions = responseSchema.GetProperty("decisions");
                 Assert.Equal(pack.OwnedAliases.Count, decisions.GetProperty("minItems").GetInt32());
                 Assert.Equal(pack.OwnedAliases.Count, decisions.GetProperty("maxItems").GetInt32());
@@ -79,8 +79,8 @@ public sealed class V5P5EV3CompletionBoundsTests
                 Assert.Equal(543, claim.GetProperty("value").GetProperty("maxLength").GetInt32());
                 Assert.Equal(6, claim.GetProperty("evidenceNeeds").GetProperty("maxItems").GetInt32());
                 Assert.Equal(42, claim.GetProperty("existingClaimId").GetProperty("maxLength").GetInt32());
-                Assert.Equal(bounds.MaxResponseUtf8Bytes, JsonDocument.Parse(pack.Request.Prompt).RootElement
-                    .GetProperty("responseSchema").GetProperty("maxSerializedUtf8Bytes").GetInt32());
+                Assert.Equal(bounds.MaxResponseUtf8Bytes, responseSchemaRoot.GetProperty("maxSerializedUtf8Bytes").GetInt32());
+                Assert.Equal(bounds.MaxClaimsTotal, responseSchemaRoot.GetProperty("maxClaimsTotal").GetInt32());
 
                 var empty = new V5SemanticDecisionResponseV3(pack.OwnedAliases
                     .Select(_ => new V5SemanticSubjectDecisionV3([])).ToArray());
@@ -96,6 +96,7 @@ public sealed class V5P5EV3CompletionBoundsTests
                     schemaHash = pack.Request.SchemaHash,
                     requestUtf8Bytes = pack.Request.Utf8Bytes,
                     maxClaimsPerDecision = bounds.MaxClaimsPerDecision,
+                    maxClaimsTotal = bounds.MaxClaimsTotal,
                     maxSubjectParts = bounds.MaxSubjectParts,
                     maxTargetParts = bounds.MaxTargetParts,
                     maxEvidenceNeeds = bounds.MaxEvidenceNeeds,
@@ -121,7 +122,7 @@ public sealed class V5P5EV3CompletionBoundsTests
 
         Assert.Equal(31, requestCount);
         Assert.Equal(96, maxOwned);
-        Assert.Equal(25088, maxResponseBytes);
+        Assert.Equal(49152, maxResponseBytes);
         Assert.Equal(25088, maxCompletionTokens);
         var maxResponseUtf8Bytes = maxResponseBytes;
         Assert.NotNull(largestPack);
@@ -161,12 +162,30 @@ public sealed class V5P5EV3CompletionBoundsTests
         Assert.Throws<InvalidOperationException>(() => V5SemanticDecisionContractV3.ValidateBounds(utf8Overflow,
             Contract, largestPack.OwnedAliases.Count, largestPack.Packet.ContextOnlyEvidence.Count));
 
+        var tooManyTotal = new V5SemanticDecisionResponseV3(largestPack.OwnedAliases.Select((_, index) =>
+            new V5SemanticSubjectDecisionV3(index < 13
+                ? Enumerable.Range(0, 10).Select(_ => new V5SemanticDecisionClaimV3("DOCUMENT_IDENTITY", "x", EvidenceNeeds: [])).ToArray()
+                : [])).ToArray());
+        var totalRefused = V5SemanticDecisionContractV3.Bind("p5g-too-many-total", tooManyTotal, Contract,
+            largestPack.Packet.SubjectEvidence, largestPack.Packet.ContextOnlyEvidence, largestPackAtoms!, scope);
+        Assert.Null(totalRefused.Binding);
+        Assert.Contains("total-claims", totalRefused.Refusals.Values.Single(), StringComparison.Ordinal);
+
         Write("audit.v1.json", new
         {
-            schemaVersion = "v5-p5e-v3-completion-bounds-audit-v1",
+            schemaVersion = "v5-p5g-v3-completion-bound-recalibration-audit-v1",
+            status = "P5G_PROVIDER_FREE_COMPLETE",
             providerCalls = 0,
             goldRead = false,
+            frozenHistoricalArtifacts = "P5D and P5F retain their original wire bodies and hashes; this recalibration changes the live v3 contract, so any future provider canary requires a newly frozen manifest.",
+            nextStep = "P5H_PROVIDER_FREE_MANIFEST_REFRESH_THEN_FRESH_EXPLICIT_AUTHORIZATION",
             historicalV2_1 = historical,
+            p5fObserved = new
+            {
+                cardinalityCorrectResponseBytes = new[] { 35257, 42923 },
+                historicalMaxResponseBytes = 48705,
+                p5fCardinalityViolation = new { decisions = "192/96", rawResponseBytes = 72537 },
+            },
             liveContract = new
             {
                 unaryShapes = Contract.Predicates.Count,
@@ -178,13 +197,14 @@ public sealed class V5P5EV3CompletionBoundsTests
             selectedBounds = new
             {
                 claimsPerDecision = 10,
+                claimsTotal = "min(129, ownedCount * 10)",
                 sourcePartsPerSubject = 6,
                 relationTargetParts = 6,
                 evidenceNeeds = 6,
                 valueUtf8Bytes = 543,
                 selectionStringUtf8Bytes = 318,
                 existingClaimIdUtf8Bytes = 42,
-                maxSerializedResponseUtf8Bytes = "min(32768, 512 + ownedCount * 256)",
+                maxSerializedResponseUtf8Bytes = "1536 + ownedCount * 496",
                 decisions = "exactly ownedCount",
             },
             cohort = new
@@ -197,10 +217,31 @@ public sealed class V5P5EV3CompletionBoundsTests
                 modelDocumentedCompletionCeiling = 65536,
                 maxIndependentBoundsFixtureBytes = oversizedBytes,
                 independentFixtureRejectedWhole = true,
-                acceptedResponseByteProof = "Parse and Bind serialize the typed v3 response with CanonicalJson.Options and reject if its exact UTF-8 bytes exceed the per-pack ceiling; pre-parse wire bytes are also capped. Therefore every accepted serializer result is <= MaxResponseUtf8Bytes <= configured max_tokens <= 32768.",
+                acceptedResponseByteProof = "Parse and Bind cap raw wire bytes and exact CanonicalJson serialization independently at MaxResponseUtf8Bytes. Provider max_tokens is an independent token limit; no bytes/4 equivalence is asserted. The carrier requires the deterministic configured completion-token budget and the provider ceiling.",
             },
             rows = packRows,
         });
+    }
+
+    [Fact]
+    public void P5f_cardinality_correct_raw_responses_fit_recalibrated_contract_without_repair()
+    {
+        using var artifact = JsonDocument.Parse(File.ReadAllText(TestRepository.Path("artifacts/v5-p5f-v3-canary/result.v1.json")));
+        var packs = V5PdfPreflightBuilder.BuildV3(TestRepository.Path(Docs[1]), "SRC-095", Contract,
+            V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId, Envelope)
+            .ToDictionary(pack => pack.PackId, StringComparer.Ordinal);
+        foreach (var role in new[] { "L1710_RETYPING", "MULTIPART_RELATION" })
+        {
+            var item = artifact.RootElement.GetProperty("results").EnumerateArray()
+                .Single(result => result.GetProperty("role").GetString() == role);
+            var pack = packs[item.GetProperty("packId").GetString()!];
+            using var raw = JsonDocument.Parse(item.GetProperty("rawResponse").GetString()!);
+            var parsed = V5SemanticDecisionContractV3.Parse(raw.RootElement, Contract,
+                pack.OwnedAliases.Count, pack.Packet.ContextOnlyEvidence.Count);
+            Assert.Equal(96, parsed.Decisions.Count);
+            Assert.Equal(96, parsed.Decisions.Sum(decision => decision.Claims.Count));
+            Assert.True(Encoding.UTF8.GetByteCount(item.GetProperty("rawResponse").GetString()!) <= pack.Request.ResponseBounds.MaxResponseUtf8Bytes);
+        }
     }
 
     private static V5SemanticDecisionResponseBoundsV3Fixture AuditHistoricalResponses()
@@ -210,6 +251,7 @@ public sealed class V5P5EV3CompletionBoundsTests
         var claimCounts = new Dictionary<string, int>(StringComparer.Ordinal);
         var relationCounts = new Dictionary<string, int>(StringComparer.Ordinal);
         var totalClaims = 0;
+        var maxClaimsPerResponse = 0;
         var maxSubjectParts = 0;
         var maxTargetParts = 0;
         var maxNeeds = 0;
@@ -219,10 +261,12 @@ public sealed class V5P5EV3CompletionBoundsTests
         foreach (var path in files)
         {
             using var json = JsonDocument.Parse(File.ReadAllText(path));
+            var claimsInResponse = 0;
             var pack = Path.GetFileName(Path.GetDirectoryName(path));
             foreach (var claim in json.RootElement.GetProperty("claims").EnumerateArray())
             {
                 totalClaims++;
+                claimsInResponse++;
                 var subject = claim.GetProperty("subject").GetProperty("sourceParts").EnumerateArray().ToArray();
                 var aliases = string.Join(",", subject.Select(part => part.GetProperty("sourceAlias").GetString()));
                 var key = $"{pack}|{aliases}";
@@ -241,10 +285,12 @@ public sealed class V5P5EV3CompletionBoundsTests
                         if (part.TryGetProperty(field, out var selection) && selection.ValueKind == JsonValueKind.String)
                             maxSelectionBytes = Math.Max(maxSelectionBytes, Encoding.UTF8.GetByteCount(selection.GetString()!));
             }
+            maxClaimsPerResponse = Math.Max(maxClaimsPerResponse, claimsInResponse);
         }
         return new V5SemanticDecisionResponseBoundsV3Fixture(
             files.Length,
             totalClaims,
+            maxClaimsPerResponse,
             claimCounts.Values.DefaultIfEmpty().Max(),
             relationCounts.Values.DefaultIfEmpty().Max(),
             maxSubjectParts,
@@ -263,7 +309,9 @@ public sealed class V5P5EV3CompletionBoundsTests
             var additionalCount = Math.Min(bounds.MaxSubjectParts - 1, Math.Max(0, bounds.MaxDecisions - decisionIndex - 1));
             var additional = Enumerable.Range(decisionIndex + 1, additionalCount)
                 .Select(index => new V5AdditionalOwnedSubjectPartV3(index, selection)).ToArray();
-            var claims = Enumerable.Range(0, bounds.MaxClaimsPerDecision).Select(_ =>
+            var claimCount = Math.Min(bounds.MaxClaimsPerDecision,
+                Math.Max(0, bounds.MaxClaimsTotal - decisionIndex * bounds.MaxClaimsPerDecision));
+            var claims = Enumerable.Range(0, claimCount).Select(_ =>
                 new V5SemanticDecisionClaimV3("PARENT_OF", SubjectSelection: selection,
                     AdditionalSubjectParts: additional,
                     TargetParts: Enumerable.Range(0, bounds.MaxTargetParts).Select(index =>
@@ -276,7 +324,7 @@ public sealed class V5P5EV3CompletionBoundsTests
     }
 
     private sealed record V5SemanticDecisionResponseBoundsV3Fixture(
-        int ResponseFiles, int TotalClaims, int MaxClaimsPerSubject, int MaxRelationsPerSubject,
+        int ResponseFiles, int TotalClaims, int MaxClaimsPerResponse, int MaxClaimsPerSubject, int MaxRelationsPerSubject,
         int MaxSubjectParts, int MaxTargetParts, int MaxEvidenceNeeds,
         int MaxValueUtf8Bytes, int MaxSelectionStringUtf8Bytes);
 
