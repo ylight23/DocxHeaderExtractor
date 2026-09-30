@@ -44,6 +44,11 @@ internal static class Program
         if (args.Contains("--qwen37-forced-tool-a2"))
             return await Qwen37ForcedToolVariantA2Canary.RunAsync(LocateRepoRoot(), args);
 
+        // P3 is the one-call ToolAuto capability canary. Its distinct gate hard-pins PACK_006 and
+        // disables every transport retry; see Qwen37ToolAutoCanary.
+        if (args.Contains("--qwen37-tool-auto"))
+            return await Qwen37ToolAutoCanary.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 
