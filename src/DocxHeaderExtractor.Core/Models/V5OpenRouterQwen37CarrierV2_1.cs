@@ -4,20 +4,33 @@ using System.Text.Json;
 namespace DocxHeaderExtractor.Core.V5;
 
 /// <summary>
-/// Where a capability claim sits, so "the gateway's metadata doesn't rule this out" and "a real call
-/// through this exact route proved it" can never collapse into one bool. <see cref="ADVERTISED"/>
-/// means only that a parameter NAME appears in the gateway's own supported-parameters listing for this
-/// route - never that a specific VALUE for it is honored. Only <see cref="EMPIRICALLY_SUPPORTED"/> and
-/// <see cref="EMPIRICALLY_UNSUPPORTED"/> come from an actual provider call.
+/// The state recorded for one capability on one evidence axis. The axis is carried separately by
+/// <see cref="V5RouteCapabilityEvidence"/>, so an API schema declaration, model documentation and a
+/// real route observation can never be collapsed into one misleading capability bool.
 /// </summary>
-public enum V5RouteCapabilityStatus
+public enum V5CapabilityEvidenceState
 {
-    NOT_ADVERTISED,
-    ADVERTISED,
-    EMPIRICALLY_SUPPORTED,
-    EMPIRICALLY_UNSUPPORTED,
+    NOT_APPLICABLE,
+    SUPPORTED,
+    UNSUPPORTED,
     UNTESTED,
+    UNTESTED_SUCCESSFULLY,
+    NOT_NEEDED,
+    NOT_IN_OVERVIEW,
+    MAY_MENTION,
 }
+
+/// <summary>
+/// Capability evidence kept on its original axis. For example, the OpenRouter API schema can admit a
+/// tool_choice value while the pinned model's documentation says nothing specific about that value, and
+/// only a real request can establish whether the exact gateway/model/provider route accepts it.
+/// </summary>
+public sealed record V5RouteCapabilityEvidence(
+    V5CapabilityEvidenceState ApiSchema,
+    V5CapabilityEvidenceState ModelDocumentation,
+    V5CapabilityEvidenceState OtherDocumentation,
+    V5CapabilityEvidenceState RouteEmpirical,
+    string Reason);
 
 /// <summary>
 /// One exact route: a gateway, the model slug sent on that gateway, the provider the gateway pins
@@ -38,12 +51,12 @@ public sealed record V5RouteIdentity(string Gateway, string Model, string Provid
 /// </summary>
 public sealed record V5RouteCapabilities(
     V5RouteIdentity Route,
-    V5RouteCapabilityStatus JsonObject,
-    V5RouteCapabilityStatus JsonSchemaStrict,
-    V5RouteCapabilityStatus Tools,
-    V5RouteCapabilityStatus ToolChoiceAuto,
-    V5RouteCapabilityStatus ToolChoiceNamed,
-    V5RouteCapabilityStatus ToolChoiceRequired,
+    V5RouteCapabilityEvidence JsonObject,
+    V5RouteCapabilityEvidence JsonSchemaStrict,
+    V5RouteCapabilityEvidence Tools,
+    V5RouteCapabilityEvidence ToolChoiceAuto,
+    V5RouteCapabilityEvidence ToolChoiceNamed,
+    V5RouteCapabilityEvidence ToolChoiceRequired,
     string EvidenceSource);
 
 /// <summary>
@@ -55,27 +68,55 @@ public static class V5OpenRouterQwen37RouteCapabilityRegistry
 {
     public static V5RouteCapabilities Current { get; } = new(
         V5RouteIdentity.OpenRouterQwen37ChatCompletions,
-        // The real 31-pack production cohort and the source-selection remediation canary both
-        // transported successfully over exactly this route with response_format=json_object.
-        JsonObject: V5RouteCapabilityStatus.EMPIRICALLY_SUPPORTED,
-        // OpenRouter's endpoint metadata lists response_format as a supported parameter NAME, but
-        // documents this model as not enforcing strict JSON-Schema mode; matches the existing
-        // ProviderStructuredOutputRegistry.QwenFlashAlibaba (JsonSchemaStrictSupported: false). No
-        // real call through this route has ever tried native strict mode.
-        JsonSchemaStrict: V5RouteCapabilityStatus.ADVERTISED,
-        // "tools" and "tool_choice" both appear in this endpoint's supported_parameters metadata.
-        Tools: V5RouteCapabilityStatus.ADVERTISED,
-        // No call through this route has ever sent tool_choice:"auto".
-        ToolChoiceAuto: V5RouteCapabilityStatus.UNTESTED,
+        // The model page advertises JSON output and real cohorts transported json_object successfully.
+        JsonObject: new(
+            ApiSchema: V5CapabilityEvidenceState.NOT_APPLICABLE,
+            ModelDocumentation: V5CapabilityEvidenceState.SUPPORTED,
+            OtherDocumentation: V5CapabilityEvidenceState.NOT_APPLICABLE,
+            RouteEmpirical: V5CapabilityEvidenceState.SUPPORTED,
+            Reason: "OpenRouter documents response_format JSON output; the 31-pack cohort and remediation canary succeeded with json_object."),
+        // response_format is advertised as JSON output, not as strict JSON Schema for this model.
+        // A strict probe would add no decision-useful evidence, so it is explicitly not needed.
+        JsonSchemaStrict: new(
+            ApiSchema: V5CapabilityEvidenceState.NOT_APPLICABLE,
+            ModelDocumentation: V5CapabilityEvidenceState.UNSUPPORTED,
+            OtherDocumentation: V5CapabilityEvidenceState.NOT_APPLICABLE,
+            RouteEmpirical: V5CapabilityEvidenceState.NOT_NEEDED,
+            Reason: "OpenRouter explicitly says qwen/qwen3.7-flash supports JSON output without JSON-schema enforcement; it is not advertised as strict."),
+        // The model page says it accepts tools, but no successful route observation exists yet.
+        Tools: new(
+            ApiSchema: V5CapabilityEvidenceState.NOT_APPLICABLE,
+            ModelDocumentation: V5CapabilityEvidenceState.SUPPORTED,
+            OtherDocumentation: V5CapabilityEvidenceState.NOT_APPLICABLE,
+            RouteEmpirical: V5CapabilityEvidenceState.UNTESTED_SUCCESSFULLY,
+            Reason: "OpenRouter documents tools for this model; no successful tools route observation has been made."),
+        // The Overview ToolChoice union includes auto and the model page says it accepts tool_choice.
+        ToolChoiceAuto: new(
+            ApiSchema: V5CapabilityEvidenceState.SUPPORTED,
+            ModelDocumentation: V5CapabilityEvidenceState.SUPPORTED,
+            OtherDocumentation: V5CapabilityEvidenceState.NOT_APPLICABLE,
+            RouteEmpirical: V5CapabilityEvidenceState.UNTESTED,
+            Reason: "OpenRouter API Overview defines tool_choice='auto'; this exact route has not sent it."),
         // Two real canary calls (commit 71cc694: named-function tool_choice; commit 6a70d2f/fcdab6d:
         // tool_choice="required") each received an OpenRouter ROUTING-layer HTTP 404 ("No endpoints
         // found that support the provided 'tool_choice' value", failedRoutingStep "Filter by Tool
         // Compatibility") before the request ever reached Alibaba's model. A routing/carrier fact
         // about an advertised parameter NAME vs an honored VALUE - not a claim that Qwen3.7 itself
         // cannot use tools.
-        ToolChoiceNamed: V5RouteCapabilityStatus.EMPIRICALLY_UNSUPPORTED,
-        ToolChoiceRequired: V5RouteCapabilityStatus.EMPIRICALLY_UNSUPPORTED,
-        EvidenceSource: "OpenRouter /models/qwen/qwen3.7-flash/endpoints supported_parameters metadata " +
+        ToolChoiceNamed: new(
+            ApiSchema: V5CapabilityEvidenceState.SUPPORTED,
+            ModelDocumentation: V5CapabilityEvidenceState.SUPPORTED,
+            OtherDocumentation: V5CapabilityEvidenceState.NOT_APPLICABLE,
+            RouteEmpirical: V5CapabilityEvidenceState.UNSUPPORTED,
+            Reason: "Named function appears in the Overview ToolChoice union; the pinned route returned HTTP 404, Filter by Tool Compatibility."),
+        ToolChoiceRequired: new(
+            ApiSchema: V5CapabilityEvidenceState.NOT_IN_OVERVIEW,
+            ModelDocumentation: V5CapabilityEvidenceState.NOT_APPLICABLE,
+            OtherDocumentation: V5CapabilityEvidenceState.MAY_MENTION,
+            RouteEmpirical: V5CapabilityEvidenceState.UNSUPPORTED,
+            Reason: "'required' is not in the Overview ToolChoice union; other compatibility documentation may mention it, but the pinned route returned HTTP 404, Filter by Tool Compatibility."),
+        EvidenceSource: "OpenRouter API Overview (https://openrouter.ai/docs/api_reference/overview) " +
+            "+ OpenRouter qwen/qwen3.7-flash model page (JSON output without JSON-schema enforcement; tools and tool_choice) " +
             "+ real 31-pack production cohort (json_object, commit range ending 3a4f69a) " +
             "+ source-selection remediation canary (json_object, commit c287f19) " +
             "+ named-tool-choice canary (commit 71cc694: HTTP 404, Filter by Tool Compatibility) " +
@@ -160,7 +201,7 @@ public static class OpenRouterQwen37JsonObjectCarrierV2_1
 /// The complete, deterministic OpenRouter request body for the prepared-but-unsent ToolAuto carrier:
 /// exactly one declared function (<see cref="OpenRouterQwen37ToolAutoCarrierV1.ToolName"/>), with
 /// <c>tool_choice: "auto"</c> - never the named-function or <c>"required"</c> forms, both already
-/// found <see cref="V5RouteCapabilityStatus.EMPIRICALLY_UNSUPPORTED"/> on this exact route. A separate
+/// found <see cref="V5CapabilityEvidenceState.UNSUPPORTED"/> on the route-empirical axis. A separate
 /// type from <see cref="V5ProviderRequestBodyV2_1"/> (production) and
 /// <see cref="V5ForcedToolProviderRequestBodyV1"/> (the closed named/required-forcing experiment) so
 /// none of the three can be confused with, or accidentally changed by, either of the others.

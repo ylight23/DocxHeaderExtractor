@@ -10,9 +10,9 @@ namespace DocxHeaderExtractor.Tests;
 /// P2 of the canonical-semantic-request work: OpenRouter becomes an explicit carrier layer
 /// (<see cref="OpenRouterQwen37JsonObjectCarrierV2_1"/>) underneath the already-frozen
 /// <see cref="CanonicalSemanticRequestV2_1"/>, and the route's actual known capability state
-/// (<see cref="V5RouteCapabilityStatus"/>) is encoded precisely enough that "the gateway advertises
-/// this parameter name" can never be confused with "a real call through this exact route proved this
-/// value works". Scoped strictly to one route: openrouter -&gt; qwen/qwen3.7-flash -&gt; alibaba ->
+/// (<see cref="V5RouteCapabilityEvidence"/>) is encoded on separate API-schema, model-documentation,
+/// other-documentation and route-empirical axes, so documentation can never be confused with a real
+/// call through this exact route. Scoped strictly to one route: openrouter -&gt; qwen/qwen3.7-flash -&gt; alibaba ->
 /// chat-completions. Never calls a provider, never reads Gold, never changes TaskContract, source
 /// packing, quarantine, the binder, the graph validator, the model, the gateway, or the production
 /// response_format (json_object stays production; ToolAuto is prepared, never sent).
@@ -146,15 +146,26 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
     public void Documented_current_route_capability_state_matches_known_evidence()
     {
         var capabilities = V5OpenRouterQwen37RouteCapabilityRegistry.Current;
-        Assert.Equal(V5RouteCapabilityStatus.EMPIRICALLY_SUPPORTED, capabilities.JsonObject);
-        Assert.Equal(V5RouteCapabilityStatus.ADVERTISED, capabilities.JsonSchemaStrict);
-        Assert.Equal(V5RouteCapabilityStatus.ADVERTISED, capabilities.Tools);
-        Assert.Equal(V5RouteCapabilityStatus.UNTESTED, capabilities.ToolChoiceAuto);
-        Assert.Equal(V5RouteCapabilityStatus.EMPIRICALLY_UNSUPPORTED, capabilities.ToolChoiceNamed);
-        Assert.Equal(V5RouteCapabilityStatus.EMPIRICALLY_UNSUPPORTED, capabilities.ToolChoiceRequired);
-        // "Advertised" must never be reported as "empirically supported" for the strict-schema/tool-name axes.
-        Assert.NotEqual(V5RouteCapabilityStatus.EMPIRICALLY_SUPPORTED, capabilities.JsonSchemaStrict);
-        Assert.NotEqual(V5RouteCapabilityStatus.EMPIRICALLY_SUPPORTED, capabilities.Tools);
+        Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.JsonObject.ModelDocumentation);
+        Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.JsonObject.RouteEmpirical);
+
+        Assert.Equal(V5CapabilityEvidenceState.UNSUPPORTED, capabilities.JsonSchemaStrict.ModelDocumentation);
+        Assert.Equal(V5CapabilityEvidenceState.NOT_NEEDED, capabilities.JsonSchemaStrict.RouteEmpirical);
+
+        Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.Tools.ModelDocumentation);
+        Assert.Equal(V5CapabilityEvidenceState.UNTESTED_SUCCESSFULLY, capabilities.Tools.RouteEmpirical);
+
+        Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.ToolChoiceAuto.ApiSchema);
+        Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.ToolChoiceAuto.ModelDocumentation);
+        Assert.Equal(V5CapabilityEvidenceState.UNTESTED, capabilities.ToolChoiceAuto.RouteEmpirical);
+
+        Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.ToolChoiceNamed.ApiSchema);
+        Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.ToolChoiceNamed.ModelDocumentation);
+        Assert.Equal(V5CapabilityEvidenceState.UNSUPPORTED, capabilities.ToolChoiceNamed.RouteEmpirical);
+
+        Assert.Equal(V5CapabilityEvidenceState.NOT_IN_OVERVIEW, capabilities.ToolChoiceRequired.ApiSchema);
+        Assert.Equal(V5CapabilityEvidenceState.MAY_MENTION, capabilities.ToolChoiceRequired.OtherDocumentation);
+        Assert.Equal(V5CapabilityEvidenceState.UNSUPPORTED, capabilities.ToolChoiceRequired.RouteEmpirical);
     }
 
     // ---- 22/23: ToolAuto carrier shape -----------------------------------------------------------
