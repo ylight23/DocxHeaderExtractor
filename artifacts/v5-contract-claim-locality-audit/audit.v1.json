@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "v5-contract-claim-locality-audit-v1",
+  "question": "Must a valid-JSON response with SOME contract-violating claims be RESPONSE_FATAL, or can exactly those claims be quarantined?",
+  "subject": {
+    "documentId": "SRC-089",
+    "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+    "rawResponseSha256": "7e04be99b2540ccfc0910ec8cf7d212bdff986ea2995694481c249cf3fe8a22f",
+    "source": "artifacts/v5-provider-cohort-31-windows/diagnosis/source-selection-remediation-canary-result.v1.json"
+  },
+  "providerCalls": 0,
+  "goldRead": false,
+  "invariants": {
+    "mutation": false,
+    "coercion": false,
+    "inferredCorrection": false,
+    "valueDeletedToRepair": false
+  },
+  "current": {
+    "outcome": "RESPONSE_FATAL",
+    "rawClaims": 35,
+    "claimsDownstream": 0
+  },
+  "finding": {
+    "contractValidationIsClaimLocal": true,
+    "perClaimIssuesConcatenatedEqualWholeResponseIssues": true,
+    "orderIndependent": true,
+    "contractRefusedClaims": 6,
+    "contractRefusedIssue": "relation-has-value",
+    "contractRefusedPredicate": "REFERENCES (6 of 6 REFERENCES claims)",
+    "structurallyValidSiblings": 29,
+    "siblingsByteIdenticalToProviderOutput": true,
+    "siblingsOnlyResponsePassesStrictCodec": true,
+    "malformedClaimsThatWouldBindIfContractGateWereSkipped": 6,
+    "naiveFilterBeforeBindRenumbersDurableIds": 1
+  },
+  "counterfactualIfQuarantined": {
+    "note": "COUNTERFACTUAL ONLY. Nothing here is fed to a runtime path and no protocol semantics were changed.",
+    "proposals": 35,
+    "contractRefused": 6,
+    "survivorsBound": 29,
+    "survivorsBinderRefused": 0,
+    "survivorBinderRefusals": [],
+    "unsafeRepairs": 0,
+    "outOfScopeAccepted": 0
+  },
+  "wouldStillBeResponseFatal": [
+    "payload is not a JSON object / claims is not an array",
+    "unknown field at response, claim, endpoint or part level (wire-contract drift)",
+    "empty sourceParts / empty verbatimText / missing subject shape",
+    "model-originated EXHAUSTED or a non-provider-facing state",
+    "transport incomplete, finish_reason=length, invalid JSON"
+  ],
+  "requiredIfAdopted": [
+    "run the TaskContract gate BEFORE the binder, per claim, at the claim\u0027s ORIGINAL ordinal",
+    "record every refused claim as an explicit issue (own code, e.g. CLAIM_CONTRACT with the claim ordinal); never drop silently",
+    "bind the full ordered list and exclude contract-refused positions, or pass original ordinals to the id function; never filter then bind",
+    "never delete or rewrite \u0060value\u0060 on a relation to make a claim pass",
+    "qualification must expose the layer: contractRefusedCount separate from binderRefusedCount"
+  ],
+  "decisionNeeded": "Adopting claim-local contract quarantine changes runtime semantics (today: RESPONSE_FATAL). This audit does not make that change."
+}
