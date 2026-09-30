@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "v5-hard-closed-subject-representability-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "frozenV2_1Cohort": {
+    "responses": 31,
+    "subjectParts": 1506,
+    "subjectMultiPartClaims": 24,
+    "subjectWholeAtomParts": 981,
+    "subjectSubstringParts": 525,
+    "relationTargetParts": 709,
+    "relationTargetMultiPartClaims": 0,
+    "relationTargetWholeAtomParts": 531,
+    "relationTargetSubstringParts": 178,
+    "evidenceBasis": "FROZEN_NON_GOLD_PROVIDER_RESPONSES"
+  },
+  "v3": {
+    "singleWholeAtom": "SUPPORTED_ALIAS_IS_HARNESS_SELECTED",
+    "singleStrictSubstring": "SUPPORTED_EXACT_VERBATIM_BINDING",
+    "multiAtomSubject": "SUPPORTED_ADDITIONAL_OWNED_INDICES_IN_SOURCE_ORDER",
+    "relationTarget": "SUPPORTED_OWNED_OR_CONTEXT_ONLY_INDEX_PARTS",
+    "contextOnlySubject": "UNREPRESENTABLE_IN_RESPONSE_SCHEMA",
+    "modelAuthoredSubjectAlias": "UNREPRESENTABLE_IN_RESPONSE_SCHEMA"
+  }
+}

@@ -19,6 +19,9 @@ public static class V5Protocol
     /// and a harness-only EXHAUSTED state. v2 itself is kept as an immutable historical checkpoint.
     /// </summary>
     public const string ClaimSchemaVersionV2_1 = "v5-source-backed-claim-2.1";
+
+    /// <summary>Owned positional decisions, total decision coverage, and harness-resolved subject identity.</summary>
+    public const string ClaimSchemaVersionV3 = "v5-source-backed-decision-3.0";
 }
 
 public enum ClaimResolutionState

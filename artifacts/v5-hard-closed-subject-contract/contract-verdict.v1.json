@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "v5-hard-closed-subject-verdict-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "before": {
+    "OWNER_IDENTITY_HARD_CLOSED": "NO",
+    "WHOLE_ATOM_RETYPE_REMOVED": "YES",
+    "ALL_OWNED_DECISION_REQUIRED": "NO",
+    "HALO_AS_SUBJECT_STRUCTURALLY_IMPOSSIBLE": "NO"
+  },
+  "after": {
+    "OWNER_IDENTITY_HARD_CLOSED": "YES",
+    "WHOLE_ATOM_RETYPE_REMOVED": "YES",
+    "ALL_OWNED_DECISION_REQUIRED": "YES",
+    "HALO_AS_SUBJECT_STRUCTURALLY_IMPOSSIBLE": "YES"
+  },
+  "proof": {
+    "ownerIdentity": "The response contains no alias/source-id/coordinate subject field; decision position maps to the harness subjectEvidence row.",
+    "wholeAtom": "Whole atom is the implicit positional identity; verbatimText equal to the whole atom is rejected.",
+    "totality": "JSON schema minItems/maxItems and runtime parser/binder require exactly ownedCount decisions.",
+    "halo": "Additional subject references are enums of owned indices only; relation targets use separate OWNED/CONTEXT_ONLY references with per-group bounds."
+  }
+}

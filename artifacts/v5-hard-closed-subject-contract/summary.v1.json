@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "v5-hard-closed-subject-summary-v1",
+  "status": "P5C_COMPLETE",
+  "baseCommit": "49983cfd83bbf6bcfd6cfad61da46803300025a0",
+  "finalCommit": "FINALIZED_BY_CONTAINING_P5C_COMMIT",
+  "providerCalls": 0,
+  "goldRead": false,
+  "oldProtocolVersion": "v5-source-backed-claim-2.1",
+  "newProtocolVersion": "v5-source-backed-decision-3.0",
+  "before": {
+    "OWNER_IDENTITY_HARD_CLOSED": "NO",
+    "WHOLE_ATOM_RETYPE_REMOVED": "YES",
+    "ALL_OWNED_DECISION_REQUIRED": "NO",
+    "HALO_AS_SUBJECT_STRUCTURALLY_IMPOSSIBLE": "NO"
+  },
+  "after": {
+    "OWNER_IDENTITY_HARD_CLOSED": "YES",
+    "WHOLE_ATOM_RETYPE_REMOVED": "YES",
+    "ALL_OWNED_DECISION_REQUIRED": "YES",
+    "HALO_AS_SUBJECT_STRUCTURALLY_IMPOSSIBLE": "YES"
+  },
+  "multiAtomRepresentability": "SUPPORTED; frozen provider responses contain 24 multi-part subject claims.",
+  "relationTargetRepresentability": "OWNED and CONTEXT_ONLY indexed parts remain supported; frozen cohort had no multi-part relation targets.",
+  "focusedTests": "PASS: V5HardClosedSubjectContractTests (1/1). P5C contract audit itself used no Gold.",
+  "testPack": {
+    "status": "PASS",
+    "passed": 123,
+    "failed": 0,
+    "providerCalls": 0,
+    "goldRead": true,
+    "goldReadReason": "P5A ownership pack-boundary regression audit reads canonical Gold; P5C design/tests and P5B audit do not."
+  },
+  "releaseBuild": "PASS: dotnet build -c Release; 0 errors, 28 warnings.",
+  "diffCheck": "PASS: git diff --check",
+  "symbolClassification": {
+    "V5SemanticDecisionComposerV3": "LIVE_RUNTIME",
+    "V5SemanticDecisionContractV3": "LIVE_RUNTIME",
+    "SemanticReasoningContextRequest": "LIVE_RUNTIME",
+    "V5OwnedDecisionProtocolV3": "FROZEN_PROTOTYPE_NOT_RUNTIME_REACHABLE",
+    "SemanticClaimResponseCodecV2_1": "FROZEN_REPLAY_ONLY",
+    "V5SemanticRequestComposerV2_1": "FROZEN_REPLAY_ONLY",
+    "V5PdfPreflightBuilderBuildV2_1": "FROZEN_REPLAY_ONLY",
+    "OpenRouterQwen37JsonObjectCarrierV2_1": "FROZEN_REPLAY_ONLY",
+    "ExactClaimBinderV2_1": "LIVE_RUNTIME_CANONICAL_EXACT_BINDER",
+    "V2_1ProposalTypes": "COMPATIBILITY_ADAPTER_INSIDE_V3_BINDER"
+  }
+}

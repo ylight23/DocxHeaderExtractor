@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "v5-hard-closed-subject-test-pack-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "v5PackGoldRead": true,
+  "focusedCommand": "dotnet test tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj --filter FullyQualifiedName~V5HardClosedSubjectContractTests --no-restore -m:1",
+  "v5PackCommand": "dotnet test tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj --filter \u0022FullyQualifiedName~V5ArchitectureTests|FullyQualifiedName~V5RuntimeConvergenceV2_1Tests|FullyQualifiedName~V5ClaimProtocolV2_1Tests|FullyQualifiedName~V5CanonicalSemanticRequestV1Tests|FullyQualifiedName~V5SourceSelectionPolicyTests|FullyQualifiedName~V5EvidenceWireV2_1Tests|FullyQualifiedName~V5BindingQualificationTests|FullyQualifiedName~V5HardClosedSubjectContractTests|FullyQualifiedName~V5CurrentContractResidualAuditTests|FullyQualifiedName~V5SubjectOwnershipPackBoundaryAuditTests|FullyQualifiedName~V5OwnedDecisionProtocolV3Tests|FullyQualifiedName~V5RepresentabilityAuditTests|FullyQualifiedName~V5OwnedDecisionDisambiguationAuditTests\u0022 --no-restore -m:1",
+  "cases": [
+    "A total cardinality",
+    "B halo subject impossible",
+    "C invented alias impossible",
+    "D identity round-trip",
+    "E whole atom no echo",
+    "F strict substring exact",
+    "G multi-atom subject",
+    "H relation target including halo and bounds",
+    "I determinism",
+    "J no Gold/provider dependency"
+  ],
+  "focusedTestsPassed": true,
+  "v5PackPassed": true,
+  "v5PackPassedCount": 123,
+  "v5PackFailedCount": 0,
+  "releaseBuildPassed": true,
+  "releaseBuildWarnings": 28,
+  "diffCheckPassed": true,
+  "finalCommit": "FINALIZED_BY_CONTAINING_P5C_COMMIT"
+}

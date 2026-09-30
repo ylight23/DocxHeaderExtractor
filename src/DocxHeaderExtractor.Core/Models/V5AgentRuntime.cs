@@ -15,7 +15,9 @@ public sealed record SemanticReasoningContext(
     UniversalEvidenceGraph EvidenceGraph,
     IReadOnlyList<EvidenceCandidate> RetrievedEvidence,
     int CallOrdinal,
-    IReadOnlyList<BoundSemanticClaim> OpenOrConflictedClaims);
+    IReadOnlyList<BoundSemanticClaim> OpenOrConflictedClaims,
+    V5SemanticDecisionRequestPacketV3 RequestPacket,
+    V5ComposedSemanticDecisionRequestV3 Request);
 
 public sealed record SemanticReasoningUsage(
     int PromptTokens = 0,
@@ -25,7 +27,7 @@ public sealed record SemanticReasoningUsage(
     public int TotalTokens => checked(PromptTokens + CompletionTokens);
 }
 
-public sealed record SemanticReasoningResult(SemanticClaimResponseV2_1 Response, SemanticReasoningUsage Usage);
+public sealed record SemanticReasoningResult(V5SemanticDecisionResponseV3 Response, SemanticReasoningUsage Usage);
 
 public interface ISemanticReasoner
 {
@@ -150,11 +152,10 @@ public sealed class DocumentAgentRuntime
             var openOrConflicted = allClaims.Values
                 .Where(claim => claim.State is ClaimResolutionState.OPEN or ClaimResolutionState.CONFLICTED)
                 .ToArray();
-            var context = new SemanticReasoningContext(contract, workingGraph, retrieved.ToArray(), semanticCalls, openOrConflicted);
-            var requestHash = Hashing.Sha256(JsonSerializer.Serialize(new
-            {
-                contract = contract.Hash(), graph = workingGraph.Hash(), call = semanticCalls, retrieved,
-            }, CanonicalJson.Options));
+            var requestPacket = BuildDecisionPacket(contract, workingGraph, atoms, owned, visible, retrieved, openOrConflicted);
+            var composedRequest = V5SemanticDecisionComposerV3.Compose(contract, requestPacket);
+            var context = new SemanticReasoningContext(contract, workingGraph, retrieved.ToArray(), semanticCalls, openOrConflicted, requestPacket, composedRequest);
+            var requestHash = composedRequest.RequestHash;
             using var turnDeadline = CreateDeadlineToken(started, budget.MaxWallClockSeconds, cancellationToken);
             SemanticReasoningResult reasoning;
             try
@@ -170,27 +171,6 @@ public sealed class DocumentAgentRuntime
             var response = reasoning.Response;
             totalTokens = checked(totalTokens + reasoning.Usage.TotalTokens);
             var responseHash = Hashing.Sha256(JsonSerializer.Serialize(response, CanonicalJson.Options));
-            // Claim-by-claim quarantine: a claim-CONTAINED contract defect (relation-has-value,
-            // unary-claim-has-object, an unknown predicate, ...) excludes only that one claim -
-            // CLAIM_CONTRACT, recorded explicitly, never silently dropped - while every
-            // structurally-independent sibling proceeds to ExactClaimBinderV2_1 unchanged. Each
-            // survivor keeps its ORIGINAL position in this response as its identity ordinal
-            // (IndexedSemanticClaimProposalV2_1), never a position recomputed after exclusion, so a
-            // claim's durable id can never depend on which other claims in the same response
-            // happened to be refused.
-            var indexedProposals = new List<IndexedSemanticClaimProposalV2_1>();
-            for (var ordinal = 0; ordinal < response.Claims.Count; ordinal++)
-            {
-                var proposal = response.Claims[ordinal];
-                var claimIssues = SemanticClaimContractV2_1.Validate(new SemanticClaimResponseV2_1([proposal]), contract);
-                if (claimIssues.Count > 0)
-                {
-                    var key = proposal.ExistingClaimId ?? $"proposal-{ordinal + 1}";
-                    allConflicts.Add(new KnowledgeValidationIssue("CLAIM_CONTRACT", key, string.Join(",", claimIssues)));
-                    continue;
-                }
-                indexedProposals.Add(new IndexedSemanticClaimProposalV2_1(ordinal, proposal));
-            }
             // KnownClaims reflects the durable state as of THIS turn, so a refinement proposal's
             // existingClaimId is checked against what the runtime actually holds right now, not a
             // stale snapshot from an earlier turn.
@@ -199,8 +179,11 @@ public sealed class DocumentAgentRuntime
                 item => new KnownClaimReference(item.Value.Subject.Identity, item.Value.Predicate),
                 StringComparer.Ordinal);
             var scope = ClaimBindingScope.Create(owned, visible, knownClaims);
-            var binding = ExactClaimBinderV2_1.Bind(requestHash, indexedProposals, atoms, scope);
-            foreach (var boundClaim in binding.Bound)
+            var decisionBinding = V5SemanticDecisionContractV3.Bind(requestHash, response, contract,
+                requestPacket.SubjectEvidence, requestPacket.ContextOnlyEvidence, atoms, scope);
+            foreach (var refusal in decisionBinding.Refusals)
+                allConflicts.Add(new KnowledgeValidationIssue("CLAIM_BINDING", refusal.Key, refusal.Value));
+            foreach (var boundClaim in decisionBinding.Bound)
             {
                 var claim = boundClaim.Claim;
                 if (allClaims.TryGetValue(claim.ClaimId, out var previous) && !ClaimTransitionPolicy.IsAllowed(previous, claim))
@@ -212,9 +195,6 @@ public sealed class DocumentAgentRuntime
                 allClaims[claim.ClaimId] = claim;
                 hashesByClaim[claim.ClaimId] = (requestHash, responseHash);
             }
-            // A refused proposal is claim-local: it never discards its valid siblings, and it is
-            // always recorded as an explicit, auditable issue rather than silently dropped.
-            allConflicts.AddRange(binding.Refusals.Select(item => new KnowledgeValidationIssue("CLAIM_BINDING", item.Key, item.Value)));
             semanticCalls++;
 
             if (budget.MaxTokens > 0 && totalTokens >= budget.MaxTokens)
@@ -323,6 +303,41 @@ public sealed class DocumentAgentRuntime
         return Finish(allClaims.Values.ToArray(), workingGraph, allConflicts, trace, exhausted,
             semanticCalls, retrievalRounds, visualCalls, layoutCalls, totalTokens, contract, retrieved,
             hashesByClaim, retrievalByClaim, layoutByClaim, visualByClaim, _reasoner.Identity, projections);
+    }
+
+    private static V5SemanticDecisionRequestPacketV3 BuildDecisionPacket(
+        DocumentTaskContract contract,
+        UniversalEvidenceGraph graph,
+        IReadOnlyList<SemanticSourceAtom> atoms,
+        IReadOnlySet<string> ownedAliases,
+        IReadOnlySet<string> visibleAliases,
+        IReadOnlyList<EvidenceCandidate> retrieved,
+        IReadOnlyList<BoundSemanticClaim> openOrConflicted)
+    {
+        var atomsByAlias = atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
+        if (ownedAliases.Any(alias => !atomsByAlias.ContainsKey(alias)) || visibleAliases.Any(alias => !atomsByAlias.ContainsKey(alias)))
+            throw new InvalidOperationException("runtime-ownership-alias-not-in-source-atoms");
+        var nodesByAlias = graph.Nodes.GroupBy(node => node.SourceAlias, StringComparer.Ordinal)
+            .ToDictionary(group => group.Key,
+                group => group.OrderBy(node => node.Modality == EvidenceModality.TEXT ? 0 : 1)
+                    .ThenBy(node => node.SourceOrdinal).ThenBy(node => node.EvidenceId, StringComparer.Ordinal).First(),
+                StringComparer.Ordinal);
+        EvidenceNode Resolve(string alias)
+        {
+            if (nodesByAlias.TryGetValue(alias, out var node)) return node;
+            var atom = atomsByAlias[alias];
+            var span = new StructuralSpan(0, atom.Text.Length);
+            return new EvidenceNode($"V5:{atom.SourceId}", atom.SourceId, atom.Alias, atom.Ordinal,
+                EvidenceModality.TEXT, atom.Text, new EvidenceAnchor(atom.SourceId, atom.Ordinal, span,
+                    atom.Page > 0 ? new EvidenceGeometry(atom.Page) : null), new Dictionary<string, string?>(StringComparer.Ordinal));
+        }
+        var orderedOwned = atoms.Where(atom => ownedAliases.Contains(atom.Alias)).OrderBy(atom => atom.Ordinal).ThenBy(atom => atom.Alias, StringComparer.Ordinal)
+            .Select(atom => Resolve(atom.Alias)).ToArray();
+        var orderedContext = atoms.Where(atom => visibleAliases.Contains(atom.Alias) && !ownedAliases.Contains(atom.Alias))
+            .OrderBy(atom => atom.Ordinal).ThenBy(atom => atom.Alias, StringComparer.Ordinal).Select(atom => Resolve(atom.Alias)).ToArray();
+        var layout = graph.Nodes.Where(node => node.Modality == EvidenceModality.LAYOUT).ToArray();
+        var visual = graph.Nodes.Where(node => node.Modality == EvidenceModality.VISUAL).ToArray();
+        return new V5SemanticDecisionRequestPacketV3(orderedOwned, orderedContext, openOrConflicted, retrieved, layout, visual);
     }
 
     private static void MergeObservations(ref UniversalEvidenceGraph graph, IReadOnlyList<SourceObservation> observations,

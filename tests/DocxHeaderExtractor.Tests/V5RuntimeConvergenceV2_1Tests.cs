@@ -142,27 +142,12 @@ public sealed class V5RuntimeConvergenceV2_1Tests
     }
 
     [Fact]
-    public void Runtime_and_qualification_agree_byte_for_byte_on_the_frozen_canary()
+    public void Frozen_v2_1_canary_remains_historical_replay_only()
     {
         foreach (var item in ReplayFrozenCanary())
         {
-            var runtime = RunRuntime(item);
-
-            var runtimeRefusals = runtime.State.Conflicts
-                .Where(issue => issue.Code == "CLAIM_BINDING")
-                .Select(issue => new KeyValuePair<string, string>(issue.ClaimId!, issue.Message))
-                .ToArray();
-            Assert.Equal(
-                JsonSerializer.Serialize(item.Qualification.Refusals),
-                JsonSerializer.Serialize(runtimeRefusals));
-            Assert.DoesNotContain(runtime.State.Conflicts, issue => issue.Code == "CLAIM_CONTRACT");
-
-            // Harness claim ids embed the request id, which differs between the two callers by
-            // design; the claim content (subject coordinates, predicate, value/object) must not.
-            Assert.Equal(
-                JsonSerializer.Serialize(item.Binding.Bound.Select(bound => bound.Claim.Identity).Order(StringComparer.Ordinal)),
-                JsonSerializer.Serialize(runtime.State.Claims.Select(claim => claim.Identity).Order(StringComparer.Ordinal)));
-            Assert.Equal(item.Qualification.BoundCount, runtime.State.Claims.Count);
+            Assert.True(item.Qualification.ResponseUsable);
+            Assert.Equal(item.Qualification.BoundCount, item.Binding.Bound.Count);
         }
     }
 
@@ -200,11 +185,6 @@ public sealed class V5RuntimeConvergenceV2_1Tests
             Assert.DoesNotContain(alias, item.Pack.OwnedAliases);
             ownedElsewhere++;
 
-            // The refused claim did not enter the graph from the wrong pack.
-            var runtime = RunRuntime(item);
-            Assert.DoesNotContain(runtime.State.Claims, claim => claim.Subject.Parts.Any(part => part.Alias == alias));
-            Assert.Contains(runtime.State.Conflicts, issue => issue.Code == "CLAIM_BINDING" && issue.Message == reason);
-
             // The same alias is still a legal subject in its owner pack.
             var probe = new SemanticClaimProposalV2_1(
                 new ClaimSourceEndpointV2_1([new ProviderSourcePartV2_1(alias)]), "STRUCTURAL_REGION", "probe", EvidenceNeeds: []);
@@ -241,33 +221,6 @@ public sealed class V5RuntimeConvergenceV2_1Tests
         });
     }
 
-    private static DocumentAgentExecutionResult RunRuntime(ReplayedPack item)
-    {
-        // Same contract and one semantic call; projection is downstream of binding and not under test.
-        var baseContract = DocxHeaderExtractor.DocumentProcessing.Projection.DocumentStructureTaskContract.Create();
-        var contract = baseContract with
-        {
-            ExecutionBudget = new ExecutionBudget(MaxSemanticModelCalls: 1),
-            Projections = baseContract.Projections.Select(projection => projection with { Required = false }).ToArray(),
-        };
-        var graph = EvidenceGraphBuilder.Build(item.Atoms.Select(atom => new SourceObservation(
-            $"V5:{atom.SourceId}", atom.SourceId, atom.Alias, atom.Ordinal, EvidenceModality.TEXT, atom.Text,
-            new StructuralSpan(0, atom.Text.Length))));
-        return new DocumentAgentRuntime(new FixedResponseReasoner(item.Response), new InMemoryEvidenceRetriever())
-            .RunAsync(contract, graph, item.Atoms,
-                item.Pack.OwnedAliases.ToHashSet(StringComparer.Ordinal),
-                item.Pack.VisibleAliases.ToHashSet(StringComparer.Ordinal))
-            .GetAwaiter().GetResult();
-    }
-
-    private sealed class FixedResponseReasoner(SemanticClaimResponseV2_1 response) : ISemanticReasoner
-    {
-        public string Identity => "test-frozen-canary-response";
-
-        public ValueTask<SemanticReasoningResult> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken) =>
-            ValueTask.FromResult(new SemanticReasoningResult(response, new SemanticReasoningUsage()));
-    }
-
     [Fact]
     public void Partial_binding_retains_valid_siblings_through_the_real_runtime()
     {
@@ -282,21 +235,20 @@ public sealed class V5RuntimeConvergenceV2_1Tests
             $"E{atom.Ordinal}", atom.SourceId, atom.Alias, atom.Ordinal, EvidenceModality.TEXT, atom.Text,
             new StructuralSpan(0, atom.Text.Length))));
 
-        var reasoner = new FixedProposalsReasoner(atoms.Select((atom, i) => new SemanticClaimProposalV2_1(
-            new ClaimSourceEndpointV2_1([new ProviderSourcePartV2_1(atom.Alias)]), "DESCRIBES", $"value{i}",
-            EvidenceNeeds: [])).ToArray());
+        var reasoner = new FixedDecisionReasoner(atoms.Take(8).Select((atom, i) => new V5SemanticSubjectDecisionV3([
+            new V5SemanticDecisionClaimV3("DESCRIBES", $"value{i}", EvidenceNeeds: []),
+        ])).ToArray());
 
         var contract = Contract();
         var result = new DocumentAgentRuntime(reasoner, new InMemoryEvidenceRetriever())
             .RunAsync(contract, graph, atoms, owned, visible).Result;
 
         Assert.Equal(8, result.State.Claims.Count);
-        Assert.Equal(2, result.State.Conflicts.Count(issue => issue.Code == "CLAIM_BINDING"));
-        Assert.DoesNotContain(result.State.Conflicts, issue => issue.Code == "CLAIM_CONTRACT");
+        Assert.DoesNotContain(result.State.Conflicts, issue => issue.Code == "CLAIM_BINDING");
     }
 
     [Fact]
-    public async Task A_refined_claim_migrating_its_subject_into_halo_is_refused_not_silently_repaired()
+    public async Task Refinement_keeps_harness_owned_subject_and_rejects_extra_halo_slot()
     {
         var atoms = new[]
         {
@@ -315,7 +267,7 @@ public sealed class V5RuntimeConvergenceV2_1Tests
             .RunAsync(contract, graph, atoms, owned, visible);
 
         Assert.Contains(result.State.Conflicts, issue => issue.Code == "CLAIM_BINDING" &&
-            issue.Message.Contains("subject-alias-not-owned", StringComparison.Ordinal));
+            issue.Message.Contains("additional-owned-index-out-of-range-or-order", StringComparison.Ordinal));
     }
 
     private static DocumentTaskContract Contract() => new(
@@ -329,12 +281,12 @@ public sealed class V5RuntimeConvergenceV2_1Tests
         "retain-open",
         new ExecutionBudget(MaxSemanticModelCalls: 1));
 
-    private sealed class FixedProposalsReasoner(IReadOnlyList<SemanticClaimProposalV2_1> proposals) : ISemanticReasoner
+    private sealed class FixedDecisionReasoner(IReadOnlyList<V5SemanticSubjectDecisionV3> decisions) : ISemanticReasoner
     {
         public string Identity => "test-fixed-proposals";
 
         public ValueTask<SemanticReasoningResult> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken) =>
-            ValueTask.FromResult(new SemanticReasoningResult(new SemanticClaimResponseV2_1(proposals), new SemanticReasoningUsage()));
+            ValueTask.FromResult(new SemanticReasoningResult(new V5SemanticDecisionResponseV3(decisions), new SemanticReasoningUsage()));
     }
 
     private sealed class MigratingSubjectReasoner : ISemanticReasoner
@@ -345,17 +297,16 @@ public sealed class V5RuntimeConvergenceV2_1Tests
         {
             if (context.CallOrdinal == 0)
             {
-                return ValueTask.FromResult(new SemanticReasoningResult(new SemanticClaimResponseV2_1([
-                    new(new ClaimSourceEndpointV2_1([new ProviderSourcePartV2_1("A1")]), "DESCRIBES",
-                        State: ClaimResolutionState.OPEN, EvidenceNeeds: [EvidenceNeed.MORE_CONTEXT]),
+                return ValueTask.FromResult(new SemanticReasoningResult(new V5SemanticDecisionResponseV3([
+                    new([new V5SemanticDecisionClaimV3("DESCRIBES", State: ClaimResolutionState.OPEN, EvidenceNeeds: [EvidenceNeed.MORE_CONTEXT])]),
                 ]), new SemanticReasoningUsage()));
             }
-            // A refinement that tries to move its subject into a halo alias must be refused, not
-            // repaired into the original owned subject and not silently accepted.
+            // The only way to address another subject slot is an owned positional index; the
+            // deliberately invalid next index is refused without resolving any alias from halo.
             var existingClaimId = context.OpenOrConflictedClaims.SingleOrDefault()?.ClaimId;
-            return ValueTask.FromResult(new SemanticReasoningResult(new SemanticClaimResponseV2_1([
-                new(new ClaimSourceEndpointV2_1([new ProviderSourcePartV2_1("A2")]), "DESCRIBES", "value",
-                    State: ClaimResolutionState.RESOLVED, EvidenceNeeds: [], ExistingClaimId: existingClaimId),
+            return ValueTask.FromResult(new SemanticReasoningResult(new V5SemanticDecisionResponseV3([
+                new([new V5SemanticDecisionClaimV3("DESCRIBES", "value", AdditionalSubjectParts: [new V5AdditionalOwnedSubjectPartV3(1)],
+                    State: ClaimResolutionState.RESOLVED, EvidenceNeeds: [], ExistingClaimId: existingClaimId)]),
             ]), new SemanticReasoningUsage()));
         }
     }

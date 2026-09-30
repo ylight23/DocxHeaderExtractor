@@ -282,9 +282,9 @@ public sealed class V5ArchitectureTests
     public void Request_composer_is_deterministic_and_contract_driven()
     {
         var graph = EvidenceGraphBuilder.Build([Observation("E1", "A1", "Alpha")]);
-        var packet = new V5EvidencePacketV2_1(graph.Nodes, [], [], [], [], []);
-        var first = V5SemanticRequestComposerV2_1.Compose(Contract(), packet);
-        var second = V5SemanticRequestComposerV2_1.Compose(Contract(), packet);
+        var packet = new V5SemanticDecisionRequestPacketV3(graph.Nodes, [], [], [], [], []);
+        var first = V5SemanticDecisionComposerV3.Compose(Contract(), packet);
+        var second = V5SemanticDecisionComposerV3.Compose(Contract(), packet);
         Assert.Equal(first.RequestHash, second.RequestHash);
         Assert.Equal(first.PromptHash, second.PromptHash);
         Assert.DoesNotContain("heading", first.Prompt, StringComparison.OrdinalIgnoreCase);
@@ -371,7 +371,8 @@ public sealed class V5ArchitectureTests
         public string Identity => "test-noop";
 
         public ValueTask<SemanticReasoningResult> ReasonAsync(SemanticReasoningContext context, CancellationToken cancellationToken) =>
-            ValueTask.FromResult(new SemanticReasoningResult(new SemanticClaimResponseV2_1([]), new SemanticReasoningUsage()));
+            ValueTask.FromResult(new SemanticReasoningResult(new V5SemanticDecisionResponseV3(
+                Enumerable.Range(0, context.RequestPacket.SubjectEvidence.Count).Select(_ => new V5SemanticSubjectDecisionV3([])).ToArray()), new SemanticReasoningUsage()));
     }
 
     private sealed class SequenceReasoner : ISemanticReasoner
@@ -385,13 +386,13 @@ public sealed class V5ArchitectureTests
             // id back as existingClaimId rather than letting the runtime mint a second, unrelated one.
             var existingClaimId = context.OpenOrConflictedClaims.SingleOrDefault()?.ClaimId;
             var state = context.CallOrdinal == 0 ? ClaimResolutionState.OPEN : ClaimResolutionState.RESOLVED;
-            return ValueTask.FromResult(new SemanticReasoningResult(new SemanticClaimResponseV2_1([
-                new(new ClaimSourceEndpointV2_1([
-                    new ProviderSourcePartV2_1("A1")]),
-                    "DESCRIBES", State: state,
-                    Value: state == ClaimResolutionState.RESOLVED ? "target" : null,
-                    EvidenceNeeds: state == ClaimResolutionState.OPEN ? [EvidenceNeed.GLOBAL_TARGET] : [],
-                    ExistingClaimId: existingClaimId),
+            var claim = new V5SemanticDecisionClaimV3("DESCRIBES",
+                Value: state == ClaimResolutionState.RESOLVED ? "target" : null,
+                State: state,
+                EvidenceNeeds: state == ClaimResolutionState.OPEN ? [EvidenceNeed.GLOBAL_TARGET] : [],
+                ExistingClaimId: existingClaimId);
+            return ValueTask.FromResult(new SemanticReasoningResult(new V5SemanticDecisionResponseV3([
+                new([claim]), new([]),
             ]), new SemanticReasoningUsage()));
         }
     }
@@ -406,11 +407,9 @@ public sealed class V5ArchitectureTests
             Contexts.Add(context);
             var existingClaimId = context.OpenOrConflictedClaims.SingleOrDefault()?.ClaimId;
             var state = context.CallOrdinal == 0 ? ClaimResolutionState.OPEN : ClaimResolutionState.RESOLVED;
-            var response = new SemanticClaimResponseV2_1([
-                new(new ClaimSourceEndpointV2_1([new ProviderSourcePartV2_1("A1")]),
-                    "DESCRIBES", State: state, Value: state == ClaimResolutionState.RESOLVED ? "target" : null,
-                    EvidenceNeeds: state == ClaimResolutionState.OPEN ? [need] : [],
-                    ExistingClaimId: existingClaimId),
+            var response = new V5SemanticDecisionResponseV3([
+                new([new V5SemanticDecisionClaimV3("DESCRIBES", Value: state == ClaimResolutionState.RESOLVED ? "target" : null,
+                    State: state, EvidenceNeeds: state == ClaimResolutionState.OPEN ? [need] : [], ExistingClaimId: existingClaimId)]), new([]),
             ]);
             return ValueTask.FromResult(new SemanticReasoningResult(response, new SemanticReasoningUsage()));
         }
