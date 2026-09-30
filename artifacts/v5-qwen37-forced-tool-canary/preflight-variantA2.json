@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "v5-qwen37-forced-tool-canary-variantA2-preflight-v1",
+  "purpose": "MEASUREMENT_NOT_PROMOTION - provider-free prototype only",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "alibaba",
+  "tool": {
+    "name": "submit_semantic_claims",
+    "description": "Submit the complete source-backed semantic claim response for the current task."
+  },
+  "toolChoice": "required",
+  "variantDescription": "Identical to Variant A (structural-only schema) except tool_choice is the plain string \u0022required\u0022 instead of the named-function-forcing object shape",
+  "supersededFinding": "Variant A\u0027s named tool_choice was empirically UNSUPPORTED on Qwen3.7/Alibaba (71cc694): HTTP 404, routing_funnel failedRoutingStep=\u0022Filter by Tool Compatibility\u0022. Whether \u0022required\u0022 is supported is independently unverified.",
+  "executionPlan": {
+    "step1": "PACK_006 alone, exactly 1 logical call - answers: routing acceptance, real tool_calls returned, argument schema compliance, relation-has-value gone, alias-only preserved",
+    "step2": "only if PACK_006 completes: PACK_001 (source-selection/multipart/coverage) and PACK_022 (ownership/refusal behavior)",
+    "ifPack006Returns404": "close the structural-tool-carrier avenue for Qwen3.7/Alibaba entirely; retain json_object \u002B the fail-closed TaskContract validator \u002B exact binder as the trade-off for this model",
+    "autoModeNotTested": "deliberately - auto lets the model skip the tool entirely and return prose, which stops answering the question this experiment measures"
+  },
+  "packs": [
+    {
+      "role": "same-atom-normalization-heavy",
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "semanticRequestHash": "1aee77de2662e24b2eee5ba880ecb683e21ceb827a325df7590a997d859fa204",
+      "semanticRequestBytes": 84894,
+      "maxCompletionTokens": 25088,
+      "variantA_providerBodyHash": "0811e18ac7359cd23d3616e60310380eaf3e66fd4afcc08f3cdf55391554822f",
+      "variantA2_providerBodyHash": "aa87274a486d206201df2741eb8331d4c61e360573e353a133aad80d49cb032f",
+      "variantA2_providerBodyBytes": 122666,
+      "onlyDifferenceIsToolChoice": true
+    },
+    {
+      "role": "true-multipart-heavy",
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "semanticRequestHash": "94e0ea2acd80472ec75c6835af71d145d22c338950656f95096c45a44924494e",
+      "semanticRequestBytes": 79027,
+      "maxCompletionTokens": 25088,
+      "variantA_providerBodyHash": "d3f66555627c0b9100b7710eb2f3eb066099c99c9439f0511f611e9cd3eab4c7",
+      "variantA2_providerBodyHash": "e338e469b459200e0135dddfd9a3f41476775d9c404f408c7c4fb1a0975006dc",
+      "variantA2_providerBodyBytes": 115323,
+      "onlyDifferenceIsToolChoice": true
+    },
+    {
+      "role": "mixed",
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "semanticRequestHash": "5c70d3bb648fa118fb7dd7da66bd88c4fb9607466c57d1d8baad6f5ec634a7e6",
+      "semanticRequestBytes": 79716,
+      "maxCompletionTokens": 25088,
+      "variantA_providerBodyHash": "4a0766b0a86cd956d7dc62e6a644f016912147868381764fc91a91d9f5794090",
+      "variantA2_providerBodyHash": "32ff2ba6983a66b82e29d68c65dac6763a4087ad4eb41cd9e0b625e461764b18",
+      "variantA2_providerBodyBytes": 118140,
+      "onlyDifferenceIsToolChoice": true
+    }
+  ],
+  "providerCalls": 0,
+  "goldRead": false,
+  "providerExecutionAuthorized": false
+}

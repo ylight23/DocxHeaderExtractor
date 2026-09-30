@@ -79,7 +79,33 @@ public sealed record V5ForcedToolProviderRequestBodyV1(byte[] PayloadBytes, stri
     public static V5ForcedToolProviderRequestBodyV1 Build(
         string systemPrompt, string userMessage, int maxCompletionTokens,
         string model, string providerRoutingSlug, string toolName, string toolDescription, object toolParametersSchema,
-        string reasoningEffort)
+        string reasoningEffort) =>
+        BuildWithToolChoice(
+            systemPrompt, userMessage, maxCompletionTokens, model, providerRoutingSlug, toolName, toolDescription,
+            toolParametersSchema, reasoningEffort, new { type = "function", function = new { name = toolName } });
+
+    /// <summary>
+    /// Variant A2: identical request in every other respect to <see cref="Build"/> - same schema, same
+    /// one declared tool, same routing/reasoning/no-fallback - except <c>tool_choice</c> is the plain
+    /// string <c>"required"</c> (OpenRouter's generic "call at least one tool" mode) instead of the
+    /// named-function-forcing object shape Qwen3.7/Alibaba's routing rejected with 404 "Filter by Tool
+    /// Compatibility". With exactly one tool declared, "required" reaches nearly the same outcome
+    /// (the model has no tool but this one to call) through a shape that mode's own support is
+    /// independent of the named-choice mechanism just proven unsupported - genuinely unverified until
+    /// measured, never assumed.
+    /// </summary>
+    public static V5ForcedToolProviderRequestBodyV1 BuildWithRequiredToolChoice(
+        string systemPrompt, string userMessage, int maxCompletionTokens,
+        string model, string providerRoutingSlug, string toolName, string toolDescription, object toolParametersSchema,
+        string reasoningEffort) =>
+        BuildWithToolChoice(
+            systemPrompt, userMessage, maxCompletionTokens, model, providerRoutingSlug, toolName, toolDescription,
+            toolParametersSchema, reasoningEffort, "required");
+
+    private static V5ForcedToolProviderRequestBodyV1 BuildWithToolChoice(
+        string systemPrompt, string userMessage, int maxCompletionTokens,
+        string model, string providerRoutingSlug, string toolName, string toolDescription, object toolParametersSchema,
+        string reasoningEffort, object toolChoice)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(systemPrompt);
         ArgumentException.ThrowIfNullOrWhiteSpace(userMessage);
@@ -109,7 +135,7 @@ public sealed record V5ForcedToolProviderRequestBodyV1(byte[] PayloadBytes, stri
                     function = new { name = toolName, description = toolDescription, parameters = toolParametersSchema },
                 },
             },
-            tool_choice = new { type = "function", function = new { name = toolName } },
+            tool_choice = toolChoice,
             provider = new
             {
                 order = new[] { providerRoutingSlug },
