@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "v5-qwen37-forced-tool-canary-variantA2-pack006-result-v1",
+  "purpose": "MEASUREMENT_NOT_PROMOTION",
+  "variant": "A2_required_tool_choice",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "alibaba",
+  "tool": "submit_semantic_claims",
+  "toolChoice": "required",
+  "retryAttempt": 0,
+  "sameFrozenBodyAsAttempt0": true,
+  "providerCalls": 1,
+  "goldRead": false,
+  "semanticRetries": 0,
+  "responseRepairApplied": false,
+  "providerExecutionAuthorized": true,
+  "result": {
+    "role": "same-atom-normalization-heavy",
+    "documentId": "SRC-089",
+    "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+    "providerRequestHash": "aa87274a486d206201df2741eb8331d4c61e360573e353a133aad80d49cb032f",
+    "transportError": "OpenRouter tr\u1EA3 404 Not Found: {\u0022error\u0022:{\u0022message\u0022:\u0022No endpoints found that support the provided \u0027tool_choice\u0027 value. To learn more about provider routing, visit: https://openrouter.ai/docs/guides/routing/provider-selection\u0022,\u0022code\u0022:404,\u0022metadata\u0022:{\u0022routing_funnel\u0022:[{\u0022step\u0022:\u0022Initial Endpoints\u0022,\u0022endpoint_count\u0022:1}],\u0022failed_routing_step\u0022:\u0022Filter by Tool Compatibility\u0022}}}",
+    "finishReason": null,
+    "latencyMs": 1773.5152,
+    "usage": null,
+    "toolCallCount": 0,
+    "toolCallFragmentsRawCount": 0,
+    "reassembledArguments": null,
+    "reassembledArgumentsSha256": null,
+    "qualification": null
+  }
+}

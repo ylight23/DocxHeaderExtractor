@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "v5-qwen37-forced-tool-canary-classification-v1",
+  "classifies": "canary-result-variantA2-pack006.v1.json - the single authorized PACK_006 call with tool_choice=\"required\"",
+  "outcome": "IDENTICAL_REJECTION - same HTTP 404, same routing_funnel, same failedRoutingStep as Variant A's named tool_choice (71cc694)",
+  "rawFinding": {
+    "httpStatus": 404,
+    "message": "No endpoints found that support the provided 'tool_choice' value.",
+    "routingFunnel": [{ "step": "Initial Endpoints", "endpointCount": 1 }],
+    "failedRoutingStep": "Filter by Tool Compatibility",
+    "latencyMs": 1773.5152,
+    "toolChoiceValueSent": "\"required\" (plain string, OpenRouter's generic mode - not the named-function object Variant A sent)"
+  },
+  "decisiveFinding": "The structural-tool-carrier avenue is CLOSED for Qwen3.7/Alibaba - both tool_choice mechanisms this experiment tried (named-function forcing, and the generic \"required\" mode) are rejected identically at OpenRouter's routing layer, before ever reaching the model. Alibaba's single endpoint for this slug does not honor ANY tool_choice constraint despite 'tool_choice' appearing in its aggregate supported_parameters listing - that listing describes declaring tools/tool_choice as a parameter name the endpoint will not error on outright, not that routing will actually honor a value that constrains which tool is used.",
+  "decisionTreeResolution": {
+    "namedToolChoice": "empirically UNSUPPORTED (71cc694)",
+    "requiredToolChoice": "empirically UNSUPPORTED (this result)",
+    "autoToolChoice": "not tested, per explicit decision not to - auto lets the model skip the tool and return prose, which stops answering the question this experiment measures",
+    "conclusion": "CLOSE the structural-tool-carrier avenue for Qwen3.7/Alibaba entirely"
+  },
+  "retainedTradeOff": "qwen/qwen3.7-flash via Alibaba, response_format=json_object (production's existing path, unchanged) + the fail-closed SemanticClaimContractV2_1/SemanticClaimResponseCodecV2_1 TaskContract validator + ExactClaimBinderV2_1's exact-coordinate authority. No schema-level structural prevention of relation-has-value/unary-has-object is available for this model on this provider; the existing post-hoc validator catching and refusing those malformed claims remains the best available trade-off.",
+  "pack001Pack022": "never called - the decision tree only opens them on a PACK_006 completion, which did not happen",
+  "experimentStatus": "CLOSED",
+  "noFurtherAction": "no auto test, no further tool_choice variant, no promotion, no ontology/protocol/binder/validator change resulting from this experiment",
+  "providerCalls": 1,
+  "goldRead": false,
+  "semanticRetries": 0,
+  "responseRepairApplied": false,
+  "note": "This classification file makes no provider call; it interprets canary-result-variantA2-pack006.v1.json's own recorded routing rejection."
+}
