@@ -204,6 +204,60 @@ public sealed class V5OwnedDecisionProtocolV3Tests
     }
 
     [Fact]
+    public void Real_src095_L1710_owner_pack_never_retypes_the_whole_atom()
+    {
+        var contract = DocumentStructureTaskContract.Create();
+        var requests = V5PdfPreflightBuilder.BuildOwnedDecisionV3Requests(
+            TestRepository.Path(SourcePdfCorpus.Src095), "SRC-095", contract,
+            V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId);
+
+        var ownerPack = requests.Single(request => request.PackId.EndsWith("PACK_020", StringComparison.Ordinal));
+        var contextPack = requests.Single(request => request.PackId.EndsWith("PACK_021", StringComparison.Ordinal));
+        var ownerIndex = Array.FindIndex(ownerPack.Packet.SubjectEvidence.ToArray(), node => node.SourceAlias == "L1710:S0");
+        Assert.True(ownerIndex >= 0);
+        Assert.Contains(contextPack.Packet.ContextOnlyEvidence, node => node.SourceAlias == "L1710:S0");
+        Assert.DoesNotContain(contextPack.Packet.SubjectEvidence, node => node.SourceAlias == "L1710:S0");
+
+        var decisions = Enumerable.Range(0, ownerPack.Packet.SubjectEvidence.Count)
+            .Select(index => index == ownerIndex
+                ? (object)new
+                {
+                    disposition = V5OwnedDecisionProtocolV3.Claims,
+                    claims = new object[]
+                    {
+                        new
+                        {
+                            predicate = "STRUCTURAL_REGION",
+                            value = "A.2. HTTP Frame Types",
+                            state = "RESOLVED",
+                            evidenceNeeds = Array.Empty<string>(),
+                        },
+                    },
+                }
+                : new { disposition = V5OwnedDecisionProtocolV3.NoClaim, claims = Array.Empty<object>() })
+            .ToArray();
+
+        using var payload = JsonDocument.Parse(JsonSerializer.Serialize(new { decisions }));
+        var translation = V5OwnedDecisionProtocolV3.ParseAndTranslate(payload.RootElement, contract, ownerPack.Packet);
+        var proposal = Assert.Single(translation.Proposals).Proposal;
+        var sourcePart = Assert.Single(proposal.Subject.SourceParts);
+        Assert.Equal("L1710:S0", sourcePart.SourceAlias);
+        Assert.Null(sourcePart.VerbatimText);
+
+        var atoms = V5PdfPreflightBuilder.LoadAtoms(TestRepository.Path(SourcePdfCorpus.Src095));
+        var binding = ExactClaimBinderV2_1.Bind(
+            ownerPack.PackId,
+            translation.Proposals,
+            atoms,
+            ClaimBindingScope.Create(ownerPack.OwnedAliases, ownerPack.VisibleAliases));
+
+        Assert.True(binding.IsComplete);
+        var boundPart = Assert.Single(Assert.Single(binding.Bound).Claim.Subject.Parts);
+        Assert.Equal("L1710:S0", boundPart.Alias);
+        Assert.Equal("A.2. HTTP Frame Types", boundPart.Text);
+    }
+
+    [Fact]
     public void Every_real_v3_pack_freezes_decision_cardinality_to_its_owned_count()
     {
         var contract = DocumentStructureTaskContract.Create();
