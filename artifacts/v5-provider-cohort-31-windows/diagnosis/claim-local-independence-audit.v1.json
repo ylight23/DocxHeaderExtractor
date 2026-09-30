@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "v5-claim-local-independence-audit-v1",
+  "subject": "SRC-089 PACK_006 raw response (source-selection-remediation-canary-result.v1.json, commit c287f19)",
+  "currentProductionBehavior": {
+    "wireStatus": "RESPONSE_FATAL",
+    "claimsAccepted": 0,
+    "reason": "single relation-has-value issue in the aggregate Validate() call fails the whole 35-claim response"
+  },
+  "claimLocalIndependence": {
+    "establishedByCodeInspection": "SemanticClaimContractV2_1.Validate reads only the claim it is currently checking; it never reads existingClaimId (that is ExactClaimBinderV2_1\u0027s refinement concern against harness-owned prior state, not a same-response dependency)",
+    "establishedEmpirically": "re-validating all 35 claims one at a time, and again in reverse order, reproduces the identical 6 CONTRACT_REFUSED / 29 STRUCTURALLY_VALID split both times - no claim\u0027s outcome depends on which other claims are present or their order",
+    "noExistingClaimIdPresent": true
+  },
+  "perClaimQuarantineIfAdopted": {
+    "totalClaims": 35,
+    "contractRefused": 6,
+    "structurallyValid": 29,
+    "refusalReasons": {
+      "relation-has-value": 6
+    },
+    "downstreamBinding": {
+      "proposalCount": 29,
+      "boundCount": 29,
+      "refusalCount": 0,
+      "refusalReasons": []
+    }
+  },
+  "invariantsRequiredIfAdopted": [
+    "NO mutation - a refused claim\u0027s fields are never altered to make it pass",
+    "NO coercion - relation-has-value is never silently turned into a valid unary or a value-less relation",
+    "NO inferred correction - a missing/wrong field is never filled in or guessed",
+    "NO Gold read for this decision",
+    "NO provider call for this decision",
+    "invalid claim -\u003E CONTRACT_REFUSED, recorded, never silently dropped without a reason",
+    "valid sibling claims may continue only through the unmodified TaskContract -\u003E ExactClaimBinderV2_1 -\u003E qualification pipeline"
+  ],
+  "recommendation": "The audit supports that per-claim quarantine is SAFE to consider: independence holds both by inspection and empirically, and no invariant above requires touching SemanticClaimContractV2_1, SemanticClaimResponseCodecV2_1 or ExactClaimBinderV2_1\u0027s existing rules - only whether Parse aggregates-then-throws or isolates-then-continues. Adopting it is a real, production-facing codec change (affects every caller of SemanticClaimResponseCodecV2_1.Parse) and is not implemented by this audit; it needs its own explicit decision.",
+  "providerCalls": 0,
+  "goldRead": false
+}
