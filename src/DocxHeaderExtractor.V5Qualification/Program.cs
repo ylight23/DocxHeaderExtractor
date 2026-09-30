@@ -49,6 +49,11 @@ internal static class Program
         if (args.Contains("--qwen37-tool-auto"))
             return await Qwen37ToolAutoCanary.RunAsync(LocateRepoRoot(), args);
 
+        // P5F is the bounded four-pack v3 wire-compliance canary. It has an independent gate and
+        // never opens the historical 31-pack cohort; see P5FV3Canary.
+        if (args.Contains("--p5f-v3-canary"))
+            return await P5FV3Canary.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "v5-p5f-v3-selection-v1",
+  "sourceManifest": "artifacts/v5-p5d-v3-preflight/execution-manifest.v1.json",
+  "sourceHead": "049b10114ea3e189452a715cbec271c89d229bac",
+  "providerCalls": 0,
+  "goldRead": false,
+  "semanticScore": "NOT_RUN",
+  "selectedPacks": [
+    {
+      "Role": "MAX_OWNED_AND_MULTIPART",
+      "Focus": "96 positional decisions; historical multi-atom subject evidence",
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "semanticRequestHash": "dc7f9a8568cd1ef3ee697f6cbffcc9f788fe3a2c819889b0e4495ec72f6fa182",
+      "providerRequestHash": "4dbe2596e0735aacd91c7496ba920406ac74fae1a8a2c8ecbe176fed203beb02",
+      "maxCompletionTokens": 25088,
+      "decisionCountExpected": 96
+    },
+    {
+      "Role": "L1472_OWNER_OMISSION",
+      "Focus": "historical L1472 owner omission",
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "semanticRequestHash": "97d6294a177bfe699649fec4139b48bc5b0dca46d83e76e06d96fa37274c32cb",
+      "providerRequestHash": "d8b76ca64e66c3c5279b7c3b5219318c28e882d09997fce0ba0a13a0248df9e2",
+      "maxCompletionTokens": 25088,
+      "decisionCountExpected": 96
+    },
+    {
+      "Role": "L1710_RETYPING",
+      "Focus": "historical L1710 whole-atom retyping",
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "semanticRequestHash": "967b40fcf4b91f1cca97c54bb08cc5f737004d9b2a365ea7647790bd91d5d0e7",
+      "providerRequestHash": "224879112a7f3e5faa6fe2869f7c174f3bc795434e1fde1c0fb3fdf08954b467",
+      "maxCompletionTokens": 25088,
+      "decisionCountExpected": 96
+    },
+    {
+      "Role": "MULTIPART_RELATION",
+      "Focus": "historical multi-atom relation endpoint",
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "semanticRequestHash": "4037e8985ba178c0dc0d1cead9b2f7ec548de33bb34ba90ebbf7d4620279ccd4",
+      "providerRequestHash": "a75e4c6650fa2876ea430bd27d4646d37731d35391df95b004ff394785005d93",
+      "maxCompletionTokens": 25088,
+      "decisionCountExpected": 96
+    }
+  ]
+}

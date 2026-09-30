@@ -131,6 +131,7 @@ public sealed class V5P5DV3ProviderPreflightTests
         Feed(sse, "data: {\"choices\":[{\"delta\":{},\"finish_reason\":\"stop\"}]}");
         Feed(sse, "data: [DONE]", final: true);
         Assert.True(sse.TransportComplete);
+        Assert.Equal(4, sse.EventCount);
         var parsed = V5SemanticDecisionContractV3.Parse(JsonDocument.Parse(sse.Content).RootElement, Contract, 2, 1);
         Assert.Equal(2, parsed.Decisions.Count);
 

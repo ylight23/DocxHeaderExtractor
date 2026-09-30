@@ -6,6 +6,15 @@ using System.Text.Json;
 
 namespace DocxHeaderExtractor.Infrastructure.AI;
 
+/// <summary>Raw streaming evidence retained by a bounded qualification canary after one completed call.</summary>
+public sealed record OpenRouterExecutionObservation(
+    string Content,
+    string? FinishReason,
+    JsonElement? Usage,
+    string RawSse,
+    int SseEventCount,
+    int RetryCount);
+
 /// <summary>
 /// RPC JSON qua OpenRouter Chat Completions. Mỗi request cấm endpoint thu thập dữ liệu để huấn
 /// luyện (<c>data_collection=deny</c>) và yêu cầu provider trả JSON. Schema/ID được hậu kiểm cục
@@ -131,6 +140,51 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
     }
 
     /// <summary>
+    /// Executes an already-frozen json_object body once through the production SSE transport and
+    /// returns the reassembled content together with the raw SSE evidence. This is intentionally
+    /// additive: callers that do not need canary observability keep using <see cref="ExecuteAsync"/>.
+    /// </summary>
+    public async Task<OpenRouterExecutionObservation> ExecuteObservedAsync(
+        byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
+    {
+        ArgumentNullException.ThrowIfNull(payloadBytes);
+        TransportCompatibility.EnsureCompatible(systemPrompt, userMessage, TransportCompatibility.JsonObjectResponseFormat);
+        using var logical = ProviderCallTelemetry.Start(_options.Observability, new ProviderLogicalCallMetadata
+        {
+            Stage = "V5_SEMANTIC_DECISION_CANARY",
+            LogicalCallId = $"v5-decision-canary-{Guid.NewGuid():N}",
+            RequestHash = ProviderObservabilityHashing.Sha256Bytes(payloadBytes),
+            RequestBytes = payloadBytes.Length,
+            EstimatedInputTokens = ProviderObservabilityHashing.EstimateTokens(systemPrompt + "\n" + userMessage),
+            MaxOutputTokens = maxTokens,
+            SourceItemCount = 1,
+            ContextItemCount = 1,
+            ContextCharacterCount = userMessage.Length,
+            Provider = "OpenRouter",
+            Model = _options.Model,
+        });
+
+        for (var attempt = 1; ; attempt++)
+        {
+            var result = await StreamOnceAsync(payloadBytes, maxTokens, systemPrompt, userMessage, logical, ct);
+            if (result.Content is { } content)
+            {
+                logical?.Complete(new { resultCharacters = content.Length, attempts = attempt, sseEvents = result.SseEventCount });
+                return new OpenRouterExecutionObservation(content, result.FinishReason, result.Usage,
+                    result.RawSse ?? string.Empty, result.SseEventCount, attempt - 1);
+            }
+
+            ct.ThrowIfCancellationRequested();
+            if (!result.Retryable || attempt > _options.TransientRequestRetries)
+                throw result.Error!;
+
+            var delay = RetryDelay(attempt, result.StatusCode, result.RetryAfter);
+            _options.DebugLog?.Invoke($"[OpenRouter] V5_SEMANTIC_DECISION_CANARY transport retry {attempt} after {delay.TotalMilliseconds:0} ms: {result.Error!.Message}");
+            await RetryWait(delay, ct);
+        }
+    }
+
+    /// <summary>
     /// Same frozen-body execution surface as <see cref="ExecuteAsync"/> - exact same HTTP/SSE
     /// transport, retry, deadline and telemetry machinery, reused unchanged - for a forced-tool-call
     /// request instead of a <c>response_format</c> one. Additive only: <see cref="SseReassembly"/>
@@ -253,7 +307,9 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         TimeSpan? RetryAfter,
         string? FinishReason = null,
         IReadOnlyList<V5ToolCallDeltaFragment>? ToolCallFragments = null,
-        JsonElement? Usage = null);
+        JsonElement? Usage = null,
+        string? RawSse = null,
+        int SseEventCount = 0);
 
     private async Task<StreamAttempt> StreamOnceAsync(
         byte[] payloadBytes,
@@ -392,7 +448,8 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         });
         telemetryAttempt?.PersistParsed(new { content, finishReason = stream.FinishReason, usage = stream.Usage, toolCallFragments = stream.ToolCallFragments.Count });
         telemetryAttempt?.Complete();
-        return new StreamAttempt(content, false, null, 200, null, stream.FinishReason, stream.ToolCallFragments, stream.Usage);
+        return new StreamAttempt(content, false, null, 200, null, stream.FinishReason, stream.ToolCallFragments, stream.Usage,
+            raw.ToString(), stream.EventCount);
     }
 
     private static bool IsRetryableStatus(int status) => status is 429 or 502 or 503 or 504;
@@ -437,6 +494,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         public bool StreamEnded { get; private set; }
         public string? ProviderError { get; private set; }
         public JsonElement? Usage { get; private set; }
+        public int EventCount { get; private set; }
 
         /// <summary>Complete only with a terminal finish_reason, [DONE] and a clean end of stream.</summary>
         public bool TransportComplete => FinishReason is not null && DoneObserved && StreamEnded && ProviderError is null;
@@ -476,6 +534,7 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
 
         private void Dispatch()
         {
+            EventCount++;
             var data = string.Join("\n", _eventLines
                 .Where(line => line.StartsWith("data:", StringComparison.Ordinal))
                 .Select(line => line[5..].TrimStart()));
