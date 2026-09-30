@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "v5-canonical-semantic-request-extraction-equivalence-v1",
+  "subject": "P1: extract CanonicalSemanticRequestV2_1 from V5SemanticRequestComposerV2_1.Compose\u0027s anonymous payload",
+  "responsesChecked": {
+    "cohortPacks": 31,
+    "remediationPacks": 3
+  },
+  "semanticByteDriftCount": 0,
+  "semanticHashDriftCount": 0,
+  "providerByteDriftCount": 0,
+  "providerHashDriftCount": 0,
+  "allDriftCountsZero": true,
+  "note": "cohortPacks compares the new composer against a verbatim copy of the pre-extraction Compose body (OldReferenceCompose), using packets reconstructed from the real 31-pack cohort\u0027s own PDFs and packing policy - not against artifacts/v5-provider-cohort-31-windows/preflight/cohort.v1.json, which was independently confirmed (by reverting V5SemanticRequestComposerV2_1.cs to its pre-extraction state and rerunning) to already mismatch current HEAD for all 31 rows, for reasons that predate and are unrelated to this refactor. remediationPacks compares against the real frozen artifact and is the genuine before/after-this-refactor check for those 3 packs.",
+  "perCohortPack": [
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "byteDrift": false,
+      "hashDrift": false,
+      "providerByteDrifted": false,
+      "providerHashDrifted": false
+    }
+  ],
+  "providerCalls": 0,
+  "goldRead": false
+}
