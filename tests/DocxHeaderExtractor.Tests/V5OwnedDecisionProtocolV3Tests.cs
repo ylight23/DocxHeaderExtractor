@@ -62,7 +62,6 @@ public sealed class V5OwnedDecisionProtocolV3Tests
         Assert.Contains("decision-count-mismatch:1:2", sparseError.Message, StringComparison.Ordinal);
     }
 
-
     [Fact]
     public void Codec_rejects_missing_required_positional_index()
     {
@@ -93,7 +92,41 @@ public sealed class V5OwnedDecisionProtocolV3Tests
     }
 
     [Fact]
-    public void Multi_atom_owned_subject_and_context_relation_target_adapt_losslessly_to_exact_binder()
+    public void Same_owned_anchor_can_use_different_source_selection_per_claim()
+    {
+        var packet = Packet();
+        var contract = Contract();
+        var response = new V5OwnedDecisionResponseV3([
+            new V5OwnedSubjectDecisionV3(
+                V5OwnedDecisionKindsV3.Claims,
+                [
+                    new V5OwnedDecisionClaimV3(
+                        "DESCRIBES",
+                        Value: "prefix",
+                        VerbatimText: "Al",
+                        EvidenceNeeds: []),
+                    new V5OwnedDecisionClaimV3(
+                        "RELATES_TO",
+                        AdditionalSubjectParts: [new V5OwnedAdditionalSubjectPartV3(1)],
+                        ObjectParts: [new V5VisibleSourcePartRefV3(V5EvidenceReferenceScopesV3.Context, 0)],
+                        EvidenceNeeds: []),
+                ]),
+            new V5OwnedSubjectDecisionV3(V5OwnedDecisionKindsV3.None, []),
+        ]);
+
+        Assert.Empty(V5OwnedDecisionContractV3.Validate(response, contract, packet));
+        var proposals = V5OwnedDecisionAdapterV3.ToV2_1(response, contract, packet);
+
+        var unary = Assert.Single(proposals.Where(item => item.Predicate == "DESCRIBES"));
+        Assert.Equal("Al", Assert.Single(unary.Subject.SourceParts).VerbatimText);
+
+        var relation = Assert.Single(proposals.Where(item => item.Predicate == "RELATES_TO"));
+        Assert.Equal(new[] { "OWNED-A", "OWNED-B" }, relation.Subject.SourceParts.Select(part => part.SourceAlias));
+        Assert.Equal("HALO-C", Assert.Single(relation.Object!.SourceParts).SourceAlias);
+    }
+
+    [Fact]
+    public void Multi_atom_owned_subject_and_context_relation_target_bind_through_existing_exact_binder()
     {
         var packet = Packet();
         var contract = Contract();
@@ -104,6 +137,7 @@ public sealed class V5OwnedDecisionProtocolV3Tests
                     new V5OwnedDecisionClaimV3(
                         "DESCRIBES",
                         Value: "section",
+                        AdditionalSubjectParts: [new V5OwnedAdditionalSubjectPartV3(1)],
                         State: ClaimResolutionState.RESOLVED,
                         EvidenceNeeds: []),
                     new V5OwnedDecisionClaimV3(
@@ -111,22 +145,13 @@ public sealed class V5OwnedDecisionProtocolV3Tests
                         ObjectParts: [new V5VisibleSourcePartRefV3(V5EvidenceReferenceScopesV3.Context, 0)],
                         State: ClaimResolutionState.RESOLVED,
                         EvidenceNeeds: []),
-                ],
-                AdditionalSubjectParts: [new V5OwnedAdditionalSubjectPartV3(1)]),
-            new V5OwnedSubjectDecisionV3(
-                V5OwnedDecisionKindsV3.Consumed,
-                [],
-                ConsumedBySubjectIndex: 0),
+                ]),
+            new V5OwnedSubjectDecisionV3(V5OwnedDecisionKindsV3.None, []),
         ]);
 
         Assert.Empty(V5OwnedDecisionContractV3.Validate(response, contract, packet));
         var proposals = V5OwnedDecisionAdapterV3.ToV2_1(response, contract, packet);
         Assert.Equal(2, proposals.Count);
-        Assert.All(proposals, proposal =>
-            Assert.Equal(new[] { "OWNED-A", "OWNED-B" }, proposal.Subject.SourceParts.Select(part => part.SourceAlias)));
-
-        var relation = Assert.Single(proposals.Where(item => item.Predicate == "RELATES_TO"));
-        Assert.Equal("HALO-C", Assert.Single(relation.Object!.SourceParts).SourceAlias);
 
         var atoms = new[]
         {
@@ -142,29 +167,27 @@ public sealed class V5OwnedDecisionProtocolV3Tests
 
         Assert.True(binding.IsComplete);
         Assert.Equal(2, binding.Bound.Count);
-        Assert.All(binding.Bound, item =>
-            Assert.Equal("source-a:0-5|source-b:0-4", item.Claim.Subject.Identity));
-        Assert.Equal("source-c:0-5", Assert.Single(binding.Bound.Where(item =>
-            item.Claim.Predicate == "RELATES_TO")).Claim.Object!.Identity);
+        Assert.Equal("source-a:0-5|source-b:0-4", Assert.Single(binding.Bound.Where(item =>
+            item.Claim.Predicate == "DESCRIBES")).Claim.Subject.Identity);
+        var relation = Assert.Single(binding.Bound.Where(item => item.Claim.Predicate == "RELATES_TO")).Claim;
+        Assert.Equal("source-a:0-5", relation.Subject.Identity);
+        Assert.Equal("source-c:0-5", relation.Object!.Identity);
     }
 
     [Fact]
-    public void Validator_requires_consumed_counterpart_and_forbids_whole_atom_retyping()
+    public void Validator_forbids_whole_atom_retyping()
     {
         var packet = Packet();
         var contract = Contract();
         var response = new V5OwnedDecisionResponseV3([
             new V5OwnedSubjectDecisionV3(
                 V5OwnedDecisionKindsV3.Claims,
-                [new V5OwnedDecisionClaimV3("DESCRIBES", Value: "x", EvidenceNeeds: [])],
-                VerbatimText: "Alpha",
-                AdditionalSubjectParts: [new V5OwnedAdditionalSubjectPartV3(1)]),
+                [new V5OwnedDecisionClaimV3("DESCRIBES", Value: "x", VerbatimText: "Alpha", EvidenceNeeds: [])]),
             new V5OwnedSubjectDecisionV3(V5OwnedDecisionKindsV3.None, []),
         ]);
 
         var issues = V5OwnedDecisionContractV3.Validate(response, contract, packet);
-        Assert.Contains("whole-atom-verbatim-forbidden:subject:0", issues);
-        Assert.Contains("consumed-counterpart-missing:1:0", issues);
+        Assert.Contains("whole-atom-verbatim-forbidden:subject:0:DESCRIBES", issues);
     }
 
     [Fact]

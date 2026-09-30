@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -21,9 +20,8 @@ public static class V5OwnedDecisionKindsV3
 {
     public const string None = "NONE";
     public const string Claims = "CLAIMS";
-    public const string Consumed = "CONSUMED";
 
-    public static IReadOnlyList<string> All { get; } = [None, Claims, Consumed];
+    public static IReadOnlyList<string> All { get; } = [None, Claims];
 }
 
 public static class V5EvidenceReferenceScopesV3
@@ -35,8 +33,8 @@ public static class V5EvidenceReferenceScopesV3
 }
 
 /// <summary>
-/// A later owned atom that participates in the same source occurrence as the positional anchor.
-/// The index addresses subjectEvidence only; context/halo has no subject-reference representation.
+/// A later owned atom that participates in one claim's source selection. The index addresses
+/// subjectEvidence only; context/halo has no subject-reference representation.
 /// </summary>
 public sealed record V5OwnedAdditionalSubjectPartV3(
     [property: JsonPropertyName("ownedIndex")] int OwnedIndex,
@@ -51,9 +49,17 @@ public sealed record V5VisibleSourcePartRefV3(
     [property: JsonPropertyName("index")] int Index,
     [property: JsonPropertyName("verbatimText")] string? VerbatimText = null);
 
+/// <summary>
+/// Semantic claim for the positional subject of its enclosing decision. Source selection remains
+/// claim-local because the frozen 31-pack cohort contains valid cases where different predicates on
+/// the same owned atom select different source spans. Identity is still harness-owned: the anchor is
+/// implicit and additional subject parts can address owned indices only.
+/// </summary>
 public sealed record V5OwnedDecisionClaimV3(
     [property: JsonPropertyName("predicate")] string Predicate,
     [property: JsonPropertyName("value")] string? Value = null,
+    [property: JsonPropertyName("verbatimText")] string? VerbatimText = null,
+    [property: JsonPropertyName("additionalSubjectParts")] IReadOnlyList<V5OwnedAdditionalSubjectPartV3>? AdditionalSubjectParts = null,
     [property: JsonPropertyName("objectParts")] IReadOnlyList<V5VisibleSourcePartRefV3>? ObjectParts = null,
     [property: JsonPropertyName("state")] ClaimResolutionState State = ClaimResolutionState.RESOLVED,
     [property: JsonPropertyName("evidenceNeeds")] IReadOnlyList<EvidenceNeed>? EvidenceNeeds = null,
@@ -61,16 +67,13 @@ public sealed record V5OwnedDecisionClaimV3(
 
 /// <summary>
 /// decisions[i] is, by definition, the decision for packet.subjectEvidence[i].
-/// CLAIMS may select a strict substring of the anchor and may extend through later owned atoms.
-/// NONE is an explicit semantic negative. CONSUMED marks an owned slot already included by an
-/// earlier multi-atom CLAIMS decision.
+/// NONE is an explicit semantic negative. CLAIMS contains one or more claims anchored at that owned
+/// subject; each claim may independently choose a strict substring or extend through later owned
+/// atoms without changing subject ownership.
 /// </summary>
 public sealed record V5OwnedSubjectDecisionV3(
     [property: JsonPropertyName("kind")] string Kind,
-    [property: JsonPropertyName("claims")] IReadOnlyList<V5OwnedDecisionClaimV3>? Claims,
-    [property: JsonPropertyName("verbatimText")] string? VerbatimText = null,
-    [property: JsonPropertyName("additionalSubjectParts")] IReadOnlyList<V5OwnedAdditionalSubjectPartV3>? AdditionalSubjectParts = null,
-    [property: JsonPropertyName("consumedBySubjectIndex")] int? ConsumedBySubjectIndex = null);
+    [property: JsonPropertyName("claims")] IReadOnlyList<V5OwnedDecisionClaimV3>? Claims);
 
 public sealed record V5OwnedDecisionResponseV3(
     [property: JsonPropertyName("decisions")] IReadOnlyList<V5OwnedSubjectDecisionV3> Decisions);
@@ -93,9 +96,9 @@ public static class V5OwnedDecisionContractV3
 {
     private static readonly IReadOnlySet<string> RootFields = new HashSet<string>(["decisions"], StringComparer.Ordinal);
     private static readonly IReadOnlySet<string> DecisionFields = new HashSet<string>(
-        ["kind", "claims", "verbatimText", "additionalSubjectParts", "consumedBySubjectIndex"], StringComparer.Ordinal);
+        ["kind", "claims"], StringComparer.Ordinal);
     private static readonly IReadOnlySet<string> ClaimFields = new HashSet<string>(
-        ["predicate", "value", "objectParts", "state", "evidenceNeeds", "existingClaimId"], StringComparer.Ordinal);
+        ["predicate", "value", "verbatimText", "additionalSubjectParts", "objectParts", "state", "evidenceNeeds", "existingClaimId"], StringComparer.Ordinal);
     private static readonly IReadOnlySet<string> AdditionalPartFields = new HashSet<string>(
         ["ownedIndex", "verbatimText"], StringComparer.Ordinal);
     private static readonly IReadOnlySet<string> ObjectPartFields = new HashSet<string>(
@@ -171,6 +174,12 @@ public static class V5OwnedDecisionContractV3
             {
                 predicate = new { type = "string", @enum = predicates },
                 value = new { type = "string" },
+                verbatimText = new { type = "string", minLength = 1 },
+                additionalSubjectParts = new
+                {
+                    type = "array",
+                    items = AdditionalPartSchema(),
+                },
                 objectParts = new
                 {
                     type = "array",
@@ -192,13 +201,6 @@ public static class V5OwnedDecisionContractV3
             {
                 kind = new { type = "string", @enum = V5OwnedDecisionKindsV3.All },
                 claims = new { type = "array", items = claimSchema },
-                verbatimText = new { type = "string", minLength = 1 },
-                additionalSubjectParts = new
-                {
-                    type = "array",
-                    items = AdditionalPartSchema(),
-                },
-                consumedBySubjectIndex = IndexSchema(ownedCount),
             },
             required = new[] { "kind", "claims" },
         };
@@ -250,14 +252,12 @@ public static class V5OwnedDecisionContractV3
 
         var predicateNames = contract.Predicates.Select(item => item.Name).ToHashSet(StringComparer.Ordinal);
         var relations = contract.Relations.ToDictionary(item => item.Name, StringComparer.Ordinal);
-        var consumedBy = new Dictionary<int, int>();
 
         var count = Math.Min(decisions.Count, owned.Count);
         for (var i = 0; i < count; i++)
         {
             var decision = decisions[i];
             var claims = decision.Claims ?? [];
-            var additional = decision.AdditionalSubjectParts ?? [];
 
             if (!V5OwnedDecisionKindsV3.All.Contains(decision.Kind, StringComparer.Ordinal))
             {
@@ -268,67 +268,12 @@ public static class V5OwnedDecisionContractV3
             if (decision.Kind == V5OwnedDecisionKindsV3.None)
             {
                 if (claims.Count != 0) issues.Add($"none-decision-has-claims:{i}");
-                if (decision.ConsumedBySubjectIndex is not null) issues.Add($"none-decision-has-consumer:{i}");
-                if (decision.VerbatimText is not null || additional.Count != 0) issues.Add($"none-decision-has-selection:{i}");
-                continue;
-            }
-
-            if (decision.Kind == V5OwnedDecisionKindsV3.Consumed)
-            {
-                if (claims.Count != 0) issues.Add($"consumed-decision-has-claims:{i}");
-                if (decision.VerbatimText is not null || additional.Count != 0) issues.Add($"consumed-decision-has-selection:{i}");
-                if (decision.ConsumedBySubjectIndex is null || decision.ConsumedBySubjectIndex < 0 ||
-                    decision.ConsumedBySubjectIndex >= i)
-                    issues.Add($"consumed-by-invalid:{i}");
                 continue;
             }
 
             if (claims.Count == 0) issues.Add($"claims-decision-empty:{i}");
-            if (decision.ConsumedBySubjectIndex is not null) issues.Add($"claims-decision-has-consumer:{i}");
-            ValidateStrictSubstring(decision.VerbatimText, owned[i].Text, $"subject:{i}", issues);
-
-            var previous = i;
-            var seenAdditional = new HashSet<int>();
-            foreach (var part in additional)
-            {
-                if (part.OwnedIndex <= i || part.OwnedIndex >= owned.Count)
-                {
-                    issues.Add($"additional-subject-index-out-of-range:{i}:{part.OwnedIndex}");
-                    continue;
-                }
-                if (!seenAdditional.Add(part.OwnedIndex))
-                    issues.Add($"additional-subject-index-duplicate:{i}:{part.OwnedIndex}");
-                if (part.OwnedIndex <= previous)
-                    issues.Add($"additional-subject-order-invalid:{i}:{part.OwnedIndex}");
-                previous = part.OwnedIndex;
-                ValidateStrictSubstring(part.VerbatimText, owned[part.OwnedIndex].Text,
-                    $"subject:{i}:additional:{part.OwnedIndex}", issues);
-
-                if (consumedBy.TryGetValue(part.OwnedIndex, out var existing) && existing != i)
-                    issues.Add($"owned-subject-consumed-by-multiple-anchors:{part.OwnedIndex}:{existing}:{i}");
-                else
-                    consumedBy[part.OwnedIndex] = i;
-            }
-
             foreach (var claim in claims)
                 ValidateClaim(i, claim, predicateNames, relations, owned, context, issues);
-        }
-
-        foreach (var (index, anchor) in consumedBy)
-        {
-            if (index >= decisions.Count) continue;
-            var decision = decisions[index];
-            if (decision.Kind != V5OwnedDecisionKindsV3.Consumed ||
-                decision.ConsumedBySubjectIndex != anchor)
-                issues.Add($"consumed-counterpart-missing:{index}:{anchor}");
-        }
-
-        for (var i = 0; i < count; i++)
-        {
-            var decision = decisions[i];
-            if (decision.Kind != V5OwnedDecisionKindsV3.Consumed) continue;
-            if (!consumedBy.TryGetValue(i, out var anchor) || anchor != decision.ConsumedBySubjectIndex)
-                issues.Add($"orphan-consumed-decision:{i}");
         }
 
         return issues;
@@ -352,6 +297,27 @@ public static class V5OwnedDecisionContractV3
             issues.Add($"predicate-not-in-contract:{subjectIndex}:{claim.Predicate}");
         if (claim.State == ClaimResolutionState.EXHAUSTED)
             issues.Add($"model-may-not-originate-exhausted-state:{subjectIndex}");
+
+        ValidateStrictSubstring(claim.VerbatimText, owned[subjectIndex].Text,
+            $"subject:{subjectIndex}:{claim.Predicate}", issues);
+
+        var previous = subjectIndex;
+        var seenAdditional = new HashSet<int>();
+        foreach (var part in claim.AdditionalSubjectParts ?? [])
+        {
+            if (part.OwnedIndex <= subjectIndex || part.OwnedIndex >= owned.Count)
+            {
+                issues.Add($"additional-subject-index-out-of-range:{subjectIndex}:{part.OwnedIndex}");
+                continue;
+            }
+            if (!seenAdditional.Add(part.OwnedIndex))
+                issues.Add($"additional-subject-index-duplicate:{subjectIndex}:{part.OwnedIndex}");
+            if (part.OwnedIndex <= previous)
+                issues.Add($"additional-subject-order-invalid:{subjectIndex}:{part.OwnedIndex}");
+            previous = part.OwnedIndex;
+            ValidateStrictSubstring(part.VerbatimText, owned[part.OwnedIndex].Text,
+                $"subject:{subjectIndex}:additional:{part.OwnedIndex}:{claim.Predicate}", issues);
+        }
 
         if (claim.EvidenceNeeds is null)
             issues.Add($"evidence-needs-missing:{subjectIndex}:{claim.Predicate}");
@@ -399,7 +365,7 @@ public static class V5OwnedDecisionContractV3
 
             if (node is not null)
                 ValidateStrictSubstring(part.VerbatimText, node.Text,
-                    $"object:{subjectIndex}:{part.Scope}:{part.Index}", issues);
+                    $"object:{subjectIndex}:{part.Scope}:{part.Index}:{claim.Predicate}", issues);
         }
     }
 
@@ -448,22 +414,9 @@ public static class V5OwnedDecisionResponseCodecV3
         foreach (var decision in decisions.EnumerateArray())
         {
             EnsureFields(decision, V5OwnedDecisionContractV3.AllowedDecisionFields, "decision");
-            if (!decision.TryGetProperty("kind", out var kind) || kind.ValueKind != JsonValueKind.String)
-                throw new InvalidOperationException("decision-kind-missing");
+            EnsureRequiredString(decision, "kind", "decision");
             if (!decision.TryGetProperty("claims", out var claims) || claims.ValueKind != JsonValueKind.Array)
                 throw new InvalidOperationException("decision-claims-array-missing");
-
-            if (decision.TryGetProperty("additionalSubjectParts", out var additional) &&
-                additional.ValueKind != JsonValueKind.Null)
-            {
-                if (additional.ValueKind != JsonValueKind.Array)
-                    throw new InvalidOperationException("additional-subject-parts-not-array");
-                foreach (var part in additional.EnumerateArray())
-                {
-                    EnsureFields(part, V5OwnedDecisionContractV3.AllowedAdditionalPartFields, "additional-subject-part");
-                    EnsureRequiredInteger(part, "ownedIndex", "additional-subject-part");
-                }
-            }
 
             foreach (var claim in claims.EnumerateArray())
             {
@@ -472,6 +425,19 @@ public static class V5OwnedDecisionResponseCodecV3
                 EnsureRequiredString(claim, "state", "claim");
                 if (!claim.TryGetProperty("evidenceNeeds", out var evidenceNeeds) || evidenceNeeds.ValueKind != JsonValueKind.Array)
                     throw new InvalidOperationException("claim-evidenceNeeds-array-missing");
+
+                if (claim.TryGetProperty("additionalSubjectParts", out var additional) &&
+                    additional.ValueKind != JsonValueKind.Null)
+                {
+                    if (additional.ValueKind != JsonValueKind.Array)
+                        throw new InvalidOperationException("additional-subject-parts-not-array");
+                    foreach (var part in additional.EnumerateArray())
+                    {
+                        EnsureFields(part, V5OwnedDecisionContractV3.AllowedAdditionalPartFields, "additional-subject-part");
+                        EnsureRequiredInteger(part, "ownedIndex", "additional-subject-part");
+                    }
+                }
+
                 if (claim.TryGetProperty("objectParts", out var objectParts) && objectParts.ValueKind != JsonValueKind.Null)
                 {
                     if (objectParts.ValueKind != JsonValueKind.Array)
@@ -543,15 +509,15 @@ public static class V5OwnedDecisionAdapterV3
             var decision = response.Decisions[i];
             if (decision.Kind != V5OwnedDecisionKindsV3.Claims) continue;
 
-            var subjectParts = new List<ProviderSourcePartV2_1>
-            {
-                ToPart(packet.SubjectEvidence[i], decision.VerbatimText),
-            };
-            foreach (var additional in decision.AdditionalSubjectParts ?? [])
-                subjectParts.Add(ToPart(packet.SubjectEvidence[additional.OwnedIndex], additional.VerbatimText));
-
             foreach (var claim in decision.Claims ?? [])
             {
+                var subjectParts = new List<ProviderSourcePartV2_1>
+                {
+                    ToPart(packet.SubjectEvidence[i], claim.VerbatimText),
+                };
+                foreach (var additional in claim.AdditionalSubjectParts ?? [])
+                    subjectParts.Add(ToPart(packet.SubjectEvidence[additional.OwnedIndex], additional.VerbatimText));
+
                 ClaimSourceEndpointV2_1? target = null;
                 if (claim.ObjectParts is { Count: > 0 })
                 {
@@ -589,10 +555,11 @@ public static class V5OwnedDecisionRequestComposerV3
         "You are a task-defined semantic reasoner.",
         $"Return exactly {ownedCount} decisions, one positionally for every subjectEvidence item and in the same order.",
         "Do not return subject aliases or subject coordinates. The harness owns subject identity.",
-        "Use kind NONE for an explicit semantic negative, CLAIMS when this owned subject originates claims, and CONSUMED when an earlier multi-atom CLAIMS decision already includes this owned subject.",
+        "Use kind NONE for an explicit semantic negative and CLAIMS when this owned subject originates one or more claims.",
         "contextOnlyEvidence can be read as context and can be referenced only as a relation object through scope CONTEXT; it has no subject-reference form.",
+        "Each claim may independently select a strict substring of its positional owned subject or extend through later subjectEvidence indices in additionalSubjectParts.",
         "For a whole subject atom omit verbatimText. Use verbatimText only for a strict exact substring copied character-for-character.",
-        "For a multi-atom subject, additionalSubjectParts may reference later subjectEvidence indices only; mark each included later slot CONSUMED by the anchor index.",
+        "For a multi-atom claim, additionalSubjectParts may reference later subjectEvidence indices only and must be in source order.",
         "Relations address objects by scope/index. OPEN is preferable to inventing a target.",
         "The task contract vocabulary is authoritative. Return only the declared decision schema.",
     });

@@ -14,7 +14,8 @@
     "existingBinderChanged": false,
     "existingV2_1RuntimeChanged": false,
     "adapterTarget": "SemanticClaimProposalV2_1",
-    "multiAtomSubject": "supported through additionalSubjectParts addressing owned indices only",
+    "claimLocalSubjectSelection": "supported so different predicates on the same positional owned subject may select different exact spans",
+    "multiAtomSubject": "supported per claim through additionalSubjectParts addressing later owned indices only",
     "relationObjectHalo": "supported through scope=CONTEXT plus context index",
     "strictSubstring": "supported through exact verbatimText; whole-atom verbatimText is validator-forbidden"
   },
