@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "v5-p5d-v3-provider-preflight-summary-v1",
+  "v3Requests": 31,
+  "ownedTotal": 2884,
+  "ownedExactOnce": true,
+  "positionalMappingStable": true,
+  "haloSubjectRepresentable": false,
+  "multiAtomRepresentable": true,
+  "relationHaloTarget": true,
+  "streamReassemblyV3": "PASS",
+  "malformedNullAndCardinalityResponses": "FAIL_CLOSED",
+  "maxDecisionsPerRequest": 96,
+  "maxVisiblePerRequest": 112,
+  "maxRequestBytes": 91453,
+  "maxProviderRequestBytes": 122810,
+  "maxCompletionBudget": 25088,
+  "qwenDocumentedMaxCompletionTokens": 65536,
+  "maxSimpleOneClaimResponseBytes": 8463,
+  "maxSimpleOneClaimTokenEstimate": 2116,
+  "completionBudgetFormula": "max(1024, 512 \u002B ownedCount*256, requestBytes/6), capped at 32768; max observed=25088",
+  "truncationRisk": "OPEN_UNBOUNDED_SCHEMA: claims and optional selection-context strings have no finite schema maximum; simple one-claim-per-owned fixture fits budget, but offline preflight cannot guarantee provider completion",
+  "qwenOpenRouterCarrier": "JSON_OBJECT_AND_STREAM_BODY_MATCH_QUALIFIED_ROUTE; V3_MODEL_COMPLIANCE_NOT_TESTED",
+  "runtimeSynthetic": {
+    "validResponseBound": true,
+    "invalidCardinalityRefused": true
+  },
+  "providerCalls": 0,
+  "goldRead": false,
+  "historicalBaseline": {
+    "value": "82/519/57",
+    "protocol": "V2.1_ONLY_NOT_CURRENT_V3_SCORE"
+  }
+}

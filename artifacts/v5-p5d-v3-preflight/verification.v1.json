@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "v5-p5d-v3-preflight-verification-v1",
+  "focusedP5DTest": {
+    "command": "dotnet test tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj --filter FullyQualifiedName~V5P5DV3ProviderPreflightTests --no-restore -m:1",
+    "result": "PASS",
+    "passed": 1,
+    "failed": 0
+  },
+  "v5TestPack": {
+    "command": "dotnet test tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj --filter FullyQualifiedName~V5ArchitectureTests|FullyQualifiedName~V5RuntimeConvergenceV2_1Tests|FullyQualifiedName~V5ClaimProtocolV2_1Tests|FullyQualifiedName~V5CanonicalSemanticRequestV1Tests|FullyQualifiedName~V5SourceSelectionPolicyTests|FullyQualifiedName~V5EvidenceWireV2_1Tests|FullyQualifiedName~V5BindingQualificationTests|FullyQualifiedName~V5HardClosedSubjectContractTests|FullyQualifiedName~V5CurrentContractResidualAuditTests|FullyQualifiedName~V5SubjectOwnershipPackBoundaryAuditTests|FullyQualifiedName~V5OwnedDecisionProtocolV3Tests|FullyQualifiedName~V5RepresentabilityAuditTests|FullyQualifiedName~V5OwnedDecisionDisambiguationAuditTests|FullyQualifiedName~V5P5DV3ProviderPreflightTests --no-restore -m:1",
+    "result": "PASS",
+    "passed": 124,
+    "failed": 0
+  },
+  "openRouterTransportTests": {
+    "command": "dotnet test tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj --filter FullyQualifiedName~OpenRouterTests|FullyQualifiedName~OpenRouterToolCallSseTests --no-restore -m:1",
+    "result": "PASS",
+    "passed": 20,
+    "failed": 0,
+    "networkCalls": 0
+  },
+  "releaseBuild": {
+    "command": "dotnet build -c Release --no-restore -t:Rebuild",
+    "result": "PASS",
+    "errors": 0,
+    "warnings": 28,
+    "warningClassification": {
+      "CS8631": 10,
+      "CS8619": 1,
+      "CS1998": 4,
+      "CA1416": 2,
+      "xUnit1031": 1,
+      "xUnit2013": 3,
+      "xUnit2029": 1,
+      "xUnit2031": 6,
+      "scope": "existing test-project diagnostics only; no production-project warnings; P5D's own collection-size diagnostic was fixed before this rebuild"
+    }
+  },
+  "diffCheck": "PASS",
+  "providerCalls": 0,
+  "goldRead": false
+}

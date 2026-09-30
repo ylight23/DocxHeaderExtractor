@@ -126,8 +126,8 @@ public static class V5ProviderPreflightBuilder
 {
     /// <summary>
     /// Named alias for <see cref="Build(string,UniversalEvidenceGraph,DocumentTaskContract,IReadOnlyList{V5ComposedSemanticRequest},string,V5ProviderEnvelope)"/>.
-    /// v2.1 is the only active V5 claim protocol, so the base builder already returns
-    /// <see cref="SemanticClaimContractV2_1"/>'s schema hash; this name exists only for call-site clarity.
+    /// This legacy qualification path returns <see cref="SemanticClaimContractV2_1"/>'s schema hash;
+    /// live runtime requests use the separate v3 decision protocol and P5D preflight builder.
     /// </summary>
     public static V5ProviderPreflight BuildV2_1(
         string productionSourceSha,

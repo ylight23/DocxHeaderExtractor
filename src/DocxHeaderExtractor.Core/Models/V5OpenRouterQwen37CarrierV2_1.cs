@@ -216,6 +216,27 @@ public static class OpenRouterQwen37JsonObjectCarrierV2_1
 }
 
 /// <summary>
+/// The same qualified OpenRouter json_object transport shape applied to the live v3 canonical
+/// decision request. The prompt/schema remain v3-owned; this adapter centralizes the carrier bytes
+/// in the existing body builder and does not enable provider-side schema enforcement.
+/// </summary>
+public static class OpenRouterQwen37JsonObjectCarrierV3
+{
+    public static V5RouteIdentity Route => V5RouteIdentity.OpenRouterQwen37ChatCompletions;
+
+    public static V5ProviderRequestBodyV2_1 Build(
+        V5ComposedSemanticDecisionRequestV3 request, int maxCompletionTokens, V5ProviderEnvelope envelope)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(envelope);
+        if (envelope.Model != Route.Model || envelope.Provider != Route.Provider || envelope.ResponseFormat != "json_object")
+            throw new InvalidOperationException("v3-json-object-carrier-route-not-qualified");
+        return OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRaw(
+            V5SystemPromptV2_1.Text, request.Prompt, maxCompletionTokens, envelope);
+    }
+}
+
+/// <summary>
 /// The complete, deterministic OpenRouter request body for the prepared-but-unsent ToolAuto carrier:
 /// exactly one declared function (<see cref="OpenRouterQwen37ToolAutoCarrierV1.ToolName"/>), with
 /// <c>tool_choice: "auto"</c> - never the named-function or <c>"required"</c> forms, both already

@@ -244,12 +244,18 @@ public static class V5SemanticDecisionContractV3
         {
             throw new InvalidOperationException("decision-response-schema-invalid", ex);
         }
+        if (response.Decisions is null || response.Decisions.Count != ownedCount || response.Decisions.Any(decision => decision is null))
+            throw new InvalidOperationException("decision-response-schema-invalid:null-or-missing-decision");
         var issueOrdinal = 0;
         foreach (var (decision, decisionIndex) in response.Decisions.Select((decision, index) => (decision, index)))
         {
+            if (decision.Claims is null)
+                throw new InvalidOperationException($"decision-response-schema-invalid:decision-{decisionIndex}:claims-missing");
             var priorOwned = decisionIndex;
             foreach (var claim in decision.Claims)
             {
+                if (claim is null)
+                    throw new InvalidOperationException($"decision-response-schema-invalid:decision-{decisionIndex}:claim-null");
                 var key = claim.ExistingClaimId ?? $"decision-{decisionIndex}-claim-{issueOrdinal++}";
                 foreach (var additional in claim.AdditionalSubjectParts ?? [])
                 {
@@ -259,6 +265,8 @@ public static class V5SemanticDecisionContractV3
                 }
                 foreach (var target in claim.TargetParts ?? [])
                 {
+                    if (target is null)
+                        throw new InvalidOperationException($"decision-response-schema-invalid:{key}:target-part-null");
                     if ((target.SourceGroup == "OWNED" && (target.SourceIndex < 0 || target.SourceIndex >= ownedCount)) ||
                         (target.SourceGroup == "CONTEXT_ONLY" && (target.SourceIndex < 0 || target.SourceIndex >= contextOnlyCount)) ||
                         target.SourceGroup is not ("OWNED" or "CONTEXT_ONLY"))
