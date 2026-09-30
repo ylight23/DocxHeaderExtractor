@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "v5-subject-ownership-pack-boundary-summary-v1",
+  "status": "P5A_COMPLETE_OFFLINE",
+  "providerCalls": 0,
+  "goldRead": true,
+  "refusalClaims": 85,
+  "refusedPackAliasPairs": 66,
+  "contextOnlyNotSubjectEvidence": 85,
+  "byHaloSide": {
+    "RIGHT_HALO": 65,
+    "LEFT_HALO": 20
+  },
+  "exactGoldRefusalClaims": 10,
+  "exactGoldRefusalOccurrences": 9,
+  "retainedExactGoldOccurrences": 7,
+  "crossPackGoldLossProven": 2,
+  "lossMechanisms": [
+    {
+      "identity": "SRC-095:L1472:S0:0-19",
+      "outcome": "CROSS_PACK_GOLD_LOSS_OWNER_OMITTED",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017"
+    },
+    {
+      "identity": "SRC-095:L1710:S0:0-21",
+      "outcome": "CROSS_PACK_GOLD_LOSS_OWNER_UNBOUND",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020"
+    }
+  ],
+  "conclusion": "Ownership enforcement correctly fails closed. Two exact Gold losses are cross-pack ownership/provenance losses: one owner omission and one owner unbound retyping; this audit does not justify weakening the binder.",
+  "nextQuestion": "Any contract change must preserve deterministic harness ownership while preventing context-only aliases from being emitted as semantic claim subjects."
+}

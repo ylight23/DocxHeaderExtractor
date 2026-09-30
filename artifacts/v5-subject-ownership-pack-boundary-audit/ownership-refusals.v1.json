@@ -1,0 +1,2493 @@
+{
+  "schemaVersion": "v5-subject-ownership-refusals-v1",
+  "providerCalls": 0,
+  "goldRead": true,
+  "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION",
+  "scope": "All P4 subject-alias-not-owned binder refusals; no provider, runtime, binder, graph, or projection execution.",
+  "refusalClaims": 85,
+  "refusalTaxonomyCount": 85,
+  "allRefusalsWereVisibleContextOnly": true,
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "rawOrdinal": 7,
+      "subjectAlias": "L0195:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L0195:S0:0-81",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "DOCUMENT_IDENTITY",
+          "NAVIGATION_REPRESENTATION",
+          "PARENT_OF",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "DOCUMENT_IDENTITY",
+          "NAVIGATION_REPRESENTATION",
+          "PARENT_OF",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": true,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "GOLD_RETAINED_BY_BOUND_OCCURRENCE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "rawOrdinal": 22,
+      "subjectAlias": "L0195:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L0195:S0:0-81",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "DOCUMENT_IDENTITY",
+          "NAVIGATION_REPRESENTATION",
+          "PARENT_OF",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "DOCUMENT_IDENTITY",
+          "NAVIGATION_REPRESENTATION",
+          "PARENT_OF",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "rawOrdinal": 25,
+      "subjectAlias": "L0196:S0",
+      "predicate": "REFERENCES",
+      "sourceIdentity": "L0196:S0:0-94",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "CONTINUES"
+        ],
+        "boundPredicates": [
+          "CONTINUES"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "rawOrdinal": 7,
+      "subjectAlias": "L0286:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L0286:S0:0-89",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "DOCUMENT_IDENTITY",
+          "REFERENCES"
+        ],
+        "boundPredicates": [
+          "DOCUMENT_IDENTITY",
+          "REFERENCES"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "rawOrdinal": 98,
+      "subjectAlias": "L0286:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L0286:S0:0-89",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "DOCUMENT_IDENTITY",
+          "REFERENCES"
+        ],
+        "boundPredicates": [
+          "DOCUMENT_IDENTITY",
+          "REFERENCES"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "rawOrdinal": 99,
+      "subjectAlias": "L0287:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L0287:S0:0-41",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "rawOrdinal": 100,
+      "subjectAlias": "L0288:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L0288:S0:0-97",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "rawOrdinal": 101,
+      "subjectAlias": "L0289:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L0289:S0:0-91",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "rawOrdinal": 102,
+      "subjectAlias": "L0290:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L0290:S0:0-11",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "rawOrdinal": 103,
+      "subjectAlias": "L0291:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L0291:S0:0-63",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "rawOrdinal": 104,
+      "subjectAlias": "L0292:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L0292:S0:0-56",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "rawOrdinal": 109,
+      "subjectAlias": "L0286:S0",
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "sourceIdentity": "L0286:S0:0-89",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "DOCUMENT_IDENTITY",
+          "REFERENCES"
+        ],
+        "boundPredicates": [
+          "DOCUMENT_IDENTITY",
+          "REFERENCES"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "rawOrdinal": 2,
+      "subjectAlias": "L0285:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L0285:S0:0-41",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "CONTINUES",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "CONTINUES",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "rawOrdinal": 9,
+      "subjectAlias": "L0382:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L0382:S0:0-10",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "DOCUMENT_IDENTITY"
+        ],
+        "boundPredicates": [
+          "DOCUMENT_IDENTITY"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "rawOrdinal": 10,
+      "subjectAlias": "L0384:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L0384:S0:0-71",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "REFERENCES",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "REFERENCES",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "rawOrdinal": 11,
+      "subjectAlias": "L0384:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L0384:S0:0-71",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "REFERENCES",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "REFERENCES",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": true,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "GOLD_RETAINED_BY_BOUND_OCCURRENCE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "rawOrdinal": 16,
+      "subjectAlias": "L0382:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L0382:S0:0-10",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "DOCUMENT_IDENTITY"
+        ],
+        "boundPredicates": [
+          "DOCUMENT_IDENTITY"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-089",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "rawOrdinal": 17,
+      "subjectAlias": "L0384:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L0384:S0:0-71",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "REFERENCES",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "REFERENCES",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "rawOrdinal": 65,
+      "subjectAlias": "L0090:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L0090:S0:0-40",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "rawOrdinal": 67,
+      "subjectAlias": "L0092:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L0092:S0:0-38",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "CONTINUES",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "rawOrdinal": 68,
+      "subjectAlias": "L0093:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L0093:S0:0-36",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "CONTINUES",
+          "PARENT_OF"
+        ],
+        "boundPredicates": [
+          "CONTINUES",
+          "PARENT_OF"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "rawOrdinal": 69,
+      "subjectAlias": "L0096:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L0096:S0:0-22",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "CONTINUES",
+          "PARENT_OF"
+        ],
+        "boundPredicates": [
+          "CONTINUES",
+          "PARENT_OF"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "rawOrdinal": 70,
+      "subjectAlias": "L0097:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L0097:S0:0-24",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "CONTINUES",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "CONTINUES",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "rawOrdinal": 29,
+      "subjectAlias": "L0277:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L0277:S0:0-20",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "PARENT_OF",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "PARENT_OF",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": true,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "GOLD_RETAINED_BY_BOUND_OCCURRENCE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "rawOrdinal": 4,
+      "subjectAlias": "L0472:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L0472:S0:0-24",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "DOCUMENT_IDENTITY",
+          "NAVIGATION_REPRESENTATION"
+        ],
+        "boundPredicates": [
+          "DOCUMENT_IDENTITY",
+          "NAVIGATION_REPRESENTATION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": true,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "GOLD_RETAINED_BY_BOUND_OCCURRENCE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "rawOrdinal": 1,
+      "subjectAlias": "L0557:S0",
+      "predicate": "DOCUMENT_IDENTITY",
+      "sourceIdentity": "L0557:S0:0-23",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "NAVIGATION_REPRESENTATION",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "NAVIGATION_REPRESENTATION",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": true,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "GOLD_RETAINED_BY_BOUND_OCCURRENCE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "rawOrdinal": 2,
+      "subjectAlias": "L0557:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L0557:S0:0-23",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "NAVIGATION_REPRESENTATION",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "NAVIGATION_REPRESENTATION",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": true,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "GOLD_RETAINED_BY_BOUND_OCCURRENCE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "rawOrdinal": 5,
+      "subjectAlias": "L0557:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L0557:S0:0-23",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "NAVIGATION_REPRESENTATION",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "NAVIGATION_REPRESENTATION",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "rawOrdinal": 6,
+      "subjectAlias": "L0557:S0",
+      "predicate": "REFERENCES",
+      "sourceIdentity": "L0557:S0:0-23",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "NAVIGATION_REPRESENTATION",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "NAVIGATION_REPRESENTATION",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+      "rawOrdinal": 5,
+      "subjectAlias": "L0760:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L0760:S0:0-34",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "PARENT_OF",
+          "REFERENCES",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "PARENT_OF",
+          "REFERENCES",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": true,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "GOLD_RETAINED_BY_BOUND_OCCURRENCE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+      "rawOrdinal": 21,
+      "subjectAlias": "L0854:S0",
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "sourceIdentity": "L0854:S0:0-33",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "rawOrdinal": 15,
+      "subjectAlias": "L1002:S0",
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "sourceIdentity": "L1002:S0:0-26",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": false,
+        "predicates": [
+          "DOCUMENT_IDENTITY"
+        ],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "rawOrdinal": 19,
+      "subjectAlias": "L1004:S0",
+      "predicate": "REFERENCES",
+      "sourceIdentity": "L1004:S0:0-93",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+      "rawOrdinal": 31,
+      "subjectAlias": "L1096:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1096:S0:0-101|L1097:S0:0-100|L1098:S0:0-95|L1099:S0:0-92",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": false,
+        "predicates": [
+          "DOCUMENT_IDENTITY"
+        ],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+      "rawOrdinal": 13,
+      "subjectAlias": "L1199:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1199:S0:0-17",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "PARENT_OF",
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "PARENT_OF",
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": true,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "GOLD_RETAINED_BY_BOUND_OCCURRENCE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "rawOrdinal": 10,
+      "subjectAlias": "L1472:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1472:S0:0-19",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": true,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "CROSS_PACK_GOLD_LOSS_OWNER_OMITTED",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "rawOrdinal": 25,
+      "subjectAlias": "L1467:S0",
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "sourceIdentity": "L1467:S0:19-35",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": false,
+        "predicates": [
+          "DOCUMENT_IDENTITY"
+        ],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "rawOrdinal": 123,
+      "subjectAlias": "L1467:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L1467:S0:0-98",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": false,
+        "predicates": [
+          "DOCUMENT_IDENTITY"
+        ],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "rawOrdinal": 124,
+      "subjectAlias": "L1468:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L1468:S0:0-96",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "rawOrdinal": 125,
+      "subjectAlias": "L1469:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L1469:S0:0-37",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "rawOrdinal": 126,
+      "subjectAlias": "L1470:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L1470:S0:0-95",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "rawOrdinal": 127,
+      "subjectAlias": "L1471:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L1471:S0:0-83",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "rawOrdinal": 128,
+      "subjectAlias": "L1472:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L1472:S0:0-19",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "rawOrdinal": 129,
+      "subjectAlias": "L1473:S0",
+      "predicate": "CONTINUES",
+      "sourceIdentity": "L1473:S0:0-90",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "rawOrdinal": 2,
+      "subjectAlias": "L1529:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1529:S0:0-12",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "rawOrdinal": 71,
+      "subjectAlias": "L1573:S1",
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "sourceIdentity": "L1573:S1:0-6",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "NAVIGATION_REPRESENTATION"
+        ],
+        "boundPredicates": [
+          "NAVIGATION_REPRESENTATION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "rawOrdinal": 72,
+      "subjectAlias": "L1573:S2",
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "sourceIdentity": "L1573:S2:0-21",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "rawOrdinal": 73,
+      "subjectAlias": "L1573:S3",
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "sourceIdentity": "L1573:S3:0-11",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "PARENT_OF"
+        ],
+        "boundPredicates": [
+          "PARENT_OF"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "rawOrdinal": 74,
+      "subjectAlias": "L1575:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L1575:S0:0-17",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "rawOrdinal": 75,
+      "subjectAlias": "L1575:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L1575:S0:0-17",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "rawOrdinal": 76,
+      "subjectAlias": "L1575:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L1575:S0:0-17",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "rawOrdinal": 77,
+      "subjectAlias": "L1575:S1",
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "sourceIdentity": "L1575:S1:0-6",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "NAVIGATION_REPRESENTATION"
+        ],
+        "boundPredicates": [
+          "NAVIGATION_REPRESENTATION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "rawOrdinal": 78,
+      "subjectAlias": "L1575:S2",
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "sourceIdentity": "L1575:S2:0-24",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "rawOrdinal": 79,
+      "subjectAlias": "L1575:S3",
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "sourceIdentity": "L1575:S3:0-11",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "PARENT_OF"
+        ],
+        "boundPredicates": [
+          "PARENT_OF"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "rawOrdinal": 2,
+      "subjectAlias": "L1573:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1573:S0:0-11",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "PARENT_OF"
+        ],
+        "boundPredicates": [
+          "PARENT_OF"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "rawOrdinal": 96,
+      "subjectAlias": "L1629:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1629:S0:0-92",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "REFERENCES"
+        ],
+        "boundPredicates": [
+          "REFERENCES"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "rawOrdinal": 97,
+      "subjectAlias": "L1630:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1630:S0:0-76",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "rawOrdinal": 98,
+      "subjectAlias": "L1631:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1631:S0:0-9",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "rawOrdinal": 99,
+      "subjectAlias": "L1632:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1632:S0:0-89",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "REFERENCES"
+        ],
+        "boundPredicates": [
+          "REFERENCES"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "rawOrdinal": 100,
+      "subjectAlias": "L1633:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1633:S0:0-78",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "rawOrdinal": 101,
+      "subjectAlias": "L1634:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1634:S0:0-25",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "rawOrdinal": 102,
+      "subjectAlias": "L1635:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1635:S0:0-9",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "REFERENCES"
+        ],
+        "boundPredicates": [
+          "REFERENCES"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "rawOrdinal": 103,
+      "subjectAlias": "L1635:S1",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1635:S1:0-82",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "rawOrdinal": 25,
+      "subjectAlias": "L1622:S0",
+      "predicate": "DOCUMENT_IDENTITY",
+      "sourceIdentity": "L1622:S0:0-25",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "rawOrdinal": 7,
+      "subjectAlias": "L1710:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1710:S0:0-21",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": false,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": true,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "CROSS_PACK_GOLD_LOSS_OWNER_UNBOUND",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "rawOrdinal": 8,
+      "subjectAlias": "L1710:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L1710:S0:0-21",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": false,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "rawOrdinal": 9,
+      "subjectAlias": "L1710:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L1710:S0:0-21",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": false,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "rawOrdinal": 10,
+      "subjectAlias": "L1710:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L1710:S0:0-21",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": false,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "rawOrdinal": 11,
+      "subjectAlias": "L1710:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L1710:S0:0-21",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": false,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "rawOrdinal": 12,
+      "subjectAlias": "L1710:S0",
+      "predicate": "PARENT_OF",
+      "sourceIdentity": "L1710:S0:0-21",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": false,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "rawOrdinal": 1,
+      "subjectAlias": "L1807:S0",
+      "predicate": "DOCUMENT_IDENTITY",
+      "sourceIdentity": "L1807:S0:0-36",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "CONTINUES"
+        ],
+        "boundPredicates": [
+          "CONTINUES"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "rawOrdinal": 2,
+      "subjectAlias": "L1807:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1807:S0:0-36",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "CONTINUES"
+        ],
+        "boundPredicates": [
+          "CONTINUES"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "rawOrdinal": 58,
+      "subjectAlias": "L1897:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1897:S0:0-14",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "rawOrdinal": 59,
+      "subjectAlias": "L1898:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1898:S0:0-14",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "rawOrdinal": 60,
+      "subjectAlias": "L1899:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1899:S0:0-16",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "rawOrdinal": 61,
+      "subjectAlias": "L1900:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1900:S0:0-15",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "rawOrdinal": 62,
+      "subjectAlias": "L1901:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1901:S0:0-16",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "rawOrdinal": 63,
+      "subjectAlias": "L1902:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1902:S0:0-14",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "rawOrdinal": 64,
+      "subjectAlias": "L1903:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1903:S0:0-11",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": false,
+        "bound": false,
+        "predicates": [],
+        "boundPredicates": []
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "rawOrdinal": 18,
+      "subjectAlias": "L1990:S0",
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "sourceIdentity": "L1990:S0:0-20",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "rawOrdinal": 19,
+      "subjectAlias": "L1994:S0",
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "sourceIdentity": "L1994:S0:0-21",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "haloSide": "RIGHT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "STRUCTURAL_REGION"
+        ],
+        "boundPredicates": [
+          "STRUCTURAL_REGION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "rawOrdinal": 19,
+      "subjectAlias": "L1983:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1983:S0:0-17",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "NAVIGATION_REPRESENTATION"
+        ],
+        "boundPredicates": [
+          "NAVIGATION_REPRESENTATION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "rawOrdinal": 20,
+      "subjectAlias": "L1984:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1984:S0:0-16",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "NAVIGATION_REPRESENTATION"
+        ],
+        "boundPredicates": [
+          "NAVIGATION_REPRESENTATION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": true
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "rawOrdinal": 21,
+      "subjectAlias": "L1986:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1986:S0:0-19",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "NAVIGATION_REPRESENTATION"
+        ],
+        "boundPredicates": [
+          "NAVIGATION_REPRESENTATION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    },
+    {
+      "documentId": "SRC-095",
+      "refusedPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "rawOrdinal": 22,
+      "subjectAlias": "L1987:S0",
+      "predicate": "STRUCTURAL_REGION",
+      "sourceIdentity": "L1987:S0:0-11",
+      "ownerPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "haloSide": "LEFT_HALO",
+      "frozenRequestEvidence": {
+        "contextOnlyEvidence": true,
+        "subjectEvidence": false
+      },
+      "owner": {
+        "claimed": true,
+        "bound": true,
+        "predicates": [
+          "NAVIGATION_REPRESENTATION"
+        ],
+        "boundPredicates": [
+          "NAVIGATION_REPRESENTATION"
+        ]
+      },
+      "gold": {
+        "exactOccurrence": false,
+        "retainedByAnyBoundOccurrence": false
+      },
+      "outcome": "NON_GOLD_OR_RELATION_NOT_EVALUABLE",
+      "evidenceBasis": "FROZEN_HISTORICAL_PLUS_OFFLINE_REDERIVATION"
+    }
+  ]
+}
