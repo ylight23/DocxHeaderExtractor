@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "v5-representability-audit-summary-v1",
+  "status": "P5C1_COMPLETE_PROVIDER_FREE",
+  "providerCalls": 0,
+  "goldRead": false,
+  "source": "artifacts/v5-provider-cohort-31-windows",
+  "rawProposalCount": 1448,
+  "subject": {
+    "singlePart": 1424,
+    "multiPart": 24,
+    "maxParts": 6,
+    "singlePartAliasOnly": 903,
+    "singlePartVerbatim": 521,
+    "multiPartAllOwned": 23,
+    "multiPartCrossOwnedBoundary": 1,
+    "multiPartContainsHalo": 1,
+    "aliasOnlyParts": 981,
+    "verbatimParts": 525
+  },
+  "relationObject": {
+    "claimsWithObject": 709,
+    "singlePart": 709,
+    "multiPart": 0,
+    "maxParts": 1,
+    "ownedOnly": 672,
+    "containsHalo": 37,
+    "outOfVisible": 0,
+    "aliasOnlyParts": 531,
+    "verbatimParts": 178
+  },
+  "interpretation": {
+    "multiAtomSubject": "23/24 historical multi-part subjects use owned atoms only; the single cross-owned case is entirely halo and is already refused by ownership.",
+    "relationObject": "All 709 historical relation objects are single-part and visible; 37 legitimately point into halo/context.",
+    "v3Fit": "A positional owned-subject decision ledger plus owned-only additional subject indices and owned/context relation-object indices can represent every historically ownership-eligible source-reference topology observed in the frozen cohort."
+  }
+}

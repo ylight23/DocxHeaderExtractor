@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "v5-owned-decision-contract-v3-summary-v1",
+  "status": "P5C2_PROTOTYPE_PROVIDER_FREE",
+  "providerCalls": 0,
+  "goldRead": false,
+  "protocolVersion": "v5-owned-subject-decision-3.0",
+  "invariants": {
+    "OWNER_IDENTITY_HARD_CLOSED": "YES_CODEC_AND_POSITIONAL_WIRE",
+    "WHOLE_ATOM_RETYPE_REMOVED": "YES",
+    "ALL_OWNED_DECISION_REQUIRED": "YES_EXACT_CARDINALITY",
+    "HALO_AS_SUBJECT_STRUCTURALLY_IMPOSSIBLE": "YES_NO_CONTEXT_SUBJECT_REFERENCE"
+  },
+  "compatibility": {
+    "existingBinderChanged": false,
+    "existingV2_1RuntimeChanged": false,
+    "adapterTarget": "SemanticClaimProposalV2_1",
+    "multiAtomSubject": "supported through additionalSubjectParts addressing owned indices only",
+    "relationObjectHalo": "supported through scope=CONTEXT plus context index",
+    "strictSubstring": "supported through exact verbatimText; whole-atom verbatimText is validator-forbidden"
+  },
+  "promotionStatus": "NOT_PROMOTED_TO_PROVIDER_EXECUTION"
+}
