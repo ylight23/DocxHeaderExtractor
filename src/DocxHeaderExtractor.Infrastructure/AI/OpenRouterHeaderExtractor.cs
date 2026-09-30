@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using System.Net.Http.Headers;
 using System.Text;
@@ -129,6 +130,57 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         return await ExecuteLoopAsync(payloadBytes, maxTokens, systemPrompt, userMessage, "V5_SEMANTIC_CLAIM", logical, ct);
     }
 
+    /// <summary>
+    /// Same frozen-body execution surface as <see cref="ExecuteAsync"/> - exact same HTTP/SSE
+    /// transport, retry, deadline and telemetry machinery, reused unchanged - for a forced-tool-call
+    /// request instead of a <c>response_format</c> one. Additive only: <see cref="SseReassembly"/>
+    /// already captured only <c>delta.content</c>/<c>finish_reason</c>; this reads
+    /// <c>delta.tool_calls[]</c> from the exact same events, which a json_object response never
+    /// carries, so <see cref="ExecuteAsync"/>/<see cref="BoundaryCutAsync"/> are unaffected byte for
+    /// byte. Returns the raw, unreassembled per-chunk fragments -
+    /// <see cref="V5ToolCallArgumentsReassembler"/> does the reassembly, deliberately kept out of this
+    /// transport class.
+    /// </summary>
+    public async Task<(string Content, string? FinishReason, IReadOnlyList<V5ToolCallDeltaFragment> ToolCallFragments, JsonElement? Usage)> ExecuteToolCallAsync(
+        byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
+    {
+        ArgumentNullException.ThrowIfNull(payloadBytes);
+        using var logical = ProviderCallTelemetry.Start(_options.Observability, new ProviderLogicalCallMetadata
+        {
+            Stage = "V5_FORCED_TOOL_CALL",
+            LogicalCallId = $"v5-forced-tool-{Guid.NewGuid():N}",
+            RequestHash = ProviderObservabilityHashing.Sha256Bytes(payloadBytes),
+            RequestBytes = payloadBytes.Length,
+            EstimatedInputTokens = ProviderObservabilityHashing.EstimateTokens(systemPrompt + "\n" + userMessage),
+            MaxOutputTokens = maxTokens,
+            SourceItemCount = 1,
+            ContextItemCount = 1,
+            ContextCharacterCount = userMessage.Length,
+            Provider = "OpenRouter",
+            Model = _options.Model,
+        });
+        _options.DebugLog?.Invoke($"[OpenRouter] V5_FORCED_TOOL_CALL REQUEST model={_options.Model} payload={Encoding.UTF8.GetString(payloadBytes)}");
+
+        for (var attempt = 1; ; attempt++)
+        {
+            var result = await StreamOnceAsync(payloadBytes, maxTokens, systemPrompt, userMessage, logical, ct);
+            if (result.Content is { } content)
+            {
+                var fragments = result.ToolCallFragments ?? [];
+                logical?.Complete(new { resultCharacters = content.Length, toolCallFragments = fragments.Count, attempts = attempt });
+                return (content, result.FinishReason, fragments, result.Usage);
+            }
+
+            ct.ThrowIfCancellationRequested();
+            if (!result.Retryable || attempt > _options.TransientRequestRetries)
+                throw result.Error!;
+
+            var delay = RetryDelay(attempt, result.StatusCode, result.RetryAfter);
+            _options.DebugLog?.Invoke($"[OpenRouter] V5_FORCED_TOOL_CALL transport retry {attempt} after {delay.TotalMilliseconds:0} ms: {result.Error!.Message}");
+            await RetryWait(delay, ct);
+        }
+    }
+
     private async Task<(string Content, string? FinishReason)> ExecuteLoopAsync(
         byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, string stage,
         ProviderCallTelemetry? logical, CancellationToken ct)
@@ -199,7 +251,9 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
         Exception? Error,
         int? StatusCode,
         TimeSpan? RetryAfter,
-        string? FinishReason = null);
+        string? FinishReason = null,
+        IReadOnlyList<V5ToolCallDeltaFragment>? ToolCallFragments = null,
+        JsonElement? Usage = null);
 
     private async Task<StreamAttempt> StreamOnceAsync(
         byte[] payloadBytes,
@@ -336,9 +390,9 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
             cleanEof = stream.StreamEnded,
             usage = stream.Usage,
         });
-        telemetryAttempt?.PersistParsed(new { content, finishReason = stream.FinishReason, usage = stream.Usage });
+        telemetryAttempt?.PersistParsed(new { content, finishReason = stream.FinishReason, usage = stream.Usage, toolCallFragments = stream.ToolCallFragments.Count });
         telemetryAttempt?.Complete();
-        return new StreamAttempt(content, false, null, 200, null, stream.FinishReason);
+        return new StreamAttempt(content, false, null, 200, null, stream.FinishReason, stream.ToolCallFragments, stream.Usage);
     }
 
     private static bool IsRetryableStatus(int status) => status is 429 or 502 or 503 or 504;
@@ -372,8 +426,12 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
     {
         private readonly StringBuilder _content = new();
         private readonly List<string> _eventLines = [];
+        private readonly List<V5ToolCallDeltaFragment> _toolCallFragments = [];
 
         public string Content => _content.ToString();
+        // A json_object response never carries delta.tool_calls, so this stays empty for every
+        // existing caller (BoundaryCutAsync/ExecuteAsync) - purely additive for ExecuteToolCallAsync.
+        public IReadOnlyList<V5ToolCallDeltaFragment> ToolCallFragments => _toolCallFragments;
         public string? FinishReason { get; private set; }
         public bool DoneObserved { get; private set; }
         public bool StreamEnded { get; private set; }
@@ -439,11 +497,35 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
                 choices.GetArrayLength() == 0)
                 return;
             var choice = choices[0];
-            if (choice.TryGetProperty("delta", out var delta) &&
-                delta.TryGetProperty("content", out var piece) && piece.ValueKind == JsonValueKind.String)
-                _content.Append(piece.GetString());
+            if (choice.TryGetProperty("delta", out var delta))
+            {
+                if (delta.TryGetProperty("content", out var piece) && piece.ValueKind == JsonValueKind.String)
+                    _content.Append(piece.GetString());
+                if (delta.TryGetProperty("tool_calls", out var toolCalls) && toolCalls.ValueKind == JsonValueKind.Array)
+                    foreach (var toolCall in toolCalls.EnumerateArray())
+                        _toolCallFragments.Add(ParseToolCallFragment(toolCall));
+            }
             if (choice.TryGetProperty("finish_reason", out var finish) && finish.ValueKind == JsonValueKind.String)
                 FinishReason = finish.GetString();
+        }
+
+        /// <summary>One <c>delta.tool_calls[]</c> entry, exactly as OpenRouter's OpenAI-compatible
+        /// streaming normalizes it - <c>index</c> is the only field every fragment for one logical
+        /// tool call is guaranteed to repeat; <c>id</c>/<c>function.name</c> typically arrive once,
+        /// and <c>function.arguments</c> arrives as a fragment to be concatenated, never assumed
+        /// whole.</summary>
+        private static V5ToolCallDeltaFragment ParseToolCallFragment(JsonElement toolCall)
+        {
+            var index = toolCall.TryGetProperty("index", out var indexEl) && indexEl.ValueKind == JsonValueKind.Number ? indexEl.GetInt32() : 0;
+            string? id = toolCall.TryGetProperty("id", out var idEl) && idEl.ValueKind == JsonValueKind.String ? idEl.GetString() : null;
+            string? name = null;
+            string? argumentsChunk = null;
+            if (toolCall.TryGetProperty("function", out var function))
+            {
+                if (function.TryGetProperty("name", out var nameEl) && nameEl.ValueKind == JsonValueKind.String) name = nameEl.GetString();
+                if (function.TryGetProperty("arguments", out var argsEl) && argsEl.ValueKind == JsonValueKind.String) argumentsChunk = argsEl.GetString();
+            }
+            return new V5ToolCallDeltaFragment(index, id, name, argumentsChunk);
         }
     }
 

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "v5-qwen37-forced-tool-canary-classification-v1",
+  "classifies": "canary-result-variantA.v1.json - attempt 0",
+  "outcome": "LOCAL_PRE_SEND_FAILURE - not a provider call",
+  "rootCause": "OPENROUTER_API_KEY in the executing shell session carried a trailing newline byte (0x0a). .NET's AuthenticationHeaderValue validation rejects a header value containing a newline and throws before HttpClient.SendAsync is ever invoked - confirmed by latency (2-86ms per pack, far too fast for any network round trip, let alone 3 identical ones) and by the exact exception text ('New-line characters are not allowed in header values').",
+  "notAProviderCall": true,
+  "providerCallsActuallyMade": 0,
+  "resolution": "The user rotated the OpenRouter API key and re-ran with the trailing newline stripped from the environment variable for that one invocation (no code or artifact change). See canary-result-variantA-retry1.v1.json for the first attempt that actually reached the network.",
+  "securityNote": "While diagnosing this locally, the key's raw bytes were inadvertently displayed via a hex dump in the assistant's diagnostic output before the key was rotated. Recorded here for the audit trail, not because it changes this classification.",
+  "providerCalls": 0,
+  "goldRead": false,
+  "note": "This classification file makes no provider call; it explains why attempt 0 never reached the network."
+}

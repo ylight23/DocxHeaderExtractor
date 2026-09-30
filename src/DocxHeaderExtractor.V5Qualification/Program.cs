@@ -36,6 +36,10 @@ internal static class Program
         if (args.Contains("--qwen38-free-canary"))
             return await Qwen38FreeCanary.RunAsync(LocateRepoRoot(), args);
 
+        // The frozen qwen3.7-flash forced-tool-call Variant A canary has its own gate and sentinel; see Qwen37ForcedToolCanary.
+        if (args.Contains("--qwen37-forced-tool"))
+            return await Qwen37ForcedToolCanary.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "v5-qwen37-forced-tool-canary-result-v1",
+  "purpose": "MEASUREMENT_NOT_PROMOTION",
+  "variant": "A_structural_only",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "alibaba",
+  "tool": "submit_semantic_claims",
+  "retryAttempt": 0,
+  "sameFrozenBodiesAsAttempt0": true,
+  "providerCalls": 3,
+  "goldRead": false,
+  "semanticRetries": 0,
+  "responseRepairApplied": false,
+  "providerExecutionAuthorized": true,
+  "results": [
+    {
+      "role": "same-atom-normalization-heavy",
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "providerRequestHash": "0811e18ac7359cd23d3616e60310380eaf3e66fd4afcc08f3cdf55391554822f",
+      "transportError": "New-line characters are not allowed in header values.",
+      "finishReason": null,
+      "latencyMs": 86.4334,
+      "usage": null,
+      "toolCallCount": 0,
+      "toolCallFragmentsRawCount": 0,
+      "reassembledArguments": null,
+      "reassembledArgumentsSha256": null,
+      "qualification": null
+    },
+    {
+      "role": "true-multipart-heavy",
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "providerRequestHash": "d3f66555627c0b9100b7710eb2f3eb066099c99c9439f0511f611e9cd3eab4c7",
+      "transportError": "New-line characters are not allowed in header values.",
+      "finishReason": null,
+      "latencyMs": 2.5776,
+      "usage": null,
+      "toolCallCount": 0,
+      "toolCallFragmentsRawCount": 0,
+      "reassembledArguments": null,
+      "reassembledArgumentsSha256": null,
+      "qualification": null
+    },
+    {
+      "role": "mixed",
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "providerRequestHash": "4a0766b0a86cd956d7dc62e6a644f016912147868381764fc91a91d9f5794090",
+      "transportError": "New-line characters are not allowed in header values.",
+      "finishReason": null,
+      "latencyMs": 2.4545,
+      "usage": null,
+      "toolCallCount": 0,
+      "toolCallFragmentsRawCount": 0,
+      "reassembledArguments": null,
+      "reassembledArgumentsSha256": null,
+      "qualification": null
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "v5-qwen37-forced-tool-canary-classification-v1",
+  "classifies": "canary-result-variantA-retry1.v1.json - the first attempt that actually reached the network (attempt 0 failed client-side on a malformed API key before any request left the machine, 0 real provider calls)",
+  "outcome": "3/3 identical, deterministic rejection at OpenRouter's own routing layer - not a transient failure, not a schema/JSON problem, never reached the model",
+  "rawFinding": {
+    "httpStatus": 404,
+    "message": "No endpoints found that support the provided 'tool_choice' value.",
+    "routingFunnel": [{ "step": "Initial Endpoints", "endpointCount": 1 }],
+    "failedRoutingStep": "Filter by Tool Compatibility",
+    "identicalAcrossAllThreePacks": true,
+    "latencyMs": [2816.3175, 801.056, 811.0364]
+  },
+  "decisiveFinding": "SpecificToolChoiceSupported = FALSE, empirically confirmed - correcting preflight.json's capability record, which read it as TRUE from OpenRouter's supported_parameters listing alone",
+  "decisiveFindingReason": "The routing funnel shows exactly 1 candidate endpoint (Alibaba, as expected - it is the only provider for this slug) filtered out at 'Filter by Tool Compatibility' before ever reaching the model. 'tool_choice' being present in supported_parameters describes the generic capability catalog entry, not that this specific endpoint honors forcing a NAMED function ({type:\"function\", function:{name:...}}) - the exact same capability-label-vs-actual-behavior gap the qwen3.8-27b:free canary found for response_format, now found for tool_choice on Qwen3.7/Alibaba. This is not a transient/retryable failure (404 is not in OpenRouterHeaderExtractor.IsRetryableStatus), so no transport retry was attempted, and none should be - the same 3 frozen bodies would fail identically forever until the endpoint's capability changes.",
+  "notRetryable": true,
+  "noFurtherAutomaticRetryOpened": true,
+  "conclusionForThisExperiment": "The forced-tool output carrier, as designed (a specific tool_choice pinning exactly one named function), cannot be used on Qwen3.7/Alibaba via OpenRouter today. This closes the specific-forcing approach; it does not by itself say whether the generic tools surface (tool_choice: auto/required, letting the model choose) works, which was deliberately never tested here - the whole point of this design was removing that choice. Testing the generic surface would be a different experimental design, not a continuation of Variant A, and requires new explicit direction.",
+  "providerCalls": 3,
+  "goldRead": false,
+  "semanticRetries": 0,
+  "responseRepairApplied": false,
+  "note": "This classification file makes no provider call; it interprets canary-result-variantA-retry1.v1.json's own recorded routing rejection."
+}
