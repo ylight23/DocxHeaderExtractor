@@ -13,6 +13,18 @@ public sealed record V5PackedSourceRequest(
     int ProviderRequestBytes = 0);
 
 /// <summary>
+/// Provider-free P5C pack view for the hard-closed owned-decision contract. The packet is retained
+/// beside the composed bytes so tests can translate synthetic decisions through the real exact binder
+/// without reconstructing source ownership from the serialized prompt.
+/// </summary>
+public sealed record V5OwnedDecisionPackedSourceRequest(
+    string PackId,
+    IReadOnlyList<string> OwnedAliases,
+    IReadOnlyList<string> VisibleAliases,
+    V5EvidencePacketV2_1 Packet,
+    V5ComposedSemanticRequest Request);
+
+/// <summary>
 /// Builds a real PDF source-universe preflight without opening a provider or Gold. The existing
 /// parser and named packing policy supply observations; the V5 composer supplies only a deterministic
 /// semantic request representation.
@@ -83,6 +95,41 @@ public static class V5PdfPreflightBuilder
             policy.PolicyId,
             providerEnvelope);
         return (preflight, requests);
+    }
+
+    /// <summary>
+    /// Builds the same real PDF source universe and packing plan as <see cref="BuildV2_1"/>, but
+    /// composes the P5C owned-decision V3 request. This method is provider-free: no provider
+    /// envelope, transport body or Gold source is opened.
+    /// </summary>
+    public static IReadOnlyList<V5OwnedDecisionPackedSourceRequest> BuildOwnedDecisionV3Requests(
+        string pdfPath,
+        string documentId,
+        DocumentTaskContract contract,
+        string packingPolicy)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
+        ArgumentException.ThrowIfNullOrWhiteSpace(documentId);
+        ArgumentNullException.ThrowIfNull(contract);
+        ArgumentException.ThrowIfNullOrWhiteSpace(packingPolicy);
+        contract.Validate();
+
+        var policy = ResolvePolicy(packingPolicy);
+        var authority = PdfStructuredSourceAuthorityBuilder.Build(pdfPath);
+        var graph = BuildGraph(authority, documentId);
+        var byAlias = graph.Nodes.ToDictionary(node => node.SourceAlias, StringComparer.Ordinal);
+        var packs = policy.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom);
+
+        return packs.Select(pack =>
+        {
+            var (ownedAliases, visibleAliases, owned, visible) = ResolvePack(pack, byAlias);
+            var ownedSet = ownedAliases.ToHashSet(StringComparer.Ordinal);
+            var contextOnly = visible.Where(node => !ownedSet.Contains(node.SourceAlias)).ToArray();
+            var packet = new V5EvidencePacketV2_1(owned, contextOnly, [], [], [], []);
+            var composed = V5OwnedDecisionRequestComposerV3.Compose(contract, packet);
+            return new V5OwnedDecisionPackedSourceRequest(
+                pack.PackId, ownedAliases, visibleAliases, packet, composed);
+        }).ToArray();
     }
 
     private static ISemanticEvidencePackingPolicy ResolvePolicy(string packingPolicy) => packingPolicy switch
