@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "v5-semantic-error-summary-v1",
+  "status": "P4_COMPLETE_OBSERVABILITY_BOUNDED",
+  "providerCalls": 0,
+  "goldRead": true,
+  "limitation": "304 FP source-content labels remain UNCLASSIFIED under conservative source-text rules; all rows and rationale are retained. The 32 SRC-089 FP rows remain UNKNOWN_REGION. This is an observability-bounded decomposition, not a graph/projection causal diagnosis.",
+  "official": {
+    "tp": 82,
+    "fp": 519,
+    "fn": 57,
+    "precision": 0.1364,
+    "recall": 0.5899,
+    "f1": 0.2216,
+    "evidenceBasis": "GOLD_COMPARISON"
+  },
+  "observability": {
+    "graph": "NOT_OBSERVED",
+    "projection": "NOT_OBSERVED"
+  },
+  "fp": {
+    "trueSemantic": 0,
+    "trueSemanticEvidenceStatus": "NOT_PROVABLE_FROM_EXACT_MATCH_GOLD_ALONE",
+    "spanOrIdentityNearMiss": 44,
+    "unclassified": 304,
+    "sourceContentTaxonomy": {
+      "FP_UNCLASSIFIED": 304,
+      "FP_SPLIT_HEADING_COMPONENT": 22,
+      "FP_DOCUMENT_METADATA": 2,
+      "FP_NAVIGATION_TOC": 23,
+      "FP_BODY_SENTENCE": 31,
+      "FP_OTHER_STRUCTURAL_TEXT": 2,
+      "FP_CAPTION_OR_LABEL": 7,
+      "FP_REFERENCE_OR_INDEX_ENTRY": 115,
+      "FP_LIST_ITEM_OR_CLAUSE": 13,
+      "FP_RUNNING_HEADER_FOOTER": 0,
+      "FP_AUTHOR_OR_MASTHEAD": 0,
+      "FP_TABLE_OR_SCHEMA_CONTENT": 0,
+      "FP_PARTIAL_HEADING_FRAGMENT": 0,
+      "FP_DUPLICATE_OR_ALTERNATE_OCCURRENCE": 0
+    }
+  },
+  "fn": {
+    "noRawExactProposal": 10,
+    "rawNearOnly": 1,
+    "contractLossProven": 0,
+    "binderLossProven": 2,
+    "boundNearOnly": 44,
+    "causeNotObservable": 0,
+    "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW"
+  },
+  "rawGoldCoverage": {
+    "exact": 84,
+    "near": 45,
+    "absent": 10,
+    "exactRate": 0.6043,
+    "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW_AND_GOLD"
+  },
+  "binderImpact": {
+    "goldExactRawAndBound": 82,
+    "goldExactRawButBindingRefused": 2,
+    "binderGoldLossProven": 2,
+    "binderGoldLossPotential": 12,
+    "binderRefusedNonGold": 27,
+    "binderRefusedUnknown": 195,
+    "bindingRefused": 245,
+    "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW_AND_FROZEN_BINDING_TOTALS"
+  },
+  "contractImpact": {
+    "accepted": 1448,
+    "refused": 0,
+    "refusedExactGold": 0,
+    "refusedNearGold": 0,
+    "refusedNonGold": 0,
+    "refusedUnclassifiable": 0,
+    "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW"
+  },
+  "predicateEvidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW_AND_GOLD",
+  "regionEvidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_SOURCE_LAYOUT",
+  "largestMeasuredFpMechanism": "FP_UNCLASSIFIED",
+  "largestMeasuredFnMechanism": "FN_BOUND_NEAR_ONLY",
+  "largestPredicateFpContributor": "NAVIGATION_REPRESENTATION",
+  "largestRegionFpContributor": "MAIN_BODY",
+  "historicalQualificationSemanticStatus": "NOT_EVALUABLE",
+  "fpAccountingExact": true,
+  "fnAccountingExact": true
+}

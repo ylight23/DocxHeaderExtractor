@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "v5-semantic-error-predicate-v1",
+  "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW_AND_GOLD",
+  "providerCalls": 0,
+  "goldRead": true,
+  "note": "Claim predicates join to exact binder identities and are compared with canonical Gold; this is diagnostic, not predicate-specific task scoring.",
+  "predicates": [
+    "DOCUMENT_IDENTITY",
+    "STRUCTURAL_REGION",
+    "NAVIGATION_REPRESENTATION"
+  ],
+  "byPredicate": [
+    {
+      "predicate": "DOCUMENT_IDENTITY",
+      "rawClaims": 25,
+      "boundClaims": 17,
+      "uniqueBoundOccurrences": 17,
+      "goldExactOccurrences": 5,
+      "nonGoldOccurrences": 12,
+      "nearGoldOccurrences": 4,
+      "precisionLikeDiagnostic": 0.2941,
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW_AND_GOLD"
+    },
+    {
+      "predicate": "NAVIGATION_REPRESENTATION",
+      "rawClaims": 325,
+      "boundClaims": 284,
+      "uniqueBoundOccurrences": 284,
+      "goldExactOccurrences": 8,
+      "nonGoldOccurrences": 276,
+      "nearGoldOccurrences": 157,
+      "precisionLikeDiagnostic": 0.0282,
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW_AND_GOLD"
+    },
+    {
+      "predicate": "STRUCTURAL_REGION",
+      "rawClaims": 389,
+      "boundClaims": 313,
+      "uniqueBoundOccurrences": 313,
+      "goldExactOccurrences": 81,
+      "nonGoldOccurrences": 232,
+      "nearGoldOccurrences": 97,
+      "precisionLikeDiagnostic": 0.2588,
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW_AND_GOLD"
+    }
+  ],
+  "occurrencePredicateCombinations": {
+    "DOCUMENT_IDENTITY": 12,
+    "STRUCTURAL_REGION": 302,
+    "MULTIPLE_PREDICATES": 12,
+    "NAVIGATION_REPRESENTATION": 275
+  }
+}

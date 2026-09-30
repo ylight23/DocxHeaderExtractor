@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "v5-semantic-error-observability-v1",
+  "providerCalls": 0,
+  "goldRead": true,
+  "sourceCohortCommit": "3a4f69a194f1e0a4598bda8c5eeed06b7c57bb40",
+  "stages": [
+    {
+      "stage": "RAW_PROVIDER_PROPOSAL",
+      "status": "OBSERVED",
+      "evidenceBasis": "FROZEN_HISTORICAL",
+      "source": "provider/calls/*/content.txt"
+    },
+    {
+      "stage": "CONTRACT_DISPOSITION",
+      "status": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "source": "V2.1 codec can be applied to frozen raw response"
+    },
+    {
+      "stage": "BINDER_DISPOSITION",
+      "status": "HISTORICALLY_OBSERVED",
+      "evidenceBasis": "FROZEN_HISTORICAL",
+      "source": "cohort-result.v1.json and frozen score"
+    },
+    {
+      "stage": "BOUND_CLAIM",
+      "status": "HISTORICALLY_OBSERVED",
+      "evidenceBasis": "FROZEN_HISTORICAL",
+      "source": "1203 bound claims in frozen score"
+    },
+    {
+      "stage": "GOLD_EXACT_MATCH",
+      "status": "HISTORICALLY_OBSERVED",
+      "evidenceBasis": "GOLD_COMPARISON",
+      "source": "artifacts/v5-provider-cohort-31-windows/diagnosis/gold-offline-score.v1.json"
+    },
+    {
+      "stage": "GRAPH_DISPOSITION",
+      "status": "NOT_OBSERVED",
+      "evidenceBasis": "NOT_OBSERVED",
+      "source": "No frozen historical graph dispositions; no replay performed"
+    },
+    {
+      "stage": "PROJECTION_DISPOSITION",
+      "status": "NOT_OBSERVED",
+      "evidenceBasis": "NOT_OBSERVED",
+      "source": "No frozen historical projection dispositions; no replay performed"
+    }
+  ]
+}

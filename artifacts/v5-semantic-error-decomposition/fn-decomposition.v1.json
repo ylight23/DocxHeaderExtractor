@@ -1,0 +1,2981 @@
+{
+  "schemaVersion": "v5-semantic-error-fn-v1",
+  "providerCalls": 0,
+  "goldRead": true,
+  "officialCount": 57,
+  "accountedExactlyOnce": true,
+  "taxonomy": {
+    "FN_NO_RAW_EXACT_PROPOSAL": 10,
+    "FN_RAW_NEAR_ONLY": 1,
+    "FN_RAW_EXACT_CONTRACT_REFUSED": 0,
+    "FN_RAW_EXACT_BINDING_REFUSED": 2,
+    "FN_BOUND_NEAR_ONLY": 44,
+    "FN_CAUSE_NOT_OBSERVABLE": 0
+  },
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+      "wording": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+      "disposition": "FN_NO_RAW_EXACT_PROPOSAL",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0014:S0:0-9|L0015:S0:0-18",
+      "wording": "Chapter I GENERAL PROVISIONS",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0014:S0:0-9",
+          "Text": "Chapter I",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+          "Ordinal": 4
+        },
+        {
+          "Identity": "L0015:S0:0-18",
+          "Text": "GENERAL PROVISIONS",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+          "Ordinal": 5
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0016:S0:0-56",
+      "wording": "Article 1. Scope ofregulation and subjects ofapplication",
+      "disposition": "FN_NO_RAW_EXACT_PROPOSAL",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0024:S0:0-89|L0025:S0:0-45",
+      "wording": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing the state management ofpublication activities",
+      "disposition": "FN_NO_RAW_EXACT_PROPOSAL",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0051:S0:0-95|L0052:S0:0-35",
+      "wording": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state management ofpublication activities",
+      "disposition": "FN_NO_RAW_EXACT_PROPOSAL",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0080:S0:0-90|L0081:S0:0-35",
+      "wording": "Article 4. Tasks and powers ofprovincial-level People\u2019s Committees in performing the state management ofpublication activities",
+      "disposition": "FN_NO_RAW_EXACT_PROPOSAL",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0106:S0:0-80|L0107:S0:0-88|L0108:S0:0-13",
+      "wording": "Article 6. Conditions for establishment and contents ofoperation ofVietnam-based representative offices of foreign publishing houses and foreign publication distribution organizations",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0106:S0:0-80",
+          "Text": "Article 6. Conditions for establishment and contents ofoperation ofVietnam-based",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 3
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0109:S0:0-33",
+      "wording": "1 . Conditions for establishment:",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0106:S0:0-80",
+          "Text": "Article 6. Conditions for establishment and contents ofoperation ofVietnam-based",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 3
+        },
+        {
+          "Identity": "L0126:S0:0-86",
+          "Text": "Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 4
+        },
+        {
+          "Identity": "L0162:S0:0-86",
+          "Text": "Article 8. Conditions for establishment and assurance ofoperations ofpublishing houses",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 5
+        },
+        {
+          "Identity": "L0286:S0:0-89",
+          "Text": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "Ordinal": 7
+        },
+        {
+          "Identity": "L0286:S0:0-89",
+          "Text": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "Ordinal": 109
+        },
+        {
+          "Identity": "L0286:S0:0-89",
+          "Text": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 1
+        },
+        {
+          "Identity": "L0384:S0:0-71",
+          "Text": "Article 17. Conditions for publishing and distribution ofe-publications",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 11
+        },
+        {
+          "Identity": "L0384:S0:0-71",
+          "Text": "Article 17. Conditions for publishing and distribution ofe-publications",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 3
+        },
+        {
+          "Identity": "L0423:S0:0-89",
+          "Text": "5. The Minister ofInformation and Communications shall specify appropriate conditions for",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 24
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0117:S0:0-22",
+      "wording": "2. Operation contents:",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0462:S0:0-96",
+          "Text": "2. Requirements on the contents and technical conditions ofe-publications prescribed at Point a,",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 39
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0126:S0:0-86|L0127:S0:0-88|L0128:S0:0-13",
+      "wording": "Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based representative offices of foreign publishing houses and foreign publication distribution organizations",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0126:S0:0-86",
+          "Text": "Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 4
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0160:S0:0-10|L0161:S0:0-10",
+      "wording": "Chapter II PUBLISHING",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0160:S0:0-10",
+          "Text": "Chapter II",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 8
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0174:S0:0-89|L0175:S0:0-51",
+      "wording": "Article 9. Approval ofthe appointment, dismissal and relief from duty ofgeneral directors (directors) and editors-in-chiefofpublishing houses",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0174:S0:0-89",
+          "Text": "Article 9. Approval ofthe appointment, dismissal and relief from duty ofgeneral directors",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 6
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0246:S0:0-26",
+      "wording": "1 . For publishing houses:",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0162:S0:0-86",
+          "Text": "Article 8. Conditions for establishment and assurance ofoperations ofpublishing houses",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 5
+        },
+        {
+          "Identity": "L0384:S0:0-71",
+          "Text": "Article 17. Conditions for publishing and distribution ofe-publications",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 11
+        },
+        {
+          "Identity": "L0384:S0:0-71",
+          "Text": "Article 17. Conditions for publishing and distribution ofe-publications",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 3
+        },
+        {
+          "Identity": "L0428:S0:0-83",
+          "Text": "1 . The appraisal ofe-publication publishing or distribution schemes is as follows:",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 26
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0249:S0:0-16",
+      "wording": "2. For partners:",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0405:S0:0-87",
+          "Text": "2. Criteria for technical personnel who operate and manage the process ofpublishing and",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 14
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0284:S0:0-11|L0285:S0:0-41",
+      "wording": "Chapter III PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0284:S0:0-11",
+          "Text": "Chapter III",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "Ordinal": 5
+        },
+        {
+          "Identity": "L0285:S0:0-41",
+          "Text": "PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "Ordinal": 6
+        },
+        {
+          "Identity": "L0284:S0:0-11",
+          "Text": "Chapter III",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "Ordinal": 108
+        },
+        {
+          "Identity": "L0285:S0:0-41",
+          "Text": "PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L0383:S0:0-45",
+          "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 2
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0286:S0:0-89|L0287:S0:0-41",
+      "wording": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of revocation ofpublication printing permits",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0286:S0:0-89",
+          "Text": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "Ordinal": 7
+        },
+        {
+          "Identity": "L0286:S0:0-89",
+          "Text": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "Ordinal": 109
+        },
+        {
+          "Identity": "L0286:S0:0-89",
+          "Text": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 1
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0382:S0:0-10|L0383:S0:0-45",
+      "wording": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0285:S0:0-41",
+          "Text": "PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "Ordinal": 6
+        },
+        {
+          "Identity": "L0285:S0:0-41",
+          "Text": "PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L0382:S0:0-10",
+          "Text": "Chapter IV",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 9
+        },
+        {
+          "Identity": "L0384:S0:0-71",
+          "Text": "Article 17. Conditions for publishing and distribution ofe-publications",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 11
+        },
+        {
+          "Identity": "L0382:S0:0-10",
+          "Text": "Chapter IV",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 1
+        },
+        {
+          "Identity": "L0383:S0:0-45",
+          "Text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L0384:S0:0-71",
+          "Text": "Article 17. Conditions for publishing and distribution ofe-publications",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 3
+        },
+        {
+          "Identity": "L0426:S0:0-96",
+          "Text": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 25
+        },
+        {
+          "Identity": "L0436:S0:0-93",
+          "Text": "2. The registration ofthe publishing and distribution ofe-publications prescribed at Point d,",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 30
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0426:S0:0-96|L0427:S0:0-44",
+      "wording": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe publishing and distribution ofe-publications",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0426:S0:0-96",
+          "Text": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 25
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0455:S0:0-90|L0456:S0:0-27",
+      "wording": "Article 19. Classification ofe-publications and requirements on the contents and technical conditions ofe-publications",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0455:S0:0-90",
+          "Text": "Article 19. Classification ofe-publications and requirements on the contents and technical",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 35
+        },
+        {
+          "Identity": "L0462:S0:0-96",
+          "Text": "2. Requirements on the contents and technical conditions ofe-publications prescribed at Point a,",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 39
+        },
+        {
+          "Identity": "L0472:S0:0-96",
+          "Text": "3. Requirements on the contents and technical conditions ofe-publications prescribed at Point b,",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 44
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0499:S0:0-92|L0500:S0:0-58",
+      "wording": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals engaged in the publishing or distribution ofe-publications",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0499:S0:0-92",
+          "Text": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+          "Ordinal": 6
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0522:S0:0-92|L0523:S0:0-12",
+      "wording": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe- publications",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0522:S0:0-92",
+          "Text": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe-",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+          "Ordinal": 8
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0535:S0:0-9|L0536:S0:0-25",
+      "wording": "Chapter V IMPLEMENTATION PROVISIONS",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0535:S0:0-9",
+          "Text": "Chapter V",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+          "Ordinal": 10
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-089",
+      "identity": "L0555:S0:0-93|L0556:S0:0-12",
+      "wording": "Article 25. Renewal oflicenses for publication activities and registration of distribution of publications",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0426:S0:0-96",
+          "Text": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 25
+        },
+        {
+          "Identity": "L0555:S0:0-93",
+          "Text": "Article 25. Renewal oflicenses for publication activities and registration of distribution of",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+          "Ordinal": 14
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L0015:S0:0-18",
+      "wording": "Status ofThis Memo",
+      "disposition": "FN_NO_RAW_EXACT_PROPOSAL",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L0134:S0:0-27",
+      "wording": "1.1. Prior Versions of HTTP",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0289:S0:0-92",
+          "Text": "HTTP/3 relies on QUIC version 1 as the underlying transport. The use of other QUIC transport",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 36
+        },
+        {
+          "Identity": "L0370:S0:0-95",
+          "Text": "Transfer codings (see Section 7 of [HTTP/1.1]) are not de\uFB01ned for HTTP/3; the Transfer-Encoding",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 114
+        },
+        {
+          "Identity": "L0458:S0:0-95",
+          "Text": "and values are discussed in more detail in Section 5.1 of [HTTP]. Characters in \uFB01eld names MUST",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 10
+        },
+        {
+          "Identity": "L1076:S0:0-98|L1077:S0:0-92|L1078:S0:0-88|L1079:S0:0-92|L1080:S0:0-91|L1081:S0:0-8",
+          "Text": "For clients using a 1-RTT QUIC connection, the initial value of each server setting is the defaultvalue. 1-RTT keys will always become available prior to the packet containing SETTINGS beingprocessed by QUIC, even ifthe server sends SETTINGS immediately. Clients SHOULD NOT waitinde\uFB01nitely for SETTINGS to arrive before sending requests, but they SHOULD process receiveddatagrams in order to increase the likelihood ofprocessing SETTINGS before sending the \uFB01rstrequest.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 26
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L0146:S0:0-23",
+      "wording": "1.2. Delegation to QUIC",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L1076:S0:0-98|L1077:S0:0-92|L1078:S0:0-88|L1079:S0:0-92|L1080:S0:0-91|L1081:S0:0-8",
+          "Text": "For clients using a 1-RTT QUIC connection, the initial value of each server setting is the defaultvalue. 1-RTT keys will always become available prior to the packet containing SETTINGS beingprocessed by QUIC, even ifthe server sends SETTINGS immediately. Clients SHOULD NOT waitinde\uFB01nitely for SETTINGS to arrive before sending requests, but they SHOULD process receiveddatagrams in order to increase the likelihood ofprocessing SETTINGS before sending the \uFB01rstrequest.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 26
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L0185:S0:0-26",
+      "wording": "2.1. Document Organization",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0277:S0:0-20",
+          "Text": "3.1.2. Other Schemes",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "Ordinal": 29
+        },
+        {
+          "Identity": "L0277:S0:0-20",
+          "Text": "3.1.2. Other Schemes",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 1
+        },
+        {
+          "Identity": "L0428:S0:0-39",
+          "Text": "4.1.2. Malformed Requests and Responses",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L0472:S0:0-24",
+          "Text": "4.2.1. Field Compression",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 4
+        },
+        {
+          "Identity": "L0472:S0:0-24",
+          "Text": "4.2.1. Field Compression",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+          "Ordinal": 1
+        },
+        {
+          "Identity": "L0472:S0:0-24",
+          "Text": "4.2.1. Field Compression",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+          "Ordinal": 11
+        },
+        {
+          "Identity": "L0816:S0:0-94",
+          "Text": "Two stream types are de\uFB01ned in this document: control streams (Section 6.2.1) and push streams",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+          "Ordinal": 16
+        },
+        {
+          "Identity": "L0852:S0:0-22",
+          "Text": "6.2.1. Control Streams",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+          "Ordinal": 1
+        },
+        {
+          "Identity": "L0945:S0:0-11",
+          "Text": "7.2.1. DATA",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+          "Ordinal": 4
+        },
+        {
+          "Identity": "L1017:S0:0-96|L1018:S0:0-94|L1019:S0:0-76|L1020:S0:0-20",
+          "Text": "SETTINGS frame MUST be sent as the \uFB01rst frame of each control stream (see Section 6.2.1) by eachpeer, and it MUST NOT be sent subsequently. If an endpoint receives a second SETTINGS frame onthe control stream, the endpoint MUST respond with a connection error oftypeH3_FRAME_UNEXPECTED.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 8
+        },
+        {
+          "Identity": "L1050:S0:0-35",
+          "Text": "7.2.4.1. De\uFB01ned SETTINGS Parameters",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 16
+        },
+        {
+          "Identity": "L1472:S0:0-19",
+          "Text": "11.2.1. Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+          "Ordinal": 10
+        },
+        {
+          "Identity": "L1490:S2:0-13",
+          "Text": "Section 7.2.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+          "Ordinal": 11
+        },
+        {
+          "Identity": "L1534:S2:0-15",
+          "Text": "Section 7.2.4.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+          "Ordinal": 10
+        },
+        {
+          "Identity": "L1729:S0:0-32",
+          "Text": "A.2.1. Prioritization Di\uFB00erences",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 1
+        },
+        {
+          "Identity": "L1962:S0:0-75",
+          "Text": "H3_CLOSED_CRITICAL_STREAM Section 6.2.1, Paragraph 2; Section 8.1; Table 4;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 7
+        },
+        {
+          "Identity": "L1977:S0:0-75",
+          "Text": "H3_GENERAL_PROTOCOL_ERROR Section 7.2.5, Paragraph 6; Section 8.1; Table 4;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 12
+        },
+        {
+          "Identity": "L1986:S0:0-68",
+          "Text": "H3_MISSING_SETTINGS Section 6.2.1, Paragraph 2; Section 8.1; Table 4",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 16
+        },
+        {
+          "Identity": "L1987:S0:0-80",
+          "Text": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 17
+        },
+        {
+          "Identity": "L1988:S0:0-88",
+          "Text": "Paragraph 2; Section 8, Paragraph 5; Section 8.1; Section 8.1, Paragraph 3; Section 8.1,",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L1992:S0:0-89",
+          "Text": "Section 7.2.3, Paragraph 3; Section 7.2.3, Paragraph 4; Section 8.1; Table 4; Appendix A.",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 24
+        },
+        {
+          "Identity": "L2002:S0:0-72",
+          "Text": "7.2.4.2, Paragraph 8; Section 7.2.4.2, Paragraph 8; Section 8.1; Table 4",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 30
+        },
+        {
+          "Identity": "L2004:S0:0-76",
+          "Text": "Section 6.2.1, Paragraph 2; Section 6.2.2, Paragraph 3; Section 8.1; Table 4",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 31
+        },
+        {
+          "Identity": "L2007:S0:0-88",
+          "Text": "Section 2, Paragraph 3; Section 4.1, Paragraph 5, Item 1; Section 4.1, Paragraph 5, Item",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 32
+        },
+        {
+          "Identity": "L2010:S0:0-84",
+          "Text": "7.2.2; Section 9, Paragraph 5; Table 2; Appendix A.2.1, Paragraph 1; Appendix A.2.5;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 35
+        },
+        {
+          "Identity": "L2011:S0:0-65",
+          "Text": "Appendix A.2.5, Paragraph 1.4.1; Appendix A.2.5, Paragraph 1.20.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 36
+        },
+        {
+          "Identity": "L2016:S0:0-86",
+          "Text": "4.3.1, Paragraph 5; Section 4.3.2, Paragraph 1; Section 4.4, Paragraph 5; Section 8.1,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 39
+        },
+        {
+          "Identity": "L2017:S0:0-87",
+          "Text": "Paragraph 2.30.1; Section 10.3, Paragraph 1; Section 10.3, Paragraph 2; Section 10.5.1,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 40
+        },
+        {
+          "Identity": "L2021:S0:0-83",
+          "Text": "Paragraph 3; Section 4.6, Paragraph 3; Table 1; Section 7.2.5, Paragraph 5; Section",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 42
+        },
+        {
+          "Identity": "L2022:S0:0-73",
+          "Text": "7.2. 7; Table 2; Appendix A.1, Paragraph 4; Appendix A.3, Paragraph 4.4.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 43
+        },
+        {
+          "Identity": "L2027:S0:0-83",
+          "Text": "Paragraph 6; Section 7.2.3, Paragraph 1; Section 7.2.3, Paragraph 7; Section 7.2.3,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 46
+        },
+        {
+          "Identity": "L2029:S0:0-87",
+          "Text": "Paragraph 4.2.1; Section 7.2.5, Paragraph 5; Section 7.2.5, Paragraph 5; Section 7.2.5,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 48
+        },
+        {
+          "Identity": "L2032:S0:0-83",
+          "Text": "Paragraph 1; Section 7.2.7, Paragraph 4; Section 7.2.7, Paragraph 4; Section 7.2.7,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 51
+        },
+        {
+          "Identity": "L2033:S0:0-87",
+          "Text": "Paragraph 6; Section 7.2.7, Paragraph 6; Section 8.1, Paragraph 2.18.1; Appendix A.2.5,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 52
+        },
+        {
+          "Identity": "L2034:S0:0-50",
+          "Text": "Paragraph 1.12.1; Appendix A.2.5, Paragraph 1.16.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 53
+        },
+        {
+          "Identity": "L2039:S0:0-87",
+          "Text": "Section 7, Paragraph 1; Section 7.2.2, Paragraph 3; Section 7.2.3, Paragraph 1; Section",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 57
+        },
+        {
+          "Identity": "L2044:S0:0-87",
+          "Text": "Paragraph 4; Section 7.2.3, Paragraph 4; Section 7.2.5, Paragraph 4.2.1; Section 7.2.7,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 60
+        },
+        {
+          "Identity": "L2045:S0:0-45",
+          "Text": "Paragraph 1; Appendix A.2.5, Paragraph 1.12.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 61
+        },
+        {
+          "Identity": "L2047:S0:0-88",
+          "Text": "Section 2, Paragraph 5; Section 4.1, Paragraph 8; Section 4.1, Paragraph 8; Section 4.1,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 62
+        },
+        {
+          "Identity": "L2052:S0:0-90",
+          "Text": "7.2.3, Paragraph 8; Section 7.2.3, Paragraph 8; Section 7.2.5; Section 7.2.7, Paragraph 1;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 67
+        },
+        {
+          "Identity": "L2053:S0:0-87",
+          "Text": "Section 10.4, Paragraph 1; Section 10.5, Paragraph 2; Table 2; Appendix A.2.5; Appendix",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 68
+        },
+        {
+          "Identity": "L2054:S0:0-84",
+          "Text": "A.2.5, Paragraph 1.12.1; Appendix A.2.5, Paragraph 1.12.1; Appendix A.2.5, Paragraph",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 69
+        },
+        {
+          "Identity": "L2062:S0:0-39",
+          "Text": "Paragraph 3; Section 7.2.5, Paragraph 1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 75
+        },
+        {
+          "Identity": "L2065:S0:0-88",
+          "Text": "Section 3.2, Paragraph 4; Section 3.2, Paragraph 4; Section 6.2.1, Paragraph 2; Table 1;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 76
+        },
+        {
+          "Identity": "L2066:S0:0-82",
+          "Text": "Section 7, Paragraph 3; Section 7.2.4; Section 8.1, Paragraph 2.20.1; Section 8.1,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 77
+        },
+        {
+          "Identity": "L2067:S0:0-86",
+          "Text": "Paragraph 2.22.1; Section 9, Paragraph 4; Section 10.5, Paragraph 4; Table 2; Table 4;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 78
+        },
+        {
+          "Identity": "L2068:S0:0-85",
+          "Text": "Table 4; Appendix A.2.5; Appendix A.2.5, Paragraph 1.10.1; Appendix A.3, Paragraph 2;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 79
+        },
+        {
+          "Identity": "L2073:S0:0-51",
+          "Text": "10.5.1, Paragraph 2; Appendix A.3, Paragraph 4.12.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 83
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L0205:S0:0-32",
+      "wording": "2.2. Conventions and Terminology",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0351:S0:0-74",
+          "Text": "2. optionally, the content, ifpresent, sent as a series ofDATA frames, and",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 95
+        },
+        {
+          "Identity": "L0428:S0:0-39",
+          "Text": "4.1.2. Malformed Requests and Responses",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L0816:S0:0-94",
+          "Text": "Two stream types are de\uFB01ned in this document: control streams (Section 6.2.1) and push streams",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+          "Ordinal": 16
+        },
+        {
+          "Identity": "L1017:S0:0-96|L1018:S0:0-94|L1019:S0:0-76|L1020:S0:0-20",
+          "Text": "SETTINGS frame MUST be sent as the \uFB01rst frame of each control stream (see Section 6.2.1) by eachpeer, and it MUST NOT be sent subsequently. If an endpoint receives a second SETTINGS frame onthe control stream, the endpoint MUST respond with a connection error oftypeH3_FRAME_UNEXPECTED.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 8
+        },
+        {
+          "Identity": "L1062:S0:0-94|L1063:S0:0-93|L1064:S0:0-71",
+          "Text": "Setting identi\uFB01ers that were de\uFB01ned in [HTTP/2] where there is no corresponding HTTP/3 settinghave also been reserved (Section 11.2.2). These reserved settings MUST NOT be sent, and theirreceipt MUST be treated as a connection error oftype H3_SETTINGS_ERROR.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 20
+        },
+        {
+          "Identity": "L1761:S0:0-49",
+          "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 5
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L0244:S0:0-35",
+      "wording": "3.1. Discovering an HTTP/3 Endpoint",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0268:S0:0-32",
+          "Text": "3.1.1. HTTP Alternative Services",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "Ordinal": 28
+        },
+        {
+          "Identity": "L0289:S0:0-92",
+          "Text": "HTTP/3 relies on QUIC version 1 as the underlying transport. The use of other QUIC transport",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 36
+        },
+        {
+          "Identity": "L0291:S0:0-93",
+          "Text": "QUIC version 1 uses TLS version 1.3 or greater as its handshake protocol. HTTP/3 clients MUST",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 38
+        },
+        {
+          "Identity": "L0329:S0:0-92",
+          "Text": "HTTP/3 connection, the terminating endpoint SHOULD \uFB01rst send a GOAWAY frame (Section 5.2) so",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 75
+        },
+        {
+          "Identity": "L0370:S0:0-95",
+          "Text": "Transfer codings (see Section 7 of [HTTP/1.1]) are not de\uFB01ned for HTTP/3; the Transfer-Encoding",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 114
+        },
+        {
+          "Identity": "L1016:S0:0-85",
+          "Text": "SETTINGS frames always apply to an entire HTTP/3 connection, never a single stream. A",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 7
+        },
+        {
+          "Identity": "L1017:S0:0-96|L1018:S0:0-94|L1019:S0:0-76|L1020:S0:0-20",
+          "Text": "SETTINGS frame MUST be sent as the \uFB01rst frame of each control stream (see Section 6.2.1) by eachpeer, and it MUST NOT be sent subsequently. If an endpoint receives a second SETTINGS frame onthe control stream, the endpoint MUST respond with a connection error oftypeH3_FRAME_UNEXPECTED.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 8
+        },
+        {
+          "Identity": "L1223:S0:0-23",
+          "Text": "8.1. HTTP/3 Error Codes",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L1223:S0:0-23",
+          "Text": "8.1. HTTP/3 Error Codes",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+          "Ordinal": 5
+        },
+        {
+          "Identity": "L1334:S0:0-89",
+          "Text": "An HTTP/3 connection can demand a greater commitment ofresources to operate than an HTTP/",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+          "Ordinal": 13
+        },
+        {
+          "Identity": "L1600:S0:0-92",
+          "Text": "Sender: Which endpoint on an HTTP/3 connection may initiate a stream ofthis type. Values are",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 54
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L0605:S0:0-17",
+      "wording": "4.5. HTTP Upgrade",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0047:S0:0-38",
+          "Text": "4. Expressing HTTP Semantics in HTTP/3",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+          "Ordinal": 24
+        },
+        {
+          "Identity": "L0335:S0:0-38",
+          "Text": "4. Expressing HTTP Semantics in HTTP/3",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 6
+        },
+        {
+          "Identity": "L0336:S0:0-25",
+          "Text": "4.1. HTTP Message Framing",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 7
+        },
+        {
+          "Identity": "L0313:S0:0-102",
+          "Text": "process described in Section 4.3.4 of [HTTP]. This implies that clients will need to retain the server",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 59
+        },
+        {
+          "Identity": "L0329:S0:0-92",
+          "Text": "HTTP/3 connection, the terminating endpoint SHOULD \uFB01rst send a GOAWAY frame (Section 5.2) so",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 75
+        },
+        {
+          "Identity": "L0334:S0:0-59",
+          "Text": "code in response to the request; see Section 7.4 of [HTTP].",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 80
+        },
+        {
+          "Identity": "L0353:S0:0-91",
+          "Text": "Header and trailer sections are described in Sections 6.3 and 6.5 of [HTTP]; the content is",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 97
+        },
+        {
+          "Identity": "L0354:S0:0-35",
+          "Text": "described in Section 6.4 of [HTTP].",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 98
+        },
+        {
+          "Identity": "L0451:S0:0-16",
+          "Text": "4.2. HTTP Fields",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 3
+        },
+        {
+          "Identity": "L0458:S0:0-95",
+          "Text": "and values are discussed in more detail in Section 5.1 of [HTTP]. Characters in \uFB01eld names MUST",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "Ordinal": 10
+        },
+        {
+          "Identity": "L0497:S0:0-22",
+          "Text": "4.3. HTTP Control Data",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+          "Ordinal": 3
+        },
+        {
+          "Identity": "L0497:S0:0-22",
+          "Text": "4.3. HTTP Control Data",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+          "Ordinal": 12
+        },
+        {
+          "Identity": "L0606:S0:0-85",
+          "Text": "HTTP/3 does not support the HTTP Upgrade mechanism (Section 7.8 of [HTTP]) or the 101",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+          "Ordinal": 9
+        },
+        {
+          "Identity": "L0773:S0:0-22",
+          "Text": "5.4. Transport Closure",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L1761:S0:0-49",
+          "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 5
+        },
+        {
+          "Identity": "L1827:S0:0-23",
+          "Text": "A.4. HTTP/2 Error Codes",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+          "Ordinal": 10
+        },
+        {
+          "Identity": "L1915:S0:0-84",
+          "Text": "CANCEL_PUSH Section 2, Paragraph 5; Section 4.6, Paragraph 6; Section 4.6, Paragraph",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L1977:S0:0-75",
+          "Text": "H3_GENERAL_PROTOCOL_ERROR Section 7.2.5, Paragraph 6; Section 8.1; Table 4;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 12
+        },
+        {
+          "Identity": "L1987:S0:0-80",
+          "Text": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 17
+        },
+        {
+          "Identity": "L1991:S0:0-82",
+          "Text": "Section 4.1.1, Paragraph 4; Section 4.1.1, Paragraph 5; Section 4.6, Paragraph 14;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 23
+        },
+        {
+          "Identity": "L1998:S0:0-83",
+          "Text": "Section 4.1.1, Paragraph 3; Section 4.1.1, Paragraph 4; Section 4.1.1, Paragraph 5;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 27
+        },
+        {
+          "Identity": "L1999:S0:0-81",
+          "Text": "Section 4.1.1, Paragraph 5; Section 8.1; Table 4; Appendix A.4, Paragraph 3.16.1;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 28
+        },
+        {
+          "Identity": "L2007:S0:0-88",
+          "Text": "Section 2, Paragraph 3; Section 4.1, Paragraph 5, Item 1; Section 4.1, Paragraph 5, Item",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 32
+        },
+        {
+          "Identity": "L2011:S0:0-65",
+          "Text": "Appendix A.2.5, Paragraph 1.4.1; Appendix A.2.5, Paragraph 1.20.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 36
+        },
+        {
+          "Identity": "L2015:S0:0-88",
+          "Text": "3; Section 4.2, Paragraph 5; Section 4.3, Paragraph 3; Section 4.3, Paragraph 4; Section",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 38
+        },
+        {
+          "Identity": "L2016:S0:0-86",
+          "Text": "4.3.1, Paragraph 5; Section 4.3.2, Paragraph 1; Section 4.4, Paragraph 5; Section 8.1,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 39
+        },
+        {
+          "Identity": "L2020:S0:0-88",
+          "Text": "Section 2, Paragraph 5; Section 4.6, Paragraph 3; Section 4.6, Paragraph 3; Section 4.6,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 41
+        },
+        {
+          "Identity": "L2021:S0:0-83",
+          "Text": "Paragraph 3; Section 4.6, Paragraph 3; Table 1; Section 7.2.5, Paragraph 5; Section",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 42
+        },
+        {
+          "Identity": "L2029:S0:0-87",
+          "Text": "Paragraph 4.2.1; Section 7.2.5, Paragraph 5; Section 7.2.5, Paragraph 5; Section 7.2.5,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 48
+        },
+        {
+          "Identity": "L2031:S0:0-83",
+          "Text": "Paragraph 7; Section 7.2.5, Paragraph 7; Section 7.2.6, Paragraph 4; Section 7.2.7,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 50
+        },
+        {
+          "Identity": "L2037:S0:0-78",
+          "Text": "Paragraph 5; Section 4.6, Paragraph 5; Section 4.6, Paragraph 13; Section 4.6,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 55
+        },
+        {
+          "Identity": "L2044:S0:0-87",
+          "Text": "Paragraph 4; Section 7.2.3, Paragraph 4; Section 7.2.5, Paragraph 4.2.1; Section 7.2.7,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 60
+        },
+        {
+          "Identity": "L2047:S0:0-88",
+          "Text": "Section 2, Paragraph 5; Section 4.1, Paragraph 8; Section 4.1, Paragraph 8; Section 4.1,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 62
+        },
+        {
+          "Identity": "L2053:S0:0-87",
+          "Text": "Section 10.4, Paragraph 1; Section 10.5, Paragraph 2; Table 2; Appendix A.2.5; Appendix",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 68
+        },
+        {
+          "Identity": "L2059:S0:0-86",
+          "Text": "4.1.1, Paragraph 1; Section 4.1.1, Paragraph 5; Section 4.4, Paragraph 5; Section 4.4,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 72
+        },
+        {
+          "Identity": "L2067:S0:0-86",
+          "Text": "Paragraph 2.22.1; Section 9, Paragraph 4; Section 10.5, Paragraph 4; Table 2; Table 4;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 78
+        },
+        {
+          "Identity": "L2068:S0:0-85",
+          "Text": "Table 4; Appendix A.2.5; Appendix A.2.5, Paragraph 1.10.1; Appendix A.3, Paragraph 2;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 79
+        },
+        {
+          "Identity": "L2073:S0:0-51",
+          "Text": "10.5.1, Paragraph 2; Appendix A.3, Paragraph 4.12.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 83
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L0608:S0:0-4|L0608:S1:0-11",
+      "wording": "4.6. Server Push",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0313:S0:0-102",
+          "Text": "process described in Section 4.3.4 of [HTTP]. This implies that clients will need to retain the server",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 59
+        },
+        {
+          "Identity": "L0338:S0:0-99",
+          "Text": "stream; see Section 6.1. A client MUST send only a single request on a given stream. A server sends",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 82
+        },
+        {
+          "Identity": "L0344:S0:0-96",
+          "Text": "Pushed responses are sent on a server-initiated unidirectional QUIC stream; see Section 6.2.2. A",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 88
+        },
+        {
+          "Identity": "L0346:S0:0-88",
+          "Text": "the same manner as a standard response. Push is described in more detail in Section 4.6.",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 90
+        },
+        {
+          "Identity": "L0354:S0:0-35",
+          "Text": "described in Section 6.4 of [HTTP].",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 98
+        },
+        {
+          "Identity": "L0360:S0:0-88",
+          "Text": "A server MAY send one or more PUSH_PROMISE frames before, after, or interleaved with the",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 104
+        },
+        {
+          "Identity": "L0362:S0:0-93",
+          "Text": "Section 4.6 for more details. PUSH_PROMISE frames are not permitted on push streams; a pushed",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 106
+        },
+        {
+          "Identity": "L0608:S1:0-11",
+          "Text": "Server Push",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+          "Ordinal": 4
+        },
+        {
+          "Identity": "L0816:S0:0-94",
+          "Text": "Two stream types are de\uFB01ned in this document: control streams (Section 6.2.1) and push streams",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+          "Ordinal": 16
+        },
+        {
+          "Identity": "L0870:S0:0-19",
+          "Text": "6.2.2. Push Streams",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L1007:S0:0-95|L1008:S0:0-80|L1009:S0:0-88|L1010:S0:0-62",
+          "Text": "Ifthe client receives a CANCEL_PUSH frame, that frame might identify a push ID that has not yetbeen mentioned by a PUSH_PROMISE frame due to reordering. If a server receives aCANCEL_PUSH frame for a push ID that has not yet been mentioned by a PUSH_PROMISE frame,this MUST be treated as a connection error oftype H3_ID_ERROR.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 4
+        },
+        {
+          "Identity": "L1915:S0:0-84",
+          "Text": "CANCEL_PUSH Section 2, Paragraph 5; Section 4.6, Paragraph 6; Section 4.6, Paragraph",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L1962:S0:0-75",
+          "Text": "H3_CLOSED_CRITICAL_STREAM Section 6.2.1, Paragraph 2; Section 8.1; Table 4;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 7
+        },
+        {
+          "Identity": "L1977:S0:0-75",
+          "Text": "H3_GENERAL_PROTOCOL_ERROR Section 7.2.5, Paragraph 6; Section 8.1; Table 4;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 12
+        },
+        {
+          "Identity": "L1986:S0:0-68",
+          "Text": "H3_MISSING_SETTINGS Section 6.2.1, Paragraph 2; Section 8.1; Table 4",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 16
+        },
+        {
+          "Identity": "L1987:S0:0-80",
+          "Text": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 17
+        },
+        {
+          "Identity": "L1991:S0:0-82",
+          "Text": "Section 4.1.1, Paragraph 4; Section 4.1.1, Paragraph 5; Section 4.6, Paragraph 14;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 23
+        },
+        {
+          "Identity": "L2004:S0:0-76",
+          "Text": "Section 6.2.1, Paragraph 2; Section 6.2.2, Paragraph 3; Section 8.1; Table 4",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 31
+        },
+        {
+          "Identity": "L2009:S0:0-88",
+          "Text": "4.1, Paragraph 10; Section 4.4, Paragraph 6; Section 4.6, Paragraph 12; Table 1; Section",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 34
+        },
+        {
+          "Identity": "L2020:S0:0-88",
+          "Text": "Section 2, Paragraph 5; Section 4.6, Paragraph 3; Section 4.6, Paragraph 3; Section 4.6,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 41
+        },
+        {
+          "Identity": "L2021:S0:0-83",
+          "Text": "Paragraph 3; Section 4.6, Paragraph 3; Table 1; Section 7.2.5, Paragraph 5; Section",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 42
+        },
+        {
+          "Identity": "L2031:S0:0-83",
+          "Text": "Paragraph 7; Section 7.2.5, Paragraph 7; Section 7.2.6, Paragraph 4; Section 7.2.7,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 50
+        },
+        {
+          "Identity": "L2036:S0:0-90",
+          "Text": "Section 4.1, Paragraph 8; Section 4.1, Paragraph 9; Section 4.6, Paragraph 3; Section 4.6,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 54
+        },
+        {
+          "Identity": "L2037:S0:0-78",
+          "Text": "Paragraph 5; Section 4.6, Paragraph 5; Section 4.6, Paragraph 13; Section 4.6,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 55
+        },
+        {
+          "Identity": "L2038:S0:0-81",
+          "Text": "Paragraph 13; Section 4.6, Paragraph 13; Section 6.2, Paragraph 3; Section 6.2.2;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 56
+        },
+        {
+          "Identity": "L2048:S0:0-78",
+          "Text": "Paragraph 8; Section 4.1, Paragraph 8; Section 4.1, Paragraph 10; Section 4.6,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 63
+        },
+        {
+          "Identity": "L2049:S0:0-79",
+          "Text": "Paragraph 4; Section 4.6, Paragraph 10; Section 4.6, Paragraph 11; Section 4.6,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 64
+        },
+        {
+          "Identity": "L2050:S0:0-80",
+          "Text": "Paragraph 11; Section 4.6, Paragraph 12; Section 4.6, Paragraph 12; Section 4.6,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 65
+        },
+        {
+          "Identity": "L2051:S0:0-84",
+          "Text": "Paragraph 13; Section 4.6, Paragraph 13; Section 4.6, Paragraph 13; Table 1; Section",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 66
+        },
+        {
+          "Identity": "L2060:S0:0-87",
+          "Text": "Paragraph 9; Section 4.6, Paragraph 4; Section 4.6, Paragraph 4; Section 4.6, Paragraph",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 73
+        },
+        {
+          "Identity": "L2065:S0:0-88",
+          "Text": "Section 3.2, Paragraph 4; Section 3.2, Paragraph 4; Section 6.2.1, Paragraph 2; Table 1;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 76
+        },
+        {
+          "Identity": "L2070:S0:0-83",
+          "Text": "4.6.1; Appendix A.3, Paragraph 4.8.1; Appendix A.3, Paragraph 4.10.1; Appendix A.4,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 81
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1189:S0:0-27",
+      "wording": "7.2.8. Reserved Frame Types",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0365:S0:0-94",
+          "Text": "Frames ofunknown types (Section 9), including reserved frames (Section 7.2.8) MAY be sent on a",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 109
+        },
+        {
+          "Identity": "L0893:S0:0-28",
+          "Text": "6.2.3. Reserved Stream Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+          "Ordinal": 3
+        },
+        {
+          "Identity": "L0944:S0:0-4|L0944:S1:0-16",
+          "Text": "7.2.Frame De\uFB01nitions",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+          "Ordinal": 3
+        },
+        {
+          "Identity": "L1472:S0:0-19",
+          "Text": "11.2.1. Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+          "Ordinal": 10
+        },
+        {
+          "Identity": "L1761:S0:0-49",
+          "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 5
+        },
+        {
+          "Identity": "L1710:S0:0-21",
+          "Text": "A.2. HTTP Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 7
+        },
+        {
+          "Identity": "L1968:S0:0-85",
+          "Text": "H3_FRAME_ERROR Section 7.1, Paragraph 5; Section 7.1, Paragraph 6; Section 8.1; Table",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 10
+        },
+        {
+          "Identity": "L1977:S0:0-75",
+          "Text": "H3_GENERAL_PROTOCOL_ERROR Section 7.2.5, Paragraph 6; Section 8.1; Table 4;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 12
+        },
+        {
+          "Identity": "L1992:S0:0-89",
+          "Text": "Section 7.2.3, Paragraph 3; Section 7.2.3, Paragraph 4; Section 8.1; Table 4; Appendix A.",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 24
+        },
+        {
+          "Identity": "L2002:S0:0-72",
+          "Text": "7.2.4.2, Paragraph 8; Section 7.2.4.2, Paragraph 8; Section 8.1; Table 4",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 30
+        },
+        {
+          "Identity": "L2028:S0:0-83",
+          "Text": "Paragraph 7; Section 7.2.3, Paragraph 8; Section 7.2.3, Paragraph 8; Section 7.2.5,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 47
+        },
+        {
+          "Identity": "L2033:S0:0-87",
+          "Text": "Paragraph 6; Section 7.2.7, Paragraph 6; Section 8.1, Paragraph 2.18.1; Appendix A.2.5,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 52
+        },
+        {
+          "Identity": "L2052:S0:0-90",
+          "Text": "7.2.3, Paragraph 8; Section 7.2.3, Paragraph 8; Section 7.2.5; Section 7.2.7, Paragraph 1;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 67
+        },
+        {
+          "Identity": "L2066:S0:0-82",
+          "Text": "Section 7, Paragraph 3; Section 7.2.4; Section 8.1, Paragraph 2.20.1; Section 8.1,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 77
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1298:S0:0-22",
+      "wording": "10.1. Server Authority",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0338:S0:0-99",
+          "Text": "stream; see Section 6.1. A client MUST send only a single request on a given stream. A server sends",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 82
+        },
+        {
+          "Identity": "L1076:S0:0-98|L1077:S0:0-92|L1078:S0:0-88|L1079:S0:0-92|L1080:S0:0-91|L1081:S0:0-8",
+          "Text": "For clients using a 1-RTT QUIC connection, the initial value of each server setting is the defaultvalue. 1-RTT keys will always become available prior to the packet containing SETTINGS beingprocessed by QUIC, even ifthe server sends SETTINGS immediately. Clients SHOULD NOT waitinde\uFB01nitely for SETTINGS to arrive before sending requests, but they SHOULD process receiveddatagrams in order to increase the likelihood ofprocessing SETTINGS before sending the \uFB01rstrequest.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 26
+        },
+        {
+          "Identity": "L2009:S0:0-88",
+          "Text": "4.1, Paragraph 10; Section 4.4, Paragraph 6; Section 4.6, Paragraph 12; Table 1; Section",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 34
+        },
+        {
+          "Identity": "L2017:S0:0-87",
+          "Text": "Paragraph 2.30.1; Section 10.3, Paragraph 1; Section 10.3, Paragraph 2; Section 10.5.1,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 40
+        },
+        {
+          "Identity": "L2048:S0:0-78",
+          "Text": "Paragraph 8; Section 4.1, Paragraph 8; Section 4.1, Paragraph 10; Section 4.6,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 63
+        },
+        {
+          "Identity": "L2053:S0:0-87",
+          "Text": "Section 10.4, Paragraph 1; Section 10.5, Paragraph 2; Table 2; Appendix A.2.5; Appendix",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 68
+        },
+        {
+          "Identity": "L2067:S0:0-86",
+          "Text": "Paragraph 2.22.1; Section 9, Paragraph 4; Section 10.5, Paragraph 4; Table 2; Table 4;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 78
+        },
+        {
+          "Identity": "L2068:S0:0-85",
+          "Text": "Table 4; Appendix A.2.5; Appendix A.2.5, Paragraph 1.10.1; Appendix A.3, Paragraph 2;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 79
+        },
+        {
+          "Identity": "L2070:S0:0-83",
+          "Text": "4.6.1; Appendix A.3, Paragraph 4.8.1; Appendix A.3, Paragraph 4.10.1; Appendix A.4,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 81
+        },
+        {
+          "Identity": "L2071:S0:0-16",
+          "Text": "Paragraph 3.10.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 82
+        },
+        {
+          "Identity": "L2073:S0:0-51",
+          "Text": "10.5.1, Paragraph 2; Appendix A.3, Paragraph 4.12.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 83
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1301:S0:0-28",
+      "wording": "10.2. Cross-Protocol Attacks",
+      "disposition": "FN_NO_RAW_EXACT_PROPOSAL",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1308:S0:0-40",
+      "wording": "10.3. Intermediary-Encapsulation Attacks",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0090:S0:0-40",
+          "Text": "10.3. Intermediary-Encapsulation Attacks",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 6
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1320:S0:0-5|L1320:S1:0-32",
+      "wording": "10.4. Cacheability of Pushed Responses",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L1596:S0:0-97",
+          "Text": "assigned using Standards Action or IESG Approval as de\uFB01ned in Sections 4.9 and 4.10 of [RFC8126].",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 50
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1333:S0:0-38",
+      "wording": "10.5. Denial-of-Service Considerations",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0092:S0:0-38",
+          "Text": "10.5. Denial-of-Service Considerations",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 8
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1357:S0:0-36",
+      "wording": "10.5.1. Limits on Field Section Size",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L2017:S0:0-87",
+          "Text": "Paragraph 2.30.1; Section 10.3, Paragraph 1; Section 10.3, Paragraph 2; Section 10.5.1,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 40
+        },
+        {
+          "Identity": "L2053:S0:0-87",
+          "Text": "Section 10.4, Paragraph 1; Section 10.5, Paragraph 2; Table 2; Appendix A.2.5; Appendix",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 68
+        },
+        {
+          "Identity": "L2067:S0:0-86",
+          "Text": "Paragraph 2.22.1; Section 9, Paragraph 4; Section 10.5, Paragraph 4; Table 2; Table 4;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 78
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1374:S0:0-22",
+      "wording": "10.5.2. CONNECT Issues",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L2017:S0:0-87",
+          "Text": "Paragraph 2.30.1; Section 10.3, Paragraph 1; Section 10.3, Paragraph 2; Section 10.5.1,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 40
+        },
+        {
+          "Identity": "L2053:S0:0-87",
+          "Text": "Section 10.4, Paragraph 1; Section 10.5, Paragraph 2; Table 2; Appendix A.2.5; Appendix",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 68
+        },
+        {
+          "Identity": "L2067:S0:0-86",
+          "Text": "Paragraph 2.22.1; Section 9, Paragraph 4; Section 10.5, Paragraph 4; Table 2; Table 4;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 78
+        },
+        {
+          "Identity": "L2068:S0:0-85",
+          "Text": "Table 4; Appendix A.2.5; Appendix A.2.5, Paragraph 1.10.1; Appendix A.3, Paragraph 2;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 79
+        },
+        {
+          "Identity": "L2073:S0:0-51",
+          "Text": "10.5.1, Paragraph 2; Appendix A.3, Paragraph 4.12.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 83
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1399:S0:0-32",
+      "wording": "10.7. Padding and Tra\uFB03c Analysis",
+      "disposition": "FN_NO_RAW_EXACT_PROPOSAL",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1431:S0:0-5|L1431:S1:0-10",
+      "wording": "10.9. Early Data",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0100:S0:0-16",
+          "Text": "10.9. Early Data",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 14
+        },
+        {
+          "Identity": "L1431:S1:0-10",
+          "Text": "Early Data",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+          "Ordinal": 4
+        },
+        {
+          "Identity": "L1596:S0:0-97",
+          "Text": "assigned using Standards Action or IESG Approval as de\uFB01ned in Sections 4.9 and 4.10 of [RFC8126].",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 50
+        },
+        {
+          "Identity": "L1626:S0:0-86",
+          "Text": "[HTTP-REPLAY] Thomson, M., Nottingham, M., and W. Tarreau, \u0022Using Early Data in HTTP\u0022,",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 93
+        },
+        {
+          "Identity": "L2067:S0:0-86",
+          "Text": "Paragraph 2.22.1; Section 9, Paragraph 4; Section 10.5, Paragraph 4; Table 2; Table 4;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 78
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1456:S0:0-49",
+      "wording": "11.1. Registration of HTTP/3 Identi\uFB01cation String",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0289:S0:0-92",
+          "Text": "HTTP/3 relies on QUIC version 1 as the underlying transport. The use of other QUIC transport",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 36
+        },
+        {
+          "Identity": "L0370:S0:0-95",
+          "Text": "Transfer codings (see Section 7 of [HTTP/1.1]) are not de\uFB01ned for HTTP/3; the Transfer-Encoding",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 114
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1465:S0:0-5|L1465:S1:0-14",
+      "wording": "11.2. New Registries",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L1062:S0:0-94|L1063:S0:0-93|L1064:S0:0-71",
+          "Text": "Setting identi\uFB01ers that were de\uFB01ned in [HTTP/2] where there is no corresponding HTTP/3 settinghave also been reserved (Section 11.2.2). These reserved settings MUST NOT be sent, and theirreceipt MUST be treated as a connection error oftype H3_SETTINGS_ERROR.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 20
+        },
+        {
+          "Identity": "L1465:S1:0-14",
+          "Text": "New Registries",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+          "Ordinal": 9
+        },
+        {
+          "Identity": "L1472:S0:0-19",
+          "Text": "11.2.1. Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+          "Ordinal": 10
+        },
+        {
+          "Identity": "L1508:S0:0-27",
+          "Text": "11.2.2. Settings Parameters",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+          "Ordinal": 33
+        },
+        {
+          "Identity": "L1591:S0:0-20",
+          "Text": "11.2.4. Stream Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 45
+        },
+        {
+          "Identity": "L1594:S0:0-98",
+          "Text": "11.2. Permanent registrations in this registry are assigned using the Speci\uFB01cation Required policy",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 48
+        },
+        {
+          "Identity": "L1597:S0:0-98",
+          "Text": "In addition to common \uFB01elds as described in Section 11.2, permanent registrations in this registry",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 51
+        },
+        {
+          "Identity": "L1750:S0:0-45",
+          "Text": "A.2.4. Guidance for New Frame Type De\uFB01nitions",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 4
+        },
+        {
+          "Identity": "L1987:S0:0-80",
+          "Text": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 17
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1472:S0:0-19",
+      "wording": "11.2.1. Frame Types",
+      "disposition": "FN_RAW_EXACT_BINDING_REFUSED",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": true,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0816:S0:0-94",
+          "Text": "Two stream types are de\uFB01ned in this document: control streams (Section 6.2.1) and push streams",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+          "Ordinal": 16
+        },
+        {
+          "Identity": "L1017:S0:0-96|L1018:S0:0-94|L1019:S0:0-76|L1020:S0:0-20",
+          "Text": "SETTINGS frame MUST be sent as the \uFB01rst frame of each control stream (see Section 6.2.1) by eachpeer, and it MUST NOT be sent subsequently. If an endpoint receives a second SETTINGS frame onthe control stream, the endpoint MUST respond with a connection error oftypeH3_FRAME_UNEXPECTED.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 8
+        },
+        {
+          "Identity": "L1472:S0:0-19",
+          "Text": "11.2.1. Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+          "Ordinal": 10
+        },
+        {
+          "Identity": "L1591:S0:0-20",
+          "Text": "11.2.4. Stream Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 45
+        },
+        {
+          "Identity": "L1761:S0:0-49",
+          "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 5
+        },
+        {
+          "Identity": "L1710:S0:0-21",
+          "Text": "A.2. HTTP Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 7
+        },
+        {
+          "Identity": "L1987:S0:0-80",
+          "Text": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 17
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1540:S0:0-19",
+      "wording": "11.2.3. Error Codes",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L1062:S0:0-94|L1063:S0:0-93|L1064:S0:0-71",
+          "Text": "Setting identi\uFB01ers that were de\uFB01ned in [HTTP/2] where there is no corresponding HTTP/3 settinghave also been reserved (Section 11.2.2). These reserved settings MUST NOT be sent, and theirreceipt MUST be treated as a connection error oftype H3_SETTINGS_ERROR.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 20
+        },
+        {
+          "Identity": "L1223:S0:0-23",
+          "Text": "8.1. HTTP/3 Error Codes",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L1223:S0:0-23",
+          "Text": "8.1. HTTP/3 Error Codes",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+          "Ordinal": 5
+        },
+        {
+          "Identity": "L1585:S0:0-34",
+          "Text": "Table 4: InitialHTTP/3 Error Codes",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 41
+        },
+        {
+          "Identity": "L1827:S0:0-23",
+          "Text": "A.4. HTTP/2 Error Codes",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+          "Ordinal": 10
+        },
+        {
+          "Identity": "L1987:S0:0-80",
+          "Text": "H3_NO_ERROR Section 4.1, Paragraph 15; Section 5.2, Paragraph 11; Section 6.2.3,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "Ordinal": 17
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1613:S0:0-5|L1613:S1:0-20",
+      "wording": "12.1. Normative References",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0110:S0:0-14",
+          "Text": "12. References",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 24
+        },
+        {
+          "Identity": "L1612:S0:0-14",
+          "Text": "12. References",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 75
+        },
+        {
+          "Identity": "L1613:S0:0-5",
+          "Text": "12.1.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 76
+        },
+        {
+          "Identity": "L1613:S1:0-20",
+          "Text": "Normative References",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 77
+        },
+        {
+          "Identity": "L1655:S0:0-28",
+          "Text": "12.2. Informative References",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+          "Ordinal": 1
+        },
+        {
+          "Identity": "L2009:S0:0-88",
+          "Text": "4.1, Paragraph 10; Section 4.4, Paragraph 6; Section 4.6, Paragraph 12; Table 1; Section",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 34
+        },
+        {
+          "Identity": "L2034:S0:0-50",
+          "Text": "Paragraph 1.12.1; Appendix A.2.5, Paragraph 1.16.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 53
+        },
+        {
+          "Identity": "L2045:S0:0-45",
+          "Text": "Paragraph 1; Appendix A.2.5, Paragraph 1.12.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 61
+        },
+        {
+          "Identity": "L2054:S0:0-84",
+          "Text": "A.2.5, Paragraph 1.12.1; Appendix A.2.5, Paragraph 1.12.1; Appendix A.2.5, Paragraph",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 69
+        },
+        {
+          "Identity": "L2073:S0:0-51",
+          "Text": "10.5.1, Paragraph 2; Appendix A.3, Paragraph 4.12.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 83
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1688:S0:0-12",
+      "wording": "A.1. Streams",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0338:S0:0-99",
+          "Text": "stream; see Section 6.1. A client MUST send only a single request on a given stream. A server sends",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 82
+        },
+        {
+          "Identity": "L0350:S0:0-86",
+          "Text": "1. the header section, including message control data, sent as a single HEADERS frame,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 94
+        },
+        {
+          "Identity": "L0362:S0:0-93",
+          "Text": "Section 4.6 for more details. PUSH_PROMISE frames are not permitted on push streams; a pushed",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 106
+        },
+        {
+          "Identity": "L0793:S0:0-26",
+          "Text": "6.1. Bidirectional Streams",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+          "Ordinal": 4
+        },
+        {
+          "Identity": "L0816:S0:0-94",
+          "Text": "Two stream types are de\uFB01ned in this document: control streams (Section 6.2.1) and push streams",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+          "Ordinal": 16
+        },
+        {
+          "Identity": "L0852:S0:0-22",
+          "Text": "6.2.1. Control Streams",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+          "Ordinal": 1
+        },
+        {
+          "Identity": "L1017:S0:0-96|L1018:S0:0-94|L1019:S0:0-76|L1020:S0:0-20",
+          "Text": "SETTINGS frame MUST be sent as the \uFB01rst frame of each control stream (see Section 6.2.1) by eachpeer, and it MUST NOT be sent subsequently. If an endpoint receives a second SETTINGS frame onthe control stream, the endpoint MUST respond with a connection error oftypeH3_FRAME_UNEXPECTED.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 8
+        },
+        {
+          "Identity": "L1076:S0:0-98|L1077:S0:0-92|L1078:S0:0-88|L1079:S0:0-92|L1080:S0:0-91|L1081:S0:0-8",
+          "Text": "For clients using a 1-RTT QUIC connection, the initial value of each server setting is the defaultvalue. 1-RTT keys will always become available prior to the packet containing SETTINGS beingprocessed by QUIC, even ifthe server sends SETTINGS immediately. Clients SHOULD NOT waitinde\uFB01nitely for SETTINGS to arrive before sending requests, but they SHOULD process receiveddatagrams in order to increase the likelihood ofprocessing SETTINGS before sending the \uFB01rstrequest.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 26
+        },
+        {
+          "Identity": "L1358:S0:0-90",
+          "Text": "A large \uFB01eld section (Section 4.1) can cause an implementation to commit a large amount of",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+          "Ordinal": 14
+        },
+        {
+          "Identity": "L1729:S0:0-32",
+          "Text": "A.2.1. Prioritization Di\uFB00erences",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 1
+        },
+        {
+          "Identity": "L1992:S0:0-89",
+          "Text": "Section 7.2.3, Paragraph 3; Section 7.2.3, Paragraph 4; Section 8.1; Table 4; Appendix A.",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 24
+        },
+        {
+          "Identity": "L1993:S0:0-48",
+          "Text": "4, Paragraph 3.18.1; Appendix A.4.1, Paragraph 3",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 25
+        },
+        {
+          "Identity": "L1999:S0:0-81",
+          "Text": "Section 4.1.1, Paragraph 5; Section 8.1; Table 4; Appendix A.4, Paragraph 3.16.1;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 28
+        },
+        {
+          "Identity": "L2000:S0:0-27",
+          "Text": "Appendix A.4.1, Paragraph 3",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 29
+        },
+        {
+          "Identity": "L2010:S0:0-84",
+          "Text": "7.2.2; Section 9, Paragraph 5; Table 2; Appendix A.2.1, Paragraph 1; Appendix A.2.5;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 35
+        },
+        {
+          "Identity": "L2011:S0:0-65",
+          "Text": "Appendix A.2.5, Paragraph 1.4.1; Appendix A.2.5, Paragraph 1.20.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 36
+        },
+        {
+          "Identity": "L2022:S0:0-73",
+          "Text": "7.2. 7; Table 2; Appendix A.1, Paragraph 4; Appendix A.3, Paragraph 4.4.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 43
+        },
+        {
+          "Identity": "L2033:S0:0-87",
+          "Text": "Paragraph 6; Section 7.2.7, Paragraph 6; Section 8.1, Paragraph 2.18.1; Appendix A.2.5,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 52
+        },
+        {
+          "Identity": "L2034:S0:0-50",
+          "Text": "Paragraph 1.12.1; Appendix A.2.5, Paragraph 1.16.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 53
+        },
+        {
+          "Identity": "L2045:S0:0-45",
+          "Text": "Paragraph 1; Appendix A.2.5, Paragraph 1.12.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 61
+        },
+        {
+          "Identity": "L2053:S0:0-87",
+          "Text": "Section 10.4, Paragraph 1; Section 10.5, Paragraph 2; Table 2; Appendix A.2.5; Appendix",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 68
+        },
+        {
+          "Identity": "L2054:S0:0-84",
+          "Text": "A.2.5, Paragraph 1.12.1; Appendix A.2.5, Paragraph 1.12.1; Appendix A.2.5, Paragraph",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 69
+        },
+        {
+          "Identity": "L2068:S0:0-85",
+          "Text": "Table 4; Appendix A.2.5; Appendix A.2.5, Paragraph 1.10.1; Appendix A.3, Paragraph 2;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 79
+        },
+        {
+          "Identity": "L2069:S0:0-81",
+          "Text": "Appendix A.3, Paragraph 3; Appendix A.3, Paragraph 4.4.1; Appendix A.3, Paragraph",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 80
+        },
+        {
+          "Identity": "L2070:S0:0-83",
+          "Text": "4.6.1; Appendix A.3, Paragraph 4.8.1; Appendix A.3, Paragraph 4.10.1; Appendix A.4,",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 81
+        },
+        {
+          "Identity": "L2073:S0:0-51",
+          "Text": "10.5.1, Paragraph 2; Appendix A.3, Paragraph 4.12.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 83
+        },
+        {
+          "Identity": "L2075:S0:0-85",
+          "Text": "Appendix A.4.1, Paragraph 3; Appendix A.4.1, Paragraph 3; Appendix A.4.1, Paragraph 4",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 84
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1710:S0:0-21",
+      "wording": "A.2. HTTP Frame Types",
+      "disposition": "FN_RAW_EXACT_BINDING_REFUSED",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": true,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L0113:S0:0-56",
+          "Text": "Appendix A. Considerations for Transitioning from HTTP/2",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "Ordinal": 27
+        },
+        {
+          "Identity": "L0329:S0:0-92",
+          "Text": "HTTP/3 connection, the terminating endpoint SHOULD \uFB01rst send a GOAWAY frame (Section 5.2) so",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 75
+        },
+        {
+          "Identity": "L0365:S0:0-94",
+          "Text": "Frames ofunknown types (Section 9), including reserved frames (Section 7.2.8) MAY be sent on a",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "Ordinal": 109
+        },
+        {
+          "Identity": "L1017:S0:0-96|L1018:S0:0-94|L1019:S0:0-76|L1020:S0:0-20",
+          "Text": "SETTINGS frame MUST be sent as the \uFB01rst frame of each control stream (see Section 6.2.1) by eachpeer, and it MUST NOT be sent subsequently. If an endpoint receives a second SETTINGS frame onthe control stream, the endpoint MUST respond with a connection error oftypeH3_FRAME_UNEXPECTED.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 8
+        },
+        {
+          "Identity": "L1062:S0:0-94|L1063:S0:0-93|L1064:S0:0-71",
+          "Text": "Setting identi\uFB01ers that were de\uFB01ned in [HTTP/2] where there is no corresponding HTTP/3 settinghave also been reserved (Section 11.2.2). These reserved settings MUST NOT be sent, and theirreceipt MUST be treated as a connection error oftype H3_SETTINGS_ERROR.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 20
+        },
+        {
+          "Identity": "L1082:S0:0-97|L1083:S0:0-97|L1084:S0:0-92|L1085:S0:0-98|L1086:S0:0-97",
+          "Text": "When a 0-RTT QUIC connection is being used, the initial value of each server setting is the valueused in the previous session. Clients SHOULD store the settings the server provided in the HTTP/3connection where resumption information was provided, but they MAY opt not to store settingsin certain cases (e.g., ifthe session ticket is received before the SETTINGS frame). A client MUSTcomply with stored settings -- or default values ifno values are stored -- when attempting 0-RTT.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 27
+        },
+        {
+          "Identity": "L1472:S0:0-19",
+          "Text": "11.2.1. Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+          "Ordinal": 10
+        },
+        {
+          "Identity": "L1473:S0:0-90",
+          "Text": "This document establishes a registry for HTTP/3 frame type codes. The \u0022HTTP/3 Frame Types\u0022",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+          "Ordinal": 4
+        },
+        {
+          "Identity": "L1592:S0:0-95",
+          "Text": "This document establishes a registry for HTTP/3 unidirectional stream types. The \u0022HTTP/3 Stream",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 46
+        },
+        {
+          "Identity": "L1677:S0:0-56",
+          "Text": "Appendix A. Considerations for Transitioning from HTTP/2",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+          "Ordinal": 2
+        },
+        {
+          "Identity": "L1750:S0:0-45",
+          "Text": "A.2.4. Guidance for New Frame Type De\uFB01nitions",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 4
+        },
+        {
+          "Identity": "L1761:S0:0-49",
+          "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 5
+        },
+        {
+          "Identity": "L1787:S0:0-31",
+          "Text": "A.3. HTTP/2 SETTINGS Parameters",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 6
+        },
+        {
+          "Identity": "L1710:S0:0-21",
+          "Text": "A.2. HTTP Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 7
+        },
+        {
+          "Identity": "L1827:S0:0-23",
+          "Text": "A.4. HTTP/2 Error Codes",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+          "Ordinal": 10
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1856:S0:0-46",
+      "wording": "A.4.1. Mappingbetween HTTP/2 and HTTP/3 Errors",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L1062:S0:0-94|L1063:S0:0-93|L1064:S0:0-71",
+          "Text": "Setting identi\uFB01ers that were de\uFB01ned in [HTTP/2] where there is no corresponding HTTP/3 settinghave also been reserved (Section 11.2.2). These reserved settings MUST NOT be sent, and theirreceipt MUST be treated as a connection error oftype H3_SETTINGS_ERROR.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 20
+        },
+        {
+          "Identity": "L1761:S0:0-49",
+          "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "Ordinal": 5
+        },
+        {
+          "Identity": "L1992:S0:0-89",
+          "Text": "Section 7.2.3, Paragraph 3; Section 7.2.3, Paragraph 4; Section 8.1; Table 4; Appendix A.",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 24
+        },
+        {
+          "Identity": "L2022:S0:0-73",
+          "Text": "7.2. 7; Table 2; Appendix A.1, Paragraph 4; Appendix A.3, Paragraph 4.4.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 43
+        },
+        {
+          "Identity": "L2068:S0:0-85",
+          "Text": "Table 4; Appendix A.2.5; Appendix A.2.5, Paragraph 1.10.1; Appendix A.3, Paragraph 2;",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 79
+        },
+        {
+          "Identity": "L2073:S0:0-51",
+          "Text": "10.5.1, Paragraph 2; Appendix A.3, Paragraph 4.12.1",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 83
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1914:S0:0-1",
+      "wording": "C",
+      "disposition": "FN_RAW_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L1629:S0:0-92",
+          "Text": "[QPACK] Krasic, C., Bishop, M., and A. Frindell, Ed., \u0022QPACK: Field Compression for HTTP/3\u0022,",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 96
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1940:S0:0-1",
+      "wording": "D",
+      "disposition": "FN_NO_RAW_EXACT_PROPOSAL",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1947:S0:0-1",
+      "wording": "G",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L1082:S0:0-97|L1083:S0:0-97|L1084:S0:0-92|L1085:S0:0-98|L1086:S0:0-97",
+          "Text": "When a 0-RTT QUIC connection is being used, the initial value of each server setting is the valueused in the previous session. Clients SHOULD store the settings the server provided in the HTTP/3connection where resumption information was provided, but they MAY opt not to store settingsin certain cases (e.g., ifthe session ticket is received before the SETTINGS frame). A client MUSTcomply with stored settings -- or default values ifno values are stored -- when attempting 0-RTT.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 27
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L1961:S0:0-1",
+      "wording": "H",
+      "disposition": "FN_NO_RAW_EXACT_PROPOSAL",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L2012:S0:0-1",
+      "wording": "M",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L1614:S1:0-77",
+          "Text": "Nottingham, M., McManus, P., and J. Reschke, \u0022HTTP Alternative Services\u0022, RFC",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 79
+        },
+        {
+          "Identity": "L1618:S1:0-82",
+          "Text": "Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., \u0022HTTP Semantics\u0022, STD",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 85
+        },
+        {
+          "Identity": "L1623:S1:0-80",
+          "Text": "Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., \u0022HTTP Caching\u0022, STD",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 90
+        },
+        {
+          "Identity": "L1626:S0:0-86",
+          "Text": "[HTTP-REPLAY] Thomson, M., Nottingham, M., and W. Tarreau, \u0022Using Early Data in HTTP\u0022,",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 93
+        },
+        {
+          "Identity": "L1629:S0:0-92",
+          "Text": "[QPACK] Krasic, C., Bishop, M., and A. Frindell, Ed., \u0022QPACK: Field Compression for HTTP/3\u0022,",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 96
+        },
+        {
+          "Identity": "L1632:S0:0-89",
+          "Text": "[QUIC-TRANSPORT] Iyengar, J., Ed. and M. Thomson, Ed., \u0022QUIC: A UDP-Based Multiplexed and",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 99
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L2023:S0:0-1",
+      "wording": "P",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L1614:S1:0-77",
+          "Text": "Nottingham, M., McManus, P., and J. Reschke, \u0022HTTP Alternative Services\u0022, RFC",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 79
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L2056:S0:0-1",
+      "wording": "R",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L1618:S1:0-82",
+          "Text": "Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., \u0022HTTP Semantics\u0022, STD",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 85
+        },
+        {
+          "Identity": "L1623:S1:0-80",
+          "Text": "Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke, Ed., \u0022HTTP Caching\u0022, STD",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "Ordinal": 90
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    },
+    {
+      "documentId": "SRC-095",
+      "identity": "L2063:S0:0-1",
+      "wording": "S",
+      "disposition": "FN_BOUND_NEAR_ONLY",
+      "evidenceBasis": "OFFLINE_REDERIVED_FROM_FROZEN_RAW",
+      "exactRawProposal": false,
+      "exactBoundOccurrence": false,
+      "rawCandidateEvidence": [
+        {
+          "Identity": "L1067:S0:0-90|L1068:S0:0-44",
+          "Text": "An HTTP implementation MUST NOT send frames or requests that would be invalid based on itscurrent understanding ofthe peer\u0027s settings.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 23
+        },
+        {
+          "Identity": "L1069:S0:0-93|L1070:S0:0-94|L1071:S0:0-95|L1072:S0:0-92|L1073:S0:0-95|L1074:S0:0-60",
+          "Text": "All settings begin at an initial value. Each endpoint SHOULD use these initial values to sendmessages before the peer\u0027s SETTINGS frame has arrived, as packets carrying the settings can belost or delayed. When the SETTINGS frame arrives, any settings are changed to their new values.This removes the need to wait for the SETTINGS frame before sending messages. Endpoints MUSTNOT require any data to be received from the peer prior to sending the SETTINGS frame; settingsMUST be sent as soon as the transport is ready to send data.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 24
+        },
+        {
+          "Identity": "L1088:S0:0-96|L1089:S0:0-93|L1090:S0:0-87|L1091:S0:0-95|L1092:S0:0-89|L1093:S0:0-63",
+          "Text": "A server can remember the settings that it advertised or store an integrity-protected copy ofthevalues in the ticket and recover the information when accepting 0-RTT data. A server uses theHTTP/3 settings values in determining whether to accept 0-RTT data. Ifthe server cannotdetermine that the settings remembered by a client are compatible with its current settings, itMUST NOT accept 0-RTT data. Remembered settings are compatible if a client complying withthose settings would not violate the server\u0027s current settings.",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "Ordinal": 29
+        },
+        {
+          "Identity": "L1254:S0:0-89",
+          "Text": "H3_REQUEST_INCOMPLETE (0x010d): The client\u0027s stream terminated without containing a fully",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+          "Ordinal": 19
+        },
+        {
+          "Identity": "L2076:S0:0-16",
+          "Text": "Author\u0027s Address",
+          "Predicate": "STRUCTURAL_REGION",
+          "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "Ordinal": 85
+        }
+      ],
+      "note": "Near is a deterministic token/alias overlap diagnostic, not an exact Gold identity match."
+    }
+  ],
+  "rawCoverage": {
+    "goldTotal": 139,
+    "rawExact": 84,
+    "rawNear": 45,
+    "rawAbsent": 10,
+    "goldExactRawAndBound": 82,
+    "goldExactRawButBindingRefused": 2
+  }
+}
