@@ -41,7 +41,7 @@ jobs:
           dotnet test tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj
           -c Release --no-build
           --filter
-          "FullyQualifiedName~PdfExperimentManifestTests|FullyQualifiedName~PdfGoldAuthorityTests|FullyQualifiedName~PdfGoldEvaluatorTests|FullyQualifiedName~PdfGoldOccurrenceAuthorityTests|FullyQualifiedName~PdfGoldReviewDecisionAuthorityTests|FullyQualifiedName~PdfGoldReviewPackTests|FullyQualifiedName~P4ReachabilityCleanupTests"
+          "FullyQualifiedName~PdfExperimentManifestTests|FullyQualifiedName~PdfGoldAuthorityTests|FullyQualifiedName~PdfGoldEvaluatorTests|FullyQualifiedName~PdfGoldOccurrenceAuthorityTests|FullyQualifiedName~PdfGoldReviewDecisionAuthorityTests|FullyQualifiedName~PdfGoldReviewPackTests|FullyQualifiedName~P4ReachabilityCleanupTests|FullyQualifiedName~V5OwnedDecisionProtocolV3Tests|FullyQualifiedName~V5RepresentabilityAuditTests|FullyQualifiedName~V5OwnedDecisionDisambiguationAuditTests"
 
       - name: Core deterministic Release suite
         run: >-
