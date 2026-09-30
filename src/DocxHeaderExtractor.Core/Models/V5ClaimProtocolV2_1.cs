@@ -144,6 +144,15 @@ public static class HarnessClaimIdentityV2_1
 }
 
 /// <summary>
+/// A proposal paired with its position in the raw response it came from - provenance, not a
+/// post-filtering array index. <see cref="OriginalOrdinal"/> is what
+/// <see cref="HarnessClaimIdentityV2_1.Create"/> must hash: a proposal's durable identity may never
+/// depend on which other proposals happen to survive alongside it in whatever list is handed to the
+/// binder. Zero-based, matching the ordinal the binder has always used for a full, unfiltered batch.
+/// </summary>
+public sealed record IndexedSemanticClaimProposalV2_1(int OriginalOrdinal, SemanticClaimProposalV2_1 Proposal);
+
+/// <summary>
 /// Exact binder. Normalizes the provider's wire shape to the canonical shape before ever calling
 /// <see cref="SemanticSourcePartBinder"/> - it shares that binder's exact-coordinate rules unchanged
 /// (never repairs, never widens a span) - and adds durable-identity/refinement handling and ownership
@@ -151,24 +160,42 @@ public static class HarnessClaimIdentityV2_1
 /// </summary>
 public static class ExactClaimBinderV2_1
 {
+    /// <summary>
+    /// Unfiltered-batch convenience: every proposal's identity ordinal is its own position, 0..N-1 -
+    /// identical to this method's own behavior before <see cref="IndexedSemanticClaimProposalV2_1"/>
+    /// existed. A caller that has already excluded some proposals (claim quarantine, for one) must use
+    /// the indexed overload instead and supply each survivor's ORIGINAL position, never call this one
+    /// with a filtered list - doing so would silently renumber identities by array position again.
+    /// </summary>
     public static ClaimBindingResultV2_1 Bind(
         string requestId,
         IReadOnlyList<SemanticClaimProposalV2_1> proposals,
         IReadOnlyList<SemanticSourceAtom> atoms,
         ClaimBindingScope scope)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(requestId);
         ArgumentNullException.ThrowIfNull(proposals);
+        return Bind(requestId, proposals.Select((p, i) => new IndexedSemanticClaimProposalV2_1(i, p)).ToArray(), atoms, scope);
+    }
+
+    public static ClaimBindingResultV2_1 Bind(
+        string requestId,
+        IReadOnlyList<IndexedSemanticClaimProposalV2_1> indexedProposals,
+        IReadOnlyList<SemanticSourceAtom> atoms,
+        ClaimBindingScope scope)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(requestId);
+        ArgumentNullException.ThrowIfNull(indexedProposals);
         ArgumentNullException.ThrowIfNull(atoms);
         ArgumentNullException.ThrowIfNull(scope);
         var bound = new List<BoundSemanticClaimV2_1>();
         var refusals = new Dictionary<string, string>(StringComparer.Ordinal);
         var ids = new HashSet<string>(StringComparer.Ordinal);
 
-        for (var index = 0; index < proposals.Count; index++)
+        foreach (var indexed in indexedProposals)
         {
-            var proposal = proposals[index];
-            var key = proposal.ExistingClaimId ?? $"proposal-{index + 1}";
+            var proposal = indexed.Proposal;
+            var originalOrdinal = indexed.OriginalOrdinal;
+            var key = proposal.ExistingClaimId ?? $"proposal-{originalOrdinal + 1}";
 
             if (string.IsNullOrWhiteSpace(proposal.Predicate))
             {
@@ -233,7 +260,7 @@ public static class ExactClaimBinderV2_1
 
             var claimId = known is not null
                 ? proposal.ExistingClaimId!
-                : HarnessClaimIdentityV2_1.Create(requestId, index, subjectEndpoint, proposal.Predicate);
+                : HarnessClaimIdentityV2_1.Create(requestId, originalOrdinal, subjectEndpoint, proposal.Predicate);
             if (!ids.Add(claimId))
             {
                 refusals[key] = "duplicate-harness-claim-id";
@@ -398,6 +425,18 @@ public static class SemanticClaimContractV2_1
 }
 
 /// <summary>
+/// What a per-claim quarantine decode found: which raw claims are eligible for binding, tagged with
+/// their <see cref="IndexedSemanticClaimProposalV2_1.OriginalOrdinal"/>, and which were refused, keyed
+/// by that same original ordinal with the exact reason <see cref="SemanticClaimResponseCodecV2_1.Parse"/>
+/// would have thrown for that claim alone. <c>Eligible.Count + ContractRefusals.Count == RawClaimCount</c>
+/// always - nothing is ever silently dropped without a recorded reason.
+/// </summary>
+public sealed record ClaimQuarantineResultV2_1(
+    int RawClaimCount,
+    IReadOnlyList<IndexedSemanticClaimProposalV2_1> Eligible,
+    IReadOnlyDictionary<int, string> ContractRefusals);
+
+/// <summary>
 /// Strict JSON decoder. Unknown fields (including a provider-supplied <c>selectionMode</c>), model
 /// claim ids, empty parts, an empty verbatimText and a model-originated EXHAUSTED all fail closed.
 /// </summary>
@@ -431,6 +470,66 @@ public static class SemanticClaimResponseCodecV2_1
         var issues = SemanticClaimContractV2_1.Validate(response, contract);
         if (issues.Count > 0) throw new InvalidOperationException(string.Join(",", issues));
         return response;
+    }
+
+    /// <summary>
+    /// The same strict rules as <see cref="Parse"/> - it calls no different check, invents no new
+    /// leniency - applied per claim instead of per response. Root-level malformation (a non-object
+    /// payload, an unknown top-level field, a missing or non-array <c>claims</c>) remains exactly as
+    /// fatal as it always was: quarantine only ever isolates a claim-CONTAINED defect, never a
+    /// structural one, because a response that is not even shaped like a claim list has no claims to
+    /// isolate. A claim that fails any check - structural or contract - is recorded as refused with
+    /// its exact reason and excluded as-is; nothing about it is mutated, coerced, or inferred to make
+    /// it pass, and its surviving siblings are never touched by its failure.
+    /// </summary>
+    public static ClaimQuarantineResultV2_1 ParseWithClaimQuarantine(JsonElement payload, DocumentTaskContract contract)
+    {
+        if (payload.ValueKind != JsonValueKind.Object) throw new InvalidOperationException("claim-payload-not-object");
+        EnsureFields(payload, SemanticClaimContractV2_1.ResponseFields, "response");
+        if (!payload.TryGetProperty("claims", out var claims) || claims.ValueKind != JsonValueKind.Array)
+            throw new InvalidOperationException("claims-array-missing");
+
+        var options = new JsonSerializerOptions(CanonicalJson.Options)
+        {
+            Converters = { new JsonStringEnumConverter() },
+        };
+        var eligible = new List<IndexedSemanticClaimProposalV2_1>();
+        var contractRefusals = new Dictionary<int, string>();
+
+        var ordinal = 0;
+        foreach (var claim in claims.EnumerateArray())
+        {
+            try
+            {
+                EnsureFields(claim, SemanticClaimContractV2_1.ClaimFields, "claim");
+                EnsureRequiredString(claim, "predicate");
+                var state = EnsureRequiredString(claim, "state");
+                if (string.Equals(state, nameof(ClaimResolutionState.EXHAUSTED), StringComparison.Ordinal))
+                    throw new InvalidOperationException("model-may-not-originate-exhausted-state");
+                if (!SemanticClaimContractV2_1.ProviderFacingStates.Contains(state, StringComparer.Ordinal))
+                    throw new InvalidOperationException($"claim-state-not-provider-facing:{state}");
+                EnsureEndpoint(claim, "subject", required: true);
+                if (claim.TryGetProperty("object", out var target) && target.ValueKind != JsonValueKind.Null)
+                    EnsureEndpoint(target, "object", required: false);
+
+                var proposal = claim.Deserialize<SemanticClaimProposalV2_1>(options)
+                    ?? throw new InvalidOperationException("claim-payload-empty");
+                // The same arity/vocabulary rules Validate applies to a full batch, applied to this one
+                // claim alone - a single-claim response is not a special case Validate needs to know
+                // about, since it already checks nothing but each claim's own fields.
+                var issues = SemanticClaimContractV2_1.Validate(new SemanticClaimResponseV2_1([proposal]), contract);
+                if (issues.Count > 0) throw new InvalidOperationException(string.Join(",", issues));
+
+                eligible.Add(new IndexedSemanticClaimProposalV2_1(ordinal, proposal));
+            }
+            catch (InvalidOperationException ex)
+            {
+                contractRefusals[ordinal] = ex.Message;
+            }
+            ordinal++;
+        }
+
+        return new ClaimQuarantineResultV2_1(claims.GetArrayLength(), eligible, contractRefusals);
     }
 
     private static void EnsureEndpoint(JsonElement claim, string property, bool required)

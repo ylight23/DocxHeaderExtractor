@@ -1,0 +1,1841 @@
+{
+  "schemaVersion": "v5-claim-quarantine-promotion-gate-v1",
+  "subject": "all 31 original 31-pack cohort responses (v5-provider-cohort-31-windows) plus the 3-pack source-selection remediation canary",
+  "gate": {
+    "responsesReplayed": 34,
+    "identityDriftCount": 0,
+    "unsafeRepairCount": 0,
+    "outOfScopeAcceptedCount": 0,
+    "silentDropCount": 0,
+    "recoveredFromPreviouslyResponseFatal": 1,
+    "promotionCriteriaMet": true
+  },
+  "responses": [
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 17,
+        "contractRefused": 0,
+        "binderEligible": 17,
+        "boundCount": 4,
+        "bindingRefusedCount": 13,
+        "totalRefused": 13,
+        "boundFraction": 0.2352941176470588235294117647,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-2",
+            "reason": "\u0027L0005:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-3",
+            "reason": "\u0027L0007:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-6",
+            "reason": "\u0027L0016:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-7",
+            "reason": "\u0027L0024:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-8",
+            "reason": "\u0027L0051:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-9",
+            "reason": "\u0027L0080:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-11",
+            "reason": "\u0027L0016:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-12",
+            "reason": "\u0027L0024:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-13",
+            "reason": "\u0027L0051:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-14",
+            "reason": "\u0027L0080:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-15",
+            "reason": "\u0027L0016:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-16",
+            "reason": "\u0027L0024:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-17",
+            "reason": "\u0027L0051:S0\u0027 does not contain that text"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 25,
+        "contractRefused": 0,
+        "binderEligible": 25,
+        "boundCount": 22,
+        "bindingRefusedCount": 3,
+        "totalRefused": 3,
+        "boundFraction": 0.88,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-7",
+            "reason": "subject-alias-not-owned:L0195:S0"
+          },
+          {
+            "key": "proposal-22",
+            "reason": "subject-alias-not-owned:L0195:S0"
+          },
+          {
+            "key": "proposal-25",
+            "reason": "subject-alias-not-owned:L0196:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 109,
+        "contractRefused": 0,
+        "binderEligible": 109,
+        "boundCount": 100,
+        "bindingRefusedCount": 9,
+        "totalRefused": 9,
+        "boundFraction": 0.9174311926605504587155963303,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-7",
+            "reason": "subject-alias-not-owned:L0286:S0"
+          },
+          {
+            "key": "proposal-98",
+            "reason": "subject-alias-not-owned:L0286:S0"
+          },
+          {
+            "key": "proposal-99",
+            "reason": "subject-alias-not-owned:L0287:S0"
+          },
+          {
+            "key": "proposal-100",
+            "reason": "subject-alias-not-owned:L0288:S0"
+          },
+          {
+            "key": "proposal-101",
+            "reason": "subject-alias-not-owned:L0289:S0"
+          },
+          {
+            "key": "proposal-102",
+            "reason": "subject-alias-not-owned:L0290:S0"
+          },
+          {
+            "key": "proposal-103",
+            "reason": "subject-alias-not-owned:L0291:S0"
+          },
+          {
+            "key": "proposal-104",
+            "reason": "subject-alias-not-owned:L0292:S0"
+          },
+          {
+            "key": "proposal-109",
+            "reason": "subject-alias-not-owned:L0286:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 17,
+        "contractRefused": 0,
+        "binderEligible": 17,
+        "boundCount": 11,
+        "bindingRefusedCount": 6,
+        "totalRefused": 6,
+        "boundFraction": 0.6470588235294117647058823529,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-2",
+            "reason": "subject-alias-not-owned:L0285:S0"
+          },
+          {
+            "key": "proposal-9",
+            "reason": "subject-alias-not-owned:L0382:S0"
+          },
+          {
+            "key": "proposal-10",
+            "reason": "subject-alias-not-owned:L0384:S0"
+          },
+          {
+            "key": "proposal-11",
+            "reason": "subject-alias-not-owned:L0384:S0"
+          },
+          {
+            "key": "proposal-16",
+            "reason": "subject-alias-not-owned:L0382:S0"
+          },
+          {
+            "key": "proposal-17",
+            "reason": "subject-alias-not-owned:L0384:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 48,
+        "contractRefused": 0,
+        "binderEligible": 48,
+        "boundCount": 48,
+        "bindingRefusedCount": 0,
+        "totalRefused": 0,
+        "boundFraction": 1,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": []
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 41,
+        "contractRefused": 0,
+        "binderEligible": 41,
+        "boundCount": 17,
+        "bindingRefusedCount": 24,
+        "totalRefused": 24,
+        "boundFraction": 0.4146341463414634146341463415,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-1",
+            "reason": "\u0027L0478:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-3",
+            "reason": "\u0027L0490:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-5",
+            "reason": "\u0027L0499:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-7",
+            "reason": "\u0027L0522:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-13",
+            "reason": "\u0027L0555:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-17",
+            "reason": "\u0027L0481:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-19",
+            "reason": "\u0027L0488:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-20",
+            "reason": "\u0027L0501:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-22",
+            "reason": "\u0027L0506:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-23",
+            "reason": "\u0027L0507:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-25",
+            "reason": "\u0027L0512:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-26",
+            "reason": "\u0027L0515:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-27",
+            "reason": "\u0027L0517:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-28",
+            "reason": "\u0027L0519:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-29",
+            "reason": "\u0027L0521:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-30",
+            "reason": "\u0027L0527:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-31",
+            "reason": "\u0027L0529:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-34",
+            "reason": "\u0027L0540:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-35",
+            "reason": "\u0027L0542:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-36",
+            "reason": "\u0027L0545:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-37",
+            "reason": "\u0027L0549:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-38",
+            "reason": "\u0027L0557:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-39",
+            "reason": "\u0027L0560:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-40",
+            "reason": "\u0027L0564:S0\u0027 does not contain that text"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 8,
+        "contractRefused": 0,
+        "binderEligible": 8,
+        "boundCount": 6,
+        "bindingRefusedCount": 2,
+        "totalRefused": 2,
+        "boundFraction": 0.75,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-1",
+            "reason": "\u0027L0574:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-6",
+            "reason": "\u0027L0574:S0\u0027 does not contain that text"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 80,
+        "contractRefused": 0,
+        "binderEligible": 80,
+        "boundCount": 60,
+        "bindingRefusedCount": 20,
+        "totalRefused": 20,
+        "boundFraction": 0.75,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-9",
+            "reason": "\u0027L0015:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-13",
+            "reason": "\u0027L0036:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-50",
+            "reason": "\u0027L0075:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-51",
+            "reason": "\u0027L0075:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-52",
+            "reason": "\u0027L0075:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-53",
+            "reason": "\u0027L0075:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-54",
+            "reason": "\u0027L0075:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-55",
+            "reason": "\u0027L0075:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-56",
+            "reason": "\u0027L0075:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-57",
+            "reason": "\u0027L0075:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-58",
+            "reason": "\u0027L0075:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-65",
+            "reason": "subject-alias-not-owned:L0090:S0"
+          },
+          {
+            "key": "proposal-66",
+            "reason": "\u0027L0091:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-67",
+            "reason": "subject-alias-not-owned:L0092:S0"
+          },
+          {
+            "key": "proposal-68",
+            "reason": "subject-alias-not-owned:L0093:S0"
+          },
+          {
+            "key": "proposal-69",
+            "reason": "subject-alias-not-owned:L0096:S0"
+          },
+          {
+            "key": "proposal-70",
+            "reason": "subject-alias-not-owned:L0097:S0"
+          },
+          {
+            "key": "proposal-77",
+            "reason": "\u0027L0011:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-78",
+            "reason": "\u0027L0012:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-79",
+            "reason": "\u0027L0012:S0\u0027 does not contain that text"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 78,
+        "contractRefused": 0,
+        "binderEligible": 78,
+        "boundCount": 58,
+        "bindingRefusedCount": 20,
+        "totalRefused": 20,
+        "boundFraction": 0.7435897435897435897435897436,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-7",
+            "reason": "\u0027L0091:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-12",
+            "reason": "\u0027L0098:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-18",
+            "reason": "\u0027L0104:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-30",
+            "reason": "\u0027L0116:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-31",
+            "reason": "\u0027L0117:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-32",
+            "reason": "\u0027L0118:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-33",
+            "reason": "\u0027L0119:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-34",
+            "reason": "\u0027L0120:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-46",
+            "reason": "\u0027L0091:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-47",
+            "reason": "\u0027L0091:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-51",
+            "reason": "\u0027L0098:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-52",
+            "reason": "\u0027L0098:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-57",
+            "reason": "\u0027L0104:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-58",
+            "reason": "\u0027L0104:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-69",
+            "reason": "\u0027L0116:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-70",
+            "reason": "\u0027L0117:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-71",
+            "reason": "\u0027L0118:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-72",
+            "reason": "\u0027L0119:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-73",
+            "reason": "\u0027L0120:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-74",
+            "reason": "\u0027L0120:S0\u0027 does not contain that text"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 29,
+        "contractRefused": 0,
+        "binderEligible": 29,
+        "boundCount": 4,
+        "bindingRefusedCount": 25,
+        "totalRefused": 25,
+        "boundFraction": 0.1379310344827586206896551724,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-1",
+            "reason": "\u0027L0186:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-2",
+            "reason": "\u0027L0185:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-3",
+            "reason": "\u0027L0205:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-5",
+            "reason": "\u0027L0244:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-6",
+            "reason": "\u0027L0244:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-7",
+            "reason": "\u0027L0187:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-8",
+            "reason": "\u0027L0189:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-9",
+            "reason": "\u0027L0191:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-10",
+            "reason": "\u0027L0195:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-11",
+            "reason": "\u0027L0196:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-12",
+            "reason": "\u0027L0199:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-13",
+            "reason": "\u0027L0202:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-14",
+            "reason": "\u0027L0204:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-15",
+            "reason": "\u0027L0212:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-16",
+            "reason": "\u0027L0213:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-17",
+            "reason": "\u0027L0215:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-18",
+            "reason": "\u0027L0217:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-19",
+            "reason": "\u0027L0218:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-20",
+            "reason": "\u0027L0219:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-21",
+            "reason": "\u0027L0225:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-22",
+            "reason": "\u0027L0226:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-23",
+            "reason": "\u0027L0228:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-26",
+            "reason": "\u0027L0234:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-27",
+            "reason": "\u0027L0237:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-29",
+            "reason": "subject-alias-not-owned:L0277:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 115,
+        "contractRefused": 0,
+        "binderEligible": 115,
+        "boundCount": 115,
+        "bindingRefusedCount": 0,
+        "totalRefused": 0,
+        "boundFraction": 1,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": []
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 12,
+        "contractRefused": 0,
+        "binderEligible": 12,
+        "boundCount": 11,
+        "bindingRefusedCount": 1,
+        "totalRefused": 1,
+        "boundFraction": 0.9166666666666666666666666667,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-4",
+            "reason": "subject-alias-not-owned:L0472:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 15,
+        "contractRefused": 0,
+        "binderEligible": 15,
+        "boundCount": 15,
+        "bindingRefusedCount": 0,
+        "totalRefused": 0,
+        "boundFraction": 1,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": []
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 10,
+        "contractRefused": 0,
+        "binderEligible": 10,
+        "boundCount": 3,
+        "bindingRefusedCount": 7,
+        "totalRefused": 7,
+        "boundFraction": 0.3,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-1",
+            "reason": "subject-alias-not-owned:L0557:S0"
+          },
+          {
+            "key": "proposal-2",
+            "reason": "subject-alias-not-owned:L0557:S0"
+          },
+          {
+            "key": "proposal-3",
+            "reason": "\u0027L0605:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-5",
+            "reason": "subject-alias-not-owned:L0557:S0"
+          },
+          {
+            "key": "proposal-6",
+            "reason": "subject-alias-not-owned:L0557:S0"
+          },
+          {
+            "key": "proposal-7",
+            "reason": "\u0027L0605:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-8",
+            "reason": "\u0027L0605:S0\u0027 does not contain that text"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 73,
+        "contractRefused": 0,
+        "binderEligible": 73,
+        "boundCount": 72,
+        "bindingRefusedCount": 1,
+        "totalRefused": 1,
+        "boundFraction": 0.9863013698630136986301369863,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-5",
+            "reason": "subject-alias-not-owned:L0760:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 21,
+        "contractRefused": 0,
+        "binderEligible": 21,
+        "boundCount": 20,
+        "bindingRefusedCount": 1,
+        "totalRefused": 1,
+        "boundFraction": 0.9523809523809523809523809524,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-21",
+            "reason": "subject-alias-not-owned:L0854:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 19,
+        "contractRefused": 0,
+        "binderEligible": 19,
+        "boundCount": 11,
+        "bindingRefusedCount": 8,
+        "totalRefused": 8,
+        "boundFraction": 0.5789473684210526315789473684,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-6",
+            "reason": "\u0027L0855:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-7",
+            "reason": "\u0027L0858:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-8",
+            "reason": "\u0027L0860:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-9",
+            "reason": "\u0027L0873:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-10",
+            "reason": "\u0027L0878:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-11",
+            "reason": "\u0027L0894:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-12",
+            "reason": "\u0027L0904:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-19",
+            "reason": "\u0027L0894:S0\u0027 does not contain that text"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 19,
+        "contractRefused": 0,
+        "binderEligible": 19,
+        "boundCount": 17,
+        "bindingRefusedCount": 2,
+        "totalRefused": 2,
+        "boundFraction": 0.8947368421052631578947368421,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-15",
+            "reason": "subject-alias-not-owned:L1002:S0"
+          },
+          {
+            "key": "proposal-19",
+            "reason": "subject-alias-not-owned:L1004:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 31,
+        "contractRefused": 0,
+        "binderEligible": 31,
+        "boundCount": 29,
+        "bindingRefusedCount": 2,
+        "totalRefused": 2,
+        "boundFraction": 0.9354838709677419354838709677,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-1",
+            "reason": "\u0027L1002:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-31",
+            "reason": "subject-alias-not-owned:L1096:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 13,
+        "contractRefused": 0,
+        "binderEligible": 13,
+        "boundCount": 3,
+        "bindingRefusedCount": 10,
+        "totalRefused": 10,
+        "boundFraction": 0.2307692307692307692307692308,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-1",
+            "reason": "\u0027L1096:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-5",
+            "reason": "\u0027L1189:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-6",
+            "reason": "\u0027L1106:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-7",
+            "reason": "\u0027L1144:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-8",
+            "reason": "\u0027L1165:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-9",
+            "reason": "\u0027L1117:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-10",
+            "reason": "\u0027L1142:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-11",
+            "reason": "\u0027L1163:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-12",
+            "reason": "\u0027L1190:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-13",
+            "reason": "subject-alias-not-owned:L1199:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 22,
+        "contractRefused": 0,
+        "binderEligible": 22,
+        "boundCount": 22,
+        "bindingRefusedCount": 0,
+        "totalRefused": 0,
+        "boundFraction": 1,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": []
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 15,
+        "contractRefused": 0,
+        "binderEligible": 15,
+        "boundCount": 15,
+        "bindingRefusedCount": 0,
+        "totalRefused": 0,
+        "boundFraction": 1,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": []
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 129,
+        "contractRefused": 0,
+        "binderEligible": 129,
+        "boundCount": 116,
+        "bindingRefusedCount": 13,
+        "totalRefused": 13,
+        "boundFraction": 0.8992248062015503875968992248,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-2",
+            "reason": "\u0027L1399:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-8",
+            "reason": "\u0027L1456:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-10",
+            "reason": "subject-alias-not-owned:L1472:S0"
+          },
+          {
+            "key": "proposal-20",
+            "reason": "\u0027L1385:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-25",
+            "reason": "subject-alias-not-owned:L1467:S0"
+          },
+          {
+            "key": "proposal-26",
+            "reason": "\u0027L1433:S0\u0027 contains that text 2 times and nothing says which"
+          },
+          {
+            "key": "proposal-123",
+            "reason": "subject-alias-not-owned:L1467:S0"
+          },
+          {
+            "key": "proposal-124",
+            "reason": "subject-alias-not-owned:L1468:S0"
+          },
+          {
+            "key": "proposal-125",
+            "reason": "subject-alias-not-owned:L1469:S0"
+          },
+          {
+            "key": "proposal-126",
+            "reason": "subject-alias-not-owned:L1470:S0"
+          },
+          {
+            "key": "proposal-127",
+            "reason": "subject-alias-not-owned:L1471:S0"
+          },
+          {
+            "key": "proposal-128",
+            "reason": "subject-alias-not-owned:L1472:S0"
+          },
+          {
+            "key": "proposal-129",
+            "reason": "subject-alias-not-owned:L1473:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 43,
+        "contractRefused": 0,
+        "binderEligible": 43,
+        "boundCount": 36,
+        "bindingRefusedCount": 7,
+        "totalRefused": 7,
+        "boundFraction": 0.8372093023255813953488372093,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-1",
+            "reason": "\u0027L1467:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-5",
+            "reason": "\u0027L1467:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-6",
+            "reason": "\u0027L1475:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-7",
+            "reason": "\u0027L1478:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-23",
+            "reason": "\u0027L1504:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-35",
+            "reason": "\u0027L1519:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-37",
+            "reason": "\u0027L1522:S0\u0027 does not contain that text"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 79,
+        "contractRefused": 0,
+        "binderEligible": 79,
+        "boundCount": 69,
+        "bindingRefusedCount": 10,
+        "totalRefused": 10,
+        "boundFraction": 0.8734177215189873417721518987,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-2",
+            "reason": "subject-alias-not-owned:L1529:S0"
+          },
+          {
+            "key": "proposal-71",
+            "reason": "subject-alias-not-owned:L1573:S1"
+          },
+          {
+            "key": "proposal-72",
+            "reason": "subject-alias-not-owned:L1573:S2"
+          },
+          {
+            "key": "proposal-73",
+            "reason": "subject-alias-not-owned:L1573:S3"
+          },
+          {
+            "key": "proposal-74",
+            "reason": "subject-alias-not-owned:L1575:S0"
+          },
+          {
+            "key": "proposal-75",
+            "reason": "subject-alias-not-owned:L1575:S0"
+          },
+          {
+            "key": "proposal-76",
+            "reason": "subject-alias-not-owned:L1575:S0"
+          },
+          {
+            "key": "proposal-77",
+            "reason": "subject-alias-not-owned:L1575:S1"
+          },
+          {
+            "key": "proposal-78",
+            "reason": "subject-alias-not-owned:L1575:S2"
+          },
+          {
+            "key": "proposal-79",
+            "reason": "subject-alias-not-owned:L1575:S3"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 103,
+        "contractRefused": 0,
+        "binderEligible": 103,
+        "boundCount": 94,
+        "bindingRefusedCount": 9,
+        "totalRefused": 9,
+        "boundFraction": 0.9126213592233009708737864078,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-2",
+            "reason": "subject-alias-not-owned:L1573:S0"
+          },
+          {
+            "key": "proposal-96",
+            "reason": "subject-alias-not-owned:L1629:S0"
+          },
+          {
+            "key": "proposal-97",
+            "reason": "subject-alias-not-owned:L1630:S0"
+          },
+          {
+            "key": "proposal-98",
+            "reason": "subject-alias-not-owned:L1631:S0"
+          },
+          {
+            "key": "proposal-99",
+            "reason": "subject-alias-not-owned:L1632:S0"
+          },
+          {
+            "key": "proposal-100",
+            "reason": "subject-alias-not-owned:L1633:S0"
+          },
+          {
+            "key": "proposal-101",
+            "reason": "subject-alias-not-owned:L1634:S0"
+          },
+          {
+            "key": "proposal-102",
+            "reason": "subject-alias-not-owned:L1635:S0"
+          },
+          {
+            "key": "proposal-103",
+            "reason": "subject-alias-not-owned:L1635:S1"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 25,
+        "contractRefused": 0,
+        "binderEligible": 25,
+        "boundCount": 19,
+        "bindingRefusedCount": 6,
+        "totalRefused": 6,
+        "boundFraction": 0.76,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-3",
+            "reason": "\u0027L1688:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-4",
+            "reason": "\u0027L1710:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-5",
+            "reason": "\u0027L1690:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-10",
+            "reason": "\u0027L1637:S1\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-19",
+            "reason": "\u0027L1665:S1\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-25",
+            "reason": "subject-alias-not-owned:L1622:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 79,
+        "contractRefused": 0,
+        "binderEligible": 79,
+        "boundCount": 73,
+        "bindingRefusedCount": 6,
+        "totalRefused": 6,
+        "boundFraction": 0.9240506329113924050632911392,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-7",
+            "reason": "subject-alias-not-owned:L1710:S0"
+          },
+          {
+            "key": "proposal-8",
+            "reason": "subject-alias-not-owned:L1710:S0"
+          },
+          {
+            "key": "proposal-9",
+            "reason": "subject-alias-not-owned:L1710:S0"
+          },
+          {
+            "key": "proposal-10",
+            "reason": "subject-alias-not-owned:L1710:S0"
+          },
+          {
+            "key": "proposal-11",
+            "reason": "subject-alias-not-owned:L1710:S0"
+          },
+          {
+            "key": "proposal-12",
+            "reason": "subject-alias-not-owned:L1710:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 64,
+        "contractRefused": 0,
+        "binderEligible": 64,
+        "boundCount": 33,
+        "bindingRefusedCount": 31,
+        "totalRefused": 31,
+        "boundFraction": 0.515625,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-1",
+            "reason": "subject-alias-not-owned:L1807:S0"
+          },
+          {
+            "key": "proposal-2",
+            "reason": "subject-alias-not-owned:L1807:S0"
+          },
+          {
+            "key": "proposal-3",
+            "reason": "\u0027L1807:S1\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-4",
+            "reason": "\u0027L1811:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-5",
+            "reason": "\u0027L1811:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-6",
+            "reason": "\u0027L1814:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-7",
+            "reason": "\u0027L1814:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-8",
+            "reason": "\u0027L1821:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-9",
+            "reason": "\u0027L1821:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-11",
+            "reason": "\u0027L1831:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-13",
+            "reason": "\u0027L1834:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-16",
+            "reason": "\u0027L1839:S1\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-18",
+            "reason": "\u0027L1840:S1\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-22",
+            "reason": "\u0027L1844:S1\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-23",
+            "reason": "\u0027L1845:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-26",
+            "reason": "\u0027L1849:S1\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-31",
+            "reason": "\u0027L1852:S1\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-33",
+            "reason": "\u0027L1855:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-34",
+            "reason": "\u0027L1856:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-35",
+            "reason": "\u0027L1857:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-37",
+            "reason": "\u0027L1865:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-39",
+            "reason": "\u0027L1871:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-42",
+            "reason": "\u0027L1879:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-57",
+            "reason": "\u0027L1896:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-58",
+            "reason": "subject-alias-not-owned:L1897:S0"
+          },
+          {
+            "key": "proposal-59",
+            "reason": "subject-alias-not-owned:L1898:S0"
+          },
+          {
+            "key": "proposal-60",
+            "reason": "subject-alias-not-owned:L1899:S0"
+          },
+          {
+            "key": "proposal-61",
+            "reason": "subject-alias-not-owned:L1900:S0"
+          },
+          {
+            "key": "proposal-62",
+            "reason": "subject-alias-not-owned:L1901:S0"
+          },
+          {
+            "key": "proposal-63",
+            "reason": "subject-alias-not-owned:L1902:S0"
+          },
+          {
+            "key": "proposal-64",
+            "reason": "subject-alias-not-owned:L1903:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 21,
+        "contractRefused": 0,
+        "binderEligible": 21,
+        "boundCount": 19,
+        "bindingRefusedCount": 2,
+        "totalRefused": 2,
+        "boundFraction": 0.9047619047619047619047619048,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-18",
+            "reason": "subject-alias-not-owned:L1990:S0"
+          },
+          {
+            "key": "proposal-19",
+            "reason": "subject-alias-not-owned:L1994:S0"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 88,
+        "contractRefused": 0,
+        "binderEligible": 88,
+        "boundCount": 81,
+        "bindingRefusedCount": 7,
+        "totalRefused": 7,
+        "boundFraction": 0.9204545454545454545454545455,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-19",
+            "reason": "subject-alias-not-owned:L1983:S0"
+          },
+          {
+            "key": "proposal-20",
+            "reason": "subject-alias-not-owned:L1984:S0"
+          },
+          {
+            "key": "proposal-21",
+            "reason": "subject-alias-not-owned:L1986:S0"
+          },
+          {
+            "key": "proposal-22",
+            "reason": "subject-alias-not-owned:L1987:S0"
+          },
+          {
+            "key": "proposal-37",
+            "reason": "\u0027L2014:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-44",
+            "reason": "\u0027L2025:S0\u0027 does not contain that text"
+          },
+          {
+            "key": "proposal-74",
+            "reason": "\u0027L2061:S0\u0027 does not contain that text"
+          }
+        ]
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "previouslyWirePass": false,
+      "oldWireStatus": "RESPONSE_FATAL",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 35,
+        "contractRefused": 6,
+        "binderEligible": 29,
+        "boundCount": 29,
+        "bindingRefusedCount": 0,
+        "totalRefused": 6,
+        "boundFraction": 0.8285714285714285714285714286,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [
+          {
+            "originalOrdinal": 28,
+            "reason": "relation-has-value"
+          },
+          {
+            "originalOrdinal": 29,
+            "reason": "relation-has-value"
+          },
+          {
+            "originalOrdinal": 30,
+            "reason": "relation-has-value"
+          },
+          {
+            "originalOrdinal": 31,
+            "reason": "relation-has-value"
+          },
+          {
+            "originalOrdinal": 32,
+            "reason": "relation-has-value"
+          },
+          {
+            "originalOrdinal": 33,
+            "reason": "relation-has-value"
+          }
+        ],
+        "bindingRefusals": []
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 65,
+        "contractRefused": 0,
+        "binderEligible": 65,
+        "boundCount": 65,
+        "bindingRefusedCount": 0,
+        "totalRefused": 0,
+        "boundFraction": 1,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": []
+      },
+      "identityDrifted": false
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "previouslyWirePass": true,
+      "oldWireStatus": "WIRE_PASS",
+      "newReport": {
+        "wireStatus": "WIRE_PASS",
+        "responseUsable": true,
+        "responseFatalReason": null,
+        "rawClaims": 51,
+        "contractRefused": 0,
+        "binderEligible": 51,
+        "boundCount": 40,
+        "bindingRefusedCount": 11,
+        "totalRefused": 11,
+        "boundFraction": 0.784313725490196078431372549,
+        "runtimeProcessedSafely": true,
+        "contractRefusals": [],
+        "bindingRefusals": [
+          {
+            "key": "proposal-1",
+            "reason": "subject-alias-not-owned:L1807:S0"
+          },
+          {
+            "key": "proposal-2",
+            "reason": "subject-alias-not-owned:L1807:S0"
+          },
+          {
+            "key": "proposal-5",
+            "reason": "\u0027L1811:S1\u0027 is not an atom in this source"
+          },
+          {
+            "key": "proposal-7",
+            "reason": "\u0027L1814:S1\u0027 is not an atom in this source"
+          },
+          {
+            "key": "proposal-13",
+            "reason": "\u0027L1833:S1\u0027 is not an atom in this source"
+          },
+          {
+            "key": "proposal-15",
+            "reason": "\u0027L1834:S1\u0027 is not an atom in this source"
+          },
+          {
+            "key": "proposal-17",
+            "reason": "\u0027L1838:S1\u0027 is not an atom in this source"
+          },
+          {
+            "key": "proposal-27",
+            "reason": "\u0027L1845:S1\u0027 is not an atom in this source"
+          },
+          {
+            "key": "proposal-29",
+            "reason": "\u0027L1848:S1\u0027 is not an atom in this source"
+          },
+          {
+            "key": "proposal-33",
+            "reason": "\u0027L1850:S1\u0027 is not an atom in this source"
+          },
+          {
+            "key": "proposal-39",
+            "reason": "\u0027L1854:S1\u0027 is not an atom in this source"
+          }
+        ]
+      },
+      "identityDrifted": false
+    }
+  ],
+  "providerCalls": 0,
+  "goldRead": false
+}

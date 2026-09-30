@@ -170,11 +170,26 @@ public sealed class DocumentAgentRuntime
             var response = reasoning.Response;
             totalTokens = checked(totalTokens + reasoning.Usage.TotalTokens);
             var responseHash = Hashing.Sha256(JsonSerializer.Serialize(response, CanonicalJson.Options));
-            var contractIssues = SemanticClaimContractV2_1.Validate(response, contract);
-            if (contractIssues.Count > 0)
+            // Claim-by-claim quarantine: a claim-CONTAINED contract defect (relation-has-value,
+            // unary-claim-has-object, an unknown predicate, ...) excludes only that one claim -
+            // CLAIM_CONTRACT, recorded explicitly, never silently dropped - while every
+            // structurally-independent sibling proceeds to ExactClaimBinderV2_1 unchanged. Each
+            // survivor keeps its ORIGINAL position in this response as its identity ordinal
+            // (IndexedSemanticClaimProposalV2_1), never a position recomputed after exclusion, so a
+            // claim's durable id can never depend on which other claims in the same response
+            // happened to be refused.
+            var indexedProposals = new List<IndexedSemanticClaimProposalV2_1>();
+            for (var ordinal = 0; ordinal < response.Claims.Count; ordinal++)
             {
-                allConflicts.AddRange(contractIssues.Select(issue => new KnowledgeValidationIssue("CLAIM_CONTRACT", null, issue)));
-                break;
+                var proposal = response.Claims[ordinal];
+                var claimIssues = SemanticClaimContractV2_1.Validate(new SemanticClaimResponseV2_1([proposal]), contract);
+                if (claimIssues.Count > 0)
+                {
+                    var key = proposal.ExistingClaimId ?? $"proposal-{ordinal + 1}";
+                    allConflicts.Add(new KnowledgeValidationIssue("CLAIM_CONTRACT", key, string.Join(",", claimIssues)));
+                    continue;
+                }
+                indexedProposals.Add(new IndexedSemanticClaimProposalV2_1(ordinal, proposal));
             }
             // KnownClaims reflects the durable state as of THIS turn, so a refinement proposal's
             // existingClaimId is checked against what the runtime actually holds right now, not a
@@ -184,7 +199,7 @@ public sealed class DocumentAgentRuntime
                 item => new KnownClaimReference(item.Value.Subject.Identity, item.Value.Predicate),
                 StringComparer.Ordinal);
             var scope = ClaimBindingScope.Create(owned, visible, knownClaims);
-            var binding = ExactClaimBinderV2_1.Bind(requestHash, response.Claims, atoms, scope);
+            var binding = ExactClaimBinderV2_1.Bind(requestHash, indexedProposals, atoms, scope);
             foreach (var boundClaim in binding.Bound)
             {
                 var claim = boundClaim.Claim;
