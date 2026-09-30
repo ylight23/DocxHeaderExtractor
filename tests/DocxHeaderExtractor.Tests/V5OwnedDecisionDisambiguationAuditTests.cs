@@ -7,9 +7,8 @@ using DocxHeaderExtractor.DocumentProcessing.Projection;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
-/// P5C3a: asks whether the historical occurrence/context selectors on claims that actually bound
-/// are redundant. Provider-free and Gold-free. A failure of the zero-required hypothesis is a
-/// design finding: V3 must preserve disambiguation rather than silently simplifying it away.
+/// P5C3a: asks whether historical occurrence/context selectors on claims that actually survived the
+/// real batch binder are necessary for source identity. Provider-free and Gold-free.
 /// </summary>
 public sealed class V5OwnedDecisionDisambiguationAuditTests
 {
@@ -41,6 +40,7 @@ public sealed class V5OwnedDecisionDisambiguationAuditTests
         var boundWithDisambiguation = 0;
         var subjectSelectorClaims = 0;
         var objectSelectorClaims = 0;
+        var selectorParts = 0;
         var strippingRedundant = 0;
         var strippingRequired = 0;
         var strippingChangedIdentity = 0;
@@ -58,11 +58,17 @@ public sealed class V5OwnedDecisionDisambiguationAuditTests
 
             using var raw = JsonDocument.Parse(File.ReadAllText(Path.Combine(callDirectory, "content.txt")));
             var quarantine = SemanticClaimResponseCodecV2_1.ParseWithClaimQuarantine(raw.RootElement, contract);
+            var batch = ExactClaimBinderV2_1.Bind(packId, quarantine.Eligible, atoms, scope);
+            boundClaims += batch.Bound.Count;
+
+            var refusedOrdinals = batch.Refusals.Keys
+                .Where(key => key.StartsWith("proposal-", StringComparison.Ordinal))
+                .Select(key => int.Parse(key[9..], System.Globalization.CultureInfo.InvariantCulture) - 1)
+                .ToHashSet();
+
             foreach (var indexed in quarantine.Eligible)
             {
-                var original = ExactClaimBinderV2_1.Bind(packId, [indexed], atoms, scope);
-                if (original.Bound.Count != 1) continue;
-                boundClaims++;
+                if (refusedOrdinals.Contains(indexed.OriginalOrdinal)) continue;
 
                 var proposal = indexed.Proposal;
                 var subjectHas = HasDisambiguation(proposal.Subject);
@@ -72,28 +78,29 @@ public sealed class V5OwnedDecisionDisambiguationAuditTests
                 boundWithDisambiguation++;
                 if (subjectHas) subjectSelectorClaims++;
                 if (objectHas) objectSelectorClaims++;
+                selectorParts += CountDisambiguatedParts(proposal.Subject);
+                if (proposal.Object is not null) selectorParts += CountDisambiguatedParts(proposal.Object);
 
-                var strippedProposal = proposal with
-                {
-                    Subject = Strip(proposal.Subject),
-                    Object = proposal.Object is null ? null : Strip(proposal.Object),
-                };
-                var stripped = ExactClaimBinderV2_1.Bind(
-                    packId,
-                    [new IndexedSemanticClaimProposalV2_1(indexed.OriginalOrdinal, strippedProposal)],
-                    atoms,
-                    scope);
+                var originalSubject = Bind(proposal.Subject, atoms);
+                var strippedSubject = Bind(Strip(proposal.Subject), atoms);
+                var originalObject = proposal.Object is null ? null : Bind(proposal.Object, atoms);
+                var strippedObject = proposal.Object is null ? null : Bind(Strip(proposal.Object), atoms);
 
-                if (stripped.Bound.Count != 1)
+                var stillBinds =
+                    originalSubject.IsBound && strippedSubject.IsBound &&
+                    (originalObject is null || (originalObject.IsBound && strippedObject!.IsBound));
+
+                if (!stillBinds)
                 {
                     strippingRequired++;
                     continue;
                 }
 
-                var before = original.Bound[0].Claim;
-                var after = stripped.Bound[0].Claim;
-                if (!string.Equals(before.Subject.Identity, after.Subject.Identity, StringComparison.Ordinal) ||
-                    !string.Equals(before.Object?.Identity, after.Object?.Identity, StringComparison.Ordinal))
+                var identityChanged =
+                    !string.Equals(originalSubject.Identity, strippedSubject.Identity, StringComparison.Ordinal) ||
+                    !string.Equals(originalObject?.Identity, strippedObject?.Identity, StringComparison.Ordinal);
+
+                if (identityChanged)
                 {
                     strippingChangedIdentity++;
                     strippingRequired++;
@@ -105,17 +112,29 @@ public sealed class V5OwnedDecisionDisambiguationAuditTests
         }
 
         Assert.Equal(1203, boundClaims);
-        Assert.True(boundWithDisambiguation > 0);
+        Assert.Equal(81, boundWithDisambiguation);
+        Assert.Equal(81, subjectSelectorClaims);
+        Assert.Equal(43, objectSelectorClaims);
+        Assert.Equal(124, selectorParts);
         Assert.Equal(boundWithDisambiguation, strippingRedundant + strippingRequired);
+        Assert.Equal(81, strippingRedundant);
         Assert.Equal(0, strippingChangedIdentity);
-
-        // P5C simplification hypothesis. If this fails, the actual count is the evidence that V3
-        // must retain a selector/disambiguation representation before any provider promotion.
         Assert.Equal(0, strippingRequired);
     }
 
+    private static SemanticSourcePartsBinding Bind(
+        ClaimSourceEndpointV2_1 endpoint,
+        IReadOnlyList<SemanticSourceAtom> atoms) =>
+        SemanticSourcePartBinder.Bind(atoms, ProviderSourcePartNormalization.ToCanonical(endpoint.SourceParts));
+
     private static bool HasDisambiguation(ClaimSourceEndpointV2_1 endpoint) =>
         endpoint.SourceParts.Any(part =>
+            part.Occurrence is not null ||
+            part.LeftExactContext is not null ||
+            part.RightExactContext is not null);
+
+    private static int CountDisambiguatedParts(ClaimSourceEndpointV2_1 endpoint) =>
+        endpoint.SourceParts.Count(part =>
             part.Occurrence is not null ||
             part.LeftExactContext is not null ||
             part.RightExactContext is not null);

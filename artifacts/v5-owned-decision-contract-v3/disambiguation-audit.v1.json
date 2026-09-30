@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "v5-owned-decision-disambiguation-audit-v1",
+  "status": "P5C3A_PROVIDER_FREE",
+  "providerCalls": 0,
+  "goldRead": false,
+  "source": "artifacts/v5-provider-cohort-31-windows",
+  "historicalBoundClaims": 1203,
+  "boundClaimsWithDisambiguation": 81,
+  "subjectSelectorClaims": 81,
+  "objectSelectorClaims": 43,
+  "selectorBearingParts": 124,
+  "selectorRemoval": {
+    "sameIdentityAndStillBinds": 81,
+    "requiredToBindOrPreserveIdentity": 0,
+    "changedIdentity": 0
+  },
+  "verdict": "OCCURRENCE_AND_EXACT_CONTEXT_REDUNDANT_ON_ALL_HISTORICALLY_BOUND_SELECTOR_BEARING_CLAIMS",
+  "scope": "This is a frozen-cohort representability result, not a universal claim that repeated substrings can never require disambiguation."
+}
