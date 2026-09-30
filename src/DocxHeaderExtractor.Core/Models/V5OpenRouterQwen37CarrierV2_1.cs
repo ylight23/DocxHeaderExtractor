@@ -231,6 +231,9 @@ public static class OpenRouterQwen37JsonObjectCarrierV3
         ArgumentNullException.ThrowIfNull(envelope);
         if (envelope.Model != Route.Model || envelope.Provider != Route.Provider || envelope.ResponseFormat != "json_object")
             throw new InvalidOperationException("v3-json-object-carrier-route-not-qualified");
+        if (maxCompletionTokens < request.ResponseBounds.MaxResponseUtf8Bytes ||
+            maxCompletionTokens > V5SemanticDecisionResponseBoundsV3.ProviderCompletionCeiling)
+            throw new InvalidOperationException("v3-completion-budget-does-not-cover-bounded-response");
         return OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRaw(
             V5SystemPromptV2_1.Text, request.Prompt, maxCompletionTokens, envelope);
     }

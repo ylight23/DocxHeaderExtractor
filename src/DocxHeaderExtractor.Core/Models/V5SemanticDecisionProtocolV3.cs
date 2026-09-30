@@ -20,6 +20,7 @@ public sealed record CanonicalSemanticDecisionRequestV3(
     [property: JsonPropertyName("contract")] DocumentTaskContract Contract,
     [property: JsonPropertyName("claimShapes")] IReadOnlyList<V5ClaimShapeV2_1> ClaimShapes,
     [property: JsonPropertyName("responseSchema")] object ResponseSchema,
+    [property: JsonPropertyName("responseBounds")] V5SemanticDecisionResponseBoundsV3 ResponseBounds,
     [property: JsonPropertyName("sourceSelectionPolicy")] object SourceSelectionPolicy,
     [property: JsonPropertyName("instructions")] string Instructions,
     [property: JsonPropertyName("packet")] V5SemanticDecisionRequestPacketV3 Packet);
@@ -30,7 +31,53 @@ public sealed record V5ComposedSemanticDecisionRequestV3(
     string PromptHash,
     string SchemaHash,
     string RequestHash,
-    int Utf8Bytes);
+    int Utf8Bytes,
+    V5SemanticDecisionResponseBoundsV3 ResponseBounds);
+
+/// <summary>
+/// Finite v3 output contract. The item/string maxima are the smallest bounds supported by the
+/// current task vocabulary and the frozen 31-pack historical response envelope; the aggregate
+/// canonical UTF-8 byte ceiling is tied to the completion-token formula as a conservative guard.
+/// </summary>
+public sealed record V5SemanticDecisionResponseBoundsV3(
+    int MaxDecisions,
+    int MaxClaimsPerDecision,
+    int MaxSubjectParts,
+    int MaxTargetParts,
+    int MaxEvidenceNeeds,
+    int MaxValueUtf8Bytes,
+    int MaxSelectionStringUtf8Bytes,
+    int MaxExistingClaimIdUtf8Bytes,
+    int MaxResponseUtf8Bytes)
+{
+    public const int HistoricalMaxClaimsPerSubject = 10;
+    public const int HistoricalMaxSourceParts = 6;
+    public const int HistoricalMaxValueUtf8Bytes = 543;
+    public const int HistoricalMaxSelectionStringUtf8Bytes = 318;
+    public const int DurableClaimIdUtf8Bytes = 42;
+    public const int ProviderCompletionCeiling = 32768;
+
+    public static V5SemanticDecisionResponseBoundsV3 ForOwnedCount(int ownedCount)
+        => ForEvidenceCounts(ownedCount, ownedCount);
+
+    public static V5SemanticDecisionResponseBoundsV3 ForEvidenceCounts(int ownedCount, int visibleCount)
+    {
+        if (ownedCount < 0) throw new ArgumentOutOfRangeException(nameof(ownedCount));
+        if (visibleCount < ownedCount) throw new ArgumentOutOfRangeException(nameof(visibleCount));
+        var maxResponseBytes = (int)Math.Min(ProviderCompletionCeiling,
+            (long)V5SemanticCompletionBudget.BaseTokens + (long)ownedCount * V5SemanticCompletionBudget.PerOwnedItemTokens);
+        return new V5SemanticDecisionResponseBoundsV3(
+            ownedCount,
+            HistoricalMaxClaimsPerSubject,
+            Math.Min(HistoricalMaxSourceParts, Math.Max(1, ownedCount)),
+            Math.Min(HistoricalMaxSourceParts, visibleCount),
+            Enum.GetValues<EvidenceNeed>().Length,
+            HistoricalMaxValueUtf8Bytes,
+            HistoricalMaxSelectionStringUtf8Bytes,
+            DurableClaimIdUtf8Bytes,
+            maxResponseBytes);
+    }
+}
 
 public static class V5SemanticDecisionComposerV3
 {
@@ -60,14 +107,18 @@ public static class V5SemanticDecisionComposerV3
         ArgumentNullException.ThrowIfNull(packet);
         contract.Validate();
         ValidatePacket(packet);
+        var responseBounds = V5SemanticDecisionResponseBoundsV3.ForEvidenceCounts(
+            packet.SubjectEvidence.Count, packet.SubjectEvidence.Count + packet.ContextOnlyEvidence.Count);
         return new CanonicalSemanticDecisionRequestV3(
             Version,
             V5Protocol.ClaimSchemaVersionV3,
             contract,
             V5ClaimShapesV2_1.Generate(contract),
-            V5SemanticDecisionContractV3.Schema(contract, packet.SubjectEvidence.Count, packet.ContextOnlyEvidence.Count),
+            V5SemanticDecisionContractV3.Schema(contract, packet.SubjectEvidence.Count, packet.ContextOnlyEvidence.Count, responseBounds),
+            responseBounds,
             V5SourceSelectionPolicy.Generate(),
-            Instructions,
+            string.Join("\n", Instructions,
+                $"The complete response must serialize to at most {responseBounds.MaxResponseUtf8Bytes} UTF-8 bytes. Do not omit a supported claim just to meet the cap; an oversized complete response will be rejected. Never truncate, repair, or add commentary."),
             packet);
     }
 
@@ -87,7 +138,8 @@ public static class V5SemanticDecisionComposerV3
             Hashing.Sha256(request.Instructions.ReplaceLineEndings("\n")),
             Hashing.Sha256(schema),
             Hashing.Sha256(prompt),
-            Encoding.UTF8.GetByteCount(prompt));
+            Encoding.UTF8.GetByteCount(prompt),
+            request.ResponseBounds);
     }
 
     private static void ValidatePacket(V5SemanticDecisionRequestPacketV3 packet)
@@ -151,10 +203,17 @@ public static class V5SemanticDecisionContractV3
 {
     public const string SchemaVersion = "v5-source-backed-decision-3.0";
 
-    public static object Schema(DocumentTaskContract contract, int ownedCount, int contextOnlyCount)
+    public static object Schema(DocumentTaskContract contract, int ownedCount, int contextOnlyCount) =>
+        Schema(contract, ownedCount, contextOnlyCount,
+            V5SemanticDecisionResponseBoundsV3.ForEvidenceCounts(ownedCount, ownedCount + contextOnlyCount));
+
+    public static object Schema(DocumentTaskContract contract, int ownedCount, int contextOnlyCount,
+        V5SemanticDecisionResponseBoundsV3 bounds)
     {
         ArgumentNullException.ThrowIfNull(contract);
+        ArgumentNullException.ThrowIfNull(bounds);
         if (ownedCount < 0 || contextOnlyCount < 0) throw new ArgumentOutOfRangeException(nameof(ownedCount));
+        if (bounds.MaxDecisions != ownedCount) throw new InvalidOperationException("decision-bounds-cardinality-mismatch");
         var ownedIndices = Enumerable.Range(0, ownedCount).ToArray();
         var contextIndices = Enumerable.Range(0, contextOnlyCount).ToArray();
         object SelectionSchema() => new
@@ -162,10 +221,10 @@ public static class V5SemanticDecisionContractV3
             type = "object", additionalProperties = false,
             properties = new
             {
-                verbatimText = new { type = "string", minLength = 1 },
-                occurrence = new { type = "integer", minimum = 1 },
-                leftExactContext = new { type = "string" },
-                rightExactContext = new { type = "string" },
+                verbatimText = new { type = "string", minLength = 1, maxLength = bounds.MaxSelectionStringUtf8Bytes },
+                occurrence = new { type = "integer", minimum = 1, maximum = int.MaxValue },
+                leftExactContext = new { type = "string", maxLength = bounds.MaxSelectionStringUtf8Bytes },
+                rightExactContext = new { type = "string", maxLength = bounds.MaxSelectionStringUtf8Bytes },
             },
         };
         object OwnedPartSchema() => new
@@ -194,19 +253,20 @@ public static class V5SemanticDecisionContractV3
             properties = new
             {
                 predicate = new { type = "string", minLength = 1, @enum = contract.Predicates.Select(item => item.Name).Concat(contract.Relations.Select(item => item.Name)).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray() },
-                value = new { type = "string" },
+                value = new { type = "string", maxLength = bounds.MaxValueUtf8Bytes },
                 subjectSelection = SelectionSchema(),
-                additionalSubjectParts = new { type = "array", items = OwnedPartSchema() },
-                targetParts = new { type = "array", minItems = 1, items = new { oneOf = targetVariants } },
+                additionalSubjectParts = new { type = "array", maxItems = Math.Max(0, bounds.MaxSubjectParts - 1), items = OwnedPartSchema() },
+                targetParts = new { type = "array", minItems = 1, maxItems = bounds.MaxTargetParts, items = new { oneOf = targetVariants } },
                 state = new { type = "string", @enum = Enum.GetNames<ClaimResolutionState>().Where(state => state != nameof(ClaimResolutionState.EXHAUSTED)).ToArray() },
-                evidenceNeeds = new { type = "array", items = new { type = "string", @enum = Enum.GetNames<EvidenceNeed>() } },
-                existingClaimId = new { type = "string", minLength = 1 },
+                evidenceNeeds = new { type = "array", maxItems = bounds.MaxEvidenceNeeds, items = new { type = "string", @enum = Enum.GetNames<EvidenceNeed>() } },
+                existingClaimId = new { type = "string", minLength = 1, maxLength = bounds.MaxExistingClaimIdUtf8Bytes },
             },
             required = new[] { "predicate", "state", "evidenceNeeds" },
         };
         return new
         {
             type = "object", additionalProperties = false,
+            maxSerializedUtf8Bytes = bounds.MaxResponseUtf8Bytes,
             properties = new
             {
                 decisions = new
@@ -215,7 +275,7 @@ public static class V5SemanticDecisionContractV3
                     items = new
                     {
                         type = "object", additionalProperties = false,
-                        properties = new { claims = new { type = "array", items = ClaimSchema() } },
+                        properties = new { claims = new { type = "array", maxItems = bounds.MaxClaimsPerDecision, items = ClaimSchema() } },
                         required = new[] { "claims" },
                     },
                 },
@@ -226,6 +286,9 @@ public static class V5SemanticDecisionContractV3
 
     public static V5SemanticDecisionResponseV3 Parse(JsonElement payload, DocumentTaskContract contract, int ownedCount, int contextOnlyCount)
     {
+        var bounds = V5SemanticDecisionResponseBoundsV3.ForEvidenceCounts(ownedCount, ownedCount + contextOnlyCount);
+        if (Encoding.UTF8.GetByteCount(payload.GetRawText()) > bounds.MaxResponseUtf8Bytes)
+            throw new InvalidOperationException($"decision-response-byte-budget-exceeded:max={bounds.MaxResponseUtf8Bytes}");
         if (payload.ValueKind != JsonValueKind.Object || !HasOnly(payload, "decisions") || !payload.TryGetProperty("decisions", out var decisions) || decisions.ValueKind != JsonValueKind.Array)
             throw new InvalidOperationException("decision-response-shape-invalid");
         if (decisions.GetArrayLength() != ownedCount)
@@ -246,6 +309,7 @@ public static class V5SemanticDecisionContractV3
         }
         if (response.Decisions is null || response.Decisions.Count != ownedCount || response.Decisions.Any(decision => decision is null))
             throw new InvalidOperationException("decision-response-schema-invalid:null-or-missing-decision");
+        ValidateBounds(response, contract, ownedCount, contextOnlyCount, bounds);
         var issueOrdinal = 0;
         foreach (var (decision, decisionIndex) in response.Decisions.Select((decision, index) => (decision, index)))
         {
@@ -285,6 +349,78 @@ public static class V5SemanticDecisionContractV3
         return response;
     }
 
+    /// <summary>
+    /// The runtime repeats these checks even for typed reasoners, so bypassing JSON Schema or Parse
+    /// cannot bypass the finite response contract. Any overflow rejects the whole response.
+    /// </summary>
+    public static void ValidateBounds(
+        V5SemanticDecisionResponseV3 response,
+        DocumentTaskContract contract,
+        int ownedCount,
+        int contextOnlyCount,
+        V5SemanticDecisionResponseBoundsV3? bounds = null)
+    {
+        ArgumentNullException.ThrowIfNull(response);
+        ArgumentNullException.ThrowIfNull(contract);
+        bounds ??= V5SemanticDecisionResponseBoundsV3.ForEvidenceCounts(ownedCount, ownedCount + contextOnlyCount);
+        if (bounds.MaxDecisions != ownedCount || response.Decisions is null || response.Decisions.Count != ownedCount)
+            throw new InvalidOperationException("decision-cardinality-invalid");
+        if (response.Decisions.Any(decision => decision is null))
+            throw new InvalidOperationException("decision-response-schema-invalid:null-decision");
+
+        static int Utf8Bytes(string? value) => value is null ? 0 : Encoding.UTF8.GetByteCount(value);
+        void CheckSelection(V5DecisionTextSelectionV3? selection, string key)
+        {
+            if (selection is null) return;
+            if (Utf8Bytes(selection.VerbatimText) > bounds.MaxSelectionStringUtf8Bytes ||
+                Utf8Bytes(selection.LeftExactContext) > bounds.MaxSelectionStringUtf8Bytes ||
+                Utf8Bytes(selection.RightExactContext) > bounds.MaxSelectionStringUtf8Bytes)
+                throw new InvalidOperationException($"decision-response-string-bound-exceeded:{key}:selection");
+            if (selection.Occurrence is < 1)
+                throw new InvalidOperationException($"decision-response-integer-bound-exceeded:{key}:occurrence");
+        }
+
+        for (var decisionIndex = 0; decisionIndex < response.Decisions.Count; decisionIndex++)
+        {
+            var decision = response.Decisions[decisionIndex];
+            if (decision.Claims is null || decision.Claims.Count > bounds.MaxClaimsPerDecision)
+                throw new InvalidOperationException($"decision-response-cardinality-bound-exceeded:decision-{decisionIndex}:claims");
+            for (var claimIndex = 0; claimIndex < decision.Claims.Count; claimIndex++)
+            {
+                var claim = decision.Claims[claimIndex];
+                var key = $"decision-{decisionIndex}-claim-{claimIndex}";
+                if (claim is null) throw new InvalidOperationException($"decision-response-schema-invalid:{key}:null");
+                if (Utf8Bytes(claim.Value) > bounds.MaxValueUtf8Bytes)
+                    throw new InvalidOperationException($"decision-response-string-bound-exceeded:{key}:value");
+                if (Utf8Bytes(claim.ExistingClaimId) > bounds.MaxExistingClaimIdUtf8Bytes)
+                    throw new InvalidOperationException($"decision-response-string-bound-exceeded:{key}:existingClaimId");
+                if (claim.EvidenceNeeds is null || claim.EvidenceNeeds.Count > bounds.MaxEvidenceNeeds ||
+                    claim.EvidenceNeeds.Distinct().Count() != claim.EvidenceNeeds.Count)
+                    throw new InvalidOperationException($"decision-response-cardinality-bound-exceeded:{key}:evidenceNeeds");
+                if (claim.AdditionalSubjectParts is { } subjectParts && subjectParts.Count > bounds.MaxSubjectParts - 1)
+                    throw new InvalidOperationException($"decision-response-cardinality-bound-exceeded:{key}:additionalSubjectParts");
+                if (claim.AdditionalSubjectParts?.Any(part => part is null) == true)
+                    throw new InvalidOperationException($"decision-response-schema-invalid:{key}:null-additional-part");
+                if (claim.TargetParts is { } targetParts && targetParts.Count > bounds.MaxTargetParts)
+                    throw new InvalidOperationException($"decision-response-cardinality-bound-exceeded:{key}:targetParts");
+                if (claim.TargetParts?.Any(part => part is null) == true)
+                    throw new InvalidOperationException($"decision-response-schema-invalid:{key}:null-target-part");
+                CheckSelection(claim.SubjectSelection, $"{key}:subject");
+                foreach (var part in claim.AdditionalSubjectParts ?? [])
+                    CheckSelection(part?.Selection, $"{key}:additional");
+                foreach (var part in claim.TargetParts ?? [])
+                    CheckSelection(part?.Selection, $"{key}:target");
+            }
+        }
+
+        var canonicalBytes = JsonSerializer.SerializeToUtf8Bytes(response, CanonicalJson.Options).Length;
+        if (canonicalBytes > bounds.MaxResponseUtf8Bytes)
+            throw new InvalidOperationException($"decision-response-byte-budget-exceeded:max={bounds.MaxResponseUtf8Bytes}:actual={canonicalBytes}");
+        if (canonicalBytes > V5SemanticCompletionBudget.Compute(ownedCount, Math.Max(ownedCount, ownedCount + contextOnlyCount), 0,
+                V5SemanticDecisionResponseBoundsV3.ProviderCompletionCeiling))
+            throw new InvalidOperationException("decision-response-exceeds-completion-budget");
+    }
+
     public static V5DecisionBindingResultV3 Bind(
         string requestId,
         V5SemanticDecisionResponseV3 response,
@@ -295,11 +431,17 @@ public static class V5SemanticDecisionContractV3
         ClaimBindingScope scope)
     {
         ArgumentNullException.ThrowIfNull(response);
-        if (response.Decisions.Count != ownedEvidence.Count)
+        try
+        {
+            ValidateBounds(response, contract, ownedEvidence.Count, contextOnlyEvidence.Count);
+        }
+        catch (InvalidOperationException ex)
+        {
             return new(null, new Dictionary<string, string>(StringComparer.Ordinal)
             {
-                ["decision-cardinality"] = $"decision-cardinality-invalid:expected={ownedEvidence.Count}:actual={response.Decisions.Count}"
+                ["response-bounds"] = ex.Message,
             });
+        }
         var atomsByAlias = atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
         var visible = ownedEvidence.Concat(contextOnlyEvidence).ToArray();
         var proposals = new List<IndexedSemanticClaimProposalV2_1>();

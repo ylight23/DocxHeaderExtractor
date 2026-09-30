@@ -267,7 +267,8 @@ public sealed class V5RuntimeConvergenceV2_1Tests
             .RunAsync(contract, graph, atoms, owned, visible);
 
         Assert.Contains(result.State.Conflicts, issue => issue.Code == "CLAIM_BINDING" &&
-            issue.Message.Contains("additional-owned-index-out-of-range-or-order", StringComparison.Ordinal));
+            (issue.Message.Contains("additional-owned-index-out-of-range-or-order", StringComparison.Ordinal) ||
+             issue.Message.Contains("additionalSubjectParts", StringComparison.Ordinal)));
     }
 
     private static DocumentTaskContract Contract() => new(
