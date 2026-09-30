@@ -459,18 +459,29 @@ public static class V5OwnedDecisionResponseCodecV3
                 if (additional.ValueKind != JsonValueKind.Array)
                     throw new InvalidOperationException("additional-subject-parts-not-array");
                 foreach (var part in additional.EnumerateArray())
+                {
                     EnsureFields(part, V5OwnedDecisionContractV3.AllowedAdditionalPartFields, "additional-subject-part");
+                    EnsureRequiredInteger(part, "ownedIndex", "additional-subject-part");
+                }
             }
 
             foreach (var claim in claims.EnumerateArray())
             {
                 EnsureFields(claim, V5OwnedDecisionContractV3.AllowedClaimFields, "claim");
+                EnsureRequiredString(claim, "predicate", "claim");
+                EnsureRequiredString(claim, "state", "claim");
+                if (!claim.TryGetProperty("evidenceNeeds", out var evidenceNeeds) || evidenceNeeds.ValueKind != JsonValueKind.Array)
+                    throw new InvalidOperationException("claim-evidenceNeeds-array-missing");
                 if (claim.TryGetProperty("objectParts", out var objectParts) && objectParts.ValueKind != JsonValueKind.Null)
                 {
                     if (objectParts.ValueKind != JsonValueKind.Array)
                         throw new InvalidOperationException("object-parts-not-array");
                     foreach (var part in objectParts.EnumerateArray())
+                    {
                         EnsureFields(part, V5OwnedDecisionContractV3.AllowedObjectPartFields, "object-part");
+                        EnsureRequiredString(part, "scope", "object-part");
+                        EnsureRequiredInteger(part, "index", "object-part");
+                    }
                 }
             }
         }
@@ -494,6 +505,20 @@ public static class V5OwnedDecisionResponseCodecV3
         foreach (var property in element.EnumerateObject())
             if (!allowed.Contains(property.Name))
                 throw new InvalidOperationException($"{kind}-unknown-field:{property.Name}");
+    }
+
+    private static void EnsureRequiredString(JsonElement element, string name, string kind)
+    {
+        if (!element.TryGetProperty(name, out var value) || value.ValueKind != JsonValueKind.String ||
+            string.IsNullOrWhiteSpace(value.GetString()))
+            throw new InvalidOperationException($"{kind}-{name}-missing");
+    }
+
+    private static void EnsureRequiredInteger(JsonElement element, string name, string kind)
+    {
+        if (!element.TryGetProperty(name, out var value) || value.ValueKind != JsonValueKind.Number ||
+            !value.TryGetInt32(out _))
+            throw new InvalidOperationException($"{kind}-{name}-missing");
     }
 }
 

@@ -62,6 +62,36 @@ public sealed class V5OwnedDecisionProtocolV3Tests
         Assert.Contains("decision-count-mismatch:1:2", sparseError.Message, StringComparison.Ordinal);
     }
 
+
+    [Fact]
+    public void Codec_rejects_missing_required_positional_index()
+    {
+        var packet = Packet();
+        var contract = Contract();
+        using var payload = JsonDocument.Parse("""
+            {
+              "decisions": [
+                {
+                  "kind": "CLAIMS",
+                  "claims": [
+                    {
+                      "predicate": "RELATES_TO",
+                      "objectParts": [{"scope": "CONTEXT"}],
+                      "state": "RESOLVED",
+                      "evidenceNeeds": []
+                    }
+                  ]
+                },
+                {"kind": "NONE", "claims": []}
+              ]
+            }
+            """);
+
+        var error = Assert.Throws<InvalidOperationException>(() =>
+            V5OwnedDecisionResponseCodecV3.Parse(payload.RootElement, contract, packet));
+        Assert.Contains("object-part-index-missing", error.Message, StringComparison.Ordinal);
+    }
+
     [Fact]
     public void Multi_atom_owned_subject_and_context_relation_target_adapt_losslessly_to_exact_binder()
     {
@@ -93,7 +123,7 @@ public sealed class V5OwnedDecisionProtocolV3Tests
         var proposals = V5OwnedDecisionAdapterV3.ToV2_1(response, contract, packet);
         Assert.Equal(2, proposals.Count);
         Assert.All(proposals, proposal =>
-            Assert.Equal(["OWNED-A", "OWNED-B"], proposal.Subject.SourceParts.Select(part => part.SourceAlias)));
+            Assert.Equal(new[] { "OWNED-A", "OWNED-B" }, proposal.Subject.SourceParts.Select(part => part.SourceAlias)));
 
         var relation = Assert.Single(proposals.Where(item => item.Predicate == "RELATES_TO"));
         Assert.Equal("HALO-C", Assert.Single(relation.Object!.SourceParts).SourceAlias);
