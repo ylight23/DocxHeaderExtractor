@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "v5-p5f-v3-provider-canary-audit-v1",
+  "classifies": "result.v1.json",
+  "providerCalls": 0,
+  "goldRead": false,
+  "semanticScore": "NOT_RUN",
+  "semanticRetries": 0,
+  "responseRepairApplied": false,
+  "transportCanaryVerdict": "V3_TRANSPORT_CONTRACT_NOT_QUALIFIED",
+  "promotion": "NOT_PROMOTED",
+  "full31PackCohort": "NOT_AUTHORIZED_NOT_RUN",
+  "gate": "CLOSED_AFTER_4_AUTHORIZED_CALLS",
+  "evidence": {
+    "authorizedCalls": 4,
+    "retryCountTotal": 0,
+    "transportErrors": 1,
+    "jsonResponses": 3,
+    "contractValid": 0,
+    "parserAccepted": 0,
+    "binderAccepted": 0,
+    "finishReasonStop": 3,
+    "configuredMaxCompletionTokens": 25088,
+    "responseByteCap": 25088,
+    "completedResponses": [
+      {
+        "role": "L1472_OWNER_OMISSION",
+        "decisionCount": "192/96",
+        "rawResponseBytes": 72537,
+        "completionTokens": 19652,
+        "rejection": "decision-response-byte-budget-exceeded:max=25088"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "decisionCount": "96/96",
+        "rawResponseBytes": 35257,
+        "completionTokens": 10133,
+        "rejection": "decision-response-byte-budget-exceeded:max=25088"
+      },
+      {
+        "role": "MULTIPART_RELATION",
+        "decisionCount": "96/96",
+        "rawResponseBytes": 42923,
+        "completionTokens": 11341,
+        "rejection": "decision-response-byte-budget-exceeded:max=25088"
+      }
+    ],
+    "transportFailure": {
+      "role": "MAX_OWNED_AND_MULTIPART",
+      "classification": "TRANSPORT_ERROR",
+      "providerCode": 502,
+      "providerMessage": "Model output became abnormal while generating a JSON response for response_format."
+    }
+  },
+  "interpretation": {
+    "currentFrozenContract": "The current v3 contract correctly rejected every nonconforming response without truncation, repair, semantic retry or fallback.",
+    "cardinality": "One response violated exhaustive decision cardinality (192 instead of 96); two others met 96/96 but still exceeded the aggregate response byte cap.",
+    "boundedCompletion": "The two 96/96 replies used 10133 and 11341 completion tokens, below configured max_tokens=25088, while their UTF-8 serializations were 35257 and 42923 bytes. Thus the observed failure is the frozen local byte ceiling, not provider token truncation.",
+    "noSemanticConclusion": "Because strict local parsing rejected all three JSON replies before binding, claimsProduced, emptyDecisionCount, multiAtomValid and relationTargetValid remain NOT_OBSERVED for semantic qualification. Gold was not read and no score was computed."
+  },
+  "nextStep": "Do not promote v3 or run the 31-pack cohort. A future provider-free P5G must revisit the aggregate byte-bound model while preserving fail-closed parsing; any further provider call requires fresh explicit authorization."
+}
