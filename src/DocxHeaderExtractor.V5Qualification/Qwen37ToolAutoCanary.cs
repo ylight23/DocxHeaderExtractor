@@ -76,12 +76,15 @@ internal static class Qwen37ToolAutoCanary
             return 0;
         }
 
-        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        // Shell-managed secrets commonly retain the line ending from a copied value. Normalise only
+        // outer whitespace before HttpClient validates the Authorization header; never log the key.
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")?.Trim();
         if (string.IsNullOrWhiteSpace(apiKey) || apiKey.Contains('\r') || apiKey.Contains('\n'))
             return Fail("p3-tool-auto: OPENROUTER_API_KEY missing or invalid; providerCalls=0");
 
         // This must remain zero: any retry would violate P3's single-call authorization.
         var options = RemoteInferenceOptions.FromEnvironment();
+        options.ApiKey = apiKey;
         options.TransientRequestRetries = 0;
         if (options.TransientRequestRetries != 0) throw new InvalidOperationException("p3-tool-auto retry invariant failed");
 
