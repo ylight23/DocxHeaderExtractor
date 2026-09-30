@@ -18,12 +18,54 @@
     "refusalReasons": {
       "relation-has-value": 6
     },
+    "validClaimsOriginalRawOrdinals": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      34
+    ],
     "downstreamBinding": {
       "proposalCount": 29,
       "boundCount": 29,
       "refusalCount": 0,
       "refusalReasons": []
     }
+  },
+  "claimIdentityOrdinalCorrectness": {
+    "problem": "ExactClaimBinderV2_1.Bind derives proposalOrdinal from array position; feeding it the compacted post-quarantine array (as the downstreamBinding above does, matching how a naive implementation would call the unmodified binder) gives claims after the first refused one the WRONG ordinal for durable identity purposes",
+    "claimsWithShiftedOrdinal": 1,
+    "naiveCompactedIdsDifferFromCorrectOriginalOrdinalIds": true,
+    "stabilityProof": {
+      "scenario": "drop one additional valid claim (simulating an unrelated future change to which siblings survive) and rebind; track the untouched last surviving claim across both scenarios",
+      "naiveCompactedIdentity_UNSTABLE": true,
+      "originalOrdinalIdentity_STABLE": true
+    },
+    "requirementIfAdopted": "any real implementation must thread the ORIGINAL raw ordinal through to HarnessClaimIdentityV2_1.Create, never the post-quarantine array index - e.g. by passing (originalOrdinal, proposal) pairs into a binder entry point, not by filtering the array and calling ExactClaimBinderV2_1.Bind unchanged"
   },
   "invariantsRequiredIfAdopted": [
     "NO mutation - a refused claim\u0027s fields are never altered to make it pass",
@@ -32,9 +74,10 @@
     "NO Gold read for this decision",
     "NO provider call for this decision",
     "invalid claim -\u003E CONTRACT_REFUSED, recorded, never silently dropped without a reason",
-    "valid sibling claims may continue only through the unmodified TaskContract -\u003E ExactClaimBinderV2_1 -\u003E qualification pipeline"
+    "valid sibling claims may continue only through the unmodified TaskContract -\u003E ExactClaimBinderV2_1 -\u003E qualification pipeline",
+    "binder(valid claims \u002B ORIGINAL raw ordinal) - HarnessClaimIdentity must use the original ordinal, never a compacted post-quarantine index"
   ],
-  "recommendation": "The audit supports that per-claim quarantine is SAFE to consider: independence holds both by inspection and empirically, and no invariant above requires touching SemanticClaimContractV2_1, SemanticClaimResponseCodecV2_1 or ExactClaimBinderV2_1\u0027s existing rules - only whether Parse aggregates-then-throws or isolates-then-continues. Adopting it is a real, production-facing codec change (affects every caller of SemanticClaimResponseCodecV2_1.Parse) and is not implemented by this audit; it needs its own explicit decision.",
+  "recommendation": "The audit supports that per-claim quarantine is SAFE to consider: independence holds both by inspection and empirically, and no invariant above requires touching SemanticClaimContractV2_1, SemanticClaimResponseCodecV2_1 or ExactClaimBinderV2_1\u0027s existing rules - only whether Parse aggregates-then-throws or isolates-then-continues. One correctness detail is NOT optional if adopted: identity must be computed from each surviving claim\u0027s ORIGINAL raw ordinal, never its position in the post-quarantine compacted array - proven above to be unstable under an unrelated sibling\u0027s validity changing. Adopting quarantine (with correct ordinal handling) is a real, production-facing codec change (affects every caller of SemanticClaimResponseCodecV2_1.Parse) and is not implemented by this audit; it needs its own explicit decision.",
   "providerCalls": 0,
   "goldRead": false
 }

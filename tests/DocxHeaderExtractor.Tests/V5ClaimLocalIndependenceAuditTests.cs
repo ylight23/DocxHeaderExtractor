@@ -67,6 +67,7 @@ public sealed class V5ClaimLocalIndependenceAuditTests
 
         var perClaim = new List<object>();
         var validClaimTexts = new List<string>();
+        var validOriginalOrdinals = new List<int>();
         int contractRefused = 0, structurallyValid = 0;
         var refusalReasonCounts = new Dictionary<string, int>(StringComparer.Ordinal);
 
@@ -79,6 +80,7 @@ public sealed class V5ClaimLocalIndependenceAuditTests
                 SemanticClaimResponseCodecV2_1.Parse(JsonDocument.Parse(singleClaimResponse).RootElement, contract);
                 structurallyValid++;
                 validClaimTexts.Add(claimJsonTexts[i]);
+                validOriginalOrdinals.Add(i);
             }
             catch (InvalidOperationException ex)
             {
@@ -115,7 +117,50 @@ public sealed class V5ClaimLocalIndependenceAuditTests
         var visibleAliases = packRow["visibleAliases"]!.AsArray().Select(a => a!.GetValue<string>()).ToArray();
         var scope = ClaimBindingScope.Create(ownedAliases, visibleAliases);
         var atoms = DocxHeaderExtractor.DocumentProcessing.Pipeline.V5PdfPreflightBuilder.LoadAtoms(TestRepository.Path(SourcePdfCorpus.Src089));
-        var binding = ExactClaimBinderV2_1.Bind(pack006.GetProperty("packId").GetString()!, quarantinedResponse.Claims, atoms, scope);
+        var packId = pack006.GetProperty("packId").GetString()!;
+        var binding = ExactClaimBinderV2_1.Bind(packId, quarantinedResponse.Claims, atoms, scope);
+
+        // Critical correctness detail a naive quarantine implementation would get wrong:
+        // ExactClaimBinderV2_1.Bind derives proposalOrdinal from the ARRAY POSITION of whatever list it
+        // is given (`for (var index = 0; index < proposals.Count; index++)`). Feeding it the compacted
+        // 29-claim array - exactly what the binding above just did - means claims after the first
+        // quarantined one get ordinals 0..28, not their true raw positions (0,1,3,4,...,34). Since
+        // HarnessClaimIdentityV2_1.Create hashes proposalOrdinal into the durable claim ID, this makes
+        // identity depend on which OTHER claims happened to be refused - unstable under any unrelated
+        // change to sibling validity. The fix a real implementation needs: thread the ORIGINAL raw
+        // ordinal through to identity computation, never the post-quarantine array position.
+        Assert.Equal(29, binding.Bound.Count);
+        var naiveCompactedIds = binding.Bound.Select(b => b.Claim.ClaimId).ToArray();
+        var correctOriginalOrdinalIds = binding.Bound
+            .Select((b, compactedIndex) => HarnessClaimIdentityV2_1.Create(packId, validOriginalOrdinals[compactedIndex], b.Claim.Subject, b.Claim.Predicate))
+            .ToArray();
+        var claimsWhereOrdinalWasShifted = validOriginalOrdinals.Select((originalOrdinal, compactedIndex) => (originalOrdinal, compactedIndex))
+            .Where(pair => pair.originalOrdinal != pair.compactedIndex).ToArray();
+        Assert.NotEmpty(claimsWhereOrdinalWasShifted); // the refusal at raw index 2 guarantees at least one shift
+        foreach (var (originalOrdinal, compactedIndex) in claimsWhereOrdinalWasShifted)
+            Assert.NotEqual(naiveCompactedIds[compactedIndex], correctOriginalOrdinalIds[compactedIndex]);
+
+        // Stability, proven across two different quarantine outcomes, not asserted from one: drop one
+        // more valid claim (simulating an unrelated future change to which siblings survive) and
+        // rebind. A claim untouched by that change must keep the SAME identity when computed from its
+        // ORIGINAL ordinal, and a DIFFERENT one when naively taken from the (now further-shifted)
+        // compacted array position - exactly the instability a real implementation must avoid.
+        var scenario2ValidTexts = validClaimTexts.Skip(1).ToList();
+        var scenario2ValidOrdinals = validOriginalOrdinals.Skip(1).ToList();
+        var scenario2Response = SemanticClaimResponseCodecV2_1.Parse(
+            JsonDocument.Parse($$"""{"claims":[{{string.Join(",", scenario2ValidTexts)}}]}""").RootElement, contract);
+        var scenario2Binding = ExactClaimBinderV2_1.Bind(packId, scenario2Response.Claims, atoms, scope);
+        Assert.Equal(28, scenario2Binding.Bound.Count);
+
+        // The claim at original ordinal validOriginalOrdinals[^1] (the last surviving claim) exists,
+        // unchanged, in both scenarios - its content and bound coordinates never moved.
+        var trackedOriginalOrdinal = validOriginalOrdinals[^1];
+        var scenario1NaiveIdForTracked = binding.Bound.Last().Claim.ClaimId;
+        var scenario2NaiveIdForTracked = scenario2Binding.Bound.Last().Claim.ClaimId;
+        var scenario1CorrectIdForTracked = HarnessClaimIdentityV2_1.Create(packId, trackedOriginalOrdinal, binding.Bound.Last().Claim.Subject, binding.Bound.Last().Claim.Predicate);
+        var scenario2CorrectIdForTracked = HarnessClaimIdentityV2_1.Create(packId, trackedOriginalOrdinal, scenario2Binding.Bound.Last().Claim.Subject, scenario2Binding.Bound.Last().Claim.Predicate);
+        Assert.NotEqual(scenario1NaiveIdForTracked, scenario2NaiveIdForTracked); // naive/compacted: UNSTABLE across an unrelated sibling change
+        Assert.Equal(scenario1CorrectIdForTracked, scenario2CorrectIdForTracked); // original-ordinal: STABLE across the same change
 
         var report = new
         {
@@ -134,6 +179,7 @@ public sealed class V5ClaimLocalIndependenceAuditTests
                 contractRefused,
                 structurallyValid,
                 refusalReasons = refusalReasonCounts,
+                validClaimsOriginalRawOrdinals = validOriginalOrdinals,
                 downstreamBinding = new
                 {
                     proposalCount = quarantinedResponse.Claims.Count,
@@ -141,6 +187,19 @@ public sealed class V5ClaimLocalIndependenceAuditTests
                     refusalCount = binding.Refusals.Count,
                     refusalReasons = binding.Refusals.Values.Distinct().ToArray(),
                 },
+            },
+            claimIdentityOrdinalCorrectness = new
+            {
+                problem = "ExactClaimBinderV2_1.Bind derives proposalOrdinal from array position; feeding it the compacted post-quarantine array (as the downstreamBinding above does, matching how a naive implementation would call the unmodified binder) gives claims after the first refused one the WRONG ordinal for durable identity purposes",
+                claimsWithShiftedOrdinal = claimsWhereOrdinalWasShifted.Length,
+                naiveCompactedIdsDifferFromCorrectOriginalOrdinalIds = claimsWhereOrdinalWasShifted.Length > 0,
+                stabilityProof = new
+                {
+                    scenario = "drop one additional valid claim (simulating an unrelated future change to which siblings survive) and rebind; track the untouched last surviving claim across both scenarios",
+                    naiveCompactedIdentity_UNSTABLE = scenario1NaiveIdForTracked != scenario2NaiveIdForTracked,
+                    originalOrdinalIdentity_STABLE = scenario1CorrectIdForTracked == scenario2CorrectIdForTracked,
+                },
+                requirementIfAdopted = "any real implementation must thread the ORIGINAL raw ordinal through to HarnessClaimIdentityV2_1.Create, never the post-quarantine array index - e.g. by passing (originalOrdinal, proposal) pairs into a binder entry point, not by filtering the array and calling ExactClaimBinderV2_1.Bind unchanged",
             },
             invariantsRequiredIfAdopted = new[]
             {
@@ -151,8 +210,9 @@ public sealed class V5ClaimLocalIndependenceAuditTests
                 "NO provider call for this decision",
                 "invalid claim -> CONTRACT_REFUSED, recorded, never silently dropped without a reason",
                 "valid sibling claims may continue only through the unmodified TaskContract -> ExactClaimBinderV2_1 -> qualification pipeline",
+                "binder(valid claims + ORIGINAL raw ordinal) - HarnessClaimIdentity must use the original ordinal, never a compacted post-quarantine index",
             },
-            recommendation = "The audit supports that per-claim quarantine is SAFE to consider: independence holds both by inspection and empirically, and no invariant above requires touching SemanticClaimContractV2_1, SemanticClaimResponseCodecV2_1 or ExactClaimBinderV2_1's existing rules - only whether Parse aggregates-then-throws or isolates-then-continues. Adopting it is a real, production-facing codec change (affects every caller of SemanticClaimResponseCodecV2_1.Parse) and is not implemented by this audit; it needs its own explicit decision.",
+            recommendation = "The audit supports that per-claim quarantine is SAFE to consider: independence holds both by inspection and empirically, and no invariant above requires touching SemanticClaimContractV2_1, SemanticClaimResponseCodecV2_1 or ExactClaimBinderV2_1's existing rules - only whether Parse aggregates-then-throws or isolates-then-continues. One correctness detail is NOT optional if adopted: identity must be computed from each surviving claim's ORIGINAL raw ordinal, never its position in the post-quarantine compacted array - proven above to be unstable under an unrelated sibling's validity changing. Adopting quarantine (with correct ordinal handling) is a real, production-facing codec change (affects every caller of SemanticClaimResponseCodecV2_1.Parse) and is not implemented by this audit; it needs its own explicit decision.",
             providerCalls = 0,
             goldRead = false,
         };
