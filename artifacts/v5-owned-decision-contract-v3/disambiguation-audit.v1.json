@@ -1,9 +1,10 @@
 {
   "schemaVersion": "v5-owned-decision-disambiguation-audit-v1",
-  "status": "P5C3A_PROVIDER_FREE",
+  "status": "P5C3A_PROVIDER_FREE_FROZEN_DISPOSITION",
   "providerCalls": 0,
   "goldRead": false,
-  "source": "artifacts/v5-provider-cohort-31-windows",
+  "historicalDispositionAuthority": "artifacts/v5-provider-cohort-31-windows/cohort-result.v1.json",
+  "endpointTextAuthority": "eval/a99-closed-loop/source-review-v1/{SRC-089,SRC-095}/atom-glyph-facts.tsv",
   "historicalBoundClaims": 1203,
   "boundClaimsWithDisambiguation": 81,
   "subjectSelectorClaims": 81,
@@ -12,8 +13,9 @@
   "selectorRemoval": {
     "sameIdentityAndStillBinds": 81,
     "requiredToBindOrPreserveIdentity": 0,
-    "changedIdentity": 0
+    "changedIdentity": 0,
+    "frozenEndpointReplayFailures": 0
   },
   "verdict": "OCCURRENCE_AND_EXACT_CONTEXT_REDUNDANT_ON_ALL_HISTORICALLY_BOUND_SELECTOR_BEARING_CLAIMS",
-  "scope": "This is a frozen-cohort representability result, not a universal claim that repeated substrings can never require disambiguation."
+  "limitation": "Frozen-cohort representability only. It does not claim that future repeated substrings can never require disambiguation."
 }
