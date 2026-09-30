@@ -13,6 +13,18 @@ public sealed record V5PackedSourceRequest(
     int ProviderRequestBytes = 0);
 
 /// <summary>
+/// Provider-free P5C pack view for the hard-closed owned-decision contract. The packet is retained
+/// beside the composed bytes so tests can translate synthetic decisions through the real exact binder
+/// without reconstructing source ownership from the serialized prompt.
+/// </summary>
+public sealed record V5OwnedDecisionPackedSourceRequest(
+    string PackId,
+    IReadOnlyList<string> OwnedAliases,
+    IReadOnlyList<string> VisibleAliases,
+    V5EvidencePacketV2_1 Packet,
+    V5ComposedSemanticRequest Request);
+
+/// <summary>
 /// Builds a real PDF source-universe preflight without opening a provider or Gold. The existing
 /// parser and named packing policy supply observations; the V5 composer supplies only a deterministic
 /// semantic request representation.
