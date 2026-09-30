@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "v5-current-contract-residual-evidence-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "inspectedHead": "78ff71001ac1325ed3a17e78746ed99325a216a3",
+  "composerVersion": "v5-semantic-request-composer-2.1",
+  "protocolVersion": "v5-source-backed-claim-2.1",
+  "sources": [
+    "src/DocxHeaderExtractor.Core/Models/V5ClaimProtocolV2_1.cs",
+    "src/DocxHeaderExtractor.Core/Models/V5SemanticRequestComposerV2_1.cs",
+    "src/DocxHeaderExtractor.Core/Models/V5SourceSelectionPolicy.cs"
+  ],
+  "providerFacingSourceAlias": {
+    "type": "string",
+    "minLength": 1,
+    "enumPresent": false,
+    "subjectAndObjectSchemasIdentical": true
+  },
+  "wholeAtomPolicy": {
+    "mode": "WHOLE_ATOM_ALIAS_ONLY",
+    "shapeFields": [
+      "sourceAlias"
+    ],
+    "verbatimText": "MUST_BE_OMITTED",
+    "selectionModeOnProviderWire": false
+  },
+  "sparseResponse": {
+    "emptyClaimsAccepted": true,
+    "claimsMinItemsPresent": false,
+    "perOwnedDecisionFieldPresent": false
+  },
+  "haloProbe": {
+    "codecAccepted": true,
+    "binderRefused": "subject-alias-not-owned:HALO",
+    "note": "The probe is an in-memory current-code exercise; it is not a provider call."
+  }
+}

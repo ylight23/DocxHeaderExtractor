@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "v5-current-contract-residual-summary-v1",
+  "status": "P5B_COMPLETE_PROVIDER_FREE",
+  "providerCalls": 0,
+  "goldRead": false,
+  "inspectedHead": "78ff71001ac1325ed3a17e78746ed99325a216a3",
+  "currentContract": {
+    "OWNER_IDENTITY_HARD_CLOSED": "NO",
+    "WHOLE_ATOM_RETYPE_REMOVED": "YES_POLICY_AND_WIRE_SHAPE",
+    "ALL_OWNED_DECISION_REQUIRED": "NO",
+    "HALO_AS_SUBJECT_STRUCTURALLY_IMPOSSIBLE": "NO"
+  },
+  "interpretation": {
+    "ownerIdentity": "Ownership is fail-closed in ExactClaimBinderV2_1, not expressible as a provider-facing schema restriction: sourceAlias remains generic string/minLength.",
+    "wholeAtom": "The current policy and instructions require whole atoms to be sourceAlias-only and remove selectionMode. This is a meaningful prevention of retyping, but verbatimText remains syntactically available for legitimate strict substrings.",
+    "sparse": "The response is an unconstrained claims array; an empty list is codec-valid and no every-owned-subject decision ledger exists.",
+    "halo": "A context-only alias passes the current schema/codec as a proposed subject and is refused only at binding. Halo leakage therefore remains a guardrail event, not a structurally impossible wire state."
+  },
+  "designImplication": "P5C may move occurrence identity and ownership entirely to the harness and give the model an owned subject index/decision interface; this audit does not change production behavior."
+}
