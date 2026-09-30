@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "v5-openrouter-qwen37-carrier-closure-v1",
+  "decision": "CLOSED_NOT_PROMOTED",
+  "productionCarrier": "json_object",
+  "toolCarrier": "closed",
+  "route": {
+    "gateway": "openrouter",
+    "model": "qwen/qwen3.7-flash",
+    "provider": "alibaba"
+  },
+  "evidence": {
+    "strictJsonSchema": "DOCUMENTED_UNSUPPORTED",
+    "toolChoiceNamed": "ROUTING_REJECTED",
+    "toolChoiceRequired": "ROUTING_REJECTED",
+    "toolChoiceAutoRouteAcceptance": "SUPPORTED",
+    "toolChoiceAutoInvocationReliability": "FAILED_CANARY",
+    "p3Classification": "PLAIN_TEXT_NO_TOOL",
+    "p3ProviderCalls": 1,
+    "p3GoldRead": false
+  },
+  "p3Artifact": "pack006-result.v1.json",
+  "semanticQualityAudit": {
+    "nextPhase": "P4_FROZEN_SEMANTIC_ERROR_DECOMPOSITION",
+    "layers": [
+      "raw_provider_proposal",
+      "contract_refusal",
+      "binding_refusal",
+      "validated_claim",
+      "projection",
+      "gold_comparison"
+    ],
+    "questions": [
+      "model_omission_false_negative",
+      "model_semantic_false_positive",
+      "projection_false_positive",
+      "correct_claim_rejected_by_binder",
+      "correct_claim_rejected_by_graph_validator"
+    ],
+    "providerCalls": 0
+  }
+}

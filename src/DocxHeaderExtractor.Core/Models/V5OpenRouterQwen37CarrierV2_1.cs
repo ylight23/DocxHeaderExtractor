@@ -18,6 +18,15 @@ public enum V5CapabilityEvidenceState
     NOT_NEEDED,
     NOT_IN_OVERVIEW,
     MAY_MENTION,
+    ROUTING_REJECTED,
+}
+
+/// <summary>Observed model compliance with an invocation request after the route accepted it.</summary>
+public enum V5InvocationReliability
+{
+    NOT_ASSESSED,
+    RELIABLE,
+    FAILED_CANARY,
 }
 
 /// <summary>
@@ -30,6 +39,7 @@ public sealed record V5RouteCapabilityEvidence(
     V5CapabilityEvidenceState ModelDocumentation,
     V5CapabilityEvidenceState OtherDocumentation,
     V5CapabilityEvidenceState RouteEmpirical,
+    V5InvocationReliability InvocationReliability,
     string Reason);
 
 /// <summary>
@@ -74,6 +84,7 @@ public static class V5OpenRouterQwen37RouteCapabilityRegistry
             ModelDocumentation: V5CapabilityEvidenceState.SUPPORTED,
             OtherDocumentation: V5CapabilityEvidenceState.NOT_APPLICABLE,
             RouteEmpirical: V5CapabilityEvidenceState.SUPPORTED,
+            InvocationReliability: V5InvocationReliability.NOT_ASSESSED,
             Reason: "OpenRouter documents response_format JSON output; the 31-pack cohort and remediation canary succeeded with json_object."),
         // response_format is advertised as JSON output, not as strict JSON Schema for this model.
         // A strict probe would add no decision-useful evidence, so it is explicitly not needed.
@@ -82,21 +93,26 @@ public static class V5OpenRouterQwen37RouteCapabilityRegistry
             ModelDocumentation: V5CapabilityEvidenceState.UNSUPPORTED,
             OtherDocumentation: V5CapabilityEvidenceState.NOT_APPLICABLE,
             RouteEmpirical: V5CapabilityEvidenceState.NOT_NEEDED,
+            InvocationReliability: V5InvocationReliability.NOT_ASSESSED,
             Reason: "OpenRouter explicitly says qwen/qwen3.7-flash supports JSON output without JSON-schema enforcement; it is not advertised as strict."),
-        // The model page says it accepts tools, but no successful route observation exists yet.
+        // Both the OpenRouter API schema and model page support tools; route acceptance and model
+        // invocation are measured separately below on ToolChoiceAuto.
         Tools: new(
-            ApiSchema: V5CapabilityEvidenceState.NOT_APPLICABLE,
+            ApiSchema: V5CapabilityEvidenceState.SUPPORTED,
             ModelDocumentation: V5CapabilityEvidenceState.SUPPORTED,
             OtherDocumentation: V5CapabilityEvidenceState.NOT_APPLICABLE,
-            RouteEmpirical: V5CapabilityEvidenceState.UNTESTED_SUCCESSFULLY,
-            Reason: "OpenRouter documents tools for this model; no successful tools route observation has been made."),
-        // The Overview ToolChoice union includes auto and the model page says it accepts tool_choice.
+            RouteEmpirical: V5CapabilityEvidenceState.SUPPORTED,
+            InvocationReliability: V5InvocationReliability.FAILED_CANARY,
+            Reason: "API schema and model documentation support tools; the P3 auto canary route was accepted, but the model emitted no tool call."),
+        // The Overview ToolChoice union includes auto and the model page says it accepts tool_choice;
+        // P3 confirms transport acceptance while measuring invocation reliability independently.
         ToolChoiceAuto: new(
             ApiSchema: V5CapabilityEvidenceState.SUPPORTED,
             ModelDocumentation: V5CapabilityEvidenceState.SUPPORTED,
             OtherDocumentation: V5CapabilityEvidenceState.NOT_APPLICABLE,
-            RouteEmpirical: V5CapabilityEvidenceState.UNTESTED,
-            Reason: "OpenRouter API Overview defines tool_choice='auto'; this exact route has not sent it."),
+            RouteEmpirical: V5CapabilityEvidenceState.SUPPORTED,
+            InvocationReliability: V5InvocationReliability.FAILED_CANARY,
+            Reason: "P3 PACK_006 completed with HTTP success and finish_reason=stop, but produced plain assistant text and zero tool calls."),
         // Two real canary calls (commit 71cc694: named-function tool_choice; commit 6a70d2f/fcdab6d:
         // tool_choice="required") each received an OpenRouter ROUTING-layer HTTP 404 ("No endpoints
         // found that support the provided 'tool_choice' value", failedRoutingStep "Filter by Tool
@@ -107,13 +123,15 @@ public static class V5OpenRouterQwen37RouteCapabilityRegistry
             ApiSchema: V5CapabilityEvidenceState.SUPPORTED,
             ModelDocumentation: V5CapabilityEvidenceState.SUPPORTED,
             OtherDocumentation: V5CapabilityEvidenceState.NOT_APPLICABLE,
-            RouteEmpirical: V5CapabilityEvidenceState.UNSUPPORTED,
+            RouteEmpirical: V5CapabilityEvidenceState.ROUTING_REJECTED,
+            InvocationReliability: V5InvocationReliability.NOT_ASSESSED,
             Reason: "Named function appears in the Overview ToolChoice union; the pinned route returned HTTP 404, Filter by Tool Compatibility."),
         ToolChoiceRequired: new(
             ApiSchema: V5CapabilityEvidenceState.NOT_IN_OVERVIEW,
             ModelDocumentation: V5CapabilityEvidenceState.NOT_APPLICABLE,
             OtherDocumentation: V5CapabilityEvidenceState.MAY_MENTION,
-            RouteEmpirical: V5CapabilityEvidenceState.UNSUPPORTED,
+            RouteEmpirical: V5CapabilityEvidenceState.ROUTING_REJECTED,
+            InvocationReliability: V5InvocationReliability.NOT_ASSESSED,
             Reason: "'required' is not in the Overview ToolChoice union; other compatibility documentation may mention it, but the pinned route returned HTTP 404, Filter by Tool Compatibility."),
         EvidenceSource: "OpenRouter API Overview (https://openrouter.ai/docs/api_reference/overview) " +
             "+ OpenRouter qwen/qwen3.7-flash model page (JSON output without JSON-schema enforcement; tools and tool_choice) " +

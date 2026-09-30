@@ -152,20 +152,23 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
         Assert.Equal(V5CapabilityEvidenceState.UNSUPPORTED, capabilities.JsonSchemaStrict.ModelDocumentation);
         Assert.Equal(V5CapabilityEvidenceState.NOT_NEEDED, capabilities.JsonSchemaStrict.RouteEmpirical);
 
+        Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.Tools.ApiSchema);
         Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.Tools.ModelDocumentation);
-        Assert.Equal(V5CapabilityEvidenceState.UNTESTED_SUCCESSFULLY, capabilities.Tools.RouteEmpirical);
+        Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.Tools.RouteEmpirical);
+        Assert.Equal(V5InvocationReliability.FAILED_CANARY, capabilities.Tools.InvocationReliability);
 
         Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.ToolChoiceAuto.ApiSchema);
         Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.ToolChoiceAuto.ModelDocumentation);
-        Assert.Equal(V5CapabilityEvidenceState.UNTESTED, capabilities.ToolChoiceAuto.RouteEmpirical);
+        Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.ToolChoiceAuto.RouteEmpirical);
+        Assert.Equal(V5InvocationReliability.FAILED_CANARY, capabilities.ToolChoiceAuto.InvocationReliability);
 
         Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.ToolChoiceNamed.ApiSchema);
         Assert.Equal(V5CapabilityEvidenceState.SUPPORTED, capabilities.ToolChoiceNamed.ModelDocumentation);
-        Assert.Equal(V5CapabilityEvidenceState.UNSUPPORTED, capabilities.ToolChoiceNamed.RouteEmpirical);
+        Assert.Equal(V5CapabilityEvidenceState.ROUTING_REJECTED, capabilities.ToolChoiceNamed.RouteEmpirical);
 
         Assert.Equal(V5CapabilityEvidenceState.NOT_IN_OVERVIEW, capabilities.ToolChoiceRequired.ApiSchema);
         Assert.Equal(V5CapabilityEvidenceState.MAY_MENTION, capabilities.ToolChoiceRequired.OtherDocumentation);
-        Assert.Equal(V5CapabilityEvidenceState.UNSUPPORTED, capabilities.ToolChoiceRequired.RouteEmpirical);
+        Assert.Equal(V5CapabilityEvidenceState.ROUTING_REJECTED, capabilities.ToolChoiceRequired.RouteEmpirical);
     }
 
     // ---- 22/23: ToolAuto carrier shape -----------------------------------------------------------
