@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "v5-p5o-v32-semantic-cohort-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "protocol": "v5-source-backed-decision-3.2",
+  "composer": "v5-semantic-decision-composer-3.2",
+  "providerCalls": 0,
+  "goldRead": false,
+  "semanticScore": "NOT_RUN",
+  "requestCount": 4,
+  "route": {
+    "gateway": "openrouter",
+    "model": "qwen/qwen3.7-flash",
+    "providerPin": "alibaba",
+    "temperature": 0,
+    "reasoning": "none",
+    "streaming": true,
+    "responseFormat": "json_object"
+  },
+  "executionGate": {
+    "maximumProviderCalls": 4,
+    "retry": 0,
+    "repair": false,
+    "fallback": false,
+    "goldRead": false
+  },
+  "measurement": {
+    "transportValid": "NOT_RUN",
+    "parserValid": "NOT_RUN",
+    "usableSparseDecisions": "NOT_RUN",
+    "boundClaims": "NOT_RUN",
+    "binderRefusals": "NOT_RUN",
+    "semanticTpFpFn": "NOT_RUN",
+    "finalProjectionQuality": "NOT_RUN",
+    "v4F1Baseline": 0.754
+  },
+  "rows": [
+    {
+      "Role": "MAX_OWNED_AND_MULTIPART",
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "semanticRequestHash": "4dcab17b0b81222f1e169cf6169a0d85f2427aef20da95d7e6d5d3fb2ee92e63",
+      "providerRequestHash": "7fe359ec265de029b7f6468948819a46cd54f7fe548a3f898fac6765dfb4536a",
+      "providerRequestBytes": 36099,
+      "providerBodyFile": "wire-bodies/MAX_OWNED_AND_MULTIPART.json",
+      "providerBodySha256": "7fe359ec265de029b7f6468948819a46cd54f7fe548a3f898fac6765dfb4536a",
+      "ownedCount": 96,
+      "visibleCount": 104,
+      "maxCompletionTokens": 25088,
+      "maxResponseUtf8Bytes": 52224
+    },
+    {
+      "Role": "L1472_OWNER_OMISSION",
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "semanticRequestHash": "6b9a19d856a096180513889e857a3b0b66fc10f98f054fb10195075e02d106d2",
+      "providerRequestHash": "0e8a87841256eb9635b8b83afa31cf1741ba2d6e90136d442742b151564a4d63",
+      "providerRequestBytes": 34277,
+      "providerBodyFile": "wire-bodies/L1472_OWNER_OMISSION.json",
+      "providerBodySha256": "0e8a87841256eb9635b8b83afa31cf1741ba2d6e90136d442742b151564a4d63",
+      "ownedCount": 96,
+      "visibleCount": 112,
+      "maxCompletionTokens": 25088,
+      "maxResponseUtf8Bytes": 52224
+    },
+    {
+      "Role": "L1710_RETYPING",
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "semanticRequestHash": "a22fa262c545cacfd0f58d0aeb9a9ff849f0647535a53e513a79623de81cfc8a",
+      "providerRequestHash": "eff39770962f7511184c4bb03a5f27aaa15c0a29958ea727e5fda2501b3826b5",
+      "providerRequestBytes": 37488,
+      "providerBodyFile": "wire-bodies/L1710_RETYPING.json",
+      "providerBodySha256": "eff39770962f7511184c4bb03a5f27aaa15c0a29958ea727e5fda2501b3826b5",
+      "ownedCount": 96,
+      "visibleCount": 112,
+      "maxCompletionTokens": 25088,
+      "maxResponseUtf8Bytes": 52224
+    },
+    {
+      "Role": "MULTIPART_RELATION",
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "semanticRequestHash": "ea1810540ca6ac436a2385867bd9e0294dd2ac792264e3c322fe9f04603d1272",
+      "providerRequestHash": "3d1e59f6ffdd6424e3d59d210237347f757f619799adde46a7acd9d589313f0c",
+      "providerRequestBytes": 35009,
+      "providerBodyFile": "wire-bodies/MULTIPART_RELATION.json",
+      "providerBodySha256": "3d1e59f6ffdd6424e3d59d210237347f757f619799adde46a7acd9d589313f0c",
+      "ownedCount": 96,
+      "visibleCount": 112,
+      "maxCompletionTokens": 25088,
+      "maxResponseUtf8Bytes": 52224
+    }
+  ]
+}
