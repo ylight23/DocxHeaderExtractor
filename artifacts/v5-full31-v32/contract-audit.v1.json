@@ -1,0 +1,3522 @@
+{
+  "schemaVersion": "v5-p5r-v32-full31-contract-audit-v1",
+  "sourceExecution": "artifacts/v5-full31-v32/execution-result.v1.json",
+  "providerCalls": 0,
+  "goldRead": false,
+  "authority": "V5SemanticSparseDecisionContractV3_1.Parse + V5SemanticSparseDecisionContractV3_1.Bind",
+  "aggregate": {
+    "attemptedParentPacks": 31,
+    "transportValidLeaves": 23,
+    "transportInvalidLeaves": 8,
+    "parserValidLeaves": 22,
+    "parserInvalidLeaves": 1,
+    "rawSparseDecisions": 360,
+    "rawClaims": 453,
+    "boundClaims": 155,
+    "binderRefusals": 300,
+    "refusalDecomposition": {
+      "binding/context mismatch": 14,
+      "other": 44,
+      "ownership refusal": 37,
+      "whole-atom-must-omit-verbatim-text": 205
+    }
+  },
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 1,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 67,
+      "rawClaims": 67,
+      "boundClaims": 15,
+      "binderRefusals": [
+        {
+          "key": "sparse-decision-12",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-13",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "proposal-10",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-11",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-15",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-16",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-17",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-18",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-19",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-21",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-22",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-23",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-24",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-25",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-26",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-27",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-28",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-29",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-30",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-31",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-32",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-33",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-34",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-35",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-37",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-38",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-39",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-40",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-41",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-42",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-43",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-44",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-45",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-46",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-47",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-48",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-49",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-50",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-51",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-52",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-53",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-54",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-55",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-56",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-57",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-59",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-60",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-61",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-62",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-63",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-64",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-65",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Unofficial Translation –",
+          "sourceParts": [
+            {
+              "Alias": "L0000:S0",
+              "Start": 0,
+              "End": 24,
+              "Text": "Unofficial Translation –"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "For Reference Purposes Only",
+          "sourceParts": [
+            {
+              "Alias": "L0001:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "For Reference Purposes Only"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "THE GOVERNMENT",
+          "sourceParts": [
+            {
+              "Alias": "L0002:S0",
+              "Start": 0,
+              "End": 14,
+              "Text": "THE GOVERNMENT"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "THE SOCIALIST REPUBLIC OF VIETNAM",
+          "sourceParts": [
+            {
+              "Alias": "L0002:S1",
+              "Start": 0,
+              "End": 33,
+              "Text": "THE SOCIALIST REPUBLIC OF VIETNAM"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Independence – Freedom – Happiness",
+          "sourceParts": [
+            {
+              "Alias": "L0003:S1",
+              "Start": 0,
+              "End": 34,
+              "Text": "Independence – Freedom – Happiness"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "No. 195/2013/ND-CP Hanoi, November 21, 2013",
+          "sourceParts": [
+            {
+              "Alias": "L0005:S0",
+              "Start": 0,
+              "End": 43,
+              "Text": "No. 195/2013/ND-CP Hanoi, November 21, 2013"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "DECREE",
+          "sourceParts": [
+            {
+              "Alias": "L0006:S0",
+              "Start": 0,
+              "End": 6,
+              "Text": "DECREE"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,",
+          "sourceParts": [
+            {
+              "Alias": "L0007:S0",
+              "Start": 0,
+              "End": 65,
+              "Text": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "THE PUBLICATION LAW (*)",
+          "sourceParts": [
+            {
+              "Alias": "L0008:S0",
+              "Start": 0,
+              "End": 23,
+              "Text": "THE PUBLICATION LAW (*)"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Chapter I",
+          "sourceParts": [
+            {
+              "Alias": "L0014:S0",
+              "Start": 0,
+              "End": 9,
+              "Text": "Chapter I"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "GENERAL PROVISIONS",
+          "sourceParts": [
+            {
+              "Alias": "L0015:S0",
+              "Start": 0,
+              "End": 18,
+              "Text": "GENERAL PROVISIONS"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Article 1. Scope ofregulation and subjects ofapplication",
+          "sourceParts": [
+            {
+              "Alias": "L0016:S0",
+              "Start": 0,
+              "End": 56,
+              "Text": "Article 1. Scope ofregulation and subjects ofapplication"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing the state management ofpublication activities",
+          "sourceParts": [
+            {
+              "Alias": "L0024:S0",
+              "Start": 0,
+              "End": 89,
+              "Text": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state management ofpublication activities",
+          "sourceParts": [
+            {
+              "Alias": "L0051:S0",
+              "Start": 0,
+              "End": 95,
+              "Text": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Article 4. Tasks and powers ofprovincial-level People’s Committees in performing the state management ofpublication activities",
+          "sourceParts": [
+            {
+              "Alias": "L0080:S0",
+              "Start": 0,
+              "End": 90,
+              "Text": "Article 4. Tasks and powers ofprovincial-level People’s Committees in performing the state"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 2,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "transport": "TRANSPORT_INVALID",
+      "parser": "NOT_EVALUABLE",
+      "binding": "NOT_EVALUABLE",
+      "semantic": "NOT_EVALUABLE",
+      "transportError": "OpenRouter trả 429 Too Many Requests: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"qwen/qwen3.7-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Alibaba\",\"is_byok\":false,\"provider_error_code\":\"insufficient_quota\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to a…"
+    },
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 3,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "transport": "TRANSPORT_INVALID",
+      "parser": "NOT_EVALUABLE",
+      "binding": "NOT_EVALUABLE",
+      "semantic": "NOT_EVALUABLE",
+      "transportError": "OpenRouter trả 429 Too Many Requests: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"qwen/qwen3.7-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Alibaba\",\"is_byok\":false,\"provider_error_code\":\"insufficient_quota\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to a…"
+    },
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 4,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "transport": "TRANSPORT_INVALID",
+      "parser": "NOT_EVALUABLE",
+      "binding": "NOT_EVALUABLE",
+      "semantic": "NOT_EVALUABLE",
+      "transportError": "OpenRouter trả 429 Too Many Requests: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"qwen/qwen3.7-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Alibaba\",\"is_byok\":false,\"provider_error_code\":\"insufficient_quota\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to a…"
+    },
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 5,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_NO_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 6,
+      "rawClaims": 11,
+      "boundClaims": 0,
+      "binderRefusals": [
+        {
+          "key": "proposal-1",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-2",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-3",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-4",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-5",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-81",
+          "reason": "'L0390:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-82",
+          "reason": "'L0390:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-441",
+          "reason": "'L0426:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-442",
+          "reason": "'L0426:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-731",
+          "reason": "'L0455:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-732",
+          "reason": "'L0455:S0' does not contain that text"
+        }
+      ],
+      "bound": []
+    },
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 6,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 1,
+      "rawClaims": 2,
+      "boundClaims": 2,
+      "binderRefusals": [
+        {
+          "key": "sparse-decision-1",
+          "reason": "json-decision-schema-invalid"
+        },
+        {
+          "key": "sparse-decision-2",
+          "reason": "json-decision-schema-invalid"
+        },
+        {
+          "key": "sparse-decision-3",
+          "reason": "json-decision-schema-invalid"
+        },
+        {
+          "key": "sparse-decision-4",
+          "reason": "json-decision-schema-invalid"
+        },
+        {
+          "key": "sparse-decision-5",
+          "reason": "json-decision-schema-invalid"
+        },
+        {
+          "key": "sparse-decision-6",
+          "reason": "json-decision-schema-invalid"
+        },
+        {
+          "key": "sparse-decision-7",
+          "reason": "json-decision-schema-invalid"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "Decree on e-publications",
+          "sourceParts": [
+            {
+              "Alias": "L0478:S0",
+              "Start": 0,
+              "End": 59,
+              "Text": "Article 20. Import ofe-publications for commercial purposes"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Article 20. Import of e-publications for commercial purposes",
+          "sourceParts": [
+            {
+              "Alias": "L0478:S0",
+              "Start": 0,
+              "End": 59,
+              "Text": "Article 20. Import ofe-publications for commercial purposes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 7,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_NO_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 5,
+      "rawClaims": 5,
+      "boundClaims": 0,
+      "binderRefusals": [
+        {
+          "key": "proposal-1",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-2",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-3",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-4",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-5",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        }
+      ],
+      "bound": []
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 1,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 21,
+      "rawClaims": 36,
+      "boundClaims": 20,
+      "binderRefusals": [
+        {
+          "key": "sparse-decision-14",
+          "reason": "decision-response-cardinality-bound-exceeded:decision-81-claim-1:targetParts"
+        },
+        {
+          "key": "proposal-4",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-7",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-9",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-13",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-15",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-17",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-19",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-21",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-23",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-25",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-27",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-29",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-32",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-132",
+          "reason": "'L0007:S0' does not contain that text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114",
+          "sourceParts": [
+            {
+              "Alias": "L0007:S0",
+              "Start": 0,
+              "End": 8,
+              "Text": "RFC 9114"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "HTTP/3",
+          "sourceParts": [
+            {
+              "Alias": "L0008:S0",
+              "Start": 0,
+              "End": 6,
+              "Text": "HTTP/3"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "https://www.rfc-editor.org/info/rfc9114",
+          "sourceParts": [
+            {
+              "Alias": "L0022:S0",
+              "Start": 0,
+              "End": 65,
+              "Text": "on it may be obtained at https://www.rfc-editor.org/info/rfc9114."
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Table of Contents",
+          "sourceParts": [
+            {
+              "Alias": "L0034:S0",
+              "Start": 0,
+              "End": 17,
+              "Text": "Table of Contents"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Section 1",
+          "sourceParts": [
+            {
+              "Alias": "L0035:S0",
+              "Start": 0,
+              "End": 15,
+              "Text": "1. Introduction"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Subsection 1.1",
+          "sourceParts": [
+            {
+              "Alias": "L0036:S0",
+              "Start": 0,
+              "End": 26,
+              "Text": "1.1. Prior Versions ofHTTP"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Subsection 1.2",
+          "sourceParts": [
+            {
+              "Alias": "L0037:S0",
+              "Start": 0,
+              "End": 23,
+              "Text": "1.2. Delegation to QUIC"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Section 2",
+          "sourceParts": [
+            {
+              "Alias": "L0038:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "2. HTTP/3 Protocol Overview"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Section 3",
+          "sourceParts": [
+            {
+              "Alias": "L0041:S0",
+              "Start": 0,
+              "End": 34,
+              "Text": "3. Connection Setup and Management"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Subsection 3.1",
+          "sourceParts": [
+            {
+              "Alias": "L0042:S0",
+              "Start": 0,
+              "End": 35,
+              "Text": "3.1. Discovering an HTTP/3 Endpoint"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Section 4",
+          "sourceParts": [
+            {
+              "Alias": "L0047:S0",
+              "Start": 0,
+              "End": 38,
+              "Text": "4. Expressing HTTP Semantics in HTTP/3"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Section 5",
+          "sourceParts": [
+            {
+              "Alias": "L0060:S0",
+              "Start": 0,
+              "End": 21,
+              "Text": "5. Connection Closure"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Section 6",
+          "sourceParts": [
+            {
+              "Alias": "L0067:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "6. Stream Mapping and Usage"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Subsection 6.2",
+          "sourceParts": [
+            {
+              "Alias": "L0069:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "6.2. Unidirectional Streams"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Section 7",
+          "sourceParts": [
+            {
+              "Alias": "L0073:S0",
+              "Start": 0,
+              "End": 21,
+              "Text": "7. HTTP Framing Layer"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Section 8",
+          "sourceParts": [
+            {
+              "Alias": "L0084:S0",
+              "Start": 0,
+              "End": 17,
+              "Text": "8. Error Handling"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Section 9",
+          "sourceParts": [
+            {
+              "Alias": "L0086:S0",
+              "Start": 0,
+              "End": 23,
+              "Text": "9. Extensions to HTTP/3"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Section 10",
+          "sourceParts": [
+            {
+              "Alias": "L0087:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "10. Security Considerations"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Subsection 10.1",
+          "sourceParts": [
+            {
+              "Alias": "L0088:S0",
+              "Start": 0,
+              "End": 22,
+              "Text": "10.1. Server Authority"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Subsection 10.2",
+          "sourceParts": [
+            {
+              "Alias": "L0089:S0",
+              "Start": 0,
+              "End": 28,
+              "Text": "10.2. Cross-Protocol Attacks"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 2,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 40,
+      "rawClaims": 65,
+      "boundClaims": 40,
+      "binderRefusals": [
+        {
+          "key": "proposal-4",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-5",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-15",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-16",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-19",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-20",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-21",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-22",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-28",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-29",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-33",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-34",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-37",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-38",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-39",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-40",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-41",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-49",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-55",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-56",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-58",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-60",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-62",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-63",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-65",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "10.3. Intermediary-Encapsulation Attacks",
+          "sourceParts": [
+            {
+              "Alias": "L0090:S0",
+              "Start": 0,
+              "End": 40,
+              "Text": "10.3. Intermediary-Encapsulation Attacks"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "10.4. Cacheability ofPushed Responses",
+          "sourceParts": [
+            {
+              "Alias": "L0091:S0",
+              "Start": 0,
+              "End": 37,
+              "Text": "10.4. Cacheability ofPushed Responses"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "10.5. Denial-of-Service Considerations",
+          "sourceParts": [
+            {
+              "Alias": "L0092:S0",
+              "Start": 0,
+              "End": 38,
+              "Text": "10.5. Denial-of-Service Considerations"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "10.5.1. Limits on Field Section Size",
+          "sourceParts": [
+            {
+              "Alias": "L0093:S0",
+              "Start": 0,
+              "End": 36,
+              "Text": "10.5.1. Limits on Field Section Size"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "10.5.2. CONNECT Issues",
+          "sourceParts": [
+            {
+              "Alias": "L0096:S0",
+              "Start": 0,
+              "End": 22,
+              "Text": "10.5.2. CONNECT Issues"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "10.6. Use of Compression",
+          "sourceParts": [
+            {
+              "Alias": "L0097:S0",
+              "Start": 0,
+              "End": 24,
+              "Text": "10.6. Use of Compression"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "10.7. Padding and Trailing Analysis",
+          "sourceParts": [
+            {
+              "Alias": "L0098:S0",
+              "Start": 0,
+              "End": 32,
+              "Text": "10.7. Padding and Traﬃc Analysis"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "10.8. Frame Parsing",
+          "sourceParts": [
+            {
+              "Alias": "L0099:S0",
+              "Start": 0,
+              "End": 19,
+              "Text": "10.8. Frame Parsing"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "10.9. Early Data",
+          "sourceParts": [
+            {
+              "Alias": "L0100:S0",
+              "Start": 0,
+              "End": 16,
+              "Text": "10.9. Early Data"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "10.10. Migration",
+          "sourceParts": [
+            {
+              "Alias": "L0101:S0",
+              "Start": 0,
+              "End": 16,
+              "Text": "10.10. Migration"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "10.11. Privacy Considerations",
+          "sourceParts": [
+            {
+              "Alias": "L0102:S0",
+              "Start": 0,
+              "End": 29,
+              "Text": "10.11. Privacy Considerations"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "11. IANA Considerations",
+          "sourceParts": [
+            {
+              "Alias": "L0103:S0",
+              "Start": 0,
+              "End": 23,
+              "Text": "11. IANA Considerations"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "11.1. Registration ofHTTP/3 Identification String",
+          "sourceParts": [
+            {
+              "Alias": "L0104:S0",
+              "Start": 0,
+              "End": 48,
+              "Text": "11.1. Registration ofHTTP/3 Identiﬁcation String"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "11.2. New Registries",
+          "sourceParts": [
+            {
+              "Alias": "L0105:S0",
+              "Start": 0,
+              "End": 20,
+              "Text": "11.2. New Registries"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "11.2.1. Frame Types",
+          "sourceParts": [
+            {
+              "Alias": "L0106:S0",
+              "Start": 0,
+              "End": 19,
+              "Text": "11.2.1. Frame Types"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "11.2.2. Settings Parameters",
+          "sourceParts": [
+            {
+              "Alias": "L0107:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "11.2.2. Settings Parameters"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "11.2.3. Error Codes",
+          "sourceParts": [
+            {
+              "Alias": "L0108:S0",
+              "Start": 0,
+              "End": 19,
+              "Text": "11.2.3. Error Codes"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "11.2.4. Stream Types",
+          "sourceParts": [
+            {
+              "Alias": "L0109:S0",
+              "Start": 0,
+              "End": 20,
+              "Text": "11.2.4. Stream Types"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "12. References",
+          "sourceParts": [
+            {
+              "Alias": "L0110:S0",
+              "Start": 0,
+              "End": 14,
+              "Text": "12. References"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "12.1. Normative References",
+          "sourceParts": [
+            {
+              "Alias": "L0111:S0",
+              "Start": 0,
+              "End": 26,
+              "Text": "12.1. Normative References"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "12.2. Informative References",
+          "sourceParts": [
+            {
+              "Alias": "L0112:S0",
+              "Start": 0,
+              "End": 28,
+              "Text": "12.2. Informative References"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Appendix A. Considerations for Transitioning from HTTP/2",
+          "sourceParts": [
+            {
+              "Alias": "L0113:S0",
+              "Start": 0,
+              "End": 56,
+              "Text": "Appendix A. Considerations for Transitioning from HTTP/2"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.1. Streams",
+          "sourceParts": [
+            {
+              "Alias": "L0114:S0",
+              "Start": 0,
+              "End": 12,
+              "Text": "A.1. Streams"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.2. HTTP Frame Types",
+          "sourceParts": [
+            {
+              "Alias": "L0115:S0",
+              "Start": 0,
+              "End": 21,
+              "Text": "A.2. HTTP Frame Types"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.2.1. Prioritization Differences",
+          "sourceParts": [
+            {
+              "Alias": "L0116:S0",
+              "Start": 0,
+              "End": 32,
+              "Text": "A.2.1. Prioritization Diﬀerences"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.2.2. Field Compression Differences",
+          "sourceParts": [
+            {
+              "Alias": "L0117:S0",
+              "Start": 0,
+              "End": 35,
+              "Text": "A.2.2. Field Compression Diﬀerences"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.2.3. Flow-Control Differences",
+          "sourceParts": [
+            {
+              "Alias": "L0118:S0",
+              "Start": 0,
+              "End": 30,
+              "Text": "A.2.3. Flow-Control Diﬀerences"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.2.4. Guidance for New Frame Type Definitions",
+          "sourceParts": [
+            {
+              "Alias": "L0119:S0",
+              "Start": 0,
+              "End": 45,
+              "Text": "A.2.4. Guidance for New Frame Type Deﬁnitions"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+          "sourceParts": [
+            {
+              "Alias": "L0120:S0",
+              "Start": 0,
+              "End": 49,
+              "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.3. HTTP/2 SETTINGS Parameters",
+          "sourceParts": [
+            {
+              "Alias": "L0121:S0",
+              "Start": 0,
+              "End": 31,
+              "Text": "A.3. HTTP/2 SETTINGS Parameters"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.4. HTTP/2 Error Codes",
+          "sourceParts": [
+            {
+              "Alias": "L0122:S0",
+              "Start": 0,
+              "End": 23,
+              "Text": "A.4. HTTP/2 Error Codes"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+          "sourceParts": [
+            {
+              "Alias": "L0123:S0",
+              "Start": 0,
+              "End": 47,
+              "Text": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Acknowledgments",
+          "sourceParts": [
+            {
+              "Alias": "L0124:S0",
+              "Start": 0,
+              "End": 15,
+              "Text": "Acknowledgments"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Index",
+          "sourceParts": [
+            {
+              "Alias": "L0125:S0",
+              "Start": 0,
+              "End": 5,
+              "Text": "Index"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Author's Address",
+          "sourceParts": [
+            {
+              "Alias": "L0128:S0",
+              "Start": 0,
+              "End": 16,
+              "Text": "Author's Address"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L0129:S0",
+              "Start": 0,
+              "End": 15,
+              "Text": "1. Introduction"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "1.1. Prior Versions of HTTP",
+          "sourceParts": [
+            {
+              "Alias": "L0134:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "1.1. Prior Versions of HTTP"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "1.2. Delegation to QUIC",
+          "sourceParts": [
+            {
+              "Alias": "L0146:S0",
+              "Start": 0,
+              "End": 23,
+              "Text": "1.2. Delegation to QUIC"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "2. HTTP/3 Protocol Overview",
+          "sourceParts": [
+            {
+              "Alias": "L0162:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "2. HTTP/3 Protocol Overview"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "2.1. Document Organization",
+          "sourceParts": [
+            {
+              "Alias": "L0185:S0",
+              "Start": 0,
+              "End": 26,
+              "Text": "2.1. Document Organization"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 3,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 15,
+      "rawClaims": 15,
+      "boundClaims": 8,
+      "binderRefusals": [
+        {
+          "key": "sparse-decision-5",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-6",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "proposal-10",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-11",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-12",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-13",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-1",
+          "reason": "'L0186:S0' does not contain that text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Section 3",
+          "sourceParts": [
+            {
+              "Alias": "L0187:S0",
+              "Start": 3,
+              "End": 34,
+              "Text": "Connection Setup and Management"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Section 4",
+          "sourceParts": [
+            {
+              "Alias": "L0189:S0",
+              "Start": 3,
+              "End": 38,
+              "Text": "Expressing HTTP Semantics in HTTP/3"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Section 5",
+          "sourceParts": [
+            {
+              "Alias": "L0191:S0",
+              "Start": 3,
+              "End": 21,
+              "Text": "Connection Closure"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Section 6",
+          "sourceParts": [
+            {
+              "Alias": "L0195:S0",
+              "Start": 3,
+              "End": 27,
+              "Text": "Stream Mapping and Usage"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Section 7",
+          "sourceParts": [
+            {
+              "Alias": "L0196:S0",
+              "Start": 3,
+              "End": 21,
+              "Text": "HTTP Framing Layer"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Section 8",
+          "sourceParts": [
+            {
+              "Alias": "L0199:S0",
+              "Start": 3,
+              "End": 17,
+              "Text": "Error Handling"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Section 9",
+          "sourceParts": [
+            {
+              "Alias": "L0202:S0",
+              "Start": 3,
+              "End": 23,
+              "Text": "Extensions to HTTP/3"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Appendix A",
+          "sourceParts": [
+            {
+              "Alias": "L0204:S0",
+              "Start": 2,
+              "End": 54,
+              "Text": "A more detailed comparison between HTTP/2 and HTTP/3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 4,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 9,
+      "rawClaims": 16,
+      "boundClaims": 8,
+      "binderRefusals": [
+        {
+          "key": "proposal-3",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-4",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-6",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-8",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-9",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-11",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-13",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-15",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L0277:S0",
+              "Start": 0,
+              "End": 20,
+              "Text": "3.1.2. Other Schemes"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "3.1.2. Other Schemes",
+          "sourceParts": [
+            {
+              "Alias": "L0277:S0",
+              "Start": 0,
+              "End": 20,
+              "Text": "3.1.2. Other Schemes"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "3.2. Connection Establishment",
+          "sourceParts": [
+            {
+              "Alias": "L0288:S0",
+              "Start": 0,
+              "End": 29,
+              "Text": "3.2. Connection Establishment"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Bishop Standards Track Page 9",
+          "sourceParts": [
+            {
+              "Alias": "L0303:S0",
+              "Start": 0,
+              "End": 29,
+              "Text": "Bishop Standards Track Page 9"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "3.3. Connection Reuse",
+          "sourceParts": [
+            {
+              "Alias": "L0305:S0",
+              "Start": 0,
+              "End": 21,
+              "Text": "3.3. Connection Reuse"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "4. Expressing HTTP Semantics in HTTP/3",
+          "sourceParts": [
+            {
+              "Alias": "L0335:S0",
+              "Start": 0,
+              "End": 38,
+              "Text": "4. Expressing HTTP Semantics in HTTP/3"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "4.1. HTTP Message Framing",
+          "sourceParts": [
+            {
+              "Alias": "L0336:S0",
+              "Start": 0,
+              "End": 25,
+              "Text": "4.1. HTTP Message Framing"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Bishop Standards Track Page 10",
+          "sourceParts": [
+            {
+              "Alias": "L0342:S0",
+              "Start": 0,
+              "End": 30,
+              "Text": "Bishop Standards Track Page 10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 5,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_INVALID",
+      "binding": "NOT_EXECUTED",
+      "semantic": "NOT_EVALUABLE",
+      "parseError": "sparse-decision-response-byte-budget-exceeded:max=52224"
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 6,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_NO_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 23,
+      "rawClaims": 23,
+      "boundClaims": 0,
+      "binderRefusals": [
+        {
+          "key": "sparse-decision-1",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-3",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-5",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-7",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-9",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-11",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-12",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-13",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-14",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-15",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-16",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-17",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-18",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-19",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-20",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-21",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-22",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "proposal-2",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-3",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-4",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-5",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-6",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-41",
+          "reason": "'L0472:S0' does not contain that text"
+        }
+      ],
+      "bound": []
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 7,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 6,
+      "rawClaims": 7,
+      "boundClaims": 4,
+      "binderRefusals": [
+        {
+          "key": "proposal-1",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-2",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-6",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "4.4. The CONNECT Method",
+          "sourceParts": [
+            {
+              "Alias": "L0565:S0",
+              "Start": 0,
+              "End": 49,
+              "Text": "A CONNECT request MUST be constructed as follows:"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L0605:S0",
+              "Start": 0,
+              "End": 17,
+              "Text": "4.5. HTTP Upgrade"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "4.5. HTTP Upgrade",
+          "sourceParts": [
+            {
+              "Alias": "L0605:S0",
+              "Start": 0,
+              "End": 17,
+              "Text": "4.5. HTTP Upgrade"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "4.6. Server Push",
+          "sourceParts": [
+            {
+              "Alias": "L0608:S1",
+              "Start": 0,
+              "End": 11,
+              "Text": "Server Push"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 8,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 9,
+      "rawClaims": 11,
+      "boundClaims": 3,
+      "binderRefusals": [
+        {
+          "key": "sparse-decision-4",
+          "reason": "decision-response-string-bound-exceeded:decision-1-claim-0:target:selection"
+        },
+        {
+          "key": "sparse-decision-6",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "proposal-2",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-5",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-6",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-7",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-8",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-9",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "will be pushed by the server.",
+          "sourceParts": [
+            {
+              "Alias": "L0657:S0",
+              "Start": 0,
+              "End": 29,
+              "Text": "will be pushed by the server."
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L0674:S0",
+              "Start": 0,
+              "End": 21,
+              "Text": "5. Connection Closure"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "5. Connection Closure",
+          "sourceParts": [
+            {
+              "Alias": "L0674:S0",
+              "Start": 0,
+              "End": 21,
+              "Text": "5. Connection Closure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 9,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_NO_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 15,
+      "rawClaims": 15,
+      "boundClaims": 0,
+      "binderRefusals": [
+        {
+          "key": "sparse-decision-5",
+          "reason": "owned-index-out-of-range"
+        },
+        {
+          "key": "sparse-decision-6",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-7",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-8",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-9",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-10",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-11",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-12",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-13",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-14",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "proposal-1",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-2",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-3",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-4",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-5",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        }
+      ],
+      "bound": []
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 10,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 5,
+      "rawClaims": 10,
+      "boundClaims": 2,
+      "binderRefusals": [
+        {
+          "key": "sparse-decision-0",
+          "reason": "decision-response-cardinality-bound-exceeded:decision-3-claim-1:targetParts"
+        },
+        {
+          "key": "sparse-decision-1",
+          "reason": "decision-response-cardinality-bound-exceeded:decision-21-claim-1:targetParts"
+        },
+        {
+          "key": "sparse-decision-2",
+          "reason": "decision-response-cardinality-bound-exceeded:decision-44-claim-1:targetParts"
+        },
+        {
+          "key": "proposal-2",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-4",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "7. HTTP Framing Layer",
+          "sourceParts": [
+            {
+              "Alias": "L0903:S0",
+              "Start": 0,
+              "End": 21,
+              "Text": "7. HTTP Framing Layer"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L0908:S0",
+              "Start": 0,
+              "End": 5,
+              "Text": "Frame"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 11,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 28,
+      "rawClaims": 28,
+      "boundClaims": 11,
+      "binderRefusals": [
+        {
+          "key": "proposal-3",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-5",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-7",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-8",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-9",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-11",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-13",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-15",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-16",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-17",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-19",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-21",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-22",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-23",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-25",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-27",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-28",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L0917:S0",
+              "Start": 0,
+              "End": 5,
+              "Text": "Frame"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Table 1: HTTP/3 Frames and Stream Type Overview",
+          "sourceParts": [
+            {
+              "Alias": "L0920:S0",
+              "Start": 0,
+              "End": 47,
+              "Text": "Table 1: HTTP/3 Frames and Stream Type Overview"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "7.1. Frame Layout",
+          "sourceParts": [
+            {
+              "Alias": "L0924:S0",
+              "Start": 0,
+              "End": 17,
+              "Text": "7.1. Frame Layout"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "HTTP /3 F rame Fo rmat {",
+          "sourceParts": [
+            {
+              "Alias": "L0926:S0",
+              "Start": 0,
+              "End": 24,
+              "Text": "HTTP /3 F rame Fo rmat {"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Figure 3: HTTP/3 Frame Format",
+          "sourceParts": [
+            {
+              "Alias": "L0931:S0",
+              "Start": 0,
+              "End": 29,
+              "Text": "Figure 3: HTTP/3 Frame Format"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Frame Deﬁnitions",
+          "sourceParts": [
+            {
+              "Alias": "L0944:S1",
+              "Start": 0,
+              "End": 16,
+              "Text": "Frame Deﬁnitions"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "DATA F rame {",
+          "sourceParts": [
+            {
+              "Alias": "L0953:S0",
+              "Start": 0,
+              "End": 13,
+              "Text": "DATA F rame {"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Figure 4: DATA Frame",
+          "sourceParts": [
+            {
+              "Alias": "L0958:S0",
+              "Start": 0,
+              "End": 20,
+              "Text": "Figure 4: DATA Frame"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "HEADE RS F rame {",
+          "sourceParts": [
+            {
+              "Alias": "L0962:S0",
+              "Start": 0,
+              "End": 17,
+              "Text": "HEADE RS F rame {"
+            }
+          ]
+        },
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Figure 5: HEADERSFrame",
+          "sourceParts": [
+            {
+              "Alias": "L0967:S0",
+              "Start": 0,
+              "End": 22,
+              "Text": "Figure 5: HEADERSFrame"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "CANCE L_ PUSH F rame {",
+          "sourceParts": [
+            {
+              "Alias": "L0997:S0",
+              "Start": 0,
+              "End": 22,
+              "Text": "CANCE L_ PUSH F rame {"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 12,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 6,
+      "rawClaims": 8,
+      "boundClaims": 1,
+      "binderRefusals": [
+        {
+          "key": "sparse-decision-3",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "proposal-1",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-3",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-4",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-6",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-501",
+          "reason": "'L1050:S0' does not contain that text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1011:S0",
+              "Start": 0,
+              "End": 15,
+              "Text": "7.2.4. SETTINGS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 13,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 10,
+      "rawClaims": 14,
+      "boundClaims": 11,
+      "binderRefusals": [
+        {
+          "key": "proposal-3",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-7",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-11",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1105:S0",
+              "Start": 0,
+              "End": 19,
+              "Text": "7.2.5. PUSH_PROMISE"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "7.2.5. PUSH_PROMISE",
+          "sourceParts": [
+            {
+              "Alias": "L1105:S0",
+              "Start": 0,
+              "End": 19,
+              "Text": "7.2.5. PUSH_PROMISE"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Figure 8: PUSH_PROMISEFrame",
+          "sourceParts": [
+            {
+              "Alias": "L1114:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "Figure 8: PUSH_PROMISEFrame"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1143:S0",
+              "Start": 0,
+              "End": 13,
+              "Text": "7.2.6. GOAWAY"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "7.2.6. GOAWAY",
+          "sourceParts": [
+            {
+              "Alias": "L1143:S0",
+              "Start": 0,
+              "End": 13,
+              "Text": "7.2.6. GOAWAY"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Figure 9: GOAWAYFrame",
+          "sourceParts": [
+            {
+              "Alias": "L1153:S0",
+              "Start": 0,
+              "End": 21,
+              "Text": "Figure 9: GOAWAYFrame"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1164:S0",
+              "Start": 0,
+              "End": 18,
+              "Text": "7.2.7. MAX_PUSH_ID"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "7.2.7. MAX_PUSH_ID",
+          "sourceParts": [
+            {
+              "Alias": "L1164:S0",
+              "Start": 0,
+              "End": 18,
+              "Text": "7.2.7. MAX_PUSH_ID"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Figure 10: MAX_PUSH_ID Frame",
+          "sourceParts": [
+            {
+              "Alias": "L1184:S0",
+              "Start": 0,
+              "End": 28,
+              "Text": "Figure 10: MAX_PUSH_ID Frame"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1189:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "7.2.8. Reserved Frame Types"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "7.2.8. Reserved Frame Types",
+          "sourceParts": [
+            {
+              "Alias": "L1189:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "7.2.8. Reserved Frame Types"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 14,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+      "transport": "TRANSPORT_INVALID",
+      "parser": "NOT_EVALUABLE",
+      "binding": "NOT_EVALUABLE",
+      "semantic": "NOT_EVALUABLE",
+      "transportError": "OpenRouter trả 429 Too Many Requests: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"qwen/qwen3.7-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Alibaba\",\"is_byok\":false,\"provider_error_code\":\"insufficient_quota\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to a…"
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 15,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 22,
+      "rawClaims": 23,
+      "boundClaims": 4,
+      "binderRefusals": [
+        {
+          "key": "sparse-decision-21",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "proposal-4",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-5",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-6",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-8",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-9",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-10",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-11",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-12",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-13",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-14",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-15",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-16",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-17",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-18",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-19",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-20",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-21",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-22",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "NAVIGATION_REPRESENTATION",
+          "value": "Extension negotiation via settings",
+          "sourceParts": [
+            {
+              "Alias": "L1284:S0",
+              "Start": 0,
+              "End": 93,
+              "Text": "Extensions that could change the semantics of existing protocol components MUST be negotiated"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1294:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "10. Security Considerations"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "10. Security Considerations",
+          "sourceParts": [
+            {
+              "Alias": "L1294:S0",
+              "Start": 0,
+              "End": 27,
+              "Text": "10. Security Considerations"
+            }
+          ]
+        },
+        {
+          "predicate": "PARENT_OF",
+          "value": null,
+          "sourceParts": [
+            {
+              "Alias": "L1298:S0",
+              "Start": 0,
+              "End": 22,
+              "Text": "10.1. Server Authority"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 16,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "transport": "TRANSPORT_INVALID",
+      "parser": "NOT_EVALUABLE",
+      "binding": "NOT_EVALUABLE",
+      "semantic": "NOT_EVALUABLE",
+      "transportError": "OpenRouter trả 429 Too Many Requests: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"qwen/qwen3.7-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Alibaba\",\"is_byok\":false,\"provider_error_code\":\"insufficient_quota\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to a…"
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 17,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "transport": "TRANSPORT_INVALID",
+      "parser": "NOT_EVALUABLE",
+      "binding": "NOT_EVALUABLE",
+      "semantic": "NOT_EVALUABLE",
+      "transportError": "OpenRouter trả 429 Too Many Requests: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"qwen/qwen3.7-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Alibaba\",\"is_byok\":false,\"provider_error_code\":\"insufficient_quota\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to a…"
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 18,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_NO_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 14,
+      "rawClaims": 14,
+      "boundClaims": 0,
+      "binderRefusals": [
+        {
+          "key": "proposal-1",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-2",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-3",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-4",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-5",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-6",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-7",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-8",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-9",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-10",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-11",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-12",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-13",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-14",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        }
+      ],
+      "bound": []
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 19,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "transport": "TRANSPORT_INVALID",
+      "parser": "NOT_EVALUABLE",
+      "binding": "NOT_EVALUABLE",
+      "semantic": "NOT_EVALUABLE",
+      "transportError": "OpenRouter trả 429 Too Many Requests: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"qwen/qwen3.7-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Alibaba\",\"is_byok\":false,\"provider_error_code\":\"insufficient_quota\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to a…"
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 20,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 4,
+      "rawClaims": 11,
+      "boundClaims": 8,
+      "binderRefusals": [
+        {
+          "key": "proposal-583",
+          "reason": "'L1677:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-584",
+          "reason": "'L1677:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-693",
+          "reason": "'L1688:S0' does not contain that text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1655:S0",
+              "Start": 0,
+              "End": 28,
+              "Text": "12.2. Informative References"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Informative References",
+          "sourceParts": [
+            {
+              "Alias": "L1655:S0",
+              "Start": 0,
+              "End": 28,
+              "Text": "12.2. Informative References"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1677:S0",
+              "Start": 0,
+              "End": 56,
+              "Text": "Appendix A. Considerations for Transitioning from HTTP/2"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Considerations for Transitioning from HTTP/2",
+          "sourceParts": [
+            {
+              "Alias": "L1677:S0",
+              "Start": 0,
+              "End": 56,
+              "Text": "Appendix A. Considerations for Transitioning from HTTP/2"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1688:S0",
+              "Start": 0,
+              "End": 12,
+              "Text": "A.1. Streams"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Streams",
+          "sourceParts": [
+            {
+              "Alias": "L1688:S0",
+              "Start": 0,
+              "End": 12,
+              "Text": "A.1. Streams"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1710:S0",
+              "Start": 0,
+              "End": 21,
+              "Text": "A.2. HTTP Frame Types"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "HTTP Frame Types",
+          "sourceParts": [
+            {
+              "Alias": "L1710:S0",
+              "Start": 0,
+              "End": 21,
+              "Text": "A.2. HTTP Frame Types"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 21,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 12,
+      "rawClaims": 30,
+      "boundClaims": 12,
+      "binderRefusals": [
+        {
+          "key": "sparse-decision-8",
+          "reason": "decision-response-string-bound-exceeded:decision-31-claim-0:subject:selection"
+        },
+        {
+          "key": "proposal-3",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-25",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-221",
+          "reason": "'L1737:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-471",
+          "reason": "'L1762:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-472",
+          "reason": "'L1762:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-473",
+          "reason": "'L1762:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-474",
+          "reason": "'L1762:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-475",
+          "reason": "'L1762:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-476",
+          "reason": "'L1762:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-477",
+          "reason": "'L1762:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-478",
+          "reason": "'L1762:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-761",
+          "reason": "'L1788:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-762",
+          "reason": "'L1788:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-842",
+          "reason": "'L1796:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-843",
+          "reason": "'L1796:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-844",
+          "reason": "'L1796:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-845",
+          "reason": "'L1796:S0' does not contain that text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1729:S0",
+              "Start": 0,
+              "End": 32,
+              "Text": "A.2.1. Prioritization Diﬀerences"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.2.1. Prioritization Differences",
+          "sourceParts": [
+            {
+              "Alias": "L1729:S0",
+              "Start": 0,
+              "End": 32,
+              "Text": "A.2.1. Prioritization Diﬀerences"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1736:S0",
+              "Start": 0,
+              "End": 35,
+              "Text": "A.2.2. Field Compression Diﬀerences"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.2.2. Field Compression Differences",
+          "sourceParts": [
+            {
+              "Alias": "L1736:S0",
+              "Start": 0,
+              "End": 35,
+              "Text": "A.2.2. Field Compression Diﬀerences"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1745:S0",
+              "Start": 0,
+              "End": 30,
+              "Text": "A.2.3. Flow-Control Diﬀerences"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.2.3. Flow-Control Differences",
+          "sourceParts": [
+            {
+              "Alias": "L1745:S0",
+              "Start": 0,
+              "End": 30,
+              "Text": "A.2.3. Flow-Control Diﬀerences"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1750:S0",
+              "Start": 0,
+              "End": 45,
+              "Text": "A.2.4. Guidance for New Frame Type Deﬁnitions"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.2.4. Guidance for New Frame Type Definitions",
+          "sourceParts": [
+            {
+              "Alias": "L1750:S0",
+              "Start": 0,
+              "End": 45,
+              "Text": "A.2.4. Guidance for New Frame Type Deﬁnitions"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1761:S0",
+              "Start": 0,
+              "End": 49,
+              "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.2.5. Comparison of HTTP/2 and HTTP/3 Frame Types",
+          "sourceParts": [
+            {
+              "Alias": "L1761:S0",
+              "Start": 0,
+              "End": 49,
+              "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types"
+            }
+          ]
+        },
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1787:S0",
+              "Start": 0,
+              "End": 31,
+              "Text": "A.3. HTTP/2 SETTINGS Parameters"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "A.3. HTTP/2 SETTINGS Parameters",
+          "sourceParts": [
+            {
+              "Alias": "L1787:S0",
+              "Start": 0,
+              "End": 31,
+              "Text": "A.3. HTTP/2 SETTINGS Parameters"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 22,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_NO_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 19,
+      "rawClaims": 19,
+      "boundClaims": 0,
+      "binderRefusals": [
+        {
+          "key": "sparse-decision-4",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-5",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "sparse-decision-15",
+          "reason": "duplicate-owned-index"
+        },
+        {
+          "key": "proposal-2",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-12",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-16",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-1",
+          "reason": "'L1807:S1' does not contain that text"
+        },
+        {
+          "key": "proposal-261",
+          "reason": "'L1833:S0' contains that text but not in the context given"
+        },
+        {
+          "key": "proposal-271",
+          "reason": "'L1834:S0' contains that text but not in the context given"
+        },
+        {
+          "key": "proposal-311",
+          "reason": "'L1838:S0' contains that text but not in the context given"
+        },
+        {
+          "key": "proposal-411",
+          "reason": "'L1844:S1' does not contain that text"
+        },
+        {
+          "key": "proposal-421",
+          "reason": "'L1845:S0' contains that text but not in the context given"
+        },
+        {
+          "key": "proposal-451",
+          "reason": "'L1848:S0' contains that text but not in the context given"
+        },
+        {
+          "key": "proposal-481",
+          "reason": "'L1850:S0' contains that text but not in the context given"
+        },
+        {
+          "key": "proposal-501",
+          "reason": "'L1851:S1' does not contain that text"
+        },
+        {
+          "key": "proposal-541",
+          "reason": "'L1854:S0' contains that text but not in the context given"
+        },
+        {
+          "key": "proposal-651",
+          "reason": "'L1865:S0' contains that text but not in the context given"
+        },
+        {
+          "key": "proposal-671",
+          "reason": "'L1867:S0' contains that text but not in the context given"
+        },
+        {
+          "key": "proposal-691",
+          "reason": "'L1869:S0' does not contain that text"
+        }
+      ],
+      "bound": []
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 23,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "transport": "TRANSPORT_VALID",
+      "parser": "PARSER_VALID",
+      "binding": "BINDER_EXECUTED_WITH_BOUND_CLAIMS",
+      "semantic": "PENDING_GOLD_AUDIT",
+      "rawSparseDecisions": 23,
+      "rawClaims": 23,
+      "boundClaims": 6,
+      "binderRefusals": [
+        {
+          "key": "proposal-3",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-6",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-7",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-9",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-11",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-14",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-15",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-17",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-19",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-20",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-21",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-22",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-23",
+          "reason": "whole-atom-must-omit-verbatim-text"
+        },
+        {
+          "key": "proposal-191",
+          "reason": "'L1915:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-661",
+          "reason": "'L1962:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-741",
+          "reason": "'L1968:S0' does not contain that text"
+        },
+        {
+          "key": "proposal-831",
+          "reason": "'L1977:S0' does not contain that text"
+        }
+      ],
+      "bound": [
+        {
+          "predicate": "DOCUMENT_IDENTITY",
+          "value": "RFC 9114 HTTP/3 June 2022",
+          "sourceParts": [
+            {
+              "Alias": "L1911:S0",
+              "Start": 0,
+              "End": 25,
+              "Text": "RFC 9114 HTTP/3 June 2022"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "Index",
+          "sourceParts": [
+            {
+              "Alias": "L1912:S0",
+              "Start": 0,
+              "End": 5,
+              "Text": "Index"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "C",
+          "sourceParts": [
+            {
+              "Alias": "L1914:S0",
+              "Start": 0,
+              "End": 1,
+              "Text": "C"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "D",
+          "sourceParts": [
+            {
+              "Alias": "L1940:S0",
+              "Start": 0,
+              "End": 1,
+              "Text": "D"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "G",
+          "sourceParts": [
+            {
+              "Alias": "L1947:S0",
+              "Start": 0,
+              "End": 1,
+              "Text": "G"
+            }
+          ]
+        },
+        {
+          "predicate": "STRUCTURAL_REGION",
+          "value": "H",
+          "sourceParts": [
+            {
+              "Alias": "L1961:S0",
+              "Start": 0,
+              "End": 1,
+              "Text": "H"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 24,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "transport": "TRANSPORT_INVALID",
+      "parser": "NOT_EVALUABLE",
+      "binding": "NOT_EVALUABLE",
+      "semantic": "NOT_EVALUABLE",
+      "transportError": "OpenRouter trả 429 Too Many Requests: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"qwen/qwen3.7-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Alibaba\",\"is_byok\":false,\"provider_error_code\":\"insufficient_quota\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to a…"
+    }
+  ]
+}

@@ -1,28 +1,41 @@
 {
-  "schemaVersion": "v5-full31-v32-comparison-v4-p05-v1",
+  "schemaVersion": "v5-full31-v32-comparison-v4-p05-v2",
   "baselineCommit": "083d025",
-  "baselineSource": "artifacts/v5-p5q2-hardened-semantic-audit/full-31.audit.v1.json",
-  "baselinePopulation": {
-    "parentPacks": 31,
-    "acceptedExecutionLeaves": 32
-  },
   "baseline": {
-    "productionExactOccurrence": {
+    "parserInvalidLeaves": 0,
+    "boundClaims": "NOT_REPORTED_AS_COMPARABLE",
+    "binderRefusals": 47,
+    "exact": {
       "tp": 120,
       "fp": 61,
       "fn": 19,
       "f1": 0.75
     },
-    "semanticHeading": {
+    "semantic": {
       "tp": 125,
       "fp": 55,
       "fn": 14,
       "f1": 0.7837
-    },
-    "productionRefusals": 47
+    }
   },
-  "v32Status": "NOT_RUN_WAITING_FOR_AUTHORIZED_PROVIDER_EXECUTION",
-  "v32ProviderCalls": 0,
-  "populationsMayBeCompared": false,
-  "note": "V4/P05 remains immutable historical authority. V3.2 scores require a separately frozen execution cohort and must not be inferred from V4 responses."
+  "v32": {
+    "attemptedParentPacks": 31,
+    "transportValidLeaves": 23,
+    "parserValidLeaves": 22,
+    "parserInvalidLeaves": 1,
+    "boundClaims": 155,
+    "binderRefusals": 300,
+    "exact": "NOT_EVALUABLE_FULL31",
+    "semantic": "NOT_EVALUABLE_FULL31",
+    "observedParserValidLeafMetricsOnly": true
+  },
+  "verdicts": {
+    "transport": "REGRESSED: 8/31 upstream 429 failures under zero-retry authorization",
+    "parser": "REGRESSED: 1 stop response exceeded the frozen V3.2 byte bound",
+    "binder": "NOT_COMPARABLE: V4 used a different response protocol and V3.2 had 9 unavailable parent sets",
+    "wholeAtom": "NOT_FIXED_IN_OBSERVED_V3.2_OUTPUT: 205 whole-atom-must-omit-verbatim-text refusals",
+    "unicode": "NOT_EVALUABLE_SEPARATELY: no TextNotInAtom refusal was emitted in this partial execution",
+    "ownership": "NOT_FIXED_IN_OBSERVED_V3.2_OUTPUT: 37 ownership/index-related refusals",
+    "semanticQuality": "NOT_EVALUABLE_FULL31"
+  }
 }

@@ -70,6 +70,9 @@ internal static class Program
         if (args.Contains("--p5o-v32-semantic-cohort"))
             return await P5OV32SemanticCohort.RunAsync(LocateRepoRoot(), args);
 
+        if (args.Contains("--p5r-v32-full31"))
+            return await P5RFull31V32Execution.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 

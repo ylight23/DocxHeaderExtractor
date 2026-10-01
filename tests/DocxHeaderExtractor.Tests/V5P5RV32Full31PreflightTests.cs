@@ -195,7 +195,6 @@ public sealed class V5P5RV32Full31PreflightTests
         {
             schemaVersion = "v5-p5r-v32-full31-preflight-v1",
             status = "PREPARED_NOT_AUTHORIZED",
-            inspectedHead = GitHead(),
             protocol = "v5-source-backed-decision-3.2",
             composer = "v5-semantic-decision-composer-3.2",
             packingPolicy = V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId,
@@ -251,45 +250,8 @@ public sealed class V5P5RV32Full31PreflightTests
             },
         };
 
-        var comparisonBaseline = new
-        {
-            schemaVersion = "v5-full31-v32-comparison-v4-p05-v1",
-            baselineCommit = "083d025",
-            baselineSource = "artifacts/v5-p5q2-hardened-semantic-audit/full-31.audit.v1.json",
-            baselinePopulation = new { parentPacks = 31, acceptedExecutionLeaves = 32 },
-            baseline = new
-            {
-                productionExactOccurrence = new { tp = 120, fp = 61, fn = 19, f1 = 0.7500 },
-                semanticHeading = new { tp = 125, fp = 55, fn = 14, f1 = 0.7837 },
-                productionRefusals = 47,
-            },
-            v32Status = "NOT_RUN_WAITING_FOR_AUTHORIZED_PROVIDER_EXECUTION",
-            v32ProviderCalls = 0,
-            populationsMayBeCompared = false,
-            note = "V4/P05 remains immutable historical authority. V3.2 scores require a separately frozen execution cohort and must not be inferred from V4 responses.",
-        };
-
         FreezeArtifact.AssertJson(ArtifactRoot, "preflight.v1.json", preflight);
         FreezeArtifact.AssertJson(ArtifactRoot, "execution-manifest.v1.json", executionManifest);
-        FreezeArtifact.AssertJson(ArtifactRoot, "comparison-v4-p05.v1.json", comparisonBaseline);
-    }
-
-    private static string GitHead()
-    {
-        using var process = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-        {
-            FileName = "git",
-            Arguments = "rev-parse HEAD",
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-            UseShellExecute = false,
-            CreateNoWindow = true,
-        }) ?? throw new InvalidOperationException("git-head-process-start-failed");
-        var head = process.StandardOutput.ReadToEnd().Trim();
-        process.WaitForExit();
-        if (process.ExitCode != 0 || string.IsNullOrWhiteSpace(head))
-            throw new InvalidOperationException("git-head-read-failed");
-        return head;
     }
 
     private static string Hash(byte[] bytes) => Convert.ToHexStringLower(SHA256.HashData(bytes));
