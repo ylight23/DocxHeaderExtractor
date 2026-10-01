@@ -15,6 +15,7 @@ public sealed class V5P5Q2HardenedSemanticScoringTests
 {
     private const string SourceRoot = "artifacts/v5-p5o-v32-semantic-cohort-manifest";
     private const string Root = "artifacts/v5-p5q2-hardened-semantic-audit";
+    private const string Full31Manifest = "eval/a99-closed-loop/request-architecture-v2/v4r2-p05-accepted-response-manifest.v1.json";
     private static readonly HashSet<string> OccurrencePredicates = new(StringComparer.Ordinal)
     {
         "DOCUMENT_IDENTITY", "STRUCTURAL_REGION", "NAVIGATION_REPRESENTATION"
@@ -210,6 +211,199 @@ public sealed class V5P5Q2HardenedSemanticScoringTests
         });
     }
 
+    /// <summary>
+    /// Applies the P5Q.2 adjudication unit to the complete, already-executed P05 cohort.  The
+    /// cohort has 31 parent ownership sets and 32 accepted leaves because parent 030 was split;
+    /// source identity, not leaf count or response order, is the aggregation authority.
+    /// </summary>
+    [Fact]
+    public void Score_full_31_pack_cohort_with_the_same_document_scoped_span_aware_authority()
+    {
+        using var manifest = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Full31Manifest)));
+        // The manifest has already selected the accepted leaf for each retry.  Keep those three
+        // IDENTICAL_RETRY entries: discarding them would turn three accepted parent sets into
+        // artificial omissions. Parent 030 alone contributes two disjoint adaptive children.
+        var entries = manifest.RootElement.GetProperty("entries").EnumerateArray().ToArray();
+        Assert.Equal(31, entries.Select(entry => entry.GetProperty("parentOrdinal").GetInt32()).Distinct().Count());
+        Assert.Equal(32, entries.Length);
+
+        var candidates = new Dictionary<string, List<Full31Candidate>>(StringComparer.Ordinal)
+        {
+            ["SRC-089"] = [], ["SRC-095"] = []
+        };
+        var contractRefusals = new List<object>();
+        var atomsByDocument = new Dictionary<string, IReadOnlyList<SemanticSourceAtom>>(StringComparer.Ordinal);
+        foreach (var entry in entries)
+        {
+            var documentId = entry.GetProperty("documentId").GetString()!;
+            var pdf = documentId == "SRC-089" ? SourcePdfCorpus.Src089 : SourcePdfCorpus.Src095;
+            if (!atomsByDocument.TryGetValue(documentId, out var atoms))
+                atomsByDocument[documentId] = atoms = V5PdfPreflightBuilder.LoadAtoms(TestRepository.Path(pdf));
+            using var request = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(entry.GetProperty("requestFile").GetString()!)));
+            var user = request.RootElement.GetProperty("messages").EnumerateArray()
+                .Single(message => message.GetProperty("role").GetString() == "user").GetProperty("content").GetString()!;
+            var schemaAt = user.IndexOf("SCHEMA=", StringComparison.Ordinal);
+            Assert.True(schemaAt > 0, "frozen V4 request must retain packet/schema boundary");
+            // Some recovery leaves serialize the separator as literal escape characters rather
+            // than a physical newline. The packet remains the first complete JSON object; use its
+            // closing brace, never reinterpret the schema suffix as JSON.
+            var packetPrefix = user[..schemaAt];
+            var packetEnd = packetPrefix.LastIndexOf('}');
+            Assert.True(packetEnd >= 0, "frozen V4 request must retain packet JSON before schema");
+            using var packet = JsonDocument.Parse(packetPrefix[..(packetEnd + 1)]);
+            var owned = packet.RootElement.TryGetProperty("sourceEvidence", out var sourceEvidence)
+                ? sourceEvidence.EnumerateArray().Where(evidence => evidence.GetProperty("owned").GetBoolean())
+                    .Select(evidence => evidence.GetProperty("alias").GetString()!).ToHashSet(StringComparer.Ordinal)
+                : packet.RootElement.GetProperty("ownedSourceAliases").EnumerateArray()
+                    .Select(alias => alias.GetString()!).ToHashSet(StringComparer.Ordinal);
+
+            // P05 freezes the OpenRouter envelope, whereas the four P5O rows above freeze the
+            // already-extracted JSON object. Extract exactly choices[0].message.content here; no
+            // repair or alternate response selection is permitted.
+            using var providerResponse = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(entry.GetProperty("responseFile").GetString()!)));
+            var semanticContent = providerResponse.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString();
+            Assert.False(string.IsNullOrWhiteSpace(semanticContent), "accepted P05 leaf must retain one semantic JSON content string");
+            using var response = JsonDocument.Parse(semanticContent!);
+            Assert.Empty(SemanticFunctionMembershipContractV1.ValidateJson(response.RootElement));
+            var entryOrdinal = entry.GetProperty("parentOrdinal").GetInt32();
+            foreach (var heading in response.RootElement.GetProperty("headings").EnumerateArray())
+            {
+                var decoded = SemanticFunctionMembershipContractV1.Decode(heading);
+                Assert.Single(decoded.Proposals);
+                var proposal = decoded.Proposals[0];
+                Assert.NotNull(proposal.SourceParts);
+                var function = heading.GetProperty("semanticFunction").GetString()!;
+                if (proposal.SourceParts!.Any(part => !owned.Contains(part.SourceAlias)))
+                {
+                    contractRefusals.Add(new
+                    {
+                        documentId, parentOrdinal = entryOrdinal, semanticFunction = function,
+                        status = "OUT_OF_OWNED_SEGMENT", sourceAliases = proposal.SourceParts.Select(part => part.SourceAlias).ToArray(),
+                    });
+                    continue;
+                }
+                var canonical = SemanticSourcePartCanonicalizer.Canonicalize(atoms, proposal.SourceParts!);
+                if (!canonical.IsCanonical)
+                {
+                    contractRefusals.Add(new
+                    {
+                        documentId, parentOrdinal = entryOrdinal, semanticFunction = function,
+                        status = canonical.Status.ToString(), sourceAliases = proposal.SourceParts.Select(part => part.SourceAlias).ToArray(),
+                    });
+                    continue;
+                }
+                var binding = SemanticSourcePartBinder.Bind(atoms, new SemanticSourcePartsProposal(canonical.Parts));
+                if (!binding.IsBound)
+                {
+                    // This is a production refusal, not a test convenience failure.  Do not infer
+                    // substitute spans or let it contaminate the bound production unit universe.
+                    contractRefusals.Add(new
+                    {
+                        documentId, parentOrdinal = entryOrdinal, semanticFunction = function,
+                        status = binding.Status.ToString(), sourceAliases = proposal.SourceParts!.Select(part => part.SourceAlias).ToArray(),
+                    });
+                    continue;
+                }
+                candidates[documentId].Add(new Full31Candidate(
+                    entryOrdinal,
+                    function,
+                    SemanticFunctionMembershipContractV1.IsMember(function),
+                    binding.Parts.Select(part => new SourcePart(part.Alias, part.Start, part.End)).ToArray(),
+                    string.Join(" ", binding.Parts.Select(part => part.Text))));
+            }
+        }
+
+        var gold = Gold();
+        var review = SourceReview();
+        var documents = new List<object>();
+        var allRows = new List<object>();
+        var exactTp = 0; var exactFp = 0; var exactFn = 0;
+        var semanticTp = 0; var semanticFp = 0; var semanticFn = 0;
+        foreach (var documentId in gold.Keys.OrderBy(id => id, StringComparer.Ordinal))
+        {
+            var all = candidates[documentId]
+                .GroupBy(candidate => candidate.Identity, StringComparer.Ordinal).Select(group => group.First()).ToArray();
+            var headingCandidates = all.Where(candidate => candidate.IsHeadingMember).ToArray();
+            var goldByIdentity = gold[documentId].ToDictionary(heading => heading.Identity, StringComparer.Ordinal);
+            var rows = gold[documentId].Select(heading =>
+            {
+                var exact = headingCandidates.Where(candidate => SameParts(candidate.Parts, heading.Parts)).ToArray();
+                var overlap = headingCandidates.Where(candidate => Overlaps(candidate.Parts, heading.Parts)).ToArray();
+                var nonMemberOverlap = all.Where(candidate => !candidate.IsHeadingMember && Overlaps(candidate.Parts, heading.Parts)).ToArray();
+                var bucket = exact.Length > 0 ? "EXACT"
+                    : overlap.Length > 0 ? "PARTIAL_OF_GOLD"
+                    : nonMemberOverlap.Length > 0 ? "WRONG_SEMANTIC_FUNCTION"
+                    : "NO_MODEL_EVIDENCE";
+                return new Full31GoldRow(documentId, heading, exact, overlap, nonMemberOverlap, bucket);
+            }).ToArray();
+            var nonGold = headingCandidates.Where(candidate => !goldByIdentity.ContainsKey(candidate.Identity)).ToArray();
+            var semanticFalsePositives = nonGold.Where(candidate => !gold[documentId].Any(heading => Overlaps(candidate.Parts, heading.Parts))).ToArray();
+            Assert.All(semanticFalsePositives, candidate =>
+                Assert.Equal("NON_HEADING", review.Verdict(documentId, candidate.Parts.Select(part => part.Alias))));
+
+            var docExactTp = rows.Count(row => row.Bucket == "EXACT");
+            var docExactFn = rows.Length - docExactTp;
+            exactTp += docExactTp; exactFp += nonGold.Length; exactFn += docExactFn;
+            var docSemanticTp = rows.Count(row => row.Bucket is "EXACT" or "PARTIAL_OF_GOLD");
+            var docSemanticFn = rows.Length - docSemanticTp;
+            semanticTp += docSemanticTp; semanticFp += semanticFalsePositives.Length; semanticFn += docSemanticFn;
+            documents.Add(new
+            {
+                documentId,
+                parentOwnershipSets = entries.Where(entry => entry.GetProperty("documentId").GetString() == documentId)
+                    .Select(entry => entry.GetProperty("parentOrdinal").GetInt32()).Distinct().Count(),
+                canonicalProductionUnits = all.Length,
+                headingMemberUnits = headingCandidates.Length,
+                exact = Metric(docExactTp, nonGold.Length, docExactFn),
+                semantic = Metric(docSemanticTp, semanticFalsePositives.Length, docSemanticFn),
+                occurrenceFidelity = rows.GroupBy(row => row.Bucket).ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal),
+            });
+            allRows.AddRange(rows.Select(row => new
+            {
+                documentId = row.DocumentId, goldId = row.Heading.Identity, goldText = row.Heading.Text,
+                goldSourceParts = row.Heading.Parts, occurrenceMatch = row.Bucket,
+                productionHeadingEvidence = row.Exact.Concat(row.Partial).Select(candidate => new
+                {
+                    parentOrdinal = candidate.ParentOrdinal, semanticFunction = candidate.Function,
+                    sourceParts = candidate.Parts, text = candidate.Text
+                }).ToArray(),
+                nonHeadingFunctionEvidence = row.NonMemberOverlap.Select(candidate => new
+                {
+                    parentOrdinal = candidate.ParentOrdinal, semanticFunction = candidate.Function,
+                    sourceParts = candidate.Parts, text = candidate.Text
+                }).ToArray(),
+            }));
+        }
+
+        // There is one shared candidate universe per document: canonical production units are used
+        // for exact precision, while the subset not touching any Gold span is the reviewed semantic
+        // FP universe.  Partial source-span proposals are deliberately visible rather than silently
+        // counted as either exact headings or non-heading noise.
+        FreezeArtifact.AssertJson(Root, "full-31.audit.v1.json", new
+        {
+            schemaVersion = "v5-p5q2-full-31-hardened-semantic-audit-v1",
+            source = Full31Manifest,
+            providerCalls = 0,
+            goldRead = true,
+            goldMutation = "NONE",
+            execution = new { parentOwnershipSets = 31, acceptedExecutionLeaves = 32, aggregation = "document-scoped canonical source-part identity" },
+            authority = new
+            {
+                providerContract = "SemanticFunctionMembershipContractV1.ValidateJson + Decode",
+                productionSourceBinding = "SemanticSourcePartCanonicalizer + SemanticSourcePartBinder",
+                documentScopedCanonicalIdentity = true,
+                actualSourcePartSpanComparison = true,
+                sourceReviewReused = review.Provenance,
+            },
+            productionContractRefusals = new { count = contractRefusals.Count, rows = contractRefusals },
+            productionExactOccurrenceMetric = Metric(exactTp, exactFp, exactFn),
+            semanticHeadingMetric = Metric(semanticTp, semanticFp, semanticFn),
+            semanticUnitDefinition = "Gold heading: detected by a heading-member proposal with exact or overlapping source spans. Semantic FP: heading-member proposal with no overlap with any document-scoped Gold span and reviewed NON_HEADING source.",
+            documents,
+            goldHeadings = allRows,
+        });
+    }
+
     private static IReadOnlyList<SemanticSourcePart> PartsFor(V5SemanticDecisionClaimV3 claim, int ownedIndex, V5PackedDecisionRequestV3 pack)
     {
         var parts = new List<SemanticSourcePart> { Part(pack.Packet.SubjectEvidence[ownedIndex].SourceAlias, claim.SubjectSelection) };
@@ -225,6 +419,24 @@ public sealed class V5P5Q2HardenedSemanticScoringTests
 
     private static bool SameParts(IReadOnlyList<SourcePart> left, IReadOnlyList<SourcePart> right) =>
         left.Count == right.Count && left.Zip(right).All(pair => pair.First == pair.Second);
+
+    private static bool Overlaps(IReadOnlyList<SourcePart> left, IReadOnlyList<SourcePart> right) =>
+        left.Any(a => right.Any(b => a.Alias == b.Alias && a.Start < b.End && b.Start < a.End));
+
+    private static object Metric(int truePositive, int falsePositive, int falseNegative)
+    {
+        var precision = truePositive + falsePositive == 0 ? 0d : (double)truePositive / (truePositive + falsePositive);
+        var recall = truePositive + falseNegative == 0 ? 0d : (double)truePositive / (truePositive + falseNegative);
+        return new
+        {
+            truePositive,
+            falsePositive,
+            falseNegative,
+            precision = Math.Round(precision, 4),
+            recall = Math.Round(recall, 4),
+            f1 = Math.Round(precision + recall == 0 ? 0d : 2 * precision * recall / (precision + recall), 4),
+        };
+    }
 
     private static Dictionary<string, IReadOnlyList<GoldHeading>> Gold()
     {
@@ -286,4 +498,10 @@ public sealed class V5P5Q2HardenedSemanticScoringTests
     private sealed record UnmatchedProposal(string DocumentId, RawPrediction Prediction, string SourceReviewVerdict);
     private sealed record SemanticAdjudicationUnit(string UnitId, string DocumentId, string Origin, string Truth, string Outcome,
         string? SourceReviewVerdict);
+    private sealed record Full31Candidate(int ParentOrdinal, string Function, bool IsHeadingMember, IReadOnlyList<SourcePart> Parts, string Text)
+    {
+        public string Identity => string.Join("|", Parts.Select(part => $"{part.Alias}:{part.Start}-{part.End}"));
+    }
+    private sealed record Full31GoldRow(string DocumentId, GoldHeading Heading, IReadOnlyList<Full31Candidate> Exact,
+        IReadOnlyList<Full31Candidate> Partial, IReadOnlyList<Full31Candidate> NonMemberOverlap, string Bucket);
 }

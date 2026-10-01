@@ -1,0 +1,6109 @@
+{
+  "schemaVersion": "v5-p5q2-full-31-hardened-semantic-audit-v1",
+  "source": "eval/a99-closed-loop/request-architecture-v2/v4r2-p05-accepted-response-manifest.v1.json",
+  "providerCalls": 0,
+  "goldRead": true,
+  "goldMutation": "NONE",
+  "execution": {
+    "parentOwnershipSets": 31,
+    "acceptedExecutionLeaves": 32,
+    "aggregation": "document-scoped canonical source-part identity"
+  },
+  "authority": {
+    "providerContract": "SemanticFunctionMembershipContractV1.ValidateJson + Decode",
+    "productionSourceBinding": "SemanticSourcePartCanonicalizer + SemanticSourcePartBinder",
+    "documentScopedCanonicalIdentity": true,
+    "actualSourcePartSpanComparison": true,
+    "sourceReviewReused": "eval/a99-closed-loop/source-review-v1/SRC-089/review-items.json + SRC-095/review-items.json"
+  },
+  "productionContractRefusals": {
+    "count": 47,
+    "rows": [
+      {
+        "documentId": "SRC-089",
+        "parentOrdinal": 1,
+        "semanticFunction": "DOCUMENT_IDENTITY",
+        "status": "OutOfSourceOrder",
+        "sourceAliases": [
+          "L0002:S1",
+          "L0002:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "parentOrdinal": 1,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0094:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "parentOrdinal": 2,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0195:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "parentOrdinal": 4,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0284:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "parentOrdinal": 4,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0285:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "parentOrdinal": 4,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0382:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "parentOrdinal": 4,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0383:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "parentOrdinal": 4,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0384:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "parentOrdinal": 5,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0478:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 9,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L0098:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 9,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L0104:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 9,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L0116:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 9,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L0117:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 9,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L0118:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 9,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L0119:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 10,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0185:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 14,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0557:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 15,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0760:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 16,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0852:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 20,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L1199:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 23,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L1374:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 25,
+        "semanticFunction": "TABLE_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L1529:S0",
+          "L1529:S1",
+          "L1529:S2",
+          "L1529:S3"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 25,
+        "semanticFunction": "TABLE_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L1558:S0",
+          "L1558:S1",
+          "L1558:S2",
+          "L1558:S3"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 25,
+        "semanticFunction": "TABLE_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L1562:S0",
+          "L1562:S1",
+          "L1562:S2",
+          "L1562:S3"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 28,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L1710:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 28,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L1729:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 28,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L1736:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 28,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L1745:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 28,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L1750:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 31,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L1983:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 31,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L1984:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 31,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L1986:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 31,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L1987:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 24,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L1465:S0",
+          "L1465:S1"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 24,
+        "semanticFunction": "TABLE_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L1489:S0",
+          "L1489:S1",
+          "L1489:S2"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 24,
+        "semanticFunction": "TABLE_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L1497:S0",
+          "L1497:S1",
+          "L1497:S2"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 24,
+        "semanticFunction": "TABLE_STRUCTURE",
+        "status": "TextNotInAtom",
+        "sourceAliases": [
+          "L1525:S0",
+          "L1525:S1",
+          "L1525:S2",
+          "L1525:S3"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 8,
+        "semanticFunction": "NAVIGATION",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0090:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 8,
+        "semanticFunction": "NAVIGATION",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0091:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 8,
+        "semanticFunction": "NAVIGATION",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0092:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 8,
+        "semanticFunction": "NAVIGATION",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0093:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 8,
+        "semanticFunction": "PAGE_FURNITURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0094:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 8,
+        "semanticFunction": "PAGE_FURNITURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0095:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 8,
+        "semanticFunction": "NAVIGATION",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0096:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 8,
+        "semanticFunction": "NAVIGATION",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L0097:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 30,
+        "semanticFunction": "PAGE_FURNITURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L1949:S0",
+          "L1950:S0"
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "parentOrdinal": 30,
+        "semanticFunction": "REGION_STRUCTURE",
+        "status": "OUT_OF_OWNED_SEGMENT",
+        "sourceAliases": [
+          "L1940:S0",
+          "L1941:S0"
+        ]
+      }
+    ]
+  },
+  "productionExactOccurrenceMetric": {
+    "truePositive": 120,
+    "falsePositive": 61,
+    "falseNegative": 19,
+    "precision": 0.663,
+    "recall": 0.8633,
+    "f1": 0.75
+  },
+  "semanticHeadingMetric": {
+    "truePositive": 125,
+    "falsePositive": 55,
+    "falseNegative": 14,
+    "precision": 0.6944,
+    "recall": 0.8993,
+    "f1": 0.7837
+  },
+  "semanticUnitDefinition": "Gold heading: detected by a heading-member proposal with exact or overlapping source spans. Semantic FP: heading-member proposal with no overlap with any document-scoped Gold span and reviewed NON_HEADING source.",
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "parentOwnershipSets": 7,
+      "canonicalProductionUnits": 39,
+      "headingMemberUnits": 33,
+      "exact": {
+        "truePositive": 30,
+        "falsePositive": 3,
+        "falseNegative": 6,
+        "precision": 0.9091,
+        "recall": 0.8333,
+        "f1": 0.8696
+      },
+      "semantic": {
+        "truePositive": 32,
+        "falsePositive": 0,
+        "falseNegative": 4,
+        "precision": 1,
+        "recall": 0.8889,
+        "f1": 0.9412
+      },
+      "occurrenceFidelity": {
+        "PARTIAL_OF_GOLD": 2,
+        "EXACT": 30,
+        "NO_MODEL_EVIDENCE": 4
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOwnershipSets": 24,
+      "canonicalProductionUnits": 224,
+      "headingMemberUnits": 148,
+      "exact": {
+        "truePositive": 90,
+        "falsePositive": 58,
+        "falseNegative": 13,
+        "precision": 0.6081,
+        "recall": 0.8738,
+        "f1": 0.7171
+      },
+      "semantic": {
+        "truePositive": 93,
+        "falsePositive": 55,
+        "falseNegative": 10,
+        "precision": 0.6284,
+        "recall": 0.9029,
+        "f1": 0.741
+      },
+      "occurrenceFidelity": {
+        "PARTIAL_OF_GOLD": 3,
+        "EXACT": 90,
+        "NO_MODEL_EVIDENCE": 10
+      }
+    }
+  ],
+  "goldHeadings": [
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+      "goldText": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+      "goldSourceParts": [
+        {
+          "Alias": "L0006:S0",
+          "Start": 0,
+          "End": 6
+        },
+        {
+          "Alias": "L0007:S0",
+          "Start": 0,
+          "End": 65
+        },
+        {
+          "Alias": "L0008:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "occurrenceMatch": "PARTIAL_OF_GOLD",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 1,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0006:S0",
+              "Start": 0,
+              "End": 6
+            },
+            {
+              "Alias": "L0007:S0",
+              "Start": 0,
+              "End": 65
+            },
+            {
+              "Alias": "L0008:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0014:S0:0-9|L0015:S0:0-18",
+      "goldText": "Chapter I GENERAL PROVISIONS",
+      "goldSourceParts": [
+        {
+          "Alias": "L0014:S0",
+          "Start": 0,
+          "End": 9
+        },
+        {
+          "Alias": "L0015:S0",
+          "Start": 0,
+          "End": 18
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 1,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0014:S0",
+              "Start": 0,
+              "End": 9
+            },
+            {
+              "Alias": "L0015:S0",
+              "Start": 0,
+              "End": 18
+            }
+          ],
+          "text": "Chapter I GENERAL PROVISIONS"
+        },
+        {
+          "parentOrdinal": 1,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0014:S0",
+              "Start": 0,
+              "End": 9
+            },
+            {
+              "Alias": "L0015:S0",
+              "Start": 0,
+              "End": 18
+            }
+          ],
+          "text": "Chapter I GENERAL PROVISIONS"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0016:S0:0-56",
+      "goldText": "Article 1. Scope ofregulation and subjects ofapplication",
+      "goldSourceParts": [
+        {
+          "Alias": "L0016:S0",
+          "Start": 0,
+          "End": 56
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 1,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0016:S0",
+              "Start": 0,
+              "End": 56
+            }
+          ],
+          "text": "Article 1. Scope ofregulation and subjects ofapplication"
+        },
+        {
+          "parentOrdinal": 1,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0016:S0",
+              "Start": 0,
+              "End": 56
+            }
+          ],
+          "text": "Article 1. Scope ofregulation and subjects ofapplication"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0024:S0:0-89|L0025:S0:0-45",
+      "goldText": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing the state management ofpublication activities",
+      "goldSourceParts": [
+        {
+          "Alias": "L0024:S0",
+          "Start": 0,
+          "End": 89
+        },
+        {
+          "Alias": "L0025:S0",
+          "Start": 0,
+          "End": 45
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 1,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0024:S0",
+              "Start": 0,
+              "End": 89
+            },
+            {
+              "Alias": "L0025:S0",
+              "Start": 0,
+              "End": 45
+            }
+          ],
+          "text": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing the state management ofpublication activities"
+        },
+        {
+          "parentOrdinal": 1,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0024:S0",
+              "Start": 0,
+              "End": 89
+            },
+            {
+              "Alias": "L0025:S0",
+              "Start": 0,
+              "End": 45
+            }
+          ],
+          "text": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing the state management ofpublication activities"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0051:S0:0-95|L0052:S0:0-35",
+      "goldText": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state management ofpublication activities",
+      "goldSourceParts": [
+        {
+          "Alias": "L0051:S0",
+          "Start": 0,
+          "End": 95
+        },
+        {
+          "Alias": "L0052:S0",
+          "Start": 0,
+          "End": 35
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 1,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0051:S0",
+              "Start": 0,
+              "End": 95
+            },
+            {
+              "Alias": "L0052:S0",
+              "Start": 0,
+              "End": 35
+            }
+          ],
+          "text": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state management ofpublication activities"
+        },
+        {
+          "parentOrdinal": 1,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0051:S0",
+              "Start": 0,
+              "End": 95
+            },
+            {
+              "Alias": "L0052:S0",
+              "Start": 0,
+              "End": 35
+            }
+          ],
+          "text": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state management ofpublication activities"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0080:S0:0-90|L0081:S0:0-35",
+      "goldText": "Article 4. Tasks and powers ofprovincial-level People’s Committees in performing the state management ofpublication activities",
+      "goldSourceParts": [
+        {
+          "Alias": "L0080:S0",
+          "Start": 0,
+          "End": 90
+        },
+        {
+          "Alias": "L0081:S0",
+          "Start": 0,
+          "End": 35
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 1,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0080:S0",
+              "Start": 0,
+              "End": 90
+            },
+            {
+              "Alias": "L0081:S0",
+              "Start": 0,
+              "End": 35
+            }
+          ],
+          "text": "Article 4. Tasks and powers ofprovincial-level People’s Committees in performing the state management ofpublication activities"
+        },
+        {
+          "parentOrdinal": 1,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0080:S0",
+              "Start": 0,
+              "End": 90
+            },
+            {
+              "Alias": "L0081:S0",
+              "Start": 0,
+              "End": 35
+            }
+          ],
+          "text": "Article 4. Tasks and powers ofprovincial-level People’s Committees in performing the state management ofpublication activities"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0094:S0:0-70",
+      "goldText": "Article 5. Information and reporting regimes in publication activities",
+      "goldSourceParts": [
+        {
+          "Alias": "L0094:S0",
+          "Start": 0,
+          "End": 70
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 2,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0094:S0",
+              "Start": 0,
+              "End": 70
+            }
+          ],
+          "text": "Article 5. Information and reporting regimes in publication activities"
+        },
+        {
+          "parentOrdinal": 2,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0094:S0",
+              "Start": 0,
+              "End": 70
+            }
+          ],
+          "text": "Article 5. Information and reporting regimes in publication activities"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0106:S0:0-80|L0107:S0:0-88|L0108:S0:0-13",
+      "goldText": "Article 6. Conditions for establishment and contents ofoperation ofVietnam-based representative offices of foreign publishing houses and foreign publication distribution organizations",
+      "goldSourceParts": [
+        {
+          "Alias": "L0106:S0",
+          "Start": 0,
+          "End": 80
+        },
+        {
+          "Alias": "L0107:S0",
+          "Start": 0,
+          "End": 88
+        },
+        {
+          "Alias": "L0108:S0",
+          "Start": 0,
+          "End": 13
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 2,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0106:S0",
+              "Start": 0,
+              "End": 80
+            },
+            {
+              "Alias": "L0107:S0",
+              "Start": 0,
+              "End": 88
+            },
+            {
+              "Alias": "L0108:S0",
+              "Start": 0,
+              "End": 13
+            }
+          ],
+          "text": "Article 6. Conditions for establishment and contents ofoperation ofVietnam-based representative offices of foreign publishing houses and foreign publication distribution organizations"
+        },
+        {
+          "parentOrdinal": 2,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0106:S0",
+              "Start": 0,
+              "End": 80
+            },
+            {
+              "Alias": "L0107:S0",
+              "Start": 0,
+              "End": 88
+            },
+            {
+              "Alias": "L0108:S0",
+              "Start": 0,
+              "End": 13
+            }
+          ],
+          "text": "Article 6. Conditions for establishment and contents ofoperation ofVietnam-based representative offices of foreign publishing houses and foreign publication distribution organizations"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0109:S0:0-33",
+      "goldText": "1 . Conditions for establishment:",
+      "goldSourceParts": [
+        {
+          "Alias": "L0109:S0",
+          "Start": 0,
+          "End": 33
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0117:S0:0-22",
+      "goldText": "2. Operation contents:",
+      "goldSourceParts": [
+        {
+          "Alias": "L0117:S0",
+          "Start": 0,
+          "End": 22
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0126:S0:0-86|L0127:S0:0-88|L0128:S0:0-13",
+      "goldText": "Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based representative offices of foreign publishing houses and foreign publication distribution organizations",
+      "goldSourceParts": [
+        {
+          "Alias": "L0126:S0",
+          "Start": 0,
+          "End": 86
+        },
+        {
+          "Alias": "L0127:S0",
+          "Start": 0,
+          "End": 88
+        },
+        {
+          "Alias": "L0128:S0",
+          "Start": 0,
+          "End": 13
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 2,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0126:S0",
+              "Start": 0,
+              "End": 86
+            },
+            {
+              "Alias": "L0127:S0",
+              "Start": 0,
+              "End": 88
+            },
+            {
+              "Alias": "L0128:S0",
+              "Start": 0,
+              "End": 13
+            }
+          ],
+          "text": "Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based representative offices of foreign publishing houses and foreign publication distribution organizations"
+        },
+        {
+          "parentOrdinal": 2,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0126:S0",
+              "Start": 0,
+              "End": 86
+            },
+            {
+              "Alias": "L0127:S0",
+              "Start": 0,
+              "End": 88
+            },
+            {
+              "Alias": "L0128:S0",
+              "Start": 0,
+              "End": 13
+            }
+          ],
+          "text": "Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based representative offices of foreign publishing houses and foreign publication distribution organizations"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0160:S0:0-10|L0161:S0:0-10",
+      "goldText": "Chapter II PUBLISHING",
+      "goldSourceParts": [
+        {
+          "Alias": "L0160:S0",
+          "Start": 0,
+          "End": 10
+        },
+        {
+          "Alias": "L0161:S0",
+          "Start": 0,
+          "End": 10
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 2,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0160:S0",
+              "Start": 0,
+              "End": 10
+            },
+            {
+              "Alias": "L0161:S0",
+              "Start": 0,
+              "End": 10
+            }
+          ],
+          "text": "Chapter II PUBLISHING"
+        },
+        {
+          "parentOrdinal": 2,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0160:S0",
+              "Start": 0,
+              "End": 10
+            },
+            {
+              "Alias": "L0161:S0",
+              "Start": 0,
+              "End": 10
+            }
+          ],
+          "text": "Chapter II PUBLISHING"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0162:S0:0-86",
+      "goldText": "Article 8. Conditions for establishment and assurance ofoperations ofpublishing houses",
+      "goldSourceParts": [
+        {
+          "Alias": "L0162:S0",
+          "Start": 0,
+          "End": 86
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 2,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0162:S0",
+              "Start": 0,
+              "End": 86
+            }
+          ],
+          "text": "Article 8. Conditions for establishment and assurance ofoperations ofpublishing houses"
+        },
+        {
+          "parentOrdinal": 2,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0162:S0",
+              "Start": 0,
+              "End": 86
+            }
+          ],
+          "text": "Article 8. Conditions for establishment and assurance ofoperations ofpublishing houses"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0174:S0:0-89|L0175:S0:0-51",
+      "goldText": "Article 9. Approval ofthe appointment, dismissal and relief from duty ofgeneral directors (directors) and editors-in-chiefofpublishing houses",
+      "goldSourceParts": [
+        {
+          "Alias": "L0174:S0",
+          "Start": 0,
+          "End": 89
+        },
+        {
+          "Alias": "L0175:S0",
+          "Start": 0,
+          "End": 51
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 2,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0174:S0",
+              "Start": 0,
+              "End": 89
+            },
+            {
+              "Alias": "L0175:S0",
+              "Start": 0,
+              "End": 51
+            }
+          ],
+          "text": "Article 9. Approval ofthe appointment, dismissal and relief from duty ofgeneral directors (directors) and editors-in-chiefofpublishing houses"
+        },
+        {
+          "parentOrdinal": 2,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0174:S0",
+              "Start": 0,
+              "End": 89
+            },
+            {
+              "Alias": "L0175:S0",
+              "Start": 0,
+              "End": 51
+            }
+          ],
+          "text": "Article 9. Approval ofthe appointment, dismissal and relief from duty ofgeneral directors (directors) and editors-in-chiefofpublishing houses"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0195:S0:0-81",
+      "goldText": "Article 10. Publication registration and certification ofpublication registration",
+      "goldSourceParts": [
+        {
+          "Alias": "L0195:S0",
+          "Start": 0,
+          "End": 81
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 3,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0195:S0",
+              "Start": 0,
+              "End": 81
+            }
+          ],
+          "text": "Article 10. Publication registration and certification ofpublication registration"
+        },
+        {
+          "parentOrdinal": 3,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0195:S0",
+              "Start": 0,
+              "End": 81
+            }
+          ],
+          "text": "Article 10. Publication registration and certification ofpublication registration"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0243:S0:0-40",
+      "goldText": "Article 11. Joint publication activities",
+      "goldSourceParts": [
+        {
+          "Alias": "L0243:S0",
+          "Start": 0,
+          "End": 40
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 3,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0243:S0",
+              "Start": 0,
+              "End": 40
+            }
+          ],
+          "text": "Article 11. Joint publication activities"
+        },
+        {
+          "parentOrdinal": 3,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0243:S0",
+              "Start": 0,
+              "End": 40
+            }
+          ],
+          "text": "Article 11. Joint publication activities"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0246:S0:0-26",
+      "goldText": "1 . For publishing houses:",
+      "goldSourceParts": [
+        {
+          "Alias": "L0246:S0",
+          "Start": 0,
+          "End": 26
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0249:S0:0-16",
+      "goldText": "2. For partners:",
+      "goldSourceParts": [
+        {
+          "Alias": "L0249:S0",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0260:S0:0-62",
+      "goldText": "Article 12. Licensing ofpublication ofnon-commercial documents",
+      "goldSourceParts": [
+        {
+          "Alias": "L0260:S0",
+          "Start": 0,
+          "End": 62
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 3,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0260:S0",
+              "Start": 0,
+              "End": 62
+            }
+          ],
+          "text": "Article 12. Licensing ofpublication ofnon-commercial documents"
+        },
+        {
+          "parentOrdinal": 3,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0260:S0",
+              "Start": 0,
+              "End": 62
+            }
+          ],
+          "text": "Article 12. Licensing ofpublication ofnon-commercial documents"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0284:S0:0-11|L0285:S0:0-41",
+      "goldText": "Chapter III PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+      "goldSourceParts": [
+        {
+          "Alias": "L0284:S0",
+          "Start": 0,
+          "End": 11
+        },
+        {
+          "Alias": "L0285:S0",
+          "Start": 0,
+          "End": 41
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 3,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0284:S0",
+              "Start": 0,
+              "End": 11
+            },
+            {
+              "Alias": "L0285:S0",
+              "Start": 0,
+              "End": 41
+            }
+          ],
+          "text": "Chapter III PRINTING AND DISTRIBUTION OF PUBLICATIONS"
+        },
+        {
+          "parentOrdinal": 3,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0284:S0",
+              "Start": 0,
+              "End": 11
+            },
+            {
+              "Alias": "L0285:S0",
+              "Start": 0,
+              "End": 41
+            }
+          ],
+          "text": "Chapter III PRINTING AND DISTRIBUTION OF PUBLICATIONS"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0286:S0:0-89|L0287:S0:0-41",
+      "goldText": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of revocation ofpublication printing permits",
+      "goldSourceParts": [
+        {
+          "Alias": "L0286:S0",
+          "Start": 0,
+          "End": 89
+        },
+        {
+          "Alias": "L0287:S0",
+          "Start": 0,
+          "End": 41
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 4,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0286:S0",
+              "Start": 0,
+              "End": 89
+            },
+            {
+              "Alias": "L0287:S0",
+              "Start": 0,
+              "End": 41
+            }
+          ],
+          "text": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of revocation ofpublication printing permits"
+        },
+        {
+          "parentOrdinal": 4,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0286:S0",
+              "Start": 0,
+              "End": 89
+            },
+            {
+              "Alias": "L0287:S0",
+              "Start": 0,
+              "End": 41
+            }
+          ],
+          "text": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of revocation ofpublication printing permits"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0317:S0:0-81",
+      "goldText": "Article 14. Grant, re-grant and revocation ofpublication import business licenses",
+      "goldSourceParts": [
+        {
+          "Alias": "L0317:S0",
+          "Start": 0,
+          "End": 81
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 4,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0317:S0",
+              "Start": 0,
+              "End": 81
+            }
+          ],
+          "text": "Article 14. Grant, re-grant and revocation ofpublication import business licenses"
+        },
+        {
+          "parentOrdinal": 4,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0317:S0",
+              "Start": 0,
+              "End": 81
+            }
+          ],
+          "text": "Article 14. Grant, re-grant and revocation ofpublication import business licenses"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0350:S0:0-95",
+      "goldText": "Article 15. Refusal to certify the registration ofimport ofpublications for commercial purposes",
+      "goldSourceParts": [
+        {
+          "Alias": "L0350:S0",
+          "Start": 0,
+          "End": 95
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 4,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0350:S0",
+              "Start": 0,
+              "End": 95
+            }
+          ],
+          "text": "Article 15. Refusal to certify the registration ofimport ofpublications for commercial purposes"
+        },
+        {
+          "parentOrdinal": 4,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0350:S0",
+              "Start": 0,
+              "End": 95
+            }
+          ],
+          "text": "Article 15. Refusal to certify the registration ofimport ofpublications for commercial purposes"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0359:S0:0-95",
+      "goldText": "Article 16. Responsibility ofpublication importers to appraise contents ofimported publications",
+      "goldSourceParts": [
+        {
+          "Alias": "L0359:S0",
+          "Start": 0,
+          "End": 95
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 4,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0359:S0",
+              "Start": 0,
+              "End": 95
+            }
+          ],
+          "text": "Article 16. Responsibility ofpublication importers to appraise contents ofimported publications"
+        },
+        {
+          "parentOrdinal": 4,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0359:S0",
+              "Start": 0,
+              "End": 95
+            }
+          ],
+          "text": "Article 16. Responsibility ofpublication importers to appraise contents ofimported publications"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0382:S0:0-10|L0383:S0:0-45",
+      "goldText": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+      "goldSourceParts": [
+        {
+          "Alias": "L0382:S0",
+          "Start": 0,
+          "End": 10
+        },
+        {
+          "Alias": "L0383:S0",
+          "Start": 0,
+          "End": 45
+        }
+      ],
+      "occurrenceMatch": "PARTIAL_OF_GOLD",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 5,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0382:S0",
+              "Start": 0,
+              "End": 10
+            }
+          ],
+          "text": "Chapter IV"
+        },
+        {
+          "parentOrdinal": 5,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0383:S0",
+              "Start": 0,
+              "End": 45
+            }
+          ],
+          "text": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0384:S0:0-71",
+      "goldText": "Article 17. Conditions for publishing and distribution ofe-publications",
+      "goldSourceParts": [
+        {
+          "Alias": "L0384:S0",
+          "Start": 0,
+          "End": 71
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 5,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0384:S0",
+              "Start": 0,
+              "End": 71
+            }
+          ],
+          "text": "Article 17. Conditions for publishing and distribution ofe-publications"
+        },
+        {
+          "parentOrdinal": 5,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0384:S0",
+              "Start": 0,
+              "End": 71
+            }
+          ],
+          "text": "Article 17. Conditions for publishing and distribution ofe-publications"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0426:S0:0-96|L0427:S0:0-44",
+      "goldText": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe publishing and distribution ofe-publications",
+      "goldSourceParts": [
+        {
+          "Alias": "L0426:S0",
+          "Start": 0,
+          "End": 96
+        },
+        {
+          "Alias": "L0427:S0",
+          "Start": 0,
+          "End": 44
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 5,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0426:S0",
+              "Start": 0,
+              "End": 96
+            },
+            {
+              "Alias": "L0427:S0",
+              "Start": 0,
+              "End": 44
+            }
+          ],
+          "text": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe publishing and distribution ofe-publications"
+        },
+        {
+          "parentOrdinal": 5,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0426:S0",
+              "Start": 0,
+              "End": 96
+            },
+            {
+              "Alias": "L0427:S0",
+              "Start": 0,
+              "End": 44
+            }
+          ],
+          "text": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe publishing and distribution ofe-publications"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0455:S0:0-90|L0456:S0:0-27",
+      "goldText": "Article 19. Classification ofe-publications and requirements on the contents and technical conditions ofe-publications",
+      "goldSourceParts": [
+        {
+          "Alias": "L0455:S0",
+          "Start": 0,
+          "End": 90
+        },
+        {
+          "Alias": "L0456:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 5,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0455:S0",
+              "Start": 0,
+              "End": 90
+            },
+            {
+              "Alias": "L0456:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "Article 19. Classification ofe-publications and requirements on the contents and technical conditions ofe-publications"
+        },
+        {
+          "parentOrdinal": 5,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0455:S0",
+              "Start": 0,
+              "End": 90
+            },
+            {
+              "Alias": "L0456:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "Article 19. Classification ofe-publications and requirements on the contents and technical conditions ofe-publications"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0478:S0:0-59",
+      "goldText": "Article 20. Import ofe-publications for commercial purposes",
+      "goldSourceParts": [
+        {
+          "Alias": "L0478:S0",
+          "Start": 0,
+          "End": 59
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0478:S0",
+              "Start": 0,
+              "End": 59
+            }
+          ],
+          "text": "Article 20. Import ofe-publications for commercial purposes"
+        },
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0478:S0",
+              "Start": 0,
+              "End": 59
+            }
+          ],
+          "text": "Article 20. Import ofe-publications for commercial purposes"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0490:S0:0-36",
+      "goldText": "Article 21. Deposit ofe-publications",
+      "goldSourceParts": [
+        {
+          "Alias": "L0490:S0",
+          "Start": 0,
+          "End": 36
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0490:S0",
+              "Start": 0,
+              "End": 36
+            }
+          ],
+          "text": "Article 21. Deposit ofe-publications"
+        },
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0490:S0",
+              "Start": 0,
+              "End": 36
+            }
+          ],
+          "text": "Article 21. Deposit ofe-publications"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0499:S0:0-92|L0500:S0:0-58",
+      "goldText": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals engaged in the publishing or distribution ofe-publications",
+      "goldSourceParts": [
+        {
+          "Alias": "L0499:S0",
+          "Start": 0,
+          "End": 92
+        },
+        {
+          "Alias": "L0500:S0",
+          "Start": 0,
+          "End": 58
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0499:S0",
+              "Start": 0,
+              "End": 92
+            },
+            {
+              "Alias": "L0500:S0",
+              "Start": 0,
+              "End": 58
+            }
+          ],
+          "text": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals engaged in the publishing or distribution ofe-publications"
+        },
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0499:S0",
+              "Start": 0,
+              "End": 92
+            },
+            {
+              "Alias": "L0500:S0",
+              "Start": 0,
+              "End": 58
+            }
+          ],
+          "text": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals engaged in the publishing or distribution ofe-publications"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0522:S0:0-92|L0523:S0:0-12",
+      "goldText": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe- publications",
+      "goldSourceParts": [
+        {
+          "Alias": "L0522:S0",
+          "Start": 0,
+          "End": 92
+        },
+        {
+          "Alias": "L0523:S0",
+          "Start": 0,
+          "End": 12
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0522:S0",
+              "Start": 0,
+              "End": 92
+            },
+            {
+              "Alias": "L0523:S0",
+              "Start": 0,
+              "End": 12
+            }
+          ],
+          "text": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe- publications"
+        },
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0522:S0",
+              "Start": 0,
+              "End": 92
+            },
+            {
+              "Alias": "L0523:S0",
+              "Start": 0,
+              "End": 12
+            }
+          ],
+          "text": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe- publications"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0535:S0:0-9|L0536:S0:0-25",
+      "goldText": "Chapter V IMPLEMENTATION PROVISIONS",
+      "goldSourceParts": [
+        {
+          "Alias": "L0535:S0",
+          "Start": 0,
+          "End": 9
+        },
+        {
+          "Alias": "L0536:S0",
+          "Start": 0,
+          "End": 25
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0535:S0",
+              "Start": 0,
+              "End": 9
+            },
+            {
+              "Alias": "L0536:S0",
+              "Start": 0,
+              "End": 25
+            }
+          ],
+          "text": "Chapter V IMPLEMENTATION PROVISIONS"
+        },
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0535:S0",
+              "Start": 0,
+              "End": 9
+            },
+            {
+              "Alias": "L0536:S0",
+              "Start": 0,
+              "End": 25
+            }
+          ],
+          "text": "Chapter V IMPLEMENTATION PROVISIONS"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0537:S0:0-18",
+      "goldText": "Article 24. Effect",
+      "goldSourceParts": [
+        {
+          "Alias": "L0537:S0",
+          "Start": 0,
+          "End": 18
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0537:S0",
+              "Start": 0,
+              "End": 18
+            }
+          ],
+          "text": "Article 24. Effect"
+        },
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0537:S0",
+              "Start": 0,
+              "End": 18
+            }
+          ],
+          "text": "Article 24. Effect"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0555:S0:0-93|L0556:S0:0-12",
+      "goldText": "Article 25. Renewal oflicenses for publication activities and registration of distribution of publications",
+      "goldSourceParts": [
+        {
+          "Alias": "L0555:S0",
+          "Start": 0,
+          "End": 93
+        },
+        {
+          "Alias": "L0556:S0",
+          "Start": 0,
+          "End": 12
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0555:S0",
+              "Start": 0,
+              "End": 93
+            },
+            {
+              "Alias": "L0556:S0",
+              "Start": 0,
+              "End": 12
+            }
+          ],
+          "text": "Article 25. Renewal oflicenses for publication activities and registration of distribution of publications"
+        },
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0555:S0",
+              "Start": 0,
+              "End": 93
+            },
+            {
+              "Alias": "L0556:S0",
+              "Start": 0,
+              "End": 12
+            }
+          ],
+          "text": "Article 25. Renewal oflicenses for publication activities and registration of distribution of publications"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-089",
+      "goldId": "L0572:S0:0-41",
+      "goldText": "Article 26. Implementation responsibility",
+      "goldSourceParts": [
+        {
+          "Alias": "L0572:S0",
+          "Start": 0,
+          "End": 41
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0572:S0",
+              "Start": 0,
+              "End": 41
+            }
+          ],
+          "text": "Article 26. Implementation responsibility"
+        },
+        {
+          "parentOrdinal": 6,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0572:S0",
+              "Start": 0,
+              "End": 41
+            }
+          ],
+          "text": "Article 26. Implementation responsibility"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0008:S0:0-6",
+      "goldText": "HTTP/3",
+      "goldSourceParts": [
+        {
+          "Alias": "L0008:S0",
+          "Start": 0,
+          "End": 6
+        }
+      ],
+      "occurrenceMatch": "PARTIAL_OF_GOLD",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 8,
+          "semanticFunction": "DOCUMENT_IDENTITY",
+          "sourceParts": [
+            {
+              "Alias": "L0007:S0",
+              "Start": 0,
+              "End": 8
+            },
+            {
+              "Alias": "L0008:S0",
+              "Start": 0,
+              "End": 6
+            }
+          ],
+          "text": "RFC 9114 HTTP/3"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0009:S0:0-8",
+      "goldText": "Abstract",
+      "goldSourceParts": [
+        {
+          "Alias": "L0009:S0",
+          "Start": 0,
+          "End": 8
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 8,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0009:S0",
+              "Start": 0,
+              "End": 8
+            }
+          ],
+          "text": "Abstract"
+        },
+        {
+          "parentOrdinal": 8,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0009:S0",
+              "Start": 0,
+              "End": 8
+            }
+          ],
+          "text": "Abstract"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0015:S0:0-18",
+      "goldText": "Status ofThis Memo",
+      "goldSourceParts": [
+        {
+          "Alias": "L0015:S0",
+          "Start": 0,
+          "End": 18
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 8,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0015:S0",
+              "Start": 0,
+              "End": 18
+            }
+          ],
+          "text": "Status ofThis Memo"
+        },
+        {
+          "parentOrdinal": 8,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0015:S0",
+              "Start": 0,
+              "End": 18
+            }
+          ],
+          "text": "Status ofThis Memo"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0023:S0:0-16",
+      "goldText": "Copyright Notice",
+      "goldSourceParts": [
+        {
+          "Alias": "L0023:S0",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 8,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0023:S0",
+              "Start": 0,
+              "End": 16
+            }
+          ],
+          "text": "Copyright Notice"
+        },
+        {
+          "parentOrdinal": 8,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0023:S0",
+              "Start": 0,
+              "End": 16
+            }
+          ],
+          "text": "Copyright Notice"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0034:S0:0-17",
+      "goldText": "Table of Contents",
+      "goldSourceParts": [
+        {
+          "Alias": "L0034:S0",
+          "Start": 0,
+          "End": 17
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 8,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0034:S0",
+              "Start": 0,
+              "End": 17
+            }
+          ],
+          "text": "Table of Contents"
+        },
+        {
+          "parentOrdinal": 8,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0034:S0",
+              "Start": 0,
+              "End": 17
+            }
+          ],
+          "text": "Table of Contents"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0129:S0:0-15",
+      "goldText": "1. Introduction",
+      "goldSourceParts": [
+        {
+          "Alias": "L0129:S0",
+          "Start": 0,
+          "End": 15
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 9,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0129:S0",
+              "Start": 0,
+              "End": 15
+            }
+          ],
+          "text": "1. Introduction"
+        },
+        {
+          "parentOrdinal": 9,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0129:S0",
+              "Start": 0,
+              "End": 15
+            }
+          ],
+          "text": "1. Introduction"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0134:S0:0-27",
+      "goldText": "1.1. Prior Versions of HTTP",
+      "goldSourceParts": [
+        {
+          "Alias": "L0134:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 9,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0134:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "1.1. Prior Versions of HTTP"
+        },
+        {
+          "parentOrdinal": 9,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0134:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "1.1. Prior Versions of HTTP"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0146:S0:0-23",
+      "goldText": "1.2. Delegation to QUIC",
+      "goldSourceParts": [
+        {
+          "Alias": "L0146:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 9,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0146:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "1.2. Delegation to QUIC"
+        },
+        {
+          "parentOrdinal": 9,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0146:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "1.2. Delegation to QUIC"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0162:S0:0-27",
+      "goldText": "2. HTTP/3 Protocol Overview",
+      "goldSourceParts": [
+        {
+          "Alias": "L0162:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 9,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0162:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "2. HTTP/3 Protocol Overview"
+        },
+        {
+          "parentOrdinal": 9,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0162:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "2. HTTP/3 Protocol Overview"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0185:S0:0-26",
+      "goldText": "2.1. Document Organization",
+      "goldSourceParts": [
+        {
+          "Alias": "L0185:S0",
+          "Start": 0,
+          "End": 26
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 9,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0185:S0",
+              "Start": 0,
+              "End": 26
+            }
+          ],
+          "text": "2.1. Document Organization"
+        },
+        {
+          "parentOrdinal": 9,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0185:S0",
+              "Start": 0,
+              "End": 26
+            }
+          ],
+          "text": "2.1. Document Organization"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0205:S0:0-32",
+      "goldText": "2.2. Conventions and Terminology",
+      "goldSourceParts": [
+        {
+          "Alias": "L0205:S0",
+          "Start": 0,
+          "End": 32
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 10,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0205:S0",
+              "Start": 0,
+              "End": 32
+            }
+          ],
+          "text": "2.2. Conventions and Terminology"
+        },
+        {
+          "parentOrdinal": 10,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0205:S0",
+              "Start": 0,
+              "End": 32
+            }
+          ],
+          "text": "2.2. Conventions and Terminology"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0243:S0:0-34",
+      "goldText": "3. Connection Setup and Management",
+      "goldSourceParts": [
+        {
+          "Alias": "L0243:S0",
+          "Start": 0,
+          "End": 34
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 10,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0243:S0",
+              "Start": 0,
+              "End": 34
+            }
+          ],
+          "text": "3. Connection Setup and Management"
+        },
+        {
+          "parentOrdinal": 10,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0243:S0",
+              "Start": 0,
+              "End": 34
+            }
+          ],
+          "text": "3. Connection Setup and Management"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0244:S0:0-35",
+      "goldText": "3.1. Discovering an HTTP/3 Endpoint",
+      "goldSourceParts": [
+        {
+          "Alias": "L0244:S0",
+          "Start": 0,
+          "End": 35
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 10,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0244:S0",
+              "Start": 0,
+              "End": 35
+            }
+          ],
+          "text": "3.1. Discovering an HTTP/3 Endpoint"
+        },
+        {
+          "parentOrdinal": 10,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0244:S0",
+              "Start": 0,
+              "End": 35
+            }
+          ],
+          "text": "3.1. Discovering an HTTP/3 Endpoint"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0268:S0:0-32",
+      "goldText": "3.1.1. HTTP Alternative Services",
+      "goldSourceParts": [
+        {
+          "Alias": "L0268:S0",
+          "Start": 0,
+          "End": 32
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 10,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0268:S0",
+              "Start": 0,
+              "End": 32
+            }
+          ],
+          "text": "3.1.1. HTTP Alternative Services"
+        },
+        {
+          "parentOrdinal": 10,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0268:S0",
+              "Start": 0,
+              "End": 32
+            }
+          ],
+          "text": "3.1.1. HTTP Alternative Services"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0277:S0:0-20",
+      "goldText": "3.1.2. Other Schemes",
+      "goldSourceParts": [
+        {
+          "Alias": "L0277:S0",
+          "Start": 0,
+          "End": 20
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 11,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0277:S0",
+              "Start": 0,
+              "End": 20
+            }
+          ],
+          "text": "3.1.2. Other Schemes"
+        },
+        {
+          "parentOrdinal": 11,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0277:S0",
+              "Start": 0,
+              "End": 20
+            }
+          ],
+          "text": "3.1.2. Other Schemes"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0288:S0:0-29",
+      "goldText": "3.2. Connection Establishment",
+      "goldSourceParts": [
+        {
+          "Alias": "L0288:S0",
+          "Start": 0,
+          "End": 29
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 11,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0288:S0",
+              "Start": 0,
+              "End": 29
+            }
+          ],
+          "text": "3.2. Connection Establishment"
+        },
+        {
+          "parentOrdinal": 11,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0288:S0",
+              "Start": 0,
+              "End": 29
+            }
+          ],
+          "text": "3.2. Connection Establishment"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0305:S0:0-21",
+      "goldText": "3.3. Connection Reuse",
+      "goldSourceParts": [
+        {
+          "Alias": "L0305:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 11,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0305:S0",
+              "Start": 0,
+              "End": 21
+            }
+          ],
+          "text": "3.3. Connection Reuse"
+        },
+        {
+          "parentOrdinal": 11,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0305:S0",
+              "Start": 0,
+              "End": 21
+            }
+          ],
+          "text": "3.3. Connection Reuse"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0335:S0:0-38",
+      "goldText": "4. Expressing HTTP Semantics in HTTP/3",
+      "goldSourceParts": [
+        {
+          "Alias": "L0335:S0",
+          "Start": 0,
+          "End": 38
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 11,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0335:S0",
+              "Start": 0,
+              "End": 38
+            }
+          ],
+          "text": "4. Expressing HTTP Semantics in HTTP/3"
+        },
+        {
+          "parentOrdinal": 11,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0335:S0",
+              "Start": 0,
+              "End": 38
+            }
+          ],
+          "text": "4. Expressing HTTP Semantics in HTTP/3"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0336:S0:0-25",
+      "goldText": "4.1. HTTP Message Framing",
+      "goldSourceParts": [
+        {
+          "Alias": "L0336:S0",
+          "Start": 0,
+          "End": 25
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 11,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0336:S0",
+              "Start": 0,
+              "End": 25
+            }
+          ],
+          "text": "4.1. HTTP Message Framing"
+        },
+        {
+          "parentOrdinal": 11,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0336:S0",
+              "Start": 0,
+              "End": 25
+            }
+          ],
+          "text": "4.1. HTTP Message Framing"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0396:S0:0-41",
+      "goldText": "4.1.1. Request Cancellation and Rejection",
+      "goldSourceParts": [
+        {
+          "Alias": "L0396:S0",
+          "Start": 0,
+          "End": 41
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 12,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0396:S0",
+              "Start": 0,
+              "End": 41
+            }
+          ],
+          "text": "4.1.1. Request Cancellation and Rejection"
+        },
+        {
+          "parentOrdinal": 12,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0396:S0",
+              "Start": 0,
+              "End": 41
+            }
+          ],
+          "text": "4.1.1. Request Cancellation and Rejection"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0428:S0:0-39",
+      "goldText": "4.1.2. Malformed Requests and Responses",
+      "goldSourceParts": [
+        {
+          "Alias": "L0428:S0",
+          "Start": 0,
+          "End": 39
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 12,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0428:S0",
+              "Start": 0,
+              "End": 39
+            }
+          ],
+          "text": "4.1.2. Malformed Requests and Responses"
+        },
+        {
+          "parentOrdinal": 12,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0428:S0",
+              "Start": 0,
+              "End": 39
+            }
+          ],
+          "text": "4.1.2. Malformed Requests and Responses"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0451:S0:0-16",
+      "goldText": "4.2. HTTP Fields",
+      "goldSourceParts": [
+        {
+          "Alias": "L0451:S0",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 12,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0451:S0",
+              "Start": 0,
+              "End": 16
+            }
+          ],
+          "text": "4.2. HTTP Fields"
+        },
+        {
+          "parentOrdinal": 12,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0451:S0",
+              "Start": 0,
+              "End": 16
+            }
+          ],
+          "text": "4.2. HTTP Fields"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0472:S0:0-24",
+      "goldText": "4.2.1. Field Compression",
+      "goldSourceParts": [
+        {
+          "Alias": "L0472:S0",
+          "Start": 0,
+          "End": 24
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 13,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0472:S0",
+              "Start": 0,
+              "End": 24
+            }
+          ],
+          "text": "4.2.1. Field Compression"
+        },
+        {
+          "parentOrdinal": 13,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0472:S0",
+              "Start": 0,
+              "End": 24
+            }
+          ],
+          "text": "4.2.1. Field Compression"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0483:S0:0-30",
+      "goldText": "4.2.2. Header Size Constraints",
+      "goldSourceParts": [
+        {
+          "Alias": "L0483:S0",
+          "Start": 0,
+          "End": 30
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 13,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0483:S0",
+              "Start": 0,
+              "End": 30
+            }
+          ],
+          "text": "4.2.2. Header Size Constraints"
+        },
+        {
+          "parentOrdinal": 13,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0483:S0",
+              "Start": 0,
+              "End": 30
+            }
+          ],
+          "text": "4.2.2. Header Size Constraints"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0497:S0:0-22",
+      "goldText": "4.3. HTTP Control Data",
+      "goldSourceParts": [
+        {
+          "Alias": "L0497:S0",
+          "Start": 0,
+          "End": 22
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 13,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0497:S0",
+              "Start": 0,
+              "End": 22
+            }
+          ],
+          "text": "4.3. HTTP Control Data"
+        },
+        {
+          "parentOrdinal": 13,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0497:S0",
+              "Start": 0,
+              "End": 22
+            }
+          ],
+          "text": "4.3. HTTP Control Data"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0514:S0:0-35",
+      "goldText": "4.3.1. Request Pseudo-Header Fields",
+      "goldSourceParts": [
+        {
+          "Alias": "L0514:S0",
+          "Start": 0,
+          "End": 35
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 13,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0514:S0",
+              "Start": 0,
+              "End": 35
+            }
+          ],
+          "text": "4.3.1. Request Pseudo-Header Fields"
+        },
+        {
+          "parentOrdinal": 13,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0514:S0",
+              "Start": 0,
+              "End": 35
+            }
+          ],
+          "text": "4.3.1. Request Pseudo-Header Fields"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0551:S0:0-36",
+      "goldText": "4.3.2. Response Pseudo-Header Fields",
+      "goldSourceParts": [
+        {
+          "Alias": "L0551:S0",
+          "Start": 0,
+          "End": 36
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 13,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0551:S0",
+              "Start": 0,
+              "End": 36
+            }
+          ],
+          "text": "4.3.2. Response Pseudo-Header Fields"
+        },
+        {
+          "parentOrdinal": 13,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0551:S0",
+              "Start": 0,
+              "End": 36
+            }
+          ],
+          "text": "4.3.2. Response Pseudo-Header Fields"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0557:S0:0-23",
+      "goldText": "4.4. The CONNECT Method",
+      "goldSourceParts": [
+        {
+          "Alias": "L0557:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 13,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0557:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "4.4. The CONNECT Method"
+        },
+        {
+          "parentOrdinal": 13,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0557:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "4.4. The CONNECT Method"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0605:S0:0-17",
+      "goldText": "4.5. HTTP Upgrade",
+      "goldSourceParts": [
+        {
+          "Alias": "L0605:S0",
+          "Start": 0,
+          "End": 17
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 14,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0605:S0",
+              "Start": 0,
+              "End": 17
+            }
+          ],
+          "text": "4.5. HTTP Upgrade"
+        },
+        {
+          "parentOrdinal": 14,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0605:S0",
+              "Start": 0,
+              "End": 17
+            }
+          ],
+          "text": "4.5. HTTP Upgrade"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0608:S0:0-4|L0608:S1:0-11",
+      "goldText": "4.6. Server Push",
+      "goldSourceParts": [
+        {
+          "Alias": "L0608:S0",
+          "Start": 0,
+          "End": 4
+        },
+        {
+          "Alias": "L0608:S1",
+          "Start": 0,
+          "End": 11
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 14,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0608:S0",
+              "Start": 0,
+              "End": 4
+            },
+            {
+              "Alias": "L0608:S1",
+              "Start": 0,
+              "End": 11
+            }
+          ],
+          "text": "4.6. Server Push"
+        },
+        {
+          "parentOrdinal": 14,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0608:S0",
+              "Start": 0,
+              "End": 4
+            },
+            {
+              "Alias": "L0608:S1",
+              "Start": 0,
+              "End": 11
+            }
+          ],
+          "text": "4.6. Server Push"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0674:S0:0-21",
+      "goldText": "5. Connection Closure",
+      "goldSourceParts": [
+        {
+          "Alias": "L0674:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 15,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0674:S0",
+              "Start": 0,
+              "End": 21
+            }
+          ],
+          "text": "5. Connection Closure"
+        },
+        {
+          "parentOrdinal": 15,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0674:S0",
+              "Start": 0,
+              "End": 21
+            }
+          ],
+          "text": "5. Connection Closure"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0677:S0:0-21",
+      "goldText": "5.1. Idle Connections",
+      "goldSourceParts": [
+        {
+          "Alias": "L0677:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 15,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0677:S0",
+              "Start": 0,
+              "End": 21
+            }
+          ],
+          "text": "5.1. Idle Connections"
+        },
+        {
+          "parentOrdinal": 15,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0677:S0",
+              "Start": 0,
+              "End": 21
+            }
+          ],
+          "text": "5.1. Idle Connections"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0693:S0:0-24",
+      "goldText": "5.2. Connection Shutdown",
+      "goldSourceParts": [
+        {
+          "Alias": "L0693:S0",
+          "Start": 0,
+          "End": 24
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 15,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0693:S0",
+              "Start": 0,
+              "End": 24
+            }
+          ],
+          "text": "5.2. Connection Shutdown"
+        },
+        {
+          "parentOrdinal": 15,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0693:S0",
+              "Start": 0,
+              "End": 24
+            }
+          ],
+          "text": "5.2. Connection Shutdown"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0760:S0:0-34",
+      "goldText": "5.3. Immediate Application Closure",
+      "goldSourceParts": [
+        {
+          "Alias": "L0760:S0",
+          "Start": 0,
+          "End": 34
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 16,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0760:S0",
+              "Start": 0,
+              "End": 34
+            }
+          ],
+          "text": "5.3. Immediate Application Closure"
+        },
+        {
+          "parentOrdinal": 16,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0760:S0",
+              "Start": 0,
+              "End": 34
+            }
+          ],
+          "text": "5.3. Immediate Application Closure"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0773:S0:0-22",
+      "goldText": "5.4. Transport Closure",
+      "goldSourceParts": [
+        {
+          "Alias": "L0773:S0",
+          "Start": 0,
+          "End": 22
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 16,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0773:S0",
+              "Start": 0,
+              "End": 22
+            }
+          ],
+          "text": "5.4. Transport Closure"
+        },
+        {
+          "parentOrdinal": 16,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0773:S0",
+              "Start": 0,
+              "End": 22
+            }
+          ],
+          "text": "5.4. Transport Closure"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0779:S0:0-27",
+      "goldText": "6. Stream Mapping and Usage",
+      "goldSourceParts": [
+        {
+          "Alias": "L0779:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 16,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0779:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "6. Stream Mapping and Usage"
+        },
+        {
+          "parentOrdinal": 16,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0779:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "6. Stream Mapping and Usage"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0793:S0:0-26",
+      "goldText": "6.1. Bidirectional Streams",
+      "goldSourceParts": [
+        {
+          "Alias": "L0793:S0",
+          "Start": 0,
+          "End": 26
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 16,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0793:S0",
+              "Start": 0,
+              "End": 26
+            }
+          ],
+          "text": "6.1. Bidirectional Streams"
+        },
+        {
+          "parentOrdinal": 16,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0793:S0",
+              "Start": 0,
+              "End": 26
+            }
+          ],
+          "text": "6.1. Bidirectional Streams"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0808:S0:0-27",
+      "goldText": "6.2. Unidirectional Streams",
+      "goldSourceParts": [
+        {
+          "Alias": "L0808:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 16,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0808:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "6.2. Unidirectional Streams"
+        },
+        {
+          "parentOrdinal": 16,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0808:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "6.2. Unidirectional Streams"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0852:S0:0-22",
+      "goldText": "6.2.1. Control Streams",
+      "goldSourceParts": [
+        {
+          "Alias": "L0852:S0",
+          "Start": 0,
+          "End": 22
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 17,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0852:S0",
+              "Start": 0,
+              "End": 22
+            }
+          ],
+          "text": "6.2.1. Control Streams"
+        },
+        {
+          "parentOrdinal": 17,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0852:S0",
+              "Start": 0,
+              "End": 22
+            }
+          ],
+          "text": "6.2.1. Control Streams"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0870:S0:0-19",
+      "goldText": "6.2.2. Push Streams",
+      "goldSourceParts": [
+        {
+          "Alias": "L0870:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 17,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0870:S0",
+              "Start": 0,
+              "End": 19
+            }
+          ],
+          "text": "6.2.2. Push Streams"
+        },
+        {
+          "parentOrdinal": 17,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0870:S0",
+              "Start": 0,
+              "End": 19
+            }
+          ],
+          "text": "6.2.2. Push Streams"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0893:S0:0-28",
+      "goldText": "6.2.3. Reserved Stream Types",
+      "goldSourceParts": [
+        {
+          "Alias": "L0893:S0",
+          "Start": 0,
+          "End": 28
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 17,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0893:S0",
+              "Start": 0,
+              "End": 28
+            }
+          ],
+          "text": "6.2.3. Reserved Stream Types"
+        },
+        {
+          "parentOrdinal": 17,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0893:S0",
+              "Start": 0,
+              "End": 28
+            }
+          ],
+          "text": "6.2.3. Reserved Stream Types"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0903:S0:0-21",
+      "goldText": "7. HTTP Framing Layer",
+      "goldSourceParts": [
+        {
+          "Alias": "L0903:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 17,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0903:S0",
+              "Start": 0,
+              "End": 21
+            }
+          ],
+          "text": "7. HTTP Framing Layer"
+        },
+        {
+          "parentOrdinal": 17,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0903:S0",
+              "Start": 0,
+              "End": 21
+            }
+          ],
+          "text": "7. HTTP Framing Layer"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0924:S0:0-17",
+      "goldText": "7.1. Frame Layout",
+      "goldSourceParts": [
+        {
+          "Alias": "L0924:S0",
+          "Start": 0,
+          "End": 17
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 18,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0924:S0",
+              "Start": 0,
+              "End": 17
+            }
+          ],
+          "text": "7.1. Frame Layout"
+        },
+        {
+          "parentOrdinal": 18,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0924:S0",
+              "Start": 0,
+              "End": 17
+            }
+          ],
+          "text": "7.1. Frame Layout"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0944:S0:0-4|L0944:S1:0-16",
+      "goldText": "7.2. Frame Deﬁnitions",
+      "goldSourceParts": [
+        {
+          "Alias": "L0944:S0",
+          "Start": 0,
+          "End": 4
+        },
+        {
+          "Alias": "L0944:S1",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 18,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0944:S0",
+              "Start": 0,
+              "End": 4
+            },
+            {
+              "Alias": "L0944:S1",
+              "Start": 0,
+              "End": 16
+            }
+          ],
+          "text": "7.2. Frame Deﬁnitions"
+        },
+        {
+          "parentOrdinal": 18,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0944:S0",
+              "Start": 0,
+              "End": 4
+            },
+            {
+              "Alias": "L0944:S1",
+              "Start": 0,
+              "End": 16
+            }
+          ],
+          "text": "7.2. Frame Deﬁnitions"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0945:S0:0-11",
+      "goldText": "7.2.1. DATA",
+      "goldSourceParts": [
+        {
+          "Alias": "L0945:S0",
+          "Start": 0,
+          "End": 11
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 18,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0945:S0",
+              "Start": 0,
+              "End": 11
+            }
+          ],
+          "text": "7.2.1. DATA"
+        },
+        {
+          "parentOrdinal": 18,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0945:S0",
+              "Start": 0,
+              "End": 11
+            }
+          ],
+          "text": "7.2.1. DATA"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0959:S0:0-14",
+      "goldText": "7.2.2. HEADERS",
+      "goldSourceParts": [
+        {
+          "Alias": "L0959:S0",
+          "Start": 0,
+          "End": 14
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 18,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0959:S0",
+              "Start": 0,
+              "End": 14
+            }
+          ],
+          "text": "7.2.2. HEADERS"
+        },
+        {
+          "parentOrdinal": 18,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0959:S0",
+              "Start": 0,
+              "End": 14
+            }
+          ],
+          "text": "7.2.2. HEADERS"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L0971:S0:0-18",
+      "goldText": "7.2.3. CANCEL_PUSH",
+      "goldSourceParts": [
+        {
+          "Alias": "L0971:S0",
+          "Start": 0,
+          "End": 18
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 18,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0971:S0",
+              "Start": 0,
+              "End": 18
+            }
+          ],
+          "text": "7.2.3. CANCEL_PUSH"
+        },
+        {
+          "parentOrdinal": 18,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L0971:S0",
+              "Start": 0,
+              "End": 18
+            }
+          ],
+          "text": "7.2.3. CANCEL_PUSH"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1011:S0:0-15",
+      "goldText": "7.2.4. SETTINGS",
+      "goldSourceParts": [
+        {
+          "Alias": "L1011:S0",
+          "Start": 0,
+          "End": 15
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 19,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1011:S0",
+              "Start": 0,
+              "End": 15
+            }
+          ],
+          "text": "7.2.4. SETTINGS"
+        },
+        {
+          "parentOrdinal": 19,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1011:S0",
+              "Start": 0,
+              "End": 15
+            }
+          ],
+          "text": "7.2.4. SETTINGS"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1050:S0:0-35",
+      "goldText": "7.2.4.1. Deﬁned SETTINGS Parameters",
+      "goldSourceParts": [
+        {
+          "Alias": "L1050:S0",
+          "Start": 0,
+          "End": 35
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 19,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1050:S0",
+              "Start": 0,
+              "End": 35
+            }
+          ],
+          "text": "7.2.4.1. Deﬁned SETTINGS Parameters"
+        },
+        {
+          "parentOrdinal": 19,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1050:S0",
+              "Start": 0,
+              "End": 35
+            }
+          ],
+          "text": "7.2.4.1. Deﬁned SETTINGS Parameters"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1066:S0:0-23",
+      "goldText": "7.2.4.2. Initialization",
+      "goldSourceParts": [
+        {
+          "Alias": "L1066:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 19,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1066:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "7.2.4.2. Initialization"
+        },
+        {
+          "parentOrdinal": 19,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1066:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "7.2.4.2. Initialization"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1105:S0:0-19",
+      "goldText": "7.2.5. PUSH_PROMISE",
+      "goldSourceParts": [
+        {
+          "Alias": "L1105:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 20,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1105:S0",
+              "Start": 0,
+              "End": 19
+            }
+          ],
+          "text": "7.2.5. PUSH_PROMISE"
+        },
+        {
+          "parentOrdinal": 20,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1105:S0",
+              "Start": 0,
+              "End": 19
+            }
+          ],
+          "text": "7.2.5. PUSH_PROMISE"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1143:S0:0-13",
+      "goldText": "7.2.6. GOAWAY",
+      "goldSourceParts": [
+        {
+          "Alias": "L1143:S0",
+          "Start": 0,
+          "End": 13
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 20,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1143:S0",
+              "Start": 0,
+              "End": 13
+            }
+          ],
+          "text": "7.2.6. GOAWAY"
+        },
+        {
+          "parentOrdinal": 20,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1143:S0",
+              "Start": 0,
+              "End": 13
+            }
+          ],
+          "text": "7.2.6. GOAWAY"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1164:S0:0-18",
+      "goldText": "7.2.7. MAX_PUSH_ID",
+      "goldSourceParts": [
+        {
+          "Alias": "L1164:S0",
+          "Start": 0,
+          "End": 18
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 20,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1164:S0",
+              "Start": 0,
+              "End": 18
+            }
+          ],
+          "text": "7.2.7. MAX_PUSH_ID"
+        },
+        {
+          "parentOrdinal": 20,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1164:S0",
+              "Start": 0,
+              "End": 18
+            }
+          ],
+          "text": "7.2.7. MAX_PUSH_ID"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1189:S0:0-27",
+      "goldText": "7.2.8. Reserved Frame Types",
+      "goldSourceParts": [
+        {
+          "Alias": "L1189:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 20,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1189:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "7.2.8. Reserved Frame Types"
+        },
+        {
+          "parentOrdinal": 20,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1189:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "7.2.8. Reserved Frame Types"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1199:S0:0-17",
+      "goldText": "8. Error Handling",
+      "goldSourceParts": [
+        {
+          "Alias": "L1199:S0",
+          "Start": 0,
+          "End": 17
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 21,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1199:S0",
+              "Start": 0,
+              "End": 17
+            }
+          ],
+          "text": "8. Error Handling"
+        },
+        {
+          "parentOrdinal": 21,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1199:S0",
+              "Start": 0,
+              "End": 17
+            }
+          ],
+          "text": "8. Error Handling"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1223:S0:0-23",
+      "goldText": "8.1. HTTP/3 Error Codes",
+      "goldSourceParts": [
+        {
+          "Alias": "L1223:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 21,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1223:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "8.1. HTTP/3 Error Codes"
+        },
+        {
+          "parentOrdinal": 21,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1223:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "8.1. HTTP/3 Error Codes"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1265:S0:0-23",
+      "goldText": "9. Extensions to HTTP/3",
+      "goldSourceParts": [
+        {
+          "Alias": "L1265:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 21,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1265:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "9. Extensions to HTTP/3"
+        },
+        {
+          "parentOrdinal": 21,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1265:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "9. Extensions to HTTP/3"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1294:S0:0-27",
+      "goldText": "10. Security Considerations",
+      "goldSourceParts": [
+        {
+          "Alias": "L1294:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1294:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "10. Security Considerations"
+        },
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1294:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "10. Security Considerations"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1298:S0:0-22",
+      "goldText": "10.1. Server Authority",
+      "goldSourceParts": [
+        {
+          "Alias": "L1298:S0",
+          "Start": 0,
+          "End": 22
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1298:S0",
+              "Start": 0,
+              "End": 22
+            }
+          ],
+          "text": "10.1. Server Authority"
+        },
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1298:S0",
+              "Start": 0,
+              "End": 22
+            }
+          ],
+          "text": "10.1. Server Authority"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1301:S0:0-28",
+      "goldText": "10.2. Cross-Protocol Attacks",
+      "goldSourceParts": [
+        {
+          "Alias": "L1301:S0",
+          "Start": 0,
+          "End": 28
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1301:S0",
+              "Start": 0,
+              "End": 28
+            }
+          ],
+          "text": "10.2. Cross-Protocol Attacks"
+        },
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1301:S0",
+              "Start": 0,
+              "End": 28
+            }
+          ],
+          "text": "10.2. Cross-Protocol Attacks"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1308:S0:0-40",
+      "goldText": "10.3. Intermediary-Encapsulation Attacks",
+      "goldSourceParts": [
+        {
+          "Alias": "L1308:S0",
+          "Start": 0,
+          "End": 40
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1308:S0",
+              "Start": 0,
+              "End": 40
+            }
+          ],
+          "text": "10.3. Intermediary-Encapsulation Attacks"
+        },
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1308:S0",
+              "Start": 0,
+              "End": 40
+            }
+          ],
+          "text": "10.3. Intermediary-Encapsulation Attacks"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1320:S0:0-5|L1320:S1:0-32",
+      "goldText": "10.4. Cacheability of Pushed Responses",
+      "goldSourceParts": [
+        {
+          "Alias": "L1320:S0",
+          "Start": 0,
+          "End": 5
+        },
+        {
+          "Alias": "L1320:S1",
+          "Start": 0,
+          "End": 32
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1320:S0",
+              "Start": 0,
+              "End": 5
+            },
+            {
+              "Alias": "L1320:S1",
+              "Start": 0,
+              "End": 32
+            }
+          ],
+          "text": "10.4. Cacheability of Pushed Responses"
+        },
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1320:S0",
+              "Start": 0,
+              "End": 5
+            },
+            {
+              "Alias": "L1320:S1",
+              "Start": 0,
+              "End": 32
+            }
+          ],
+          "text": "10.4. Cacheability of Pushed Responses"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1333:S0:0-38",
+      "goldText": "10.5. Denial-of-Service Considerations",
+      "goldSourceParts": [
+        {
+          "Alias": "L1333:S0",
+          "Start": 0,
+          "End": 38
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1333:S0",
+              "Start": 0,
+              "End": 38
+            }
+          ],
+          "text": "10.5. Denial-of-Service Considerations"
+        },
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1333:S0",
+              "Start": 0,
+              "End": 38
+            }
+          ],
+          "text": "10.5. Denial-of-Service Considerations"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1357:S0:0-36",
+      "goldText": "10.5.1. Limits on Field Section Size",
+      "goldSourceParts": [
+        {
+          "Alias": "L1357:S0",
+          "Start": 0,
+          "End": 36
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1357:S0",
+              "Start": 0,
+              "End": 36
+            }
+          ],
+          "text": "10.5.1. Limits on Field Section Size"
+        },
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1357:S0",
+              "Start": 0,
+              "End": 36
+            }
+          ],
+          "text": "10.5.1. Limits on Field Section Size"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1374:S0:0-22",
+      "goldText": "10.5.2. CONNECT Issues",
+      "goldSourceParts": [
+        {
+          "Alias": "L1374:S0",
+          "Start": 0,
+          "End": 22
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1374:S0",
+              "Start": 0,
+              "End": 22
+            }
+          ],
+          "text": "10.5.2. CONNECT Issues"
+        },
+        {
+          "parentOrdinal": 22,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1374:S0",
+              "Start": 0,
+              "End": 22
+            }
+          ],
+          "text": "10.5.2. CONNECT Issues"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1383:S0:0-24",
+      "goldText": "10.6. Use of Compression",
+      "goldSourceParts": [
+        {
+          "Alias": "L1383:S0",
+          "Start": 0,
+          "End": 24
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1383:S0",
+              "Start": 0,
+              "End": 24
+            }
+          ],
+          "text": "10.6. Use of Compression"
+        },
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1383:S0",
+              "Start": 0,
+              "End": 24
+            }
+          ],
+          "text": "10.6. Use of Compression"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1399:S0:0-32",
+      "goldText": "10.7. Padding and Traﬃc Analysis",
+      "goldSourceParts": [
+        {
+          "Alias": "L1399:S0",
+          "Start": 0,
+          "End": 32
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1399:S0",
+              "Start": 0,
+              "End": 32
+            }
+          ],
+          "text": "10.7. Padding and Traﬃc Analysis"
+        },
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1399:S0",
+              "Start": 0,
+              "End": 32
+            }
+          ],
+          "text": "10.7. Padding and Traﬃc Analysis"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1424:S0:0-19",
+      "goldText": "10.8. Frame Parsing",
+      "goldSourceParts": [
+        {
+          "Alias": "L1424:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1424:S0",
+              "Start": 0,
+              "End": 19
+            }
+          ],
+          "text": "10.8. Frame Parsing"
+        },
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1424:S0",
+              "Start": 0,
+              "End": 19
+            }
+          ],
+          "text": "10.8. Frame Parsing"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1431:S0:0-5|L1431:S1:0-10",
+      "goldText": "10.9. Early Data",
+      "goldSourceParts": [
+        {
+          "Alias": "L1431:S0",
+          "Start": 0,
+          "End": 5
+        },
+        {
+          "Alias": "L1431:S1",
+          "Start": 0,
+          "End": 10
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1431:S0",
+              "Start": 0,
+              "End": 5
+            },
+            {
+              "Alias": "L1431:S1",
+              "Start": 0,
+              "End": 10
+            }
+          ],
+          "text": "10.9. Early Data"
+        },
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1431:S0",
+              "Start": 0,
+              "End": 5
+            },
+            {
+              "Alias": "L1431:S1",
+              "Start": 0,
+              "End": 10
+            }
+          ],
+          "text": "10.9. Early Data"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1436:S0:0-16",
+      "goldText": "10.10. Migration",
+      "goldSourceParts": [
+        {
+          "Alias": "L1436:S0",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1436:S0",
+              "Start": 0,
+              "End": 16
+            }
+          ],
+          "text": "10.10. Migration"
+        },
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1436:S0",
+              "Start": 0,
+              "End": 16
+            }
+          ],
+          "text": "10.10. Migration"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1442:S0:0-29",
+      "goldText": "10.11. Privacy Considerations",
+      "goldSourceParts": [
+        {
+          "Alias": "L1442:S0",
+          "Start": 0,
+          "End": 29
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1442:S0",
+              "Start": 0,
+              "End": 29
+            }
+          ],
+          "text": "10.11. Privacy Considerations"
+        },
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1442:S0",
+              "Start": 0,
+              "End": 29
+            }
+          ],
+          "text": "10.11. Privacy Considerations"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1453:S0:0-23",
+      "goldText": "11. IANA Considerations",
+      "goldSourceParts": [
+        {
+          "Alias": "L1453:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1453:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "11. IANA Considerations"
+        },
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1453:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "11. IANA Considerations"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1456:S0:0-49",
+      "goldText": "11.1. Registration of HTTP/3 Identiﬁcation String",
+      "goldSourceParts": [
+        {
+          "Alias": "L1456:S0",
+          "Start": 0,
+          "End": 49
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1456:S0",
+              "Start": 0,
+              "End": 49
+            }
+          ],
+          "text": "11.1. Registration of HTTP/3 Identiﬁcation String"
+        },
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1456:S0",
+              "Start": 0,
+              "End": 49
+            }
+          ],
+          "text": "11.1. Registration of HTTP/3 Identiﬁcation String"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1465:S0:0-5|L1465:S1:0-14",
+      "goldText": "11.2. New Registries",
+      "goldSourceParts": [
+        {
+          "Alias": "L1465:S0",
+          "Start": 0,
+          "End": 5
+        },
+        {
+          "Alias": "L1465:S1",
+          "Start": 0,
+          "End": 14
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1465:S0",
+              "Start": 0,
+              "End": 5
+            },
+            {
+              "Alias": "L1465:S1",
+              "Start": 0,
+              "End": 14
+            }
+          ],
+          "text": "11.2. New Registries"
+        },
+        {
+          "parentOrdinal": 23,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1465:S0",
+              "Start": 0,
+              "End": 5
+            },
+            {
+              "Alias": "L1465:S1",
+              "Start": 0,
+              "End": 14
+            }
+          ],
+          "text": "11.2. New Registries"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1472:S0:0-19",
+      "goldText": "11.2.1. Frame Types",
+      "goldSourceParts": [
+        {
+          "Alias": "L1472:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 24,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1472:S0",
+              "Start": 0,
+              "End": 19
+            }
+          ],
+          "text": "11.2.1. Frame Types"
+        },
+        {
+          "parentOrdinal": 24,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1472:S0",
+              "Start": 0,
+              "End": 19
+            }
+          ],
+          "text": "11.2.1. Frame Types"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1508:S0:0-27",
+      "goldText": "11.2.2. Settings Parameters",
+      "goldSourceParts": [
+        {
+          "Alias": "L1508:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 24,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1508:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "11.2.2. Settings Parameters"
+        },
+        {
+          "parentOrdinal": 24,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1508:S0",
+              "Start": 0,
+              "End": 27
+            }
+          ],
+          "text": "11.2.2. Settings Parameters"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1540:S0:0-19",
+      "goldText": "11.2.3. Error Codes",
+      "goldSourceParts": [
+        {
+          "Alias": "L1540:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 25,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1540:S0",
+              "Start": 0,
+              "End": 19
+            }
+          ],
+          "text": "11.2.3. Error Codes"
+        },
+        {
+          "parentOrdinal": 25,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1540:S0",
+              "Start": 0,
+              "End": 19
+            }
+          ],
+          "text": "11.2.3. Error Codes"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1591:S0:0-20",
+      "goldText": "11.2.4. Stream Types",
+      "goldSourceParts": [
+        {
+          "Alias": "L1591:S0",
+          "Start": 0,
+          "End": 20
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 26,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1591:S0",
+              "Start": 0,
+              "End": 20
+            }
+          ],
+          "text": "11.2.4. Stream Types"
+        },
+        {
+          "parentOrdinal": 26,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1591:S0",
+              "Start": 0,
+              "End": 20
+            }
+          ],
+          "text": "11.2.4. Stream Types"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1612:S0:0-14",
+      "goldText": "12. References",
+      "goldSourceParts": [
+        {
+          "Alias": "L1612:S0",
+          "Start": 0,
+          "End": 14
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 26,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1612:S0",
+              "Start": 0,
+              "End": 14
+            }
+          ],
+          "text": "12. References"
+        },
+        {
+          "parentOrdinal": 26,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1612:S0",
+              "Start": 0,
+              "End": 14
+            }
+          ],
+          "text": "12. References"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1613:S0:0-5|L1613:S1:0-20",
+      "goldText": "12.1. Normative References",
+      "goldSourceParts": [
+        {
+          "Alias": "L1613:S0",
+          "Start": 0,
+          "End": 5
+        },
+        {
+          "Alias": "L1613:S1",
+          "Start": 0,
+          "End": 20
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 26,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1613:S0",
+              "Start": 0,
+              "End": 5
+            },
+            {
+              "Alias": "L1613:S1",
+              "Start": 0,
+              "End": 20
+            }
+          ],
+          "text": "12.1. Normative References"
+        },
+        {
+          "parentOrdinal": 26,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1613:S0",
+              "Start": 0,
+              "End": 5
+            },
+            {
+              "Alias": "L1613:S1",
+              "Start": 0,
+              "End": 20
+            }
+          ],
+          "text": "12.1. Normative References"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1655:S0:0-28",
+      "goldText": "12.2. Informative References",
+      "goldSourceParts": [
+        {
+          "Alias": "L1655:S0",
+          "Start": 0,
+          "End": 28
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 27,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1655:S0",
+              "Start": 0,
+              "End": 28
+            }
+          ],
+          "text": "12.2. Informative References"
+        },
+        {
+          "parentOrdinal": 27,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1655:S0",
+              "Start": 0,
+              "End": 28
+            }
+          ],
+          "text": "12.2. Informative References"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1677:S0:0-56",
+      "goldText": "Appendix A. Considerations for Transitioning from HTTP/2",
+      "goldSourceParts": [
+        {
+          "Alias": "L1677:S0",
+          "Start": 0,
+          "End": 56
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 27,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1677:S0",
+              "Start": 0,
+              "End": 56
+            }
+          ],
+          "text": "Appendix A. Considerations for Transitioning from HTTP/2"
+        },
+        {
+          "parentOrdinal": 27,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1677:S0",
+              "Start": 0,
+              "End": 56
+            }
+          ],
+          "text": "Appendix A. Considerations for Transitioning from HTTP/2"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1688:S0:0-12",
+      "goldText": "A.1. Streams",
+      "goldSourceParts": [
+        {
+          "Alias": "L1688:S0",
+          "Start": 0,
+          "End": 12
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 27,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1688:S0",
+              "Start": 0,
+              "End": 12
+            }
+          ],
+          "text": "A.1. Streams"
+        },
+        {
+          "parentOrdinal": 27,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1688:S0",
+              "Start": 0,
+              "End": 12
+            }
+          ],
+          "text": "A.1. Streams"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1710:S0:0-21",
+      "goldText": "A.2. HTTP Frame Types",
+      "goldSourceParts": [
+        {
+          "Alias": "L1710:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 27,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1710:S0",
+              "Start": 0,
+              "End": 21
+            }
+          ],
+          "text": "A.2. HTTP Frame Types"
+        },
+        {
+          "parentOrdinal": 27,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1710:S0",
+              "Start": 0,
+              "End": 21
+            }
+          ],
+          "text": "A.2. HTTP Frame Types"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1729:S0:0-32",
+      "goldText": "A.2.1. Prioritization Diﬀerences",
+      "goldSourceParts": [
+        {
+          "Alias": "L1729:S0",
+          "Start": 0,
+          "End": 32
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1736:S0:0-35",
+      "goldText": "A.2.2. Field Compression Diﬀerences",
+      "goldSourceParts": [
+        {
+          "Alias": "L1736:S0",
+          "Start": 0,
+          "End": 35
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1745:S0:0-30",
+      "goldText": "A.2.3. Flow-Control Diﬀerences",
+      "goldSourceParts": [
+        {
+          "Alias": "L1745:S0",
+          "Start": 0,
+          "End": 30
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1750:S0:0-45",
+      "goldText": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+      "goldSourceParts": [
+        {
+          "Alias": "L1750:S0",
+          "Start": 0,
+          "End": 45
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1761:S0:0-49",
+      "goldText": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+      "goldSourceParts": [
+        {
+          "Alias": "L1761:S0",
+          "Start": 0,
+          "End": 49
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 28,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1761:S0",
+              "Start": 0,
+              "End": 49
+            }
+          ],
+          "text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types"
+        },
+        {
+          "parentOrdinal": 28,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1761:S0",
+              "Start": 0,
+              "End": 49
+            }
+          ],
+          "text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1787:S0:0-31",
+      "goldText": "A.3. HTTP/2 SETTINGS Parameters",
+      "goldSourceParts": [
+        {
+          "Alias": "L1787:S0",
+          "Start": 0,
+          "End": 31
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 28,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1787:S0",
+              "Start": 0,
+              "End": 31
+            }
+          ],
+          "text": "A.3. HTTP/2 SETTINGS Parameters"
+        },
+        {
+          "parentOrdinal": 28,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1787:S0",
+              "Start": 0,
+              "End": 31
+            }
+          ],
+          "text": "A.3. HTTP/2 SETTINGS Parameters"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1827:S0:0-23",
+      "goldText": "A.4. HTTP/2 Error Codes",
+      "goldSourceParts": [
+        {
+          "Alias": "L1827:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 29,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1827:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "A.4. HTTP/2 Error Codes"
+        },
+        {
+          "parentOrdinal": 29,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1827:S0",
+              "Start": 0,
+              "End": 23
+            }
+          ],
+          "text": "A.4. HTTP/2 Error Codes"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1856:S0:0-46",
+      "goldText": "A.4.1. Mappingbetween HTTP/2 and HTTP/3 Errors",
+      "goldSourceParts": [
+        {
+          "Alias": "L1856:S0",
+          "Start": 0,
+          "End": 46
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 29,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1856:S0",
+              "Start": 0,
+              "End": 46
+            }
+          ],
+          "text": "A.4.1. Mappingbetween HTTP/2 and HTTP/3 Errors"
+        },
+        {
+          "parentOrdinal": 29,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1856:S0",
+              "Start": 0,
+              "End": 46
+            }
+          ],
+          "text": "A.4.1. Mappingbetween HTTP/2 and HTTP/3 Errors"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1878:S0:0-15",
+      "goldText": "Acknowledgments",
+      "goldSourceParts": [
+        {
+          "Alias": "L1878:S0",
+          "Start": 0,
+          "End": 15
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 29,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1878:S0",
+              "Start": 0,
+              "End": 15
+            }
+          ],
+          "text": "Acknowledgments"
+        },
+        {
+          "parentOrdinal": 29,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1878:S0",
+              "Start": 0,
+              "End": 15
+            }
+          ],
+          "text": "Acknowledgments"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1912:S0:0-5",
+      "goldText": "Index",
+      "goldSourceParts": [
+        {
+          "Alias": "L1912:S0",
+          "Start": 0,
+          "End": 5
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 30,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1912:S0",
+              "Start": 0,
+              "End": 5
+            }
+          ],
+          "text": "Index"
+        },
+        {
+          "parentOrdinal": 30,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1912:S0",
+              "Start": 0,
+              "End": 5
+            }
+          ],
+          "text": "Index"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1914:S0:0-1",
+      "goldText": "C",
+      "goldSourceParts": [
+        {
+          "Alias": "L1914:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1940:S0:0-1",
+      "goldText": "D",
+      "goldSourceParts": [
+        {
+          "Alias": "L1940:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1947:S0:0-1",
+      "goldText": "G",
+      "goldSourceParts": [
+        {
+          "Alias": "L1947:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "occurrenceMatch": "PARTIAL_OF_GOLD",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 30,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1947:S0",
+              "Start": 0,
+              "End": 1
+            },
+            {
+              "Alias": "L1948:S0",
+              "Start": 0,
+              "End": 6
+            }
+          ],
+          "text": "G GOAWAY"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L1961:S0:0-1",
+      "goldText": "H",
+      "goldSourceParts": [
+        {
+          "Alias": "L1961:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "occurrenceMatch": "PARTIAL_OF_GOLD",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 30,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L1961:S0",
+              "Start": 0,
+              "End": 1
+            },
+            {
+              "Alias": "L1962:S0",
+              "Start": 0,
+              "End": 75
+            },
+            {
+              "Alias": "L1963:S0",
+              "Start": 0,
+              "End": 29
+            }
+          ],
+          "text": "H H3_CLOSED_CRITICAL_STREAM Section 6.2.1, Paragraph 2; Section 8.1; Table 4; Appendix A.4, Paragraph 3.4.1"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L2012:S0:0-1",
+      "goldText": "M",
+      "goldSourceParts": [
+        {
+          "Alias": "L2012:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L2023:S0:0-1",
+      "goldText": "P",
+      "goldSourceParts": [
+        {
+          "Alias": "L2023:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L2056:S0:0-1",
+      "goldText": "R",
+      "goldSourceParts": [
+        {
+          "Alias": "L2056:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L2063:S0:0-1",
+      "goldText": "S",
+      "goldSourceParts": [
+        {
+          "Alias": "L2063:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "occurrenceMatch": "NO_MODEL_EVIDENCE",
+      "productionHeadingEvidence": [],
+      "nonHeadingFunctionEvidence": []
+    },
+    {
+      "documentId": "SRC-095",
+      "goldId": "L2076:S0:0-16",
+      "goldText": "Author's Address",
+      "goldSourceParts": [
+        {
+          "Alias": "L2076:S0",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "occurrenceMatch": "EXACT",
+      "productionHeadingEvidence": [
+        {
+          "parentOrdinal": 31,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L2076:S0",
+              "Start": 0,
+              "End": 16
+            }
+          ],
+          "text": "Author's Address"
+        },
+        {
+          "parentOrdinal": 31,
+          "semanticFunction": "REGION_STRUCTURE",
+          "sourceParts": [
+            {
+              "Alias": "L2076:S0",
+              "Start": 0,
+              "End": 16
+            }
+          ],
+          "text": "Author's Address"
+        }
+      ],
+      "nonHeadingFunctionEvidence": []
+    }
+  ]
+}
