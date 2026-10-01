@@ -29,7 +29,7 @@
       "recall": 0.4062,
       "f1": 0.3377
     },
-    "semanticHeading": {
+    "boundSemanticDiagnostic": {
       "truePositive": 46,
       "falsePositive": 86,
       "falseNegative": 50,
@@ -37,7 +37,7 @@
       "recall": 0.4792,
       "f1": 0.4035
     },
-    "note": "These metrics cover only Gold headings whose owning parent had parser-valid V3.2 output. They are not comparable to the full 31-pack V4/P05 baseline."
+    "note": "This is bound-semantic diagnostic F1: it excludes raw semantic intent that production V3.1 binding refused. These metrics cover only Gold headings whose owning parent had parser-valid V3.2 output and are not comparable to the full 31-pack V4/P05 baseline."
   },
   "goldHeadings": [
     {

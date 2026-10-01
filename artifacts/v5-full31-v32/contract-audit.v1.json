@@ -13,7 +13,9 @@
     "rawSparseDecisions": 360,
     "rawClaims": 453,
     "boundClaims": 155,
-    "binderRefusals": 300,
+    "refusalRecords": 300,
+    "claimLevelProposalRefusalRecords": 250,
+    "decisionLevelRefusalRecords": 50,
     "refusalDecomposition": {
       "binding/context mismatch": 14,
       "other": 44,
@@ -33,213 +35,265 @@
       "rawSparseDecisions": 67,
       "rawClaims": 67,
       "boundClaims": 15,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "sparse-decision-12",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-13",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "proposal-10",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-11",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-15",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-16",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-17",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-18",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-19",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-21",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-22",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-23",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-24",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-25",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-26",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-27",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-28",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-29",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-30",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-31",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-32",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-33",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-34",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-35",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-37",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-38",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-39",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-40",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-41",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-42",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-43",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-44",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-45",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-46",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-47",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-48",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-49",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-50",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-51",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-52",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-53",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-54",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-55",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-56",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-57",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-59",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-60",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-61",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-62",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-63",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-64",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-65",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         }
       ],
@@ -467,49 +521,60 @@
       "rawSparseDecisions": 6,
       "rawClaims": 11,
       "boundClaims": 0,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "proposal-1",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-2",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-3",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-4",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-5",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-81",
+          "level": "CLAIM",
           "reason": "'L0390:S0' does not contain that text"
         },
         {
           "key": "proposal-82",
+          "level": "CLAIM",
           "reason": "'L0390:S0' does not contain that text"
         },
         {
           "key": "proposal-441",
+          "level": "CLAIM",
           "reason": "'L0426:S0' does not contain that text"
         },
         {
           "key": "proposal-442",
+          "level": "CLAIM",
           "reason": "'L0426:S0' does not contain that text"
         },
         {
           "key": "proposal-731",
+          "level": "CLAIM",
           "reason": "'L0455:S0' does not contain that text"
         },
         {
           "key": "proposal-732",
+          "level": "CLAIM",
           "reason": "'L0455:S0' does not contain that text"
         }
       ],
@@ -526,33 +591,40 @@
       "rawSparseDecisions": 1,
       "rawClaims": 2,
       "boundClaims": 2,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "sparse-decision-1",
+          "level": "DECISION",
           "reason": "json-decision-schema-invalid"
         },
         {
           "key": "sparse-decision-2",
+          "level": "DECISION",
           "reason": "json-decision-schema-invalid"
         },
         {
           "key": "sparse-decision-3",
+          "level": "DECISION",
           "reason": "json-decision-schema-invalid"
         },
         {
           "key": "sparse-decision-4",
+          "level": "DECISION",
           "reason": "json-decision-schema-invalid"
         },
         {
           "key": "sparse-decision-5",
+          "level": "DECISION",
           "reason": "json-decision-schema-invalid"
         },
         {
           "key": "sparse-decision-6",
+          "level": "DECISION",
           "reason": "json-decision-schema-invalid"
         },
         {
           "key": "sparse-decision-7",
+          "level": "DECISION",
           "reason": "json-decision-schema-invalid"
         }
       ],
@@ -594,25 +666,30 @@
       "rawSparseDecisions": 5,
       "rawClaims": 5,
       "boundClaims": 0,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "proposal-1",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-2",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-3",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-4",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-5",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         }
       ],
@@ -629,65 +706,80 @@
       "rawSparseDecisions": 21,
       "rawClaims": 36,
       "boundClaims": 20,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "sparse-decision-14",
+          "level": "DECISION",
           "reason": "decision-response-cardinality-bound-exceeded:decision-81-claim-1:targetParts"
         },
         {
           "key": "proposal-4",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-7",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-9",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-13",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-15",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-17",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-19",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-21",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-23",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-25",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-27",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-29",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-32",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-132",
+          "level": "CLAIM",
           "reason": "'L0007:S0' does not contain that text"
         }
       ],
@@ -945,105 +1037,130 @@
       "rawSparseDecisions": 40,
       "rawClaims": 65,
       "boundClaims": 40,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "proposal-4",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-5",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-15",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-16",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-19",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-20",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-21",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-22",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-28",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-29",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-33",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-34",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-37",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-38",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-39",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-40",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-41",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-49",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-55",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-56",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-58",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-60",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-62",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-63",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-65",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         }
       ],
@@ -1541,33 +1658,40 @@
       "rawSparseDecisions": 15,
       "rawClaims": 15,
       "boundClaims": 8,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "sparse-decision-5",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-6",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "proposal-10",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-11",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-12",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-13",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-1",
+          "level": "CLAIM",
           "reason": "'L0186:S0' does not contain that text"
         }
       ],
@@ -1681,37 +1805,45 @@
       "rawSparseDecisions": 9,
       "rawClaims": 16,
       "boundClaims": 8,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "proposal-3",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-4",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-6",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-8",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-9",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-11",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-13",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-15",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         }
       ],
@@ -1822,7 +1954,11 @@
       "parser": "PARSER_INVALID",
       "binding": "NOT_EXECUTED",
       "semantic": "NOT_EVALUABLE",
-      "parseError": "sparse-decision-response-byte-budget-exceeded:max=52224"
+      "parseError": "sparse-decision-response-byte-budget-exceeded:max=52224",
+      "completionTokens": 24386,
+      "maxCompletionTokens": 25088,
+      "assembledResponseUtf8Bytes": 96485,
+      "maxResponseUtf8Bytes": 52224
     },
     {
       "documentId": "SRC-095",
@@ -1835,97 +1971,120 @@
       "rawSparseDecisions": 23,
       "rawClaims": 23,
       "boundClaims": 0,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "sparse-decision-1",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-3",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-5",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-7",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-9",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-11",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-12",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-13",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-14",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-15",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-16",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-17",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-18",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-19",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-20",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-21",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-22",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "proposal-2",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-3",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-4",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-5",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-6",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-41",
+          "level": "CLAIM",
           "reason": "'L0472:S0' does not contain that text"
         }
       ],
@@ -1942,17 +2101,20 @@
       "rawSparseDecisions": 6,
       "rawClaims": 7,
       "boundClaims": 4,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "proposal-1",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-2",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-6",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         }
       ],
@@ -2018,37 +2180,45 @@
       "rawSparseDecisions": 9,
       "rawClaims": 11,
       "boundClaims": 3,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "sparse-decision-4",
+          "level": "DECISION",
           "reason": "decision-response-string-bound-exceeded:decision-1-claim-0:target:selection"
         },
         {
           "key": "sparse-decision-6",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "proposal-2",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-5",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-6",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-7",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-8",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-9",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         }
       ],
@@ -2102,65 +2272,80 @@
       "rawSparseDecisions": 15,
       "rawClaims": 15,
       "boundClaims": 0,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "sparse-decision-5",
+          "level": "DECISION",
           "reason": "owned-index-out-of-range"
         },
         {
           "key": "sparse-decision-6",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-7",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-8",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-9",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-10",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-11",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-12",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-13",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-14",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "proposal-1",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-2",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-3",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-4",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-5",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         }
       ],
@@ -2177,25 +2362,30 @@
       "rawSparseDecisions": 5,
       "rawClaims": 10,
       "boundClaims": 2,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "sparse-decision-0",
+          "level": "DECISION",
           "reason": "decision-response-cardinality-bound-exceeded:decision-3-claim-1:targetParts"
         },
         {
           "key": "sparse-decision-1",
+          "level": "DECISION",
           "reason": "decision-response-cardinality-bound-exceeded:decision-21-claim-1:targetParts"
         },
         {
           "key": "sparse-decision-2",
+          "level": "DECISION",
           "reason": "decision-response-cardinality-bound-exceeded:decision-44-claim-1:targetParts"
         },
         {
           "key": "proposal-2",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-4",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         }
       ],
@@ -2237,73 +2427,90 @@
       "rawSparseDecisions": 28,
       "rawClaims": 28,
       "boundClaims": 11,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "proposal-3",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-5",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-7",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-8",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-9",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-11",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-13",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-15",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-16",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-17",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-19",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-21",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-22",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-23",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-25",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-27",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-28",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         }
       ],
@@ -2453,29 +2660,35 @@
       "rawSparseDecisions": 6,
       "rawClaims": 8,
       "boundClaims": 1,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "sparse-decision-3",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "proposal-1",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-3",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-4",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-6",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-501",
+          "level": "CLAIM",
           "reason": "'L1050:S0' does not contain that text"
         }
       ],
@@ -2505,17 +2718,20 @@
       "rawSparseDecisions": 10,
       "rawClaims": 14,
       "boundClaims": 11,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "proposal-3",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-7",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-11",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         }
       ],
@@ -2675,81 +2891,100 @@
       "rawSparseDecisions": 22,
       "rawClaims": 23,
       "boundClaims": 4,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "sparse-decision-21",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "proposal-4",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-5",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-6",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-8",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-9",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-10",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-11",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-12",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-13",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-14",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-15",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-16",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-17",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-18",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-19",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-20",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-21",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-22",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         }
       ],
@@ -2835,61 +3070,75 @@
       "rawSparseDecisions": 14,
       "rawClaims": 14,
       "boundClaims": 0,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "proposal-1",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-2",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-3",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-4",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-5",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-6",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-7",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-8",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-9",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-10",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-11",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-12",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-13",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-14",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         }
       ],
@@ -2916,17 +3165,20 @@
       "rawSparseDecisions": 4,
       "rawClaims": 11,
       "boundClaims": 8,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "proposal-583",
+          "level": "CLAIM",
           "reason": "'L1677:S0' does not contain that text"
         },
         {
           "key": "proposal-584",
+          "level": "CLAIM",
           "reason": "'L1677:S0' does not contain that text"
         },
         {
           "key": "proposal-693",
+          "level": "CLAIM",
           "reason": "'L1688:S0' does not contain that text"
         }
       ],
@@ -3040,77 +3292,95 @@
       "rawSparseDecisions": 12,
       "rawClaims": 30,
       "boundClaims": 12,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "sparse-decision-8",
+          "level": "DECISION",
           "reason": "decision-response-string-bound-exceeded:decision-31-claim-0:subject:selection"
         },
         {
           "key": "proposal-3",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-25",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-221",
+          "level": "CLAIM",
           "reason": "'L1737:S0' does not contain that text"
         },
         {
           "key": "proposal-471",
+          "level": "CLAIM",
           "reason": "'L1762:S0' does not contain that text"
         },
         {
           "key": "proposal-472",
+          "level": "CLAIM",
           "reason": "'L1762:S0' does not contain that text"
         },
         {
           "key": "proposal-473",
+          "level": "CLAIM",
           "reason": "'L1762:S0' does not contain that text"
         },
         {
           "key": "proposal-474",
+          "level": "CLAIM",
           "reason": "'L1762:S0' does not contain that text"
         },
         {
           "key": "proposal-475",
+          "level": "CLAIM",
           "reason": "'L1762:S0' does not contain that text"
         },
         {
           "key": "proposal-476",
+          "level": "CLAIM",
           "reason": "'L1762:S0' does not contain that text"
         },
         {
           "key": "proposal-477",
+          "level": "CLAIM",
           "reason": "'L1762:S0' does not contain that text"
         },
         {
           "key": "proposal-478",
+          "level": "CLAIM",
           "reason": "'L1762:S0' does not contain that text"
         },
         {
           "key": "proposal-761",
+          "level": "CLAIM",
           "reason": "'L1788:S0' does not contain that text"
         },
         {
           "key": "proposal-762",
+          "level": "CLAIM",
           "reason": "'L1788:S0' does not contain that text"
         },
         {
           "key": "proposal-842",
+          "level": "CLAIM",
           "reason": "'L1796:S0' does not contain that text"
         },
         {
           "key": "proposal-843",
+          "level": "CLAIM",
           "reason": "'L1796:S0' does not contain that text"
         },
         {
           "key": "proposal-844",
+          "level": "CLAIM",
           "reason": "'L1796:S0' does not contain that text"
         },
         {
           "key": "proposal-845",
+          "level": "CLAIM",
           "reason": "'L1796:S0' does not contain that text"
         }
       ],
@@ -3272,81 +3542,100 @@
       "rawSparseDecisions": 19,
       "rawClaims": 19,
       "boundClaims": 0,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "sparse-decision-4",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-5",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "sparse-decision-15",
+          "level": "DECISION",
           "reason": "duplicate-owned-index"
         },
         {
           "key": "proposal-2",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-12",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-16",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-1",
+          "level": "CLAIM",
           "reason": "'L1807:S1' does not contain that text"
         },
         {
           "key": "proposal-261",
+          "level": "CLAIM",
           "reason": "'L1833:S0' contains that text but not in the context given"
         },
         {
           "key": "proposal-271",
+          "level": "CLAIM",
           "reason": "'L1834:S0' contains that text but not in the context given"
         },
         {
           "key": "proposal-311",
+          "level": "CLAIM",
           "reason": "'L1838:S0' contains that text but not in the context given"
         },
         {
           "key": "proposal-411",
+          "level": "CLAIM",
           "reason": "'L1844:S1' does not contain that text"
         },
         {
           "key": "proposal-421",
+          "level": "CLAIM",
           "reason": "'L1845:S0' contains that text but not in the context given"
         },
         {
           "key": "proposal-451",
+          "level": "CLAIM",
           "reason": "'L1848:S0' contains that text but not in the context given"
         },
         {
           "key": "proposal-481",
+          "level": "CLAIM",
           "reason": "'L1850:S0' contains that text but not in the context given"
         },
         {
           "key": "proposal-501",
+          "level": "CLAIM",
           "reason": "'L1851:S1' does not contain that text"
         },
         {
           "key": "proposal-541",
+          "level": "CLAIM",
           "reason": "'L1854:S0' contains that text but not in the context given"
         },
         {
           "key": "proposal-651",
+          "level": "CLAIM",
           "reason": "'L1865:S0' contains that text but not in the context given"
         },
         {
           "key": "proposal-671",
+          "level": "CLAIM",
           "reason": "'L1867:S0' contains that text but not in the context given"
         },
         {
           "key": "proposal-691",
+          "level": "CLAIM",
           "reason": "'L1869:S0' does not contain that text"
         }
       ],
@@ -3363,73 +3652,90 @@
       "rawSparseDecisions": 23,
       "rawClaims": 23,
       "boundClaims": 6,
-      "binderRefusals": [
+      "refusalRecords": [
         {
           "key": "proposal-3",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-6",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-7",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-9",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-11",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-14",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-15",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-17",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-19",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-20",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-21",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-22",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-23",
+          "level": "CLAIM",
           "reason": "whole-atom-must-omit-verbatim-text"
         },
         {
           "key": "proposal-191",
+          "level": "CLAIM",
           "reason": "'L1915:S0' does not contain that text"
         },
         {
           "key": "proposal-661",
+          "level": "CLAIM",
           "reason": "'L1962:S0' does not contain that text"
         },
         {
           "key": "proposal-741",
+          "level": "CLAIM",
           "reason": "'L1968:S0' does not contain that text"
         },
         {
           "key": "proposal-831",
+          "level": "CLAIM",
           "reason": "'L1977:S0' does not contain that text"
         }
       ],

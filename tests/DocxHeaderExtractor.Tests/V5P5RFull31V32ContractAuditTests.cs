@@ -32,6 +32,7 @@ public sealed class V5P5RFull31V32ContractAuditTests
         var resultRows = new List<object>();
         var allRefusals = new List<string>();
         var transportValid = 0; var parserValid = 0; var rawDecisions = 0; var rawClaims = 0; var boundClaims = 0;
+        var proposalRefusalRecords = 0; var decisionRefusalRecords = 0;
         foreach (var row in sourceRows)
         {
             var documentId = row.GetProperty("documentId").GetString()!;
@@ -58,6 +59,8 @@ public sealed class V5P5RFull31V32ContractAuditTests
                     pack.Packet.SubjectEvidence, pack.Packet.ContextOnlyEvidence, atoms, ClaimBindingScope.Create(pack.OwnedAliases, pack.VisibleAliases));
                 boundClaims += binding.Bound.Count;
                 allRefusals.AddRange(binding.Refusals.Values);
+                proposalRefusalRecords += binding.Refusals.Keys.Count(key => key.StartsWith("proposal-", StringComparison.Ordinal));
+                decisionRefusalRecords += binding.Refusals.Keys.Count(key => key.StartsWith("sparse-decision-", StringComparison.Ordinal));
                 resultRows.Add(new
                 {
                     documentId, parentOrdinal, packId = pack.PackId,
@@ -67,7 +70,7 @@ public sealed class V5P5RFull31V32ContractAuditTests
                     rawSparseDecisions = parsed.Decisions.Count,
                     rawClaims = parsed.Decisions.Sum(decision => decision.Claims.Count),
                     boundClaims = binding.Bound.Count,
-                    binderRefusals = binding.Refusals.Select(pair => new { key = pair.Key, reason = pair.Value }).ToArray(),
+                    refusalRecords = binding.Refusals.Select(pair => new { key = pair.Key, level = pair.Key.StartsWith("proposal-", StringComparison.Ordinal) ? "CLAIM" : "DECISION", reason = pair.Value }).ToArray(),
                     bound = binding.Bound.Select(item => new
                     {
                         predicate = item.Claim.Predicate, value = item.Claim.Value,
@@ -77,7 +80,16 @@ public sealed class V5P5RFull31V32ContractAuditTests
             }
             catch (Exception ex) when (ex is JsonException or InvalidOperationException)
             {
-                resultRows.Add(new { documentId, parentOrdinal, packId = pack.PackId, transport = "TRANSPORT_VALID", parser = "PARSER_INVALID", binding = "NOT_EXECUTED", semantic = "NOT_EVALUABLE", parseError = ex.Message });
+                var usage = row.GetProperty("usage");
+                resultRows.Add(new
+                {
+                    documentId, parentOrdinal, packId = pack.PackId, transport = "TRANSPORT_VALID", parser = "PARSER_INVALID", binding = "NOT_EXECUTED", semantic = "NOT_EVALUABLE",
+                    parseError = ex.Message,
+                    completionTokens = usage.ValueKind == JsonValueKind.Object && usage.TryGetProperty("completion_tokens", out var completion) ? completion.GetInt32() : (int?)null,
+                    maxCompletionTokens = row.GetProperty("maxCompletionTokens").GetInt32(),
+                    assembledResponseUtf8Bytes = row.GetProperty("assembledContentUtf8Bytes").GetInt32(),
+                    maxResponseUtf8Bytes = row.GetProperty("maxResponseUtf8Bytes").GetInt32(),
+                });
             }
         }
 
@@ -102,7 +114,9 @@ public sealed class V5P5RFull31V32ContractAuditTests
                 rawSparseDecisions = rawDecisions,
                 rawClaims,
                 boundClaims,
-                binderRefusals = allRefusals.Count,
+                refusalRecords = allRefusals.Count,
+                claimLevelProposalRefusalRecords = proposalRefusalRecords,
+                decisionLevelRefusalRecords = decisionRefusalRecords,
                 refusalDecomposition = refusalGroups,
             },
             rows = resultRows,

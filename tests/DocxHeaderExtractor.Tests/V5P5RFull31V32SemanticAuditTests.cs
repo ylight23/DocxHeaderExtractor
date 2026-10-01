@@ -109,8 +109,8 @@ public sealed class V5P5RFull31V32SemanticAuditTests
             observedParserValidLeafMetrics = new
             {
                 exactOccurrence = Metric(exactTp, exactFp, exactFn),
-                semanticHeading = Metric(semanticTp, semanticFpCandidates.Length, semanticFn),
-                note = "These metrics cover only Gold headings whose owning parent had parser-valid V3.2 output. They are not comparable to the full 31-pack V4/P05 baseline.",
+                boundSemanticDiagnostic = Metric(semanticTp, semanticFpCandidates.Length, semanticFn),
+                note = "This is bound-semantic diagnostic F1: it excludes raw semantic intent that production V3.1 binding refused. These metrics cover only Gold headings whose owning parent had parser-valid V3.2 output and are not comparable to the full 31-pack V4/P05 baseline.",
             },
             goldHeadings = goldRows,
             observedSemanticFalsePositives = semanticFpCandidates.Select(candidate => new
@@ -139,12 +139,12 @@ public sealed class V5P5RFull31V32SemanticAuditTests
             },
             verdicts = new
             {
-                transport = "REGRESSED: 8/31 upstream 429 failures under zero-retry authorization",
-                parser = "REGRESSED: 1 stop response exceeded the frozen V3.2 byte bound",
+                transport = "EXTERNAL_FAILURE_FULL31_NOT_EVALUABLE: 8/31 attempts received Alibaba shared-pool 429 insufficient_quota under zero-retry authorization; no evidence attributes this to V3.2",
+                parser = "FAILED_NOT_FIXED: SRC-095 parent 05 finish=stop with completion_tokens below maxCompletionTokens but assembled response bytes above the frozen V3.2 byte bound",
                 binder = "NOT_COMPARABLE: V4 used a different response protocol and V3.2 had 9 unavailable parent sets",
-                wholeAtom = "NOT_FIXED_IN_OBSERVED_V3.2_OUTPUT: 205 whole-atom-must-omit-verbatim-text refusals",
+                wholeAtom = "NOT_FIXED_IN_OBSERVED_V3.2_OUTPUT: 205 whole-atom-must-omit-verbatim-text refusal records",
                 unicode = "NOT_EVALUABLE_SEPARATELY: no TextNotInAtom refusal was emitted in this partial execution",
-                ownership = "NOT_FIXED_IN_OBSERVED_V3.2_OUTPUT: 37 ownership/index-related refusals",
+                ownership = "NOT_FIXED_IN_OBSERVED_V3.2_OUTPUT: 37 ownership/index-related refusal records",
                 semanticQuality = "NOT_EVALUABLE_FULL31",
             },
         });
