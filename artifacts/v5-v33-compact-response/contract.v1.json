@@ -1,0 +1,19 @@
+{
+  "status": "P5S_PROVIDER_FREE_COMPACT_GRAMMAR_COMPLETE",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "oldProtocol": "v5-source-backed-decision-3.2",
+  "newProtocol": "v5-source-backed-decision-3.3",
+  "oldComposer": "v5-semantic-decision-composer-3.2",
+  "newComposer": "v5-semantic-decision-composer-3.3",
+  "wholeAtom": "HANDLE_ONLY",
+  "strictSubstring": "selection.verbatimText required; occurrence optional",
+  "contextEcho": "UNREPRESENTABLE_IN_V3_3_SCHEMA",
+  "preserved": [
+    "exact binder fail-closed",
+    "multipart owned handles",
+    "OWNED/CONTEXT_ONLY target handles",
+    "V3.2 replay"
+  ]
+}
