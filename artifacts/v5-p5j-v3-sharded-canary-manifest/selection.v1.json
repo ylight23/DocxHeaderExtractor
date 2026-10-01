@@ -1,0 +1,961 @@
+{
+  "schemaVersion": "v5-p5j-v3-sharded-canary-selection-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "selectedRequests": 4,
+  "selectedMaxOwnedDecisionsPerCall": 32,
+  "roles": [
+    {
+      "role": "MAX_OWNED_AND_MULTIPART",
+      "focus": "Historical 96-decision/multipart role; select its primary multipart subject, not an arbitrary shard.",
+      "documentId": "SRC-089",
+      "originalPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "originalSemanticRequestHash": "c051151ee4db6c013638b78171fd5b7bcd298fd8eca6d77d3275f2db221d0fbe",
+      "originalOwnedOrdinal": 2,
+      "sourceAlias": "L0002:S0",
+      "selectedShardOrdinal": 0,
+      "shardLocalDecisionOrdinal": 2,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001:SUBJECT_SHARD_001_OF_003",
+      "semanticRequestHash": "8770bd4026641f13de33b16214759bbe1d606005404aa88d1990739c13b65f47",
+      "providerRequestHash": "75d1d06d737f6986c25b9e3bfe02840f7b5a59fad3af72613f73bdb945bdb984",
+      "semanticRequestBytes": 81043,
+      "providerRequestBytes": 110663,
+      "ownedCount": 32,
+      "visibleCount": 104,
+      "maxResponseUtf8Bytes": 17408,
+      "maxCompletionTokens": 13507,
+      "coordinates": [
+        {
+          "OriginalOwnedOrdinal": 0,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 0,
+          "SourceAlias": "L0000:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 1,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 1,
+          "SourceAlias": "L0001:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 2,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 2,
+          "SourceAlias": "L0002:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 3,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 3,
+          "SourceAlias": "L0002:S1"
+        },
+        {
+          "OriginalOwnedOrdinal": 4,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 4,
+          "SourceAlias": "L0003:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 5,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 5,
+          "SourceAlias": "L0003:S1"
+        },
+        {
+          "OriginalOwnedOrdinal": 6,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 6,
+          "SourceAlias": "L0004:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 7,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 7,
+          "SourceAlias": "L0005:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 8,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 8,
+          "SourceAlias": "L0006:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 9,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 9,
+          "SourceAlias": "L0007:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 10,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 10,
+          "SourceAlias": "L0008:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 11,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 11,
+          "SourceAlias": "L0009:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 12,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 12,
+          "SourceAlias": "L0010:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 13,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 13,
+          "SourceAlias": "L0011:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 14,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 14,
+          "SourceAlias": "L0012:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 15,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 15,
+          "SourceAlias": "L0013:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 16,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 16,
+          "SourceAlias": "L0014:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 17,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 17,
+          "SourceAlias": "L0015:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 18,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 18,
+          "SourceAlias": "L0016:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 19,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 19,
+          "SourceAlias": "L0017:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 20,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 20,
+          "SourceAlias": "L0018:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 21,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 21,
+          "SourceAlias": "L0019:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 22,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 22,
+          "SourceAlias": "L0020:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 23,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 23,
+          "SourceAlias": "L0021:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 24,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 24,
+          "SourceAlias": "L0022:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 25,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 25,
+          "SourceAlias": "L0023:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 26,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 26,
+          "SourceAlias": "L0024:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 27,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 27,
+          "SourceAlias": "L0025:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 28,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 28,
+          "SourceAlias": "L0026:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 29,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 29,
+          "SourceAlias": "L0027:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 30,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 30,
+          "SourceAlias": "L0028:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 31,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 31,
+          "SourceAlias": "L0029:S0"
+        }
+      ],
+      "additionalSubjectAliases": [
+        "L0002:S1"
+      ],
+      "relationTarget": null,
+      "providerBodyFile": "wire-bodies/MAX_OWNED_AND_MULTIPART.json",
+      "providerBodySha256": "75d1d06d737f6986c25b9e3bfe02840f7b5a59fad3af72613f73bdb945bdb984",
+      "futureSuccessCriteria": {
+        "transportSuccess": true,
+        "jsonComplete": true,
+        "finishReasonNotLength": true,
+        "exactDecisionCount": 32,
+        "responseBytesAtMostFrozenBound": 17408,
+        "parserAccepted": true,
+        "noRepair": true,
+        "noSemanticRetry": true,
+        "noFallback": true
+      }
+    },
+    {
+      "role": "L1472_OWNER_OMISSION",
+      "focus": "Historical owner-omission occurrence must remain a shard subject.",
+      "documentId": "SRC-095",
+      "originalPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "originalSemanticRequestHash": "ff5de43925e1d85f60a2c81c512a31d31a5bc6a4acb49d830ada2a0d6d50f9c6",
+      "originalOwnedOrdinal": 5,
+      "sourceAlias": "L1472:S0",
+      "selectedShardOrdinal": 0,
+      "shardLocalDecisionOrdinal": 5,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017:SUBJECT_SHARD_001_OF_003",
+      "semanticRequestHash": "c925efb8857f144f76e3facd97c2137cc60be2c29ae7f1093a1e97442e7b6ceb",
+      "providerRequestHash": "8e1a0653ef3562b1528d37e6a7a5af7394004e768f4400c92e9ac70f11a87f2e",
+      "semanticRequestBytes": 73920,
+      "providerRequestBytes": 105600,
+      "ownedCount": 32,
+      "visibleCount": 112,
+      "maxResponseUtf8Bytes": 17408,
+      "maxCompletionTokens": 12320,
+      "coordinates": [
+        {
+          "OriginalOwnedOrdinal": 0,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 0,
+          "SourceAlias": "L1467:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 1,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 1,
+          "SourceAlias": "L1468:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 2,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 2,
+          "SourceAlias": "L1469:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 3,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 3,
+          "SourceAlias": "L1470:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 4,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 4,
+          "SourceAlias": "L1471:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 5,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 5,
+          "SourceAlias": "L1472:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 6,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 6,
+          "SourceAlias": "L1473:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 7,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 7,
+          "SourceAlias": "L1474:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 8,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 8,
+          "SourceAlias": "L1475:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 9,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 9,
+          "SourceAlias": "L1476:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 10,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 10,
+          "SourceAlias": "L1477:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 11,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 11,
+          "SourceAlias": "L1478:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 12,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 12,
+          "SourceAlias": "L1479:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 13,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 13,
+          "SourceAlias": "L1480:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 14,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 14,
+          "SourceAlias": "L1481:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 15,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 15,
+          "SourceAlias": "L1482:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 16,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 16,
+          "SourceAlias": "L1483:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 17,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 17,
+          "SourceAlias": "L1484:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 18,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 18,
+          "SourceAlias": "L1485:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 19,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 19,
+          "SourceAlias": "L1486:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 20,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 20,
+          "SourceAlias": "L1487:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 21,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 21,
+          "SourceAlias": "L1488:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 22,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 22,
+          "SourceAlias": "L1489:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 23,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 23,
+          "SourceAlias": "L1489:S1"
+        },
+        {
+          "OriginalOwnedOrdinal": 24,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 24,
+          "SourceAlias": "L1489:S2"
+        },
+        {
+          "OriginalOwnedOrdinal": 25,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 25,
+          "SourceAlias": "L1490:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 26,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 26,
+          "SourceAlias": "L1490:S1"
+        },
+        {
+          "OriginalOwnedOrdinal": 27,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 27,
+          "SourceAlias": "L1490:S2"
+        },
+        {
+          "OriginalOwnedOrdinal": 28,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 28,
+          "SourceAlias": "L1491:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 29,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 29,
+          "SourceAlias": "L1491:S1"
+        },
+        {
+          "OriginalOwnedOrdinal": 30,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 30,
+          "SourceAlias": "L1491:S2"
+        },
+        {
+          "OriginalOwnedOrdinal": 31,
+          "ShardOrdinal": 0,
+          "ShardLocalDecisionOrdinal": 31,
+          "SourceAlias": "L1492:S0"
+        }
+      ],
+      "additionalSubjectAliases": [],
+      "relationTarget": null,
+      "providerBodyFile": "wire-bodies/L1472_OWNER_OMISSION.json",
+      "providerBodySha256": "8e1a0653ef3562b1528d37e6a7a5af7394004e768f4400c92e9ac70f11a87f2e",
+      "futureSuccessCriteria": {
+        "transportSuccess": true,
+        "jsonComplete": true,
+        "finishReasonNotLength": true,
+        "exactDecisionCount": 32,
+        "responseBytesAtMostFrozenBound": 17408,
+        "parserAccepted": true,
+        "noRepair": true,
+        "noSemanticRetry": true,
+        "noFallback": true
+      }
+    },
+    {
+      "role": "L1710_RETYPING",
+      "focus": "Historical whole-atom retyping occurrence must remain a shard subject.",
+      "documentId": "SRC-095",
+      "originalPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "originalSemanticRequestHash": "55dfc3c220d9e47db5123214af09acf1be088c0dd289294a01d34ad010a34289",
+      "originalOwnedOrdinal": 91,
+      "sourceAlias": "L1710:S0",
+      "selectedShardOrdinal": 2,
+      "shardLocalDecisionOrdinal": 27,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020:SUBJECT_SHARD_003_OF_003",
+      "semanticRequestHash": "d109245c0978c7593213639448aa1866cb8228ab9c9963fd47bffd9756353e18",
+      "providerRequestHash": "5f411181392e44c0f5325786c5fcc94add553a092cea31696eff07e54452f69e",
+      "semanticRequestBytes": 86657,
+      "providerRequestBytes": 118577,
+      "ownedCount": 32,
+      "visibleCount": 112,
+      "maxResponseUtf8Bytes": 17408,
+      "maxCompletionTokens": 14442,
+      "coordinates": [
+        {
+          "OriginalOwnedOrdinal": 64,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 0,
+          "SourceAlias": "L1683:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 65,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 1,
+          "SourceAlias": "L1684:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 66,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 2,
+          "SourceAlias": "L1685:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 67,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 3,
+          "SourceAlias": "L1686:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 68,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 4,
+          "SourceAlias": "L1687:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 69,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 5,
+          "SourceAlias": "L1688:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 70,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 6,
+          "SourceAlias": "L1689:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 71,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 7,
+          "SourceAlias": "L1690:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 72,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 8,
+          "SourceAlias": "L1691:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 73,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 9,
+          "SourceAlias": "L1692:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 74,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 10,
+          "SourceAlias": "L1693:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 75,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 11,
+          "SourceAlias": "L1694:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 76,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 12,
+          "SourceAlias": "L1695:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 77,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 13,
+          "SourceAlias": "L1696:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 78,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 14,
+          "SourceAlias": "L1697:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 79,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 15,
+          "SourceAlias": "L1698:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 80,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 16,
+          "SourceAlias": "L1699:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 81,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 17,
+          "SourceAlias": "L1700:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 82,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 18,
+          "SourceAlias": "L1701:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 83,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 19,
+          "SourceAlias": "L1702:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 84,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 20,
+          "SourceAlias": "L1703:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 85,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 21,
+          "SourceAlias": "L1704:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 86,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 22,
+          "SourceAlias": "L1705:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 87,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 23,
+          "SourceAlias": "L1706:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 88,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 24,
+          "SourceAlias": "L1707:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 89,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 25,
+          "SourceAlias": "L1708:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 90,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 26,
+          "SourceAlias": "L1709:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 91,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 27,
+          "SourceAlias": "L1710:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 92,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 28,
+          "SourceAlias": "L1711:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 93,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 29,
+          "SourceAlias": "L1712:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 94,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 30,
+          "SourceAlias": "L1713:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 95,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 31,
+          "SourceAlias": "L1714:S0"
+        }
+      ],
+      "additionalSubjectAliases": [],
+      "relationTarget": null,
+      "providerBodyFile": "wire-bodies/L1710_RETYPING.json",
+      "providerBodySha256": "5f411181392e44c0f5325786c5fcc94add553a092cea31696eff07e54452f69e",
+      "futureSuccessCriteria": {
+        "transportSuccess": true,
+        "jsonComplete": true,
+        "finishReasonNotLength": true,
+        "exactDecisionCount": 32,
+        "responseBytesAtMostFrozenBound": 17408,
+        "parserAccepted": true,
+        "noRepair": true,
+        "noSemanticRetry": true,
+        "noFallback": true
+      }
+    },
+    {
+      "role": "MULTIPART_RELATION",
+      "focus": "Historical multipart relation with an intentionally cross-shard target.",
+      "documentId": "SRC-095",
+      "originalPackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "originalSemanticRequestHash": "43483ff17d4758a93019d10f1cb953a287ae23b66acff41a826d656c2acc5a92",
+      "originalOwnedOrdinal": 69,
+      "sourceAlias": "L0973:S0",
+      "selectedShardOrdinal": 2,
+      "shardLocalDecisionOrdinal": 5,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011:SUBJECT_SHARD_003_OF_003",
+      "semanticRequestHash": "2c55fa746e086910464f90a11577eff8bfb2babcd8f9841cdf44154b76a2bf9c",
+      "providerRequestHash": "1ea1bc0ea6ac59a216f7d84b53b184677985d78b599cc299e11eeb320ce62c18",
+      "semanticRequestBytes": 76862,
+      "providerRequestBytes": 108466,
+      "ownedCount": 32,
+      "visibleCount": 112,
+      "maxResponseUtf8Bytes": 17408,
+      "maxCompletionTokens": 12810,
+      "coordinates": [
+        {
+          "OriginalOwnedOrdinal": 64,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 0,
+          "SourceAlias": "L0968:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 65,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 1,
+          "SourceAlias": "L0969:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 66,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 2,
+          "SourceAlias": "L0970:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 67,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 3,
+          "SourceAlias": "L0971:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 68,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 4,
+          "SourceAlias": "L0972:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 69,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 5,
+          "SourceAlias": "L0973:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 70,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 6,
+          "SourceAlias": "L0974:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 71,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 7,
+          "SourceAlias": "L0975:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 72,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 8,
+          "SourceAlias": "L0976:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 73,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 9,
+          "SourceAlias": "L0977:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 74,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 10,
+          "SourceAlias": "L0978:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 75,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 11,
+          "SourceAlias": "L0979:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 76,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 12,
+          "SourceAlias": "L0980:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 77,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 13,
+          "SourceAlias": "L0981:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 78,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 14,
+          "SourceAlias": "L0982:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 79,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 15,
+          "SourceAlias": "L0983:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 80,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 16,
+          "SourceAlias": "L0984:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 81,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 17,
+          "SourceAlias": "L0985:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 82,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 18,
+          "SourceAlias": "L0986:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 83,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 19,
+          "SourceAlias": "L0987:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 84,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 20,
+          "SourceAlias": "L0988:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 85,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 21,
+          "SourceAlias": "L0989:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 86,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 22,
+          "SourceAlias": "L0990:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 87,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 23,
+          "SourceAlias": "L0991:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 88,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 24,
+          "SourceAlias": "L0992:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 89,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 25,
+          "SourceAlias": "L0993:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 90,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 26,
+          "SourceAlias": "L0994:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 91,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 27,
+          "SourceAlias": "L0995:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 92,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 28,
+          "SourceAlias": "L0996:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 93,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 29,
+          "SourceAlias": "L0997:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 94,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 30,
+          "SourceAlias": "L0998:S0"
+        },
+        {
+          "OriginalOwnedOrdinal": 95,
+          "ShardOrdinal": 2,
+          "ShardLocalDecisionOrdinal": 31,
+          "SourceAlias": "L0999:S0"
+        }
+      ],
+      "additionalSubjectAliases": [
+        "L0974:S0"
+      ],
+      "relationTarget": {
+        "sourceGroup": "CONTEXT_ONLY",
+        "sourceIndex": 17,
+        "targetAlias": "L0918:S4",
+        "resolvedAlias": "L0918:S4"
+      },
+      "providerBodyFile": "wire-bodies/MULTIPART_RELATION.json",
+      "providerBodySha256": "1ea1bc0ea6ac59a216f7d84b53b184677985d78b599cc299e11eeb320ce62c18",
+      "futureSuccessCriteria": {
+        "transportSuccess": true,
+        "jsonComplete": true,
+        "finishReasonNotLength": true,
+        "exactDecisionCount": 32,
+        "responseBytesAtMostFrozenBound": 17408,
+        "parserAccepted": true,
+        "noRepair": true,
+        "noSemanticRetry": true,
+        "noFallback": true
+      }
+    }
+  ],
+  "proofs": {
+    "maxOwnedAndMultipart": {
+      "Representable": true,
+      "ResolvedSourceAliases": [
+        "L0002:S0",
+        "L0002:S1"
+      ]
+    },
+    "l1472OwnerOmission": {
+      "subjectEvidence": true,
+      "contextOnlyEvidence": false
+    },
+    "l1710Retyping": {
+      "WholeAtomWithoutVerbatimAccepted": true,
+      "WholeAtomEchoRefused": true
+    },
+    "multipartRelation": {
+      "CrossShardContextOnly": true,
+      "TargetSourceResolved": true,
+      "ManifestTarget": {
+        "sourceGroup": "CONTEXT_ONLY",
+        "sourceIndex": 17,
+        "targetAlias": "L0918:S4",
+        "resolvedAlias": "L0918:S4"
+      }
+    }
+  }
+}

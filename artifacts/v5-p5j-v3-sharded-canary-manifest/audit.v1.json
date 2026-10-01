@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "v5-p5j-v3-sharded-canary-audit-v1",
+  "status": "PROVIDER_FREE_COMPLETE",
+  "providerCalls": 0,
+  "goldRead": false,
+  "selectedRequests": 4,
+  "maximumFutureCalls": 4,
+  "executionAuthorized": false,
+  "ownershipDrift": 0,
+  "visibilityDrift": 0,
+  "sourceEvidenceDrift": 0,
+  "identityDrift": 0,
+  "relationTargetResolutionDrift": 0,
+  "wireBodiesDeterministic": true,
+  "repeatGuardStopsBeforeNetwork": true,
+  "p5f2Single96DecisionLane": "CLOSED_NOT_PROMOTED",
+  "nextProviderAction": "NONE without a new explicit authorization for exactly these four P5J bodies"
+}
