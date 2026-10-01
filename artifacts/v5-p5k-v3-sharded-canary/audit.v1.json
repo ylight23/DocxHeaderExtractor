@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "v5-p5k-v3-sharded-canary-audit-v1",
+  "status": "CLOSED_NOT_PROMOTED_EXHAUSTIVE_PROTOCOL_UNRELIABLE",
+  "sourceManifest": "artifacts/v5-p5j-v3-sharded-canary-manifest/execution-manifest.v1.json",
+  "providerCalls": 4,
+  "maximumAuthorizedProviderCalls": 4,
+  "goldRead": false,
+  "semanticScore": "NOT_RUN",
+  "semanticRetries": 0,
+  "responseRepairApplied": false,
+  "fallbackProviderCalls": 0,
+  "retryCountTotal": 0,
+  "transportSuccesses": 4,
+  "executionValidResponses": 1,
+  "executionInvalidResponses": 3,
+  "exact32DecisionResponses": 1,
+  "stopResponsesBelow32": 1,
+  "stopResponsesAbove32": 2,
+  "resultRepeatGuard": "result.v1.json exists; a subsequent P5K invocation stops before network",
+  "results": [
+    {
+      "role": "L1472_OWNER_OMISSION",
+      "finishReason": "stop",
+      "transportSuccess": true,
+      "decisionCountExpected": 32,
+      "decisionCountActual": 33,
+      "rawResponseBytes": 13120,
+      "maxResponseUtf8Bytes": 17408,
+      "parserAccepted": false,
+      "executionQualified": false,
+      "error": "decision-cardinality-invalid:expected=32:actual=33"
+    },
+    {
+      "role": "L1710_RETYPING",
+      "finishReason": "stop",
+      "transportSuccess": true,
+      "decisionCountExpected": 32,
+      "decisionCountActual": 32,
+      "rawResponseBytes": 12873,
+      "maxResponseUtf8Bytes": 17408,
+      "parserAccepted": true,
+      "executionQualified": true,
+      "error": null
+    },
+    {
+      "role": "MAX_OWNED_AND_MULTIPART",
+      "finishReason": "stop",
+      "transportSuccess": true,
+      "decisionCountExpected": 32,
+      "decisionCountActual": 33,
+      "rawResponseBytes": 14803,
+      "maxResponseUtf8Bytes": 17408,
+      "parserAccepted": false,
+      "executionQualified": false,
+      "error": "decision-cardinality-invalid:expected=32:actual=33"
+    },
+    {
+      "role": "MULTIPART_RELATION",
+      "finishReason": "stop",
+      "transportSuccess": true,
+      "decisionCountExpected": 32,
+      "decisionCountActual": 31,
+      "rawResponseBytes": 12372,
+      "maxResponseUtf8Bytes": 17408,
+      "parserAccepted": false,
+      "executionQualified": false,
+      "error": "decision-cardinality-invalid:expected=32:actual=31"
+    }
+  ],
+  "roleSpecific": {
+    "maxOwnedAndMultipart": "NOT_EVALUATED: 33/32 response is contract-invalid before binding.",
+    "l1472OwnerOmission": "NOT_EVALUATED: 33/32 response is contract-invalid before positional decision interpretation.",
+    "l1710Retyping": {
+      "executionQualified": true,
+      "localDecisionOrdinal": 27,
+      "decisionPresent": true,
+      "wholeAtomSelection": "VALID_IMPLICIT_NO_VERBATIM_TEXT",
+      "note": "This does not score semantics; 22 other claim-level binder refusals are preserved separately in the raw result."
+    },
+    "multipartRelation": "NOT_EVALUATED: 31/32 response is contract-invalid before relation target binding."
+  },
+  "conclusion": {
+    "shardingHypothesis": "NOT_QUALIFIED: only 1/4 responses had exactly 32 decisions.",
+    "transport": "ALL_FOUR_TRANSPORT_SUCCEEDED; failures are contract-cardinality behavior, not transport.",
+    "hardGate": "A stop response returned 31/32, so exhaustive-decision protocol reliability is disproven at 32; do not continue sharding to 16/8 without a new architectural decision.",
+    "promotion": "CLOSED_NOT_PROMOTED",
+    "nextProviderAction": "NONE"
+  }
+}

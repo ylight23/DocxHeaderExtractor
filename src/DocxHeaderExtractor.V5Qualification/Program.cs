@@ -59,6 +59,11 @@ internal static class Program
         if (args.Contains("--p5f2-v3-canary"))
             return await P5F2V3Canary.RunAsync(LocateRepoRoot(), args);
 
+        // P5K executes only the four P5J-frozen 32-decision shard bodies. It has its own
+        // authorization token, repeat-result guard and no-retry transport policy.
+        if (args.Contains("--p5k-v3-sharded-canary"))
+            return await P5KV3ShardedCanary.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 
