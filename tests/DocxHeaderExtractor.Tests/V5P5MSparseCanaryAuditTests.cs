@@ -33,11 +33,12 @@ public sealed class V5P5MSparseCanaryAuditTests
             outcome = new
             {
                 maxOwnedAndMultipart = "CONTRACT_INVALID_RESPONSE_BYTE_BOUND",
-                l1472OwnerOmission = "CONTRACT_VALID",
-                l1710Retyping = "CONTRACT_VALID",
+                l1472OwnerOmission = "PARSER_VALID_BINDER_EXECUTED_ZERO_USABLE_CLAIMS: sourceOrdinal was supplied where ownedIndex was required",
+                l1710Retyping = "PARSER_VALID_BINDER_EXECUTED_23_USABLE_CLAIMS",
                 multipartRelation = "CONTRACT_INVALID_DECISION_COUNT_EXCEEDS_OWNED",
             },
-            conclusion = "Sparse V3.1 removes exhaustive-ledger failure, but this four-call transport canary does not qualify the full-pack carrier: only two responses are contract-valid; no Gold was read and no semantic conclusion is drawn.",
+            reporting = "parser acceptance and binder execution are independent of usability; usableClaims equals boundClaims and must not be inferred from a non-null binding container.",
+            conclusion = "Sparse V3.1 removes exhaustive-ledger failure, but P5M reveals an addressing-interface defect and relation over-generation. Do not raise caps, shard, or call a provider again before explicit local ownedIndex/contextIndex handles are qualified provider-free. No Gold was read and no semantic conclusion is drawn.",
             repeatGuard = "result.v1.json or result.in-progress.v1.json exists; subsequent P5M invocation stops before network",
         });
     }

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "v5-p5n-explicit-local-handles-audit-v1",
+  "status": "PROVIDER_FREE_COMPLETE",
+  "providerCalls": 0,
+  "goldRead": false,
+  "protocol": "v5-source-backed-decision-3.2",
+  "composer": "v5-semantic-decision-composer-3.2",
+  "subjectHandle": "subjectEvidence[n].ownedIndex = n",
+  "contextHandle": "contextOnlyEvidence[n].contextIndex = n",
+  "withheldHarnessAuthority": [
+    "sourceAlias",
+    "sourceId",
+    "sourceOrdinal",
+    "anchor"
+  ],
+  "regression": "A source ordinal such as 1541 is not provider-visible and cannot be copied into ownedIndex."
+}

@@ -20,7 +20,7 @@ public sealed class V5P5LSparseDecisionProtocolTests
         var decisionItem = decisions.GetProperty("items");
 
         Assert.Equal(V5SemanticSparseDecisionComposerV3_1.Version, canonical.ComposerVersion);
-        Assert.Equal(V5Protocol.ClaimSchemaVersionV3_1, canonical.ProtocolVersion);
+        Assert.Equal(V5Protocol.ClaimSchemaVersionV3_2, canonical.ProtocolVersion);
         Assert.Equal(0, decisions.GetProperty("minItems").GetInt32());
         Assert.Equal(fixture.Packet.SubjectEvidence.Count, decisions.GetProperty("maxItems").GetInt32());
         Assert.Contains("ownedIndex", decisionItem.GetProperty("required").EnumerateArray().Select(value => value.GetString()));
@@ -30,6 +30,15 @@ public sealed class V5P5LSparseDecisionProtocolTests
         Assert.DoesNotContain("sourceId", responseKeys);
         Assert.DoesNotContain("coordinates", responseKeys);
         Assert.DoesNotContain("subjectIndex", responseKeys);
+        using var providerView = JsonDocument.Parse(composed.Prompt);
+        var packetView = providerView.RootElement.GetProperty("packet");
+        var providerKeys = CollectKeys(packetView);
+        Assert.DoesNotContain("sourceAlias", providerKeys);
+        Assert.DoesNotContain("sourceId", providerKeys);
+        Assert.DoesNotContain("sourceOrdinal", providerKeys);
+        Assert.DoesNotContain("anchor", providerKeys);
+        Assert.Equal(0, packetView.GetProperty("subjectEvidence")[0].GetProperty("ownedIndex").GetInt32());
+        Assert.Equal(0, packetView.GetProperty("contextOnlyEvidence")[0].GetProperty("contextIndex").GetInt32());
         var missingDecisionField = V5SemanticSparseDecisionContractV3_1.Parse(
             JsonDocument.Parse("{\"decisions\":[{\"claims\":[]}]}").RootElement, fixture.Contract, 3, 1);
         Assert.Equal("missing-or-extra-decision-field", missingDecisionField.ParseRefusals["sparse-decision-0"]);
@@ -100,7 +109,7 @@ public sealed class V5P5LSparseDecisionProtocolTests
             fixture.Contract with { Projections = [] }, fixture.Graph, fixture.Atoms,
             fixture.Packet.SubjectEvidence.Select(node => node.SourceAlias).ToHashSet(StringComparer.Ordinal),
             fixture.Packet.SubjectEvidence.Concat(fixture.Packet.ContextOnlyEvidence).Select(node => node.SourceAlias).ToHashSet(StringComparer.Ordinal));
-        Assert.Equal(V5Protocol.ClaimSchemaVersionV3_1, liveReasoner.ProtocolVersion);
+        Assert.Equal(V5Protocol.ClaimSchemaVersionV3_2, liveReasoner.ProtocolVersion);
         Assert.Equal(V5SemanticSparseDecisionComposerV3_1.Version, liveReasoner.ComposerVersion);
         Assert.Equal("source-1:0-9", Assert.Single(live.State.Claims).Subject.Identity);
 
@@ -127,7 +136,7 @@ public sealed class V5P5LSparseDecisionProtocolTests
             goldRead = false,
             oldProtocol = V5Protocol.ClaimSchemaVersionV3,
             newProtocol = V5Protocol.ClaimSchemaVersionV3_1,
-            composer = V5SemanticSparseDecisionComposerV3_1.Version,
+            composer = "v5-semantic-decision-composer-3.1",
             outerCardinality = "0 <= decisions.Count <= ownedCount; each entry explicitly carries ownedIndex",
             localFailureSemantics = new
             {
@@ -197,7 +206,7 @@ public sealed class V5P5LSparseDecisionProtocolTests
             schemaVersion = "v5-p5l1-decision-local-parse-quarantine-audit-v1",
             status = "P5L1_PROVIDER_FREE_COMPLETE",
             protocolVersion = V5Protocol.ClaimSchemaVersionV3_1,
-            composerVersion = V5SemanticSparseDecisionComposerV3_1.Version,
+            composerVersion = "v5-semantic-decision-composer-3.1",
             providerCalls = 0,
             goldRead = false,
             wireChange = "NONE",

@@ -95,14 +95,14 @@ internal static class P5MSparseCanary
         return resolved;
     }
 
-    private sealed record Analysis(string Classification, int? DecisionCountActual, bool JsonComplete, bool ParserAccepted, bool BinderAccepted, int ClaimsProduced, int Bound, int Refused, int EmptyDecisionCount, string? Error);
+    private sealed record Analysis(string Classification, int? DecisionCountActual, bool JsonComplete, bool ParserAccepted, bool BinderExecuted, int ClaimsProduced, int BoundClaims, int RefusedClaims, int UsableClaims, int EmptyDecisionCount, string? Error);
     private static Analysis Analyze(Resolved item, DocumentTaskContract contract, string? raw, string? finish, string? transportError)
     {
-        if (transportError is not null || raw is null) return new("TRANSPORT_ERROR", null, false, false, false, 0, 0, 0, 0, transportError);
+        if (transportError is not null || raw is null) return new("TRANSPORT_ERROR", null, false, false, false, 0, 0, 0, 0, 0, transportError);
         try { using var json = JsonDocument.Parse(raw); var root = json.RootElement; var count = root.TryGetProperty("decisions", out var d) && d.ValueKind == JsonValueKind.Array ? d.GetArrayLength() : (int?)null;
-            try { var parsed = V5SemanticSparseDecisionContractV3_1.Parse(root, contract, item.Pack.OwnedAliases.Count, item.Pack.Packet.ContextOnlyEvidence.Count); var atoms = V5PdfPreflightBuilder.LoadAtoms(item.PdfPath); var binding = V5SemanticSparseDecisionContractV3_1.Bind(item.Request.RequestHash, parsed, contract, item.Pack.Packet.SubjectEvidence, item.Pack.Packet.ContextOnlyEvidence, atoms, ClaimBindingScope.Create(item.Pack.OwnedAliases, item.Pack.VisibleAliases)); var claims = parsed.Decisions.Sum(x => x.Claims.Count); var empty = parsed.Decisions.Count(x => x.Claims.Count == 0); return new(string.Equals(finish, "length", StringComparison.OrdinalIgnoreCase) ? "LENGTH" : "CONTRACT_VALID", count, true, true, binding.Binding is not null, claims, binding.Bound.Count, binding.Refusals.Count, empty, null); }
-            catch (Exception ex) { return new("CONTRACT_INVALID", count, true, false, false, 0, 0, 0, 0, ex.Message); } }
-        catch (JsonException ex) { return new("JSON_INVALID", null, false, false, false, 0, 0, 0, 0, ex.Message); }
+            try { var parsed = V5SemanticSparseDecisionContractV3_1.Parse(root, contract, item.Pack.OwnedAliases.Count, item.Pack.Packet.ContextOnlyEvidence.Count); var atoms = V5PdfPreflightBuilder.LoadAtoms(item.PdfPath); var binding = V5SemanticSparseDecisionContractV3_1.Bind(item.Request.RequestHash, parsed, contract, item.Pack.Packet.SubjectEvidence, item.Pack.Packet.ContextOnlyEvidence, atoms, ClaimBindingScope.Create(item.Pack.OwnedAliases, item.Pack.VisibleAliases)); var claims = parsed.Decisions.Sum(x => x.Claims.Count); var empty = parsed.Decisions.Count(x => x.Claims.Count == 0); var usable = binding.Bound.Count; return new(string.Equals(finish, "length", StringComparison.OrdinalIgnoreCase) ? "LENGTH" : usable > 0 ? "PARSER_VALID_WITH_USABLE_CLAIMS" : "PARSER_VALID_NO_USABLE_CLAIMS", count, true, true, true, claims, usable, binding.Refusals.Count, usable, empty, null); }
+            catch (Exception ex) { return new("CONTRACT_INVALID", count, true, false, false, 0, 0, 0, 0, 0, ex.Message); } }
+        catch (JsonException ex) { return new("JSON_INVALID", null, false, false, false, 0, 0, 0, 0, 0, ex.Message); }
     }
     private static string Hash(byte[] bytes) => Convert.ToHexStringLower(SHA256.HashData(bytes));
     private static string Hash(string text) => Hash(Encoding.UTF8.GetBytes(text));

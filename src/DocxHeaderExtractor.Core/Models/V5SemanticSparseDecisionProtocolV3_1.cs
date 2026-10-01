@@ -7,28 +7,29 @@ using DocxHeaderExtractor.Core.V5;
 namespace DocxHeaderExtractor.Core.Models;
 
 /// <summary>
-/// Live V3.1 request composer. V3.0's evidence packet, harness-owned aliases, source-selection
-/// policy and inner claim/target shapes stay intact; only the outer dense ledger becomes sparse.
+/// Live V3.2 request composer. The sparse response grammar stays intact, but the provider sees
+/// only explicit request-local handles: never a harness alias or source ordinal it could confuse
+/// with an ownedIndex.
 /// </summary>
 public static class V5SemanticSparseDecisionComposerV3_1
 {
-    public const string Version = "v5-semantic-decision-composer-3.1";
+    public const string Version = "v5-semantic-decision-composer-3.2";
 
     private static readonly string Instructions = string.Join("\n", [
         "You are a task-defined semantic reasoner.",
         "Return a sparse decisions array: emit a decision only for an owned subject for which you have a semantic assertion. Omission means no proposal.",
-        "Each emitted decision must contain ownedIndex, the zero-based index into subjectEvidence. Never emit a source alias, source id, coordinate, or model-authored subject identity.",
+        "Each subjectEvidence item explicitly carries its ownedIndex. Copy that ownedIndex exactly; it is the only subject handle. Never infer an array position or use any other identity.",
         "Do not emit the same ownedIndex more than once. The harness owns occurrence identity and will quarantine invalid or duplicate indexes while preserving valid sibling decisions.",
         "For a subject that spans multiple atoms, use additionalSubjectParts with ownedIndex values only, strictly increasing and after the primary ownedIndex.",
         "For a strict substring provide verbatimText exactly as it appears. For a whole atom omit verbatimText; never retype a whole atom.",
-        "A relation target uses targetParts with sourceGroup OWNED or CONTEXT_ONLY and the zero-based index within that request list. A target may use contextOnlyEvidence.",
+        "Each contextOnlyEvidence item explicitly carries its contextIndex. A relation target uses targetParts with sourceGroup OWNED or CONTEXT_ONLY and that explicit local handle. A target may use contextOnlyEvidence.",
         "Use only declared predicates and relations. A UNARY predicate has a value and no targetParts; a RELATION has targetParts when RESOLVED and never has a value.",
         "Every claim contains evidenceNeeds explicitly: RESOLVED sends []; OPEN and CONFLICTED send at least one need.",
         "The harness owns claim identity. Do not emit claimId. existingClaimId may appear only for an explicitly supplied claim being refined.",
         "Return only the declared semantic decision schema.",
     ]);
 
-    public static CanonicalSemanticDecisionRequestV3 BuildCanonical(DocumentTaskContract contract, V5SemanticDecisionRequestPacketV3 packet)
+    public static CanonicalSemanticSparseDecisionRequestV3_2 BuildCanonical(DocumentTaskContract contract, V5SemanticDecisionRequestPacketV3 packet)
     {
         ArgumentNullException.ThrowIfNull(contract);
         ArgumentNullException.ThrowIfNull(packet);
@@ -39,9 +40,9 @@ public static class V5SemanticSparseDecisionComposerV3_1
         // ownedIndex is the only new response field. Reserve 32 UTF-8 bytes per maximum sparse
         // decision (field name, colon, integer and structural punctuation) independently of tokens.
         var bounds = oldBounds with { MaxResponseUtf8Bytes = checked(oldBounds.MaxResponseUtf8Bytes + packet.SubjectEvidence.Count * 32) };
-        return new CanonicalSemanticDecisionRequestV3(
+        return new CanonicalSemanticSparseDecisionRequestV3_2(
             Version,
-            V5Protocol.ClaimSchemaVersionV3_1,
+            V5Protocol.ClaimSchemaVersionV3_2,
             contract,
             V5ClaimShapesV2_1.Generate(contract),
             V5SemanticSparseDecisionContractV3_1.Schema(contract, packet.SubjectEvidence.Count, packet.ContextOnlyEvidence.Count, bounds),
@@ -49,11 +50,17 @@ public static class V5SemanticSparseDecisionComposerV3_1
             V5SourceSelectionPolicy.Generate(),
             string.Join("\n", Instructions,
                 $"The complete response must serialize to at most {bounds.MaxResponseUtf8Bytes} UTF-8 bytes and contain at most {bounds.MaxClaimsTotal} claims total. Never truncate, repair, or add commentary."),
-            packet);
+            V5ProviderSemanticPacketV3_2.From(packet));
     }
 
-    public static V5ComposedSemanticDecisionRequestV3 Compose(DocumentTaskContract contract, V5SemanticDecisionRequestPacketV3 packet) =>
-        V5SemanticDecisionComposerV3.Serialize(BuildCanonical(contract, packet));
+    public static V5ComposedSemanticDecisionRequestV3 Compose(DocumentTaskContract contract, V5SemanticDecisionRequestPacketV3 packet)
+    {
+        var request = BuildCanonical(contract, packet);
+        var prompt = JsonSerializer.Serialize(request, new JsonSerializerOptions(CanonicalJson.Options) { WriteIndented = false }).ReplaceLineEndings("\n");
+        var schema = JsonSerializer.Serialize(request.ResponseSchema, CanonicalJson.Options);
+        return new(Version, prompt, Hashing.Sha256(request.Instructions.ReplaceLineEndings("\n")), Hashing.Sha256(schema),
+            Hashing.Sha256(prompt), Encoding.UTF8.GetByteCount(prompt), request.ResponseBounds);
+    }
 
     private static void ValidatePacket(V5SemanticDecisionRequestPacketV3 packet)
     {
@@ -66,6 +73,53 @@ public static class V5SemanticSparseDecisionComposerV3_1
         foreach (var node in packet.SubjectEvidence.Concat(packet.ContextOnlyEvidence)) node.Validate();
     }
 }
+
+/// <summary>Deliberately lossy provider view: harness identity and physical source coordinates stay local.</summary>
+public sealed record V5ProviderSemanticPacketV3_2(
+    [property: JsonPropertyName("subjectEvidence")] IReadOnlyList<V5ProviderOwnedEvidenceV3_2> SubjectEvidence,
+    [property: JsonPropertyName("contextOnlyEvidence")] IReadOnlyList<V5ProviderContextEvidenceV3_2> ContextOnlyEvidence,
+    [property: JsonPropertyName("openOrConflictedClaims")] IReadOnlyList<BoundSemanticClaim> OpenOrConflictedClaims,
+    [property: JsonPropertyName("retrievedEvidence")] IReadOnlyList<EvidenceCandidate> RetrievedEvidence,
+    [property: JsonPropertyName("layoutEvidence")] IReadOnlyList<V5ProviderUnaddressedEvidenceV3_2> LayoutEvidence,
+    [property: JsonPropertyName("visualEvidence")] IReadOnlyList<V5ProviderUnaddressedEvidenceV3_2> VisualEvidence)
+{
+    public static V5ProviderSemanticPacketV3_2 From(V5SemanticDecisionRequestPacketV3 packet) => new(
+        packet.SubjectEvidence.Select((node, index) => new V5ProviderOwnedEvidenceV3_2(index, node.Modality, node.Text, node.Facts)).ToArray(),
+        packet.ContextOnlyEvidence.Select((node, index) => new V5ProviderContextEvidenceV3_2(index, node.Modality, node.Text, node.Facts)).ToArray(),
+        packet.OpenOrConflictedClaims, packet.RetrievedEvidence,
+        packet.LayoutEvidence.Select(ToUnaddressed).ToArray(), packet.VisualEvidence.Select(ToUnaddressed).ToArray());
+
+    private static V5ProviderUnaddressedEvidenceV3_2 ToUnaddressed(EvidenceNode node) =>
+        new(node.Modality, node.Text, node.Facts);
+}
+
+public sealed record V5ProviderOwnedEvidenceV3_2(
+    [property: JsonPropertyName("ownedIndex")] int OwnedIndex,
+    [property: JsonPropertyName("modality")] EvidenceModality Modality,
+    [property: JsonPropertyName("text")] string Text,
+    [property: JsonPropertyName("facts")] IReadOnlyDictionary<string, string?> Facts);
+
+public sealed record V5ProviderContextEvidenceV3_2(
+    [property: JsonPropertyName("contextIndex")] int ContextIndex,
+    [property: JsonPropertyName("modality")] EvidenceModality Modality,
+    [property: JsonPropertyName("text")] string Text,
+    [property: JsonPropertyName("facts")] IReadOnlyDictionary<string, string?> Facts);
+
+public sealed record V5ProviderUnaddressedEvidenceV3_2(
+    [property: JsonPropertyName("modality")] EvidenceModality Modality,
+    [property: JsonPropertyName("text")] string Text,
+    [property: JsonPropertyName("facts")] IReadOnlyDictionary<string, string?> Facts);
+
+public sealed record CanonicalSemanticSparseDecisionRequestV3_2(
+    [property: JsonPropertyName("composerVersion")] string ComposerVersion,
+    [property: JsonPropertyName("protocolVersion")] string ProtocolVersion,
+    [property: JsonPropertyName("contract")] DocumentTaskContract Contract,
+    [property: JsonPropertyName("claimShapes")] IReadOnlyList<V5ClaimShapeV2_1> ClaimShapes,
+    [property: JsonPropertyName("responseSchema")] object ResponseSchema,
+    [property: JsonPropertyName("responseBounds")] V5SemanticDecisionResponseBoundsV3 ResponseBounds,
+    [property: JsonPropertyName("sourceSelectionPolicy")] object SourceSelectionPolicy,
+    [property: JsonPropertyName("instructions")] string Instructions,
+    [property: JsonPropertyName("packet")] V5ProviderSemanticPacketV3_2 Packet);
 
 public sealed record V5SemanticSparseDecisionResponseV3_1(
     [property: JsonPropertyName("decisions")] IReadOnlyList<V5SemanticSparseSubjectDecisionV3_1> Decisions)

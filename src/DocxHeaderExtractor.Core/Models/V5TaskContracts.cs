@@ -28,6 +28,13 @@ public static class V5Protocol
     /// proposed subject; omitted owned occurrences mean no proposal, never a malformed ledger.
     /// </summary>
     public const string ClaimSchemaVersionV3_1 = "v5-source-backed-decision-3.1";
+
+    /// <summary>
+    /// Sparse positional proposals with explicit provider-facing owned/context handles. Internal
+    /// source aliases and source ordinals remain harness authority and are never serialized into
+    /// the semantic prompt.
+    /// </summary>
+    public const string ClaimSchemaVersionV3_2 = "v5-source-backed-decision-3.2";
 }
 
 public enum ClaimResolutionState
