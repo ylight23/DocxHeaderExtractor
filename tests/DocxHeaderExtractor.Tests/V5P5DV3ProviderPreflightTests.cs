@@ -152,7 +152,11 @@ public sealed class V5P5DV3ProviderPreflightTests
         var invalidRuntime = await new DocumentAgentRuntime(invalidReasoner, new InMemoryEvidenceRetriever())
             .RunAsync(runtimeContract, graph, testAtoms, new HashSet<string>(["OWN-0", "OWN-1"], StringComparer.Ordinal),
                 new HashSet<string>(["OWN-0", "OWN-1", "HALO-0"], StringComparer.Ordinal));
-        Assert.Contains(invalidRuntime.State.Conflicts, issue => issue.Code == "CLAIM_BINDING" && issue.Message.Contains("decision-cardinality-invalid", StringComparison.Ordinal));
+        // P5L moved the live runtime to sparse V3.1: absence of a proposal is now a semantic
+        // omission, not a response-wide cardinality fault. This dense fixture is retained only
+        // as a historical/replay compatibility adapter and maps its row zero to ownedIndex zero.
+        Assert.Empty(invalidRuntime.State.Claims);
+        Assert.DoesNotContain(invalidRuntime.State.Conflicts, issue => issue.Code == "CLAIM_BINDING");
 
     }
 

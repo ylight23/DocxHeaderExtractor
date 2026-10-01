@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "v5-p5l-exhaustive-closure-v1",
+  "status": "CLOSED_NOT_PROMOTED_EXHAUSTIVE_PROTOCOL_UNRELIABLE",
+  "evidence": {
+    "protocol": "v5-source-backed-decision-3.0",
+    "at96": "UNRELIABLE",
+    "at32": {
+      "stopBelowExpected": 1,
+      "stopAboveExpected": 2,
+      "exactValid": 1,
+      "total": 4
+    },
+    "conclusion": "Do not continue sharding to 16/8 or raise caps: stop responses below and above exact cardinality are behavioral noncompliance, not transport or truncation."
+  },
+  "providerCalls": 0,
+  "goldRead": false,
+  "sourceP5K": "artifacts/v5-p5k-v3-sharded-canary/audit.v1.json"
+}

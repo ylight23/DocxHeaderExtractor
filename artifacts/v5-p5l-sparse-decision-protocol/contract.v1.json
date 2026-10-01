@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "v5-p5l-sparse-decision-contract-v1",
+  "status": "P5L_PROVIDER_FREE_COMPLETE",
+  "providerCalls": 0,
+  "goldRead": false,
+  "oldProtocol": "v5-source-backed-decision-3.0",
+  "newProtocol": "v5-source-backed-decision-3.1",
+  "composer": "v5-semantic-decision-composer-3.1",
+  "outerCardinality": "0 <= decisions.Count <= ownedCount; each entry explicitly carries ownedIndex",
+  "localFailureSemantics": {
+    "outOfRangeOwnedIndex": "QUARANTINE_DECISION_ONLY",
+    "duplicateOwnedIndex": "QUARANTINE_LATER_DUPLICATE_ONLY",
+    "malformedClaim": "QUARANTINE_DECISION_ONLY",
+    "omission": "NO_PROPOSAL_NOT_CONTRACT_FAILURE"
+  },
+  "identity": "original semantic request authority + original owned ordinal + claim-local ordinal; independent of sparse response order",
+  "preserved": [
+    "harness-owned subject identity",
+    "exact binder",
+    "whole-atom no-echo",
+    "multipart owned indices",
+    "OWNED/CONTEXT_ONLY relation targets"
+  ],
+  "runtime": "DocumentAgentRuntime composes and binds V3.1; V3.0 dense responses are compatibility-adapted only for historical tests/replays."
+}

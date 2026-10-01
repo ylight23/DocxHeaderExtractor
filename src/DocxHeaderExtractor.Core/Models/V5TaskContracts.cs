@@ -22,6 +22,12 @@ public static class V5Protocol
 
     /// <summary>Owned positional decisions, total decision coverage, and harness-resolved subject identity.</summary>
     public const string ClaimSchemaVersionV3 = "v5-source-backed-decision-3.0";
+
+    /// <summary>
+    /// Sparse harness-owned positional proposals. The model supplies only an ownedIndex for each
+    /// proposed subject; omitted owned occurrences mean no proposal, never a malformed ledger.
+    /// </summary>
+    public const string ClaimSchemaVersionV3_1 = "v5-source-backed-decision-3.1";
 }
 
 public enum ClaimResolutionState

@@ -27,7 +27,13 @@ public sealed record SemanticReasoningUsage(
     public int TotalTokens => checked(PromptTokens + CompletionTokens);
 }
 
-public sealed record SemanticReasoningResult(V5SemanticDecisionResponseV3 Response, SemanticReasoningUsage Usage);
+/// <summary>Live V3.1 sparse response. The compatibility constructor is test/replay-only: it maps
+/// a historical V3.0 dense response by its harness-owned positional index before runtime binding.</summary>
+public sealed record SemanticReasoningResult(V5SemanticSparseDecisionResponseV3_1 Response, SemanticReasoningUsage Usage)
+{
+    public SemanticReasoningResult(V5SemanticDecisionResponseV3 exhaustiveResponse, SemanticReasoningUsage usage)
+        : this(V5SemanticSparseDecisionResponseV3_1.FromExhaustive(exhaustiveResponse), usage) { }
+}
 
 public interface ISemanticReasoner
 {
@@ -153,7 +159,7 @@ public sealed class DocumentAgentRuntime
                 .Where(claim => claim.State is ClaimResolutionState.OPEN or ClaimResolutionState.CONFLICTED)
                 .ToArray();
             var requestPacket = BuildDecisionPacket(contract, workingGraph, atoms, owned, visible, retrieved, openOrConflicted);
-            var composedRequest = V5SemanticDecisionComposerV3.Compose(contract, requestPacket);
+            var composedRequest = V5SemanticSparseDecisionComposerV3_1.Compose(contract, requestPacket);
             var context = new SemanticReasoningContext(contract, workingGraph, retrieved.ToArray(), semanticCalls, openOrConflicted, requestPacket, composedRequest);
             var requestHash = composedRequest.RequestHash;
             using var turnDeadline = CreateDeadlineToken(started, budget.MaxWallClockSeconds, cancellationToken);
@@ -179,7 +185,7 @@ public sealed class DocumentAgentRuntime
                 item => new KnownClaimReference(item.Value.Subject.Identity, item.Value.Predicate),
                 StringComparer.Ordinal);
             var scope = ClaimBindingScope.Create(owned, visible, knownClaims);
-            var decisionBinding = V5SemanticDecisionContractV3.Bind(requestHash, response, contract,
+            var decisionBinding = V5SemanticSparseDecisionContractV3_1.Bind(requestHash, response, contract,
                 requestPacket.SubjectEvidence, requestPacket.ContextOnlyEvidence, atoms, scope);
             foreach (var refusal in decisionBinding.Refusals)
                 allConflicts.Add(new KnowledgeValidationIssue("CLAIM_BINDING", refusal.Key, refusal.Value));

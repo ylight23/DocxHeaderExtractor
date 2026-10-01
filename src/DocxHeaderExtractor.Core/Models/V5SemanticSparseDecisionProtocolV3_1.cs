@@ -1,0 +1,225 @@
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Core.V5;
+
+namespace DocxHeaderExtractor.Core.Models;
+
+/// <summary>
+/// Live V3.1 request composer. V3.0's evidence packet, harness-owned aliases, source-selection
+/// policy and inner claim/target shapes stay intact; only the outer dense ledger becomes sparse.
+/// </summary>
+public static class V5SemanticSparseDecisionComposerV3_1
+{
+    public const string Version = "v5-semantic-decision-composer-3.1";
+
+    private static readonly string Instructions = string.Join("\n", [
+        "You are a task-defined semantic reasoner.",
+        "Return a sparse decisions array: emit a decision only for an owned subject for which you have a semantic assertion. Omission means no proposal.",
+        "Each emitted decision must contain ownedIndex, the zero-based index into subjectEvidence. Never emit a source alias, source id, coordinate, or model-authored subject identity.",
+        "Do not emit the same ownedIndex more than once. The harness owns occurrence identity and will quarantine invalid or duplicate indexes while preserving valid sibling decisions.",
+        "For a subject that spans multiple atoms, use additionalSubjectParts with ownedIndex values only, strictly increasing and after the primary ownedIndex.",
+        "For a strict substring provide verbatimText exactly as it appears. For a whole atom omit verbatimText; never retype a whole atom.",
+        "A relation target uses targetParts with sourceGroup OWNED or CONTEXT_ONLY and the zero-based index within that request list. A target may use contextOnlyEvidence.",
+        "Use only declared predicates and relations. A UNARY predicate has a value and no targetParts; a RELATION has targetParts when RESOLVED and never has a value.",
+        "Every claim contains evidenceNeeds explicitly: RESOLVED sends []; OPEN and CONFLICTED send at least one need.",
+        "The harness owns claim identity. Do not emit claimId. existingClaimId may appear only for an explicitly supplied claim being refined.",
+        "Return only the declared semantic decision schema.",
+    ]);
+
+    public static CanonicalSemanticDecisionRequestV3 BuildCanonical(DocumentTaskContract contract, V5SemanticDecisionRequestPacketV3 packet)
+    {
+        ArgumentNullException.ThrowIfNull(contract);
+        ArgumentNullException.ThrowIfNull(packet);
+        contract.Validate();
+        ValidatePacket(packet);
+        var oldBounds = V5SemanticDecisionResponseBoundsV3.ForEvidenceCounts(packet.SubjectEvidence.Count,
+            packet.SubjectEvidence.Count + packet.ContextOnlyEvidence.Count);
+        // ownedIndex is the only new response field. Reserve 32 UTF-8 bytes per maximum sparse
+        // decision (field name, colon, integer and structural punctuation) independently of tokens.
+        var bounds = oldBounds with { MaxResponseUtf8Bytes = checked(oldBounds.MaxResponseUtf8Bytes + packet.SubjectEvidence.Count * 32) };
+        return new CanonicalSemanticDecisionRequestV3(
+            Version,
+            V5Protocol.ClaimSchemaVersionV3_1,
+            contract,
+            V5ClaimShapesV2_1.Generate(contract),
+            V5SemanticSparseDecisionContractV3_1.Schema(contract, packet.SubjectEvidence.Count, packet.ContextOnlyEvidence.Count, bounds),
+            bounds,
+            V5SourceSelectionPolicy.Generate(),
+            string.Join("\n", Instructions,
+                $"The complete response must serialize to at most {bounds.MaxResponseUtf8Bytes} UTF-8 bytes and contain at most {bounds.MaxClaimsTotal} claims total. Never truncate, repair, or add commentary."),
+            packet);
+    }
+
+    public static V5ComposedSemanticDecisionRequestV3 Compose(DocumentTaskContract contract, V5SemanticDecisionRequestPacketV3 packet) =>
+        V5SemanticDecisionComposerV3.Serialize(BuildCanonical(contract, packet));
+
+    private static void ValidatePacket(V5SemanticDecisionRequestPacketV3 packet)
+    {
+        var ownedAliases = packet.SubjectEvidence.Select(node => node.SourceAlias).ToHashSet(StringComparer.Ordinal);
+        if (ownedAliases.Count != packet.SubjectEvidence.Count)
+            throw new InvalidOperationException("sparse-decision-packet-duplicate-owned-alias");
+        if (packet.ContextOnlyEvidence.Any(node => ownedAliases.Contains(node.SourceAlias)) ||
+            packet.ContextOnlyEvidence.Select(node => node.SourceAlias).Distinct(StringComparer.Ordinal).Count() != packet.ContextOnlyEvidence.Count)
+            throw new InvalidOperationException("sparse-decision-packet-owned-context-overlap");
+        foreach (var node in packet.SubjectEvidence.Concat(packet.ContextOnlyEvidence)) node.Validate();
+    }
+}
+
+public sealed record V5SemanticSparseDecisionResponseV3_1(
+    [property: JsonPropertyName("decisions")] IReadOnlyList<V5SemanticSparseSubjectDecisionV3_1> Decisions)
+{
+    public static V5SemanticSparseDecisionResponseV3_1 FromExhaustive(V5SemanticDecisionResponseV3 exhaustive)
+    {
+        ArgumentNullException.ThrowIfNull(exhaustive);
+        return new(exhaustive.Decisions.Select((decision, index) =>
+            new V5SemanticSparseSubjectDecisionV3_1(index, decision.Claims)).ToArray());
+    }
+}
+
+public sealed record V5SemanticSparseSubjectDecisionV3_1(
+    [property: JsonPropertyName("ownedIndex")] int OwnedIndex,
+    [property: JsonPropertyName("claims")] IReadOnlyList<V5SemanticDecisionClaimV3> Claims);
+
+/// <summary>
+/// V3.1 parser/binder. Out-of-range or duplicate ownedIndex values are quarantined at their sparse
+/// decision only; bounded envelope failures remain response-wide because they are unsafe to accept.
+/// </summary>
+public static class V5SemanticSparseDecisionContractV3_1
+{
+    public const string SchemaVersion = "v5-source-backed-decision-3.1";
+
+    public static object Schema(DocumentTaskContract contract, int ownedCount, int contextOnlyCount,
+        V5SemanticDecisionResponseBoundsV3 bounds)
+    {
+        var schema = JsonNode.Parse(JsonSerializer.Serialize(
+            V5SemanticDecisionContractV3.Schema(contract, ownedCount, contextOnlyCount, bounds), CanonicalJson.Options))!.AsObject();
+        var decisions = schema["properties"]!["decisions"]!.AsObject();
+        decisions["minItems"] = 0;
+        decisions["maxItems"] = ownedCount;
+        var item = decisions["items"]!.AsObject();
+        var properties = item["properties"]!.AsObject();
+        properties["ownedIndex"] = new JsonObject
+        {
+            ["type"] = "integer",
+            ["enum"] = JsonSerializer.SerializeToNode(Enumerable.Range(0, ownedCount).ToArray(), CanonicalJson.Options),
+        };
+        item["required"] = new JsonArray(JsonValue.Create("ownedIndex"), JsonValue.Create("claims"));
+        return schema;
+    }
+
+    public static V5SemanticSparseDecisionResponseV3_1 Parse(JsonElement payload, DocumentTaskContract contract,
+        int ownedCount, int contextOnlyCount)
+    {
+        var bounds = Bounds(ownedCount, contextOnlyCount);
+        if (Encoding.UTF8.GetByteCount(payload.GetRawText()) > bounds.MaxResponseUtf8Bytes)
+            throw new InvalidOperationException($"sparse-decision-response-byte-budget-exceeded:max={bounds.MaxResponseUtf8Bytes}");
+        if (payload.ValueKind != JsonValueKind.Object || payload.EnumerateObject().Any(property => !property.NameEquals("decisions")) ||
+            !payload.TryGetProperty("decisions", out var decisions) || decisions.ValueKind != JsonValueKind.Array || decisions.GetArrayLength() > ownedCount)
+            throw new InvalidOperationException("sparse-decision-response-shape-invalid");
+        foreach (var decision in decisions.EnumerateArray())
+        {
+            if (decision.ValueKind != JsonValueKind.Object ||
+                decision.EnumerateObject().Any(property => !property.NameEquals("ownedIndex") && !property.NameEquals("claims")) ||
+                !decision.TryGetProperty("ownedIndex", out _) || !decision.TryGetProperty("claims", out var claims) ||
+                claims.ValueKind != JsonValueKind.Array)
+                throw new InvalidOperationException("sparse-decision-response-schema-invalid:missing-or-extra-decision-field");
+        }
+        try
+        {
+            var options = new JsonSerializerOptions(CanonicalJson.Options)
+            {
+                UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow,
+                Converters = { new JsonStringEnumConverter() },
+            };
+            var response = payload.Deserialize<V5SemanticSparseDecisionResponseV3_1>(options)
+                ?? throw new InvalidOperationException("sparse-decision-response-empty");
+            ValidateEnvelope(response, contract, ownedCount, contextOnlyCount, bounds);
+            return response;
+        }
+        catch (JsonException ex)
+        {
+            throw new InvalidOperationException("sparse-decision-response-schema-invalid", ex);
+        }
+    }
+
+    public static V5DecisionBindingResultV3 Bind(string requestId, V5SemanticSparseDecisionResponseV3_1 response,
+        DocumentTaskContract contract, IReadOnlyList<EvidenceNode> ownedEvidence, IReadOnlyList<EvidenceNode> contextOnlyEvidence,
+        IReadOnlyList<SemanticSourceAtom> atoms, ClaimBindingScope scope, IReadOnlyList<int>? originalOwnedOrdinals = null)
+    {
+        ArgumentNullException.ThrowIfNull(response);
+        var bounds = Bounds(ownedEvidence.Count, ownedEvidence.Count + contextOnlyEvidence.Count);
+        try
+        {
+            ValidateEnvelope(response, contract, ownedEvidence.Count, contextOnlyEvidence.Count, bounds);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return new(null, new Dictionary<string, string>(StringComparer.Ordinal) { ["response-bounds"] = ex.Message });
+        }
+        if (originalOwnedOrdinals is not null &&
+            (originalOwnedOrdinals.Count != ownedEvidence.Count || originalOwnedOrdinals.Any(ordinal => ordinal < 0) ||
+             originalOwnedOrdinals.Distinct().Count() != originalOwnedOrdinals.Count))
+            throw new InvalidOperationException("sparse-decision-original-owned-ordinal-map-invalid");
+
+        var dense = Enumerable.Range(0, ownedEvidence.Count).Select(_ => new V5SemanticSubjectDecisionV3([])).ToArray();
+        var refusals = new Dictionary<string, string>(StringComparer.Ordinal);
+        var seen = new HashSet<int>();
+        foreach (var (decision, wireOrdinal) in response.Decisions.Select((decision, index) => (decision, index)))
+        {
+            var key = $"sparse-decision-{wireOrdinal}";
+            if (decision.OwnedIndex < 0 || decision.OwnedIndex >= ownedEvidence.Count)
+            {
+                refusals[key] = "owned-index-out-of-range";
+                continue;
+            }
+            if (!seen.Add(decision.OwnedIndex))
+            {
+                refusals[key] = "duplicate-owned-index";
+                continue;
+            }
+            try
+            {
+                // Reuse V3's inner field, relation, multipart and task-contract validation on a
+                // single owned slot. A malformed decision is quarantined without discarding peers.
+                var probe = Enumerable.Range(0, ownedEvidence.Count).Select(_ => new V5SemanticSubjectDecisionV3([])).ToArray();
+                probe[decision.OwnedIndex] = new V5SemanticSubjectDecisionV3(decision.Claims);
+                V5SemanticDecisionContractV3.ValidateBounds(new V5SemanticDecisionResponseV3(probe), contract,
+                    ownedEvidence.Count, contextOnlyEvidence.Count, bounds);
+                dense[decision.OwnedIndex] = new V5SemanticSubjectDecisionV3(decision.Claims);
+            }
+            catch (InvalidOperationException ex)
+            {
+                refusals[key] = ex.Message;
+            }
+        }
+        var bound = V5SemanticDecisionContractV3.Bind(requestId, new V5SemanticDecisionResponseV3(dense), contract,
+            ownedEvidence, contextOnlyEvidence, atoms, scope,
+            originalOwnedOrdinals ?? Enumerable.Range(0, ownedEvidence.Count).ToArray());
+        return new(bound.Binding, Merge(refusals, bound.ResponseRefusals));
+    }
+
+    private static V5SemanticDecisionResponseBoundsV3 Bounds(int ownedCount, int contextOnlyCount)
+    {
+        var oldBounds = V5SemanticDecisionResponseBoundsV3.ForEvidenceCounts(ownedCount, ownedCount + contextOnlyCount);
+        return oldBounds with { MaxResponseUtf8Bytes = checked(oldBounds.MaxResponseUtf8Bytes + ownedCount * 32) };
+    }
+
+    private static void ValidateEnvelope(V5SemanticSparseDecisionResponseV3_1 response, DocumentTaskContract contract,
+        int ownedCount, int contextOnlyCount, V5SemanticDecisionResponseBoundsV3 bounds)
+    {
+        ArgumentNullException.ThrowIfNull(response);
+        if (response.Decisions is null || response.Decisions.Count > ownedCount || response.Decisions.Any(decision => decision is null))
+            throw new InvalidOperationException("sparse-decision-response-cardinality-invalid");
+        var canonicalBytes = JsonSerializer.SerializeToUtf8Bytes(response, CanonicalJson.Options).Length;
+        if (canonicalBytes > bounds.MaxResponseUtf8Bytes)
+            throw new InvalidOperationException($"sparse-decision-response-byte-budget-exceeded:max={bounds.MaxResponseUtf8Bytes}:actual={canonicalBytes}");
+        var totalClaims = response.Decisions.Sum(decision => decision.Claims?.Count ?? throw new InvalidOperationException("sparse-decision-claims-missing"));
+        if (totalClaims > bounds.MaxClaimsTotal)
+            throw new InvalidOperationException($"sparse-decision-total-claims-bound-exceeded:max={bounds.MaxClaimsTotal}:actual={totalClaims}");
+    }
+
+    private static IReadOnlyDictionary<string, string> Merge(IReadOnlyDictionary<string, string> left,
+        IReadOnlyDictionary<string, string> right) => left.Concat(right).ToDictionary(pair => pair.Key, pair => pair.Value, StringComparer.Ordinal);
+}
