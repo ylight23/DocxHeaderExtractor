@@ -83,6 +83,12 @@ public sealed record V5ProviderSemanticPacketV3_2(
     [property: JsonPropertyName("layoutEvidence")] IReadOnlyList<V5ProviderUnaddressedEvidenceV3_2> LayoutEvidence,
     [property: JsonPropertyName("visualEvidence")] IReadOnlyList<V5ProviderUnaddressedEvidenceV3_2> VisualEvidence)
 {
+    private static readonly HashSet<string> ApprovedStructuralFactKeys = new(StringComparer.Ordinal)
+    {
+        "sourceType", "bold", "italic", "fontSize", "relativeFontSize", "bodyFontSize", "fontSizeToBodyRatio",
+        "boldRatio", "italicRatio", "lineCount", "width", "height", "grid", "gridType", "structuralScope", "pageRole",
+    };
+
     public static V5ProviderSemanticPacketV3_2 From(V5SemanticDecisionRequestPacketV3 packet) => new(
         packet.SubjectEvidence.Select((node, index) => new V5ProviderOwnedEvidenceV3_2(index, node.Modality, node.Text, StructuralFacts(node.Facts))).ToArray(),
         packet.ContextOnlyEvidence.Select((node, index) => new V5ProviderContextEvidenceV3_2(index, node.Modality, node.Text, StructuralFacts(node.Facts))).ToArray(),
@@ -92,17 +98,11 @@ public sealed record V5ProviderSemanticPacketV3_2(
     private static V5ProviderUnaddressedEvidenceV3_2 ToUnaddressed(EvidenceNode node) =>
         new(node.Modality, node.Text, StructuralFacts(node.Facts));
 
-    // Facts remain descriptive only. A source-local identifier must never become a second route
-    // to an occurrence: ownedIndex/contextIndex are the sole provider-facing handles.
+    // Default-deny projection: new facts cannot silently become a second route to an occurrence.
+    // ownedIndex/contextIndex are the sole provider-facing handles; this list is structural only.
     private static IReadOnlyDictionary<string, string?> StructuralFacts(IReadOnlyDictionary<string, string?> facts) =>
-        facts.Where(pair => !IsAddressingKey(pair.Key)).ToDictionary(pair => pair.Key, pair => pair.Value, StringComparer.Ordinal);
-
-    private static bool IsAddressingKey(string key) =>
-        key.Contains("id", StringComparison.OrdinalIgnoreCase) ||
-        key.Contains("ordinal", StringComparison.OrdinalIgnoreCase) ||
-        key.Contains("alias", StringComparison.OrdinalIgnoreCase) ||
-        key.Contains("anchor", StringComparison.OrdinalIgnoreCase) ||
-        key.Contains("coordinate", StringComparison.OrdinalIgnoreCase);
+        facts.Where(pair => ApprovedStructuralFactKeys.Contains(pair.Key))
+            .ToDictionary(pair => pair.Key, pair => pair.Value, StringComparer.Ordinal);
 }
 
 public sealed record V5ProviderOwnedEvidenceV3_2(

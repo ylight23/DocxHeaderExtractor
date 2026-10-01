@@ -15,6 +15,6 @@
     "paragraphId",
     "renderBlockId"
   ],
-  "factsBoundary": "Structural facts may remain, but fact keys containing id, ordinal, alias, anchor or coordinate are withheld from the provider view.",
+  "factsBoundary": "Default-deny typed projection retains only approved structural keys; unapproved or source-local identifier facts are withheld.",
   "regression": "A source ordinal such as 1541 and source-local fact identifiers are not provider-visible and cannot be copied into ownedIndex."
 }
