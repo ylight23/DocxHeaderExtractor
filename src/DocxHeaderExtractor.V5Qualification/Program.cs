@@ -54,6 +54,11 @@ internal static class Program
         if (args.Contains("--p5f-v3-canary"))
             return await P5FV3Canary.RunAsync(LocateRepoRoot(), args);
 
+        // P5F2 is the post-P5G replacement four-pack canary. Its runner rejects any body that
+        // does not reproduce the P5H manifest byte-for-byte before an explicit call authorization.
+        if (args.Contains("--p5f2-v3-canary"))
+            return await P5F2V3Canary.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 

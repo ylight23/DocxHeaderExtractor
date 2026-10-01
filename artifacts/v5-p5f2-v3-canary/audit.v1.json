@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "v5-p5f2-v3-provider-canary-audit-v1",
+  "status": "CLOSED_NOT_PROMOTED",
+  "sourceManifest": "artifacts/v5-p5h-v3-manifest-refresh/execution-manifest.v1.json",
+  "providerCalls": 4,
+  "maximumAuthorizedProviderCalls": 4,
+  "goldRead": false,
+  "semanticScore": "NOT_RUN",
+  "semanticRetries": 0,
+  "responseRepairApplied": false,
+  "fallbackProviderCalls": 0,
+  "retryCountTotal": 0,
+  "repeatInvocationGuard": "VERIFIED: result already exists stops before network",
+  "results": [
+    {
+      "role": "L1472_OWNER_OMISSION",
+      "classification": "JSON_INVALID",
+      "finishReason": "length",
+      "decisionCountActual": null,
+      "decisionCountExpected": 96,
+      "rawResponseBytes": 96196,
+      "error": "Expected start of a property name or value, but instead reached end of data. LineNumber: 3398 | BytePositionInLine: 29."
+    },
+    {
+      "role": "L1710_RETYPING",
+      "classification": "CONTRACT_INVALID",
+      "finishReason": "stop",
+      "decisionCountActual": 65,
+      "decisionCountExpected": 96,
+      "rawResponseBytes": 19039,
+      "error": "decision-cardinality-invalid:expected=96:actual=65"
+    },
+    {
+      "role": "MAX_OWNED_AND_MULTIPART",
+      "classification": "CONTRACT_INVALID",
+      "finishReason": "stop",
+      "decisionCountActual": 61,
+      "decisionCountExpected": 96,
+      "rawResponseBytes": 49560,
+      "error": "decision-response-byte-budget-exceeded:max=49152"
+    },
+    {
+      "role": "MULTIPART_RELATION",
+      "classification": "TRANSPORT_ERROR",
+      "finishReason": null,
+      "decisionCountActual": null,
+      "decisionCountExpected": 96,
+      "rawResponseBytes": 0,
+      "error": "Error while copying content to a stream."
+    }
+  ],
+  "interpretation": {
+    "exhaustiveDecisionCompliance": "FAILED: 61/96, JSON truncated at length, 65/96, and transport failure",
+    "boundedResponseCompliance": "FAILED: one stop response was 49,560 bytes, exceeding the 49,152-byte P5G cap; it was also cardinality-short",
+    "semanticQualification": "NOT_RUN: no response passed strict local parsing, so binder/Gold/semantic quality were not reached",
+    "promotion": "NOT_PROMOTED",
+    "nextProviderAction": "NONE without a new explicit authorization after offline audit"
+  }
+}
