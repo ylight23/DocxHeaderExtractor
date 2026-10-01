@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "v5-p5m-v31-sparse-canary-audit-v1",
+  "status": "CLOSED_AFTER_4_CALLS_NOT_SEMANTIC_SCORED",
+  "protocol": "v5-source-backed-decision-3.1",
+  "providerCalls": 4,
+  "goldRead": false,
+  "semanticScore": "NOT_RUN",
+  "outcome": {
+    "maxOwnedAndMultipart": "CONTRACT_INVALID_RESPONSE_BYTE_BOUND",
+    "l1472OwnerOmission": "CONTRACT_VALID",
+    "l1710Retyping": "CONTRACT_VALID",
+    "multipartRelation": "CONTRACT_INVALID_DECISION_COUNT_EXCEEDS_OWNED"
+  },
+  "conclusion": "Sparse V3.1 removes exhaustive-ledger failure, but this four-call transport canary does not qualify the full-pack carrier: only two responses are contract-valid; no Gold was read and no semantic conclusion is drawn.",
+  "repeatGuard": "result.v1.json or result.in-progress.v1.json exists; subsequent P5M invocation stops before network"
+}

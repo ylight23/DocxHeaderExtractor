@@ -64,6 +64,9 @@ internal static class Program
         if (args.Contains("--p5k-v3-sharded-canary"))
             return await P5KV3ShardedCanary.RunAsync(LocateRepoRoot(), args);
 
+        if (args.Contains("--p5m-v31-sparse-canary"))
+            return await P5MSparseCanary.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "v5-p5m-v31-sparse-provider-execution-manifest-v1",
+  "status": "PREPARED_AUTHORIZED",
+  "protocol": "v5-source-backed-decision-3.1",
+  "composer": "v5-semantic-decision-composer-3.1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "semanticScore": "NOT_RUN",
+  "requestCount": 4,
+  "route": {
+    "gateway": "openrouter",
+    "model": "qwen/qwen3.7-flash",
+    "providerPin": "alibaba",
+    "temperature": 0,
+    "reasoning": "none",
+    "streaming": true,
+    "responseFormat": "json_object"
+  },
+  "executionGate": {
+    "maximumProviderCalls": 4,
+    "retry": 0,
+    "repair": false,
+    "fallback": false,
+    "goldRead": false
+  },
+  "rows": [
+    {
+      "Role": "MAX_OWNED_AND_MULTIPART",
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "semanticRequestHash": "4a5d7f536866c1d32a38485cd7b274abce75108e5daee13d65fedef893c73cf7",
+      "providerRequestHash": "192e87d474fdf5ab899c1dc7603c00bad4507b42b2ab9dce8a847f3e33d695c4",
+      "providerRequestBytes": 110905,
+      "providerBodyFile": "wire-bodies/MAX_OWNED_AND_MULTIPART.json",
+      "providerBodySha256": "192e87d474fdf5ab899c1dc7603c00bad4507b42b2ab9dce8a847f3e33d695c4",
+      "ownedCount": 96,
+      "visibleCount": 104,
+      "maxCompletionTokens": 25088,
+      "maxResponseUtf8Bytes": 52224
+    },
+    {
+      "Role": "L1472_OWNER_OMISSION",
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "semanticRequestHash": "af5d479d0dbbe6a7cec52ad25b1bd7a8ecea89230070f27bf48bfb7affc9065d",
+      "providerRequestHash": "56a720c62c77461d62d0a8253933613edecd90587c94886d9252365bf119aaab",
+      "providerRequestBytes": 105840,
+      "providerBodyFile": "wire-bodies/L1472_OWNER_OMISSION.json",
+      "providerBodySha256": "56a720c62c77461d62d0a8253933613edecd90587c94886d9252365bf119aaab",
+      "ownedCount": 96,
+      "visibleCount": 112,
+      "maxCompletionTokens": 25088,
+      "maxResponseUtf8Bytes": 52224
+    },
+    {
+      "Role": "L1710_RETYPING",
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "semanticRequestHash": "a0adadb4bc4aa89131ffa1cb040544a8f493b1f12320b686b1fe14dfa0e668c5",
+      "providerRequestHash": "f3c1381bdb35a705356101e58225c28c92db3ab5c9d7fbb496d2965344975419",
+      "providerRequestBytes": 118817,
+      "providerBodyFile": "wire-bodies/L1710_RETYPING.json",
+      "providerBodySha256": "f3c1381bdb35a705356101e58225c28c92db3ab5c9d7fbb496d2965344975419",
+      "ownedCount": 96,
+      "visibleCount": 112,
+      "maxCompletionTokens": 25088,
+      "maxResponseUtf8Bytes": 52224
+    },
+    {
+      "Role": "MULTIPART_RELATION",
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "semanticRequestHash": "1101dafb857bb1d7defa332eeee1cec628831fbd4b454da4127d05598d3b131a",
+      "providerRequestHash": "f433f7eff5c081e5c21f03b8f4597d57332b23ed67094b52400d8e76f6b15c5d",
+      "providerRequestBytes": 108706,
+      "providerBodyFile": "wire-bodies/MULTIPART_RELATION.json",
+      "providerBodySha256": "f433f7eff5c081e5c21f03b8f4597d57332b23ed67094b52400d8e76f6b15c5d",
+      "ownedCount": 96,
+      "visibleCount": 112,
+      "maxCompletionTokens": 25088,
+      "maxResponseUtf8Bytes": 52224
+    }
+  ]
+}
