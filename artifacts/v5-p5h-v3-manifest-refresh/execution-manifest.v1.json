@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "v5-p5h-v3-provider-execution-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "protocol": "v5-source-backed-decision-3.0",
+  "route": {
+    "gateway": "openrouter",
+    "api": "chat-completions",
+    "model": "qwen/qwen3.7-flash",
+    "providerPin": "alibaba",
+    "temperature": 0,
+    "reasoning": "none",
+    "streaming": true,
+    "responseFormat": "json_object"
+  },
+  "providerRequestBodyFormat": "OpenRouter chat-completions, stream=true, json_object; exact post-P5G UTF-8 bodies stored under wire-bodies/ and hashed per pack",
+  "responseContract": {
+    "exactOwnedDecisions": 96,
+    "maxClaimsPerDecision": 10,
+    "maxClaimsTotal": 129,
+    "maxSerializedResponseUtf8Bytes": 49152,
+    "maxCompletionTokens": 25088,
+    "byteAndTokenBounds": "independent; no bytes-per-token equivalence is asserted"
+  },
+  "requestCount": 4,
+  "rows": [
+    {
+      "role": "MAX_OWNED_AND_MULTIPART",
+      "focus": "96 positional decisions; historical multi-atom subject evidence",
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "semanticRequestHash": "c051151ee4db6c013638b78171fd5b7bcd298fd8eca6d77d3275f2db221d0fbe",
+      "providerRequestHash": "4c1ce0d4999fc2f5071aa85ce88d02881daeb91ad0c937f8362354fa7e82e565",
+      "providerRequestBytes": 110857,
+      "providerBodyFile": "wire-bodies/SRC-089_RESOURCE_BOUNDED_SOURCE_PACKING_V1_PACK_001.json",
+      "providerBodySha256": "4c1ce0d4999fc2f5071aa85ce88d02881daeb91ad0c937f8362354fa7e82e565",
+      "maxCompletionTokens": 25088,
+      "decisionCountExpected": 96,
+      "maxClaimsPerDecision": 10,
+      "maxClaimsTotal": 129,
+      "maxResponseUtf8Bytes": 49152,
+      "differsFromHistoricalP5F": true
+    },
+    {
+      "role": "L1472_OWNER_OMISSION",
+      "focus": "historical L1472 owner omission",
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "semanticRequestHash": "ff5de43925e1d85f60a2c81c512a31d31a5bc6a4acb49d830ada2a0d6d50f9c6",
+      "providerRequestHash": "62b8eea17584aeb3bf460084388dc0d18da39ea27e8f4c287a66bfeffd3bcb79",
+      "providerRequestBytes": 105792,
+      "providerBodyFile": "wire-bodies/SRC-095_RESOURCE_BOUNDED_SOURCE_PACKING_V1_PACK_017.json",
+      "providerBodySha256": "62b8eea17584aeb3bf460084388dc0d18da39ea27e8f4c287a66bfeffd3bcb79",
+      "maxCompletionTokens": 25088,
+      "decisionCountExpected": 96,
+      "maxClaimsPerDecision": 10,
+      "maxClaimsTotal": 129,
+      "maxResponseUtf8Bytes": 49152,
+      "differsFromHistoricalP5F": true
+    },
+    {
+      "role": "L1710_RETYPING",
+      "focus": "historical L1710 whole-atom retyping",
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "semanticRequestHash": "55dfc3c220d9e47db5123214af09acf1be088c0dd289294a01d34ad010a34289",
+      "providerRequestHash": "bd4a42f6d345e0c746f5790502fd507e996f124922d1905f9f409e462ae41d25",
+      "providerRequestBytes": 118769,
+      "providerBodyFile": "wire-bodies/SRC-095_RESOURCE_BOUNDED_SOURCE_PACKING_V1_PACK_020.json",
+      "providerBodySha256": "bd4a42f6d345e0c746f5790502fd507e996f124922d1905f9f409e462ae41d25",
+      "maxCompletionTokens": 25088,
+      "decisionCountExpected": 96,
+      "maxClaimsPerDecision": 10,
+      "maxClaimsTotal": 129,
+      "maxResponseUtf8Bytes": 49152,
+      "differsFromHistoricalP5F": true
+    },
+    {
+      "role": "MULTIPART_RELATION",
+      "focus": "historical multi-atom relation endpoint",
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "semanticRequestHash": "43483ff17d4758a93019d10f1cb953a287ae23b66acff41a826d656c2acc5a92",
+      "providerRequestHash": "ebd53970735429436a0f79b2c97eaa25bd54be6dfb1f916268a8bef84bb37287",
+      "providerRequestBytes": 108658,
+      "providerBodyFile": "wire-bodies/SRC-095_RESOURCE_BOUNDED_SOURCE_PACKING_V1_PACK_011.json",
+      "providerBodySha256": "ebd53970735429436a0f79b2c97eaa25bd54be6dfb1f916268a8bef84bb37287",
+      "maxCompletionTokens": 25088,
+      "decisionCountExpected": 96,
+      "maxClaimsPerDecision": 10,
+      "maxClaimsTotal": 129,
+      "maxResponseUtf8Bytes": 49152,
+      "differsFromHistoricalP5F": true
+    }
+  ],
+  "historicalArtifacts": {
+    "p5d": "PRESERVED_UNCHANGED",
+    "p5f": "PRESERVED_UNCHANGED; hash identities deliberately differ from P5H"
+  },
+  "executionGate": {
+    "providerExecutionAuthorized": false,
+    "freshExplicitAuthorizationRequired": true,
+    "maximumProviderCallsIfAuthorized": 4,
+    "full31PackCohortAuthorized": false,
+    "goldRead": false,
+    "semanticScore": "NOT_RUN"
+  },
+  "providerCalls": 0,
+  "goldRead": false
+}
