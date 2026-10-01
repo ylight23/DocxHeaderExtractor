@@ -1,0 +1,747 @@
+{
+  "schemaVersion": "v5-p5p-bound-claim-refusal-audit-v1",
+  "status": "PROVIDER_FREE_COMPLETE_SEMANTICS_UNJUDGED",
+  "source": "artifacts/v5-p5o-v32-semantic-cohort-manifest/result.v1.json",
+  "providerCalls": 0,
+  "goldRead": false,
+  "semanticScore": "NOT_RUN",
+  "classificationBoundary": {
+    "modelError": "Only mechanical model-output contract/addressing violations are classified here.",
+    "binderTooStrict": "NOT_ASSERTED without semantic evidence; no binder change is licensed by this audit.",
+    "contractDesignError": "NOT_ASSERTED without a repeated measured pattern.",
+    "expectedRefusal": "NOT_ASSERTED without Gold semantic judgment."
+  },
+  "rows": [
+    {
+      "role": "MAX_OWNED_AND_MULTIPART",
+      "rawClaims": 21,
+      "parsedSparseDecisions": 21,
+      "boundClaims": [
+        {
+          "ClaimId": "v5claim21-221ac0cf1c8e1a383f05d8e9a9330ebe",
+          "subject": "1|706.7916977163461|92.11359375|208.32911249999998|THE GOVERNMENT:0-14",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "Value": "THE GOVERNMENT",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-460f6b5caf79225c5d9635ac6efdb6ca",
+          "subject": "1|706.8086153017241|256.15359375|487.2693749999999|THE SOCIALIST REPUBLIC OF VIETNAM:0-33",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "Value": "THE SOCIALIST REPUBLIC OF VIETNAM",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-8ca016bb619fcdc991275cbfec751482",
+          "subject": "1|658.7163157894735|97.401796875|503.44335937499994|No . 1 95/20 1 3/ND-CP Hanoi, November 21, 2013:0-43",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "Value": "No. 195/2013/ND-CP Hanoi, November 21, 2013",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-d645cad3dedb128f633a727b9b5f84e3",
+          "subject": "1|611.7726562500001|281.078203125|330.38484375|DECREE:0-6",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "DECREE",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-7dda339e1ddd68fb00f003b265c8b9a1",
+          "subject": "1|583.8950285993312|81.08507812500005|530.511825|DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,:0-65",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-dc958d6aca7d177c756a26089aab6096",
+          "subject": "1|570.236689453125|229.56328125000005|382.2239062499999|THE PUBLICATION LAW (*):0-23",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "THE PUBLICATION LAW (*)",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-184490ea270f9bff094d757acd6a63f1",
+          "subject": "1|541.391347976434|71.712890625|444.5240625|Pursuant to the December 25, 2001 Law on Organization ofthe Government;:0-71",
+          "Predicate": "REFERENCES",
+          "Value": null,
+          "object": "1|513.6953851744184|71.712890625|329.2040625000001|Pursuant to the November 20, 2012 Publication Law;:34-49",
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-4edab5e3ddc3197a95dec64830d1b96c",
+          "subject": "1|513.6953851744184|71.712890625|329.2040625000001|Pursuant to the November 20, 2012 Publication Law;:0-50",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "Value": "Publication Law",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-5edbb1192fec2de3de7d2f71a284e666",
+          "subject": "1|416.58786621093765|72.474609375|121.99453125|Chapter I:0-9",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "Chapter I",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-0297b8377d40e0e1d16cbff646eb3fa0",
+          "subject": "1|389.6411098345591|237.966328125|373.993359375|GENERAL PROVISIONS:0-18",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "GENERAL PROVISIONS",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-ee1032e1fe336f069517e11c0ca9903d",
+          "subject": "1|360.87111328125025|72.09375|347.467265625|Article 1. Scope of regulation and subjects of application:0-56",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "Article 1. Scope ofregulation and subjects ofapplication",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-fd5d4a3b148d946491d9e1dc2bb79e5b",
+          "subject": "1|208.53130859375042|72.09374999999994|531.0232031249999|Article 2. Tasks and powers of the Ministry of Information and Communications in performing:0-89",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing the state management ofpublication activities",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-c0c29c8a7fb6303a4d0276a3759b17fd",
+          "subject": "2|323.7912408088232|72.09375000000006|520.1451281249999|Article 3. Responsibilities of ministries and ministerial-level agencies in performing the state:0-95",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state management ofpublication activities",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-06f0569cb0b5a30b43aeeecf8fd922c3",
+          "subject": "3|476.73026404272156|72.09374999999997|517.1463281249999|Article 4. Tasks and powers of provincial-level People ’ s Committees in performing the state:0-90",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "Article 4. Tasks and powers ofprovincial-level People’s Committees in performing the state management ofpublication activities",
+          "object": null,
+          "State": 1
+        }
+      ],
+      "refusals": [
+        {
+          "Key": "sparse-decision-12",
+          "Value": "duplicate-owned-index",
+          "mechanicalClass": "MODEL_ADDRESSING_OR_MULTIPART_ERROR",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "sparse-decision-13",
+          "Value": "duplicate-owned-index",
+          "mechanicalClass": "MODEL_ADDRESSING_OR_MULTIPART_ERROR",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "sparse-decision-14",
+          "Value": "duplicate-owned-index",
+          "mechanicalClass": "MODEL_ADDRESSING_OR_MULTIPART_ERROR",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "sparse-decision-15",
+          "Value": "duplicate-owned-index",
+          "mechanicalClass": "MODEL_ADDRESSING_OR_MULTIPART_ERROR",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "sparse-decision-16",
+          "Value": "duplicate-owned-index",
+          "mechanicalClass": "MODEL_ADDRESSING_OR_MULTIPART_ERROR",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "sparse-decision-17",
+          "Value": "duplicate-owned-index",
+          "mechanicalClass": "MODEL_ADDRESSING_OR_MULTIPART_ERROR",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "sparse-decision-20",
+          "Value": "duplicate-owned-index",
+          "mechanicalClass": "MODEL_ADDRESSING_OR_MULTIPART_ERROR",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        }
+      ]
+    },
+    {
+      "role": "L1472_OWNER_OMISSION",
+      "rawClaims": 10,
+      "parsedSparseDecisions": 8,
+      "boundClaims": [],
+      "refusals": [
+        {
+          "Key": "proposal-1",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-10",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-2",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-4",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-5",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-52",
+          "Value": "'L1473:S0' contains that text but not in the context given",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-6",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-672",
+          "Value": "'L1509:S0' contains that text but not in the context given",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-8",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-9",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        }
+      ]
+    },
+    {
+      "role": "L1710_RETYPING",
+      "rawClaims": 22,
+      "parsedSparseDecisions": 22,
+      "boundClaims": [
+        {
+          "ClaimId": "v5claim21-2556fc5329d8cfa354c79f9a29ede26c",
+          "subject": "46|665.0652452202303|92.65622690744412|527.3461807043406|[QPACK] Kra sic, C., Bishop, M ., and A. Frindell, Ed., \"QPACK: Field Compression for HTTP/3\",:0-91",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "Value": "QPACK: Field Compression for HTTP/3",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-a1cbf2275e38f4d5961624dabaafeb4a",
+          "subject": "46|337.19459663147245|87.40622508464295|524.3452469012273|[RFC8174] Leiba, B ., \"Ambiguity of Upperc a se vs Lowerc a se in RFC 2119 Key Words\", B CP 14,:0-79",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "Value": "Ambiguity ofUppercase vs Lowercase in RFC 2119 Key Words",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-68dbed07a398a708eab2a4e7b51bb5ea",
+          "subject": "46|207.44245958627857|85.15623075757058|508.555690718296|[BREACH] Gluck, Y., Harris, N., and A. Pra do, \"BREACH : Reviving the CRIME Atta ck\", July:0-81",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "Value": "BREACH: Reviving the CRIME Attack",
+          "object": null,
+          "State": 1
+        }
+      ],
+      "refusals": [
+        {
+          "Key": "proposal-10",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-131",
+          "Value": "'L1640:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-161",
+          "Value": "'L1643:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-191",
+          "Value": "'L1646:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-20",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-21",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-22",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-251",
+          "Value": "'L1652:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-31",
+          "Value": "'L1632:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-341",
+          "Value": "'L1661:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-371",
+          "Value": "'L1663:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-401",
+          "Value": "'L1665:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-431",
+          "Value": "'L1667:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-461",
+          "Value": "'L1669:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-491",
+          "Value": "'L1671:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-521",
+          "Value": "'L1673:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-551",
+          "Value": "'L1675:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-61",
+          "Value": "'L1635:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-91",
+          "Value": "'L1637:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        }
+      ]
+    },
+    {
+      "role": "MULTIPART_RELATION",
+      "rawClaims": 53,
+      "parsedSparseDecisions": 53,
+      "boundClaims": [
+        {
+          "ClaimId": "v5claim21-db4fcdc5fe885bff6be577f3bc61b815",
+          "subject": "26|756.959241967665|91.291711914052|123.300930418711|Frame:0-5",
+          "Predicate": "DOCUMENT_IDENTITY",
+          "Value": "RFC 9114 HTTP/3 June 2022",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-74c81d3a293c1002bcc1cfe1ca077e89",
+          "subject": "26|757.1416660852643|446.8117218810644|483.6708219773384|Section:0-7",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "Section 7.2 Frame Definitions",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-275e0fae539eb8dd9ab25c2874588844",
+          "subject": "26|732.5030047852962|446.99170728123204|504.1203125036989|Section 7.2.7:0-13",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "Value": "Section 7.2.7",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-52796ae193fd0cbd4f9333611b21e830",
+          "subject": "26|708.1514427852961|446.99170728123204|504.14031201541695|Section 7.2.8:0-13",
+          "Predicate": "NAVIGATION_REPRESENTATION",
+          "Value": "Section 7.2.8",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-e05d63eda0ac5013991050cea9b1a8ce",
+          "subject": "26|689.0268628194365|83.52171444933255|320.25593465529863|Table 1 : HTTP/3 Frames and Stream Type Overview:0-47",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "Table 1: HTTP/3 Frames and Stream Type Overview",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-fa48758ff91d647a5371d6f2e484c3fc",
+          "subject": "26|598.496856|66.43425|180.02625|7. 1. Frame Layout:0-17",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "7.1. Frame Layout",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-36b529be3416de12417697fb4ef5487e",
+          "subject": "26|471.273781507698|65.696255126961|212.87357738847288|Figure 3: HTTP/3 Frame Format:0-29",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "Figure 3: HTTP/3 Frame Format",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-5dc07d897c432efd7d398d988d975614",
+          "subject": "26|207.74134399999997|66.43425|85.89825|7. 2.:0-4",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "7.2.",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-78c3b386d05522f3813e792951b37121",
+          "subject": "26|186.85083954481985|66.346239257796|125.68479052510202|7.2.1. DATA:0-11",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "7.2.1. DATA",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-b3e2754663ff2cea4d5c851b5192eb42",
+          "subject": "27|628.3752384149244|65.696255126961|166.64470605231597|Figure 4: DATA Frame:0-20",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "Figure 4: DATA Frame",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-fdd180951db52ad9080d959de3d681fa",
+          "subject": "27|603.443366710828|66.346239257796|146.764275875874|7.2.2. HEADERS:0-14",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "7.2.2. HEADERS",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-5ec685c426cb08736e72e203a66a697f",
+          "subject": "27|464.4538925899704|65.696255126961|187.64419335621594|Figure 5: HEADERS Frame:0-22",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "Figure 5: HEADERSFrame",
+          "object": null,
+          "State": 1
+        },
+        {
+          "ClaimId": "v5claim21-e4903a02996839940062d7d68e36a05d",
+          "subject": "27|388.51347021606017|66.346239257796|173.31362768151902|7.2.3. CANCEL_PUSH:0-18",
+          "Predicate": "STRUCTURAL_REGION",
+          "Value": "7.2.3. CANCEL_PUSH",
+          "object": null,
+          "State": 1
+        }
+      ],
+      "refusals": [
+        {
+          "Key": "proposal-10",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-11",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-16",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-161",
+          "Value": "'L0921:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-17",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-18",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-19",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-20",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-21",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-23",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-25",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-27",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-281",
+          "Value": "'L0933:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-29",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-3",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-301",
+          "Value": "'L0935:S0' does not contain that text",
+          "mechanicalClass": "EXACT_BINDING_MISMATCH_SEMANTIC_UNJUDGED",
+          "semanticDisposition": "REQUIRES_GOLD_OR_HUMAN_SEMANTIC_REVIEW"
+        },
+        {
+          "Key": "proposal-31",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-32",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-33",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-34",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-35",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-36",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-37",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-38",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-4",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-41",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-42",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-43",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-44",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-45",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-46",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-48",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-5",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-50",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-51",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-52",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-53",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-6",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-8",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        },
+        {
+          "Key": "proposal-9",
+          "Value": "whole-atom-must-omit-verbatim-text",
+          "mechanicalClass": "MODEL_REPRESENTATION_CONTRACT_VIOLATION",
+          "semanticDisposition": "MODEL_OUTPUT_NONCOMPLIANT_NOT_BINDER_TOO_STRICT"
+        }
+      ]
+    }
+  ]
+}
