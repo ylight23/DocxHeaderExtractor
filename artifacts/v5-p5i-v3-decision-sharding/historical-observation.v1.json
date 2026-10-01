@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "v5-p5i-historical-observation-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "p5f": [
+    {
+      "role": "MAX_OWNED_AND_MULTIPART",
+      "finishReason": null,
+      "rawResponseBytes": 0,
+      "returnedDecisions": null,
+      "returnedClaims": null,
+      "completionTokens": null,
+      "responseBytesPerReturnedDecision": null,
+      "claimsPerReturnedDecision": null,
+      "completionTokensPerReturnedDecision": null
+    },
+    {
+      "role": "L1472_OWNER_OMISSION",
+      "finishReason": "stop",
+      "rawResponseBytes": 72537,
+      "returnedDecisions": 192,
+      "returnedClaims": 192,
+      "completionTokens": 19652,
+      "responseBytesPerReturnedDecision": 377.796875,
+      "claimsPerReturnedDecision": 1,
+      "completionTokensPerReturnedDecision": 102.35416666666667
+    },
+    {
+      "role": "L1710_RETYPING",
+      "finishReason": "stop",
+      "rawResponseBytes": 35257,
+      "returnedDecisions": 96,
+      "returnedClaims": 96,
+      "completionTokens": 10133,
+      "responseBytesPerReturnedDecision": 367.2604166666667,
+      "claimsPerReturnedDecision": 1,
+      "completionTokensPerReturnedDecision": 105.55208333333333
+    },
+    {
+      "role": "MULTIPART_RELATION",
+      "finishReason": "stop",
+      "rawResponseBytes": 42923,
+      "returnedDecisions": 96,
+      "returnedClaims": 96,
+      "completionTokens": 11341,
+      "responseBytesPerReturnedDecision": 447.1145833333333,
+      "claimsPerReturnedDecision": 1,
+      "completionTokensPerReturnedDecision": 118.13541666666667
+    }
+  ],
+  "p5f2": [
+    {
+      "role": "MAX_OWNED_AND_MULTIPART",
+      "finishReason": "stop",
+      "rawResponseBytes": 49560,
+      "returnedDecisions": 61,
+      "returnedClaims": 61,
+      "completionTokens": 11672,
+      "responseBytesPerReturnedDecision": 812.4590163934427,
+      "claimsPerReturnedDecision": 1,
+      "completionTokensPerReturnedDecision": 191.34426229508196
+    },
+    {
+      "role": "L1472_OWNER_OMISSION",
+      "finishReason": "length",
+      "rawResponseBytes": 96196,
+      "returnedDecisions": null,
+      "returnedClaims": null,
+      "completionTokens": 25088,
+      "responseBytesPerReturnedDecision": null,
+      "claimsPerReturnedDecision": null,
+      "completionTokensPerReturnedDecision": null
+    },
+    {
+      "role": "L1710_RETYPING",
+      "finishReason": "stop",
+      "rawResponseBytes": 19039,
+      "returnedDecisions": 65,
+      "returnedClaims": 66,
+      "completionTokens": 5553,
+      "responseBytesPerReturnedDecision": 292.9076923076923,
+      "claimsPerReturnedDecision": 1.0153846153846153,
+      "completionTokensPerReturnedDecision": 85.43076923076923
+    },
+    {
+      "role": "MULTIPART_RELATION",
+      "finishReason": null,
+      "rawResponseBytes": 0,
+      "returnedDecisions": null,
+      "returnedClaims": null,
+      "completionTokens": null,
+      "responseBytesPerReturnedDecision": null,
+      "claimsPerReturnedDecision": null,
+      "completionTokensPerReturnedDecision": null
+    }
+  ],
+  "interpretation": "Empirical bytes/claims/tokens per returned decision are diagnostics only; no response bound is derived from an average."
+}

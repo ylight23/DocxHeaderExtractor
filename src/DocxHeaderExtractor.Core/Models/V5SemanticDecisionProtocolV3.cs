@@ -441,8 +441,28 @@ public static class V5SemanticDecisionContractV3
         IReadOnlyList<EvidenceNode> contextOnlyEvidence,
         IReadOnlyList<SemanticSourceAtom> atoms,
         ClaimBindingScope scope)
+        => Bind(requestId, response, contract, ownedEvidence, contextOnlyEvidence, atoms, scope, originalOwnedOrdinals: null);
+
+    /// <summary>
+    /// Binds a sharded decision response with original-pack ownership ordinals. Local decision
+    /// indexes remain wire-only: harness claim identity uses the stable original ordinal and the
+    /// claim's bounded ordinal within that original subject.
+    /// </summary>
+    public static V5DecisionBindingResultV3 Bind(
+        string requestId,
+        V5SemanticDecisionResponseV3 response,
+        DocumentTaskContract contract,
+        IReadOnlyList<EvidenceNode> ownedEvidence,
+        IReadOnlyList<EvidenceNode> contextOnlyEvidence,
+        IReadOnlyList<SemanticSourceAtom> atoms,
+        ClaimBindingScope scope,
+        IReadOnlyList<int>? originalOwnedOrdinals)
     {
         ArgumentNullException.ThrowIfNull(response);
+        if (originalOwnedOrdinals is not null &&
+            (originalOwnedOrdinals.Count != ownedEvidence.Count || originalOwnedOrdinals.Any(ordinal => ordinal < 0) ||
+             originalOwnedOrdinals.Distinct().Count() != originalOwnedOrdinals.Count))
+            throw new InvalidOperationException("decision-original-owned-ordinal-map-invalid");
         try
         {
             ValidateBounds(response, contract, ownedEvidence.Count, contextOnlyEvidence.Count);
@@ -463,8 +483,9 @@ public static class V5SemanticDecisionContractV3
         {
             var decision = response.Decisions[decisionIndex];
             var primary = ownedEvidence[decisionIndex];
-            foreach (var claim in decision.Claims)
+            for (var claimIndex = 0; claimIndex < decision.Claims.Count; claimIndex++)
             {
+                var claim = decision.Claims[claimIndex];
                 var key = claim.ExistingClaimId ?? $"proposal-{ordinal + 1}";
                 try
                 {
@@ -503,7 +524,10 @@ public static class V5SemanticDecisionContractV3
                         throw new InvalidOperationException("subject-alias-not-in-request");
                     if (target?.SourceParts.Any(part => !scope.VisibleAliases.Contains(part.SourceAlias)) == true)
                         throw new InvalidOperationException("target-alias-not-visible");
-                    proposals.Add(new IndexedSemanticClaimProposalV2_1(ordinal, proposal));
+                    var identityOrdinal = originalOwnedOrdinals is null
+                        ? ordinal
+                        : checked(originalOwnedOrdinals[decisionIndex] * V5SemanticDecisionResponseBoundsV3.HistoricalMaxClaimsPerSubject + claimIndex);
+                    proposals.Add(new IndexedSemanticClaimProposalV2_1(identityOrdinal, proposal));
                 }
                 catch (InvalidOperationException ex)
                 {

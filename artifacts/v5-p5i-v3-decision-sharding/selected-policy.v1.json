@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "v5-p5i-selected-policy-v1",
+  "policyId": "v5-subject-ownership-sharding-1.0",
+  "providerCalls": 0,
+  "goldRead": false,
+  "selectedMaxOwnedDecisionsPerCall": 32,
+  "selection": "32 is the largest conservative candidate: 48 is only 13 decisions below the observed 61-decision stop, while 32 leaves materially more headroom without choosing the unnecessary 24-decision multiplication.",
+  "single96DecisionQualification": "CLOSED_NOT_PROMOTED",
+  "semanticScore": "NOT_RUN"
+}

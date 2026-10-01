@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "v5-p5i-v3-decision-sharding-audit-v1",
+  "status": "PROVIDER_FREE_COMPLETE",
+  "providerCalls": 0,
+  "goldRead": false,
+  "single96DecisionLane": "CLOSED_NOT_PROMOTED",
+  "selectedMaxOwnedDecisionsPerCall": 32,
+  "ownershipGapCount": 0,
+  "ownershipDuplicateCount": 0,
+  "visibilityDriftCount": 0,
+  "sourceEvidenceDriftCount": 0,
+  "unrepresentableRelationTargetCount": 0,
+  "durableIdentityDriftCount": 0,
+  "nextProviderAction": "NONE without a newly frozen execution manifest and explicit authorization"
+}
