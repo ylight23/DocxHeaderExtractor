@@ -1,0 +1,781 @@
+{
+  "schemaVersion": "v5-p5q-gold-offline-audit-v1",
+  "source": "artifacts/v5-p5o-v32-semantic-cohort-manifest/result.v1.json",
+  "providerCalls": 0,
+  "goldRead": true,
+  "scoreability": {
+    "occurrencePredicates": [
+      "DOCUMENT_IDENTITY",
+      "NAVIGATION_REPRESENTATION",
+      "STRUCTURAL_REGION"
+    ],
+    "relationClaims": "NOT_EVALUABLE: canonical Gold has no relation axis"
+  },
+  "boundOccurrenceScore": {
+    "truePositive": 0,
+    "falsePositive": 29,
+    "falseNegative": 139,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "documents": [
+      {
+        "documentId": "SRC-089",
+        "goldOccurrences": 36,
+        "boundOccurrencePredictions": 13,
+        "truePositive": 0,
+        "falsePositive": 13,
+        "falseNegative": 36,
+        "counterfactual": {
+          "boundOccurrencePredictions": 13,
+          "truePositive": 0,
+          "falsePositive": 13,
+          "falseNegative": 36
+        },
+        "misses": [
+          {
+            "identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0014:S0:0-9|L0015:S0:0-18",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0016:S0:0-56",
+            "disposition": "EXACT_BINDING_LOSS_OR_SELECTION_MISMATCH"
+          },
+          {
+            "identity": "L0024:S0:0-89|L0025:S0:0-45",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0051:S0:0-95|L0052:S0:0-35",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0080:S0:0-90|L0081:S0:0-35",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0094:S0:0-70",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0106:S0:0-80|L0107:S0:0-88|L0108:S0:0-13",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0109:S0:0-33",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0117:S0:0-22",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0126:S0:0-86|L0127:S0:0-88|L0128:S0:0-13",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0160:S0:0-10|L0161:S0:0-10",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0162:S0:0-86",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0174:S0:0-89|L0175:S0:0-51",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0195:S0:0-81",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0243:S0:0-40",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0246:S0:0-26",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0249:S0:0-16",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0260:S0:0-62",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0284:S0:0-11|L0285:S0:0-41",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0286:S0:0-89|L0287:S0:0-41",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0317:S0:0-81",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0350:S0:0-95",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0359:S0:0-95",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0382:S0:0-10|L0383:S0:0-45",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0384:S0:0-71",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0426:S0:0-96|L0427:S0:0-44",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0455:S0:0-90|L0456:S0:0-27",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0478:S0:0-59",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0490:S0:0-36",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0499:S0:0-92|L0500:S0:0-58",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0522:S0:0-92|L0523:S0:0-12",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0535:S0:0-9|L0536:S0:0-25",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0537:S0:0-18",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0555:S0:0-93|L0556:S0:0-12",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0572:S0:0-41",
+            "disposition": "NO_MODEL_PROPOSAL"
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldOccurrences": 103,
+        "boundOccurrencePredictions": 16,
+        "truePositive": 0,
+        "falsePositive": 16,
+        "falseNegative": 103,
+        "counterfactual": {
+          "boundOccurrencePredictions": 27,
+          "truePositive": 0,
+          "falsePositive": 27,
+          "falseNegative": 103
+        },
+        "misses": [
+          {
+            "identity": "L0008:S0:0-6",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0009:S0:0-8",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0015:S0:0-18",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0023:S0:0-16",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0034:S0:0-17",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0129:S0:0-15",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0134:S0:0-27",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0146:S0:0-23",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0162:S0:0-27",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0185:S0:0-26",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0205:S0:0-32",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0243:S0:0-34",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0244:S0:0-35",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0268:S0:0-32",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0277:S0:0-20",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0288:S0:0-29",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0305:S0:0-21",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0335:S0:0-38",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0336:S0:0-25",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0396:S0:0-41",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0428:S0:0-39",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0451:S0:0-16",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0472:S0:0-24",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0483:S0:0-30",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0497:S0:0-22",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0514:S0:0-35",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0551:S0:0-36",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0557:S0:0-23",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0605:S0:0-17",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0608:S0:0-4|L0608:S1:0-11",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0674:S0:0-21",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0677:S0:0-21",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0693:S0:0-24",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0760:S0:0-34",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0773:S0:0-22",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0779:S0:0-27",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0793:S0:0-26",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0808:S0:0-27",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0852:S0:0-22",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0870:S0:0-19",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0893:S0:0-28",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0903:S0:0-21",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0924:S0:0-17",
+            "disposition": "EXACT_BINDING_LOSS_OR_SELECTION_MISMATCH"
+          },
+          {
+            "identity": "L0944:S0:0-4|L0944:S1:0-16",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L0945:S0:0-11",
+            "disposition": "EXACT_BINDING_LOSS_OR_SELECTION_MISMATCH"
+          },
+          {
+            "identity": "L0959:S0:0-14",
+            "disposition": "EXACT_BINDING_LOSS_OR_SELECTION_MISMATCH"
+          },
+          {
+            "identity": "L0971:S0:0-18",
+            "disposition": "EXACT_BINDING_LOSS_OR_SELECTION_MISMATCH"
+          },
+          {
+            "identity": "L1011:S0:0-15",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1050:S0:0-35",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1066:S0:0-23",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1105:S0:0-19",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1143:S0:0-13",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1164:S0:0-18",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1189:S0:0-27",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1199:S0:0-17",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1223:S0:0-23",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1265:S0:0-23",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1294:S0:0-27",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1298:S0:0-22",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1301:S0:0-28",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1308:S0:0-40",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1320:S0:0-5|L1320:S1:0-32",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1333:S0:0-38",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1357:S0:0-36",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1374:S0:0-22",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1383:S0:0-24",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1399:S0:0-32",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1424:S0:0-19",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1431:S0:0-5|L1431:S1:0-10",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1436:S0:0-16",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1442:S0:0-29",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1453:S0:0-23",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1456:S0:0-49",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1465:S0:0-5|L1465:S1:0-14",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1472:S0:0-19",
+            "disposition": "EXACT_BINDING_LOSS_OR_SELECTION_MISMATCH"
+          },
+          {
+            "identity": "L1508:S0:0-27",
+            "disposition": "EXACT_BINDING_LOSS_OR_SELECTION_MISMATCH"
+          },
+          {
+            "identity": "L1540:S0:0-19",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1591:S0:0-20",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1612:S0:0-14",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1613:S0:0-5|L1613:S1:0-20",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1655:S0:0-28",
+            "disposition": "EXACT_BINDING_LOSS_OR_SELECTION_MISMATCH"
+          },
+          {
+            "identity": "L1677:S0:0-56",
+            "disposition": "EXACT_BINDING_LOSS_OR_SELECTION_MISMATCH"
+          },
+          {
+            "identity": "L1688:S0:0-12",
+            "disposition": "EXACT_BINDING_LOSS_OR_SELECTION_MISMATCH"
+          },
+          {
+            "identity": "L1710:S0:0-21",
+            "disposition": "EXACT_BINDING_LOSS_OR_SELECTION_MISMATCH"
+          },
+          {
+            "identity": "L1729:S0:0-32",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1736:S0:0-35",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1745:S0:0-30",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1750:S0:0-45",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1761:S0:0-49",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1787:S0:0-31",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1827:S0:0-23",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1856:S0:0-46",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1878:S0:0-15",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1912:S0:0-5",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1914:S0:0-1",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1940:S0:0-1",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1947:S0:0-1",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L1961:S0:0-1",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L2012:S0:0-1",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L2023:S0:0-1",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L2056:S0:0-1",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L2063:S0:0-1",
+            "disposition": "NO_MODEL_PROPOSAL"
+          },
+          {
+            "identity": "L2076:S0:0-16",
+            "disposition": "NO_MODEL_PROPOSAL"
+          }
+        ]
+      }
+    ]
+  },
+  "wholeAtomEchoCounterfactualOccurrenceScore": {
+    "truePositive": 0,
+    "falsePositive": 40,
+    "falseNegative": 139,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0
+  },
+  "exactBindingMismatches": {
+    "count": 20,
+    "rows": [
+      {
+        "role": "L1472_OWNER_OMISSION",
+        "Key": "proposal-52",
+        "Value": "'L1473:S0' contains that text but not in the context given",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1472_OWNER_OMISSION",
+        "Key": "proposal-672",
+        "Value": "'L1509:S0' contains that text but not in the context given",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-31",
+        "Value": "'L1632:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-61",
+        "Value": "'L1635:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-91",
+        "Value": "'L1637:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-131",
+        "Value": "'L1640:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-161",
+        "Value": "'L1643:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-191",
+        "Value": "'L1646:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-251",
+        "Value": "'L1652:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-341",
+        "Value": "'L1661:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-371",
+        "Value": "'L1663:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-401",
+        "Value": "'L1665:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-431",
+        "Value": "'L1667:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-461",
+        "Value": "'L1669:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-491",
+        "Value": "'L1671:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-521",
+        "Value": "'L1673:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "Key": "proposal-551",
+        "Value": "'L1675:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "MULTIPART_RELATION",
+        "Key": "proposal-161",
+        "Value": "'L0921:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "MULTIPART_RELATION",
+        "Key": "proposal-281",
+        "Value": "'L0933:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      },
+      {
+        "role": "MULTIPART_RELATION",
+        "Key": "proposal-301",
+        "Value": "'L0935:S0' does not contain that text",
+        "intentProxy": "OWNED_SUBJECT_ONLY; semantic relation/predicate intent not Gold-evaluable"
+      }
+    ],
+    "limitation": "Exact occurrence Gold cannot judge relation/predicate semantic intent; no binder conclusion follows."
+  },
+  "wholeAtomEchoCounterfactual": {
+    "rows": [
+      {
+        "role": "MAX_OWNED_AND_MULTIPART",
+        "actualBoundClaims": 14,
+        "counterfactualBoundClaims": 14,
+        "gainedBoundClaims": 0,
+        "runtimeChange": "NONE"
+      },
+      {
+        "role": "L1472_OWNER_OMISSION",
+        "actualBoundClaims": 0,
+        "counterfactualBoundClaims": 8,
+        "gainedBoundClaims": 8,
+        "runtimeChange": "NONE"
+      },
+      {
+        "role": "L1710_RETYPING",
+        "actualBoundClaims": 3,
+        "counterfactualBoundClaims": 7,
+        "gainedBoundClaims": 4,
+        "runtimeChange": "NONE"
+      },
+      {
+        "role": "MULTIPART_RELATION",
+        "actualBoundClaims": 13,
+        "counterfactualBoundClaims": 45,
+        "gainedBoundClaims": 32,
+        "runtimeChange": "NONE"
+      }
+    ],
+    "limitation": "Alias-only canonicalization is audit-only and is not a production binder/runtime change."
+  },
+  "recallDecomposition": "Gold misses are classified only from frozen proposal/binding evidence; projection loss is NOT_EVALUABLE because projection was not run.",
+  "v4F1Baseline": 0.754
+}
