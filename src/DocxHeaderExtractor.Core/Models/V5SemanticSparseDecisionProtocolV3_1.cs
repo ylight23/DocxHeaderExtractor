@@ -84,13 +84,25 @@ public sealed record V5ProviderSemanticPacketV3_2(
     [property: JsonPropertyName("visualEvidence")] IReadOnlyList<V5ProviderUnaddressedEvidenceV3_2> VisualEvidence)
 {
     public static V5ProviderSemanticPacketV3_2 From(V5SemanticDecisionRequestPacketV3 packet) => new(
-        packet.SubjectEvidence.Select((node, index) => new V5ProviderOwnedEvidenceV3_2(index, node.Modality, node.Text, node.Facts)).ToArray(),
-        packet.ContextOnlyEvidence.Select((node, index) => new V5ProviderContextEvidenceV3_2(index, node.Modality, node.Text, node.Facts)).ToArray(),
+        packet.SubjectEvidence.Select((node, index) => new V5ProviderOwnedEvidenceV3_2(index, node.Modality, node.Text, StructuralFacts(node.Facts))).ToArray(),
+        packet.ContextOnlyEvidence.Select((node, index) => new V5ProviderContextEvidenceV3_2(index, node.Modality, node.Text, StructuralFacts(node.Facts))).ToArray(),
         packet.OpenOrConflictedClaims, packet.RetrievedEvidence,
         packet.LayoutEvidence.Select(ToUnaddressed).ToArray(), packet.VisualEvidence.Select(ToUnaddressed).ToArray());
 
     private static V5ProviderUnaddressedEvidenceV3_2 ToUnaddressed(EvidenceNode node) =>
-        new(node.Modality, node.Text, node.Facts);
+        new(node.Modality, node.Text, StructuralFacts(node.Facts));
+
+    // Facts remain descriptive only. A source-local identifier must never become a second route
+    // to an occurrence: ownedIndex/contextIndex are the sole provider-facing handles.
+    private static IReadOnlyDictionary<string, string?> StructuralFacts(IReadOnlyDictionary<string, string?> facts) =>
+        facts.Where(pair => !IsAddressingKey(pair.Key)).ToDictionary(pair => pair.Key, pair => pair.Value, StringComparer.Ordinal);
+
+    private static bool IsAddressingKey(string key) =>
+        key.Contains("id", StringComparison.OrdinalIgnoreCase) ||
+        key.Contains("ordinal", StringComparison.OrdinalIgnoreCase) ||
+        key.Contains("alias", StringComparison.OrdinalIgnoreCase) ||
+        key.Contains("anchor", StringComparison.OrdinalIgnoreCase) ||
+        key.Contains("coordinate", StringComparison.OrdinalIgnoreCase);
 }
 
 public sealed record V5ProviderOwnedEvidenceV3_2(

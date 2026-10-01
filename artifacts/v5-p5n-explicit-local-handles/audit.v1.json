@@ -11,7 +11,10 @@
     "sourceAlias",
     "sourceId",
     "sourceOrdinal",
-    "anchor"
+    "anchor",
+    "paragraphId",
+    "renderBlockId"
   ],
-  "regression": "A source ordinal such as 1541 is not provider-visible and cannot be copied into ownedIndex."
+  "factsBoundary": "Structural facts may remain, but fact keys containing id, ordinal, alias, anchor or coordinate are withheld from the provider view.",
+  "regression": "A source ordinal such as 1541 and source-local fact identifiers are not provider-visible and cannot be copied into ownedIndex."
 }

@@ -22,6 +22,9 @@ public sealed class V5P5NExplicitHandleRegressionTests
         var context = providerPacket.GetProperty("contextOnlyEvidence")[0];
         Assert.Equal(0, subject.GetProperty("ownedIndex").GetInt32());
         Assert.Equal(0, context.GetProperty("contextIndex").GetInt32());
+        Assert.True(subject.GetProperty("facts").TryGetProperty("sourceType", out _));
+        Assert.False(subject.GetProperty("facts").TryGetProperty("paragraphId", out _));
+        Assert.False(subject.GetProperty("facts").TryGetProperty("renderBlockId", out _));
         var keys = Keys(providerPacket);
         Assert.DoesNotContain("sourceOrdinal", keys);
         Assert.DoesNotContain("sourceAlias", keys);
@@ -39,13 +42,15 @@ public sealed class V5P5NExplicitHandleRegressionTests
             composer = V5SemanticSparseDecisionComposerV3_1.Version,
             subjectHandle = "subjectEvidence[n].ownedIndex = n",
             contextHandle = "contextOnlyEvidence[n].contextIndex = n",
-            withheldHarnessAuthority = new[] { "sourceAlias", "sourceId", "sourceOrdinal", "anchor" },
-            regression = "A source ordinal such as 1541 is not provider-visible and cannot be copied into ownedIndex.",
+            withheldHarnessAuthority = new[] { "sourceAlias", "sourceId", "sourceOrdinal", "anchor", "paragraphId", "renderBlockId" },
+            factsBoundary = "Structural facts may remain, but fact keys containing id, ordinal, alias, anchor or coordinate are withheld from the provider view.",
+            regression = "A source ordinal such as 1541 and source-local fact identifiers are not provider-visible and cannot be copied into ownedIndex.",
         });
     }
 
     private static EvidenceNode Node(string alias, int ordinal, string text) => new("E" + ordinal, "S" + ordinal, alias, ordinal,
-        EvidenceModality.TEXT, text, new EvidenceAnchor("S" + ordinal, ordinal, new StructuralSpan(0, text.Length)), new Dictionary<string, string?>());
+        EvidenceModality.TEXT, text, new EvidenceAnchor("S" + ordinal, ordinal, new StructuralSpan(0, text.Length)),
+        new Dictionary<string, string?> { ["sourceType"] = "document_body", ["paragraphId"] = "p-" + ordinal, ["renderBlockId"] = "r-" + ordinal });
 
     private static HashSet<string> Keys(JsonElement element)
     {
