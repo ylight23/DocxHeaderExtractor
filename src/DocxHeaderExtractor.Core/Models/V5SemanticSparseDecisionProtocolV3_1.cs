@@ -70,6 +70,10 @@ public static class V5SemanticSparseDecisionComposerV3_1
 public sealed record V5SemanticSparseDecisionResponseV3_1(
     [property: JsonPropertyName("decisions")] IReadOnlyList<V5SemanticSparseSubjectDecisionV3_1> Decisions)
 {
+    /// <summary>Raw-wire parse quarantines, kept out of the provider wire and merged by Bind.</summary>
+    [JsonIgnore]
+    public IReadOnlyDictionary<string, string> ParseRefusals { get; init; } = new Dictionary<string, string>(StringComparer.Ordinal);
+
     public static V5SemanticSparseDecisionResponseV3_1 FromExhaustive(V5SemanticDecisionResponseV3 exhaustive)
     {
         ArgumentNullException.ThrowIfNull(exhaustive);
@@ -80,7 +84,12 @@ public sealed record V5SemanticSparseDecisionResponseV3_1(
 
 public sealed record V5SemanticSparseSubjectDecisionV3_1(
     [property: JsonPropertyName("ownedIndex")] int OwnedIndex,
-    [property: JsonPropertyName("claims")] IReadOnlyList<V5SemanticDecisionClaimV3> Claims);
+    [property: JsonPropertyName("claims")] IReadOnlyList<V5SemanticDecisionClaimV3> Claims)
+{
+    /// <summary>Original raw array index, not model authority. It makes quarantine evidence stable.</summary>
+    [JsonIgnore]
+    public int WireOrdinal { get; init; } = -1;
+}
 
 /// <summary>
 /// V3.1 parser/binder. Out-of-range or duplicate ownedIndex values are quarantined at their sparse
@@ -118,30 +127,40 @@ public static class V5SemanticSparseDecisionContractV3_1
         if (payload.ValueKind != JsonValueKind.Object || payload.EnumerateObject().Any(property => !property.NameEquals("decisions")) ||
             !payload.TryGetProperty("decisions", out var decisions) || decisions.ValueKind != JsonValueKind.Array || decisions.GetArrayLength() > ownedCount)
             throw new InvalidOperationException("sparse-decision-response-shape-invalid");
-        foreach (var decision in decisions.EnumerateArray())
+        var options = new JsonSerializerOptions(CanonicalJson.Options)
         {
-            if (decision.ValueKind != JsonValueKind.Object ||
-                decision.EnumerateObject().Any(property => !property.NameEquals("ownedIndex") && !property.NameEquals("claims")) ||
-                !decision.TryGetProperty("ownedIndex", out _) || !decision.TryGetProperty("claims", out var claims) ||
-                claims.ValueKind != JsonValueKind.Array)
-                throw new InvalidOperationException("sparse-decision-response-schema-invalid:missing-or-extra-decision-field");
-        }
-        try
+            UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow,
+            Converters = { new JsonStringEnumConverter() },
+        };
+        var parsed = new List<V5SemanticSparseSubjectDecisionV3_1>();
+        var refusals = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var (decision, wireOrdinal) in decisions.EnumerateArray().Select((item, index) => (item, index)))
         {
-            var options = new JsonSerializerOptions(CanonicalJson.Options)
+            var key = $"sparse-decision-{wireOrdinal}";
+            try
             {
-                UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow,
-                Converters = { new JsonStringEnumConverter() },
-            };
-            var response = payload.Deserialize<V5SemanticSparseDecisionResponseV3_1>(options)
-                ?? throw new InvalidOperationException("sparse-decision-response-empty");
-            ValidateEnvelope(response, contract, ownedCount, contextOnlyCount, bounds);
-            return response;
+                if (decision.ValueKind != JsonValueKind.Object ||
+                    decision.EnumerateObject().Any(property => !property.NameEquals("ownedIndex") && !property.NameEquals("claims")) ||
+                    !decision.TryGetProperty("ownedIndex", out _) || !decision.TryGetProperty("claims", out var claims) ||
+                    claims.ValueKind != JsonValueKind.Array)
+                    throw new InvalidOperationException("missing-or-extra-decision-field");
+                var typed = decision.Deserialize<V5SemanticSparseSubjectDecisionV3_1>(options)
+                    ?? throw new InvalidOperationException("empty-decision");
+                if (typed.Claims is null) throw new InvalidOperationException("claims-missing");
+                parsed.Add(typed with { WireOrdinal = wireOrdinal });
+            }
+            catch (JsonException)
+            {
+                refusals[key] = "json-decision-schema-invalid";
+            }
+            catch (InvalidOperationException ex)
+            {
+                refusals[key] = ex.Message;
+            }
         }
-        catch (JsonException ex)
-        {
-            throw new InvalidOperationException("sparse-decision-response-schema-invalid", ex);
-        }
+        var response = new V5SemanticSparseDecisionResponseV3_1(parsed) { ParseRefusals = refusals };
+        ValidateEnvelope(response, contract, ownedCount, contextOnlyCount, bounds);
+        return response;
     }
 
     public static V5DecisionBindingResultV3 Bind(string requestId, V5SemanticSparseDecisionResponseV3_1 response,
@@ -164,10 +183,11 @@ public static class V5SemanticSparseDecisionContractV3_1
             throw new InvalidOperationException("sparse-decision-original-owned-ordinal-map-invalid");
 
         var dense = Enumerable.Range(0, ownedEvidence.Count).Select(_ => new V5SemanticSubjectDecisionV3([])).ToArray();
-        var refusals = new Dictionary<string, string>(StringComparer.Ordinal);
+        var refusals = new Dictionary<string, string>(response.ParseRefusals, StringComparer.Ordinal);
         var seen = new HashSet<int>();
-        foreach (var (decision, wireOrdinal) in response.Decisions.Select((decision, index) => (decision, index)))
+        foreach (var (decision, parsedIndex) in response.Decisions.Select((decision, index) => (decision, index)))
         {
+            var wireOrdinal = decision.WireOrdinal >= 0 ? decision.WireOrdinal : parsedIndex;
             var key = $"sparse-decision-{wireOrdinal}";
             if (decision.OwnedIndex < 0 || decision.OwnedIndex >= ownedEvidence.Count)
             {

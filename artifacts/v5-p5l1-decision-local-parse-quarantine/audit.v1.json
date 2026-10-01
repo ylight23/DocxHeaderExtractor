@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "v5-p5l1-decision-local-parse-quarantine-audit-v1",
+  "status": "P5L1_PROVIDER_FREE_COMPLETE",
+  "protocolVersion": "v5-source-backed-decision-3.1",
+  "composerVersion": "v5-semantic-decision-composer-3.1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "wireChange": "NONE",
+  "rootBoundary": {
+    "malformedRoot": "RESPONSE_FATAL",
+    "missingDecisions": "RESPONSE_FATAL",
+    "unknownRootField": "RESPONSE_FATAL",
+    "responseByteOrDecisionCountBound": "RESPONSE_FATAL"
+  },
+  "decisionBoundary": {
+    "invalidEnumClaim": "QUARANTINE_DECISION_ONLY",
+    "unknownClaimField": "QUARANTINE_DECISION_ONLY",
+    "invalidOwnedIndex": "QUARANTINE_DECISION_ONLY",
+    "duplicateOwnedIndex": "QUARANTINE_LATER_DUPLICATE_ONLY",
+    "validSiblings": "PRESERVED_AND_BOUND"
+  },
+  "parser": "Validate outer envelope, then deserialize each raw decision independently with strict unknown-member and enum handling; merge raw parse refusals into Bind output."
+}

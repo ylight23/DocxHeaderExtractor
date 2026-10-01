@@ -30,10 +30,12 @@ public sealed class V5P5LSparseDecisionProtocolTests
         Assert.DoesNotContain("sourceId", responseKeys);
         Assert.DoesNotContain("coordinates", responseKeys);
         Assert.DoesNotContain("subjectIndex", responseKeys);
-        Assert.Throws<InvalidOperationException>(() => V5SemanticSparseDecisionContractV3_1.Parse(
-            JsonDocument.Parse("{\"decisions\":[{\"claims\":[]}]}").RootElement, fixture.Contract, 3, 1));
-        Assert.Throws<InvalidOperationException>(() => V5SemanticSparseDecisionContractV3_1.Parse(
-            JsonDocument.Parse("{\"decisions\":[{\"ownedIndex\":0,\"claims\":[],\"sourceAlias\":\"forbidden\"}]}").RootElement, fixture.Contract, 3, 1));
+        var missingDecisionField = V5SemanticSparseDecisionContractV3_1.Parse(
+            JsonDocument.Parse("{\"decisions\":[{\"claims\":[]}]}").RootElement, fixture.Contract, 3, 1);
+        Assert.Equal("missing-or-extra-decision-field", missingDecisionField.ParseRefusals["sparse-decision-0"]);
+        var extraDecisionField = V5SemanticSparseDecisionContractV3_1.Parse(
+            JsonDocument.Parse("{\"decisions\":[{\"ownedIndex\":0,\"claims\":[],\"sourceAlias\":\"forbidden\"}]}").RootElement, fixture.Contract, 3, 1);
+        Assert.Equal("missing-or-extra-decision-field", extraDecisionField.ParseRefusals["sparse-decision-0"]);
 
         // A zero-proposal response is structurally valid. Omission is a recall signal, never a
         // response-wide transport/contract fault.
@@ -140,9 +142,97 @@ public sealed class V5P5LSparseDecisionProtocolTests
         });
     }
 
+    [Fact]
+    public void Isolate_raw_claim_deserialization_failures_to_their_sparse_decision()
+    {
+        var fixture = Fixture.Create();
+
+        var invalidEnum = Parse("""
+            {"decisions":[
+              {"ownedIndex":0,"claims":[{"predicate":"STRUCTURAL_REGION","value":"zero","state":"RESOLVED","evidenceNeeds":[]}]},
+              {"ownedIndex":1,"claims":[{"predicate":"STRUCTURAL_REGION","value":"bad","state":"BAD_ENUM","evidenceNeeds":[]}]},
+              {"ownedIndex":2,"claims":[{"predicate":"STRUCTURAL_REGION","value":"two","state":"RESOLVED","evidenceNeeds":[]}]}
+            ]}
+            """, fixture);
+        Assert.Equal("json-decision-schema-invalid", invalidEnum.ParseRefusals["sparse-decision-1"]);
+        AssertBoundSiblings(Bind("p5l1-invalid-enum", invalidEnum, fixture));
+
+        var unknownClaimField = Parse("""
+            {"decisions":[
+              {"ownedIndex":0,"claims":[{"predicate":"STRUCTURAL_REGION","value":"zero","state":"RESOLVED","evidenceNeeds":[]}]},
+              {"ownedIndex":1,"claims":[{"predicate":"STRUCTURAL_REGION","value":"bad","state":"RESOLVED","evidenceNeeds":[],"unexpected":true}]},
+              {"ownedIndex":2,"claims":[{"predicate":"STRUCTURAL_REGION","value":"two","state":"RESOLVED","evidenceNeeds":[]}]}
+            ]}
+            """, fixture);
+        Assert.Equal("json-decision-schema-invalid", unknownClaimField.ParseRefusals["sparse-decision-1"]);
+        AssertBoundSiblings(Bind("p5l1-unknown-claim-field", unknownClaimField, fixture));
+
+        var outOfRange = Parse("""
+            {"decisions":[
+              {"ownedIndex":99,"claims":[]},
+              {"ownedIndex":2,"claims":[{"predicate":"STRUCTURAL_REGION","value":"two","state":"RESOLVED","evidenceNeeds":[]}]}
+            ]}
+            """, fixture);
+        var outOfRangeBinding = Bind("p5l1-out-of-range", outOfRange, fixture);
+        Assert.Equal("owned-index-out-of-range", outOfRangeBinding.Refusals["sparse-decision-0"]);
+        Assert.Equal("OWN-2", Assert.Single(outOfRangeBinding.Bound).Claim.Subject.Parts[0].Alias);
+
+        var duplicate = Parse("""
+            {"decisions":[
+              {"ownedIndex":0,"claims":[{"predicate":"STRUCTURAL_REGION","value":"zero","state":"RESOLVED","evidenceNeeds":[]}]},
+              {"ownedIndex":0,"claims":[{"predicate":"STRUCTURAL_REGION","value":"duplicate","state":"RESOLVED","evidenceNeeds":[]}]},
+              {"ownedIndex":2,"claims":[{"predicate":"STRUCTURAL_REGION","value":"two","state":"RESOLVED","evidenceNeeds":[]}]}
+            ]}
+            """, fixture);
+        var duplicateBinding = Bind("p5l1-duplicate", duplicate, fixture);
+        Assert.Equal("duplicate-owned-index", duplicateBinding.Refusals["sparse-decision-1"]);
+        Assert.Equal(new[] { "OWN-0", "OWN-2" }, duplicateBinding.Bound.Select(claim => claim.Claim.Subject.Parts[0].Alias).Order(StringComparer.Ordinal));
+
+        Assert.Throws<InvalidOperationException>(() => Parse("{}", fixture));
+        Assert.Throws<InvalidOperationException>(() => Parse("{\"unexpected\":[]}", fixture));
+        Assert.Throws<InvalidOperationException>(() => Parse("[]", fixture));
+
+        FreezeArtifact.AssertJson("artifacts/v5-p5l1-decision-local-parse-quarantine", "audit.v1.json", new
+        {
+            schemaVersion = "v5-p5l1-decision-local-parse-quarantine-audit-v1",
+            status = "P5L1_PROVIDER_FREE_COMPLETE",
+            protocolVersion = V5Protocol.ClaimSchemaVersionV3_1,
+            composerVersion = V5SemanticSparseDecisionComposerV3_1.Version,
+            providerCalls = 0,
+            goldRead = false,
+            wireChange = "NONE",
+            rootBoundary = new
+            {
+                malformedRoot = "RESPONSE_FATAL",
+                missingDecisions = "RESPONSE_FATAL",
+                unknownRootField = "RESPONSE_FATAL",
+                responseByteOrDecisionCountBound = "RESPONSE_FATAL",
+            },
+            decisionBoundary = new
+            {
+                invalidEnumClaim = "QUARANTINE_DECISION_ONLY",
+                unknownClaimField = "QUARANTINE_DECISION_ONLY",
+                invalidOwnedIndex = "QUARANTINE_DECISION_ONLY",
+                duplicateOwnedIndex = "QUARANTINE_LATER_DUPLICATE_ONLY",
+                validSiblings = "PRESERVED_AND_BOUND",
+            },
+            parser = "Validate outer envelope, then deserialize each raw decision independently with strict unknown-member and enum handling; merge raw parse refusals into Bind output.",
+        });
+    }
+
     private static V5DecisionBindingResultV3 Bind(string requestId, V5SemanticSparseDecisionResponseV3_1 response, Fixture fixture) =>
         V5SemanticSparseDecisionContractV3_1.Bind(requestId, response, fixture.Contract, fixture.Packet.SubjectEvidence,
             fixture.Packet.ContextOnlyEvidence, fixture.Atoms, fixture.Scope, fixture.OriginalOwnedOrdinals);
+
+    private static V5SemanticSparseDecisionResponseV3_1 Parse(string raw, Fixture fixture) =>
+        V5SemanticSparseDecisionContractV3_1.Parse(JsonDocument.Parse(raw).RootElement, fixture.Contract,
+            fixture.Packet.SubjectEvidence.Count, fixture.Packet.ContextOnlyEvidence.Count);
+
+    private static void AssertBoundSiblings(V5DecisionBindingResultV3 binding)
+    {
+        Assert.Equal(new[] { "OWN-0", "OWN-2" }, binding.Bound.Select(claim => claim.Claim.Subject.Parts[0].Alias).Order(StringComparer.Ordinal));
+        Assert.Equal("json-decision-schema-invalid", binding.Refusals["sparse-decision-1"]);
+    }
 
     private static HashSet<string> CollectKeys(JsonElement element)
     {
