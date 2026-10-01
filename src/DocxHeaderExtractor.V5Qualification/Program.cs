@@ -67,6 +67,9 @@ internal static class Program
         if (args.Contains("--p5m-v31-sparse-canary"))
             return await P5MSparseCanary.RunAsync(LocateRepoRoot(), args);
 
+        if (args.Contains("--p5o-v32-semantic-cohort"))
+            return await P5OV32SemanticCohort.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 
