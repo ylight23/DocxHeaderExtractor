@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "v5-full31-v32-comparison-v4-p05-v1",
+  "baselineCommit": "083d025",
+  "baselineSource": "artifacts/v5-p5q2-hardened-semantic-audit/full-31.audit.v1.json",
+  "baselinePopulation": {
+    "parentPacks": 31,
+    "acceptedExecutionLeaves": 32
+  },
+  "baseline": {
+    "productionExactOccurrence": {
+      "tp": 120,
+      "fp": 61,
+      "fn": 19,
+      "f1": 0.75
+    },
+    "semanticHeading": {
+      "tp": 125,
+      "fp": 55,
+      "fn": 14,
+      "f1": 0.7837
+    },
+    "productionRefusals": 47
+  },
+  "v32Status": "NOT_RUN_WAITING_FOR_AUTHORIZED_PROVIDER_EXECUTION",
+  "v32ProviderCalls": 0,
+  "populationsMayBeCompared": false,
+  "note": "V4/P05 remains immutable historical authority. V3.2 scores require a separately frozen execution cohort and must not be inferred from V4 responses."
+}
