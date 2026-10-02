@@ -1,0 +1,22 @@
+{
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "claims": 129,
+  "decisions": 13,
+  "claimsPerDecisionMaximum": 10,
+  "subjectPartsPerClaim": 6,
+  "targetPartsPerClaim": 6,
+  "selectionBytesPerPart": 318,
+  "maxValueUtf8Bytes": 543,
+  "maxExistingClaimIdUtf8Bytes": 42,
+  "serializedUtf8Bytes": 644516,
+  "configuredMaxResponseUtf8Bytes": 49152,
+  "handlesOnlyCounterfactualBytes": 78593,
+  "strictSubstringSelectionContributionBytes": 565923,
+  "handlesOnlyWithoutTargetsBytes": 45569,
+  "handlesOnlyWithoutAdditionalSubjectPartsBytes": 63850,
+  "handlesOnlyWithoutEitherMultipartDimensionBytes": 30826,
+  "parserOutcome": "compact-response-byte-budget-exceeded:max=49152",
+  "conclusion": "WORST_CASE_EXCEEDS_BOUND; largest repeated payload dimension is strict-substring text on primary/additional/target parts; current task has no derived claim or relation cardinality cap."
+}

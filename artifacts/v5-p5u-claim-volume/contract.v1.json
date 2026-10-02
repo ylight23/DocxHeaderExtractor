@@ -1,0 +1,14 @@
+{
+  "status": "PARSER_SEMANTIC_CLOSURE_PASS_WORST_CASE_VOLUME_FAIL_PROVIDER_BLOCKED",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "taskDerivedFiniteClaimBound": "NOT_ESTABLISHED",
+  "historicalObservedMaxAcceptedClaimsPerOwnedSubject": 2,
+  "historicalObservedMaxRawClaimsPerOwnedSubject": 8,
+  "historicalObservedMaxAcceptedClaimsPerPack": 40,
+  "historicalObservedMaxRawClaimsPerPack": 89,
+  "maxResponseUtf8Bytes": 49152,
+  "legalWorstCaseBytesFor129Claims": 644516,
+  "requiredDecision": "Do not change the 129 cap without task-level evidence. Current V3.3 grammar can exceed response bytes at that cap; retain provider gate closed pending a justified finite task bound or a justified smaller field dimension."
+}

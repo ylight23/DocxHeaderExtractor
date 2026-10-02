@@ -1,0 +1,687 @@
+{
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "source": "frozen V3.2 full31 artifacts; 31 attempts, 23 complete JSON responses, 22 parser-valid",
+  "attemptedPacks": 31,
+  "completeJsonResponses": 23,
+  "parserValidPacks": 22,
+  "unavailableOrParserInvalid": 9,
+  "rawSparseDecisions": 456,
+  "rawResponseClaims": 557,
+  "parserValidRawResponseClaims": 468,
+  "v32ParseAcceptedClaims": 453,
+  "acceptedBoundClaims": 155,
+  "maxRawClaimsPerPack": 89,
+  "maxV32ParseAcceptedClaimsPerPack": 67,
+  "maxAcceptedClaimsPerPack": 40,
+  "maxRawClaimsPerOwnedSubject": 8,
+  "maxAcceptedClaimsPerOwnedSubject": 2,
+  "rawByPredicate": {
+    "DOCUMENT_IDENTITY": 49,
+    "STRUCTURAL_REGION": 150,
+    "PARENT_OF": 129,
+    "REFERENCES": 40,
+    "CONTINUES": 151,
+    "NAVIGATION_REPRESENTATION": 34,
+    "SAME_ENTITY": 4
+  },
+  "parserValidRawByPredicate": {
+    "DOCUMENT_IDENTITY": 43,
+    "STRUCTURAL_REGION": 147,
+    "PARENT_OF": 128,
+    "REFERENCES": 40,
+    "CONTINUES": 73,
+    "NAVIGATION_REPRESENTATION": 33,
+    "SAME_ENTITY": 4
+  },
+  "acceptedByPredicate": {
+    "NAVIGATION_REPRESENTATION": 20,
+    "DOCUMENT_IDENTITY": 29,
+    "STRUCTURAL_REGION": 105,
+    "PARENT_OF": 1
+  },
+  "packs": [
+    {
+      "pack": "SRC-089:1",
+      "parser": "PARSER_VALID",
+      "decisions": 67,
+      "rawResponseClaims": 67,
+      "v32ParseAcceptedClaims": 67,
+      "acceptedBoundClaims": 15,
+      "maxRawClaimsPerOwnedSubject": 2,
+      "maxBoundClaimsPerOwnedSubject": 1,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 3,
+        "STRUCTURAL_REGION": 9,
+        "PARENT_OF": 2,
+        "REFERENCES": 2,
+        "CONTINUES": 48,
+        "NAVIGATION_REPRESENTATION": 3
+      },
+      "boundByPredicate": {
+        "NAVIGATION_REPRESENTATION": 3,
+        "DOCUMENT_IDENTITY": 3,
+        "STRUCTURAL_REGION": 9
+      }
+    },
+    {
+      "pack": "SRC-089:5",
+      "parser": "PARSER_VALID",
+      "decisions": 6,
+      "rawResponseClaims": 11,
+      "v32ParseAcceptedClaims": 11,
+      "acceptedBoundClaims": 0,
+      "maxRawClaimsPerOwnedSubject": 2,
+      "maxBoundClaimsPerOwnedSubject": 0,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 5,
+        "PARENT_OF": 5
+      },
+      "boundByPredicate": {}
+    },
+    {
+      "pack": "SRC-089:6",
+      "parser": "PARSER_VALID",
+      "decisions": 8,
+      "rawResponseClaims": 17,
+      "v32ParseAcceptedClaims": 2,
+      "acceptedBoundClaims": 2,
+      "maxRawClaimsPerOwnedSubject": 3,
+      "maxBoundClaimsPerOwnedSubject": 2,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 8,
+        "STRUCTURAL_REGION": 8,
+        "PARENT_OF": 1
+      },
+      "boundByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 1
+      }
+    },
+    {
+      "pack": "SRC-089:7",
+      "parser": "PARSER_VALID",
+      "decisions": 5,
+      "rawResponseClaims": 5,
+      "v32ParseAcceptedClaims": 5,
+      "acceptedBoundClaims": 0,
+      "maxRawClaimsPerOwnedSubject": 1,
+      "maxBoundClaimsPerOwnedSubject": 0,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 3,
+        "NAVIGATION_REPRESENTATION": 1
+      },
+      "boundByPredicate": {}
+    },
+    {
+      "pack": "SRC-095:1",
+      "parser": "PARSER_VALID",
+      "decisions": 21,
+      "rawResponseClaims": 36,
+      "v32ParseAcceptedClaims": 36,
+      "acceptedBoundClaims": 20,
+      "maxRawClaimsPerOwnedSubject": 2,
+      "maxBoundClaimsPerOwnedSubject": 1,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 2,
+        "STRUCTURAL_REGION": 19,
+        "SAME_ENTITY": 1,
+        "PARENT_OF": 13,
+        "NAVIGATION_REPRESENTATION": 1
+      },
+      "boundByPredicate": {
+        "DOCUMENT_IDENTITY": 2,
+        "NAVIGATION_REPRESENTATION": 1,
+        "STRUCTURAL_REGION": 17
+      }
+    },
+    {
+      "pack": "SRC-095:2",
+      "parser": "PARSER_VALID",
+      "decisions": 40,
+      "rawResponseClaims": 65,
+      "v32ParseAcceptedClaims": 65,
+      "acceptedBoundClaims": 40,
+      "maxRawClaimsPerOwnedSubject": 6,
+      "maxBoundClaimsPerOwnedSubject": 1,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "PARENT_OF": 24,
+        "STRUCTURAL_REGION": 39,
+        "REFERENCES": 1
+      },
+      "boundByPredicate": {
+        "STRUCTURAL_REGION": 39,
+        "DOCUMENT_IDENTITY": 1
+      }
+    },
+    {
+      "pack": "SRC-095:3",
+      "parser": "PARSER_VALID",
+      "decisions": 15,
+      "rawResponseClaims": 15,
+      "v32ParseAcceptedClaims": 15,
+      "acceptedBoundClaims": 8,
+      "maxRawClaimsPerOwnedSubject": 2,
+      "maxBoundClaimsPerOwnedSubject": 1,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 4,
+        "PARENT_OF": 2,
+        "NAVIGATION_REPRESENTATION": 8
+      },
+      "boundByPredicate": {
+        "NAVIGATION_REPRESENTATION": 8
+      }
+    },
+    {
+      "pack": "SRC-095:4",
+      "parser": "PARSER_VALID",
+      "decisions": 9,
+      "rawResponseClaims": 16,
+      "v32ParseAcceptedClaims": 16,
+      "acceptedBoundClaims": 8,
+      "maxRawClaimsPerOwnedSubject": 2,
+      "maxBoundClaimsPerOwnedSubject": 2,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 5,
+        "PARENT_OF": 4,
+        "REFERENCES": 1,
+        "CONTINUES": 2,
+        "NAVIGATION_REPRESENTATION": 2,
+        "SAME_ENTITY": 1
+      },
+      "boundByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 5,
+        "NAVIGATION_REPRESENTATION": 2
+      }
+    },
+    {
+      "pack": "SRC-095:5",
+      "parser": "PARSER_INVALID",
+      "decisions": 89,
+      "rawClaims": 89,
+      "acceptedBoundClaims": 0,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 6,
+        "STRUCTURAL_REGION": 3,
+        "PARENT_OF": 1,
+        "CONTINUES": 78,
+        "NAVIGATION_REPRESENTATION": 1
+      },
+      "boundByPredicate": {}
+    },
+    {
+      "pack": "SRC-095:6",
+      "parser": "PARSER_VALID",
+      "decisions": 23,
+      "rawResponseClaims": 23,
+      "v32ParseAcceptedClaims": 23,
+      "acceptedBoundClaims": 0,
+      "maxRawClaimsPerOwnedSubject": 7,
+      "maxBoundClaimsPerOwnedSubject": 0,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 6,
+        "PARENT_OF": 5,
+        "REFERENCES": 10,
+        "CONTINUES": 1
+      },
+      "boundByPredicate": {}
+    },
+    {
+      "pack": "SRC-095:7",
+      "parser": "PARSER_VALID",
+      "decisions": 6,
+      "rawResponseClaims": 7,
+      "v32ParseAcceptedClaims": 7,
+      "acceptedBoundClaims": 4,
+      "maxRawClaimsPerOwnedSubject": 2,
+      "maxBoundClaimsPerOwnedSubject": 2,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 2,
+        "PARENT_OF": 1,
+        "NAVIGATION_REPRESENTATION": 1,
+        "CONTINUES": 2
+      },
+      "boundByPredicate": {
+        "NAVIGATION_REPRESENTATION": 1,
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 2
+      }
+    },
+    {
+      "pack": "SRC-095:8",
+      "parser": "PARSER_VALID",
+      "decisions": 9,
+      "rawResponseClaims": 11,
+      "v32ParseAcceptedClaims": 11,
+      "acceptedBoundClaims": 3,
+      "maxRawClaimsPerOwnedSubject": 3,
+      "maxBoundClaimsPerOwnedSubject": 2,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 1,
+        "PARENT_OF": 3,
+        "CONTINUES": 1,
+        "NAVIGATION_REPRESENTATION": 1,
+        "REFERENCES": 2,
+        "SAME_ENTITY": 2
+      },
+      "boundByPredicate": {
+        "NAVIGATION_REPRESENTATION": 1,
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 1
+      }
+    },
+    {
+      "pack": "SRC-095:9",
+      "parser": "PARSER_VALID",
+      "decisions": 15,
+      "rawResponseClaims": 15,
+      "v32ParseAcceptedClaims": 15,
+      "acceptedBoundClaims": 0,
+      "maxRawClaimsPerOwnedSubject": 3,
+      "maxBoundClaimsPerOwnedSubject": 0,
+      "rawByPredicate": {
+        "STRUCTURAL_REGION": 5,
+        "DOCUMENT_IDENTITY": 1,
+        "PARENT_OF": 4,
+        "CONTINUES": 4,
+        "REFERENCES": 1
+      },
+      "boundByPredicate": {}
+    },
+    {
+      "pack": "SRC-095:10",
+      "parser": "PARSER_VALID",
+      "decisions": 5,
+      "rawResponseClaims": 10,
+      "v32ParseAcceptedClaims": 10,
+      "acceptedBoundClaims": 2,
+      "maxRawClaimsPerOwnedSubject": 2,
+      "maxBoundClaimsPerOwnedSubject": 1,
+      "rawByPredicate": {
+        "STRUCTURAL_REGION": 4,
+        "PARENT_OF": 4,
+        "DOCUMENT_IDENTITY": 1,
+        "CONTINUES": 1
+      },
+      "boundByPredicate": {
+        "STRUCTURAL_REGION": 1,
+        "DOCUMENT_IDENTITY": 1
+      }
+    },
+    {
+      "pack": "SRC-095:11",
+      "parser": "PARSER_VALID",
+      "decisions": 28,
+      "rawResponseClaims": 28,
+      "v32ParseAcceptedClaims": 28,
+      "acceptedBoundClaims": 11,
+      "maxRawClaimsPerOwnedSubject": 1,
+      "maxBoundClaimsPerOwnedSubject": 1,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 7,
+        "REFERENCES": 1,
+        "PARENT_OF": 15,
+        "NAVIGATION_REPRESENTATION": 3,
+        "CONTINUES": 1
+      },
+      "boundByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 7,
+        "NAVIGATION_REPRESENTATION": 3
+      }
+    },
+    {
+      "pack": "SRC-095:12",
+      "parser": "PARSER_VALID",
+      "decisions": 6,
+      "rawResponseClaims": 8,
+      "v32ParseAcceptedClaims": 8,
+      "acceptedBoundClaims": 1,
+      "maxRawClaimsPerOwnedSubject": 4,
+      "maxBoundClaimsPerOwnedSubject": 1,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 3,
+        "PARENT_OF": 2,
+        "NAVIGATION_REPRESENTATION": 2
+      },
+      "boundByPredicate": {
+        "DOCUMENT_IDENTITY": 1
+      }
+    },
+    {
+      "pack": "SRC-095:13",
+      "parser": "PARSER_VALID",
+      "decisions": 10,
+      "rawResponseClaims": 14,
+      "v32ParseAcceptedClaims": 14,
+      "acceptedBoundClaims": 11,
+      "maxRawClaimsPerOwnedSubject": 2,
+      "maxBoundClaimsPerOwnedSubject": 2,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 4,
+        "STRUCTURAL_REGION": 7,
+        "PARENT_OF": 3
+      },
+      "boundByPredicate": {
+        "DOCUMENT_IDENTITY": 4,
+        "STRUCTURAL_REGION": 7
+      }
+    },
+    {
+      "pack": "SRC-095:15",
+      "parser": "PARSER_VALID",
+      "decisions": 22,
+      "rawResponseClaims": 23,
+      "v32ParseAcceptedClaims": 23,
+      "acceptedBoundClaims": 4,
+      "maxRawClaimsPerOwnedSubject": 3,
+      "maxBoundClaimsPerOwnedSubject": 2,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 1,
+        "PARENT_OF": 7,
+        "REFERENCES": 2,
+        "CONTINUES": 10,
+        "NAVIGATION_REPRESENTATION": 2
+      },
+      "boundByPredicate": {
+        "NAVIGATION_REPRESENTATION": 1,
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 1,
+        "PARENT_OF": 1
+      }
+    },
+    {
+      "pack": "SRC-095:18",
+      "parser": "PARSER_VALID",
+      "decisions": 14,
+      "rawResponseClaims": 14,
+      "v32ParseAcceptedClaims": 14,
+      "acceptedBoundClaims": 0,
+      "maxRawClaimsPerOwnedSubject": 1,
+      "maxBoundClaimsPerOwnedSubject": 0,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 1,
+        "PARENT_OF": 9,
+        "CONTINUES": 3
+      },
+      "boundByPredicate": {}
+    },
+    {
+      "pack": "SRC-095:20",
+      "parser": "PARSER_VALID",
+      "decisions": 4,
+      "rawResponseClaims": 11,
+      "v32ParseAcceptedClaims": 11,
+      "acceptedBoundClaims": 8,
+      "maxRawClaimsPerOwnedSubject": 4,
+      "maxBoundClaimsPerOwnedSubject": 2,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 4,
+        "STRUCTURAL_REGION": 4,
+        "PARENT_OF": 3
+      },
+      "boundByPredicate": {
+        "DOCUMENT_IDENTITY": 4,
+        "STRUCTURAL_REGION": 4
+      }
+    },
+    {
+      "pack": "SRC-095:21",
+      "parser": "PARSER_VALID",
+      "decisions": 12,
+      "rawResponseClaims": 30,
+      "v32ParseAcceptedClaims": 30,
+      "acceptedBoundClaims": 12,
+      "maxRawClaimsPerOwnedSubject": 8,
+      "maxBoundClaimsPerOwnedSubject": 2,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 6,
+        "STRUCTURAL_REGION": 6,
+        "PARENT_OF": 18
+      },
+      "boundByPredicate": {
+        "DOCUMENT_IDENTITY": 6,
+        "STRUCTURAL_REGION": 6
+      }
+    },
+    {
+      "pack": "SRC-095:22",
+      "parser": "PARSER_VALID",
+      "decisions": 19,
+      "rawResponseClaims": 19,
+      "v32ParseAcceptedClaims": 19,
+      "acceptedBoundClaims": 0,
+      "maxRawClaimsPerOwnedSubject": 2,
+      "maxBoundClaimsPerOwnedSubject": 0,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 3,
+        "PARENT_OF": 2,
+        "NAVIGATION_REPRESENTATION": 9,
+        "REFERENCES": 4
+      },
+      "boundByPredicate": {}
+    },
+    {
+      "pack": "SRC-095:23",
+      "parser": "PARSER_VALID",
+      "decisions": 23,
+      "rawResponseClaims": 23,
+      "v32ParseAcceptedClaims": 23,
+      "acceptedBoundClaims": 6,
+      "maxRawClaimsPerOwnedSubject": 1,
+      "maxBoundClaimsPerOwnedSubject": 1,
+      "rawByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 5,
+        "PARENT_OF": 1,
+        "REFERENCES": 16
+      },
+      "boundByPredicate": {
+        "DOCUMENT_IDENTITY": 1,
+        "STRUCTURAL_REGION": 5
+      }
+    }
+  ],
+  "relationAudit": {
+    "source": "parser-valid V3.2 subset; target handles checked against frozen owned/context universe",
+    "legalTargetParts": 342,
+    "duplicateSubjectTargetPairs": 2,
+    "totalPairs": 342,
+    "sequentialOwnedEdges": 124,
+    "packBreakdown": [
+      {
+        "pack": "SRC-089:1",
+        "targetParts": 55,
+        "uniqueSubjectTargetPairs": 55,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 50,
+        "distinctTargetsPerSubjectMaximum": 4
+      },
+      {
+        "pack": "SRC-089:5",
+        "targetParts": 17,
+        "uniqueSubjectTargetPairs": 17,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 2,
+        "distinctTargetsPerSubjectMaximum": 5
+      },
+      {
+        "pack": "SRC-089:6",
+        "targetParts": 1,
+        "uniqueSubjectTargetPairs": 1,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 1,
+        "distinctTargetsPerSubjectMaximum": 1
+      },
+      {
+        "pack": "SRC-095:1",
+        "targetParts": 39,
+        "uniqueSubjectTargetPairs": 39,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 13,
+        "distinctTargetsPerSubjectMaximum": 8
+      },
+      {
+        "pack": "SRC-095:2",
+        "targetParts": 25,
+        "uniqueSubjectTargetPairs": 25,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 10,
+        "distinctTargetsPerSubjectMaximum": 5
+      },
+      {
+        "pack": "SRC-095:3",
+        "targetParts": 2,
+        "uniqueSubjectTargetPairs": 2,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 1,
+        "distinctTargetsPerSubjectMaximum": 1
+      },
+      {
+        "pack": "SRC-095:4",
+        "targetParts": 8,
+        "uniqueSubjectTargetPairs": 8,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 0,
+        "distinctTargetsPerSubjectMaximum": 1
+      },
+      {
+        "pack": "SRC-095:6",
+        "targetParts": 16,
+        "uniqueSubjectTargetPairs": 16,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 1,
+        "distinctTargetsPerSubjectMaximum": 6
+      },
+      {
+        "pack": "SRC-095:7",
+        "targetParts": 3,
+        "uniqueSubjectTargetPairs": 3,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 3,
+        "distinctTargetsPerSubjectMaximum": 1
+      },
+      {
+        "pack": "SRC-095:8",
+        "targetParts": 8,
+        "uniqueSubjectTargetPairs": 8,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 3,
+        "distinctTargetsPerSubjectMaximum": 2
+      },
+      {
+        "pack": "SRC-095:9",
+        "targetParts": 10,
+        "uniqueSubjectTargetPairs": 8,
+        "duplicatePairs": 2,
+        "ownSequentialEdges": 2,
+        "distinctTargetsPerSubjectMaximum": 2
+      },
+      {
+        "pack": "SRC-095:10",
+        "targetParts": 46,
+        "uniqueSubjectTargetPairs": 46,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 4,
+        "distinctTargetsPerSubjectMaximum": 17
+      },
+      {
+        "pack": "SRC-095:11",
+        "targetParts": 11,
+        "uniqueSubjectTargetPairs": 11,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 4,
+        "distinctTargetsPerSubjectMaximum": 1
+      },
+      {
+        "pack": "SRC-095:12",
+        "targetParts": 2,
+        "uniqueSubjectTargetPairs": 2,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 0,
+        "distinctTargetsPerSubjectMaximum": 2
+      },
+      {
+        "pack": "SRC-095:13",
+        "targetParts": 3,
+        "uniqueSubjectTargetPairs": 3,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 2,
+        "distinctTargetsPerSubjectMaximum": 1
+      },
+      {
+        "pack": "SRC-095:15",
+        "targetParts": 19,
+        "uniqueSubjectTargetPairs": 19,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 17,
+        "distinctTargetsPerSubjectMaximum": 1
+      },
+      {
+        "pack": "SRC-095:18",
+        "targetParts": 30,
+        "uniqueSubjectTargetPairs": 30,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 8,
+        "distinctTargetsPerSubjectMaximum": 4
+      },
+      {
+        "pack": "SRC-095:20",
+        "targetParts": 3,
+        "uniqueSubjectTargetPairs": 3,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 0,
+        "distinctTargetsPerSubjectMaximum": 2
+      },
+      {
+        "pack": "SRC-095:21",
+        "targetParts": 18,
+        "uniqueSubjectTargetPairs": 18,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 2,
+        "distinctTargetsPerSubjectMaximum": 8
+      },
+      {
+        "pack": "SRC-095:22",
+        "targetParts": 6,
+        "uniqueSubjectTargetPairs": 6,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 0,
+        "distinctTargetsPerSubjectMaximum": 1
+      },
+      {
+        "pack": "SRC-095:23",
+        "targetParts": 20,
+        "uniqueSubjectTargetPairs": 20,
+        "duplicatePairs": 0,
+        "ownSequentialEdges": 1,
+        "distinctTargetsPerSubjectMaximum": 4
+      }
+    ],
+    "parent05Counterexample": {
+      "predicate": "CONTINUES",
+      "targetParts": 78,
+      "uniqueSubjectTargetPairs": 78,
+      "duplicatePairs": 0,
+      "forwardOwnedAdjacentEdges": 78,
+      "structurallyInRange": "YES; checked in previous V3.2 binder result for valid claims; raw target indexes all within 96-owned universe",
+      "semanticRedundancy": "NOT_ADJUDICATED_WITHOUT_GOLD_OR_DOCUMENT_STRUCTURE_RULE"
+    }
+  },
+  "taskCardinalityAuthority": "NO_TASK_DERIVED_FINITE_CLAIM_OR_RELATION_CARDINALITY_FOUND; historical maxima are observational only"
+}

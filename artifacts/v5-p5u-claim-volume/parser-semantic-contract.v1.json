@@ -1,0 +1,15 @@
+{
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "authority": "SemanticClaimContractV2_1.Validate invoked inside V3.3 ValidateDecision before parser acceptance",
+  "malformedRelationArity": "decision-local quarantine before binder",
+  "validSiblingPreserved": true,
+  "nullClaim": "SAFE_DECISION_QUARANTINE",
+  "nullAdditionalPart": "SAFE_DECISION_QUARANTINE",
+  "nullTargetPart": "SAFE_DECISION_QUARANTINE",
+  "totalClaimsOverLimit": "RESPONSE_WIDE_REJECT",
+  "decisionClaimsOverLimit": "DECISION_LOCAL_QUARANTINE",
+  "rawByteBound": "RESPONSE_WIDE_REJECT",
+  "canonicalSerializedByteBound": "RESPONSE_WIDE_REJECT"
+}

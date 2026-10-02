@@ -148,6 +148,9 @@ public static class V5CompactDecisionContractV3_3
             catch (JsonException) { refusals[key] = "json-decision-schema-invalid"; }
             catch (InvalidOperationException ex) { refusals[key] = ex.Message; }
         }
+        var canonicalBytes = JsonSerializer.SerializeToUtf8Bytes(new V5CompactDecisionResponseV3_3(parsed), CanonicalJson.Options).Length;
+        if (canonicalBytes > bounds.MaxResponseUtf8Bytes)
+            throw new InvalidOperationException($"compact-canonical-response-byte-budget-exceeded:max={bounds.MaxResponseUtf8Bytes}:actual={canonicalBytes}");
         var seen = new HashSet<int>();
         var unique = new List<V5CompactSubjectDecisionV3_3>();
         foreach (var decision in parsed)
@@ -233,7 +236,23 @@ public static class V5CompactDecisionContractV3_3
                 ValidateSelection(part.Selection, bounds);
             }
             ValidateSelection(claim.SubjectSelection, bounds);
+            ValidateSemanticClaimShape(claim, decision.OwnedIndex, contract);
         }
+    }
+
+    private static void ValidateSemanticClaimShape(V5CompactDecisionClaimV3_3 claim, int primaryOwnedIndex, DocumentTaskContract contract)
+    {
+        static ProviderSourcePartV2_1 Handle(string alias, V5CompactDecisionTextSelectionV3_3? selection) =>
+            new(alias, selection?.VerbatimText, selection?.Occurrence);
+        var subject = new ClaimSourceEndpointV2_1([Handle($"OWNED:{primaryOwnedIndex}", claim.SubjectSelection), ..
+            (claim.AdditionalSubjectParts ?? []).Select(part => Handle($"OWNED:{part.OwnedIndex}", part.Selection))]);
+        ClaimSourceEndpointV2_1? target = claim.TargetParts is { Count: > 0 }
+            ? new ClaimSourceEndpointV2_1(claim.TargetParts.Select(part => Handle($"{part.SourceGroup}:{part.SourceIndex}", part.Selection)).ToArray())
+            : null;
+        var proposal = new SemanticClaimProposalV2_1(subject, claim.Predicate, claim.Value, target, claim.State,
+            claim.EvidenceNeeds, claim.ExistingClaimId);
+        var issues = SemanticClaimContractV2_1.Validate(new SemanticClaimResponseV2_1([proposal]), contract);
+        if (issues.Count > 0) throw new InvalidOperationException($"compact-semantic-contract-invalid:{string.Join(',', issues)}");
     }
 
     private static void ValidateSelection(V5CompactDecisionTextSelectionV3_3? selection, V5SemanticDecisionResponseBoundsV3 bounds)
