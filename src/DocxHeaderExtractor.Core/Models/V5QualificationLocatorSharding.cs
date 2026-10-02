@@ -42,6 +42,8 @@ public sealed class RequestLocalLocatorRegistry
     public IReadOnlyList<string> BoundaryHandles(int atom) => _boundaries.Where(item => item.Value.Atom == atom).Select(item => item.Key).ToArray();
     public LocatorDirectory Directory() => new(_atoms.Select((atom, index) => new LocatorDirectoryAtom($"A{index}", atom.Text,
         _boundaries.Where(pair => pair.Value.Atom == index).Select(pair => new LocatorDirectoryBoundary(pair.Key, pair.Value.Offset)).ToArray())).ToArray(), Fingerprint);
+    public CompactLocatorDirectory CompactDirectory() => new(_atoms.Select((atom, index) => new CompactLocatorDirectoryAtom(
+        $"A{index}", atom.Text, _handles.Where(pair => pair.Key.Atom == index).OrderBy(pair => pair.Key.Offset).Select(pair => pair.Value).ToArray())).ToArray(), Fingerprint);
 
     public BoundClaimEndpoint Decode(OccurrenceLocator locator)
     {
@@ -95,6 +97,9 @@ public sealed record CanonicalLocatorKey(string EndpointIdentity);
 public sealed record LocatorDirectoryBoundary(string Handle, int Utf16Offset);
 public sealed record LocatorDirectoryAtom(string Atom, string Text, IReadOnlyList<LocatorDirectoryBoundary> Boundaries);
 public sealed record LocatorDirectory(IReadOnlyList<LocatorDirectoryAtom> Atoms, string RegistryFingerprint);
+/// <summary>Compact prompt view: boundaryHandles are ordered by Unicode scalar boundary; offsets remain private to the registry.</summary>
+public sealed record CompactLocatorDirectoryAtom(string Atom, string Text, IReadOnlyList<string> BoundaryHandles);
+public sealed record CompactLocatorDirectory(IReadOnlyList<CompactLocatorDirectoryAtom> Atoms, string RegistryFingerprint);
 public sealed record QuarantinedOccurrence(int Ordinal, string Reason);
 public sealed record OccurrenceLocatorResponseResult(OccurrenceLocatorResponse Response, IReadOnlyList<QuarantinedOccurrence> Quarantined, int CanonicalUtf8Bytes);
 
