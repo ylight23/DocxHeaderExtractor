@@ -15,6 +15,7 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
     private const string BaselinePath = "eval/a99-closed-loop/production-rebaseline-v1/production-rebaseline-score.v1.json";
     private const string P6NBScorePath = "artifacts/v5-p6nb-full31-reasoning-lane/full31-gold-score-after-pack007-repeat.v1.json";
     private const string P6NCScorePath = "artifacts/v5-p6nc-boundary-prompt-full31/paired-gold-score.v1.json";
+    private const string RetryFile = "pack-retry-src089-pack002.v1.json";
     private static readonly (string Id, string Pdf)[] Documents =
         [("SRC-089", SourcePdfCorpus.Src089), ("SRC-095", SourcePdfCorpus.Src095)];
     private static readonly DocumentTaskContract Contract = DocumentProcessing.Projection.DocumentStructureTaskContract.Create();
@@ -77,6 +78,26 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
             Assert.Equal(S(request, "sourceUniverseSha256"), plans.Single(plan => plan.DocumentId == pack.DocumentId).SourceUniverseSha256);
         }
 
+        JsonDocument? retryDocument = null;
+        var retryPath = TestRepository.Path($"{Root}/{RetryFile}");
+        if (File.Exists(retryPath))
+        {
+            retryDocument = JsonDocument.Parse(File.ReadAllText(retryPath));
+            var retry = retryDocument.RootElement;
+            const string retryKey = "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002";
+            Assert.Equal("v5-p6p-single-pack-rerun-v1", S(retry, "schemaVersion"));
+            Assert.Equal(retryKey, S(retry, "target"));
+            Assert.Equal(Hash(File.ReadAllText(TestRepository.Path($"{Root}/result.v1.json"))), S(retry, "originalPrimaryResultSha256"));
+            Assert.Equal(S(requestRows[retryKey], "providerRequestHash"), S(retry, "providerRequestHash"));
+            Assert.Equal(S(requestRows[retryKey], "locatorRegistryFingerprint"), S(retry, "locatorRegistryFingerprint"));
+            Assert.True(B(retry, "transportAccepted"));
+            Assert.Equal("stop", S(retry, "finishReason"));
+            Assert.True(B(retry, "parserAccepted"));
+            Assert.Equal(Hash(S(retry, "rawContent")), S(retry, "rawContentSha256"));
+            Assert.Equal(Hash(S(retry, "rawSse")), S(retry, "rawSseSha256"));
+            Assert.Equal(I(retry, "quarantinedOccurrences") == 0, B(retry, "contractValid"));
+        }
+
         // This is the first Gold access, after all 31 raw response/SSE hashes and all request hashes passed.
         var goldByDocument = Documents.ToDictionary(document => document.Id, document =>
         {
@@ -92,12 +113,15 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
         {
             var key = Key(row);
             var pack = prepared[key];
-            using var raw = JsonDocument.Parse(S(row, "rawContent"));
+            var useRetry = retryDocument is not null && key == "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002";
+            var canonicalContent = useRetry ? S(retryDocument!.RootElement, "rawContent") : S(row, "rawContent");
+            var canonicalBytes = useRetry ? I(retryDocument!.RootElement, "rawContentUtf8Bytes") : I(row, "rawContentUtf8Bytes");
+            using var raw = JsonDocument.Parse(canonicalContent);
             var rawCount = raw.RootElement.GetProperty("headings").GetArrayLength();
             var parsed = V5FreeHeadingCandidateProtocolV1.ParseAndBindSourceParts(raw.RootElement,
-                I(row, "rawContentUtf8Bytes"), 49_152, pack.Registry, Enumerable.Range(0, pack.Registry.AtomCount).ToHashSet());
-            Assert.Equal(I(row, "boundOccurrences"), parsed.Response.Occurrences.Count);
-            Assert.Equal(I(row, "quarantinedOccurrences"), parsed.Quarantined.Count);
+                canonicalBytes, 49_152, pack.Registry, Enumerable.Range(0, pack.Registry.AtomCount).ToHashSet());
+            Assert.Equal(useRetry ? I(retryDocument!.RootElement, "boundOccurrences") : I(row, "boundOccurrences"), parsed.Response.Occurrences.Count);
+            Assert.Equal(useRetry ? I(retryDocument!.RootElement, "quarantinedOccurrences") : I(row, "quarantinedOccurrences"), parsed.Quarantined.Count);
             rawProposalCount += rawCount;
             boundCount += parsed.Response.Occurrences.Count;
             quarantineCount += parsed.Quarantined.Count;
@@ -171,6 +195,9 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
         var tpTotal = I(current, "truePositives"); var fpTotal = I(current, "falsePositives"); var fnTotal = I(current, "falseNegatives");
         var p = D(current, "truePrecision"); var r = D(current, "trueRecall"); var f1 = D(current, "f1");
         var manifestContractValid = resultRows.Count(row => B(row, "contractValid"));
+        var canonicalContractValid = retryDocument is null ? manifestContractValid :
+            manifestContractValid - (B(resultRows.Single(row => Key(row) == "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002"), "contractValid") ? 1 : 0) +
+            (B(retryDocument.RootElement, "contractValid") ? 1 : 0);
         var sourceOwnershipPass = manifest.GetProperty("sourceAuthority").GetProperty("exactOnceOwnership").GetBoolean() &&
             manifest.GetProperty("sourceAuthority").GetProperty("unchangedPackPartitionComparedWithP6NB").GetBoolean();
         var sourceHashOwnershipPass = sourceOwnershipPass && resultRows.All(row => S(row, "sourceSha256") == S(requestRows[Key(row)], "sourceSha256") &&
@@ -190,7 +217,7 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
         const bool tocIndexFalsePositiveFamilyPass = false; // No source-reviewed P6P FP family adjudication exists; fail closed.
         var gate = new
         {
-            allPacksContractValid = manifestContractValid == 31,
+            allPacksContractValid = canonicalContractValid == 31,
             noSourceHashOwnershipViolation = sourceHashOwnershipPass,
             exactF1AtLeastBaseline = f1 >= D(baselineTotal, "f1"),
             recallAtLeastBaseline = r >= D(baselineTotal, "recall"),
@@ -199,16 +226,18 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
             titleLocalStructureIndexSubgroupNoRegression = subgroupNoRegression,
             perDocumentF1 = perDocumentGates,
             tocIndexFalsePositiveFamilyNoNewDominantFamily = tocIndexFalsePositiveFamilyPass,
-            allPromotionPredicatesPass = manifestContractValid == 31 && sourceHashOwnershipPass && f1 >= D(baselineTotal, "f1") &&
+            allPromotionPredicatesPass = canonicalContractValid == 31 && sourceHashOwnershipPass && f1 >= D(baselineTotal, "f1") &&
                 r >= D(baselineTotal, "recall") && p >= 0.6582 && tpTotal >= 118 && subgroupNoRegression && perDocumentGatePass && tocIndexFalsePositiveFamilyPass,
             promotion = false,
             titleLocalStructureIndexSubgroups = subgroupRecovery.OrderBy(pair => pair.Key, StringComparer.Ordinal).ToDictionary(pair => pair.Key,
                 pair => new { gold = pair.Value.Total, p6pTp = pair.Value.P6PTp, baselineTp = pair.Value.BaselineTp, deltaTp = pair.Value.P6PTp - pair.Value.BaselineTp }),
             tocIndexFalsePositiveFamilyGate = "NOT_EVALUATED: no frozen FP-family adjudication for this P6P cohort; fails closed",
-            blockedFurtherChecks = "No promotion because not all 31 packs are contract-valid; 2 sparse occurrences were quarantined. Subgroup and FP-family gates also fail closed until source-reviewed.",
+            blockedFurtherChecks = canonicalContractValid != 31
+                ? "No promotion because a canonical P6P pack remains contract-invalid. Subgroup and FP-family gates also fail closed until source-reviewed."
+                : "No promotion: metric/per-document gates fail and TOC/index FP-family review is not established.",
         };
 
-        FreezeArtifact.AssertJson(Root, "gold-score.v1.json", new
+        FreezeArtifact.AssertJson(Root, retryDocument is null ? "gold-score.v1.json" : "gold-score-after-pack-rerun.v1.json", new
         {
             schemaVersion = "v5-p6p-document-aware-pdf-gold-score-v1",
             authority = new
@@ -223,10 +252,16 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
             execution = new
             {
                 logicalPrimaryCalls = result.GetProperty("logicalProviderCalls").GetInt32(),
+                authorizedSinglePackRerunCalls = retryDocument is null ? 0 : 1,
+                rerunArtifactSha256 = retryDocument is null ? null : Hash(File.ReadAllText(retryPath)),
+                attemptSelection = retryDocument is null
+                    ? "original P6P response per pack"
+                    : "the sole pre-identified contract-invalid pack uses its one authorized rerun, independent of Gold; all other packs use original primary responses",
                 transportRetries = resultRows.Sum(row => I(row, "retryCount")),
+                rerunTransportRetries = retryDocument is null ? 0 : I(retryDocument.RootElement, "retryCount"),
                 finishStopPacks = resultRows.Count(row => S(row, "finishReason") == "stop"),
                 parserAcceptedPacks = resultRows.Count(row => B(row, "parserAccepted")),
-                parserBinderContractValidPacks = manifestContractValid,
+                parserBinderContractValidPacks = canonicalContractValid,
                 distinctBoundOccurrences = boundCount,
                 rawProposedOccurrences = rawProposalCount,
                 quarantinedOccurrences = quarantineCount,

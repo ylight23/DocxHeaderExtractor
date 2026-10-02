@@ -1,0 +1,322 @@
+{
+  "schemaVersion": "v5-p6p-document-aware-pdf-gold-score-v1",
+  "authority": {
+    "gold": "current canonical 139-occurrence Gold; read-only",
+    "scorer": "GENERIC_EXACT_SCORER_V1",
+    "unit": "document-scoped ordered source aliases and exact UTF-16 spans",
+    "semanticSelection": "every distinct bound sparse heading locator counts as a positive membership proposal",
+    "output": "candidate sparse locator binding, placement off; runtime unpromoted",
+    "manifest": "P6P request/body/P05 ownership parity and raw content/SSE hashes verified before Gold access"
+  },
+  "execution": {
+    "logicalPrimaryCalls": 31,
+    "authorizedSinglePackRerunCalls": 1,
+    "rerunArtifactSha256": "b3de7dc46bb17d87f4d7e532a18c935d342b806ec73e16f359c5a09209424e9c",
+    "attemptSelection": "the sole pre-identified contract-invalid pack uses its one authorized rerun, independent of Gold; all other packs use original primary responses",
+    "transportRetries": 2,
+    "rerunTransportRetries": 0,
+    "finishStopPacks": 31,
+    "parserAcceptedPacks": 31,
+    "parserBinderContractValidPacks": 31,
+    "distinctBoundOccurrences": 237,
+    "rawProposedOccurrences": 237,
+    "quarantinedOccurrences": 0,
+    "maxRawResponseUtf8Bytes": 5038,
+    "providerCallsDuringScore": 0,
+    "goldRead": true,
+    "goldMutation": "NONE",
+    "placement": "OFF",
+    "runtimePromoted": false
+  },
+  "metric": {
+    "scorer": "GENERIC_EXACT_SCORER_V1",
+    "goldClaims": 139,
+    "distinctBoundOccurrences": 237,
+    "truePositives": 125,
+    "falsePositives": 112,
+    "falseNegatives": 14,
+    "truePrecision": 0.5274,
+    "trueRecall": 0.8993,
+    "f1": 0.6649
+  },
+  "baseline": {
+    "scorer": "GENERIC_EXACT_SCORER_V1",
+    "exact": {
+      "gold": 139,
+      "tp": 118,
+      "fp": 56,
+      "fn": 21,
+      "precision": 0.6782,
+      "recall": 0.8489,
+      "f1": 0.754
+    },
+    "delta": {
+      "tp": 7,
+      "fp": 56,
+      "fn": -7,
+      "precision": -0.1508,
+      "recall": 0.0504,
+      "f1": -0.0891
+    }
+  },
+  "p6nDiagnostics": {
+    "comparability": "P6N-B/C use the frozen P6N overlap/fidelity score artifacts; shown as diagnostics, not substituted for GENERIC_EXACT_SCORER_V1.",
+    "p6nb": {
+      "exact": {
+        "Tp": 121,
+        "Fp": 121,
+        "Fn": 18,
+        "Precision": 0.5,
+        "Recall": 0.8705,
+        "F1": 0.6352
+      },
+      "semanticOccurrence": {
+        "Tp": 131,
+        "Fp": 107,
+        "Fn": 8,
+        "Precision": 0.5504,
+        "Recall": 0.9424,
+        "F1": 0.695
+      },
+      "headingUnits": 242,
+      "extent": {
+        "NO_PROPOSAL": 8,
+        "SPLIT": 4,
+        "EXACT": 121,
+        "MULTIPART_DIFFERENCE": 6
+      }
+    },
+    "p6nc": {
+      "Exact": {
+        "Tp": 119,
+        "Fp": 120,
+        "Fn": 20,
+        "Precision": 0.4979,
+        "Recall": 0.8561,
+        "F1": 0.6296
+      },
+      "Semantic": {
+        "Tp": 130,
+        "Fp": 105,
+        "Fn": 9,
+        "Precision": 0.5532,
+        "Recall": 0.9353,
+        "F1": 0.6952
+      },
+      "Extent": {
+        "NO_PROPOSAL": 9,
+        "SPLIT": 4,
+        "EXACT": 119,
+        "MULTIPART_DIFFERENCE": 7
+      }
+    }
+  },
+  "goldAxisRecovery": {
+    "IDENTITY|DOCUMENT_PART|TITLE": {
+      "gold": 5,
+      "p6pTp": 3,
+      "baselineTp": 2,
+      "p6pFn": 2,
+      "baselineFn": 3
+    },
+    "IDENTITY|DOCUMENT|TITLE": {
+      "gold": 2,
+      "p6pTp": 0,
+      "baselineTp": 0,
+      "p6pFn": 2,
+      "baselineFn": 2
+    },
+    "IDENTITY|TOC|TITLE": {
+      "gold": 1,
+      "p6pTp": 1,
+      "baselineTp": 1,
+      "p6pFn": 0,
+      "baselineFn": 0
+    },
+    "STRUCTURE|SECTION|TITLE": {
+      "gold": 123,
+      "p6pTp": 117,
+      "baselineTp": 115,
+      "p6pFn": 6,
+      "baselineFn": 8
+    },
+    "STRUCTURE|TOC|TITLE": {
+      "gold": 8,
+      "p6pTp": 4,
+      "baselineTp": 0,
+      "p6pFn": 4,
+      "baselineFn": 8
+    }
+  },
+  "promotionGate": {
+    "allPacksContractValid": true,
+    "noSourceHashOwnershipViolation": true,
+    "exactF1AtLeastBaseline": false,
+    "recallAtLeastBaseline": true,
+    "precisionAtLeastMinimum": false,
+    "tpAtLeastBaseline": true,
+    "titleLocalStructureIndexSubgroupNoRegression": true,
+    "perDocumentF1": {
+      "SRC-089": {
+        "requiredMinimumF1": 0.7687,
+        "p6pF1": 0.7467,
+        "baselineF1": 0.7887,
+        "passes": false
+      },
+      "SRC-095": {
+        "requiredMinimumF1": 0.7238,
+        "p6pF1": 0.6445,
+        "baselineF1": 0.7438,
+        "passes": false
+      }
+    },
+    "tocIndexFalsePositiveFamilyNoNewDominantFamily": false,
+    "allPromotionPredicatesPass": false,
+    "promotion": false,
+    "titleLocalStructureIndexSubgroups": {
+      "DOCUMENT_TITLE": {
+        "gold": 7,
+        "p6pTp": 3,
+        "baselineTp": 2,
+        "deltaTp": 1
+      },
+      "INDEX_GROUP": {
+        "gold": 8,
+        "p6pTp": 4,
+        "baselineTp": 0,
+        "deltaTp": 4
+      },
+      "LOCAL_STRUCTURAL_HEADING": {
+        "gold": 123,
+        "p6pTp": 117,
+        "baselineTp": 115,
+        "deltaTp": 2
+      }
+    },
+    "tocIndexFalsePositiveFamilyGate": "NOT_EVALUATED: no frozen FP-family adjudication for this P6P cohort; fails closed",
+    "blockedFurtherChecks": "No promotion: metric/per-document gates fail and TOC/index FP-family review is not established."
+  },
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "gold": 36,
+      "distinctBoundOccurrences": 39,
+      "exact": {
+        "goldClaims": 36,
+        "hypothesesListed": 39,
+        "TRUE": 39,
+        "NEEDS_REVIEW": 0,
+        "unbindable": 0,
+        "truePositives": 28,
+        "falsePositives": 11,
+        "falseNegatives": 8,
+        "truePrecision": 0.7179,
+        "trueRecall": 0.7778,
+        "f1": 0.7467,
+        "needsReviewCaptureOfGold": 0,
+        "needsReviewCaptureIncludingPartial": 0,
+        "falseOnGold": 3,
+        "partialOnly": 5,
+        "reviewNoiseOutsideGold": 0,
+        "nonGoldReviewTouchingGold": 0,
+        "falsePositivesTouchingGold": 7,
+        "goldMultipartClaims": 18,
+        "exactMultipartMatches": 12,
+        "goldClaimsWithPartialPart": 1,
+        "exactMatchesWithPartialPart": 0,
+        "goldBuckets": {
+          "EXACT_TRUE": 28,
+          "EXACT_NEEDS_REVIEW": 0,
+          "EXACT_FALSE": 0,
+          "PARTIAL_TRUE": 5,
+          "PARTIAL_NEEDS_REVIEW": 0,
+          "PARTIAL_FALSE": 0,
+          "UNPROPOSED": 3
+        }
+      },
+      "baseline": {
+        "exactTruePositives": 28
+      },
+      "goldAxisRecovery": {
+        "IDENTITY|DOCUMENT_PART|TITLE": {
+          "gold": 5,
+          "tp": 3,
+          "fn": 2
+        },
+        "IDENTITY|DOCUMENT|TITLE": {
+          "gold": 1,
+          "tp": 0,
+          "fn": 1
+        },
+        "STRUCTURE|SECTION|TITLE": {
+          "gold": 30,
+          "tp": 25,
+          "fn": 5
+        }
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "gold": 103,
+      "distinctBoundOccurrences": 198,
+      "exact": {
+        "goldClaims": 103,
+        "hypothesesListed": 198,
+        "TRUE": 198,
+        "NEEDS_REVIEW": 0,
+        "unbindable": 0,
+        "truePositives": 97,
+        "falsePositives": 101,
+        "falseNegatives": 6,
+        "truePrecision": 0.4899,
+        "trueRecall": 0.9417,
+        "f1": 0.6445,
+        "needsReviewCaptureOfGold": 0,
+        "needsReviewCaptureIncludingPartial": 0,
+        "falseOnGold": 5,
+        "partialOnly": 1,
+        "reviewNoiseOutsideGold": 0,
+        "nonGoldReviewTouchingGold": 0,
+        "falsePositivesTouchingGold": 1,
+        "goldMultipartClaims": 6,
+        "exactMultipartMatches": 5,
+        "goldClaimsWithPartialPart": 0,
+        "exactMatchesWithPartialPart": 0,
+        "goldBuckets": {
+          "EXACT_TRUE": 97,
+          "EXACT_NEEDS_REVIEW": 0,
+          "EXACT_FALSE": 0,
+          "PARTIAL_TRUE": 1,
+          "PARTIAL_NEEDS_REVIEW": 0,
+          "PARTIAL_FALSE": 0,
+          "UNPROPOSED": 5
+        }
+      },
+      "baseline": {
+        "exactTruePositives": 90
+      },
+      "goldAxisRecovery": {
+        "IDENTITY|DOCUMENT|TITLE": {
+          "gold": 1,
+          "tp": 0,
+          "fn": 1
+        },
+        "IDENTITY|TOC|TITLE": {
+          "gold": 1,
+          "tp": 1,
+          "fn": 0
+        },
+        "STRUCTURE|SECTION|TITLE": {
+          "gold": 93,
+          "tp": 92,
+          "fn": 1
+        },
+        "STRUCTURE|TOC|TITLE": {
+          "gold": 8,
+          "tp": 4,
+          "fn": 4
+        }
+      }
+    }
+  ]
+}

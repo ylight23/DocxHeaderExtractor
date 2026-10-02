@@ -14,6 +14,7 @@ namespace DocxHeaderExtractor.V5Qualification;
 internal static class P6PDocumentAwarePdfQualification
 {
     private const string Confirm = "yes-i-authorize-p6p-full31-production-candidate";
+    private const string RetryConfirm = "yes-i-authorize-p6p-src089-pack002-single-rerun";
     private const string ArtifactRoot = "artifacts/v5-p6p-document-aware-pdf";
     private const string Src089 = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
     private const string Src095 = "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf";
@@ -235,6 +236,117 @@ internal static class P6PDocumentAwarePdfQualification
             verifiedBeforeGoldRead = true, providerCallsDuringFreeze = 0, goldRead = false, goldMutation = "NONE",
         });
         Console.WriteLine("P6P raw content/SSE and request hashes verified and frozen: 31/31; ProviderCalls=0, GoldRead=false.");
+        return 0;
+    }
+
+    /// <summary>One explicitly authorized exact-body rerun of the sole P6P contract-invalid pack.</summary>
+    public static async Task<int> RerunFailedPackAsync(string repo, string[] args)
+    {
+        var directory = Path.Combine(repo, ArtifactRoot.Replace('/', Path.DirectorySeparatorChar));
+        var manifestPath = Path.Combine(directory, "execution-manifest.v1.json");
+        var resultPath = Path.Combine(directory, "result.v1.json");
+        var freezePath = Path.Combine(directory, "response-hash-freeze.v1.json");
+        var retryPath = Path.Combine(directory, "pack-retry-src089-pack002.v1.json");
+        var checkpointPath = Path.Combine(directory, "pack-retry-src089-pack002.in-progress.v1.json");
+        if (File.Exists(retryPath) || File.Exists(checkpointPath))
+            return Fail("P6P failed-pack rerun artifact/checkpoint already exists; stop before any request");
+        if (!args.Contains($"--confirm-p6p-failed-pack-rerun={RetryConfirm}"))
+        {
+            Console.WriteLine("P6P failed-pack rerun not authorized; ProviderCalls=0.");
+            return 0;
+        }
+        if (!File.Exists(manifestPath) || !File.Exists(resultPath) || !File.Exists(freezePath))
+            return Fail("P6P manifest/result/hash-freeze missing; no rerun");
+        if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")))
+            return Fail("P6P failed-pack rerun authorized but OPENROUTER_API_KEY is not set");
+
+        using var manifestDocument = JsonDocument.Parse(File.ReadAllText(manifestPath));
+        using var resultDocument = JsonDocument.Parse(File.ReadAllText(resultPath));
+        using var freezeDocument = JsonDocument.Parse(File.ReadAllText(freezePath));
+        var manifest = manifestDocument.RootElement;
+        var result = resultDocument.RootElement;
+        var freeze = freezeDocument.RootElement;
+        if (result.GetProperty("logicalProviderCalls").GetInt32() != 31 ||
+            result.GetProperty("goldRead").GetBoolean() ||
+            Hash(File.ReadAllText(resultPath)) != freeze.GetProperty("resultFileSha256").GetString() ||
+            Hash(File.ReadAllText(manifestPath)) != freeze.GetProperty("manifestFileSha256").GetString())
+            return Fail("P6P primary result/manifest no longer matches its immutable hash freeze; no rerun");
+
+        var primaryRows = result.GetProperty("rows").EnumerateArray().ToArray();
+        var invalidRows = primaryRows.Where(row => !row.GetProperty("contractValid").GetBoolean()).ToArray();
+        if (invalidRows.Length != 1 || invalidRows[0].GetProperty("documentId").GetString() != "SRC-089" ||
+            invalidRows[0].GetProperty("packId").GetString() != "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002" ||
+            invalidRows[0].GetProperty("finishReason").GetString() != "stop" ||
+            invalidRows[0].GetProperty("transportAccepted").GetBoolean() != true ||
+            invalidRows[0].GetProperty("quarantinedOccurrences").GetInt32() != 2)
+            return Fail("P6P rerun gate requires exactly the frozen SRC-089 PACK_002 contract-invalid attempt");
+
+        var prepared = Prepare(repo);
+        var currentRows = BuildRows(prepared);
+        if (!ValidateManifest(repo, manifestPath, prepared, currentRows))
+            return Fail("P6P source/context/body/ownership parity failed; no rerun");
+        var doc = prepared.Single(item => item.Plan.DocumentId == "SRC-089");
+        var pack = doc.Plan.Packs.Single(item => item.PackId == "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002");
+        if (pack.ProviderRequestHash != invalidRows[0].GetProperty("providerRequestHash").GetString())
+            return Fail("P6P rerun request hash differs from the failed frozen request; no network call");
+
+        var options = RemoteInferenceOptions.FromEnvironment();
+        options.Model = "qwen/qwen3.7-flash";
+        options.OpenRouterProviderRoute = "alibaba";
+        options.OpenRouterReasoningEffort = "none"; // reasoning.enabled=true is in the frozen body; effort remains omitted.
+        options.RequireJsonObjectResponse = true;
+        options.MaxOutputTokens = PdfHeadingMembershipProductionAdapter.CompletionTokenCeiling;
+        options.ProviderTransportTimeoutSeconds = 300;
+        options.TransientRequestRetries = new RemoteInferenceOptions().TransientRequestRetries;
+        options.MaxParallelRequests = 1;
+        options.Validate();
+
+        WriteNew(checkpointPath, new
+        {
+            schemaVersion = "v5-p6p-single-pack-rerun-checkpoint-v1", status = "IN_PROGRESS",
+            target = "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+            originalProviderRequestHash = pack.ProviderRequestHash, providerCallsStarted = 1,
+            maxLogicalReruns = 1, repair = false, fallback = false, goldRead = false,
+        });
+        var watch = Stopwatch.StartNew();
+        PdfHeadingMembershipPackExecution? execution = null;
+        string? transportError = null;
+        try
+        {
+            using var executor = OpenRouterHeaderExtractor.CreateOwned(options);
+            execution = await PdfHeadingMembershipProductionAdapter.ExecuteAndBindAsync(pack, executor, ResponseCap).ConfigureAwait(false);
+        }
+        catch (Exception exception) { transportError = exception.Message; }
+        watch.Stop();
+
+        var provider = execution?.Provider;
+        var binding = execution?.Binding;
+        var content = provider?.Content;
+        var retry = new
+        {
+            schemaVersion = "v5-p6p-single-pack-rerun-v1", target = "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+            originalPrimaryResultSha256 = Hash(File.ReadAllText(resultPath)),
+            providerRequestHash = pack.ProviderRequestHash, providerRequestBytes = pack.ProviderRequestBytes,
+            locatorRegistryFingerprint = pack.Registry.Fingerprint, userMessageSha256 = pack.Request.UserMessageSha256,
+            sourceSha256 = doc.Plan.SourceSha256, sourceUniverseSha256 = doc.Plan.SourceUniverseSha256,
+            logicalReruns = 1, transportRetryPolicy = "frozen production transient transport retries only",
+            transportAccepted = provider is not null, transportError, finishReason = provider?.FinishReason,
+            usage = provider?.Usage, retryCount = provider?.RetryCount ?? 0, latencyMs = watch.Elapsed.TotalMilliseconds,
+            sseEventCount = provider?.SseEventCount ?? 0, rawSse = provider?.RawSse,
+            rawSseSha256 = provider is null ? null : Sha(provider.RawSse), rawContent = content,
+            rawContentSha256 = content is null ? null : Sha(content), rawContentUtf8Bytes = content is null ? 0 : Encoding.UTF8.GetByteCount(content),
+            parserAccepted = binding is not null, parseError = execution?.ParseError,
+            emittedOccurrences = binding?.Response.Occurrences.Count ?? 0,
+            boundOccurrences = binding?.Response.Occurrences.Count ?? 0,
+            quarantinedOccurrences = binding?.Quarantined.Count ?? 0, quarantine = binding?.Quarantined,
+            contractValid = provider is not null && !string.Equals(provider.FinishReason, "length", StringComparison.OrdinalIgnoreCase)
+                && binding is not null && binding.Quarantined.Count == 0,
+            providerCallsDuringRerun = 1 + (provider?.RetryCount ?? 0), goldRead = false, goldMutation = "NONE",
+            repair = false, fallback = false, productionPromotion = false,
+        };
+        WriteNew(retryPath, retry);
+        File.Delete(checkpointPath);
+        Console.WriteLine($"P6P SRC-089 PACK_002 rerun complete: transport={provider is not null}; finish={provider?.FinishReason ?? "n/a"}; retry={provider?.RetryCount ?? 0}; bound={binding?.Response.Occurrences.Count ?? 0}; quarantine={binding?.Quarantined.Count ?? 0}; GoldRead=false.");
         return 0;
     }
 

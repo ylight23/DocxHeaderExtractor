@@ -121,6 +121,8 @@ internal static class Program
             return await P6PDocumentAwarePdfQualification.RunAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6p-freeze-response-hashes"))
             return P6PDocumentAwarePdfQualification.FreezeResponseHashes(LocateRepoRoot());
+        if (args.Contains("--p6p-rerun-failed-pack"))
+            return await P6PDocumentAwarePdfQualification.RerunFailedPackAsync(LocateRepoRoot(), args);
 
         // Separately authorized, exact-body-only retry budget for the failed fourth P6N-B canary request.
         if (args.Contains("--p6nb-bound-locator-call4-retry"))
