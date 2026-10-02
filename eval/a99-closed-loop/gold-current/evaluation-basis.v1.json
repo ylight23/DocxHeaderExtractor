@@ -1,0 +1,77 @@
+{
+  "artifactKind": "a99_canonical_gold_evaluation_basis",
+  "schemaVersion": "a99-canonical-gold-evaluation-basis-v1",
+  "status": "USER_RECONFIRMED_FROZEN",
+  "confirmedAt": "2026-10-03",
+  "basisCommitBeforeFreeze": "023dfbf9b1a7bfb451fb20705b30de2e6f148e39",
+  "purpose": "Common canonical Gold basis for future heading-extraction comparisons. This file does not replace gold-current/registry.v1.json; it freezes the exact two-document evaluation authority used by the current SRC-089/SRC-095 qualification lineage.",
+  "authority": {
+    "discoveryRoot": "eval/a99-closed-loop/gold-current/registry.v1.json",
+    "goldMutation": "NONE",
+    "providerCalls": 0,
+    "modelCalls": 0,
+    "reviewBasis": [
+      "current authored Gold under eval/a99-closed-loop/gold/",
+      "current canonical consumer Gold under eval/a99-closed-loop/gold-current/documents/",
+      "source-only reviews for SRC-089 and SRC-095",
+      "production binder/source-universe verification already enforced by GoldAuthoredSourceTests and CanonicalGoldConsolidationTests"
+    ]
+  },
+  "cohort": {
+    "documents": 2,
+    "totalGoldOccurrences": 139,
+    "documentsById": {
+      "SRC-089": {
+        "sourcePath": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+        "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+        "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
+        "canonicalGoldSha256": "288220c9ee2265cdfdf1f1ab2852900a5914d1511b7ba721d07174116dfb1db7",
+        "semanticHeadingTotal": 36,
+        "occurrenceEvaluable": true,
+        "characterSpanEvaluable": true,
+        "composition": {
+          "documentTitle": 1,
+          "chapters": 5,
+          "articles": 26,
+          "localStructuralLabels": 4
+        },
+        "reconfirmedHardDecisions": [
+          "The decree title is one multipart heading: DECREE + DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, + THE PUBLICATION LAW; the footnote mark is excluded.",
+          "Each Chapter label and its following title line form one heading occurrence.",
+          "The four short numbered colon labels are headings because they open local semantic regions.",
+          "Ordinary numbered legal propositions are not headings merely because they introduce subordinate material."
+        ]
+      },
+      "SRC-095": {
+        "sourcePath": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+        "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+        "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+        "canonicalGoldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+        "semanticHeadingTotal": 103,
+        "occurrenceEvaluable": true,
+        "characterSpanEvaluable": true,
+        "composition": {
+          "clearHeadingsFromSourceReview": 94,
+          "http3DocumentTitle": 1,
+          "indexGroupLetters": 8
+        },
+        "reconfirmedHardDecisions": [
+          "HTTP/3 is the document title heading; RFC 9114 is document metadata/identifier and is not a heading.",
+          "Table of Contents is a heading; individual TOC entries are navigation occurrences and are not headings.",
+          "Index is a heading.",
+          "Standalone index group letters C, D, G, H, M, P, R, S are headings because each opens a local index subgroup.",
+          "The horizontal shortcut row C D G H M P R S is navigation and is not a heading.",
+          "Individual index entries such as protocol terms and error names are navigation/content entries, not headings."
+        ]
+      }
+    }
+  },
+  "freezeRules": {
+    "futureEvaluatorsMustResolveThroughCanonicalGoldRegistry": true,
+    "historicalExperimentsMayPinOlderVintageExplicitly": true,
+    "futureModelOutputMustNotMutateGold": true,
+    "disagreementCreatesReviewQueueNotAutomaticGoldChange": true,
+    "anyFutureGoldChangeRequiresSourceEvidenceAndExplicitUserApproval": true,
+    "comparisonBaseline": "139 exact canonical occurrences: SRC-089=36, SRC-095=103"
+  }
+}
