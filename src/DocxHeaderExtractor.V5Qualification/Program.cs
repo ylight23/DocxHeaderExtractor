@@ -78,6 +78,19 @@ internal static class Program
         if (args.Contains("--p5v-v33-full31"))
             return await P5VCompactV33Qualification.RunAsync(LocateRepoRoot(), args);
 
+        // P6K is a four-call, compact sparse-locator qualification canary. It has its own
+        // prepared manifest, one-attempt transport policy and repeat-result guard.
+        if (args.Contains("--p6k-compact-sparse-canary"))
+            return await P6KCompactSparseCanary.RunAsync(LocateRepoRoot(), args);
+
+        // P6L replays the same four frozen packs with only the canonical locator grammar clarified.
+        if (args.Contains("--p6l-canonical-locator-canary"))
+            return await P6KCompactSparseCanary.RunClarifiedAsync(LocateRepoRoot(), args);
+
+        // P6M executes one frozen P6L clarified request per each of the 31 original parent packs.
+        if (args.Contains("--p6m-p6l-full31"))
+            return await P6MFull31CanonicalLocatorQualification.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 

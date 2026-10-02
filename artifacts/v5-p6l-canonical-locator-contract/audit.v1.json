@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "v5-p6l-canonical-locator-contract-audit-v1",
+  "providerCalls": 0,
+  "p6kSourceProviderCalls": 4,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "finding": {
+    "priorSystemPromptPrimaryExample": "used atom plus from/to, while whole atom was only prose",
+    "priorResponseContract": "field-name lists without an exclusive whole-vs-substring locator union",
+    "priorDirectoryBoundaryOrdering": "documented, but canonical first-to-final full-span prohibition was not adjacent to response grammar",
+    "p6kOutcome": "all 16 candidates across four calls were quarantined as locator-whole-must-omit-boundaries"
+  },
+  "contractDelta": "only protocol version, system instructions, and response-contract description changed; task, source/context payload, locator directory, route, carrier, token budget, parser, binder unchanged",
+  "wholeAtomCanonicalShape": "{atom}",
+  "strictSubstringShape": "{atom,from,to}",
+  "strictSubstringRule": "first-to-final issued boundary pair is invalid; whole atom must omit both boundaries",
+  "routeAndCarrierParity": "model, provider pin, temperature, reasoning, response_format, streaming, usage, max_tokens and provider routing body fields are unchanged",
+  "rows": [
+    {
+      "role": "MAX_REQUEST_BODY",
+      "finishReason": "stop",
+      "actualPromptTokens": 49449,
+      "proposedOccurrences": 4,
+      "boundOccurrences": 0,
+      "quarantineReasons": [
+        "locator-whole-must-omit-boundaries",
+        "locator-whole-must-omit-boundaries",
+        "locator-whole-must-omit-boundaries",
+        "locator-whole-must-omit-boundaries"
+      ]
+    },
+    {
+      "role": "L1472_OWNER_OMISSION",
+      "finishReason": "stop",
+      "actualPromptTokens": 26401,
+      "proposedOccurrences": 2,
+      "boundOccurrences": 0,
+      "quarantineReasons": [
+        "locator-whole-must-omit-boundaries",
+        "locator-whole-must-omit-boundaries"
+      ]
+    },
+    {
+      "role": "L1710_RETYPING",
+      "finishReason": "stop",
+      "actualPromptTokens": 40717,
+      "proposedOccurrences": 3,
+      "boundOccurrences": 0,
+      "quarantineReasons": [
+        "locator-whole-must-omit-boundaries",
+        "locator-whole-must-omit-boundaries",
+        "locator-whole-must-omit-boundaries"
+      ]
+    },
+    {
+      "role": "MULTIPART_RELATION",
+      "finishReason": "stop",
+      "actualPromptTokens": 29768,
+      "proposedOccurrences": 7,
+      "boundOccurrences": 0,
+      "quarantineReasons": [
+        "locator-whole-must-omit-boundaries",
+        "locator-whole-must-omit-boundaries",
+        "locator-whole-must-omit-boundaries",
+        "locator-whole-must-omit-boundaries",
+        "locator-whole-must-omit-boundaries",
+        "locator-whole-must-omit-boundaries",
+        "locator-whole-must-omit-boundaries"
+      ]
+    }
+  ]
+}

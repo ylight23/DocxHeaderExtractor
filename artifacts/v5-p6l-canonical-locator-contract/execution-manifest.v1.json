@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "v5-p6l-canonical-locator-canary-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "preparedAtHead": "44e50acc4580ecefa9529bbb378ff60628fe8ca8",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "protocol": "v5-heading-occurrence-sparse-locator-compact-directory-2",
+  "route": {
+    "gateway": "OpenRouter",
+    "model": "qwen/qwen3.7-flash",
+    "providerPin": "alibaba",
+    "temperature": 0,
+    "reasoning": "none",
+    "responseFormat": "json_object",
+    "streaming": true,
+    "usageInclude": true
+  },
+  "executionGate": {
+    "maximumProviderCalls": 4,
+    "retry": 0,
+    "repair": false,
+    "fallback": false,
+    "full31": false,
+    "goldRead": false
+  },
+  "rows": [
+    {
+      "role": "MAX_REQUEST_BODY",
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "ownedAtoms": 96,
+      "semanticRequestHash": "eb44cbfbab39f02939a6d75c2a626ffad05e7695630f13a32b497b765795ba38",
+      "registryFingerprint": "201d7f50096c3782cda2219d40465a20a432d33cdf56f6ce64ab80cacffe316a",
+      "providerRequestHash": "cafcd199a397c4059f14f2ba396a4d4c61d420643d6ff272b3ddbe370485af81",
+      "providerRequestBytes": 168959,
+      "maxCompletionTokens": 25088,
+      "maxResponseUtf8Bytes": 49152,
+      "p6kBaselineProviderRequestHash": "50ee355168dbcd76c58ee431aa2d0815c7a7ef1841a34996d11e81df162cc4c8"
+    },
+    {
+      "role": "L1472_OWNER_OMISSION",
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "ownedAtoms": 96,
+      "semanticRequestHash": "43c54524b1d53f14cf889b12f0fecc48140063abe696352e81c817a3aa65d87a",
+      "registryFingerprint": "dfbcc2294820e4c3c84eb439fbf8e8c4be4a54fd73f15bc189c4073bca6b826a",
+      "providerRequestHash": "b8dfeb3d70bfd048e7a469c89722186a3069246d006eefc61afef98e1dfff6bd",
+      "providerRequestBytes": 96643,
+      "maxCompletionTokens": 25088,
+      "maxResponseUtf8Bytes": 49152,
+      "p6kBaselineProviderRequestHash": "5f763657a587118e38c2b0d4c953aa70f9110247f636d9f83d9840c799d82b71"
+    },
+    {
+      "role": "L1710_RETYPING",
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "ownedAtoms": 96,
+      "semanticRequestHash": "f16b27b5621614a7e7b191cc943fe63d3149bb3b99f0dcd082bc41199d18ea9e",
+      "registryFingerprint": "29e4fac122a20fb45121fca3413fe371aef8a104e1489916bbb96c754ee54755",
+      "providerRequestHash": "ce20500c5965f769769f8c27a7f53ab3fe5bfe945d1d004d9a1bd67bbb9bc76f",
+      "providerRequestBytes": 137996,
+      "maxCompletionTokens": 25088,
+      "maxResponseUtf8Bytes": 49152,
+      "p6kBaselineProviderRequestHash": "1d2326d0121b4ec95f2e19d4e26b2c905b9feefbc81060a6ac6b183939501393"
+    },
+    {
+      "role": "MULTIPART_RELATION",
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "ownedAtoms": 96,
+      "semanticRequestHash": "fc754e337cad76a328dfbadb541079c098e6491e4406c6ccd2e1d87091d3e41d",
+      "registryFingerprint": "aef7c488d3aca461bd43b311ad93fc28a47a7459d4953e98b387dccdccf0f562",
+      "providerRequestHash": "610b94e61b511afc3467413953d4ed26997df6dbff0b994ff77c2232aa6008f6",
+      "providerRequestBytes": 107239,
+      "maxCompletionTokens": 25088,
+      "maxResponseUtf8Bytes": 49152,
+      "p6kBaselineProviderRequestHash": "2a468e23e4b81796012f53ddc64e57a66be3882816f7ec53b482d7e87cf46dc1"
+    }
+  ]
+}
