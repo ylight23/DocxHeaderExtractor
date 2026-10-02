@@ -1133,6 +1133,491 @@
       "verdict": "NON_HEADING"
     }
   ],
+  "diagnosticContext": {
+    "purpose": "compact human-review context for the frozen paired delta; this does not alter score authority or Gold",
+    "semanticBoundaryCues": [
+      "A heading names or opens a structural region; an ordinary proposition remains body content even if subordinate material follows.",
+      "Navigation entries pointing elsewhere are not headings; a label opening a subgroup in the current document may be."
+    ],
+    "recoveryInterpretation": "P6N-B-only hits and remaining misses are listed with exact frozen Gold text and source spans; examples can suggest front-matter, local-region, appendix, identity, or short-label patterns but are not new labels or Gold rules.",
+    "falsePositiveInterpretation": "New P6N-B false positives are listed with bound source text for review of body-proposition and navigation/index boundary errors.",
+    "goldDisposition": "NO_GOLD_CHANGE: model disagreement/context cues do not authorize editing frozen Gold.",
+    "productionDisposition": "NO_PROMOTION: this is offline interpretation only; runtime, prompt, and provider requests are unchanged.",
+    "p6nbOnlyGoldHits": [
+      {
+        "documentId": "SRC-089",
+        "goldIdentity": "L0109:S0:0-33",
+        "text": "1 . Conditions for establishment:",
+        "parts": [
+          {
+            "sourceAlias": "L0109:S0",
+            "start": 0,
+            "end": 33
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "goldIdentity": "L0117:S0:0-22",
+        "text": "2. Operation contents:",
+        "parts": [
+          {
+            "sourceAlias": "L0117:S0",
+            "start": 0,
+            "end": 22
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "goldIdentity": "L0195:S0:0-81",
+        "text": "Article 10. Publication registration and certification ofpublication registration",
+        "parts": [
+          {
+            "sourceAlias": "L0195:S0",
+            "start": 0,
+            "end": 81
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "goldIdentity": "L0260:S0:0-62",
+        "text": "Article 12. Licensing ofpublication ofnon-commercial documents",
+        "parts": [
+          {
+            "sourceAlias": "L0260:S0",
+            "start": 0,
+            "end": 62
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L0009:S0:0-8",
+        "text": "Abstract",
+        "parts": [
+          {
+            "sourceAlias": "L0009:S0",
+            "start": 0,
+            "end": 8
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L0015:S0:0-18",
+        "text": "Status ofThis Memo",
+        "parts": [
+          {
+            "sourceAlias": "L0015:S0",
+            "start": 0,
+            "end": 18
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L0023:S0:0-16",
+        "text": "Copyright Notice",
+        "parts": [
+          {
+            "sourceAlias": "L0023:S0",
+            "start": 0,
+            "end": 16
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L0244:S0:0-35",
+        "text": "3.1. Discovering an HTTP/3 Endpoint",
+        "parts": [
+          {
+            "sourceAlias": "L0244:S0",
+            "start": 0,
+            "end": 35
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L1677:S0:0-56",
+        "text": "Appendix A. Considerations for Transitioning from HTTP/2",
+        "parts": [
+          {
+            "sourceAlias": "L1677:S0",
+            "start": 0,
+            "end": 56
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L1914:S0:0-1",
+        "text": "C",
+        "parts": [
+          {
+            "sourceAlias": "L1914:S0",
+            "start": 0,
+            "end": 1
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L1940:S0:0-1",
+        "text": "D",
+        "parts": [
+          {
+            "sourceAlias": "L1940:S0",
+            "start": 0,
+            "end": 1
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L1947:S0:0-1",
+        "text": "G",
+        "parts": [
+          {
+            "sourceAlias": "L1947:S0",
+            "start": 0,
+            "end": 1
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L1961:S0:0-1",
+        "text": "H",
+        "parts": [
+          {
+            "sourceAlias": "L1961:S0",
+            "start": 0,
+            "end": 1
+          }
+        ]
+      }
+    ],
+    "p6mOnlyGoldHits": [
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L0008:S0:0-6",
+        "text": "HTTP/3",
+        "parts": [
+          {
+            "sourceAlias": "L0008:S0",
+            "start": 0,
+            "end": 6
+          }
+        ]
+      }
+    ],
+    "p6nbRemainingGoldMisses": [
+      {
+        "documentId": "SRC-089",
+        "goldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+        "text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+        "parts": [
+          {
+            "sourceAlias": "L0006:S0",
+            "start": 0,
+            "end": 6
+          },
+          {
+            "sourceAlias": "L0007:S0",
+            "start": 0,
+            "end": 65
+          },
+          {
+            "sourceAlias": "L0008:S0",
+            "start": 0,
+            "end": 19
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "goldIdentity": "L0246:S0:0-26",
+        "text": "1 . For publishing houses:",
+        "parts": [
+          {
+            "sourceAlias": "L0246:S0",
+            "start": 0,
+            "end": 26
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "goldIdentity": "L0249:S0:0-16",
+        "text": "2. For partners:",
+        "parts": [
+          {
+            "sourceAlias": "L0249:S0",
+            "start": 0,
+            "end": 16
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L0008:S0:0-6",
+        "text": "HTTP/3",
+        "parts": [
+          {
+            "sourceAlias": "L0008:S0",
+            "start": 0,
+            "end": 6
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L2012:S0:0-1",
+        "text": "M",
+        "parts": [
+          {
+            "sourceAlias": "L2012:S0",
+            "start": 0,
+            "end": 1
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L2023:S0:0-1",
+        "text": "P",
+        "parts": [
+          {
+            "sourceAlias": "L2023:S0",
+            "start": 0,
+            "end": 1
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L2056:S0:0-1",
+        "text": "R",
+        "parts": [
+          {
+            "sourceAlias": "L2056:S0",
+            "start": 0,
+            "end": 1
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "goldIdentity": "L2063:S0:0-1",
+        "text": "S",
+        "parts": [
+          {
+            "sourceAlias": "L2063:S0",
+            "start": 0,
+            "end": 1
+          }
+        ]
+      }
+    ],
+    "p6nbNewFalsePositives": [
+      {
+        "documentId": "SRC-089",
+        "predictionIdentity": "SRC-089|L0129:S0:0-77",
+        "text": "1 . The grant of a representative office establishment license is as follows:",
+        "parts": [
+          {
+            "sourceAlias": "L0129:S0",
+            "start": 0,
+            "end": 77
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "predictionIdentity": "SRC-089|L0144:S0:0-91",
+        "text": "2. The re-grant or extension ofa representative office establishment license is as follows:",
+        "parts": [
+          {
+            "sourceAlias": "L0144:S0",
+            "start": 0,
+            "end": 91
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "predictionIdentity": "SRC-089|L0163:S0:0-96",
+        "text": "1 . In addition to the conditions prescribed in Clauses 1, 2 and 4, Article 13 ofthe Publication",
+        "parts": [
+          {
+            "sourceAlias": "L0163:S0",
+            "start": 0,
+            "end": 96
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-089",
+        "predictionIdentity": "SRC-089|L0176:S0:0-96",
+        "text": "1 . The approval ofthe appointment, dismissal or relieffrom duty ofgeneral directors (directors)",
+        "parts": [
+          {
+            "sourceAlias": "L0176:S0",
+            "start": 0,
+            "end": 96
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "predictionIdentity": "SRC-095|L1913:S0:0-15",
+        "text": "C D G H M P R S",
+        "parts": [
+          {
+            "sourceAlias": "L1913:S0",
+            "start": 0,
+            "end": 15
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "predictionIdentity": "SRC-095|L1990:S0:0-20",
+        "text": "H3_REQUEST_CANCELLED",
+        "parts": [
+          {
+            "sourceAlias": "L1990:S0",
+            "start": 0,
+            "end": 20
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "predictionIdentity": "SRC-095|L1994:S0:0-21",
+        "text": "H3_REQUEST_INCOMPLETE",
+        "parts": [
+          {
+            "sourceAlias": "L1994:S0",
+            "start": 0,
+            "end": 21
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "predictionIdentity": "SRC-095|L1997:S0:0-19",
+        "text": "H3_REQUEST_REJECTED",
+        "parts": [
+          {
+            "sourceAlias": "L1997:S0",
+            "start": 0,
+            "end": 19
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "predictionIdentity": "SRC-095|L2001:S0:0-83",
+        "text": "H3_SETTINGS_ERROR Section 7.2.4, Paragraph 6; Section 7.2.4.1, Paragraph 5; Section",
+        "parts": [
+          {
+            "sourceAlias": "L2001:S0",
+            "start": 0,
+            "end": 83
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "predictionIdentity": "SRC-095|L2003:S0:0-76",
+        "text": "H3_STREAM_CREATION_ERROR Section 6.1, Paragraph 3; Section 6.2, Paragraph 7;",
+        "parts": [
+          {
+            "sourceAlias": "L2003:S0",
+            "start": 0,
+            "end": 76
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "predictionIdentity": "SRC-095|L2005:S0:0-72",
+        "text": "H3_VERSION_FALLBACK Section 8.1; Table 4; Appendix A.4, Paragraph 3.28.1",
+        "parts": [
+          {
+            "sourceAlias": "L2005:S0",
+            "start": 0,
+            "end": 72
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "predictionIdentity": "SRC-095|L2006:S0:0-7",
+        "text": "HEADERS",
+        "parts": [
+          {
+            "sourceAlias": "L2006:S0",
+            "start": 0,
+            "end": 7
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "predictionIdentity": "SRC-095|L2019:S0:0-11",
+        "text": "MAX_PUSH_ID",
+        "parts": [
+          {
+            "sourceAlias": "L2019:S0",
+            "start": 0,
+            "end": 11
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "predictionIdentity": "SRC-095|L2046:S0:0-12",
+        "text": "PUSH_PROMISE",
+        "parts": [
+          {
+            "sourceAlias": "L2046:S0",
+            "start": 0,
+            "end": 12
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "predictionIdentity": "SRC-095|L2064:S0:0-8",
+        "text": "SETTINGS",
+        "parts": [
+          {
+            "sourceAlias": "L2064:S0",
+            "start": 0,
+            "end": 8
+          }
+        ]
+      },
+      {
+        "documentId": "SRC-095",
+        "predictionIdentity": "SRC-095|L2072:S0:0-84",
+        "text": "SETTINGS_MAX_FIELD_SECTION_SIZE Section 4.2.2, Paragraph 2; Section 7.2.4.1; Section",
+        "parts": [
+          {
+            "sourceAlias": "L2072:S0",
+            "start": 0,
+            "end": 84
+          }
+        ]
+      }
+    ]
+  },
   "perPack": [
     {
       "documentId": "SRC-089",

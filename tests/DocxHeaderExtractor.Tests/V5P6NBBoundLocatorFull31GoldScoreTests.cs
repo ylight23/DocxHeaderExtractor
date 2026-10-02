@@ -18,7 +18,7 @@ public sealed class V5P6NBBoundLocatorFull31GoldScoreTests
         { UsageInclude = true, OpenRouterResponseCacheDisabled = true };
     private sealed record Part(string Alias, int Start, int End);
     private sealed record Gold(string Identity, string Document, string Text, IReadOnlyList<Part> Parts);
-    private sealed record Prediction(string Identity, string Document, IReadOnlyList<Part> Parts, string[] Functions)
+    private sealed record Prediction(string Identity, string Document, IReadOnlyList<Part> Parts, string[] Functions, string Text)
     { public bool Heading => Functions.Contains("DOCUMENT_IDENTITY", StringComparer.Ordinal) || Functions.Contains("STRUCTURAL_REGION", StringComparer.Ordinal); }
     private sealed record MetricRow(int Tp, int Fp, int Fn, double Precision, double Recall, double F1);
 
@@ -186,6 +186,14 @@ public sealed class V5P6NBBoundLocatorFull31GoldScoreTests
         var p6nbSemantic = Detected(scoredGold, p6nbPredictionsAll, false);
         var p6mExact = Detected(scoredGold, p6mPredictionsAll.Where(item => item.Heading), true);
         var p6nbExact = Detected(scoredGold, p6nbPredictionsAll, true);
+        var p6mFpIds = p6m.SemanticFps.Select(item => item.Identity).ToHashSet(StringComparer.Ordinal);
+        var p6nbFpIds = p6nb.SemanticFps.Select(item => item.Identity).ToHashSet(StringComparer.Ordinal);
+        var p6nbOnlyGold = scoredGold.Where(item => p6nbSemantic.Contains($"{item.Document}|{item.Identity}") && !p6mSemantic.Contains($"{item.Document}|{item.Identity}")).ToArray();
+        var p6mOnlyGold = scoredGold.Where(item => p6mSemantic.Contains($"{item.Document}|{item.Identity}") && !p6nbSemantic.Contains($"{item.Document}|{item.Identity}")).ToArray();
+        var p6nbMissedGold = scoredGold.Where(item => !p6nbSemantic.Contains($"{item.Document}|{item.Identity}")).ToArray();
+        var p6nbNewFalsePositives = p6nb.SemanticFps.Where(item => !p6mFpIds.Contains(item.Identity)).ToArray();
+        Assert.Equal(13, p6nbOnlyGold.Length); Assert.Equal(1, p6mOnlyGold.Length);
+        Assert.Equal(8, p6nbMissedGold.Length); Assert.Equal(16, p6nbNewFalsePositives.Length);
 
         FreezeArtifact.AssertJson(Root, "full31-gold-score-after-pack007-repeat.v1.json", new
         {
@@ -215,11 +223,28 @@ public sealed class V5P6NBBoundLocatorFull31GoldScoreTests
                     p6nb = new { exact = ToMetric(p6nb.Exact), semanticOccurrence = ToMetric(p6nb.Semantic), headingUnits = p6nbPredictionsAll.Length, extent = p6nb.Extent },
                     pairedSemanticTruePositives = Compare(p6mSemantic, p6nbSemantic), pairedExactTruePositives = Compare(p6mExact, p6nbExact),
                     falsePositiveComparison = new { p6m = p6m.SemanticFps.Length, p6nb = p6nb.SemanticFps.Length,
-                        p6nbNewVsP6m = p6nb.SemanticFps.Select(item => item.Identity).Except(p6m.SemanticFps.Select(item => item.Identity), StringComparer.Ordinal).Count(),
-                        shared = p6nb.SemanticFps.Select(item => item.Identity).Intersect(p6m.SemanticFps.Select(item => item.Identity), StringComparer.Ordinal).Count(),
-                        p6mOnly = p6m.SemanticFps.Select(item => item.Identity).Except(p6nb.SemanticFps.Select(item => item.Identity), StringComparer.Ordinal).Count() } },
+                        p6nbNewVsP6m = p6nbNewFalsePositives.Length,
+                        shared = p6nbFpIds.Intersect(p6mFpIds, StringComparer.Ordinal).Count(),
+                        p6mOnly = p6mFpIds.Except(p6nbFpIds, StringComparer.Ordinal).Count() } },
             },
             pairedFalsePositiveReviews = Reviews(p6nb.SemanticFps, reviews),
+            diagnosticContext = new
+            {
+                purpose = "compact human-review context for the frozen paired delta; this does not alter score authority or Gold",
+                semanticBoundaryCues = new[]
+                {
+                    "A heading names or opens a structural region; an ordinary proposition remains body content even if subordinate material follows.",
+                    "Navigation entries pointing elsewhere are not headings; a label opening a subgroup in the current document may be.",
+                },
+                recoveryInterpretation = "P6N-B-only hits and remaining misses are listed with exact frozen Gold text and source spans; examples can suggest front-matter, local-region, appendix, identity, or short-label patterns but are not new labels or Gold rules.",
+                falsePositiveInterpretation = "New P6N-B false positives are listed with bound source text for review of body-proposition and navigation/index boundary errors.",
+                goldDisposition = "NO_GOLD_CHANGE: model disagreement/context cues do not authorize editing frozen Gold.",
+                productionDisposition = "NO_PROMOTION: this is offline interpretation only; runtime, prompt, and provider requests are unchanged.",
+                p6nbOnlyGoldHits = p6nbOnlyGold.Select(DescribeGold).ToArray(),
+                p6mOnlyGoldHits = p6mOnlyGold.Select(DescribeGold).ToArray(),
+                p6nbRemainingGoldMisses = p6nbMissedGold.Select(DescribeGold).ToArray(),
+                p6nbNewFalsePositives = p6nbNewFalsePositives.Select(DescribePrediction).ToArray(),
+            },
             perPack = perPack,
         });
     }
@@ -260,7 +285,7 @@ public sealed class V5P6NBBoundLocatorFull31GoldScoreTests
             var endpoint = registry.Decode(locator); var parts = endpoint.Parts.Select(part => new Part(part.Alias, part.Start, part.End)).ToArray();
             var id = Identity(document, parts); var functions = free ? Array.Empty<string>() : locator.Functions.Order(StringComparer.Ordinal).ToArray();
             if (map.TryGetValue(id, out var prior)) map[id] = prior with { Functions = prior.Functions.Union(functions, StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray() };
-            else map.Add(id, new Prediction(id, document, parts, functions));
+            else map.Add(id, new Prediction(id, document, parts, functions, string.Join(" ", endpoint.Parts.Select(part => part.Text))));
         }
         return map.Values.OrderBy(item => item.Identity, StringComparer.Ordinal).ToArray();
     }
@@ -310,6 +335,10 @@ public sealed class V5P6NBBoundLocatorFull31GoldScoreTests
     { var both = left.Intersect(right, StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray(); var a = left.Except(right, StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray(); var b = right.Except(left, StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray(); return new { both = both.Length, p6mOnly = a.Length, p6nbOnly = b.Length, p6nbLostTruePositives = a.Length, bothGold = both, p6mOnlyGold = a, p6nbOnlyGold = b }; }
     private static object Reviews(IEnumerable<Prediction> predictions, IReadOnlyDictionary<string, string> reviews) => predictions.Select(item => new
     { item.Identity, sourceAliases = item.Parts.Select(part => part.Alias).Distinct(StringComparer.Ordinal).ToArray(), verdict = "NON_HEADING" }).ToArray();
+    private static object DescribeGold(Gold item) => new { documentId = item.Document, goldIdentity = item.Identity, text = item.Text,
+        parts = item.Parts.Select(part => new { sourceAlias = part.Alias, start = part.Start, end = part.End }).ToArray() };
+    private static object DescribePrediction(Prediction item) => new { documentId = item.Document, predictionIdentity = item.Identity, text = item.Text,
+        parts = item.Parts.Select(part => new { sourceAlias = part.Alias, start = part.Start, end = part.End }).ToArray() };
     private static string Identity(string document, IReadOnlyList<Part> parts) => $"{document}|" + string.Join("|", parts.Select(part => $"{part.Alias}:{part.Start}-{part.End}"));
     private static bool Same(IReadOnlyList<Part> left, IReadOnlyList<Part> right) => left.Count == right.Count && left.Zip(right).All(pair => pair.First == pair.Second);
     private static bool Overlap(IReadOnlyList<Part> left, IReadOnlyList<Part> right) => left.Any(a => right.Any(b => a.Alias == b.Alias && a.Start < b.End && b.Start < a.End));

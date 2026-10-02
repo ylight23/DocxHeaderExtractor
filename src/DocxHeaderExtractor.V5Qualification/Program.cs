@@ -112,6 +112,10 @@ internal static class Program
         if (args.Contains("--p6nb-full31-pack007-retry"))
             return await P6NBBoundLocatorFull31.RetryPack007Async(LocateRepoRoot(), args);
 
+        // P6N-C full31: P6N-B free semantics/locator with only the separately frozen generic boundary cues appended.
+        if (args.Contains("--p6nc-semantic-boundary-full31"))
+            return await P6NCSemanticBoundaryFull31.RunAsync(LocateRepoRoot(), args);
+
         // Separately authorized, exact-body-only retry budget for the failed fourth P6N-B canary request.
         if (args.Contains("--p6nb-bound-locator-call4-retry"))
             return await P6NBBoundLocatorCanary.RetryFourthAsync(LocateRepoRoot(), args);
