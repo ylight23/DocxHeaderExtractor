@@ -146,9 +146,23 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
     /// </summary>
     public async Task<OpenRouterExecutionObservation> ExecuteObservedAsync(
         byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
+        => await ExecuteObservedCoreAsync(payloadBytes, maxTokens, systemPrompt, userMessage, enforceJsonObjectCompatibility: true, ct);
+
+    /// <summary>
+    /// Executes a frozen body whose response format is intentionally unconstrained. This is an
+    /// additive qualification transport entry point; the raw body is still sent byte-for-byte and
+    /// the same streaming/retry/usage machinery is used. No JSON compatibility rule is applied.
+    /// </summary>
+    public async Task<OpenRouterExecutionObservation> ExecuteObservedUnconstrainedAsync(
+        byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
+        => await ExecuteObservedCoreAsync(payloadBytes, maxTokens, systemPrompt, userMessage, enforceJsonObjectCompatibility: false, ct);
+
+    private async Task<OpenRouterExecutionObservation> ExecuteObservedCoreAsync(
+        byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, bool enforceJsonObjectCompatibility, CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(payloadBytes);
-        TransportCompatibility.EnsureCompatible(systemPrompt, userMessage, TransportCompatibility.JsonObjectResponseFormat);
+        if (enforceJsonObjectCompatibility)
+            TransportCompatibility.EnsureCompatible(systemPrompt, userMessage, TransportCompatibility.JsonObjectResponseFormat);
         using var logical = ProviderCallTelemetry.Start(_options.Observability, new ProviderLogicalCallMetadata
         {
             Stage = "V5_SEMANTIC_DECISION_CANARY",

@@ -91,6 +91,15 @@ internal static class Program
         if (args.Contains("--p6m-p6l-full31"))
             return await P6MFull31CanonicalLocatorQualification.RunAsync(LocateRepoRoot(), args);
 
+        // P6N is an ontology-free, free-reasoning heading ceiling test on the same frozen four P6L packs.
+        // Preparing request hashes is provider-free; execution has its own explicit four-call sentinel.
+        if (args.Contains("--p6n-free-reasoning-canary"))
+            return await P6NFreeReasoningHeadingCanary.RunAsync(LocateRepoRoot(), args);
+
+        // Changed P6N arm: no response_format or harness-defined output schema; it requires a distinct manifest and approval.
+        if (args.Contains("--p6n-unconstrained-output-canary"))
+            return await P6NUnschematizedHeadingCanary.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 

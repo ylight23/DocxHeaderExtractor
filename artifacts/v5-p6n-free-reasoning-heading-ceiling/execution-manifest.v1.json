@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "v5-p6n-free-reasoning-heading-ceiling-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "preparedAtHead": "b3eec712fe9639335516b0b4507ec5114a9c5a94",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "sharedRuntime": "UNCHANGED",
+  "hypothesis": "With the same source evidence, packing and canonical locator contract, can Qwen identify heading occurrences more accurately when semantic membership is left to its own reasoning rather than constrained by the current nine-function ontology?",
+  "route": {
+    "gateway": "OpenRouter",
+    "model": "qwen/qwen3.7-flash",
+    "providerPin": "alibaba",
+    "temperature": 0,
+    "reasoning": {
+      "enabled": true
+    },
+    "responseFormat": "json_object",
+    "streaming": true,
+    "usageInclude": true
+  },
+  "protocol": "v5-free-reasoning-heading-membership-canonical-locator-1",
+  "protocolNotes": "P6L canonical locator contract; response parser/binder reuse through qualification-only adapter",
+  "maxResponseUtf8Bytes": 49152,
+  "executionGate": {
+    "maximumProviderCalls": 4,
+    "exactlyOneAttemptPerPack": true,
+    "retry": 0,
+    "repair": false,
+    "fallback": false,
+    "postFilter": false,
+    "full31": false,
+    "goldRead": false,
+    "semanticScore": "NOT_RUN"
+  },
+  "sourceAuthority": {
+    "manifest": "artifacts/v5-p6l-canonical-locator-contract/execution-manifest.v1.json",
+    "sourceCohort": "artifacts/v5-p6i-compact-locator-directory/audit.v1.json",
+    "sourcePackCount": 4,
+    "locatorContract": "P6L/P6M canonical",
+    "sourceEvidenceUnchanged": true
+  },
+  "rows": [
+    {
+      "role": "MAX_REQUEST_BODY",
+      "documentId": "SRC-089",
+      "parentOrdinal": 4,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "ownedAtoms": 96,
+      "semanticRequestHash": "50961c791d8006e06d8af2831782e79d2de700a5ae4a0c4fb5b824a5dce2ad35",
+      "sourceEvidenceHash": "1040372625d3b7f423ca9fc23ddd7811b1d14082015e48f7da77a87a10c64306",
+      "registryFingerprint": "201d7f50096c3782cda2219d40465a20a432d33cdf56f6ce64ab80cacffe316a",
+      "providerRequestHash": "5149d7bff3b8eba9ea43c6df3d1c861b4f92c9ed5da49a2a9b5f07618e0040ba",
+      "providerRequestBytes": 165367,
+      "maxCompletionTokens": 25088
+    },
+    {
+      "role": "L1472_OWNER_OMISSION",
+      "documentId": "SRC-095",
+      "parentOrdinal": 17,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "ownedAtoms": 96,
+      "semanticRequestHash": "004d083a542703e60dfec5ed9b534f516410da95ba627063d9f8395b1e9e0e4c",
+      "sourceEvidenceHash": "ebce8e4da3dfd6263d316ef6c939e54a9cc09f57946d78e4f0164f1050b7c568",
+      "registryFingerprint": "dfbcc2294820e4c3c84eb439fbf8e8c4be4a54fd73f15bc189c4073bca6b826a",
+      "providerRequestHash": "1d4be791b3242c54493ef7c9568b1980d3d5d037d2285fefb5066b1f5d5bafd8",
+      "providerRequestBytes": 93051,
+      "maxCompletionTokens": 25088
+    },
+    {
+      "role": "L1710_RETYPING",
+      "documentId": "SRC-095",
+      "parentOrdinal": 20,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "ownedAtoms": 96,
+      "semanticRequestHash": "5cd6e19e7c62ffaebb94be1cf66b90a3fec6762e99aed9830192d95068949f79",
+      "sourceEvidenceHash": "56bdc265c7f8cd87ba3e58942fcafead1e693c33df81220b549a065806c9ff3a",
+      "registryFingerprint": "29e4fac122a20fb45121fca3413fe371aef8a104e1489916bbb96c754ee54755",
+      "providerRequestHash": "e0e9f8723477e5525544a28b7f520678877dbac12d066bd08a9204271f0dc6be",
+      "providerRequestBytes": 134404,
+      "maxCompletionTokens": 25088
+    },
+    {
+      "role": "MULTIPART_RELATION",
+      "documentId": "SRC-095",
+      "parentOrdinal": 11,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "ownedAtoms": 96,
+      "semanticRequestHash": "5d2f3815540a3eba1cb6538aed2782589c0b68c4650b9408e2dcc5c496b1f5d0",
+      "sourceEvidenceHash": "d5729410b4fb7ed4a89e925b038151febddb9b26478b43a7d4ba3996c230010e",
+      "registryFingerprint": "aef7c488d3aca461bd43b311ad93fc28a47a7459d4953e98b387dccdccf0f562",
+      "providerRequestHash": "78308c92550430a3296d0cb489eb2e9137e34b246a35db4a7c58746319ad6cd5",
+      "providerRequestBytes": 103647,
+      "maxCompletionTokens": 25088
+    }
+  ]
+}
