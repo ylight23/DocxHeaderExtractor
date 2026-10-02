@@ -30,7 +30,7 @@ public sealed class RequestLocalLocatorRegistry
             {
                 var handle = $"H{ordinal++}"; boundaries.Add(handle, (index, offset)); handles.Add((index, offset), handle);
             }
-        var canonical = JsonSerializer.Serialize(new { atoms = atoms.Select((atom, index) => new { handle = $"A{index}", atom.Alias, atom.SourceId, atom.Ordinal, atom.Text }),
+        var canonical = JsonSerializer.Serialize(new { atoms = atoms.Select((atom, index) => new { handle = $"A{index}", atom.Alias, atom.SourceId, atom.Ordinal, atom.Page, atom.Row, atom.Segment, atom.Text }),
             boundaries = boundaries.OrderBy(item => item.Key, StringComparer.Ordinal).Select(item => new { handle = item.Key, atom = item.Value.Item1, offset = item.Value.Item2 }) });
         return new RequestLocalLocatorRegistry(atoms, boundaries, handles) { Fingerprint = Hashing.Sha256(canonical) };
     }
@@ -48,6 +48,7 @@ public sealed class RequestLocalLocatorRegistry
         if (!binding.IsBound) throw new InvalidOperationException($"locator-binding-invalid:{binding.Status}");
         return new BoundClaimEndpoint(binding.Parts);
     }
+    public CanonicalLocatorKey CanonicalKey(OccurrenceLocator locator) => new(Decode(locator).Identity);
 
     public PrimaryLocatorRoot RootOf(OccurrenceLocator locator)
     {
@@ -80,6 +81,7 @@ public sealed record OccurrenceLocatorPart([property: JsonPropertyName("atom")] 
 public sealed record OccurrenceLocator([property: JsonPropertyName("primary")] OccurrenceLocatorPart Primary, [property: JsonPropertyName("additionalParts")] IReadOnlyList<OccurrenceLocatorPart> AdditionalParts, [property: JsonPropertyName("functions")] IReadOnlyList<string> Functions);
 public sealed record OccurrenceLocatorResponse([property: JsonPropertyName("occurrences")] IReadOnlyList<OccurrenceLocator> Occurrences);
 public sealed record PrimaryLocatorRoot(int AtomIndex, int? Start, bool Whole);
+public sealed record CanonicalLocatorKey(string EndpointIdentity);
 
 /// <summary>A deterministic primary-root partition. Multipart continuations deliberately do not own a shard.</summary>
 public sealed record OccurrenceShardDomain(string ShardId, IReadOnlyList<PrimaryLocatorRoot> Roots)

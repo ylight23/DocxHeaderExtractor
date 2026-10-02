@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "v5-p6e-canonical-locator-continuation-domain-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "canonicalKey": "RequestLocalLocatorRegistry.CanonicalKey(locator) = decoded BoundClaimEndpoint.Identity",
+  "refinementOrder": [
+    "primary-root",
+    "primary-end",
+    "multipart-part-count",
+    "additional-atom",
+    "additional-start",
+    "additional-end"
+  ],
+  "representationUniverse": {
+    "maxSourceParts": 6,
+    "meaning": "FINITE_OVER_CURRENT_V3_3_REPRESENTABLE_UNIVERSE_NOT_A_UNIVERSAL_HEADING_SEMANTIC_LIMIT"
+  },
+  "proofFixture": {
+    "locators": 15,
+    "exactCoverage": true,
+    "overlap": 0,
+    "terminalLeaves": 15,
+    "terminalIdentity": "ONE_BoundClaimEndpoint.Identity",
+    "maxSingleOccurrenceResponseUtf8Bytes": 155
+  },
+  "terminalBound": "P6B singleton response bound applies once the full locator tuple is singleton.",
+  "gate": {
+    "continuationTermination": "PROVEN_FOR_FINITE_CURRENT_REPRESENTABLE_LOCATOR_UNIVERSE",
+    "practicalCoarseSchedule": "NOT_EVALUATED",
+    "providerManifest": "BLOCKED",
+    "sharedRuntime": "UNCHANGED"
+  }
+}

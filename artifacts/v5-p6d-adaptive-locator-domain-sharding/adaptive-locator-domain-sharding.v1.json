@@ -11,6 +11,7 @@
   ],
   "registry": {
     "determinism": "PASS: same packet/source atoms produces same fingerprint",
+    "layoutCollision": "PASS: Page/Row/Segment are fingerprint inputs",
     "unicode": "PASS: no issued boundary between a UTF-16 surrogate pair",
     "coordinateSystem": "UTF-16_OFFSETS_AT_VALID_UNICODE_SCALAR_BOUNDARIES"
   },

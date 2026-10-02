@@ -18,6 +18,8 @@ public sealed class V5P6DAdaptiveLocatorDomainShardingTests
         var registry = RequestLocalLocatorRegistry.Create(atoms);
         var repeat = RequestLocalLocatorRegistry.Create(atoms);
         Assert.Equal(registry.Fingerprint, repeat.Fingerprint);
+        var layoutChanged = atoms.Select(atom => atom with { Page = atom.Page + 1 }).ToArray();
+        Assert.NotEqual(registry.Fingerprint, RequestLocalLocatorRegistry.Create(layoutChanged).Fingerprint);
         Assert.Throws<InvalidOperationException>(() => registry.BoundaryHandle(0, 2)); // middle of 😀 surrogate pair
 
         var locator = new OccurrenceLocator(
@@ -47,7 +49,7 @@ public sealed class V5P6DAdaptiveLocatorDomainShardingTests
             schemaVersion = "v5-p6d-adaptive-locator-domain-sharding-v1",
             providerCalls = 0, goldRead = false, goldMutation = "NONE",
             reusableQualificationTypes = new[] { "RequestLocalLocatorRegistry", "OccurrenceShardDomain", "OccurrenceShardSplitter", "OccurrenceLocatorResponse" },
-            registry = new { determinism = "PASS: same packet/source atoms produces same fingerprint", unicode = "PASS: no issued boundary between a UTF-16 surrogate pair", coordinateSystem = "UTF-16_OFFSETS_AT_VALID_UNICODE_SCALAR_BOUNDARIES" },
+            registry = new { determinism = "PASS: same packet/source atoms produces same fingerprint", layoutCollision = "PASS: Page/Row/Segment are fingerprint inputs", unicode = "PASS: no issued boundary between a UTF-16 surrogate pair", coordinateSystem = "UTF-16_OFFSETS_AT_VALID_UNICODE_SCALAR_BOUNDARIES" },
             ownership = new { coverage = "PASS_FOR_PRIMARY_ROOT_UNIVERSE", nonOverlap = "PASS_AFTER_DETERMINISTIC_BISECTION", multipart = "PRIMARY_OWNED_ONLY" },
             normalization = new { duplicateExactLocator = "REJECT_REQUIRED_AT_RESPONSE_VALIDATION: duplicate identities are detectable; this test proves detection only", functions = "UNIQUE_SET_REQUIRED" },
             overflow = new { oversizedResponse = "SPLIT_WITHOUT_PARSE_OR_BIND", retry = 0, repair = false, leafOverflow = "INCOMPLETE_UNSPLITTABLE_OVERFLOW_NOT_EVALUABLE" },
