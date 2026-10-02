@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "v5-p6c-request-local-locator-registry-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "correction": {
+    "p6bBoundaryAuthority": "RANGE_VALIDATED_COORDINATE_ENCODING_NOT_ISSUED_REGISTRY",
+    "p6cBoundaryAuthority": "OPAQUE_REQUEST_LOCAL_REGISTRY_LOOKUP"
+  },
+  "registry": {
+    "atoms": "A# maps to one owned source atom in this request",
+    "boundaries": "H# maps to exactly one (A#, offset) pair issued by this request",
+    "decoder": "lookup only; no numeric offset is parsed from a provider response",
+    "unknownHandle": "REJECT_BEFORE_BIND",
+    "crossAtomHandle": "REJECT_BEFORE_BIND"
+  },
+  "shardDomain": {
+    "owner": "primary atom plus an issued primary-from handle domain; whole atoms have an explicit owner set",
+    "strictLocator": "from must be in the shard's allowedFrom registry subset and to must be in its allowedTo subset",
+    "issuedButOutOfDomain": "REJECT_BEFORE_BIND",
+    "multipart": "decoded through the existing exact binder after primary-domain validation; it does not change primary shard ownership"
+  },
+  "retainedP6BProperties": {
+    "sourceTextCopy": "ABSENT",
+    "contextEcho": "ABSENT",
+    "wholeAtomCanonicalForm": "atom only; full-span boundary pair is rejected",
+    "strictAndMultipartIdentity": "LOSSLESS_ROUND_TRIP_TO_BoundClaimEndpoint.Identity",
+    "unaryFunctions": "UNIQUE_SUBSET_OF_DOCUMENT_IDENTITY_STRUCTURAL_REGION_NAVIGATION_REPRESENTATION"
+  },
+  "remainingGate": {
+    "coarseShardAggregateVolume": "NOT_ESTABLISHED",
+    "providerManifest": "NOT_PREPARED",
+    "providerExecution": "BLOCKED",
+    "sharedRuntime": "UNCHANGED"
+  },
+  "conclusion": "P6C makes boundary authority real: only a request-issued opaque handle can select a boundary, and a shard can reject even issued handles outside its domain before binding. Aggregate shard sizing remains a separate proof."
+}

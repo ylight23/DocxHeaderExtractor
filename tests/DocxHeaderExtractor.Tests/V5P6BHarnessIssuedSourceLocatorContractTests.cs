@@ -8,9 +8,9 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
-/// P6B is a qualification-only locator contract.  Its handles are issued from source atoms by
-/// the harness; source text, aliases, contexts, and free numeric coordinates are not provider
-/// response fields.  It intentionally does not promote this experimental wire to the runtime.
+/// P6B proves a lossless compact locator encoding.  Boundary strings are range-validated
+/// coordinate encodings, not opaque issued handles; P6C closes that authority gap.  Source text,
+/// aliases and contexts are not provider response fields.  This test never promotes a wire.
 /// </summary>
 public sealed class V5P6BHarnessIssuedSourceLocatorContractTests
 {
@@ -71,7 +71,7 @@ public sealed class V5P6BHarnessIssuedSourceLocatorContractTests
             {
                 protocol = "v5-heading-occurrence-locator-qualification-1",
                 response = "occurrences[]: primary locator, ordered additional locators, unique unary functions[]",
-                locator = "atom handle plus either no boundaries for a whole atom, or harness-issued from/to boundary handles for a strict span",
+                locator = "atom handle plus either no boundaries for a whole atom, or range-validated A#:B# from/to coordinate encodings for a strict span",
                 forbiddenProviderFields = new[] { "sourceAlias", "sourceId", "sourceOrdinal", "verbatimText", "leftExactContext", "rightExactContext", "freeNumericStart", "freeNumericEnd" },
                 relations = "OUT_OF_SCOPE",
                 runtime = "UNCHANGED",
@@ -79,10 +79,15 @@ public sealed class V5P6BHarnessIssuedSourceLocatorContractTests
             validation = new
             {
                 atomHandle = "must be present in the request-local owned atom domain",
-                boundaries = "must be harness-issued for that atom; strict form requires from < to; a full-atom boundary pair is refused because whole form is canonical handle-only",
+                boundaries = "must parse to an in-range offset for that atom; strict form requires from < to; a full-atom boundary pair is refused because whole form is canonical handle-only",
                 multipart = "additional parts must be owned, strictly source-ordered, and are passed through the existing exact binder",
                 functions = Contract.Predicates.Select(item => item.Name).OrderBy(name => name, StringComparer.Ordinal).ToArray(),
                 functionSet = "unique finite subset; no mutual-exclusion assumption",
+            },
+            boundaryAuthority = new
+            {
+                status = "RANGE_VALIDATED_COORDINATE_ENCODING_NOT_ISSUED_REGISTRY",
+                limitation = "A model-authored A#:B# whose offset is in range is accepted even if that exact boundary was not separately issued by the request. P6C must replace parsing with opaque registry lookup before coarse-domain execution can be qualified.",
             },
             completeness = new
             {
@@ -106,7 +111,7 @@ public sealed class V5P6BHarnessIssuedSourceLocatorContractTests
                 exactBindingQuality = "locator decode/binder acceptance and identity equality, reported separately",
             },
             providerManifest = "NOT_PREPARED: P6B is a local contract proof only; no model behavior or practical shard schedule has been qualified.",
-            conclusion = "Harness-issued handles remove copied-text and context-echo representation failures while retaining exact source identity. A singleton exact-identity shard fits the response cap without semantic cardinality, but P6B does not claim that this leaf granularity is operationally viable.",
+            conclusion = "The P6B compact encoding removes copied-text and context-echo representation failures while retaining exact source identity. It is not yet a harness-issued boundary registry. A singleton exact-identity shard fits the response cap without semantic cardinality, but neither opacity nor operational leaf granularity is claimed here.",
         });
     }
 
