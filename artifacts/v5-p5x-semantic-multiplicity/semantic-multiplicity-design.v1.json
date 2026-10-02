@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "v5-p5x-semantic-multiplicity-design-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "canonicalSemanticIdentity": {
+    "formula": "subject.Identity | predicate | (object.Identity ?? value ?? empty)",
+    "exactDuplicate": "REDUNDANT_BY_IDENTITY",
+    "sameSubjectPredicateDifferentTarget": "DISTINCT_SEMANTIC_FACT",
+    "sameSubjectPredicateDifferentUnaryValue": "DISTINCT_SEMANTIC_FACT",
+    "runtimeEnforcement": "NOT_ENFORCED_AS_A_DEDUPLICATION_RULE: ClaimId retains proposal ordinal; identity is available on BoundSemanticClaim"
+  },
+  "currentTaskMultiplicity": {
+    "unary": [
+      {
+        "Name": "DOCUMENT_IDENTITY",
+        "multiplicity": "NOT_DEFINED"
+      },
+      {
+        "Name": "NAVIGATION_REPRESENTATION",
+        "multiplicity": "NOT_DEFINED"
+      },
+      {
+        "Name": "STRUCTURAL_REGION",
+        "multiplicity": "NOT_DEFINED"
+      }
+    ],
+    "relations": [
+      {
+        "Name": "CONTINUES",
+        "multiplicity": "NOT_DEFINED",
+        "graphConstraint": "NONE"
+      },
+      {
+        "Name": "PARENT_OF",
+        "multiplicity": "NOT_DEFINED",
+        "graphConstraint": "NO_SELF_PARENT_AND_NO_CYCLE_AFTER_BINDING"
+      },
+      {
+        "Name": "REFERENCES",
+        "multiplicity": "NOT_DEFINED",
+        "graphConstraint": "NONE"
+      },
+      {
+        "Name": "SAME_ENTITY",
+        "multiplicity": "NOT_DEFINED",
+        "graphConstraint": "IDENTITY_MERGE_MARKER"
+      }
+    ],
+    "conclusion": "Exact duplicate identity is a safe normalization candidate; caps, outgoing fan-out and target uniqueness require task semantics and are not inferred here."
+  },
+  "projectionDependency": {
+    "document-identity": [
+      "DOCUMENT_IDENTITY"
+    ],
+    "outline": [
+      "STRUCTURAL_REGION",
+      "PARENT_OF"
+    ],
+    "navigation": [
+      "NAVIGATION_REPRESENTATION",
+      "REFERENCES",
+      "SAME_ENTITY",
+      "CONTINUES"
+    ]
+  },
+  "phaseDesign": {
+    "phase1": {
+      "name": "occurrence-classification",
+      "permittedPredicates": [
+        "DOCUMENT_IDENTITY",
+        "NAVIGATION_REPRESENTATION",
+        "STRUCTURAL_REGION"
+      ],
+      "requiredBy": [
+        "document-identity",
+        "outline",
+        "navigation"
+      ],
+      "status": "DESIGN_CANDIDATE_NOT_IMPLEMENTED"
+    },
+    "phase2": {
+      "name": "relation-resolution",
+      "permittedRelations": [
+        "CONTINUES",
+        "PARENT_OF",
+        "REFERENCES",
+        "SAME_ENTITY"
+      ],
+      "requiredBy": [
+        "outline:PARENT_OF",
+        "navigation:REFERENCES,SAME_ENTITY,CONTINUES"
+      ],
+      "candidateUniverse": "Only phase-1 semantic candidates, subject to a future explicit rule for whether relation targets may include non-candidates.",
+      "status": "DESIGN_CANDIDATE_NOT_IMPLEMENTED"
+    },
+    "currentRuntimeCompatibility": "NO: current required outline and navigation projections consume relations in the same final knowledge state; separating calls requires an orchestrator/projection contract change and qualification."
+  },
+  "finiteBound": {
+    "exclusiveOneOfThreeOccurrenceKinds": "HYPOTHETICAL: <= ownedCount decisions/claims, only after the task declares the three predicates mutually exclusive.",
+    "independentUnaryFacets": "HYPOTHETICAL: <= ownedCount * 3, only after the task declares at-most-one fact per predicate per canonical subject.",
+    "relationLane": "NO_BOUND_DERIVED: requires relation-specific semantic multiplicity and target-universe definitions.",
+    "gate": "P5U_RESPONSE_VOLUME_GATE_REMAINS_BLOCKED"
+  },
+  "goldBoundary": "The current canonical Gold evaluates occurrence predicates only. No relation/hierarchy Gold axis exists for SRC-089/SRC-095, so phase-2 quality cannot be scored from that Gold."
+}
