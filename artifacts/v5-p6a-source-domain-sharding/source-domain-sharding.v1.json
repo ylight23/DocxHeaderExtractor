@@ -1,0 +1,359 @@
+{
+  "schemaVersion": "v5-p6a-source-domain-bounded-occurrence-sharding-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "policy": {
+    "id": "OCCURRENCE_SOURCE_DOMAIN_SHARDING_V1",
+    "owner": "owner(occurrence) = shard containing the primary (ownedIndex, start) coordinate.",
+    "coverage": "Every bindable occurrence has a non-empty ordered source-part tuple and therefore a primary part with one ownedIndex and one harness-resolved start coordinate.",
+    "nonOverlap": "A deterministic half-open coordinate partition assigns that primary coordinate to exactly one shard. Additional multipart parts never change ownership.",
+    "multipart": "PRESERVED: continuation parts remain part of the bound identity but do not select the owner shard.",
+    "semanticCardinality": "NOT_USED: no limit is inferred for headings, claims, or occurrences per owned atom."
+  },
+  "sourceGeometryMethod": {
+    "primarySpanChoices": "For an atom of UTF-16 length n, n*(n+1)/2 is a conservative finite upper bound on selectable non-empty spans. It intentionally over-approximates text/occurrence encodings that the binder can actually resolve.",
+    "multipartIdentityUpperBound": "For each primary atom, multiply its span-choice count by every increasing continuation sequence of one through five later owned atoms, each weighted by its own span-choice count; sum over primaries. This is a source-coordinate upper bound under V3.3's six-part limit, not a semantic occurrence count.",
+    "maximumAdditionalParts": 5
+  },
+  "cohort": {
+    "parentPacks": 31,
+    "ownedOccurrences": 2884,
+    "largestSourceDomain": {
+      "DocumentId": "SRC-089",
+      "ParentOrdinal": 4,
+      "OwnedCount": 96,
+      "primarySpanChoices": "330268",
+      "rootedMultipartIdentityUpperBound": "1487284796138136555060728583684",
+      "LongestOwnedIndex": 12,
+      "LongestAtomUtf16Length": 103,
+      "singleStartEndChoices": "103"
+    },
+    "rows": [
+      {
+        "DocumentId": "SRC-089",
+        "ParentOrdinal": 1,
+        "OwnedCount": 96,
+        "primarySpanChoices": "275620",
+        "rootedMultipartIdentityUpperBound": "488651672866755149979758509075",
+        "LongestOwnedIndex": 31,
+        "LongestAtomUtf16Length": 99,
+        "singleStartEndChoices": "99"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "ParentOrdinal": 2,
+        "OwnedCount": 96,
+        "primarySpanChoices": "313276",
+        "rootedMultipartIdentityUpperBound": "1076349230601944575307088857731",
+        "LongestOwnedIndex": 42,
+        "LongestAtomUtf16Length": 100,
+        "singleStartEndChoices": "100"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "ParentOrdinal": 3,
+        "OwnedCount": 96,
+        "primarySpanChoices": "289042",
+        "rootedMultipartIdentityUpperBound": "653728552059885068147737865125",
+        "LongestOwnedIndex": 20,
+        "LongestAtomUtf16Length": 102,
+        "singleStartEndChoices": "102"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "ParentOrdinal": 4,
+        "OwnedCount": 96,
+        "primarySpanChoices": "330268",
+        "rootedMultipartIdentityUpperBound": "1487284796138136555060728583684",
+        "LongestOwnedIndex": 12,
+        "LongestAtomUtf16Length": 103,
+        "singleStartEndChoices": "103"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "ParentOrdinal": 5,
+        "OwnedCount": 96,
+        "primarySpanChoices": "307286",
+        "rootedMultipartIdentityUpperBound": "954933300270974883769749923329",
+        "LongestOwnedIndex": 66,
+        "LongestAtomUtf16Length": 103,
+        "singleStartEndChoices": "103"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "ParentOrdinal": 6,
+        "OwnedCount": 96,
+        "primarySpanChoices": "286334",
+        "rootedMultipartIdentityUpperBound": "622134443030644444528566711957",
+        "LongestOwnedIndex": 32,
+        "LongestAtomUtf16Length": 100,
+        "singleStartEndChoices": "100"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "ParentOrdinal": 7,
+        "OwnedCount": 6,
+        "primarySpanChoices": "5836",
+        "rootedMultipartIdentityUpperBound": "6111524286365695",
+        "LongestOwnedIndex": 0,
+        "LongestAtomUtf16Length": 90,
+        "singleStartEndChoices": "90"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 1,
+        "OwnedCount": 96,
+        "primarySpanChoices": "86302",
+        "rootedMultipartIdentityUpperBound": "327183232499193276187092165",
+        "LongestOwnedIndex": 16,
+        "LongestAtomUtf16Length": 97,
+        "singleStartEndChoices": "97"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 2,
+        "OwnedCount": 96,
+        "primarySpanChoices": "201026",
+        "rootedMultipartIdentityUpperBound": "68518884409935721103311358367",
+        "LongestOwnedIndex": 58,
+        "LongestAtomUtf16Length": 98,
+        "singleStartEndChoices": "98"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 3,
+        "OwnedCount": 96,
+        "primarySpanChoices": "243785",
+        "rootedMultipartIdentityUpperBound": "228616720253316902551669779999",
+        "LongestOwnedIndex": 59,
+        "LongestAtomUtf16Length": 99,
+        "singleStartEndChoices": "99"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 4,
+        "OwnedCount": 96,
+        "primarySpanChoices": "320319",
+        "rootedMultipartIdentityUpperBound": "1231891504236511909903567616715",
+        "LongestOwnedIndex": 37,
+        "LongestAtomUtf16Length": 102,
+        "singleStartEndChoices": "102"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 5,
+        "OwnedCount": 96,
+        "primarySpanChoices": "302689",
+        "rootedMultipartIdentityUpperBound": "873786455390630652483969256815",
+        "LongestOwnedIndex": 15,
+        "LongestAtomUtf16Length": 98,
+        "singleStartEndChoices": "98"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 6,
+        "OwnedCount": 96,
+        "primarySpanChoices": "289849",
+        "rootedMultipartIdentityUpperBound": "665569482302223084252547132503",
+        "LongestOwnedIndex": 94,
+        "LongestAtomUtf16Length": 100,
+        "singleStartEndChoices": "100"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 7,
+        "OwnedCount": 96,
+        "primarySpanChoices": "317459",
+        "rootedMultipartIdentityUpperBound": "1160352591903801903889650371227",
+        "LongestOwnedIndex": 26,
+        "LongestAtomUtf16Length": 101,
+        "singleStartEndChoices": "101"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 8,
+        "OwnedCount": 96,
+        "primarySpanChoices": "317479",
+        "rootedMultipartIdentityUpperBound": "1160508406629199967156869872127",
+        "LongestOwnedIndex": 13,
+        "LongestAtomUtf16Length": 101,
+        "singleStartEndChoices": "101"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 9,
+        "OwnedCount": 96,
+        "primarySpanChoices": "295679",
+        "rootedMultipartIdentityUpperBound": "753329011842562876257941182758",
+        "LongestOwnedIndex": 34,
+        "LongestAtomUtf16Length": 101,
+        "singleStartEndChoices": "101"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 10,
+        "OwnedCount": 96,
+        "primarySpanChoices": "170759",
+        "rootedMultipartIdentityUpperBound": "23747667339515989370740751563",
+        "LongestOwnedIndex": 29,
+        "LongestAtomUtf16Length": 101,
+        "singleStartEndChoices": "101"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 11,
+        "OwnedCount": 96,
+        "primarySpanChoices": "158153",
+        "rootedMultipartIdentityUpperBound": "15080765329330604452994570979",
+        "LongestOwnedIndex": 78,
+        "LongestAtomUtf16Length": 97,
+        "singleStartEndChoices": "97"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 12,
+        "OwnedCount": 96,
+        "primarySpanChoices": "274523",
+        "rootedMultipartIdentityUpperBound": "474212696053371018878812227007",
+        "LongestOwnedIndex": 76,
+        "LongestAtomUtf16Length": 98,
+        "singleStartEndChoices": "98"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 13,
+        "OwnedCount": 96,
+        "primarySpanChoices": "234399",
+        "rootedMultipartIdentityUpperBound": "178142490368174342173230702783",
+        "LongestOwnedIndex": 0,
+        "LongestAtomUtf16Length": 101,
+        "singleStartEndChoices": "101"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 14,
+        "OwnedCount": 96,
+        "primarySpanChoices": "248946",
+        "rootedMultipartIdentityUpperBound": "260392290480761996813835317998",
+        "LongestOwnedIndex": 87,
+        "LongestAtomUtf16Length": 101,
+        "singleStartEndChoices": "101"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 15,
+        "OwnedCount": 96,
+        "primarySpanChoices": "297660",
+        "rootedMultipartIdentityUpperBound": "781491195341274116715644641203",
+        "LongestOwnedIndex": 82,
+        "LongestAtomUtf16Length": 101,
+        "singleStartEndChoices": "101"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 16,
+        "OwnedCount": 96,
+        "primarySpanChoices": "257536",
+        "rootedMultipartIdentityUpperBound": "319709895838223564938300681035",
+        "LongestOwnedIndex": 73,
+        "LongestAtomUtf16Length": 99,
+        "singleStartEndChoices": "99"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 17,
+        "OwnedCount": 96,
+        "primarySpanChoices": "142343",
+        "rootedMultipartIdentityUpperBound": "7413221833616359171671778833",
+        "LongestOwnedIndex": 0,
+        "LongestAtomUtf16Length": 98,
+        "singleStartEndChoices": "98"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 18,
+        "OwnedCount": 96,
+        "primarySpanChoices": "78870",
+        "rootedMultipartIdentityUpperBound": "150706992762305085584221711",
+        "LongestOwnedIndex": 30,
+        "LongestAtomUtf16Length": 99,
+        "singleStartEndChoices": "99"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 19,
+        "OwnedCount": 96,
+        "primarySpanChoices": "98297",
+        "rootedMultipartIdentityUpperBound": "720588580025922924432890475",
+        "LongestOwnedIndex": 46,
+        "LongestAtomUtf16Length": 99,
+        "singleStartEndChoices": "99"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 20,
+        "OwnedCount": 96,
+        "primarySpanChoices": "231783",
+        "rootedMultipartIdentityUpperBound": "169676760509979012502200683757",
+        "LongestOwnedIndex": 73,
+        "LongestAtomUtf16Length": 102,
+        "singleStartEndChoices": "102"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 21,
+        "OwnedCount": 96,
+        "primarySpanChoices": "258099",
+        "rootedMultipartIdentityUpperBound": "328524743139969038756516616348",
+        "LongestOwnedIndex": 17,
+        "LongestAtomUtf16Length": 103,
+        "singleStartEndChoices": "103"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 22,
+        "OwnedCount": 96,
+        "primarySpanChoices": "202567",
+        "rootedMultipartIdentityUpperBound": "72460364537306412266353552861",
+        "LongestOwnedIndex": 9,
+        "LongestAtomUtf16Length": 101,
+        "singleStartEndChoices": "101"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 23,
+        "OwnedCount": 96,
+        "primarySpanChoices": "189703",
+        "rootedMultipartIdentityUpperBound": "48987995212030685737381540671",
+        "LongestOwnedIndex": 57,
+        "LongestAtomUtf16Length": 92,
+        "singleStartEndChoices": "92"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "ParentOrdinal": 24,
+        "OwnedCount": 94,
+        "primarySpanChoices": "222459",
+        "rootedMultipartIdentityUpperBound": "132542246564594898159675229303",
+        "LongestOwnedIndex": 87,
+        "LongestAtomUtf16Length": 91,
+        "singleStartEndChoices": "91"
+      }
+    ]
+  },
+  "wireAuthority": {
+    "currentV33Selection": "verbatimText plus optional occurrence is bound against source after parse; it contains no harness-issued start/end or occurrence-domain handle.",
+    "consequence": "A start-range shard can be checked only after resolving model text. The current schema cannot constrain model output to a coordinate domain before it emits arbitrary selections.",
+    "requiredForExecution": "A qualification-only response wire must carry a harness-issued source-domain/occurrence handle (or an equivalent finite enumerated coordinate vocabulary), then parser and binder must reject selections outside that handle's domain."
+  },
+  "volumeGate": {
+    "finiteIdentitySpace": "YES_FOR_EACH_FROZEN_PACKET",
+    "finiteAndExecutableShardBound": "NOT_ESTABLISHED",
+    "reason": "A primary-start shard still contains multiple end spans and multipart continuation combinations. Recursive source partitioning is semantically safe, but without a wire-level coordinate-domain handle it cannot provide a provider-facing response-volume proof.",
+    "providerManifest": "NOT_PREPARED",
+    "providerExecution": "BLOCKED",
+    "sharedRuntime": "UNCHANGED"
+  },
+  "conclusion": "P6A validates source-domain ownership as the correct non-semantic partition principle, but does not open execution: finiteness of the source identity space alone is insufficient until the response wire can represent and enforce the partition domain."
+}
