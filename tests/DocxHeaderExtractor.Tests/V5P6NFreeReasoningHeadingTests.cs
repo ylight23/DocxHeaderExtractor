@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core.Models;
@@ -10,6 +11,7 @@ public sealed class V5P6NFreeReasoningHeadingTests
 {
     private const string Root = "artifacts/v5-p6n-free-reasoning-heading-ceiling";
     private const string FreeSchemaRoot = "artifacts/v5-p6n-unconstrained-output-ceiling";
+    private const string BoundLocatorRoot = "artifacts/v5-p6nb-free-semantic-bound-locator";
     private const string P6LRoot = "artifacts/v5-p6l-canonical-locator-contract";
     private const string P6IRoot = "artifacts/v5-p6i-compact-locator-directory";
     private const int ResponseCap = 49_152;
@@ -210,6 +212,103 @@ public sealed class V5P6NFreeReasoningHeadingTests
         });
     }
 
+    [Fact]
+    public void Freeze_P6NB_free_semantic_bound_locator_four_pack_preflight()
+    {
+        var repo = TestRepository.Root();
+        var manifest = JsonNode.Parse(File.ReadAllText(Path.Combine(repo, BoundLocatorRoot, "execution-manifest.v1.json")))!.AsObject();
+        Assert.Equal("PREPARED_NOT_AUTHORIZED", manifest["status"]!.GetValue<string>());
+        Assert.Equal(0, manifest["providerCalls"]!.GetValue<int>());
+        Assert.False(manifest["goldRead"]!.GetValue<bool>());
+        Assert.Equal(4, manifest["executionGate"]!["maximumProviderCalls"]!.GetValue<int>());
+        Assert.Equal(0, manifest["executionGate"]!["retry"]!.GetValue<int>());
+        Assert.False(manifest["executionGate"]!["full31"]!.GetValue<bool>());
+        Assert.Equal("json_object", manifest["route"]!["responseFormat"]!.GetValue<string>());
+        Assert.True(manifest["route"]!["reasoning"]!["enabled"]!.GetValue<bool>());
+        Assert.False(manifest["route"]!["reasoning"]!.AsObject().ContainsKey("effort"));
+        Assert.Equal("v5-free-reasoning-heading-membership-source-parts-locator-1", manifest["protocol"]!.GetValue<string>());
+        Assert.Contains("sourceParts[]", manifest["outputShape"]!["heading"]!.GetValue<string>(), StringComparison.Ordinal);
+        Assert.Equal("P6M vs P6N-B changes ontology and reasoning together; result estimates only their combined arm difference.", manifest["causalLimit"]!.GetValue<string>());
+
+        var cache = new Dictionary<string, (IReadOnlyList<V5PackedDecisionRequestV3> Packs, Dictionary<string, SemanticSourceAtom> Atoms)>();
+        var auditRows = new List<object>();
+        foreach (var role in Roles)
+        {
+            if (!cache.TryGetValue(role.DocumentId, out var source))
+            {
+                var pdf = Path.Combine(repo, role.Pdf.Replace('/', Path.DirectorySeparatorChar));
+                source = (V5PdfPreflightBuilder.BuildV3(pdf, role.DocumentId, Contract,
+                        V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId, Envelope),
+                    V5PdfPreflightBuilder.LoadAtoms(pdf).ToDictionary(atom => atom.Alias, StringComparer.Ordinal));
+                cache.Add(role.DocumentId, source);
+            }
+            var pack = source.Packs.Single(item => item.PackId == $"{V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId}:PACK_{role.ParentOrdinal:000}");
+            var registry = RequestLocalLocatorRegistry.Create(pack.OwnedAliases.Select(alias => source.Atoms[alias]).ToArray());
+            var canonical = V5SparseCandidateRequestComposerV1.ComposeCompactDirectoryCanonical(Contract, pack.Packet, registry);
+            var request = V5FreeHeadingCandidateProtocolV1.ComposeBoundLocator(canonical);
+            using var p6mJson = JsonDocument.Parse(canonical.UserMessage);
+            using var requestJson = JsonDocument.Parse(request.UserMessage);
+            Assert.True(JsonElement.DeepEquals(p6mJson.RootElement.GetProperty("ownedSubjects"), requestJson.RootElement.GetProperty("ownedSubjects")));
+            Assert.True(JsonElement.DeepEquals(p6mJson.RootElement.GetProperty("contextOnlyEvidence"), requestJson.RootElement.GetProperty("contextOnlyEvidence")));
+            Assert.Equal(2, requestJson.RootElement.EnumerateObject().Count());
+            Assert.DoesNotContain("DOCUMENT_IDENTITY", request.SystemPrompt, StringComparison.Ordinal);
+            Assert.DoesNotContain("STRUCTURAL_REGION", request.SystemPrompt, StringComparison.Ordinal);
+            Assert.DoesNotContain("NAVIGATION_REPRESENTATION", request.SystemPrompt, StringComparison.Ordinal);
+            Assert.DoesNotContain("CAPTION", request.SystemPrompt, StringComparison.OrdinalIgnoreCase);
+            Assert.DoesNotContain("TABLE OF CONTENTS", request.SystemPrompt, StringComparison.OrdinalIgnoreCase);
+            Assert.DoesNotContain("font", request.SystemPrompt, StringComparison.OrdinalIgnoreCase);
+            using var promptShape = JsonDocument.Parse("{\"headings\":[{\"sourceParts\":[{\"atom\":\"A17\"}]}]}");
+            var headingShape = promptShape.RootElement.GetProperty("headings")[0];
+            Assert.Equal(new[] { "sourceParts" }, headingShape.EnumerateObject().Select(property => property.Name));
+            Assert.Equal(new[] { "atom" }, headingShape.GetProperty("sourceParts")[0].EnumerateObject().Select(property => property.Name));
+
+            var body = V5FreeHeadingCandidateProtocolV1.BuildBoundLocatorProviderBody(request, pack.MaxCompletionTokens);
+            using var bodyJson = JsonDocument.Parse(body.PayloadBytes);
+            Assert.Equal("json_object", bodyJson.RootElement.GetProperty("response_format").GetProperty("type").GetString());
+            Assert.True(bodyJson.RootElement.GetProperty("reasoning").GetProperty("enabled").GetBoolean());
+            Assert.False(bodyJson.RootElement.GetProperty("reasoning").TryGetProperty("effort", out _));
+            Assert.Equal(pack.MaxCompletionTokens, bodyJson.RootElement.GetProperty("max_tokens").GetInt32());
+            var baseline = OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRaw(canonical.SystemPrompt, canonical.UserMessage,
+                pack.MaxCompletionTokens, Envelope);
+            using var baselineJson = JsonDocument.Parse(baseline.PayloadBytes);
+            foreach (var field in new[] { "model", "temperature", "max_tokens", "response_format", "provider", "stream", "usage" })
+                Assert.True(JsonNode.DeepEquals(JsonNode.Parse(bodyJson.RootElement.GetProperty(field).GetRawText()), JsonNode.Parse(baselineJson.RootElement.GetProperty(field).GetRawText())), $"unchanged carrier field {field}");
+
+            var frozen = manifest["rows"]!.AsArray().Single(row => row!["role"]!.GetValue<string>() == role.Role)!;
+            var sourceEvidenceJson = JsonSerializer.Serialize(new
+            {
+                ownedSubjects = requestJson.RootElement.GetProperty("ownedSubjects"),
+                contextOnlyEvidence = requestJson.RootElement.GetProperty("contextOnlyEvidence"),
+            }, new JsonSerializerOptions { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+            Assert.Equal(Hashing.Sha256(sourceEvidenceJson), frozen["sourceEvidenceHash"]!.GetValue<string>());
+            Assert.Equal(registry.Fingerprint, frozen["registryFingerprint"]!.GetValue<string>());
+            Assert.Equal(request.UserMessageSha256, frozen["semanticRequestHash"]!.GetValue<string>());
+            Assert.Equal(body.Hash, frozen["providerRequestHash"]!.GetValue<string>());
+            Assert.Equal(body.Bytes, frozen["providerRequestBytes"]!.GetValue<int>());
+            auditRows.Add(new
+            {
+                role = role.Role, documentId = role.DocumentId, parentOrdinal = role.ParentOrdinal, packId = pack.PackId,
+                ownedAtoms = pack.OwnedAliases.Count, semanticRequestHash = request.UserMessageSha256,
+                sourceEvidenceHash = frozen["sourceEvidenceHash"]!.GetValue<string>(), registryFingerprint = registry.Fingerprint,
+                providerRequestHash = body.Hash, providerRequestBytes = body.Bytes, maxCompletionTokens = pack.MaxCompletionTokens,
+            });
+        }
+
+        FreezeArtifact.AssertJson(BoundLocatorRoot, "audit.v1.json", new
+        {
+            schemaVersion = "v5-p6nb-bound-locator-provider-free-audit-v1",
+            providerCalls = 0, goldRead = false, goldMutation = "NONE", sharedRuntime = "UNCHANGED",
+            sourceEvidenceParity = "P6M ownedSubjects/contextOnlyEvidence byte-structurally equal for all four selected packs",
+            ontologySupplied = false, semanticFunctionsInOutput = false, locatorContract = "canonical P6L sourceParts[]",
+            reasoning = new { enabled = true, effort = "OMITTED" }, responseFormat = "json_object",
+            parser = "sourceParts-to-P6L adapter then production-qualified occurrence parser", binder = "RequestLocalLocatorRegistry.Decode / SemanticSourcePartBinder",
+            causalLimit = "P6M comparison changes ontology and reasoning together; no individual causal attribution",
+            fixture = new { wholeAtom = "PASS", strictSubstring = "PASS", multipart = "PASS", invalidSiblingIsolation = "PASS", unknownHandleQuarantined = "PASS", malformedRootResponseFatal = "PASS" },
+            rows = auditRows,
+        });
+        AssertSourcePartsParserFixture();
+    }
+
     private static void AssertParserFixture()
     {
         var atoms = new[]
@@ -245,5 +344,53 @@ public sealed class V5P6NFreeReasoningHeadingTests
 
         using var badRoot = JsonDocument.Parse("""{"headings":{},"extra":true}""");
         Assert.Throws<InvalidOperationException>(() => V5FreeHeadingCandidateProtocolV1.ParseAndBind(badRoot.RootElement, 28, ResponseCap, registry, new HashSet<int> { 0, 1, 2, 3 }));
+    }
+
+    private static void AssertSourcePartsParserFixture()
+    {
+        var atoms = new[]
+        {
+            new SemanticSourceAtom("L0010:S0", "fixture", 10, 1, 0, 0, "Whole atom"),
+            new SemanticSourceAtom("L0011:S0", "fixture", 11, 1, 1, 0, "prefix StrictSuffix"),
+            new SemanticSourceAtom("L0012:S0", "fixture", 12, 1, 2, 0, "Multipart first"),
+            new SemanticSourceAtom("L0013:S0", "fixture", 13, 1, 3, 0, "Multipart second"),
+        };
+        var registry = RequestLocalLocatorRegistry.Create(atoms);
+        var from = registry.BoundaryHandle(1, 7);
+        var to = registry.BoundaryHandle(1, 13);
+        var fixture = new JsonObject
+        {
+            ["headings"] = new JsonArray
+            {
+                new JsonObject { ["sourceParts"] = new JsonArray(new JsonObject { ["atom"] = "A0" }) },
+                new JsonObject { ["sourceParts"] = new JsonArray(new JsonObject { ["atom"] = "A1", ["from"] = from, ["to"] = to }) },
+                new JsonObject { ["sourceParts"] = new JsonArray(new JsonObject { ["atom"] = "A2" }, new JsonObject { ["atom"] = "A3" }) },
+            },
+        };
+        using var valid = JsonDocument.Parse(fixture.ToJsonString());
+        var validResult = V5FreeHeadingCandidateProtocolV1.ParseAndBindSourceParts(valid.RootElement,
+            Encoding.UTF8.GetByteCount(valid.RootElement.GetRawText()), ResponseCap, registry, new HashSet<int> { 0, 1, 2, 3 });
+        Assert.Empty(validResult.Quarantined);
+        Assert.Equal(3, validResult.Response.Occurrences.Count);
+        Assert.Contains(validResult.Response.Occurrences, item => item.Primary.From == from);
+        Assert.Contains(validResult.Response.Occurrences, item => item.AdditionalParts.Count == 1);
+
+        var siblingFixture = new JsonObject
+        {
+            ["headings"] = new JsonArray
+            {
+                new JsonObject { ["sourceParts"] = new JsonArray(new JsonObject { ["atom"] = "A0" }) },
+                new JsonObject { ["sourceParts"] = new JsonArray(new JsonObject { ["atom"] = "A999" }) },
+                new JsonObject { ["sourceParts"] = new JsonArray(new JsonObject { ["atom"] = "A2" }) },
+            },
+        };
+        using var sibling = JsonDocument.Parse(siblingFixture.ToJsonString());
+        var isolated = V5FreeHeadingCandidateProtocolV1.ParseAndBindSourceParts(sibling.RootElement,
+            Encoding.UTF8.GetByteCount(sibling.RootElement.GetRawText()), ResponseCap, registry, new HashSet<int> { 0, 1, 2, 3 });
+        Assert.Equal(2, isolated.Response.Occurrences.Count);
+        Assert.Single(isolated.Quarantined);
+
+        using var malformed = JsonDocument.Parse("""{"headings":[],"other":true}""");
+        Assert.Throws<InvalidOperationException>(() => V5FreeHeadingCandidateProtocolV1.ParseAndBindSourceParts(malformed.RootElement, 30, ResponseCap, registry, new HashSet<int> { 0, 1, 2, 3 }));
     }
 }

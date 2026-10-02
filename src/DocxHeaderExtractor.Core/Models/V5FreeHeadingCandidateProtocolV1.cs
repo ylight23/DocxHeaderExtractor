@@ -20,9 +20,17 @@ public static class V5FreeHeadingCandidateProtocolV1
 {
     public const string Version = "v5-free-reasoning-heading-membership-canonical-locator-1";
     public const string UnschematizedVersion = "v5-free-reasoning-heading-membership-unconstrained-output-1";
+    public const string BoundLocatorVersion = "v5-free-reasoning-heading-membership-source-parts-locator-1";
 
     public const string UnschematizedSystemPrompt = """
         You are reading a document represented by source occurrences in document order. Identify the occurrences that you judge to function as headings in this document. Use the document context and the observable source evidence provided. Return the headings you judge to be present in the source, using whatever response format and schema you prefer. Do not use any external answer key.
+        """;
+
+    public const string BoundLocatorSystemPrompt = """
+        You are reading a document from source occurrences in document order. Identify the occurrences that you judge to function as headings in this document. Use the document context and the observable source evidence provided. Return only headings you judge to be present in the source. Do not use any external answer key.
+
+        Return one JSON object with exactly this shape: {"headings":[{"sourceParts":[{"atom":"A17"}]}]}.
+        Each heading has exactly one property, sourceParts. sourceParts is a non-empty ordered array of source locators: the first part is the primary occurrence and later parts are ordered continuations of that same heading. Every part uses only an issued owned atom handle and optional from/to boundary handles. A whole atom is exactly {"atom":"A17"}, with no from/to. A strict proper substring is exactly {"atom":"A17","from":"H123","to":"H145"}; never emit a full-span boundary pair. Additional atoms must be owned and strictly increasing in source order. Select only opaque handles in ownedSubjects; contextOnlyEvidence is reasoning-only and is never selectable. Output no semantic function, heading level, type, reason, confidence, hierarchy, or other property.
         """;
 
     // Deliberately contains no task ontology, examples, or heading/non-heading heuristics.
@@ -73,6 +81,22 @@ public static class V5FreeHeadingCandidateProtocolV1
         var user = JsonSerializer.Serialize(new { ownedSubjects = owned, contextOnlyEvidence = context }, JsonOptions);
         return new V5FreeHeadingRequestV1(UnschematizedVersion, UnschematizedSystemPrompt, user,
             Hashing.Sha256(user), Encoding.UTF8.GetByteCount(UnschematizedSystemPrompt), Encoding.UTF8.GetByteCount(user));
+    }
+
+    /// <summary>Composes free semantic judgement with the minimum sourceParts locator grammar.</summary>
+    public static V5FreeHeadingRequestV1 ComposeBoundLocator(V5SparseCandidateModelRequestV1 p6mCanonicalRequest)
+    {
+        ArgumentNullException.ThrowIfNull(p6mCanonicalRequest);
+        using var source = JsonDocument.Parse(p6mCanonicalRequest.UserMessage);
+        var root = source.RootElement;
+        if (root.ValueKind != JsonValueKind.Object ||
+            !root.TryGetProperty("ownedSubjects", out var owned) || owned.ValueKind != JsonValueKind.Array ||
+            !root.TryGetProperty("contextOnlyEvidence", out var context) || context.ValueKind != JsonValueKind.Array)
+            throw new InvalidOperationException("p6n-source-evidence-envelope-invalid");
+
+        var user = JsonSerializer.Serialize(new { ownedSubjects = owned, contextOnlyEvidence = context }, JsonOptions);
+        return new V5FreeHeadingRequestV1(BoundLocatorVersion, BoundLocatorSystemPrompt, user,
+            Hashing.Sha256(user), Encoding.UTF8.GetByteCount(BoundLocatorSystemPrompt), Encoding.UTF8.GetByteCount(user));
     }
 
     /// <summary>Builds the one qualified route's json_object carrier with free reasoning enabled.</summary>
@@ -146,6 +170,32 @@ public static class V5FreeHeadingCandidateProtocolV1
             Convert.ToHexStringLower(SHA256.HashData(bytes)), bytes.Length);
     }
 
+    /// <summary>Builds the P6N-B body: json_object carrier, enabled reasoning, no task ontology/schema enforcement.</summary>
+    public static V5ProviderRequestBodyV2_1 BuildBoundLocatorProviderBody(V5FreeHeadingRequestV1 request,
+        int maxCompletionTokens)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        if (maxCompletionTokens <= 0) throw new ArgumentOutOfRangeException(nameof(maxCompletionTokens));
+        var provider = new
+        {
+            order = new[] { "alibaba" }, allow_fallbacks = false, require_parameters = true,
+            data_collection = "deny", zdr = false,
+        };
+        var body = new
+        {
+            model = "qwen/qwen3.7-flash", temperature = 0, max_tokens = maxCompletionTokens,
+            reasoning = new { enabled = true },
+            messages = new object[]
+            {
+                new { role = "system", content = request.SystemPrompt },
+                new { role = "user", content = request.UserMessage },
+            },
+            response_format = new { type = "json_object" }, provider, stream = true, usage = new { include = true },
+        };
+        var bytes = JsonSerializer.SerializeToUtf8Bytes(body, JsonOptions);
+        return new V5ProviderRequestBodyV2_1(bytes, Convert.ToHexStringLower(SHA256.HashData(bytes)), bytes.Length);
+    }
+
     /// <summary>
     /// Parses P6N's headings/locator-only response, then adapts candidate locators to the already
     /// qualified P6M parser/binder. The internal STRUCTURAL_REGION marker is a parser compatibility
@@ -187,6 +237,41 @@ public static class V5FreeHeadingCandidateProtocolV1
             occurrences.Add(candidate);
         }
 
+        using var adaptedDocument = JsonDocument.Parse(adapted.ToJsonString(JsonOptions));
+        return registry.Parse(adaptedDocument.RootElement, rawUtf8Bytes, responseCap, ownedAtomIndices);
+    }
+
+    /// <summary>
+    /// Parses headings[].sourceParts[] and adapts only its locator parts into P6L's qualified parser/binder.
+    /// A local placeholder function is discarded and is never present on the provider wire or scored.
+    /// </summary>
+    public static OccurrenceLocatorResponseResult ParseAndBindSourceParts(JsonElement payload, int rawUtf8Bytes,
+        int responseCap, RequestLocalLocatorRegistry registry, IReadOnlySet<int> ownedAtomIndices)
+    {
+        if (rawUtf8Bytes < 0 || rawUtf8Bytes > responseCap || responseCap < 1)
+            throw new InvalidOperationException("occurrence-response-byte-cap-exceeded");
+        if (payload.ValueKind != JsonValueKind.Object || payload.EnumerateObject().Count() != 1 ||
+            !payload.TryGetProperty("headings", out var headings) || headings.ValueKind != JsonValueKind.Array)
+            throw new InvalidOperationException("p6n-response-root-invalid");
+
+        var adapted = new JsonObject { ["occurrences"] = new JsonArray() };
+        var occurrences = adapted["occurrences"]!.AsArray();
+        foreach (var heading in headings.EnumerateArray())
+        {
+            if (heading.ValueKind != JsonValueKind.Object || heading.EnumerateObject().Count() != 1 ||
+                !heading.TryGetProperty("sourceParts", out var sourceParts) || sourceParts.ValueKind != JsonValueKind.Array || sourceParts.GetArrayLength() == 0)
+            {
+                occurrences.Add(new JsonObject());
+                continue;
+            }
+            var candidate = new JsonObject
+            {
+                ["primary"] = JsonNode.Parse(sourceParts[0].GetRawText()),
+                ["additionalParts"] = new JsonArray(sourceParts.EnumerateArray().Skip(1).Select(part => JsonNode.Parse(part.GetRawText())).ToArray()),
+                ["functions"] = new JsonArray("STRUCTURAL_REGION"),
+            };
+            occurrences.Add(candidate);
+        }
         using var adaptedDocument = JsonDocument.Parse(adapted.ToJsonString(JsonOptions));
         return registry.Parse(adaptedDocument.RootElement, rawUtf8Bytes, responseCap, ownedAtomIndices);
     }

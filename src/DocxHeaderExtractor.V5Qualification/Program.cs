@@ -100,6 +100,14 @@ internal static class Program
         if (args.Contains("--p6n-unconstrained-output-canary"))
             return await P6NUnschematizedHeadingCanary.RunAsync(LocateRepoRoot(), args);
 
+        // P6N-B removes the semantic ontology but keeps an exact sourceParts locator contract for bindable headings.
+        if (args.Contains("--p6nb-bound-locator-canary"))
+            return await P6NBBoundLocatorCanary.RunAsync(LocateRepoRoot(), args);
+
+        // Separately authorized, exact-body-only retry budget for the failed fourth P6N-B canary request.
+        if (args.Contains("--p6nb-bound-locator-call4-retry"))
+            return await P6NBBoundLocatorCanary.RetryFourthAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 

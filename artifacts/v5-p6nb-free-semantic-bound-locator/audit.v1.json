@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "v5-p6nb-bound-locator-provider-free-audit-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "sharedRuntime": "UNCHANGED",
+  "sourceEvidenceParity": "P6M ownedSubjects/contextOnlyEvidence byte-structurally equal for all four selected packs",
+  "ontologySupplied": false,
+  "semanticFunctionsInOutput": false,
+  "locatorContract": "canonical P6L sourceParts[]",
+  "reasoning": {
+    "enabled": true,
+    "effort": "OMITTED"
+  },
+  "responseFormat": "json_object",
+  "parser": "sourceParts-to-P6L adapter then production-qualified occurrence parser",
+  "binder": "RequestLocalLocatorRegistry.Decode / SemanticSourcePartBinder",
+  "causalLimit": "P6M comparison changes ontology and reasoning together; no individual causal attribution",
+  "fixture": {
+    "wholeAtom": "PASS",
+    "strictSubstring": "PASS",
+    "multipart": "PASS",
+    "invalidSiblingIsolation": "PASS",
+    "unknownHandleQuarantined": "PASS",
+    "malformedRootResponseFatal": "PASS"
+  },
+  "rows": [
+    {
+      "role": "MAX_REQUEST_BODY",
+      "documentId": "SRC-089",
+      "parentOrdinal": 4,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "ownedAtoms": 96,
+      "semanticRequestHash": "bd4dcf4f3d10d052a21431e45a91aa5ec2c946fb701ad235e12249d1b13be4cb",
+      "sourceEvidenceHash": "1040372625d3b7f423ca9fc23ddd7811b1d14082015e48f7da77a87a10c64306",
+      "registryFingerprint": "201d7f50096c3782cda2219d40465a20a432d33cdf56f6ce64ab80cacffe316a",
+      "providerRequestHash": "763a7f6ce3ef552744fd6886e2b1c7e37522a8ed305840cec7cf2a6da17fa629",
+      "providerRequestBytes": 165347,
+      "maxCompletionTokens": 25088
+    },
+    {
+      "role": "L1472_OWNER_OMISSION",
+      "documentId": "SRC-095",
+      "parentOrdinal": 17,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "ownedAtoms": 96,
+      "semanticRequestHash": "4df8e157b19653924b7e3b33c870881dad1f9b9de2d321ad1c64e7e130a320c2",
+      "sourceEvidenceHash": "ebce8e4da3dfd6263d316ef6c939e54a9cc09f57946d78e4f0164f1050b7c568",
+      "registryFingerprint": "dfbcc2294820e4c3c84eb439fbf8e8c4be4a54fd73f15bc189c4073bca6b826a",
+      "providerRequestHash": "947e81a052c1179716de81d90bc5717440753208a17af0a7763125f8457c9b0e",
+      "providerRequestBytes": 93031,
+      "maxCompletionTokens": 25088
+    },
+    {
+      "role": "L1710_RETYPING",
+      "documentId": "SRC-095",
+      "parentOrdinal": 20,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "ownedAtoms": 96,
+      "semanticRequestHash": "a0bdb814919c7231a65456760b06be4ce0ba274b4483c03941dc75ee248c15e5",
+      "sourceEvidenceHash": "56bdc265c7f8cd87ba3e58942fcafead1e693c33df81220b549a065806c9ff3a",
+      "registryFingerprint": "29e4fac122a20fb45121fca3413fe371aef8a104e1489916bbb96c754ee54755",
+      "providerRequestHash": "1322e74f599df3ad2d70b9a07a8f0aea8b95c40e8413e35d98ce5f7920890520",
+      "providerRequestBytes": 134384,
+      "maxCompletionTokens": 25088
+    },
+    {
+      "role": "MULTIPART_RELATION",
+      "documentId": "SRC-095",
+      "parentOrdinal": 11,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "ownedAtoms": 96,
+      "semanticRequestHash": "84ad0a348af04113400b70d51bb8e82bf60eef31ac5278578c49d1b4a48a6748",
+      "sourceEvidenceHash": "d5729410b4fb7ed4a89e925b038151febddb9b26478b43a7d4ba3996c230010e",
+      "registryFingerprint": "aef7c488d3aca461bd43b311ad93fc28a47a7459d4953e98b387dccdccf0f562",
+      "providerRequestHash": "63c1b4870f074fb2973968bc3e8755dd052c232fdb19c9cd950fad7a4a0d080b",
+      "providerRequestBytes": 103627,
+      "maxCompletionTokens": 25088
+    }
+  ]
+}
