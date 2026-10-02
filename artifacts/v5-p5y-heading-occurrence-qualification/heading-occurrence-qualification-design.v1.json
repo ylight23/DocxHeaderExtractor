@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "v5-p5y-heading-occurrence-qualification-design-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "scope": {
+    "axis": "HEADING_OCCURRENCE_QUALIFICATION_ONLY",
+    "subject": "one owned source occurrence, with source-part fidelity retained",
+    "permittedUnaryPredicates": [
+      "DOCUMENT_IDENTITY",
+      "NAVIGATION_REPRESENTATION",
+      "STRUCTURAL_REGION"
+    ],
+    "prohibitedRelations": [
+      "CONTINUES",
+      "PARENT_OF",
+      "REFERENCES",
+      "SAME_ENTITY"
+    ],
+    "sharedRuntime": "UNCHANGED",
+    "relationLane": "NOT_QUALIFIED_NO_GOLD_AXIS_NOT_PROMOTED_TO_RUNTIME"
+  },
+  "multiplicityAuthority": {
+    "oneOfThree": "NOT_ESTABLISHED: current DocumentTaskContract has no mutual-exclusion declaration.",
+    "independentFlags": "CANDIDATE_ONLY: a fixed three-flag wire is finite, but needs an explicit task rule and an exact occurrence locator.",
+    "observedProviderCombinations": "NOT_AUTHORITY_FOR_TASK_SEMANTICS"
+  },
+  "occurrenceFidelity": {
+    "wholeAtom": "ownedIndex handle is sufficient when the heading is exactly one whole owned atom.",
+    "strictSubstring": "requires strict verbatimText plus optional occurrence under current V3.3 compact grammar.",
+    "multipart": "requires primary ownedIndex plus ordered additionalSubjectParts; their selections may be strict substrings.",
+    "bareOwnedIndexAndFlags": "INSUFFICIENT: cannot represent strict-span or multipart heading identity.",
+    "currentV33Bounds": {
+      "MaxSubjectParts": 6,
+      "MaxSelectionStringUtf8Bytes": 318
+    }
+  },
+  "qualificationGate": {
+    "occurrenceOnlyWire": "NOT_IMPLEMENTED",
+    "frozenProviderManifest": "NOT_PREPARED",
+    "responseVolumeProof": "NOT_ESTABLISHED: removing relations alone does not prove a finite exact-span/multipart response fits 49,152 bytes.",
+    "nextRequiredAuthority": "Declare unary multiplicity and design a source-part-preserving occurrence-only response representation; then derive its source-constrained byte bound.",
+    "providerExecution": "BLOCKED"
+  },
+  "conclusion": "P5Y correctly separates heading qualification from the relation lane, but an ownedIndex-plus-flags response cannot be frozen yet because it would discard the exact source-span and multipart fidelity required by the production-bound scoring axis."
+}
