@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "v5-p6b-harness-issued-source-locator-contract-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "wire": {
+    "protocol": "v5-heading-occurrence-locator-qualification-1",
+    "response": "occurrences[]: primary locator, ordered additional locators, unique unary functions[]",
+    "locator": "atom handle plus either no boundaries for a whole atom, or harness-issued from/to boundary handles for a strict span",
+    "forbiddenProviderFields": [
+      "sourceAlias",
+      "sourceId",
+      "sourceOrdinal",
+      "verbatimText",
+      "leftExactContext",
+      "rightExactContext",
+      "freeNumericStart",
+      "freeNumericEnd"
+    ],
+    "relations": "OUT_OF_SCOPE",
+    "runtime": "UNCHANGED"
+  },
+  "validation": {
+    "atomHandle": "must be present in the request-local owned atom domain",
+    "boundaries": "must be harness-issued for that atom; strict form requires from < to; a full-atom boundary pair is refused because whole form is canonical handle-only",
+    "multipart": "additional parts must be owned, strictly source-ordered, and are passed through the existing exact binder",
+    "functions": [
+      "DOCUMENT_IDENTITY",
+      "NAVIGATION_REPRESENTATION",
+      "STRUCTURAL_REGION"
+    ],
+    "functionSet": "unique finite subset; no mutual-exclusion assumption"
+  },
+  "completeness": {
+    "wholeAtom": "ROUND_TRIP_PASS",
+    "strictSubstring": "ROUND_TRIP_PASS",
+    "multipart": "ROUND_TRIP_PASS",
+    "identityAuthority": "Decode(locator) then SemanticSourcePartBinder.Bind reproduces BoundClaimEndpoint.Identity."
+  },
+  "singletonExactIdentityShard": {
+    "policy": "owner is a complete harness-issued locator identity, including ordered continuation locators; a response admits at most that one locator record.",
+    "semanticRestriction": "NONE: every exact source identity has a deterministic owner shard; no occurrence/count cap is inferred.",
+    "maxResponseUtf8Bytes": 49152,
+    "largestFrozen31Response": {
+      "DocumentId": "SRC-089",
+      "ParentOrdinal": 1,
+      "OwnedCount": 96,
+      "LocatorPartCount": 96,
+      "ResponseUtf8Bytes": 4421
+    },
+    "all31Fit": true,
+    "caveat": "This establishes a finite safe execution leaf, not an operationally acceptable number of provider calls. Coarser source-domain aggregation requires a separate source-domain-handle and aggregate-volume proof."
+  },
+  "metrics": {
+    "semanticSelectionQuality": "future Gold occurrence evaluation over locator-selected identities",
+    "exactBindingQuality": "locator decode/binder acceptance and identity equality, reported separately"
+  },
+  "providerManifest": "NOT_PREPARED: P6B is a local contract proof only; no model behavior or practical shard schedule has been qualified.",
+  "conclusion": "Harness-issued handles remove copied-text and context-echo representation failures while retaining exact source identity. A singleton exact-identity shard fits the response cap without semantic cardinality, but P6B does not claim that this leaf granularity is operationally viable."
+}
