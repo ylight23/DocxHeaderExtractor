@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "v5-p5z-rooted-occurrence-multiplicity-v1",
+  "providerCalls": 0,
+  "goldRead": true,
+  "goldMutation": "NONE",
+  "ownedDecisionSemantics": {
+    "currentMeaning": "one primary owned source atom selected by ownedIndex; it is not a task-declared one-heading occurrence root.",
+    "sourceBinder": "permits distinct non-overlapping strict substrings of the same atom as distinct bound source identities.",
+    "materializedIdentity": "BoundSemanticClaim.Identity retains distinct source spans, even when their primary source alias is the same.",
+    "taskCardinality": "NOT_DEFINED: no DocumentTaskContract rule limits distinct heading occurrences rooted at an ownedIndex."
+  },
+  "mechanicalCounterexample": {
+    "sourceAtom": "First Heading; Second Heading",
+    "primaryOwnedAlias": "O0",
+    "first": {
+      "identity": "O0:0-13",
+      "text": "First Heading"
+    },
+    "second": {
+      "identity": "O0:15-29",
+      "text": "Second Heading"
+    },
+    "result": "TWO_DISTINCT_EXACT_OCCURRENCES_SAME_PRIMARY_ALIAS_ACCEPTED"
+  },
+  "canonicalGoldObservation": [
+    {
+      "DocumentId": "SRC-089",
+      "HeadingCount": 36,
+      "PrimaryAliasCollisions": 0,
+      "MaxHeadingsPerObservedPrimaryAlias": 1,
+      "MultipartCount": 18
+    },
+    {
+      "DocumentId": "SRC-095",
+      "HeadingCount": 103,
+      "PrimaryAliasCollisions": 0,
+      "MaxHeadingsPerObservedPrimaryAlias": 1,
+      "MultipartCount": 6
+    }
+  ],
+  "interpretation": {
+    "observedPrimaryAliasCollisions": "NONE_IN_THE_139_HEADING_SRC-089/SRC-095_GOLD_COHORT",
+    "observedMultipart": "24_GOLD_HEADINGS_USE_MORE_THAN_ONE_SOURCE_PART",
+    "authorityLimit": "OBSERVATION_ONLY: the absence of collisions in this cohort is not a universal at-most-one-rooted-occurrence task rule."
+  },
+  "occurrenceOnlyWire": {
+    "oneRecordPerOwnedIndex": "NOT_AUTHORIZED: it would reject a mechanically valid distinct strict-substring occurrence before a task rule establishes that outcome.",
+    "occurrencesArray": "REQUIRES_A_TASK_DEFINED_PER_ROOT_BOUND; none exists today.",
+    "semanticFunctions": "may be a unique subset of the three unary predicates per exact occurrence, but does not supply a root-occurrence cardinality bound."
+  },
+  "qualificationGate": {
+    "occurrenceMultiplicityAuthority": "NOT_ESTABLISHED",
+    "finiteResponseProof": "BLOCKED: source fidelity is retained, but the number of exact occurrences rooted at one ownedIndex has no task-derived finite maximum.",
+    "providerManifest": "NOT_PREPARED",
+    "providerExecution": "BLOCKED",
+    "sharedRuntime": "UNCHANGED"
+  },
+  "conclusion": "P5Z preserves the P5Y separation but cannot freeze one occurrence record per ownedIndex. The current binder and materialized identity deliberately support multiple distinct exact spans in one atom; only an explicit task semantic rule can narrow that space."
+}
