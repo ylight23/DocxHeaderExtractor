@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "v5-p5v-v33-full31-preflight-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "protocol": "v5-source-backed-decision-3.3",
+  "composer": "v5-semantic-decision-composer-3.3",
+  "packingPolicy": "RESOURCE_BOUNDED_SOURCE_PACKING_V1",
+  "cohort": {
+    "parentPacks": 31,
+    "ownedOccurrenceCount": 2884,
+    "ownedExactlyOnce": true,
+    "maxRequestUtf8Bytes": 24662,
+    "maxCompletionTokens": 25088,
+    "maxResponseUtf8Bytes": 49152
+  },
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "blockedBy": "P5U_RESPONSE_VOLUME_GATE"
+}

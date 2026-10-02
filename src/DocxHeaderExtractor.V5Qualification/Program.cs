@@ -73,6 +73,11 @@ internal static class Program
         if (args.Contains("--p5r-v32-full31"))
             return await P5RFull31V32Execution.RunAsync(LocateRepoRoot(), args);
 
+        // P5V is a V3.3 qualification-only lane. Its frozen manifest currently carries the P5U
+        // volume block, so the runner proves body parity then stops before network.
+        if (args.Contains("--p5v-v33-full31"))
+            return await P5VCompactV33Qualification.RunAsync(LocateRepoRoot(), args);
+
         var confirm = args.FirstOrDefault(a => a.StartsWith("--confirm=", StringComparison.Ordinal))?[10..];
         var authorized = confirm == ConfirmSentinel;
 
