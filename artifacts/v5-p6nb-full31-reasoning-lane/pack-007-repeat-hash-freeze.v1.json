@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "v5-p6nb-full31-pack007-repeat-hash-freeze-v1",
+  "sourceManifest": "artifacts/v5-p6nb-full31-reasoning-lane/execution-manifest.v1.json",
+  "originalResult": "artifacts/v5-p6nb-full31-reasoning-lane/result.v1.json",
+  "originalHashFreeze": "artifacts/v5-p6nb-full31-reasoning-lane/response-hash-freeze.v1.json",
+  "retryArtifact": "artifacts/v5-p6nb-full31-reasoning-lane/pack-007-authorized-repeat.v1.json",
+  "providerCallsDuringFreeze": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "repair": false,
+  "fallback": false,
+  "rawEvidenceImmutable": true,
+  "exactRequestHashMatched": true,
+  "originalAttemptRetained": true,
+  "retryClassification": "PARSER_BINDER_VALID",
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 7,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "providerRequestSha256": "3b1a9e457946f56be2259a355ebe3c9c93694e90f14fb2c60e0bbbd0fc17bbb1",
+      "rawSseSha256": "bd7469c3a97e05746e822566fa39aa2dba4eabdb9933f611f95c9a708986e447",
+      "rawSseUtf8Bytes": 235900,
+      "rawResponseSha256": "b48c614c067f3fb558243a2ac78efc8c0b1e8f75e96e6a5d026d8a8bae3c7584",
+      "rawResponseUtf8Bytes": 196,
+      "finishReason": "stop",
+      "classification": "PARSER_BINDER_VALID",
+      "parserAccepted": true,
+      "boundHeadings": 2,
+      "quarantinedHeadings": 0
+    }
+  ]
+}

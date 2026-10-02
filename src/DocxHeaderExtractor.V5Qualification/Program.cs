@@ -104,6 +104,14 @@ internal static class Program
         if (args.Contains("--p6nb-bound-locator-canary"))
             return await P6NBBoundLocatorCanary.RunAsync(LocateRepoRoot(), args);
 
+        // Full-31 continuation of the same P6N-B free-semantic + exact-locator treatment, one primary attempt per P05 pack.
+        if (args.Contains("--p6nb-bound-locator-full31"))
+            return await P6NBBoundLocatorFull31.RunAsync(LocateRepoRoot(), args);
+
+        // One separately authorized, exact-body retry for the sole P6N-B full31 length response.
+        if (args.Contains("--p6nb-full31-pack007-retry"))
+            return await P6NBBoundLocatorFull31.RetryPack007Async(LocateRepoRoot(), args);
+
         // Separately authorized, exact-body-only retry budget for the failed fourth P6N-B canary request.
         if (args.Contains("--p6nb-bound-locator-call4-retry"))
             return await P6NBBoundLocatorCanary.RetryFourthAsync(LocateRepoRoot(), args);
