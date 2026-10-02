@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "v5-p6d-adaptive-locator-domain-sharding-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "reusableQualificationTypes": [
+    "RequestLocalLocatorRegistry",
+    "OccurrenceShardDomain",
+    "OccurrenceShardSplitter",
+    "OccurrenceLocatorResponse"
+  ],
+  "registry": {
+    "determinism": "PASS: same packet/source atoms produces same fingerprint",
+    "unicode": "PASS: no issued boundary between a UTF-16 surrogate pair",
+    "coordinateSystem": "UTF-16_OFFSETS_AT_VALID_UNICODE_SCALAR_BOUNDARIES"
+  },
+  "ownership": {
+    "coverage": "PASS_FOR_PRIMARY_ROOT_UNIVERSE",
+    "nonOverlap": "PASS_AFTER_DETERMINISTIC_BISECTION",
+    "multipart": "PRIMARY_OWNED_ONLY"
+  },
+  "normalization": {
+    "duplicateExactLocator": "REJECT_REQUIRED_AT_RESPONSE_VALIDATION: duplicate identities are detectable; this test proves detection only",
+    "functions": "UNIQUE_SET_REQUIRED"
+  },
+  "overflow": {
+    "oversizedResponse": "SPLIT_WITHOUT_PARSE_OR_BIND",
+    "retry": 0,
+    "repair": false,
+    "leafOverflow": "INCOMPLETE_UNSPLITTABLE_OVERFLOW_NOT_EVALUABLE"
+  },
+  "termination": {
+    "primaryRootTree": "FINITE: each split reduces a finite root set",
+    "p6bExactIdentityLeaf": "NOT_PROVEN: primary-root leaf still admits different multipart continuations for that primary; continuation-domain partition is required before claiming P6B-safe termination"
+  },
+  "gate": {
+    "coarseAggregateVolume": "OPEN",
+    "providerManifest": "NOT_PREPARED",
+    "providerExecution": "BLOCKED",
+    "sharedRuntime": "UNCHANGED"
+  },
+  "conclusion": "P6D turns registry and primary-domain splitting into reusable qualification types and preserves fail-closed overflow semantics. It intentionally does not overclaim termination to an exact multipart identity leaf."
+}
