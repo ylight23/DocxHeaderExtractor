@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "v5-p6g-sparse-candidate-locator-contract-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "protocol": "v5-heading-occurrence-sparse-locator-1",
+  "promptComposer": "v5-heading-occurrence-sparse-locator-1",
+  "responseShape": {
+    "occurrences": "sparse; empty array is valid",
+    "occurrence": {
+      "primary": "owned atom A# with optional opaque H# from/to",
+      "additionalParts": "ordered owned atom parts with optional opaque boundaries",
+      "functions": "unique non-empty subset of the three unary functions"
+    }
+  },
+  "forbiddenResponseFields": [
+    "sourceAlias",
+    "sourceId",
+    "sourceOrdinal",
+    "text",
+    "verbatimText",
+    "leftExactContext",
+    "rightExactContext",
+    "numericOffset",
+    "start",
+    "end",
+    "occurrence",
+    "claimId",
+    "existingClaimId",
+    "relationTarget",
+    "state",
+    "evidenceNeeds",
+    "PARENT_OF",
+    "REFERENCES",
+    "SAME_ENTITY",
+    "CONTINUES"
+  ],
+  "ownership": "only owned subject atoms get A#/H#; halo remains visible as reasoning context without selectable locators",
+  "omission": "NO_SEMANTIC_PROPOSAL; later Gold scoring may count it as FN",
+  "dedupe": "after exact locator resolution by BoundClaimEndpoint.Identity; merge and sort function set; invalid candidates remain quarantined",
+  "byteCap": {
+    "rawAndCanonicalUtf8Bytes": 49152,
+    "overflow": "REJECT_RESPONSE_BEFORE_PARSE_BIND_REPAIR_OR_RETRY"
+  },
+  "runtime": "UNCHANGED"
+}

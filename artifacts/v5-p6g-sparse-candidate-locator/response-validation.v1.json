@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "v5-p6g-response-validation-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "fixtureResults": [
+    {
+      "name": "whole-atom",
+      "outcome": "ACCEPT",
+      "normalizedOccurrences": 1,
+      "quarantined": 0
+    },
+    {
+      "name": "strict-substring",
+      "outcome": "ACCEPT",
+      "normalizedOccurrences": 1,
+      "quarantined": 0
+    },
+    {
+      "name": "multipart",
+      "outcome": "ACCEPT",
+      "normalizedOccurrences": 1,
+      "quarantined": 0
+    },
+    {
+      "name": "unicode-scalar-boundary",
+      "outcome": "ACCEPT",
+      "normalizedOccurrences": 1,
+      "quarantined": 0
+    },
+    {
+      "name": "halo-visible-without-selectable-locator",
+      "outcome": "NO_HALO_ATOM_HANDLE_ISSUED"
+    },
+    {
+      "name": "unknown-atom",
+      "outcome": "QUARANTINE_CANDIDATE",
+      "reason": "locator-atom-unknown"
+    },
+    {
+      "name": "unissued-noncanonical-atom-spelling",
+      "outcome": "QUARANTINE_CANDIDATE",
+      "reason": "locator-atom-unknown"
+    },
+    {
+      "name": "unknown-boundary-handle",
+      "outcome": "QUARANTINE_CANDIDATE",
+      "reason": "locator-boundary-not-issued-for-atom"
+    },
+    {
+      "name": "cross-atom-boundary",
+      "outcome": "QUARANTINE_CANDIDATE",
+      "reason": "locator-boundary-not-issued-for-atom"
+    },
+    {
+      "name": "missing-boundary-side",
+      "outcome": "QUARANTINE_CANDIDATE",
+      "reason": "locator-boundary-pair-incomplete"
+    },
+    {
+      "name": "from-not-before-to",
+      "outcome": "QUARANTINE_CANDIDATE",
+      "reason": "locator-boundary-order-invalid"
+    },
+    {
+      "name": "full-span-boundaries",
+      "outcome": "QUARANTINE_CANDIDATE",
+      "reason": "locator-whole-must-omit-boundaries"
+    },
+    {
+      "name": "multipart-reverse-order",
+      "outcome": "QUARANTINE_CANDIDATE",
+      "reason": "additional-atoms-not-strictly-increasing"
+    },
+    {
+      "name": "duplicate-additional-atom",
+      "outcome": "QUARANTINE_CANDIDATE",
+      "reason": "additional-atoms-not-strictly-increasing"
+    },
+    {
+      "name": "copied-text-field-forbidden",
+      "outcome": "QUARANTINE_CANDIDATE",
+      "reason": "candidate-fields-invalid"
+    },
+    {
+      "name": "unknown-function",
+      "outcome": "QUARANTINE_CANDIDATE",
+      "reason": "semantic-functions-invalid"
+    },
+    {
+      "name": "duplicate-function",
+      "outcome": "QUARANTINE_CANDIDATE",
+      "reason": "semantic-functions-invalid"
+    },
+    {
+      "name": "empty-occurrences",
+      "outcome": "ACCEPT",
+      "normalizedOccurrences": 0,
+      "quarantined": 0
+    },
+    {
+      "name": "valid-sibling-invalid-sibling",
+      "outcome": "VALID_SIBLING_SURVIVES",
+      "quarantined": 1
+    },
+    {
+      "name": "exact-duplicate-merge-functions",
+      "outcome": "DEDUPED_AFTER_BIND_UNION_FUNCTIONS",
+      "mergedFunctions": [
+        "NAVIGATION_REPRESENTATION",
+        "STRUCTURAL_REGION"
+      ]
+    },
+    {
+      "name": "raw-response-byte-overflow",
+      "outcome": "RESPONSE_REJECT_BEFORE_CANDIDATE_PARSE_BIND"
+    },
+    {
+      "name": "malformed-root",
+      "outcome": "RESPONSE_REJECT"
+    }
+  ],
+  "invalidLocatorPolicy": "CANDIDATE_LOCAL_QUARANTINE_VALID_SIBLINGS_SURVIVE",
+  "responseWidePolicy": "ROOT_SHAPE_OR_RAW/CANONICAL_BYTE_OVERFLOW_REJECTS_RESPONSE",
+  "exactBinding": "existing SemanticSourcePartBinder; unchanged fail-closed authority",
+  "canonicalDedupe": "AFTER_BIND_BY_BoundClaimEndpoint.Identity_UNION_FUNCTIONS"
+}

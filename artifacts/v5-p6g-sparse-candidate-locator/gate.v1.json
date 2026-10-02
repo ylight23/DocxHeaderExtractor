@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "v5-p6g-gate-v1",
+  "SPARSE_CANDIDATE_PROTOCOL": "CLOSED",
+  "LOCATOR_DISCOVERABILITY": "PASS",
+  "MODEL_CONTEXT_LIMIT": {
+    "status": "AUTHORITY_FOUND",
+    "maxInputTokens": 991808,
+    "contextWindowTokens": 1000000
+  },
+  "ACTUAL_MAX_INPUT_TOKENS": "NOT_MEASURED_NO_VERIFIED_OFFLINE_TOKENIZER",
+  "HTTP_BODY_BYTE_LIMIT": "NOT_ESTABLISHED",
+  "REQUEST_EFFICIENCY": "POOR_MEASURED_ONLY",
+  "requestEfficiencyMeasurements": {
+    "maxProviderBodyUtf8Bytes": 531646,
+    "maxModelVisibleContentUtf8Bytes": 292042,
+    "maxLocatorDirectoryUtf8Bytes": 288166,
+    "locatorOverheadPercentVsSameSparsePrompt": 1778.5110092335508
+  },
+  "OWNED_ATOM_SPLIT": "PASS",
+  "PROVIDER_MANIFEST": "NOT_PREPARED",
+  "PROVIDER_CALLS": 0,
+  "GOLD_READ": false,
+  "SHARED_RUNTIME": "UNCHANGED",
+  "nextGate": "P6H_TOKEN_COUNT_NOT_MEASURED; obtain an exact model tokenizer/chat-template artifact before evaluating context capacity; provider execution remains blocked"
+}

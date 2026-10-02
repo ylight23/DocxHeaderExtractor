@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "v5-p6g-owned-atom-split-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "policy": "OWNED_ATOM_BINARY_SPLIT_V1",
+  "splitDimension": "owned primary atom indices, contiguous deterministic halves",
+  "invariant": {
+    "parentOwned": 96,
+    "childCoverage": 96,
+    "intersection": 0,
+    "strictSubstringOwner": "PRIMARY_A10_CHILD",
+    "multipartOwner": "PRIMARY_A10_CHILD_ADDITIONAL_A70_DOES_NOT_CHANGE_OWNER",
+    "singletonOverflow": "INCOMPLETE_UNSPLITTABLE_SEMANTIC_OVERFLOW"
+  },
+  "overflow": "finish_reason=length OR raw bytes > cap => do not parse/bind/repair/retry same request; split if >1 owned atoms",
+  "singletonOverflow": "INCOMPLETE_UNSPLITTABLE_SEMANTIC_OVERFLOW_NOT_EVALUABLE",
+  "maxTreeNodesFull31": 5737,
+  "formula": "per pack 2n-1; full cohort sum=2*2884-31=5737",
+  "note": "hard structural node upper bound, not expected or authorized provider call count"
+}
