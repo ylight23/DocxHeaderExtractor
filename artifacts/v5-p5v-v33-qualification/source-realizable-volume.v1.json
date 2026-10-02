@@ -3,10 +3,10 @@
   "providerCalls": 0,
   "goldRead": false,
   "goldMutation": "NONE",
-  "method": "Per pack, construct an admissible maximum-count response under the current 129/10 bounds. Every emitted selection is an actual strict substring of its request-local source atom; source handles are chosen to maximize available strict-substring bytes and no synthetic 318-byte source text is used.",
+  "method": "Per pack, construct an admissible maximum-count initial-response stress witness under the current 129/10 bounds. Every emitted selection is an actual strict substring of its request-local source atom; source handles are chosen to maximize available strict-substring bytes and no synthetic 318-byte source text or existingClaimId is used.",
   "caveat": "This is a source-constrained legal stress witness, not a task-derived semantic cardinality proof. A witness above the cap conclusively keeps the gate closed; it intentionally retains the historical aggregate claim cap.",
   "configuredMaxResponseUtf8Bytes": 49152,
-  "maximumSourceRealizableUtf8Bytes": 125942,
+  "maximumSourceRealizableUtf8Bytes": 117815,
   "all31FitConfiguredCap": false,
   "gate": "P5U_RESPONSE_VOLUME_GATE",
   "rows": [
@@ -17,7 +17,7 @@
       "ownedCount": 96,
       "visibleCount": 104,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -29,7 +29,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -41,7 +41,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -53,7 +53,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -65,7 +65,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -77,7 +77,7 @@
       "ownedCount": 96,
       "visibleCount": 110,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -89,7 +89,7 @@
       "ownedCount": 6,
       "visibleCount": 14,
       "legalClaimCount": 60,
-      "sourceRealizableUtf8Bytes": 46573,
+      "sourceRealizableUtf8Bytes": 42793,
       "configuredResponseUtf8Bytes": 4512,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -101,7 +101,7 @@
       "ownedCount": 96,
       "visibleCount": 104,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -113,7 +113,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 121421,
+      "sourceRealizableUtf8Bytes": 113294,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -125,7 +125,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 123952,
+      "sourceRealizableUtf8Bytes": 115825,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -137,7 +137,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 119467,
+      "sourceRealizableUtf8Bytes": 111340,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -149,7 +149,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 124934,
+      "sourceRealizableUtf8Bytes": 116807,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -161,7 +161,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 125942,
+      "sourceRealizableUtf8Bytes": 117815,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -173,7 +173,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 123976,
+      "sourceRealizableUtf8Bytes": 115849,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -185,7 +185,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 119467,
+      "sourceRealizableUtf8Bytes": 111340,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -197,7 +197,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 117988,
+      "sourceRealizableUtf8Bytes": 109861,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -209,7 +209,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -221,7 +221,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -233,7 +233,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116570,
+      "sourceRealizableUtf8Bytes": 108443,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -245,7 +245,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 117988,
+      "sourceRealizableUtf8Bytes": 109861,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -257,7 +257,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -269,7 +269,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -281,7 +281,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 117988,
+      "sourceRealizableUtf8Bytes": 109861,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -293,7 +293,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -305,7 +305,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 117988,
+      "sourceRealizableUtf8Bytes": 109861,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -317,7 +317,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -329,7 +329,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 119665,
+      "sourceRealizableUtf8Bytes": 111538,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -341,7 +341,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 117364,
+      "sourceRealizableUtf8Bytes": 109237,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -353,7 +353,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 125138,
+      "sourceRealizableUtf8Bytes": 117011,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -365,7 +365,7 @@
       "ownedCount": 96,
       "visibleCount": 112,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 123239,
+      "sourceRealizableUtf8Bytes": 115112,
       "configuredResponseUtf8Bytes": 49152,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"
@@ -377,7 +377,7 @@
       "ownedCount": 94,
       "visibleCount": 102,
       "legalClaimCount": 129,
-      "sourceRealizableUtf8Bytes": 116519,
+      "sourceRealizableUtf8Bytes": 108392,
       "configuredResponseUtf8Bytes": 48160,
       "exceedsConfiguredCap": true,
       "parserResult": "RESPONSE_BYTE_CAP_EXCEEDED"

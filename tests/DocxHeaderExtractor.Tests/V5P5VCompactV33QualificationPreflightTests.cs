@@ -116,7 +116,7 @@ public sealed class V5P5VCompactV33QualificationPreflightTests
         {
             schemaVersion = "v5-p5v-v33-source-realizable-volume-v1",
             providerCalls = 0, goldRead = false, goldMutation = "NONE",
-            method = "Per pack, construct an admissible maximum-count response under the current 129/10 bounds. Every emitted selection is an actual strict substring of its request-local source atom; source handles are chosen to maximize available strict-substring bytes and no synthetic 318-byte source text is used.",
+            method = "Per pack, construct an admissible maximum-count initial-response stress witness under the current 129/10 bounds. Every emitted selection is an actual strict substring of its request-local source atom; source handles are chosen to maximize available strict-substring bytes and no synthetic 318-byte source text or existingClaimId is used.",
             caveat = "This is a source-constrained legal stress witness, not a task-derived semantic cardinality proof. A witness above the cap conclusively keeps the gate closed; it intentionally retains the historical aggregate claim cap.",
             configuredMaxResponseUtf8Bytes = maxResponseCap,
             maximumSourceRealizableUtf8Bytes = maxSourceRealizable,
@@ -149,6 +149,7 @@ public sealed class V5P5VCompactV33QualificationPreflightTests
 
     private static JsonObject BuildSourceRealizableMaximum(V5PackedDecisionRequestV3 pack)
     {
+        Assert.Empty(pack.Packet.OpenOrConflictedClaims);
         var owned = pack.Packet.SubjectEvidence;
         var visible = owned.Concat(pack.Packet.ContextOnlyEvidence).ToArray();
         var maxClaims = Math.Min(V5SemanticDecisionResponseBoundsV3.HistoricalMaxClaimsPerResponse,
@@ -185,7 +186,7 @@ public sealed class V5P5VCompactV33QualificationPreflightTests
                 {
                     ["predicate"] = "CONTINUES", ["subjectSelection"] = Selection(owned[primary].Text),
                     ["additionalSubjectParts"] = additional, ["targetParts"] = targetParts,
-                    ["state"] = "RESOLVED", ["evidenceNeeds"] = new JsonArray(), ["existingClaimId"] = new string('i', 42),
+                    ["state"] = "RESOLVED", ["evidenceNeeds"] = new JsonArray(),
                 });
             }
             decisions.Add(new JsonObject { ["ownedIndex"] = primary, ["claims"] = claims });

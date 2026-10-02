@@ -1,0 +1,286 @@
+{
+  "schemaVersion": "v5-p5w-task-semantic-cardinality-audit-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "taskContract": {
+    "taskId": "document-structure",
+    "serializedTopLevelKeys": [
+      "description",
+      "evidencePolicy",
+      "executionBudget",
+      "predicates",
+      "projections",
+      "relations",
+      "schemaVersion",
+      "taskId",
+      "unresolvedPolicy"
+    ],
+    "unaryPredicates": [
+      "DOCUMENT_IDENTITY",
+      "NAVIGATION_REPRESENTATION",
+      "STRUCTURAL_REGION"
+    ],
+    "relations": [
+      {
+        "Name": "CONTINUES",
+        "StructuralParent": false,
+        "IdentityMerge": false
+      },
+      {
+        "Name": "PARENT_OF",
+        "StructuralParent": true,
+        "IdentityMerge": false
+      },
+      {
+        "Name": "REFERENCES",
+        "StructuralParent": false,
+        "IdentityMerge": false
+      },
+      {
+        "Name": "SAME_ENTITY",
+        "StructuralParent": false,
+        "IdentityMerge": true
+      }
+    ],
+    "taskDefinedPerSubjectPredicateCap": "NOT_DEFINED",
+    "taskDefinedSubjectRelationTargetUnique": "NOT_DEFINED",
+    "taskDefinedUnaryPerSubjectCap": "NOT_DEFINED",
+    "taskDefinedTotalClaimCap": "NOT_DEFINED"
+  },
+  "existingClaimId": {
+    "initialCohortPacks": 31,
+    "initialCohortPacketsWithOpenOrConflictedClaims": 0,
+    "providerViewContainsNoExistingClaimIdAuthority": true,
+    "parserAuthority": "PARSER_CANNOT_VALIDATE_EXISTING_CLAIM_ID: scope is supplied only to Bind",
+    "binderAuthority": "ExactClaimBinderV2_1 rejects unknown-existing-claim-id and existing-claim-id-mismatch using ClaimBindingScope.KnownClaims",
+    "consequence": "Initial-response source-volume proof must omit existingClaimId; a future refinement proof must derive IDs from the concrete request packet."
+  },
+  "relationSemantics": {
+    "parentOf": "graph rejects self-parent and cycles after binding; no per-subject cardinality rule",
+    "references": "no cardinality or uniqueness rule",
+    "sameEntity": "identity merge marker; no cardinality or uniqueness rule",
+    "continues": "no cardinality or uniqueness rule",
+    "historicalObservationIsNotAuthority": "The frozen V3.2 cohort may inform a redesign but cannot establish a V3.3 task bound."
+  },
+  "conclusion": "P5U_RESPONSE_VOLUME_GATE_REMAINS_BLOCKED. No task-derived finite claim/relation volume bound exists in the current DocumentTaskContract; do not lower 129 or promote V3.3 from this audit.",
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 1,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 2,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 3,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 4,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 5,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 6,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-089",
+      "parentOrdinal": 7,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 1,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 2,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 3,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 4,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 5,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 6,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 7,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 8,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 9,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 10,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 11,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 12,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 13,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 14,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 15,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 16,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 17,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 18,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 19,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 20,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 21,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 22,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 23,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    },
+    {
+      "documentId": "SRC-095",
+      "parentOrdinal": 24,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "openOrConflictedClaims": 0,
+      "providerVisibleExistingClaimIds": 0
+    }
+  ]
+}
