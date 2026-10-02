@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "v5-p6f-feasibility-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "packs": 31,
+  "maxOccurrenceRecordBytes": 4202,
+  "conservativeRecordsPer49152ByteResponse": 11,
+  "largestSymbolicLocatorUniverse": "1487284796138136555060728583684",
+  "minimumWorstCaseLeaves": "135207708739830595914611689426",
+  "minimumBinaryTreeDepth": 97,
+  "verdict": "SOURCE_DOMAIN_EXHAUSTIVE_SHARDING_CORRECT_BUT_OPERATIONALLY_INFEASIBLE",
+  "providerManifest": "NOT_PREPARED",
+  "sharedRuntime": "UNCHANGED",
+  "note": "Lower bound uses real full-31 locator serialization and symbolic P6A universe; it is a feasibility bound, not semantic occurrence density."
+}
