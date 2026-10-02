@@ -124,6 +124,16 @@ public static class V5CompactDecisionContractV3_3
         var bounds = V5SemanticDecisionResponseBoundsV3.ForEvidenceCounts(ownedCount, ownedCount + contextOnlyCount) with { MaxResponseUtf8Bytes = V5SemanticDecisionResponseBoundsV3.ForEvidenceCounts(ownedCount, ownedCount + contextOnlyCount).MaxResponseUtf8Bytes };
         if (Encoding.UTF8.GetByteCount(payload.GetRawText()) > bounds.MaxResponseUtf8Bytes) throw new InvalidOperationException($"compact-response-byte-budget-exceeded:max={bounds.MaxResponseUtf8Bytes}");
         if (payload.ValueKind != JsonValueKind.Object || payload.EnumerateObject().Any(p => !p.NameEquals("decisions")) || !payload.TryGetProperty("decisions", out var decisions) || decisions.ValueKind != JsonValueKind.Array || decisions.GetArrayLength() > ownedCount) throw new InvalidOperationException("compact-response-shape-invalid");
+        // Aggregate limits are envelope invariants: reject the response before any per-decision
+        // quarantine could turn an unsafe aggregate into a deceptively small accepted subset.
+        var rawClaimCount = 0;
+        foreach (var decision in decisions.EnumerateArray())
+        {
+            if (decision.ValueKind == JsonValueKind.Object && decision.TryGetProperty("claims", out var rawClaims) && rawClaims.ValueKind == JsonValueKind.Array)
+                rawClaimCount = checked(rawClaimCount + rawClaims.GetArrayLength());
+        }
+        if (rawClaimCount > bounds.MaxClaimsTotal)
+            throw new InvalidOperationException($"compact-total-claims-bound-exceeded:max={bounds.MaxClaimsTotal}:actual={rawClaimCount}");
         var options = new JsonSerializerOptions(CanonicalJson.Options) { UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow, Converters = { new JsonStringEnumConverter() } };
         var parsed = new List<V5CompactSubjectDecisionV3_3>(); var refusals = new Dictionary<string, string>(StringComparer.Ordinal);
         foreach (var (decision, index) in decisions.EnumerateArray().Select((item, i) => (item, i)))
@@ -133,12 +143,21 @@ public static class V5CompactDecisionContractV3_3
             {
                 if (decision.ValueKind != JsonValueKind.Object || decision.EnumerateObject().Any(p => !p.NameEquals("ownedIndex") && !p.NameEquals("claims")) || !decision.TryGetProperty("ownedIndex", out _) || !decision.TryGetProperty("claims", out var claims) || claims.ValueKind != JsonValueKind.Array) throw new InvalidOperationException("missing-or-extra-decision-field");
                 var typed = decision.Deserialize<V5CompactSubjectDecisionV3_3>(options) ?? throw new InvalidOperationException("empty-decision");
-                ValidateSelections(typed, bounds); parsed.Add(typed with { WireOrdinal = index });
+                ValidateDecision(typed, contract, ownedCount, contextOnlyCount, bounds); parsed.Add(typed with { WireOrdinal = index });
             }
             catch (JsonException) { refusals[key] = "json-decision-schema-invalid"; }
             catch (InvalidOperationException ex) { refusals[key] = ex.Message; }
         }
-        return new(parsed) { ParseRefusals = refusals };
+        var seen = new HashSet<int>();
+        var unique = new List<V5CompactSubjectDecisionV3_3>();
+        foreach (var decision in parsed)
+        {
+            var key = $"compact-decision-{decision.WireOrdinal}";
+            if (decision.OwnedIndex < 0 || decision.OwnedIndex >= ownedCount) refusals[key] = "owned-index-out-of-range";
+            else if (!seen.Add(decision.OwnedIndex)) refusals[key] = "duplicate-owned-index";
+            else unique.Add(decision);
+        }
+        return new(unique) { ParseRefusals = refusals };
     }
 
     /// <summary>
@@ -177,13 +196,50 @@ public static class V5CompactDecisionContractV3_3
         ToV31(claim.SubjectSelection), claim.AdditionalSubjectParts?.Select(part => new V5AdditionalOwnedSubjectPartV3(part.OwnedIndex, ToV31(part.Selection))).ToArray(),
         claim.TargetParts?.Select(part => new V5VisibleTargetPartV3(part.SourceGroup, part.SourceIndex, ToV31(part.Selection))).ToArray(), claim.State, claim.EvidenceNeeds, claim.ExistingClaimId);
     private static V5DecisionTextSelectionV3? ToV31(V5CompactDecisionTextSelectionV3_3? selection) => selection is null ? null : new(selection.VerbatimText, selection.Occurrence);
-    private static void ValidateSelections(V5CompactSubjectDecisionV3_3 decision, V5SemanticDecisionResponseBoundsV3 bounds)
+    private static void ValidateDecision(V5CompactSubjectDecisionV3_3 decision, DocumentTaskContract contract,
+        int ownedCount, int contextOnlyCount, V5SemanticDecisionResponseBoundsV3 bounds)
     {
-        foreach (var selection in decision.Claims.SelectMany(claim => new[] { claim.SubjectSelection }.Concat((claim.AdditionalSubjectParts ?? []).Select(part => part.Selection)).Concat((claim.TargetParts ?? []).Select(part => part.Selection))).Where(selection => selection is not null))
+        if (decision.Claims is null || decision.Claims.Count > bounds.MaxClaimsPerDecision)
+            throw new InvalidOperationException("compact-claims-per-decision-bound-exceeded");
+        var predicates = contract.Predicates.Select(item => item.Name).ToHashSet(StringComparer.Ordinal);
+        var relations = contract.Relations.Select(item => item.Name).ToHashSet(StringComparer.Ordinal);
+        foreach (var claim in decision.Claims)
         {
-            if (string.IsNullOrWhiteSpace(selection!.VerbatimText) || Encoding.UTF8.GetByteCount(selection.VerbatimText) > bounds.MaxSelectionStringUtf8Bytes || selection.Occurrence is < 1)
-                throw new InvalidOperationException("compact-selection-invalid");
+            if (claim is null) throw new InvalidOperationException("compact-null-claim");
+            if (Encoding.UTF8.GetByteCount(claim.Value ?? "") > bounds.MaxValueUtf8Bytes || Encoding.UTF8.GetByteCount(claim.ExistingClaimId ?? "") > bounds.MaxExistingClaimIdUtf8Bytes)
+                throw new InvalidOperationException("compact-string-bound-exceeded");
+            if (claim.EvidenceNeeds is null || claim.EvidenceNeeds.Count > bounds.MaxEvidenceNeeds || claim.EvidenceNeeds.Distinct().Count() != claim.EvidenceNeeds.Count)
+                throw new InvalidOperationException("compact-evidence-needs-invalid");
+            if ((claim.AdditionalSubjectParts?.Count ?? 0) > bounds.MaxSubjectParts - 1 || claim.AdditionalSubjectParts?.Any(part => part is null) == true)
+                throw new InvalidOperationException("compact-additional-parts-invalid");
+            if ((claim.TargetParts?.Count ?? 0) > bounds.MaxTargetParts || claim.TargetParts?.Any(part => part is null) == true)
+                throw new InvalidOperationException("compact-target-parts-invalid");
+            if (!predicates.Contains(claim.Predicate) && !relations.Contains(claim.Predicate)) throw new InvalidOperationException("compact-predicate-not-in-contract");
+            var isRelation = relations.Contains(claim.Predicate);
+            if (isRelation && claim.Value is not null || !isRelation && claim.TargetParts is { Count: > 0 }) throw new InvalidOperationException("compact-claim-shape-invalid");
+            if (claim.State == ClaimResolutionState.RESOLVED && claim.EvidenceNeeds.Count > 0 || claim.State is ClaimResolutionState.OPEN or ClaimResolutionState.CONFLICTED && claim.EvidenceNeeds.Count == 0)
+                throw new InvalidOperationException("compact-state-evidence-needs-invalid");
+            var previous = decision.OwnedIndex;
+            foreach (var part in claim.AdditionalSubjectParts ?? [])
+            {
+                if (part.OwnedIndex <= previous || part.OwnedIndex >= ownedCount) throw new InvalidOperationException("additional-owned-index-out-of-range-or-order");
+                previous = part.OwnedIndex; ValidateSelection(part.Selection, bounds);
+            }
+            foreach (var part in claim.TargetParts ?? [])
+            {
+                if (part.SourceGroup is not ("OWNED" or "CONTEXT_ONLY")) throw new InvalidOperationException("target-source-group-invalid");
+                var maximum = part.SourceGroup == "OWNED" ? ownedCount : contextOnlyCount;
+                if (part.SourceIndex < 0 || part.SourceIndex >= maximum) throw new InvalidOperationException("target-visible-index-out-of-range");
+                ValidateSelection(part.Selection, bounds);
+            }
+            ValidateSelection(claim.SubjectSelection, bounds);
         }
+    }
+
+    private static void ValidateSelection(V5CompactDecisionTextSelectionV3_3? selection, V5SemanticDecisionResponseBoundsV3 bounds)
+    {
+        if (selection is not null && (string.IsNullOrWhiteSpace(selection.VerbatimText) || Encoding.UTF8.GetByteCount(selection.VerbatimText) > bounds.MaxSelectionStringUtf8Bytes || selection.Occurrence is < 1))
+            throw new InvalidOperationException("compact-selection-invalid");
     }
 
     private static void ValidateStrictSubstrings(V5CompactSubjectDecisionV3_3 decision,

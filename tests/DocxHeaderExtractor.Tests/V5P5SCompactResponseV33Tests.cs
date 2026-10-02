@@ -86,6 +86,12 @@ public sealed class V5P5SCompactResponseV33Tests
         var parentPack = parentPacks[4];
         StripContextAndWholeEcho(compact, parentPack, parentAtoms);
         var compactBytes = Encoding.UTF8.GetByteCount(compact.ToJsonString());
+        using var compactPayload = JsonDocument.Parse(compact.ToJsonString());
+        var parentParsed = V5CompactDecisionContractV3_3.Parse(compactPayload.RootElement, parentContract,
+            parentPack.Packet.SubjectEvidence, parentPack.Packet.ContextOnlyEvidence);
+        var parentBinding = V5CompactDecisionContractV3_3.Bind("SRC-095:05-counterfactual", parentParsed, parentContract,
+            parentPack.Packet.SubjectEvidence, parentPack.Packet.ContextOnlyEvidence, parentAtoms.Values.ToArray(),
+            ClaimBindingScope.Create(parentPack.OwnedAliases, parentPack.VisibleAliases));
         const int oldBound = 52224;
         Assert.Equal(oldBound, oldGlobalBound);
         Assert.True(newGlobalBound <= oldGlobalBound);
@@ -112,6 +118,9 @@ public sealed class V5P5SCompactResponseV33Tests
         {
             providerCalls = 0, goldRead = false, parent = "SRC-095:05", oldBytes = 96485, oldMaxResponseUtf8Bytes = oldBound,
             compactBytes, compactWithinOldBound = compactBytes <= oldBound, continuesClaims = relationClaims,
+            parserAcceptedDecisions = parentParsed.Decisions.Count, parserRefusals = parentParsed.ParseRefusals.Count,
+            binderRefusals = parentBinding.Refusals.Count, boundClaims = parentBinding.Bound.Count,
+            parseBind = parentParsed.ParseRefusals.Count == 0 ? "PASS_OR_BINDER_CLASSIFIED" : "PARSE_QUARANTINE_CLASSIFIED",
             conclusion = compactBytes <= oldBound ? "SELECTION_BLOAT_REMOVAL_SUFFICIENT_FOR_THIS_PAYLOAD" : "SELECTION_BLOAT_REMOVAL_INSUFFICIENT; RELATION_VOLUME_AUDIT_REQUIRED_BEFORE_ANY_BYTE_CAP_CHANGE",
         });
     }

@@ -7,5 +7,10 @@
   "compactBytes": 14134,
   "compactWithinOldBound": true,
   "continuesClaims": 78,
+  "parserAcceptedDecisions": 82,
+  "parserRefusals": 7,
+  "binderRefusals": 7,
+  "boundClaims": 82,
+  "parseBind": "PARSE_QUARANTINE_CLASSIFIED",
   "conclusion": "SELECTION_BLOAT_REMOVAL_SUFFICIENT_FOR_THIS_PAYLOAD"
 }
