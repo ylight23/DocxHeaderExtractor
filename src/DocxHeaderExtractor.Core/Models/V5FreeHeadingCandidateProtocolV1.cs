@@ -21,6 +21,7 @@ public static class V5FreeHeadingCandidateProtocolV1
     public const string Version = "v5-free-reasoning-heading-membership-canonical-locator-1";
     public const string UnschematizedVersion = "v5-free-reasoning-heading-membership-unconstrained-output-1";
     public const string BoundLocatorVersion = "v5-free-reasoning-heading-membership-source-parts-locator-1";
+    public const string PdfDocumentAwareBoundLocatorVersion = "v5-free-reasoning-heading-membership-pdf-document-context-locator-1";
 
     public const string UnschematizedSystemPrompt = """
         You are reading a document represented by source occurrences in document order. Identify the occurrences that you judge to function as headings in this document. Use the document context and the observable source evidence provided. Return the headings you judge to be present in the source, using whatever response format and schema you prefer. Do not use any external answer key.
@@ -85,6 +86,19 @@ public static class V5FreeHeadingCandidateProtocolV1
 
     /// <summary>Composes free semantic judgement with the minimum sourceParts locator grammar.</summary>
     public static V5FreeHeadingRequestV1 ComposeBoundLocator(V5SparseCandidateModelRequestV1 p6mCanonicalRequest)
+        => ComposeBoundLocatorCore(p6mCanonicalRequest, null, BoundLocatorVersion);
+
+    /// <summary>Composes the P6N-B wire plus a neutral, non-selectable PDF-wide context envelope.</summary>
+    public static V5FreeHeadingRequestV1 ComposePdfDocumentAwareBoundLocator(
+        V5SparseCandidateModelRequestV1 p6mCanonicalRequest, JsonElement documentContext)
+    {
+        if (documentContext.ValueKind != JsonValueKind.Object)
+            throw new ArgumentException("PDF document context must be a JSON object.", nameof(documentContext));
+        return ComposeBoundLocatorCore(p6mCanonicalRequest, documentContext, PdfDocumentAwareBoundLocatorVersion);
+    }
+
+    private static V5FreeHeadingRequestV1 ComposeBoundLocatorCore(
+        V5SparseCandidateModelRequestV1 p6mCanonicalRequest, JsonElement? documentContext, string protocolVersion)
     {
         ArgumentNullException.ThrowIfNull(p6mCanonicalRequest);
         using var source = JsonDocument.Parse(p6mCanonicalRequest.UserMessage);
@@ -94,8 +108,13 @@ public static class V5FreeHeadingCandidateProtocolV1
             !root.TryGetProperty("contextOnlyEvidence", out var context) || context.ValueKind != JsonValueKind.Array)
             throw new InvalidOperationException("p6n-source-evidence-envelope-invalid");
 
-        var user = JsonSerializer.Serialize(new { ownedSubjects = owned, contextOnlyEvidence = context }, JsonOptions);
-        return new V5FreeHeadingRequestV1(BoundLocatorVersion, BoundLocatorSystemPrompt, user,
+        var userObject = documentContext is { } contextElement
+            ? new { protocolVersion, ownedSubjects = owned, contextOnlyEvidence = context, documentContext = (object)contextElement }
+            : new { protocolVersion, ownedSubjects = owned, contextOnlyEvidence = context, documentContext = (object?)null };
+        var user = documentContext is null
+            ? JsonSerializer.Serialize(new { protocolVersion, ownedSubjects = owned, contextOnlyEvidence = context }, JsonOptions)
+            : JsonSerializer.Serialize(userObject, JsonOptions);
+        return new V5FreeHeadingRequestV1(protocolVersion, BoundLocatorSystemPrompt, user,
             Hashing.Sha256(user), Encoding.UTF8.GetByteCount(BoundLocatorSystemPrompt), Encoding.UTF8.GetByteCount(user));
     }
 

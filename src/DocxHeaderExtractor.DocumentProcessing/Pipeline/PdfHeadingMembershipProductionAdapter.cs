@@ -1,0 +1,225 @@
+using System.Text;
+using System.Text.Json;
+using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.V5;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
+
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+
+/// <summary>A prepared P6P request produced by the same adapter intended for the promoted PDF route.</summary>
+public sealed record PdfHeadingMembershipPreparedPack(
+    string DocumentId,
+    string PackId,
+    int PackOrdinal,
+    IReadOnlyList<string> OwnedAliases,
+    IReadOnlyList<string> VisibleAliases,
+    int MaxCompletionTokens,
+    V5FreeHeadingRequestV1 Request,
+    RequestLocalLocatorRegistry Registry,
+    byte[] ProviderBody,
+    string ProviderRequestHash,
+    int ProviderRequestBytes);
+
+/// <summary>Exact P05 source universe and all prepared requests for one PDF execution.</summary>
+public sealed record PdfHeadingMembershipDocumentPlan(
+    string DocumentId,
+    string SourceSha256,
+    string SourceUniverseSha256,
+    int SourceOccurrenceTotal,
+    int PhysicalPageTotal,
+    IReadOnlyList<SemanticSourceAtom> SourceAtoms,
+    IReadOnlyList<PdfHeadingMembershipPreparedPack> Packs);
+
+/// <summary>One frozen-body provider call and the exact production parser/binder outcome.</summary>
+public sealed record PdfHeadingMembershipPackExecution(
+    FrozenHeaderExecutionResult Provider,
+    OccurrenceLocatorResponseResult? Binding,
+    string? ParseError);
+
+/// <summary>
+/// Shared production candidate for the PDF heading-membership lane. It owns P05 packing, document-
+/// wide neutral context, the P6N-B prompt/opaque locator request, OpenRouter body creation, and the
+/// exact source registry used by ParseAndBind. Qualification and the post-promotion PDF route must
+/// call this adapter; callers must not rebuild any of these layers independently.
+/// </summary>
+public static class PdfHeadingMembershipProductionAdapter
+{
+    public const string ProtocolVersion = V5FreeHeadingCandidateProtocolV1.PdfDocumentAwareBoundLocatorVersion;
+    public const string PackingPolicy = SemanticEvidencePackingPolicies.ResourceBoundedSourcePackingV1Id;
+    public const int WiderContextOccurrencesPerSide = 8;
+    public const int WiderContextTextMaxChars = 240;
+    public const int PageMapExcerptMaxChars = 64;
+    public const int CompletionTokenCeiling = 32_768;
+
+    public static PdfHeadingMembershipDocumentPlan Prepare(
+        string pdfPath, string documentId, DocumentTaskContract contract)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
+        ArgumentException.ThrowIfNullOrWhiteSpace(documentId);
+        ArgumentNullException.ThrowIfNull(contract);
+        contract.Validate();
+
+        var authority = PdfStructuredSourceAuthorityBuilder.Build(pdfPath);
+        var graph = V5PdfPreflightBuilder.BuildGraph(authority, documentId);
+        var graphByAlias = graph.Nodes.ToDictionary(node => node.SourceAlias, StringComparer.Ordinal);
+        var atomByAlias = authority.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
+        var packs = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom);
+        var documentMap = BuildDocumentMap(authority.Atoms);
+        var prepared = new List<PdfHeadingMembershipPreparedPack>(packs.Count);
+        var seenOwned = new HashSet<string>(StringComparer.Ordinal);
+        var packOrdinal = 0;
+
+        foreach (var pack in packs)
+        {
+            packOrdinal++;
+            var ownedAliases = pack.Owned.Select(item => item.SourceAlias).ToArray();
+            var visibleAliases = pack.Visible.Select(item => item.SourceAlias).ToArray();
+            foreach (var alias in ownedAliases)
+                if (!seenOwned.Add(alias)) throw new InvalidOperationException("p6p-owned-source-occurrence-duplicated");
+            var ownedSet = ownedAliases.ToHashSet(StringComparer.Ordinal);
+            var owned = ownedAliases.Select(alias => graphByAlias[alias]).ToArray();
+            var contextOnly = visibleAliases.Where(alias => !ownedSet.Contains(alias)).Select(alias => graphByAlias[alias]).ToArray();
+            var packet = new V5SemanticDecisionRequestPacketV3(owned, contextOnly, [], [], [], []);
+            var registry = RequestLocalLocatorRegistry.Create(ownedAliases.Select(alias => atomByAlias[alias]).ToArray());
+
+            // This canonical source projection is the exact owned/context/directory authority used by
+            // P6N-B. The task-ontology V3 request below is used only to retain P05's frozen completion
+            // budget; it is never serialized into the P6P provider body.
+            var sparse = V5SparseCandidateRequestComposerV1.ComposeCompactDirectoryCanonical(contract, packet, registry);
+            var wideContext = BuildDocumentContext(documentMap, authority.Atoms, ownedAliases);
+            using var contextJson = JsonDocument.Parse(JsonSerializer.SerializeToUtf8Bytes(wideContext));
+            var request = V5FreeHeadingCandidateProtocolV1.ComposePdfDocumentAwareBoundLocator(sparse, contextJson.RootElement);
+            if (request.SystemPrompt != V5FreeHeadingCandidateProtocolV1.BoundLocatorSystemPrompt)
+                throw new InvalidOperationException("p6p-prompt-differs-from-p6nb");
+
+            var budgetRequest = V5SemanticDecisionComposerV3.Compose(contract, packet);
+            var maxTokens = V5SemanticCompletionBudget.Compute(ownedAliases.Length, visibleAliases.Length,
+                budgetRequest.Utf8Bytes, CompletionTokenCeiling);
+            var body = V5FreeHeadingCandidateProtocolV1.BuildBoundLocatorProviderBody(request, maxTokens);
+            prepared.Add(new PdfHeadingMembershipPreparedPack(documentId, pack.PackId, packOrdinal,
+                ownedAliases, visibleAliases, maxTokens, request, registry, body.PayloadBytes, body.Hash, body.Bytes));
+        }
+
+        if (seenOwned.Count != authority.Atoms.Count || authority.Atoms.Any(atom => !seenOwned.Contains(atom.Alias)))
+            throw new InvalidOperationException("p6p-p05-owned-source-conservation-failed");
+
+        return new PdfHeadingMembershipDocumentPlan(documentId, authority.SourceSha256,
+            authority.SourceUniverseSha256, authority.Atoms.Count, authority.Atoms.Select(atom => atom.Page).Distinct().Count(),
+            authority.Atoms, prepared);
+    }
+
+    /// <summary>Production and qualification must bind with the registry in the prepared pack.</summary>
+    public static OccurrenceLocatorResponseResult ParseAndBind(
+        PdfHeadingMembershipPreparedPack pack, string rawResponse, int responseCap = 49_152)
+    {
+        ArgumentNullException.ThrowIfNull(pack);
+        ArgumentNullException.ThrowIfNull(rawResponse);
+        var bytes = Encoding.UTF8.GetByteCount(rawResponse);
+        using var document = JsonDocument.Parse(rawResponse);
+        return V5FreeHeadingCandidateProtocolV1.ParseAndBindSourceParts(document.RootElement, bytes,
+            responseCap, pack.Registry, Enumerable.Range(0, pack.Registry.AtomCount).ToHashSet());
+    }
+
+    /// <summary>
+    /// Executes one exact prepared body and immediately routes its content through the production
+    /// P6N parser/binder. No semantic retries, repair, or fallback occur here; only the executor's
+    /// already-configured transport-only retry policy applies.
+    /// </summary>
+    public static async Task<PdfHeadingMembershipPackExecution> ExecuteAndBindAsync(
+        PdfHeadingMembershipPreparedPack pack, IFrozenRequestHeaderClassifier executor,
+        int responseCap = 49_152, CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(pack);
+        ArgumentNullException.ThrowIfNull(executor);
+        var provider = await executor.ExecuteFrozenRequestAsync(pack.ProviderBody, pack.MaxCompletionTokens,
+            pack.Request.SystemPrompt, pack.Request.UserMessage, cancellationToken).ConfigureAwait(false);
+        if (string.Equals(provider.FinishReason, "length", StringComparison.OrdinalIgnoreCase))
+            return new PdfHeadingMembershipPackExecution(provider, null, "finish-reason-length");
+        try
+        {
+            var binding = ParseAndBind(pack, provider.Content, responseCap);
+            return new PdfHeadingMembershipPackExecution(provider, binding, null);
+        }
+        catch (Exception exception) when (exception is JsonException or InvalidOperationException or ArgumentException)
+        {
+            return new PdfHeadingMembershipPackExecution(provider, null, exception.Message);
+        }
+    }
+
+    private sealed record PageView(int Page, int SourceOrderStart, int SourceOrderEnd, int OccurrenceCount, string FirstText, string LastText);
+    private sealed record DocumentMap(int SourceOccurrenceTotal, int PhysicalPageTotal, IReadOnlyList<PageView> Pages,
+        IReadOnlyDictionary<string, IReadOnlyList<(int Page, int SourceOrder)>> RepeatedTextPositions);
+
+    private static DocumentMap BuildDocumentMap(IReadOnlyList<SemanticSourceAtom> atoms)
+    {
+        var ordered = atoms.OrderBy(atom => atom.Ordinal).ThenBy(atom => atom.Alias, StringComparer.Ordinal).ToArray();
+        var pages = ordered.GroupBy(atom => atom.Page).OrderBy(group => group.Key).Select(group =>
+        {
+            var pageAtoms = group.OrderBy(atom => atom.Ordinal).ThenBy(atom => atom.Alias, StringComparer.Ordinal).ToArray();
+            return new PageView(group.Key, pageAtoms[0].Ordinal, pageAtoms[^1].Ordinal, pageAtoms.Length,
+                Excerpt(pageAtoms[0].Text, PageMapExcerptMaxChars), Excerpt(pageAtoms[^1].Text, PageMapExcerptMaxChars));
+        }).ToArray();
+        var repeated = ordered.GroupBy(atom => NormalizeText(atom.Text), StringComparer.Ordinal)
+            .Where(group => group.Key.Length > 0 && group.Count() > 1)
+            .OrderBy(group => group.Key, StringComparer.Ordinal)
+            .ToDictionary(group => group.Key,
+                group => (IReadOnlyList<(int Page, int SourceOrder)>)group.OrderBy(atom => atom.Ordinal)
+                    .ThenBy(atom => atom.Page).Select(atom => (atom.Page, atom.Ordinal)).ToArray(), StringComparer.Ordinal);
+        return new DocumentMap(ordered.Length, pages.Length, pages, repeated);
+    }
+
+    private static object BuildDocumentContext(DocumentMap map, IReadOnlyList<SemanticSourceAtom> allAtoms,
+        IReadOnlyList<string> ownedAliases)
+    {
+        var ordered = allAtoms.OrderBy(atom => atom.Ordinal).ThenBy(atom => atom.Alias, StringComparer.Ordinal).ToArray();
+        var indexByAlias = ordered.Select((atom, index) => (atom.Alias, index)).ToDictionary(item => item.Alias, item => item.index, StringComparer.Ordinal);
+        var owned = ownedAliases.Select(alias => ordered[indexByAlias[alias]]).OrderBy(atom => atom.Ordinal).ToArray();
+        var first = indexByAlias[owned[0].Alias]; var last = indexByAlias[owned[^1].Alias];
+        var ownedTexts = owned.Select(atom => NormalizeText(atom.Text)).Where(text => text.Length > 0).ToHashSet(StringComparer.Ordinal);
+        var repeats = map.RepeatedTextPositions.Where(pair => ownedTexts.Contains(pair.Key)).Select(pair => new
+        {
+            normalizedText = pair.Key,
+            positions = pair.Value.Select(position => new { page = position.Page, sourceOrder = position.SourceOrder }).ToArray(),
+        }).ToArray();
+        var before = ordered.Skip(Math.Max(0, first - WiderContextOccurrencesPerSide)).Take(Math.Min(WiderContextOccurrencesPerSide, first))
+            .Select(atom => Excerpt(atom.Text, WiderContextTextMaxChars)).ToArray();
+        var after = ordered.Skip(last + 1).Take(WiderContextOccurrencesPerSide)
+            .Select(atom => Excerpt(atom.Text, WiderContextTextMaxChars)).ToArray();
+
+        return new
+        {
+            sourceOccurrenceTotal = map.SourceOccurrenceTotal,
+            physicalPageTotal = map.PhysicalPageTotal,
+            currentOwned = new
+            {
+                occurrenceCount = owned.Length,
+                sourceOrderStart = owned.Min(atom => atom.Ordinal), sourceOrderEnd = owned.Max(atom => atom.Ordinal),
+                pageStart = owned.Min(atom => atom.Page), pageEnd = owned.Max(atom => atom.Page),
+            },
+            pageMap = map.Pages,
+            repeatedTextPositions = repeats,
+            before,
+            after,
+        };
+    }
+
+    private static string NormalizeText(string text)
+    {
+        var builder = new StringBuilder(text.Length); var pendingSpace = false;
+        foreach (var rune in text.Normalize(NormalizationForm.FormKC).EnumerateRunes())
+        {
+            if (Rune.IsWhiteSpace(rune)) { pendingSpace = builder.Length > 0; continue; }
+            if (pendingSpace) { builder.Append(' '); pendingSpace = false; }
+            builder.Append(rune.ToString());
+        }
+        return builder.ToString().ToUpperInvariant();
+    }
+
+    private static string Excerpt(string text, int maxChars)
+    {
+        if (text.Length <= maxChars) return text;
+        var end = maxChars;
+        if (char.IsHighSurrogate(text[end - 1]) && char.IsLowSurrogate(text[end])) end--;
+        return text[..end];
+    }
+}

@@ -116,6 +116,12 @@ internal static class Program
         if (args.Contains("--p6nc-semantic-boundary-full31"))
             return await P6NCSemanticBoundaryFull31.RunAsync(LocateRepoRoot(), args);
 
+        // P6P freezes and executes the PDF production-candidate adapter; execution has a separate explicit sentinel.
+        if (args.Contains("--p6p-document-aware-pdf-full31"))
+            return await P6PDocumentAwarePdfQualification.RunAsync(LocateRepoRoot(), args);
+        if (args.Contains("--p6p-freeze-response-hashes"))
+            return P6PDocumentAwarePdfQualification.FreezeResponseHashes(LocateRepoRoot());
+
         // Separately authorized, exact-body-only retry budget for the failed fourth P6N-B canary request.
         if (args.Contains("--p6nb-bound-locator-call4-retry"))
             return await P6NBBoundLocatorCanary.RetryFourthAsync(LocateRepoRoot(), args);

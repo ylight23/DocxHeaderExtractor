@@ -27,7 +27,7 @@ public sealed record OpenRouterExecutionObservation(
 /// ràng buộc còn lại cấm provider dùng dữ liệu để huấn luyện nhưng không bảo đảm xoá sau khi trả.
 /// </para>
 /// </summary>
-public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
+public sealed class OpenRouterHeaderExtractor : IFrozenRequestHeaderClassifier
 {
     private readonly HttpClient _http;
     private readonly RemoteInferenceOptions _options;
@@ -147,6 +147,14 @@ public sealed class OpenRouterHeaderExtractor : IHeaderClassifier
     public async Task<OpenRouterExecutionObservation> ExecuteObservedAsync(
         byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
         => await ExecuteObservedCoreAsync(payloadBytes, maxTokens, systemPrompt, userMessage, enforceJsonObjectCompatibility: true, ct);
+
+    public async Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(
+        byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
+    {
+        var observation = await ExecuteObservedAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken).ConfigureAwait(false);
+        return new FrozenHeaderExecutionResult(observation.Content, observation.FinishReason, observation.Usage,
+            observation.RawSse, observation.SseEventCount, observation.RetryCount);
+    }
 
     /// <summary>
     /// Executes a frozen body whose response format is intentionally unconstrained. This is an

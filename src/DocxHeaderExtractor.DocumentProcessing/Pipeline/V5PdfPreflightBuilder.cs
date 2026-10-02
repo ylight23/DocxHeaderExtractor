@@ -150,7 +150,7 @@ public static class V5PdfPreflightBuilder
         _ => throw new InvalidOperationException($"unknown-v5-packing-policy:{packingPolicy}"),
     };
 
-    private static UniversalEvidenceGraph BuildGraph(PdfStructuredSourceAuthority authority, string documentId) =>
+    internal static UniversalEvidenceGraph BuildGraph(PdfStructuredSourceAuthority authority, string documentId) =>
         EvidenceGraphBuilder.Build(authority.Atoms.Select(atom => new SourceObservation(
             $"V5:{atom.SourceId}", atom.SourceId, atom.Alias, atom.Ordinal, EvidenceModality.TEXT, atom.Text,
             new StructuralSpan(0, atom.Text.Length), new EvidenceGeometry(atom.Page),

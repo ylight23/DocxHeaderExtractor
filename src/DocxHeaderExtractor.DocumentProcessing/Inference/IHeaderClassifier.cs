@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using System.Text.Json;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Inference;
 
@@ -38,4 +39,20 @@ public interface IHeaderClassifierFactory
     bool SendsDataExternally => false;
 
     Task<IHeaderClassifier> CreateAsync(PipelineOptions options, CancellationToken ct = default);
+}
+
+/// <summary>Raw completion returned by executing an already frozen provider request body.</summary>
+public sealed record FrozenHeaderExecutionResult(
+    string Content, string? FinishReason, JsonElement? Usage, string RawSse, int SseEventCount, int RetryCount);
+
+/// <summary>
+/// Optional exact-body surface for production candidates whose body composer is part of their
+/// semantic contract. Implementations must send the supplied bytes verbatim and retain their normal
+/// transport-only retry policy; they must not rebuild or edit the request.
+/// </summary>
+public interface IFrozenRequestHeaderClassifier : IHeaderClassifier
+{
+    Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(
+        byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
+        CancellationToken cancellationToken = default);
 }
