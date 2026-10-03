@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 
@@ -59,12 +60,12 @@ public sealed class V5P6SLocalHeadingPrecedenceTests
             Assert.Equal(pair.First.Pack.OwnedAliases, pair.Second.Pack.OwnedAliases);
             Assert.Equal(pair.First.Pack.VisibleAliases, pair.Second.Pack.VisibleAliases);
             Assert.Equal(pair.First.Pack.Registry.Fingerprint, pair.Second.Pack.Registry.Fingerprint);
-            Assert.Equal(pair.First.AllowedContextEvidence, pair.Second.AllowedContextEvidence);
+            Assert.Equal(pair.First.AllowedContextEvidence.Order(), pair.Second.AllowedContextEvidence.Order());
             Assert.Equal(
                 pair.First.AllowedCorrespondenceTargetsByPrimaryAtom.OrderBy(item => item.Key)
-                    .Select(item => (item.Key, Values: item.Value.Order().ToArray())),
+                    .Select(item => $"{item.Key}:{string.Join(",", item.Value.Order())}"),
                 pair.Second.AllowedCorrespondenceTargetsByPrimaryAtom.OrderBy(item => item.Key)
-                    .Select(item => (item.Key, Values: item.Value.Order().ToArray())));
+                    .Select(item => $"{item.Key}:{string.Join(",", item.Value.Order())}"));
 
             var oldRequest = JsonNode.Parse(pair.First.Pack.Request.UserMessage)!.AsObject();
             var newRequest = JsonNode.Parse(pair.Second.Pack.Request.UserMessage)!.AsObject();
