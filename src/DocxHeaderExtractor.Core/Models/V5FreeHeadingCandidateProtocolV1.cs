@@ -24,6 +24,7 @@ public static class V5FreeHeadingCandidateProtocolV1
     public const string PdfDocumentAwareBoundLocatorVersion = "v5-free-reasoning-heading-membership-pdf-document-context-locator-1";
     public const string PdfDocumentAwareLayoutBoundLocatorVersion = "v5-free-reasoning-heading-membership-pdf-document-context-layout-locator-1";
     public const string PdfStructuralIdentityResolutionVersion = "v5-free-reasoning-heading-membership-pdf-structural-identity-resolution-1";
+    public const string PdfLocalHeadingPrecedenceVersion = "v5-free-reasoning-heading-membership-pdf-local-heading-precedence-1";
 
     public const string UnschematizedSystemPrompt = """
         You are reading a document represented by source occurrences in document order. Identify the occurrences that you judge to function as headings in this document. Use the document context and the observable source evidence provided. Return the headings you judge to be present in the source, using whatever response format and schema you prefer. Do not use any external answer key.
@@ -47,6 +48,21 @@ public static class V5FreeHeadingCandidateProtocolV1
         When correspondence candidates are supplied, resolve which occurrence establishes a structural region at its own location and which occurrence merely represents or refers to structure elsewhere. Return local structural headings in headings. Return source occurrences that only represent structure elsewhere in representations, with supplied corresponding document handles. A representation may instead cite supplied read-only context evidence when it is being used to point to or list content elsewhere.
 
         Return one JSON object with exactly this shape: {"headings":[{"sourceParts":[{"atom":"A17"}]}],"representations":[{"sourceParts":[{"atom":"A18"}],"correspondsTo":["D243"]}]}. Every heading and representation has sourceParts: a non-empty ordered array of source locators. The first part is primary and later parts are ordered continuations. Every part uses only an issued owned atom handle and optional from/to boundary handles. A whole atom is exactly {"atom":"A17"}; a strict proper substring is exactly {"atom":"A17","from":"H123","to":"H145"}; never emit a full-span boundary pair. Additional atoms must be owned and strictly increasing in source order. Only ownedSubjects are selectable. contextOnlyEvidence, document targets D#, and read-only context handles C# are never selectable as sourceParts. For each representation use exactly one of correspondsTo (only D# supplied for that source occurrence) or evidenceParts (only supplied C#). Do not classify by typography alone. Output no semantic function, heading level, type, reason, confidence, hierarchy, or other property. Do not use any external answer key.
+        """;
+
+    /// <summary>
+    /// P6S fixes the failure mode observed in P6R: correspondence is secondary evidence and must
+    /// never split a multipart local heading or demote a heading merely because its text recurs.
+    /// The wording stays document-generic: no TOC/index/document-specific labels are supplied.
+    /// </summary>
+    public const string LocalHeadingPrecedenceSystemPrompt = """
+        Identify heading occurrences in the document. Judge each occurrence by what it does at its own source location. A heading establishes or names a document, part, section, subsection, or local group at that location. Correspondence with repeated or related text elsewhere is secondary evidence only and never by itself makes the current occurrence non-heading.
+
+        Preserve heading extent. When adjacent owned source occurrences jointly form one heading, return them together as one headings item using ordered sourceParts. Do not split one local heading into separate heading items. Do not move only a continuation part of a local multipart heading into representations. If an occurrence both corresponds to structure elsewhere and establishes a heading locally, keep the complete occurrence in headings.
+
+        Use representations only for an occurrence that does not establish a heading at its own location and instead merely lists, points to, summarizes, or navigates to structure elsewhere. A dense run of title-like entries is representation-only when the entries point elsewhere and do not open their own local content there. Conversely, a short label that opens a local group is still a heading even when nearby material is list-like.
+
+        Return one JSON object with exactly this shape: {"headings":[{"sourceParts":[{"atom":"A17"}]}],"representations":[{"sourceParts":[{"atom":"A18"}],"correspondsTo":["D243"]}]}. Every heading and representation has sourceParts: a non-empty ordered array of source locators. The first part is primary and later parts are ordered continuations. Every part uses only an issued owned atom handle and optional from/to boundary handles. A whole atom is exactly {"atom":"A17"}; a strict proper substring is exactly {"atom":"A17","from":"H123","to":"H145"}; never emit a full-span boundary pair. Additional atoms must be owned and strictly increasing in source order. Only ownedSubjects are selectable. contextOnlyEvidence, document targets D#, and read-only context handles C# are never selectable as sourceParts. For each representation use exactly one of correspondsTo (only D# supplied for that source occurrence) or evidenceParts (only supplied C#). A source occurrence must not appear in both headings and representations. Do not classify by typography alone. Output no semantic function, heading level, type, reason, confidence, hierarchy, or other property. Do not use any external answer key.
         """;
 
     // Deliberately contains no task ontology, examples, or heading/non-heading heuristics.
@@ -131,6 +147,27 @@ public static class V5FreeHeadingCandidateProtocolV1
         var user = root.ToJsonString(JsonOptions);
         return new V5FreeHeadingRequestV1(PdfStructuralIdentityResolutionVersion, StructuralIdentityResolutionSystemPrompt, user,
             Hashing.Sha256(user), Encoding.UTF8.GetByteCount(StructuralIdentityResolutionSystemPrompt), Encoding.UTF8.GetByteCount(user));
+    }
+
+    /// <summary>
+    /// P6S uses the same P6R source/correspondence envelope but fixes task semantics so local
+    /// heading identity and multipart extent take precedence over recurrence/correspondence.
+    /// </summary>
+    public static V5FreeHeadingRequestV1 ComposeLocalHeadingPrecedence(
+        V5FreeHeadingRequestV1 documentAwareRequest, JsonElement correspondenceCandidates, JsonElement readOnlyContextEvidence)
+    {
+        ArgumentNullException.ThrowIfNull(documentAwareRequest);
+        if (correspondenceCandidates.ValueKind != JsonValueKind.Array || readOnlyContextEvidence.ValueKind != JsonValueKind.Array)
+            throw new ArgumentException("P6S correspondence and read-only context evidence must be arrays.");
+        using var source = JsonDocument.Parse(documentAwareRequest.UserMessage);
+        var root = JsonNode.Parse(source.RootElement.GetRawText())?.AsObject()
+            ?? throw new InvalidOperationException("p6s-source-request-invalid");
+        root["protocolVersion"] = PdfLocalHeadingPrecedenceVersion;
+        root["correspondenceCandidates"] = JsonNode.Parse(correspondenceCandidates.GetRawText());
+        root["readOnlyContextEvidence"] = JsonNode.Parse(readOnlyContextEvidence.GetRawText());
+        var user = root.ToJsonString(JsonOptions);
+        return new V5FreeHeadingRequestV1(PdfLocalHeadingPrecedenceVersion, LocalHeadingPrecedenceSystemPrompt, user,
+            Hashing.Sha256(user), Encoding.UTF8.GetByteCount(LocalHeadingPrecedenceSystemPrompt), Encoding.UTF8.GetByteCount(user));
     }
 
     private static V5FreeHeadingRequestV1 ComposeBoundLocatorCore(
