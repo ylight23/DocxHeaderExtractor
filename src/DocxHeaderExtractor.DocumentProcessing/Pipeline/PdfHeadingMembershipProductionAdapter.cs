@@ -175,6 +175,17 @@ public static class PdfHeadingMembershipProductionAdapter
             Enumerable.Range(0, pack.Pack.Registry.AtomCount).ToHashSet(), pack.AllowedCorrespondenceTargetsByPrimaryAtom, pack.AllowedContextEvidence);
     }
 
+    /// <summary>P6S parse: P6R grammar plus disjoint heading/representation ownership.</summary>
+    public static V5FreeHeadingCandidateProtocolV1.StructuralIdentityResolutionResult ParseLocalHeadingPrecedence(
+        PdfStructuralIdentityResolutionPreparedPack pack, string rawResponse, int responseCap = 49_152)
+    {
+        ArgumentNullException.ThrowIfNull(pack); ArgumentNullException.ThrowIfNull(rawResponse);
+        using var document = JsonDocument.Parse(rawResponse);
+        return V5FreeHeadingCandidateProtocolV1.ParseLocalHeadingPrecedence(document.RootElement,
+            Encoding.UTF8.GetByteCount(rawResponse), responseCap, pack.Pack.Registry,
+            Enumerable.Range(0, pack.Pack.Registry.AtomCount).ToHashSet(), pack.AllowedCorrespondenceTargetsByPrimaryAtom, pack.AllowedContextEvidence);
+    }
+
     private static PdfHeadingMembershipDocumentPlan PrepareCore(
         string pdfPath, string documentId, DocumentTaskContract contract, bool includeLayoutFacts)
     {
