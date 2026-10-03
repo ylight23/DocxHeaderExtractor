@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "v5-p6sij-two-arm-toc-experiment-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "runtimeChanged": false,
+  "sharedAdapter": "PdfCandidateAuthorityQualificationAdapter snapshot replay \u002B same P6S protocol/parser/OpenRouter body builder",
+  "route": {
+    "gateway": "OpenRouter",
+    "model": "qwen/qwen3.7-flash",
+    "providerPin": "alibaba",
+    "temperature": 0,
+    "reasoning": "none",
+    "responseFormat": "json_object"
+  },
+  "execution": {
+    "maximumProviderCalls": 2,
+    "exactlyOnePerArm": true,
+    "retries": 0,
+    "repair": false,
+    "fallback": false,
+    "goldDuringRun": false
+  },
+  "frozen": {
+    "sourceDocument": "SRC-095",
+    "promptBase": "You are reading a document. The harness has already located every source extent you may select and issued each one a candidate id (C#). Candidates may overlap: one source line may appear alone, trimmed, or joined with the next lines as a longer candidate. Decide, for the candidates in this request, which ones function as a heading at their own location, choosing the candidate whose extent is the complete heading.\r\n\r\nSome candidates only repeat, list, or refer to structure that occurs elsewhere in the document (for example an entry that names a section located elsewhere). Mark those as representations. Relations (R#), when supplied, are read-only reasoning evidence; never return an R#.\n\nReturn one JSON object with exactly this shape: {\u0022decisions\u0022:[{\u0022candidate\u0022:\u0022C17\u0022,\u0022kind\u0022:\u0022HEADING\u0022},{\u0022candidate\u0022:\u0022C18\u0022,\u0022kind\u0022:\u0022REPRESENTATION\u0022}]}. kind is HEADING or REPRESENTATION. Use only issued candidate ids. contextOnlyEvidence and relations are read-only and have no selectable ids. Omit candidates that are neither. Output no other property, text, reason, level, or confidence. Do not use any external answer key.",
+    "locatorAndCandidateUniverse": "P6S-D PACK_001/PACK_002 exact snapshot reconstruction",
+    "relations": "unchanged",
+    "parser": "unchanged"
+  },
+  "arms": [
+    {
+      "Id": "P6S-I",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "changedDimension": "contextOnlyEvidence source-order window only; system prompt, candidates, and relations unchanged",
+      "baselineProviderRequestHash": "fd4e1482fddba6df0b1a02bd28b7041cf11e28a14ddcfff8f700192ce3be8299",
+      "treatmentProviderRequestHash": "688b8872f55be6a69d0c4b3a1dc24c31e5df6177f0a2bc67a67c2bb7355d5015",
+      "userMessageSha256": "cea8a92ecc6a509fe96bca4cf22b99a0e5387dd67fc3290ddf403991e2d8b131",
+      "systemPromptSha256": "a0c0c92861016f64eb953df25ff6c238d08aed36703bc4e3a0c40f55481fb1b7",
+      "providerRequestBytes": 149817,
+      "ownedAtoms": 96,
+      "candidateCount": 640,
+      "relationCount": 68,
+      "contextOnlyCount": 176,
+      "maxCompletionTokens": 32768
+    },
+    {
+      "Id": "P6S-J",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "changedDimension": "system prompt semantic rule only; user payload, candidates, relations, and context unchanged",
+      "baselineProviderRequestHash": "90a9ca85708aaf3bc5af3ce6d70fafa0eb62a54e78c4f00803a8272d25988a58",
+      "treatmentProviderRequestHash": "2f5470a1a19ec64577c1430a9b4496521fba362cd018de160be69dab20dc089d",
+      "userMessageSha256": "af6ed915fdb3689f390452cd7cfdd191870d6ade51e880e3690c6279caead805",
+      "systemPromptSha256": "a99c7f5ce9e1170b9c133a547b32f8f368f1d27b0bb0a24c4b941a71131e6623",
+      "providerRequestBytes": 105692,
+      "ownedAtoms": 96,
+      "candidateCount": 608,
+      "relationCount": 103,
+      "contextOnlyCount": 8,
+      "maxCompletionTokens": 32768
+    }
+  ]
+}

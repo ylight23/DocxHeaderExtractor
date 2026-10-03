@@ -72,6 +72,14 @@ public static class PdfCandidateAuthorityQualificationAdapter
             ResponseUtf8ByteCap, pack.Universe);
     }
 
+    /// <summary>Builds the qualified P6S OpenRouter carrier body for a prepared or arm-specific request.</summary>
+    public static V5ProviderRequestBodyV2_1 BuildProviderBody(V5FreeHeadingRequestV1 request, int maxCompletionTokens)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        return OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRaw(request.SystemPrompt, request.UserMessage,
+            maxCompletionTokens, Envelope);
+    }
+
     private static readonly JsonSerializerOptions SnapshotJson = new() { PropertyNameCaseInsensitive = true };
     private static readonly V5ProviderEnvelope Envelope = new("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300)
     { UsageInclude = true, OpenRouterResponseCacheDisabled = true };

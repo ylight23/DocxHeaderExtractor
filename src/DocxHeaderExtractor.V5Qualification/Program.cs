@@ -135,6 +135,13 @@ internal static class Program
         if (args.Contains("--p6sd-candidate-authority-full31"))
             return await P6SCandidateAuthorityFull31.RunAsync(LocateRepoRoot(), args);
 
+        // P6S-I/J are separate one-pack neutral-context and semantic-wording experiments; their
+        // runner has an independent two-call cap, frozen-body manifest, and zero-retry policy.
+        if (args.Contains("--p6sij-toc-two-arm-experiment"))
+            return await P6SIJTwoArmTocExperiment.RunAsync(LocateRepoRoot(), args);
+        if (args.Contains("--p6sij-score"))
+            return P6SIJTwoArmTocExperiment.Score(LocateRepoRoot());
+
         // P6R adds only deterministic source-correspondence evidence and a representation result
         // channel to the text-only P6P treatment. It is qualification-only and never reads Gold.
         if (args.Contains("--p6r-structural-identity-full31"))

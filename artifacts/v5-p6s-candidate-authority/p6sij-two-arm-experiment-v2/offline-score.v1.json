@@ -1,0 +1,843 @@
+{
+  "schemaVersion": "v5-p6sij-two-arm-toc-offline-score-v1",
+  "authority": {
+    "input": "artifacts/v5-p6s-candidate-authority/p6sij-two-arm-experiment-v2/raw-result.v1.json",
+    "hardNegativeTargets": "artifacts/v5-p6s-candidate-authority/p6sh-toc-presentation-sufficiency/reviewed-toc-hard-negative-audit.v1.json",
+    "baselineResponses": "artifacts/v5-p6s-candidate-authority/p6sd-full31/result.v1.json",
+    "p6shSha256": "2f9ae8324c3bc767124adc81caf0d5e7ce829df1c3c13ff22429a21c9a614277",
+    "p6sdSha256": "89e18433bcc50746e92410f35437798a1c5dc79aaa2513edc5335dd86bdbaa4f",
+    "rawCaptureSha256": "67a44975c009f368c3e075191a643996bf71e3a451614227e6455ee9eb864d23",
+    "goldMutation": "NONE",
+    "runtimeChanged": false
+  },
+  "measurement": "Only reviewed TOC false-positive candidates: compare prior P6S-D decision with each one-pack treatment. This is a targeted diagnostic, not full-pack or cohort F1.",
+  "arms": [
+    {
+      "arm": "P6S-I",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "targets": 34,
+      "baselineSemanticDecisions": {
+        "HEADING": 34
+      },
+      "treatmentSemanticDecisions": {
+        "HEADING": 34
+      },
+      "treatmentFinalFailClosedDecisions": {
+        "HEADING": 34
+      },
+      "headingToRepresentation": 0,
+      "representationToHeading": 0,
+      "headingToNoProposal": 0,
+      "noProposalToHeading": 0,
+      "parserQuarantine": 0,
+      "overlapQuarantine": 0,
+      "targetScores": [
+        {
+          "candidateId": "C1",
+          "identity": "L0090:S0:0-40",
+          "text": "10.3. Intermediary-Encapsulation Attacks",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C100",
+          "identity": "L0105:S0:0-20",
+          "text": "11.2. New Registries",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C107",
+          "identity": "L0106:S0:0-19",
+          "text": "11.2.1. Frame Types",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C114",
+          "identity": "L0107:S0:0-27",
+          "text": "11.2.2. Settings Parameters",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C121",
+          "identity": "L0108:S0:0-19",
+          "text": "11.2.3. Error Codes",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C128",
+          "identity": "L0109:S0:0-20",
+          "text": "11.2.4. Stream Types",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C135",
+          "identity": "L0110:S0:0-14",
+          "text": "12. References",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C142",
+          "identity": "L0111:S0:0-26",
+          "text": "12.1. Normative References",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C149",
+          "identity": "L0112:S0:0-28",
+          "text": "12.2. Informative References",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C15",
+          "identity": "L0092:S0:0-38",
+          "text": "10.5. Denial-of-Service Considerations",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C156",
+          "identity": "L0113:S0:0-56",
+          "text": "Appendix A. Considerations for Transitioning from HTTP/2",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C163",
+          "identity": "L0114:S0:0-12",
+          "text": "A.1. Streams",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C170",
+          "identity": "L0115:S0:0-21",
+          "text": "A.2. HTTP Frame Types",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C177",
+          "identity": "L0116:S0:0-32",
+          "text": "A.2.1. Prioritization Di\uFB00erences",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C184",
+          "identity": "L0117:S0:0-35",
+          "text": "A.2.2. Field Compression Di\uFB00erences",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C191",
+          "identity": "L0118:S0:0-30",
+          "text": "A.2.3. Flow-Control Di\uFB00erences",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C198",
+          "identity": "L0119:S0:0-45",
+          "text": "A.2.4. Guidance for New Frame Type De\uFB01nitions",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C205",
+          "identity": "L0120:S0:0-49",
+          "text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C212",
+          "identity": "L0121:S0:0-31",
+          "text": "A.3. HTTP/2 SETTINGS Parameters",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C219",
+          "identity": "L0122:S0:0-23",
+          "text": "A.4. HTTP/2 Error Codes",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C22",
+          "identity": "L0093:S0:0-36",
+          "text": "10.5.1. Limits on Field Section Size",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C225",
+          "identity": "L0123:S0:0-47",
+          "text": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C230",
+          "identity": "L0124:S0:0-15",
+          "text": "Acknowledgments",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C234",
+          "identity": "L0125:S0:0-5",
+          "text": "Index",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C37",
+          "identity": "L0096:S0:0-22",
+          "text": "10.5.2. CONNECT Issues",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C44",
+          "identity": "L0097:S0:0-24",
+          "text": "10.6. Use of Compression",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C51",
+          "identity": "L0098:S0:0-32",
+          "text": "10.7. Padding and Tra\uFB03c Analysis",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C58",
+          "identity": "L0099:S0:0-19",
+          "text": "10.8. Frame Parsing",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C65",
+          "identity": "L0100:S0:0-16",
+          "text": "10.9. Early Data",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C72",
+          "identity": "L0101:S0:0-16",
+          "text": "10.10. Migration",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C79",
+          "identity": "L0102:S0:0-29",
+          "text": "10.11. Privacy Considerations",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C8",
+          "identity": "L0091:S0:0-37",
+          "text": "10.4. Cacheability ofPushed Responses",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C86",
+          "identity": "L0103:S0:0-23",
+          "text": "11. IANA Considerations",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        },
+        {
+          "candidateId": "C93",
+          "identity": "L0104:S0:0-48",
+          "text": "11.1. Registration ofHTTP/3 Identi\uFB01cation String",
+          "baseline": "HEADING",
+          "treatment": "HEADING",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "HEADING"
+        }
+      ]
+    },
+    {
+      "arm": "P6S-J",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "targets": 53,
+      "baselineSemanticDecisions": {
+        "HEADING": 53
+      },
+      "treatmentSemanticDecisions": {
+        "NO_PROPOSAL": 53
+      },
+      "treatmentFinalFailClosedDecisions": {
+        "NO_PROPOSAL": 53
+      },
+      "headingToRepresentation": 0,
+      "representationToHeading": 0,
+      "headingToNoProposal": 53,
+      "noProposalToHeading": 0,
+      "parserQuarantine": 0,
+      "overlapQuarantine": 0,
+      "targetScores": [
+        {
+          "candidateId": "C236",
+          "identity": "L0035:S0:0-15",
+          "text": "1. Introduction",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C243",
+          "identity": "L0036:S0:0-26",
+          "text": "1.1. Prior Versions ofHTTP",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C250",
+          "identity": "L0037:S0:0-23",
+          "text": "1.2. Delegation to QUIC",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C257",
+          "identity": "L0038:S0:0-27",
+          "text": "2. HTTP/3 Protocol Overview",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C264",
+          "identity": "L0039:S0:0-26",
+          "text": "2.1. Document Organization",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C271",
+          "identity": "L0040:S0:0-32",
+          "text": "2.2. Conventions and Terminology",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C278",
+          "identity": "L0041:S0:0-34",
+          "text": "3. Connection Setup and Management",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C285",
+          "identity": "L0042:S0:0-35",
+          "text": "3.1. Discovering an HTTP/3 Endpoint",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C292",
+          "identity": "L0043:S0:0-32",
+          "text": "3.1.1. HTTP Alternative Services",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C299",
+          "identity": "L0044:S0:0-20",
+          "text": "3.1.2. Other Schemes",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C306",
+          "identity": "L0045:S0:0-29",
+          "text": "3.2. Connection Establishment",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C313",
+          "identity": "L0046:S0:0-21",
+          "text": "3.3. Connection Reuse",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C320",
+          "identity": "L0047:S0:0-38",
+          "text": "4. Expressing HTTP Semantics in HTTP/3",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C327",
+          "identity": "L0048:S0:0-25",
+          "text": "4.1. HTTP Message Framing",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C334",
+          "identity": "L0049:S0:0-41",
+          "text": "4.1.1. Request Cancellation and Rejection",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C341",
+          "identity": "L0050:S0:0-39",
+          "text": "4.1.2. Malformed Requests and Responses",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C348",
+          "identity": "L0051:S0:0-16",
+          "text": "4.2. HTTP Fields",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C355",
+          "identity": "L0052:S0:0-24",
+          "text": "4.2.1. Field Compression",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C362",
+          "identity": "L0053:S0:0-30",
+          "text": "4.2.2. Header Size Constraints",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C369",
+          "identity": "L0054:S0:0-22",
+          "text": "4.3. HTTP Control Data",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C376",
+          "identity": "L0055:S0:0-35",
+          "text": "4.3.1. Request Pseudo-Header Fields",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C383",
+          "identity": "L0056:S0:0-36",
+          "text": "4.3.2. Response Pseudo-Header Fields",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C390",
+          "identity": "L0057:S0:0-23",
+          "text": "4.4. The CONNECT Method",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C397",
+          "identity": "L0058:S0:0-17",
+          "text": "4.5. HTTP Upgrade",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C404",
+          "identity": "L0059:S0:0-16",
+          "text": "4.6. Server Push",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C411",
+          "identity": "L0060:S0:0-21",
+          "text": "5. Connection Closure",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C418",
+          "identity": "L0061:S0:0-21",
+          "text": "5.1. Idle Connections",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C433",
+          "identity": "L0064:S0:0-24",
+          "text": "5.2. Connection Shutdown",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C440",
+          "identity": "L0065:S0:0-34",
+          "text": "5.3. Immediate Application Closure",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C447",
+          "identity": "L0066:S0:0-22",
+          "text": "5.4. Transport Closure",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C454",
+          "identity": "L0067:S0:0-27",
+          "text": "6. Stream Mapping and Usage",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C461",
+          "identity": "L0068:S0:0-26",
+          "text": "6.1. Bidirectional Streams",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C468",
+          "identity": "L0069:S0:0-27",
+          "text": "6.2. Unidirectional Streams",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C475",
+          "identity": "L0070:S0:0-22",
+          "text": "6.2.1. Control Streams",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C482",
+          "identity": "L0071:S0:0-19",
+          "text": "6.2.2. Push Streams",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C489",
+          "identity": "L0072:S0:0-28",
+          "text": "6.2.3. Reserved Stream Types",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C496",
+          "identity": "L0073:S0:0-21",
+          "text": "7. HTTP Framing Layer",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C503",
+          "identity": "L0074:S0:0-17",
+          "text": "7.1. Frame Layout",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C510",
+          "identity": "L0075:S0:0-21",
+          "text": "7.2. Frame De\uFB01nitions",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C517",
+          "identity": "L0076:S0:0-11",
+          "text": "7.2.1. DATA",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C524",
+          "identity": "L0077:S0:0-14",
+          "text": "7.2.2. HEADERS",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C531",
+          "identity": "L0078:S0:0-18",
+          "text": "7.2.3. CANCEL_PUSH",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C538",
+          "identity": "L0079:S0:0-15",
+          "text": "7.2.4. SETTINGS",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C545",
+          "identity": "L0080:S0:0-19",
+          "text": "7.2.5. PUSH_PROMISE",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C552",
+          "identity": "L0081:S0:0-13",
+          "text": "7.2.6. GOAWAY",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C559",
+          "identity": "L0082:S0:0-18",
+          "text": "7.2.7. MAX_PUSH_ID",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C566",
+          "identity": "L0083:S0:0-27",
+          "text": "7.2.8. Reserved Frame Types",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C573",
+          "identity": "L0084:S0:0-17",
+          "text": "8. Error Handling",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C580",
+          "identity": "L0085:S0:0-23",
+          "text": "8.1. HTTP/3 Error Codes",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C587",
+          "identity": "L0086:S0:0-23",
+          "text": "9. Extensions to HTTP/3",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C594",
+          "identity": "L0087:S0:0-27",
+          "text": "10. Security Considerations",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C601",
+          "identity": "L0088:S0:0-22",
+          "text": "10.1. Server Authority",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        },
+        {
+          "candidateId": "C606",
+          "identity": "L0089:S0:0-28",
+          "text": "10.2. Cross-Protocol Attacks",
+          "baseline": "HEADING",
+          "treatment": "NO_PROPOSAL",
+          "baselineFinalFailClosed": "HEADING",
+          "treatmentFinalFailClosed": "NO_PROPOSAL"
+        }
+      ]
+    }
+  ]
+}
