@@ -374,6 +374,47 @@ public static class V5FreeHeadingCandidateProtocolV1
         int RepresentationsAccepted,
         IReadOnlyList<string> RepresentationQuarantine);
 
+    /// <summary>
+    /// P6S uses the P6R wire grammar but additionally enforces disjoint heading/representation
+    /// ownership. This prevents a multipart heading continuation from being simultaneously
+    /// retyped as representation-only.
+    /// </summary>
+    public static StructuralIdentityResolutionResult ParseLocalHeadingPrecedence(
+        JsonElement payload, int rawUtf8Bytes, int responseCap, RequestLocalLocatorRegistry registry,
+        IReadOnlySet<int> ownedAtomIndices, IReadOnlyDictionary<string, IReadOnlySet<string>> allowedCorrespondenceTargetsByPrimaryAtom,
+        IReadOnlySet<string> allowedContextEvidence)
+    {
+        if (payload.ValueKind != JsonValueKind.Object ||
+            !payload.TryGetProperty("headings", out var headings) || headings.ValueKind != JsonValueKind.Array ||
+            !payload.TryGetProperty("representations", out var representations) || representations.ValueKind != JsonValueKind.Array)
+            throw new InvalidOperationException("p6s-response-root-invalid");
+
+        var headingAtoms = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var heading in headings.EnumerateArray())
+        {
+            if (heading.ValueKind != JsonValueKind.Object ||
+                !heading.TryGetProperty("sourceParts", out var sourceParts) || sourceParts.ValueKind != JsonValueKind.Array)
+                continue;
+            foreach (var part in sourceParts.EnumerateArray())
+                if (part.ValueKind == JsonValueKind.Object && part.TryGetProperty("atom", out var atom) && atom.ValueKind == JsonValueKind.String)
+                    headingAtoms.Add(atom.GetString()!);
+        }
+
+        foreach (var representation in representations.EnumerateArray())
+        {
+            if (representation.ValueKind != JsonValueKind.Object ||
+                !representation.TryGetProperty("sourceParts", out var sourceParts) || sourceParts.ValueKind != JsonValueKind.Array)
+                continue;
+            foreach (var part in sourceParts.EnumerateArray())
+                if (part.ValueKind == JsonValueKind.Object && part.TryGetProperty("atom", out var atom) && atom.ValueKind == JsonValueKind.String &&
+                    headingAtoms.Contains(atom.GetString()!))
+                    throw new InvalidOperationException("p6s-heading-representation-source-overlap");
+        }
+
+        return ParseStructuralIdentityResolution(payload, rawUtf8Bytes, responseCap, registry, ownedAtomIndices,
+            allowedCorrespondenceTargetsByPrimaryAtom, allowedContextEvidence);
+    }
+
     public static StructuralIdentityResolutionResult ParseStructuralIdentityResolution(
         JsonElement payload, int rawUtf8Bytes, int responseCap, RequestLocalLocatorRegistry registry,
         IReadOnlySet<int> ownedAtomIndices, IReadOnlyDictionary<string, IReadOnlySet<string>> allowedCorrespondenceTargetsByPrimaryAtom,
