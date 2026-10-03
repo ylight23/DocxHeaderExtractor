@@ -1,0 +1,6549 @@
+{
+  "schemaVersion": "v5-p6sh-toc-presentation-sufficiency-v1",
+  "execution": {
+    "providerCalls": 0,
+    "goldRead": true,
+    "goldMutation": "NONE",
+    "runtimeChanged": false,
+    "diagnosisSource": "artifacts/v5-p6s-candidate-authority/p6sg-preprojection-diagnosis/strict-exact-residual-decomposition.v1.json",
+    "diagnosisSourceSha256": "4074f451460b369fad15b7a75cd8c94a2cd019879b9103a467de23b7a90ac0a1"
+  },
+  "authority": {
+    "scope": "Reviewed SRC-095 CONTENTS_ENTRY false positives only. Relation targets are diagnostic read-only evidence; relation Gold is absent.",
+    "relationStatus": "Issued/truncated/no-correspondence is measured only against same-normalized-text canonical heading occurrences, not asserted as a relation truth.",
+    "presentationStatus": "A sufficient result means exactly one body-heading counterpart target was issued and a Table of Contents signal was model-visible in that frozen request; it does not claim causal proof beyond the observed HEADING decision."
+  },
+  "totals": {
+    "reviewedTocHeadingFalsePositives": 87,
+    "representationDecisionsSrc095": 693,
+    "tocWithAnyRepresentationOverlap": 1,
+    "tocWithExactRepresentation": 0,
+    "relationStatuses": [
+      {
+        "status": "NO_CORRESPONDENCE_RELATION",
+        "count": 4
+      },
+      {
+        "status": "RELATION_TARGET_ISSUED",
+        "count": 83
+      }
+    ],
+    "presentationStatuses": [
+      {
+        "status": "NOT_EVALUABLE_FROM_SINGLE_ISSUED_TARGET",
+        "count": 4
+      },
+      {
+        "status": "PRESENTATION_CONTEXT_WEAK",
+        "count": 31
+      },
+      {
+        "status": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+        "count": 52
+      }
+    ]
+  },
+  "rows": [
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C236",
+      "Identity": "L0035:S0:0-15",
+      "candidateText": "1. Introduction",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 6,
+          "Identity": "L0129:S0:0-15",
+          "Text": "1. Introduction"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R19",
+          "TargetSpanIdentity": "L0129:S0:0-15",
+          "TargetText": "1. Introduction",
+          "TargetPage": 5,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0035:S0",
+        "before": [
+          {
+            "Alias": "L0033:S0",
+            "Page": 2,
+            "Ordinal": 39,
+            "Text": "RFC 9114 HTTP/3 June 2022",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0034:S0",
+            "Page": 2,
+            "Ordinal": 40,
+            "Text": "Table of Contents",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0036:S0",
+            "Page": 2,
+            "Ordinal": 42,
+            "Text": "1.1. Prior Versions ofHTTP",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0037:S0",
+            "Page": 2,
+            "Ordinal": 43,
+            "Text": "1.2. Delegation to QUIC",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C243",
+      "Identity": "L0036:S0:0-26",
+      "candidateText": "1.1. Prior Versions ofHTTP",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "NO_CORRESPONDENCE_RELATION",
+      "presentationStatus": "NOT_EVALUABLE_FROM_SINGLE_ISSUED_TARGET",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [],
+      "issuedRelations": [
+        {
+          "Id": "R20",
+          "TargetSpanIdentity": "L0134:S0:0-27",
+          "TargetText": "1.1. Prior Versions of HTTP",
+          "TargetPage": 5,
+          "MatchTier": "NFKC_WHITESPACE_INSENSITIVE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": false
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0036:S0",
+        "before": [
+          {
+            "Alias": "L0034:S0",
+            "Page": 2,
+            "Ordinal": 40,
+            "Text": "Table of Contents",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0035:S0",
+            "Page": 2,
+            "Ordinal": 41,
+            "Text": "1. Introduction",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0037:S0",
+            "Page": 2,
+            "Ordinal": 43,
+            "Text": "1.2. Delegation to QUIC",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0038:S0",
+            "Page": 2,
+            "Ordinal": 44,
+            "Text": "2. HTTP/3 Protocol Overview",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C250",
+      "Identity": "L0037:S0:0-23",
+      "candidateText": "1.2. Delegation to QUIC",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 8,
+          "Identity": "L0146:S0:0-23",
+          "Text": "1.2. Delegation to QUIC"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R21",
+          "TargetSpanIdentity": "L0146:S0:0-23",
+          "TargetText": "1.2. Delegation to QUIC",
+          "TargetPage": 5,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0037:S0",
+        "before": [
+          {
+            "Alias": "L0035:S0",
+            "Page": 2,
+            "Ordinal": 41,
+            "Text": "1. Introduction",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0036:S0",
+            "Page": 2,
+            "Ordinal": 42,
+            "Text": "1.1. Prior Versions ofHTTP",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0038:S0",
+            "Page": 2,
+            "Ordinal": 44,
+            "Text": "2. HTTP/3 Protocol Overview",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0039:S0",
+            "Page": 2,
+            "Ordinal": 45,
+            "Text": "2.1. Document Organization",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C257",
+      "Identity": "L0038:S0:0-27",
+      "candidateText": "2. HTTP/3 Protocol Overview",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 9,
+          "Identity": "L0162:S0:0-27",
+          "Text": "2. HTTP/3 Protocol Overview"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R22",
+          "TargetSpanIdentity": "L0162:S0:0-27",
+          "TargetText": "2. HTTP/3 Protocol Overview",
+          "TargetPage": 6,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0038:S0",
+        "before": [
+          {
+            "Alias": "L0036:S0",
+            "Page": 2,
+            "Ordinal": 42,
+            "Text": "1.1. Prior Versions ofHTTP",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0037:S0",
+            "Page": 2,
+            "Ordinal": 43,
+            "Text": "1.2. Delegation to QUIC",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0039:S0",
+            "Page": 2,
+            "Ordinal": 45,
+            "Text": "2.1. Document Organization",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0040:S0",
+            "Page": 2,
+            "Ordinal": 46,
+            "Text": "2.2. Conventions and Terminology",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C264",
+      "Identity": "L0039:S0:0-26",
+      "candidateText": "2.1. Document Organization",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 10,
+          "Identity": "L0185:S0:0-26",
+          "Text": "2.1. Document Organization"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R23",
+          "TargetSpanIdentity": "L0185:S0:0-26",
+          "TargetText": "2.1. Document Organization",
+          "TargetPage": 6,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0039:S0",
+        "before": [
+          {
+            "Alias": "L0037:S0",
+            "Page": 2,
+            "Ordinal": 43,
+            "Text": "1.2. Delegation to QUIC",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0038:S0",
+            "Page": 2,
+            "Ordinal": 44,
+            "Text": "2. HTTP/3 Protocol Overview",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0040:S0",
+            "Page": 2,
+            "Ordinal": 46,
+            "Text": "2.2. Conventions and Terminology",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0041:S0",
+            "Page": 2,
+            "Ordinal": 47,
+            "Text": "3. Connection Setup and Management",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C271",
+      "Identity": "L0040:S0:0-32",
+      "candidateText": "2.2. Conventions and Terminology",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 11,
+          "Identity": "L0205:S0:0-32",
+          "Text": "2.2. Conventions and Terminology"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R24",
+          "TargetSpanIdentity": "L0205:S0:0-32",
+          "TargetText": "2.2. Conventions and Terminology",
+          "TargetPage": 7,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0040:S0",
+        "before": [
+          {
+            "Alias": "L0038:S0",
+            "Page": 2,
+            "Ordinal": 44,
+            "Text": "2. HTTP/3 Protocol Overview",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0039:S0",
+            "Page": 2,
+            "Ordinal": 45,
+            "Text": "2.1. Document Organization",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0041:S0",
+            "Page": 2,
+            "Ordinal": 47,
+            "Text": "3. Connection Setup and Management",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0042:S0",
+            "Page": 2,
+            "Ordinal": 48,
+            "Text": "3.1. Discovering an HTTP/3 Endpoint",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C278",
+      "Identity": "L0041:S0:0-34",
+      "candidateText": "3. Connection Setup and Management",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 12,
+          "Identity": "L0243:S0:0-34",
+          "Text": "3. Connection Setup and Management"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R25",
+          "TargetSpanIdentity": "L0243:S0:0-34",
+          "TargetText": "3. Connection Setup and Management",
+          "TargetPage": 8,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0041:S0",
+        "before": [
+          {
+            "Alias": "L0039:S0",
+            "Page": 2,
+            "Ordinal": 45,
+            "Text": "2.1. Document Organization",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0040:S0",
+            "Page": 2,
+            "Ordinal": 46,
+            "Text": "2.2. Conventions and Terminology",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0042:S0",
+            "Page": 2,
+            "Ordinal": 48,
+            "Text": "3.1. Discovering an HTTP/3 Endpoint",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0043:S0",
+            "Page": 2,
+            "Ordinal": 49,
+            "Text": "3.1.1. HTTP Alternative Services",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C285",
+      "Identity": "L0042:S0:0-35",
+      "candidateText": "3.1. Discovering an HTTP/3 Endpoint",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 13,
+          "Identity": "L0244:S0:0-35",
+          "Text": "3.1. Discovering an HTTP/3 Endpoint"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R27",
+          "TargetSpanIdentity": "L0244:S0:0-35",
+          "TargetText": "3.1. Discovering an HTTP/3 Endpoint",
+          "TargetPage": 8,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0042:S0",
+        "before": [
+          {
+            "Alias": "L0040:S0",
+            "Page": 2,
+            "Ordinal": 46,
+            "Text": "2.2. Conventions and Terminology",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0041:S0",
+            "Page": 2,
+            "Ordinal": 47,
+            "Text": "3. Connection Setup and Management",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0043:S0",
+            "Page": 2,
+            "Ordinal": 49,
+            "Text": "3.1.1. HTTP Alternative Services",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0044:S0",
+            "Page": 2,
+            "Ordinal": 50,
+            "Text": "3.1.2. Other Schemes",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C292",
+      "Identity": "L0043:S0:0-32",
+      "candidateText": "3.1.1. HTTP Alternative Services",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 14,
+          "Identity": "L0268:S0:0-32",
+          "Text": "3.1.1. HTTP Alternative Services"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R28",
+          "TargetSpanIdentity": "L0268:S0:0-32",
+          "TargetText": "3.1.1. HTTP Alternative Services",
+          "TargetPage": 9,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0043:S0",
+        "before": [
+          {
+            "Alias": "L0041:S0",
+            "Page": 2,
+            "Ordinal": 47,
+            "Text": "3. Connection Setup and Management",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0042:S0",
+            "Page": 2,
+            "Ordinal": 48,
+            "Text": "3.1. Discovering an HTTP/3 Endpoint",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0044:S0",
+            "Page": 2,
+            "Ordinal": 50,
+            "Text": "3.1.2. Other Schemes",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0045:S0",
+            "Page": 2,
+            "Ordinal": 51,
+            "Text": "3.2. Connection Establishment",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C299",
+      "Identity": "L0044:S0:0-20",
+      "candidateText": "3.1.2. Other Schemes",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 15,
+          "Identity": "L0277:S0:0-20",
+          "Text": "3.1.2. Other Schemes"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R29",
+          "TargetSpanIdentity": "L0277:S0:0-20",
+          "TargetText": "3.1.2. Other Schemes",
+          "TargetPage": 9,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0044:S0",
+        "before": [
+          {
+            "Alias": "L0042:S0",
+            "Page": 2,
+            "Ordinal": 48,
+            "Text": "3.1. Discovering an HTTP/3 Endpoint",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0043:S0",
+            "Page": 2,
+            "Ordinal": 49,
+            "Text": "3.1.1. HTTP Alternative Services",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0045:S0",
+            "Page": 2,
+            "Ordinal": 51,
+            "Text": "3.2. Connection Establishment",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0046:S0",
+            "Page": 2,
+            "Ordinal": 52,
+            "Text": "3.3. Connection Reuse",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C306",
+      "Identity": "L0045:S0:0-29",
+      "candidateText": "3.2. Connection Establishment",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 16,
+          "Identity": "L0288:S0:0-29",
+          "Text": "3.2. Connection Establishment"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R30",
+          "TargetSpanIdentity": "L0288:S0:0-29",
+          "TargetText": "3.2. Connection Establishment",
+          "TargetPage": 9,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0045:S0",
+        "before": [
+          {
+            "Alias": "L0043:S0",
+            "Page": 2,
+            "Ordinal": 49,
+            "Text": "3.1.1. HTTP Alternative Services",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0044:S0",
+            "Page": 2,
+            "Ordinal": 50,
+            "Text": "3.1.2. Other Schemes",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0046:S0",
+            "Page": 2,
+            "Ordinal": 52,
+            "Text": "3.3. Connection Reuse",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0047:S0",
+            "Page": 2,
+            "Ordinal": 53,
+            "Text": "4. Expressing HTTP Semantics in HTTP/3",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C313",
+      "Identity": "L0046:S0:0-21",
+      "candidateText": "3.3. Connection Reuse",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 17,
+          "Identity": "L0305:S0:0-21",
+          "Text": "3.3. Connection Reuse"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R31",
+          "TargetSpanIdentity": "L0305:S0:0-21",
+          "TargetText": "3.3. Connection Reuse",
+          "TargetPage": 10,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0046:S0",
+        "before": [
+          {
+            "Alias": "L0044:S0",
+            "Page": 2,
+            "Ordinal": 50,
+            "Text": "3.1.2. Other Schemes",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0045:S0",
+            "Page": 2,
+            "Ordinal": 51,
+            "Text": "3.2. Connection Establishment",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0047:S0",
+            "Page": 2,
+            "Ordinal": 53,
+            "Text": "4. Expressing HTTP Semantics in HTTP/3",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0048:S0",
+            "Page": 2,
+            "Ordinal": 54,
+            "Text": "4.1. HTTP Message Framing",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C320",
+      "Identity": "L0047:S0:0-38",
+      "candidateText": "4. Expressing HTTP Semantics in HTTP/3",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 18,
+          "Identity": "L0335:S0:0-38",
+          "Text": "4. Expressing HTTP Semantics in HTTP/3"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R32",
+          "TargetSpanIdentity": "L0335:S0:0-38",
+          "TargetText": "4. Expressing HTTP Semantics in HTTP/3",
+          "TargetPage": 10,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0047:S0",
+        "before": [
+          {
+            "Alias": "L0045:S0",
+            "Page": 2,
+            "Ordinal": 51,
+            "Text": "3.2. Connection Establishment",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0046:S0",
+            "Page": 2,
+            "Ordinal": 52,
+            "Text": "3.3. Connection Reuse",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0048:S0",
+            "Page": 2,
+            "Ordinal": 54,
+            "Text": "4.1. HTTP Message Framing",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0049:S0",
+            "Page": 2,
+            "Ordinal": 55,
+            "Text": "4.1.1. Request Cancellation and Rejection",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C327",
+      "Identity": "L0048:S0:0-25",
+      "candidateText": "4.1. HTTP Message Framing",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 19,
+          "Identity": "L0336:S0:0-25",
+          "Text": "4.1. HTTP Message Framing"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R34",
+          "TargetSpanIdentity": "L0336:S0:0-25",
+          "TargetText": "4.1. HTTP Message Framing",
+          "TargetPage": 10,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0048:S0",
+        "before": [
+          {
+            "Alias": "L0046:S0",
+            "Page": 2,
+            "Ordinal": 52,
+            "Text": "3.3. Connection Reuse",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0047:S0",
+            "Page": 2,
+            "Ordinal": 53,
+            "Text": "4. Expressing HTTP Semantics in HTTP/3",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0049:S0",
+            "Page": 2,
+            "Ordinal": 55,
+            "Text": "4.1.1. Request Cancellation and Rejection",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0050:S0",
+            "Page": 2,
+            "Ordinal": 56,
+            "Text": "4.1.2. Malformed Requests and Responses",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C334",
+      "Identity": "L0049:S0:0-41",
+      "candidateText": "4.1.1. Request Cancellation and Rejection",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 20,
+          "Identity": "L0396:S0:0-41",
+          "Text": "4.1.1. Request Cancellation and Rejection"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R35",
+          "TargetSpanIdentity": "L0396:S0:0-41",
+          "TargetText": "4.1.1. Request Cancellation and Rejection",
+          "TargetPage": 12,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0049:S0",
+        "before": [
+          {
+            "Alias": "L0047:S0",
+            "Page": 2,
+            "Ordinal": 53,
+            "Text": "4. Expressing HTTP Semantics in HTTP/3",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0048:S0",
+            "Page": 2,
+            "Ordinal": 54,
+            "Text": "4.1. HTTP Message Framing",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0050:S0",
+            "Page": 2,
+            "Ordinal": 56,
+            "Text": "4.1.2. Malformed Requests and Responses",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0051:S0",
+            "Page": 2,
+            "Ordinal": 57,
+            "Text": "4.2. HTTP Fields",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C341",
+      "Identity": "L0050:S0:0-39",
+      "candidateText": "4.1.2. Malformed Requests and Responses",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 21,
+          "Identity": "L0428:S0:0-39",
+          "Text": "4.1.2. Malformed Requests and Responses"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R36",
+          "TargetSpanIdentity": "L0428:S0:0-39",
+          "TargetText": "4.1.2. Malformed Requests and Responses",
+          "TargetPage": 13,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0050:S0",
+        "before": [
+          {
+            "Alias": "L0048:S0",
+            "Page": 2,
+            "Ordinal": 54,
+            "Text": "4.1. HTTP Message Framing",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0049:S0",
+            "Page": 2,
+            "Ordinal": 55,
+            "Text": "4.1.1. Request Cancellation and Rejection",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0051:S0",
+            "Page": 2,
+            "Ordinal": 57,
+            "Text": "4.2. HTTP Fields",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0052:S0",
+            "Page": 2,
+            "Ordinal": 58,
+            "Text": "4.2.1. Field Compression",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C348",
+      "Identity": "L0051:S0:0-16",
+      "candidateText": "4.2. HTTP Fields",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 22,
+          "Identity": "L0451:S0:0-16",
+          "Text": "4.2. HTTP Fields"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R37",
+          "TargetSpanIdentity": "L0451:S0:0-16",
+          "TargetText": "4.2. HTTP Fields",
+          "TargetPage": 13,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0051:S0",
+        "before": [
+          {
+            "Alias": "L0049:S0",
+            "Page": 2,
+            "Ordinal": 55,
+            "Text": "4.1.1. Request Cancellation and Rejection",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0050:S0",
+            "Page": 2,
+            "Ordinal": 56,
+            "Text": "4.1.2. Malformed Requests and Responses",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0052:S0",
+            "Page": 2,
+            "Ordinal": 58,
+            "Text": "4.2.1. Field Compression",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0053:S0",
+            "Page": 2,
+            "Ordinal": 59,
+            "Text": "4.2.2. Header Size Constraints",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C355",
+      "Identity": "L0052:S0:0-24",
+      "candidateText": "4.2.1. Field Compression",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 23,
+          "Identity": "L0472:S0:0-24",
+          "Text": "4.2.1. Field Compression"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R38",
+          "TargetSpanIdentity": "L0472:S0:0-24",
+          "TargetText": "4.2.1. Field Compression",
+          "TargetPage": 14,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0052:S0",
+        "before": [
+          {
+            "Alias": "L0050:S0",
+            "Page": 2,
+            "Ordinal": 56,
+            "Text": "4.1.2. Malformed Requests and Responses",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0051:S0",
+            "Page": 2,
+            "Ordinal": 57,
+            "Text": "4.2. HTTP Fields",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0053:S0",
+            "Page": 2,
+            "Ordinal": 59,
+            "Text": "4.2.2. Header Size Constraints",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0054:S0",
+            "Page": 2,
+            "Ordinal": 60,
+            "Text": "4.3. HTTP Control Data",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C362",
+      "Identity": "L0053:S0:0-30",
+      "candidateText": "4.2.2. Header Size Constraints",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 24,
+          "Identity": "L0483:S0:0-30",
+          "Text": "4.2.2. Header Size Constraints"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R39",
+          "TargetSpanIdentity": "L0483:S0:0-30",
+          "TargetText": "4.2.2. Header Size Constraints",
+          "TargetPage": 14,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0053:S0",
+        "before": [
+          {
+            "Alias": "L0051:S0",
+            "Page": 2,
+            "Ordinal": 57,
+            "Text": "4.2. HTTP Fields",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0052:S0",
+            "Page": 2,
+            "Ordinal": 58,
+            "Text": "4.2.1. Field Compression",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0054:S0",
+            "Page": 2,
+            "Ordinal": 60,
+            "Text": "4.3. HTTP Control Data",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0055:S0",
+            "Page": 2,
+            "Ordinal": 61,
+            "Text": "4.3.1. Request Pseudo-Header Fields",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C369",
+      "Identity": "L0054:S0:0-22",
+      "candidateText": "4.3. HTTP Control Data",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 25,
+          "Identity": "L0497:S0:0-22",
+          "Text": "4.3. HTTP Control Data"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R40",
+          "TargetSpanIdentity": "L0497:S0:0-22",
+          "TargetText": "4.3. HTTP Control Data",
+          "TargetPage": 14,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0054:S0",
+        "before": [
+          {
+            "Alias": "L0052:S0",
+            "Page": 2,
+            "Ordinal": 58,
+            "Text": "4.2.1. Field Compression",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0053:S0",
+            "Page": 2,
+            "Ordinal": 59,
+            "Text": "4.2.2. Header Size Constraints",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0055:S0",
+            "Page": 2,
+            "Ordinal": 61,
+            "Text": "4.3.1. Request Pseudo-Header Fields",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0056:S0",
+            "Page": 2,
+            "Ordinal": 62,
+            "Text": "4.3.2. Response Pseudo-Header Fields",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C376",
+      "Identity": "L0055:S0:0-35",
+      "candidateText": "4.3.1. Request Pseudo-Header Fields",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 26,
+          "Identity": "L0514:S0:0-35",
+          "Text": "4.3.1. Request Pseudo-Header Fields"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R41",
+          "TargetSpanIdentity": "L0514:S0:0-35",
+          "TargetText": "4.3.1. Request Pseudo-Header Fields",
+          "TargetPage": 15,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0055:S0",
+        "before": [
+          {
+            "Alias": "L0053:S0",
+            "Page": 2,
+            "Ordinal": 59,
+            "Text": "4.2.2. Header Size Constraints",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0054:S0",
+            "Page": 2,
+            "Ordinal": 60,
+            "Text": "4.3. HTTP Control Data",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0056:S0",
+            "Page": 2,
+            "Ordinal": 62,
+            "Text": "4.3.2. Response Pseudo-Header Fields",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0057:S0",
+            "Page": 2,
+            "Ordinal": 63,
+            "Text": "4.4. The CONNECT Method",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C383",
+      "Identity": "L0056:S0:0-36",
+      "candidateText": "4.3.2. Response Pseudo-Header Fields",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 27,
+          "Identity": "L0551:S0:0-36",
+          "Text": "4.3.2. Response Pseudo-Header Fields"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R42",
+          "TargetSpanIdentity": "L0551:S0:0-36",
+          "TargetText": "4.3.2. Response Pseudo-Header Fields",
+          "TargetPage": 16,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0056:S0",
+        "before": [
+          {
+            "Alias": "L0054:S0",
+            "Page": 2,
+            "Ordinal": 60,
+            "Text": "4.3. HTTP Control Data",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0055:S0",
+            "Page": 2,
+            "Ordinal": 61,
+            "Text": "4.3.1. Request Pseudo-Header Fields",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0057:S0",
+            "Page": 2,
+            "Ordinal": 63,
+            "Text": "4.4. The CONNECT Method",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0058:S0",
+            "Page": 2,
+            "Ordinal": 64,
+            "Text": "4.5. HTTP Upgrade",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C390",
+      "Identity": "L0057:S0:0-23",
+      "candidateText": "4.4. The CONNECT Method",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 28,
+          "Identity": "L0557:S0:0-23",
+          "Text": "4.4. The CONNECT Method"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R43",
+          "TargetSpanIdentity": "L0557:S0:0-23",
+          "TargetText": "4.4. The CONNECT Method",
+          "TargetPage": 16,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0057:S0",
+        "before": [
+          {
+            "Alias": "L0055:S0",
+            "Page": 2,
+            "Ordinal": 61,
+            "Text": "4.3.1. Request Pseudo-Header Fields",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0056:S0",
+            "Page": 2,
+            "Ordinal": 62,
+            "Text": "4.3.2. Response Pseudo-Header Fields",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0058:S0",
+            "Page": 2,
+            "Ordinal": 64,
+            "Text": "4.5. HTTP Upgrade",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0059:S0",
+            "Page": 2,
+            "Ordinal": 65,
+            "Text": "4.6. Server Push",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C397",
+      "Identity": "L0058:S0:0-17",
+      "candidateText": "4.5. HTTP Upgrade",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 29,
+          "Identity": "L0605:S0:0-17",
+          "Text": "4.5. HTTP Upgrade"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R44",
+          "TargetSpanIdentity": "L0605:S0:0-17",
+          "TargetText": "4.5. HTTP Upgrade",
+          "TargetPage": 17,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0058:S0",
+        "before": [
+          {
+            "Alias": "L0056:S0",
+            "Page": 2,
+            "Ordinal": 62,
+            "Text": "4.3.2. Response Pseudo-Header Fields",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0057:S0",
+            "Page": 2,
+            "Ordinal": 63,
+            "Text": "4.4. The CONNECT Method",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0059:S0",
+            "Page": 2,
+            "Ordinal": 65,
+            "Text": "4.6. Server Push",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0060:S0",
+            "Page": 2,
+            "Ordinal": 66,
+            "Text": "5. Connection Closure",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C404",
+      "Identity": "L0059:S0:0-16",
+      "candidateText": "4.6. Server Push",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 30,
+          "Identity": "L0608:S0:0-4|L0608:S1:0-11",
+          "Text": "4.6. Server Push"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R45",
+          "TargetSpanIdentity": "L0608:S0:0-4|L0608:S1:0-11",
+          "TargetText": "4.6. Server Push",
+          "TargetPage": 17,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0059:S0",
+        "before": [
+          {
+            "Alias": "L0057:S0",
+            "Page": 2,
+            "Ordinal": 63,
+            "Text": "4.4. The CONNECT Method",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0058:S0",
+            "Page": 2,
+            "Ordinal": 64,
+            "Text": "4.5. HTTP Upgrade",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0060:S0",
+            "Page": 2,
+            "Ordinal": 66,
+            "Text": "5. Connection Closure",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0061:S0",
+            "Page": 2,
+            "Ordinal": 67,
+            "Text": "5.1. Idle Connections",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C411",
+      "Identity": "L0060:S0:0-21",
+      "candidateText": "5. Connection Closure",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 31,
+          "Identity": "L0674:S0:0-21",
+          "Text": "5. Connection Closure"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R47",
+          "TargetSpanIdentity": "L0674:S0:0-21",
+          "TargetText": "5. Connection Closure",
+          "TargetPage": 19,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0060:S0",
+        "before": [
+          {
+            "Alias": "L0058:S0",
+            "Page": 2,
+            "Ordinal": 64,
+            "Text": "4.5. HTTP Upgrade",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0059:S0",
+            "Page": 2,
+            "Ordinal": 65,
+            "Text": "4.6. Server Push",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0061:S0",
+            "Page": 2,
+            "Ordinal": 67,
+            "Text": "5.1. Idle Connections",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0062:S0",
+            "Page": 2,
+            "Ordinal": 68,
+            "Text": "Bishop Standards Track Page 2",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C418",
+      "Identity": "L0061:S0:0-21",
+      "candidateText": "5.1. Idle Connections",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 2,
+      "overlappingCandidateVariants": 11,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 32,
+          "Identity": "L0677:S0:0-21",
+          "Text": "5.1. Idle Connections"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R48",
+          "TargetSpanIdentity": "L0677:S0:0-21",
+          "TargetText": "5.1. Idle Connections",
+          "TargetPage": 19,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0061:S0",
+        "before": [
+          {
+            "Alias": "L0059:S0",
+            "Page": 2,
+            "Ordinal": 65,
+            "Text": "4.6. Server Push",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0060:S0",
+            "Page": 2,
+            "Ordinal": 66,
+            "Text": "5. Connection Closure",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0062:S0",
+            "Page": 2,
+            "Ordinal": 68,
+            "Text": "Bishop Standards Track Page 2",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0063:S0",
+            "Page": 3,
+            "Ordinal": 69,
+            "Text": "RFC 9114 HTTP/3 June 2022",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C433",
+      "Identity": "L0064:S0:0-24",
+      "candidateText": "5.2. Connection Shutdown",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 11,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 33,
+          "Identity": "L0693:S0:0-24",
+          "Text": "5.2. Connection Shutdown"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R57",
+          "TargetSpanIdentity": "L0693:S0:0-24",
+          "TargetText": "5.2. Connection Shutdown",
+          "TargetPage": 20,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0064:S0",
+        "before": [
+          {
+            "Alias": "L0062:S0",
+            "Page": 2,
+            "Ordinal": 68,
+            "Text": "Bishop Standards Track Page 2",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0063:S0",
+            "Page": 3,
+            "Ordinal": 69,
+            "Text": "RFC 9114 HTTP/3 June 2022",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0065:S0",
+            "Page": 3,
+            "Ordinal": 71,
+            "Text": "5.3. Immediate Application Closure",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0066:S0",
+            "Page": 3,
+            "Ordinal": 72,
+            "Text": "5.4. Transport Closure",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C440",
+      "Identity": "L0065:S0:0-34",
+      "candidateText": "5.3. Immediate Application Closure",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 34,
+          "Identity": "L0760:S0:0-34",
+          "Text": "5.3. Immediate Application Closure"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R58",
+          "TargetSpanIdentity": "L0760:S0:0-34",
+          "TargetText": "5.3. Immediate Application Closure",
+          "TargetPage": 21,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0065:S0",
+        "before": [
+          {
+            "Alias": "L0063:S0",
+            "Page": 3,
+            "Ordinal": 69,
+            "Text": "RFC 9114 HTTP/3 June 2022",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0064:S0",
+            "Page": 3,
+            "Ordinal": 70,
+            "Text": "5.2. Connection Shutdown",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0066:S0",
+            "Page": 3,
+            "Ordinal": 72,
+            "Text": "5.4. Transport Closure",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0067:S0",
+            "Page": 3,
+            "Ordinal": 73,
+            "Text": "6. Stream Mapping and Usage",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C447",
+      "Identity": "L0066:S0:0-22",
+      "candidateText": "5.4. Transport Closure",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 35,
+          "Identity": "L0773:S0:0-22",
+          "Text": "5.4. Transport Closure"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R59",
+          "TargetSpanIdentity": "L0773:S0:0-22",
+          "TargetText": "5.4. Transport Closure",
+          "TargetPage": 22,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0066:S0",
+        "before": [
+          {
+            "Alias": "L0064:S0",
+            "Page": 3,
+            "Ordinal": 70,
+            "Text": "5.2. Connection Shutdown",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0065:S0",
+            "Page": 3,
+            "Ordinal": 71,
+            "Text": "5.3. Immediate Application Closure",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0067:S0",
+            "Page": 3,
+            "Ordinal": 73,
+            "Text": "6. Stream Mapping and Usage",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0068:S0",
+            "Page": 3,
+            "Ordinal": 74,
+            "Text": "6.1. Bidirectional Streams",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C454",
+      "Identity": "L0067:S0:0-27",
+      "candidateText": "6. Stream Mapping and Usage",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 36,
+          "Identity": "L0779:S0:0-27",
+          "Text": "6. Stream Mapping and Usage"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R60",
+          "TargetSpanIdentity": "L0779:S0:0-27",
+          "TargetText": "6. Stream Mapping and Usage",
+          "TargetPage": 22,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0067:S0",
+        "before": [
+          {
+            "Alias": "L0065:S0",
+            "Page": 3,
+            "Ordinal": 71,
+            "Text": "5.3. Immediate Application Closure",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0066:S0",
+            "Page": 3,
+            "Ordinal": 72,
+            "Text": "5.4. Transport Closure",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0068:S0",
+            "Page": 3,
+            "Ordinal": 74,
+            "Text": "6.1. Bidirectional Streams",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0069:S0",
+            "Page": 3,
+            "Ordinal": 75,
+            "Text": "6.2. Unidirectional Streams",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C461",
+      "Identity": "L0068:S0:0-26",
+      "candidateText": "6.1. Bidirectional Streams",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 37,
+          "Identity": "L0793:S0:0-26",
+          "Text": "6.1. Bidirectional Streams"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R61",
+          "TargetSpanIdentity": "L0793:S0:0-26",
+          "TargetText": "6.1. Bidirectional Streams",
+          "TargetPage": 22,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0068:S0",
+        "before": [
+          {
+            "Alias": "L0066:S0",
+            "Page": 3,
+            "Ordinal": 72,
+            "Text": "5.4. Transport Closure",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0067:S0",
+            "Page": 3,
+            "Ordinal": 73,
+            "Text": "6. Stream Mapping and Usage",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0069:S0",
+            "Page": 3,
+            "Ordinal": 75,
+            "Text": "6.2. Unidirectional Streams",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0070:S0",
+            "Page": 3,
+            "Ordinal": 76,
+            "Text": "6.2.1. Control Streams",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C468",
+      "Identity": "L0069:S0:0-27",
+      "candidateText": "6.2. Unidirectional Streams",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 38,
+          "Identity": "L0808:S0:0-27",
+          "Text": "6.2. Unidirectional Streams"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R62",
+          "TargetSpanIdentity": "L0808:S0:0-27",
+          "TargetText": "6.2. Unidirectional Streams",
+          "TargetPage": 23,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0069:S0",
+        "before": [
+          {
+            "Alias": "L0067:S0",
+            "Page": 3,
+            "Ordinal": 73,
+            "Text": "6. Stream Mapping and Usage",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0068:S0",
+            "Page": 3,
+            "Ordinal": 74,
+            "Text": "6.1. Bidirectional Streams",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0070:S0",
+            "Page": 3,
+            "Ordinal": 76,
+            "Text": "6.2.1. Control Streams",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0071:S0",
+            "Page": 3,
+            "Ordinal": 77,
+            "Text": "6.2.2. Push Streams",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C475",
+      "Identity": "L0070:S0:0-22",
+      "candidateText": "6.2.1. Control Streams",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 39,
+          "Identity": "L0852:S0:0-22",
+          "Text": "6.2.1. Control Streams"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R63",
+          "TargetSpanIdentity": "L0852:S0:0-22",
+          "TargetText": "6.2.1. Control Streams",
+          "TargetPage": 24,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0070:S0",
+        "before": [
+          {
+            "Alias": "L0068:S0",
+            "Page": 3,
+            "Ordinal": 74,
+            "Text": "6.1. Bidirectional Streams",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0069:S0",
+            "Page": 3,
+            "Ordinal": 75,
+            "Text": "6.2. Unidirectional Streams",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0071:S0",
+            "Page": 3,
+            "Ordinal": 77,
+            "Text": "6.2.2. Push Streams",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0072:S0",
+            "Page": 3,
+            "Ordinal": 78,
+            "Text": "6.2.3. Reserved Stream Types",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C482",
+      "Identity": "L0071:S0:0-19",
+      "candidateText": "6.2.2. Push Streams",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 40,
+          "Identity": "L0870:S0:0-19",
+          "Text": "6.2.2. Push Streams"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R64",
+          "TargetSpanIdentity": "L0870:S0:0-19",
+          "TargetText": "6.2.2. Push Streams",
+          "TargetPage": 24,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0071:S0",
+        "before": [
+          {
+            "Alias": "L0069:S0",
+            "Page": 3,
+            "Ordinal": 75,
+            "Text": "6.2. Unidirectional Streams",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0070:S0",
+            "Page": 3,
+            "Ordinal": 76,
+            "Text": "6.2.1. Control Streams",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0072:S0",
+            "Page": 3,
+            "Ordinal": 78,
+            "Text": "6.2.3. Reserved Stream Types",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0073:S0",
+            "Page": 3,
+            "Ordinal": 79,
+            "Text": "7. HTTP Framing Layer",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C489",
+      "Identity": "L0072:S0:0-28",
+      "candidateText": "6.2.3. Reserved Stream Types",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 41,
+          "Identity": "L0893:S0:0-28",
+          "Text": "6.2.3. Reserved Stream Types"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R65",
+          "TargetSpanIdentity": "L0893:S0:0-28",
+          "TargetText": "6.2.3. Reserved Stream Types",
+          "TargetPage": 25,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0072:S0",
+        "before": [
+          {
+            "Alias": "L0070:S0",
+            "Page": 3,
+            "Ordinal": 76,
+            "Text": "6.2.1. Control Streams",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0071:S0",
+            "Page": 3,
+            "Ordinal": 77,
+            "Text": "6.2.2. Push Streams",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0073:S0",
+            "Page": 3,
+            "Ordinal": 79,
+            "Text": "7. HTTP Framing Layer",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0074:S0",
+            "Page": 3,
+            "Ordinal": 80,
+            "Text": "7.1. Frame Layout",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C496",
+      "Identity": "L0073:S0:0-21",
+      "candidateText": "7. HTTP Framing Layer",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 42,
+          "Identity": "L0903:S0:0-21",
+          "Text": "7. HTTP Framing Layer"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R66",
+          "TargetSpanIdentity": "L0903:S0:0-21",
+          "TargetText": "7. HTTP Framing Layer",
+          "TargetPage": 25,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0073:S0",
+        "before": [
+          {
+            "Alias": "L0071:S0",
+            "Page": 3,
+            "Ordinal": 77,
+            "Text": "6.2.2. Push Streams",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0072:S0",
+            "Page": 3,
+            "Ordinal": 78,
+            "Text": "6.2.3. Reserved Stream Types",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0074:S0",
+            "Page": 3,
+            "Ordinal": 80,
+            "Text": "7.1. Frame Layout",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0075:S0",
+            "Page": 3,
+            "Ordinal": 81,
+            "Text": "7.2. Frame Deﬁnitions",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C503",
+      "Identity": "L0074:S0:0-17",
+      "candidateText": "7.1. Frame Layout",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 43,
+          "Identity": "L0924:S0:0-17",
+          "Text": "7.1. Frame Layout"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R67",
+          "TargetSpanIdentity": "L0924:S0:0-17",
+          "TargetText": "7.1. Frame Layout",
+          "TargetPage": 26,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0074:S0",
+        "before": [
+          {
+            "Alias": "L0072:S0",
+            "Page": 3,
+            "Ordinal": 78,
+            "Text": "6.2.3. Reserved Stream Types",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0073:S0",
+            "Page": 3,
+            "Ordinal": 79,
+            "Text": "7. HTTP Framing Layer",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0075:S0",
+            "Page": 3,
+            "Ordinal": 81,
+            "Text": "7.2. Frame Deﬁnitions",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0076:S0",
+            "Page": 3,
+            "Ordinal": 82,
+            "Text": "7.2.1. DATA",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C510",
+      "Identity": "L0075:S0:0-21",
+      "candidateText": "7.2. Frame Deﬁnitions",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 44,
+          "Identity": "L0944:S0:0-4|L0944:S1:0-16",
+          "Text": "7.2. Frame Deﬁnitions"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R68",
+          "TargetSpanIdentity": "L0944:S0:0-4|L0944:S1:0-16",
+          "TargetText": "7.2. Frame Deﬁnitions",
+          "TargetPage": 26,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0075:S0",
+        "before": [
+          {
+            "Alias": "L0073:S0",
+            "Page": 3,
+            "Ordinal": 79,
+            "Text": "7. HTTP Framing Layer",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0074:S0",
+            "Page": 3,
+            "Ordinal": 80,
+            "Text": "7.1. Frame Layout",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0076:S0",
+            "Page": 3,
+            "Ordinal": 82,
+            "Text": "7.2.1. DATA",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0077:S0",
+            "Page": 3,
+            "Ordinal": 83,
+            "Text": "7.2.2. HEADERS",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C517",
+      "Identity": "L0076:S0:0-11",
+      "candidateText": "7.2.1. DATA",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 45,
+          "Identity": "L0945:S0:0-11",
+          "Text": "7.2.1. DATA"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R70",
+          "TargetSpanIdentity": "L0945:S0:0-11",
+          "TargetText": "7.2.1. DATA",
+          "TargetPage": 26,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0076:S0",
+        "before": [
+          {
+            "Alias": "L0074:S0",
+            "Page": 3,
+            "Ordinal": 80,
+            "Text": "7.1. Frame Layout",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0075:S0",
+            "Page": 3,
+            "Ordinal": 81,
+            "Text": "7.2. Frame Deﬁnitions",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0077:S0",
+            "Page": 3,
+            "Ordinal": 83,
+            "Text": "7.2.2. HEADERS",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0078:S0",
+            "Page": 3,
+            "Ordinal": 84,
+            "Text": "7.2.3. CANCEL_PUSH",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C524",
+      "Identity": "L0077:S0:0-14",
+      "candidateText": "7.2.2. HEADERS",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 46,
+          "Identity": "L0959:S0:0-14",
+          "Text": "7.2.2. HEADERS"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R74",
+          "TargetSpanIdentity": "L0959:S0:0-14",
+          "TargetText": "7.2.2. HEADERS",
+          "TargetPage": 27,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0077:S0",
+        "before": [
+          {
+            "Alias": "L0075:S0",
+            "Page": 3,
+            "Ordinal": 81,
+            "Text": "7.2. Frame Deﬁnitions",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0076:S0",
+            "Page": 3,
+            "Ordinal": 82,
+            "Text": "7.2.1. DATA",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0078:S0",
+            "Page": 3,
+            "Ordinal": 84,
+            "Text": "7.2.3. CANCEL_PUSH",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0079:S0",
+            "Page": 3,
+            "Ordinal": 85,
+            "Text": "7.2.4. SETTINGS",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C531",
+      "Identity": "L0078:S0:0-18",
+      "candidateText": "7.2.3. CANCEL_PUSH",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 47,
+          "Identity": "L0971:S0:0-18",
+          "Text": "7.2.3. CANCEL_PUSH"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R78",
+          "TargetSpanIdentity": "L0971:S0:0-18",
+          "TargetText": "7.2.3. CANCEL_PUSH",
+          "TargetPage": 27,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0078:S0",
+        "before": [
+          {
+            "Alias": "L0076:S0",
+            "Page": 3,
+            "Ordinal": 82,
+            "Text": "7.2.1. DATA",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0077:S0",
+            "Page": 3,
+            "Ordinal": 83,
+            "Text": "7.2.2. HEADERS",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0079:S0",
+            "Page": 3,
+            "Ordinal": 85,
+            "Text": "7.2.4. SETTINGS",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0080:S0",
+            "Page": 3,
+            "Ordinal": 86,
+            "Text": "7.2.5. PUSH_PROMISE",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C538",
+      "Identity": "L0079:S0:0-15",
+      "candidateText": "7.2.4. SETTINGS",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 48,
+          "Identity": "L1011:S0:0-15",
+          "Text": "7.2.4. SETTINGS"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R81",
+          "TargetSpanIdentity": "L1011:S0:0-15",
+          "TargetText": "7.2.4. SETTINGS",
+          "TargetPage": 28,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0079:S0",
+        "before": [
+          {
+            "Alias": "L0077:S0",
+            "Page": 3,
+            "Ordinal": 83,
+            "Text": "7.2.2. HEADERS",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0078:S0",
+            "Page": 3,
+            "Ordinal": 84,
+            "Text": "7.2.3. CANCEL_PUSH",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0080:S0",
+            "Page": 3,
+            "Ordinal": 86,
+            "Text": "7.2.5. PUSH_PROMISE",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0081:S0",
+            "Page": 3,
+            "Ordinal": 87,
+            "Text": "7.2.6. GOAWAY",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C545",
+      "Identity": "L0080:S0:0-19",
+      "candidateText": "7.2.5. PUSH_PROMISE",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 51,
+          "Identity": "L1105:S0:0-19",
+          "Text": "7.2.5. PUSH_PROMISE"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R85",
+          "TargetSpanIdentity": "L1105:S0:0-19",
+          "TargetText": "7.2.5. PUSH_PROMISE",
+          "TargetPage": 31,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0080:S0",
+        "before": [
+          {
+            "Alias": "L0078:S0",
+            "Page": 3,
+            "Ordinal": 84,
+            "Text": "7.2.3. CANCEL_PUSH",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0079:S0",
+            "Page": 3,
+            "Ordinal": 85,
+            "Text": "7.2.4. SETTINGS",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0081:S0",
+            "Page": 3,
+            "Ordinal": 87,
+            "Text": "7.2.6. GOAWAY",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0082:S0",
+            "Page": 3,
+            "Ordinal": 88,
+            "Text": "7.2.7. MAX_PUSH_ID",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C552",
+      "Identity": "L0081:S0:0-13",
+      "candidateText": "7.2.6. GOAWAY",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 52,
+          "Identity": "L1143:S0:0-13",
+          "Text": "7.2.6. GOAWAY"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R89",
+          "TargetSpanIdentity": "L1143:S0:0-13",
+          "TargetText": "7.2.6. GOAWAY",
+          "TargetPage": 32,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0081:S0",
+        "before": [
+          {
+            "Alias": "L0079:S0",
+            "Page": 3,
+            "Ordinal": 85,
+            "Text": "7.2.4. SETTINGS",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0080:S0",
+            "Page": 3,
+            "Ordinal": 86,
+            "Text": "7.2.5. PUSH_PROMISE",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0082:S0",
+            "Page": 3,
+            "Ordinal": 88,
+            "Text": "7.2.7. MAX_PUSH_ID",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0083:S0",
+            "Page": 3,
+            "Ordinal": 89,
+            "Text": "7.2.8. Reserved Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C559",
+      "Identity": "L0082:S0:0-18",
+      "candidateText": "7.2.7. MAX_PUSH_ID",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 53,
+          "Identity": "L1164:S0:0-18",
+          "Text": "7.2.7. MAX_PUSH_ID"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R93",
+          "TargetSpanIdentity": "L1164:S0:0-18",
+          "TargetText": "7.2.7. MAX_PUSH_ID",
+          "TargetPage": 32,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0082:S0",
+        "before": [
+          {
+            "Alias": "L0080:S0",
+            "Page": 3,
+            "Ordinal": 86,
+            "Text": "7.2.5. PUSH_PROMISE",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0081:S0",
+            "Page": 3,
+            "Ordinal": 87,
+            "Text": "7.2.6. GOAWAY",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0083:S0",
+            "Page": 3,
+            "Ordinal": 89,
+            "Text": "7.2.8. Reserved Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0084:S0",
+            "Page": 3,
+            "Ordinal": 90,
+            "Text": "8. Error Handling",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C566",
+      "Identity": "L0083:S0:0-27",
+      "candidateText": "7.2.8. Reserved Frame Types",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 54,
+          "Identity": "L1189:S0:0-27",
+          "Text": "7.2.8. Reserved Frame Types"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R97",
+          "TargetSpanIdentity": "L1189:S0:0-27",
+          "TargetText": "7.2.8. Reserved Frame Types",
+          "TargetPage": 33,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0083:S0",
+        "before": [
+          {
+            "Alias": "L0081:S0",
+            "Page": 3,
+            "Ordinal": 87,
+            "Text": "7.2.6. GOAWAY",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0082:S0",
+            "Page": 3,
+            "Ordinal": 88,
+            "Text": "7.2.7. MAX_PUSH_ID",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0084:S0",
+            "Page": 3,
+            "Ordinal": 90,
+            "Text": "8. Error Handling",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0085:S0",
+            "Page": 3,
+            "Ordinal": 91,
+            "Text": "8.1. HTTP/3 Error Codes",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C573",
+      "Identity": "L0084:S0:0-17",
+      "candidateText": "8. Error Handling",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 55,
+          "Identity": "L1199:S0:0-17",
+          "Text": "8. Error Handling"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R98",
+          "TargetSpanIdentity": "L1199:S0:0-17",
+          "TargetText": "8. Error Handling",
+          "TargetPage": 33,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0084:S0",
+        "before": [
+          {
+            "Alias": "L0082:S0",
+            "Page": 3,
+            "Ordinal": 88,
+            "Text": "7.2.7. MAX_PUSH_ID",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0083:S0",
+            "Page": 3,
+            "Ordinal": 89,
+            "Text": "7.2.8. Reserved Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0085:S0",
+            "Page": 3,
+            "Ordinal": 91,
+            "Text": "8.1. HTTP/3 Error Codes",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0086:S0",
+            "Page": 3,
+            "Ordinal": 92,
+            "Text": "9. Extensions to HTTP/3",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C580",
+      "Identity": "L0085:S0:0-23",
+      "candidateText": "8.1. HTTP/3 Error Codes",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 56,
+          "Identity": "L1223:S0:0-23",
+          "Text": "8.1. HTTP/3 Error Codes"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R99",
+          "TargetSpanIdentity": "L1223:S0:0-23",
+          "TargetText": "8.1. HTTP/3 Error Codes",
+          "TargetPage": 34,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0085:S0",
+        "before": [
+          {
+            "Alias": "L0083:S0",
+            "Page": 3,
+            "Ordinal": 89,
+            "Text": "7.2.8. Reserved Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0084:S0",
+            "Page": 3,
+            "Ordinal": 90,
+            "Text": "8. Error Handling",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0086:S0",
+            "Page": 3,
+            "Ordinal": 92,
+            "Text": "9. Extensions to HTTP/3",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0087:S0",
+            "Page": 3,
+            "Ordinal": 93,
+            "Text": "10. Security Considerations",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C587",
+      "Identity": "L0086:S0:0-23",
+      "candidateText": "9. Extensions to HTTP/3",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 57,
+          "Identity": "L1265:S0:0-23",
+          "Text": "9. Extensions to HTTP/3"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R100",
+          "TargetSpanIdentity": "L1265:S0:0-23",
+          "TargetText": "9. Extensions to HTTP/3",
+          "TargetPage": 35,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0086:S0",
+        "before": [
+          {
+            "Alias": "L0084:S0",
+            "Page": 3,
+            "Ordinal": 90,
+            "Text": "8. Error Handling",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0085:S0",
+            "Page": 3,
+            "Ordinal": 91,
+            "Text": "8.1. HTTP/3 Error Codes",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0087:S0",
+            "Page": 3,
+            "Ordinal": 93,
+            "Text": "10. Security Considerations",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0088:S0",
+            "Page": 3,
+            "Ordinal": 94,
+            "Text": "10.1. Server Authority",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C594",
+      "Identity": "L0087:S0:0-27",
+      "candidateText": "10. Security Considerations",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 58,
+          "Identity": "L1294:S0:0-27",
+          "Text": "10. Security Considerations"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R101",
+          "TargetSpanIdentity": "L1294:S0:0-27",
+          "TargetText": "10. Security Considerations",
+          "TargetPage": 36,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0087:S0",
+        "before": [
+          {
+            "Alias": "L0085:S0",
+            "Page": 3,
+            "Ordinal": 91,
+            "Text": "8.1. HTTP/3 Error Codes",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0086:S0",
+            "Page": 3,
+            "Ordinal": 92,
+            "Text": "9. Extensions to HTTP/3",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0088:S0",
+            "Page": 3,
+            "Ordinal": 94,
+            "Text": "10.1. Server Authority",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0089:S0",
+            "Page": 3,
+            "Ordinal": 95,
+            "Text": "10.2. Cross-Protocol Attacks",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C601",
+      "Identity": "L0088:S0:0-22",
+      "candidateText": "10.1. Server Authority",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 11,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 59,
+          "Identity": "L1298:S0:0-22",
+          "Text": "10.1. Server Authority"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R102",
+          "TargetSpanIdentity": "L1298:S0:0-22",
+          "TargetText": "10.1. Server Authority",
+          "TargetPage": 36,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0088:S0",
+        "before": [
+          {
+            "Alias": "L0086:S0",
+            "Page": 3,
+            "Ordinal": 92,
+            "Text": "9. Extensions to HTTP/3",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0087:S0",
+            "Page": 3,
+            "Ordinal": 93,
+            "Text": "10. Security Considerations",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0089:S0",
+            "Page": 3,
+            "Ordinal": 95,
+            "Text": "10.2. Cross-Protocol Attacks",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0090:S0",
+            "Page": 3,
+            "Ordinal": 96,
+            "Text": "10.3. Intermediary-Encapsulation Attacks",
+            "selectable": false,
+            "contextOnly": true
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "CandidateId": "C606",
+      "Identity": "L0089:S0:0-28",
+      "candidateText": "10.2. Cross-Protocol Attacks",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 7,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
+      "navigationSignalInFrozenRequest": true,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 60,
+          "Identity": "L1301:S0:0-28",
+          "Text": "10.2. Cross-Protocol Attacks"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R103",
+          "TargetSpanIdentity": "L1301:S0:0-28",
+          "TargetText": "10.2. Cross-Protocol Attacks",
+          "TargetPage": 36,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 8,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0089:S0",
+        "before": [
+          {
+            "Alias": "L0087:S0",
+            "Page": 3,
+            "Ordinal": 93,
+            "Text": "10. Security Considerations",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0088:S0",
+            "Page": 3,
+            "Ordinal": 94,
+            "Text": "10.1. Server Authority",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0090:S0",
+            "Page": 3,
+            "Ordinal": 96,
+            "Text": "10.3. Intermediary-Encapsulation Attacks",
+            "selectable": false,
+            "contextOnly": true
+          },
+          {
+            "Alias": "L0091:S0",
+            "Page": 3,
+            "Ordinal": 97,
+            "Text": "10.4. Cacheability ofPushed Responses",
+            "selectable": false,
+            "contextOnly": true
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C1",
+      "Identity": "L0090:S0:0-40",
+      "candidateText": "10.3. Intermediary-Encapsulation Attacks",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 7,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 61,
+          "Identity": "L1308:S0:0-40",
+          "Text": "10.3. Intermediary-Encapsulation Attacks"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R1",
+          "TargetSpanIdentity": "L1308:S0:0-40",
+          "TargetText": "10.3. Intermediary-Encapsulation Attacks",
+          "TargetPage": 36,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0090:S0",
+        "before": [
+          {
+            "Alias": "L0088:S0",
+            "Page": 3,
+            "Ordinal": 94,
+            "Text": "10.1. Server Authority",
+            "selectable": false,
+            "contextOnly": true
+          },
+          {
+            "Alias": "L0089:S0",
+            "Page": 3,
+            "Ordinal": 95,
+            "Text": "10.2. Cross-Protocol Attacks",
+            "selectable": false,
+            "contextOnly": true
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0091:S0",
+            "Page": 3,
+            "Ordinal": 97,
+            "Text": "10.4. Cacheability ofPushed Responses",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0092:S0",
+            "Page": 3,
+            "Ordinal": 98,
+            "Text": "10.5. Denial-of-Service Considerations",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C100",
+      "Identity": "L0105:S0:0-20",
+      "candidateText": "11.2. New Registries",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 74,
+          "Identity": "L1465:S0:0-5|L1465:S1:0-14",
+          "Text": "11.2. New Registries"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R24",
+          "TargetSpanIdentity": "L1465:S0:0-5|L1465:S1:0-14",
+          "TargetText": "11.2. New Registries",
+          "TargetPage": 41,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0105:S0",
+        "before": [
+          {
+            "Alias": "L0103:S0",
+            "Page": 4,
+            "Ordinal": 109,
+            "Text": "11. IANA Considerations",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0104:S0",
+            "Page": 4,
+            "Ordinal": 110,
+            "Text": "11.1. Registration ofHTTP/3 Identiﬁcation String",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0106:S0",
+            "Page": 4,
+            "Ordinal": 112,
+            "Text": "11.2.1. Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0107:S0",
+            "Page": 4,
+            "Ordinal": 113,
+            "Text": "11.2.2. Settings Parameters",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C107",
+      "Identity": "L0106:S0:0-19",
+      "candidateText": "11.2.1. Frame Types",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 75,
+          "Identity": "L1472:S0:0-19",
+          "Text": "11.2.1. Frame Types"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R26",
+          "TargetSpanIdentity": "L1472:S0:0-19",
+          "TargetText": "11.2.1. Frame Types",
+          "TargetPage": 41,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0106:S0",
+        "before": [
+          {
+            "Alias": "L0104:S0",
+            "Page": 4,
+            "Ordinal": 110,
+            "Text": "11.1. Registration ofHTTP/3 Identiﬁcation String",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0105:S0",
+            "Page": 4,
+            "Ordinal": 111,
+            "Text": "11.2. New Registries",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0107:S0",
+            "Page": 4,
+            "Ordinal": 113,
+            "Text": "11.2.2. Settings Parameters",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0108:S0",
+            "Page": 4,
+            "Ordinal": 114,
+            "Text": "11.2.3. Error Codes",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C114",
+      "Identity": "L0107:S0:0-27",
+      "candidateText": "11.2.2. Settings Parameters",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 76,
+          "Identity": "L1508:S0:0-27",
+          "Text": "11.2.2. Settings Parameters"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R27",
+          "TargetSpanIdentity": "L1508:S0:0-27",
+          "TargetText": "11.2.2. Settings Parameters",
+          "TargetPage": 42,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0107:S0",
+        "before": [
+          {
+            "Alias": "L0105:S0",
+            "Page": 4,
+            "Ordinal": 111,
+            "Text": "11.2. New Registries",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0106:S0",
+            "Page": 4,
+            "Ordinal": 112,
+            "Text": "11.2.1. Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0108:S0",
+            "Page": 4,
+            "Ordinal": 114,
+            "Text": "11.2.3. Error Codes",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0109:S0",
+            "Page": 4,
+            "Ordinal": 115,
+            "Text": "11.2.4. Stream Types",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C121",
+      "Identity": "L0108:S0:0-19",
+      "candidateText": "11.2.3. Error Codes",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 77,
+          "Identity": "L1540:S0:0-19",
+          "Text": "11.2.3. Error Codes"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R28",
+          "TargetSpanIdentity": "L1540:S0:0-19",
+          "TargetText": "11.2.3. Error Codes",
+          "TargetPage": 43,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0108:S0",
+        "before": [
+          {
+            "Alias": "L0106:S0",
+            "Page": 4,
+            "Ordinal": 112,
+            "Text": "11.2.1. Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0107:S0",
+            "Page": 4,
+            "Ordinal": 113,
+            "Text": "11.2.2. Settings Parameters",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0109:S0",
+            "Page": 4,
+            "Ordinal": 115,
+            "Text": "11.2.4. Stream Types",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0110:S0",
+            "Page": 4,
+            "Ordinal": 116,
+            "Text": "12. References",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C128",
+      "Identity": "L0109:S0:0-20",
+      "candidateText": "11.2.4. Stream Types",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 78,
+          "Identity": "L1591:S0:0-20",
+          "Text": "11.2.4. Stream Types"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R29",
+          "TargetSpanIdentity": "L1591:S0:0-20",
+          "TargetText": "11.2.4. Stream Types",
+          "TargetPage": 45,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0109:S0",
+        "before": [
+          {
+            "Alias": "L0107:S0",
+            "Page": 4,
+            "Ordinal": 113,
+            "Text": "11.2.2. Settings Parameters",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0108:S0",
+            "Page": 4,
+            "Ordinal": 114,
+            "Text": "11.2.3. Error Codes",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0110:S0",
+            "Page": 4,
+            "Ordinal": 116,
+            "Text": "12. References",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0111:S0",
+            "Page": 4,
+            "Ordinal": 117,
+            "Text": "12.1. Normative References",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C135",
+      "Identity": "L0110:S0:0-14",
+      "candidateText": "12. References",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 79,
+          "Identity": "L1612:S0:0-14",
+          "Text": "12. References"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R30",
+          "TargetSpanIdentity": "L1612:S0:0-14",
+          "TargetText": "12. References",
+          "TargetPage": 45,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0110:S0",
+        "before": [
+          {
+            "Alias": "L0108:S0",
+            "Page": 4,
+            "Ordinal": 114,
+            "Text": "11.2.3. Error Codes",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0109:S0",
+            "Page": 4,
+            "Ordinal": 115,
+            "Text": "11.2.4. Stream Types",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0111:S0",
+            "Page": 4,
+            "Ordinal": 117,
+            "Text": "12.1. Normative References",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0112:S0",
+            "Page": 4,
+            "Ordinal": 118,
+            "Text": "12.2. Informative References",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C142",
+      "Identity": "L0111:S0:0-26",
+      "candidateText": "12.1. Normative References",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 80,
+          "Identity": "L1613:S0:0-5|L1613:S1:0-20",
+          "Text": "12.1. Normative References"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R31",
+          "TargetSpanIdentity": "L1613:S0:0-5|L1613:S1:0-20",
+          "TargetText": "12.1. Normative References",
+          "TargetPage": 45,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0111:S0",
+        "before": [
+          {
+            "Alias": "L0109:S0",
+            "Page": 4,
+            "Ordinal": 115,
+            "Text": "11.2.4. Stream Types",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0110:S0",
+            "Page": 4,
+            "Ordinal": 116,
+            "Text": "12. References",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0112:S0",
+            "Page": 4,
+            "Ordinal": 118,
+            "Text": "12.2. Informative References",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0113:S0",
+            "Page": 4,
+            "Ordinal": 119,
+            "Text": "Appendix A. Considerations for Transitioning from HTTP/2",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C149",
+      "Identity": "L0112:S0:0-28",
+      "candidateText": "12.2. Informative References",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 81,
+          "Identity": "L1655:S0:0-28",
+          "Text": "12.2. Informative References"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R33",
+          "TargetSpanIdentity": "L1655:S0:0-28",
+          "TargetText": "12.2. Informative References",
+          "TargetPage": 46,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0112:S0",
+        "before": [
+          {
+            "Alias": "L0110:S0",
+            "Page": 4,
+            "Ordinal": 116,
+            "Text": "12. References",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0111:S0",
+            "Page": 4,
+            "Ordinal": 117,
+            "Text": "12.1. Normative References",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0113:S0",
+            "Page": 4,
+            "Ordinal": 119,
+            "Text": "Appendix A. Considerations for Transitioning from HTTP/2",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0114:S0",
+            "Page": 4,
+            "Ordinal": 120,
+            "Text": "A.1. Streams",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C15",
+      "Identity": "L0092:S0:0-38",
+      "candidateText": "10.5. Denial-of-Service Considerations",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 63,
+          "Identity": "L1333:S0:0-38",
+          "Text": "10.5. Denial-of-Service Considerations"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R4",
+          "TargetSpanIdentity": "L1333:S0:0-38",
+          "TargetText": "10.5. Denial-of-Service Considerations",
+          "TargetPage": 37,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0092:S0",
+        "before": [
+          {
+            "Alias": "L0090:S0",
+            "Page": 3,
+            "Ordinal": 96,
+            "Text": "10.3. Intermediary-Encapsulation Attacks",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0091:S0",
+            "Page": 3,
+            "Ordinal": 97,
+            "Text": "10.4. Cacheability ofPushed Responses",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0093:S0",
+            "Page": 3,
+            "Ordinal": 99,
+            "Text": "10.5.1. Limits on Field Section Size",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0094:S0",
+            "Page": 3,
+            "Ordinal": 100,
+            "Text": "Bishop Standards Track Page 3",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C156",
+      "Identity": "L0113:S0:0-56",
+      "candidateText": "Appendix A. Considerations for Transitioning from HTTP/2",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 82,
+          "Identity": "L1677:S0:0-56",
+          "Text": "Appendix A. Considerations for Transitioning from HTTP/2"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R34",
+          "TargetSpanIdentity": "L1677:S0:0-56",
+          "TargetText": "Appendix A. Considerations for Transitioning from HTTP/2",
+          "TargetPage": 47,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0113:S0",
+        "before": [
+          {
+            "Alias": "L0111:S0",
+            "Page": 4,
+            "Ordinal": 117,
+            "Text": "12.1. Normative References",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0112:S0",
+            "Page": 4,
+            "Ordinal": 118,
+            "Text": "12.2. Informative References",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0114:S0",
+            "Page": 4,
+            "Ordinal": 120,
+            "Text": "A.1. Streams",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0115:S0",
+            "Page": 4,
+            "Ordinal": 121,
+            "Text": "A.2. HTTP Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C163",
+      "Identity": "L0114:S0:0-12",
+      "candidateText": "A.1. Streams",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 83,
+          "Identity": "L1688:S0:0-12",
+          "Text": "A.1. Streams"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R35",
+          "TargetSpanIdentity": "L1688:S0:0-12",
+          "TargetText": "A.1. Streams",
+          "TargetPage": 47,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0114:S0",
+        "before": [
+          {
+            "Alias": "L0112:S0",
+            "Page": 4,
+            "Ordinal": 118,
+            "Text": "12.2. Informative References",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0113:S0",
+            "Page": 4,
+            "Ordinal": 119,
+            "Text": "Appendix A. Considerations for Transitioning from HTTP/2",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0115:S0",
+            "Page": 4,
+            "Ordinal": 121,
+            "Text": "A.2. HTTP Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0116:S0",
+            "Page": 4,
+            "Ordinal": 122,
+            "Text": "A.2.1. Prioritization Diﬀerences",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C170",
+      "Identity": "L0115:S0:0-21",
+      "candidateText": "A.2. HTTP Frame Types",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 84,
+          "Identity": "L1710:S0:0-21",
+          "Text": "A.2. HTTP Frame Types"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R36",
+          "TargetSpanIdentity": "L1710:S0:0-21",
+          "TargetText": "A.2. HTTP Frame Types",
+          "TargetPage": 48,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0115:S0",
+        "before": [
+          {
+            "Alias": "L0113:S0",
+            "Page": 4,
+            "Ordinal": 119,
+            "Text": "Appendix A. Considerations for Transitioning from HTTP/2",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0114:S0",
+            "Page": 4,
+            "Ordinal": 120,
+            "Text": "A.1. Streams",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0116:S0",
+            "Page": 4,
+            "Ordinal": 122,
+            "Text": "A.2.1. Prioritization Diﬀerences",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0117:S0",
+            "Page": 4,
+            "Ordinal": 123,
+            "Text": "A.2.2. Field Compression Diﬀerences",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C177",
+      "Identity": "L0116:S0:0-32",
+      "candidateText": "A.2.1. Prioritization Diﬀerences",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 85,
+          "Identity": "L1729:S0:0-32",
+          "Text": "A.2.1. Prioritization Diﬀerences"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R37",
+          "TargetSpanIdentity": "L1729:S0:0-32",
+          "TargetText": "A.2.1. Prioritization Diﬀerences",
+          "TargetPage": 48,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0116:S0",
+        "before": [
+          {
+            "Alias": "L0114:S0",
+            "Page": 4,
+            "Ordinal": 120,
+            "Text": "A.1. Streams",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0115:S0",
+            "Page": 4,
+            "Ordinal": 121,
+            "Text": "A.2. HTTP Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0117:S0",
+            "Page": 4,
+            "Ordinal": 123,
+            "Text": "A.2.2. Field Compression Diﬀerences",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0118:S0",
+            "Page": 4,
+            "Ordinal": 124,
+            "Text": "A.2.3. Flow-Control Diﬀerences",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C184",
+      "Identity": "L0117:S0:0-35",
+      "candidateText": "A.2.2. Field Compression Diﬀerences",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 86,
+          "Identity": "L1736:S0:0-35",
+          "Text": "A.2.2. Field Compression Diﬀerences"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R38",
+          "TargetSpanIdentity": "L1736:S0:0-35",
+          "TargetText": "A.2.2. Field Compression Diﬀerences",
+          "TargetPage": 49,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0117:S0",
+        "before": [
+          {
+            "Alias": "L0115:S0",
+            "Page": 4,
+            "Ordinal": 121,
+            "Text": "A.2. HTTP Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0116:S0",
+            "Page": 4,
+            "Ordinal": 122,
+            "Text": "A.2.1. Prioritization Diﬀerences",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0118:S0",
+            "Page": 4,
+            "Ordinal": 124,
+            "Text": "A.2.3. Flow-Control Diﬀerences",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0119:S0",
+            "Page": 4,
+            "Ordinal": 125,
+            "Text": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C191",
+      "Identity": "L0118:S0:0-30",
+      "candidateText": "A.2.3. Flow-Control Diﬀerences",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 87,
+          "Identity": "L1745:S0:0-30",
+          "Text": "A.2.3. Flow-Control Diﬀerences"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R39",
+          "TargetSpanIdentity": "L1745:S0:0-30",
+          "TargetText": "A.2.3. Flow-Control Diﬀerences",
+          "TargetPage": 49,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0118:S0",
+        "before": [
+          {
+            "Alias": "L0116:S0",
+            "Page": 4,
+            "Ordinal": 122,
+            "Text": "A.2.1. Prioritization Diﬀerences",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0117:S0",
+            "Page": 4,
+            "Ordinal": 123,
+            "Text": "A.2.2. Field Compression Diﬀerences",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0119:S0",
+            "Page": 4,
+            "Ordinal": 125,
+            "Text": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0120:S0",
+            "Page": 4,
+            "Ordinal": 126,
+            "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C198",
+      "Identity": "L0119:S0:0-45",
+      "candidateText": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 88,
+          "Identity": "L1750:S0:0-45",
+          "Text": "A.2.4. Guidance for New Frame Type Deﬁnitions"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R40",
+          "TargetSpanIdentity": "L1750:S0:0-45",
+          "TargetText": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+          "TargetPage": 49,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0119:S0",
+        "before": [
+          {
+            "Alias": "L0117:S0",
+            "Page": 4,
+            "Ordinal": 123,
+            "Text": "A.2.2. Field Compression Diﬀerences",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0118:S0",
+            "Page": 4,
+            "Ordinal": 124,
+            "Text": "A.2.3. Flow-Control Diﬀerences",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0120:S0",
+            "Page": 4,
+            "Ordinal": 126,
+            "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0121:S0",
+            "Page": 4,
+            "Ordinal": 127,
+            "Text": "A.3. HTTP/2 SETTINGS Parameters",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C205",
+      "Identity": "L0120:S0:0-49",
+      "candidateText": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 89,
+          "Identity": "L1761:S0:0-49",
+          "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R41",
+          "TargetSpanIdentity": "L1761:S0:0-49",
+          "TargetText": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+          "TargetPage": 49,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0120:S0",
+        "before": [
+          {
+            "Alias": "L0118:S0",
+            "Page": 4,
+            "Ordinal": 124,
+            "Text": "A.2.3. Flow-Control Diﬀerences",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0119:S0",
+            "Page": 4,
+            "Ordinal": 125,
+            "Text": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0121:S0",
+            "Page": 4,
+            "Ordinal": 127,
+            "Text": "A.3. HTTP/2 SETTINGS Parameters",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0122:S0",
+            "Page": 4,
+            "Ordinal": 128,
+            "Text": "A.4. HTTP/2 Error Codes",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C212",
+      "Identity": "L0121:S0:0-31",
+      "candidateText": "A.3. HTTP/2 SETTINGS Parameters",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 90,
+          "Identity": "L1787:S0:0-31",
+          "Text": "A.3. HTTP/2 SETTINGS Parameters"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R42",
+          "TargetSpanIdentity": "L1787:S0:0-31",
+          "TargetText": "A.3. HTTP/2 SETTINGS Parameters",
+          "TargetPage": 50,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0121:S0",
+        "before": [
+          {
+            "Alias": "L0119:S0",
+            "Page": 4,
+            "Ordinal": 125,
+            "Text": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0120:S0",
+            "Page": 4,
+            "Ordinal": 126,
+            "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0122:S0",
+            "Page": 4,
+            "Ordinal": 128,
+            "Text": "A.4. HTTP/2 Error Codes",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0123:S0",
+            "Page": 4,
+            "Ordinal": 129,
+            "Text": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C219",
+      "Identity": "L0122:S0:0-23",
+      "candidateText": "A.4. HTTP/2 Error Codes",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 12,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 91,
+          "Identity": "L1827:S0:0-23",
+          "Text": "A.4. HTTP/2 Error Codes"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R43",
+          "TargetSpanIdentity": "L1827:S0:0-23",
+          "TargetText": "A.4. HTTP/2 Error Codes",
+          "TargetPage": 51,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0122:S0",
+        "before": [
+          {
+            "Alias": "L0120:S0",
+            "Page": 4,
+            "Ordinal": 126,
+            "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0121:S0",
+            "Page": 4,
+            "Ordinal": 127,
+            "Text": "A.3. HTTP/2 SETTINGS Parameters",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0123:S0",
+            "Page": 4,
+            "Ordinal": 129,
+            "Text": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0124:S0",
+            "Page": 4,
+            "Ordinal": 130,
+            "Text": "Acknowledgments",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C22",
+      "Identity": "L0093:S0:0-36",
+      "candidateText": "10.5.1. Limits on Field Section Size",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 11,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 64,
+          "Identity": "L1357:S0:0-36",
+          "Text": "10.5.1. Limits on Field Section Size"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R5",
+          "TargetSpanIdentity": "L1357:S0:0-36",
+          "TargetText": "10.5.1. Limits on Field Section Size",
+          "TargetPage": 38,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0093:S0",
+        "before": [
+          {
+            "Alias": "L0091:S0",
+            "Page": 3,
+            "Ordinal": 97,
+            "Text": "10.4. Cacheability ofPushed Responses",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0092:S0",
+            "Page": 3,
+            "Ordinal": 98,
+            "Text": "10.5. Denial-of-Service Considerations",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0094:S0",
+            "Page": 3,
+            "Ordinal": 100,
+            "Text": "Bishop Standards Track Page 3",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0095:S0",
+            "Page": 4,
+            "Ordinal": 101,
+            "Text": "RFC 9114 HTTP/3 June 2022",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C225",
+      "Identity": "L0123:S0:0-47",
+      "candidateText": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 10,
+      "modelDecision": "HEADING",
+      "relationStatus": "NO_CORRESPONDENCE_RELATION",
+      "presentationStatus": "NOT_EVALUABLE_FROM_SINGLE_ISSUED_TARGET",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [],
+      "issuedRelations": [
+        {
+          "Id": "R44",
+          "TargetSpanIdentity": "L1856:S0:0-46",
+          "TargetText": "A.4.1. Mappingbetween HTTP/2 and HTTP/3 Errors",
+          "TargetPage": 52,
+          "MatchTier": "NFKC_WHITESPACE_INSENSITIVE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": false
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0123:S0",
+        "before": [
+          {
+            "Alias": "L0121:S0",
+            "Page": 4,
+            "Ordinal": 127,
+            "Text": "A.3. HTTP/2 SETTINGS Parameters",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0122:S0",
+            "Page": 4,
+            "Ordinal": 128,
+            "Text": "A.4. HTTP/2 Error Codes",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0124:S0",
+            "Page": 4,
+            "Ordinal": 130,
+            "Text": "Acknowledgments",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0125:S0",
+            "Page": 4,
+            "Ordinal": 131,
+            "Text": "Index",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C230",
+      "Identity": "L0124:S0:0-15",
+      "candidateText": "Acknowledgments",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 7,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 93,
+          "Identity": "L1878:S0:0-15",
+          "Text": "Acknowledgments"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R45",
+          "TargetSpanIdentity": "L1878:S0:0-15",
+          "TargetText": "Acknowledgments",
+          "TargetPage": 53,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0124:S0",
+        "before": [
+          {
+            "Alias": "L0122:S0",
+            "Page": 4,
+            "Ordinal": 128,
+            "Text": "A.4. HTTP/2 Error Codes",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0123:S0",
+            "Page": 4,
+            "Ordinal": 129,
+            "Text": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0125:S0",
+            "Page": 4,
+            "Ordinal": 131,
+            "Text": "Index",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0126:S0",
+            "Page": 4,
+            "Ordinal": 132,
+            "Text": "Bishop Standards Track Page 4",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C234",
+      "Identity": "L0125:S0:0-5",
+      "candidateText": "Index",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 7,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 94,
+          "Identity": "L1912:S0:0-5",
+          "Text": "Index"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R46",
+          "TargetSpanIdentity": "L1912:S0:0-5",
+          "TargetText": "Index",
+          "TargetPage": 54,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0125:S0",
+        "before": [
+          {
+            "Alias": "L0123:S0",
+            "Page": 4,
+            "Ordinal": 129,
+            "Text": "A.4.1. Mapping between HTTP/2 and HTTP/3 Errors",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0124:S0",
+            "Page": 4,
+            "Ordinal": 130,
+            "Text": "Acknowledgments",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0126:S0",
+            "Page": 4,
+            "Ordinal": 132,
+            "Text": "Bishop Standards Track Page 4",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0127:S0",
+            "Page": 5,
+            "Ordinal": 133,
+            "Text": "RFC 9114 HTTP/3 June 2022",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C37",
+      "Identity": "L0096:S0:0-22",
+      "candidateText": "10.5.2. CONNECT Issues",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 11,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 65,
+          "Identity": "L1374:S0:0-22",
+          "Text": "10.5.2. CONNECT Issues"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R14",
+          "TargetSpanIdentity": "L1374:S0:0-22",
+          "TargetText": "10.5.2. CONNECT Issues",
+          "TargetPage": 38,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0096:S0",
+        "before": [
+          {
+            "Alias": "L0094:S0",
+            "Page": 3,
+            "Ordinal": 100,
+            "Text": "Bishop Standards Track Page 3",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0095:S0",
+            "Page": 4,
+            "Ordinal": 101,
+            "Text": "RFC 9114 HTTP/3 June 2022",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0097:S0",
+            "Page": 4,
+            "Ordinal": 103,
+            "Text": "10.6. Use of Compression",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0098:S0",
+            "Page": 4,
+            "Ordinal": 104,
+            "Text": "10.7. Padding and Traﬃc Analysis",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C44",
+      "Identity": "L0097:S0:0-24",
+      "candidateText": "10.6. Use of Compression",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 66,
+          "Identity": "L1383:S0:0-24",
+          "Text": "10.6. Use of Compression"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R15",
+          "TargetSpanIdentity": "L1383:S0:0-24",
+          "TargetText": "10.6. Use of Compression",
+          "TargetPage": 38,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0097:S0",
+        "before": [
+          {
+            "Alias": "L0095:S0",
+            "Page": 4,
+            "Ordinal": 101,
+            "Text": "RFC 9114 HTTP/3 June 2022",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0096:S0",
+            "Page": 4,
+            "Ordinal": 102,
+            "Text": "10.5.2. CONNECT Issues",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0098:S0",
+            "Page": 4,
+            "Ordinal": 104,
+            "Text": "10.7. Padding and Traﬃc Analysis",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0099:S0",
+            "Page": 4,
+            "Ordinal": 105,
+            "Text": "10.8. Frame Parsing",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C51",
+      "Identity": "L0098:S0:0-32",
+      "candidateText": "10.7. Padding and Traﬃc Analysis",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 67,
+          "Identity": "L1399:S0:0-32",
+          "Text": "10.7. Padding and Traﬃc Analysis"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R16",
+          "TargetSpanIdentity": "L1399:S0:0-32",
+          "TargetText": "10.7. Padding and Traﬃc Analysis",
+          "TargetPage": 39,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0098:S0",
+        "before": [
+          {
+            "Alias": "L0096:S0",
+            "Page": 4,
+            "Ordinal": 102,
+            "Text": "10.5.2. CONNECT Issues",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0097:S0",
+            "Page": 4,
+            "Ordinal": 103,
+            "Text": "10.6. Use of Compression",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0099:S0",
+            "Page": 4,
+            "Ordinal": 105,
+            "Text": "10.8. Frame Parsing",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0100:S0",
+            "Page": 4,
+            "Ordinal": 106,
+            "Text": "10.9. Early Data",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C58",
+      "Identity": "L0099:S0:0-19",
+      "candidateText": "10.8. Frame Parsing",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 68,
+          "Identity": "L1424:S0:0-19",
+          "Text": "10.8. Frame Parsing"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R17",
+          "TargetSpanIdentity": "L1424:S0:0-19",
+          "TargetText": "10.8. Frame Parsing",
+          "TargetPage": 39,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0099:S0",
+        "before": [
+          {
+            "Alias": "L0097:S0",
+            "Page": 4,
+            "Ordinal": 103,
+            "Text": "10.6. Use of Compression",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0098:S0",
+            "Page": 4,
+            "Ordinal": 104,
+            "Text": "10.7. Padding and Traﬃc Analysis",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0100:S0",
+            "Page": 4,
+            "Ordinal": 106,
+            "Text": "10.9. Early Data",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0101:S0",
+            "Page": 4,
+            "Ordinal": 107,
+            "Text": "10.10. Migration",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C65",
+      "Identity": "L0100:S0:0-16",
+      "candidateText": "10.9. Early Data",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 69,
+          "Identity": "L1431:S0:0-5|L1431:S1:0-10",
+          "Text": "10.9. Early Data"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R18",
+          "TargetSpanIdentity": "L1431:S0:0-5|L1431:S1:0-10",
+          "TargetText": "10.9. Early Data",
+          "TargetPage": 40,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0100:S0",
+        "before": [
+          {
+            "Alias": "L0098:S0",
+            "Page": 4,
+            "Ordinal": 104,
+            "Text": "10.7. Padding and Traﬃc Analysis",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0099:S0",
+            "Page": 4,
+            "Ordinal": 105,
+            "Text": "10.8. Frame Parsing",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0101:S0",
+            "Page": 4,
+            "Ordinal": 107,
+            "Text": "10.10. Migration",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0102:S0",
+            "Page": 4,
+            "Ordinal": 108,
+            "Text": "10.11. Privacy Considerations",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C72",
+      "Identity": "L0101:S0:0-16",
+      "candidateText": "10.10. Migration",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 70,
+          "Identity": "L1436:S0:0-16",
+          "Text": "10.10. Migration"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R20",
+          "TargetSpanIdentity": "L1436:S0:0-16",
+          "TargetText": "10.10. Migration",
+          "TargetPage": 40,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0101:S0",
+        "before": [
+          {
+            "Alias": "L0099:S0",
+            "Page": 4,
+            "Ordinal": 105,
+            "Text": "10.8. Frame Parsing",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0100:S0",
+            "Page": 4,
+            "Ordinal": 106,
+            "Text": "10.9. Early Data",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0102:S0",
+            "Page": 4,
+            "Ordinal": 108,
+            "Text": "10.11. Privacy Considerations",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0103:S0",
+            "Page": 4,
+            "Ordinal": 109,
+            "Text": "11. IANA Considerations",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C79",
+      "Identity": "L0102:S0:0-29",
+      "candidateText": "10.11. Privacy Considerations",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 71,
+          "Identity": "L1442:S0:0-29",
+          "Text": "10.11. Privacy Considerations"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R21",
+          "TargetSpanIdentity": "L1442:S0:0-29",
+          "TargetText": "10.11. Privacy Considerations",
+          "TargetPage": 40,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0102:S0",
+        "before": [
+          {
+            "Alias": "L0100:S0",
+            "Page": 4,
+            "Ordinal": 106,
+            "Text": "10.9. Early Data",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0101:S0",
+            "Page": 4,
+            "Ordinal": 107,
+            "Text": "10.10. Migration",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0103:S0",
+            "Page": 4,
+            "Ordinal": 109,
+            "Text": "11. IANA Considerations",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0104:S0",
+            "Page": 4,
+            "Ordinal": 110,
+            "Text": "11.1. Registration ofHTTP/3 Identiﬁcation String",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C8",
+      "Identity": "L0091:S0:0-37",
+      "candidateText": "10.4. Cacheability ofPushed Responses",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 3,
+      "overlappingCandidateVariants": 11,
+      "modelDecision": "HEADING",
+      "relationStatus": "NO_CORRESPONDENCE_RELATION",
+      "presentationStatus": "NOT_EVALUABLE_FROM_SINGLE_ISSUED_TARGET",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [],
+      "issuedRelations": [
+        {
+          "Id": "R2",
+          "TargetSpanIdentity": "L1320:S0:0-5|L1320:S1:0-32",
+          "TargetText": "10.4. Cacheability of Pushed Responses",
+          "TargetPage": 37,
+          "MatchTier": "NFKC_WHITESPACE_INSENSITIVE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": false
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0091:S0",
+        "before": [
+          {
+            "Alias": "L0089:S0",
+            "Page": 3,
+            "Ordinal": 95,
+            "Text": "10.2. Cross-Protocol Attacks",
+            "selectable": false,
+            "contextOnly": true
+          },
+          {
+            "Alias": "L0090:S0",
+            "Page": 3,
+            "Ordinal": 96,
+            "Text": "10.3. Intermediary-Encapsulation Attacks",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0092:S0",
+            "Page": 3,
+            "Ordinal": 98,
+            "Text": "10.5. Denial-of-Service Considerations",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0093:S0",
+            "Page": 3,
+            "Ordinal": 99,
+            "Text": "10.5.1. Limits on Field Section Size",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C86",
+      "Identity": "L0103:S0:0-23",
+      "candidateText": "11. IANA Considerations",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 72,
+          "Identity": "L1453:S0:0-23",
+          "Text": "11. IANA Considerations"
+        }
+      ],
+      "issuedRelations": [
+        {
+          "Id": "R22",
+          "TargetSpanIdentity": "L1453:S0:0-23",
+          "TargetText": "11. IANA Considerations",
+          "TargetPage": 40,
+          "MatchTier": "NFKC_WHITESPACE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": true
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0103:S0",
+        "before": [
+          {
+            "Alias": "L0101:S0",
+            "Page": 4,
+            "Ordinal": 107,
+            "Text": "10.10. Migration",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0102:S0",
+            "Page": 4,
+            "Ordinal": 108,
+            "Text": "10.11. Privacy Considerations",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0104:S0",
+            "Page": 4,
+            "Ordinal": 110,
+            "Text": "11.1. Registration ofHTTP/3 Identiﬁcation String",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0105:S0",
+            "Page": 4,
+            "Ordinal": 111,
+            "Text": "11.2. New Registries",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    },
+    {
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "CandidateId": "C93",
+      "Identity": "L0104:S0:0-48",
+      "candidateText": "11.1. Registration ofHTTP/3 Identiﬁcation String",
+      "candidateExtentKind": "WHOLE",
+      "candidatePage": 4,
+      "overlappingCandidateVariants": 13,
+      "modelDecision": "HEADING",
+      "relationStatus": "NO_CORRESPONDENCE_RELATION",
+      "presentationStatus": "NOT_EVALUABLE_FROM_SINGLE_ISSUED_TARGET",
+      "navigationSignalInFrozenRequest": false,
+      "goldBodyCounterparts": [],
+      "issuedRelations": [
+        {
+          "Id": "R23",
+          "TargetSpanIdentity": "L1456:S0:0-49",
+          "TargetText": "11.1. Registration of HTTP/3 Identiﬁcation String",
+          "TargetPage": 40,
+          "MatchTier": "NFKC_WHITESPACE_INSENSITIVE",
+          "rankBeforeCap": 1,
+          "targetIsGoldCounterpart": false
+        }
+      ],
+      "truncatedGoldCounterparts": [],
+      "requestContext": {
+        "contextOnlyCount": 16,
+        "tableOfContentsSignal": []
+      },
+      "modelVisibleSourceOrderWindow": {
+        "primaryAlias": "L0104:S0",
+        "before": [
+          {
+            "Alias": "L0102:S0",
+            "Page": 4,
+            "Ordinal": 108,
+            "Text": "10.11. Privacy Considerations",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0103:S0",
+            "Page": 4,
+            "Ordinal": 109,
+            "Text": "11. IANA Considerations",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ],
+        "after": [
+          {
+            "Alias": "L0105:S0",
+            "Page": 4,
+            "Ordinal": 111,
+            "Text": "11.2. New Registries",
+            "selectable": true,
+            "contextOnly": false
+          },
+          {
+            "Alias": "L0106:S0",
+            "Page": 4,
+            "Ordinal": 112,
+            "Text": "11.2.1. Frame Types",
+            "selectable": true,
+            "contextOnly": false
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -5,14 +5,14 @@
     "goldRead": true,
     "goldMutation": "NONE",
     "runtimeChanged": false,
-    "scoreSource": "artifacts/v5-p6s-candidate-authority/p6sd-full31/full31-gold-multiaxis-score.v1.json",
-    "scoreSourceSha256": "b8a067223cd34c4fb9b11612e06fd87935f2533fcd869b2a0df60bf2554b0299",
+    "rawCaptureSource": "artifacts/v5-p6s-candidate-authority/p6sd-full31/result.v1.json",
+    "rawCaptureSourceSha256": "89e18433bcc50746e92410f35437798a1c5dc79aaa2513edc5335dd86bdbaa4f",
     "associationSource": "artifacts/v5-p6s-candidate-authority/p6sf-global-association-score/full31-global-association-and-exact-score.v1.json",
     "associationSourceSha256": "0fbc1c0354f4a3de4dedefd8391b4b8ed0c293fc63ea94f1b08803364dbd3749"
   },
   "authority": {
     "metric": "P6S-F strict exact pre-projection: identity equality only; association is diagnostic",
-    "sourceReview": "SRC-089/SRC-095 reviewed pattern where present; absent review item is classified only as unreviewed non-heading, never Gold mutation",
+    "sourceReview": "Source review authority is verdict plus pattern. A pattern never supplies truth without verdict=NON_HEADING; absent review remains UNREVIEWED_STRICT_FP and never mutates Gold.",
     "scope": "diagnosis only; no prompt, candidate, relation, Gold, parser, binder or runtime change"
   },
   "totals": {
@@ -31,18 +31,10 @@
   },
   "falsePositiveFamilies": [
     {
-      "family": "TOC_NAVIGATION_NONHEADING",
+      "family": "REVIEWED_TOC_NAVIGATION_NONHEADING",
       "count": 87,
       "byDocument": {
         "SRC-095": 87
-      }
-    },
-    {
-      "family": "BODY_OR_UNREVIEWED_NONHEADING",
-      "count": 15,
-      "byDocument": {
-        "SRC-089": 4,
-        "SRC-095": 11
       }
     },
     {
@@ -51,6 +43,20 @@
       "byDocument": {
         "SRC-089": 10,
         "SRC-095": 2
+      }
+    },
+    {
+      "family": "UNREVIEWED_STRICT_FP",
+      "count": 11,
+      "byDocument": {
+        "SRC-095": 11
+      }
+    },
+    {
+      "family": "REVIEWED_OTHER_NONHEADING",
+      "count": 4,
+      "byDocument": {
+        "SRC-089": 4
       }
     }
   ],
@@ -83,6 +89,7 @@
   "falsePositives": [
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0002:S0:0-14|L0002:S1:0-33",
       "CandidateId": "C18",
       "parts": [
@@ -97,16 +104,23 @@
           "End": 33
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [
-        "ISSUER_HEADER",
-        "NATIONAL_HEADER"
+      "reason": "REVIEWED_OTHER_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "ISSUER_HEADER"
+        },
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "NATIONAL_HEADER"
+        }
       ],
       "primaryAlias": "L0002:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0002:S1:0-33|L0003:S0:0-7|L0003:S1:0-34",
       "CandidateId": "C25",
       "parts": [
@@ -126,16 +140,23 @@
           "End": 34
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [
-        "NATIONAL_HEADER",
-        "RULE_LINE"
+      "reason": "REVIEWED_OTHER_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "NATIONAL_HEADER"
+        },
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "RULE_LINE"
+        }
       ],
       "primaryAlias": "L0002:S1",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0004:S0:0-15|L0005:S0:0-43|L0006:S0:0-6",
       "CandidateId": "C40",
       "parts": [
@@ -156,10 +177,19 @@
         }
       ],
       "reason": "ASSOCIATED_EXTENT_VARIANT",
-      "reviewPatterns": [
-        "RULE_LINE",
-        "NUMBER_AND_DATE",
-        "S089_Q1_DECREE_TITLE_BLOCK"
+      "reviewFacts": [
+        {
+          "Verdict": "HEADING",
+          "Pattern": "S089_Q1_DECREE_TITLE_BLOCK"
+        },
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "NUMBER_AND_DATE"
+        },
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "RULE_LINE"
+        }
       ],
       "primaryAlias": "L0004:S0",
       "overlappingGold": [
@@ -168,6 +198,7 @@
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0106:S0:0-80",
       "CandidateId": "C79",
       "parts": [
@@ -178,8 +209,11 @@
         }
       ],
       "reason": "ASSOCIATED_EXTENT_VARIANT",
-      "reviewPatterns": [
-        "ARTICLE_HEADING"
+      "reviewFacts": [
+        {
+          "Verdict": "HEADING",
+          "Pattern": "ARTICLE_HEADING"
+        }
       ],
       "primaryAlias": "L0106:S0",
       "overlappingGold": [
@@ -188,6 +222,7 @@
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0126:S0:0-86",
       "CandidateId": "C203",
       "parts": [
@@ -198,8 +233,11 @@
         }
       ],
       "reason": "ASSOCIATED_EXTENT_VARIANT",
-      "reviewPatterns": [
-        "ARTICLE_HEADING"
+      "reviewFacts": [
+        {
+          "Verdict": "HEADING",
+          "Pattern": "ARTICLE_HEADING"
+        }
       ],
       "primaryAlias": "L0126:S0",
       "overlappingGold": [
@@ -208,6 +246,7 @@
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0160:S0:0-10|L0161:S0:0-10|L0162:S0:0-86",
       "CandidateId": "C434",
       "parts": [
@@ -228,9 +267,15 @@
         }
       ],
       "reason": "ASSOCIATED_EXTENT_VARIANT",
-      "reviewPatterns": [
-        "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
-        "ARTICLE_HEADING"
+      "reviewFacts": [
+        {
+          "Verdict": "HEADING",
+          "Pattern": "ARTICLE_HEADING"
+        },
+        {
+          "Verdict": "HEADING",
+          "Pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE"
+        }
       ],
       "primaryAlias": "L0160:S0",
       "overlappingGold": [
@@ -240,6 +285,7 @@
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0174:S0:0-89",
       "CandidateId": "C515",
       "parts": [
@@ -250,8 +296,11 @@
         }
       ],
       "reason": "ASSOCIATED_EXTENT_VARIANT",
-      "reviewPatterns": [
-        "ARTICLE_HEADING"
+      "reviewFacts": [
+        {
+          "Verdict": "HEADING",
+          "Pattern": "ARTICLE_HEADING"
+        }
       ],
       "primaryAlias": "L0174:S0",
       "overlappingGold": [
@@ -260,6 +309,7 @@
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
       "Identity": "L0426:S0:0-96",
       "CandidateId": "C289",
       "parts": [
@@ -270,8 +320,11 @@
         }
       ],
       "reason": "ASSOCIATED_EXTENT_VARIANT",
-      "reviewPatterns": [
-        "ARTICLE_HEADING"
+      "reviewFacts": [
+        {
+          "Verdict": "HEADING",
+          "Pattern": "ARTICLE_HEADING"
+        }
       ],
       "primaryAlias": "L0426:S0",
       "overlappingGold": [
@@ -280,6 +333,7 @@
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
       "Identity": "L0454:S0:0-45|L0455:S0:0-90|L0456:S0:0-27",
       "CandidateId": "C486",
       "parts": [
@@ -300,8 +354,11 @@
         }
       ],
       "reason": "ASSOCIATED_EXTENT_VARIANT",
-      "reviewPatterns": [
-        "ARTICLE_HEADING"
+      "reviewFacts": [
+        {
+          "Verdict": "HEADING",
+          "Pattern": "ARTICLE_HEADING"
+        }
       ],
       "primaryAlias": "L0454:S0",
       "overlappingGold": [
@@ -310,6 +367,7 @@
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
       "Identity": "L0499:S0:0-92",
       "CandidateId": "C138",
       "parts": [
@@ -320,8 +378,11 @@
         }
       ],
       "reason": "ASSOCIATED_EXTENT_VARIANT",
-      "reviewPatterns": [
-        "ARTICLE_HEADING"
+      "reviewFacts": [
+        {
+          "Verdict": "HEADING",
+          "Pattern": "ARTICLE_HEADING"
+        }
       ],
       "primaryAlias": "L0499:S0",
       "overlappingGold": [
@@ -330,6 +391,7 @@
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
       "Identity": "L0522:S0:0-92",
       "CandidateId": "C298",
       "parts": [
@@ -340,8 +402,11 @@
         }
       ],
       "reason": "ASSOCIATED_EXTENT_VARIANT",
-      "reviewPatterns": [
-        "ARTICLE_HEADING"
+      "reviewFacts": [
+        {
+          "Verdict": "HEADING",
+          "Pattern": "ARTICLE_HEADING"
+        }
       ],
       "primaryAlias": "L0522:S0",
       "overlappingGold": [
@@ -350,6 +415,7 @@
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
       "Identity": "L0555:S0:0-93",
       "CandidateId": "C510",
       "parts": [
@@ -360,8 +426,11 @@
         }
       ],
       "reason": "ASSOCIATED_EXTENT_VARIANT",
-      "reviewPatterns": [
-        "ARTICLE_HEADING"
+      "reviewFacts": [
+        {
+          "Verdict": "HEADING",
+          "Pattern": "ARTICLE_HEADING"
+        }
       ],
       "primaryAlias": "L0555:S0",
       "overlappingGold": [
@@ -370,6 +439,7 @@
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
       "Identity": "L0576:S0:0-27",
       "CandidateId": "C15",
       "parts": [
@@ -379,15 +449,19 @@
           "End": 27
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [
-        "SIGNATURE_BLOCK"
+      "reason": "REVIEWED_OTHER_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "SIGNATURE_BLOCK"
+        }
       ],
       "primaryAlias": "L0576:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
       "Identity": "L0576:S0:0-27|L0577:S0:0-14|L0578:S0:0-15",
       "CandidateId": "C20",
       "parts": [
@@ -407,15 +481,19 @@
           "End": 15
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [
-        "SIGNATURE_BLOCK"
+      "reason": "REVIEWED_OTHER_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "SIGNATURE_BLOCK"
+        }
       ],
       "primaryAlias": "L0576:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0007:S0:0-8|L0008:S0:0-6|L0009:S0:0-8",
       "CandidateId": "C61",
       "parts": [
@@ -436,9 +514,19 @@
         }
       ],
       "reason": "ASSOCIATED_EXTENT_VARIANT",
-      "reviewPatterns": [
-        "S095_Q1_RFC_TITLE_BLOCK",
-        "MATTER_SECTION"
+      "reviewFacts": [
+        {
+          "Verdict": "HEADING",
+          "Pattern": "MATTER_SECTION"
+        },
+        {
+          "Verdict": "HEADING",
+          "Pattern": "S095_Q1_RFC_TITLE_BLOCK"
+        },
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "S095_Q1_RFC_TITLE_BLOCK"
+        }
       ],
       "primaryAlias": "L0007:S0",
       "overlappingGold": [
@@ -448,6 +536,7 @@
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0033:S0:0-25|L0034:S0:0-17",
       "CandidateId": "C225",
       "parts": [
@@ -463,8 +552,11 @@
         }
       ],
       "reason": "ASSOCIATED_EXTENT_VARIANT",
-      "reviewPatterns": [
-        "TOC_OPENER"
+      "reviewFacts": [
+        {
+          "Verdict": "HEADING",
+          "Pattern": "TOC_OPENER"
+        }
       ],
       "primaryAlias": "L0033:S0",
       "overlappingGold": [
@@ -473,6 +565,7 @@
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0035:S0:0-15",
       "CandidateId": "C236",
       "parts": [
@@ -482,15 +575,19 @@
           "End": 15
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0035:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0036:S0:0-26",
       "CandidateId": "C243",
       "parts": [
@@ -500,15 +597,19 @@
           "End": 26
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0036:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0037:S0:0-23",
       "CandidateId": "C250",
       "parts": [
@@ -518,15 +619,19 @@
           "End": 23
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0037:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0038:S0:0-27",
       "CandidateId": "C257",
       "parts": [
@@ -536,15 +641,19 @@
           "End": 27
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0038:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0039:S0:0-26",
       "CandidateId": "C264",
       "parts": [
@@ -554,15 +663,19 @@
           "End": 26
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0039:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0040:S0:0-32",
       "CandidateId": "C271",
       "parts": [
@@ -572,15 +685,19 @@
           "End": 32
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0040:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0041:S0:0-34",
       "CandidateId": "C278",
       "parts": [
@@ -590,15 +707,19 @@
           "End": 34
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0041:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0042:S0:0-35",
       "CandidateId": "C285",
       "parts": [
@@ -608,15 +729,19 @@
           "End": 35
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0042:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0043:S0:0-32",
       "CandidateId": "C292",
       "parts": [
@@ -626,15 +751,19 @@
           "End": 32
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0043:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0044:S0:0-20",
       "CandidateId": "C299",
       "parts": [
@@ -644,15 +773,19 @@
           "End": 20
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0044:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0045:S0:0-29",
       "CandidateId": "C306",
       "parts": [
@@ -662,15 +795,19 @@
           "End": 29
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0045:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0046:S0:0-21",
       "CandidateId": "C313",
       "parts": [
@@ -680,15 +817,19 @@
           "End": 21
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0046:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0047:S0:0-38",
       "CandidateId": "C320",
       "parts": [
@@ -698,15 +839,19 @@
           "End": 38
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0047:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0048:S0:0-25",
       "CandidateId": "C327",
       "parts": [
@@ -716,15 +861,19 @@
           "End": 25
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0048:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0049:S0:0-41",
       "CandidateId": "C334",
       "parts": [
@@ -734,15 +883,19 @@
           "End": 41
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0049:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0050:S0:0-39",
       "CandidateId": "C341",
       "parts": [
@@ -752,15 +905,19 @@
           "End": 39
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0050:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0051:S0:0-16",
       "CandidateId": "C348",
       "parts": [
@@ -770,15 +927,19 @@
           "End": 16
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0051:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0052:S0:0-24",
       "CandidateId": "C355",
       "parts": [
@@ -788,15 +949,19 @@
           "End": 24
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0052:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0053:S0:0-30",
       "CandidateId": "C362",
       "parts": [
@@ -806,15 +971,19 @@
           "End": 30
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0053:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0054:S0:0-22",
       "CandidateId": "C369",
       "parts": [
@@ -824,15 +993,19 @@
           "End": 22
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0054:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0055:S0:0-35",
       "CandidateId": "C376",
       "parts": [
@@ -842,15 +1015,19 @@
           "End": 35
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0055:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0056:S0:0-36",
       "CandidateId": "C383",
       "parts": [
@@ -860,15 +1037,19 @@
           "End": 36
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0056:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0057:S0:0-23",
       "CandidateId": "C390",
       "parts": [
@@ -878,15 +1059,19 @@
           "End": 23
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0057:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0058:S0:0-17",
       "CandidateId": "C397",
       "parts": [
@@ -896,15 +1081,19 @@
           "End": 17
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0058:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0059:S0:0-16",
       "CandidateId": "C404",
       "parts": [
@@ -914,15 +1103,19 @@
           "End": 16
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0059:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0060:S0:0-21",
       "CandidateId": "C411",
       "parts": [
@@ -932,15 +1125,19 @@
           "End": 21
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0060:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0061:S0:0-21",
       "CandidateId": "C418",
       "parts": [
@@ -950,15 +1147,19 @@
           "End": 21
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0061:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0064:S0:0-24",
       "CandidateId": "C433",
       "parts": [
@@ -968,15 +1169,19 @@
           "End": 24
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0064:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0065:S0:0-34",
       "CandidateId": "C440",
       "parts": [
@@ -986,15 +1191,19 @@
           "End": 34
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0065:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0066:S0:0-22",
       "CandidateId": "C447",
       "parts": [
@@ -1004,15 +1213,19 @@
           "End": 22
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0066:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0067:S0:0-27",
       "CandidateId": "C454",
       "parts": [
@@ -1022,15 +1235,19 @@
           "End": 27
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0067:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0068:S0:0-26",
       "CandidateId": "C461",
       "parts": [
@@ -1040,15 +1257,19 @@
           "End": 26
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0068:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0069:S0:0-27",
       "CandidateId": "C468",
       "parts": [
@@ -1058,15 +1279,19 @@
           "End": 27
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0069:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0070:S0:0-22",
       "CandidateId": "C475",
       "parts": [
@@ -1076,15 +1301,19 @@
           "End": 22
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0070:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0071:S0:0-19",
       "CandidateId": "C482",
       "parts": [
@@ -1094,15 +1323,19 @@
           "End": 19
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0071:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0072:S0:0-28",
       "CandidateId": "C489",
       "parts": [
@@ -1112,15 +1345,19 @@
           "End": 28
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0072:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0073:S0:0-21",
       "CandidateId": "C496",
       "parts": [
@@ -1130,15 +1367,19 @@
           "End": 21
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0073:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0074:S0:0-17",
       "CandidateId": "C503",
       "parts": [
@@ -1148,15 +1389,19 @@
           "End": 17
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0074:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0075:S0:0-21",
       "CandidateId": "C510",
       "parts": [
@@ -1166,15 +1411,19 @@
           "End": 21
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0075:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0076:S0:0-11",
       "CandidateId": "C517",
       "parts": [
@@ -1184,15 +1433,19 @@
           "End": 11
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0076:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0077:S0:0-14",
       "CandidateId": "C524",
       "parts": [
@@ -1202,15 +1455,19 @@
           "End": 14
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0077:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0078:S0:0-18",
       "CandidateId": "C531",
       "parts": [
@@ -1220,15 +1477,19 @@
           "End": 18
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0078:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0079:S0:0-15",
       "CandidateId": "C538",
       "parts": [
@@ -1238,15 +1499,19 @@
           "End": 15
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0079:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0080:S0:0-19",
       "CandidateId": "C545",
       "parts": [
@@ -1256,15 +1521,19 @@
           "End": 19
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0080:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0081:S0:0-13",
       "CandidateId": "C552",
       "parts": [
@@ -1274,15 +1543,19 @@
           "End": 13
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0081:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0082:S0:0-18",
       "CandidateId": "C559",
       "parts": [
@@ -1292,15 +1565,19 @@
           "End": 18
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0082:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0083:S0:0-27",
       "CandidateId": "C566",
       "parts": [
@@ -1310,15 +1587,19 @@
           "End": 27
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0083:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0084:S0:0-17",
       "CandidateId": "C573",
       "parts": [
@@ -1328,15 +1609,19 @@
           "End": 17
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0084:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0085:S0:0-23",
       "CandidateId": "C580",
       "parts": [
@@ -1346,15 +1631,19 @@
           "End": 23
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0085:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0086:S0:0-23",
       "CandidateId": "C587",
       "parts": [
@@ -1364,15 +1653,19 @@
           "End": 23
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0086:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0087:S0:0-27",
       "CandidateId": "C594",
       "parts": [
@@ -1382,15 +1675,19 @@
           "End": 27
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0087:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0088:S0:0-22",
       "CandidateId": "C601",
       "parts": [
@@ -1400,15 +1697,19 @@
           "End": 22
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0088:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
       "Identity": "L0089:S0:0-28",
       "CandidateId": "C606",
       "parts": [
@@ -1418,15 +1719,19 @@
           "End": 28
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0089:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0090:S0:0-40",
       "CandidateId": "C1",
       "parts": [
@@ -1436,15 +1741,19 @@
           "End": 40
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0090:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0091:S0:0-37",
       "CandidateId": "C8",
       "parts": [
@@ -1454,15 +1763,19 @@
           "End": 37
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0091:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0092:S0:0-38",
       "CandidateId": "C15",
       "parts": [
@@ -1472,15 +1785,19 @@
           "End": 38
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0092:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0093:S0:0-36",
       "CandidateId": "C22",
       "parts": [
@@ -1490,15 +1807,19 @@
           "End": 36
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0093:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0096:S0:0-22",
       "CandidateId": "C37",
       "parts": [
@@ -1508,15 +1829,19 @@
           "End": 22
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0096:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0097:S0:0-24",
       "CandidateId": "C44",
       "parts": [
@@ -1526,15 +1851,19 @@
           "End": 24
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0097:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0098:S0:0-32",
       "CandidateId": "C51",
       "parts": [
@@ -1544,15 +1873,19 @@
           "End": 32
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0098:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0099:S0:0-19",
       "CandidateId": "C58",
       "parts": [
@@ -1562,15 +1895,19 @@
           "End": 19
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0099:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0100:S0:0-16",
       "CandidateId": "C65",
       "parts": [
@@ -1580,15 +1917,19 @@
           "End": 16
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0100:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0101:S0:0-16",
       "CandidateId": "C72",
       "parts": [
@@ -1598,15 +1939,19 @@
           "End": 16
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0101:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0102:S0:0-29",
       "CandidateId": "C79",
       "parts": [
@@ -1616,15 +1961,19 @@
           "End": 29
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0102:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0103:S0:0-23",
       "CandidateId": "C86",
       "parts": [
@@ -1634,15 +1983,19 @@
           "End": 23
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0103:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0104:S0:0-48",
       "CandidateId": "C93",
       "parts": [
@@ -1652,15 +2005,19 @@
           "End": 48
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0104:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0105:S0:0-20",
       "CandidateId": "C100",
       "parts": [
@@ -1670,15 +2027,19 @@
           "End": 20
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0105:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0106:S0:0-19",
       "CandidateId": "C107",
       "parts": [
@@ -1688,15 +2049,19 @@
           "End": 19
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0106:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0107:S0:0-27",
       "CandidateId": "C114",
       "parts": [
@@ -1706,15 +2071,19 @@
           "End": 27
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0107:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0108:S0:0-19",
       "CandidateId": "C121",
       "parts": [
@@ -1724,15 +2093,19 @@
           "End": 19
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0108:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0109:S0:0-20",
       "CandidateId": "C128",
       "parts": [
@@ -1742,15 +2115,19 @@
           "End": 20
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0109:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0110:S0:0-14",
       "CandidateId": "C135",
       "parts": [
@@ -1760,15 +2137,19 @@
           "End": 14
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0110:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0111:S0:0-26",
       "CandidateId": "C142",
       "parts": [
@@ -1778,15 +2159,19 @@
           "End": 26
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0111:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0112:S0:0-28",
       "CandidateId": "C149",
       "parts": [
@@ -1796,15 +2181,19 @@
           "End": 28
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0112:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0113:S0:0-56",
       "CandidateId": "C156",
       "parts": [
@@ -1814,15 +2203,19 @@
           "End": 56
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0113:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0114:S0:0-12",
       "CandidateId": "C163",
       "parts": [
@@ -1832,15 +2225,19 @@
           "End": 12
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0114:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0115:S0:0-21",
       "CandidateId": "C170",
       "parts": [
@@ -1850,15 +2247,19 @@
           "End": 21
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0115:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0116:S0:0-32",
       "CandidateId": "C177",
       "parts": [
@@ -1868,15 +2269,19 @@
           "End": 32
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0116:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0117:S0:0-35",
       "CandidateId": "C184",
       "parts": [
@@ -1886,15 +2291,19 @@
           "End": 35
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0117:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0118:S0:0-30",
       "CandidateId": "C191",
       "parts": [
@@ -1904,15 +2313,19 @@
           "End": 30
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0118:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0119:S0:0-45",
       "CandidateId": "C198",
       "parts": [
@@ -1922,15 +2335,19 @@
           "End": 45
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0119:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0120:S0:0-49",
       "CandidateId": "C205",
       "parts": [
@@ -1940,15 +2357,19 @@
           "End": 49
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0120:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0121:S0:0-31",
       "CandidateId": "C212",
       "parts": [
@@ -1958,15 +2379,19 @@
           "End": 31
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0121:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0122:S0:0-23",
       "CandidateId": "C219",
       "parts": [
@@ -1976,15 +2401,19 @@
           "End": 23
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0122:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0123:S0:0-47",
       "CandidateId": "C225",
       "parts": [
@@ -1994,15 +2423,19 @@
           "End": 47
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0123:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0124:S0:0-15",
       "CandidateId": "C230",
       "parts": [
@@ -2012,15 +2445,19 @@
           "End": 15
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0124:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
       "Identity": "L0125:S0:0-5",
       "CandidateId": "C234",
       "parts": [
@@ -2030,15 +2467,19 @@
           "End": 5
         }
       ],
-      "reason": "TOC_NAVIGATION_NONHEADING",
-      "reviewPatterns": [
-        "CONTENTS_ENTRY"
+      "reason": "REVIEWED_TOC_NAVIGATION_NONHEADING",
+      "reviewFacts": [
+        {
+          "Verdict": "NON_HEADING",
+          "Pattern": "CONTENTS_ENTRY"
+        }
       ],
       "primaryAlias": "L0125:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
       "Identity": "L0565:S0:0-49",
       "CandidateId": "C18",
       "parts": [
@@ -2048,13 +2489,14 @@
           "End": 49
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [],
+      "reason": "UNREVIEWED_STRICT_FP",
+      "reviewFacts": [],
       "primaryAlias": "L0565:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
       "Identity": "L1535:S0:0-31",
       "CandidateId": "C93",
       "parts": [
@@ -2064,13 +2506,14 @@
           "End": 31
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [],
+      "reason": "UNREVIEWED_STRICT_FP",
+      "reviewFacts": [],
       "primaryAlias": "L1535:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
       "Identity": "L1990:S0:0-20",
       "CandidateId": "C13",
       "parts": [
@@ -2080,13 +2523,14 @@
           "End": 20
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [],
+      "reason": "UNREVIEWED_STRICT_FP",
+      "reviewFacts": [],
       "primaryAlias": "L1990:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
       "Identity": "L1994:S0:0-21",
       "CandidateId": "C37",
       "parts": [
@@ -2096,13 +2540,14 @@
           "End": 21
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [],
+      "reason": "UNREVIEWED_STRICT_FP",
+      "reviewFacts": [],
       "primaryAlias": "L1994:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
       "Identity": "L1997:S0:0-19",
       "CandidateId": "C56",
       "parts": [
@@ -2112,13 +2557,14 @@
           "End": 19
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [],
+      "reason": "UNREVIEWED_STRICT_FP",
+      "reviewFacts": [],
       "primaryAlias": "L1997:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
       "Identity": "L2006:S0:0-7",
       "CandidateId": "C115",
       "parts": [
@@ -2128,13 +2574,14 @@
           "End": 7
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [],
+      "reason": "UNREVIEWED_STRICT_FP",
+      "reviewFacts": [],
       "primaryAlias": "L2006:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
       "Identity": "L2019:S0:0-11",
       "CandidateId": "C194",
       "parts": [
@@ -2144,13 +2591,14 @@
           "End": 11
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [],
+      "reason": "UNREVIEWED_STRICT_FP",
+      "reviewFacts": [],
       "primaryAlias": "L2019:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
       "Identity": "L2035:S0:0-11",
       "CandidateId": "C300",
       "parts": [
@@ -2160,13 +2608,14 @@
           "End": 11
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [],
+      "reason": "UNREVIEWED_STRICT_FP",
+      "reviewFacts": [],
       "primaryAlias": "L2035:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
       "Identity": "L2046:S0:0-12",
       "CandidateId": "C369",
       "parts": [
@@ -2176,13 +2625,14 @@
           "End": 12
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [],
+      "reason": "UNREVIEWED_STRICT_FP",
+      "reviewFacts": [],
       "primaryAlias": "L2046:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
       "Identity": "L2057:S0:0-14",
       "CandidateId": "C436",
       "parts": [
@@ -2192,13 +2642,14 @@
           "End": 14
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [],
+      "reason": "UNREVIEWED_STRICT_FP",
+      "reviewFacts": [],
       "primaryAlias": "L2057:S0",
       "overlappingGold": []
     },
     {
       "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
       "Identity": "L2064:S0:0-8",
       "CandidateId": "C479",
       "parts": [
@@ -2208,8 +2659,8 @@
           "End": 8
         }
       ],
-      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
-      "reviewPatterns": [],
+      "reason": "UNREVIEWED_STRICT_FP",
+      "reviewFacts": [],
       "primaryAlias": "L2064:S0",
       "overlappingGold": []
     }
