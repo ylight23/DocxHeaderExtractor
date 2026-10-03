@@ -37,6 +37,17 @@ public sealed record PdfHeadingMembershipPackExecution(
     OccurrenceLocatorResponseResult? Binding,
     string? ParseError);
 
+/// <summary>P6R qualification-only pack: P6P's exact local binder plus read-only document handles.</summary>
+public sealed record PdfStructuralIdentityResolutionPreparedPack(
+    PdfHeadingMembershipPreparedPack Pack,
+    IReadOnlyDictionary<string, IReadOnlySet<string>> AllowedCorrespondenceTargetsByPrimaryAtom,
+    IReadOnlySet<string> AllowedContextEvidence);
+
+/// <summary>Prepared source-constrained P6R requests for one document. Never promotes the shared runtime.</summary>
+public sealed record PdfStructuralIdentityResolutionDocumentPlan(
+    PdfHeadingMembershipDocumentPlan SourcePlan,
+    IReadOnlyList<PdfStructuralIdentityResolutionPreparedPack> Packs);
+
 /// <summary>
 /// Shared production candidate for the PDF heading-membership lane. It owns P05 packing, document-
 /// wide neutral context, the P6N-B prompt/opaque locator request, OpenRouter body creation, and the
@@ -69,6 +80,86 @@ public static class PdfHeadingMembershipProductionAdapter
     public static PdfHeadingMembershipDocumentPlan PrepareLayoutAware(
         string pdfPath, string documentId, DocumentTaskContract contract)
         => PrepareCore(pdfPath, documentId, contract, includeLayoutFacts: true);
+
+    /// <summary>
+    /// P6R starts from the text-only P6P request. It adds only deterministic text-correspondence
+    /// candidates and read-only local-context handles; neither is selectable as a heading locator.
+    /// </summary>
+    public static PdfStructuralIdentityResolutionDocumentPlan PrepareStructuralIdentityResolution(
+        string pdfPath, string documentId, DocumentTaskContract contract)
+    {
+        var sourcePlan = PrepareCore(pdfPath, documentId, contract, includeLayoutFacts: false);
+        var documentAtoms = sourcePlan.SourceAtoms.OrderBy(atom => atom.Ordinal).ThenBy(atom => atom.Alias, StringComparer.Ordinal).ToArray();
+        var global = documentAtoms.Select((atom, index) => (atom, index)).ToDictionary(pair => pair.atom.Alias,
+            pair => new GlobalOccurrence($"D{pair.index}", pair.atom), StringComparer.Ordinal);
+        var exact = documentAtoms.GroupBy(atom => NormalizeText(atom.Text), StringComparer.Ordinal)
+            .Where(group => group.Key.Length > 0).ToDictionary(group => group.Key, group => group.ToArray(), StringComparer.Ordinal);
+        var whitespaceInsensitive = documentAtoms.GroupBy(atom => RemoveWhitespace(NormalizeText(atom.Text)), StringComparer.Ordinal)
+            .Where(group => group.Key.Length > 0).ToDictionary(group => group.Key, group => group.ToArray(), StringComparer.Ordinal);
+        var prepared = new List<PdfStructuralIdentityResolutionPreparedPack>(sourcePlan.Packs.Count);
+
+        foreach (var sourcePack in sourcePlan.Packs)
+        {
+            var localByAlias = sourcePack.Registry.Atoms.Select((atom, index) => (atom.Alias, handle: sourcePack.Registry.AtomHandle(index)))
+                .ToDictionary(pair => pair.Alias, pair => pair.handle, StringComparer.Ordinal);
+            var correspondence = new List<object>();
+            var allowedTargetsByPrimary = new Dictionary<string, IReadOnlySet<string>>(StringComparer.Ordinal);
+            foreach (var alias in sourcePack.OwnedAliases)
+            {
+                var atom = global[alias].Atom;
+                var normalized = NormalizeText(atom.Text);
+                var compact = RemoveWhitespace(normalized);
+                var tierOne = exact.TryGetValue(normalized, out var exactMatches)
+                    ? exactMatches.Where(candidate => candidate.Alias != alias).ToArray()
+                    : [];
+                var candidates = tierOne.Length != 0 ? tierOne.Select(candidate => (Atom: candidate, Tier: "NFKC_WHITESPACE")) :
+                    (whitespaceInsensitive.TryGetValue(compact, out var looseMatches) ? looseMatches.Where(candidate => candidate.Alias != alias) : [])
+                        .Select(candidate => (Atom: candidate, Tier: "NFKC_WHITESPACE_INSENSITIVE"));
+                var materialized = candidates.OrderBy(candidate => candidate.Atom.Ordinal).ThenBy(candidate => candidate.Atom.Alias, StringComparer.Ordinal)
+                    .Select(candidate =>
+                    {
+                        var target = global[candidate.Atom.Alias];
+                        return new { target = target.Handle, page = target.Atom.Page, text = target.Atom.Text, matchTier = candidate.Tier };
+                    }).ToArray();
+                if (materialized.Length != 0)
+                {
+                    var subject = localByAlias[alias];
+                    allowedTargetsByPrimary.Add(subject, materialized.Select(candidate => candidate.target).ToHashSet(StringComparer.Ordinal));
+                    correspondence.Add(new { subject, candidates = materialized });
+                }
+            }
+
+            var owned = sourcePack.OwnedAliases.ToHashSet(StringComparer.Ordinal);
+            var contextEvidence = sourcePack.VisibleAliases.Where(alias => !owned.Contains(alias)).Select((alias, index) =>
+            {
+                var atom = global[alias].Atom;
+                return new { handle = $"C{index}", page = atom.Page, text = atom.Text };
+            }).ToArray();
+            var allowedEvidence = contextEvidence.Select(item => item.handle).ToHashSet(StringComparer.Ordinal);
+            using var candidatesJson = JsonDocument.Parse(JsonSerializer.SerializeToUtf8Bytes(correspondence, CanonicalJsonOptions));
+            using var contextJson = JsonDocument.Parse(JsonSerializer.SerializeToUtf8Bytes(contextEvidence, CanonicalJsonOptions));
+            var request = V5FreeHeadingCandidateProtocolV1.ComposeStructuralIdentityResolution(sourcePack.Request,
+                candidatesJson.RootElement, contextJson.RootElement);
+            var body = V5FreeHeadingCandidateProtocolV1.BuildBoundLocatorProviderBody(request, sourcePack.MaxCompletionTokens);
+            var pack = sourcePack with
+            {
+                Request = request, ProviderBody = body.PayloadBytes, ProviderRequestHash = body.Hash, ProviderRequestBytes = body.Bytes,
+            };
+            prepared.Add(new PdfStructuralIdentityResolutionPreparedPack(pack, allowedTargetsByPrimary, allowedEvidence));
+        }
+        return new PdfStructuralIdentityResolutionDocumentPlan(sourcePlan, prepared);
+    }
+
+    /// <summary>P6R strict parse: headings bind through the existing exact locator authority.</summary>
+    public static V5FreeHeadingCandidateProtocolV1.StructuralIdentityResolutionResult ParseStructuralIdentityResolution(
+        PdfStructuralIdentityResolutionPreparedPack pack, string rawResponse, int responseCap = 49_152)
+    {
+        ArgumentNullException.ThrowIfNull(pack); ArgumentNullException.ThrowIfNull(rawResponse);
+        using var document = JsonDocument.Parse(rawResponse);
+        return V5FreeHeadingCandidateProtocolV1.ParseStructuralIdentityResolution(document.RootElement,
+            Encoding.UTF8.GetByteCount(rawResponse), responseCap, pack.Pack.Registry,
+            Enumerable.Range(0, pack.Pack.Registry.AtomCount).ToHashSet(), pack.AllowedCorrespondenceTargetsByPrimaryAtom, pack.AllowedContextEvidence);
+    }
 
     private static PdfHeadingMembershipDocumentPlan PrepareCore(
         string pdfPath, string documentId, DocumentTaskContract contract, bool includeLayoutFacts)
@@ -295,6 +386,10 @@ public static class PdfHeadingMembershipProductionAdapter
         }
         return builder.ToString().ToUpperInvariant();
     }
+
+    private static string RemoveWhitespace(string text) => string.Concat(text.Where(character => !char.IsWhiteSpace(character)));
+
+    private sealed record GlobalOccurrence(string Handle, SemanticSourceAtom Atom);
 
     private static string Excerpt(string text, int maxChars)
     {

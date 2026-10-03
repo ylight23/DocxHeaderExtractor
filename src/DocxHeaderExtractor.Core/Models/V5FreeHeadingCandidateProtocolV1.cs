@@ -23,6 +23,7 @@ public static class V5FreeHeadingCandidateProtocolV1
     public const string BoundLocatorVersion = "v5-free-reasoning-heading-membership-source-parts-locator-1";
     public const string PdfDocumentAwareBoundLocatorVersion = "v5-free-reasoning-heading-membership-pdf-document-context-locator-1";
     public const string PdfDocumentAwareLayoutBoundLocatorVersion = "v5-free-reasoning-heading-membership-pdf-document-context-layout-locator-1";
+    public const string PdfStructuralIdentityResolutionVersion = "v5-free-reasoning-heading-membership-pdf-structural-identity-resolution-1";
 
     public const string UnschematizedSystemPrompt = """
         You are reading a document represented by source occurrences in document order. Identify the occurrences that you judge to function as headings in this document. Use the document context and the observable source evidence provided. Return the headings you judge to be present in the source, using whatever response format and schema you prefer. Do not use any external answer key.
@@ -33,6 +34,19 @@ public static class V5FreeHeadingCandidateProtocolV1
 
         Return one JSON object with exactly this shape: {"headings":[{"sourceParts":[{"atom":"A17"}]}]}.
         Each heading has exactly one property, sourceParts. sourceParts is a non-empty ordered array of source locators: the first part is the primary occurrence and later parts are ordered continuations of that same heading. Every part uses only an issued owned atom handle and optional from/to boundary handles. A whole atom is exactly {"atom":"A17"}, with no from/to. A strict proper substring is exactly {"atom":"A17","from":"H123","to":"H145"}; never emit a full-span boundary pair. Additional atoms must be owned and strictly increasing in source order. Select only opaque handles in ownedSubjects; contextOnlyEvidence is reasoning-only and is never selectable. Output no semantic function, heading level, type, reason, confidence, hierarchy, or other property.
+        """;
+
+    /// <summary>
+    /// P6R deliberately supplies no document-genre or semantic-region labels.  It makes only the
+    /// source-derived recurrence relation addressable, so the model can distinguish a structural
+    /// owner from an occurrence that represents structure elsewhere.
+    /// </summary>
+    public const string StructuralIdentityResolutionSystemPrompt = """
+        Identify the structural heading occurrences in the document. Some source occurrences repeat, summarize, list, or refer to structural content that occurs elsewhere.
+
+        When correspondence candidates are supplied, resolve which occurrence establishes a structural region at its own location and which occurrence merely represents or refers to structure elsewhere. Return local structural headings in headings. Return source occurrences that only represent structure elsewhere in representations, with supplied corresponding document handles. A representation may instead cite supplied read-only context evidence when it is being used to point to or list content elsewhere.
+
+        Return one JSON object with exactly this shape: {"headings":[{"sourceParts":[{"atom":"A17"}]}],"representations":[{"sourceParts":[{"atom":"A18"}],"correspondsTo":["D243"]}]}. Every heading and representation has sourceParts: a non-empty ordered array of source locators. The first part is primary and later parts are ordered continuations. Every part uses only an issued owned atom handle and optional from/to boundary handles. A whole atom is exactly {"atom":"A17"}; a strict proper substring is exactly {"atom":"A17","from":"H123","to":"H145"}; never emit a full-span boundary pair. Additional atoms must be owned and strictly increasing in source order. Only ownedSubjects are selectable. contextOnlyEvidence, document targets D#, and read-only context handles C# are never selectable as sourceParts. For each representation use exactly one of correspondsTo (only D# supplied for that source occurrence) or evidenceParts (only supplied C#). Do not classify by typography alone. Output no semantic function, heading level, type, reason, confidence, hierarchy, or other property. Do not use any external answer key.
         """;
 
     // Deliberately contains no task ontology, examples, or heading/non-heading heuristics.
@@ -99,6 +113,24 @@ public static class V5FreeHeadingCandidateProtocolV1
             ? PdfDocumentAwareLayoutBoundLocatorVersion
             : PdfDocumentAwareBoundLocatorVersion;
         return ComposeBoundLocatorCore(p6mCanonicalRequest, documentContext, version);
+    }
+
+    /// <summary>Adds deterministic, read-only structural-correspondence evidence to a P6P request.</summary>
+    public static V5FreeHeadingRequestV1 ComposeStructuralIdentityResolution(
+        V5FreeHeadingRequestV1 documentAwareRequest, JsonElement correspondenceCandidates, JsonElement readOnlyContextEvidence)
+    {
+        ArgumentNullException.ThrowIfNull(documentAwareRequest);
+        if (correspondenceCandidates.ValueKind != JsonValueKind.Array || readOnlyContextEvidence.ValueKind != JsonValueKind.Array)
+            throw new ArgumentException("P6R correspondence and read-only context evidence must be arrays.");
+        using var source = JsonDocument.Parse(documentAwareRequest.UserMessage);
+        var root = JsonNode.Parse(source.RootElement.GetRawText())?.AsObject()
+            ?? throw new InvalidOperationException("p6r-source-request-invalid");
+        root["protocolVersion"] = PdfStructuralIdentityResolutionVersion;
+        root["correspondenceCandidates"] = JsonNode.Parse(correspondenceCandidates.GetRawText());
+        root["readOnlyContextEvidence"] = JsonNode.Parse(readOnlyContextEvidence.GetRawText());
+        var user = root.ToJsonString(JsonOptions);
+        return new V5FreeHeadingRequestV1(PdfStructuralIdentityResolutionVersion, StructuralIdentityResolutionSystemPrompt, user,
+            Hashing.Sha256(user), Encoding.UTF8.GetByteCount(StructuralIdentityResolutionSystemPrompt), Encoding.UTF8.GetByteCount(user));
     }
 
     private static V5FreeHeadingRequestV1 ComposeBoundLocatorCore(
@@ -297,5 +329,63 @@ public static class V5FreeHeadingCandidateProtocolV1
         }
         using var adaptedDocument = JsonDocument.Parse(adapted.ToJsonString(JsonOptions));
         return registry.Parse(adaptedDocument.RootElement, rawUtf8Bytes, responseCap, ownedAtomIndices);
+    }
+
+    /// <summary>P6R's heading binding plus read-only representation-resolution audit.</summary>
+    public sealed record StructuralIdentityResolutionResult(
+        OccurrenceLocatorResponseResult Headings,
+        int RepresentationsAccepted,
+        IReadOnlyList<string> RepresentationQuarantine);
+
+    public static StructuralIdentityResolutionResult ParseStructuralIdentityResolution(
+        JsonElement payload, int rawUtf8Bytes, int responseCap, RequestLocalLocatorRegistry registry,
+        IReadOnlySet<int> ownedAtomIndices, IReadOnlyDictionary<string, IReadOnlySet<string>> allowedCorrespondenceTargetsByPrimaryAtom,
+        IReadOnlySet<string> allowedContextEvidence)
+    {
+        if (rawUtf8Bytes < 0 || rawUtf8Bytes > responseCap || responseCap < 1)
+            throw new InvalidOperationException("occurrence-response-byte-cap-exceeded");
+        if (payload.ValueKind != JsonValueKind.Object || payload.EnumerateObject().Count() != 2 ||
+            !payload.TryGetProperty("headings", out var headings) || headings.ValueKind != JsonValueKind.Array ||
+            !payload.TryGetProperty("representations", out var representations) || representations.ValueKind != JsonValueKind.Array)
+            throw new InvalidOperationException("p6r-response-root-invalid");
+
+        using var headingRoot = JsonDocument.Parse(JsonSerializer.Serialize(new { headings }, JsonOptions));
+        var headingBinding = ParseAndBindSourceParts(headingRoot.RootElement, rawUtf8Bytes, responseCap, registry, ownedAtomIndices);
+        var accepted = 0;
+        var quarantine = new List<string>();
+        var representationIndex = 0;
+        foreach (var representation in representations.EnumerateArray())
+        {
+            representationIndex++;
+            if (representation.ValueKind != JsonValueKind.Object || !representation.TryGetProperty("sourceParts", out var sourceParts) ||
+                sourceParts.ValueKind != JsonValueKind.Array || sourceParts.GetArrayLength() == 0)
+            {
+                quarantine.Add($"representation-{representationIndex}:source-parts-invalid");
+                continue;
+            }
+            var hasTargets = representation.TryGetProperty("correspondsTo", out var targets);
+            var hasEvidence = representation.TryGetProperty("evidenceParts", out var evidence);
+            var primaryAtom = sourceParts[0].ValueKind == JsonValueKind.Object && sourceParts[0].TryGetProperty("atom", out var primaryAtomValue)
+                ? primaryAtomValue.GetString() : null;
+            if (representation.EnumerateObject().Count() != 2 || hasTargets == hasEvidence ||
+                (hasTargets && (targets.ValueKind != JsonValueKind.Array || targets.GetArrayLength() == 0 ||
+                    primaryAtom is null || !allowedCorrespondenceTargetsByPrimaryAtom.TryGetValue(primaryAtom, out var allowedTargets) ||
+                    targets.EnumerateArray().Any(item => item.ValueKind != JsonValueKind.String || !allowedTargets.Contains(item.GetString()!)))) ||
+                (hasEvidence && (evidence.ValueKind != JsonValueKind.Array || evidence.GetArrayLength() == 0 ||
+                    evidence.EnumerateArray().Any(item => item.ValueKind != JsonValueKind.String || !allowedContextEvidence.Contains(item.GetString()!)))))
+            {
+                quarantine.Add($"representation-{representationIndex}:relation-handle-invalid");
+                continue;
+            }
+            using var representationRoot = JsonDocument.Parse(JsonSerializer.Serialize(new { headings = new[] { new { sourceParts } } }, JsonOptions));
+            var binding = ParseAndBindSourceParts(representationRoot.RootElement, rawUtf8Bytes, responseCap, registry, ownedAtomIndices);
+            if (binding.Quarantined.Count != 0 || binding.Response.Occurrences.Count != 1)
+            {
+                quarantine.Add($"representation-{representationIndex}:locator-invalid");
+                continue;
+            }
+            accepted++;
+        }
+        return new StructuralIdentityResolutionResult(headingBinding, accepted, quarantine);
     }
 }

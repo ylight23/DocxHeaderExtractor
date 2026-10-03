@@ -1,0 +1,284 @@
+{
+  "schemaVersion": "v5-p6r-structural-identity-resolution-gold-score-v1",
+  "authority": {
+    "gold": "current canonical 139-occurrence Gold; read-only",
+    "scorer": "GENERIC_EXACT_SCORER_V1",
+    "unit": "document-scoped exact source alias/UTF-16 span",
+    "placement": "off",
+    "runtime": "UNCHANGED"
+  },
+  "primary": {
+    "logicalProviderCalls": 31,
+    "contractValidPacks": 21
+  },
+  "retries": {
+    "logicalProviderCalls": 10,
+    "retrySelection": "first retry only for each primary contract-invalid pack",
+    "headingScoreEligible": 10,
+    "contractValid": 3
+  },
+  "canonicalSelection": [
+    {
+      "key": "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "530d992fbd683317eb85c9f788905d2c95cbe8e772ab7a85f8136976d141ebe7"
+    },
+    {
+      "key": "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "selection": "FIRST_RETRY_HEADING_SCORE_ELIGIBLE",
+      "rawContentSha256": "3bee811289b260e111f516439b073e83348b848adfe14d0715f126487c453a79"
+    },
+    {
+      "key": "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "selection": "FIRST_RETRY_HEADING_SCORE_ELIGIBLE",
+      "rawContentSha256": "6783cae6fe08e283ca708752188b033a3cc35649a65bc6e8c83da5cdbfbe925d"
+    },
+    {
+      "key": "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "selection": "FIRST_RETRY_HEADING_SCORE_ELIGIBLE",
+      "rawContentSha256": "324873398935944224eaf39136825b4c0e66a10c3132d858bf7b1bd08d0a70f5"
+    },
+    {
+      "key": "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "107b038a9023e276aa352f45f1097726328334cc67521ff53d7d0209138db63b"
+    },
+    {
+      "key": "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "a014c0a2e09ce7c77a03afd6a4ea8bc69152b1b5640585f6efd0b3dd3e5ba5a6"
+    },
+    {
+      "key": "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "0d663e1f075a27bd4643794b8cfd1d93642e908ef724d04c10582e85dd2bbbf5"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "selection": "FIRST_RETRY_HEADING_SCORE_ELIGIBLE",
+      "rawContentSha256": "40de81e458c700986e3b87290f4433e8a5fa88475c617508830ae72538d79ef0"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "selection": "FIRST_RETRY_HEADING_SCORE_ELIGIBLE",
+      "rawContentSha256": "4e97df827fe930923d30502606eb77449ee57e3c0e9c0dafe4ac6e8bebc3b2d5"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "selection": "FIRST_RETRY_HEADING_SCORE_ELIGIBLE",
+      "rawContentSha256": "493595018864811ed39d464d0a87be0caa77cda4d2557259cece576c8da8372e"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "84e2f00a0b44d3cadc6072deb5845c826018d1e3c6527981006e1203400aebd1"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "d216d73e2b30ddb8266bf8475d49d0d00f0e1a192ab67fd307f8de6128ced120"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "42547590328c5ab726d2b856a4e8260fc362dc51c02777af6e5392593eb63249"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "d9b985db15f3608c2431ded8df0fe8a5c312f725438a6e8b9698b00d3621f6f0"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "1aa26cc8895e353fa8456f7cc45cbb318f44fe45b0205dba6ae3bca5f25fc239"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "fb047dc79fda5330764454db6b0562f08a1a3daf9a03530754938cc29b33f45b"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+      "selection": "FIRST_RETRY_HEADING_SCORE_ELIGIBLE",
+      "rawContentSha256": "c5be65f675c07d42d3aa71fb0673a418718a7165b332a259a52813b08433913d"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "selection": "FIRST_RETRY_HEADING_SCORE_ELIGIBLE",
+      "rawContentSha256": "31322d5b34a249f53273b122cc731fcca2dd9f10e18400130d88faede055b50a"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "4644d206dea4c52f14cb4bf16b21d02a996df78d58581b7031207f007d78baf6"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "2f598ca568215048ab1428dc97fffa1212beb078680e6366221a7f706bb09db7"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "bd49ef2aa7017f1f867d7a95509ff55f549f83d94319b062fa14fb5682feb07c"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "eaf36467eef38ce764eb885351367088f031e46c42ebbebd0fd86696fa6c255a"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "bac26944a0c191d6e053701823b8de86b7bc5b28fc8a6e91e7ac39db05a76514"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "selection": "FIRST_RETRY_HEADING_SCORE_ELIGIBLE",
+      "rawContentSha256": "429810c246ba42fd7cbee30a60441bd9e10f449134ad743dd3c6f2174fba27d1"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "f9d8a950d77c32fbf000beb463abc49dc31df0e8f7bb19aaa788b94517e40ffb"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "selection": "FIRST_RETRY_HEADING_SCORE_ELIGIBLE",
+      "rawContentSha256": "882b66a08f32af3b6b31dc886fd06dcdc5fdbfe54a629335b9ac3d8e1029cf4a"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "98cbdb20fc7cceba4d76aa7ed2759b1ffd2b10be9820e8f0f87e09df49079638"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "4c9f0b8e238849c79f3411ad5c70f0ddf46c65e6200254be64929fb1b5a1265a"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "27b7a9f86649d95d37ee03d11df0f8a47884b67b3719968a391716dc353660e2"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "b2238b5774e0b8795f6f326f9f03d21d2b1a938453a955c5e5da9012dbd84089"
+    },
+    {
+      "key": "SRC-095|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "selection": "PRIMARY_CONTRACT_VALID",
+      "rawContentSha256": "f495b92947be38371c9463cef1a3e44a9f6f4119af4f0ad1668a23d56dbd735b"
+    }
+  ],
+  "rawHeadingProposals": 225,
+  "boundOccurrences": 225,
+  "headingQuarantine": 0,
+  "exact": {
+    "goldClaims": 139,
+    "distinctBoundOccurrences": 225,
+    "truePositives": 106,
+    "falsePositives": 119,
+    "falseNegatives": 33,
+    "precision": 0.4711,
+    "recall": 0.7626,
+    "f1": 0.5824
+  },
+  "productionBaseline": {
+    "truePositives": 118,
+    "falsePositives": 56,
+    "falseNegatives": 21,
+    "f1": 0.754
+  },
+  "deltaVsProductionBaseline": {
+    "tp": -12,
+    "fp": 63,
+    "fn": 12,
+    "f1": -0.1716
+  },
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "gold": 36,
+      "distinctBoundOccurrences": 42,
+      "exact": {
+        "goldClaims": 36,
+        "hypothesesListed": 42,
+        "TRUE": 42,
+        "NEEDS_REVIEW": 0,
+        "unbindable": 0,
+        "truePositives": 14,
+        "falsePositives": 28,
+        "falseNegatives": 22,
+        "truePrecision": 0.3333,
+        "trueRecall": 0.3889,
+        "f1": 0.359,
+        "needsReviewCaptureOfGold": 0,
+        "needsReviewCaptureIncludingPartial": 0,
+        "falseOnGold": 5,
+        "partialOnly": 17,
+        "reviewNoiseOutsideGold": 0,
+        "nonGoldReviewTouchingGold": 0,
+        "falsePositivesTouchingGold": 22,
+        "goldMultipartClaims": 18,
+        "exactMultipartMatches": 0,
+        "goldClaimsWithPartialPart": 1,
+        "exactMatchesWithPartialPart": 0,
+        "goldBuckets": {
+          "EXACT_TRUE": 14,
+          "EXACT_NEEDS_REVIEW": 0,
+          "EXACT_FALSE": 0,
+          "PARTIAL_TRUE": 17,
+          "PARTIAL_NEEDS_REVIEW": 0,
+          "PARTIAL_FALSE": 0,
+          "UNPROPOSED": 5
+        }
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "gold": 103,
+      "distinctBoundOccurrences": 183,
+      "exact": {
+        "goldClaims": 103,
+        "hypothesesListed": 183,
+        "TRUE": 183,
+        "NEEDS_REVIEW": 0,
+        "unbindable": 0,
+        "truePositives": 92,
+        "falsePositives": 91,
+        "falseNegatives": 11,
+        "truePrecision": 0.5027,
+        "trueRecall": 0.8932,
+        "f1": 0.6433,
+        "needsReviewCaptureOfGold": 0,
+        "needsReviewCaptureIncludingPartial": 0,
+        "falseOnGold": 10,
+        "partialOnly": 1,
+        "reviewNoiseOutsideGold": 0,
+        "nonGoldReviewTouchingGold": 0,
+        "falsePositivesTouchingGold": 1,
+        "goldMultipartClaims": 6,
+        "exactMultipartMatches": 3,
+        "goldClaimsWithPartialPart": 0,
+        "exactMatchesWithPartialPart": 0,
+        "goldBuckets": {
+          "EXACT_TRUE": 92,
+          "EXACT_NEEDS_REVIEW": 0,
+          "EXACT_FALSE": 0,
+          "PARTIAL_TRUE": 1,
+          "PARTIAL_NEEDS_REVIEW": 0,
+          "PARTIAL_FALSE": 0,
+          "UNPROPOSED": 10
+        }
+      }
+    }
+  ],
+  "promotion": false,
+  "promotionBlocker": "P6R representation contract remains invalid on canonical retries; qualification-only lane",
+  "goldMutation": "NONE",
+  "providerCallsDuringScore": 0
+}

@@ -128,6 +128,15 @@ internal static class Program
         if (args.Contains("--p6p-rerun-failed-pack"))
             return await P6PDocumentAwarePdfQualification.RerunFailedPackAsync(LocateRepoRoot(), args);
 
+        // P6R adds only deterministic source-correspondence evidence and a representation result
+        // channel to the text-only P6P treatment. It is qualification-only and never reads Gold.
+        if (args.Contains("--p6r-structural-identity-full31"))
+            return await P6RStructuralIdentityResolutionQualification.RunAsync(LocateRepoRoot(), args);
+        if (args.Contains("--p6r-freeze-response-hashes"))
+            return P6RStructuralIdentityResolutionQualification.FreezeResponseHashes(LocateRepoRoot());
+        if (args.Contains("--p6r-retry-contract-invalid-packs"))
+            return await P6RStructuralIdentityResolutionQualification.RetryContractInvalidPacksAsync(LocateRepoRoot(), args);
+
         // Separately authorized, exact-body-only retry budget for the failed fourth P6N-B canary request.
         if (args.Contains("--p6nb-bound-locator-call4-retry"))
             return await P6NBBoundLocatorCanary.RetryFourthAsync(LocateRepoRoot(), args);
