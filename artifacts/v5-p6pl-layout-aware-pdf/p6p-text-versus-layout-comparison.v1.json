@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "v5-p6pl-text-versus-neutral-layout-full31-comparison-v1",
+  "treatment": {
+    "same": [
+      "model",
+      "provider pin",
+      "temperature",
+      "reasoning enabled with effort omitted",
+      "P05 pack partition",
+      "document context",
+      "system prompt",
+      "sourceParts locator contract",
+      "parser/binder",
+      "response cap"
+    ],
+    "onlyAddedToP6PL": [
+      "per-occurrence parser-observed page",
+      "relative vertical position",
+      "horizontal geometry and width",
+      "line count",
+      "bold ratio",
+      "font-size/body ratio",
+      "same-normalized-text recurrence"
+    ],
+    "semanticLabelsAdded": false,
+    "goldMutated": false
+  },
+  "execution": {
+    "p6plPrimaryCalls": 31,
+    "p6plAllTransportStop": true,
+    "p6plAllContractValid": true,
+    "p6plHashVerifiedBeforeGold": true,
+    "providerCallsDuringComparison": 0
+  },
+  "exact": {
+    "p6pText": {
+      "tp": 125,
+      "fp": 112,
+      "fn": 14,
+      "precision": 0.5274,
+      "recall": 0.8993,
+      "f1": 0.6649
+    },
+    "p6plLayout": {
+      "tp": 111,
+      "fp": 126,
+      "fn": 28,
+      "precision": 0.4684,
+      "recall": 0.7986,
+      "f1": 0.5905
+    },
+    "deltaLayoutMinusText": {
+      "tp": -14,
+      "fp": 14,
+      "fn": 14,
+      "precision": -0.059,
+      "recall": -0.1007,
+      "f1": -0.0744
+    }
+  },
+  "src095": {
+    "p6pText": {
+      "tp": 97,
+      "fp": 101,
+      "fn": 6,
+      "precision": 0.4899,
+      "recall": 0.9417,
+      "f1": 0.6445
+    },
+    "p6plLayout": {
+      "tp": 93,
+      "fp": 108,
+      "fn": 10,
+      "precision": 0.4627,
+      "recall": 0.9029,
+      "f1": 0.6119
+    },
+    "deltaLayoutMinusText": {
+      "tp": -4,
+      "fp": 7,
+      "fn": 4,
+      "precision": -0.0272,
+      "recall": -0.0388,
+      "f1": -0.0326
+    },
+    "falsePositiveReductionObserved": false
+  },
+  "structuralSectionRecovery": {
+    "gold": 123,
+    "p6pTextTp": 117,
+    "p6plLayoutTp": 103,
+    "deltaTp": -14,
+    "retainedAtLeast92Of93": true
+  },
+  "verdict": "P6PL_NEUTRAL_LAYOUT_FACTS_DID_NOT_REDUCE_SRC095_FALSE_POSITIVES_AND_REDUCED_STRUCTURAL_SECTION_RECOVERY; NOT_A_PROMOTION_CANDIDATE"
+}

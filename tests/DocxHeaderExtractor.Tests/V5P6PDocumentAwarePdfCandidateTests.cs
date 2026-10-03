@@ -128,6 +128,60 @@ public sealed class V5P6PDocumentAwarePdfCandidateTests
         Assert.DoesNotContain("semanticFunction", plan.Packs[0].Request.UserMessage, StringComparison.OrdinalIgnoreCase);
     }
 
+    [Fact]
+    public void Layout_aware_arm_preserves_P6P_prompt_locator_and_P05_ownership_but_exposes_every_parser_fact()
+    {
+        var baseline = Documents.Select(doc => PdfHeadingMembershipProductionAdapter.Prepare(
+            TestRepository.Path(doc.Pdf), doc.Id, Contract)).ToArray();
+        var layout = Documents.Select(doc => PdfHeadingMembershipProductionAdapter.PrepareLayoutAware(
+            TestRepository.Path(doc.Pdf), doc.Id, Contract)).ToArray();
+
+        Assert.Equal(31, layout.Sum(plan => plan.Packs.Count));
+        Assert.Equal(2_884, layout.Sum(plan => plan.SourceOccurrenceTotal));
+        foreach (var pair in baseline.Zip(layout))
+        {
+            Assert.Equal(pair.First.SourceSha256, pair.Second.SourceSha256);
+            Assert.Equal(pair.First.SourceUniverseSha256, pair.Second.SourceUniverseSha256);
+            foreach (var packs in pair.First.Packs.Zip(pair.Second.Packs))
+            {
+                Assert.Equal(packs.First.PackId, packs.Second.PackId);
+                Assert.Equal(packs.First.OwnedAliases, packs.Second.OwnedAliases);
+                Assert.Equal(packs.First.VisibleAliases, packs.Second.VisibleAliases);
+                Assert.Equal(packs.First.Registry.Fingerprint, packs.Second.Registry.Fingerprint);
+                Assert.Equal(packs.First.Request.SystemPrompt, packs.Second.Request.SystemPrompt);
+                Assert.NotEqual(packs.First.ProviderRequestHash, packs.Second.ProviderRequestHash);
+
+                using var root = JsonDocument.Parse(packs.Second.Request.UserMessage);
+                Assert.Equal(PdfHeadingMembershipProductionAdapter.LayoutAwareProtocolVersion, root.RootElement.GetProperty("protocolVersion").GetString());
+                var owned = root.RootElement.GetProperty("ownedSubjects").EnumerateArray().ToArray();
+                Assert.Equal(packs.Second.OwnedAliases.Count, owned.Length);
+                Assert.All(owned, item => AssertNeutralLayoutFacts(item.GetProperty("layoutFacts")));
+                Assert.All(root.RootElement.GetProperty("contextOnlyEvidence").EnumerateArray(), item =>
+                {
+                    Assert.False(item.TryGetProperty("atom", out _));
+                    Assert.False(item.TryGetProperty("boundaryHandles", out _));
+                    AssertNeutralLayoutFacts(item.GetProperty("layoutFacts"));
+                });
+            }
+        }
+    }
+
+    private static void AssertNeutralLayoutFacts(JsonElement facts)
+    {
+        Assert.Equal(JsonValueKind.Object, facts.ValueKind);
+        Assert.True(facts.TryGetProperty("page", out _));
+        Assert.True(facts.TryGetProperty("verticalPosition", out _));
+        Assert.True(facts.TryGetProperty("left", out _));
+        Assert.True(facts.TryGetProperty("right", out _));
+        Assert.True(facts.TryGetProperty("width", out _));
+        Assert.True(facts.TryGetProperty("lineCount", out _));
+        Assert.True(facts.TryGetProperty("boldRatio", out _));
+        Assert.True(facts.TryGetProperty("fontSizeToBodyRatio", out _));
+        Assert.True(facts.TryGetProperty("sameNormalizedTextPageCount", out _));
+        Assert.All(facts.EnumerateObject(), property =>
+            Assert.DoesNotContain(property.Name, new[] { "alias", "id", "ordinal", "heading", "region", "scope", "score", "candidate" }, StringComparer.OrdinalIgnoreCase));
+    }
+
     private static void AssertNoForbiddenContextProperties(JsonElement node)
     {
         if (node.ValueKind == JsonValueKind.Object)

@@ -119,8 +119,12 @@ internal static class Program
         // P6P freezes and executes the PDF production-candidate adapter; execution has a separate explicit sentinel.
         if (args.Contains("--p6p-document-aware-pdf-full31"))
             return await P6PDocumentAwarePdfQualification.RunAsync(LocateRepoRoot(), args);
+        if (args.Contains("--p6pl-layout-aware-pdf-full31"))
+            return await P6PDocumentAwarePdfQualification.RunLayoutAwareAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6p-freeze-response-hashes"))
             return P6PDocumentAwarePdfQualification.FreezeResponseHashes(LocateRepoRoot());
+        if (args.Contains("--p6pl-freeze-response-hashes"))
+            return P6PDocumentAwarePdfQualification.FreezeLayoutAwareResponseHashes(LocateRepoRoot());
         if (args.Contains("--p6p-rerun-failed-pack"))
             return await P6PDocumentAwarePdfQualification.RerunFailedPackAsync(LocateRepoRoot(), args);
 

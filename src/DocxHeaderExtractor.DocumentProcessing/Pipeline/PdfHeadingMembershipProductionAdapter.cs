@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
@@ -45,14 +46,32 @@ public sealed record PdfHeadingMembershipPackExecution(
 public static class PdfHeadingMembershipProductionAdapter
 {
     public const string ProtocolVersion = V5FreeHeadingCandidateProtocolV1.PdfDocumentAwareBoundLocatorVersion;
+    public const string LayoutAwareProtocolVersion = V5FreeHeadingCandidateProtocolV1.PdfDocumentAwareLayoutBoundLocatorVersion;
     public const string PackingPolicy = SemanticEvidencePackingPolicies.ResourceBoundedSourcePackingV1Id;
     public const int WiderContextOccurrencesPerSide = 8;
     public const int WiderContextTextMaxChars = 240;
     public const int PageMapExcerptMaxChars = 64;
     public const int CompletionTokenCeiling = 32_768;
+    private static readonly JsonSerializerOptions CanonicalJsonOptions = new()
+    {
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+        WriteIndented = false,
+    };
 
     public static PdfHeadingMembershipDocumentPlan Prepare(
         string pdfPath, string documentId, DocumentTaskContract contract)
+        => PrepareCore(pdfPath, documentId, contract, includeLayoutFacts: false);
+
+    /// <summary>
+    /// P6P-L qualification-only variant. It retains P6P's source, prompt, packing and locator
+    /// grammar exactly, adding only parser-observed neutral layout facts for each occurrence.
+    /// </summary>
+    public static PdfHeadingMembershipDocumentPlan PrepareLayoutAware(
+        string pdfPath, string documentId, DocumentTaskContract contract)
+        => PrepareCore(pdfPath, documentId, contract, includeLayoutFacts: true);
+
+    private static PdfHeadingMembershipDocumentPlan PrepareCore(
+        string pdfPath, string documentId, DocumentTaskContract contract, bool includeLayoutFacts)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
         ArgumentException.ThrowIfNullOrWhiteSpace(documentId);
@@ -86,11 +105,15 @@ public static class PdfHeadingMembershipProductionAdapter
             // P6N-B. The task-ontology V3 request below is used only to retain P05's frozen completion
             // budget; it is never serialized into the P6P provider body.
             var sparse = V5SparseCandidateRequestComposerV1.ComposeCompactDirectoryCanonical(contract, packet, registry);
+            if (includeLayoutFacts)
+                sparse = AddNeutralLayoutFacts(sparse, authority, ownedAliases, visibleAliases);
             var wideContext = BuildDocumentContext(documentMap, authority.Atoms, ownedAliases);
             using var contextJson = JsonDocument.Parse(JsonSerializer.SerializeToUtf8Bytes(wideContext));
             var request = V5FreeHeadingCandidateProtocolV1.ComposePdfDocumentAwareBoundLocator(sparse, contextJson.RootElement);
             if (request.SystemPrompt != V5FreeHeadingCandidateProtocolV1.BoundLocatorSystemPrompt)
                 throw new InvalidOperationException("p6p-prompt-differs-from-p6nb");
+            if (includeLayoutFacts)
+                request = request with { ProtocolVersion = LayoutAwareProtocolVersion };
 
             var budgetRequest = V5SemanticDecisionComposerV3.Compose(contract, packet);
             var maxTokens = V5SemanticCompletionBudget.Compute(ownedAliases.Length, visibleAliases.Length,
@@ -202,6 +225,64 @@ public static class PdfHeadingMembershipProductionAdapter
             after,
         };
     }
+
+    private static V5SparseCandidateModelRequestV1 AddNeutralLayoutFacts(
+        V5SparseCandidateModelRequestV1 sparse,
+        PdfStructuredSourceAuthority authority,
+        IReadOnlyList<string> ownedAliases,
+        IReadOnlyList<string> visibleAliases)
+    {
+        var ownedSet = ownedAliases.ToHashSet(StringComparer.Ordinal);
+        var contextAliases = visibleAliases.Where(alias => !ownedSet.Contains(alias)).ToArray();
+        var bodyFont = PdfSourceEvidence.Median(authority.Contexts.Values.Select(context => context.Source.FontSize));
+        using var source = JsonDocument.Parse(sparse.UserMessage);
+        var root = JsonNode.Parse(source.RootElement.GetRawText())?.AsObject()
+            ?? throw new InvalidOperationException("p6p-layout-source-request-invalid");
+        var owned = root["ownedSubjects"]?.AsArray()
+            ?? throw new InvalidOperationException("p6p-layout-owned-subjects-missing");
+        var contextOnly = root["contextOnlyEvidence"]?.AsArray()
+            ?? throw new InvalidOperationException("p6p-layout-context-only-missing");
+        if (owned.Count != ownedAliases.Count || contextOnly.Count != contextAliases.Length)
+            throw new InvalidOperationException("p6p-layout-occurrence-order-mismatch");
+
+        for (var index = 0; index < owned.Count; index++)
+            owned[index]!.AsObject()["layoutFacts"] = JsonSerializer.SerializeToNode(
+                LayoutFacts(authority.Contexts[AliasSourceId(authority, ownedAliases[index])].Source, bodyFont), CanonicalJsonOptions);
+        for (var index = 0; index < contextOnly.Count; index++)
+            contextOnly[index]!.AsObject()["layoutFacts"] = JsonSerializer.SerializeToNode(
+                LayoutFacts(authority.Contexts[AliasSourceId(authority, contextAliases[index])].Source, bodyFont), CanonicalJsonOptions);
+
+        root["protocolVersion"] = LayoutAwareProtocolVersion;
+        var message = root.ToJsonString(CanonicalJsonOptions);
+        return sparse with
+        {
+            ProtocolVersion = LayoutAwareProtocolVersion,
+            UserMessage = message,
+            UserMessageUtf8Bytes = Encoding.UTF8.GetByteCount(message),
+            UserMessageSha256 = Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(message))),
+        };
+    }
+
+    private static string AliasSourceId(PdfStructuredSourceAuthority authority, string alias) =>
+        authority.Atoms.Single(atom => atom.Alias == alias).SourceId;
+
+    private static object LayoutFacts(PdfSourceFacts source, double bodyFontSize) => new
+    {
+        page = source.Page,
+        verticalPosition = source.VerticalPosition is { } vertical ? (double?)Round(vertical, 3) : null,
+        left = Round(source.Left, 2),
+        right = Round(source.Right, 2),
+        width = Round(Math.Max(0, source.Right - source.Left), 2),
+        lineCount = source.LineCount,
+        boldRatio = Round(source.BoldRatio, 3),
+        fontSizeToBodyRatio = bodyFontSize > 0 && source.FontSize > 0 ? (double?)Round(source.FontSize / bodyFontSize, 3) : null,
+        sameNormalizedTextPageCount = source.SameNormalizedTextPageCount,
+        sameNormalizedTextFirstPage = source.SameNormalizedTextFirstPage,
+        sameNormalizedTextLastPage = source.SameNormalizedTextLastPage,
+    };
+
+    private static double Round(double value, int digits) =>
+        Math.Round(value, digits, MidpointRounding.AwayFromZero);
 
     private static string NormalizeText(string text)
     {

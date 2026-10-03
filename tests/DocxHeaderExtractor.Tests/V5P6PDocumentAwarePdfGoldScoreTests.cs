@@ -11,7 +11,8 @@ namespace DocxHeaderExtractor.Tests;
 /// <summary>Hash-gated offline P6P score with the unchanged GENERIC_EXACT_SCORER_V1 authority.</summary>
 public sealed class V5P6PDocumentAwarePdfGoldScoreTests
 {
-    private const string Root = "artifacts/v5-p6p-document-aware-pdf";
+    private const string P6PRoot = "artifacts/v5-p6p-document-aware-pdf";
+    private const string P6PLRoot = "artifacts/v5-p6pl-layout-aware-pdf";
     private const string BaselinePath = "eval/a99-closed-loop/production-rebaseline-v1/production-rebaseline-score.v1.json";
     private const string P6NBScorePath = "artifacts/v5-p6nb-full31-reasoning-lane/full31-gold-score-after-pack007-repeat.v1.json";
     private const string P6NCScorePath = "artifacts/v5-p6nc-boundary-prompt-full31/paired-gold-score.v1.json";
@@ -24,11 +25,18 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
 
     [Fact]
     public async Task Score_P6P_only_after_manifest_and_all_raw_response_hashes_are_verified()
+        => await ScoreAsync(P6PRoot, layoutAware: false, "gold-score.v1.json");
+
+    [Fact]
+    public async Task Score_P6PL_only_after_manifest_and_all_raw_response_hashes_are_verified()
+        => await ScoreAsync(P6PLRoot, layoutAware: true, "gold-score.v1.json");
+
+    private static async Task ScoreAsync(string root, bool layoutAware, string scoreArtifact)
     {
         var repo = TestRepository.Root();
-        using var manifestDoc = Read("execution-manifest.v1.json");
-        using var resultDoc = Read("result.v1.json");
-        using var freezeDoc = Read("response-hash-freeze.v1.json");
+        using var manifestDoc = Read(root, "execution-manifest.v1.json");
+        using var resultDoc = Read(root, "result.v1.json");
+        using var freezeDoc = Read(root, "response-hash-freeze.v1.json");
         var manifest = manifestDoc.RootElement;
         var result = resultDoc.RootElement;
         var freeze = freezeDoc.RootElement;
@@ -37,10 +45,10 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
         Assert.Equal(31, manifest.GetProperty("rows").GetArrayLength());
         Assert.Equal(31, result.GetProperty("logicalProviderCalls").GetInt32());
         Assert.False(result.GetProperty("goldRead").GetBoolean());
-        Assert.Equal("v5-p6p-document-aware-pdf-response-hash-freeze-v1", freeze.GetProperty("schemaVersion").GetString());
+        Assert.Equal(layoutAware ? "v5-p6pl-layout-aware-pdf-response-hash-freeze-v1" : "v5-p6p-document-aware-pdf-response-hash-freeze-v1", freeze.GetProperty("schemaVersion").GetString());
         Assert.True(freeze.GetProperty("verifiedBeforeGoldRead").GetBoolean());
-        Assert.Equal(Hash(File.ReadAllText(TestRepository.Path($"{Root}/result.v1.json"))), freeze.GetProperty("resultFileSha256").GetString());
-        Assert.Equal(Hash(File.ReadAllText(TestRepository.Path($"{Root}/execution-manifest.v1.json"))), freeze.GetProperty("manifestFileSha256").GetString());
+        Assert.Equal(Hash(File.ReadAllText(TestRepository.Path($"{root}/result.v1.json"))), freeze.GetProperty("resultFileSha256").GetString());
+        Assert.Equal(Hash(File.ReadAllText(TestRepository.Path($"{root}/execution-manifest.v1.json"))), freeze.GetProperty("manifestFileSha256").GetString());
 
         var requestRows = Rows(manifest).ToDictionary(Key, StringComparer.Ordinal);
         var frozenRows = Rows(freeze).ToDictionary(Key, StringComparer.Ordinal);
@@ -66,8 +74,9 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
 
         // Rebuild the qualification-only production candidate before Gold is read; it must reproduce
         // the frozen exact body/registry/source universe and original P05 ownership for all 31 packs.
-        var plans = Documents.Select(document => PdfHeadingMembershipProductionAdapter.Prepare(
-            TestRepository.Path(document.Pdf), document.Id, Contract)).ToArray();
+        var plans = Documents.Select(document => layoutAware
+            ? PdfHeadingMembershipProductionAdapter.PrepareLayoutAware(TestRepository.Path(document.Pdf), document.Id, Contract)
+            : PdfHeadingMembershipProductionAdapter.Prepare(TestRepository.Path(document.Pdf), document.Id, Contract)).ToArray();
         var prepared = plans.SelectMany(plan => plan.Packs).ToDictionary(pack => $"{pack.DocumentId}|{pack.PackId}", StringComparer.Ordinal);
         Assert.Equal(31, prepared.Count);
         foreach (var request in requestRows.Values)
@@ -79,7 +88,7 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
         }
 
         JsonDocument? retryDocument = null;
-        var retryPath = TestRepository.Path($"{Root}/{RetryFile}");
+        var retryPath = TestRepository.Path($"{root}/{RetryFile}");
         if (File.Exists(retryPath))
         {
             retryDocument = JsonDocument.Parse(File.ReadAllText(retryPath));
@@ -87,7 +96,8 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
             const string retryKey = "SRC-089|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002";
             Assert.Equal("v5-p6p-single-pack-rerun-v1", S(retry, "schemaVersion"));
             Assert.Equal(retryKey, S(retry, "target"));
-            Assert.Equal(Hash(File.ReadAllText(TestRepository.Path($"{Root}/result.v1.json"))), S(retry, "originalPrimaryResultSha256"));
+            Assert.False(layoutAware);
+            Assert.Equal(Hash(File.ReadAllText(TestRepository.Path($"{root}/result.v1.json"))), S(retry, "originalPrimaryResultSha256"));
             Assert.Equal(S(requestRows[retryKey], "providerRequestHash"), S(retry, "providerRequestHash"));
             Assert.Equal(S(requestRows[retryKey], "locatorRegistryFingerprint"), S(retry, "locatorRegistryFingerprint"));
             Assert.True(B(retry, "transportAccepted"));
@@ -237,7 +247,7 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
                 : "No promotion: metric/per-document gates fail and TOC/index FP-family review is not established.",
         };
 
-        FreezeArtifact.AssertJson(Root, retryDocument is null ? "gold-score.v1.json" : "gold-score-after-pack-rerun.v1.json", new
+        FreezeArtifact.AssertJson(root, retryDocument is null ? scoreArtifact : "gold-score-after-pack-rerun.v1.json", new
         {
             schemaVersion = "v5-p6p-document-aware-pdf-gold-score-v1",
             authority = new
@@ -327,7 +337,7 @@ public sealed class V5P6PDocumentAwarePdfGoldScoreTests
                 new ExactScorer.Span(aliases[source.SourceId], source.Span.Start, source.Span.End))))
             .ToHashSet(StringComparer.Ordinal);
     }
-    private static JsonDocument Read(string file) => JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{Root}/{file}")));
+    private static JsonDocument Read(string root, string file) => JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{root}/{file}")));
     private static JsonElement[] Rows(JsonElement value) => value.GetProperty("rows").EnumerateArray().ToArray();
     private static string Key(JsonElement row) => $"{S(row, "documentId")}|{S(row, "packId")}";
     private static string S(JsonElement row, string name) => row.GetProperty(name).GetString()!;

@@ -16,6 +16,7 @@ internal static class P6PDocumentAwarePdfQualification
     private const string Confirm = "yes-i-authorize-p6p-full31-production-candidate";
     private const string RetryConfirm = "yes-i-authorize-p6p-src089-pack002-single-rerun";
     private const string ArtifactRoot = "artifacts/v5-p6p-document-aware-pdf";
+    private const string LayoutArtifactRoot = "artifacts/v5-p6pl-layout-aware-pdf";
     private const string Src089 = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
     private const string Src095 = "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf";
     private const int ResponseCap = 49_152;
@@ -23,18 +24,25 @@ internal static class P6PDocumentAwarePdfQualification
 
     private sealed record Prepared(string RelativePdf, string PdfPath, PdfHeadingMembershipDocumentPlan Plan);
 
-    public static async Task<int> RunAsync(string repo, string[] args)
+    public static Task<int> RunAsync(string repo, string[] args) => RunCoreAsync(repo, args, layoutAware: false);
+
+    /// <summary>P6P-L: same P6P wire except parser-observed per-occurrence layout facts.</summary>
+    public static Task<int> RunLayoutAwareAsync(string repo, string[] args) => RunCoreAsync(repo, args, layoutAware: true);
+
+    private static async Task<int> RunCoreAsync(string repo, string[] args, bool layoutAware)
     {
-        var directory = Path.Combine(repo, ArtifactRoot.Replace('/', Path.DirectorySeparatorChar));
+        var artifactRoot = layoutAware ? LayoutArtifactRoot : ArtifactRoot;
+        var arm = layoutAware ? "P6P-L" : "P6P";
+        var directory = Path.Combine(repo, artifactRoot.Replace('/', Path.DirectorySeparatorChar));
         var manifestPath = Path.Combine(directory, "execution-manifest.v1.json");
         var resultPath = Path.Combine(directory, "result.v1.json");
         var checkpointPath = Path.Combine(directory, "result.in-progress.v1.json");
         if (File.Exists(resultPath) || File.Exists(checkpointPath))
-            return Fail("P6P result/checkpoint already exists; stop before any request");
+            return Fail($"{arm} result/checkpoint already exists; stop before any request");
 
-        var prepared = Prepare(repo);
+        var prepared = Prepare(repo, layoutAware);
         if (prepared.Sum(doc => doc.Plan.Packs.Count) != 31 || prepared.Sum(doc => doc.Plan.SourceOccurrenceTotal) != 2_884)
-            return Fail("P6P expected exactly 31 original P05 packs and 2,884 owned occurrences");
+            return Fail($"{arm} expected exactly 31 original P05 packs and 2,884 owned occurrences");
 
         var rows = BuildRows(prepared);
         if (!File.Exists(manifestPath))
@@ -42,7 +50,7 @@ internal static class P6PDocumentAwarePdfQualification
             Directory.CreateDirectory(directory);
             WriteNew(manifestPath, new
             {
-                schemaVersion = "v5-p6p-document-aware-pdf-manifest-v1",
+                schemaVersion = layoutAware ? "v5-p6pl-layout-aware-pdf-manifest-v1" : "v5-p6p-document-aware-pdf-manifest-v1",
                 status = "PREPARED_NOT_AUTHORIZED",
                 preparedAtHead = GitHead(repo),
                 providerCalls = 0,
@@ -69,7 +77,7 @@ internal static class P6PDocumentAwarePdfQualification
                 {
                     model = "qwen/qwen3.7-flash", provider = "Alibaba", providerPin = "alibaba", temperature = 0,
                     reasoning = new { enabled = true }, reasoningEffort = "OMITTED",
-                    promptProtocol = PdfHeadingMembershipProductionAdapter.ProtocolVersion,
+                    promptProtocol = layoutAware ? PdfHeadingMembershipProductionAdapter.LayoutAwareProtocolVersion : PdfHeadingMembershipProductionAdapter.ProtocolVersion,
                     systemPromptSha256 = Sha(V5FreeHeadingCandidateProtocolV1.BoundLocatorSystemPrompt),
                     locatorContract = "headings[].sourceParts[]; P6N-B strict locator; no P6N-C boundary sentences",
                     ontologyPrompt = false, placement = "existing production placement architecture; qualification scorer placement off",
@@ -79,6 +87,8 @@ internal static class P6PDocumentAwarePdfQualification
                         repeatedNormalizedTextPositions = true, regionalTextOnlyContextEachSide = PdfHeadingMembershipProductionAdapter.WiderContextOccurrencesPerSide,
                         regionalContextMaxCharsEach = PdfHeadingMembershipProductionAdapter.WiderContextTextMaxChars,
                         semanticRegionLabels = false, contextOnlySelectable = false, contextOnlyLocatorHandlesIssued = false,
+                        perOccurrenceNeutralLayoutFacts = layoutAware,
+                        layoutFactFields = layoutAware ? new[] { "page", "verticalPosition", "left", "right", "width", "lineCount", "boldRatio", "fontSizeToBodyRatio", "sameNormalizedTextPageCount", "sameNormalizedTextFirstPage", "sameNormalizedTextLastPage" } : [],
                     },
                     packing = "unchanged existing PDF P05 owned partition",
                     sourceAuthority = "PdfStructuredSourceAuthorityBuilder + exact source atoms; unchanged",
@@ -102,23 +112,24 @@ internal static class P6PDocumentAwarePdfQualification
                 },
                 rows,
             });
-            Console.WriteLine("P6P frozen provider-free manifest created: 31 P05 bodies, 2,884 owned occurrences; ProviderCalls=0, GoldRead=false.");
+            Console.WriteLine($"{arm} frozen provider-free manifest created: 31 P05 bodies, 2,884 owned occurrences; ProviderCalls=0, GoldRead=false.");
             PrintSummary(rows);
             return 0;
         }
 
-        if (!ValidateManifest(repo, manifestPath, prepared, rows))
-            return Fail("P6P frozen source/context/body/pack manifest parity failed; no network call");
-        Console.WriteLine("P6P exact frozen source, P05 partition, context and provider-body parity PASS.");
+        if (!ValidateManifest(repo, manifestPath, prepared, rows, layoutAware))
+            return Fail($"{arm} frozen source/context/body/pack manifest parity failed; no network call");
+        Console.WriteLine($"{arm} exact frozen source, P05 partition, context and provider-body parity PASS.");
         PrintSummary(rows);
-        if (!args.Contains($"--confirm-p6p-full31={Confirm}"))
+        var confirm = layoutAware ? "yes-i-authorize-p6pl-layout-aware-full31" : Confirm;
+        if (!args.Contains($"--confirm-{(layoutAware ? "p6pl-layout-aware-full31" : "p6p-full31")}={confirm}"))
         {
-            Console.WriteLine("PREPARED_NOT_AUTHORIZED; ProviderCalls=0, GoldRead=false. Execution requires the user's explicit P6P authorization.");
+            Console.WriteLine($"PREPARED_NOT_AUTHORIZED; ProviderCalls=0, GoldRead=false. Execution requires the user's explicit {arm} authorization.");
             return 0;
         }
 
         if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")))
-            return Fail("P6P authorized but OPENROUTER_API_KEY is not set");
+            return Fail($"{arm} authorized but OPENROUTER_API_KEY is not set");
         var options = RemoteInferenceOptions.FromEnvironment();
         options.Model = "qwen/qwen3.7-flash";
         options.OpenRouterProviderRoute = "alibaba";
@@ -173,12 +184,12 @@ internal static class P6PDocumentAwarePdfQualification
             };
             acceptedRows.Add(row);
             AtomicWrite(checkpointPath, Checkpoint(acceptedRows));
-            Console.WriteLine($"[{pack.DocumentId} {pack.PackId}] transport={provider is not null} finish={provider?.FinishReason ?? "n/a"} retry={provider?.RetryCount ?? 0} emitted={binding?.Response.Occurrences.Count ?? 0} quarantine={binding?.Quarantined.Count ?? 0} ms={watch.ElapsedMilliseconds}");
+            Console.WriteLine($"[{arm} {pack.DocumentId} {pack.PackId}] transport={provider is not null} finish={provider?.FinishReason ?? "n/a"} retry={provider?.RetryCount ?? 0} emitted={binding?.Response.Occurrences.Count ?? 0} quarantine={binding?.Quarantined.Count ?? 0} ms={watch.ElapsedMilliseconds}");
         }
 
         var result = new
         {
-            schemaVersion = "v5-p6p-document-aware-pdf-result-v1", sourceManifest = $"{ArtifactRoot}/execution-manifest.v1.json",
+            schemaVersion = layoutAware ? "v5-p6pl-layout-aware-pdf-result-v1" : "v5-p6p-document-aware-pdf-result-v1", sourceManifest = $"{artifactRoot}/execution-manifest.v1.json",
             head = GitHead(repo), logicalProviderCalls = acceptedRows.Count,
             maximumPrimaryLogicalCalls = 31, completedPrimaryPacks = acceptedRows.Count,
             route = new { gateway = "OpenRouter", model = "qwen/qwen3.7-flash", providerPin = "alibaba", temperature = 0, reasoning = new { enabled = true }, reasoningEffort = "OMITTED" },
@@ -188,25 +199,31 @@ internal static class P6PDocumentAwarePdfQualification
         };
         WriteNew(resultPath, result);
         File.Delete(checkpointPath);
-        Console.WriteLine("P6P provider run complete. Gold remains unread; execution gate is closed pending immutable-hash verification and offline score.");
+        Console.WriteLine($"{arm} provider run complete. Gold remains unread; execution gate is closed pending immutable-hash verification and offline score.");
         return 0;
     }
 
-    public static int FreezeResponseHashes(string repo)
+    public static int FreezeResponseHashes(string repo) => FreezeResponseHashesCore(repo, layoutAware: false);
+
+    public static int FreezeLayoutAwareResponseHashes(string repo) => FreezeResponseHashesCore(repo, layoutAware: true);
+
+    private static int FreezeResponseHashesCore(string repo, bool layoutAware)
     {
-        var directory = Path.Combine(repo, ArtifactRoot.Replace('/', Path.DirectorySeparatorChar));
+        var artifactRoot = layoutAware ? LayoutArtifactRoot : ArtifactRoot;
+        var arm = layoutAware ? "P6P-L" : "P6P";
+        var directory = Path.Combine(repo, artifactRoot.Replace('/', Path.DirectorySeparatorChar));
         var resultPath = Path.Combine(directory, "result.v1.json");
         var manifestPath = Path.Combine(directory, "execution-manifest.v1.json");
         var freezePath = Path.Combine(directory, "response-hash-freeze.v1.json");
-        if (!File.Exists(resultPath) || !File.Exists(manifestPath)) return Fail("P6P result/manifest is missing; no hash freeze");
-        if (File.Exists(freezePath)) return Fail("P6P response hash freeze already exists; stop before overwrite");
+        if (!File.Exists(resultPath) || !File.Exists(manifestPath)) return Fail($"{arm} result/manifest is missing; no hash freeze");
+        if (File.Exists(freezePath)) return Fail($"{arm} response hash freeze already exists; stop before overwrite");
         using var result = JsonDocument.Parse(File.ReadAllText(resultPath));
         using var manifest = JsonDocument.Parse(File.ReadAllText(manifestPath));
         var rows = result.RootElement.GetProperty("rows").EnumerateArray().ToArray();
         var requestRows = manifest.RootElement.GetProperty("rows").EnumerateArray().ToDictionary(
             row => $"{row.GetProperty("documentId").GetString()}|{row.GetProperty("packId").GetString()}", StringComparer.Ordinal);
         if (rows.Length != 31 || result.RootElement.GetProperty("logicalProviderCalls").GetInt32() != 31 ||
-            result.RootElement.GetProperty("goldRead").GetBoolean()) return Fail("P6P result envelope is not a complete Gold-free 31-pack run");
+            result.RootElement.GetProperty("goldRead").GetBoolean()) return Fail($"{arm} result envelope is not a complete Gold-free 31-pack run");
         var frozenRows = new List<object>(31);
         foreach (var row in rows)
         {
@@ -218,7 +235,7 @@ internal static class P6PDocumentAwarePdfQualification
                 request.GetProperty("providerRequestHash").GetString() != row.GetProperty("providerRequestHash").GetString() ||
                 request.GetProperty("locatorRegistryFingerprint").GetString() != row.GetProperty("locatorRegistryFingerprint").GetString() ||
                 request.GetProperty("userMessageSha256").GetString() != row.GetProperty("userMessageSha256").GetString())
-                return Fail($"P6P raw/request hash verification failed at {key}; Gold remains unopened");
+                return Fail($"{arm} raw/request hash verification failed at {key}; Gold remains unopened");
             frozenRows.Add(new
             {
                 documentId = row.GetProperty("documentId").GetString(), packId = row.GetProperty("packId").GetString(),
@@ -231,11 +248,11 @@ internal static class P6PDocumentAwarePdfQualification
         var resultHash = Hash(File.ReadAllText(resultPath));
         WriteNew(freezePath, new
         {
-            schemaVersion = "v5-p6p-document-aware-pdf-response-hash-freeze-v1", resultFileSha256 = resultHash,
+            schemaVersion = layoutAware ? "v5-p6pl-layout-aware-pdf-response-hash-freeze-v1" : "v5-p6p-document-aware-pdf-response-hash-freeze-v1", resultFileSha256 = resultHash,
             manifestFileSha256 = Hash(File.ReadAllText(manifestPath)), rows = frozenRows,
             verifiedBeforeGoldRead = true, providerCallsDuringFreeze = 0, goldRead = false, goldMutation = "NONE",
         });
-        Console.WriteLine("P6P raw content/SSE and request hashes verified and frozen: 31/31; ProviderCalls=0, GoldRead=false.");
+        Console.WriteLine($"{arm} raw content/SSE and request hashes verified and frozen: 31/31; ProviderCalls=0, GoldRead=false.");
         return 0;
     }
 
@@ -350,7 +367,7 @@ internal static class P6PDocumentAwarePdfQualification
         return 0;
     }
 
-    private static Prepared[] Prepare(string repo)
+    private static Prepared[] Prepare(string repo, bool layoutAware = false)
     {
         var docs = new[]
         {
@@ -359,7 +376,10 @@ internal static class P6PDocumentAwarePdfQualification
         return docs.Select(doc =>
         {
             var path = Path.Combine(repo, doc.Path.Replace('/', Path.DirectorySeparatorChar));
-            return new Prepared(doc.Path, path, PdfHeadingMembershipProductionAdapter.Prepare(path, doc.Id, Contract));
+            var plan = layoutAware
+                ? PdfHeadingMembershipProductionAdapter.PrepareLayoutAware(path, doc.Id, Contract)
+                : PdfHeadingMembershipProductionAdapter.Prepare(path, doc.Id, Contract);
+            return new Prepared(doc.Path, path, plan);
         }).ToArray();
     }
 
@@ -395,13 +415,15 @@ internal static class P6PDocumentAwarePdfQualification
         return oldRows.Count == 31;
     }
 
-    private static bool ValidateManifest(string repo, string path, IReadOnlyList<Prepared> docs, object[] currentRows)
+    private static bool ValidateManifest(string repo, string path, IReadOnlyList<Prepared> docs, object[] currentRows, bool layoutAware = false)
     {
         try
         {
             using var frozen = JsonDocument.Parse(File.ReadAllText(path));
             var root = frozen.RootElement;
-            if (root.GetProperty("status").GetString() != "PREPARED_NOT_AUTHORIZED" ||
+            var expectedSchema = layoutAware ? "v5-p6pl-layout-aware-pdf-manifest-v1" : "v5-p6p-document-aware-pdf-manifest-v1";
+            if (root.GetProperty("schemaVersion").GetString() != expectedSchema ||
+                root.GetProperty("status").GetString() != "PREPARED_NOT_AUTHORIZED" ||
                 root.GetProperty("providerCalls").GetInt32() != 0 || root.GetProperty("goldRead").GetBoolean() ||
                 root.GetProperty("rows").GetArrayLength() != currentRows.Length) return false;
             var old = root.GetProperty("rows").EnumerateArray().ToArray();

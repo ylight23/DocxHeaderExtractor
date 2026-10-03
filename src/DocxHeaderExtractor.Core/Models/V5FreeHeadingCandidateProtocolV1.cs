@@ -22,6 +22,7 @@ public static class V5FreeHeadingCandidateProtocolV1
     public const string UnschematizedVersion = "v5-free-reasoning-heading-membership-unconstrained-output-1";
     public const string BoundLocatorVersion = "v5-free-reasoning-heading-membership-source-parts-locator-1";
     public const string PdfDocumentAwareBoundLocatorVersion = "v5-free-reasoning-heading-membership-pdf-document-context-locator-1";
+    public const string PdfDocumentAwareLayoutBoundLocatorVersion = "v5-free-reasoning-heading-membership-pdf-document-context-layout-locator-1";
 
     public const string UnschematizedSystemPrompt = """
         You are reading a document represented by source occurrences in document order. Identify the occurrences that you judge to function as headings in this document. Use the document context and the observable source evidence provided. Return the headings you judge to be present in the source, using whatever response format and schema you prefer. Do not use any external answer key.
@@ -94,7 +95,10 @@ public static class V5FreeHeadingCandidateProtocolV1
     {
         if (documentContext.ValueKind != JsonValueKind.Object)
             throw new ArgumentException("PDF document context must be a JSON object.", nameof(documentContext));
-        return ComposeBoundLocatorCore(p6mCanonicalRequest, documentContext, PdfDocumentAwareBoundLocatorVersion);
+        var version = p6mCanonicalRequest.ProtocolVersion == PdfDocumentAwareLayoutBoundLocatorVersion
+            ? PdfDocumentAwareLayoutBoundLocatorVersion
+            : PdfDocumentAwareBoundLocatorVersion;
+        return ComposeBoundLocatorCore(p6mCanonicalRequest, documentContext, version);
     }
 
     private static V5FreeHeadingRequestV1 ComposeBoundLocatorCore(
