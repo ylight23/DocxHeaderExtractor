@@ -38,6 +38,7 @@ public sealed class V5P6SHTocPresentationSufficiencyTests
         var ordinalByAlias = plan.SourceAtoms.ToDictionary(atom => atom.Alias, atom => atom.Ordinal, StringComparer.Ordinal);
         var gold = ReadGold(atoms);
         var rows = new List<object>();
+        var issuedGoldCounterpartRanks = new List<int>();
 
         foreach (var toc in tocs.OrderBy(item => item.PackId, StringComparer.Ordinal).ThenBy(item => item.CandidateId, StringComparer.Ordinal))
         {
@@ -48,12 +49,16 @@ public sealed class V5P6SHTocPresentationSufficiencyTests
                 V5CandidatePolicyV1.Default with { MaxRelationsPerCandidate = int.MaxValue });
             var allForCandidate = all.Relations.Where(item => item.CandidateId == candidate.Id).ToArray();
             var issued = pack.Universe.Relations.Where(item => item.CandidateId == candidate.Id).ToArray();
+            var normalizedCandidateText = V5CandidateUniverseV1.Normalize(candidate.Text);
+            var compactCandidateText = Compact(normalizedCandidateText);
             var goldCounterparts = gold.Where(item => item.Identity != toc.Identity &&
-                    V5CandidateUniverseV1.Normalize(item.Text) == V5CandidateUniverseV1.Normalize(candidate.Text))
+                    (V5CandidateUniverseV1.Normalize(item.Text) == normalizedCandidateText ||
+                     Compact(V5CandidateUniverseV1.Normalize(item.Text)) == compactCandidateText))
                 .OrderBy(item => item.Ordinal).ToArray();
             var counterpartsByIdentity = goldCounterparts.ToDictionary(item => item.Identity, StringComparer.Ordinal);
             var matchingAll = allForCandidate.Where(item => counterpartsByIdentity.ContainsKey(item.TargetSpanIdentity)).ToArray();
             var matchingIssued = issued.Where(item => counterpartsByIdentity.ContainsKey(item.TargetSpanIdentity)).ToArray();
+            issuedGoldCounterpartRanks.AddRange(matchingIssued.Select(item => Rank(allForCandidate, candidate, ordinalByAlias, item.TargetSpanIdentity)));
             var navSignal = HasNavigationSignal(pack.Request.UserMessage);
             var relationStatus = matchingAll.Length == 0 ? "NO_CORRESPONDENCE_RELATION" :
                 matchingIssued.Length == 0 ? "RELATION_TARGET_TRUNCATED" :
@@ -67,7 +72,8 @@ public sealed class V5P6SHTocPresentationSufficiencyTests
                     item.Endpoint.Parts.Select(part => new Part(part.Alias, part.Start, part.End)).ToArray(),
                     candidate.Endpoint.Parts.Select(part => new Part(part.Alias, part.Start, part.End)).ToArray())),
                 modelDecision = "HEADING", relationStatus, presentationStatus, navigationSignalInFrozenRequest = navSignal,
-                goldBodyCounterparts = goldCounterparts.Select(item => new { item.Ordinal, item.Identity, item.Text }).ToArray(),
+                goldBodyCounterparts = goldCounterparts.Select(item => new { item.Ordinal, item.Identity, item.Text,
+                    matchTier = V5CandidateUniverseV1.Normalize(item.Text) == normalizedCandidateText ? "NFKC_WHITESPACE" : "NFKC_WHITESPACE_INSENSITIVE" }).ToArray(),
                 issuedRelations = issued.Select(item => new { item.Id, item.TargetSpanIdentity, item.TargetText, item.TargetPage, item.MatchTier,
                     rankBeforeCap = Rank(allForCandidate, candidate, ordinalByAlias, item.TargetSpanIdentity), targetIsGoldCounterpart = counterpartsByIdentity.ContainsKey(item.TargetSpanIdentity) }).ToArray(),
                 truncatedGoldCounterparts = matchingAll.Where(item => !issued.Any(issuedRelation => issuedRelation.TargetSpanIdentity == item.TargetSpanIdentity))
@@ -83,6 +89,8 @@ public sealed class V5P6SHTocPresentationSufficiencyTests
         var representationOverlap = tocs.Count(toc => capture.Representations.Any(item => Overlap(item.Parts, toc.Parts)));
         var representationExact = tocs.Count(toc => capture.Representations.Any(item => item.Identity == toc.Identity));
         Assert.Equal(1, representationOverlap); Assert.Equal(0, representationExact);
+        Assert.Equal(87, issuedGoldCounterpartRanks.Count);
+        Assert.All(issuedGoldCounterpartRanks, rank => Assert.Equal(1, rank));
 
         var output = new
         {
@@ -93,7 +101,7 @@ public sealed class V5P6SHTocPresentationSufficiencyTests
             authority = new
             {
                 scope = "Reviewed SRC-095 CONTENTS_ENTRY false positives only. Relation targets are diagnostic read-only evidence; relation Gold is absent.",
-                relationStatus = "Issued/truncated/no-correspondence is measured only against same-normalized-text canonical heading occurrences, not asserted as a relation truth.",
+                relationStatus = "Issued/truncated/no-correspondence is measured against the relation builder's two tiers: NFKC_WHITESPACE then NFKC_WHITESPACE_INSENSITIVE. This remains correspondence evidence, not a relation-Gold assertion.",
                 presentationStatus = "A sufficient result means exactly one body-heading counterpart target was issued and a Table of Contents signal was model-visible in that frozen request; it does not claim causal proof beyond the observed HEADING decision.",
             },
             totals = new
@@ -189,6 +197,7 @@ public sealed class V5P6SHTocPresentationSufficiencyTests
         var first = identity.Split('|')[0];
         return first[..first.LastIndexOf(':')];
     }
+    private static string Compact(string normalizedText) => string.Concat(normalizedText.Where(character => !char.IsWhiteSpace(character)));
     private static IReadOnlyList<Part> Parts(JsonElement array) => array.EnumerateArray().Select(item => new Part(item.GetProperty("Alias").GetString()!, item.GetProperty("Start").GetInt32(), item.GetProperty("End").GetInt32())).ToArray();
     private static string Identity(IReadOnlyList<BoundSourcePart> parts) => string.Join("|", parts.Select(part => $"{part.Alias}:{part.Start}-{part.End}"));
     private static string Identity(IReadOnlyList<Part> parts) => string.Join("|", parts.Select(part => $"{part.Alias}:{part.Start}-{part.End}"));

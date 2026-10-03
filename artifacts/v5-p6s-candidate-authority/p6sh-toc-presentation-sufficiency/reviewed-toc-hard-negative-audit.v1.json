@@ -10,7 +10,7 @@
   },
   "authority": {
     "scope": "Reviewed SRC-095 CONTENTS_ENTRY false positives only. Relation targets are diagnostic read-only evidence; relation Gold is absent.",
-    "relationStatus": "Issued/truncated/no-correspondence is measured only against same-normalized-text canonical heading occurrences, not asserted as a relation truth.",
+    "relationStatus": "Issued/truncated/no-correspondence is measured against the relation builder's two tiers: NFKC_WHITESPACE then NFKC_WHITESPACE_INSENSITIVE. This remains correspondence evidence, not a relation-Gold assertion.",
     "presentationStatus": "A sufficient result means exactly one body-heading counterpart target was issued and a Table of Contents signal was model-visible in that frozen request; it does not claim causal proof beyond the observed HEADING decision."
   },
   "totals": {
@@ -20,26 +20,18 @@
     "tocWithExactRepresentation": 0,
     "relationStatuses": [
       {
-        "status": "NO_CORRESPONDENCE_RELATION",
-        "count": 4
-      },
-      {
         "status": "RELATION_TARGET_ISSUED",
-        "count": 83
+        "count": 87
       }
     ],
     "presentationStatuses": [
       {
-        "status": "NOT_EVALUABLE_FROM_SINGLE_ISSUED_TARGET",
-        "count": 4
-      },
-      {
         "status": "PRESENTATION_CONTEXT_WEAK",
-        "count": 31
+        "count": 34
       },
       {
         "status": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
-        "count": 52
+        "count": 53
       }
     ]
   },
@@ -60,7 +52,8 @@
         {
           "Ordinal": 6,
           "Identity": "L0129:S0:0-15",
-          "Text": "1. Introduction"
+          "Text": "1. Introduction",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -128,10 +121,17 @@
       "candidatePage": 2,
       "overlappingCandidateVariants": 13,
       "modelDecision": "HEADING",
-      "relationStatus": "NO_CORRESPONDENCE_RELATION",
-      "presentationStatus": "NOT_EVALUABLE_FROM_SINGLE_ISSUED_TARGET",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_SUFFICIENT_BUT_SEMANTIC_ERROR",
       "navigationSignalInFrozenRequest": true,
-      "goldBodyCounterparts": [],
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 7,
+          "Identity": "L0134:S0:0-27",
+          "Text": "1.1. Prior Versions of HTTP",
+          "matchTier": "NFKC_WHITESPACE_INSENSITIVE"
+        }
+      ],
       "issuedRelations": [
         {
           "Id": "R20",
@@ -140,7 +140,7 @@
           "TargetPage": 5,
           "MatchTier": "NFKC_WHITESPACE_INSENSITIVE",
           "rankBeforeCap": 1,
-          "targetIsGoldCounterpart": false
+          "targetIsGoldCounterpart": true
         }
       ],
       "truncatedGoldCounterparts": [],
@@ -204,7 +204,8 @@
         {
           "Ordinal": 8,
           "Identity": "L0146:S0:0-23",
-          "Text": "1.2. Delegation to QUIC"
+          "Text": "1.2. Delegation to QUIC",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -279,7 +280,8 @@
         {
           "Ordinal": 9,
           "Identity": "L0162:S0:0-27",
-          "Text": "2. HTTP/3 Protocol Overview"
+          "Text": "2. HTTP/3 Protocol Overview",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -354,7 +356,8 @@
         {
           "Ordinal": 10,
           "Identity": "L0185:S0:0-26",
-          "Text": "2.1. Document Organization"
+          "Text": "2.1. Document Organization",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -429,7 +432,8 @@
         {
           "Ordinal": 11,
           "Identity": "L0205:S0:0-32",
-          "Text": "2.2. Conventions and Terminology"
+          "Text": "2.2. Conventions and Terminology",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -504,7 +508,8 @@
         {
           "Ordinal": 12,
           "Identity": "L0243:S0:0-34",
-          "Text": "3. Connection Setup and Management"
+          "Text": "3. Connection Setup and Management",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -579,7 +584,8 @@
         {
           "Ordinal": 13,
           "Identity": "L0244:S0:0-35",
-          "Text": "3.1. Discovering an HTTP/3 Endpoint"
+          "Text": "3.1. Discovering an HTTP/3 Endpoint",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -654,7 +660,8 @@
         {
           "Ordinal": 14,
           "Identity": "L0268:S0:0-32",
-          "Text": "3.1.1. HTTP Alternative Services"
+          "Text": "3.1.1. HTTP Alternative Services",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -729,7 +736,8 @@
         {
           "Ordinal": 15,
           "Identity": "L0277:S0:0-20",
-          "Text": "3.1.2. Other Schemes"
+          "Text": "3.1.2. Other Schemes",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -804,7 +812,8 @@
         {
           "Ordinal": 16,
           "Identity": "L0288:S0:0-29",
-          "Text": "3.2. Connection Establishment"
+          "Text": "3.2. Connection Establishment",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -879,7 +888,8 @@
         {
           "Ordinal": 17,
           "Identity": "L0305:S0:0-21",
-          "Text": "3.3. Connection Reuse"
+          "Text": "3.3. Connection Reuse",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -954,7 +964,8 @@
         {
           "Ordinal": 18,
           "Identity": "L0335:S0:0-38",
-          "Text": "4. Expressing HTTP Semantics in HTTP/3"
+          "Text": "4. Expressing HTTP Semantics in HTTP/3",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1029,7 +1040,8 @@
         {
           "Ordinal": 19,
           "Identity": "L0336:S0:0-25",
-          "Text": "4.1. HTTP Message Framing"
+          "Text": "4.1. HTTP Message Framing",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1104,7 +1116,8 @@
         {
           "Ordinal": 20,
           "Identity": "L0396:S0:0-41",
-          "Text": "4.1.1. Request Cancellation and Rejection"
+          "Text": "4.1.1. Request Cancellation and Rejection",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1179,7 +1192,8 @@
         {
           "Ordinal": 21,
           "Identity": "L0428:S0:0-39",
-          "Text": "4.1.2. Malformed Requests and Responses"
+          "Text": "4.1.2. Malformed Requests and Responses",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1254,7 +1268,8 @@
         {
           "Ordinal": 22,
           "Identity": "L0451:S0:0-16",
-          "Text": "4.2. HTTP Fields"
+          "Text": "4.2. HTTP Fields",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1329,7 +1344,8 @@
         {
           "Ordinal": 23,
           "Identity": "L0472:S0:0-24",
-          "Text": "4.2.1. Field Compression"
+          "Text": "4.2.1. Field Compression",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1404,7 +1420,8 @@
         {
           "Ordinal": 24,
           "Identity": "L0483:S0:0-30",
-          "Text": "4.2.2. Header Size Constraints"
+          "Text": "4.2.2. Header Size Constraints",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1479,7 +1496,8 @@
         {
           "Ordinal": 25,
           "Identity": "L0497:S0:0-22",
-          "Text": "4.3. HTTP Control Data"
+          "Text": "4.3. HTTP Control Data",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1554,7 +1572,8 @@
         {
           "Ordinal": 26,
           "Identity": "L0514:S0:0-35",
-          "Text": "4.3.1. Request Pseudo-Header Fields"
+          "Text": "4.3.1. Request Pseudo-Header Fields",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1629,7 +1648,8 @@
         {
           "Ordinal": 27,
           "Identity": "L0551:S0:0-36",
-          "Text": "4.3.2. Response Pseudo-Header Fields"
+          "Text": "4.3.2. Response Pseudo-Header Fields",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1704,7 +1724,8 @@
         {
           "Ordinal": 28,
           "Identity": "L0557:S0:0-23",
-          "Text": "4.4. The CONNECT Method"
+          "Text": "4.4. The CONNECT Method",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1779,7 +1800,8 @@
         {
           "Ordinal": 29,
           "Identity": "L0605:S0:0-17",
-          "Text": "4.5. HTTP Upgrade"
+          "Text": "4.5. HTTP Upgrade",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1854,7 +1876,8 @@
         {
           "Ordinal": 30,
           "Identity": "L0608:S0:0-4|L0608:S1:0-11",
-          "Text": "4.6. Server Push"
+          "Text": "4.6. Server Push",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -1929,7 +1952,8 @@
         {
           "Ordinal": 31,
           "Identity": "L0674:S0:0-21",
-          "Text": "5. Connection Closure"
+          "Text": "5. Connection Closure",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2004,7 +2028,8 @@
         {
           "Ordinal": 32,
           "Identity": "L0677:S0:0-21",
-          "Text": "5.1. Idle Connections"
+          "Text": "5.1. Idle Connections",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2079,7 +2104,8 @@
         {
           "Ordinal": 33,
           "Identity": "L0693:S0:0-24",
-          "Text": "5.2. Connection Shutdown"
+          "Text": "5.2. Connection Shutdown",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2154,7 +2180,8 @@
         {
           "Ordinal": 34,
           "Identity": "L0760:S0:0-34",
-          "Text": "5.3. Immediate Application Closure"
+          "Text": "5.3. Immediate Application Closure",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2229,7 +2256,8 @@
         {
           "Ordinal": 35,
           "Identity": "L0773:S0:0-22",
-          "Text": "5.4. Transport Closure"
+          "Text": "5.4. Transport Closure",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2304,7 +2332,8 @@
         {
           "Ordinal": 36,
           "Identity": "L0779:S0:0-27",
-          "Text": "6. Stream Mapping and Usage"
+          "Text": "6. Stream Mapping and Usage",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2379,7 +2408,8 @@
         {
           "Ordinal": 37,
           "Identity": "L0793:S0:0-26",
-          "Text": "6.1. Bidirectional Streams"
+          "Text": "6.1. Bidirectional Streams",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2454,7 +2484,8 @@
         {
           "Ordinal": 38,
           "Identity": "L0808:S0:0-27",
-          "Text": "6.2. Unidirectional Streams"
+          "Text": "6.2. Unidirectional Streams",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2529,7 +2560,8 @@
         {
           "Ordinal": 39,
           "Identity": "L0852:S0:0-22",
-          "Text": "6.2.1. Control Streams"
+          "Text": "6.2.1. Control Streams",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2604,7 +2636,8 @@
         {
           "Ordinal": 40,
           "Identity": "L0870:S0:0-19",
-          "Text": "6.2.2. Push Streams"
+          "Text": "6.2.2. Push Streams",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2679,7 +2712,8 @@
         {
           "Ordinal": 41,
           "Identity": "L0893:S0:0-28",
-          "Text": "6.2.3. Reserved Stream Types"
+          "Text": "6.2.3. Reserved Stream Types",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2754,7 +2788,8 @@
         {
           "Ordinal": 42,
           "Identity": "L0903:S0:0-21",
-          "Text": "7. HTTP Framing Layer"
+          "Text": "7. HTTP Framing Layer",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2829,7 +2864,8 @@
         {
           "Ordinal": 43,
           "Identity": "L0924:S0:0-17",
-          "Text": "7.1. Frame Layout"
+          "Text": "7.1. Frame Layout",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2904,7 +2940,8 @@
         {
           "Ordinal": 44,
           "Identity": "L0944:S0:0-4|L0944:S1:0-16",
-          "Text": "7.2. Frame Deﬁnitions"
+          "Text": "7.2. Frame Deﬁnitions",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -2979,7 +3016,8 @@
         {
           "Ordinal": 45,
           "Identity": "L0945:S0:0-11",
-          "Text": "7.2.1. DATA"
+          "Text": "7.2.1. DATA",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3054,7 +3092,8 @@
         {
           "Ordinal": 46,
           "Identity": "L0959:S0:0-14",
-          "Text": "7.2.2. HEADERS"
+          "Text": "7.2.2. HEADERS",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3129,7 +3168,8 @@
         {
           "Ordinal": 47,
           "Identity": "L0971:S0:0-18",
-          "Text": "7.2.3. CANCEL_PUSH"
+          "Text": "7.2.3. CANCEL_PUSH",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3204,7 +3244,8 @@
         {
           "Ordinal": 48,
           "Identity": "L1011:S0:0-15",
-          "Text": "7.2.4. SETTINGS"
+          "Text": "7.2.4. SETTINGS",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3279,7 +3320,8 @@
         {
           "Ordinal": 51,
           "Identity": "L1105:S0:0-19",
-          "Text": "7.2.5. PUSH_PROMISE"
+          "Text": "7.2.5. PUSH_PROMISE",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3354,7 +3396,8 @@
         {
           "Ordinal": 52,
           "Identity": "L1143:S0:0-13",
-          "Text": "7.2.6. GOAWAY"
+          "Text": "7.2.6. GOAWAY",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3429,7 +3472,8 @@
         {
           "Ordinal": 53,
           "Identity": "L1164:S0:0-18",
-          "Text": "7.2.7. MAX_PUSH_ID"
+          "Text": "7.2.7. MAX_PUSH_ID",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3504,7 +3548,8 @@
         {
           "Ordinal": 54,
           "Identity": "L1189:S0:0-27",
-          "Text": "7.2.8. Reserved Frame Types"
+          "Text": "7.2.8. Reserved Frame Types",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3579,7 +3624,8 @@
         {
           "Ordinal": 55,
           "Identity": "L1199:S0:0-17",
-          "Text": "8. Error Handling"
+          "Text": "8. Error Handling",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3654,7 +3700,8 @@
         {
           "Ordinal": 56,
           "Identity": "L1223:S0:0-23",
-          "Text": "8.1. HTTP/3 Error Codes"
+          "Text": "8.1. HTTP/3 Error Codes",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3729,7 +3776,8 @@
         {
           "Ordinal": 57,
           "Identity": "L1265:S0:0-23",
-          "Text": "9. Extensions to HTTP/3"
+          "Text": "9. Extensions to HTTP/3",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3804,7 +3852,8 @@
         {
           "Ordinal": 58,
           "Identity": "L1294:S0:0-27",
-          "Text": "10. Security Considerations"
+          "Text": "10. Security Considerations",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3879,7 +3928,8 @@
         {
           "Ordinal": 59,
           "Identity": "L1298:S0:0-22",
-          "Text": "10.1. Server Authority"
+          "Text": "10.1. Server Authority",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -3954,7 +4004,8 @@
         {
           "Ordinal": 60,
           "Identity": "L1301:S0:0-28",
-          "Text": "10.2. Cross-Protocol Attacks"
+          "Text": "10.2. Cross-Protocol Attacks",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4029,7 +4080,8 @@
         {
           "Ordinal": 61,
           "Identity": "L1308:S0:0-40",
-          "Text": "10.3. Intermediary-Encapsulation Attacks"
+          "Text": "10.3. Intermediary-Encapsulation Attacks",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4104,7 +4156,8 @@
         {
           "Ordinal": 74,
           "Identity": "L1465:S0:0-5|L1465:S1:0-14",
-          "Text": "11.2. New Registries"
+          "Text": "11.2. New Registries",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4179,7 +4232,8 @@
         {
           "Ordinal": 75,
           "Identity": "L1472:S0:0-19",
-          "Text": "11.2.1. Frame Types"
+          "Text": "11.2.1. Frame Types",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4254,7 +4308,8 @@
         {
           "Ordinal": 76,
           "Identity": "L1508:S0:0-27",
-          "Text": "11.2.2. Settings Parameters"
+          "Text": "11.2.2. Settings Parameters",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4329,7 +4384,8 @@
         {
           "Ordinal": 77,
           "Identity": "L1540:S0:0-19",
-          "Text": "11.2.3. Error Codes"
+          "Text": "11.2.3. Error Codes",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4404,7 +4460,8 @@
         {
           "Ordinal": 78,
           "Identity": "L1591:S0:0-20",
-          "Text": "11.2.4. Stream Types"
+          "Text": "11.2.4. Stream Types",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4479,7 +4536,8 @@
         {
           "Ordinal": 79,
           "Identity": "L1612:S0:0-14",
-          "Text": "12. References"
+          "Text": "12. References",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4554,7 +4612,8 @@
         {
           "Ordinal": 80,
           "Identity": "L1613:S0:0-5|L1613:S1:0-20",
-          "Text": "12.1. Normative References"
+          "Text": "12.1. Normative References",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4629,7 +4688,8 @@
         {
           "Ordinal": 81,
           "Identity": "L1655:S0:0-28",
-          "Text": "12.2. Informative References"
+          "Text": "12.2. Informative References",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4704,7 +4764,8 @@
         {
           "Ordinal": 63,
           "Identity": "L1333:S0:0-38",
-          "Text": "10.5. Denial-of-Service Considerations"
+          "Text": "10.5. Denial-of-Service Considerations",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4779,7 +4840,8 @@
         {
           "Ordinal": 82,
           "Identity": "L1677:S0:0-56",
-          "Text": "Appendix A. Considerations for Transitioning from HTTP/2"
+          "Text": "Appendix A. Considerations for Transitioning from HTTP/2",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4854,7 +4916,8 @@
         {
           "Ordinal": 83,
           "Identity": "L1688:S0:0-12",
-          "Text": "A.1. Streams"
+          "Text": "A.1. Streams",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -4929,7 +4992,8 @@
         {
           "Ordinal": 84,
           "Identity": "L1710:S0:0-21",
-          "Text": "A.2. HTTP Frame Types"
+          "Text": "A.2. HTTP Frame Types",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5004,7 +5068,8 @@
         {
           "Ordinal": 85,
           "Identity": "L1729:S0:0-32",
-          "Text": "A.2.1. Prioritization Diﬀerences"
+          "Text": "A.2.1. Prioritization Diﬀerences",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5079,7 +5144,8 @@
         {
           "Ordinal": 86,
           "Identity": "L1736:S0:0-35",
-          "Text": "A.2.2. Field Compression Diﬀerences"
+          "Text": "A.2.2. Field Compression Diﬀerences",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5154,7 +5220,8 @@
         {
           "Ordinal": 87,
           "Identity": "L1745:S0:0-30",
-          "Text": "A.2.3. Flow-Control Diﬀerences"
+          "Text": "A.2.3. Flow-Control Diﬀerences",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5229,7 +5296,8 @@
         {
           "Ordinal": 88,
           "Identity": "L1750:S0:0-45",
-          "Text": "A.2.4. Guidance for New Frame Type Deﬁnitions"
+          "Text": "A.2.4. Guidance for New Frame Type Deﬁnitions",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5304,7 +5372,8 @@
         {
           "Ordinal": 89,
           "Identity": "L1761:S0:0-49",
-          "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types"
+          "Text": "A.2.5. Comparison ofHTTP/2 and HTTP/3 Frame Types",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5379,7 +5448,8 @@
         {
           "Ordinal": 90,
           "Identity": "L1787:S0:0-31",
-          "Text": "A.3. HTTP/2 SETTINGS Parameters"
+          "Text": "A.3. HTTP/2 SETTINGS Parameters",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5454,7 +5524,8 @@
         {
           "Ordinal": 91,
           "Identity": "L1827:S0:0-23",
-          "Text": "A.4. HTTP/2 Error Codes"
+          "Text": "A.4. HTTP/2 Error Codes",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5529,7 +5600,8 @@
         {
           "Ordinal": 64,
           "Identity": "L1357:S0:0-36",
-          "Text": "10.5.1. Limits on Field Section Size"
+          "Text": "10.5.1. Limits on Field Section Size",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5597,10 +5669,17 @@
       "candidatePage": 4,
       "overlappingCandidateVariants": 10,
       "modelDecision": "HEADING",
-      "relationStatus": "NO_CORRESPONDENCE_RELATION",
-      "presentationStatus": "NOT_EVALUABLE_FROM_SINGLE_ISSUED_TARGET",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
       "navigationSignalInFrozenRequest": false,
-      "goldBodyCounterparts": [],
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 92,
+          "Identity": "L1856:S0:0-46",
+          "Text": "A.4.1. Mappingbetween HTTP/2 and HTTP/3 Errors",
+          "matchTier": "NFKC_WHITESPACE_INSENSITIVE"
+        }
+      ],
       "issuedRelations": [
         {
           "Id": "R44",
@@ -5609,7 +5688,7 @@
           "TargetPage": 52,
           "MatchTier": "NFKC_WHITESPACE_INSENSITIVE",
           "rankBeforeCap": 1,
-          "targetIsGoldCounterpart": false
+          "targetIsGoldCounterpart": true
         }
       ],
       "truncatedGoldCounterparts": [],
@@ -5673,7 +5752,8 @@
         {
           "Ordinal": 93,
           "Identity": "L1878:S0:0-15",
-          "Text": "Acknowledgments"
+          "Text": "Acknowledgments",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5748,7 +5828,8 @@
         {
           "Ordinal": 94,
           "Identity": "L1912:S0:0-5",
-          "Text": "Index"
+          "Text": "Index",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5823,7 +5904,8 @@
         {
           "Ordinal": 65,
           "Identity": "L1374:S0:0-22",
-          "Text": "10.5.2. CONNECT Issues"
+          "Text": "10.5.2. CONNECT Issues",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5898,7 +5980,8 @@
         {
           "Ordinal": 66,
           "Identity": "L1383:S0:0-24",
-          "Text": "10.6. Use of Compression"
+          "Text": "10.6. Use of Compression",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -5973,7 +6056,8 @@
         {
           "Ordinal": 67,
           "Identity": "L1399:S0:0-32",
-          "Text": "10.7. Padding and Traﬃc Analysis"
+          "Text": "10.7. Padding and Traﬃc Analysis",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -6048,7 +6132,8 @@
         {
           "Ordinal": 68,
           "Identity": "L1424:S0:0-19",
-          "Text": "10.8. Frame Parsing"
+          "Text": "10.8. Frame Parsing",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -6123,7 +6208,8 @@
         {
           "Ordinal": 69,
           "Identity": "L1431:S0:0-5|L1431:S1:0-10",
-          "Text": "10.9. Early Data"
+          "Text": "10.9. Early Data",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -6198,7 +6284,8 @@
         {
           "Ordinal": 70,
           "Identity": "L1436:S0:0-16",
-          "Text": "10.10. Migration"
+          "Text": "10.10. Migration",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -6273,7 +6360,8 @@
         {
           "Ordinal": 71,
           "Identity": "L1442:S0:0-29",
-          "Text": "10.11. Privacy Considerations"
+          "Text": "10.11. Privacy Considerations",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -6341,10 +6429,17 @@
       "candidatePage": 3,
       "overlappingCandidateVariants": 11,
       "modelDecision": "HEADING",
-      "relationStatus": "NO_CORRESPONDENCE_RELATION",
-      "presentationStatus": "NOT_EVALUABLE_FROM_SINGLE_ISSUED_TARGET",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
       "navigationSignalInFrozenRequest": false,
-      "goldBodyCounterparts": [],
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 62,
+          "Identity": "L1320:S0:0-5|L1320:S1:0-32",
+          "Text": "10.4. Cacheability of Pushed Responses",
+          "matchTier": "NFKC_WHITESPACE_INSENSITIVE"
+        }
+      ],
       "issuedRelations": [
         {
           "Id": "R2",
@@ -6353,7 +6448,7 @@
           "TargetPage": 37,
           "MatchTier": "NFKC_WHITESPACE_INSENSITIVE",
           "rankBeforeCap": 1,
-          "targetIsGoldCounterpart": false
+          "targetIsGoldCounterpart": true
         }
       ],
       "truncatedGoldCounterparts": [],
@@ -6417,7 +6512,8 @@
         {
           "Ordinal": 72,
           "Identity": "L1453:S0:0-23",
-          "Text": "11. IANA Considerations"
+          "Text": "11. IANA Considerations",
+          "matchTier": "NFKC_WHITESPACE"
         }
       ],
       "issuedRelations": [
@@ -6485,10 +6581,17 @@
       "candidatePage": 4,
       "overlappingCandidateVariants": 13,
       "modelDecision": "HEADING",
-      "relationStatus": "NO_CORRESPONDENCE_RELATION",
-      "presentationStatus": "NOT_EVALUABLE_FROM_SINGLE_ISSUED_TARGET",
+      "relationStatus": "RELATION_TARGET_ISSUED",
+      "presentationStatus": "PRESENTATION_CONTEXT_WEAK",
       "navigationSignalInFrozenRequest": false,
-      "goldBodyCounterparts": [],
+      "goldBodyCounterparts": [
+        {
+          "Ordinal": 73,
+          "Identity": "L1456:S0:0-49",
+          "Text": "11.1. Registration of HTTP/3 Identiﬁcation String",
+          "matchTier": "NFKC_WHITESPACE_INSENSITIVE"
+        }
+      ],
       "issuedRelations": [
         {
           "Id": "R23",
@@ -6497,7 +6600,7 @@
           "TargetPage": 40,
           "MatchTier": "NFKC_WHITESPACE_INSENSITIVE",
           "rankBeforeCap": 1,
-          "targetIsGoldCounterpart": false
+          "targetIsGoldCounterpart": true
         }
       ],
       "truncatedGoldCounterparts": [],
