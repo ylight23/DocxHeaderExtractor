@@ -273,8 +273,7 @@ public enum V5CandidateDecisionKind
 public sealed record V5AcceptedCandidateDecisionV1(
     int OriginalOrdinal,
     V5IssuedCandidateV1 Candidate,
-    V5CandidateDecisionKind Kind,
-    V5IssuedRelationV1? Relation);
+    V5CandidateDecisionKind Kind);
 
 public sealed record V5QuarantinedCandidateDecisionV1(int OriginalOrdinal, string Reason);
 
@@ -290,8 +289,8 @@ public sealed record V5CandidateDecisionResultV1(
 
 /// <summary>
 /// Layers 2 and 3 of the candidate-authority lane: the model-facing request (candidate texts and
-/// relation ids, nothing else selectable) and the decision binder, which validates only that every id
-/// was issued, every kind is in the enum, and every relation belongs to its candidate. It never
+/// read-only relation evidence, nothing else selectable) and the decision binder, which validates only that every id
+/// was issued and every kind is in the enum. It never
 /// interprets a model-authored locator - there is none to interpret.
 /// </summary>
 public static class V5CandidateDecisionProtocolV1
@@ -301,9 +300,9 @@ public static class V5CandidateDecisionProtocolV1
     public const string SystemPrompt = """
         You are reading a document. The harness has already located every source extent you may select and issued each one a candidate id (C#). Candidates may overlap: one source line may appear alone, trimmed, or joined with the next lines as a longer candidate. Decide, for the candidates in this request, which ones function as a heading at their own location, choosing the candidate whose extent is the complete heading.
 
-        Some candidates only repeat, list, or refer to structure that occurs elsewhere in the document (for example an entry that names a section located elsewhere). Mark those as representations. When relations (R#) are supplied for a candidate, a representation may cite the one relation that identifies the occurrence it refers to.
+        Some candidates only repeat, list, or refer to structure that occurs elsewhere in the document (for example an entry that names a section located elsewhere). Mark those as representations. Relations (R#), when supplied, are read-only reasoning evidence; never return an R#.
 
-        Return one JSON object with exactly this shape: {"decisions":[{"candidate":"C17","kind":"HEADING"},{"candidate":"C18","kind":"REPRESENTATION","relation":"R3"}]}. kind is HEADING or REPRESENTATION. relation is optional, allowed only on REPRESENTATION, and must be a relation supplied for that same candidate. Use only issued candidate and relation ids. contextOnlyEvidence is read-only context and has no ids. Omit candidates that are neither. Output no other property, text, reason, level, or confidence. Do not use any external answer key.
+        Return one JSON object with exactly this shape: {"decisions":[{"candidate":"C17","kind":"HEADING"},{"candidate":"C18","kind":"REPRESENTATION"}]}. kind is HEADING or REPRESENTATION. Use only issued candidate ids. contextOnlyEvidence and relations are read-only and have no selectable ids. Omit candidates that are neither. Output no other property, text, reason, level, or confidence. Do not use any external answer key.
         """;
 
     private static readonly JsonSerializerOptions WireJson = new()
@@ -312,7 +311,7 @@ public static class V5CandidateDecisionProtocolV1
         WriteIndented = false,
     };
 
-    private static readonly HashSet<string> DecisionKeys = new(["candidate", "kind", "relation"], StringComparer.Ordinal);
+    private static readonly HashSet<string> DecisionKeys = new(["candidate", "kind"], StringComparer.Ordinal);
 
     /// <param name="contextOnlyEvidence">Read-only text; issued no id and never selectable.</param>
     /// <param name="documentContext">Optional neutral, read-only document-wide context object.</param>
@@ -362,7 +361,7 @@ public static class V5CandidateDecisionProtocolV1
         var collapsed = 0;
         foreach (var group in valid.GroupBy(item => item.Candidate.Id, StringComparer.Ordinal))
         {
-            var distinct = group.Select(item => (item.Kind, Relation: item.Relation?.Id)).Distinct().Count();
+            var distinct = group.Select(item => item.Kind).Distinct().Count();
             if (distinct == 1)
             {
                 accepted2.Add(group.First());
@@ -370,6 +369,16 @@ public static class V5CandidateDecisionProtocolV1
                 continue;
             }
             quarantined.AddRange(group.Select(item => new V5QuarantinedCandidateDecisionV1(item.OriginalOrdinal, "candidate-conflicting-decisions")));
+        }
+        // An overlapping cluster has no deterministic winner.  Quarantine every accepted heading
+        // in that connected cluster; representations and disjoint heading candidates survive.
+        var headings = accepted2.Where(item => item.Kind == V5CandidateDecisionKind.HEADING).ToArray();
+        var conflictIds = OverlapConflictIds(headings);
+        if (conflictIds.Count != 0)
+        {
+            foreach (var conflict in accepted2.Where(item => conflictIds.Contains(item.Candidate.Id)).ToArray())
+                quarantined.Add(new V5QuarantinedCandidateDecisionV1(conflict.OriginalOrdinal, "candidate-overlap-conflict"));
+            accepted2.RemoveAll(item => conflictIds.Contains(item.Candidate.Id));
         }
         return new V5CandidateDecisionResultV1(ordinal,
             accepted2.OrderBy(item => item.OriginalOrdinal).ToArray(),
@@ -391,16 +400,24 @@ public static class V5CandidateDecisionProtocolV1
             !Enum.TryParse<V5CandidateDecisionKind>(kindElement.GetString(), ignoreCase: false, out var kind) ||
             !Enum.IsDefined(kind) || kindElement.GetString() != kind.ToString())
             return "decision-kind-not-in-enum";
-        V5IssuedRelationV1? relation = null;
-        if (decision.TryGetProperty("relation", out var relationElement))
-        {
-            if (kind != V5CandidateDecisionKind.REPRESENTATION) return "relation-only-allowed-on-representation";
-            if (relationElement.ValueKind != JsonValueKind.String || !universe.TryRelation(relationElement.GetString()!, out var issued))
-                return "relation-not-issued";
-            if (issued.CandidateId != candidate.Id) return "relation-not-issued-for-candidate";
-            relation = issued;
-        }
-        accepted = new V5AcceptedCandidateDecisionV1(ordinal, candidate, kind, relation);
+        accepted = new V5AcceptedCandidateDecisionV1(ordinal, candidate, kind);
         return null;
     }
+
+    private static HashSet<string> OverlapConflictIds(IReadOnlyList<V5AcceptedCandidateDecisionV1> headings)
+    {
+        var conflicted = new HashSet<string>(StringComparer.Ordinal);
+        for (var left = 0; left < headings.Count; left++)
+        for (var right = left + 1; right < headings.Count; right++)
+        {
+            if (!Overlaps(headings[left].Candidate.Endpoint, headings[right].Candidate.Endpoint)) continue;
+            conflicted.Add(headings[left].Candidate.Id);
+            conflicted.Add(headings[right].Candidate.Id);
+        }
+        return conflicted;
+    }
+
+    private static bool Overlaps(BoundClaimEndpoint left, BoundClaimEndpoint right) =>
+        left.Parts.Any(a => right.Parts.Any(b => string.Equals(a.Alias, b.Alias, StringComparison.Ordinal) &&
+            Math.Max(a.Start, b.Start) < Math.Min(a.End, b.End)));
 }

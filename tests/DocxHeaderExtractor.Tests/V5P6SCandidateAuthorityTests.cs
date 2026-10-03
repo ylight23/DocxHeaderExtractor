@@ -158,7 +158,7 @@ public sealed class V5P6SCandidateAuthorityTests
                 candidateIdsRequestLocalContiguous = true, candidateIdentitiesUnique = true,
                 everyCandidateRebindsToFrozenIdentity = true, contextOnlySelectable = false,
                 modelAuthoredCoordinates = false, relationTargetsReadOnly = true,
-                modelDecisionGrammar = "candidate C# + HEADING/REPRESENTATION + optional candidate-scoped R# only",
+                modelDecisionGrammar = "candidate C# + HEADING/REPRESENTATION only; R# is read-only reasoning evidence",
             },
             universe = new { packs = rows.Count, ownedOccurrences = ownedCount, candidates = candidateCount, candidatesByKind = candidateByKind,
                 relations = relationCount, relationsTruncated = relationTruncated, maxCandidatesPerPack = rows.Max(row => row.Candidates) },
@@ -181,25 +181,38 @@ public sealed class V5P6SCandidateAuthorityTests
             new SemanticSourceAtom("L2", "source-2", 2, 2, 0, 0, "1. Introduction"),
         };
         var universe = V5CandidateUniverseV1.Build(atoms.Take(2).ToArray(), atoms, V5CandidatePolicyV1.Default);
-        var relation = Assert.Single(universe.Relations.Where(item => item.CandidateId == "C1"));
-        var validHeading = universe.Candidates.First(item => item.Id != relation.CandidateId);
-        var raw = $$"""{"decisions":[{"candidate":"{{relation.CandidateId}}","kind":"REPRESENTATION","relation":"{{relation.Id}}"},{"candidate":"{{validHeading.Id}}","kind":"HEADING"},{"candidate":"C999","kind":"HEADING"},{"candidate":"{{validHeading.Id}}","kind":"HEADING","sourceParts":[]}]}""";
+        var representation = universe.Candidates.First(item => item.Id == "C1");
+        var validHeading = universe.Candidates.First(item => item.Id != representation.Id);
+        var raw = $$"""{"decisions":[{"candidate":"{{representation.Id}}","kind":"REPRESENTATION"},{"candidate":"{{validHeading.Id}}","kind":"HEADING"},{"candidate":"C999","kind":"HEADING"},{"candidate":"{{validHeading.Id}}","kind":"HEADING","sourceParts":[]}]}""";
         using var payload = JsonDocument.Parse(raw);
         var result = V5CandidateDecisionProtocolV1.Parse(payload.RootElement, Encoding.UTF8.GetByteCount(raw), 49_152, universe);
         Assert.Equal(4, result.RawDecisionCount); Assert.Equal(2, result.Accepted.Count); Assert.Equal(2, result.Quarantined.Count);
-        Assert.Contains(result.Accepted, item => item.Candidate.Id == relation.CandidateId && item.Relation == relation);
+        Assert.Contains(result.Accepted, item => item.Candidate.Id == representation.Id && item.Kind == V5CandidateDecisionKind.REPRESENTATION);
         Assert.Contains(result.Accepted, item => item.Candidate.Id == validHeading.Id && item.Kind == V5CandidateDecisionKind.HEADING);
         Assert.Contains(result.Quarantined, item => item.Reason == "candidate-not-issued");
         Assert.Contains(result.Quarantined, item => item.Reason == "decision-field-not-in-contract");
 
-        var crossCandidate = universe.Relations.First(item => item.CandidateId != validHeading.Id);
-        var invalidRelation = $$"""{"decisions":[{"candidate":"{{validHeading.Id}}","kind":"REPRESENTATION","relation":"{{crossCandidate.Id}}"}]}""";
-        using var cross = JsonDocument.Parse(invalidRelation);
-        Assert.Equal("relation-not-issued-for-candidate", Assert.Single(V5CandidateDecisionProtocolV1.Parse(cross.RootElement,
-            Encoding.UTF8.GetByteCount(invalidRelation), 49_152, universe).Quarantined).Reason);
+        var forbiddenRelation = $$"""{"decisions":[{"candidate":"{{validHeading.Id}}","kind":"REPRESENTATION","relation":"R1"}]}""";
+        using var cross = JsonDocument.Parse(forbiddenRelation);
+        Assert.Equal("decision-field-not-in-contract", Assert.Single(V5CandidateDecisionProtocolV1.Parse(cross.RootElement,
+            Encoding.UTF8.GetByteCount(forbiddenRelation), 49_152, universe).Quarantined).Reason);
 
         using var badRoot = JsonDocument.Parse("{\"headings\":[]}");
         Assert.Throws<InvalidOperationException>(() => V5CandidateDecisionProtocolV1.Parse(badRoot.RootElement, 15, 49_152, universe));
+    }
+
+    [Fact]
+    public void P6S_overlapping_heading_candidates_are_quarantined_as_a_cluster_without_a_winner()
+    {
+        var atoms = new[] { new SemanticSourceAtom("L0", "source-0", 0, 1, 0, 0, "Chapter I GENERAL PROVISIONS") };
+        var universe = V5CandidateUniverseV1.Build(atoms, atoms, V5CandidatePolicyV1.Default);
+        var whole = Assert.Single(universe.Candidates.Where(candidate => candidate.Kind == V5CandidateExtentKind.WHOLE));
+        var strict = universe.Candidates.First(candidate => candidate.Kind is V5CandidateExtentKind.STRICT_PREFIX or V5CandidateExtentKind.STRICT_SUFFIX);
+        var raw = $$"""{"decisions":[{"candidate":"{{whole.Id}}","kind":"HEADING"},{"candidate":"{{strict.Id}}","kind":"HEADING"}]}""";
+        using var payload = JsonDocument.Parse(raw);
+        var result = V5CandidateDecisionProtocolV1.Parse(payload.RootElement, Encoding.UTF8.GetByteCount(raw), 49_152, universe);
+        Assert.Empty(result.Headings);
+        Assert.Equal(2, result.Quarantined.Count(item => item.Reason == "candidate-overlap-conflict"));
     }
 
     private sealed record Row(string DocumentId, int ParentOrdinal, string PackId, int OwnedOccurrences, int Candidates, int Relations,

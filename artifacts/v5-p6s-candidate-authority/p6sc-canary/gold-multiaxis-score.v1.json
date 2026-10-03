@@ -1,0 +1,286 @@
+{
+  "schemaVersion": "v5-p6sc-candidate-authority-multiaxis-score-v1",
+  "providerCalls": 0,
+  "frozenProviderCallsInSourceCapture": 4,
+  "goldRead": true,
+  "goldMutation": "NONE",
+  "runtimeChanged": false,
+  "scorer": {
+    "semanticCandidate": "heading C# overlaps Gold source parts",
+    "extent": "issued candidate source parts exact/overlap",
+    "contract": "candidate parser + deterministic binder",
+    "finalExactOccurrence": "bound source parts equal Gold"
+  },
+  "contract": {
+    "parserBinderRows": [
+      {
+        "documentId": "SRC-089",
+        "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "parserAccepted": true,
+        "accepted": 4,
+        "quarantined": 0,
+        "overlapQuarantined": 0
+      },
+      {
+        "documentId": "SRC-095",
+        "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+        "parserAccepted": true,
+        "accepted": 3,
+        "quarantined": 0,
+        "overlapQuarantined": 0
+      },
+      {
+        "documentId": "SRC-095",
+        "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+        "parserAccepted": true,
+        "accepted": 4,
+        "quarantined": 0,
+        "overlapQuarantined": 0
+      },
+      {
+        "documentId": "SRC-095",
+        "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+        "parserAccepted": true,
+        "accepted": 5,
+        "quarantined": 0,
+        "overlapQuarantined": 0
+      }
+    ],
+    "acceptedHeadingCandidates": 14,
+    "acceptedRepresentationCandidates": 2,
+    "quarantine": 0
+  },
+  "semanticCandidate": {
+    "truePositive": 14,
+    "falsePositive": 0,
+    "falseNegative": 125,
+    "precision": 1,
+    "recall": 0.1007,
+    "f1": 0.183
+  },
+  "extentSelection": {
+    "exactGold": 14,
+    "partialOrSplitGold": 0,
+    "noHeadingCandidate": 125,
+    "representationOverlapGold": 0
+  },
+  "finalExactOccurrence": {
+    "truePositive": 14,
+    "falsePositive": 0,
+    "falseNegative": 125,
+    "precision": 1,
+    "recall": 0.1007,
+    "f1": 0.183
+  },
+  "predictions": [
+    {
+      "DocumentId": "SRC-089",
+      "Candidate": "C4",
+      "Parts": [
+        {
+          "Alias": "L0286:S0",
+          "Start": 0,
+          "End": 89
+        },
+        {
+          "Alias": "L0287:S0",
+          "Start": 0,
+          "End": 41
+        }
+      ],
+      "Kind": "MULTIPART"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Candidate": "C208",
+      "Parts": [
+        {
+          "Alias": "L0317:S0",
+          "Start": 0,
+          "End": 81
+        }
+      ],
+      "Kind": "WHOLE"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Candidate": "C433",
+      "Parts": [
+        {
+          "Alias": "L0350:S0",
+          "Start": 0,
+          "End": 95
+        }
+      ],
+      "Kind": "WHOLE"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Candidate": "C496",
+      "Parts": [
+        {
+          "Alias": "L0359:S0",
+          "Start": 0,
+          "End": 95
+        }
+      ],
+      "Kind": "WHOLE"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C36",
+      "Parts": [
+        {
+          "Alias": "L1472:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "Kind": "WHOLE"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C165",
+      "Parts": [
+        {
+          "Alias": "L1655:S0",
+          "Start": 0,
+          "End": 28
+        }
+      ],
+      "Kind": "WHOLE"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C334",
+      "Parts": [
+        {
+          "Alias": "L1677:S0",
+          "Start": 0,
+          "End": 56
+        }
+      ],
+      "Kind": "WHOLE"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C410",
+      "Parts": [
+        {
+          "Alias": "L1688:S0",
+          "Start": 0,
+          "End": 12
+        }
+      ],
+      "Kind": "WHOLE"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C555",
+      "Parts": [
+        {
+          "Alias": "L1710:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "Kind": "WHOLE"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C96",
+      "Parts": [
+        {
+          "Alias": "L0924:S0",
+          "Start": 0,
+          "End": 17
+        }
+      ],
+      "Kind": "WHOLE"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C231",
+      "Parts": [
+        {
+          "Alias": "L0944:S0",
+          "Start": 0,
+          "End": 4
+        },
+        {
+          "Alias": "L0944:S1",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "Kind": "MULTIPART"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C242",
+      "Parts": [
+        {
+          "Alias": "L0945:S0",
+          "Start": 0,
+          "End": 11
+        }
+      ],
+      "Kind": "WHOLE"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C326",
+      "Parts": [
+        {
+          "Alias": "L0959:S0",
+          "Start": 0,
+          "End": 14
+        }
+      ],
+      "Kind": "WHOLE"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C402",
+      "Parts": [
+        {
+          "Alias": "L0971:S0",
+          "Start": 0,
+          "End": 18
+        }
+      ],
+      "Kind": "WHOLE"
+    }
+  ],
+  "representationPredictions": [
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C17",
+      "Parts": [
+        {
+          "Alias": "L1469:S0",
+          "Start": 9,
+          "End": 37
+        }
+      ],
+      "Kind": "STRICT_SUFFIX"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C18",
+      "Parts": [
+        {
+          "Alias": "L1469:S0",
+          "Start": 0,
+          "End": 37
+        },
+        {
+          "Alias": "L1470:S0",
+          "Start": 0,
+          "End": 95
+        }
+      ],
+      "Kind": "MULTIPART"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "v5-p6sc-candidate-authority-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "sharedRuntime": "UNCHANGED",
+  "maxResponseUtf8Bytes": 49152,
+  "executionGate": {
+    "maximumProviderCalls": 4,
+    "retry": 0,
+    "repair": false,
+    "fallback": false,
+    "full31": false
+  },
+  "rows": [
+    {
+      "Role": "MAX_CANDIDATE_UNIVERSE",
+      "DocumentId": "SRC-089",
+      "PackOrdinal": 4,
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "semanticRequestHash": "46454c962e536a8f0e668246940e2b0738f2da2381cc4bc14ee11b5833eecd72",
+      "ProviderRequestHash": "11a52354947cec31ed805af6f4a4d79dee31e353a7a1fec5bf436f85c8c7ec95",
+      "ProviderRequestBytes": 147484,
+      "MaxCompletionTokens": 32768,
+      "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+      "candidateUniverseFingerprint": "28badba21445d09eddf29959890cefef6a43ad59c9b36ab5c19f0cb570f7d37a"
+    },
+    {
+      "Role": "OWNER_OMISSION_AREA",
+      "DocumentId": "SRC-095",
+      "PackOrdinal": 17,
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "semanticRequestHash": "6641462bd2d5ee30631a5a194bc93c409e32c0c08818e06c5dc10bd117c8c135",
+      "ProviderRequestHash": "c67d7cb7a6598f02fbda7229f263f3dc1f70ae2379d77647fc028aed2e7af69f",
+      "ProviderRequestBytes": 134104,
+      "MaxCompletionTokens": 32768,
+      "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+      "candidateUniverseFingerprint": "99132c612df4b17d941c731b17f50af195809c351c15b8b2cdb0b09f72927b9b"
+    },
+    {
+      "Role": "RETYPING_AREA",
+      "DocumentId": "SRC-095",
+      "PackOrdinal": 20,
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "semanticRequestHash": "1c54719a910ab67e9bbd091a4df7c3d235187d5a656f484b6328f938e5f59908",
+      "ProviderRequestHash": "8a77bd21ef20cb6f88dd178ea3a34bb7d6a348385cc820d9f34e2b1ab0d7fd14",
+      "ProviderRequestBytes": 127351,
+      "MaxCompletionTokens": 32768,
+      "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+      "candidateUniverseFingerprint": "6f193827b052c82fe153b6c75aafb4f024c21c2c23a8fea9e69ce46058db6959"
+    },
+    {
+      "Role": "MULTIPART_AREA",
+      "DocumentId": "SRC-095",
+      "PackOrdinal": 11,
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "semanticRequestHash": "59709c2de3990da8634e2b23d659820d9169682eb2d27dd0e468df8c5304d4be",
+      "ProviderRequestHash": "6bf748b888bfeedebb973bd5fbb0b0811f876018e16a8ac99fb51d23b989bee5",
+      "ProviderRequestBytes": 133295,
+      "MaxCompletionTokens": 32768,
+      "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+      "candidateUniverseFingerprint": "c34dd72c5b7cca713e99df9285d7ec12e0d2a4ab85aa5279c0d150a83c10d493"
+    }
+  ]
+}

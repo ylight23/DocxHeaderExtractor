@@ -1,0 +1,329 @@
+{
+  "schemaVersion": "v5-p6s-relation-pair-coverage-v1",
+  "relationAuthority": "READ_ONLY_DIAGNOSTIC_ONLY; model response grammar cannot emit R#",
+  "representationOccurrencesReviewed": 18339,
+  "correspondencePairsBeforeTruncation": 4835,
+  "issuedPairs": 2015,
+  "pairsTruncated": 2820,
+  "targetTruth": "ABSENT: canonical 139-occurrence Gold has heading membership only",
+  "correctTargetAvailableBeforeTruncation": "NOT_EVALUABLE_WITHOUT_RELATION_GOLD",
+  "correctTargetSurvivedMaxRelationsPerCandidate8": "NOT_EVALUABLE_WITHOUT_RELATION_GOLD",
+  "relationRecallAfterTruncation": "NOT_EVALUABLE_WITHOUT_RELATION_GOLD",
+  "correctTargetDistanceRank": "NOT_EVALUABLE_WITHOUT_RELATION_GOLD",
+  "capMechanics": "issued pair ranks are exactly 1..8; omitted pairs are rank > 8 by deterministic source-distance order",
+  "providerCalls": 0,
+  "goldRead": false,
+  "sharedRuntime": "UNCHANGED",
+  "packs": [
+    {
+      "Id": "SRC-089",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "representationOccurrencesReviewed": 630,
+      "correspondencePairsBeforeTruncation": 7,
+      "issuedPairs": 7,
+      "pairsTruncated": 0,
+      "issuedRankMax": 2,
+      "omittedRankMin": 0
+    },
+    {
+      "Id": "SRC-089",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "representationOccurrencesReviewed": 620,
+      "correspondencePairsBeforeTruncation": 7,
+      "issuedPairs": 7,
+      "pairsTruncated": 0,
+      "issuedRankMax": 1,
+      "omittedRankMin": 0
+    },
+    {
+      "Id": "SRC-089",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "representationOccurrencesReviewed": 620,
+      "correspondencePairsBeforeTruncation": 4,
+      "issuedPairs": 4,
+      "pairsTruncated": 0,
+      "issuedRankMax": 1,
+      "omittedRankMin": 0
+    },
+    {
+      "Id": "SRC-089",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "representationOccurrencesReviewed": 640,
+      "correspondencePairsBeforeTruncation": 2,
+      "issuedPairs": 2,
+      "pairsTruncated": 0,
+      "issuedRankMax": 1,
+      "omittedRankMin": 0
+    },
+    {
+      "Id": "SRC-089",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "representationOccurrencesReviewed": 632,
+      "correspondencePairsBeforeTruncation": 7,
+      "issuedPairs": 7,
+      "pairsTruncated": 0,
+      "issuedRankMax": 1,
+      "omittedRankMin": 0
+    },
+    {
+      "Id": "SRC-089",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "representationOccurrencesReviewed": 629,
+      "correspondencePairsBeforeTruncation": 5,
+      "issuedPairs": 5,
+      "pairsTruncated": 0,
+      "issuedRankMax": 2,
+      "omittedRankMin": 0
+    },
+    {
+      "Id": "SRC-089",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "representationOccurrencesReviewed": 36,
+      "correspondencePairsBeforeTruncation": 0,
+      "issuedPairs": 0,
+      "pairsTruncated": 0,
+      "issuedRankMax": 0,
+      "omittedRankMin": 0
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "representationOccurrencesReviewed": 608,
+      "correspondencePairsBeforeTruncation": 195,
+      "issuedPairs": 103,
+      "pairsTruncated": 92,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "representationOccurrencesReviewed": 640,
+      "correspondencePairsBeforeTruncation": 206,
+      "issuedPairs": 68,
+      "pairsTruncated": 138,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "representationOccurrencesReviewed": 609,
+      "correspondencePairsBeforeTruncation": 168,
+      "issuedPairs": 30,
+      "pairsTruncated": 138,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "representationOccurrencesReviewed": 646,
+      "correspondencePairsBeforeTruncation": 120,
+      "issuedPairs": 28,
+      "pairsTruncated": 92,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "representationOccurrencesReviewed": 640,
+      "correspondencePairsBeforeTruncation": 165,
+      "issuedPairs": 27,
+      "pairsTruncated": 138,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "representationOccurrencesReviewed": 638,
+      "correspondencePairsBeforeTruncation": 114,
+      "issuedPairs": 22,
+      "pairsTruncated": 92,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "representationOccurrencesReviewed": 636,
+      "correspondencePairsBeforeTruncation": 171,
+      "issuedPairs": 33,
+      "pairsTruncated": 138,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+      "representationOccurrencesReviewed": 634,
+      "correspondencePairsBeforeTruncation": 116,
+      "issuedPairs": 24,
+      "pairsTruncated": 92,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+      "representationOccurrencesReviewed": 636,
+      "correspondencePairsBeforeTruncation": 178,
+      "issuedPairs": 38,
+      "pairsTruncated": 140,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+      "representationOccurrencesReviewed": 548,
+      "correspondencePairsBeforeTruncation": 395,
+      "issuedPairs": 254,
+      "pairsTruncated": 141,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+      "representationOccurrencesReviewed": 588,
+      "correspondencePairsBeforeTruncation": 307,
+      "issuedPairs": 194,
+      "pairsTruncated": 113,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+      "representationOccurrencesReviewed": 627,
+      "correspondencePairsBeforeTruncation": 161,
+      "issuedPairs": 63,
+      "pairsTruncated": 98,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+      "representationOccurrencesReviewed": 628,
+      "correspondencePairsBeforeTruncation": 249,
+      "issuedPairs": 105,
+      "pairsTruncated": 144,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+      "representationOccurrencesReviewed": 642,
+      "correspondencePairsBeforeTruncation": 124,
+      "issuedPairs": 32,
+      "pairsTruncated": 92,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+      "representationOccurrencesReviewed": 637,
+      "correspondencePairsBeforeTruncation": 173,
+      "issuedPairs": 35,
+      "pairsTruncated": 138,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+      "representationOccurrencesReviewed": 618,
+      "correspondencePairsBeforeTruncation": 185,
+      "issuedPairs": 46,
+      "pairsTruncated": 139,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+      "representationOccurrencesReviewed": 526,
+      "correspondencePairsBeforeTruncation": 358,
+      "issuedPairs": 256,
+      "pairsTruncated": 102,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+      "representationOccurrencesReviewed": 472,
+      "correspondencePairsBeforeTruncation": 417,
+      "issuedPairs": 294,
+      "pairsTruncated": 123,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+      "representationOccurrencesReviewed": 525,
+      "correspondencePairsBeforeTruncation": 347,
+      "issuedPairs": 183,
+      "pairsTruncated": 164,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+      "representationOccurrencesReviewed": 583,
+      "correspondencePairsBeforeTruncation": 113,
+      "issuedPairs": 21,
+      "pairsTruncated": 92,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+      "representationOccurrencesReviewed": 636,
+      "correspondencePairsBeforeTruncation": 175,
+      "issuedPairs": 37,
+      "pairsTruncated": 138,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+      "representationOccurrencesReviewed": 639,
+      "correspondencePairsBeforeTruncation": 114,
+      "issuedPairs": 22,
+      "pairsTruncated": 92,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+      "representationOccurrencesReviewed": 591,
+      "correspondencePairsBeforeTruncation": 126,
+      "issuedPairs": 34,
+      "pairsTruncated": 92,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    },
+    {
+      "Id": "SRC-095",
+      "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+      "representationOccurrencesReviewed": 585,
+      "correspondencePairsBeforeTruncation": 126,
+      "issuedPairs": 34,
+      "pairsTruncated": 92,
+      "issuedRankMax": 8,
+      "omittedRankMin": 9
+    }
+  ]
+}

@@ -18,7 +18,7 @@
     "contextOnlySelectable": false,
     "modelAuthoredCoordinates": false,
     "relationTargetsReadOnly": true,
-    "modelDecisionGrammar": "candidate C# + HEADING/REPRESENTATION + optional candidate-scoped R# only"
+    "modelDecisionGrammar": "candidate C# + HEADING/REPRESENTATION only; R# is read-only reasoning evidence"
   },
   "universe": {
     "packs": 31,
@@ -35,9 +35,9 @@
     "maxCandidatesPerPack": 646
   },
   "requestBudget": {
-    "totalProviderRequestBytes": 4094754,
+    "totalProviderRequestBytes": 4088864,
     "totalP05V3ProviderRequestBytes": 3503083,
-    "maxProviderRequestBytes": 154439,
+    "maxProviderRequestBytes": 154249,
     "maxP05V3ProviderRequestBytes": 124084
   },
   "goldCoverage": {
@@ -82,11 +82,11 @@
       "Relations": 7,
       "RelationsTruncated": 0,
       "UserMessageUtf8Bytes": 101466,
-      "ProviderRequestBytes": 135433,
+      "ProviderRequestBytes": 135243,
       "P05V3ProviderRequestBytes": 110857,
       "UniverseFingerprint": "e4f3624bbd8b0771971fc85973e6fd4613ecd9c30c04c64ce8680b302d8d0029",
       "UserMessageSha256": "9deb8ea7f5332029e522d689914aeedc62f12d12130cee10e9e23c7070f97422",
-      "ProviderRequestSha256": "854ea704f3fb85f1d6721c5fda813d279abbed68ce2e3067c0ce13f943555959"
+      "ProviderRequestSha256": "e5014dc28d846fee90369691954d517a96d40d43d790128d53bb87aae0b33670"
     },
     {
       "DocumentId": "SRC-089",
@@ -97,11 +97,11 @@
       "Relations": 7,
       "RelationsTruncated": 0,
       "UserMessageUtf8Bytes": 106283,
-      "ProviderRequestBytes": 139630,
+      "ProviderRequestBytes": 139440,
       "P05V3ProviderRequestBytes": 120913,
       "UniverseFingerprint": "f035633fb949810fe8fa24cc45d117797ac98a726b5a0a55b1fee5414a52efda",
       "UserMessageSha256": "141e911b6d763c3f997340fec296a45bdc723f8ff367ff9841d72fe2ed7700c6",
-      "ProviderRequestSha256": "4fdfbda404596d5782c6ee054e4959193eecdac430e7b92434fad64f40388556"
+      "ProviderRequestSha256": "4f43439d40201284b0acd17671fd1aadf7258d5de8b6ed8d1035e91dcb025ab7"
     },
     {
       "DocumentId": "SRC-089",
@@ -112,11 +112,11 @@
       "Relations": 4,
       "RelationsTruncated": 0,
       "UserMessageUtf8Bytes": 101233,
-      "ProviderRequestBytes": 134460,
+      "ProviderRequestBytes": 134270,
       "P05V3ProviderRequestBytes": 119294,
       "UniverseFingerprint": "291091e35930023c5e14f70603675cd51369885ca59be1ed9c83d695fc3ffe0c",
       "UserMessageSha256": "e01b8825876c7def181347c7a00953fc878604bb240b5420b1dd69cf74224d9d",
-      "ProviderRequestSha256": "48e3c8a5b19358641b4d0aaf6b97d531a819fd9f93eeee4aae54cb7ef6254c28"
+      "ProviderRequestSha256": "799f79eeae6f4a9b3c24e3914ff4a09089d0fa43f6b07c603ce118ed67b191c0"
     },
     {
       "DocumentId": "SRC-089",
@@ -127,11 +127,11 @@
       "Relations": 2,
       "RelationsTruncated": 0,
       "UserMessageUtf8Bytes": 111887,
-      "ProviderRequestBytes": 145884,
+      "ProviderRequestBytes": 145694,
       "P05V3ProviderRequestBytes": 121414,
       "UniverseFingerprint": "28badba21445d09eddf29959890cefef6a43ad59c9b36ab5c19f0cb570f7d37a",
       "UserMessageSha256": "60bbd42cedb5e68463bf01b631525e49da286e7996a1f6e2ec6c8c1dbe739f25",
-      "ProviderRequestSha256": "d3f9b35fdf86acb95766dd272139d514c6347624b4dfc08ac94da7a4e0021695"
+      "ProviderRequestSha256": "fcaa45bf104b6c058ff8f7df755187559e22630364bfa6d144b6dd521088fefe"
     },
     {
       "DocumentId": "SRC-089",
@@ -142,11 +142,11 @@
       "Relations": 7,
       "RelationsTruncated": 0,
       "UserMessageUtf8Bytes": 107390,
-      "ProviderRequestBytes": 141505,
+      "ProviderRequestBytes": 141315,
       "P05V3ProviderRequestBytes": 121941,
       "UniverseFingerprint": "942444cc20efaf659bc5c34a12167f741b3125bf999cb424c5c4134a4b9cba33",
       "UserMessageSha256": "4cf3498a770a956d9a9e49469caaebbc2c287d55cc1cf2ee3d3ccfd5e1d9cc55",
-      "ProviderRequestSha256": "ed5b6209f3f2bafc9796b59b553087edb91aac82c53671d50d66fa7545a0e79b"
+      "ProviderRequestSha256": "394ec92a28adc42118c437c6f17df727e2926681dce6c2dc2b387b7008f5b4b6"
     },
     {
       "DocumentId": "SRC-089",
@@ -157,11 +157,11 @@
       "Relations": 5,
       "RelationsTruncated": 0,
       "UserMessageUtf8Bytes": 103925,
-      "ProviderRequestBytes": 138011,
+      "ProviderRequestBytes": 137821,
       "P05V3ProviderRequestBytes": 118216,
       "UniverseFingerprint": "4d9fe6f0978d77c5d30a8b3e134282947a93dc82b3663924b2e51ba833f0c92c",
       "UserMessageSha256": "520a40472746cb5b545bf34d324fa604a988817a280f8aa6f96328537dd70fde",
-      "ProviderRequestSha256": "ae035776d8e028dab05b3a147dcbc92e064062ab098d852602878b9d6bb56c5f"
+      "ProviderRequestSha256": "503e479ea6814ea7e265294ad8a8d86aa28a9cd14b76dda33ca232e0b8acdad1"
     },
     {
       "DocumentId": "SRC-089",
@@ -172,11 +172,11 @@
       "Relations": 0,
       "RelationsTruncated": 0,
       "UserMessageUtf8Bytes": 3064,
-      "ProviderRequestBytes": 6758,
+      "ProviderRequestBytes": 6568,
       "P05V3ProviderRequestBytes": 25980,
       "UniverseFingerprint": "eedeb44ae1cd98986baf5803cb05b5bf83f56605c84607a0e0526aa66c5178e1",
       "UserMessageSha256": "e7d942145886607a50e25f614f17d72eb83bed89bc8be7eb737804a953c7cb29",
-      "ProviderRequestSha256": "ec320339d80eaf7fd43dbf082a831c37dd7bce9f62199c1aa6c7bb6c3601728b"
+      "ProviderRequestSha256": "59c77d5bbb599796e1176ad35e783477ca2f85577dd1fca91ec0e23c65f2ca38"
     },
     {
       "DocumentId": "SRC-095",
@@ -187,11 +187,11 @@
       "Relations": 103,
       "RelationsTruncated": 92,
       "UserMessageUtf8Bytes": 65309,
-      "ProviderRequestBytes": 104979,
+      "ProviderRequestBytes": 104789,
       "P05V3ProviderRequestBytes": 95596,
       "UniverseFingerprint": "ed57257a7c3e315ad3ab3a6faa431c098c4d581aae3efdf33c576f8b94228a71",
       "UserMessageSha256": "d079d9b76341285a1491d4fe95959b5f3d8b9bde71f88b48ce2913a3fb2aaf28",
-      "ProviderRequestSha256": "26f71b5225ad8f239dae12cc02eb09b5989f18137d42cf1f960c06c3d3d28822"
+      "ProviderRequestSha256": "a1da3de1c243127da3280287136aae905bd55a54808bde25680edc051a26edfe"
     },
     {
       "DocumentId": "SRC-095",
@@ -202,11 +202,11 @@
       "Relations": 68,
       "RelationsTruncated": 138,
       "UserMessageUtf8Bytes": 92940,
-      "ProviderRequestBytes": 132528,
+      "ProviderRequestBytes": 132338,
       "P05V3ProviderRequestBytes": 113263,
       "UniverseFingerprint": "8a9cc742e6691b52c9234b59dbbe6f5d6f238f5aba49fd57364205991b492fe3",
       "UserMessageSha256": "b9328a1c21278754d62b822c4ecb9202ef4fb33898091c7f19ff2e46b97fa522",
-      "ProviderRequestSha256": "8ca5b7f2f5c22013758b43d61e1aa5ce3b54bc033263b352e485c7999c62ebb0"
+      "ProviderRequestSha256": "9ba7247056f49053f2647d6d852db3cc79f60c2a5fe84e904d057f85d0c488f1"
     },
     {
       "DocumentId": "SRC-095",
@@ -217,11 +217,11 @@
       "Relations": 30,
       "RelationsTruncated": 138,
       "UserMessageUtf8Bytes": 96580,
-      "ProviderRequestBytes": 137591,
+      "ProviderRequestBytes": 137401,
       "P05V3ProviderRequestBytes": 120036,
       "UniverseFingerprint": "262df04ce1401dca325df63b6ff37bd73242e968e93d08817352ba885d3b1837",
       "UserMessageSha256": "18af0df50e05e24857f8dff3d13d7473099ff634bfe28cbca4ba96f515153bd8",
-      "ProviderRequestSha256": "d2ba08ebd9a606510e0bc9cbac3ccea1f913b08056b0157ab5c1048ad5feff85"
+      "ProviderRequestSha256": "300817c72d965fd5e56678ce226321e55d59be238118a5f573902f243324facc"
     },
     {
       "DocumentId": "SRC-095",
@@ -232,11 +232,11 @@
       "Relations": 28,
       "RelationsTruncated": 92,
       "UserMessageUtf8Bytes": 116480,
-      "ProviderRequestBytes": 154439,
+      "ProviderRequestBytes": 154249,
       "P05V3ProviderRequestBytes": 124084,
       "UniverseFingerprint": "a862babc274d04ad09556f972055363fdfd5692868547c1eea0961a158ddd22b",
       "UserMessageSha256": "39d8ad805935390a9a5f0719e6b4631935a9a29d6d45adec637f161eba8c39d5",
-      "ProviderRequestSha256": "d2e51c78af5962c0b09a40c09d6f7f66589479e6caa6fcaf86d8c753545be2e9"
+      "ProviderRequestSha256": "df92e7b72d337831b54705b649f2bc26ccc86769ac10cb5034f42d4b2de6ea26"
     },
     {
       "DocumentId": "SRC-095",
@@ -247,11 +247,11 @@
       "Relations": 27,
       "RelationsTruncated": 138,
       "UserMessageUtf8Bytes": 112351,
-      "ProviderRequestBytes": 150310,
+      "ProviderRequestBytes": 150120,
       "P05V3ProviderRequestBytes": 123815,
       "UniverseFingerprint": "d40f5d1439451f251e599d1b6ca465222b9fe0e2ebcc1b84990cd03fc87340df",
       "UserMessageSha256": "01d1d460f1d01756b45a426c486b8ad54e38dbbc9104b454c7ff2623b0fda947",
-      "ProviderRequestSha256": "aff9298f9fab0543421f68375d51ed562123c70745cd3d325b2f24cedd9bbbb0"
+      "ProviderRequestSha256": "61cfdaf2c1c2980f5de6dc14d2d21c7da4fd17f6d895dc81f2e3ccb881eef385"
     },
     {
       "DocumentId": "SRC-095",
@@ -262,11 +262,11 @@
       "Relations": 22,
       "RelationsTruncated": 92,
       "UserMessageUtf8Bytes": 109906,
-      "ProviderRequestBytes": 150468,
+      "ProviderRequestBytes": 150278,
       "P05V3ProviderRequestBytes": 123191,
       "UniverseFingerprint": "decfc6d8f774fcd388589202128bd95afacc4bf86158817659a40c0b38c26cb5",
       "UserMessageSha256": "e5dfc7db178ac395894455ac185a3da84f6ad2ed7c6be9fb9b36faefcb7c5c41",
-      "ProviderRequestSha256": "790ec63b73d3a214a16d6bd915a894ac474dd165f2eab3df3942b0230a931a3c"
+      "ProviderRequestSha256": "fe248153da83e1eed59a8a7635e066e0575758d3d504a73ee9413391d8c6a68a"
     },
     {
       "DocumentId": "SRC-095",
@@ -277,11 +277,11 @@
       "Relations": 33,
       "RelationsTruncated": 138,
       "UserMessageUtf8Bytes": 113828,
-      "ProviderRequestBytes": 151085,
+      "ProviderRequestBytes": 150895,
       "P05V3ProviderRequestBytes": 123270,
       "UniverseFingerprint": "d18cc49e3da318e422ba073e1dd0d9392a922b287849704fe99d29bf35e1f3ef",
       "UserMessageSha256": "6bebf05b8ca5575e2bafa0173f84044396055a403de146c5bf5a2ceb053b3354",
-      "ProviderRequestSha256": "2bc73033fc6ac1f4e0319eb19ba29c889b15d5f17b20693d080e5c37f54b61f4"
+      "ProviderRequestSha256": "e130e40be7fec5756992475eb249608887efab717848577c0621872d50b7599f"
     },
     {
       "DocumentId": "SRC-095",
@@ -292,11 +292,11 @@
       "Relations": 24,
       "RelationsTruncated": 92,
       "UserMessageUtf8Bytes": 112242,
-      "ProviderRequestBytes": 148562,
+      "ProviderRequestBytes": 148372,
       "P05V3ProviderRequestBytes": 123290,
       "UniverseFingerprint": "6ae9c8c8a5e4282a582d932d0e69b050f93b315cb0accd10edcff8b1d9155bc5",
       "UserMessageSha256": "35176944b8b98be2046417d1cba90978b358cb8d5a3260fe015981bdb29bc1e0",
-      "ProviderRequestSha256": "b687d350d48a356aac77a75888b279f10eb44b13378d057bf99f54d848e195a1"
+      "ProviderRequestSha256": "0436995735c4673a1901731e2555ac2742826b4b0a261a1b4455fd7c2486b38d"
     },
     {
       "DocumentId": "SRC-095",
@@ -307,11 +307,11 @@
       "Relations": 38,
       "RelationsTruncated": 140,
       "UserMessageUtf8Bytes": 110084,
-      "ProviderRequestBytes": 146901,
+      "ProviderRequestBytes": 146711,
       "P05V3ProviderRequestBytes": 121475,
       "UniverseFingerprint": "ddc7331c0082986a8a85cb5168904d0e6c64d7b2ffc29d641a2bc20dd943709c",
       "UserMessageSha256": "d262be3608d16003405f4d3d0004d9a360f253f8d56366c7a75a7e7b71814d88",
-      "ProviderRequestSha256": "935ef12f4faf210bd30f30a631bf73e9aadc1f9fb5022d6bf4ee2f09ff0a00cd"
+      "ProviderRequestSha256": "a502e7e31004947c12c4c05eb0437efb8d041293ea1a0f7c559478f7cf0539b9"
     },
     {
       "DocumentId": "SRC-095",
@@ -322,11 +322,11 @@
       "Relations": 254,
       "RelationsTruncated": 141,
       "UserMessageUtf8Bytes": 88136,
-      "ProviderRequestBytes": 135702,
+      "ProviderRequestBytes": 135512,
       "P05V3ProviderRequestBytes": 108302,
       "UniverseFingerprint": "0d6c4d92ff335799815aa0e838d6561435b7bfe897d8331db9b0eb59e3959be8",
       "UserMessageSha256": "cca1dcd7c2f9224a49381f6686924426e6a33769a576d0bad8d090b13496cbb4",
-      "ProviderRequestSha256": "9781012f2b14e43003b0319192639c30475d4384746c63468496b2d34db97eb4"
+      "ProviderRequestSha256": "d43af8f71bdc87f8e27d62ec790e19194dcc17c7550611811cd497876f770207"
     },
     {
       "DocumentId": "SRC-095",
@@ -337,11 +337,11 @@
       "Relations": 194,
       "RelationsTruncated": 113,
       "UserMessageUtf8Bytes": 86500,
-      "ProviderRequestBytes": 132077,
+      "ProviderRequestBytes": 131887,
       "P05V3ProviderRequestBytes": 108658,
       "UniverseFingerprint": "c34dd72c5b7cca713e99df9285d7ec12e0d2a4ab85aa5279c0d150a83c10d493",
       "UserMessageSha256": "48fc934401f95c7ab0519e6164de0610aa341c61d37754a78f304e1fd98b53ad",
-      "ProviderRequestSha256": "ac2f6b3d5811b3fdcd7df18df6770327b77fa822c87819074624585ae6fdf421"
+      "ProviderRequestSha256": "6762ed9eb51530cb48ec7fcdfa8bef2e32fe45029258ee41adf54f04842c0125"
     },
     {
       "DocumentId": "SRC-095",
@@ -352,11 +352,11 @@
       "Relations": 63,
       "RelationsTruncated": 98,
       "UserMessageUtf8Bytes": 106023,
-      "ProviderRequestBytes": 145325,
+      "ProviderRequestBytes": 145135,
       "P05V3ProviderRequestBytes": 120005,
       "UniverseFingerprint": "e67b878a2df4f41f4831d9401f49baa15ecc76e2e9d8c670a72c65c92961d04a",
       "UserMessageSha256": "95494b80b31e0787246af4d5dc99447d387efe7683d3a88d3d2b415fae6ce9c7",
-      "ProviderRequestSha256": "2d6463d6301486b1ea503cc20f4e508f41d5f452eb9830300125bb97f2599da7"
+      "ProviderRequestSha256": "4ca44674e8c139ebde167fffb2513c6d71a6896f13edfe021ee7bf8c1d01e79d"
     },
     {
       "DocumentId": "SRC-095",
@@ -367,11 +367,11 @@
       "Relations": 105,
       "RelationsTruncated": 144,
       "UserMessageUtf8Bytes": 99602,
-      "ProviderRequestBytes": 140711,
+      "ProviderRequestBytes": 140521,
       "P05V3ProviderRequestBytes": 117898,
       "UniverseFingerprint": "208a47f1fe277383e00314efe41b6560e69c3e5fb06023e1c51c3e26c09a8825",
       "UserMessageSha256": "3a673c304b650c25f7e8e3863afd0ec60d6554bdf7e025dd69d88f07f0fc41d7",
-      "ProviderRequestSha256": "5d75e5ee5a4f1b7b2d9b90eee77ca853205273c59651070b7770ab462ed405e7"
+      "ProviderRequestSha256": "784deb63f53c94b425456401218cb7a693f0a78e887c5d0bbd71f42fbba29719"
     },
     {
       "DocumentId": "SRC-095",
@@ -382,11 +382,11 @@
       "Relations": 32,
       "RelationsTruncated": 92,
       "UserMessageUtf8Bytes": 99941,
-      "ProviderRequestBytes": 137123,
+      "ProviderRequestBytes": 136933,
       "P05V3ProviderRequestBytes": 118869,
       "UniverseFingerprint": "b350c667f77ecbd9491f1216ae98ea04de762c8e16c5a86220156d91ac59a9aa",
       "UserMessageSha256": "9a37cb3bb6ab59b101331f113ccad3b30e207b0a392415cb472bca66f94e6498",
-      "ProviderRequestSha256": "2ca70d988c0dd15a98acb5a0a2933e3d63ae16f5694c44d18112bfc87f92e808"
+      "ProviderRequestSha256": "38df69409934f043ab6855b92353e635b26125241269b16d1818bf8a9d9569b4"
     },
     {
       "DocumentId": "SRC-095",
@@ -397,11 +397,11 @@
       "Relations": 35,
       "RelationsTruncated": 138,
       "UserMessageUtf8Bytes": 111017,
-      "ProviderRequestBytes": 148709,
+      "ProviderRequestBytes": 148519,
       "P05V3ProviderRequestBytes": 122611,
       "UniverseFingerprint": "d96a65bca20920a7b1c7fd3c2ef7d79827bfcb8e92b650fe7a26a7886a4e4e2a",
       "UserMessageSha256": "a3e78ba413e1763e55c0a90b64231aa07731c241393dd1fdf9dd7bc5657003d8",
-      "ProviderRequestSha256": "2f63befe59d9a54a2dd400c5c25870a001ffad5a1afe7a85e7b75ed198f96151"
+      "ProviderRequestSha256": "2b5e07e71f0de1cbc3e3f721a808dcd076c585a92da6e607a357685aa2e5adcd"
     },
     {
       "DocumentId": "SRC-095",
@@ -412,11 +412,11 @@
       "Relations": 46,
       "RelationsTruncated": 139,
       "UserMessageUtf8Bytes": 100599,
-      "ProviderRequestBytes": 138224,
+      "ProviderRequestBytes": 138034,
       "P05V3ProviderRequestBytes": 119221,
       "UniverseFingerprint": "7c7ee3d516b67e4873cc8dcbfb2c632f54ef04a55eaff28cb2b65f6eb6b8abeb",
       "UserMessageSha256": "7bad6c740b06cd5450a48c33c5c50ced21724fefc683fc90eab8fb8308ea97df",
-      "ProviderRequestSha256": "d138a1bb21c48362c8a36d2025634334ccf6ecb589db309a39e3c2257b516674"
+      "ProviderRequestSha256": "2899482040f3b75d07948edbc439a3475ed6210c972fe9b0bb1a1b726a1c8988"
     },
     {
       "DocumentId": "SRC-095",
@@ -427,11 +427,11 @@
       "Relations": 256,
       "RelationsTruncated": 102,
       "UserMessageUtf8Bytes": 85057,
-      "ProviderRequestBytes": 133170,
+      "ProviderRequestBytes": 132980,
       "P05V3ProviderRequestBytes": 105792,
       "UniverseFingerprint": "99132c612df4b17d941c731b17f50af195809c351c15b8b2cdb0b09f72927b9b",
       "UserMessageSha256": "37ae0c6cc09c772e655efa6794b2a68254c1f1c35cdc88ba18c687cf175e74b2",
-      "ProviderRequestSha256": "3bcdf7d6ee80a8e3a44ef4353a356757b79a1603a73a29f9ccab2a07cc868b7b"
+      "ProviderRequestSha256": "7a57839389b127e03d49fce2f2ca47221a7e1cf610ccb82e5409330bb8f079f5"
     },
     {
       "DocumentId": "SRC-095",
@@ -442,11 +442,11 @@
       "Relations": 294,
       "RelationsTruncated": 123,
       "UserMessageUtf8Bytes": 67965,
-      "ProviderRequestBytes": 115343,
+      "ProviderRequestBytes": 115153,
       "P05V3ProviderRequestBytes": 99981,
       "UniverseFingerprint": "306947de69b53fe94118bca49602fc23a29c19b9c9c8b9a8dd529f30adcfebb9",
       "UserMessageSha256": "a18b2c00a9f921bd76e83922f2f0c57fc491877928292760acb25531db70fb3c",
-      "ProviderRequestSha256": "3d86ef82cddd78473d8c7ad237fd3fbc1f53808e406fd68238069fbdb8499e46"
+      "ProviderRequestSha256": "cee62b8d4f261774a0ff6712cb8292b6ec81e4b4264b16eaaebbc8c5e0a0b725"
     },
     {
       "DocumentId": "SRC-095",
@@ -457,11 +457,11 @@
       "Relations": 183,
       "RelationsTruncated": 164,
       "UserMessageUtf8Bytes": 70336,
-      "ProviderRequestBytes": 114253,
+      "ProviderRequestBytes": 114063,
       "P05V3ProviderRequestBytes": 104797,
       "UniverseFingerprint": "43c5c4d187ba8eeb88b7a73cc6068480423e1aebe87f589d3e4cb215e4810dfe",
       "UserMessageSha256": "66dfadc0bd3774149fa5a3f47c370f99992e04b0743077240663b7df48b59841",
-      "ProviderRequestSha256": "95e9da2602767088bff1499090bb6409a6f6d34c7e21ed1937e6078890f169e8"
+      "ProviderRequestSha256": "b5008f305a029487c4fbddd11dea3e8a1ba1ea81b254d0b3f1861531ab1c4bea"
     },
     {
       "DocumentId": "SRC-095",
@@ -472,11 +472,11 @@
       "Relations": 21,
       "RelationsTruncated": 92,
       "UserMessageUtf8Bytes": 88493,
-      "ProviderRequestBytes": 125641,
+      "ProviderRequestBytes": 125451,
       "P05V3ProviderRequestBytes": 118769,
       "UniverseFingerprint": "6f193827b052c82fe153b6c75aafb4f024c21c2c23a8fea9e69ce46058db6959",
       "UserMessageSha256": "2439947b05f1f85e46869dc85246d6c9047e070165395d1c3223000addf0127b",
-      "ProviderRequestSha256": "d49804796a45cd1954119bef3c62b9cd52497a8aa1e4cb68d33bc661bfa63c3b"
+      "ProviderRequestSha256": "7616c01c0d648de9aafec39376fc7438880d25e277c54b6192c70403c67da878"
     },
     {
       "DocumentId": "SRC-095",
@@ -487,11 +487,11 @@
       "Relations": 37,
       "RelationsTruncated": 138,
       "UserMessageUtf8Bytes": 104402,
-      "ProviderRequestBytes": 142047,
+      "ProviderRequestBytes": 141857,
       "P05V3ProviderRequestBytes": 120187,
       "UniverseFingerprint": "ea5cd5c94a487238eca58ab881622f1ba90f34511f784e68a369b9e1e68782b2",
       "UserMessageSha256": "cfd839d9c66145a991d9062f39dd6c17c81dda4ca7286e8d6098adbcd2ca24ed",
-      "ProviderRequestSha256": "1a055049958bbcbfcca927bae1788fd8ae1e5334852154d33999f87025713b14"
+      "ProviderRequestSha256": "1a465dd32acff89eebecdb9beaed47c07004841fde4000c076aabba16248e6ec"
     },
     {
       "DocumentId": "SRC-095",
@@ -502,11 +502,11 @@
       "Relations": 22,
       "RelationsTruncated": 92,
       "UserMessageUtf8Bytes": 89936,
-      "ProviderRequestBytes": 127022,
+      "ProviderRequestBytes": 126832,
       "P05V3ProviderRequestBytes": 113696,
       "UniverseFingerprint": "3f99e4a4bf049cf3b27c8da44663afc4d22af161cad44acb36fffbbf2d9fd5ee",
       "UserMessageSha256": "299cf95f142ea91e3b7db4a5f664d1d82cfee4b63047087b85eb1b150ea90231",
-      "ProviderRequestSha256": "3c3a97b4c79d95b40026865fff487a0ae9427d97944678d8a644783d8d78e2bd"
+      "ProviderRequestSha256": "08380b711da6eb43b49931f4ce4df41379c571835bc650a0d6c7a6588a9b4555"
     },
     {
       "DocumentId": "SRC-095",
@@ -517,11 +517,11 @@
       "Relations": 34,
       "RelationsTruncated": 92,
       "UserMessageUtf8Bytes": 82662,
-      "ProviderRequestBytes": 116933,
+      "ProviderRequestBytes": 116743,
       "P05V3ProviderRequestBytes": 111623,
       "UniverseFingerprint": "322728606cb85a27b5b092e0ec4933c73019a82c9ff4a030aad7c804e55eba84",
       "UserMessageSha256": "4dec95ac37667d6d572d0a06f5d9a28db934e204239c549170082554b5bb1628",
-      "ProviderRequestSha256": "fa07770bbdeed4c9c7187891402f1084f26089fddfeac29949e1a4db56753cd5"
+      "ProviderRequestSha256": "a735780d6c1f3df12c63a8e4e2edb64d623dfa6b8c2dca65debbd390e0571f51"
     },
     {
       "DocumentId": "SRC-095",
@@ -532,11 +532,11 @@
       "Relations": 34,
       "RelationsTruncated": 92,
       "UserMessageUtf8Bytes": 90422,
-      "ProviderRequestBytes": 123930,
+      "ProviderRequestBytes": 123740,
       "P05V3ProviderRequestBytes": 106039,
       "UniverseFingerprint": "f7f0d5dd2952e26ddb4d12fb4390afc7eb77ce4366b687b2085f8e5ce78e8ef8",
       "UserMessageSha256": "0b28bd9a754b63fced01abc4f0cfde53a9f5367485c9047c4c74cb11caf7b9f7",
-      "ProviderRequestSha256": "3b8ee3f001c769c8203161d262dcd3068ff0deedc1e80280aa01c3f4af2a8abc"
+      "ProviderRequestSha256": "843ae36008bd0f9a5fa0d81cc90c6c361e746d575c968d31b2068df8a8488bbe"
     }
   ],
   "providerCalls": 0,

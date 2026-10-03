@@ -128,6 +128,11 @@ internal static class Program
         if (args.Contains("--p6p-rerun-failed-pack"))
             return await P6PDocumentAwarePdfQualification.RerunFailedPackAsync(LocateRepoRoot(), args);
 
+        // P6S-C executes only four snapshot-replayed candidate-authority bodies.  It has its own
+        // manifest, explicit sentinel, zero retry policy, and leaves Gold unread for offline scoring.
+        if (args.Contains("--p6sc-candidate-authority-canary"))
+            return await P6SCandidateAuthorityCanary.RunAsync(LocateRepoRoot(), args);
+
         // P6R adds only deterministic source-correspondence evidence and a representation result
         // channel to the text-only P6P treatment. It is qualification-only and never reads Gold.
         if (args.Contains("--p6r-structural-identity-full31"))
