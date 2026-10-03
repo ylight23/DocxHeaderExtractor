@@ -21,7 +21,7 @@
       {
         "documentId": "SRC-089",
         "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
-        "goldSha256": "288220c9ee2265cdfdf1f1ab2852900a5914d1511b7ba721d07174116dfb1db7",
+        "goldSha256": "50d9e57225d9cf9dcf174e5b5b7422158c06d7327241d77fc4d019831b8a808d",
         "goldOccurrences": 36
       },
       {
@@ -761,7 +761,7 @@
     {
       "documentId": "SRC-089",
       "goldOrdinal": 1,
-      "goldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+      "goldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
       "outcome": "BOUNDARY_MISMATCH",
       "modelHeadingCandidates": [
         "C40"
@@ -771,7 +771,7 @@
       ],
       "representationCandidates": [],
       "contractLoss": "NONE",
-      "coverage": 0.0667
+      "coverage": 0.0638
     },
     {
       "documentId": "SRC-089",

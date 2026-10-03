@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
@@ -13,13 +14,14 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class V5P6SFGlobalAssociationScoringTests
 {
-    private const string SourceRoot = "artifacts/v5-p6s-candidate-authority/p6se-one-to-one-score";
-    private const string SourceArtifact = "full31-one-to-one-gold-score.v1.json";
+    private const string CaptureRoot = "artifacts/v5-p6s-candidate-authority/p6sd-full31";
+    private const string CaptureArtifact = "result.v1.json";
     private const string OutputRoot = "artifacts/v5-p6s-candidate-authority/p6sf-global-association-score";
     private const string SnapshotRoot = "eval/a99-closed-loop/pdf-canonical-source-v1";
+    private const string EvaluationBasisPath = "eval/a99-closed-loop/gold-current/evaluation-basis.v1.json";
     private static readonly (string Id, string Pdf, string GoldSha, int Count)[] Documents =
     [
-        ("SRC-089", SourcePdfCorpus.Src089, "288220c9ee2265cdfdf1f1ab2852900a5914d1511b7ba721d07174116dfb1db7", 36),
+        ("SRC-089", SourcePdfCorpus.Src089, "50d9e57225d9cf9dcf174e5b5b7422158c06d7327241d77fc4d019831b8a808d", 36),
         ("SRC-095", SourcePdfCorpus.Src095, "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5", 103),
     ];
 
@@ -56,22 +58,46 @@ public sealed class V5P6SFGlobalAssociationScoringTests
     [Fact]
     public void P6SF_separates_strict_exact_from_global_gold_association_without_provider_calls()
     {
-        var sourcePath = TestRepository.Path($"{SourceRoot}/{SourceArtifact}");
-        using var source = JsonDocument.Parse(File.ReadAllText(sourcePath));
-        var root = source.RootElement;
-        Assert.Equal(0, root.GetProperty("execution").GetProperty("providerCallsDuringScore").GetInt32());
-        Assert.Equal(31, root.GetProperty("execution").GetProperty("frozenProviderCallsInCapture").GetInt32());
-        Assert.Equal("NONE", root.GetProperty("execution").GetProperty("goldMutation").GetString());
+        var capturePath = TestRepository.Path($"{CaptureRoot}/{CaptureArtifact}");
+        using var capture = JsonDocument.Parse(File.ReadAllText(capturePath));
+        var captureRoot = capture.RootElement;
+        Assert.Equal(31, captureRoot.GetProperty("providerCalls").GetInt32());
+        Assert.False(captureRoot.GetProperty("goldRead").GetBoolean());
+        Assert.Equal("NONE", captureRoot.GetProperty("goldMutation").GetString());
 
         var plans = Documents.ToDictionary(item => item.Id, item =>
         {
             var sha = CanonicalSemanticSourceHash.Compute(TestRepository.Path(item.Pdf));
             return PdfCandidateAuthorityQualificationAdapter.PrepareFromSnapshot(TestRepository.Path($"{SnapshotRoot}/{sha}.json"), item.Id);
         }, StringComparer.Ordinal);
+        VerifyEvaluationBasis(plans);
         var gold = ReadGold(plans);
-        var model = ReadPredictions(root.GetProperty("modelHeadingCandidatesBeforeOverlapQuarantine"));
-        var final = ReadPredictions(root.GetProperty("finalHeadingCandidatesAfterOverlapQuarantine"));
-        var representation = ReadPredictions(root.GetProperty("representationCandidates"));
+        var model = new List<Prediction>(); var final = new List<Prediction>(); var representation = new List<Prediction>();
+        foreach (var row in captureRoot.GetProperty("rows").EnumerateArray())
+        {
+            var documentId = row.GetProperty("documentId").GetString()!;
+            var packId = row.GetProperty("PackId").GetString()!;
+            var plan = plans[documentId]; var pack = plan.Packs.Single(value => value.PackId == packId);
+            Assert.True(row.GetProperty("transportAccepted").GetBoolean());
+            Assert.Equal("stop", row.GetProperty("finishReason").GetString());
+            Assert.Equal(0, row.GetProperty("retryCount").GetInt32());
+            var raw = row.GetProperty("rawResponse").GetString()!;
+            Assert.Equal(Hash(Encoding.UTF8.GetBytes(raw)), row.GetProperty("rawResponseSha256").GetString());
+            var parsed = PdfCandidateAuthorityQualificationAdapter.ParseCandidateDecision(pack, raw);
+            foreach (var decision in parsed.AcceptedBeforeOverlapQuarantine)
+            {
+                var binding = SemanticSourcePartBinder.Bind(plan.SourceAtoms, decision.Candidate.Parts); Assert.True(binding.IsBound, binding.Reason);
+                var prediction = PredictionFrom(documentId, packId, decision.Candidate.Id, binding.Parts);
+                if (decision.Kind == V5CandidateDecisionKind.HEADING) model.Add(prediction); else representation.Add(prediction);
+            }
+            foreach (var decision in parsed.Headings)
+            {
+                var binding = SemanticSourcePartBinder.Bind(plan.SourceAtoms, decision.Candidate.Parts); Assert.True(binding.IsBound, binding.Reason);
+                final.Add(PredictionFrom(documentId, packId, decision.Candidate.Id, binding.Parts));
+            }
+        }
+        Assert.Equal(model.Count, model.Select(value => $"{value.DocumentId}:{value.Identity}").Distinct(StringComparer.Ordinal).Count());
+        Assert.Equal(final.Count, final.Select(value => $"{value.DocumentId}:{value.Identity}").Distinct(StringComparer.Ordinal).Count());
         var allGold = gold.SelectMany(value => value.Value).OrderBy(value => value.DocumentId, StringComparer.Ordinal).ThenBy(value => value.Ordinal).ToArray();
 
         var modelAssociation = GlobalAssociation(model, allGold);
@@ -96,7 +122,7 @@ public sealed class V5P6SFGlobalAssociationScoringTests
         {
             schemaVersion = "v5-p6sf-global-association-and-exact-score-v1",
             execution = new { providerCallsDuringScore = 0, frozenProviderCallsInCapture = 31, goldRead = true, goldMutation = "NONE", runtimeChanged = false,
-                sourceArtifact = $"{SourceRoot}/{SourceArtifact}", sourceArtifactSha256 = Hash(File.ReadAllBytes(sourcePath)) },
+                sourceArtifact = $"{CaptureRoot}/{CaptureArtifact}", sourceArtifactSha256 = Hash(File.ReadAllBytes(capturePath)) },
             scorer = new
             {
                 exactOccurrence = "strict candidate identity equals Gold identity; this is the only TP/FP/FN/F1 occurrence metric",
@@ -159,8 +185,8 @@ public sealed class V5P6SFGlobalAssociationScoringTests
         var modelOutcome = pre is not null ? Outcome(pre) : reps.Length > 0 ? "ROLE_ERROR" : "NO_MODEL_PROPOSAL";
         var finalOutcome = post is not null ? Outcome(post) : pre is not null && !finalKeys.Contains(CandidateKey(modelCandidate!)) ? "CONFLICT_LOSS" : modelOutcome;
         return new DiagnosticRow(gold.DocumentId, gold.Ordinal, gold.Identity, modelOutcome, finalOutcome,
-            pre is null ? null : new { packId = modelCandidate!.PackId, candidateId = modelCandidate.CandidateId, pre.MatchKind, coverage = pre.CoverageBps / 10000d },
-            post is null ? null : new { packId = finalCandidate!.PackId, candidateId = finalCandidate.CandidateId, post.MatchKind, coverage = post.CoverageBps / 10000d }, reps);
+            pre is null ? null : new { packId = modelCandidate!.PackId, candidateId = modelCandidate.CandidateId, identity = modelCandidate.Identity, pre.MatchKind, coverage = pre.CoverageBps / 10000d },
+            post is null ? null : new { packId = finalCandidate!.PackId, candidateId = finalCandidate.CandidateId, identity = finalCandidate.Identity, post.MatchKind, coverage = post.CoverageBps / 10000d }, reps);
     }
 
     private static string Outcome(Edge edge) => edge.MatchKind switch { "EXACT" => "EXACT", "FULL_GOLD_COVERAGE" => "EXCESS_EXTENT", _ => "PARTIAL" };
@@ -251,7 +277,26 @@ public sealed class V5P6SFGlobalAssociationScoringTests
         }).ToList();
     }, StringComparer.Ordinal);
 
-    private static List<Prediction> ReadPredictions(JsonElement array) => array.EnumerateArray().Select(item => new Prediction(item.GetProperty("DocumentId").GetString()!, item.GetProperty("PackId").GetString()!, item.GetProperty("CandidateId").GetString()!, item.GetProperty("Identity").GetString()!, item.GetProperty("Parts").EnumerateArray().Select(part => new Part(part.GetProperty("Alias").GetString()!, part.GetProperty("Start").GetInt32(), part.GetProperty("End").GetInt32())).ToArray())).ToList();
+    private static void VerifyEvaluationBasis(IReadOnlyDictionary<string, PdfCandidateAuthorityDocumentPlan> plans)
+    {
+        using var basis = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(EvaluationBasisPath)));
+        Assert.Equal("USER_RECONFIRMED_FROZEN", basis.RootElement.GetProperty("status").GetString());
+        Assert.Equal(139, basis.RootElement.GetProperty("cohort").GetProperty("totalGoldOccurrences").GetInt32());
+        foreach (var document in Documents)
+        {
+            var row = basis.RootElement.GetProperty("cohort").GetProperty("documentsById").GetProperty(document.Id);
+            Assert.Equal(document.GoldSha, row.GetProperty("canonicalGoldSha256").GetString());
+            Assert.Equal(document.Count, row.GetProperty("semanticHeadingTotal").GetInt32());
+            Assert.Equal(plans[document.Id].SourceSha256, row.GetProperty("sourceSha256").GetString());
+        }
+    }
+
+    private static Prediction PredictionFrom(string documentId, string packId, string candidateId, IReadOnlyList<BoundSourcePart> parts)
+    {
+        var mapped = parts.Select(value => new Part(value.Alias, value.Start, value.End)).ToArray();
+        return new Prediction(documentId, packId, candidateId, string.Join("|", mapped.Select(value => $"{value.Alias}:{value.Start}-{value.End}")), mapped);
+    }
+
     private static string CandidateKey(Prediction value) => $"{value.DocumentId}:{value.PackId}:{value.CandidateId}";
     private static bool Overlap(IReadOnlyList<Part> left, IReadOnlyList<Part> right) => left.Any(a => right.Any(b => a.Alias == b.Alias && Math.Max(a.Start, b.Start) < Math.Min(a.End, b.End)));
     private static double Coverage(IReadOnlyList<Part> gold, IReadOnlyList<Part> predicted)

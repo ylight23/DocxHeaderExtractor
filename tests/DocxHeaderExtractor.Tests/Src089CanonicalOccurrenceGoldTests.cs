@@ -179,11 +179,13 @@ public sealed class Src089CanonicalOccurrenceGoldTests
         var inAnyClaim = claims.SelectMany(c => c).ToHashSet(StringComparer.Ordinal);
         void Claim(params string[] aliases) => Assert.Single(claims, c => c.SequenceEqual(aliases));
 
-        // S089_Q1 (user): one three-line title, the footnote mark '(*)' excluded.
+        // S089_Q1 (user correction 2026-10-03): one three-line title, including the mark embedded
+        // in the third source atom.  Strict Gold retains source truth for a heading cluster.
         var title = Assert.Single(gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray(),
             c => c.GetProperty("pattern").GetString() == "S089_Q1_DECREE_TITLE_BLOCK");
         Assert.Equal(["L0006:S0", "L0007:S0", "L0008:S0"], title.GetProperty("sourceParts").EnumerateArray().Select(p => p.GetProperty("sourceAlias").GetString()!));
-        Assert.Equal("THE PUBLICATION LAW", title.GetProperty("sourceParts")[2].GetProperty("verbatimText").GetString());
+        Assert.Equal("WHOLE_ALIAS", title.GetProperty("sourceParts")[2].GetProperty("selectionMode").GetString());
+        Assert.Equal(JsonValueKind.Null, title.GetProperty("sourceParts")[2].GetProperty("verbatimText").ValueKind);
         // S089_Q2 (user): a chapter label and its title line are one claim of two parts.
         Claim("L0014:S0", "L0015:S0");
         Claim("L0535:S0", "L0536:S0");

@@ -17,15 +17,15 @@
     },
     {
      "sourceAlias": "L0008:S0",
-     "selectionMode": "VERBATIM_TEXT",
-     "verbatimText": "THE PUBLICATION LAW",
+     "selectionMode": "WHOLE_ALIAS",
+     "verbatimText": null,
      "occurrence": null
     }
    ],
-   "text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+   "text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
    "verdict": "HEADING",
    "pattern": "S089_Q1_DECREE_TITLE_BLOCK",
-   "reason": "user decision 2026-09-27 (S089_Q1): one title of three lines - 'DECREE' over 'DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,' and 'THE PUBLICATION LAW' - without the footnote mark '(*)': IDENTITY / DOCUMENT / TITLE",
+   "reason": "user correction 2026-10-03 (S089_Q1): the source atom is 'THE PUBLICATION LAW (*)'; retain the whole atom because '(*)' is inside the multipart title cluster: IDENTITY / DOCUMENT / TITLE",
    "axes": {
     "semanticFunctions": [
      "IDENTITY"

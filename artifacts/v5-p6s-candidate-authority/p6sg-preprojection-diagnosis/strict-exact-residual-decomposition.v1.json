@@ -1,0 +1,2757 @@
+{
+  "schemaVersion": "v5-p6sg-pre-projection-strict-exact-error-decomposition-v1",
+  "execution": {
+    "providerCalls": 0,
+    "goldRead": true,
+    "goldMutation": "NONE",
+    "runtimeChanged": false,
+    "scoreSource": "artifacts/v5-p6s-candidate-authority/p6sd-full31/full31-gold-multiaxis-score.v1.json",
+    "scoreSourceSha256": "b8a067223cd34c4fb9b11612e06fd87935f2533fcd869b2a0df60bf2554b0299",
+    "associationSource": "artifacts/v5-p6s-candidate-authority/p6sf-global-association-score/full31-global-association-and-exact-score.v1.json",
+    "associationSourceSha256": "0fbc1c0354f4a3de4dedefd8391b4b8ed0c293fc63ea94f1b08803364dbd3749"
+  },
+  "authority": {
+    "metric": "P6S-F strict exact pre-projection: identity equality only; association is diagnostic",
+    "sourceReview": "SRC-089/SRC-095 reviewed pattern where present; absent review item is classified only as unreviewed non-heading, never Gold mutation",
+    "scope": "diagnosis only; no prompt, candidate, relation, Gold, parser, binder or runtime change"
+  },
+  "totals": {
+    "strictExact": {
+      "headingPredictions": 217,
+      "goldOccurrences": 139,
+      "falsePositives": 114,
+      "falseNegatives": 36
+    },
+    "representationDecisions": 694,
+    "src095": {
+      "falsePositives": 100,
+      "falseNegatives": 21,
+      "representationDecisions": 693
+    }
+  },
+  "falsePositiveFamilies": [
+    {
+      "family": "TOC_NAVIGATION_NONHEADING",
+      "count": 87,
+      "byDocument": {
+        "SRC-095": 87
+      }
+    },
+    {
+      "family": "BODY_OR_UNREVIEWED_NONHEADING",
+      "count": 15,
+      "byDocument": {
+        "SRC-089": 4,
+        "SRC-095": 11
+      }
+    },
+    {
+      "family": "ASSOCIATED_EXTENT_VARIANT",
+      "count": 12,
+      "byDocument": {
+        "SRC-089": 10,
+        "SRC-095": 2
+      }
+    }
+  ],
+  "falseNegativeFamilies": [
+    {
+      "family": "NO_MODEL_PROPOSAL",
+      "count": 23,
+      "byDocument": {
+        "SRC-089": 4,
+        "SRC-095": 19
+      }
+    },
+    {
+      "family": "NONEXACT_EXTENT_ASSOCIATION",
+      "count": 12,
+      "byDocument": {
+        "SRC-089": 10,
+        "SRC-095": 2
+      }
+    },
+    {
+      "family": "REPRESENTATION_ROLE_ERROR",
+      "count": 1,
+      "byDocument": {
+        "SRC-089": 1
+      }
+    }
+  ],
+  "src095CandidateVariantClusters": [],
+  "falsePositives": [
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0002:S0:0-14|L0002:S1:0-33",
+      "CandidateId": "C18",
+      "parts": [
+        {
+          "Alias": "L0002:S0",
+          "Start": 0,
+          "End": 14
+        },
+        {
+          "Alias": "L0002:S1",
+          "Start": 0,
+          "End": 33
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [
+        "ISSUER_HEADER",
+        "NATIONAL_HEADER"
+      ],
+      "primaryAlias": "L0002:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0002:S1:0-33|L0003:S0:0-7|L0003:S1:0-34",
+      "CandidateId": "C25",
+      "parts": [
+        {
+          "Alias": "L0002:S1",
+          "Start": 0,
+          "End": 33
+        },
+        {
+          "Alias": "L0003:S0",
+          "Start": 0,
+          "End": 7
+        },
+        {
+          "Alias": "L0003:S1",
+          "Start": 0,
+          "End": 34
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [
+        "NATIONAL_HEADER",
+        "RULE_LINE"
+      ],
+      "primaryAlias": "L0002:S1",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0004:S0:0-15|L0005:S0:0-43|L0006:S0:0-6",
+      "CandidateId": "C40",
+      "parts": [
+        {
+          "Alias": "L0004:S0",
+          "Start": 0,
+          "End": 15
+        },
+        {
+          "Alias": "L0005:S0",
+          "Start": 0,
+          "End": 43
+        },
+        {
+          "Alias": "L0006:S0",
+          "Start": 0,
+          "End": 6
+        }
+      ],
+      "reason": "ASSOCIATED_EXTENT_VARIANT",
+      "reviewPatterns": [
+        "RULE_LINE",
+        "NUMBER_AND_DATE",
+        "S089_Q1_DECREE_TITLE_BLOCK"
+      ],
+      "primaryAlias": "L0004:S0",
+      "overlappingGold": [
+        1
+      ]
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0106:S0:0-80",
+      "CandidateId": "C79",
+      "parts": [
+        {
+          "Alias": "L0106:S0",
+          "Start": 0,
+          "End": 80
+        }
+      ],
+      "reason": "ASSOCIATED_EXTENT_VARIANT",
+      "reviewPatterns": [
+        "ARTICLE_HEADING"
+      ],
+      "primaryAlias": "L0106:S0",
+      "overlappingGold": [
+        8
+      ]
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0126:S0:0-86",
+      "CandidateId": "C203",
+      "parts": [
+        {
+          "Alias": "L0126:S0",
+          "Start": 0,
+          "End": 86
+        }
+      ],
+      "reason": "ASSOCIATED_EXTENT_VARIANT",
+      "reviewPatterns": [
+        "ARTICLE_HEADING"
+      ],
+      "primaryAlias": "L0126:S0",
+      "overlappingGold": [
+        11
+      ]
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0160:S0:0-10|L0161:S0:0-10|L0162:S0:0-86",
+      "CandidateId": "C434",
+      "parts": [
+        {
+          "Alias": "L0160:S0",
+          "Start": 0,
+          "End": 10
+        },
+        {
+          "Alias": "L0161:S0",
+          "Start": 0,
+          "End": 10
+        },
+        {
+          "Alias": "L0162:S0",
+          "Start": 0,
+          "End": 86
+        }
+      ],
+      "reason": "ASSOCIATED_EXTENT_VARIANT",
+      "reviewPatterns": [
+        "S089_Q2_CHAPTER_LABEL_OVER_TITLE",
+        "ARTICLE_HEADING"
+      ],
+      "primaryAlias": "L0160:S0",
+      "overlappingGold": [
+        12,
+        13
+      ]
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0174:S0:0-89",
+      "CandidateId": "C515",
+      "parts": [
+        {
+          "Alias": "L0174:S0",
+          "Start": 0,
+          "End": 89
+        }
+      ],
+      "reason": "ASSOCIATED_EXTENT_VARIANT",
+      "reviewPatterns": [
+        "ARTICLE_HEADING"
+      ],
+      "primaryAlias": "L0174:S0",
+      "overlappingGold": [
+        14
+      ]
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0426:S0:0-96",
+      "CandidateId": "C289",
+      "parts": [
+        {
+          "Alias": "L0426:S0",
+          "Start": 0,
+          "End": 96
+        }
+      ],
+      "reason": "ASSOCIATED_EXTENT_VARIANT",
+      "reviewPatterns": [
+        "ARTICLE_HEADING"
+      ],
+      "primaryAlias": "L0426:S0",
+      "overlappingGold": [
+        27
+      ]
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0454:S0:0-45|L0455:S0:0-90|L0456:S0:0-27",
+      "CandidateId": "C486",
+      "parts": [
+        {
+          "Alias": "L0454:S0",
+          "Start": 0,
+          "End": 45
+        },
+        {
+          "Alias": "L0455:S0",
+          "Start": 0,
+          "End": 90
+        },
+        {
+          "Alias": "L0456:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "reason": "ASSOCIATED_EXTENT_VARIANT",
+      "reviewPatterns": [
+        "ARTICLE_HEADING"
+      ],
+      "primaryAlias": "L0454:S0",
+      "overlappingGold": [
+        28
+      ]
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0499:S0:0-92",
+      "CandidateId": "C138",
+      "parts": [
+        {
+          "Alias": "L0499:S0",
+          "Start": 0,
+          "End": 92
+        }
+      ],
+      "reason": "ASSOCIATED_EXTENT_VARIANT",
+      "reviewPatterns": [
+        "ARTICLE_HEADING"
+      ],
+      "primaryAlias": "L0499:S0",
+      "overlappingGold": [
+        31
+      ]
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0522:S0:0-92",
+      "CandidateId": "C298",
+      "parts": [
+        {
+          "Alias": "L0522:S0",
+          "Start": 0,
+          "End": 92
+        }
+      ],
+      "reason": "ASSOCIATED_EXTENT_VARIANT",
+      "reviewPatterns": [
+        "ARTICLE_HEADING"
+      ],
+      "primaryAlias": "L0522:S0",
+      "overlappingGold": [
+        32
+      ]
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0555:S0:0-93",
+      "CandidateId": "C510",
+      "parts": [
+        {
+          "Alias": "L0555:S0",
+          "Start": 0,
+          "End": 93
+        }
+      ],
+      "reason": "ASSOCIATED_EXTENT_VARIANT",
+      "reviewPatterns": [
+        "ARTICLE_HEADING"
+      ],
+      "primaryAlias": "L0555:S0",
+      "overlappingGold": [
+        35
+      ]
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0576:S0:0-27",
+      "CandidateId": "C15",
+      "parts": [
+        {
+          "Alias": "L0576:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [
+        "SIGNATURE_BLOCK"
+      ],
+      "primaryAlias": "L0576:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Identity": "L0576:S0:0-27|L0577:S0:0-14|L0578:S0:0-15",
+      "CandidateId": "C20",
+      "parts": [
+        {
+          "Alias": "L0576:S0",
+          "Start": 0,
+          "End": 27
+        },
+        {
+          "Alias": "L0577:S0",
+          "Start": 0,
+          "End": 14
+        },
+        {
+          "Alias": "L0578:S0",
+          "Start": 0,
+          "End": 15
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [
+        "SIGNATURE_BLOCK"
+      ],
+      "primaryAlias": "L0576:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0007:S0:0-8|L0008:S0:0-6|L0009:S0:0-8",
+      "CandidateId": "C61",
+      "parts": [
+        {
+          "Alias": "L0007:S0",
+          "Start": 0,
+          "End": 8
+        },
+        {
+          "Alias": "L0008:S0",
+          "Start": 0,
+          "End": 6
+        },
+        {
+          "Alias": "L0009:S0",
+          "Start": 0,
+          "End": 8
+        }
+      ],
+      "reason": "ASSOCIATED_EXTENT_VARIANT",
+      "reviewPatterns": [
+        "S095_Q1_RFC_TITLE_BLOCK",
+        "MATTER_SECTION"
+      ],
+      "primaryAlias": "L0007:S0",
+      "overlappingGold": [
+        1,
+        2
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0033:S0:0-25|L0034:S0:0-17",
+      "CandidateId": "C225",
+      "parts": [
+        {
+          "Alias": "L0033:S0",
+          "Start": 0,
+          "End": 25
+        },
+        {
+          "Alias": "L0034:S0",
+          "Start": 0,
+          "End": 17
+        }
+      ],
+      "reason": "ASSOCIATED_EXTENT_VARIANT",
+      "reviewPatterns": [
+        "TOC_OPENER"
+      ],
+      "primaryAlias": "L0033:S0",
+      "overlappingGold": [
+        5
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0035:S0:0-15",
+      "CandidateId": "C236",
+      "parts": [
+        {
+          "Alias": "L0035:S0",
+          "Start": 0,
+          "End": 15
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0035:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0036:S0:0-26",
+      "CandidateId": "C243",
+      "parts": [
+        {
+          "Alias": "L0036:S0",
+          "Start": 0,
+          "End": 26
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0036:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0037:S0:0-23",
+      "CandidateId": "C250",
+      "parts": [
+        {
+          "Alias": "L0037:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0037:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0038:S0:0-27",
+      "CandidateId": "C257",
+      "parts": [
+        {
+          "Alias": "L0038:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0038:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0039:S0:0-26",
+      "CandidateId": "C264",
+      "parts": [
+        {
+          "Alias": "L0039:S0",
+          "Start": 0,
+          "End": 26
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0039:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0040:S0:0-32",
+      "CandidateId": "C271",
+      "parts": [
+        {
+          "Alias": "L0040:S0",
+          "Start": 0,
+          "End": 32
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0040:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0041:S0:0-34",
+      "CandidateId": "C278",
+      "parts": [
+        {
+          "Alias": "L0041:S0",
+          "Start": 0,
+          "End": 34
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0041:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0042:S0:0-35",
+      "CandidateId": "C285",
+      "parts": [
+        {
+          "Alias": "L0042:S0",
+          "Start": 0,
+          "End": 35
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0042:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0043:S0:0-32",
+      "CandidateId": "C292",
+      "parts": [
+        {
+          "Alias": "L0043:S0",
+          "Start": 0,
+          "End": 32
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0043:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0044:S0:0-20",
+      "CandidateId": "C299",
+      "parts": [
+        {
+          "Alias": "L0044:S0",
+          "Start": 0,
+          "End": 20
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0044:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0045:S0:0-29",
+      "CandidateId": "C306",
+      "parts": [
+        {
+          "Alias": "L0045:S0",
+          "Start": 0,
+          "End": 29
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0045:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0046:S0:0-21",
+      "CandidateId": "C313",
+      "parts": [
+        {
+          "Alias": "L0046:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0046:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0047:S0:0-38",
+      "CandidateId": "C320",
+      "parts": [
+        {
+          "Alias": "L0047:S0",
+          "Start": 0,
+          "End": 38
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0047:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0048:S0:0-25",
+      "CandidateId": "C327",
+      "parts": [
+        {
+          "Alias": "L0048:S0",
+          "Start": 0,
+          "End": 25
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0048:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0049:S0:0-41",
+      "CandidateId": "C334",
+      "parts": [
+        {
+          "Alias": "L0049:S0",
+          "Start": 0,
+          "End": 41
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0049:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0050:S0:0-39",
+      "CandidateId": "C341",
+      "parts": [
+        {
+          "Alias": "L0050:S0",
+          "Start": 0,
+          "End": 39
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0050:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0051:S0:0-16",
+      "CandidateId": "C348",
+      "parts": [
+        {
+          "Alias": "L0051:S0",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0051:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0052:S0:0-24",
+      "CandidateId": "C355",
+      "parts": [
+        {
+          "Alias": "L0052:S0",
+          "Start": 0,
+          "End": 24
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0052:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0053:S0:0-30",
+      "CandidateId": "C362",
+      "parts": [
+        {
+          "Alias": "L0053:S0",
+          "Start": 0,
+          "End": 30
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0053:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0054:S0:0-22",
+      "CandidateId": "C369",
+      "parts": [
+        {
+          "Alias": "L0054:S0",
+          "Start": 0,
+          "End": 22
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0054:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0055:S0:0-35",
+      "CandidateId": "C376",
+      "parts": [
+        {
+          "Alias": "L0055:S0",
+          "Start": 0,
+          "End": 35
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0055:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0056:S0:0-36",
+      "CandidateId": "C383",
+      "parts": [
+        {
+          "Alias": "L0056:S0",
+          "Start": 0,
+          "End": 36
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0056:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0057:S0:0-23",
+      "CandidateId": "C390",
+      "parts": [
+        {
+          "Alias": "L0057:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0057:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0058:S0:0-17",
+      "CandidateId": "C397",
+      "parts": [
+        {
+          "Alias": "L0058:S0",
+          "Start": 0,
+          "End": 17
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0058:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0059:S0:0-16",
+      "CandidateId": "C404",
+      "parts": [
+        {
+          "Alias": "L0059:S0",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0059:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0060:S0:0-21",
+      "CandidateId": "C411",
+      "parts": [
+        {
+          "Alias": "L0060:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0060:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0061:S0:0-21",
+      "CandidateId": "C418",
+      "parts": [
+        {
+          "Alias": "L0061:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0061:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0064:S0:0-24",
+      "CandidateId": "C433",
+      "parts": [
+        {
+          "Alias": "L0064:S0",
+          "Start": 0,
+          "End": 24
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0064:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0065:S0:0-34",
+      "CandidateId": "C440",
+      "parts": [
+        {
+          "Alias": "L0065:S0",
+          "Start": 0,
+          "End": 34
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0065:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0066:S0:0-22",
+      "CandidateId": "C447",
+      "parts": [
+        {
+          "Alias": "L0066:S0",
+          "Start": 0,
+          "End": 22
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0066:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0067:S0:0-27",
+      "CandidateId": "C454",
+      "parts": [
+        {
+          "Alias": "L0067:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0067:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0068:S0:0-26",
+      "CandidateId": "C461",
+      "parts": [
+        {
+          "Alias": "L0068:S0",
+          "Start": 0,
+          "End": 26
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0068:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0069:S0:0-27",
+      "CandidateId": "C468",
+      "parts": [
+        {
+          "Alias": "L0069:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0069:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0070:S0:0-22",
+      "CandidateId": "C475",
+      "parts": [
+        {
+          "Alias": "L0070:S0",
+          "Start": 0,
+          "End": 22
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0070:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0071:S0:0-19",
+      "CandidateId": "C482",
+      "parts": [
+        {
+          "Alias": "L0071:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0071:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0072:S0:0-28",
+      "CandidateId": "C489",
+      "parts": [
+        {
+          "Alias": "L0072:S0",
+          "Start": 0,
+          "End": 28
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0072:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0073:S0:0-21",
+      "CandidateId": "C496",
+      "parts": [
+        {
+          "Alias": "L0073:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0073:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0074:S0:0-17",
+      "CandidateId": "C503",
+      "parts": [
+        {
+          "Alias": "L0074:S0",
+          "Start": 0,
+          "End": 17
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0074:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0075:S0:0-21",
+      "CandidateId": "C510",
+      "parts": [
+        {
+          "Alias": "L0075:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0075:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0076:S0:0-11",
+      "CandidateId": "C517",
+      "parts": [
+        {
+          "Alias": "L0076:S0",
+          "Start": 0,
+          "End": 11
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0076:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0077:S0:0-14",
+      "CandidateId": "C524",
+      "parts": [
+        {
+          "Alias": "L0077:S0",
+          "Start": 0,
+          "End": 14
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0077:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0078:S0:0-18",
+      "CandidateId": "C531",
+      "parts": [
+        {
+          "Alias": "L0078:S0",
+          "Start": 0,
+          "End": 18
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0078:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0079:S0:0-15",
+      "CandidateId": "C538",
+      "parts": [
+        {
+          "Alias": "L0079:S0",
+          "Start": 0,
+          "End": 15
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0079:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0080:S0:0-19",
+      "CandidateId": "C545",
+      "parts": [
+        {
+          "Alias": "L0080:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0080:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0081:S0:0-13",
+      "CandidateId": "C552",
+      "parts": [
+        {
+          "Alias": "L0081:S0",
+          "Start": 0,
+          "End": 13
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0081:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0082:S0:0-18",
+      "CandidateId": "C559",
+      "parts": [
+        {
+          "Alias": "L0082:S0",
+          "Start": 0,
+          "End": 18
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0082:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0083:S0:0-27",
+      "CandidateId": "C566",
+      "parts": [
+        {
+          "Alias": "L0083:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0083:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0084:S0:0-17",
+      "CandidateId": "C573",
+      "parts": [
+        {
+          "Alias": "L0084:S0",
+          "Start": 0,
+          "End": 17
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0084:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0085:S0:0-23",
+      "CandidateId": "C580",
+      "parts": [
+        {
+          "Alias": "L0085:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0085:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0086:S0:0-23",
+      "CandidateId": "C587",
+      "parts": [
+        {
+          "Alias": "L0086:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0086:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0087:S0:0-27",
+      "CandidateId": "C594",
+      "parts": [
+        {
+          "Alias": "L0087:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0087:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0088:S0:0-22",
+      "CandidateId": "C601",
+      "parts": [
+        {
+          "Alias": "L0088:S0",
+          "Start": 0,
+          "End": 22
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0088:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0089:S0:0-28",
+      "CandidateId": "C606",
+      "parts": [
+        {
+          "Alias": "L0089:S0",
+          "Start": 0,
+          "End": 28
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0089:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0090:S0:0-40",
+      "CandidateId": "C1",
+      "parts": [
+        {
+          "Alias": "L0090:S0",
+          "Start": 0,
+          "End": 40
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0090:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0091:S0:0-37",
+      "CandidateId": "C8",
+      "parts": [
+        {
+          "Alias": "L0091:S0",
+          "Start": 0,
+          "End": 37
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0091:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0092:S0:0-38",
+      "CandidateId": "C15",
+      "parts": [
+        {
+          "Alias": "L0092:S0",
+          "Start": 0,
+          "End": 38
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0092:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0093:S0:0-36",
+      "CandidateId": "C22",
+      "parts": [
+        {
+          "Alias": "L0093:S0",
+          "Start": 0,
+          "End": 36
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0093:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0096:S0:0-22",
+      "CandidateId": "C37",
+      "parts": [
+        {
+          "Alias": "L0096:S0",
+          "Start": 0,
+          "End": 22
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0096:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0097:S0:0-24",
+      "CandidateId": "C44",
+      "parts": [
+        {
+          "Alias": "L0097:S0",
+          "Start": 0,
+          "End": 24
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0097:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0098:S0:0-32",
+      "CandidateId": "C51",
+      "parts": [
+        {
+          "Alias": "L0098:S0",
+          "Start": 0,
+          "End": 32
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0098:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0099:S0:0-19",
+      "CandidateId": "C58",
+      "parts": [
+        {
+          "Alias": "L0099:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0099:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0100:S0:0-16",
+      "CandidateId": "C65",
+      "parts": [
+        {
+          "Alias": "L0100:S0",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0100:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0101:S0:0-16",
+      "CandidateId": "C72",
+      "parts": [
+        {
+          "Alias": "L0101:S0",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0101:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0102:S0:0-29",
+      "CandidateId": "C79",
+      "parts": [
+        {
+          "Alias": "L0102:S0",
+          "Start": 0,
+          "End": 29
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0102:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0103:S0:0-23",
+      "CandidateId": "C86",
+      "parts": [
+        {
+          "Alias": "L0103:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0103:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0104:S0:0-48",
+      "CandidateId": "C93",
+      "parts": [
+        {
+          "Alias": "L0104:S0",
+          "Start": 0,
+          "End": 48
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0104:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0105:S0:0-20",
+      "CandidateId": "C100",
+      "parts": [
+        {
+          "Alias": "L0105:S0",
+          "Start": 0,
+          "End": 20
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0105:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0106:S0:0-19",
+      "CandidateId": "C107",
+      "parts": [
+        {
+          "Alias": "L0106:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0106:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0107:S0:0-27",
+      "CandidateId": "C114",
+      "parts": [
+        {
+          "Alias": "L0107:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0107:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0108:S0:0-19",
+      "CandidateId": "C121",
+      "parts": [
+        {
+          "Alias": "L0108:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0108:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0109:S0:0-20",
+      "CandidateId": "C128",
+      "parts": [
+        {
+          "Alias": "L0109:S0",
+          "Start": 0,
+          "End": 20
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0109:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0110:S0:0-14",
+      "CandidateId": "C135",
+      "parts": [
+        {
+          "Alias": "L0110:S0",
+          "Start": 0,
+          "End": 14
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0110:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0111:S0:0-26",
+      "CandidateId": "C142",
+      "parts": [
+        {
+          "Alias": "L0111:S0",
+          "Start": 0,
+          "End": 26
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0111:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0112:S0:0-28",
+      "CandidateId": "C149",
+      "parts": [
+        {
+          "Alias": "L0112:S0",
+          "Start": 0,
+          "End": 28
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0112:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0113:S0:0-56",
+      "CandidateId": "C156",
+      "parts": [
+        {
+          "Alias": "L0113:S0",
+          "Start": 0,
+          "End": 56
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0113:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0114:S0:0-12",
+      "CandidateId": "C163",
+      "parts": [
+        {
+          "Alias": "L0114:S0",
+          "Start": 0,
+          "End": 12
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0114:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0115:S0:0-21",
+      "CandidateId": "C170",
+      "parts": [
+        {
+          "Alias": "L0115:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0115:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0116:S0:0-32",
+      "CandidateId": "C177",
+      "parts": [
+        {
+          "Alias": "L0116:S0",
+          "Start": 0,
+          "End": 32
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0116:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0117:S0:0-35",
+      "CandidateId": "C184",
+      "parts": [
+        {
+          "Alias": "L0117:S0",
+          "Start": 0,
+          "End": 35
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0117:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0118:S0:0-30",
+      "CandidateId": "C191",
+      "parts": [
+        {
+          "Alias": "L0118:S0",
+          "Start": 0,
+          "End": 30
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0118:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0119:S0:0-45",
+      "CandidateId": "C198",
+      "parts": [
+        {
+          "Alias": "L0119:S0",
+          "Start": 0,
+          "End": 45
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0119:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0120:S0:0-49",
+      "CandidateId": "C205",
+      "parts": [
+        {
+          "Alias": "L0120:S0",
+          "Start": 0,
+          "End": 49
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0120:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0121:S0:0-31",
+      "CandidateId": "C212",
+      "parts": [
+        {
+          "Alias": "L0121:S0",
+          "Start": 0,
+          "End": 31
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0121:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0122:S0:0-23",
+      "CandidateId": "C219",
+      "parts": [
+        {
+          "Alias": "L0122:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0122:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0123:S0:0-47",
+      "CandidateId": "C225",
+      "parts": [
+        {
+          "Alias": "L0123:S0",
+          "Start": 0,
+          "End": 47
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0123:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0124:S0:0-15",
+      "CandidateId": "C230",
+      "parts": [
+        {
+          "Alias": "L0124:S0",
+          "Start": 0,
+          "End": 15
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0124:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0125:S0:0-5",
+      "CandidateId": "C234",
+      "parts": [
+        {
+          "Alias": "L0125:S0",
+          "Start": 0,
+          "End": 5
+        }
+      ],
+      "reason": "TOC_NAVIGATION_NONHEADING",
+      "reviewPatterns": [
+        "CONTENTS_ENTRY"
+      ],
+      "primaryAlias": "L0125:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L0565:S0:0-49",
+      "CandidateId": "C18",
+      "parts": [
+        {
+          "Alias": "L0565:S0",
+          "Start": 0,
+          "End": 49
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [],
+      "primaryAlias": "L0565:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L1535:S0:0-31",
+      "CandidateId": "C93",
+      "parts": [
+        {
+          "Alias": "L1535:S0",
+          "Start": 0,
+          "End": 31
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [],
+      "primaryAlias": "L1535:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L1990:S0:0-20",
+      "CandidateId": "C13",
+      "parts": [
+        {
+          "Alias": "L1990:S0",
+          "Start": 0,
+          "End": 20
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [],
+      "primaryAlias": "L1990:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L1994:S0:0-21",
+      "CandidateId": "C37",
+      "parts": [
+        {
+          "Alias": "L1994:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [],
+      "primaryAlias": "L1994:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L1997:S0:0-19",
+      "CandidateId": "C56",
+      "parts": [
+        {
+          "Alias": "L1997:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [],
+      "primaryAlias": "L1997:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L2006:S0:0-7",
+      "CandidateId": "C115",
+      "parts": [
+        {
+          "Alias": "L2006:S0",
+          "Start": 0,
+          "End": 7
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [],
+      "primaryAlias": "L2006:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L2019:S0:0-11",
+      "CandidateId": "C194",
+      "parts": [
+        {
+          "Alias": "L2019:S0",
+          "Start": 0,
+          "End": 11
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [],
+      "primaryAlias": "L2019:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L2035:S0:0-11",
+      "CandidateId": "C300",
+      "parts": [
+        {
+          "Alias": "L2035:S0",
+          "Start": 0,
+          "End": 11
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [],
+      "primaryAlias": "L2035:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L2046:S0:0-12",
+      "CandidateId": "C369",
+      "parts": [
+        {
+          "Alias": "L2046:S0",
+          "Start": 0,
+          "End": 12
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [],
+      "primaryAlias": "L2046:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L2057:S0:0-14",
+      "CandidateId": "C436",
+      "parts": [
+        {
+          "Alias": "L2057:S0",
+          "Start": 0,
+          "End": 14
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [],
+      "primaryAlias": "L2057:S0",
+      "overlappingGold": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Identity": "L2064:S0:0-8",
+      "CandidateId": "C479",
+      "parts": [
+        {
+          "Alias": "L2064:S0",
+          "Start": 0,
+          "End": 8
+        }
+      ],
+      "reason": "BODY_OR_UNREVIEWED_NONHEADING",
+      "reviewPatterns": [],
+      "primaryAlias": "L2064:S0",
+      "overlappingGold": []
+    }
+  ],
+  "falseNegatives": [
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 1,
+      "Identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+      "parts": [
+        {
+          "Alias": "L0006:S0",
+          "Start": 0,
+          "End": 6
+        },
+        {
+          "Alias": "L0007:S0",
+          "Start": 0,
+          "End": 65
+        },
+        {
+          "Alias": "L0008:S0",
+          "Start": 0,
+          "End": 23
+        }
+      ],
+      "reason": "NONEXACT_EXTENT_ASSOCIATION"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 8,
+      "Identity": "L0106:S0:0-80|L0107:S0:0-88|L0108:S0:0-13",
+      "parts": [
+        {
+          "Alias": "L0106:S0",
+          "Start": 0,
+          "End": 80
+        },
+        {
+          "Alias": "L0107:S0",
+          "Start": 0,
+          "End": 88
+        },
+        {
+          "Alias": "L0108:S0",
+          "Start": 0,
+          "End": 13
+        }
+      ],
+      "reason": "NONEXACT_EXTENT_ASSOCIATION"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 9,
+      "Identity": "L0109:S0:0-33",
+      "parts": [
+        {
+          "Alias": "L0109:S0",
+          "Start": 0,
+          "End": 33
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 10,
+      "Identity": "L0117:S0:0-22",
+      "parts": [
+        {
+          "Alias": "L0117:S0",
+          "Start": 0,
+          "End": 22
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 11,
+      "Identity": "L0126:S0:0-86|L0127:S0:0-88|L0128:S0:0-13",
+      "parts": [
+        {
+          "Alias": "L0126:S0",
+          "Start": 0,
+          "End": 86
+        },
+        {
+          "Alias": "L0127:S0",
+          "Start": 0,
+          "End": 88
+        },
+        {
+          "Alias": "L0128:S0",
+          "Start": 0,
+          "End": 13
+        }
+      ],
+      "reason": "NONEXACT_EXTENT_ASSOCIATION"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 12,
+      "Identity": "L0160:S0:0-10|L0161:S0:0-10",
+      "parts": [
+        {
+          "Alias": "L0160:S0",
+          "Start": 0,
+          "End": 10
+        },
+        {
+          "Alias": "L0161:S0",
+          "Start": 0,
+          "End": 10
+        }
+      ],
+      "reason": "NONEXACT_EXTENT_ASSOCIATION"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 14,
+      "Identity": "L0174:S0:0-89|L0175:S0:0-51",
+      "parts": [
+        {
+          "Alias": "L0174:S0",
+          "Start": 0,
+          "End": 89
+        },
+        {
+          "Alias": "L0175:S0",
+          "Start": 0,
+          "End": 51
+        }
+      ],
+      "reason": "NONEXACT_EXTENT_ASSOCIATION"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 17,
+      "Identity": "L0246:S0:0-26",
+      "parts": [
+        {
+          "Alias": "L0246:S0",
+          "Start": 0,
+          "End": 26
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 18,
+      "Identity": "L0249:S0:0-16",
+      "parts": [
+        {
+          "Alias": "L0249:S0",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 26,
+      "Identity": "L0384:S0:0-71",
+      "parts": [
+        {
+          "Alias": "L0384:S0",
+          "Start": 0,
+          "End": 71
+        }
+      ],
+      "reason": "REPRESENTATION_ROLE_ERROR"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 27,
+      "Identity": "L0426:S0:0-96|L0427:S0:0-44",
+      "parts": [
+        {
+          "Alias": "L0426:S0",
+          "Start": 0,
+          "End": 96
+        },
+        {
+          "Alias": "L0427:S0",
+          "Start": 0,
+          "End": 44
+        }
+      ],
+      "reason": "NONEXACT_EXTENT_ASSOCIATION"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 28,
+      "Identity": "L0455:S0:0-90|L0456:S0:0-27",
+      "parts": [
+        {
+          "Alias": "L0455:S0",
+          "Start": 0,
+          "End": 90
+        },
+        {
+          "Alias": "L0456:S0",
+          "Start": 0,
+          "End": 27
+        }
+      ],
+      "reason": "NONEXACT_EXTENT_ASSOCIATION"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 31,
+      "Identity": "L0499:S0:0-92|L0500:S0:0-58",
+      "parts": [
+        {
+          "Alias": "L0499:S0",
+          "Start": 0,
+          "End": 92
+        },
+        {
+          "Alias": "L0500:S0",
+          "Start": 0,
+          "End": 58
+        }
+      ],
+      "reason": "NONEXACT_EXTENT_ASSOCIATION"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 32,
+      "Identity": "L0522:S0:0-92|L0523:S0:0-12",
+      "parts": [
+        {
+          "Alias": "L0522:S0",
+          "Start": 0,
+          "End": 92
+        },
+        {
+          "Alias": "L0523:S0",
+          "Start": 0,
+          "End": 12
+        }
+      ],
+      "reason": "NONEXACT_EXTENT_ASSOCIATION"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "goldOrdinal": 35,
+      "Identity": "L0555:S0:0-93|L0556:S0:0-12",
+      "parts": [
+        {
+          "Alias": "L0555:S0",
+          "Start": 0,
+          "End": 93
+        },
+        {
+          "Alias": "L0556:S0",
+          "Start": 0,
+          "End": 12
+        }
+      ],
+      "reason": "NONEXACT_EXTENT_ASSOCIATION"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 1,
+      "Identity": "L0008:S0:0-6",
+      "parts": [
+        {
+          "Alias": "L0008:S0",
+          "Start": 0,
+          "End": 6
+        }
+      ],
+      "reason": "NONEXACT_EXTENT_ASSOCIATION"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 2,
+      "Identity": "L0009:S0:0-8",
+      "parts": [
+        {
+          "Alias": "L0009:S0",
+          "Start": 0,
+          "End": 8
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 3,
+      "Identity": "L0015:S0:0-18",
+      "parts": [
+        {
+          "Alias": "L0015:S0",
+          "Start": 0,
+          "End": 18
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 4,
+      "Identity": "L0023:S0:0-16",
+      "parts": [
+        {
+          "Alias": "L0023:S0",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 5,
+      "Identity": "L0034:S0:0-17",
+      "parts": [
+        {
+          "Alias": "L0034:S0",
+          "Start": 0,
+          "End": 17
+        }
+      ],
+      "reason": "NONEXACT_EXTENT_ASSOCIATION"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 16,
+      "Identity": "L0288:S0:0-29",
+      "parts": [
+        {
+          "Alias": "L0288:S0",
+          "Start": 0,
+          "End": 29
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 17,
+      "Identity": "L0305:S0:0-21",
+      "parts": [
+        {
+          "Alias": "L0305:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 18,
+      "Identity": "L0335:S0:0-38",
+      "parts": [
+        {
+          "Alias": "L0335:S0",
+          "Start": 0,
+          "End": 38
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 19,
+      "Identity": "L0336:S0:0-25",
+      "parts": [
+        {
+          "Alias": "L0336:S0",
+          "Start": 0,
+          "End": 25
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 78,
+      "Identity": "L1591:S0:0-20",
+      "parts": [
+        {
+          "Alias": "L1591:S0",
+          "Start": 0,
+          "End": 20
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 79,
+      "Identity": "L1612:S0:0-14",
+      "parts": [
+        {
+          "Alias": "L1612:S0",
+          "Start": 0,
+          "End": 14
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 80,
+      "Identity": "L1613:S0:0-5|L1613:S1:0-20",
+      "parts": [
+        {
+          "Alias": "L1613:S0",
+          "Start": 0,
+          "End": 5
+        },
+        {
+          "Alias": "L1613:S1",
+          "Start": 0,
+          "End": 20
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 95,
+      "Identity": "L1914:S0:0-1",
+      "parts": [
+        {
+          "Alias": "L1914:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 96,
+      "Identity": "L1940:S0:0-1",
+      "parts": [
+        {
+          "Alias": "L1940:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 97,
+      "Identity": "L1947:S0:0-1",
+      "parts": [
+        {
+          "Alias": "L1947:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 98,
+      "Identity": "L1961:S0:0-1",
+      "parts": [
+        {
+          "Alias": "L1961:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 99,
+      "Identity": "L2012:S0:0-1",
+      "parts": [
+        {
+          "Alias": "L2012:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 100,
+      "Identity": "L2023:S0:0-1",
+      "parts": [
+        {
+          "Alias": "L2023:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 101,
+      "Identity": "L2056:S0:0-1",
+      "parts": [
+        {
+          "Alias": "L2056:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 102,
+      "Identity": "L2063:S0:0-1",
+      "parts": [
+        {
+          "Alias": "L2063:S0",
+          "Start": 0,
+          "End": 1
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "goldOrdinal": 103,
+      "Identity": "L2076:S0:0-16",
+      "parts": [
+        {
+          "Alias": "L2076:S0",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "reason": "NO_MODEL_PROPOSAL"
+    }
+  ]
+}

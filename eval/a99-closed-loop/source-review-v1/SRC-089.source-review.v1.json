@@ -30,7 +30,7 @@
     },
     "reviewItems": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-089/review-items.json",
-      "sha256": "85deee1dfebc0010addb317e9e323b85c4468aae0e7c1278629a1a86a0f8a9fc"
+      "sha256": "42f1474e55a2708da80611ee5468c1626ef235b8362375a5b7843e2a667bb4b4"
     }
   },
   "summary": {
@@ -90,7 +90,7 @@
     "patterns": [
       {
         "pattern": "S089_Q1_DECREE_TITLE_BLOCK",
-        "decision": "one title of three lines ('DECREE' + 'DETAILING ... IMPLEMENTING,' + 'THE PUBLICATION LAW'), the footnote mark '(*)' excluded: IDENTITY / DOCUMENT / TITLE"
+        "decision": "one title of three lines ('DECREE' + 'DETAILING ... IMPLEMENTING,' + 'THE PUBLICATION LAW (*)'); retain the whole source atom because the mark belongs to the title cluster: IDENTITY / DOCUMENT / TITLE"
       },
       {
         "pattern": "S089_Q2_CHAPTER_LABEL_OVER_TITLE",

@@ -48,8 +48,8 @@
           },
           {
             "sourceAlias": "L0008:S0",
-            "selectionMode": "VERBATIM_TEXT",
-            "verbatimText": "THE PUBLICATION LAW",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
             "occurrence": null,
             "leftExactContext": null,
             "rightExactContext": null
@@ -674,7 +674,7 @@
     "unavailableReason": null,
     "claims": [
       {
-        "approvedWording": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+        "approvedWording": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
         "sourceParts": [
           {
             "sourceAlias": "L0006:S0",
@@ -694,16 +694,16 @@
           },
           {
             "sourceAlias": "L0008:S0",
-            "selectionMode": "VERBATIM_TEXT",
-            "verbatimText": "THE PUBLICATION LAW",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
             "occurrence": null,
             "leftExactContext": null,
             "rightExactContext": null
           }
         ],
         "semanticRole": null,
-        "identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
-        "projectedText": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+        "identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+        "projectedText": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
         "boundParts": [
           {
             "sourceAlias": "L0006:S0",
@@ -733,9 +733,9 @@
             "row": 8,
             "utf16Span": {
               "start": 0,
-              "end": 19
+              "end": 23
             },
-            "text": "THE PUBLICATION LAW",
+            "text": "THE PUBLICATION LAW (*)",
             "localityFromPrevious": "NextRowCompatible"
           }
         ],
@@ -756,7 +756,7 @@
           "informationType": null
         },
         "pattern": "S089_Q1_DECREE_TITLE_BLOCK",
-        "evidence": "user decision 2026-09-27 (S089_Q1): one title of three lines - 'DECREE' over 'DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,' and 'THE PUBLICATION LAW' - without the footnote mark '(*)': IDENTITY / DOCUMENT / TITLE"
+        "evidence": "user correction 2026-10-03 (S089_Q1): the source atom is 'THE PUBLICATION LAW (*)'; retain the whole atom because '(*)' is inside the multipart title cluster: IDENTITY / DOCUMENT / TITLE"
       },
       {
         "approvedWording": "Chapter I GENERAL PROVISIONS",

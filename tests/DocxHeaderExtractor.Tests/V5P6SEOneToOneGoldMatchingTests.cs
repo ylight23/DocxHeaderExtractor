@@ -20,7 +20,7 @@ public sealed class V5P6SEOneToOneGoldMatchingTests
     private const string GoldBasisPath = "eval/a99-closed-loop/gold-current/evaluation-basis.v1.json";
     private static readonly (string Id, string Pdf, string GoldSha, int GoldCount)[] Documents =
     [
-        ("SRC-089", SourcePdfCorpus.Src089, "288220c9ee2265cdfdf1f1ab2852900a5914d1511b7ba721d07174116dfb1db7", 36),
+        ("SRC-089", SourcePdfCorpus.Src089, "50d9e57225d9cf9dcf174e5b5b7422158c06d7327241d77fc4d019831b8a808d", 36),
         ("SRC-095", SourcePdfCorpus.Src095, "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5", 103),
     ];
 

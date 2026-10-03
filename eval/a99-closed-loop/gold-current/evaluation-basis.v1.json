@@ -7,7 +7,7 @@
   "purpose": "Common canonical Gold basis for future heading-extraction comparisons. This file does not replace gold-current/registry.v1.json; it freezes the exact two-document evaluation authority used by the current SRC-089/SRC-095 qualification lineage.",
   "authority": {
     "discoveryRoot": "eval/a99-closed-loop/gold-current/registry.v1.json",
-    "goldMutation": "NONE",
+    "goldMutation": "USER_APPROVED_S089_Q1_FOOTNOTE_CLUSTER_CORRECTION",
     "providerCalls": 0,
     "modelCalls": 0,
     "reviewBasis": [
@@ -25,7 +25,7 @@
         "sourcePath": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
         "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
         "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
-        "canonicalGoldSha256": "288220c9ee2265cdfdf1f1ab2852900a5914d1511b7ba721d07174116dfb1db7",
+        "canonicalGoldSha256": "50d9e57225d9cf9dcf174e5b5b7422158c06d7327241d77fc4d019831b8a808d",
         "semanticHeadingTotal": 36,
         "occurrenceEvaluable": true,
         "characterSpanEvaluable": true,
@@ -36,7 +36,7 @@
           "localStructuralLabels": 4
         },
         "reconfirmedHardDecisions": [
-          "The decree title is one multipart heading: DECREE + DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, + THE PUBLICATION LAW; the footnote mark is excluded.",
+          "The decree title is one multipart heading: DECREE + DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, + THE PUBLICATION LAW (*); the embedded mark remains part of the third source atom and title cluster.",
           "Each Chapter label and its following title line form one heading occurrence.",
           "The four short numbered colon labels are headings because they open local semantic regions.",
           "Ordinary numbered legal propositions are not headings merely because they introduce subordinate material."

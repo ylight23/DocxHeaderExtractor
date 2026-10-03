@@ -125,7 +125,7 @@ public sealed class Src089SourceReviewTests
                 principle = "CLASSIFY OCCURRENCES, NOT STRINGS",
                 patterns = new[]
                 {
-                    new { pattern = "S089_Q1_DECREE_TITLE_BLOCK", decision = "one title of three lines ('DECREE' + 'DETAILING ... IMPLEMENTING,' + 'THE PUBLICATION LAW'), the footnote mark '(*)' excluded: IDENTITY / DOCUMENT / TITLE" },
+                    new { pattern = "S089_Q1_DECREE_TITLE_BLOCK", decision = "one title of three lines ('DECREE' + 'DETAILING ... IMPLEMENTING,' + 'THE PUBLICATION LAW (*)'); retain the whole source atom because the mark belongs to the title cluster: IDENTITY / DOCUMENT / TITLE" },
                     new { pattern = "S089_Q2_CHAPTER_LABEL_OVER_TITLE", decision = "one claim of two parts per chapter: the label 'Chapter N' and its title line (5 claims)" },
                     new { pattern = "S089_Q3_COLON_CLAUSE_LABEL", decision = "TRUE x4: a numbered clause that is only a short noun phrase ending in a colon is a sub-heading of its article (not the reviewer's proposal)" },
                 },
