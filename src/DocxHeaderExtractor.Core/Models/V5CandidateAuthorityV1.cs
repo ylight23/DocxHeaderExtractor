@@ -283,6 +283,10 @@ public sealed record V5CandidateDecisionResultV1(
     IReadOnlyList<V5QuarantinedCandidateDecisionV1> Quarantined,
     int DuplicateDecisionsCollapsed)
 {
+    /// <summary>Issued, locally valid decisions after duplicate/conflict handling but before the
+    /// fail-closed overlap-cluster projection. Scorers use this only to distinguish model choice
+    /// from contract loss; production projects <see cref="Accepted"/> exclusively.</summary>
+    public IReadOnlyList<V5AcceptedCandidateDecisionV1> AcceptedBeforeOverlapQuarantine { get; init; } = [];
     public IReadOnlyList<V5AcceptedCandidateDecisionV1> Headings =>
         Accepted.Where(item => item.Kind == V5CandidateDecisionKind.HEADING).ToArray();
 }
@@ -372,6 +376,7 @@ public static class V5CandidateDecisionProtocolV1
         }
         // An overlapping cluster has no deterministic winner.  Quarantine every accepted heading
         // in that connected cluster; representations and disjoint heading candidates survive.
+        var beforeOverlap = accepted2.OrderBy(item => item.OriginalOrdinal).ToArray();
         var headings = accepted2.Where(item => item.Kind == V5CandidateDecisionKind.HEADING).ToArray();
         var conflictIds = OverlapConflictIds(headings);
         if (conflictIds.Count != 0)
@@ -382,7 +387,8 @@ public static class V5CandidateDecisionProtocolV1
         }
         return new V5CandidateDecisionResultV1(ordinal,
             accepted2.OrderBy(item => item.OriginalOrdinal).ToArray(),
-            quarantined.OrderBy(item => item.OriginalOrdinal).ToArray(), collapsed);
+            quarantined.OrderBy(item => item.OriginalOrdinal).ToArray(), collapsed)
+        { AcceptedBeforeOverlapQuarantine = beforeOverlap };
     }
 
     private static string? Validate(JsonElement decision, V5CandidateUniverseV1 universe, out V5AcceptedCandidateDecisionV1? accepted, int ordinal)

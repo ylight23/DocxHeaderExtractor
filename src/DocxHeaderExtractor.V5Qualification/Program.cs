@@ -132,6 +132,8 @@ internal static class Program
         // manifest, explicit sentinel, zero retry policy, and leaves Gold unread for offline scoring.
         if (args.Contains("--p6sc-candidate-authority-canary"))
             return await P6SCandidateAuthorityCanary.RunAsync(LocateRepoRoot(), args);
+        if (args.Contains("--p6sd-candidate-authority-full31"))
+            return await P6SCandidateAuthorityFull31.RunAsync(LocateRepoRoot(), args);
 
         // P6R adds only deterministic source-correspondence evidence and a representation result
         // channel to the text-only P6P treatment. It is qualification-only and never reads Gold.

@@ -5,11 +5,35 @@
   "goldRead": true,
   "goldMutation": "NONE",
   "runtimeChanged": false,
+  "goldAuthority": {
+    "basis": "eval/a99-closed-loop/gold-current/evaluation-basis.v1.json",
+    "status": "USER_RECONFIRMED_FROZEN",
+    "documents": [
+      {
+        "documentId": "SRC-089",
+        "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+        "goldSha256": "288220c9ee2265cdfdf1f1ab2852900a5914d1511b7ba721d07174116dfb1db7",
+        "count": 36
+      },
+      {
+        "documentId": "SRC-095",
+        "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+        "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+        "count": 103
+      }
+    ]
+  },
+  "evaluationPopulation": {
+    "fullDocumentGoldDiagnostic": 139,
+    "packOwnedGold": 15,
+    "rule": "Gold primary source alias is owned by one of the four executed P05 packs"
+  },
   "scorer": {
-    "semanticCandidate": "heading C# overlaps Gold source parts",
-    "extent": "issued candidate source parts exact/overlap",
-    "contract": "candidate parser + deterministic binder",
-    "finalExactOccurrence": "bound source parts equal Gold"
+    "headingRegionDetection": "pre-overlap issued HEADING C# overlaps Gold source parts; this is not exact extent",
+    "extent": "issued candidate source parts containment/overlap taxonomy",
+    "contract": "candidate parser + deterministic binder + overlap conflict projection",
+    "finalExactOccurrence": "post-quarantine bound source parts equal Gold",
+    "relationSelectionAccuracy": "NOT_EVALUABLE_WITHOUT_RELATION_GOLD"
   },
   "contract": {
     "parserBinderRows": [
@@ -46,33 +70,34 @@
         "overlapQuarantined": 0
       }
     ],
-    "acceptedHeadingCandidates": 14,
+    "modelHeadingCandidates": 14,
+    "finalAcceptedHeadingCandidates": 14,
     "acceptedRepresentationCandidates": 2,
     "quarantine": 0
   },
-  "semanticCandidate": {
+  "headingRegionDetection": {
     "truePositive": 14,
     "falsePositive": 0,
-    "falseNegative": 125,
+    "falseNegative": 1,
     "precision": 1,
-    "recall": 0.1007,
-    "f1": 0.183
+    "recall": 0.9333,
+    "f1": 0.9655
   },
   "extentSelection": {
     "exactGold": 14,
     "partialOrSplitGold": 0,
-    "noHeadingCandidate": 125,
+    "noHeadingCandidate": 1,
     "representationOverlapGold": 0
   },
   "finalExactOccurrence": {
     "truePositive": 14,
     "falsePositive": 0,
-    "falseNegative": 125,
+    "falseNegative": 1,
     "precision": 1,
-    "recall": 0.1007,
-    "f1": 0.183
+    "recall": 0.9333,
+    "f1": 0.9655
   },
-  "predictions": [
+  "modelDecisionsBeforeOverlapProjection": [
     {
       "DocumentId": "SRC-089",
       "Candidate": "C4",
@@ -250,6 +275,186 @@
         }
       ],
       "Kind": "WHOLE"
+    }
+  ],
+  "finalAcceptedPredictions": [
+    {
+      "DocumentId": "SRC-089",
+      "Candidate": "C4",
+      "Parts": [
+        {
+          "Alias": "L0286:S0",
+          "Start": 0,
+          "End": 89
+        },
+        {
+          "Alias": "L0287:S0",
+          "Start": 0,
+          "End": 41
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Candidate": "C208",
+      "Parts": [
+        {
+          "Alias": "L0317:S0",
+          "Start": 0,
+          "End": 81
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Candidate": "C433",
+      "Parts": [
+        {
+          "Alias": "L0350:S0",
+          "Start": 0,
+          "End": 95
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "Candidate": "C496",
+      "Parts": [
+        {
+          "Alias": "L0359:S0",
+          "Start": 0,
+          "End": 95
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C36",
+      "Parts": [
+        {
+          "Alias": "L1472:S0",
+          "Start": 0,
+          "End": 19
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C165",
+      "Parts": [
+        {
+          "Alias": "L1655:S0",
+          "Start": 0,
+          "End": 28
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C334",
+      "Parts": [
+        {
+          "Alias": "L1677:S0",
+          "Start": 0,
+          "End": 56
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C410",
+      "Parts": [
+        {
+          "Alias": "L1688:S0",
+          "Start": 0,
+          "End": 12
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C555",
+      "Parts": [
+        {
+          "Alias": "L1710:S0",
+          "Start": 0,
+          "End": 21
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C96",
+      "Parts": [
+        {
+          "Alias": "L0924:S0",
+          "Start": 0,
+          "End": 17
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C231",
+      "Parts": [
+        {
+          "Alias": "L0944:S0",
+          "Start": 0,
+          "End": 4
+        },
+        {
+          "Alias": "L0944:S1",
+          "Start": 0,
+          "End": 16
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C242",
+      "Parts": [
+        {
+          "Alias": "L0945:S0",
+          "Start": 0,
+          "End": 11
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C326",
+      "Parts": [
+        {
+          "Alias": "L0959:S0",
+          "Start": 0,
+          "End": 14
+        }
+      ],
+      "Kind": "HEADING"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "Candidate": "C402",
+      "Parts": [
+        {
+          "Alias": "L0971:S0",
+          "Start": 0,
+          "End": 18
+        }
+      ],
+      "Kind": "HEADING"
     }
   ],
   "representationPredictions": [
