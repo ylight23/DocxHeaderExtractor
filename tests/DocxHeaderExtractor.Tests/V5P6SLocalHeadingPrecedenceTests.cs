@@ -1,6 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 
