@@ -87,6 +87,19 @@ public static class PdfHeadingMembershipProductionAdapter
     /// </summary>
     public static PdfStructuralIdentityResolutionDocumentPlan PrepareStructuralIdentityResolution(
         string pdfPath, string documentId, DocumentTaskContract contract)
+        => PrepareStructuralIdentityResolutionCore(pdfPath, documentId, contract, localHeadingPrecedence: false);
+
+    /// <summary>
+    /// P6S keeps P6R's deterministic correspondence envelope but changes only the model-visible
+    /// task semantics: local heading role and multipart extent take precedence over recurrence.
+    /// P6R remains unchanged for frozen-artifact replay.
+    /// </summary>
+    public static PdfStructuralIdentityResolutionDocumentPlan PrepareLocalHeadingPrecedence(
+        string pdfPath, string documentId, DocumentTaskContract contract)
+        => PrepareStructuralIdentityResolutionCore(pdfPath, documentId, contract, localHeadingPrecedence: true);
+
+    private static PdfStructuralIdentityResolutionDocumentPlan PrepareStructuralIdentityResolutionCore(
+        string pdfPath, string documentId, DocumentTaskContract contract, bool localHeadingPrecedence)
     {
         var sourcePlan = PrepareCore(pdfPath, documentId, contract, includeLayoutFacts: false);
         var documentAtoms = sourcePlan.SourceAtoms.OrderBy(atom => atom.Ordinal).ThenBy(atom => atom.Alias, StringComparer.Ordinal).ToArray();
@@ -138,8 +151,9 @@ public static class PdfHeadingMembershipProductionAdapter
             var allowedEvidence = contextEvidence.Select(item => item.handle).ToHashSet(StringComparer.Ordinal);
             using var candidatesJson = JsonDocument.Parse(JsonSerializer.SerializeToUtf8Bytes(correspondence, CanonicalJsonOptions));
             using var contextJson = JsonDocument.Parse(JsonSerializer.SerializeToUtf8Bytes(contextEvidence, CanonicalJsonOptions));
-            var request = V5FreeHeadingCandidateProtocolV1.ComposeStructuralIdentityResolution(sourcePack.Request,
-                candidatesJson.RootElement, contextJson.RootElement);
+            var request = localHeadingPrecedence
+                ? V5FreeHeadingCandidateProtocolV1.ComposeLocalHeadingPrecedence(sourcePack.Request, candidatesJson.RootElement, contextJson.RootElement)
+                : V5FreeHeadingCandidateProtocolV1.ComposeStructuralIdentityResolution(sourcePack.Request, candidatesJson.RootElement, contextJson.RootElement);
             var body = V5FreeHeadingCandidateProtocolV1.BuildBoundLocatorProviderBody(request, sourcePack.MaxCompletionTokens);
             var pack = sourcePack with
             {
