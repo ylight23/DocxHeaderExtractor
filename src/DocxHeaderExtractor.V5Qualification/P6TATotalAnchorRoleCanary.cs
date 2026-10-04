@@ -179,7 +179,18 @@ internal static class P6TATotalAnchorRoleCanary
 
     private static bool ManifestParity(string path, object manifest)
     {
-        try { return JsonNode.DeepEquals(JsonNode.Parse(File.ReadAllText(path)), JsonSerializer.SerializeToNode(manifest)); }
+        try
+        {
+            // The manifest's preparation commit is provenance, not request authority.  A commit that
+            // adds this runner must not invalidate otherwise byte-identical frozen rows; body hashes
+            // and all execution policy fields remain part of the comparison.
+            var frozen = JsonNode.Parse(File.ReadAllText(path))?.AsObject();
+            var rebuilt = JsonSerializer.SerializeToNode(manifest)?.AsObject();
+            if (frozen is null || rebuilt is null || frozen["preparedAtHead"] is null) return false;
+            frozen.Remove("preparedAtHead");
+            rebuilt.Remove("preparedAtHead");
+            return JsonNode.DeepEquals(frozen, rebuilt);
+        }
         catch (Exception exception) when (exception is IOException or JsonException) { return false; }
     }
 
