@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "v5-p6tg2a-one-primary-call-result-v1",
+  "status": "EXECUTION_SET_FROZEN",
+  "providerCalls": 1,
+  "retries": 0,
+  "repairs": 0,
+  "fallbacks": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "runtimeChanged": false,
+  "rawCaptureSha256": "f1b35061d81e32d859f3fd756cf0d47e5896d7d3c79b94acabd06f9a58833e70",
+  "row": {
+    "documentId": "SRC-089",
+    "transportStatus": "COMPLETED",
+    "finishReason": "stop",
+    "parserStatus": "PARSED",
+    "parserError": null,
+    "rawResponseSha256": "90031a491b19c54e275fd8231d6d8475c8e45c4906f9a617c35eb407067a00c9",
+    "promptTokens": 1623,
+    "completionTokens": 1462,
+    "reasoningTokens": 1248,
+    "retryCount": 0,
+    "parsed": {
+      "RawDecisions": 15,
+      "HasStructuralExtent": 6,
+      "NoStructuralExtent": 9,
+      "Quarantined": 0,
+      "MissingPrimaries": 0,
+      "Decisions": [
+        {
+          "primary": "O3",
+          "anchor": "NO_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O4",
+          "anchor": "NO_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O6",
+          "anchor": "NO_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O9",
+          "anchor": "HAS_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O10",
+          "anchor": "NO_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O11",
+          "anchor": "NO_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O17",
+          "anchor": "HAS_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O18",
+          "anchor": "NO_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O19",
+          "anchor": "HAS_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O27",
+          "anchor": "HAS_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O28",
+          "anchor": "NO_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O54",
+          "anchor": "HAS_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O55",
+          "anchor": "NO_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O83",
+          "anchor": "HAS_STRUCTURAL_EXTENT"
+        },
+        {
+          "primary": "O84",
+          "anchor": "NO_STRUCTURAL_EXTENT"
+        }
+      ],
+      "Refusals": []
+    }
+  }
+}

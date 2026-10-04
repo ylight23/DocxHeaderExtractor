@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "v5-p6tg2a-anchor-existence-canary-audit-v1",
+  "authority": {
+    "executionResultSha256": "b29b2ac212bd4d4888b17379d0db7546b28be8a0e2fdc9b49f1dde87226856f1",
+    "rawCaptureSha256": "f1b35061d81e32d859f3fd756cf0d47e5896d7d3c79b94acabd06f9a58833e70",
+    "rawResponseSha256": "90031a491b19c54e275fd8231d6d8475c8e45c4906f9a617c35eb407067a00c9",
+    "preflightSha256": "8d5176ef2f205a4de48581ecd811b9bbda7b89363bc5b2a7f5614b3747b1e4c5",
+    "providerCallsDuringAudit": 0,
+    "goldReadDuringAudit": false,
+    "rawCaptureMutation": "NONE"
+  },
+  "execution": {
+    "finishReason": "stop",
+    "retryCount": 0,
+    "reasoningExecutionConfirmed": true,
+    "reasoningTokens": 1248,
+    "rawDecisions": 15,
+    "quarantined": 0,
+    "missingPrimaries": 0
+  },
+  "probes": {
+    "trueHeadingAnchors": {
+      "expected": "HAS_STRUCTURAL_EXTENT",
+      "total": 6,
+      "has": 6,
+      "no": 0,
+      "aliases": [
+        "L0006:S0",
+        "L0014:S0",
+        "L0016:S0",
+        "L0024:S0",
+        "L0051:S0",
+        "L0080:S0"
+      ]
+    },
+    "continuationNegativeControls": {
+      "expected": "NO_STRUCTURAL_EXTENT",
+      "total": 6,
+      "has": 0,
+      "no": 6,
+      "aliases": [
+        "L0007:S0",
+        "L0008:S0",
+        "L0015:S0",
+        "L0025:S0",
+        "L0052:S0",
+        "L0081:S0"
+      ]
+    },
+    "frontMatterNegativeControls": {
+      "expected": "NO_STRUCTURAL_EXTENT",
+      "total": 3,
+      "has": 0,
+      "no": 3,
+      "aliases": [
+        "L0002:S0",
+        "L0002:S1",
+        "L0003:S1"
+      ]
+    }
+  },
+  "conclusion": "G2A_ANCHOR_EXISTENCE_SUPPORTED_ON_PRE_REGISTERED_SRC089_15_PRIMARY_PROBE; G2B_EXACT_EXTENT_REMAINS_BLOCKED_PENDING_SEPARATE_AUTHORIZATION"
+}
