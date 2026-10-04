@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.V5;
@@ -20,11 +21,26 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private const string AnchorExistencePreflightRoot = "artifacts/v5-p6t-function-membership/p6tg2a-anchor-existence-preflight";
     private const string AnchorExistenceCaptureRoot = "artifacts/v5-p6t-function-membership/p6tg2a-anchor-existence-canary-20261004";
     private const string ExactExtentPreflightRoot = "artifacts/v5-p6t-function-membership/p6tg2b-exact-extent-preflight";
+    private const string ExactExtentCaptureRoot = "artifacts/v5-p6t-function-membership/p6tg2b-exact-extent-canary-20261004";
+    private const string ExactExtentAuditRoot = "artifacts/v5-p6t-function-membership/p6tg2b-exact-extent-gold-audit";
+    private const string ExactExtentOrderPreflightRoot = "artifacts/v5-p6t-function-membership/p6tg2c-candidate-order-preflight";
+    private const string ExactExtentOrderCaptureRoot = "artifacts/v5-p6t-function-membership/p6tg2c-candidate-order-canary-20261004";
+    private const string ExactExtentOrderAuditRoot = "artifacts/v5-p6t-function-membership/p6tg2c-candidate-order-gold-audit";
+    private const string ExactExtentPermutationPreflightRoot = "artifacts/v5-p6t-function-membership/p6tg2d-permutation-preflight";
+    private const string ExactExtentPermutationCaptureRoot = "artifacts/v5-p6t-function-membership/p6tg2d-permutation-canary-20261004";
+    private const string ExactExtentPermutationAuditRoot = "artifacts/v5-p6t-function-membership/p6tg2d-permutation-gold-audit";
+    private const string ExactExtentWholeMovePreflightRoot = "artifacts/v5-p6t-function-membership/p6tg2e-whole-move-preflight";
+    private const string ExactExtentWholeMoveCaptureRoot = "artifacts/v5-p6t-function-membership/p6tg2e-whole-move-canary-20261004";
+    private const string ExactExtentMenuForensicRoot = "artifacts/v5-p6t-function-membership/p6tg2-menu-forensic";
     private const string Gold089Path = "eval/a99-closed-loop/gold/SRC-089.gold.json";
     private const string Gold095Path = "eval/a99-closed-loop/gold/SRC-095.gold.json";
     private const string Review095Path = "eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json";
     private const string RunVariable = "A99_RUN_P6TG2_CANARY";
     private const string RunAnchorExistenceVariable = "A99_RUN_P6TG2A_CANARY";
+    private const string RunExactExtentVariable = "A99_RUN_P6TG2B_CANARY";
+    private const string RunExactExtentOrderVariable = "A99_RUN_P6TG2C_CANARY";
+    private const string RunExactExtentPermutationVariable = "A99_RUN_P6TG2D_CANARY";
+    private const string RunExactExtentWholeMoveVariable = "A99_RUN_P6TG2E_CANARY";
     private const string Protocol = "v5-function-conditioned-exact-extent-resolver-preflight-1";
     private static readonly (string Id, string Pdf)[] Documents =
     [
@@ -184,6 +200,1375 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         });
     }
 
+    [Fact]
+    public async Task Run_exactly_one_frozen_whole_move_call_only_when_explicitly_enabled_for_P6TG2E()
+    {
+        if (Environment.GetEnvironmentVariable(RunExactExtentWholeMoveVariable) is not ("1" or "true" or "TRUE")) return;
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        Assert.False(string.IsNullOrWhiteSpace(apiKey), "OPENROUTER_API_KEY is required for the explicitly enabled P6T-G2E canary.");
+        var capturePath = TestRepository.Path(ExactExtentWholeMoveCaptureRoot);
+        Assert.False(Directory.Exists(capturePath), "P6T-G2E capture root already exists; automatic resume or resend is forbidden.");
+
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var preflight = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentWholeMovePreflightRoot}/whole-move-preflight.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToHashSet(StringComparer.Ordinal);
+        Assert.Equal(6, hasPrimaries.Count);
+        var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var request = ComposeExactExtentWithWholeMoved(prepared, baseline);
+        var callPlan = preflight.RootElement.GetProperty("arm");
+        Assert.Equal(request.MessageHash, callPlan.GetProperty("userMessageSha256").GetString());
+        Assert.Equal(request.MessageBytes, callPlan.GetProperty("userMessageUtf8Bytes").GetInt32());
+        Assert.Equal(request.ProviderHash, callPlan.GetProperty("providerBodySha256").GetString());
+        Assert.Equal(request.ProviderBytes, callPlan.GetProperty("providerBodyBytes").GetInt32());
+
+        Directory.CreateDirectory(capturePath);
+        WriteNew(Path.Combine(capturePath, "execution-reservation.v1.json"), new
+        {
+            schemaVersion = "v5-p6tg2e-execution-reservation-v1",
+            status = "ONE_PRIMARY_SLOT_RESERVED",
+            documentId = request.DocumentId,
+            providerRequestHash = request.ProviderHash,
+            providerRequestBytes = request.ProviderBytes,
+            providerCallsBeforeSend = 0,
+            retriesAllowed = 0,
+            repairsAllowed = false,
+            fallbacksAllowed = false,
+            goldRead = false,
+        });
+
+        using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
+        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        {
+            ApiKey = apiKey!,
+            Model = "qwen/qwen3.7-flash",
+            OpenRouterProviderRoute = "Alibaba",
+            TransientRequestRetries = 0,
+            MaxParallelRequests = 1,
+            ProviderTransportTimeoutSeconds = 300,
+            RequireZeroDataRetention = false,
+        });
+
+        try
+        {
+            var observation = await provider.ExecuteObservedAsync(request.ProviderBody, request.MaxCompletionTokens,
+                request.SystemPrompt, request.UserMessage, CancellationToken.None);
+            Assert.Equal(0, observation.RetryCount);
+            var rawCapture = new
+            {
+                schemaVersion = "v5-p6tg2e-raw-provider-capture-v1",
+                documentId = request.DocumentId,
+                packId = "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+                provider = "OpenRouter",
+                model = "qwen/qwen3.7-flash",
+                providerRoute = "Alibaba",
+                reasoningRequested = true,
+                reasoningEffort = "OMITTED",
+                providerRequestHash = request.ProviderHash,
+                providerRequestBytes = request.ProviderBytes,
+                semanticRequestHash = request.MessageHash,
+                finishReason = observation.FinishReason,
+                usage = observation.Usage,
+                promptTokens = UsageInt(observation.Usage, "prompt_tokens"),
+                completionTokens = UsageInt(observation.Usage, "completion_tokens"),
+                reasoningTokens = UsageInt(observation.Usage, "reasoning_tokens"),
+                reasoningExecutionConfirmed = UsageInt(observation.Usage, "reasoning_tokens") is > 0,
+                sseEventCount = observation.SseEventCount,
+                retryCount = observation.RetryCount,
+                rawSseSha256 = Hashing.Sha256(observation.RawSse),
+                rawResponseSha256 = Hashing.Sha256(observation.Content),
+                rawSseUtf8Bytes = Encoding.UTF8.GetByteCount(observation.RawSse),
+                rawResponseUtf8Bytes = Encoding.UTF8.GetByteCount(observation.Content),
+                rawSse = observation.RawSse,
+                rawResponse = observation.Content,
+            };
+            WriteNew(Path.Combine(capturePath, "SRC-089.raw-capture.v1.json"), rawCapture);
+            ParsedLedger? parsed = null;
+            string? parserError = null;
+            try { parsed = ParseExactExtentLedger(request, observation.Content); }
+            catch (Exception error) { parserError = error.GetType().Name + ": " + error.Message; }
+            WriteNew(Path.Combine(capturePath, "result.v1.json"), new
+            {
+                schemaVersion = "v5-p6tg2e-one-primary-call-result-v1",
+                status = "EXECUTION_SET_FROZEN",
+                providerCalls = 1,
+                retries = 0,
+                repairs = 0,
+                fallbacks = 0,
+                goldRead = false,
+                goldMutation = "NONE",
+                runtimeChanged = false,
+                rawCaptureSha256 = Hashing.Sha256(File.ReadAllText(Path.Combine(capturePath, "SRC-089.raw-capture.v1.json"))),
+                row = new
+                {
+                    documentId = request.DocumentId,
+                    transportStatus = "COMPLETED",
+                    finishReason = observation.FinishReason,
+                    parserStatus = parsed is null ? "REJECTED" : "PARSED",
+                    parserError,
+                    rawResponseSha256 = Hashing.Sha256(observation.Content),
+                    promptTokens = UsageInt(observation.Usage, "prompt_tokens"),
+                    completionTokens = UsageInt(observation.Usage, "completion_tokens"),
+                    reasoningTokens = UsageInt(observation.Usage, "reasoning_tokens"),
+                    retryCount = observation.RetryCount,
+                    parsed,
+                },
+            });
+            Assert.Equal("stop", observation.FinishReason);
+            Assert.NotNull(parsed);
+            Assert.Equal(6, parsed!.RawDecisions);
+            Assert.Equal(6, parsed.AcceptedSelections);
+            Assert.Equal(0, parsed.Quarantined);
+            Assert.Equal(0, parsed.MissingPrimaries);
+        }
+        catch (Exception error) when (error is not Xunit.Sdk.XunitException)
+        {
+            WriteNew(Path.Combine(capturePath, "transport-failure.v1.json"), new
+            {
+                schemaVersion = "v5-p6tg2e-transport-failure-v1",
+                documentId = request.DocumentId,
+                providerRequestHash = request.ProviderHash,
+                errorType = error.GetType().FullName,
+                message = error.Message,
+                retryCount = 0,
+                goldRead = false,
+            });
+            WriteNew(Path.Combine(capturePath, "result.v1.json"), new
+            {
+                schemaVersion = "v5-p6tg2e-one-primary-call-result-v1",
+                status = "EXECUTION_SET_FROZEN",
+                providerCalls = 1,
+                retries = 0,
+                repairs = 0,
+                fallbacks = 0,
+                goldRead = false,
+                goldMutation = "NONE",
+                runtimeChanged = false,
+                row = new { documentId = request.DocumentId, transportStatus = "FAILED", errorType = error.GetType().FullName, retryCount = 0 },
+            });
+            throw;
+        }
+    }
+
+    [Fact]
+    public void P6TG2D_frozen_permutation_capture_is_scored_offline_with_paired_B_C_D_matrix()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Gold089Path)));
+        using var g2bRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var g2cRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentOrderCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var g2dRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentPermutationCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToHashSet(StringComparer.Ordinal);
+        var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var reverse = ComposeExactExtentWithCandidateOrder(prepared, baseline, true);
+        var permutation = ComposeExactExtentWithHashPermutation(prepared, baseline, "G2D");
+        var b = ParseExactExtentLedger(baseline, g2bRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var c = ParseExactExtentLedger(reverse, g2cRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var d = ParseExactExtentLedger(permutation, g2dRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        Assert.Equal(g2cRaw.RootElement.GetProperty("rawResponseSha256").GetString(), g2dRaw.RootElement.GetProperty("rawResponseSha256").GetString());
+
+        var choice = (ParsedLedger ledger) => ledger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .ToDictionary(item => item.RootElement.GetProperty("primary").GetString()!, item => item.RootElement.GetProperty("candidate").GetString()!, StringComparer.Ordinal);
+        var bChoices = choice(b); var cChoices = choice(c); var dChoices = choice(d);
+        var goldClaims = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
+            .Select(claim => new { identity = claim.GetProperty("identity").GetString()!, primaryAlias = claim.GetProperty("sourceParts").EnumerateArray().First().GetProperty("sourceAlias").GetString()! })
+            .Where(claim => prepared.OccurrenceByAlias.ContainsKey(claim.primaryAlias)).ToArray();
+        Assert.Equal(6, goldClaims.Length);
+        var rows = bChoices.Keys.OrderBy(key => key, StringComparer.Ordinal).Select(primary =>
+        {
+            var alias = baseline.OccurrenceGroups.Single(group => group.PrimaryOccurrence == primary).PrimaryAlias;
+            var goldClaim = goldClaims.Single(claim => claim.primaryAlias == alias);
+            var exact = (string id) => prepared.SourcePack.Universe.Candidates.Single(candidate => candidate.Id == id).SpanIdentity == goldClaim.identity;
+            var kind = (string id) => prepared.SourcePack.Universe.Candidates.Single(candidate => candidate.Id == id).Kind.ToString();
+            return new
+            {
+                primary,
+                goldCandidate = prepared.SourcePack.Universe.Candidates.Single(candidate => candidate.SpanIdentity == goldClaim.identity).Id,
+                b = bChoices[primary], c = cChoices[primary], d = dChoices[primary],
+                bKind = kind(bChoices[primary]), cKind = kind(cChoices[primary]), dKind = kind(dChoices[primary]),
+                bExact = exact(bChoices[primary]), cExact = exact(cChoices[primary]), dExact = exact(dChoices[primary]),
+                bToC = $"{bChoices[primary]}→{cChoices[primary]}",
+                bToD = $"{bChoices[primary]}→{dChoices[primary]}",
+                cToD = $"{cChoices[primary]}→{dChoices[primary]}",
+            };
+        }).ToArray();
+        Assert.Equal(5, rows.Count(row => row.cExact));
+        Assert.Equal(5, rows.Count(row => row.dExact));
+        Assert.Equal(4, rows.Count(row => row.cKind == "MULTIPART" && row.cExact));
+        Assert.Equal(4, rows.Count(row => row.dKind == "MULTIPART" && row.dExact));
+
+        FreezeArtifact.AssertJson(ExactExtentPermutationAuditRoot, "permutation-gold-audit.v1.json", new
+        {
+            schemaVersion = "v5-p6tg2d-permutation-gold-audit-v1",
+            authority = new
+            {
+                g2bRawResponseSha256 = g2bRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                g2cRawResponseSha256 = g2cRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                g2dRawResponseSha256 = g2dRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                goldSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path(Gold089Path))),
+                providerCallsDuringAudit = 0,
+                goldMutation = "NONE",
+                runtimeChanged = false,
+            },
+            metrics = new
+            {
+                g2bExact = new { correct = rows.Count(row => row.bExact), total = 6 },
+                g2cExact = new { correct = rows.Count(row => row.cExact), total = 6 },
+                g2dExact = new { correct = rows.Count(row => row.dExact), total = 6 },
+                g2cMultipartExact = new { correct = rows.Count(row => row.cKind == "MULTIPART" && row.cExact), total = 5 },
+                g2dMultipartExact = new { correct = rows.Count(row => row.dKind == "MULTIPART" && row.dExact), total = 5 },
+                g2cSameAsG2b = rows.Count(row => row.b == row.c),
+                g2dSameAsG2b = rows.Count(row => row.b == row.d),
+                g2cSameAsG2d = rows.Count(row => row.c == row.d),
+            },
+            rows,
+            conclusion = "G2D_GOLD_AUDIT_CONFIRMS_5_OF_6_EXACT_AND_4_OF_5_MULTIPART; G2C_AND_G2D_IDENTITIES_MATCH_ON_ALL_SIX; ORIGINAL_G2B_ORDERING_REMAINS_PRIMARY_BIAS_SUSPECT",
+        });
+    }
+
+    [Fact]
+    public void P6TG2E_preflight_moves_only_whole_primary_to_the_end_of_each_frozen_menu()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var g2b = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentPreflightRoot}/exact-extent-preflight.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToHashSet(StringComparer.Ordinal);
+        var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var moved = ComposeExactExtentWithWholeMoved(prepared, baseline);
+        Assert.All(baseline.OccurrenceGroups, group =>
+        {
+            var movedGroup = moved.OccurrenceGroups.Single(item => item.PrimaryOccurrence == group.PrimaryOccurrence);
+            var whole = group.CandidateIds.Single(id => prepared.SourcePack.Universe.Candidates.Single(candidate => candidate.Id == id).Kind.ToString() == "WHOLE");
+            var expected = group.CandidateIds.Where(id => id != whole).Append(whole).ToArray();
+            Assert.Equal(expected, movedGroup.CandidateIds);
+        });
+        Assert.NotEqual(baseline.MessageHash, moved.MessageHash);
+        Assert.NotEqual(baseline.ProviderHash, moved.ProviderHash);
+
+        FreezeArtifact.AssertJson(ExactExtentWholeMovePreflightRoot, "whole-move-preflight.v1.json", new
+        {
+            schemaVersion = "v5-p6tg2e-whole-move-preflight-v1",
+            status = "PREPARED_NOT_AUTHORIZED",
+            treatment = new
+            {
+                onlyIndependentVariable = "WHOLE_PRIMARY_POSITION",
+                baselineOrdering = "FROZEN_G2B_ORDER",
+                wholeMove = "REMOVE_WHOLE_FROM_POSITION_ONE; APPEND_WHOLE; PRESERVE_NON_WHOLE_RELATIVE_ORDER",
+                goldUsedForRequestConstruction = false,
+                samePrimaries = true,
+                sameCandidateIds = true,
+                sameCandidateContentAndKinds = true,
+                samePrompt = true,
+                model = "qwen/qwen3.7-flash",
+                provider = "alibaba",
+                reasoning = new { enabled = true, effort = "OMITTED" },
+            },
+            sourceAuthority = new
+            {
+                g2aRawResponseSha256 = g2aRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                g2bPreflightSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{ExactExtentPreflightRoot}/exact-extent-preflight.v1.json"))),
+                hasPrimaries = moved.OccurrenceGroups.Select(group => new { primary = group.PrimaryOccurrence, alias = group.PrimaryAlias }).ToArray(),
+            },
+            baseline = new { userMessageSha256 = baseline.MessageHash, providerBodySha256 = baseline.ProviderHash, providerBodyBytes = baseline.ProviderBytes },
+            arm = new
+            {
+                userMessageSha256 = moved.MessageHash,
+                userMessageUtf8Bytes = moved.MessageBytes,
+                providerBodySha256 = moved.ProviderHash,
+                providerBodyBytes = moved.ProviderBytes,
+                primaryCount = moved.OccurrenceGroups.Count,
+                optionsPerPrimary = moved.OccurrenceGroups.Select(group => new { primary = group.PrimaryOccurrence, candidateIds = group.CandidateIds }).ToArray(),
+            },
+            execution = new { providerCalls = 0, retries = 0, repairs = 0, fallbacks = 0, goldRead = false, runtimeChanged = false },
+            conclusion = "P6TG2E_PROVIDER_FREE_WHOLE_POSITION_ARM_FROZEN; SEPARATE_AUTHORIZATION_REQUIRED",
+        });
+    }
+
+    [Fact]
+    public void P6TG2_menu_forensic_compares_frozen_B_C_D_E_orders_without_gold_or_provider_calls()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var g2bPreflight = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentPreflightRoot}/exact-extent-preflight.v1.json")));
+        using var g2cPreflight = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentOrderPreflightRoot}/candidate-order-preflight.v1.json")));
+        using var g2dPreflight = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentPermutationPreflightRoot}/permutation-preflight.v1.json")));
+        using var g2ePreflight = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentWholeMovePreflightRoot}/whole-move-preflight.v1.json")));
+        using var g2bRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var g2cRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentOrderCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var g2dRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentPermutationCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var g2eRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentWholeMoveCaptureRoot}/SRC-089.raw-capture.v1.json")));
+
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToHashSet(StringComparer.Ordinal);
+        Assert.Equal(6, hasPrimaries.Count);
+
+        var g2bRequest = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var g2cRequest = ComposeExactExtentWithCandidateOrder(prepared, g2bRequest, true);
+        var g2dRequest = ComposeExactExtentWithHashPermutation(prepared, g2bRequest, "G2D");
+        var g2eRequest = ComposeExactExtentWithWholeMoved(prepared, g2bRequest);
+        Assert.Equal(g2bPreflight.RootElement.GetProperty("callPlan").GetProperty("providerBodySha256").GetString(), g2bRequest.ProviderHash);
+        Assert.Equal(g2cPreflight.RootElement.GetProperty("candidateOrderArm").GetProperty("providerBodySha256").GetString(), g2cRequest.ProviderHash);
+        Assert.Equal(g2dPreflight.RootElement.GetProperty("permutationArm").GetProperty("providerBodySha256").GetString(), g2dRequest.ProviderHash);
+        Assert.Equal(g2ePreflight.RootElement.GetProperty("arm").GetProperty("providerBodySha256").GetString(), g2eRequest.ProviderHash);
+
+        var arms = new[]
+        {
+            ReadForensicArm("G2B", g2bRequest, g2bRaw.RootElement),
+            ReadForensicArm("G2C", g2cRequest, g2cRaw.RootElement),
+            ReadForensicArm("G2D", g2dRequest, g2dRaw.RootElement),
+            ReadForensicArm("G2E", g2eRequest, g2eRaw.RootElement),
+        };
+
+        Assert.All(arms, arm =>
+        {
+            Assert.Equal(6, arm.Rows.Count);
+            Assert.Equal(6, arm.Rows.Select(row => row.Primary).Distinct(StringComparer.Ordinal).Count());
+            Assert.Equal(6, arm.Rows.Count(row => row.SelectedKind is not null));
+        });
+
+        var byArm = arms.ToDictionary(arm => arm.Name, StringComparer.Ordinal);
+        Assert.Equal(0, byArm["G2E"].Rows.Count(row => row.SelectedFirstCandidate));
+        Assert.Equal(6, byArm["G2B"].Rows.Count(row => row.SelectedFirstCandidate));
+        Assert.Equal(
+            byArm["G2C"].Rows.Select(row => row.SelectedCandidate),
+            byArm["G2D"].Rows.Select(row => row.SelectedCandidate));
+
+        FreezeArtifact.AssertJson(ExactExtentMenuForensicRoot, "menu-forensic.v1.json", new
+        {
+            schemaVersion = "v5-p6tg-menu-forensic-v1",
+            status = "PROVIDER_FREE_FORENSIC",
+            source = new
+            {
+                documentId = "SRC-089",
+                candidateUniverseFingerprint = prepared.SourcePack.Universe.Fingerprint,
+                goldRead = false,
+                providerCallsDuringAudit = 0,
+                runtimeChanged = false,
+                arms = new
+                {
+                    G2B = byArm["G2B"].ProviderBodySha256,
+                    G2C = byArm["G2C"].ProviderBodySha256,
+                    G2D = byArm["G2D"].ProviderBodySha256,
+                    G2E = byArm["G2E"].ProviderBodySha256,
+                },
+                rawResponseSha256 = new
+                {
+                    G2B = byArm["G2B"].RawResponseSha256,
+                    G2C = byArm["G2C"].RawResponseSha256,
+                    G2D = byArm["G2D"].RawResponseSha256,
+                    G2E = byArm["G2E"].RawResponseSha256,
+                },
+            },
+            diagnostics = new
+            {
+                selectedWhole = arms.ToDictionary(arm => arm.Name, arm => arm.Rows.Count(row => IsWholeKind(row.SelectedKind)), StringComparer.Ordinal),
+                selectedFirst = arms.ToDictionary(arm => arm.Name, arm => arm.Rows.Count(row => row.SelectedFirstCandidate), StringComparer.Ordinal),
+                selectedMultipart = arms.ToDictionary(arm => arm.Name, arm => arm.Rows.Count(row => IsMultipartKind(row.SelectedKind)), StringComparer.Ordinal),
+                g2bG2eSameSelection = byArm["G2B"].Rows.Zip(byArm["G2E"].Rows).Count(pair => pair.First.SelectedCandidate == pair.Second.SelectedCandidate),
+                g2cG2dSameSelection = byArm["G2C"].Rows.Zip(byArm["G2D"].Rows).Count(pair => pair.First.SelectedCandidate == pair.Second.SelectedCandidate),
+                g2bG2eTransitions = byArm["G2B"].Rows.Zip(byArm["G2E"].Rows).Select(pair => new
+                {
+                    primary = pair.First.Primary,
+                    g2b = pair.First.SelectedCandidate,
+                    g2e = pair.Second.SelectedCandidate,
+                    g2bKind = pair.First.SelectedKind,
+                    g2eKind = pair.Second.SelectedKind,
+                }).ToArray(),
+            },
+            rows = arms.Select(arm => new
+            {
+                arm = arm.Name,
+                providerBodySha256 = arm.ProviderBodySha256,
+                rawResponseSha256 = arm.RawResponseSha256,
+                rows = arm.Rows,
+            }).ToArray(),
+            conclusion = "FIRST_POSITIONAL_BIAS_REJECTED; PURE_ALWAYS_WHOLE_RULE_REJECTED; WHOLE_ATOMICITY_PRIOR_AND_ORDER_BY_CANDIDATE_KIND_REMAIN_PRIMARY_SUPPORTED_DIAGNOSIS",
+        });
+
+        static bool IsWholeKind(string kind) =>
+            kind.Contains("WHOLE", StringComparison.OrdinalIgnoreCase);
+
+        static bool IsMultipartKind(string kind) =>
+            kind.Contains("MULTIPART", StringComparison.OrdinalIgnoreCase);
+
+        ForensicArm ReadForensicArm(string name, PreparedRequest request, JsonElement rawCapture)
+        {
+            var ledger = ParseExactExtentLedger(request, rawCapture.GetProperty("rawResponse").GetString()!);
+            Assert.Equal(6, ledger.AcceptedSelections);
+            Assert.Equal(0, ledger.Quarantined);
+            Assert.Equal(0, ledger.MissingPrimaries);
+            var decisions = ledger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+                .ToDictionary(item => item.RootElement.GetProperty("primary").GetString()!, item => item.RootElement.GetProperty("candidate").GetString()!, StringComparer.Ordinal);
+            var universe = prepared.SourcePack.Universe.Candidates.ToDictionary(item => item.Id, StringComparer.Ordinal);
+            var rows = request.OccurrenceGroups.Select(group =>
+            {
+                var selected = decisions[group.PrimaryOccurrence];
+                var kinds = group.CandidateIds.Select(id => universe[id].Kind.ToString()).ToArray();
+                var identities = group.CandidateIds.Select(id => universe[id].SpanIdentity).ToArray();
+                var selectedIndex = Array.IndexOf(group.CandidateIds.ToArray(), selected);
+                var wholeIndex = Array.FindIndex(kinds, kind => kind == "WHOLE");
+                return new ForensicRow(
+                    group.PrimaryOccurrence,
+                    group.CandidateIds,
+                    kinds,
+                    identities,
+                    selected,
+                    universe[selected].Kind.ToString(),
+                    universe[selected].SpanIdentity,
+                    selectedIndex + 1,
+                    wholeIndex + 1,
+                    selectedIndex == 0,
+                    selectedIndex < wholeIndex ? "BEFORE_WHOLE" : selectedIndex > wholeIndex ? "AFTER_WHOLE" : "WHOLE");
+            }).ToArray();
+            return new ForensicArm(name, request.ProviderHash, rawCapture.GetProperty("rawResponseSha256").GetString()!, rows);
+        }
+    }
+
+    [Fact]
+    public async Task Run_exactly_one_frozen_hash_permutation_call_only_when_explicitly_enabled_for_P6TG2D()
+    {
+        if (Environment.GetEnvironmentVariable(RunExactExtentPermutationVariable) is not ("1" or "true" or "TRUE")) return;
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        Assert.False(string.IsNullOrWhiteSpace(apiKey), "OPENROUTER_API_KEY is required for the explicitly enabled P6T-G2D canary.");
+        var capturePath = TestRepository.Path(ExactExtentPermutationCaptureRoot);
+        Assert.False(Directory.Exists(capturePath), "P6T-G2D capture root already exists; automatic resume or resend is forbidden.");
+
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var preflight = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentPermutationPreflightRoot}/permutation-preflight.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions
+            .Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!)
+            .ToHashSet(StringComparer.Ordinal);
+        Assert.Equal(6, hasPrimaries.Count);
+        var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var request = ComposeExactExtentWithHashPermutation(prepared, baseline, "G2D");
+        var callPlan = preflight.RootElement.GetProperty("permutationArm");
+        Assert.Equal(request.MessageHash, callPlan.GetProperty("userMessageSha256").GetString());
+        Assert.Equal(request.MessageBytes, callPlan.GetProperty("userMessageUtf8Bytes").GetInt32());
+        Assert.Equal(request.ProviderHash, callPlan.GetProperty("providerBodySha256").GetString());
+        Assert.Equal(request.ProviderBytes, callPlan.GetProperty("providerBodyBytes").GetInt32());
+
+        Directory.CreateDirectory(capturePath);
+        WriteNew(Path.Combine(capturePath, "execution-reservation.v1.json"), new
+        {
+            schemaVersion = "v5-p6tg2d-execution-reservation-v1",
+            status = "ONE_PRIMARY_SLOT_RESERVED",
+            documentId = request.DocumentId,
+            providerRequestHash = request.ProviderHash,
+            providerRequestBytes = request.ProviderBytes,
+            providerCallsBeforeSend = 0,
+            retriesAllowed = 0,
+            repairsAllowed = false,
+            fallbacksAllowed = false,
+            goldRead = false,
+        });
+
+        using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
+        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        {
+            ApiKey = apiKey!,
+            Model = "qwen/qwen3.7-flash",
+            OpenRouterProviderRoute = "Alibaba",
+            TransientRequestRetries = 0,
+            MaxParallelRequests = 1,
+            ProviderTransportTimeoutSeconds = 300,
+            RequireZeroDataRetention = false,
+        });
+
+        try
+        {
+            var observation = await provider.ExecuteObservedAsync(request.ProviderBody, request.MaxCompletionTokens,
+                request.SystemPrompt, request.UserMessage, CancellationToken.None);
+            Assert.Equal(0, observation.RetryCount);
+            var rawCapture = new
+            {
+                schemaVersion = "v5-p6tg2d-raw-provider-capture-v1",
+                documentId = request.DocumentId,
+                packId = "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+                provider = "OpenRouter",
+                model = "qwen/qwen3.7-flash",
+                providerRoute = "Alibaba",
+                reasoningRequested = true,
+                reasoningEffort = "OMITTED",
+                providerRequestHash = request.ProviderHash,
+                providerRequestBytes = request.ProviderBytes,
+                semanticRequestHash = request.MessageHash,
+                finishReason = observation.FinishReason,
+                usage = observation.Usage,
+                promptTokens = UsageInt(observation.Usage, "prompt_tokens"),
+                completionTokens = UsageInt(observation.Usage, "completion_tokens"),
+                reasoningTokens = UsageInt(observation.Usage, "reasoning_tokens"),
+                reasoningExecutionConfirmed = UsageInt(observation.Usage, "reasoning_tokens") is > 0,
+                sseEventCount = observation.SseEventCount,
+                retryCount = observation.RetryCount,
+                rawSseSha256 = Hashing.Sha256(observation.RawSse),
+                rawResponseSha256 = Hashing.Sha256(observation.Content),
+                rawSseUtf8Bytes = Encoding.UTF8.GetByteCount(observation.RawSse),
+                rawResponseUtf8Bytes = Encoding.UTF8.GetByteCount(observation.Content),
+                rawSse = observation.RawSse,
+                rawResponse = observation.Content,
+            };
+            WriteNew(Path.Combine(capturePath, "SRC-089.raw-capture.v1.json"), rawCapture);
+            ParsedLedger? parsed = null;
+            string? parserError = null;
+            try { parsed = ParseExactExtentLedger(request, observation.Content); }
+            catch (Exception error) { parserError = error.GetType().Name + ": " + error.Message; }
+            WriteNew(Path.Combine(capturePath, "result.v1.json"), new
+            {
+                schemaVersion = "v5-p6tg2d-one-primary-call-result-v1",
+                status = "EXECUTION_SET_FROZEN",
+                providerCalls = 1,
+                retries = 0,
+                repairs = 0,
+                fallbacks = 0,
+                goldRead = false,
+                goldMutation = "NONE",
+                runtimeChanged = false,
+                rawCaptureSha256 = Hashing.Sha256(File.ReadAllText(Path.Combine(capturePath, "SRC-089.raw-capture.v1.json"))),
+                row = new
+                {
+                    documentId = request.DocumentId,
+                    transportStatus = "COMPLETED",
+                    finishReason = observation.FinishReason,
+                    parserStatus = parsed is null ? "REJECTED" : "PARSED",
+                    parserError,
+                    rawResponseSha256 = Hashing.Sha256(observation.Content),
+                    promptTokens = UsageInt(observation.Usage, "prompt_tokens"),
+                    completionTokens = UsageInt(observation.Usage, "completion_tokens"),
+                    reasoningTokens = UsageInt(observation.Usage, "reasoning_tokens"),
+                    retryCount = observation.RetryCount,
+                    parsed,
+                },
+            });
+            Assert.Equal("stop", observation.FinishReason);
+            Assert.NotNull(parsed);
+            Assert.Equal(6, parsed!.RawDecisions);
+            Assert.Equal(6, parsed.AcceptedSelections);
+            Assert.Equal(0, parsed.Quarantined);
+            Assert.Equal(0, parsed.MissingPrimaries);
+        }
+        catch (Exception error) when (error is not Xunit.Sdk.XunitException)
+        {
+            WriteNew(Path.Combine(capturePath, "transport-failure.v1.json"), new
+            {
+                schemaVersion = "v5-p6tg2d-transport-failure-v1",
+                documentId = request.DocumentId,
+                providerRequestHash = request.ProviderHash,
+                errorType = error.GetType().FullName,
+                message = error.Message,
+                retryCount = 0,
+                goldRead = false,
+            });
+            WriteNew(Path.Combine(capturePath, "result.v1.json"), new
+            {
+                schemaVersion = "v5-p6tg2d-one-primary-call-result-v1",
+                status = "EXECUTION_SET_FROZEN",
+                providerCalls = 1,
+                retries = 0,
+                repairs = 0,
+                fallbacks = 0,
+                goldRead = false,
+                goldMutation = "NONE",
+                runtimeChanged = false,
+                row = new { documentId = request.DocumentId, transportStatus = "FAILED", errorType = error.GetType().FullName, retryCount = 0 },
+            });
+            throw;
+        }
+    }
+
+    [Fact]
+    public void P6TG2D_preflight_freezes_gold_independent_hash_sorted_candidate_permutation()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var g2b = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentPreflightRoot}/exact-extent-preflight.v1.json")));
+        using var g2c = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentOrderPreflightRoot}/candidate-order-preflight.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions
+            .Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!)
+            .ToHashSet(StringComparer.Ordinal);
+        Assert.Equal(6, hasPrimaries.Count);
+
+        var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var reversed = ComposeExactExtentWithCandidateOrder(prepared, baseline, reverse: true);
+        var permuted = ComposeExactExtentWithHashPermutation(prepared, baseline, "G2D");
+        Assert.Equal(baseline.OccurrenceGroups.Count, permuted.OccurrenceGroups.Count);
+        Assert.All(baseline.OccurrenceGroups, group =>
+        {
+            var reverseGroup = reversed.OccurrenceGroups.Single(item => item.PrimaryOccurrence == group.PrimaryOccurrence);
+            var permutationGroup = permuted.OccurrenceGroups.Single(item => item.PrimaryOccurrence == group.PrimaryOccurrence);
+            Assert.Equal(group.CandidateIds.ToHashSet(StringComparer.Ordinal), permutationGroup.CandidateIds.ToHashSet(StringComparer.Ordinal));
+            Assert.Equal(group.CandidateIds.Reverse(), reverseGroup.CandidateIds);
+            Assert.Equal(group.CandidateIds.OrderBy(id => Hashing.Sha256($"{group.PrimaryOccurrence}|{id}|G2D"), StringComparer.Ordinal), permutationGroup.CandidateIds);
+        });
+        Assert.NotEqual(baseline.MessageHash, permuted.MessageHash);
+        Assert.NotEqual(reversed.MessageHash, permuted.MessageHash);
+        Assert.NotEqual(baseline.ProviderHash, permuted.ProviderHash);
+        Assert.NotEqual(reversed.ProviderHash, permuted.ProviderHash);
+
+        var o9 = prepared.SourcePack.Universe.Candidates.Where(candidate => candidate.Id is "C50" or "C51")
+            .OrderBy(candidate => candidate.Id, StringComparer.Ordinal).Select(candidate => new
+            {
+                candidate = candidate.Id,
+                kind = candidate.Kind.ToString(),
+                text = candidate.Text,
+                spanIdentity = candidate.SpanIdentity,
+                parts = candidate.Endpoint.Parts.Select(part => new { alias = part.Alias, start = part.Start, end = part.End }).ToArray(),
+                baselinePosition = baseline.OccurrenceGroups.Single(group => group.PrimaryOccurrence == "O9").CandidateIds.ToList().IndexOf(candidate.Id) + 1,
+                reversePosition = reversed.OccurrenceGroups.Single(group => group.PrimaryOccurrence == "O9").CandidateIds.ToList().IndexOf(candidate.Id) + 1,
+                permutationPosition = permuted.OccurrenceGroups.Single(group => group.PrimaryOccurrence == "O9").CandidateIds.ToList().IndexOf(candidate.Id) + 1,
+            }).ToArray();
+        Assert.Equal(2, o9.Length);
+
+        FreezeArtifact.AssertJson(ExactExtentPermutationPreflightRoot, "permutation-preflight.v1.json", new
+        {
+            schemaVersion = "v5-p6tg2d-permutation-preflight-v1",
+            status = "PREPARED_NOT_AUTHORIZED",
+            treatment = new
+            {
+                onlyIndependentVariable = "DETERMINISTIC_CANDIDATE_PERMUTATION",
+                permutation = "OrderBy(SHA256(primaryOccurrence + '|' + candidateId + '|G2D'))",
+                goldUsedForRequestConstruction = false,
+                samePrimaries = true,
+                sameCandidateIds = true,
+                sameCandidateContentAndKinds = true,
+                samePrompt = true,
+                model = "qwen/qwen3.7-flash",
+                provider = "alibaba",
+                reasoning = new { enabled = true, effort = "OMITTED" },
+            },
+            sourceAuthority = new
+            {
+                g2aRawResponseSha256 = g2aRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                g2bPreflightSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{ExactExtentPreflightRoot}/exact-extent-preflight.v1.json"))),
+                g2cPreflightSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{ExactExtentOrderPreflightRoot}/candidate-order-preflight.v1.json"))),
+                hasPrimaries = permuted.OccurrenceGroups.Select(group => new { primary = group.PrimaryOccurrence, alias = group.PrimaryAlias }).ToArray(),
+            },
+            baseline = new { userMessageSha256 = baseline.MessageHash, providerBodySha256 = baseline.ProviderHash, providerBodyBytes = baseline.ProviderBytes },
+            reverseArm = new { userMessageSha256 = reversed.MessageHash, providerBodySha256 = reversed.ProviderHash, providerBodyBytes = reversed.ProviderBytes },
+            permutationArm = new
+            {
+                userMessageSha256 = permuted.MessageHash,
+                userMessageUtf8Bytes = permuted.MessageBytes,
+                providerBodySha256 = permuted.ProviderHash,
+                providerBodyBytes = permuted.ProviderBytes,
+                primaryCount = permuted.OccurrenceGroups.Count,
+                optionsPerPrimary = permuted.OccurrenceGroups.Select(group => new { primary = group.PrimaryOccurrence, candidateIds = group.CandidateIds }).ToArray(),
+            },
+            o9Forensic = o9,
+            execution = new { providerCalls = 0, retries = 0, repairs = 0, fallbacks = 0, goldRead = false, runtimeChanged = false },
+            conclusion = "P6TG2D_PROVIDER_FREE_PERMUTATION_FROZEN; G2B_AND_G2C_ORDER_ARMS_PRESERVED; ONE_MATCHED_PROVIDER_CALL_REQUIRES_SEPARATE_AUTHORIZATION",
+        });
+    }
+
+    [Fact]
+    public void P6TG2C_frozen_order_arm_is_scored_offline_and_compared_with_baseline()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Gold089Path)));
+        using var g2bRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var g2cRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentOrderCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var g2cResult = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentOrderCaptureRoot}/result.v1.json")));
+        using var orderPreflight = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentOrderPreflightRoot}/candidate-order-preflight.v1.json")));
+
+        Assert.Equal("stop", g2bRaw.RootElement.GetProperty("finishReason").GetString());
+        Assert.Equal("stop", g2cRaw.RootElement.GetProperty("finishReason").GetString());
+        Assert.Equal(1, g2cResult.RootElement.GetProperty("providerCalls").GetInt32());
+        Assert.False(g2cResult.RootElement.GetProperty("goldRead").GetBoolean());
+
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions
+            .Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!)
+            .ToHashSet(StringComparer.Ordinal);
+        var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var reordered = ComposeExactExtentWithCandidateOrder(prepared, baseline, reverse: true);
+        var baselineLedger = ParseExactExtentLedger(baseline, g2bRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var reorderedLedger = ParseExactExtentLedger(reordered, g2cRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        Assert.Equal(6, baselineLedger.AcceptedSelections);
+        Assert.Equal(6, reorderedLedger.AcceptedSelections);
+
+        var baselineChoices = baselineLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .ToDictionary(item => item.RootElement.GetProperty("primary").GetString()!, item => item.RootElement.GetProperty("candidate").GetString()!, StringComparer.Ordinal);
+        var reorderedChoices = reorderedLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .ToDictionary(item => item.RootElement.GetProperty("primary").GetString()!, item => item.RootElement.GetProperty("candidate").GetString()!, StringComparer.Ordinal);
+        var goldClaims = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
+            .Select(claim => new
+            {
+                identity = claim.GetProperty("identity").GetString()!,
+                primaryAlias = claim.GetProperty("sourceParts").EnumerateArray().First().GetProperty("sourceAlias").GetString()!,
+            })
+            .Where(claim => prepared.OccurrenceByAlias.ContainsKey(claim.primaryAlias))
+            .ToArray();
+        Assert.Equal(6, goldClaims.Length);
+
+        var baselinePosition = baseline.OccurrenceGroups.ToDictionary(group => group.PrimaryOccurrence,
+            group => group.CandidateIds.Select((id, index) => (id, index + 1)).ToDictionary(item => item.id, item => item.Item2, StringComparer.Ordinal), StringComparer.Ordinal);
+        var reorderedPosition = reordered.OccurrenceGroups.ToDictionary(group => group.PrimaryOccurrence,
+            group => group.CandidateIds.Select((id, index) => (id, index + 1)).ToDictionary(item => item.id, item => item.Item2, StringComparer.Ordinal), StringComparer.Ordinal);
+
+        var rows = baselineChoices.Keys.OrderBy(value => value, StringComparer.Ordinal).Select(primary =>
+        {
+            var baselineId = baselineChoices[primary];
+            var reorderedId = reorderedChoices[primary];
+            var baselineCandidate = prepared.SourcePack.Universe.Candidates.Single(candidate => candidate.Id == baselineId);
+            var reorderedCandidate = prepared.SourcePack.Universe.Candidates.Single(candidate => candidate.Id == reorderedId);
+            var primaryAlias = baseline.OccurrenceGroups.Single(group => group.PrimaryOccurrence == primary).PrimaryAlias;
+            var goldClaim = goldClaims.Single(claim => claim.primaryAlias == primaryAlias);
+            var goldCandidate = prepared.SourcePack.Universe.Candidates.Single(candidate => candidate.SpanIdentity == goldClaim.identity);
+            var baselineExact = baselineCandidate.SpanIdentity == goldClaim.identity;
+            var reorderedExact = reorderedCandidate.SpanIdentity == goldClaim.identity;
+            return new
+            {
+                primary,
+                goldCandidate = goldCandidate.Id,
+                goldKind = goldCandidate.Kind.ToString(),
+                baselineCandidate = baselineId,
+                baselineKind = baselineCandidate.Kind.ToString(),
+                baselinePosition = baselinePosition[primary][baselineId],
+                baselineExact,
+                reorderedCandidate = reorderedId,
+                reorderedKind = reorderedCandidate.Kind.ToString(),
+                reorderedPosition = reorderedPosition[primary][reorderedId],
+                reorderedExact,
+                sameAsBaselineChoice = baselineId == reorderedId,
+                baselineWholeToReorderedMultipart = baselineCandidate.Kind.ToString() == "WHOLE" && reorderedCandidate.Kind.ToString() == "MULTIPART",
+                transition = baselineExact && reorderedExact ? "EXACT_TO_EXACT" : baselineExact ? "EXACT_TO_WRONG" : reorderedExact ? "WRONG_TO_EXACT" : "WRONG_TO_WRONG",
+            };
+        }).ToArray();
+
+        Assert.Equal(6, rows.Length);
+        Assert.Equal(1, rows.Count(row => row.sameAsBaselineChoice));
+        Assert.Equal(5, rows.Count(row => !row.sameAsBaselineChoice));
+        Assert.Equal(5, rows.Count(row => row.reorderedExact));
+        Assert.Equal(4, rows.Count(row => row.goldKind == "MULTIPART" && row.reorderedExact));
+        Assert.Equal(1, rows.Count(row => row.goldKind == "WHOLE" && row.reorderedExact));
+        Assert.Equal(1, rows.Count(row => row.baselineExact && row.reorderedExact));
+        Assert.Equal(4, rows.Count(row => !row.baselineExact && row.reorderedExact));
+        Assert.Equal(0, rows.Count(row => row.baselineExact && !row.reorderedExact));
+
+        FreezeArtifact.AssertJson(ExactExtentOrderAuditRoot, "candidate-order-gold-audit.v1.json", new
+        {
+            schemaVersion = "v5-p6tg2c-candidate-order-gold-audit-v1",
+            authority = new
+            {
+                baselineRawCaptureSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{ExactExtentCaptureRoot}/SRC-089.raw-capture.v1.json"))),
+                reorderedRawCaptureSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{ExactExtentOrderCaptureRoot}/SRC-089.raw-capture.v1.json"))),
+                baselineRawResponseSha256 = g2bRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                reorderedRawResponseSha256 = g2cRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                orderPreflightSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{ExactExtentOrderPreflightRoot}/candidate-order-preflight.v1.json"))),
+                goldSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path(Gold089Path))),
+                providerCallsDuringAudit = 0,
+                goldMutation = "NONE",
+                runtimeChanged = false,
+            },
+            execution = new
+            {
+                baselineFinishReason = g2bRaw.RootElement.GetProperty("finishReason").GetString(),
+                reorderedFinishReason = g2cRaw.RootElement.GetProperty("finishReason").GetString(),
+                baselineParserAccepted = baselineLedger.Quarantined == 0 && baselineLedger.MissingPrimaries == 0,
+                reorderedParserAccepted = reorderedLedger.Quarantined == 0 && reorderedLedger.MissingPrimaries == 0,
+                baselineReasoningTokens = g2bRaw.RootElement.GetProperty("reasoningTokens").GetInt32(),
+                reorderedReasoningTokens = g2cRaw.RootElement.GetProperty("reasoningTokens").GetInt32(),
+            },
+            metrics = new
+            {
+                baselineExact = new { correct = rows.Count(row => row.baselineExact), total = rows.Length },
+                reorderedExact = new { correct = rows.Count(row => row.reorderedExact), total = rows.Length },
+                baselineMultipartExact = new { correct = rows.Count(row => row.goldKind == "MULTIPART" && row.baselineExact), total = rows.Count(row => row.goldKind == "MULTIPART") },
+                reorderedMultipartExact = new { correct = rows.Count(row => row.goldKind == "MULTIPART" && row.reorderedExact), total = rows.Count(row => row.goldKind == "MULTIPART") },
+                singletonExact = new { correct = rows.Count(row => row.goldKind == "WHOLE" && row.reorderedExact), total = rows.Count(row => row.goldKind == "WHOLE") },
+                sameAsBaselineChoice = rows.Count(row => row.sameAsBaselineChoice),
+                changedFromBaseline = rows.Count(row => !row.sameAsBaselineChoice),
+                baselineWrongToReorderedExact = rows.Count(row => !row.baselineExact && row.reorderedExact),
+                baselineExactToReorderedWrong = rows.Count(row => row.baselineExact && !row.reorderedExact),
+                baselineExactToReorderedExact = rows.Count(row => row.baselineExact && row.reorderedExact),
+                reorderedFirstCandidate = rows.Count(row => row.reorderedPosition == 1),
+                reorderedWhole = rows.Count(row => row.reorderedKind == "WHOLE"),
+                reorderedMultipart = rows.Count(row => row.reorderedKind == "MULTIPART"),
+            },
+            rows,
+            conclusion = "P6TG2C_ORDER_ARM_PROVIDER_AND_CONTRACT_PASS; CANDIDATE_ORDER_AFFECTS_SELECTION; FIVE_OF_SIX_EXACT_WITH_FOUR_OF_FIVE_MULTIPART; POSITIONAL_FIRST_ONLY_ONE_OF_SIX; WHOLE_ATOMICITY_PRIOR_NOT_SUPPORTED_AS_SOLE_EXPLANATION",
+        });
+    }
+
+    [Fact]
+    public async Task Run_exactly_one_frozen_candidate_order_call_only_when_explicitly_enabled_for_P6TG2C()
+    {
+        if (Environment.GetEnvironmentVariable(RunExactExtentOrderVariable) is not ("1" or "true" or "TRUE")) return;
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        Assert.False(string.IsNullOrWhiteSpace(apiKey), "OPENROUTER_API_KEY is required for the explicitly enabled P6T-G2C canary.");
+        var capturePath = TestRepository.Path(ExactExtentOrderCaptureRoot);
+        Assert.False(Directory.Exists(capturePath), "P6T-G2C capture root already exists; automatic resume or resend is forbidden.");
+
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var preflight = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentOrderPreflightRoot}/candidate-order-preflight.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions
+            .Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!)
+            .ToHashSet(StringComparer.Ordinal);
+        Assert.Equal(6, hasPrimaries.Count);
+        var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var request = ComposeExactExtentWithCandidateOrder(prepared, baseline, reverse: true);
+        var frozen = preflight.RootElement;
+        Assert.Equal("PREPARED_NOT_AUTHORIZED", frozen.GetProperty("status").GetString());
+        var callPlan = frozen.GetProperty("candidateOrderArm");
+        Assert.Equal(request.MessageHash, callPlan.GetProperty("userMessageSha256").GetString());
+        Assert.Equal(request.MessageBytes, callPlan.GetProperty("userMessageUtf8Bytes").GetInt32());
+        Assert.Equal(request.ProviderHash, callPlan.GetProperty("providerBodySha256").GetString());
+        Assert.Equal(request.ProviderBytes, callPlan.GetProperty("providerBodyBytes").GetInt32());
+
+        Directory.CreateDirectory(capturePath);
+        WriteNew(Path.Combine(capturePath, "execution-reservation.v1.json"), new
+        {
+            schemaVersion = "v5-p6tg2c-execution-reservation-v1",
+            status = "ONE_PRIMARY_SLOT_RESERVED",
+            documentId = request.DocumentId,
+            providerRequestHash = request.ProviderHash,
+            providerRequestBytes = request.ProviderBytes,
+            providerCallsBeforeSend = 0,
+            retriesAllowed = 0,
+            repairsAllowed = false,
+            fallbacksAllowed = false,
+            goldRead = false,
+        });
+
+        using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
+        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        {
+            ApiKey = apiKey!,
+            Model = "qwen/qwen3.7-flash",
+            OpenRouterProviderRoute = "Alibaba",
+            TransientRequestRetries = 0,
+            MaxParallelRequests = 1,
+            ProviderTransportTimeoutSeconds = 300,
+            RequireZeroDataRetention = false,
+        });
+
+        try
+        {
+            var observation = await provider.ExecuteObservedAsync(request.ProviderBody, request.MaxCompletionTokens,
+                request.SystemPrompt, request.UserMessage, CancellationToken.None);
+            Assert.Equal(0, observation.RetryCount);
+            var rawCapture = new
+            {
+                schemaVersion = "v5-p6tg2c-raw-provider-capture-v1",
+                documentId = request.DocumentId,
+                packId = "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+                provider = "OpenRouter",
+                model = "qwen/qwen3.7-flash",
+                providerRoute = "Alibaba",
+                reasoningRequested = true,
+                reasoningEffort = "OMITTED",
+                providerRequestHash = request.ProviderHash,
+                providerRequestBytes = request.ProviderBytes,
+                semanticRequestHash = request.MessageHash,
+                finishReason = observation.FinishReason,
+                usage = observation.Usage,
+                promptTokens = UsageInt(observation.Usage, "prompt_tokens"),
+                completionTokens = UsageInt(observation.Usage, "completion_tokens"),
+                reasoningTokens = UsageInt(observation.Usage, "reasoning_tokens"),
+                reasoningExecutionConfirmed = UsageInt(observation.Usage, "reasoning_tokens") is > 0,
+                sseEventCount = observation.SseEventCount,
+                retryCount = observation.RetryCount,
+                rawSseSha256 = Hashing.Sha256(observation.RawSse),
+                rawResponseSha256 = Hashing.Sha256(observation.Content),
+                rawSseUtf8Bytes = Encoding.UTF8.GetByteCount(observation.RawSse),
+                rawResponseUtf8Bytes = Encoding.UTF8.GetByteCount(observation.Content),
+                rawSse = observation.RawSse,
+                rawResponse = observation.Content,
+            };
+            WriteNew(Path.Combine(capturePath, "SRC-089.raw-capture.v1.json"), rawCapture);
+            ParsedLedger? parsed = null;
+            string? parserError = null;
+            try { parsed = ParseExactExtentLedger(request, observation.Content); }
+            catch (Exception error) { parserError = error.GetType().Name + ": " + error.Message; }
+            WriteNew(Path.Combine(capturePath, "result.v1.json"), new
+            {
+                schemaVersion = "v5-p6tg2c-one-primary-call-result-v1",
+                status = "EXECUTION_SET_FROZEN",
+                providerCalls = 1,
+                retries = 0,
+                repairs = 0,
+                fallbacks = 0,
+                goldRead = false,
+                goldMutation = "NONE",
+                runtimeChanged = false,
+                rawCaptureSha256 = Hashing.Sha256(File.ReadAllText(Path.Combine(capturePath, "SRC-089.raw-capture.v1.json"))),
+                row = new
+                {
+                    documentId = request.DocumentId,
+                    transportStatus = "COMPLETED",
+                    finishReason = observation.FinishReason,
+                    parserStatus = parsed is null ? "REJECTED" : "PARSED",
+                    parserError,
+                    rawResponseSha256 = Hashing.Sha256(observation.Content),
+                    promptTokens = UsageInt(observation.Usage, "prompt_tokens"),
+                    completionTokens = UsageInt(observation.Usage, "completion_tokens"),
+                    reasoningTokens = UsageInt(observation.Usage, "reasoning_tokens"),
+                    retryCount = observation.RetryCount,
+                    parsed,
+                },
+            });
+            Assert.Equal("stop", observation.FinishReason);
+            Assert.NotNull(parsed);
+            Assert.Equal(6, parsed!.RawDecisions);
+            Assert.Equal(6, parsed.AcceptedSelections);
+            Assert.Equal(0, parsed.Quarantined);
+            Assert.Equal(0, parsed.MissingPrimaries);
+        }
+        catch (Exception error) when (error is not Xunit.Sdk.XunitException)
+        {
+            WriteNew(Path.Combine(capturePath, "transport-failure.v1.json"), new
+            {
+                schemaVersion = "v5-p6tg2c-transport-failure-v1",
+                documentId = request.DocumentId,
+                providerRequestHash = request.ProviderHash,
+                errorType = error.GetType().FullName,
+                message = error.Message,
+                retryCount = 0,
+                goldRead = false,
+            });
+            WriteNew(Path.Combine(capturePath, "result.v1.json"), new
+            {
+                schemaVersion = "v5-p6tg2c-one-primary-call-result-v1",
+                status = "EXECUTION_SET_FROZEN",
+                providerCalls = 1,
+                retries = 0,
+                repairs = 0,
+                fallbacks = 0,
+                goldRead = false,
+                goldMutation = "NONE",
+                runtimeChanged = false,
+                row = new { documentId = request.DocumentId, transportStatus = "FAILED", errorType = error.GetType().FullName, retryCount = 0 },
+            });
+            throw;
+        }
+    }
+
+    [Fact]
+    public async Task Run_exactly_one_frozen_primary_call_only_when_explicitly_enabled_for_P6TG2B()
+    {
+        if (Environment.GetEnvironmentVariable(RunExactExtentVariable) is not ("1" or "true" or "TRUE")) return;
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        Assert.False(string.IsNullOrWhiteSpace(apiKey), "OPENROUTER_API_KEY is required for the explicitly enabled P6T-G2B canary.");
+        var capturePath = TestRepository.Path(ExactExtentCaptureRoot);
+        Assert.False(Directory.Exists(capturePath), "P6T-G2B capture root already exists; automatic resume or resend is forbidden.");
+
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var preflight = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentPreflightRoot}/exact-extent-preflight.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions
+            .Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!)
+            .ToHashSet(StringComparer.Ordinal);
+        Assert.Equal(6, hasPrimaries.Count);
+        var request = ComposeExactExtentFromHas(prepared, hasPrimaries);
+
+        var frozen = preflight.RootElement;
+        Assert.Equal("PREPARED_NOT_AUTHORIZED", frozen.GetProperty("status").GetString());
+        var callPlan = frozen.GetProperty("callPlan");
+        AssertFrozenParity(request, callPlan);
+        Assert.Equal(6, callPlan.GetProperty("primaryCount").GetInt32());
+        Assert.Equal(hasPrimaries.Order(StringComparer.Ordinal),
+            callPlan.GetProperty("primaryOccurrences").EnumerateArray().Select(item => item.GetProperty("occurrence").GetString()!).Order(StringComparer.Ordinal));
+
+        Directory.CreateDirectory(capturePath);
+        WriteNew(Path.Combine(capturePath, "execution-reservation.v1.json"), new
+        {
+            schemaVersion = "v5-p6tg2b-execution-reservation-v1",
+            status = "ONE_PRIMARY_SLOT_RESERVED",
+            documentId = request.DocumentId,
+            providerRequestHash = request.ProviderHash,
+            providerRequestBytes = request.ProviderBytes,
+            providerCallsBeforeSend = 0,
+            retriesAllowed = 0,
+            repairsAllowed = false,
+            fallbacksAllowed = false,
+            goldRead = false,
+        });
+
+        using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
+        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        {
+            ApiKey = apiKey!,
+            Model = "qwen/qwen3.7-flash",
+            OpenRouterProviderRoute = "Alibaba",
+            TransientRequestRetries = 0,
+            MaxParallelRequests = 1,
+            ProviderTransportTimeoutSeconds = 300,
+            RequireZeroDataRetention = false,
+        });
+
+        try
+        {
+            var observation = await provider.ExecuteObservedAsync(request.ProviderBody, request.MaxCompletionTokens,
+                request.SystemPrompt, request.UserMessage, CancellationToken.None);
+            Assert.Equal(0, observation.RetryCount);
+            var rawCapture = new
+            {
+                schemaVersion = "v5-p6tg2b-raw-provider-capture-v1",
+                documentId = request.DocumentId,
+                packId = "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+                provider = "OpenRouter",
+                model = "qwen/qwen3.7-flash",
+                providerRoute = "Alibaba",
+                reasoningRequested = true,
+                reasoningEffort = "OMITTED",
+                providerRequestHash = request.ProviderHash,
+                providerRequestBytes = request.ProviderBytes,
+                semanticRequestHash = request.MessageHash,
+                finishReason = observation.FinishReason,
+                usage = observation.Usage,
+                promptTokens = UsageInt(observation.Usage, "prompt_tokens"),
+                completionTokens = UsageInt(observation.Usage, "completion_tokens"),
+                reasoningTokens = UsageInt(observation.Usage, "reasoning_tokens"),
+                reasoningExecutionConfirmed = UsageInt(observation.Usage, "reasoning_tokens") is > 0,
+                sseEventCount = observation.SseEventCount,
+                retryCount = observation.RetryCount,
+                rawSseSha256 = Hashing.Sha256(observation.RawSse),
+                rawResponseSha256 = Hashing.Sha256(observation.Content),
+                rawSseUtf8Bytes = Encoding.UTF8.GetByteCount(observation.RawSse),
+                rawResponseUtf8Bytes = Encoding.UTF8.GetByteCount(observation.Content),
+                rawSse = observation.RawSse,
+                rawResponse = observation.Content,
+            };
+            WriteNew(Path.Combine(capturePath, "SRC-089.raw-capture.v1.json"), rawCapture);
+
+            ParsedLedger? parsed = null;
+            string? parserError = null;
+            try { parsed = ParseExactExtentLedger(request, observation.Content); }
+            catch (Exception error) { parserError = error.GetType().Name + ": " + error.Message; }
+            WriteNew(Path.Combine(capturePath, "result.v1.json"), new
+            {
+                schemaVersion = "v5-p6tg2b-one-primary-call-result-v1",
+                status = "EXECUTION_SET_FROZEN",
+                providerCalls = 1,
+                retries = 0,
+                repairs = 0,
+                fallbacks = 0,
+                goldRead = false,
+                goldMutation = "NONE",
+                runtimeChanged = false,
+                rawCaptureSha256 = Hashing.Sha256(File.ReadAllText(Path.Combine(capturePath, "SRC-089.raw-capture.v1.json"))),
+                row = new
+                {
+                    documentId = request.DocumentId,
+                    transportStatus = "COMPLETED",
+                    finishReason = observation.FinishReason,
+                    parserStatus = parsed is null ? "REJECTED" : "PARSED",
+                    parserError,
+                    rawResponseSha256 = Hashing.Sha256(observation.Content),
+                    promptTokens = UsageInt(observation.Usage, "prompt_tokens"),
+                    completionTokens = UsageInt(observation.Usage, "completion_tokens"),
+                    reasoningTokens = UsageInt(observation.Usage, "reasoning_tokens"),
+                    retryCount = observation.RetryCount,
+                    parsed,
+                },
+            });
+            Assert.Equal("stop", observation.FinishReason);
+            Assert.NotNull(parsed);
+            Assert.Equal(6, parsed!.RawDecisions);
+            Assert.Equal(6, parsed.AcceptedSelections);
+            Assert.Equal(0, parsed.NoStructuralExtent);
+            Assert.Equal(0, parsed.Quarantined);
+            Assert.Equal(0, parsed.MissingPrimaries);
+        }
+        catch (Exception error) when (error is not Xunit.Sdk.XunitException)
+        {
+            WriteNew(Path.Combine(capturePath, "transport-failure.v1.json"), new
+            {
+                schemaVersion = "v5-p6tg2b-transport-failure-v1",
+                documentId = request.DocumentId,
+                providerRequestHash = request.ProviderHash,
+                errorType = error.GetType().FullName,
+                message = error.Message,
+                retryCount = 0,
+                goldRead = false,
+            });
+            WriteNew(Path.Combine(capturePath, "result.v1.json"), new
+            {
+                schemaVersion = "v5-p6tg2b-one-primary-call-result-v1",
+                status = "EXECUTION_SET_FROZEN",
+                providerCalls = 1,
+                retries = 0,
+                repairs = 0,
+                fallbacks = 0,
+                goldRead = false,
+                goldMutation = "NONE",
+                runtimeChanged = false,
+                row = new { documentId = request.DocumentId, transportStatus = "FAILED", errorType = error.GetType().FullName, retryCount = 0 },
+            });
+            throw;
+        }
+    }
+
+    [Fact]
+    public void P6TG2B_frozen_capture_is_scored_offline_against_the_six_gold_extents()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Gold089Path)));
+        using var preflight = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentPreflightRoot}/exact-extent-preflight.v1.json")));
+        using var raw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var result = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentCaptureRoot}/result.v1.json")));
+
+        Assert.Equal("EXECUTION_SET_FROZEN", result.RootElement.GetProperty("status").GetString());
+        Assert.Equal(1, result.RootElement.GetProperty("providerCalls").GetInt32());
+        Assert.Equal(0, result.RootElement.GetProperty("retries").GetInt32());
+        Assert.Equal(0, result.RootElement.GetProperty("repairs").GetInt32());
+        Assert.Equal(0, result.RootElement.GetProperty("fallbacks").GetInt32());
+        Assert.False(result.RootElement.GetProperty("goldRead").GetBoolean());
+        Assert.Equal("stop", raw.RootElement.GetProperty("finishReason").GetString());
+
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var selectedRows = JsonDocument.Parse(raw.RootElement.GetProperty("rawResponse").GetString()!).RootElement
+            .GetProperty("decisions").EnumerateArray()
+            .ToDictionary(item => item.GetProperty("primary").GetString()!, item => item.GetProperty("candidate").GetString()!, StringComparer.Ordinal);
+        var frozenOptions = preflight.RootElement.GetProperty("callPlan").GetProperty("optionsPerPrimary").EnumerateArray()
+            .ToDictionary(item => item.GetProperty("primary").GetString()!, item => item.GetProperty("candidateIds").EnumerateArray().Select(value => value.GetString()!).ToArray(), StringComparer.Ordinal);
+        Assert.Equal(6, selectedRows.Count);
+
+        var selectedPrimaries = selectedRows.Keys.ToHashSet(StringComparer.Ordinal);
+        var goldClaims = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
+            .Select(claim => new
+            {
+                identity = claim.GetProperty("identity").GetString()!,
+                primaryAlias = claim.GetProperty("sourceParts").EnumerateArray().First().GetProperty("sourceAlias").GetString()!,
+            })
+            .Where(claim => selectedPrimaries.Any(primary => prepared.OccurrenceByAlias.TryGetValue(claim.primaryAlias, out var occurrence) && occurrence == primary))
+            .ToArray();
+        Assert.Equal(6, goldClaims.Length);
+
+        var rows = selectedRows.OrderBy(item => item.Key, StringComparer.Ordinal).Select(item =>
+        {
+            var primary = item.Key;
+            var selectedId = item.Value;
+            var group = prepared.SourcePack.Universe.Candidates.Single(candidate => candidate.Id == selectedId);
+            var options = frozenOptions[primary];
+            Assert.Equal(options[0], selectedId);
+            var goldClaim = goldClaims.Single(claim => prepared.OccurrenceByAlias[claim.primaryAlias] == primary);
+            var exact = group.SpanIdentity == goldClaim.identity;
+            var selectedWhole = string.Equals(group.Kind.ToString(), "WHOLE", StringComparison.Ordinal) && group.Endpoint.Parts.Count == 1;
+            var goldCandidate = prepared.SourcePack.Universe.Candidates.Single(candidate => candidate.SpanIdentity == goldClaim.identity);
+            var goldMultipart = string.Equals(goldCandidate.Kind.ToString(), "MULTIPART", StringComparison.Ordinal);
+            return new
+            {
+                primary,
+                selectedCandidate = selectedId,
+                firstCandidate = options[0],
+                selectedFirstCandidate = selectedId == options[0],
+                selectedKind = group.Kind.ToString(),
+                selectedWholePrimary = selectedWhole,
+                goldIdentity = goldClaim.identity,
+                goldKind = goldCandidate.Kind.ToString(),
+                goldMultipart,
+                exact,
+                multipartExact = goldMultipart && exact,
+                multipartUnder = goldMultipart && selectedWhole,
+                selectedParts = group.Endpoint.Parts.Select(part => part.Alias).ToArray(),
+                goldParts = goldCandidate.Endpoint.Parts.Select(part => part.Alias).ToArray(),
+            };
+        }).ToArray();
+
+        Assert.Equal(6, rows.Length);
+        Assert.Equal(6, rows.Count(row => row.selectedFirstCandidate));
+        Assert.Equal(6, rows.Count(row => row.selectedWholePrimary));
+        Assert.Equal(1, rows.Count(row => row.exact));
+        Assert.Equal(0, rows.Count(row => row.multipartExact));
+        Assert.Equal(5, rows.Count(row => row.multipartUnder));
+        Assert.Equal(1, rows.Count(row => !row.goldMultipart && row.exact));
+
+        FreezeArtifact.AssertJson(ExactExtentAuditRoot, "exact-extent-gold-audit.v1.json", new
+        {
+            schemaVersion = "v5-p6tg2b-exact-extent-gold-audit-v1",
+            authority = new
+            {
+                rawCaptureSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{ExactExtentCaptureRoot}/SRC-089.raw-capture.v1.json"))),
+                rawResponseSha256 = raw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                resultSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{ExactExtentCaptureRoot}/result.v1.json"))),
+                preflightSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{ExactExtentPreflightRoot}/exact-extent-preflight.v1.json"))),
+                goldSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path(Gold089Path))),
+                providerCallsDuringAudit = 0,
+                goldMutation = "NONE",
+                runtimeChanged = false,
+            },
+            execution = new
+            {
+                finishReason = raw.RootElement.GetProperty("finishReason").GetString(),
+                reasoningExecutionConfirmed = raw.RootElement.GetProperty("reasoningExecutionConfirmed").GetBoolean(),
+                promptTokens = raw.RootElement.GetProperty("promptTokens").GetInt32(),
+                completionTokens = raw.RootElement.GetProperty("completionTokens").GetInt32(),
+                reasoningTokens = raw.RootElement.GetProperty("reasoningTokens").GetInt32(),
+                rawDecisions = rows.Length,
+                parserAccepted = result.RootElement.GetProperty("row").GetProperty("parserStatus").GetString() == "PARSED",
+                quarantine = result.RootElement.GetProperty("row").GetProperty("parsed").GetProperty("Quarantined").GetInt32(),
+            },
+            metrics = new
+            {
+                exact = new { correct = rows.Count(row => row.exact), total = rows.Length },
+                multipart = new { exact = rows.Count(row => row.multipartExact), under = rows.Count(row => row.multipartUnder), total = rows.Count(row => row.goldMultipart) },
+                singleton = new { exact = rows.Count(row => !row.goldMultipart && row.exact), total = rows.Count(row => !row.goldMultipart) },
+                selectedFirstCandidate = rows.Count(row => row.selectedFirstCandidate),
+                selectedWholePrimary = rows.Count(row => row.selectedWholePrimary),
+                primaryWholeSelectionBias = rows.All(row => row.selectedWholePrimary),
+            },
+            rows,
+            conclusion = "G2B_TRANSPORT_AND_CONTRACT_PASS; EXACT_EXTENT_AUDIT_1_OF_6; MULTIPART_EXACT_0_OF_5; SINGLETON_EXACT_1_OF_1; PRIMARY_WHOLE_SELECTION_BIAS_CONFIRMED_ON_CANARY",
+        });
+    }
+
+    [Fact]
+    public void P6TG2C_preflight_reverses_only_candidate_order_and_preserves_the_frozen_extent_menu()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2b = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ExactExtentPreflightRoot}/exact-extent-preflight.v1.json")));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions
+            .Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!)
+            .ToHashSet(StringComparer.Ordinal);
+        Assert.Equal(6, hasPrimaries.Count);
+
+        var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var reversed = ComposeExactExtentWithCandidateOrder(prepared, baseline, reverse: true);
+        var frozenCallPlan = g2b.RootElement.GetProperty("callPlan");
+        Assert.Equal(baseline.MessageHash, frozenCallPlan.GetProperty("userMessageSha256").GetString());
+        Assert.Equal(baseline.ProviderHash, frozenCallPlan.GetProperty("providerBodySha256").GetString());
+        Assert.Equal(baseline.OccurrenceGroups.Count, reversed.OccurrenceGroups.Count);
+        Assert.All(baseline.OccurrenceGroups, group => Assert.NotEmpty(group.CandidateIds));
+        Assert.All(reversed.OccurrenceGroups, group => Assert.NotEmpty(group.CandidateIds));
+        Assert.All(baseline.OccurrenceGroups, group =>
+        {
+            var reversedGroup = reversed.OccurrenceGroups.Single(item => item.PrimaryOccurrence == group.PrimaryOccurrence);
+            Assert.Equal(group.CandidateIds.Reverse(), reversedGroup.CandidateIds);
+            Assert.Equal(group.CandidateIds.ToHashSet(StringComparer.Ordinal), reversedGroup.CandidateIds.ToHashSet(StringComparer.Ordinal));
+        });
+
+        var baselineWholePositions = baseline.OccurrenceGroups.Select(group =>
+        {
+            var whole = group.CandidateIds.Select((id, index) => (id, index))
+                .Single(item => prepared.SourcePack.Universe.Candidates.Single(candidate => candidate.Id == item.id).Kind.ToString() == "WHOLE");
+            return new { primary = group.PrimaryOccurrence, candidateCount = group.CandidateIds.Count, position = whole.index + 1, candidate = whole.id };
+        }).ToArray();
+        var reversedWholePositions = reversed.OccurrenceGroups.Select(group =>
+        {
+            var whole = group.CandidateIds.Select((id, index) => (id, index))
+                .Single(item => prepared.SourcePack.Universe.Candidates.Single(candidate => candidate.Id == item.id).Kind.ToString() == "WHOLE");
+            return new { primary = group.PrimaryOccurrence, candidateCount = group.CandidateIds.Count, position = whole.index + 1, candidate = whole.id };
+        }).ToArray();
+        Assert.All(baselineWholePositions, row => Assert.Equal(1, row.position));
+        Assert.All(reversedWholePositions, row => Assert.Equal(row.candidateCount, row.position));
+
+        FreezeArtifact.AssertJson(ExactExtentOrderPreflightRoot, "candidate-order-preflight.v1.json", new
+        {
+            schemaVersion = "v5-p6tg2c-candidate-order-preflight-v1",
+            status = "PREPARED_NOT_AUTHORIZED",
+            treatment = new
+            {
+                onlyIndependentVariable = "CANDIDATE_ORDER",
+                baselineProtocol = "v5-function-conditioned-exact-extent-resolver-2",
+                candidateOrderArm = "REVERSE_FROZEN_MENU_ORDER",
+                model = "qwen/qwen3.7-flash",
+                provider = "alibaba",
+                reasoning = new { enabled = true, effort = "OMITTED" },
+                samePrimaries = true,
+                sameCandidateIds = true,
+                sameCandidateContentAndKinds = true,
+                samePrompt = true,
+                goldUsedForRequestConstruction = false,
+            },
+            sourceAuthority = new
+            {
+                g2bPreflightSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{ExactExtentPreflightRoot}/exact-extent-preflight.v1.json"))),
+                g2aRawResponseSha256 = g2aRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                hasPrimaries = baseline.OccurrenceGroups.Select(group => new { primary = group.PrimaryOccurrence, alias = group.PrimaryAlias }).ToArray(),
+            },
+            baseline = new
+            {
+                providerBodySha256 = baseline.ProviderHash,
+                userMessageSha256 = baseline.MessageHash,
+                providerBodyBytes = baseline.ProviderBytes,
+                primaryCount = baseline.OccurrenceGroups.Count,
+                wholeCandidatePositions = baselineWholePositions,
+                optionsPerPrimary = baseline.OccurrenceGroups.Select(group => new { primary = group.PrimaryOccurrence, candidateIds = group.CandidateIds }).ToArray(),
+            },
+            candidateOrderArm = new
+            {
+                providerBodySha256 = reversed.ProviderHash,
+                userMessageSha256 = reversed.MessageHash,
+                userMessageUtf8Bytes = reversed.MessageBytes,
+                providerBodyBytes = reversed.ProviderBytes,
+                primaryCount = reversed.OccurrenceGroups.Count,
+                wholeCandidatePositions = reversedWholePositions,
+                optionsPerPrimary = reversed.OccurrenceGroups.Select(group => new { primary = group.PrimaryOccurrence, candidateIds = group.CandidateIds }).ToArray(),
+            },
+            execution = new { providerCalls = 0, retries = 0, repairs = 0, fallbacks = 0, goldRead = false, runtimeChanged = false },
+            conclusion = "P6TG2C_PROVIDER_FREE_ORDER_ARM_FROZEN; BASELINE_WHOLE_IS_FIRST_AND_ORDER_ARM_MOVES_WHOLE_TO_LAST; ONE_MATCHED_PROVIDER_CALL_REQUIRES_SEPARATE_AUTHORIZATION",
+        });
+    }
+
     private static PreparedDocument Prepare(string documentId, string sourcePdf, JsonElement captureRow, JsonElement g1Document)
     {
         var sourceHash = CanonicalSemanticSourceHash.Compute(TestRepository.Path(sourcePdf));
@@ -218,6 +1603,21 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
 
     private sealed record ParsedLedger(int RawDecisions, int AcceptedSelections, int NoStructuralExtent,
         int Quarantined, int MissingPrimaries, IReadOnlyList<object> Decisions, IReadOnlyList<object> Refusals);
+
+    private sealed record ForensicArm(string Name, string ProviderBodySha256, string RawResponseSha256, IReadOnlyList<ForensicRow> Rows);
+
+    private sealed record ForensicRow(
+        string Primary,
+        IReadOnlyList<string> CandidateIds,
+        IReadOnlyList<string> CandidateKinds,
+        IReadOnlyList<string> CandidateIdentities,
+        string SelectedCandidate,
+        string SelectedKind,
+        string SelectedIdentity,
+        int SelectedPosition,
+        int WholePosition,
+        bool SelectedFirstCandidate,
+        string SelectedRelativeToWhole);
 
     private sealed record AnchorExistenceRequest(string DocumentId, string SystemPrompt, string UserMessage,
         string MessageHash, int MessageBytes, byte[] ProviderBody, int ProviderBytes, string ProviderHash,
@@ -624,26 +2024,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
                 Assert.NotEmpty(group.CandidateIds);
             }
 
-            var userDocument = JsonDocument.Parse(allG2.UserMessage);
-            var selectedGroups = userDocument.RootElement.GetProperty("occurrenceGroups").EnumerateArray()
-                .Where(group => hasPrimaries.Contains(group.GetProperty("primary").GetString()!)).ToArray();
-            var systemPrompt = """
-                Resolve exact extent only for the already-established structural anchors supplied by the harness. Anchor existence has already been decided upstream; do not reconsider whether an anchor exists.
-
-                For every issued primary O#, return exactly one decision selecting exactly one C# from that primary's frozen candidate menu. Candidate IDs, kinds, source-part text, ordering and local context are harness-issued evidence. Do not create, edit, join, trim, retype or infer candidate extents. Do not return NO_STRUCTURAL_EXTENT. Do not output source text, coordinates, aliases, locators, relations, hierarchy, rationale, confidence, or extra properties.
-
-                Return exactly one JSON object with this shape: {"decisions":[{"primary":"O27","candidate":"C123"}]}. Each decision has exactly primary and candidate.
-                """;
-            var userMessage = JsonSerializer.Serialize(new
-            {
-                protocolVersion = "v5-function-conditioned-exact-extent-resolver-2",
-                occurrenceGroups = selectedGroups,
-            });
-            var requestModel = new V5FreeHeadingRequestV1("v5-function-conditioned-exact-extent-resolver-2", systemPrompt,
-                userMessage, Hashing.Sha256(userMessage), Encoding.UTF8.GetByteCount(systemPrompt), Encoding.UTF8.GetByteCount(userMessage));
-            var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(requestModel, prepared.SourcePack.MaxCompletionTokens);
-            var g2b = new PreparedRequest(prepared.DocumentId, systemPrompt, userMessage, requestModel.UserMessageSha256,
-                requestModel.UserMessageUtf8Bytes, body.PayloadBytes, body.Bytes, body.Hash, selected, prepared.SourcePack.MaxCompletionTokens);
+            var g2b = ComposeExactExtentFromHas(prepared, hasPrimaries);
             FreezeArtifact.AssertJson(ExactExtentPreflightRoot, "exact-extent-preflight.v1.json", new
             {
                 schemaVersion = "v5-p6tg2b-exact-extent-preflight-v1",
@@ -711,6 +2092,112 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         {
             foreach (var item in anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))) item.Dispose();
         }
+    }
+
+    private static PreparedRequest ComposeExactExtentFromHas(PreparedDocument prepared, IReadOnlySet<string> hasPrimaries)
+    {
+        var allG2 = Compose(prepared, new HashSet<string>(StringComparer.Ordinal));
+        var userDocument = JsonDocument.Parse(allG2.UserMessage);
+        try
+        {
+            var selectedGroups = userDocument.RootElement.GetProperty("occurrenceGroups").EnumerateArray()
+                .Where(group => hasPrimaries.Contains(group.GetProperty("primary").GetString()!)).ToArray();
+            var selected = allG2.OccurrenceGroups.Where(group => hasPrimaries.Contains(group.PrimaryOccurrence)).ToArray();
+            Assert.Equal(selected.Length, selectedGroups.Length);
+            var systemPrompt = """
+                Resolve exact extent only for the already-established structural anchors supplied by the harness. Anchor existence has already been decided upstream; do not reconsider whether an anchor exists.
+
+                For every issued primary O#, return exactly one decision selecting exactly one C# from that primary's frozen candidate menu. Candidate IDs, kinds, source-part text, ordering and local context are harness-issued evidence. Do not create, edit, join, trim, retype or infer candidate extents. Do not return NO_STRUCTURAL_EXTENT. Do not output source text, coordinates, aliases, locators, relations, hierarchy, rationale, confidence, or extra properties.
+
+                Return exactly one JSON object with this shape: {"decisions":[{"primary":"O27","candidate":"C123"}]}. Each decision has exactly primary and candidate.
+                """;
+            var userMessage = JsonSerializer.Serialize(new
+            {
+                protocolVersion = "v5-function-conditioned-exact-extent-resolver-2",
+                occurrenceGroups = selectedGroups,
+            });
+            var requestModel = new V5FreeHeadingRequestV1("v5-function-conditioned-exact-extent-resolver-2", systemPrompt,
+                userMessage, Hashing.Sha256(userMessage), Encoding.UTF8.GetByteCount(systemPrompt), Encoding.UTF8.GetByteCount(userMessage));
+            var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(requestModel, prepared.SourcePack.MaxCompletionTokens);
+            return new PreparedRequest(prepared.DocumentId, systemPrompt, userMessage, requestModel.UserMessageSha256,
+                requestModel.UserMessageUtf8Bytes, body.PayloadBytes, body.Bytes, body.Hash, selected, prepared.SourcePack.MaxCompletionTokens);
+        }
+        finally
+        {
+            userDocument.Dispose();
+        }
+    }
+
+    private static PreparedRequest ComposeExactExtentWithCandidateOrder(PreparedDocument prepared, PreparedRequest baseline, bool reverse)
+    {
+        var document = JsonNode.Parse(baseline.UserMessage)!.AsObject();
+        var groups = document["occurrenceGroups"]!.AsArray();
+        foreach (var node in groups)
+        {
+            var candidates = node!["candidates"]!.AsArray();
+            var values = candidates.ToList();
+            candidates.Clear();
+            var ordered = reverse ? values.AsEnumerable().Reverse() : values;
+            foreach (var value in ordered) candidates.Add(value);
+        }
+
+        var userMessage = document.ToJsonString(new JsonSerializerOptions { WriteIndented = false });
+        var requestModel = new V5FreeHeadingRequestV1("v5-function-conditioned-exact-extent-resolver-2", baseline.SystemPrompt,
+            userMessage, Hashing.Sha256(userMessage), Encoding.UTF8.GetByteCount(baseline.SystemPrompt), Encoding.UTF8.GetByteCount(userMessage));
+        var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(requestModel, baseline.MaxCompletionTokens);
+        var groupsReordered = baseline.OccurrenceGroups.Select(group => new Group(group.PrimaryOccurrence, group.PrimaryAlias,
+            reverse ? group.CandidateIds.Reverse().ToArray() : group.CandidateIds)).ToArray();
+        return new PreparedRequest(baseline.DocumentId, baseline.SystemPrompt, userMessage, requestModel.UserMessageSha256,
+            requestModel.UserMessageUtf8Bytes, body.PayloadBytes, body.Bytes, body.Hash, groupsReordered, baseline.MaxCompletionTokens);
+    }
+
+    private static PreparedRequest ComposeExactExtentWithHashPermutation(PreparedDocument prepared, PreparedRequest baseline, string salt)
+    {
+        var orderedGroups = baseline.OccurrenceGroups.ToDictionary(group => group.PrimaryOccurrence,
+            group => group.CandidateIds.OrderBy(id => Hashing.Sha256($"{group.PrimaryOccurrence}|{id}|{salt}"), StringComparer.Ordinal).ToArray(), StringComparer.Ordinal);
+        var document = JsonNode.Parse(baseline.UserMessage)!.AsObject();
+        foreach (var node in document["occurrenceGroups"]!.AsArray())
+        {
+            var primary = node!["primary"]!.GetValue<string>();
+            var candidates = node["candidates"]!.AsArray();
+            var byId = candidates.ToDictionary(item => item!["id"]!.GetValue<string>(), item => item, StringComparer.Ordinal);
+            candidates.Clear();
+            foreach (var id in orderedGroups[primary]) candidates.Add(byId[id]);
+        }
+        var userMessage = document.ToJsonString(new JsonSerializerOptions { WriteIndented = false });
+        var requestModel = new V5FreeHeadingRequestV1("v5-function-conditioned-exact-extent-resolver-2", baseline.SystemPrompt,
+            userMessage, Hashing.Sha256(userMessage), Encoding.UTF8.GetByteCount(baseline.SystemPrompt), Encoding.UTF8.GetByteCount(userMessage));
+        var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(requestModel, baseline.MaxCompletionTokens);
+        var groupsReordered = baseline.OccurrenceGroups.Select(group => new Group(group.PrimaryOccurrence, group.PrimaryAlias,
+            orderedGroups[group.PrimaryOccurrence])).ToArray();
+        return new PreparedRequest(baseline.DocumentId, baseline.SystemPrompt, userMessage, requestModel.UserMessageSha256,
+            requestModel.UserMessageUtf8Bytes, body.PayloadBytes, body.Bytes, body.Hash, groupsReordered, baseline.MaxCompletionTokens);
+    }
+
+    private static PreparedRequest ComposeExactExtentWithWholeMoved(PreparedDocument prepared, PreparedRequest baseline)
+    {
+        var orderedGroups = baseline.OccurrenceGroups.ToDictionary(group => group.PrimaryOccurrence, group =>
+        {
+            var whole = group.CandidateIds.Single(id => prepared.SourcePack.Universe.Candidates.Single(candidate => candidate.Id == id).Kind.ToString() == "WHOLE");
+            return group.CandidateIds.Where(id => id != whole).Append(whole).ToArray();
+        }, StringComparer.Ordinal);
+        var document = JsonNode.Parse(baseline.UserMessage)!.AsObject();
+        foreach (var node in document["occurrenceGroups"]!.AsArray())
+        {
+            var primary = node!["primary"]!.GetValue<string>();
+            var candidates = node["candidates"]!.AsArray();
+            var byId = candidates.ToDictionary(item => item!["id"]!.GetValue<string>(), item => item, StringComparer.Ordinal);
+            candidates.Clear();
+            foreach (var id in orderedGroups[primary]) candidates.Add(byId[id]);
+        }
+        var userMessage = document.ToJsonString(new JsonSerializerOptions { WriteIndented = false });
+        var requestModel = new V5FreeHeadingRequestV1("v5-function-conditioned-exact-extent-resolver-2", baseline.SystemPrompt,
+            userMessage, Hashing.Sha256(userMessage), Encoding.UTF8.GetByteCount(baseline.SystemPrompt), Encoding.UTF8.GetByteCount(userMessage));
+        var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(requestModel, baseline.MaxCompletionTokens);
+        var groupsReordered = baseline.OccurrenceGroups.Select(group => new Group(group.PrimaryOccurrence, group.PrimaryAlias,
+            orderedGroups[group.PrimaryOccurrence])).ToArray();
+        return new PreparedRequest(baseline.DocumentId, baseline.SystemPrompt, userMessage, requestModel.UserMessageSha256,
+            requestModel.UserMessageUtf8Bytes, body.PayloadBytes, body.Bytes, body.Hash, groupsReordered, baseline.MaxCompletionTokens);
     }
 
     [Fact]
@@ -1405,6 +2892,68 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         var noExtent = accepted.Count(item => JsonSerializer.Serialize(item).Contains("NO_STRUCTURAL_EXTENT", StringComparison.Ordinal));
         var missing = refused.Count(item => JsonSerializer.Serialize(item).Contains("missing-primary-decision", StringComparison.Ordinal));
         return new ParsedLedger(decisions.GetArrayLength(), accepted.Count - noExtent, noExtent, refused.Count, missing, accepted, refused);
+    }
+
+    private static ParsedLedger ParseExactExtentLedger(PreparedRequest request, string raw)
+    {
+        using var document = JsonDocument.Parse(raw);
+        var root = document.RootElement;
+        if (root.ValueKind != JsonValueKind.Object || root.EnumerateObject().Count() != 1 ||
+            !root.TryGetProperty("decisions", out var decisions) || decisions.ValueKind != JsonValueKind.Array)
+            throw new InvalidOperationException("g2b-response-root-invalid");
+
+        var groups = request.OccurrenceGroups.ToDictionary(group => group.PrimaryOccurrence, group => group, StringComparer.Ordinal);
+        var perPrimary = new Dictionary<string, List<string>>(StringComparer.Ordinal);
+        var accepted = new List<object>();
+        var refused = new List<object>();
+        foreach (var item in decisions.EnumerateArray())
+        {
+            if (item.ValueKind != JsonValueKind.Object || item.EnumerateObject().Count() != 2 ||
+                !item.TryGetProperty("primary", out var primaryElement) || primaryElement.ValueKind != JsonValueKind.String ||
+                !item.TryGetProperty("candidate", out var candidateElement) || candidateElement.ValueKind != JsonValueKind.String)
+            {
+                refused.Add(new { reason = "decision-schema-invalid" });
+                continue;
+            }
+
+            var primary = primaryElement.GetString()!;
+            var candidate = candidateElement.GetString()!;
+            if (!groups.ContainsKey(primary))
+            {
+                refused.Add(new { primary, candidate, reason = "primary-not-issued" });
+                continue;
+            }
+            if (candidate == "NO_STRUCTURAL_EXTENT")
+            {
+                refused.Add(new { primary, candidate, reason = "sentinel-not-allowed" });
+                continue;
+            }
+            if (!groups[primary].CandidateIds.Contains(candidate, StringComparer.Ordinal))
+            {
+                refused.Add(new { primary, candidate, reason = "candidate-not-issued-for-primary" });
+                continue;
+            }
+            if (!perPrimary.TryGetValue(primary, out var values)) perPrimary.Add(primary, values = []);
+            values.Add(candidate);
+        }
+
+        foreach (var group in request.OccurrenceGroups)
+        {
+            if (!perPrimary.TryGetValue(group.PrimaryOccurrence, out var values))
+            {
+                refused.Add(new { primary = group.PrimaryOccurrence, reason = "missing-primary-decision" });
+                continue;
+            }
+            if (values.Count != 1)
+            {
+                refused.Add(new { primary = group.PrimaryOccurrence, count = values.Count, reason = "duplicate-primary-decision" });
+                continue;
+            }
+            accepted.Add(new { primary = group.PrimaryOccurrence, candidate = values[0], outcome = "SELECTED_CANDIDATE" });
+        }
+
+        var missing = refused.Count(item => JsonSerializer.Serialize(item).Contains("missing-primary-decision", StringComparison.Ordinal));
+        return new ParsedLedger(decisions.GetArrayLength(), accepted.Count, 0, refused.Count, missing, accepted, refused);
     }
 
     private static int? UsageInt(JsonElement? usage, string key)

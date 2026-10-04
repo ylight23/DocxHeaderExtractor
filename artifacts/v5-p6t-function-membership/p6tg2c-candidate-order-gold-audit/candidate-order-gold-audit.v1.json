@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "v5-p6tg2c-candidate-order-gold-audit-v1",
+  "authority": {
+    "baselineRawCaptureSha256": "839532349a2f1bc1fe62743ee146d426a9e40ba1304b73c33e7ecaee118b8b76",
+    "reorderedRawCaptureSha256": "158f3f189eef34aa25e7c8f48e95fa62f9db1ef8bb0d7d8a528efe37b081d8f0",
+    "baselineRawResponseSha256": "0bf9401db91cabd5bfab27a79e898716e077f5d3368505eac7372dee1a8f0ecc",
+    "reorderedRawResponseSha256": "61807ed9d7fde70f0ae21070c01a9c72f0737b542ce54dbd4fc2d84c819f07bc",
+    "orderPreflightSha256": "415a51698ee70e6ec75c25f77bb6b5064a9f762b641f0ca228ba2623495ac2df",
+    "goldSha256": "83db6b93462e9bcaf41bc22151b2b31d98c4898973da8ffb86de2d3b18ec9b88",
+    "providerCallsDuringAudit": 0,
+    "goldMutation": "NONE",
+    "runtimeChanged": false
+  },
+  "execution": {
+    "baselineFinishReason": "stop",
+    "reorderedFinishReason": "stop",
+    "baselineParserAccepted": true,
+    "reorderedParserAccepted": true,
+    "baselineReasoningTokens": 2457,
+    "reorderedReasoningTokens": 2744
+  },
+  "metrics": {
+    "baselineExact": {
+      "correct": 1,
+      "total": 6
+    },
+    "reorderedExact": {
+      "correct": 5,
+      "total": 6
+    },
+    "baselineMultipartExact": {
+      "correct": 0,
+      "total": 5
+    },
+    "reorderedMultipartExact": {
+      "correct": 4,
+      "total": 5
+    },
+    "singletonExact": {
+      "correct": 1,
+      "total": 1
+    },
+    "sameAsBaselineChoice": 1,
+    "changedFromBaseline": 5,
+    "baselineWrongToReorderedExact": 4,
+    "baselineExactToReorderedWrong": 0,
+    "baselineExactToReorderedExact": 1,
+    "reorderedFirstCandidate": 1,
+    "reorderedWhole": 1,
+    "reorderedMultipart": 5
+  },
+  "rows": [
+    {
+      "primary": "O17",
+      "goldCandidate": "C104",
+      "goldKind": "MULTIPART",
+      "baselineCandidate": "C101",
+      "baselineKind": "WHOLE",
+      "baselinePosition": 1,
+      "baselineExact": false,
+      "reorderedCandidate": "C104",
+      "reorderedKind": "MULTIPART",
+      "reorderedPosition": 4,
+      "reorderedExact": true,
+      "sameAsBaselineChoice": false,
+      "baselineWholeToReorderedMultipart": true,
+      "transition": "WRONG_TO_EXACT"
+    },
+    {
+      "primary": "O19",
+      "goldCandidate": "C115",
+      "goldKind": "WHOLE",
+      "baselineCandidate": "C115",
+      "baselineKind": "WHOLE",
+      "baselinePosition": 1,
+      "baselineExact": true,
+      "reorderedCandidate": "C115",
+      "reorderedKind": "WHOLE",
+      "reorderedPosition": 3,
+      "reorderedExact": true,
+      "sameAsBaselineChoice": true,
+      "baselineWholeToReorderedMultipart": false,
+      "transition": "EXACT_TO_EXACT"
+    },
+    {
+      "primary": "O27",
+      "goldCandidate": "C174",
+      "goldKind": "MULTIPART",
+      "baselineCandidate": "C171",
+      "baselineKind": "WHOLE",
+      "baselinePosition": 1,
+      "baselineExact": false,
+      "reorderedCandidate": "C174",
+      "reorderedKind": "MULTIPART",
+      "reorderedPosition": 2,
+      "reorderedExact": true,
+      "sameAsBaselineChoice": false,
+      "baselineWholeToReorderedMultipart": true,
+      "transition": "WRONG_TO_EXACT"
+    },
+    {
+      "primary": "O54",
+      "goldCandidate": "C353",
+      "goldKind": "MULTIPART",
+      "baselineCandidate": "C350",
+      "baselineKind": "WHOLE",
+      "baselinePosition": 1,
+      "baselineExact": false,
+      "reorderedCandidate": "C353",
+      "reorderedKind": "MULTIPART",
+      "reorderedPosition": 2,
+      "reorderedExact": true,
+      "sameAsBaselineChoice": false,
+      "baselineWholeToReorderedMultipart": true,
+      "transition": "WRONG_TO_EXACT"
+    },
+    {
+      "primary": "O83",
+      "goldCandidate": "C542",
+      "goldKind": "MULTIPART",
+      "baselineCandidate": "C539",
+      "baselineKind": "WHOLE",
+      "baselinePosition": 1,
+      "baselineExact": false,
+      "reorderedCandidate": "C542",
+      "reorderedKind": "MULTIPART",
+      "reorderedPosition": 2,
+      "reorderedExact": true,
+      "sameAsBaselineChoice": false,
+      "baselineWholeToReorderedMultipart": true,
+      "transition": "WRONG_TO_EXACT"
+    },
+    {
+      "primary": "O9",
+      "goldCandidate": "C50",
+      "goldKind": "MULTIPART",
+      "baselineCandidate": "C47",
+      "baselineKind": "WHOLE",
+      "baselinePosition": 1,
+      "baselineExact": false,
+      "reorderedCandidate": "C51",
+      "reorderedKind": "MULTIPART",
+      "reorderedPosition": 1,
+      "reorderedExact": false,
+      "sameAsBaselineChoice": false,
+      "baselineWholeToReorderedMultipart": true,
+      "transition": "WRONG_TO_WRONG"
+    }
+  ],
+  "conclusion": "P6TG2C_ORDER_ARM_PROVIDER_AND_CONTRACT_PASS; CANDIDATE_ORDER_AFFECTS_SELECTION; FIVE_OF_SIX_EXACT_WITH_FOUR_OF_FIVE_MULTIPART; POSITIONAL_FIRST_ONLY_ONE_OF_SIX; WHOLE_ATOMICITY_PRIOR_NOT_SUPPORTED_AS_SOLE_EXPLANATION"
+}

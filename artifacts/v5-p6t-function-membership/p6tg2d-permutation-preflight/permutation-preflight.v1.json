@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "v5-p6tg2d-permutation-preflight-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "treatment": {
+    "onlyIndependentVariable": "DETERMINISTIC_CANDIDATE_PERMUTATION",
+    "permutation": "OrderBy(SHA256(primaryOccurrence + '|' + candidateId + '|G2D'))",
+    "goldUsedForRequestConstruction": false,
+    "samePrimaries": true,
+    "sameCandidateIds": true,
+    "sameCandidateContentAndKinds": true,
+    "samePrompt": true,
+    "model": "qwen/qwen3.7-flash",
+    "provider": "alibaba",
+    "reasoning": {
+      "enabled": true,
+      "effort": "OMITTED"
+    }
+  },
+  "sourceAuthority": {
+    "g2aRawResponseSha256": "90031a491b19c54e275fd8231d6d8475c8e45c4906f9a617c35eb407067a00c9",
+    "g2bPreflightSha256": "b97130b4aa0fa09c9e4a3ad5a25aa24366ed5e2149efee08917915c6c6ca30db",
+    "g2cPreflightSha256": "415a51698ee70e6ec75c25f77bb6b5064a9f762b641f0ca228ba2623495ac2df",
+    "hasPrimaries": [
+      {
+        "primary": "O9",
+        "alias": "L0006:S0"
+      },
+      {
+        "primary": "O17",
+        "alias": "L0014:S0"
+      },
+      {
+        "primary": "O19",
+        "alias": "L0016:S0"
+      },
+      {
+        "primary": "O27",
+        "alias": "L0024:S0"
+      },
+      {
+        "primary": "O54",
+        "alias": "L0051:S0"
+      },
+      {
+        "primary": "O83",
+        "alias": "L0080:S0"
+      }
+    ]
+  },
+  "baseline": {
+    "userMessageSha256": "bce346ffdd49dfabcddcd4108535edcdc656e216c43141164cbca4388a908ee3",
+    "providerBodySha256": "be26ca8e01a7df72a858e05dcfe4f2599124b490f391c791e37dd8b6a0382799",
+    "providerBodyBytes": 19481
+  },
+  "reverseArm": {
+    "userMessageSha256": "1c33d23d99620fd0d99d9a444ccb15c8cdb233ae6136c91ff841bcc93b6cd651",
+    "providerBodySha256": "dafeb8af4fee7ff1a5a735dd513e669dba13188615f5bf9de9fa59ed1a4aa374",
+    "providerBodyBytes": 19481
+  },
+  "permutationArm": {
+    "userMessageSha256": "0350a07d12e65b8cb0a48ec1516d66e69f7b647886a702b070cc210bc0e6835e",
+    "userMessageUtf8Bytes": 11798,
+    "providerBodySha256": "b0f39bff3555f2a2a130410797712b10a82fd3e1bc38f367955e06bf2defd3fb",
+    "providerBodyBytes": 19481,
+    "primaryCount": 6,
+    "optionsPerPrimary": [
+      {
+        "primary": "O9",
+        "candidateIds": [
+          "C51",
+          "C48",
+          "C49",
+          "C47",
+          "C50"
+        ]
+      },
+      {
+        "primary": "O17",
+        "candidateIds": [
+          "C106",
+          "C102",
+          "C105",
+          "C104",
+          "C101",
+          "C107",
+          "C103"
+        ]
+      },
+      {
+        "primary": "O19",
+        "candidateIds": [
+          "C117",
+          "C115",
+          "C116"
+        ]
+      },
+      {
+        "primary": "O27",
+        "candidateIds": [
+          "C171",
+          "C175",
+          "C174",
+          "C173",
+          "C172"
+        ]
+      },
+      {
+        "primary": "O54",
+        "candidateIds": [
+          "C352",
+          "C354",
+          "C350",
+          "C351",
+          "C353"
+        ]
+      },
+      {
+        "primary": "O83",
+        "candidateIds": [
+          "C542",
+          "C541",
+          "C540",
+          "C543",
+          "C539"
+        ]
+      }
+    ]
+  },
+  "o9Forensic": [
+    {
+      "candidate": "C50",
+      "kind": "MULTIPART",
+      "text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
+      "spanIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+      "parts": [
+        {
+          "alias": "L0006:S0",
+          "start": 0,
+          "end": 6
+        },
+        {
+          "alias": "L0007:S0",
+          "start": 0,
+          "end": 65
+        },
+        {
+          "alias": "L0008:S0",
+          "start": 0,
+          "end": 23
+        }
+      ],
+      "baselinePosition": 4,
+      "reversePosition": 2,
+      "permutationPosition": 5
+    },
+    {
+      "candidate": "C51",
+      "kind": "MULTIPART",
+      "text": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW",
+      "spanIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+      "parts": [
+        {
+          "alias": "L0006:S0",
+          "start": 0,
+          "end": 6
+        },
+        {
+          "alias": "L0007:S0",
+          "start": 0,
+          "end": 65
+        },
+        {
+          "alias": "L0008:S0",
+          "start": 0,
+          "end": 19
+        }
+      ],
+      "baselinePosition": 5,
+      "reversePosition": 1,
+      "permutationPosition": 1
+    }
+  ],
+  "execution": {
+    "providerCalls": 0,
+    "retries": 0,
+    "repairs": 0,
+    "fallbacks": 0,
+    "goldRead": false,
+    "runtimeChanged": false
+  },
+  "conclusion": "P6TG2D_PROVIDER_FREE_PERMUTATION_FROZEN; G2B_AND_G2C_ORDER_ARMS_PRESERVED; ONE_MATCHED_PROVIDER_CALL_REQUIRES_SEPARATE_AUTHORIZATION"
+}

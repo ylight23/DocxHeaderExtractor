@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "v5-p6tg2e-whole-move-preflight-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "treatment": {
+    "onlyIndependentVariable": "WHOLE_PRIMARY_POSITION",
+    "baselineOrdering": "FROZEN_G2B_ORDER",
+    "wholeMove": "REMOVE_WHOLE_FROM_POSITION_ONE; APPEND_WHOLE; PRESERVE_NON_WHOLE_RELATIVE_ORDER",
+    "goldUsedForRequestConstruction": false,
+    "samePrimaries": true,
+    "sameCandidateIds": true,
+    "sameCandidateContentAndKinds": true,
+    "samePrompt": true,
+    "model": "qwen/qwen3.7-flash",
+    "provider": "alibaba",
+    "reasoning": {
+      "enabled": true,
+      "effort": "OMITTED"
+    }
+  },
+  "sourceAuthority": {
+    "g2aRawResponseSha256": "90031a491b19c54e275fd8231d6d8475c8e45c4906f9a617c35eb407067a00c9",
+    "g2bPreflightSha256": "b97130b4aa0fa09c9e4a3ad5a25aa24366ed5e2149efee08917915c6c6ca30db",
+    "hasPrimaries": [
+      {
+        "primary": "O9",
+        "alias": "L0006:S0"
+      },
+      {
+        "primary": "O17",
+        "alias": "L0014:S0"
+      },
+      {
+        "primary": "O19",
+        "alias": "L0016:S0"
+      },
+      {
+        "primary": "O27",
+        "alias": "L0024:S0"
+      },
+      {
+        "primary": "O54",
+        "alias": "L0051:S0"
+      },
+      {
+        "primary": "O83",
+        "alias": "L0080:S0"
+      }
+    ]
+  },
+  "baseline": {
+    "userMessageSha256": "bce346ffdd49dfabcddcd4108535edcdc656e216c43141164cbca4388a908ee3",
+    "providerBodySha256": "be26ca8e01a7df72a858e05dcfe4f2599124b490f391c791e37dd8b6a0382799",
+    "providerBodyBytes": 19481
+  },
+  "arm": {
+    "userMessageSha256": "c350f35d3352c5c4edb6afb709f33cc00ce7034edf4ddd10d02f8a482624718a",
+    "userMessageUtf8Bytes": 11798,
+    "providerBodySha256": "e9f0b8db1c08a375e8d4a5cc01c1a50a11de32b37095697dcd977e23000ddb4b",
+    "providerBodyBytes": 19481,
+    "primaryCount": 6,
+    "optionsPerPrimary": [
+      {
+        "primary": "O9",
+        "candidateIds": [
+          "C48",
+          "C49",
+          "C50",
+          "C51",
+          "C47"
+        ]
+      },
+      {
+        "primary": "O17",
+        "candidateIds": [
+          "C102",
+          "C103",
+          "C104",
+          "C105",
+          "C106",
+          "C107",
+          "C101"
+        ]
+      },
+      {
+        "primary": "O19",
+        "candidateIds": [
+          "C116",
+          "C117",
+          "C115"
+        ]
+      },
+      {
+        "primary": "O27",
+        "candidateIds": [
+          "C172",
+          "C173",
+          "C174",
+          "C175",
+          "C171"
+        ]
+      },
+      {
+        "primary": "O54",
+        "candidateIds": [
+          "C351",
+          "C352",
+          "C353",
+          "C354",
+          "C350"
+        ]
+      },
+      {
+        "primary": "O83",
+        "candidateIds": [
+          "C540",
+          "C541",
+          "C542",
+          "C543",
+          "C539"
+        ]
+      }
+    ]
+  },
+  "execution": {
+    "providerCalls": 0,
+    "retries": 0,
+    "repairs": 0,
+    "fallbacks": 0,
+    "goldRead": false,
+    "runtimeChanged": false
+  },
+  "conclusion": "P6TG2E_PROVIDER_FREE_WHOLE_POSITION_ARM_FROZEN; SEPARATE_AUTHORIZATION_REQUIRED"
+}

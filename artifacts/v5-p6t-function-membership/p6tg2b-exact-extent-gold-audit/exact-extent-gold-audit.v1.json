@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "v5-p6tg2b-exact-extent-gold-audit-v1",
+  "authority": {
+    "rawCaptureSha256": "839532349a2f1bc1fe62743ee146d426a9e40ba1304b73c33e7ecaee118b8b76",
+    "rawResponseSha256": "0bf9401db91cabd5bfab27a79e898716e077f5d3368505eac7372dee1a8f0ecc",
+    "resultSha256": "04823ad14d3cd29d3cdb60ff74647b29415e79fc800fb4da0afeab715cf2f9b2",
+    "preflightSha256": "b97130b4aa0fa09c9e4a3ad5a25aa24366ed5e2149efee08917915c6c6ca30db",
+    "goldSha256": "83db6b93462e9bcaf41bc22151b2b31d98c4898973da8ffb86de2d3b18ec9b88",
+    "providerCallsDuringAudit": 0,
+    "goldMutation": "NONE",
+    "runtimeChanged": false
+  },
+  "execution": {
+    "finishReason": "stop",
+    "reasoningExecutionConfirmed": true,
+    "promptTokens": 3158,
+    "completionTokens": 2541,
+    "reasoningTokens": 2457,
+    "rawDecisions": 6,
+    "parserAccepted": true,
+    "quarantine": 0
+  },
+  "metrics": {
+    "exact": {
+      "correct": 1,
+      "total": 6
+    },
+    "multipart": {
+      "exact": 0,
+      "under": 5,
+      "total": 5
+    },
+    "singleton": {
+      "exact": 1,
+      "total": 1
+    },
+    "selectedFirstCandidate": 6,
+    "selectedWholePrimary": 6,
+    "primaryWholeSelectionBias": true
+  },
+  "rows": [
+    {
+      "primary": "O17",
+      "selectedCandidate": "C101",
+      "firstCandidate": "C101",
+      "selectedFirstCandidate": true,
+      "selectedKind": "WHOLE",
+      "selectedWholePrimary": true,
+      "goldIdentity": "L0014:S0:0-9|L0015:S0:0-18",
+      "goldKind": "MULTIPART",
+      "goldMultipart": true,
+      "exact": false,
+      "multipartExact": false,
+      "multipartUnder": true,
+      "selectedParts": [
+        "L0014:S0"
+      ],
+      "goldParts": [
+        "L0014:S0",
+        "L0015:S0"
+      ]
+    },
+    {
+      "primary": "O19",
+      "selectedCandidate": "C115",
+      "firstCandidate": "C115",
+      "selectedFirstCandidate": true,
+      "selectedKind": "WHOLE",
+      "selectedWholePrimary": true,
+      "goldIdentity": "L0016:S0:0-56",
+      "goldKind": "WHOLE",
+      "goldMultipart": false,
+      "exact": true,
+      "multipartExact": false,
+      "multipartUnder": false,
+      "selectedParts": [
+        "L0016:S0"
+      ],
+      "goldParts": [
+        "L0016:S0"
+      ]
+    },
+    {
+      "primary": "O27",
+      "selectedCandidate": "C171",
+      "firstCandidate": "C171",
+      "selectedFirstCandidate": true,
+      "selectedKind": "WHOLE",
+      "selectedWholePrimary": true,
+      "goldIdentity": "L0024:S0:0-89|L0025:S0:0-45",
+      "goldKind": "MULTIPART",
+      "goldMultipart": true,
+      "exact": false,
+      "multipartExact": false,
+      "multipartUnder": true,
+      "selectedParts": [
+        "L0024:S0"
+      ],
+      "goldParts": [
+        "L0024:S0",
+        "L0025:S0"
+      ]
+    },
+    {
+      "primary": "O54",
+      "selectedCandidate": "C350",
+      "firstCandidate": "C350",
+      "selectedFirstCandidate": true,
+      "selectedKind": "WHOLE",
+      "selectedWholePrimary": true,
+      "goldIdentity": "L0051:S0:0-95|L0052:S0:0-35",
+      "goldKind": "MULTIPART",
+      "goldMultipart": true,
+      "exact": false,
+      "multipartExact": false,
+      "multipartUnder": true,
+      "selectedParts": [
+        "L0051:S0"
+      ],
+      "goldParts": [
+        "L0051:S0",
+        "L0052:S0"
+      ]
+    },
+    {
+      "primary": "O83",
+      "selectedCandidate": "C539",
+      "firstCandidate": "C539",
+      "selectedFirstCandidate": true,
+      "selectedKind": "WHOLE",
+      "selectedWholePrimary": true,
+      "goldIdentity": "L0080:S0:0-90|L0081:S0:0-35",
+      "goldKind": "MULTIPART",
+      "goldMultipart": true,
+      "exact": false,
+      "multipartExact": false,
+      "multipartUnder": true,
+      "selectedParts": [
+        "L0080:S0"
+      ],
+      "goldParts": [
+        "L0080:S0",
+        "L0081:S0"
+      ]
+    },
+    {
+      "primary": "O9",
+      "selectedCandidate": "C47",
+      "firstCandidate": "C47",
+      "selectedFirstCandidate": true,
+      "selectedKind": "WHOLE",
+      "selectedWholePrimary": true,
+      "goldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+      "goldKind": "MULTIPART",
+      "goldMultipart": true,
+      "exact": false,
+      "multipartExact": false,
+      "multipartUnder": true,
+      "selectedParts": [
+        "L0006:S0"
+      ],
+      "goldParts": [
+        "L0006:S0",
+        "L0007:S0",
+        "L0008:S0"
+      ]
+    }
+  ],
+  "conclusion": "G2B_TRANSPORT_AND_CONTRACT_PASS; EXACT_EXTENT_AUDIT_1_OF_6; MULTIPART_EXACT_0_OF_5; SINGLETON_EXACT_1_OF_1; PRIMARY_WHOLE_SELECTION_BIAS_CONFIRMED_ON_CANARY"
+}

@@ -1,0 +1,864 @@
+{
+  "schemaVersion": "v5-p6tg-menu-forensic-v1",
+  "status": "PROVIDER_FREE_FORENSIC",
+  "source": {
+    "documentId": "SRC-089",
+    "candidateUniverseFingerprint": "e4f3624bbd8b0771971fc85973e6fd4613ecd9c30c04c64ce8680b302d8d0029",
+    "goldRead": false,
+    "providerCallsDuringAudit": 0,
+    "runtimeChanged": false,
+    "arms": {
+      "G2B": "be26ca8e01a7df72a858e05dcfe4f2599124b490f391c791e37dd8b6a0382799",
+      "G2C": "dafeb8af4fee7ff1a5a735dd513e669dba13188615f5bf9de9fa59ed1a4aa374",
+      "G2D": "b0f39bff3555f2a2a130410797712b10a82fd3e1bc38f367955e06bf2defd3fb",
+      "G2E": "e9f0b8db1c08a375e8d4a5cc01c1a50a11de32b37095697dcd977e23000ddb4b"
+    },
+    "rawResponseSha256": {
+      "G2B": "0bf9401db91cabd5bfab27a79e898716e077f5d3368505eac7372dee1a8f0ecc",
+      "G2C": "61807ed9d7fde70f0ae21070c01a9c72f0737b542ce54dbd4fc2d84c819f07bc",
+      "G2D": "61807ed9d7fde70f0ae21070c01a9c72f0737b542ce54dbd4fc2d84c819f07bc",
+      "G2E": "aca152f2b7a28d1c73895ac9f8666bf1e32a877dbc792b74e532dcce3ed7f8f4"
+    }
+  },
+  "diagnostics": {
+    "selectedWhole": {
+      "G2B": 6,
+      "G2C": 1,
+      "G2D": 1,
+      "G2E": 3
+    },
+    "selectedFirst": {
+      "G2B": 6,
+      "G2C": 1,
+      "G2D": 2,
+      "G2E": 0
+    },
+    "selectedMultipart": {
+      "G2B": 0,
+      "G2C": 5,
+      "G2D": 5,
+      "G2E": 3
+    },
+    "g2bG2eSameSelection": 3,
+    "g2cG2dSameSelection": 6,
+    "g2bG2eTransitions": [
+      {
+        "primary": "O9",
+        "g2b": "C47",
+        "g2e": "C47",
+        "g2bKind": "WHOLE",
+        "g2eKind": "WHOLE"
+      },
+      {
+        "primary": "O17",
+        "g2b": "C101",
+        "g2e": "C101",
+        "g2bKind": "WHOLE",
+        "g2eKind": "WHOLE"
+      },
+      {
+        "primary": "O19",
+        "g2b": "C115",
+        "g2e": "C115",
+        "g2bKind": "WHOLE",
+        "g2eKind": "WHOLE"
+      },
+      {
+        "primary": "O27",
+        "g2b": "C171",
+        "g2e": "C174",
+        "g2bKind": "WHOLE",
+        "g2eKind": "MULTIPART"
+      },
+      {
+        "primary": "O54",
+        "g2b": "C350",
+        "g2e": "C353",
+        "g2bKind": "WHOLE",
+        "g2eKind": "MULTIPART"
+      },
+      {
+        "primary": "O83",
+        "g2b": "C539",
+        "g2e": "C542",
+        "g2bKind": "WHOLE",
+        "g2eKind": "MULTIPART"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "arm": "G2B",
+      "providerBodySha256": "be26ca8e01a7df72a858e05dcfe4f2599124b490f391c791e37dd8b6a0382799",
+      "rawResponseSha256": "0bf9401db91cabd5bfab27a79e898716e077f5d3368505eac7372dee1a8f0ecc",
+      "rows": [
+        {
+          "Primary": "O9",
+          "CandidateIds": [
+            "C47",
+            "C48",
+            "C49",
+            "C50",
+            "C51"
+          ],
+          "CandidateKinds": [
+            "WHOLE",
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART"
+          ],
+          "CandidateIdentities": [
+            "L0006:S0:0-6",
+            "L0006:S0:0-6|L0007:S0:0-65",
+            "L0006:S0:0-6|L0007:S0:0-51",
+            "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+            "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19"
+          ],
+          "SelectedCandidate": "C47",
+          "SelectedKind": "WHOLE",
+          "SelectedIdentity": "L0006:S0:0-6",
+          "SelectedPosition": 1,
+          "WholePosition": 1,
+          "SelectedFirstCandidate": true,
+          "SelectedRelativeToWhole": "WHOLE"
+        },
+        {
+          "Primary": "O17",
+          "CandidateIds": [
+            "C101",
+            "C102",
+            "C103",
+            "C104",
+            "C105",
+            "C106",
+            "C107"
+          ],
+          "CandidateKinds": [
+            "WHOLE",
+            "STRICT_PREFIX",
+            "STRICT_SUFFIX",
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART"
+          ],
+          "CandidateIdentities": [
+            "L0014:S0:0-9",
+            "L0014:S0:0-7",
+            "L0014:S0:8-9",
+            "L0014:S0:0-9|L0015:S0:0-18",
+            "L0014:S0:0-9|L0015:S0:0-7",
+            "L0014:S0:0-9|L0015:S0:0-18|L0016:S0:0-56",
+            "L0014:S0:0-9|L0015:S0:0-18|L0016:S0:0-42"
+          ],
+          "SelectedCandidate": "C101",
+          "SelectedKind": "WHOLE",
+          "SelectedIdentity": "L0014:S0:0-9",
+          "SelectedPosition": 1,
+          "WholePosition": 1,
+          "SelectedFirstCandidate": true,
+          "SelectedRelativeToWhole": "WHOLE"
+        },
+        {
+          "Primary": "O19",
+          "CandidateIds": [
+            "C115",
+            "C116",
+            "C117"
+          ],
+          "CandidateKinds": [
+            "WHOLE",
+            "STRICT_PREFIX",
+            "STRICT_SUFFIX"
+          ],
+          "CandidateIdentities": [
+            "L0016:S0:0-56",
+            "L0016:S0:0-42",
+            "L0016:S0:8-56"
+          ],
+          "SelectedCandidate": "C115",
+          "SelectedKind": "WHOLE",
+          "SelectedIdentity": "L0016:S0:0-56",
+          "SelectedPosition": 1,
+          "WholePosition": 1,
+          "SelectedFirstCandidate": true,
+          "SelectedRelativeToWhole": "WHOLE"
+        },
+        {
+          "Primary": "O27",
+          "CandidateIds": [
+            "C171",
+            "C172",
+            "C173",
+            "C174",
+            "C175"
+          ],
+          "CandidateKinds": [
+            "WHOLE",
+            "STRICT_PREFIX",
+            "STRICT_SUFFIX",
+            "MULTIPART",
+            "MULTIPART"
+          ],
+          "CandidateIdentities": [
+            "L0024:S0:0-89",
+            "L0024:S0:0-78",
+            "L0024:S0:8-89",
+            "L0024:S0:0-89|L0025:S0:0-45",
+            "L0024:S0:0-89|L0025:S0:0-34"
+          ],
+          "SelectedCandidate": "C171",
+          "SelectedKind": "WHOLE",
+          "SelectedIdentity": "L0024:S0:0-89",
+          "SelectedPosition": 1,
+          "WholePosition": 1,
+          "SelectedFirstCandidate": true,
+          "SelectedRelativeToWhole": "WHOLE"
+        },
+        {
+          "Primary": "O54",
+          "CandidateIds": [
+            "C350",
+            "C351",
+            "C352",
+            "C353",
+            "C354"
+          ],
+          "CandidateKinds": [
+            "WHOLE",
+            "STRICT_PREFIX",
+            "STRICT_SUFFIX",
+            "MULTIPART",
+            "MULTIPART"
+          ],
+          "CandidateIdentities": [
+            "L0051:S0:0-95",
+            "L0051:S0:0-89",
+            "L0051:S0:8-95",
+            "L0051:S0:0-95|L0052:S0:0-35",
+            "L0051:S0:0-95|L0052:S0:0-24"
+          ],
+          "SelectedCandidate": "C350",
+          "SelectedKind": "WHOLE",
+          "SelectedIdentity": "L0051:S0:0-95",
+          "SelectedPosition": 1,
+          "WholePosition": 1,
+          "SelectedFirstCandidate": true,
+          "SelectedRelativeToWhole": "WHOLE"
+        },
+        {
+          "Primary": "O83",
+          "CandidateIds": [
+            "C539",
+            "C540",
+            "C541",
+            "C542",
+            "C543"
+          ],
+          "CandidateKinds": [
+            "WHOLE",
+            "STRICT_PREFIX",
+            "STRICT_SUFFIX",
+            "MULTIPART",
+            "MULTIPART"
+          ],
+          "CandidateIdentities": [
+            "L0080:S0:0-90",
+            "L0080:S0:0-84",
+            "L0080:S0:8-90",
+            "L0080:S0:0-90|L0081:S0:0-35",
+            "L0080:S0:0-90|L0081:S0:0-24"
+          ],
+          "SelectedCandidate": "C539",
+          "SelectedKind": "WHOLE",
+          "SelectedIdentity": "L0080:S0:0-90",
+          "SelectedPosition": 1,
+          "WholePosition": 1,
+          "SelectedFirstCandidate": true,
+          "SelectedRelativeToWhole": "WHOLE"
+        }
+      ]
+    },
+    {
+      "arm": "G2C",
+      "providerBodySha256": "dafeb8af4fee7ff1a5a735dd513e669dba13188615f5bf9de9fa59ed1a4aa374",
+      "rawResponseSha256": "61807ed9d7fde70f0ae21070c01a9c72f0737b542ce54dbd4fc2d84c819f07bc",
+      "rows": [
+        {
+          "Primary": "O9",
+          "CandidateIds": [
+            "C51",
+            "C50",
+            "C49",
+            "C48",
+            "C47"
+          ],
+          "CandidateKinds": [
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+            "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+            "L0006:S0:0-6|L0007:S0:0-51",
+            "L0006:S0:0-6|L0007:S0:0-65",
+            "L0006:S0:0-6"
+          ],
+          "SelectedCandidate": "C51",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+          "SelectedPosition": 1,
+          "WholePosition": 5,
+          "SelectedFirstCandidate": true,
+          "SelectedRelativeToWhole": "BEFORE_WHOLE"
+        },
+        {
+          "Primary": "O17",
+          "CandidateIds": [
+            "C107",
+            "C106",
+            "C105",
+            "C104",
+            "C103",
+            "C102",
+            "C101"
+          ],
+          "CandidateKinds": [
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART",
+            "STRICT_SUFFIX",
+            "STRICT_PREFIX",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0014:S0:0-9|L0015:S0:0-18|L0016:S0:0-42",
+            "L0014:S0:0-9|L0015:S0:0-18|L0016:S0:0-56",
+            "L0014:S0:0-9|L0015:S0:0-7",
+            "L0014:S0:0-9|L0015:S0:0-18",
+            "L0014:S0:8-9",
+            "L0014:S0:0-7",
+            "L0014:S0:0-9"
+          ],
+          "SelectedCandidate": "C104",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0014:S0:0-9|L0015:S0:0-18",
+          "SelectedPosition": 4,
+          "WholePosition": 7,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "BEFORE_WHOLE"
+        },
+        {
+          "Primary": "O19",
+          "CandidateIds": [
+            "C117",
+            "C116",
+            "C115"
+          ],
+          "CandidateKinds": [
+            "STRICT_SUFFIX",
+            "STRICT_PREFIX",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0016:S0:8-56",
+            "L0016:S0:0-42",
+            "L0016:S0:0-56"
+          ],
+          "SelectedCandidate": "C115",
+          "SelectedKind": "WHOLE",
+          "SelectedIdentity": "L0016:S0:0-56",
+          "SelectedPosition": 3,
+          "WholePosition": 3,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "WHOLE"
+        },
+        {
+          "Primary": "O27",
+          "CandidateIds": [
+            "C175",
+            "C174",
+            "C173",
+            "C172",
+            "C171"
+          ],
+          "CandidateKinds": [
+            "MULTIPART",
+            "MULTIPART",
+            "STRICT_SUFFIX",
+            "STRICT_PREFIX",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0024:S0:0-89|L0025:S0:0-34",
+            "L0024:S0:0-89|L0025:S0:0-45",
+            "L0024:S0:8-89",
+            "L0024:S0:0-78",
+            "L0024:S0:0-89"
+          ],
+          "SelectedCandidate": "C174",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0024:S0:0-89|L0025:S0:0-45",
+          "SelectedPosition": 2,
+          "WholePosition": 5,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "BEFORE_WHOLE"
+        },
+        {
+          "Primary": "O54",
+          "CandidateIds": [
+            "C354",
+            "C353",
+            "C352",
+            "C351",
+            "C350"
+          ],
+          "CandidateKinds": [
+            "MULTIPART",
+            "MULTIPART",
+            "STRICT_SUFFIX",
+            "STRICT_PREFIX",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0051:S0:0-95|L0052:S0:0-24",
+            "L0051:S0:0-95|L0052:S0:0-35",
+            "L0051:S0:8-95",
+            "L0051:S0:0-89",
+            "L0051:S0:0-95"
+          ],
+          "SelectedCandidate": "C353",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0051:S0:0-95|L0052:S0:0-35",
+          "SelectedPosition": 2,
+          "WholePosition": 5,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "BEFORE_WHOLE"
+        },
+        {
+          "Primary": "O83",
+          "CandidateIds": [
+            "C543",
+            "C542",
+            "C541",
+            "C540",
+            "C539"
+          ],
+          "CandidateKinds": [
+            "MULTIPART",
+            "MULTIPART",
+            "STRICT_SUFFIX",
+            "STRICT_PREFIX",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0080:S0:0-90|L0081:S0:0-24",
+            "L0080:S0:0-90|L0081:S0:0-35",
+            "L0080:S0:8-90",
+            "L0080:S0:0-84",
+            "L0080:S0:0-90"
+          ],
+          "SelectedCandidate": "C542",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0080:S0:0-90|L0081:S0:0-35",
+          "SelectedPosition": 2,
+          "WholePosition": 5,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "BEFORE_WHOLE"
+        }
+      ]
+    },
+    {
+      "arm": "G2D",
+      "providerBodySha256": "b0f39bff3555f2a2a130410797712b10a82fd3e1bc38f367955e06bf2defd3fb",
+      "rawResponseSha256": "61807ed9d7fde70f0ae21070c01a9c72f0737b542ce54dbd4fc2d84c819f07bc",
+      "rows": [
+        {
+          "Primary": "O9",
+          "CandidateIds": [
+            "C51",
+            "C48",
+            "C49",
+            "C47",
+            "C50"
+          ],
+          "CandidateKinds": [
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART",
+            "WHOLE",
+            "MULTIPART"
+          ],
+          "CandidateIdentities": [
+            "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+            "L0006:S0:0-6|L0007:S0:0-65",
+            "L0006:S0:0-6|L0007:S0:0-51",
+            "L0006:S0:0-6",
+            "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23"
+          ],
+          "SelectedCandidate": "C51",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+          "SelectedPosition": 1,
+          "WholePosition": 4,
+          "SelectedFirstCandidate": true,
+          "SelectedRelativeToWhole": "BEFORE_WHOLE"
+        },
+        {
+          "Primary": "O17",
+          "CandidateIds": [
+            "C106",
+            "C102",
+            "C105",
+            "C104",
+            "C101",
+            "C107",
+            "C103"
+          ],
+          "CandidateKinds": [
+            "MULTIPART",
+            "STRICT_PREFIX",
+            "MULTIPART",
+            "MULTIPART",
+            "WHOLE",
+            "MULTIPART",
+            "STRICT_SUFFIX"
+          ],
+          "CandidateIdentities": [
+            "L0014:S0:0-9|L0015:S0:0-18|L0016:S0:0-56",
+            "L0014:S0:0-7",
+            "L0014:S0:0-9|L0015:S0:0-7",
+            "L0014:S0:0-9|L0015:S0:0-18",
+            "L0014:S0:0-9",
+            "L0014:S0:0-9|L0015:S0:0-18|L0016:S0:0-42",
+            "L0014:S0:8-9"
+          ],
+          "SelectedCandidate": "C104",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0014:S0:0-9|L0015:S0:0-18",
+          "SelectedPosition": 4,
+          "WholePosition": 5,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "BEFORE_WHOLE"
+        },
+        {
+          "Primary": "O19",
+          "CandidateIds": [
+            "C117",
+            "C115",
+            "C116"
+          ],
+          "CandidateKinds": [
+            "STRICT_SUFFIX",
+            "WHOLE",
+            "STRICT_PREFIX"
+          ],
+          "CandidateIdentities": [
+            "L0016:S0:8-56",
+            "L0016:S0:0-56",
+            "L0016:S0:0-42"
+          ],
+          "SelectedCandidate": "C115",
+          "SelectedKind": "WHOLE",
+          "SelectedIdentity": "L0016:S0:0-56",
+          "SelectedPosition": 2,
+          "WholePosition": 2,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "WHOLE"
+        },
+        {
+          "Primary": "O27",
+          "CandidateIds": [
+            "C171",
+            "C175",
+            "C174",
+            "C173",
+            "C172"
+          ],
+          "CandidateKinds": [
+            "WHOLE",
+            "MULTIPART",
+            "MULTIPART",
+            "STRICT_SUFFIX",
+            "STRICT_PREFIX"
+          ],
+          "CandidateIdentities": [
+            "L0024:S0:0-89",
+            "L0024:S0:0-89|L0025:S0:0-34",
+            "L0024:S0:0-89|L0025:S0:0-45",
+            "L0024:S0:8-89",
+            "L0024:S0:0-78"
+          ],
+          "SelectedCandidate": "C174",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0024:S0:0-89|L0025:S0:0-45",
+          "SelectedPosition": 3,
+          "WholePosition": 1,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "AFTER_WHOLE"
+        },
+        {
+          "Primary": "O54",
+          "CandidateIds": [
+            "C352",
+            "C354",
+            "C350",
+            "C351",
+            "C353"
+          ],
+          "CandidateKinds": [
+            "STRICT_SUFFIX",
+            "MULTIPART",
+            "WHOLE",
+            "STRICT_PREFIX",
+            "MULTIPART"
+          ],
+          "CandidateIdentities": [
+            "L0051:S0:8-95",
+            "L0051:S0:0-95|L0052:S0:0-24",
+            "L0051:S0:0-95",
+            "L0051:S0:0-89",
+            "L0051:S0:0-95|L0052:S0:0-35"
+          ],
+          "SelectedCandidate": "C353",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0051:S0:0-95|L0052:S0:0-35",
+          "SelectedPosition": 5,
+          "WholePosition": 3,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "AFTER_WHOLE"
+        },
+        {
+          "Primary": "O83",
+          "CandidateIds": [
+            "C542",
+            "C541",
+            "C540",
+            "C543",
+            "C539"
+          ],
+          "CandidateKinds": [
+            "MULTIPART",
+            "STRICT_SUFFIX",
+            "STRICT_PREFIX",
+            "MULTIPART",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0080:S0:0-90|L0081:S0:0-35",
+            "L0080:S0:8-90",
+            "L0080:S0:0-84",
+            "L0080:S0:0-90|L0081:S0:0-24",
+            "L0080:S0:0-90"
+          ],
+          "SelectedCandidate": "C542",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0080:S0:0-90|L0081:S0:0-35",
+          "SelectedPosition": 1,
+          "WholePosition": 5,
+          "SelectedFirstCandidate": true,
+          "SelectedRelativeToWhole": "BEFORE_WHOLE"
+        }
+      ]
+    },
+    {
+      "arm": "G2E",
+      "providerBodySha256": "e9f0b8db1c08a375e8d4a5cc01c1a50a11de32b37095697dcd977e23000ddb4b",
+      "rawResponseSha256": "aca152f2b7a28d1c73895ac9f8666bf1e32a877dbc792b74e532dcce3ed7f8f4",
+      "rows": [
+        {
+          "Primary": "O9",
+          "CandidateIds": [
+            "C48",
+            "C49",
+            "C50",
+            "C51",
+            "C47"
+          ],
+          "CandidateKinds": [
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0006:S0:0-6|L0007:S0:0-65",
+            "L0006:S0:0-6|L0007:S0:0-51",
+            "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+            "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-19",
+            "L0006:S0:0-6"
+          ],
+          "SelectedCandidate": "C47",
+          "SelectedKind": "WHOLE",
+          "SelectedIdentity": "L0006:S0:0-6",
+          "SelectedPosition": 5,
+          "WholePosition": 5,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "WHOLE"
+        },
+        {
+          "Primary": "O17",
+          "CandidateIds": [
+            "C102",
+            "C103",
+            "C104",
+            "C105",
+            "C106",
+            "C107",
+            "C101"
+          ],
+          "CandidateKinds": [
+            "STRICT_PREFIX",
+            "STRICT_SUFFIX",
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART",
+            "MULTIPART",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0014:S0:0-7",
+            "L0014:S0:8-9",
+            "L0014:S0:0-9|L0015:S0:0-18",
+            "L0014:S0:0-9|L0015:S0:0-7",
+            "L0014:S0:0-9|L0015:S0:0-18|L0016:S0:0-56",
+            "L0014:S0:0-9|L0015:S0:0-18|L0016:S0:0-42",
+            "L0014:S0:0-9"
+          ],
+          "SelectedCandidate": "C101",
+          "SelectedKind": "WHOLE",
+          "SelectedIdentity": "L0014:S0:0-9",
+          "SelectedPosition": 7,
+          "WholePosition": 7,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "WHOLE"
+        },
+        {
+          "Primary": "O19",
+          "CandidateIds": [
+            "C116",
+            "C117",
+            "C115"
+          ],
+          "CandidateKinds": [
+            "STRICT_PREFIX",
+            "STRICT_SUFFIX",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0016:S0:0-42",
+            "L0016:S0:8-56",
+            "L0016:S0:0-56"
+          ],
+          "SelectedCandidate": "C115",
+          "SelectedKind": "WHOLE",
+          "SelectedIdentity": "L0016:S0:0-56",
+          "SelectedPosition": 3,
+          "WholePosition": 3,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "WHOLE"
+        },
+        {
+          "Primary": "O27",
+          "CandidateIds": [
+            "C172",
+            "C173",
+            "C174",
+            "C175",
+            "C171"
+          ],
+          "CandidateKinds": [
+            "STRICT_PREFIX",
+            "STRICT_SUFFIX",
+            "MULTIPART",
+            "MULTIPART",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0024:S0:0-78",
+            "L0024:S0:8-89",
+            "L0024:S0:0-89|L0025:S0:0-45",
+            "L0024:S0:0-89|L0025:S0:0-34",
+            "L0024:S0:0-89"
+          ],
+          "SelectedCandidate": "C174",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0024:S0:0-89|L0025:S0:0-45",
+          "SelectedPosition": 3,
+          "WholePosition": 5,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "BEFORE_WHOLE"
+        },
+        {
+          "Primary": "O54",
+          "CandidateIds": [
+            "C351",
+            "C352",
+            "C353",
+            "C354",
+            "C350"
+          ],
+          "CandidateKinds": [
+            "STRICT_PREFIX",
+            "STRICT_SUFFIX",
+            "MULTIPART",
+            "MULTIPART",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0051:S0:0-89",
+            "L0051:S0:8-95",
+            "L0051:S0:0-95|L0052:S0:0-35",
+            "L0051:S0:0-95|L0052:S0:0-24",
+            "L0051:S0:0-95"
+          ],
+          "SelectedCandidate": "C353",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0051:S0:0-95|L0052:S0:0-35",
+          "SelectedPosition": 3,
+          "WholePosition": 5,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "BEFORE_WHOLE"
+        },
+        {
+          "Primary": "O83",
+          "CandidateIds": [
+            "C540",
+            "C541",
+            "C542",
+            "C543",
+            "C539"
+          ],
+          "CandidateKinds": [
+            "STRICT_PREFIX",
+            "STRICT_SUFFIX",
+            "MULTIPART",
+            "MULTIPART",
+            "WHOLE"
+          ],
+          "CandidateIdentities": [
+            "L0080:S0:0-84",
+            "L0080:S0:8-90",
+            "L0080:S0:0-90|L0081:S0:0-35",
+            "L0080:S0:0-90|L0081:S0:0-24",
+            "L0080:S0:0-90"
+          ],
+          "SelectedCandidate": "C542",
+          "SelectedKind": "MULTIPART",
+          "SelectedIdentity": "L0080:S0:0-90|L0081:S0:0-35",
+          "SelectedPosition": 3,
+          "WholePosition": 5,
+          "SelectedFirstCandidate": false,
+          "SelectedRelativeToWhole": "BEFORE_WHOLE"
+        }
+      ]
+    }
+  ],
+  "conclusion": "FIRST_POSITIONAL_BIAS_REJECTED; PURE_ALWAYS_WHOLE_RULE_REJECTED; WHOLE_ATOMICITY_PRIOR_AND_ORDER_BY_CANDIDATE_KIND_REMAIN_PRIMARY_SUPPORTED_DIAGNOSIS"
+}

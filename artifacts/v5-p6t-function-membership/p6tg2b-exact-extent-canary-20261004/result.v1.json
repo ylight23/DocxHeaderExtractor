@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "v5-p6tg2b-one-primary-call-result-v1",
+  "status": "EXECUTION_SET_FROZEN",
+  "providerCalls": 1,
+  "retries": 0,
+  "repairs": 0,
+  "fallbacks": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "runtimeChanged": false,
+  "rawCaptureSha256": "839532349a2f1bc1fe62743ee146d426a9e40ba1304b73c33e7ecaee118b8b76",
+  "row": {
+    "documentId": "SRC-089",
+    "transportStatus": "COMPLETED",
+    "finishReason": "stop",
+    "parserStatus": "PARSED",
+    "parserError": null,
+    "rawResponseSha256": "0bf9401db91cabd5bfab27a79e898716e077f5d3368505eac7372dee1a8f0ecc",
+    "promptTokens": 3158,
+    "completionTokens": 2541,
+    "reasoningTokens": 2457,
+    "retryCount": 0,
+    "parsed": {
+      "RawDecisions": 6,
+      "AcceptedSelections": 6,
+      "NoStructuralExtent": 0,
+      "Quarantined": 0,
+      "MissingPrimaries": 0,
+      "Decisions": [
+        {
+          "primary": "O9",
+          "candidate": "C47",
+          "outcome": "SELECTED_CANDIDATE"
+        },
+        {
+          "primary": "O17",
+          "candidate": "C101",
+          "outcome": "SELECTED_CANDIDATE"
+        },
+        {
+          "primary": "O19",
+          "candidate": "C115",
+          "outcome": "SELECTED_CANDIDATE"
+        },
+        {
+          "primary": "O27",
+          "candidate": "C171",
+          "outcome": "SELECTED_CANDIDATE"
+        },
+        {
+          "primary": "O54",
+          "candidate": "C350",
+          "outcome": "SELECTED_CANDIDATE"
+        },
+        {
+          "primary": "O83",
+          "candidate": "C539",
+          "outcome": "SELECTED_CANDIDATE"
+        }
+      ],
+      "Refusals": []
+    }
+  }
+}

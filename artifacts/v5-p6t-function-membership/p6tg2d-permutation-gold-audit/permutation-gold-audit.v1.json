@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "v5-p6tg2d-permutation-gold-audit-v1",
+  "authority": {
+    "g2bRawResponseSha256": "0bf9401db91cabd5bfab27a79e898716e077f5d3368505eac7372dee1a8f0ecc",
+    "g2cRawResponseSha256": "61807ed9d7fde70f0ae21070c01a9c72f0737b542ce54dbd4fc2d84c819f07bc",
+    "g2dRawResponseSha256": "61807ed9d7fde70f0ae21070c01a9c72f0737b542ce54dbd4fc2d84c819f07bc",
+    "goldSha256": "83db6b93462e9bcaf41bc22151b2b31d98c4898973da8ffb86de2d3b18ec9b88",
+    "providerCallsDuringAudit": 0,
+    "goldMutation": "NONE",
+    "runtimeChanged": false
+  },
+  "metrics": {
+    "g2bExact": {
+      "correct": 1,
+      "total": 6
+    },
+    "g2cExact": {
+      "correct": 5,
+      "total": 6
+    },
+    "g2dExact": {
+      "correct": 5,
+      "total": 6
+    },
+    "g2cMultipartExact": {
+      "correct": 4,
+      "total": 5
+    },
+    "g2dMultipartExact": {
+      "correct": 4,
+      "total": 5
+    },
+    "g2cSameAsG2b": 1,
+    "g2dSameAsG2b": 1,
+    "g2cSameAsG2d": 6
+  },
+  "rows": [
+    {
+      "primary": "O17",
+      "goldCandidate": "C104",
+      "b": "C101",
+      "c": "C104",
+      "d": "C104",
+      "bKind": "WHOLE",
+      "cKind": "MULTIPART",
+      "dKind": "MULTIPART",
+      "bExact": false,
+      "cExact": true,
+      "dExact": true,
+      "bToC": "C101→C104",
+      "bToD": "C101→C104",
+      "cToD": "C104→C104"
+    },
+    {
+      "primary": "O19",
+      "goldCandidate": "C115",
+      "b": "C115",
+      "c": "C115",
+      "d": "C115",
+      "bKind": "WHOLE",
+      "cKind": "WHOLE",
+      "dKind": "WHOLE",
+      "bExact": true,
+      "cExact": true,
+      "dExact": true,
+      "bToC": "C115→C115",
+      "bToD": "C115→C115",
+      "cToD": "C115→C115"
+    },
+    {
+      "primary": "O27",
+      "goldCandidate": "C174",
+      "b": "C171",
+      "c": "C174",
+      "d": "C174",
+      "bKind": "WHOLE",
+      "cKind": "MULTIPART",
+      "dKind": "MULTIPART",
+      "bExact": false,
+      "cExact": true,
+      "dExact": true,
+      "bToC": "C171→C174",
+      "bToD": "C171→C174",
+      "cToD": "C174→C174"
+    },
+    {
+      "primary": "O54",
+      "goldCandidate": "C353",
+      "b": "C350",
+      "c": "C353",
+      "d": "C353",
+      "bKind": "WHOLE",
+      "cKind": "MULTIPART",
+      "dKind": "MULTIPART",
+      "bExact": false,
+      "cExact": true,
+      "dExact": true,
+      "bToC": "C350→C353",
+      "bToD": "C350→C353",
+      "cToD": "C353→C353"
+    },
+    {
+      "primary": "O83",
+      "goldCandidate": "C542",
+      "b": "C539",
+      "c": "C542",
+      "d": "C542",
+      "bKind": "WHOLE",
+      "cKind": "MULTIPART",
+      "dKind": "MULTIPART",
+      "bExact": false,
+      "cExact": true,
+      "dExact": true,
+      "bToC": "C539→C542",
+      "bToD": "C539→C542",
+      "cToD": "C542→C542"
+    },
+    {
+      "primary": "O9",
+      "goldCandidate": "C50",
+      "b": "C47",
+      "c": "C51",
+      "d": "C51",
+      "bKind": "WHOLE",
+      "cKind": "MULTIPART",
+      "dKind": "MULTIPART",
+      "bExact": false,
+      "cExact": false,
+      "dExact": false,
+      "bToC": "C47→C51",
+      "bToD": "C47→C51",
+      "cToD": "C51→C51"
+    }
+  ],
+  "conclusion": "G2D_GOLD_AUDIT_CONFIRMS_5_OF_6_EXACT_AND_4_OF_5_MULTIPART; G2C_AND_G2D_IDENTITIES_MATCH_ON_ALL_SIX; ORIGINAL_G2B_ORDERING_REMAINS_PRIMARY_BIAS_SUSPECT"
+}
