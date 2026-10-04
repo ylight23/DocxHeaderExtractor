@@ -20,6 +20,13 @@ public sealed record PdfTotalRolePreparedPackD(
     string ProviderRequestHash,
     int ProviderRequestBytes);
 
+public sealed record PdfUnitTopologyPreparedPackE1(
+    PdfCandidateAuthorityPreparedPack SourcePack,
+    V5UnitTopologyRequestE1 Request,
+    byte[] ProviderBody,
+    string ProviderRequestHash,
+    int ProviderRequestBytes);
+
 public static class PdfTotalOccurrenceRoleQualificationAdapter
 {
     public static PdfTotalRolePreparedPack Prepare(PdfCandidateAuthorityDocumentPlan plan, PdfCandidateAuthorityPreparedPack sourcePack)
@@ -81,6 +88,28 @@ public static class PdfTotalOccurrenceRoleQualificationAdapter
         using var json = JsonDocument.Parse(rawResponse);
         return V5TotalOccurrenceRoleProtocolD.Parse(json.RootElement, Encoding.UTF8.GetByteCount(rawResponse),
             PdfCandidateAuthorityQualificationAdapter.ResponseUtf8ByteCap, pack.Request.Occurrences);
+    }
+
+    public static PdfUnitTopologyPreparedPackE1 PrepareUnitTopologyE1(
+        PdfCandidateAuthorityDocumentPlan plan,
+        PdfCandidateAuthorityPreparedPack sourcePack,
+        IReadOnlyDictionary<string, IReadOnlyList<V5ReadOnlyCorrespondenceV1>> correspondences)
+    {
+        ArgumentNullException.ThrowIfNull(plan); ArgumentNullException.ThrowIfNull(sourcePack); ArgumentNullException.ThrowIfNull(correspondences);
+        var atoms = plan.SourceAtoms.ToDictionary(value => value.Alias, StringComparer.Ordinal);
+        var owned = sourcePack.OwnedAliases.Select(alias => atoms[alias]).ToArray();
+        var ownedSet = sourcePack.OwnedAliases.ToHashSet(StringComparer.Ordinal);
+        var context = sourcePack.VisibleAliases.Where(alias => !ownedSet.Contains(alias)).Select(alias => (atoms[alias].Page, atoms[alias].Text)).ToArray();
+        var request = V5UnitTopologyProtocolE1.ComposeWithReadOnlyCorrespondences(owned, context, correspondences);
+        var body = OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(request.SystemPrompt, request.UserMessage, sourcePack.MaxCompletionTokens, Envelope);
+        return new PdfUnitTopologyPreparedPackE1(sourcePack, request, body.PayloadBytes, body.Hash, body.Bytes);
+    }
+
+    public static V5UnitTopologyResultE1 ParseUnitTopologyE1(PdfUnitTopologyPreparedPackE1 pack, string rawResponse)
+    {
+        ArgumentNullException.ThrowIfNull(pack); ArgumentNullException.ThrowIfNull(rawResponse);
+        using var json = JsonDocument.Parse(rawResponse);
+        return V5UnitTopologyProtocolE1.Parse(json.RootElement, Encoding.UTF8.GetByteCount(rawResponse), PdfCandidateAuthorityQualificationAdapter.ResponseUtf8ByteCap, pack.Request.Occurrences);
     }
 
     private static readonly V5ProviderEnvelope Envelope = new("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300)
