@@ -147,6 +147,8 @@ internal static class Program
             return await P6TCCorrespondenceEvidenceCanary.RunAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6td-explicit-abstention-canary"))
             return await P6TDExplicitAbstentionCanary.RunAsync(LocateRepoRoot(), args);
+        if (args.Contains("--p6te1-unit-topology-canary"))
+            return await P6TE1UnitTopologyCanary.RunAsync(LocateRepoRoot(), args);
 
         // P6S-I/J are separate one-pack neutral-context and semantic-wording experiments; their
         // runner has an independent two-call cap, frozen-body manifest, and zero-retry policy.
