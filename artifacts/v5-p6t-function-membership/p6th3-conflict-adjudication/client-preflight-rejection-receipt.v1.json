@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "v5-p6th3-client-preflight-rejection-receipt-v1",
+  "status": "LOCAL_REJECTION_BEFORE_NETWORK",
+  "attemptedExecutions": 2,
+  "externalProviderCalls": 0,
+  "retry": 0,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "reason": "TRANSPORT_INPUT_PARAMETER_INCOMPATIBLE: response_format is json_object, but neither message mentions JSON",
+  "rawCapturesImmutable": true,
+  "remediation": "NEW_VERSIONED_PREFLIGHT_WITH_EXPLICIT_JSON_WORDING; NOT_A_PROVIDER_RETRY"
+}

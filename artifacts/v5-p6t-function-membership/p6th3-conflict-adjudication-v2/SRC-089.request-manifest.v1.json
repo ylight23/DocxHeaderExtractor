@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "v5-p6th3-conflict-adjudication-preflight-v2",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "documentId": "SRC-089",
+  "sourceAuthority": {
+    "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+    "f1RawResponseSha256": "23286899899f73d5ab94c71b64b665703f524d64a9835eb89f66d61f0d6cfbb7",
+    "g2aRawResponseSha256": "90031a491b19c54e275fd8231d6d8475c8e45c4906f9a617c35eb407067a00c9",
+    "h2RawResponseSha256": "1f4f1e5f9c1132a8967a4d6b661b96416ecd21d455977c4a6fddba39484eb66c"
+  },
+  "conflict": {
+    "id": "X1",
+    "anchor": "O17",
+    "left": "O18",
+    "right": "O19"
+  },
+  "request": {
+    "protocolVersion": "v5-function-anchor-continuation-conflict-adjudication-2",
+    "systemPromptSha256": "fe9e716c163c3554ed4c91052a88bdd8d0a072cca7cc46fb957a255f84b76755",
+    "userMessageSha256": "061d14c2210baa0bbadeb1cabdb36de5f60f93f805dfb9182c9c38131dd9fe75",
+    "providerBodySha256": "8dcf4a7600d96ab24e6eac6350184be8aed758acd0bd6ba848e65e1d270476f9",
+    "providerBodyBytes": 3020
+  },
+  "execution": {
+    "providerCalls": 0,
+    "maximumProviderCalls": 1,
+    "retry": 0,
+    "repair": false,
+    "fallback": false,
+    "goldRead": false,
+    "goldMutation": "NONE",
+    "runtimeChanged": false
+  }
+}
