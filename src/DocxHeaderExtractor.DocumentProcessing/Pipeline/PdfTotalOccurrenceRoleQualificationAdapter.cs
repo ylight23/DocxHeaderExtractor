@@ -22,7 +22,7 @@ public sealed record PdfTotalRolePreparedPackD(
 
 public sealed record PdfUnitTopologyPreparedPackE1(
     PdfCandidateAuthorityPreparedPack SourcePack,
-    V5UnitTopologyRequestE1 Request,
+    V5SegmentationTopologyRequestE1 Request,
     byte[] ProviderBody,
     string ProviderRequestHash,
     int ProviderRequestBytes);
@@ -100,16 +100,16 @@ public static class PdfTotalOccurrenceRoleQualificationAdapter
         var owned = sourcePack.OwnedAliases.Select(alias => atoms[alias]).ToArray();
         var ownedSet = sourcePack.OwnedAliases.ToHashSet(StringComparer.Ordinal);
         var context = sourcePack.VisibleAliases.Where(alias => !ownedSet.Contains(alias)).Select(alias => (atoms[alias].Page, atoms[alias].Text)).ToArray();
-        var request = V5UnitTopologyProtocolE1.ComposeWithReadOnlyCorrespondences(owned, context, correspondences);
+        var request = V5SegmentationTopologyProtocolE1.ComposeWithReadOnlyCorrespondences(owned, context, correspondences);
         var body = OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(request.SystemPrompt, request.UserMessage, sourcePack.MaxCompletionTokens, Envelope);
         return new PdfUnitTopologyPreparedPackE1(sourcePack, request, body.PayloadBytes, body.Hash, body.Bytes);
     }
 
-    public static V5UnitTopologyResultE1 ParseUnitTopologyE1(PdfUnitTopologyPreparedPackE1 pack, string rawResponse)
+    public static V5SegmentationTopologyResultE1 ParseUnitTopologyE1(PdfUnitTopologyPreparedPackE1 pack, string rawResponse)
     {
         ArgumentNullException.ThrowIfNull(pack); ArgumentNullException.ThrowIfNull(rawResponse);
         using var json = JsonDocument.Parse(rawResponse);
-        return V5UnitTopologyProtocolE1.Parse(json.RootElement, Encoding.UTF8.GetByteCount(rawResponse), PdfCandidateAuthorityQualificationAdapter.ResponseUtf8ByteCap, pack.Request.Occurrences);
+        return V5SegmentationTopologyProtocolE1.Parse(json.RootElement, Encoding.UTF8.GetByteCount(rawResponse), PdfCandidateAuthorityQualificationAdapter.ResponseUtf8ByteCap, pack.Request.Occurrences);
     }
 
     private static readonly V5ProviderEnvelope Envelope = new("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300)

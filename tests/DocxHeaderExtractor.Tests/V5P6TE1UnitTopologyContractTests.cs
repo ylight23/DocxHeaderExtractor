@@ -28,19 +28,19 @@ public sealed class V5P6TE1UnitTopologyContractTests
             Assert.DoesNotContain("REPRESENTATION_START", request.SystemPrompt, StringComparison.Ordinal);
             Assert.DoesNotContain("HEADING", request.UserMessage, StringComparison.OrdinalIgnoreCase);
             Assert.DoesNotContain("REPRESENTATION", request.UserMessage, StringComparison.OrdinalIgnoreCase);
-            var synthetic = JsonSerializer.Serialize(new { decisions = request.Occurrences.Select((value, index) => new { occurrence = value.Id, topology = index == 0 ? "STARTS_UNIT" : index == 1 ? "CONTINUES_UNIT" : "NO_UNIT_BOUNDARY" }).ToArray() });
+            var synthetic = JsonSerializer.Serialize(new { decisions = request.Occurrences.Select((value, index) => new { occurrence = value.Id, topology = index == 0 ? "STARTS_SEGMENT" : index == 1 ? "CONTINUES_PREVIOUS" : "STANDALONE" }).ToArray() });
             using var payload = JsonDocument.Parse(synthetic);
-            var parsed = V5UnitTopologyProtocolE1.Parse(payload.RootElement, System.Text.Encoding.UTF8.GetByteCount(synthetic), PdfCandidateAuthorityQualificationAdapter.ResponseUtf8ByteCap, request.Occurrences);
+            var parsed = V5SegmentationTopologyProtocolE1.Parse(payload.RootElement, System.Text.Encoding.UTF8.GetByteCount(synthetic), PdfCandidateAuthorityQualificationAdapter.ResponseUtf8ByteCap, request.Occurrences);
             Assert.Equal(96, parsed.Decisions.Count);
-            Assert.Equal(1, parsed.Decisions.Count(value => value.Role == V5UnitTopologyRoleE1.STARTS_UNIT));
-            Assert.Equal(1, parsed.Decisions.Count(value => value.Role == V5UnitTopologyRoleE1.CONTINUES_UNIT));
-            Assert.Equal(94, parsed.Decisions.Count(value => value.Role == V5UnitTopologyRoleE1.NO_UNIT_BOUNDARY));
-            rows.Add(new { documentId, packId = pack.PackId, issued = request.Occurrences.Count, requestHash = request.UserMessageSha256, systemPromptSha256 = Hashing.Sha256(request.SystemPrompt), providerRequestHash = prepared.ProviderRequestHash, providerRequestBytes = prepared.ProviderRequestBytes, responseContract = "TOTAL_TOPOLOGY_ONLY", roles = new[] { "STARTS_UNIT", "CONTINUES_UNIT", "NO_UNIT_BOUNDARY" } });
+            Assert.Equal(1, parsed.Decisions.Count(value => value.Role == V5SegmentationTopologyRoleE1.STARTS_SEGMENT));
+            Assert.Equal(1, parsed.Decisions.Count(value => value.Role == V5SegmentationTopologyRoleE1.CONTINUES_PREVIOUS));
+            Assert.Equal(94, parsed.Decisions.Count(value => value.Role == V5SegmentationTopologyRoleE1.STANDALONE));
+            rows.Add(new { documentId, packId = pack.PackId, issued = request.Occurrences.Count, requestHash = request.UserMessageSha256, systemPromptSha256 = Hashing.Sha256(request.SystemPrompt), providerRequestHash = prepared.ProviderRequestHash, providerRequestBytes = prepared.ProviderRequestBytes, responseContract = "TOTAL_SEGMENTATION_ONLY", roles = new[] { "STARTS_SEGMENT", "CONTINUES_PREVIOUS", "STANDALONE" } });
         }
-        FreezeArtifact.AssertJson(OutputRoot, "two-pack-unit-topology-manifest.v1.json", new
+        FreezeArtifact.AssertJson(OutputRoot, "two-pack-segmentation-topology-manifest.v2.json", new
         {
-            schemaVersion = "v5-p6te1-unit-topology-manifest-v1", status = "PREPARED_NOT_AUTHORIZED", providerCalls = 0, goldRead = false, goldMutation = "NONE", sharedRuntime = "UNCHANGED",
-            matchedVariable = "TOPOLOGY_ONLY_FROM_P6TD", functionLabels = "FORBIDDEN", extentPass = "BLOCKED", expectedDecisions = 96, maximumFutureProviderCalls = 2, retry = 0, repair = false, fallback = false, rows,
+            schemaVersion = "v5-p6te1-segmentation-topology-manifest-v2", status = "PREPARED_NOT_AUTHORIZED", providerCalls = 0, goldRead = false, goldMutation = "NONE", sharedRuntime = "UNCHANGED",
+            matchedVariable = "SEGMENTATION_ONLY_FROM_P6TD", functionLabels = "FORBIDDEN", extentPass = "BLOCKED", expectedDecisions = 96, maximumFutureProviderCalls = 2, retry = 0, repair = false, fallback = false, rows,
         });
     }
 

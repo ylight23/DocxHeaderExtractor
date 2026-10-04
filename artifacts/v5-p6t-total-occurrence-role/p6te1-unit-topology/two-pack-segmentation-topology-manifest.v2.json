@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "v5-p6te1-segmentation-topology-manifest-v2",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "sharedRuntime": "UNCHANGED",
+  "matchedVariable": "SEGMENTATION_ONLY_FROM_P6TD",
+  "functionLabels": "FORBIDDEN",
+  "extentPass": "BLOCKED",
+  "expectedDecisions": 96,
+  "maximumFutureProviderCalls": 2,
+  "retry": 0,
+  "repair": false,
+  "fallback": false,
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issued": 96,
+      "requestHash": "5aeb9ad646aff6b52d68d24f144b15213beacd658fd52c259161ad8498ef1fda",
+      "systemPromptSha256": "92745dfc9715ae427dffcf5ce88c1b9421c4b6c9e884d3ad450313ffb9ed7524",
+      "providerRequestHash": "f115b871370cfe9f947b9365ff56cfb2f1c669cdae2afe208d62b3dce4cdf289",
+      "providerRequestBytes": 20762,
+      "responseContract": "TOTAL_SEGMENTATION_ONLY",
+      "roles": [
+        "STARTS_SEGMENT",
+        "CONTINUES_PREVIOUS",
+        "STANDALONE"
+      ]
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issued": 96,
+      "requestHash": "edda8ad25937dab22f5e2cdc980c40afc04a496a54e0aab556e0c4a01e1d15e2",
+      "systemPromptSha256": "92745dfc9715ae427dffcf5ce88c1b9421c4b6c9e884d3ad450313ffb9ed7524",
+      "providerRequestHash": "a7c8e72db2b2364a083282ce881e9e111b448086b5e684c0159d1e620e3a7def",
+      "providerRequestBytes": 24969,
+      "responseContract": "TOTAL_SEGMENTATION_ONLY",
+      "roles": [
+        "STARTS_SEGMENT",
+        "CONTINUES_PREVIOUS",
+        "STANDALONE"
+      ]
+    }
+  ]
+}
