@@ -36,6 +36,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private const string IndependentJudgmentCaptureRoot = "artifacts/v5-p6t-function-membership/p6th1-independent-candidate-canary-20261004";
     private const string IndependentJudgmentAggregationRoot = "artifacts/v5-p6t-function-membership/p6th1-independent-candidate-aggregation";
     private const string IndependentJudgmentGoldForensicRoot = "artifacts/v5-p6t-function-membership/p6th1-independent-candidate-gold-forensic";
+    private const string ContinuationBoundaryPreflightRoot = "artifacts/v5-p6t-function-membership/p6th2-function-conditioned-continuation-preflight";
     private const string Gold089Path = "eval/a99-closed-loop/gold/SRC-089.gold.json";
     private const string Gold095Path = "eval/a99-closed-loop/gold/SRC-095.gold.json";
     private const string Review095Path = "eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json";
@@ -48,6 +49,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private const string RunIndependentJudgmentVariable = "A99_RUN_P6TH1_CANARY";
     private const string Protocol = "v5-function-conditioned-exact-extent-resolver-preflight-1";
     private const string IndependentJudgmentProtocol = "v5-independent-exact-extent-judgment-1";
+    private const string ContinuationBoundaryProtocol = "v5-function-conditioned-continuation-boundary-1";
     private static readonly (string Id, string Pdf)[] Documents =
     [
         ("SRC-089", SourcePdfCorpus.Src089),
@@ -2205,12 +2207,143 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private sealed record IndependentAggregate(string Primary, string Outcome, string? SelectedCandidate,
         IReadOnlyList<string> ExactCandidates);
 
+    private sealed record ContinuationEdge(string Anchor, string Left, string Right, int Ordinal);
+
+    private sealed record ContinuationBoundaryRequest(
+        string DocumentId,
+        string SystemPrompt,
+        string UserMessage,
+        string MessageHash,
+        int MessageBytes,
+        byte[] ProviderBody,
+        int ProviderBytes,
+        string ProviderHash,
+        IReadOnlyList<ContinuationEdge> Edges,
+        int MaxCompletionTokens);
+
+    private sealed record ContinuationBoundaryLedger(
+        string Anchor,
+        string Left,
+        string Right,
+        string Boundary);
+
+    private sealed record ReconstructedContinuation(string Anchor, string Outcome, IReadOnlyList<string> Aliases);
+
     private sealed record AnchorExistenceRequest(string DocumentId, string SystemPrompt, string UserMessage,
         string MessageHash, int MessageBytes, byte[] ProviderBody, int ProviderBytes, string ProviderHash,
         IReadOnlyList<(string Occurrence, string Alias)> Primaries, int MaxCompletionTokens);
 
     private sealed record ParsedAnchorLedger(int RawDecisions, int HasStructuralExtent, int NoStructuralExtent,
         int Quarantined, int MissingPrimaries, IReadOnlyList<object> Decisions, IReadOnlyList<object> Refusals);
+
+    [Fact]
+    public void P6TH2_preflight_freezes_function_conditioned_continuation_boundaries_without_candidate_menus()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).OrderBy(item => item, StringComparer.Ordinal).ToArray();
+        try
+        {
+            Assert.Equal(6, hasPrimaries.Length);
+            var request = ComposeContinuationBoundaries(prepared, hasPrimaries);
+
+            Assert.Equal(18, request.Edges.Count); // 6 anchored chains × (max representable parts 3: two continuations plus terminal stop).
+            Assert.All(request.Edges.GroupBy(edge => edge.Anchor), group => Assert.Equal(3, group.Count()));
+            Assert.DoesNotContain("candidate", request.UserMessage, StringComparison.OrdinalIgnoreCase);
+            Assert.DoesNotContain("sourceParts", request.UserMessage, StringComparison.Ordinal);
+            Assert.DoesNotContain("span", request.UserMessage, StringComparison.OrdinalIgnoreCase);
+            Assert.DoesNotContain("heading", request.SystemPrompt, StringComparison.OrdinalIgnoreCase);
+            Assert.DoesNotContain("representation", request.SystemPrompt, StringComparison.OrdinalIgnoreCase);
+
+            var synthetic = request.Edges.Select(edge => new ContinuationBoundaryLedger(edge.Anchor, edge.Left, edge.Right,
+                edge.Ordinal < 2 ? "CONTINUES_STRUCTURAL_UNIT" : "STOPS_STRUCTURAL_UNIT")).ToArray();
+            var reconstructed = ReconstructContinuationBoundaries(request, synthetic);
+            Assert.All(reconstructed, row => Assert.Equal("RECONSTRUCTED", row.Outcome));
+            Assert.All(reconstructed, row => Assert.Equal(3, row.Aliases.Count));
+
+            var invalid = synthetic.Select(item => item with { }).ToArray();
+            invalid[1] = invalid[1] with { Boundary = "STOPS_STRUCTURAL_UNIT" };
+            invalid[2] = invalid[2] with { Boundary = "CONTINUES_STRUCTURAL_UNIT" };
+            Assert.Throws<InvalidOperationException>(() => ParseContinuationBoundaries(request,
+                JsonSerializer.Serialize(new { decisions = invalid.Select(item => new { anchor = item.Anchor, left = item.Left, right = item.Right, boundary = item.Boundary }) })));
+
+            FreezeArtifact.AssertJson(ContinuationBoundaryPreflightRoot, "continuation-boundary-preflight.v1.json", new
+            {
+                schemaVersion = "v5-p6th2-function-conditioned-continuation-preflight-v1",
+                status = "PREPARED_NOT_AUTHORIZED",
+                protocolVersion = ContinuationBoundaryProtocol,
+                purpose = "DERIVE_EXACT_REPRESENTABLE_EXTENT_FROM_SOURCE_ORDERED_CONTINUATION_BOUNDARIES_AFTER_F1_FUNCTION_AND_G2A_ANCHOR",
+                treatment = new
+                {
+                    documentId = request.DocumentId,
+                    packId = "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+                    model = "qwen/qwen3.7-flash",
+                    provider = "alibaba",
+                    reasoning = new { enabled = true, effort = "OMITTED" },
+                    upstreamFunctionAuthority = "FROZEN_F1_ESTABLISHES_STRUCTURE",
+                    upstreamAnchorAuthority = "FROZEN_G2A_RAW_HAS_STRUCTURAL_EXTENT",
+                    candidateMenus = "ABSENT",
+                    candidateIds = "ABSENT",
+                    exactExtentSelection = "ABSENT",
+                },
+                outputContract = new
+                {
+                    shape = "{\"decisions\":[{\"anchor\":\"O9\",\"left\":\"O9\",\"right\":\"O10\",\"boundary\":\"CONTINUES_STRUCTURAL_UNIT\"}]}",
+                    oneDecisionPerIssuedBoundaryEdge = true,
+                    allowedBoundaries = new[] { "CONTINUES_STRUCTURAL_UNIT", "STOPS_STRUCTURAL_UNIT" },
+                    sourceOrderAdjacentEdgesOnly = true,
+                    firstStopTerminatesTheReconstructedExtent = true,
+                    continuationAfterStopIsInvalid = true,
+                    modelAuthoredCandidateOrLocator = false,
+                    invalidDecisionPolicy = "whole-request rejection; never infer a continuation boundary",
+                },
+                boundedRepresentableDomain = new
+                {
+                    maxMultipartParts = 3,
+                    edgesPerAnchor = 3,
+                    interpretation = "two possible continuation edges plus one terminal boundary; a later production execution may not infer beyond this frozen V5 candidate representation bound",
+                },
+                sourceAuthority = new
+                {
+                    f1RequestSha256 = prepared.F1Pack.Request.UserMessageSha256,
+                    g2aRawResponseSha256 = g2aRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                    hasPrimaryCount = hasPrimaries.Length,
+                    hasPrimaries,
+                    candidateUniverseFingerprint = prepared.SourcePack.Universe.Fingerprint,
+                    goldReadForRequestConstruction = false,
+                    goldMutation = "NONE",
+                    sharedRuntime = "UNCHANGED",
+                },
+                callPlan = new
+                {
+                    providerCallsAuthorized = 0,
+                    providerCalls = 0,
+                    retries = 0,
+                    repairs = 0,
+                    fallbacks = 0,
+                    anchorCount = hasPrimaries.Length,
+                    edgeCount = request.Edges.Count,
+                    edges = request.Edges.Select(edge => new { anchor = edge.Anchor, left = edge.Left, right = edge.Right, ordinal = edge.Ordinal }).ToArray(),
+                    systemPromptSha256 = Hashing.Sha256(request.SystemPrompt),
+                    userMessageSha256 = request.MessageHash,
+                    userMessageUtf8Bytes = request.MessageBytes,
+                    providerBodySha256 = request.ProviderHash,
+                    providerBodyBytes = request.ProviderBytes,
+                },
+                conclusion = "P6TH2_PROVIDER_FREE_PREFLIGHT_FROZEN; H1_SHOWED_EXACTNESS_IS_NOT_A_UNARY_CANDIDATE_PROPERTY; PROVIDER_EXECUTION_REQUIRES_SEPARATE_EXPLICIT_AUTHORIZATION",
+            });
+        }
+        finally
+        {
+            foreach (var item in anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))) item.Dispose();
+        }
+    }
 
     [Fact]
     public void P6TG2A_preflight_freezes_candidate_free_anchor_existence_contract_for_src089_controls()
@@ -2797,6 +2930,115 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         if (value is not ("EXACT_STRUCTURAL_EXTENT" or "NOT_EXACT_STRUCTURAL_EXTENT"))
             throw new InvalidOperationException("independent-judgment-enum-invalid");
         return new IndependentJudgmentLedger(request.Primary, request.CandidateId, value);
+    }
+
+    private static ContinuationBoundaryRequest ComposeContinuationBoundaries(PreparedDocument prepared,
+        IReadOnlyCollection<string> anchorOccurrences)
+    {
+        var atoms = prepared.Plan.SourceAtoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
+        var owned = prepared.SourcePack.OwnedAliases.ToArray();
+        var aliasByOccurrence = prepared.OccurrenceByAlias.ToDictionary(item => item.Value, item => item.Key, StringComparer.Ordinal);
+        var rows = new List<object>();
+        var edges = new List<ContinuationEdge>();
+        foreach (var anchor in anchorOccurrences.OrderBy(item => item, StringComparer.Ordinal))
+        {
+            Assert.True(aliasByOccurrence.TryGetValue(anchor, out var anchorAlias), $"h2-anchor-not-issued:{anchor}");
+            var index = Array.IndexOf(owned, anchorAlias);
+            Assert.True(index >= 0, $"h2-anchor-not-owned:{anchorAlias}");
+            Assert.True(index + 3 < owned.Length, $"h2-insufficient-following-owned-occurrences:{anchorAlias}");
+            var chainAliases = owned.Skip(index).Take(4).ToArray();
+            var chain = chainAliases.Select(alias => new
+            {
+                occurrence = prepared.OccurrenceByAlias[alias],
+                page = atoms[alias].Page,
+                text = atoms[alias].Text,
+                upstreamFunction = prepared.FunctionByAlias.GetValueOrDefault(alias, "UNCLASSIFIED"),
+                selectable = false,
+            }).ToArray();
+            var chainEdges = Enumerable.Range(0, 3).Select(ordinal => new ContinuationEdge(anchor,
+                prepared.OccurrenceByAlias[chainAliases[ordinal]], prepared.OccurrenceByAlias[chainAliases[ordinal + 1]], ordinal)).ToArray();
+            edges.AddRange(chainEdges);
+            rows.Add(new { anchor, occurrences = chain, edges = chainEdges.Select(edge => new { left = edge.Left, right = edge.Right, ordinal = edge.Ordinal }).ToArray() });
+        }
+
+        const string systemPrompt = """
+            Judge only source-order continuation boundaries for already-qualified structural anchors. For each issued edge, decide whether right continues the same local structural unit begun at anchor, or whether the unit stops before right.
+
+            CONTINUES_STRUCTURAL_UNIT means left and right belong to the same exact local structural unit. STOPS_STRUCTURAL_UNIT means the unit begun at anchor ends before right. The edges are consecutive source occurrences; do not use similarity, hierarchy, candidates, spans, locators, or hypothetical text not issued in the request. Once an anchor stops, every later issued edge for that anchor must also be STOPS_STRUCTURAL_UNIT.
+
+            Return exactly one JSON object: {"decisions":[{"anchor":"O9","left":"O9","right":"O10","boundary":"CONTINUES_STRUCTURAL_UNIT"}]}. Return exactly one decision for every issued edge. Echo only issued O# values. Do not output candidate IDs, source text, coordinates, aliases, locators, relations, hierarchy, rationale, confidence, or extra properties.
+            """;
+        var userMessage = JsonSerializer.Serialize(new
+        {
+            protocolVersion = ContinuationBoundaryProtocol,
+            anchors = rows,
+        });
+        var request = new V5FreeHeadingRequestV1(ContinuationBoundaryProtocol, systemPrompt, userMessage,
+            Hashing.Sha256(userMessage), Encoding.UTF8.GetByteCount(systemPrompt), Encoding.UTF8.GetByteCount(userMessage));
+        var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(request,
+            prepared.SourcePack.MaxCompletionTokens);
+        return new ContinuationBoundaryRequest(prepared.DocumentId, systemPrompt, userMessage, request.UserMessageSha256,
+            request.UserMessageUtf8Bytes, body.PayloadBytes, body.Bytes, body.Hash, edges, prepared.SourcePack.MaxCompletionTokens);
+    }
+
+    private static IReadOnlyList<ContinuationBoundaryLedger> ParseContinuationBoundaries(ContinuationBoundaryRequest request, string raw)
+    {
+        using var document = JsonDocument.Parse(raw);
+        var root = document.RootElement;
+        if (root.ValueKind != JsonValueKind.Object || root.EnumerateObject().Count() != 1 ||
+            !root.TryGetProperty("decisions", out var decisions) || decisions.ValueKind != JsonValueKind.Array)
+            throw new InvalidOperationException("h2-response-root-invalid");
+        var issued = request.Edges.ToDictionary(edge => $"{edge.Anchor}|{edge.Left}|{edge.Right}", StringComparer.Ordinal);
+        var parsed = new Dictionary<string, ContinuationBoundaryLedger>(StringComparer.Ordinal);
+        foreach (var decision in decisions.EnumerateArray())
+        {
+            if (decision.ValueKind != JsonValueKind.Object || decision.EnumerateObject().Count() != 4 ||
+                !decision.TryGetProperty("anchor", out var anchor) || anchor.ValueKind != JsonValueKind.String ||
+                !decision.TryGetProperty("left", out var left) || left.ValueKind != JsonValueKind.String ||
+                !decision.TryGetProperty("right", out var right) || right.ValueKind != JsonValueKind.String ||
+                !decision.TryGetProperty("boundary", out var boundary) || boundary.ValueKind != JsonValueKind.String)
+                throw new InvalidOperationException("h2-decision-schema-invalid");
+            var key = $"{anchor.GetString()}|{left.GetString()}|{right.GetString()}";
+            if (!issued.ContainsKey(key)) throw new InvalidOperationException("h2-edge-not-issued");
+            if (!parsed.TryAdd(key, new ContinuationBoundaryLedger(anchor.GetString()!, left.GetString()!, right.GetString()!, boundary.GetString()!)))
+                throw new InvalidOperationException("h2-edge-duplicate");
+            if (boundary.GetString() is not ("CONTINUES_STRUCTURAL_UNIT" or "STOPS_STRUCTURAL_UNIT"))
+                throw new InvalidOperationException("h2-boundary-enum-invalid");
+        }
+        if (parsed.Count != issued.Count) throw new InvalidOperationException("h2-edge-missing");
+        var result = request.Edges.Select(edge => parsed[$"{edge.Anchor}|{edge.Left}|{edge.Right}"]).ToArray();
+        foreach (var group in result.GroupBy(item => item.Anchor, StringComparer.Ordinal))
+        {
+            var stopped = false;
+            foreach (var edge in group)
+            {
+                if (stopped && edge.Boundary != "STOPS_STRUCTURAL_UNIT")
+                    throw new InvalidOperationException("h2-continuation-after-stop");
+                stopped |= edge.Boundary == "STOPS_STRUCTURAL_UNIT";
+            }
+        }
+        return result;
+    }
+
+    private static IReadOnlyList<ReconstructedContinuation> ReconstructContinuationBoundaries(
+        ContinuationBoundaryRequest request, IReadOnlyList<ContinuationBoundaryLedger> decisions)
+    {
+        var byAnchor = decisions.GroupBy(item => item.Anchor, StringComparer.Ordinal)
+            .ToDictionary(group => group.Key, group => group.ToArray(), StringComparer.Ordinal);
+        return request.Edges.GroupBy(edge => edge.Anchor, StringComparer.Ordinal).Select(group =>
+        {
+            var edges = group.OrderBy(edge => edge.Ordinal).ToArray();
+            if (!byAnchor.TryGetValue(group.Key, out var values) || values.Length != edges.Length)
+                throw new InvalidOperationException("h2-reconstruction-incomplete");
+            var choice = values.ToDictionary(item => $"{item.Left}|{item.Right}", StringComparer.Ordinal);
+            var aliases = new List<string> { edges[0].Left };
+            foreach (var edge in edges)
+            {
+                if (choice[$"{edge.Left}|{edge.Right}"].Boundary == "STOPS_STRUCTURAL_UNIT") break;
+                aliases.Add(edge.Right);
+            }
+            return new ReconstructedContinuation(group.Key, "RECONSTRUCTED", aliases);
+        }).OrderBy(item => item.Anchor, StringComparer.Ordinal).ToArray();
     }
 
     private static PreparedRequest ComposeExactExtentWithCandidateOrder(PreparedDocument prepared, PreparedRequest baseline, bool reverse)

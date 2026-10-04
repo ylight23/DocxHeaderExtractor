@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "v5-p6th2-function-conditioned-continuation-preflight-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "protocolVersion": "v5-function-conditioned-continuation-boundary-1",
+  "purpose": "DERIVE_EXACT_REPRESENTABLE_EXTENT_FROM_SOURCE_ORDERED_CONTINUATION_BOUNDARIES_AFTER_F1_FUNCTION_AND_G2A_ANCHOR",
+  "treatment": {
+    "documentId": "SRC-089",
+    "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+    "model": "qwen/qwen3.7-flash",
+    "provider": "alibaba",
+    "reasoning": {
+      "enabled": true,
+      "effort": "OMITTED"
+    },
+    "upstreamFunctionAuthority": "FROZEN_F1_ESTABLISHES_STRUCTURE",
+    "upstreamAnchorAuthority": "FROZEN_G2A_RAW_HAS_STRUCTURAL_EXTENT",
+    "candidateMenus": "ABSENT",
+    "candidateIds": "ABSENT",
+    "exactExtentSelection": "ABSENT"
+  },
+  "outputContract": {
+    "shape": "{\"decisions\":[{\"anchor\":\"O9\",\"left\":\"O9\",\"right\":\"O10\",\"boundary\":\"CONTINUES_STRUCTURAL_UNIT\"}]}",
+    "oneDecisionPerIssuedBoundaryEdge": true,
+    "allowedBoundaries": [
+      "CONTINUES_STRUCTURAL_UNIT",
+      "STOPS_STRUCTURAL_UNIT"
+    ],
+    "sourceOrderAdjacentEdgesOnly": true,
+    "firstStopTerminatesTheReconstructedExtent": true,
+    "continuationAfterStopIsInvalid": true,
+    "modelAuthoredCandidateOrLocator": false,
+    "invalidDecisionPolicy": "whole-request rejection; never infer a continuation boundary"
+  },
+  "boundedRepresentableDomain": {
+    "maxMultipartParts": 3,
+    "edgesPerAnchor": 3,
+    "interpretation": "two possible continuation edges plus one terminal boundary; a later production execution may not infer beyond this frozen V5 candidate representation bound"
+  },
+  "sourceAuthority": {
+    "f1RequestSha256": "010ed175ee676085349da16469346c67da1dea39fe462589f42d45fe2299a412",
+    "g2aRawResponseSha256": "90031a491b19c54e275fd8231d6d8475c8e45c4906f9a617c35eb407067a00c9",
+    "hasPrimaryCount": 6,
+    "hasPrimaries": [
+      "O17",
+      "O19",
+      "O27",
+      "O54",
+      "O83",
+      "O9"
+    ],
+    "candidateUniverseFingerprint": "e4f3624bbd8b0771971fc85973e6fd4613ecd9c30c04c64ce8680b302d8d0029",
+    "goldReadForRequestConstruction": false,
+    "goldMutation": "NONE",
+    "sharedRuntime": "UNCHANGED"
+  },
+  "callPlan": {
+    "providerCallsAuthorized": 0,
+    "providerCalls": 0,
+    "retries": 0,
+    "repairs": 0,
+    "fallbacks": 0,
+    "anchorCount": 6,
+    "edgeCount": 18,
+    "edges": [
+      {
+        "anchor": "O17",
+        "left": "O17",
+        "right": "O18",
+        "ordinal": 0
+      },
+      {
+        "anchor": "O17",
+        "left": "O18",
+        "right": "O19",
+        "ordinal": 1
+      },
+      {
+        "anchor": "O17",
+        "left": "O19",
+        "right": "O20",
+        "ordinal": 2
+      },
+      {
+        "anchor": "O19",
+        "left": "O19",
+        "right": "O20",
+        "ordinal": 0
+      },
+      {
+        "anchor": "O19",
+        "left": "O20",
+        "right": "O21",
+        "ordinal": 1
+      },
+      {
+        "anchor": "O19",
+        "left": "O21",
+        "right": "O22",
+        "ordinal": 2
+      },
+      {
+        "anchor": "O27",
+        "left": "O27",
+        "right": "O28",
+        "ordinal": 0
+      },
+      {
+        "anchor": "O27",
+        "left": "O28",
+        "right": "O29",
+        "ordinal": 1
+      },
+      {
+        "anchor": "O27",
+        "left": "O29",
+        "right": "O30",
+        "ordinal": 2
+      },
+      {
+        "anchor": "O54",
+        "left": "O54",
+        "right": "O55",
+        "ordinal": 0
+      },
+      {
+        "anchor": "O54",
+        "left": "O55",
+        "right": "O56",
+        "ordinal": 1
+      },
+      {
+        "anchor": "O54",
+        "left": "O56",
+        "right": "O57",
+        "ordinal": 2
+      },
+      {
+        "anchor": "O83",
+        "left": "O83",
+        "right": "O84",
+        "ordinal": 0
+      },
+      {
+        "anchor": "O83",
+        "left": "O84",
+        "right": "O85",
+        "ordinal": 1
+      },
+      {
+        "anchor": "O83",
+        "left": "O85",
+        "right": "O86",
+        "ordinal": 2
+      },
+      {
+        "anchor": "O9",
+        "left": "O9",
+        "right": "O10",
+        "ordinal": 0
+      },
+      {
+        "anchor": "O9",
+        "left": "O10",
+        "right": "O11",
+        "ordinal": 1
+      },
+      {
+        "anchor": "O9",
+        "left": "O11",
+        "right": "O12",
+        "ordinal": 2
+      }
+    ],
+    "systemPromptSha256": "e9dfffee7bbd03f4dc42821190a7d1123af401a5dde6273d9fb9fccf54706793",
+    "userMessageSha256": "5cff5e80d36ddbabb1712e23161c894673a8662a83ee1cbfd32ed255135377ac",
+    "userMessageUtf8Bytes": 4965,
+    "providerBodySha256": "42c1f07bb9b6da96e1c001adf741af1eb655d7f0e2ac54f185aa2725e9ed45b0",
+    "providerBodyBytes": 9520
+  },
+  "conclusion": "P6TH2_PROVIDER_FREE_PREFLIGHT_FROZEN; H1_SHOWED_EXACTNESS_IS_NOT_A_UNARY_CANDIDATE_PROPERTY; PROVIDER_EXECUTION_REQUIRES_SEPARATE_EXPLICIT_AUTHORIZATION"
+}
