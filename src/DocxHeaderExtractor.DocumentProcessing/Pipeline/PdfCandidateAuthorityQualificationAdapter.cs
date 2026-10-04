@@ -80,6 +80,14 @@ public static class PdfCandidateAuthorityQualificationAdapter
             maxCompletionTokens, Envelope);
     }
 
+    /// <summary>Same P6S request body, with only the carrier's current reasoning-enabled field changed.</summary>
+    public static V5ProviderRequestBodyV2_1 BuildProviderBodyReasoningEnabled(V5FreeHeadingRequestV1 request, int maxCompletionTokens)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        return OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(request.SystemPrompt, request.UserMessage,
+            maxCompletionTokens, Envelope);
+    }
+
     private static readonly JsonSerializerOptions SnapshotJson = new() { PropertyNameCaseInsensitive = true };
     private static readonly V5ProviderEnvelope Envelope = new("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300)
     { UsageInclude = true, OpenRouterResponseCacheDisabled = true };

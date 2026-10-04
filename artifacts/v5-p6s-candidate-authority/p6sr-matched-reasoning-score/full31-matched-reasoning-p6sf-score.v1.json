@@ -1,0 +1,3050 @@
+{
+  "schemaVersion": "v5-p6sr-matched-reasoning-p6sf-score-v1",
+  "execution": {
+    "providerCallsDuringScore": 0,
+    "frozenProviderCallsInCapture": 31,
+    "goldRead": true,
+    "goldMutation": "NONE",
+    "runtimeChanged": false,
+    "sourceArtifact": "artifacts/v5-p6s-candidate-authority/p6sr-matched-reasoning-full31/result.v1.json",
+    "sourceArtifactSha256": "291765ddaf6e8f2c28c3d00fd1e612355ddf2f0d272962d5f5e08b4832cec7f7",
+    "controlScore": "artifacts/v5-p6s-candidate-authority/p6sf-global-association-score/full31-global-association-and-exact-score.v1.json",
+    "controlScoreSha256": "0fbc1c0354f4a3de4dedefd8391b4b8ed0c293fc63ea94f1b08803364dbd3749"
+  },
+  "scorer": {
+    "implementation": "V5P6SFGlobalAssociationScoringTests",
+    "exactOccurrence": "strict candidate identity equals Gold identity; this is the only TP/FP/FN/F1 occurrence metric",
+    "goldAssociation": "same deterministic P6S-F global maximum-weight association; diagnostic only"
+  },
+  "matchedControl": {
+    "P6SD_reasoning": "effort:none",
+    "P6SR_reasoning": "enabled:true, effort omitted",
+    "independentVariable": "reasoning only"
+  },
+  "metrics": {
+    "modelSelection": {
+      "exactOccurrence": {
+        "TruePositive": 105,
+        "FalsePositive": 64,
+        "FalseNegative": 34,
+        "Precision": 0.6213,
+        "Recall": 0.7554,
+        "F1": 0.6818
+      },
+      "goldAssociation": {
+        "matched": 117,
+        "unmatchedGold": 22,
+        "unmatchedPredictions": 52,
+        "exact": 105,
+        "fullGoldCoverageExcess": 2,
+        "partial": 10
+      },
+      "extent": {
+        "stage": "PRE_PROJECTION",
+        "counts": {
+          "EXACT": 105,
+          "EXCESS_EXTENT": 2,
+          "NO_MODEL_PROPOSAL": 21,
+          "PARTIAL": 10,
+          "ROLE_ERROR": 1
+        }
+      }
+    },
+    "finalFailClosedOutput": {
+      "exactOccurrence": {
+        "TruePositive": 103,
+        "FalsePositive": 60,
+        "FalseNegative": 36,
+        "Precision": 0.6319,
+        "Recall": 0.741,
+        "F1": 0.6821
+      },
+      "goldAssociation": {
+        "matched": 114,
+        "unmatchedGold": 25,
+        "unmatchedPredictions": 49,
+        "exact": 103,
+        "fullGoldCoverageExcess": 1,
+        "partial": 10
+      },
+      "extent": {
+        "stage": "POST_PROJECTION",
+        "counts": {
+          "CONFLICT_LOSS": 3,
+          "EXACT": 103,
+          "EXCESS_EXTENT": 1,
+          "NO_MODEL_PROPOSAL": 21,
+          "PARTIAL": 10,
+          "ROLE_ERROR": 1
+        }
+      }
+    },
+    "conflictProjection": {
+      "headingCandidatesBefore": 169,
+      "headingCandidatesAfter": 163,
+      "candidatesQuarantined": 6,
+      "goldAssociationsLost": 3,
+      "strictExactGoldLost": 2
+    },
+    "representationDiagnostics": {
+      "total": 658,
+      "src095": 657,
+      "relationAccuracy": "NOT_EVALUABLE_WITHOUT_RELATION_GOLD"
+    },
+    "perDocument": [
+      {
+        "documentId": "SRC-089",
+        "gold": 36,
+        "modelSelection": {
+          "exactOccurrence": {
+            "TruePositive": 18,
+            "FalsePositive": 17,
+            "FalseNegative": 18,
+            "Precision": 0.5143,
+            "Recall": 0.5,
+            "F1": 0.507
+          },
+          "goldAssociation": {
+            "matched": 30,
+            "unmatchedGold": 6,
+            "unmatchedPredictions": 5,
+            "exact": 18,
+            "fullGoldCoverageExcess": 2,
+            "partial": 10
+          }
+        },
+        "finalFailClosedOutput": {
+          "exactOccurrence": {
+            "TruePositive": 16,
+            "FalsePositive": 13,
+            "FalseNegative": 20,
+            "Precision": 0.5517,
+            "Recall": 0.4444,
+            "F1": 0.4923
+          },
+          "goldAssociation": {
+            "matched": 27,
+            "unmatchedGold": 9,
+            "unmatchedPredictions": 2,
+            "exact": 16,
+            "fullGoldCoverageExcess": 1,
+            "partial": 10
+          }
+        }
+      },
+      {
+        "documentId": "SRC-095",
+        "gold": 103,
+        "modelSelection": {
+          "exactOccurrence": {
+            "TruePositive": 87,
+            "FalsePositive": 47,
+            "FalseNegative": 16,
+            "Precision": 0.6493,
+            "Recall": 0.8447,
+            "F1": 0.7342
+          },
+          "goldAssociation": {
+            "matched": 87,
+            "unmatchedGold": 16,
+            "unmatchedPredictions": 47,
+            "exact": 87,
+            "fullGoldCoverageExcess": 0,
+            "partial": 0
+          }
+        },
+        "finalFailClosedOutput": {
+          "exactOccurrence": {
+            "TruePositive": 87,
+            "FalsePositive": 47,
+            "FalseNegative": 16,
+            "Precision": 0.6493,
+            "Recall": 0.8447,
+            "F1": 0.7342
+          },
+          "goldAssociation": {
+            "matched": 87,
+            "unmatchedGold": 16,
+            "unmatchedPredictions": 47,
+            "exact": 87,
+            "fullGoldCoverageExcess": 0,
+            "partial": 0
+          }
+        }
+      }
+    ]
+  },
+  "goldOccurrenceDiagnostics": [
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 1,
+      "GoldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "CONFLICT_LOSS",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "candidateId": "C50",
+        "identity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 2,
+      "GoldIdentity": "L0014:S0:0-9|L0015:S0:0-18",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "candidateId": "C104",
+        "identity": "L0014:S0:0-9|L0015:S0:0-18",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "candidateId": "C104",
+        "identity": "L0014:S0:0-9|L0015:S0:0-18",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 3,
+      "GoldIdentity": "L0016:S0:0-56",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "candidateId": "C115",
+        "identity": "L0016:S0:0-56",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "candidateId": "C115",
+        "identity": "L0016:S0:0-56",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 4,
+      "GoldIdentity": "L0024:S0:0-89|L0025:S0:0-45",
+      "ModelOutcome": "PARTIAL",
+      "FinalOutcome": "PARTIAL",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "candidateId": "C171",
+        "identity": "L0024:S0:0-89",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.6642
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "candidateId": "C171",
+        "identity": "L0024:S0:0-89",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.6642
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 5,
+      "GoldIdentity": "L0051:S0:0-95|L0052:S0:0-35",
+      "ModelOutcome": "PARTIAL",
+      "FinalOutcome": "PARTIAL",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "candidateId": "C350",
+        "identity": "L0051:S0:0-95",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.7308
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "candidateId": "C350",
+        "identity": "L0051:S0:0-95",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.7308
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 6,
+      "GoldIdentity": "L0080:S0:0-90|L0081:S0:0-35",
+      "ModelOutcome": "PARTIAL",
+      "FinalOutcome": "PARTIAL",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "candidateId": "C539",
+        "identity": "L0080:S0:0-90",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.72
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "candidateId": "C539",
+        "identity": "L0080:S0:0-90",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.72
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 7,
+      "GoldIdentity": "L0094:S0:0-70",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C1",
+        "identity": "L0094:S0:0-70",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C1",
+        "identity": "L0094:S0:0-70",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 8,
+      "GoldIdentity": "L0106:S0:0-80|L0107:S0:0-88|L0108:S0:0-13",
+      "ModelOutcome": "PARTIAL",
+      "FinalOutcome": "PARTIAL",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C79",
+        "identity": "L0106:S0:0-80",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.442
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C79",
+        "identity": "L0106:S0:0-80",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.442
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 9,
+      "GoldIdentity": "L0109:S0:0-33",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 10,
+      "GoldIdentity": "L0117:S0:0-22",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 11,
+      "GoldIdentity": "L0126:S0:0-86|L0127:S0:0-88|L0128:S0:0-13",
+      "ModelOutcome": "PARTIAL",
+      "FinalOutcome": "PARTIAL",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C203",
+        "identity": "L0126:S0:0-86",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.4599
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C203",
+        "identity": "L0126:S0:0-86",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.4599
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 12,
+      "GoldIdentity": "L0160:S0:0-10|L0161:S0:0-10",
+      "ModelOutcome": "EXCESS_EXTENT",
+      "FinalOutcome": "CONFLICT_LOSS",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C434",
+        "identity": "L0160:S0:0-10|L0161:S0:0-10|L0162:S0:0-86",
+        "MatchKind": "FULL_GOLD_COVERAGE",
+        "coverage": 1
+      },
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 13,
+      "GoldIdentity": "L0162:S0:0-86",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "CONFLICT_LOSS",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C441",
+        "identity": "L0162:S0:0-86",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 14,
+      "GoldIdentity": "L0174:S0:0-89|L0175:S0:0-51",
+      "ModelOutcome": "PARTIAL",
+      "FinalOutcome": "PARTIAL",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C515",
+        "identity": "L0174:S0:0-89",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.6357
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C515",
+        "identity": "L0174:S0:0-89",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.6357
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 15,
+      "GoldIdentity": "L0195:S0:0-81",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C32",
+        "identity": "L0195:S0:0-81",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C32",
+        "identity": "L0195:S0:0-81",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 16,
+      "GoldIdentity": "L0243:S0:0-40",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C348",
+        "identity": "L0243:S0:0-40",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C348",
+        "identity": "L0243:S0:0-40",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 17,
+      "GoldIdentity": "L0246:S0:0-26",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 18,
+      "GoldIdentity": "L0249:S0:0-16",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 19,
+      "GoldIdentity": "L0260:S0:0-62",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C463",
+        "identity": "L0260:S0:0-62",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C463",
+        "identity": "L0260:S0:0-62",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 20,
+      "GoldIdentity": "L0284:S0:0-11|L0285:S0:0-41",
+      "ModelOutcome": "EXCESS_EXTENT",
+      "FinalOutcome": "EXCESS_EXTENT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C611",
+        "identity": "L0283:S0:0-8|L0284:S0:0-11|L0285:S0:0-41",
+        "MatchKind": "FULL_GOLD_COVERAGE",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C611",
+        "identity": "L0283:S0:0-8|L0284:S0:0-11|L0285:S0:0-41",
+        "MatchKind": "FULL_GOLD_COVERAGE",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 21,
+      "GoldIdentity": "L0286:S0:0-89|L0287:S0:0-41",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C4",
+        "identity": "L0286:S0:0-89|L0287:S0:0-41",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C4",
+        "identity": "L0286:S0:0-89|L0287:S0:0-41",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 22,
+      "GoldIdentity": "L0317:S0:0-81",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C208",
+        "identity": "L0317:S0:0-81",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C208",
+        "identity": "L0317:S0:0-81",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 23,
+      "GoldIdentity": "L0350:S0:0-95",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C433",
+        "identity": "L0350:S0:0-95",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C433",
+        "identity": "L0350:S0:0-95",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 24,
+      "GoldIdentity": "L0359:S0:0-95",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C496",
+        "identity": "L0359:S0:0-95",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C496",
+        "identity": "L0359:S0:0-95",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 25,
+      "GoldIdentity": "L0382:S0:0-10|L0383:S0:0-45",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+        "candidateId": "C4",
+        "identity": "L0382:S0:0-10|L0383:S0:0-45",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+        "candidateId": "C4",
+        "identity": "L0382:S0:0-10|L0383:S0:0-45",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 26,
+      "GoldIdentity": "L0384:S0:0-71",
+      "ModelOutcome": "ROLE_ERROR",
+      "FinalOutcome": "ROLE_ERROR",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005:C15"
+      ]
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 27,
+      "GoldIdentity": "L0426:S0:0-96|L0427:S0:0-44",
+      "ModelOutcome": "PARTIAL",
+      "FinalOutcome": "PARTIAL",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+        "candidateId": "C289",
+        "identity": "L0426:S0:0-96",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.6857
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+        "candidateId": "C289",
+        "identity": "L0426:S0:0-96",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.6857
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 28,
+      "GoldIdentity": "L0455:S0:0-90|L0456:S0:0-27",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 29,
+      "GoldIdentity": "L0478:S0:0-59",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C1",
+        "identity": "L0478:S0:0-59",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C1",
+        "identity": "L0478:S0:0-59",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 30,
+      "GoldIdentity": "L0490:S0:0-36",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C79",
+        "identity": "L0490:S0:0-36",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C79",
+        "identity": "L0490:S0:0-36",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 31,
+      "GoldIdentity": "L0499:S0:0-92|L0500:S0:0-58",
+      "ModelOutcome": "PARTIAL",
+      "FinalOutcome": "PARTIAL",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C138",
+        "identity": "L0499:S0:0-92",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.6133
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C138",
+        "identity": "L0499:S0:0-92",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.6133
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 32,
+      "GoldIdentity": "L0522:S0:0-92|L0523:S0:0-12",
+      "ModelOutcome": "PARTIAL",
+      "FinalOutcome": "PARTIAL",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C298",
+        "identity": "L0522:S0:0-92",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.8846
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C298",
+        "identity": "L0522:S0:0-92",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.8846
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 33,
+      "GoldIdentity": "L0535:S0:0-9|L0536:S0:0-25",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C379",
+        "identity": "L0535:S0:0-9|L0536:S0:0-25",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C379",
+        "identity": "L0535:S0:0-9|L0536:S0:0-25",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 34,
+      "GoldIdentity": "L0537:S0:0-18",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C390",
+        "identity": "L0537:S0:0-18",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C390",
+        "identity": "L0537:S0:0-18",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 35,
+      "GoldIdentity": "L0555:S0:0-93|L0556:S0:0-12",
+      "ModelOutcome": "PARTIAL",
+      "FinalOutcome": "PARTIAL",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C510",
+        "identity": "L0555:S0:0-93",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.8857
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C510",
+        "identity": "L0555:S0:0-93",
+        "MatchKind": "OVERLAP",
+        "coverage": 0.8857
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-089",
+      "GoldOrdinal": 36,
+      "GoldIdentity": "L0572:S0:0-41",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C622",
+        "identity": "L0572:S0:0-41",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C622",
+        "identity": "L0572:S0:0-41",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 1,
+      "GoldIdentity": "L0008:S0:0-6",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 2,
+      "GoldIdentity": "L0009:S0:0-8",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 3,
+      "GoldIdentity": "L0015:S0:0-18",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 4,
+      "GoldIdentity": "L0023:S0:0-16",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 5,
+      "GoldIdentity": "L0034:S0:0-17",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 6,
+      "GoldIdentity": "L0129:S0:0-15",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C254",
+        "identity": "L0129:S0:0-15",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C254",
+        "identity": "L0129:S0:0-15",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 7,
+      "GoldIdentity": "L0134:S0:0-27",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C289",
+        "identity": "L0134:S0:0-27",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C289",
+        "identity": "L0134:S0:0-27",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 8,
+      "GoldIdentity": "L0146:S0:0-23",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C373",
+        "identity": "L0146:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C373",
+        "identity": "L0146:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 9,
+      "GoldIdentity": "L0162:S0:0-27",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C479",
+        "identity": "L0162:S0:0-27",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C479",
+        "identity": "L0162:S0:0-27",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 10,
+      "GoldIdentity": "L0185:S0:0-26",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C638",
+        "identity": "L0185:S0:0-26",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+        "candidateId": "C638",
+        "identity": "L0185:S0:0-26",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 11,
+      "GoldIdentity": "L0205:S0:0-32",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C120",
+        "identity": "L0205:S0:0-32",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C120",
+        "identity": "L0205:S0:0-32",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C111",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C112",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C116",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C117",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C118",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C119",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C121",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C122",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C123",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C124",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C125",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C126"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 12,
+      "GoldIdentity": "L0243:S0:0-34",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C395",
+        "identity": "L0243:S0:0-34",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C395",
+        "identity": "L0243:S0:0-34",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C386",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C387",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C391",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C392",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C393",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C394",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C396",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C397",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C398",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C399",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C400",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C401"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 13,
+      "GoldIdentity": "L0244:S0:0-35",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C402",
+        "identity": "L0244:S0:0-35",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C402",
+        "identity": "L0244:S0:0-35",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C393",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C394",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C398",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C399",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C400",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C401",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C403",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C404",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C405",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C406",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C407",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C408"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 14,
+      "GoldIdentity": "L0268:S0:0-32",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C560",
+        "identity": "L0268:S0:0-32",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+        "candidateId": "C560",
+        "identity": "L0268:S0:0-32",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C556",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C557",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C558",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C559",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C561",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C562",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C563",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C564",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C565",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003:C566"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 15,
+      "GoldIdentity": "L0277:S0:0-20",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C8",
+        "identity": "L0277:S0:0-20",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C8",
+        "identity": "L0277:S0:0-20",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004:C10",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004:C9"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 16,
+      "GoldIdentity": "L0288:S0:0-29",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C85",
+        "identity": "L0288:S0:0-29",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C85",
+        "identity": "L0288:S0:0-29",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004:C86",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004:C87"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 17,
+      "GoldIdentity": "L0305:S0:0-21",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C198",
+        "identity": "L0305:S0:0-21",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C198",
+        "identity": "L0305:S0:0-21",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004:C199",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004:C200"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 18,
+      "GoldIdentity": "L0335:S0:0-38",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C408",
+        "identity": "L0335:S0:0-38",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C408",
+        "identity": "L0335:S0:0-38",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004:C409",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004:C410"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 19,
+      "GoldIdentity": "L0336:S0:0-25",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C415",
+        "identity": "L0336:S0:0-25",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+        "candidateId": "C415",
+        "identity": "L0336:S0:0-25",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004:C416",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004:C417"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 20,
+      "GoldIdentity": "L0396:S0:0-41",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+        "candidateId": "C163",
+        "identity": "L0396:S0:0-41",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+        "candidateId": "C163",
+        "identity": "L0396:S0:0-41",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 21,
+      "GoldIdentity": "L0428:S0:0-39",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+        "candidateId": "C377",
+        "identity": "L0428:S0:0-39",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+        "candidateId": "C377",
+        "identity": "L0428:S0:0-39",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 22,
+      "GoldIdentity": "L0451:S0:0-16",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+        "candidateId": "C534",
+        "identity": "L0451:S0:0-16",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+        "candidateId": "C534",
+        "identity": "L0451:S0:0-16",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 23,
+      "GoldIdentity": "L0472:S0:0-24",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C29",
+        "identity": "L0472:S0:0-24",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C29",
+        "identity": "L0472:S0:0-24",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 24,
+      "GoldIdentity": "L0483:S0:0-30",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C102",
+        "identity": "L0483:S0:0-30",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C102",
+        "identity": "L0483:S0:0-30",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 25,
+      "GoldIdentity": "L0497:S0:0-22",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C200",
+        "identity": "L0497:S0:0-22",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C200",
+        "identity": "L0497:S0:0-22",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 26,
+      "GoldIdentity": "L0514:S0:0-35",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C313",
+        "identity": "L0514:S0:0-35",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C313",
+        "identity": "L0514:S0:0-35",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 27,
+      "GoldIdentity": "L0551:S0:0-36",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C572",
+        "identity": "L0551:S0:0-36",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C572",
+        "identity": "L0551:S0:0-36",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 28,
+      "GoldIdentity": "L0557:S0:0-23",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C614",
+        "identity": "L0557:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "candidateId": "C614",
+        "identity": "L0557:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 29,
+      "GoldIdentity": "L0605:S0:0-17",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+        "candidateId": "C288",
+        "identity": "L0605:S0:0-17",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+        "candidateId": "C288",
+        "identity": "L0605:S0:0-17",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 30,
+      "GoldIdentity": "L0608:S0:0-4|L0608:S1:0-11",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+        "candidateId": "C308",
+        "identity": "L0608:S0:0-4|L0608:S1:0-11",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+        "candidateId": "C308",
+        "identity": "L0608:S0:0-4|L0608:S1:0-11",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 31,
+      "GoldIdentity": "L0674:S0:0-21",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+        "candidateId": "C120",
+        "identity": "L0674:S0:0-21",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+        "candidateId": "C120",
+        "identity": "L0674:S0:0-21",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 32,
+      "GoldIdentity": "L0677:S0:0-21",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+        "candidateId": "C141",
+        "identity": "L0677:S0:0-21",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+        "candidateId": "C141",
+        "identity": "L0677:S0:0-21",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 33,
+      "GoldIdentity": "L0693:S0:0-24",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+        "candidateId": "C247",
+        "identity": "L0693:S0:0-24",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+        "candidateId": "C247",
+        "identity": "L0693:S0:0-24",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 34,
+      "GoldIdentity": "L0760:S0:0-34",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+        "candidateId": "C50",
+        "identity": "L0760:S0:0-34",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+        "candidateId": "C50",
+        "identity": "L0760:S0:0-34",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 35,
+      "GoldIdentity": "L0773:S0:0-22",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+        "candidateId": "C135",
+        "identity": "L0773:S0:0-22",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+        "candidateId": "C135",
+        "identity": "L0773:S0:0-22",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 36,
+      "GoldIdentity": "L0779:S0:0-27",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+        "candidateId": "C177",
+        "identity": "L0779:S0:0-27",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+        "candidateId": "C177",
+        "identity": "L0779:S0:0-27",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 37,
+      "GoldIdentity": "L0793:S0:0-26",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+        "candidateId": "C275",
+        "identity": "L0793:S0:0-26",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+        "candidateId": "C275",
+        "identity": "L0793:S0:0-26",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 38,
+      "GoldIdentity": "L0808:S0:0-27",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+        "candidateId": "C370",
+        "identity": "L0808:S0:0-27",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+        "candidateId": "C370",
+        "identity": "L0808:S0:0-27",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 39,
+      "GoldIdentity": "L0852:S0:0-22",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+        "candidateId": "C22",
+        "identity": "L0852:S0:0-22",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+        "candidateId": "C22",
+        "identity": "L0852:S0:0-22",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 40,
+      "GoldIdentity": "L0870:S0:0-19",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+        "candidateId": "C148",
+        "identity": "L0870:S0:0-19",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+        "candidateId": "C148",
+        "identity": "L0870:S0:0-19",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 41,
+      "GoldIdentity": "L0893:S0:0-28",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+        "candidateId": "C295",
+        "identity": "L0893:S0:0-28",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+        "candidateId": "C295",
+        "identity": "L0893:S0:0-28",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 42,
+      "GoldIdentity": "L0903:S0:0-21",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+        "candidateId": "C365",
+        "identity": "L0903:S0:0-21",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+        "candidateId": "C365",
+        "identity": "L0903:S0:0-21",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 43,
+      "GoldIdentity": "L0924:S0:0-17",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+        "candidateId": "C96",
+        "identity": "L0924:S0:0-17",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+        "candidateId": "C96",
+        "identity": "L0924:S0:0-17",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 44,
+      "GoldIdentity": "L0944:S0:0-4|L0944:S1:0-16",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+        "candidateId": "C231",
+        "identity": "L0944:S0:0-4|L0944:S1:0-16",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+        "candidateId": "C231",
+        "identity": "L0944:S0:0-4|L0944:S1:0-16",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 45,
+      "GoldIdentity": "L0945:S0:0-11",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+        "candidateId": "C242",
+        "identity": "L0945:S0:0-11",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+        "candidateId": "C242",
+        "identity": "L0945:S0:0-11",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 46,
+      "GoldIdentity": "L0959:S0:0-14",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+        "candidateId": "C326",
+        "identity": "L0959:S0:0-14",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+        "candidateId": "C326",
+        "identity": "L0959:S0:0-14",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 47,
+      "GoldIdentity": "L0971:S0:0-18",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+        "candidateId": "C402",
+        "identity": "L0971:S0:0-18",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+        "candidateId": "C402",
+        "identity": "L0971:S0:0-18",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 48,
+      "GoldIdentity": "L1011:S0:0-15",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+        "candidateId": "C75",
+        "identity": "L1011:S0:0-15",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+        "candidateId": "C75",
+        "identity": "L1011:S0:0-15",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 49,
+      "GoldIdentity": "L1050:S0:0-35",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+        "candidateId": "C326",
+        "identity": "L1050:S0:0-35",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+        "candidateId": "C326",
+        "identity": "L1050:S0:0-35",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 50,
+      "GoldIdentity": "L1066:S0:0-23",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+        "candidateId": "C428",
+        "identity": "L1066:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+        "candidateId": "C428",
+        "identity": "L1066:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 51,
+      "GoldIdentity": "L1105:S0:0-19",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+        "candidateId": "C58",
+        "identity": "L1105:S0:0-19",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+        "candidateId": "C58",
+        "identity": "L1105:S0:0-19",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 52,
+      "GoldIdentity": "L1143:S0:0-13",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+        "candidateId": "C310",
+        "identity": "L1143:S0:0-13",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+        "candidateId": "C310",
+        "identity": "L1143:S0:0-13",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 53,
+      "GoldIdentity": "L1164:S0:0-18",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+        "candidateId": "C449",
+        "identity": "L1164:S0:0-18",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+        "candidateId": "C449",
+        "identity": "L1164:S0:0-18",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 54,
+      "GoldIdentity": "L1189:S0:0-27",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+        "candidateId": "C614",
+        "identity": "L1189:S0:0-27",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+        "candidateId": "C614",
+        "identity": "L1189:S0:0-27",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 55,
+      "GoldIdentity": "L1199:S0:0-17",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+        "candidateId": "C50",
+        "identity": "L1199:S0:0-17",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+        "candidateId": "C50",
+        "identity": "L1199:S0:0-17",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 56,
+      "GoldIdentity": "L1223:S0:0-23",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+        "candidateId": "C212",
+        "identity": "L1223:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+        "candidateId": "C212",
+        "identity": "L1223:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 57,
+      "GoldIdentity": "L1265:S0:0-23",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+        "candidateId": "C537",
+        "identity": "L1265:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+        "candidateId": "C537",
+        "identity": "L1265:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 58,
+      "GoldIdentity": "L1294:S0:0-27",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C86",
+        "identity": "L1294:S0:0-27",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C86",
+        "identity": "L1294:S0:0-27",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 59,
+      "GoldIdentity": "L1298:S0:0-22",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C114",
+        "identity": "L1298:S0:0-22",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C114",
+        "identity": "L1298:S0:0-22",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 60,
+      "GoldIdentity": "L1301:S0:0-28",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C135",
+        "identity": "L1301:S0:0-28",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C135",
+        "identity": "L1301:S0:0-28",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 61,
+      "GoldIdentity": "L1308:S0:0-40",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C184",
+        "identity": "L1308:S0:0-40",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C184",
+        "identity": "L1308:S0:0-40",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 62,
+      "GoldIdentity": "L1320:S0:0-5|L1320:S1:0-32",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C262",
+        "identity": "L1320:S0:0-5|L1320:S1:0-32",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C262",
+        "identity": "L1320:S0:0-5|L1320:S1:0-32",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 63,
+      "GoldIdentity": "L1333:S0:0-38",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C353",
+        "identity": "L1333:S0:0-38",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C353",
+        "identity": "L1333:S0:0-38",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 64,
+      "GoldIdentity": "L1357:S0:0-36",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C511",
+        "identity": "L1357:S0:0-36",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C511",
+        "identity": "L1357:S0:0-36",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 65,
+      "GoldIdentity": "L1374:S0:0-22",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C630",
+        "identity": "L1374:S0:0-22",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+        "candidateId": "C630",
+        "identity": "L1374:S0:0-22",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 66,
+      "GoldIdentity": "L1383:S0:0-24",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C50",
+        "identity": "L1383:S0:0-24",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C50",
+        "identity": "L1383:S0:0-24",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 67,
+      "GoldIdentity": "L1399:S0:0-32",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C148",
+        "identity": "L1399:S0:0-32",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C148",
+        "identity": "L1399:S0:0-32",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 68,
+      "GoldIdentity": "L1424:S0:0-19",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C323",
+        "identity": "L1424:S0:0-19",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C323",
+        "identity": "L1424:S0:0-19",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 69,
+      "GoldIdentity": "L1431:S0:0-5|L1431:S1:0-10",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C366",
+        "identity": "L1431:S0:0-5|L1431:S1:0-10",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C366",
+        "identity": "L1431:S0:0-5|L1431:S1:0-10",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 70,
+      "GoldIdentity": "L1436:S0:0-16",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C405",
+        "identity": "L1436:S0:0-16",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C405",
+        "identity": "L1436:S0:0-16",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 71,
+      "GoldIdentity": "L1442:S0:0-29",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C447",
+        "identity": "L1442:S0:0-29",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C447",
+        "identity": "L1442:S0:0-29",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 72,
+      "GoldIdentity": "L1453:S0:0-23",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C520",
+        "identity": "L1453:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C520",
+        "identity": "L1453:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 73,
+      "GoldIdentity": "L1456:S0:0-49",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C541",
+        "identity": "L1456:S0:0-49",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C541",
+        "identity": "L1456:S0:0-49",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 74,
+      "GoldIdentity": "L1465:S0:0-5|L1465:S1:0-14",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C607",
+        "identity": "L1465:S0:0-5|L1465:S1:0-14",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+        "candidateId": "C607",
+        "identity": "L1465:S0:0-5|L1465:S1:0-14",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 75,
+      "GoldIdentity": "L1472:S0:0-19",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+        "candidateId": "C36",
+        "identity": "L1472:S0:0-19",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+        "candidateId": "C36",
+        "identity": "L1472:S0:0-19",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 76,
+      "GoldIdentity": "L1508:S0:0-27",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 77,
+      "GoldIdentity": "L1540:S0:0-19",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+        "candidateId": "C128",
+        "identity": "L1540:S0:0-19",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+        "candidateId": "C128",
+        "identity": "L1540:S0:0-19",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 78,
+      "GoldIdentity": "L1591:S0:0-20",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+        "candidateId": "C233",
+        "identity": "L1591:S0:0-20",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+        "candidateId": "C233",
+        "identity": "L1591:S0:0-20",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 79,
+      "GoldIdentity": "L1612:S0:0-14",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+        "candidateId": "C414",
+        "identity": "L1612:S0:0-14",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+        "candidateId": "C414",
+        "identity": "L1612:S0:0-14",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 80,
+      "GoldIdentity": "L1613:S0:0-5|L1613:S1:0-20",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 81,
+      "GoldIdentity": "L1655:S0:0-28",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+        "candidateId": "C165",
+        "identity": "L1655:S0:0-28",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+        "candidateId": "C165",
+        "identity": "L1655:S0:0-28",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 82,
+      "GoldIdentity": "L1677:S0:0-56",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+        "candidateId": "C334",
+        "identity": "L1677:S0:0-56",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+        "candidateId": "C334",
+        "identity": "L1677:S0:0-56",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 83,
+      "GoldIdentity": "L1688:S0:0-12",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+        "candidateId": "C410",
+        "identity": "L1688:S0:0-12",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+        "candidateId": "C410",
+        "identity": "L1688:S0:0-12",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 84,
+      "GoldIdentity": "L1710:S0:0-21",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+        "candidateId": "C555",
+        "identity": "L1710:S0:0-21",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+        "candidateId": "C555",
+        "identity": "L1710:S0:0-21",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 85,
+      "GoldIdentity": "L1729:S0:0-32",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+        "candidateId": "C99",
+        "identity": "L1729:S0:0-32",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+        "candidateId": "C99",
+        "identity": "L1729:S0:0-32",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C100",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C101"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 86,
+      "GoldIdentity": "L1736:S0:0-35",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+        "candidateId": "C142",
+        "identity": "L1736:S0:0-35",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+        "candidateId": "C142",
+        "identity": "L1736:S0:0-35",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C138",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C139",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C143",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C144"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 87,
+      "GoldIdentity": "L1745:S0:0-30",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+        "candidateId": "C205",
+        "identity": "L1745:S0:0-30",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+        "candidateId": "C205",
+        "identity": "L1745:S0:0-30",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C196",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C197",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C206",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C207"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 88,
+      "GoldIdentity": "L1750:S0:0-45",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+        "candidateId": "C240",
+        "identity": "L1750:S0:0-45",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+        "candidateId": "C240",
+        "identity": "L1750:S0:0-45",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C231",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C232",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C241",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C242"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 89,
+      "GoldIdentity": "L1761:S0:0-49",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+        "candidateId": "C317",
+        "identity": "L1761:S0:0-49",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+        "candidateId": "C317",
+        "identity": "L1761:S0:0-49",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C308",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C309",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C318",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C319"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 90,
+      "GoldIdentity": "L1787:S0:0-31",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+        "candidateId": "C506",
+        "identity": "L1787:S0:0-31",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+        "candidateId": "C506",
+        "identity": "L1787:S0:0-31",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": [
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C497",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C498",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C507",
+        "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021:C508"
+      ]
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 91,
+      "GoldIdentity": "L1827:S0:0-23",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "candidateId": "C137",
+        "identity": "L1827:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "candidateId": "C137",
+        "identity": "L1827:S0:0-23",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 92,
+      "GoldIdentity": "L1856:S0:0-46",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "candidateId": "C379",
+        "identity": "L1856:S0:0-46",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "candidateId": "C379",
+        "identity": "L1856:S0:0-46",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 93,
+      "GoldIdentity": "L1878:S0:0-15",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "candidateId": "C522",
+        "identity": "L1878:S0:0-15",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+        "candidateId": "C522",
+        "identity": "L1878:S0:0-15",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 94,
+      "GoldIdentity": "L1912:S0:0-5",
+      "ModelOutcome": "EXACT",
+      "FinalOutcome": "EXACT",
+      "Model": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+        "candidateId": "C102",
+        "identity": "L1912:S0:0-5",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "Final": {
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+        "candidateId": "C102",
+        "identity": "L1912:S0:0-5",
+        "MatchKind": "EXACT",
+        "coverage": 1
+      },
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 95,
+      "GoldIdentity": "L1914:S0:0-1",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 96,
+      "GoldIdentity": "L1940:S0:0-1",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 97,
+      "GoldIdentity": "L1947:S0:0-1",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 98,
+      "GoldIdentity": "L1961:S0:0-1",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 99,
+      "GoldIdentity": "L2012:S0:0-1",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 100,
+      "GoldIdentity": "L2023:S0:0-1",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 101,
+      "GoldIdentity": "L2056:S0:0-1",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 102,
+      "GoldIdentity": "L2063:S0:0-1",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    },
+    {
+      "DocumentId": "SRC-095",
+      "GoldOrdinal": 103,
+      "GoldIdentity": "L2076:S0:0-16",
+      "ModelOutcome": "NO_MODEL_PROPOSAL",
+      "FinalOutcome": "NO_MODEL_PROPOSAL",
+      "Model": null,
+      "Final": null,
+      "RepresentationCandidates": []
+    }
+  ]
+}

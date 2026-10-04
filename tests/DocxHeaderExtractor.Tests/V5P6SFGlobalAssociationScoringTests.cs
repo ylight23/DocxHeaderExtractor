@@ -19,19 +19,19 @@ public sealed class V5P6SFGlobalAssociationScoringTests
     private const string OutputRoot = "artifacts/v5-p6s-candidate-authority/p6sf-global-association-score";
     private const string SnapshotRoot = "eval/a99-closed-loop/pdf-canonical-source-v1";
     private const string EvaluationBasisPath = "eval/a99-closed-loop/gold-current/evaluation-basis.v1.json";
-    private static readonly (string Id, string Pdf, string GoldSha, int Count)[] Documents =
+    internal static readonly (string Id, string Pdf, string GoldSha, int Count)[] Documents =
     [
         ("SRC-089", SourcePdfCorpus.Src089, "50d9e57225d9cf9dcf174e5b5b7422158c06d7327241d77fc4d019831b8a808d", 36),
         ("SRC-095", SourcePdfCorpus.Src095, "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5", 103),
     ];
 
-    private sealed record Part(string Alias, int Start, int End);
-    private sealed record Prediction(string DocumentId, string PackId, string CandidateId, string Identity, IReadOnlyList<Part> Parts);
-    private sealed record Gold(string DocumentId, int Ordinal, string Identity, IReadOnlyList<Part> Parts);
-    private sealed record Edge(int PredictionIndex, int GoldIndex, string MatchKind, int CoverageBps, long Reward);
-    private sealed record Matching(IReadOnlyList<Edge> Edges, IReadOnlyDictionary<int, Edge> ByGold);
-    private sealed record ExactMetric(int TruePositive, int FalsePositive, int FalseNegative, double Precision, double Recall, double F1);
-    private sealed record DiagnosticRow(string DocumentId, int GoldOrdinal, string GoldIdentity, string ModelOutcome,
+    internal sealed record Part(string Alias, int Start, int End);
+    internal sealed record Prediction(string DocumentId, string PackId, string CandidateId, string Identity, IReadOnlyList<Part> Parts);
+    internal sealed record Gold(string DocumentId, int Ordinal, string Identity, IReadOnlyList<Part> Parts);
+    internal sealed record Edge(int PredictionIndex, int GoldIndex, string MatchKind, int CoverageBps, long Reward);
+    internal sealed record Matching(IReadOnlyList<Edge> Edges, IReadOnlyDictionary<int, Edge> ByGold);
+    internal sealed record ExactMetric(int TruePositive, int FalsePositive, int FalseNegative, double Precision, double Recall, double F1);
+    internal sealed record DiagnosticRow(string DocumentId, int GoldOrdinal, string GoldIdentity, string ModelOutcome,
         string FinalOutcome, object? Model, object? Final, IReadOnlyList<string> RepresentationCandidates);
 
     [Fact]
@@ -164,7 +164,7 @@ public sealed class V5P6SFGlobalAssociationScoringTests
         FreezeArtifact.AssertJson(OutputRoot, "full31-global-association-and-exact-score.v1.json", output);
     }
 
-    private static object PerDocument(string documentId, IReadOnlyList<Prediction> model, IReadOnlyList<Prediction> final, IReadOnlyList<Gold> allGold)
+    internal static object PerDocument(string documentId, IReadOnlyList<Prediction> model, IReadOnlyList<Prediction> final, IReadOnlyList<Gold> allGold)
     {
         var localGold = allGold.Where(value => value.DocumentId == documentId).ToArray();
         var localModel = model.Where(value => value.DocumentId == documentId).ToArray();
@@ -174,7 +174,7 @@ public sealed class V5P6SFGlobalAssociationScoringTests
             finalFailClosedOutput = new { exactOccurrence = ExactOccurrence(localFinal, localGold), goldAssociation = Association(localFinal, localGold, GlobalAssociation(localFinal, localGold)) } };
     }
 
-    private static DiagnosticRow Diagnostic(int goldIndex, Gold gold, IReadOnlyList<Prediction> model, IReadOnlyList<Prediction> final,
+    internal static DiagnosticRow Diagnostic(int goldIndex, Gold gold, IReadOnlyList<Prediction> model, IReadOnlyList<Prediction> final,
         IReadOnlyList<Prediction> representation, Matching modelAssociation, Matching finalAssociation, IReadOnlySet<string> finalKeys)
     {
         var pre = modelAssociation.ByGold.TryGetValue(goldIndex, out var modelEdge) ? modelEdge : null;
@@ -189,15 +189,15 @@ public sealed class V5P6SFGlobalAssociationScoringTests
             post is null ? null : new { packId = finalCandidate!.PackId, candidateId = finalCandidate.CandidateId, identity = finalCandidate.Identity, post.MatchKind, coverage = post.CoverageBps / 10000d }, reps);
     }
 
-    private static string Outcome(Edge edge) => edge.MatchKind switch { "EXACT" => "EXACT", "FULL_GOLD_COVERAGE" => "EXCESS_EXTENT", _ => "PARTIAL" };
-    private static object Extent(IReadOnlyList<DiagnosticRow> diagnostics, bool modelStage)
+    internal static string Outcome(Edge edge) => edge.MatchKind switch { "EXACT" => "EXACT", "FULL_GOLD_COVERAGE" => "EXCESS_EXTENT", _ => "PARTIAL" };
+    internal static object Extent(IReadOnlyList<DiagnosticRow> diagnostics, bool modelStage)
     {
         var counts = diagnostics.GroupBy(value => modelStage ? value.ModelOutcome : value.FinalOutcome, StringComparer.Ordinal)
             .OrderBy(value => value.Key, StringComparer.Ordinal).ToDictionary(value => value.Key, value => value.Count());
         return new { stage = modelStage ? "PRE_PROJECTION" : "POST_PROJECTION", counts };
     }
 
-    private static object Association(IReadOnlyList<Prediction> predictions, IReadOnlyList<Gold> gold, Matching matching) => new
+    internal static object Association(IReadOnlyList<Prediction> predictions, IReadOnlyList<Gold> gold, Matching matching) => new
     {
         matched = matching.Edges.Count, unmatchedGold = gold.Count - matching.Edges.Count,
         unmatchedPredictions = predictions.Count - matching.Edges.Count,
@@ -205,7 +205,7 @@ public sealed class V5P6SFGlobalAssociationScoringTests
         partial = matching.Edges.Count(value => value.MatchKind == "OVERLAP"),
     };
 
-    private static ExactMetric ExactOccurrence(IReadOnlyList<Prediction> predictions, IReadOnlyList<Gold> gold)
+    internal static ExactMetric ExactOccurrence(IReadOnlyList<Prediction> predictions, IReadOnlyList<Gold> gold)
     {
         var exactGold = gold.Where(item => predictions.Any(value => value.DocumentId == item.DocumentId && value.Identity == item.Identity)).Count();
         var exactPredictions = predictions.Count(value => gold.Any(item => item.DocumentId == value.DocumentId && item.Identity == value.Identity));
@@ -215,7 +215,7 @@ public sealed class V5P6SFGlobalAssociationScoringTests
         return new ExactMetric(exactGold, fp, fn, Math.Round(precision, 4), Math.Round(recall, 4), Math.Round(precision + recall == 0 ? 0 : 2 * precision * recall / (precision + recall), 4));
     }
 
-    private static Matching GlobalAssociation(IReadOnlyList<Prediction> predictions, IReadOnlyList<Gold> gold)
+    internal static Matching GlobalAssociation(IReadOnlyList<Prediction> predictions, IReadOnlyList<Gold> gold)
     {
         var rows = predictions.Count; var goldColumns = gold.Count; var columns = goldColumns + rows;
         var edges = new Dictionary<(int Row, int Column), Edge>();
@@ -265,7 +265,7 @@ public sealed class V5P6SFGlobalAssociationScoringTests
         return assignment;
     }
 
-    private static Dictionary<string, List<Gold>> ReadGold(IReadOnlyDictionary<string, PdfCandidateAuthorityDocumentPlan> plans) => Documents.ToDictionary(document => document.Id, document =>
+    internal static Dictionary<string, List<Gold>> ReadGold(IReadOnlyDictionary<string, PdfCandidateAuthorityDocumentPlan> plans) => Documents.ToDictionary(document => document.Id, document =>
     {
         var bytes = File.ReadAllBytes(TestRepository.Path($"eval/a99-closed-loop/gold-current/documents/{document.Id}.gold.v1.json")); Assert.Equal(document.GoldSha, Hash(bytes));
         using var json = JsonDocument.Parse(bytes); var ordinal = 0;
@@ -277,7 +277,7 @@ public sealed class V5P6SFGlobalAssociationScoringTests
         }).ToList();
     }, StringComparer.Ordinal);
 
-    private static void VerifyEvaluationBasis(IReadOnlyDictionary<string, PdfCandidateAuthorityDocumentPlan> plans)
+    internal static void VerifyEvaluationBasis(IReadOnlyDictionary<string, PdfCandidateAuthorityDocumentPlan> plans)
     {
         using var basis = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(EvaluationBasisPath)));
         Assert.Equal("USER_RECONFIRMED_FROZEN", basis.RootElement.GetProperty("status").GetString());
@@ -291,14 +291,14 @@ public sealed class V5P6SFGlobalAssociationScoringTests
         }
     }
 
-    private static Prediction PredictionFrom(string documentId, string packId, string candidateId, IReadOnlyList<BoundSourcePart> parts)
+    internal static Prediction PredictionFrom(string documentId, string packId, string candidateId, IReadOnlyList<BoundSourcePart> parts)
     {
         var mapped = parts.Select(value => new Part(value.Alias, value.Start, value.End)).ToArray();
         return new Prediction(documentId, packId, candidateId, string.Join("|", mapped.Select(value => $"{value.Alias}:{value.Start}-{value.End}")), mapped);
     }
 
-    private static string CandidateKey(Prediction value) => $"{value.DocumentId}:{value.PackId}:{value.CandidateId}";
-    private static bool Overlap(IReadOnlyList<Part> left, IReadOnlyList<Part> right) => left.Any(a => right.Any(b => a.Alias == b.Alias && Math.Max(a.Start, b.Start) < Math.Min(a.End, b.End)));
+    internal static string CandidateKey(Prediction value) => $"{value.DocumentId}:{value.PackId}:{value.CandidateId}";
+    internal static bool Overlap(IReadOnlyList<Part> left, IReadOnlyList<Part> right) => left.Any(a => right.Any(b => a.Alias == b.Alias && Math.Max(a.Start, b.Start) < Math.Min(a.End, b.End)));
     private static double Coverage(IReadOnlyList<Part> gold, IReadOnlyList<Part> predicted)
     {
         var total = gold.Sum(value => value.End - value.Start); var covered = 0;

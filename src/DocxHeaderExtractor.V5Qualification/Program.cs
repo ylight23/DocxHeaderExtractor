@@ -135,6 +135,10 @@ internal static class Program
         if (args.Contains("--p6sd-candidate-authority-full31"))
             return await P6SCandidateAuthorityFull31.RunAsync(LocateRepoRoot(), args);
 
+        // P6S-R is the matched causal follow-up to P6S-D: reasoning is its sole independent variable.
+        if (args.Contains("--p6sr-matched-reasoning-full31"))
+            return await P6SRMatchedReasoningFull31.RunAsync(LocateRepoRoot(), args);
+
         // P6S-I/J are separate one-pack neutral-context and semantic-wording experiments; their
         // runner has an independent two-call cap, frozen-body manifest, and zero-retry policy.
         if (args.Contains("--p6sij-toc-two-arm-experiment"))

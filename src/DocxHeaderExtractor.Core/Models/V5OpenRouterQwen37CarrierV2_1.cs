@@ -213,6 +213,43 @@ public static class OpenRouterQwen37JsonObjectCarrierV2_1
         var bytes = JsonSerializer.SerializeToUtf8Bytes(body, CanonicalJson.Options);
         return new V5ProviderRequestBodyV2_1(bytes, Hashing.Sha256(Encoding.UTF8.GetString(bytes)), bytes.Length);
     }
+
+    /// <summary>
+    /// Builds the same qualified JSON-object request shape as <see cref="BuildFromRaw"/>, with
+    /// the current OpenRouter reasoning-enabled representation.  The effort member is deliberately
+    /// omitted: callers use this only for a matched carrier experiment where reasoning is the sole
+    /// body-level independent variable.
+    /// </summary>
+    public static V5ProviderRequestBodyV2_1 BuildFromRawReasoningEnabled(
+        string systemPrompt, string userMessage, int maxCompletionTokens, V5ProviderEnvelope envelope)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(systemPrompt);
+        ArgumentException.ThrowIfNullOrWhiteSpace(userMessage);
+        ArgumentNullException.ThrowIfNull(envelope);
+        if (maxCompletionTokens <= 0) throw new ArgumentOutOfRangeException(nameof(maxCompletionTokens));
+
+        object provider = string.IsNullOrWhiteSpace(envelope.Provider)
+            ? new { zdr = false, data_collection = "deny", require_parameters = true, allow_fallbacks = true }
+            : new { order = new[] { envelope.Provider }, allow_fallbacks = false, require_parameters = true, data_collection = "deny", zdr = false };
+        var body = new
+        {
+            model = envelope.Model,
+            temperature = 0,
+            max_tokens = maxCompletionTokens,
+            reasoning = new { enabled = true },
+            messages = new object[]
+            {
+                new { role = "system", content = systemPrompt },
+                new { role = "user", content = userMessage },
+            },
+            response_format = new { type = envelope.ResponseFormat },
+            provider,
+            stream = envelope.Streaming,
+            usage = new { include = envelope.UsageInclude },
+        };
+        var bytes = JsonSerializer.SerializeToUtf8Bytes(body, CanonicalJson.Options);
+        return new V5ProviderRequestBodyV2_1(bytes, Hashing.Sha256(Encoding.UTF8.GetString(bytes)), bytes.Length);
+    }
 }
 
 /// <summary>
