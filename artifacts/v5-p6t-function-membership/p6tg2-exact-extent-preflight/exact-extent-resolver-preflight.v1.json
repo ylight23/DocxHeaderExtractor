@@ -1,0 +1,386 @@
+{
+  "schemaVersion": "v5-p6tg2-exact-extent-resolver-preflight-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "protocolVersion": "v5-function-conditioned-exact-extent-resolver-preflight-1",
+  "treatment": {
+    "model": "qwen/qwen3.7-flash",
+    "provider": "alibaba",
+    "reasoning": {
+      "enabled": true,
+      "effort": "OMITTED"
+    },
+    "promptAxis": "LOCAL_EXACT_EXTENT_SELECTION_OR_NO_STRUCTURAL_EXTENT",
+    "noPromptTuning": true,
+    "noGoldInModelInput": true
+  },
+  "outputContract": {
+    "shape": "{\"decisions\":[{\"primary\":\"O27\",\"candidate\":\"C123\"},{\"primary\":\"O28\",\"candidate\":\"NO_STRUCTURAL_EXTENT\"}]}",
+    "oneDecisionPerIssuedPrimary": true,
+    "candidateMustBeIssuedForThatPrimary": true,
+    "noStructuralExtentAllowed": true,
+    "modelAuthoredTextOrCoordinates": false,
+    "exactIdentityResolution": "harness maps selected C# to frozen P6S endpoint identity",
+    "invalidDecisionPolicy": "decision-local quarantine; never repair or infer candidate"
+  },
+  "inputInvariants": {
+    "candidates": "ALL_ESTABLISHES only; alternatives share the same primary O#",
+    "sourceEvidence": "candidate exact text plus ordered source-part text and read-only function label",
+    "localContext": "at most nearest one preceding and nearest one following owned occurrence, read-only; representation-only occurrences omitted",
+    "contextOnlySelectable": false,
+    "tocReviewedAliasesInSrc095Input": 0,
+    "representationOnlyCandidatesInEitherInput": 0,
+    "relationsIncluded": false,
+    "goldExtentOrGoldLabelInModelInput": false
+  },
+  "sourceAuthority": {
+    "g1ArtifactSha256": "13076af95fa16ef4ae67b5b8b1c23b8bf46276970cd3612b3e1d6332b0497474",
+    "src089CandidateUniverseFingerprint": "e4f3624bbd8b0771971fc85973e6fd4613ecd9c30c04c64ce8680b302d8d0029",
+    "src095CandidateUniverseFingerprint": "ed57257a7c3e315ad3ab3a6faa431c098c4d581aae3efdf33c576f8b94228a71",
+    "src089FunctionRequestSha256": "010ed175ee676085349da16469346c67da1dea39fe462589f42d45fe2299a412",
+    "src095FunctionRequestSha256": "4cb5d6e60747c45ce7f9be5e24ab49f29157d7093560fde6f55d4f3e26f24e4d"
+  },
+  "probes": {
+    "src089ReviewedGoldExtents": [
+      {
+        "primary": "O9",
+        "primaryAlias": "L0006:S0",
+        "exactCandidate": "C50",
+        "exactCandidateKind": "MULTIPART",
+        "eligibleOptionsAtPrimary": 5,
+        "exactCandidateIncluded": true
+      },
+      {
+        "primary": "O17",
+        "primaryAlias": "L0014:S0",
+        "exactCandidate": "C104",
+        "exactCandidateKind": "MULTIPART",
+        "eligibleOptionsAtPrimary": 7,
+        "exactCandidateIncluded": true
+      },
+      {
+        "primary": "O19",
+        "primaryAlias": "L0016:S0",
+        "exactCandidate": "C115",
+        "exactCandidateKind": "WHOLE",
+        "eligibleOptionsAtPrimary": 3,
+        "exactCandidateIncluded": true
+      },
+      {
+        "primary": "O27",
+        "primaryAlias": "L0024:S0",
+        "exactCandidate": "C174",
+        "exactCandidateKind": "MULTIPART",
+        "eligibleOptionsAtPrimary": 5,
+        "exactCandidateIncluded": true
+      },
+      {
+        "primary": "O54",
+        "primaryAlias": "L0051:S0",
+        "exactCandidate": "C353",
+        "exactCandidateKind": "MULTIPART",
+        "eligibleOptionsAtPrimary": 5,
+        "exactCandidateIncluded": true
+      },
+      {
+        "primary": "O83",
+        "primaryAlias": "L0080:S0",
+        "exactCandidate": "C542",
+        "exactCandidateKind": "MULTIPART",
+        "eligibleOptionsAtPrimary": 5,
+        "exactCandidateIncluded": true
+      }
+    ],
+    "src089FalseEstablishFrontMatter": [
+      {
+        "primary": "O3",
+        "primaryAlias": "L0002:S0",
+        "noStructuralExtentIsAllowed": true,
+        "eligibleCandidatesSharingThisPrimary": 5,
+        "g1EligibleCandidatesTouchingAtom": 5,
+        "candidateIds": [
+          "C15",
+          "C16",
+          "C17",
+          "C18",
+          "C19"
+        ]
+      },
+      {
+        "primary": "O4",
+        "primaryAlias": "L0002:S1",
+        "noStructuralExtentIsAllowed": true,
+        "eligibleCandidatesSharingThisPrimary": 3,
+        "g1EligibleCandidatesTouchingAtom": 5,
+        "candidateIds": [
+          "C21",
+          "C22",
+          "C23"
+        ]
+      },
+      {
+        "primary": "O6",
+        "primaryAlias": "L0003:S1",
+        "noStructuralExtentIsAllowed": true,
+        "eligibleCandidatesSharingThisPrimary": 3,
+        "g1EligibleCandidatesTouchingAtom": 3,
+        "candidateIds": [
+          "C31",
+          "C32",
+          "C33"
+        ]
+      }
+    ],
+    "src095ReviewedToc": {
+      "count": 53,
+      "appearsAsPrimary": 0,
+      "selectableCandidateLeakage": 0,
+      "reviewedTocSourceIdentitiesAbsentFromSelectableCandidatesAndContext": true
+    }
+  },
+  "callPlan": [
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "status": "PREPARED_NOT_AUTHORIZED",
+      "primaryCount": 15,
+      "eligibleCandidateCount": 63,
+      "optionsPerPrimary": [
+        {
+          "primary": "O3",
+          "primaryAlias": "L0002:S0",
+          "candidateCount": 5,
+          "candidateIds": [
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19"
+          ]
+        },
+        {
+          "primary": "O4",
+          "primaryAlias": "L0002:S1",
+          "candidateCount": 3,
+          "candidateIds": [
+            "C21",
+            "C22",
+            "C23"
+          ]
+        },
+        {
+          "primary": "O6",
+          "primaryAlias": "L0003:S1",
+          "candidateCount": 3,
+          "candidateIds": [
+            "C31",
+            "C32",
+            "C33"
+          ]
+        },
+        {
+          "primary": "O9",
+          "primaryAlias": "L0006:S0",
+          "candidateCount": 5,
+          "candidateIds": [
+            "C47",
+            "C48",
+            "C49",
+            "C50",
+            "C51"
+          ]
+        },
+        {
+          "primary": "O10",
+          "primaryAlias": "L0007:S0",
+          "candidateCount": 5,
+          "candidateIds": [
+            "C52",
+            "C53",
+            "C54",
+            "C55",
+            "C56"
+          ]
+        },
+        {
+          "primary": "O11",
+          "primaryAlias": "L0008:S0",
+          "candidateCount": 3,
+          "candidateIds": [
+            "C59",
+            "C60",
+            "C61"
+          ]
+        },
+        {
+          "primary": "O17",
+          "primaryAlias": "L0014:S0",
+          "candidateCount": 7,
+          "candidateIds": [
+            "C101",
+            "C102",
+            "C103",
+            "C104",
+            "C105",
+            "C106",
+            "C107"
+          ]
+        },
+        {
+          "primary": "O18",
+          "primaryAlias": "L0015:S0",
+          "candidateCount": 5,
+          "candidateIds": [
+            "C108",
+            "C109",
+            "C110",
+            "C111",
+            "C112"
+          ]
+        },
+        {
+          "primary": "O19",
+          "primaryAlias": "L0016:S0",
+          "candidateCount": 3,
+          "candidateIds": [
+            "C115",
+            "C116",
+            "C117"
+          ]
+        },
+        {
+          "primary": "O27",
+          "primaryAlias": "L0024:S0",
+          "candidateCount": 5,
+          "candidateIds": [
+            "C171",
+            "C172",
+            "C173",
+            "C174",
+            "C175"
+          ]
+        },
+        {
+          "primary": "O28",
+          "primaryAlias": "L0025:S0",
+          "candidateCount": 3,
+          "candidateIds": [
+            "C178",
+            "C179",
+            "C180"
+          ]
+        },
+        {
+          "primary": "O54",
+          "primaryAlias": "L0051:S0",
+          "candidateCount": 5,
+          "candidateIds": [
+            "C350",
+            "C351",
+            "C352",
+            "C353",
+            "C354"
+          ]
+        },
+        {
+          "primary": "O55",
+          "primaryAlias": "L0052:S0",
+          "candidateCount": 3,
+          "candidateIds": [
+            "C357",
+            "C358",
+            "C359"
+          ]
+        },
+        {
+          "primary": "O83",
+          "primaryAlias": "L0080:S0",
+          "candidateCount": 5,
+          "candidateIds": [
+            "C539",
+            "C540",
+            "C541",
+            "C542",
+            "C543"
+          ]
+        },
+        {
+          "primary": "O84",
+          "primaryAlias": "L0081:S0",
+          "candidateCount": 3,
+          "candidateIds": [
+            "C546",
+            "C547",
+            "C548"
+          ]
+        }
+      ],
+      "systemPromptSha256": "be9501923be15c243a699037536669e6e342f839ffd0a34345b15e793d760b8a",
+      "userMessageSha256": "f8a7ab632c5d8674111b143a033e0f4491b60d3d445e7530ca8c18ba344fa7cb",
+      "userMessageUtf8Bytes": 22146,
+      "providerBodySha256": "7bd52817cef7be8bc290a9202208d5fa8b76cc3343605da26135b3f041a086a0",
+      "providerBodyBytes": 37054
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "status": "PREPARED_NOT_AUTHORIZED",
+      "primaryCount": 4,
+      "eligibleCandidateCount": 10,
+      "optionsPerPrimary": [
+        {
+          "primary": "O16",
+          "primaryAlias": "L0009:S0",
+          "candidateCount": 1,
+          "candidateIds": [
+            "C66"
+          ]
+        },
+        {
+          "primary": "O22",
+          "primaryAlias": "L0015:S0",
+          "candidateCount": 3,
+          "candidateIds": [
+            "C106",
+            "C107",
+            "C108"
+          ]
+        },
+        {
+          "primary": "O30",
+          "primaryAlias": "L0023:S0",
+          "candidateCount": 3,
+          "candidateIds": [
+            "C162",
+            "C163",
+            "C164"
+          ]
+        },
+        {
+          "primary": "O41",
+          "primaryAlias": "L0034:S0",
+          "candidateCount": 3,
+          "candidateIds": [
+            "C229",
+            "C230",
+            "C231"
+          ]
+        }
+      ],
+      "systemPromptSha256": "be9501923be15c243a699037536669e6e342f839ffd0a34345b15e793d760b8a",
+      "userMessageSha256": "97317ba8596b52dafb00ff3ffce1e808242cf693cf66d2a20504e86d38380146",
+      "userMessageUtf8Bytes": 2884,
+      "providerBodySha256": "3f72961551d19d7685f62cdb50f654e122169a5b5ce6055240840c16c50c3b51",
+      "providerBodyBytes": 6717
+    }
+  ],
+  "budget": {
+    "maximumAuthorizedProviderCalls": 0,
+    "providerCalls": 0,
+    "retries": 0,
+    "repairs": 0,
+    "fallbacks": 0,
+    "goldMutation": "NONE",
+    "runtimeChanged": false
+  },
+  "conclusion": "PROVIDER_FREE_G2_PREFLIGHT_FROZEN; EXACT_EXTENT_RESOLVER_NOT_EXECUTED; AWAIT_SEPARATE_PROVIDER_AUTHORIZATION"
+}
