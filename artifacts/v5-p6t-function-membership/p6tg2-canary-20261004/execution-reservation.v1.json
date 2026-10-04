@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "v5-p6tg2-execution-reservation-v1",
+  "status": "CAPTURE_SLOTS_RESERVED",
+  "requestedCalls": 2,
+  "providerCallsBeforeSend": 0,
+  "requests": [
+    {
+      "DocumentId": "SRC-089",
+      "ProviderHash": "7bd52817cef7be8bc290a9202208d5fa8b76cc3343605da26135b3f041a086a0",
+      "ProviderBytes": 37054
+    },
+    {
+      "DocumentId": "SRC-095",
+      "ProviderHash": "3f72961551d19d7685f62cdb50f654e122169a5b5ce6055240840c16c50c3b51",
+      "ProviderBytes": 6717
+    }
+  ],
+  "retriesAllowed": 0,
+  "goldRead": false
+}

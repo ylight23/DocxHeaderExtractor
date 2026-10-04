@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "v5-p6tg2-two-primary-call-result-v1",
+  "status": "EXECUTION_SET_FROZEN",
+  "providerCalls": 2,
+  "retries": 0,
+  "repairs": 0,
+  "fallbacks": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "runtimeChanged": false,
+  "rawCaptureFileCount": 2,
+  "rawCaptureSetSha256": "c03eb4f6029f77294de32b81f71d103f4267035767dc349c33c9a4bc42fef0cb",
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "transportStatus": "COMPLETED",
+      "finishReason": "stop",
+      "parserStatus": "PARSED",
+      "rawResponseSha256": "907b679299d05a1d8d441cbe7fee7c8fc5aa59ad2eb937c53b72f9ea52c0b24d",
+      "promptTokens": 5992,
+      "completionTokens": 3811,
+      "reasoningTokens": 3537,
+      "retryCount": 0,
+      "parsed": {
+        "RawDecisions": 15,
+        "AcceptedSelections": 15,
+        "NoStructuralExtent": 0,
+        "Quarantined": 0,
+        "MissingPrimaries": 0,
+        "Decisions": [
+          {
+            "primary": "O3",
+            "candidate": "C15",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O4",
+            "candidate": "C21",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O6",
+            "candidate": "C31",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O9",
+            "candidate": "C47",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O10",
+            "candidate": "C52",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O11",
+            "candidate": "C59",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O17",
+            "candidate": "C101",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O18",
+            "candidate": "C108",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O19",
+            "candidate": "C115",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O27",
+            "candidate": "C171",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O28",
+            "candidate": "C178",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O54",
+            "candidate": "C350",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O55",
+            "candidate": "C357",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O83",
+            "candidate": "C539",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O84",
+            "candidate": "C546",
+            "outcome": "SELECTED_CANDIDATE"
+          }
+        ],
+        "Refusals": []
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "transportStatus": "COMPLETED",
+      "finishReason": "stop",
+      "parserStatus": "PARSED",
+      "rawResponseSha256": "f8e1478adf76604f5f6f88312850ca1b53c0e38ede6f0a59dd43067bb55fb73f",
+      "promptTokens": 1041,
+      "completionTokens": 1327,
+      "reasoningTokens": 1204,
+      "retryCount": 0,
+      "parsed": {
+        "RawDecisions": 4,
+        "AcceptedSelections": 4,
+        "NoStructuralExtent": 0,
+        "Quarantined": 0,
+        "MissingPrimaries": 0,
+        "Decisions": [
+          {
+            "primary": "O16",
+            "candidate": "C66",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O22",
+            "candidate": "C106",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O30",
+            "candidate": "C162",
+            "outcome": "SELECTED_CANDIDATE"
+          },
+          {
+            "primary": "O41",
+            "candidate": "C229",
+            "outcome": "SELECTED_CANDIDATE"
+          }
+        ],
+        "Refusals": []
+      }
+    }
+  ]
+}

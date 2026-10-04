@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "v5-p6tg2-gold-source-review-audit-v1",
+  "authority": {
+    "captureSetSha256": "c03eb4f6029f77294de32b81f71d103f4267035767dc349c33c9a4bc42fef0cb",
+    "rawResponseSha256": {
+      "SRC-089": "907b679299d05a1d8d441cbe7fee7c8fc5aa59ad2eb937c53b72f9ea52c0b24d",
+      "SRC-095": "f8e1478adf76604f5f6f88312850ca1b53c0e38ede6f0a59dd43067bb55fb73f"
+    },
+    "resultArtifactSha256": "d586c449fe67ae1e8bc746ccd20c772b4adedc6c01ad338d46b016ddeb970601",
+    "gold089Sha256": "83db6b93462e9bcaf41bc22151b2b31d98c4898973da8ffb86de2d3b18ec9b88",
+    "gold095Sha256": "d8a6eafb63716f531463b74d25543e4d27b25965aac0d5d0e5fb25734027df18",
+    "src095SourceReviewItemsSha256": "3d294f1dc92adf857186b1175630ec2fd84030cad72f0fd817a6c617266c603d",
+    "goldMutation": "NONE",
+    "providerCallsDuringAudit": 0,
+    "rawCaptureMutation": "NONE"
+  },
+  "execution": [
+    {
+      "documentId": "SRC-089",
+      "finishReason": "stop",
+      "retryCount": 0,
+      "rawDecisions": 15,
+      "acceptedSelections": 15,
+      "noStructuralExtent": 0,
+      "quarantined": 0,
+      "reasoningTokens": 3537
+    },
+    {
+      "documentId": "SRC-095",
+      "finishReason": "stop",
+      "retryCount": 0,
+      "rawDecisions": 4,
+      "acceptedSelections": 4,
+      "noStructuralExtent": 0,
+      "quarantined": 0,
+      "reasoningTokens": 1204
+    }
+  ],
+  "src089": {
+    "positiveGoldUnits": [
+      {
+        "primaryAlias": "L0006:S0",
+        "expectedGoldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+        "selectedCandidateId": "C47",
+        "selectedIdentity": "L0006:S0:0-6",
+        "exact": false,
+        "extentClass": "UNDEREXTENT_PRIMARY_SUBSET",
+        "selectedPartsAreGoldParts": true,
+        "decision": "SELECTED_CANDIDATE"
+      },
+      {
+        "primaryAlias": "L0014:S0",
+        "expectedGoldIdentity": "L0014:S0:0-9|L0015:S0:0-18",
+        "selectedCandidateId": "C101",
+        "selectedIdentity": "L0014:S0:0-9",
+        "exact": false,
+        "extentClass": "UNDEREXTENT_PRIMARY_SUBSET",
+        "selectedPartsAreGoldParts": true,
+        "decision": "SELECTED_CANDIDATE"
+      },
+      {
+        "primaryAlias": "L0016:S0",
+        "expectedGoldIdentity": "L0016:S0:0-56",
+        "selectedCandidateId": "C115",
+        "selectedIdentity": "L0016:S0:0-56",
+        "exact": true,
+        "extentClass": "EXACT",
+        "selectedPartsAreGoldParts": true,
+        "decision": "SELECTED_CANDIDATE"
+      },
+      {
+        "primaryAlias": "L0024:S0",
+        "expectedGoldIdentity": "L0024:S0:0-89|L0025:S0:0-45",
+        "selectedCandidateId": "C171",
+        "selectedIdentity": "L0024:S0:0-89",
+        "exact": false,
+        "extentClass": "UNDEREXTENT_PRIMARY_SUBSET",
+        "selectedPartsAreGoldParts": true,
+        "decision": "SELECTED_CANDIDATE"
+      },
+      {
+        "primaryAlias": "L0051:S0",
+        "expectedGoldIdentity": "L0051:S0:0-95|L0052:S0:0-35",
+        "selectedCandidateId": "C350",
+        "selectedIdentity": "L0051:S0:0-95",
+        "exact": false,
+        "extentClass": "UNDEREXTENT_PRIMARY_SUBSET",
+        "selectedPartsAreGoldParts": true,
+        "decision": "SELECTED_CANDIDATE"
+      },
+      {
+        "primaryAlias": "L0080:S0",
+        "expectedGoldIdentity": "L0080:S0:0-90|L0081:S0:0-35",
+        "selectedCandidateId": "C539",
+        "selectedIdentity": "L0080:S0:0-90",
+        "exact": false,
+        "extentClass": "UNDEREXTENT_PRIMARY_SUBSET",
+        "selectedPartsAreGoldParts": true,
+        "decision": "SELECTED_CANDIDATE"
+      }
+    ],
+    "positiveExactCount": 1,
+    "positiveUnderextentCount": 5,
+    "continuationNegativeControls": [
+      {
+        "primaryAlias": "L0007:S0",
+        "selectedCandidateId": "C52",
+        "selectedIdentity": "L0007:S0:0-65",
+        "exactGoldMatch": false,
+        "decision": "SELECTED_CANDIDATE",
+        "expectedNegativeControl": "NO_INDEPENDENT_STRUCTURAL_EXTENT_AT_CONTINUATION_ATOM"
+      },
+      {
+        "primaryAlias": "L0008:S0",
+        "selectedCandidateId": "C59",
+        "selectedIdentity": "L0008:S0:0-23",
+        "exactGoldMatch": false,
+        "decision": "SELECTED_CANDIDATE",
+        "expectedNegativeControl": "NO_INDEPENDENT_STRUCTURAL_EXTENT_AT_CONTINUATION_ATOM"
+      },
+      {
+        "primaryAlias": "L0015:S0",
+        "selectedCandidateId": "C108",
+        "selectedIdentity": "L0015:S0:0-18",
+        "exactGoldMatch": false,
+        "decision": "SELECTED_CANDIDATE",
+        "expectedNegativeControl": "NO_INDEPENDENT_STRUCTURAL_EXTENT_AT_CONTINUATION_ATOM"
+      },
+      {
+        "primaryAlias": "L0025:S0",
+        "selectedCandidateId": "C178",
+        "selectedIdentity": "L0025:S0:0-45",
+        "exactGoldMatch": false,
+        "decision": "SELECTED_CANDIDATE",
+        "expectedNegativeControl": "NO_INDEPENDENT_STRUCTURAL_EXTENT_AT_CONTINUATION_ATOM"
+      },
+      {
+        "primaryAlias": "L0052:S0",
+        "selectedCandidateId": "C357",
+        "selectedIdentity": "L0052:S0:0-35",
+        "exactGoldMatch": false,
+        "decision": "SELECTED_CANDIDATE",
+        "expectedNegativeControl": "NO_INDEPENDENT_STRUCTURAL_EXTENT_AT_CONTINUATION_ATOM"
+      },
+      {
+        "primaryAlias": "L0081:S0",
+        "selectedCandidateId": "C546",
+        "selectedIdentity": "L0081:S0:0-35",
+        "exactGoldMatch": false,
+        "decision": "SELECTED_CANDIDATE",
+        "expectedNegativeControl": "NO_INDEPENDENT_STRUCTURAL_EXTENT_AT_CONTINUATION_ATOM"
+      }
+    ],
+    "continuationNegativeSelectedCount": 6,
+    "frontMatterNegativeControls": [
+      {
+        "primaryAlias": "L0002:S0",
+        "selectedCandidateId": "C15",
+        "selectedIdentity": "L0002:S0:0-14",
+        "exactGoldMatch": false,
+        "decision": "SELECTED_CANDIDATE",
+        "expectedNegativeControl": "SOURCE_REVIEWED_NON_HEADING_FRONT_MATTER"
+      },
+      {
+        "primaryAlias": "L0002:S1",
+        "selectedCandidateId": "C21",
+        "selectedIdentity": "L0002:S1:0-33",
+        "exactGoldMatch": false,
+        "decision": "SELECTED_CANDIDATE",
+        "expectedNegativeControl": "SOURCE_REVIEWED_NON_HEADING_FRONT_MATTER"
+      },
+      {
+        "primaryAlias": "L0003:S1",
+        "selectedCandidateId": "C31",
+        "selectedIdentity": "L0003:S1:0-34",
+        "exactGoldMatch": false,
+        "decision": "SELECTED_CANDIDATE",
+        "expectedNegativeControl": "SOURCE_REVIEWED_NON_HEADING_FRONT_MATTER"
+      }
+    ],
+    "frontMatterNegativeSelectedCount": 3
+  },
+  "src095": {
+    "sourceReviewedEstablishes": [
+      {
+        "primaryAlias": "L0009:S0",
+        "reviewedVerdict": "HEADING",
+        "reviewedPattern": "MATTER_SECTION",
+        "selectedCandidateId": "C66",
+        "selectedIdentity": "L0009:S0:0-8",
+        "exactGoldMatch": true,
+        "decision": "SELECTED_CANDIDATE"
+      },
+      {
+        "primaryAlias": "L0015:S0",
+        "reviewedVerdict": "HEADING",
+        "reviewedPattern": "MATTER_SECTION",
+        "selectedCandidateId": "C106",
+        "selectedIdentity": "L0015:S0:0-18",
+        "exactGoldMatch": true,
+        "decision": "SELECTED_CANDIDATE"
+      },
+      {
+        "primaryAlias": "L0023:S0",
+        "reviewedVerdict": "HEADING",
+        "reviewedPattern": "MATTER_SECTION",
+        "selectedCandidateId": "C162",
+        "selectedIdentity": "L0023:S0:0-16",
+        "exactGoldMatch": true,
+        "decision": "SELECTED_CANDIDATE"
+      },
+      {
+        "primaryAlias": "L0034:S0",
+        "reviewedVerdict": "HEADING",
+        "reviewedPattern": "TOC_OPENER",
+        "selectedCandidateId": "C229",
+        "selectedIdentity": "L0034:S0:0-17",
+        "exactGoldMatch": true,
+        "decision": "SELECTED_CANDIDATE"
+      }
+    ],
+    "exactGoldCount": 4
+  },
+  "conclusion": "CANARY_CONTRACT_AND_CANDIDATE_SELECTION_AUDITED; G2 DID NOT ABSTAIN ON ANY ISSUED PRIMARY; EXACTNESS_REQUIRES_SELECTED_CANDIDATE_TO_MATCH_GOLD_IDENTITY; THIS IS NOT FULL-PACK OR PRODUCTION QUALIFICATION"
+}
