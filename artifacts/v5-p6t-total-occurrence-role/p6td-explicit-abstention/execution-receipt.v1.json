@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "v5-p6td-explicit-abstention-execution-receipt-v1",
+  "sourceCapture": "artifacts/v5-p6t-total-occurrence-role/p6td-explicit-abstention/result.v1.json",
+  "providerCalls": 2,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "semanticScore": "NOT_RUN",
+  "retry": 0,
+  "repair": false,
+  "fallback": false,
+  "sharedRuntime": "UNCHANGED",
+  "rawResponsesPublished": false,
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "providerRequestHash": "d860a07cbb8b28689ca524a3f6bc4c9a746dbd0b6aa907b8228638b0813dcfad",
+      "rawSseSha256": "75bfa3cc680f0b12d993a12cd051841f967d624496d6a3f4e5035122486e0082",
+      "rawResponseSha256": "09992f19635969ce8343bef6d01e0e2119d5f8d5934be4d05fbbfc26149f964a",
+      "finishReason": "stop",
+      "reasoningTokens": 4434,
+      "reasoningExecutionConfirmed": "TRUE",
+      "expectedDecisions": 96,
+      "returnedDecisions": 96,
+      "unresolvedDecisions": 0,
+      "parserAccepted": true,
+      "classification": "TOTAL_LEDGER_ACCEPTED"
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "providerRequestHash": "f092fd32fcac5fb9f3393df6842f5ae6f8d02aa5072093d87ce3d5dc6fd149d8",
+      "rawSseSha256": "13d4cb747c582ac379a33a93cae8ab45886ce81996192055599c00303db15134",
+      "rawResponseSha256": "71122e222c218f0be100664b8548f80a0beaf1ccbbb14bf58ac5c33b47c2d212",
+      "finishReason": "stop",
+      "reasoningTokens": 4038,
+      "reasoningExecutionConfirmed": "TRUE",
+      "expectedDecisions": 96,
+      "returnedDecisions": 96,
+      "unresolvedDecisions": 0,
+      "parserAccepted": true,
+      "classification": "TOTAL_LEDGER_ACCEPTED"
+    }
+  ]
+}

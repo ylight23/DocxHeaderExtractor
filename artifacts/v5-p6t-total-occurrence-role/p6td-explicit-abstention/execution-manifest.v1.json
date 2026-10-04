@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "v5-p6td-explicit-abstention-two-pack-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "preparedAtHead": "ba971fc0742bfb227051b31c6d0ebc7cf621f20b",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "sharedRuntime": "UNCHANGED",
+  "purpose": "MATCHED_P6TC_PLUS_EXPLICIT_ABSTENTION_ONLY: total anchor-role ledger with UNRESOLVED; no Pass 2 or accuracy claim.",
+  "treatment": {
+    "gateway": "OpenRouter",
+    "model": "qwen/qwen3.7-flash",
+    "providerPin": "alibaba",
+    "temperature": 0,
+    "reasoning": {
+      "enabled": true
+    },
+    "effort": "OMITTED",
+    "responseFormat": "json_object"
+  },
+  "roles": [
+    "HEADING_START",
+    "REPRESENTATION_START",
+    "OTHER",
+    "UNRESOLVED"
+  ],
+  "contractGate": {
+    "issued": 96,
+    "returned": 96,
+    "unknownOccurrenceIds": 0,
+    "duplicateOccurrenceIds": 0,
+    "missingOccurrenceIds": 0,
+    "invalidRoles": 0,
+    "extraProperties": 0,
+    "parser": "ACCEPTED",
+    "unresolvedNotEligibleForPass2": true
+  },
+  "execution": {
+    "maximumProviderCalls": 2,
+    "exactlyOnePrimaryAttemptPerPack": true,
+    "retry": 0,
+    "repair": false,
+    "fallback": false,
+    "goldDuringRun": false,
+    "pass2": "BLOCKED"
+  },
+  "rows": [
+    {
+      "Role": "MULTIPART_ANCHOR_EXTENT_HEAVY",
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issuedOccurrences": 96,
+      "semanticRequestHash": "b8f95da07ddfa682e335d680f832c1ff379c9fcd432deb302432597a92dc581d",
+      "systemPromptSha256": "d3cc8bd7bc86d900ca9d5c10489178030863b0e9424dde31d528c821371a2299",
+      "providerRequestHash": "d860a07cbb8b28689ca524a3f6bc4c9a746dbd0b6aa907b8228638b0813dcfad",
+      "providerRequestBytes": 21220,
+      "maxCompletionTokens": 32768,
+      "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+      "sourceUniverseSha256": "949dedfe976c1baeebf60bcad4bee75a5d5eafef7886bb2e9385f0708c7fb494"
+    },
+    {
+      "Role": "TOC_NEGATIVE_ROLE_HEAVY",
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issuedOccurrences": 96,
+      "semanticRequestHash": "5b188614b59c77e2ad2c05fb1c73b8fb1e0ff7b45b54793838fd5a99bd1fa466",
+      "systemPromptSha256": "d3cc8bd7bc86d900ca9d5c10489178030863b0e9424dde31d528c821371a2299",
+      "providerRequestHash": "f092fd32fcac5fb9f3393df6842f5ae6f8d02aa5072093d87ce3d5dc6fd149d8",
+      "providerRequestBytes": 25427,
+      "maxCompletionTokens": 32768,
+      "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+      "sourceUniverseSha256": "1eee2105941098eb50e79fd866fddeb36718c49ca02da9906aeaaf2ba3673ead"
+    }
+  ]
+}

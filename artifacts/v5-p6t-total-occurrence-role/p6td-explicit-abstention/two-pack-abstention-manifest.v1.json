@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "v5-p6td-explicit-abstention-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "sharedRuntime": "UNCHANGED",
+  "matchedVariable": "ONLY_EXPLICIT_UNRESOLVED_ROLE_FROM_P6TC",
+  "roles": [
+    "HEADING_START",
+    "REPRESENTATION_START",
+    "OTHER",
+    "UNRESOLVED"
+  ],
+  "expectedDecisions": 96,
+  "maximumFutureProviderCalls": 2,
+  "unresolvedPromotedToPass2": false,
+  "retry": 0,
+  "repair": false,
+  "fallback": false,
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issued": 96,
+      "accepted": 96,
+      "unresolved": 1,
+      "correspondenceAnchors": 5,
+      "correspondenceEdges": 7
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issued": 96,
+      "accepted": 96,
+      "unresolved": 1,
+      "correspondenceAnchors": 61,
+      "correspondenceEdges": 103
+    }
+  ]
+}
