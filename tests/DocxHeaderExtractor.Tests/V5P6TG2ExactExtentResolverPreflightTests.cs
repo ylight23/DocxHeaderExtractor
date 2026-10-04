@@ -32,6 +32,10 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private const string ExactExtentWholeMovePreflightRoot = "artifacts/v5-p6t-function-membership/p6tg2e-whole-move-preflight";
     private const string ExactExtentWholeMoveCaptureRoot = "artifacts/v5-p6t-function-membership/p6tg2e-whole-move-canary-20261004";
     private const string ExactExtentMenuForensicRoot = "artifacts/v5-p6t-function-membership/p6tg2-menu-forensic";
+    private const string IndependentJudgmentPreflightRoot = "artifacts/v5-p6t-function-membership/p6th1-independent-candidate-preflight";
+    private const string IndependentJudgmentCaptureRoot = "artifacts/v5-p6t-function-membership/p6th1-independent-candidate-canary-20261004";
+    private const string IndependentJudgmentAggregationRoot = "artifacts/v5-p6t-function-membership/p6th1-independent-candidate-aggregation";
+    private const string IndependentJudgmentGoldForensicRoot = "artifacts/v5-p6t-function-membership/p6th1-independent-candidate-gold-forensic";
     private const string Gold089Path = "eval/a99-closed-loop/gold/SRC-089.gold.json";
     private const string Gold095Path = "eval/a99-closed-loop/gold/SRC-095.gold.json";
     private const string Review095Path = "eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json";
@@ -41,7 +45,9 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private const string RunExactExtentOrderVariable = "A99_RUN_P6TG2C_CANARY";
     private const string RunExactExtentPermutationVariable = "A99_RUN_P6TG2D_CANARY";
     private const string RunExactExtentWholeMoveVariable = "A99_RUN_P6TG2E_CANARY";
+    private const string RunIndependentJudgmentVariable = "A99_RUN_P6TH1_CANARY";
     private const string Protocol = "v5-function-conditioned-exact-extent-resolver-preflight-1";
+    private const string IndependentJudgmentProtocol = "v5-independent-exact-extent-judgment-1";
     private static readonly (string Id, string Pdf)[] Documents =
     [
         ("SRC-089", SourcePdfCorpus.Src089),
@@ -659,6 +665,554 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             }).ToArray();
             return new ForensicArm(name, request.ProviderHash, rawCapture.GetProperty("rawResponseSha256").GetString()!, rows);
         }
+    }
+
+    [Fact]
+    public void P6TH1_preflight_freezes_independent_candidate_judgments_and_fail_closed_aggregation()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToHashSet(StringComparer.Ordinal);
+        Assert.Equal(6, hasPrimaries.Count);
+
+        var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var reversed = ComposeExactExtentWithCandidateOrder(prepared, baseline, true);
+        var independent = ComposeIndependentCandidateJudgments(prepared, baseline);
+        var independentFromReversed = ComposeIndependentCandidateJudgments(prepared, reversed);
+
+        Assert.Equal(6, independent.Select(item => item.Primary).Distinct(StringComparer.Ordinal).Count());
+        Assert.Equal(30, independent.Count);
+        Assert.Equal(30, independent.Select(item => $"{item.Primary}|{item.CandidateId}").Distinct(StringComparer.Ordinal).Count());
+        Assert.Equal(30, independentFromReversed.Count);
+        Assert.Equal(independent.Select(item => $"{item.Primary}|{item.CandidateId}").OrderBy(item => item, StringComparer.Ordinal),
+            independentFromReversed.Select(item => $"{item.Primary}|{item.CandidateId}").OrderBy(item => item, StringComparer.Ordinal));
+
+        var baselineO17C104 = independent.Single(item => item.Primary == "O17" && item.CandidateId == "C104");
+        var reversedO17C104 = independentFromReversed.Single(item => item.Primary == "O17" && item.CandidateId == "C104");
+        Assert.Equal(baselineO17C104.UserMessage, reversedO17C104.UserMessage);
+        Assert.Equal(baselineO17C104.MessageHash, reversedO17C104.MessageHash);
+        Assert.Equal(baselineO17C104.ProviderHash, reversedO17C104.ProviderHash);
+
+        Assert.All(independent, request =>
+        {
+            using var message = JsonDocument.Parse(request.UserMessage);
+            var root = message.RootElement;
+            Assert.Equal(6, root.EnumerateObject().Count());
+            Assert.True(root.TryGetProperty("candidate", out var candidate));
+            Assert.Equal(request.CandidateId, candidate.GetProperty("id").GetString());
+            Assert.False(root.TryGetProperty("candidates", out _));
+            Assert.Equal("ESTABLISHES_STRUCTURE", root.GetProperty("function").GetString());
+            Assert.Equal(request.Primary, root.GetProperty("primary").GetString());
+        });
+
+        var synthetic = new[]
+        {
+            new IndependentJudgmentLedger("O9", "C47", "NOT_EXACT_STRUCTURAL_EXTENT"),
+            new IndependentJudgmentLedger("O17", "C104", "EXACT_STRUCTURAL_EXTENT"),
+            new IndependentJudgmentLedger("O27", "C171", "EXACT_STRUCTURAL_EXTENT"),
+            new IndependentJudgmentLedger("O27", "C174", "EXACT_STRUCTURAL_EXTENT"),
+        };
+        var aggregate = AggregateIndependentJudgments(synthetic, ["O9", "O17", "O27"])
+            .ToDictionary(item => item.Primary, StringComparer.Ordinal);
+        Assert.Equal("NO_EXACT_EXTENT", aggregate["O9"].Outcome);
+        Assert.Equal("SELECTED_EXACT_EXTENT", aggregate["O17"].Outcome);
+        Assert.Equal("C104", aggregate["O17"].SelectedCandidate);
+        Assert.Equal("CONFLICT_MULTIPLE_EXACT", aggregate["O27"].Outcome);
+        Assert.Null(aggregate["O27"].SelectedCandidate);
+
+        var valid = ParseIndependentJudgment(baselineO17C104,
+            "{\"primary\":\"O17\",\"candidate\":\"C104\",\"judgment\":\"EXACT_STRUCTURAL_EXTENT\"}");
+        Assert.Equal("EXACT_STRUCTURAL_EXTENT", valid.Judgment);
+        Assert.Throws<InvalidOperationException>(() => ParseIndependentJudgment(baselineO17C104,
+            "{\"primary\":\"O17\",\"candidate\":\"C104\",\"judgment\":\"EXACT\"}"));
+        Assert.Throws<InvalidOperationException>(() => ParseIndependentJudgment(baselineO17C104,
+            "{\"primary\":\"O17\",\"candidate\":\"C101\",\"judgment\":\"EXACT_STRUCTURAL_EXTENT\"}"));
+        Assert.Throws<InvalidOperationException>(() => ParseIndependentJudgment(baselineO17C104,
+            "{\"primary\":\"O17\",\"candidate\":\"C104\",\"judgment\":\"NOT_EXACT_STRUCTURAL_EXTENT\",\"reason\":\"extra\"}"));
+
+        FreezeArtifact.AssertJson(IndependentJudgmentPreflightRoot, "independent-candidate-preflight.v1.json", new
+        {
+            schemaVersion = "v5-p6th1-independent-candidate-preflight-v1",
+            status = "PREPARED_NOT_AUTHORIZED",
+            protocolVersion = IndependentJudgmentProtocol,
+            treatment = new
+            {
+                model = "qwen/qwen3.7-flash",
+                provider = "alibaba",
+                reasoning = new { enabled = true, effort = "OMITTED" },
+                anchorAuthority = "FROZEN_P6TG2A_RAW_HAS_DECISIONS",
+                independentProposition = true,
+                competingCandidatesModelVisible = false,
+                goldUsedForRequestConstruction = false,
+            },
+            outputContract = new
+            {
+                shape = "{\"primary\":\"O17\",\"candidate\":\"C104\",\"judgment\":\"EXACT_STRUCTURAL_EXTENT\"}",
+                allowedJudgments = new[] { "EXACT_STRUCTURAL_EXTENT", "NOT_EXACT_STRUCTURAL_EXTENT" },
+                oneIssuedPrimaryCandidatePairPerResponse = true,
+                modelAuthoredTextOrCoordinates = false,
+                modelAuthoredCandidateOrPrimary = false,
+                parserRejects = new[] { "unknown-primary", "unknown-candidate", "invalid-judgment", "extra-property", "missing-property" },
+                invalidResponsePolicy = "single-proposition-response-rejected; no repair or inference",
+            },
+            aggregation = new
+            {
+                exactCountZero = "NO_EXACT_EXTENT",
+                exactCountOne = "SELECTED_EXACT_EXTENT",
+                exactCountGreaterThanOne = "CONFLICT_MULTIPLE_EXACT",
+                tieBreak = "FORBIDDEN",
+                conflictIsFailClosed = true,
+            },
+            sourceAuthority = new
+            {
+                documentId = prepared.DocumentId,
+                candidateUniverseFingerprint = prepared.SourcePack.Universe.Fingerprint,
+                g2aRawResponseSha256 = g2aRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                hasPrimaryCount = hasPrimaries.Count,
+                eligibleCandidateJudgmentCount = independent.Count,
+                goldRead = false,
+                goldMutation = "NONE",
+                sharedRuntime = "UNCHANGED",
+            },
+            permutationInvariance = new
+            {
+                primary = "O17",
+                candidate = "C104",
+                baselineMenuOrder = baseline.OccurrenceGroups.Single(group => group.PrimaryOccurrence == "O17").CandidateIds,
+                reversedMenuOrder = reversed.OccurrenceGroups.Single(group => group.PrimaryOccurrence == "O17").CandidateIds,
+                canonicalUserMessageSha256 = baselineO17C104.MessageHash,
+                byteIdentical = baselineO17C104.UserMessage == reversedO17C104.UserMessage,
+                providerBodyIdentical = baselineO17C104.ProviderHash == reversedO17C104.ProviderHash,
+            },
+            callPlan = independent.Select(request => new
+            {
+                documentId = request.DocumentId,
+                primary = request.Primary,
+                primaryAlias = request.PrimaryAlias,
+                candidate = request.CandidateId,
+                candidateKind = request.CandidateKind,
+                candidateIdentity = request.CandidateIdentity,
+                systemPromptSha256 = Hashing.Sha256(request.SystemPrompt),
+                userMessageSha256 = request.MessageHash,
+                userMessageUtf8Bytes = request.MessageBytes,
+                providerBodySha256 = request.ProviderHash,
+                providerBodyBytes = request.ProviderBytes,
+                maxCompletionTokens = request.MaxCompletionTokens,
+            }).ToArray(),
+            execution = new { providerCalls = 0, retries = 0, repairs = 0, fallbacks = 0, goldRead = false, runtimeChanged = false },
+            conclusion = "P6TH1_INDEPENDENT_CANDIDATE_JUDGMENT_PREFLIGHT_FROZEN; ORDER_COUPLING_REMOVED_BY_CONSTRUCTION; PROVIDER_EXECUTION_REQUIRES_SEPARATE_EXPLICIT_AUTHORIZATION",
+        });
+    }
+
+    [Fact]
+    public async Task Run_exactly_thirty_frozen_independent_candidate_judgments_only_when_explicitly_enabled_for_P6TH1()
+    {
+        if (Environment.GetEnvironmentVariable(RunIndependentJudgmentVariable) is not ("1" or "true" or "TRUE")) return;
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        Assert.False(string.IsNullOrWhiteSpace(apiKey), "OPENROUTER_API_KEY is required for the explicitly enabled P6T-H1 canary.");
+        var capturePath = TestRepository.Path(IndependentJudgmentCaptureRoot);
+        Assert.False(Directory.Exists(capturePath), "P6T-H1 capture root already exists; automatic resume or resend is forbidden.");
+
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var preflight = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{IndependentJudgmentPreflightRoot}/independent-candidate-preflight.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToHashSet(StringComparer.Ordinal);
+        var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var requests = ComposeIndependentCandidateJudgments(prepared, baseline);
+        var frozenPlan = preflight.RootElement.GetProperty("callPlan").EnumerateArray()
+            .ToDictionary(item => $"{item.GetProperty("primary").GetString()}|{item.GetProperty("candidate").GetString()}", item => item, StringComparer.Ordinal);
+        Assert.Equal(30, requests.Count);
+        Assert.Equal(30, frozenPlan.Count);
+        foreach (var request in requests)
+        {
+            var plan = frozenPlan[$"{request.Primary}|{request.CandidateId}"];
+            Assert.Equal(request.MessageHash, plan.GetProperty("userMessageSha256").GetString());
+            Assert.Equal(request.MessageBytes, plan.GetProperty("userMessageUtf8Bytes").GetInt32());
+            Assert.Equal(request.ProviderHash, plan.GetProperty("providerBodySha256").GetString());
+            Assert.Equal(request.ProviderBytes, plan.GetProperty("providerBodyBytes").GetInt32());
+        }
+
+        Directory.CreateDirectory(capturePath);
+        WriteNew(Path.Combine(capturePath, "execution-reservation.v1.json"), new
+        {
+            schemaVersion = "v5-p6th1-execution-reservation-v1",
+            status = "THIRTY_PRIMARY_SLOTS_RESERVED",
+            documentId = "SRC-089",
+            plannedProviderCalls = requests.Count,
+            retriesAllowed = 0,
+            repairsAllowed = false,
+            fallbacksAllowed = false,
+            goldRead = false,
+            callPlanSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{IndependentJudgmentPreflightRoot}/independent-candidate-preflight.v1.json"))),
+        });
+
+        using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
+        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        {
+            ApiKey = apiKey!,
+            Model = "qwen/qwen3.7-flash",
+            OpenRouterProviderRoute = "Alibaba",
+            TransientRequestRetries = 0,
+            MaxParallelRequests = 1,
+            ProviderTransportTimeoutSeconds = 300,
+            RequireZeroDataRetention = false,
+        });
+
+        var rows = new List<object>();
+        foreach (var request in requests)
+        {
+            var key = $"{request.Primary}-{request.CandidateId}";
+            try
+            {
+                var observation = await provider.ExecuteObservedAsync(request.ProviderBody, request.MaxCompletionTokens,
+                    request.SystemPrompt, request.UserMessage, CancellationToken.None);
+                var rawCapture = new
+                {
+                    schemaVersion = "v5-p6th1-raw-provider-capture-v1",
+                    documentId = request.DocumentId,
+                    primary = request.Primary,
+                    candidate = request.CandidateId,
+                    candidateIdentity = request.CandidateIdentity,
+                    provider = "OpenRouter",
+                    model = "qwen/qwen3.7-flash",
+                    providerRoute = "Alibaba",
+                    reasoningRequested = true,
+                    reasoningEffort = "OMITTED",
+                    providerRequestHash = request.ProviderHash,
+                    providerRequestBytes = request.ProviderBytes,
+                    semanticRequestHash = request.MessageHash,
+                    finishReason = observation.FinishReason,
+                    usage = observation.Usage,
+                    promptTokens = UsageInt(observation.Usage, "prompt_tokens"),
+                    completionTokens = UsageInt(observation.Usage, "completion_tokens"),
+                    reasoningTokens = UsageInt(observation.Usage, "reasoning_tokens"),
+                    reasoningExecutionConfirmed = UsageInt(observation.Usage, "reasoning_tokens") is > 0,
+                    sseEventCount = observation.SseEventCount,
+                    retryCount = observation.RetryCount,
+                    rawSseSha256 = Hashing.Sha256(observation.RawSse),
+                    rawResponseSha256 = Hashing.Sha256(observation.Content),
+                    rawSseUtf8Bytes = Encoding.UTF8.GetByteCount(observation.RawSse),
+                    rawResponseUtf8Bytes = Encoding.UTF8.GetByteCount(observation.Content),
+                    rawSse = observation.RawSse,
+                    rawResponse = observation.Content,
+                };
+                var rawPath = Path.Combine(capturePath, $"{key}.raw-capture.v1.json");
+                WriteNew(rawPath, rawCapture);
+                IndependentJudgmentLedger? parsed = null;
+                string? parserError = null;
+                try { parsed = ParseIndependentJudgment(request, observation.Content); }
+                catch (Exception error) { parserError = error.GetType().Name + ": " + error.Message; }
+                rows.Add(new
+                {
+                    primary = request.Primary,
+                    candidate = request.CandidateId,
+                    candidateIdentity = request.CandidateIdentity,
+                    transportStatus = "COMPLETED",
+                    finishReason = observation.FinishReason,
+                    parserStatus = parsed is null ? "REJECTED" : "PARSED",
+                    parserError,
+                    judgment = parsed?.Judgment,
+                    rawCaptureSha256 = Hashing.Sha256(File.ReadAllText(rawPath)),
+                    rawResponseSha256 = Hashing.Sha256(observation.Content),
+                    promptTokens = UsageInt(observation.Usage, "prompt_tokens"),
+                    completionTokens = UsageInt(observation.Usage, "completion_tokens"),
+                    reasoningTokens = UsageInt(observation.Usage, "reasoning_tokens"),
+                    retryCount = observation.RetryCount,
+                });
+            }
+            catch (Exception error) when (error is not Xunit.Sdk.XunitException)
+            {
+                WriteNew(Path.Combine(capturePath, $"{key}.transport-failure.v1.json"), new
+                {
+                    schemaVersion = "v5-p6th1-transport-failure-v1",
+                    documentId = request.DocumentId,
+                    primary = request.Primary,
+                    candidate = request.CandidateId,
+                    providerRequestHash = request.ProviderHash,
+                    errorType = error.GetType().FullName,
+                    message = error.Message,
+                    retryCount = 0,
+                    goldRead = false,
+                });
+                rows.Add(new { primary = request.Primary, candidate = request.CandidateId, transportStatus = "FAILED", errorType = error.GetType().FullName, retryCount = 0 });
+            }
+        }
+
+        WriteNew(Path.Combine(capturePath, "result.v1.json"), new
+        {
+            schemaVersion = "v5-p6th1-thirty-primary-call-result-v1",
+            status = "EXECUTION_SET_FROZEN",
+            providerCalls = requests.Count,
+            retries = 0,
+            repairs = 0,
+            fallbacks = 0,
+            goldRead = false,
+            goldMutation = "NONE",
+            runtimeChanged = false,
+            rows,
+        });
+
+        Assert.Equal(30, rows.Count);
+        Assert.All(rows.Select(row => JsonSerializer.SerializeToElement(row)), row =>
+        {
+            Assert.Equal("COMPLETED", row.GetProperty("transportStatus").GetString());
+            Assert.Equal("stop", row.GetProperty("finishReason").GetString());
+            Assert.Equal("PARSED", row.GetProperty("parserStatus").GetString());
+            Assert.Equal(0, row.GetProperty("retryCount").GetInt32());
+        });
+    }
+
+    [Fact]
+    public void P6TH1_frozen_raw_capture_is_aggregated_fail_closed_without_gold()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var execution = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{IndependentJudgmentCaptureRoot}/result.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToHashSet(StringComparer.Ordinal);
+        var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var requests = ComposeIndependentCandidateJudgments(prepared, baseline);
+        Assert.Equal(30, execution.RootElement.GetProperty("providerCalls").GetInt32());
+        Assert.False(execution.RootElement.GetProperty("goldRead").GetBoolean());
+
+        var judgments = new List<IndependentJudgmentLedger>();
+        var rawAuthorities = new List<object>();
+        foreach (var request in requests)
+        {
+            var rawPath = TestRepository.Path($"{IndependentJudgmentCaptureRoot}/{request.Primary}-{request.CandidateId}.raw-capture.v1.json");
+            using var raw = JsonDocument.Parse(File.ReadAllText(rawPath));
+            var root = raw.RootElement;
+            Assert.Equal(request.Primary, root.GetProperty("primary").GetString());
+            Assert.Equal(request.CandidateId, root.GetProperty("candidate").GetString());
+            Assert.Equal(request.ProviderHash, root.GetProperty("providerRequestHash").GetString());
+            Assert.Equal(request.MessageHash, root.GetProperty("semanticRequestHash").GetString());
+            Assert.Equal("stop", root.GetProperty("finishReason").GetString());
+            Assert.Equal(0, root.GetProperty("retryCount").GetInt32());
+            var response = root.GetProperty("rawResponse").GetString()!;
+            Assert.Equal(root.GetProperty("rawResponseSha256").GetString(), Hashing.Sha256(response));
+            judgments.Add(ParseIndependentJudgment(request, response));
+            rawAuthorities.Add(new
+            {
+                primary = request.Primary,
+                candidate = request.CandidateId,
+                rawCaptureSha256 = Hashing.Sha256(File.ReadAllText(rawPath)),
+                rawResponseSha256 = root.GetProperty("rawResponseSha256").GetString(),
+            });
+        }
+
+        Assert.Equal(30, judgments.Count);
+        Assert.Equal(10, judgments.Count(item => item.Judgment == "EXACT_STRUCTURAL_EXTENT"));
+        Assert.Equal(20, judgments.Count(item => item.Judgment == "NOT_EXACT_STRUCTURAL_EXTENT"));
+        var aggregate = AggregateIndependentJudgments(judgments, requests.Select(request => request.Primary).Distinct(StringComparer.Ordinal));
+        Assert.Equal(6, aggregate.Count);
+        Assert.Equal(2, aggregate.Count(item => item.Outcome == "SELECTED_EXACT_EXTENT"));
+        Assert.Equal(4, aggregate.Count(item => item.Outcome == "CONFLICT_MULTIPLE_EXACT"));
+        Assert.Equal(0, aggregate.Count(item => item.Outcome == "NO_EXACT_EXTENT"));
+
+        FreezeArtifact.AssertJson(IndependentJudgmentAggregationRoot, "independent-candidate-aggregation.v1.json", new
+        {
+            schemaVersion = "v5-p6th1-independent-candidate-aggregation-v1",
+            status = "RAW_CAPTURE_AGGREGATED_FAIL_CLOSED",
+            authority = new
+            {
+                executionResultSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{IndependentJudgmentCaptureRoot}/result.v1.json"))),
+                g2aRawResponseSha256 = g2aRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                candidateUniverseFingerprint = prepared.SourcePack.Universe.Fingerprint,
+                providerCallsDuringAudit = 0,
+                goldReadDuringAudit = false,
+                goldMutation = "NONE",
+                runtimeChanged = false,
+                rawCaptures = rawAuthorities,
+            },
+            capture = new
+            {
+                attemptedCalls = requests.Count,
+                finishStop = requests.Count,
+                parserAccepted = judgments.Count,
+                retries = 0,
+                exactJudgments = judgments.Count(item => item.Judgment == "EXACT_STRUCTURAL_EXTENT"),
+                notExactJudgments = judgments.Count(item => item.Judgment == "NOT_EXACT_STRUCTURAL_EXTENT"),
+            },
+            aggregation = new
+            {
+                policy = new { zero = "NO_EXACT_EXTENT", one = "SELECTED_EXACT_EXTENT", many = "CONFLICT_MULTIPLE_EXACT", tieBreak = "FORBIDDEN" },
+                outcomes = aggregate,
+                selected = aggregate.Count(item => item.Outcome == "SELECTED_EXACT_EXTENT"),
+                unresolved = aggregate.Count(item => item.Outcome == "NO_EXACT_EXTENT"),
+                conflicts = aggregate.Count(item => item.Outcome == "CONFLICT_MULTIPLE_EXACT"),
+            },
+            conclusion = "H1_INDEPENDENT_JUDGMENTS_CAPTURED_AND_AGGREGATED_WITHOUT_GOLD; MULTIPLE_POSITIVE_CANDIDATES_ARE_FAIL_CLOSED_CONFLICTS_NOT_TIE_BROKEN; SEMANTIC_GOLD_SCORING_REQUIRES_SEPARATE_AUTHORIZATION",
+        });
+    }
+
+    [Fact]
+    public void P6TH1_frozen_independent_judgments_are_forensically_scored_against_preregistered_exact_candidates()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Gold089Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var execution = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{IndependentJudgmentCaptureRoot}/result.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToHashSet(StringComparer.Ordinal);
+        var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
+        var requests = ComposeIndependentCandidateJudgments(prepared, baseline);
+        var universe = prepared.SourcePack.Universe.Candidates.ToDictionary(candidate => candidate.Id, StringComparer.Ordinal);
+
+        var preregisteredExact = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["O9"] = "C50",
+            ["O17"] = "C104",
+            ["O19"] = "C115",
+            ["O27"] = "C174",
+            ["O54"] = "C353",
+            ["O83"] = "C542",
+        };
+        var goldByPrimary = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
+            .Select(claim => new
+            {
+                identity = claim.GetProperty("identity").GetString()!,
+                primaryAlias = claim.GetProperty("sourceParts").EnumerateArray().First().GetProperty("sourceAlias").GetString()!,
+            })
+            .Where(claim => prepared.OccurrenceByAlias.TryGetValue(claim.primaryAlias, out var occurrence) && preregisteredExact.ContainsKey(occurrence))
+            .ToDictionary(claim => prepared.OccurrenceByAlias[claim.primaryAlias], claim => claim.identity, StringComparer.Ordinal);
+        Assert.Equal(6, goldByPrimary.Count);
+        foreach (var (primary, candidateId) in preregisteredExact)
+            Assert.Equal(goldByPrimary[primary], universe[candidateId].SpanIdentity);
+
+        var judgments = requests.Select(request =>
+        {
+            var rawPath = TestRepository.Path($"{IndependentJudgmentCaptureRoot}/{request.Primary}-{request.CandidateId}.raw-capture.v1.json");
+            using var raw = JsonDocument.Parse(File.ReadAllText(rawPath));
+            return ParseIndependentJudgment(request, raw.RootElement.GetProperty("rawResponse").GetString()!);
+        }).ToDictionary(item => $"{item.Primary}|{item.Candidate}", StringComparer.Ordinal);
+        Assert.Equal(30, judgments.Count);
+
+        string Classify(string primary, string candidateId)
+        {
+            var candidate = universe[candidateId];
+            var exact = universe[preregisteredExact[primary]];
+            if (candidate.SpanIdentity == exact.SpanIdentity) return "GOLD_EXACT";
+            if (candidate.Kind.ToString() == "WHOLE") return "WHOLE_PRIMARY";
+            var candidateWithinExact = candidate.Endpoint.Parts.All(part => exact.Endpoint.Parts.Any(goldPart =>
+                goldPart.Alias == part.Alias && goldPart.Start <= part.Start && part.End <= goldPart.End));
+            if (candidateWithinExact) return "UNDEREXTENT";
+            var exactWithinCandidate = exact.Endpoint.Parts.All(goldPart => candidate.Endpoint.Parts.Any(part =>
+                part.Alias == goldPart.Alias && part.Start <= goldPart.Start && goldPart.End <= part.End));
+            if (exactWithinCandidate) return "OVEREXTENT";
+            var overlapsExact = candidate.Endpoint.Parts.Any(part => exact.Endpoint.Parts.Any(goldPart =>
+                goldPart.Alias == part.Alias && part.Start < goldPart.End && goldPart.Start < part.End));
+            return overlapsExact ? "WRONG_PARTS" : "OTHER_MULTIPART";
+        }
+
+        var candidateRows = requests.Select(request =>
+        {
+            var judgment = judgments[$"{request.Primary}|{request.CandidateId}"].Judgment;
+            var classification = Classify(request.Primary, request.CandidateId);
+            return new
+            {
+                primary = request.Primary,
+                candidate = request.CandidateId,
+                candidateKind = request.CandidateKind,
+                candidateIdentity = request.CandidateIdentity,
+                classification,
+                modelJudgment = judgment,
+                modelExact = judgment == "EXACT_STRUCTURAL_EXTENT",
+            };
+        }).ToArray();
+        var exactRows = candidateRows.Where(row => row.classification == "GOLD_EXACT").ToArray();
+        Assert.Equal(6, exactRows.Length);
+        Assert.Equal(1, exactRows.Count(row => row.modelExact));
+        Assert.Equal(5, exactRows.Count(row => !row.modelExact));
+        Assert.Equal(10, candidateRows.Count(row => row.modelExact));
+        Assert.Equal(9, candidateRows.Count(row => row.modelExact && row.classification != "GOLD_EXACT"));
+
+        var aggregate = AggregateIndependentJudgments(judgments.Values, preregisteredExact.Keys)
+            .ToDictionary(item => item.Primary, StringComparer.Ordinal);
+        var primaryRows = preregisteredExact.Keys.OrderBy(primary => primary, StringComparer.Ordinal).Select(primary =>
+        {
+            var goldCandidate = preregisteredExact[primary];
+            var outcome = aggregate[primary];
+            var resolution = outcome.Outcome switch
+            {
+                "SELECTED_EXACT_EXTENT" when outcome.SelectedCandidate == goldCandidate => "EXACT_SELECTED",
+                "SELECTED_EXACT_EXTENT" => "WRONG_SELECTED",
+                "CONFLICT_MULTIPLE_EXACT" when outcome.ExactCandidates.Contains(goldCandidate, StringComparer.Ordinal) => "CONFLICT_WITH_GOLD_INCLUDED",
+                "CONFLICT_MULTIPLE_EXACT" => "CONFLICT_GOLD_MISSING",
+                _ => "NO_EXACT_EXTENT",
+            };
+            return new { primary, goldCandidate, positiveCandidates = outcome.ExactCandidates, aggregationOutcome = outcome.Outcome, resolution };
+        }).ToArray();
+        Assert.Equal(2, primaryRows.Count(row => row.resolution == "WRONG_SELECTED"));
+        Assert.Equal(1, primaryRows.Count(row => row.resolution == "CONFLICT_WITH_GOLD_INCLUDED"));
+        Assert.Equal(3, primaryRows.Count(row => row.resolution == "CONFLICT_GOLD_MISSING"));
+
+        var confusion = candidateRows.GroupBy(row => row.classification, StringComparer.Ordinal).OrderBy(group => group.Key, StringComparer.Ordinal)
+            .Select(group => new
+            {
+                classification = group.Key,
+                total = group.Count(),
+                modelExact = group.Count(row => row.modelExact),
+                modelNotExact = group.Count(row => !row.modelExact),
+            }).ToArray();
+        FreezeArtifact.AssertJson(IndependentJudgmentGoldForensicRoot, "independent-candidate-gold-forensic.v1.json", new
+        {
+            schemaVersion = "v5-p6th1-independent-candidate-gold-forensic-v1",
+            status = "GOLD_FORENSIC_COMPLETE",
+            authority = new
+            {
+                goldSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path(Gold089Path))),
+                goldMutation = "NONE",
+                preregisteredExactCandidates = preregisteredExact,
+                executionResultSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{IndependentJudgmentCaptureRoot}/result.v1.json"))),
+                g2aRawResponseSha256 = g2aRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                providerCallsDuringAudit = 0,
+                runtimeChanged = false,
+            },
+            candidateJudgment = new
+            {
+                total = candidateRows.Length,
+                trueExactAccepted = candidateRows.Count(row => row.modelExact && row.classification == "GOLD_EXACT"),
+                falseExactAccepted = candidateRows.Count(row => row.modelExact && row.classification != "GOLD_EXACT"),
+                goldExactRejected = candidateRows.Count(row => !row.modelExact && row.classification == "GOLD_EXACT"),
+                precision = candidateRows.Count(row => row.modelExact) == 0 ? 0 : (double)candidateRows.Count(row => row.modelExact && row.classification == "GOLD_EXACT") / candidateRows.Count(row => row.modelExact),
+                recall = (double)candidateRows.Count(row => row.modelExact && row.classification == "GOLD_EXACT") / exactRows.Length,
+                confusion,
+            },
+            primaryResolution = new
+            {
+                exactSelected = primaryRows.Count(row => row.resolution == "EXACT_SELECTED"),
+                wrongSelected = primaryRows.Count(row => row.resolution == "WRONG_SELECTED"),
+                conflictWithGoldIncluded = primaryRows.Count(row => row.resolution == "CONFLICT_WITH_GOLD_INCLUDED"),
+                conflictGoldMissing = primaryRows.Count(row => row.resolution == "CONFLICT_GOLD_MISSING"),
+                noExactExtent = primaryRows.Count(row => row.resolution == "NO_EXACT_EXTENT"),
+                rows = primaryRows,
+            },
+            rows = candidateRows,
+            conclusion = "H1_REMOVES_ORDERED_MENU_COUPLING_BY_CONSTRUCTION_BUT_EXACT_CANDIDATE_DISCRIMINATION_FAILS_ON_THE_SRC089_PROBE; AGGREGATION_CONFLICTS_ARE_FAIL_CLOSED_AND_NOT_TIE_BROKEN",
+        });
     }
 
     [Fact]
@@ -1630,6 +2184,27 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         bool SelectedFirstCandidate,
         string SelectedRelativeToWhole);
 
+    private sealed record IndependentJudgmentRequest(
+        string DocumentId,
+        string Primary,
+        string PrimaryAlias,
+        string CandidateId,
+        string CandidateKind,
+        string CandidateIdentity,
+        string SystemPrompt,
+        string UserMessage,
+        string MessageHash,
+        int MessageBytes,
+        byte[] ProviderBody,
+        int ProviderBytes,
+        string ProviderHash,
+        int MaxCompletionTokens);
+
+    private sealed record IndependentJudgmentLedger(string Primary, string Candidate, string Judgment);
+
+    private sealed record IndependentAggregate(string Primary, string Outcome, string? SelectedCandidate,
+        IReadOnlyList<string> ExactCandidates);
+
     private sealed record AnchorExistenceRequest(string DocumentId, string SystemPrompt, string UserMessage,
         string MessageHash, int MessageBytes, byte[] ProviderBody, int ProviderBytes, string ProviderHash,
         IReadOnlyList<(string Occurrence, string Alias)> Primaries, int MaxCompletionTokens);
@@ -2137,6 +2712,91 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         {
             userDocument.Dispose();
         }
+    }
+
+    private static IReadOnlyList<IndependentJudgmentRequest> ComposeIndependentCandidateJudgments(PreparedDocument prepared,
+        PreparedRequest menuRequest)
+    {
+        var document = JsonNode.Parse(menuRequest.UserMessage)!.AsObject();
+        var universe = prepared.SourcePack.Universe.Candidates.ToDictionary(candidate => candidate.Id, StringComparer.Ordinal);
+        const string systemPrompt = """
+            Judge one harness-issued candidate proposition for an already-established structural anchor. This request contains exactly one candidate extent, not a menu; do not compare it to any unissued or hypothetical extent.
+
+            Return EXACT_STRUCTURAL_EXTENT only when this supplied candidate itself is the exact full source extent of a local structural heading. Return NOT_EXACT_STRUCTURAL_EXTENT otherwise, including when the candidate is too short, too long, a continuation, front matter, or another structural-looking but non-heading extent.
+
+            Return exactly one JSON object with this shape: {"primary":"O17","candidate":"C104","judgment":"EXACT_STRUCTURAL_EXTENT"}. The primary and candidate must exactly echo the issued values. Do not output text, coordinates, aliases, locators, relations, hierarchy, rationale, confidence, or any extra property.
+            """;
+        var requests = new List<IndependentJudgmentRequest>();
+        foreach (var groupNode in document["occurrenceGroups"]!.AsArray())
+        {
+            var group = groupNode!.AsObject();
+            var primary = group["primary"]!.GetValue<string>();
+            var primaryAlias = menuRequest.OccurrenceGroups.Single(item => item.PrimaryOccurrence == primary).PrimaryAlias;
+            foreach (var candidateNode in group["candidates"]!.AsArray())
+            {
+                var candidate = candidateNode!.AsObject();
+                var candidateId = candidate["id"]!.GetValue<string>();
+                Assert.True(universe.ContainsKey(candidateId), $"independent-candidate-not-issued:{candidateId}");
+                var messageRoot = new JsonObject
+                {
+                    ["protocolVersion"] = IndependentJudgmentProtocol,
+                    ["primary"] = primary,
+                    ["function"] = group["function"]!.DeepClone(),
+                    ["primaryText"] = group["primaryText"]!.DeepClone(),
+                    ["candidate"] = candidate.DeepClone(),
+                    ["context"] = group["context"]!.DeepClone(),
+                };
+                var userMessage = messageRoot.ToJsonString(new JsonSerializerOptions { WriteIndented = false });
+                var requestModel = new V5FreeHeadingRequestV1(IndependentJudgmentProtocol, systemPrompt, userMessage,
+                    Hashing.Sha256(userMessage), Encoding.UTF8.GetByteCount(systemPrompt), Encoding.UTF8.GetByteCount(userMessage));
+                var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(requestModel,
+                    menuRequest.MaxCompletionTokens);
+                requests.Add(new IndependentJudgmentRequest(prepared.DocumentId, primary, primaryAlias, candidateId,
+                    universe[candidateId].Kind.ToString(), universe[candidateId].SpanIdentity, systemPrompt, userMessage,
+                    requestModel.UserMessageSha256, requestModel.UserMessageUtf8Bytes, body.PayloadBytes, body.Bytes, body.Hash,
+                    menuRequest.MaxCompletionTokens));
+            }
+        }
+        return requests.OrderBy(request => request.Primary, StringComparer.Ordinal)
+            .ThenBy(request => request.CandidateId, StringComparer.Ordinal).ToArray();
+    }
+
+    private static IReadOnlyList<IndependentAggregate> AggregateIndependentJudgments(
+        IEnumerable<IndependentJudgmentLedger> judgments, IEnumerable<string> issuedPrimaries)
+    {
+        var byPrimary = judgments.GroupBy(judgment => judgment.Primary, StringComparer.Ordinal)
+            .ToDictionary(group => group.Key, group => group.ToArray(), StringComparer.Ordinal);
+        return issuedPrimaries.OrderBy(primary => primary, StringComparer.Ordinal).Select(primary =>
+        {
+            var exact = byPrimary.GetValueOrDefault(primary, []).Where(judgment => judgment.Judgment == "EXACT_STRUCTURAL_EXTENT")
+                .Select(judgment => judgment.Candidate).OrderBy(candidate => candidate, StringComparer.Ordinal).ToArray();
+            return exact.Length switch
+            {
+                0 => new IndependentAggregate(primary, "NO_EXACT_EXTENT", null, exact),
+                1 => new IndependentAggregate(primary, "SELECTED_EXACT_EXTENT", exact[0], exact),
+                _ => new IndependentAggregate(primary, "CONFLICT_MULTIPLE_EXACT", null, exact),
+            };
+        }).ToArray();
+    }
+
+    private static IndependentJudgmentLedger ParseIndependentJudgment(IndependentJudgmentRequest request, string raw)
+    {
+        using var document = JsonDocument.Parse(raw);
+        var root = document.RootElement;
+        if (root.ValueKind != JsonValueKind.Object || root.EnumerateObject().Count() != 3 ||
+            !root.TryGetProperty("primary", out var primary) || primary.ValueKind != JsonValueKind.String ||
+            !root.TryGetProperty("candidate", out var candidate) || candidate.ValueKind != JsonValueKind.String ||
+            !root.TryGetProperty("judgment", out var judgment) || judgment.ValueKind != JsonValueKind.String)
+            throw new InvalidOperationException("independent-judgment-schema-invalid");
+
+        if (!StringComparer.Ordinal.Equals(request.Primary, primary.GetString()))
+            throw new InvalidOperationException("independent-judgment-primary-not-issued");
+        if (!StringComparer.Ordinal.Equals(request.CandidateId, candidate.GetString()))
+            throw new InvalidOperationException("independent-judgment-candidate-not-issued");
+        var value = judgment.GetString()!;
+        if (value is not ("EXACT_STRUCTURAL_EXTENT" or "NOT_EXACT_STRUCTURAL_EXTENT"))
+            throw new InvalidOperationException("independent-judgment-enum-invalid");
+        return new IndependentJudgmentLedger(request.Primary, request.CandidateId, value);
     }
 
     private static PreparedRequest ComposeExactExtentWithCandidateOrder(PreparedDocument prepared, PreparedRequest baseline, bool reverse)
