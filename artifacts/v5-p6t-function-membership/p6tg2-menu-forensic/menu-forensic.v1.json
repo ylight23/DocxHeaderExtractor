@@ -20,6 +20,24 @@
       "G2E": "aca152f2b7a28d1c73895ac9f8666bf1e32a877dbc792b74e532dcce3ed7f8f4"
     }
   },
+  "historicalCorrection": {
+    "supersededClaim": "G2E selected WHOLE on 6/6 and matched G2B on 6/6.",
+    "authoritativeRawReconciledResult": {
+      "g2eWhole": {
+        "selected": 3,
+        "total": 6
+      },
+      "g2eMultipart": {
+        "selected": 3,
+        "total": 6
+      },
+      "g2bG2eSameIdentity": {
+        "selected": 3,
+        "total": 6
+      },
+      "evidence": "DIRECT_FROZEN_RAW_CAPTURE_PARSE_WITH_REQUEST_HASH_PARITY"
+    }
+  },
   "diagnostics": {
     "selectedWhole": {
       "G2B": 6,

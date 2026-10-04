@@ -585,6 +585,17 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
                     G2E = byArm["G2E"].RawResponseSha256,
                 },
             },
+            historicalCorrection = new
+            {
+                supersededClaim = "G2E selected WHOLE on 6/6 and matched G2B on 6/6.",
+                authoritativeRawReconciledResult = new
+                {
+                    g2eWhole = new { selected = byArm["G2E"].Rows.Count(row => IsWholeKind(row.SelectedKind)), total = 6 },
+                    g2eMultipart = new { selected = byArm["G2E"].Rows.Count(row => IsMultipartKind(row.SelectedKind)), total = 6 },
+                    g2bG2eSameIdentity = new { selected = byArm["G2B"].Rows.Zip(byArm["G2E"].Rows).Count(pair => pair.First.SelectedCandidate == pair.Second.SelectedCandidate), total = 6 },
+                    evidence = "DIRECT_FROZEN_RAW_CAPTURE_PARSE_WITH_REQUEST_HASH_PARITY",
+                },
+            },
             diagnostics = new
             {
                 selectedWhole = arms.ToDictionary(arm => arm.Name, arm => arm.Rows.Count(row => IsWholeKind(row.SelectedKind)), StringComparer.Ordinal),
