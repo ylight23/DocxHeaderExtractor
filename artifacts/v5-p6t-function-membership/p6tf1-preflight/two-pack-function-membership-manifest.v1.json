@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "v5-p6tf1-function-membership-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "sharedRuntime": "UNCHANGED",
+  "segmentationDependency": "NONE",
+  "consumesP6TE1Output": false,
+  "explicitInvariant": "P6T_F1_DOES_NOT_CONSUME_P6T_E1_OUTPUT",
+  "extentOutput": "FORBIDDEN",
+  "groupingPass": "BLOCKED",
+  "exactExtentPass": "BLOCKED",
+  "outputContract": "TOTAL_96_DECISIONS_FUNCTION_MEMBERSHIP_ONLY",
+  "allowedFunctions": [
+    "ESTABLISHES_STRUCTURE",
+    "REPRESENTS_STRUCTURE",
+    "OTHER"
+  ],
+  "forbiddenOutput": [
+    "START_OR_SEGMENT_BOUNDARIES",
+    "CANDIDATE_IDS",
+    "SOURCE_PARTS",
+    "SPANS",
+    "LOCATORS",
+    "HIERARCHY",
+    "RELATIONS",
+    "CONFIDENCE",
+    "REASONS",
+    "EXTENT"
+  ],
+  "inputEvidence": [
+    "OCCURRENCE_ID",
+    "PAGE",
+    "TEXT",
+    "READ_ONLY_CORRESPONDENCES",
+    "CONTEXT_ONLY_EVIDENCE"
+  ],
+  "expectedDecisions": 96,
+  "maximumFutureProviderCalls": 2,
+  "retry": 0,
+  "repair": false,
+  "fallback": false,
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issuedOccurrences": 96,
+      "requestHash": "010ed175ee676085349da16469346c67da1dea39fe462589f42d45fe2299a412",
+      "systemPromptSha256": "b44904b62d8807757ba288ee6f8192081f5a2a8742e91e40b1f447974601202a",
+      "providerRequestHash": "a244f7c32dd1fe8c2c1b1551a48ff37ec95eadfbcd18ba0e64251a82b873cd29",
+      "providerRequestBytes": 21031,
+      "maxCompletionTokens": 32768,
+      "carrier": "OPENROUTER_QWEN37_ALIBABA_REASONING_ENABLED_JSON_OBJECT"
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issuedOccurrences": 96,
+      "requestHash": "4cb5d6e60747c45ce7f9be5e24ab49f29157d7093560fde6f55d4f3e26f24e4d",
+      "systemPromptSha256": "b44904b62d8807757ba288ee6f8192081f5a2a8742e91e40b1f447974601202a",
+      "providerRequestHash": "35c1f1078f39fdc87d3feabe3d61451d3d331bf79407f20cc39f26e20ddb6e29",
+      "providerRequestBytes": 25238,
+      "maxCompletionTokens": 32768,
+      "carrier": "OPENROUTER_QWEN37_ALIBABA_REASONING_ENABLED_JSON_OBJECT"
+    }
+  ]
+}
