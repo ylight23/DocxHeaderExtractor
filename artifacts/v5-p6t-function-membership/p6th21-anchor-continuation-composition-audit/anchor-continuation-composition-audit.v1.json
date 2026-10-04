@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "v5-p6th21-anchor-continuation-composition-audit-v1",
+  "status": "FROZEN_PROVIDER_FREE_COMPOSITION_AUDIT",
+  "rawAuthorities": {
+    "g2aRawResponseSha256": "90031a491b19c54e275fd8231d6d8475c8e45c4906f9a617c35eb407067a00c9",
+    "h2RawResponseSha256": "1f4f1e5f9c1132a8967a4d6b661b96416ecd21d455977c4a6fddba39484eb66c",
+    "rawH2Mutated": false,
+    "providerCallsDuringAudit": 0,
+    "repairs": 0,
+    "fallbacks": 0
+  },
+  "invariant": {
+    "name": "NO_CROSS_DISTINCT_FROZEN_G2A_ANCHOR",
+    "rule": "A raw H2 CONTINUES_STRUCTURAL_UNIT edge must compose to STOPS_STRUCTURAL_UNIT when its right O# is a distinct frozen G2A HAS_STRUCTURAL_EXTENT anchor.",
+    "anchorCount": 6,
+    "rawContinuations": 7,
+    "crossingConflicts": [
+      {
+        "Anchor": "O17",
+        "Left": "O18",
+        "Right": "O19",
+        "rawBoundary": "CONTINUES_STRUCTURAL_UNIT",
+        "composedBoundary": "STOPS_STRUCTURAL_UNIT"
+      }
+    ],
+    "rawDecisionOverrides": 1
+  },
+  "evaluationBasis": {
+    "canonicalGoldSha256": "83db6b93462e9bcaf41bc22151b2b31d98c4898973da8ffb86de2d3b18ec9b88",
+    "goldMutation": "NONE",
+    "goldUsedOnlyForOfflineCompositionEvaluation": true
+  },
+  "composedResult": {
+    "exactExtents": 6,
+    "totalExtents": 6,
+    "rows": [
+      {
+        "anchor": "O17",
+        "expectedAliases": [
+          "L0014:S0",
+          "L0015:S0"
+        ],
+        "observedAliases": [
+          "L0014:S0",
+          "L0015:S0"
+        ],
+        "exact": true
+      },
+      {
+        "anchor": "O19",
+        "expectedAliases": [
+          "L0016:S0"
+        ],
+        "observedAliases": [
+          "L0016:S0"
+        ],
+        "exact": true
+      },
+      {
+        "anchor": "O27",
+        "expectedAliases": [
+          "L0024:S0",
+          "L0025:S0"
+        ],
+        "observedAliases": [
+          "L0024:S0",
+          "L0025:S0"
+        ],
+        "exact": true
+      },
+      {
+        "anchor": "O54",
+        "expectedAliases": [
+          "L0051:S0",
+          "L0052:S0"
+        ],
+        "observedAliases": [
+          "L0051:S0",
+          "L0052:S0"
+        ],
+        "exact": true
+      },
+      {
+        "anchor": "O83",
+        "expectedAliases": [
+          "L0080:S0",
+          "L0081:S0"
+        ],
+        "observedAliases": [
+          "L0080:S0",
+          "L0081:S0"
+        ],
+        "exact": true
+      },
+      {
+        "anchor": "O9",
+        "expectedAliases": [
+          "L0006:S0",
+          "L0007:S0",
+          "L0008:S0"
+        ],
+        "observedAliases": [
+          "L0006:S0",
+          "L0007:S0",
+          "L0008:S0"
+        ],
+        "exact": true
+      }
+    ]
+  },
+  "conclusion": "COMPOSITION_RESULT_ONLY: FROZEN_G2A_ANCHOR_AUTHORITY_PLUS_FROZEN_H2_CONTINUATION_WITH_NO_CROSS_ANCHOR_INVARIANT_RECONSTRUCTS_6_OF_6_SRC089_PROBE_EXTENTS; RAW_H2_ACCURACY_REMAINS_17_OF_18_EDGES_AND_5_OF_6_EXTENTS"
+}

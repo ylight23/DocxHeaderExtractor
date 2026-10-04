@@ -37,6 +37,9 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private const string IndependentJudgmentAggregationRoot = "artifacts/v5-p6t-function-membership/p6th1-independent-candidate-aggregation";
     private const string IndependentJudgmentGoldForensicRoot = "artifacts/v5-p6t-function-membership/p6th1-independent-candidate-gold-forensic";
     private const string ContinuationBoundaryPreflightRoot = "artifacts/v5-p6t-function-membership/p6th2-function-conditioned-continuation-preflight";
+    private const string ContinuationBoundaryCaptureRoot = "artifacts/v5-p6t-function-membership/p6th2-function-conditioned-continuation-canary-20261004";
+    private const string ContinuationBoundaryGoldAuditRoot = "artifacts/v5-p6t-function-membership/p6th2-function-conditioned-continuation-gold-audit";
+    private const string ContinuationCompositionAuditRoot = "artifacts/v5-p6t-function-membership/p6th21-anchor-continuation-composition-audit";
     private const string Gold089Path = "eval/a99-closed-loop/gold/SRC-089.gold.json";
     private const string Gold095Path = "eval/a99-closed-loop/gold/SRC-095.gold.json";
     private const string Review095Path = "eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json";
@@ -47,6 +50,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private const string RunExactExtentPermutationVariable = "A99_RUN_P6TG2D_CANARY";
     private const string RunExactExtentWholeMoveVariable = "A99_RUN_P6TG2E_CANARY";
     private const string RunIndependentJudgmentVariable = "A99_RUN_P6TH1_CANARY";
+    private const string RunContinuationBoundaryVariable = "A99_RUN_P6TH2_CANARY";
     private const string Protocol = "v5-function-conditioned-exact-extent-resolver-preflight-1";
     private const string IndependentJudgmentProtocol = "v5-independent-exact-extent-judgment-1";
     private const string ContinuationBoundaryProtocol = "v5-function-conditioned-continuation-boundary-1";
@@ -2342,6 +2346,294 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         finally
         {
             foreach (var item in anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))) item.Dispose();
+        }
+    }
+
+    [Fact]
+    public async Task Run_exactly_one_frozen_H2_continuation_boundary_call_only_when_explicitly_enabled()
+    {
+        if (Environment.GetEnvironmentVariable(RunContinuationBoundaryVariable) is not ("1" or "true" or "TRUE")) return;
+
+        var apiKey = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        Assert.False(string.IsNullOrWhiteSpace(apiKey), "OPENROUTER_API_KEY is required for the explicitly enabled P6T-H2 canary.");
+        var capturePath = TestRepository.Path(ContinuationBoundaryCaptureRoot);
+        Assert.False(Directory.Exists(capturePath), "P6T-H2 capture root already exists; automatic resume or resend is forbidden.");
+
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var preflight = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ContinuationBoundaryPreflightRoot}/continuation-boundary-preflight.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorLedger = ParseAnchorLedger(ComposeAnchorExistence(prepared), g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var has = anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToArray();
+        ContinuationBoundaryRequest request;
+        try { request = ComposeContinuationBoundaries(prepared, has); }
+        finally { foreach (var item in anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))) item.Dispose(); }
+
+        var callPlan = preflight.RootElement.GetProperty("callPlan");
+        Assert.Equal("PREPARED_NOT_AUTHORIZED", preflight.RootElement.GetProperty("status").GetString());
+        Assert.Equal(request.MessageHash, callPlan.GetProperty("userMessageSha256").GetString());
+        Assert.Equal(request.ProviderHash, callPlan.GetProperty("providerBodySha256").GetString());
+        Assert.Equal(request.ProviderBytes, callPlan.GetProperty("providerBodyBytes").GetInt32());
+
+        Directory.CreateDirectory(capturePath);
+        WriteNew(Path.Combine(capturePath, "execution-reservation.v1.json"), new
+        {
+            schemaVersion = "v5-p6th2-execution-reservation-v1",
+            status = "ONE_PRIMARY_SLOT_RESERVED",
+            documentId = request.DocumentId,
+            providerRequestHash = request.ProviderHash,
+            providerCallsBeforeSend = 0,
+            retriesAllowed = 0,
+            repairsAllowed = false,
+            fallbacksAllowed = false,
+            goldRead = false,
+        });
+
+        using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
+        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        {
+            ApiKey = apiKey!, Model = "qwen/qwen3.7-flash", OpenRouterProviderRoute = "Alibaba",
+            TransientRequestRetries = 0, MaxParallelRequests = 1, ProviderTransportTimeoutSeconds = 300,
+            RequireZeroDataRetention = false,
+        });
+        try
+        {
+            var observation = await provider.ExecuteObservedAsync(request.ProviderBody, request.MaxCompletionTokens,
+                request.SystemPrompt, request.UserMessage, CancellationToken.None);
+            Assert.Equal(0, observation.RetryCount);
+            WriteNew(Path.Combine(capturePath, "SRC-089.raw-capture.v1.json"), new
+            {
+                schemaVersion = "v5-p6th2-raw-provider-capture-v1", documentId = request.DocumentId,
+                provider = "OpenRouter", model = "qwen/qwen3.7-flash", providerRoute = "Alibaba",
+                reasoningRequested = true, reasoningEffort = "OMITTED", providerRequestHash = request.ProviderHash,
+                semanticRequestHash = request.MessageHash, finishReason = observation.FinishReason, usage = observation.Usage,
+                promptTokens = UsageInt(observation.Usage, "prompt_tokens"), completionTokens = UsageInt(observation.Usage, "completion_tokens"),
+                reasoningTokens = UsageInt(observation.Usage, "reasoning_tokens"), reasoningExecutionConfirmed = UsageInt(observation.Usage, "reasoning_tokens") is > 0,
+                sseEventCount = observation.SseEventCount, retryCount = observation.RetryCount,
+                rawSseSha256 = Hashing.Sha256(observation.RawSse), rawResponseSha256 = Hashing.Sha256(observation.Content),
+                rawSse = observation.RawSse, rawResponse = observation.Content,
+            });
+            IReadOnlyList<ContinuationBoundaryLedger>? parsed = null;
+            string? parserError = null;
+            try { parsed = ParseContinuationBoundaries(request, observation.Content); }
+            catch (Exception error) { parserError = error.GetType().Name + ": " + error.Message; }
+            WriteNew(Path.Combine(capturePath, "result.v1.json"), new
+            {
+                schemaVersion = "v5-p6th2-one-primary-call-result-v1", status = "EXECUTION_SET_FROZEN",
+                providerCalls = 1, retries = 0, repairs = 0, fallbacks = 0, goldRead = false, goldMutation = "NONE", runtimeChanged = false,
+                rawCaptureSha256 = Hashing.Sha256(File.ReadAllText(Path.Combine(capturePath, "SRC-089.raw-capture.v1.json"))),
+                row = new { documentId = request.DocumentId, transportStatus = "COMPLETED", finishReason = observation.FinishReason,
+                    parserStatus = parsed is null ? "REJECTED" : "PARSED", parserError, edgeCount = request.Edges.Count,
+                    acceptedEdges = parsed?.Count ?? 0, promptTokens = UsageInt(observation.Usage, "prompt_tokens"),
+                    completionTokens = UsageInt(observation.Usage, "completion_tokens"), reasoningTokens = UsageInt(observation.Usage, "reasoning_tokens"),
+                    rawResponseSha256 = Hashing.Sha256(observation.Content) },
+            });
+        }
+        catch (Exception error)
+        {
+            WriteNew(Path.Combine(capturePath, "result.v1.json"), new
+            {
+                schemaVersion = "v5-p6th2-one-primary-call-result-v1", status = "EXECUTION_SET_FROZEN",
+                providerCalls = 1, retries = 0, repairs = 0, fallbacks = 0, goldRead = false, goldMutation = "NONE", runtimeChanged = false,
+                row = new { documentId = request.DocumentId, transportStatus = "FAILED", error = error.GetType().Name + ": " + error.Message },
+            });
+            throw;
+        }
+    }
+
+    [Fact]
+    public void P6TH2_frozen_continuation_boundaries_are_audited_against_gold_without_provider_calls()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var execution = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ContinuationBoundaryCaptureRoot}/result.v1.json")));
+        using var raw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ContinuationBoundaryCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Gold089Path)));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var anchorLedger = ParseAnchorLedger(ComposeAnchorExistence(prepared), g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var has = anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToArray();
+        try
+        {
+            var request = ComposeContinuationBoundaries(prepared, has);
+            Assert.Equal(request.ProviderHash, raw.RootElement.GetProperty("providerRequestHash").GetString());
+            Assert.Equal(raw.RootElement.GetProperty("rawResponseSha256").GetString(), Hashing.Sha256(raw.RootElement.GetProperty("rawResponse").GetString()!));
+            Assert.Equal("stop", execution.RootElement.GetProperty("row").GetProperty("finishReason").GetString());
+            Assert.Equal("PARSED", execution.RootElement.GetProperty("row").GetProperty("parserStatus").GetString());
+            var observed = ParseContinuationBoundaries(request, raw.RootElement.GetProperty("rawResponse").GetString()!);
+            var reconstructed = ReconstructContinuationBoundaries(request, observed);
+            var aliasByOccurrence = prepared.OccurrenceByAlias.ToDictionary(item => item.Value, item => item.Key, StringComparer.Ordinal);
+            var goldByAnchor = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
+                .Select(claim => claim.GetProperty("sourceParts").EnumerateArray().Select(part => part.GetProperty("sourceAlias").GetString()!).ToArray())
+                .Where(parts => parts.Length > 0 && prepared.OccurrenceByAlias.ContainsKey(parts[0]))
+                .ToDictionary(parts => prepared.OccurrenceByAlias[parts[0]], parts => parts, StringComparer.Ordinal);
+            Assert.Equal(6, has.Length);
+            Assert.All(has, anchor => Assert.True(goldByAnchor.ContainsKey(anchor), $"h2-gold-anchor-missing:{anchor}"));
+
+            var edgeRows = request.Edges.Select(edge =>
+            {
+                var observedBoundary = observed.Single(item => item.Anchor == edge.Anchor && item.Left == edge.Left && item.Right == edge.Right).Boundary;
+                var expectedAliases = goldByAnchor[edge.Anchor];
+                var expected = expectedAliases.Contains(aliasByOccurrence[edge.Right], StringComparer.Ordinal) &&
+                    Array.IndexOf(expectedAliases, aliasByOccurrence[edge.Right]) == Array.IndexOf(expectedAliases, aliasByOccurrence[edge.Left]) + 1
+                    ? "CONTINUES_STRUCTURAL_UNIT" : "STOPS_STRUCTURAL_UNIT";
+                return new { anchor = edge.Anchor, left = edge.Left, right = edge.Right, expected, observed = observedBoundary,
+                    correct = expected == observedBoundary };
+            }).ToArray();
+            var extentRows = reconstructed.Select(row =>
+            {
+                var expected = goldByAnchor[row.Anchor];
+                var actual = row.Aliases.Select(occurrence => aliasByOccurrence[occurrence]).ToArray();
+                var classification = actual.SequenceEqual(expected, StringComparer.Ordinal) ? "EXACT" :
+                    actual.All(alias => expected.Contains(alias, StringComparer.Ordinal)) ? "UNDEREXTENT" :
+                    expected.All(alias => actual.Contains(alias, StringComparer.Ordinal)) ? "OVEREXTENT" : "WRONG_PARTS";
+                var firstWrong = edgeRows.Where(edge => edge.anchor == row.Anchor && !edge.correct)
+                    .Select(edge => new { edge.left, edge.right, edge.expected, edge.observed }).FirstOrDefault();
+                return new { anchor = row.Anchor, expectedAliases = expected, observedAliases = actual, classification, firstWrongEdge = firstWrong };
+            }).OrderBy(row => row.anchor, StringComparer.Ordinal).ToArray();
+
+            Assert.Equal(17, edgeRows.Count(row => row.correct));
+            Assert.Equal(1, edgeRows.Count(row => !row.correct));
+            Assert.Equal(5, extentRows.Count(row => row.classification == "EXACT"));
+            Assert.Equal(1, extentRows.Count(row => row.classification == "OVEREXTENT"));
+            Assert.Equal(0, extentRows.Count(row => row.classification is "UNDEREXTENT" or "WRONG_PARTS"));
+
+            FreezeArtifact.AssertJson(ContinuationBoundaryGoldAuditRoot, "continuation-boundary-gold-audit.v1.json", new
+            {
+                schemaVersion = "v5-p6th2-continuation-boundary-gold-audit-v1",
+                status = "FROZEN_OFFLINE_AUDIT",
+                executionAuthority = new
+                {
+                    executionResultSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{ContinuationBoundaryCaptureRoot}/result.v1.json"))),
+                    rawResponseSha256 = raw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                    providerCallsDuringAudit = 0,
+                    repair = false,
+                    fallback = false,
+                },
+                evaluationBasis = new
+                {
+                    goldPath = Gold089Path,
+                    canonicalGoldSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path(Gold089Path))),
+                    goldMutation = "NONE",
+                    anchorCount = has.Length,
+                },
+                edgeScore = new
+                {
+                    total = edgeRows.Length,
+                    correct = edgeRows.Count(row => row.correct),
+                    incorrect = edgeRows.Count(row => !row.correct),
+                    continuation = new { truePositive = edgeRows.Count(row => row.expected == "CONTINUES_STRUCTURAL_UNIT" && row.observed == row.expected), falsePositive = edgeRows.Count(row => row.observed == "CONTINUES_STRUCTURAL_UNIT" && row.expected != row.observed), falseNegative = edgeRows.Count(row => row.expected == "CONTINUES_STRUCTURAL_UNIT" && row.observed != row.expected) },
+                    stop = new { correct = edgeRows.Count(row => row.expected == "STOPS_STRUCTURAL_UNIT" && row.correct), incorrect = edgeRows.Count(row => row.expected == "STOPS_STRUCTURAL_UNIT" && !row.correct) },
+                    rows = edgeRows,
+                },
+                reconstructedExtentScore = new
+                {
+                    total = extentRows.Length,
+                    exact = extentRows.Count(row => row.classification == "EXACT"),
+                    underextent = extentRows.Count(row => row.classification == "UNDEREXTENT"),
+                    overextent = extentRows.Count(row => row.classification == "OVEREXTENT"),
+                    wrongParts = extentRows.Count(row => row.classification == "WRONG_PARTS"),
+                    rows = extentRows,
+                },
+                conclusion = "H2_FUNCTION_CONDITIONED_CONTINUATION_RECONSTRUCTS_5_OF_6_FROZEN_SRC089_ANCHOR_EXTENTS_EXACTLY; ONLY_ERROR_IS_AN_OVEREXTENT_BOUNDARY_BETWEEN_ADJACENT_STRUCTURAL_UNITS; NO_G2A_POST_HOC_REMEDIATION_APPLIED",
+            });
+        }
+        finally
+        {
+            foreach (var item in anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))) item.Dispose();
+        }
+    }
+
+    [Fact]
+    public void P6TH21_composes_frozen_G2A_anchors_with_H2_boundaries_without_mutating_raw_H2()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var h2Raw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{ContinuationBoundaryCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(Gold089Path)));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var g2a = ParseAnchorLedger(ComposeAnchorExistence(prepared), g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var anchors = g2a.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToHashSet(StringComparer.Ordinal);
+        try
+        {
+            var request = ComposeContinuationBoundaries(prepared, anchors);
+            var raw = ParseContinuationBoundaries(request, h2Raw.RootElement.GetProperty("rawResponse").GetString()!);
+            var crossing = raw.Where(edge => edge.Boundary == "CONTINUES_STRUCTURAL_UNIT" && edge.Right != edge.Anchor && anchors.Contains(edge.Right))
+                .Select(edge => new { edge.Anchor, edge.Left, edge.Right, rawBoundary = edge.Boundary, composedBoundary = "STOPS_STRUCTURAL_UNIT" })
+                .ToArray();
+            Assert.Single(crossing);
+            Assert.Equal("O17", crossing[0].Anchor);
+            Assert.Equal("O18", crossing[0].Left);
+            Assert.Equal("O19", crossing[0].Right);
+
+            var composed = raw.Select(edge => crossing.Any(conflict => conflict.Anchor == edge.Anchor && conflict.Left == edge.Left && conflict.Right == edge.Right)
+                ? edge with { Boundary = "STOPS_STRUCTURAL_UNIT" } : edge).ToArray();
+            var composedExtents = ReconstructContinuationBoundaries(request, composed);
+            var aliasByOccurrence = prepared.OccurrenceByAlias.ToDictionary(item => item.Value, item => item.Key, StringComparer.Ordinal);
+            var goldByAnchor = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
+                .Select(claim => claim.GetProperty("sourceParts").EnumerateArray().Select(part => part.GetProperty("sourceAlias").GetString()!).ToArray())
+                .Where(parts => parts.Length > 0 && prepared.OccurrenceByAlias.ContainsKey(parts[0]))
+                .ToDictionary(parts => prepared.OccurrenceByAlias[parts[0]], parts => parts, StringComparer.Ordinal);
+            var extentRows = composedExtents.Select(row => new
+            {
+                anchor = row.Anchor,
+                expectedAliases = goldByAnchor[row.Anchor],
+                observedAliases = row.Aliases.Select(id => aliasByOccurrence[id]).ToArray(),
+                exact = row.Aliases.Select(id => aliasByOccurrence[id]).SequenceEqual(goldByAnchor[row.Anchor], StringComparer.Ordinal),
+            }).OrderBy(row => row.anchor, StringComparer.Ordinal).ToArray();
+            Assert.Equal(6, extentRows.Length);
+            Assert.All(extentRows, row => Assert.True(row.exact, $"h21-composed-extent-not-exact:{row.anchor}"));
+            Assert.Equal(raw.Count, composed.Length);
+            Assert.Equal(1, raw.Zip(composed).Count(pair => pair.First.Boundary != pair.Second.Boundary));
+
+            FreezeArtifact.AssertJson(ContinuationCompositionAuditRoot, "anchor-continuation-composition-audit.v1.json", new
+            {
+                schemaVersion = "v5-p6th21-anchor-continuation-composition-audit-v1",
+                status = "FROZEN_PROVIDER_FREE_COMPOSITION_AUDIT",
+                rawAuthorities = new
+                {
+                    g2aRawResponseSha256 = g2aRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                    h2RawResponseSha256 = h2Raw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                    rawH2Mutated = false,
+                    providerCallsDuringAudit = 0,
+                    repairs = 0,
+                    fallbacks = 0,
+                },
+                invariant = new
+                {
+                    name = "NO_CROSS_DISTINCT_FROZEN_G2A_ANCHOR",
+                    rule = "A raw H2 CONTINUES_STRUCTURAL_UNIT edge must compose to STOPS_STRUCTURAL_UNIT when its right O# is a distinct frozen G2A HAS_STRUCTURAL_EXTENT anchor.",
+                    anchorCount = anchors.Count,
+                    rawContinuations = raw.Count(edge => edge.Boundary == "CONTINUES_STRUCTURAL_UNIT"),
+                    crossingConflicts = crossing,
+                    rawDecisionOverrides = 1,
+                },
+                evaluationBasis = new
+                {
+                    canonicalGoldSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path(Gold089Path))),
+                    goldMutation = "NONE",
+                    goldUsedOnlyForOfflineCompositionEvaluation = true,
+                },
+                composedResult = new
+                {
+                    exactExtents = extentRows.Count(row => row.exact),
+                    totalExtents = extentRows.Length,
+                    rows = extentRows,
+                },
+                conclusion = "COMPOSITION_RESULT_ONLY: FROZEN_G2A_ANCHOR_AUTHORITY_PLUS_FROZEN_H2_CONTINUATION_WITH_NO_CROSS_ANCHOR_INVARIANT_RECONSTRUCTS_6_OF_6_SRC089_PROBE_EXTENTS; RAW_H2_ACCURACY_REMAINS_17_OF_18_EDGES_AND_5_OF_6_EXTENTS",
+            });
+        }
+        finally
+        {
+            foreach (var item in g2a.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))) item.Dispose();
         }
     }
 

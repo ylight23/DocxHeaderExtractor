@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "v5-p6th2-one-primary-call-result-v1",
+  "status": "EXECUTION_SET_FROZEN",
+  "providerCalls": 1,
+  "retries": 0,
+  "repairs": 0,
+  "fallbacks": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "runtimeChanged": false,
+  "rawCaptureSha256": "d0e9155666a8cc840d062dc0f4e9278e7461da5af628384365c680a86de34612",
+  "row": {
+    "documentId": "SRC-089",
+    "transportStatus": "COMPLETED",
+    "finishReason": "stop",
+    "parserStatus": "PARSED",
+    "parserError": null,
+    "edgeCount": 18,
+    "acceptedEdges": 18,
+    "promptTokens": 1576,
+    "completionTokens": 4478,
+    "reasoningTokens": 3831,
+    "rawResponseSha256": "1f4f1e5f9c1132a8967a4d6b661b96416ecd21d455977c4a6fddba39484eb66c"
+  }
+}

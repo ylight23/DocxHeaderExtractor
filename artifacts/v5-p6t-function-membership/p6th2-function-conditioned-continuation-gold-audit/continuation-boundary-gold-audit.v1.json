@@ -1,0 +1,271 @@
+{
+  "schemaVersion": "v5-p6th2-continuation-boundary-gold-audit-v1",
+  "status": "FROZEN_OFFLINE_AUDIT",
+  "executionAuthority": {
+    "executionResultSha256": "aba51da913bbb37bfc9c086f784884baba8ae24b04dac7f290184456da9528dd",
+    "rawResponseSha256": "1f4f1e5f9c1132a8967a4d6b661b96416ecd21d455977c4a6fddba39484eb66c",
+    "providerCallsDuringAudit": 0,
+    "repair": false,
+    "fallback": false
+  },
+  "evaluationBasis": {
+    "goldPath": "eval/a99-closed-loop/gold/SRC-089.gold.json",
+    "canonicalGoldSha256": "83db6b93462e9bcaf41bc22151b2b31d98c4898973da8ffb86de2d3b18ec9b88",
+    "goldMutation": "NONE",
+    "anchorCount": 6
+  },
+  "edgeScore": {
+    "total": 18,
+    "correct": 17,
+    "incorrect": 1,
+    "continuation": {
+      "truePositive": 6,
+      "falsePositive": 1,
+      "falseNegative": 0
+    },
+    "stop": {
+      "correct": 11,
+      "incorrect": 1
+    },
+    "rows": [
+      {
+        "anchor": "O17",
+        "left": "O17",
+        "right": "O18",
+        "expected": "CONTINUES_STRUCTURAL_UNIT",
+        "observed": "CONTINUES_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O17",
+        "left": "O18",
+        "right": "O19",
+        "expected": "STOPS_STRUCTURAL_UNIT",
+        "observed": "CONTINUES_STRUCTURAL_UNIT",
+        "correct": false
+      },
+      {
+        "anchor": "O17",
+        "left": "O19",
+        "right": "O20",
+        "expected": "STOPS_STRUCTURAL_UNIT",
+        "observed": "STOPS_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O19",
+        "left": "O19",
+        "right": "O20",
+        "expected": "STOPS_STRUCTURAL_UNIT",
+        "observed": "STOPS_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O19",
+        "left": "O20",
+        "right": "O21",
+        "expected": "STOPS_STRUCTURAL_UNIT",
+        "observed": "STOPS_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O19",
+        "left": "O21",
+        "right": "O22",
+        "expected": "STOPS_STRUCTURAL_UNIT",
+        "observed": "STOPS_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O27",
+        "left": "O27",
+        "right": "O28",
+        "expected": "CONTINUES_STRUCTURAL_UNIT",
+        "observed": "CONTINUES_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O27",
+        "left": "O28",
+        "right": "O29",
+        "expected": "STOPS_STRUCTURAL_UNIT",
+        "observed": "STOPS_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O27",
+        "left": "O29",
+        "right": "O30",
+        "expected": "STOPS_STRUCTURAL_UNIT",
+        "observed": "STOPS_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O54",
+        "left": "O54",
+        "right": "O55",
+        "expected": "CONTINUES_STRUCTURAL_UNIT",
+        "observed": "CONTINUES_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O54",
+        "left": "O55",
+        "right": "O56",
+        "expected": "STOPS_STRUCTURAL_UNIT",
+        "observed": "STOPS_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O54",
+        "left": "O56",
+        "right": "O57",
+        "expected": "STOPS_STRUCTURAL_UNIT",
+        "observed": "STOPS_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O83",
+        "left": "O83",
+        "right": "O84",
+        "expected": "CONTINUES_STRUCTURAL_UNIT",
+        "observed": "CONTINUES_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O83",
+        "left": "O84",
+        "right": "O85",
+        "expected": "STOPS_STRUCTURAL_UNIT",
+        "observed": "STOPS_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O83",
+        "left": "O85",
+        "right": "O86",
+        "expected": "STOPS_STRUCTURAL_UNIT",
+        "observed": "STOPS_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O9",
+        "left": "O9",
+        "right": "O10",
+        "expected": "CONTINUES_STRUCTURAL_UNIT",
+        "observed": "CONTINUES_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O9",
+        "left": "O10",
+        "right": "O11",
+        "expected": "CONTINUES_STRUCTURAL_UNIT",
+        "observed": "CONTINUES_STRUCTURAL_UNIT",
+        "correct": true
+      },
+      {
+        "anchor": "O9",
+        "left": "O11",
+        "right": "O12",
+        "expected": "STOPS_STRUCTURAL_UNIT",
+        "observed": "STOPS_STRUCTURAL_UNIT",
+        "correct": true
+      }
+    ]
+  },
+  "reconstructedExtentScore": {
+    "total": 6,
+    "exact": 5,
+    "underextent": 0,
+    "overextent": 1,
+    "wrongParts": 0,
+    "rows": [
+      {
+        "anchor": "O17",
+        "expectedAliases": [
+          "L0014:S0",
+          "L0015:S0"
+        ],
+        "observedAliases": [
+          "L0014:S0",
+          "L0015:S0",
+          "L0016:S0"
+        ],
+        "classification": "OVEREXTENT",
+        "firstWrongEdge": {
+          "left": "O18",
+          "right": "O19",
+          "expected": "STOPS_STRUCTURAL_UNIT",
+          "observed": "CONTINUES_STRUCTURAL_UNIT"
+        }
+      },
+      {
+        "anchor": "O19",
+        "expectedAliases": [
+          "L0016:S0"
+        ],
+        "observedAliases": [
+          "L0016:S0"
+        ],
+        "classification": "EXACT",
+        "firstWrongEdge": null
+      },
+      {
+        "anchor": "O27",
+        "expectedAliases": [
+          "L0024:S0",
+          "L0025:S0"
+        ],
+        "observedAliases": [
+          "L0024:S0",
+          "L0025:S0"
+        ],
+        "classification": "EXACT",
+        "firstWrongEdge": null
+      },
+      {
+        "anchor": "O54",
+        "expectedAliases": [
+          "L0051:S0",
+          "L0052:S0"
+        ],
+        "observedAliases": [
+          "L0051:S0",
+          "L0052:S0"
+        ],
+        "classification": "EXACT",
+        "firstWrongEdge": null
+      },
+      {
+        "anchor": "O83",
+        "expectedAliases": [
+          "L0080:S0",
+          "L0081:S0"
+        ],
+        "observedAliases": [
+          "L0080:S0",
+          "L0081:S0"
+        ],
+        "classification": "EXACT",
+        "firstWrongEdge": null
+      },
+      {
+        "anchor": "O9",
+        "expectedAliases": [
+          "L0006:S0",
+          "L0007:S0",
+          "L0008:S0"
+        ],
+        "observedAliases": [
+          "L0006:S0",
+          "L0007:S0",
+          "L0008:S0"
+        ],
+        "classification": "EXACT",
+        "firstWrongEdge": null
+      }
+    ]
+  },
+  "conclusion": "H2_FUNCTION_CONDITIONED_CONTINUATION_RECONSTRUCTS_5_OF_6_FROZEN_SRC089_ANCHOR_EXTENTS_EXACTLY; ONLY_ERROR_IS_AN_OVEREXTENT_BOUNDARY_BETWEEN_ADJACENT_STRUCTURAL_UNITS; NO_G2A_POST_HOC_REMEDIATION_APPLIED"
+}
