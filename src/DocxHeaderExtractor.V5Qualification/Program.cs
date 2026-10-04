@@ -151,6 +151,10 @@ internal static class Program
             return await P6TE1UnitTopologyCanary.RunAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6tf1-function-membership-canary"))
             return await P6TF1FunctionMembershipCanary.RunAsync(LocateRepoRoot(), args);
+        if (args.Contains("--p6te-doc0256-e-challenge") || args.Contains("--p6te-doc0252-e-challenge") || args.Contains("--p6te-src041-e-challenge"))
+            return await P6TEChallengeCanary.RunAsync(LocateRepoRoot(), args);
+        if (args.Contains("--p6te-src041-h2-challenge"))
+            return await P6TEH2ContinuationCanary.RunAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6tf1-retry-src089"))
             return await P6TF1FunctionMembershipCanary.RetrySrc089Async(LocateRepoRoot(), args);
 

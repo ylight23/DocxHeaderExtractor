@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "v5-p6te-cross-document-g2a-raw-capture-v1",
+  "documentId": "SRC-041",
+  "sourcePack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+  "issued": 3,
+  "functionUpstreamRawCaptureSha256": "bf1218a0e4198815119b5cb87d986dffdb5d685ae18e82fbeb4919ed410a0ff8",
+  "systemPromptSha256": "b231e61785f1793fd94456fad682b851b28778f222a539431ec37b53ef2d2fd6",
+  "userMessageSha256": "c65ba8ce9a2499e7db8192f1fae6a22fcfa00e005b94787eb62ff1c8294525e5",
+  "providerRequestSha256": "b95a95fb25ea3e032b4613cde853ab39ef6de16dc7d2ea6b816a14dfed78b728",
+  "providerRequestBytes": 3002,
+  "reasoningRequested": true,
+  "reasoningTokens": 1110,
+  "promptTokens": 506,
+  "completionTokens": 1193,
+  "finishReason": "stop",
+  "retryCount": 0,
+  "latencyMs": 11906.4153,
+  "rawSseSha256": "fee8e2ec38560a2a2ec2032bfa280187d2d5684df2977bf12ccc3d7a8984368e",
+  "rawResponseSha256": "982ceafed47e61057a28305828daf9bf20cf75679721f74e2830ec65dbbf4ab8",
+  "rawResponse": "{\n\u0022decisions\u0022: [\n{\n\u0022primary\u0022: \u0022O3\u0022,\n\u0022anchor\u0022: \u0022HAS_STRUCTURAL_EXTENT\u0022\n},\n{\n\u0022primary\u0022: \u0022O4\u0022,\n\u0022anchor\u0022: \u0022HAS_STRUCTURAL_EXTENT\u0022\n},\n{\n\u0022primary\u0022: \u0022O5\u0022,\n\u0022anchor\u0022: \u0022HAS_STRUCTURAL_EXTENT\u0022\n}\n]\n}",
+  "transportError": null,
+  "classification": "G2A_TOTAL_LEDGER_ACCEPTED",
+  "parsed": {
+    "decisions": [
+      {
+        "primary": "O3",
+        "alias": "L3525:S0",
+        "anchor": "HAS_STRUCTURAL_EXTENT"
+      },
+      {
+        "primary": "O4",
+        "alias": "L3526:S0",
+        "anchor": "HAS_STRUCTURAL_EXTENT"
+      },
+      {
+        "primary": "O5",
+        "alias": "L3527:S0",
+        "anchor": "HAS_STRUCTURAL_EXTENT"
+      }
+    ],
+    "has": 3,
+    "no": 0
+  },
+  "goldReadDuringCapture": false
+}

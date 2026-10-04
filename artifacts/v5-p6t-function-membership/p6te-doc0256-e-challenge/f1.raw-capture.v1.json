@@ -1,0 +1,417 @@
+{
+  "schemaVersion": "v5-p6te-doc0256-f1-raw-capture-v1",
+  "documentId": "DOC-0256",
+  "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+  "issuedOccurrences": 96,
+  "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+  "sourceUniverseSha256": "5640889907eea803eb3196a3d4498743c4f5131054f69bde3d382845662e3e72",
+  "systemPromptSha256": "b44904b62d8807757ba288ee6f8192081f5a2a8742e91e40b1f447974601202a",
+  "userMessageSha256": "c8e56be8802355a990eeadeba2f641e38e88131f2dbb7a18f241b4b7d5eff456",
+  "providerRequestSha256": "cb76f73a540af335a93d70eb9c5abe415f560b9c952ca61c03c94d63bb2bd9b3",
+  "providerRequestBytes": 22469,
+  "reasoningRequested": true,
+  "reasoningTokens": 2133,
+  "promptTokens": 4256,
+  "completionTokens": 3702,
+  "reasoningExecutionConfirmed": true,
+  "finishReason": "stop",
+  "retryCount": 0,
+  "latencyMs": 26289.7705,
+  "rawSseSha256": "890b6ea8fb983035fc56833d10e63ecae39c7ae60e61df0d31b89f57ea0f6f93",
+  "rawResponseSha256": "d3a2277923d82f00e240eb11475b846c14aa8cb4e6989151478ffa311a7d0708",
+  "rawResponse": "{\n\u0022decisions\u0022: [\n{\u0022occurrence\u0022: \u0022O1\u0022, \u0022function\u0022: \u0022ESTABLISHES_STRUCTURE\u0022},\n{\u0022occurrence\u0022: \u0022O2\u0022, \u0022function\u0022: \u0022ESTABLISHES_STRUCTURE\u0022},\n{\u0022occurrence\u0022: \u0022O3\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O4\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O5\u0022, \u0022function\u0022: \u0022ESTABLISHES_STRUCTURE\u0022},\n{\u0022occurrence\u0022: \u0022O6\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O7\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O8\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O9\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O10\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O11\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O12\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O13\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O14\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O15\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O16\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O17\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O18\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O19\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O20\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O21\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O22\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O23\u0022, \u0022function\u0022: \u0022ESTABLISHES_STRUCTURE\u0022},\n{\u0022occurrence\u0022: \u0022O24\u0022, \u0022function\u0022: \u0022ESTABLISHES_STRUCTURE\u0022},\n{\u0022occurrence\u0022: \u0022O25\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O26\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O27\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O28\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O29\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O30\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O31\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O32\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O33\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O34\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O35\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O36\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O37\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O38\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O39\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O40\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O41\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O42\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O43\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O44\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O45\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O46\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O47\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O48\u0022, \u0022function\u0022: \u0022ESTABLISHES_STRUCTURE\u0022},\n{\u0022occurrence\u0022: \u0022O49\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O50\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O51\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O52\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O53\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O54\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O55\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O56\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O57\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O58\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O59\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O60\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O61\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O62\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O63\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O64\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O65\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O66\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O67\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O68\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O69\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O70\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O71\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O72\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O73\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O74\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O75\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O76\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O77\u0022, \u0022function\u0022: \u0022ESTABLISHES_STRUCTURE\u0022},\n{\u0022occurrence\u0022: \u0022O78\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O79\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O80\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O81\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O82\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O83\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O84\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O85\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O86\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O87\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O88\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O89\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O90\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O91\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O92\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O93\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O94\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O95\u0022, \u0022function\u0022: \u0022OTHER\u0022},\n{\u0022occurrence\u0022: \u0022O96\u0022, \u0022function\u0022: \u0022OTHER\u0022}\n]\n}",
+  "transportError": null,
+  "classification": "TOTAL_F1_LEDGER_ACCEPTED",
+  "parsed": {
+    "decisions": [
+      {
+        "occurrence": "O1",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "occurrence": "O2",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "occurrence": "O3",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O4",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O5",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "occurrence": "O6",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O7",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O8",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O9",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O10",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O11",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O12",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O13",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O14",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O15",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O16",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O17",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O18",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O19",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O20",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O21",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O22",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O23",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "occurrence": "O24",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "occurrence": "O25",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O26",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O27",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O28",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O29",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O30",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O31",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O32",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O33",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O34",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O35",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O36",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O37",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O38",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O39",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O40",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O41",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O42",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O43",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O44",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O45",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O46",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O47",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O48",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "occurrence": "O49",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O50",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O51",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O52",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O53",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O54",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O55",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O56",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O57",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O58",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O59",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O60",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O61",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O62",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O63",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O64",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O65",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O66",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O67",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O68",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O69",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O70",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O71",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O72",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O73",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O74",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O75",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O76",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O77",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "occurrence": "O78",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O79",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O80",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O81",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O82",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O83",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O84",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O85",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O86",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O87",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O88",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O89",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O90",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O91",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O92",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O93",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O94",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O95",
+        "function": "OTHER"
+      },
+      {
+        "occurrence": "O96",
+        "function": "OTHER"
+      }
+    ],
+    "establishesStructure": 7,
+    "representsStructure": 0,
+    "other": 89
+  },
+  "goldReadDuringCapture": false
+}

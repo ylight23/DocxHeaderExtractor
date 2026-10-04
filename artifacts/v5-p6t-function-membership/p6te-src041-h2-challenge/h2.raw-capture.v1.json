@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "v5-p6te-src041-h2-raw-capture-v1",
+  "documentId": "SRC-041",
+  "providerCalls": 1,
+  "requestHash": "d9632c745420f37a564e2ac401a8f954510a8fb607dd80f8bce5938e5506b37e",
+  "providerRequestBytes": 2609,
+  "issuedEdges": 3,
+  "finishReason": "stop",
+  "retryCount": 0,
+  "reasoningTokens": 1948,
+  "promptTokens": 422,
+  "completionTokens": 2059,
+  "rawSseSha256": "1715364212f5fa383f3dc1332bd6136c03bc7962c947902204426216fb56ffdd",
+  "rawResponseSha256": "61b1cf504e5b29af0a033a876db131734cbd465dc40a8cf031b7c8d199668b47",
+  "rawResponse": "{\n\u0022decisions\u0022: [\n{\u0022anchor\u0022: \u0022O4\u0022, \u0022left\u0022: \u0022O4\u0022, \u0022right\u0022: \u0022O5\u0022, \u0022boundary\u0022: \u0022CONTINUES_STRUCTURAL_UNIT\u0022},\n{\u0022anchor\u0022: \u0022O4\u0022, \u0022left\u0022: \u0022O5\u0022, \u0022right\u0022: \u0022O6\u0022, \u0022boundary\u0022: \u0022STOPS_STRUCTURAL_UNIT\u0022},\n{\u0022anchor\u0022: \u0022O4\u0022, \u0022left\u0022: \u0022O6\u0022, \u0022right\u0022: \u0022O7\u0022, \u0022boundary\u0022: \u0022STOPS_STRUCTURAL_UNIT\u0022}\n]\n}",
+  "transportError": null,
+  "classification": "H2_TOTAL_EDGE_LEDGER_ACCEPTED",
+  "parsed": {
+    "decisions": [
+      {
+        "Anchor": "O4",
+        "Left": "O4",
+        "Right": "O5",
+        "Boundary": "CONTINUES_STRUCTURAL_UNIT"
+      },
+      {
+        "Anchor": "O4",
+        "Left": "O5",
+        "Right": "O6",
+        "Boundary": "STOPS_STRUCTURAL_UNIT"
+      },
+      {
+        "Anchor": "O4",
+        "Left": "O6",
+        "Right": "O7",
+        "Boundary": "STOPS_STRUCTURAL_UNIT"
+      }
+    ],
+    "continues": 1,
+    "stops": 2
+  },
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "runtimeChanged": false,
+  "repair": false,
+  "fallback": false
+}

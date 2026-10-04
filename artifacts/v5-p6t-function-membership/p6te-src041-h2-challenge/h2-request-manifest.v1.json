@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "v5-p6te-src041-h2-preflight-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "authority": {
+    "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+    "sourceUniverseSha256": "7770864ee6870409b393ca004c23d6d9f546d084c57d4e685b0d0a1e357b744b",
+    "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+    "primary": {
+      "occurrence": "O4",
+      "alias": "L3526:S0",
+      "anchorDecision": "HAS_STRUCTURAL_EXTENT"
+    },
+    "target": {
+      "occurrence": "O5",
+      "alias": "L3527:S0"
+    },
+    "f1RawCaptureSha256": "bf1218a0e4198815119b5cb87d986dffdb5d685ae18e82fbeb4919ed410a0ff8",
+    "g2aRawCaptureSha256": "790789fcce4a913966d19c6061d28e981a745b395178e46f392dcf21be000b63"
+  },
+  "issuedEdges": [
+    {
+      "anchor": "O4",
+      "left": "O4",
+      "right": "O5",
+      "ordinal": 0
+    },
+    {
+      "anchor": "O4",
+      "left": "O5",
+      "right": "O6",
+      "ordinal": 1
+    },
+    {
+      "anchor": "O4",
+      "left": "O6",
+      "right": "O7",
+      "ordinal": 2
+    }
+  ],
+  "request": {
+    "protocolVersion": "v5-function-conditioned-continuation-boundary-1",
+    "systemPromptSha256": "09720dfea0c3c0fb07dd7268b53071ff27c3a5d502a27071ee26f6a941ecf134",
+    "userMessageSha256": "8f52bbcce306d8e55672960d7cfb3465da8d58ffe1bd91af900996b92fb76052",
+    "providerBodySha256": "d9632c745420f37a564e2ac401a8f954510a8fb607dd80f8bce5938e5506b37e",
+    "providerBodyBytes": 2609
+  },
+  "execution": {
+    "providerCalls": 0,
+    "maximumProviderCalls": 1,
+    "retry": 0,
+    "repair": false,
+    "fallback": false,
+    "goldRead": false,
+    "goldMutation": "NONE",
+    "runtimeChanged": false
+  }
+}

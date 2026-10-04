@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "v5-p6te-doc0256-g2a-raw-capture-v1",
+  "documentId": "DOC-0256",
+  "sourcePack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+  "issued": 7,
+  "functionUpstreamRawCaptureSha256": "3ec3b0af3f3648dc5f692756ea4aacacd115119825c9ab5452bf520fb1b97238",
+  "systemPromptSha256": "b231e61785f1793fd94456fad682b851b28778f222a539431ec37b53ef2d2fd6",
+  "userMessageSha256": "c72bc44e7701388f7cee8b19eff56eb6987a6345f06be475d13b0d61c25a284e",
+  "providerRequestSha256": "3b13c8be2949269b8d2befc19318b891e0529d61a3a56534c218faf6ed8828f8",
+  "providerRequestBytes": 5175,
+  "reasoningRequested": true,
+  "reasoningTokens": 1358,
+  "promptTokens": 874,
+  "completionTokens": 1461,
+  "finishReason": "stop",
+  "retryCount": 0,
+  "latencyMs": 12717.0746,
+  "rawSseSha256": "a7e117d01caf6122389a631417900853d8529158c85b009d017e0e0546a7afb4",
+  "rawResponseSha256": "3c12a67c2896695283c11aadaa06313c89d8cc207e006b7628e3f26fb58579d2",
+  "rawResponse": "{\u0022decisions\u0022:[{\u0022primary\u0022:\u0022O1\u0022,\u0022anchor\u0022:\u0022HAS_STRUCTURAL_EXTENT\u0022},{\u0022primary\u0022:\u0022O2\u0022,\u0022anchor\u0022:\u0022NO_STRUCTURAL_EXTENT\u0022},{\u0022primary\u0022:\u0022O5\u0022,\u0022anchor\u0022:\u0022HAS_STRUCTURAL_EXTENT\u0022},{\u0022primary\u0022:\u0022O23\u0022,\u0022anchor\u0022:\u0022HAS_STRUCTURAL_EXTENT\u0022},{\u0022primary\u0022:\u0022O24\u0022,\u0022anchor\u0022:\u0022NO_STRUCTURAL_EXTENT\u0022},{\u0022primary\u0022:\u0022O48\u0022,\u0022anchor\u0022:\u0022HAS_STRUCTURAL_EXTENT\u0022},{\u0022primary\u0022:\u0022O77\u0022,\u0022anchor\u0022:\u0022HAS_STRUCTURAL_EXTENT\u0022}]}",
+  "transportError": null,
+  "classification": "G2A_TOTAL_LEDGER_ACCEPTED",
+  "parsed": {
+    "decisions": [
+      {
+        "primary": "O1",
+        "alias": "L0000:S0",
+        "anchor": "HAS_STRUCTURAL_EXTENT"
+      },
+      {
+        "primary": "O2",
+        "alias": "L0001:S0",
+        "anchor": "NO_STRUCTURAL_EXTENT"
+      },
+      {
+        "primary": "O5",
+        "alias": "L0004:S0",
+        "anchor": "HAS_STRUCTURAL_EXTENT"
+      },
+      {
+        "primary": "O23",
+        "alias": "L0022:S0",
+        "anchor": "HAS_STRUCTURAL_EXTENT"
+      },
+      {
+        "primary": "O24",
+        "alias": "L0023:S0",
+        "anchor": "NO_STRUCTURAL_EXTENT"
+      },
+      {
+        "primary": "O48",
+        "alias": "L0047:S0",
+        "anchor": "HAS_STRUCTURAL_EXTENT"
+      },
+      {
+        "primary": "O77",
+        "alias": "L0076:S0",
+        "anchor": "HAS_STRUCTURAL_EXTENT"
+      }
+    ],
+    "has": 5,
+    "no": 2
+  },
+  "goldReadDuringCapture": false
+}

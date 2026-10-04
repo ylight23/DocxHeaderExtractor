@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "v5-p6te-doc0256-g2a-request-manifest-v1",
+  "status": "FROZEN_BEFORE_SECOND_CALL",
+  "sourceAuthority": {
+    "f1RawCaptureSha256": "231b1f0b03961d116307f68af8f35639184ba482059b7bbd26c4536c3b9eafed",
+    "functionLedgerAccepted": true
+  },
+  "documentId": "DOC-0252",
+  "targetChallengeAlias": "L0514:S0",
+  "issuedF1Establishes": 19,
+  "targetIncludedByF1Function": true,
+  "systemPromptSha256": "b231e61785f1793fd94456fad682b851b28778f222a539431ec37b53ef2d2fd6",
+  "userMessageSha256": "69331b95694424bae68f30a3d53b0f8fd71f9b703f3e5cd35a72ac4c10014c01",
+  "providerRequestSha256": "db6b23b8902728dffe8129c6e03949be9cd16a207bbe9ae3531bc113b1a4ccca",
+  "providerRequestBytes": 11437,
+  "maximumProviderCalls": 1,
+  "providerCallsBeforeSend": 0,
+  "retry": 0,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false
+}

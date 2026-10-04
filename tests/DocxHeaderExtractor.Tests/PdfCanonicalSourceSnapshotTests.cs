@@ -15,6 +15,9 @@ public sealed class PdfCanonicalSourceSnapshotTests
     private const string Root = "eval/a99-closed-loop/pdf-canonical-source-v1";
     private static readonly (string Id, string Pdf, int Packs)[] Documents =
     [
+        ("DOC-0252", SourcePdfCorpus.Doc0252, 7),
+        ("DOC-0256", SourcePdfCorpus.Doc0256, 6),
+        ("SRC-041", SourcePdfCorpus.Src041, 109),
         ("SRC-089", SourcePdfCorpus.Src089, 7),
         ("SRC-095", SourcePdfCorpus.Src095, 24),
     ];
@@ -71,7 +74,7 @@ public sealed class PdfCanonicalSourceSnapshotTests
             }
             rows.Add(new { spec.Id, sourceSha256 = replay.SourceSha256, atoms = replay.Atoms.Count, evidence = replay.Evidence.Count, packs = livePacks.Count, candidatePacks = candidateRows });
         }
-        Assert.Equal(2_884, totalAtoms);
+        Assert.Equal(14_523, totalAtoms);
         FreezeArtifact.AssertJson(Root, "replay-parity.v1.json", new
         {
             schemaVersion = "p6s-canonical-source-snapshot-replay-v1",

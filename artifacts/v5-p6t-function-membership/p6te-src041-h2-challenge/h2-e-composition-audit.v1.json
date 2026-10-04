@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "v5-p6te-src041-h2-e-composition-audit-v1",
+  "status": "FROZEN_PROVIDER_FREE_AUDIT",
+  "authority": {
+    "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+    "goldSha256": "e6ae7b0934bf145e07be89699dd5ef52e337b0b4e5cfafc60877040a8aa8a153",
+    "goldMultipartParts": [
+      "L3526:S0",
+      "L3527:S0"
+    ],
+    "primaryOccurrence": "O4",
+    "continuationOccurrence": "O5",
+    "g2aRawResponseSha256": "982ceafed47e61057a28305828daf9bf20cf75679721f74e2830ec65dbbf4ab8",
+    "h2RawResponseSha256": "61b1cf504e5b29af0a033a876db131734cbd465dc40a8cf031b7c8d199668b47",
+    "requestManifestSha256": "9169b4fd543d454b39d6d0f885780e82c7e65971e58b373cfa33a9f7d568b617"
+  },
+  "observed": {
+    "g2aPrimary": "HAS_STRUCTURAL_EXTENT",
+    "g2aContinuation": "HAS_STRUCTURAL_EXTENT",
+    "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+    "finishReason": "stop",
+    "retries": 0
+  },
+  "hypotheticalHardRule": {
+    "rule": "NO_CROSS_DISTINCT_FROZEN_G2A_ANCHOR",
+    "effect": "OVERRIDES_H2_CONTINUATION_TO_STOP_BEFORE_O5",
+    "reconstructedAliases": [
+      "L3526:S0"
+    ],
+    "exactGoldMatch": false,
+    "verdict": "WOULD_CREATE_UNDEREXTENT"
+  },
+  "providerCallsDuringAudit": 0,
+  "goldMutation": "NONE",
+  "rawCaptureMutation": "NONE",
+  "runtimeChanged": false,
+  "conclusion": "GLOBAL_NO_CROSS_ANCHOR_HARD_INVARIANT_REJECTED_BY_AUTHORITY_COMPLETE_SRC041_E_CASE; H2_CONTINUATION_AND_G2A_ANCHOR_CONFLICT_MUST_REMAIN_EXPLICIT_OR_UNRESOLVED"
+}

@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "v5-p6te-cross-document-false-anchor-audit-v1",
+  "status": "FROZEN_PROVIDER_FREE_AUDIT",
+  "method": "frozen strict Gold continuation alias + source hash + immutable F1/G2A raw decisions; no historical candidate substitutions",
+  "providerCallsDuringAudit": 0,
+  "rawCaptureMutation": "NONE",
+  "goldMutation": "NONE",
+  "runtimeChanged": false,
+  "totalAuditedCases": 3,
+  "falseAnchorInsideTrueMultipart": 1,
+  "verdict": "E_CHALLENGE_AUTHORITY_COMPLETE_ON_SRC041; DOC0252_AND_DOC0256_ARE_NEGATIVE_CONTROLS",
+  "rows": [
+    {
+      "documentId": "DOC-0256",
+      "goldSha256": "0c0c2804d9b33b6136bdfa30883c9744231148708dd0c81dd2c11ac7611a922f",
+      "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+      "targetAlias": "L0001:S0",
+      "targetOccurrence": "O2",
+      "goldMultipartParts": [
+        "L0000:S0",
+        "L0001:S0"
+      ],
+      "goldPartIndex": 1,
+      "function": "ESTABLISHES_STRUCTURE",
+      "anchor": "NO_STRUCTURAL_EXTENT",
+      "g2aClassification": "G2A_TOTAL_LEDGER_ACCEPTED",
+      "f1RawSha256": "3ec3b0af3f3648dc5f692756ea4aacacd115119825c9ab5452bf520fb1b97238",
+      "g2aRawSha256": "3c1bd801e6cb5f79efb08c9e823f6c870488b29907f8511a6f3dedafbca6b600",
+      "outcome": "E_SHAPE_NOT_OBSERVED_FOR_THIS_CONTROL"
+    },
+    {
+      "documentId": "DOC-0252",
+      "goldSha256": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "targetAlias": "L0514:S0",
+      "targetOccurrence": "O37",
+      "goldMultipartParts": [
+        "L0513:S0",
+        "L0514:S0"
+      ],
+      "goldPartIndex": 1,
+      "function": "ESTABLISHES_STRUCTURE",
+      "anchor": "NO_STRUCTURAL_EXTENT",
+      "g2aClassification": "G2A_TOTAL_LEDGER_ACCEPTED",
+      "f1RawSha256": "231b1f0b03961d116307f68af8f35639184ba482059b7bbd26c4536c3b9eafed",
+      "g2aRawSha256": "8f8dd87ad7606654c58dd3879cd2f524faafc52f51aebb4d3610537998dc131e",
+      "outcome": "E_SHAPE_NOT_OBSERVED_FOR_THIS_CONTROL"
+    },
+    {
+      "documentId": "SRC-041",
+      "goldSha256": "e6ae7b0934bf145e07be89699dd5ef52e337b0b4e5cfafc60877040a8aa8a153",
+      "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+      "targetAlias": "L3527:S0",
+      "targetOccurrence": "O5",
+      "goldMultipartParts": [
+        "L3526:S0",
+        "L3527:S0"
+      ],
+      "goldPartIndex": 1,
+      "function": "ESTABLISHES_STRUCTURE",
+      "anchor": "HAS_STRUCTURAL_EXTENT",
+      "g2aClassification": "G2A_TOTAL_LEDGER_ACCEPTED",
+      "f1RawSha256": "bf1218a0e4198815119b5cb87d986dffdb5d685ae18e82fbeb4919ed410a0ff8",
+      "g2aRawSha256": "790789fcce4a913966d19c6061d28e981a745b395178e46f392dcf21be000b63",
+      "outcome": "E_FALSE_ANCHOR_INSIDE_TRUE_MULTIPART_CONFIRMED"
+    }
+  ]
+}

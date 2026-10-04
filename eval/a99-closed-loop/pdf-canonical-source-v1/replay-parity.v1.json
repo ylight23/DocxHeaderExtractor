@@ -1,12 +1,771 @@
 {
   "schemaVersion": "p6s-canonical-source-snapshot-replay-v1",
   "authority": "compact sourceSha256 + atoms + materialized evidence + layoutBlockByAtom",
-  "captureParity": "live PdfStructuredSourceAuthorityBuilder equals serialized snapshot rehydrate on the capture host",
-  "ciReplay": "snapshot rehydrate only; raw PdfPig drift is intentionally not a second authority",
+  "captureParity": "A99_FREEZE_UPDATE capture host: live PdfStructuredSourceAuthorityBuilder equals serialized snapshot rehydrate",
+  "ciReplay": "ordinary runs rehydrate only; raw PdfPig drift is intentionally not a second authority",
   "providerCalls": 0,
   "goldRead": false,
   "sharedRuntime": "UNCHANGED",
   "documents": [
+    {
+      "Id": "DOC-0252",
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "atoms": 650,
+      "evidence": 650,
+      "packs": 7,
+      "candidatePacks": [
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+          "fingerprint": "37cc9582b5e8c40eaf003d3517770b5a681e78bfca81b70351804ff3a725735a",
+          "candidates": 622,
+          "relations": 4
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "fingerprint": "d754e516f59b438cde41efd33a2fb7258bfde0f0269a1a27fbc1c8c99de7c642",
+          "candidates": 630,
+          "relations": 2
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "fingerprint": "28228c9dfd04ee3e3240a8e676fd73c1c487a07be4e4de504666b08e2ec61bdb",
+          "candidates": 638,
+          "relations": 0
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "fingerprint": "c8b2f282cda28e5bf61b1c280667088bef681188d795d16c7cde48c697ce7374",
+          "candidates": 635,
+          "relations": 2
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "fingerprint": "de8cf5b9cad274044c5b2b32dc17cabdc75edf6f2e45e76ad6802c867b61ffbd",
+          "candidates": 640,
+          "relations": 1
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+          "fingerprint": "af2ef55d0dfd7f43f708a7909aaca5379184c99a608db1210f8a50101b87e0e0",
+          "candidates": 612,
+          "relations": 38
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+          "fingerprint": "b9f756bda564612cf58887e97badf0c884206e2e0ba56e4820ab2e5793135e5b",
+          "candidates": 374,
+          "relations": 272
+        }
+      ]
+    },
+    {
+      "Id": "DOC-0256",
+      "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+      "atoms": 546,
+      "evidence": 546,
+      "packs": 6,
+      "candidatePacks": [
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+          "fingerprint": "ba9e69e0cc0342e0b262edb44e2a9b6fb4855b6e8c5634f5c257d6c11b0425d1",
+          "candidates": 642,
+          "relations": 4
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "fingerprint": "76e4b5de2ff339b3a8401db9e8b08735e723f72d46214d48d1d7d6c51383ed52",
+          "candidates": 634,
+          "relations": 17
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "fingerprint": "7f467ac34a452097a3bcf2c8f3aa2639793c4b2c32e0907944ac85aa7c4fbe50",
+          "candidates": 626,
+          "relations": 33
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "fingerprint": "087b2f2467b32b9f4734300245b1121e07df0fd27c2799ebfce44b3d0af5ea77",
+          "candidates": 605,
+          "relations": 48
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "fingerprint": "ee2403956686e7599e215a12de55459c28bc33ed99c454f2d55061816f6010c8",
+          "candidates": 539,
+          "relations": 263
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+          "fingerprint": "5dbcdf66f8993a5cfeb8d707c2cb11f1fa2f6698429ffd64c6d358f851975409",
+          "candidates": 334,
+          "relations": 224
+        }
+      ]
+    },
+    {
+      "Id": "SRC-041",
+      "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+      "atoms": 10443,
+      "evidence": 10443,
+      "packs": 109,
+      "candidatePacks": [
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+          "fingerprint": "889058d0e8dc8cedfa1527e3b31db1c96d5f145ff490f9f58b7799fe09019067",
+          "candidates": 482,
+          "relations": 341
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+          "fingerprint": "457dbf01792700b45633f75a6de80912b5a680dedfc1c3606c08feb77b91104b",
+          "candidates": 477,
+          "relations": 309
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+          "fingerprint": "69594867d31d09518c1ea0a2985152310a2aa91ca45c69d37a0d4d7631ee2c76",
+          "candidates": 497,
+          "relations": 233
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+          "fingerprint": "696b7e6fd751e6c5b927cfe229a0205f2a1923a08cac945c7c126318c1f8c9bf",
+          "candidates": 606,
+          "relations": 99
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+          "fingerprint": "d5581a45e84a2ae8fae7a4d9366d20bf47f81c7c45518ad2c8ca811bd5982ecc",
+          "candidates": 565,
+          "relations": 220
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+          "fingerprint": "f412f1a5fd8770e8c83d650f6a8bd0e21e225e4ebd1a001e50d6e5b7e94230a1",
+          "candidates": 493,
+          "relations": 312
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+          "fingerprint": "db2ba9719b714474e9b35e266382e9ed6757ecd1aee5c690aec22e845262926d",
+          "candidates": 513,
+          "relations": 258
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_008",
+          "fingerprint": "b9e513da3b43c593e31136dfd0529aab6416516e6e856fe91ef68100ea03df9e",
+          "candidates": 494,
+          "relations": 438
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_009",
+          "fingerprint": "75dd09bf129749beade424acc85f24de1fb290cc842f32479608bf75801c7c20",
+          "candidates": 448,
+          "relations": 325
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_010",
+          "fingerprint": "008023e8944bd7a73237e2301f75bb0080305f4bcfd2e42a8cfa87001b36f8be",
+          "candidates": 508,
+          "relations": 216
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_011",
+          "fingerprint": "d8757ac52c85458214c47a3bc679b238025fda44a862c51ce5f3b2ead8c455b0",
+          "candidates": 500,
+          "relations": 166
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_012",
+          "fingerprint": "a633c5136ee0f378526d517c20131f476f0eb2529e991730d14f3b911b8c9a0e",
+          "candidates": 455,
+          "relations": 325
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_013",
+          "fingerprint": "0561edd20f25cd5bd759a9dbe542e3eac4a4b3870c070d6a60e6a9054920ea60",
+          "candidates": 471,
+          "relations": 339
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_014",
+          "fingerprint": "5ac46f436d38140550f7e123df8d05f54d27f59f8bae4c596903b7f4e3497786",
+          "candidates": 564,
+          "relations": 345
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_015",
+          "fingerprint": "619cf43f612a1d9483c764b39026a79dd8e16e3ab7a3fcdcdd1f631f6de4b562",
+          "candidates": 516,
+          "relations": 302
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_016",
+          "fingerprint": "3141b79e674b970e7878be178063a050a61bef81e0330027397b4aadd52a45f3",
+          "candidates": 640,
+          "relations": 54
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_017",
+          "fingerprint": "4eb48daf6c99ad150420408ec2702d7b87777c51b5c1fb877b8b017694c22cbc",
+          "candidates": 536,
+          "relations": 261
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_018",
+          "fingerprint": "edc7031168c0d83a281c53495899160fcec29dc3a66e1dab4f8c2948dc44b961",
+          "candidates": 415,
+          "relations": 389
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_019",
+          "fingerprint": "f501c15edf89b60ca72f893db4786814a0a8c809ef8fa347e11c8a6985ac6612",
+          "candidates": 538,
+          "relations": 151
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_020",
+          "fingerprint": "9aba266df4f6551c5d7708aed1a113fd6d16e6324512b1a7f4e70f1607f94f90",
+          "candidates": 583,
+          "relations": 95
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_021",
+          "fingerprint": "039c2f1a25f6e07a9a65fd4372aa4b1dcfdaf1f23a7f09e55e7e5fe940981c53",
+          "candidates": 520,
+          "relations": 381
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_022",
+          "fingerprint": "8b726dfe8aa10cbdb6a178ffd1f43cd4f37c7d44c3e60037870a328fa34933dc",
+          "candidates": 473,
+          "relations": 405
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_023",
+          "fingerprint": "4495c5fd66c8ea54dd807cef16a96ec6974b692c32c715501987768a06e6d930",
+          "candidates": 516,
+          "relations": 308
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_024",
+          "fingerprint": "29e0a24926243ab67256bd7b40ba8fc6b16d7bce9913952d703fead3775d6525",
+          "candidates": 498,
+          "relations": 204
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_025",
+          "fingerprint": "64545fbcd0224d7c6bee3d0cf9e7ed0a1a6bd6caafb298d6e669fb4d817a893a",
+          "candidates": 598,
+          "relations": 244
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_026",
+          "fingerprint": "849f25f50bf555d280056e3e3d55749421087e00bf26d7fa02d7a5408a5eff92",
+          "candidates": 532,
+          "relations": 228
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_027",
+          "fingerprint": "756f8be4cce2123cdb83d1daa3f2bcb73446619123acd69f0a1c8fdb6bbbd294",
+          "candidates": 550,
+          "relations": 365
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_028",
+          "fingerprint": "178e848f8751f5b229f84eefa85afae568e61df35f8535e9c20a4c3a8a2f18ef",
+          "candidates": 510,
+          "relations": 433
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_029",
+          "fingerprint": "2a6ccd654f9e7a1c1b4b3b3519890453ddb284cf1260bcbcba147e83ea11294c",
+          "candidates": 555,
+          "relations": 260
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_030",
+          "fingerprint": "d47c1d4cc09a59b0a1f6fe24c6f93235526e0b10e83187fa706adf77c1b86d4f",
+          "candidates": 534,
+          "relations": 289
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_031",
+          "fingerprint": "05ab071ed2bbc13a4a970b5f1ed4928efb307157ca8a2b8738ceb5f731f3e964",
+          "candidates": 622,
+          "relations": 86
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_032",
+          "fingerprint": "95586ea701a2de8b7b8427ab06b47b512f6d5d82912d9fd96c06621eac5901d4",
+          "candidates": 626,
+          "relations": 68
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_033",
+          "fingerprint": "657cec7dee465dad06801319180bd28f51bfcb69e2635ff74988d0e5820d72fd",
+          "candidates": 405,
+          "relations": 444
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_034",
+          "fingerprint": "cd95ac0f5fb5ae51934979beff9a927c8bc50aa04b02b96a017ec35f1e8b81cf",
+          "candidates": 475,
+          "relations": 219
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_035",
+          "fingerprint": "0705664d6a0e89de7ba80edfb3b3420d13d0e4ae88afdf983efc055a290fcd36",
+          "candidates": 602,
+          "relations": 62
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_036",
+          "fingerprint": "aec45f02bae3c57055b1609688560d75c68d2d5bdb1aa90bb7d29c07479c375e",
+          "candidates": 536,
+          "relations": 141
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_037",
+          "fingerprint": "6b404a85f5f18a4609014ef5013dfecc351d6c4e0fce3cc04484ee466cbca7b6",
+          "candidates": 646,
+          "relations": 58
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_038",
+          "fingerprint": "b62b5e602b500478883dffe5435fa00334dc874cd0ca50e06f62a8a2d04ef4d2",
+          "candidates": 474,
+          "relations": 464
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_039",
+          "fingerprint": "0d949ecc6c2225361a61e4ec3d9ea61bf007c549274d7a8cf244a2e9e14ad918",
+          "candidates": 520,
+          "relations": 331
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_040",
+          "fingerprint": "453dee03350e229dee06622e20d03f1c39e4d94a677e464035cb136dec510201",
+          "candidates": 580,
+          "relations": 214
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_041",
+          "fingerprint": "c37d2234fbdf99a47ab4744b59f22dc464d1b26a94d0804e01fead74d4b5a3ef",
+          "candidates": 526,
+          "relations": 350
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_042",
+          "fingerprint": "894a54f0303595d03a1a6b15ff7c0abd464cd8ed42391ef9d00bfbd268045a0d",
+          "candidates": 620,
+          "relations": 182
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_043",
+          "fingerprint": "f57d1611645f43a5b5ee3424bc800dd565c3970e89361d4318acc362fcfbc493",
+          "candidates": 602,
+          "relations": 124
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_044",
+          "fingerprint": "3c9e3328220581349429060c2eb5c566a2f899e80e56458a4726f88f8a0f3010",
+          "candidates": 536,
+          "relations": 350
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_045",
+          "fingerprint": "b590a4a4144cc86cfb15b862321f0a641780e3106d8dc6dd4f5de900140b5435",
+          "candidates": 542,
+          "relations": 332
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_046",
+          "fingerprint": "410fe2a484cbfe4d4e441f837179c84bd2b504c5344ee9f171f4b405ef3e254d",
+          "candidates": 612,
+          "relations": 130
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_047",
+          "fingerprint": "65bde50655632affbe1e495a3c497e4c998a43191a7702eae5d6c3d3bb1bf3f9",
+          "candidates": 612,
+          "relations": 108
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_048",
+          "fingerprint": "616905969d3e2d83474cba6f8c17ba8c6da71889f7beb01100035ace22ec109e",
+          "candidates": 602,
+          "relations": 132
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_049",
+          "fingerprint": "1631757f0e3f562668e4a850655197b31e665830e4af3b180d3c72e043907d2d",
+          "candidates": 543,
+          "relations": 248
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_050",
+          "fingerprint": "a5c62fee02d119b37fdaff8ab9d6d971153ba150f2edc1ad3c838216cae0e7da",
+          "candidates": 643,
+          "relations": 58
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_051",
+          "fingerprint": "6eb2a486c10987051d6eb725fae413a6ff19080b4269aaeeb34f2751571399f2",
+          "candidates": 468,
+          "relations": 234
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_052",
+          "fingerprint": "4626a5c35c3d30907ef7641ce640d051aab744ddb23c5a2366a90002e7224b83",
+          "candidates": 434,
+          "relations": 316
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_053",
+          "fingerprint": "19b37507a7aea7fc10f2679c58527ce60553406be16c139788d4feb594b0fac7",
+          "candidates": 409,
+          "relations": 320
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_054",
+          "fingerprint": "b780941639d0879c561f5a7d9c5552970f234a4a5d163f368a8a856a57388dae",
+          "candidates": 485,
+          "relations": 388
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_055",
+          "fingerprint": "485f3a20d41735a289515d8bf9a69296e7680acd41356c2505eee389bd320291",
+          "candidates": 448,
+          "relations": 208
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_056",
+          "fingerprint": "88f9294557d1bab03fc1d49d00753432ced7b377d282eaa9e573e71d22e53968",
+          "candidates": 404,
+          "relations": 232
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_057",
+          "fingerprint": "38f3137c569bef0ab0520aa1d39f1ab1dd20741fc2822fcf2410fce2b0649aaf",
+          "candidates": 549,
+          "relations": 125
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_058",
+          "fingerprint": "961fdba7bac5f0c6be4d3f4b6264560572fdb0ee8accff2ecaccfc18be367f1c",
+          "candidates": 356,
+          "relations": 291
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_059",
+          "fingerprint": "46afe765dc0ac14165c30e49d4232842e9611a2540613105c1654f7e15956dbb",
+          "candidates": 385,
+          "relations": 397
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+          "fingerprint": "7ff8906c0bd15cc77c65c22684caf59c059f3ad8314dbad529e7517a1d486f2c",
+          "candidates": 536,
+          "relations": 87
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_061",
+          "fingerprint": "7eb2da56d85274fb6a05bcf21c8f4551609d1058b66072eb429b05f37f9b13ef",
+          "candidates": 548,
+          "relations": 99
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_062",
+          "fingerprint": "636d8ae8efbf0a334df27c5f038e309864ad0becdc2c07bfa555d35896b48666",
+          "candidates": 517,
+          "relations": 85
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_063",
+          "fingerprint": "89476bc347f1bc8fc3069096d2aeae6bc00337bf4b4b7b1bc056e29bda6be0aa",
+          "candidates": 556,
+          "relations": 77
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_064",
+          "fingerprint": "5f9a31ad4bbb39069bb1248d101e7e7c5659c59640894b7574cbb351af200af0",
+          "candidates": 638,
+          "relations": 25
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_065",
+          "fingerprint": "6177ad2b3395db2df0cc82164d4898c49905d1be7221f8b465d2616cf5fd81f7",
+          "candidates": 648,
+          "relations": 41
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_066",
+          "fingerprint": "b521b3b1908ec98d25ba0b4455f3a0d57208924b1f638ba86b4c811fff99bf48",
+          "candidates": 639,
+          "relations": 51
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_067",
+          "fingerprint": "60effb9455f7196b4902e059b6c985d90f937112c045e485765356e3b19fc31d",
+          "candidates": 635,
+          "relations": 18
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_068",
+          "fingerprint": "9ec32a134a5b809e3dd4d1b69516b0cb946c64323c8339405c10415c0bf825f7",
+          "candidates": 650,
+          "relations": 14
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_069",
+          "fingerprint": "80b9d0f4066a12237c100d55782a0a7d11c4339be09a2c1d5469f2804a708682",
+          "candidates": 537,
+          "relations": 130
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_070",
+          "fingerprint": "fff689ac29804f442b666f2343b3bd2a1588855aad51babbcca1265967b9ae36",
+          "candidates": 495,
+          "relations": 367
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_071",
+          "fingerprint": "5869137dbcfd7b79703cf411d7575934256d5c76e83e0454689dba96abc0d7cf",
+          "candidates": 499,
+          "relations": 354
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_072",
+          "fingerprint": "0130acb74e48b8c929976a6f6ef811019d9708f88ec6a848f8b657da7a6fb1ae",
+          "candidates": 571,
+          "relations": 142
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_073",
+          "fingerprint": "e1cd55f1b9cf2da1de7589e1f85457d4b605be683c70e54d5ee9b2f62e4e9e39",
+          "candidates": 472,
+          "relations": 542
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_074",
+          "fingerprint": "e93516389642ded74709c7a4bc9dfd3598acd3106f8ffbcd9417863a1a17be45",
+          "candidates": 353,
+          "relations": 517
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_075",
+          "fingerprint": "a10bf0892c1ebf3327a2ed28967d6f4e7f0c0b91933ba0ba93f68de6a648c227",
+          "candidates": 490,
+          "relations": 528
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_076",
+          "fingerprint": "3a1c1c327c3584260d4ae2ad72f2dceb108bd028a4378a15c6bd79d535e59a66",
+          "candidates": 370,
+          "relations": 803
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_077",
+          "fingerprint": "12aa8e60c72aad3e5a34e72e80fbed5781208540bf7fa0de72ad1d83422efa7a",
+          "candidates": 420,
+          "relations": 347
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_078",
+          "fingerprint": "5721e602fcab2956ff9aa19777bbc566d58190766559d34b59752b34cb9c9d20",
+          "candidates": 399,
+          "relations": 346
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_079",
+          "fingerprint": "7031b7801e257039bd359ef0a17fe97001623d400bdc41f50de070331ed47081",
+          "candidates": 460,
+          "relations": 430
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_080",
+          "fingerprint": "4ddd2ba7a6e0b4e7c8eeb944d11c47ec6dff3b3961661c431b30498659f2fbab",
+          "candidates": 489,
+          "relations": 348
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_081",
+          "fingerprint": "279fefa8aa568edc0e64fb8a3509380ea3166a9f2c33e6decc6a73a20d35e8f3",
+          "candidates": 467,
+          "relations": 335
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_082",
+          "fingerprint": "4d38d0680fbad7b280cc9b855e26156e6a3c163b53b7be6cda17ca9304168b97",
+          "candidates": 472,
+          "relations": 317
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_083",
+          "fingerprint": "ed1c4bee9115b0f5383489f0453fe0f050f981d347e7592d956ae1b020330ae6",
+          "candidates": 551,
+          "relations": 257
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_084",
+          "fingerprint": "06ebab4adfc1fb7bdb00a3792bd7b1892912bc21250afc1456f9acf29087cf98",
+          "candidates": 393,
+          "relations": 443
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_085",
+          "fingerprint": "54d9558b6ea857383611acd47e35ad41a1559d0bf49414c25ac251a7f7aedac5",
+          "candidates": 467,
+          "relations": 338
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_086",
+          "fingerprint": "4c032abf655ff8e9e0f9ac419b69de6208ce09bdce2dacac553b3f69151a4c8f",
+          "candidates": 468,
+          "relations": 489
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_087",
+          "fingerprint": "cf43e805c18fad0f2b2460614c3064807ddcec7b86ac8a2e5798db75b8c6f1b4",
+          "candidates": 497,
+          "relations": 287
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_088",
+          "fingerprint": "89c666b7f79c7d3a09f29ae023b13eca408b85b413738278ee43f1ed655481ec",
+          "candidates": 470,
+          "relations": 454
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_089",
+          "fingerprint": "47b2245bbce5dfd28d6e70c8978ea5b77f2cbc62436b6054851f31fe6ea64898",
+          "candidates": 447,
+          "relations": 496
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_090",
+          "fingerprint": "571b76121ba9e047752af5268e176d0889ef2f39b8d512b925165fb9dc0dc22e",
+          "candidates": 510,
+          "relations": 329
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_091",
+          "fingerprint": "68c0162ea96cd0ffc11f3d6db84fd50440cb3ebd4282eb525efded16b9474d4c",
+          "candidates": 502,
+          "relations": 321
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_092",
+          "fingerprint": "422c77522a6ca408aba6b5d051039f904bc8ba453fdeb4579b6164cfb5ce9084",
+          "candidates": 474,
+          "relations": 845
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_093",
+          "fingerprint": "f94d48056ab1c5c6fdd839f3b94b659007ca53514ac73365e31c86228cbdf7c1",
+          "candidates": 470,
+          "relations": 780
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_094",
+          "fingerprint": "35ba5b4568eb5c323c406387b83e1b14aa8904bdeab553aada630087084d3a5a",
+          "candidates": 586,
+          "relations": 524
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_095",
+          "fingerprint": "2485f1e86ec9f30c95a2c2dd988ec25a1546f3e574ac736082dbc12eb640259b",
+          "candidates": 368,
+          "relations": 520
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_096",
+          "fingerprint": "a0c56d0ee0edc4fdbaae7e2936f57a0afaa41f8132eaf1b60e05bdf242822f87",
+          "candidates": 387,
+          "relations": 516
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_097",
+          "fingerprint": "61f572ad8ad6e864b11e5199568055da88049bbea81ac26e0e2fcb1fb29b5709",
+          "candidates": 451,
+          "relations": 400
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_098",
+          "fingerprint": "18cdf4f3790c5728aa0c389b4b0e44627635605e53bbe57dd076d750e0661696",
+          "candidates": 406,
+          "relations": 568
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_099",
+          "fingerprint": "08d23bbdf70a19dd8f449691b100f1ba345117bb1f58135956b071c11c601d38",
+          "candidates": 471,
+          "relations": 512
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_100",
+          "fingerprint": "51da635791f50eee745e13ebdbacec5d1187ff7190a6a858d1cb7a744f13e2a2",
+          "candidates": 539,
+          "relations": 526
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_101",
+          "fingerprint": "0092da7bc31546fcb07cd6b86bdfd0903157c3291ad1c6ca96315db2aa54031a",
+          "candidates": 427,
+          "relations": 327
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_102",
+          "fingerprint": "c3ee47ff4b18f8406e31bb74664993b64048a77204794e5ec97f15e46c1a414a",
+          "candidates": 488,
+          "relations": 437
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_103",
+          "fingerprint": "eed7e56f6ca8a011e0ec07493fbed8d567f20e2872f49c9871aff94b874fc921",
+          "candidates": 496,
+          "relations": 277
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_104",
+          "fingerprint": "c39b7e6a647dad62a8c451bd5acbf704947ad4acc6a94da5315283645772b913",
+          "candidates": 451,
+          "relations": 546
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_105",
+          "fingerprint": "63c97328972b617ddc986b4e6406bb68253acce49e81c3b56fe2e08384561214",
+          "candidates": 526,
+          "relations": 517
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_106",
+          "fingerprint": "ca230d648df3661567e92605f2d269dc3c716548caa11b21dcfcac60a2c56d6d",
+          "candidates": 329,
+          "relations": 685
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_107",
+          "fingerprint": "b01811c652cf857d152bfe90b019508adf6fb2e0227bb3c6526f7b82c29632a4",
+          "candidates": 543,
+          "relations": 385
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_108",
+          "fingerprint": "22cbf863a7bcfa187fdfabcfaf3496db275e1019e66ee08fc9e339488a70baf6",
+          "candidates": 514,
+          "relations": 263
+        },
+        {
+          "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_109",
+          "fingerprint": "4a7e49da6a7e3720c4058d6e1af1760b13f4087cdc7154531606a9e0c6d4b829",
+          "candidates": 409,
+          "relations": 268
+        }
+      ]
+    },
     {
       "Id": "SRC-089",
       "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",

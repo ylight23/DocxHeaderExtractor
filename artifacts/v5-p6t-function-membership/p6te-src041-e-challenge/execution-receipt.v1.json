@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "v5-p6te-doc0256-e-challenge-execution-receipt-v1",
+  "documentId": "SRC-041",
+  "primaryCalls": 2,
+  "maximumProviderCalls": 2,
+  "retry": 0,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "runtimeChanged": false,
+  "f1RawSha256": "bf1218a0e4198815119b5cb87d986dffdb5d685ae18e82fbeb4919ed410a0ff8",
+  "g2aRawSha256": "790789fcce4a913966d19c6061d28e981a745b395178e46f392dcf21be000b63",
+  "stages": [
+    {
+      "stage": "G2A",
+      "classification": "ACCEPTED",
+      "issued": 3,
+      "finishReason": "stop"
+    }
+  ],
+  "challengeVerdict": "NOT_SCORED_UNTIL_SEPARATE_PROVIDER_FREE_AUDIT"
+}
