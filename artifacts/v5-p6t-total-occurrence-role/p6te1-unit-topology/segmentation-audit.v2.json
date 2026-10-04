@@ -1,0 +1,638 @@
+{
+  "schemaVersion": "v5-p6te1-segmentation-audit-v2",
+  "providerCalls": 0,
+  "goldRead": true,
+  "goldMutation": "NONE",
+  "headingScore": "NOT_COMPUTED",
+  "functionScore": "NOT_COMPUTED",
+  "extentPass": "BLOCKED",
+  "sourceAudit": "READ_ONLY",
+  "src089": {
+    "reviewedUnits": 6,
+    "reviewedMultipartUnits": 5,
+    "reviewedSingletonUnits": 1,
+    "unitRows": [
+      {
+        "primary": "L0006:S0",
+        "partCount": 3,
+        "expected": [
+          "STARTS_SEGMENT",
+          "CONTINUES_PREVIOUS",
+          "CONTINUES_PREVIOUS"
+        ],
+        "occurrences": [
+          "O9",
+          "O10",
+          "O11"
+        ],
+        "observed": [
+          "CONTINUES_PREVIOUS",
+          "CONTINUES_PREVIOUS",
+          "CONTINUES_PREVIOUS"
+        ],
+        "exact": false
+      },
+      {
+        "primary": "L0014:S0",
+        "partCount": 2,
+        "expected": [
+          "STARTS_SEGMENT",
+          "CONTINUES_PREVIOUS"
+        ],
+        "occurrences": [
+          "O17",
+          "O18"
+        ],
+        "observed": [
+          "STARTS_SEGMENT",
+          "CONTINUES_PREVIOUS"
+        ],
+        "exact": true
+      },
+      {
+        "primary": "L0016:S0",
+        "partCount": 1,
+        "expected": [
+          "STANDALONE"
+        ],
+        "occurrences": [
+          "O19"
+        ],
+        "observed": [
+          "STARTS_SEGMENT"
+        ],
+        "exact": false
+      },
+      {
+        "primary": "L0024:S0",
+        "partCount": 2,
+        "expected": [
+          "STARTS_SEGMENT",
+          "CONTINUES_PREVIOUS"
+        ],
+        "occurrences": [
+          "O27",
+          "O28"
+        ],
+        "observed": [
+          "STARTS_SEGMENT",
+          "CONTINUES_PREVIOUS"
+        ],
+        "exact": true
+      },
+      {
+        "primary": "L0051:S0",
+        "partCount": 2,
+        "expected": [
+          "STARTS_SEGMENT",
+          "CONTINUES_PREVIOUS"
+        ],
+        "occurrences": [
+          "O54",
+          "O55"
+        ],
+        "observed": [
+          "STARTS_SEGMENT",
+          "CONTINUES_PREVIOUS"
+        ],
+        "exact": true
+      },
+      {
+        "primary": "L0080:S0",
+        "partCount": 2,
+        "expected": [
+          "STARTS_SEGMENT",
+          "CONTINUES_PREVIOUS"
+        ],
+        "occurrences": [
+          "O83",
+          "O84"
+        ],
+        "observed": [
+          "STARTS_SEGMENT",
+          "CONTINUES_PREVIOUS"
+        ],
+        "exact": true
+      }
+    ],
+    "segmentationGoldAvailable": false,
+    "headingConditionedBoundaryAgreement": {
+      "exactSegment": 4,
+      "disagree": 2,
+      "wrongStart": 1,
+      "wrongContinuation": 0,
+      "singletonWrongBoundary": 1,
+      "classification": "HEADING_CONDITIONED_COMPARISON_NOT_GENERAL_SEGMENTATION_ACCURACY"
+    },
+    "singleOccurrenceGold": {
+      "alias": "L0016:S0",
+      "occurrence": "O19",
+      "observed": "STARTS_SEGMENT",
+      "exact": false
+    },
+    "outputDistribution": {
+      "CONTINUES_PREVIOUS": 88,
+      "STANDALONE": 1,
+      "STARTS_SEGMENT": 7
+    },
+    "continuationAudit": {
+      "total": 88,
+      "nonAdjacentSourceOrder": 0,
+      "classification": "SOURCE_ORDER_ONLY; DOES_NOT_DETERMINE_LOGICAL_SEGMENT_MEMBERSHIP"
+    }
+  },
+  "src095": {
+    "reviewedTocEntries": 53,
+    "segmentationGoldAvailable": false,
+    "segmentationAccuracy": "NOT_EVALUABLE",
+    "sourceReviewedShape": "ONE_S0_ATOM_PER_REVIEWED_TOC_ENTRY",
+    "auditConvention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+    "agreementWithConvention": {
+      "STANDALONE": 11
+    },
+    "disagreementWithConvention": {
+      "CONTINUES_PREVIOUS": 42,
+      "STARTS_SEGMENT": 0
+    },
+    "rows": [
+      {
+        "candidateId": "C236",
+        "occurrence": "O42",
+        "alias": "L0035:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "STANDALONE",
+        "agreesWithConvention": true,
+        "segmentationInterpretation": "SINGLE_ATOM_SEGMENT"
+      },
+      {
+        "candidateId": "C243",
+        "occurrence": "O43",
+        "alias": "L0036:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C250",
+        "occurrence": "O44",
+        "alias": "L0037:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C257",
+        "occurrence": "O45",
+        "alias": "L0038:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "STANDALONE",
+        "agreesWithConvention": true,
+        "segmentationInterpretation": "SINGLE_ATOM_SEGMENT"
+      },
+      {
+        "candidateId": "C264",
+        "occurrence": "O46",
+        "alias": "L0039:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C271",
+        "occurrence": "O47",
+        "alias": "L0040:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C278",
+        "occurrence": "O48",
+        "alias": "L0041:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "STANDALONE",
+        "agreesWithConvention": true,
+        "segmentationInterpretation": "SINGLE_ATOM_SEGMENT"
+      },
+      {
+        "candidateId": "C285",
+        "occurrence": "O49",
+        "alias": "L0042:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C292",
+        "occurrence": "O50",
+        "alias": "L0043:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C299",
+        "occurrence": "O51",
+        "alias": "L0044:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C306",
+        "occurrence": "O52",
+        "alias": "L0045:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C313",
+        "occurrence": "O53",
+        "alias": "L0046:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C320",
+        "occurrence": "O54",
+        "alias": "L0047:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "STANDALONE",
+        "agreesWithConvention": true,
+        "segmentationInterpretation": "SINGLE_ATOM_SEGMENT"
+      },
+      {
+        "candidateId": "C327",
+        "occurrence": "O55",
+        "alias": "L0048:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C334",
+        "occurrence": "O56",
+        "alias": "L0049:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C341",
+        "occurrence": "O57",
+        "alias": "L0050:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C348",
+        "occurrence": "O58",
+        "alias": "L0051:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C355",
+        "occurrence": "O59",
+        "alias": "L0052:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C362",
+        "occurrence": "O60",
+        "alias": "L0053:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C369",
+        "occurrence": "O61",
+        "alias": "L0054:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C376",
+        "occurrence": "O62",
+        "alias": "L0055:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C383",
+        "occurrence": "O63",
+        "alias": "L0056:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C390",
+        "occurrence": "O64",
+        "alias": "L0057:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C397",
+        "occurrence": "O65",
+        "alias": "L0058:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C404",
+        "occurrence": "O66",
+        "alias": "L0059:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C411",
+        "occurrence": "O67",
+        "alias": "L0060:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "STANDALONE",
+        "agreesWithConvention": true,
+        "segmentationInterpretation": "SINGLE_ATOM_SEGMENT"
+      },
+      {
+        "candidateId": "C418",
+        "occurrence": "O68",
+        "alias": "L0061:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C433",
+        "occurrence": "O71",
+        "alias": "L0064:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "STANDALONE",
+        "agreesWithConvention": true,
+        "segmentationInterpretation": "SINGLE_ATOM_SEGMENT"
+      },
+      {
+        "candidateId": "C440",
+        "occurrence": "O72",
+        "alias": "L0065:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C447",
+        "occurrence": "O73",
+        "alias": "L0066:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C454",
+        "occurrence": "O74",
+        "alias": "L0067:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "STANDALONE",
+        "agreesWithConvention": true,
+        "segmentationInterpretation": "SINGLE_ATOM_SEGMENT"
+      },
+      {
+        "candidateId": "C461",
+        "occurrence": "O75",
+        "alias": "L0068:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C468",
+        "occurrence": "O76",
+        "alias": "L0069:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C475",
+        "occurrence": "O77",
+        "alias": "L0070:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C482",
+        "occurrence": "O78",
+        "alias": "L0071:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C489",
+        "occurrence": "O79",
+        "alias": "L0072:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C496",
+        "occurrence": "O80",
+        "alias": "L0073:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "STANDALONE",
+        "agreesWithConvention": true,
+        "segmentationInterpretation": "SINGLE_ATOM_SEGMENT"
+      },
+      {
+        "candidateId": "C503",
+        "occurrence": "O81",
+        "alias": "L0074:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C510",
+        "occurrence": "O82",
+        "alias": "L0075:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C517",
+        "occurrence": "O83",
+        "alias": "L0076:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C524",
+        "occurrence": "O84",
+        "alias": "L0077:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C531",
+        "occurrence": "O85",
+        "alias": "L0078:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C538",
+        "occurrence": "O86",
+        "alias": "L0079:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C545",
+        "occurrence": "O87",
+        "alias": "L0080:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C552",
+        "occurrence": "O88",
+        "alias": "L0081:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C559",
+        "occurrence": "O89",
+        "alias": "L0082:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C566",
+        "occurrence": "O90",
+        "alias": "L0083:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C573",
+        "occurrence": "O91",
+        "alias": "L0084:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "STANDALONE",
+        "agreesWithConvention": true,
+        "segmentationInterpretation": "SINGLE_ATOM_SEGMENT"
+      },
+      {
+        "candidateId": "C580",
+        "occurrence": "O92",
+        "alias": "L0085:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C587",
+        "occurrence": "O93",
+        "alias": "L0086:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "STANDALONE",
+        "agreesWithConvention": true,
+        "segmentationInterpretation": "SINGLE_ATOM_SEGMENT"
+      },
+      {
+        "candidateId": "C594",
+        "occurrence": "O94",
+        "alias": "L0087:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "STANDALONE",
+        "agreesWithConvention": true,
+        "segmentationInterpretation": "SINGLE_ATOM_SEGMENT"
+      },
+      {
+        "candidateId": "C601",
+        "occurrence": "O95",
+        "alias": "L0088:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      },
+      {
+        "candidateId": "C606",
+        "occurrence": "O96",
+        "alias": "L0089:S0",
+        "convention": "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+        "observed": "CONTINUES_PREVIOUS",
+        "agreesWithConvention": false,
+        "segmentationInterpretation": "CONTINUES_PREVIOUS"
+      }
+    ]
+  },
+  "conclusion": "E1_CARRIER_LEDGER_PASS; GENERAL_SEGMENTATION_ACCURACY_NOT_EVALUABLE; SEGMENT_GRANULARITY_NOT_AUTHORITATIVE; NO_DOWNSTREAM_FUNCTION_PASS_FROM_E1"
+}

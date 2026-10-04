@@ -4,7 +4,7 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
-/// <summary>Provider-free E1Δ audit: segmentation boundaries only, never heading precision/recall.</summary>
+/// <summary>Provider-free E1Δ audit. It preserves carrier evidence but does not invent segmentation truth without segmentation Gold.</summary>
 public sealed class V5P6TE1SegmentationAuditTests
 {
     private const string SnapshotRoot = "eval/a99-closed-loop/pdf-canonical-source-v1";
@@ -13,17 +13,17 @@ public sealed class V5P6TE1SegmentationAuditTests
     private const string OutputRoot = "artifacts/v5-p6t-total-occurrence-role/p6te1-unit-topology";
 
     [Fact]
-    public void P6TE1Delta_freezes_boundary_exactness_without_heading_scoring()
+    public void P6TE1Delta_corrects_segmentation_authority_without_heading_scoring()
     {
         using var e1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(E1Path)));
         using var review = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(ReviewPath)));
         var src089 = Audit089(e1.RootElement, review.RootElement);
         var src095 = Audit095(e1.RootElement, review.RootElement);
-        FreezeArtifact.AssertJson(OutputRoot, "segmentation-audit.v1.json", new
+        FreezeArtifact.AssertJson(OutputRoot, "segmentation-audit.v2.json", new
         {
-            schemaVersion = "v5-p6te1-segmentation-audit-v1", providerCalls = 0, goldRead = true, goldMutation = "NONE", headingScore = "NOT_COMPUTED", functionScore = "NOT_COMPUTED", extentPass = "BLOCKED", sourceAudit = "READ_ONLY",
+            schemaVersion = "v5-p6te1-segmentation-audit-v2", providerCalls = 0, goldRead = true, goldMutation = "NONE", headingScore = "NOT_COMPUTED", functionScore = "NOT_COMPUTED", extentPass = "BLOCKED", sourceAudit = "READ_ONLY",
             src089, src095,
-            conclusion = "E1_BOUNDARY_EXACTNESS_AUDIT_ONLY; E2_FUNCTION_AND_E3_EXTENT_REMAIN_BLOCKED",
+            conclusion = "E1_CARRIER_LEDGER_PASS; GENERAL_SEGMENTATION_ACCURACY_NOT_EVALUABLE; SEGMENT_GRANULARITY_NOT_AUTHORITATIVE; NO_DOWNSTREAM_FUNCTION_PASS_FROM_E1",
         });
     }
 
@@ -57,20 +57,23 @@ public sealed class V5P6TE1SegmentationAuditTests
         }).ToArray();
         return new
         {
-            goldMultipartUnits = unitRows.Length, unitRows,
-            boundaryExactness = new
+            reviewedUnits = unitRows.Length,
+            reviewedMultipartUnits = unitRows.Count(value => value.partCount > 1),
+            reviewedSingletonUnits = unitRows.Count(value => value.partCount == 1),
+            unitRows,
+            segmentationGoldAvailable = false,
+            headingConditionedBoundaryAgreement = new
             {
                 exactSegment = unitRows.Count(value => value.exact),
-                overMerged = unitRows.Where(value => value.partCount > 1).Count(value => value.observed[0] == "CONTINUES_PREVIOUS"),
-                underSplit = unitRows.Where(value => value.partCount > 1).Sum(value => value.observed.Skip(1).Count(role => role == "STARTS_SEGMENT" || role == "STANDALONE")),
+                disagree = unitRows.Count(value => !value.exact),
                 wrongStart = unitRows.Where(value => value.partCount > 1).Count(value => value.observed[0] != "STARTS_SEGMENT"),
                 wrongContinuation = unitRows.Where(value => value.partCount > 1).Sum(value => value.observed.Skip(1).Count(role => role != "CONTINUES_PREVIOUS")),
                 singletonWrongBoundary = unitRows.Where(value => value.partCount == 1).Count(value => !value.exact),
-                classification = "SOURCE_REVIEWED_PACK_001_UNITS"
+                classification = "HEADING_CONDITIONED_COMPARISON_NOT_GENERAL_SEGMENTATION_ACCURACY"
             },
             singleOccurrenceGold = new { alias = "L0016:S0", occurrence = l0016, observed = roles[l0016], exact = roles[l0016] == "STANDALONE" },
             outputDistribution = roles.GroupBy(value => value.Value).OrderBy(group => group.Key).ToDictionary(group => group.Key, group => group.Count()),
-            continuationAudit = new { total = allContinues.Length, potentialNonAdjacentSourceOrder = potentialFalse.Length, classification = "POTENTIAL_FALSE_CONTINUATION_REQUIRES_SOURCE_REVIEW" },
+            continuationAudit = new { total = allContinues.Length, nonAdjacentSourceOrder = potentialFalse.Length, classification = "SOURCE_ORDER_ONLY; DOES_NOT_DETERMINE_LOGICAL_SEGMENT_MEMBERSHIP" },
         };
     }
 
@@ -79,23 +82,24 @@ public sealed class V5P6TE1SegmentationAuditTests
         var (_, roles, aliasToOccurrence, _) = Build("SRC-095", SourcePdfCorpus.Src095, e1);
         var tocRows = review.GetProperty("src095").GetProperty("rows").EnumerateArray().ToArray();
         Assert.Equal(53, tocRows.Length);
-        var rows = new List<(string CandidateId, string Occurrence, string Alias, string Expected, string Observed, string Interpretation, bool Exact)>();
+        var rows = new List<(string CandidateId, string Occurrence, string Alias, string Convention, string Observed, string Interpretation, bool AgreesWithConvention)>();
         foreach (var row in tocRows)
         {
             var candidateId = row.GetProperty("CandidateId").GetString()!; var occurrence = row.GetProperty("occurrence").GetString()!;
             var alias = aliasToOccurrence.Single(value => value.Value == occurrence).Key;
             Assert.EndsWith(":S0", alias, StringComparison.Ordinal);
-            rows.Add((candidateId, occurrence, alias, "STANDALONE", roles[occurrence], roles[occurrence] == "STANDALONE" ? "SINGLE_ATOM_SEGMENT" : roles[occurrence], roles[occurrence] == "STANDALONE"));
+            rows.Add((candidateId, occurrence, alias, "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT", roles[occurrence], roles[occurrence] == "STANDALONE" ? "SINGLE_ATOM_SEGMENT" : roles[occurrence], roles[occurrence] == "STANDALONE"));
         }
         return new
         {
             reviewedTocEntries = rows.Count,
+            segmentationGoldAvailable = false,
+            segmentationAccuracy = "NOT_EVALUABLE",
             sourceReviewedShape = "ONE_S0_ATOM_PER_REVIEWED_TOC_ENTRY",
-            standalone = rows.Count(value => value.Observed == "STANDALONE"),
-            startsSegment = rows.Count(value => value.Observed == "STARTS_SEGMENT"),
-            continuesPrevious = rows.Count(value => value.Observed == "CONTINUES_PREVIOUS"),
-            boundaryExactness = new { exactSegment = rows.Count(value => value.Exact), overMerged = rows.Count(value => !value.Exact && value.Observed == "CONTINUES_PREVIOUS"), underSplit = 0, wrongStart = rows.Count(value => !value.Exact && value.Observed != "STANDALONE"), classification = "TOC_ENTRIES_ARE_NOT_HEADING_FP;_SINGLE_ATOM_SOURCE_REVIEW" },
-            rows = rows.Select(value => new { candidateId = value.CandidateId, occurrence = value.Occurrence, alias = value.Alias, expected = value.Expected, observed = value.Observed, exact = value.Exact, segmentationInterpretation = value.Interpretation }).ToArray()
+            auditConvention = "ONE_REVIEWED_TOC_ATOM_PER_SEGMENT",
+            agreementWithConvention = new { STANDALONE = rows.Count(value => value.Observed == "STANDALONE") },
+            disagreementWithConvention = new { CONTINUES_PREVIOUS = rows.Count(value => value.Observed == "CONTINUES_PREVIOUS"), STARTS_SEGMENT = rows.Count(value => value.Observed == "STARTS_SEGMENT") },
+            rows = rows.Select(value => new { candidateId = value.CandidateId, occurrence = value.Occurrence, alias = value.Alias, convention = value.Convention, observed = value.Observed, agreesWithConvention = value.AgreesWithConvention, segmentationInterpretation = value.Interpretation }).ToArray()
         };
     }
 
