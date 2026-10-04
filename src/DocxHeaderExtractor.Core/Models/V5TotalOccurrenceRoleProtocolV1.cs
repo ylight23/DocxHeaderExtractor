@@ -8,7 +8,8 @@ namespace DocxHeaderExtractor.Core.Models;
 /// Qualification-only P6T-A pass one.  The harness issues one O# identity for every owned atom;
 /// the model must classify every issued occurrence but cannot select an extent in this pass.
 /// </summary>
-public enum V5OccurrenceRoleV1 { HEADING, REPRESENTATION, OTHER }
+/// <summary>Role of a source-atom start, never atom membership in an already-started unit.</summary>
+public enum V5OccurrenceRoleV1 { HEADING_START, REPRESENTATION_START, OTHER }
 
 public sealed record V5IssuedOccurrenceV1(string Id, SemanticSourceAtom Atom);
 
@@ -25,20 +26,20 @@ public sealed record V5TotalRoleDecisionV1(string OccurrenceId, V5OccurrenceRole
 
 public sealed record V5TotalRoleDecisionResultV1(IReadOnlyList<V5TotalRoleDecisionV1> Decisions)
 {
-    public IReadOnlyList<string> HeadingOccurrenceIds => Decisions.Where(value => value.Role == V5OccurrenceRoleV1.HEADING)
+    public IReadOnlyList<string> HeadingStartOccurrenceIds => Decisions.Where(value => value.Role == V5OccurrenceRoleV1.HEADING_START)
         .Select(value => value.OccurrenceId).ToArray();
 }
 
 public static class V5TotalOccurrenceRoleProtocolV1
 {
-    public const string Version = "v5-total-occurrence-role-1";
+    public const string Version = "v5-total-occurrence-anchor-role-1";
 
     public const string SystemPrompt = """
-        You are reading source occurrences in document order. The harness has issued one occurrence id (O#) for every owned source occurrence in this request. Classify every issued occurrence exactly once.
+        You are reading source occurrences in document order. The harness has issued one occurrence id (O#) for every owned source occurrence in this request. Classify every issued occurrence exactly once as the start of a semantic unit, not as membership in a unit that may have started earlier.
 
-        HEADING establishes or names document structure at its own source location. REPRESENTATION only lists, points to, summarizes, or repeats structure located elsewhere. OTHER is neither. Do not use any external answer key.
+        HEADING_START means this occurrence starts a local structural heading; that heading may continue through later occurrences. REPRESENTATION_START means this occurrence starts an entry that only lists, points to, summarizes, or repeats structure located elsewhere; that entry may continue through later occurrences. OTHER means this occurrence starts neither kind of unit. OTHER may be a continuation of a heading or representation that began earlier; it does not mean the occurrence is unrelated to that unit. Do not use any external answer key.
 
-        Return exactly one JSON object with exactly this shape: {"decisions":[{"occurrence":"O1","role":"OTHER"}]}. Emit exactly one decision for every issued O#; do not omit OTHER. occurrence must be an issued id and role must be exactly HEADING, REPRESENTATION, or OTHER. This pass classifies role only: do not return candidate ids, source parts, text, spans, locators, relations, reasons, confidence, hierarchy, or any other property. contextOnlyEvidence is reasoning-only and is never selectable.
+        Return exactly one JSON object with exactly this shape: {"decisions":[{"occurrence":"O1","role":"OTHER"}]}. Emit exactly one decision for every issued O#; do not omit OTHER. occurrence must be an issued id and role must be exactly HEADING_START, REPRESENTATION_START, or OTHER. This pass classifies only the unit start role: do not return candidate ids, source parts, text, spans, locators, relations, reasons, confidence, hierarchy, or any other property. contextOnlyEvidence is reasoning-only and is never selectable.
         """;
 
     private static readonly JsonSerializerOptions Json = CanonicalJson.Options;

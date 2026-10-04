@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "v5-p6ta-total-occurrence-role-manifest-v1",
+  "schemaVersion": "v5-p6ta-total-occurrence-anchor-role-manifest-v1",
   "status": "PREPARED_NOT_AUTHORIZED",
   "providerCalls": 0,
   "goldRead": false,
@@ -16,15 +16,21 @@
     "responseFormat": "json_object"
   },
   "contract": {
-    "pass1": "TOTAL_ROLE",
+    "semanticUnit": "SOURCE_ATOM_START",
+    "pass1": "TOTAL_ANCHOR_ROLE",
     "expectedDecisions": "exactly one O# decision per owned occurrence",
     "roles": [
-      "HEADING",
-      "REPRESENTATION",
+      "HEADING_START",
+      "REPRESENTATION_START",
       "OTHER"
     ],
+    "other": "may be a continuation of a semantic unit started earlier; never means non-membership",
     "extentOrLocatorOutput": "FORBIDDEN",
-    "pass2": "BLOCKED_UNTIL_A_VALID_P6TA_PASS1_RESPONSE_EXISTS"
+    "pass2": {
+      "status": "BLOCKED_UNTIL_A_VALID_P6TA_PASS1_RESPONSE_EXISTS",
+      "eligibleRole": "HEADING_START",
+      "candidateRule": "every selected C# must begin at the selected O# and may consume only subsequent owned atoms"
+    }
   },
   "execution": {
     "maximumFuturePrimaryProviderCalls": 2,
@@ -139,10 +145,10 @@
         "L0092:S0",
         "L0093:S0"
       ],
-      "roleRequestHash": "91e839d316465af1819c12e0e8082759c0ffe14cc203fcddabc8cba883649594",
-      "systemPromptSha256": "9141867611987f6b4b7cfef6fa366b6260b6194570f95ea5040c976d2524f010",
-      "providerRequestHash": "99619cd13f51a1ceb09f04416e2f2277a832b42fd3ab1279e7d2009b48a29bb6",
-      "ProviderRequestBytes": 16981,
+      "roleRequestHash": "862df5172f979c2217d78e515e6a0f3579b9a50058bdbe346bb8a7f7acd8bf6a",
+      "systemPromptSha256": "0302588e314f67b3d525516cd8cbf545f2521b797e1af325c135f6812ca6e4e3",
+      "providerRequestHash": "fda5f075a2867c33048fbea5e99cb36bb679308cf2c9696bd54c1345eb1cae96",
+      "ProviderRequestBytes": 17431,
       "MaxCompletionTokens": 32768,
       "candidateUniverseFingerprint": "e4f3624bbd8b0771971fc85973e6fd4613ecd9c30c04c64ce8680b302d8d0029",
       "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5"
@@ -249,10 +255,10 @@
         "L0088:S0",
         "L0089:S0"
       ],
-      "roleRequestHash": "feb91e607b91570c4d118e8b3f4675585ae70014bc70dd20bd3ed4ea33cceae8",
-      "systemPromptSha256": "9141867611987f6b4b7cfef6fa366b6260b6194570f95ea5040c976d2524f010",
-      "providerRequestHash": "169ddb047cc4aee9a2a66ea6019779a8900316d455baf19a0dd7595f035ac50c",
-      "ProviderRequestBytes": 13141,
+      "roleRequestHash": "65e6ef573ea6136d5af1d8cc8b778c168730da4749676b1777df546c36116ff1",
+      "systemPromptSha256": "0302588e314f67b3d525516cd8cbf545f2521b797e1af325c135f6812ca6e4e3",
+      "providerRequestHash": "e9393ad53c44e7f0b99436dafd9311a57d067541516d19d8885ffdfada76cb87",
+      "ProviderRequestBytes": 13591,
       "MaxCompletionTokens": 32768,
       "candidateUniverseFingerprint": "ed57257a7c3e315ad3ab3a6faa431c098c4d581aae3efdf33c576f8b94228a71",
       "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84"
