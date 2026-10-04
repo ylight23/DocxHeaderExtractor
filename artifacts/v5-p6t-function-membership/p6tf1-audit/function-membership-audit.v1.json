@@ -1,0 +1,379 @@
+{
+  "schemaVersion": "v5-p6tf1-function-membership-audit-v1",
+  "providerCalls": 0,
+  "goldRead": true,
+  "goldMutation": "NONE",
+  "rawCaptureMutation": "NONE",
+  "scoreAxis": "FUNCTION_MEMBERSHIP_ONLY",
+  "groupingPass": "BLOCKED",
+  "exactExtentPass": "BLOCKED",
+  "executionReceipt": {
+    "primaryProviderCalls": 2,
+    "recoveryProviderCalls": 1,
+    "totalProviderCalls": 3,
+    "src089": {
+      "initialAttempt": {
+        "documentId": "SRC-089",
+        "transportAccepted": false,
+        "finishReason": null,
+        "classification": "TRANSPORT_ERROR",
+        "rawResponseSha256": null,
+        "retryCount": 0
+      },
+      "canonicalAuditCapture": {
+        "documentId": "SRC-089",
+        "finishReason": "stop",
+        "parserAccepted": true,
+        "semanticRequestHash": "010ed175ee676085349da16469346c67da1dea39fe462589f42d45fe2299a412",
+        "providerRequestHash": "a244f7c32dd1fe8c2c1b1551a48ff37ec95eadfbcd18ba0e64251a82b873cd29",
+        "rawResponseSha256": "23286899899f73d5ab94c71b64b665703f524d64a9835eb89f66d61f0d6cfbb7",
+        "reasoningTokens": 4501,
+        "promptTokens": 3622,
+        "completionTokens": 6102,
+        "retryCount": 0
+      }
+    },
+    "src095": {
+      "documentId": "SRC-095",
+      "finishReason": "stop",
+      "parserAccepted": true,
+      "semanticRequestHash": "4cb5d6e60747c45ce7f9be5e24ab49f29157d7093560fde6f55d4f3e26f24e4d",
+      "providerRequestHash": "35c1f1078f39fdc87d3feabe3d61451d3d331bf79407f20cc39f26e20ddb6e29",
+      "rawResponseSha256": "d81cafdf38250c46adc4f613b2bc121a33c3f4c37ed4d98c58e946764243da80",
+      "reasoningTokens": 3918,
+      "promptTokens": 4922,
+      "completionTokens": 5634,
+      "retryCount": 0
+    }
+  },
+  "src089": {
+    "reviewedHeadingUnits": 6,
+    "reviewedHeadingSourceParts": 12,
+    "establishesStructure": 12,
+    "representsStructure": 0,
+    "other": 0,
+    "reviewedRows": [
+      {
+        "alias": "L0006:S0",
+        "occurrence": "O9",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "alias": "L0007:S0",
+        "occurrence": "O10",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "alias": "L0008:S0",
+        "occurrence": "O11",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "alias": "L0014:S0",
+        "occurrence": "O17",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "alias": "L0015:S0",
+        "occurrence": "O18",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "alias": "L0016:S0",
+        "occurrence": "O19",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "alias": "L0024:S0",
+        "occurrence": "O27",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "alias": "L0025:S0",
+        "occurrence": "O28",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "alias": "L0051:S0",
+        "occurrence": "O54",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "alias": "L0052:S0",
+        "occurrence": "O55",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "alias": "L0080:S0",
+        "occurrence": "O83",
+        "function": "ESTABLISHES_STRUCTURE"
+      },
+      {
+        "alias": "L0081:S0",
+        "occurrence": "O84",
+        "function": "ESTABLISHES_STRUCTURE"
+      }
+    ],
+    "totalEstablishesStructure": 15,
+    "establishesOnCanonicalGoldParts": 12,
+    "falseEstablishAudit": {
+      "residualCount": 3,
+      "sourceReviewedNonheading": 3,
+      "residuals": [
+        {
+          "occurrence": "O3",
+          "alias": "L0002:S0",
+          "page": 1,
+          "ordinal": 2,
+          "text": "THE GOVERNMENT",
+          "canonicalGoldMembership": false,
+          "sourceReview": "ISSUER_HEADER",
+          "classification": "FUNCTION_FALSE_POSITIVE_NONHEADING"
+        },
+        {
+          "occurrence": "O4",
+          "alias": "L0002:S1",
+          "page": 1,
+          "ordinal": 3,
+          "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+          "canonicalGoldMembership": false,
+          "sourceReview": "NATIONAL_HEADER",
+          "classification": "FUNCTION_FALSE_POSITIVE_NONHEADING"
+        },
+        {
+          "occurrence": "O6",
+          "alias": "L0003:S1",
+          "page": 1,
+          "ordinal": 5,
+          "text": "Independence – Freedom – Happiness",
+          "canonicalGoldMembership": false,
+          "sourceReview": "NATIONAL_MOTTO",
+          "classification": "FUNCTION_FALSE_POSITIVE_NONHEADING"
+        }
+      ],
+      "authority": "READ_ONLY_SOURCE_REVIEW_COMPLETED; GOLD_NOT_MUTATED"
+    }
+  },
+  "src095": {
+    "reviewedTocOccurrences": 53,
+    "representsStructure": 53,
+    "establishesStructure": 0,
+    "other": 0,
+    "representationFunctionVerdict": "CONFIRMED_ON_REVIEWED_TOC_COHORT",
+    "rows": [
+      {
+        "occurrence": "O42",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O43",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O44",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O45",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O46",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O47",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O48",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O49",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O50",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O51",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O52",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O53",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O54",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O55",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O56",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O57",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O58",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O59",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O60",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O61",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O62",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O63",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O64",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O65",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O66",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O67",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O68",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O71",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O72",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O73",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O74",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O75",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O76",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O77",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O78",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O79",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O80",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O81",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O82",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O83",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O84",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O85",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O86",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O87",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O88",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O89",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O90",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O91",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O92",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O93",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O94",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O95",
+        "function": "REPRESENTS_STRUCTURE"
+      },
+      {
+        "occurrence": "O96",
+        "function": "REPRESENTS_STRUCTURE"
+      }
+    ]
+  },
+  "conclusion": "FUNCTION_MEMBERSHIP_AUDIT_ONLY; NO_AUTOMATIC_GOLD_MUTATION; GROUPING_AND_EXACT_EXTENT_REMAIN_BLOCKED"
+}
