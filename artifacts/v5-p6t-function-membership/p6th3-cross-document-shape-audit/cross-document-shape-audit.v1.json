@@ -1,0 +1,1591 @@
+{
+  "schemaVersion": "v5-p6th3-cross-document-composition-shape-audit-v1",
+  "status": "FROZEN_PROVIDER_FREE_SHAPE_AUDIT",
+  "scope": {
+    "documents": [
+      "SRC-089",
+      "SRC-095"
+    ],
+    "canonicalSourceSnapshots": true,
+    "providerCalls": 0,
+    "runtimeChanged": false,
+    "goldMutation": "NONE"
+  },
+  "shapes": {
+    "A_MULTIPART_TO_BODY": 17,
+    "B_MULTIPART_TO_ADJACENT_HEADING": 6,
+    "C_SINGLETON_TO_ADJACENT_HEADING": 4,
+    "D_MULTIPART_TO_MULTIPART_HEADING": 1,
+    "F_WRAPPED_OR_HYPHENATED_PROXY": 11
+  },
+  "observedG2AAnchorInsideTrueMultipart": {
+    "documentId": "SRC-089",
+    "evaluable": true,
+    "count": 0,
+    "verdict": "NOT_OBSERVED_ON_THE_ONLY_AVAILABLE_G2A_LEDGER"
+  },
+  "unavailable": {
+    "otherDocumentG2AAnchorLedgers": "NOT_CAPTURED",
+    "corpus004058043": "OUT_OF_SCOPE: no P6 canonical source snapshot and no frozen G2A ledger",
+    "strictGoldDocuments": "NOT_COMPOSITION_EVALUABLE without P6 source + F1 + G2A authorities"
+  },
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0006:S0",
+        "L0007:S0",
+        "L0008:S0"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "8e383ac6c167422e5315f18561d2e30005dbff6b08e5fc43afd6b9961c81ff1e",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0014:S0",
+        "L0015:S0"
+      ],
+      "multipart": true,
+      "category": "B_MULTIPART_TO_ADJACENT_HEADING",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "aeaba161acd7b4fcf2ec6d566e76952c028f9ac4faadcf04df80480cf5e5f165",
+      "nextHeadingPrimary": "L0016:S0"
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0016:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "450c9e9e6bf050022303312547529f724e86b8b503778ebdadc5442734f39149",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0024:S0",
+        "L0025:S0"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": true,
+      "textSha256": "a99eb80d947ea7275380c3e5114fe8c16c400ca39ab57ff1a0a7791d10a9ef07",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0051:S0",
+        "L0052:S0"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": true,
+      "textSha256": "377ab14e568353093de783444b01ab86b4a239abd63d2817021544ba158c57ab",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0080:S0",
+        "L0081:S0"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": true,
+      "textSha256": "783f741930a6aca06a3e0e88ffb4093a077aed8881734556d4027b916aad9ac9",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0094:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "ef958b8733f783a6937718ae23810f6fa867a2ee51396d10b437eef99a6ddf1b",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0106:S0",
+        "L0107:S0",
+        "L0108:S0"
+      ],
+      "multipart": true,
+      "category": "B_MULTIPART_TO_ADJACENT_HEADING",
+      "wrappedOrHyphenatedProxy": true,
+      "textSha256": "37590050100dbd8c88400737d472b1c9d989a04162334e25cb81e3c8c4222dee",
+      "nextHeadingPrimary": "L0109:S0"
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0109:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "5318e4d913c04857c416553596adaebb80a10503b26094bce17c708073c8f188",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0117:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "7b55505c147471027a118df35795cc091990a3c5879fa3a3c877ba4d6a65287a",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0126:S0",
+        "L0127:S0",
+        "L0128:S0"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": true,
+      "textSha256": "101c3c55733798d0b19c44cba8e08dcd13a12126e50887b50f7d42751c12f69a",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0160:S0",
+        "L0161:S0"
+      ],
+      "multipart": true,
+      "category": "B_MULTIPART_TO_ADJACENT_HEADING",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "5e595269bec741ddae7c85d4c4ddc154e434ec04cd893d68b46f9e4754ab3d55",
+      "nextHeadingPrimary": "L0162:S0"
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0162:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "f06b8a90b133978a84a0b325a90dade8feb15362f28a6a54d55aff6c6778fd11",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0174:S0",
+        "L0175:S0"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "7a01135e168485267996775432e669d691c0b5c1816afc932f41247e90ca3a40",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0195:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "a099f6927f29e29dfd43d1b6ca24942d74c97f8986f09901e2711442274414a7",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0243:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "6ab99a9604ddff20048238ddb099bd4d80844050983e1a8b32a44fcbd53c9f9c",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0246:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "af7e02fcdb5442966525f1d0422f80915b78c99b59af4ececc9eece324ad61ab",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0249:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "7a266409f15d5bbcb2ea710a51f73a1f46efa8cb4c932000a889c59287ae995c",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0260:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "23290cf3530a32d01c6fb28c28b4305bf542bed996bd8c346fb306a2a2279125",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0284:S0",
+        "L0285:S0"
+      ],
+      "multipart": true,
+      "category": "D_MULTIPART_TO_MULTIPART_HEADING",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "133d0b4df0faec04248f0664985b3a562875be60f7e2064d73410481a4762b87",
+      "nextHeadingPrimary": "L0286:S0"
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0286:S0",
+        "L0287:S0"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": true,
+      "textSha256": "b9a2070425d4bb3df1a613054902e15c6224bc348266bdb2a4e6be20012d1b0e",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0317:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "fe14644030844d8efecd1d50a44d173f16068af0bfb43251dc89f422455ee8fe",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0350:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "77636c55ff8560fc577d974a59ffb5c41ac83aec793392ba3c02f32cfe34f43b",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0359:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "8732d60faa66318581e6f8724e17a82fdc86e6cfde061afb302ffd6df2b0840e",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0382:S0",
+        "L0383:S0"
+      ],
+      "multipart": true,
+      "category": "B_MULTIPART_TO_ADJACENT_HEADING",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "9d417b4e91b195838679bba2d800bc48cea6de41d2c4968c848a7624ee05e96d",
+      "nextHeadingPrimary": "L0384:S0"
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0384:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "bf6ad498e705c94b8a3759609df9218988e11762112499218bb3cd053e511ab7",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0426:S0",
+        "L0427:S0"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": true,
+      "textSha256": "1b43f274df3497715e511fb96a103aa95cb506292f3c8cfde75567d5de3c7983",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0455:S0",
+        "L0456:S0"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": true,
+      "textSha256": "0d43c35c51c8f77330f94b5b8da44dcfd850d2bbe42e17ecf658dc1601bb13b7",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0478:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "765829865d6556aeddbf363c07a81a08b683b38b57139c40bac0542e631f5af0",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0490:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "4d3d8a82aef034a3d4707cb5d1e99ca2e3829ca9bf4df47705dd8c0410c6fafa",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0499:S0",
+        "L0500:S0"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": true,
+      "textSha256": "f1037bdb9f21fed13b0640032919ff1800d4f105c49daa3a87fde2d3723c870e",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0522:S0",
+        "L0523:S0"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": true,
+      "textSha256": "33dd9e13fdee97cf1dd21bb9542f21c39f6188ff6d5a1f417e11e36f36a4d5ac",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0535:S0",
+        "L0536:S0"
+      ],
+      "multipart": true,
+      "category": "B_MULTIPART_TO_ADJACENT_HEADING",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "0c52d9f5e36d8aeebc361c3110fb27548da296482c49f571fcc3fc0c15187f89",
+      "nextHeadingPrimary": "L0537:S0"
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0537:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "3d631de06b68e4c8c6e3354c4285b4da2cd4bebce57827bbdd988f1b2bd0ea9e",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0555:S0",
+        "L0556:S0"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": true,
+      "textSha256": "ce762e6355229d4da55f6f4b9ad8a47b2edf3e76a0343c0e2cca8c113e3991c1",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-089",
+      "aliases": [
+        "L0572:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "747627dd20a2e06dd9ee7856099a36dd2f45361ecf9edb5c7912a387381d4fe6",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0008:S0"
+      ],
+      "multipart": false,
+      "category": "C_SINGLETON_TO_ADJACENT_HEADING",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "eaf0ef7268bdcfd12c9bcb0f90df1c6582d0b044b867b92f14c2b7a7c2c4cd89",
+      "nextHeadingPrimary": "L0009:S0"
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0009:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0015:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "bece650ab72a24dc00aca13db8aa0d874c287035a6d5eeb4d4b5965df4575e48",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0023:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "8b03454652d36be8d6898987cdb8ba771c530494105010fc03b074ab118bf6fd",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0034:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "a9360e0212a4d173581c91da68494d022ee55871188be00acf863d2ed0cf7a6a",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0129:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "6e62ee82e3df2a7dfcaba91e18eab2a77c9c7f7b4a5dceb49528346078b636d2",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0134:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "87f7fc1b8efe887455677ea8f41c9b7be57ea5a2bf1a72570d4166a6ac916cfb",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0146:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "010dfe71a7b4bed91fc212c11fc33c76e217cdabac1d32ca5d4325436864488c",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0162:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "08d6070e68fec0d7e38a4f87d34c437c147c43f1fd3d95abe69dca05f8c33062",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0185:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "bbdecfb0758de4771cd4c0412152fc0dc2ea5ba2a7ba546aa900c35b148caea3",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0205:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "12f02f51c5f05e51035b42070fd8f2cf5ece3f5b391346ac4990f8879846b182",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0243:S0"
+      ],
+      "multipart": false,
+      "category": "C_SINGLETON_TO_ADJACENT_HEADING",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "bb4ef899daa59aab096cfe7043fdd5755946a2ca8656b5311b5d0b85b7b358b2",
+      "nextHeadingPrimary": "L0244:S0"
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0244:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "47d06a6df527bf98daeb105930c7ca16984f551669d9d1786234178c7c08bf5b",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0268:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "ca3686917a0283ff75c0763250aeb34aeb8e11a81ab4baec9ecabca3f5355383",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0277:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "4f2d49b2f379d512e61ba12ca2ba4c3c8cc64fff2304eb09ce6fa59b77df3e4e",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0288:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "920336b2dfdd7a9099011b15ea6d703588846cd7aab05c78ba1508c08f05606f",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0305:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "d0350b421da31f26e2731bd948b8eda7657b3eca345f8361f82f5c010f0f7e9a",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0335:S0"
+      ],
+      "multipart": false,
+      "category": "C_SINGLETON_TO_ADJACENT_HEADING",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "6b44af5de354403b36ac2bc9f5481a4329a3fbe2446dd663c1d03c19f79e48f3",
+      "nextHeadingPrimary": "L0336:S0"
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0336:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "6811c54db6850153e45d56907a20046505981f7a2eba66425d0c559a05280201",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0396:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "ecdc3577866f32bf66f77eb77b5524965a5225a8701237bc30ec4710da8edb16",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0428:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "33f4a59ba0dfd69d489032ab59492e317c2cbd9aaa922db0fb0bc0d12bfe60a9",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0451:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "7669e825f1de741eac190f55b4834124cfd50a366f1860e3bedcaeb3e5e60f9b",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0472:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "88f6b37834aaf9f786b535c5af5c6a3ff358472720697f43410ba8150ecd7aa6",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0483:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "bc13bf2e22c13bc80b09651b0f5d7f88041b13886ec1406af01b86b7618a6e3a",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0497:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "f5acac79020e6e9b508156c0cfbfce2e3511b2c3082331308c06b5f5d462d9fa",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0514:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "36ce4b01114894823acf219cb26664173bfe344e3758d97b295b4879bc29ef29",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0551:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "ebd04c397d5dafdd453bcc88d5b6e4c1a0d7d0275d430ba0f123ceb30dc18cda",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0557:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "7171d638f4d00af91ec37fa4fac970a2ac1340bac7d49b337eee0b5471a9fcba",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0605:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "8c78e30869ebab7723ad01c56007e28e7e9a5c7d3a02486ee70ed81e7d55c52f",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0608:S0",
+        "L0608:S1"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "2a13218662162c33ba93a9abe0a1bb160b8a44d5a4705662e35287c7aa8975f4",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0674:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "0ad040b4a70ccdfb0b9e85b3924b3c64e7357347288dd36a325bd913115abbb0",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0677:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "ddb4dcfb048b0faada964e012a40878e9075c87bf785bd53198bb753a3aa65d2",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0693:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "b8385ce89e1966c8b623ff674da304d5c6c74035cae1ea8bdbc76f035838685b",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0760:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "46a942f1478d7a511901e844f97dbfd3ea2df517ddf5012e7cc5e1133aef08f5",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0773:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "b872177b71dc7cd5731e25273f7495cb8d3f9c3f36b2d1370041949af9dfd7c7",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0779:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "3dd52a9967788dfd6141d960c96f963caef89778c3a3febc53ee6dc2aba2ff49",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0793:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "3275095589c3ced69557c5baa949b73248c0c36f3d82d6c57aaa2f9293d3f0a9",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0808:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "1c4ba5c9f294ef4392522b228a05cd38d37d178566415382072ea66a8359aff6",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0852:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "2247467d54fc71956393eb75a92530bd8f09e951692e703036c2078d1cd173c5",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0870:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "15e60dcff250d1716de21c5fdf09c93309a47727b5fadd092a67979099bc4262",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0893:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "cec54fb69d01025994d650d03f7ef7b50f72f69ae8253a5edd49543d6d420bc3",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0903:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "1f595219c7e9e0d8f3f194d3a5eb081963b87ca1d3cbd445753dccd539f61c47",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0924:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "7241116c1dafeffafd61c7738f59154060048f55e26a891951c2041de2392c2a",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0944:S0",
+        "L0944:S1"
+      ],
+      "multipart": true,
+      "category": "B_MULTIPART_TO_ADJACENT_HEADING",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "b8272a61a253c36f23b92b6562d85f2829a14c8cb23bcd65b82fa9338a38719d",
+      "nextHeadingPrimary": "L0945:S0"
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0945:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "77f626375eb31e7d767544edd8c4f0de6602295a4abd620e602ceba42e4552b0",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0959:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "46e5fd3a7b11015034444b5edfdd8c0324406213b6efcfb87154a536bf2ce98e",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L0971:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "522be6baaeebde4f70fee19c19b9a8b1cb93db8c984fa8610e8aee6d4401736a",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1011:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "36bdd94f630886570006945348d4359fb37e2540e2e05afce4e62959fa588db8",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1050:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "8d10f9aee65a114b79cb679ca7deffaf2b1f01415547a8144e13a3a9cccec1d7",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1066:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "4583be6866139aa34698bcd92d5ba3602ed87b9132c4a20d3c13cdf1362d929b",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1105:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "de2d8b9541e28c96470c5f4b4ec6ba3c720785c8638bad690cf718f65632c9d3",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1143:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "d88b9b8683cad3991586897d7743f77689c8041ef6ce6b41bd297e8f40fbb4bf",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1164:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "a3d5c494ec9b0d81675c364c2e04d6c2a42deae95b3888f8285dc8989c4a3e00",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1189:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "9a367108546c26284527ce39cbc245d48e9f645ffbfcbeb7acd80173363a500e",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1199:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "bf30c2d7f6b5f87affec1e887bca9235730772ae5e1b222b913a45b6fec8d25a",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1223:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "ef932d4eeadcf488071196ad8caf99dcac83d8e399cf2699ac79b1836935a1bd",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1265:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "4c103ba4037de511f4da103a969aa1d89560ad487412bbca5c6242b38ab0d558",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1294:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "3734a3be7292c851284bcb7b9a0e67b825b92472ee4ced7c4c55ab5495304d4a",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1298:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "1e1f215f2010ce1f6538a194bb6bba8d30bc518d5998698e84719126b6a9f1f3",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1301:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "042034af7752c94d61cbc581d3b899b78352e3ddb10634ecfc6040f677759159",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1308:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "9456a843b5ccd5e96cf03e4ea0998cab49a3f2de571a33cb3305b0b04948bd12",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1320:S0",
+        "L1320:S1"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "24d21861e0759e7ebf758c0540187976e495c579a597ce1c4365ac1a970d741f",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1333:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "83416906a157a20e7aef2cf2f548389b59bac0b350985d7dd76a108d9ec63d9f",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1357:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "4c1eeff40e47107a4e5235e9004817d06a362a853eaded5e15b1c755e01338e9",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1374:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "80d61d0229281a9cbfe4873b3358d904f338e31fa801006fdbee5ee7ad48bd54",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1383:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "1dacb1bd494ac9a006e923a4ec9f65fc8ac49f1dd5e3254179cd31f5d8da6fc5",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1399:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "2d90e6b113b487e110c9dc0cb531c2b605d81015aaf0d5c71f329869a2c83c16",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1424:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "72dbb7a1a39e78b0dfb980e8ff1a99612a1565db3713d9e87baa1a262d2a1df2",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1431:S0",
+        "L1431:S1"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "271eda175c878d236f9442b912fbc44d1876ec97f5bb3a4e4f034aaac82cff5c",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1436:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "7ed9c57fdafd49d1dcc682c77d5562f472b205b2bef9cf2d63c669afec0049a3",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1442:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "c7c90709ac68f1dd5b0c7ec66ffdc8b15980d151cac9f3dbebab33eb11ef3dfd",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1453:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "9c32c517038764322690313d27adbc0a05425723e64e1e9b04f432f9d358363f",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1456:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "766ea1fbdc89cba8342c07191557c439c0b410382855cfcacd5664033d8665f8",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1465:S0",
+        "L1465:S1"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "5c25fe0e9fc3056109847af02052a833d7a7722821a0aab9a7260eb8eef62086",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1472:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "350b439ad2cf6c1b477eb853904e8ba8d34f8a3ebd211382710d60d60dfa9896",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1508:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "6bbdc3a3206ad389201ff98787f72e790db98660f865c44e3937e43a84fec170",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1540:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "ee0371ac8b2299073cbf930dde0e0cdf07a9e818e8be78a777c0aec6bc4418f0",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1591:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "67db274551b16b9f5d79e1ca292069e4c70fbbec3d022c31736497806782e393",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1612:S0"
+      ],
+      "multipart": false,
+      "category": "C_SINGLETON_TO_ADJACENT_HEADING",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "f26da6e016941f8b93ddda43a0ebb24e44d8f965894a4fa312b9984690ed5b9d",
+      "nextHeadingPrimary": "L1613:S0"
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1613:S0",
+        "L1613:S1"
+      ],
+      "multipart": true,
+      "category": "A_MULTIPART_TO_BODY",
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "0904b5f9d0d88216b24ac672f98dfcd5ec6986cb8caef41d67b30bd83bfa502c",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1655:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "576bb19853f6f63a6b64baee633d90947a9a210952a30d3a90b312fba2ff97ed",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1677:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "de6ea0fe0481060fbc55051587ecc506dd0b92f9de85e9f90a365bbf3fadbb61",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1688:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "212825c3107151827dd71a6da528bffe7ed8b042532fa6376f479b7ef6d2efe5",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1710:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "431abd772f89f8d6983a3632307a4be0a4b1df7422ce723558742aca98d9f53c",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1729:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "953485d4e9885a0a41137d1a324293ff4d4cf7f1ec625257dae722046569ed9b",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1736:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "6d4e5d1dce53cb934c20cbab57fa1453e6e99db77f5e90b619ddee8c6fc33c30",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1745:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "531f0486ba15f434f659065b286dd1ba9685d1a9a50e81e60e2b4ac5f9e1f529",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1750:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "26abf6bcf41a5264aa441cb7cf310a986457324d67e3c3a6655763e0e983d216",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1761:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "9638b84ade976cce98d8a1e168548d96cf5c1d25540574af91adaa75f0d6c530",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1787:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "844d1ae8328f1821d384dcb32271920e8e30143583aec82a27ccc25850768318",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1827:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "00272d782f16c1a7c60574c6417d43175b25df12ffa6e866e617094d76985d55",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1856:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "be463d29adafa961198f8291bd111d5e66d935f9f34f7cc102a47312152eb2df",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1878:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "4be0f860ee3560910d50596233fe802eeecf0972c7a9de427a76ae9a622e2ea1",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1912:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "39c3be1198a2fddf18d03608348d9cfaf8823d2dda4d5ff13fdb851bd15d29ea",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1914:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1940:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1947:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L1961:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L2012:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "08f271887ce94707da822d5263bae19d5519cb3614e0daedc4c7ce5dab7473f1",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L2023:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "5c62e091b8c0565f1bafad0dad5934276143ae2ccef7a5381e8ada5b1a8d26d2",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L2056:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "8c2574892063f995fdf756bce07f46c1a5193e54cd52837ed91e32008ccf41ac",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L2063:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "8de0b3c47f112c59745f717a626932264c422a7563954872e237b223af4ad643",
+      "nextHeadingPrimary": null
+    },
+    {
+      "documentId": "SRC-095",
+      "aliases": [
+        "L2076:S0"
+      ],
+      "multipart": false,
+      "category": null,
+      "wrappedOrHyphenatedProxy": false,
+      "textSha256": "8469a6171e15fbb477f8725e35aebf69ab449aba3ca9bbd4d884e21fe275d37d",
+      "nextHeadingPrimary": null
+    }
+  ],
+  "conclusion": "SHAPE_INVENTORY_ONLY; NO_CROSS_ANCHOR_INVARIANT_IS_SUPPORTED_ON_SRC089_CANARY_BUT_NOT YET QUALIFIED ACROSS DOCUMENTS OR AGAINST FALSE_POSITIVE_ANCHORS_INSIDE_TRUE_MULTIPART_UNITS"
+}

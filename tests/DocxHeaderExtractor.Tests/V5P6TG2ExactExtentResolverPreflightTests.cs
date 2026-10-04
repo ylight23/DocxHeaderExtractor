@@ -40,6 +40,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private const string ContinuationBoundaryCaptureRoot = "artifacts/v5-p6t-function-membership/p6th2-function-conditioned-continuation-canary-20261004";
     private const string ContinuationBoundaryGoldAuditRoot = "artifacts/v5-p6t-function-membership/p6th2-function-conditioned-continuation-gold-audit";
     private const string ContinuationCompositionAuditRoot = "artifacts/v5-p6t-function-membership/p6th21-anchor-continuation-composition-audit";
+    private const string CrossDocumentShapeAuditRoot = "artifacts/v5-p6t-function-membership/p6th3-cross-document-shape-audit";
     private const string Gold089Path = "eval/a99-closed-loop/gold/SRC-089.gold.json";
     private const string Gold095Path = "eval/a99-closed-loop/gold/SRC-095.gold.json";
     private const string Review095Path = "eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json";
@@ -2635,6 +2636,84 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         {
             foreach (var item in g2a.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))) item.Dispose();
         }
+    }
+
+    [Fact]
+    public void P6TH3_provider_free_cross_document_shape_audit_scopes_composition_evidence_without_claiming_unavailable_anchor_data()
+    {
+        var documents = new[]
+        {
+            (Id: "SRC-089", Pdf: SourcePdfCorpus.Src089, Gold: Gold089Path),
+            (Id: "SRC-095", Pdf: SourcePdfCorpus.Src095, Gold: Gold095Path),
+        };
+        var rows = new List<object>();
+        var totals = new Dictionary<string, int>(StringComparer.Ordinal)
+        {
+            ["A_MULTIPART_TO_BODY"] = 0, ["B_MULTIPART_TO_ADJACENT_HEADING"] = 0,
+            ["C_SINGLETON_TO_ADJACENT_HEADING"] = 0, ["D_MULTIPART_TO_MULTIPART_HEADING"] = 0,
+            ["F_WRAPPED_OR_HYPHENATED_PROXY"] = 0,
+        };
+        foreach (var document in documents)
+        {
+            var sourceHash = CanonicalSemanticSourceHash.Compute(TestRepository.Path(document.Pdf));
+            var plan = PdfCandidateAuthorityQualificationAdapter.PrepareFromSnapshot(TestRepository.Path($"{SnapshotRoot}/{sourceHash}.json"), document.Id);
+            var atoms = plan.SourceAtoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
+            using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(document.Gold)));
+            var claims = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray().Select(claim =>
+            {
+                var aliases = claim.GetProperty("sourceParts").EnumerateArray().Select(part => part.GetProperty("sourceAlias").GetString()!).ToArray();
+                return new { aliases, first = atoms[aliases[0]].Ordinal, last = atoms[aliases[^1]].Ordinal };
+            }).OrderBy(claim => claim.first).ToArray();
+            for (var index = 0; index < claims.Length; index++)
+            {
+                var claim = claims[index];
+                var multipart = claim.aliases.Length > 1;
+                var next = claims.Skip(index + 1).FirstOrDefault(nextClaim => nextClaim.first > claim.last);
+                var adjacentHeading = next is not null && next.first == claim.last + 1;
+                var category = multipart
+                    ? adjacentHeading ? (next!.aliases.Length > 1 ? "D_MULTIPART_TO_MULTIPART_HEADING" : "B_MULTIPART_TO_ADJACENT_HEADING") : "A_MULTIPART_TO_BODY"
+                    : adjacentHeading ? "C_SINGLETON_TO_ADJACENT_HEADING" : null;
+                if (category is not null) totals[category]++;
+                var boundaryText = string.Concat(claim.aliases.Select(alias => atoms[alias].Text));
+                var wrappedProxy = multipart && (atoms[claim.aliases[^2]].Text.EndsWith("-", StringComparison.Ordinal) ||
+                    (atoms[claim.aliases[^1]].Text.Length > 0 && char.IsLower(atoms[claim.aliases[^1]].Text.TrimStart().FirstOrDefault())));
+                if (wrappedProxy) totals["F_WRAPPED_OR_HYPHENATED_PROXY"]++;
+                rows.Add(new { documentId = document.Id, aliases = claim.aliases, multipart, category, wrappedOrHyphenatedProxy = wrappedProxy,
+                    textSha256 = Hashing.Sha256(boundaryText), nextHeadingPrimary = adjacentHeading ? next!.aliases[0] : null });
+            }
+        }
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        var g2aAnchors = g2aRaw.RootElement.GetProperty("rawResponse").GetString()!;
+        using var g2aResponse = JsonDocument.Parse(g2aAnchors);
+        var hasAliases = g2aResponse.RootElement.GetProperty("decisions").EnumerateArray()
+            .Where(item => item.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.GetProperty("primary").GetString()!).ToHashSet(StringComparer.Ordinal);
+        // Only SRC-089 has an observed G2A ledger, so E is explicitly scoped rather than extrapolated.
+        var src089Hash = CanonicalSemanticSourceHash.Compute(TestRepository.Path(SourcePdfCorpus.Src089));
+        var src089Plan = PdfCandidateAuthorityQualificationAdapter.PrepareFromSnapshot(TestRepository.Path($"{SnapshotRoot}/{src089Hash}.json"), "SRC-089");
+        var src089Pack = src089Plan.Packs.First();
+        var f1RetryPath = TestRepository.Path($"{F1Root}/retry-src089-result.v1.json");
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(f1RetryPath));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        var src089Prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var occurrenceByAlias = src089Prepared.OccurrenceByAlias;
+        var insideMultipartAnchor = rows.Where(row => JsonSerializer.Serialize(row).Contains("SRC-089", StringComparison.Ordinal) && JsonSerializer.Serialize(row).Contains("\"multipart\":true", StringComparison.Ordinal))
+            .SelectMany(row => JsonDocument.Parse(JsonSerializer.Serialize(row)).RootElement.GetProperty("aliases").EnumerateArray().Skip(1).Select(item => item.GetString()!))
+            .Where(occurrenceByAlias.ContainsKey)
+            .Any(alias => hasAliases.Contains(occurrenceByAlias[alias]));
+        Assert.False(insideMultipartAnchor);
+
+        FreezeArtifact.AssertJson(CrossDocumentShapeAuditRoot, "cross-document-shape-audit.v1.json", new
+        {
+            schemaVersion = "v5-p6th3-cross-document-composition-shape-audit-v1",
+            status = "FROZEN_PROVIDER_FREE_SHAPE_AUDIT",
+            scope = new { documents = documents.Select(item => item.Id).ToArray(), canonicalSourceSnapshots = true, providerCalls = 0, runtimeChanged = false, goldMutation = "NONE" },
+            shapes = totals,
+            observedG2AAnchorInsideTrueMultipart = new { documentId = "SRC-089", evaluable = true, count = insideMultipartAnchor ? 1 : 0, verdict = "NOT_OBSERVED_ON_THE_ONLY_AVAILABLE_G2A_LEDGER" },
+            unavailable = new { otherDocumentG2AAnchorLedgers = "NOT_CAPTURED", corpus004058043 = "OUT_OF_SCOPE: no P6 canonical source snapshot and no frozen G2A ledger", strictGoldDocuments = "NOT_COMPOSITION_EVALUABLE without P6 source + F1 + G2A authorities" },
+            rows,
+            conclusion = "SHAPE_INVENTORY_ONLY; NO_CROSS_ANCHOR_INVARIANT_IS_SUPPORTED_ON_SRC089_CANARY_BUT_NOT YET QUALIFIED ACROSS DOCUMENTS OR AGAINST FALSE_POSITIVE_ANCHORS_INSIDE_TRUE_MULTIPART_UNITS",
+        });
     }
 
     [Fact]
