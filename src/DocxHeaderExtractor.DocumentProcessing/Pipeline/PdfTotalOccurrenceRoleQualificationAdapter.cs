@@ -1,0 +1,41 @@
+using System.Text;
+using System.Text.Json;
+using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.V5;
+
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+
+/// <summary>P6T-A qualification adapter. It reuses P6S's snapshot-rehydrated P05 plan and never changes the live runtime.</summary>
+public sealed record PdfTotalRolePreparedPack(
+    PdfCandidateAuthorityPreparedPack SourcePack,
+    V5TotalRoleRequestV1 Request,
+    byte[] ProviderBody,
+    string ProviderRequestHash,
+    int ProviderRequestBytes);
+
+public static class PdfTotalOccurrenceRoleQualificationAdapter
+{
+    public static PdfTotalRolePreparedPack Prepare(PdfCandidateAuthorityDocumentPlan plan, PdfCandidateAuthorityPreparedPack sourcePack)
+    {
+        ArgumentNullException.ThrowIfNull(plan); ArgumentNullException.ThrowIfNull(sourcePack);
+        var atoms = plan.SourceAtoms.ToDictionary(value => value.Alias, StringComparer.Ordinal);
+        var owned = sourcePack.OwnedAliases.Select(alias => atoms[alias]).ToArray();
+        var ownedSet = sourcePack.OwnedAliases.ToHashSet(StringComparer.Ordinal);
+        var context = sourcePack.VisibleAliases.Where(alias => !ownedSet.Contains(alias)).Select(alias => (atoms[alias].Page, atoms[alias].Text)).ToArray();
+        var request = V5TotalOccurrenceRoleProtocolV1.Compose(owned, context);
+        var body = OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(request.SystemPrompt, request.UserMessage,
+            sourcePack.MaxCompletionTokens, Envelope);
+        return new PdfTotalRolePreparedPack(sourcePack, request, body.PayloadBytes, body.Hash, body.Bytes);
+    }
+
+    public static V5TotalRoleDecisionResultV1 Parse(PdfTotalRolePreparedPack pack, string rawResponse)
+    {
+        ArgumentNullException.ThrowIfNull(pack); ArgumentNullException.ThrowIfNull(rawResponse);
+        using var json = JsonDocument.Parse(rawResponse);
+        return V5TotalOccurrenceRoleProtocolV1.Parse(json.RootElement, Encoding.UTF8.GetByteCount(rawResponse),
+            PdfCandidateAuthorityQualificationAdapter.ResponseUtf8ByteCap, pack.Request.Occurrences);
+    }
+
+    private static readonly V5ProviderEnvelope Envelope = new("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300)
+    { UsageInclude = true, OpenRouterResponseCacheDisabled = true };
+}
