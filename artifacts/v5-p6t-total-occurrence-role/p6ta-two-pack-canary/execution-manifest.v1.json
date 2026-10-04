@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "v5-p6ta-total-anchor-role-two-pack-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "preparedAtHead": "4f761b46bb63d32441a8bc4b90710f57c3f64971",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "sharedRuntime": "UNCHANGED",
+  "purpose": "CONTRACT_VIABILITY_ONLY: can qwen/qwen3.7-flash with enabled reasoning return the exact total 96/96 anchor-role ledger? This manifest makes no accuracy or ontology claim.",
+  "treatment": {
+    "gateway": "OpenRouter",
+    "model": "qwen/qwen3.7-flash",
+    "providerPin": "alibaba",
+    "temperature": 0,
+    "reasoning": {
+      "enabled": true
+    },
+    "effort": "OMITTED",
+    "responseFormat": "json_object"
+  },
+  "contractGate": {
+    "issued": 96,
+    "returned": 96,
+    "finishReason": "stop",
+    "unknownOccurrenceIds": 0,
+    "duplicateOccurrenceIds": 0,
+    "missingOccurrenceIds": 0,
+    "invalidRoles": 0,
+    "extraProperties": 0,
+    "parser": "ACCEPTED"
+  },
+  "execution": {
+    "maximumProviderCalls": 2,
+    "exactlyOnePrimaryAttemptPerPack": true,
+    "retry": 0,
+    "repair": false,
+    "fallback": false,
+    "goldDuringRun": false,
+    "pass2": "BLOCKED"
+  },
+  "failureClassification": {
+    "stopButInvalidLedger": "TOTAL_LEDGER_CONTRACT_FAILURE",
+    "finishLength": "INCOMPLETE_PROVIDER_OUTPUT",
+    "otherNonStop": "NONTERMINAL_PROVIDER_OUTPUT",
+    "transport": "TRANSPORT_ERROR"
+  },
+  "rows": [
+    {
+      "Role": "MULTIPART_ANCHOR_EXTENT_HEAVY",
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issuedOccurrences": 96,
+      "semanticRequestHash": "862df5172f979c2217d78e515e6a0f3579b9a50058bdbe346bb8a7f7acd8bf6a",
+      "systemPromptSha256": "0302588e314f67b3d525516cd8cbf545f2521b797e1af325c135f6812ca6e4e3",
+      "providerRequestHash": "fda5f075a2867c33048fbea5e99cb36bb679308cf2c9696bd54c1345eb1cae96",
+      "providerRequestBytes": 17431,
+      "maxCompletionTokens": 32768,
+      "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+      "sourceUniverseSha256": "949dedfe976c1baeebf60bcad4bee75a5d5eafef7886bb2e9385f0708c7fb494"
+    },
+    {
+      "Role": "TOC_NEGATIVE_ROLE_HEAVY",
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issuedOccurrences": 96,
+      "semanticRequestHash": "65e6ef573ea6136d5af1d8cc8b778c168730da4749676b1777df546c36116ff1",
+      "systemPromptSha256": "0302588e314f67b3d525516cd8cbf545f2521b797e1af325c135f6812ca6e4e3",
+      "providerRequestHash": "e9393ad53c44e7f0b99436dafd9311a57d067541516d19d8885ffdfada76cb87",
+      "providerRequestBytes": 13591,
+      "maxCompletionTokens": 32768,
+      "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+      "sourceUniverseSha256": "1eee2105941098eb50e79fd866fddeb36718c49ca02da9906aeaaf2ba3673ead"
+    }
+  ]
+}

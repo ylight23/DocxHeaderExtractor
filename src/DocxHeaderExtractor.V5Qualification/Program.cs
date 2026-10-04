@@ -139,6 +139,11 @@ internal static class Program
         if (args.Contains("--p6sr-matched-reasoning-full31"))
             return await P6SRMatchedReasoningFull31.RunAsync(LocateRepoRoot(), args);
 
+        // P6T-A is a two-call, total anchor-role ledger viability canary. It never scores semantics;
+        // execution needs its own explicit sentinel and makes no retry, repair, fallback, or Pass-2 call.
+        if (args.Contains("--p6ta-total-anchor-role-canary"))
+            return await P6TATotalAnchorRoleCanary.RunAsync(LocateRepoRoot(), args);
+
         // P6S-I/J are separate one-pack neutral-context and semantic-wording experiments; their
         // runner has an independent two-call cap, frozen-body manifest, and zero-retry policy.
         if (args.Contains("--p6sij-toc-two-arm-experiment"))

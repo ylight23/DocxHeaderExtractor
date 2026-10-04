@@ -38,8 +38,25 @@ public sealed class V5P6TATotalOccurrenceRoleContractTests
             Assert.True(Encoding.UTF8.GetByteCount(valid) < PdfCandidateAuthorityQualificationAdapter.ResponseUtf8ByteCap);
             var parsed = PdfTotalOccurrenceRoleQualificationAdapter.Parse(item, valid);
             Assert.Equal(96, parsed.Decisions.Count); Assert.All(parsed.Decisions, value => Assert.Equal(V5OccurrenceRoleV1.OTHER, value.Role));
-            Assert.Throws<InvalidOperationException>(() => PdfTotalOccurrenceRoleQualificationAdapter.Parse(item,
-                JsonSerializer.Serialize(new { decisions = item.Request.Occurrences.Skip(1).Select(value => new { occurrence = value.Id, role = "OTHER" }).ToArray() })));
+            AssertReject(item, JsonSerializer.Serialize(new { decisions = item.Request.Occurrences.Skip(1).Select(value => new { occurrence = value.Id, role = "OTHER" }).ToArray() }),
+                "total-role-decision-cardinality-invalid");
+            AssertReject(item, Ledger(item, values => values.Select((value, index) => new { occurrence = index == 95 ? values[0].Id : value.Id, role = "OTHER" })),
+                "total-role-occurrence-duplicate");
+            AssertReject(item, Ledger(item, values => values.Select((value, index) => new { occurrence = index == 0 ? "O999" : value.Id, role = "OTHER" })),
+                "total-role-occurrence-not-issued");
+            AssertReject(item, Ledger(item, values => values.Select((value, index) => new { occurrence = value.Id, role = index == 0 ? "HEADING" : "OTHER" })),
+                "total-role-not-in-enum");
+            AssertReject(item, Ledger(item, values => values.Select((value, index) => new { occurrence = value.Id, role = index == 0 ? "REPRESENTATION" : "OTHER" })),
+                "total-role-not-in-enum");
+            AssertReject(item, Ledger(item, values => values.Select((value, index) => new { occurrence = value.Id, role = index == 0 ? "heading_start" : "OTHER" })),
+                "total-role-not-in-enum");
+            AssertReject(item, JsonSerializer.Serialize(new { decisions = item.Request.Occurrences.Select(value => new { occurrence = value.Id, role = "OTHER" })
+                .Append(new { occurrence = "O1", role = "OTHER" }).ToArray() }), "total-role-decision-cardinality-invalid");
+            AssertReject(item, JsonSerializer.Serialize(new { decisions = item.Request.Occurrences.Select((value, index) => index == 0
+                ? new Dictionary<string, object> { ["occurrence"] = value.Id, ["role"] = "OTHER", ["unexpected"] = true }
+                : new Dictionary<string, object> { ["occurrence"] = value.Id, ["role"] = "OTHER" }).ToArray() }), "total-role-decision-schema-invalid");
+            AssertReject(item, JsonSerializer.Serialize(new { decisions = item.Request.Occurrences.Select(value => new { occurrence = value.Id, role = "OTHER" }).ToArray(), unexpected = true }),
+                "total-role-root-invalid");
             if (item.SourcePack.DocumentId == "SRC-089")
             {
                 var first = Assert.Single(item.Request.Occurrences.Where(value => value.Atom.Alias == "L0006:S0"));
@@ -74,6 +91,15 @@ public sealed class V5P6TATotalOccurrenceRoleContractTests
                 candidateUniverseFingerprint = item.SourcePack.Universe.Fingerprint, sourceSha256 = plans[item.SourcePack.DocumentId].SourceSha256 }).ToArray(),
         };
         FreezeArtifact.AssertJson(OutputRoot, "two-pack-total-role-manifest.v1.json", output);
+    }
+
+    private static string Ledger(PdfTotalRolePreparedPack item, Func<IReadOnlyList<V5IssuedOccurrenceV1>, IEnumerable<object>> decisions) =>
+        JsonSerializer.Serialize(new { decisions = decisions(item.Request.Occurrences).ToArray() });
+
+    private static void AssertReject(PdfTotalRolePreparedPack item, string response, string expectedReason)
+    {
+        var exception = Assert.Throws<InvalidOperationException>(() => PdfTotalOccurrenceRoleQualificationAdapter.Parse(item, response));
+        Assert.Equal(expectedReason, exception.Message);
     }
 
     private static string Hash(string value) => Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(value)));
