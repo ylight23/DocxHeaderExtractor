@@ -143,6 +143,8 @@ internal static class Program
         // execution needs its own explicit sentinel and makes no retry, repair, fallback, or Pass-2 call.
         if (args.Contains("--p6ta-total-anchor-role-canary"))
             return await P6TATotalAnchorRoleCanary.RunAsync(LocateRepoRoot(), args);
+        if (args.Contains("--p6tc-correspondence-evidence-canary"))
+            return await P6TCCorrespondenceEvidenceCanary.RunAsync(LocateRepoRoot(), args);
 
         // P6S-I/J are separate one-pack neutral-context and semantic-wording experiments; their
         // runner has an independent two-call cap, frozen-body manifest, and zero-retry policy.

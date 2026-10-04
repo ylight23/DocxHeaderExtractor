@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "v5-p6tc-matched-role-comparison-v1",
+  "providerCalls": 0,
+  "sourceCaptures": {
+    "p6ta": "artifacts/v5-p6t-total-occurrence-role/p6ta-two-pack-canary/result.v1.json",
+    "p6tc": "artifacts/v5-p6t-total-occurrence-role/p6tc-correspondence-evidence/result.v1.json"
+  },
+  "rawResponsesCopied": false,
+  "matchedVariable": "READ_ONLY_CORRESPONDENCE_EVIDENCE",
+  "roleOntology": [
+    "HEADING_START",
+    "REPRESENTATION_START",
+    "OTHER"
+  ],
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "p6ta": {
+        "HEADING_START": 9,
+        "OTHER": 87
+      },
+      "p6tc": {
+        "HEADING_START": 7,
+        "OTHER": 89
+      },
+      "roleChanged": 2,
+      "total": 96
+    },
+    {
+      "documentId": "SRC-095",
+      "p6ta": {
+        "HEADING_START": 57,
+        "OTHER": 39
+      },
+      "p6tc": {
+        "HEADING_START": 57,
+        "OTHER": 39
+      },
+      "roleChanged": 0,
+      "total": 96
+    }
+  ],
+  "src095ReviewedToc": {
+    "targets": 53,
+    "p6taHeadingStart": 53,
+    "p6tcHeadingStart": 53,
+    "p6tcRepresentationStart": 0,
+    "p6tcOther": 0,
+    "roleTransitions": 0
+  },
+  "conclusion": "CORRESPONDENCE_EVIDENCE_DID_NOT_CHANGE_53_TOC_ROLE_DECISIONS"
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "v5-p6tc-correspondence-evidence-execution-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "preparedAtHead": "9130fa5361fb7a91d5e9755835d3415fa71183f3",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "sharedRuntime": "UNCHANGED",
+  "treatment": {
+    "model": "qwen/qwen3.7-flash",
+    "provider": "alibaba",
+    "temperature": 0,
+    "reasoning": {
+      "enabled": true
+    },
+    "effort": "OMITTED",
+    "responseFormat": "json_object"
+  },
+  "matchedVariable": "ONLY_READ_ONLY_CORRESPONDENCES",
+  "execution": {
+    "maximumProviderCalls": 2,
+    "retry": 0,
+    "repair": false,
+    "fallback": false,
+    "pass2": "BLOCKED"
+  },
+  "rows": [
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issuedOccurrences": 96,
+      "requestHash": "88c1197915a20e30c215efefc41455c341d9f4b4989d8f91028d6c6816afeeb3",
+      "providerRequestHash": "7c32383066adfc771e105fa2321f6f9bdbc3f79017d7d68b32ff4a82f04b5d5b",
+      "providerRequestBytes": 20974
+    },
+    {
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issuedOccurrences": 96,
+      "requestHash": "d74204e8bef8657b0c08a19b950fb9f4a1de121d6dc2fe006e1a1df8203ba775",
+      "providerRequestHash": "17af2637cf781df16be0fd75b6a77f4a1239d08df9eb64e4409593efc0b03242",
+      "providerRequestBytes": 25181
+    }
+  ]
+}
