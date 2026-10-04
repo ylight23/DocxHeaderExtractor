@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "v5-p6td-delta-audit-v1",
+  "providerCalls": 0,
+  "goldRead": false,
+  "rawResponsesCopied": false,
+  "sourceCaptures": {
+    "p6tc": "artifacts/v5-p6t-total-occurrence-role/p6tc-correspondence-evidence/result.v1.json",
+    "p6td": "artifacts/v5-p6t-total-occurrence-role/p6td-explicit-abstention/result.v1.json"
+  },
+  "matchedVariable": "ONLY_EXPLICIT_UNRESOLVED_ROLE_AND_WORDING",
+  "unresolved": {
+    "p6tc": 0,
+    "p6td": 0
+  },
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "total": 96,
+      "p6tc": {
+        "HEADING_START": 7,
+        "OTHER": 89
+      },
+      "p6td": {
+        "HEADING_START": 7,
+        "OTHER": 89
+      },
+      "transitions": {
+        "HEADING_START->HEADING_START": 7,
+        "OTHER->OTHER": 89
+      }
+    },
+    {
+      "documentId": "SRC-089",
+      "probe": "GOLD_MULTIPART_ANCHORS_AND_CONTINUATIONS",
+      "roots": 6,
+      "continuationAtoms": 6,
+      "rootTransitions": {
+        "L0006:S0": {
+          "occurrence": "O9",
+          "p6tc": "HEADING_START",
+          "p6td": "HEADING_START"
+        },
+        "L0014:S0": {
+          "occurrence": "O17",
+          "p6tc": "HEADING_START",
+          "p6td": "HEADING_START"
+        },
+        "L0016:S0": {
+          "occurrence": "O19",
+          "p6tc": "HEADING_START",
+          "p6td": "HEADING_START"
+        },
+        "L0024:S0": {
+          "occurrence": "O27",
+          "p6tc": "HEADING_START",
+          "p6td": "HEADING_START"
+        },
+        "L0051:S0": {
+          "occurrence": "O54",
+          "p6tc": "HEADING_START",
+          "p6td": "HEADING_START"
+        },
+        "L0080:S0": {
+          "occurrence": "O83",
+          "p6tc": "HEADING_START",
+          "p6td": "HEADING_START"
+        }
+      },
+      "continuationTransitions": {
+        "L0007:S0": {
+          "occurrence": "O10",
+          "p6tc": "OTHER",
+          "p6td": "OTHER"
+        },
+        "L0008:S0": {
+          "occurrence": "O11",
+          "p6tc": "OTHER",
+          "p6td": "OTHER"
+        },
+        "L0015:S0": {
+          "occurrence": "O18",
+          "p6tc": "OTHER",
+          "p6td": "OTHER"
+        },
+        "L0025:S0": {
+          "occurrence": "O28",
+          "p6tc": "OTHER",
+          "p6td": "OTHER"
+        },
+        "L0052:S0": {
+          "occurrence": "O55",
+          "p6tc": "OTHER",
+          "p6td": "OTHER"
+        },
+        "L0081:S0": {
+          "occurrence": "O84",
+          "p6tc": "OTHER",
+          "p6td": "OTHER"
+        }
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "total": 96,
+      "p6tc": {
+        "HEADING_START": 57,
+        "OTHER": 39
+      },
+      "p6td": {
+        "HEADING_START": 57,
+        "OTHER": 39
+      },
+      "transitions": {
+        "HEADING_START->HEADING_START": 57,
+        "OTHER->OTHER": 39
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "probe": "REVIEWED_TOC_HARD_NEGATIVES",
+      "count": 53,
+      "cHeadingStart": 53,
+      "dHeadingStart": 53,
+      "dRepresentationStart": 0,
+      "dOther": 0,
+      "dUnresolved": 0
+    }
+  ],
+  "conclusion": "EXPLICIT_ABSTENTION_NOT_USED; TRANSITION_MATRIX_AND_ROLE_PROBES_FROZEN; ROLE_FRAMING_REMAINS_OPEN"
+}
