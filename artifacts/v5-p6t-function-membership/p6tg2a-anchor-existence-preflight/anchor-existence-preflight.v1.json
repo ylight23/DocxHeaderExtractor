@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "v5-p6tg2a-anchor-existence-preflight-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "protocolVersion": "v5-function-conditioned-anchor-existence-1",
+  "purpose": "SEPARATE_ANCHOR_EXISTENCE_FROM_EXACT_CANDIDATE_SELECTION",
+  "treatment": {
+    "documentId": "SRC-089",
+    "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+    "model": "qwen/qwen3.7-flash",
+    "provider": "alibaba",
+    "reasoning": {
+      "enabled": true,
+      "effort": "OMITTED"
+    },
+    "candidateMenus": "ABSENT",
+    "exactExtentSelection": "ABSENT",
+    "functionMembership": "READ_ONLY_UPSTREAM_ELIGIBILITY_EVIDENCE"
+  },
+  "outputContract": {
+    "shape": "{\"decisions\":[{\"primary\":\"O27\",\"anchor\":\"HAS_STRUCTURAL_EXTENT\"},{\"primary\":\"O28\",\"anchor\":\"NO_STRUCTURAL_EXTENT\"}]}",
+    "oneDecisionPerIssuedPrimary": true,
+    "allowedAnchors": [
+      "HAS_STRUCTURAL_EXTENT",
+      "NO_STRUCTURAL_EXTENT"
+    ],
+    "modelAuthoredCandidateOrLocator": false,
+    "invalidDecisionPolicy": "decision-local quarantine; never infer an anchor decision"
+  },
+  "inputInvariants": {
+    "primaryOccurrenceOnly": true,
+    "candidateIdsAbsent": true,
+    "candidateTextAbsent": true,
+    "sourceCoordinatesAbsent": true,
+    "goldAbsent": true,
+    "sourceReviewAbsent": true,
+    "localContextReadOnly": true
+  },
+  "callPlan": {
+    "providerCallsAuthorized": 0,
+    "providerCalls": 0,
+    "retries": 0,
+    "repairs": 0,
+    "fallbacks": 0,
+    "documentId": "SRC-089",
+    "primaryCount": 15,
+    "primaryOccurrences": [
+      {
+        "occurrence": "O3",
+        "alias": "L0002:S0"
+      },
+      {
+        "occurrence": "O4",
+        "alias": "L0002:S1"
+      },
+      {
+        "occurrence": "O6",
+        "alias": "L0003:S1"
+      },
+      {
+        "occurrence": "O9",
+        "alias": "L0006:S0"
+      },
+      {
+        "occurrence": "O10",
+        "alias": "L0007:S0"
+      },
+      {
+        "occurrence": "O11",
+        "alias": "L0008:S0"
+      },
+      {
+        "occurrence": "O17",
+        "alias": "L0014:S0"
+      },
+      {
+        "occurrence": "O18",
+        "alias": "L0015:S0"
+      },
+      {
+        "occurrence": "O19",
+        "alias": "L0016:S0"
+      },
+      {
+        "occurrence": "O27",
+        "alias": "L0024:S0"
+      },
+      {
+        "occurrence": "O28",
+        "alias": "L0025:S0"
+      },
+      {
+        "occurrence": "O54",
+        "alias": "L0051:S0"
+      },
+      {
+        "occurrence": "O55",
+        "alias": "L0052:S0"
+      },
+      {
+        "occurrence": "O83",
+        "alias": "L0080:S0"
+      },
+      {
+        "occurrence": "O84",
+        "alias": "L0081:S0"
+      }
+    ],
+    "systemPromptSha256": "b231e61785f1793fd94456fad682b851b28778f222a539431ec37b53ef2d2fd6",
+    "userMessageSha256": "f2e42c3ad76539c78b38c0ac2487a1e6b3c51b1b34eca6d30050438875c733f2",
+    "userMessageUtf8Bytes": 5354,
+    "providerBodySha256": "6ea4051e8bffa3cfcf8fcf388b1f37c978c3023e90f07b149c6621f13a2b8631",
+    "providerBodyBytes": 9835
+  },
+  "auditOnlyControls": {
+    "positiveGoldPrimaryAliases": [
+      "L0006:S0",
+      "L0014:S0",
+      "L0016:S0",
+      "L0024:S0",
+      "L0051:S0",
+      "L0080:S0"
+    ],
+    "continuationNegativeAliases": [
+      "L0007:S0",
+      "L0008:S0",
+      "L0015:S0",
+      "L0025:S0",
+      "L0052:S0",
+      "L0081:S0"
+    ],
+    "frontMatterNegativeAliases": [
+      "L0002:S0",
+      "L0002:S1",
+      "L0003:S1"
+    ],
+    "expected": "6 HAS_STRUCTURAL_EXTENT and 9 NO_STRUCTURAL_EXTENT; controls are excluded from model-visible input semantics"
+  },
+  "authority": {
+    "functionMembershipRequestSha256": "010ed175ee676085349da16469346c67da1dea39fe462589f42d45fe2299a412",
+    "candidateUniverseFingerprint": "e4f3624bbd8b0771971fc85973e6fd4613ecd9c30c04c64ce8680b302d8d0029",
+    "goldOrReviewReadForRequestConstruction": false,
+    "goldMutation": "NONE",
+    "sharedRuntime": "UNCHANGED"
+  },
+  "conclusion": "P6TG2A_PREFLIGHT_FROZEN; PROVIDER_EXECUTION_REQUIRES_SEPARATE_EXPLICIT_AUTHORIZATION"
+}

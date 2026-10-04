@@ -17,6 +17,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private const string OutputRoot = "artifacts/v5-p6t-function-membership/p6tg2-exact-extent-preflight";
     private const string CaptureRoot = "artifacts/v5-p6t-function-membership/p6tg2-canary-20261004";
     private const string GoldAuditRoot = "artifacts/v5-p6t-function-membership/p6tg2-canary-gold-audit";
+    private const string AnchorExistencePreflightRoot = "artifacts/v5-p6t-function-membership/p6tg2a-anchor-existence-preflight";
     private const string Gold089Path = "eval/a99-closed-loop/gold/SRC-089.gold.json";
     private const string Gold095Path = "eval/a99-closed-loop/gold/SRC-095.gold.json";
     private const string Review095Path = "eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json";
@@ -214,6 +215,137 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
 
     private sealed record ParsedLedger(int RawDecisions, int AcceptedSelections, int NoStructuralExtent,
         int Quarantined, int MissingPrimaries, IReadOnlyList<object> Decisions, IReadOnlyList<object> Refusals);
+
+    private sealed record AnchorExistenceRequest(string DocumentId, string SystemPrompt, string UserMessage,
+        string MessageHash, int MessageBytes, byte[] ProviderBody, int ProviderBytes, string ProviderHash,
+        IReadOnlyList<(string Occurrence, string Alias)> Primaries, int MaxCompletionTokens);
+
+    private sealed record ParsedAnchorLedger(int RawDecisions, int HasStructuralExtent, int NoStructuralExtent,
+        int Quarantined, int MissingPrimaries, IReadOnlyList<object> Decisions, IReadOnlyList<object> Refusals);
+
+    [Fact]
+    public void P6TG2A_preflight_freezes_candidate_free_anchor_existence_contract_for_src089_controls()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var request = ComposeAnchorExistence(prepared);
+
+        var positivePrimaries = new[] { "L0006:S0", "L0014:S0", "L0016:S0", "L0024:S0", "L0051:S0", "L0080:S0" };
+        var continuations = new[] { "L0007:S0", "L0008:S0", "L0015:S0", "L0025:S0", "L0052:S0", "L0081:S0" };
+        var frontMatter = new[] { "L0002:S0", "L0002:S1", "L0003:S1" };
+        var issued = request.Primaries.Select(item => item.Alias).ToHashSet(StringComparer.Ordinal);
+        Assert.Equal(15, request.Primaries.Count);
+        Assert.True(issued.SetEquals(positivePrimaries.Concat(continuations).Concat(frontMatter)));
+        Assert.DoesNotContain("\"candidates\"", request.UserMessage, StringComparison.Ordinal);
+        Assert.DoesNotContain("\"candidate\"", request.UserMessage, StringComparison.Ordinal);
+        Assert.DoesNotContain("sourceParts", request.UserMessage, StringComparison.Ordinal);
+
+        FreezeArtifact.AssertJson(AnchorExistencePreflightRoot, "anchor-existence-preflight.v1.json", new
+        {
+            schemaVersion = "v5-p6tg2a-anchor-existence-preflight-v1",
+            status = "PREPARED_NOT_AUTHORIZED",
+            protocolVersion = "v5-function-conditioned-anchor-existence-1",
+            purpose = "SEPARATE_ANCHOR_EXISTENCE_FROM_EXACT_CANDIDATE_SELECTION",
+            treatment = new
+            {
+                documentId = request.DocumentId,
+                packId = "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+                model = "qwen/qwen3.7-flash",
+                provider = "alibaba",
+                reasoning = new { enabled = true, effort = "OMITTED" },
+                candidateMenus = "ABSENT",
+                exactExtentSelection = "ABSENT",
+                functionMembership = "READ_ONLY_UPSTREAM_ELIGIBILITY_EVIDENCE",
+            },
+            outputContract = new
+            {
+                shape = "{\"decisions\":[{\"primary\":\"O27\",\"anchor\":\"HAS_STRUCTURAL_EXTENT\"},{\"primary\":\"O28\",\"anchor\":\"NO_STRUCTURAL_EXTENT\"}]}",
+                oneDecisionPerIssuedPrimary = true,
+                allowedAnchors = new[] { "HAS_STRUCTURAL_EXTENT", "NO_STRUCTURAL_EXTENT" },
+                modelAuthoredCandidateOrLocator = false,
+                invalidDecisionPolicy = "decision-local quarantine; never infer an anchor decision",
+            },
+            inputInvariants = new
+            {
+                primaryOccurrenceOnly = true,
+                candidateIdsAbsent = true,
+                candidateTextAbsent = true,
+                sourceCoordinatesAbsent = true,
+                goldAbsent = true,
+                sourceReviewAbsent = true,
+                localContextReadOnly = true,
+            },
+            callPlan = new
+            {
+                providerCallsAuthorized = 0,
+                providerCalls = 0,
+                retries = 0,
+                repairs = 0,
+                fallbacks = 0,
+                documentId = request.DocumentId,
+                primaryCount = request.Primaries.Count,
+                primaryOccurrences = request.Primaries.Select(item => new { occurrence = item.Occurrence, alias = item.Alias }).ToArray(),
+                systemPromptSha256 = Hashing.Sha256(request.SystemPrompt),
+                userMessageSha256 = request.MessageHash,
+                userMessageUtf8Bytes = request.MessageBytes,
+                providerBodySha256 = request.ProviderHash,
+                providerBodyBytes = request.ProviderBytes,
+            },
+            auditOnlyControls = new
+            {
+                positiveGoldPrimaryAliases = positivePrimaries,
+                continuationNegativeAliases = continuations,
+                frontMatterNegativeAliases = frontMatter,
+                expected = "6 HAS_STRUCTURAL_EXTENT and 9 NO_STRUCTURAL_EXTENT; controls are excluded from model-visible input semantics",
+            },
+            authority = new
+            {
+                functionMembershipRequestSha256 = prepared.F1Pack.Request.UserMessageSha256,
+                candidateUniverseFingerprint = prepared.SourcePack.Universe.Fingerprint,
+                goldOrReviewReadForRequestConstruction = false,
+                goldMutation = "NONE",
+                sharedRuntime = "UNCHANGED",
+            },
+            conclusion = "P6TG2A_PREFLIGHT_FROZEN; PROVIDER_EXECUTION_REQUIRES_SEPARATE_EXPLICIT_AUTHORIZATION",
+        });
+    }
+
+    [Fact]
+    public void P6TG2A_anchor_ledger_is_total_and_quarantines_invalid_decisions_locally()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var request = ComposeAnchorExistence(prepared);
+        var valid = JsonSerializer.Serialize(new
+        {
+            decisions = request.Primaries.Select((item, index) => new
+            {
+                primary = item.Occurrence,
+                anchor = index % 2 == 0 ? "HAS_STRUCTURAL_EXTENT" : "NO_STRUCTURAL_EXTENT",
+            }).ToArray(),
+        });
+        var accepted = ParseAnchorLedger(request, valid);
+        Assert.Equal(15, accepted.RawDecisions);
+        Assert.Equal(8, accepted.HasStructuralExtent);
+        Assert.Equal(7, accepted.NoStructuralExtent);
+        Assert.Equal(0, accepted.Quarantined);
+        Assert.Equal(0, accepted.MissingPrimaries);
+
+        var malformed = JsonSerializer.Serialize(new
+        {
+            decisions = request.Primaries.Skip(1).Select(item => new { primary = item.Occurrence, anchor = "HAS_STRUCTURAL_EXTENT" })
+                .Append(new { primary = "O999", anchor = "HAS_STRUCTURAL_EXTENT" })
+                .Append(new { primary = request.Primaries[0].Occurrence, anchor = "INVALID" })
+                .ToArray(),
+        });
+        var quarantined = ParseAnchorLedger(request, malformed);
+        Assert.Equal(16, quarantined.RawDecisions);
+        Assert.True(quarantined.Quarantined >= 2);
+        Assert.Equal(14, quarantined.HasStructuralExtent);
+        Assert.Equal(1, quarantined.MissingPrimaries);
+    }
 
     [Fact]
     public async Task Run_exactly_two_frozen_primary_calls_only_when_explicitly_enabled()
@@ -449,7 +581,8 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
                 var candidate = selected089.Single(item => item.PrimaryAlias == unit.primary);
                 var expected = gold089Identities.Single(identity => identity.StartsWith(unit.primary + ":", StringComparison.Ordinal) &&
                     unit.aliases.All(alias => identity.Contains(alias + ":", StringComparison.Ordinal)));
-                var extentClass = candidate.Identity == expected ? "EXACT"
+                var extentClass = candidate.Outcome == "NO_STRUCTURAL_EXTENT" ? "NO_STRUCTURAL_EXTENT"
+                    : candidate.Identity == expected ? "EXACT"
                     : candidate.Aliases.Count < unit.aliases.Length && candidate.Aliases.All(unit.aliases.Contains) ? "UNDEREXTENT_PRIMARY_SUBSET"
                     : "OTHER_IDENTITY_MISMATCH";
                 return new
@@ -458,10 +591,10 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
                     expectedGoldIdentity = expected,
                     selectedCandidateId = candidate.CandidateId,
                     selectedIdentity = candidate.Identity,
-                    exact = candidate.Identity == expected,
+                    exact = candidate.Outcome == "SELECTED_CANDIDATE" && candidate.Identity == expected,
                     extentClass,
-                    selectedPartsAreGoldParts = candidate.Aliases.All(unit.aliases.Contains),
-                    decision = "SELECTED_CANDIDATE",
+                    selectedPartsAreGoldParts = candidate.Outcome == "SELECTED_CANDIDATE" && candidate.Aliases.All(unit.aliases.Contains),
+                    decision = candidate.Outcome,
                 };
             }).ToArray();
             var continuationAliases = new[] { "L0007:S0", "L0008:S0", "L0015:S0", "L0025:S0", "L0052:S0", "L0081:S0" };
@@ -473,8 +606,8 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
                     primaryAlias = alias,
                     selectedCandidateId = candidate.CandidateId,
                     selectedIdentity = candidate.Identity,
-                    exactGoldMatch = gold089Identities.Contains(candidate.Identity, StringComparer.Ordinal),
-                    decision = "SELECTED_CANDIDATE",
+                    exactGoldMatch = candidate.Outcome == "SELECTED_CANDIDATE" && candidate.Identity is not null && gold089Identities.Contains(candidate.Identity),
+                    decision = candidate.Outcome,
                     expectedNegativeControl = "NO_INDEPENDENT_STRUCTURAL_EXTENT_AT_CONTINUATION_ATOM",
                 };
             }).ToArray();
@@ -487,8 +620,8 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
                     primaryAlias = alias,
                     selectedCandidateId = candidate.CandidateId,
                     selectedIdentity = candidate.Identity,
-                    exactGoldMatch = gold089Identities.Contains(candidate.Identity, StringComparer.Ordinal),
-                    decision = "SELECTED_CANDIDATE",
+                    exactGoldMatch = candidate.Outcome == "SELECTED_CANDIDATE" && candidate.Identity is not null && gold089Identities.Contains(candidate.Identity),
+                    decision = candidate.Outcome,
                     expectedNegativeControl = "SOURCE_REVIEWED_NON_HEADING_FRONT_MATTER",
                 };
             }).ToArray();
@@ -506,8 +639,8 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
                     reviewedPattern = review.GetProperty("pattern").GetString(),
                     selectedCandidateId = candidate.CandidateId,
                     selectedIdentity = candidate.Identity,
-                    exactGoldMatch = gold095Identities.Contains(candidate.Identity, StringComparer.Ordinal),
-                    decision = "SELECTED_CANDIDATE",
+                    exactGoldMatch = candidate.Outcome == "SELECTED_CANDIDATE" && candidate.Identity is not null && gold095Identities.Contains(candidate.Identity),
+                    decision = candidate.Outcome,
                 };
             }).ToArray();
             Assert.Equal(4, fourEstablishes095.Length);
@@ -571,8 +704,37 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         }
     }
 
-    private sealed record SelectedCandidate(string PrimaryOccurrence, string PrimaryAlias, string CandidateId,
-        string Identity, IReadOnlyList<string> Aliases);
+    [Fact]
+    public void P6TG2_audit_preserves_no_structural_extent_as_a_valid_discriminated_outcome()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var request = Compose(prepared, new HashSet<string>(StringComparer.Ordinal));
+        var raw = JsonSerializer.Serialize(new
+        {
+            decisions = request.OccurrenceGroups.Select(group => new
+            {
+                primary = group.PrimaryOccurrence,
+                candidate = "NO_STRUCTURAL_EXTENT",
+            }).ToArray(),
+        });
+
+        var ledger = ParseLedger(request, raw);
+        var outcomes = SelectedCandidates(request, ledger, prepared.SourcePack);
+        Assert.Equal(request.OccurrenceGroups.Count, outcomes.Count);
+        Assert.Equal(request.OccurrenceGroups.Count, ledger.NoStructuralExtent);
+        Assert.All(outcomes, outcome =>
+        {
+            Assert.Equal("NO_STRUCTURAL_EXTENT", outcome.Outcome);
+            Assert.Null(outcome.CandidateId);
+            Assert.Null(outcome.Identity);
+            Assert.Empty(outcome.Aliases);
+        });
+    }
+
+    private sealed record SelectedCandidate(string PrimaryOccurrence, string PrimaryAlias, string Outcome, string? CandidateId,
+        string? Identity, IReadOnlyList<string> Aliases);
 
     private static IReadOnlyList<SelectedCandidate> SelectedCandidates(PreparedRequest request, ParsedLedger ledger,
         PdfCandidateAuthorityPreparedPack pack)
@@ -586,8 +748,10 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             {
                 var primary = item.GetProperty("primary").GetString()!;
                 var candidateId = item.GetProperty("candidate").GetString()!;
+                if (candidateId == "NO_STRUCTURAL_EXTENT")
+                    return new SelectedCandidate(primary, byPrimary[primary].PrimaryAlias, "NO_STRUCTURAL_EXTENT", null, null, []);
                 var candidate = pack.Universe.Candidates.Single(value => value.Id == candidateId);
-                return new SelectedCandidate(primary, byPrimary[primary].PrimaryAlias, candidateId, candidate.SpanIdentity,
+                return new SelectedCandidate(primary, byPrimary[primary].PrimaryAlias, "SELECTED_CANDIDATE", candidateId, candidate.SpanIdentity,
                     candidate.Endpoint.Parts.Select(part => part.Alias).ToArray());
             }).ToArray();
         }
@@ -685,6 +849,110 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         return new PreparedRequest(prepared.DocumentId, systemPrompt, userMessage, request.UserMessageSha256,
             request.UserMessageUtf8Bytes, providerBody.PayloadBytes, providerBody.Bytes, providerBody.Hash, groups,
             prepared.SourcePack.MaxCompletionTokens);
+    }
+
+    private static AnchorExistenceRequest ComposeAnchorExistence(PreparedDocument prepared)
+    {
+        var atoms = prepared.Plan.SourceAtoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
+        var owned = prepared.SourcePack.OwnedAliases;
+        var primaries = prepared.FunctionByAlias
+            .Where(item => item.Value == "ESTABLISHES_STRUCTURE")
+            .OrderBy(item => atoms[item.Key].Ordinal).ThenBy(item => item.Key, StringComparer.Ordinal)
+            .Select(item => (Occurrence: prepared.OccurrenceByAlias[item.Key], Alias: item.Key)).ToArray();
+        var rows = primaries.Select(primary =>
+        {
+            var atom = atoms[primary.Alias];
+            var index = Array.IndexOf(owned.ToArray(), primary.Alias);
+            Assert.True(index >= 0, $"anchor-existence-primary-not-owned:{primary.Alias}");
+            object? PreviousOrNext(int candidateIndex)
+            {
+                if (candidateIndex < 0 || candidateIndex >= owned.Count) return null;
+                var neighbor = atoms[owned[candidateIndex]];
+                return new { occurrence = prepared.OccurrenceByAlias[neighbor.Alias], page = neighbor.Page, text = neighbor.Text, selectable = false };
+            }
+            return new
+            {
+                primary = primary.Occurrence,
+                page = atom.Page,
+                text = atom.Text,
+                upstreamFunction = "ESTABLISHES_STRUCTURE",
+                previous = PreviousOrNext(index - 1),
+                next = PreviousOrNext(index + 1),
+            };
+        }).ToArray();
+        var systemPrompt = """
+            Decide anchor existence only. Each issued primary occurrence has an upstream ESTABLISHES_STRUCTURE eligibility signal, but that signal is not proof that a valid local structural heading extent begins at this primary.
+
+            For every issued O#, return exactly one anchor: HAS_STRUCTURAL_EXTENT if at least one valid local structural heading extent begins at that primary; otherwise NO_STRUCTURAL_EXTENT. Do not choose or describe any extent. Do not infer an answer from context-only items.
+
+            Return exactly one JSON object with this shape: {"decisions":[{"primary":"O27","anchor":"HAS_STRUCTURAL_EXTENT"},{"primary":"O28","anchor":"NO_STRUCTURAL_EXTENT"}]}. Each decision has exactly primary and anchor. Do not output source text, candidate IDs, coordinates, aliases, locators, relations, hierarchy, rationale, confidence, or extra properties.
+            """;
+        var userMessage = JsonSerializer.Serialize(new
+        {
+            protocolVersion = "v5-function-conditioned-anchor-existence-1",
+            occurrences = rows,
+        });
+        var headingRequest = new V5FreeHeadingRequestV1("v5-function-conditioned-anchor-existence-1", systemPrompt, userMessage,
+            Hashing.Sha256(userMessage), Encoding.UTF8.GetByteCount(systemPrompt), Encoding.UTF8.GetByteCount(userMessage));
+        var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(headingRequest,
+            prepared.SourcePack.MaxCompletionTokens);
+        return new AnchorExistenceRequest(prepared.DocumentId, systemPrompt, userMessage, headingRequest.UserMessageSha256,
+            headingRequest.UserMessageUtf8Bytes, body.PayloadBytes, body.Bytes, body.Hash, primaries, prepared.SourcePack.MaxCompletionTokens);
+    }
+
+    private static ParsedAnchorLedger ParseAnchorLedger(AnchorExistenceRequest request, string raw)
+    {
+        using var document = JsonDocument.Parse(raw);
+        var root = document.RootElement;
+        if (root.ValueKind != JsonValueKind.Object || root.EnumerateObject().Count() != 1 ||
+            !root.TryGetProperty("decisions", out var decisions) || decisions.ValueKind != JsonValueKind.Array)
+            throw new InvalidOperationException("g2a-response-root-invalid");
+        var issued = request.Primaries.ToDictionary(item => item.Occurrence, StringComparer.Ordinal);
+        var perPrimary = new Dictionary<string, List<string>>(StringComparer.Ordinal);
+        var accepted = new List<object>();
+        var refused = new List<object>();
+        foreach (var item in decisions.EnumerateArray())
+        {
+            if (item.ValueKind != JsonValueKind.Object || item.EnumerateObject().Count() != 2 ||
+                !item.TryGetProperty("primary", out var primaryElement) || primaryElement.ValueKind != JsonValueKind.String ||
+                !item.TryGetProperty("anchor", out var anchorElement) || anchorElement.ValueKind != JsonValueKind.String)
+            {
+                refused.Add(new { reason = "decision-schema-invalid" });
+                continue;
+            }
+            var primary = primaryElement.GetString()!;
+            var anchor = anchorElement.GetString()!;
+            if (!issued.ContainsKey(primary))
+            {
+                refused.Add(new { primary, anchor, reason = "primary-not-issued" });
+                continue;
+            }
+            if (anchor is not ("HAS_STRUCTURAL_EXTENT" or "NO_STRUCTURAL_EXTENT"))
+            {
+                refused.Add(new { primary, anchor, reason = "anchor-invalid" });
+                continue;
+            }
+            if (!perPrimary.TryGetValue(primary, out var values)) perPrimary.Add(primary, values = []);
+            values.Add(anchor);
+        }
+        foreach (var primary in request.Primaries)
+        {
+            if (!perPrimary.TryGetValue(primary.Occurrence, out var values))
+            {
+                refused.Add(new { primary = primary.Occurrence, reason = "missing-primary-decision" });
+                continue;
+            }
+            if (values.Count != 1)
+            {
+                refused.Add(new { primary = primary.Occurrence, count = values.Count, reason = "duplicate-primary-decision" });
+                continue;
+            }
+            accepted.Add(new { primary = primary.Occurrence, anchor = values[0] });
+        }
+        var has = accepted.Count(item => JsonSerializer.Serialize(item).Contains("HAS_STRUCTURAL_EXTENT", StringComparison.Ordinal));
+        var no = accepted.Count(item => JsonSerializer.Serialize(item).Contains("NO_STRUCTURAL_EXTENT", StringComparison.Ordinal));
+        var missing = refused.Count(item => JsonSerializer.Serialize(item).Contains("missing-primary-decision", StringComparison.Ordinal));
+        return new ParsedAnchorLedger(decisions.GetArrayLength(), has, no, refused.Count, missing, accepted, refused);
     }
 
     private static object Describe(PreparedRequest request) => new
