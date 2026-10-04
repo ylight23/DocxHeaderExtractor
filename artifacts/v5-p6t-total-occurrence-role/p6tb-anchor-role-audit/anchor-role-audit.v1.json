@@ -1,0 +1,358 @@
+{
+  "schemaVersion": "v5-p6tb-anchor-role-audit-v1",
+  "execution": {
+    "providerCalls": 0,
+    "sourceCapture": "artifacts/v5-p6t-total-occurrence-role/p6ta-two-pack-canary/result.v1.json",
+    "sourceCaptureSha256": "d47b98c6a2ee6d385fba2a16d4c3a3d31fdfc3cbd7ed6562a4519e7e8b60818e",
+    "goldMutation": "NONE",
+    "runtimeChanged": false,
+    "rawResponseCopied": false
+  },
+  "authority": {
+    "purpose": "ROLE_AUDIT_ONLY",
+    "p6taViability": "PROVISIONALLY_SUPPORTED",
+    "pass2": "BLOCKED",
+    "accuracyScore": "NOT_COMPUTED"
+  },
+  "src089": {
+    "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+    "issuedOccurrences": 96,
+    "modelRoleCounts": {
+      "HEADING_START": 9,
+      "OTHER": 87
+    },
+    "goldMultipartUnitsInPack": 6,
+    "goldStartsWithIssuedAnchor": 6,
+    "continuationRoleCounts": {
+      "OTHER": 5,
+      "HEADING_START": 1
+    },
+    "falseContinuationStarts": 1,
+    "goldUnits": [
+      {
+        "primary": "L0006:S0",
+        "partCount": 3,
+        "startRole": "HEADING_START",
+        "continuationRoles": [
+          "OTHER",
+          "OTHER"
+        ]
+      },
+      {
+        "primary": "L0014:S0",
+        "partCount": 2,
+        "startRole": "HEADING_START",
+        "continuationRoles": [
+          "HEADING_START"
+        ]
+      },
+      {
+        "primary": "L0016:S0",
+        "partCount": 1,
+        "startRole": "HEADING_START",
+        "continuationRoles": []
+      },
+      {
+        "primary": "L0024:S0",
+        "partCount": 2,
+        "startRole": "HEADING_START",
+        "continuationRoles": [
+          "OTHER"
+        ]
+      },
+      {
+        "primary": "L0051:S0",
+        "partCount": 2,
+        "startRole": "HEADING_START",
+        "continuationRoles": [
+          "OTHER"
+        ]
+      },
+      {
+        "primary": "L0080:S0",
+        "partCount": 2,
+        "startRole": "HEADING_START",
+        "continuationRoles": [
+          "OTHER"
+        ]
+      }
+    ]
+  },
+  "src095": {
+    "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+    "reviewedTocTargets": 53,
+    "roleCounts": {
+      "HEADING_START": 53
+    },
+    "representationStart": 0,
+    "headingStart": 53,
+    "other": 0,
+    "rows": [
+      {
+        "CandidateId": "C236",
+        "occurrence": "O42",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C243",
+        "occurrence": "O43",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C250",
+        "occurrence": "O44",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C257",
+        "occurrence": "O45",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C264",
+        "occurrence": "O46",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C271",
+        "occurrence": "O47",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C278",
+        "occurrence": "O48",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C285",
+        "occurrence": "O49",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C292",
+        "occurrence": "O50",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C299",
+        "occurrence": "O51",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C306",
+        "occurrence": "O52",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C313",
+        "occurrence": "O53",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C320",
+        "occurrence": "O54",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C327",
+        "occurrence": "O55",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C334",
+        "occurrence": "O56",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C341",
+        "occurrence": "O57",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C348",
+        "occurrence": "O58",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C355",
+        "occurrence": "O59",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C362",
+        "occurrence": "O60",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C369",
+        "occurrence": "O61",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C376",
+        "occurrence": "O62",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C383",
+        "occurrence": "O63",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C390",
+        "occurrence": "O64",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C397",
+        "occurrence": "O65",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C404",
+        "occurrence": "O66",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C411",
+        "occurrence": "O67",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C418",
+        "occurrence": "O68",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C433",
+        "occurrence": "O71",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C440",
+        "occurrence": "O72",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C447",
+        "occurrence": "O73",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C454",
+        "occurrence": "O74",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C461",
+        "occurrence": "O75",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C468",
+        "occurrence": "O76",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C475",
+        "occurrence": "O77",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C482",
+        "occurrence": "O78",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C489",
+        "occurrence": "O79",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C496",
+        "occurrence": "O80",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C503",
+        "occurrence": "O81",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C510",
+        "occurrence": "O82",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C517",
+        "occurrence": "O83",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C524",
+        "occurrence": "O84",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C531",
+        "occurrence": "O85",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C538",
+        "occurrence": "O86",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C545",
+        "occurrence": "O87",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C552",
+        "occurrence": "O88",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C559",
+        "occurrence": "O89",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C566",
+        "occurrence": "O90",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C573",
+        "occurrence": "O91",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C580",
+        "occurrence": "O92",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C587",
+        "occurrence": "O93",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C594",
+        "occurrence": "O94",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C601",
+        "occurrence": "O95",
+        "role": "HEADING_START"
+      },
+      {
+        "CandidateId": "C606",
+        "occurrence": "O96",
+        "role": "HEADING_START"
+      }
+    ]
+  }
+}
