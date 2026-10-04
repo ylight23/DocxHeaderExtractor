@@ -13,6 +13,9 @@ public enum V5OccurrenceRoleV1 { HEADING_START, REPRESENTATION_START, OTHER }
 
 public sealed record V5IssuedOccurrenceV1(string Id, SemanticSourceAtom Atom);
 
+/// <summary>Read-only correspondence evidence shown to the model; it never becomes selectable output.</summary>
+public sealed record V5ReadOnlyCorrespondenceV1(int TargetPage, string TargetText);
+
 public sealed record V5TotalRoleRequestV1(
     string ProtocolVersion,
     string SystemPrompt,
@@ -48,6 +51,16 @@ public static class V5TotalOccurrenceRoleProtocolV1
 
     public static V5TotalRoleRequestV1 Compose(IReadOnlyList<SemanticSourceAtom> ownedAtoms,
         IReadOnlyList<(int Page, string Text)> contextOnlyEvidence)
+        => ComposeCore(ownedAtoms, contextOnlyEvidence, null);
+
+    public static V5TotalRoleRequestV1 ComposeWithReadOnlyCorrespondences(IReadOnlyList<SemanticSourceAtom> ownedAtoms,
+        IReadOnlyList<(int Page, string Text)> contextOnlyEvidence,
+        IReadOnlyDictionary<string, IReadOnlyList<V5ReadOnlyCorrespondenceV1>> correspondences)
+        => ComposeCore(ownedAtoms, contextOnlyEvidence, correspondences);
+
+    private static V5TotalRoleRequestV1 ComposeCore(IReadOnlyList<SemanticSourceAtom> ownedAtoms,
+        IReadOnlyList<(int Page, string Text)> contextOnlyEvidence,
+        IReadOnlyDictionary<string, IReadOnlyList<V5ReadOnlyCorrespondenceV1>>? correspondences)
     {
         ArgumentNullException.ThrowIfNull(ownedAtoms);
         ArgumentNullException.ThrowIfNull(contextOnlyEvidence);
@@ -55,12 +68,25 @@ public static class V5TotalOccurrenceRoleProtocolV1
         if (ordered.Length == 0 || ordered.Select(value => value.Alias).Distinct(StringComparer.Ordinal).Count() != ordered.Length)
             throw new InvalidOperationException("total-role-owned-occurrence-universe-invalid");
         var occurrences = ordered.Select((atom, index) => new V5IssuedOccurrenceV1($"O{index + 1}", atom)).ToArray();
-        var user = JsonSerializer.Serialize(new
-        {
-            protocolVersion = Version,
-            occurrences = occurrences.Select(value => new { id = value.Id, page = value.Atom.Page, text = value.Atom.Text }).ToArray(),
-            contextOnlyEvidence = contextOnlyEvidence.Select(value => new { page = value.Page, text = value.Text }).ToArray(),
-        }, Json);
+        var user = correspondences is null
+            ? JsonSerializer.Serialize(new
+            {
+                protocolVersion = Version,
+                occurrences = occurrences.Select(value => new { id = value.Id, page = value.Atom.Page, text = value.Atom.Text }).ToArray(),
+                contextOnlyEvidence = contextOnlyEvidence.Select(value => new { page = value.Page, text = value.Text }).ToArray(),
+            }, Json)
+            : JsonSerializer.Serialize(new
+            {
+                protocolVersion = Version,
+                occurrences = occurrences.Select(value => new
+                {
+                    id = value.Id, page = value.Atom.Page, text = value.Atom.Text,
+                    correspondences = correspondences.TryGetValue(value.Atom.Alias, out var targets)
+                        ? targets.Select(target => new { targetPage = target.TargetPage, targetText = target.TargetText }).ToArray()
+                        : Array.Empty<object>(),
+                }).ToArray(),
+                contextOnlyEvidence = contextOnlyEvidence.Select(value => new { page = value.Page, text = value.Text }).ToArray(),
+            }, Json);
         return new V5TotalRoleRequestV1(Version, SystemPrompt, user, Hashing.Sha256(user),
             Encoding.UTF8.GetByteCount(SystemPrompt), Encoding.UTF8.GetByteCount(user), occurrences);
     }

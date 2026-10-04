@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "v5-p6tc-read-only-correspondence-evidence-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "sharedRuntime": "UNCHANGED",
+  "matchedVariable": "ONLY_OCCURRENCE_READ_ONLY_CORRESPONDENCES",
+  "locatorOutput": "FORBIDDEN",
+  "relationIds": "FORBIDDEN",
+  "roles": [
+    "HEADING_START",
+    "REPRESENTATION_START",
+    "OTHER"
+  ],
+  "expectedDecisions": 96,
+  "maximumFutureProviderCalls": 2,
+  "retry": 0,
+  "repair": false,
+  "fallback": false,
+  "rows": [
+    {
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issuedOccurrences": 96,
+      "baselineRequestHash": "862df5172f979c2217d78e515e6a0f3579b9a50058bdbe346bb8a7f7acd8bf6a",
+      "treatmentRequestHash": "88c1197915a20e30c215efefc41455c341d9f4b4989d8f91028d6c6816afeeb3",
+      "baselineProviderRequestHash": "fda5f075a2867c33048fbea5e99cb36bb679308cf2c9696bd54c1345eb1cae96",
+      "treatmentProviderRequestHash": "7c32383066adfc771e105fa2321f6f9bdbc3f79017d7d68b32ff4a82f04b5d5b",
+      "correspondenceAnchors": 5,
+      "correspondenceEdges": 7,
+      "responseContract": "UNCHANGED_TOTAL_ANCHOR_ROLE",
+      "responseParser": "ACCEPTED_SYNTHETIC_96_OTHER"
+    },
+    {
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "issuedOccurrences": 96,
+      "baselineRequestHash": "65e6ef573ea6136d5af1d8cc8b778c168730da4749676b1777df546c36116ff1",
+      "treatmentRequestHash": "d74204e8bef8657b0c08a19b950fb9f4a1de121d6dc2fe006e1a1df8203ba775",
+      "baselineProviderRequestHash": "e9393ad53c44e7f0b99436dafd9311a57d067541516d19d8885ffdfada76cb87",
+      "treatmentProviderRequestHash": "17af2637cf781df16be0fd75b6a77f4a1239d08df9eb64e4409593efc0b03242",
+      "correspondenceAnchors": 61,
+      "correspondenceEdges": 103,
+      "responseContract": "UNCHANGED_TOTAL_ANCHOR_ROLE",
+      "responseParser": "ACCEPTED_SYNTHETIC_96_OTHER"
+    }
+  ]
+}

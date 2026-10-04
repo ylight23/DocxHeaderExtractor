@@ -28,6 +28,22 @@ public static class PdfTotalOccurrenceRoleQualificationAdapter
         return new PdfTotalRolePreparedPack(sourcePack, request, body.PayloadBytes, body.Hash, body.Bytes);
     }
 
+    public static PdfTotalRolePreparedPack PrepareWithReadOnlyCorrespondences(
+        PdfCandidateAuthorityDocumentPlan plan,
+        PdfCandidateAuthorityPreparedPack sourcePack,
+        IReadOnlyDictionary<string, IReadOnlyList<V5ReadOnlyCorrespondenceV1>> correspondences)
+    {
+        ArgumentNullException.ThrowIfNull(correspondences);
+        var atoms = plan.SourceAtoms.ToDictionary(value => value.Alias, StringComparer.Ordinal);
+        var owned = sourcePack.OwnedAliases.Select(alias => atoms[alias]).ToArray();
+        var ownedSet = sourcePack.OwnedAliases.ToHashSet(StringComparer.Ordinal);
+        var context = sourcePack.VisibleAliases.Where(alias => !ownedSet.Contains(alias)).Select(alias => (atoms[alias].Page, atoms[alias].Text)).ToArray();
+        var request = V5TotalOccurrenceRoleProtocolV1.ComposeWithReadOnlyCorrespondences(owned, context, correspondences);
+        var body = OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(request.SystemPrompt, request.UserMessage,
+            sourcePack.MaxCompletionTokens, Envelope);
+        return new PdfTotalRolePreparedPack(sourcePack, request, body.PayloadBytes, body.Hash, body.Bytes);
+    }
+
     public static V5TotalRoleDecisionResultV1 Parse(PdfTotalRolePreparedPack pack, string rawResponse)
     {
         ArgumentNullException.ThrowIfNull(pack); ArgumentNullException.ThrowIfNull(rawResponse);
