@@ -19,6 +19,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private const string GoldAuditRoot = "artifacts/v5-p6t-function-membership/p6tg2-canary-gold-audit";
     private const string AnchorExistencePreflightRoot = "artifacts/v5-p6t-function-membership/p6tg2a-anchor-existence-preflight";
     private const string AnchorExistenceCaptureRoot = "artifacts/v5-p6t-function-membership/p6tg2a-anchor-existence-canary-20261004";
+    private const string ExactExtentPreflightRoot = "artifacts/v5-p6t-function-membership/p6tg2b-exact-extent-preflight";
     private const string Gold089Path = "eval/a99-closed-loop/gold/SRC-089.gold.json";
     private const string Gold095Path = "eval/a99-closed-loop/gold/SRC-095.gold.json";
     private const string Review095Path = "eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json";
@@ -587,6 +588,128 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         finally
         {
             foreach (var item in byOccurrence) item.Dispose();
+        }
+    }
+
+    [Fact]
+    public void P6TG2B_preflight_uses_only_raw_G2A_HAS_primaries_and_reuses_the_frozen_G2_menus()
+    {
+        using var f1Retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{F1Root}/retry-src089-result.v1.json")));
+        using var g1 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(G1Path)));
+        using var g2 = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{OutputRoot}/exact-extent-resolver-preflight.v1.json")));
+        using var g2aResult = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/result.v1.json")));
+        using var g2aRaw = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/SRC-089.raw-capture.v1.json")));
+        var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089, f1Retry.RootElement.GetProperty("row"), g1.RootElement.GetProperty("src089"));
+        var allG2 = Compose(prepared, new HashSet<string>(StringComparer.Ordinal));
+        var anchorRequest = ComposeAnchorExistence(prepared);
+        var anchorLedger = ParseAnchorLedger(anchorRequest, g2aRaw.RootElement.GetProperty("rawResponse").GetString()!);
+        var hasPrimaries = anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))
+            .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
+            .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToHashSet(StringComparer.Ordinal);
+        try
+        {
+            Assert.Equal(6, hasPrimaries.Count);
+            Assert.Equal(1, g2aResult.RootElement.GetProperty("providerCalls").GetInt32());
+            Assert.False(g2aResult.RootElement.GetProperty("goldRead").GetBoolean());
+            var frozenCombinedRows = g2.RootElement.GetProperty("callPlan").EnumerateArray()
+                .Single(row => row.GetProperty("documentId").GetString() == "SRC-089")
+                .GetProperty("optionsPerPrimary").EnumerateArray()
+                .ToDictionary(row => row.GetProperty("primary").GetString()!,
+                    row => row.GetProperty("candidateIds").EnumerateArray().Select(item => item.GetString()!).ToArray(), StringComparer.Ordinal);
+            var selected = allG2.OccurrenceGroups.Where(group => hasPrimaries.Contains(group.PrimaryOccurrence)).ToArray();
+            Assert.Equal(6, selected.Length);
+            foreach (var group in selected)
+            {
+                Assert.Equal(frozenCombinedRows[group.PrimaryOccurrence], group.CandidateIds);
+                Assert.NotEmpty(group.CandidateIds);
+            }
+
+            var userDocument = JsonDocument.Parse(allG2.UserMessage);
+            var selectedGroups = userDocument.RootElement.GetProperty("occurrenceGroups").EnumerateArray()
+                .Where(group => hasPrimaries.Contains(group.GetProperty("primary").GetString()!)).ToArray();
+            var systemPrompt = """
+                Resolve exact extent only for the already-established structural anchors supplied by the harness. Anchor existence has already been decided upstream; do not reconsider whether an anchor exists.
+
+                For every issued primary O#, return exactly one decision selecting exactly one C# from that primary's frozen candidate menu. Candidate IDs, kinds, source-part text, ordering and local context are harness-issued evidence. Do not create, edit, join, trim, retype or infer candidate extents. Do not return NO_STRUCTURAL_EXTENT. Do not output source text, coordinates, aliases, locators, relations, hierarchy, rationale, confidence, or extra properties.
+
+                Return exactly one JSON object with this shape: {"decisions":[{"primary":"O27","candidate":"C123"}]}. Each decision has exactly primary and candidate.
+                """;
+            var userMessage = JsonSerializer.Serialize(new
+            {
+                protocolVersion = "v5-function-conditioned-exact-extent-resolver-2",
+                occurrenceGroups = selectedGroups,
+            });
+            var requestModel = new V5FreeHeadingRequestV1("v5-function-conditioned-exact-extent-resolver-2", systemPrompt,
+                userMessage, Hashing.Sha256(userMessage), Encoding.UTF8.GetByteCount(systemPrompt), Encoding.UTF8.GetByteCount(userMessage));
+            var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(requestModel, prepared.SourcePack.MaxCompletionTokens);
+            var g2b = new PreparedRequest(prepared.DocumentId, systemPrompt, userMessage, requestModel.UserMessageSha256,
+                requestModel.UserMessageUtf8Bytes, body.PayloadBytes, body.Bytes, body.Hash, selected, prepared.SourcePack.MaxCompletionTokens);
+            FreezeArtifact.AssertJson(ExactExtentPreflightRoot, "exact-extent-preflight.v1.json", new
+            {
+                schemaVersion = "v5-p6tg2b-exact-extent-preflight-v1",
+                status = "PREPARED_NOT_AUTHORIZED",
+                protocolVersion = "v5-function-conditioned-exact-extent-resolver-2",
+                treatment = new
+                {
+                    model = "qwen/qwen3.7-flash",
+                    provider = "alibaba",
+                    reasoning = new { enabled = true, effort = "OMITTED" },
+                    anchorAuthority = "FROZEN_P6TG2A_RAW_HAS_DECISIONS",
+                    primarySelection = "RAW_G2A_ONLY; GOLD_NOT_USED_TO_SELECT_PRIMARY",
+                    extentAuthority = "FROZEN_G2_CANDIDATE_MENUS",
+                },
+                outputContract = new
+                {
+                    shape = "{\"decisions\":[{\"primary\":\"O27\",\"candidate\":\"C123\"}]}",
+                    oneDecisionPerIssuedHasPrimary = true,
+                    sentinelAllowed = false,
+                    candidateMustBeIssuedForThatPrimary = true,
+                    modelAuthoredTextOrCoordinates = false,
+                    invalidDecisionPolicy = "decision-local quarantine; no repair or inference",
+                },
+                sourceAuthority = new
+                {
+                    g2aResultSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{AnchorExistenceCaptureRoot}/result.v1.json"))),
+                    g2aRawResponseSha256 = g2aRaw.RootElement.GetProperty("rawResponseSha256").GetString(),
+                    g2aHasPrimaryCount = hasPrimaries.Count,
+                    g2aHasPrimaries = selected.Select(group => new { primary = group.PrimaryOccurrence, alias = group.PrimaryAlias }).ToArray(),
+                    combinedG2PreflightSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path($"{OutputRoot}/exact-extent-resolver-preflight.v1.json"))),
+                    menuByteParity = true,
+                    goldMutation = "NONE",
+                    sharedRuntime = "UNCHANGED",
+                },
+                callPlan = new
+                {
+                    documentId = g2b.DocumentId,
+                    primaryCount = g2b.OccurrenceGroups.Count,
+                    primaryOccurrences = g2b.OccurrenceGroups.Select(group => new { occurrence = group.PrimaryOccurrence, alias = group.PrimaryAlias }).ToArray(),
+                    eligibleCandidateCount = g2b.OccurrenceGroups.Sum(group => group.CandidateIds.Count),
+                    optionsPerPrimary = g2b.OccurrenceGroups.Select(group => new { primary = group.PrimaryOccurrence, primaryAlias = group.PrimaryAlias, candidateIds = group.CandidateIds }).ToArray(),
+                    systemPromptSha256 = Hashing.Sha256(g2b.SystemPrompt),
+                    userMessageSha256 = g2b.MessageHash,
+                    userMessageUtf8Bytes = g2b.MessageBytes,
+                    providerBodySha256 = g2b.ProviderHash,
+                    providerBodyBytes = g2b.ProviderBytes,
+                    providerCallsAuthorized = 0,
+                    providerCalls = 0,
+                    retries = 0,
+                    repairs = 0,
+                    fallbacks = 0,
+                },
+                expectedOfflineProbes = new
+                {
+                    goldExtents = 6,
+                    multipartGoldExtents = 5,
+                    singletonGoldExtents = 1,
+                    primaryWholeBiasDiagnostic = true,
+                    expectedCandidateIdsAreAuditOnly = true,
+                },
+                conclusion = "P6TG2B_PREFLIGHT_FROZEN_FROM_RAW_G2A_HAS_DECISIONS; PROVIDER_EXECUTION_REQUIRES_SEPARATE_EXPLICIT_AUTHORIZATION",
+            });
+        }
+        finally
+        {
+            foreach (var item in anchorLedger.Decisions.Select(item => JsonDocument.Parse(JsonSerializer.Serialize(item)))) item.Dispose();
         }
     }
 

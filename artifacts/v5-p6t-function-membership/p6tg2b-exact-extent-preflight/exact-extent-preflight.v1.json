@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "v5-p6tg2b-exact-extent-preflight-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "protocolVersion": "v5-function-conditioned-exact-extent-resolver-2",
+  "treatment": {
+    "model": "qwen/qwen3.7-flash",
+    "provider": "alibaba",
+    "reasoning": {
+      "enabled": true,
+      "effort": "OMITTED"
+    },
+    "anchorAuthority": "FROZEN_P6TG2A_RAW_HAS_DECISIONS",
+    "primarySelection": "RAW_G2A_ONLY; GOLD_NOT_USED_TO_SELECT_PRIMARY",
+    "extentAuthority": "FROZEN_G2_CANDIDATE_MENUS"
+  },
+  "outputContract": {
+    "shape": "{\"decisions\":[{\"primary\":\"O27\",\"candidate\":\"C123\"}]}",
+    "oneDecisionPerIssuedHasPrimary": true,
+    "sentinelAllowed": false,
+    "candidateMustBeIssuedForThatPrimary": true,
+    "modelAuthoredTextOrCoordinates": false,
+    "invalidDecisionPolicy": "decision-local quarantine; no repair or inference"
+  },
+  "sourceAuthority": {
+    "g2aResultSha256": "b29b2ac212bd4d4888b17379d0db7546b28be8a0e2fdc9b49f1dde87226856f1",
+    "g2aRawResponseSha256": "90031a491b19c54e275fd8231d6d8475c8e45c4906f9a617c35eb407067a00c9",
+    "g2aHasPrimaryCount": 6,
+    "g2aHasPrimaries": [
+      {
+        "primary": "O9",
+        "alias": "L0006:S0"
+      },
+      {
+        "primary": "O17",
+        "alias": "L0014:S0"
+      },
+      {
+        "primary": "O19",
+        "alias": "L0016:S0"
+      },
+      {
+        "primary": "O27",
+        "alias": "L0024:S0"
+      },
+      {
+        "primary": "O54",
+        "alias": "L0051:S0"
+      },
+      {
+        "primary": "O83",
+        "alias": "L0080:S0"
+      }
+    ],
+    "combinedG2PreflightSha256": "5462d13169175562e5fc10e80da60c7e061453c6053123d6fb86a32e95bd36e0",
+    "menuByteParity": true,
+    "goldMutation": "NONE",
+    "sharedRuntime": "UNCHANGED"
+  },
+  "callPlan": {
+    "documentId": "SRC-089",
+    "primaryCount": 6,
+    "primaryOccurrences": [
+      {
+        "occurrence": "O9",
+        "alias": "L0006:S0"
+      },
+      {
+        "occurrence": "O17",
+        "alias": "L0014:S0"
+      },
+      {
+        "occurrence": "O19",
+        "alias": "L0016:S0"
+      },
+      {
+        "occurrence": "O27",
+        "alias": "L0024:S0"
+      },
+      {
+        "occurrence": "O54",
+        "alias": "L0051:S0"
+      },
+      {
+        "occurrence": "O83",
+        "alias": "L0080:S0"
+      }
+    ],
+    "eligibleCandidateCount": 30,
+    "optionsPerPrimary": [
+      {
+        "primary": "O9",
+        "primaryAlias": "L0006:S0",
+        "candidateIds": [
+          "C47",
+          "C48",
+          "C49",
+          "C50",
+          "C51"
+        ]
+      },
+      {
+        "primary": "O17",
+        "primaryAlias": "L0014:S0",
+        "candidateIds": [
+          "C101",
+          "C102",
+          "C103",
+          "C104",
+          "C105",
+          "C106",
+          "C107"
+        ]
+      },
+      {
+        "primary": "O19",
+        "primaryAlias": "L0016:S0",
+        "candidateIds": [
+          "C115",
+          "C116",
+          "C117"
+        ]
+      },
+      {
+        "primary": "O27",
+        "primaryAlias": "L0024:S0",
+        "candidateIds": [
+          "C171",
+          "C172",
+          "C173",
+          "C174",
+          "C175"
+        ]
+      },
+      {
+        "primary": "O54",
+        "primaryAlias": "L0051:S0",
+        "candidateIds": [
+          "C350",
+          "C351",
+          "C352",
+          "C353",
+          "C354"
+        ]
+      },
+      {
+        "primary": "O83",
+        "primaryAlias": "L0080:S0",
+        "candidateIds": [
+          "C539",
+          "C540",
+          "C541",
+          "C542",
+          "C543"
+        ]
+      }
+    ],
+    "systemPromptSha256": "329c1597dc1e4d9d3ab1d8c8ce51d3e29aa077f6d490e584b4e85b4ab4fce8bc",
+    "userMessageSha256": "bce346ffdd49dfabcddcd4108535edcdc656e216c43141164cbca4388a908ee3",
+    "userMessageUtf8Bytes": 11798,
+    "providerBodySha256": "be26ca8e01a7df72a858e05dcfe4f2599124b490f391c791e37dd8b6a0382799",
+    "providerBodyBytes": 19481,
+    "providerCallsAuthorized": 0,
+    "providerCalls": 0,
+    "retries": 0,
+    "repairs": 0,
+    "fallbacks": 0
+  },
+  "expectedOfflineProbes": {
+    "goldExtents": 6,
+    "multipartGoldExtents": 5,
+    "singletonGoldExtents": 1,
+    "primaryWholeBiasDiagnostic": true,
+    "expectedCandidateIdsAreAuditOnly": true
+  },
+  "conclusion": "P6TG2B_PREFLIGHT_FROZEN_FROM_RAW_G2A_HAS_DECISIONS; PROVIDER_EXECUTION_REQUIRES_SEPARATE_EXPLICIT_AUTHORIZATION"
+}
