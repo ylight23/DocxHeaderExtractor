@@ -1,0 +1,757 @@
+{
+  "schemaVersion": "v5-p6tg1-function-conditioned-candidate-projection-v1",
+  "purpose": "PROJECT_FROZEN_F1_FUNCTION_MEMBERSHIP_ONTO_EXISTING_CANDIDATE_AUTHORITY",
+  "execution": {
+    "providerCalls": 0,
+    "rawCaptureMutation": "NONE",
+    "goldMutation": "NONE",
+    "sharedRuntime": "UNCHANGED",
+    "groupingOrExtentModelCall": false,
+    "rawAuthority": {
+      "src089": {
+        "documentId": "SRC-089",
+        "semanticRequestHash": "010ed175ee676085349da16469346c67da1dea39fe462589f42d45fe2299a412",
+        "providerRequestHash": "a244f7c32dd1fe8c2c1b1551a48ff37ec95eadfbcd18ba0e64251a82b873cd29",
+        "rawResponseSha256": "23286899899f73d5ab94c71b64b665703f524d64a9835eb89f66d61f0d6cfbb7",
+        "finishReason": "stop",
+        "parserAccepted": true,
+        "retryCount": 0
+      },
+      "src095": {
+        "documentId": "SRC-095",
+        "semanticRequestHash": "4cb5d6e60747c45ce7f9be5e24ab49f29157d7093560fde6f55d4f3e26f24e4d",
+        "providerRequestHash": "35c1f1078f39fdc87d3feabe3d61451d3d331bf79407f20cc39f26e20ddb6e29",
+        "rawResponseSha256": "d81cafdf38250c46adc4f613b2bc121a33c3f4c37ed4d98c58e946764243da80",
+        "finishReason": "stop",
+        "parserAccepted": true,
+        "retryCount": 0
+      }
+    }
+  },
+  "projectionPolicy": {
+    "candidateAuthority": "EXISTING_P6S_SOURCE_DERIVED_UNIVERSE_UNCHANGED",
+    "classification": {
+      "allEstablishes": "every source atom in candidate has ESTABLISHES_STRUCTURE",
+      "mixed": "at least one ESTABLISHES_STRUCTURE and at least one non-ESTABLISHES_STRUCTURE atom",
+      "noEstablishes": "no source atom in candidate has ESTABLISHES_STRUCTURE",
+      "eligible": "ALL_ESTABLISHES only"
+    },
+    "competingVariantDefinition": "other eligible candidates with same first/primary source alias as the exact Gold extent",
+    "candidateIdsAreRequestLocal": true,
+    "relationsUsed": false
+  },
+  "src089": {
+    "candidateUniverseFingerprint": "e4f3624bbd8b0771971fc85973e6fd4613ecd9c30c04c64ce8680b302d8d0029",
+    "candidateCount": 630,
+    "classes": {
+      "ALL_ESTABLISHES": 63,
+      "MIXED": 74,
+      "NO_ESTABLISHES": 493
+    },
+    "reviewedGoldExtentCount": 6,
+    "exactGoldCoverage": 6,
+    "goldExtents": [
+      {
+        "goldIdentity": "L0006:S0:0-6|L0007:S0:0-65|L0008:S0:0-23",
+        "primaryAlias": "L0006:S0",
+        "exactCandidateId": "C50",
+        "exactCandidateKind": "MULTIPART",
+        "exactCandidateEligible": true,
+        "competingEligibleVariantsAtSamePrimary": 4,
+        "competingKinds": {
+          "MULTIPART": 3,
+          "WHOLE": 1
+        }
+      },
+      {
+        "goldIdentity": "L0014:S0:0-9|L0015:S0:0-18",
+        "primaryAlias": "L0014:S0",
+        "exactCandidateId": "C104",
+        "exactCandidateKind": "MULTIPART",
+        "exactCandidateEligible": true,
+        "competingEligibleVariantsAtSamePrimary": 6,
+        "competingKinds": {
+          "MULTIPART": 3,
+          "STRICT_PREFIX": 1,
+          "STRICT_SUFFIX": 1,
+          "WHOLE": 1
+        }
+      },
+      {
+        "goldIdentity": "L0016:S0:0-56",
+        "primaryAlias": "L0016:S0",
+        "exactCandidateId": "C115",
+        "exactCandidateKind": "WHOLE",
+        "exactCandidateEligible": true,
+        "competingEligibleVariantsAtSamePrimary": 2,
+        "competingKinds": {
+          "STRICT_PREFIX": 1,
+          "STRICT_SUFFIX": 1
+        }
+      },
+      {
+        "goldIdentity": "L0024:S0:0-89|L0025:S0:0-45",
+        "primaryAlias": "L0024:S0",
+        "exactCandidateId": "C174",
+        "exactCandidateKind": "MULTIPART",
+        "exactCandidateEligible": true,
+        "competingEligibleVariantsAtSamePrimary": 4,
+        "competingKinds": {
+          "MULTIPART": 1,
+          "STRICT_PREFIX": 1,
+          "STRICT_SUFFIX": 1,
+          "WHOLE": 1
+        }
+      },
+      {
+        "goldIdentity": "L0051:S0:0-95|L0052:S0:0-35",
+        "primaryAlias": "L0051:S0",
+        "exactCandidateId": "C353",
+        "exactCandidateKind": "MULTIPART",
+        "exactCandidateEligible": true,
+        "competingEligibleVariantsAtSamePrimary": 4,
+        "competingKinds": {
+          "MULTIPART": 1,
+          "STRICT_PREFIX": 1,
+          "STRICT_SUFFIX": 1,
+          "WHOLE": 1
+        }
+      },
+      {
+        "goldIdentity": "L0080:S0:0-90|L0081:S0:0-35",
+        "primaryAlias": "L0080:S0",
+        "exactCandidateId": "C542",
+        "exactCandidateKind": "MULTIPART",
+        "exactCandidateEligible": true,
+        "competingEligibleVariantsAtSamePrimary": 4,
+        "competingKinds": {
+          "MULTIPART": 1,
+          "STRICT_PREFIX": 1,
+          "STRICT_SUFFIX": 1,
+          "WHOLE": 1
+        }
+      }
+    ],
+    "falseEstablishAtoms": [
+      {
+        "alias": "L0002:S0",
+        "sourceReview": "ISSUER_HEADER",
+        "candidateCountTouchingAtom": 12,
+        "eligibleCandidateCountTouchingAtom": 5,
+        "survivingCandidates": [
+          {
+            "candidateId": "C15",
+            "candidateKind": "WHOLE",
+            "candidateIdentity": "L0002:S0:0-14",
+            "aliases": [
+              "L0002:S0"
+            ]
+          },
+          {
+            "candidateId": "C16",
+            "candidateKind": "STRICT_PREFIX",
+            "candidateIdentity": "L0002:S0:0-3",
+            "aliases": [
+              "L0002:S0"
+            ]
+          },
+          {
+            "candidateId": "C17",
+            "candidateKind": "STRICT_SUFFIX",
+            "candidateIdentity": "L0002:S0:4-14",
+            "aliases": [
+              "L0002:S0"
+            ]
+          },
+          {
+            "candidateId": "C18",
+            "candidateKind": "MULTIPART",
+            "candidateIdentity": "L0002:S0:0-14|L0002:S1:0-33",
+            "aliases": [
+              "L0002:S0",
+              "L0002:S1"
+            ]
+          },
+          {
+            "candidateId": "C19",
+            "candidateKind": "MULTIPART",
+            "candidateIdentity": "L0002:S0:0-14|L0002:S1:0-25",
+            "aliases": [
+              "L0002:S0",
+              "L0002:S1"
+            ]
+          }
+        ]
+      },
+      {
+        "alias": "L0002:S1",
+        "sourceReview": "NATIONAL_HEADER",
+        "candidateCountTouchingAtom": 11,
+        "eligibleCandidateCountTouchingAtom": 5,
+        "survivingCandidates": [
+          {
+            "candidateId": "C18",
+            "candidateKind": "MULTIPART",
+            "candidateIdentity": "L0002:S0:0-14|L0002:S1:0-33",
+            "aliases": [
+              "L0002:S0",
+              "L0002:S1"
+            ]
+          },
+          {
+            "candidateId": "C19",
+            "candidateKind": "MULTIPART",
+            "candidateIdentity": "L0002:S0:0-14|L0002:S1:0-25",
+            "aliases": [
+              "L0002:S0",
+              "L0002:S1"
+            ]
+          },
+          {
+            "candidateId": "C21",
+            "candidateKind": "WHOLE",
+            "candidateIdentity": "L0002:S1:0-33",
+            "aliases": [
+              "L0002:S1"
+            ]
+          },
+          {
+            "candidateId": "C22",
+            "candidateKind": "STRICT_PREFIX",
+            "candidateIdentity": "L0002:S1:0-25",
+            "aliases": [
+              "L0002:S1"
+            ]
+          },
+          {
+            "candidateId": "C23",
+            "candidateKind": "STRICT_SUFFIX",
+            "candidateIdentity": "L0002:S1:4-33",
+            "aliases": [
+              "L0002:S1"
+            ]
+          }
+        ]
+      },
+      {
+        "alias": "L0003:S1",
+        "sourceReview": "NATIONAL_MOTTO",
+        "candidateCountTouchingAtom": 11,
+        "eligibleCandidateCountTouchingAtom": 3,
+        "survivingCandidates": [
+          {
+            "candidateId": "C31",
+            "candidateKind": "WHOLE",
+            "candidateIdentity": "L0003:S1:0-34",
+            "aliases": [
+              "L0003:S1"
+            ]
+          },
+          {
+            "candidateId": "C32",
+            "candidateKind": "STRICT_PREFIX",
+            "candidateIdentity": "L0003:S1:0-24",
+            "aliases": [
+              "L0003:S1"
+            ]
+          },
+          {
+            "candidateId": "C33",
+            "candidateKind": "STRICT_SUFFIX",
+            "candidateIdentity": "L0003:S1:13-34",
+            "aliases": [
+              "L0003:S1"
+            ]
+          }
+        ]
+      }
+    ],
+    "frontMatterSurvivingCandidateUnion": 11,
+    "frontMatterSurvivingCandidates": [
+      {
+        "candidateId": "C15",
+        "candidateKind": "WHOLE",
+        "candidateIdentity": "L0002:S0:0-14",
+        "aliases": [
+          "L0002:S0"
+        ]
+      },
+      {
+        "candidateId": "C16",
+        "candidateKind": "STRICT_PREFIX",
+        "candidateIdentity": "L0002:S0:0-3",
+        "aliases": [
+          "L0002:S0"
+        ]
+      },
+      {
+        "candidateId": "C17",
+        "candidateKind": "STRICT_SUFFIX",
+        "candidateIdentity": "L0002:S0:4-14",
+        "aliases": [
+          "L0002:S0"
+        ]
+      },
+      {
+        "candidateId": "C18",
+        "candidateKind": "MULTIPART",
+        "candidateIdentity": "L0002:S0:0-14|L0002:S1:0-33",
+        "aliases": [
+          "L0002:S0",
+          "L0002:S1"
+        ]
+      },
+      {
+        "candidateId": "C19",
+        "candidateKind": "MULTIPART",
+        "candidateIdentity": "L0002:S0:0-14|L0002:S1:0-25",
+        "aliases": [
+          "L0002:S0",
+          "L0002:S1"
+        ]
+      },
+      {
+        "candidateId": "C21",
+        "candidateKind": "WHOLE",
+        "candidateIdentity": "L0002:S1:0-33",
+        "aliases": [
+          "L0002:S1"
+        ]
+      },
+      {
+        "candidateId": "C22",
+        "candidateKind": "STRICT_PREFIX",
+        "candidateIdentity": "L0002:S1:0-25",
+        "aliases": [
+          "L0002:S1"
+        ]
+      },
+      {
+        "candidateId": "C23",
+        "candidateKind": "STRICT_SUFFIX",
+        "candidateIdentity": "L0002:S1:4-33",
+        "aliases": [
+          "L0002:S1"
+        ]
+      },
+      {
+        "candidateId": "C31",
+        "candidateKind": "WHOLE",
+        "candidateIdentity": "L0003:S1:0-34",
+        "aliases": [
+          "L0003:S1"
+        ]
+      },
+      {
+        "candidateId": "C32",
+        "candidateKind": "STRICT_PREFIX",
+        "candidateIdentity": "L0003:S1:0-24",
+        "aliases": [
+          "L0003:S1"
+        ]
+      },
+      {
+        "candidateId": "C33",
+        "candidateKind": "STRICT_SUFFIX",
+        "candidateIdentity": "L0003:S1:13-34",
+        "aliases": [
+          "L0003:S1"
+        ]
+      }
+    ]
+  },
+  "src095": {
+    "candidateUniverseFingerprint": "ed57257a7c3e315ad3ab3a6faa431c098c4d581aae3efdf33c576f8b94228a71",
+    "candidateCount": 608,
+    "classes": {
+      "ALL_ESTABLISHES": 10,
+      "MIXED": 35,
+      "NO_ESTABLISHES": 563
+    },
+    "reviewedTocOccurrences": 53,
+    "tocOccurrencesWithEligibleCandidates": 0,
+    "eligibleCandidatesTouchingReviewedToc": 0,
+    "tocRows": [
+      {
+        "occurrence": "O42",
+        "alias": "L0035:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O43",
+        "alias": "L0036:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O44",
+        "alias": "L0037:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O45",
+        "alias": "L0038:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O46",
+        "alias": "L0039:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O47",
+        "alias": "L0040:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O48",
+        "alias": "L0041:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O49",
+        "alias": "L0042:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O50",
+        "alias": "L0043:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O51",
+        "alias": "L0044:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O52",
+        "alias": "L0045:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O53",
+        "alias": "L0046:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O54",
+        "alias": "L0047:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O55",
+        "alias": "L0048:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O56",
+        "alias": "L0049:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O57",
+        "alias": "L0050:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O58",
+        "alias": "L0051:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O59",
+        "alias": "L0052:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O60",
+        "alias": "L0053:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O61",
+        "alias": "L0054:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O62",
+        "alias": "L0055:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O63",
+        "alias": "L0056:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O64",
+        "alias": "L0057:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O65",
+        "alias": "L0058:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O66",
+        "alias": "L0059:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O67",
+        "alias": "L0060:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O68",
+        "alias": "L0061:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 11,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O71",
+        "alias": "L0064:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 11,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O72",
+        "alias": "L0065:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O73",
+        "alias": "L0066:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O74",
+        "alias": "L0067:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O75",
+        "alias": "L0068:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O76",
+        "alias": "L0069:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O77",
+        "alias": "L0070:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O78",
+        "alias": "L0071:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O79",
+        "alias": "L0072:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O80",
+        "alias": "L0073:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O81",
+        "alias": "L0074:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O82",
+        "alias": "L0075:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O83",
+        "alias": "L0076:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O84",
+        "alias": "L0077:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O85",
+        "alias": "L0078:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O86",
+        "alias": "L0079:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O87",
+        "alias": "L0080:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O88",
+        "alias": "L0081:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O89",
+        "alias": "L0082:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O90",
+        "alias": "L0083:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O91",
+        "alias": "L0084:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O92",
+        "alias": "L0085:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O93",
+        "alias": "L0086:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O94",
+        "alias": "L0087:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 13,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O95",
+        "alias": "L0088:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 11,
+        "eligibleCandidatesTouchingOccurrence": 0
+      },
+      {
+        "occurrence": "O96",
+        "alias": "L0089:S0",
+        "function": "REPRESENTS_STRUCTURE",
+        "candidatesTouchingOccurrence": 7,
+        "eligibleCandidatesTouchingOccurrence": 0
+      }
+    ]
+  },
+  "answers": {
+    "reviewedSrc089GoldExtentsStillEligible": 6,
+    "reviewedSrc089GoldExtentsTotal": 6,
+    "reviewedSrc095TocRepresentationsWithAnyEligibleCandidate": 0,
+    "src095EligibleCandidateLeakageCount": 0,
+    "frontMatterFalseEstablishAtoms": 3,
+    "frontMatterSurvivingCandidateUnion": 11
+  },
+  "conclusion": "PROVIDER_FREE_ELIGIBILITY_PROJECTION_ONLY; DOES_NOT_ASSERT_SEMANTIC_OR_EXTENT_CORRECTNESS"
+}
