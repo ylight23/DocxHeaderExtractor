@@ -151,6 +151,8 @@ internal static class Program
             return await P6TE1UnitTopologyCanary.RunAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6tf1-function-membership-canary"))
             return await P6TF1FunctionMembershipCanary.RunAsync(LocateRepoRoot(), args);
+        if (args.Contains("--p6tf1-retry-src089"))
+            return await P6TF1FunctionMembershipCanary.RetrySrc089Async(LocateRepoRoot(), args);
 
         // P6S-I/J are separate one-pack neutral-context and semantic-wording experiments; their
         // runner has an independent two-call cap, frozen-body manifest, and zero-retry policy.

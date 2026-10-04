@@ -19,6 +19,7 @@ internal static class P6TF1FunctionMembershipCanary
     private const string SnapshotRoot = "eval/a99-closed-loop/pdf-canonical-source-v1";
     private const string ManifestName = "two-pack-function-membership-manifest.v1.json";
     private const string Confirm = "yes-i-authorize-p6tf1-function-membership-two-calls";
+    private const string RetryConfirm = "yes-i-authorize-p6tf1-src089-one-retry";
     private const string Src089 = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
     private const string Src095 = "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf";
     private static readonly JsonSerializerOptions Json = new() { WriteIndented = true };
@@ -124,6 +125,102 @@ internal static class P6TF1FunctionMembershipCanary
         return 0;
     }
 
+    /// <summary>Separately authorized one-attempt recovery for the original SRC-089 transport-only failure.</summary>
+    public static async Task<int> RetrySrc089Async(string repo, string[] args)
+    {
+        var directory = Path.Combine(repo, Root.Replace('/', Path.DirectorySeparatorChar));
+        var manifestPath = Path.Combine(directory, ManifestName);
+        var originalResultPath = Path.Combine(directory, "result.v1.json");
+        var resultPath = Path.Combine(directory, "retry-src089-result.v1.json");
+        var checkpointPath = Path.Combine(directory, "retry-src089-result.in-progress.v1.json");
+        if (File.Exists(resultPath) || File.Exists(checkpointPath))
+            return Fail("p6tf1-retry-src089: immutable retry result/checkpoint exists; stop before network");
+        if (!OriginalSrc089WasTransportOnly(originalResultPath))
+            return Fail("p6tf1-retry-src089: original SRC-089 was not a transport-only failure; stop before network");
+        var item = Build(repo).Single(value => value.DocumentId == "SRC-089");
+        if (!MatchesFrozenPreflight(manifestPath, new[] { item }))
+            return Fail("p6tf1-retry-src089: frozen preflight/body parity failed; stop before network");
+        if (!args.Contains($"--confirm-p6tf1-retry-src089={RetryConfirm}"))
+        {
+            Console.WriteLine("P6T-F1 SRC-089 retry PREPARED_NOT_AUTHORIZED; ProviderCalls=0, GoldRead=false.");
+            return 0;
+        }
+        if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")))
+            return Fail("p6tf1-retry-src089: OPENROUTER_API_KEY is not set");
+
+        var options = RemoteInferenceOptions.FromEnvironment();
+        options.Model = "qwen/qwen3.7-flash";
+        options.OpenRouterProviderRoute = "alibaba";
+        options.OpenRouterReasoningEffort = "none";
+        options.RequireJsonObjectResponse = true;
+        options.TransientRequestRetries = 0;
+        options.MaxParallelRequests = 1;
+        options.ProviderTransportTimeoutSeconds = 300;
+        options.Validate();
+
+        AtomicWrite(checkpointPath, new { state = "IN_FLIGHT", documentId = item.DocumentId, providerCallsCompletedAndPersisted = 0, maximumProviderCalls = 1, retry = 0, repair = false, fallback = false, goldRead = false });
+        OpenRouterExecutionObservation? response = null;
+        string? error = null;
+        var stopwatch = Stopwatch.StartNew();
+        try
+        {
+            using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+            response = await client.ExecuteObservedAsync(item.Prepared.ProviderBody, item.Prepared.SourcePack.MaxCompletionTokens, item.Prepared.Request.SystemPrompt, item.Prepared.Request.UserMessage).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            error = ex.Message;
+        }
+        stopwatch.Stop();
+        var analysis = Analyze(item.Prepared, response, error);
+        var reasoningTokens = Usage(response?.Usage, "completion_tokens_details", "reasoning_tokens");
+        WriteNew(resultPath, new
+        {
+            schemaVersion = "v5-p6tf1-function-membership-src089-retry-result-v1",
+            providerCalls = 1,
+            maximumAuthorizedProviderCalls = 1,
+            originalResult = "result.v1.json",
+            originalFailureClassification = "TRANSPORT_ERROR",
+            goldRead = false,
+            semanticScore = "NOT_RUN",
+            retry = 0,
+            repair = false,
+            fallback = false,
+            segmentationDependency = "NONE",
+            groupingPass = "BLOCKED",
+            exactExtentPass = "BLOCKED",
+            sharedRuntime = "UNCHANGED",
+            row = new
+            {
+                documentId = item.DocumentId,
+                packId = item.Prepared.SourcePack.PackId,
+                issuedOccurrences = item.Prepared.Request.Occurrences.Count,
+                semanticRequestHash = item.Prepared.Request.UserMessageSha256,
+                systemPromptSha256 = Hash(item.Prepared.Request.SystemPrompt),
+                providerRequestHash = item.Prepared.ProviderRequestHash,
+                providerRequestBytes = item.Prepared.ProviderRequestBytes,
+                reasoningRequested = true,
+                reasoningTokens,
+                reasoningExecutionConfirmed = ReasoningState(reasoningTokens),
+                promptTokens = Usage(response?.Usage, "prompt_tokens"),
+                completionTokens = Usage(response?.Usage, "completion_tokens"),
+                transportAccepted = response is not null,
+                transportError = error,
+                finishReason = response?.FinishReason,
+                retryCount = response?.RetryCount ?? 0,
+                latencyMs = stopwatch.Elapsed.TotalMilliseconds,
+                rawSseSha256 = response is null ? null : Hash(response.RawSse),
+                rawResponseSha256 = response is null ? null : Hash(response.Content),
+                rawResponseUtf8Bytes = response is null ? 0 : Encoding.UTF8.GetByteCount(response.Content),
+                rawResponse = response?.Content,
+                analysis,
+            },
+        });
+        File.Delete(checkpointPath);
+        Console.WriteLine($"[1/1] SRC-089 retry: {Classification(analysis)}, finish={response?.FinishReason ?? "n/a"}, reasoning={ReasoningState(reasoningTokens)}");
+        return 0;
+    }
+
     private static Item[] Build(string repo)
     {
         var list = new List<Item>();
@@ -149,11 +246,11 @@ internal static class P6TF1FunctionMembershipCanary
             if (root.GetProperty("status").GetString() != "PREPARED_NOT_AUTHORIZED" || root.GetProperty("providerCalls").GetInt32() != 0 || root.GetProperty("goldRead").GetBoolean() || root.GetProperty("consumesP6TE1Output").GetBoolean() || root.GetProperty("segmentationDependency").GetString() != "NONE")
                 return false;
             var rows = root.GetProperty("rows").EnumerateArray().OrderBy(value => value.GetProperty("documentId").GetString(), StringComparer.Ordinal).ToArray();
-            if (rows.Length != items.Count) return false;
-            for (var index = 0; index < items.Count; index++)
+            if (rows.Length < items.Count) return false;
+            foreach (var current in items)
             {
-                var frozen = rows[index];
-                var current = items[index];
+                var frozen = rows.SingleOrDefault(value => value.GetProperty("documentId").GetString() == current.DocumentId);
+                if (frozen.ValueKind == JsonValueKind.Undefined) return false;
                 if (frozen.GetProperty("documentId").GetString() != current.DocumentId ||
                     frozen.GetProperty("packId").GetString() != current.Prepared.SourcePack.PackId ||
                     frozen.GetProperty("issuedOccurrences").GetInt32() != current.Prepared.Request.Occurrences.Count ||
@@ -167,6 +264,22 @@ internal static class P6TF1FunctionMembershipCanary
             return true;
         }
         catch (Exception ex) when (ex is IOException or JsonException or InvalidOperationException or KeyNotFoundException)
+        {
+            return false;
+        }
+    }
+
+    private static bool OriginalSrc089WasTransportOnly(string originalResultPath)
+    {
+        try
+        {
+            using var result = JsonDocument.Parse(File.ReadAllText(originalResultPath));
+            var row = result.RootElement.GetProperty("rows").EnumerateArray().Single(value => value.GetProperty("documentId").GetString() == "SRC-089");
+            return !row.GetProperty("transportAccepted").GetBoolean() &&
+                   row.GetProperty("finishReason").ValueKind == JsonValueKind.Null &&
+                   row.GetProperty("analysis").GetProperty("classification").GetString() == "TRANSPORT_ERROR";
+        }
+        catch (Exception ex) when (ex is IOException or JsonException or InvalidOperationException)
         {
             return false;
         }
