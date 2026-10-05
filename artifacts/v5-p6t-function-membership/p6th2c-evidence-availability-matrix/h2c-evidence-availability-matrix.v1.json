@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "v5-p6th2c-evidence-availability-matrix-v1",
+  "status": "PROVIDER_FREE_REQUEST_PROJECTION_AUDIT",
+  "artifactAuthorities": {
+    "h2cPreflightSha256": "31e5121b692b59a0622455d133659c56eaefba49b065f68463713f124a3505c0",
+    "sanitizedAuditSha256": "e9ca413a738b50f618e46b65920775dce4cbe14fa594388781c41d918689d2c7",
+    "code": {
+      "pdfSourceEvidenceSha256": "098fe6a656184eefc59660f4901a04359cb980fb3b15b89b5153703ca1f0c078",
+      "productionLayoutAdapterSha256": "867bb3d42e2a3fb2cf75171f2a111c66336a048a11600b0d272ae71cfc1784f5",
+      "structuredSourceBuilderSha256": "adcfbd6e2ea487c835f1fc579848a80c546178afe49c6180efbc055be2b265eb",
+      "h2cRequestBuilderSha256": "199c548d5649f7194a8bffc6eed6d7106b6b46cb20b9b58405e26b3b89e01d64"
+    }
+  },
+  "cohort": {
+    "existingH2CRequests": 31,
+    "existingH2CDevelopmentDocuments": [
+      "DOC-0252",
+      "DOC-0256",
+      "SRC-041",
+      "SRC-089",
+      "SRC-095"
+    ],
+    "sanitizedEdgeRows": 89,
+    "sameParserLayoutBlockInternal": 3,
+    "sameParserLayoutBlockInternalN": 8,
+    "sameParserLayoutBlockGoldExit": 0,
+    "sameParserLayoutBlockGoldExitN": 27,
+    "heldOutG2AFullPackAuthorityAvailable": false
+  },
+  "exactH2CRequestFields": {
+    "occurrence": [
+      "location",
+      "occurrence",
+      "page",
+      "style",
+      "text"
+    ],
+    "style": [
+      "bodyFontSize",
+      "boldRatio",
+      "fontSize",
+      "fontSizeToBodyRatio",
+      "italicRatio",
+      "lineCount"
+    ],
+    "location": [
+      "sameNormalizedTextFirstPage",
+      "sameNormalizedTextLastPage",
+      "sameNormalizedTextPageCount",
+      "verticalPosition"
+    ]
+  },
+  "evidenceAvailability": [
+    {
+      "Fact": "text",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "OMITTED_BY_SANITIZATION",
+      "ProductionAdapterVisibility": "VISIBLE",
+      "H2CModelVisibility": "DIRECT: occurrence.text",
+      "PairwiseStatus": "NOT_APPLICABLE",
+      "Finding": "Text is directly model-visible."
+    },
+    {
+      "Fact": "page",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "DIRECT: LeftPage/RightPage",
+      "ProductionAdapterVisibility": "VISIBLE",
+      "H2CModelVisibility": "DIRECT: occurrence.page",
+      "PairwiseStatus": "DIRECTLY_COMPARABLE",
+      "Finding": "Page is visible on both adjacent occurrences."
+    },
+    {
+      "Fact": "fontSizeToBodyRatio",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "PARTIAL: font-size deltas, not the source ratio",
+      "ProductionAdapterVisibility": "VISIBLE",
+      "H2CModelVisibility": "DIRECT: style.fontSizeToBodyRatio",
+      "PairwiseStatus": "PAIRWISE_DELTA_DERIVABLE",
+      "Finding": "Raw ratio is visible; the H2-C request does not provide a precomputed edge delta."
+    },
+    {
+      "Fact": "boldRatio",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "DIRECT: BoldRatioDelta",
+      "ProductionAdapterVisibility": "VISIBLE",
+      "H2CModelVisibility": "DIRECT: style.boldRatio",
+      "PairwiseStatus": "PAIRWISE_DELTA_DERIVABLE",
+      "Finding": "Occurrence values are visible; a transition value is not explicitly supplied."
+    },
+    {
+      "Fact": "italicRatio",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "DIRECT: ItalicRatioDelta",
+      "ProductionAdapterVisibility": "VISIBLE",
+      "H2CModelVisibility": "VISIBLE: style.italicRatio",
+      "PairwiseStatus": "PAIRWISE_DELTA_DERIVABLE",
+      "Finding": "Same as bold ratio."
+    },
+    {
+      "Fact": "verticalPosition",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "DIRECT: normalized top-position values/delta",
+      "ProductionAdapterVisibility": "VISIBLE",
+      "H2CModelVisibility": "DIRECT: location.verticalPosition",
+      "PairwiseStatus": "PAIRWISE_DELTA_DERIVABLE",
+      "Finding": "Prompt says not to use coordinates despite this supplied positional measurement."
+    },
+    {
+      "Fact": "left/right/width",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "DERIVED: normalized left delta, overlap and width ratio",
+      "ProductionAdapterVisibility": "VISIBLE",
+      "H2CModelVisibility": "ABSENT",
+      "PairwiseStatus": "NOT_DERIVABLE_FROM_H2C_INPUT",
+      "Finding": "Production layout projection has horizontal box facts that the qualification projection drops."
+    },
+    {
+      "Fact": "sameParserLayoutBlock",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "DIRECT: SameLayoutBlock",
+      "ProductionAdapterVisibility": "VISIBLE: block identity",
+      "H2CModelVisibility": "ABSENT",
+      "PairwiseStatus": "NOT_DERIVABLE_FROM_H2C_INPUT",
+      "Finding": "Audit cue: 3/8 internal edges versus 0/27 Gold exits; high precision, low recall on this development cohort."
+    },
+    {
+      "Fact": "verticalGapToNext",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "DIRECT: normalized gap and local-median ratio",
+      "ProductionAdapterVisibility": "AVAILABLE_FROM_VERTICAL_POSITIONS",
+      "H2CModelVisibility": "NOT_EXPLICIT; derivable from supplied positions with ambiguity",
+      "PairwiseStatus": "DERIVABLE_BUT_NOT_EXPLICIT",
+      "Finding": "The broad coordinates prohibition makes intended use unclear."
+    },
+    {
+      "Fact": "deltaLeftOrIndent",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "DIRECT: normalized left-edge delta",
+      "ProductionAdapterVisibility": "AVAILABLE_FROM_HORIZONTAL_BOX_FACTS",
+      "H2CModelVisibility": "ABSENT",
+      "PairwiseStatus": "NOT_DERIVABLE_FROM_H2C_INPUT",
+      "Finding": "H2-C sends no horizontal position."
+    },
+    {
+      "Fact": "deltaWidth",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "DIRECT: overlap/width ratio",
+      "ProductionAdapterVisibility": "AVAILABLE_FROM_HORIZONTAL_BOX_FACTS",
+      "H2CModelVisibility": "ABSENT",
+      "PairwiseStatus": "NOT_DERIVABLE_FROM_H2C_INPUT",
+      "Finding": "H2-C sends no right edge or width."
+    },
+    {
+      "Fact": "pageTransition",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "DIRECT: SamePage and adjacent page numbers",
+      "ProductionAdapterVisibility": "VISIBLE",
+      "H2CModelVisibility": "DERIVABLE_FROM_PAGE",
+      "PairwiseStatus": "DERIVABLE",
+      "Finding": "H2-C sends page for each occurrence."
+    },
+    {
+      "Fact": "richTypography",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "PARTIAL: font identity and bold-evidence deltas",
+      "ProductionAdapterVisibility": "VISIBLE: StyleFacts/Typography projection",
+      "H2CModelVisibility": "ABSENT: only six base style fields are projected",
+      "PairwiseStatus": "NOT_DERIVABLE_FROM_H2C_INPUT",
+      "Finding": "Available source typography includes font-name/weight evidence and glyph statistics when present."
+    },
+    {
+      "Fact": "pairwiseTransitionFacts",
+      "SourceOrParserAvailable": true,
+      "SanitizedAuditAvailability": "DIRECT: edge-derived feature rows",
+      "ProductionAdapterVisibility": "DERIVABLE_FROM_LAYOUT_FACTS",
+      "H2CModelVisibility": "PARTIAL: page/font/bold/italic and vertical-position comparisons only",
+      "PairwiseStatus": "PARTIAL",
+      "Finding": "The task is a boundary transition, but most horizontal/block edge measurements are missing."
+    }
+  ],
+  "promptAmbiguity": {
+    "suppliedField": "location.verticalPosition",
+    "instructionPhrase": "Do not use ... coordinates ...",
+    "verdict": "AMBIGUOUS_INSTRUCTION_FOR_A_SUPPLIED_MEASURED_POSITIONAL_FACT"
+  },
+  "interpretation": {
+    "horizontalGeometryDroppedByH2C": true,
+    "sameLayoutBlockCueHighPrecisionLowRecallOnDevelopmentCohort": true,
+    "geometrySufficiencyNotProven": true,
+    "semanticRoleTransitionStillOpen": true,
+    "noNewTreatmentOrProviderRun": true
+  },
+  "safety": {
+    "providerCalls": 0,
+    "canonicalGoldArtifactRead": false,
+    "frozenGoldRelationLabelsConsumed": true,
+    "goldRelationLabelSource": "artifacts/v5-p6t-function-membership/p6th2c-clean-boundary-separability-audit/h2c-clean-boundary-separability-sanitized.v1.json",
+    "goldMutation": "NONE",
+    "runtimeChanged": false
+  }
+}
