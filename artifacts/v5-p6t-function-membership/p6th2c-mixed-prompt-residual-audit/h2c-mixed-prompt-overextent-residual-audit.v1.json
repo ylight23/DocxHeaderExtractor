@@ -1,0 +1,527 @@
+{
+  "schemaVersion": "v5-p6th2c-mixed-prompt-overextent-residual-audit-v1",
+  "status": "FROZEN_PROVIDER_FREE_RESIDUAL_DIAGNOSTIC_NOT_CLEAN_H2C_QUALIFICATION",
+  "authority": {
+    "v1ManifestSha256": "99217a70281d95015a706324d0e7a16dd235e4dec0b8895dd0e50bc273c91c9e",
+    "v2ManifestSha256": "31e5121b692b59a0622455d133659c56eaefba49b065f68463713f124a3505c0",
+    "goldAuthorities": [
+      {
+        "documentId": "SRC-089",
+        "goldSha256": "50d9e57225d9cf9dcf174e5b5b7422158c06d7327241d77fc4d019831b8a808d",
+        "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5"
+      },
+      {
+        "documentId": "SRC-041",
+        "goldSha256": "e6ae7b0934bf145e07be89699dd5ef52e337b0b4e5cfafc60877040a8aa8a153",
+        "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38"
+      },
+      {
+        "documentId": "SRC-095",
+        "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+        "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84"
+      },
+      {
+        "documentId": "DOC-0252",
+        "goldSha256": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+        "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61"
+      },
+      {
+        "documentId": "DOC-0256",
+        "goldSha256": "0c0c2804d9b33b6136bdfa30883c9744231148708dd0c81dd2c11ac7611a922f",
+        "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b"
+      }
+    ],
+    "providerCallsDuringAudit": 0,
+    "goldMutation": "NONE",
+    "rawCaptureMutation": "NONE",
+    "runtimeChanged": false
+  },
+  "scope": {
+    "totalMixedContractValidLedgers": 31,
+    "residualOverextents": 10,
+    "cleanQualificationStatus": "NOT_RUN",
+    "labels": {
+      "headingToBody": "A",
+      "headingToNewHeading": "B",
+      "headingToStructuredOrTable": "C",
+      "headingToFurniture": "D",
+      "falseSemanticGroupingOrOther": "E"
+    }
+  },
+  "aggregate": {
+    "byBoundaryFamily": [
+      {
+        "family": "A_HEADING_TO_BODY",
+        "count": 1
+      },
+      {
+        "family": "B_HEADING_TO_NEW_HEADING",
+        "count": 1
+      },
+      {
+        "family": "C_HEADING_TO_STRUCTURED_OR_TABLE",
+        "count": 1
+      },
+      {
+        "family": "D_HEADING_TO_FURNITURE",
+        "count": 1
+      },
+      {
+        "family": "E_FALSE_SEMANTIC_GROUPING_OR_OTHER",
+        "count": 6
+      }
+    ],
+    "byExtentShape": [
+      {
+        "shape": "MULTIPART",
+        "count": 2
+      },
+      {
+        "shape": "SINGLETON",
+        "count": 8
+      }
+    ],
+    "byPromptVersion": [
+      {
+        "promptVersion": "CLARIFIED_PROMPT_V2_RECOVERY",
+        "count": 1
+      },
+      {
+        "promptVersion": "PRIMARY_PROMPT_V1",
+        "count": 9
+      }
+    ],
+    "overrunDistance": {
+      "min": 1,
+      "max": 27,
+      "mean": 10.1
+    }
+  },
+  "residuals": [
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O43",
+      "PromptVersion": "PRIMARY_PROMPT_V1",
+      "RawCaptureSha256": "d05a514791b52c5bf9de5d8b2a21e5ea56cb9de622e923bdcb58606096191ec4",
+      "GoldEnd": "L0520:S0",
+      "PredictedEnd": "L0539:S0",
+      "OverrunDistance": 27,
+      "GoldFirstOutside": "O44",
+      "PredictedFirstOutside": "O71",
+      "BoundaryFamily": "B_HEADING_TO_NEW_HEADING",
+      "ExtentShape": "SINGLETON",
+      "ModelSelectedOutsideRole": "NEW_HEADING",
+      "F1AtGoldFirstOutside": "ESTABLISHES_STRUCTURE",
+      "G2AAtGoldFirstOutside": "HAS_STRUCTURAL_EXTENT",
+      "LayoutTransition": {
+        "goldEndPage": 13,
+        "goldFirstOutsidePage": 13,
+        "pageTransition": false,
+        "goldEndVerticalPosition": 0.585,
+        "goldFirstOutsideVerticalPosition": 0.533,
+        "fontSizeToBodyRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "boldRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "lineCount": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "structuralScope": {
+          "goldEnd": "document_body",
+          "firstOutside": "document_body"
+        }
+      },
+      "RawResponseSha256": "f277e4c91375c0eca6aadc5d0afc46ece041d01ec5633e60cfb22679ce870409",
+      "RawSseSha256": "42e7205300a22fade65e2add01524479bf8af694a219ffa08a801ebcfe0f1745"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O44",
+      "PromptVersion": "PRIMARY_PROMPT_V1",
+      "RawCaptureSha256": "5e541d5d25d10393e0c1372165a1e040647c61913529a0aeba5be8942361fc79",
+      "GoldEnd": "L0521:S0",
+      "PredictedEnd": "L0522:S1",
+      "OverrunDistance": 2,
+      "GoldFirstOutside": "O45",
+      "PredictedFirstOutside": "O47",
+      "BoundaryFamily": "E_FALSE_SEMANTIC_GROUPING_OR_OTHER",
+      "ExtentShape": "SINGLETON",
+      "ModelSelectedOutsideRole": "NEW_HEADING",
+      "F1AtGoldFirstOutside": "OTHER",
+      "G2AAtGoldFirstOutside": "NOT_ISSUED",
+      "LayoutTransition": {
+        "goldEndPage": 13,
+        "goldFirstOutsidePage": 13,
+        "pageTransition": false,
+        "goldEndVerticalPosition": 0.533,
+        "goldFirstOutsideVerticalPosition": 0.494,
+        "fontSizeToBodyRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "boldRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "lineCount": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "structuralScope": {
+          "goldEnd": "document_body",
+          "firstOutside": "document_body"
+        }
+      },
+      "RawResponseSha256": "0b13e1592404d662392d76af35bbb8a77ed6c249b2facec7665351297b039d6e",
+      "RawSseSha256": "db74427c0e2cfcd61ca0aeabed50da00a3d3d8a81536bf6f31ca62a15a00f3d7"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O47",
+      "PromptVersion": "PRIMARY_PROMPT_V1",
+      "RawCaptureSha256": "e3231c407db5ad4495e5aefa9c45c3385727415daa2cf1897d23fb88f7556277",
+      "GoldEnd": "L0523:S0",
+      "PredictedEnd": "L0525:S0",
+      "OverrunDistance": 3,
+      "GoldFirstOutside": "O48",
+      "PredictedFirstOutside": "O51",
+      "BoundaryFamily": "E_FALSE_SEMANTIC_GROUPING_OR_OTHER",
+      "ExtentShape": "SINGLETON",
+      "ModelSelectedOutsideRole": "NEW_HEADING",
+      "F1AtGoldFirstOutside": "OTHER",
+      "G2AAtGoldFirstOutside": "NOT_ISSUED",
+      "LayoutTransition": {
+        "goldEndPage": 13,
+        "goldFirstOutsidePage": 13,
+        "pageTransition": false,
+        "goldEndVerticalPosition": 0.442,
+        "goldFirstOutsideVerticalPosition": 0.402,
+        "fontSizeToBodyRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "boldRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "lineCount": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "structuralScope": {
+          "goldEnd": "document_body",
+          "firstOutside": "document_body"
+        }
+      },
+      "RawResponseSha256": "947169230e364e35fe71aa36ccec35264b540e42d268944ee6500300d7c166db",
+      "RawSseSha256": "f8873065f70f6d8d2506fd93f19518f0418e14c6a36847efcfbff0df629870dc"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O51",
+      "PromptVersion": "PRIMARY_PROMPT_V1",
+      "RawCaptureSha256": "f86b331e5f472e4c166af76ced76be4f584b0ad7638b71ae131e963ed6e4d2f2",
+      "GoldEnd": "L0526:S0",
+      "PredictedEnd": "L0530:S0",
+      "OverrunDistance": 7,
+      "GoldFirstOutside": "O52",
+      "PredictedFirstOutside": "O59",
+      "BoundaryFamily": "E_FALSE_SEMANTIC_GROUPING_OR_OTHER",
+      "ExtentShape": "SINGLETON",
+      "ModelSelectedOutsideRole": "NEW_HEADING",
+      "F1AtGoldFirstOutside": "OTHER",
+      "G2AAtGoldFirstOutside": "NOT_ISSUED",
+      "LayoutTransition": {
+        "goldEndPage": 13,
+        "goldFirstOutsidePage": 13,
+        "pageTransition": false,
+        "goldEndVerticalPosition": 0.342,
+        "goldFirstOutsideVerticalPosition": 0.302,
+        "fontSizeToBodyRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "boldRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "lineCount": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "structuralScope": {
+          "goldEnd": "document_body",
+          "firstOutside": "document_body"
+        }
+      },
+      "RawResponseSha256": "ada55d6b8a0c193d7b2c0ef123d27f8c7ee8bfd33d0a004a6bb015ed394ad015",
+      "RawSseSha256": "e27a1ed46846d5ec48de0e0d4715817440cee2ed2da409ef26f02f4e61c9d1de"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O59",
+      "PromptVersion": "PRIMARY_PROMPT_V1",
+      "RawCaptureSha256": "760697b47681a0b1cdab99945fe3f034fbc2ae23b793cfb8a2cefaa37c8e5b89",
+      "GoldEnd": "L0531:S0",
+      "PredictedEnd": "L0535:S1",
+      "OverrunDistance": 6,
+      "GoldFirstOutside": "O60",
+      "PredictedFirstOutside": "O66",
+      "BoundaryFamily": "E_FALSE_SEMANTIC_GROUPING_OR_OTHER",
+      "ExtentShape": "SINGLETON",
+      "ModelSelectedOutsideRole": "NEW_HEADING",
+      "F1AtGoldFirstOutside": "OTHER",
+      "G2AAtGoldFirstOutside": "NOT_ISSUED",
+      "LayoutTransition": {
+        "goldEndPage": 13,
+        "goldFirstOutsidePage": 13,
+        "pageTransition": false,
+        "goldEndVerticalPosition": 0.15,
+        "goldFirstOutsideVerticalPosition": 0.11,
+        "fontSizeToBodyRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "boldRatio": {
+          "goldEnd": 1,
+          "firstOutside": 0.789
+        },
+        "lineCount": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "structuralScope": {
+          "goldEnd": "document_body",
+          "firstOutside": "document_body"
+        }
+      },
+      "RawResponseSha256": "2e9a7ea84aa4b98636489eeae8cf89487619c4a42504368d1c89d18b8c9f3241",
+      "RawSseSha256": "de7d7c7193840e7df237d809f8a5b275c1d8ae3c1a02a297a0a022aeac8727b0"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O66",
+      "PromptVersion": "PRIMARY_PROMPT_V1",
+      "RawCaptureSha256": "65c021fead67753fc56d54bd9d048aebfbf769ea544934070612194923f49c60",
+      "GoldEnd": "L0536:S0",
+      "PredictedEnd": "L0552:S1",
+      "OverrunDistance": 25,
+      "GoldFirstOutside": "O67",
+      "PredictedFirstOutside": "O92",
+      "BoundaryFamily": "E_FALSE_SEMANTIC_GROUPING_OR_OTHER",
+      "ExtentShape": "SINGLETON",
+      "ModelSelectedOutsideRole": "NEW_HEADING",
+      "F1AtGoldFirstOutside": "OTHER",
+      "G2AAtGoldFirstOutside": "NOT_ISSUED",
+      "LayoutTransition": {
+        "goldEndPage": 14,
+        "goldFirstOutsidePage": 14,
+        "pageTransition": false,
+        "goldEndVerticalPosition": 0.92,
+        "goldFirstOutsideVerticalPosition": 0.88,
+        "fontSizeToBodyRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "boldRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "lineCount": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "structuralScope": {
+          "goldEnd": "document_body",
+          "firstOutside": "document_body"
+        }
+      },
+      "RawResponseSha256": "1537c0a99ea4e2c473f118ae1aaf51137b5c60b521d9d8cc0b7626dda5a7e21c",
+      "RawSseSha256": "63058164c687573f34d4b10cad705d9f79b5ed413208f783151f217fb787970d"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O71",
+      "PromptVersion": "PRIMARY_PROMPT_V1",
+      "RawCaptureSha256": "4b4cfce0dbbca602386661350863d8bb4aed1828d049b34d160235e99cbe2a4e",
+      "GoldEnd": "L0540:S0",
+      "PredictedEnd": "L0552:S1",
+      "OverrunDistance": 20,
+      "GoldFirstOutside": "O72",
+      "PredictedFirstOutside": "O92",
+      "BoundaryFamily": "E_FALSE_SEMANTIC_GROUPING_OR_OTHER",
+      "ExtentShape": "SINGLETON",
+      "ModelSelectedOutsideRole": "NEW_HEADING",
+      "F1AtGoldFirstOutside": "OTHER",
+      "G2AAtGoldFirstOutside": "NOT_ISSUED",
+      "LayoutTransition": {
+        "goldEndPage": 14,
+        "goldFirstOutsidePage": 14,
+        "pageTransition": false,
+        "goldEndVerticalPosition": 0.756,
+        "goldFirstOutsideVerticalPosition": 0.717,
+        "fontSizeToBodyRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "boldRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "lineCount": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "structuralScope": {
+          "goldEnd": "document_body",
+          "firstOutside": "document_body"
+        }
+      },
+      "RawResponseSha256": "112aeafd3ad488e75ac82f0b0a12afe06cb21dea1d8e3362d7131c3198ec489d",
+      "RawSseSha256": "64d133f4204cd8e2ff8dc00082ff03be1b661c2b330123fbf39545d48c0adda3"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O92",
+      "PromptVersion": "PRIMARY_PROMPT_V1",
+      "RawCaptureSha256": "1bfc3608071b96e14de8f2ebd7c3519a62e6fc6d639690b3544cd0358f65145b",
+      "GoldEnd": "L0553:S0",
+      "PredictedEnd": "L0554:S0",
+      "OverrunDistance": 1,
+      "GoldFirstOutside": "O93",
+      "PredictedFirstOutside": "O94",
+      "BoundaryFamily": "D_HEADING_TO_FURNITURE",
+      "ExtentShape": "SINGLETON",
+      "ModelSelectedOutsideRole": "PAGE_FURNITURE",
+      "F1AtGoldFirstOutside": "OTHER",
+      "G2AAtGoldFirstOutside": "NOT_ISSUED",
+      "LayoutTransition": {
+        "goldEndPage": 14,
+        "goldFirstOutsidePage": 14,
+        "pageTransition": false,
+        "goldEndVerticalPosition": 0.365,
+        "goldFirstOutsideVerticalPosition": 0.325,
+        "fontSizeToBodyRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "boldRatio": {
+          "goldEnd": 1,
+          "firstOutside": 0.766
+        },
+        "lineCount": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "structuralScope": {
+          "goldEnd": "document_body",
+          "firstOutside": "document_body"
+        }
+      },
+      "RawResponseSha256": "13025ef319e20550c8fb7594a1f020a219c1038fdfb658cd006bff30e7b906c4",
+      "RawSseSha256": "52f1df2f99b35a8c1b1205110031aaf9a92a7c28116d9974ed276996d11b9e3b"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O1",
+      "PromptVersion": "CLARIFIED_PROMPT_V2_RECOVERY",
+      "RawCaptureSha256": "9b70a03238a35c3c87bd71c1d83b3849326dbf9aeb40902147306199b17ea5f2",
+      "GoldEnd": "L0001:S0",
+      "PredictedEnd": "L0004:S0",
+      "OverrunDistance": 3,
+      "GoldFirstOutside": "O3",
+      "PredictedFirstOutside": "O6",
+      "BoundaryFamily": "A_HEADING_TO_BODY",
+      "ExtentShape": "MULTIPART",
+      "ModelSelectedOutsideRole": "BODY_CONTENT",
+      "F1AtGoldFirstOutside": "OTHER",
+      "G2AAtGoldFirstOutside": "NOT_ISSUED",
+      "LayoutTransition": {
+        "goldEndPage": 1,
+        "goldFirstOutsidePage": 1,
+        "pageTransition": false,
+        "goldEndVerticalPosition": 0.872,
+        "goldFirstOutsideVerticalPosition": 0.831,
+        "fontSizeToBodyRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "boldRatio": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "lineCount": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "structuralScope": {
+          "goldEnd": "document_body",
+          "firstOutside": "document_body"
+        }
+      },
+      "RawResponseSha256": "f73accb5a32aedcd3826ab881ac4e720d590096474d16be784a533377cc42ba8",
+      "RawSseSha256": "6f24827ae4112778d2d5d9c0b0d58d4790a694de7c8bfeafd436237f0b2bbf14"
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O4",
+      "PromptVersion": "PRIMARY_PROMPT_V1",
+      "RawCaptureSha256": "be1311e67156eefb52dea53148ab4ead249b332108af97876ae4c03d72f380f1",
+      "GoldEnd": "L3527:S0",
+      "PredictedEnd": "L3533:S1",
+      "OverrunDistance": 7,
+      "GoldFirstOutside": "O6",
+      "PredictedFirstOutside": "O13",
+      "BoundaryFamily": "C_HEADING_TO_STRUCTURED_OR_TABLE",
+      "ExtentShape": "MULTIPART",
+      "ModelSelectedOutsideRole": "TABLE_OR_STRUCTURED_CONTENT",
+      "F1AtGoldFirstOutside": "OTHER",
+      "G2AAtGoldFirstOutside": "NOT_ISSUED",
+      "LayoutTransition": {
+        "goldEndPage": 93,
+        "goldFirstOutsidePage": 93,
+        "pageTransition": false,
+        "goldEndVerticalPosition": 0.931,
+        "goldFirstOutsideVerticalPosition": 0.907,
+        "fontSizeToBodyRatio": {
+          "goldEnd": 2,
+          "firstOutside": 1.25
+        },
+        "boldRatio": {
+          "goldEnd": 0,
+          "firstOutside": 0
+        },
+        "lineCount": {
+          "goldEnd": 1,
+          "firstOutside": 1
+        },
+        "structuralScope": {
+          "goldEnd": "document_body",
+          "firstOutside": "document_body"
+        }
+      },
+      "RawResponseSha256": "4a7927481656c5065629b0a1f981f186eec434184bd5f5394d8ab046e77c45fc",
+      "RawSseSha256": "d070b54160ce15e8713f98d777a6c5b501d6320ed3a3053f4aeaf837a87a5ed8"
+    }
+  ],
+  "interpretation": {
+    "result": "RESIDUAL_FAMILY_DIAGNOSTIC_ONLY",
+    "boundaryFamilyRule": "B_IS_CANONICAL_GOLD_NEW_HEADING; C_D_A_E_USE_FROZEN_MODEL_OUTSIDE_ROLE_AND_SOURCE_FACTS_AS_DIAGNOSTIC_EVIDENCE_NOT_NEW_GOLD",
+    "prohibited": "NO_CLEAN_CAUSAL_CLAIM_NO_RUNTIME_PROMOTION_NO_GOLD_REWRITE"
+  }
+}
