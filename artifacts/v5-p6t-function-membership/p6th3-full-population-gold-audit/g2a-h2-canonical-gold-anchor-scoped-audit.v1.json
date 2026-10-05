@@ -1,0 +1,2372 @@
+{
+  "schemaVersion": "v5-p6th3-g2a-h2-canonical-gold-anchor-scoped-audit-v1",
+  "status": "FROZEN_PROVIDER_FREE_GOLD_AUDIT_RUNTIME_UNCHANGED",
+  "authorities": [
+    {
+      "authorityId": "SRC-089",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
+      "goldSha256": "50d9e57225d9cf9dcf174e5b5b7422158c06d7327241d77fc4d019831b8a808d",
+      "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+      "semanticHeadingTotal": 36,
+      "goldMutation": "NONE"
+    },
+    {
+      "authorityId": "SRC-041",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-041.gold.v1.json",
+      "goldSha256": "e6ae7b0934bf145e07be89699dd5ef52e337b0b4e5cfafc60877040a8aa8a153",
+      "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+      "semanticHeadingTotal": 280,
+      "goldMutation": "NONE"
+    },
+    {
+      "authorityId": "SRC-095",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+      "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+      "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+      "semanticHeadingTotal": 103,
+      "goldMutation": "NONE"
+    },
+    {
+      "authorityId": "DOC-0252",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json",
+      "goldSha256": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "semanticHeadingTotal": 42,
+      "goldMutation": "NONE"
+    },
+    {
+      "authorityId": "DOC-0256",
+      "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0256.gold.v1.json",
+      "goldSha256": "0c0c2804d9b33b6136bdfa30883c9744231148708dd0c81dd2c11ac7611a922f",
+      "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+      "semanticHeadingTotal": 34,
+      "goldMutation": "NONE"
+    }
+  ],
+  "g2a": {
+    "issued": 48,
+    "tp": 27,
+    "fp": 4,
+    "fn": 3,
+    "tn": 14,
+    "correct": 41,
+    "accuracy": 0.8541666666666666,
+    "precision": 0.8709677419354839,
+    "recall": 0.9,
+    "perDocument": [
+      {
+        "issued": 15,
+        "tp": 6,
+        "fp": 1,
+        "fn": 0,
+        "tn": 8
+      },
+      {
+        "issued": 3,
+        "tp": 1,
+        "fp": 2,
+        "fn": 0,
+        "tn": 0
+      },
+      {
+        "issued": 4,
+        "tp": 2,
+        "fp": 0,
+        "fn": 2,
+        "tn": 0
+      },
+      {
+        "issued": 19,
+        "tp": 12,
+        "fp": 0,
+        "fn": 1,
+        "tn": 6
+      },
+      {
+        "issued": 7,
+        "tp": 6,
+        "fp": 1,
+        "fn": 0,
+        "tn": 0
+      }
+    ],
+    "decisions": [
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O3",
+        "Alias": "L0002:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O4",
+        "Alias": "L0002:S1",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O6",
+        "Alias": "L0003:S1",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O9",
+        "Alias": "L0006:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O10",
+        "Alias": "L0007:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O11",
+        "Alias": "L0008:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O17",
+        "Alias": "L0014:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O18",
+        "Alias": "L0015:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": true,
+        "outcome": "FP"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O19",
+        "Alias": "L0016:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O27",
+        "Alias": "L0024:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O28",
+        "Alias": "L0025:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O54",
+        "Alias": "L0051:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O55",
+        "Alias": "L0052:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O83",
+        "Alias": "L0080:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O84",
+        "Alias": "L0081:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "SRC-041",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "Occurrence": "O3",
+        "Alias": "L3525:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": true,
+        "outcome": "FP"
+      },
+      {
+        "DocumentId": "SRC-041",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "Occurrence": "O4",
+        "Alias": "L3526:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "SRC-041",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "Occurrence": "O5",
+        "Alias": "L3527:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": true,
+        "outcome": "FP"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O16",
+        "Alias": "L0009:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O22",
+        "Alias": "L0015:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": false,
+        "outcome": "FN"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O30",
+        "Alias": "L0023:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": false,
+        "outcome": "FN"
+      },
+      {
+        "DocumentId": "SRC-095",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O41",
+        "Alias": "L0034:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O30",
+        "Alias": "L0507:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O36",
+        "Alias": "L0513:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": false,
+        "outcome": "FN"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O37",
+        "Alias": "L0514:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O38",
+        "Alias": "L0515:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O39",
+        "Alias": "L0516:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O40",
+        "Alias": "L0517:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O41",
+        "Alias": "L0518:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O42",
+        "Alias": "L0519:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O43",
+        "Alias": "L0520:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O44",
+        "Alias": "L0521:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O47",
+        "Alias": "L0523:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O51",
+        "Alias": "L0526:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O59",
+        "Alias": "L0531:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O66",
+        "Alias": "L0536:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O70",
+        "Alias": "L0539:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O71",
+        "Alias": "L0540:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O87",
+        "Alias": "L0550:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": false,
+        "outcome": "TN"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O92",
+        "Alias": "L0553:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Occurrence": "O95",
+        "Alias": "L0556:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O1",
+        "Alias": "L0000:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O2",
+        "Alias": "L0001:S0",
+        "goldHasStructuralExtent": false,
+        "predictedHasStructuralExtent": true,
+        "outcome": "FP"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O5",
+        "Alias": "L0004:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O23",
+        "Alias": "L0022:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O24",
+        "Alias": "L0023:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O48",
+        "Alias": "L0047:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Occurrence": "O77",
+        "Alias": "L0076:S0",
+        "goldHasStructuralExtent": true,
+        "predictedHasStructuralExtent": true,
+        "outcome": "TP"
+      }
+    ]
+  },
+  "h2": {
+    "calls": 31,
+    "callLedgerEdges": 1790,
+    "callLedgerContinue": 488,
+    "callLedgerStop": 1302,
+    "g2aTrueAnchorsScored": 27,
+    "falseG2AAnchorCallsExcluded": 4,
+    "extentExact": 6,
+    "extentUnder": 0,
+    "extentOver": 21,
+    "extentWrongParts": 0,
+    "multipart": {
+      "total": 7,
+      "exact": 4
+    },
+    "singleton": {
+      "total": 20,
+      "exact": 2
+    },
+    "internalContinuationEdges": 8,
+    "internalContinuationCorrect": 8,
+    "immediateGoldExitEdges": 27,
+    "immediateGoldExitStops": 6,
+    "overextensionFirstWrongBoundary": {
+      "total": 21,
+      "rightG2AHas": 5,
+      "rightG2ANo": 0,
+      "rightG2ANotIssued": 16
+    },
+    "rawCaptureHashes": [
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O9",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-089_O9.raw-capture.v1.json",
+        "RawCaptureSha256": "816d76e0dd909064f16a2f2d2f0e17c51522555fd3dba47d7229160a3b5a3ebe",
+        "RawResponseSha256": "25e9fd6e92f96f7d6fb58d52e387d83d5d39f889df8b5549e82a81495dfd0224",
+        "RawSseSha256": "9afce64eb21c2e3d66824d3b2f65371ab483fd704bd0196cd8068a905c466439",
+        "ReasoningTokens": 3857,
+        "LatencyMs": 92399.7517,
+        "issuedEdges": 87
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O17",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-089_O17.raw-capture.v1.json",
+        "RawCaptureSha256": "80727acddd17e0eb84e645970ba7238adeae6c2cd821235b6e3e0a4a86af84b9",
+        "RawResponseSha256": "fb5640a669f464af5d3cccbbb90f6faa7850da4270e124f1b7316b639bb64825",
+        "RawSseSha256": "bf14e9760449fab45fa281240b931d817487f72d91e75b03abadbc298696d326",
+        "ReasoningTokens": 1631,
+        "LatencyMs": 77327.0229,
+        "issuedEdges": 79
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O18",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-089_O18.raw-capture.v1.json",
+        "RawCaptureSha256": "ca0bd4d62b4903bfcf9199ab9bb7662fc4e88ac7ef6ecc5f7393792081d9d083",
+        "RawResponseSha256": "0a5bd3d3e59674ef33e9ac1154b3310f07ec40e052df32f2c1b3d9c4c7a29ba8",
+        "RawSseSha256": "ce5df2ac25ab4dca5292bdd1a3abd97a840f4d75cfa6926b26c2572d8bc61607",
+        "ReasoningTokens": 3228,
+        "LatencyMs": 82530.0944,
+        "issuedEdges": 78
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O19",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-089_O19.raw-capture.v1.json",
+        "RawCaptureSha256": "7a78553ac4092ad81bbed0f6bfc8b98babafcc601e000083efa6165edfa9a107",
+        "RawResponseSha256": "8d0c2808245c9c4162ed2456e480da8ae76d370c4c24e0c46af9c0dcd8e2c4a5",
+        "RawSseSha256": "a30afb89e524e69e0e005998a1c02d6d3d92bdb33f7cc664b7a452d86d1c2ce5",
+        "ReasoningTokens": 4592,
+        "LatencyMs": 89449.0079,
+        "issuedEdges": 77
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O27",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-089_O27.raw-capture.v1.json",
+        "RawCaptureSha256": "c5f753a564d2c3e056ee66a4a2fdd3a45f74b6d2466d10618289c6b39e6080db",
+        "RawResponseSha256": "7d75e2fac47e1d10426bb0fda663563e6291bb27b1a7f16a19b25c75f0cf8e89",
+        "RawSseSha256": "30687c07a9a6670c5d8ae01d5c6fa38cee50d720e879b26e5f6ec7789b24f69a",
+        "ReasoningTokens": 4528,
+        "LatencyMs": 92607.0809,
+        "issuedEdges": 69
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O54",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-089_O54.raw-capture.v1.json",
+        "RawCaptureSha256": "780ebb2734ed03bf7723fdeaf145a6da470baa530a8ef31ca4534b90d93b4a55",
+        "RawResponseSha256": "d4384c6b51e6a4714f43bbf964d67b948f72b0a92ad2e22757e00fee5ace576d",
+        "RawSseSha256": "5637817742cf6d0eff101da8eebbe7e33be4d79a8db8a4b1583c0a690c3556bf",
+        "ReasoningTokens": 4207,
+        "LatencyMs": 80376.1978,
+        "issuedEdges": 42
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O83",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-089_O83.raw-capture.v1.json",
+        "RawCaptureSha256": "376c9e49f9087a5343222887d5bfd509a210ea257e498a816adae1813ce94a4b",
+        "RawResponseSha256": "c78259117e82089f48da7455ae4243ead67dac01a87d09438a0f8ae986d576fa",
+        "RawSseSha256": "57950e8b7752e60c13b33a8dd9fea5b3c0212417f048b6491accefb552546e1b",
+        "ReasoningTokens": 1367,
+        "LatencyMs": 58587.9495,
+        "issuedEdges": 13
+      },
+      {
+        "DocumentId": "SRC-041",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "Anchor": "O3",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-041_O3.raw-capture.v1.json",
+        "RawCaptureSha256": "6677c5b6cc3b4db4ad7fefcd6afbfdefa2eb35814e9c97a11c43e8e4919926b0",
+        "RawResponseSha256": "ad2122a39662867db42f72ea9e50a12899146667200c1f8b4b2e0161bebfc328",
+        "RawSseSha256": "7dd4d0b11bc779bc7ce20f4c9eeed253aa3f7ddd1c0ce84dda29f81e02b7248c",
+        "ReasoningTokens": 4871,
+        "LatencyMs": 104256.1026,
+        "issuedEdges": 93
+      },
+      {
+        "DocumentId": "SRC-041",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "Anchor": "O4",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-041_O4.raw-capture.v1.json",
+        "RawCaptureSha256": "e122c8d41f66224ae593e74ef2fd7febca7de52726a9c0124c6c7d6fb773c0f5",
+        "RawResponseSha256": "287a66c2c2b38a4a73eed29b341a51edd1ecb974020e3c094bcd6fbfe624bc68",
+        "RawSseSha256": "4b28805eadc42781da60aded0fa5feedc7debf05f75c3140fe7b2b4653e31ade",
+        "ReasoningTokens": 4901,
+        "LatencyMs": 92672.8888,
+        "issuedEdges": 92
+      },
+      {
+        "DocumentId": "SRC-041",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "Anchor": "O5",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-041_O5.raw-capture.v1.json",
+        "RawCaptureSha256": "bf59cb9d07831322a4d84e17525ebd4b87f96d2a928d2d76091393515d68f7af",
+        "RawResponseSha256": "00736c8e30f48a1fdc4d0e1960d78bfc9564544ddacc339bfbaa7545b10ac232",
+        "RawSseSha256": "0a25cd3462ac3bf3739db05e603bcf04742ff85de4f9780993c638a5a8edbe76",
+        "ReasoningTokens": 4133,
+        "LatencyMs": 88418.5237,
+        "issuedEdges": 91
+      },
+      {
+        "DocumentId": "SRC-095",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O16",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-095_O16.raw-capture.v1.json",
+        "RawCaptureSha256": "7b6fbacc683733b0a9c26d880038eab55336ba98b4d20b326361dddab0e154b5",
+        "RawResponseSha256": "188e2a2c7059c61233ac50b92b7678e312f68f037e98f883a8dde35d9354ddcf",
+        "RawSseSha256": "27cff637dae1b6af1c9eb2bfc9d8875498cee4cc1a685c7e0a6dce70a77cc4fa",
+        "ReasoningTokens": 4286,
+        "LatencyMs": 88473.8378,
+        "issuedEdges": 80
+      },
+      {
+        "DocumentId": "SRC-095",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O41",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-095_O41.raw-capture.v1.json",
+        "RawCaptureSha256": "1fff5507e42c84422a9933ea7fe046cf949564fecceb60569e312bee333777a4",
+        "RawResponseSha256": "4b6397dcfa63f547b06bac406ea520996b2672f174220d4c43016d3aea9a6046",
+        "RawSseSha256": "d5c984021702927b41970c331205d1e0a57a616f630d8c68d1672f0fd7b5a732",
+        "ReasoningTokens": 5922,
+        "LatencyMs": 107008.5636,
+        "issuedEdges": 55
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O30",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O30.raw-capture.v1.json",
+        "RawCaptureSha256": "79bb2c72156ccb8938fb82dda596df2bb1706ff80694e396ed1e126119ac4367",
+        "RawResponseSha256": "f30b17942d5a3be282da58333740949a55a4922048bf972c08ca970ecc4274ba",
+        "RawSseSha256": "58c628634edcc29d473ae458dee9453766f4b1b41ea25edc14f53fd00238c42f",
+        "ReasoningTokens": 3377,
+        "LatencyMs": 90193.6364,
+        "issuedEdges": 66
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O42",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O42.raw-capture.v1.json",
+        "RawCaptureSha256": "bffd149334d26d74af626a5bf785c268a481649f2fc8babae187f5b1aee4dd85",
+        "RawResponseSha256": "0adda5e2506532976fb646b86c17699c9d93732024b83b9d9aa5fa1f75bb9b2f",
+        "RawSseSha256": "27795099d7b839de14e98ddbc668f4cec62bea6d52bdb5dca712fbe5acdae5ba",
+        "ReasoningTokens": 3981,
+        "LatencyMs": 84480.2618,
+        "issuedEdges": 54
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O43",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O43.raw-capture.v1.json",
+        "RawCaptureSha256": "886956c593206ed73815f1167b490230787f56cfaa53ca714574749e59754ead",
+        "RawResponseSha256": "947b758757e303d2967c71386bd287501d645267de9f872b2525cf1b8fc479b6",
+        "RawSseSha256": "d1bbe2f4b56b6365425ed59737ca624a25e1d62152d86be5af22239317bdcb9d",
+        "ReasoningTokens": 3870,
+        "LatencyMs": 83715.7929,
+        "issuedEdges": 53
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O44",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O44.raw-capture.v1.json",
+        "RawCaptureSha256": "91b35eaeb14773464077496a67658b2a6badc9737d599150a90f1a94ca00d751",
+        "RawResponseSha256": "2bc890a33fb2772eda1c978cf4070830801765e93af68392f8e2ba4584690925",
+        "RawSseSha256": "e62d90e82e38e48c1ecf8eb760b17a5bcd50dd5ed518ad2c35c98237414824da",
+        "ReasoningTokens": 1745,
+        "LatencyMs": 68178.1147,
+        "issuedEdges": 52
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O47",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O47.raw-capture.v1.json",
+        "RawCaptureSha256": "78577fefdc772e198cd7000ae889f5a59468fbb665969621532f237311cdb53d",
+        "RawResponseSha256": "1efe322f6838f21aa37d16f89687cea7b1419bceeb32eb17cf4af992b38ac482",
+        "RawSseSha256": "84fb5f7d4048512a235252e8b1180f70d178fefab6b0599e7726f98046e905e0",
+        "ReasoningTokens": 4664,
+        "LatencyMs": 90145.0942,
+        "issuedEdges": 49
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O51",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O51.raw-capture.v1.json",
+        "RawCaptureSha256": "382b0e12872ccb865923454bef0827512487e3c6788554d1968c73e80e0c70a5",
+        "RawResponseSha256": "1b425233f333f67dc3b7e31835223076bf7d28e1a0f7530ad72500896eade427",
+        "RawSseSha256": "62ba58ac305724ce86feb8a860dd0c435f2bc31b4f0ce813281111cfb00c2b6f",
+        "ReasoningTokens": 5344,
+        "LatencyMs": 92097.3477,
+        "issuedEdges": 45
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O59",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O59.raw-capture.v1.json",
+        "RawCaptureSha256": "7cfeb8c25cdafb12510d990f01fc77a94543d9171b5abe09f99aa09410bfcdba",
+        "RawResponseSha256": "7c68f139272843a9e4350a5bd2b674441b0ff76719a72db11bdb114e39fd3a5b",
+        "RawSseSha256": "6527e9cfbfc057abe3054039f5fe44ff134bf29c75b7ed761f9e33aab83c5954",
+        "ReasoningTokens": 4559,
+        "LatencyMs": 92655.8063,
+        "issuedEdges": 37
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O66",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O66.raw-capture.v1.json",
+        "RawCaptureSha256": "eaca3b1bd6b1cbafa15046e2bf12aa191b47eaf01264c821d71fa070cef605d8",
+        "RawResponseSha256": "6fc1d5a6f96cf62c4ac4841a2a94be8cdf62bec0a1233518fe0cdc13fe48f7e7",
+        "RawSseSha256": "f34857450054a2e2a5466f4c44856d4e3d5b323002d89f8f1c256893f97a8ba8",
+        "ReasoningTokens": 2703,
+        "LatencyMs": 70676.8183,
+        "issuedEdges": 30
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O70",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O70.raw-capture.v1.json",
+        "RawCaptureSha256": "d62230029333c2ad0e998be7e77b70ffa8436e1cd262f85f2bda878c0f7975c8",
+        "RawResponseSha256": "a37b4f664b3f22735ab182857e45b05ffad278c864f3a8652058eaccd8ba81d8",
+        "RawSseSha256": "94a7aa4e8e4ccf63de5cf48a9eece459e30762626c0a53706fb92afe0e439f33",
+        "ReasoningTokens": 3570,
+        "LatencyMs": 82341.4065,
+        "issuedEdges": 26
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O71",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O71.raw-capture.v1.json",
+        "RawCaptureSha256": "03f141b33459b70704b5d257c6a8889c7f225bd3d00a54aed77fd87116582a2b",
+        "RawResponseSha256": "f53e162a9540f84af17b656c0715c0b60986f86fdcecb26e8f96ce95c8953f40",
+        "RawSseSha256": "fe4cc60a756f67990087b1f9a3130a2e4525e7af352559ff4058af947f70d0fe",
+        "ReasoningTokens": 2892,
+        "LatencyMs": 73576.1992,
+        "issuedEdges": 25
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O92",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O92.raw-capture.v1.json",
+        "RawCaptureSha256": "d70261ab2145b0df06777577afdac719c64478b6069a90ecbac5f111c414973f",
+        "RawResponseSha256": "b7751344bb5ce7ca144efa7c5e2e24885e8badcc836041d2a71a0bf0e2b71a71",
+        "RawSseSha256": "cb1007a8a48ebbb16c6387fecc1cf83aa3d02d1a12907e9962f66a243f386c59",
+        "ReasoningTokens": 1488,
+        "LatencyMs": 59196.2204,
+        "issuedEdges": 4
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O95",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O95.raw-capture.v1.json",
+        "RawCaptureSha256": "2e6f591d4322302648dff1c379471f650f5552b7357ee0f68920157cc0354cc3",
+        "RawResponseSha256": "9081c6f1fac721c087fcc37e0c1c4a4f6e77d30fa94b07117e5c565ccaed2ea5",
+        "RawSseSha256": "65a98d9cd145853a14e844068aee85c91edddfd792f91d41eb9cbe9adf3dba62",
+        "ReasoningTokens": 1650,
+        "LatencyMs": 61592.1398,
+        "issuedEdges": 1
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O1",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O1.raw-capture.v1.json",
+        "RawCaptureSha256": "286fe9e5e379c0f441dca9511ba6a6f9ec296f97fa09518c6d989c22d6c554ca",
+        "RawResponseSha256": "4f7622c0a7e683974449a97e46a868d1a54fbb1aa2d5fb9e2515c6a520fbc01a",
+        "RawSseSha256": "1308a35d61a4e488a6a9e2da9c37f3b51da0c9b838497f29fd7c934a16757f1a",
+        "ReasoningTokens": 4352,
+        "LatencyMs": 96910.8122,
+        "issuedEdges": 95
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O2",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O2.raw-capture.v1.json",
+        "RawCaptureSha256": "cb9cae0fb9327f4505a663ca7cf2cf87b88eb311bcf5578faef5f2309607e52c",
+        "RawResponseSha256": "580e8c7f4029634d8ea8d2592bbbfb11d162c732c8e64f8c36baadb4c9c5b80d",
+        "RawSseSha256": "b31315c25469c1bb6ddaab886e4519587cda84d146210a8894a261ed0ec1ccc3",
+        "ReasoningTokens": 4470,
+        "LatencyMs": 97155.6697,
+        "issuedEdges": 94
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O5",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O5.raw-capture.v1.json",
+        "RawCaptureSha256": "016b68320708afe6579d14abbc5e141134a3b170033b9442286277d3af51be87",
+        "RawResponseSha256": "4718184760ce9fe9b6394a8c149529f33ee6da2348cce2950c513061baccd461",
+        "RawSseSha256": "f550742c58c635a84f9daf4baf79f57cceb7aa1e57465af8424b7c38a1ac22f2",
+        "ReasoningTokens": 7253,
+        "LatencyMs": 122543.7077,
+        "issuedEdges": 91
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O23",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O23.raw-capture.v1.json",
+        "RawCaptureSha256": "f5bae7217e591d3ba59e55762f67f4e74337e43868ca19d95dee197a8dbb51f8",
+        "RawResponseSha256": "2673a3bb61f37126ace4f08b3c38d50afe93e3a33bbf35509f2d32b72d88fbdb",
+        "RawSseSha256": "eeb16af0d5a7c23c1a9c9f5c789e3b915090a9b130399de4d7285f65f807e862",
+        "ReasoningTokens": 3639,
+        "LatencyMs": 85184.0041,
+        "issuedEdges": 73
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O24",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O24.raw-capture.v1.json",
+        "RawCaptureSha256": "2ba433970905a667e6d5a118d2be288234f3295b028477c3417e158c43aa0eed",
+        "RawResponseSha256": "c96af4d7b2bc2dceadacd856f26d04fce3fa2d2858882d8c0e4831352cab024d",
+        "RawSseSha256": "b66614d99f96d92c99bbd2c9005bd14190744ae9da151fa13eb8f3c168cd097b",
+        "ReasoningTokens": 4261,
+        "LatencyMs": 86177.586,
+        "issuedEdges": 72
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O48",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O48.raw-capture.v1.json",
+        "RawCaptureSha256": "bc3884669212dca0e89e4493815a4dc7c7ece05733d3799155c9710a76b53bdb",
+        "RawResponseSha256": "4910775dfbf2a9e26d32a81cbea3219b910c2918ffb800d59bc25e5557406ce6",
+        "RawSseSha256": "95fda930d42ee1a3987a8850a861156e76be708c8fa327443bcdeddf42b39769",
+        "ReasoningTokens": 3525,
+        "LatencyMs": 80766.3636,
+        "issuedEdges": 48
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O77",
+        "rawCapturePath": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O77.raw-capture.v1.json",
+        "RawCaptureSha256": "e1cda69d8b06b880e7b44c9a298d937994bdc298d670363810cb746167a07857",
+        "RawResponseSha256": "ded73799b95daaba8dbb9688d0a26684132193cf96fa25044dd148bdd6ff6b0f",
+        "RawSseSha256": "0818b7934edf21339be6379534aea55c769de64575c2e3693ae75f4a3b277fd7",
+        "ReasoningTokens": 2737,
+        "LatencyMs": 71407.3437,
+        "issuedEdges": 19
+      }
+    ],
+    "trueAnchorExtents": [
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O9",
+        "AnchorAlias": "L0006:S0",
+        "goldPartAliases": [
+          "L0006:S0",
+          "L0007:S0",
+          "L0008:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0006:S0",
+          "L0007:S0",
+          "L0008:S0"
+        ],
+        "outcome": "EXACT",
+        "modelContinues": 2,
+        "modelStops": 85,
+        "ExpectedInternalContinuationEdges": 2,
+        "CorrectInternalContinuationEdges": 2,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": true,
+        "ExitRightAlias": "L0009:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": false,
+        "FirstStopEdgeOrdinal": 2
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O17",
+        "AnchorAlias": "L0014:S0",
+        "goldPartAliases": [
+          "L0014:S0",
+          "L0015:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0014:S0",
+          "L0015:S0",
+          "L0016:S0",
+          "L0017:S0",
+          "L0018:S0",
+          "L0019:S0",
+          "L0020:S0",
+          "L0021:S0",
+          "L0022:S0",
+          "L0023:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 9,
+        "modelStops": 70,
+        "ExpectedInternalContinuationEdges": 1,
+        "CorrectInternalContinuationEdges": 1,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0016:S0",
+        "G2ARightAtExit": "HAS_STRUCTURAL_EXTENT",
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 9
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O19",
+        "AnchorAlias": "L0016:S0",
+        "goldPartAliases": [
+          "L0016:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0016:S0",
+          "L0017:S0",
+          "L0018:S0",
+          "L0019:S0",
+          "L0020:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 4,
+        "modelStops": 73,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0017:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 4
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O27",
+        "AnchorAlias": "L0024:S0",
+        "goldPartAliases": [
+          "L0024:S0",
+          "L0025:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0024:S0",
+          "L0025:S0"
+        ],
+        "outcome": "EXACT",
+        "modelContinues": 1,
+        "modelStops": 68,
+        "ExpectedInternalContinuationEdges": 1,
+        "CorrectInternalContinuationEdges": 1,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": true,
+        "ExitRightAlias": "L0026:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": false,
+        "FirstStopEdgeOrdinal": 1
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O54",
+        "AnchorAlias": "L0051:S0",
+        "goldPartAliases": [
+          "L0051:S0",
+          "L0052:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0051:S0",
+          "L0052:S0"
+        ],
+        "outcome": "EXACT",
+        "modelContinues": 1,
+        "modelStops": 41,
+        "ExpectedInternalContinuationEdges": 1,
+        "CorrectInternalContinuationEdges": 1,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": true,
+        "ExitRightAlias": "L0053:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": false,
+        "FirstStopEdgeOrdinal": 1
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O83",
+        "AnchorAlias": "L0080:S0",
+        "goldPartAliases": [
+          "L0080:S0",
+          "L0081:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0080:S0",
+          "L0081:S0"
+        ],
+        "outcome": "EXACT",
+        "modelContinues": 1,
+        "modelStops": 12,
+        "ExpectedInternalContinuationEdges": 1,
+        "CorrectInternalContinuationEdges": 1,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": true,
+        "ExitRightAlias": "L0082:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": false,
+        "FirstStopEdgeOrdinal": 1
+      },
+      {
+        "DocumentId": "SRC-041",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "Anchor": "O4",
+        "AnchorAlias": "L3526:S0",
+        "goldPartAliases": [
+          "L3526:S0",
+          "L3527:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L3526:S0",
+          "L3527:S0",
+          "L3528:S0",
+          "L3529:S0",
+          "L3530:S0",
+          "L3531:S0",
+          "L3532:S0",
+          "L3533:S0",
+          "L3533:S1"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 8,
+        "modelStops": 84,
+        "ExpectedInternalContinuationEdges": 1,
+        "CorrectInternalContinuationEdges": 1,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L3528:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 8
+      },
+      {
+        "DocumentId": "SRC-095",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O16",
+        "AnchorAlias": "L0009:S0",
+        "goldPartAliases": [
+          "L0009:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0009:S0",
+          "L0010:S0",
+          "L0011:S0",
+          "L0012:S0",
+          "L0013:S0",
+          "L0014:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 5,
+        "modelStops": 75,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0010:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 5
+      },
+      {
+        "DocumentId": "SRC-095",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O41",
+        "AnchorAlias": "L0034:S0",
+        "goldPartAliases": [
+          "L0034:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0034:S0",
+          "L0035:S0",
+          "L0036:S0",
+          "L0037:S0",
+          "L0038:S0",
+          "L0039:S0",
+          "L0040:S0",
+          "L0041:S0",
+          "L0042:S0",
+          "L0043:S0",
+          "L0044:S0",
+          "L0045:S0",
+          "L0046:S0",
+          "L0047:S0",
+          "L0048:S0",
+          "L0049:S0",
+          "L0050:S0",
+          "L0051:S0",
+          "L0052:S0",
+          "L0053:S0",
+          "L0054:S0",
+          "L0055:S0",
+          "L0056:S0",
+          "L0057:S0",
+          "L0058:S0",
+          "L0059:S0",
+          "L0060:S0",
+          "L0061:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 27,
+        "modelStops": 28,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0035:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 27
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O30",
+        "AnchorAlias": "L0507:S0",
+        "goldPartAliases": [
+          "L0507:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0507:S0"
+        ],
+        "outcome": "EXACT",
+        "modelContinues": 0,
+        "modelStops": 66,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": true,
+        "ExitRightAlias": "L0508:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": false,
+        "FirstStopEdgeOrdinal": 0
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O42",
+        "AnchorAlias": "L0519:S0",
+        "goldPartAliases": [
+          "L0519:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0519:S0",
+          "L0520:S0",
+          "L0521:S0",
+          "L0522:S0",
+          "L0522:S1",
+          "L0523:S0",
+          "L0524:S0",
+          "L0524:S1",
+          "L0525:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 8,
+        "modelStops": 46,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0520:S0",
+        "G2ARightAtExit": "HAS_STRUCTURAL_EXTENT",
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 8
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O43",
+        "AnchorAlias": "L0520:S0",
+        "goldPartAliases": [
+          "L0520:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0520:S0",
+          "L0521:S0",
+          "L0522:S0",
+          "L0522:S1",
+          "L0523:S0",
+          "L0524:S0",
+          "L0524:S1",
+          "L0525:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 7,
+        "modelStops": 46,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0521:S0",
+        "G2ARightAtExit": "HAS_STRUCTURAL_EXTENT",
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 7
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O44",
+        "AnchorAlias": "L0521:S0",
+        "goldPartAliases": [
+          "L0521:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0521:S0",
+          "L0522:S0",
+          "L0522:S1"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 2,
+        "modelStops": 50,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0522:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 2
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O47",
+        "AnchorAlias": "L0523:S0",
+        "goldPartAliases": [
+          "L0523:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0523:S0",
+          "L0524:S0",
+          "L0524:S1",
+          "L0525:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 3,
+        "modelStops": 46,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0524:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 3
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O51",
+        "AnchorAlias": "L0526:S0",
+        "goldPartAliases": [
+          "L0526:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0526:S0",
+          "L0527:S0",
+          "L0527:S1",
+          "L0528:S0",
+          "L0528:S1",
+          "L0529:S0",
+          "L0529:S1",
+          "L0530:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 7,
+        "modelStops": 38,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0527:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 7
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O59",
+        "AnchorAlias": "L0531:S0",
+        "goldPartAliases": [
+          "L0531:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0531:S0",
+          "L0532:S0",
+          "L0533:S0",
+          "L0534:S0",
+          "L0534:S1",
+          "L0535:S0",
+          "L0535:S1"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 6,
+        "modelStops": 31,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0532:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 6
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O66",
+        "AnchorAlias": "L0536:S0",
+        "goldPartAliases": [
+          "L0536:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0536:S0",
+          "L0537:S0",
+          "L0537:S1",
+          "L0538:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 3,
+        "modelStops": 27,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0537:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 3
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O70",
+        "AnchorAlias": "L0539:S0",
+        "goldPartAliases": [
+          "L0539:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0539:S0",
+          "L0540:S0",
+          "L0541:S0",
+          "L0541:S1",
+          "L0542:S0",
+          "L0543:S0",
+          "L0543:S1",
+          "L0544:S0",
+          "L0545:S0",
+          "L0545:S1",
+          "L0546:S0",
+          "L0546:S1",
+          "L0547:S0",
+          "L0547:S1",
+          "L0548:S0",
+          "L0548:S1",
+          "L0549:S0",
+          "L0550:S0",
+          "L0551:S0",
+          "L0551:S1",
+          "L0552:S0",
+          "L0552:S1"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 21,
+        "modelStops": 5,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0540:S0",
+        "G2ARightAtExit": "HAS_STRUCTURAL_EXTENT",
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 21
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O71",
+        "AnchorAlias": "L0540:S0",
+        "goldPartAliases": [
+          "L0540:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0540:S0",
+          "L0541:S0",
+          "L0541:S1",
+          "L0542:S0",
+          "L0543:S0",
+          "L0543:S1",
+          "L0544:S0",
+          "L0545:S0",
+          "L0545:S1",
+          "L0546:S0",
+          "L0546:S1",
+          "L0547:S0",
+          "L0547:S1",
+          "L0548:S0",
+          "L0548:S1",
+          "L0549:S0",
+          "L0550:S0",
+          "L0551:S0",
+          "L0551:S1",
+          "L0552:S0",
+          "L0552:S1"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 20,
+        "modelStops": 5,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0541:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 20
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O92",
+        "AnchorAlias": "L0553:S0",
+        "goldPartAliases": [
+          "L0553:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0553:S0",
+          "L0554:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 1,
+        "modelStops": 3,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0554:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 1
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O95",
+        "AnchorAlias": "L0556:S0",
+        "goldPartAliases": [
+          "L0556:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0556:S0",
+          "L0557:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 1,
+        "modelStops": 0,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0557:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": -1
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O1",
+        "AnchorAlias": "L0000:S0",
+        "goldPartAliases": [
+          "L0000:S0",
+          "L0001:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0000:S0",
+          "L0001:S0",
+          "L0002:S0",
+          "L0003:S0",
+          "L0004:S0",
+          "L0005:S0",
+          "L0006:S0",
+          "L0007:S0",
+          "L0008:S0",
+          "L0009:S0",
+          "L0010:S0",
+          "L0011:S0",
+          "L0012:S0",
+          "L0013:S0",
+          "L0014:S0",
+          "L0015:S0",
+          "L0016:S0",
+          "L0017:S0",
+          "L0018:S0",
+          "L0019:S0",
+          "L0020:S0",
+          "L0021:S0",
+          "L0022:S0",
+          "L0023:S0",
+          "L0024:S0",
+          "L0025:S0",
+          "L0026:S0",
+          "L0027:S0",
+          "L0028:S0",
+          "L0029:S0",
+          "L0030:S0",
+          "L0031:S0",
+          "L0032:S0",
+          "L0033:S0",
+          "L0034:S0",
+          "L0035:S0",
+          "L0036:S0",
+          "L0037:S0",
+          "L0038:S0",
+          "L0039:S0",
+          "L0040:S0",
+          "L0041:S0",
+          "L0042:S0",
+          "L0043:S0",
+          "L0044:S0",
+          "L0045:S0",
+          "L0046:S0",
+          "L0047:S0",
+          "L0048:S0",
+          "L0049:S0",
+          "L0050:S0",
+          "L0051:S0",
+          "L0052:S0",
+          "L0053:S0",
+          "L0054:S0",
+          "L0055:S0",
+          "L0056:S0",
+          "L0057:S0",
+          "L0058:S0",
+          "L0059:S0",
+          "L0060:S0",
+          "L0061:S0",
+          "L0062:S0",
+          "L0063:S0",
+          "L0064:S0",
+          "L0065:S0",
+          "L0066:S0",
+          "L0067:S0",
+          "L0068:S0",
+          "L0069:S0",
+          "L0070:S0",
+          "L0071:S0",
+          "L0072:S0",
+          "L0073:S0",
+          "L0074:S0",
+          "L0075:S0",
+          "L0076:S0",
+          "L0077:S0",
+          "L0078:S0",
+          "L0079:S0",
+          "L0080:S0",
+          "L0081:S0",
+          "L0082:S0",
+          "L0083:S0",
+          "L0084:S0",
+          "L0085:S0",
+          "L0086:S0",
+          "L0087:S0",
+          "L0088:S0",
+          "L0089:S0",
+          "L0090:S0",
+          "L0091:S0",
+          "L0092:S0",
+          "L0093:S0",
+          "L0094:S0",
+          "L0095:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 95,
+        "modelStops": 0,
+        "ExpectedInternalContinuationEdges": 1,
+        "CorrectInternalContinuationEdges": 1,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0002:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": -1
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O5",
+        "AnchorAlias": "L0004:S0",
+        "goldPartAliases": [
+          "L0004:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0004:S0",
+          "L0005:S0",
+          "L0006:S0",
+          "L0007:S0",
+          "L0008:S0",
+          "L0009:S0",
+          "L0010:S0",
+          "L0011:S0",
+          "L0012:S0",
+          "L0013:S0",
+          "L0014:S0",
+          "L0015:S0",
+          "L0016:S0",
+          "L0017:S0",
+          "L0018:S0",
+          "L0019:S0",
+          "L0020:S0",
+          "L0021:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 17,
+        "modelStops": 74,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0005:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 17
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O23",
+        "AnchorAlias": "L0022:S0",
+        "goldPartAliases": [
+          "L0022:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0022:S0",
+          "L0023:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 1,
+        "modelStops": 72,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0023:S0",
+        "G2ARightAtExit": "HAS_STRUCTURAL_EXTENT",
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 1
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O24",
+        "AnchorAlias": "L0023:S0",
+        "goldPartAliases": [
+          "L0023:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0023:S0",
+          "L0024:S0",
+          "L0025:S0",
+          "L0026:S0",
+          "L0027:S0",
+          "L0028:S0",
+          "L0029:S0",
+          "L0030:S0",
+          "L0031:S0",
+          "L0032:S0",
+          "L0033:S0",
+          "L0034:S0",
+          "L0035:S0",
+          "L0036:S0",
+          "L0037:S0",
+          "L0038:S0",
+          "L0039:S0",
+          "L0040:S0",
+          "L0041:S0",
+          "L0042:S0",
+          "L0043:S0",
+          "L0044:S0",
+          "L0045:S0",
+          "L0046:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 23,
+        "modelStops": 49,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0024:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 23
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O48",
+        "AnchorAlias": "L0047:S0",
+        "goldPartAliases": [
+          "L0047:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0047:S0",
+          "L0048:S0",
+          "L0049:S0",
+          "L0050:S0",
+          "L0051:S0",
+          "L0052:S0",
+          "L0053:S0",
+          "L0054:S0",
+          "L0055:S0",
+          "L0056:S0",
+          "L0057:S0",
+          "L0058:S0",
+          "L0059:S0",
+          "L0060:S0",
+          "L0061:S0",
+          "L0062:S0",
+          "L0063:S0",
+          "L0064:S0",
+          "L0065:S0",
+          "L0066:S0",
+          "L0067:S0",
+          "L0068:S0",
+          "L0069:S0",
+          "L0070:S0",
+          "L0071:S0",
+          "L0072:S0",
+          "L0073:S0",
+          "L0074:S0",
+          "L0075:S0"
+        ],
+        "outcome": "OVEREXTENT",
+        "modelContinues": 28,
+        "modelStops": 20,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": false,
+        "ExitRightAlias": "L0048:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": true,
+        "FirstStopEdgeOrdinal": 28
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O77",
+        "AnchorAlias": "L0076:S0",
+        "goldPartAliases": [
+          "L0076:S0"
+        ],
+        "reconstructedPartAliases": [
+          "L0076:S0"
+        ],
+        "outcome": "EXACT",
+        "modelContinues": 0,
+        "modelStops": 19,
+        "ExpectedInternalContinuationEdges": 0,
+        "CorrectInternalContinuationEdges": 0,
+        "ExitEdgeIssued": true,
+        "ExitStopCorrect": true,
+        "ExitRightAlias": "L0077:S0",
+        "G2ARightAtExit": null,
+        "FirstWrongBoundaryContinued": false,
+        "FirstStopEdgeOrdinal": 0
+      }
+    ],
+    "falseAnchorCalls": [
+      {
+        "documentId": "SRC-089",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "anchor": "O18",
+        "alias": "L0015:S0",
+        "g2a": "HAS_STRUCTURAL_EXTENT",
+        "h2Call": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-089_O18.raw-capture.v1.json",
+        "h2ContinueEdges": 1,
+        "h2StopEdges": 77,
+        "extentScore": "EXCLUDED_FALSE_G2A_ANCHOR"
+      },
+      {
+        "documentId": "SRC-041",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "anchor": "O3",
+        "alias": "L3525:S0",
+        "g2a": "HAS_STRUCTURAL_EXTENT",
+        "h2Call": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-041_O3.raw-capture.v1.json",
+        "h2ContinueEdges": 93,
+        "h2StopEdges": 0,
+        "extentScore": "EXCLUDED_FALSE_G2A_ANCHOR"
+      },
+      {
+        "documentId": "SRC-041",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "anchor": "O5",
+        "alias": "L3527:S0",
+        "g2a": "HAS_STRUCTURAL_EXTENT",
+        "h2Call": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-041_O5.raw-capture.v1.json",
+        "h2ContinueEdges": 91,
+        "h2StopEdges": 0,
+        "extentScore": "EXCLUDED_FALSE_G2A_ANCHOR"
+      },
+      {
+        "documentId": "DOC-0256",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "anchor": "O2",
+        "alias": "L0001:S0",
+        "g2a": "HAS_STRUCTURAL_EXTENT",
+        "h2Call": "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O2.raw-capture.v1.json",
+        "h2ContinueEdges": 2,
+        "h2StopEdges": 92,
+        "extentScore": "EXCLUDED_FALSE_G2A_ANCHOR"
+      }
+    ]
+  },
+  "anchorScopedConflictCensus": {
+    "joinKey": "(documentId, packId, anchor, leftOccurrence, rightOccurrence)",
+    "issuedH2EdgeObservations": 1790,
+    "pairableAnchorScopedEdges": 150,
+    "noG2ARight": 1640,
+    "conflicts": 19,
+    "nonConflicts": 131,
+    "uniquePhysicalSourceEdges": 14,
+    "overlapVariationIsNotInconsistency": true,
+    "conflictRateScope": "conflicts / pairable anchor-scoped edge observations; never the collapsed physical-edge diagnostic and not a random corpus estimate",
+    "goldStratification": {
+      "newStructuralUnit": 15,
+      "continuesLeftStructuralUnit": 4,
+      "authorityGap": 0
+    },
+    "conflictRows": [
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O17",
+        "Left": "O17",
+        "Right": "O18",
+        "LeftAlias": "L0014:S0",
+        "RightAlias": "L0015:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "CONTINUES_LEFT_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O17",
+        "Left": "O18",
+        "Right": "O19",
+        "LeftAlias": "L0015:S0",
+        "RightAlias": "L0016:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "SRC-089",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O18",
+        "Left": "O18",
+        "Right": "O19",
+        "LeftAlias": "L0015:S0",
+        "RightAlias": "L0016:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "SRC-041",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "Anchor": "O3",
+        "Left": "O3",
+        "Right": "O4",
+        "LeftAlias": "L3525:S0",
+        "RightAlias": "L3526:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "SRC-041",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "Anchor": "O3",
+        "Left": "O4",
+        "Right": "O5",
+        "LeftAlias": "L3526:S0",
+        "RightAlias": "L3527:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "CONTINUES_LEFT_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "SRC-041",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "Anchor": "O4",
+        "Left": "O4",
+        "Right": "O5",
+        "LeftAlias": "L3526:S0",
+        "RightAlias": "L3527:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "CONTINUES_LEFT_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O42",
+        "Left": "O42",
+        "Right": "O43",
+        "LeftAlias": "L0519:S0",
+        "RightAlias": "L0520:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O42",
+        "Left": "O43",
+        "Right": "O44",
+        "LeftAlias": "L0520:S0",
+        "RightAlias": "L0521:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O42",
+        "Left": "O46",
+        "Right": "O47",
+        "LeftAlias": "L0522:S1",
+        "RightAlias": "L0523:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O43",
+        "Left": "O43",
+        "Right": "O44",
+        "LeftAlias": "L0520:S0",
+        "RightAlias": "L0521:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O43",
+        "Left": "O46",
+        "Right": "O47",
+        "LeftAlias": "L0522:S1",
+        "RightAlias": "L0523:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0252",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+        "Anchor": "O70",
+        "Left": "O70",
+        "Right": "O71",
+        "LeftAlias": "L0539:S0",
+        "RightAlias": "L0540:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O1",
+        "Left": "O1",
+        "Right": "O2",
+        "LeftAlias": "L0000:S0",
+        "RightAlias": "L0001:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "CONTINUES_LEFT_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O1",
+        "Left": "O4",
+        "Right": "O5",
+        "LeftAlias": "L0003:S0",
+        "RightAlias": "L0004:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O1",
+        "Left": "O22",
+        "Right": "O23",
+        "LeftAlias": "L0021:S0",
+        "RightAlias": "L0022:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O1",
+        "Left": "O23",
+        "Right": "O24",
+        "LeftAlias": "L0022:S0",
+        "RightAlias": "L0023:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O1",
+        "Left": "O47",
+        "Right": "O48",
+        "LeftAlias": "L0046:S0",
+        "RightAlias": "L0047:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O1",
+        "Left": "O76",
+        "Right": "O77",
+        "LeftAlias": "L0075:S0",
+        "RightAlias": "L0076:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      },
+      {
+        "DocumentId": "DOC-0256",
+        "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "Anchor": "O23",
+        "Left": "O23",
+        "Right": "O24",
+        "LeftAlias": "L0022:S0",
+        "RightAlias": "L0023:S0",
+        "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+        "g2aRight": "HAS_STRUCTURAL_EXTENT",
+        "goldClass": "NEW_STRUCTURAL_UNIT"
+      }
+    ]
+  },
+  "perDocument": [
+    {
+      "documentId": "SRC-089",
+      "g2a": {
+        "issued": 15,
+        "tp": 6,
+        "fp": 1,
+        "fn": 0,
+        "tn": 8
+      },
+      "h2": {
+        "trueGoldAnchors": 6,
+        "exact": 4,
+        "underextent": 0,
+        "overextent": 2,
+        "wrongParts": 0,
+        "multipart": {
+          "total": 5,
+          "exact": 4
+        },
+        "singleton": {
+          "total": 1,
+          "exact": 0
+        },
+        "internalContinuationEdges": 6,
+        "internalContinuationCorrect": 6,
+        "goldExitBoundaries": 6,
+        "correctExitStops": 4,
+        "overextensionFirstWrongBoundary": {
+          "total": 2,
+          "rightG2AHas": 1,
+          "rightG2ANo": 0,
+          "rightG2ANotIssued": 1
+        }
+      },
+      "anchorScopedConflicts": {
+        "total": 3,
+        "newStructuralUnit": 2,
+        "continuesLeft": 1,
+        "authorityGap": 0
+      }
+    },
+    {
+      "documentId": "SRC-041",
+      "g2a": {
+        "issued": 3,
+        "tp": 1,
+        "fp": 2,
+        "fn": 0,
+        "tn": 0
+      },
+      "h2": {
+        "trueGoldAnchors": 1,
+        "exact": 0,
+        "underextent": 0,
+        "overextent": 1,
+        "wrongParts": 0,
+        "multipart": {
+          "total": 1,
+          "exact": 0
+        },
+        "singleton": {
+          "total": 0,
+          "exact": 0
+        },
+        "internalContinuationEdges": 1,
+        "internalContinuationCorrect": 1,
+        "goldExitBoundaries": 1,
+        "correctExitStops": 0,
+        "overextensionFirstWrongBoundary": {
+          "total": 1,
+          "rightG2AHas": 0,
+          "rightG2ANo": 0,
+          "rightG2ANotIssued": 1
+        }
+      },
+      "anchorScopedConflicts": {
+        "total": 3,
+        "newStructuralUnit": 1,
+        "continuesLeft": 2,
+        "authorityGap": 0
+      }
+    },
+    {
+      "documentId": "SRC-095",
+      "g2a": {
+        "issued": 4,
+        "tp": 2,
+        "fp": 0,
+        "fn": 2,
+        "tn": 0
+      },
+      "h2": {
+        "trueGoldAnchors": 2,
+        "exact": 0,
+        "underextent": 0,
+        "overextent": 2,
+        "wrongParts": 0,
+        "multipart": {
+          "total": 0,
+          "exact": 0
+        },
+        "singleton": {
+          "total": 2,
+          "exact": 0
+        },
+        "internalContinuationEdges": 0,
+        "internalContinuationCorrect": 0,
+        "goldExitBoundaries": 2,
+        "correctExitStops": 0,
+        "overextensionFirstWrongBoundary": {
+          "total": 2,
+          "rightG2AHas": 0,
+          "rightG2ANo": 0,
+          "rightG2ANotIssued": 2
+        }
+      },
+      "anchorScopedConflicts": {
+        "total": 0,
+        "newStructuralUnit": 0,
+        "continuesLeft": 0,
+        "authorityGap": 0
+      }
+    },
+    {
+      "documentId": "DOC-0252",
+      "g2a": {
+        "issued": 19,
+        "tp": 12,
+        "fp": 0,
+        "fn": 1,
+        "tn": 6
+      },
+      "h2": {
+        "trueGoldAnchors": 12,
+        "exact": 1,
+        "underextent": 0,
+        "overextent": 11,
+        "wrongParts": 0,
+        "multipart": {
+          "total": 0,
+          "exact": 0
+        },
+        "singleton": {
+          "total": 12,
+          "exact": 1
+        },
+        "internalContinuationEdges": 0,
+        "internalContinuationCorrect": 0,
+        "goldExitBoundaries": 12,
+        "correctExitStops": 1,
+        "overextensionFirstWrongBoundary": {
+          "total": 11,
+          "rightG2AHas": 3,
+          "rightG2ANo": 0,
+          "rightG2ANotIssued": 8
+        }
+      },
+      "anchorScopedConflicts": {
+        "total": 6,
+        "newStructuralUnit": 6,
+        "continuesLeft": 0,
+        "authorityGap": 0
+      }
+    },
+    {
+      "documentId": "DOC-0256",
+      "g2a": {
+        "issued": 7,
+        "tp": 6,
+        "fp": 1,
+        "fn": 0,
+        "tn": 0
+      },
+      "h2": {
+        "trueGoldAnchors": 6,
+        "exact": 1,
+        "underextent": 0,
+        "overextent": 5,
+        "wrongParts": 0,
+        "multipart": {
+          "total": 1,
+          "exact": 0
+        },
+        "singleton": {
+          "total": 5,
+          "exact": 1
+        },
+        "internalContinuationEdges": 1,
+        "internalContinuationCorrect": 1,
+        "goldExitBoundaries": 6,
+        "correctExitStops": 1,
+        "overextensionFirstWrongBoundary": {
+          "total": 5,
+          "rightG2AHas": 1,
+          "rightG2ANo": 0,
+          "rightG2ANotIssued": 4
+        }
+      },
+      "anchorScopedConflicts": {
+        "total": 7,
+        "newStructuralUnit": 6,
+        "continuesLeft": 1,
+        "authorityGap": 0
+      }
+    }
+  ],
+  "controls": {
+    "providerCallsDuringAudit": 0,
+    "goldRead": true,
+    "goldMutation": "NONE",
+    "runtimeChanged": false,
+    "sharedRuntime": "UNCHANGED",
+    "previousCollapsedCensus": "IMMUTABLE_DIAGNOSTIC_ONLY; its (document,pack,left,right) collapse and overlap disagreement status are not a qualification denominator"
+  },
+  "conclusion": "G2A_48_SCORED_AGAINST_CANONICAL_GOLD; H2_27_TRUE_ANCHORS_SCORE_6_EXACT_21_OVER; INTERNAL_CONTINUATIONS_8_OF_8; EXIT_STOP_6_OF_27; ANCHOR_SCOPED_CONFLICTS_19_WITH_15_NEW_UNIT_AND_4_CONTINUE; NO_GOLD_OR_RUNTIME_CHANGE"
+}
