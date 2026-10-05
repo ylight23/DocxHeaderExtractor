@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "v5-p6th2c-clarified-retry-until-accepted-summary-v1",
+  "status": "BOTH_QUARANTINED_ANCHORS_HAVE_CONTRACT_VALID_CLARIFIED_RESULTS",
+  "clarification": "REMOVED_FIXED_O17_OUTPUT_EXAMPLE_AND_REQUIRED_EXACT_CURRENT_INPUT_ANCHOR_ECHO",
+  "originalPrimaryProviderCalls": 31,
+  "priorExactBodyRetries": 13,
+  "clarifiedRetryProviderCalls": 2,
+  "totalProviderCallsIncludingRetries": 46,
+  "acceptedAnchorCount": 2,
+  "transportRetries": 0,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "runtimeChanged": false,
+  "sharedRuntime": "UNCHANGED",
+  "priorInvalidExactBodyRetriesByAnchor": {
+    "SRC-041|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060|O5": 6,
+    "DOC-0256|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001|O1": 7
+  },
+  "clarifiedRetryAttemptsByAnchor": {
+    "SRC-041|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060|O5": 1,
+    "DOC-0256|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001|O1": 1
+  },
+  "accepted": [
+    {
+      "key": "DOC-0256|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001|O1",
+      "documentId": "DOC-0256",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O1",
+      "providerBodySha256": "08b3777a37e3d1ee6a9f50eed73c59d30953afe73c02334a9f237033a8430969",
+      "clarifiedRetryAttemptAccepted": 1,
+      "acceptedRawCaptureSha256": "9b70a03238a35c3c87bd71c1d83b3849326dbf9aeb40902147306199b17ea5f2",
+      "acceptedRawResponseSha256": "f73accb5a32aedcd3826ab881ac4e720d590096474d16be784a533377cc42ba8",
+      "acceptedRawSseSha256": "6f24827ae4112778d2d5d9c0b0d58d4790a694de7c8bfeafd436237f0b2bbf14"
+    },
+    {
+      "key": "SRC-041|RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060|O5",
+      "documentId": "SRC-041",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "anchor": "O5",
+      "providerBodySha256": "297052521e7491be30cd6b6e4e4e661e3cb2e9476c09794532a8e8569d184dad",
+      "clarifiedRetryAttemptAccepted": 1,
+      "acceptedRawCaptureSha256": "7e4543830d9ffbbdda110b064cdbf31e8743e87805451cc7befd0a00cac56b9f",
+      "acceptedRawResponseSha256": "50717c270c3b078a80e558c61160cf4519417de10183e023ff8c0c93ed123779",
+      "acceptedRawSseSha256": "ea8a5f1bbe79892cbedf0f38b27ace31709337eae9f2045d066047e9b8883fcf"
+    }
+  ]
+}

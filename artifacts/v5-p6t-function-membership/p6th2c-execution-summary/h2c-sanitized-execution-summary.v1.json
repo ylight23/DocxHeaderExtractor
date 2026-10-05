@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "v5-p6th2c-sanitized-execution-summary-v1",
+  "status": "31_PRIMARY_COMPLETE_29_INITIAL_LEDGER_ACCEPTS_2_RECOVERED_WITH_CLARIFIED_ANCHOR_ECHO",
+  "originalPromptFailure": "FIXED_O17_OUTPUT_EXAMPLE_WAS_REPEATED_FOR_OTHER_ISSUED_ANCHORS",
+  "clarification": "REMOVED_ALL_LITERAL_OCCURRENCE_HANDLES_FROM_PROMPT_AND_REQUIRED_ECHO_OF_CURRENT_INPUT_ANCHOR",
+  "v1RequestManifestSha256": "99217a70281d95015a706324d0e7a16dd235e4dec0b8895dd0e50bc273c91c9e",
+  "v2RequestManifestSha256": "31e5121b692b59a0622455d133659c56eaefba49b065f68463713f124a3505c0",
+  "v1PrimaryCaptureSetSha256": "57477c4690bcaeb8f5dec3a57d9b2992061c829ce00697ade6491f669e26c237",
+  "primaryProviderCalls": 31,
+  "primaryAcceptedLedgers": 29,
+  "primaryQuarantines": 2,
+  "exactBodyRetryCallsBeforeClarification": 13,
+  "exactBodyRetryEchoedFixedExampleForTargetAnchors": 13,
+  "clarifiedRetryCalls": 2,
+  "clarifiedRetryAccepted": 2,
+  "totalProviderCalls": 46,
+  "finalContractValidAnchorCount": 31,
+  "acceptedClarifiedResponses": [
+    {
+      "documentId": "DOC-0256",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O1",
+      "providerBodySha256": "08b3777a37e3d1ee6a9f50eed73c59d30953afe73c02334a9f237033a8430969",
+      "acceptedRawCaptureSha256": "9b70a03238a35c3c87bd71c1d83b3849326dbf9aeb40902147306199b17ea5f2",
+      "acceptedRawResponseSha256": "f73accb5a32aedcd3826ab881ac4e720d590096474d16be784a533377cc42ba8",
+      "acceptedRawSseSha256": "6f24827ae4112778d2d5d9c0b0d58d4790a694de7c8bfeafd436237f0b2bbf14"
+    },
+    {
+      "documentId": "SRC-041",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "anchor": "O5",
+      "providerBodySha256": "297052521e7491be30cd6b6e4e4e661e3cb2e9476c09794532a8e8569d184dad",
+      "acceptedRawCaptureSha256": "7e4543830d9ffbbdda110b064cdbf31e8743e87805451cc7befd0a00cac56b9f",
+      "acceptedRawResponseSha256": "50717c270c3b078a80e558c61160cf4519417de10183e023ff8c0c93ed123779",
+      "acceptedRawSseSha256": "ea8a5f1bbe79892cbedf0f38b27ace31709337eae9f2045d066047e9b8883fcf"
+    }
+  ],
+  "transportRetries": 0,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "runtimeChanged": false,
+  "sharedRuntime": "UNCHANGED",
+  "rawSourceDerivedResponsesIncluded": false,
+  "semanticScore": "NOT_EVALUATED_GOLD_CLOSED"
+}

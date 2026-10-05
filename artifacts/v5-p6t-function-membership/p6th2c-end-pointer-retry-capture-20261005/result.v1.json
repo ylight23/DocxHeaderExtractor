@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "v5-p6th2c-quarantined-retry-result-v1",
+  "status": "ONE_OR_MORE_RETRY_LEDGERS_NOT_ACCEPTED",
+  "providerCalls": 2,
+  "acceptedLedgers": 0,
+  "authorizedMaximumRetryCalls": 2,
+  "transportRetries": 0,
+  "furtherRetryAuthorized": false,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "runtimeChanged": false,
+  "sharedRuntime": "UNCHANGED",
+  "rows": [
+    {
+      "documentId": "SRC-041",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "anchor": "O5",
+      "providerCallOrdinal": 1,
+      "authorizedReplayNumber": 1,
+      "providerBodySha256": "17f062be97548b7afe6cfd7fc897c7533992223309c587701d1e300f10a1fc8d",
+      "finishReason": "stop",
+      "transportRetryCount": 0,
+      "ledgerAccepted": false,
+      "returnedHeadingMembers": null,
+      "rawResponseSha256": "2f5daa7a4c791ef38c0d217cc462aa97c66f3b7a530f2092f6341f71b8a64691",
+      "rawSseSha256": "0310d5529d5d0f76105d415344d8e0375a3112db7f71689b1c8c2cefc78cf289",
+      "transportError": null
+    },
+    {
+      "documentId": "DOC-0256",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O1",
+      "providerCallOrdinal": 2,
+      "authorizedReplayNumber": 1,
+      "providerBodySha256": "aaa597cd1dc0f38c638c940c4bcff0452f560d76e11046dacf7f63391b8a94c7",
+      "finishReason": "stop",
+      "transportRetryCount": 0,
+      "ledgerAccepted": false,
+      "returnedHeadingMembers": null,
+      "rawResponseSha256": "c4513b087531d81d1a740a6f8b864e3d432e92f115b16c77dab3fa004e9bf470",
+      "rawSseSha256": "1bda5da4421b0c523f856a38c9d14aca1cb790b1be2d9f2d6f6672932e9a24ab",
+      "transportError": null
+    }
+  ]
+}

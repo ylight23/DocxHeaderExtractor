@@ -161,6 +161,13 @@ internal static class Program
         // P6T-H2 executes only the 31 anchor-scoped edge ledgers frozen after full-pack G2A.
         if (args.Contains("--p6th3-full-population-h2"))
             return await P6TH3FullPopulationH2Canary.RunAsync(LocateRepoRoot(), args);
+        // P6T-H2C executes the frozen direct end-pointer requests over the full G2A-HAS population.
+        if (args.Contains("--p6th2c-direct-end-pointer-full31"))
+            return await P6TH2CEndPointerCanary.RunAsync(LocateRepoRoot(), args);
+        if (args.Contains("--p6th2c-freeze-response-hashes"))
+            return P6TH2CEndPointerCanary.FreezeCaptureHashes(LocateRepoRoot());
+        if (args.Contains("--p6th2c-clarified-retry-until-accepted"))
+            return await P6TH2CEndPointerCanary.ClarifiedRetryUntilAcceptedAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6th3-conflict-adjudication"))
             return await P6TH3ConflictAdjudicationCanary.RunAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6tf1-retry-src089"))
