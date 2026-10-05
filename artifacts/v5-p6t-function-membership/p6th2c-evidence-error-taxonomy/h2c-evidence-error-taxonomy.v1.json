@@ -1,0 +1,925 @@
+{
+  "schemaVersion": "v5-p6th2c-evidence-error-taxonomy-v1",
+  "status": "PROVIDER_FREE_SOURCE_FACT_TAXONOMY_OF_FROZEN_TRUE_ANCHOR_ERRORS",
+  "authority": {
+    "baselineCommit": "dfe96aae9c2a73102dd942b9a5c21df5c20641bd",
+    "experiment": "H2C_EVIDENCE_COMPLETE_A_CURRENT_PROJECTION_VS_B_COMPOSITE_RICH_EVIDENCE; NOT_THE_PRIOR_CLEAN_V1_V2_TREATMENT",
+    "pairedScorePath": "artifacts/v5-p6t-function-membership/p6th2c-evidence-paired-gold-score/h2c-evidence-paired-gold-score.v1.json",
+    "pairedScoreSha256": "533ecfb8069fc0c4663674cdd20c5ec4490fb3059577c18e5e6511f9471b2bb5",
+    "preflightPath": "artifacts/v5-p6t-function-membership/p6th2c-evidence-complete-preflight/h2c-evidence-complete-preflight.v1.json",
+    "preflightSha256": "d8f0287fd039d0523685a1d09ce299d8a44df64a51b8b408d0a6fd6c90bbdd3a",
+    "canonicalGold": [
+      {
+        "documentId": "DOC-0252",
+        "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json",
+        "goldSha256": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+        "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61"
+      },
+      {
+        "documentId": "DOC-0256",
+        "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0256.gold.v1.json",
+        "goldSha256": "0c0c2804d9b33b6136bdfa30883c9744231148708dd0c81dd2c11ac7611a922f",
+        "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b"
+      },
+      {
+        "documentId": "SRC-041",
+        "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-041.gold.v1.json",
+        "goldSha256": "e6ae7b0934bf145e07be89699dd5ef52e337b0b4e5cfafc60877040a8aa8a153",
+        "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38"
+      },
+      {
+        "documentId": "SRC-089",
+        "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
+        "goldSha256": "50d9e57225d9cf9dcf174e5b5b7422158c06d7327241d77fc4d019831b8a808d",
+        "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5"
+      },
+      {
+        "documentId": "SRC-095",
+        "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+        "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+        "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84"
+      }
+    ],
+    "gold": "READ_ONLY_VIA_FROZEN_PAIRED_SCORE; NOT_MODIFIED",
+    "rawResponses": "NOT_COPIED_OR_CHANGED; THIS_SANITIZED_ARTIFACT_OMITS_SOURCE_TEXT_AND_RAW_SSE"
+  },
+  "safety": {
+    "providerCalls": 0,
+    "retry": 0,
+    "repair": false,
+    "fallback": false,
+    "goldMutation": "NONE",
+    "runtimeChanged": false
+  },
+  "summary": {
+    "trueAnchorErrorCases": 4,
+    "wrongInBothArms": 3,
+    "armAWrongArmBRight": 1,
+    "armARightArmBWrong": 0,
+    "sharedUnderextent": 1,
+    "sharedOverextent": 2,
+    "armAOnlyOverextent": 1,
+    "falseG2AAnchorsExcluded": true,
+    "selectionBasis": "POST_HOC_TRUE_ANCHOR_ERRORS_FROM_FROZEN_A_OF_THIS_EVIDENCE_COMPLETE_A_B_EXPERIMENT",
+    "taxonomyIsDiagnostic": true,
+    "causalAttribution": "NOT_ESTABLISHED; ARM B CHANGED THE FULL EVIDENCE BUNDLE"
+  },
+  "evidenceInterpretation": {
+    "likelyBSignal": "The only corrected case has a strong typography transition at the Gold exit (16 pt regular title to 10 pt italic date); this is correlation within a composite treatment, not component attribution.",
+    "typographyCounterexamples": "The shared SRC-089 underextent has same-size/same-family bold lines; DOC-0256 overextent has same-size/same-family/same-weight centered title, date, and meeting-mode lines.",
+    "geometryAndSpacing": "No common geometric separator is visible: SRC-089 needs a left-aligned label joined to a centered title; DOC-0256 keeps the title and metadata centered; their top-coordinate gaps do not uniquely mark the Gold boundary.",
+    "sourceBlockTopology": "Parser block IDs are available in B but all relevant lines are separate blocks, including true multipart title lines; block identity cannot be used as a hard boundary rule.",
+    "structuralScope": "The canonical evidence label is document_body for these local windows and is not discriminative. Do not add semantic scopes such as TITLE, DATE, BODY, or HEADING as supposedly neutral facts.",
+    "firstOutsideRole": "Descriptive model output at its predicted boundary only; not a Gold role label and not scored for role accuracy."
+  },
+  "ablationRecommendation": {
+    "firstDiagnostic": "TYPOGRAPHY_ONLY, compared with the frozen Arm A projection, on the four fixed error anchors; especially test whether it reproduces the SRC-041/O4 correction.",
+    "laterOneGroupArms": [
+      "GEOMETRY_ONLY",
+      "SPACING_ONLY",
+      "SOURCE_BLOCK_TOPOLOGY_ONLY"
+    ],
+    "structuralScopeArm": "Use source-native block topology only if that is what is meant; the current document_body label has no local variation and semantic role labels remain forbidden.",
+    "interpretationLimit": "These four cases were selected after observing errors. Any ablation on them is diagnostic only; a claimed score gain requires a preregistered full 31-request cohort or a separately frozen held-out cohort.",
+    "noProviderAuthorizationImplied": true
+  },
+  "cases": [
+    {
+      "documentId": "SRC-089",
+      "anchor": "O17",
+      "anchorAlias": "L0014:S0",
+      "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+      "sourceUniverseSha256": "949dedfe976c1baeebf60bcad4bee75a5d5eafef7886bb2e9385f0708c7fb494",
+      "canonicalGoldSha256": "50d9e57225d9cf9dcf174e5b5b7422158c06d7327241d77fc4d019831b8a808d",
+      "taxonomy": "UNDEREXTENT_CROSS_BLOCK_TITLE_COMPLEMENT_MISREAD_AS_NEW_HEADING",
+      "finding": "The chapter label and centered title line are one Gold heading. The model stops after the label and explicitly calls the complementary title line a new heading in both arms.",
+      "AOutcome": "UNDEREXTENT",
+      "BOutcome": "UNDEREXTENT",
+      "PairedTransition": "BOTH_WRONG",
+      "goldExtent": [
+        "L0014:S0",
+        "L0015:S0"
+      ],
+      "pair": {
+        "armA": {
+          "outcome": "UNDEREXTENT",
+          "predictedEndOccurrence": "O17",
+          "predictedEndAlias": "L0014:S0",
+          "firstOutsideOccurrence": "O18",
+          "firstOutsideRole": "NEW_HEADING"
+        },
+        "armB": {
+          "outcome": "UNDEREXTENT",
+          "predictedEndOccurrence": "O17",
+          "predictedEndAlias": "L0014:S0",
+          "firstOutsideOccurrence": "O18",
+          "firstOutsideRole": "NEW_HEADING"
+        },
+        "transition": "BOTH_WRONG",
+        "promptTokens": {
+          "armA": 8433,
+          "armB": 33140
+        },
+        "providerBodySha256": {
+          "armA": "7a1d150da813749e3caae3c0deec117e47b9d8e7ecdd35857f0becf564571701",
+          "armB": "d753b6bc9d36dfead94761faf12629db5d37c1605a7cf285ba86f9f81095f8f0"
+        }
+      },
+      "localSource": [
+        {
+          "occurrence": "O17",
+          "offsetFromAnchor": 0,
+          "alias": "L0014:S0",
+          "goldMembership": "GOLD_MEMBER",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "SELECTED_MEMBER",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 416.58786621093765,
+            "left": 72.474609375,
+            "right": 121.99453125,
+            "width": 49.519921874999994
+          },
+          "parserLayoutBlockId": "b15",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 12,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 1,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "timesnewromanps-boldmt"
+          },
+          "verticalPosition": 0.499,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "marker:loose_labelled",
+            "marker_only_source"
+          ]
+        },
+        {
+          "occurrence": "O18",
+          "offsetFromAnchor": 1,
+          "alias": "L0015:S0",
+          "goldMembership": "GOLD_MEMBER",
+          "armAMembership": "OUTSIDE",
+          "armBMembership": "OUTSIDE",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 389.6411098345591,
+            "left": 237.966328125,
+            "right": 373.993359375,
+            "width": 136.02703125000002
+          },
+          "parserLayoutBlockId": "b16",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 12,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 1,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "timesnewromanps-boldmt"
+          },
+          "verticalPosition": 0.458,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O19",
+          "offsetFromAnchor": 2,
+          "alias": "L0016:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "OUTSIDE",
+          "armBMembership": "OUTSIDE",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 360.87111328125025,
+            "left": 72.09375,
+            "right": 347.467265625,
+            "width": 275.373515625
+          },
+          "parserLayoutBlockId": "b17",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 12,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 0.19,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "timesnewromanpsmt"
+          },
+          "verticalPosition": 0.414,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "marker:labelled"
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-089",
+      "anchor": "O19",
+      "anchorAlias": "L0016:S0",
+      "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+      "sourceUniverseSha256": "949dedfe976c1baeebf60bcad4bee75a5d5eafef7886bb2e9385f0708c7fb494",
+      "canonicalGoldSha256": "50d9e57225d9cf9dcf174e5b5b7422158c06d7327241d77fc4d019831b8a808d",
+      "taxonomy": "OVEREXTENT_HEADING_INTO_NUMBERED_PROSE",
+      "finding": "The Article 1 heading is followed by numbered legal prose. Both arms absorb the first provision; A continues through the second provision, while B stops only before it.",
+      "AOutcome": "OVEREXTENT",
+      "BOutcome": "OVEREXTENT",
+      "PairedTransition": "BOTH_WRONG",
+      "goldExtent": [
+        "L0016:S0"
+      ],
+      "pair": {
+        "armA": {
+          "outcome": "OVEREXTENT",
+          "predictedEndOccurrence": "O26",
+          "predictedEndAlias": "L0023:S0",
+          "firstOutsideOccurrence": "O27",
+          "firstOutsideRole": "NEW_HEADING"
+        },
+        "armB": {
+          "outcome": "OVEREXTENT",
+          "predictedEndOccurrence": "O23",
+          "predictedEndAlias": "L0020:S0",
+          "firstOutsideOccurrence": "O24",
+          "firstOutsideRole": "BODY_CONTENT"
+        },
+        "transition": "BOTH_WRONG",
+        "promptTokens": {
+          "armA": 8257,
+          "armB": 32344
+        },
+        "providerBodySha256": {
+          "armA": "1905c7b397bac2eb8426d044d03a48c57ec6d503d1b849d18dea5e3e5dc1a7c1",
+          "armB": "fdb357aa1d87b15fa00edd68f39d5f67b345a18c78c1a1929518292c2e90fd51"
+        }
+      },
+      "localSource": [
+        {
+          "occurrence": "O19",
+          "offsetFromAnchor": 0,
+          "alias": "L0016:S0",
+          "goldMembership": "GOLD_MEMBER",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "SELECTED_MEMBER",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 360.87111328125025,
+            "left": 72.09375,
+            "right": 347.467265625,
+            "width": 275.373515625
+          },
+          "parserLayoutBlockId": "b17",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 12,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 0.19,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "timesnewromanpsmt"
+          },
+          "verticalPosition": 0.414,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "marker:labelled"
+          ]
+        },
+        {
+          "occurrence": "O20",
+          "offsetFromAnchor": 1,
+          "alias": "L0017:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "SELECTED_MEMBER",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 333.04467773437506,
+            "left": 73.40625,
+            "right": 524.107265625,
+            "width": 450.70101562499997
+          },
+          "parserLayoutBlockId": "b18",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 12,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 0,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "timesnewromanpsmt"
+          },
+          "verticalPosition": 0.372,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "marker:arabic"
+          ]
+        },
+        {
+          "occurrence": "O21",
+          "offsetFromAnchor": 2,
+          "alias": "L0018:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "SELECTED_MEMBER",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 319.2966723632812,
+            "left": 72.240234375,
+            "right": 524.346328125,
+            "width": 452.10609375
+          },
+          "parserLayoutBlockId": "b18",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 12,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 0,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "timesnewromanpsmt"
+          },
+          "verticalPosition": 0.351,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O22",
+          "offsetFromAnchor": 3,
+          "alias": "L0019:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "SELECTED_MEMBER",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 305.5152307412795,
+            "left": 71.958984375,
+            "right": 526.7092968750001,
+            "width": 454.75031250000006
+          },
+          "parserLayoutBlockId": "b18",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 12,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 0,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "timesnewromanpsmt"
+          },
+          "verticalPosition": 0.33,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O23",
+          "offsetFromAnchor": 4,
+          "alias": "L0020:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "SELECTED_MEMBER",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 291.93378466109164,
+            "left": 72.3984375,
+            "right": 440.75039062499997,
+            "width": 368.35195312499997
+          },
+          "parserLayoutBlockId": "b18",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 12,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 0,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "timesnewromanpsmt"
+          },
+          "verticalPosition": 0.31,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O24",
+          "offsetFromAnchor": 5,
+          "alias": "L0021:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "OUTSIDE",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 263.81888535610534,
+            "left": 72.25781249999994,
+            "right": 537.4080468749999,
+            "width": 465.1502343749999
+          },
+          "parserLayoutBlockId": "b19",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 12,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 0,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "timesnewromanpsmt"
+          },
+          "verticalPosition": 0.267,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "marker:arabic"
+          ]
+        },
+        {
+          "occurrence": "O25",
+          "offsetFromAnchor": 6,
+          "alias": "L0022:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "OUTSIDE",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 250.166350661058,
+            "left": 72.40429687499994,
+            "right": 505.3872656249999,
+            "width": 432.98296874999994
+          },
+          "parserLayoutBlockId": "b19",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 12,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 0,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "timesnewromanpsmt"
+          },
+          "verticalPosition": 0.246,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O26",
+          "offsetFromAnchor": 7,
+          "alias": "L0023:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "OUTSIDE",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 236.3889311079548,
+            "left": 71.95898437499994,
+            "right": 174.47039062500002,
+            "width": 102.51140625000008
+          },
+          "parserLayoutBlockId": "b19",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 12,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 0,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "timesnewromanpsmt"
+          },
+          "verticalPosition": 0.225,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O27",
+          "offsetFromAnchor": 8,
+          "alias": "L0024:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "OUTSIDE",
+          "armBMembership": "OUTSIDE",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 208.53130859375042,
+            "left": 72.09374999999994,
+            "right": 531.0232031249999,
+            "width": 458.92945312499995
+          },
+          "parserLayoutBlockId": "b20",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 12,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 0.121,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "timesnewromanpsmt"
+          },
+          "verticalPosition": 0.183,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "marker:labelled"
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "SRC-041",
+      "anchor": "O4",
+      "anchorAlias": "L3526:S0",
+      "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+      "sourceUniverseSha256": "7770864ee6870409b393ca004c23d6d9f546d084c57d4e685b0d0a1e357b744b",
+      "canonicalGoldSha256": "e6ae7b0934bf145e07be89699dd5ef52e337b0b4e5cfafc60877040a8aa8a153",
+      "taxonomy": "ARM_A_OVEREXTENT_B_EXACT_AT_TITLE_TO_DATE_TRANSITION",
+      "finding": "A absorbs the date and unit note after a two-line table title. B ends at the Gold boundary immediately before a visibly smaller italic date line; the treatment changed multiple evidence groups, so typography is a lead hypothesis, not an isolated cause.",
+      "AOutcome": "OVEREXTENT",
+      "BOutcome": "EXACT",
+      "PairedTransition": "A_WRONG_TO_B_RIGHT",
+      "goldExtent": [
+        "L3526:S0",
+        "L3527:S0"
+      ],
+      "pair": {
+        "armA": {
+          "outcome": "OVEREXTENT",
+          "predictedEndOccurrence": "O7",
+          "predictedEndAlias": "L3529:S0",
+          "firstOutsideOccurrence": "O8",
+          "firstOutsideRole": "TABLE_OR_STRUCTURED_CONTENT"
+        },
+        "armB": {
+          "outcome": "EXACT",
+          "predictedEndOccurrence": "O5",
+          "predictedEndAlias": "L3527:S0",
+          "firstOutsideOccurrence": "O6",
+          "firstOutsideRole": "BODY_CONTENT"
+        },
+        "transition": "A_WRONG_TO_B_RIGHT",
+        "promptTokens": {
+          "armA": 10561,
+          "armB": 38437
+        },
+        "providerBodySha256": {
+          "armA": "05c3e8ed6b86e5d6ccf9481eaeefe9bb1ceb86adc02c3a82ff33264f396a5e10",
+          "armB": "ee09cc4062111661cae15fb7dbf07da03fc3c05a99e3eb50efb2e7a2ff52ac40"
+        }
+      },
+      "localSource": [
+        {
+          "occurrence": "O4",
+          "offsetFromAnchor": 0,
+          "alias": "L3526:S0",
+          "goldMembership": "GOLD_MEMBER",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "SELECTED_MEMBER",
+          "page": 93,
+          "sourceCoordinates": {
+            "topY": 732.0830969711543,
+            "left": 72.71875,
+            "right": 353.4705625,
+            "width": 280.7518125
+          },
+          "parserLayoutBlockId": "b5564",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 16,
+            "fontSizeToBodyRatio": 2,
+            "boldRatio": 0,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "arialmt"
+          },
+          "verticalPosition": 0.957,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O5",
+          "offsetFromAnchor": 1,
+          "alias": "L3527:S0",
+          "goldMembership": "GOLD_MEMBER",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "SELECTED_MEMBER",
+          "page": 93,
+          "sourceCoordinates": {
+            "topY": 712.8870432211534,
+            "left": 72.796875,
+            "right": 364.047375,
+            "width": 291.2505
+          },
+          "parserLayoutBlockId": "b5565",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 16,
+            "fontSizeToBodyRatio": 2,
+            "boldRatio": 0,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "arialmt"
+          },
+          "verticalPosition": 0.931,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O6",
+          "offsetFromAnchor": 2,
+          "alias": "L3528:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "OUTSIDE",
+          "page": 93,
+          "sourceCoordinates": {
+            "topY": 695.2594631250003,
+            "left": 72.33203125,
+            "right": 135.51265625,
+            "width": 63.18062499999999
+          },
+          "parserLayoutBlockId": "b5566",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 10,
+            "fontSizeToBodyRatio": 1.25,
+            "boldRatio": 0,
+            "italicRatio": 1,
+            "lineCount": 1,
+            "dominantFontName": "arial-italicmt"
+          },
+          "verticalPosition": 0.907,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "marker:loose_labelled",
+            "marker_only_source"
+          ]
+        },
+        {
+          "occurrence": "O7",
+          "offsetFromAnchor": 3,
+          "alias": "L3529:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "OUTSIDE",
+          "page": 93,
+          "sourceCoordinates": {
+            "topY": 672.0510260937504,
+            "left": 72.359375,
+            "right": 199.519625,
+            "width": 127.16024999999999
+          },
+          "parserLayoutBlockId": "b5567",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 8,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 0,
+            "italicRatio": 1,
+            "lineCount": 1,
+            "dominantFontName": "arial-italicmt"
+          },
+          "verticalPosition": 0.876,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O8",
+          "offsetFromAnchor": 4,
+          "alias": "L3530:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "OUTSIDE",
+          "armBMembership": "OUTSIDE",
+          "page": 93,
+          "sourceCoordinates": {
+            "topY": 660.2144733593746,
+            "left": 290.08249,
+            "right": 511.22746875,
+            "width": 221.14497875
+          },
+          "parserLayoutBlockId": "b5568",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 8,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 0,
+            "italicRatio": 1,
+            "lineCount": 1,
+            "dominantFontName": "arial-italicmt"
+          },
+          "verticalPosition": 0.86,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        }
+      ]
+    },
+    {
+      "documentId": "DOC-0256",
+      "anchor": "O1",
+      "anchorAlias": "L0000:S0",
+      "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+      "sourceUniverseSha256": "5640889907eea803eb3196a3d4498743c4f5131054f69bde3d382845662e3e72",
+      "canonicalGoldSha256": "0c0c2804d9b33b6136bdfa30883c9744231148708dd0c81dd2c11ac7611a922f",
+      "taxonomy": "OVEREXTENT_TITLE_INTO_DATE_AND_MEETING_MODE",
+      "finding": "Both arms extend the two-line meeting title through its date and meeting-mode lines, then stop before the first agenda heading. Those four front-matter lines share font family, size, weight, centering, and regular vertical rhythm.",
+      "AOutcome": "OVEREXTENT",
+      "BOutcome": "OVEREXTENT",
+      "PairedTransition": "BOTH_WRONG",
+      "goldExtent": [
+        "L0000:S0",
+        "L0001:S0"
+      ],
+      "pair": {
+        "armA": {
+          "outcome": "OVEREXTENT",
+          "predictedEndOccurrence": "O4",
+          "predictedEndAlias": "L0003:S0",
+          "firstOutsideOccurrence": "O5",
+          "firstOutsideRole": "NEW_HEADING"
+        },
+        "armB": {
+          "outcome": "OVEREXTENT",
+          "predictedEndOccurrence": "O4",
+          "predictedEndAlias": "L0003:S0",
+          "firstOutsideOccurrence": "O5",
+          "firstOutsideRole": "NEW_HEADING"
+        },
+        "transition": "BOTH_WRONG",
+        "promptTokens": {
+          "armA": 10564,
+          "armB": 39832
+        },
+        "providerBodySha256": {
+          "armA": "06058fac2f49f613416f53a3a2691cdbee427827b97272457b02129cab451cb5",
+          "armB": "731ad57d580dfd3c30911f89f1f269809f46fbc2d4770a369208d583858d30be"
+        }
+      },
+      "localSource": [
+        {
+          "occurrence": "O1",
+          "offsetFromAnchor": 0,
+          "alias": "L0000:S0",
+          "goldMembership": "GOLD_MEMBER",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "SELECTED_MEMBER",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 642.60483609375,
+            "left": 169.46663812500003,
+            "right": 442.67272462499994,
+            "width": 273.2060864999999
+          },
+          "parserLayoutBlockId": "b1",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 11,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 1,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "calibri-bold"
+          },
+          "verticalPosition": 0.893,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O2",
+          "offsetFromAnchor": 1,
+          "alias": "L0001:S0",
+          "goldMembership": "GOLD_MEMBER",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "SELECTED_MEMBER",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 629.1485669010415,
+            "left": 193.57799812500008,
+            "right": 418.5217068750003,
+            "width": 224.9437087500002
+          },
+          "parserLayoutBlockId": "b2",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 11,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 1,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "calibri-bold"
+          },
+          "verticalPosition": 0.872,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O3",
+          "offsetFromAnchor": 2,
+          "alias": "L0002:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "SELECTED_MEMBER",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 602.2549001953122,
+            "left": 227.56149000000008,
+            "right": 384.2942137500001,
+            "width": 156.73272375000002
+          },
+          "parserLayoutBlockId": "b3",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 11,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 1,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "calibri-bold"
+          },
+          "verticalPosition": 0.831,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O4",
+          "offsetFromAnchor": 3,
+          "alias": "L0003:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "SELECTED_MEMBER",
+          "armBMembership": "SELECTED_MEMBER",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 575.0192324278843,
+            "left": 270.97943812500006,
+            "right": 341.47816124999997,
+            "width": 70.49872312499991
+          },
+          "parserLayoutBlockId": "b4",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 11,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 1,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "calibri-bold"
+          },
+          "verticalPosition": 0.79,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        },
+        {
+          "occurrence": "O5",
+          "offsetFromAnchor": 4,
+          "alias": "L0004:S0",
+          "goldMembership": "GOLD_OUTSIDE",
+          "armAMembership": "OUTSIDE",
+          "armBMembership": "OUTSIDE",
+          "page": 1,
+          "sourceCoordinates": {
+            "topY": 534.5914562499994,
+            "left": 72.21691687500008,
+            "right": 223.77478725000014,
+            "width": 151.55787037500005
+          },
+          "parserLayoutBlockId": "b5",
+          "structuralScope": "document_body",
+          "typography": {
+            "fontSize": 11,
+            "fontSizeToBodyRatio": 1,
+            "boldRatio": 1,
+            "italicRatio": 0,
+            "lineCount": 1,
+            "dominantFontName": "calibri-bold"
+          },
+          "verticalPosition": 0.728,
+          "observedSourceEvidence": [
+            "standalone_line",
+            "no_marker"
+          ]
+        }
+      ]
+    }
+  ]
+}
