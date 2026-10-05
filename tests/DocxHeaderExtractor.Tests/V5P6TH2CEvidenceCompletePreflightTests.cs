@@ -33,6 +33,88 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         int GeometryFactRows, int RichTypographyRows, int TransitionFactRows,
         string SystemPrompt, string UserMessage, byte[] ProviderBody, int MaxCompletionTokens);
     private sealed record PlannedCall(string Arm, ArmRequest Request);
+    internal sealed record EvidenceArmRequest(string DocumentId, string PackId, string Anchor, string SourceSha256,
+        string SourceUniverseSha256, string UserMessageSha256, string SystemPrompt, string UserMessage,
+        byte[] ProviderBody, string ProviderBodySha256, int ProviderBodyBytes, int MaxCompletionTokens,
+        IReadOnlyList<string> OccurrenceHandles);
+
+    internal static EvidenceArmRequest BuildArmBRequest(string repo, P6TH2CEndPointerCanary.Request request)
+    {
+        var prompt = P6TH2CCleanPairedBoundaryTreatment.V2SemanticBoundaryInstruction + "\n\n" +
+                     P6TH2CCleanPairedBoundaryTreatment.SharedContractInstruction.Replace(
+                         "Use source text and only the supplied neutral physical/style facts. Do not use hierarchy, candidate alternatives, relations, coordinates, aliases, rationale, confidence, or unissued evidence.",
+                         CoordinateClarification.Trim(), StringComparison.Ordinal);
+        using var baseUser = JsonDocument.Parse(request.UserMessage);
+        var completeUser = RewriteProtocolVersion(JsonNode.Parse(baseUser.RootElement.GetRawText())?.AsObject()
+            ?? throw new InvalidDataException("h2c-evidence-current-user-invalid"));
+        var occurrences = completeUser["anchors"]!.AsArray()[0]!["occurrences"]!.AsArray();
+        var pdfPath = TestRepository.Path(request.Source.PdfPath);
+        IReadOnlyList<PdfLine> lines;
+        Dictionary<int, (double Width, double Height)> pageSizes;
+        using (var pdf = PdfDocument.Open(pdfPath))
+        {
+            lines = PdfLineExtraction.ExtractLines(pdf);
+            pageSizes = pdf.GetPages().ToDictionary(page => page.Number, page => (page.Width, page.Height));
+        }
+        var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
+        Assert.Equal(request.SourceSha256, sourceSha);
+        var authority = PdfStructuredSourceAuthorityBuilder.Build(lines, sourceSha);
+        Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
+        var gaps = BuildPageMedianGaps(authority);
+        var aliases = BuildF1OccurrenceAliasMap(repo, request.Source, request.PackId, sourceSha, request.SourceUniverseSha256);
+        var start = Array.FindIndex(authority.Atoms.ToArray(), atom => atom.Alias == request.AnchorAlias);
+        Assert.True(start >= 0, $"h2c-evidence-anchor-alias-missing:{request.Source.DocumentId}:{request.Anchor}");
+        Assert.Equal(request.IssuedOccurrences.Count, occurrences.Count);
+        for (var index = 0; index < occurrences.Count; index++)
+        {
+            var atomIndex = start + index;
+            Assert.True(atomIndex < authority.Atoms.Count, $"h2c-evidence-tail-out-of-range:{request.Source.DocumentId}:{request.Anchor}");
+            var occurrence = occurrences[index]!.AsObject();
+            var atom = authority.Atoms[atomIndex];
+            Assert.Equal(request.IssuedOccurrences[index], occurrence["occurrence"]!.GetValue<string>());
+            Assert.Equal(atom.Alias, aliases[request.IssuedOccurrences[index]]);
+            Assert.Equal(atom.Page, occurrence["page"]!.GetValue<int>());
+            Assert.Equal(atom.Text, occurrence["text"]!.GetValue<string>());
+            var source = authority.Contexts[atom.SourceId].Source;
+            var page = pageSizes[atom.Page];
+            var width = Math.Max(0, source.Right - source.Left);
+            var geometry = new
+            {
+                left = Round(source.Left, 3), right = Round(source.Right, 3), width = Round(width, 3),
+                pageWidth = Round(page.Width, 3), pageHeight = Round(page.Height, 3),
+                leftNormalized = Ratio(source.Left, page.Width), rightNormalized = Ratio(source.Right, page.Width),
+                widthNormalized = Ratio(width, page.Width), topY = Round(source.TopY, 3), bottomY = Round(source.BottomY, 3),
+                topFromPageBottomNormalized = Ratio(source.TopY, page.Height), bottomFromPageBottomNormalized = Ratio(source.BottomY, page.Height),
+                verticalPosition = source.VerticalPosition is { } vertical ? Round(vertical, 6) : (double?)null,
+            };
+            object? transition = null;
+            if (index > 0)
+            {
+                var previous = authority.Contexts[authority.Atoms[atomIndex - 1].SourceId].Source;
+                var gapPoints = previous.Page == source.Page ? previous.BottomY - source.TopY : (double?)null;
+                var scale = Math.Max(previous.FontSize, source.FontSize);
+                var pageMedian = gaps.GetValueOrDefault(source.Page);
+                transition = new
+                {
+                    gapPoints = gapPoints is { } gap ? Round(gap, 3) : (double?)null,
+                    gapInFontSizes = gapPoints is { } normalizedGap && scale > 0 ? Round(normalizedGap / scale, 4) : (double?)null,
+                    pageMedianGapPoints = pageMedian is { } median ? Round(median, 3) : (double?)null,
+                    gapOverPageMedian = gapPoints is { } currentGap && pageMedian is > 0 ? Round(currentGap / pageMedian.Value, 4) : (double?)null,
+                };
+            }
+            var blockId = authority.LayoutBlockByAtom.GetValueOrDefault(atom.SourceId);
+            Assert.False(string.IsNullOrWhiteSpace(blockId));
+            occurrence["geometry"] = JsonSerializer.SerializeToNode(geometry);
+            occurrence["parserLayoutBlockId"] = blockId;
+            occurrence["typography"] = JsonSerializer.SerializeToNode(TypographyFacts(source.Typography));
+            occurrence["transitionFromPrevious"] = JsonSerializer.SerializeToNode(transition);
+        }
+        var userMessage = completeUser.ToJsonString(CanonicalJsonOptions);
+        var body = BuildBody(prompt, userMessage, request.MaxCompletionTokens);
+        return new EvidenceArmRequest(request.Source.DocumentId, request.PackId, request.Anchor,
+            request.SourceSha256, request.SourceUniverseSha256, Hash(userMessage), prompt, userMessage,
+            body.PayloadBytes, body.Hash, body.Bytes, request.MaxCompletionTokens, request.IssuedOccurrences);
+    }
 
     [Fact]
     public async Task H2C_evidence_complete_pair_freezes_projection_only_delta_and_corrects_coordinate_wording()
@@ -495,7 +577,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         });
     }
 
-    private static bool TryParseEndPointer(string raw, IReadOnlyList<string> issuedOccurrences, string anchor)
+    internal static bool TryParseEndPointer(string raw, IReadOnlyList<string> issuedOccurrences, string anchor)
     {
         try
         {

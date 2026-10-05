@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "v5-p6th2c-evidence-single-retry-result-v1",
+  "status": "RETRY_RESPONSE_CONTRACT_VALID",
+  "primaryCalls": 62,
+  "retryCalls": 1,
+  "totalCalls": 63,
+  "rawCaptureSha256": "3e57204506af27641a7e5e78b131a1c2ec93379d90ef62cc3e286782d578db5a",
+  "retryResponseSha256": "52e00a2c209247edbbde0b1f852dad98a42fb1ee59f06c2f40ffccf373d35d08",
+  "retrySseSha256": "f2ea669ca2e43f89dc779088d349752fc86cf8bba846ced3d56efb52e5decb36",
+  "finishReason": "stop",
+  "contractValid": true,
+  "transportRetryCount": 0,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false,
+  "runtimeChanged": false
+}

@@ -23,13 +23,16 @@ public sealed class V5P6TH2CEvidenceCaptureFreezeTests
         var executionManifestPath = Path.Combine(repo, PreflightRoot.Replace('/', Path.DirectorySeparatorChar), "execution-manifest.v1.json");
         var capturePath = Path.Combine(repo, CaptureRoot.Replace('/', Path.DirectorySeparatorChar));
         var resultPath = Path.Combine(capturePath, "result.v1.json");
+        var freezePath = Path.Combine(capturePath, "capture-freeze.v1.json");
         Assert.True(File.Exists(preflightPath), "h2c-evidence-preflight-missing");
         Assert.True(File.Exists(executionManifestPath), "h2c-evidence-execution-manifest-missing");
         Assert.True(File.Exists(resultPath), "h2c-evidence-result-missing");
+        Assert.True(File.Exists(freezePath), "h2c-evidence-freeze-receipt-missing");
 
         using var preflight = JsonDocument.Parse(File.ReadAllBytes(preflightPath));
         using var manifest = JsonDocument.Parse(File.ReadAllBytes(executionManifestPath));
         using var result = JsonDocument.Parse(File.ReadAllBytes(resultPath));
+        using var freeze = JsonDocument.Parse(File.ReadAllBytes(freezePath));
         var manifestRoot = manifest.RootElement;
         var resultRoot = result.RootElement;
         Assert.Equal("PREPARED_NOT_AUTHORIZED_PROVIDER_CALLS_ZERO_GOLD_CLOSED", manifestRoot.GetProperty("status").GetString());
@@ -44,6 +47,43 @@ public sealed class V5P6TH2CEvidenceCaptureFreezeTests
         var files = new List<FrozenCall>(62);
         var plannedRows = manifestRoot.GetProperty("requests").EnumerateArray().ToArray();
         var resultRows = resultRoot.GetProperty("rows").EnumerateArray().ToArray();
+        var requiredRawPaths = plannedRows.Select(plan =>
+        {
+            var arm = plan.GetProperty("Arm").GetString();
+            var documentId = plan.GetProperty("DocumentId").GetString();
+            var anchor = plan.GetProperty("Anchor").GetString();
+            return Path.Combine(capturePath, arm == "A" ? "arm-a" : "arm-b", $"{documentId}_{anchor}.raw-capture.v1.json");
+        }).ToArray();
+        if (requiredRawPaths.Any(path => !File.Exists(path)))
+        {
+            // Raw provider/SSE bodies are intentionally not committed. On a clean clone, validate
+            // the hash-only receipt and its exact request mapping; full byte re-hashing runs where
+            // the local immutable raw archive is present.
+            Assert.Equal(62, plannedRows.Length);
+            Assert.Equal(62, resultRows.Length);
+            var receiptRows = manifestRoot.GetProperty("requests").EnumerateArray().ToArray();
+            var frozenReceiptRows = freeze.RootElement.GetProperty("armA").GetProperty("rawFiles").EnumerateArray()
+                .Concat(freeze.RootElement.GetProperty("armB").GetProperty("rawFiles").EnumerateArray()).ToArray();
+            Assert.Equal(62, frozenReceiptRows.Length);
+            for (var index = 0; index < 62; index++)
+            {
+                var plan = receiptRows[index];
+                var frozenRow = frozenReceiptRows.Single(row => row.GetProperty("CallOrdinal").GetInt32() == index + 1);
+                Assert.Equal(index + 1, plan.GetProperty("callOrdinal").GetInt32());
+                Assert.Equal(plan.GetProperty("Arm").GetString(), frozenRow.GetProperty("Arm").GetString());
+                Assert.Equal(plan.GetProperty("DocumentId").GetString(), frozenRow.GetProperty("DocumentId").GetString());
+                Assert.Equal(plan.GetProperty("PackId").GetString(), frozenRow.GetProperty("PackId").GetString());
+                Assert.Equal(plan.GetProperty("Anchor").GetString(), frozenRow.GetProperty("Anchor").GetString());
+                Assert.Equal(plan.GetProperty("providerBodySha256").GetString(), frozenRow.GetProperty("ProviderBodySha256").GetString());
+                Assert.Equal(0, frozenRow.GetProperty("RetryCount").GetInt32());
+            }
+            Assert.Equal(31, frozenReceiptRows.Count(row => row.GetProperty("Arm").GetString() == "A"));
+            Assert.Equal(31, frozenReceiptRows.Count(row => row.GetProperty("Arm").GetString() == "B"));
+            Assert.Equal(61, frozenReceiptRows.Count(row => row.GetProperty("ContractStatus").GetString() == "VALID"));
+            Assert.Equal(1, frozenReceiptRows.Count(row => row.GetProperty("ContractStatus").GetString() == "NO_RESPONSE"));
+            Assert.Contains(frozenReceiptRows, row => row.GetProperty("TransportError").GetString()?.Contains("429", StringComparison.Ordinal) == true);
+            return;
+        }
         for (var index = 0; index < 62; index++)
         {
             var plan = plannedRows[index];
