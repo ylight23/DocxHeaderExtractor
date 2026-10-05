@@ -1,0 +1,1442 @@
+{
+  "schemaVersion": "v5-p6th2c-clean-v1-v2-paired-gold-audit-v1",
+  "status": "PAIRED_GOLD_SCORE_RAW_FROZEN_NO_PROVIDER_CALLS",
+  "authority": {
+    "preflightSha256": "edbd5c666c4d543af4675895c240c50cc36e35df09e430e91b7e0a3d076b9d18",
+    "v1ResultSha256": "e2a4fe2faa52822aeec322db0e5450fc00c7294b4bd0f0aa4e2e3f8689c801fd",
+    "v2ResultSha256": "c5e32d8a8e488030756e798cae2eb344c6b5411e3d04c9e0b17dee5cef3d90bc",
+    "goldAuthorities": [
+      {
+        "documentId": "SRC-089",
+        "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
+        "goldSha256": "50d9e57225d9cf9dcf174e5b5b7422158c06d7327241d77fc4d019831b8a808d",
+        "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5"
+      },
+      {
+        "documentId": "SRC-041",
+        "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-041.gold.v1.json",
+        "goldSha256": "e6ae7b0934bf145e07be89699dd5ef52e337b0b4e5cfafc60877040a8aa8a153",
+        "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38"
+      },
+      {
+        "documentId": "SRC-095",
+        "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+        "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+        "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84"
+      },
+      {
+        "documentId": "DOC-0252",
+        "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json",
+        "goldSha256": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+        "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61"
+      },
+      {
+        "documentId": "DOC-0256",
+        "canonicalGoldPath": "eval/a99-closed-loop/gold-current/documents/DOC-0256.gold.v1.json",
+        "goldSha256": "0c0c2804d9b33b6136bdfa30883c9744231148708dd0c81dd2c11ac7611a922f",
+        "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b"
+      }
+    ],
+    "primaryProviderCallsDuringAudit": 0,
+    "goldMutation": "NONE",
+    "rawCaptureMutation": "NONE",
+    "runtimeChanged": false
+  },
+  "pairedCaptureIntegrity": {
+    "requestPairs": 31,
+    "v1ProviderCalls": 31,
+    "v2ProviderCalls": 31,
+    "v1Stop": 31,
+    "v2Stop": 31,
+    "v1Retries": 0,
+    "v2Retries": 0,
+    "providerBodyHashesMatchPreflight": true,
+    "actualV1V2UserMessageHashMatches": 31,
+    "preregisteredUserMessageHashFieldsMatchingActual": 0,
+    "preregisteredUserHashFieldInterpretation": "STALE_METADATA; EXACT_PROVIDER_BODY_HASH_AND_PAIRED_ACTUAL_USER_HASH_USED",
+    "sameModelProviderReasoningAndPacking": true
+  },
+  "cohort": {
+    "registeredRequests": 31,
+    "trueGoldAnchors": 27,
+    "falseG2aAnchors": 4
+  },
+  "score": {
+    "V1": {
+      "exact": 15,
+      "overextent": 12,
+      "underextent": 0,
+      "wrongParts": 0,
+      "invalidContract": 0,
+      "singletonExact": 10,
+      "singletonN": 20,
+      "multipartExact": 5,
+      "multipartN": 7,
+      "firstOutsideExact": 15,
+      "firstOutsideN": 27,
+      "overrunDistance": {
+        "total": 132,
+        "meanAmongOverextents": 11,
+        "max": 28
+      },
+      "byOutcome": [
+        {
+          "outcome": "EXACT",
+          "count": 15
+        },
+        {
+          "outcome": "OVEREXTENT",
+          "count": 12
+        }
+      ]
+    },
+    "V2": {
+      "exact": 24,
+      "overextent": 2,
+      "underextent": 1,
+      "wrongParts": 0,
+      "invalidContract": 0,
+      "singletonExact": 19,
+      "singletonN": 20,
+      "multipartExact": 5,
+      "multipartN": 7,
+      "firstOutsideExact": 24,
+      "firstOutsideN": 27,
+      "overrunDistance": {
+        "total": 6,
+        "meanAmongOverextents": 3,
+        "max": 3
+      },
+      "byOutcome": [
+        {
+          "outcome": "EXACT",
+          "count": 24
+        },
+        {
+          "outcome": "OVEREXTENT",
+          "count": 2
+        },
+        {
+          "outcome": "UNDEREXTENT",
+          "count": 1
+        }
+      ]
+    }
+  },
+  "pairedContingency": {
+    "v1WrongToV2Correct": 10,
+    "v1CorrectToV2Wrong": 1,
+    "bothCorrect": 14,
+    "bothWrong": 2
+  },
+  "rows": [
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O9",
+      "AnchorAlias": "L0006:S0",
+      "GoldExtent": [
+        "L0006:S0",
+        "L0007:S0",
+        "L0008:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O11",
+        "FirstOutsideOccurrence": "O12",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 3
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O11",
+        "FirstOutsideOccurrence": "O12",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 3
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "e66c475a9c31b411cf719a810c00db47e8784d8ee2709fb7ace400b03154f569",
+      "V2ProviderBodySha256": "717fd03d45f0591c985fdcd9e93fda980268c78ef016ea9d6d0817586c56a199",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "0e733f01714b84d7a4f1f33cbd613b9c494a12f1bd51e4f46ec3814d1eda1126",
+      "V2RawResponseSha256": "0e733f01714b84d7a4f1f33cbd613b9c494a12f1bd51e4f46ec3814d1eda1126",
+      "V1RawSseSha256": "f5078ca111446e07507664f4f8b4e5d34ebb6ae8437d1c8b39d739321496f2f9",
+      "V2RawSseSha256": "78ce4ac561c05a0dd05fb8e973cbe4d235bf65db9f01294e46883d3cad37c434",
+      "V1ReasoningTokens": 2476,
+      "V2ReasoningTokens": 2406,
+      "V1PromptTokens": 9091,
+      "V2PromptTokens": 9183,
+      "V1CompletionTokens": 2573,
+      "V2CompletionTokens": 2503
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O17",
+      "AnchorAlias": "L0014:S0",
+      "GoldExtent": [
+        "L0014:S0",
+        "L0015:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O18",
+        "FirstOutsideOccurrence": "O19",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 2
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "UNDEREXTENT",
+        "PredictedEnd": "O17",
+        "FirstOutsideOccurrence": "O18",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 2
+      },
+      "Transition": "V1_CORRECT_TO_V2_WRONG",
+      "V1ProviderBodySha256": "d177ed8b15711170aff3ae628362b8c43864618bc27af879f5223ce6016bfa3b",
+      "V2ProviderBodySha256": "ff516bd32626ef8677d9387318b74540c6ce766f18760d0f2dfd05318e0c419b",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "073c436a4c0e57d6a811184e28bbdb1a7f98346b4099adcca687fd3516c81499",
+      "V2RawResponseSha256": "4f7015797fc24941b76a24d018f98bbd83677346fd6ce3aeecfb8194d8d3c840",
+      "V1RawSseSha256": "70e8770e9c8db50f4d4b49cb1b776f4418bb3b310d95fc05211605ee46a303c5",
+      "V2RawSseSha256": "56d8b61014380796e9221d37fae74189a11a3e4423602190d7237ecdf13a0b87",
+      "V1ReasoningTokens": 1349,
+      "V2ReasoningTokens": 1162,
+      "V1PromptTokens": 8314,
+      "V2PromptTokens": 8406,
+      "V1CompletionTokens": 1442,
+      "V2CompletionTokens": 1248
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O18",
+      "AnchorAlias": "L0015:S0",
+      "GoldExtent": null,
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "FALSE_G2A_ANCHOR",
+        "PredictedEnd": null,
+        "FirstOutsideOccurrence": null,
+        "OverrunDistance": 0,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 0
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "FALSE_G2A_ANCHOR",
+        "PredictedEnd": null,
+        "FirstOutsideOccurrence": null,
+        "OverrunDistance": 0,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 0
+      },
+      "Transition": "FALSE_G2A_ANCHOR",
+      "V1ProviderBodySha256": "1f50af83a932a84d2bb1b0ef8d66bc9725fed17cf5889357aab5c81cd43cb239",
+      "V2ProviderBodySha256": "16cd238aea13b44f472989832e5c0923900b93e05cb352844bab299df0df7c20",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "27dfaeb869d792e6225ba79d523e754a2cb0b80cc0fbea0b36875aa826b6f4ac",
+      "V2RawResponseSha256": "482425687648ae51448f9223a8f2826b0b546e5a2c54c9fd6e06cb87311f178c",
+      "V1RawSseSha256": "beee3dfd2c49d646e418537494e212f8a1a382f31a70469624642f68d2856ce9",
+      "V2RawSseSha256": "c81a49aadc5228296b9d887013cc00fff968c94896737772d4e6442a7033fff4",
+      "V1ReasoningTokens": 1638,
+      "V2ReasoningTokens": 628,
+      "V1PromptTokens": 8227,
+      "V2PromptTokens": 8319,
+      "V1CompletionTokens": 1730,
+      "V2CompletionTokens": 714
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O19",
+      "AnchorAlias": "L0016:S0",
+      "GoldExtent": [
+        "L0016:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O26",
+        "FirstOutsideOccurrence": "O27",
+        "OverrunDistance": 7,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O19",
+        "FirstOutsideOccurrence": "O20",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "V1_WRONG_TO_V2_CORRECT",
+      "V1ProviderBodySha256": "2f86ae54ef36c2cb8c9c9b6790373a4116d2dd2d7a9895c4993a5229ecb45326",
+      "V2ProviderBodySha256": "4ec91ab1f86c4f2597b8002ef6b6f7b7835dea1a658ada99776802b79cabe985",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "deb36625ae0f226913fd3cb932030675300d59bdcfda61a45207a782069432da",
+      "V2RawResponseSha256": "f04baa89120172c02d02d80f0419a9f75d17d59f356981572310a39f41c6e873",
+      "V1RawSseSha256": "1a84a4f2437a25075f7f6ce634ea1bef65e5b1b8eef7d7d17c86ff2e90e07339",
+      "V2RawSseSha256": "14c1463d76afd1bac5c3f199f17f6ccb1d1c2e3a7e598c980737a9f9da855de2",
+      "V1ReasoningTokens": 1121,
+      "V2ReasoningTokens": 975,
+      "V1PromptTokens": 8138,
+      "V2PromptTokens": 8230,
+      "V1CompletionTokens": 1256,
+      "V2CompletionTokens": 1060
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O27",
+      "AnchorAlias": "L0024:S0",
+      "GoldExtent": [
+        "L0024:S0",
+        "L0025:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O28",
+        "FirstOutsideOccurrence": "O29",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 2
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O28",
+        "FirstOutsideOccurrence": "O29",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 2
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "cb923287051e11622e64072f52523e72417ce07091f315e7b89e6582792e3871",
+      "V2ProviderBodySha256": "7eccffb20ed408d80847f1b551d6d830ca417f2035e91ff81c51f83edccbdec7",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "ddad1607a2bb5a57b013057142ed677ec556fcee0c8673400b85b3128d42785b",
+      "V2RawResponseSha256": "ddad1607a2bb5a57b013057142ed677ec556fcee0c8673400b85b3128d42785b",
+      "V1RawSseSha256": "6435e963aef2c23c1f48d345cd8b45f34fbfd1875a51c94a10d5352e81aabd4c",
+      "V2RawSseSha256": "e284cc9e0ec9dcc649104f608266fd4ebc582910d685565c833f04ec200575fa",
+      "V1ReasoningTokens": 710,
+      "V2ReasoningTokens": 1163,
+      "V1PromptTokens": 7348,
+      "V2PromptTokens": 7440,
+      "V1CompletionTokens": 802,
+      "V2CompletionTokens": 1255
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O54",
+      "AnchorAlias": "L0051:S0",
+      "GoldExtent": [
+        "L0051:S0",
+        "L0052:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O55",
+        "FirstOutsideOccurrence": "O56",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 2
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O55",
+        "FirstOutsideOccurrence": "O56",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 2
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "1411009644ee1f7dd4ca363856ea14e7e0f6b5c448282f7d22d50848a4d00d66",
+      "V2ProviderBodySha256": "3f53f3b3c163081c1aa7c493b995278308c58c54e82860e264188c6ee4897f40",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "f8e7485eac6079cc671118073c96e77d45ac50f8a37bd745077641d5a91f9b3e",
+      "V2RawResponseSha256": "f8e7485eac6079cc671118073c96e77d45ac50f8a37bd745077641d5a91f9b3e",
+      "V1RawSseSha256": "a67125c61aca1c4847874cd9bbd87e5b54bfaea04f3b2620d963eb02dd9a7aa8",
+      "V2RawSseSha256": "eff80bcbd24d600c01f0570c839f434a892fcf95c34494ecea1f52861088f35a",
+      "V1ReasoningTokens": 1723,
+      "V2ReasoningTokens": 1379,
+      "V1PromptTokens": 4684,
+      "V2PromptTokens": 4776,
+      "V1CompletionTokens": 1815,
+      "V2CompletionTokens": 1471
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O83",
+      "AnchorAlias": "L0080:S0",
+      "GoldExtent": [
+        "L0080:S0",
+        "L0081:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O84",
+        "FirstOutsideOccurrence": "O85",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 2
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O84",
+        "FirstOutsideOccurrence": "O85",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 2
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "09c7255c5ee4015320211a4d6147658dfef41044ff0ea190e2f6970dfd13bef5",
+      "V2ProviderBodySha256": "732d4d6c09ba6198003e95127dd4b5113daa934634300f78abf21010188bb478",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "67092a0c845c4845bdd707debcbecac5568bcba114eeaa7a63825750bad3df20",
+      "V2RawResponseSha256": "67092a0c845c4845bdd707debcbecac5568bcba114eeaa7a63825750bad3df20",
+      "V1RawSseSha256": "c993b51e13db68e763cd18f8037dcbd4166d0fccc0b2972d42cc74dd4db82dff",
+      "V2RawSseSha256": "3f532875681b7b53886469c27ade5bf29a441c05ca1701504403e588bce56ed2",
+      "V1ReasoningTokens": 1597,
+      "V2ReasoningTokens": 1548,
+      "V1PromptTokens": 1815,
+      "V2PromptTokens": 1907,
+      "V1CompletionTokens": 1689,
+      "V2CompletionTokens": 1640
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O3",
+      "AnchorAlias": "L3525:S0",
+      "GoldExtent": null,
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "FALSE_G2A_ANCHOR",
+        "PredictedEnd": null,
+        "FirstOutsideOccurrence": null,
+        "OverrunDistance": 0,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 0
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "FALSE_G2A_ANCHOR",
+        "PredictedEnd": null,
+        "FirstOutsideOccurrence": null,
+        "OverrunDistance": 0,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 0
+      },
+      "Transition": "FALSE_G2A_ANCHOR",
+      "V1ProviderBodySha256": "ed7a602f516fc912bcdaf2aa84ddd6d2d413bc5e0b97799969230e3c3d1d2ac4",
+      "V2ProviderBodySha256": "0680eb158d613d49be68c1cc058ec542cd4e11c203bd009cf11115c9a4679283",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "d9f4e1e8483e1abf2c86d0326dd87ff8c98448773d84dfe6aa844c2c6203fe76",
+      "V2RawResponseSha256": "d1d23e83fe9b56c19dbc9a914ee158990977447b11018651f2061819359d412d",
+      "V1RawSseSha256": "a0810bb19757bb84716ef2a143a227e80e9301dabe5aeedf82c6be0bdb92c3f8",
+      "V2RawSseSha256": "7d6e4bed4b677466c1c835204db90be389c285de757779337b2260522ee9af0c",
+      "V1ReasoningTokens": 3068,
+      "V2ReasoningTokens": 3132,
+      "V1PromptTokens": 10552,
+      "V2PromptTokens": 10644,
+      "V1CompletionTokens": 3161,
+      "V2CompletionTokens": 3214
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O4",
+      "AnchorAlias": "L3526:S0",
+      "GoldExtent": [
+        "L3526:S0",
+        "L3527:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O12",
+        "FirstOutsideOccurrence": "O13",
+        "OverrunDistance": 7,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 2
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O5",
+        "FirstOutsideOccurrence": "O6",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 2
+      },
+      "Transition": "V1_WRONG_TO_V2_CORRECT",
+      "V1ProviderBodySha256": "43eca042dc85722216f90258b29fddee62cf07d88c15654641d01598630ae479",
+      "V2ProviderBodySha256": "4e72af9a9a16505edcbc6827136011f7ee23bf14775ddce04f0f16f1d4acf78f",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "6e7b6b106a7b11e8ddc694cbce728d04b38d701da691dd4336a9c4244b9fa96c",
+      "V2RawResponseSha256": "d38af1789e55f3588b68c7dfe5011b3cb5bd2a58ee56d95280abe07b3fadec99",
+      "V1RawSseSha256": "fed8565541c9c6abee98af0c788cd453a96d5e305c3a7c43db6776ad4fb3e866",
+      "V2RawSseSha256": "3659ca48a6005fa3f61bc6b185d8dc81d7583fcd8a61863a319a408a60cf0528",
+      "V1ReasoningTokens": 1717,
+      "V2ReasoningTokens": 2150,
+      "V1PromptTokens": 10441,
+      "V2PromptTokens": 10533,
+      "V1CompletionTokens": 1851,
+      "V2CompletionTokens": 2237
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O5",
+      "AnchorAlias": "L3527:S0",
+      "GoldExtent": null,
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "FALSE_G2A_ANCHOR",
+        "PredictedEnd": null,
+        "FirstOutsideOccurrence": null,
+        "OverrunDistance": 0,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 0
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "FALSE_G2A_ANCHOR",
+        "PredictedEnd": null,
+        "FirstOutsideOccurrence": null,
+        "OverrunDistance": 0,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 0
+      },
+      "Transition": "FALSE_G2A_ANCHOR",
+      "V1ProviderBodySha256": "783a97242bd333644a82eef9f50db684a121566767e0a5260a6dba912730867a",
+      "V2ProviderBodySha256": "7b445deb93cbc18aae0edadaac80e944f64e7de970a92c69403e747cf1382f02",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "50717c270c3b078a80e558c61160cf4519417de10183e023ff8c0c93ed123779",
+      "V2RawResponseSha256": "50717c270c3b078a80e558c61160cf4519417de10183e023ff8c0c93ed123779",
+      "V1RawSseSha256": "d29ad87b33971620bcefc44f4838e7729a0a7e82663459b8ab5112c8b497f6d9",
+      "V2RawSseSha256": "8748ab8d2c736087f2e3772e6924f6004a0ce1bab7da984e2669172fc499aaf9",
+      "V1ReasoningTokens": 1997,
+      "V2ReasoningTokens": 2487,
+      "V1PromptTokens": 10348,
+      "V2PromptTokens": 10440,
+      "V1CompletionTokens": 2078,
+      "V2CompletionTokens": 2568
+    },
+    {
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O16",
+      "AnchorAlias": "L0009:S0",
+      "GoldExtent": [
+        "L0009:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O16",
+        "FirstOutsideOccurrence": "O17",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O16",
+        "FirstOutsideOccurrence": "O17",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "0b88a314e12a6200ff0a96a5b3cb6313e6086c55b5b35903a291b605f82f1d0c",
+      "V2ProviderBodySha256": "fcd34234ff171dcce92faf306eb90fdd191c83bd8f8827bdb80f917886b25a9b",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "e4b3585f9726dac1e3a774f9e04a9887f94fd786130ed03a7f91ce667451a793",
+      "V2RawResponseSha256": "e4b3585f9726dac1e3a774f9e04a9887f94fd786130ed03a7f91ce667451a793",
+      "V1RawSseSha256": "e4d8ed571168392d602e7e63e156337037240c54028887c9061658b31d5c5870",
+      "V2RawSseSha256": "4e05e302dc3aadbec57817a9b6668a5c3be0d6ccd0ee1bf2e7c3d96e04ec2cf8",
+      "V1ReasoningTokens": 1863,
+      "V2ReasoningTokens": 752,
+      "V1PromptTokens": 8174,
+      "V2PromptTokens": 8266,
+      "V1CompletionTokens": 1948,
+      "V2CompletionTokens": 837
+    },
+    {
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O41",
+      "AnchorAlias": "L0034:S0",
+      "GoldExtent": [
+        "L0034:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O41",
+        "FirstOutsideOccurrence": "O42",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O41",
+        "FirstOutsideOccurrence": "O42",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "aad677059ae77e899d30fa395f78b91be603343c61ba543aa96fa95789977659",
+      "V2ProviderBodySha256": "5b831971068608fcae650c77f1566d2cc64c473c0b7880b1b06f719bcb77586f",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "906a3bc7cd20ab7c0b9b64fe75cab3838b680b05e26a57bb247d9ab049b578aa",
+      "V2RawResponseSha256": "906a3bc7cd20ab7c0b9b64fe75cab3838b680b05e26a57bb247d9ab049b578aa",
+      "V1RawSseSha256": "e5ee01aae94593e2524aec9b9332a605416ff9f93dd6a3516ee19f0fd6e737a8",
+      "V2RawSseSha256": "be4aa48ab6ce99e73a3b463056842326662559b2f4764b4bcebab8f53da4c1b1",
+      "V1ReasoningTokens": 1923,
+      "V2ReasoningTokens": 1746,
+      "V1PromptTokens": 5665,
+      "V2PromptTokens": 5757,
+      "V1CompletionTokens": 2009,
+      "V2CompletionTokens": 1832
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O30",
+      "AnchorAlias": "L0507:S0",
+      "GoldExtent": [
+        "L0507:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O30",
+        "FirstOutsideOccurrence": "O31",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O30",
+        "FirstOutsideOccurrence": "O31",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "75fa7887c1c2259dd21cd224c93e6b4b9d7dd3947a34471556df72b140c14d3b",
+      "V2ProviderBodySha256": "b4391f4e9f46118a5dbb1718e69ed1789fbed6b7f8c04ae6480259756bfa1f0a",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "fab235d8c1153878fa838dc418768f310e539f188cc9b03eeab6b4b203174c99",
+      "V2RawResponseSha256": "fab235d8c1153878fa838dc418768f310e539f188cc9b03eeab6b4b203174c99",
+      "V1RawSseSha256": "b063cde3934d45d0631c5cf5ca6658940b287775ea1d191bae8eed3e140f8217",
+      "V2RawSseSha256": "0f7800b13642f2f6ed24bbd32542b41c4d8203731de1627e0f9d5111c894f3a8",
+      "V1ReasoningTokens": 1297,
+      "V2ReasoningTokens": 968,
+      "V1PromptTokens": 7289,
+      "V2PromptTokens": 7381,
+      "V1CompletionTokens": 1382,
+      "V2CompletionTokens": 1053
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O42",
+      "AnchorAlias": "L0519:S0",
+      "GoldExtent": [
+        "L0519:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O70",
+        "FirstOutsideOccurrence": "O71",
+        "OverrunDistance": 28,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O42",
+        "FirstOutsideOccurrence": "O43",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "V1_WRONG_TO_V2_CORRECT",
+      "V1ProviderBodySha256": "ed40de1add860101deb9e520bb7f5232aca7ad6e486510d0d6af7287bdeb62b0",
+      "V2ProviderBodySha256": "8f370176d6074fe42e2c49695040f02ae29902fc16da1816e46f4ba46a835127",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "bbc5a060c23617993096b281eba4de8040cce768547bff3d798fbbc152310a98",
+      "V2RawResponseSha256": "fa9468ad3aadb6808201b729eaff4cc70d01bf301b06548bfc45058d5be84a32",
+      "V1RawSseSha256": "8e1ba6769d5a8d9cbc8a2ae243a9df88322507850774f586739b49b5a48ef99c",
+      "V2RawSseSha256": "3e3b9e6e1eb7fd2cd670fa1a9dfc1cfb1a04608c5c4e16203967013408305915",
+      "V1ReasoningTokens": 3308,
+      "V2ReasoningTokens": 1150,
+      "V1PromptTokens": 6075,
+      "V2PromptTokens": 6167,
+      "V1CompletionTokens": 3590,
+      "V2CompletionTokens": 1236
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O43",
+      "AnchorAlias": "L0520:S0",
+      "GoldExtent": [
+        "L0520:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O69",
+        "FirstOutsideOccurrence": "O70",
+        "OverrunDistance": 26,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O43",
+        "FirstOutsideOccurrence": "O44",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "V1_WRONG_TO_V2_CORRECT",
+      "V1ProviderBodySha256": "e81c5213832555565d9fd70dc1241b10f36bbda766c490c614e66482df204145",
+      "V2ProviderBodySha256": "3db63e2828d1268eadf276b18aafb7efd112eb6954ff8f156bfe5d3cd972c8e1",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "187b7f7381190af2d2063ad0ad246bb1896825a28610526b15472f9099ff1c76",
+      "V2RawResponseSha256": "8e4f75b7490492d4b59a7c1588200f1620a10eec2d03c0de1ee1f416fe2b3e2a",
+      "V1RawSseSha256": "fc771ee2c99c854739e0a33c9090631c937905d1c71cdb9f3410d32d5c246d43",
+      "V2RawSseSha256": "d40d4b550dc7b0571d4a4fe83c84b80c6708477d0a1e05a49125278a401aedee",
+      "V1ReasoningTokens": 3324,
+      "V2ReasoningTokens": 1153,
+      "V1PromptTokens": 5981,
+      "V2PromptTokens": 6073,
+      "V1CompletionTokens": 3592,
+      "V2CompletionTokens": 1239
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O44",
+      "AnchorAlias": "L0521:S0",
+      "GoldExtent": [
+        "L0521:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O46",
+        "FirstOutsideOccurrence": "O47",
+        "OverrunDistance": 2,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O44",
+        "FirstOutsideOccurrence": "O45",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "V1_WRONG_TO_V2_CORRECT",
+      "V1ProviderBodySha256": "64422cb3c8b5c8cb9ac60d160c691d82d80feb513b822e04ff6c2ac1120cc91d",
+      "V2ProviderBodySha256": "c4fb0de45c1913ddd1264fbadd60167aa108c246ab3176975c194eb4eccd1880",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "6709ab006fbce4e0cdd846a8a280721355f59df5c59ae5341470447df1a83a4c",
+      "V2RawResponseSha256": "41360362dd875e31b0e1a0bf4a3488145e7b3d116ad2afe22d7d1d5144760e78",
+      "V1RawSseSha256": "96c47bb0ab014b61630842e525ca64486e94c1945e7ba653152a30a71efc912a",
+      "V2RawSseSha256": "38790acf0e806bfc218cab5dbaadc2bcf3f823b78b4c1a348985ba4c4d5c29d8",
+      "V1ReasoningTokens": 1827,
+      "V2ReasoningTokens": 1014,
+      "V1PromptTokens": 5870,
+      "V2PromptTokens": 5962,
+      "V1CompletionTokens": 1927,
+      "V2CompletionTokens": 1099
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O47",
+      "AnchorAlias": "L0523:S0",
+      "GoldExtent": [
+        "L0523:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O50",
+        "FirstOutsideOccurrence": "O51",
+        "OverrunDistance": 3,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O50",
+        "FirstOutsideOccurrence": "O51",
+        "OverrunDistance": 3,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 1
+      },
+      "Transition": "BOTH_WRONG",
+      "V1ProviderBodySha256": "bc856f0cc4c776f2a1ba6436254fb5e656b818cf2ea8625fc716be8f6554f20a",
+      "V2ProviderBodySha256": "e45b34357f4a06875ff3ecd384d75da5e9dc7e35b658b9d86a995559e22a292b",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "947169230e364e35fe71aa36ccec35264b540e42d268944ee6500300d7c166db",
+      "V2RawResponseSha256": "947169230e364e35fe71aa36ccec35264b540e42d268944ee6500300d7c166db",
+      "V1RawSseSha256": "adc5c6a8ecea2cb40be89ac3f04dd357181a017c478e68d323a9c2b1a6f771a1",
+      "V2RawSseSha256": "cbdc0d13f04ebb910c1c4113d0f9ee4fa749719d314aa51a64e497ee21e9b94b",
+      "V1ReasoningTokens": 2579,
+      "V2ReasoningTokens": 2036,
+      "V1PromptTokens": 5561,
+      "V2PromptTokens": 5653,
+      "V1CompletionTokens": 2686,
+      "V2CompletionTokens": 2143
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O51",
+      "AnchorAlias": "L0526:S0",
+      "GoldExtent": [
+        "L0526:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O58",
+        "FirstOutsideOccurrence": "O59",
+        "OverrunDistance": 7,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O51",
+        "FirstOutsideOccurrence": "O52",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "V1_WRONG_TO_V2_CORRECT",
+      "V1ProviderBodySha256": "7aa3e58ea30310b7e875980dd998c1e88df0311e04f72b55031a8ec5c6a5406e",
+      "V2ProviderBodySha256": "f12aba85014406068569b64e08d1de8c296aa12509fa96d77c47d4a522a48071",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "ada55d6b8a0c193d7b2c0ef123d27f8c7ee8bfd33d0a004a6bb015ed394ad015",
+      "V2RawResponseSha256": "4a0ab5eb7489e00debac49aa6d842a07d2faa73fc555b5daec21a61d360b3411",
+      "V1RawSseSha256": "259666cad16683b4f41c4e1d562335fc200c5ea59f29f168d659ffc8b63288ab",
+      "V2RawSseSha256": "826d4af36f3fb7a97487c4adcd6e17d0428ccdad655299d1b3e0e9c88dddb598",
+      "V1ReasoningTokens": 1871,
+      "V2ReasoningTokens": 2706,
+      "V1PromptTokens": 5134,
+      "V2PromptTokens": 5226,
+      "V1CompletionTokens": 2006,
+      "V2CompletionTokens": 2791
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O59",
+      "AnchorAlias": "L0531:S0",
+      "GoldExtent": [
+        "L0531:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O65",
+        "FirstOutsideOccurrence": "O66",
+        "OverrunDistance": 6,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O59",
+        "FirstOutsideOccurrence": "O60",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "V1_WRONG_TO_V2_CORRECT",
+      "V1ProviderBodySha256": "9b0731cf7d28c3521a919566696a002479c4f54f8a286046a6430ba3711c473c",
+      "V2ProviderBodySha256": "9f332db7f052638df726cd4233ca11a8fd4eed01b8d179ca76e3aa96c304718b",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "2e9a7ea84aa4b98636489eeae8cf89487619c4a42504368d1c89d18b8c9f3241",
+      "V2RawResponseSha256": "cac319b42a2dbfea07bb593116edea03a7ee000da96275ef770aba81b2f0f7f6",
+      "V1RawSseSha256": "77f9ee014e93ceee31b4a2aa7e844c746c4e9e62d37aac73dfb946532e9f6eba",
+      "V2RawSseSha256": "dc8ab5006a2eb175415662453efd429dffa00dabc2f2eb4406d12110cc5efb5d",
+      "V1ReasoningTokens": 1841,
+      "V2ReasoningTokens": 2164,
+      "V1PromptTokens": 4300,
+      "V2PromptTokens": 4392,
+      "V1CompletionTokens": 1969,
+      "V2CompletionTokens": 2250
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O66",
+      "AnchorAlias": "L0536:S0",
+      "GoldExtent": [
+        "L0536:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O69",
+        "FirstOutsideOccurrence": "O70",
+        "OverrunDistance": 3,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O66",
+        "FirstOutsideOccurrence": "O67",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "V1_WRONG_TO_V2_CORRECT",
+      "V1ProviderBodySha256": "1f2d5df5de2b55717f67d94d2d721e26b2aaae8b0d5c8e1ddaddf8663bc62c23",
+      "V2ProviderBodySha256": "8e1262929993f0dcf395e8a4e097b6f1fbf28bcd60bec41fe6c49fac13b9869f",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "88187d13e2e9502116dc5d82e2627625ca43117159ede1af9d0e3a43022a5413",
+      "V2RawResponseSha256": "52e00a2c209247edbbde0b1f852dad98a42fb1ee59f06c2f40ffccf373d35d08",
+      "V1RawSseSha256": "ba8dc7122a72c3b3339bb764f14791d62f54d4aa822c68fbe9d9bfe783ab0957",
+      "V2RawSseSha256": "60dd2c99dfc188b88b4c4dc8f77fd4210f459dcedbf3aa9a43d789553c871332",
+      "V1ReasoningTokens": 3825,
+      "V2ReasoningTokens": 2167,
+      "V1PromptTokens": 3566,
+      "V2PromptTokens": 3658,
+      "V1CompletionTokens": 3932,
+      "V2CompletionTokens": 2252
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O70",
+      "AnchorAlias": "L0539:S0",
+      "GoldExtent": [
+        "L0539:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O91",
+        "FirstOutsideOccurrence": "O92",
+        "OverrunDistance": 21,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O70",
+        "FirstOutsideOccurrence": "O71",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "V1_WRONG_TO_V2_CORRECT",
+      "V1ProviderBodySha256": "9fa7bb2bf61ec0fc252e72ef3be9e67bed8970fc685d7007b0867ea35af5a97b",
+      "V2ProviderBodySha256": "0f6a40a10be4320931b5981d4ebe3cdc814c43b901b47a76e0086deb944e3c50",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "3b69a9760f8bc4304f00a43cb6fd54b7ee0ab1d5eb2627f7cf69ed4e1cd824b4",
+      "V2RawResponseSha256": "984aa9c279193b1f1c5a7ee2e2f00c3a37ff56eed2d0172b09b6880afcf37b1d",
+      "V1RawSseSha256": "64ccaa794d9adf1a657bfdefbae7aaa2d4f5e10215cdcd97dc7c59afab265b60",
+      "V2RawSseSha256": "466e0b2ab6c3d3df1c049628031489299bf1df75850a5b0f07e456726928ed0b",
+      "V1ReasoningTokens": 3532,
+      "V2ReasoningTokens": 1263,
+      "V1PromptTokens": 3179,
+      "V2PromptTokens": 3271,
+      "V1CompletionTokens": 3765,
+      "V2CompletionTokens": 1349
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O71",
+      "AnchorAlias": "L0540:S0",
+      "GoldExtent": [
+        "L0540:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O91",
+        "FirstOutsideOccurrence": "O92",
+        "OverrunDistance": 20,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O71",
+        "FirstOutsideOccurrence": "O72",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "V1_WRONG_TO_V2_CORRECT",
+      "V1ProviderBodySha256": "97d3634b47fd148f96a3aa3d1dd8b361bcaa4c9fbc00c66bfc743904d6218357",
+      "V2ProviderBodySha256": "07be1d4e6a8d56dbd26a3091bc93ddf1b7d259b82d69100807edb921a05cb914",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "112aeafd3ad488e75ac82f0b0a12afe06cb21dea1d8e3362d7131c3198ec489d",
+      "V2RawResponseSha256": "4b982ca943f2d2fd4b709b771a9d7a5d9b0465c2c3a6867b2b01e6e9e47b0986",
+      "V1RawSseSha256": "e0ff09ffc621f10059c46064276459a63984c3acbc5685012678965e5d40a548",
+      "V2RawSseSha256": "709c2af201fad36ad9013d3ee31512a19cad4681ee6098ee81b2d54aa4fd635d",
+      "V1ReasoningTokens": 2652,
+      "V2ReasoningTokens": 1993,
+      "V1PromptTokens": 3069,
+      "V2PromptTokens": 3161,
+      "V1CompletionTokens": 2878,
+      "V2CompletionTokens": 2078
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O92",
+      "AnchorAlias": "L0553:S0",
+      "GoldExtent": [
+        "L0553:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O92",
+        "FirstOutsideOccurrence": "O93",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O92",
+        "FirstOutsideOccurrence": "O93",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "9a0f5fc9cc39185e7226664dc4162ab28764e3c74ffdf49d25f8827b7c805ed0",
+      "V2ProviderBodySha256": "5e10218e6cfd8000217a2c3a9597a89f8a2ecb507e1344a0d98abbbc9e8810ae",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "5131b78d54ac0fb839b5eac151665addf537b13570f12fbbf86ae8384774efae",
+      "V2RawResponseSha256": "5131b78d54ac0fb839b5eac151665addf537b13570f12fbbf86ae8384774efae",
+      "V1RawSseSha256": "956777ab5e23cfddb9a6bceb357cec45c0771b266cdd0309fe71286e57a06a02",
+      "V2RawSseSha256": "6df86eafd8a21011d8792c933acf27e99676f7c6fbd27bc6e5e99ecbe1627ef5",
+      "V1ReasoningTokens": 1550,
+      "V2ReasoningTokens": 2051,
+      "V1PromptTokens": 921,
+      "V2PromptTokens": 1013,
+      "V1CompletionTokens": 1635,
+      "V2CompletionTokens": 2136
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O95",
+      "AnchorAlias": "L0556:S0",
+      "GoldExtent": [
+        "L0556:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O95",
+        "FirstOutsideOccurrence": "O96",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O95",
+        "FirstOutsideOccurrence": "O96",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "221c9ef348e9020f1c375d277087c833561fabda4398e8824fffefa7de6cf2f7",
+      "V2ProviderBodySha256": "fbc42287627b3b3b216f9ffa52c6885b12ddea5411b25ed513b11ed1a72071a5",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "69a625140525097606f425077fe2d6bddd3f7ed285cf3a0a9f2274692a6637ac",
+      "V2RawResponseSha256": "69a625140525097606f425077fe2d6bddd3f7ed285cf3a0a9f2274692a6637ac",
+      "V1RawSseSha256": "5a5e676aa11986cf1849754c7618f795356d66cd9aa39ab0580202dfc7978593",
+      "V2RawSseSha256": "e417f3da1e6bdd01073fecaa07644b80b23dbf000d7577b859fe8acd340ffb3a",
+      "V1ReasoningTokens": 1814,
+      "V2ReasoningTokens": 1564,
+      "V1PromptTokens": 619,
+      "V2PromptTokens": 711,
+      "V1CompletionTokens": 1899,
+      "V2CompletionTokens": 1649
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O1",
+      "AnchorAlias": "L0000:S0",
+      "GoldExtent": [
+        "L0000:S0",
+        "L0001:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O4",
+        "FirstOutsideOccurrence": "O5",
+        "OverrunDistance": 2,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 2
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "OVEREXTENT",
+        "PredictedEnd": "O5",
+        "FirstOutsideOccurrence": "O6",
+        "OverrunDistance": 3,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 2
+      },
+      "Transition": "BOTH_WRONG",
+      "V1ProviderBodySha256": "fe0c9b234852c93081e45d535d0d09b7113fb2b3c7793368c0e5a5861f239ef8",
+      "V2ProviderBodySha256": "a666edfff9b5e571357b040785b092c179a06c43f8a21abc2f66d92117bc1464",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "9c72976a85bc8784bd8d5ddea413906b1f817bedf6ab07357d9bd8dfc9f73217",
+      "V2RawResponseSha256": "f73accb5a32aedcd3826ab881ac4e720d590096474d16be784a533377cc42ba8",
+      "V1RawSseSha256": "ab2d0a58115f2031bdced385364619456a269144285090a4bf459c4ff4e02365",
+      "V2RawSseSha256": "627655bda5df0d108089dbecbc8e91f1b0efe6f82499874ac3ee5c60a815c71c",
+      "V1ReasoningTokens": 1803,
+      "V2ReasoningTokens": 1253,
+      "V1PromptTokens": 10464,
+      "V2PromptTokens": 10556,
+      "V1CompletionTokens": 1903,
+      "V2CompletionTokens": 1358
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O2",
+      "AnchorAlias": "L0001:S0",
+      "GoldExtent": null,
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "FALSE_G2A_ANCHOR",
+        "PredictedEnd": null,
+        "FirstOutsideOccurrence": null,
+        "OverrunDistance": 0,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 0
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "FALSE_G2A_ANCHOR",
+        "PredictedEnd": null,
+        "FirstOutsideOccurrence": null,
+        "OverrunDistance": 0,
+        "FirstOutsideExact": false,
+        "GoldPartCount": 0
+      },
+      "Transition": "FALSE_G2A_ANCHOR",
+      "V1ProviderBodySha256": "c303500b8e89e60f3dd162134979ba7607f2fb827ce04f5e98d3b8ac415f9a88",
+      "V2ProviderBodySha256": "d78fd1685036ef5617176e0af3baa0fbe970b4aeab38891c47aaf8a8bb399de2",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "ad1d1a2ca81fcbea772479473fe2d4c50b20a607bbd04408e1fb928fffaa60ef",
+      "V2RawResponseSha256": "a27103207d80aed34997cb464f131fa9b9ccd338f85b95188ca3e7ac7cd04cf9",
+      "V1RawSseSha256": "8db1d7171bf89dc7d98ae5a4ddf6c8e554be48f92e6beacdbc8d0840810191de",
+      "V2RawSseSha256": "a7c9532f7041e6a16f675216938c2b020ac38f5924e5609c34f8ddf071c1b3f8",
+      "V1ReasoningTokens": 1514,
+      "V2ReasoningTokens": 1156,
+      "V1PromptTokens": 10371,
+      "V2PromptTokens": 10463,
+      "V1CompletionTokens": 1607,
+      "V2CompletionTokens": 1250
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O5",
+      "AnchorAlias": "L0004:S0",
+      "GoldExtent": [
+        "L0004:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O5",
+        "FirstOutsideOccurrence": "O6",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O5",
+        "FirstOutsideOccurrence": "O6",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "eb3b19178e0fd303bdf643d217185ff202d0f9e9a8f16fca3f5011134b24ceb5",
+      "V2ProviderBodySha256": "5a3fcf4127aa9b2af551a8cf3d9378f572d7b71052d127b9f7a0c3ce46a03c03",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "50717c270c3b078a80e558c61160cf4519417de10183e023ff8c0c93ed123779",
+      "V2RawResponseSha256": "50717c270c3b078a80e558c61160cf4519417de10183e023ff8c0c93ed123779",
+      "V1RawSseSha256": "3ca32c4e965ea4b7ba2ff162d556a5fd497814f1e0749b586efcdfe5a62ece29",
+      "V2RawSseSha256": "8e670a7e7f2aaf1d1e33713c23f293cea617ff6b6ed3a5d50378c3046bcc76fd",
+      "V1ReasoningTokens": 1074,
+      "V2ReasoningTokens": 1503,
+      "V1PromptTokens": 10084,
+      "V2PromptTokens": 10176,
+      "V1CompletionTokens": 1155,
+      "V2CompletionTokens": 1584
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O23",
+      "AnchorAlias": "L0022:S0",
+      "GoldExtent": [
+        "L0022:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O23",
+        "FirstOutsideOccurrence": "O24",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O23",
+        "FirstOutsideOccurrence": "O24",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "504878503047f74505f3811c1844cbedf880e49bacf55ada08094ed541a5f994",
+      "V2ProviderBodySha256": "4f0e389dc59e17e415fed6c386576beaeb4eafaca6b8610dfd3d2b1c74c24e90",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "8849559e06126eac2ae75983b870e940a94ee24e59830b4fa545053d65653ef9",
+      "V2RawResponseSha256": "8849559e06126eac2ae75983b870e940a94ee24e59830b4fa545053d65653ef9",
+      "V1RawSseSha256": "fcd1eadad186c1271174e65d9458383eadc0fcd4c4970cc8d194c52c6f19b570",
+      "V2RawSseSha256": "68061ce012eff43c7f16e2511e9b46b55f1bc1fa9ba79f56010af53f41896e9e",
+      "V1ReasoningTokens": 1598,
+      "V2ReasoningTokens": 1918,
+      "V1PromptTokens": 8213,
+      "V2PromptTokens": 8305,
+      "V1CompletionTokens": 1684,
+      "V2CompletionTokens": 2004
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O24",
+      "AnchorAlias": "L0023:S0",
+      "GoldExtent": [
+        "L0023:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O24",
+        "FirstOutsideOccurrence": "O25",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O24",
+        "FirstOutsideOccurrence": "O25",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "8f30919201512eba080a5e71bea3170813a9f7cb15240edcc612c42e56dcf8ec",
+      "V2ProviderBodySha256": "2277e638b358f81beb86d479dd0dd11f5e5de18ca7502ac87853f2fcc80b5e03",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "cf7c70737eb7aaf712119f65d5fed8401899d1cf2c4bac6702bb4f64ca8094cd",
+      "V2RawResponseSha256": "cf7c70737eb7aaf712119f65d5fed8401899d1cf2c4bac6702bb4f64ca8094cd",
+      "V1RawSseSha256": "a15ad48c49da3cba638946fc02c7d135d288c2766ff7d18c9867eb56b8bec9b4",
+      "V2RawSseSha256": "dcaf50b4fffccefe2d21c906d7f69e7ebd7c53e2c41db569b95ba46622078ab3",
+      "V1ReasoningTokens": 1284,
+      "V2ReasoningTokens": 1309,
+      "V1PromptTokens": 8114,
+      "V2PromptTokens": 8206,
+      "V1CompletionTokens": 1369,
+      "V2CompletionTokens": 1394
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O48",
+      "AnchorAlias": "L0047:S0",
+      "GoldExtent": [
+        "L0047:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O48",
+        "FirstOutsideOccurrence": "O49",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O48",
+        "FirstOutsideOccurrence": "O49",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "54d4f2f35e7457d25601a3600f04be0ba50e5704dad6577e70ce48c6df1cb142",
+      "V2ProviderBodySha256": "7188a9c56788afe3d56a2632f6e75d863319d01977a9368a4eb5ce0ab6d57f8a",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "dd05a1dc67545598ab68b3133eb30162b2369c8b3f1f61758385d2df0bed3037",
+      "V2RawResponseSha256": "dd05a1dc67545598ab68b3133eb30162b2369c8b3f1f61758385d2df0bed3037",
+      "V1RawSseSha256": "f408f065aecb65716b497482a6b49caa8a10b47bd577efe970e229a54e90a11f",
+      "V2RawSseSha256": "a353f9c3c33e28b7adece19aa6bdd0f1e4f85d2e4ab49c04a5523603c8790158",
+      "V1ReasoningTokens": 1548,
+      "V2ReasoningTokens": 1150,
+      "V1PromptTokens": 5598,
+      "V2PromptTokens": 5690,
+      "V1CompletionTokens": 1633,
+      "V2CompletionTokens": 1235
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O77",
+      "AnchorAlias": "L0076:S0",
+      "GoldExtent": [
+        "L0076:S0"
+      ],
+      "V1": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O77",
+        "FirstOutsideOccurrence": "O78",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "V2": {
+        "LedgerValid": true,
+        "Outcome": "EXACT",
+        "PredictedEnd": "O77",
+        "FirstOutsideOccurrence": "O78",
+        "OverrunDistance": 0,
+        "FirstOutsideExact": true,
+        "GoldPartCount": 1
+      },
+      "Transition": "BOTH_CORRECT",
+      "V1ProviderBodySha256": "656e1d8f93f965df8919b0ac5598a28d9cab3076c95fa3b7a602bf33742b934d",
+      "V2ProviderBodySha256": "15a0b0900a6f8481d834ba889e9f44e619ce0aa81fea494b1c9eee353ed2bd48",
+      "V1FinishReason": "stop",
+      "V2FinishReason": "stop",
+      "V1RawResponseSha256": "8c46e0548e6abfde6ff5b66f05f0d6ca4882f8af3bac79e7bb81c928e7591acc",
+      "V2RawResponseSha256": "8c46e0548e6abfde6ff5b66f05f0d6ca4882f8af3bac79e7bb81c928e7591acc",
+      "V1RawSseSha256": "9434bdeac1e8255dfaba6fcaa7221bd2ef226f94cf6fc6a5175ab4cf6b242994",
+      "V2RawSseSha256": "49250ba4e906bb12a8048f2c5c174b5f327e1ed1c301ead520617c1eddabacd7",
+      "V1ReasoningTokens": 2986,
+      "V2ReasoningTokens": 2311,
+      "V1PromptTokens": 2530,
+      "V2PromptTokens": 2622,
+      "V1CompletionTokens": 3071,
+      "V2CompletionTokens": 2396
+    }
+  ],
+  "interpretation": {
+    "unitOfComparison": "same document + pack + anchor; correctness is exact full source extent against frozen Gold",
+    "firstOutsideExact": "predicted immediate successor identity equals the Gold first outside occurrence",
+    "overrunDistance": "extra contiguous occurrences beyond the Gold extent; aggregate reports total and mean/max among overextents",
+    "prohibited": "NO_GOLD_MUTATION_NO_PROVIDER_RERUN_NO_RUNTIME_PROMOTION_FROM_THIS_SCORE_ALONE"
+  }
+}

@@ -132,6 +132,86 @@ internal static class P6TH2CEndPointerCanary
         return 0;
     }
 
+    internal static async Task<int> RunCleanV1OnlyAsync(string repo, string[] args)
+    {
+        const string confirmation = "yes-i-authorize-p6th2c-clean-v1-thirty-one-primary-calls-no-retry";
+        if (!args.Contains($"--confirm-p6th2c-clean-v1={confirmation}"))
+        { Console.WriteLine("P6T-H2C CLEAN V1 PREPARED_NOT_AUTHORIZED; ProviderCalls=0, GoldRead=false."); return 0; }
+        if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY"))) return Fail("clean V1: OPENROUTER_API_KEY missing");
+        var root = Path.Combine(repo, "artifacts/v5-p6t-function-membership/p6th2c-clean-v1-rerun-capture-20261005");
+        if (Directory.Exists(root) && Directory.EnumerateFiles(root, "*.json", SearchOption.AllDirectories).Any()) return Fail("clean V1: immutable capture already exists");
+        var requests = BuildAllForTreatment(repo, "V1");
+        if (requests.Count != 31) return Fail($"clean V1: expected 31 requests, got {requests.Count}");
+        var preflightPath = Path.Combine(repo, "artifacts/v5-p6t-function-membership/p6th2c-clean-v1-v2-preflight/h2c-clean-v1-v2-preflight.v1.json");
+        if (!OrderAndValidateCleanTreatment(preflightPath, requests, "v1", out var ordered, out var parityError)) return Fail($"clean V1: frozen preflight parity failed ({parityError}); no network");
+
+        var options = RemoteInferenceOptions.FromEnvironment();
+        options.Model = "qwen/qwen3.7-flash"; options.OpenRouterProviderRoute = "alibaba";
+        options.OpenRouterReasoningEffort = "none"; options.RequireJsonObjectResponse = true;
+        options.TransientRequestRetries = 0; options.MaxParallelRequests = 1; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
+        Directory.CreateDirectory(root);
+        var rows = new List<object>(); var call = 0;
+        foreach (var request in ordered)
+        {
+            call++;
+            OpenRouterExecutionObservation? observation = null; string? error = null; var watch = Stopwatch.StartNew();
+            try
+            {
+                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                observation = await client.ExecuteObservedAsync(request.Body, request.MaxCompletionTokens,
+                    P6TH2CCleanPairedBoundaryTreatment.SystemPrompt("V1"), request.UserMessage).ConfigureAwait(false);
+            }
+            catch (Exception ex) { error = ex.Message; }
+            watch.Stop();
+            var rawDir = Path.Combine(root, "raw"); Directory.CreateDirectory(rawDir);
+            WriteNew(Path.Combine(rawDir, $"{request.Source.DocumentId}_{request.Anchor}.raw-capture.v1.json"), new
+            {
+                schemaVersion = "v5-p6th2c-clean-v1-raw-capture-v1", treatment = "V1", providerCallOrdinal = call,
+                request.Source.DocumentId, request.PackId, request.Anchor, request.AnchorAlias,
+                sourceSha256 = request.SourceSha256, sourceUniverseSha256 = request.SourceUniverseSha256,
+                providerBodySha256 = request.BodyHash, providerBodyBytes = request.BodyBytes,
+                userMessageSha256 = Hash(request.UserMessage), issuedOccurrences = request.IssuedOccurrences,
+                reasoningRequested = true, reasoningTokens = Usage(observation?.Usage, "completion_tokens_details", "reasoning_tokens"),
+                promptTokens = Usage(observation?.Usage, "prompt_tokens"), completionTokens = Usage(observation?.Usage, "completion_tokens"),
+                finishReason = observation?.FinishReason, latencyMs = watch.Elapsed.TotalMilliseconds,
+                rawSseSha256 = observation is null ? null : Hash(observation.RawSse), rawResponseSha256 = observation is null ? null : Hash(observation.Content),
+                rawSse = observation?.RawSse, rawResponse = observation?.Content, transportError = error, goldReadDuringCapture = false
+            });
+            rows.Add(new { request.Source.DocumentId, request.PackId, request.Anchor, providerCallOrdinal = call, finishReason = observation?.FinishReason, transportError = error, rawResponseSha256 = observation is null ? null : Hash(observation.Content) });
+            Console.WriteLine($"[{call}/31] V1 {request.Source.DocumentId} {request.Anchor}: {observation?.FinishReason ?? "ERROR"}");
+        }
+        var complete = rows.Count == 31;
+        WriteNew(Path.Combine(root, "result.v1.json"), new { schemaVersion = "v5-p6th2c-clean-v1-result-v1", status = complete ? "RAW_FROZEN_GOLD_NOT_READ" : "INCOMPLETE", treatment = "V1", primaryRequests = 31, providerCalls = call, retries = 0, repair = false, fallback = false, goldRead = false, rows });
+        return 0;
+    }
+
+    private static bool OrderAndValidateCleanTreatment(string path, IReadOnlyList<Request> requests, string treatmentProperty, out IReadOnlyList<Request> ordered, out string error)
+    {
+        ordered = Array.Empty<Request>(); error = "manifest missing";
+        if (!File.Exists(path)) return false;
+        using var document = JsonDocument.Parse(File.ReadAllText(path));
+        var root = document.RootElement;
+        if (!root.TryGetProperty("requests", out var rows) || rows.ValueKind != JsonValueKind.Array || rows.GetArrayLength() != requests.Count)
+        { error = "manifest request count"; return false; }
+        var byKey = requests.ToDictionary(value => $"{value.Source.DocumentId}|{value.PackId}|{value.Anchor}", StringComparer.Ordinal);
+        var sequence = new List<Request>(requests.Count);
+        for (var i = 0; i < rows.GetArrayLength(); i++)
+        {
+            var row = rows[i];
+            var key = $"{row.GetProperty("documentId").GetString()}|{row.GetProperty("packId").GetString()}|{row.GetProperty("anchor").GetString()}";
+            if (!byKey.TryGetValue(key, out var request)) { error = $"manifest key not in rebuilt request set at ordinal {i + 1}"; return false; }
+            if (row.GetProperty("anchorAlias").GetString() != request.AnchorAlias) { error = $"anchor alias mismatch for {key}"; return false; }
+            var expectedBodyHash = row.GetProperty("providerBodies").GetProperty(treatmentProperty).GetString();
+            if (expectedBodyHash != request.BodyHash) { error = $"provider body hash mismatch for {key}: frozen={expectedBodyHash}, rebuilt={request.BodyHash}"; return false; }
+            var expectedOccurrencesHash = row.GetProperty("issuedOccurrencesSha256").GetString();
+            var actualOccurrencesHash = Hash(string.Join("\n", request.IssuedOccurrences) + "\n");
+            if (expectedOccurrencesHash != actualOccurrencesHash) { error = $"issued occurrence hash mismatch for {key}"; return false; }
+            sequence.Add(request);
+        }
+        ordered = sequence; error = string.Empty;
+        return true;
+    }
+
     public static async Task<int> RunAsync(string repo, string[] args)
     {
         Request[] requests;

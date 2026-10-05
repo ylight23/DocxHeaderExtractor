@@ -1,0 +1,292 @@
+{
+  "schemaVersion": "v5-p6th2c-clean-v1-result-v1",
+  "status": "RAW_FROZEN_GOLD_NOT_READ",
+  "treatment": "V1",
+  "primaryRequests": 31,
+  "providerCalls": 31,
+  "retries": 0,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false,
+  "rows": [
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O9",
+      "providerCallOrdinal": 1,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "0e733f01714b84d7a4f1f33cbd613b9c494a12f1bd51e4f46ec3814d1eda1126"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O17",
+      "providerCallOrdinal": 2,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "073c436a4c0e57d6a811184e28bbdb1a7f98346b4099adcca687fd3516c81499"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O18",
+      "providerCallOrdinal": 3,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "27dfaeb869d792e6225ba79d523e754a2cb0b80cc0fbea0b36875aa826b6f4ac"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O19",
+      "providerCallOrdinal": 4,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "deb36625ae0f226913fd3cb932030675300d59bdcfda61a45207a782069432da"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O27",
+      "providerCallOrdinal": 5,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "ddad1607a2bb5a57b013057142ed677ec556fcee0c8673400b85b3128d42785b"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O54",
+      "providerCallOrdinal": 6,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "f8e7485eac6079cc671118073c96e77d45ac50f8a37bd745077641d5a91f9b3e"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O83",
+      "providerCallOrdinal": 7,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "67092a0c845c4845bdd707debcbecac5568bcba114eeaa7a63825750bad3df20"
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O3",
+      "providerCallOrdinal": 8,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "d9f4e1e8483e1abf2c86d0326dd87ff8c98448773d84dfe6aa844c2c6203fe76"
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O4",
+      "providerCallOrdinal": 9,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "6e7b6b106a7b11e8ddc694cbce728d04b38d701da691dd4336a9c4244b9fa96c"
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O5",
+      "providerCallOrdinal": 10,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "50717c270c3b078a80e558c61160cf4519417de10183e023ff8c0c93ed123779"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O16",
+      "providerCallOrdinal": 11,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "e4b3585f9726dac1e3a774f9e04a9887f94fd786130ed03a7f91ce667451a793"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O41",
+      "providerCallOrdinal": 12,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "906a3bc7cd20ab7c0b9b64fe75cab3838b680b05e26a57bb247d9ab049b578aa"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O30",
+      "providerCallOrdinal": 13,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "fab235d8c1153878fa838dc418768f310e539f188cc9b03eeab6b4b203174c99"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O42",
+      "providerCallOrdinal": 14,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "bbc5a060c23617993096b281eba4de8040cce768547bff3d798fbbc152310a98"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O43",
+      "providerCallOrdinal": 15,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "187b7f7381190af2d2063ad0ad246bb1896825a28610526b15472f9099ff1c76"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O44",
+      "providerCallOrdinal": 16,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "6709ab006fbce4e0cdd846a8a280721355f59df5c59ae5341470447df1a83a4c"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O47",
+      "providerCallOrdinal": 17,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "947169230e364e35fe71aa36ccec35264b540e42d268944ee6500300d7c166db"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O51",
+      "providerCallOrdinal": 18,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "ada55d6b8a0c193d7b2c0ef123d27f8c7ee8bfd33d0a004a6bb015ed394ad015"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O59",
+      "providerCallOrdinal": 19,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "2e9a7ea84aa4b98636489eeae8cf89487619c4a42504368d1c89d18b8c9f3241"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O66",
+      "providerCallOrdinal": 20,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "88187d13e2e9502116dc5d82e2627625ca43117159ede1af9d0e3a43022a5413"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O70",
+      "providerCallOrdinal": 21,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "3b69a9760f8bc4304f00a43cb6fd54b7ee0ab1d5eb2627f7cf69ed4e1cd824b4"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O71",
+      "providerCallOrdinal": 22,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "112aeafd3ad488e75ac82f0b0a12afe06cb21dea1d8e3362d7131c3198ec489d"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O92",
+      "providerCallOrdinal": 23,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "5131b78d54ac0fb839b5eac151665addf537b13570f12fbbf86ae8384774efae"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O95",
+      "providerCallOrdinal": 24,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "69a625140525097606f425077fe2d6bddd3f7ed285cf3a0a9f2274692a6637ac"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O1",
+      "providerCallOrdinal": 25,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "9c72976a85bc8784bd8d5ddea413906b1f817bedf6ab07357d9bd8dfc9f73217"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O2",
+      "providerCallOrdinal": 26,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "ad1d1a2ca81fcbea772479473fe2d4c50b20a607bbd04408e1fb928fffaa60ef"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O5",
+      "providerCallOrdinal": 27,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "50717c270c3b078a80e558c61160cf4519417de10183e023ff8c0c93ed123779"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O23",
+      "providerCallOrdinal": 28,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "8849559e06126eac2ae75983b870e940a94ee24e59830b4fa545053d65653ef9"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O24",
+      "providerCallOrdinal": 29,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "cf7c70737eb7aaf712119f65d5fed8401899d1cf2c4bac6702bb4f64ca8094cd"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O48",
+      "providerCallOrdinal": 30,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "dd05a1dc67545598ab68b3133eb30162b2369c8b3f1f61758385d2df0bed3037"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O77",
+      "providerCallOrdinal": 31,
+      "finishReason": "stop",
+      "transportError": null,
+      "rawResponseSha256": "8c46e0548e6abfde6ff5b66f05f0d6ca4882f8af3bac79e7bb81c928e7591acc"
+    }
+  ]
+}
