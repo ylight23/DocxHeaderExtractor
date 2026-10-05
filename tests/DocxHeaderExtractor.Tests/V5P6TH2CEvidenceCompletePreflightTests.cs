@@ -1,9 +1,11 @@
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.V5Qualification;
 using UglyToad.PdfPig;
 
@@ -14,6 +16,9 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
 {
     private const string Root = "artifacts/v5-p6t-function-membership";
     private const string OutputRoot = Root + "/p6th2c-evidence-complete-preflight";
+    private const string CaptureRoot = Root + "/p6th2c-evidence-complete-capture-20261005";
+    private const string ExecutionConfirmationVariable = "P6TH2C_EVIDENCE_PAIRED_EXECUTION_CONFIRMATION";
+    private const string ExecutionConfirmation = "yes-i-authorize-p6th2c-evidence-paired-sixty-two-primary-calls-no-retry";
     private const int ResponseByteCap = 49_152;
     private const string ProtocolVersion = "v5-function-conditioned-exact-end-pointer-evidence-pair-1";
     private const string CoordinateClarification = """
@@ -25,10 +30,12 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
     private sealed record ArmRequest(string DocumentId, string PackId, string Anchor, string SourceSha256,
         string SourceUniverseSha256, string UserMessageSha256, int UserBytes, string ProviderBodySha256,
         int ProviderBodyBytes, int OccurrenceCount, IReadOnlyList<string> OccurrenceHandles,
-        int GeometryFactRows, int RichTypographyRows, int TransitionFactRows);
+        int GeometryFactRows, int RichTypographyRows, int TransitionFactRows,
+        string SystemPrompt, string UserMessage, byte[] ProviderBody, int MaxCompletionTokens);
+    private sealed record PlannedCall(string Arm, ArmRequest Request);
 
     [Fact]
-    public void H2C_evidence_complete_pair_freezes_projection_only_delta_and_corrects_coordinate_wording()
+    public async Task H2C_evidence_complete_pair_freezes_projection_only_delta_and_corrects_coordinate_wording()
     {
         var repo = TestRepository.Root();
         var sourceRequests = P6TH2CEndPointerCanary.BuildAllForTreatment(repo, "V2");
@@ -163,10 +170,12 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
             Assert.Equal(request.IssuedOccurrences.Count - 1, transitionRows);
             armA.Add(new ArmRequest(request.Source.DocumentId, request.PackId, request.Anchor, request.SourceSha256,
                 request.SourceUniverseSha256, Hash(userA), Encoding.UTF8.GetByteCount(userA), bodyA.Hash,
-                bodyA.Bytes, occurrencesA.Count, request.IssuedOccurrences, 0, 0, 0));
+                bodyA.Bytes, occurrencesA.Count, request.IssuedOccurrences, 0, 0, 0,
+                prompt, userA, bodyA.PayloadBytes, request.MaxCompletionTokens));
             armB.Add(new ArmRequest(request.Source.DocumentId, request.PackId, request.Anchor, request.SourceSha256,
                 request.SourceUniverseSha256, Hash(userB), Encoding.UTF8.GetByteCount(userB), bodyB.Hash,
-                bodyB.Bytes, occurrencesB.Count, request.IssuedOccurrences, occurrencesB.Count, typographyRows, transitionRows));
+                bodyB.Bytes, occurrencesB.Count, request.IssuedOccurrences, occurrencesB.Count, typographyRows, transitionRows,
+                prompt, userB, bodyB.PayloadBytes, request.MaxCompletionTokens));
         }
 
         Assert.Equal(31, armA.Count);
@@ -251,6 +260,45 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
                 fallback = false,
             },
         });
+
+        var plannedCalls = armA.Zip(armB).SelectMany(pair => new[]
+        {
+            new PlannedCall("A", pair.First),
+            new PlannedCall("B", pair.Second),
+        }).ToArray();
+        var executionPlan = plannedCalls.Select((item, index) => new
+        {
+            callOrdinal = index + 1,
+            item.Arm,
+            item.Request.DocumentId,
+            item.Request.PackId,
+            item.Request.Anchor,
+            item.Request.SourceSha256,
+            item.Request.SourceUniverseSha256,
+            userMessageSha256 = item.Request.UserMessageSha256,
+            systemPromptSha256 = Hash(item.Request.SystemPrompt),
+            providerBodySha256 = item.Request.ProviderBodySha256,
+            providerBodyBytes = item.Request.ProviderBodyBytes,
+            item.Request.MaxCompletionTokens,
+            occurrenceHandlesSha256 = Hash(string.Join("\n", item.Request.OccurrenceHandles) + "\n"),
+        }).ToArray();
+        FreezeArtifact.AssertJson(OutputRoot, "execution-manifest.v1.json", new
+        {
+            schemaVersion = "v5-p6th2c-evidence-paired-execution-manifest-v1",
+            status = "PREPARED_NOT_AUTHORIZED_PROVIDER_CALLS_ZERO_GOLD_CLOSED",
+            preflightSha256 = Hash(File.ReadAllBytes(Path.Combine(TestRepository.Root(), OutputRoot.Replace('/', Path.DirectorySeparatorChar), "h2c-evidence-complete-preflight.v1.json"))),
+            executionOrder = "INTERLEAVED_A_THEN_B_PER_FROZEN_REQUEST_ROW",
+            primaryCalls = 62,
+            retry = 0,
+            repair = false,
+            fallback = false,
+            goldRead = false,
+            runtimeChanged = false,
+            requests = executionPlan,
+        });
+
+        if (Environment.GetEnvironmentVariable(ExecutionConfirmationVariable) == ExecutionConfirmation)
+            await ExecuteAuthorizedPairAsync(plannedCalls).ConfigureAwait(false);
     }
 
     private static JsonObject RewriteProtocolVersion(JsonObject root)
@@ -311,12 +359,185 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         return result;
     }
 
-    private static (string Hash, int Bytes) BuildBody(string systemPrompt, string userMessage, int maxCompletionTokens)
+    private static (string Hash, int Bytes, byte[] PayloadBytes) BuildBody(string systemPrompt, string userMessage, int maxCompletionTokens)
     {
         var request = new V5FreeHeadingRequestV1(ProtocolVersion, systemPrompt, userMessage,
             Hash(userMessage), Encoding.UTF8.GetByteCount(systemPrompt), Encoding.UTF8.GetByteCount(userMessage));
         var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(request, maxCompletionTokens);
-        return (body.Hash, body.Bytes);
+        return (body.Hash, body.Bytes, body.PayloadBytes);
+    }
+
+    private static async Task ExecuteAuthorizedPairAsync(IReadOnlyList<PlannedCall> calls)
+    {
+        if (calls.Count != 62) throw new InvalidOperationException("h2c-evidence-authorized-call-count-not-62");
+        if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")))
+            throw new InvalidOperationException("h2c-evidence-openrouter-api-key-missing-provider-calls-zero");
+
+        var repo = TestRepository.Root();
+        var capturePath = Path.Combine(repo, CaptureRoot.Replace('/', Path.DirectorySeparatorChar));
+        if (Directory.Exists(capturePath)) throw new InvalidOperationException("h2c-evidence-capture-directory-exists-stop-before-network");
+        var manifestPath = Path.Combine(repo, OutputRoot.Replace('/', Path.DirectorySeparatorChar), "execution-manifest.v1.json");
+        var manifestBytes = File.ReadAllBytes(manifestPath);
+        var options = RemoteInferenceOptions.FromEnvironment();
+        options.Model = "qwen/qwen3.7-flash";
+        options.OpenRouterProviderRoute = "alibaba";
+        options.OpenRouterReasoningEffort = "none";
+        options.RequireJsonObjectResponse = true;
+        options.TransientRequestRetries = 0;
+        options.MaxParallelRequests = 1;
+        options.ProviderTransportTimeoutSeconds = 300;
+        options.Validate();
+
+        Directory.CreateDirectory(capturePath);
+        WriteNew(Path.Combine(capturePath, "execution-reservation.v1.json"), new
+        {
+            schemaVersion = "v5-p6th2c-evidence-paired-execution-reservation-v1",
+            status = "AUTHORIZED_EXECUTION_RESERVED_RAW_CAPTURE_IN_PROGRESS_GOLD_CLOSED",
+            executionManifestSha256 = Hash(manifestBytes),
+            authorizedCalls = 62,
+            providerCallsAlreadySent = 0,
+            retry = 0,
+            repair = false,
+            fallback = false,
+            goldRead = false,
+            runtimeChanged = false,
+            reentryPolicy = "ANY_EXISTING_CAPTURE_DIRECTORY_STOPS_BEFORE_NETWORK",
+        });
+
+        var rows = new List<object>(calls.Count);
+        var callOrdinal = 0;
+        foreach (var call in calls)
+        {
+            callOrdinal++;
+            OpenRouterExecutionObservation? observation = null;
+            string? transportError = null;
+            var stopwatch = Stopwatch.StartNew();
+            try
+            {
+                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                observation = await client.ExecuteObservedAsync(call.Request.ProviderBody,
+                    call.Request.MaxCompletionTokens, call.Request.SystemPrompt, call.Request.UserMessage).ConfigureAwait(false);
+            }
+            catch (Exception exception) { transportError = exception.Message; }
+            stopwatch.Stop();
+
+            var contractError = observation is null ? "NO_RESPONSE" :
+                observation.FinishReason != "stop" ? "FINISH_REASON_NOT_STOP" :
+                TryParseEndPointer(observation.Content, call.Request.OccurrenceHandles, call.Request.Anchor) ? null : "INVALID_END_POINTER_LEDGER";
+            var armDirectory = Path.Combine(capturePath, call.Arm == "A" ? "arm-a" : "arm-b");
+            Directory.CreateDirectory(armDirectory);
+            var rawPath = Path.Combine(armDirectory, $"{call.Request.DocumentId}_{call.Request.Anchor}.raw-capture.v1.json");
+            WriteNew(rawPath, new
+            {
+                schemaVersion = "v5-p6th2c-evidence-paired-raw-capture-v1",
+                arm = call.Arm,
+                providerCallOrdinal = callOrdinal,
+                call.Request.DocumentId,
+                call.Request.PackId,
+                call.Request.Anchor,
+                call.Request.SourceSha256,
+                call.Request.SourceUniverseSha256,
+                systemPromptSha256 = Hash(call.Request.SystemPrompt),
+                userMessageSha256 = call.Request.UserMessageSha256,
+                providerBodySha256 = call.Request.ProviderBodySha256,
+                providerBodyBytes = call.Request.ProviderBodyBytes,
+                occurrenceHandlesSha256 = Hash(string.Join("\n", call.Request.OccurrenceHandles) + "\n"),
+                occurrenceCount = call.Request.OccurrenceCount,
+                reasoningRequested = true,
+                reasoningTokens = Usage(observation?.Usage, "completion_tokens_details", "reasoning_tokens"),
+                promptTokens = Usage(observation?.Usage, "prompt_tokens"),
+                completionTokens = Usage(observation?.Usage, "completion_tokens"),
+                finishReason = observation?.FinishReason,
+                retryCount = observation?.RetryCount ?? 0,
+                latencyMs = stopwatch.Elapsed.TotalMilliseconds,
+                rawSseSha256 = observation is null ? null : Hash(observation.RawSse),
+                rawResponseSha256 = observation is null ? null : Hash(observation.Content),
+                contractStatus = contractError is null ? "VALID" : contractError,
+                contractError,
+                transportError,
+                rawSse = observation?.RawSse,
+                rawResponse = observation?.Content,
+                goldReadDuringCapture = false,
+            });
+
+            rows.Add(new
+            {
+                arm = call.Arm,
+                callOrdinal,
+                call.Request.DocumentId,
+                call.Request.PackId,
+                call.Request.Anchor,
+                finishReason = observation?.FinishReason,
+                retryCount = observation?.RetryCount ?? 0,
+                contractStatus = contractError is null ? "VALID" : contractError,
+                rawResponseSha256 = observation is null ? null : Hash(observation.Content),
+                transportError,
+            });
+            File.WriteAllText(Path.Combine(capturePath, "progress.v1.json"),
+                JsonSerializer.Serialize(new { schemaVersion = "v5-p6th2c-evidence-paired-progress-v1", callsAttempted = callOrdinal, maxCalls = 62, goldRead = false, rows }, FreezeArtifact.Json),
+                new UTF8Encoding(false));
+            Console.WriteLine($"[{callOrdinal}/62] Arm {call.Arm} {call.Request.DocumentId}/{call.Request.Anchor}: {observation?.FinishReason ?? "ERROR"}; {contractError ?? "contract-valid"}");
+        }
+
+        WriteNew(Path.Combine(capturePath, "result.v1.json"), new
+        {
+            schemaVersion = "v5-p6th2c-evidence-paired-result-v1",
+            status = "ALL_PRIMARY_ATTEMPTS_RAW_FROZEN_GOLD_NOT_READ",
+            primaryRequestsPerArm = 31,
+            providerCallsAttempted = callOrdinal,
+            maxAuthorizedProviderCalls = 62,
+            retry = 0,
+            repair = false,
+            fallback = false,
+            goldRead = false,
+            runtimeChanged = false,
+            rows,
+        });
+    }
+
+    private static bool TryParseEndPointer(string raw, IReadOnlyList<string> issuedOccurrences, string anchor)
+    {
+        try
+        {
+            if (Encoding.UTF8.GetByteCount(raw) > ResponseByteCap) return false;
+            using var document = JsonDocument.Parse(raw);
+            var root = document.RootElement;
+            if (root.ValueKind != JsonValueKind.Object || root.EnumerateObject().Count() != 1 ||
+                !root.TryGetProperty("decisions", out var decisions) || decisions.ValueKind != JsonValueKind.Array || decisions.GetArrayLength() != 1) return false;
+            var decision = decisions[0];
+            if (decision.ValueKind != JsonValueKind.Object || decision.EnumerateObject().Count() != 5 ||
+                !decision.TryGetProperty("anchor", out var anchorValue) || anchorValue.ValueKind != JsonValueKind.String || anchorValue.GetString() != anchor ||
+                !decision.TryGetProperty("headingMembers", out var membersValue) || membersValue.ValueKind != JsonValueKind.Array ||
+                !decision.TryGetProperty("endOccurrence", out var endValue) || endValue.ValueKind != JsonValueKind.String ||
+                !decision.TryGetProperty("firstOutsideOccurrence", out var outsideValue) ||
+                !decision.TryGetProperty("firstOutsideRole", out var roleValue) || roleValue.ValueKind != JsonValueKind.String) return false;
+            var members = membersValue.EnumerateArray().ToArray();
+            if (members.Length == 0 || members.Length > issuedOccurrences.Count || members.Any(value => value.ValueKind != JsonValueKind.String)) return false;
+            var ids = members.Select(value => value.GetString()!).ToArray();
+            if (!ids.SequenceEqual(issuedOccurrences.Take(ids.Length), StringComparer.Ordinal) || ids[0] != anchor || endValue.GetString() != ids[^1]) return false;
+            var role = roleValue.GetString();
+            if (ids.Length == issuedOccurrences.Count)
+                return outsideValue.ValueKind == JsonValueKind.Null && role == "NO_VISIBLE_SUCCESSOR";
+            return outsideValue.ValueKind == JsonValueKind.String && outsideValue.GetString() == issuedOccurrences[ids.Length] &&
+                role is "NEW_HEADING" or "BODY_CONTENT" or "PAGE_FURNITURE" or "TABLE_OR_STRUCTURED_CONTENT" or "OTHER_NON_HEADING";
+        }
+        catch (Exception exception) when (exception is JsonException or InvalidOperationException or KeyNotFoundException) { return false; }
+    }
+
+    private static int? Usage(JsonElement? usage, params string[] path)
+    {
+        if (usage is not { ValueKind: JsonValueKind.Object } current) return null;
+        foreach (var key in path)
+            if (current.ValueKind != JsonValueKind.Object || !current.TryGetProperty(key, out current)) return null;
+        return current.ValueKind == JsonValueKind.Number && current.TryGetInt32(out var value) ? value : null;
+    }
+
+    private static void WriteNew(string path, object value)
+    {
+        using var stream = new FileStream(path, FileMode.CreateNew, FileAccess.Write, FileShare.None);
+        using var writer = new StreamWriter(stream, new UTF8Encoding(false));
+        writer.Write(JsonSerializer.Serialize(value, FreezeArtifact.Json));
+        writer.WriteLine();
     }
 
     private static object? TypographyFacts(PdfLineTypography? typography)
