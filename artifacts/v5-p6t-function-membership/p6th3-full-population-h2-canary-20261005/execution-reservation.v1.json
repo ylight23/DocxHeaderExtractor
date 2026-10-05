@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "v5-p6th3-full-population-h2-reservation-v1",
+  "status": "THIRTY_ONE_PRIMARY_CALLS_RESERVED",
+  "h2PreflightSha256": "622da34552833301ff86a0440a0c14ed1f067bafac18435eef6719200b307444",
+  "requestCount": 31,
+  "totalIssuedEdges": 1790,
+  "requestOrder": [
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O9",
+      "BodyHash": "bfbcbd43ec8f900926f3369c34916c82e80aa8a6763141e4fe87105aae33aa10"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O17",
+      "BodyHash": "deee2ac6c112546d8b90ea00e87a8ae04543b31a70dcac48ae77d92514e57d4b"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O18",
+      "BodyHash": "94b3139468e89cdce25b1c8e4c120d7e325b9862b05d24b0951c84cbd6b126c8"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O19",
+      "BodyHash": "a3dcf5c5e64c32199f370eff61f85891652c069b281215977becf7da7d9b70c6"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O27",
+      "BodyHash": "483a1a6677578f6c53b13efdffd544f16d95aaf3f447df43823528de6a8a15e5"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O54",
+      "BodyHash": "41a937c4dc85b7f8b8c736f57994a9ea99b6bb473dd69246c8ce23b0f7c0a4d4"
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O83",
+      "BodyHash": "3270268db3529c2dea3aacbc86cb6d4cf6814f074c600eec02b5e2ac4ce0b81d"
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O3",
+      "BodyHash": "d63c2bdee4bf8d230e7568401e1ed01349f2b16bc93b97e65510f8f0dc8e741c"
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O4",
+      "BodyHash": "fad194ab5e3e16fb2342e30955e209257f35415a1251ef43ce78263022ac6245"
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O5",
+      "BodyHash": "892891675d80622a974532ea226f881e400e6e721d03369874d9d586264bedad"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O16",
+      "BodyHash": "5a491ecad84bdf55c5cd19da15316b4cb2bca2924030f3808ace637926aa0eba"
+    },
+    {
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O41",
+      "BodyHash": "56bf2494cf5de2eb103ca39c9cf834ce3b1e4a69922ee2bee3490acc01a0e37a"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O30",
+      "BodyHash": "271911cd0a57c0fc2d823b7d8d4acb2c2ef259f819d188993d79dc3fe5aaf643"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O42",
+      "BodyHash": "cf9123b0c501bbddfc8984a02093fcebef6a37055e4ac4b9c9612dad81856639"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O43",
+      "BodyHash": "738a43b78a1c4ed03ef57ee6b2b4ed234f72bb203ae3a6f70a2e40a77362c18b"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O44",
+      "BodyHash": "e83e9068111694fecf803e733ee6df8fbdb4eb4be95600e4b0b7b37351f059be"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O47",
+      "BodyHash": "148202a74f9523775976945753110738bf7ff0a881f8a303592d8eca1160c8ed"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O51",
+      "BodyHash": "597056cddfe49d4993f34e16d6a1a30bb8c71434d7c2ca8d72233602978965c9"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O59",
+      "BodyHash": "e46f3d73c60477430d2d6c0e3d228d61f1c5f3e1ae256ed59982a4e96671a541"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O66",
+      "BodyHash": "a77967bb3491b2d5ef03773c565b53444d997b3d426b12b318dc31d58c39ec21"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O70",
+      "BodyHash": "881a4348d8c0f1f30bc3cfd104f7da026d1b772961354ee5f1ea717a77ae3c18"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O71",
+      "BodyHash": "c71add989c51e58764d8ded2df6f400947a2e097db63651811c927db307768d2"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O92",
+      "BodyHash": "79281c533860603e6b8434e4d5fc3db2b38d5604b0b0a27a75e22add92438c64"
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O95",
+      "BodyHash": "d00a1eb760928ae0af73ee668f8e76279483cad74cd9694d78315ea9bf0fd02c"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O1",
+      "BodyHash": "94e417a3e420b954f7298babb94bf380b681b42101805f091e4334608f3b778e"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O2",
+      "BodyHash": "48217733de03b32d096f90f5cb6ca99c4eb4b7b25868d0e4d11a9aa53d899690"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O5",
+      "BodyHash": "d029eb24c8495648822725e0bdc8ef17245a1f1c5d574085622870ba49253e2c"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O23",
+      "BodyHash": "a23842e3125f3d956bde3b3787d94ef28de5dd8171e12d928e196d80435d9cf5"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O24",
+      "BodyHash": "2d3f2ce0337ed9ea4943a1456484f6cef6a98abdb7f3052cd78be3986db90935"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O48",
+      "BodyHash": "ab860cffe2b40a5bc0771a8a5a7e878a93a0c5dbd1a08edb392c72b14363b3c3"
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O77",
+      "BodyHash": "0082fe603991e80994276d478db516d2639c3c7f6b68a5c2443c8b3993456a7a"
+    }
+  ],
+  "providerCallsBeforeSend": 0,
+  "maximumPrimaryCalls": 31,
+  "retriesAllowed": 0,
+  "repairAllowed": false,
+  "fallbackAllowed": false,
+  "goldRead": false
+}

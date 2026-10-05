@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "v5-p6tg2a-full-pack-population-reservation-v1",
+  "status": "FIVE_PRIMARY_CALLS_RESERVED",
+  "preflightSha256": "5290626f3ad273c0e35d4bb10ebed424c397c55e8f4bb1bd947a047ce69afab4",
+  "order": [
+    "SRC-089",
+    "SRC-041",
+    "SRC-095",
+    "DOC-0252",
+    "DOC-0256"
+  ],
+  "requestHashes": [
+    {
+      "documentId": "SRC-089",
+      "providerBodySha256": "6ea4051e8bffa3cfcf8fcf388b1f37c978c3023e90f07b149c6621f13a2b8631",
+      "primaryCount": 15
+    },
+    {
+      "documentId": "SRC-041",
+      "providerBodySha256": "b95a95fb25ea3e032b4613cde853ab39ef6de16dc7d2ea6b816a14dfed78b728",
+      "primaryCount": 3
+    },
+    {
+      "documentId": "SRC-095",
+      "providerBodySha256": "46aa441bff3192a47e3afcc5fe1569a0e2ccd3b45a97927969350cd39fd6cc85",
+      "primaryCount": 4
+    },
+    {
+      "documentId": "DOC-0252",
+      "providerBodySha256": "db6b23b8902728dffe8129c6e03949be9cd16a207bbe9ae3531bc113b1a4ccca",
+      "primaryCount": 19
+    },
+    {
+      "documentId": "DOC-0256",
+      "providerBodySha256": "3b13c8be2949269b8d2befc19318b891e0529d61a3a56534c218faf6ed8828f8",
+      "primaryCount": 7
+    }
+  ],
+  "providerCallsBeforeSend": 0,
+  "maximumPrimaryCalls": 5,
+  "retriesAllowed": 0,
+  "repairAllowed": false,
+  "fallbackAllowed": false,
+  "goldRead": false
+}

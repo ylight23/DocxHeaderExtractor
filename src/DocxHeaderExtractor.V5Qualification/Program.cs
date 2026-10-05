@@ -155,6 +155,12 @@ internal static class Program
             return await P6TEChallengeCanary.RunAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6te-src041-h2-challenge"))
             return await P6TEH2ContinuationCanary.RunAsync(LocateRepoRoot(), args);
+        // P6T-G2A population executes only the five requests frozen across the complete F1-authority cohort.
+        if (args.Contains("--p6tg2a-full-pack-population"))
+            return await P6TG2AFullPackPopulationCanary.RunAsync(LocateRepoRoot(), args);
+        // P6T-H2 executes only the 31 anchor-scoped edge ledgers frozen after full-pack G2A.
+        if (args.Contains("--p6th3-full-population-h2"))
+            return await P6TH3FullPopulationH2Canary.RunAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6th3-conflict-adjudication"))
             return await P6TH3ConflictAdjudicationCanary.RunAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6tf1-retry-src089"))
