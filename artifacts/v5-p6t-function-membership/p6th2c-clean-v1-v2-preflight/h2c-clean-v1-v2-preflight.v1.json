@@ -1,0 +1,622 @@
+{
+  "schemaVersion": "v5-p6th2c-clean-v1-v2-preflight-v1",
+  "status": "PROVIDER_NOT_RUN_GOLD_NOT_READ_COHORT_FROZEN",
+  "treatment": {
+    "model": "qwen/qwen3.7-flash",
+    "provider": "alibaba",
+    "temperature": 0,
+    "reasoning": {
+      "enabled": true,
+      "effort": "OMITTED"
+    },
+    "sourceCohort": "FROZEN_G2A_HAS_REQUEST_UNIVERSE",
+    "onlySemanticVariable": true,
+    "sharedSchema": "H2C_EXACT_END_POINTER_V1",
+    "sharedAnchorCopyRule": true,
+    "sharedSourceFacts": true,
+    "sharedHorizon": true,
+    "v1SemanticPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+    "v2SemanticPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5"
+  },
+  "authority": {
+    "inputManifestSha256": "31e5121b692b59a0622455d133659c56eaefba49b065f68463713f124a3505c0",
+    "goldRead": false,
+    "providerCalls": 0,
+    "retries": 0,
+    "repair": false,
+    "fallback": false,
+    "runtimeChanged": false
+  },
+  "requestCount": 31,
+  "requests": [
+    {
+      "providerCallOrdinal": 1,
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O9",
+      "anchorAlias": "L0006:S0",
+      "issuedOccurrenceCount": 88,
+      "issuedOccurrencesSha256": "4df31385401b0d243690b73e88b15c6dd1a447d6e1d235d24bf013556c5c8bb3",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "f7a1b7feb8a6bf7887e8df0d02390cf6e0280e73697a8bce70a942efbcacd749",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "f7a1b7feb8a6bf7887e8df0d02390cf6e0280e73697a8bce70a942efbcacd749",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 2,
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O17",
+      "anchorAlias": "L0014:S0",
+      "issuedOccurrenceCount": 80,
+      "issuedOccurrencesSha256": "1b01df835f80b82453a9d3b0838367993d267f5fbbd5083eb3c713773f0cd658",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "fda8b512911d495e4bbd25706eeefdea7fea4a879859764ad96b9438108443bb",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "fda8b512911d495e4bbd25706eeefdea7fea4a879859764ad96b9438108443bb",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 3,
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O18",
+      "anchorAlias": "L0015:S0",
+      "issuedOccurrenceCount": 79,
+      "issuedOccurrencesSha256": "4ed6a92437642a60375a78e45c398c376b4d8d732661eb3a18e36300e198c62d",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "3c8e167cd5a10bee59e727f725b35f1c8407af824821c5a62896979c1087ae2b",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "3c8e167cd5a10bee59e727f725b35f1c8407af824821c5a62896979c1087ae2b",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 4,
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O19",
+      "anchorAlias": "L0016:S0",
+      "issuedOccurrenceCount": 78,
+      "issuedOccurrencesSha256": "999470572d0f0378ab4ee11184219fcd9363fdf0bb1c43e75acf487d0785e048",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "babd5797767d0f56400c6d7ce37ffe872f81c444006709ee5aba6db06ccebd38",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "babd5797767d0f56400c6d7ce37ffe872f81c444006709ee5aba6db06ccebd38",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 5,
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O27",
+      "anchorAlias": "L0024:S0",
+      "issuedOccurrenceCount": 70,
+      "issuedOccurrencesSha256": "d39b06761f84e5b868d6cd5d345bc7b15b6e0cfe81ab1a5688bc3f18ab3f8021",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "670daf923e48d5fb40fc10fa9ef665318c226426f634248356e7c59793ec6a28",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "670daf923e48d5fb40fc10fa9ef665318c226426f634248356e7c59793ec6a28",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 6,
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O54",
+      "anchorAlias": "L0051:S0",
+      "issuedOccurrenceCount": 43,
+      "issuedOccurrencesSha256": "b396cdd984db6fe747bd82496da0673ed8aa8905a74dd27a88e9c793f7093028",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "d4e2c3c8db16e392b259176e522efb80758f23431ebe9786a8bc8bf7af799e2e",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "d4e2c3c8db16e392b259176e522efb80758f23431ebe9786a8bc8bf7af799e2e",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 7,
+      "documentId": "SRC-089",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O83",
+      "anchorAlias": "L0080:S0",
+      "issuedOccurrenceCount": 14,
+      "issuedOccurrencesSha256": "8452924510e6d83aa1fa87dc4ae511b0d00314fb1cd37d75577be08ab8bd1196",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "66a0f34682aceee0dc4ffb21907f73d4bed6b4e8a215892bed62b21d8fe1c7dc",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "66a0f34682aceee0dc4ffb21907f73d4bed6b4e8a215892bed62b21d8fe1c7dc",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 8,
+      "documentId": "SRC-041",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "anchor": "O3",
+      "anchorAlias": "L3525:S0",
+      "issuedOccurrenceCount": 94,
+      "issuedOccurrencesSha256": "ab2b6a2c9df06ae61fd9d658af6e0aa4d4374650b8c6c81ae580ed2bde6914de",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "cc461c563b57c5a21b9fbf43fc011cb87e9886ba128cfe3c218b7c7e49434224",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "cc461c563b57c5a21b9fbf43fc011cb87e9886ba128cfe3c218b7c7e49434224",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 9,
+      "documentId": "SRC-041",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "anchor": "O4",
+      "anchorAlias": "L3526:S0",
+      "issuedOccurrenceCount": 93,
+      "issuedOccurrencesSha256": "cebbb29f33a2cb70a8e7fa0c9b9005a4d4978e91cc733298cc60eebd20f4c028",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "6d1ed85f5fb3753aeca8e13d3a9defcc25cd4b9c2a851b82a2631153f9cffbdd",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "6d1ed85f5fb3753aeca8e13d3a9defcc25cd4b9c2a851b82a2631153f9cffbdd",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 10,
+      "documentId": "SRC-041",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "anchor": "O5",
+      "anchorAlias": "L3527:S0",
+      "issuedOccurrenceCount": 92,
+      "issuedOccurrencesSha256": "d24713540b2a4ff0f3e79534105613d656e057d4d2726a689ed3a5bedd0fcfc4",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "62251203a7256f76a7eec17854269c7fa65dbe636fcea3f8c77d91ad7514ae1e",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "62251203a7256f76a7eec17854269c7fa65dbe636fcea3f8c77d91ad7514ae1e",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 11,
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O16",
+      "anchorAlias": "L0009:S0",
+      "issuedOccurrenceCount": 81,
+      "issuedOccurrencesSha256": "1d48d47739627b7fb572dc83dc2a254a1d54b44a10887763638a3cbec104d383",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "f81a71094811b4863a979fca978ad78a93d9dcf44fd61895337ef4ebf3d5229d",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "f81a71094811b4863a979fca978ad78a93d9dcf44fd61895337ef4ebf3d5229d",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 12,
+      "documentId": "SRC-095",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O41",
+      "anchorAlias": "L0034:S0",
+      "issuedOccurrenceCount": 56,
+      "issuedOccurrencesSha256": "e60bf36a31305e5f769c054fe90d277ad2779c4e3425fe1c072f21a0d085febe",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "b4d753f468a19a912377b467b42ecba72bcc50eebc84efe1842751ab90421903",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "b4d753f468a19a912377b467b42ecba72bcc50eebc84efe1842751ab90421903",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 13,
+      "documentId": "DOC-0252",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "anchor": "O30",
+      "anchorAlias": "L0507:S0",
+      "issuedOccurrenceCount": 67,
+      "issuedOccurrencesSha256": "bf7e2597e295c6769add6813ca75ff188f83253c1c3c527c86c3e6c5f4fcd272",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "3456915ed77fc5ba6d4f6390f84951cd2f9c2da695ccae8036d25fecbf911857",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "3456915ed77fc5ba6d4f6390f84951cd2f9c2da695ccae8036d25fecbf911857",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 14,
+      "documentId": "DOC-0252",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "anchor": "O42",
+      "anchorAlias": "L0519:S0",
+      "issuedOccurrenceCount": 55,
+      "issuedOccurrencesSha256": "30276c1f8e7f398ed5b4ad2147d250facda63313dc3b200fdbf153ca78eb7719",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "ea2a95d2246446e07a42b3cf27154c7e442264216e654be4927e2e4bcfd3c30b",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "ea2a95d2246446e07a42b3cf27154c7e442264216e654be4927e2e4bcfd3c30b",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 15,
+      "documentId": "DOC-0252",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "anchor": "O43",
+      "anchorAlias": "L0520:S0",
+      "issuedOccurrenceCount": 54,
+      "issuedOccurrencesSha256": "17b4769e248ca2e20cffc8827822d5059045ed225f29df482ff4e3d9e011328b",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "d7a790d1efce5215c7480fe233c11276531c19d2794792d46f0b3f3ce5cc9cce",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "d7a790d1efce5215c7480fe233c11276531c19d2794792d46f0b3f3ce5cc9cce",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 16,
+      "documentId": "DOC-0252",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "anchor": "O44",
+      "anchorAlias": "L0521:S0",
+      "issuedOccurrenceCount": 53,
+      "issuedOccurrencesSha256": "18df6b10ac4833d1919f950cd4de492c54d2a2040b55683710827ee555cd593c",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "17b98abc2fe796f5e237940542586cfda17e3c8e0ca1fbfdc26f268dcbf87d9b",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "17b98abc2fe796f5e237940542586cfda17e3c8e0ca1fbfdc26f268dcbf87d9b",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 17,
+      "documentId": "DOC-0252",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "anchor": "O47",
+      "anchorAlias": "L0523:S0",
+      "issuedOccurrenceCount": 50,
+      "issuedOccurrencesSha256": "8731304df7b88bbdf226b8d7d7ddce83956dd6f4b52f5cc50bd6f29665bc60ac",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "258cf79b23cee487bb54325d583e0c0740e5e262113a0c217b88e0c428fe6625",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "258cf79b23cee487bb54325d583e0c0740e5e262113a0c217b88e0c428fe6625",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 18,
+      "documentId": "DOC-0252",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "anchor": "O51",
+      "anchorAlias": "L0526:S0",
+      "issuedOccurrenceCount": 46,
+      "issuedOccurrencesSha256": "085df61ba2e343dd3105011076bcc30b5c6c7113100b7ab8e319e80848b46475",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "d82010396557751a5981d960124e5abc848828dc19b17853b77c3256b7112326",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "d82010396557751a5981d960124e5abc848828dc19b17853b77c3256b7112326",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 19,
+      "documentId": "DOC-0252",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "anchor": "O59",
+      "anchorAlias": "L0531:S0",
+      "issuedOccurrenceCount": 38,
+      "issuedOccurrencesSha256": "cb877b044e1e2cacd0a0afb12d3803a2da8080fa023461b6c4c19df8411113f9",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "187e7818c8d723b5b009adeea1458c5a03c2439a7603c10fa1fe5761aa5e9259",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "187e7818c8d723b5b009adeea1458c5a03c2439a7603c10fa1fe5761aa5e9259",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 20,
+      "documentId": "DOC-0252",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "anchor": "O66",
+      "anchorAlias": "L0536:S0",
+      "issuedOccurrenceCount": 31,
+      "issuedOccurrencesSha256": "113133dbe0f3c8cbff715f360998c388f34365b20355f1d1410bd60be4d59aa7",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "0d0cd963c29bc3ac24c52b0bb9c44e71012b77c3846037ceae5e12586461748a",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "0d0cd963c29bc3ac24c52b0bb9c44e71012b77c3846037ceae5e12586461748a",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 21,
+      "documentId": "DOC-0252",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "anchor": "O70",
+      "anchorAlias": "L0539:S0",
+      "issuedOccurrenceCount": 27,
+      "issuedOccurrencesSha256": "f6dde48e353821bcbb231cca5633acf7afd1297f4a18e0af74393486efa34f13",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "ad9cd4af96fdb592294a97dc8a87187f03cbb9a19312fb2fe64037258b4b4cf6",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "ad9cd4af96fdb592294a97dc8a87187f03cbb9a19312fb2fe64037258b4b4cf6",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 22,
+      "documentId": "DOC-0252",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "anchor": "O71",
+      "anchorAlias": "L0540:S0",
+      "issuedOccurrenceCount": 26,
+      "issuedOccurrencesSha256": "82d5cc47789448a5b63be96f4d60ae066d7ac0fb0c7f31a65cebbbde62a6526d",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "30b106de992169e3d1c4bee31ad5e49da07a1f01660dd1c822bcc9b0bbee5918",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "30b106de992169e3d1c4bee31ad5e49da07a1f01660dd1c822bcc9b0bbee5918",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 23,
+      "documentId": "DOC-0252",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "anchor": "O92",
+      "anchorAlias": "L0553:S0",
+      "issuedOccurrenceCount": 5,
+      "issuedOccurrencesSha256": "d13972ef44a7976628bcdce2cbdfe36fbdabe9f9a009fb40b9c0439d1c5c02d7",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "bce23c2bba9824e6d2950039f5e3feb5036a29f96d972e2a31fab515185f1cf5",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "bce23c2bba9824e6d2950039f5e3feb5036a29f96d972e2a31fab515185f1cf5",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 24,
+      "documentId": "DOC-0252",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "anchor": "O95",
+      "anchorAlias": "L0556:S0",
+      "issuedOccurrenceCount": 2,
+      "issuedOccurrencesSha256": "36ee0089a34cb039365fd18484468c973548c3bc5b95ffef38c8f6541597ca7a",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "f7f4c84e60b44642d4a2aaa9a22fd11eb24caf2f32551e641faf8eb5cedf4b0a",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "f7f4c84e60b44642d4a2aaa9a22fd11eb24caf2f32551e641faf8eb5cedf4b0a",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 25,
+      "documentId": "DOC-0256",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O1",
+      "anchorAlias": "L0000:S0",
+      "issuedOccurrenceCount": 96,
+      "issuedOccurrencesSha256": "5be40ad490446f3c51ee53ddd325816be84238b076f16282193d3ad1954592cf",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "7fba15fdc576660f6a19f995e1b42d294ff53d9c83169d3eb5f64d2171b15994",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "7fba15fdc576660f6a19f995e1b42d294ff53d9c83169d3eb5f64d2171b15994",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 26,
+      "documentId": "DOC-0256",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O2",
+      "anchorAlias": "L0001:S0",
+      "issuedOccurrenceCount": 95,
+      "issuedOccurrencesSha256": "4879935accf50b5126d659bb6d4815a0e6beedaaf2b09f9922cd62192b294459",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "613f1d5e1ecb75b3565f2efefc9bb68ca213210430c53246118ac894d66a3560",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "613f1d5e1ecb75b3565f2efefc9bb68ca213210430c53246118ac894d66a3560",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 27,
+      "documentId": "DOC-0256",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O5",
+      "anchorAlias": "L0004:S0",
+      "issuedOccurrenceCount": 92,
+      "issuedOccurrencesSha256": "d24713540b2a4ff0f3e79534105613d656e057d4d2726a689ed3a5bedd0fcfc4",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "2e41a1ecd268f05ccdd1d827e1488dfedd09708112ab7f1983a0327eb5a8b1f7",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "2e41a1ecd268f05ccdd1d827e1488dfedd09708112ab7f1983a0327eb5a8b1f7",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 28,
+      "documentId": "DOC-0256",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O23",
+      "anchorAlias": "L0022:S0",
+      "issuedOccurrenceCount": 74,
+      "issuedOccurrencesSha256": "742e20e31a9aa3bd5f68a6c5ce5be8a44021f0379d2698700f1fa041ce4eda64",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "18885a4e899c1aa7bfd159d82d17fb9278245551a4738c0fbfbdc33a078df7c2",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "18885a4e899c1aa7bfd159d82d17fb9278245551a4738c0fbfbdc33a078df7c2",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 29,
+      "documentId": "DOC-0256",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O24",
+      "anchorAlias": "L0023:S0",
+      "issuedOccurrenceCount": 73,
+      "issuedOccurrencesSha256": "d756aec5bad7c02131f2d5b9d1bcd82e4562f39d167e263b9bcc52554385c45c",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "80e6f81b01c2e6575ce14e9d67c2e662ba3339a59a27ed69b7d50e88a99482c9",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "80e6f81b01c2e6575ce14e9d67c2e662ba3339a59a27ed69b7d50e88a99482c9",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 30,
+      "documentId": "DOC-0256",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O48",
+      "anchorAlias": "L0047:S0",
+      "issuedOccurrenceCount": 49,
+      "issuedOccurrencesSha256": "1f9f172ae74e728116fa0548b3172b250dcb1a11d81063819fcae5314a754c0d",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "dd7d45530f6a3516547b5a0d75f34b63fe8d9a3c9a173273a7cbe18ffcc8e5ba",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "dd7d45530f6a3516547b5a0d75f34b63fe8d9a3c9a173273a7cbe18ffcc8e5ba",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    },
+    {
+      "providerCallOrdinal": 31,
+      "documentId": "DOC-0256",
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "anchor": "O77",
+      "anchorAlias": "L0076:S0",
+      "issuedOccurrenceCount": 20,
+      "issuedOccurrencesSha256": "e38774cbadcd49a8a064a7279d0c5e816d629bcb8146c637ca25b85155527dbb",
+      "v1": {
+        "systemPromptSha256": "4c2c98e6dd481e2c2b6294f2f809bfa7dd8ed6f5c490ed23f9769ee91fc0c1af",
+        "userMessageSha256": "4ff7ed1bf080c74a43b6ba8d04c809ad1139af7167381cd8179605839ff661bc",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      },
+      "v2": {
+        "systemPromptSha256": "c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+        "userMessageSha256": "4ff7ed1bf080c74a43b6ba8d04c809ad1139af7167381cd8179605839ff661bc",
+        "sourceFacts": "SHARED_FROZEN_V2_REQUEST_UNIVERSE"
+      }
+    }
+  ]
+}
