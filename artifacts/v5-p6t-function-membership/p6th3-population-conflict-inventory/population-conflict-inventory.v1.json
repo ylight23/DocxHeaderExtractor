@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "v5-p6th3-raw-population-conflict-inventory-v1",
+  "status": "FROZEN_RAW_ONLY_BEFORE_GOLD_STRATIFICATION",
+  "method": "join each available frozen H2 edge to the G2A decision for its right occurrence; conflict iff H2=CONTINUES_STRUCTURAL_UNIT and G2A(right)=HAS_STRUCTURAL_EXTENT",
+  "rawOnly": true,
+  "goldRead": false,
+  "goldUsedForConflictDiscovery": false,
+  "providerCallsDuringAudit": 0,
+  "rawCaptureMutation": "NONE",
+  "runtimeChanged": false,
+  "coverageSummary": {
+    "availablePairedDocumentSlices": 2,
+    "availableH2Edges": 21,
+    "edgesWithRightSideG2ADecision": 8,
+    "conflicts": 2,
+    "fullDocumentAuthorityCompleteLedgers": 0,
+    "note": "Current captures are targeted challenge/canary slices, not document-wide F1+G2A+H2 ledgers; inventory is complete only over these frozen captures."
+  },
+  "documents": [
+    {
+      "documentId": "SRC-089",
+      "coverage": "CHALLENGE_SLICE_15_G2A_PRIMARIES_AND_18_H2_EDGES",
+      "g2aRawPath": "artifacts/v5-p6t-function-membership/p6tg2a-anchor-existence-canary-20261004/SRC-089.raw-capture.v1.json",
+      "g2aRawSha256": "f1b35061d81e32d859f3fd756cf0d47e5896d7d3c79b94acabd06f9a58833e70",
+      "g2aRawResponseSha256": "90031a491b19c54e275fd8231d6d8475c8e45c4906f9a617c35eb407067a00c9",
+      "g2aDecisionCount": 15,
+      "h2RawPath": "artifacts/v5-p6t-function-membership/p6th2-function-conditioned-continuation-canary-20261004/SRC-089.raw-capture.v1.json",
+      "h2RawSha256": "d0e9155666a8cc840d062dc0f4e9278e7461da5af628384365c680a86de34612",
+      "h2RawResponseSha256": "1f4f1e5f9c1132a8967a4d6b661b96416ecd21d455977c4a6fddba39484eb66c",
+      "h2EdgeCount": 18,
+      "comparableEdges": 7,
+      "edgesWithoutRightAnchorDecision": 11,
+      "conflictCount": 1,
+      "f1Authority": "F1_REQUEST_AUTHORITY_HASH_PINNED_BY_G2A_PREFLIGHT; F1_RAW_LEDGER_NOT_PRESENT_IN_THIS_CAPTURE_SET"
+    },
+    {
+      "documentId": "SRC-041",
+      "coverage": "CHALLENGE_SLICE_3_G2A_PRIMARIES_AND_3_H2_EDGES",
+      "g2aRawPath": "artifacts/v5-p6t-function-membership/p6te-src041-e-challenge/g2a.raw-capture.v1.json",
+      "g2aRawSha256": "790789fcce4a913966d19c6061d28e981a745b395178e46f392dcf21be000b63",
+      "g2aRawResponseSha256": "982ceafed47e61057a28305828daf9bf20cf75679721f74e2830ec65dbbf4ab8",
+      "g2aDecisionCount": 3,
+      "h2RawPath": "artifacts/v5-p6t-function-membership/p6te-src041-h2-challenge/h2.raw-capture.v1.json",
+      "h2RawSha256": "2a6d9e8a1509e3d1927529cdf364036dd4f5135e295f1b8a83c60384ac57d8f9",
+      "h2RawResponseSha256": "61b1cf504e5b29af0a033a876db131734cbd465dc40a8cf031b7c8d199668b47",
+      "h2EdgeCount": 3,
+      "comparableEdges": 1,
+      "edgesWithoutRightAnchorDecision": 2,
+      "conflictCount": 1,
+      "f1Authority": "F1_RAW_HASH_PINNED_BY_G2A_CAPTURE_AND_EXECUTION_RECEIPT"
+    }
+  ],
+  "g2aWithoutH2": [
+    {
+      "documentId": "DOC-0252",
+      "g2aRawPath": "p6te-doc0252-e-challenge/g2a.raw-capture.v1.json",
+      "g2aRawSha256": "8f8dd87ad7606654c58dd3879cd2f524faafc52f51aebb4d3610537998dc131e",
+      "g2aDecisionCount": 19,
+      "h2Ledger": "NOT_PRESENT",
+      "conclusion": "NO_H2_CONFLICT_ABSENCE_INFERENCE"
+    },
+    {
+      "documentId": "DOC-0256",
+      "g2aRawPath": "p6te-doc0256-e-challenge/g2a.raw-capture.v1.json",
+      "g2aRawSha256": "3c1bd801e6cb5f79efb08c9e823f6c870488b29907f8511a6f3dedafbca6b600",
+      "g2aDecisionCount": 7,
+      "h2Ledger": "NOT_PRESENT",
+      "conclusion": "NO_H2_CONFLICT_ABSENCE_INFERENCE"
+    }
+  ],
+  "conflicts": [
+    {
+      "documentId": "SRC-041",
+      "anchor": "O4",
+      "left": "O4",
+      "right": "O5",
+      "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+      "g2aRight": "HAS_STRUCTURAL_EXTENT",
+      "h2Ordinal": 0
+    },
+    {
+      "documentId": "SRC-089",
+      "anchor": "O17",
+      "left": "O18",
+      "right": "O19",
+      "h2Boundary": "CONTINUES_STRUCTURAL_UNIT",
+      "g2aRight": "HAS_STRUCTURAL_EXTENT",
+      "h2Ordinal": 1
+    }
+  ],
+  "conclusion": "TWO_RAW_CONFLICTS_FOUND_IN_AVAILABLE_CHALLENGE_SLICES; THIS_IS_NOT_A_CORPUS_POPULATION_ESTIMATE"
+}
