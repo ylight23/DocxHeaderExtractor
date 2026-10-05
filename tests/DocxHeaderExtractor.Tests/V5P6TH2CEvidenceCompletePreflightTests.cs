@@ -20,8 +20,8 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
     private const string ExecutionConfirmationVariable = "P6TH2C_EVIDENCE_PAIRED_EXECUTION_CONFIRMATION";
     private const string ExecutionConfirmation = "yes-i-authorize-p6th2c-evidence-paired-sixty-two-primary-calls-no-retry";
     private const int ResponseByteCap = 49_152;
-    private const string ProtocolVersion = "v5-function-conditioned-exact-end-pointer-evidence-pair-1";
-    private const string CoordinateClarification = """
+    internal const string ProtocolVersion = "v5-function-conditioned-exact-end-pointer-evidence-pair-1";
+    internal const string CoordinateClarification = """
         Use source text and all supplied neutral measured physical, geometry, layout, and style facts. Do not output coordinates or parser layout-block IDs; they are read-only evidence, not response handles. Do not infer or output unsupplied coordinates. Do not use hierarchy labels, candidate alternatives, relations, source aliases, rationale, confidence, or unissued evidence.
         """;
 
@@ -38,12 +38,74 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         byte[] ProviderBody, string ProviderBodySha256, int ProviderBodyBytes, int MaxCompletionTokens,
         IReadOnlyList<string> OccurrenceHandles);
 
+    /// <summary>Rebuilds the frozen Arm-A carrier exactly, with the shared coordinate-output clarification.</summary>
+    internal static EvidenceArmRequest BuildArmARequest(P6TH2CEndPointerCanary.Request request)
+    {
+        using var baseUser = JsonDocument.Parse(request.UserMessage);
+        var user = RewriteProtocolVersion(JsonNode.Parse(baseUser.RootElement.GetRawText())?.AsObject()
+            ?? throw new InvalidDataException("h2c-evidence-current-user-invalid"));
+        var userMessage = user.ToJsonString(CanonicalJsonOptions);
+        var body = BuildBody(BuildEvidencePrompt(), userMessage, request.MaxCompletionTokens);
+        return new EvidenceArmRequest(request.Source.DocumentId, request.PackId, request.Anchor,
+            request.SourceSha256, request.SourceUniverseSha256, Hash(userMessage), BuildEvidencePrompt(), userMessage,
+            body.PayloadBytes, body.Hash, body.Bytes, request.MaxCompletionTokens, request.IssuedOccurrences);
+    }
+
+    /// <summary>
+    /// Rebuilds Arm A and projects only the pre-existing rich typography object.  In particular it does not
+    /// project geometry, parser layout-block identity, gaps, or an engineered typography-transition feature.
+    /// </summary>
+    internal static EvidenceArmRequest BuildTypographyOnlyRequest(string repo, P6TH2CEndPointerCanary.Request request)
+    {
+        using var baseUser = JsonDocument.Parse(request.UserMessage);
+        var typographyUser = RewriteProtocolVersion(JsonNode.Parse(baseUser.RootElement.GetRawText())?.AsObject()
+            ?? throw new InvalidDataException("h2c-typography-only-current-user-invalid"));
+        var occurrences = typographyUser["anchors"]!.AsArray()[0]!["occurrences"]!.AsArray();
+        var pdfPath = TestRepository.Path(request.Source.PdfPath);
+        IReadOnlyList<PdfLine> lines;
+        using (var pdf = PdfDocument.Open(pdfPath)) lines = PdfLineExtraction.ExtractLines(pdf);
+        var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
+        Assert.Equal(request.SourceSha256, sourceSha);
+        var authority = PdfStructuredSourceAuthorityBuilder.Build(lines, sourceSha);
+        Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
+        var aliases = BuildF1OccurrenceAliasMap(repo, request.Source, request.PackId, sourceSha, request.SourceUniverseSha256);
+        var start = Array.FindIndex(authority.Atoms.ToArray(), atom => atom.Alias == request.AnchorAlias);
+        Assert.True(start >= 0, $"h2c-typography-only-anchor-alias-missing:{request.Source.DocumentId}:{request.Anchor}");
+        Assert.Equal(request.IssuedOccurrences.Count, occurrences.Count);
+        for (var index = 0; index < occurrences.Count; index++)
+        {
+            var atomIndex = start + index;
+            Assert.True(atomIndex < authority.Atoms.Count, $"h2c-typography-only-tail-out-of-range:{request.Source.DocumentId}:{request.Anchor}");
+            var occurrence = occurrences[index]!.AsObject();
+            var atom = authority.Atoms[atomIndex];
+            Assert.Equal(request.IssuedOccurrences[index], occurrence["occurrence"]!.GetValue<string>());
+            Assert.Equal(atom.Alias, aliases[request.IssuedOccurrences[index]]);
+            Assert.Equal(atom.Page, occurrence["page"]!.GetValue<int>());
+            Assert.Equal(atom.Text, occurrence["text"]!.GetValue<string>());
+            Assert.False(occurrence.ContainsKey("geometry"));
+            Assert.False(occurrence.ContainsKey("parserLayoutBlockId"));
+            Assert.False(occurrence.ContainsKey("transitionFromPrevious"));
+            var typography = TypographyFacts(authority.Contexts[atom.SourceId].Source.Typography);
+            Assert.NotNull(typography);
+            occurrence["typography"] = JsonSerializer.SerializeToNode(typography);
+        }
+
+        var userMessage = typographyUser.ToJsonString(CanonicalJsonOptions);
+        var body = BuildBody(BuildEvidencePrompt(), userMessage, request.MaxCompletionTokens);
+        return new EvidenceArmRequest(request.Source.DocumentId, request.PackId, request.Anchor,
+            request.SourceSha256, request.SourceUniverseSha256, Hash(userMessage), BuildEvidencePrompt(), userMessage,
+            body.PayloadBytes, body.Hash, body.Bytes, request.MaxCompletionTokens, request.IssuedOccurrences);
+    }
+
+    internal static string BuildEvidencePrompt() =>
+        P6TH2CCleanPairedBoundaryTreatment.V2SemanticBoundaryInstruction + "\n\n" +
+        P6TH2CCleanPairedBoundaryTreatment.SharedContractInstruction.Replace(
+            "Use source text and only the supplied neutral physical/style facts. Do not use hierarchy, candidate alternatives, relations, coordinates, aliases, rationale, confidence, or unissued evidence.",
+            CoordinateClarification.Trim(), StringComparison.Ordinal);
+
     internal static EvidenceArmRequest BuildArmBRequest(string repo, P6TH2CEndPointerCanary.Request request)
     {
-        var prompt = P6TH2CCleanPairedBoundaryTreatment.V2SemanticBoundaryInstruction + "\n\n" +
-                     P6TH2CCleanPairedBoundaryTreatment.SharedContractInstruction.Replace(
-                         "Use source text and only the supplied neutral physical/style facts. Do not use hierarchy, candidate alternatives, relations, coordinates, aliases, rationale, confidence, or unissued evidence.",
-                         CoordinateClarification.Trim(), StringComparison.Ordinal);
+        var prompt = BuildEvidencePrompt();
         using var baseUser = JsonDocument.Parse(request.UserMessage);
         var completeUser = RewriteProtocolVersion(JsonNode.Parse(baseUser.RootElement.GetRawText())?.AsObject()
             ?? throw new InvalidDataException("h2c-evidence-current-user-invalid"));
@@ -122,10 +184,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         var repo = TestRepository.Root();
         var sourceRequests = P6TH2CEndPointerCanary.BuildAllForTreatment(repo, "V2");
         Assert.Equal(31, sourceRequests.Count);
-        var prompt = P6TH2CCleanPairedBoundaryTreatment.V2SemanticBoundaryInstruction + "\n\n" +
-                     P6TH2CCleanPairedBoundaryTreatment.SharedContractInstruction.Replace(
-                         "Use source text and only the supplied neutral physical/style facts. Do not use hierarchy, candidate alternatives, relations, coordinates, aliases, rationale, confidence, or unissued evidence.",
-                         CoordinateClarification.Trim(), StringComparison.Ordinal);
+        var prompt = BuildEvidencePrompt();
         Assert.Contains("Do not output coordinates", prompt, StringComparison.Ordinal);
         Assert.DoesNotContain("Do not use hierarchy, candidate alternatives, relations, coordinates", prompt, StringComparison.Ordinal);
 

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "v5-p6th2c-typography-only-screen-execution-manifest-v1",
+  "status": "PREPARED_NOT_AUTHORIZED_PROVIDER_CALLS_ZERO_GOLD_CLOSED",
+  "preflightSha256": "795c2d1a2c60a9ec12fbf58895bcf3c5ff4a09f51188a1cda964a4a70ceeeb79",
+  "primaryCalls": 4,
+  "retry": 0,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false,
+  "runtimeChanged": false,
+  "executionOrder": "FROZEN_TARGET_ORDER",
+  "requests": [
+    {
+      "callOrdinal": 1,
+      "arm": "TYPOGRAPHY_ONLY",
+      "row": {
+        "documentId": "SRC-089",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "anchor": "O17",
+        "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+        "sourceUniverseSha256": "949dedfe976c1baeebf60bcad4bee75a5d5eafef7886bb2e9385f0708c7fb494",
+        "occurrenceHandlesSha256": "1b01df835f80b82453a9d3b0838367993d267f5fbbd5083eb3c713773f0cd658",
+        "occurrences": 80,
+        "frozenHistoricalPredictionExpectation": "NO_RECOVERY_EXPECTED",
+        "primaryDiagnostic": "EXACT_EXTENT_AND_UNDEREXTENT",
+        "control": {
+          "authority": "HISTORICAL_ARM_A_FROM_DFE96AA",
+          "userMessageSha256": "de22b4917702de27078ffe78cd7a183a89525cec2cfeda157af66cbcbb3da7fd",
+          "userBytes": 28792,
+          "systemPromptSha256": "36a547783a5e9f3593bab95cd439a80820c37fc162f1eccb717520fea982dada",
+          "providerBodySha256": "7a1d150da813749e3caae3c0deec117e47b9d8e7ecdd35857f0becf564571701",
+          "providerBodyBytes": 45547
+        },
+        "typographyOnlyTreatment": {
+          "userMessageSha256": "766dc7ab111e3731d327246dad2defca1d9a326ca7ea112b9d0ccfc39fd478b0",
+          "userBytes": 60873,
+          "systemPromptSha256": "36a547783a5e9f3593bab95cd439a80820c37fc162f1eccb717520fea982dada",
+          "providerBodySha256": "9fdf3f873f4b739f36ac3d79ee77ebed43ede1fcea036c02712c799b36769605",
+          "providerBodyBytes": 94428,
+          "richTypographyRows": 80
+        }
+      }
+    },
+    {
+      "callOrdinal": 2,
+      "arm": "TYPOGRAPHY_ONLY",
+      "row": {
+        "documentId": "SRC-089",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "anchor": "O19",
+        "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+        "sourceUniverseSha256": "949dedfe976c1baeebf60bcad4bee75a5d5eafef7886bb2e9385f0708c7fb494",
+        "occurrenceHandlesSha256": "999470572d0f0378ab4ee11184219fcd9363fdf0bb1c43e75acf487d0785e048",
+        "occurrences": 78,
+        "frozenHistoricalPredictionExpectation": "NO_EXACT_RECOVERY_EXPECTED_DISTANCE_MAY_SHRINK",
+        "primaryDiagnostic": "EXACT_EXTENT_AND_SIGNED_BOUNDARY_DISTANCE",
+        "control": {
+          "authority": "HISTORICAL_ARM_A_FROM_DFE96AA",
+          "userMessageSha256": "9edd2ff47f6f05560e2488cdfb0e3657d3f1a2ca8db4591f8c39cf5977d7bc4e",
+          "userBytes": 28199,
+          "systemPromptSha256": "36a547783a5e9f3593bab95cd439a80820c37fc162f1eccb717520fea982dada",
+          "providerBodySha256": "1905c7b397bac2eb8426d044d03a48c57ec6d503d1b849d18dea5e3e5dc1a7c1",
+          "providerBodyBytes": 44614
+        },
+        "typographyOnlyTreatment": {
+          "userMessageSha256": "e1ced96d8d9071e6f294dd9f5a16f3be858257b83d30286ab739c99239085e9f",
+          "userBytes": 59446,
+          "systemPromptSha256": "36a547783a5e9f3593bab95cd439a80820c37fc162f1eccb717520fea982dada",
+          "providerBodySha256": "123723d5dac19c48cbb007dddac99b58f7ef27d13526ed35f71bb474447aa308",
+          "providerBodyBytes": 92241,
+          "richTypographyRows": 78
+        }
+      }
+    },
+    {
+      "callOrdinal": 3,
+      "arm": "TYPOGRAPHY_ONLY",
+      "row": {
+        "documentId": "SRC-041",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+        "anchor": "O4",
+        "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+        "sourceUniverseSha256": "7770864ee6870409b393ca004c23d6d9f546d084c57d4e685b0d0a1e357b744b",
+        "occurrenceHandlesSha256": "cebbb29f33a2cb70a8e7fa0c9b9005a4d4978e91cc733298cc60eebd20f4c028",
+        "occurrences": 93,
+        "frozenHistoricalPredictionExpectation": "RECOVERY_PLAUSIBLE",
+        "primaryDiagnostic": "EXACT_EXTENT",
+        "control": {
+          "authority": "HISTORICAL_ARM_A_FROM_DFE96AA",
+          "userMessageSha256": "bf334f16fa720286c0ce8d5526c114c705574794444613456d88ea9027c9ef47",
+          "userBytes": 29129,
+          "systemPromptSha256": "36a547783a5e9f3593bab95cd439a80820c37fc162f1eccb717520fea982dada",
+          "providerBodySha256": "05c3e8ed6b86e5d6ccf9481eaeefe9bb1ceb86adc02c3a82ff33264f396a5e10",
+          "providerBodyBytes": 48097
+        },
+        "typographyOnlyTreatment": {
+          "userMessageSha256": "41411a75df749331dde0fc6912de34523f0ff04676f8daeea187e6d7bce47ff0",
+          "userBytes": 64083,
+          "systemPromptSha256": "36a547783a5e9f3593bab95cd439a80820c37fc162f1eccb717520fea982dada",
+          "providerBodySha256": "5603f2a5668e0d9ef3958a64d44aca2f3ca28e03d7a0fe71061d1dfaa628744a",
+          "providerBodyBytes": 102581,
+          "richTypographyRows": 93
+        }
+      }
+    },
+    {
+      "callOrdinal": 4,
+      "arm": "TYPOGRAPHY_ONLY",
+      "row": {
+        "documentId": "DOC-0256",
+        "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+        "anchor": "O1",
+        "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+        "sourceUniverseSha256": "5640889907eea803eb3196a3d4498743c4f5131054f69bde3d382845662e3e72",
+        "occurrenceHandlesSha256": "5be40ad490446f3c51ee53ddd325816be84238b076f16282193d3ad1954592cf",
+        "occurrences": 96,
+        "frozenHistoricalPredictionExpectation": "NO_RECOVERY_EXPECTED",
+        "primaryDiagnostic": "EXACT_EXTENT",
+        "control": {
+          "authority": "HISTORICAL_ARM_A_FROM_DFE96AA",
+          "userMessageSha256": "fefff3676b7599375d8df773739c70f9d16e05ff4d36611c55a8e13afae7d2a4",
+          "userBytes": 35742,
+          "systemPromptSha256": "36a547783a5e9f3593bab95cd439a80820c37fc162f1eccb717520fea982dada",
+          "providerBodySha256": "06058fac2f49f613416f53a3a2691cdbee427827b97272457b02129cab451cb5",
+          "providerBodyBytes": 55229
+        },
+        "typographyOnlyTreatment": {
+          "userMessageSha256": "3b9f55204262643f2355aa678cda318831bb8f59562396f87b61f6ff7128e8fa",
+          "userBytes": 72522,
+          "systemPromptSha256": "36a547783a5e9f3593bab95cd439a80820c37fc162f1eccb717520fea982dada",
+          "providerBodySha256": "d9b94670a24f1fdff4433e4f7cbc92540b737a2cdf0d50a42307445d88088bfa",
+          "providerBodyBytes": 112169,
+          "richTypographyRows": 96
+        }
+      }
+    }
+  ]
+}
