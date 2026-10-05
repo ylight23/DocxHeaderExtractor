@@ -100,6 +100,38 @@ internal static class P6TH2CEndPointerCanary
         return 0;
     }
 
+    internal static async Task<int> RunCleanV2OnlyAsync(string repo, string[] args)
+    {
+        const string confirmation = "yes-i-authorize-p6th2c-clean-v2-thirty-one-primary-calls-with-error-retry";
+        if (!args.Contains($"--confirm-p6th2c-clean-v2={confirmation}"))
+        { Console.WriteLine("P6T-H2C CLEAN V2 PREPARED_NOT_AUTHORIZED; ProviderCalls=0, GoldRead=false."); return 0; }
+        if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY"))) return Fail("clean V2: OPENROUTER_API_KEY missing");
+        var root = Path.Combine(repo, "artifacts/v5-p6t-function-membership/p6th2c-clean-v2-capture-20261005");
+        if (Directory.Exists(root) && Directory.EnumerateFiles(root, "*.json", SearchOption.AllDirectories).Any()) return Fail("clean V2: immutable capture already exists");
+        Directory.CreateDirectory(root);
+        var options = RemoteInferenceOptions.FromEnvironment(); options.Model = "qwen/qwen3.7-flash"; options.OpenRouterProviderRoute = "alibaba"; options.OpenRouterReasoningEffort = "none"; options.RequireJsonObjectResponse = true; options.TransientRequestRetries = 0; options.MaxParallelRequests = 1; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
+        var requests = BuildAllForTreatment(repo, "V2"); if (requests.Count != 31) return Fail($"clean V2: expected 31 requests, got {requests.Count}");
+        var rows = new List<object>(); var calls = 0; var retries = 0;
+        foreach (var request in requests)
+        {
+            OpenRouterExecutionObservation? observation = null; string? error = null; var attempt = 0;
+            do
+            {
+                attempt++; calls++;
+                try { using var client = OpenRouterHeaderExtractor.CreateOwned(options); observation = await client.ExecuteObservedAsync(request.Body, request.MaxCompletionTokens, P6TH2CCleanPairedBoundaryTreatment.SystemPrompt("V2"), request.UserMessage).ConfigureAwait(false); error = null; }
+                catch (Exception ex) { error = ex.Message; }
+                var contractError = observation is null || observation.FinishReason != "stop";
+                if (contractError && attempt == 1) { retries++; continue; }
+                break;
+            } while (attempt < 2);
+            var dir = Path.Combine(root, "raw"); Directory.CreateDirectory(dir);
+            WriteNew(Path.Combine(dir, $"{request.Source.DocumentId}_{request.Anchor}.raw-capture.v1.json"), new { schemaVersion = "v5-p6th2c-clean-v2-raw-capture-v1", request.Source.DocumentId, request.PackId, request.Anchor, request.AnchorAlias, providerCallOrdinal = calls, attempts = attempt, providerBodySha256 = request.BodyHash, userMessageSha256 = Hash(request.UserMessage), finishReason = observation?.FinishReason, retryCount = Math.Max(0, attempt - 1), reasoningTokens = Usage(observation?.Usage, "completion_tokens_details", "reasoning_tokens"), promptTokens = Usage(observation?.Usage, "prompt_tokens"), completionTokens = Usage(observation?.Usage, "completion_tokens"), rawSseSha256 = observation is null ? null : Hash(observation.RawSse), rawResponseSha256 = observation is null ? null : Hash(observation.Content), rawSse = observation?.RawSse, rawResponse = observation?.Content, transportError = error, goldReadDuringCapture = false });
+            rows.Add(new { request.Source.DocumentId, request.PackId, request.Anchor, attempts = attempt, finishReason = observation?.FinishReason, error });
+        }
+        WriteNew(Path.Combine(root, "result.v1.json"), new { schemaVersion = "v5-p6th2c-clean-v2-result-v1", status = rows.Count == 31 && rows.All(x => true) ? "RAW_FROZEN_GOLD_NOT_READ" : "INCOMPLETE", primaryRequests = 31, providerCalls = calls, retries, repair = false, fallback = false, goldRead = false, rows });
+        return 0;
+    }
+
     public static async Task<int> RunAsync(string repo, string[] args)
     {
         Request[] requests;

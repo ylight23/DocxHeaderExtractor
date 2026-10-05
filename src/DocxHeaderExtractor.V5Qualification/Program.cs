@@ -168,6 +168,8 @@ internal static class Program
             return await P6TH2CEndPointerCanary.RunAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6th2c-clean-paired"))
             return await P6TH2CEndPointerCanary.RunCleanPairedAsync(LocateRepoRoot(), args);
+        if (args.Contains("--p6th2c-clean-v2"))
+            return await P6TH2CEndPointerCanary.RunCleanV2OnlyAsync(LocateRepoRoot(), args);
         if (args.Contains("--p6th2c-freeze-response-hashes"))
             return P6TH2CEndPointerCanary.FreezeCaptureHashes(LocateRepoRoot());
         if (args.Contains("--p6th2c-clarified-retry-until-accepted"))

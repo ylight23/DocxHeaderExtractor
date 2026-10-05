@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "v5-p6th2c-clean-v2-result-v1",
+  "status": "RAW_FROZEN_GOLD_NOT_READ",
+  "primaryRequests": 31,
+  "providerCalls": 31,
+  "retries": 0,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false,
+  "rows": [
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O9",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O17",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O18",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O19",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O27",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O54",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O83",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O3",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O4",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O5",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O16",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "SRC-095",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O41",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O30",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O42",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O43",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O44",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O47",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O51",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O59",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O66",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O70",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O71",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O92",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0252",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "Anchor": "O95",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O1",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O2",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O5",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O23",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O24",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O48",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    },
+    {
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O77",
+      "attempts": 1,
+      "finishReason": "stop",
+      "error": null
+    }
+  ]
+}
