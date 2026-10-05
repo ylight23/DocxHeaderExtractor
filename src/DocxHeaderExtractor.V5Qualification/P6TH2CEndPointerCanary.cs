@@ -44,14 +44,20 @@ internal static class P6TH2CEndPointerCanary
         new("DOC-0256", "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf", "p6te-doc0256-e-challenge/f1.raw-capture.v1.json", F1Kind.RawCapture, false),
     ];
 
-    private enum F1Kind { RawCapture, ResultRow, ResultRows }
-    private sealed record Source(string DocumentId, string PdfPath, string F1Path, F1Kind Kind, bool F1UsedCorrespondences);
-    private sealed record Request(Source Source, string PackId, string Anchor, string AnchorAlias,
+    internal enum F1Kind { RawCapture, ResultRow, ResultRows }
+    internal sealed record Source(string DocumentId, string PdfPath, string F1Path, F1Kind Kind, bool F1UsedCorrespondences);
+    internal sealed record Request(Source Source, string PackId, string Anchor, string AnchorAlias,
         string SourceSha256, string SourceUniverseSha256, string F1CaptureSha256, string F1ResponseSha256,
         string G2ARawCaptureSha256, string G2AResponseSha256, byte[] Body, string BodyHash, int BodyBytes,
         string UserMessage, int UserBytes, int MaxCompletionTokens, IReadOnlyList<string> IssuedOccurrences);
     private sealed record Parsed(string Anchor, IReadOnlyList<string> HeadingMembers, string EndOccurrence,
         string? FirstOutsideOccurrence, string FirstOutsideRole);
+
+    internal static IReadOnlyList<Request> BuildAllForTreatment(string repo, string treatment)
+    {
+        var prompt = P6TH2CCleanPairedBoundaryTreatment.SystemPrompt(treatment);
+        return Sources.SelectMany(source => Build(repo, source, prompt, "v5-function-conditioned-exact-end-pointer-clean-paired-1")).ToArray();
+    }
 
     public static async Task<int> RunAsync(string repo, string[] args)
     {
@@ -951,7 +957,10 @@ internal static class P6TH2CEndPointerCanary
         return Hash(File.ReadAllBytes(path));
     }
 
-    private static IEnumerable<Request> Build(string repo, Source source)
+    private static IEnumerable<Request> Build(string repo, Source source) =>
+        Build(repo, source, SystemPrompt, "v5-function-conditioned-exact-end-pointer-2");
+
+    private static IEnumerable<Request> Build(string repo, Source source, string systemPrompt, string protocolVersion)
     {
         string PathOf(string relative) => Path.Combine(repo, relative.Replace('/', Path.DirectorySeparatorChar));
         var sourceSha = CanonicalSemanticSourceHash.Compute(PathOf(source.PdfPath));
@@ -1046,11 +1055,11 @@ internal static class P6TH2CEndPointerCanary
             }).ToArray();
             var user = JsonSerializer.Serialize(new
             {
-                protocolVersion = "v5-function-conditioned-exact-end-pointer-2",
+                protocolVersion,
                 anchors = new[] { new { anchor = anchorId, occurrences = occurrenceRows } },
             });
-            var request = new V5FreeHeadingRequestV1("v5-function-conditioned-exact-end-pointer-2", SystemPrompt, user,
-                Hash(user), Encoding.UTF8.GetByteCount(SystemPrompt), Encoding.UTF8.GetByteCount(user));
+            var request = new V5FreeHeadingRequestV1(protocolVersion, systemPrompt, user,
+                Hash(user), Encoding.UTF8.GetByteCount(systemPrompt), Encoding.UTF8.GetByteCount(user));
             var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(request, pack.MaxCompletionTokens);
             yield return new Request(source, packId, anchorId, anchorAlias, plan.SourceSha256, plan.SourceUniverseSha256,
                 Hash(f1Bytes), f1ResponseHash, Hash(g2aBytes), g2aRoot.GetProperty("rawResponseSha256").GetString()!,

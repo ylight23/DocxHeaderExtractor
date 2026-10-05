@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using DocxHeaderExtractor.V5Qualification;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -45,6 +46,21 @@ public sealed class V5P6TH2CCleanPairedPreflightTests
         Assert.Contains(Shared, v2Prompt, StringComparison.Ordinal);
         Assert.DoesNotContain("Gold", v1Prompt + v2Prompt, StringComparison.OrdinalIgnoreCase);
 
+        var v1Requests = P6TH2CEndPointerCanary.BuildAllForTreatment(TestRepository.Root(), "V1");
+        var v2Requests = P6TH2CEndPointerCanary.BuildAllForTreatment(TestRepository.Root(), "V2");
+        Assert.Equal(31, v1Requests.Count);
+        Assert.Equal(31, v2Requests.Count);
+        var v1ByKey = v1Requests.ToDictionary(Key, StringComparer.Ordinal);
+        var v2ByKey = v2Requests.ToDictionary(Key, StringComparer.Ordinal);
+        Assert.True(v1ByKey.Keys.OrderBy(value => value).SequenceEqual(v2ByKey.Keys.OrderBy(value => value), StringComparer.Ordinal));
+        Assert.All(v1ByKey, pair =>
+        {
+            var other = v2ByKey[pair.Key];
+            Assert.Equal(Hash(pair.Value.UserMessage), Hash(other.UserMessage));
+            Assert.Equal(pair.Value.IssuedOccurrences, other.IssuedOccurrences);
+            Assert.NotEqual(pair.Value.BodyHash, other.BodyHash);
+        });
+
         var rows = universe.Select((row, index) => new
         {
             providerCallOrdinal = index + 1,
@@ -56,6 +72,11 @@ public sealed class V5P6TH2CCleanPairedPreflightTests
             issuedOccurrencesSha256 = Hash(string.Join("\n", row.GetProperty("IssuedOccurrences").EnumerateArray().Select(x => x.GetString())) + "\n"),
             v1 = new { systemPromptSha256 = Hash(v1Prompt), userMessageSha256 = row.GetProperty("UserMessageSha256").GetString(), sourceFacts = "SHARED_FROZEN_V2_REQUEST_UNIVERSE" },
             v2 = new { systemPromptSha256 = Hash(v2Prompt), userMessageSha256 = row.GetProperty("UserMessageSha256").GetString(), sourceFacts = "SHARED_FROZEN_V2_REQUEST_UNIVERSE" },
+            providerBodies = new
+            {
+                v1 = v1ByKey[$"{row.GetProperty("DocumentId").GetString()}|{row.GetProperty("PackId").GetString()}|{row.GetProperty("Anchor").GetString()}"] .BodyHash,
+                v2 = v2ByKey[$"{row.GetProperty("DocumentId").GetString()}|{row.GetProperty("PackId").GetString()}|{row.GetProperty("Anchor").GetString()}"] .BodyHash,
+            },
         }).ToArray();
 
         FreezeArtifact.AssertJson(Root + "/p6th2c-clean-v1-v2-preflight", "h2c-clean-v1-v2-preflight.v1.json", new
@@ -82,4 +103,5 @@ public sealed class V5P6TH2CCleanPairedPreflightTests
     }
 
     private static string Hash(string value) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
+    private static string Key(P6TH2CEndPointerCanary.Request request) => $"{request.Source.DocumentId}|{request.PackId}|{request.Anchor}";
 }
