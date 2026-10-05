@@ -121,6 +121,16 @@ public sealed class V5P6TH2CExecutionSummaryTests
             acceptedRawResponseSha256 = row.GetProperty("acceptedRawResponseSha256").GetString(),
             acceptedRawSseSha256 = row.GetProperty("acceptedRawSseSha256").GetString(),
         }).ToArray();
+        var callReceipts = BuildCallReceipts(primaryFiles, priorRetryFiles, clarifiedFiles);
+        Assert.Equal(46, callReceipts.Length);
+        Assert.All(callReceipts, value =>
+        {
+            Assert.False(string.IsNullOrWhiteSpace(value.SystemPromptSha256));
+            Assert.False(string.IsNullOrWhiteSpace(value.ProviderBodySha256));
+            Assert.False(string.IsNullOrWhiteSpace(value.RawResponseSha256));
+            Assert.False(string.IsNullOrWhiteSpace(value.RawSseSha256));
+            Assert.False(string.IsNullOrWhiteSpace(value.FinishReason));
+        });
         var primaryFreezeRow = primaryFreeze.RootElement;
         FreezeArtifact.AssertJson(OutputRoot, "h2c-sanitized-execution-summary.v1.json", new
         {
@@ -140,6 +150,7 @@ public sealed class V5P6TH2CExecutionSummaryTests
             clarifiedRetryAccepted = 2,
             totalProviderCalls = 46,
             finalContractValidAnchorCount = 31,
+            immutableCallReceipts = callReceipts,
             acceptedClarifiedResponses = accepted,
             transportRetries = 0,
             repair = false,
@@ -153,9 +164,57 @@ public sealed class V5P6TH2CExecutionSummaryTests
         });
     }
 
+    private static CallReceipt[] BuildCallReceipts(
+        IEnumerable<string> primaryFiles,
+        IEnumerable<string> oldRetryFiles,
+        IEnumerable<string> clarifiedFiles)
+    {
+        return primaryFiles.Select(path => Receipt(path, "PRIMARY_PROMPT_V1", "PRIMARY"))
+            .Concat(oldRetryFiles.Select(path => Receipt(path, "EXACT_BODY_RETRY_V1", "RETRY_OF_PRIMARY_QUARANTINE_SAME_V1_BODY")))
+            .Concat(clarifiedFiles.Select(path => Receipt(path, "CLARIFIED_PROMPT_V2_RECOVERY", "RECOVERY_AFTER_PRIMARY_AND_V1_EXACT_BODY_RETRIES")))
+            .OrderBy(value => value.AttemptClass, StringComparer.Ordinal)
+            .ThenBy(value => value.DocumentId, StringComparer.Ordinal)
+            .ThenBy(value => value.Anchor, StringComparer.Ordinal)
+            .ThenBy(value => value.Attempt)
+            .ToArray();
+    }
+
+    private static CallReceipt Receipt(string path, string attemptClass, string? lineage)
+    {
+        var bytes = File.ReadAllBytes(path);
+        using var document = JsonDocument.Parse(bytes);
+        var row = document.RootElement;
+        var transportRetries = row.TryGetProperty("transportRetryCount", out var transport)
+            ? transport.GetInt32()
+            : row.GetProperty("retryCount").GetInt32();
+        var attempt = row.TryGetProperty("attempt", out var attemptValue) ? attemptValue.GetInt32() : 1;
+        var reasoning = row.TryGetProperty("reasoningTokens", out var tokens) && tokens.ValueKind == JsonValueKind.Number
+            ? tokens.GetInt32()
+            : (int?)null;
+        return new CallReceipt(
+            attemptClass,
+            row.GetProperty("documentId").GetString()!,
+            row.GetProperty("packId").GetString()!,
+            row.GetProperty("anchor").GetString()!,
+            attempt,
+            Hash(bytes),
+            row.GetProperty("systemPromptSha256").GetString()!,
+            row.GetProperty("providerBodySha256").GetString()!,
+            row.GetProperty("rawResponseSha256").GetString()!,
+            row.GetProperty("rawSseSha256").GetString()!,
+            row.GetProperty("finishReason").GetString()!,
+            reasoning,
+            transportRetries,
+            lineage);
+    }
+
     private static string Key(JsonElement row) => $"{row.GetProperty("documentId").GetString()}|{row.GetProperty("packId").GetString()}|{row.GetProperty("anchor").GetString()}";
     private static string Key(JsonElement row, bool frozen) => frozen
         ? $"{row.GetProperty("DocumentId").GetString()}|{row.GetProperty("PackId").GetString()}|{row.GetProperty("Anchor").GetString()}"
         : Key(row);
     private static string Hash(string value) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
+    private static string Hash(byte[] value) => Convert.ToHexStringLower(SHA256.HashData(value));
+    private sealed record CallReceipt(string AttemptClass, string DocumentId, string PackId, string Anchor, int Attempt,
+        string RawCaptureSha256, string SystemPromptSha256, string ProviderBodySha256, string RawResponseSha256,
+        string RawSseSha256, string FinishReason, int? ReasoningTokens, int TransportRetryCount, string? Lineage);
 }
