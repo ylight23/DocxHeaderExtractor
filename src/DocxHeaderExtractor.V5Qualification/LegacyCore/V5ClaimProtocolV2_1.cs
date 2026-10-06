@@ -608,23 +608,3 @@ public static class V5ClaimShapesV2_1
     public static string Hash(DocumentTaskContract contract) =>
         Hashing.Sha256(JsonSerializer.Serialize(Generate(contract), CanonicalJson.Options));
 }
-
-/// <summary>
-/// Hard-pins a future canary to exactly three requests and requires an explicit authorization flag
-/// before anything may be allowed to call a provider. It never performs a network call itself and
-/// never falls back to the full cohort. The 3-call authorization behind commit 72bb954 is historical
-/// and not reusable: a caller must authorize again for any future call.
-/// </summary>
-public static class V5CanaryGate
-{
-    public const int CanaryRequestCount = 3;
-
-    /// <summary>Throws unless there are exactly three requests and the caller explicitly authorized execution.</summary>
-    public static void Authorize(int requestCount, bool providerExecutionAuthorized)
-    {
-        if (requestCount != CanaryRequestCount)
-            throw new InvalidOperationException($"canary-request-count-must-be-exactly-{CanaryRequestCount}:{requestCount}");
-        if (!providerExecutionAuthorized)
-            throw new InvalidOperationException("canary-provider-execution-not-authorized");
-    }
-}
