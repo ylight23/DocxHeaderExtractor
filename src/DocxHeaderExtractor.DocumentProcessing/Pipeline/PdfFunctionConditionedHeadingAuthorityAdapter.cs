@@ -80,19 +80,20 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
 
     private static async Task<StructuralAuthorityResult> RunCoreAsync(PdfStructuredSourceAuthority authority, IFrozenRequestHeaderClassifier frozen, PdfLaneExecutionLease lease, CancellationToken ct)
     {
+        var leaseBound = new LeaseBoundFrozenHeaderClassifier(frozen, lease);
         var atoms = authority.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
         var decisions = new List<PdfBlockDecision>();
         var raw = new List<string>();
         foreach (var pack in SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom))
         {
             ct.ThrowIfCancellationRequested();
-            if (!lease.CanPublishCompletedResult) throw new OperationCanceledException(ct);
+            if (!lease.IsActive) throw new PdfExecutionLeaseLostException();
             var ownedAliases = pack.Owned.Select(item => item.SourceAlias).ToArray();
             var owned = ownedAliases.Select(alias => atoms[alias]).ToArray();
             var visible = pack.Visible.Select(item => item.SourceAlias).ToArray();
             var context = visible.Where(alias => !ownedAliases.Contains(alias, StringComparer.Ordinal)).Select(alias => (atoms[alias].Page, atoms[alias].Text)).ToArray();
             var f1Request = V5TotalOccurrenceFunctionProtocolF1.ComposeWithReadOnlyCorrespondences(owned, context, Correspondences(owned, authority.Atoms));
-            var f1 = await ExecuteAsync(frozen, f1Request.SystemPrompt, f1Request.UserMessage, P05CompletionTokens, ct).ConfigureAwait(false);
+            var f1 = await ExecuteAsync(leaseBound, f1Request.SystemPrompt, f1Request.UserMessage, P05CompletionTokens, ct).ConfigureAwait(false);
             if (f1 is null) continue;
             raw.Add(f1.Content);
             V5TotalOccurrenceFunctionResultF1 functions;
@@ -105,7 +106,7 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
             var idByAlias = f1Request.Occurrences.ToDictionary(value => value.Atom.Alias, value => value.Id, StringComparer.Ordinal);
             var g2aUser = ComposeG2AUserMessage(owned, idByAlias, establishes.Select(value => (value.Id, value.Atom)).ToArray());
             var g2aBody = OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(G2APrompt, g2aUser, P05CompletionTokens, Envelope);
-            var g2a = await ExecuteAsync(frozen, G2APrompt, g2aUser, P05CompletionTokens, ct, g2aBody.PayloadBytes).ConfigureAwait(false);
+            var g2a = await ExecuteAsync(leaseBound, G2APrompt, g2aUser, P05CompletionTokens, ct, g2aBody.PayloadBytes).ConfigureAwait(false);
             if (g2a is null) continue;
             raw.Add(g2a.Content);
             HashSet<string> has;
@@ -120,7 +121,7 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
                 var rows = tail.Select(alias => BasicOccurrence(idByAlias[alias], atoms[alias], authority.Evidence.Single(e => e.SourceAlias == alias))).ToArray();
                 var user = JsonSerializer.Serialize(new { protocolVersion = "v5-function-conditioned-exact-end-pointer-clean-paired-1", anchors = new[] { new { anchor = anchor.Id, occurrences = rows } } });
                 var body = OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(BoundaryPromptV2, user, P05CompletionTokens, Envelope);
-                var boundary = await ExecuteAsync(frozen, BoundaryPromptV2, user, P05CompletionTokens, ct, body.PayloadBytes).ConfigureAwait(false);
+                var boundary = await ExecuteAsync(leaseBound, BoundaryPromptV2, user, P05CompletionTokens, ct, body.PayloadBytes).ConfigureAwait(false);
                 if (boundary is null) continue;
                 raw.Add(boundary.Content);
                 try { decisions.Add(BindBoundary(boundary.Content, anchor.Id, tail, idByAlias, atoms)); }
@@ -130,7 +131,7 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
 
         var validated = PdfSemanticProposalBinder.BindAndValidate(authority.Contexts, decisions);
         var bound = decisions.Select(decision => ToBound(decision, atoms)).ToArray();
-        var placed = await CanonicalSemanticPlacementCoordinator.PlaceUnresolvedHeadingsAsync(bound, frozen, ct).ConfigureAwait(false);
+        var placed = await CanonicalSemanticPlacementCoordinator.PlaceUnresolvedHeadingsAsync(bound, leaseBound, ct).ConfigureAwait(false);
         var hierarchy = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(placed);
         var structures = hierarchy.ToDictionary(item => item.SourceId, item => new PdfValidatedStructure(item.SourceId, item.Level, item.ParentSourceId, item.Resolution, "requires_review") { StructuralScope = authority.Contexts[item.SourceId].Source.StructuralScope }, StringComparer.Ordinal);
         var occurrences = authority.Contexts.ToDictionary(pair => pair.Key, pair => new CanonicalSourceOccurrence(pair.Key, authority.OrdinalBySourceId.GetValueOrDefault(pair.Key), pair.Value.Source.RawText, null), StringComparer.Ordinal);
@@ -242,6 +243,42 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         body ??= OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(prompt, user, maxTokens, Envelope).PayloadBytes;
         var result = await classifier.ExecuteFrozenRequestAsync(body, maxTokens, prompt, user, ct).ConfigureAwait(false);
         return string.Equals(result.FinishReason, "stop", StringComparison.OrdinalIgnoreCase) && Encoding.UTF8.GetByteCount(result.Content) <= ResponseCap ? result : null;
+    }
+
+    private sealed class LeaseBoundFrozenHeaderClassifier : IFrozenRequestHeaderClassifier
+    {
+        private readonly IFrozenRequestHeaderClassifier _inner;
+        private readonly PdfLaneExecutionLease _lease;
+
+        public LeaseBoundFrozenHeaderClassifier(IFrozenRequestHeaderClassifier inner, PdfLaneExecutionLease lease)
+        {
+            _inner = inner;
+            _lease = lease;
+        }
+
+        public string ModelName => _inner.ModelName;
+        public int ContextSize => _inner.ContextSize;
+        public string RuntimeDescription => _inner.RuntimeDescription;
+        public int SharedPrefixTokens => _inner.SharedPrefixTokens;
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
+            StartAndObserve(() => _inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount));
+        public Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default) =>
+            StartAndObserve(() => _inner.ExecuteFrozenRequestAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken));
+        public void Dispose() { }
+
+        private Task<T> StartAndObserve<T>(Func<Task<T>> start)
+        {
+            Task<T>? task = null;
+            if (!_lease.TryStartDownstream(() => task = start())) throw new PdfExecutionLeaseLostException();
+            return ObserveAsync(task!, _lease);
+        }
+
+        private static async Task<T> ObserveAsync<T>(Task<T> task, PdfLaneExecutionLease lease)
+        {
+            var result = await task.ConfigureAwait(false);
+            if (!lease.IsActive) throw new PdfExecutionLeaseLostException();
+            return result;
+        }
     }
 
     internal static HashSet<string> ParseG2A(string raw, IEnumerable<string> issued)

@@ -95,7 +95,7 @@ public sealed class PdfLiveExecutionLifecycleTests
     }
 
     private static Task<AuthorityPipelineExecutionResult> RunAsync(
-        IHeaderClassifier classifier,
+        IFrozenRequestHeaderClassifier classifier,
         SemanticLaneOptions lane,
         CancellationToken cancellationToken = default)
     {
@@ -108,10 +108,11 @@ public sealed class PdfLiveExecutionLifecycleTests
             semanticLaneOptions: lane);
     }
 
-    private sealed class GateClassifier : IHeaderClassifier
+    private sealed class GateClassifier : IFrozenRequestHeaderClassifier
     {
-        private readonly TaskCompletionSource<string> _firstCall =
+        private readonly TaskCompletionSource<FrozenHeaderExecutionResult> _firstCall =
             new(TaskCreationOptions.RunContinuationsAsynchronously);
+        private string? _firstUserMessage;
 
         public TaskCompletionSource Started { get; } =
             new(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -132,21 +133,35 @@ public sealed class PdfLiveExecutionLifecycleTests
             CancellationToken ct = default,
             int expectedItemCount = 0)
         {
+            return Task.FromResult("{\"headings\":[]}");
+        }
+
+        public Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
+        {
             Calls++;
             if (ImmediateFailure is not null)
-                return Task.FromException<string>(ImmediateFailure);
+                return Task.FromException<FrozenHeaderExecutionResult>(ImmediateFailure);
             if (Calls > 1)
-                return Task.FromResult("{\"headings\":[]}");
-
+                return Task.FromResult(F1AllOther(userMessage));
+            _firstUserMessage = userMessage;
             Started.TrySetResult();
             return AwaitFirstCallAsync();
         }
 
-        public void Complete(string response) => _firstCall.TrySetResult(response);
+        public void Complete(string response) => _firstCall.TrySetResult(F1AllOther(_firstUserMessage!));
         public void Fail(Exception exception) => _firstCall.TrySetException(exception);
         public void Dispose() { }
 
-        private async Task<string> AwaitFirstCallAsync()
+        private static FrozenHeaderExecutionResult F1AllOther(string userMessage)
+        {
+            using var request = System.Text.Json.JsonDocument.Parse(userMessage);
+            var decisions = request.RootElement.GetProperty("occurrences").EnumerateArray()
+                .Select(item => new { occurrence = item.GetProperty("id").GetString(), function = "OTHER" }).ToArray();
+            return new FrozenHeaderExecutionResult(
+                System.Text.Json.JsonSerializer.Serialize(new { decisions }), "stop", null, string.Empty, 0, 0);
+        }
+
+        private async Task<FrozenHeaderExecutionResult> AwaitFirstCallAsync()
         {
             try
             {
