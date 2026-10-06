@@ -42,3 +42,8 @@
 
 # V6 partial forensic snapshot is bound by the manifest's raw SHA-256 values.
 /artifacts/level-accuracy/canonical-dev-v1-exec-v6/partial-forensic-snapshot-v2/** -text -diff
+
+# C# source is LF on every checkout. Raw-string prompts take their line endings from the source file,
+# and those prompts are serialized into provider bodies whose hashes are frozen; a CRLF checkout must
+# not change the wire. QualifiedPromptText.Canonicalize is the second, checkout-independent layer.
+*.cs text eol=lf

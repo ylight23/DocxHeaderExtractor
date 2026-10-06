@@ -19,14 +19,14 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
     // Qualification serializes with the framework default encoder.  Do not use the
     // relaxed encoder here: escaping is part of the provider-body identity.
     private const int P05CompletionTokens = PdfQualifiedInferencePolicy.CompletionTokenCeiling;
-    internal const string G2APrompt = """
+    internal static readonly string G2APrompt = QualifiedPromptText.Canonicalize("""
         Decide anchor existence only. Each issued primary occurrence has an upstream ESTABLISHES_STRUCTURE eligibility signal, but that signal is not proof that a valid local structural heading extent begins at this primary.
 
         For every issued O#, return exactly one anchor: HAS_STRUCTURAL_EXTENT if at least one valid local structural heading extent begins at that primary; otherwise NO_STRUCTURAL_EXTENT. Do not choose or describe any extent. Do not infer an answer from context-only items.
 
         Return exactly one JSON object with this shape: {"decisions":[{"primary":"O27","anchor":"HAS_STRUCTURAL_EXTENT"},{"primary":"O28","anchor":"NO_STRUCTURAL_EXTENT"}]}. Each decision has exactly primary and anchor. Do not output source text, candidate IDs, coordinates, aliases, locators, relations, hierarchy, rationale, confidence, or extra properties.
-        """;
-    internal const string BoundaryPromptV2 = """
+        """);
+    internal static readonly string BoundaryPromptV2 = QualifiedPromptText.Canonicalize("""
         Locate the exact boundary of the single heading occurrence that begins at the issued anchor occurrence. A heading may contain one or more consecutive source occurrences, but it ends immediately before the first occurrence that is not literally part of that same heading occurrence.
 
         Treat an occurrence as outside the heading when it begins a new heading, starts body or prose content, starts a table or other structured content, is page furniture, or otherwise is not literal heading text. Do not extend the heading merely because a later occurrence belongs to the same section, topic, agenda item, document region, or discusses the same subject.
@@ -38,7 +38,7 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         When firstOutsideOccurrence is present, firstOutsideRole must be exactly one of NEW_HEADING, BODY_CONTENT, PAGE_FURNITURE, TABLE_OR_STRUCTURED_CONTENT, OTHER_NON_HEADING. These are descriptive roles of the first occurrence outside the exact heading, not permission to extend the heading. Use source text and only the supplied neutral physical/style facts. Do not use hierarchy, candidate alternatives, relations, coordinates, aliases, rationale, confidence, or unissued evidence.
 
         Return one JSON object only with root property decisions and exactly one decision per input anchor. Each decision must have exactly the five required properties and no others. Copy only issued occurrence handles from the current request. Do not output source text or additional properties. This contract has no example identifiers; use the actual anchor and occurrence handles present in the current request.
-        """;
+        """);
 
     public static async Task<StructuralAuthorityResult> RunAsync(
         string pdfPath,

@@ -27,7 +27,7 @@ public static class V5TotalOccurrenceFunctionProtocolF1
 {
     public const string Version = "v5-total-occurrence-function-membership-1";
 
-    public const string SystemPrompt = """
+    public static readonly string SystemPrompt = QualifiedPromptText.Canonicalize("""
         You are classifying the document-level semantic function of every issued source occurrence. Classify every issued O# exactly once. Do not decide where a unit starts or ends and do not construct an extent.
 
         ESTABLISHES_STRUCTURE means the occurrence itself contributes wording that establishes or names document structure at its own source location. If a structural heading is split across multiple source occurrences, every occurrence that contributes wording to that heading receives ESTABLISHES_STRUCTURE.
@@ -39,7 +39,7 @@ public static class V5TotalOccurrenceFunctionProtocolF1
         These labels describe function membership only. Do not return starts, continuations, segment boundaries, candidate ids, source parts, spans, locators, hierarchy, relations, confidence, reasons, or extent. contextOnlyEvidence and read-only correspondences are reasoning-only and are never selectable output.
 
         Return exactly one JSON object with exactly this shape: {"decisions":[{"occurrence":"O1","function":"OTHER"}]}. Emit exactly one decision for every issued O#; do not omit any decision. occurrence must be an issued id and function must be exactly ESTABLISHES_STRUCTURE, REPRESENTS_STRUCTURE, or OTHER.
-        """;
+        """);
 
     private static readonly JsonSerializerOptions Json = CanonicalJson.Options;
     private static readonly HashSet<string> RootKeys = new(["decisions"], StringComparer.Ordinal);

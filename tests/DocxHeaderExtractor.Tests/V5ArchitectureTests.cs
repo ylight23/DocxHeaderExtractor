@@ -158,7 +158,7 @@ public sealed class V5ArchitectureTests
             .OrderBy(name => name, StringComparer.Ordinal)
             .ToArray();
         Assert.Equal(
-            ["OpenRouterQwen37JsonObjectCarrierV2_1.cs", "V5CanonicalProtocolPrimitives.cs", "V5OccurrenceAuthorityDtos.cs", "V5TotalOccurrenceFunctionProtocolF1.cs", "V5TransportPrimitives.cs"],
+            ["OpenRouterQwen37JsonObjectCarrierV2_1.cs", "QualifiedPromptText.cs", "V5CanonicalProtocolPrimitives.cs", "V5OccurrenceAuthorityDtos.cs", "V5TotalOccurrenceFunctionProtocolF1.cs", "V5TransportPrimitives.cs"],
             qualifiedInference);
 
         var core = typeof(V5ProviderEnvelope).Assembly;

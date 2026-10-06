@@ -25,7 +25,7 @@ internal static class P6TG2AFullPackPopulationCanary
         new("DOC-0252", "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf", "p6te-doc0252-e-challenge/f1.raw-capture.v1.json", F1Kind.RawCapture, false),
         new("DOC-0256", "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf", "p6te-doc0256-e-challenge/f1.raw-capture.v1.json", F1Kind.RawCapture, false),
     ];
-    private const string SystemPrompt = PdfFunctionConditionedHeadingAuthorityAdapter.G2APrompt;
+    private static readonly string SystemPrompt = PdfFunctionConditionedHeadingAuthorityAdapter.G2APrompt;
 
     private sealed record Source(string DocumentId, string PdfPath, string F1Path, F1Kind Kind, bool F1UsedCorrespondences);
     private enum F1Kind { RawCapture, ResultRow, ResultRows }

@@ -13,6 +13,8 @@ public static class OpenRouterQwen37JsonObjectCarrierV2_1
         ArgumentException.ThrowIfNullOrWhiteSpace(userMessage);
         ArgumentNullException.ThrowIfNull(envelope);
         if (maxCompletionTokens <= 0) throw new ArgumentOutOfRangeException(nameof(maxCompletionTokens));
+        // Code-authored prompt only; userMessage carries source text and is sent as given.
+        systemPrompt = QualifiedPromptText.Canonicalize(systemPrompt);
 
         object provider = string.IsNullOrWhiteSpace(envelope.Provider)
             ? new { zdr = false, data_collection = "deny", require_parameters = true, allow_fallbacks = true }
@@ -44,6 +46,8 @@ public static class OpenRouterQwen37JsonObjectCarrierV2_1
         ArgumentException.ThrowIfNullOrWhiteSpace(userMessage);
         ArgumentNullException.ThrowIfNull(envelope);
         if (maxCompletionTokens <= 0) throw new ArgumentOutOfRangeException(nameof(maxCompletionTokens));
+        // Code-authored prompt only; userMessage carries source text and is sent as given.
+        systemPrompt = QualifiedPromptText.Canonicalize(systemPrompt);
 
         object provider = string.IsNullOrWhiteSpace(envelope.Provider)
             ? new { zdr = false, data_collection = "deny", require_parameters = true, allow_fallbacks = true }
