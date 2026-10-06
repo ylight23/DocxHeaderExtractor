@@ -40,7 +40,12 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         Return one JSON object only with root property decisions and exactly one decision per input anchor. Each decision must have exactly the five required properties and no others. Copy only issued occurrence handles from the current request. Do not output source text or additional properties. This contract has no example identifiers; use the actual anchor and occurrence handles present in the current request.
         """;
 
-    public static async Task<StructuralAuthorityResult> RunAsync(string pdfPath, IHeaderClassifier? classifier, CancellationToken ct)
+    public static async Task<StructuralAuthorityResult> RunAsync(
+        string pdfPath,
+        IHeaderClassifier? classifier,
+        SemanticLaneOptions? semanticLaneOptions,
+        SemanticAuthorityReplayCaptureRequest? replayCapture,
+        CancellationToken ct)
     {
         var authority = PdfStructuredSourceAuthorityBuilder.Build(pdfPath);
         if (authority.ParserLineCount == 0 || authority.Blocks.Count == 0)
@@ -49,13 +54,39 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-function-conditioned-llm-disabled") { SourceCatalog = authority.Catalog };
         if (classifier is not IFrozenRequestHeaderClassifier frozen)
             throw new InvalidOperationException("PDF_H2C_PRODUCTION_ROUTE_REQUIRES_FROZEN_REQUEST_TRANSPORT");
+        if (replayCapture is not null)
+            throw new InvalidOperationException("PDF_H2C_REPLAY_CAPTURE_UNSUPPORTED");
 
+        await using var scope = ProductionCheckpointScope.Create();
+        await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, Path.GetFileNameWithoutExtension(pdfPath));
+        await checkpoint.RecordSelectionAsync(
+            authority.Blocks.Select(block => new PdfSelectedSourceIdentity(
+                block.Id, block.Page, block.Lines.Select(PdfLineIdentity.Of).ToArray(), block.DisplayText)).ToArray(), ct).ConfigureAwait(false);
+        var execution = await PdfLaneExecution.RunAsync(
+            (lease, laneCt) => RunCoreAsync(authority, frozen, lease, laneCt),
+            (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
+            ct).ConfigureAwait(false);
+        await checkpoint.StopAcceptingWritesAndDrainAsync().ConfigureAwait(false);
+        if (execution.State == PdfLaneExecutionState.TimedOut)
+            throw new TimeoutException("PDF semantic execution exceeded its lane deadline.");
+        if (execution.State == PdfLaneExecutionState.Cancelled)
+            throw new OperationCanceledException(ct);
+        if (execution.State == PdfLaneExecutionState.Failed)
+            throw execution.Fault ?? new InvalidOperationException("PDF semantic execution failed.");
+        if (!execution.Lease.CanPublishCompletedResult || execution.Value is null)
+            throw new InvalidOperationException("PDF semantic result lost its execution lease.");
+        return execution.Value;
+    }
+
+    private static async Task<StructuralAuthorityResult> RunCoreAsync(PdfStructuredSourceAuthority authority, IFrozenRequestHeaderClassifier frozen, PdfLaneExecutionLease lease, CancellationToken ct)
+    {
         var atoms = authority.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
         var decisions = new List<PdfBlockDecision>();
         var raw = new List<string>();
         foreach (var pack in SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom))
         {
             ct.ThrowIfCancellationRequested();
+            if (!lease.CanPublishCompletedResult) throw new OperationCanceledException(ct);
             var ownedAliases = pack.Owned.Select(item => item.SourceAlias).ToArray();
             var owned = ownedAliases.Select(alias => atoms[alias]).ToArray();
             var visible = pack.Visible.Select(item => item.SourceAlias).ToArray();
@@ -99,12 +130,37 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
 
         var validated = PdfSemanticProposalBinder.BindAndValidate(authority.Contexts, decisions);
         var bound = decisions.Select(decision => ToBound(decision, atoms)).ToArray();
-        var placed = await CanonicalSemanticPlacementCoordinator.PlaceUnresolvedHeadingsAsync(bound, classifier, ct).ConfigureAwait(false);
+        var placed = await CanonicalSemanticPlacementCoordinator.PlaceUnresolvedHeadingsAsync(bound, frozen, ct).ConfigureAwait(false);
         var hierarchy = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(placed);
         var structures = hierarchy.ToDictionary(item => item.SourceId, item => new PdfValidatedStructure(item.SourceId, item.Level, item.ParentSourceId, item.Resolution, "requires_review") { StructuralScope = authority.Contexts[item.SourceId].Source.StructuralScope }, StringComparer.Ordinal);
         var occurrences = authority.Contexts.ToDictionary(pair => pair.Key, pair => new CanonicalSourceOccurrence(pair.Key, authority.OrdinalBySourceId.GetValueOrDefault(pair.Key), pair.Value.Source.RawText, null), StringComparer.Ordinal);
         var structure = CanonicalStructureMaterializer.Materialize(validated, structures, occurrences, "pdf", structures.Keys.ToHashSet(StringComparer.Ordinal));
-        return new StructuralAuthorityResult(structure, null, AuthorityId, structure.Elements.Select(value => value.Id).ToHashSet(StringComparer.Ordinal)) { SourceCatalog = authority.Catalog };
+        var sourceBlocks = authority.Blocks.Select(block => new RouteBlockAudit(block.Id, block.Page, block.DisplayText)).ToArray();
+        var audit = CanonicalRouteAuditBoundary.Create(
+            AuthorityId,
+            authority.Blocks.Count,
+            authority.Blocks.Count,
+            authority.Blocks.Select(block => block.Page).Distinct().Count(),
+            authority.Blocks.Select(block => block.Page).Distinct().Count(),
+            sourceBlocks,
+            sourceBlocks,
+            [],
+            decisions.Select(decision => new RouteBlockDecisionAudit(decision.Id, decision.SemanticFunction, decision.Confidence)
+            {
+                ProposedSourceSpan = decision.ProposedSourceSpan,
+            }).ToArray(),
+            validated.Select(item => item.SourceId).ToArray(),
+            [],
+            validated.Select(item => item.SourceId).ToArray()) with
+        {
+            RawAnalystResponses = raw,
+            ModelInputContracts = ["v5-total-occurrence-function-f1", "v5-function-conditioned-anchor-existence-1", "v5-function-conditioned-exact-end-pointer-clean-paired-1"],
+            ValidatedStructures = structures.Values.ToArray(),
+            HierarchyFacts = PdfHierarchyFactsInventory.Inspect(validated, authority.Contexts),
+            SemanticLane = new RouteLaneExecutionAudit("complete", authority.Atoms.Count, decisions.Count, 0, 0),
+            SpanLane = new RouteLaneExecutionAudit("exact-end-pointer", decisions.Count, validated.Count, 0, decisions.Count - validated.Count),
+        };
+        return new StructuralAuthorityResult(structure, audit, AuthorityId, structure.Elements.Select(value => value.Id).ToHashSet(StringComparer.Ordinal)) { SourceCatalog = authority.Catalog };
     }
 
     private static CanonicalSemanticBoundHeading ToBound(PdfBlockDecision decision, IReadOnlyDictionary<string, SemanticSourceAtom> atoms)
@@ -193,7 +249,17 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         using var document = JsonDocument.Parse(raw); var root = document.RootElement; var expected = issued.ToHashSet(StringComparer.Ordinal);
         if (root.ValueKind != JsonValueKind.Object || root.EnumerateObject().Count() != 1 || !root.TryGetProperty("decisions", out var rows) || rows.ValueKind != JsonValueKind.Array || rows.GetArrayLength() != expected.Count) throw new InvalidOperationException("g2a-cardinality-invalid");
         var result = new HashSet<string>(StringComparer.Ordinal); var seen = new HashSet<string>(StringComparer.Ordinal);
-        foreach (var row in rows.EnumerateArray()) { if (row.EnumerateObject().Count() != 2) throw new InvalidOperationException("g2a-schema-invalid"); var primary = row.GetProperty("primary").GetString()!; var anchor = row.GetProperty("anchor").GetString()!; if (!expected.Contains(primary) || !seen.Add(primary) || (anchor is not "HAS_STRUCTURAL_EXTENT" and not "NO_STRUCTURAL_EXTENT")) throw new InvalidOperationException("g2a-ledger-invalid"); if (anchor == "HAS_STRUCTURAL_EXTENT") result.Add(primary); }
+        foreach (var row in rows.EnumerateArray())
+        {
+            if (row.ValueKind != JsonValueKind.Object || row.EnumerateObject().Count() != 2 ||
+                !row.TryGetProperty("primary", out var primaryProperty) || primaryProperty.ValueKind != JsonValueKind.String ||
+                !row.TryGetProperty("anchor", out var anchorProperty) || anchorProperty.ValueKind != JsonValueKind.String)
+                throw new InvalidOperationException("g2a-schema-invalid");
+            var primary = primaryProperty.GetString()!;
+            var anchor = anchorProperty.GetString()!;
+            if (!expected.Contains(primary) || !seen.Add(primary) || (anchor is not "HAS_STRUCTURAL_EXTENT" and not "NO_STRUCTURAL_EXTENT")) throw new InvalidOperationException("g2a-ledger-invalid");
+            if (anchor == "HAS_STRUCTURAL_EXTENT") result.Add(primary);
+        }
         return result;
     }
 

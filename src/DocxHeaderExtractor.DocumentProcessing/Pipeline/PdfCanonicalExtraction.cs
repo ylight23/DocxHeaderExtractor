@@ -88,7 +88,7 @@ public static class PdfCanonicalExtraction
             // historical canonical engine it has no semantic fallback: invalid stage output is
             // withheld by that adapter rather than delegated to a second membership authority.
             authority = await PdfFunctionConditionedHeadingAuthorityAdapter.RunAsync(
-                file.LocalPath, gated ?? used, ct);
+                file.LocalPath, gated ?? used, semanticLaneOptions, options.ReplayCapture, ct);
         }
         finally
         {

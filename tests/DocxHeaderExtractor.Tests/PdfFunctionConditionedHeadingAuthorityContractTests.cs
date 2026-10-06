@@ -28,6 +28,15 @@ public sealed class PdfFunctionConditionedHeadingAuthorityContractTests
     }
 
     [Fact]
+    public void G2A_rejects_rows_with_unknown_property_names_without_escaping_the_pack()
+    {
+        const string raw = """{"decisions":[{"foo":"O1","bar":"HAS_STRUCTURAL_EXTENT"}]}""";
+
+        Assert.Throws<InvalidOperationException>(() =>
+            PdfFunctionConditionedHeadingAuthorityAdapter.ParseG2A(raw, ["O1"]));
+    }
+
+    [Fact]
     public void G2A_shared_composer_emits_unselectable_owned_neighbors_with_default_escaping()
     {
         var owned = Atoms.Values.OrderBy(value => value.Ordinal).ToArray();
