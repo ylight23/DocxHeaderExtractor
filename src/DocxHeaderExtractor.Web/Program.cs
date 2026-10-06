@@ -236,25 +236,12 @@ app.MapPost("/api/extract", async (
 
         try
         {
-            DocxHeaderExtractor.DocumentProcessing.Inference.IHeaderClassifier? classifier = null;
-            if (!options.DisableLlm)
-            {
-                classifier = provider.Backend switch
-                {
-                    InferenceBackend.OpenRouter => new DocxHeaderExtractor.Infrastructure.AI.OpenRouterHeaderExtractor(
-                        httpClientFactory.CreateClient("OpenRouter"), provider.Remote),
-                    InferenceBackend.LmStudio => new DocxHeaderExtractor.Infrastructure.AI.LmStudioHeaderExtractor(
-                        httpClientFactory.CreateClient("LmStudio"), provider.Remote),
-                    _ => await modelCache.GetAsync(provider.LocalModel, ct),
-                };
-            }
-            using var tool = classifier is null
-                ? new PipelineDocumentExtractionTool(options)
-                : new PipelineDocumentExtractionTool(
-                    options,
-                    classifier,
-                    ownsClassifier: provider.Backend is InferenceBackend.OpenRouter or InferenceBackend.LmStudio,
-                    sendsDataExternally: provider.SendsDataExternally);
+            // The factory deliberately resolves DOCX and PDF separately. In particular, an
+            // OpenRouter instance constructed directly here would not carry the PDF production
+            // authorization marker, while local/LM Studio remain valid DOCX backends only.
+            using var tool = new PipelineDocumentExtractionTool(
+                options,
+                new WebHeaderClassifierFactory(provider, httpClientFactory, modelCache));
 
             // Đích ghi do server đặt bên trong thư mục tạm của request, không bao giờ lấy từ form:
             // một đường dẫn do client chỉ định là đường để ghi đè file bất kỳ trên máy chủ.

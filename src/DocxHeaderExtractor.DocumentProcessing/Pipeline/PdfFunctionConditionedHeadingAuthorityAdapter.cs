@@ -50,7 +50,9 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         if (authority.ParserLineCount == 0 || authority.Blocks.Count == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-no-text-layer") { SourceCatalog = authority.Catalog };
         if (classifier is null)
-            return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-function-conditioned-llm-disabled") { SourceCatalog = authority.Catalog };
+            return new StructuralAuthorityResult(
+                new ValidatedStructure([]), SourceOnlyAudit(authority), "pdf-function-conditioned-llm-disabled")
+            { SourceCatalog = authority.Catalog };
         if (classifier is not IFrozenRequestHeaderClassifier frozen)
             throw new InvalidOperationException("PDF_H2C_PRODUCTION_ROUTE_REQUIRES_FROZEN_REQUEST_TRANSPORT");
 
@@ -73,6 +75,30 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         if (!execution.Lease.CanPublishCompletedResult || execution.Value is null)
             throw new InvalidOperationException("PDF semantic result lost its execution lease.");
         return execution.Value;
+    }
+
+    private static RouteExecutionAudit SourceOnlyAudit(PdfStructuredSourceAuthority authority)
+    {
+        var sourceBlocks = authority.Blocks
+            .Select(block => new RouteBlockAudit(block.Id, block.Page, block.DisplayText))
+            .ToArray();
+        return CanonicalRouteAuditBoundary.Create(
+            AuthorityId,
+            authority.Blocks.Count,
+            authority.Blocks.Count,
+            authority.Blocks.Select(block => block.Page).Distinct().Count(),
+            authority.Blocks.Select(block => block.Page).Distinct().Count(),
+            sourceBlocks,
+            sourceBlocks,
+            [],
+            []) with
+        {
+            ModelInputContracts = [],
+            SemanticLane = new RouteLaneExecutionAudit(
+                "not-run", authority.Atoms.Count, 0, 0, authority.Atoms.Count, "llm-disabled"),
+            SpanLane = new RouteLaneExecutionAudit(
+                "not-run", 0, 0, 0, 0, "llm-disabled"),
+        };
     }
 
     private static async Task<StructuralAuthorityResult> RunCoreAsync(PdfStructuredSourceAuthority authority, IFrozenRequestHeaderClassifier frozen, PdfLaneExecutionLease lease, CancellationToken ct)

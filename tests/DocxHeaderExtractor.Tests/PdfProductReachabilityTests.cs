@@ -57,13 +57,13 @@ public sealed class PdfProductReachabilityTests : IDisposable
         // The stage after reading: with something answering, the lane must place headings on the
         // outline a host consumes. The script claims occurrences rather than judging them, so this
         // measures the wiring between the semantic stage and the outline, nothing about the model.
-        using var model = new ScriptedSemanticClassifier();
+        using var model = new QualifiedPdfScriptedClassifier();
         var outline = await RunAsync(CopyPdf("claimed.pdf"), model: model);
 
         Assert.Equal("pdf-canonical-vnext", outline.DeterministicRoute);
         Assert.NotEmpty(outline.Headings);
         Assert.True(model.Calls > 0, "the PDF lane never reached the classifier");
-        Assert.Equal("scripted-owned-prefix", outline.Model);
+        Assert.Equal("qualified-pdf-script", outline.Model);
         // The text on the outline is the source occurrence's, never the model's echo of it.
         Assert.All(outline.Headings, heading => Assert.False(string.IsNullOrWhiteSpace(heading.Text)));
     }
@@ -99,13 +99,13 @@ public sealed class PdfProductReachabilityTests : IDisposable
         // did nothing on one lane would make the harness's repair loop mean two different things
         // depending on what was uploaded - and it would look like a model failure, not a wiring one.
         var path = CopyPdf("quarantine.pdf");
-        var full = await RunAsync(path, model: new ScriptedSemanticClassifier());
+        var full = await RunAsync(path, model: new QualifiedPdfScriptedClassifier());
         Assert.NotEmpty(full.Headings);
 
         var repaired = await RunAsync(
             path,
             quarantine: full.Headings.Select(heading => heading.Index).ToHashSet(),
-            model: new ScriptedSemanticClassifier());
+            model: new QualifiedPdfScriptedClassifier());
 
         Assert.True(repaired.Headings.Count < full.Headings.Count,
             $"quarantine changed nothing: {full.Headings.Count} headings before and after");
@@ -153,6 +153,86 @@ public sealed class PdfProductReachabilityTests : IDisposable
         var target = Path.Combine(_directory, name);
         File.Copy(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar)), target);
         return target;
+    }
+
+    /// <summary>
+    /// Test-only production-authorized transport. It exercises the promoted F1 → G2A → H2-C
+    /// protocol rather than the historical generic heading schema.
+    /// </summary>
+    private sealed class QualifiedPdfScriptedClassifier : IPdfProductionAuthorizedFrozenRequestClassifier
+    {
+        public int Calls { get; private set; }
+        public string PdfProductionProvider => "test";
+        public string PdfProductionModel => "test";
+        public string ModelName => "qualified-pdf-script";
+        public int ContextSize => 1 << 20;
+        public string RuntimeDescription => "test-only qualified PDF protocol script";
+        public int SharedPrefixTokens => 0;
+
+        public Task<string> BoundaryCutAsync(
+            string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
+            Task.FromResult("{\"placements\":[]}");
+
+        public Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(
+            byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
+            CancellationToken cancellationToken = default)
+        {
+            Calls++;
+            using var request = System.Text.Json.JsonDocument.Parse(userMessage);
+            var root = request.RootElement;
+            var protocol = root.GetProperty("protocolVersion").GetString();
+            string content = protocol switch
+            {
+                "v5-total-occurrence-function-membership-1" => Functions(root),
+                "v5-function-conditioned-anchor-existence-1" => Anchors(root),
+                "v5-function-conditioned-exact-end-pointer-clean-paired-1" => Boundary(root),
+                _ => throw new InvalidOperationException($"Unexpected PDF test protocol: {protocol}"),
+            };
+            return Task.FromResult(new FrozenHeaderExecutionResult(content, "stop", null, string.Empty, 0, 0));
+        }
+
+        public void Dispose() { }
+
+        private static string Functions(System.Text.Json.JsonElement root)
+        {
+            var decisions = root.GetProperty("occurrences").EnumerateArray()
+                .Select((row, index) => new
+                {
+                    occurrence = row.GetProperty("id").GetString(),
+                    function = index == 0 ? "ESTABLISHES_STRUCTURE" : "OTHER",
+                })
+                .ToArray();
+            return System.Text.Json.JsonSerializer.Serialize(new { decisions });
+        }
+
+        private static string Anchors(System.Text.Json.JsonElement root)
+        {
+            var decisions = root.GetProperty("occurrences").EnumerateArray()
+                .Select(row => new
+                {
+                    primary = row.GetProperty("primary").GetString(),
+                    anchor = "HAS_STRUCTURAL_EXTENT",
+                })
+                .ToArray();
+            return System.Text.Json.JsonSerializer.Serialize(new { decisions });
+        }
+
+        private static string Boundary(System.Text.Json.JsonElement root)
+        {
+            var anchor = root.GetProperty("anchors")[0];
+            var occurrences = anchor.GetProperty("occurrences").EnumerateArray().ToArray();
+            var id = anchor.GetProperty("anchor").GetString();
+            var outside = occurrences.Length > 1 ? occurrences[1].GetProperty("occurrence").GetString() : null;
+            var decision = new
+            {
+                anchor = id,
+                headingMembers = new[] { id },
+                endOccurrence = id,
+                firstOutsideOccurrence = outside,
+                firstOutsideRole = outside is null ? "NO_VISIBLE_SUCCESSOR" : "BODY_CONTENT",
+            };
+            return System.Text.Json.JsonSerializer.Serialize(new { decisions = new[] { decision } });
+        }
     }
 
 }
