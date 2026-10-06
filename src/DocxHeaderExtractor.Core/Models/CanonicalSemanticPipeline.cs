@@ -89,7 +89,7 @@ public static class CanonicalSemanticPipeline
         // Contract validation is deliberately before binding. It validates model-addressable
         // semantics and source ownership only; it never decides whether something is a heading.
         //
-        // Who owns validation: CanonicalSemanticProductionEntryPoint validates and FILTERS before
+        // Who owns validation: the production text entrypoint validates and FILTERS before
         // anything reaches here, so on that path these proposals are already contract-valid and
         // this loop reports nothing. It is not redundant - Run is public and tests and other
         // callers reach it directly, and binding an unvalidated proposal is the one thing this

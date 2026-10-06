@@ -405,14 +405,6 @@ public sealed record CanonicalSemanticGraph(
 /// </summary>
 public static class CanonicalSemanticIdentityResolver
 {
-    /// <summary>
-    /// Visual identity is anchored to parser/render-owned physical evidence. Text, role, and
-    /// display spelling are intentionally not used as a node key because repeated headings can
-    /// be distinct nodes in different regions or sections.
-    /// </summary>
-    public static string CreatePhysicalNodeId(CanonicalSemanticVisualBinding binding) =>
-        $"visual-node:{binding.PageId}:{binding.ImageSha256}:{binding.RegionSha256}";
-
     /// <summary>Stable identity key shared by text graph resolution and hierarchy diagnostics.</summary>
     public static string CreateNodeKey(CanonicalSemanticBoundHeading item)
     {
@@ -484,9 +476,6 @@ public static class CanonicalSemanticIdentityResolver
 /// </summary>
 public static class CanonicalSemanticGraphResolver
 {
-    public static string CreatePhysicalNodeId(CanonicalSemanticVisualBinding binding) =>
-        CanonicalSemanticIdentityResolver.CreatePhysicalNodeId(binding);
-
     public static CanonicalSemanticGraph Resolve(IReadOnlyList<CanonicalSemanticBoundHeading> bound) =>
         CanonicalSemanticIdentityResolver.Resolve(bound);
 }

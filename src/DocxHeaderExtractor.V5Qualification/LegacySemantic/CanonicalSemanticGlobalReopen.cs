@@ -1,20 +1,5 @@
 namespace DocxHeaderExtractor.Core.Models;
 
-/// <summary>
-/// Explicit semantic disagreement discovered by a global resolver. The resolver supplies only
-/// already-frozen alternatives; it never asks a reopener to invent a new proposal.
-/// </summary>
-public sealed record CanonicalSemanticGlobalConflict(
-    string ConflictId,
-    IReadOnlyList<string> OccurrenceIds,
-    IReadOnlyList<CanonicalSemanticProposal> Alternatives,
-    IReadOnlyList<string> StructuralEvidence,
-    IReadOnlyList<string> LocalContext)
-{
-    public string ConflictKind { get; init; } = "GLOBAL_SEMANTIC_CONFLICT";
-    public IReadOnlyList<string> RelationEvidence { get; init; } = [];
-}
-
 public sealed record CanonicalSemanticGlobalReopenResult(
     IReadOnlyList<CanonicalSemanticProposal> AcceptedAlternatives,
     IReadOnlyList<string> UnresolvedConflictIds,

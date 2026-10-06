@@ -80,74 +80,6 @@ public sealed record CanonicalSemanticProductionInput(
         SourceAliases ?? SemanticSourceAliasCatalog.FromCatalog(SourceCatalog);
 }
 
-/// <summary>Compact parser-owned evidence attached to one canonical source occurrence. It contains
-/// observations only; it does not contain pre-semantic salience gates, Gold, hierarchy, or model decisions.</summary>
-public sealed record CanonicalSemanticSourceEvidence(
-    string SourceAlias,
-    string SourceId,
-    int SourceOrdinal,
-    string ExactSourceText,
-    string StructuralScope,
-    IReadOnlyList<string> ContainerFacts,
-    object StyleFacts,
-    object NumberingFacts,
-    IReadOnlyList<object> RunFormattingFacts,
-    IReadOnlyList<string> ObservedEvidence,
-    IReadOnlyList<string> LocalBefore,
-    IReadOnlyList<string> LocalAfter)
-{
-    /// <summary>
-    /// Where the occurrence physically sits, as the V2 request shows it: observable measurements only,
-    /// never a reading of what the occurrence is. Null when the lane has nothing to report here.
-    /// <para>
-    /// This replaces <see cref="StructuralScope"/> in what the
-    /// model sees. Those are the harness's own conclusions ("running page artifact", "table of
-    /// contents") about the very question the model is asked, so they stay internal.
-    /// </para>
-    /// </summary>
-    public object? LocationFacts { get; init; }
-}
-
-public sealed record CanonicalSemanticInferenceTelemetry(
-    string? ActualProvider = null,
-    string? FinishReason = null,
-    int? InputTokens = null,
-    int? ReasoningTokens = null,
-    int? OutputTokens = null);
-
-public sealed record CanonicalSemanticTextInferenceResult(
-    IReadOnlyList<CanonicalSemanticProposal> Proposals,
-    CanonicalSemanticInferenceTelemetry Telemetry)
-{
-    /// <summary>Provider/parser contract issues captured before any binder is allowed to run.</summary>
-    public IReadOnlyList<SemanticContractIssue> ContractIssues { get; init; } = [];
-
-    /// <summary>
-    /// All proposals parsed from model JSON, before segment ownership filtering. Null is retained
-    /// for older custom test models that predate replay capture.
-    /// </summary>
-    public IReadOnlyList<CanonicalSemanticProposal>? ParsedProposals { get; init; }
-
-    /// <summary>Hash of the ordered raw model responses used for this inference.</summary>
-    public string? RawModelResponseHash { get; init; }
-
-    /// <summary>
-    /// Replay-complete transport evidence. A provider-backed result must carry one entry per
-    /// successful semantic call so the capture boundary can persist the exact request/response
-    /// bytes before downstream binding or scoring.
-    /// </summary>
-    public IReadOnlyList<SemanticAuthorityTransportCall> TransportCalls { get; init; } = [];
-}
-
-public interface ICanonicalSemanticTextModel
-{
-    Task<CanonicalSemanticTextInferenceResult> InferAsync(
-        CanonicalSemanticTextInferenceInput input,
-        SemanticContextPacket packedContext,
-        string requestId,
-        CancellationToken cancellationToken = default);
-}
-
 public sealed record CanonicalSemanticVisualInferenceResult(
     IReadOnlyList<CanonicalSemanticVisualBlock> Blocks,
     IReadOnlyList<CanonicalSemanticVisualProposal> Proposals,
@@ -553,7 +485,7 @@ public static class CanonicalSemanticProductionEntryPoint
             var pageNumber = ParsePage(binding.PageId);
             var occurrence = new CanonicalSemanticGraphOccurrence(
                 $"visual-occurrence:{occurrences.Count + 1:0000}",
-                CanonicalSemanticIdentityResolver.CreatePhysicalNodeId(binding),
+                $"visual-node:{binding.PageId}:{binding.ImageSha256}:{binding.RegionSha256}",
                 binding.VisualAlias, $"visual:{binding.PageId}", pageNumber,
                 binding.RecoveredTranscript, heading.SemanticRole, heading.StructuralType,
                 heading.Scope, binding.BlockOrdinal, binding.BlockOrdinal, "PRIMARY", null)
