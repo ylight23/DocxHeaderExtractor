@@ -108,6 +108,67 @@ public sealed class QualifiedPromptNewlineTests
         }
     }
 
+    [Fact]
+    public void G2a_and_h2c_composers_reproduce_frozen_provider_bodies()
+    {
+        const string documentId = "SRC-089";
+        var sourceHash = CanonicalSemanticSourceHash.Compute(TestRepository.Path(
+            "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf"));
+        var snapshotPath = TestRepository.Path($"eval/a99-closed-loop/pdf-canonical-source-v1/{sourceHash}.json");
+        var plan = PdfCandidateAuthorityQualificationAdapter.PrepareFromSnapshot(snapshotPath, documentId);
+        var snapshot = JsonSerializer.Deserialize<PdfCanonicalSourceSnapshotV1>(
+            File.ReadAllText(snapshotPath), new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+            ?? throw new InvalidOperationException("canonical source snapshot could not be deserialized");
+        var pack = plan.Packs.Single(value => value.PackId.EndsWith("PACK_001", StringComparison.Ordinal));
+        var atoms = plan.SourceAtoms.ToDictionary(value => value.Alias, StringComparer.Ordinal);
+        var ownedAliases = pack.OwnedAliases.ToArray();
+        var owned = ownedAliases.Select(alias => atoms[alias]).ToArray();
+        var f1 = PdfTotalOccurrenceRoleQualificationAdapter.PrepareFunctionMembershipF1(
+            plan, pack, PdfReadOnlyCorrespondenceBuilder.Build(owned, plan.SourceAtoms));
+        using var f1Result = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(
+            "artifacts/v5-p6t-function-membership/p6tf1-preflight/retry-src089-result.v1.json")));
+        var functions = PdfTotalOccurrenceRoleQualificationAdapter.ParseFunctionMembershipF1(
+            f1, f1Result.RootElement.GetProperty("row").GetProperty("rawResponse").GetString()!);
+        var occurrencesByAlias = f1.Request.Occurrences.ToDictionary(value => value.Atom.Alias, StringComparer.Ordinal);
+        var establishes = functions.Decisions
+            .Where(value => value.Function == OccurrenceFunction.EstablishesStructure)
+            .Select(value => occurrencesByAlias.Single(pair => pair.Value.Id == value.OccurrenceId).Value)
+            .Select(value => (value.Id, value.Atom))
+            .ToArray();
+        var idsByAlias = f1.Request.Occurrences.ToDictionary(value => value.Atom.Alias, value => value.Id, StringComparer.Ordinal);
+
+        var g2aUser = HeadingAnchorProtocolV1.ComposeUserMessage(owned, idsByAlias, establishes);
+        var g2aBody = OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(
+            HeadingAnchorProtocolV1.SystemPrompt, g2aUser, pack.MaxCompletionTokens, Envelope);
+        using var g2aManifest = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(
+            "artifacts/v5-p6t-function-membership/p6tg2a-full-pack-population-preflight/g2a-full-pack-preflight.v1.json")));
+        var g2aFrozen = g2aManifest.RootElement.GetProperty("cohort").EnumerateArray()
+            .Single(row => row.GetProperty("documentId").GetString() == documentId)
+            .GetProperty("g2a");
+        Assert.Equal(g2aFrozen.GetProperty("userMessageSha256").GetString(), Sha256(g2aUser));
+        Assert.Equal(g2aFrozen.GetProperty("providerBodySha256").GetString(), g2aBody.Hash);
+        Assert.Equal(g2aFrozen.GetProperty("providerBodyBytes").GetInt32(), g2aBody.Bytes);
+
+        var anchorAlias = "L0006:S0";
+        var tail = ownedAliases.Skip(Array.IndexOf(ownedAliases, anchorAlias)).ToArray();
+        var h2User = HeadingExtentProtocolV2.ComposeUserMessage(
+            idsByAlias[anchorAlias], tail, idsByAlias, atoms,
+            snapshot.Evidence.Select(value => value.Rehydrate())
+                .ToDictionary(value => value.SourceAlias, StringComparer.Ordinal));
+        var h2Body = OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(
+            HeadingExtentProtocolV2.SystemPrompt, h2User, pack.MaxCompletionTokens, Envelope);
+        using var h2Manifest = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(
+            "artifacts/v5-p6t-function-membership/p6th2c-clean-v1-v2-preflight/h2c-clean-v1-v2-preflight.v1.json")));
+        var h2Frozen = h2Manifest.RootElement.GetProperty("requests").EnumerateArray()
+            .Single(row => row.GetProperty("documentId").GetString() == documentId &&
+                           row.GetProperty("anchor").GetString() == idsByAlias[anchorAlias]);
+        using var h2Capture = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(
+            "artifacts/v5-p6t-function-membership/p6th2c-clean-v2-capture-20261005/raw/SRC-089_O9.raw-capture.v1.json")));
+        Assert.Equal(h2Capture.RootElement.GetProperty("userMessageSha256").GetString(), Sha256(h2User));
+        Assert.Equal(h2Capture.RootElement.GetProperty("providerBodySha256").GetString(), h2Body.Hash);
+        Assert.Equal(h2Frozen.GetProperty("providerBodies").GetProperty("v2").GetString(), h2Body.Hash);
+    }
+
     private static string Sha256(string value) => Convert.ToHexStringLower(
         SHA256.HashData(Encoding.UTF8.GetBytes(value)));
 }
