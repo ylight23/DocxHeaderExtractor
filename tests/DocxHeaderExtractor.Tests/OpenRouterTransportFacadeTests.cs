@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Infrastructure.AI;
+using DocxHeaderExtractor.V5Qualification;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -15,6 +16,19 @@ public sealed class OpenRouterTransportFacadeTests
         Assert.DoesNotContain("ExecuteObservedAsync", publicMethods);
         Assert.DoesNotContain("ExecuteObservedUnconstrainedAsync", publicMethods);
         Assert.DoesNotContain("ExecuteToolCallAsync", publicMethods);
+        Assert.DoesNotContain("ExecuteAsync", publicMethods);
+    }
+
+    [Fact]
+    public void Production_infrastructure_assembly_exports_no_qualification_transport_types()
+    {
+        var exported = typeof(OpenRouterHeaderExtractor).Assembly.GetExportedTypes()
+            .Select(type => type.Name)
+            .ToHashSet(StringComparer.Ordinal);
+
+        Assert.DoesNotContain(nameof(OpenRouterQualificationTransport), exported);
+        Assert.DoesNotContain(nameof(OpenRouterExecutionObservation), exported);
+        Assert.NotEqual(typeof(OpenRouterHeaderExtractor).Assembly, typeof(OpenRouterQualificationTransport).Assembly);
     }
 
     [Fact]

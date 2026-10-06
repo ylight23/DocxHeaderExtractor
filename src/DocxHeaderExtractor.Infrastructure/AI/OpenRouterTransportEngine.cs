@@ -135,7 +135,7 @@ internal sealed class OpenRouterTransportEngine : IDisposable
     /// returns the reassembled content together with the raw SSE evidence. This is intentionally
     /// additive: callers that do not need canary observability keep using <see cref="ExecuteAsync"/>.
     /// </summary>
-    public async Task<OpenRouterExecutionObservation> ExecuteObservedAsync(
+    public async Task<OpenRouterTransportObservation> ExecuteObservedAsync(
         byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
         => await ExecuteObservedCoreAsync(payloadBytes, maxTokens, systemPrompt, userMessage, enforceJsonObjectCompatibility: true, ct);
 
@@ -152,11 +152,11 @@ internal sealed class OpenRouterTransportEngine : IDisposable
     /// additive qualification transport entry point; the raw body is still sent byte-for-byte and
     /// the same streaming/retry/usage machinery is used. No JSON compatibility rule is applied.
     /// </summary>
-    public async Task<OpenRouterExecutionObservation> ExecuteObservedUnconstrainedAsync(
+    public async Task<OpenRouterTransportObservation> ExecuteObservedUnconstrainedAsync(
         byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
         => await ExecuteObservedCoreAsync(payloadBytes, maxTokens, systemPrompt, userMessage, enforceJsonObjectCompatibility: false, ct);
 
-    private async Task<OpenRouterExecutionObservation> ExecuteObservedCoreAsync(
+    private async Task<OpenRouterTransportObservation> ExecuteObservedCoreAsync(
         byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, bool enforceJsonObjectCompatibility, CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(payloadBytes);
@@ -183,7 +183,7 @@ internal sealed class OpenRouterTransportEngine : IDisposable
             if (result.Content is { } content)
             {
                 logical?.Complete(new { resultCharacters = content.Length, attempts = attempt, sseEvents = result.SseEventCount });
-                return new OpenRouterExecutionObservation(content, result.FinishReason, result.Usage,
+                return new OpenRouterTransportObservation(content, result.FinishReason, result.Usage,
                     result.RawSse ?? string.Empty, result.SseEventCount, attempt - 1);
             }
 
@@ -673,3 +673,11 @@ internal sealed class OpenRouterTransportEngine : IDisposable
         if (_ownsHttp) _http.Dispose();
     }
 }
+
+internal sealed record OpenRouterTransportObservation(
+    string Content,
+    string? FinishReason,
+    JsonElement? Usage,
+    string RawSse,
+    int SseEventCount,
+    int RetryCount);

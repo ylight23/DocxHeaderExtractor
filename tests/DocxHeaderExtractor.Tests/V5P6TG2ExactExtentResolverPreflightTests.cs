@@ -6,6 +6,7 @@ using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Infrastructure.AI;
+using DocxHeaderExtractor.V5Qualification;
 
 namespace DocxHeaderExtractor.Tests;
 

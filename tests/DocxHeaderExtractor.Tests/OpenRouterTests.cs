@@ -241,7 +241,7 @@ public sealed class OpenRouterTests
     public async Task ExecuteAsync_sends_the_caller_frozen_bytes_exactly_and_returns_finish_reason()
     {
         var handler = new CaptureHandler(Reply.Sse("{\"claims\":[]}", finishReason: "stop"));
-        using var model = Model(handler, new RemoteInferenceOptions { ApiKey = "test-key" });
+        using var model = QualificationModel(handler, new RemoteInferenceOptions { ApiKey = "test-key" });
         var frozenBody = Encoding.UTF8.GetBytes("""{"model":"frozen/exact-bytes","max_tokens":123}""");
 
         var (content, finishReason) = await model.ExecuteAsync(frozenBody, maxTokens: 123, "Return JSON.", "user");
@@ -255,7 +255,7 @@ public sealed class OpenRouterTests
     public async Task ExecuteAsync_reports_a_length_finish_reason_rather_than_hiding_it()
     {
         var handler = new CaptureHandler(Reply.Sse("{\"claims\":[", finishReason: "length"));
-        using var model = Model(handler, new RemoteInferenceOptions { ApiKey = "test-key" });
+        using var model = QualificationModel(handler, new RemoteInferenceOptions { ApiKey = "test-key" });
 
         var (_, finishReason) = await model.ExecuteAsync(
             Encoding.UTF8.GetBytes("{}"), maxTokens: 10, "Return JSON.", "user");
@@ -269,7 +269,7 @@ public sealed class OpenRouterTests
         var incomplete = Reply.Sse("{}", done: false);
         var handler = new CaptureHandler(incomplete, Reply.Sse("{\"claims\":[]}"));
         var waits = new List<TimeSpan>();
-        using var model = Model(handler, new RemoteInferenceOptions { ApiKey = "test-key" }, waits);
+        using var model = QualificationModel(handler, new RemoteInferenceOptions { ApiKey = "test-key" }, waits);
 
         var (content, _) = await model.ExecuteAsync(Encoding.UTF8.GetBytes("{}"), 10, "Return JSON.", "user");
 
@@ -291,7 +291,7 @@ public sealed class OpenRouterTests
                 ApiKey = "test-key",
                 Observability = new ProviderObservabilityOptions { RootDirectory = root, CampaignId = "t", DocumentId = "d" },
             };
-            using var model = Model(handler, options);
+            using var model = QualificationModel(handler, options);
 
             await model.ExecuteAsync(Encoding.UTF8.GetBytes("{}"), 10, "Return JSON.", "user");
 
@@ -320,6 +320,19 @@ public sealed class OpenRouterTests
         CaptureHandler handler, RemoteInferenceOptions options, List<TimeSpan>? waits = null)
     {
         var model = new OpenRouterHeaderExtractor(new HttpClient(handler), options);
+        model.RetryWait = (delay, _) =>
+        {
+            waits?.Add(delay);
+            return Task.CompletedTask;
+        };
+        return model;
+    }
+
+    // ExecuteAsync is qualification-only; the retry/telemetry behaviour it shares with production is the engine's.
+    private static V5Qualification.OpenRouterQualificationTransport QualificationModel(
+        CaptureHandler handler, RemoteInferenceOptions options, List<TimeSpan>? waits = null)
+    {
+        var model = new V5Qualification.OpenRouterQualificationTransport(new HttpClient(handler), options);
         model.RetryWait = (delay, _) =>
         {
             waits?.Add(delay);

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
+    <InternalsVisibleTo Include="dhx-v5-qualify" />
   </ItemGroup>
 
   <ItemGroup>
