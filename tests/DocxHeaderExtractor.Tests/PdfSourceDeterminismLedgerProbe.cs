@@ -86,7 +86,7 @@ public sealed class PdfSourceDeterminismLedgerProbe
         var byPageLines = lines.GroupBy(l => l.Page).ToDictionary(g => g.Key, g => g.Select(Line).ToList());
         var universe = PdfSourceOccurrenceAdapter.Build(lines, CanonicalSemanticSourceHash.Compute(pdfPath));
         var byPageAtoms = universe.Atoms.GroupBy(a => a.Page)
-            .ToDictionary(g => g.Key, g => g.Select(a => $"{a.Alias}|{a.SourceId}|{a.Ordinal}|{a.Row}|{a.Segment}|{a.Text}").ToList());
+            .ToDictionary(g => g.Key, g => g.Select(a => string.Join('', a.Alias, a.Page, a.Ordinal, a.Row, a.Segment, a.Text)).ToList());
 
         return new
         {

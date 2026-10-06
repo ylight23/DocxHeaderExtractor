@@ -1,0 +1,767 @@
+{
+  "schemaVersion": "a99-gold-alias-migration-proposal-v1",
+  "authorityId": "SRC-089",
+  "status": "PROPOSAL_NOT_APPLIED_AWAITING_USER_APPROVAL",
+  "geometryPolicy": "a99-pdf-glyph-geometry-v2-font-independent",
+  "modelCalls": 0,
+  "goldMutation": "NONE",
+  "universe": {
+    "v1Atoms": 582,
+    "v2Atoms": 581,
+    "v1AtomsWithAnExactV2Match": 580,
+    "v1AtomsWithoutMatch": 2
+  },
+  "claims": {
+    "total": 36,
+    "UNCHANGED_TEXT": 5,
+    "SPACING_ONLY": 8,
+    "SPACING_AND_ALIAS_SHIFT": 16,
+    "ALIAS_SHIFT_ONLY": 7
+  },
+  "rows": [
+    {
+      "claimIndex": 0,
+      "approvedWording": "DECREE DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING, THE PUBLICATION LAW (*)",
+      "status": "UNCHANGED_TEXT",
+      "parts": [
+        {
+          "oldAlias": "L0006:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0006:S0",
+          "aliasChanged": false,
+          "oldText": "DECREE",
+          "newText": "DECREE"
+        },
+        {
+          "oldAlias": "L0007:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0007:S0",
+          "aliasChanged": false,
+          "oldText": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,",
+          "newText": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,"
+        },
+        {
+          "oldAlias": "L0008:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0008:S0",
+          "aliasChanged": false,
+          "oldText": "THE PUBLICATION LAW (*)",
+          "newText": "THE PUBLICATION LAW (*)"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 1,
+      "approvedWording": "Chapter I GENERAL PROVISIONS",
+      "status": "UNCHANGED_TEXT",
+      "parts": [
+        {
+          "oldAlias": "L0014:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0014:S0",
+          "aliasChanged": false,
+          "oldText": "Chapter I",
+          "newText": "Chapter I"
+        },
+        {
+          "oldAlias": "L0015:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0015:S0",
+          "aliasChanged": false,
+          "oldText": "GENERAL PROVISIONS",
+          "newText": "GENERAL PROVISIONS"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 2,
+      "approvedWording": "Article 1. Scope ofregulation and subjects ofapplication",
+      "status": "SPACING_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0016:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0016:S0",
+          "aliasChanged": false,
+          "oldText": "Article 1. Scope ofregulation and subjects ofapplication",
+          "newText": "Article 1. Scope of regulation and subjects of application"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 3,
+      "approvedWording": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing the state management ofpublication activities",
+      "status": "SPACING_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0024:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0024:S0",
+          "aliasChanged": false,
+          "oldText": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing",
+          "newText": "Article 2. Tasks and powers of the Ministry of Information and Communications in performing"
+        },
+        {
+          "oldAlias": "L0025:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0025:S0",
+          "aliasChanged": false,
+          "oldText": "the state management ofpublication activities",
+          "newText": "the state management of publication activities"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 4,
+      "approvedWording": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state management ofpublication activities",
+      "status": "SPACING_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0051:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0051:S0",
+          "aliasChanged": false,
+          "oldText": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state",
+          "newText": "Article 3. Responsibilities of ministries and ministerial-level agencies in performing the state"
+        },
+        {
+          "oldAlias": "L0052:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0052:S0",
+          "aliasChanged": false,
+          "oldText": "management ofpublication activities",
+          "newText": "management of publication activities"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 5,
+      "approvedWording": "Article 4. Tasks and powers ofprovincial-level People’s Committees in performing the state management ofpublication activities",
+      "status": "SPACING_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0080:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0080:S0",
+          "aliasChanged": false,
+          "oldText": "Article 4. Tasks and powers ofprovincial-level People’s Committees in performing the state",
+          "newText": "Article 4. Tasks and powers of provincial-level People’s Committees in performing the state"
+        },
+        {
+          "oldAlias": "L0081:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0081:S0",
+          "aliasChanged": false,
+          "oldText": "management ofpublication activities",
+          "newText": "management of publication activities"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 6,
+      "approvedWording": "Article 5. Information and reporting regimes in publication activities",
+      "status": "UNCHANGED_TEXT",
+      "parts": [
+        {
+          "oldAlias": "L0094:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0094:S0",
+          "aliasChanged": false,
+          "oldText": "Article 5. Information and reporting regimes in publication activities",
+          "newText": "Article 5. Information and reporting regimes in publication activities"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 7,
+      "approvedWording": "Article 6. Conditions for establishment and contents ofoperation ofVietnam-based representative offices of foreign publishing houses and foreign publication distribution organizations",
+      "status": "SPACING_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0106:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0106:S0",
+          "aliasChanged": false,
+          "oldText": "Article 6. Conditions for establishment and contents ofoperation ofVietnam-based",
+          "newText": "Article 6. Conditions for establishment and contents of operation of Vietnam-based"
+        },
+        {
+          "oldAlias": "L0107:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0107:S0",
+          "aliasChanged": false,
+          "oldText": "representative offices of foreign publishing houses and foreign publication distribution",
+          "newText": "representative offices of foreign publishing houses and foreign publication distribution"
+        },
+        {
+          "oldAlias": "L0108:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0108:S0",
+          "aliasChanged": false,
+          "oldText": "organizations",
+          "newText": "organizations"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 8,
+      "approvedWording": "1 . Conditions for establishment:",
+      "status": "SPACING_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0109:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0109:S0",
+          "aliasChanged": false,
+          "oldText": "1 . Conditions for establishment:",
+          "newText": "1. Conditions for establishment:"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 9,
+      "approvedWording": "2. Operation contents:",
+      "status": "UNCHANGED_TEXT",
+      "parts": [
+        {
+          "oldAlias": "L0117:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0117:S0",
+          "aliasChanged": false,
+          "oldText": "2. Operation contents:",
+          "newText": "2. Operation contents:"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 10,
+      "approvedWording": "Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based representative offices of foreign publishing houses and foreign publication distribution organizations",
+      "status": "SPACING_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0126:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0126:S0",
+          "aliasChanged": false,
+          "oldText": "Article 7. Grant, re-grant and extension oflicenses for establishment ofVietnam- based",
+          "newText": "Article 7. Grant, re-grant and extension of licenses for establishment of Vietnam- based"
+        },
+        {
+          "oldAlias": "L0127:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0127:S0",
+          "aliasChanged": false,
+          "oldText": "representative offices of foreign publishing houses and foreign publication distribution",
+          "newText": "representative offices of foreign publishing houses and foreign publication distribution"
+        },
+        {
+          "oldAlias": "L0128:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0128:S0",
+          "aliasChanged": false,
+          "oldText": "organizations",
+          "newText": "organizations"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 11,
+      "approvedWording": "Chapter II PUBLISHING",
+      "status": "UNCHANGED_TEXT",
+      "parts": [
+        {
+          "oldAlias": "L0160:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0160:S0",
+          "aliasChanged": false,
+          "oldText": "Chapter II",
+          "newText": "Chapter II"
+        },
+        {
+          "oldAlias": "L0161:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0161:S0",
+          "aliasChanged": false,
+          "oldText": "PUBLISHING",
+          "newText": "PUBLISHING"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 12,
+      "approvedWording": "Article 8. Conditions for establishment and assurance ofoperations ofpublishing houses",
+      "status": "SPACING_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0162:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0162:S0",
+          "aliasChanged": false,
+          "oldText": "Article 8. Conditions for establishment and assurance ofoperations ofpublishing houses",
+          "newText": "Article 8. Conditions for establishment and assurance of operations of publishing houses"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 13,
+      "approvedWording": "Article 9. Approval ofthe appointment, dismissal and relief from duty ofgeneral directors (directors) and editors-in-chiefofpublishing houses",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0174:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0173:S0",
+          "aliasChanged": true,
+          "oldText": "Article 9. Approval ofthe appointment, dismissal and relief from duty ofgeneral directors",
+          "newText": "Article 9. Approval of the appointment, dismissal and relief from duty of general directors"
+        },
+        {
+          "oldAlias": "L0175:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0174:S0",
+          "aliasChanged": true,
+          "oldText": "(directors) and editors-in-chiefofpublishing houses",
+          "newText": "(directors) and editors-in-chief of publishing houses"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 14,
+      "approvedWording": "Article 10. Publication registration and certification ofpublication registration",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0195:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0194:S0",
+          "aliasChanged": true,
+          "oldText": "Article 10. Publication registration and certification ofpublication registration",
+          "newText": "Article 10. Publication registration and certification of publication registration"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 15,
+      "approvedWording": "Article 11. Joint publication activities",
+      "status": "ALIAS_SHIFT_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0243:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0242:S0",
+          "aliasChanged": true,
+          "oldText": "Article 11. Joint publication activities",
+          "newText": "Article 11. Joint publication activities"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 16,
+      "approvedWording": "1 . For publishing houses:",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0246:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0245:S0",
+          "aliasChanged": true,
+          "oldText": "1 . For publishing houses:",
+          "newText": "1. For publishing houses:"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 17,
+      "approvedWording": "2. For partners:",
+      "status": "ALIAS_SHIFT_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0249:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0248:S0",
+          "aliasChanged": true,
+          "oldText": "2. For partners:",
+          "newText": "2. For partners:"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 18,
+      "approvedWording": "Article 12. Licensing ofpublication ofnon-commercial documents",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0260:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0259:S0",
+          "aliasChanged": true,
+          "oldText": "Article 12. Licensing ofpublication ofnon-commercial documents",
+          "newText": "Article 12. Licensing of publication of non-commercial documents"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 19,
+      "approvedWording": "Chapter III PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+      "status": "ALIAS_SHIFT_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0284:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0283:S0",
+          "aliasChanged": true,
+          "oldText": "Chapter III",
+          "newText": "Chapter III"
+        },
+        {
+          "oldAlias": "L0285:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0284:S0",
+          "aliasChanged": true,
+          "oldText": "PRINTING AND DISTRIBUTION OF PUBLICATIONS",
+          "newText": "PRINTING AND DISTRIBUTION OF PUBLICATIONS"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 20,
+      "approvedWording": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of revocation ofpublication printing permits",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0286:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0285:S0",
+          "aliasChanged": true,
+          "oldText": "Article 13. Conditions and dossiers for grant ofpublication printing permits and cases of",
+          "newText": "Article 13. Conditions and dossiers for grant of publication printing permits and cases of"
+        },
+        {
+          "oldAlias": "L0287:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0286:S0",
+          "aliasChanged": true,
+          "oldText": "revocation ofpublication printing permits",
+          "newText": "revocation of publication printing permits"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 21,
+      "approvedWording": "Article 14. Grant, re-grant and revocation ofpublication import business licenses",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0317:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0316:S0",
+          "aliasChanged": true,
+          "oldText": "Article 14. Grant, re-grant and revocation ofpublication import business licenses",
+          "newText": "Article 14. Grant, re-grant and revocation of publication import business licenses"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 22,
+      "approvedWording": "Article 15. Refusal to certify the registration ofimport ofpublications for commercial purposes",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0350:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0349:S0",
+          "aliasChanged": true,
+          "oldText": "Article 15. Refusal to certify the registration ofimport ofpublications for commercial purposes",
+          "newText": "Article 15. Refusal to certify the registration of import of publications for commercial purposes"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 23,
+      "approvedWording": "Article 16. Responsibility ofpublication importers to appraise contents ofimported publications",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0359:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0358:S0",
+          "aliasChanged": true,
+          "oldText": "Article 16. Responsibility ofpublication importers to appraise contents ofimported publications",
+          "newText": "Article 16. Responsibility of publication importers to appraise contents of imported publications"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 24,
+      "approvedWording": "Chapter IV PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+      "status": "ALIAS_SHIFT_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0382:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0381:S0",
+          "aliasChanged": true,
+          "oldText": "Chapter IV",
+          "newText": "Chapter IV"
+        },
+        {
+          "oldAlias": "L0383:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0382:S0",
+          "aliasChanged": true,
+          "oldText": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS",
+          "newText": "PUBLISHING AND DISTRIBUTION OF E-PUBLICATIONS"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 25,
+      "approvedWording": "Article 17. Conditions for publishing and distribution ofe-publications",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0384:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0383:S0",
+          "aliasChanged": true,
+          "oldText": "Article 17. Conditions for publishing and distribution ofe-publications",
+          "newText": "Article 17. Conditions for publishing and distribution of e-publications"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 26,
+      "approvedWording": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe publishing and distribution ofe-publications",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0426:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0425:S0",
+          "aliasChanged": true,
+          "oldText": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration ofthe",
+          "newText": "Article 18. Appraisal of e-publication publishing or distribution schemes and registration of the"
+        },
+        {
+          "oldAlias": "L0427:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0426:S0",
+          "aliasChanged": true,
+          "oldText": "publishing and distribution ofe-publications",
+          "newText": "publishing and distribution of e-publications"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 27,
+      "approvedWording": "Article 19. Classification ofe-publications and requirements on the contents and technical conditions ofe-publications",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0455:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0454:S0",
+          "aliasChanged": true,
+          "oldText": "Article 19. Classification ofe-publications and requirements on the contents and technical",
+          "newText": "Article 19. Classification of e-publications and requirements on the contents and technical"
+        },
+        {
+          "oldAlias": "L0456:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0455:S0",
+          "aliasChanged": true,
+          "oldText": "conditions ofe-publications",
+          "newText": "conditions of e-publications"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 28,
+      "approvedWording": "Article 20. Import ofe-publications for commercial purposes",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0478:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0477:S0",
+          "aliasChanged": true,
+          "oldText": "Article 20. Import ofe-publications for commercial purposes",
+          "newText": "Article 20. Import of e-publications for commercial purposes"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 29,
+      "approvedWording": "Article 21. Deposit ofe-publications",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0490:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0489:S0",
+          "aliasChanged": true,
+          "oldText": "Article 21. Deposit ofe-publications",
+          "newText": "Article 21. Deposit of e-publications"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 30,
+      "approvedWording": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals engaged in the publishing or distribution ofe-publications",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0499:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0498:S0",
+          "aliasChanged": true,
+          "oldText": "Article 22. Responsibilities ofpublishing houses and agencies, organizations and individuals",
+          "newText": "Article 22. Responsibilities of publishing houses and agencies, organizations and individuals"
+        },
+        {
+          "oldAlias": "L0500:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0499:S0",
+          "aliasChanged": true,
+          "oldText": "engaged in the publishing or distribution ofe-publications",
+          "newText": "engaged in the publishing or distribution of e-publications"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 31,
+      "approvedWording": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe- publications",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0522:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0521:S0",
+          "aliasChanged": true,
+          "oldText": "Article 23. Cases subject to suspension or termination ofthe publishing or distribution ofe-",
+          "newText": "Article 23. Cases subject to suspension or termination of the publishing or distribution of e-"
+        },
+        {
+          "oldAlias": "L0523:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0522:S0",
+          "aliasChanged": true,
+          "oldText": "publications",
+          "newText": "publications"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 32,
+      "approvedWording": "Chapter V IMPLEMENTATION PROVISIONS",
+      "status": "ALIAS_SHIFT_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0535:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0534:S0",
+          "aliasChanged": true,
+          "oldText": "Chapter V",
+          "newText": "Chapter V"
+        },
+        {
+          "oldAlias": "L0536:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0535:S0",
+          "aliasChanged": true,
+          "oldText": "IMPLEMENTATION PROVISIONS",
+          "newText": "IMPLEMENTATION PROVISIONS"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 33,
+      "approvedWording": "Article 24. Effect",
+      "status": "ALIAS_SHIFT_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0537:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0536:S0",
+          "aliasChanged": true,
+          "oldText": "Article 24. Effect",
+          "newText": "Article 24. Effect"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 34,
+      "approvedWording": "Article 25. Renewal oflicenses for publication activities and registration of distribution of publications",
+      "status": "SPACING_AND_ALIAS_SHIFT",
+      "parts": [
+        {
+          "oldAlias": "L0555:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0554:S0",
+          "aliasChanged": true,
+          "oldText": "Article 25. Renewal oflicenses for publication activities and registration of distribution of",
+          "newText": "Article 25. Renewal of licenses for publication activities and registration of distribution of"
+        },
+        {
+          "oldAlias": "L0556:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0555:S0",
+          "aliasChanged": true,
+          "oldText": "publications",
+          "newText": "publications"
+        }
+      ],
+      "problems": []
+    },
+    {
+      "claimIndex": 35,
+      "approvedWording": "Article 26. Implementation responsibility",
+      "status": "ALIAS_SHIFT_ONLY",
+      "parts": [
+        {
+          "oldAlias": "L0572:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "newAlias": "L0571:S0",
+          "aliasChanged": true,
+          "oldText": "Article 26. Implementation responsibility",
+          "newText": "Article 26. Implementation responsibility"
+        }
+      ],
+      "problems": []
+    }
+  ]
+}

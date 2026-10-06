@@ -24,10 +24,17 @@ internal static class PdfGeometryPolicy
     public const double Quantum = 0.001;
 
     /// <summary>Share of the font size drawn above the baseline in the font-independent glyph box.</summary>
-    public const double AscentEm = 0.8;
+    public const double AscentEm = 0.69;
 
     /// <summary>Share of the font size drawn below the baseline in the font-independent glyph box.</summary>
-    public const double DescentEm = 0.2;
+    public const double DescentEm = 0.03;
+
+    /// <summary>
+    /// Share of the font size each side of the advance is inset, standing in for the glyph's side
+    /// bearings. The parser's word-gap thresholds were calibrated on ink-to-ink gaps, which exceed the
+    /// advance-to-advance gap by about this much on both sides of a pair.
+    /// </summary>
+    public const double SideBearingEm = 0.05;
 
     /// <summary>Version of this policy; part of the source-universe identity it produces.</summary>
     public const string Version = "a99-pdf-glyph-geometry-v2-font-independent";
@@ -81,11 +88,18 @@ internal sealed class PdfGlyph
         var start = letter.StartBaseLine;
         var end = letter.EndBaseLine;
         var baseline = PdfGeometryPolicy.Snap(start.Y);
-        var size = Math.Max(0.0, letter.FontSize);
+        // PointSize is the size actually drawn; FontSize can be a unit size under a scaling matrix.
+        var size = Math.Max(0.0, letter.PointSize > 0 ? letter.PointSize : letter.FontSize);
+        var inset = size * PdfGeometryPolicy.SideBearingEm;
+        var left = Math.Min(start.X, end.X);
+        var right = Math.Max(start.X, end.X);
+        // A glyph narrower than its two insets keeps a zero-width box at its centre.
+        var width = right - left;
+        var applied = Math.Min(inset, width / 2.0);
         return new PdfGlyph(
             letter,
-            PdfGeometryPolicy.Snap(Math.Min(start.X, end.X)),
-            PdfGeometryPolicy.Snap(Math.Max(start.X, end.X)),
+            PdfGeometryPolicy.Snap(left + applied),
+            PdfGeometryPolicy.Snap(right - applied),
             PdfGeometryPolicy.Snap(baseline + size * PdfGeometryPolicy.AscentEm),
             PdfGeometryPolicy.Snap(baseline - size * PdfGeometryPolicy.DescentEm),
             baseline);
