@@ -24,14 +24,6 @@ internal static class Program
 
     private static async Task<int> Main(string[] args)
     {
-        // The 31-pack measurement cohort has its own modes, gate and sentinel; see Cohort31.
-        if (args.Any(a => a.StartsWith("--cohort31-", StringComparison.Ordinal)))
-            return await Cohort31.RunAsync(LocateRepoRoot(), args);
-
-        // The frozen 3-pack source-selection remediation canary has its own gate and sentinel; see RemediationCanary.
-        if (args.Contains("--remediation-canary"))
-            return await RemediationCanary.RunAsync(LocateRepoRoot(), args);
-
         // P6T-A is a two-call, total anchor-role ledger viability canary. It never scores semantics;
         // execution needs its own explicit sentinel and makes no retry, repair, fallback, or Pass-2 call.
         if (args.Contains("--p6ta-total-anchor-role-canary"))
