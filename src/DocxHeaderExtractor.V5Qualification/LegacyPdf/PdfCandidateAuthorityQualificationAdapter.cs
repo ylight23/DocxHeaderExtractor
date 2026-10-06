@@ -23,8 +23,8 @@ public sealed record PdfCandidateAuthorityDocumentPlan(
 /// </summary>
 public static class PdfCandidateAuthorityQualificationAdapter
 {
-    public const int CompletionTokenCeiling = 32_768;
-    public const int ResponseUtf8ByteCap = 49_152;
+    public const int CompletionTokenCeiling = PdfQualifiedInferencePolicy.CompletionTokenCeiling;
+    public const int ResponseUtf8ByteCap = PdfQualifiedInferencePolicy.ResponseUtf8ByteCap;
 
     public static PdfCandidateAuthorityDocumentPlan PrepareFromSnapshot(string snapshotPath, string documentId)
     {

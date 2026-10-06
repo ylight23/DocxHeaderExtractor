@@ -15,10 +15,10 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 internal static class PdfFunctionConditionedHeadingAuthorityAdapter
 {
     internal const string AuthorityId = "pdf-function-conditioned-heading-authority-v1";
-    private const int ResponseCap = 49_152;
+    private const int ResponseCap = PdfQualifiedInferencePolicy.ResponseUtf8ByteCap;
     // Qualification serializes with the framework default encoder.  Do not use the
     // relaxed encoder here: escaping is part of the provider-body identity.
-    private const int P05CompletionTokens = PdfCandidateAuthorityQualificationAdapter.CompletionTokenCeiling;
+    private const int P05CompletionTokens = PdfQualifiedInferencePolicy.CompletionTokenCeiling;
     internal const string G2APrompt = """
         Decide anchor existence only. Each issued primary occurrence has an upstream ESTABLISHES_STRUCTURE eligibility signal, but that signal is not proof that a valid local structural heading extent begins at this primary.
 
