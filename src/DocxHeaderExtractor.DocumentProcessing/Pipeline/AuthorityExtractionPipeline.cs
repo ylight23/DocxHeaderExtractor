@@ -62,17 +62,6 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         return execution.Outline;
     }
 
-    public async Task<DocumentExtractionResult> RunDocumentAsync(
-        string inputPath,
-        CancellationToken ct = default) =>
-        (await RunDocumentExecutionAsync(inputPath, null, ct)).Result;
-
-    public async Task<DocumentExtractionResult> RunDocumentAsync(
-        string inputPath,
-        IReadOnlySet<int>? quarantinedIndexes,
-        CancellationToken ct = default) =>
-        (await RunDocumentExecutionAsync(inputPath, quarantinedIndexes, ct)).Result;
-
     public Task<AuthorityPipelineExecutionResult> RunDocumentExecutionAsync(
         string inputPath,
         IReadOnlySet<int>? quarantinedIndexes = null,

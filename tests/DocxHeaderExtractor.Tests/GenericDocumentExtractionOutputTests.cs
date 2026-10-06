@@ -15,7 +15,7 @@ public sealed class GenericDocumentExtractionOutputTests
         {
             SampleDocumentFactory.Create(path);
             using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
-            var generic = await pipeline.RunDocumentAsync(path);
+            var generic = (await pipeline.RunDocumentExecutionAsync(path)).Result;
             var legacy = await pipeline.RunAsync(path);
 
             Assert.NotEmpty(generic.SourceCatalog.Units);

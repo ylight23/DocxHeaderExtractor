@@ -55,41 +55,4 @@ public static class SemanticProposalDecoder
         element.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.String
             ? value.GetString()
             : null;
-
-    private static bool TryOptionalText(JsonElement element, string name, out string? text)
-    {
-        text = null;
-        if (!element.TryGetProperty(name, out var value)) return true;
-        if (value.ValueKind == JsonValueKind.Null) return true;
-        if (value.ValueKind != JsonValueKind.String) return false;
-        text = value.GetString();
-        return true;
-    }
-
-    private static bool TryOptionalOrdinal(JsonElement element, string name, out int? ordinal)
-    {
-        ordinal = null;
-        if (!element.TryGetProperty(name, out var value)) return true;
-        if (value.ValueKind == JsonValueKind.Null) return true;
-        if (value.ValueKind != JsonValueKind.Number || !value.TryGetInt32(out var parsed)) return false;
-        ordinal = parsed;
-        return true;
-    }
-
-    private static bool TryOptionalTextArray(JsonElement element, string name, out string[]? items)
-    {
-        items = null;
-        if (!element.TryGetProperty(name, out var value)) return true;
-        if (value.ValueKind == JsonValueKind.Null) return true;
-        if (value.ValueKind != JsonValueKind.Array) return false;
-
-        var collected = new List<string>();
-        foreach (var item in value.EnumerateArray())
-        {
-            if (item.ValueKind != JsonValueKind.String) return false;
-            collected.Add(item.GetString()!);
-        }
-        items = collected.ToArray();
-        return true;
-    }
 }

@@ -80,7 +80,7 @@ public sealed class PdfCanonicalLaneTests
         var pdf = await PdfCanonicalExtraction.RunAsync(
             UploadedFile.FromLocalPath(Path.Combine(root, Pdf)), new PipelineOptions { DisableLlm = true });
         using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        var docx = await pipeline.RunDocumentAsync(Path.Combine(root, SameMaterialAsDocx));
+        var docx = (await pipeline.RunDocumentExecutionAsync(Path.Combine(root, SameMaterialAsDocx))).Result;
 
         Assert.NotEqual(pdf.Provenance.Route, docx.Provenance.Route);
         Assert.NotEqual(pdf.Provenance.ExecutionContract, docx.Provenance.ExecutionContract);
