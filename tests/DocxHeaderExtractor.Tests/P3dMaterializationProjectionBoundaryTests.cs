@@ -134,7 +134,6 @@ public sealed class P3dMaterializationProjectionBoundaryTests
         Assert.Same(blocks, audit.SourceBlocks);
         Assert.Same(decisions, audit.BlockDecisions);
         Assert.Empty(audit.RawAnalystResponses);
-        Assert.Empty(audit.ModelRequests);
     }
 
     private static ValidatedStructure MaterializeOne() =>

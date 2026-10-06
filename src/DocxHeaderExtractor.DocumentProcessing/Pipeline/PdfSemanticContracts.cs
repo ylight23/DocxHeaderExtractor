@@ -12,9 +12,7 @@ internal sealed record PdfBlockDecision(
     string Id,
     string Reason,
     TextOffsetSpan? HeadingSpan = null,
-    string? ProposedParentId = null,
     string? SemanticFunction = null,
-    TextOffsetSpan? ProposedSourceSpan = null,
     // The bound claim's ordered parts, for a coordinate system whose claims can span several
     // source occurrences. Null everywhere else, which is every lane that had one span per claim.
     IReadOnlyList<CanonicalSemanticBoundPart>? Parts = null);

@@ -134,23 +134,11 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             source.Blocks.Select(block => new RouteBlockAudit(block.Id, 0, block.DisplayText)).ToArray(),
             source.Blocks.Select(block => new RouteBlockAudit(block.Id, 0, block.DisplayText)).ToArray(),
             decisions.Select(decision => new RouteBlockDecisionAudit(
-                decision.Id, decision.SemanticFunction)
-            {
-                ProposedSourceSpan = decision.ProposedSourceSpan,
-            }).ToArray(),
+                decision.Id, decision.SemanticFunction)).ToArray(),
             validated.Select(item => item.SourceId).ToArray()) with
         {
             RawAnalystResponses = canonicalModel?.RawResponses ?? [],
             ModelInputContracts = canonicalModel is null ? [] : [canonicalModel.Contract.ProtocolVersion],
-            ModelRequests = result.TextModelCalls == 0
-                ? []
-                : [new RouteModelRequestAudit(
-                    $"docx:{sourceDocument.DocumentId}:primary",
-                    "canonical-primary-semantic",
-                    source.Blocks.Select(block => block.Id).ToArray(),
-                    true,
-                    canonicalModel?.RawResponses.Count > 0,
-                    canonicalModel?.RawResponses.Count > 0 ? "complete" : "failed")],
             SourceStageTraces = source.Contexts.Values.Select(context =>
                 new PdfSemanticSourceStageTrace(
                     context.Source.SourceId,

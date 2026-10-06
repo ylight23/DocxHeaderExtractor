@@ -113,21 +113,6 @@ public sealed class AuthorityExtractionPipeline : IDisposable
                 structural.Structure, structural.EmittedElementIds);
             _options.Log?.Invoke($"Authority route {route}: validated={headings.Count}; {reason}");
             var sourceCatalog = DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument);
-            if (audit is not null)
-            {
-                var sourceRepresentations = BuildSourceRepresentations(sourceCatalog, audit);
-                var traceAudit = audit with { SourceRepresentations = sourceRepresentations };
-                var traces = RouteOccurrenceTraceBuilder.Build(
-                    sourceDocument.DocumentId,
-                    FileSha256(inputPath),
-                    sourceCatalog,
-                    structural.Structure,
-                    structural.EmittedElementIds,
-                    traceAudit,
-                    routeOwner: "DOCX_AUTHORITY_ROUTE");
-                audit = traceAudit with { OccurrenceTraces = traces };
-                authority = authority with { Audit = audit };
-            }
             var sections = StructuralSectionProjection.Project(structural.Structure, sourceCatalog);
             var chunks = SectionChunkProjection.Project(
                 sections, sourceCatalog, structural.Structure,
@@ -183,23 +168,6 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             audit.ValidatedStructures,
             audit.HierarchyFacts,
             PdfCanonicalGrounding.FromValidatedStructure(structure));
-    }
-
-    private static IReadOnlyList<RouteSourceRepresentation> BuildSourceRepresentations(
-        DocumentSourceCatalog sourceCatalog,
-        RouteExecutionAudit audit)
-    {
-        var routedSourceIds = audit.SourceBlocks
-            .Select(block => block.Id)
-            .ToHashSet(StringComparer.Ordinal);
-        return sourceCatalog.Units
-            .Select(unit => new RouteSourceRepresentation(
-                unit.SourceId,
-                unit.SourceId,
-                "DOCX_SOURCE_PARAGRAPH",
-                routedSourceIds.Contains(unit.SourceId) ? unit.SourceId : null,
-                "PARSER_OWNED_LINEAGE"))
-            .ToArray();
     }
 
     internal static StructuralAuthorityResult ApplyStructuralQuarantine(
