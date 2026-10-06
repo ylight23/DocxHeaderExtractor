@@ -4,7 +4,7 @@ using System.Text.Json;
 namespace DocxHeaderExtractor.DocumentProcessing.Inference;
 
 /// <summary>Provider-neutral classifier contract consumed by document processing.</summary>
-public interface IHeaderClassifier : IDisposable
+public interface IInferenceTransport : IDisposable
 {
     string ModelName { get; }
     int ContextSize { get; }
@@ -38,7 +38,7 @@ public interface IHeaderClassifierFactory
 {
     bool SendsDataExternally => false;
 
-    Task<IHeaderClassifier> CreateAsync(PipelineOptions options, CancellationToken ct = default);
+    Task<IInferenceTransport> CreateAsync(PipelineOptions options, CancellationToken ct = default);
 
     /// <summary>
     /// Creates the separately-authorized production transport for the PDF authority route.
@@ -46,12 +46,9 @@ public interface IHeaderClassifierFactory
     /// A factory that has not explicitly opted into the qualified PDF route fails closed rather
     /// than silently falling back to its default (usually local) classifier.
     /// </summary>
-    Task<IHeaderClassifier> CreatePdfProductionAsync(PipelineOptions options, CancellationToken ct = default) =>
+    Task<IInferenceTransport> CreatePdfProductionAsync(PipelineOptions options, CancellationToken ct = default) =>
         throw new InvalidOperationException("PDF_PRODUCTION_PROVIDER_FACTORY_REQUIRED");
 }
-
-/// <summary>Semantic-facing name for a provider-neutral inference transport.</summary>
-public interface IInferenceTransport : IHeaderClassifier { }
 
 /// <summary>Raw completion returned by executing an already frozen provider request body.</summary>
 public sealed record FrozenHeaderExecutionResult(
@@ -70,17 +67,11 @@ public interface IFrozenInferenceTransport : IInferenceTransport
 }
 
 /// <summary>
-/// Compatibility name retained at the composition boundary. New semantic code depends on
-/// <see cref="IFrozenInferenceTransport"/> instead.
-/// </summary>
-public interface IFrozenRequestHeaderClassifier : IFrozenInferenceTransport { }
-
-/// <summary>
 /// Marker issued only by a composition root that has authorized the qualified PDF route. It is
 /// deliberately distinct from experimental qualification transport: ordinary production must
 /// not borrow an experiment manifest merely to use its approved provider transport.
 /// </summary>
-public interface IPdfProductionAuthorizedFrozenRequestClassifier : IFrozenRequestHeaderClassifier
+public interface IPdfProductionAuthorizedInferenceTransport : IFrozenInferenceTransport
 {
     string PdfProductionProvider { get; }
     string PdfProductionModel { get; }

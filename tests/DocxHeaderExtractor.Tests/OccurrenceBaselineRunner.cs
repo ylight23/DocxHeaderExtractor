@@ -15,7 +15,7 @@ namespace DocxHeaderExtractor.Tests;
 /// the ceiling stops at the ceiling; it does not finish the repetition first.
 /// </para>
 /// </summary>
-internal sealed class BudgetedClassifier(IHeaderClassifier inner, int ceiling) : IHeaderClassifier
+internal sealed class BudgetedClassifier(IInferenceTransport inner, int ceiling) : IInferenceTransport
 {
     private readonly List<CallRecord> _ledger = [];
 

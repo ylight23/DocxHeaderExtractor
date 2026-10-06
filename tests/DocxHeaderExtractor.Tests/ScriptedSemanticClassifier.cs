@@ -19,7 +19,7 @@ namespace DocxHeaderExtractor.Tests;
 /// it does not judge: what it returns is not a statement about the document.
 /// </para>
 /// </summary>
-internal sealed class ScriptedSemanticClassifier(int perSegment = 3) : IHeaderClassifier
+internal sealed class ScriptedSemanticClassifier(int perSegment = 3) : IInferenceTransport
 {
     public int Calls { get; private set; }
 

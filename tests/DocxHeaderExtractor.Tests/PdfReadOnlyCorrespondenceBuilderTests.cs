@@ -44,7 +44,7 @@ public sealed class PdfReadOnlyCorrespondenceBuilderTests
         "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf",
     ];
 
-    // Same envelope as HeadingAuthorityPipeline.
+    // Same envelope as PdfHeadingAuthorityRoute.
     private static readonly V5ProviderEnvelope LiveEnvelope = new("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300)
     { UsageInclude = true, OpenRouterResponseCacheDisabled = true };
 

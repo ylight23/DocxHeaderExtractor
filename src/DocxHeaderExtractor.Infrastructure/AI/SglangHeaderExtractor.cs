@@ -22,7 +22,7 @@ namespace DocxHeaderExtractor.Infrastructure.AI;
 /// </list>
 /// response_format json_schema strict đã đo hoạt động đúng trên gateway này (id/level đúng schema).
 /// </summary>
-public sealed class SglangHeaderExtractor : IHeaderClassifier
+public sealed class SglangHeaderExtractor : IInferenceTransport
 {
     private readonly HttpClient _http;
     private readonly RemoteInferenceOptions _options;
@@ -51,7 +51,7 @@ public sealed class SglangHeaderExtractor : IHeaderClassifier
     public string RuntimeDescription => $"SGLang/vLLM gateway RPC · {_options.Endpoint.Authority}";
     public int SharedPrefixTokens => 0;
 
-    /// <summary>Nhiệm vụ hẹp — xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>.</summary>
+    /// <summary>Nhiệm vụ hẹp — xem <see cref="IInferenceTransport.BoundaryCutAsync"/>.</summary>
     public async Task<string> BoundaryCutAsync(
         string systemPrompt,
         string userMessage,

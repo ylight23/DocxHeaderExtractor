@@ -15,7 +15,7 @@ public sealed class HeaderClassifierFactory : IHeaderClassifierFactory
 
     public bool SendsDataExternally => _selection.SendsDataExternally;
 
-    public async Task<IHeaderClassifier> CreateAsync(
+    public async Task<IInferenceTransport> CreateAsync(
         PipelineOptions options,
         CancellationToken ct = default)
     {
@@ -35,7 +35,7 @@ public sealed class HeaderClassifierFactory : IHeaderClassifierFactory
     /// for qwen/qwen3.7-flash, so selecting a local or alternate remote backend must fail before
     /// a PDF provider call is attempted.
     /// </summary>
-    public Task<IHeaderClassifier> CreatePdfProductionAsync(
+    public Task<IInferenceTransport> CreatePdfProductionAsync(
         PipelineOptions options,
         CancellationToken ct = default)
     {
@@ -56,7 +56,7 @@ public sealed class HeaderClassifierFactory : IHeaderClassifierFactory
                 $"PDF_PRODUCTION_PROVIDER_ROUTE_UNSUPPORTED: requires {RemoteInferenceOptions.DefaultProviderRoute}; " +
                 $"selected {_selection.Remote.OpenRouterProviderRoute ?? "<automatic>"}.");
 
-        IHeaderClassifier classifier = new PdfProductionOpenRouterHeaderClassifier(
+        IInferenceTransport classifier = new PdfProductionOpenRouterHeaderClassifier(
             OpenRouterHeaderExtractor.CreateOwned(_selection.Remote));
         return Task.FromResult(classifier);
     }
@@ -71,7 +71,7 @@ public sealed class HeaderClassifierFactory : IHeaderClassifierFactory
 
     /// <summary>Capability/authorization wrapper for the only qualified PDF production transport.</summary>
     private sealed class PdfProductionOpenRouterHeaderClassifier(OpenRouterHeaderExtractor inner)
-        : IPdfProductionAuthorizedFrozenRequestClassifier
+        : IPdfProductionAuthorizedInferenceTransport
     {
         public string PdfProductionProvider => "OpenRouter/Alibaba";
         public string PdfProductionModel => RemoteInferenceOptions.DefaultModel;

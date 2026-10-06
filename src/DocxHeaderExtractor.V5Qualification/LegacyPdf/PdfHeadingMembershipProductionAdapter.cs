@@ -268,7 +268,7 @@ public static class PdfHeadingMembershipProductionAdapter
     /// already-configured transport-only retry policy applies.
     /// </summary>
     public static async Task<PdfHeadingMembershipPackExecution> ExecuteAndBindAsync(
-        PdfHeadingMembershipPreparedPack pack, IFrozenRequestHeaderClassifier executor,
+        PdfHeadingMembershipPreparedPack pack, IFrozenInferenceTransport executor,
         int responseCap = 49_152, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(pack);

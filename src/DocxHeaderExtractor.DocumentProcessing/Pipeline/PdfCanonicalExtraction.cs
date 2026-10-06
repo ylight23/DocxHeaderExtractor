@@ -19,7 +19,7 @@ public static class PdfCanonicalExtraction
     public static async Task<DocumentExtractionResult> RunAsync(
         UploadedFile file,
         PipelineOptions options,
-        IHeaderClassifier? analyst = null,
+        IInferenceTransport? analyst = null,
         CancellationToken ct = default) =>
         (await RunExecutionAsync(file, options, analyst, ct: ct)).Result;
 
@@ -34,7 +34,7 @@ public static class PdfCanonicalExtraction
     public static Task<AuthorityPipelineExecutionResult> RunExecutionAsync(
         UploadedFile file,
         PipelineOptions options,
-        IHeaderClassifier? analyst = null,
+        IInferenceTransport? analyst = null,
         IReadOnlySet<int>? quarantinedIndexes = null,
         bool analystSendsDataExternally = false,
         CancellationToken ct = default) =>
@@ -49,7 +49,7 @@ public static class PdfCanonicalExtraction
     internal static Task<AuthorityPipelineExecutionResult> RunExecutionAsync(
         UploadedFile file,
         PipelineOptions options,
-        IHeaderClassifier? analyst,
+        IInferenceTransport? analyst,
         SemanticLaneOptions semanticLaneOptions,
         IReadOnlySet<int>? quarantinedIndexes = null,
         bool analystSendsDataExternally = false,
@@ -61,7 +61,7 @@ public static class PdfCanonicalExtraction
     private static async Task<AuthorityPipelineExecutionResult> RunExecutionCoreAsync(
         UploadedFile file,
         PipelineOptions options,
-        IHeaderClassifier? analyst,
+        IInferenceTransport? analyst,
         IReadOnlySet<int>? quarantinedIndexes,
         bool analystSendsDataExternally,
         CancellationToken ct,
@@ -74,7 +74,7 @@ public static class PdfCanonicalExtraction
 
         var started = Environment.TickCount64;
         var used = options.DisableLlm ? null : analyst;
-        var productionAuthorized = used is IPdfProductionAuthorizedFrozenRequestClassifier;
+        var productionAuthorized = used is IPdfProductionAuthorizedInferenceTransport;
         if (used is not null && !productionAuthorized)
         {
             throw new InvalidOperationException(
@@ -86,7 +86,7 @@ public static class PdfCanonicalExtraction
         // historical canonical engine it has no semantic fallback: invalid stage output is
         // withheld by that adapter rather than delegated to a second membership authority.
         var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(file.LocalPath);
-        authority = await HeadingAuthorityPipeline.RunAsync(
+        authority = await PdfHeadingAuthorityRoute.RunAsync(
             sourceBuild.Universe, sourceBuild.Details, file.LocalPath, used, semanticLaneOptions, ct);
         // The same repair step the DOCX lane applies, through the same implementation. A quarantine
         // that silently did nothing on one format would make the harness's repair loop mean two
@@ -139,7 +139,7 @@ public static class PdfCanonicalExtraction
         PipelineOptions options,
         StructuralAuthorityResult authority,
         DocumentSourceCatalog catalog,
-        IHeaderClassifier? analyst,
+        IInferenceTransport? analyst,
         bool analystSendsDataExternally,
         long started)
     {

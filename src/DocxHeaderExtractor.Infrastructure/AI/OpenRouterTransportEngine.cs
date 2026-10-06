@@ -45,7 +45,7 @@ internal sealed class OpenRouterTransportEngine : IDisposable
     public int SharedPrefixTokens => 0;
 
     /// <summary>
-    /// Nhiệm vụ hẹp — xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>.
+    /// Nhiệm vụ hẹp — xem <see cref="IInferenceTransport.BoundaryCutAsync"/>.
     /// <para>
     /// OpenRouter streaming transport V1: the configuration the production re-baseline qualified.
     /// The request streams (<c>stream=true</c>, <c>usage.include=true</c>); the reply is read as raw

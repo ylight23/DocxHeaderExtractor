@@ -17,7 +17,7 @@ namespace DocxHeaderExtractor.Tests;
 /// replay can never quietly claim coverage of a pass that was never recorded.
 /// </para>
 /// </summary>
-internal sealed class FrozenReplyClassifier(IReadOnlyList<string> replies) : IHeaderClassifier
+internal sealed class FrozenReplyClassifier(IReadOnlyList<string> replies) : IInferenceTransport
 {
     private int _next;
 

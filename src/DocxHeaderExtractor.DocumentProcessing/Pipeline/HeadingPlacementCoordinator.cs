@@ -18,7 +18,7 @@ internal static class HeadingPlacementCoordinator
     /// </summary>
     public static async Task<IReadOnlyList<CanonicalSemanticBoundHeading>> PlaceUnresolvedHeadingsAsync(
         IReadOnlyList<CanonicalSemanticBoundHeading> bound,
-        IHeaderClassifier classifier,
+        IInferenceTransport classifier,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(bound);

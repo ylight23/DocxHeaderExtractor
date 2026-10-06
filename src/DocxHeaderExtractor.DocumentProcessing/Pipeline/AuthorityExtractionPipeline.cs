@@ -17,7 +17,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
     private readonly PipelineOptions _options;
     private readonly IHeaderClassifierFactory? _analystFactory;
     private readonly bool _classifierSendsDataExternally;
-    private IHeaderClassifier? _analyst;
+    private IInferenceTransport? _analyst;
     private readonly bool _ownsAnalyst;
 
     public AuthorityExtractionPipeline(PipelineOptions options)
@@ -26,20 +26,20 @@ public sealed class AuthorityExtractionPipeline : IDisposable
     public AuthorityExtractionPipeline(PipelineOptions options, IHeaderClassifierFactory analystFactory)
         : this(options, null, analystFactory) { }
 
-    public AuthorityExtractionPipeline(PipelineOptions options, IHeaderClassifier analyst)
+    public AuthorityExtractionPipeline(PipelineOptions options, IInferenceTransport analyst)
         : this(options, analyst, null, false)
     {
     }
 
     public AuthorityExtractionPipeline(
         PipelineOptions options,
-        IHeaderClassifier analyst,
+        IInferenceTransport analyst,
         bool sendsDataExternally)
         : this(options, analyst, null, sendsDataExternally) { }
 
     private AuthorityExtractionPipeline(
         PipelineOptions options,
-        IHeaderClassifier? analyst,
+        IInferenceTransport? analyst,
         IHeaderClassifierFactory? analystFactory,
         bool classifierSendsDataExternally = false)
     {
@@ -86,7 +86,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         var started = Environment.TickCount64;
         var sourceDocument = new OpenXmlDocumentSource().Read(inputPath);
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
-            var authority = await CanonicalSemanticDocxAuthorityAdapter.RunAsync(
+            var authority = await DocxHeadingAuthorityRoute.RunAsync(
                 sourceDocument, analyst, ct);
             authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
             var audit = authority.Audit;
@@ -148,7 +148,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             return new AuthorityPipelineExecutionResult(extractionResult, outline);
     }
 
-    private async Task<IHeaderClassifier> GetAnalystAsync(CancellationToken ct)
+    private async Task<IInferenceTransport> GetAnalystAsync(CancellationToken ct)
     {
         if (_analyst is not null) return _analyst;
         if (_analystFactory is null)

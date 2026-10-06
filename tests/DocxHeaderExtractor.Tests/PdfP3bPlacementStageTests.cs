@@ -94,7 +94,7 @@ public sealed class PdfP3bPlacementStageTests
         new(alias, sourceId, ordinal, text, "SECTION", "Heading", "document_body",
             hints, 0, text.Length);
 
-    private sealed class PlacementClassifier(string response) : IHeaderClassifier
+    private sealed class PlacementClassifier(string response) : IInferenceTransport
     {
         public List<PlacementRequest> Requests { get; } = [];
         public int BoundaryCutCalls { get; private set; }

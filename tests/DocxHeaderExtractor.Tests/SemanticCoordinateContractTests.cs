@@ -148,7 +148,7 @@ public sealed class SemanticCoordinateContractTests
             [], [], []);
     }
 
-    private sealed class RecordingClassifier : IHeaderClassifier
+    private sealed class RecordingClassifier : IInferenceTransport
     {
         public string? Prompt { get; private set; }
         public string? Request { get; private set; }

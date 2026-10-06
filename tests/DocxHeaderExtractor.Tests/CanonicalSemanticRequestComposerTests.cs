@@ -115,7 +115,7 @@ public sealed class CanonicalSemanticRequestComposerTests
         return new CanonicalSemanticTextInferenceInput(evidence);
     }
 
-    private sealed class UnreachableClassifier : IHeaderClassifier
+    private sealed class UnreachableClassifier : IInferenceTransport
     {
         public string ModelName => throw new InvalidOperationException();
         public int ContextSize => throw new InvalidOperationException();
@@ -126,7 +126,7 @@ public sealed class CanonicalSemanticRequestComposerTests
         public void Dispose() { }
     }
 
-    private sealed class RecordingClassifier : IHeaderClassifier
+    private sealed class RecordingClassifier : IInferenceTransport
     {
         public List<string> Requests { get; } = [];
         public string ModelName => "recording";

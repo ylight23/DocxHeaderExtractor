@@ -95,7 +95,7 @@ public sealed class PdfLiveExecutionLifecycleTests
     }
 
     private static Task<AuthorityPipelineExecutionResult> RunAsync(
-        IFrozenRequestHeaderClassifier classifier,
+        IFrozenInferenceTransport classifier,
         SemanticLaneOptions lane,
         CancellationToken cancellationToken = default)
     {
@@ -108,7 +108,7 @@ public sealed class PdfLiveExecutionLifecycleTests
             semanticLaneOptions: lane);
     }
 
-    private sealed class GateClassifier : IPdfProductionAuthorizedFrozenRequestClassifier
+    private sealed class GateClassifier : IPdfProductionAuthorizedInferenceTransport
     {
         private readonly TaskCompletionSource<FrozenHeaderExecutionResult> _firstCall =
             new(TaskCreationOptions.RunContinuationsAsynchronously);

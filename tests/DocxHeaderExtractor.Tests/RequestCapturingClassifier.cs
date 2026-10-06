@@ -19,7 +19,7 @@ namespace DocxHeaderExtractor.Tests;
 /// not match.
 /// </para>
 /// </summary>
-internal sealed class RequestCapturingClassifier : IHeaderClassifier
+internal sealed class RequestCapturingClassifier : IInferenceTransport
 {
     public List<CapturedRequest> Requests { get; } = [];
 

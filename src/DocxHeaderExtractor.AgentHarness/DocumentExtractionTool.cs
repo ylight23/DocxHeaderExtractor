@@ -28,7 +28,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     private readonly AuthorityExtractionPipeline _docxLane;
     private readonly PdfCanonicalSourceExtractor _pdfLane;
     private readonly CanonicalExtractionDispatcher _dispatcher;
-    private readonly IHeaderClassifier? _classifier;
+    private readonly IInferenceTransport? _classifier;
     private readonly bool _ownsClassifier;
 
     public PipelineDocumentExtractionTool(PipelineOptions options)
@@ -53,7 +53,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 
     public PipelineDocumentExtractionTool(
         PipelineOptions options,
-        IHeaderClassifier classifier,
+        IInferenceTransport classifier,
         bool ownsClassifier = false,
         bool sendsDataExternally = false)
     {

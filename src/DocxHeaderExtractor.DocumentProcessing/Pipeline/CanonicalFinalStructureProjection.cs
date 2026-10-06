@@ -86,10 +86,10 @@ public static class CanonicalFinalStructureProjection
 
         return new CanonicalFinalStructure(
             sourceDocumentSha256,
-            PdfHierarchyFactHash.OfText(string.Join('\n', ordered.Select(structure =>
+            HierarchyFactHash.OfText(string.Join('\n', ordered.Select(structure =>
                 string.Join('|', structure.SourceId, structure.Level, structure.ParentId ?? "-",
                     structure.ParentResolution, structure.Decision)))),
-            PdfHierarchyFactHash.OfText(string.Join('\n', headings.Select(heading =>
+            HierarchyFactHash.OfText(string.Join('\n', headings.Select(heading =>
                 string.Join('|', heading.Id, heading.GroundingStatus, heading.Level?.ToString() ?? "-",
                     heading.ParentId ?? "-", heading.HierarchyStatus)))),
             new CanonicalFinalStructureCounters(

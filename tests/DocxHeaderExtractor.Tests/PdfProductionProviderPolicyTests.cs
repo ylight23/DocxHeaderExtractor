@@ -71,7 +71,7 @@ public sealed class PdfProductionProviderPolicyTests
 
         using var classifier = await factory.CreatePdfProductionAsync(new PipelineOptions());
 
-        var authorized = Assert.IsAssignableFrom<IPdfProductionAuthorizedFrozenRequestClassifier>(classifier);
+        var authorized = Assert.IsAssignableFrom<IPdfProductionAuthorizedInferenceTransport>(classifier);
         Assert.Equal("OpenRouter/Alibaba", authorized.PdfProductionProvider);
         Assert.Equal(RemoteInferenceOptions.DefaultModel, authorized.PdfProductionModel);
     }
@@ -96,7 +96,7 @@ public sealed class PdfProductionProviderPolicyTests
 
     private sealed class LegacyFactory : IHeaderClassifierFactory
     {
-        public Task<IHeaderClassifier> CreateAsync(PipelineOptions options, CancellationToken ct = default) =>
+        public Task<IInferenceTransport> CreateAsync(PipelineOptions options, CancellationToken ct = default) =>
             throw new NotSupportedException();
     }
 }

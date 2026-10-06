@@ -16,7 +16,7 @@ namespace DocxHeaderExtractor.Infrastructure.AI;
 /// Bọc LLamaSharp: nạp mô hình .gguf lượng tử hoá, chạy suy luận trên CPU cho từng khối XML.
 /// Dùng <see cref="StatelessExecutor"/> nên mỗi khối là một lượt độc lập, không bị nhiễm ngữ cảnh khối trước.
 /// </summary>
-public sealed class LlamaHeaderExtractor : IHeaderClassifier
+public sealed class LlamaHeaderExtractor : IInferenceTransport
 {
     private readonly LLamaWeights _weights;
     private readonly ModelParams _modelParams;
@@ -260,7 +260,7 @@ public sealed class LlamaHeaderExtractor : IHeaderClassifier
     }
 
     /// <summary>
-    /// Xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>. Stateless, không grammar, không
+    /// Xem <see cref="IInferenceTransport.BoundaryCutAsync"/>. Stateless, không grammar, không
     /// prefix cache; sampler greedy (Temperature=0, TopK=1, Seed cố định) để tái lập được.
     /// </summary>
     public async Task<string> BoundaryCutAsync(

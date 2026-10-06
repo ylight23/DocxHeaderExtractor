@@ -9,7 +9,7 @@ namespace DocxHeaderExtractor.V5Qualification;
 /// Qualification-only OpenRouter transport: raw observation, unconstrained responses, and tool calls.
 /// Lives outside the production Infrastructure assembly and drives its internal transport engine.
 /// </summary>
-public sealed class OpenRouterQualificationTransport : IFrozenRequestHeaderClassifier, IDisposable
+public sealed class OpenRouterQualificationTransport : IFrozenInferenceTransport, IDisposable
 {
     private readonly OpenRouterTransportEngine _engine;
 

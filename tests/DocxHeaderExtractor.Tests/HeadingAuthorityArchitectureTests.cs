@@ -76,28 +76,80 @@ public sealed class HeadingAuthorityArchitectureTests
     {
         var adapter = File.ReadAllText(TestRepository.Path(
             "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxSourceOccurrenceAdapter.cs"));
-        var authority = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/CanonicalSemanticDocxAuthorityAdapter.cs"));
+        var route = File.ReadAllText(TestRepository.Path(
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxHeadingAuthorityRoute.cs"));
 
         Assert.DoesNotContain("PdfSourceOccurrenceAdapter", adapter, StringComparison.Ordinal);
         Assert.DoesNotContain("PdfSemantic", adapter, StringComparison.Ordinal);
-        Assert.DoesNotContain("HeadingAuthorityPipeline", authority, StringComparison.Ordinal);
-        Assert.DoesNotContain("IFrozenInferenceTransport", authority, StringComparison.Ordinal);
+        // DOCX stays on the canonical-text authority until it has its own qualification evidence.
+        Assert.Contains("CanonicalTextHeadingAuthority", route, StringComparison.Ordinal);
+        Assert.DoesNotContain("FunctionConditionedHeadingAuthority", route, StringComparison.Ordinal);
+        Assert.DoesNotContain("PdfHeadingAuthorityRoute", route, StringComparison.Ordinal);
+        Assert.DoesNotContain("IFrozenInferenceTransport", route, StringComparison.Ordinal);
+        Assert.DoesNotContain("IPdfProductionAuthorizedInferenceTransport", route, StringComparison.Ordinal);
     }
 
     [Fact]
     public void Pdf_authority_route_uses_qualified_transport_without_canonical_text_fallback()
     {
-        var route = File.ReadAllText(TestRepository.Path(
+        var extraction = File.ReadAllText(TestRepository.Path(
             "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfCanonicalExtraction.cs"));
+        var route = File.ReadAllText(TestRepository.Path(
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfHeadingAuthorityRoute.cs"));
         var authority = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Semantics/HeadingAuthority/HeadingAuthorityPipeline.cs"));
+            "src/DocxHeaderExtractor.DocumentProcessing/Semantics/HeadingAuthority/FunctionConditionedHeadingAuthority.cs"));
 
-        Assert.Contains("PdfSourceOccurrenceAdapter.Build", route, StringComparison.Ordinal);
-        Assert.Contains("HeadingAuthorityPipeline.RunAsync", route, StringComparison.Ordinal);
-        Assert.Contains("IPdfProductionAuthorizedFrozenRequestClassifier", route, StringComparison.Ordinal);
+        Assert.Contains("PdfSourceOccurrenceAdapter.Build", extraction, StringComparison.Ordinal);
+        Assert.Contains("PdfHeadingAuthorityRoute.RunAsync", extraction, StringComparison.Ordinal);
+        Assert.Contains("IPdfProductionAuthorizedInferenceTransport", extraction, StringComparison.Ordinal);
+        Assert.Contains("IFrozenInferenceTransport", route, StringComparison.Ordinal);
         Assert.Contains("IFrozenInferenceTransport", authority, StringComparison.Ordinal);
-        Assert.DoesNotContain("CanonicalSemanticTextProductionEntryPoint", route, StringComparison.Ordinal);
+        foreach (var source in new[] { extraction, route, authority })
+        {
+            Assert.DoesNotContain("CanonicalSemanticTextProductionEntryPoint", source, StringComparison.Ordinal);
+            Assert.DoesNotContain("CanonicalTextHeadingAuthority", source, StringComparison.Ordinal);
+        }
+    }
+
+    [Fact]
+    public void Both_routes_converge_on_the_heading_authority_seam_and_one_assembler()
+    {
+        var docx = File.ReadAllText(TestRepository.Path(
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxHeadingAuthorityRoute.cs"));
+        var pdf = File.ReadAllText(TestRepository.Path(
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfHeadingAuthorityRoute.cs"));
+        var assembler = File.ReadAllText(TestRepository.Path(
+            "src/DocxHeaderExtractor.DocumentProcessing/Materialization/HeadingStructureAssembler.cs"));
+
+        foreach (var route in new[] { docx, pdf })
+        {
+            Assert.Contains("IHeadingAuthority", route, StringComparison.Ordinal);
+            Assert.Contains("HeadingStructureAssembler.AssembleAsync", route, StringComparison.Ordinal);
+            // Binding, placement, hierarchy and materialization belong to the assembler only.
+            Assert.DoesNotContain("CanonicalStructureMaterializer", route, StringComparison.Ordinal);
+            Assert.DoesNotContain("HeadingHierarchyResolver", route, StringComparison.Ordinal);
+            Assert.DoesNotContain("HeadingPlacementCoordinator", route, StringComparison.Ordinal);
+        }
+        foreach (var token in new[] { "CanonicalStructureMaterializer.Materialize", "HeadingHierarchyResolver", "HeadingPlacementCoordinator", "HeadingProposalBinder" })
+            Assert.Contains(token, assembler, StringComparison.Ordinal);
+        Assert.DoesNotContain("\"docx\"", assembler, StringComparison.Ordinal);
+        Assert.DoesNotContain("\"pdf\"", assembler, StringComparison.Ordinal);
+        Assert.DoesNotContain("Pdf", assembler.Replace("PdfSource", string.Empty), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Qualified_protocol_wire_identity_is_unchanged()
+    {
+        var protocols = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Semantics/HeadingAuthority/Protocols");
+        var core = TestRepository.Path("src/DocxHeaderExtractor.Core/Models/Inference");
+        var text = string.Join(Environment.NewLine, Directory.EnumerateFiles(protocols, "*.cs").Concat(Directory.EnumerateFiles(core, "*.cs")).Select(File.ReadAllText));
+        foreach (var identity in new[]
+                 {
+                     "v5-total-occurrence-function-membership-1", "v5-function-conditioned-anchor-existence-1",
+                     "v5-function-conditioned-exact-end-pointer-clean-paired-1", "ESTABLISHES_STRUCTURE",
+                     "REPRESENTS_STRUCTURE", "HAS_STRUCTURAL_EXTENT", "NO_STRUCTURAL_EXTENT",
+                 })
+            Assert.Contains(identity, text, StringComparison.Ordinal);
     }
 
     [Fact]

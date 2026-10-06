@@ -17,7 +17,7 @@ internal sealed class WebHeaderClassifierFactory(
 
     public bool SendsDataExternally => selection.SendsDataExternally;
 
-    public async Task<IHeaderClassifier> CreateAsync(PipelineOptions options, CancellationToken ct = default) =>
+    public async Task<IInferenceTransport> CreateAsync(PipelineOptions options, CancellationToken ct = default) =>
         selection.Backend switch
         {
             InferenceBackend.OpenRouter => new OpenRouterHeaderExtractor(
@@ -29,11 +29,11 @@ internal sealed class WebHeaderClassifierFactory(
             _ => await new HeaderClassifierFactory(selection).CreateAsync(options, ct).ConfigureAwait(false),
         };
 
-    public Task<IHeaderClassifier> CreatePdfProductionAsync(PipelineOptions options, CancellationToken ct = default) =>
+    public Task<IInferenceTransport> CreatePdfProductionAsync(PipelineOptions options, CancellationToken ct = default) =>
         _pdfFactory.CreatePdfProductionAsync(options, ct);
 
     /// <summary>The cache, not an individual document pipeline, owns the local model lifetime.</summary>
-    private sealed class BorrowedHeaderClassifier(IHeaderClassifier inner) : IHeaderClassifier
+    private sealed class BorrowedHeaderClassifier(IInferenceTransport inner) : IInferenceTransport
     {
         public string ModelName => inner.ModelName;
         public int ContextSize => inner.ContextSize;

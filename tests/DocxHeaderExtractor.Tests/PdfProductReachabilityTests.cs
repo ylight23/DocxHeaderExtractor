@@ -136,7 +136,7 @@ public sealed class PdfProductReachabilityTests : IDisposable
     }
 
     private static async Task<DocumentOutline> RunAsync(
-        string path, IReadOnlySet<int>? quarantine = null, IHeaderClassifier? model = null)
+        string path, IReadOnlySet<int>? quarantine = null, IInferenceTransport? model = null)
     {
         var options = new PipelineOptions { DisableLlm = model is null };
         using var tool = model is null
@@ -159,7 +159,7 @@ public sealed class PdfProductReachabilityTests : IDisposable
     /// Test-only production-authorized transport. It exercises the promoted F1 → G2A → H2-C
     /// protocol rather than the historical generic heading schema.
     /// </summary>
-    private sealed class QualifiedPdfScriptedClassifier : IPdfProductionAuthorizedFrozenRequestClassifier
+    private sealed class QualifiedPdfScriptedClassifier : IPdfProductionAuthorizedInferenceTransport
     {
         public int Calls { get; private set; }
         public string PdfProductionProvider => "test";

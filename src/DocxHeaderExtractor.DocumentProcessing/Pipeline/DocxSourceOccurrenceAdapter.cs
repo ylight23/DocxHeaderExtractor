@@ -62,6 +62,7 @@ internal static class DocxSourceOccurrenceAdapter
             result.Values.ToDictionary(item => item.Source.SourceId, item => item.Source.SourceOrdinal, StringComparer.Ordinal))
         {
             SourceKind = sourceDocument.SourceKind,
+            DocumentId = sourceDocument.DocumentId,
         };
         return new DocxAuthoritySource(result, headingContexts, universe);
     }

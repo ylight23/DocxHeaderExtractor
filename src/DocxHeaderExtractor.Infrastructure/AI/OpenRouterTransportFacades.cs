@@ -7,7 +7,7 @@ namespace DocxHeaderExtractor.Infrastructure.AI;
 /// unconstrained-response, and tool-call transport live in the qualification assembly, which reaches
 /// <see cref="OpenRouterTransportEngine"/> through InternalsVisibleTo.
 /// </summary>
-public sealed class OpenRouterHeaderExtractor : IFrozenRequestHeaderClassifier, IDisposable
+public sealed class OpenRouterHeaderExtractor : IFrozenInferenceTransport, IDisposable
 {
     private readonly OpenRouterTransportEngine _engine;
 

@@ -20,6 +20,9 @@ internal sealed record SourceOccurrenceUniverse(
 {
     public string SourceKind { get; init; } = "unknown";
 
+    /// <summary>Caller-visible identity of the source document, used to label requests.</summary>
+    public string DocumentId { get; init; } = string.Empty;
+
     /// <summary>The live route identity checked before any qualified request is sent.</summary>
     public string SourceUniverseSha256 => SourceAliasUniverseHash;
 }

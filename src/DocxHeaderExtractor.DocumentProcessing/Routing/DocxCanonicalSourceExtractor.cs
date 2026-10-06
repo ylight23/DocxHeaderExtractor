@@ -39,14 +39,14 @@ public sealed class PdfCanonicalSourceExtractor : ICanonicalSourceExtractor, IDi
     private readonly IHeaderClassifierFactory? _analystFactory;
     private readonly bool _sendsDataExternally;
     private readonly bool _ownsAnalyst;
-    private IHeaderClassifier? _analyst;
+    private IInferenceTransport? _analyst;
 
-    public PdfCanonicalSourceExtractor(PipelineOptions options, IHeaderClassifier? analyst = null)
+    public PdfCanonicalSourceExtractor(PipelineOptions options, IInferenceTransport? analyst = null)
         : this(options, analyst, sendsDataExternally: false) { }
 
     public PdfCanonicalSourceExtractor(
         PipelineOptions options,
-        IHeaderClassifier? analyst,
+        IInferenceTransport? analyst,
         bool sendsDataExternally)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
@@ -82,7 +82,7 @@ public sealed class PdfCanonicalSourceExtractor : ICanonicalSourceExtractor, IDi
         _analyst = null;
     }
 
-    private async Task<IHeaderClassifier?> GetAnalystAsync(CancellationToken ct)
+    private async Task<IInferenceTransport?> GetAnalystAsync(CancellationToken ct)
     {
         if (_analyst is not null) return _analyst;
         if (_analystFactory is null) return null;

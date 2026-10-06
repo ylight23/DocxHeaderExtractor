@@ -129,7 +129,7 @@ internal static class CanonicalSemanticEngine
     /// </para>
     /// </summary>
     internal sealed class HeaderClassifierCanonicalTextModel(
-        IHeaderClassifier classifier,
+        IInferenceTransport classifier,
         SemanticCoordinateContract contract,
         ISemanticEvidencePackingPolicy packingPolicy,
         CanonicalSemanticExperiment? experiment = null,

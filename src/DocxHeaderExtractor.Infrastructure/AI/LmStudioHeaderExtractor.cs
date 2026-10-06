@@ -13,7 +13,7 @@ namespace DocxHeaderExtractor.Infrastructure.AI;
 /// và vẫn hậu kiểm đủ ID cục bộ. Endpoint bị khóa vào loopback để form trình duyệt không trở
 /// thành SSRF proxy tới máy khác.
 /// </summary>
-public sealed class LmStudioHeaderExtractor : IHeaderClassifier
+public sealed class LmStudioHeaderExtractor : IInferenceTransport
 {
     private readonly HttpClient _http;
     private readonly RemoteInferenceOptions _options;
@@ -42,7 +42,7 @@ public sealed class LmStudioHeaderExtractor : IHeaderClassifier
     public string RuntimeDescription => $"LM Studio local RPC · {_options.Endpoint.Authority}";
     public int SharedPrefixTokens => 0;
 
-    /// <summary>Nhiệm vụ hẹp — xem <see cref="IHeaderClassifier.BoundaryCutAsync"/>.</summary>
+    /// <summary>Nhiệm vụ hẹp — xem <see cref="IInferenceTransport.BoundaryCutAsync"/>.</summary>
     public async Task<string> BoundaryCutAsync(
         string systemPrompt,
         string userMessage,

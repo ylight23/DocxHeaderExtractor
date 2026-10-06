@@ -7,25 +7,40 @@
 ## Current architecture
 
 ```text
-DOCX → DocxSourceOccurrenceAdapter → SourceOccurrenceUniverse
-                                         ↓
-                         canonical-text semantic authority (pending independent qualification)
-
-PDF  → PdfSourceOccurrenceAdapter  → SourceOccurrenceUniverse
-                                         ↓
-                           HeadingAuthorityPipeline
-                        Function → Anchor → Exact extent
-                                         ↓
-ValidatedHeading → HeadingPlacementCoordinator → HeadingHierarchyResolver
-                 → CanonicalStructureMaterializer → CanonicalFinalStructure
-                 → DocumentProductOutputProjector
+DOCX -> DocxSourceOccurrenceAdapter -+
+                                     +-> SourceOccurrenceUniverse
+PDF  -> PdfSourceOccurrenceAdapter --+          |
+                                                v
+                                       IHeadingAuthority   (the replaceable seam)
+                         DOCX: CanonicalTextHeadingAuthority   (pending its own qualification)
+                         PDF:  FunctionConditionedHeadingAuthority
+                               OccurrenceFunctionProtocolV1 -> HeadingAnchorProtocolV1
+                               -> HeadingExtentProtocolV2   (F1 -> G2A -> H2-C V2, frozen wire)
+                                                |
+                                                v
+                                     HeadingStructureAssembler (shared, format-blind)
+        HeadingProposalBinder -> HeadingPlacementCoordinator -> HeadingHierarchyResolver
+                                -> CanonicalStructureMaterializer
+                                                |
+                                                v
+        CanonicalFinalStructure -> DocumentProductOutputProjector
 ```
 
-Format adapters own parser facts; heading authority owns semantic decisions; hierarchy owns
-placement; materialization owns canonical structure; projection owns product shape; and
-infrastructure owns the authorized frozen PDF transport. PDF has no canonical-text fallback.
-DOCX remains on its canonical-text semantic authority until it is independently qualified for the
-PDF protocol. Gold, replay, qualification artifacts, and diagnostics are never production authority.
+Routes: `DocxHeadingAuthorityRoute` and `PdfHeadingAuthorityRoute` each run their source adapter, their
+authority and the one shared assembler. The PDF route additionally owns the lane lease, checkpoint and
+the fail-closed qualified transport (`IPdfProductionAuthorizedInferenceTransport`); there is no
+canonical-text fallback.
+
+Ownership:
+
+- Format adapters own source facts and parser details (PdfPig layout, OOXML styles).
+- A heading authority owns semantic membership, start and extent, and nothing downstream of it.
+- Hierarchy owns parent and depth. The materializer owns canonical structure creation.
+- Projection owns product shape. Infrastructure owns provider transport and the model/route policy.
+
+Promoting DOCX to the qualified protocol means writing a new `IHeadingAuthority` after its own
+qualification evidence exists; the source adapter, assembler and projection do not change. Gold,
+replay, qualification artifacts and diagnostics are never production authority.
 
 ## Historical inventory
 
