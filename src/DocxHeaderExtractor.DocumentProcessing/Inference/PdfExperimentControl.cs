@@ -286,7 +286,7 @@ public sealed class PdfExperimentExecutionGate
 }
 
 /// <summary>Classifier decorator that makes the execution gate the provider-call boundary.</summary>
-public sealed class PdfExperimentGatedHeaderClassifier : IHeaderClassifier
+public sealed class PdfExperimentGatedHeaderClassifier : IFrozenRequestHeaderClassifier
 {
     private readonly IHeaderClassifier _inner;
     private readonly PdfExperimentExecutionGate _gate;
@@ -315,6 +315,16 @@ public sealed class PdfExperimentGatedHeaderClassifier : IHeaderClassifier
     {
         _gate.ReserveProviderCall("boundary-cut");
         return _inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount);
+    }
+
+    public Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(
+        byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
+        CancellationToken cancellationToken = default)
+    {
+        _gate.ReserveProviderCall("frozen-request");
+        if (_inner is not IFrozenRequestHeaderClassifier frozen)
+            throw new InvalidOperationException("PDF_H2C_PRODUCTION_ROUTE_REQUIRES_FROZEN_REQUEST_TRANSPORT");
+        return frozen.ExecuteFrozenRequestAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken);
     }
 
     public void Dispose()

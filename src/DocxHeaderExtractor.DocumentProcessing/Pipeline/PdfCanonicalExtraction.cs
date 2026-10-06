@@ -84,11 +84,11 @@ public static class PdfCanonicalExtraction
         StructuralAuthorityResult authority;
         try
         {
-            authority = await CanonicalSemanticPdfAuthorityAdapter.RunAsync(
-                file.LocalPath, gated ?? used, ct,
-                semanticLaneOptions: semanticLaneOptions,
-                replayCapture: options.ReplayCapture,
-                experimentGate: options.ExperimentGate);
+            // PDF heading authority is the promoted function-conditioned chain. Unlike the
+            // historical canonical engine it has no semantic fallback: invalid stage output is
+            // withheld by that adapter rather than delegated to a second membership authority.
+            authority = await PdfFunctionConditionedHeadingAuthorityAdapter.RunAsync(
+                file.LocalPath, gated ?? used, ct);
         }
         finally
         {
