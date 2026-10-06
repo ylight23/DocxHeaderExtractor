@@ -25,13 +25,7 @@ internal static class P6TG2AFullPackPopulationCanary
         new("DOC-0252", "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf", "p6te-doc0252-e-challenge/f1.raw-capture.v1.json", F1Kind.RawCapture, false),
         new("DOC-0256", "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf", "p6te-doc0256-e-challenge/f1.raw-capture.v1.json", F1Kind.RawCapture, false),
     ];
-    private const string SystemPrompt = """
-        Decide anchor existence only. Each issued primary occurrence has an upstream ESTABLISHES_STRUCTURE eligibility signal, but that signal is not proof that a valid local structural heading extent begins at this primary.
-
-        For every issued O#, return exactly one anchor: HAS_STRUCTURAL_EXTENT if at least one valid local structural heading extent begins at that primary; otherwise NO_STRUCTURAL_EXTENT. Do not choose or describe any extent. Do not infer an answer from context-only items.
-
-        Return exactly one JSON object with this shape: {"decisions":[{"primary":"O27","anchor":"HAS_STRUCTURAL_EXTENT"},{"primary":"O28","anchor":"NO_STRUCTURAL_EXTENT"}]}. Each decision has exactly primary and anchor. Do not output source text, candidate IDs, coordinates, aliases, locators, relations, hierarchy, rationale, confidence, or extra properties.
-        """;
+    private const string SystemPrompt = PdfFunctionConditionedHeadingAuthorityAdapter.G2APrompt;
 
     private sealed record Source(string DocumentId, string PdfPath, string F1Path, F1Kind Kind, bool F1UsedCorrespondences);
     private enum F1Kind { RawCapture, ResultRow, ResultRows }
@@ -205,19 +199,10 @@ internal static class P6TG2AFullPackPopulationCanary
         var issued = f1Result.Decisions.Where(value => value.Function == V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE)
             .Select(value => (value.OccurrenceId, Alias: f1.Request.Occurrences.Single(item => item.Id == value.OccurrenceId).Atom.Alias))
             .OrderBy(value => atoms[value.Alias].Ordinal).ThenBy(value => value.Alias, StringComparer.Ordinal).ToArray();
-        var occurrences = issued.Select(value =>
-        {
-            var index = indexByAlias[value.Alias];
-            var atom = atoms[value.Alias];
-            object? Neighbor(int at)
-            {
-                if (at < 0 || at >= owned.Count) return null;
-                var adjacent = atoms[owned[at]];
-                return new { occurrence = idByAlias[adjacent.Alias], page = adjacent.Page, text = adjacent.Text, selectable = false };
-            }
-            return new { primary = value.OccurrenceId, page = atom.Page, text = atom.Text, upstreamFunction = "ESTABLISHES_STRUCTURE", previous = Neighbor(index - 1), next = Neighbor(index + 1) };
-        }).ToArray();
-        var user = JsonSerializer.Serialize(new { protocolVersion = "v5-function-conditioned-anchor-existence-1", occurrences });
+        var user = PdfFunctionConditionedHeadingAuthorityAdapter.ComposeG2AUserMessage(
+            owned.Select(alias => atoms[alias]).ToArray(),
+            idByAlias,
+            issued.Select(value => (value.OccurrenceId, atoms[value.Alias])).ToArray());
         var request = new V5FreeHeadingRequestV1("v5-function-conditioned-anchor-existence-1", SystemPrompt, user, Hash(user), Encoding.UTF8.GetByteCount(SystemPrompt), Encoding.UTF8.GetByteCount(user));
         var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(request, pack.MaxCompletionTokens);
         var preflightPath = Path.Combine(repo, PreflightPath.Replace('/', Path.DirectorySeparatorChar));

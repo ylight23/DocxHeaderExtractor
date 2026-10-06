@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using System.Text.Json;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -24,6 +25,24 @@ public sealed class PdfFunctionConditionedHeadingAuthorityContractTests
 
         Assert.Throws<InvalidOperationException>(() =>
             PdfFunctionConditionedHeadingAuthorityAdapter.ParseG2A(raw, ["O1"]));
+    }
+
+    [Fact]
+    public void G2A_shared_composer_emits_unselectable_owned_neighbors_with_default_escaping()
+    {
+        var owned = Atoms.Values.OrderBy(value => value.Ordinal).ToArray();
+        var user = PdfFunctionConditionedHeadingAuthorityAdapter.ComposeG2AUserMessage(
+            owned,
+            IdByAlias,
+            [("O1", Atoms["A1"])]);
+
+        using var json = JsonDocument.Parse(user);
+        var row = json.RootElement.GetProperty("occurrences")[0];
+        Assert.Equal("O1", row.GetProperty("primary").GetString());
+        Assert.Equal(JsonValueKind.Null, row.GetProperty("previous").ValueKind);
+        var next = row.GetProperty("next");
+        Assert.Equal("O2", next.GetProperty("occurrence").GetString());
+        Assert.False(next.GetProperty("selectable").GetBoolean());
     }
 
     [Theory]

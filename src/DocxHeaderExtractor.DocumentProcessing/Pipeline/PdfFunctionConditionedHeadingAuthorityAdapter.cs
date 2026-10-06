@@ -19,7 +19,7 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
     // Qualification serializes with the framework default encoder.  Do not use the
     // relaxed encoder here: escaping is part of the provider-body identity.
     private const int P05CompletionTokens = PdfCandidateAuthorityQualificationAdapter.CompletionTokenCeiling;
-    private const string G2APrompt = """
+    internal const string G2APrompt = """
         Decide anchor existence only. Each issued primary occurrence has an upstream ESTABLISHES_STRUCTURE eligibility signal, but that signal is not proof that a valid local structural heading extent begins at this primary.
 
         For every issued O#, return exactly one anchor: HAS_STRUCTURAL_EXTENT if at least one valid local structural heading extent begins at that primary; otherwise NO_STRUCTURAL_EXTENT. Do not choose or describe any extent. Do not infer an answer from context-only items.
@@ -72,31 +72,7 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
             if (establishes.Length == 0) continue;
 
             var idByAlias = f1Request.Occurrences.ToDictionary(value => value.Atom.Alias, value => value.Id, StringComparer.Ordinal);
-            var indexByAlias = ownedAliases.Select((alias, index) => (alias, index)).ToDictionary(value => value.alias, value => value.index, StringComparer.Ordinal);
-            var g2aUser = JsonSerializer.Serialize(new
-            {
-                protocolVersion = "v5-function-conditioned-anchor-existence-1",
-                occurrences = establishes.Select(value =>
-                {
-                    object? Neighbor(int index)
-                    {
-                        if (index < 0 || index >= ownedAliases.Length) return null;
-                        var adjacent = atoms[ownedAliases[index]];
-                        return new { occurrence = idByAlias[adjacent.Alias], page = adjacent.Page, text = adjacent.Text, selectable = false };
-                    }
-
-                    var index = indexByAlias[value.Atom.Alias];
-                    return new
-                    {
-                        primary = value.Id,
-                        page = value.Atom.Page,
-                        text = value.Atom.Text,
-                        upstreamFunction = "ESTABLISHES_STRUCTURE",
-                        previous = Neighbor(index - 1),
-                        next = Neighbor(index + 1),
-                    };
-                }).ToArray(),
-            });
+            var g2aUser = ComposeG2AUserMessage(owned, idByAlias, establishes.Select(value => (value.Id, value.Atom)).ToArray());
             var g2aBody = OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(G2APrompt, g2aUser, P05CompletionTokens, Envelope);
             var g2a = await ExecuteAsync(frozen, G2APrompt, g2aUser, P05CompletionTokens, ct, g2aBody.PayloadBytes).ConfigureAwait(false);
             if (g2a is null) continue;
@@ -170,6 +146,33 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         }
         var parts = members.Select(id => atoms[tail[Array.IndexOf(issued, id)]]).Select(atom => new CanonicalSemanticBoundPart(atom.Alias, atom.SourceId, atom.Ordinal, atom.Text, 0, atom.Text.Length)).ToArray();
         return new PdfBlockDecision(parts[0].SourceId, 1, "pdf-exact-heading-boundary-v1", new TextOffsetSpan(0, parts[0].Text.Length), SemanticFunction: "ESTABLISHES_STRUCTURE", Parts: parts);
+    }
+
+    /// <summary>Canonical G2A request composer shared by qualification and the production PDF route.</summary>
+    internal static string ComposeG2AUserMessage(IReadOnlyList<SemanticSourceAtom> owned, IReadOnlyDictionary<string, string> idByAlias, IReadOnlyList<(string Id, SemanticSourceAtom Atom)> establishes)
+    {
+        var indexByAlias = owned.Select((atom, index) => (atom.Alias, index)).ToDictionary(value => value.Alias, value => value.index, StringComparer.Ordinal);
+        var occurrences = establishes.Select(value =>
+        {
+            object? Neighbor(int index)
+            {
+                if (index < 0 || index >= owned.Count) return null;
+                var adjacent = owned[index];
+                return new { occurrence = idByAlias[adjacent.Alias], page = adjacent.Page, text = adjacent.Text, selectable = false };
+            }
+
+            var index = indexByAlias[value.Atom.Alias];
+            return new
+            {
+                primary = value.Id,
+                page = value.Atom.Page,
+                text = value.Atom.Text,
+                upstreamFunction = "ESTABLISHES_STRUCTURE",
+                previous = Neighbor(index - 1),
+                next = Neighbor(index + 1),
+            };
+        }).ToArray();
+        return JsonSerializer.Serialize(new { protocolVersion = "v5-function-conditioned-anchor-existence-1", occurrences });
     }
 
     private static object BasicOccurrence(string occurrence, SemanticSourceAtom atom, CanonicalSemanticSourceEvidence evidence)
