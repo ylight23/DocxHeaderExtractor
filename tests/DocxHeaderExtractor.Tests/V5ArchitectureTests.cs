@@ -160,6 +160,12 @@ public sealed class V5ArchitectureTests
         Assert.Equal(
             ["OpenRouterQwen37JsonObjectCarrierV2_1.cs", "V5CanonicalProtocolPrimitives.cs", "V5OccurrenceAuthorityDtos.cs", "V5TotalOccurrenceFunctionProtocolF1.cs", "V5TransportPrimitives.cs"],
             qualifiedInference);
+
+        var core = typeof(V5ProviderEnvelope).Assembly;
+        foreach (var qualificationOnly in new[] { typeof(V5ComposedSemanticRequest), typeof(BoundClaimEndpoint), typeof(V5SystemPromptV2_1), typeof(V5ToolCallDeltaFragment) })
+            Assert.NotEqual(core, qualificationOnly.Assembly);
+        Assert.DoesNotContain(typeof(OpenRouterQwen37JsonObjectCarrierV2_1).GetMethods(),
+            method => method.GetParameters().Any(parameter => parameter.ParameterType == typeof(V5ComposedSemanticRequest)));
     }
 
     [Fact]

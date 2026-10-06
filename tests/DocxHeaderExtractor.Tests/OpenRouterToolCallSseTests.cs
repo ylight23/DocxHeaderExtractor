@@ -29,7 +29,8 @@ public sealed class OpenRouterToolCallSseTests
         Assert.All(stream.ToolCallFragments, f => Assert.Equal(0, f.Index));
         Assert.Equal("call_1", stream.ToolCallFragments[0].Id);
         Assert.Equal("submit_semantic_claims", stream.ToolCallFragments[0].FunctionName);
-        var reassembled = DocxHeaderExtractor.Core.V5.V5ToolCallArgumentsReassembler.Reassemble(stream.ToolCallFragments);
+        var reassembled = DocxHeaderExtractor.Core.V5.V5ToolCallArgumentsReassembler.Reassemble(
+            DocxHeaderExtractor.V5Qualification.OpenRouterQualificationTransport.Map(stream.ToolCallFragments));
         Assert.Equal(1, reassembled.Count);
         Assert.Equal("""{"claims":[]}""", reassembled[0].Arguments);
         Assert.Equal("submit_semantic_claims", reassembled[0].FunctionName);

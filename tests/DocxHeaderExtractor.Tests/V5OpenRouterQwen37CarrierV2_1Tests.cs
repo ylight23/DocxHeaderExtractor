@@ -44,7 +44,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
         var composed = V5SemanticRequestComposerV2_1.Compose(Contract, SamplePacket());
         var beforeHash = composed.RequestHash;
         var beforePrompt = composed.Prompt;
-        OpenRouterQwen37JsonObjectCarrierV2_1.Build(composed, 4096, Envelope);
+        OpenRouterQwen37ComposedRequestCarrierV2_1.Build(composed, 4096, Envelope);
         Assert.Equal(beforeHash, composed.RequestHash);
         Assert.Equal(beforePrompt, composed.Prompt);
     }
@@ -65,7 +65,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
     {
         var composed = V5SemanticRequestComposerV2_1.Compose(Contract, SamplePacket());
         var legacy = V5ProviderRequestBodyV2_1.Build(V5SystemPromptV2_1.Text, composed.Prompt, 4096, Envelope);
-        var carried = OpenRouterQwen37JsonObjectCarrierV2_1.Build(composed, 4096, Envelope);
+        var carried = OpenRouterQwen37ComposedRequestCarrierV2_1.Build(composed, 4096, Envelope);
         Assert.Equal(legacy.Hash, carried.Hash);
         Assert.Equal(legacy.Bytes, carried.Bytes);
         Assert.Equal(legacy.PayloadBytes, carried.PayloadBytes);
@@ -77,7 +77,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
         var composed = V5SemanticRequestComposerV2_1.Compose(Contract, SamplePacket());
         var beforeSemanticHash = composed.RequestHash;
         var legacyBody = V5ProviderRequestBodyV2_1.Build(V5SystemPromptV2_1.Text, composed.Prompt, 4096, Envelope);
-        var carriedBody = OpenRouterQwen37JsonObjectCarrierV2_1.Build(composed, 4096, Envelope);
+        var carriedBody = OpenRouterQwen37ComposedRequestCarrierV2_1.Build(composed, 4096, Envelope);
         Assert.Equal(beforeSemanticHash, composed.RequestHash);
         Assert.Equal(legacyBody.Hash, carriedBody.Hash);
     }
@@ -90,7 +90,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
     public void System_and_user_messages_are_unchanged(string role)
     {
         var composed = V5SemanticRequestComposerV2_1.Compose(Contract, SamplePacket());
-        var body = OpenRouterQwen37JsonObjectCarrierV2_1.Build(composed, 4096, Envelope);
+        var body = OpenRouterQwen37ComposedRequestCarrierV2_1.Build(composed, 4096, Envelope);
         var messages = JsonDocument.Parse(body.PayloadBytes).RootElement.GetProperty("messages").EnumerateArray().ToArray();
         var message = messages.Single(m => m.GetProperty("role").GetString() == role);
         var expectedContent = role == "system" ? V5SystemPromptV2_1.Text : composed.Prompt;
@@ -101,7 +101,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
     public void Production_body_fields_are_pinned_exactly_as_before()
     {
         var composed = V5SemanticRequestComposerV2_1.Compose(Contract, SamplePacket());
-        var body = JsonDocument.Parse(OpenRouterQwen37JsonObjectCarrierV2_1.Build(composed, 4096, Envelope).PayloadBytes).RootElement;
+        var body = JsonDocument.Parse(OpenRouterQwen37ComposedRequestCarrierV2_1.Build(composed, 4096, Envelope).PayloadBytes).RootElement;
         Assert.Equal("qwen/qwen3.7-flash", body.GetProperty("model").GetString());
         Assert.Equal(0, body.GetProperty("temperature").GetInt32());
         Assert.Equal(4096, body.GetProperty("max_tokens").GetInt32());
@@ -122,7 +122,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
     {
         var composed = V5SemanticRequestComposerV2_1.Compose(Contract, SamplePacket());
         var semanticHashBeforeEitherCarrier = composed.RequestHash;
-        var jsonObjectBody = OpenRouterQwen37JsonObjectCarrierV2_1.Build(composed, 4096, Envelope);
+        var jsonObjectBody = OpenRouterQwen37ComposedRequestCarrierV2_1.Build(composed, 4096, Envelope);
         var toolAutoBody = OpenRouterQwen37ToolAutoCarrierV1.Build(composed, Contract, 4096, Envelope);
         // Both carriers consume the identical V5ComposedSemanticRequest - only how it is transported differs.
         Assert.Equal(semanticHashBeforeEitherCarrier, composed.RequestHash);
@@ -290,7 +290,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
                 checked31++;
                 var composed = V5SemanticRequestComposerV2_1.Compose(Contract, packet);
                 var legacyBody = V5ProviderRequestBodyV2_1.Build(V5SystemPromptV2_1.Text, composed.Prompt, composed.Utf8Bytes, Envelope);
-                var carriedBody = OpenRouterQwen37JsonObjectCarrierV2_1.Build(composed, composed.Utf8Bytes, Envelope);
+                var carriedBody = OpenRouterQwen37ComposedRequestCarrierV2_1.Build(composed, composed.Utf8Bytes, Envelope);
                 var byteDrift = legacyBody.PayloadBytes.AsSpan().SequenceEqual(carriedBody.PayloadBytes) == false;
                 var hashDrift = legacyBody.Hash != carriedBody.Hash;
                 if (byteDrift) semanticByteDrift++;

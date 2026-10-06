@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using System.Net.Http.Headers;
 using System.Text;
@@ -208,7 +207,7 @@ internal sealed class OpenRouterTransportEngine : IDisposable
     /// <see cref="V5ToolCallArgumentsReassembler"/> does the reassembly, deliberately kept out of this
     /// transport class.
     /// </summary>
-    public async Task<(string Content, string? FinishReason, IReadOnlyList<V5ToolCallDeltaFragment> ToolCallFragments, JsonElement? Usage)> ExecuteToolCallAsync(
+    public async Task<(string Content, string? FinishReason, IReadOnlyList<OpenRouterToolCallDelta> ToolCallFragments, JsonElement? Usage)> ExecuteToolCallAsync(
         byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(payloadBytes);
@@ -319,7 +318,7 @@ internal sealed class OpenRouterTransportEngine : IDisposable
         int? StatusCode,
         TimeSpan? RetryAfter,
         string? FinishReason = null,
-        IReadOnlyList<V5ToolCallDeltaFragment>? ToolCallFragments = null,
+        IReadOnlyList<OpenRouterToolCallDelta>? ToolCallFragments = null,
         JsonElement? Usage = null,
         string? RawSse = null,
         int SseEventCount = 0);
@@ -496,12 +495,12 @@ internal sealed class OpenRouterTransportEngine : IDisposable
     {
         private readonly StringBuilder _content = new();
         private readonly List<string> _eventLines = [];
-        private readonly List<V5ToolCallDeltaFragment> _toolCallFragments = [];
+        private readonly List<OpenRouterToolCallDelta> _toolCallFragments = [];
 
         public string Content => _content.ToString();
         // A json_object response never carries delta.tool_calls, so this stays empty for every
         // existing caller (BoundaryCutAsync/ExecuteAsync) - purely additive for ExecuteToolCallAsync.
-        public IReadOnlyList<V5ToolCallDeltaFragment> ToolCallFragments => _toolCallFragments;
+        public IReadOnlyList<OpenRouterToolCallDelta> ToolCallFragments => _toolCallFragments;
         public string? FinishReason { get; private set; }
         public bool DoneObserved { get; private set; }
         public bool StreamEnded { get; private set; }
@@ -586,7 +585,7 @@ internal sealed class OpenRouterTransportEngine : IDisposable
         /// tool call is guaranteed to repeat; <c>id</c>/<c>function.name</c> typically arrive once,
         /// and <c>function.arguments</c> arrives as a fragment to be concatenated, never assumed
         /// whole.</summary>
-        private static V5ToolCallDeltaFragment ParseToolCallFragment(JsonElement toolCall)
+        private static OpenRouterToolCallDelta ParseToolCallFragment(JsonElement toolCall)
         {
             var index = toolCall.TryGetProperty("index", out var indexEl) && indexEl.ValueKind == JsonValueKind.Number ? indexEl.GetInt32() : 0;
             string? id = toolCall.TryGetProperty("id", out var idEl) && idEl.ValueKind == JsonValueKind.String ? idEl.GetString() : null;
@@ -597,7 +596,7 @@ internal sealed class OpenRouterTransportEngine : IDisposable
                 if (function.TryGetProperty("name", out var nameEl) && nameEl.ValueKind == JsonValueKind.String) name = nameEl.GetString();
                 if (function.TryGetProperty("arguments", out var argsEl) && argsEl.ValueKind == JsonValueKind.String) argumentsChunk = argsEl.GetString();
             }
-            return new V5ToolCallDeltaFragment(index, id, name, argumentsChunk);
+            return new OpenRouterToolCallDelta(index, id, name, argumentsChunk);
         }
     }
 
@@ -681,3 +680,5 @@ internal sealed record OpenRouterTransportObservation(
     string RawSse,
     int SseEventCount,
     int RetryCount);
+
+internal sealed record OpenRouterToolCallDelta(int Index, string? Id, string? FunctionName, string? ArgumentsChunk);

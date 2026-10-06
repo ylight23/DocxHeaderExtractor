@@ -29,11 +29,3 @@ public sealed record V5ProviderRequestBodyV2_1(byte[] PayloadBytes, string Hash,
         string systemPrompt, string userMessage, int maxCompletionTokens, V5ProviderEnvelope envelope) =>
         OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRaw(systemPrompt, userMessage, maxCompletionTokens, envelope);
 }
-
-public static class V5SystemPromptV2_1
-{
-    public const string Text = "You are a task-defined semantic reasoner. Respond with a single JSON object matching the declared schema exactly.";
-}
-
-/// <summary>One transport-level tool-call delta fragment; provider-free and shared with streaming transport.</summary>
-public sealed record V5ToolCallDeltaFragment(int Index, string? Id, string? FunctionName, string? ArgumentsChunk);

@@ -51,14 +51,21 @@ public sealed class OpenRouterQualificationTransport : IFrozenRequestHeaderClass
         string systemPrompt, string userMessage, CancellationToken ct = default) =>
         Map(await _engine.ExecuteObservedUnconstrainedAsync(payloadBytes, maxTokens, systemPrompt, userMessage, ct).ConfigureAwait(false));
 
-    public Task<(string Content, string? FinishReason, IReadOnlyList<V5ToolCallDeltaFragment> ToolCallFragments, JsonElement? Usage)>
-        ExecuteToolCallAsync(byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default) =>
-        _engine.ExecuteToolCallAsync(payloadBytes, maxTokens, systemPrompt, userMessage, ct);
+    public async Task<(string Content, string? FinishReason, IReadOnlyList<V5ToolCallDeltaFragment> ToolCallFragments, JsonElement? Usage)>
+        ExecuteToolCallAsync(byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
+    {
+        var (content, finishReason, fragments, usage) = await _engine
+            .ExecuteToolCallAsync(payloadBytes, maxTokens, systemPrompt, userMessage, ct).ConfigureAwait(false);
+        return (content, finishReason, Map(fragments), usage);
+    }
 
     public void Dispose() => _engine.Dispose();
 
     private static OpenRouterExecutionObservation Map(OpenRouterTransportObservation value) =>
         new(value.Content, value.FinishReason, value.Usage, value.RawSse, value.SseEventCount, value.RetryCount);
+
+    internal static IReadOnlyList<V5ToolCallDeltaFragment> Map(IReadOnlyList<OpenRouterToolCallDelta> fragments) =>
+        fragments.Select(value => new V5ToolCallDeltaFragment(value.Index, value.Id, value.FunctionName, value.ArgumentsChunk)).ToArray();
 }
 
 public sealed record OpenRouterExecutionObservation(

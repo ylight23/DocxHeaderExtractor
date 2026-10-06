@@ -6,22 +6,6 @@ using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.V5;
 
-/// <summary>Frozen request identity shared by qualification builders and the production carrier.</summary>
-public sealed record V5ComposedSemanticRequest(
-    string ComposerVersion,
-    string Prompt,
-    string PromptHash,
-    string SchemaHash,
-    string RequestHash,
-    int Utf8Bytes);
-
-/// <summary>Harness-resolved coordinates for one source-backed endpoint.</summary>
-public sealed record BoundClaimEndpoint(IReadOnlyList<BoundSourcePart> Parts)
-{
-    public string Identity => string.Join("|", Parts.Select(part =>
-        $"{part.SourceId}:{part.Start}-{part.End}"));
-}
-
 internal static class Hashing
 {
     internal static string Sha256(string text) => Convert.ToHexStringLower(
