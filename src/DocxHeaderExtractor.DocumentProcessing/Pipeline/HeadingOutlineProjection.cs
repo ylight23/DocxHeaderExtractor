@@ -9,34 +9,9 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// </summary>
 public static class HeadingOutlineProjection
 {
-    public static DocumentOutline Project(
-        DocumentOutline template,
-        ValidatedStructure structure)
-    {
-        ArgumentNullException.ThrowIfNull(template);
-        ArgumentNullException.ThrowIfNull(structure);
-        return new DocumentOutline
-        {
-            File = template.File,
-            ParagraphCount = template.ParagraphCount,
-            SourceCount = template.SourceCount,
-            Headings = Project(structure),
-            ElapsedMs = template.ElapsedMs,
-            Model = template.Model,
-            DeterministicRoute = template.DeterministicRoute,
-            RouteAudit = template.RouteAudit,
-            Provenance = template.Provenance,
-            ProductOutput = template.ProductOutput,
-            Outcome = template.Outcome,
-        };
-    }
-
-    public static IReadOnlyList<HeadingRecord> Project(ValidatedStructure structure)
-        => Project(structure, null);
-
     public static IReadOnlyList<HeadingRecord> Project(
         ValidatedStructure structure,
-        IReadOnlySet<string>? emittedElementIds)
+        IReadOnlySet<string>? emittedElementIds = null)
     {
         ArgumentNullException.ThrowIfNull(structure);
         return structure.OutlineElements

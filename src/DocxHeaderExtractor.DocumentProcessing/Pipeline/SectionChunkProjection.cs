@@ -3,10 +3,17 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-/// <summary>Chunk policy for generic document output, independent of model prompt chunking.</summary>
+/// <summary>
+/// Chunk policy for generic document output, independent of model prompt chunking. The budget comes
+/// from <c>ChunkingOptions.TokenBudget</c>; <see cref="DefaultCharsPerToken"/> is a size heuristic,
+/// not a tokenizer.
+/// </summary>
 public sealed record DocumentChunkingPolicy(
-    int MaxTokenEstimate = 800,
-    double CharsPerToken = 1.85);
+    int MaxTokenEstimate,
+    double CharsPerToken = DocumentChunkingPolicy.DefaultCharsPerToken)
+{
+    public const double DefaultCharsPerToken = 1.85;
+}
 
 /// <summary>
 /// Builds deterministic chunks by concatenating source-catalog text. It never uses structural text
@@ -18,12 +25,12 @@ public static class SectionChunkProjection
         IReadOnlyList<StructuralSection> sections,
         DocumentSourceCatalog sourceCatalog,
         ValidatedStructure structure,
-        DocumentChunkingPolicy? policy = null)
+        DocumentChunkingPolicy policy)
     {
         ArgumentNullException.ThrowIfNull(sections);
         ArgumentNullException.ThrowIfNull(sourceCatalog);
         ArgumentNullException.ThrowIfNull(structure);
-        policy ??= new DocumentChunkingPolicy();
+        ArgumentNullException.ThrowIfNull(policy);
         if (policy.MaxTokenEstimate <= 0 || policy.CharsPerToken <= 0)
             throw new ArgumentOutOfRangeException(nameof(policy));
 

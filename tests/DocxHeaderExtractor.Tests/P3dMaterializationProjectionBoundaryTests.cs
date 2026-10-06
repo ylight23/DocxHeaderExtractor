@@ -107,8 +107,9 @@ public sealed class P3dMaterializationProjectionBoundaryTests
             ],
         };
 
-        var projected = CanonicalProjectionBoundary.ProjectPdfFinalStructure(
-            "source-sha", audit, structure);
+        var projected = PdfFinalStructureProjection.Project(
+            "source-sha", audit.ValidatedStructures, audit.HierarchyFacts,
+            PdfCanonicalGrounding.FromValidatedStructure(structure));
 
         Assert.Single(projected.Headings);
         Assert.Equal(before, System.Text.Json.JsonSerializer.Serialize(structure));

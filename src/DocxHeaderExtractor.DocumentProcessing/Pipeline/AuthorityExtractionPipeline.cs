@@ -176,8 +176,13 @@ public sealed class AuthorityExtractionPipeline : IDisposable
     internal static PdfFinalStructure BuildFinalStructure(string docxPath, RouteExecutionAudit audit,
         ValidatedStructure structure)
     {
-        return CanonicalProjectionBoundary.ProjectPdfFinalStructure(
-            FileSha256(docxPath), audit, structure);
+        // Materializes only facts already validated upstream; resolves no identity, hierarchy or
+        // provider work.
+        return PdfFinalStructureProjection.Project(
+            FileSha256(docxPath),
+            audit.ValidatedStructures,
+            audit.HierarchyFacts,
+            PdfCanonicalGrounding.FromValidatedStructure(structure));
     }
 
     private static IReadOnlyList<RouteSourceRepresentation> BuildSourceRepresentations(
