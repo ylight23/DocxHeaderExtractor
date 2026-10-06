@@ -64,6 +64,5 @@ public class OutlineFormatterTests
         Level = level,
         Text = text,
         Source = HeadingSource.Model,
-        Confidence = 1.0,
     };
 }

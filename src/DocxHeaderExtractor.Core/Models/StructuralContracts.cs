@@ -113,7 +113,6 @@ public static class StructuralDecisionOrigin
 public sealed record StructuralDecision(
     [property: JsonPropertyName("origin")] string Origin,
     [property: JsonPropertyName("status")] string Status,
-    [property: JsonPropertyName("confidence")] double Confidence,
     [property: JsonPropertyName("confidenceBasis")] string ConfidenceBasis,
     [property: JsonPropertyName("disputed")] bool Disputed = false);
 

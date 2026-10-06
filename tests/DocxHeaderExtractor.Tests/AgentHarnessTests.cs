@@ -190,7 +190,6 @@ public sealed class AgentHarnessTests : IDisposable
             Index = 99,
             Level = 1,
             Text = "Không tồn tại trong nguồn",
-            Confidence = 0.9,
         };
         using var tool = new FakeTool(Outline(heading));
         var harness = Harness(tool, repairAttempts: 0);
@@ -213,7 +212,6 @@ public sealed class AgentHarnessTests : IDisposable
             Text = "Nội dung bịa",
             OriginalText = "3.2. Tỉ lệ thành công: đạt 20%",
             HeadingSpan = new TextOffsetSpan(0, 23),
-            Confidence = 0.9,
         };
         using var tool = new FakeTool(Outline(heading));
         var harness = Harness(tool, repairAttempts: 0);
@@ -238,7 +236,6 @@ public sealed class AgentHarnessTests : IDisposable
             InlineBodySpan = new TextOffsetSpan(
                 "2.1 • Negotiation 15 ".Length,
                 "2.1 • Negotiation 15 prone to zero-sum thinking.".Length),
-            Confidence = 0.9,
             DecisionStatus = HeadingDecisionStatus.HumanVerified,
         };
         using var tool = new FakeTool(Outline(heading));
@@ -254,8 +251,8 @@ public sealed class AgentHarnessTests : IDisposable
     public async Task Grounding_validator_cho_phep_nhieu_heading_cung_index_neu_text_khac_nhau()
     {
         using var tool = new FakeTool(Outline(
-            new HeadingRecord { Index = 1, Level = 2, Text = "Chương I QUY ĐỊNH CHUNG", Confidence = 1.0, DecisionStatus = HeadingDecisionStatus.HumanVerified },
-            new HeadingRecord { Index = 1, Level = 4, Text = "Điều 1. Phạm vi điều chỉnh", Confidence = 1.0, DecisionStatus = HeadingDecisionStatus.HumanVerified }));
+            new HeadingRecord { Index = 1, Level = 2, Text = "Chương I QUY ĐỊNH CHUNG", DecisionStatus = HeadingDecisionStatus.HumanVerified },
+            new HeadingRecord { Index = 1, Level = 4, Text = "Điều 1. Phạm vi điều chỉnh", DecisionStatus = HeadingDecisionStatus.HumanVerified }));
         var harness = Harness(tool);
 
         var result = await harness.RunAsync(new DocumentAgentRequest(_input));
@@ -270,7 +267,7 @@ public sealed class AgentHarnessTests : IDisposable
     [Fact]
     public async Task Validator_failure_quarantines_offending_index_and_rebuilds()
     {
-        var bad = new HeadingRecord { Index = 99, Level = 1, Text = "Bịa", Confidence = 0.9 };
+        var bad = new HeadingRecord { Index = 99, Level = 1, Text = "Bịa" };
         using var tool = new FakeTool(Outline(bad), Outline(Heading(1)));
         var harness = Harness(tool);
 
@@ -286,7 +283,7 @@ public sealed class AgentHarnessTests : IDisposable
     [Fact]
     public async Task Repair_budget_is_exhausted_then_run_fails_closed()
     {
-        var bad = new HeadingRecord { Index = 99, Level = 1, Text = "Bịa", Confidence = 0.9 };
+        var bad = new HeadingRecord { Index = 99, Level = 1, Text = "Bịa" };
         using var tool = new FakeTool(Outline(bad), Outline(bad), Outline(bad));
         var harness = Harness(tool);
 
@@ -300,7 +297,7 @@ public sealed class AgentHarnessTests : IDisposable
     [Fact]
     public async Task Tool_without_repair_support_is_not_asked_twice()
     {
-        var bad = new HeadingRecord { Index = 99, Level = 1, Text = "Bịa", Confidence = 0.9 };
+        var bad = new HeadingRecord { Index = 99, Level = 1, Text = "Bịa" };
         using var tool = new FakeTool(Outline(bad), Outline(Heading(1))) { SupportsRepair = false };
         var harness = Harness(tool);
 
@@ -552,7 +549,6 @@ public sealed class AgentHarnessTests : IDisposable
         Index = index,
         Level = 1,
         Text = "Mục Alpha",
-        Confidence = 0.9,
         Source = source ?? (review ? HeadingSource.Model : HeadingSource.HumanCorrection),
         DecisionStatus = review
             ? HeadingDecisionStatus.RequiresReview

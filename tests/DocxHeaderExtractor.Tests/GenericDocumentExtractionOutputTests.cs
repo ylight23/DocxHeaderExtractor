@@ -139,7 +139,7 @@ public sealed class GenericDocumentExtractionOutputTests
                 ProposedSources = [new ProposedSourceReference("pdf-block-1", new StructuralSpan(7, 23))],
             },
             "structural:caption:1",
-            new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.RequiresReview), 1, "parser-fact"));
+            new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.RequiresReview), "parser-fact"));
 
         Assert.NotNull(element);
         Assert.Equal(new StructuralSpan(7, 23), Assert.Single(element!.Sources).Span);
@@ -177,7 +177,7 @@ public sealed class GenericDocumentExtractionOutputTests
                 ],
             },
             "structural:multi",
-            new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.RequiresReview), 1, "parser-facts"));
+            new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.RequiresReview), "parser-facts"));
 
         Assert.NotNull(element);
         Assert.Equal(new[] { "pdf-a", "pdf-b" }, element!.Sources.Select(source => source.SourceId));
@@ -245,6 +245,6 @@ public sealed class GenericDocumentExtractionOutputTests
                 ProposedSources = [new ProposedSourceReference(facts.SourceId, new StructuralSpan(0, text.Length))],
             },
             id,
-            new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.RequiresReview), 1, "test-source"))!;
+            new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.RequiresReview), "test-source"))!;
     }
 }

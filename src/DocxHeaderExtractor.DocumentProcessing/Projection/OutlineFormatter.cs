@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -84,14 +83,13 @@ public static class OutlineFormatter
     private static string ToCsv(DocumentOutline o)
     {
         var sb = new StringBuilder();
-        sb.AppendLine("index,stableId,level,source,confidence,styleId,text");
+        sb.AppendLine("index,stableId,level,source,styleId,text");
         foreach (var h in o.Headings)
         {
             sb.Append(h.Index).Append(',')
               .Append(Csv(h.StableId ?? "")).Append(',')
               .Append(h.Level?.ToString() ?? "").Append(',')
               .Append(h.Source).Append(',')
-              .Append(h.Confidence.ToString("0.##", CultureInfo.InvariantCulture)).Append(',')
               .Append(Csv(h.StyleId ?? "")).Append(',')
               .AppendLine(Csv(h.Text));
         }

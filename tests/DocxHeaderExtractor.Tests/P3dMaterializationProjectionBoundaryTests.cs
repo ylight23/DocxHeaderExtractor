@@ -125,7 +125,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
     public void Audit_boundary_only_records_supplied_observations()
     {
         var blocks = new[] { new RouteBlockAudit("B1", 1, "Alpha") };
-        var decisions = new[] { new RouteBlockDecisionAudit("B1", "REGION_STRUCTURE", 1) };
+        var decisions = new[] { new RouteBlockDecisionAudit("B1", "REGION_STRUCTURE") };
 
         var audit = CanonicalRouteAuditBoundary.Create(
             "test-route", 1, 1, 1, 1, blocks, blocks, [], decisions, ["B1"], [], ["B1"]);

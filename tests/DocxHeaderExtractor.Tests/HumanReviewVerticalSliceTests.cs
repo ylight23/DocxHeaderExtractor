@@ -42,7 +42,6 @@ public sealed class HumanReviewVerticalSliceTests
                     Level = 2,
                     Text = "Heading",
                     HeadingSpan = new AuthorityTextOffsetSpan(7, 14),
-                    Confidence = 1.4,
                     DecisionStatus = HeadingDecisionStatus.RequiresReview,
                 },
                 new HeadingRecord
@@ -60,7 +59,6 @@ public sealed class HumanReviewVerticalSliceTests
         var heading = Assert.Single(result.Headings);
         Assert.Equal("prefix Heading suffix"[7..14], heading.Text);
         Assert.Equal(new ReviewSpan(7, 14), heading.Span);
-        Assert.Equal(1d, heading.Confidence);
         Assert.Equal(1, result.Summary.PendingCount);
         Assert.Contains(result.Diagnostics, item => item.Code == "review.heading-source-unresolved");
     }
@@ -171,7 +169,6 @@ public sealed class HumanReviewVerticalSliceTests
                 "Heading",
                 1,
                 new ReviewSpan(0, 7),
-                .8,
                 "RequiresReview",
                 [],
                 new HeadingProvenanceDto("source-1", "docx", 0, null, "test"))],

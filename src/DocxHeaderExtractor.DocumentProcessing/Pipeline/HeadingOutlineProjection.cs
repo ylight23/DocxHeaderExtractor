@@ -48,7 +48,6 @@ public static class HeadingOutlineProjection
             BoundarySource = metadata?.BoundarySource,
             StyleId = metadata?.StyleId,
             Source = ParseSource(element.Decision.Origin),
-            Confidence = element.Decision.Confidence,
             DecisionStatus = ParseStatus(element.Decision.Status),
             ConfidenceBasis = element.Decision.ConfidenceBasis,
             Disputed = element.Decision.Disputed,

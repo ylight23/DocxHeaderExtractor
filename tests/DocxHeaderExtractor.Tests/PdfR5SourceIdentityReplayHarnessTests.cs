@@ -205,7 +205,7 @@ public sealed class PdfR5SourceIdentityReplayHarnessTests
             "test", 1, 1, 1, 1,
             [new RouteBlockAudit("route-block-1", 2, "1 Scope")],
             [new RouteBlockAudit("route-block-1", 2, "1 Scope")], [],
-            [new RouteBlockDecisionAudit("route-block-1", "REGION_STRUCTURE", .91, "role")],
+            [new RouteBlockDecisionAudit("route-block-1", "REGION_STRUCTURE", "role")],
             ["route-block-1"], [], ["route-block-1"])
         {
             SelectedSourceIdentities = [new PdfSelectedSourceIdentity(
@@ -441,7 +441,6 @@ internal static class PdfR5ReplayHarness
             semantic.Add(new PdfReplaySemanticProposal(
                 source.Key,
                 decision.SemanticFunction ?? "",
-                decision.Confidence,
                 decision.Reason));
         }
 
@@ -544,7 +543,7 @@ internal static class PdfR5ReplayHarness
                             continue;
                         }
                         semanticProposals.Add(new PdfReplaySemanticProposal(
-                            source.Key, String(item, "role"), Number(item, "confidence"), String(item, "reason")));
+                            source.Key, String(item, "role"), String(item, "reason")));
                     }
                 }
                 else if (lane == "span")
@@ -646,9 +645,6 @@ internal static class PdfR5ReplayHarness
     private static int Int(JsonElement value, string property) =>
         TryProperty(value, property, out var item) && item.TryGetInt32(out var result) ? result : -1;
 
-    private static double Number(JsonElement value, string property) =>
-        TryProperty(value, property, out var item) && item.TryGetDouble(out var result) ? result : 0;
-
     private static bool Bool(JsonElement value, string property) =>
         TryProperty(value, property, out var item) && item.ValueKind == JsonValueKind.True;
 
@@ -713,7 +709,6 @@ internal sealed record PdfReplaySourceEntry(
 internal sealed record PdfReplaySemanticProposal(
     PdfReplaySourceKey Source,
     string Role,
-    double Confidence,
     string? Reason);
 
 internal sealed record PdfReplaySpanProposal(PdfReplaySourceKey Source, TextOffsetSpan Span);

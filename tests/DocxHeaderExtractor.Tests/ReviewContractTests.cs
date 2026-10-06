@@ -70,7 +70,6 @@ public sealed class ReviewContractTests
             "Introduction",
             1,
             new TextOffsetSpan(0, "Introduction".Length),
-            .8,
             "validated",
             [],
             new HeadingProvenanceDto("p-1", "docx", 0, null, "test"))],

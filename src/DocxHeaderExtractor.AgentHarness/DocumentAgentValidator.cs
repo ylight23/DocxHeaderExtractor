@@ -81,8 +81,6 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
                 issues.Add(new("invalid_heading_level", $"Cấp của index {heading.Index} nằm ngoài 1..9.", heading.Index));
             if (string.IsNullOrWhiteSpace(heading.Text))
                 issues.Add(new("empty_heading_text", $"Heading index {heading.Index} không có văn bản nguồn.", heading.Index));
-            if (!double.IsFinite(heading.Confidence) || heading.Confidence is < 0 or > 1)
-                issues.Add(new("invalid_confidence", $"Confidence của index {heading.Index} nằm ngoài 0..1.", heading.Index));
 
             ValidateSpans(heading, issues);
         }

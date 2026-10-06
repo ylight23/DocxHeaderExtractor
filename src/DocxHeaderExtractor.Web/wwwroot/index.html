@@ -1349,7 +1349,6 @@ function render(o, s, review, agent) {
     [s.requiresReview, 'cần duyệt'],
     [s.rejected, 'bị loại'],
     [s.maxLevel, 'cấp sâu nhất'],
-    [pct(s.avgConfidence), 'độ tin cậy TB'],
     [secs + ' s', 'thời gian'],
   ];
   if (o.disputedCount) t.splice(4, 0, [o.disputedCount, 'cần xem lại']);
@@ -1362,8 +1361,7 @@ function render(o, s, review, agent) {
     `Nguồn: <span class="tag Model">Model</span> ${s.byModel}` +
     ` · <span class="tag HumanCorrection">Người sửa</span> ${s.byHumanCorrection}` +
     (o.model ? ` — mô hình <code>${esc(o.model)}</code>` : ' — không gọi mô hình') +
-    `.<br>Độ tin cậy do pipeline tự đánh giá, không phải precision đo được. ` +
-    `Mục chưa được xác nhận được giữ ở trạng thái cần duyệt.`;
+    `.<br>Mục chưa được xác nhận được giữ ở trạng thái cần duyệt.`;
 
   // Nút tải chỉ hiện khi harness thật sự đã ghi được file. Không dựng link từ runId ở phía
   // trình duyệt: run bị gate chặn thì không có gì để tải, và một link chết còn khó hiểu hơn.
@@ -1381,7 +1379,7 @@ function render(o, s, review, agent) {
 
   $('tree').innerHTML =
     '<thead><tr><th style="width:64px">Đoạn</th><th>Tiêu đề</th>' +
-    '<th style="width:96px">Nguồn</th><th style="width:78px;text-align:right">Tin cậy</th></tr></thead><tbody>' +
+    '<th style="width:96px">Nguồn</th></tr></thead><tbody>' +
   o.headings.map(h => `<tr class="${h.disputed ? 'dis' : ''}">
         <td class="i">${h.index}</td>
         <td style="padding-left:${10 + ((h.level ?? 1) - 1) * 22}px">
@@ -1390,7 +1388,6 @@ function render(o, s, review, agent) {
             decisionTag(h)}${
             h.disputed ? '<span class="tag dis">cần xem lại</span>' : ''}</td>
         <td><span class="tag ${h.source}">${h.source}</span></td>
-        <td class="c" title="Độ tin cậy do pipeline tự đánh giá, không phải precision đo được.">${pct(h.confidence)}<span class="approx">~</span></td>
       </tr>`).join('') + '</tbody>';
 
   $('statsPanel').classList.remove('hidden');
@@ -1500,7 +1497,6 @@ function tiles(id, items) {
     `<div class="tile${big ? ' big' : ''}"><div class="v">${esc(String(v))}</div><div class="k">${esc(k)}</div></div>`
   ).join('');
 }
-const pct = x => (x * 100).toFixed(1).replace(/\.0$/, '') + '%';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 </script>
 </body>

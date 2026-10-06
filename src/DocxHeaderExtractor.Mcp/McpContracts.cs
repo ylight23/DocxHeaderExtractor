@@ -19,7 +19,6 @@ public sealed record McpHeadingResult(
     int? Level,
     string Text,
     string Source,
-    double Confidence,
     string DecisionStatus,
     bool Disputed,
     TextOffsetSpan? HeadingSpan = null);

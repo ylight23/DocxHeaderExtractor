@@ -4,9 +4,8 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 namespace DocxHeaderExtractor.Web;
 
 /// <summary>
-/// Thống kê tổng hợp hiển thị trên bảng điều khiển.
-/// <paramref name="AvgConfidence"/> là ĐỘ TIN CẬY do pipeline tự đánh giá, không phải độ chính
-/// xác đo được — muốn có độ chính xác thật thì phải đối chiếu với đáp án (xem ô "Đối chiếu đáp án").
+/// Thống kê tổng hợp hiển thị trên bảng điều khiển. Không có số "độ tin cậy": mô hình không trả
+/// về độ tin cậy đã hiệu chuẩn, muốn có độ chính xác thật thì đối chiếu với đáp án.
 /// </summary>
 public sealed record Stats(
     int Headings,
@@ -16,7 +15,6 @@ public sealed record Stats(
     int ByHumanCorrection,
     int HumanVerified,
     int RequiresReview,
-    double AvgConfidence,
     int MaxLevel)
 {
     public static Stats From(DocumentOutline o)
@@ -30,7 +28,6 @@ public sealed record Stats(
             ByHumanCorrection: h.Count(x => x.Source == HeadingSource.HumanCorrection),
             HumanVerified: h.Count(x => x.DecisionStatus == HeadingDecisionStatus.HumanVerified),
             RequiresReview: h.Count(x => x.DecisionStatus == HeadingDecisionStatus.RequiresReview),
-            AvgConfidence: h.Count == 0 ? 0 : h.Average(x => x.Confidence),
             MaxLevel: h.Count == 0 ? 0 : h.Max(x => x.Level) ?? 0);
     }
 }

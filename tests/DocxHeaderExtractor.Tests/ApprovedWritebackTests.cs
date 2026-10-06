@@ -77,7 +77,7 @@ public sealed class ApprovedWritebackTests
     {
         var source = Source("doc-3", Paragraph("p-1", 0, "prefix corrected suffix"));
         var review = Review("doc-3", new ReviewHeadingDto(
-            "p-1", "corrected", 1, new ReviewOffsetSpan(7, 15), .9, "RequiresReview", [],
+            "p-1", "corrected", 1, new ReviewOffsetSpan(7, 15), "RequiresReview", [],
             new HeadingProvenanceDto("p-1", "docx", 0, null, "test")));
         var before = JsonSerializer.Serialize(review, JsonOptions);
         var record = new HumanReviewRecord(
@@ -207,7 +207,7 @@ public sealed class ApprovedWritebackTests
 
     private static ReviewHeadingDto Heading(
         string id, string text, int level, string status) =>
-        new(id, text, level, new ReviewOffsetSpan(0, text.Length), .9, status, [],
+        new(id, text, level, new ReviewOffsetSpan(0, text.Length), status, [],
             new HeadingProvenanceDto(id, "docx", 0, null, "test"));
 
     private static SourceDocument Source(string id, params SourceParagraph[] paragraphs) =>

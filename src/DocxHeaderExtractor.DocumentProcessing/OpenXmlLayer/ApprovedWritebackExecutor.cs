@@ -50,7 +50,6 @@ public static class ApprovedWritebackExecutor
                     OriginalText = item.SourceText,
                     HeadingSpan = new AuthorityTextOffsetSpan(item.Span.Start, item.Span.End),
                     Source = HeadingSource.HumanCorrection,
-                    Confidence = 1d,
                     DecisionStatus = HeadingDecisionStatus.HumanVerified,
                     ConfidenceBasis = "human-review-approved-writeback",
                 };

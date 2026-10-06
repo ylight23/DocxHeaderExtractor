@@ -35,7 +35,6 @@ public sealed class ReviewBundle
                         Text = p.Text,
                         PredictedLevel = heading.Level,
                         Source = heading.Source.ToString(),
-                        Confidence = heading.Confidence,
                         DecisionStatus = heading.DecisionStatus.ToString(),
                         ConfidenceBasis = heading.ConfidenceBasis,
                         HeadingText = heading.Text,
@@ -102,7 +101,6 @@ public sealed class ReviewRow
     public int? PredictedLevel { get; init; }
     public int? CorrectedLevel { get; set; }
     public string? Source { get; init; }
-    public double? Confidence { get; init; }
     public string? DecisionStatus { get; init; }
     public string? ConfidenceBasis { get; init; }
     public string? HeadingText { get; init; }

@@ -203,7 +203,6 @@ public sealed record RouteBlockAudit(
 public sealed record RouteBlockDecisionAudit(
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("semanticFunction")] string? SemanticFunction,
-    [property: JsonPropertyName("confidence")] double Confidence,
     [property: JsonPropertyName("reason")] string? Reason = null)
 {
     [JsonIgnore] public string? ProposedParentId { get; init; }

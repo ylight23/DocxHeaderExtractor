@@ -70,7 +70,6 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
 
         var decisions = result.TextPipeline.BoundHeadings.Select(item => new PdfBlockDecision(
             item.SourceId,
-            1,
             "canonical-vnext-semantic-contract",
             new TextOffsetSpan(item.Start, item.End),
             SemanticFunction: item.SemanticRole)).ToArray();
@@ -136,7 +135,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             source.Blocks.Select(block => new RouteBlockAudit(block.Id, 0, block.DisplayText)).ToArray(),
             [],
             decisions.Select(decision => new RouteBlockDecisionAudit(
-                decision.Id, decision.SemanticFunction, decision.Confidence)
+                decision.Id, decision.SemanticFunction)
             {
                 ProposedSourceSpan = decision.ProposedSourceSpan,
             }).ToArray(),

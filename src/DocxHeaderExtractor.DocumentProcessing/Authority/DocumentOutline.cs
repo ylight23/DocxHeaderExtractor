@@ -98,9 +98,6 @@ public sealed class HeadingRecord
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public HeadingSource Source { get; set; }
 
-    [JsonPropertyName("confidence")]
-    public double Confidence { get; set; }
-
     [JsonPropertyName("decisionStatus")]
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public HeadingDecisionStatus DecisionStatus { get; set; } = HeadingDecisionStatus.RequiresReview;

@@ -113,7 +113,7 @@ public sealed class RouteOccurrenceTraceTests
             Text = text,
             Level = 1,
             Validation = new StructuralValidation(true, true, true, true, 1, true, true, true, null),
-            Decision = new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.RequiresReview), 1, "test"),
+            Decision = new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.RequiresReview), "test"),
         };
         return new ValidatedStructure([element]);
     }
@@ -133,7 +133,7 @@ public sealed class RouteOccurrenceTraceTests
             [routeBlock],
             [routeBlock],
             [],
-            [new RouteBlockDecisionAudit(routeBlockId, "REGION_STRUCTURE", 1, "test")],
+            [new RouteBlockDecisionAudit(routeBlockId, "REGION_STRUCTURE", "test")],
             [routeBlockId],
             [],
             [routeBlockId])

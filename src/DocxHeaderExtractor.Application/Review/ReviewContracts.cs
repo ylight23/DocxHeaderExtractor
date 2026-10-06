@@ -19,7 +19,6 @@ public sealed record ReviewHeadingDto(
     [property: JsonPropertyName("text")] string Text,
     [property: JsonPropertyName("level")] int Level,
     [property: JsonPropertyName("span")] TextOffsetSpan Span,
-    [property: JsonPropertyName("confidence")] double Confidence,
     [property: JsonPropertyName("status")] string Status,
     [property: JsonPropertyName("evidence")] IReadOnlyList<HeadingEvidenceDto> Evidence,
     [property: JsonPropertyName("provenance")] HeadingProvenanceDto Provenance);

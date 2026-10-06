@@ -24,7 +24,7 @@ public sealed class HeadingOutlineProjectionTests
             Text = "generic source text",
             Level = 2,
             Validation = new StructuralValidation(true, true, true, true, 1, true, true, true, null),
-            Decision = new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.HumanVerified), 1, "test"),
+            Decision = new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.HumanVerified), "test"),
             ProjectionMetadata = new StructuralProjectionMetadata
             {
                 OutlineSourceId = "para-451",
@@ -78,6 +78,6 @@ public sealed class HeadingOutlineProjectionTests
         Text = "Alpha",
         Level = 1,
         Validation = new StructuralValidation(true, true, true, true, 1, true, true, true, null),
-        Decision = new StructuralDecision(origin, status, 0, "source-grounded-pointer-span"),
+        Decision = new StructuralDecision(origin, status, "source-grounded-pointer-span"),
     };
 }

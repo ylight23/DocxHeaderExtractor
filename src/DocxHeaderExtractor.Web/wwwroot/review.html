@@ -37,7 +37,7 @@
   <div class="notice">Quyết định được ghi nối tiếp và không sửa tài liệu nguồn hay kết quả extraction.</div>
   <div id="message" class="error" hidden></div>
   <table>
-    <thead><tr><th>ID</th><th>Text</th><th>Level</th><th>Confidence</th><th>Status</th><th>Evidence / provenance</th><th>Action</th></tr></thead>
+    <thead><tr><th>ID</th><th>Text</th><th>Level</th><th>Status</th><th>Evidence / provenance</th><th>Action</th></tr></thead>
     <tbody id="rows"></tbody>
   </table>
 </main>
@@ -64,7 +64,6 @@ async function load() {
       "<td><code>" + escapeHtml(heading.headingId) + "</code></td>" +
       "<td>" + escapeHtml(heading.text) + "<br><span class=\"meta\">" + heading.span.start + ".." + heading.span.end + "</span></td>" +
       "<td>" + heading.level + "</td>" +
-      "<td>" + Number(heading.confidence).toFixed(2) + "</td>" +
       "<td class=\"" + (state === "Pending" || state === "RequiresReview" ? "pending" : "done") + "\">" + escapeHtml(state) + "</td>" +
       "<td>" + escapeHtml(heading.provenance.sourceType + " / " + heading.provenance.sourceId + " / " + heading.provenance.basis) +
         "<br><span class=\"meta\">" + heading.evidence.map(item => escapeHtml(item.kind + "=" + item.value)).join(", ") + "</span></td>" +

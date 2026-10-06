@@ -143,7 +143,7 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
             sourceBlocks,
             sourceBlocks,
             [],
-            decisions.Select(decision => new RouteBlockDecisionAudit(decision.Id, decision.SemanticFunction, decision.Confidence)
+            decisions.Select(decision => new RouteBlockDecisionAudit(decision.Id, decision.SemanticFunction)
             {
                 ProposedSourceSpan = decision.ProposedSourceSpan,
             }).ToArray(),
@@ -199,7 +199,7 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
             throw new InvalidOperationException("h2c-nonterminal-role-invalid");
         }
         var parts = members.Select(id => atoms[tail[Array.IndexOf(issued, id)]]).Select(atom => new CanonicalSemanticBoundPart(atom.Alias, atom.SourceId, atom.Ordinal, atom.Text, 0, atom.Text.Length)).ToArray();
-        return new PdfBlockDecision(parts[0].SourceId, 1, "pdf-exact-heading-boundary-v1", new TextOffsetSpan(0, parts[0].Text.Length), SemanticFunction: "ESTABLISHES_STRUCTURE", Parts: parts);
+        return new PdfBlockDecision(parts[0].SourceId, "pdf-exact-heading-boundary-v1", new TextOffsetSpan(0, parts[0].Text.Length), SemanticFunction: "ESTABLISHES_STRUCTURE", Parts: parts);
     }
 
     /// <summary>Canonical G2A request composer shared by qualification and the production PDF route.</summary>

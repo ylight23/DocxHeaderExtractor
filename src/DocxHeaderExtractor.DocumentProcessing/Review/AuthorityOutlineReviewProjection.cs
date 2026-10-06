@@ -56,7 +56,6 @@ public static class AuthorityOutlineReviewProjection
                 paragraph.Text[span.Start..span.End],
                 level,
                 new ReviewTextOffsetSpan(span.Start, span.End),
-                Math.Clamp(heading.Confidence, 0d, 1d),
                 heading.DecisionStatus.ToString(),
                 [],
                 new HeadingProvenanceDto(

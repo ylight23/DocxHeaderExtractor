@@ -10,7 +10,6 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// </summary>
 internal sealed record PdfBlockDecision(
     string Id,
-    double Confidence,
     string Reason,
     TextOffsetSpan? HeadingSpan = null,
     string? ProposedParentId = null,

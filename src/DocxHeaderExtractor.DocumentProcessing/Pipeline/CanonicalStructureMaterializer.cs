@@ -112,7 +112,7 @@ internal static class CanonicalStructureMaterializer
             // The producing lane declares the origin and the validator its basis; nothing here
             // relabels them. Every materialized decision still awaits review.
             var decision = new StructuralDecision(
-                origin, nameof(HeadingDecisionStatus.RequiresReview), 0, item.ValidationBasis);
+                origin, nameof(HeadingDecisionStatus.RequiresReview), item.ValidationBasis);
             var element = StructuralProposalValidator.Materialize(
                 sourceOccurrence, proposal, elementIdBySourceId[item.SourceId], decision,
                 elementIdBySourceId.Values.ToHashSet(StringComparer.Ordinal),
