@@ -73,10 +73,10 @@ public sealed class CanonicalSemanticVisualRecoveryTests
                 new CanonicalSemanticVisualProposal("V0002", true, "RESULTS", "SECTION")
             ]);
 
-        Assert.Equal(2, result.CanonicalOccurrences.Count);
-        Assert.Equal(2, result.Projection.Count);
-        Assert.NotEqual(result.CanonicalOccurrences[0].SemanticNodeId,
-            result.CanonicalOccurrences[1].SemanticNodeId);
+        Assert.Equal(2, result.CanonicalGraph.Occurrences.Count);
+        Assert.Equal(2, result.CanonicalGraph.OutlineProjection.Count);
+        Assert.NotEqual(result.CanonicalGraph.Occurrences[0].SemanticNodeId,
+            result.CanonicalGraph.Occurrences[1].SemanticNodeId);
     }
 
     [Fact]
@@ -92,7 +92,7 @@ public sealed class CanonicalSemanticVisualRecoveryTests
         Assert.Single(result.UnifiedOccurrences);
         Assert.Single(result.UnifiedOccurrences[0].TextEvidence);
         Assert.Single(result.UnifiedOccurrences[0].VisualEvidence);
-        Assert.Single(result.CanonicalOccurrences);
+        Assert.Single(result.CanonicalGraph.Occurrences);
     }
 
     [Fact]
@@ -109,7 +109,7 @@ public sealed class CanonicalSemanticVisualRecoveryTests
 
         var text = Assert.Single(result.UnifiedOccurrences).TextEvidence[0];
         Assert.Equal(new CanonicalSemanticVisualBoundingBox(20, 120, 200, 40), text.BoundingBox);
-        Assert.Single(result.CanonicalOccurrences);
+        Assert.Single(result.CanonicalGraph.Occurrences);
     }
 
     [Fact]
@@ -125,7 +125,7 @@ public sealed class CanonicalSemanticVisualRecoveryTests
             [new CanonicalSemanticVisualProposal("V0001", true, "RESULTS", "SECTION")],
             new CanonicalSemanticProposal("S0001", true, "RESULTS", SemanticRole: "SECTION"));
 
-        Assert.Equal(2, result.CanonicalOccurrences.Count);
+        Assert.Equal(2, result.CanonicalGraph.Occurrences.Count);
         Assert.DoesNotContain(result.UnifiedOccurrences, item =>
             item.TextEvidence.Count > 0 && item.VisualEvidence.Count > 0);
     }
@@ -148,7 +148,7 @@ public sealed class CanonicalSemanticVisualRecoveryTests
                 new CanonicalSemanticVisualProposal("V0002", true, "PAGE TWO", "SECTION")
             ]);
 
-        Assert.Equal(["visual:P0001", "visual:P0002"], result.CanonicalOccurrences.Select(item => item.SourceId));
+        Assert.Equal(["visual:P0001", "visual:P0002"], result.CanonicalGraph.Occurrences.Select(item => item.SourceId));
     }
 
     [Fact]

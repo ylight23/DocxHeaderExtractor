@@ -224,7 +224,7 @@ public sealed class SemanticAuthorityReplayCaptureTests
         string rawHash) : ICanonicalSemanticTextModel
     {
         public Task<CanonicalSemanticTextInferenceResult> InferAsync(
-            CanonicalSemanticProductionInput input,
+            CanonicalSemanticTextInferenceInput input,
             SemanticContextPacket packedContext,
             string requestId,
             CancellationToken cancellationToken = default) =>

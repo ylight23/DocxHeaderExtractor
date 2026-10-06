@@ -225,7 +225,7 @@ public sealed class SemanticConflictNormalizerTests
     private sealed class ConflictTextModel : ICanonicalSemanticTextModel
     {
         public Task<CanonicalSemanticTextInferenceResult> InferAsync(
-            CanonicalSemanticProductionInput input,
+            CanonicalSemanticTextInferenceInput input,
             SemanticContextPacket packedContext,
             string requestId,
             CancellationToken cancellationToken = default) =>

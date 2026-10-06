@@ -114,7 +114,10 @@ public sealed class SemanticCoordinateContractTests
         using var classifier = new RecordingClassifier();
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             classifier, contract, SemanticEvidencePackingPolicies.FixedOwnedCount120);
-        return await model.InferAsync(Input(), new SemanticContextPacket([], [], []), "contract-seam");
+        var source = Input();
+        return await model.InferAsync(
+            new CanonicalSemanticTextInferenceInput(source.SourceEvidence ?? []),
+            new SemanticContextPacket([], [], []), "contract-seam");
     }
 
     private static async Task<(string Prompt, string Request)> Capture(SemanticCoordinateContract contract)

@@ -100,7 +100,7 @@ public sealed class CanonicalSemanticRequestComposerTests
         Assert.Contains("Evidence", fieldNames);
     }
 
-    private static CanonicalSemanticProductionInput SampleInput()
+    private static CanonicalSemanticTextInferenceInput SampleInput()
     {
         var evidence = new[]
         {
@@ -111,10 +111,7 @@ public sealed class CanonicalSemanticRequestComposerTests
                 "S0002", "p2", 2, "Heading Two", "document_body",
                 ["test"], new { }, new { }, [], [], [], []),
         };
-        return new CanonicalSemanticProductionInput(
-            new DocumentSourceCatalog([]), null, "source-hash",
-            [new CanonicalSemanticPageEvidence("P0001", true, 0, "test")],
-            [], [], [], DocumentId: "DOC-COMPOSER-PARITY", SourceEvidence: evidence);
+        return new CanonicalSemanticTextInferenceInput(evidence);
     }
 
     private sealed class UnreachableClassifier : IHeaderClassifier

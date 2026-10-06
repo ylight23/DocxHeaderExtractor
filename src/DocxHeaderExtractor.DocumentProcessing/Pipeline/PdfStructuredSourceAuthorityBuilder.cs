@@ -69,8 +69,8 @@ internal static class PdfStructuredSourceAuthorityBuilder
     }
 
     /// <param name="sourceSha256">
-    /// Only needed to build a <see cref="CanonicalSemanticProductionInput"/> afterwards. Every
-    /// other measurement here - the three hashes - depends on the PDF's text and geometry alone.
+    /// Retained for qualification/source-authority construction. Every other measurement here -
+    /// the three hashes - depends on the PDF's text and geometry alone.
     /// </param>
     public static PdfStructuredSourceAuthority Build(
         IReadOnlyList<PdfLine> segments,

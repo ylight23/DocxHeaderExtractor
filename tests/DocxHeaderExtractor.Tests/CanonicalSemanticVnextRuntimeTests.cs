@@ -280,7 +280,7 @@ public sealed class CanonicalSemanticVnextRuntimeTests
 
         Assert.Equal(CanonicalSemanticModality.Text, result.ModalityProfile.DocumentModality);
         Assert.Single(result.TextPipeline.BoundHeadings);
-        Assert.Single(result.CanonicalOccurrences);
+        Assert.Single(result.CanonicalGraph.Occurrences);
         Assert.Single(result.UnifiedOccurrences);
         Assert.Equal("SOURCE_IDENTITY", result.StageLedger[0].Stage);
         Assert.Equal("TASK_PROJECTION", result.StageLedger[^1].Stage);
@@ -331,6 +331,66 @@ public sealed class CanonicalSemanticVnextRuntimeTests
     }
 
     [Fact]
+    public async Task Text_only_entry_point_matches_legacy_text_stage_including_replay_and_transport()
+    {
+        var catalog = Catalog(("p1", "Heading"));
+        var evidence = new CanonicalSemanticSourceEvidence(
+            "S0001", "p1", 1, "Heading", "body", [], new { }, new { }, [], [], [], []);
+        var proposals = new[]
+        {
+            new CanonicalSemanticProposal("S0001", true, "Heading", SemanticRole: "SECTION"),
+        };
+        const string raw = "{\"headings\":[{\"sourceAlias\":\"S0001\",\"isHeading\":true,\"text\":\"Heading\"}]}";
+        var rawHash = SemanticAuthorityReplayHashing.RawModelResponseHash([raw]);
+        var transportCalls = new[]
+        {
+            SemanticAuthorityTransportCall.Create(
+                1, "primary", "pack-0001", "{\"system\":\"s\",\"user\":\"u\"}", raw),
+        };
+        var metadata = new SemanticAuthorityCaptureMetadata(
+            "DOCX", "source-universe", "test-model", "test-route", "prompt-hash",
+            Profile: "DOCX_ALIAS_SPAN", PackingPolicy: "FIXED_OWNED_COUNT_120");
+        var oldInput = new CanonicalSemanticProductionInput(
+            catalog, null, "source-hash",
+            [new CanonicalSemanticPageEvidence("DOCX", true, 0, "docx-source")],
+            ["[S0001] Heading"], [], ["context"],
+            ExpectedSourceSha256: "source-hash", DocumentId: "DOC-PARITY", SourceEvidence: [evidence])
+        {
+            ReplayCapture = metadata,
+        };
+        var newInput = new CanonicalSemanticTextProductionInput(
+            catalog, null, "source-hash", "source-hash", "DOC-PARITY", [evidence],
+            ["[S0001] Heading"], [], ["context"])
+        {
+            ReplayCapture = metadata,
+        };
+        var oldResult = await CanonicalSemanticProductionEntryPoint.RunAsync(
+            oldInput, new FixedTextModel(proposals, rawHash, transportCalls), requestId: "parity");
+        var newResult = await CanonicalSemanticTextProductionEntryPoint.RunAsync(
+            newInput, new FixedTextModel(proposals, rawHash, transportCalls), requestId: "parity");
+
+        Assert.Equal(
+            SemanticAuthorityReplayHashing.CanonicalValueHash(oldResult.TextPipeline.BoundHeadings),
+            SemanticAuthorityReplayHashing.CanonicalValueHash(newResult.TextPipeline.BoundHeadings));
+        Assert.Equal(
+            SemanticAuthorityReplayHashing.CanonicalValueHash(oldResult.TextPipeline.BindingObservations),
+            SemanticAuthorityReplayHashing.CanonicalValueHash(newResult.TextPipeline.BindingObservations));
+        Assert.Equal(
+            SemanticAuthorityReplayHashing.CanonicalValueHash(oldResult.TextPipeline.Graph),
+            SemanticAuthorityReplayHashing.CanonicalValueHash(newResult.TextPipeline.Graph));
+        Assert.Equal(
+            SemanticAuthorityReplayHashing.CanonicalValueHash(oldResult.ConflictNormalization),
+            SemanticAuthorityReplayHashing.CanonicalValueHash(newResult.ConflictNormalization));
+        Assert.Equal(oldResult.ContractIssues, newResult.ContractIssues);
+        Assert.Equal(oldResult.ContractValidProposalCount, newResult.ContractValidProposalCount);
+        Assert.Equal(oldResult.ContractInvalidProposalCount, newResult.ContractInvalidProposalCount);
+        Assert.Equal(oldResult.ReplayBundle!.BundleHash, newResult.ReplayBundle!.BundleHash);
+        Assert.Equal(
+            SemanticAuthorityReplayHashing.CanonicalValueHash(oldResult.TransportCalls),
+            SemanticAuthorityReplayHashing.CanonicalValueHash(newResult.TransportCalls));
+    }
+
+    [Fact]
     public async Task Production_entry_point_automatically_reopens_parent_contradiction()
     {
         var result = await CanonicalSemanticProductionEntryPoint.RunAsync(new(
@@ -348,7 +408,7 @@ public sealed class CanonicalSemanticVnextRuntimeTests
         Assert.Equal(2, result.TotalModelCalls);
         var bound = Assert.Single(result.TextPipeline.BoundHeadings);
         Assert.Contains("parent-node:N2", bound.RelationHints);
-        Assert.Single(result.CanonicalOccurrences);
+        Assert.Single(result.CanonicalGraph.Occurrences);
     }
 
     [Fact]
@@ -374,13 +434,32 @@ public sealed class CanonicalSemanticVnextRuntimeTests
     private sealed class FakeTextModel : ICanonicalSemanticTextModel
     {
         public Task<CanonicalSemanticTextInferenceResult> InferAsync(
-            CanonicalSemanticProductionInput input,
+            CanonicalSemanticTextInferenceInput input,
             SemanticContextPacket packedContext,
             string requestId,
             CancellationToken cancellationToken = default) =>
             Task.FromResult(new CanonicalSemanticTextInferenceResult(
                 [new CanonicalSemanticProposal("S0001", true, "Heading", SemanticRole: "SECTION")],
                 new CanonicalSemanticInferenceTelemetry("fake", "stop")));
+    }
+
+    private sealed class FixedTextModel(
+        IReadOnlyList<CanonicalSemanticProposal> proposals,
+        string rawHash,
+        IReadOnlyList<SemanticAuthorityTransportCall> transportCalls) : ICanonicalSemanticTextModel
+    {
+        public Task<CanonicalSemanticTextInferenceResult> InferAsync(
+            CanonicalSemanticTextInferenceInput input,
+            SemanticContextPacket packedContext,
+            string requestId,
+            CancellationToken cancellationToken = default) =>
+            Task.FromResult(new CanonicalSemanticTextInferenceResult(
+                proposals, new CanonicalSemanticInferenceTelemetry("test-model", "stop"))
+            {
+                ParsedProposals = proposals,
+                RawModelResponseHash = rawHash,
+                TransportCalls = transportCalls,
+            });
     }
 
     private sealed class FakeVisualModel : ICanonicalSemanticVisualModel
@@ -403,7 +482,7 @@ public sealed class CanonicalSemanticVnextRuntimeTests
     private sealed class InvalidProposalTextModel : ICanonicalSemanticTextModel
     {
         public Task<CanonicalSemanticTextInferenceResult> InferAsync(
-            CanonicalSemanticProductionInput input,
+            CanonicalSemanticTextInferenceInput input,
             SemanticContextPacket packedContext,
             string requestId,
             CancellationToken cancellationToken = default) =>
@@ -416,7 +495,7 @@ public sealed class CanonicalSemanticVnextRuntimeTests
     private sealed class ParentContradictionTextModel : ICanonicalSemanticTextModel
     {
         public Task<CanonicalSemanticTextInferenceResult> InferAsync(
-            CanonicalSemanticProductionInput input,
+            CanonicalSemanticTextInferenceInput input,
             SemanticContextPacket packedContext,
             string requestId,
             CancellationToken cancellationToken = default) =>

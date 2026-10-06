@@ -159,8 +159,9 @@ internal static class CanonicalSemanticEngine
         /// <summary>
         /// The layout label beside an owned item, absent for every lane whose atoms already are
         /// its layout unit - DOCX falls here, which is what keeps its request
-        /// bytes exactly what they have always been. Only a lane whose <see cref="CanonicalSemanticProductionInput.LayoutBlockBySourceId"/>
-        /// is populated - today, the structured PDF profile - adds the field at all.
+        /// bytes exactly what they have always been. Only a lane whose
+        /// <see cref="CanonicalSemanticTextInferenceInput.LayoutBlockBySourceId"/> is populated
+        /// adds the field at all.
         /// <para>
         /// V2 shows observable source facts only (HARNESS MAY REPORT OBSERVABLE SOURCE FACTS; IT MUST
         /// NOT PRE-INTERPRET THEIR MEANING). The scope label and the contents flag are the harness's
@@ -249,10 +250,10 @@ internal static class CanonicalSemanticEngine
         /// <see cref="InferAsync"/> sends to a classifier, available here without one. A dry-run
         /// caller uses this directly; nothing re-derives request bytes from fields on the side.
         /// </summary>
-        public IReadOnlyList<ComposedSegment> ComposeRequests(CanonicalSemanticProductionInput input) =>
+        public IReadOnlyList<ComposedSegment> ComposeRequests(CanonicalSemanticTextInferenceInput input) =>
             ComposeSegments(input).ToArray();
 
-        private IEnumerable<ComposedSegment> ComposeSegments(CanonicalSemanticProductionInput input)
+        private IEnumerable<ComposedSegment> ComposeSegments(CanonicalSemanticTextInferenceInput input)
         {
             var evidence = input.SourceEvidence ?? [];
             var packs = _packingPolicy.BuildPacks(evidence, input.LayoutBlockBySourceId);
@@ -293,7 +294,7 @@ internal static class CanonicalSemanticEngine
         }
 
         public async Task<CanonicalSemanticTextInferenceResult> InferAsync(
-            CanonicalSemanticProductionInput input,
+            CanonicalSemanticTextInferenceInput input,
             SemanticContextPacket packedContext,
             string requestId,
             CancellationToken cancellationToken = default)

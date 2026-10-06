@@ -163,7 +163,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         {
             RawAnalystResponses = canonicalModel?.RawResponses ?? [],
             ModelInputContracts = canonicalModel is null ? [] : [canonicalModel.Contract.ProtocolVersion],
-            ModelRequests = result.PrimaryTextModelCalls == 0
+            ModelRequests = result.TextModelCalls == 0
                 ? []
                 : [new RouteModelRequestAudit(
                     $"docx:{sourceDocument.DocumentId}:primary",
@@ -187,11 +187,11 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             ConflictCensus = SemanticConflictCensus.Take(
                 result.ConflictNormalization,
                 CanonicalSemanticGlobalConflictDetector.Detect(
-                    result.NormalizedModelProposals,
+                    result.ConflictNormalization.NormalizedProposals,
                     SemanticSourceAliasCatalog.FromCatalog(catalog),
-                    result.SemanticConflicts),
-                result.SemanticAdjudicationCalls,
-                result.GlobalReopenCalls,
+                    result.ConflictNormalization.Conflicts),
+                0,
+                0,
                 result.TextPipeline.BoundHeadings.Select(item => item.SourceId)
                     .ToHashSet(StringComparer.Ordinal)),
             SemanticLane = new RouteLaneExecutionAudit("complete", source.Blocks.Count,
@@ -201,8 +201,8 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             BatchTelemetry = new PdfPipelineBatchTelemetry(
                 source.Blocks.Count,
                 source.Blocks.Count,
-                result.PrimaryTextModelCalls == 0 ? 0 : 1,
-                result.PrimaryTextModelCalls,
+                result.TextModelCalls == 0 ? 0 : 1,
+                result.TextModelCalls,
                 0,
                 0,
                 0,

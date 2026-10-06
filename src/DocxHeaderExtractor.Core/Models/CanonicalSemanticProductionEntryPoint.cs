@@ -142,7 +142,7 @@ public sealed record CanonicalSemanticTextInferenceResult(
 public interface ICanonicalSemanticTextModel
 {
     Task<CanonicalSemanticTextInferenceResult> InferAsync(
-        CanonicalSemanticProductionInput input,
+        CanonicalSemanticTextInferenceInput input,
         SemanticContextPacket packedContext,
         string requestId,
         CancellationToken cancellationToken = default);
@@ -272,7 +272,9 @@ public static class CanonicalSemanticProductionEntryPoint
 
         var context = SemanticContextPacker.Pack(
             input.TargetEvidence, input.LocalContext, input.GlobalContext);
-        var textInference = await textModel.InferAsync(input, context, requestId, cancellationToken);
+        var textInference = await textModel.InferAsync(
+            new CanonicalSemanticTextInferenceInput(input.SourceEvidence ?? [], input.LayoutBlockBySourceId),
+            context, requestId, cancellationToken);
         var captureProposals = textInference.ParsedProposals ?? textInference.Proposals;
         var replayBundle = input.ReplayCapture is null
             ? null
