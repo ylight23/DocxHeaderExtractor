@@ -2,8 +2,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Core.Models;
 
-namespace DocxHeaderExtractor.Core.Models;
+// Test support: reads and re-verifies committed semantic replay bundles. No production code
+// produces or consumes these since live replay capture was retired.
+namespace DocxHeaderExtractor.Tests;
 
 public static class SemanticAuthorityReplaySchema
 {
