@@ -162,7 +162,8 @@ public sealed class V5ArchitectureTests
             qualifiedInference);
 
         var core = typeof(V5ProviderEnvelope).Assembly;
-        foreach (var qualificationOnly in new[] { typeof(V5ComposedSemanticRequest), typeof(BoundClaimEndpoint), typeof(V5SystemPromptV2_1), typeof(V5ToolCallDeltaFragment) })
+        foreach (var qualificationOnly in new[] { typeof(V5ComposedSemanticRequest), typeof(BoundClaimEndpoint), typeof(V5SystemPromptV2_1), typeof(V5ToolCallDeltaFragment),
+                     typeof(SemanticSourcePartsV2), typeof(SemanticSourcePartCanonicalizer), typeof(SemanticSourcePartCanonicalization) })
             Assert.NotEqual(core, qualificationOnly.Assembly);
         Assert.DoesNotContain(typeof(OpenRouterQwen37JsonObjectCarrierV2_1).GetMethods(),
             method => method.GetParameters().Any(parameter => parameter.ParameterType == typeof(V5ComposedSemanticRequest)));
