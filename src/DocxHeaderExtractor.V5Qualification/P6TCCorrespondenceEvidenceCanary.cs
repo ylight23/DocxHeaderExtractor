@@ -33,7 +33,7 @@ internal static class P6TCCorrespondenceEvidenceCanary
         if (!Parity(manifestPath, Manifest(repo, items))) return Fail("p6tc: frozen manifest/body parity failed; no network");
         if (!args.Contains($"--confirm-p6tc={Confirm}")) { Console.WriteLine("P6T-C PREPARED_NOT_AUTHORIZED; ProviderCalls=0, GoldRead=false."); return 0; }
         if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY"))) return Fail("p6tc: OPENROUTER_API_KEY is not set");
-        var options = RemoteInferenceOptions.FromEnvironment(); options.Model = "qwen/qwen3.7-flash"; options.OpenRouterProviderRoute = "alibaba"; options.OpenRouterReasoningEffort = "none"; options.RequireJsonObjectResponse = true; options.TransientRequestRetries = 0; options.MaxParallelRequests = 1; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
+        var options = RemoteInferenceOptions.FromEnvironment(); options.Model = "qwen/qwen3.7-flash"; options.OpenRouterProviderRoute = "alibaba"; options.OpenRouterReasoningEffort = "none"; options.RequireJsonObjectResponse = true; options.TransientRequestRetries = 0; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
         var rows = new List<JsonElement>();
         foreach (var item in items)
         {

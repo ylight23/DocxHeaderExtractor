@@ -37,7 +37,7 @@ internal static class P6TDExplicitAbstentionCanary
         if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY"))) return Fail("p6td: OPENROUTER_API_KEY is not set");
         var options = RemoteInferenceOptions.FromEnvironment();
         options.Model = "qwen/qwen3.7-flash"; options.OpenRouterProviderRoute = "alibaba"; options.OpenRouterReasoningEffort = "none";
-        options.RequireJsonObjectResponse = true; options.TransientRequestRetries = 0; options.MaxParallelRequests = 1; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
+        options.RequireJsonObjectResponse = true; options.TransientRequestRetries = 0; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
         var rows = new List<JsonElement>();
         foreach (var item in items)
         {

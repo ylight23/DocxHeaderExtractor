@@ -12,10 +12,7 @@ internal sealed record SemanticEvidencePack(
     string PackId,
     int Ordinal,
     IReadOnlyList<CanonicalSemanticSourceEvidence> Owned,
-    IReadOnlyList<CanonicalSemanticSourceEvidence> Visible)
-{
-    public string RegionKey { get; init; } = string.Empty;
-}
+    IReadOnlyList<CanonicalSemanticSourceEvidence> Visible);
 
 /// <summary>The execution capability that partitions source evidence into bounded model requests.</summary>
 internal interface ISemanticEvidencePackingPolicy
@@ -139,10 +136,7 @@ internal static class SemanticEvidencePackingPolicies
                 var owned = evidence.Skip(start).Take(endExclusive - start).ToArray();
                 var visible = evidence.Skip(visibleFrom).Take(visibleTo - visibleFrom).ToArray();
                 packs.Add(new SemanticEvidencePack(
-                    $"{PolicyId}:PACK_{packs.Count + 1:000}", packs.Count + 1, owned, visible)
-                {
-                    RegionKey = "SOURCE_ORDER_LEFT_HALO_OWNED_CORE_RIGHT_HALO",
-                });
+                    $"{PolicyId}:PACK_{packs.Count + 1:000}", packs.Count + 1, owned, visible));
                 start = endExclusive;
             }
 
@@ -196,10 +190,7 @@ internal static class SemanticEvidencePackingPolicies
                     $"{policyId}:PACK_{packs.Count + 1:000}",
                     packs.Count + 1,
                     owned,
-                    visible)
-                {
-                    RegionKey = segment.Key,
-                });
+                    visible));
             }
         }
 

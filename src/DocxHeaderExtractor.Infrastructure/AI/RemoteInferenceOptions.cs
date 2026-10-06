@@ -47,7 +47,6 @@ public sealed class RemoteInferenceOptions
     /// </summary>
     public int ProviderTransportTimeoutSeconds { get; set; } = 300;
     public int TransientRequestRetries { get; set; } = 2;
-    public int MaxParallelRequests { get; set; } = 1;
     public bool SendChatTemplateKwargs { get; set; } = true;
     public bool RequireJsonObjectResponse { get; set; }
     /// <summary>Optional OpenRouter provider slug/tag. When set, the request is pinned to this
@@ -76,7 +75,6 @@ public sealed class RemoteInferenceOptions
         if (RequestTimeoutSeconds is < 10 or > 600) throw new InvalidOperationException("RequestTimeoutSeconds phải nằm trong khoảng 10..600.");
         if (ProviderTransportTimeoutSeconds is < 10 or > 900) throw new InvalidOperationException("ProviderTransportTimeoutSeconds phải nằm trong khoảng 10..900.");
         if (TransientRequestRetries is < 0 or > 4) throw new InvalidOperationException("TransientRequestRetries phải nằm trong khoảng 0..4.");
-        if (MaxParallelRequests is < 1 or > 16) throw new InvalidOperationException("MaxParallelRequests phải nằm trong khoảng 1..16.");
         if (OpenRouterReasoningEffort is not ("none" or "low" or "medium" or "high"))
             throw new InvalidOperationException("OpenRouterReasoningEffort phải là none, low, medium hoặc high.");
     }
@@ -142,8 +140,6 @@ public sealed class RemoteInferenceOptions
         ApiKey = apiKey,
         Model = model,
         ContextSize = context,
-        MaxParallelRequests = int.TryParse(Environment.GetEnvironmentVariable("LMSTUDIO_PARALLEL"), out var parallel)
-            ? Math.Clamp(parallel, 1, 16) : 1,
         RequestTimeoutSeconds = int.TryParse(Environment.GetEnvironmentVariable("SGLANG_REQUEST_TIMEOUT_SECONDS"), out var timeout)
             ? Math.Clamp(timeout, 10, 600) : 90,
         TransientRequestRetries = int.TryParse(Environment.GetEnvironmentVariable("SGLANG_TRANSIENT_RETRIES"), out var retries)

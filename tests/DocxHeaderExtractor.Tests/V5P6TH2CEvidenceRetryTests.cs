@@ -69,7 +69,6 @@ public sealed class V5P6TH2CEvidenceRetryTests
         options.OpenRouterReasoningEffort = "none";
         options.RequireJsonObjectResponse = true;
         options.TransientRequestRetries = 0;
-        options.MaxParallelRequests = 1;
         options.ProviderTransportTimeoutSeconds = 300;
         options.Validate();
 

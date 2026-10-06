@@ -72,7 +72,6 @@ internal static class P6TH3FullPopulationH2Canary
         options.OpenRouterReasoningEffort = "none";
         options.RequireJsonObjectResponse = true;
         options.TransientRequestRetries = 0;
-        options.MaxParallelRequests = 1;
         options.ProviderTransportTimeoutSeconds = 300;
         options.Validate();
 
@@ -220,7 +219,6 @@ internal static class P6TH3FullPopulationH2Canary
         options.OpenRouterReasoningEffort = "none";
         options.RequireJsonObjectResponse = true;
         options.TransientRequestRetries = 0;
-        options.MaxParallelRequests = 1;
         options.ProviderTransportTimeoutSeconds = 300;
         options.Validate();
 

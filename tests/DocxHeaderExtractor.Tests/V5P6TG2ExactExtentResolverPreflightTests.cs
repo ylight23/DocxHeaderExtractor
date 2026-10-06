@@ -265,7 +265,6 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             Model = "qwen/qwen3.7-flash",
             OpenRouterProviderRoute = "Alibaba",
             TransientRequestRetries = 0,
-            MaxParallelRequests = 1,
             ProviderTransportTimeoutSeconds = 300,
             RequireZeroDataRetention = false,
         });
@@ -874,7 +873,6 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             Model = "qwen/qwen3.7-flash",
             OpenRouterProviderRoute = "Alibaba",
             TransientRequestRetries = 0,
-            MaxParallelRequests = 1,
             ProviderTransportTimeoutSeconds = 300,
             RequireZeroDataRetention = false,
         });
@@ -1276,7 +1274,6 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             Model = "qwen/qwen3.7-flash",
             OpenRouterProviderRoute = "Alibaba",
             TransientRequestRetries = 0,
-            MaxParallelRequests = 1,
             ProviderTransportTimeoutSeconds = 300,
             RequireZeroDataRetention = false,
         });
@@ -1663,7 +1660,6 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             Model = "qwen/qwen3.7-flash",
             OpenRouterProviderRoute = "Alibaba",
             TransientRequestRetries = 0,
-            MaxParallelRequests = 1,
             ProviderTransportTimeoutSeconds = 300,
             RequireZeroDataRetention = false,
         });
@@ -1824,7 +1820,6 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             Model = "qwen/qwen3.7-flash",
             OpenRouterProviderRoute = "Alibaba",
             TransientRequestRetries = 0,
-            MaxParallelRequests = 1,
             ProviderTransportTimeoutSeconds = 300,
             RequireZeroDataRetention = false,
         });
@@ -2398,7 +2393,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         using var provider = new OpenRouterQualificationTransport(http, new RemoteInferenceOptions
         {
             ApiKey = apiKey!, Model = "qwen/qwen3.7-flash", OpenRouterProviderRoute = "Alibaba",
-            TransientRequestRetries = 0, MaxParallelRequests = 1, ProviderTransportTimeoutSeconds = 300,
+            TransientRequestRetries = 0, ProviderTransportTimeoutSeconds = 300,
             RequireZeroDataRetention = false,
         });
         try
@@ -2888,7 +2883,6 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             Model = "qwen/qwen3.7-flash",
             OpenRouterProviderRoute = "Alibaba",
             TransientRequestRetries = 0,
-            MaxParallelRequests = 1,
             ProviderTransportTimeoutSeconds = 300,
             RequireZeroDataRetention = false,
         });
@@ -3534,7 +3528,6 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             Model = "qwen/qwen3.7-flash",
             OpenRouterProviderRoute = "Alibaba",
             TransientRequestRetries = 0,
-            MaxParallelRequests = 1,
             ProviderTransportTimeoutSeconds = 300,
             RequireZeroDataRetention = false,
         });

@@ -31,7 +31,7 @@ internal static class P6TE1UnitTopologyCanary
         if (!Parity(manifestPath, manifest)) return Fail("p6te1: manifest/body parity failed; no network");
         if (!args.Contains($"--confirm-p6te1={Confirm}")) { Console.WriteLine("P6T-E1 PREPARED_NOT_AUTHORIZED; ProviderCalls=0, GoldRead=false."); return 0; }
         if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY"))) return Fail("p6te1: OPENROUTER_API_KEY is not set");
-        var options = RemoteInferenceOptions.FromEnvironment(); options.Model = "qwen/qwen3.7-flash"; options.OpenRouterProviderRoute = "alibaba"; options.OpenRouterReasoningEffort = "none"; options.RequireJsonObjectResponse = true; options.TransientRequestRetries = 0; options.MaxParallelRequests = 1; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
+        var options = RemoteInferenceOptions.FromEnvironment(); options.Model = "qwen/qwen3.7-flash"; options.OpenRouterProviderRoute = "alibaba"; options.OpenRouterReasoningEffort = "none"; options.RequireJsonObjectResponse = true; options.TransientRequestRetries = 0; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
         var rows = new List<JsonElement>();
         foreach (var item in items)
         {

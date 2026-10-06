@@ -6,14 +6,6 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-internal sealed record PdfStructuralContainerObservation(
-    string ContainerId,
-    StructuralElementType Type,
-    string SourceId,
-    StructuralSpan Span,
-    IReadOnlyList<string> MemberSourceIds,
-    string Evidence);
-
 /// <summary>
 /// Immutable facts observed by the PDF parser and layout filter. Model output is deliberately
 /// represented separately so it cannot overwrite text, geometry, or source identity.
@@ -72,14 +64,6 @@ internal sealed record PdfSourceFacts(
 
     /// <summary>Structured fact provenance for validator authority checks.</summary>
     public IReadOnlyList<PdfObservedEvidence> EvidenceDetails { get; init; } = [];
-
-    public string? ScopeHostSourceId { get; init; }
-    public string? ScopeTargetDocument { get; init; }
-    public bool InsideQuote { get; init; }
-    public string? AmendmentOperation { get; init; }
-
-    /// <summary>Parser/layout-owned container observations; semantic labels cannot create these.</summary>
-    public IReadOnlyList<PdfStructuralContainerObservation> LayoutContainers { get; init; } = [];
 }
 
 internal sealed record PdfObservedEvidence(string Kind, string Value, string Origin);

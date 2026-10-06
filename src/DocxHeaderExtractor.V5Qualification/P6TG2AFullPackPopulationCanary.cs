@@ -56,7 +56,6 @@ internal static class P6TG2AFullPackPopulationCanary
         options.OpenRouterReasoningEffort = "none";
         options.RequireJsonObjectResponse = true;
         options.TransientRequestRetries = 0;
-        options.MaxParallelRequests = 1;
         options.ProviderTransportTimeoutSeconds = 300;
         options.Validate();
 

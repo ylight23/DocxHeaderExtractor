@@ -73,7 +73,7 @@ internal static class P6TH2CEndPointerCanary
         var options = RemoteInferenceOptions.FromEnvironment();
         options.Model = "qwen/qwen3.7-flash"; options.OpenRouterProviderRoute = "alibaba";
         options.OpenRouterReasoningEffort = "none"; options.RequireJsonObjectResponse = true;
-        options.TransientRequestRetries = 0; options.MaxParallelRequests = 1; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
+        options.TransientRequestRetries = 0; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
         var all = new List<(string Treatment, Request Request)>();
         foreach (var treatment in new[] { "V1", "V2" }) all.AddRange(BuildAllForTreatment(repo, treatment).Select(request => (treatment, request)));
         if (all.Count != 62) return Fail($"clean paired: expected 62 requests, got {all.Count}");
@@ -109,7 +109,7 @@ internal static class P6TH2CEndPointerCanary
         var root = Path.Combine(repo, "artifacts/v5-p6t-function-membership/p6th2c-clean-v2-capture-20261005");
         if (Directory.Exists(root) && Directory.EnumerateFiles(root, "*.json", SearchOption.AllDirectories).Any()) return Fail("clean V2: immutable capture already exists");
         Directory.CreateDirectory(root);
-        var options = RemoteInferenceOptions.FromEnvironment(); options.Model = "qwen/qwen3.7-flash"; options.OpenRouterProviderRoute = "alibaba"; options.OpenRouterReasoningEffort = "none"; options.RequireJsonObjectResponse = true; options.TransientRequestRetries = 0; options.MaxParallelRequests = 1; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
+        var options = RemoteInferenceOptions.FromEnvironment(); options.Model = "qwen/qwen3.7-flash"; options.OpenRouterProviderRoute = "alibaba"; options.OpenRouterReasoningEffort = "none"; options.RequireJsonObjectResponse = true; options.TransientRequestRetries = 0; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
         var requests = BuildAllForTreatment(repo, "V2"); if (requests.Count != 31) return Fail($"clean V2: expected 31 requests, got {requests.Count}");
         var rows = new List<object>(); var calls = 0; var retries = 0;
         foreach (var request in requests)
@@ -148,7 +148,7 @@ internal static class P6TH2CEndPointerCanary
         var options = RemoteInferenceOptions.FromEnvironment();
         options.Model = "qwen/qwen3.7-flash"; options.OpenRouterProviderRoute = "alibaba";
         options.OpenRouterReasoningEffort = "none"; options.RequireJsonObjectResponse = true;
-        options.TransientRequestRetries = 0; options.MaxParallelRequests = 1; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
+        options.TransientRequestRetries = 0; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
         Directory.CreateDirectory(root);
         var rows = new List<object>(); var call = 0;
         foreach (var request in ordered)
@@ -238,7 +238,6 @@ internal static class P6TH2CEndPointerCanary
         options.OpenRouterReasoningEffort = "none";
         options.RequireJsonObjectResponse = true;
         options.TransientRequestRetries = 0;
-        options.MaxParallelRequests = 1;
         options.ProviderTransportTimeoutSeconds = 300;
         options.Validate();
 
@@ -497,7 +496,6 @@ internal static class P6TH2CEndPointerCanary
         options.OpenRouterReasoningEffort = "none";
         options.RequireJsonObjectResponse = true;
         options.TransientRequestRetries = 0;
-        options.MaxParallelRequests = 1;
         options.ProviderTransportTimeoutSeconds = 300;
         options.Validate();
         Directory.CreateDirectory(retryDir);
@@ -669,7 +667,6 @@ internal static class P6TH2CEndPointerCanary
         options.OpenRouterReasoningEffort = "none";
         options.RequireJsonObjectResponse = true;
         options.TransientRequestRetries = 0;
-        options.MaxParallelRequests = 1;
         options.ProviderTransportTimeoutSeconds = 300;
         options.Validate();
 
@@ -912,7 +909,6 @@ internal static class P6TH2CEndPointerCanary
         options.OpenRouterReasoningEffort = "none";
         options.RequireJsonObjectResponse = true;
         options.TransientRequestRetries = 0;
-        options.MaxParallelRequests = 1;
         options.ProviderTransportTimeoutSeconds = 300;
         options.Validate();
 

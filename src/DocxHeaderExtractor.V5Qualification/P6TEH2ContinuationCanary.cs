@@ -35,7 +35,7 @@ internal static class P6TEH2ContinuationCanary
         if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY"))) return Fail("p6te-h2: OPENROUTER_API_KEY missing");
         var options = RemoteInferenceOptions.FromEnvironment(); options.Model = "qwen/qwen3.7-flash"; options.OpenRouterProviderRoute = "alibaba";
         options.OpenRouterReasoningEffort = "none"; options.RequireJsonObjectResponse = true; options.TransientRequestRetries = 0;
-        options.MaxParallelRequests = 1; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
+        options.ProviderTransportTimeoutSeconds = 300; options.Validate();
 
         OpenRouterExecutionObservation? response = null; string? error = null;
         try

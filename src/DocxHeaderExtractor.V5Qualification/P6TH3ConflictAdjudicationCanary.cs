@@ -69,7 +69,7 @@ internal static class P6TH3ConflictAdjudicationCanary
         var options = RemoteInferenceOptions.FromEnvironment(); options.Model = "qwen/qwen3.7-flash";
         options.OpenRouterProviderRoute = "alibaba"; options.OpenRouterReasoningEffort = "none";
         options.RequireJsonObjectResponse = true; options.TransientRequestRetries = 0;
-        options.MaxParallelRequests = 1; options.ProviderTransportTimeoutSeconds = 300; options.Validate();
+        options.ProviderTransportTimeoutSeconds = 300; options.Validate();
         using var client = OpenRouterQualificationTransport.CreateOwned(options);
         foreach (var item in built)
         {
