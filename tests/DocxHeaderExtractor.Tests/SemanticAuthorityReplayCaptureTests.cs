@@ -14,9 +14,8 @@ public sealed class SemanticAuthorityReplayCaptureTests
         var catalog = new DocumentSourceCatalog([
             new DocumentSourceUnit("p1", 1, "Heading", new SourceAnchor { SourceType = "DOCX", ParagraphId = "p1" }, new(0, 7))]);
         var raw = "{\"headings\":[{\"sourceAlias\":\"S0001\",\"isHeading\":true,\"verbatimText\":\"Heading\",\"semanticRole\":\"SECTION\"},{\"sourceAlias\":\"S9999\",\"isHeading\":true,\"verbatimText\":\"Invented\",\"semanticRole\":\"SECTION\"}]}";
-        var input = new CanonicalSemanticProductionInput(
-            catalog, null, "source-hash", [new CanonicalSemanticPageEvidence("P0001", true, 0, "test")],
-            [], [], [], DocumentId: "DOC-LIVE-CAPTURE", SourceEvidence: Evidence("S0001", "Heading"))
+        var input = new CanonicalSemanticTextProductionInput(
+            catalog, null, "source-hash", null, "DOC-LIVE-CAPTURE", Evidence("S0001", "Heading"), [], [], [])
         {
             ReplayCapture = new SemanticAuthorityCaptureMetadata(
                 "DOCX", "source-universe-hash", "synthetic-model", "boundary-cut", "prompt-hash"),
@@ -25,7 +24,7 @@ public sealed class SemanticAuthorityReplayCaptureTests
         using var classifier = new RawJsonClassifier(raw);
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             classifier, SemanticCoordinateContract.DocxAliasSpan, SemanticEvidencePackingPolicies.FixedOwnedCount120);
-        var result = await CanonicalSemanticProductionEntryPoint.RunAsync(input, model);
+        var result = await CanonicalSemanticTextProductionEntryPoint.RunAsync(input, model);
 
         var bundle = result.ReplayBundle;
         Assert.NotNull(bundle);
@@ -51,15 +50,14 @@ public sealed class SemanticAuthorityReplayCaptureTests
             new CanonicalSemanticProposal("S9999", true, "Invented", SemanticRole: "SECTION"),
         };
         var rawHash = SemanticAuthorityReplayHashing.RawModelResponseHash([JsonSerializer.Serialize(new { headings = parsed })]);
-        var input = new CanonicalSemanticProductionInput(
-            catalog, null, "source-hash", [new CanonicalSemanticPageEvidence("P0001", true, 0, "test")],
-            [], [], [], DocumentId: "DOC-CAPTURE", SourceEvidence: Evidence("S0001", "Heading"))
+        var input = new CanonicalSemanticTextProductionInput(
+            catalog, null, "source-hash", null, "DOC-CAPTURE", Evidence("S0001", "Heading"), [], [], [])
         {
             ReplayCapture = new SemanticAuthorityCaptureMetadata(
                 "DOCX", "source-universe-hash", "synthetic-model", "offline-test-route", "prompt-hash"),
         };
 
-        var result = await CanonicalSemanticProductionEntryPoint.RunAsync(
+        var result = await CanonicalSemanticTextProductionEntryPoint.RunAsync(
             input,
             new ParsedProposalModel(parsed, rawHash));
 

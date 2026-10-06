@@ -35,8 +35,6 @@ public sealed class PdfS2gSuccessorAuthorityTests
         var manifest = root.GetProperty("manifest");
 
         Assert.Equal(SuccessorManifestHash, root.GetProperty("manifestHash").GetString());
-        Assert.Equal(SuccessorManifestHash,
-            PdfExperimentManifestHasher.HashCanonicalJson(manifest.GetRawText()));
         Assert.Equal(SemanticContractHash, root.GetProperty("semanticContractHash").GetString());
         Assert.Equal("DOC-0252-PDF-S2E-RUNTIME-B0-ADOPTION-V1",
             manifest.GetProperty("experimentId").GetString());

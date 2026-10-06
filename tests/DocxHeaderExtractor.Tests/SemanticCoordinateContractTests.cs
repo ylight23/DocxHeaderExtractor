@@ -125,7 +125,7 @@ public sealed class SemanticCoordinateContractTests
         using var classifier = new RecordingClassifier();
         var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
             classifier, contract, SemanticEvidencePackingPolicies.FixedOwnedCount120);
-        await CanonicalSemanticProductionEntryPoint.RunAsync(Input(), model);
+        await CanonicalSemanticTextProductionEntryPoint.RunAsync(Input(), model);
         return (classifier.Prompt!, classifier.Request!);
     }
 
@@ -136,16 +136,16 @@ public sealed class SemanticCoordinateContractTests
         return at < 0 ? request : request[..at];
     }
 
-    private static CanonicalSemanticProductionInput Input()
+    private static CanonicalSemanticTextProductionInput Input()
     {
         var catalog = new DocumentSourceCatalog([
             new DocumentSourceUnit("p1", 1, "Heading", new SourceAnchor { SourceType = "DOCX", ParagraphId = "p1" }, new(0, 7))]);
-        return new CanonicalSemanticProductionInput(
-            catalog, null, "source-hash", [new CanonicalSemanticPageEvidence("P0001", true, 0, "test")],
-            [], [], [], DocumentId: "DOC-CONTRACT-SEAM",
-            SourceEvidence: [new CanonicalSemanticSourceEvidence(
+        return new CanonicalSemanticTextProductionInput(
+            catalog, null, "source-hash", null, "DOC-CONTRACT-SEAM",
+            [new CanonicalSemanticSourceEvidence(
                 "S0001", "p1", 1, "Heading", "document_body",
-                ["test"], new { }, new { }, [], [], [], [])]);
+                ["test"], new { }, new { }, [], [], [], [])],
+            [], [], []);
     }
 
     private sealed class RecordingClassifier : IHeaderClassifier

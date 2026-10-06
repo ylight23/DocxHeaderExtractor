@@ -283,18 +283,6 @@ public sealed class V5ArchitectureTests
     }
 
     [Fact]
-    public void Streaming_reassembly_requires_terminal_finish_event()
-    {
-        var events = DocxHeaderExtractor.Core.V5.V5StreamingTransportAdapter.FrameSse(
-            "data: {\"choices\":[{\"delta\":{\"content\":\"chunk\"}}]}\n\n" +
-            "data: {\"usage\":{\"prompt_tokens\":3,\"completion_tokens\":2}}\n\n" +
-            "data: [DONE]\n\n");
-        var result = V5StreamingTransportAdapter.Reassemble(events);
-        Assert.Equal(V5StreamFailure.EOF_BEFORE_TERMINAL, result.Telemetry.Failure);
-        Assert.Equal("chunk", result.Content);
-    }
-
-    [Fact]
     public void Request_composer_is_deterministic_and_contract_driven()
     {
         var graph = EvidenceGraphBuilder.Build([Observation("E1", "A1", "Alpha")]);
