@@ -86,7 +86,7 @@ public static class PdfCanonicalExtraction
         // historical canonical engine it has no semantic fallback: invalid stage output is
         // withheld by that adapter rather than delegated to a second membership authority.
         authority = await PdfFunctionConditionedHeadingAuthorityAdapter.RunAsync(
-            file.LocalPath, used, semanticLaneOptions, options.ReplayCapture, ct);
+            file.LocalPath, used, semanticLaneOptions, ct);
         // The same repair step the DOCX lane applies, through the same implementation. A quarantine
         // that silently did nothing on one format would make the harness's repair loop mean two
         // different things depending on what was uploaded.

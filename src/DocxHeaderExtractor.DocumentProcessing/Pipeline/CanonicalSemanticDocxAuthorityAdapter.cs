@@ -17,8 +17,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         SourceDocument sourceDocument,
         IHeaderClassifier? transport,
         CancellationToken cancellationToken,
-        CanonicalSemanticExperiment? experiment = null,
-        SemanticAuthorityReplayCaptureRequest? replayCapture = null)
+        CanonicalSemanticExperiment? experiment = null)
     {
         ArgumentNullException.ThrowIfNull(sourceDocument);
         var source = DocxAuthorityPipeline.BuildForAudit(sourceDocument);
@@ -34,20 +33,6 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             .OrderBy(item => item.Source.SourceOrdinal)
             .Select(item => EvidenceOf(item, aliasesBySourceId[item.Source.SourceId].Alias))
             .ToArray();
-        replayCapture = replayCapture is null
-            ? null
-            : replayCapture with
-            {
-                Metadata = replayCapture.Metadata with
-                {
-                    Profile = replayCapture.Metadata.Profile ?? "DOCX_ALIAS_SPAN",
-                    PackingPolicy = replayCapture.Metadata.PackingPolicy ?? "FIXED_OWNED_COUNT_120",
-                    RepeatIdentity = replayCapture.Metadata.RepeatIdentity ?? replayCapture.Metadata.RunId,
-                    RequestVersion = SemanticRequestVersions.Require(
-                        (experiment ?? CanonicalSemanticExperiment.Baseline).RequestVersion).ToString(),
-                },
-            };
-
         var input = new CanonicalSemanticTextProductionInput(
             catalog,
             null,
@@ -60,7 +45,6 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             evidence.SelectMany(item => item.LocalBefore.Concat(item.LocalAfter)).ToArray())
         {
             OwnedAliases = null,
-            ReplayCapture = replayCapture?.Metadata,
         };
 
         CanonicalSemanticTextProductionResult result;
@@ -83,8 +67,6 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                 requestId: $"docx:{sourceDocument.DocumentId}",
                 cancellationToken: cancellationToken);
         }
-
-        var replayPersistence = replayCapture?.Persist(result.ReplayBundle, result.TransportCalls);
 
         var decisions = result.TextPipeline.BoundHeadings.Select(item => new PdfBlockDecision(
             item.SourceId,
@@ -219,11 +201,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         return new StructuralAuthorityResult(
             structuralAuthority,
             audit,
-            "docx-canonical-vnext-semantic-authority")
-        {
-            ReplayBundle = result.ReplayBundle,
-            ReplayPersistence = replayPersistence,
-        };
+            "docx-canonical-vnext-semantic-authority");
     }
 
     /// <summary>

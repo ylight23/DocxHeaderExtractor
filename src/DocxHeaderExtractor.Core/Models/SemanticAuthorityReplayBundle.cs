@@ -11,35 +11,6 @@ public static class SemanticAuthorityReplaySchema
 }
 
 /// <summary>
-/// Experiment-owned identity supplied to the live semantic route. It describes the run but does
-/// not own proposal persistence; the semantic engine emits the immutable bundle and the harness
-/// decides where to store it.
-/// </summary>
-public sealed record SemanticAuthorityCaptureMetadata(
-    string SourceType,
-    string SourceUniverseHash,
-    string ModelIdentity,
-    string? ModelRoute,
-    string PromptHash,
-    string? GoldId = null,
-    string? GoldHash = null,
-    string? EvaluatorIdentity = null,
-    string? ManifestHash = null,
-    string? RunId = null,
-    string? Commit = null,
-    DateTimeOffset? CreatedAt = null,
-    string? Profile = null,
-    string? PackingPolicy = null,
-    string? RepeatIdentity = null)
-{
-    /// <summary>
-    /// The model-visible request version the run sent (V2_ATTENTION_FREE onward). Absent on runs
-    /// captured before request versions existed, which their prompt hash identifies as V1.
-    /// </summary>
-    public string? RequestVersion { get; init; }
-}
-
-/// <summary>
 /// Immutable authority captured after model JSON has become semantic proposals and before any
 /// source-aware validation or binding. Run metadata is descriptive only and is excluded from the
 /// deterministic bundle hash.
@@ -168,8 +139,6 @@ public static class SemanticAuthorityReplayHashing
         ArgumentNullException.ThrowIfNull(responses);
         return HashValue(responses);
     }
-
-    public static string CanonicalValueHash<T>(T value) => HashValue(value);
 
     public static string SemanticContractHash() => HashValue(CanonicalSemanticContract.Schema());
 

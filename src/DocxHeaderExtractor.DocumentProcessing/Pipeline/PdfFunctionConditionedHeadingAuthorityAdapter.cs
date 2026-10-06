@@ -44,7 +44,6 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         string pdfPath,
         IHeaderClassifier? classifier,
         SemanticLaneOptions? semanticLaneOptions,
-        SemanticAuthorityReplayCaptureRequest? replayCapture,
         CancellationToken ct)
     {
         var authority = PdfStructuredSourceAuthorityBuilder.Build(pdfPath);
@@ -54,8 +53,6 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-function-conditioned-llm-disabled") { SourceCatalog = authority.Catalog };
         if (classifier is not IFrozenRequestHeaderClassifier frozen)
             throw new InvalidOperationException("PDF_H2C_PRODUCTION_ROUTE_REQUIRES_FROZEN_REQUEST_TRANSPORT");
-        if (replayCapture is not null)
-            throw new InvalidOperationException("PDF_H2C_REPLAY_CAPTURE_UNSUPPORTED");
 
         await using var scope = ProductionCheckpointScope.Create();
         await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, Path.GetFileNameWithoutExtension(pdfPath));

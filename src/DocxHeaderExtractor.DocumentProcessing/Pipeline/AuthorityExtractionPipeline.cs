@@ -87,7 +87,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         var sourceDocument = new OpenXmlDocumentSource().Read(inputPath);
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
             var authority = await CanonicalSemanticDocxAuthorityAdapter.RunAsync(
-                sourceDocument, analyst, ct, replayCapture: _options.ReplayCapture);
+                sourceDocument, analyst, ct);
             authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
             var audit = authority.Audit;
             const string route = "docx-canonical-vnext";

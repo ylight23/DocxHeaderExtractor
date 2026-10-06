@@ -31,9 +31,6 @@ public sealed record CanonicalSemanticTextInferenceResult(
     CanonicalSemanticInferenceTelemetry Telemetry)
 {
     public IReadOnlyList<SemanticContractIssue> ContractIssues { get; init; } = [];
-    public IReadOnlyList<CanonicalSemanticProposal>? ParsedProposals { get; init; }
-    public string? RawModelResponseHash { get; init; }
-    public IReadOnlyList<SemanticAuthorityTransportCall> TransportCalls { get; init; } = [];
 }
 
 /// <summary>Shared text-model boundary used by production and historical qualification routes.</summary>
