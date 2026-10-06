@@ -10,8 +10,8 @@ that lane the only PDF lane and deletes the old one outright — no profile, no 
 |---|---|---|
 | source authority | structured segment atoms (`L{row}:S{segment}`), facts `PDF_SOURCE_FACTS_V3` | `PdfStructuredSourceAuthorityBuilder` |
 | line / block grouping | visual line + corridor segmentation; continuation by the document's own line pitch | `PdfLineExtraction`, `PdfSemanticBlockGrouper` |
-| request | `V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY` | `CanonicalSemanticPdfAuthorityAdapter.Request` |
-| contract | `PdfSemanticFunctionMembershipV1` (validate, decode, canonicalize, bind) | `SemanticCoordinateContract` |
+| request | qualified function-conditioned chain: F1, G2A, H2-C V2 | `PdfFunctionConditionedHeadingAuthorityAdapter` |
+| contract | frozen occurrence/function, anchor and exact-boundary ledgers | strict stage parsers and binder |
 | packing | P05 resource-bounded: 90,000 bytes, 28,000 est. tokens, 96 owned, 128 visible, 8 halo. Sliding window evaluated offline and not adopted (`sliding-window-offline-calibration.v1.md`) | `SemanticEvidencePackingPolicies.PdfResourceBoundedP05` |
 | owned evidence style | raw measurements and ratios only; no bold/size judgement, neutral attention | `PdfSourceEvidence` |
 | placement | one bounded placement pass (hierarchy source for V4 claims) | `CanonicalSemanticPlacementCoordinator` |

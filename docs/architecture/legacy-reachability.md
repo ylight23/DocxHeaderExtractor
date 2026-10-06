@@ -65,8 +65,9 @@ no caller and was deleted along with `PdfTextbookOutline`, the other PDF strateg
 `PdfLegalTitleGrounder`, `PdfSemanticRecoverySelector`, `PdfVisualTextRecovery` and
 `PdfProposalConflictResolver`.
 
-A PDF upload is now extracted by `CanonicalSemanticPdfAuthorityAdapter`, which reads that PDF and
-nothing else and runs the same semantic stage as the DOCX lane.
+A PDF upload is extracted by `PdfFunctionConditionedHeadingAuthorityAdapter`, which reads that PDF
+alone and runs the qualified `F1 → G2A → H2-C V2` authority chain. The historical canonical semantic
+adapter is retained only under the V5 qualification assembly for replay and comparison.
 
 `PdfLegacyValidatedOutputPolicy`, hierarchy artifact evaluation, and shadow comparison remain
 replay/diagnostic surfaces, not production authority.

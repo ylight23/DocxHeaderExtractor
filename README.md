@@ -11,8 +11,8 @@ Mỗi định dạng có đúng một lane, không có đường dự phòng:
 | | DOCX | PDF |
 |---|---|---|
 | Nguồn | paragraph OpenXML (`OpenXmlDocumentSource`) | segment atom theo dòng hình ảnh `L{row}:S{segment}`, typography `PDF_SOURCE_FACTS_V3` |
-| Request | `V2_ATTENTION_FREE` | `V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY` (một `semanticFunction` đóng cho mỗi claim) |
-| Contract | `DocxAliasSpan` (alias + UTF-16 span) | `PdfSemanticFunctionMembershipV1` (structured source parts) |
+| Request | `V2_ATTENTION_FREE` | function-conditioned `F1 → G2A → H2-C V2` |
+| Contract | `DocxAliasSpan` (alias + UTF-16 span) | frozen occurrence ledger + strict anchor/end-boundary binding |
 | Chia request | `FIXED_OWNED_COUNT_120` | P05 resource-bounded (90 KB, 96 atom sở hữu, halo 8) |
 
 Evidence gửi mô hình là dữ kiện nguồn (text, số đo typography, vị trí trang, đánh số); harness

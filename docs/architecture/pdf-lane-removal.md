@@ -27,9 +27,9 @@ over the model.
 
 ## What replaced it
 
-A PDF upload is extracted by `CanonicalSemanticPdfAuthorityAdapter` from that PDF alone. Everything
-after source occurrences is `CanonicalSemanticEngine`, shared with the DOCX lane, so the two differ
-only in how the source is read.
+A PDF upload is extracted by `PdfFunctionConditionedHeadingAuthorityAdapter` from that PDF alone.
+Its live authority chain is `F1 → G2A → H2-C V2 → strict binder/placement`; it does not reuse the
+historical generic PDF semantic engine.
 
 ## Reading the older documents
 

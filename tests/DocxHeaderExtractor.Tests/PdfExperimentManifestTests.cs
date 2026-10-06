@@ -161,32 +161,6 @@ public sealed class PdfExperimentManifestTests
     }
 
     [Fact]
-    public async Task Adapter_rejects_a_run_whose_manifest_declares_another_packing_policy_before_any_transport()
-    {
-        // The source universe and contract match the runtime the adapter builds, so the packing
-        // check is the one this isolates.
-        const string StructuredSourceAliasUniverseHash =
-            "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f";
-        var manifest = BuildManifest() with
-        {
-            SourceUniverseSha256 = StructuredSourceAliasUniverseHash,
-            SemanticContractHash = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.SchemaHash(),
-            PackingPolicyId = SemanticEvidencePackingPolicies.FixedOwnedCount120Id,
-        };
-        var gate = new PdfExperimentExecutionGate(manifest, Approval(manifest),
-            Runtime(manifest) with { SourceUniverseSha256 = StructuredSourceAliasUniverseHash });
-        using var fake = new RequestCapturingClassifier();
-
-        var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
-            CanonicalSemanticPdfAuthorityAdapter.RunAsync(
-                Path(Pdf), fake, CancellationToken.None, experimentGate: gate));
-
-        Assert.Equal("PDF_EXPERIMENT_PACKING_POLICY_MISMATCH", error.Message);
-        Assert.Equal(0, gate.ProviderCalls);
-        Assert.Empty(fake.Requests);
-    }
-
-    [Fact]
     public async Task Missing_approval_blocks_the_fake_transport()
     {
         var manifest = BuildManifest();

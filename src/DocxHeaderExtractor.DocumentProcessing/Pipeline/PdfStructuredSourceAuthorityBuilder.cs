@@ -8,13 +8,8 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// <summary>
 /// The coordinate atoms of a PDF and the evidence attached to each - two hashes that pin exactly
 /// that and nothing past it. How they partition into requests is the packing policy's concern.
-/// <para>
-/// A fourth hash used to live here, over a request format this type invented for measurement. It
-/// disagreed with what production actually sends, because inventing a second format is exactly how
-/// that happens. Request bytes are no longer this type's concern at all: build a
-/// <see cref="CanonicalSemanticProductionInput"/> from <see cref="CreateProductionInput"/> and ask
-/// the one real composer, the same way a live call would.
-/// </para>
+/// <para>Request composition is deliberately outside this source authority. The promoted PDF
+/// route consumes these parser-owned facts directly through F1 → G2A → H2-C V2.</para>
 /// </summary>
 internal sealed record PdfStructuredSourceAuthority(
     IReadOnlyList<SemanticSourceAtom> Atoms,
@@ -28,7 +23,7 @@ internal sealed record PdfStructuredSourceAuthority(
     DocumentSourceCatalog Catalog,
     IReadOnlyList<SemanticSourceAlias> Aliases,
     IReadOnlyDictionary<string, int> OrdinalBySourceId,
-    int ParserLineCount) : IPdfSemanticSourceAuthority
+    int ParserLineCount)
 {
     /// <summary>
     /// The coordinate universe identity a live route checks before it will transport.
@@ -37,33 +32,6 @@ internal sealed record PdfStructuredSourceAuthority(
     /// </summary>
     public string SourceUniverseSha256 => SourceAliasUniverseHash;
 
-    /// <summary>
-    /// What a live call would actually build and send: the same input shape the production
-    /// adapter would construct, with the atoms' layout labels attached as context rather than as
-    /// coordinates.
-    /// </summary>
-    public CanonicalSemanticProductionInput CreateProductionInput(string documentId) =>
-        new(
-            Catalog,
-            null,
-            SourceSha256,
-            [new CanonicalSemanticPageEvidence("PDF", true, 0, "pdf-source")],
-            Evidence.Select(item => $"[{item.SourceAlias}] {item.ExactSourceText}").ToArray(),
-            [],
-            Evidence.SelectMany(item => item.LocalBefore.Concat(item.LocalAfter)).ToArray(),
-            DocumentId: documentId,
-            SourceEvidence: Evidence)
-        {
-            ExpectedSourceSha256 = SourceSha256,
-            LayoutBlockBySourceId = LayoutBlockByAtom,
-            SourceUniverseSha256 = SourceUniverseSha256,
-            // The contract that issued the schema also validates, decodes and binds. Its aliases
-            // are the atoms' own - deriving them from the catalog instead would renumber every
-            // coordinate into a scheme the model was never shown.
-            CoordinateContract = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1,
-            SourceAliases = Aliases,
-            SourceAtoms = Atoms,
-        };
 }
 
 /// <summary>

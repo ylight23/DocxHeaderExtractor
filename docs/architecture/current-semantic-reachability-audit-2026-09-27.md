@@ -24,9 +24,8 @@ Web / CLI / MCP
         -> CanonicalSemanticDocxAuthorityAdapter
      -> PdfCanonicalSourceExtractor
         -> PdfCanonicalExtraction
-        -> CanonicalSemanticPdfAuthorityAdapter
-  -> CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel (only when a transport is supplied)
-  -> CanonicalSemanticProductionEntryPoint
+        -> PdfFunctionConditionedHeadingAuthorityAdapter
+  -> F1 function membership -> G2A anchor existence -> H2-C V2 exact boundary
   -> CanonicalSemanticPipeline / exact source-part binding / hard binding validation
   -> CanonicalSemanticIdentityResolver + ModelRelationHierarchyResolver
   -> CanonicalSemanticPlacementCoordinator (only unresolved, only with supplied transport)
@@ -55,9 +54,9 @@ Abbreviations: `P` production reachable; `M` model-visible; `T` may change seman
 | --- | --- | ---:| ---:| --- | --- | --- | --- |
 | `Routing/CanonicalExtractionDispatcher` | AgentHarness tool, extraction boundary tests | yes | no | — | host routing | LIVE_REQUIRED | Dispatcher is built only with DOCX/PDF canonical extractors. |
 | `Pipeline/AuthorityExtractionPipeline` | DOCX extractor, explicit repair package | yes | no | drop only via explicit quarantine rerun | DOCX orchestration | LIVE_REQUIRED | Calls `CanonicalSemanticDocxAuthorityAdapter`; diagnostics are gated. |
-| `Pipeline/PdfCanonicalExtraction` | PDF extractor; Web PDF diagnostics endpoint | yes | no | projection only after authority | PDF orchestration | LIVE_REQUIRED | Calls `CanonicalSemanticPdfAuthorityAdapter`. |
+| `Pipeline/PdfCanonicalExtraction` | PDF extractor; Web PDF diagnostics endpoint | yes | no | projection only after authority | PDF orchestration | LIVE_REQUIRED | Calls `PdfFunctionConditionedHeadingAuthorityAdapter`. |
 | `Pipeline/CanonicalSemanticDocxAuthorityAdapter` | Authority pipeline, direct adapter tests | yes | yes | +/−, M/S, B | DOCX semantic adapter | LIVE_REQUIRED | Builds source evidence then calls the production entry point. |
-| `Pipeline/CanonicalSemanticPdfAuthorityAdapter` | PDF extraction, PDF tests/replay | yes | yes | +/−, M/S, B, H | PDF semantic adapter | LIVE_REQUIRED | Calls semantic production, placement, hierarchy and materialization. |
+| `V5Qualification/LegacyPdf/CanonicalSemanticPdfAuthorityAdapter` | historical replay/evaluation only | no | yes | historical V4 | retired PDF semantic adapter | QUALIFICATION_ONLY | Not production reachable. |
 | `Pipeline/CanonicalSemanticEngine` | both adapters; placement coordinator | yes | yes | model proposal meaning only | prompt/request owner | LIVE_REQUIRED | `HeaderClassifierCanonicalTextModel` invokes `BoundaryCutAsync`. |
 | `Core/CanonicalSemanticProductionEntryPoint` | both adapters | yes | yes | +/−, M/S, B | semantic contract/control-plane entry | LIVE_REQUIRED | Canonical production result feeds both lanes. |
 | `Core/CanonicalSemanticPipeline`, `SemanticSourcePartBinder`, `SemanticSourcePartsContractV2` | production entry point | yes | no | drop invalid, bind exact parts, merge multipart | exact binding / hard validation | LIVE_REQUIRED | Rejects non-verbatim/invalid pointers rather than inventing text. |

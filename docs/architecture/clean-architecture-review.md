@@ -24,9 +24,10 @@ CLI / Web / MCP / AgentHarness
         -> CanonicalExtractionDispatcher     (re-reads the file; routes on what it actually is)
         -> DocxCanonicalSourceExtractor      or   PdfCanonicalSourceExtractor
              -> AuthorityExtractionPipeline            -> PdfCanonicalExtraction
-             -> CanonicalSemanticDocxAuthorityAdapter  -> CanonicalSemanticPdfAuthorityAdapter
-        -> CanonicalSemanticEngine           (shared: prompt, segmentation, contract, binder,
+             -> CanonicalSemanticDocxAuthorityAdapter  -> PdfFunctionConditionedHeadingAuthorityAdapter
+        -> CanonicalSemanticEngine           (DOCX only: prompt, segmentation, contract, binder,
                                               hierarchy resolver, placement)
+                                              PDF: F1 -> G2A -> H2-C V2 -> binder/placement
         -> PdfProposalValidator -> CanonicalStructureMaterializer
         -> canonical document + compatibility outline
         ------------------------------------ semantic boundary ------------------------------------

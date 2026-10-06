@@ -22,9 +22,8 @@ public sealed class DocxCanonicalSourceExtractor(AuthorityExtractionPipeline pip
 /// <summary>
 /// The PDF lane, owning PDF uploads and nothing else.
 /// <para>
-/// It runs the same semantic stage as the DOCX lane through
-/// <c>CanonicalSemanticPdfAuthorityAdapter</c>, reading only the uploaded PDF. It never looks for a
-/// DOCX, and its result stands alone: a PDF and a DOCX of the same document are two independent
+/// It runs the qualified function-conditioned PDF authority chain, reading only the uploaded PDF.
+/// It never looks for a DOCX, and its result stands alone: a PDF and a DOCX of the same document are two independent
 /// canonical documents unless a user asks for them to be compared.
 /// </para>
 /// <para>

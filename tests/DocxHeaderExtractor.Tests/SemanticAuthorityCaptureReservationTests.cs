@@ -39,30 +39,6 @@ public sealed class SemanticAuthorityCaptureReservationTests
     }
 
     [Fact]
-    public async Task Pdf_adapter_rejects_existing_baseline_before_classifier_boundary()
-    {
-        var directory = TestRepository.Path(
-            "eval/a99-closed-loop/structured-v2-target-baseline-v1/DOC-0252/r1");
-        using var classifier = new RequestCapturingClassifier();
-        var capture = Request(directory, "r1");
-
-        var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
-            CanonicalSemanticPdfAuthorityAdapter.RunAsync(
-                TestRepository.Path(
-                    "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf"),
-                classifier,
-                CancellationToken.None,
-                replayCapture: capture,
-                runPlacement: false));
-
-        // The frozen capture was taken under an earlier packing and authority profile, so the
-        // current lane's identity collides with it rather than repeating it; either way the
-        // existing baseline is refused before anything reaches the classifier.
-        Assert.Equal("TRANSPORT_CAPTURE_IDENTITY_COLLISION", error.Message);
-        Assert.Empty(classifier.Requests);
-    }
-
-    [Fact]
     public async Task Concurrent_duplicate_attempts_have_one_reservation_and_no_duplicate_transport()
     {
         var directory = TempDirectory();
