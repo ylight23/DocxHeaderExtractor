@@ -28,31 +28,6 @@ public sealed class CanonicalSemanticRequestComposerTests
         "91005fabc2e978d5ab4d900bc66ebeb27e563628056b3073cef22896687ac72e";
 
     [Fact]
-    public void Compose_concatenates_exactly_packet_then_the_literal_postfix_then_schema()
-    {
-        var schema = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.Schema();
-        var expected = "{\"a\":1}\nSCHEMA=" + System.Text.Json.JsonSerializer.Serialize(schema);
-
-        Assert.Equal(expected, CanonicalSemanticRequestComposer.Compose(
-            "{\"a\":1}", SemanticCoordinateContract.PdfSemanticFunctionMembershipV1));
-    }
-
-    [Fact]
-    public void The_object_overload_serializes_with_the_frameworks_own_default_options()
-    {
-        // Not the relaxed canonical-hashing encoder used elsewhere in this repository for freeze
-        // artifacts. Every request already on the wire was built with the framework default, and a
-        // different encoder here would be a byte-identical-looking but different composer - the
-        // defect this type exists to remove, reintroduced one call later.
-        var viaObject = CanonicalSemanticRequestComposer.Compose(
-            new { text = "Ả" }, SemanticCoordinateContract.PdfSemanticFunctionMembershipV1);
-        var viaDefaultSerializer = System.Text.Json.JsonSerializer.Serialize(new { text = "Ả" });
-
-        Assert.StartsWith(viaDefaultSerializer, viaObject, StringComparison.Ordinal);
-        Assert.Contains("\\u1EA2", viaObject, StringComparison.OrdinalIgnoreCase);
-    }
-
-    [Fact]
     public void Hash_is_plain_sha256_of_the_exact_string()
     {
         Assert.Equal(
@@ -66,12 +41,6 @@ public sealed class CanonicalSemanticRequestComposerTests
     public async Task InferAsync_and_ComposeRequests_produce_identical_bytes_for_docx()
     {
         await AssertComposerMatchesInferAsync(SemanticCoordinateContract.DocxAliasSpan);
-    }
-
-    [Fact]
-    public async Task InferAsync_and_ComposeRequests_produce_identical_bytes_for_pdf()
-    {
-        await AssertComposerMatchesInferAsync(SemanticCoordinateContract.PdfSemanticFunctionMembershipV1);
     }
 
     private static async Task AssertComposerMatchesInferAsync(SemanticCoordinateContract contract)

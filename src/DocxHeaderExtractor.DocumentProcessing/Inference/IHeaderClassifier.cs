@@ -68,7 +68,7 @@ public interface IFrozenRequestHeaderClassifier : IHeaderClassifier
 
 /// <summary>
 /// Marker issued only by a composition root that has authorized the qualified PDF route. It is
-/// deliberately distinct from <see cref="PdfExperimentExecutionGate"/>: ordinary production must
+/// deliberately distinct from experimental qualification transport: ordinary production must
 /// not borrow an experiment manifest merely to use its approved provider transport.
 /// </summary>
 public interface IPdfProductionAuthorizedFrozenRequestClassifier : IFrozenRequestHeaderClassifier

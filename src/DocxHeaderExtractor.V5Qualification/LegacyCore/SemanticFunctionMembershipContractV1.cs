@@ -130,3 +130,4 @@ public static class PdfSemanticFunctionMembershipPromptClause
         coordinates, generated text, or any field not present in the schema.
         """;
 }
+

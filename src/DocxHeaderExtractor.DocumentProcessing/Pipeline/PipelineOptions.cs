@@ -20,7 +20,6 @@ public sealed class PipelineOptions
     /// Optional fail-closed gate for an explicitly frozen PDF provider experiment. Null preserves
     /// ordinary non-experiment runtime behavior; an experiment must supply its manifest-bound gate.
     /// </summary>
-    public PdfExperimentExecutionGate? ExperimentGate { get; set; }
 
     /// <summary>
     /// Explicit experiment-only replay capture. Null keeps ordinary extraction free of artifact

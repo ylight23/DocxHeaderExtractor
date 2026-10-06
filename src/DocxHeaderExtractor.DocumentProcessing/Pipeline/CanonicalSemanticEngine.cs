@@ -65,25 +65,6 @@ internal static class CanonicalSemanticEngine
         the harness derives depth from the relations you give.
         """;
 
-    private const string RawSemanticFunctionMembershipPrompt = """
-        You are the semantic-function membership stage of the A99 canonical document pipeline.
-        Return strict JSON matching the supplied schema. Classify occurrences, not strings. An
-        identical string in a table of contents and in body text can have different functions.
-
-        semanticFunction is the only membership authority. DOCUMENT_IDENTITY identifies the
-        artifact's own semantic title identity. REGION_STRUCTURE names or opens a semantic region
-        whose following content belongs beneath it. NAVIGATION points to or lists content elsewhere.
-        PAGE_FURNITURE serves repeated page presentation. OBJECT_CAPTION describes an embedded
-        object. TABLE_STRUCTURE is internal to a table. FOOTNOTE_OR_SOURCE supports other content.
-        BODY_INFORMATION is ordinary content without a region-opening function. METADATA describes
-        the artifact without being its title identity.
-
-        Return sourceParts and exactly one closed semanticFunction for each occurrence you report.
-        Do not return membership, isHeading, semanticRole, hierarchy, relation, scope, titleRelation,
-        offsets, or any other field. The harness derives membership: only DOCUMENT_IDENTITY and
-        REGION_STRUCTURE are members; every other function is not.
-        """;
-
     /// <summary>
     /// Normalizes to LF, because a prompt is bytes on the wire and must not depend on how the
     /// source file happened to be checked out.
@@ -111,16 +92,12 @@ internal static class CanonicalSemanticEngine
     /// <summary>The placement prompt, line endings settled.</summary>
     internal static string PlacementPrompt { get; } = NormalizePromptLineEndings(RawPlacementPrompt);
 
-    internal static string SemanticFunctionMembershipPrompt { get; } =
-        NormalizePromptLineEndings(RawSemanticFunctionMembershipPrompt);
-
     /// <summary>The discovery prompt of a request version; an unknown version is refused.</summary>
-    internal static string SystemPromptOf(SemanticRequestVersion version) =>
-        SemanticRequestVersions.Require(version) switch
-        {
-            SemanticRequestVersion.V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY => SemanticFunctionMembershipPrompt,
-            _ => SystemPrompt,
-        };
+    internal static string SystemPromptOf(SemanticRequestVersion version)
+    {
+        SemanticRequestVersions.Require(version);
+        return SystemPrompt;
+    }
 
     /// <summary>The prompt a request version sends, before any coordinate contract clause.</summary>
     internal static string SystemPromptFor(CanonicalSemanticExperiment experiment) =>

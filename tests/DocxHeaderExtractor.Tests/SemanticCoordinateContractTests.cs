@@ -35,17 +35,6 @@ public sealed class SemanticCoordinateContractTests
     }
 
     [Fact]
-    public void The_lanes_declare_different_coordinate_systems_over_that_one_schema()
-    {
-        // The difference that already existed in Gold and had nowhere to live in the code.
-        Assert.Equal("SOURCE_ALIAS_PLUS_UTF16_SPAN", SemanticCoordinateContract.DocxAliasSpan.CoordinateSystem);
-        Assert.Equal("STRUCTURED_SOURCE_PART_TUPLE", SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.CoordinateSystem);
-        Assert.NotEqual(
-            SemanticCoordinateContract.DocxAliasSpan.ProtocolVersion,
-            SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.ProtocolVersion);
-    }
-
-    [Fact]
     public async Task The_engine_sends_the_schema_it_was_given_and_not_a_global_one()
     {
         // A lane that hands over a different contract gets a different request, without the engine
@@ -110,13 +99,6 @@ public sealed class SemanticCoordinateContractTests
         Assert.DoesNotContain(
             (await RunWith(SemanticCoordinateContract.DocxAliasSpan)).ContractIssues,
             issue => issue.Code == "PROBE_REFUSED");
-    }
-
-    [Fact]
-    public void Neither_lane_can_reach_the_other_contract()
-    {
-        Assert.NotSame(SemanticCoordinateContract.DocxAliasSpan, SemanticCoordinateContract.PdfSemanticFunctionMembershipV1);
-        Assert.NotEqual(SemanticCoordinateContract.DocxAliasSpan, SemanticCoordinateContract.PdfSemanticFunctionMembershipV1);
     }
 
     // ---- helpers ------------------------------------------------------------------------------

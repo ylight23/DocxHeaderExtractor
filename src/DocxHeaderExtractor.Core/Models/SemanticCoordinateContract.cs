@@ -94,14 +94,4 @@ public sealed record SemanticCoordinateContract(
     /// PDF: structured source parts over segment atoms, one closed semantic function per claim, with
     /// membership derived by the harness. The only PDF contract.
     /// </summary>
-    public static readonly SemanticCoordinateContract PdfSemanticFunctionMembershipV1 = new(
-        "STRUCTURED_SOURCE_PART_TUPLE",
-        SemanticFunctionMembershipContractV1.ProtocolVersion,
-        SemanticFunctionMembershipContractV1.Schema,
-        SemanticFunctionMembershipContractV1.ValidateJson,
-        SemanticFunctionMembershipContractV1.Decode,
-        SemanticFunctionMembershipContractV1.Binding)
-    {
-        PromptClause = PdfSemanticFunctionMembershipPromptClause.Text,
-    };
 }

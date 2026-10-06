@@ -187,7 +187,7 @@ public sealed class PdfExperimentExecutionGate
         if (_manifest.SemanticContractHash is { } manifestSemanticContractHash)
         {
             Require(manifestSemanticContractHash,
-                SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.SchemaHash(),
+                SemanticFunctionMembershipContractV1.SchemaHash(),
                 "SEMANTIC_CONTRACT_HASH_MISMATCH");
         }
 
@@ -212,7 +212,7 @@ public sealed class PdfExperimentExecutionGate
 
         // The schema the PDF lane actually sends; there is one PDF contract.
         Require(_manifest.SemanticContractHash,
-            SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.SchemaHash(),
+            SemanticFunctionMembershipContractV1.SchemaHash(),
             "SEMANTIC_CONTRACT_HASH_MISMATCH");
     }
 

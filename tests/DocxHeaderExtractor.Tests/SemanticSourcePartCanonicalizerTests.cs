@@ -259,55 +259,6 @@ public sealed class SemanticSourcePartCanonicalizerTests
     }
 
     [Fact]
-    public void The_pdf_schema_does_not_offer_the_model_a_selection_mode()
-    {
-        var schema = JsonSerializer.Serialize(SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.Schema());
-
-        Assert.DoesNotContain("selectionMode", schema, StringComparison.Ordinal);
-        Assert.Contains("verbatimText", schema, StringComparison.Ordinal);
-        Assert.DoesNotContain("selectionMode", SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.PromptClause!,
-            StringComparison.Ordinal);
-    }
-
-    [Fact]
-    public void A_pdf_reply_decodes_binds_and_never_shows_the_binder_a_pending_mode()
-    {
-        var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
-        using var reply = JsonDocument.Parse("""
-            {"headings":[{"semanticFunction":"REGION_STRUCTURE","sourceParts":[{"sourceAlias":"L0400:S0"}]}]}
-            """);
-        var entry = reply.RootElement.GetProperty("headings")[0];
-
-        var decoded = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.Decode(entry);
-        var proposal = Assert.Single(decoded.Proposals);
-        Assert.Equal(SemanticSourcePartCanonicalizer.PendingSelectionMode, proposal.SourceParts![0].SelectionMode);
-
-        var outcome = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.BindProposals(
-            new SemanticCoordinateBindingRequest([proposal], plan.Aliases, null, plan.Atoms));
-
-        var bound = Assert.Single(outcome.Bound);
-        Assert.Equal("L0400:S0:0-44", string.Join("|", bound.Parts.Select(part => $"{part.Alias}:{part.Start}-{part.End}")));
-    }
-
-    [Fact]
-    public void A_pdf_claim_whose_quote_is_absent_is_refused_by_name()
-    {
-        var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
-        using var reply = JsonDocument.Parse("""
-            {"headings":[{"semanticFunction":"REGION_STRUCTURE","sourceParts":[
-              {"sourceAlias":"L0400:S0","verbatimText":"text that is not in this atom"}]}]}
-            """);
-
-        var decoded = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.Decode(
-            reply.RootElement.GetProperty("headings")[0]);
-        var outcome = SemanticCoordinateContract.PdfSemanticFunctionMembershipV1.BindProposals(
-            new SemanticCoordinateBindingRequest(decoded.Proposals, plan.Aliases, null, plan.Atoms));
-
-        Assert.Empty(outcome.Bound);
-        Assert.Equal(nameof(SemanticSourcePartsStatus.TextNotInAtom), Assert.Single(outcome.Observations).Reason);
-    }
-
-    [Fact]
     public void No_v2_input_can_reach_the_binder_in_the_shape_the_binder_refuses()
     {
         // The v1 audit found four layers that admitted WHOLE_ALIAS carrying verbatimText and one, the

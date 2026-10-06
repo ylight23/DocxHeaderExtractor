@@ -20,12 +20,6 @@ internal enum SemanticRequestVersion
     /// </summary>
     V2_ATTENTION_FREE = 2,
 
-    /// <summary>
-    /// The PDF lane: structured source parts over segment atoms, answered with one closed
-    /// semanticFunction per claim instead of isHeading or semanticRole.
-    /// </summary>
-    V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY = 4,
-
 }
 
 internal static class SemanticRequestVersions
@@ -33,14 +27,10 @@ internal static class SemanticRequestVersions
     /// <summary>What the DOCX lane sends.</summary>
     public const SemanticRequestVersion Docx = SemanticRequestVersion.V2_ATTENTION_FREE;
 
-    /// <summary>What the PDF lane sends.</summary>
-    public const SemanticRequestVersion Pdf = SemanticRequestVersion.V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY;
-
     /// <summary>The version, or a refusal: an unknown version is never mapped to a known one.</summary>
     public static SemanticRequestVersion Require(SemanticRequestVersion version) => version switch
     {
-        SemanticRequestVersion.V2_ATTENTION_FREE
-            or SemanticRequestVersion.V4_SEMANTIC_FUNCTION_SINGLE_AUTHORITY => version,
+        SemanticRequestVersion.V2_ATTENTION_FREE => version,
         _ => throw new InvalidOperationException($"SEMANTIC_REQUEST_VERSION_UNKNOWN:{version}"),
     };
 }

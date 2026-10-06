@@ -75,34 +75,18 @@ public static class PdfCanonicalExtraction
         var started = Environment.TickCount64;
         var used = options.DisableLlm ? null : analyst;
         var productionAuthorized = used is IPdfProductionAuthorizedFrozenRequestClassifier;
-        if (used is not null && options.ExperimentGate is null && !productionAuthorized)
+        if (used is not null && !productionAuthorized)
         {
-            // Preserve the established experiment error for a remote classifier. A local/direct
-            // classifier is not an implicit production fallback either: the PDF route must carry
-            // the separate composition-root authorization marker.
-            if (analystSendsDataExternally)
-                throw new InvalidOperationException("PDF_EXPERIMENT_GATE_REQUIRED");
             throw new InvalidOperationException(
                 "PDF_PRODUCTION_AUTHORIZATION_REQUIRED: requires the OpenRouter/qwen/qwen3.7-flash PDF production transport.");
         }
 
-        PdfExperimentGatedHeaderClassifier? gated = null;
-        if (used is not null && options.ExperimentGate is not null)
-            gated = new PdfExperimentGatedHeaderClassifier(used, options.ExperimentGate, disposeInner: false);
-
         StructuralAuthorityResult authority;
-        try
-        {
-            // PDF heading authority is the promoted function-conditioned chain. Unlike the
-            // historical canonical engine it has no semantic fallback: invalid stage output is
-            // withheld by that adapter rather than delegated to a second membership authority.
-            authority = await PdfFunctionConditionedHeadingAuthorityAdapter.RunAsync(
-                file.LocalPath, gated ?? used, semanticLaneOptions, options.ReplayCapture, ct);
-        }
-        finally
-        {
-            gated?.Dispose();
-        }
+        // PDF heading authority is the promoted function-conditioned chain. Unlike the
+        // historical canonical engine it has no semantic fallback: invalid stage output is
+        // withheld by that adapter rather than delegated to a second membership authority.
+        authority = await PdfFunctionConditionedHeadingAuthorityAdapter.RunAsync(
+            file.LocalPath, used, semanticLaneOptions, options.ReplayCapture, ct);
         // The same repair step the DOCX lane applies, through the same implementation. A quarantine
         // that silently did nothing on one format would make the harness's repair loop mean two
         // different things depending on what was uploaded.
