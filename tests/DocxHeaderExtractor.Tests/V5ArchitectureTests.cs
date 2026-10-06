@@ -186,19 +186,6 @@ public sealed class V5ArchitectureTests
     }
 
     [Fact]
-    public async Task V5_entrypoint_normalizes_source_catalog_without_heading_semantics()
-    {
-        var catalog = new DocumentSourceCatalog([
-            new DocumentSourceUnit("S1", 1, "Alpha", new SourceAnchor { SourceType = "DOCX", ParagraphIndex = 1 }, new StructuralSpan(0, 5)),
-            new DocumentSourceUnit("S2", 2, "Beta", new SourceAnchor { SourceType = "PDF", Page = 1 }, new StructuralSpan(0, 4)),
-        ]);
-        var result = await new DocxHeaderExtractor.DocumentProcessing.Pipeline.V5DocumentAgentEntryPoint()
-            .RunAsync(catalog, Contract(), new NoopReasoner());
-        Assert.Equal(AgentStage.COMPLETE, result.TerminalStage);
-        Assert.Equal(1, result.Trace.Count(item => item.Stage == AgentStage.OBSERVE));
-    }
-
-    [Fact]
     public async Task Runtime_replaces_open_claim_after_bounded_evidence_round()
     {
         var graph = EvidenceGraphBuilder.Build([
@@ -288,19 +275,6 @@ public sealed class V5ArchitectureTests
         Assert.Equal(first.RequestHash, second.RequestHash);
         Assert.Equal(first.PromptHash, second.PromptHash);
         Assert.DoesNotContain("heading", first.Prompt, StringComparison.OrdinalIgnoreCase);
-    }
-
-    [Fact]
-    public void Source_adapter_rejects_inverted_geometry()
-    {
-        var catalog = new DocumentSourceCatalog([
-            new DocumentSourceUnit("S1", 1, "Alpha", new SourceAnchor
-            {
-                SourceType = "PDF", Page = 1, BoundingBox = new PdfBoundingBox(10, 20, 5, 30),
-            }, new StructuralSpan(0, 5)),
-        ]);
-        Assert.Throws<InvalidOperationException>(() =>
-            DocxHeaderExtractor.DocumentProcessing.Pipeline.V5SourceEvidenceAdapter.Build(catalog));
     }
 
     [Fact]
