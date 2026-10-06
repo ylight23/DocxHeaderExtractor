@@ -1,5 +1,6 @@
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
 using Glyph = DocxHeaderExtractor.DocumentProcessing.Pipeline.PdfVisualLineBucket.Glyph;
@@ -328,21 +329,22 @@ public sealed class PdfLineExtractionTests
         {
             var ordered = page.Letters
                 .Where(letter => !string.IsNullOrWhiteSpace(letter.Value))
-                .OrderByDescending(letter => letter.StartBaseLine.Y)
-                .ThenBy(letter => letter.BoundingBox.Left)
+                .Select(letter => PdfGlyph.Of(letter, PdfFontEmbedding.ModeFor(document)))
+                .OrderByDescending(letter => letter.Baseline)
+                .ThenBy(letter => letter.Left)
                 .ThenBy(letter => letter.Value, StringComparer.Ordinal)
                 .ToArray();
 
             var grouped = PdfVisualLineBucket.Split(ordered, PdfVisualLineBucket.Of);
             foreach (var line in grouped)
-                within.Add(line.Max(l => l.StartBaseLine.Y) - line.Min(l => l.StartBaseLine.Y));
+                within.Add(line.Max(l => l.Baseline) - line.Min(l => l.Baseline));
 
             for (var index = 1; index < grouped.Count; index++)
             {
                 var above = grouped[index - 1];
-                var scale = above.Max(l => Math.Max(l.FontSize, l.BoundingBox.Top - l.BoundingBox.Bottom));
+                var scale = above.Max(l => Math.Max(l.FontSize, l.Height));
                 var tolerance = Math.Max(1.0, scale * PdfVisualLineBucket.BaselineTolerance);
-                var gap = above.Min(l => l.StartBaseLine.Y) - grouped[index].Max(l => l.StartBaseLine.Y);
+                var gap = above.Min(l => l.Baseline) - grouped[index].Max(l => l.Baseline);
                 safety.Add(gap / tolerance);
             }
         }

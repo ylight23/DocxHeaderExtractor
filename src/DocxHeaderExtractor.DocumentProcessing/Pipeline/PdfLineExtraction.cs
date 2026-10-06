@@ -1,4 +1,5 @@
 using UglyToad.PdfPig;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using UglyToad.PdfPig.Content;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -247,11 +248,11 @@ internal sealed class PdfVisualLineBucket
         Count++;
     }
 
-    public static Glyph Of(Letter letter) => new(
-        letter.StartBaseLine.Y,
-        letter.BoundingBox.Top,
-        letter.BoundingBox.Bottom,
-        letter.FontSize);
+    public static Glyph Of(PdfGlyph glyph) => new(
+        glyph.Baseline,
+        glyph.Top,
+        glyph.Bottom,
+        glyph.FontSize);
 
     /// <summary>
     /// Splits a page's glyphs into visual lines, in the order given. The caller supplies the order
@@ -294,18 +295,18 @@ internal static class PdfLineExtraction
     {
         const PdfSourceFactsVersion facts = PdfSourceFactsVersions.Current;
         var lines = new List<PdfLine>();
+        // Decided once, from the PDF's own font dictionaries: PdfGlyph is the only source of coordinates.
+        var geometry = PdfFontEmbedding.ModeFor(doc);
         foreach (var page in doc.GetPages())
         {
-            var visible = page.Letters.Where(l => !string.IsNullOrWhiteSpace(l.Value));
+            var visible = page.Letters.Where(l => !string.IsNullOrWhiteSpace(l.Value)).Select(l => PdfGlyph.Of(l, geometry));
 
-            // V2 sorts by baseline, so every glyph of one line arrives together and a single open
-            // bucket is enough; its last tie-break is the glyph itself, so the order is total and
-            // one document cannot produce two universes. V1 keeps the midpoint order its tolerance
-            // is measured against, down to the tie-breaks, because every frozen universe hash was
-            // taken over exactly this sequence.
-            IReadOnlyList<Letter> letters = visible
-                .OrderByDescending(l => l.StartBaseLine.Y)
-                .ThenBy(l => l.BoundingBox.Left)
+            // Sorted by baseline, so every glyph of one line arrives together and a single open
+            // bucket is enough. Coordinates are snapped, and the last tie-break is the glyph value,
+            // so the order does not depend on parser noise or on the fonts installed on the host.
+            IReadOnlyList<PdfGlyph> letters = visible
+                .OrderByDescending(l => l.Baseline)
+                .ThenBy(l => l.Left)
                 .ThenBy(l => l.Value, StringComparer.Ordinal)
                 .ToList();
 
@@ -313,7 +314,7 @@ internal static class PdfLineExtraction
 
             foreach (var bucket in buckets)
             {
-                var ordered = bucket.OrderBy(l => l.BoundingBox.Left).ToList();
+                var ordered = bucket.OrderBy(l => l.Left).ToList();
                 var pieces = new List<string>();
                 var matchPieces = new List<string>();
                 // Built while the glyphs are in hand. Deriving it afterwards from the two strings
@@ -329,13 +330,13 @@ internal static class PdfLineExtraction
                 var fontNames = new List<string>();
                 var fillColors = new List<string>();
                 var glyphCharacters = new List<(double Size, string Font, bool Bold, bool Italic)>();
-                Letter? previous = null;
+                PdfGlyph? previous = null;
                 foreach (var letter in ordered)
                 {
                     if (previous is not null)
                     {
-                        var gap = letter.BoundingBox.Left - previous.BoundingBox.Right;
-                        if (gap > Math.Max(1.2, Math.Max(previous.FontSize, previous.BoundingBox.Height) * 0.18))
+                        var gap = letter.Left - previous.Right;
+                        if (gap > Math.Max(1.2, Math.Max(previous.FontSize, previous.Height) * 0.18))
                         {
                             rawLength += 1;
                             pieces.Add(" ");
@@ -346,7 +347,7 @@ internal static class PdfLineExtraction
                             fontNames.Add(fontNames.Count > 0 ? fontNames[^1] : "");
                             fillColors.Add(fillColors.Count > 0 ? fillColors[^1] : "");
                         }
-                        if (IsMatchWordGapForAudit(gap, previous.FontSize, previous.BoundingBox.Height))
+                        if (IsMatchWordGapForAudit(gap, previous.FontSize, previous.Height))
                         {
                             verbatimLength += 1;
                             matchPieces.Add(" ");
@@ -357,8 +358,8 @@ internal static class PdfLineExtraction
                         verbatimLength, letter.Value.Length,
                         rawLength, letter.Value.Length,
                         glyphOrdinal++, page.Number,
-                        letter.BoundingBox.Left, letter.BoundingBox.Right,
-                        letter.BoundingBox.Bottom, letter.BoundingBox.Top));
+                        letter.Left, letter.Right,
+                        letter.Bottom, letter.Top));
                     verbatimLength += letter.Value.Length;
                     rawLength += letter.Value.Length;
                     pieces.Add(letter.Value);
@@ -418,14 +419,14 @@ internal static class PdfLineExtraction
                     boldRatio,
                     leadingBoldPrefix,
                     italicRatio,
-                    ordered.Min(l => l.BoundingBox.Left),
-                    ordered.Max(l => l.BoundingBox.Right),
+                    ordered.Min(l => l.Left),
+                    ordered.Max(l => l.Right),
                     Dominant(fontNames),
                     Dominant(fillColors),
                     canonicalMatch,
                     matchText,
-                    ordered.Min(l => l.BoundingBox.Bottom),
-                    ordered.Max(l => l.BoundingBox.Top))
+                    ordered.Min(l => l.Bottom),
+                    ordered.Max(l => l.Top))
                 {
                     Projection = new PdfSourceTextProjection(
                         raw, string.Concat(matchPieces), spanMap, PdfSourceTextProjection.CurrentVersion),
@@ -441,11 +442,11 @@ internal static class PdfLineExtraction
     /// page. The row order is kept and each row's segments follow it left to right, so the page
     /// still reads top to bottom and the glyphs of a row stay together and in order.
     /// </summary>
-    private static List<IReadOnlyList<Letter>> Segment(
-        List<IReadOnlyList<Letter>> rows, UglyToad.PdfPig.Content.Page page)
+    private static List<IReadOnlyList<PdfGlyph>> Segment(
+        List<IReadOnlyList<PdfGlyph>> rows, UglyToad.PdfPig.Content.Page page)
     {
         var ordered = rows
-            .Select(row => row.OrderBy(l => l.BoundingBox.Left).ToArray())
+            .Select(row => row.OrderBy(l => l.Left).ToArray())
             .ToArray();
 
         // The page's own word space, taken from the gaps the projection already treats as spaces.
@@ -454,18 +455,18 @@ internal static class PdfLineExtraction
             for (var index = 1; index < row.Length; index++)
             {
                 var previous = row[index - 1];
-                var gap = row[index].BoundingBox.Left - previous.BoundingBox.Right;
-                if (IsMatchWordGapForAudit(gap, previous.FontSize, previous.BoundingBox.Height))
+                var gap = row[index].Left - previous.Right;
+                if (IsMatchWordGapForAudit(gap, previous.FontSize, previous.Height))
                     spaces.Add(gap);
             }
 
         var cuts = PdfVisualRegion.Cuts(
             ordered.Select(row => (IReadOnlyList<PdfVisualRegion.Box>)row
-                .Select(l => new PdfVisualRegion.Box(l.BoundingBox.Left, l.BoundingBox.Right))
+                .Select(l => new PdfVisualRegion.Box(l.Left, l.Right))
                 .ToArray()).ToArray(),
             PdfVisualRegion.WordGap(spaces));
 
-        var segments = new List<IReadOnlyList<Letter>>(rows.Count);
+        var segments = new List<IReadOnlyList<PdfGlyph>>(rows.Count);
         for (var row = 0; row < ordered.Length; row++)
         {
             var start = 0;
@@ -495,7 +496,7 @@ internal static class PdfLineExtraction
             : PdfLineTypography.None;
     }
 
-    private static double MidY(Letter l) => (l.BoundingBox.Bottom + l.BoundingBox.Top) / 2.0;
+    private static double MidY(PdfGlyph l) => (l.Bottom + l.Top) / 2.0;
 
     internal static bool IsMatchWordGapForAudit(double gap, double fontSize, double glyphHeight) =>
         gap > Math.Max(1.8, Math.Max(fontSize, glyphHeight) * 0.27);

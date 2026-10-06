@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "a99-pdf-source-determinism-v2",
+  "geometryPolicy": "a99-pdf-glyph-geometry-v2-font-independent",
+  "status": "VERIFIED_IDENTICAL_ON_WINDOWS_AND_UBUNTU",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "rows": [
+    {
+      "documentId": "SRC-004",
+      "pdf": "todo10_8/heading_corpus_100/01_phap_quy/004_Luat_Dau_tu_61-2020-QH14_EN.pdf",
+      "sourceSha256": "2ab375abcfd1080e6a06609740225352ca1f6497cbb50aa808df56c9ad859a08",
+      "geometryMode": "FontIndependent",
+      "hostResolvedFonts": [
+        "Arial",
+        "Arial,Bold",
+        "Times New Roman",
+        "Times New Roman,Bold",
+        "Times New Roman,BoldItalic",
+        "Times New Roman,Italic"
+      ],
+      "atomCount": 2257,
+      "sourceAliasUniverseHash": "8b9101c453896a7988e29ca9b722272afe15066fa179a06c4321cf0ba9423534",
+      "modelVisibleEvidenceHash": "6482b13588692ce63d2b578c72b088c9c34dfbbdd73217e1c6b3ec86dcf6f3e6"
+    },
+    {
+      "documentId": "SRC-029",
+      "pdf": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf",
+      "sourceSha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c",
+      "geometryMode": "FontIndependent",
+      "hostResolvedFonts": [
+        "Arial-BoldMT",
+        "Arial-ItalicMT",
+        "ArialMT",
+        "TimesNewRomanPS-BoldItalicMT",
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPS-ItalicMT",
+        "TimesNewRomanPSMT"
+      ],
+      "atomCount": 7524,
+      "sourceAliasUniverseHash": "da62fb0321eb138e31ef5bb2df0409819b43ecbb7cc00f5713f65df878c188be",
+      "modelVisibleEvidenceHash": "e3812f438f6bfa77e3005ce1fa62ddc3ead77b8502afd5f7972464054dbd1c7d"
+    },
+    {
+      "documentId": "SRC-041",
+      "pdf": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/041_IBRD_Financial_Statements_June_2025.pdf",
+      "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+      "geometryMode": "Parser",
+      "hostResolvedFonts": [],
+      "atomCount": 10443,
+      "sourceAliasUniverseHash": "7770864ee6870409b393ca004c23d6d9f546d084c57d4e685b0d0a1e357b744b",
+      "modelVisibleEvidenceHash": "97083b8e1cef72bbd263b2f457aeb0aaa651796ccb5b7b6be3c593fa32369436"
+    },
+    {
+      "documentId": "SRC-044",
+      "pdf": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/044_IDA_Financial_Statements_June_2024.pdf",
+      "sourceSha256": "55dee9b16b5616109ba186bb0a4d83632e24d06d5a00beab80b82ca59b3b0d6b",
+      "geometryMode": "Parser",
+      "hostResolvedFonts": [],
+      "atomCount": 7268,
+      "sourceAliasUniverseHash": "f50cadd7ce549289f3c548bea4dfde7e0a9e0269eec2c6c11d3fd382fb33f886",
+      "modelVisibleEvidenceHash": "dbb5db11dba7e8c1f2eb8d6165f3dd145bf85430f6fd7c755dc9f7ed99cc6c40"
+    },
+    {
+      "documentId": "SRC-072",
+      "pdf": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf",
+      "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+      "geometryMode": "Parser",
+      "hostResolvedFonts": [],
+      "atomCount": 650,
+      "sourceAliasUniverseHash": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+      "modelVisibleEvidenceHash": "80a1c9fde120c3365dd355ffd98a015b6806d03de6221f78c15214333e9f65e3"
+    },
+    {
+      "documentId": "SRC-089",
+      "pdf": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+      "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+      "geometryMode": "FontIndependent",
+      "hostResolvedFonts": [
+        "TimesNewRomanPS-BoldItalicMT",
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPS-ItalicMT",
+        "TimesNewRomanPSMT"
+      ],
+      "atomCount": 582,
+      "sourceAliasUniverseHash": "aeca0ebb04b0845d12efecab9e10641e5f4beaf7a305831ba496c0d52442d37a",
+      "modelVisibleEvidenceHash": "96d30a134fb16d808d975cae39d94e6336ba16f6b883b4992375afade373eefc"
+    },
+    {
+      "documentId": "SRC-095",
+      "pdf": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+      "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+      "geometryMode": "Parser",
+      "hostResolvedFonts": [],
+      "atomCount": 2302,
+      "sourceAliasUniverseHash": "1eee2105941098eb50e79fd866fddeb36718c49ca02da9906aeaaf2ba3673ead",
+      "modelVisibleEvidenceHash": "412528099c17720c3271a6cd141a6142beb4673192f4f54dd58d175ccf2a46f5"
+    }
+  ]
+}

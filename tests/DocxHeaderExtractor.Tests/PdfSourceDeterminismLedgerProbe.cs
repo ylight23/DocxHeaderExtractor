@@ -25,6 +25,9 @@ public sealed class PdfSourceDeterminismLedgerProbe
     [
         ("SRC-004", "todo10_8/heading_corpus_100/01_phap_quy/004_Luat_Dau_tu_61-2020-QH14_EN.pdf"),
         ("SRC-029", "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf"),
+        ("SRC-041", "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/041_IBRD_Financial_Statements_June_2025.pdf"),
+        ("SRC-072", "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf"),
+        ("SRC-044", "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/044_IDA_Financial_Statements_June_2024.pdf"),
         ("SRC-089", "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf"),
         ("SRC-095", "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf"),
     ];
@@ -49,14 +52,19 @@ public sealed class PdfSourceDeterminismLedgerProbe
     private static object Build(string pdfPath)
     {
         var pages = new List<object>();
+        PdfGeometryMode mode;
+        IReadOnlyList<string> hostFonts;
         using (var document = PdfDocument.Open(pdfPath))
         {
+            mode = PdfFontEmbedding.ModeFor(document);
+            hostFonts = PdfFontEmbedding.HostResolvedFonts(document);
             foreach (var page in document.GetPages())
             {
                 var visible = page.Letters.Where(l => !string.IsNullOrWhiteSpace(l.Value)).ToList();
-                IReadOnlyList<Letter> sorted = visible
-                    .OrderByDescending(l => l.StartBaseLine.Y)
-                    .ThenBy(l => l.BoundingBox.Left)
+                var glyphs = visible.Select(l => PdfGlyph.Of(l, mode)).ToList();
+                IReadOnlyList<PdfGlyph> sorted = glyphs
+                    .OrderByDescending(l => l.Baseline)
+                    .ThenBy(l => l.Left)
                     .ThenBy(l => l.Value, StringComparer.Ordinal)
                     .ToList();
                 var buckets = PdfVisualLineBucket.Split(sorted, PdfVisualLineBucket.Of);
@@ -64,11 +72,11 @@ public sealed class PdfSourceDeterminismLedgerProbe
                 pages.Add(new
                 {
                     page = page.Number,
-                    pageWidth = Bits(page.Width),
-                    pageHeight = Bits(page.Height),
-                    A = Stage(visible.Select(Letter)),
-                    B = Stage(sorted.Select(Letter)),
-                    C = Stage(buckets.Select(bucket => string.Join(",", bucket.Select(l => Index(sorted, l))))),
+                    // A0 is the parser's raw letter (diagnostic only); A is the canonical glyph every stage reads.
+                    A0 = Stage(visible.Select(Letter)),
+                    A = Stage(glyphs.Select(Glyph)),
+                    B = Stage(sorted.Select(Glyph)),
+                    C = Stage(buckets.Select(bucket => string.Join(",", bucket.Select(g => Index(sorted, g))))),
                 });
             }
         }
@@ -83,6 +91,8 @@ public sealed class PdfSourceDeterminismLedgerProbe
         return new
         {
             sourceSha256 = CanonicalSemanticSourceHash.Compute(pdfPath),
+            geometryMode = mode.ToString(),
+            hostResolvedFonts = hostFonts,
             universeHash = universe.SourceAliasUniverseHash,
             evidenceHash = universe.ModelVisibleEvidenceHash,
             atomCount = universe.Atoms.Count,
@@ -99,9 +109,9 @@ public sealed class PdfSourceDeterminismLedgerProbe
         };
     }
 
-    private static int Index(IReadOnlyList<Letter> sorted, Letter letter)
+    private static int Index(IReadOnlyList<PdfGlyph> sorted, PdfGlyph glyph)
     {
-        for (var i = 0; i < sorted.Count; i++) if (ReferenceEquals(sorted[i], letter)) return i;
+        for (var i = 0; i < sorted.Count; i++) if (ReferenceEquals(sorted[i], glyph)) return i;
         return -1;
     }
 
@@ -117,6 +127,9 @@ public sealed class PdfSourceDeterminismLedgerProbe
         Bits(l.StartBaseLine.Y), Bits(l.StartBaseLine.X),
         Bits(l.BoundingBox.Left), Bits(l.BoundingBox.Right), Bits(l.BoundingBox.Top), Bits(l.BoundingBox.Bottom),
         Bits(l.FontSize), Bits(l.PointSize), l.FontName);
+
+    private static string Glyph(PdfGlyph g) => string.Join("|",
+        g.Value, Bits(g.Baseline), Bits(g.Left), Bits(g.Right), Bits(g.Top), Bits(g.Bottom), Bits(g.FontSize), g.FontName);
 
     private static string Line(PdfLine l) => string.Join("|",
         l.Text, Bits(l.Y), Bits(l.Left), Bits(l.Right), Bits(l.Top ?? double.NaN), Bits(l.Bottom ?? double.NaN));
