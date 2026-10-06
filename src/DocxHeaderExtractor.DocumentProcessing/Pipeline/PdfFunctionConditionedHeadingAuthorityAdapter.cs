@@ -16,8 +16,9 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
 {
     internal const string AuthorityId = "pdf-function-conditioned-heading-authority-v1";
     private const int ResponseCap = 49_152;
-    private static readonly JsonSerializerOptions Json = new() { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-    private const int P05CompletionTokens = 12_288;
+    // Qualification serializes with the framework default encoder.  Do not use the
+    // relaxed encoder here: escaping is part of the provider-body identity.
+    private const int P05CompletionTokens = PdfCandidateAuthorityQualificationAdapter.CompletionTokenCeiling;
     private const string G2APrompt = """
         Decide anchor existence only. Each issued primary occurrence has an upstream ESTABLISHES_STRUCTURE eligibility signal, but that signal is not proof that a valid local structural heading extent begins at this primary.
 
@@ -70,11 +71,32 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
             var establishes = functions.Decisions.Where(value => value.Function == V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE).Select(value => byId[value.OccurrenceId]).ToArray();
             if (establishes.Length == 0) continue;
 
+            var idByAlias = f1Request.Occurrences.ToDictionary(value => value.Atom.Alias, value => value.Id, StringComparer.Ordinal);
+            var indexByAlias = ownedAliases.Select((alias, index) => (alias, index)).ToDictionary(value => value.alias, value => value.index, StringComparer.Ordinal);
             var g2aUser = JsonSerializer.Serialize(new
             {
                 protocolVersion = "v5-function-conditioned-anchor-existence-1",
-                occurrences = establishes.Select(value => new { primary = value.Id, page = value.Atom.Page, text = value.Atom.Text, upstreamFunction = "ESTABLISHES_STRUCTURE" }).ToArray(),
-            }, Json);
+                occurrences = establishes.Select(value =>
+                {
+                    object? Neighbor(int index)
+                    {
+                        if (index < 0 || index >= ownedAliases.Length) return null;
+                        var adjacent = atoms[ownedAliases[index]];
+                        return new { occurrence = idByAlias[adjacent.Alias], page = adjacent.Page, text = adjacent.Text, selectable = false };
+                    }
+
+                    var index = indexByAlias[value.Atom.Alias];
+                    return new
+                    {
+                        primary = value.Id,
+                        page = value.Atom.Page,
+                        text = value.Atom.Text,
+                        upstreamFunction = "ESTABLISHES_STRUCTURE",
+                        previous = Neighbor(index - 1),
+                        next = Neighbor(index + 1),
+                    };
+                }).ToArray(),
+            });
             var g2aBody = OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(G2APrompt, g2aUser, P05CompletionTokens, Envelope);
             var g2a = await ExecuteAsync(frozen, G2APrompt, g2aUser, P05CompletionTokens, ct, g2aBody.PayloadBytes).ConfigureAwait(false);
             if (g2a is null) continue;
@@ -88,9 +110,8 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
                 var start = Array.IndexOf(ownedAliases, anchor.Atom.Alias);
                 if (start < 0) continue;
                 var tail = ownedAliases.Skip(start).ToArray(); // terminal anchors intentionally remain issued.
-                var idByAlias = f1Request.Occurrences.ToDictionary(value => value.Atom.Alias, value => value.Id, StringComparer.Ordinal);
                 var rows = tail.Select(alias => BasicOccurrence(idByAlias[alias], atoms[alias], authority.Evidence.Single(e => e.SourceAlias == alias))).ToArray();
-                var user = JsonSerializer.Serialize(new { protocolVersion = "v5-function-conditioned-exact-end-pointer-clean-paired-1", anchors = new[] { new { anchor = anchor.Id, occurrences = rows } } }, Json);
+                var user = JsonSerializer.Serialize(new { protocolVersion = "v5-function-conditioned-exact-end-pointer-clean-paired-1", anchors = new[] { new { anchor = anchor.Id, occurrences = rows } } });
                 var body = OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(BoundaryPromptV2, user, P05CompletionTokens, Envelope);
                 var boundary = await ExecuteAsync(frozen, BoundaryPromptV2, user, P05CompletionTokens, ct, body.PayloadBytes).ConfigureAwait(false);
                 if (boundary is null) continue;
@@ -117,7 +138,7 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         return new CanonicalSemanticBoundHeading(primary.Alias, primary.SourceId, primary.Ordinal, string.Join(" ", parts.Select(value => value.Text)), "ESTABLISHES_STRUCTURE", "heading", "document_body", [], 0, primary.Text.Length) { Parts = parts };
     }
 
-    private static PdfBlockDecision BindBoundary(string raw, string anchor, IReadOnlyList<string> tail, IReadOnlyDictionary<string, string> idByAlias, IReadOnlyDictionary<string, SemanticSourceAtom> atoms)
+    internal static PdfBlockDecision BindBoundary(string raw, string anchor, IReadOnlyList<string> tail, IReadOnlyDictionary<string, string> idByAlias, IReadOnlyDictionary<string, SemanticSourceAtom> atoms)
     {
         using var document = JsonDocument.Parse(raw); var root = document.RootElement;
         if (root.ValueKind != JsonValueKind.Object || root.EnumerateObject().Count() != 1 || !root.TryGetProperty("decisions", out var decisions) || decisions.ValueKind != JsonValueKind.Array || decisions.GetArrayLength() != 1) throw new InvalidOperationException("h2c-root-invalid");
@@ -128,15 +149,32 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         var issued = tail.Select(alias => idByAlias[alias]).ToArray();
         if (members.Length == 0 || !members.SequenceEqual(issued.Take(members.Length), StringComparer.Ordinal) || item.GetProperty("endOccurrence").GetString() != members[^1]) throw new InvalidOperationException("h2c-prefix-invalid");
         var expectedOutside = members.Length == issued.Length ? null : issued[members.Length];
-        var outside = item.GetProperty("firstOutsideOccurrence").ValueKind == JsonValueKind.Null ? null : item.GetProperty("firstOutsideOccurrence").GetString();
+        var outsideProperty = item.GetProperty("firstOutsideOccurrence");
+        var outside = outsideProperty.ValueKind switch
+        {
+            JsonValueKind.Null => null,
+            JsonValueKind.String => outsideProperty.GetString(),
+            _ => throw new InvalidOperationException("h2c-successor-type-invalid"),
+        };
         if (outside != expectedOutside) throw new InvalidOperationException("h2c-successor-invalid");
+        var roleProperty = item.GetProperty("firstOutsideRole");
+        if (roleProperty.ValueKind != JsonValueKind.String) throw new InvalidOperationException("h2c-role-type-invalid");
+        var role = roleProperty.GetString();
+        if (expectedOutside is null)
+        {
+            if (role != "NO_VISIBLE_SUCCESSOR") throw new InvalidOperationException("h2c-terminal-role-invalid");
+        }
+        else if (role is not ("NEW_HEADING" or "BODY_CONTENT" or "PAGE_FURNITURE" or "TABLE_OR_STRUCTURED_CONTENT" or "OTHER_NON_HEADING"))
+        {
+            throw new InvalidOperationException("h2c-nonterminal-role-invalid");
+        }
         var parts = members.Select(id => atoms[tail[Array.IndexOf(issued, id)]]).Select(atom => new CanonicalSemanticBoundPart(atom.Alias, atom.SourceId, atom.Ordinal, atom.Text, 0, atom.Text.Length)).ToArray();
         return new PdfBlockDecision(parts[0].SourceId, 1, "pdf-exact-heading-boundary-v1", new TextOffsetSpan(0, parts[0].Text.Length), SemanticFunction: "ESTABLISHES_STRUCTURE", Parts: parts);
     }
 
     private static object BasicOccurrence(string occurrence, SemanticSourceAtom atom, CanonicalSemanticSourceEvidence evidence)
     {
-        var style = JsonSerializer.SerializeToElement(evidence.StyleFacts, Json); var location = evidence.LocationFacts is null ? default(JsonElement?) : JsonSerializer.SerializeToElement(evidence.LocationFacts, Json);
+        var style = JsonSerializer.SerializeToElement(evidence.StyleFacts); var location = evidence.LocationFacts is null ? default(JsonElement?) : JsonSerializer.SerializeToElement(evidence.LocationFacts);
         return new { occurrence, page = atom.Page, text = atom.Text, style = new { fontSize = style.GetProperty("fontSize"), bodyFontSize = style.GetProperty("bodyFontSize"), fontSizeToBodyRatio = style.GetProperty("fontSizeToBodyRatio"), boldRatio = style.GetProperty("boldRatio"), italicRatio = style.GetProperty("italicRatio"), lineCount = style.GetProperty("lineCount") }, location = new { verticalPosition = location?.GetProperty("verticalPosition") ?? default, sameNormalizedTextPageCount = location?.GetProperty("sameNormalizedTextPageCount") ?? default, sameNormalizedTextFirstPage = location?.GetProperty("sameNormalizedTextFirstPage") ?? default, sameNormalizedTextLastPage = location?.GetProperty("sameNormalizedTextLastPage") ?? default } };
     }
 
@@ -147,10 +185,10 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         return string.Equals(result.FinishReason, "stop", StringComparison.OrdinalIgnoreCase) && Encoding.UTF8.GetByteCount(result.Content) <= ResponseCap ? result : null;
     }
 
-    private static HashSet<string> ParseG2A(string raw, IEnumerable<string> issued)
+    internal static HashSet<string> ParseG2A(string raw, IEnumerable<string> issued)
     {
         using var document = JsonDocument.Parse(raw); var root = document.RootElement; var expected = issued.ToHashSet(StringComparer.Ordinal);
-        if (!root.TryGetProperty("decisions", out var rows) || rows.ValueKind != JsonValueKind.Array || rows.GetArrayLength() != expected.Count) throw new InvalidOperationException("g2a-cardinality-invalid");
+        if (root.ValueKind != JsonValueKind.Object || root.EnumerateObject().Count() != 1 || !root.TryGetProperty("decisions", out var rows) || rows.ValueKind != JsonValueKind.Array || rows.GetArrayLength() != expected.Count) throw new InvalidOperationException("g2a-cardinality-invalid");
         var result = new HashSet<string>(StringComparer.Ordinal); var seen = new HashSet<string>(StringComparer.Ordinal);
         foreach (var row in rows.EnumerateArray()) { if (row.EnumerateObject().Count() != 2) throw new InvalidOperationException("g2a-schema-invalid"); var primary = row.GetProperty("primary").GetString()!; var anchor = row.GetProperty("anchor").GetString()!; if (!expected.Contains(primary) || !seen.Add(primary) || (anchor is not "HAS_STRUCTURAL_EXTENT" and not "NO_STRUCTURAL_EXTENT")) throw new InvalidOperationException("g2a-ledger-invalid"); if (anchor == "HAS_STRUCTURAL_EXTENT") result.Add(primary); }
         return result;

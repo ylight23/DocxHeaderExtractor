@@ -1,0 +1,51 @@
+using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+
+namespace DocxHeaderExtractor.Tests;
+
+public sealed class PdfFunctionConditionedHeadingAuthorityContractTests
+{
+    private static readonly string[] Tail = ["A1", "A2"];
+    private static readonly IReadOnlyDictionary<string, string> IdByAlias = new Dictionary<string, string>(StringComparer.Ordinal)
+    {
+        ["A1"] = "O1",
+        ["A2"] = "O2",
+    };
+    private static readonly IReadOnlyDictionary<string, SemanticSourceAtom> Atoms = new Dictionary<string, SemanticSourceAtom>(StringComparer.Ordinal)
+    {
+        ["A1"] = new("A1", "S1", 1, 1, 1, 0, "Heading"),
+        ["A2"] = new("A2", "S2", 2, 1, 2, 0, "Body"),
+    };
+
+    [Fact]
+    public void G2A_rejects_extra_root_properties()
+    {
+        const string raw = """{"decisions":[{"primary":"O1","anchor":"HAS_STRUCTURAL_EXTENT"}],"extra":true}""";
+
+        Assert.Throws<InvalidOperationException>(() =>
+            PdfFunctionConditionedHeadingAuthorityAdapter.ParseG2A(raw, ["O1"]));
+    }
+
+    [Theory]
+    [InlineData("NO_VISIBLE_SUCCESSOR", "O2")]
+    [InlineData("INVALID", "O2")]
+    [InlineData("BODY_CONTENT", null)]
+    public void Boundary_rejects_invalid_first_outside_role_contract(string role, string? firstOutside)
+    {
+        var outside = firstOutside is null ? "null" : $"\"{firstOutside}\"";
+        var raw = $$"""{"decisions":[{"anchor":"O1","headingMembers":["O1"],"endOccurrence":"O1","firstOutsideOccurrence":{{outside}},"firstOutsideRole":"{{role}}"}]}""";
+
+        Assert.Throws<InvalidOperationException>(() =>
+            PdfFunctionConditionedHeadingAuthorityAdapter.BindBoundary(raw, "O1", Tail, IdByAlias, Atoms));
+    }
+
+    [Fact]
+    public void Boundary_accepts_terminal_only_with_no_visible_successor_role()
+    {
+        const string raw = """{"decisions":[{"anchor":"O1","headingMembers":["O1","O2"],"endOccurrence":"O2","firstOutsideOccurrence":null,"firstOutsideRole":"NO_VISIBLE_SUCCESSOR"}]}""";
+
+        var decision = PdfFunctionConditionedHeadingAuthorityAdapter.BindBoundary(raw, "O1", Tail, IdByAlias, Atoms);
+
+        Assert.Equal(["S1", "S2"], decision.Parts!.Select(part => part.SourceId).ToArray());
+    }
+}
