@@ -48,29 +48,28 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                 },
             };
 
-        var input = new CanonicalSemanticProductionInput(
+        var input = new CanonicalSemanticTextProductionInput(
             catalog,
             null,
             sourceHash,
-            [new CanonicalSemanticPageEvidence("DOCX", true, 0, "docx-source")],
+            sourceHash,
+            sourceDocument.DocumentId,
+            evidence,
             evidence.Select(item => $"[{item.SourceAlias}] {item.ExactSourceText}").ToArray(),
             [],
-            evidence.SelectMany(item => item.LocalBefore.Concat(item.LocalAfter)).ToArray(),
-            DocumentId: sourceDocument.DocumentId,
-            SourceEvidence: evidence)
+            evidence.SelectMany(item => item.LocalBefore.Concat(item.LocalAfter)).ToArray())
         {
-            ExpectedSourceSha256 = sourceHash,
             OwnedAliases = null,
             ReplayCapture = replayCapture?.Metadata,
         };
 
-        CanonicalSemanticProductionResult result;
+        CanonicalSemanticTextProductionResult result;
         CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel? canonicalModel = null;
         if (transport is null)
         {
             // No model, no semantic claims: the harness does not declare headings from style,
             // outline level or numbering on its own. Same as the PDF lane.
-            result = CanonicalSemanticProductionEntryPoint.Run(input with { SemanticProposals = [] });
+            result = CanonicalSemanticTextProductionEntryPoint.Run(input with { SemanticProposals = [] });
         }
         else
         {
@@ -79,7 +78,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                 SemanticCoordinateContract.DocxAliasSpan,
                 SemanticEvidencePackingPolicies.FixedOwnedCount120,
                 experiment ?? CanonicalSemanticExperiment.Baseline);
-            result = await CanonicalSemanticProductionEntryPoint.RunAsync(
+            result = await CanonicalSemanticTextProductionEntryPoint.RunAsync(
                 input, canonicalModel,
                 requestId: $"docx:{sourceDocument.DocumentId}",
                 cancellationToken: cancellationToken);
@@ -211,9 +210,9 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                 0,
                 0,
                 0,
-                result.CanonicalOccurrences.Count,
+                result.TextPipeline.Graph.Occurrences.Count,
                 0,
-                result.TotalModelCalls,
+                result.TextModelCalls,
                 canonicalModel?.RawResponses.Count ?? 0,
                 0),
         };

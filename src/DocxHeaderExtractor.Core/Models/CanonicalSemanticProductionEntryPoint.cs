@@ -214,12 +214,6 @@ public sealed record CanonicalSemanticProductionResult(
     public IReadOnlyList<SemanticAttributeConflict> AttributeConflicts =>
         ConflictNormalization.AttributeConflicts;
 
-    public IReadOnlyList<CanonicalSemanticGraphOccurrence> CanonicalOccurrences =>
-        CanonicalGraph.Occurrences;
-
-    public IReadOnlyList<CanonicalSemanticGraphOccurrence> Projection =>
-        CanonicalGraph.OutlineProjection;
-
     public IReadOnlyList<SemanticContractIssue> ContractIssues { get; init; } = [];
     public int ContractValidProposalCount { get; init; }
     public int ContractInvalidProposalCount { get; init; }
