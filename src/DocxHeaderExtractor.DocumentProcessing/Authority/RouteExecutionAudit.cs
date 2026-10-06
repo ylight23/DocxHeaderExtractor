@@ -12,11 +12,8 @@ public sealed record RouteExecutionAudit(
     [property: JsonPropertyName("sourcePagesSelected")] int SourcePagesSelected,
     [property: JsonPropertyName("sourceBlocks")] IReadOnlyList<RouteBlockAudit> SourceBlocks,
     [property: JsonPropertyName("selectedSourceBlocks")] IReadOnlyList<RouteBlockAudit> SelectedSourceBlocks,
-    [property: JsonPropertyName("budgetExcluded")] IReadOnlyList<RouteBlockAudit> BudgetExcluded,
     [property: JsonPropertyName("blockDecisions")] IReadOnlyList<RouteBlockDecisionAudit> BlockDecisions,
-    [property: JsonPropertyName("groundedBlockIds")] IReadOnlyList<string> GroundedBlockIds,
-    [property: JsonPropertyName("groundingRejections")] IReadOnlyList<RouteBlockRejectionAudit> GroundingRejections,
-    [property: JsonPropertyName("alignedBlockIds")] IReadOnlyList<string> AlignedBlockIds)
+    [property: JsonPropertyName("groundedBlockIds")] IReadOnlyList<string> GroundedBlockIds)
 {
     /// <summary>Stable route identity for the promoted execution authority.</summary>
     [JsonPropertyName("route")]
@@ -51,13 +48,6 @@ public sealed record RouteExecutionAudit(
 
     [JsonPropertyName("validatedStructures")]
     public IReadOnlyList<PdfValidatedStructure> ValidatedStructures { get; init; } = [];
-
-    [JsonPropertyName("visualEvidence")]
-    public IReadOnlyList<RouteVisualEvidenceAudit> VisualEvidence { get; init; } = [];
-
-    /// <summary>Immutable per-region facts sufficient to replay evaluation without a VLM call.</summary>
-    [JsonPropertyName("visualRecoveries")]
-    public IReadOnlyList<PdfVisualRecoveryTrace> VisualRecoveries { get; init; } = [];
 
     [JsonPropertyName("hierarchyProposals")]
     public IReadOnlyList<PdfHierarchyProposalAudit> HierarchyProposals { get; init; } = [];
@@ -208,44 +198,3 @@ public sealed record RouteBlockDecisionAudit(
     [JsonIgnore] public string? ProposedParentId { get; init; }
     [JsonIgnore] public TextOffsetSpan? ProposedSourceSpan { get; init; }
 }
-
-public sealed record RouteBlockRejectionAudit(
-    [property: JsonPropertyName("id")] string Id,
-    [property: JsonPropertyName("role")] string Role,
-    [property: JsonPropertyName("confidence")] double Confidence,
-    [property: JsonPropertyName("reason")] string Reason);
-
-public sealed record RouteVisualEvidenceAudit(
-    [property: JsonPropertyName("id")] string Id,
-    [property: JsonPropertyName("role")] string Role,
-    [property: JsonPropertyName("confidence")] double Confidence,
-    [property: JsonPropertyName("evidence")] string Evidence,
-    [property: JsonPropertyName("contextLinesAbove")] int ContextLinesAbove = 0,
-    [property: JsonPropertyName("contextLinesBelow")] int ContextLinesBelow = 0);
-
-public sealed record PdfVisualRecoveryTrace(
-    [property: JsonPropertyName("regionId")] string RegionId,
-    [property: JsonPropertyName("page")] int Page,
-    [property: JsonPropertyName("role")] string Role,
-    [property: JsonPropertyName("confidence")] double Confidence,
-    [property: JsonPropertyName("observedText")] string ObservedText,
-    [property: JsonPropertyName("evidence")] string Evidence,
-    [property: JsonPropertyName("status")] string Status,
-    [property: JsonPropertyName("mappedText")] string? MappedText = null,
-    [property: JsonPropertyName("mappedStableId")] string? MappedStableId = null,
-    [property: JsonPropertyName("mappedSpanStart")] int? MappedSpanStart = null,
-    [property: JsonPropertyName("mappedSpanEnd")] int? MappedSpanEnd = null,
-    [property: JsonPropertyName("validatorReason")] string? ValidatorReason = null,
-    [property: JsonPropertyName("attempts")] IReadOnlyList<PdfVisualAttemptOutcome>? Attempts = null);
-
-/// <summary>
-/// One attempt a visual model made at a region, and how it ended.
-/// <para>
-/// Part of <see cref="PdfVisualRecoveryTrace.Attempts"/>, so it belongs with the audit contract.
-/// It used to live beside the image-question interfaces in Vision; those had implementations and
-/// no callers and were removed, and this record would have gone with them even though the audit
-/// still records it.
-/// </para>
-/// </summary>
-public sealed record PdfVisualAttemptOutcome(
-    int Attempt, string Status, int? HttpStatus, long ElapsedMs, string? Error);

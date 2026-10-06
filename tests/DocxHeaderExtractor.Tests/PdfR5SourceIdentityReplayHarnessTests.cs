@@ -204,9 +204,9 @@ public sealed class PdfR5SourceIdentityReplayHarnessTests
         var audit = new RouteExecutionAudit(
             "test", 1, 1, 1, 1,
             [new RouteBlockAudit("route-block-1", 2, "1 Scope")],
-            [new RouteBlockAudit("route-block-1", 2, "1 Scope")], [],
+            [new RouteBlockAudit("route-block-1", 2, "1 Scope")],
             [new RouteBlockDecisionAudit("route-block-1", "REGION_STRUCTURE", "role")],
-            ["route-block-1"], [], ["route-block-1"])
+            ["route-block-1"])
         {
             SelectedSourceIdentities = [new PdfSelectedSourceIdentity(
                 "route-block-1", 2, ["source-line-1"], "1 Scope", new TextOffsetSpan(0, 7))],

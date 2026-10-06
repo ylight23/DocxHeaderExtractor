@@ -133,14 +133,11 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             0,
             source.Blocks.Select(block => new RouteBlockAudit(block.Id, 0, block.DisplayText)).ToArray(),
             source.Blocks.Select(block => new RouteBlockAudit(block.Id, 0, block.DisplayText)).ToArray(),
-            [],
             decisions.Select(decision => new RouteBlockDecisionAudit(
                 decision.Id, decision.SemanticFunction)
             {
                 ProposedSourceSpan = decision.ProposedSourceSpan,
             }).ToArray(),
-            validated.Select(item => item.SourceId).ToArray(),
-            [],
             validated.Select(item => item.SourceId).ToArray()) with
         {
             RawAnalystResponses = canonicalModel?.RawResponses ?? [],

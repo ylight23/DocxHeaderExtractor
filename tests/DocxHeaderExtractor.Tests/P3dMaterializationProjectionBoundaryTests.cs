@@ -91,7 +91,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
         var structure = MaterializeOne();
         var before = System.Text.Json.JsonSerializer.Serialize(structure);
         var audit = CanonicalRouteAuditBoundary.Create(
-            "test", 1, 1, 0, 0, [], [], [], [], ["S0001"], [], ["S0001"]) with
+            "test", 1, 1, 0, 0, [], [], [], ["S0001"]) with
         {
             ValidatedStructures =
             [
@@ -128,7 +128,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
         var decisions = new[] { new RouteBlockDecisionAudit("B1", "REGION_STRUCTURE") };
 
         var audit = CanonicalRouteAuditBoundary.Create(
-            "test-route", 1, 1, 1, 1, blocks, blocks, [], decisions, ["B1"], [], ["B1"]);
+            "test-route", 1, 1, 1, 1, blocks, blocks, decisions, ["B1"]);
 
         Assert.Equal("test-route", audit.Route);
         Assert.Same(blocks, audit.SourceBlocks);

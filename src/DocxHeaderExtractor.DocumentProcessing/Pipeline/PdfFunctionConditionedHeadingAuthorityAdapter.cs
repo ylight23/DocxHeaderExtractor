@@ -142,13 +142,10 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
             authority.Blocks.Select(block => block.Page).Distinct().Count(),
             sourceBlocks,
             sourceBlocks,
-            [],
             decisions.Select(decision => new RouteBlockDecisionAudit(decision.Id, decision.SemanticFunction)
             {
                 ProposedSourceSpan = decision.ProposedSourceSpan,
             }).ToArray(),
-            validated.Select(item => item.SourceId).ToArray(),
-            [],
             validated.Select(item => item.SourceId).ToArray()) with
         {
             RawAnalystResponses = raw,

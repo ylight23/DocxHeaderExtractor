@@ -21,11 +21,8 @@ internal static class CanonicalRouteAuditBoundary
         int sourcePagesSelected,
         IReadOnlyList<RouteBlockAudit> sourceBlocks,
         IReadOnlyList<RouteBlockAudit> selectedSourceBlocks,
-        IReadOnlyList<RouteBlockAudit> budgetExcluded,
         IReadOnlyList<RouteBlockDecisionAudit> blockDecisions,
-        IReadOnlyList<string> groundedBlockIds,
-        IReadOnlyList<RouteBlockRejectionAudit> groundingRejections,
-        IReadOnlyList<string> alignedBlockIds) =>
+        IReadOnlyList<string> groundedBlockIds) =>
         new(
             route,
             sourceBlocksAvailable,
@@ -34,11 +31,8 @@ internal static class CanonicalRouteAuditBoundary
             sourcePagesSelected,
             sourceBlocks,
             selectedSourceBlocks,
-            budgetExcluded,
             blockDecisions,
-            groundedBlockIds,
-            groundingRejections,
-            alignedBlockIds)
+            groundedBlockIds)
         {
             Route = route,
         };

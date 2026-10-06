@@ -132,10 +132,7 @@ public sealed class RouteOccurrenceTraceTests
             1,
             [routeBlock],
             [routeBlock],
-            [],
             [new RouteBlockDecisionAudit(routeBlockId, "REGION_STRUCTURE", "test")],
-            [routeBlockId],
-            [],
             [routeBlockId])
         {
             SourceRepresentations = representation is null ? [] : [representation],
