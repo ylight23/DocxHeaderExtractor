@@ -49,7 +49,7 @@ public sealed class CanonicalSemanticVnextTests
             new CanonicalSemanticBoundHeading("S0002", "p2", 2, "Financial Statements", "SECTION", "Heading", "continuation", ["same-node:financial-statements"], 0, 19, true),
         };
 
-        var graph = CanonicalSemanticGraphResolver.Resolve(bound);
+        var graph = CanonicalSemanticIdentityResolver.Resolve(bound);
 
         Assert.Equal(2, graph.Occurrences.Count);
         Assert.Equal("PRIMARY", graph.Occurrences[0].OccurrenceKind);

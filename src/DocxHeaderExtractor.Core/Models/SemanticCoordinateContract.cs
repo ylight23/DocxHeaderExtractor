@@ -70,15 +70,6 @@ public sealed record SemanticCoordinateContract(
     public SemanticProposalDecodeResult Decode(JsonElement heading) => Decoder(heading);
 
     /// <summary>
-    /// Checks and resolves a decoded proposal against the source, in this contract's coordinate
-    /// system. The fourth member of one agreement: schema, validator, decoder, binder. A reply
-    /// decoded as an ordered tuple and then bound by rules written for one alias and one span is
-    /// the same class of mismatch as decoding it with the wrong decoder, one stage later.
-    /// </summary>
-    public SemanticCoordinateBindingOutcome BindProposals(SemanticCoordinateBindingRequest request) =>
-        Binding.Bind(request);
-
-    /// <summary>
     /// DOCX: alias plus an exact UTF-16 span inside it. The span is what a paragraph needs and
     /// what its Gold is written in; nothing about a PDF's segmented rows applies to it.
     /// </summary>

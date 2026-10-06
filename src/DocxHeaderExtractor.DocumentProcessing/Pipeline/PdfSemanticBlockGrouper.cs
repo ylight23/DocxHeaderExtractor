@@ -25,12 +25,6 @@ internal sealed record PdfSemanticBlock(
     public string DisplayText => PdfTextUtilities.HeadingReadable(Text);
 }
 
-internal sealed record PdfSemanticBlockSummary(
-    int TotalBlocks,
-    int SingleLineBlocks,
-    int MultiLineBlocks,
-    int MaxLinesPerBlock);
-
 /// <summary>
 /// The distance between consecutive lines of one paragraph, measured from the document itself.
 /// <para>
@@ -171,13 +165,6 @@ internal static class PdfSemanticBlockGrouper
                 PdfTextUtilities.Readable(string.Join(" ", lines.Select(l => l.Text))));
         }).ToList();
     }
-
-    public static PdfSemanticBlockSummary Summarize(IReadOnlyList<PdfSemanticBlock> blocks) =>
-        new(
-            blocks.Count,
-            blocks.Count(b => b.LineCount == 1),
-            blocks.Count(b => b.LineCount > 1),
-            blocks.Count == 0 ? 0 : blocks.Max(b => b.LineCount));
 
     private static bool CanMerge(
         IReadOnlyList<PdfLine> current,

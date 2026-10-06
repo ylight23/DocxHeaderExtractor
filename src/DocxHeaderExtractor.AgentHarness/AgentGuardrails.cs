@@ -160,9 +160,9 @@ public sealed class WritebackTargetGuardrail : IDocumentAgentGuardrail
 /// Soi các đường ghi phụ mà tool tự khai (capability side-effect paths), áp
 /// đúng hai chốt như đích writeback: không được trùng tài liệu nguồn, và thư mục đích phải có sẵn.
 /// <para>
-/// Lý do tồn tại: pipeline ghi document view ra <c>DumpXmlPath</c> ngay giữa lượt chạy, không đi
-/// qua <c>IDocumentActionTool</c> nên <see cref="WritebackTargetGuardrail"/> không hề thấy. Chốt
-/// "agent không sửa file gốc" mà thủng ở một đường ghi thì nó không còn là chốt.
+/// Lý do tồn tại: một tool có thể ghi ra đĩa ngoài <c>IDocumentActionTool</c>, nên
+/// <see cref="WritebackTargetGuardrail"/> không hề thấy. Chốt "agent không sửa file gốc" mà thủng
+/// ở một đường ghi thì nó không còn là chốt.
 /// </para>
 /// </summary>
 public sealed class ToolSideEffectPathGuardrail : IDocumentAgentGuardrail

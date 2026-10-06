@@ -108,7 +108,6 @@ public sealed class CommandLineOptions
                     o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
                     o.Provider.Remote.ContextSize = int.Parse(Next(a));
                     break;
-                case "--dump-xml": o.Pipeline.DumpXmlPath = Next(a); break;
                 case "--show-raw": o.Pipeline.ShowRawOutput = true; break;
 
                 case "--ctx": llama.ContextSize = uint.Parse(Next(a)); llama.AutoContextSize = false; break;
@@ -173,7 +172,6 @@ public sealed class CommandLineOptions
               --sglang-endpoint u   Chat endpoint
               --sglang-api-key k    Bearer token cho gateway
               --sglang-context n    Context gateway khai
-              --dump-xml <path>     Ghi XML tinh gọn của nguồn để kiểm tra
               --show-raw            In nguyên văn JSON mô hình trả về
           -q, --quiet               Không in tiến trình
           -v, --verbose             In stack trace khi một tài liệu lỗi

@@ -27,33 +27,6 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
         Directory.CreateDirectory(Path.GetDirectoryName(_path)!);
     }
 
-    public Task RecordSemanticBatchAsync(
-        IReadOnlyList<PdfSemanticBlock> blocks,
-        IReadOnlyList<PdfBlockDecision> decisions,
-        CancellationToken ct,
-        PdfLaneExecutionLease? executionLease = null) =>
-        AppendAsync("semantic", "batch:" + string.Join(',', decisions.Select(d => d.Id)), "completed", new
-        {
-            blocks = decisions.Select(d =>
-            {
-                var block = blocks.FirstOrDefault(block => string.Equals(block.Id, d.Id, StringComparison.Ordinal));
-                var lineIds = block?.Lines.Select(PdfLineIdentity.Of).ToArray() ?? [];
-                return new
-                {
-                    id = d.Id,
-                    page = block?.Page,
-                    // Keep the first source line for old readers. New evaluation joins on every
-                    // exact source line, since a reviewed heading may span more than one line.
-                    lineId = lineIds.FirstOrDefault(),
-                    lineIds,
-                    semanticFunction = d.SemanticFunction,
-                    sourceSpan = d.ProposedSourceSpan,
-                    d.Confidence,
-                    d.Reason,
-                };
-            }),
-        }, ct, executionLease);
-
     /// <summary>
     /// Records the selected source identities before the first semantic provider call. This is
     /// append-only observability; it is never read by selection or execution decisions.

@@ -7,7 +7,6 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 internal sealed class ProductionCheckpointScope : IAsyncDisposable
 {
     private bool _disposed;
-    private IReadOnlyList<Task> _detachedTasks = [];
 
     private ProductionCheckpointScope(string directory)
     {
@@ -27,37 +26,12 @@ internal sealed class ProductionCheckpointScope : IAsyncDisposable
         return new ProductionCheckpointScope(directory);
     }
 
-    public void DeferCleanup(IEnumerable<Task> detachedTasks)
-    {
-        ArgumentNullException.ThrowIfNull(detachedTasks);
-        _detachedTasks = detachedTasks.Where(task => task is not null).Distinct().ToArray();
-    }
-
     public ValueTask DisposeAsync()
     {
         if (_disposed) return ValueTask.CompletedTask;
         _disposed = true;
-        if (_detachedTasks.Count > 0)
-        {
-            _ = CleanupAfterDetachedWorkAsync(_detachedTasks);
-            return ValueTask.CompletedTask;
-        }
-
         CleanupNow();
         return ValueTask.CompletedTask;
-    }
-
-    private async Task CleanupAfterDetachedWorkAsync(IReadOnlyList<Task> detachedTasks)
-    {
-        try
-        {
-            await Task.WhenAll(detachedTasks).ConfigureAwait(false);
-        }
-        catch
-        {
-            // Lane faults are already observed by PdfLaneExecution. Cleanup remains best effort.
-        }
-        CleanupNow();
     }
 
     private void CleanupNow()

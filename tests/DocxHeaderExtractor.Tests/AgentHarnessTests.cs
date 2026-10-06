@@ -61,9 +61,9 @@ public sealed class AgentHarnessTests : IDisposable
     }
 
     /// <summary>
-    /// Pipeline ghi document view ra DumpXmlPath ngay giữa lượt chạy, không qua IDocumentActionTool.
-    /// Chốt "agent không sửa file gốc" phải áp cho cả đường ghi đó, nếu không thì một cờ debug đủ
-    /// để ghi đè tài liệu nguồn mà không guardrail nào lên tiếng.
+    /// Một tool có thể khai đường ghi phụ ngoài IDocumentActionTool. Chốt "agent không sửa file gốc"
+    /// phải áp cho cả đường ghi đó, nếu không thì một cờ debug đủ để ghi đè tài liệu nguồn mà không
+    /// guardrail nào lên tiếng.
     /// </summary>
     [Fact]
     public async Task Duong_ghi_phu_cua_tool_khong_duoc_de_len_tai_lieu_nguon()

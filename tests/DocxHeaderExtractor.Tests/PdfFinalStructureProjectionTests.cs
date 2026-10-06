@@ -196,29 +196,6 @@ public sealed class PdfFinalStructureProjectionTests
         Assert.NotNull(replayed!.SourceId);
     }
 
-    /// <summary>Grounding is read from the route's own reconciliation, never recomputed here.</summary>
-    [Fact]
-    public void GroundingIsMaterializedFromTheRoutesReconciliation()
-    {
-        var heading = new HeadingRecord
-        {
-            Index = 90,
-            Level = 2,
-            SourceId = "b220",
-            StableId = "@body[1]/p[90]",
-            Text = "4.3 Validation",
-            OriginalText = "4.3 Validation and the rest",
-            HeadingSpan = new TextOffsetSpan(0, 14),
-        };
-
-        var grounding = Assert.Single(PdfCanonicalGrounding.FromGroundedHeadings([heading]));
-
-        Assert.Equal("b220", grounding.SourceFactId);
-        Assert.Equal(90, grounding.ParagraphIndex);
-        Assert.Equal("@body[1]/p[90]", grounding.StableId);
-        Assert.Equal("4.3 Validation and the rest", grounding.ParagraphText);
-    }
-
     private static PdfFinalStructure Project(params (string Id, int Order, string Text, int? Level)[] cases) =>
         PdfFinalStructureProjection.Project(
             "sha",

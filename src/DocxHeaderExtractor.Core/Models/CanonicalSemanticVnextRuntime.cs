@@ -252,9 +252,3 @@ public static class CanonicalSemanticHardBindingValidator
     }
 }
 
-public sealed record SemanticTransitionLedgerEntry(
-    string Stage,
-    string Status,
-    int InputCount,
-    int OutputCount,
-    string? FirstLossCode = null);

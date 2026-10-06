@@ -314,7 +314,6 @@ public sealed class ProviderCallTelemetry : IDisposable
 
 public static class ProviderObservabilityHashing
 {
-    public static string Sha256Utf8(string value) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value))).ToLowerInvariant();
     public static string Sha256Bytes(byte[] value) => Convert.ToHexString(SHA256.HashData(value)).ToLowerInvariant();
     public static int EstimateTokens(string value) => Math.Max(1, (int)Math.Ceiling(value.Length / 4d));
 }

@@ -20,20 +20,6 @@ public sealed record PdfCanonicalGrounding(
     [property: JsonPropertyName("span")] DocxTextSpan Span,
     [property: JsonPropertyName("paragraphText")] string ParagraphText)
 {
-    /// <summary>Reads the reconciliation the route already produced; it performs no matching.</summary>
-    public static IReadOnlyList<PdfCanonicalGrounding> FromGroundedHeadings(IEnumerable<HeadingRecord> headings) =>
-        headings
-            .Where(heading => !string.IsNullOrWhiteSpace(heading.SourceId) && heading.HeadingSpan is not null)
-            .GroupBy(heading => heading.SourceId!, StringComparer.Ordinal)
-            .Select(group => group.First())
-            .Select(heading => new PdfCanonicalGrounding(
-                heading.SourceId!,
-                heading.Index,
-                heading.StableId,
-                new DocxTextSpan(heading.HeadingSpan!.Start, heading.HeadingSpan.End),
-                heading.OriginalText ?? heading.Text))
-            .ToArray();
-
     /// <summary>Builds canonical occurrences from the generic authority projection metadata.</summary>
     public static IReadOnlyList<PdfCanonicalGrounding> FromValidatedStructure(ValidatedStructure structure) =>
         structure.OutlineElements

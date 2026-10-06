@@ -140,20 +140,14 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         // cần consent theo từng run — phải khớp với contract provenance của authority pipeline,
         // nếu không RunProvenanceValidator sẽ chặn với provenance_contradicts_descriptor.
         var remote = !options.DisableLlm && sendsDataExternally;
-        // Pipeline ghi document view ra đĩa khi DumpXmlPath được đặt — đường ghi này không đi qua
-        // IDocumentActionTool nên WritebackTargetGuardrail không thấy. Khai ra cả cờ lẫn đường dẫn
-        // để ToolSideEffectPathGuardrail soi được, thay vì để harness hứa "chỉ đọc".
-        var dump = options.DumpXmlPath;
-        var writes = !string.IsNullOrWhiteSpace(dump);
         return new CapabilityDescriptor(
             "extract_document_headings",
             "Đọc cấu trúc tài liệu đã tải lên (DOCX hoặc PDF), gọi classifier khi cần, dựng cây heading và áp precision gate.",
             remote ? CapabilityRisk.Medium : CapabilityRisk.Low,
             SendsDataExternally: remote,
-            MutatesExternalState: writes)
+            MutatesExternalState: false)
         {
             SupportsRepair = true,
-            SideEffectPaths = writes ? [dump!] : [],
         };
     }
 

@@ -470,16 +470,6 @@ public static class CanonicalSemanticIdentityResolver
     }
 }
 
-/// <summary>
-/// Backwards-compatible facade for callers that still use the earlier graph name. The implementation
-/// and identity ownership live in <see cref="CanonicalSemanticIdentityResolver"/>.
-/// </summary>
-public static class CanonicalSemanticGraphResolver
-{
-    public static CanonicalSemanticGraph Resolve(IReadOnlyList<CanonicalSemanticBoundHeading> bound) =>
-        CanonicalSemanticIdentityResolver.Resolve(bound);
-}
-
 public static class CanonicalSemanticSourceHash
 {
     public static string Compute(string path)
