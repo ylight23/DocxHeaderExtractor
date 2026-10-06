@@ -136,7 +136,7 @@ public sealed class Src054GoldRevisionR2Tests
     private static JsonNode BuildR2()
     {
         var gold = JsonNode.Parse(File.ReadAllText(TestRepository.Path(SourcePdfCorpus.Src054GoldR1)))!;
-        var atoms = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(SourcePdfCorpus.Src054)).Atoms;
+        var atoms = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(SourcePdfCorpus.Src054)).Atoms;
         var byAlias = atoms.ToDictionary(a => a.Alias, StringComparer.Ordinal);
         var claims = gold["occurrence"]!["claims"]!.AsArray().Select(c => c!.DeepClone()).ToList();
         Assert.Single(claims, c => c["sourceParts"]![0]!["sourceAlias"]!.GetValue<string>() == Removed);

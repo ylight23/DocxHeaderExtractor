@@ -74,7 +74,7 @@ public sealed class Doc0252GoldCorrectionItem505430bbTests
         // The added text, read from the same frozen atom universe every other claim here was
         // verified against - not hand-typed, so a text or length mismatch fails loudly here rather
         // than freezing a wrong claim.
-        var atoms = PdfStructuredSourceAuthorityBuilder.Build(
+        var atoms = PdfSourceOccurrenceAdapter.Build(
             TestRepository.Path(Doc0252Pdf.Replace('/', Path.DirectorySeparatorChar))).Atoms;
         var l0513 = atoms.Single(atom => atom.Alias == "L0513:S0");
         var l0514 = atoms.Single(atom => atom.Alias == "L0514:S0");

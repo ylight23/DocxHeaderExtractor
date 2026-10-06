@@ -5,12 +5,12 @@ using DocxHeaderExtractor.Core.V5;
 namespace DocxHeaderExtractor.Core.Models;
 
 /// <summary>
-/// Qualification-only P6T-F1 total function-membership protocol.
-/// It deliberately classifies source-occurrence function without anchors, segments, extents, or candidates.
+/// Wire-stable total function-membership protocol. It deliberately classifies source occurrences
+/// without anchors, segments, extents, or candidates.
 /// </summary>
-public enum V5OccurrenceFunctionF1 { ESTABLISHES_STRUCTURE, REPRESENTS_STRUCTURE, OTHER }
+public enum OccurrenceFunction { EstablishesStructure, RepresentsStructure, Other }
 
-public sealed record V5TotalOccurrenceFunctionRequestF1(
+public sealed record OccurrenceFunctionRequest(
     string ProtocolVersion,
     string SystemPrompt,
     string UserMessage,
@@ -19,11 +19,11 @@ public sealed record V5TotalOccurrenceFunctionRequestF1(
     int UserMessageUtf8Bytes,
     IReadOnlyList<V5IssuedOccurrenceV1> Occurrences);
 
-public sealed record V5OccurrenceFunctionDecisionF1(string OccurrenceId, V5OccurrenceFunctionF1 Function);
+public sealed record OccurrenceFunctionDecision(string OccurrenceId, OccurrenceFunction Function);
 
-public sealed record V5TotalOccurrenceFunctionResultF1(IReadOnlyList<V5OccurrenceFunctionDecisionF1> Decisions);
+public sealed record OccurrenceFunctionResult(IReadOnlyList<OccurrenceFunctionDecision> Decisions);
 
-public static class V5TotalOccurrenceFunctionProtocolF1
+public static class OccurrenceFunctionProtocolV1
 {
     public const string Version = "v5-total-occurrence-function-membership-1";
 
@@ -45,7 +45,7 @@ public static class V5TotalOccurrenceFunctionProtocolF1
     private static readonly HashSet<string> RootKeys = new(["decisions"], StringComparer.Ordinal);
     private static readonly HashSet<string> DecisionKeys = new(["occurrence", "function"], StringComparer.Ordinal);
 
-    public static V5TotalOccurrenceFunctionRequestF1 ComposeWithReadOnlyCorrespondences(
+    public static OccurrenceFunctionRequest ComposeWithReadOnlyCorrespondences(
         IReadOnlyList<SemanticSourceAtom> ownedAtoms,
         IReadOnlyList<(int Page, string Text)> contextOnlyEvidence,
         IReadOnlyDictionary<string, IReadOnlyList<V5ReadOnlyCorrespondenceV1>> correspondences)
@@ -71,11 +71,11 @@ public static class V5TotalOccurrenceFunctionProtocolF1
             }).ToArray(),
             contextOnlyEvidence = contextOnlyEvidence.Select(value => new { page = value.Page, text = value.Text }).ToArray(),
         }, Json);
-        return new V5TotalOccurrenceFunctionRequestF1(Version, SystemPrompt, user, Hashing.Sha256(user),
+        return new OccurrenceFunctionRequest(Version, SystemPrompt, user, Hashing.Sha256(user),
             Encoding.UTF8.GetByteCount(SystemPrompt), Encoding.UTF8.GetByteCount(user), occurrences);
     }
 
-    public static V5TotalOccurrenceFunctionResultF1 Parse(
+    public static OccurrenceFunctionResult Parse(
         JsonElement payload,
         int rawUtf8Bytes,
         int responseCap,
@@ -89,7 +89,7 @@ public static class V5TotalOccurrenceFunctionProtocolF1
         if (decisions.GetArrayLength() != occurrences.Count)
             throw new InvalidOperationException("function-membership-decision-cardinality-invalid");
         var issued = occurrences.ToDictionary(value => value.Id, StringComparer.Ordinal);
-        var accepted = new Dictionary<string, V5OccurrenceFunctionDecisionF1>(StringComparer.Ordinal);
+        var accepted = new Dictionary<string, OccurrenceFunctionDecision>(StringComparer.Ordinal);
         foreach (var decision in decisions.EnumerateArray())
         {
             if (decision.ValueKind != JsonValueKind.Object || decision.EnumerateObject().Any(value => !DecisionKeys.Contains(value.Name)) || decision.EnumerateObject().Count() != 2 || !decision.TryGetProperty("occurrence", out var occurrence) || occurrence.ValueKind != JsonValueKind.String || !decision.TryGetProperty("function", out var function) || function.ValueKind != JsonValueKind.String)
@@ -97,13 +97,18 @@ public static class V5TotalOccurrenceFunctionProtocolF1
             var id = occurrence.GetString()!;
             if (!issued.ContainsKey(id)) throw new InvalidOperationException("function-membership-occurrence-not-issued");
             var functionText = function.GetString()!;
-            if (!Enum.TryParse<V5OccurrenceFunctionF1>(functionText, false, out var parsed) || !Enum.IsDefined(parsed) || functionText != parsed.ToString())
-                throw new InvalidOperationException("function-membership-not-in-enum");
-            if (!accepted.TryAdd(id, new V5OccurrenceFunctionDecisionF1(id, parsed)))
+            var parsed = functionText switch
+            {
+                "ESTABLISHES_STRUCTURE" => OccurrenceFunction.EstablishesStructure,
+                "REPRESENTS_STRUCTURE" => OccurrenceFunction.RepresentsStructure,
+                "OTHER" => OccurrenceFunction.Other,
+                _ => throw new InvalidOperationException("function-membership-not-in-enum"),
+            };
+            if (!accepted.TryAdd(id, new OccurrenceFunctionDecision(id, parsed)))
                 throw new InvalidOperationException("function-membership-occurrence-duplicate");
         }
         if (accepted.Count != issued.Count || issued.Keys.Any(id => !accepted.ContainsKey(id)))
             throw new InvalidOperationException("function-membership-occurrence-omitted");
-        return new V5TotalOccurrenceFunctionResultF1(occurrences.Select(value => accepted[value.Id]).ToArray());
+        return new OccurrenceFunctionResult(occurrences.Select(value => accepted[value.Id]).ToArray());
     }
 }

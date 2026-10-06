@@ -24,7 +24,7 @@ public sealed class PdfFunctionConditionedHeadingAuthorityContractTests
         const string raw = """{"decisions":[{"primary":"O1","anchor":"HAS_STRUCTURAL_EXTENT"}],"extra":true}""";
 
         Assert.Throws<InvalidOperationException>(() =>
-            PdfFunctionConditionedHeadingAuthorityAdapter.ParseG2A(raw, ["O1"]));
+            HeadingAnchorProtocolV1.Parse(raw, ["O1"]));
     }
 
     [Fact]
@@ -33,14 +33,14 @@ public sealed class PdfFunctionConditionedHeadingAuthorityContractTests
         const string raw = """{"decisions":[{"foo":"O1","bar":"HAS_STRUCTURAL_EXTENT"}]}""";
 
         Assert.Throws<InvalidOperationException>(() =>
-            PdfFunctionConditionedHeadingAuthorityAdapter.ParseG2A(raw, ["O1"]));
+            HeadingAnchorProtocolV1.Parse(raw, ["O1"]));
     }
 
     [Fact]
     public void G2A_shared_composer_emits_unselectable_owned_neighbors_with_default_escaping()
     {
         var owned = Atoms.Values.OrderBy(value => value.Ordinal).ToArray();
-        var user = PdfFunctionConditionedHeadingAuthorityAdapter.ComposeG2AUserMessage(
+        var user = HeadingAnchorProtocolV1.ComposeUserMessage(
             owned,
             IdByAlias,
             [("O1", Atoms["A1"])]);
@@ -64,7 +64,7 @@ public sealed class PdfFunctionConditionedHeadingAuthorityContractTests
         var raw = $$"""{"decisions":[{"anchor":"O1","headingMembers":["O1"],"endOccurrence":"O1","firstOutsideOccurrence":{{outside}},"firstOutsideRole":"{{role}}"}]}""";
 
         Assert.Throws<InvalidOperationException>(() =>
-            PdfFunctionConditionedHeadingAuthorityAdapter.BindBoundary(raw, "O1", Tail, IdByAlias, Atoms));
+            HeadingExtentProtocolV2.Bind(raw, "O1", Tail, IdByAlias, Atoms));
     }
 
     [Fact]
@@ -72,7 +72,7 @@ public sealed class PdfFunctionConditionedHeadingAuthorityContractTests
     {
         const string raw = """{"decisions":[{"anchor":"O1","headingMembers":["O1","O2"],"endOccurrence":"O2","firstOutsideOccurrence":null,"firstOutsideRole":"NO_VISIBLE_SUCCESSOR"}]}""";
 
-        var decision = PdfFunctionConditionedHeadingAuthorityAdapter.BindBoundary(raw, "O1", Tail, IdByAlias, Atoms);
+        var decision = HeadingExtentProtocolV2.Bind(raw, "O1", Tail, IdByAlias, Atoms);
 
         Assert.Equal(["S1", "S2"], decision.Parts!.Select(part => part.SourceId).ToArray());
     }

@@ -138,7 +138,7 @@ public sealed class V5P6TH2CEndPointerPreflightTests
             var documentRows = new List<RequestRow>();
             foreach (var (anchorId, _) in has)
             {
-                Assert.Equal(V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE, functionById[anchorId]);
+                Assert.Equal(OccurrenceFunction.EstablishesStructure, functionById[anchorId]);
                 var anchorAlias = aliasById[anchorId];
                 var start = Array.IndexOf(owned.ToArray(), anchorAlias);
                 Assert.True(start >= 0 && start + 1 < owned.Count, $"H2C requires at least one visible successor:{source.DocumentId}:{anchorId}");

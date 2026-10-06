@@ -11,20 +11,31 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// <para>Request composition is deliberately outside this source authority. The promoted PDF
 /// route consumes these parser-owned facts directly through F1 → G2A → H2-C V2.</para>
 /// </summary>
-internal sealed record PdfStructuredSourceAuthority(
+/// <summary>
+/// Immutable, format-neutral source universe at the heading-authority seam. Parser-specific
+/// detail is carried separately and is never required by DOCX.
+/// </summary>
+internal sealed record SourceOccurrenceUniverse(
     IReadOnlyList<SemanticSourceAtom> Atoms,
+    IReadOnlyList<SourceOccurrence> Occurrences,
     IReadOnlyList<CanonicalSemanticSourceEvidence> Evidence,
-    IReadOnlyDictionary<string, string> LayoutBlockByAtom,
     string SourceAliasUniverseHash,
     string ModelVisibleEvidenceHash,
     string SourceSha256,
-    IReadOnlyList<PdfSemanticBlock> Blocks,
-    IReadOnlyDictionary<string, PdfSemanticSourceContext> Contexts,
+    IReadOnlyDictionary<string, HeadingSourceContext> HeadingContexts,
     DocumentSourceCatalog Catalog,
     IReadOnlyList<SemanticSourceAlias> Aliases,
-    IReadOnlyDictionary<string, int> OrdinalBySourceId,
-    int ParserLineCount)
+    IReadOnlyDictionary<string, int> OrdinalBySourceId)
 {
+    public string SourceKind { get; init; } = "unknown";
+    public IReadOnlyDictionary<string, string> LayoutBlockByAtom { get; init; } = new Dictionary<string, string>(StringComparer.Ordinal);
+    public PdfSourceOccurrenceDetails? PdfDetails { get; init; }
+
+    // PDF-only convenience projections remain parser facts; common heading authority does not
+    // inspect them without an explicitly PDF-specific caller.
+    public IReadOnlyList<PdfSemanticBlock> Blocks => PdfDetails?.Blocks ?? [];
+    public IReadOnlyDictionary<string, PdfSemanticSourceContext> Contexts => PdfDetails?.Contexts ?? new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal);
+    public int ParserLineCount => PdfDetails?.ParserLineCount ?? 0;
     /// <summary>
     /// The coordinate universe identity a live route checks before it will transport.
     /// <see cref="SourceAliasUniverseHash"/> already is that identity for the atom universe:
@@ -33,6 +44,11 @@ internal sealed record PdfStructuredSourceAuthority(
     public string SourceUniverseSha256 => SourceAliasUniverseHash;
 
 }
+
+internal sealed record PdfSourceOccurrenceDetails(
+    IReadOnlyList<PdfSemanticBlock> Blocks,
+    IReadOnlyDictionary<string, PdfSemanticSourceContext> Contexts,
+    int ParserLineCount);
 
 /// <summary>
 /// Builds the coordinate atoms of a PDF and the evidence attached to each - all without contacting
@@ -49,7 +65,7 @@ internal sealed record PdfStructuredSourceAuthority(
 /// default fixed policy or an explicitly selected experiment policy.
 /// </para>
 /// </summary>
-internal static class PdfStructuredSourceAuthorityBuilder
+internal static class PdfSourceOccurrenceAdapter
 {
     private static readonly JsonSerializerOptions Canonical = new()
     {
@@ -57,7 +73,7 @@ internal static class PdfStructuredSourceAuthorityBuilder
         WriteIndented = false,
     };
 
-    public static PdfStructuredSourceAuthority Build(string pdfPath)
+    public static SourceOccurrenceUniverse Build(string pdfPath)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
@@ -72,7 +88,7 @@ internal static class PdfStructuredSourceAuthorityBuilder
     /// Retained for qualification/source-authority construction. Every other measurement here -
     /// the three hashes - depends on the PDF's text and geometry alone.
     /// </param>
-    public static PdfStructuredSourceAuthority Build(
+    public static SourceOccurrenceUniverse Build(
         IReadOnlyList<PdfLine> segments,
         string sourceSha256 = "")
     {
@@ -86,6 +102,16 @@ internal static class PdfStructuredSourceAuthorityBuilder
         // lookup below succeed for every atom instead of for none of them.
         var atomBlocks = segments.Select(SingleLineBlock).ToArray();
         var contexts = PdfSemanticSourceContextBuilder.Build(atomBlocks, annotations);
+        var headingContexts = contexts.ToDictionary(
+            pair => pair.Key,
+            pair => new HeadingSourceContext(
+                pair.Value.Source.SourceId,
+                pair.Value.Source.RawText,
+                pair.Value.Source.StructuralScope,
+                pair.Value.Source.EvidenceDetails.Select(item => item.Origin).ToArray(),
+                pair.Value.PreviousBlocks,
+                pair.Value.NextBlocks),
+            StringComparer.Ordinal);
 
         // Layout blocks, still built, still grouped the same way - attached as a label.
         var layoutBlocks = PdfSemanticBlockGrouper.Build(annotations);
@@ -114,10 +140,10 @@ internal static class PdfStructuredSourceAuthorityBuilder
         var ordinalByAtomSourceId = atoms.ToDictionary(
             atom => atom.SourceId, atom => atom.Ordinal, StringComparer.Ordinal);
 
-        return new PdfStructuredSourceAuthority(
+        return new SourceOccurrenceUniverse(
             atoms,
+            atoms.Select(atom => new SourceOccurrence(atom.SourceId, atom.Alias, atom.Ordinal, atom.Text, "pdf")).ToArray(),
             evidence,
-            layoutBlockByAtom,
             SourceAliasUniverseHash: Hash(new
             {
                 schemaVersion = "a99-pdf-segment-atom-universe-v1",
@@ -138,12 +164,15 @@ internal static class PdfStructuredSourceAuthorityBuilder
                 rows = evidence.Select(item => VisibleV2(item, layoutBlockByAtom)).ToArray(),
             }),
             SourceSha256: sourceSha256,
-            Blocks: atomBlocks,
-            Contexts: contexts,
+            HeadingContexts: headingContexts,
             Catalog: catalog,
             Aliases: aliases,
-            OrdinalBySourceId: ordinalByAtomSourceId,
-            ParserLineCount: segments.Count);
+            OrdinalBySourceId: ordinalByAtomSourceId)
+        {
+            SourceKind = "pdf",
+            LayoutBlockByAtom = layoutBlockByAtom,
+            PdfDetails = new PdfSourceOccurrenceDetails(atomBlocks, contexts, segments.Count),
+        };
     }
 
     /// <summary>

@@ -76,7 +76,7 @@ public sealed class Doc0256GoldItemisationTests
     public void Materialize_structured_occurrence_gold()
     {
         var path = TestRepository.Path(Pdf);
-        var authority = PdfStructuredSourceAuthorityBuilder.Build(path);
+        var authority = PdfSourceOccurrenceAdapter.Build(path);
         var atoms = authority.Atoms;
         var lastIndex = -1;
 

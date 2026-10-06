@@ -49,7 +49,7 @@ public sealed class P3cSemanticIdentityHierarchyBoundaryTests
 
         var identityKey = CanonicalSemanticIdentityResolver.CreateNodeKey(bound[0]);
         var secondIdentityKey = CanonicalSemanticIdentityResolver.CreateNodeKey(bound[1]);
-        var hierarchy = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(bound);
+        var hierarchy = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(bound);
 
         Assert.Equal(identityKey, secondIdentityKey);
         Assert.Equal(identityKey, hierarchy[0].SemanticNodeKey);

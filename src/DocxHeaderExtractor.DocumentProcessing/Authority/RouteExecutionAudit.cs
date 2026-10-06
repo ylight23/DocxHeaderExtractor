@@ -32,17 +32,17 @@ public sealed record RouteExecutionAudit(
 
     /// <summary>Per-source source/model/validation trace for PDF-first audit routes.</summary>
     [JsonPropertyName("sourceStageTraces")]
-    public IReadOnlyList<PdfSemanticSourceStageTrace> SourceStageTraces { get; init; } = [];
+    public IReadOnlyList<HeadingSourceStageTrace> SourceStageTraces { get; init; } = [];
 
     [JsonPropertyName("validatedStructures")]
-    public IReadOnlyList<PdfValidatedStructure> ValidatedStructures { get; init; } = [];
+    public IReadOnlyList<ResolvedHeadingPlacement> ValidatedStructures { get; init; } = [];
 
     [JsonPropertyName("hierarchyProposals")]
     public IReadOnlyList<PdfHierarchyProposalAudit> HierarchyProposals { get; init; } = [];
 
     /// <summary>M8.1 source-only evidence inventory for already validated headings.</summary>
     [JsonPropertyName("hierarchyFacts")]
-    public IReadOnlyList<PdfHierarchyFactAudit> HierarchyFacts { get; init; } = [];
+    public IReadOnlyList<HeadingHierarchyFactAudit> HierarchyFacts { get; init; } = [];
 
     /// <summary>
     /// Measured semantic disagreement for this run. Reported so the question "does this route need
@@ -70,7 +70,7 @@ public sealed record RouteExecutionAudit(
     public RouteLaneExecutionAudit? SpanLane { get; init; }
 
     [JsonPropertyName("batchTelemetry")]
-    public PdfPipelineBatchTelemetry? BatchTelemetry { get; init; }
+    public HeadingAuthorityBatchTelemetry? BatchTelemetry { get; init; }
 }
 
 public sealed record PdfSelectedSourceIdentity(
@@ -88,7 +88,7 @@ public sealed record RouteLaneExecutionAudit(
     [property: JsonPropertyName("notStarted")] int NotStarted,
     [property: JsonPropertyName("failureClass")] string? FailureClass = null);
 
-public sealed record PdfPipelineBatchTelemetry(
+public sealed record HeadingAuthorityBatchTelemetry(
     [property: JsonPropertyName("sourceParagraphCount")] int SourceParagraphCount,
     [property: JsonPropertyName("roleInputBlockCount")] int RoleInputBlockCount,
     [property: JsonPropertyName("roleBatchCount")] int RoleBatchCount,

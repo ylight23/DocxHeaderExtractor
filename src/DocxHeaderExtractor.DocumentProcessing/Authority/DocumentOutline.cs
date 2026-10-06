@@ -50,7 +50,7 @@ public sealed class HeadingRecord
 
     /// <summary>
     /// Cấp tiêu đề 1..9, hoặc null khi route tạo ra heading này không đủ bằng chứng để khẳng định
-    /// cấp (M9 hierarchy authority: <c>PdfFinalHeading.Level</c> abstain thay vì đoán). `required`
+    /// cấp (M9 hierarchy authority: <c>CanonicalFinalHeading.Level</c> abstain thay vì đoán). `required`
     /// buộc caller phải khai báo rõ trạng thái, kể cả khi trạng thái đó là "chưa biết" — null không
     /// phải giá trị bị bỏ quên.
     /// </summary>
@@ -178,14 +178,14 @@ public sealed class DocumentOutline
     public OutlineRunProvenance? Provenance { get; set; }
 
     /// <summary>
-    /// M9 authority for a route materialized through <c>PdfFinalStructureProjection</c> -
+    /// M9 authority for a route materialized through <c>CanonicalFinalStructureProjection</c> -
     /// <see cref="HeadingRecord"/> above is a structural COPY of this, not the other way around.
     /// Carried on the outline so a later writeback step acts on the exact same
-    /// <c>PdfProductOutput</c> the pipeline computed, never a reconstruction through
+    /// <c>DocumentProductOutput</c> the pipeline computed, never a reconstruction through
     /// <see cref="HeadingRecord"/>. Internal transport only; never part of the JSON contract.
     /// </summary>
     [JsonIgnore]
-    public Pipeline.PdfProductOutput? ProductOutput { get; init; }
+    public Pipeline.DocumentProductOutput? ProductOutput { get; init; }
 
     /// <summary>
     /// Số đoạn đáng ngờ cần trọng tài xem lại: hai lượt quét bất đồng, hoặc hậu kiểm đánh số

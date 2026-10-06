@@ -1169,7 +1169,7 @@ internal static class P6TH2CEndPointerCanary
             .OrderBy(value => int.Parse(value.Key.AsSpan(1), System.Globalization.CultureInfo.InvariantCulture));
         foreach (var (anchorId, _) in has)
         {
-            if (functionById[anchorId] != V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE) throw new InvalidDataException("G2A HAS lacks F1 ESTABLISHES authority");
+            if (functionById[anchorId] != OccurrenceFunction.EstablishesStructure) throw new InvalidDataException("G2A HAS lacks F1 ESTABLISHES authority");
             var anchorAlias = f1ById[anchorId];
             var start = Array.IndexOf(owned.ToArray(), anchorAlias);
             if (start < 0 || start + 1 >= owned.Count) throw new InvalidDataException("H2C anchor has no visible successor");

@@ -22,7 +22,7 @@ public sealed class MarkerComponentRepresentationTests
     [InlineData("4 3 Validation", new[] { 4, 3 })]
     public void NumericPathKeepsEveryObservedComponent(string raw, int[] expected)
     {
-        var marker = PdfMarkerFactsParser.Parse(raw);
+        var marker = SourceMarkerFactsParser.Parse(raw);
 
         Assert.NotNull(marker);
         Assert.Equal(expected, marker!.Value.Components);
@@ -37,7 +37,7 @@ public sealed class MarkerComponentRepresentationTests
     [InlineData("13 00 14 00 Lunch break")]
     public void DepthAgreesWithComponentCountWhenComponentsExist(string raw)
     {
-        var marker = PdfMarkerFactsParser.Parse(raw);
+        var marker = SourceMarkerFactsParser.Parse(raw);
 
         Assert.NotNull(marker);
         Assert.False(marker!.Value.Components.IsDefaultOrEmpty);
@@ -53,7 +53,7 @@ public sealed class MarkerComponentRepresentationTests
     [InlineData("Article 5 Obligations")]
     public void NonArabicMarkersCarryNoComponents(string raw)
     {
-        var marker = PdfMarkerFactsParser.Parse(raw);
+        var marker = SourceMarkerFactsParser.Parse(raw);
 
         if (marker is null) return;
         Assert.False(marker.Value.IsPath);
@@ -70,12 +70,12 @@ public sealed class MarkerComponentRepresentationTests
     {
         var texts = new[] { "4 Constructing Responses", "4 3 Validation", "4 3 2 Sending a Validation Request" };
         var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal);
-        var headings = new List<PdfValidatedHeading>();
+        var headings = new List<ValidatedHeading>();
         for (var index = 0; index < texts.Length; index++)
         {
             var id = $"b{index}";
             contexts[id] = Context(id, 1, 700 - index * 20, texts[index]);
-            headings.Add(new PdfValidatedHeading(id, new TextOffsetSpan(0, texts[index].Length),
+            headings.Add(new ValidatedHeading(id, new TextOffsetSpan(0, texts[index].Length),
                 "REGION_STRUCTURE", "document_body", "test"));
         }
 
@@ -96,7 +96,7 @@ public sealed class MarkerComponentRepresentationTests
         };
 
         var fact = Assert.Single(PdfHierarchyFactsInventory.Inspect(
-            [new PdfValidatedHeading("only", new TextOffsetSpan(0, text.Length), "REGION_STRUCTURE",
+            [new ValidatedHeading("only", new TextOffsetSpan(0, text.Length), "REGION_STRUCTURE",
                 "document_body", "test")],
             contexts));
 

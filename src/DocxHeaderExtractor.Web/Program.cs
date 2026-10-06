@@ -250,7 +250,7 @@ app.MapPost("/api/extract", async (
                 ? Path.Combine(work, Path.GetFileNameWithoutExtension(SafeName(upload.FileName)) + ".outline.docx")
                 : null;
             using IDocumentActionTool? actionTool = wantsWriteback
-                ? new PdfProductWritebackTool(options.Extraction)
+                ? new DocxProductWritebackTool(options.Extraction)
                 : null;
 
             var sink = new DelegateAgentRunSink((evt, _) =>

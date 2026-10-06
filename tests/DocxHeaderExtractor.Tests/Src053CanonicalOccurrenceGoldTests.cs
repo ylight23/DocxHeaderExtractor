@@ -167,7 +167,7 @@ public sealed class Src053CanonicalOccurrenceGoldTests
         var actual = occurrence.GetProperty("claims").EnumerateArray().Select(c => JsonNode.Parse(c.GetRawText())!.ToJsonString()).ToArray();
         Assert.Equal(expected, actual);
 
-        var atoms = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Src053SourceReviewTests.Pdf)).Atoms
+        var atoms = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(Src053SourceReviewTests.Pdf)).Atoms
             .ToDictionary(a => a.Alias, StringComparer.Ordinal);
         var taken = new Dictionary<string, List<(int Start, int End)>>(StringComparer.Ordinal);
         foreach (var claim in occurrence.GetProperty("claims").EnumerateArray())
@@ -233,7 +233,7 @@ public sealed class Src053CanonicalOccurrenceGoldTests
     /// <summary>The decided headings as authored claims, in source order, each bound by the production binder.</summary>
     private static List<JsonObject> BuildClaims()
     {
-        var atoms = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Src053SourceReviewTests.Pdf)).Atoms;
+        var atoms = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(Src053SourceReviewTests.Pdf)).Atoms;
         var byAlias = atoms.ToDictionary(a => a.Alias, StringComparer.Ordinal);
         var items = Src053SourceReviewTests.Items();
         Assert.DoesNotContain(items, i => i.Verdict == "AMBIGUOUS");

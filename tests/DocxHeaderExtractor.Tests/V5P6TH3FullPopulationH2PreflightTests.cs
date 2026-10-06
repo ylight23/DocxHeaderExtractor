@@ -112,7 +112,7 @@ public sealed class V5P6TH3FullPopulationH2PreflightTests
             var functionById = functions.Decisions.ToDictionary(value => value.OccurrenceId, value => value.Function, StringComparer.Ordinal);
             var has = decisions.Where(value => value.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
                 .Select(value => value.GetProperty("primary").GetString()!).OrderBy(value => int.Parse(value.AsSpan(1), System.Globalization.CultureInfo.InvariantCulture)).ToArray();
-            Assert.All(has, occurrence => Assert.Equal(V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE, functionById[occurrence]));
+            Assert.All(has, occurrence => Assert.Equal(OccurrenceFunction.EstablishesStructure, functionById[occurrence]));
             var docRequests = new List<H2Request>();
             foreach (var anchorId in has)
             {
@@ -154,7 +154,7 @@ public sealed class V5P6TH3FullPopulationH2PreflightTests
                 g2aRawCaptureSha256 = Hash(g2aRawBytes),
                 g2aRequestBodySha256 = g2aRoot.GetProperty("providerBodySha256").GetString(),
                 f1OwnedOccurrences = owned.Count,
-                f1Establishes = functions.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE),
+                f1Establishes = functions.Decisions.Count(value => value.Function == OccurrenceFunction.EstablishesStructure),
                 g2aIssued = decisions.Length,
                 g2aHas = has.Length,
                 g2aNo = decisions.Length - has.Length,

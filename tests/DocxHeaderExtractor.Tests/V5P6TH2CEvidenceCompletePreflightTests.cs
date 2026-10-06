@@ -66,7 +66,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         using (var pdf = PdfDocument.Open(pdfPath)) lines = PdfLineExtraction.ExtractLines(pdf);
         var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
         Assert.Equal(request.SourceSha256, sourceSha);
-        var authority = PdfStructuredSourceAuthorityBuilder.Build(lines, sourceSha);
+        var authority = PdfSourceOccurrenceAdapter.Build(lines, sourceSha);
         Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
         var aliases = BuildF1OccurrenceAliasMap(repo, request.Source, request.PackId, sourceSha, request.SourceUniverseSha256);
         var start = Array.FindIndex(authority.Atoms.ToArray(), atom => atom.Alias == request.AnchorAlias);
@@ -120,7 +120,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         }
         var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
         Assert.Equal(request.SourceSha256, sourceSha);
-        var authority = PdfStructuredSourceAuthorityBuilder.Build(lines, sourceSha);
+        var authority = PdfSourceOccurrenceAdapter.Build(lines, sourceSha);
         Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
         var gaps = BuildPageMedianGaps(authority);
         var aliases = BuildF1OccurrenceAliasMap(repo, request.Source, request.PackId, sourceSha, request.SourceUniverseSha256);
@@ -188,7 +188,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         Assert.Contains("Do not output coordinates", prompt, StringComparison.Ordinal);
         Assert.DoesNotContain("Do not use hierarchy, candidate alternatives, relations, coordinates", prompt, StringComparison.Ordinal);
 
-        var authorityByDocument = new Dictionary<string, PdfStructuredSourceAuthority>(StringComparer.Ordinal);
+        var authorityByDocument = new Dictionary<string, SourceOccurrenceUniverse>(StringComparer.Ordinal);
         var pageSizesByDocument = new Dictionary<string, Dictionary<int, (double Width, double Height)>>(StringComparer.Ordinal);
         var pageMedianGapByDocument = new Dictionary<string, Dictionary<int, double?>>(StringComparer.Ordinal);
         var aliasByOccurrenceByDocument = new Dictionary<string, Dictionary<string, string>>(StringComparer.Ordinal);
@@ -205,7 +205,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
             }
             var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
             Assert.Equal(request.SourceSha256, sourceSha);
-            var authority = PdfStructuredSourceAuthorityBuilder.Build(lines, sourceSha);
+            var authority = PdfSourceOccurrenceAdapter.Build(lines, sourceSha);
             Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
             authorityByDocument.Add(request.Source.DocumentId, authority);
             pageSizesByDocument.Add(request.Source.DocumentId, pageSizes);
@@ -328,7 +328,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         var sanitizedAuditPath = TestRepository.Path(Root + "/p6th2c-clean-boundary-separability-audit/h2c-clean-boundary-separability-sanitized.v1.json");
         var productionLayoutPath = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfHeadingMembershipProductionAdapter.cs");
         var sourceEvidencePath = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceEvidence.cs");
-        var sourceBuilderPath = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfStructuredSourceAuthorityBuilder.cs");
+        var sourceBuilderPath = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceOccurrenceAdapter.cs");
 
         FreezeArtifact.AssertJson(OutputRoot, "h2c-evidence-complete-preflight.v1.json", new
         {
@@ -707,7 +707,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         };
     }
 
-    private static Dictionary<int, double?> BuildPageMedianGaps(PdfStructuredSourceAuthority authority)
+    private static Dictionary<int, double?> BuildPageMedianGaps(SourceOccurrenceUniverse authority)
     {
         return authority.Atoms.Select(atom => authority.Contexts[atom.SourceId].Source)
             .GroupBy(source => source.Page)

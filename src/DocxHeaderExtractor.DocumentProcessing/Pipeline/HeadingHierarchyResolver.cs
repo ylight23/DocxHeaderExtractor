@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// never re-enter as a level authority.
 /// </para>
 /// </summary>
-internal static class ModelRelationHierarchyResolver
+internal static class HeadingHierarchyResolver
 {
     private const string ParentHintPrefix = "parent-node:";
     private const string RootParent = "ROOT";

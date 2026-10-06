@@ -8,7 +8,7 @@ namespace DocxHeaderExtractor.Tests;
 /// Level is owned by the harness but derived only from the immediate-parent relations the model
 /// returned. Numbering shape must never re-enter as a level authority here.
 /// </summary>
-public class ModelRelationHierarchyResolverTests
+public class HeadingHierarchyResolverTests
 {
     private static CanonicalSemanticBoundHeading Heading(
         string alias, string sourceId, int ordinal, string text, params string[] relationHints) =>
@@ -18,7 +18,7 @@ public class ModelRelationHierarchyResolverTests
     [Fact]
     public void Root_children_are_level_one_and_parent_chain_increments()
     {
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
         [
             Heading("S0001", "p1", 1, "Part One", "parent-node:ROOT"),
             Heading("S0002", "p2", 2, "Chapter A", "parent-node:S0001"),
@@ -38,7 +38,7 @@ public class ModelRelationHierarchyResolverTests
     [Fact]
     public void Siblings_under_one_parent_share_a_level()
     {
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
         [
             Heading("S0001", "p1", 1, "Data Sheet", "parent-node:ROOT"),
             Heading("S0002", "p2", 2, "Only One Proposal", "parent-node:S0001"),
@@ -52,7 +52,7 @@ public class ModelRelationHierarchyResolverTests
     [Fact]
     public void Missing_parent_hint_stays_unresolved_instead_of_guessing_depth()
     {
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
         [
             Heading("S0001", "p1", 1, "1.2.3 Deeply Numbered Heading"),
         ]).Single();
@@ -66,7 +66,7 @@ public class ModelRelationHierarchyResolverTests
     [Fact]
     public void Self_parent_is_rejected()
     {
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
         [
             Heading("S0001", "p1", 1, "Self", "parent-node:S0001"),
         ]).Single();
@@ -78,7 +78,7 @@ public class ModelRelationHierarchyResolverTests
     [Fact]
     public void Parent_that_does_not_precede_the_child_is_rejected()
     {
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
         [
             Heading("S0001", "p1", 1, "Child", "parent-node:S0002"),
             Heading("S0002", "p2", 2, "Later", "parent-node:ROOT"),
@@ -91,7 +91,7 @@ public class ModelRelationHierarchyResolverTests
     [Fact]
     public void Unknown_alias_is_rejected()
     {
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
         [
             Heading("S0001", "p1", 1, "Root", "parent-node:ROOT"),
             Heading("S0002", "p2", 2, "Child", "parent-node:S9999"),
@@ -109,7 +109,7 @@ public class ModelRelationHierarchyResolverTests
                 index == 1 ? "parent-node:ROOT" : $"parent-node:S{index - 1:0000}"))
             .ToArray();
 
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(headings);
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(headings);
 
         Assert.All(derived, item => Assert.InRange(item.Level, 1, 9));
         Assert.Equal(9, derived[^1].Level);
@@ -118,7 +118,7 @@ public class ModelRelationHierarchyResolverTests
     [Fact]
     public void Repeated_occurrences_collapse_only_when_the_model_declares_one_node()
     {
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
         [
             Heading("S0001", "p67", 1, "PART I", "parent-node:ROOT", "same-node:part-1"),
             Heading("S0002", "p142", 2, "PART I", "parent-node:ROOT", "same-node:part-1"),
@@ -133,7 +133,7 @@ public class ModelRelationHierarchyResolverTests
     public void Identical_wording_without_a_same_node_hint_stays_two_sections()
     {
         // Two different forms can both be titled "CURRICULUM VITAE"; text is not identity.
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
         [
             Heading("S0001", "p429", 1, "CURRICULUM VITAE (CV)", "parent-node:ROOT"),
             Heading("S0002", "p1037", 2, "CURRICULUM VITAE (CV)", "parent-node:ROOT"),
@@ -147,21 +147,21 @@ public class ModelRelationHierarchyResolverTests
     [Fact]
     public void Out_of_hierarchy_is_a_decision_and_carries_no_level()
     {
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
         [
             Heading("S0001", "p1", 1, "MINUTES OF THE PROGRAM", "parent-node:NONE"),
             Heading("S0002", "p2", 2, "Session I", "parent-node:ROOT"),
         ]).ToDictionary(item => item.SourceId, StringComparer.Ordinal);
 
-        Assert.Equal(ModelRelationHierarchyResolver.OutOfHierarchy, derived["p1"].Resolution);
+        Assert.Equal(HeadingHierarchyResolver.OutOfHierarchy, derived["p1"].Resolution);
         Assert.Null(derived["p1"].ParentSourceId);
-        Assert.Equal(ModelRelationHierarchyResolver.ResolvedRoot, derived["p2"].Resolution);
+        Assert.Equal(HeadingHierarchyResolver.ResolvedRoot, derived["p2"].Resolution);
     }
 
     [Fact]
     public void Out_of_hierarchy_is_distinguishable_from_unresolved()
     {
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
         [
             Heading("S0001", "p1", 1, "Running header", "parent-node:NONE"),
             Heading("S0002", "p2", 2, "Something the model could not place"),
@@ -169,21 +169,21 @@ public class ModelRelationHierarchyResolverTests
 
         // Both end without a level; only the reason tells a reviewer which one needs them.
         Assert.NotEqual(derived["p1"].Resolution, derived["p2"].Resolution);
-        Assert.Equal(ModelRelationHierarchyResolver.OutOfHierarchy, derived["p1"].Resolution);
-        Assert.Equal(ModelRelationHierarchyResolver.Unresolved, derived["p2"].Resolution);
+        Assert.Equal(HeadingHierarchyResolver.OutOfHierarchy, derived["p1"].Resolution);
+        Assert.Equal(HeadingHierarchyResolver.Unresolved, derived["p2"].Resolution);
     }
 
     [Fact]
     public void A_heading_outside_the_tree_cannot_be_anyone_parent()
     {
         // The whole point: a title accepted as a parent pushes every real section one level down.
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
         [
             Heading("S0001", "p1", 1, "DOCUMENT TITLE", "parent-node:NONE"),
             Heading("S0002", "p2", 2, "Session I", "parent-node:S0001"),
         ]).ToDictionary(item => item.SourceId, StringComparer.Ordinal);
 
-        Assert.Equal(ModelRelationHierarchyResolver.Unresolved, derived["p2"].Resolution);
+        Assert.Equal(HeadingHierarchyResolver.Unresolved, derived["p2"].Resolution);
         Assert.Null(derived["p2"].ParentSourceId);
     }
 
@@ -191,7 +191,7 @@ public class ModelRelationHierarchyResolverTests
     public void Sections_keep_level_one_when_the_title_stays_outside_the_tree()
     {
         // The DOC-0252 shape: title and subtitle outside, sessions at the top of the tree.
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
         [
             Heading("S0001", "p1", 1, "MINUTES", "parent-node:NONE"),
             Heading("S0002", "p2", 2, "TECHNICAL ADVISORY GROUP", "parent-node:NONE"),

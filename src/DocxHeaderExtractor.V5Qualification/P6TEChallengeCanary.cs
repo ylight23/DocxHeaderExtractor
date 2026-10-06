@@ -71,7 +71,7 @@ internal static class P6TEChallengeCanary
         catch (Exception exception) { f1Error = exception.Message; }
         f1Watch.Stop();
 
-        V5TotalOccurrenceFunctionResultF1? functions = null;
+        OccurrenceFunctionResult? functions = null;
         string f1Classification;
         if (f1Response is null || f1Error is not null) f1Classification = "TRANSPORT_ERROR";
         else if (!string.Equals(f1Response.FinishReason, "stop", StringComparison.OrdinalIgnoreCase))
@@ -99,9 +99,9 @@ internal static class P6TEChallengeCanary
             parsed = functions is null ? null : new
             {
                 decisions = functions.Decisions.Select(value => new { occurrence = value.OccurrenceId, function = value.Function.ToString() }).ToArray(),
-                establishesStructure = functions.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE),
-                representsStructure = functions.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.REPRESENTS_STRUCTURE),
-                other = functions.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.OTHER),
+                establishesStructure = functions.Decisions.Count(value => value.Function == OccurrenceFunction.EstablishesStructure),
+                representsStructure = functions.Decisions.Count(value => value.Function == OccurrenceFunction.RepresentsStructure),
+                other = functions.Decisions.Count(value => value.Function == OccurrenceFunction.Other),
             },
             goldReadDuringCapture = false,
         });
@@ -205,13 +205,13 @@ internal static class P6TEChallengeCanary
     }
 
     private static G2Request ComposeG2A(PdfCandidateAuthorityDocumentPlan plan, PdfFunctionMembershipPreparedPackF1 f1,
-        V5TotalOccurrenceFunctionResultF1 functions)
+        OccurrenceFunctionResult functions)
     {
         var atoms = plan.SourceAtoms.ToDictionary(value => value.Alias, StringComparer.Ordinal);
         var owned = f1.SourcePack.OwnedAliases;
         var idByAlias = f1.Request.Occurrences.ToDictionary(value => value.Atom.Alias, value => value.Id, StringComparer.Ordinal);
         var indexByAlias = owned.Select((alias, index) => (alias, index)).ToDictionary(value => value.alias, value => value.index, StringComparer.Ordinal);
-        var issued = functions.Decisions.Where(value => value.Function == V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE)
+        var issued = functions.Decisions.Where(value => value.Function == OccurrenceFunction.EstablishesStructure)
             .Select(value => (Id: value.OccurrenceId, Alias: f1.Request.Occurrences.Single(item => item.Id == value.OccurrenceId).Atom.Alias))
             .OrderBy(value => atoms[value.Alias].Ordinal).ToArray();
         var rows = issued.Select(value =>

@@ -229,7 +229,7 @@ public sealed class V5P6TH2CTypographyOnlyScreenGoldScoreTests
         using (var pdf = PdfDocument.Open(pdfPath)) lines = PdfLineExtraction.ExtractLines(pdf);
         var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
         Assert.Equal(request.SourceSha256, sourceSha);
-        var authority = PdfStructuredSourceAuthorityBuilder.Build(lines, sourceSha);
+        var authority = PdfSourceOccurrenceAdapter.Build(lines, sourceSha);
         Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
         var start = Array.FindIndex(authority.Atoms.ToArray(), atom => atom.Alias == request.AnchorAlias);
         Assert.True(start >= 0);

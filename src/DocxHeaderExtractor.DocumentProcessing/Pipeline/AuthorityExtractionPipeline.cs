@@ -93,14 +93,14 @@ public sealed class AuthorityExtractionPipeline : IDisposable
             const string route = "docx-canonical-vnext";
             var reason = authority.Reason;
 
-            var product = new PdfProductOutput(FileSha256(inputPath), []);
+            var product = new DocumentProductOutput(FileSha256(inputPath), []);
             var structural = new StructuralMaterializationResult(
                 new ValidatedStructure([]), new HashSet<string>(StringComparer.Ordinal), 0, 0);
             if (audit is not null)
             {
                 var finalStructure = BuildFinalStructure(inputPath, audit, authority.Structure);
-                var decisions = PdfOutputDecisions.Decide(finalStructure);
-                product = PdfProductOutputSerializer.Serialize(finalStructure, decisions);
+                var decisions = OutputDecisionPolicy.Decide(finalStructure);
+                product = DocumentProductOutputProjector.Serialize(finalStructure, decisions);
                 structural = new StructuralMaterializationResult(
                     authority.Structure,
                     authority.EmittedElementIds ?? authority.Structure.Elements
@@ -158,16 +158,16 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         return _analyst;
     }
 
-    internal static PdfFinalStructure BuildFinalStructure(string docxPath, RouteExecutionAudit audit,
+    internal static CanonicalFinalStructure BuildFinalStructure(string docxPath, RouteExecutionAudit audit,
         ValidatedStructure structure)
     {
         // Materializes only facts already validated upstream; resolves no identity, hierarchy or
         // provider work.
-        return PdfFinalStructureProjection.Project(
+        return CanonicalFinalStructureProjection.Project(
             FileSha256(docxPath),
             audit.ValidatedStructures,
             audit.HierarchyFacts,
-            PdfCanonicalGrounding.FromValidatedStructure(structure));
+            CanonicalGrounding.FromValidatedStructure(structure));
     }
 
     internal static StructuralAuthorityResult ApplyStructuralQuarantine(

@@ -1,4 +1,6 @@
 using System.Text.Json;
+using System.Security.Cryptography;
+using System.Text;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -17,9 +19,9 @@ public sealed class QualifiedPromptNewlineTests
 
     public static TheoryData<string, string> CodeAuthoredPrompts => new()
     {
-        { "F1", V5TotalOccurrenceFunctionProtocolF1.SystemPrompt },
-        { "G2A", PdfFunctionConditionedHeadingAuthorityAdapter.G2APrompt },
-        { "H2-C", PdfFunctionConditionedHeadingAuthorityAdapter.BoundaryPromptV2 },
+        { "F1", OccurrenceFunctionProtocolV1.SystemPrompt },
+        { "G2A", HeadingAnchorProtocolV1.SystemPrompt },
+        { "H2-C", HeadingExtentProtocolV2.SystemPrompt },
     };
 
     [Theory]
@@ -60,6 +62,17 @@ public sealed class QualifiedPromptNewlineTests
         Assert.Equal("line one\r\nline two", body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString());
     }
 
+    [Fact]
+    public void Promoted_protocol_system_prompts_match_the_frozen_qualification_hashes()
+    {
+        Assert.Equal("b44904b62d8807757ba288ee6f8192081f5a2a8742e91e40b1f447974601202a",
+            Sha256(OccurrenceFunctionProtocolV1.SystemPrompt));
+        Assert.Equal("b231e61785f1793fd94456fad682b851b28778f222a539431ec37b53ef2d2fd6",
+            Sha256(HeadingAnchorProtocolV1.SystemPrompt));
+        Assert.Equal("c1761a1e1c8d8f6e0502170fcea2290ed476c256f445e37b4094f23136e480c5",
+            Sha256(HeadingExtentProtocolV2.SystemPrompt));
+    }
+
     /// <summary>
     /// A CRLF copy of the F1 system prompt still reproduces the frozen P6T-F1 qualification provider bodies.
     /// </summary>
@@ -94,4 +107,7 @@ public sealed class QualifiedPromptNewlineTests
             Assert.Equal(frozen.GetProperty("providerRequestBytes").GetInt32(), body.Bytes);
         }
     }
+
+    private static string Sha256(string value) => Convert.ToHexStringLower(
+        SHA256.HashData(Encoding.UTF8.GetBytes(value)));
 }

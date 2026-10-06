@@ -1,3 +1,5 @@
 global using DocxHeaderExtractor.Infrastructure.AI;
 
 global using DocxHeaderExtractor.DocumentProcessing.Projection;
+global using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
+global using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority.Protocols;

@@ -53,7 +53,7 @@ public sealed partial class Doc0133StructuralAuditTests
     internal static IReadOnlyList<Atom> ReadAtoms()
     {
         var pdf = TestRepository.Path(Source);
-        var atoms = PdfStructuredSourceAuthorityBuilder.Build(pdf).Atoms;
+        var atoms = PdfSourceOccurrenceAdapter.Build(pdf).Atoms;
         Dictionary<string, PdfLine> lines;
         using (var document = UglyToad.PdfPig.PdfDocument.Open(pdf))
             lines = PdfLineExtraction.ExtractLines(document)

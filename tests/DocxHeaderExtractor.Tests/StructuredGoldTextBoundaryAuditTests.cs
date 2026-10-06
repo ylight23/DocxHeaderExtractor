@@ -36,7 +36,7 @@ public sealed class StructuredGoldTextBoundaryAuditTests
     public void Audit_every_structured_gold_selection_against_its_own_atoms()
     {
         Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(PredecessorGoldPath, GoldSha256).GoldSha256);
-        var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
+        var plan = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(Doc0252Pdf));
         Assert.Equal(SourceUniverseSha256, plan.SourceUniverseSha256);
         var atomByAlias = plan.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
 

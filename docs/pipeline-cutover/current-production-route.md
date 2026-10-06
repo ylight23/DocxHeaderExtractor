@@ -1,8 +1,33 @@
-# Current Production Route Inventory
+# Current Production Heading Authority
 
-Baseline: `main@6debf01bdb59e8d46919e5c521481feaab3b15f1`
+> **Superseded inventory notice.** The historical inventory below records the pre-cutover
+> reachability state. It is retained as dated context only. The current production architecture
+> is the source-adapter/heading-authority route described next.
 
-Status: inventory only. No extraction code is changed by this document.
+## Current architecture
+
+```text
+DOCX → DocxSourceOccurrenceAdapter → SourceOccurrenceUniverse
+                                         ↓
+                         canonical-text semantic authority (pending independent qualification)
+
+PDF  → PdfSourceOccurrenceAdapter  → SourceOccurrenceUniverse
+                                         ↓
+                           HeadingAuthorityPipeline
+                        Function → Anchor → Exact extent
+                                         ↓
+ValidatedHeading → HeadingPlacementCoordinator → HeadingHierarchyResolver
+                 → CanonicalStructureMaterializer → CanonicalFinalStructure
+                 → DocumentProductOutputProjector
+```
+
+Format adapters own parser facts; heading authority owns semantic decisions; hierarchy owns
+placement; materialization owns canonical structure; projection owns product shape; and
+infrastructure owns the authorized frozen PDF transport. PDF has no canonical-text fallback.
+DOCX remains on its canonical-text semantic authority until it is independently qualified for the
+PDF protocol. Gold, replay, qualification artifacts, and diagnostics are never production authority.
+
+## Historical inventory
 
 ## Route Summary
 

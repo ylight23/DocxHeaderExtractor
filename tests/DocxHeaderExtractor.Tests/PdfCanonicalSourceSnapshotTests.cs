@@ -31,11 +31,11 @@ public sealed class PdfCanonicalSourceSnapshotTests
         {
             var path = TestRepository.Path(spec.Pdf);
             var sourceSha = CanonicalSemanticSourceHash.Compute(path);
-            PdfStructuredSourceAuthority? live = null;
+            SourceOccurrenceUniverse? live = null;
             PdfCanonicalSourceSnapshotV1 snapshot;
             if (FreezeArtifact.UpdateRequested)
             {
-                live = PdfStructuredSourceAuthorityBuilder.Build(path);
+                live = PdfSourceOccurrenceAdapter.Build(path);
                 snapshot = PdfCanonicalSourceSnapshotV1.From(live);
                 Assert.Equal(sourceSha, live.SourceSha256);
                 FreezeArtifact.AssertJson(Root, $"{sourceSha}.json", snapshot);
@@ -79,7 +79,7 @@ public sealed class PdfCanonicalSourceSnapshotTests
         {
             schemaVersion = "p6s-canonical-source-snapshot-replay-v1",
             authority = "compact sourceSha256 + atoms + materialized evidence + layoutBlockByAtom",
-            captureParity = "A99_FREEZE_UPDATE capture host: live PdfStructuredSourceAuthorityBuilder equals serialized snapshot rehydrate",
+            captureParity = "A99_FREEZE_UPDATE capture host: live PdfSourceOccurrenceAdapter equals serialized snapshot rehydrate",
             ciReplay = "ordinary runs rehydrate only; raw PdfPig drift is intentionally not a second authority",
             providerCalls = 0, goldRead = false, sharedRuntime = "UNCHANGED", documents = rows,
         });

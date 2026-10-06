@@ -434,7 +434,7 @@ internal static class P6TH3FullPopulationH2Canary
                      .OrderBy(value => int.Parse(value.Key.AsSpan(1), System.Globalization.CultureInfo.InvariantCulture)))
         {
             var alias = aliasById[anchor.Key];
-            if (functions.Decisions.Single(value => value.OccurrenceId == anchor.Key).Function != V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE)
+            if (functions.Decisions.Single(value => value.OccurrenceId == anchor.Key).Function != OccurrenceFunction.EstablishesStructure)
                 throw new InvalidOperationException($"p6th3-h2-{source.DocumentId}-g2a-anchor-not-f1-eligible");
             var start = Array.IndexOf(owned.ToArray(), alias);
             if (start < 0) throw new InvalidOperationException($"p6th3-h2-{source.DocumentId}-anchor-not-owned");

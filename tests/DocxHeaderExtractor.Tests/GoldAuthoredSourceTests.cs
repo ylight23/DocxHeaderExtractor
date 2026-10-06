@@ -108,7 +108,7 @@ public sealed class GoldAuthoredSourceTests
             if (occurrence.ValueKind == JsonValueKind.Null
                 || occurrence.GetProperty("coordinateSystem").GetString() != "STRUCTURED_SOURCE_PARTS") continue;
 
-            var atoms = PdfStructuredSourceAuthorityBuilder.Build(
+            var atoms = PdfSourceOccurrenceAdapter.Build(
                 TestRepository.Path(root.GetProperty("source").GetProperty("sourcePath").GetString()!)).Atoms;
             foreach (var claim in occurrence.GetProperty("claims").EnumerateArray())
             {

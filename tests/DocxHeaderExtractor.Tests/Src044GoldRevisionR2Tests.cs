@@ -106,7 +106,7 @@ public sealed class Src044GoldRevisionR2Tests
     /// <summary>The label's own text: the atom up to where it runs on into the chart's unit line.</summary>
     private static string Title(string alias)
     {
-        var text = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(SourcePdfCorpus.Src044)).Atoms.Single(a => a.Alias == alias).Text;
+        var text = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(SourcePdfCorpus.Src044)).Atoms.Single(a => a.Alias == alias).Text;
         var cut = text.IndexOf(UnitLine, StringComparison.Ordinal);
         Assert.True(cut > 0, text);
         return text[..cut];

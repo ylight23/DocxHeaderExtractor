@@ -44,11 +44,11 @@ public sealed class V5P6TF1FunctionMembershipContractTests
                 }).ToArray(),
             });
             using var payload = JsonDocument.Parse(synthetic);
-            var parsed = V5TotalOccurrenceFunctionProtocolF1.Parse(payload.RootElement, Encoding.UTF8.GetByteCount(synthetic), PdfCandidateAuthorityQualificationAdapter.ResponseUtf8ByteCap, request.Occurrences);
+            var parsed = OccurrenceFunctionProtocolV1.Parse(payload.RootElement, Encoding.UTF8.GetByteCount(synthetic), PdfCandidateAuthorityQualificationAdapter.ResponseUtf8ByteCap, request.Occurrences);
             Assert.Equal(96, parsed.Decisions.Count);
-            Assert.Equal(32, parsed.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE));
-            Assert.Equal(32, parsed.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.REPRESENTS_STRUCTURE));
-            Assert.Equal(32, parsed.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.OTHER));
+            Assert.Equal(32, parsed.Decisions.Count(value => value.Function == OccurrenceFunction.EstablishesStructure));
+            Assert.Equal(32, parsed.Decisions.Count(value => value.Function == OccurrenceFunction.RepresentsStructure));
+            Assert.Equal(32, parsed.Decisions.Count(value => value.Function == OccurrenceFunction.Other));
             AssertParserRejects(request, new { decisions = request.Occurrences.Skip(1).Select(value => new { occurrence = value.Id, function = "OTHER" }).ToArray() }, "function-membership-decision-cardinality-invalid");
             AssertParserRejects(request, new { decisions = request.Occurrences.Select(value => new { occurrence = value.Id, function = "HEADING_START" }).ToArray() }, "function-membership-not-in-enum");
             AssertParserRejects(request, new { decisions = request.Occurrences.Select(value => new { occurrence = value.Id, function = "OTHER", reason = "forbidden" }).ToArray() }, "function-membership-decision-schema-invalid");
@@ -96,11 +96,11 @@ public sealed class V5P6TF1FunctionMembershipContractTests
         });
     }
 
-    private static void AssertParserRejects(V5TotalOccurrenceFunctionRequestF1 request, object payloadObject, string failure)
+    private static void AssertParserRejects(OccurrenceFunctionRequest request, object payloadObject, string failure)
     {
         var raw = JsonSerializer.Serialize(payloadObject);
         using var payload = JsonDocument.Parse(raw);
-        var exception = Assert.Throws<InvalidOperationException>(() => V5TotalOccurrenceFunctionProtocolF1.Parse(payload.RootElement, Encoding.UTF8.GetByteCount(raw), PdfCandidateAuthorityQualificationAdapter.ResponseUtf8ByteCap, request.Occurrences));
+        var exception = Assert.Throws<InvalidOperationException>(() => OccurrenceFunctionProtocolV1.Parse(payload.RootElement, Encoding.UTF8.GetByteCount(raw), PdfCandidateAuthorityQualificationAdapter.ResponseUtf8ByteCap, request.Occurrences));
         Assert.Equal(failure, exception.Message);
     }
 

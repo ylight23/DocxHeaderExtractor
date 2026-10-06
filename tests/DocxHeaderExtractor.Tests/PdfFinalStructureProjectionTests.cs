@@ -9,7 +9,7 @@ namespace DocxHeaderExtractor.Tests;
 /// add a heading, recover a rejected one, rewrite source text, fill an unresolved relation, or
 /// match a fact to a canonical occurrence the pipeline did not already reconcile.
 /// </summary>
-public sealed class PdfFinalStructureProjectionTests
+public sealed class CanonicalFinalStructureProjectionTests
 {
     [Fact]
     public void EmitsOneHeadingPerValidatedStructureInSourceOrder()
@@ -30,10 +30,10 @@ public sealed class PdfFinalStructureProjectionTests
     public void GroundedTextComesFromTheCanonicalParagraph()
     {
         var fact = Fact("b1", 0, "4 3 Ca che-Control", 1);
-        var grounding = new PdfCanonicalGrounding("b1", 90, "@body[1]/p[90]", new DocxTextSpan(0, 17),
+        var grounding = new CanonicalGrounding("b1", 90, "@body[1]/p[90]", new DocxTextSpan(0, 17),
             "4.3 Cache-Control and the rest of the paragraph");
 
-        var final = PdfFinalStructureProjection.Project("sha", [Structure("b1")], [fact], [grounding]);
+        var final = CanonicalFinalStructureProjection.Project("sha", [Structure("b1")], [fact], [grounding]);
 
         var heading = Assert.Single(final.Headings);
         Assert.Equal("4.3 Cache-Control", heading.Text);
@@ -92,11 +92,11 @@ public sealed class PdfFinalStructureProjectionTests
         var structures = new[] { Structure("b1"), Structure("b2", parentId: "b1", resolution: "marker-resolved") };
         var groundings = new[]
         {
-            new PdfCanonicalGrounding("b1", 10, "@body[1]/p[10]", new DocxTextSpan(0, 14), "1. Introduction"),
-            new PdfCanonicalGrounding("b2", 11, "@body[1]/p[11]", new DocxTextSpan(0, 9), "1.1 Scope"),
+            new CanonicalGrounding("b1", 10, "@body[1]/p[10]", new DocxTextSpan(0, 14), "1. Introduction"),
+            new CanonicalGrounding("b2", 11, "@body[1]/p[11]", new DocxTextSpan(0, 9), "1.1 Scope"),
         };
 
-        var final = PdfFinalStructureProjection.Project("sha", structures, facts, groundings);
+        var final = CanonicalFinalStructureProjection.Project("sha", structures, facts, groundings);
 
         var parent = final.Headings.Single(heading => heading.PdfEvidence!.BlockId == "b1");
         var child = final.Headings.Single(heading => heading.PdfEvidence!.BlockId == "b2");
@@ -108,7 +108,7 @@ public sealed class PdfFinalStructureProjectionTests
     [Fact]
     public void ParentPointingOutsideTheEmittedSetIsDropped()
     {
-        var final = PdfFinalStructureProjection.Project("sha",
+        var final = CanonicalFinalStructureProjection.Project("sha",
             [Structure("b2", parentId: "b1", resolution: "marker-resolved")], [Fact("b2", 1, "1 1 Scope", 2)], []);
 
         var heading = Assert.Single(final.Headings);
@@ -128,7 +128,7 @@ public sealed class PdfFinalStructureProjectionTests
             MarkerComponents = [4, 3, 2],
         };
 
-        var final = PdfFinalStructureProjection.Project("sha", [Structure("b1")], [fact], []);
+        var final = CanonicalFinalStructureProjection.Project("sha", [Structure("b1")], [fact], []);
 
         var heading = Assert.Single(final.Headings);
         Assert.Null(heading.Level);
@@ -138,7 +138,7 @@ public sealed class PdfFinalStructureProjectionTests
     [Fact]
     public void StructureWithoutASourceFactIsDroppedAndCounted()
     {
-        var final = PdfFinalStructureProjection.Project("sha", [Structure("missing")], [], []);
+        var final = CanonicalFinalStructureProjection.Project("sha", [Structure("missing")], [], []);
 
         Assert.Empty(final.Headings);
         Assert.Equal(1, final.Counters.DroppedWithoutSourceFact);
@@ -150,7 +150,7 @@ public sealed class PdfFinalStructureProjectionTests
     {
         var structure = Structure("b1") with { StructuralScope = "appendix_table" };
 
-        var final = PdfFinalStructureProjection.Project("sha", [structure], [Fact("b1", 0, "4 3 Validation", 1)], []);
+        var final = CanonicalFinalStructureProjection.Project("sha", [structure], [Fact("b1", 0, "4 3 Validation", 1)], []);
 
         var heading = Assert.Single(final.Headings);
         Assert.Equal("appendix_table", heading.Scope);
@@ -173,7 +173,7 @@ public sealed class PdfFinalStructureProjectionTests
     /// re-derived later without re-running extraction, reconciliation or a model.
     /// </summary>
     /// <summary>
-    /// <see cref="PdfValidatedStructure"/> declares its own <c>[JsonPropertyName]</c>s so it survives a
+    /// <see cref="ResolvedHeadingPlacement"/> declares its own <c>[JsonPropertyName]</c>s so it survives a
     /// camelCase round-trip: without them a case-sensitive reader silently leaves <c>SourceId</c> null
     /// instead of throwing, which then throws much later and further away, inside <c>Project</c>.
     /// </summary>
@@ -190,23 +190,23 @@ public sealed class PdfFinalStructureProjectionTests
         };
 
         var json = System.Text.Json.JsonSerializer.Serialize(structure, camelCase);
-        var replayed = System.Text.Json.JsonSerializer.Deserialize<PdfValidatedStructure>(json, camelCase);
+        var replayed = System.Text.Json.JsonSerializer.Deserialize<ResolvedHeadingPlacement>(json, camelCase);
 
         Assert.Equal(structure, replayed);
         Assert.NotNull(replayed!.SourceId);
     }
 
-    private static PdfFinalStructure Project(params (string Id, int Order, string Text, int? Level)[] cases) =>
-        PdfFinalStructureProjection.Project(
+    private static CanonicalFinalStructure Project(params (string Id, int Order, string Text, int? Level)[] cases) =>
+        CanonicalFinalStructureProjection.Project(
             "sha",
             cases.Select(item => Structure(item.Id)).ToArray(),
             cases.Select(item => Fact(item.Id, item.Order, item.Text, item.Level)).ToArray(),
             []);
 
-    private static PdfValidatedStructure Structure(string id, string? parentId = null, string resolution = "unresolved") =>
+    private static ResolvedHeadingPlacement Structure(string id, string? parentId = null, string resolution = "unresolved") =>
         new(id, 1, parentId, resolution, "requires_review") { StructuralScope = "document_body" };
 
-    private static PdfHierarchyFactAudit Fact(string id, int order, string text, int? resolvedLevel) =>
+    private static HeadingHierarchyFactAudit Fact(string id, int order, string text, int? resolvedLevel) =>
         new(id, order, 1, "document_body", "document_body", null, null, false, null, null, null,
             resolvedLevel, "relationship_unresolved", [])
         {

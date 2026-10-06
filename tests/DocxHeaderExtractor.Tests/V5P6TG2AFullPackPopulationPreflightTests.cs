@@ -34,7 +34,7 @@ public sealed class V5P6TG2AFullPackPopulationPreflightTests
     private enum F1Kind { RawCapture, ResultRow, ResultRows }
     private sealed record Prepared(string DocumentId, PdfCandidateAuthorityDocumentPlan Plan,
         PdfCandidateAuthorityPreparedPack Pack, PdfFunctionMembershipPreparedPackF1 F1,
-        V5TotalOccurrenceFunctionResultF1 F1Result,
+        OccurrenceFunctionResult F1Result,
         string F1RawPath, string F1RawSha256, string F1ResponseSha256,
         string F1FinishReason,
         IReadOnlyList<IssuedPrimary> Primaries, string UserMessage, string UserHash,
@@ -105,9 +105,9 @@ public sealed class V5P6TG2AFullPackPopulationPreflightTests
                     expectedTotalLedger = 96,
                     returnedTotalLedger = row.F1Result.Decisions.Count,
                     finishReason = row.F1FinishReason,
-                    establishesStructure = row.F1Result.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE),
-                    representsStructure = row.F1Result.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.REPRESENTS_STRUCTURE),
-                    other = row.F1Result.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.OTHER),
+                    establishesStructure = row.F1Result.Decisions.Count(value => value.Function == OccurrenceFunction.EstablishesStructure),
+                    representsStructure = row.F1Result.Decisions.Count(value => value.Function == OccurrenceFunction.RepresentsStructure),
+                    other = row.F1Result.Decisions.Count(value => value.Function == OccurrenceFunction.Other),
                 },
                 ownedPack = new { occurrenceCount = row.Pack.OwnedAliases.Count, ownedAliases = row.Pack.OwnedAliases },
                 issuedPrimaries = row.Primaries.Select(value => new
@@ -195,7 +195,7 @@ public sealed class V5P6TG2AFullPackPopulationPreflightTests
         var occurrenceByAlias = f1.Request.Occurrences.ToDictionary(value => value.Atom.Alias, value => value.Id, StringComparer.Ordinal);
         var ownedIndexByAlias = pack.OwnedAliases.Select((alias, index) => (alias, index)).ToDictionary(value => value.alias, value => value.index, StringComparer.Ordinal);
         var functions = parsed.Decisions.ToDictionary(value => value.OccurrenceId, value => value.Function, StringComparer.Ordinal);
-        var primaries = f1.Request.Occurrences.Where(value => functions[value.Id] == V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE)
+        var primaries = f1.Request.Occurrences.Where(value => functions[value.Id] == OccurrenceFunction.EstablishesStructure)
             .OrderBy(value => value.Atom.Ordinal).ThenBy(value => value.Atom.Alias, StringComparer.Ordinal)
             .Select(value => new IssuedPrimary(value.Id, value.Atom.Alias, ownedIndexByAlias[value.Atom.Alias], value.Atom.Page, value.Atom.Ordinal)).ToArray();
         var ownedAtoms = pack.OwnedAliases.Select(alias => atoms[alias]).ToArray();

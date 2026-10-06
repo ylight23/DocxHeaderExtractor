@@ -20,7 +20,7 @@ internal static class GoldRevision
 
     internal static JsonNode Add(JsonNode gold, string pdf, string template, IReadOnlyList<Addition> additions)
     {
-        var atoms = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(pdf)).Atoms;
+        var atoms = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(pdf)).Atoms;
         var claims = gold["occurrence"]!["claims"]!.AsArray().Select(c => c!.DeepClone()).ToList();
         var model = claims.Single(c => First(c) == template);
         foreach (var addition in additions)

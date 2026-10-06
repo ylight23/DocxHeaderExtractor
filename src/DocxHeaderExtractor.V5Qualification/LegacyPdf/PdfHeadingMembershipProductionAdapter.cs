@@ -194,7 +194,7 @@ public static class PdfHeadingMembershipProductionAdapter
         ArgumentNullException.ThrowIfNull(contract);
         contract.Validate();
 
-        var authority = PdfStructuredSourceAuthorityBuilder.Build(pdfPath);
+        var authority = PdfSourceOccurrenceAdapter.Build(pdfPath);
         var graph = V5PdfPreflightBuilder.BuildGraph(authority, documentId);
         var graphByAlias = graph.Nodes.ToDictionary(node => node.SourceAlias, StringComparer.Ordinal);
         var atomByAlias = authority.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
@@ -344,7 +344,7 @@ public static class PdfHeadingMembershipProductionAdapter
 
     private static V5SparseCandidateModelRequestV1 AddNeutralLayoutFacts(
         V5SparseCandidateModelRequestV1 sparse,
-        PdfStructuredSourceAuthority authority,
+        SourceOccurrenceUniverse authority,
         IReadOnlyList<string> ownedAliases,
         IReadOnlyList<string> visibleAliases)
     {
@@ -379,7 +379,7 @@ public static class PdfHeadingMembershipProductionAdapter
         };
     }
 
-    private static string AliasSourceId(PdfStructuredSourceAuthority authority, string alias) =>
+    private static string AliasSourceId(SourceOccurrenceUniverse authority, string alias) =>
         authority.Atoms.Single(atom => atom.Alias == alias).SourceId;
 
     private static object LayoutFacts(PdfSourceFacts source, double bodyFontSize) => new

@@ -23,13 +23,13 @@ public interface IDocumentActionTool : IDisposable
 }
 
 /// <summary>
-/// M9.5b. The pdf-first-authority route's writeback: acts on the exact <c>PdfProductOutput</c>
+/// M9.5b. The pdf-first-authority route's writeback: acts on the exact <c>DocumentProductOutput</c>
 /// the authority pipeline already materialized (<see cref="DocumentOutline.ProductOutput"/>),
 /// never a reconstruction through <see cref="HeadingRecord"/>. The mutation itself lives in
-/// <see cref="PdfProductWriteback"/>; this tool only carries the harness contract, mirroring
+/// <see cref="DocxProductWriteback"/>; this tool only carries the harness contract, mirroring
 /// <see cref="OutlineWritebackTool"/> for every other route.
 /// </summary>
-public sealed class PdfProductWritebackTool(ExtractionOptions extraction) : IDocumentActionTool
+public sealed class DocxProductWritebackTool(ExtractionOptions extraction) : IDocumentActionTool
 {
     private readonly ExtractionOptions _extraction = extraction
         ?? throw new ArgumentNullException(nameof(extraction));
@@ -54,14 +54,14 @@ public sealed class PdfProductWritebackTool(ExtractionOptions extraction) : IDoc
 
         var productOutput = outline.ProductOutput
             ?? throw new InvalidOperationException(
-                "Outline không mang PdfProductOutput - route tạo ra nó không phải pdf-first-authority.");
+                "Outline không mang DocumentProductOutput - route tạo ra nó không phải pdf-first-authority.");
         var target = request.WritebackTargetPath
                      ?? throw new InvalidOperationException("Run không có đích writeback.");
 
         var conversion = OfficeDocumentConverter.EnsureDocx(request.InputPath);
         try
         {
-            var result = PdfProductWriteback.Apply(
+            var result = DocxProductWriteback.Apply(
                 conversion.Path,
                 target,
                 productOutput,

@@ -14,7 +14,7 @@ public class NumberMarkerParserTests
     [InlineData("A) Phụ lục", NumberMarkerKind.Letter, 1, 1)]
     public void Parse_tach_dung_ky_hieu(string text, NumberMarkerKind kind, int depth, int value)
     {
-        var t = PdfMarkerFactsParser.ParseStrict(text);
+        var t = SourceMarkerFactsParser.ParseStrict(text);
 
         Assert.NotNull(t);
         Assert.Equal(kind, t!.Value.Kind);
@@ -26,7 +26,7 @@ public class NumberMarkerParserTests
     [Fact]
     public void Parse_chap_nhan_thieu_dau_cach_sau_so()
     {
-        var t = PdfMarkerFactsParser.ParseStrict("1.MUC (chỉ số tổng hợp): 5005/2401");
+        var t = SourceMarkerFactsParser.ParseStrict("1.MUC (chỉ số tổng hợp): 5005/2401");
 
         Assert.NotNull(t);
         Assert.Equal(NumberMarkerKind.Arabic, t!.Value.Kind);
@@ -47,7 +47,7 @@ public class NumberMarkerParserTests
     [InlineData("1: 04/04")]
     [InlineData("a) 01/02")]
     public void Parse_tra_null_khi_khong_phai_danh_so(string text) =>
-        Assert.Null(PdfMarkerFactsParser.ParseStrict(text));
+        Assert.Null(SourceMarkerFactsParser.ParseStrict(text));
 
     /// <summary>
     /// TODO mục 3: dạng "nhãn + số" phải sinh ra token. Trước đây <c>Parse</c> chỉ có mẫu Ả Rập /
@@ -63,7 +63,7 @@ public class NumberMarkerParserTests
     [InlineData("Abschnitt 4. Grundlagen", "abschnitt", 4)]
     public void Nhan_cong_so_sinh_ra_token_va_nhan_nam_trong_chu_ky(string text, string label, int value)
     {
-        var token = PdfMarkerFactsParser.ParseStrict(text);
+        var token = SourceMarkerFactsParser.ParseStrict(text);
 
         Assert.NotNull(token);
         Assert.Equal(NumberMarkerKind.Labelled, token!.Value.Kind);
@@ -72,7 +72,7 @@ public class NumberMarkerParserTests
         Assert.Equal($"Labelled({label}):1", token.Value.Signature);
 
         // Và chữ ký đó phải KHÁC chữ ký của số trần cùng giá trị.
-        Assert.NotEqual(PdfMarkerFactsParser.ParseStrict("1. Khái niệm")!.Value.Signature, token.Value.Signature);
+        Assert.NotEqual(SourceMarkerFactsParser.ParseStrict("1. Khái niệm")!.Value.Signature, token.Value.Signature);
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ public class NumberMarkerParserTests
     [InlineData("Ngày 14 tháng 01 năm 2026")]
     public void Nhan_cong_so_khong_an_nham_chu_thich_va_cau_van(string text)
     {
-        Assert.NotEqual(NumberMarkerKind.Labelled, PdfMarkerFactsParser.ParseStrict(text)?.Kind);
+        Assert.NotEqual(NumberMarkerKind.Labelled, SourceMarkerFactsParser.ParseStrict(text)?.Kind);
     }
 
     // ---- Bảng chữ cái tiếng Việt (Nghị định 30/2020) -------------------------------------
@@ -99,7 +99,7 @@ public class NumberMarkerParserTests
     [InlineData("ă) Mục có dấu")]
     public void Parse_nhan_dien_chu_cai_tieng_Viet_co_dau(string text)
     {
-        var t = PdfMarkerFactsParser.ParseStrict(text);
+        var t = SourceMarkerFactsParser.ParseStrict(text);
 
         Assert.NotNull(t);
         Assert.Equal(NumberMarkerKind.Letter, t!.Value.Kind);
@@ -119,7 +119,7 @@ public class NumberMarkerParserTests
     [InlineData("PHẦN I NHỮNG VẤN ĐỀ CHUNG", "phần", 1)]
     public void Nhan_khong_dau_ngat_van_doc_duoc(string text, string label, int value)
     {
-        var t = PdfMarkerFactsParser.ParseStrict(text);
+        var t = SourceMarkerFactsParser.ParseStrict(text);
 
         Assert.NotNull(t);
         Assert.Equal(NumberMarkerKind.Labelled, t!.Value.Kind);
@@ -138,7 +138,7 @@ public class NumberMarkerParserTests
     [InlineData("Chương 5 gồm các nội dung sau")]
     public void Tham_chieu_cheo_khong_thanh_nhan(string text)
     {
-        Assert.NotEqual(NumberMarkerKind.Labelled, PdfMarkerFactsParser.ParseStrict(text)?.Kind);
+        Assert.NotEqual(NumberMarkerKind.Labelled, SourceMarkerFactsParser.ParseStrict(text)?.Kind);
     }
 
     /// <summary>Dạng có dấu ngắt phải giữ nguyên hành vi — nới không được làm hỏng đường cũ.</summary>
@@ -147,7 +147,7 @@ public class NumberMarkerParserTests
     [InlineData("Article 5. Rights of employees", "article", 5)]
     public void Nhan_co_dau_ngat_khong_doi(string text, string label, int value)
     {
-        var t = PdfMarkerFactsParser.ParseStrict(text);
+        var t = SourceMarkerFactsParser.ParseStrict(text);
 
         Assert.NotNull(t);
         Assert.Equal(NumberMarkerKind.Labelled, t!.Value.Kind);
@@ -171,6 +171,6 @@ public class NumberMarkerParserTests
     [InlineData("Figure 1 System Architecture")]
     public void Chu_thich_hinh_bang_khong_thanh_nhan_cau_truc(string text)
     {
-        Assert.NotEqual(NumberMarkerKind.Labelled, PdfMarkerFactsParser.ParseStrict(text)?.Kind);
+        Assert.NotEqual(NumberMarkerKind.Labelled, SourceMarkerFactsParser.ParseStrict(text)?.Kind);
     }
 }

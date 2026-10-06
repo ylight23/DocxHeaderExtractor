@@ -253,7 +253,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
 
     private static IReadOnlyList<(string PackId, V5EvidencePacketV2_1 Packet)> RealPacketsFor(string documentId, string pdfPath)
     {
-        var authority = PdfStructuredSourceAuthorityBuilder.Build(pdfPath);
+        var authority = PdfSourceOccurrenceAdapter.Build(pdfPath);
         var graph = EvidenceGraphBuilder.Build(authority.Atoms.Select(atom => new SourceObservation(
             $"V5:{atom.SourceId}", atom.SourceId, atom.Alias, atom.Ordinal, EvidenceModality.TEXT, atom.Text,
             new StructuralSpan(0, atom.Text.Length), new EvidenceGeometry(atom.Page),

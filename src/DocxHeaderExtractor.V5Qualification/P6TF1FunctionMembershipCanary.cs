@@ -315,9 +315,9 @@ internal static class P6TF1FunctionMembershipCanary
                 parserAccepted = true,
                 expectedDecisions = 96,
                 returnedDecisions = parsed.Decisions.Count,
-                establishesStructure = parsed.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE),
-                representsStructure = parsed.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.REPRESENTS_STRUCTURE),
-                other = parsed.Decisions.Count(value => value.Function == V5OccurrenceFunctionF1.OTHER),
+                establishesStructure = parsed.Decisions.Count(value => value.Function == OccurrenceFunction.EstablishesStructure),
+                representsStructure = parsed.Decisions.Count(value => value.Function == OccurrenceFunction.RepresentsStructure),
+                other = parsed.Decisions.Count(value => value.Function == OccurrenceFunction.Other),
             };
         }
         catch (Exception ex) when (ex is JsonException or InvalidOperationException)

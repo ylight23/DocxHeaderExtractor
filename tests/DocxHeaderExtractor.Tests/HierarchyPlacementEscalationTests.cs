@@ -17,9 +17,9 @@ public class HierarchyPlacementEscalationTests
         new(alias, sourceId, ordinal, text, "SECTION", "Heading", "document_body",
             hints, 0, text.Length);
 
-    private static IReadOnlyList<ModelRelationHierarchyResolver.DerivedHeadingHierarchy> Derive(
+    private static IReadOnlyList<HeadingHierarchyResolver.DerivedHeadingHierarchy> Derive(
         params CanonicalSemanticBoundHeading[] bound) =>
-        ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(bound);
+        HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(bound);
 
     [Fact]
     public void An_unresolved_heading_is_what_the_escalation_is_for()
@@ -28,8 +28,8 @@ public class HierarchyPlacementEscalationTests
             Heading("S0001", "p1", 1, "Session I", "parent-node:ROOT"),
             Heading("S0002", "p2", 2, "Agenda item")).ToDictionary(item => item.SourceId, StringComparer.Ordinal);
 
-        Assert.Equal(ModelRelationHierarchyResolver.ResolvedRoot, derived["p1"].Resolution);
-        Assert.Equal(ModelRelationHierarchyResolver.Unresolved, derived["p2"].Resolution);
+        Assert.Equal(HeadingHierarchyResolver.ResolvedRoot, derived["p1"].Resolution);
+        Assert.Equal(HeadingHierarchyResolver.Unresolved, derived["p2"].Resolution);
     }
 
     [Fact]
@@ -42,7 +42,7 @@ public class HierarchyPlacementEscalationTests
             Heading("S0002", "p2", 2, "Agenda item", "parent-node:S0001"))
             .ToDictionary(item => item.SourceId, StringComparer.Ordinal);
 
-        Assert.Equal(ModelRelationHierarchyResolver.ResolvedParent, derived["p2"].Resolution);
+        Assert.Equal(HeadingHierarchyResolver.ResolvedParent, derived["p2"].Resolution);
         Assert.Equal("p1", derived["p2"].ParentSourceId);
         Assert.Equal(2, derived["p2"].Level);
     }
@@ -55,7 +55,7 @@ public class HierarchyPlacementEscalationTests
             Heading("S0002", "p2", 2, "Session I", "parent-node:ROOT"))
             .ToDictionary(item => item.SourceId, StringComparer.Ordinal);
 
-        Assert.Equal(ModelRelationHierarchyResolver.OutOfHierarchy, derived["p1"].Resolution);
+        Assert.Equal(HeadingHierarchyResolver.OutOfHierarchy, derived["p1"].Resolution);
         Assert.Equal(1, derived["p2"].Level);
     }
 
@@ -69,7 +69,7 @@ public class HierarchyPlacementEscalationTests
             Heading("S0002", "p2", 2, "Later"))
             .ToDictionary(item => item.SourceId, StringComparer.Ordinal);
 
-        Assert.Equal(ModelRelationHierarchyResolver.Unresolved, derived["p1"].Resolution);
+        Assert.Equal(HeadingHierarchyResolver.Unresolved, derived["p1"].Resolution);
     }
 
     [Fact]
@@ -80,7 +80,7 @@ public class HierarchyPlacementEscalationTests
             Heading("S0002", "p2", 2, "Child", "parent-node:S9999"))
             .ToDictionary(item => item.SourceId, StringComparer.Ordinal);
 
-        Assert.Equal(ModelRelationHierarchyResolver.Unresolved, derived["p2"].Resolution);
+        Assert.Equal(HeadingHierarchyResolver.Unresolved, derived["p2"].Resolution);
     }
 
     [Fact]
@@ -93,7 +93,7 @@ public class HierarchyPlacementEscalationTests
             Heading("S0002", "p2", 2, "Section", "parent-node:S0001", "parent-node:NONE"))
             .Single(item => item.SourceId == "p2");
 
-        Assert.Equal(ModelRelationHierarchyResolver.ResolvedParent, derived.Resolution);
+        Assert.Equal(HeadingHierarchyResolver.ResolvedParent, derived.Resolution);
         Assert.Equal("p1", derived.ParentSourceId);
     }
 }

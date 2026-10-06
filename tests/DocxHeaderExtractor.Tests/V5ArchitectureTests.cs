@@ -158,8 +158,13 @@ public sealed class V5ArchitectureTests
             .OrderBy(name => name, StringComparer.Ordinal)
             .ToArray();
         Assert.Equal(
-            ["OpenRouterQwen37JsonObjectCarrierV2_1.cs", "QualifiedPromptText.cs", "V5CanonicalProtocolPrimitives.cs", "V5OccurrenceAuthorityDtos.cs", "V5TotalOccurrenceFunctionProtocolF1.cs", "V5TransportPrimitives.cs"],
+            ["OpenRouterQwen37JsonObjectCarrierV2_1.cs", "QualifiedPromptText.cs", "V5CanonicalProtocolPrimitives.cs", "V5OccurrenceAuthorityDtos.cs", "V5TransportPrimitives.cs"],
             qualifiedInference);
+        var inference = Directory.EnumerateFiles(Path.Combine(models, "Inference"), "*.cs", SearchOption.TopDirectoryOnly)
+            .Select(Path.GetFileName)
+            .OrderBy(name => name, StringComparer.Ordinal)
+            .ToArray();
+        Assert.Equal(["OccurrenceFunctionProtocolV1.cs"], inference);
 
         var core = typeof(V5ProviderEnvelope).Assembly;
         foreach (var qualificationOnly in new[] { typeof(V5ComposedSemanticRequest), typeof(BoundClaimEndpoint), typeof(V5SystemPromptV2_1), typeof(V5ToolCallDeltaFragment),

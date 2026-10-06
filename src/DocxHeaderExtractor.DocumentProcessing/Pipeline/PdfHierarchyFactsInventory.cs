@@ -9,8 +9,8 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// </summary>
 internal static class PdfHierarchyFactsInventory
 {
-    internal static IReadOnlyList<PdfHierarchyFactAudit> Inspect(
-        IReadOnlyList<PdfValidatedHeading> validated,
+    internal static IReadOnlyList<HeadingHierarchyFactAudit> Inspect(
+        IReadOnlyList<ValidatedHeading> validated,
         IReadOnlyDictionary<string, PdfSemanticSourceContext> contexts)
     {
         var eligible = validated.Where(heading => contexts.ContainsKey(heading.SourceId))
@@ -20,15 +20,15 @@ internal static class PdfHierarchyFactsInventory
         // Keep audit construction separate from relation lookup. The inventory must not reuse a
         // hierarchy resolver, because doing so would make a resolver look like evidence.
         var observed = new List<ObservedHeading>();
-        var facts = new List<PdfHierarchyFactAudit>(eligible.Length);
+        var facts = new List<HeadingHierarchyFactAudit>(eligible.Length);
         string? previousId = null;
         for (var order = 0; order < eligible.Length; order++)
         {
             var heading = eligible[order];
             var context = contexts[heading.SourceId];
             var source = context.Source;
-            var marker = PdfMarkerFactsParser.Parse(source.RawText) ?? source.Marker;
-            var path = PdfMarkerFactsParser.ArabicPath(source.RawText);
+            var marker = SourceMarkerFactsParser.Parse(source.RawText) ?? source.Marker;
+            var path = SourceMarkerFactsParser.ArabicPath(source.RawText);
             var parent = FindMarkerPrefixParent(observed, path);
             var hasResolvedRelation = path is { Length: 1 } || parent is not null;
             var parentResolution = parent is not null
@@ -47,7 +47,7 @@ internal static class PdfHierarchyFactsInventory
             if (parent is not null) evidence.Add("marker_prefix_parent_observed");
             if (!hasResolvedRelation) evidence.Add("relationship_unresolved");
 
-            // M8.1a source occurrence identity. TextOffsetSpan.End is exclusive: PdfProposalValidator
+            // M8.1a source occurrence identity. TextOffsetSpan.End is exclusive: HeadingProposalValidator
             // rejects End > RawText.Length but accepts End == Length. The artifact keeps that
             // semantics verbatim instead of renormalising it for a prettier identity string.
             var span = heading.HeadingSpan;
@@ -55,7 +55,7 @@ internal static class PdfHierarchyFactsInventory
             var spanInRange = span.Start >= 0 && span.End > span.Start && span.End <= blockText.Length;
             if (!spanInRange) evidence.Add("heading_span_out_of_range");
 
-            var fact = new PdfHierarchyFactAudit(
+            var fact = new HeadingHierarchyFactAudit(
                 heading.SourceId,
                 order,
                 source.Page,
@@ -114,8 +114,8 @@ internal static class PdfHierarchyFactsInventory
     private sealed record ObservedHeading(string Id, int[]? Path);
 }
 
-/// <summary>Source-derived audit record, deliberately separate from <see cref="PdfValidatedStructure"/>.</summary>
-public sealed record PdfHierarchyFactAudit(
+/// <summary>Source-derived audit record, deliberately separate from <see cref="ResolvedHeadingPlacement"/>.</summary>
+public sealed record HeadingHierarchyFactAudit(
     string Id,
     int SourceOrder,
     int Page,

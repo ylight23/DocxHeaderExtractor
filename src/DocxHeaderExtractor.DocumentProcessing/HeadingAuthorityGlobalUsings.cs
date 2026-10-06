@@ -1,0 +1,2 @@
+global using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
+global using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority.Protocols;

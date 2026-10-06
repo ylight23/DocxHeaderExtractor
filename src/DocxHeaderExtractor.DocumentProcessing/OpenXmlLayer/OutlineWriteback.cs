@@ -208,7 +208,7 @@ public static class OutlineWriteback
     }
 
 
-    /// <summary>Shared with <c>PdfProductWriteback</c> — the split mechanics are data-shape agnostic.</summary>
+    /// <summary>Shared with <c>DocxProductWriteback</c> — the split mechanics are data-shape agnostic.</summary>
     internal sealed record PendingSplit(int Index, Paragraph Element, int RunIndex);
 
     /// <summary>

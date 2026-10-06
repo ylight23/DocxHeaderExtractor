@@ -44,7 +44,7 @@ public sealed class PdfReadOnlyCorrespondenceBuilderTests
         "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf",
     ];
 
-    // Same envelope as PdfFunctionConditionedHeadingAuthorityAdapter.
+    // Same envelope as HeadingAuthorityPipeline.
     private static readonly V5ProviderEnvelope LiveEnvelope = new("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300)
     { UsageInclude = true, OpenRouterResponseCacheDisabled = true };
 
@@ -59,7 +59,7 @@ public sealed class PdfReadOnlyCorrespondenceBuilderTests
         int packs = 0, aliases = 0, correspondences = 0;
         foreach (var pdf in P05Cohort)
         {
-            var authority = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(pdf));
+            var authority = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(pdf));
             var atoms = authority.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
             foreach (var pack in SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom))
             {
@@ -78,8 +78,8 @@ public sealed class PdfReadOnlyCorrespondenceBuilderTests
                 foreach (var alias in expected.Keys)
                     Assert.True(expected[alias].SequenceEqual(actual[alias]), $"correspondence drift: {where} {alias}");
 
-                var expectedF1 = V5TotalOccurrenceFunctionProtocolF1.ComposeWithReadOnlyCorrespondences(owned, context, expected);
-                var actualF1 = V5TotalOccurrenceFunctionProtocolF1.ComposeWithReadOnlyCorrespondences(owned, context, actual);
+                var expectedF1 = OccurrenceFunctionProtocolV1.ComposeWithReadOnlyCorrespondences(owned, context, expected);
+                var actualF1 = OccurrenceFunctionProtocolV1.ComposeWithReadOnlyCorrespondences(owned, context, actual);
                 Assert.True(Encoding.UTF8.GetBytes(expectedF1.UserMessage).AsSpan().SequenceEqual(Encoding.UTF8.GetBytes(actualF1.UserMessage)), $"F1 user message drift: {where}");
                 Assert.Equal(expectedF1.SystemPrompt, actualF1.SystemPrompt);
                 Assert.Equal(

@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority.Protocols;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Infrastructure.AI;
 
@@ -25,7 +26,7 @@ internal static class P6TG2AFullPackPopulationCanary
         new("DOC-0252", "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf", "p6te-doc0252-e-challenge/f1.raw-capture.v1.json", F1Kind.RawCapture, false),
         new("DOC-0256", "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf", "p6te-doc0256-e-challenge/f1.raw-capture.v1.json", F1Kind.RawCapture, false),
     ];
-    private static readonly string SystemPrompt = PdfFunctionConditionedHeadingAuthorityAdapter.G2APrompt;
+    private static readonly string SystemPrompt = HeadingAnchorProtocolV1.SystemPrompt;
 
     private sealed record Source(string DocumentId, string PdfPath, string F1Path, F1Kind Kind, bool F1UsedCorrespondences);
     private enum F1Kind { RawCapture, ResultRow, ResultRows }
@@ -195,10 +196,10 @@ internal static class P6TG2AFullPackPopulationCanary
         var owned = pack.OwnedAliases;
         var idByAlias = f1.Request.Occurrences.ToDictionary(value => value.Atom.Alias, value => value.Id, StringComparer.Ordinal);
         var indexByAlias = owned.Select((alias, index) => (alias, index)).ToDictionary(value => value.alias, value => value.index, StringComparer.Ordinal);
-        var issued = f1Result.Decisions.Where(value => value.Function == V5OccurrenceFunctionF1.ESTABLISHES_STRUCTURE)
+        var issued = f1Result.Decisions.Where(value => value.Function == OccurrenceFunction.EstablishesStructure)
             .Select(value => (value.OccurrenceId, Alias: f1.Request.Occurrences.Single(item => item.Id == value.OccurrenceId).Atom.Alias))
             .OrderBy(value => atoms[value.Alias].Ordinal).ThenBy(value => value.Alias, StringComparer.Ordinal).ToArray();
-        var user = PdfFunctionConditionedHeadingAuthorityAdapter.ComposeG2AUserMessage(
+        var user = HeadingAnchorProtocolV1.ComposeUserMessage(
             owned.Select(alias => atoms[alias]).ToArray(),
             idByAlias,
             issued.Select(value => (value.OccurrenceId, atoms[value.Alias])).ToArray());

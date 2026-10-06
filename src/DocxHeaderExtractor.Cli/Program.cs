@@ -97,7 +97,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
     // Extraction writes through the canonical ProductOutput authority.
     using IDocumentActionTool? actionTool = o.WritebackPath is null
         ? null
-        : new PdfProductWritebackTool(o.Pipeline.Extraction);
+        : new DocxProductWritebackTool(o.Pipeline.Extraction);
     var harness = CliHarnessComposition.Create(files, tool, actionTool);
     if (!o.Quiet)
         Console.Error.WriteLine($"  policy: {harness.Skill}");

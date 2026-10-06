@@ -355,7 +355,7 @@ public sealed class CanonicalGoldConsolidationTests
             // Which producer "the lane that will run" actually is depends on the authority's own
             // declared profile, not on its media type - a PDF authority may be either.
             var runtime = structured
-                ? PdfStructuredSourceAuthorityBuilder
+                ? PdfSourceOccurrenceAdapter
                     .Build(TestRepository.Path(source.GetProperty("sourcePath").GetString()!))
                     .SourceAliasUniverseHash
                 : RuntimeSourceUniverse(
@@ -490,7 +490,7 @@ public sealed class CanonicalGoldConsolidationTests
                         item.TryGetProperty("boundParts", out var parts)
                         && parts.EnumerateArray().All(part => part.TryGetProperty("utf16Span", out _)));
                     coordinateSystem = "STRUCTURED_SOURCE_PART_TUPLE";
-                    sourceUniverseSha = PdfStructuredSourceAuthorityBuilder
+                    sourceUniverseSha = PdfSourceOccurrenceAdapter
                         .Build(TestRepository.Path(sourcePath)).SourceAliasUniverseHash;
                     break;
                 case "SOURCE_ALIAS":
@@ -593,7 +593,7 @@ public sealed class CanonicalGoldConsolidationTests
     private static string RuntimeSourceUniverse(string path, string mediaType, string sourceSha)
     {
         if (string.Equals(mediaType, "PDF", StringComparison.OrdinalIgnoreCase))
-            return PdfStructuredSourceAuthorityBuilder.Build(path).SourceAliasUniverseHash;
+            return PdfSourceOccurrenceAdapter.Build(path).SourceAliasUniverseHash;
 
         var source = new OpenXmlDocumentSource().Read(path);
         var catalog = DocumentSourceCatalogBuilder.FromSourceDocument(source);

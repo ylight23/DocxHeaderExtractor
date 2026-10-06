@@ -61,7 +61,7 @@ public sealed class V5P6TH2CEvidenceAvailabilityMatrixTests
 
         var evidenceSource = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceEvidence.cs");
         var productionAdapter = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfHeadingMembershipProductionAdapter.cs");
-        var sourceBuilder = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfStructuredSourceAuthorityBuilder.cs");
+        var sourceBuilder = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceOccurrenceAdapter.cs");
         var endPointerBuilder = ReadSource("src/DocxHeaderExtractor.V5Qualification/P6TH2CEndPointerCanary.cs");
         Assert.Contains("fontBoldFlagRatio", evidenceSource, StringComparison.Ordinal);
         Assert.Contains("fontNameBoldRatio", evidenceSource, StringComparison.Ordinal);

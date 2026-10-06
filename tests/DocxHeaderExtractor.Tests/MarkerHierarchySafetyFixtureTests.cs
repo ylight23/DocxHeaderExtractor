@@ -25,7 +25,7 @@ public sealed class MarkerHierarchySafetyFixtureTests
     [InlineData("4 Constructing Responses from Caches", 1)]
     public void DottedArabicKeepsStrictFamilyAndDepth(string raw, int expectedDepth)
     {
-        var marker = PdfMarkerFactsParser.Parse(raw);
+        var marker = SourceMarkerFactsParser.Parse(raw);
 
         Assert.NotNull(marker);
         Assert.Equal("arabic", marker!.Value.Family);
@@ -46,7 +46,7 @@ public sealed class MarkerHierarchySafetyFixtureTests
     [InlineData("1 2 Some ordinary prose sentence continues here")]
     public void SpacedNumericRunNeverBecomesStrictArabic(string raw)
     {
-        var marker = PdfMarkerFactsParser.Parse(raw);
+        var marker = SourceMarkerFactsParser.Parse(raw);
 
         if (marker is null) return;
         Assert.NotEqual("arabic", marker.Value.Family);
@@ -119,7 +119,7 @@ public sealed class MarkerHierarchySafetyFixtureTests
         Assert.Equal("relationship_unresolved", resolved.ParentResolution);
     }
 
-    private static PdfValidatedHeading Heading(string id, string text) =>
+    private static ValidatedHeading Heading(string id, string text) =>
         new(id, new TextOffsetSpan(0, text.Length), "REGION_STRUCTURE", "document_body", "test");
 
     private static PdfSemanticSourceContext Context(string id, int page, double topY, string text,

@@ -13,7 +13,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// here re-matches by title: an unmatched fact stays ungrounded rather than being guessed.
 /// </para>
 /// </summary>
-public sealed record PdfCanonicalGrounding(
+public sealed record CanonicalGrounding(
     [property: JsonPropertyName("sourceFactId")] string SourceFactId,
     [property: JsonPropertyName("paragraphIndex")] int ParagraphIndex,
     [property: JsonPropertyName("stableId")] string? StableId,
@@ -21,7 +21,7 @@ public sealed record PdfCanonicalGrounding(
     [property: JsonPropertyName("paragraphText")] string ParagraphText)
 {
     /// <summary>Builds canonical occurrences from the generic authority projection metadata.</summary>
-    public static IReadOnlyList<PdfCanonicalGrounding> FromValidatedStructure(ValidatedStructure structure) =>
+    public static IReadOnlyList<CanonicalGrounding> FromValidatedStructure(ValidatedStructure structure) =>
         structure.OutlineElements
             .Select(element => (Element: element, Source: element.Sources.FirstOrDefault()))
             .Where(item => item.Source is not null)
@@ -29,7 +29,7 @@ public sealed record PdfCanonicalGrounding(
             {
                 var source = item.Source!;
                 var paragraphText = item.Element.ProjectionMetadata?.OriginalText ?? item.Element.Text;
-                return new PdfCanonicalGrounding(
+                return new CanonicalGrounding(
                     source.SourceId,
                     source.SourceOrdinal,
                     source.StableId,

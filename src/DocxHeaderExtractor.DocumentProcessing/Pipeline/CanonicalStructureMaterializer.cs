@@ -11,13 +11,15 @@ internal sealed record CanonicalSourceOccurrence(
     string SourceId,
     int SourceOrdinal,
     string Text,
-    string? StyleId);
+    string? StyleId,
+    string SourceKind = "unknown",
+    string BoundarySource = "source-pointer-span");
 
 /// <summary>
 /// Builds canonical structure from validated headings, for any source format.
 /// <para>
 /// It reads only what every format can supply: an identity, a position in reading order, the exact
-/// text, and an optional style name. It lived in DocxAuthorityPipeline while the PDF lane called
+/// text, and an optional style name. It lived in DocxSourceOccurrenceAdapter while the PDF lane called
 /// it, which read as though PDF structure were a DOCX by-product; it is neither lane's property.
 /// </para>
 /// <para>
@@ -40,8 +42,8 @@ internal static class CanonicalStructureMaterializer
     /// </para>
     /// </summary>
     internal static ValidatedStructure Materialize(
-        IReadOnlyList<PdfValidatedHeading> validated,
-        IReadOnlyDictionary<string, PdfValidatedStructure> structures,
+        IReadOnlyList<ValidatedHeading> validated,
+        IReadOnlyDictionary<string, ResolvedHeadingPlacement> structures,
         IReadOnlyDictionary<string, CanonicalSourceOccurrence> occurrences,
         string routeKey,
         string origin,
@@ -90,7 +92,7 @@ internal static class CanonicalStructureMaterializer
             // that simply holds no position in the section tree. Neither may default to level 1,
             // which would assert "top level" without evidence.
             var placed = hierarchy.ParentResolution is
-                ModelRelationHierarchyResolver.ResolvedParent or ModelRelationHierarchyResolver.ResolvedRoot;
+                HeadingHierarchyResolver.ResolvedParent or HeadingHierarchyResolver.ResolvedRoot;
             var derivedLevel = placed ? hierarchy.Level : (int?)null;
             var proposal = new StructuralProposal
             {
@@ -126,11 +128,11 @@ internal static class CanonicalStructureMaterializer
                     OutlineLevel = derivedLevel,
                     HierarchyResolution = hierarchy.ParentResolution,
                     OriginalText = sourceParagraph.Text,
-                    BoundarySource = "docx-source-pointer-span",
+                    BoundarySource = sourceParagraph.BoundarySource,
                     StyleId = sourceParagraph.StyleId,
                 });
             if (element is null)
-                throw new InvalidOperationException($"Validated DOCX heading '{item.SourceId}' failed generic materialization.");
+            throw new InvalidOperationException($"Validated heading '{item.SourceId}' failed canonical materialization.");
 
             elements.Add(element with
             {
@@ -151,7 +153,7 @@ internal static class CanonicalStructureMaterializer
         RawText = occurrence.Text,
         Source = new SourceAnchor
         {
-            SourceType = "docx",
+            SourceType = occurrence.SourceKind,
             ParagraphId = occurrence.SourceId,
             ParagraphIndex = occurrence.SourceOrdinal,
         },

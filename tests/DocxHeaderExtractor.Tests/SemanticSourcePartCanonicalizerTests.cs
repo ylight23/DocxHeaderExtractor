@@ -136,7 +136,7 @@ public sealed class SemanticSourcePartCanonicalizerTests
     {
         // The primary invariant: canonicalization must reproduce the approved corpus exactly, not
         // merely fail to contradict it.
-        var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
+        var plan = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(Doc0252Pdf));
         using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         var claims = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray().ToArray();
         Assert.Equal(41, claims.Length);
@@ -174,7 +174,7 @@ public sealed class SemanticSourcePartCanonicalizerTests
     [Fact]
     public void The_multi_part_gold_claim_survives_canonicalization_as_two_parts()
     {
-        var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
+        var plan = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(Doc0252Pdf));
         using var gold = CanonicalGoldRegistry.ResolveAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256);
         var claim = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Single(item => item.GetProperty("sourceParts").GetArrayLength() > 1);
@@ -197,7 +197,7 @@ public sealed class SemanticSourcePartCanonicalizerTests
     {
         // A counterfactual, not a rescore. EXP_MASTHEAD_METADATA's recorded result stands: under the
         // contract it actually ran on, these four were refused and scored as false negatives.
-        var plan = PdfStructuredSourceAuthorityBuilder.Build(TestRepository.Path(Doc0252Pdf));
+        var plan = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(Doc0252Pdf));
         var directory = TestRepository.Path(
             "eval/a99-closed-loop/exp-masthead-metadata-experiment-v1/DOC-0252/r1");
         using var capture = JsonDocument.Parse(

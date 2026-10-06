@@ -19,20 +19,20 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// </para>
 /// <para>
 /// This is not the output policy. Deciding which validated facts a particular product emits belongs
-/// to <see cref="PdfOutputDecisions"/>, so every validated heading is materialized here —
+/// to <see cref="OutputDecisionPolicy"/>, so every validated heading is materialized here —
 /// including roles a given product will later drop — and the policy layer keeps something complete
 /// to filter.
 /// </para>
 /// </summary>
-public static class PdfFinalStructureProjection
+public static class CanonicalFinalStructureProjection
 {
     public const int SchemaVersion = 2;
 
-    public static PdfFinalStructure Project(
+    public static CanonicalFinalStructure Project(
         string sourceDocumentSha256,
-        IReadOnlyList<PdfValidatedStructure> structures,
-        IReadOnlyList<PdfHierarchyFactAudit> facts,
-        IReadOnlyList<PdfCanonicalGrounding> groundings)
+        IReadOnlyList<ResolvedHeadingPlacement> structures,
+        IReadOnlyList<HeadingHierarchyFactAudit> facts,
+        IReadOnlyList<CanonicalGrounding> groundings)
     {
         var factById = facts
             .GroupBy(fact => fact.Id, StringComparer.Ordinal)
@@ -54,7 +54,7 @@ public static class PdfFinalStructureProjection
                 : factById[structure.SourceId].FactId,
             StringComparer.Ordinal);
 
-        var headings = new List<PdfFinalHeading>(ordered.Length);
+        var headings = new List<CanonicalFinalHeading>(ordered.Length);
         foreach (var structure in ordered)
         {
             var fact = factById[structure.SourceId];
@@ -63,7 +63,7 @@ public static class PdfFinalStructureProjection
             var parentId = parentSourceId is null ? null : canonicalIdBySourceId[parentSourceId];
             groundingById.TryGetValue(structure.SourceId, out var grounding);
             var (text, groundingStatus) = ResolveText(grounding, fact);
-            headings.Add(new PdfFinalHeading(
+            headings.Add(new CanonicalFinalHeading(
                 canonicalIdBySourceId[structure.SourceId],
                 grounding is null
                     ? null
@@ -84,7 +84,7 @@ public static class PdfFinalStructureProjection
                 grounding?.ParagraphText ?? fact.SourceBlockText));
         }
 
-        return new PdfFinalStructure(
+        return new CanonicalFinalStructure(
             sourceDocumentSha256,
             PdfHierarchyFactHash.OfText(string.Join('\n', ordered.Select(structure =>
                 string.Join('|', structure.SourceId, structure.Level, structure.ParentId ?? "-",
@@ -92,7 +92,7 @@ public static class PdfFinalStructureProjection
             PdfHierarchyFactHash.OfText(string.Join('\n', headings.Select(heading =>
                 string.Join('|', heading.Id, heading.GroundingStatus, heading.Level?.ToString() ?? "-",
                     heading.ParentId ?? "-", heading.HierarchyStatus)))),
-            new PdfFinalStructureCounters(
+            new CanonicalFinalStructureCounters(
                 structures.Count,
                 headings.Count,
                 structures.Count - headings.Count,
@@ -109,7 +109,7 @@ public static class PdfFinalStructureProjection
     /// PDF line is kept so the fact stays reviewable, but it is marked ungrounded, and a heading
     /// that cannot be located in the source cannot be written back to it.
     /// </summary>
-    private static (string Text, string Status) ResolveText(PdfCanonicalGrounding? grounding, PdfHierarchyFactAudit fact)
+    private static (string Text, string Status) ResolveText(CanonicalGrounding? grounding, HeadingHierarchyFactAudit fact)
     {
         if (grounding is null) return (fact.HeadingText, "grounding_unresolved");
         var paragraph = grounding.ParagraphText;
@@ -126,7 +126,7 @@ public static class PdfFinalStructureProjection
     /// strict depth is known to be short. Asserting it anyway would ship a confident wrong level,
     /// so the disagreement is reported as unresolved instead.
     /// </summary>
-    private static (int? Level, string? Reason) ResolveLevel(PdfHierarchyFactAudit fact)
+    private static (int? Level, string? Reason) ResolveLevel(HeadingHierarchyFactAudit fact)
     {
         if (fact.ResolvedLevel is not { } level) return (null, "no_deterministic_level_evidence");
         if (fact.MarkerComponents.Count > 0 && fact.MarkerComponents.Count != level)
@@ -140,8 +140,8 @@ public static class PdfFinalStructureProjection
     /// the emitted set would be a dangling edge, which is worse than an honest null.
     /// </summary>
     private static (string? ParentId, string? Reason) ResolveParent(
-        PdfValidatedStructure structure,
-        IReadOnlyDictionary<string, PdfHierarchyFactAudit> factById,
+        ResolvedHeadingPlacement structure,
+        IReadOnlyDictionary<string, HeadingHierarchyFactAudit> factById,
         IReadOnlySet<string> emittedIds)
     {
         if (structure.ParentId is not { } parent) return (null, "no_parent_in_validated_structure");
@@ -154,7 +154,7 @@ public static class PdfFinalStructureProjection
         return (parent, null);
     }
 
-    private static string CanonicalId(PdfCanonicalGrounding grounding) =>
+    private static string CanonicalId(CanonicalGrounding grounding) =>
         $"{grounding.StableId ?? $"p[{grounding.ParagraphIndex}]"}#{grounding.Span.Start}-{grounding.Span.End}";
 
     private static string Status(int? level, string? parentId) => (level, parentId) switch
@@ -166,21 +166,21 @@ public static class PdfFinalStructureProjection
     };
 }
 
-public sealed record PdfFinalStructure(
+public sealed record CanonicalFinalStructure(
     [property: JsonPropertyName("sourceDocumentSha256")] string SourceDocumentSha256,
     [property: JsonPropertyName("validatedStructureFingerprint")] string ValidatedStructureFingerprint,
     [property: JsonPropertyName("finalStructureFingerprint")] string FinalStructureFingerprint,
-    [property: JsonPropertyName("counters")] PdfFinalStructureCounters Counters,
-    [property: JsonPropertyName("headings")] IReadOnlyList<PdfFinalHeading> Headings)
+    [property: JsonPropertyName("counters")] CanonicalFinalStructureCounters Counters,
+    [property: JsonPropertyName("headings")] IReadOnlyList<CanonicalFinalHeading> Headings)
 {
     [JsonPropertyName("schemaVersion")]
-    public int SchemaVersion => PdfFinalStructureProjection.SchemaVersion;
+    public int SchemaVersion => CanonicalFinalStructureProjection.SchemaVersion;
 
     [JsonPropertyName("artifactKind")]
     public string ArtifactKind => "pdf_final_structure";
 }
 
-public sealed record PdfFinalStructureCounters(
+public sealed record CanonicalFinalStructureCounters(
     [property: JsonPropertyName("validatedStructures")] int ValidatedStructures,
     [property: JsonPropertyName("emittedHeadings")] int EmittedHeadings,
     [property: JsonPropertyName("droppedWithoutSourceFact")] int DroppedWithoutSourceFact,
@@ -189,7 +189,7 @@ public sealed record PdfFinalStructureCounters(
     [property: JsonPropertyName("parentResolved")] int ParentResolved,
     [property: JsonPropertyName("fullyUnresolved")] int FullyUnresolved);
 
-public sealed record PdfFinalHeading(
+public sealed record CanonicalFinalHeading(
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("sourceAnchor")] DocxSourceAnchor? SourceAnchor,
     [property: JsonPropertyName("pdfEvidence")] PdfEvidenceAnchor? PdfEvidence,

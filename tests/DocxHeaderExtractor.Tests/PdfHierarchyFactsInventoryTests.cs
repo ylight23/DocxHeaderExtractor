@@ -9,8 +9,8 @@ public sealed class PdfHierarchyFactsInventoryTests
     [Fact]
     public void InventoriesOnlyValidatedHeadingsAndKeepsUnmarkedRelationshipUnresolved()
     {
-        var chapter = Context("chapter", 1, 700, "1. Chapter", new PdfMarkerFact("Arabic:1", 1, "arabic", true));
-        var section = Context("section", 1, 680, "1.1 Scope", new PdfMarkerFact("Arabic:2", 2, "arabic", true));
+        var chapter = Context("chapter", 1, 700, "1. Chapter", new SourceMarkerFact("Arabic:1", 1, "arabic", true));
+        var section = Context("section", 1, 680, "1.1 Scope", new SourceMarkerFact("Arabic:2", 2, "arabic", true));
         var plain = Context("plain", 1, 660, "Topic without marker", null);
         var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal)
         {
@@ -36,10 +36,10 @@ public sealed class PdfHierarchyFactsInventoryTests
         Assert.Contains("relationship_unresolved", unmarked.Evidence);
     }
 
-    private static PdfValidatedHeading Heading(string id) => new(id, new TextOffsetSpan(0, 1), "REGION_STRUCTURE",
+    private static ValidatedHeading Heading(string id) => new(id, new TextOffsetSpan(0, 1), "REGION_STRUCTURE",
         "document_body", "test");
 
-    private static PdfSemanticSourceContext Context(string id, int page, double topY, string text, PdfMarkerFact? marker,
+    private static PdfSemanticSourceContext Context(string id, int page, double topY, string text, SourceMarkerFact? marker,
         string scope = "document_body")
     {
         var source = new PdfSourceFacts(id, text, page, 1, 72, topY, 400, topY - 12, scope, [])

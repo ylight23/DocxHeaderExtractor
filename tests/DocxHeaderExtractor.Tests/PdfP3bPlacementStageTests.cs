@@ -17,7 +17,7 @@ public sealed class PdfP3bPlacementStageTests
         };
         using var classifier = new PlacementClassifier("not-used");
 
-        var placed = await CanonicalSemanticPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
+        var placed = await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
             bound, classifier, CancellationToken.None);
 
         Assert.Equal(bound, placed);
@@ -36,7 +36,7 @@ public sealed class PdfP3bPlacementStageTests
         using var classifier = new PlacementClassifier(
             "{\"placements\":[{\"alias\":\"S0002\",\"parent\":\"S0001\"}]}");
 
-        var placed = await CanonicalSemanticPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
+        var placed = await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
             bound, classifier, CancellationToken.None);
 
         Assert.Single(classifier.Requests);
@@ -59,7 +59,7 @@ public sealed class PdfP3bPlacementStageTests
         foreach (var response in new[] { "not-json", "{\"placements\":[]}" })
         {
             using var classifier = new PlacementClassifier(response);
-            var placed = await CanonicalSemanticPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
+            var placed = await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
                 bound, classifier, CancellationToken.None);
             Assert.Equal(bound, placed);
             Assert.Single(classifier.Requests);
@@ -77,7 +77,7 @@ public sealed class PdfP3bPlacementStageTests
         using var classifier = new PlacementClassifier(
             "{\"placements\":[{\"alias\":\"S0002\",\"parent\":\"ROOT\"}]}");
 
-        await CanonicalSemanticPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
+        await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
             bound, classifier, CancellationToken.None);
 
         Assert.Single(classifier.Requests);

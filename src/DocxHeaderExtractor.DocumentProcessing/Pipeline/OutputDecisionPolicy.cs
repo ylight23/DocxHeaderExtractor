@@ -2,7 +2,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// M9.2. Decides which validated facts a document-outline product emits, reading only what
-/// <see cref="PdfFinalStructureProjection"/> already materialized.
+/// <see cref="CanonicalFinalStructureProjection"/> already materialized.
 /// <para>
 /// It answers a different question from the validator. The validator asks whether a fact is real;
 /// this asks whether a given product should show it. So it may not re-litigate the fact: it never
@@ -22,12 +22,12 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// binder anchored.
 /// </para>
 /// </summary>
-public static class PdfOutputDecisions
+public static class OutputDecisionPolicy
 {
-    public static IReadOnlyList<PdfOutputDecision> Decide(PdfFinalStructure structure) =>
+    public static IReadOnlyList<OutputDecision> Decide(CanonicalFinalStructure structure) =>
         structure.Headings.Select(Decide).ToArray();
 
-    public static PdfOutputDecision Decide(PdfFinalHeading heading)
+    public static OutputDecision Decide(CanonicalFinalHeading heading)
     {
         // Only source validity may suppress a heading the model called a heading. Each of these
         // says the fact cannot be anchored in the source, not that it means something else.
@@ -46,11 +46,11 @@ public static class PdfOutputDecisions
         // for a human. Reporting an unresolved hierarchy as a reason must not suppress the heading.
         if (emit && heading.HierarchyStatus != "resolved") observations.Add($"hierarchy_{heading.HierarchyStatus}");
 
-        return new PdfOutputDecision(heading.Id, emit, emit, [.. blocking, .. observations]);
+        return new OutputDecision(heading.Id, emit, emit, [.. blocking, .. observations]);
     }
 }
 
-public sealed record PdfOutputDecision(
+public sealed record OutputDecision(
     string HeadingId,
     bool Emit,
     bool RequiresReview,

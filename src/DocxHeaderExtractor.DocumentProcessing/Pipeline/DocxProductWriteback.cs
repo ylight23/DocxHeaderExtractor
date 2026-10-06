@@ -7,9 +7,9 @@ using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
-/// M9.3b. Writes the outline level a <see cref="PdfProductOutput"/> already decided into a COPY of
-/// the source document. It locates every occurrence by <see cref="PdfProductHeading.ParagraphIndex"/>
-/// and <see cref="PdfProductHeading.StableId"/> - the canonical <see cref="DocxSourceAnchor"/> - and
+/// M9.3b. Writes the outline level a <see cref="DocumentProductOutput"/> already decided into a COPY of
+/// the source document. It locates every occurrence by <see cref="DocumentProductHeading.ParagraphIndex"/>
+/// and <see cref="DocumentProductHeading.StableId"/> - the canonical <see cref="DocxSourceAnchor"/> - and
 /// never by searching for the heading text. It reads no <c>PdfEvidenceAnchor</c>, no
 /// <c>HeadingRecord</c>, and infers no hierarchy: a heading whose level M9.1 left unresolved is
 /// skipped rather than assigned one here, and a parent is never written - <c>w:outlineLvl</c> encodes
@@ -27,12 +27,12 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// and checked against every applied heading before the call returns successfully.
 /// </para>
 /// </summary>
-public static class PdfProductWriteback
+public static class DocxProductWriteback
 {
     public static OutlineWritebackResult Apply(
         string sourceDocxPath,
         string targetPath,
-        PdfProductOutput output,
+        DocumentProductOutput output,
         ExtractionOptions extraction,
         OutlineWritebackOptions? options = null)
     {
@@ -67,7 +67,7 @@ public static class PdfProductWriteback
         File.Copy(source, target, options.Overwrite);
 
         var skipped = new List<OutlineWritebackSkip>();
-        var applied = new List<PdfProductHeading>();
+        var applied = new List<DocumentProductHeading>();
         var splits = new List<OutlineWriteback.PendingSplit>();
 
         // Read from the SOURCE, not the copy about to be opened for writing: the two are still
@@ -174,7 +174,7 @@ public static class PdfProductWriteback
         Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(path)))
             .ToLowerInvariant();
 
-    private static string? Skip(PdfProductHeading heading, int paragraphCount)
+    private static string? Skip(DocumentProductHeading heading, int paragraphCount)
     {
         if (heading.ParagraphIndex < 0 || heading.ParagraphIndex >= paragraphCount) return "index_out_of_range";
 
@@ -200,7 +200,7 @@ public static class PdfProductWriteback
     private static void Verify(
         string target,
         ExtractionOptions extraction,
-        IReadOnlyList<PdfProductHeading> applied,
+        IReadOnlyList<DocumentProductHeading> applied,
         IReadOnlyCollection<int> splitIndexes)
     {
         var written = new OpenXmlDocumentSource(extraction).Read(target);

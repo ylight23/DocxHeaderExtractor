@@ -18,7 +18,7 @@ internal sealed record PdfCanonicalSourceSnapshotV1(
 {
     public const string Version = "a99-pdf-canonical-source-snapshot-v2";
 
-    public static PdfCanonicalSourceSnapshotV1 From(PdfStructuredSourceAuthority authority) => new(
+    public static PdfCanonicalSourceSnapshotV1 From(SourceOccurrenceUniverse authority) => new(
         Version, authority.SourceSha256, authority.SourceAliasUniverseHash, authority.ModelVisibleEvidenceHash,
         authority.Atoms, authority.Evidence.Select(PdfCanonicalEvidenceSnapshotV1.From).ToArray(), authority.LayoutBlockByAtom);
 

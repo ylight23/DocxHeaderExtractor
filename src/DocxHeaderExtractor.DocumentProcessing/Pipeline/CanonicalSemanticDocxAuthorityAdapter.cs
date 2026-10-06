@@ -20,19 +20,14 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         CanonicalSemanticExperiment? experiment = null)
     {
         ArgumentNullException.ThrowIfNull(sourceDocument);
-        var source = DocxAuthorityPipeline.BuildForAudit(sourceDocument);
-        if (source.Blocks.Count == 0)
+        var source = DocxSourceOccurrenceAdapter.BuildForAudit(sourceDocument);
+        if (source.Count == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "empty-docx-source");
 
-        var catalog = DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument);
-        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog).ToArray();
-        var aliasesBySourceId = aliases
-            .ToDictionary(item => item.SourceId, StringComparer.Ordinal);
-        var sourceHash = CanonicalSemanticSourceHash.Compute(sourceDocument.SourcePath);
-        var evidence = source.Contexts.Values
-            .OrderBy(item => item.Source.SourceOrdinal)
-            .Select(item => EvidenceOf(item, aliasesBySourceId[item.Source.SourceId].Alias))
-            .ToArray();
+        var universe = source.Universe;
+        var catalog = universe.Catalog;
+        var sourceHash = universe.SourceSha256;
+        var evidence = universe.Evidence;
         var input = new CanonicalSemanticTextProductionInput(
             catalog,
             null,
@@ -68,12 +63,12 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                 cancellationToken: cancellationToken);
         }
 
-        var decisions = result.TextPipeline.BoundHeadings.Select(item => new PdfBlockDecision(
+        var decisions = result.TextPipeline.BoundHeadings.Select(item => new HeadingExtentDecision(
             item.SourceId,
             "canonical-vnext-semantic-contract",
             new TextOffsetSpan(item.Start, item.End),
             SemanticFunction: item.SemanticRole)).ToArray();
-        var validated = PdfProposalValidator.Validate(source.ModelContexts, decisions);
+        var validated = HeadingProposalValidator.Validate(source.HeadingContexts, decisions);
         // The alias catalog spans the whole document while Contexts holds only the paragraphs this
         // route carries, so a bound heading can name a source this route has no context for. Such
         // a heading cannot be materialized; drop it here instead of indexing a missing key.
@@ -85,23 +80,25 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         // is a legitimate outcome, not something to keep re-asking about.
         var boundHeadings = transport is null
             ? result.TextPipeline.BoundHeadings
-            : await CanonicalSemanticPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
+            : await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
                 result.TextPipeline.BoundHeadings, transport, cancellationToken);
-        var derived = ModelRelationHierarchyResolver
+        var derived = HeadingHierarchyResolver
             .DeriveHierarchyFromModelRelations(boundHeadings)
             .Where(item => source.Contexts.ContainsKey(item.SourceId))
             .ToArray();
         var structures = derived
             .ToDictionary(item => item.SourceId, item =>
             {
-                var facts = source.Contexts[item.SourceId].ModelContext.Source;
-                return new PdfValidatedStructure(
+                var facts = source.Contexts[item.SourceId].HeadingContext;
+                return new ResolvedHeadingPlacement(
                     item.SourceId, item.Level, item.ParentSourceId, item.Resolution, "requires_review")
                 {
                     StructuralScope = facts.StructuralScope,
                 };
             }, StringComparer.Ordinal);
-        var hierarchyFacts = PdfHierarchyFactsInventory.Inspect(validated, source.ModelContexts);
+        // PDF hierarchy inventory requires physical page and geometry evidence. DOCX deliberately
+        // does not fabricate those facts merely to reuse a PDF diagnostic.
+        IReadOnlyList<HeadingHierarchyFactAudit> hierarchyFacts = [];
         // The outline carries one entry per semantic section. Repeated occurrences stay in the
         // canonical graph and in the route audit; collapsing them is the projection's job, and it
         // collapses only what the model declared to be the same node.
@@ -110,7 +107,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             .Select(item => item.SourceId)
             .ToHashSet(StringComparer.Ordinal);
         // Straight to the one materializer, in the same shape the PDF lane hands it. This used to
-        // go through a DocxAuthorityPipeline wrapper whose only remaining work was this mapping;
+        // go through a DocxSourceOccurrenceAdapter wrapper whose only remaining work was this mapping;
         // a lane-named entry point in front of a shared owner is how the two drift apart again.
         // Every validated heading here is a bound model claim.
         var structuralAuthority = CanonicalStructureMaterializer.Materialize(
@@ -122,17 +119,19 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                     pair.Value.Source.SourceId,
                     pair.Value.Source.SourceOrdinal,
                     pair.Value.Source.Text,
-                    pair.Value.Source.Style.StyleId),
+                    pair.Value.Source.Style.StyleId,
+                    sourceDocument.SourceKind,
+                    "docx-source-pointer-span"),
                 StringComparer.Ordinal),
             "docx", StructuralDecisionOrigin.Model, primarySourceIds);
         var audit = CanonicalRouteAuditBoundary.Create(
             "docx-canonical-vnext",
-            source.Blocks.Count,
-            source.Blocks.Count,
+            source.Count,
+            source.Count,
             0,
             0,
-            source.Blocks.Select(block => new RouteBlockAudit(block.Id, 0, block.DisplayText)).ToArray(),
-            source.Blocks.Select(block => new RouteBlockAudit(block.Id, 0, block.DisplayText)).ToArray(),
+            source.Contexts.Values.Select(context => new RouteBlockAudit(context.Source.SourceId, 0, context.Source.Text)).ToArray(),
+            source.Contexts.Values.Select(context => new RouteBlockAudit(context.Source.SourceId, 0, context.Source.Text)).ToArray(),
             decisions.Select(decision => new RouteBlockDecisionAudit(
                 decision.Id, decision.SemanticFunction)).ToArray(),
             validated.Select(item => item.SourceId).ToArray()) with
@@ -140,7 +139,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             RawAnalystResponses = canonicalModel?.RawResponses ?? [],
             ModelInputContracts = canonicalModel is null ? [] : [canonicalModel.Contract.ProtocolVersion],
             SourceStageTraces = source.Contexts.Values.Select(context =>
-                new PdfSemanticSourceStageTrace(
+                new HeadingSourceStageTrace(
                     context.Source.SourceId,
                     context.Scope,
                     context.Source.SourceId is not null && validated.Any(item => item.SourceId == context.Source.SourceId)
@@ -154,20 +153,20 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             ConflictCensus = SemanticConflictCensus.Take(
                 result.ConflictNormalization,
                 CanonicalSemanticGlobalConflictDetector.Detect(
-                    result.ConflictNormalization.NormalizedProposals,
-                    SemanticSourceAliasCatalog.FromCatalog(catalog),
+                result.ConflictNormalization.NormalizedProposals,
+                universe.Aliases,
                     result.ConflictNormalization.Conflicts),
                 0,
                 0,
                 result.TextPipeline.BoundHeadings.Select(item => item.SourceId)
                     .ToHashSet(StringComparer.Ordinal)),
-            SemanticLane = new RouteLaneExecutionAudit("complete", source.Blocks.Count,
+            SemanticLane = new RouteLaneExecutionAudit("complete", source.Count,
                 validated.Count, 0, 0),
             SpanLane = new RouteLaneExecutionAudit("canonical-binder", result.TextPipeline.BoundHeadings.Count,
                 result.TextPipeline.BoundHeadings.Count, 0, result.TextPipeline.BindingFailureCount),
-            BatchTelemetry = new PdfPipelineBatchTelemetry(
-                source.Blocks.Count,
-                source.Blocks.Count,
+            BatchTelemetry = new HeadingAuthorityBatchTelemetry(
+                source.Count,
+                source.Count,
                 result.TextModelCalls == 0 ? 0 : 1,
                 result.TextModelCalls,
                 0,
@@ -189,34 +188,4 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
             "docx-canonical-vnext-semantic-authority");
     }
 
-    /// <summary>
-    /// Numbering/marker observations handed to the model as evidence. They carry no hierarchy
-    /// authority here: the model decides parent relations, the harness derives level from them.
-    /// </summary>
-    private static CanonicalSemanticSourceEvidence EvidenceOf(
-        DocxAuthorityContext context,
-        string alias)
-    {
-        var source = context.Source;
-        return new CanonicalSemanticSourceEvidence(
-            alias,
-            source.SourceId,
-            source.SourceOrdinal,
-            source.Text,
-            context.Scope,
-            ["docx-parser-source"],
-            new { source.Style.StyleId, source.Style.StyleName, source.Style.OutlineLevel, source.Style.Bold },
-            new { source.Numbering.NumberingId, source.Numbering.NumberingLevel, source.Numbering.NumberLabel },
-            source.TextSpans.Select(span => (object)new { span.Start, span.End, span.Bold, span.Italic, span.Underline }).ToArray(),
-            context.ModelContext.Source.ObservedEvidence,
-            context.ModelContext.PreviousBlocks,
-            context.ModelContext.NextBlocks)
-        {
-            // Raw OOXML: the bookmarks this paragraph links to. The model reads anchors, style name
-            // and trailing page number itself, rather than being told a navigation-list conclusion.
-            LocationFacts = source.HyperlinkAnchors.Count == 0
-                ? null
-                : new { hyperlinkAnchors = source.HyperlinkAnchors },
-        };
-    }
 }

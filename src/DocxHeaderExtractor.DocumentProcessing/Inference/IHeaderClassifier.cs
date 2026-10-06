@@ -50,6 +50,9 @@ public interface IHeaderClassifierFactory
         throw new InvalidOperationException("PDF_PRODUCTION_PROVIDER_FACTORY_REQUIRED");
 }
 
+/// <summary>Semantic-facing name for a provider-neutral inference transport.</summary>
+public interface IInferenceTransport : IHeaderClassifier { }
+
 /// <summary>Raw completion returned by executing an already frozen provider request body.</summary>
 public sealed record FrozenHeaderExecutionResult(
     string Content, string? FinishReason, JsonElement? Usage, string RawSse, int SseEventCount, int RetryCount);
@@ -59,12 +62,18 @@ public sealed record FrozenHeaderExecutionResult(
 /// semantic contract. Implementations must send the supplied bytes verbatim and retain their normal
 /// transport-only retry policy; they must not rebuild or edit the request.
 /// </summary>
-public interface IFrozenRequestHeaderClassifier : IHeaderClassifier
+public interface IFrozenInferenceTransport : IInferenceTransport
 {
     Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(
         byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
         CancellationToken cancellationToken = default);
 }
+
+/// <summary>
+/// Compatibility name retained at the composition boundary. New semantic code depends on
+/// <see cref="IFrozenInferenceTransport"/> instead.
+/// </summary>
+public interface IFrozenRequestHeaderClassifier : IFrozenInferenceTransport { }
 
 /// <summary>
 /// Marker issued only by a composition root that has authorized the qualified PDF route. It is

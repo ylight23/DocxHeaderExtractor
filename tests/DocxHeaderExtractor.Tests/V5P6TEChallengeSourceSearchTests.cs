@@ -43,7 +43,7 @@ public sealed class V5P6TEChallengeSourceSearchTests
                 continue;
 
             var expectedSourceHash = source.GetProperty("sourceSha256").GetString()!;
-            var live = PdfStructuredSourceAuthorityBuilder.Build(pdfPath);
+            var live = PdfSourceOccurrenceAdapter.Build(pdfPath);
             Assert.Equal(expectedSourceHash, live.SourceSha256);
 
             var atomByAlias = live.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
@@ -125,7 +125,7 @@ public sealed class V5P6TEChallengeSourceSearchTests
         {
             schemaVersion = "v5-p6t-e-challenge-source-inventory-v1",
             status = "SOURCE_SEARCH_ONLY_NOT_G2A_QUALIFICATION",
-            authority = "current strict Gold registry + source hash verified PdfStructuredSourceAuthorityBuilder output",
+            authority = "current strict Gold registry + source hash verified PdfSourceOccurrenceAdapter output",
             providerCalls = 0,
             goldMutation = "NONE",
             runtimeChanged = false,

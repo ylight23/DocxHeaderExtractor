@@ -15,7 +15,7 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public class ScopeObservationSemanticVetoTests
 {
-    private static PdfFinalHeading Heading(
+    private static CanonicalFinalHeading Heading(
         string role = "SectionHeading",
         string scope = "document_body",
         string text = "DAY 2: WEDNESDAY, NOVEMBER 1, 2023",
@@ -31,7 +31,7 @@ public class ScopeObservationSemanticVetoTests
     [Fact]
     public void A_model_heading_inside_a_table_like_region_survives()
     {
-        var decision = PdfOutputDecisions.Decide(Heading(scope: "table"));
+        var decision = OutputDecisionPolicy.Decide(Heading(scope: "table"));
 
         Assert.True(decision.Emit);
     }
@@ -39,7 +39,7 @@ public class ScopeObservationSemanticVetoTests
     [Fact]
     public void A_scope_observation_cannot_silently_veto_the_model()
     {
-        var decision = PdfOutputDecisions.Decide(
+        var decision = OutputDecisionPolicy.Decide(
             Heading(scope: "appendix_table"));
 
         Assert.True(decision.Emit);
@@ -50,7 +50,7 @@ public class ScopeObservationSemanticVetoTests
     public void A_heading_with_no_source_anchor_is_still_rejected()
     {
         // Source validity, not meaning: without an anchor it cannot be shown as an occurrence.
-        var decision = PdfOutputDecisions.Decide(
+        var decision = OutputDecisionPolicy.Decide(
             Heading(withoutAnchor: true, groundingStatus: "ungrounded"));
 
         Assert.False(decision.Emit);
@@ -60,7 +60,7 @@ public class ScopeObservationSemanticVetoTests
     [Fact]
     public void A_heading_with_empty_source_text_is_still_rejected()
     {
-        var decision = PdfOutputDecisions.Decide(Heading(text: "   "));
+        var decision = OutputDecisionPolicy.Decide(Heading(text: "   "));
 
         Assert.False(decision.Emit);
         Assert.Contains("empty_source_text", decision.Reasons);
@@ -69,7 +69,7 @@ public class ScopeObservationSemanticVetoTests
     [Fact]
     public void A_heading_that_failed_validation_is_still_rejected()
     {
-        var decision = PdfOutputDecisions.Decide(
+        var decision = OutputDecisionPolicy.Decide(
             Heading(validationDecision: "binding_failed"));
 
         Assert.False(decision.Emit);
@@ -82,9 +82,9 @@ public class ScopeObservationSemanticVetoTests
         // This policy only ever reads facts the model proposed and the binder anchored. Handing it
         // an empty structure must produce no decisions at all: there is no path by which a domain
         // heuristic invents a heading.
-        var decisions = PdfOutputDecisions.Decide(
-            new PdfFinalStructure("doc", "validated", "final",
-                new PdfFinalStructureCounters(0, 0, 0, 0, 0, 0, 0), []));
+        var decisions = OutputDecisionPolicy.Decide(
+            new CanonicalFinalStructure("doc", "validated", "final",
+                new CanonicalFinalStructureCounters(0, 0, 0, 0, 0, 0, 0), []));
 
         Assert.Empty(decisions);
     }
@@ -92,7 +92,7 @@ public class ScopeObservationSemanticVetoTests
     [Fact]
     public void A_parser_scope_is_not_a_decision_reason()
     {
-        var decision = PdfOutputDecisions.Decide(
+        var decision = OutputDecisionPolicy.Decide(
             Heading(scope: "appendix_table"));
 
         Assert.True(decision.Emit);
@@ -106,7 +106,7 @@ public class ScopeObservationSemanticVetoTests
     public void The_measured_regression_survives(string text)
     {
         // Shape taken from the real loss: scope "table", model proposal and binding both valid.
-        var decision = PdfOutputDecisions.Decide(
+        var decision = OutputDecisionPolicy.Decide(
             Heading(text: text, scope: "table"));
 
         Assert.True(decision.Emit);

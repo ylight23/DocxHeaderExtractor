@@ -14,7 +14,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
             Heading("S0001", 0, 5),
             Heading("S0002", 0, 5),
         };
-        var structures = new Dictionary<string, PdfValidatedStructure>(StringComparer.Ordinal)
+        var structures = new Dictionary<string, ResolvedHeadingPlacement>(StringComparer.Ordinal)
         {
             ["S0001"] = new("S0001", 1, null, "model-root", "requires_review"),
             ["S0002"] = new("S0002", 7, "S0001", "model-parent-relation", "requires_review"),
@@ -44,7 +44,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
     public void Same_resolved_input_produces_the_same_validated_structure()
     {
         var validated = new[] { Heading("S0001", 0, 5) };
-        var structures = new Dictionary<string, PdfValidatedStructure>(StringComparer.Ordinal)
+        var structures = new Dictionary<string, ResolvedHeadingPlacement>(StringComparer.Ordinal)
         {
             ["S0001"] = new("S0001", 2, null, "model-root", "requires_review"),
         };
@@ -66,7 +66,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
     public void Materializer_does_not_recompute_hierarchy_or_semantic_identity()
     {
         var validated = new[] { Heading("S0002", 0, 5) };
-        var structures = new Dictionary<string, PdfValidatedStructure>(StringComparer.Ordinal)
+        var structures = new Dictionary<string, ResolvedHeadingPlacement>(StringComparer.Ordinal)
         {
             ["S0002"] = new("S0002", 9, "S0001", "unresolved", "requires_review"),
         };
@@ -95,11 +95,11 @@ public sealed class P3dMaterializationProjectionBoundaryTests
         {
             ValidatedStructures =
             [
-                new PdfValidatedStructure("S0001", 1, null, "model-root", "requires_review"),
+                new ResolvedHeadingPlacement("S0001", 1, null, "model-root", "requires_review"),
             ],
             HierarchyFacts =
             [
-                new PdfHierarchyFactAudit(
+                new HeadingHierarchyFactAudit(
                     "S0001", 0, 1, "document_body", "default", null, null, false, null,
                     null, null, 1, "resolved-root", ["source"])
                 {
@@ -111,9 +111,9 @@ public sealed class P3dMaterializationProjectionBoundaryTests
             ],
         };
 
-        var projected = PdfFinalStructureProjection.Project(
+        var projected = CanonicalFinalStructureProjection.Project(
             "source-sha", audit.ValidatedStructures, audit.HierarchyFacts,
-            PdfCanonicalGrounding.FromValidatedStructure(structure));
+            CanonicalGrounding.FromValidatedStructure(structure));
 
         Assert.Single(projected.Headings);
         Assert.Equal(before, System.Text.Json.JsonSerializer.Serialize(structure));
@@ -139,7 +139,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
     private static ValidatedStructure MaterializeOne() =>
         CanonicalStructureMaterializer.Materialize(
             [Heading("S0001", 0, 5)],
-            new Dictionary<string, PdfValidatedStructure>(StringComparer.Ordinal)
+            new Dictionary<string, ResolvedHeadingPlacement>(StringComparer.Ordinal)
             {
                 ["S0001"] = new("S0001", 1, null, "model-root", "requires_review"),
             },
@@ -151,6 +151,6 @@ public sealed class P3dMaterializationProjectionBoundaryTests
             StructuralDecisionOrigin.Model,
             new HashSet<string>(["S0001"], StringComparer.Ordinal));
 
-    private static PdfValidatedHeading Heading(string sourceId, int start, int end) =>
+    private static ValidatedHeading Heading(string sourceId, int start, int end) =>
         new(sourceId, new TextOffsetSpan(start, end), "REGION_STRUCTURE", "document_body", "test");
 }

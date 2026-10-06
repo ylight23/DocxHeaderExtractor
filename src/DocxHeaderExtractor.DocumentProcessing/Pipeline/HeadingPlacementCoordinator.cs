@@ -9,7 +9,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// heading list is already settled when this stage runs; this coordinator may add a placement
 /// relation only for an unresolved heading and never adds, removes, or rewrites a heading.
 /// </summary>
-internal static class CanonicalSemanticPlacementCoordinator
+internal static class HeadingPlacementCoordinator
 {
     /// <summary>
     /// Re-asks only about headings the first pass left unplaced. Provider authority remains with
@@ -24,9 +24,9 @@ internal static class CanonicalSemanticPlacementCoordinator
         ArgumentNullException.ThrowIfNull(bound);
         ArgumentNullException.ThrowIfNull(classifier);
 
-        var derived = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(bound);
+        var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(bound);
         var unplaced = derived
-            .Where(item => item.Resolution == ModelRelationHierarchyResolver.Unresolved)
+            .Where(item => item.Resolution == HeadingHierarchyResolver.Unresolved)
             .Select(item => item.SourceId)
             .ToHashSet(StringComparer.Ordinal);
         if (unplaced.Count == 0) return bound;

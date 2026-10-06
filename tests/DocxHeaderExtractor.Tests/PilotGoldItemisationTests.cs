@@ -177,7 +177,7 @@ public sealed class PilotGoldItemisationTests
 
     private static List<JsonObject> BindStructured(string[] texts, string pdf)
     {
-        var atoms = PdfStructuredSourceAuthorityBuilder.Build(pdf).Atoms;
+        var atoms = PdfSourceOccurrenceAdapter.Build(pdf).Atoms;
         var claims = new List<JsonObject>();
         var from = 0;
         foreach (var text in texts)

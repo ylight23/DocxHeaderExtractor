@@ -17,7 +17,7 @@ public sealed class SourceUniverseCeilingTests
     public void EveryNonEmptyParagraphIsShownToTheModel()
     {
         var state = State();
-        var universe = DocxAuthorityPipeline.BuildForAudit(state).ModelContexts;
+        var universe = DocxSourceOccurrenceAdapter.BuildForAudit(state).Universe.HeadingContexts;
 
         var nonEmpty = state.Paragraphs
             .Where(p => !string.IsNullOrWhiteSpace(p.Text))

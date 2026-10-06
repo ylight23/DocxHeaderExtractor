@@ -3,13 +3,13 @@ using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-internal static class PdfMarkerFactsParser
+internal static class SourceMarkerFactsParser
 {
     private static readonly Regex SpacedArabicPathRx = new(
         @"^\s*((?:\d{1,3}\s+){1,4}\d{1,3})(?:[.)\-:]?\s+)(?=\p{L})",
         RegexOptions.Compiled);
 
-    public static PdfMarkerFact? Parse(string text)
+    public static SourceMarkerFact? Parse(string text)
     {
         // PDF extraction often turns `4.2.2` into `4 2 2`. Check this repairable source shape
         // before the strict parser mistakes only its first component for a level-one marker.
@@ -20,14 +20,14 @@ internal static class PdfMarkerFactsParser
                 .Select(match => int.Parse(match.Value, System.Globalization.CultureInfo.InvariantCulture))
                 .ToArray();
             if (parts.Length > 0)
-                return new PdfMarkerFact($"Arabic:{parts.Length}", parts.Length, "spaced_arabic", true)
+                return new SourceMarkerFact($"Arabic:{parts.Length}", parts.Length, "spaced_arabic", true)
                 {
                     Components = [.. parts],
                 };
         }
 
         if (ParseStrict(text) is { } strict)
-            return new PdfMarkerFact(strict.Signature, strict.Depth, strict.Kind.ToString().ToLowerInvariant(),
+            return new SourceMarkerFact(strict.Signature, strict.Depth, strict.Kind.ToString().ToLowerInvariant(),
                 strict.Kind == NumberMarkerKind.Arabic)
             {
                 // Only an arabic path has components. Roman/letter/labelled markers stay empty
@@ -42,7 +42,7 @@ internal static class PdfMarkerFactsParser
         {
             var separator = looseLabel.IndexOf(':');
             var label = separator > 0 ? looseLabel[..separator] : looseLabel;
-            return new PdfMarkerFact($"label:{label}", 1, "loose_labelled", false);
+            return new SourceMarkerFact($"label:{label}", 1, "loose_labelled", false);
         }
 
         return null;

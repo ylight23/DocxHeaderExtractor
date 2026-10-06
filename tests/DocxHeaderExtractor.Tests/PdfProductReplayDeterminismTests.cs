@@ -79,7 +79,7 @@ public sealed class PdfProductReplayDeterminismTests
         AssertSameProduct(firstProduct, secondProduct);
     }
 
-    private static void AssertSameProduct(PdfProductOutput first, PdfProductOutput second)
+    private static void AssertSameProduct(DocumentProductOutput first, DocumentProductOutput second)
     {
         Assert.Equal(first.SourceDocumentSha256, second.SourceDocumentSha256);
         Assert.Equal(
@@ -90,12 +90,12 @@ public sealed class PdfProductReplayDeterminismTests
             second.Headings.Select(h => (h.Span.Start, h.Span.End)));
     }
 
-    private static (PdfFinalStructure Final, IReadOnlyList<PdfOutputDecision> Decisions, PdfProductOutput Product)
+    private static (CanonicalFinalStructure Final, IReadOnlyList<OutputDecision> Decisions, DocumentProductOutput Product)
         RunChain(Input input)
     {
-        var final = PdfFinalStructureProjection.Project(input.Sha, input.Structures, input.Facts, input.Groundings);
-        var decisions = PdfOutputDecisions.Decide(final);
-        return (final, decisions, PdfProductOutputSerializer.Serialize(final, decisions));
+        var final = CanonicalFinalStructureProjection.Project(input.Sha, input.Structures, input.Facts, input.Groundings);
+        var decisions = OutputDecisionPolicy.Decide(final);
+        return (final, decisions, DocumentProductOutputProjector.Serialize(final, decisions));
     }
 
     private static Input Unresolved() => new(
@@ -103,8 +103,8 @@ public sealed class PdfProductReplayDeterminismTests
         [Structure("b1"), Structure("b2")],
         [Fact("b1", 0, "Introduction", null), Fact("b2", 1, "Scope", null)],
         [
-            new PdfCanonicalGrounding("b1", 10, "@body[1]/p[10]", new DocxTextSpan(0, 12), "Introduction"),
-            new PdfCanonicalGrounding("b2", 11, "@body[1]/p[11]", new DocxTextSpan(0, 5), "Scope"),
+            new CanonicalGrounding("b1", 10, "@body[1]/p[10]", new DocxTextSpan(0, 12), "Introduction"),
+            new CanonicalGrounding("b2", 11, "@body[1]/p[11]", new DocxTextSpan(0, 5), "Scope"),
         ]);
 
     private static Input Grounded(int? resolvedLevel = 1) => new(
@@ -112,14 +112,14 @@ public sealed class PdfProductReplayDeterminismTests
         [Structure("b1"), Structure("b2", parentId: "b1", resolution: "marker-resolved")],
         [Fact("b1", 0, "1 Introduction", resolvedLevel), Fact("b2", 1, "1 1 Scope", resolvedLevel is null ? null : 2)],
         [
-            new PdfCanonicalGrounding("b1", 10, "@body[1]/p[10]", new DocxTextSpan(0, 14), "1. Introduction"),
-            new PdfCanonicalGrounding("b2", 11, "@body[1]/p[11]", new DocxTextSpan(0, 9), "1.1 Scope"),
+            new CanonicalGrounding("b1", 10, "@body[1]/p[10]", new DocxTextSpan(0, 14), "1. Introduction"),
+            new CanonicalGrounding("b2", 11, "@body[1]/p[11]", new DocxTextSpan(0, 9), "1.1 Scope"),
         ]);
 
-    private static PdfValidatedStructure Structure(string id, string? parentId = null, string resolution = "unresolved") =>
+    private static ResolvedHeadingPlacement Structure(string id, string? parentId = null, string resolution = "unresolved") =>
         new(id, 1, parentId, resolution, "requires_review") { StructuralScope = "document_body" };
 
-    private static PdfHierarchyFactAudit Fact(string id, int order, string text, int? resolvedLevel) =>
+    private static HeadingHierarchyFactAudit Fact(string id, int order, string text, int? resolvedLevel) =>
         new(id, order, 1, "document_body", "document_body", null, null, false, null, null, null,
             resolvedLevel, "relationship_unresolved", [])
         {
@@ -131,7 +131,7 @@ public sealed class PdfProductReplayDeterminismTests
 
     private sealed record Input(
         string Sha,
-        IReadOnlyList<PdfValidatedStructure> Structures,
-        IReadOnlyList<PdfHierarchyFactAudit> Facts,
-        IReadOnlyList<PdfCanonicalGrounding> Groundings);
+        IReadOnlyList<ResolvedHeadingPlacement> Structures,
+        IReadOnlyList<HeadingHierarchyFactAudit> Facts,
+        IReadOnlyList<CanonicalGrounding> Groundings);
 }
