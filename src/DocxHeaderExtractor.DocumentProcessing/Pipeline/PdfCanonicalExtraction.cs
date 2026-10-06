@@ -74,8 +74,17 @@ public static class PdfCanonicalExtraction
 
         var started = Environment.TickCount64;
         var used = options.DisableLlm ? null : analyst;
-        if (used is not null && analystSendsDataExternally && options.ExperimentGate is null)
-            throw new InvalidOperationException("PDF_EXPERIMENT_GATE_REQUIRED");
+        var productionAuthorized = used is IPdfProductionAuthorizedFrozenRequestClassifier;
+        if (used is not null && options.ExperimentGate is null && !productionAuthorized)
+        {
+            // Preserve the established experiment error for a remote classifier. A local/direct
+            // classifier is not an implicit production fallback either: the PDF route must carry
+            // the separate composition-root authorization marker.
+            if (analystSendsDataExternally)
+                throw new InvalidOperationException("PDF_EXPERIMENT_GATE_REQUIRED");
+            throw new InvalidOperationException(
+                "PDF_PRODUCTION_AUTHORIZATION_REQUIRED: requires the OpenRouter/qwen/qwen3.7-flash PDF production transport.");
+        }
 
         PdfExperimentGatedHeaderClassifier? gated = null;
         if (used is not null && options.ExperimentGate is not null)

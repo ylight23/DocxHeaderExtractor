@@ -73,18 +73,20 @@ public sealed class McpExtractionService : IDisposable
         var resolved = _paths.ResolveReadableDocument(inputPath);
         var pipeline = BuildPipelineOptions(out var provider);
 
-        IHeaderClassifier? classifier = null;
         if (!_options.RulesOnly)
         {
             var lm = provider.Remote;
             var models = await ListModelsAsync(lm, ct);
             lm.Model = SelectModel(lm.Model, models, throwWhenAmbiguous: true)!;
-            classifier = new LmStudioHeaderExtractor(_http, lm);
+            provider.Remote = lm;
         }
 
-        using var extractionTool = classifier is null
-            ? new PipelineDocumentExtractionTool(pipeline)
-            : new PipelineDocumentExtractionTool(pipeline, classifier);
+        // Let the shared factory choose per source type. DOCX keeps this MCP service's local
+        // LM Studio selection; PDF deliberately enters the qualified OpenRouter-only factory
+        // path and fails before transport with a capability error rather than reaching the PDF
+        // authority adapter through an unsupported local classifier.
+        using var extractionTool = new PipelineDocumentExtractionTool(
+            pipeline, new HeaderClassifierFactory(provider));
         var harness = _harnessFactory.Create(extractionTool);
         var run = await harness.RunAsync(new DocumentAgentRequest(resolved), ct);
         var outline = run.TaskResult.Value;

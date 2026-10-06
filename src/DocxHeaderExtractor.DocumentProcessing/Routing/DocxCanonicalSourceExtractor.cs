@@ -87,7 +87,9 @@ public sealed class PdfCanonicalSourceExtractor : ICanonicalSourceExtractor, IDi
     {
         if (_analyst is not null) return _analyst;
         if (_analystFactory is null) return null;
-        _analyst = await _analystFactory.CreateAsync(_options, ct);
+        // PDF has its own qualified provider policy. It must never inherit the DOCX factory's
+        // default local backend merely because both lanes share the same general abstraction.
+        _analyst = await _analystFactory.CreatePdfProductionAsync(_options, ct);
         return _analyst;
     }
 }

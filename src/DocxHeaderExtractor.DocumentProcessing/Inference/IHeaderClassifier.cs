@@ -39,6 +39,15 @@ public interface IHeaderClassifierFactory
     bool SendsDataExternally => false;
 
     Task<IHeaderClassifier> CreateAsync(PipelineOptions options, CancellationToken ct = default);
+
+    /// <summary>
+    /// Creates the separately-authorized production transport for the PDF authority route.
+    /// DOCX continues to use <see cref="CreateAsync"/> and may use any configured provider.
+    /// A factory that has not explicitly opted into the qualified PDF route fails closed rather
+    /// than silently falling back to its default (usually local) classifier.
+    /// </summary>
+    Task<IHeaderClassifier> CreatePdfProductionAsync(PipelineOptions options, CancellationToken ct = default) =>
+        throw new InvalidOperationException("PDF_PRODUCTION_PROVIDER_FACTORY_REQUIRED");
 }
 
 /// <summary>Raw completion returned by executing an already frozen provider request body.</summary>
@@ -55,4 +64,15 @@ public interface IFrozenRequestHeaderClassifier : IHeaderClassifier
     Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(
         byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
         CancellationToken cancellationToken = default);
+}
+
+/// <summary>
+/// Marker issued only by a composition root that has authorized the qualified PDF route. It is
+/// deliberately distinct from <see cref="PdfExperimentExecutionGate"/>: ordinary production must
+/// not borrow an experiment manifest merely to use its approved provider transport.
+/// </summary>
+public interface IPdfProductionAuthorizedFrozenRequestClassifier : IFrozenRequestHeaderClassifier
+{
+    string PdfProductionProvider { get; }
+    string PdfProductionModel { get; }
 }

@@ -108,7 +108,7 @@ public sealed class PdfLiveExecutionLifecycleTests
             semanticLaneOptions: lane);
     }
 
-    private sealed class GateClassifier : IFrozenRequestHeaderClassifier
+    private sealed class GateClassifier : IPdfProductionAuthorizedFrozenRequestClassifier
     {
         private readonly TaskCompletionSource<FrozenHeaderExecutionResult> _firstCall =
             new(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -123,6 +123,8 @@ public sealed class PdfLiveExecutionLifecycleTests
         public Exception? ImmediateFailure { get; init; }
         public int Calls { get; private set; }
         public string ModelName => "p5c-fake";
+        public string PdfProductionProvider => "test";
+        public string PdfProductionModel => "test";
         public int ContextSize => 1 << 20;
         public string RuntimeDescription => "P5c live-path fake; no provider";
         public int SharedPrefixTokens => 0;
