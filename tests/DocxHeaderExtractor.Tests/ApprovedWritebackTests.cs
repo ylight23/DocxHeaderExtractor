@@ -228,7 +228,6 @@ public sealed class ApprovedWritebackTests
             Text = text,
             Style = new SourceStyleFacts(),
             Numbering = new SourceNumberingFacts(),
-            Layout = new SourceLayoutFacts(),
         };
 
     private static void TryDelete(string path)

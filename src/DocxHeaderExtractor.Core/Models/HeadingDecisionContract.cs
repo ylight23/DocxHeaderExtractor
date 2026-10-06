@@ -73,8 +73,6 @@ public enum ObservedEvidenceKind
     Alignment,
     TableMembership,
     LineBreak,
-    PageBreakBefore,
-    KeepNext,
 }
 
 public enum EvidenceOrigin { DocxParser, PdfParser, MarkerParser, LayoutEngine, Renderer }

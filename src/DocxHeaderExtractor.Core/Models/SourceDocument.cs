@@ -13,8 +13,6 @@ public sealed record SourceDocument
     public required string SourcePath { get; init; }
     public required string SourceKind { get; init; }
     public required IReadOnlyList<SourceParagraph> Paragraphs { get; init; }
-    public IReadOnlyList<string> PageHeaders { get; init; } = new ReadOnlyCollection<string>([]);
-    public IReadOnlyList<string> PageFooters { get; init; } = new ReadOnlyCollection<string>([]);
 }
 
 /// <summary>One source paragraph and its source-backed normalized representation.</summary>
@@ -30,7 +28,6 @@ public sealed record SourceParagraph
     public IReadOnlyList<SourceSegment> SourceSegments { get; init; } = new ReadOnlyCollection<SourceSegment>([]);
     public required SourceStyleFacts Style { get; init; }
     public required SourceNumberingFacts Numbering { get; init; }
-    public required SourceLayoutFacts Layout { get; init; }
 
     /// <summary>
     /// The bookmark name of every internal hyperlink in the paragraph, as written in the OOXML.
@@ -71,11 +68,4 @@ public sealed record SourceNumberingFacts
     public int? NumberingLevel { get; init; }
     public string? NumberLabel { get; init; }
     public string? NumberingFormat { get; init; }
-}
-
-/// <summary>Source layout/containment facts. It contains no table or heading policy result.</summary>
-public sealed record SourceLayoutFacts
-{
-    public bool KeepNext { get; init; }
-    public bool PageBreakBefore { get; init; }
 }

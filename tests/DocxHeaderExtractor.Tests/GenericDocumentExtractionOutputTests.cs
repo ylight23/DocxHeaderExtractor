@@ -205,7 +205,6 @@ public sealed class GenericDocumentExtractionOutputTests
             },
             Style = new SourceStyleFacts(),
             Numbering = new SourceNumberingFacts(),
-            Layout = new SourceLayoutFacts(),
         }).ToArray(),
     };
 

@@ -60,6 +60,5 @@ public sealed class WritebackMappingBoundaryTests
         Text = "same heading",
         Style = new SourceStyleFacts(),
         Numbering = new SourceNumberingFacts(),
-        Layout = new SourceLayoutFacts(),
     };
 }

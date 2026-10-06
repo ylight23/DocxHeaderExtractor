@@ -1,6 +1,5 @@
 using System.Collections.ObjectModel;
 using System.Text;
-using System.Text.RegularExpressions;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
@@ -15,7 +14,6 @@ namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 /// </summary>
 public sealed class OpenXmlDocumentSource
 {
-    private static readonly Regex WhitespaceRx = new(@"\s+", RegexOptions.Compiled);
     private readonly ExtractionOptions _options;
 
     public OpenXmlDocumentSource(ExtractionOptions? options = null) => _options = options ?? new ExtractionOptions();
@@ -37,13 +35,6 @@ public sealed class OpenXmlDocumentSource
         }
 
         NumberingResolver.Apply(main, paragraphs);
-        var headers = new List<string>();
-        var footers = new List<string>();
-        if (_options.IncludePageHeadersFooters)
-        {
-            foreach (var hp in main.HeaderParts) AddIfNotEmpty(headers, Normalize(GetText(hp.Header)));
-            foreach (var fp in main.FooterParts) AddIfNotEmpty(footers, Normalize(GetText(fp.Footer)));
-        }
 
         return new SourceDocument
         {
@@ -52,8 +43,6 @@ public sealed class OpenXmlDocumentSource
             SourcePath = path,
             SourceKind = "docx",
             Paragraphs = ReadOnly(paragraphs.Select(ToSourceParagraph)),
-            PageHeaders = ReadOnly(headers),
-            PageFooters = ReadOnly(footers),
         };
     }
 
@@ -94,8 +83,6 @@ public sealed class OpenXmlDocumentSource
             Alignment = properties?.Justification?.Val?.InnerText ?? style?.Alignment,
             NumberingId = numbering?.NumberingId?.Val?.Value,
             NumberingLevel = numbering?.NumberingLevelReference?.Val?.Value,
-            KeepNext = StyleResolver.OnOff(properties?.KeepNext) ?? style?.KeepNext ?? false,
-            PageBreakBefore = StyleResolver.OnOff(properties?.PageBreakBefore) ?? style?.PageBreakBefore ?? false,
             HyperlinkAnchors = HyperlinkAnchorsOf(paragraph),
         };
     }
@@ -126,11 +113,6 @@ public sealed class OpenXmlDocumentSource
             NumberingLevel = paragraph.NumberingLevel,
             NumberLabel = paragraph.NumberLabel,
             NumberingFormat = paragraph.NumberingFormat,
-        },
-        Layout = new SourceLayoutFacts
-        {
-            KeepNext = paragraph.KeepNext,
-            PageBreakBefore = paragraph.PageBreakBefore,
         },
         HyperlinkAnchors = paragraph.HyperlinkAnchors,
     };
@@ -249,27 +231,7 @@ public sealed class OpenXmlDocumentSource
         return (text.ToString(), breaks);
     }
 
-    private static string GetText(OpenXmlElement? root)
-    {
-        if (root is null) return string.Empty;
-        var text = new StringBuilder();
-        foreach (var element in root.Descendants())
-            switch (element)
-            {
-                case Text t when !t.Ancestors<DeletedRun>().Any(): text.Append(t.Text); break;
-                case TabChar: text.Append('\t'); break;
-                case Break: text.Append(' '); break;
-                case NoBreakHyphen: text.Append('-'); break;
-            }
-        return text.ToString();
-    }
-
-    private static string Normalize(string value) => WhitespaceRx.Replace(value, " ").Trim();
     private static bool HasLetters(string value) => value.Any(char.IsLetter);
-    private static void AddIfNotEmpty(List<string> values, string value)
-    {
-        if (!string.IsNullOrWhiteSpace(value) && !values.Contains(value)) values.Add(value);
-    }
     private static ReadOnlyCollection<T> ReadOnly<T>(IEnumerable<T> values) => Array.AsReadOnly(values.ToArray());
 }
 
@@ -294,7 +256,5 @@ internal sealed class OpenXmlSourceParagraph
     public int? NumberingLevel { get; init; }
     public string? NumberLabel { get; set; }
     public string? NumberingFormat { get; set; }
-    public bool KeepNext { get; init; }
-    public bool PageBreakBefore { get; init; }
     public IReadOnlyList<string> HyperlinkAnchors { get; init; } = [];
 }

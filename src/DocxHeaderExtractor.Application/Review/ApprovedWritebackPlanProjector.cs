@@ -128,7 +128,6 @@ public static class ApprovedWritebackPlanProjector
                 Text = heading.Text,
                 Style = new SourceStyleFacts(),
                 Numbering = new SourceNumberingFacts(),
-                Layout = new SourceLayoutFacts(),
             };
         }
 

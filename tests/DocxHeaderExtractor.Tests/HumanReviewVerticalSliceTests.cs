@@ -193,7 +193,6 @@ public sealed class HumanReviewVerticalSliceTests
             Text = text,
             Style = new SourceStyleFacts(),
             Numbering = new SourceNumberingFacts(),
-            Layout = new SourceLayoutFacts(),
         };
 
     private static string DecisionPath(string root, string documentId)

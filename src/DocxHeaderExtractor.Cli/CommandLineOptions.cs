@@ -117,7 +117,6 @@ public sealed class CommandLineOptions
                 case "--gpu-layers" or "-ngl": llama.GpuLayerCount = int.Parse(Next(a)); break;
                 case "--verbose-native": llama.VerboseNativeLog = true; break;
                 case "--no-tables": extraction.IncludeTables = false; break;
-                case "--page-headers": extraction.IncludePageHeadersFooters = true; break;
 
                 case "-q" or "--quiet": o.Quiet = true; break;
                 case "-v" or "--verbose": o.Verbose = true; break;
@@ -192,7 +191,6 @@ public sealed class CommandLineOptions
 
         Bộ lọc OpenXML:
               --no-tables           Bỏ qua đoạn trong bảng
-              --page-headers        Đọc thêm w:hdr/w:ftr
 
         Ví dụ:
           dhx extract bao-cao.docx -f md
