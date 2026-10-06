@@ -76,7 +76,7 @@ internal static class P6SCandidateAuthorityFull31
             var watch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 response = await client.ExecuteObservedAsync(item.Pack.ProviderBody, item.Pack.MaxCompletionTokens,
                     item.Pack.Request.SystemPrompt, item.Pack.Request.UserMessage).ConfigureAwait(false);
             }

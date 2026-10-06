@@ -65,24 +65,6 @@ public sealed record V5ReplayBundle(
     public string Hash() => Hashing.Sha256(JsonSerializer.Serialize(this, CanonicalJson.Options));
 }
 
-public sealed record V5ProviderEnvelope(
-    string Model,
-    string Provider,
-    string Reasoning,
-    bool Streaming,
-    string ResponseFormat,
-    int TimeoutSeconds)
-{
-    [JsonPropertyName("usageInclude")]
-    public bool UsageInclude { get; init; } = true;
-
-    [JsonPropertyName("openRouterResponseCacheDisabled")]
-    public bool OpenRouterResponseCacheDisabled { get; init; } = true;
-
-    [JsonPropertyName("explicitCacheControl")]
-    public string? ExplicitCacheControl { get; init; }
-}
-
 /// <summary>
 /// Provider-free execution contract. Building this record never opens a network client or Gold.
 /// </summary>

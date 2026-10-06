@@ -99,7 +99,7 @@ internal static class P6KCompactSparseCanary
             var watch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observed = await client.ExecuteObservedAsync(item.Body, item.Pack.MaxCompletionTokens,
                     item.Request.SystemPrompt, item.Request.UserMessage);
             }

@@ -258,7 +258,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         });
 
         using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
-        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        using var provider = new OpenRouterQualificationTransport(http, new RemoteInferenceOptions
         {
             ApiKey = apiKey!,
             Model = "qwen/qwen3.7-flash",
@@ -867,7 +867,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         });
 
         using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
-        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        using var provider = new OpenRouterQualificationTransport(http, new RemoteInferenceOptions
         {
             ApiKey = apiKey!,
             Model = "qwen/qwen3.7-flash",
@@ -1269,7 +1269,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         });
 
         using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
-        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        using var provider = new OpenRouterQualificationTransport(http, new RemoteInferenceOptions
         {
             ApiKey = apiKey!,
             Model = "qwen/qwen3.7-flash",
@@ -1656,7 +1656,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         });
 
         using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
-        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        using var provider = new OpenRouterQualificationTransport(http, new RemoteInferenceOptions
         {
             ApiKey = apiKey!,
             Model = "qwen/qwen3.7-flash",
@@ -1817,7 +1817,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         });
 
         using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
-        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        using var provider = new OpenRouterQualificationTransport(http, new RemoteInferenceOptions
         {
             ApiKey = apiKey!,
             Model = "qwen/qwen3.7-flash",
@@ -2394,7 +2394,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         });
 
         using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
-        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        using var provider = new OpenRouterQualificationTransport(http, new RemoteInferenceOptions
         {
             ApiKey = apiKey!, Model = "qwen/qwen3.7-flash", OpenRouterProviderRoute = "Alibaba",
             TransientRequestRetries = 0, MaxParallelRequests = 1, ProviderTransportTimeoutSeconds = 300,
@@ -2881,7 +2881,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         });
 
         using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
-        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        using var provider = new OpenRouterQualificationTransport(http, new RemoteInferenceOptions
         {
             ApiKey = apiKey!,
             Model = "qwen/qwen3.7-flash",
@@ -3527,7 +3527,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         });
 
         using var http = new HttpClient { Timeout = Timeout.InfiniteTimeSpan };
-        using var provider = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+        using var provider = new OpenRouterQualificationTransport(http, new RemoteInferenceOptions
         {
             ApiKey = apiKey!,
             Model = "qwen/qwen3.7-flash",

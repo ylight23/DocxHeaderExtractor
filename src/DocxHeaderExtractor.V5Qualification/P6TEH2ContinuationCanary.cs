@@ -40,7 +40,7 @@ internal static class P6TEH2ContinuationCanary
         OpenRouterExecutionObservation? response = null; string? error = null;
         try
         {
-            using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+            using var client = OpenRouterQualificationTransport.CreateOwned(options);
             response = await client.ExecuteObservedAsync(request.Body, request.MaxCompletion, request.System, request.User).ConfigureAwait(false);
         }
         catch (Exception exception) { error = exception.Message; }

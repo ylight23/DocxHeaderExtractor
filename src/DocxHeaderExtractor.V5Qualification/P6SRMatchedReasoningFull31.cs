@@ -76,7 +76,7 @@ internal static class P6SRMatchedReasoningFull31
             var watch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 response = await client.ExecuteObservedAsync(item.Treatment.ProviderBody, item.Treatment.MaxCompletionTokens,
                     item.Treatment.Request.SystemPrompt, item.Treatment.Request.UserMessage).ConfigureAwait(false);
             }

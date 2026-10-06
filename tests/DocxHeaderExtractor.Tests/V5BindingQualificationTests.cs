@@ -201,11 +201,10 @@ public sealed class V5BindingQualificationTests
     {
         // The classifier itself: no Gold path, no transport. (This test file is not scanned - it has
         // to name the forbidden tokens to check for them.)
-        var source = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Core/Models/V5BindingQualification.cs"));
+        var source = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.V5Qualification/LegacyCore/V5BindingQualification.cs"));
         foreach (var forbidden in new[] { "gold-current", "GoldLabel", "canonical-semantic-gold", "OpenRouter", "HttpClient", "OPENROUTER_API_KEY" })
             Assert.DoesNotContain(forbidden, source, StringComparison.OrdinalIgnoreCase);
-        var core = typeof(V5BindingQualifier).Assembly.GetReferencedAssemblies().Select(item => item.Name);
-        Assert.DoesNotContain("DocxHeaderExtractor.Infrastructure", core);
+        Assert.Equal("dhx-v5-qualify", typeof(V5BindingQualifier).Assembly.GetName().Name);
     }
 
     private static DocumentTaskContract Contract() => new(

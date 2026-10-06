@@ -17,7 +17,11 @@ internal static class P6TH3FullPopulationH2Canary
     private const string G2APreflightPath = Root + "/p6tg2a-full-pack-population-preflight/g2a-full-pack-preflight.v1.json";
     private const string H2PreflightPath = Root + "/p6th3-full-population-h2-preflight/g2a-raw-audit-and-h2-full-request-manifest.v1.json";
     private const string CaptureRoot = Root + "/p6th3-full-population-h2-canary-20261005";
+    private const string H2B1PreflightPath = Root + "/p6th3-h2b1-horizon-only-preflight/h2-horizon-only-k4-paired-preflight.v1.json";
+    private const string H2B1CaptureRoot = Root + "/p6th3-h2b1-horizon-only-capture-20261005";
     private const string Confirm = "yes-i-authorize-p6th3-full-population-h2-thirty-one-primary-calls";
+    private const string H2B1Confirm = "yes-i-authorize-p6th-h2b1-k4-thirty-one-primary-calls";
+    private const int BoundedEdgeHorizonK = 4;
     private const int ResponseByteCap = 49_152;
     private static readonly JsonSerializerOptions Json = new() { WriteIndented = true };
     private static readonly string SystemPrompt = """
@@ -99,7 +103,7 @@ internal static class P6TH3FullPopulationH2Canary
             var watch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(request.Body, request.MaxCompletionTokens,
                     request.SystemPrompt, request.UserMessage).ConfigureAwait(false);
             }
@@ -184,6 +188,210 @@ internal static class P6TH3FullPopulationH2Canary
             rows = results,
         });
         return 0;
+    }
+
+    /// <summary>Executes only the frozen K=4 BOUND arm; immutable FULL captures are reused as controls.</summary>
+    public static async Task<int> RunH2B1Async(string repo, string[] args)
+    {
+        var requests = Sources.SelectMany(source => Build(repo, source)).ToArray();
+        var bounded = requests.Select(request => BuildBounded(request)).ToArray();
+        if (requests.Length != 31 || bounded.Length != 31) return Fail($"p6th-h2b1: expected exactly 31 paired requests, got {requests.Length}/{bounded.Length}; no network");
+
+        var preflightPath = Path.Combine(repo, H2B1PreflightPath.Replace('/', Path.DirectorySeparatorChar));
+        var fullManifestPath = Path.Combine(repo, H2PreflightPath.Replace('/', Path.DirectorySeparatorChar));
+        using var preflight = JsonDocument.Parse(File.ReadAllText(preflightPath));
+        using var fullManifest = JsonDocument.Parse(File.ReadAllText(fullManifestPath));
+        if (!ManifestParity(fullManifest.RootElement, requests) || !H2B1ManifestParity(preflight.RootElement, requests, bounded))
+            return Fail("p6th-h2b1: frozen full/bounded request parity failed; no network");
+
+        var captureDir = Path.Combine(repo, H2B1CaptureRoot.Replace('/', Path.DirectorySeparatorChar));
+        if (Directory.Exists(captureDir)) return Fail("p6th-h2b1: immutable capture directory exists; no resend");
+        if (!args.Contains($"--confirm-p6th-h2b1={H2B1Confirm}"))
+        {
+            Console.WriteLine("P6T-H2B1 PREPARED_NOT_AUTHORIZED; ProviderCalls=0, GoldRead=false.");
+            Console.WriteLine($"Frozen BOUND calls={bounded.Length}; K={BoundedEdgeHorizonK}; max body={bounded.Max(value => value.BodyBytes)} B.");
+            return 0;
+        }
+        if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY"))) return Fail("p6th-h2b1: OPENROUTER_API_KEY missing; no network");
+
+        var options = RemoteInferenceOptions.FromEnvironment();
+        options.Model = "qwen/qwen3.7-flash";
+        options.OpenRouterProviderRoute = "alibaba";
+        options.OpenRouterReasoningEffort = "none";
+        options.RequireJsonObjectResponse = true;
+        options.TransientRequestRetries = 0;
+        options.MaxParallelRequests = 1;
+        options.ProviderTransportTimeoutSeconds = 300;
+        options.Validate();
+
+        Directory.CreateDirectory(captureDir);
+        WriteNew(Path.Combine(captureDir, "execution-reservation.v1.json"), new
+        {
+            schemaVersion = "v5-p6th-h2b1-k4-execution-reservation-v1",
+            status = "THIRTY_ONE_BOUND_PRIMARY_CALLS_RESERVED",
+            preflightSha256 = Hash(File.ReadAllText(preflightPath)),
+            fullManifestSha256 = Hash(File.ReadAllText(fullManifestPath)),
+            requestCount = bounded.Length,
+            horizonK = BoundedEdgeHorizonK,
+            fullControlCallsReused = requests.Length,
+            fullControlCallsToRerun = 0,
+            requestOrder = bounded.Select(value => new { value.Source.DocumentId, value.PackId, value.Anchor, providerBodySha256 = value.BodyHash, issuedEdges = value.Edges.Count }).ToArray(),
+            providerCallsBeforeSend = 0,
+            maximumPrimaryCalls = 31,
+            retriesAllowed = 0,
+            repairAllowed = false,
+            fallbackAllowed = false,
+            goldRead = false,
+        });
+
+        var summaries = new List<object>();
+        var accepted = 0;
+        var calls = 0;
+        foreach (var request in bounded)
+        {
+            OpenRouterExecutionObservation? observation = null;
+            string? transportError = null;
+            var watch = Stopwatch.StartNew();
+            calls++;
+            try
+            {
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
+                observation = await client.ExecuteObservedAsync(request.Body, request.MaxCompletionTokens,
+                    request.SystemPrompt, request.UserMessage).ConfigureAwait(false);
+            }
+            catch (Exception exception) { transportError = exception.Message; }
+            watch.Stop();
+
+            var rawPath = Path.Combine(captureDir, $"{request.Source.DocumentId}_{request.Anchor}.raw-capture.v1.json");
+            WriteNew(rawPath, new
+            {
+                schemaVersion = "v5-p6th-h2b1-k4-raw-capture-v1",
+                documentId = request.Source.DocumentId,
+                packId = request.PackId,
+                anchor = request.Anchor,
+                anchorAlias = request.AnchorAlias,
+                sourceSha256 = request.SourceSha256,
+                sourceUniverseSha256 = request.SourceUniverseSha256,
+                g2aRawCaptureSha256 = request.G2ARawSha256,
+                providerCallOrdinal = calls,
+                providerCalls = 1,
+                arm = "BOUND_K4",
+                horizonK = BoundedEdgeHorizonK,
+                providerBodySha256 = request.BodyHash,
+                providerBodyBytes = request.BodyBytes,
+                userMessageSha256 = Hash(request.UserMessage),
+                systemPromptSha256 = Hash(request.SystemPrompt),
+                issuedEdgeCount = request.Edges.Count,
+                reasoningRequested = true,
+                reasoningTokens = Usage(observation?.Usage, "completion_tokens_details", "reasoning_tokens"),
+                reasoningExecutionConfirmed = Usage(observation?.Usage, "completion_tokens_details", "reasoning_tokens") is > 0,
+                promptTokens = Usage(observation?.Usage, "prompt_tokens"),
+                completionTokens = Usage(observation?.Usage, "completion_tokens"),
+                finishReason = observation?.FinishReason,
+                retryCount = observation?.RetryCount ?? 0,
+                latencyMs = watch.Elapsed.TotalMilliseconds,
+                rawSseSha256 = observation is null ? null : Hash(observation.RawSse),
+                rawSse = observation?.RawSse,
+                rawResponseSha256 = observation is null ? null : Hash(observation.Content),
+                rawResponse = observation?.Content,
+                transportError,
+                goldReadDuringCapture = false,
+            });
+
+            // Raw output is persisted before parsing or classifying it.
+            var parsed = observation is not null && transportError is null &&
+                         string.Equals(observation.FinishReason, "stop", StringComparison.OrdinalIgnoreCase)
+                ? Parse(request, observation.Content)
+                : null;
+            if (parsed is not null) accepted++;
+            summaries.Add(new
+            {
+                documentId = request.Source.DocumentId,
+                packId = request.PackId,
+                anchor = request.Anchor,
+                anchorAlias = request.AnchorAlias,
+                providerCallOrdinal = calls,
+                providerBodySha256 = request.BodyHash,
+                issued = request.Edges.Count,
+                finishReason = observation?.FinishReason,
+                retryCount = observation?.RetryCount ?? 0,
+                ledgerAccepted = parsed is not null,
+                returned = parsed?.Count,
+                continues = parsed?.Count(value => value.Boundary == "CONTINUES_STRUCTURAL_UNIT"),
+                stops = parsed?.Count(value => value.Boundary == "STOPS_STRUCTURAL_UNIT"),
+                monotonic = parsed is null ? (bool?)null : IsMonotonic(parsed),
+                rawCaptureSha256 = Hash(File.ReadAllBytes(rawPath)),
+                transportError,
+            });
+            Console.WriteLine($"[{calls}/{bounded.Length}] {request.Source.DocumentId} {request.Anchor}: {(parsed is null ? "NOT_ACCEPTED" : "LEDGER_ACCEPTED")}, finish={observation?.FinishReason ?? "n/a"}, edges={request.Edges.Count}");
+        }
+
+        WriteNew(Path.Combine(captureDir, "result.v1.json"), new
+        {
+            schemaVersion = "v5-p6th-h2b1-k4-result-v1",
+            status = accepted == bounded.Length ? "ALL_FROZEN_H2B1_LEDGERS_ACCEPTED" : "ONE_OR_MORE_H2B1_LEDGERS_NOT_ACCEPTED",
+            providerCalls = calls,
+            acceptedLedgers = accepted,
+            maximumPrimaryCalls = 31,
+            horizonK = BoundedEdgeHorizonK,
+            retries = 0,
+            repair = false,
+            fallback = false,
+            goldRead = false,
+            goldMutation = "NONE",
+            runtimeChanged = false,
+            sharedRuntime = "UNCHANGED",
+            rows = summaries,
+        });
+        return 0;
+    }
+
+    private static Request BuildBounded(Request full)
+    {
+        var edges = full.Edges.Take(BoundedEdgeHorizonK).ToArray();
+        using var parsed = JsonDocument.Parse(full.UserMessage);
+        var anchorRoot = parsed.RootElement.GetProperty("anchors")[0];
+        var occurrences = anchorRoot.GetProperty("occurrences").EnumerateArray().Select(row => new
+        {
+            occurrence = row.GetProperty("occurrence").GetString(),
+            page = row.GetProperty("page").GetInt32(),
+            text = row.GetProperty("text").GetString(),
+            selectable = row.GetProperty("selectable").GetBoolean(),
+        }).ToArray();
+        var user = JsonSerializer.Serialize(new
+        {
+            protocolVersion = parsed.RootElement.GetProperty("protocolVersion").GetString(),
+            anchors = new[] { new { anchor = full.Anchor, occurrences, edges = edges.Select(edge => new { anchor = edge.Anchor, left = edge.Left, right = edge.Right, ordinal = edge.Ordinal }).ToArray() } },
+        });
+        var headingRequest = new V5FreeHeadingRequestV1("v5-function-conditioned-continuation-boundary-1", full.SystemPrompt, user,
+            Hash(user), Encoding.UTF8.GetByteCount(full.SystemPrompt), Encoding.UTF8.GetByteCount(user));
+        var body = PdfCandidateAuthorityQualificationAdapter.BuildProviderBodyReasoningEnabled(headingRequest, full.MaxCompletionTokens);
+        return full with { UserMessage = user, Body = body.PayloadBytes, BodyHash = body.Hash, BodyBytes = body.Bytes, Edges = edges };
+    }
+
+    private static bool H2B1ManifestParity(JsonElement manifest, IReadOnlyList<Request> full, IReadOnlyList<Request> bounded)
+    {
+        if (manifest.GetProperty("schemaVersion").GetString() != "v5-p6t-h2b1-horizon-only-k4-paired-preflight-v1" ||
+            manifest.GetProperty("status").GetString() != "PAIRWISE_REQUESTS_FROZEN_NOT_AUTHORIZED_NO_GOLD_READ" ||
+            manifest.GetProperty("preregistration").GetProperty("K").GetInt32() != BoundedEdgeHorizonK ||
+            manifest.GetProperty("authorization").GetProperty("providerCallsAuthorized").GetInt32() != 0) return false;
+        var rows = manifest.GetProperty("arms").GetProperty("rows").EnumerateArray()
+            .ToDictionary(row => $"{row.GetProperty("DocumentId").GetString()}|{row.GetProperty("PackId").GetString()}|{row.GetProperty("Anchor").GetString()}", StringComparer.Ordinal);
+        if (rows.Count != 31) return false;
+        foreach (var item in full)
+        {
+            var key = $"{item.Source.DocumentId}|{item.PackId}|{item.Anchor}";
+            if (!rows.TryGetValue(key, out var row)) return false;
+            var boundedItem = bounded.Single(value => value.Source.DocumentId == item.Source.DocumentId && value.PackId == item.PackId && value.Anchor == item.Anchor);
+            if (row.GetProperty("fullProviderBodySha256").GetString() != item.BodyHash ||
+                row.GetProperty("boundedProviderBodySha256").GetString() != boundedItem.BodyHash ||
+                row.GetProperty("fullUserMessageSha256").GetString() != Hash(item.UserMessage) ||
+                row.GetProperty("boundedUserMessageSha256").GetString() != Hash(boundedItem.UserMessage) ||
+                row.GetProperty("fullEdgeCount").GetInt32() != item.Edges.Count ||
+                row.GetProperty("boundedEdgeCount").GetInt32() != boundedItem.Edges.Count ||
+                row.GetProperty("boundedProviderBodyBytes").GetInt32() != boundedItem.BodyBytes) return false;
+        }
+        return true;
     }
 
     private static IEnumerable<Request> Build(string repo, Source source)

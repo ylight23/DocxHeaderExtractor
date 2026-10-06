@@ -72,7 +72,7 @@ internal static class P6TATotalAnchorRoleCanary
             var watch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 response = await client.ExecuteObservedAsync(item.Prepared.ProviderBody, item.Prepared.SourcePack.MaxCompletionTokens,
                     item.Prepared.Request.SystemPrompt, item.Prepared.Request.UserMessage).ConfigureAwait(false);
             }

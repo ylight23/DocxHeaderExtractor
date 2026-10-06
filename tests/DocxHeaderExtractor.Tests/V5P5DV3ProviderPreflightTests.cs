@@ -98,7 +98,7 @@ public sealed class V5P5DV3ProviderPreflightTests
 
         // The same v3 parser is exercised on a chunked content stream, then its typed response
         // traverses DocumentAgentRuntime and the production binder using a deterministic reasoner.
-        var sse = new OpenRouterHeaderExtractor.SseReassembly();
+        var sse = new OpenRouterTransportEngine.SseReassembly();
         var streamedJson = "{\"decisions\":[{\"claims\":[{\"predicate\":\"STRUCTURAL_REGION\",\"value\":\"Header\",\"evidenceNeeds\":[]}]},{\"claims\":[]}]}";
         var split = streamedJson.Length / 2;
         FeedContent(sse, streamedJson[..split]);
@@ -177,13 +177,13 @@ public sealed class V5P5DV3ProviderPreflightTests
         }
     }
 
-    private static void FeedContent(OpenRouterHeaderExtractor.SseReassembly stream, string content)
+    private static void FeedContent(OpenRouterTransportEngine.SseReassembly stream, string content)
     {
         var chunk = JsonSerializer.Serialize(new { choices = new[] { new { delta = new { content } } } });
         Feed(stream, $"data: {chunk}");
     }
 
-    private static void Feed(OpenRouterHeaderExtractor.SseReassembly stream, string line, bool final = false)
+    private static void Feed(OpenRouterTransportEngine.SseReassembly stream, string line, bool final = false)
     {
         var pending = new StringBuilder(line + "\n\n");
         stream.Feed(pending, final);

@@ -106,7 +106,7 @@ internal static class Qwen37ForcedToolVariantA2Canary
         var stopwatch = Stopwatch.StartNew();
         try
         {
-            using var client = OpenRouterHeaderExtractor.CreateOwned(RemoteInferenceOptions.FromEnvironment());
+            using var client = OpenRouterQualificationTransport.CreateOwned(RemoteInferenceOptions.FromEnvironment());
             (content, finishReason, fragments, usage) = await client.ExecuteToolCallAsync(
                 body.PayloadBytes, pack.MaxCompletionTokens, V5SystemPromptV2_1.Text, pack.Request.Prompt);
         }

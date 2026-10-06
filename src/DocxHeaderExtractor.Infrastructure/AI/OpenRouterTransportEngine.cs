@@ -6,17 +6,8 @@ using System.Text.Json;
 
 namespace DocxHeaderExtractor.Infrastructure.AI;
 
-/// <summary>Raw streaming evidence retained by a bounded qualification canary after one completed call.</summary>
-public sealed record OpenRouterExecutionObservation(
-    string Content,
-    string? FinishReason,
-    JsonElement? Usage,
-    string RawSse,
-    int SseEventCount,
-    int RetryCount);
-
 /// <summary>
-/// RPC JSON qua OpenRouter Chat Completions. Mỗi request cấm endpoint thu thập dữ liệu để huấn
+/// Shared HTTP/SSE implementation behind the production and qualification facades. Mỗi request cấm endpoint thu thập dữ liệu để huấn
 /// luyện (<c>data_collection=deny</c>) và yêu cầu provider trả JSON. Schema/ID được hậu kiểm cục
 /// bộ trước khi chấp nhận.
 /// <para>
@@ -27,7 +18,7 @@ public sealed record OpenRouterExecutionObservation(
 /// ràng buộc còn lại cấm provider dùng dữ liệu để huấn luyện nhưng không bảo đảm xoá sau khi trả.
 /// </para>
 /// </summary>
-public sealed class OpenRouterHeaderExtractor : IFrozenRequestHeaderClassifier
+internal sealed class OpenRouterTransportEngine : IDisposable
 {
     private readonly HttpClient _http;
     private readonly RemoteInferenceOptions _options;
@@ -36,16 +27,16 @@ public sealed class OpenRouterHeaderExtractor : IFrozenRequestHeaderClassifier
     /// <summary>Waits between transport retries. Replaceable only so tests need not sleep.</summary>
     internal Func<TimeSpan, CancellationToken, Task> RetryWait { get; set; } = Task.Delay;
 
-    public OpenRouterHeaderExtractor(HttpClient http, RemoteInferenceOptions options)
+    public OpenRouterTransportEngine(HttpClient http, RemoteInferenceOptions options)
     {
         _http = http;
         _options = Validate(options);
     }
 
-    private OpenRouterHeaderExtractor(HttpClient http, RemoteInferenceOptions options, bool ownsHttp)
+    private OpenRouterTransportEngine(HttpClient http, RemoteInferenceOptions options, bool ownsHttp)
         : this(http, options) => _ownsHttp = ownsHttp;
 
-    public static OpenRouterHeaderExtractor CreateOwned(RemoteInferenceOptions options) =>
+    public static OpenRouterTransportEngine CreateOwned(RemoteInferenceOptions options) =>
         // The per-attempt transport deadline owns timing; HttpClient must not cut a stream first.
         new(new HttpClient { Timeout = Timeout.InfiniteTimeSpan }, options, ownsHttp: true);
 

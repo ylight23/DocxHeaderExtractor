@@ -39,7 +39,7 @@ internal static class P6TCCorrespondenceEvidenceCanary
         {
             AtomicWrite(checkpointPath, new { state = "IN_FLIGHT", providerCallsCompletedAndPersisted = rows.Count, maximumProviderCalls = 2, retry = 0, repair = false, fallback = false, goldRead = false });
             OpenRouterExecutionObservation? observation = null; string? error = null; var watch = Stopwatch.StartNew();
-            try { using var client = OpenRouterHeaderExtractor.CreateOwned(options); observation = await client.ExecuteObservedAsync(item.Prepared.ProviderBody, item.Prepared.SourcePack.MaxCompletionTokens, item.Prepared.Request.SystemPrompt, item.Prepared.Request.UserMessage).ConfigureAwait(false); }
+            try { using var client = OpenRouterQualificationTransport.CreateOwned(options); observation = await client.ExecuteObservedAsync(item.Prepared.ProviderBody, item.Prepared.SourcePack.MaxCompletionTokens, item.Prepared.Request.SystemPrompt, item.Prepared.Request.UserMessage).ConfigureAwait(false); }
             catch (Exception ex) { error = ex.Message; }
             watch.Stop();
             var analysis = Analyze(item.Prepared, observation, error);

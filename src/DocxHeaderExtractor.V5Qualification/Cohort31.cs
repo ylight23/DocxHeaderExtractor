@@ -430,7 +430,7 @@ internal static class Cohort31
             var latency = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 (content, finishReason) = await client.ExecuteAsync(
                     row.ProviderBody, row.MaxCompletionTokens, V5SystemPromptV2_1.Text, ExtractUserMessage(row.ProviderBody));
             }

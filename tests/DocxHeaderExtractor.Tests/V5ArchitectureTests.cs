@@ -131,13 +131,35 @@ public sealed class V5ArchitectureTests
     {
         var root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "src", "DocxHeaderExtractor.Core", "Models"));
         var forbidden = new[] { "IsHeading", "IsMember", "PdfSemanticRole", "PdfBlockRole", "LegalArticle", "TOCEntry" };
-        var files = Directory.EnumerateFiles(root, "V5*.cs", SearchOption.TopDirectoryOnly);
+        var files = Directory.EnumerateFiles(root, "V5*.cs", SearchOption.AllDirectories);
         foreach (var file in files)
         {
             var source = File.ReadAllText(file);
             foreach (var symbol in forbidden)
                 Assert.DoesNotContain(symbol, source, StringComparison.Ordinal);
         }
+    }
+
+    [Fact]
+    public void Production_core_has_no_reverse_reference_to_qualification_assembly()
+    {
+        var project = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Core/DocxHeaderExtractor.Core.csproj"));
+        Assert.DoesNotContain("DocxHeaderExtractor.V5Qualification.csproj", project, StringComparison.Ordinal);
+        Assert.DoesNotContain("ProjectReference", project, StringComparison.Ordinal);
+
+        var models = TestRepository.Path("src/DocxHeaderExtractor.Core/Models");
+        var topLevelProtocols = Directory.EnumerateFiles(models, "V5*.cs", SearchOption.TopDirectoryOnly)
+            .Select(Path.GetFileName)
+            .OrderBy(name => name, StringComparer.Ordinal)
+            .ToArray();
+        Assert.Empty(topLevelProtocols);
+        var qualifiedInference = Directory.EnumerateFiles(Path.Combine(models, "QualifiedInference"), "*.cs", SearchOption.TopDirectoryOnly)
+            .Select(Path.GetFileName)
+            .OrderBy(name => name, StringComparer.Ordinal)
+            .ToArray();
+        Assert.Equal(
+            ["OpenRouterQwen37JsonObjectCarrierV2_1.cs", "V5CanonicalProtocolPrimitives.cs", "V5OccurrenceAuthorityDtos.cs", "V5TotalOccurrenceFunctionProtocolF1.cs", "V5TransportPrimitives.cs"],
+            qualifiedInference);
     }
 
     [Fact]

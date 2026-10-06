@@ -137,7 +137,7 @@ internal static class P5KV3ShardedCanary
             var stopwatch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(item.Shard.Request.ProviderBody, item.Shard.Request.MaxCompletionTokens,
                     V5SystemPromptV2_1.Text, item.Shard.Request.Request.Prompt);
             }

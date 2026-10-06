@@ -149,7 +149,7 @@ internal static class P5F2V3Canary
             var stopwatch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(item.Pack.ProviderBody, item.Pack.MaxCompletionTokens,
                     V5SystemPromptV2_1.Text, item.Pack.Request.Prompt);
             }

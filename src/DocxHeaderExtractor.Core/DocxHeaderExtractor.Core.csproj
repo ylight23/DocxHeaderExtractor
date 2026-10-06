@@ -9,6 +9,7 @@
   <ItemGroup>
     <!-- Phần thuần của RuntimeDescription phải kiểm được mà không nạp 4,4 GB trọng số. -->
     <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
+    <InternalsVisibleTo Include="dhx-v5-qualify" />
     <!-- Historical evaluation is isolated from the normal Core runtime path. -->
   </ItemGroup>
 

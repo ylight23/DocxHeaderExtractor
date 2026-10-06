@@ -121,7 +121,7 @@ public sealed class V5P6TH2CTypographyOnlyScreenExecutionTests
             var stopwatch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(request.ProviderBody, request.MaxCompletionTokens,
                     request.SystemPrompt, request.UserMessage);
             }

@@ -11,11 +11,6 @@ namespace DocxHeaderExtractor.Core.Models;
 /// <summary>Role of a source-atom start, never atom membership in an already-started unit.</summary>
 public enum V5OccurrenceRoleV1 { HEADING_START, REPRESENTATION_START, OTHER }
 
-public sealed record V5IssuedOccurrenceV1(string Id, SemanticSourceAtom Atom);
-
-/// <summary>Read-only correspondence evidence shown to the model; it never becomes selectable output.</summary>
-public sealed record V5ReadOnlyCorrespondenceV1(int TargetPage, string TargetText);
-
 public sealed record V5TotalRoleRequestV1(
     string ProtocolVersion,
     string SystemPrompt,

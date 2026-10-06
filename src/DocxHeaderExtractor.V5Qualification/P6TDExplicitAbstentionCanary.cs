@@ -43,7 +43,7 @@ internal static class P6TDExplicitAbstentionCanary
         {
             AtomicWrite(checkpointPath, new { state = "IN_FLIGHT", providerCallsCompletedAndPersisted = rows.Count, maximumProviderCalls = 2, retry = 0, repair = false, fallback = false, goldRead = false });
             OpenRouterExecutionObservation? response = null; string? error = null; var watch = Stopwatch.StartNew();
-            try { using var client = OpenRouterHeaderExtractor.CreateOwned(options); response = await client.ExecuteObservedAsync(item.Prepared.ProviderBody, item.Prepared.SourcePack.MaxCompletionTokens, item.Prepared.Request.SystemPrompt, item.Prepared.Request.UserMessage).ConfigureAwait(false); }
+            try { using var client = OpenRouterQualificationTransport.CreateOwned(options); response = await client.ExecuteObservedAsync(item.Prepared.ProviderBody, item.Prepared.SourcePack.MaxCompletionTokens, item.Prepared.Request.SystemPrompt, item.Prepared.Request.UserMessage).ConfigureAwait(false); }
             catch (Exception ex) { error = ex.Message; }
             watch.Stop();
             var analysis = Analyze(item.Prepared, response, error);

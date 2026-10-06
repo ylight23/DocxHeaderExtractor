@@ -73,7 +73,7 @@ internal static class P5RFull31V32Execution
             var watch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observed = await client.ExecuteObservedAsync(item.Body, item.MaxCompletionTokens,
                     V5SystemPromptV2_1.Text, item.Request.Prompt);
             }

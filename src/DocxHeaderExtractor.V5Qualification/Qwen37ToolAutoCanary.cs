@@ -96,7 +96,7 @@ internal static class Qwen37ToolAutoCanary
         var stopwatch = Stopwatch.StartNew();
         try
         {
-            using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+            using var client = OpenRouterQualificationTransport.CreateOwned(options);
             (content, finishReason, fragments, usage) = await client.ExecuteToolCallAsync(
                 body.PayloadBytes, pack.MaxCompletionTokens, V5SystemPromptV2_1.Text, pack.Request.Prompt);
         }

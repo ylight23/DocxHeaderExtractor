@@ -11,8 +11,6 @@ namespace DocxHeaderExtractor.Core.V5;
 /// first fragment for that index; <c>ArgumentsChunk</c> arrives repeatedly and must be concatenated in
 /// arrival order, never assumed to arrive whole in one event.
 /// </summary>
-public sealed record V5ToolCallDeltaFragment(int Index, string? Id, string? FunctionName, string? ArgumentsChunk);
-
 public sealed record V5ReassembledToolCall(int Index, string? Id, string? FunctionName, string Arguments);
 
 /// <summary>

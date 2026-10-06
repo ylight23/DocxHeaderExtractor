@@ -83,7 +83,7 @@ internal static class P6SIJTwoArmTocExperiment
             var watch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 response = await client.ExecuteObservedAsync(arm.Pack.ProviderBody, arm.Pack.MaxCompletionTokens,
                     arm.Pack.Request.SystemPrompt, arm.Pack.Request.UserMessage).ConfigureAwait(false);
             }

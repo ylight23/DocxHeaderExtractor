@@ -84,7 +84,7 @@ internal static class P6NCSemanticBoundaryFull31
             var watch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(item.Body, item.Pack.MaxCompletionTokens,
                     item.Request.SystemPrompt, item.Request.UserMessage);
             }
@@ -151,7 +151,7 @@ internal static class P6NCSemanticBoundaryFull31
             OpenRouterExecutionObservation? observation = null; string? transportError = null; var watch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(item.Body, item.Pack.MaxCompletionTokens, item.Request.SystemPrompt, item.Request.UserMessage);
             }
             catch (Exception exception) { transportError = exception.Message; }

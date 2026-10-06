@@ -229,9 +229,10 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
         // ParseWithClaimQuarantine -> ExactClaimBinderV2_1 pipeline. Proven here structurally: the tool's
         // parameters schema is exactly SemanticClaimContractV2_1's own claim vocabulary (asserted above),
         // and no new decode path exists anywhere in this file - only V5OpenRouterToolAutoProviderRequestBodyV1.Build.
-        var file = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Core/Models/V5OpenRouterQwen37CarrierV2_1.cs"));
-        Assert.DoesNotContain("ExactClaimBinderV2_1.Bind(", file, StringComparison.Ordinal);
-        Assert.DoesNotContain("SemanticClaimResponseCodecV2_1.Parse", file, StringComparison.Ordinal);
+        var productionCarrier = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Core/Models/QualifiedInference/OpenRouterQwen37JsonObjectCarrierV2_1.cs"));
+        var qualificationCarriers = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.V5Qualification/LegacyCore/V5OpenRouterQwen37CarrierV2_1.cs"));
+        Assert.DoesNotContain("ExactClaimBinderV2_1.Bind(", productionCarrier + qualificationCarriers, StringComparison.Ordinal);
+        Assert.DoesNotContain("SemanticClaimResponseCodecV2_1.Parse", productionCarrier + qualificationCarriers, StringComparison.Ordinal);
     }
 
     // ---- 27/28 ----------------------------------------------------------------------------------
@@ -239,9 +240,13 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
     [Fact]
     public void No_provider_call_and_no_gold_read_anywhere_in_this_file()
     {
-        var file = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Core/Models/V5OpenRouterQwen37CarrierV2_1.cs"));
+        var productionCarrier = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Core/Models/QualifiedInference/OpenRouterQwen37JsonObjectCarrierV2_1.cs"));
+        var qualificationCarriers = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.V5Qualification/LegacyCore/V5OpenRouterQwen37CarrierV2_1.cs"));
         foreach (var forbidden in new[] { "HttpClient", "OpenRouterHeaderExtractor", "gold-current", "GoldLabel", "canonical-semantic-gold" })
-            Assert.DoesNotContain(forbidden, file, StringComparison.OrdinalIgnoreCase);
+        {
+            Assert.DoesNotContain(forbidden, productionCarrier, StringComparison.OrdinalIgnoreCase);
+            Assert.DoesNotContain(forbidden, qualificationCarriers, StringComparison.OrdinalIgnoreCase);
+        }
     }
 
     // ---- Frozen replay: real PDFs, real packs, real frozen artifacts --------------------------

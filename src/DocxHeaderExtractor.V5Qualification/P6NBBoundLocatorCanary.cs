@@ -72,7 +72,7 @@ internal static class P6NBBoundLocatorCanary
             var watch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(item.Body, item.Pack.MaxCompletionTokens,
                     item.Request.SystemPrompt, item.Request.UserMessage);
             }
@@ -177,7 +177,7 @@ internal static class P6NBBoundLocatorCanary
             var watch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(item.Body, item.Pack.MaxCompletionTokens,
                     item.Request.SystemPrompt, item.Request.UserMessage);
             }

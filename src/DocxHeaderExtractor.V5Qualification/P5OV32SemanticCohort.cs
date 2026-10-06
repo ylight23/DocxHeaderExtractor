@@ -44,7 +44,7 @@ internal static class P5OV32SemanticCohort
         foreach (var item in items)
         {
             OpenRouterExecutionObservation? observed = null; string? transportError = null; var watch = Stopwatch.StartNew();
-            try { using var client = OpenRouterHeaderExtractor.CreateOwned(options); observed = await client.ExecuteObservedAsync(item.Body, item.Pack.MaxCompletionTokens, V5SystemPromptV2_1.Text, item.Request.Prompt); }
+            try { using var client = OpenRouterQualificationTransport.CreateOwned(options); observed = await client.ExecuteObservedAsync(item.Body, item.Pack.MaxCompletionTokens, V5SystemPromptV2_1.Text, item.Request.Prompt); }
             catch (Exception ex) { transportError = ex.Message; }
             watch.Stop(); var analysis = Analyze(item, contract, observed?.Content, observed?.FinishReason, transportError);
             rows.Add(new { role = item.Role, documentId = item.Doc, packId = item.Pack.PackId, semanticRequestHash = item.Request.RequestHash, providerRequestHash = item.Hash, decisionCountExpected = item.Pack.OwnedAliases.Count, maxResponseUtf8Bytes = item.Request.ResponseBounds.MaxResponseUtf8Bytes, maxCompletionTokens = item.Pack.MaxCompletionTokens, transportError, finishReason = observed?.FinishReason, usage = observed?.Usage, retryCount = observed?.RetryCount ?? 0, latencyMs = watch.Elapsed.TotalMilliseconds, sseEventCount = observed?.SseEventCount ?? 0, sseRawSha256 = observed is null ? null : Hash(observed.RawSse), sseRaw = observed?.RawSse, rawResponseSha256 = observed is null ? null : Hash(observed.Content), rawResponseBytes = observed is null ? 0 : Encoding.UTF8.GetByteCount(observed.Content), rawResponse = observed?.Content, response = analysis });

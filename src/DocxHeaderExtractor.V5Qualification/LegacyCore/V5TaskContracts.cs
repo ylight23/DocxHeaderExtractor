@@ -195,12 +195,3 @@ public sealed record DocumentTaskContract(
     }
 }
 
-internal static class CanonicalJson
-{
-    internal static readonly JsonSerializerOptions Options = new()
-    {
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-        WriteIndented = false,
-    };
-}

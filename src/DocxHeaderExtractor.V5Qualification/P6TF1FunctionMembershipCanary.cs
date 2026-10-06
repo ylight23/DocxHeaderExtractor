@@ -66,7 +66,7 @@ internal static class P6TF1FunctionMembershipCanary
             var stopwatch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 response = await client.ExecuteObservedAsync(item.Prepared.ProviderBody, item.Prepared.SourcePack.MaxCompletionTokens, item.Prepared.Request.SystemPrompt, item.Prepared.Request.UserMessage).ConfigureAwait(false);
             }
             catch (Exception ex)
@@ -164,7 +164,7 @@ internal static class P6TF1FunctionMembershipCanary
         var stopwatch = Stopwatch.StartNew();
         try
         {
-            using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+            using var client = OpenRouterQualificationTransport.CreateOwned(options);
             response = await client.ExecuteObservedAsync(item.Prepared.ProviderBody, item.Prepared.SourcePack.MaxCompletionTokens, item.Prepared.Request.SystemPrompt, item.Prepared.Request.UserMessage).ConfigureAwait(false);
         }
         catch (Exception ex)

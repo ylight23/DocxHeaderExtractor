@@ -152,7 +152,7 @@ internal static class P6PDocumentAwarePdfQualification
             string? transportError = null;
             try
             {
-                using var executor = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var executor = OpenRouterQualificationTransport.CreateOwned(options);
                 execution = await PdfHeadingMembershipProductionAdapter.ExecuteAndBindAsync(pack, executor,
                     ResponseCap).ConfigureAwait(false);
             }
@@ -330,7 +330,7 @@ internal static class P6PDocumentAwarePdfQualification
         string? transportError = null;
         try
         {
-            using var executor = OpenRouterHeaderExtractor.CreateOwned(options);
+            using var executor = OpenRouterQualificationTransport.CreateOwned(options);
             execution = await PdfHeadingMembershipProductionAdapter.ExecuteAndBindAsync(pack, executor, ResponseCap).ConfigureAwait(false);
         }
         catch (Exception exception) { transportError = exception.Message; }

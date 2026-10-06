@@ -90,7 +90,7 @@ internal static class P6RStructuralIdentityResolutionQualification
             if (completed.Contains($"{pack.DocumentId}|{pack.PackId}")) continue;
             try
             {
-                using var executor = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var executor = OpenRouterQualificationTransport.CreateOwned(options);
                 provider = await executor.ExecuteFrozenRequestAsync(pack.ProviderBody, pack.MaxCompletionTokens, pack.Request.SystemPrompt, pack.Request.UserMessage).ConfigureAwait(false);
                 if (!string.Equals(provider.FinishReason, "length", StringComparison.OrdinalIgnoreCase))
                     parsed = PdfHeadingMembershipProductionAdapter.ParseStructuralIdentityResolution(preparedPack, provider.Content, ResponseCap);
@@ -206,7 +206,7 @@ internal static class P6RStructuralIdentityResolutionQualification
             var watch = Stopwatch.StartNew();
             try
             {
-                using var executor = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var executor = OpenRouterQualificationTransport.CreateOwned(options);
                 provider = await executor.ExecuteFrozenRequestAsync(pack.Pack.ProviderBody, pack.Pack.MaxCompletionTokens, pack.Pack.Request.SystemPrompt, pack.Pack.Request.UserMessage).ConfigureAwait(false);
                 if (string.Equals(provider.FinishReason, "stop", StringComparison.OrdinalIgnoreCase)) parsed = PdfHeadingMembershipProductionAdapter.ParseStructuralIdentityResolution(pack, provider.Content, ResponseCap);
                 else error = "finish-reason-not-stop";

@@ -555,7 +555,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
             var stopwatch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(call.Request.ProviderBody,
                     call.Request.MaxCompletionTokens, call.Request.SystemPrompt, call.Request.UserMessage).ConfigureAwait(false);
             }

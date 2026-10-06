@@ -67,7 +67,7 @@ internal static class P5VCompactV33Qualification
         {
             OpenRouterExecutionObservation? observed = null; string? transportError = null;
             var watch = Stopwatch.StartNew();
-            try { using var client = OpenRouterHeaderExtractor.CreateOwned(options); observed = await client.ExecuteObservedAsync(item.Body, item.MaxTokens, V5SystemPromptV2_1.Text, item.Request.Prompt); }
+            try { using var client = OpenRouterQualificationTransport.CreateOwned(options); observed = await client.ExecuteObservedAsync(item.Body, item.MaxTokens, V5SystemPromptV2_1.Text, item.Request.Prompt); }
             catch (Exception ex) { transportError = ex.Message; }
             watch.Stop();
             var analysis = Analyze(observed?.Content, item, contract);

@@ -86,7 +86,7 @@ internal static class P6TG2AFullPackPopulationCanary
             calls++;
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(request.Body, request.Pack.MaxCompletionTokens,
                     request.SystemPrompt, request.UserMessage).ConfigureAwait(false);
             }

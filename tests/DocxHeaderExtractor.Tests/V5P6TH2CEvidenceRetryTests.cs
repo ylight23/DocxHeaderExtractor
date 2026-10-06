@@ -98,7 +98,7 @@ public sealed class V5P6TH2CEvidenceRetryTests
         var stopwatch = Stopwatch.StartNew();
         try
         {
-            using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+            using var client = OpenRouterQualificationTransport.CreateOwned(options);
             observation = await client.ExecuteObservedAsync(evidenceRequest.ProviderBody,
                 evidenceRequest.MaxCompletionTokens, evidenceRequest.SystemPrompt, evidenceRequest.UserMessage);
         }

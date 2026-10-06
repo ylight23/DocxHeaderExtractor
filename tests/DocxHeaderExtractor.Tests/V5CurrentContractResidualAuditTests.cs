@@ -83,9 +83,9 @@ public sealed class V5CurrentContractResidualAuditTests
             inspectedHead = InspectedHead, composerVersion = canonical.ComposerVersion, protocolVersion = canonical.ProtocolVersion,
             sources = new[]
             {
-                "src/DocxHeaderExtractor.Core/Models/V5ClaimProtocolV2_1.cs",
-                "src/DocxHeaderExtractor.Core/Models/V5SemanticRequestComposerV2_1.cs",
-                "src/DocxHeaderExtractor.Core/Models/V5SourceSelectionPolicy.cs"
+                "src/DocxHeaderExtractor.V5Qualification/LegacyCore/V5ClaimProtocolV2_1.cs",
+                "src/DocxHeaderExtractor.V5Qualification/LegacyCore/V5SemanticRequestComposerV2_1.cs",
+                "src/DocxHeaderExtractor.V5Qualification/LegacyCore/V5SourceSelectionPolicy.cs"
             },
             providerFacingSourceAlias = new { type = sourceAliasSchema.GetProperty("type").GetString(), minLength = sourceAliasSchema.GetProperty("minLength").GetInt32(), enumPresent = false, subjectAndObjectSchemasIdentical = true },
             wholeAtomPolicy = new { mode = V5SourceSelectionPolicy.WholeAtomMode, shapeFields = wholeShape.EnumerateObject().Select(property => property.Name).ToArray(), verbatimText = "MUST_BE_OMITTED", selectionModeOnProviderWire = false },

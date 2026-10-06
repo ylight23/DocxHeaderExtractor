@@ -35,7 +35,7 @@ internal static class P6SCandidateAuthorityCanary
         foreach (var item in items)
         {
             OpenRouterExecutionObservation? response = null; string? error = null; var clock = Stopwatch.StartNew();
-            try { using var client = OpenRouterHeaderExtractor.CreateOwned(options); response = await client.ExecuteObservedAsync(item.Pack.ProviderBody, item.Pack.MaxCompletionTokens, item.Pack.Request.SystemPrompt, item.Pack.Request.UserMessage); }
+            try { using var client = OpenRouterQualificationTransport.CreateOwned(options); response = await client.ExecuteObservedAsync(item.Pack.ProviderBody, item.Pack.MaxCompletionTokens, item.Pack.Request.SystemPrompt, item.Pack.Request.UserMessage); }
             catch (Exception ex) { error = ex.Message; }
             clock.Stop();
             object analysis;

@@ -121,7 +121,7 @@ internal static class RemediationCanary
             string? transportError = null;
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(RemoteInferenceOptions.FromEnvironment());
+                using var client = OpenRouterQualificationTransport.CreateOwned(RemoteInferenceOptions.FromEnvironment());
                 (raw, finishReason) = await client.ExecuteAsync(
                     frozenBody.PayloadBytes, item.Pack.MaxCompletionTokens, V5SystemPromptV2_1.Text, item.Pack.Request.Prompt);
             }

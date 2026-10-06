@@ -128,7 +128,7 @@ internal static class Qwen38FreeCanary
             string? transportError = null;
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(RemoteInferenceOptions.FromEnvironment());
+                using var client = OpenRouterQualificationTransport.CreateOwned(RemoteInferenceOptions.FromEnvironment());
                 (raw, finishReason) = await client.ExecuteAsync(
                     item.FrozenBody, item.Pack.MaxCompletionTokens, V5SystemPromptV2_1.Text, item.Pack.Request.Prompt);
             }

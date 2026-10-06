@@ -65,7 +65,7 @@ internal static class P6TEChallengeCanary
         string? f1Error = null;
         try
         {
-            using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+            using var client = OpenRouterQualificationTransport.CreateOwned(options);
             f1Response = await client.ExecuteObservedAsync(f1.ProviderBody, f1.SourcePack.MaxCompletionTokens,
                 f1.Request.SystemPrompt, f1.Request.UserMessage).ConfigureAwait(false);
         }
@@ -132,7 +132,7 @@ internal static class P6TEChallengeCanary
             try
             {
                 g2Attempted = true;
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 g2Response = await client.ExecuteObservedAsync(g2.Body, g2.MaxCompletionTokens, g2.SystemPrompt, g2.UserMessage).ConfigureAwait(false);
             }
             catch (Exception exception) { g2Error = exception.Message; }

@@ -65,28 +65,3 @@ public static class V5ProviderRequestShapeV2_1
 /// preflight (which hashes the frozen provider request) and execution (which must send exactly what
 /// preflight froze) can never accidentally diverge on this string.
 /// </summary>
-public static class V5SystemPromptV2_1
-{
-    public const string Text =
-        "You are a task-defined semantic reasoner. Respond with a single JSON object matching the declared schema exactly.";
-}
-
-/// <summary>
-/// The complete, deterministic OpenRouter request body for a v2.1 semantic-claim call - not just the
-/// semantic prompt bytes the preflight already hashes, but everything that governs what is actually
-/// sent: <c>max_tokens</c>, reasoning, response_format, provider routing, stream and usage.include.
-/// Frozen here so preflight and execution can never silently diverge on a field that never appeared
-/// in the semantic request bytes - the same finding that let a max_tokens change go unnoticed by a
-/// preflight that hashed only the prompt.
-/// </summary>
-public sealed record V5ProviderRequestBodyV2_1(byte[] PayloadBytes, string Hash, int Bytes)
-{
-    /// <summary>
-    /// Legacy facade. The literal body shape now lives in exactly one place -
-    /// <see cref="OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRaw"/> - so this and the carrier can
-    /// never independently drift on the same wire body.
-    /// </summary>
-    public static V5ProviderRequestBodyV2_1 Build(
-        string systemPrompt, string userMessage, int maxCompletionTokens, V5ProviderEnvelope envelope) =>
-        OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRaw(systemPrompt, userMessage, maxCompletionTokens, envelope);
-}

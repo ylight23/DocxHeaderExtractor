@@ -300,12 +300,9 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         return result;
     }
 
-    private static IReadOnlyDictionary<string, IReadOnlyList<V5ReadOnlyCorrespondenceV1>> Correspondences(IReadOnlyList<SemanticSourceAtom> owned, IReadOnlyList<SemanticSourceAtom> all)
-    {
-        var universe = V5CandidateUniverseV1.Build(owned, all, V5CandidatePolicyV1.Default); var candidates = universe.Candidates.ToDictionary(value => value.Id, StringComparer.Ordinal); var result = new Dictionary<string, IReadOnlyList<V5ReadOnlyCorrespondenceV1>>(StringComparer.Ordinal);
-        foreach (var relation in universe.Relations) if (candidates.TryGetValue(relation.CandidateId, out var candidate) && owned.Any(atom => atom.Alias == candidate.Endpoint.Parts[0].Alias)) { var alias = candidate.Endpoint.Parts[0].Alias; var list = result.TryGetValue(alias, out var old) ? old.ToList() : []; if (!list.Any(value => value.TargetPage == relation.TargetPage && value.TargetText == relation.TargetText)) list.Add(new V5ReadOnlyCorrespondenceV1(relation.TargetPage, relation.TargetText)); result[alias] = list; }
-        return result;
-    }
+    private static IReadOnlyDictionary<string, IReadOnlyList<V5ReadOnlyCorrespondenceV1>> Correspondences(
+        IReadOnlyList<SemanticSourceAtom> owned, IReadOnlyList<SemanticSourceAtom> all) =>
+        PdfReadOnlyCorrespondenceBuilder.Build(owned, all);
 
     private static readonly V5ProviderEnvelope Envelope = new("qwen/qwen3.7-flash", "alibaba", "none", true, "json_object", 300) { UsageInclude = true, OpenRouterResponseCacheDisabled = true };
 }

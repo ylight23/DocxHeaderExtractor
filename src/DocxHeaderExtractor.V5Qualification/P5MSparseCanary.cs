@@ -59,7 +59,7 @@ internal static class P5MSparseCanary
         {
             OpenRouterExecutionObservation? observation = null; string? error = null;
             var timer = Stopwatch.StartNew();
-            try { using var client = OpenRouterHeaderExtractor.CreateOwned(options); observation = await client.ExecuteObservedAsync(item.Body, item.Pack.MaxCompletionTokens, V5SystemPromptV2_1.Text, item.Request.Prompt); }
+            try { using var client = OpenRouterQualificationTransport.CreateOwned(options); observation = await client.ExecuteObservedAsync(item.Body, item.Pack.MaxCompletionTokens, V5SystemPromptV2_1.Text, item.Request.Prompt); }
             catch (Exception ex) { error = ex.Message; }
             timer.Stop();
             var analysis = Analyze(item, contract, observation?.Content, observation?.FinishReason, error);

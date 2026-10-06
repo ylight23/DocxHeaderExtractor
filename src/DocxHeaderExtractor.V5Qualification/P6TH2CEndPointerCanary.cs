@@ -86,7 +86,7 @@ internal static class P6TH2CEndPointerCanary
             OpenRouterExecutionObservation? observation = null; string? error = null;
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(request.Body, request.MaxCompletionTokens, treatment == "V1" ? P6TH2CCleanPairedBoundaryTreatment.SystemPrompt("V1") : P6TH2CCleanPairedBoundaryTreatment.SystemPrompt("V2"), request.UserMessage).ConfigureAwait(false);
             }
             catch (Exception ex) { error = ex.Message; }
@@ -118,7 +118,7 @@ internal static class P6TH2CEndPointerCanary
             do
             {
                 attempt++; calls++;
-                try { using var client = OpenRouterHeaderExtractor.CreateOwned(options); observation = await client.ExecuteObservedAsync(request.Body, request.MaxCompletionTokens, P6TH2CCleanPairedBoundaryTreatment.SystemPrompt("V2"), request.UserMessage).ConfigureAwait(false); error = null; }
+                try { using var client = OpenRouterQualificationTransport.CreateOwned(options); observation = await client.ExecuteObservedAsync(request.Body, request.MaxCompletionTokens, P6TH2CCleanPairedBoundaryTreatment.SystemPrompt("V2"), request.UserMessage).ConfigureAwait(false); error = null; }
                 catch (Exception ex) { error = ex.Message; }
                 var contractError = observation is null || observation.FinishReason != "stop";
                 if (contractError && attempt == 1) { retries++; continue; }
@@ -157,7 +157,7 @@ internal static class P6TH2CEndPointerCanary
             OpenRouterExecutionObservation? observation = null; string? error = null; var watch = Stopwatch.StartNew();
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(request.Body, request.MaxCompletionTokens,
                     P6TH2CCleanPairedBoundaryTreatment.SystemPrompt("V1"), request.UserMessage).ConfigureAwait(false);
             }
@@ -271,7 +271,7 @@ internal static class P6TH2CEndPointerCanary
             calls++;
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(request.Body, request.MaxCompletionTokens,
                     SystemPrompt, request.UserMessage).ConfigureAwait(false);
             }
@@ -536,7 +536,7 @@ internal static class P6TH2CEndPointerCanary
             calls++;
             try
             {
-                using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                using var client = OpenRouterQualificationTransport.CreateOwned(options);
                 observation = await client.ExecuteObservedAsync(request.Body, request.MaxCompletionTokens, SystemPrompt, request.UserMessage).ConfigureAwait(false);
             }
             catch (Exception exception) { transportError = exception.Message; }
@@ -711,7 +711,7 @@ internal static class P6TH2CEndPointerCanary
                 var watch = Stopwatch.StartNew();
                 try
                 {
-                    using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                    using var client = OpenRouterQualificationTransport.CreateOwned(options);
                     observation = await client.ExecuteObservedAsync(request.Body, request.MaxCompletionTokens, SystemPrompt, request.UserMessage).ConfigureAwait(false);
                 }
                 catch (Exception exception) { transportError = exception.Message; }
@@ -959,7 +959,7 @@ internal static class P6TH2CEndPointerCanary
                 var watch = Stopwatch.StartNew();
                 try
                 {
-                    using var client = OpenRouterHeaderExtractor.CreateOwned(options);
+                    using var client = OpenRouterQualificationTransport.CreateOwned(options);
                     observation = await client.ExecuteObservedAsync(request.Body, request.MaxCompletionTokens, SystemPrompt, request.UserMessage).ConfigureAwait(false);
                 }
                 catch (Exception exception) { transportError = exception.Message; }
