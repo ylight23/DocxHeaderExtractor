@@ -44,12 +44,14 @@ internal static class CanonicalStructureMaterializer
         IReadOnlyDictionary<string, PdfValidatedStructure> structures,
         IReadOnlyDictionary<string, CanonicalSourceOccurrence> occurrences,
         string routeKey,
+        string origin,
         IReadOnlySet<string>? primarySourceIds = null)
     {
         ArgumentNullException.ThrowIfNull(validated);
         ArgumentNullException.ThrowIfNull(structures);
         ArgumentNullException.ThrowIfNull(occurrences);
         ArgumentException.ThrowIfNullOrWhiteSpace(routeKey);
+        ArgumentException.ThrowIfNullOrWhiteSpace(origin);
 
         // Primary occurrence selection is an upstream identity decision. The materializer only
         // applies that already-decided set at the boundary; it never derives identity or chooses
@@ -107,9 +109,10 @@ internal static class CanonicalStructureMaterializer
                     : null,
                 ProposedLevel = derivedLevel,
             };
+            // The producing lane declares the origin and the validator its basis; nothing here
+            // relabels them. Every materialized decision still awaits review.
             var decision = new StructuralDecision(
-                "structure", nameof(HeadingDecisionStatus.RequiresReview), 0,
-                "docx-authority-validated-review");
+                origin, nameof(HeadingDecisionStatus.RequiresReview), 0, item.ValidationBasis);
             var element = StructuralProposalValidator.Materialize(
                 sourceOccurrence, proposal, elementIdBySourceId[item.SourceId], decision,
                 elementIdBySourceId.Values.ToHashSet(StringComparer.Ordinal),

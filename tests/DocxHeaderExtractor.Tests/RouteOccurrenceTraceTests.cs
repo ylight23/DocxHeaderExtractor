@@ -113,7 +113,7 @@ public sealed class RouteOccurrenceTraceTests
             Text = text,
             Level = 1,
             Validation = new StructuralValidation(true, true, true, true, 1, true, true, true, null),
-            Decision = new StructuralDecision("test", "accepted", 1, "test"),
+            Decision = new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.RequiresReview), 1, "test"),
         };
         return new ValidatedStructure([element]);
     }

@@ -46,7 +46,7 @@ public sealed class DocumentSupportStatusTests
             Index = index,
             Level = 1,
             Text = $"Heading {index}",
-            Source = HeadingSource.LocalRules,
+            Source = HeadingSource.Model,
         }).ToArray(),
         DeterministicRoute = route,
     };

@@ -26,7 +26,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
         };
 
         var result = CanonicalStructureMaterializer.Materialize(
-            validated, structures, occurrences, "test",
+            validated, structures, occurrences, "test", StructuralDecisionOrigin.Model,
             new HashSet<string>(["S0001"], StringComparer.Ordinal));
 
         var element = Assert.Single(result.Elements);
@@ -34,6 +34,10 @@ public sealed class P3dMaterializationProjectionBoundaryTests
         Assert.Equal(1, element.Level);
         Assert.Null(element.ParentId);
         Assert.Equal("Alpha", element.Text);
+        // Origin comes from the producing lane and the basis from the validator, not a constant.
+        Assert.Equal(StructuralDecisionOrigin.Model, element.Decision.Origin);
+        Assert.Equal(nameof(HeadingDecisionStatus.RequiresReview), element.Decision.Status);
+        Assert.Equal(validated[0].ValidationBasis, element.Decision.ConfidenceBasis);
     }
 
     [Fact]
@@ -50,8 +54,8 @@ public sealed class P3dMaterializationProjectionBoundaryTests
         };
         var primary = new HashSet<string>(["S0001"], StringComparer.Ordinal);
 
-        var first = CanonicalStructureMaterializer.Materialize(validated, structures, occurrences, "test", primary);
-        var second = CanonicalStructureMaterializer.Materialize(validated, structures, occurrences, "test", primary);
+        var first = CanonicalStructureMaterializer.Materialize(validated, structures, occurrences, "test", StructuralDecisionOrigin.Model, primary);
+        var second = CanonicalStructureMaterializer.Materialize(validated, structures, occurrences, "test", StructuralDecisionOrigin.Model, primary);
 
         Assert.Equal(
             System.Text.Json.JsonSerializer.Serialize(first),
@@ -72,7 +76,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
         };
 
         var result = CanonicalStructureMaterializer.Materialize(
-            validated, structures, occurrences, "test",
+            validated, structures, occurrences, "test", StructuralDecisionOrigin.Model,
             new HashSet<string>(["S0002"], StringComparer.Ordinal));
 
         var element = Assert.Single(result.Elements);
@@ -145,6 +149,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
                 ["S0001"] = new("S0001", 0, "Alpha", null),
             },
             "test",
+            StructuralDecisionOrigin.Model,
             new HashSet<string>(["S0001"], StringComparer.Ordinal));
 
     private static PdfValidatedHeading Heading(string sourceId, int start, int end) =>

@@ -55,19 +55,17 @@ public static class HeadingOutlineProjection
         };
     }
 
-    private static HeadingSource ParseSource(string value) => value.ToLowerInvariant() switch
+    // Fail closed: an origin or status this projection does not know is a producer contract break,
+    // not something to relabel silently.
+    private static HeadingSource ParseSource(string value) => value switch
     {
-        "style" => HeadingSource.Style,
-        "model" => HeadingSource.Model,
-        "structure" => HeadingSource.Structure,
-        "human" or "humancorrection" => HeadingSource.HumanCorrection,
-        _ => HeadingSource.LocalRules,
+        StructuralDecisionOrigin.Model => HeadingSource.Model,
+        StructuralDecisionOrigin.HumanCorrection => HeadingSource.HumanCorrection,
+        _ => throw new InvalidOperationException($"unknown-structural-decision-origin:{value}"),
     };
 
-    private static HeadingDecisionStatus ParseStatus(string value) => value.ToLowerInvariant() switch
-    {
-        "autoacceptedevidence" => HeadingDecisionStatus.AutoAcceptedEvidence,
-        "humanverified" => HeadingDecisionStatus.HumanVerified,
-        _ => HeadingDecisionStatus.RequiresReview,
-    };
+    private static HeadingDecisionStatus ParseStatus(string value) =>
+        Enum.TryParse<HeadingDecisionStatus>(value, ignoreCase: false, out var status) && Enum.IsDefined(status)
+            ? status
+            : throw new InvalidOperationException($"unknown-structural-decision-status:{value}");
 }

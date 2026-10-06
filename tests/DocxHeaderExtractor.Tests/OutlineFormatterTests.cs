@@ -63,7 +63,7 @@ public class OutlineFormatterTests
         Index = index,
         Level = level,
         Text = text,
-        Source = HeadingSource.LocalRules,
+        Source = HeadingSource.Model,
         Confidence = 1.0,
     };
 }

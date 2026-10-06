@@ -239,7 +239,7 @@ public sealed class AgentHarnessTests : IDisposable
                 "2.1 • Negotiation 15 ".Length,
                 "2.1 • Negotiation 15 prone to zero-sum thinking.".Length),
             Confidence = 0.9,
-            DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence,
+            DecisionStatus = HeadingDecisionStatus.HumanVerified,
         };
         using var tool = new FakeTool(Outline(heading));
         var harness = Harness(tool, repairAttempts: 0);
@@ -254,8 +254,8 @@ public sealed class AgentHarnessTests : IDisposable
     public async Task Grounding_validator_cho_phep_nhieu_heading_cung_index_neu_text_khac_nhau()
     {
         using var tool = new FakeTool(Outline(
-            new HeadingRecord { Index = 1, Level = 2, Text = "Chương I QUY ĐỊNH CHUNG", Confidence = 1.0, DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence },
-            new HeadingRecord { Index = 1, Level = 4, Text = "Điều 1. Phạm vi điều chỉnh", Confidence = 1.0, DecisionStatus = HeadingDecisionStatus.AutoAcceptedEvidence }));
+            new HeadingRecord { Index = 1, Level = 2, Text = "Chương I QUY ĐỊNH CHUNG", Confidence = 1.0, DecisionStatus = HeadingDecisionStatus.HumanVerified },
+            new HeadingRecord { Index = 1, Level = 4, Text = "Điều 1. Phạm vi điều chỉnh", Confidence = 1.0, DecisionStatus = HeadingDecisionStatus.HumanVerified }));
         var harness = Harness(tool);
 
         var result = await harness.RunAsync(new DocumentAgentRequest(_input));
@@ -375,32 +375,6 @@ public sealed class AgentHarnessTests : IDisposable
         Assert.Null(result.Writeback);
         Assert.Contains(result.Trace, e =>
             e.Stage == "action.fake_write" && e.Kind == AgentRunEventKind.Skipped);
-    }
-
-    /// <summary>
-    /// <b>Mặt còn lại của cổng (§109 tầng 2).</b> Mục do đường LOCAL_RULES dựng mà thiếu bằng chứng
-    /// KHÔNG được chặn writeback: luật cục bộ đoán, nhưng nó không ảo giác, và cổng này là cổng chống
-    /// ảo giác. Bản cũ đếm mọi nguồn nên chặn toàn-bộ-hoặc-không-gì theo tài liệu — đo trên corpus,
-    /// 063 chặn 25/25, 030 chặn 12/12, 020 chặn 48/48, cả ba đều chạy <c>--no-llm</c> tức không có
-    /// mô hình nào tham gia.
-    /// <para>
-    /// Mục vẫn GIỮ <see cref="HeadingDecisionStatus.RequiresReview"/> để người đọc thấy nó chưa đủ
-    /// bằng chứng; chỉ khác là nó không còn khoá cửa. Đây là test giết đột biến "đếm lại mọi nguồn".
-    /// </para>
-    /// </summary>
-    [Fact]
-    public async Task Muc_local_rules_thieu_bang_chung_khong_chan_writeback()
-    {
-        using var tool = new FakeTool(Outline(
-            Heading(1, review: true, source: HeadingSource.LocalRules)));
-        using var action = new FakeActionTool();
-        var harness = Harness(tool, actionTool: action);
-
-        var result = await harness.RunAsync(Request(target: _input + ".out.docx"));
-
-        Assert.Equal(AgentRunOutcome.Completed, result.Outcome);
-        Assert.Equal(1, action.Calls);
-        Assert.NotNull(result.Writeback);
     }
 
     /// <summary>Mục do MÔ HÌNH dựng mà thiếu bằng chứng thì vẫn phải chặn — đó là lý do cổng tồn tại.</summary>
@@ -579,10 +553,10 @@ public sealed class AgentHarnessTests : IDisposable
         Level = 1,
         Text = "Mục Alpha",
         Confidence = 0.9,
-        Source = source ?? (review ? HeadingSource.Model : HeadingSource.Style),
+        Source = source ?? (review ? HeadingSource.Model : HeadingSource.HumanCorrection),
         DecisionStatus = review
             ? HeadingDecisionStatus.RequiresReview
-            : HeadingDecisionStatus.AutoAcceptedEvidence,
+            : HeadingDecisionStatus.HumanVerified,
     };
 
     private static DocumentOutline Outline(params HeadingRecord[] headings) => new()

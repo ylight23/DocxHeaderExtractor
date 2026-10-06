@@ -113,6 +113,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
         // Straight to the one materializer, in the same shape the PDF lane hands it. This used to
         // go through a DocxAuthorityPipeline wrapper whose only remaining work was this mapping;
         // a lane-named entry point in front of a shared owner is how the two drift apart again.
+        // Every validated heading here is a bound model claim.
         var structuralAuthority = CanonicalStructureMaterializer.Materialize(
             validated,
             structures,
@@ -124,7 +125,7 @@ internal static class CanonicalSemanticDocxAuthorityAdapter
                     pair.Value.Source.Text,
                     pair.Value.Source.Style.StyleId),
                 StringComparer.Ordinal),
-            "docx", primarySourceIds);
+            "docx", StructuralDecisionOrigin.Model, primarySourceIds);
         var audit = CanonicalRouteAuditBoundary.Create(
             "docx-canonical-vnext",
             source.Blocks.Count,

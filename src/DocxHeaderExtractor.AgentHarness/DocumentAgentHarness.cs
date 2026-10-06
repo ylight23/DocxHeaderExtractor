@@ -306,17 +306,10 @@ public sealed class DocumentAgentHarness
 
             // 6. Human-review gate.
             TakeStep("gate.human_review");
-            // Cổng này là cổng chống ẢO GIÁC, nên nó chỉ đếm mục do MÔ HÌNH dựng (§109 tầng 2).
-            //
-            // Bản cũ đếm mọi mục thiếu bằng chứng bất kể nguồn, và vì một tài liệu đi trọn MỘT
-            // nhánh route nên nó chặn toàn-bộ-hoặc-không-gì: đo trên corpus, 063 chặn 25/25,
-            // 030 chặn 12/12, 020 chặn 48/48, còn 019 chặn 0/165. Chạy --no-llm không có mô hình
-            // nào tham gia mà vẫn bị chặn — cổng chống ảo giác chặn nhầm đường suy luận cấu trúc.
-            //
-            // Mục do luật cục bộ dựng vẫn GIỮ NGUYÊN DecisionStatus và tự
-            // tin thấp của chúng — người đọc vẫn thấy "chưa đủ bằng chứng" — nhưng chúng không
-            // còn chặn writeback. Đánh đổi đã được nêu rõ trước khi chọn: mục do luật cục bộ đoán sai
-            // (165 mục số thứ tự văn xuôi của 019) giờ đi thẳng ra ngoài.
+            // Cổng này là cổng chống ẢO GIÁC, nên nó chỉ đếm mục do MÔ HÌNH dựng (§109 tầng 2):
+            // mỗi heading mô hình claim đi ra với origin "model" và RequiresReview cho đến khi
+            // người duyệt xác nhận. Mục người dùng đã sửa (HumanCorrection/HumanVerified) không
+            // còn gì để duyệt.
             var reviewCount = outline.Headings.Count(h =>
                 h.Source == HeadingSource.Model &&
                 (h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed));

@@ -24,7 +24,7 @@ public sealed class HeadingOutlineProjectionTests
             Text = "generic source text",
             Level = 2,
             Validation = new StructuralValidation(true, true, true, true, 1, true, true, true, null),
-            Decision = new StructuralDecision("structure", "AutoAcceptedEvidence", 1, "test"),
+            Decision = new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.HumanVerified), 1, "test"),
             ProjectionMetadata = new StructuralProjectionMetadata
             {
                 OutlineSourceId = "para-451",
@@ -49,4 +49,35 @@ public sealed class HeadingOutlineProjectionTests
         Assert.Equal("outline heading text", projected.Text);
         Assert.Equal(new TextOffsetSpan(10, 26), projected.HeadingSpan);
     }
+
+    [Fact]
+    public void Model_origin_projects_as_model_source_awaiting_review()
+    {
+        var projected = HeadingOutlineProjection.Project(new ValidatedStructure(
+            [Element(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.RequiresReview))])).Single();
+
+        Assert.Equal(HeadingSource.Model, projected.Source);
+        Assert.Equal(HeadingDecisionStatus.RequiresReview, projected.DecisionStatus);
+    }
+
+    [Theory]
+    [InlineData("structure", "RequiresReview")]
+    [InlineData("model", "AutoAcceptedEvidence")]
+    public void Unknown_origin_or_status_fails_closed_instead_of_being_relabelled(string origin, string status)
+    {
+        Assert.Throws<InvalidOperationException>(() =>
+            HeadingOutlineProjection.Project(new ValidatedStructure([Element(origin, status)])));
+    }
+
+    private static ValidatedStructuralElement Element(string origin, string status) => new()
+    {
+        Id = "structural:test:S0001",
+        Type = StructuralElementType.Heading,
+        Role = ProposedRole.HeadingTopic,
+        Sources = [new SourceReference("S0001", 0, new StructuralSpan(0, 5))],
+        Text = "Alpha",
+        Level = 1,
+        Validation = new StructuralValidation(true, true, true, true, 1, true, true, true, null),
+        Decision = new StructuralDecision(origin, status, 0, "source-grounded-pointer-span"),
+    };
 }

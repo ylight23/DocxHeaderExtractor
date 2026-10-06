@@ -7,21 +7,8 @@ namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 /// <summary>Nguồn gốc của một heading trong kết quả cuối cùng.</summary>
 public enum HeadingSource
 {
-    /// <summary>Style Word khẳng định (không cần LLM).</summary>
-    Style,
-
-    /// <summary>Do mô hình LLM xác nhận từ tập ứng viên.</summary>
+    /// <summary>Claim của mô hình đã bind vào nguồn và qua validator.</summary>
     Model,
-
-    /// <summary>Luật cục bộ giữ lại khi chạy chế độ --no-llm.</summary>
-    LocalRules,
-
-    /// <summary>
-    /// Mô hình đã loại, nhưng đánh số của tài liệu khẳng định nó là em kế tiếp của một heading
-    /// đã nhận (3.1 → 3.2). Luôn kèm <see cref="HeadingRecord.Disputed"/> — đây là suy luận cấu
-    /// trúc, không phải khẳng định.
-    /// </summary>
-    Structure,
 
     /// <summary>Người dùng đã sửa đúng paragraph của đúng tài liệu; áp dụng cục bộ sau suy luận.</summary>
     HumanCorrection,
@@ -30,7 +17,6 @@ public enum HeadingSource
 public enum HeadingDecisionStatus
 {
     RequiresReview,
-    AutoAcceptedEvidence,
     HumanVerified,
 }
 
@@ -210,10 +196,6 @@ public sealed class DocumentOutline
     /// </summary>
     [JsonPropertyName("disputedCount")]
     public int DisputedCount => Headings.Count(h => h.Disputed);
-
-    [JsonPropertyName("autoAcceptedCount")]
-    public int AutoAcceptedCount => Headings.Count(h => h.DecisionStatus is
-        HeadingDecisionStatus.AutoAcceptedEvidence or HeadingDecisionStatus.HumanVerified);
 
     /// <summary>Terminal disposition; a non-empty heading list alone is never a promotion signal.</summary>
     [JsonPropertyName("outcome")]

@@ -132,7 +132,7 @@ internal static class PdfFunctionConditionedHeadingAuthorityAdapter
         var hierarchy = ModelRelationHierarchyResolver.DeriveHierarchyFromModelRelations(placed);
         var structures = hierarchy.ToDictionary(item => item.SourceId, item => new PdfValidatedStructure(item.SourceId, item.Level, item.ParentSourceId, item.Resolution, "requires_review") { StructuralScope = authority.Contexts[item.SourceId].Source.StructuralScope }, StringComparer.Ordinal);
         var occurrences = authority.Contexts.ToDictionary(pair => pair.Key, pair => new CanonicalSourceOccurrence(pair.Key, authority.OrdinalBySourceId.GetValueOrDefault(pair.Key), pair.Value.Source.RawText, null), StringComparer.Ordinal);
-        var structure = CanonicalStructureMaterializer.Materialize(validated, structures, occurrences, "pdf", structures.Keys.ToHashSet(StringComparer.Ordinal));
+        var structure = CanonicalStructureMaterializer.Materialize(validated, structures, occurrences, "pdf", StructuralDecisionOrigin.Model, structures.Keys.ToHashSet(StringComparer.Ordinal));
         var sourceBlocks = authority.Blocks.Select(block => new RouteBlockAudit(block.Id, block.Page, block.DisplayText)).ToArray();
         var audit = CanonicalRouteAuditBoundary.Create(
             AuthorityId,

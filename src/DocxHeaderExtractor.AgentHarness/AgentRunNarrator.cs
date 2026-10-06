@@ -100,10 +100,7 @@ public static class AgentRunNarrator
 
     private static string SourceLabel(HeadingSource source) => source switch
     {
-        HeadingSource.Style => "theo style Word",
         HeadingSource.Model => "do model xác nhận",
-        HeadingSource.LocalRules => "theo luật OpenXML",
-        HeadingSource.Structure => "cứu theo đánh số",
         HeadingSource.HumanCorrection => "người dùng đã sửa",
         _ => source.ToString(),
     };
