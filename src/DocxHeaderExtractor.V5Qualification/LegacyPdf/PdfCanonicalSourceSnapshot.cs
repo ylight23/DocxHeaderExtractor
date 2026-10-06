@@ -2,6 +2,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -18,9 +20,13 @@ internal sealed record PdfCanonicalSourceSnapshotV1(
 {
     public const string Version = "a99-pdf-canonical-source-snapshot-v2";
 
-    public static PdfCanonicalSourceSnapshotV1 From(SourceOccurrenceUniverse authority) => new(
-        Version, authority.SourceSha256, authority.SourceAliasUniverseHash, authority.ModelVisibleEvidenceHash,
-        authority.Atoms, authority.Evidence.Select(PdfCanonicalEvidenceSnapshotV1.From).ToArray(), authority.LayoutBlockByAtom);
+    public static PdfCanonicalSourceSnapshotV1 From(PdfSourceOccurrenceBuildResult sourceBuild)
+    {
+        var authority = sourceBuild.Universe;
+        return new PdfCanonicalSourceSnapshotV1(
+            Version, authority.SourceSha256, authority.SourceAliasUniverseHash, authority.ModelVisibleEvidenceHash,
+            authority.Atoms, authority.Evidence.Select(PdfCanonicalEvidenceSnapshotV1.From).ToArray(), sourceBuild.Details.LayoutBlockByAtom);
+    }
 
     public PdfCandidateSourceAuthorityV1 Rehydrate()
     {

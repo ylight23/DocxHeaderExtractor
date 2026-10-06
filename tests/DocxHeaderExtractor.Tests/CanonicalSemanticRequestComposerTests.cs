@@ -3,6 +3,7 @@ using System.Text;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
 namespace DocxHeaderExtractor.Tests;
 

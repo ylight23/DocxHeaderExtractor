@@ -1,3 +1,6 @@
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
+using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
+
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>

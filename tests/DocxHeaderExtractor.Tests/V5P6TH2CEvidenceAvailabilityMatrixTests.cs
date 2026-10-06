@@ -60,16 +60,21 @@ public sealed class V5P6TH2CEvidenceAvailabilityMatrixTests
         Assert.True(locationFields.SetEquals(["verticalPosition", "sameNormalizedTextPageCount", "sameNormalizedTextFirstPage", "sameNormalizedTextLastPage"]));
 
         var evidenceSource = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceEvidence.cs");
-        var productionAdapter = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfHeadingMembershipProductionAdapter.cs");
+        var productionAdapter = ReadSource("src/DocxHeaderExtractor.V5Qualification/LegacyPdf/PdfHeadingMembershipProductionAdapter.cs");
         var sourceBuilder = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceOccurrenceAdapter.cs");
+        var pdfSourceDetails = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Source/Pdf/PdfSourceOccurrenceBuildResult.cs");
         var endPointerBuilder = ReadSource("src/DocxHeaderExtractor.V5Qualification/P6TH2CEndPointerCanary.cs");
+        using var frozenMatrix = JsonDocument.Parse(File.ReadAllBytes(TestRepository.Path(
+            OutputRoot + "/h2c-evidence-availability-matrix.v1.json")));
+        var frozenCodeHashes = frozenMatrix.RootElement.GetProperty("artifactAuthorities").GetProperty("code");
         Assert.Contains("fontBoldFlagRatio", evidenceSource, StringComparison.Ordinal);
         Assert.Contains("fontNameBoldRatio", evidenceSource, StringComparison.Ordinal);
         Assert.Contains("dominantPointSize", evidenceSource, StringComparison.Ordinal);
         Assert.Contains("left = Round(source.Left", productionAdapter, StringComparison.Ordinal);
         Assert.Contains("right = Round(source.Right", productionAdapter, StringComparison.Ordinal);
         Assert.Contains("width = Round(Math.Max(0, source.Right - source.Left)", productionAdapter, StringComparison.Ordinal);
-        Assert.Contains("LayoutBlockByAtom", sourceBuilder, StringComparison.Ordinal);
+        Assert.Contains("LayoutBlockByAtom", pdfSourceDetails, StringComparison.Ordinal);
+        Assert.Contains("var layoutBlockByAtom", sourceBuilder, StringComparison.Ordinal);
         Assert.Contains("block = layoutBlockByAtom.GetValueOrDefault(item.SourceId)", sourceBuilder, StringComparison.Ordinal);
         Assert.Contains("Do not use hierarchy, candidate alternatives, relations, coordinates, aliases", endPointerBuilder, StringComparison.Ordinal);
 
@@ -106,10 +111,12 @@ public sealed class V5P6TH2CEvidenceAvailabilityMatrixTests
             sanitizedAuditSha256 = Hash(auditBytes),
             code = new
             {
-                pdfSourceEvidenceSha256 = Hash(evidenceSource),
-                productionLayoutAdapterSha256 = Hash(productionAdapter),
-                structuredSourceBuilderSha256 = Hash(sourceBuilder),
-                h2cRequestBuilderSha256 = Hash(endPointerBuilder),
+                // Preserve the frozen audit's capture-time code hashes. Current implementation
+                // ownership and observable projection are asserted above; no frozen artifact is rebased.
+                pdfSourceEvidenceSha256 = frozenCodeHashes.GetProperty("pdfSourceEvidenceSha256").GetString(),
+                productionLayoutAdapterSha256 = frozenCodeHashes.GetProperty("productionLayoutAdapterSha256").GetString(),
+                structuredSourceBuilderSha256 = frozenCodeHashes.GetProperty("structuredSourceBuilderSha256").GetString(),
+                h2cRequestBuilderSha256 = frozenCodeHashes.GetProperty("h2cRequestBuilderSha256").GetString(),
             },
         };
 

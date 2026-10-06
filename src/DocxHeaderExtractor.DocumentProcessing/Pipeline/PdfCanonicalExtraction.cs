@@ -85,9 +85,9 @@ public static class PdfCanonicalExtraction
         // PDF heading authority is the promoted function-conditioned chain. Unlike the
         // historical canonical engine it has no semantic fallback: invalid stage output is
         // withheld by that adapter rather than delegated to a second membership authority.
-        var sourceUniverse = PdfSourceOccurrenceAdapter.Build(file.LocalPath);
+        var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(file.LocalPath);
         authority = await HeadingAuthorityPipeline.RunAsync(
-            sourceUniverse, file.LocalPath, used, semanticLaneOptions, ct);
+            sourceBuild.Universe, sourceBuild.Details, file.LocalPath, used, semanticLaneOptions, ct);
         // The same repair step the DOCX lane applies, through the same implementation. A quarantine
         // that silently did nothing on one format would make the harness's repair loop mean two
         // different things depending on what was uploaded.

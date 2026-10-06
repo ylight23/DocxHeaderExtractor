@@ -38,6 +38,40 @@ public sealed class HeadingAuthorityArchitectureTests
     }
 
     [Fact]
+    public void Common_source_ir_contains_no_pdf_parser_diagnostics()
+    {
+        var root = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Source/Common");
+        var files = Directory.EnumerateFiles(root, "*.cs", SearchOption.AllDirectories).ToArray();
+        Assert.NotEmpty(files);
+        foreach (var file in files)
+        {
+            var source = File.ReadAllText(file);
+            Assert.DoesNotContain("PdfPig", source, StringComparison.Ordinal);
+            Assert.DoesNotContain("PdfDetails", source, StringComparison.Ordinal);
+            Assert.DoesNotContain("PdfSemantic", source, StringComparison.Ordinal);
+            Assert.DoesNotContain("LayoutBlockByAtom", source, StringComparison.Ordinal);
+        }
+    }
+
+    [Fact]
+    public void Pdf_adapter_keeps_parser_details_outside_common_universe()
+    {
+        var route = File.ReadAllText(TestRepository.Path(
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfCanonicalExtraction.cs"));
+        var adapter = File.ReadAllText(TestRepository.Path(
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceOccurrenceAdapter.cs"));
+        var common = File.ReadAllText(TestRepository.Path(
+            "src/DocxHeaderExtractor.DocumentProcessing/Source/Common/SourceOccurrenceUniverse.cs"));
+
+        Assert.Contains("BuildWithDetails", route, StringComparison.Ordinal);
+        Assert.Contains("sourceBuild.Universe", route, StringComparison.Ordinal);
+        Assert.Contains("sourceBuild.Details", route, StringComparison.Ordinal);
+        Assert.Contains("PdfSourceOccurrenceBuildResult", adapter, StringComparison.Ordinal);
+        Assert.DoesNotContain("PdfDetails", common, StringComparison.Ordinal);
+        Assert.DoesNotContain("PdfSemantic", common, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Docx_source_adapter_does_not_borrow_pdf_semantic_contracts_or_promote_docx()
     {
         var adapter = File.ReadAllText(TestRepository.Path(

@@ -2,6 +2,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -11,45 +13,6 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// <para>Request composition is deliberately outside this source authority. The promoted PDF
 /// route consumes these parser-owned facts directly through F1 → G2A → H2-C V2.</para>
 /// </summary>
-/// <summary>
-/// Immutable, format-neutral source universe at the heading-authority seam. Parser-specific
-/// detail is carried separately and is never required by DOCX.
-/// </summary>
-internal sealed record SourceOccurrenceUniverse(
-    IReadOnlyList<SemanticSourceAtom> Atoms,
-    IReadOnlyList<SourceOccurrence> Occurrences,
-    IReadOnlyList<CanonicalSemanticSourceEvidence> Evidence,
-    string SourceAliasUniverseHash,
-    string ModelVisibleEvidenceHash,
-    string SourceSha256,
-    IReadOnlyDictionary<string, HeadingSourceContext> HeadingContexts,
-    DocumentSourceCatalog Catalog,
-    IReadOnlyList<SemanticSourceAlias> Aliases,
-    IReadOnlyDictionary<string, int> OrdinalBySourceId)
-{
-    public string SourceKind { get; init; } = "unknown";
-    public IReadOnlyDictionary<string, string> LayoutBlockByAtom { get; init; } = new Dictionary<string, string>(StringComparer.Ordinal);
-    public PdfSourceOccurrenceDetails? PdfDetails { get; init; }
-
-    // PDF-only convenience projections remain parser facts; common heading authority does not
-    // inspect them without an explicitly PDF-specific caller.
-    public IReadOnlyList<PdfSemanticBlock> Blocks => PdfDetails?.Blocks ?? [];
-    public IReadOnlyDictionary<string, PdfSemanticSourceContext> Contexts => PdfDetails?.Contexts ?? new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal);
-    public int ParserLineCount => PdfDetails?.ParserLineCount ?? 0;
-    /// <summary>
-    /// The coordinate universe identity a live route checks before it will transport.
-    /// <see cref="SourceAliasUniverseHash"/> already is that identity for the atom universe:
-    /// it depends on the PDF's text and geometry alone, nothing a proposal or a request could move.
-    /// </summary>
-    public string SourceUniverseSha256 => SourceAliasUniverseHash;
-
-}
-
-internal sealed record PdfSourceOccurrenceDetails(
-    IReadOnlyList<PdfSemanticBlock> Blocks,
-    IReadOnlyDictionary<string, PdfSemanticSourceContext> Contexts,
-    int ParserLineCount);
-
 /// <summary>
 /// Builds the coordinate atoms of a PDF and the evidence attached to each - all without contacting
 /// anything, and without deciding what a request looks like.
@@ -73,7 +36,9 @@ internal static class PdfSourceOccurrenceAdapter
         WriteIndented = false,
     };
 
-    public static SourceOccurrenceUniverse Build(string pdfPath)
+    public static SourceOccurrenceUniverse Build(string pdfPath) => BuildWithDetails(pdfPath).Universe;
+
+    internal static PdfSourceOccurrenceBuildResult BuildWithDetails(string pdfPath)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
@@ -81,8 +46,12 @@ internal static class PdfSourceOccurrenceAdapter
         using (var document = UglyToad.PdfPig.PdfDocument.Open(pdfPath))
             segments = PdfLineExtraction.ExtractLines(document);
 
-        return Build(segments, sourceSha256: CanonicalSemanticSourceHash.Compute(pdfPath));
+        return BuildWithDetails(segments, sourceSha256: CanonicalSemanticSourceHash.Compute(pdfPath));
     }
+
+    internal static PdfSourceOccurrenceBuildResult BuildWithDetails(
+        IReadOnlyList<PdfLine> segments,
+        string sourceSha256 = "") => BuildWithDetailsCore(segments, sourceSha256);
 
     /// <param name="sourceSha256">
     /// Retained for qualification/source-authority construction. Every other measurement here -
@@ -90,7 +59,11 @@ internal static class PdfSourceOccurrenceAdapter
     /// </param>
     public static SourceOccurrenceUniverse Build(
         IReadOnlyList<PdfLine> segments,
-        string sourceSha256 = "")
+        string sourceSha256 = "") => BuildWithDetails(segments, sourceSha256).Universe;
+
+    private static PdfSourceOccurrenceBuildResult BuildWithDetailsCore(
+        IReadOnlyList<PdfLine> segments,
+        string sourceSha256)
     {
         ArgumentNullException.ThrowIfNull(segments);
 
@@ -140,7 +113,7 @@ internal static class PdfSourceOccurrenceAdapter
         var ordinalByAtomSourceId = atoms.ToDictionary(
             atom => atom.SourceId, atom => atom.Ordinal, StringComparer.Ordinal);
 
-        return new SourceOccurrenceUniverse(
+        var universe = new SourceOccurrenceUniverse(
             atoms,
             atoms.Select(atom => new SourceOccurrence(atom.SourceId, atom.Alias, atom.Ordinal, atom.Text, "pdf")).ToArray(),
             evidence,
@@ -170,9 +143,10 @@ internal static class PdfSourceOccurrenceAdapter
             OrdinalBySourceId: ordinalByAtomSourceId)
         {
             SourceKind = "pdf",
-            LayoutBlockByAtom = layoutBlockByAtom,
-            PdfDetails = new PdfSourceOccurrenceDetails(atomBlocks, contexts, segments.Count),
         };
+        return new PdfSourceOccurrenceBuildResult(
+            universe,
+            new PdfSourceOccurrenceDetails(atomBlocks, contexts, layoutBlockByAtom, segments.Count));
     }
 
     /// <summary>

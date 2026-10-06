@@ -2,6 +2,8 @@ using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -31,13 +33,13 @@ public sealed class PdfCanonicalSourceSnapshotTests
         {
             var path = TestRepository.Path(spec.Pdf);
             var sourceSha = CanonicalSemanticSourceHash.Compute(path);
-            SourceOccurrenceUniverse? live = null;
+            PdfSourceOccurrenceBuildResult? live = null;
             PdfCanonicalSourceSnapshotV1 snapshot;
             if (FreezeArtifact.UpdateRequested)
             {
-                live = PdfSourceOccurrenceAdapter.Build(path);
+                live = PdfSourceOccurrenceAdapter.BuildWithDetails(path);
                 snapshot = PdfCanonicalSourceSnapshotV1.From(live);
-                Assert.Equal(sourceSha, live.SourceSha256);
+                Assert.Equal(sourceSha, live.Universe.SourceSha256);
                 FreezeArtifact.AssertJson(Root, $"{sourceSha}.json", snapshot);
             }
 
@@ -49,23 +51,23 @@ public sealed class PdfCanonicalSourceSnapshotTests
             Assert.Equal(sourceSha, replay.SourceSha256);
             if (live is not null)
             {
-                Assert.Equal(live.SourceAliasUniverseHash, replay.SourceAliasUniverseSha256);
-                Assert.Equal(live.ModelVisibleEvidenceHash, replay.ModelVisibleEvidenceSha256);
-                Assert.Equal(live.Atoms.Select(AtomIdentity), replay.Atoms.Select(AtomIdentity));
-                Assert.Equal(live.LayoutBlockByAtom.OrderBy(item => item.Key), replay.LayoutBlockByAtom.OrderBy(item => item.Key));
+                Assert.Equal(live.Universe.SourceAliasUniverseHash, replay.SourceAliasUniverseSha256);
+                Assert.Equal(live.Universe.ModelVisibleEvidenceHash, replay.ModelVisibleEvidenceSha256);
+                Assert.Equal(live.Universe.Atoms.Select(AtomIdentity), replay.Atoms.Select(AtomIdentity));
+                Assert.Equal(live.Details.LayoutBlockByAtom.OrderBy(item => item.Key), replay.LayoutBlockByAtom.OrderBy(item => item.Key));
             }
 
-            var livePacks = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(live?.Evidence ?? replay.Evidence, live?.LayoutBlockByAtom ?? replay.LayoutBlockByAtom);
+            var livePacks = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(live?.Universe.Evidence ?? replay.Evidence, live?.Details.LayoutBlockByAtom ?? replay.LayoutBlockByAtom);
             var replayPacks = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(replay.Evidence, replay.LayoutBlockByAtom);
             Assert.Equal(spec.Packs, livePacks.Count); Assert.Equal(livePacks.Count, replayPacks.Count);
             Assert.Equal(livePacks.Select(PackIdentity), replayPacks.Select(PackIdentity));
 
-            var liveAtoms = (live?.Atoms ?? replay.Atoms).ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
+            var liveAtoms = (live?.Universe.Atoms ?? replay.Atoms).ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
             var replayAtoms = replay.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
             var candidateRows = new List<object>();
             foreach (var pair in livePacks.Zip(replayPacks))
             {
-                var liveUniverse = V5CandidateUniverseV1.Build(pair.First.Owned.Select(item => liveAtoms[item.SourceAlias]).ToArray(), live?.Atoms ?? replay.Atoms, V5CandidatePolicyV1.Default);
+                var liveUniverse = V5CandidateUniverseV1.Build(pair.First.Owned.Select(item => liveAtoms[item.SourceAlias]).ToArray(), live?.Universe.Atoms ?? replay.Atoms, V5CandidatePolicyV1.Default);
                 var replayUniverse = V5CandidateUniverseV1.Build(pair.Second.Owned.Select(item => replayAtoms[item.SourceAlias]).ToArray(), replay.Atoms, V5CandidatePolicyV1.Default);
                 Assert.Equal(liveUniverse.Fingerprint, replayUniverse.Fingerprint);
                 Assert.Equal(liveUniverse.Candidates.Select(CandidateIdentity), replayUniverse.Candidates.Select(CandidateIdentity));
@@ -79,7 +81,9 @@ public sealed class PdfCanonicalSourceSnapshotTests
         {
             schemaVersion = "p6s-canonical-source-snapshot-replay-v1",
             authority = "compact sourceSha256 + atoms + materialized evidence + layoutBlockByAtom",
-            captureParity = "A99_FREEZE_UPDATE capture host: live PdfSourceOccurrenceAdapter equals serialized snapshot rehydrate",
+            // This rollup freezes the original capture authority's historical builder identity;
+            // the live implementation has since been moved behind PdfSourceOccurrenceAdapter.
+            captureParity = "A99_FREEZE_UPDATE capture host: live PdfStructuredSourceAuthorityBuilder equals serialized snapshot rehydrate",
             ciReplay = "ordinary runs rehydrate only; raw PdfPig drift is intentionally not a second authority",
             providerCalls = 0, goldRead = false, sharedRuntime = "UNCHANGED", documents = rows,
         });

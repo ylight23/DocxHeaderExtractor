@@ -4,6 +4,8 @@ using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -194,11 +196,12 @@ public static class PdfHeadingMembershipProductionAdapter
         ArgumentNullException.ThrowIfNull(contract);
         contract.Validate();
 
-        var authority = PdfSourceOccurrenceAdapter.Build(pdfPath);
+        var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(pdfPath);
+        var authority = sourceBuild.Universe;
         var graph = V5PdfPreflightBuilder.BuildGraph(authority, documentId);
         var graphByAlias = graph.Nodes.ToDictionary(node => node.SourceAlias, StringComparer.Ordinal);
         var atomByAlias = authority.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
-        var packs = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom);
+        var packs = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, sourceBuild.Details.LayoutBlockByAtom);
         var documentMap = BuildDocumentMap(authority.Atoms);
         var prepared = new List<PdfHeadingMembershipPreparedPack>(packs.Count);
         var seenOwned = new HashSet<string>(StringComparer.Ordinal);
@@ -222,7 +225,7 @@ public static class PdfHeadingMembershipProductionAdapter
             // budget; it is never serialized into the P6P provider body.
             var sparse = V5SparseCandidateRequestComposerV1.ComposeCompactDirectoryCanonical(contract, packet, registry);
             if (includeLayoutFacts)
-                sparse = AddNeutralLayoutFacts(sparse, authority, ownedAliases, visibleAliases);
+                sparse = AddNeutralLayoutFacts(sparse, authority, sourceBuild.Details, ownedAliases, visibleAliases);
             var wideContext = BuildDocumentContext(documentMap, authority.Atoms, ownedAliases);
             using var contextJson = JsonDocument.Parse(JsonSerializer.SerializeToUtf8Bytes(wideContext));
             var request = V5FreeHeadingCandidateProtocolV1.ComposePdfDocumentAwareBoundLocator(sparse, contextJson.RootElement);
@@ -345,12 +348,13 @@ public static class PdfHeadingMembershipProductionAdapter
     private static V5SparseCandidateModelRequestV1 AddNeutralLayoutFacts(
         V5SparseCandidateModelRequestV1 sparse,
         SourceOccurrenceUniverse authority,
+        PdfSourceOccurrenceDetails pdfDetails,
         IReadOnlyList<string> ownedAliases,
         IReadOnlyList<string> visibleAliases)
     {
         var ownedSet = ownedAliases.ToHashSet(StringComparer.Ordinal);
         var contextAliases = visibleAliases.Where(alias => !ownedSet.Contains(alias)).ToArray();
-        var bodyFont = PdfSourceEvidence.Median(authority.Contexts.Values.Select(context => context.Source.FontSize));
+        var bodyFont = PdfSourceEvidence.Median(pdfDetails.Contexts.Values.Select(context => context.Source.FontSize));
         using var source = JsonDocument.Parse(sparse.UserMessage);
         var root = JsonNode.Parse(source.RootElement.GetRawText())?.AsObject()
             ?? throw new InvalidOperationException("p6p-layout-source-request-invalid");
@@ -363,10 +367,10 @@ public static class PdfHeadingMembershipProductionAdapter
 
         for (var index = 0; index < owned.Count; index++)
             owned[index]!.AsObject()["layoutFacts"] = JsonSerializer.SerializeToNode(
-                LayoutFacts(authority.Contexts[AliasSourceId(authority, ownedAliases[index])].Source, bodyFont), CanonicalJsonOptions);
+                LayoutFacts(pdfDetails.Contexts[AliasSourceId(authority, ownedAliases[index])].Source, bodyFont), CanonicalJsonOptions);
         for (var index = 0; index < contextOnly.Count; index++)
             contextOnly[index]!.AsObject()["layoutFacts"] = JsonSerializer.SerializeToNode(
-                LayoutFacts(authority.Contexts[AliasSourceId(authority, contextAliases[index])].Source, bodyFont), CanonicalJsonOptions);
+                LayoutFacts(pdfDetails.Contexts[AliasSourceId(authority, contextAliases[index])].Source, bodyFont), CanonicalJsonOptions);
 
         root["protocolVersion"] = LayoutAwareProtocolVersion;
         var message = root.ToJsonString(CanonicalJsonOptions);

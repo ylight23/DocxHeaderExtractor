@@ -97,7 +97,7 @@ public sealed class PdfSourceCatalogIdentityTests
 
     /// <summary>The source units the PDF lane reasons over: one block per segment atom.</summary>
     private static IReadOnlyList<PdfSemanticBlock> Blocks() =>
-        PdfSourceOccurrenceAdapter.Build(
-            Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))).Blocks;
+        PdfSourceOccurrenceAdapter.BuildWithDetails(
+            Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))).Details.Blocks;
 
 }

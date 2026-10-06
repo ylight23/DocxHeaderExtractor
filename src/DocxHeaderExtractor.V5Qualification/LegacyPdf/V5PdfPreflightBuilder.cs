@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.V5;
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -71,10 +72,11 @@ public static class V5PdfPreflightBuilder
 
         providerEnvelope = providerEnvelope with { UsageInclude = true, OpenRouterResponseCacheDisabled = true };
         var policy = ResolvePolicy(packingPolicy);
-        var authority = PdfSourceOccurrenceAdapter.Build(pdfPath);
+        var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(pdfPath);
+        var authority = sourceBuild.Universe;
         var graph = BuildGraph(authority, documentId);
         var byAlias = graph.Nodes.ToDictionary(node => node.SourceAlias, StringComparer.Ordinal);
-        var packs = policy.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom);
+        var packs = policy.BuildPacks(authority.Evidence, sourceBuild.Details.LayoutBlockByAtom);
         return packs.Select(pack =>
         {
             var ownedAliases = pack.Owned.Select(item => item.SourceAlias).ToArray();
@@ -114,10 +116,11 @@ public static class V5PdfPreflightBuilder
         contract.Validate();
         providerEnvelope = providerEnvelope with { UsageInclude = true, OpenRouterResponseCacheDisabled = true };
         var policy = ResolvePolicy(packingPolicy);
-        var authority = PdfSourceOccurrenceAdapter.Build(pdfPath);
+        var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(pdfPath);
+        var authority = sourceBuild.Universe;
         var graph = BuildGraph(authority, documentId);
         var byAlias = graph.Nodes.ToDictionary(node => node.SourceAlias, StringComparer.Ordinal);
-        var packs = policy.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom);
+        var packs = policy.BuildPacks(authority.Evidence, sourceBuild.Details.LayoutBlockByAtom);
         var requests = packs.Select(pack =>
         {
             var (ownedAliases, visibleAliases, owned, visible) = ResolvePack(pack, byAlias);

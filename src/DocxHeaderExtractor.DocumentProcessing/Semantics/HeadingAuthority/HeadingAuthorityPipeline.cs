@@ -5,6 +5,8 @@ using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority.Protocols;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
@@ -23,18 +25,20 @@ internal static class HeadingAuthorityPipeline
     private const int P05CompletionTokens = PdfQualifiedInferencePolicy.CompletionTokenCeiling;
     public static async Task<StructuralAuthorityResult> RunAsync(
         SourceOccurrenceUniverse authority,
+        PdfSourceOccurrenceDetails pdfDetails,
         string sourceName,
         IHeaderClassifier? classifier,
         SemanticLaneOptions? semanticLaneOptions,
         CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(authority);
+        ArgumentNullException.ThrowIfNull(pdfDetails);
         ArgumentException.ThrowIfNullOrWhiteSpace(sourceName);
-        if (authority.ParserLineCount == 0 || authority.Blocks.Count == 0)
+        if (pdfDetails.ParserLineCount == 0 || pdfDetails.Blocks.Count == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-no-text-layer") { SourceCatalog = authority.Catalog };
         if (classifier is null)
             return new StructuralAuthorityResult(
-                new ValidatedStructure([]), SourceOnlyAudit(authority), "pdf-function-conditioned-llm-disabled")
+                new ValidatedStructure([]), SourceOnlyAudit(authority, pdfDetails), "pdf-function-conditioned-llm-disabled")
             { SourceCatalog = authority.Catalog };
         if (classifier is not IFrozenInferenceTransport frozen)
             throw new InvalidOperationException("PDF_H2C_PRODUCTION_ROUTE_REQUIRES_FROZEN_REQUEST_TRANSPORT");
@@ -42,10 +46,10 @@ internal static class HeadingAuthorityPipeline
         await using var scope = ProductionCheckpointScope.Create();
         await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, Path.GetFileNameWithoutExtension(sourceName));
         await checkpoint.RecordSelectionAsync(
-            authority.Blocks.Select(block => new PdfSelectedSourceIdentity(
+            pdfDetails.Blocks.Select(block => new PdfSelectedSourceIdentity(
                 block.Id, block.Page, block.Lines.Select(PdfLineIdentity.Of).ToArray(), block.DisplayText)).ToArray(), ct).ConfigureAwait(false);
         var execution = await PdfLaneExecution.RunAsync(
-            (lease, laneCt) => RunCoreAsync(authority, frozen, lease, laneCt),
+            (lease, laneCt) => RunCoreAsync(authority, pdfDetails, frozen, lease, laneCt),
             (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
             ct).ConfigureAwait(false);
         await checkpoint.StopAcceptingWritesAndDrainAsync().ConfigureAwait(false);
@@ -60,17 +64,17 @@ internal static class HeadingAuthorityPipeline
         return execution.Value;
     }
 
-    private static RouteExecutionAudit SourceOnlyAudit(SourceOccurrenceUniverse authority)
+    private static RouteExecutionAudit SourceOnlyAudit(SourceOccurrenceUniverse authority, PdfSourceOccurrenceDetails pdfDetails)
     {
-        var sourceBlocks = authority.Blocks
+        var sourceBlocks = pdfDetails.Blocks
             .Select(block => new RouteBlockAudit(block.Id, block.Page, block.DisplayText))
             .ToArray();
         return CanonicalRouteAuditBoundary.Create(
             AuthorityId,
-            authority.Blocks.Count,
-            authority.Blocks.Count,
-            authority.Blocks.Select(block => block.Page).Distinct().Count(),
-            authority.Blocks.Select(block => block.Page).Distinct().Count(),
+            pdfDetails.Blocks.Count,
+            pdfDetails.Blocks.Count,
+            pdfDetails.Blocks.Select(block => block.Page).Distinct().Count(),
+            pdfDetails.Blocks.Select(block => block.Page).Distinct().Count(),
             sourceBlocks,
             sourceBlocks,
             [],
@@ -84,13 +88,13 @@ internal static class HeadingAuthorityPipeline
         };
     }
 
-    private static async Task<StructuralAuthorityResult> RunCoreAsync(SourceOccurrenceUniverse authority, IFrozenInferenceTransport frozen, PdfLaneExecutionLease lease, CancellationToken ct)
+    private static async Task<StructuralAuthorityResult> RunCoreAsync(SourceOccurrenceUniverse authority, PdfSourceOccurrenceDetails pdfDetails, IFrozenInferenceTransport frozen, PdfLaneExecutionLease lease, CancellationToken ct)
     {
         var leaseBound = new LeaseBoundFrozenHeaderClassifier(frozen, lease);
         var atoms = authority.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
         var decisions = new List<HeadingExtentDecision>();
         var raw = new List<string>();
-        foreach (var pack in SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom))
+        foreach (var pack in SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, pdfDetails.LayoutBlockByAtom))
         {
             ct.ThrowIfCancellationRequested();
             if (!lease.IsActive) throw new PdfExecutionLeaseLostException();
@@ -139,8 +143,8 @@ internal static class HeadingAuthorityPipeline
         var bound = decisions.Select(decision => ToBound(decision, atoms)).ToArray();
         var placed = await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(bound, leaseBound, ct).ConfigureAwait(false);
         var hierarchy = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(placed);
-        var structures = hierarchy.ToDictionary(item => item.SourceId, item => new ResolvedHeadingPlacement(item.SourceId, item.Level, item.ParentSourceId, item.Resolution, "requires_review") { StructuralScope = authority.Contexts[item.SourceId].Source.StructuralScope }, StringComparer.Ordinal);
-        var occurrences = authority.Contexts.ToDictionary(pair => pair.Key, pair => new CanonicalSourceOccurrence(
+        var structures = hierarchy.ToDictionary(item => item.SourceId, item => new ResolvedHeadingPlacement(item.SourceId, item.Level, item.ParentSourceId, item.Resolution, "requires_review") { StructuralScope = pdfDetails.Contexts[item.SourceId].Source.StructuralScope }, StringComparer.Ordinal);
+        var occurrences = pdfDetails.Contexts.ToDictionary(pair => pair.Key, pair => new CanonicalSourceOccurrence(
             pair.Key,
             authority.OrdinalBySourceId.GetValueOrDefault(pair.Key),
             pair.Value.Source.RawText,
@@ -148,13 +152,13 @@ internal static class HeadingAuthorityPipeline
             "pdf",
             "pdf-source-pointer-span"), StringComparer.Ordinal);
         var structure = CanonicalStructureMaterializer.Materialize(validated, structures, occurrences, "pdf", StructuralDecisionOrigin.Model, structures.Keys.ToHashSet(StringComparer.Ordinal));
-        var sourceBlocks = authority.Blocks.Select(block => new RouteBlockAudit(block.Id, block.Page, block.DisplayText)).ToArray();
+        var sourceBlocks = pdfDetails.Blocks.Select(block => new RouteBlockAudit(block.Id, block.Page, block.DisplayText)).ToArray();
         var audit = CanonicalRouteAuditBoundary.Create(
             AuthorityId,
-            authority.Blocks.Count,
-            authority.Blocks.Count,
-            authority.Blocks.Select(block => block.Page).Distinct().Count(),
-            authority.Blocks.Select(block => block.Page).Distinct().Count(),
+            pdfDetails.Blocks.Count,
+            pdfDetails.Blocks.Count,
+            pdfDetails.Blocks.Select(block => block.Page).Distinct().Count(),
+            pdfDetails.Blocks.Select(block => block.Page).Distinct().Count(),
             sourceBlocks,
             sourceBlocks,
             decisions.Select(decision => new RouteBlockDecisionAudit(decision.Id, decision.SemanticFunction)).ToArray(),
@@ -163,7 +167,7 @@ internal static class HeadingAuthorityPipeline
             RawAnalystResponses = raw,
             ModelInputContracts = ["v5-total-occurrence-function-f1", "v5-function-conditioned-anchor-existence-1", "v5-function-conditioned-exact-end-pointer-clean-paired-1"],
             ValidatedStructures = structures.Values.ToArray(),
-            HierarchyFacts = PdfHierarchyFactsInventory.Inspect(validated, authority.Contexts),
+            HierarchyFacts = PdfHierarchyFactsInventory.Inspect(validated, pdfDetails.Contexts),
             SemanticLane = new RouteLaneExecutionAudit("complete", authority.Atoms.Count, decisions.Count, 0, 0),
             SpanLane = new RouteLaneExecutionAudit("exact-end-pointer", decisions.Count, validated.Count, 0, decisions.Count - validated.Count),
         };

@@ -1,28 +1,8 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
-
-/// <summary>
-/// Format-neutral source facts consumed by heading authority. Format adapters retain their parser
-/// facts privately and project only these immutable, source-derived values into the semantic seam.
-/// </summary>
-internal sealed record HeadingSourceContext(
-    string SourceId,
-    string RawText,
-    string StructuralScope,
-    IReadOnlyList<string> EvidenceOrigins,
-    IReadOnlyList<string> PreviousOccurrences,
-    IReadOnlyList<string> NextOccurrences);
-
-/// <summary>Small common source occurrence identity. It deliberately has no PDF geometry.</summary>
-internal sealed record SourceOccurrence(
-    string Id,
-    string Alias,
-    int Ordinal,
-    string Text,
-    string SourceKind,
-    string? StyleId = null);
 
 /// <summary>One exact heading extent selected by an authority implementation.</summary>
 internal sealed record HeadingExtentDecision(

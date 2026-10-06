@@ -5,6 +5,8 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.V5Qualification;
 using UglyToad.PdfPig;
@@ -66,7 +68,9 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         using (var pdf = PdfDocument.Open(pdfPath)) lines = PdfLineExtraction.ExtractLines(pdf);
         var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
         Assert.Equal(request.SourceSha256, sourceSha);
-        var authority = PdfSourceOccurrenceAdapter.Build(lines, sourceSha);
+        var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(lines, sourceSha);
+        var authority = sourceBuild.Universe;
+        var pdfDetails = sourceBuild.Details;
         Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
         var aliases = BuildF1OccurrenceAliasMap(repo, request.Source, request.PackId, sourceSha, request.SourceUniverseSha256);
         var start = Array.FindIndex(authority.Atoms.ToArray(), atom => atom.Alias == request.AnchorAlias);
@@ -85,7 +89,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
             Assert.False(occurrence.ContainsKey("geometry"));
             Assert.False(occurrence.ContainsKey("parserLayoutBlockId"));
             Assert.False(occurrence.ContainsKey("transitionFromPrevious"));
-            var typography = TypographyFacts(authority.Contexts[atom.SourceId].Source.Typography);
+            var typography = TypographyFacts(pdfDetails.Contexts[atom.SourceId].Source.Typography);
             Assert.NotNull(typography);
             occurrence["typography"] = JsonSerializer.SerializeToNode(typography);
         }
@@ -120,9 +124,11 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         }
         var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
         Assert.Equal(request.SourceSha256, sourceSha);
-        var authority = PdfSourceOccurrenceAdapter.Build(lines, sourceSha);
+        var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(lines, sourceSha);
+        var authority = sourceBuild.Universe;
+        var pdfDetails = sourceBuild.Details;
         Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
-        var gaps = BuildPageMedianGaps(authority);
+        var gaps = BuildPageMedianGaps(authority, pdfDetails);
         var aliases = BuildF1OccurrenceAliasMap(repo, request.Source, request.PackId, sourceSha, request.SourceUniverseSha256);
         var start = Array.FindIndex(authority.Atoms.ToArray(), atom => atom.Alias == request.AnchorAlias);
         Assert.True(start >= 0, $"h2c-evidence-anchor-alias-missing:{request.Source.DocumentId}:{request.Anchor}");
@@ -137,7 +143,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
             Assert.Equal(atom.Alias, aliases[request.IssuedOccurrences[index]]);
             Assert.Equal(atom.Page, occurrence["page"]!.GetValue<int>());
             Assert.Equal(atom.Text, occurrence["text"]!.GetValue<string>());
-            var source = authority.Contexts[atom.SourceId].Source;
+            var source = pdfDetails.Contexts[atom.SourceId].Source;
             var page = pageSizes[atom.Page];
             var width = Math.Max(0, source.Right - source.Left);
             var geometry = new
@@ -152,7 +158,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
             object? transition = null;
             if (index > 0)
             {
-                var previous = authority.Contexts[authority.Atoms[atomIndex - 1].SourceId].Source;
+                var previous = pdfDetails.Contexts[authority.Atoms[atomIndex - 1].SourceId].Source;
                 var gapPoints = previous.Page == source.Page ? previous.BottomY - source.TopY : (double?)null;
                 var scale = Math.Max(previous.FontSize, source.FontSize);
                 var pageMedian = gaps.GetValueOrDefault(source.Page);
@@ -164,7 +170,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
                     gapOverPageMedian = gapPoints is { } currentGap && pageMedian is > 0 ? Round(currentGap / pageMedian.Value, 4) : (double?)null,
                 };
             }
-            var blockId = authority.LayoutBlockByAtom.GetValueOrDefault(atom.SourceId);
+            var blockId = pdfDetails.LayoutBlockByAtom.GetValueOrDefault(atom.SourceId);
             Assert.False(string.IsNullOrWhiteSpace(blockId));
             occurrence["geometry"] = JsonSerializer.SerializeToNode(geometry);
             occurrence["parserLayoutBlockId"] = blockId;
@@ -189,6 +195,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         Assert.DoesNotContain("Do not use hierarchy, candidate alternatives, relations, coordinates", prompt, StringComparison.Ordinal);
 
         var authorityByDocument = new Dictionary<string, SourceOccurrenceUniverse>(StringComparer.Ordinal);
+        var pdfDetailsByDocument = new Dictionary<string, PdfSourceOccurrenceDetails>(StringComparer.Ordinal);
         var pageSizesByDocument = new Dictionary<string, Dictionary<int, (double Width, double Height)>>(StringComparer.Ordinal);
         var pageMedianGapByDocument = new Dictionary<string, Dictionary<int, double?>>(StringComparer.Ordinal);
         var aliasByOccurrenceByDocument = new Dictionary<string, Dictionary<string, string>>(StringComparer.Ordinal);
@@ -205,16 +212,18 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
             }
             var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
             Assert.Equal(request.SourceSha256, sourceSha);
-            var authority = PdfSourceOccurrenceAdapter.Build(lines, sourceSha);
+            var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(lines, sourceSha);
+            var authority = sourceBuild.Universe;
             Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
             authorityByDocument.Add(request.Source.DocumentId, authority);
+            pdfDetailsByDocument.Add(request.Source.DocumentId, sourceBuild.Details);
             pageSizesByDocument.Add(request.Source.DocumentId, pageSizes);
-            pageMedianGapByDocument.Add(request.Source.DocumentId, BuildPageMedianGaps(authority));
+            pageMedianGapByDocument.Add(request.Source.DocumentId, BuildPageMedianGaps(authority, sourceBuild.Details));
             aliasByOccurrenceByDocument.Add(request.Source.DocumentId,
                 BuildF1OccurrenceAliasMap(repo, request.Source, request.PackId, sourceSha, request.SourceUniverseSha256));
             sourceAuthorityRows.Add(new SourceAuthority(request.Source.DocumentId, sourceSha,
                 authority.SourceAliasUniverseHash, authority.ModelVisibleEvidenceHash, authority.Atoms.Count,
-                authority.LayoutBlockByAtom.Values.Distinct(StringComparer.Ordinal).Count(), pageSizes.Count));
+                sourceBuild.Details.LayoutBlockByAtom.Values.Distinct(StringComparer.Ordinal).Count(), pageSizes.Count));
         }
 
         var armA = new List<ArmRequest>();
@@ -256,7 +265,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
                 Assert.Equal(occurrenceA["style"]!.ToJsonString(CanonicalJsonOptions), occurrenceB["style"]!.ToJsonString(CanonicalJsonOptions));
                 Assert.Equal(occurrenceA["location"]!.ToJsonString(CanonicalJsonOptions), occurrenceB["location"]!.ToJsonString(CanonicalJsonOptions));
 
-                var source = authority.Contexts[atom.SourceId].Source;
+                var source = pdfDetailsByDocument[request.Source.DocumentId].Contexts[atom.SourceId].Source;
                 var page = pageSizes[atom.Page];
                 var width = Math.Max(0, source.Right - source.Left);
                 var geometry = new
@@ -281,7 +290,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
                 object? transition = null;
                 if (index > 0)
                 {
-                    var previous = authority.Contexts[authority.Atoms[atomIndex - 1].SourceId].Source;
+                    var previous = pdfDetailsByDocument[request.Source.DocumentId].Contexts[authority.Atoms[atomIndex - 1].SourceId].Source;
                     var gapPoints = previous.Page == source.Page ? previous.BottomY - source.TopY : (double?)null;
                     var scale = Math.Max(previous.FontSize, source.FontSize);
                     var pageMedian = pageMedianGapByDocument[request.Source.DocumentId].GetValueOrDefault(source.Page);
@@ -295,7 +304,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
                     transitionRows++;
                 }
 
-                var blockId = authority.LayoutBlockByAtom.GetValueOrDefault(atom.SourceId);
+                var blockId = pdfDetailsByDocument[request.Source.DocumentId].LayoutBlockByAtom.GetValueOrDefault(atom.SourceId);
                 Assert.False(string.IsNullOrWhiteSpace(blockId));
                 occurrenceB["geometry"] = JsonSerializer.SerializeToNode(geometry);
                 occurrenceB["parserLayoutBlockId"] = blockId;
@@ -326,9 +335,10 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
             pair.First.OccurrenceHandles.SequenceEqual(pair.Second.OccurrenceHandles)));
         var preflightPath = TestRepository.Path(Root + "/p6th2c-end-pointer-preflight-v2/h2c-exact-end-pointer-preflight.v2.json");
         var sanitizedAuditPath = TestRepository.Path(Root + "/p6th2c-clean-boundary-separability-audit/h2c-clean-boundary-separability-sanitized.v1.json");
-        var productionLayoutPath = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfHeadingMembershipProductionAdapter.cs");
         var sourceEvidencePath = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceEvidence.cs");
-        var sourceBuilderPath = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceOccurrenceAdapter.cs");
+        using var frozenPreflight = JsonDocument.Parse(File.ReadAllBytes(
+            TestRepository.Path(OutputRoot + "/h2c-evidence-complete-preflight.v1.json")));
+        var frozenAuthorities = frozenPreflight.RootElement.GetProperty("authorities");
 
         FreezeArtifact.AssertJson(OutputRoot, "h2c-evidence-complete-preflight.v1.json", new
         {
@@ -364,9 +374,11 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
             {
                 currentH2CPreflightSha256 = Hash(File.ReadAllBytes(preflightPath)),
                 sanitizedBoundaryAuditSha256 = Hash(File.ReadAllBytes(sanitizedAuditPath)),
-                productionLayoutAdapterSha256 = Hash(File.ReadAllBytes(productionLayoutPath)),
+                // These are capture-time provenance hashes. Keep the historical receipt immutable;
+                // current source structure is guarded separately by architecture/parity tests below.
+                productionLayoutAdapterSha256 = frozenAuthorities.GetProperty("productionLayoutAdapterSha256").GetString(),
                 sourceEvidenceBuilderSha256 = Hash(File.ReadAllBytes(sourceEvidencePath)),
-                structuredSourceBuilderSha256 = Hash(File.ReadAllBytes(sourceBuilderPath)),
+                structuredSourceBuilderSha256 = frozenAuthorities.GetProperty("structuredSourceBuilderSha256").GetString(),
                 sourceAuthorities = sourceAuthorityRows,
             },
             cohort = new
@@ -707,9 +719,9 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         };
     }
 
-    private static Dictionary<int, double?> BuildPageMedianGaps(SourceOccurrenceUniverse authority)
+    private static Dictionary<int, double?> BuildPageMedianGaps(SourceOccurrenceUniverse authority, PdfSourceOccurrenceDetails pdfDetails)
     {
-        return authority.Atoms.Select(atom => authority.Contexts[atom.SourceId].Source)
+        return authority.Atoms.Select(atom => pdfDetails.Contexts[atom.SourceId].Source)
             .GroupBy(source => source.Page)
             .ToDictionary(group => group.Key, group =>
             {

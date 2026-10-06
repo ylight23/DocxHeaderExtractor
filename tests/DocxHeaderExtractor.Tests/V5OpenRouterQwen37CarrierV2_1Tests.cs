@@ -253,13 +253,14 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
 
     private static IReadOnlyList<(string PackId, V5EvidencePacketV2_1 Packet)> RealPacketsFor(string documentId, string pdfPath)
     {
-        var authority = PdfSourceOccurrenceAdapter.Build(pdfPath);
+        var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(pdfPath);
+        var authority = sourceBuild.Universe;
         var graph = EvidenceGraphBuilder.Build(authority.Atoms.Select(atom => new SourceObservation(
             $"V5:{atom.SourceId}", atom.SourceId, atom.Alias, atom.Ordinal, EvidenceModality.TEXT, atom.Text,
             new StructuralSpan(0, atom.Text.Length), new EvidenceGeometry(atom.Page),
             new Dictionary<string, string?> { ["sourceType"] = "PDF", ["documentId"] = documentId })));
         var byAlias = graph.Nodes.ToDictionary(node => node.SourceAlias, StringComparer.Ordinal);
-        var packs = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom);
+        var packs = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, sourceBuild.Details.LayoutBlockByAtom);
         return packs.Select(pack =>
         {
             var ownedAliases = pack.Owned.Select(item => item.SourceAlias).ToHashSet(StringComparer.Ordinal);

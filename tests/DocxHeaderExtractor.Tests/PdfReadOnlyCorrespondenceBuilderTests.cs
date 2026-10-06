@@ -59,9 +59,10 @@ public sealed class PdfReadOnlyCorrespondenceBuilderTests
         int packs = 0, aliases = 0, correspondences = 0;
         foreach (var pdf in P05Cohort)
         {
-            var authority = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(pdf));
+            var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(TestRepository.Path(pdf));
+            var authority = sourceBuild.Universe;
             var atoms = authority.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
-            foreach (var pack in SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom))
+            foreach (var pack in SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, sourceBuild.Details.LayoutBlockByAtom))
             {
                 var ownedAliases = pack.Owned.Select(item => item.SourceAlias).ToArray();
                 var owned = ownedAliases.Select(alias => atoms[alias]).ToArray();
