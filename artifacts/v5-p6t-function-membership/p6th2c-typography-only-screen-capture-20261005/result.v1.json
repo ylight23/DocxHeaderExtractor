@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "v5-p6th2c-typography-only-screen-result-v1",
+  "status": "COMPLETE_RAW_CAPTURE_ALL_FOUR_CONTRACT_VALID_GOLD_CLOSED",
+  "providerCallsAttempted": 4,
+  "authorizedPrimaryCalls": 4,
+  "retry": 0,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false,
+  "runtimeChanged": false,
+  "rows": [
+    {
+      "callOrdinal": 1,
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O17",
+      "finishReason": "stop",
+      "retryCount": 0,
+      "contractStatus": "VALID",
+      "rawSseSha256": "c6c9824418b4aacb3985389caf6b6b21ad4a1ddb06da55eaf5363d139eefe34b",
+      "rawResponseSha256": "4f7015797fc24941b76a24d018f98bbd83677346fd6ce3aeecfb8194d8d3c840",
+      "transportError": null
+    },
+    {
+      "callOrdinal": 2,
+      "DocumentId": "SRC-089",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O19",
+      "finishReason": "stop",
+      "retryCount": 0,
+      "contractStatus": "VALID",
+      "rawSseSha256": "8a139b9754521c6ec089f34405120cfc31bc8f90466426a92c4b6dea7c6744fd",
+      "rawResponseSha256": "c3cd4ead7a80b684e524ffe982ebd0edce21cd77cab740897410aaa52127d21b",
+      "transportError": null
+    },
+    {
+      "callOrdinal": 3,
+      "DocumentId": "SRC-041",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_060",
+      "Anchor": "O4",
+      "finishReason": "stop",
+      "retryCount": 0,
+      "contractStatus": "VALID",
+      "rawSseSha256": "b0bcd5be51d6d56ccf118bec92056bcdf804ad793b30296df9f80c265ce5e6fa",
+      "rawResponseSha256": "d38af1789e55f3588b68c7dfe5011b3cb5bd2a58ee56d95280abe07b3fadec99",
+      "transportError": null
+    },
+    {
+      "callOrdinal": 4,
+      "DocumentId": "DOC-0256",
+      "PackId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "Anchor": "O1",
+      "finishReason": "stop",
+      "retryCount": 0,
+      "contractStatus": "VALID",
+      "rawSseSha256": "fe79efca666de7689ed7e03908086d8943d6ddccb1d9065efe9b869858d87ac3",
+      "rawResponseSha256": "f73accb5a32aedcd3826ab881ac4e720d590096474d16be784a533377cc42ba8",
+      "transportError": null
+    }
+  ]
+}

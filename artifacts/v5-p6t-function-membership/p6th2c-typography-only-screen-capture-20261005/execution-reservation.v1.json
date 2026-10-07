@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "v5-p6th2c-typography-only-screen-execution-reservation-v1",
+  "status": "AUTHORIZED_FOUR_PRIMARY_CALLS_RESERVED_RAW_CAPTURE_IN_PROGRESS_GOLD_CLOSED",
+  "preflightCommit": "148a3de",
+  "preflightSha256": "795c2d1a2c60a9ec12fbf58895bcf3c5ff4a09f51188a1cda964a4a70ceeeb79",
+  "executionManifestSha256": "d988b2ec9df9dbaf1cad50b9d4be2165e8102e216aa0023c37ed9c28bb3174b2",
+  "authorizedPrimaryCalls": 4,
+  "providerCallsAlreadySent": 0,
+  "retry": 0,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false,
+  "runtimeChanged": false,
+  "reentryPolicy": "ANY_EXISTING_CAPTURE_DIRECTORY_STOPS_BEFORE_NETWORK"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "v5-p6th2c-evidence-paired-execution-reservation-v1",
+  "status": "AUTHORIZED_EXECUTION_RESERVED_RAW_CAPTURE_IN_PROGRESS_GOLD_CLOSED",
+  "executionManifestSha256": "74ebae1f4bbc841c24a010be764262eeec7ae14b9504b35a96ecb740cdb869c7",
+  "authorizedCalls": 62,
+  "providerCallsAlreadySent": 0,
+  "retry": 0,
+  "repair": false,
+  "fallback": false,
+  "goldRead": false,
+  "runtimeChanged": false,
+  "reentryPolicy": "ANY_EXISTING_CAPTURE_DIRECTORY_STOPS_BEFORE_NETWORK"
+}
