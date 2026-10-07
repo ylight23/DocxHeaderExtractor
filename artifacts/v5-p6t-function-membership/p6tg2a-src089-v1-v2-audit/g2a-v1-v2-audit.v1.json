@@ -1,0 +1,482 @@
+{
+ "schemaVersion": "v5-p6tg2a-src089-v1-v2-audit-v1",
+ "providerCalls": 0,
+ "modelCalls": 0,
+ "goldMutation": "NONE",
+ "goldReadAfterRawCaptureFreeze": true,
+ "status": "G2A_V2_QUALITY_FAILED_NOT_PROMOTABLE",
+ "rawEvidence": {
+  "v2": "8828480 (immutable)",
+  "v1Canary": "artifacts/v5-p6t-function-membership/p6tg2a-anchor-existence-canary-20261004/SRC-089.raw-capture.v1.json",
+  "v1Population": "artifacts/v5-p6t-function-membership/p6tg2a-full-pack-population-canary-20261005/SRC-089.raw-capture.v1.json"
+ },
+ "requestRecomposition": {
+  "v2_message_recomposed_byte_for_byte": true,
+  "v1_message_sha256_matches_recorded_semanticRequestHash": true,
+  "v1_recorded_semanticRequestHash": "f2e42c3ad76539c78b38c0ac2487a1e6b3c51b1b34eca6d30050438875c733f2",
+  "v1_recomposed_sha256": "f2e42c3ad76539c78b38c0ac2487a1e6b3c51b1b34eca6d30050438875c733f2"
+ },
+ "f1": {
+  "v1EstablishesCount": 15,
+  "v2EstablishesCount": 14,
+  "onlyV1": [
+   "O6"
+  ],
+  "onlyV2": []
+ },
+ "goldStartPrimariesAmongPack001": {
+  "v1": [
+   "O17",
+   "O19",
+   "O27",
+   "O54",
+   "O83",
+   "O9"
+  ],
+  "v2": [
+   "O17",
+   "O19",
+   "O27",
+   "O54",
+   "O83",
+   "O9"
+  ]
+ },
+ "scores": {
+  "v1_canary_20261004": {
+   "TP": 6,
+   "FP": 0,
+   "FN": 0,
+   "TN": 9,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "accuracy": 1.0
+  },
+  "v1_population_20261005": {
+   "TP": 6,
+   "FP": 1,
+   "FN": 0,
+   "TN": 8,
+   "precision": 0.8571,
+   "recall": 1.0,
+   "f1": 0.9231,
+   "accuracy": 0.9333
+  },
+  "v2_8828480": {
+   "TP": 6,
+   "FP": 6,
+   "FN": 0,
+   "TN": 2,
+   "precision": 0.5,
+   "recall": 1.0,
+   "f1": 0.6667,
+   "accuracy": 0.5714
+  }
+ },
+ "v2FalsePositiveHasAnchors": [
+  "O10",
+  "O11",
+  "O18",
+  "O28",
+  "O55",
+  "O84"
+ ],
+ "requestEntriesIdenticalForFalsePositives": {
+  "O10": true,
+  "O11": false,
+  "O18": false,
+  "O28": false,
+  "O55": false,
+  "O84": false
+ },
+ "requestEntriesChangedOverall": 9,
+ "requestEntriesIssuedBoth": 14,
+ "requestEntriesChangedOnlyByWhitespace": 9,
+ "sameV1RequestTwoRuns": {
+  "requestSha256": "6ea4051e8bffa3cfcf8fcf388b1f37c978c3023e90f07b149c6621f13a2b8631",
+  "canaryRequestSha256": "6ea4051e8bffa3cfcf8fcf388b1f37c978c3023e90f07b149c6621f13a2b8631",
+  "identicalRequest": true,
+  "runsDifferOn": [
+   "O18"
+  ]
+ },
+ "tokens": {
+  "v1CanaryPrompt": 1623,
+  "v1PopulationPrompt": 1623,
+  "v2Prompt": 1536
+ },
+ "perPrimary": [
+  {
+   "primary": "O3",
+   "goldStartV1": false,
+   "goldStartV2": false,
+   "v1Canary": "NO_STRUCTURAL_EXTENT",
+   "v1Population": "NO_STRUCTURAL_EXTENT",
+   "v2": "NO_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": true,
+   "differences": [],
+   "differencesAreWhitespaceOnly": null,
+   "v1Entry": {
+    "text": "THE GOVERNMENT",
+    "previous": "For Reference Purposes Only",
+    "next": "THE SOCIALIST REPUBLIC OF VIETNAM"
+   },
+   "v2Entry": {
+    "text": "THE GOVERNMENT",
+    "previous": "For Reference Purposes Only",
+    "next": "THE SOCIALIST REPUBLIC OF VIETNAM"
+   }
+  },
+  {
+   "primary": "O4",
+   "goldStartV1": false,
+   "goldStartV2": false,
+   "v1Canary": "NO_STRUCTURAL_EXTENT",
+   "v1Population": "NO_STRUCTURAL_EXTENT",
+   "v2": "NO_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": true,
+   "differences": [],
+   "differencesAreWhitespaceOnly": null,
+   "v1Entry": {
+    "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+    "previous": "THE GOVERNMENT",
+    "next": "-------"
+   },
+   "v2Entry": {
+    "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+    "previous": "THE GOVERNMENT",
+    "next": "-------"
+   }
+  },
+  {
+   "primary": "O6",
+   "goldStartV1": false,
+   "goldStartV2": false,
+   "v1Canary": "NO_STRUCTURAL_EXTENT",
+   "v1Population": "NO_STRUCTURAL_EXTENT",
+   "v2": null,
+   "issuedV1": true,
+   "issuedV2": false,
+   "requestEntryIdentical": false,
+   "differences": [],
+   "differencesAreWhitespaceOnly": null,
+   "v1Entry": {
+    "text": "Independence – Freedom – Happiness",
+    "previous": "-------",
+    "next": "---------------"
+   },
+   "v2Entry": null
+  },
+  {
+   "primary": "O9",
+   "goldStartV1": true,
+   "goldStartV2": true,
+   "v1Canary": "HAS_STRUCTURAL_EXTENT",
+   "v1Population": "HAS_STRUCTURAL_EXTENT",
+   "v2": "HAS_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": true,
+   "differences": [],
+   "differencesAreWhitespaceOnly": null,
+   "v1Entry": {
+    "text": "DECREE",
+    "previous": "No. 195/2013/ND-CP Hanoi, November 21, 2013",
+    "next": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,"
+   },
+   "v2Entry": {
+    "text": "DECREE",
+    "previous": "No. 195/2013/ND-CP Hanoi, November 21, 2013",
+    "next": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,"
+   }
+  },
+  {
+   "primary": "O10",
+   "goldStartV1": false,
+   "goldStartV2": false,
+   "v1Canary": "NO_STRUCTURAL_EXTENT",
+   "v1Population": "NO_STRUCTURAL_EXTENT",
+   "v2": "HAS_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": true,
+   "differences": [],
+   "differencesAreWhitespaceOnly": null,
+   "v1Entry": {
+    "text": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,",
+    "previous": "DECREE",
+    "next": "THE PUBLICATION LAW (*)"
+   },
+   "v2Entry": {
+    "text": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,",
+    "previous": "DECREE",
+    "next": "THE PUBLICATION LAW (*)"
+   }
+  },
+  {
+   "primary": "O11",
+   "goldStartV1": false,
+   "goldStartV2": false,
+   "v1Canary": "NO_STRUCTURAL_EXTENT",
+   "v1Population": "NO_STRUCTURAL_EXTENT",
+   "v2": "HAS_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": false,
+   "differences": [
+    "next"
+   ],
+   "differencesAreWhitespaceOnly": true,
+   "v1Entry": {
+    "text": "THE PUBLICATION LAW (*)",
+    "previous": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,",
+    "next": "Pursuant to the December 25, 2001 Law on Organization ofthe Government;"
+   },
+   "v2Entry": {
+    "text": "THE PUBLICATION LAW (*)",
+    "previous": "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,",
+    "next": "Pursuant to the December 25, 2001 Law on Organization of the Government;"
+   }
+  },
+  {
+   "primary": "O17",
+   "goldStartV1": true,
+   "goldStartV2": true,
+   "v1Canary": "HAS_STRUCTURAL_EXTENT",
+   "v1Population": "HAS_STRUCTURAL_EXTENT",
+   "v2": "HAS_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": true,
+   "differences": [],
+   "differencesAreWhitespaceOnly": null,
+   "v1Entry": {
+    "text": "Chapter I",
+    "previous": "implementing, the Publication Law.",
+    "next": "GENERAL PROVISIONS"
+   },
+   "v2Entry": {
+    "text": "Chapter I",
+    "previous": "implementing, the Publication Law.",
+    "next": "GENERAL PROVISIONS"
+   }
+  },
+  {
+   "primary": "O18",
+   "goldStartV1": false,
+   "goldStartV2": false,
+   "v1Canary": "NO_STRUCTURAL_EXTENT",
+   "v1Population": "HAS_STRUCTURAL_EXTENT",
+   "v2": "HAS_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": false,
+   "differences": [
+    "next"
+   ],
+   "differencesAreWhitespaceOnly": true,
+   "v1Entry": {
+    "text": "GENERAL PROVISIONS",
+    "previous": "Chapter I",
+    "next": "Article 1. Scope ofregulation and subjects ofapplication"
+   },
+   "v2Entry": {
+    "text": "GENERAL PROVISIONS",
+    "previous": "Chapter I",
+    "next": "Article 1. Scope of regulation and subjects of application"
+   }
+  },
+  {
+   "primary": "O19",
+   "goldStartV1": true,
+   "goldStartV2": true,
+   "v1Canary": "HAS_STRUCTURAL_EXTENT",
+   "v1Population": "HAS_STRUCTURAL_EXTENT",
+   "v2": "HAS_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": false,
+   "differences": [
+    "text",
+    "next"
+   ],
+   "differencesAreWhitespaceOnly": true,
+   "v1Entry": {
+    "text": "Article 1. Scope ofregulation and subjects ofapplication",
+    "previous": "GENERAL PROVISIONS",
+    "next": "1 . This Decree details a number ofarticles of, and measures for implementing, the Publication"
+   },
+   "v2Entry": {
+    "text": "Article 1. Scope of regulation and subjects of application",
+    "previous": "GENERAL PROVISIONS",
+    "next": "1. This Decree details a number of articles of, and measures for implementing, the Publication"
+   }
+  },
+  {
+   "primary": "O27",
+   "goldStartV1": true,
+   "goldStartV2": true,
+   "v1Canary": "HAS_STRUCTURAL_EXTENT",
+   "v1Population": "HAS_STRUCTURAL_EXTENT",
+   "v2": "HAS_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": false,
+   "differences": [
+    "text",
+    "next"
+   ],
+   "differencesAreWhitespaceOnly": true,
+   "v1Entry": {
+    "text": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing",
+    "previous": "publication activities.",
+    "next": "the state management ofpublication activities"
+   },
+   "v2Entry": {
+    "text": "Article 2. Tasks and powers of the Ministry of Information and Communications in performing",
+    "previous": "publication activities.",
+    "next": "the state management of publication activities"
+   }
+  },
+  {
+   "primary": "O28",
+   "goldStartV1": false,
+   "goldStartV2": false,
+   "v1Canary": "NO_STRUCTURAL_EXTENT",
+   "v1Population": "NO_STRUCTURAL_EXTENT",
+   "v2": "HAS_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": false,
+   "differences": [
+    "text",
+    "previous",
+    "next"
+   ],
+   "differencesAreWhitespaceOnly": true,
+   "v1Entry": {
+    "text": "the state management ofpublication activities",
+    "previous": "Article 2. Tasks and powers ofthe Ministry ofInformation and Communications in performing",
+    "next": "1 . To assume the prime responsibility for, and coordinate with others in, formulating and"
+   },
+   "v2Entry": {
+    "text": "the state management of publication activities",
+    "previous": "Article 2. Tasks and powers of the Ministry of Information and Communications in performing",
+    "next": "1. To assume the prime responsibility for, and coordinate with others in, formulating and"
+   }
+  },
+  {
+   "primary": "O54",
+   "goldStartV1": true,
+   "goldStartV2": true,
+   "v1Canary": "HAS_STRUCTURAL_EXTENT",
+   "v1Population": "HAS_STRUCTURAL_EXTENT",
+   "v2": "HAS_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": false,
+   "differences": [
+    "text",
+    "next"
+   ],
+   "differencesAreWhitespaceOnly": true,
+   "v1Entry": {
+    "text": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state",
+    "previous": "publication activities according to its competence.",
+    "next": "management ofpublication activities"
+   },
+   "v2Entry": {
+    "text": "Article 3. Responsibilities of ministries and ministerial-level agencies in performing the state",
+    "previous": "publication activities according to its competence.",
+    "next": "management of publication activities"
+   }
+  },
+  {
+   "primary": "O55",
+   "goldStartV1": false,
+   "goldStartV2": false,
+   "v1Canary": "NO_STRUCTURAL_EXTENT",
+   "v1Population": "NO_STRUCTURAL_EXTENT",
+   "v2": "HAS_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": false,
+   "differences": [
+    "text",
+    "previous",
+    "next"
+   ],
+   "differencesAreWhitespaceOnly": true,
+   "v1Entry": {
+    "text": "management ofpublication activities",
+    "previous": "Article 3. Responsibilities ofministries and ministerial-level agencies in performing the state",
+    "next": "1 . The Ministry ofPublic Security shall assume the prime responsibility for, and coordinate with"
+   },
+   "v2Entry": {
+    "text": "management of publication activities",
+    "previous": "Article 3. Responsibilities of ministries and ministerial-level agencies in performing the state",
+    "next": "1. The Ministry of Public Security shall assume the prime responsibility for, and coordinate with"
+   }
+  },
+  {
+   "primary": "O83",
+   "goldStartV1": true,
+   "goldStartV2": true,
+   "v1Canary": "HAS_STRUCTURAL_EXTENT",
+   "v1Population": "HAS_STRUCTURAL_EXTENT",
+   "v2": "HAS_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": false,
+   "differences": [
+    "text",
+    "previous",
+    "next"
+   ],
+   "differencesAreWhitespaceOnly": true,
+   "v1Entry": {
+    "text": "Article 4. Tasks and powers ofprovincial-level People’s Committees in performing the state",
+    "previous": "management ofpublication activities.",
+    "next": "management ofpublication activities"
+   },
+   "v2Entry": {
+    "text": "Article 4. Tasks and powers of provincial-level People’s Committees in performing the state",
+    "previous": "management of publication activities.",
+    "next": "management of publication activities"
+   }
+  },
+  {
+   "primary": "O84",
+   "goldStartV1": false,
+   "goldStartV2": false,
+   "v1Canary": "NO_STRUCTURAL_EXTENT",
+   "v1Population": "NO_STRUCTURAL_EXTENT",
+   "v2": "HAS_STRUCTURAL_EXTENT",
+   "issuedV1": true,
+   "issuedV2": true,
+   "requestEntryIdentical": false,
+   "differences": [
+    "text",
+    "previous",
+    "next"
+   ],
+   "differencesAreWhitespaceOnly": true,
+   "v1Entry": {
+    "text": "management ofpublication activities",
+    "previous": "Article 4. Tasks and powers ofprovincial-level People’s Committees in performing the state",
+    "next": "1 . To promulgate according to their competence master plans and plans on development of"
+   },
+   "v2Entry": {
+    "text": "management of publication activities",
+    "previous": "Article 4. Tasks and powers of provincial-level People’s Committees in performing the state",
+    "next": "1. To promulgate according to their competence master plans and plans on development of"
+   }
+  }
+ ],
+ "note": "Which part of the V2 change comes from the source delta and which from inference nondeterminism is not separated by this audit."
+}
