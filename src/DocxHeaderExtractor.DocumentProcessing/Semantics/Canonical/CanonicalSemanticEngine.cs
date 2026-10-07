@@ -7,14 +7,9 @@ using DocxHeaderExtractor.DocumentProcessing.Inference;
 namespace DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 
 /// <summary>
-/// The semantic stage, shared by every source format.
-/// <para>
-/// Nothing here knows whether the occurrences came from OOXML paragraphs or PDF text blocks. That
-/// is the point: the prompt, the segmentation, the contract, the binder, the hierarchy resolver and
-/// the placement pass must be identical across formats, or the two lanes will quietly disagree
-/// about level derivation and parent wiring and the difference will surface only as an
-/// unexplainable metric gap between a DOCX and its own PDF.
-/// </para>
+/// Canonical text inference used by the DOCX authority, plus the shared placement prompt.
+/// Source aliases and observable facts are supplied by the caller. PDF heading discovery uses
+/// the separate qualified function/anchor/end-pointer authority, not this discovery model.
 /// </summary>
 internal static class CanonicalSemanticEngine
 {

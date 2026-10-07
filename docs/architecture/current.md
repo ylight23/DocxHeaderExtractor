@@ -162,13 +162,12 @@ project dependencies in Core; frozen wire and replay parity are tested separatel
 The retired extraction/slim/converter classes are not current production routes. Input conversion,
 where requested, happens at the source preparation boundary before normalized OOXML extraction.
 
-The repeatable mechanical audits are `scripts/architecture-phase1-audit.ps1` and
-`scripts/source-tree-hygiene-gate.ps1`. The Phase-1 mechanical audit passes project presence,
-central package versions, the Core project-reference boundary, heading-provider isolation, the
-explicit CLI Eval bridge, and host source/semantic composition checks. The source-tree gate adds
-ownership, namespace, folder, Eval isolation, legacy-route, and duplicate-harness checks. The
-historical publication gates must not be presented as evidence for a newer commit. Verification
-results belong to the exact tested revision and the ownership closure audit, not to stale branch status.
+The current mechanical checks are the architecture/layout tests in
+`tests/DocxHeaderExtractor.Tests` and `.github/workflows/deterministic.yml`, with
+`scripts/Invoke-A99TestTier.ps1` selecting deterministic tiers. Historical architecture audit scripts
+are not current repository entrypoints. Historical publication gates must not be presented as
+evidence for a newer commit. Verification results belong to the exact tested revision and the
+ownership closure audit, not to stale branch status.
 
 ## Phase control
 

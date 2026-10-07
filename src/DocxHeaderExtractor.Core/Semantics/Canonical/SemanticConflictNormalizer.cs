@@ -78,8 +78,8 @@ public static class SemanticConflictNormalizer
         {
             AttributeConflicts = attributeConflicts,
             // A consensus with null contested attributes is not a semantic winner. It is
-            // therefore never passed to the binder by default. The production control plane
-            // may append the original frozen alternative selected by adjudication.
+            // therefore never passed to the binder by default. A caller may separately adjudicate
+            // frozen alternatives; this normalizer never selects a semantic winner.
             BindingReadyProposals = normalized
                 .OrderBy(item => SourceOrder(item, byAlias))
                 .ThenBy(item => PhysicalIdentity(item, byAlias), StringComparer.Ordinal)
