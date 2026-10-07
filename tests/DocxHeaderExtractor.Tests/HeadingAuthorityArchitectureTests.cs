@@ -64,6 +64,33 @@ public sealed class HeadingAuthorityArchitectureTests
     }
 
     [Fact]
+    public void Pipeline_folder_holds_orchestration_only_and_each_stage_lives_in_its_own_folder()
+    {
+        var root = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing");
+        var layout = new (string Folder, string[] Files)[]
+        {
+            ("Source/Docx", ["DocxSourceAdapter"]),
+            ("Source/Pdf", ["PdfSourceAdapter", "PdfSourceBuildResult", "PdfLineExtraction", "PdfLineIdentity", "PdfLineObservationAnalyzer",
+                "PdfSegmentAtomCatalog", "PdfSemanticBlockGrouper", "PdfSemanticContracts", "PdfSourceEvidence", "PdfSourceTextProjection",
+                "PdfStyleClusterProfile", "PdfVisualLineSegmentation", "PdfReadOnlyCorrespondenceBuilder"]),
+            ("Source/Common", ["DocumentOccurrence", "DocumentSourceSnapshot", "OccurrenceContext"]),
+            ("Semantics/HeadingAuthority", ["TextSemanticHeadingAuthority", "FunctionAnchorExtentHeadingAuthority", "HeadingDecisionBinder"]),
+            ("Semantics/Canonical", ["CanonicalSemanticEngine", "CanonicalSemanticExperiment", "CanonicalGrounding", "SemanticConflictCensus",
+                "SemanticEvidencePackingPolicy", "SemanticRequestVersion"]),
+            ("Materialization", ["HeadingParentResolver", "HeadingHierarchyResolver", "HeadingStructureMaterializer", "HeadingStructureAssembler"]),
+            ("Projection", ["CanonicalFinalStructureProjection", "DocumentProductOutputProjector", "HeadingOutlineProjection",
+                "SectionChunkProjection", "StructuralSectionProjection"]),
+            ("Inference", ["IFrozenInferenceRequestComposer", "PdfInferenceWireContract"]),
+        };
+        foreach (var (folder, files) in layout)
+            foreach (var file in files)
+            {
+                Assert.True(File.Exists(Path.Combine(root, folder.Replace('/', Path.DirectorySeparatorChar), file + ".cs")), $"{folder}/{file}.cs");
+                Assert.False(File.Exists(Path.Combine(root, "Pipeline", file + ".cs")), $"Pipeline/{file}.cs should have moved");
+            }
+    }
+
+    [Fact]
     public void Materializer_does_not_choose_a_document_format()
     {
         var source = File.ReadAllText(TestRepository.Path(

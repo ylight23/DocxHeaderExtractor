@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 

@@ -1,7 +1,8 @@
 using System.Text.Json;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Core.Models;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 
 /// <summary>
 /// One deterministic request partition produced before semantic inference. Packing is an

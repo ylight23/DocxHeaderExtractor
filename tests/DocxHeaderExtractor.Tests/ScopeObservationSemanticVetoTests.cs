@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 using Xunit;
 

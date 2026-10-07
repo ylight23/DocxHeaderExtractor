@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using System.Text;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Inference;

@@ -1,4 +1,5 @@
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 
 /// <summary>
 /// The model-visible request a lane sends. The experiment arms that used to live here - structural

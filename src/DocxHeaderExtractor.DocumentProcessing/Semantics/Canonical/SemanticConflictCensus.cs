@@ -1,7 +1,8 @@
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Core.Models;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 
 /// <summary>What the competing proposals actually disagreed about.</summary>
 public static class SemanticConflictKind

@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
@@ -49,8 +50,8 @@ public sealed record RouteExecutionAudit(
     /// an adjudication model" is answered from counted conflict, not assumed conflict.
     /// </summary>
     [JsonPropertyName("conflictCensus")]
-    public Pipeline.SemanticConflictCensus ConflictCensus { get; init; } =
-        Pipeline.SemanticConflictCensus.Empty;
+    public Semantics.Canonical.SemanticConflictCensus ConflictCensus { get; init; } =
+        Semantics.Canonical.SemanticConflictCensus.Empty;
 
     /// <summary>Independent semantic execution outcome. A timeout is partial work, not provider unavailability.</summary>
     [JsonPropertyName("semanticLane")]

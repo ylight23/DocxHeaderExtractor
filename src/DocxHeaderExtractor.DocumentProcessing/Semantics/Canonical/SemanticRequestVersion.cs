@@ -1,4 +1,5 @@
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 
 /// <summary>
 /// Which model-visible semantic request a run sends: its system prompt and the shape of its evidence.

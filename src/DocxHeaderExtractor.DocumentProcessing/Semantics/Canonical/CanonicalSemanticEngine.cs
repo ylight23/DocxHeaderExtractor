@@ -1,9 +1,10 @@
 using System.Text.Json;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 
 /// <summary>
 /// The semantic stage, shared by every source format.

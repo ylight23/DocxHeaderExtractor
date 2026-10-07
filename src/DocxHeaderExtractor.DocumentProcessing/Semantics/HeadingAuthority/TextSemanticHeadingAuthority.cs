@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;

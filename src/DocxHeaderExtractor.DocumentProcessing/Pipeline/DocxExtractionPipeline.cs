@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
