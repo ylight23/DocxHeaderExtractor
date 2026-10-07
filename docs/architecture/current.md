@@ -1,13 +1,12 @@
 # Current architecture contract
 
-Status: `ACTIVE — N15–N17 SOURCE CLEANUP CLOSURE`
+Status: `ACTIVE — SOURCE CLEANUP AND CORE OWNERSHIP CLOSURE`
 
-Baseline: `main@5678b454dc28c8bab811c5ce35a789d540fa82be`
+Source-cleanup baseline: `main@a2fece331b05c9a59e3e998207be2b2596c3e745`.
+The subsequent Core ownership changes are described below; this is a current contract, not a frozen qualification artifact.
 
-The Phase-2 source-tree hygiene work is being developed on
-`verification/auto-harness-phase2` in `C:\DocxHeaderExtractor-auto-harness-phase2`. The
-Accuracy-99 branch is not a source of architecture changes and is not modified by this
-workstream.
+The source-tree hygiene changes are integrated into `main`. Historical Phase-1/Phase-2 branch
+reports remain historical evidence, not the current ownership or publication status.
 
 ## Current host routes
 
@@ -86,7 +85,7 @@ qualification/history subsystems retain their distinct live responsibilities.
 
 | Project | Current role | Current references |
 |---|---|---|
-| `Core` | pure source/structure contracts and authority value objects/validators | no project or parser/render/provider package references |
+| `Core` | source/structure contracts, authority value objects, validators/binders and pure deterministic domain algorithms | no project or parser/render/provider package references |
 | `Application` | provider-independent intent, plan compiler, policy, projection, task/resource, capability, semantic-registry and runtime contracts | `Core` |
 | `DocumentProcessing` | DOCX/PDF source adapters, authority pipeline implementations, bounded review/repair compatibility | `Application`, `Core`; owns OpenXML/PdfPig/PDFtoImage |
 | `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Application`, `DocumentProcessing`, `Core` |
@@ -99,10 +98,10 @@ qualification/history subsystems retain their distinct live responsibilities.
 `Application`, `DocumentProcessing`, and `Infrastructure` project boundaries now exist. Package
 versions are centrally declared in `Directory.Packages.props` without changing the pinned versions.
 DocumentProcessing now owns source/parser/rendering and authority pipeline implementations; Core
-contains only package-free contracts/value objects/validators. Infrastructure now contains provider
+contains package-free contracts/value objects/validators and pure deterministic domain algorithms. Infrastructure now contains provider
 contracts, heading-provider implementations, prompt/cache
 adapters, fact-provider adapters, LLamaSharp/SGLang VLM adapters, and an allowlisted file resource
-resolver. Core exposes only package-free contracts. Web/MCP wire normal and review paths; CLI evaluation commands use an explicit Eval project boundary and the CLI normal path does not activate Eval. The hosts wire the resolver
+resolver. Core exposes no concrete provider or inference orchestration. Web/MCP wire normal and review paths; CLI evaluation commands use an explicit Eval project boundary and the CLI normal path does not activate Eval. The hosts wire the resolver
 and trusted semantic registry into the common harness; the MCP subprocess worker composes the same
 source boundary plus runtime state adapters. The normal extraction route never activates the Eval
 project. `EvaluationProjectionBridge` was the adapter that carried an outline across that boundary;
@@ -133,20 +132,43 @@ The extension seam is executable-tested in
 definition, allowlisted source, compiled task plan, and provider-neutral transport can compose
 without adding a second authority route or making a provider call.
 
-## Open architecture findings
+## Core semantic and inference ownership
 
-The current reachability audit retains `HeaderExtractionPipeline` only for repair/evaluation
-compatibility, keeps `DocxSlimExtractor` behind source preparation, and retains `LegacyDocConverter`
-only as an explicit input compatibility adapter before the canonical authority pipeline. The normal
-authority pipeline now receives normalized OOXML and has no converter call.
+`Core/Models` owns DTOs, value objects, validators and deterministic source binding contracts.
+Neutral inference input/interface/context and occurrence contracts live in `Core/Models/Inference`.
+The neutral `Core.V5` namespaces are retained for source compatibility; the retired
+`Models/QualifiedInference` folder contains no current files.
+
+`Core/Semantics/Canonical` owns the pure deterministic `CanonicalSemanticPipeline`,
+`SemanticConflictNormalizer`, and `CanonicalSemanticGlobalConflictDetector`. These operate on
+supplied proposals/source aliases, perform no IO or inference, and cannot select a semantic winner.
+Their result/conflict DTOs remain in Core Models. Domain processing is not provider orchestration.
+
+`DocumentProcessing/Semantics/Canonical` owns `CanonicalSemanticTextProductionEntryPoint`,
+`CanonicalSemanticRequestComposer`, and `SemanticContextPacker`. The entrypoint invokes the
+Core `ICanonicalSemanticTextModel` boundary; its input contracts remain Core-owned, so Core has
+no reverse reference to DocumentProcessing. DOCX uses this text path; PDF uses F1 → G2A → H2-C V2.
+
+`Infrastructure/AI/QualifiedInference` owns the frozen provider carrier and its provider envelope/body
+types. Moving them does not change provider payload bytes, prompt wording, token limits, or parser
+semantics. Assembly/namespace relocations require consumers to rebuild/update imports; this cleanup
+does not claim binary compatibility for relocated public implementation types.
+
+The mixed `CanonicalSemanticVnextRuntime.cs` is split into context contracts, runtime packing,
+contract validation and hard-binding validation. No validation/binding logic is deleted.
+`CoreOwnershipArchitectureTests` guards this split and the absence of concrete providers/reverse
+project dependencies in Core; frozen wire and replay parity are tested separately.
+
+The retired extraction/slim/converter classes are not current production routes. Input conversion,
+where requested, happens at the source preparation boundary before normalized OOXML extraction.
 
 The repeatable mechanical audits are `scripts/architecture-phase1-audit.ps1` and
 `scripts/source-tree-hygiene-gate.ps1`. The Phase-1 mechanical audit passes project presence,
 central package versions, the Core project-reference boundary, heading-provider isolation, the
 explicit CLI Eval bridge, and host source/semantic composition checks. The source-tree gate adds
 ownership, namespace, folder, Eval isolation, legacy-route, and duplicate-harness checks. The
-complete Phase-1 publication gate remains intentionally separate: this Phase-2 branch is not
-merged to `main`, so that gate must not be presented as publication evidence here.
+historical publication gates must not be presented as evidence for a newer commit. Verification
+results belong to the exact tested revision and the ownership closure audit, not to stale branch status.
 
 ## Phase control
 

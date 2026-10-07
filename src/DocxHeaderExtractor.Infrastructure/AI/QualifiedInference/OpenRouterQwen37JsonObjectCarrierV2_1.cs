@@ -1,11 +1,25 @@
 using System.Text;
+using System.Security.Cryptography;
+using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Core.V5;
 using System.Text.Json;
 
-namespace DocxHeaderExtractor.Core.V5;
+namespace DocxHeaderExtractor.Infrastructure.AI.QualifiedInference;
 
 /// <summary>The frozen OpenRouter json_object request carrier used by the qualified PDF route.</summary>
 public static class OpenRouterQwen37JsonObjectCarrierV2_1
 {
+    // Frozen carrier options: independent of Core's domain protocol implementation.
+    private static readonly JsonSerializerOptions Json = new()
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+        WriteIndented = false,
+    };
+
+    private static string Sha256(string text) =>
+        Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(text)));
+
     public static V5ProviderRequestBodyV2_1 BuildFromRaw(
         string systemPrompt, string userMessage, int maxCompletionTokens, V5ProviderEnvelope envelope)
     {
@@ -35,8 +49,8 @@ public static class OpenRouterQwen37JsonObjectCarrierV2_1
             stream = envelope.Streaming,
             usage = new { include = envelope.UsageInclude },
         };
-        var bytes = JsonSerializer.SerializeToUtf8Bytes(body, CanonicalJson.Options);
-        return new V5ProviderRequestBodyV2_1(bytes, Hashing.Sha256(Encoding.UTF8.GetString(bytes)), bytes.Length);
+        var bytes = JsonSerializer.SerializeToUtf8Bytes(body, Json);
+        return new V5ProviderRequestBodyV2_1(bytes, Sha256(Encoding.UTF8.GetString(bytes)), bytes.Length);
     }
 
     public static V5ProviderRequestBodyV2_1 BuildFromRawReasoningEnabled(
@@ -68,7 +82,7 @@ public static class OpenRouterQwen37JsonObjectCarrierV2_1
             stream = envelope.Streaming,
             usage = new { include = envelope.UsageInclude },
         };
-        var bytes = JsonSerializer.SerializeToUtf8Bytes(body, CanonicalJson.Options);
-        return new V5ProviderRequestBodyV2_1(bytes, Hashing.Sha256(Encoding.UTF8.GetString(bytes)), bytes.Length);
+        var bytes = JsonSerializer.SerializeToUtf8Bytes(body, Json);
+        return new V5ProviderRequestBodyV2_1(bytes, Sha256(Encoding.UTF8.GetString(bytes)), bytes.Length);
     }
 }

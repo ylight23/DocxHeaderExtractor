@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Semantics.Canonical;
 using System.Security.Cryptography;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;

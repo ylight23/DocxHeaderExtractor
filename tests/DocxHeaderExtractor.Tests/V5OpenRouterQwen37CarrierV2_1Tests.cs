@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Infrastructure.AI.QualifiedInference;
 using System.Text;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using System.Text.Json;
@@ -230,7 +231,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
         // ParseWithClaimQuarantine -> ExactClaimBinderV2_1 pipeline. Proven here structurally: the tool's
         // parameters schema is exactly SemanticClaimContractV2_1's own claim vocabulary (asserted above),
         // and no new decode path exists anywhere in this file - only V5OpenRouterToolAutoProviderRequestBodyV1.Build.
-        var productionCarrier = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Core/Models/QualifiedInference/OpenRouterQwen37JsonObjectCarrierV2_1.cs"));
+        var productionCarrier = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Infrastructure/AI/QualifiedInference/OpenRouterQwen37JsonObjectCarrierV2_1.cs"));
         var qualificationCarriers = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.V5Qualification/LegacyCore/V5OpenRouterQwen37CarrierV2_1.cs"));
         Assert.DoesNotContain("ExactClaimBinderV2_1.Bind(", productionCarrier + qualificationCarriers, StringComparison.Ordinal);
         Assert.DoesNotContain("SemanticClaimResponseCodecV2_1.Parse", productionCarrier + qualificationCarriers, StringComparison.Ordinal);
@@ -241,7 +242,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
     [Fact]
     public void No_provider_call_and_no_gold_read_anywhere_in_this_file()
     {
-        var productionCarrier = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Core/Models/QualifiedInference/OpenRouterQwen37JsonObjectCarrierV2_1.cs"));
+        var productionCarrier = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Infrastructure/AI/QualifiedInference/OpenRouterQwen37JsonObjectCarrierV2_1.cs"));
         var qualificationCarriers = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.V5Qualification/LegacyCore/V5OpenRouterQwen37CarrierV2_1.cs"));
         foreach (var forbidden in new[] { "HttpClient", "OpenRouterInferenceTransport", "gold-current", "GoldLabel", "canonical-semantic-gold" })
         {

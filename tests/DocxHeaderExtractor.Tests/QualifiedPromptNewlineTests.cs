@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Infrastructure.AI.QualifiedInference;
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Security.Cryptography;

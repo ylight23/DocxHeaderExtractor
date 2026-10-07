@@ -1,7 +1,6 @@
 using System.Text.Json.Serialization;
-using DocxHeaderExtractor.Core.Models;
 
-namespace DocxHeaderExtractor.Core.V5;
+namespace DocxHeaderExtractor.Infrastructure.AI.QualifiedInference;
 
 /// <summary>Small shared provider envelope used by the qualified PDF inference route.</summary>
 public sealed record V5ProviderEnvelope(

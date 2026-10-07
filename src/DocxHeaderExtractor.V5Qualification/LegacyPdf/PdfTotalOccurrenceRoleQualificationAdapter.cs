@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Infrastructure.AI.QualifiedInference;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;

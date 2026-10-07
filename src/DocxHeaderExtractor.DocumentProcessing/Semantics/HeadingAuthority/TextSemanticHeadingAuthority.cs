@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Semantics.Canonical;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Authority;

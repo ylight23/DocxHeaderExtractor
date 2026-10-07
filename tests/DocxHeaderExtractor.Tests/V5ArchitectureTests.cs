@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Infrastructure.AI.QualifiedInference;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.V5;
@@ -153,20 +154,18 @@ public sealed class V5ArchitectureTests
             .OrderBy(name => name, StringComparer.Ordinal)
             .ToArray();
         Assert.Empty(topLevelProtocols);
-        var qualifiedInference = Directory.EnumerateFiles(Path.Combine(models, "QualifiedInference"), "*.cs", SearchOption.TopDirectoryOnly)
-            .Select(Path.GetFileName)
-            .OrderBy(name => name, StringComparer.Ordinal)
-            .ToArray();
-        Assert.Equal(
-            ["OpenRouterQwen37JsonObjectCarrierV2_1.cs", "QualifiedPromptText.cs", "V5CanonicalProtocolPrimitives.cs", "V5OccurrenceAuthorityDtos.cs", "V5TransportPrimitives.cs"],
-            qualifiedInference);
+        var retiredFolder = Path.Combine(models, "QualifiedInference");
+        Assert.True(!Directory.Exists(retiredFolder) || !Directory.EnumerateFiles(retiredFolder, "*", SearchOption.AllDirectories).Any());
         var inference = Directory.EnumerateFiles(Path.Combine(models, "Inference"), "*.cs", SearchOption.TopDirectoryOnly)
             .Select(Path.GetFileName)
             .OrderBy(name => name, StringComparer.Ordinal)
             .ToArray();
-        Assert.Equal(["OccurrenceFunctionProtocolV1.cs"], inference);
+        Assert.Equal(["CanonicalSemanticTextInferenceContracts.cs", "OccurrenceFunctionProtocolV1.cs", "QualifiedPromptText.cs",
+            "SemanticContextPacket.cs", "V5CanonicalProtocolPrimitives.cs", "V5OccurrenceAuthorityDtos.cs"], inference);
 
-        var core = typeof(V5ProviderEnvelope).Assembly;
+        var core = typeof(V5IssuedOccurrenceV1).Assembly;
+        Assert.NotEqual(core, typeof(V5ProviderEnvelope).Assembly);
+        Assert.Equal(typeof(V5ProviderEnvelope).Assembly, typeof(OpenRouterQwen37JsonObjectCarrierV2_1).Assembly);
         foreach (var qualificationOnly in new[] { typeof(V5ComposedSemanticRequest), typeof(BoundClaimEndpoint), typeof(V5SystemPromptV2_1), typeof(V5ToolCallDeltaFragment),
                      typeof(SemanticSourcePartsV2), typeof(SemanticSourcePartCanonicalizer), typeof(SemanticSourcePartCanonicalization) })
             Assert.NotEqual(core, qualificationOnly.Assembly);

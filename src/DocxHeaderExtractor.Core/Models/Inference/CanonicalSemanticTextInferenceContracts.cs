@@ -1,5 +1,10 @@
 namespace DocxHeaderExtractor.Core.Models;
 
+/// <summary>Model-visible source authority at the text-inference boundary.</summary>
+public sealed record CanonicalSemanticTextInferenceInput(
+    IReadOnlyList<CanonicalSemanticSourceEvidence> SourceEvidence,
+    IReadOnlyDictionary<string, string>? LayoutBlockBySourceId = null);
+
 /// <summary>Compact parser-owned evidence attached to one canonical source occurrence.</summary>
 public sealed record CanonicalSemanticSourceEvidence(
     string SourceAlias,

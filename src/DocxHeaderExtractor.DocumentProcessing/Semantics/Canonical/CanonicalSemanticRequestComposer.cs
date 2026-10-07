@@ -2,7 +2,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
-namespace DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Models;
+
+namespace DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 
 /// <summary>
 /// The one place a packet and a contract become the exact bytes a transport receives.

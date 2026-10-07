@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Semantics.Canonical;
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.Core.Models;

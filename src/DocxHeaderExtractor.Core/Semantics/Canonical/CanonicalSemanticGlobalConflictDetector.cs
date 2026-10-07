@@ -2,12 +2,13 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
-namespace DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Models;
+
+namespace DocxHeaderExtractor.Core.Semantics.Canonical;
 
 /// <summary>
 /// Finds deterministic contradictions that become visible only after the whole proposal set is
-/// available. This class never selects a semantic winner; it emits frozen alternatives for the
-/// bounded reopen coordinator.
+/// available. This class never selects a semantic winner; it emits alternatives for audit.
 /// </summary>
 public static class CanonicalSemanticGlobalConflictDetector
 {

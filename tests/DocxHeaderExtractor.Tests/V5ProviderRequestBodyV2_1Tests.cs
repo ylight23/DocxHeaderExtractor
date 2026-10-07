@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Infrastructure.AI.QualifiedInference;
 using DocxHeaderExtractor.Core.V5;
 
 namespace DocxHeaderExtractor.Tests;
