@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "v5-p6t-src089-pdf-universe-v2-requalification-run-v1",
+  "sentinel": "APPROVE_PROVIDER_SRC089_V2_PACK001_MAX9",
+  "sourceUniverseSha256": "d45b4a027d4da6133c852f7ee470365d08fbf8f9a47c25aff9afd074278ec8cc",
+  "pack": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+  "outcome": "STOPPED_BEFORE_NETWORK: G2A produced 12 HAS anchors, above the authorized 7",
+  "outboundCalls": 2,
+  "maximumOutboundCalls": 9,
+  "f1": 1,
+  "g2a": 1,
+  "h2c": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "calls": [
+    {
+      "Ordinal": 1,
+      "Stage": "F1",
+      "RequestBodySha256": "85aca595db7e174b3f89ebea803a9d1e4a317d524378d3a5c91c22d9b42f989f",
+      "RequestBytes": 21073,
+      "FinishReason": "stop",
+      "ResponseBytes": 4458,
+      "ResponseSha256": "b2fd962815f36608324575e197d04a1c2c544ae2809cd8016910e90a241a2fe9",
+      "PromptTokens": 3615,
+      "CompletionTokens": 5181
+    },
+    {
+      "Ordinal": 2,
+      "Stage": "G2A",
+      "RequestBodySha256": "18ad52429cda4cc002af82e2b29a79c3b71d502ca9709db0219b909500c82e66",
+      "RequestBytes": 9362,
+      "FinishReason": "stop",
+      "ResponseBytes": 784,
+      "ResponseSha256": "acab952df15ad7649d9235956b3d084ad92fd4eec363fcdb3b98f16d54f2540b",
+      "PromptTokens": 1536,
+      "CompletionTokens": 4079
+    }
+  ]
+}
