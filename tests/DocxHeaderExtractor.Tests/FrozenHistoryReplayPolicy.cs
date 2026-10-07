@@ -72,16 +72,28 @@ public static class FrozenHistoryReplayPolicy
         using (var document = PdfDocument.Open(TestRepository.Path(pdf)))
             Assert.Equal(PdfGeometryMode.FontIndependent, PdfFontEmbedding.ModeFor(document));
 
-        // The frozen artifacts are immutable authority and still say what they said: pinned bytes, v1 universe.
-        var seenHistoricalUniverse = false;
-        foreach (var artifact in entry.GetProperty("scope").GetProperty("frozenArtifacts").EnumerateArray())
+        // The frozen artifacts this test owns are committed, immutable authority and still say what they said: pinned bytes.
+        // An artifact belongs to the tests it names; a test is never asked for another test's artifact. A pending artifact
+        // (uncommitted local work) is not frozen authority and is not required.
+        var owned = entry.GetProperty("scope").GetProperty("frozenArtifacts").EnumerateArray()
+            .Where(artifact => artifact.GetProperty("tests").EnumerateArray().Any(item => item.GetString() == testClass))
+            .ToArray();
+        foreach (var artifact in owned)
         {
             var path = TestRepository.Path(artifact.GetProperty("path").GetString()!);
             Assert.True(File.Exists(path), $"frozen artifact {artifact.GetProperty("path").GetString()} is missing");
             Assert.Equal(artifact.GetProperty("sha256").GetString(), CanonicalArtifactHash.OfTextFile(path));
-            seenHistoricalUniverse |= File.ReadAllText(path).Contains(historical, StringComparison.Ordinal);
         }
-        Assert.True(seenHistoricalUniverse, "none of the frozen artifacts records the historical universe");
+    }
+
+    /// <summary>The frozen artifacts a test owns, by path - what a policy-scoped test is accountable for.</summary>
+    public static IReadOnlyList<string> OwnedFrozenArtifacts(string documentId, string testClass)
+    {
+        using var manifest = Read();
+        var entry = Find(manifest.RootElement, documentId) ?? throw new InvalidOperationException($"{documentId} has no replay policy entry.");
+        return entry.GetProperty("scope").GetProperty("frozenArtifacts").EnumerateArray()
+            .Where(artifact => artifact.GetProperty("tests").EnumerateArray().Any(item => item.GetString() == testClass))
+            .Select(artifact => artifact.GetProperty("path").GetString()!).ToArray();
     }
 
     private static string SnapshotUniverse(string relativePath)

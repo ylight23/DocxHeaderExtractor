@@ -34,28 +34,48 @@
     "frozenArtifacts": [
      {
       "path": "artifacts/v5-p6t-function-membership/p6th2c-evidence-complete-preflight/h2c-evidence-complete-preflight.v1.json",
-      "sha256": "d8f0287fd039d0523685a1d09ce299d8a44df64a51b8b408d0a6fd6c90bbdd3a"
+      "sha256": "d8f0287fd039d0523685a1d09ce299d8a44df64a51b8b408d0a6fd6c90bbdd3a",
+      "tests": [
+       "V5P6TH2CEvidenceCompletePreflightTests"
+      ]
      },
      {
       "path": "artifacts/v5-p6t-function-membership/p6th2c-evidence-complete-preflight/execution-manifest.v1.json",
-      "sha256": "74ebae1f4bbc841c24a010be764262eeec7ae14b9504b35a96ecb740cdb869c7"
+      "sha256": "74ebae1f4bbc841c24a010be764262eeec7ae14b9504b35a96ecb740cdb869c7",
+      "tests": [
+       "V5P6TH2CEvidenceCompletePreflightTests"
+      ]
      },
      {
       "path": "artifacts/v5-p6t-function-membership/p6th2c-typography-only-screen-preflight/typography-only-screen-preflight.v1.json",
-      "sha256": "795c2d1a2c60a9ec12fbf58895bcf3c5ff4a09f51188a1cda964a4a70ceeeb79"
+      "sha256": "795c2d1a2c60a9ec12fbf58895bcf3c5ff4a09f51188a1cda964a4a70ceeeb79",
+      "tests": [
+       "V5P6TH2CTypographyOnlyScreenPreflightTests"
+      ]
      },
      {
       "path": "artifacts/v5-p6t-function-membership/p6th2c-typography-only-screen-preflight/execution-manifest.v1.json",
-      "sha256": "d988b2ec9df9dbaf1cad50b9d4be2165e8102e216aa0023c37ed9c28bb3174b2"
+      "sha256": "d988b2ec9df9dbaf1cad50b9d4be2165e8102e216aa0023c37ed9c28bb3174b2",
+      "tests": [
+       "V5P6TH2CTypographyOnlyScreenPreflightTests"
+      ]
      },
      {
       "path": "artifacts/v5-p6t-function-membership/p6th2c-typography-only-screen-gold-score/h2c-typography-only-screen-gold-score.v1.json",
-      "sha256": "0f3e5f11b220914f888acb8a9fd8f5f1d2a497fda58a8d5571f05c8d3686ba84"
-     },
+      "sha256": "0f3e5f11b220914f888acb8a9fd8f5f1d2a497fda58a8d5571f05c8d3686ba84",
+      "tests": [
+       "V5P6TH2CTypographyOnlyScreenGoldScoreTests"
+      ]
+     }
+    ],
+    "pendingArtifacts": [
      {
       "path": "artifacts/v5-p6t-function-membership/p6th2c-clean-boundary-separability-audit/h2c-clean-boundary-separability-audit.v1.json",
       "sha256": "99be4ca040d9ed9b8250f954c1c1c4c5df4e4ee5361d68f570823905de5ff861",
-      "committed": false
+      "tests": [
+       "V5P6TH2CCleanBoundarySeparabilityAuditTests"
+      ],
+      "note": "uncommitted local work in progress; not frozen historical authority, not verified by CI"
      }
     ]
    }
