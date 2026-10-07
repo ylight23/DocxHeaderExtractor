@@ -209,7 +209,7 @@ public sealed class DocumentAgentHarness
 
             // PolicyEvaluator chỉ mô tả quyết định ở application boundary. Các guardrail hiện hữu
             // tiếp tục là enforcement point để không tạo một policy implementation song song.
-            var policy = DocumentTaskAdapters.EvaluatePolicy(executionPlan, selection, request, _skill);
+            var policy = DocumentTaskAdapters.EvaluatePolicy(executionPlan, request, _skill);
             await EmitAsync("policy.approval", policy.Kind == PolicyDecisionKind.Denied
                     ? AgentRunEventKind.Skipped
                     : AgentRunEventKind.Completed,

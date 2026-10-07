@@ -56,11 +56,6 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private const string Protocol = "v5-function-conditioned-exact-extent-resolver-preflight-1";
     private const string IndependentJudgmentProtocol = "v5-independent-exact-extent-judgment-1";
     private const string ContinuationBoundaryProtocol = "v5-function-conditioned-continuation-boundary-1";
-    private static readonly (string Id, string Pdf)[] Documents =
-    [
-        ("SRC-089", SourcePdfCorpus.Src089),
-        ("SRC-095", SourcePdfCorpus.Src095),
-    ];
 
     private sealed record PreparedDocument(
         string DocumentId,

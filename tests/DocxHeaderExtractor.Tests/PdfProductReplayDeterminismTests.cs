@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DocxHeaderExtractor.DocumentProcessing.Materialization;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.Core.Models;

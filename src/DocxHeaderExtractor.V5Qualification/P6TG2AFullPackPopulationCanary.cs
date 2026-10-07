@@ -274,7 +274,6 @@ internal static class P6TG2AFullPackPopulationCanary
         return current.ValueKind == JsonValueKind.Number && current.TryGetInt32(out var value) ? value : null;
     }
     private static string Hash(string value) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
-    private static string Hash(byte[] value) => Convert.ToHexStringLower(SHA256.HashData(value));
     private static void WriteNew(string path, object value)
     {
         if (File.Exists(path)) throw new InvalidOperationException("p6tg2a-immutable-capture-exists");

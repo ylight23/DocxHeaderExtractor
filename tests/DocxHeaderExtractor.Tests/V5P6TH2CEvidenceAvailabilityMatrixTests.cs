@@ -175,5 +175,4 @@ public sealed class V5P6TH2CEvidenceAvailabilityMatrixTests
 
     private static string ReadSource(string relativePath) => File.ReadAllText(TestRepository.Path(relativePath));
     private static string Hash(byte[] bytes) => Convert.ToHexStringLower(SHA256.HashData(bytes));
-    private static string Hash(string value) => Hash(Encoding.UTF8.GetBytes(value));
 }

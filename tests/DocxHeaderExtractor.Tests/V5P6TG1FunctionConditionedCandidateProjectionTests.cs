@@ -15,11 +15,6 @@ public sealed class V5P6TG1FunctionConditionedCandidateProjectionTests
     private const string SnapshotRoot = "eval/a99-closed-loop/pdf-canonical-source-v1";
     private const string CaptureRoot = "artifacts/v5-p6t-function-membership/p6tf1-preflight";
     private const string OutputRoot = "artifacts/v5-p6t-function-membership/p6tg1-candidate-projection";
-    private static readonly (string Id, string Pdf)[] Documents =
-    [
-        ("SRC-089", SourcePdfCorpus.Src089),
-        ("SRC-095", SourcePdfCorpus.Src095),
-    ];
 
     private enum ProjectionClass { ALL_ESTABLISHES, MIXED, NO_ESTABLISHES }
 

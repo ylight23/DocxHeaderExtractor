@@ -43,8 +43,6 @@ public sealed record SemanticConflictCensus(
 {
     public static readonly SemanticConflictCensus Empty = new(0, 0, 0, 0, 0, []);
 
-    public bool AnyConflict => LocalConflictCount > 0 || GlobalConflictCount > 0;
-
     public static SemanticConflictCensus Take(
         SemanticConflictNormalizationResult normalization,
         IReadOnlyList<CanonicalSemanticGlobalConflict> globalConflicts,

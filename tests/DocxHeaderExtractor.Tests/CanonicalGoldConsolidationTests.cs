@@ -333,11 +333,6 @@ public sealed class CanonicalGoldConsolidationTests
     private static PdfBoundOccurrence Bound(string alias, int start, int end, string? role) =>
         new([new CanonicalSemanticBoundPart(alias, alias, 0, "text", start, end)], role!, alias, null);
 
-    private const int Repetitions = 3;
-
-    /// <summary>One placement round per document per repetition, allowed but not assumed.</summary>
-    private const int PlacementAllowance = 1;
-
     [Fact]
     public void Every_active_source_universe_is_one_the_runtime_reproduces()
     {
@@ -633,8 +628,5 @@ public sealed class CanonicalGoldConsolidationTests
         element.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.String
             ? value.GetString()
             : null;
-
-    private static string RelativeTo(string absolute) =>
-        Path.GetRelativePath(TestRepository.Root(), absolute).Replace(Path.DirectorySeparatorChar, '/');
 
 }

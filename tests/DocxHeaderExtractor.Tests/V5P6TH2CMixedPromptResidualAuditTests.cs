@@ -259,7 +259,6 @@ public sealed class V5P6TH2CMixedPromptResidualAuditTests
 
     private static string Key(JsonElement row) => $"{row.GetProperty("DocumentId").GetString()}|{row.GetProperty("PackId").GetString()}|{row.GetProperty("Anchor").GetString()}";
     private static string Hash(string value) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
-    private static string Hash(byte[] bytes) => Convert.ToHexStringLower(SHA256.HashData(bytes));
 
     private enum F1Shape { RawCapture, ResultRow, ResultRows }
     private sealed record Source(string DocumentId, string PdfPath, string F1Path, F1Shape Shape, bool UsesCorrespondence);

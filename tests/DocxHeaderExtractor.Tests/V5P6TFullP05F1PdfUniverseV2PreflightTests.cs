@@ -20,7 +20,6 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class V5P6TFullP05F1PdfUniverseV2PreflightTests
 {
-    private const string SnapshotV1Root = "eval/a99-closed-loop/pdf-canonical-source-v1";
     private const string SnapshotV2Root = "eval/a99-closed-loop/pdf-canonical-source-v2";
     private const string OutputRoot = "artifacts/v5-p6t-function-membership/p6tf1-src089-pdf-universe-v2-preflight";
     private const string V1Preflight = "artifacts/v5-p6t-function-membership/p6tf1-full-p05-preflight/f1-full-p05-preflight.v1.json";

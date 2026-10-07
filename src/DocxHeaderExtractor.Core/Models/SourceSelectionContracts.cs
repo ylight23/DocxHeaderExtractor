@@ -46,7 +46,4 @@ public sealed record StructuralSourceOccurrence
             facts.Source.ParagraphIndex ?? index,
             new StructuralSpan(facts.RawSpan.Start, facts.RawSpan.End)))
         .ToArray();
-
-    [JsonPropertyName("observedEvidence")]
-    public IReadOnlyList<ObservedEvidence> ObservedEvidence { get; init; } = [];
 }

@@ -18,8 +18,6 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class PdfLineExtractionTests
 {
-    private const string Pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
-    private const int AuthoritativeTotal = 41;
     private const string Artifacts = "eval/a99-closed-loop/representation";
 
     // 11pt body text: cap box roughly 7.3 high, single leading 13.4, a period barely 1.7.
@@ -287,102 +285,6 @@ public sealed class PdfLineExtractionTests
     private static Glyph Glyph(double baseline, double top, double bottom, double fontSize = Body) =>
         new(baseline, top, bottom, fontSize);
 
-    private static string Path_ => System.IO.Path.Combine(
-        TestRepository.Root(), Pdf.Replace('/', System.IO.Path.DirectorySeparatorChar));
-
-    private static IReadOnlyList<Letter> Letters()
-    {
-        using var document = PdfDocument.Open(Path_);
-        return document.GetPages()
-            .SelectMany(page => page.Letters.Where(letter => !string.IsNullOrWhiteSpace(letter.Value)))
-            .ToArray();
-    }
-
-    private static IReadOnlyList<PdfLine> Lines()
-    {
-        using var document = PdfDocument.Open(Path_);
-        return PdfLineExtraction.ExtractLines(document);
-    }
-
-    /// <summary>One extracted glyph, identified by what it is and where it was drawn.</summary>
-    private static string Atom(Letter letter) =>
-        $"{letter.Value}|{letter.BoundingBox.Left:F3}|{letter.BoundingBox.Bottom:F3}|{letter.BoundingBox.Top:F3}";
-
-    private static readonly IComparer<string> AtomOrder = StringComparer.Ordinal;
-
-    private static string[] Atoms(IReadOnlyList<PdfLine> lines) =>
-        lines
-            .SelectMany(line => line.Projection.SpanMap.Select(entry =>
-                $"{line.Projection.RawParserText.Substring(entry.RawStart, entry.RawLength)}" +
-                $"|{entry.Left:F3}|{entry.Bottom:F3}|{entry.Top:F3}"))
-            .OrderBy(atom => atom, AtomOrder)
-            .ToArray();
-
-    /// <summary>
-    /// How much room the baseline tolerance actually had on this document.
-    /// <para>
-    /// A threshold is only meaningful next to the distance between the two populations it
-    /// separates. The spread inside a reconstructed line should be near zero, and the gap to the
-    /// next line should clear the tolerance that applied to it - reported as a ratio, because the
-    /// tolerance is scaled per line and a raw gap in points cannot be compared with it.
-    /// </para>
-    /// </summary>
-    private static object Separation()
-    {
-        using var document = PdfDocument.Open(Path_);
-        var within = new List<double>();
-        var safety = new List<double>();
-
-        foreach (var page in document.GetPages())
-        {
-            var ordered = page.Letters
-                .Where(letter => !string.IsNullOrWhiteSpace(letter.Value))
-                .Select(letter => PdfGlyph.Of(letter, PdfFontEmbedding.ModeFor(document)))
-                .OrderByDescending(letter => letter.Baseline)
-                .ThenBy(letter => letter.Left)
-                .ThenBy(letter => letter.Value, StringComparer.Ordinal)
-                .ToArray();
-
-            var grouped = PdfVisualLineBucket.Split(ordered, PdfVisualLineBucket.Of);
-            foreach (var line in grouped)
-                within.Add(line.Max(l => l.Baseline) - line.Min(l => l.Baseline));
-
-            for (var index = 1; index < grouped.Count; index++)
-            {
-                var above = grouped[index - 1];
-                var scale = above.Max(l => Math.Max(l.FontSize, l.Height));
-                var tolerance = Math.Max(1.0, scale * PdfVisualLineBucket.BaselineTolerance);
-                var gap = above.Min(l => l.Baseline) - grouped[index].Max(l => l.Baseline);
-                safety.Add(gap / tolerance);
-            }
-        }
-
-        return new
-        {
-            baselineSpreadWithinALine = new
-            {
-                max = Math.Round(within.Max(), 3),
-                median = Math.Round(Median(within), 3),
-            },
-            // Gap to the next line, divided by the tolerance that line was judged with. Above 1
-            // means the pair was never close to merging; the minimum is how close this document
-            // came to the threshold anywhere.
-            gapToNextLineInToleranceUnits = new
-            {
-                min = Math.Round(safety.Min(), 3),
-                median = Math.Round(Median(safety), 3),
-                pairsWithin25PercentOfTheThreshold = safety.Count(ratio => ratio < 1.25),
-                pairs = safety.Count,
-            },
-        };
-    }
-
-    private static double Median(List<double> values)
-    {
-        var sorted = values.Order().ToArray();
-        return sorted.Length == 0 ? 0 : sorted[sorted.Length / 2];
-    }
-
     /// <summary>
     /// One reconstructed row, recovered from the segments it was divided into. Segments are emitted
     /// row by row and left to right, so a segment beginning to the right of the one before it on an
@@ -405,120 +307,6 @@ public sealed class PdfLineExtractionTests
         return rows;
     }
 
-    /// <summary>Every horizontal gap inside a row, in line-heights, however the row was divided.</summary>
-    private static IEnumerable<double> RowGaps(IReadOnlyList<PdfLine> row)
-    {
-        var scale = row.Max(segment => Math.Max(segment.FontSize, (segment.Top ?? 0) - (segment.Bottom ?? 0)));
-        if (scale <= 0) yield break;
-
-        foreach (var segment in row)
-        {
-            var spans = segment.Projection.SpanMap;
-            for (var index = 1; index < spans.Count; index++)
-                yield return (spans[index].Left - spans[index - 1].Right) / scale;
-        }
-
-        for (var index = 1; index < row.Count; index++)
-            yield return (row[index].Left - row[index - 1].Right) / scale;
-    }
-
-    /// <summary>
-    /// The whole corpus under the candidate, so the rule is judged on documents it was not designed
-    /// against. Samples are taken deterministically, by file name and row order, and are evidence
-    /// for adjudication rather than an answer.
-    /// </summary>
-    private static object CorpusCensus()
-    {
-        var pdfs = Directory
-            .GetFiles(System.IO.Path.Combine(TestRepository.Root(), "todo10_8", "heading_corpus_100"),
-                "*.pdf", SearchOption.AllDirectories)
-            .OrderBy(System.IO.Path.GetFileName, StringComparer.Ordinal)
-            .ToArray();
-
-        int documents = 0, rowsTotal = 0, segmentsTotal = 0, unreadable = 0;
-        int one = 0, two = 0, three = 0, riskRows = 0, riskSplit = 0, documentsWithDivided = 0;
-        var divided = new List<object>();
-        var wideButWhole = new List<object>();
-
-        foreach (var path in pdfs)
-        {
-            IReadOnlyList<PdfLine> segments;
-            try
-            {
-                using var document = PdfDocument.Open(path);
-                segments = PdfLineExtraction.ExtractLines(document);
-            }
-            catch (Exception)
-            {
-                // A document this parser cannot open says nothing about segmentation. It is counted
-                // out rather than counted as clean.
-                unreadable++;
-                continue;
-            }
-
-            documents++;
-            segmentsTotal += segments.Count;
-            var rows = Rows(segments);
-            rowsTotal += rows.Count;
-
-            var name = System.IO.Path.GetFileName(path);
-            var dividedHere = 0;
-            var wideHere = 0;
-            foreach (var row in rows)
-            {
-                if (row.Count == 1) one++;
-                else if (row.Count == 2) two++;
-                else three++;
-
-                var wide = RowGaps(row).Any(gap => gap > 3.0);
-                if (wide) riskRows++;
-
-                if (row.Count > 1)
-                {
-                    dividedHere++;
-                    if (wide) riskSplit++;
-                    if (dividedHere <= 2) divided.Add(Case(name, row));
-                }
-                else if (wide && ++wideHere <= 2)
-                {
-                    wideButWhole.Add(Case(name, row));
-                }
-            }
-
-            if (dividedHere > 0) documentsWithDivided++;
-        }
-
-        return new
-        {
-            documents,
-            unreadableDocuments = unreadable,
-            visualRows = rowsTotal,
-            totalSegments = segmentsTotal,
-            rowsWith1Segment = one,
-            rowsWith2Segments = two,
-            rowsWith3PlusSegments = three,
-            documentsWithMultiSegmentRows = documentsWithDivided,
-            riskRowsWithGapOver3LineHeights = riskRows,
-            riskRowsActuallyDivided = riskSplit,
-            note = "The two risk numbers are not the same measurement. The first counts rows with wide whitespace; the second counts rows the corridor rule divided.",
-            dividedSamples = divided,
-            wideButUndividedSamples = wideButWhole,
-        };
-    }
-
-    private static object Case(string document, IReadOnlyList<PdfLine> row) => new
-    {
-        caseId = $"{document}|p{row[0].Page}|{row[0].Y:F1}",
-        page = row[0].Page,
-        rowText = string.Join("  ", row.Select(segment => segment.Text)),
-        segments = row.Select(segment => new
-        {
-            text = segment.Text,
-            left = Math.Round(segment.Left, 1),
-            right = Math.Round(segment.Right, 1),
-        }).ToArray(),
-    };
-
     /// <summary>The row a case names, found again in its own document by page and height.</summary>
     private static List<PdfLine>? FindRow(string document, int page, double y)
     {
@@ -535,12 +323,4 @@ public sealed class PdfLineExtractionTests
             row[0].Page == page && Math.Abs(row[0].Y - y) < 0.05);
     }
 
-    private static object[] Serialize(IReadOnlyList<PdfSourceOccurrenceBoundary.PdfPunctuationRow> rows) =>
-        rows.Select(object (row) => new
-        {
-            mark = row.Mark,
-            occurrences = row.Occurrences,
-            sharingAVisualLineWithText = row.SharingAVisualLineWithText,
-            immediatelyBeforeAGoldOccurrence = row.ImmediatelyBeforeAGoldOccurrence,
-        }).ToArray();
 }

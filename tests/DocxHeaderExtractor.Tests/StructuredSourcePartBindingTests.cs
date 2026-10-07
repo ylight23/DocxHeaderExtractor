@@ -24,11 +24,6 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class StructuredSourcePartBindingTests
 {
-    private const string Doc0252 = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
-    private const string Artifacts = "eval/a99-closed-loop/representation";
-    private const int ApprovedHeadings = 41;
-    private const string ActiveSemanticContractHash =
-        "91005fabc2e978d5ab4d900bc66ebeb27e563628056b3073cef22896687ac72e";
 
     // ---- one atom -------------------------------------------------------------------------------
 
@@ -296,92 +291,4 @@ public sealed class StructuredSourcePartBindingTests
         entries.Select((entry, index) => Atom(
             $"L{entry.Row:0000}:S{entry.Segment}", index, 1, entry.Row, entry.Segment, entry.Text)).ToArray();
 
-    private static string Doc0252Path => System.IO.Path.Combine(
-        TestRepository.Root(), Doc0252.Replace('/', System.IO.Path.DirectorySeparatorChar));
-
-    private static IReadOnlyList<PdfLine> Segments()
-    {
-        using var document = PdfDocument.Open(Doc0252Path);
-        return PdfLineExtraction.ExtractLines(document);
-    }
-
-    private static IReadOnlyList<SemanticSourceAtom> Doc0252Atoms() =>
-        PdfSegmentAtomCatalog.FromSegments(Segments());
-
-    private static string Reduce(string text) =>
-        new(text.Where(character => !char.IsWhiteSpace(character) && !char.IsPunctuation(character))
-            .Select(char.ToLowerInvariant).ToArray());
-
-    /// <summary>
-    /// How often the corpus offers a local chain at all, and how long it can get. Descriptive: a
-    /// chain being available says nothing about whether any heading uses it.
-    /// </summary>
-    private static object CorpusChains()
-    {
-        var pdfs = Directory
-            .GetFiles(System.IO.Path.Combine(TestRepository.Root(), "todo10_8", "heading_corpus_100"),
-                "*.pdf", SearchOption.AllDirectories)
-            .OrderBy(System.IO.Path.GetFileName, StringComparer.Ordinal)
-            .ToArray();
-
-        int documents = 0, atomsTotal = 0, sameRow = 0, nextRow = 0, hyphenEnding = 0;
-        var chains = new Dictionary<int, int>();
-
-        foreach (var path in pdfs)
-        {
-            IReadOnlyList<SemanticSourceAtom> atoms;
-            try
-            {
-                using var document = PdfDocument.Open(path);
-                atoms = PdfSegmentAtomCatalog.FromSegments(
-                    PdfLineExtraction.ExtractLines(document));
-            }
-            catch (Exception)
-            {
-                continue;
-            }
-
-            documents++;
-            atomsTotal += atoms.Count;
-
-            var run = 1;
-            for (var index = 1; index < atoms.Count; index++)
-            {
-                var locality = SemanticSourcePartBinder.Locality(atoms[index - 1], atoms[index]);
-                if (locality == SemanticSourceLocality.SameRowNextSegment) sameRow++;
-                if (locality == SemanticSourceLocality.NextRowCompatible) nextRow++;
-                if (atoms[index - 1].Text.EndsWith('-')) hyphenEnding++;
-
-                if (locality is SemanticSourceLocality.SameRowNextSegment or SemanticSourceLocality.NextRowCompatible)
-                {
-                    run++;
-                }
-                else
-                {
-                    chains[run] = chains.GetValueOrDefault(run) + 1;
-                    run = 1;
-                }
-            }
-
-            chains[run] = chains.GetValueOrDefault(run) + 1;
-        }
-
-        return new
-        {
-            note = "Descriptive only. These are the chains the locality rule would admit, not headings.",
-            documents,
-            atoms = atomsTotal,
-            adjacentPairsSameRow = sameRow,
-            adjacentPairsNextRow = nextRow,
-            partsEndingInAHyphen = hyphenEnding,
-            maximalLocalChains = new
-            {
-                length1 = chains.GetValueOrDefault(1),
-                length2 = chains.GetValueOrDefault(2),
-                length3 = chains.GetValueOrDefault(3),
-                length4Plus = chains.Where(entry => entry.Key >= 4).Sum(entry => entry.Value),
-                longest = chains.Count == 0 ? 0 : chains.Keys.Max(),
-            },
-        };
-    }
 }

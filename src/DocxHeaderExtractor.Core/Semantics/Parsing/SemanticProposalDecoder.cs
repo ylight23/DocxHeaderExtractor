@@ -30,11 +30,4 @@ public static class SemanticProposalDecoder
             "A heading entry omitted a field this contract requires, or typed one wrongly.")]);
     }
 
-    private static SemanticProposalDecodeResult Failed(string code, string detail) =>
-        new([], [new SemanticProposalDecodeFailure(code, detail)]);
-
-    private static string? Text(JsonElement element, string name) =>
-        element.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.String
-            ? value.GetString()
-            : null;
 }

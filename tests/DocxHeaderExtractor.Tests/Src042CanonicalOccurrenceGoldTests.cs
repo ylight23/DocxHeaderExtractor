@@ -28,7 +28,6 @@ public sealed class Src042CanonicalOccurrenceGoldTests
     private const string LineageDir = "eval/a99-closed-loop/source-review-v1";
     private const string Lineage = LineageDir + "/SRC-042.authority-lineage.v1.json";
     private const string PreviousFreeze = "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-042.semantic-freeze.v1.json";
-    private const string Preregistration = "eval/a99-closed-loop/generic-audit-v1_2/SRC-042.preregistration.v1_2.json";
     private const string Policy = "eval/a99-closed-loop/policy/financial-procurement-heading-policy.v1.json";
     private const string Addendum = "eval/a99-closed-loop/policy/financial-occurrence-distinctions.v1.json";
     private const string Ontology = "eval/a99-closed-loop/policy/occurrence-semantic-axes.v3.json";

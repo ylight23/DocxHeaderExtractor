@@ -21,7 +21,7 @@ internal static class PdfSourceContextBuilder
         for (var index = 0; index < ordered.Length; index++)
         {
             var block = ordered[index];
-            var facts = BuildFacts(block, annotationByLine, regime);
+            var facts = BuildFacts(block, annotationByLine);
             var window = Math.Clamp(contextWindow, 0, 6);
             var previous = ordered.Take(index).TakeLast(window).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
             var next = ordered.Skip(index + 1).Take(window).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
@@ -80,8 +80,7 @@ internal static class PdfSourceContextBuilder
 
     private static PdfSourceFacts BuildFacts(
         PdfLayoutBlock block,
-        IReadOnlyDictionary<string, PdfLineBlockAnnotation> annotationByLine,
-        string regime)
+        IReadOnlyDictionary<string, PdfLineBlockAnnotation> annotationByLine)
     {
         var sourceAnnotations = block.Lines
             .Select(line => annotationByLine.TryGetValue(LineKey(line), out var annotation) ? annotation : null)

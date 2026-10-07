@@ -22,19 +22,6 @@ public enum HeadingDecisionStatus
 }
 
 /// <summary>Document-level result of the common evidence-first workflow.</summary>
-public enum OutlineDisposition
-{
-    Accepted,
-    RequiresReview,
-    Abstained,
-}
-
-public sealed record OutlineOutcome(
-    [property: JsonPropertyName("disposition")]
-    [property: JsonConverter(typeof(JsonStringEnumConverter))] OutlineDisposition Disposition,
-    [property: JsonPropertyName("reason")] string Reason,
-    [property: JsonPropertyName("evidenceRoute")] string? EvidenceRoute);
-
 public sealed class HeadingRecord
 {
     /// <summary>Chỉ số đoạn trong tài liệu gốc.</summary>
@@ -194,9 +181,4 @@ public sealed class DocumentOutline
     /// </summary>
     [JsonPropertyName("disputedCount")]
     public int DisputedCount => Headings.Count(h => h.Disputed);
-
-    /// <summary>Terminal disposition; a non-empty heading list alone is never a promotion signal.</summary>
-    [JsonPropertyName("outcome")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public OutlineOutcome? Outcome { get; init; }
 }

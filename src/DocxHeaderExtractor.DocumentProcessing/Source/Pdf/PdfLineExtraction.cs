@@ -308,7 +308,7 @@ internal static class PdfLineExtraction
                 .ThenBy(l => l.Value, StringComparer.Ordinal)
                 .ToList();
 
-            var buckets = Segment(PdfVisualLineBucket.Split(letters, PdfVisualLineBucket.Of).ToList(), page);
+            var buckets = Segment(PdfVisualLineBucket.Split(letters, PdfVisualLineBucket.Of).ToList());
 
             foreach (var bucket in buckets)
             {
@@ -441,7 +441,7 @@ internal static class PdfLineExtraction
     /// still reads top to bottom and the glyphs of a row stay together and in order.
     /// </summary>
     private static List<IReadOnlyList<PdfGlyph>> Segment(
-        List<IReadOnlyList<PdfGlyph>> rows, UglyToad.PdfPig.Content.Page page)
+        List<IReadOnlyList<PdfGlyph>> rows)
     {
         var ordered = rows
             .Select(row => row.OrderBy(l => l.Left).ToArray())

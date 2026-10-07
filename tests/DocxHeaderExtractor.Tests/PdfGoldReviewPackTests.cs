@@ -30,41 +30,6 @@ public sealed class PdfGoldReviewPackTests
     private const string Pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
     private const string Pack = "eval/a99-closed-loop/pdf-gold-doc0252";
 
-    private const string SourceSha = "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61";
-
-    /// <summary>
-    /// The three answers a reviewer may give. Kept separate from the role on purpose: encoding the
-    /// role into the decision would make membership and role one number, and they have to be
-    /// measurable apart - a heading found with the wrong role is not a heading that was missed.
-    /// </summary>
-    private static readonly string[] AllowedDecisions = ["HEADING", "NOT_HEADING", "NEEDS_REVIEW"];
-
-    /// <summary>
-    /// A source occurrence is a parser artefact, not a semantic unit, so the membership decision
-    /// and the headings found inside it are different questions. S0043, S0460 and S0573 each carry
-    /// a session heading and a numbered sub-heading in one fused two-line block; one answer per
-    /// occurrence could not say which heading, with which boundary, in which role.
-    /// </summary>
-    private static readonly object ClaimContract = new
-    {
-        NOT_HEADING = "headingClaims must be empty",
-        HEADING = "headingClaims must name at least one heading; several are allowed",
-        NEEDS_REVIEW = "leave the claims as they are; a second pass settles it",
-        selectionMode = "WHOLE_ALIAS when the heading is the entire occurrence, else VERBATIM_TEXT",
-        verbatimText = "for VERBATIM_TEXT: the exact heading text, copied from sourceText",
-        occurrence = "1-based, only when that text appears more than once in this occurrence",
-        mapping = "each claim becomes exactly one PdfGoldHeading, field for field",
-    };
-
-    /// <summary>
-    /// One occurrence as a reviewer receives it: the membership decision, and a blank claim to fill
-    /// in. A source occurrence is a parser artefact, not a semantic unit - line grouping fuses
-    /// neighbouring lines, so one occurrence can hold more than one heading - so the claims are a
-    /// list. Delete it for NOT_HEADING; add to it when the occurrence carries several headings.
-    /// </summary>
-    private static PdfReviewOccurrence ReviewRow(string alias, int page, int ordinal, string text) =>
-        new(alias, page, ordinal, text) { HeadingClaims = [new PdfReviewHeadingClaim()] };
-
     [Fact]
     public async Task A_duplicate_text_group_offers_no_way_to_answer_for_the_whole_group()
     {
@@ -401,72 +366,6 @@ public sealed class PdfGoldReviewPackTests
             .Select(unit => new Row(
                 aliases[unit.SourceId], unit.SourceId, unit.SourceAnchor.Page ?? 0, unit.SourceOrdinal, unit.Text))
             .ToArray();
-    }
-
-    private static IReadOnlyDictionary<string, PdfSourceFacts> FactsAsync()
-    {
-        var path = Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar));
-        IReadOnlyList<PdfLine> lines;
-        using (var document = UglyToad.PdfPig.PdfDocument.Open(path))
-        {
-            lines = PdfLineExtraction.ExtractLines(document);
-        }
-
-        var annotations = PdfLineObservationAnalyzer.Analyze(lines);
-        var blocks = PdfLayoutBlockGrouper.Build(annotations);
-        return PdfSourceContextBuilder.Build(blocks, annotations)
-            .ToDictionary(pair => pair.Key, pair => pair.Value.Source, StringComparer.Ordinal);
-    }
-
-    private static List<string> AliasesOf(string view)
-    {
-        using var document = JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), Pack, view)));
-        var aliases = new List<string>();
-        Walk(document.RootElement, aliases);
-        return aliases;
-
-        static void Walk(JsonElement element, List<string> into)
-        {
-            switch (element.ValueKind)
-            {
-                case JsonValueKind.Object:
-                    if (element.TryGetProperty("sourceAlias", out var alias) &&
-                        alias.ValueKind == JsonValueKind.String)
-                        into.Add(alias.GetString()!);
-                    foreach (var property in element.EnumerateObject()) Walk(property.Value, into);
-                    break;
-                case JsonValueKind.Array:
-                    foreach (var item in element.EnumerateArray()) Walk(item, into);
-                    break;
-            }
-        }
-    }
-
-    private static void AssertExhaustive(string view, IReadOnlyList<Row> rows)
-    {
-        var aliases = AliasesOf(view);
-        Assert.Equal(rows.Count, aliases.Count);
-        Assert.Equal(rows.Count, aliases.Distinct(StringComparer.Ordinal).Count());
-    }
-
-    /// <summary>Grouping only: case and whitespace folded so repeats sit together while reading.</summary>
-    private static string Key(string text) =>
-        string.Join(' ', text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries)).ToLowerInvariant();
-
-    private static string RelativeSize(double size, double body)
-    {
-        if (size <= 0 || body <= 0) return "unknown";
-        var ratio = size / body;
-        return ratio >= 1.25 ? "much-larger-than-body"
-            : ratio >= 1.08 ? "larger-than-body"
-            : ratio <= 0.85 ? "smaller-than-body"
-            : "body";
-    }
-
-    private static double Median(IEnumerable<double> values)
-    {
-        var ordered = values.Where(value => value > 0).OrderBy(value => value).ToArray();
-        return ordered.Length == 0 ? 0 : ordered[ordered.Length / 2];
     }
 
 }

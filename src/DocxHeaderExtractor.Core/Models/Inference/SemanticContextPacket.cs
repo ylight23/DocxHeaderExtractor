@@ -4,7 +4,4 @@ namespace DocxHeaderExtractor.Core.Models;
 public sealed record SemanticContextPacket(
     IReadOnlyList<string> TargetEvidence,
     IReadOnlyList<string> LocalContext,
-    IReadOnlyList<string> GlobalContext)
-{
-    public IReadOnlyList<string> VisibleEvidence => TargetEvidence.Concat(LocalContext).Concat(GlobalContext).ToArray();
-}
+    IReadOnlyList<string> GlobalContext);

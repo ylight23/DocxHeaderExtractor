@@ -46,21 +46,6 @@ internal static class CanonicalSemanticEngine
         Never let this hint displace the parent hint.
         """;
 
-    private const string RawPlacementPrompt = """
-        You are the structural stage of the A99 canonical document pipeline. The heading list below
-        is already settled: do not add, remove, rename or re-judge any entry. Decide one thing only
-        — where each heading in "toPlace" sits relative to the others.
-
-        Answer with {"placements":[{"alias":"<alias>","parent":"<alias>|ROOT|NONE"}]}.
-          "<alias>" - it belongs under that heading, which must appear earlier in the list.
-          "ROOT"    - it is a top-level section of this document.
-          "NONE"    - it is a heading but holds no position in the section tree: the document's own
-                      title or subtitle, a meeting date or venue line, a running header, a table or
-                      figure label, a form label, an annex label.
-        Omit an alias entirely if the evidence still does not let you decide. Never return a level:
-        the harness derives depth from the relations you give.
-        """;
-
     /// <summary>
     /// Normalizes to LF, because a prompt is bytes on the wire and must not depend on how the
     /// source file happened to be checked out.
@@ -84,9 +69,6 @@ internal static class CanonicalSemanticEngine
 
     /// <summary>The semantic discovery prompt, line endings settled.</summary>
     internal static string SystemPrompt { get; } = NormalizePromptLineEndings(RawSystemPrompt);
-
-    /// <summary>The placement prompt, line endings settled.</summary>
-    internal static string PlacementPrompt { get; } = NormalizePromptLineEndings(RawPlacementPrompt);
 
     /// <summary>The discovery prompt of a request version; an unknown version is refused.</summary>
     internal static string SystemPromptOf(SemanticRequestVersion version)
@@ -139,9 +121,6 @@ internal static class CanonicalSemanticEngine
 
         /// <summary>The lane's coordinate contract, which builds the schema and checks the reply.</summary>
         public SemanticCoordinateContract Contract { get; } = contract;
-
-        /// <summary>The request-partition policy used by this execution.</summary>
-        public string PackingPolicyId => _packingPolicy.PolicyId;
 
         public List<string> RawResponses { get; } = [];
 
@@ -220,9 +199,6 @@ internal static class CanonicalSemanticEngine
                 ? new { alias = item.SourceAlias, text = item.ExactSourceText, owned = false }
                 : new { alias = item.SourceAlias, block, text = item.ExactSourceText, owned = false };
         }
-
-        /// <summary>Owned occurrences evaluated per request. Keeps one document bounded.</summary>
-        internal const int OwnedPerSegment = SemanticEvidencePackingPolicies.OwnedPerPack;
 
         /// <summary>Neighbouring occurrences a segment may read but never claim.</summary>
         internal const int VisibleMargin = SemanticEvidencePackingPolicies.VisibleMargin;

@@ -10,7 +10,6 @@ public sealed class V5P6TH2CCleanPairedPreflightTests
 {
     private const string Root = "artifacts/v5-p6t-function-membership";
     private const string Input = Root + "/p6th2c-end-pointer-preflight-v2/h2c-exact-end-pointer-preflight.v2.json";
-    private const string Output = Root + "/p6th2c-clean-v1-v2-preflight/h2c-clean-v1-v2-preflight.v1.json";
     private const string V1 = """
         Determine the exact source extent of the one heading that begins at the issued anchor occurrence. A heading may consist of one or more consecutive source occurrences. Return every and only consecutive occurrence that belongs literally to this exact heading. Do not include later body content merely because it belongs to the same section, topic, agenda item, or semantic region.
         """;

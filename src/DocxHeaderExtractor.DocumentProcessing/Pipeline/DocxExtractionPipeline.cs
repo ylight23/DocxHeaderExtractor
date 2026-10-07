@@ -234,8 +234,6 @@ public sealed class DocxExtractionPipeline : IDisposable
             passes.Add(new("semantic-role", audit.SemanticLane.Completed, audit.SemanticLane.Scheduled, sentDataExternally));
         if (audit.SpanLane is { Scheduled: > 0, Completed: > 0 })
             passes.Add(new("heading-span", audit.SpanLane.Completed, audit.SpanLane.Scheduled, sentDataExternally));
-        if (audit.HierarchyProposals.Count > 0)
-            passes.Add(new("semantic-hierarchy", audit.HierarchyProposals.Count, audit.HierarchyProposals.Count, sentDataExternally));
         passes.Add(new("source-facts", 1, audit.SourceBlocksAvailable, false));
         passes.Add(new("proposal-validation", 1, audit.BlockDecisions.Count, false));
         passes.Add(new("deterministic-hierarchy", 1, audit.ValidatedStructures.Count, false));

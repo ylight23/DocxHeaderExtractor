@@ -10,8 +10,6 @@ public sealed record SourceFacts
     public required string RawText { get; init; }
     public required SourceAnchor Source { get; init; }
     public required SourceTextSpan RawSpan { get; init; }
-    public MarkerFacts? Marker { get; init; }
-    public IReadOnlyList<ObservedEvidence> ObservedEvidence { get; init; } = [];
 
     /// <summary>
     /// Parser-owned UTF-16 boundaries that a proposal may point to. An empty value means the
@@ -39,45 +37,3 @@ public sealed record SourceAnchor
 }
 
 public sealed record PdfBoundingBox(double Left, double Bottom, double Right, double Top);
-
-public enum MarkerKind
-{
-    Decimal,
-    DecimalDotted,
-    RomanUpper,
-    RomanLower,
-    AlphaUpper,
-    AlphaLower,
-    DocxNumbering,
-}
-
-public sealed record MarkerFacts
-{
-    public required MarkerKind Kind { get; init; }
-    public required string Raw { get; init; }
-    public string? Normalized { get; init; }
-    public int? Depth { get; init; }
-    public IReadOnlyList<int> Components { get; init; } = [];
-    public int? NumId { get; init; }
-    public int? Ilvl { get; init; }
-}
-
-public enum ObservedEvidenceKind
-{
-    NumberingMarker,
-    DocxNumbering,
-    BuiltInHeadingStyle,
-    OutlineLevel,
-    FontWeight,
-    FontSize,
-    Alignment,
-    TableMembership,
-    LineBreak,
-}
-
-public enum EvidenceOrigin { DocxParser, PdfParser, MarkerParser, LayoutEngine, Renderer }
-
-public sealed record ObservedEvidence(
-    ObservedEvidenceKind Kind,
-    string Value,
-    EvidenceOrigin Origin);

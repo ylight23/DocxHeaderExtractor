@@ -19,8 +19,7 @@ public sealed record DocumentSupportStatus(
     {
         ArgumentNullException.ThrowIfNull(outline);
         var supportedRoute = !string.IsNullOrWhiteSpace(outline.DeterministicRoute) ||
-                             outline.RouteAudit is not null ||
-                             outline.Outcome?.EvidenceRoute is not null;
+                             outline.RouteAudit is not null;
         var supportNotProven = !supportedRoute;
         var emptyWithoutRoute = outline.ParagraphCount > 0 && outline.Headings.Count == 0 && !supportedRoute;
         return new(

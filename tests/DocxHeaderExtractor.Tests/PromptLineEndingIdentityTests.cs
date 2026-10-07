@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Materialization;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 
@@ -23,7 +24,7 @@ public sealed class PromptLineEndingIdentityTests
     public void No_prompt_carries_a_carriage_return()
     {
         Assert.DoesNotContain('\r', CanonicalSemanticEngine.SystemPrompt);
-        Assert.DoesNotContain('\r', CanonicalSemanticEngine.PlacementPrompt);
+        Assert.DoesNotContain('\r', HeadingParentResolver.PlacementPrompt);
     }
 
     [Theory]

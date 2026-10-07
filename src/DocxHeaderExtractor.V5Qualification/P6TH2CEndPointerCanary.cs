@@ -1317,7 +1317,6 @@ internal static class P6TH2CEndPointerCanary
         foreach (var key in path) if (current.ValueKind != JsonValueKind.Object || !current.TryGetProperty(key, out current)) return null;
         return current.ValueKind == JsonValueKind.Number && current.TryGetInt32(out var value) ? value : null;
     }
-    private static int? Usage(JsonElement value) => value.ValueKind == JsonValueKind.Number && value.TryGetInt32(out var parsed) ? parsed : null;
     private static string Hash(string value) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
     private static string Hash(byte[] value) => Convert.ToHexStringLower(SHA256.HashData(value));
     private static void WriteNew(string path, object value)

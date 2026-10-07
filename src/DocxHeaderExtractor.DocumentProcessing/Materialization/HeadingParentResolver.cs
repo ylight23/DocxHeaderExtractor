@@ -13,6 +13,24 @@ namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
 /// </summary>
 internal static class HeadingParentResolver
 {
+    private const string RawPlacementPrompt = """
+        You are the structural stage of the A99 canonical document pipeline. The heading list below
+        is already settled: do not add, remove, rename or re-judge any entry. Decide one thing only
+        — where each heading in "toPlace" sits relative to the others.
+
+        Answer with {"placements":[{"alias":"<alias>","parent":"<alias>|ROOT|NONE"}]}.
+          "<alias>" - it belongs under that heading, which must appear earlier in the list.
+          "ROOT"    - it is a top-level section of this document.
+          "NONE"    - it is a heading but holds no position in the section tree: the document's own
+                      title or subtitle, a meeting date or venue line, a running header, a table or
+                      figure label, a form label, an annex label.
+        Omit an alias entirely if the evidence still does not let you decide. Never return a level:
+        the harness derives depth from the relations you give.
+        """;
+
+    /// <summary>The placement prompt, line endings settled (a prompt is bytes on the wire).</summary>
+    internal static string PlacementPrompt { get; } = RawPlacementPrompt.ReplaceLineEndings("\n");
+
     /// <summary>
     /// Re-asks only about headings the first pass left unplaced. Provider authority remains with
     /// the transport supplied by the caller; the PDF experiment caller supplies its gated
@@ -45,7 +63,7 @@ internal static class HeadingParentResolver
         try
         {
             raw = await transport.BoundaryCutAsync(
-                CanonicalSemanticEngine.PlacementPrompt,
+                PlacementPrompt,
                 packet,
                 cancellationToken,
                 expectedItemCount: unplaced.Count);

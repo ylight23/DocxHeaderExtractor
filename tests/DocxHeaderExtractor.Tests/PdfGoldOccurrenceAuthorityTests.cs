@@ -8,8 +8,6 @@ public sealed class PdfGoldOccurrenceAuthorityTests
     private const string Pack = "eval/a99-closed-loop/pdf-gold-doc0252";
     private const string Authority = Pack + "/review-decisions.v1.json";
     private const string SourceUniverse = Pack + "/source-universe.v1.json";
-    private const string OccurrenceArtifact =
-        "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.occurrence-gold.v1.json";
 
     [Fact]
     public void Approved_authority_converts_without_using_the_41_total()

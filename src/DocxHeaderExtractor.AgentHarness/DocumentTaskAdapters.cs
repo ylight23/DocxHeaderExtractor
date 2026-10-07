@@ -24,7 +24,6 @@ internal static class DocumentTaskAdapters
 
     public static PolicyDecision EvaluatePolicy(
         ExecutionPlan plan,
-        AgentToolSelection selection,
         DocumentAgentRequest request,
         AgentSkill skill) =>
         PolicyEvaluator.Evaluate(

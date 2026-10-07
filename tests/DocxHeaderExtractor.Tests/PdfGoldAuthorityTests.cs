@@ -429,16 +429,4 @@ public sealed class PdfGoldAuthorityTests
         return (document.SourceCatalog, SemanticSourceAliasCatalog.FromCatalog(document.SourceCatalog));
     }
 
-    private static IReadOnlyList<PdfLayoutBlock> Blocks()
-    {
-        var path = Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar));
-        IReadOnlyList<PdfLine> lines;
-        using (var document = UglyToad.PdfPig.PdfDocument.Open(path))
-        {
-            lines = PdfLineExtraction.ExtractLines(document);
-        }
-
-        return PdfLayoutBlockGrouper.Build(PdfLineObservationAnalyzer.Analyze(lines));
-    }
-
 }

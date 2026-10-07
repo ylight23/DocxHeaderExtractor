@@ -24,17 +24,6 @@ internal sealed record ValidatedHeading(
     public IReadOnlyList<CanonicalSemanticBoundPart>? Parts { get; init; }
 }
 
-/// <summary>Resolved placement facts for a validated heading.</summary>
-public sealed record ResolvedHeadingHierarchy(
-    string SourceId,
-    int Level,
-    string? ParentId,
-    string ParentResolution,
-    string Decision)
-{
-    public string StructuralScope { get; init; } = "document_body";
-}
-
 /// <summary>Diagnostic trace; never authority input.</summary>
 public sealed record HeadingSourceStageTrace(
     string Id,

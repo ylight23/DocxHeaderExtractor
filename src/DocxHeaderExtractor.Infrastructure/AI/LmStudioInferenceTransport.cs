@@ -109,13 +109,6 @@ public sealed class LmStudioInferenceTransport : IInferenceTransport
         throw new FormatException("LM Studio response không có choices[0].message.content.");
     }
 
-    private static string Safe(string text, int max)
-    {
-        if (string.IsNullOrWhiteSpace(text)) return "<rỗng>";
-        var oneLine = text.ReplaceLineEndings(" ").Trim();
-        return oneLine.Length <= max ? oneLine : oneLine[..max] + "…";
-    }
-
     private static RemoteInferenceOptions Validate(RemoteInferenceOptions options)
     {
         options.Validate();
