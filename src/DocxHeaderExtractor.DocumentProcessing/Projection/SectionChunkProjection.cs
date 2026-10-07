@@ -1,7 +1,8 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Projection;
 
 /// <summary>
 /// Chunk policy for generic document output, independent of model prompt chunking. The budget comes

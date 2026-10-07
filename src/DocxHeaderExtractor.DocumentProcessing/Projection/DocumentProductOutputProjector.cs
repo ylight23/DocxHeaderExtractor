@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Projection;
 
 /// <summary>
 /// M9.3. Turns a decided <see cref="CanonicalFinalStructure"/> into the product's minimal heading shape.

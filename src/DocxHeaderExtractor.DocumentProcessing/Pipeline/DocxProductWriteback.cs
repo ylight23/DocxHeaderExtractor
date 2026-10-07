@@ -1,4 +1,5 @@
 using DocumentFormat.OpenXml.Packaging;
+using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;

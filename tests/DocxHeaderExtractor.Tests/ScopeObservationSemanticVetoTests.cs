@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Projection;
 using Xunit;
 
 namespace DocxHeaderExtractor.Tests;

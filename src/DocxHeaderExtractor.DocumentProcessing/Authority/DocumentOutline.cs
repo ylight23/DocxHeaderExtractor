@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
@@ -185,7 +186,7 @@ public sealed class DocumentOutline
     /// <see cref="HeadingRecord"/>. Internal transport only; never part of the JSON contract.
     /// </summary>
     [JsonIgnore]
-    public Pipeline.DocumentProductOutput? ProductOutput { get; init; }
+    public Projection.DocumentProductOutput? ProductOutput { get; init; }
 
     /// <summary>
     /// Số đoạn đáng ngờ cần trọng tài xem lại: hai lượt quét bất đồng, hoặc hậu kiểm đánh số

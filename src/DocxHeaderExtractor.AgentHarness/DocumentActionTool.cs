@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Application.Capabilities;
+using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;

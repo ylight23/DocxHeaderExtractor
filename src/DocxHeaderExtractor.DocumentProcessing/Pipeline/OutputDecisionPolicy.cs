@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Projection;
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
