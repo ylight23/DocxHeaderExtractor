@@ -31,6 +31,12 @@ public sealed class V5P6TH2CTypographyOnlyScreenPreflightTests
     [Fact]
     public void Typography_only_four_call_screen_freezes_historical_control_replication_without_gold_or_provider()
     {
+        if (FrozenHistoryReplayPolicy.RichGeometry("SRC-089") == HistoricalReplayStatus.FrozenEvidenceOnly)
+        {
+            FrozenHistoryReplayPolicy.AssertFrozenEvidenceOnly("SRC-089", nameof(V5P6TH2CTypographyOnlyScreenPreflightTests));
+            return;
+        }
+
         var repo = TestRepository.Root();
         var allRequests = P6TH2CEndPointerCanary.BuildAllForTreatment(repo, "V2");
         Assert.Equal(31, allRequests.Count);

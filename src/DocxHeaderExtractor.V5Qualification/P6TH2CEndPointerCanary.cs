@@ -53,10 +53,10 @@ internal static class P6TH2CEndPointerCanary
     private sealed record Parsed(string Anchor, IReadOnlyList<string> HeadingMembers, string EndOccurrence,
         string? FirstOutsideOccurrence, string FirstOutsideRole);
 
-    internal static IReadOnlyList<Request> BuildAllForTreatment(string repo, string treatment)
+    internal static IReadOnlyList<Request> BuildAllForTreatment(string repo, string treatment, Func<string, bool>? includeDocument = null)
     {
         var prompt = P6TH2CCleanPairedBoundaryTreatment.SystemPrompt(treatment);
-        return Sources.SelectMany(source => Build(repo, source, prompt, "v5-function-conditioned-exact-end-pointer-clean-paired-1")).ToArray();
+        return Sources.Where(source => includeDocument?.Invoke(source.DocumentId) ?? true).SelectMany(source => Build(repo, source, prompt, "v5-function-conditioned-exact-end-pointer-clean-paired-1")).ToArray();
     }
 
     internal static async Task<int> RunCleanPairedAsync(string repo, string[] args)

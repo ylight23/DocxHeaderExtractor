@@ -101,6 +101,32 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
             body.PayloadBytes, body.Hash, body.Bytes, request.MaxCompletionTokens, request.IssuedOccurrences);
     }
 
+    /// <summary>
+    /// The live replay that stays when a document's rich-geometry replay is retired: every other document's requests are
+    /// rebuilt from its parse and must reproduce the frozen Arm A and Arm B bodies byte for byte.
+    /// </summary>
+    internal static void OtherDocumentsMatchTheirFrozenArms(string repo)
+    {
+        var live = P6TH2CEndPointerCanary.BuildAllForTreatment(
+            repo, "V2", id => FrozenHistoryReplayPolicy.RichGeometry(id) == HistoricalReplayStatus.LiveReplay);
+        using var frozen = JsonDocument.Parse(File.ReadAllBytes(TestRepository.Path(OutputRoot + "/h2c-evidence-complete-preflight.v1.json")));
+        var rows = frozen.RootElement.GetProperty("requests").EnumerateArray().ToArray();
+        var retired = rows.Count(row => FrozenHistoryReplayPolicy.RichGeometry(row.GetProperty("documentId").GetString()!) == HistoricalReplayStatus.FrozenEvidenceOnly);
+        Assert.Equal(rows.Length - retired, live.Count);
+        Assert.NotEmpty(live);
+        foreach (var request in live)
+        {
+            var row = rows.Single(item => item.GetProperty("documentId").GetString() == request.Source.DocumentId &&
+                                          item.GetProperty("anchor").GetString() == request.Anchor);
+            var a = BuildArmARequest(request);
+            var b = BuildArmBRequest(repo, request);
+            Assert.Equal(row.GetProperty("armA").GetProperty("userMessageSha256").GetString(), a.UserMessageSha256);
+            Assert.Equal(row.GetProperty("armA").GetProperty("providerBodySha256").GetString(), a.ProviderBodySha256);
+            Assert.Equal(row.GetProperty("armB").GetProperty("userMessageSha256").GetString(), b.UserMessageSha256);
+            Assert.Equal(row.GetProperty("armB").GetProperty("providerBodySha256").GetString(), b.ProviderBodySha256);
+        }
+    }
+
     internal static string BuildEvidencePrompt() =>
         P6TH2CCleanPairedBoundaryTreatment.V2SemanticBoundaryInstruction + "\n\n" +
         P6TH2CCleanPairedBoundaryTreatment.SharedContractInstruction.Replace(
@@ -187,6 +213,13 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
     [Fact]
     public async Task H2C_evidence_complete_pair_freezes_projection_only_delta_and_corrects_coordinate_wording()
     {
+        if (FrozenHistoryReplayPolicy.RichGeometry("SRC-089") == HistoricalReplayStatus.FrozenEvidenceOnly)
+        {
+            FrozenHistoryReplayPolicy.AssertFrozenEvidenceOnly("SRC-089", nameof(V5P6TH2CEvidenceCompletePreflightTests));
+            OtherDocumentsMatchTheirFrozenArms(TestRepository.Root());
+            return;
+        }
+
         var repo = TestRepository.Root();
         var sourceRequests = P6TH2CEndPointerCanary.BuildAllForTreatment(repo, "V2");
         Assert.Equal(31, sourceRequests.Count);

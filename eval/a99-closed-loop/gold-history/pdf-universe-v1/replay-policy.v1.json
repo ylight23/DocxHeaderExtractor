@@ -1,0 +1,64 @@
+{
+ "schemaVersion": "a99-frozen-history-replay-policy-v1",
+ "providerCalls": 0,
+ "modelCalls": 0,
+ "goldRead": false,
+ "entries": [
+  {
+   "documentId": "SRC-089",
+   "capability": "RICH_GEOMETRY_LIVE_REPLAY",
+   "status": "FROZEN_EVIDENCE_ONLY",
+   "reasonCode": "LIVE_REPLAY_UNAVAILABLE_AFTER_SOURCE_GEOMETRY_MIGRATION",
+   "reason": "SRC-089's historical H2-C evidence artifacts were derived from ParserGeometryV1 line/glyph typography and geometry. The current production parser uses StableGlyphGeometryV2 for this document. The committed V1 canonical source snapshot preserves occurrence identity/text but does not preserve the complete line/glyph geometry needed to reconstruct these historical evidence projections exactly. The frozen V1 artifacts remain immutable historical authority.",
+   "retires": "live rich-geometry replay of the listed tests for this document only; it does not retire SRC-089, the V1 Gold vintage used to score, or any frozen artifact",
+   "stillRequired": [
+    "frozen artifact hash verification",
+    "scoring against the V1 Gold vintage",
+    "live replay of every other document"
+   ],
+   "historicalUniverse": "pdf-universe-v1",
+   "historicalUniverseSha256": "949dedfe976c1baeebf60bcad4bee75a5d5eafef7886bb2e9385f0708c7fb494",
+   "historicalSnapshot": "eval/a99-closed-loop/pdf-canonical-source-v1/f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5.json",
+   "currentGeometryProfile": "a99-pdf-glyph-geometry-v2-font-independent",
+   "currentUniverseSha256": "d45b4a027d4da6133c852f7ee470365d08fbf8f9a47c25aff9afd074278ec8cc",
+   "currentSnapshot": "eval/a99-closed-loop/pdf-canonical-source-v2/f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5.json",
+   "decidedBy": "USER",
+   "decidedAt": "2026-10-07",
+   "scope": {
+    "tests": [
+     "V5P6TH2CEvidenceCompletePreflightTests",
+     "V5P6TH2CTypographyOnlyScreenPreflightTests",
+     "V5P6TH2CTypographyOnlyScreenGoldScoreTests",
+     "V5P6TH2CCleanBoundarySeparabilityAuditTests"
+    ],
+    "frozenArtifacts": [
+     {
+      "path": "artifacts/v5-p6t-function-membership/p6th2c-evidence-complete-preflight/h2c-evidence-complete-preflight.v1.json",
+      "sha256": "d8f0287fd039d0523685a1d09ce299d8a44df64a51b8b408d0a6fd6c90bbdd3a"
+     },
+     {
+      "path": "artifacts/v5-p6t-function-membership/p6th2c-evidence-complete-preflight/execution-manifest.v1.json",
+      "sha256": "74ebae1f4bbc841c24a010be764262eeec7ae14b9504b35a96ecb740cdb869c7"
+     },
+     {
+      "path": "artifacts/v5-p6t-function-membership/p6th2c-typography-only-screen-preflight/typography-only-screen-preflight.v1.json",
+      "sha256": "795c2d1a2c60a9ec12fbf58895bcf3c5ff4a09f51188a1cda964a4a70ceeeb79"
+     },
+     {
+      "path": "artifacts/v5-p6t-function-membership/p6th2c-typography-only-screen-preflight/execution-manifest.v1.json",
+      "sha256": "d988b2ec9df9dbaf1cad50b9d4be2165e8102e216aa0023c37ed9c28bb3174b2"
+     },
+     {
+      "path": "artifacts/v5-p6t-function-membership/p6th2c-typography-only-screen-gold-score/h2c-typography-only-screen-gold-score.v1.json",
+      "sha256": "0f3e5f11b220914f888acb8a9fd8f5f1d2a497fda58a8d5571f05c8d3686ba84"
+     },
+     {
+      "path": "artifacts/v5-p6t-function-membership/p6th2c-clean-boundary-separability-audit/h2c-clean-boundary-separability-audit.v1.json",
+      "sha256": "99be4ca040d9ed9b8250f954c1c1c4c5df4e4ee5361d68f570823905de5ff861",
+      "committed": false
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -33,6 +33,12 @@ public sealed class V5P6TH2CTypographyOnlyScreenGoldScoreTests
     [Fact]
     public void Typography_only_screen_is_scored_after_immutable_capture_freeze_and_then_canonical_gold()
     {
+        if (FrozenHistoryReplayPolicy.RichGeometry("SRC-089") == HistoricalReplayStatus.FrozenEvidenceOnly)
+        {
+            FrozenHistoryReplayPolicy.AssertFrozenEvidenceOnly("SRC-089", nameof(V5P6TH2CTypographyOnlyScreenGoldScoreTests));
+            return;
+        }
+
         var repo = TestRepository.Root();
         var rawPaths = Targets.Select(target => TestRepository.Path($"{CaptureRoot}/{target.DocumentId}_{target.Anchor}.raw-capture.v1.json"))
             .Concat(Targets.Select(target => TestRepository.Path($"{HistoricalCaptureRoot}/arm-a/{target.DocumentId}_{target.Anchor}.raw-capture.v1.json"))).ToArray();
