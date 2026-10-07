@@ -1,6 +1,6 @@
 # Current architecture contract
 
-Status: `ACTIVE — N13/N14 OWNERSHIP AND VOCABULARY CLOSURE`
+Status: `ACTIVE — N15 SOURCE OWNERSHIP CLOSURE`
 
 Baseline: `main@5678b454dc28c8bab811c5ce35a789d540fa82be`
 
@@ -26,12 +26,13 @@ All three hosts currently use the same `DocumentAgentHarness`; Web, CLI, and MCP
 validated `TaskResult.Value` projection. The compatibility `DocumentAgentRunResult.Outline` is
 retained for existing library/test callers and is not a second authority route.
 
-## Production ownership after N13/N14
+## Production ownership after N15
 
 `DocumentProcessing/Pipeline/` is orchestration-only. Its exact, recursively checked allowlist is
 `DocxExtractionPipeline.cs`, `DocxHeadingPipeline.cs`, `PdfExtractionPipeline.cs`,
 `PdfHeadingPipeline.cs`, `PdfLaneExecution.cs`, `PdfStageCheckpoint.cs`,
-`ProductionCheckpointScope.cs`, and `PipelineOptions.cs`. Helpers, validators and parsers may not
+`ProductionCheckpointScope.cs`, `PipelineOptions.cs`, and `PdfSemanticLaneOptions.cs`. The last file
+owns only the semantic lane's execution deadline, not source facts or heading decisions. Helpers, validators and parsers may not
 be added there.
 
 PDF parsing/adapters belong to `Source/Pdf`; DOCX adapters to `Source/Docx`; shared marker parsing
@@ -47,6 +48,11 @@ The C# audit vocabulary is `PipelineExecutionAudit`, `LaneExecutionAudit`, `Sour
 retains the JSON name `route`; serialized/API names and frozen experiment artifacts are unchanged.
 `HeadingAuthorityArchitectureTests` guards the exact layout, retired symbols, and provider-neutral
 DocumentProcessing vocabulary. This cleanup changes neither prompts nor semantic authority.
+
+Source ownership is namespace-aligned: shared `SourceMarkerFact` lives in `Source/Common`, PDF
+facts/context construction in `Source/Pdf`, and `HeadingHierarchyFactAudit` in `Authority`.
+`Source/**` may not depend on the `Pipeline` namespace; orchestration depends on source, never
+the reverse. The architecture guard checks both that dependency direction and source namespaces.
 
 ## Trust and authority boundaries
 

@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 internal sealed record PdfSemanticBlock(

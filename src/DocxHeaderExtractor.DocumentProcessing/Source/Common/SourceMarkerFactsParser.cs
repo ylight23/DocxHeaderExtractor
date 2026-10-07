@@ -1,5 +1,4 @@
 using System.Collections.Immutable;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Common;

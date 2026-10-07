@@ -1,5 +1,4 @@
 using UglyToad.PdfPig;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using UglyToad.PdfPig.Content;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;

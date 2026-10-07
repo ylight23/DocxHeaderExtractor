@@ -1,5 +1,4 @@
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 

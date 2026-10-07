@@ -1,12 +1,11 @@
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 using System.Collections.Immutable;
-using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 internal static class PdfSemanticSourceContextBuilder
 {

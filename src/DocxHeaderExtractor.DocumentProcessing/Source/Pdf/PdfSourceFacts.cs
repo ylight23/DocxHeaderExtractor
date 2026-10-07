@@ -1,11 +1,11 @@
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 using System.Collections.Immutable;
-using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 /// <summary>
 /// Immutable facts observed by the PDF parser and layout filter. Model output is deliberately

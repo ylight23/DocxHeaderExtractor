@@ -74,6 +74,7 @@ public sealed class HeadingAuthorityArchitectureTests
         [
             "DocxExtractionPipeline.cs", "DocxHeadingPipeline.cs", "PdfExtractionPipeline.cs", "PdfHeadingPipeline.cs",
             "PdfLaneExecution.cs", "PdfStageCheckpoint.cs", "ProductionCheckpointScope.cs", "PipelineOptions.cs",
+            "PdfSemanticLaneOptions.cs",
         ];
         var pipeline = Path.Combine(root, "Pipeline");
         Assert.Equal(orchestrationFiles.Order(StringComparer.Ordinal),
@@ -83,10 +84,10 @@ public sealed class HeadingAuthorityArchitectureTests
         {
             ("Source/Docx", ["DocxSourceAdapter"]),
             ("Source/Pdf", ["PdfSourceAdapter", "PdfSourceBuildResult", "PdfLineExtraction", "PdfLineIdentity", "PdfLineObservationAnalyzer",
-                "PdfSegmentAtomCatalog", "PdfSemanticBlockGrouper", "PdfSemanticContracts", "PdfSourceEvidence", "PdfSourceTextProjection",
+                "PdfSegmentAtomCatalog", "PdfSemanticBlockGrouper", "PdfSourceFacts", "PdfSourceContextBuilder", "PdfSourceEvidence", "PdfSourceTextProjection",
                 "PdfStyleClusterProfile", "PdfVisualLineSegmentation", "PdfReadOnlyCorrespondenceBuilder", "PdfSourceFactsBuilder"]),
             ("Source", ["DocumentSourceCatalogBuilder"]),
-            ("Source/Common", ["DocumentOccurrence", "DocumentSourceSnapshot", "OccurrenceContext", "LooseLabelledMarkerParser", "SourceMarkerFactsParser"]),
+            ("Source/Common", ["DocumentOccurrence", "DocumentSourceSnapshot", "OccurrenceContext", "LooseLabelledMarkerParser", "SourceMarkerFactsParser", "SourceMarkerFact"]),
             ("Semantics/HeadingAuthority", ["TextSemanticHeadingAuthority", "FunctionAnchorExtentHeadingAuthority", "HeadingDecisionBinder"]),
             ("Semantics/Canonical", ["CanonicalSemanticEngine", "CanonicalSemanticExperiment", "CanonicalGrounding", "SemanticConflictCensus",
                 "SemanticEvidencePackingPolicy", "SemanticRequestVersion"]),
@@ -104,6 +105,21 @@ public sealed class HeadingAuthorityArchitectureTests
                 Assert.True(File.Exists(Path.Combine(root, folder.Replace('/', Path.DirectorySeparatorChar), file + ".cs")), $"{folder}/{file}.cs");
                 Assert.False(File.Exists(Path.Combine(root, "Pipeline", file + ".cs")), $"Pipeline/{file}.cs should have moved");
             }
+    }
+
+    [Fact]
+    public void Source_ownership_has_no_reverse_dependency_on_pipeline()
+    {
+        var root = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Source");
+        foreach (var file in Directory.EnumerateFiles(root, "*.cs", SearchOption.AllDirectories))
+        {
+            var source = File.ReadAllText(file);
+            Assert.DoesNotContain("DocxHeaderExtractor.DocumentProcessing.Pipeline", source, StringComparison.Ordinal);
+            var folder = Path.GetDirectoryName(Path.GetRelativePath(root, file))!;
+            var expectedNamespace = "DocxHeaderExtractor.DocumentProcessing.Source" +
+                (folder.Length == 0 ? "" : "." + folder.Replace(Path.DirectorySeparatorChar, '.'));
+            Assert.Contains($"namespace {expectedNamespace};", source, StringComparison.Ordinal);
+        }
     }
 
     [Fact]

@@ -1,14 +1,10 @@
 using System.Collections.Immutable;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
 /// <summary>
-/// Parser-side marker facts are intentionally broader than <see cref="NumberingAudit"/>. They
-/// improve PDF retrieval/context only; final sequence auditing remains strict and independent.
+/// Shared parser-side marker shape for DOCX and PDF source context and audit.
+/// A marker is source evidence, never a heading decision; sequence auditing remains independent.
 /// </summary>
 internal readonly record struct SourceMarkerFact(string Signature, int Depth, string Family, bool IsPath)
 {

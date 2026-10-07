@@ -1,8 +1,4 @@
-using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-
-namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
+namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
 /// Runaway guard for one document's semantic lane. It is not a work budget: every provider call is
