@@ -60,7 +60,7 @@ public sealed class ExtractionBoundaryTests : IDisposable
         // A same-named PDF beside it must change nothing.
         await File.WriteAllTextAsync(Path.Combine(_directory, "report.pdf"), "%PDF-1.7\n");
         using var pipeline = new DocxExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        var dispatcher = new CanonicalExtractionDispatcher(
+        var dispatcher = new DocumentExtractionRouter(
             new DocxCanonicalSourceExtractor(pipeline), new PdfCanonicalSourceExtractor(new PipelineOptions { DisableLlm = true }));
 
         var execution = await dispatcher.ExtractAsync(
@@ -77,7 +77,7 @@ public sealed class ExtractionBoundaryTests : IDisposable
     {
         var path = Path.Combine(_directory, "notes.docx");
         await File.WriteAllBytesAsync(path, [0x00, 0x01, 0x02, 0x03]);
-        var dispatcher = new CanonicalExtractionDispatcher(new PdfCanonicalSourceExtractor(new PipelineOptions { DisableLlm = true }));
+        var dispatcher = new DocumentExtractionRouter(new PdfCanonicalSourceExtractor(new PipelineOptions { DisableLlm = true }));
 
         await Assert.ThrowsAsync<UnsupportedSourceException>(() => dispatcher.ExtractAsync(
             new AuthorityExtractionRequest(UploadedFile.FromLocalPath(path))));

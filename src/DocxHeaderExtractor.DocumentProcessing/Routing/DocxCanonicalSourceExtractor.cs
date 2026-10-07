@@ -72,7 +72,7 @@ public sealed class PdfCanonicalSourceExtractor : ICanonicalSourceExtractor, IDi
     {
         ArgumentNullException.ThrowIfNull(file);
         var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
-        return await PdfCanonicalExtraction.RunExecutionAsync(
+        return await PdfExtractionPipeline.RunExecutionAsync(
             file, _options, analyst, quarantinedIndexes, _sendsDataExternally, ct);
     }
 

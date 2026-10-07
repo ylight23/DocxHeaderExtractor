@@ -27,7 +27,7 @@ public sealed class PdfCanonicalLaneTests
         var file = UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf));
         Assert.Equal(SourceType.Pdf, file.DetectedType);
 
-        var document = await PdfCanonicalExtraction.RunAsync(file, new PipelineOptions { DisableLlm = true });
+        var document = await PdfExtractionPipeline.RunAsync(file, new PipelineOptions { DisableLlm = true });
 
         Assert.Equal("pdf-canonical-vnext", document.Provenance.Route);
         Assert.Equal("pdf-source-document", document.Provenance.SourceCatalogKind);
@@ -46,7 +46,7 @@ public sealed class PdfCanonicalLaneTests
         // block count, the PDF lane has grown the hidden gate the DOCX lane had removed.
         var file = UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf));
 
-        var document = await PdfCanonicalExtraction.RunAsync(file, new PipelineOptions { DisableLlm = true });
+        var document = await PdfExtractionPipeline.RunAsync(file, new PipelineOptions { DisableLlm = true });
 
         var withArtefacts = document.SourceCatalog.Units
             .Count(unit => unit.Text.Trim().Length <= 3);
@@ -65,7 +65,7 @@ public sealed class PdfCanonicalLaneTests
         Assert.True(File.Exists(Path.Combine(root, SameMaterialAsDocx)));
         var file = UploadedFile.FromLocalPath(Path.Combine(root, Pdf));
 
-        var document = await PdfCanonicalExtraction.RunAsync(file, new PipelineOptions { DisableLlm = true });
+        var document = await PdfExtractionPipeline.RunAsync(file, new PipelineOptions { DisableLlm = true });
 
         Assert.All(document.SourceCatalog.Units, unit =>
             Assert.Equal("pdf", unit.SourceAnchor.SourceType));
@@ -77,7 +77,7 @@ public sealed class PdfCanonicalLaneTests
     public async Task A_pdf_and_a_docx_of_the_same_material_are_two_independent_documents()
     {
         var root = TestRepository.Root();
-        var pdf = await PdfCanonicalExtraction.RunAsync(
+        var pdf = await PdfExtractionPipeline.RunAsync(
             UploadedFile.FromLocalPath(Path.Combine(root, Pdf)), new PipelineOptions { DisableLlm = true });
         using var pipeline = new DocxExtractionPipeline(new PipelineOptions { DisableLlm = true });
         var docx = (await pipeline.RunDocumentExecutionAsync(Path.Combine(root, SameMaterialAsDocx))).Result;
@@ -96,7 +96,7 @@ public sealed class PdfCanonicalLaneTests
         var file = UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), SameMaterialAsDocx));
 
         await Assert.ThrowsAsync<UnsupportedSourceException>(() =>
-            PdfCanonicalExtraction.RunAsync(file, new PipelineOptions { DisableLlm = true }));
+            PdfExtractionPipeline.RunAsync(file, new PipelineOptions { DisableLlm = true }));
     }
 
 }

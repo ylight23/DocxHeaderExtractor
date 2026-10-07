@@ -44,7 +44,7 @@ public sealed class PdfSourceCatalogIdentityTests
     {
         var blocks = Blocks().ToDictionary(block => block.Id, StringComparer.Ordinal);
 
-        var document = await PdfCanonicalExtraction.RunAsync(
+        var document = await PdfExtractionPipeline.RunAsync(
             UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
             new PipelineOptions { DisableLlm = true });
 
@@ -63,7 +63,7 @@ public sealed class PdfSourceCatalogIdentityTests
         // other also tied the consumer's view of the document to what the run happened to audit.
         var blocks = Blocks();
 
-        var document = await PdfCanonicalExtraction.RunAsync(
+        var document = await PdfExtractionPipeline.RunAsync(
             UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
             new PipelineOptions { DisableLlm = true });
 
@@ -82,7 +82,7 @@ public sealed class PdfSourceCatalogIdentityTests
             .Where(block => !string.Equals(block.DisplayText, block.VerbatimText, StringComparison.Ordinal))
             .ToDictionary(block => block.Id, StringComparer.Ordinal);
 
-        var document = await PdfCanonicalExtraction.RunAsync(
+        var document = await PdfExtractionPipeline.RunAsync(
             UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
             new PipelineOptions { DisableLlm = true });
 

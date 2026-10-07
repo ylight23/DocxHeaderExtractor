@@ -270,7 +270,7 @@ public sealed class PdfGoldAuthorityTests
         var gold = Fixture(catalog, aliases, count: 3);
         var issues = PdfGoldValidator.Validate(gold, catalog, aliases);
 
-        var document = await PdfCanonicalExtraction.RunAsync(
+        var document = await PdfExtractionPipeline.RunAsync(
             UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
             new PipelineOptions { DisableLlm = true });
         var predicted = document.Structure.Elements
@@ -422,7 +422,7 @@ public sealed class PdfGoldAuthorityTests
 
     private static async Task<(DocumentSourceCatalog Catalog, IReadOnlyList<SemanticSourceAlias> Aliases)> SourceAsync()
     {
-        var document = await PdfCanonicalExtraction.RunAsync(
+        var document = await PdfExtractionPipeline.RunAsync(
             UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
             new PipelineOptions { DisableLlm = true });
         return (document.SourceCatalog, SemanticSourceAliasCatalog.FromCatalog(document.SourceCatalog));

@@ -100,7 +100,7 @@ public sealed class PdfLiveExecutionLifecycleTests
         CancellationToken cancellationToken = default)
     {
         var file = UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf));
-        return PdfCanonicalExtraction.RunExecutionAsync(
+        return PdfExtractionPipeline.RunExecutionAsync(
             file,
             new PipelineOptions(),
             classifier,

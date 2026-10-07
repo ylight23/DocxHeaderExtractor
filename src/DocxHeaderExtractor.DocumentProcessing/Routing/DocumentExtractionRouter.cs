@@ -35,11 +35,11 @@ public interface ICanonicalSourceExtractor
 /// only if the user asks for that explicitly.
 /// </para>
 /// </summary>
-public sealed class CanonicalExtractionDispatcher
+public sealed class DocumentExtractionRouter
 {
     private readonly IReadOnlyDictionary<SourceType, ICanonicalSourceExtractor> _extractors;
 
-    public CanonicalExtractionDispatcher(params ICanonicalSourceExtractor[] extractors)
+    public DocumentExtractionRouter(params ICanonicalSourceExtractor[] extractors)
     {
         ArgumentNullException.ThrowIfNull(extractors);
         _extractors = extractors.ToDictionary(item => item.Handles);

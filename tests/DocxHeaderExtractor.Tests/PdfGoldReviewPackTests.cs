@@ -390,7 +390,7 @@ public sealed class PdfGoldReviewPackTests
 
     private static async Task<IReadOnlyList<Row>> RowsAsync()
     {
-        var document = await PdfCanonicalExtraction.RunAsync(
+        var document = await PdfExtractionPipeline.RunAsync(
             UploadedFile.FromLocalPath(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))),
             new PipelineOptions { DisableLlm = true });
         var aliases = SemanticSourceAliasCatalog.FromCatalog(document.SourceCatalog)

@@ -26,13 +26,15 @@ public sealed class HeadingAuthorityArchitectureTests
     }
 
     [Fact]
-    public void Inference_backends_are_transports_not_header_extractors_or_classifiers()
+    public void Retired_transport_and_pipeline_vocabulary_is_gone_from_production()
     {
         var banned = new[]
         {
             "OpenRouterHeaderExtractor", "LmStudioHeaderExtractor", "SglangHeaderExtractor", "LlamaHeaderExtractor",
             "IHeaderClassifierFactory", "HeaderClassifierFactory", "FrozenHeaderExecutionResult",
             "LeaseBoundFrozenHeaderClassifier", "BorrowedHeaderClassifier",
+            "DocxHeadingAuthorityRoute", "PdfHeadingAuthorityRoute", "AuthorityExtractionPipeline",
+            "PdfCanonicalExtraction", "CanonicalExtractionDispatcher",
         };
         foreach (var file in Directory.EnumerateFiles(TestRepository.Path("src"), "*.cs", SearchOption.AllDirectories)
                      .Where(path => !path.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}") &&
@@ -76,7 +78,7 @@ public sealed class HeadingAuthorityArchitectureTests
     public void Pdf_adapter_keeps_parser_details_outside_common_universe()
     {
         var route = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfCanonicalExtraction.cs"));
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfExtractionPipeline.cs"));
         var adapter = File.ReadAllText(TestRepository.Path(
             "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceOccurrenceAdapter.cs"));
         var common = File.ReadAllText(TestRepository.Path(
@@ -112,7 +114,7 @@ public sealed class HeadingAuthorityArchitectureTests
     public void Pdf_authority_route_uses_qualified_transport_without_canonical_text_fallback()
     {
         var extraction = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfCanonicalExtraction.cs"));
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfExtractionPipeline.cs"));
         var route = File.ReadAllText(TestRepository.Path(
             "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfHeadingPipeline.cs"));
         var authority = File.ReadAllText(TestRepository.Path(

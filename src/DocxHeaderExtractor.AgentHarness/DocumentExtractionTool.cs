@@ -27,7 +27,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 {
     private readonly DocxExtractionPipeline _docxLane;
     private readonly PdfCanonicalSourceExtractor _pdfLane;
-    private readonly CanonicalExtractionDispatcher _dispatcher;
+    private readonly DocumentExtractionRouter _dispatcher;
     private readonly IInferenceTransport? _classifier;
     private readonly bool _ownsClassifier;
 
@@ -69,7 +69,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         Descriptor = Describe(options, sendsDataExternally);
     }
 
-    private static CanonicalExtractionDispatcher Dispatch(
+    private static DocumentExtractionRouter Dispatch(
         DocxExtractionPipeline pipeline, PdfCanonicalSourceExtractor pdfLane) =>
         new(new DocxCanonicalSourceExtractor(pipeline), pdfLane);
 

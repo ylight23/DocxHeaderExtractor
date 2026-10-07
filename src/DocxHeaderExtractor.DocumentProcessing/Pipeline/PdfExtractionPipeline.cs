@@ -14,7 +14,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// PDF.
 /// </para>
 /// </summary>
-public static class PdfCanonicalExtraction
+public static class PdfExtractionPipeline
 {
     public static async Task<DocumentExtractionResult> RunAsync(
         UploadedFile file,

@@ -125,7 +125,7 @@ public sealed class PdfProductReachabilityTests : IDisposable
         File.Copy(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar)), path, overwrite: true);
         using var pipeline = new DocxExtractionPipeline(new PipelineOptions { DisableLlm = true });
         using var pdfLane = new PdfCanonicalSourceExtractor(new PipelineOptions { DisableLlm = true });
-        var dispatcher = new CanonicalExtractionDispatcher(
+        var dispatcher = new DocumentExtractionRouter(
             new DocxCanonicalSourceExtractor(pipeline), pdfLane);
 
         var execution = await dispatcher.ExtractAsync(new AuthorityExtractionRequest(stale));
