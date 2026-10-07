@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Materialization;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -17,7 +18,7 @@ public sealed class PdfP3bPlacementStageTests
         };
         using var transport = new PlacementClassifier("not-used");
 
-        var placed = await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
+        var placed = await HeadingParentResolver.PlaceUnresolvedHeadingsAsync(
             bound, transport, CancellationToken.None);
 
         Assert.Equal(bound, placed);
@@ -36,7 +37,7 @@ public sealed class PdfP3bPlacementStageTests
         using var transport = new PlacementClassifier(
             "{\"placements\":[{\"alias\":\"S0002\",\"parent\":\"S0001\"}]}");
 
-        var placed = await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
+        var placed = await HeadingParentResolver.PlaceUnresolvedHeadingsAsync(
             bound, transport, CancellationToken.None);
 
         Assert.Single(transport.Requests);
@@ -59,7 +60,7 @@ public sealed class PdfP3bPlacementStageTests
         foreach (var response in new[] { "not-json", "{\"placements\":[]}" })
         {
             using var transport = new PlacementClassifier(response);
-            var placed = await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
+            var placed = await HeadingParentResolver.PlaceUnresolvedHeadingsAsync(
                 bound, transport, CancellationToken.None);
             Assert.Equal(bound, placed);
             Assert.Single(transport.Requests);
@@ -77,7 +78,7 @@ public sealed class PdfP3bPlacementStageTests
         using var transport = new PlacementClassifier(
             "{\"placements\":[{\"alias\":\"S0002\",\"parent\":\"ROOT\"}]}");
 
-        await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
+        await HeadingParentResolver.PlaceUnresolvedHeadingsAsync(
             bound, transport, CancellationToken.None);
 
         Assert.Single(transport.Requests);

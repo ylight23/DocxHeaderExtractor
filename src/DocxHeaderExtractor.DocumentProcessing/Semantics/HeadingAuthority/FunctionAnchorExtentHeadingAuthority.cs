@@ -90,7 +90,7 @@ internal sealed class FunctionAnchorExtentHeadingAuthority(
         {
             RawAnalystResponses = raw,
             ModelInputContracts = ["v5-total-occurrence-function-f1", "v5-function-conditioned-anchor-existence-1", "v5-function-conditioned-exact-end-pointer-clean-paired-1"],
-            ValidatedStructures = assembly.Placements.Values.ToArray(),
+            ValidatedStructures = assembly.Hierarchies.Values.ToArray(),
             SemanticLane = new RouteLaneExecutionAudit("complete", atomCount, decisions.Count, 0, 0),
             SpanLane = new RouteLaneExecutionAudit("exact-end-pointer", decisions.Count, assembly.Validated.Count, 0, decisions.Count - assembly.Validated.Count),
         };

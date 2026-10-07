@@ -80,7 +80,7 @@ internal sealed class TextSemanticHeadingAuthority(
                     selected ? "valid" : "not-selected",
                     null);
             }).ToArray(),
-            ValidatedStructures = assembly.Placements.Values.ToArray(),
+            ValidatedStructures = assembly.Hierarchies.Values.ToArray(),
             HierarchyFacts = [],
             ConflictCensus = SemanticConflictCensus.Take(
                 result.ConflictNormalization,

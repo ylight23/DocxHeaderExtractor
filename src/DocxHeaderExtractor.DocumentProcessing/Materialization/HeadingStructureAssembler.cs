@@ -19,7 +19,7 @@ internal enum PrimaryOccurrenceSelection
 /// <summary>Validated headings, their resolved placement and the canonical structure built from them.</summary>
 internal sealed record HeadingStructureAssembly(
     IReadOnlyList<ValidatedHeading> Validated,
-    IReadOnlyDictionary<string, ResolvedHeadingPlacement> Placements,
+    IReadOnlyDictionary<string, ResolvedHeadingHierarchy> Hierarchies,
     ValidatedStructure Structure);
 
 /// <summary>
@@ -44,7 +44,7 @@ internal static class HeadingStructureAssembler
         // is a legitimate outcome.
         var placed = authority.PlacementTransport is null
             ? authority.BoundHeadings
-            : await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
+            : await HeadingParentResolver.PlaceUnresolvedHeadingsAsync(
                 authority.BoundHeadings, authority.PlacementTransport, cancellationToken).ConfigureAwait(false);
         // The alias catalog spans the whole document while contexts hold only the occurrences the
         // route carries, so a bound heading can name a source this route cannot materialize.
@@ -54,7 +54,7 @@ internal static class HeadingStructureAssembler
             .ToArray();
         var placements = derived.ToDictionary(
             item => item.SourceId,
-            item => new ResolvedHeadingPlacement(
+            item => new ResolvedHeadingHierarchy(
                 item.SourceId, item.Level, item.ParentSourceId, item.Resolution, "requires_review")
             {
                 StructuralScope = source.OccurrenceContexts[item.SourceId].StructuralScope,
@@ -67,7 +67,7 @@ internal static class HeadingStructureAssembler
         var styleBySourceId = source.Occurrences.ToDictionary(item => item.Id, item => item.StyleId, StringComparer.Ordinal);
         var occurrences = source.OccurrenceContexts.ToDictionary(
             pair => pair.Key,
-            pair => new CanonicalSourceOccurrence(
+            pair => new StructureSourceOccurrence(
                 pair.Key,
                 source.OrdinalBySourceId.GetValueOrDefault(pair.Key),
                 pair.Value.RawText,
@@ -76,7 +76,7 @@ internal static class HeadingStructureAssembler
                 $"{source.SourceKind}-source-pointer-span"),
             StringComparer.Ordinal);
         // Every validated heading that reaches here is a bound model claim.
-        var structure = CanonicalStructureMaterializer.Materialize(
+        var structure = HeadingStructureMaterializer.Materialize(
             validated, placements, occurrences, source.SourceKind, StructuralDecisionOrigin.Model, primarySourceIds);
         return new HeadingStructureAssembly(validated, placements, structure);
     }

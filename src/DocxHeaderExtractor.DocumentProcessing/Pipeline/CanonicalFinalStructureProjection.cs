@@ -30,7 +30,7 @@ public static class CanonicalFinalStructureProjection
 
     public static CanonicalFinalStructure Project(
         string sourceDocumentSha256,
-        IReadOnlyList<ResolvedHeadingPlacement> structures,
+        IReadOnlyList<ResolvedHeadingHierarchy> structures,
         IReadOnlyList<HeadingHierarchyFactAudit> facts,
         IReadOnlyList<CanonicalGrounding> groundings)
     {
@@ -140,7 +140,7 @@ public static class CanonicalFinalStructureProjection
     /// the emitted set would be a dangling edge, which is worse than an honest null.
     /// </summary>
     private static (string? ParentId, string? Reason) ResolveParent(
-        ResolvedHeadingPlacement structure,
+        ResolvedHeadingHierarchy structure,
         IReadOnlyDictionary<string, HeadingHierarchyFactAudit> factById,
         IReadOnlySet<string> emittedIds)
     {

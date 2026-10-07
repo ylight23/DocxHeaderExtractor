@@ -116,7 +116,7 @@ public sealed class PdfProductReplayDeterminismTests
             new CanonicalGrounding("b2", 11, "@body[1]/p[11]", new DocxTextSpan(0, 9), "1.1 Scope"),
         ]);
 
-    private static ResolvedHeadingPlacement Structure(string id, string? parentId = null, string resolution = "unresolved") =>
+    private static ResolvedHeadingHierarchy Structure(string id, string? parentId = null, string resolution = "unresolved") =>
         new(id, 1, parentId, resolution, "requires_review") { StructuralScope = "document_body" };
 
     private static HeadingHierarchyFactAudit Fact(string id, int order, string text, int? resolvedLevel) =>
@@ -131,7 +131,7 @@ public sealed class PdfProductReplayDeterminismTests
 
     private sealed record Input(
         string Sha,
-        IReadOnlyList<ResolvedHeadingPlacement> Structures,
+        IReadOnlyList<ResolvedHeadingHierarchy> Structures,
         IReadOnlyList<HeadingHierarchyFactAudit> Facts,
         IReadOnlyList<CanonicalGrounding> Groundings);
 }

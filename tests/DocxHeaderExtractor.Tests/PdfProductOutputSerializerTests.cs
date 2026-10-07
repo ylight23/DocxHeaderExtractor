@@ -130,7 +130,7 @@ public sealed class DocumentProductOutputProjectorTests
             cases.Select(item => new CanonicalGrounding(item.Id, item.Order,
                 $"@body[1]/p[{item.Order}]", new DocxTextSpan(0, item.Text.Length), item.Text)).ToArray());
 
-    private static CanonicalFinalStructure Project(params (ResolvedHeadingPlacement Structure, string Text)[] cases) =>
+    private static CanonicalFinalStructure Project(params (ResolvedHeadingHierarchy Structure, string Text)[] cases) =>
         CanonicalFinalStructureProjection.Project(
             "sha",
             cases.Select(item => item.Structure).ToArray(),
@@ -138,7 +138,7 @@ public sealed class DocumentProductOutputProjectorTests
             cases.Select((item, index) => new CanonicalGrounding(item.Structure.SourceId, index,
                 $"@body[1]/p[{index}]", new DocxTextSpan(0, item.Text.Length), item.Text)).ToArray());
 
-    private static ResolvedHeadingPlacement Structure(string id) =>
+    private static ResolvedHeadingHierarchy Structure(string id) =>
         new(id, 1, null, "unresolved", "requires_review") { StructuralScope = "document_body" };
 
     private static HeadingHierarchyFactAudit Fact(string id, int order, string text) =>

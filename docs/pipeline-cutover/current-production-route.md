@@ -19,8 +19,8 @@ PDF  -> PdfSourceOccurrenceAdapter --+          |
                                                 |
                                                 v
                                      HeadingStructureAssembler (shared, format-blind)
-        HeadingDecisionBinder -> HeadingPlacementCoordinator -> HeadingHierarchyResolver
-                                -> CanonicalStructureMaterializer
+        HeadingDecisionBinder -> HeadingParentResolver -> HeadingHierarchyResolver
+                                -> HeadingStructureMaterializer
                                                 |
                                                 v
         CanonicalFinalStructure -> DocumentProductOutputProjector

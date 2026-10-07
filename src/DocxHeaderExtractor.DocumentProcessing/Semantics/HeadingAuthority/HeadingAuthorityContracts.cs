@@ -24,7 +24,7 @@ internal sealed record ValidatedHeading(
 }
 
 /// <summary>Resolved placement facts for a validated heading.</summary>
-public sealed record ResolvedHeadingPlacement(
+public sealed record ResolvedHeadingHierarchy(
     string SourceId,
     int Level,
     string? ParentId,

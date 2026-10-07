@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
+using DocxHeaderExtractor.DocumentProcessing.Materialization;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 namespace DocxHeaderExtractor.Tests;
@@ -40,6 +41,7 @@ public sealed class HeadingAuthorityArchitectureTests
             "PdfCanonicalExtraction", "CanonicalExtractionDispatcher",
             "CanonicalTextHeadingAuthority", "FunctionConditionedHeadingAuthority", "HeadingProposalBinder",
             "HeadingProposalValidator", "HeaderClassifierCanonicalTextModel", "PdfProductionOpenRouterHeaderClassifier",
+            "HeadingPlacementCoordinator", "ResolvedHeadingPlacement", "CanonicalStructureMaterializer", "CanonicalSourceOccurrence",
         };
         var retiredSourceSymbols = new[]
         {
@@ -64,7 +66,7 @@ public sealed class HeadingAuthorityArchitectureTests
     public void Materializer_does_not_choose_a_document_format()
     {
         var source = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/CanonicalStructureMaterializer.cs"));
+            "src/DocxHeaderExtractor.DocumentProcessing/Materialization/HeadingStructureMaterializer.cs"));
 
         Assert.DoesNotContain("\"docx\"", source, StringComparison.Ordinal);
         Assert.DoesNotContain("\"pdf\"", source, StringComparison.Ordinal);
@@ -161,11 +163,11 @@ public sealed class HeadingAuthorityArchitectureTests
             Assert.Contains("IHeadingAuthority", route, StringComparison.Ordinal);
             Assert.Contains("HeadingStructureAssembler.AssembleAsync", route, StringComparison.Ordinal);
             // Binding, placement, hierarchy and materialization belong to the assembler only.
-            Assert.DoesNotContain("CanonicalStructureMaterializer", route, StringComparison.Ordinal);
+            Assert.DoesNotContain("HeadingStructureMaterializer", route, StringComparison.Ordinal);
             Assert.DoesNotContain("HeadingHierarchyResolver", route, StringComparison.Ordinal);
-            Assert.DoesNotContain("HeadingPlacementCoordinator", route, StringComparison.Ordinal);
+            Assert.DoesNotContain("HeadingParentResolver", route, StringComparison.Ordinal);
         }
-        foreach (var token in new[] { "CanonicalStructureMaterializer.Materialize", "HeadingHierarchyResolver", "HeadingPlacementCoordinator", "HeadingDecisionBinder" })
+        foreach (var token in new[] { "HeadingStructureMaterializer.Materialize", "HeadingHierarchyResolver", "HeadingParentResolver", "HeadingDecisionBinder" })
             Assert.Contains(token, assembler, StringComparison.Ordinal);
         Assert.DoesNotContain("\"docx\"", assembler, StringComparison.Ordinal);
         Assert.DoesNotContain("\"pdf\"", assembler, StringComparison.Ordinal);

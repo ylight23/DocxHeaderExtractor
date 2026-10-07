@@ -1,6 +1,7 @@
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Core.Models;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
 
 /// <summary>
 /// Turns the immediate-parent relations a model returned into harness-owned levels.

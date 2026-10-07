@@ -1,14 +1,15 @@
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
 
 /// <summary>
 /// What structural materialization needs from a source occurrence, in any format. A DOCX paragraph
 /// and a PDF text block both reduce to this.
 /// </summary>
-internal sealed record CanonicalSourceOccurrence(
+internal sealed record StructureSourceOccurrence(
     string SourceId,
     int SourceOrdinal,
     string Text,
@@ -30,7 +31,7 @@ internal sealed record CanonicalSourceOccurrence(
 /// the same document in the other format.
 /// </para>
 /// </summary>
-internal static class CanonicalStructureMaterializer
+internal static class HeadingStructureMaterializer
 {
     /// <summary>
     /// Turns validated headings into canonical structure, reading only what any source format can
@@ -44,8 +45,8 @@ internal static class CanonicalStructureMaterializer
     /// </summary>
     internal static ValidatedStructure Materialize(
         IReadOnlyList<ValidatedHeading> validated,
-        IReadOnlyDictionary<string, ResolvedHeadingPlacement> structures,
-        IReadOnlyDictionary<string, CanonicalSourceOccurrence> occurrences,
+        IReadOnlyDictionary<string, ResolvedHeadingHierarchy> structures,
+        IReadOnlyDictionary<string, StructureSourceOccurrence> occurrences,
         string routeKey,
         string origin,
         IReadOnlySet<string>? primarySourceIds = null)
@@ -148,7 +149,7 @@ internal static class CanonicalStructureMaterializer
         return ValidatedStructure.FromElements(elements, relationProposals);
     }
 
-    private static SourceFacts FactsFor(CanonicalSourceOccurrence occurrence) => new()
+    private static SourceFacts FactsFor(StructureSourceOccurrence occurrence) => new()
     {
         SourceId = occurrence.SourceId,
         RawText = occurrence.Text,

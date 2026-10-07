@@ -1,15 +1,16 @@
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
 
 /// <summary>
 /// The bounded placement/recovery pass shared by the PDF and DOCX canonical lanes. The semantic
 /// heading list is already settled when this stage runs; this coordinator may add a placement
 /// relation only for an unresolved heading and never adds, removes, or rewrites a heading.
 /// </summary>
-internal static class HeadingPlacementCoordinator
+internal static class HeadingParentResolver
 {
     /// <summary>
     /// Re-asks only about headings the first pass left unplaced. Provider authority remains with

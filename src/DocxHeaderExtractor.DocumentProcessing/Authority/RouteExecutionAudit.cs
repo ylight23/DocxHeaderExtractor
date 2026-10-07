@@ -35,7 +35,7 @@ public sealed record RouteExecutionAudit(
     public IReadOnlyList<HeadingSourceStageTrace> SourceStageTraces { get; init; } = [];
 
     [JsonPropertyName("validatedStructures")]
-    public IReadOnlyList<ResolvedHeadingPlacement> ValidatedStructures { get; init; } = [];
+    public IReadOnlyList<ResolvedHeadingHierarchy> ValidatedStructures { get; init; } = [];
 
     [JsonPropertyName("hierarchyProposals")]
     public IReadOnlyList<PdfHierarchyProposalAudit> HierarchyProposals { get; init; } = [];

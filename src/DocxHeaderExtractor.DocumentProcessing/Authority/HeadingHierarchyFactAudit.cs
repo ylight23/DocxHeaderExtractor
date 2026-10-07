@@ -2,7 +2,7 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-/// <summary>Source-derived audit record, deliberately separate from <see cref="ResolvedHeadingPlacement"/>.</summary>
+/// <summary>Source-derived audit record, deliberately separate from <see cref="ResolvedHeadingHierarchy"/>.</summary>
 public sealed record HeadingHierarchyFactAudit(
     string Id,
     int SourceOrder,

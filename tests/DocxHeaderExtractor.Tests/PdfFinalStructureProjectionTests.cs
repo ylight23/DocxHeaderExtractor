@@ -173,7 +173,7 @@ public sealed class CanonicalFinalStructureProjectionTests
     /// re-derived later without re-running extraction, reconciliation or a model.
     /// </summary>
     /// <summary>
-    /// <see cref="ResolvedHeadingPlacement"/> declares its own <c>[JsonPropertyName]</c>s so it survives a
+    /// <see cref="ResolvedHeadingHierarchy"/> declares its own <c>[JsonPropertyName]</c>s so it survives a
     /// camelCase round-trip: without them a case-sensitive reader silently leaves <c>SourceId</c> null
     /// instead of throwing, which then throws much later and further away, inside <c>Project</c>.
     /// </summary>
@@ -190,7 +190,7 @@ public sealed class CanonicalFinalStructureProjectionTests
         };
 
         var json = System.Text.Json.JsonSerializer.Serialize(structure, camelCase);
-        var replayed = System.Text.Json.JsonSerializer.Deserialize<ResolvedHeadingPlacement>(json, camelCase);
+        var replayed = System.Text.Json.JsonSerializer.Deserialize<ResolvedHeadingHierarchy>(json, camelCase);
 
         Assert.Equal(structure, replayed);
         Assert.NotNull(replayed!.SourceId);
@@ -203,7 +203,7 @@ public sealed class CanonicalFinalStructureProjectionTests
             cases.Select(item => Fact(item.Id, item.Order, item.Text, item.Level)).ToArray(),
             []);
 
-    private static ResolvedHeadingPlacement Structure(string id, string? parentId = null, string resolution = "unresolved") =>
+    private static ResolvedHeadingHierarchy Structure(string id, string? parentId = null, string resolution = "unresolved") =>
         new(id, 1, parentId, resolution, "requires_review") { StructuralScope = "document_body" };
 
     private static HeadingHierarchyFactAudit Fact(string id, int order, string text, int? resolvedLevel) =>

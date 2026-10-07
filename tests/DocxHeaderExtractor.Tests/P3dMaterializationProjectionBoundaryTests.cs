@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Materialization;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -14,18 +15,18 @@ public sealed class P3dMaterializationProjectionBoundaryTests
             Heading("S0001", 0, 5),
             Heading("S0002", 0, 5),
         };
-        var structures = new Dictionary<string, ResolvedHeadingPlacement>(StringComparer.Ordinal)
+        var structures = new Dictionary<string, ResolvedHeadingHierarchy>(StringComparer.Ordinal)
         {
             ["S0001"] = new("S0001", 1, null, "model-root", "requires_review"),
             ["S0002"] = new("S0002", 7, "S0001", "model-parent-relation", "requires_review"),
         };
-        var occurrences = new Dictionary<string, CanonicalSourceOccurrence>(StringComparer.Ordinal)
+        var occurrences = new Dictionary<string, StructureSourceOccurrence>(StringComparer.Ordinal)
         {
             ["S0001"] = new("S0001", 0, "Alpha", null),
             ["S0002"] = new("S0002", 1, "Bravo", null),
         };
 
-        var result = CanonicalStructureMaterializer.Materialize(
+        var result = HeadingStructureMaterializer.Materialize(
             validated, structures, occurrences, "test", StructuralDecisionOrigin.Model,
             new HashSet<string>(["S0001"], StringComparer.Ordinal));
 
@@ -44,18 +45,18 @@ public sealed class P3dMaterializationProjectionBoundaryTests
     public void Same_resolved_input_produces_the_same_validated_structure()
     {
         var validated = new[] { Heading("S0001", 0, 5) };
-        var structures = new Dictionary<string, ResolvedHeadingPlacement>(StringComparer.Ordinal)
+        var structures = new Dictionary<string, ResolvedHeadingHierarchy>(StringComparer.Ordinal)
         {
             ["S0001"] = new("S0001", 2, null, "model-root", "requires_review"),
         };
-        var occurrences = new Dictionary<string, CanonicalSourceOccurrence>(StringComparer.Ordinal)
+        var occurrences = new Dictionary<string, StructureSourceOccurrence>(StringComparer.Ordinal)
         {
             ["S0001"] = new("S0001", 0, "Alpha", null),
         };
         var primary = new HashSet<string>(["S0001"], StringComparer.Ordinal);
 
-        var first = CanonicalStructureMaterializer.Materialize(validated, structures, occurrences, "test", StructuralDecisionOrigin.Model, primary);
-        var second = CanonicalStructureMaterializer.Materialize(validated, structures, occurrences, "test", StructuralDecisionOrigin.Model, primary);
+        var first = HeadingStructureMaterializer.Materialize(validated, structures, occurrences, "test", StructuralDecisionOrigin.Model, primary);
+        var second = HeadingStructureMaterializer.Materialize(validated, structures, occurrences, "test", StructuralDecisionOrigin.Model, primary);
 
         Assert.Equal(
             System.Text.Json.JsonSerializer.Serialize(first),
@@ -66,16 +67,16 @@ public sealed class P3dMaterializationProjectionBoundaryTests
     public void Materializer_does_not_recompute_hierarchy_or_semantic_identity()
     {
         var validated = new[] { Heading("S0002", 0, 5) };
-        var structures = new Dictionary<string, ResolvedHeadingPlacement>(StringComparer.Ordinal)
+        var structures = new Dictionary<string, ResolvedHeadingHierarchy>(StringComparer.Ordinal)
         {
             ["S0002"] = new("S0002", 9, "S0001", "unresolved", "requires_review"),
         };
-        var occurrences = new Dictionary<string, CanonicalSourceOccurrence>(StringComparer.Ordinal)
+        var occurrences = new Dictionary<string, StructureSourceOccurrence>(StringComparer.Ordinal)
         {
             ["S0002"] = new("S0002", 1, "Bravo", null),
         };
 
-        var result = CanonicalStructureMaterializer.Materialize(
+        var result = HeadingStructureMaterializer.Materialize(
             validated, structures, occurrences, "test", StructuralDecisionOrigin.Model,
             new HashSet<string>(["S0002"], StringComparer.Ordinal));
 
@@ -95,7 +96,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
         {
             ValidatedStructures =
             [
-                new ResolvedHeadingPlacement("S0001", 1, null, "model-root", "requires_review"),
+                new ResolvedHeadingHierarchy("S0001", 1, null, "model-root", "requires_review"),
             ],
             HierarchyFacts =
             [
@@ -137,13 +138,13 @@ public sealed class P3dMaterializationProjectionBoundaryTests
     }
 
     private static ValidatedStructure MaterializeOne() =>
-        CanonicalStructureMaterializer.Materialize(
+        HeadingStructureMaterializer.Materialize(
             [Heading("S0001", 0, 5)],
-            new Dictionary<string, ResolvedHeadingPlacement>(StringComparer.Ordinal)
+            new Dictionary<string, ResolvedHeadingHierarchy>(StringComparer.Ordinal)
             {
                 ["S0001"] = new("S0001", 1, null, "model-root", "requires_review"),
             },
-            new Dictionary<string, CanonicalSourceOccurrence>(StringComparer.Ordinal)
+            new Dictionary<string, StructureSourceOccurrence>(StringComparer.Ordinal)
             {
                 ["S0001"] = new("S0001", 0, "Alpha", null),
             },
