@@ -89,7 +89,7 @@ public sealed class FrozenReplayDoc0256Tests
     {
         var state = State();
         using var replay = new FrozenReplyClassifier(FrozenReplies());
-        var authority = await DocxHeadingAuthorityRoute.RunAsync(state, replay, CancellationToken.None);
+        var authority = await DocxHeadingPipeline.RunAsync(state, replay, CancellationToken.None);
         return (authority, replay);
     }
 

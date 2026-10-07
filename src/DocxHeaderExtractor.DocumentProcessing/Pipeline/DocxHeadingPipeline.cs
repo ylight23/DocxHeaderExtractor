@@ -13,7 +13,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// provider seam; semantic output crosses into the Core vNext contract before binding and never
 /// supplies coordinates or hierarchy truth.
 /// </summary>
-internal static class DocxHeadingAuthorityRoute
+internal static class DocxHeadingPipeline
 {
     internal const string RouteId = "docx-canonical-vnext";
 

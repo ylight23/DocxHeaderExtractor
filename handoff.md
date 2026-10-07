@@ -12408,13 +12408,13 @@ identities; B3 traces only reviewed outline headings through the already-frozen 
 
 Implemented in the current branch:
 
-- Normal extraction is routed through `AuthorityExtractionPipeline`; normal CLI/Web writeback uses `PdfProductWritebackTool`.
+- Normal extraction is routed through `DocxExtractionPipeline`; normal CLI/Web writeback uses `PdfProductWritebackTool`.
 - DOCX no-LLM now creates deterministic proposals only from built-in heading style, `outlineLvl`, or OOXML numbering-to-heading evidence, then uses the shared `PdfProposalValidator` and deterministic hierarchy.
 - DOCX parser evidence is explicitly attributed to `docx_parser`/`ooxml_parser`; the shared validator trusts those origins without a second DOCX eligibility predicate.
 - Quarantine indexes are removed while building the authority source, before proposal, validation, hierarchy, and output.
 - PDF-backed quarantine is applied to grounded source identities before FinalStructure/ProductOutput; DOCX and PDF quarantine boundaries are covered by the authority contract suite.
 - The deterministic PDF-backed quarantine fixture is now covered: the grounded occurrence emits without quarantine and disappears from FinalStructure/ProductOutput when its canonical paragraph index is quarantined.
-- The provider-free true PDF-route E2E gate is not claimed: `AuthorityExtractionPipeline` requires an analyst for the PDF-backed semantic route, so `PDF_QUARANTINE_E2E=BLOCKED_BY_PROVIDER_REQUIREMENT`; the deterministic boundary proof remains PASS.
+- The provider-free true PDF-route E2E gate is not claimed: `DocxExtractionPipeline` requires an analyst for the PDF-backed semantic route, so `PDF_QUARANTINE_E2E=BLOCKED_BY_PROVIDER_REQUIREMENT`; the deterministic boundary proof remains PASS.
 - ProductOutput text/source identity is preserved through the compatibility shell so downstream grounding invariants remain valid.
 - Normal authority does not construct a VLM adapter. Visual routes remain explicit diagnostic/evaluation paths.
 - Partial key-package generation now uses the authority pipeline instead of `HeaderExtractionPipeline`.

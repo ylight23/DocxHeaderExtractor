@@ -130,7 +130,7 @@ metadata is better" is not a trigger, and "we might want to see this later" is n
 ### PR #2 — authority pipeline cutover (đang triển khai)
 
 Đã làm:
-- `PipelineDocumentExtractionTool`, CLI normal extract, Web và MCP đi qua `AuthorityExtractionPipeline`.
+- `PipelineDocumentExtractionTool`, CLI normal extract, Web và MCP đi qua `DocxExtractionPipeline`.
 - DOCX no-LLM đi theo `SourceFacts → deterministic proposal → PdfProposalValidator → hierarchy → ProductOutput`.
 - DOCX evidence ghi rõ `docx_parser`/`ooxml_parser`; shared validator chấp nhận đúng hai origin này.
 - quarantine được áp trước proposal/validation; ProductOutput adapter giữ source identity và text slice.

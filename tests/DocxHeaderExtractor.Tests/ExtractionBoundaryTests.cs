@@ -59,7 +59,7 @@ public sealed class ExtractionBoundaryTests : IDisposable
         SampleDocumentFactory.Create(path);
         // A same-named PDF beside it must change nothing.
         await File.WriteAllTextAsync(Path.Combine(_directory, "report.pdf"), "%PDF-1.7\n");
-        using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
+        using var pipeline = new DocxExtractionPipeline(new PipelineOptions { DisableLlm = true });
         var dispatcher = new CanonicalExtractionDispatcher(
             new DocxCanonicalSourceExtractor(pipeline), new PdfCanonicalSourceExtractor(new PipelineOptions { DisableLlm = true }));
 
@@ -95,7 +95,7 @@ public sealed class ExtractionBoundaryTests : IDisposable
             typeof(AuthorityExtractionRequest).GetProperties().Select(property => property.PropertyType));
 
         Assert.DoesNotContain(
-            typeof(AuthorityExtractionPipeline).GetMethods()
+            typeof(DocxExtractionPipeline).GetMethods()
                 .SelectMany(method => method.GetParameters())
                 .Select(parameter => parameter.ParameterType),
             type => type.Namespace?.Contains("Projection", StringComparison.Ordinal) == true);

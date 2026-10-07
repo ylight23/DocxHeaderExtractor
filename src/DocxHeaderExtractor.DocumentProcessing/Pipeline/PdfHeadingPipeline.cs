@@ -14,7 +14,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// run under a lane lease and checkpoint, then the shared binding, placement, hierarchy and
 /// materialization. There is intentionally no canonical-text fallback.
 /// </summary>
-internal static class PdfHeadingAuthorityRoute
+internal static class PdfHeadingPipeline
 {
     private const string AuthorityId = FunctionConditionedHeadingAuthority.AuthorityId;
 

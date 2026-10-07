@@ -12,7 +12,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// heading crosses the same proposal, source-grounding, validation, structure, and product stages.
 /// Earlier direct-extraction paths are intentionally not used here.
 /// </summary>
-public sealed class AuthorityExtractionPipeline : IDisposable
+public sealed class DocxExtractionPipeline : IDisposable
 {
     private readonly PipelineOptions _options;
     private readonly IInferenceTransportFactory? _analystFactory;
@@ -20,24 +20,24 @@ public sealed class AuthorityExtractionPipeline : IDisposable
     private IInferenceTransport? _analyst;
     private readonly bool _ownsAnalyst;
 
-    public AuthorityExtractionPipeline(PipelineOptions options)
+    public DocxExtractionPipeline(PipelineOptions options)
         : this(options, null, null) { }
 
-    public AuthorityExtractionPipeline(PipelineOptions options, IInferenceTransportFactory analystFactory)
+    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransportFactory analystFactory)
         : this(options, null, analystFactory) { }
 
-    public AuthorityExtractionPipeline(PipelineOptions options, IInferenceTransport analyst)
+    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransport analyst)
         : this(options, analyst, null, false)
     {
     }
 
-    public AuthorityExtractionPipeline(
+    public DocxExtractionPipeline(
         PipelineOptions options,
         IInferenceTransport analyst,
         bool sendsDataExternally)
         : this(options, analyst, null, sendsDataExternally) { }
 
-    private AuthorityExtractionPipeline(
+    private DocxExtractionPipeline(
         PipelineOptions options,
         IInferenceTransport? analyst,
         IInferenceTransportFactory? analystFactory,
@@ -79,14 +79,14 @@ public sealed class AuthorityExtractionPipeline : IDisposable
         var uploadedType = UploadedSourceDetector.Detect(inputPath);
         if (uploadedType != SourceType.Docx)
             throw new NotSupportedException(
-                $"AuthorityExtractionPipeline nhận đầu vào OOXML đã chuẩn hoá (.docx/.docm); " +
+                $"DocxExtractionPipeline nhận đầu vào OOXML đã chuẩn hoá (.docx/.docm); " +
                 $"tệp được tải lên được nhận dạng là {uploadedType}. " +
                 "source adapter phải chuyển đổi định dạng không phải OOXML trước khi gọi pipeline.");
 
         var started = Environment.TickCount64;
         var sourceDocument = new OpenXmlDocumentSource().Read(inputPath);
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
-            var authority = await DocxHeadingAuthorityRoute.RunAsync(
+            var authority = await DocxHeadingPipeline.RunAsync(
                 sourceDocument, analyst, ct);
             authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
             var audit = authority.Audit;

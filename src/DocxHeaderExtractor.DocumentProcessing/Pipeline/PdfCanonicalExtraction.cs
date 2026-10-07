@@ -86,12 +86,12 @@ public static class PdfCanonicalExtraction
         // historical canonical engine it has no semantic fallback: invalid stage output is
         // withheld by that adapter rather than delegated to a second membership authority.
         var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(file.LocalPath);
-        authority = await PdfHeadingAuthorityRoute.RunAsync(
+        authority = await PdfHeadingPipeline.RunAsync(
             sourceBuild.Universe, sourceBuild.Details, file.LocalPath, used, semanticLaneOptions, ct);
         // The same repair step the DOCX lane applies, through the same implementation. A quarantine
         // that silently did nothing on one format would make the harness's repair loop mean two
         // different things depending on what was uploaded.
-        authority = AuthorityExtractionPipeline.ApplyStructuralQuarantine(authority, quarantinedIndexes);
+        authority = DocxExtractionPipeline.ApplyStructuralQuarantine(authority, quarantinedIndexes);
 
         // The catalog the lane parsed, not a second one derived from the audit. The audit's block
         // text is a readable rendering meant for a person to read; the model was shown, and the
@@ -147,7 +147,7 @@ public static class PdfCanonicalExtraction
         var product = new DocumentProductOutput(file.Sha256, []);
         if (audit is not null)
         {
-            var final = AuthorityExtractionPipeline.BuildFinalStructure(
+            var final = DocxExtractionPipeline.BuildFinalStructure(
                 file.LocalPath, audit, authority.Structure);
             product = DocumentProductOutputProjector.Serialize(final, OutputDecisionPolicy.Decide(final));
         }
@@ -169,7 +169,7 @@ public static class PdfCanonicalExtraction
             Model = analyst?.ModelName,
             DeterministicRoute = "pdf-canonical-vnext",
             RouteAudit = audit,
-            Provenance = AuthorityExtractionPipeline.BuildProvenance(
+            Provenance = DocxExtractionPipeline.BuildProvenance(
                 audit, !options.DisableLlm && analystSendsDataExternally),
         };
     }

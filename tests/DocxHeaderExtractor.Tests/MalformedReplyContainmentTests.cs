@@ -90,7 +90,7 @@ public sealed class MalformedReplyContainmentTests
     {
         var state = State();
         using var replay = new FrozenReplyClassifier(replies);
-        return await DocxHeadingAuthorityRoute.RunAsync(state, replay, CancellationToken.None);
+        return await DocxHeadingPipeline.RunAsync(state, replay, CancellationToken.None);
     }
 
     private static string[] Frozen()

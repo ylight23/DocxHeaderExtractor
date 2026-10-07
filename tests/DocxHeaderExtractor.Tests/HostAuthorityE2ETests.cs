@@ -88,14 +88,14 @@ public sealed class HostAuthorityE2ETests
         var normalMcp = Slice(mcp, "public async Task<McpExtractionResult> ExtractAsync", "    private PipelineOptions BuildPipelineOptions");
 
         Assert.Contains("new PipelineDocumentExtractionTool", normalCli);
-        Assert.DoesNotContain("new AuthorityExtractionPipeline", normalCli);
+        Assert.DoesNotContain("new DocxExtractionPipeline", normalCli);
         Assert.Contains("new PipelineDocumentExtractionTool", normalWeb);
-        Assert.DoesNotContain("new AuthorityExtractionPipeline", normalWeb);
+        Assert.DoesNotContain("new DocxExtractionPipeline", normalWeb);
         Assert.Contains("new WebInferenceTransportFactory", normalWeb);
         Assert.DoesNotContain("new DocxHeaderExtractor.Infrastructure.AI.OpenRouterInferenceTransport", normalWeb);
         Assert.Contains("new PipelineDocumentExtractionTool", normalMcp);
-        Assert.DoesNotContain("new AuthorityExtractionPipeline", normalMcp);
-        Assert.Contains("new AuthorityExtractionPipeline", tool);
+        Assert.DoesNotContain("new DocxExtractionPipeline", normalMcp);
+        Assert.Contains("new DocxExtractionPipeline", tool);
         Assert.Contains("FileInputResourceResolver", cliComposition);
         Assert.Contains("SemanticRegistryDefaults.Create", cliComposition);
 

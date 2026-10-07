@@ -5,7 +5,7 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 namespace DocxHeaderExtractor.DocumentProcessing.Routing;
 
 /// <summary>The DOCX lane, owning DOCX uploads and nothing else.</summary>
-public sealed class DocxCanonicalSourceExtractor(AuthorityExtractionPipeline pipeline) : ICanonicalSourceExtractor
+public sealed class DocxCanonicalSourceExtractor(DocxExtractionPipeline pipeline) : ICanonicalSourceExtractor
 {
     public SourceType Handles => SourceType.Docx;
 

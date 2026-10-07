@@ -96,14 +96,14 @@ public sealed class HeadingAuthorityArchitectureTests
         var adapter = File.ReadAllText(TestRepository.Path(
             "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxSourceOccurrenceAdapter.cs"));
         var route = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxHeadingAuthorityRoute.cs"));
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxHeadingPipeline.cs"));
 
         Assert.DoesNotContain("PdfSourceOccurrenceAdapter", adapter, StringComparison.Ordinal);
         Assert.DoesNotContain("PdfSemantic", adapter, StringComparison.Ordinal);
         // DOCX stays on the canonical-text authority until it has its own qualification evidence.
         Assert.Contains("CanonicalTextHeadingAuthority", route, StringComparison.Ordinal);
         Assert.DoesNotContain("FunctionConditionedHeadingAuthority", route, StringComparison.Ordinal);
-        Assert.DoesNotContain("PdfHeadingAuthorityRoute", route, StringComparison.Ordinal);
+        Assert.DoesNotContain("PdfHeadingPipeline", route, StringComparison.Ordinal);
         Assert.DoesNotContain("IFrozenInferenceTransport", route, StringComparison.Ordinal);
         Assert.DoesNotContain("IPdfProductionAuthorizedInferenceTransport", route, StringComparison.Ordinal);
     }
@@ -114,12 +114,12 @@ public sealed class HeadingAuthorityArchitectureTests
         var extraction = File.ReadAllText(TestRepository.Path(
             "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfCanonicalExtraction.cs"));
         var route = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfHeadingAuthorityRoute.cs"));
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfHeadingPipeline.cs"));
         var authority = File.ReadAllText(TestRepository.Path(
             "src/DocxHeaderExtractor.DocumentProcessing/Semantics/HeadingAuthority/FunctionConditionedHeadingAuthority.cs"));
 
         Assert.Contains("PdfSourceOccurrenceAdapter.Build", extraction, StringComparison.Ordinal);
-        Assert.Contains("PdfHeadingAuthorityRoute.RunAsync", extraction, StringComparison.Ordinal);
+        Assert.Contains("PdfHeadingPipeline.RunAsync", extraction, StringComparison.Ordinal);
         Assert.Contains("IPdfProductionAuthorizedInferenceTransport", extraction, StringComparison.Ordinal);
         Assert.Contains("IFrozenInferenceTransport", route, StringComparison.Ordinal);
         Assert.Contains("IFrozenInferenceTransport", authority, StringComparison.Ordinal);
@@ -134,9 +134,9 @@ public sealed class HeadingAuthorityArchitectureTests
     public void Both_routes_converge_on_the_heading_authority_seam_and_one_assembler()
     {
         var docx = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxHeadingAuthorityRoute.cs"));
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxHeadingPipeline.cs"));
         var pdf = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfHeadingAuthorityRoute.cs"));
+            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfHeadingPipeline.cs"));
         var assembler = File.ReadAllText(TestRepository.Path(
             "src/DocxHeaderExtractor.DocumentProcessing/Materialization/HeadingStructureAssembler.cs"));
 

@@ -25,7 +25,7 @@ public interface IDocumentExtractionTool : IDisposable
 /// </summary>
 public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 {
-    private readonly AuthorityExtractionPipeline _docxLane;
+    private readonly DocxExtractionPipeline _docxLane;
     private readonly PdfCanonicalSourceExtractor _pdfLane;
     private readonly CanonicalExtractionDispatcher _dispatcher;
     private readonly IInferenceTransport? _classifier;
@@ -35,7 +35,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     {
         ArgumentNullException.ThrowIfNull(options);
         var factory = new InferenceTransportFactory();
-        _docxLane = new AuthorityExtractionPipeline(options, factory);
+        _docxLane = new DocxExtractionPipeline(options, factory);
         _pdfLane = new PdfCanonicalSourceExtractor(options, factory);
         _dispatcher = Dispatch(_docxLane, _pdfLane);
         Descriptor = Describe(options, factory.SendsDataExternally);
@@ -45,7 +45,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(factory);
-        _docxLane = new AuthorityExtractionPipeline(options, factory);
+        _docxLane = new DocxExtractionPipeline(options, factory);
         _pdfLane = new PdfCanonicalSourceExtractor(options, factory);
         _dispatcher = Dispatch(_docxLane, _pdfLane);
         Descriptor = Describe(options, factory.SendsDataExternally);
@@ -59,7 +59,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(classifier);
-        _docxLane = new AuthorityExtractionPipeline(options, classifier, sendsDataExternally);
+        _docxLane = new DocxExtractionPipeline(options, classifier, sendsDataExternally);
         // The same classifier instance both lanes use, owned by whoever handed it in. Creating a
         // second one here would open a second provider connection for one document.
         _pdfLane = new PdfCanonicalSourceExtractor(options, classifier, sendsDataExternally);
@@ -70,7 +70,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     }
 
     private static CanonicalExtractionDispatcher Dispatch(
-        AuthorityExtractionPipeline pipeline, PdfCanonicalSourceExtractor pdfLane) =>
+        DocxExtractionPipeline pipeline, PdfCanonicalSourceExtractor pdfLane) =>
         new(new DocxCanonicalSourceExtractor(pipeline), pdfLane);
 
     public CapabilityDescriptor Descriptor { get; }

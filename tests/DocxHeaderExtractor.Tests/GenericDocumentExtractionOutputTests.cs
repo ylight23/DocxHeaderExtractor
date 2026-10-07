@@ -14,7 +14,7 @@ public sealed class GenericDocumentExtractionOutputTests
         try
         {
             SampleDocumentFactory.Create(path);
-            using var pipeline = new AuthorityExtractionPipeline(new PipelineOptions { DisableLlm = true });
+            using var pipeline = new DocxExtractionPipeline(new PipelineOptions { DisableLlm = true });
             var generic = (await pipeline.RunDocumentExecutionAsync(path)).Result;
             var legacy = await pipeline.RunAsync(path);
 
