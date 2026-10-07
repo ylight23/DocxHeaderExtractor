@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using DocxHeaderExtractor.Infrastructure.AI;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
@@ -68,7 +69,7 @@ public sealed class HeadingAuthorityByteParityTests
         JsonElement frozen, DocumentSourceSnapshot source, IReadOnlyDictionary<string, string> layoutBlockByAtom)
     {
         var transport = new RecordingTransport();
-        IHeadingAuthority authority = new FunctionAnchorExtentHeadingAuthority(transport, layoutBlockByAtom, () => { });
+        IHeadingAuthority authority = new FunctionAnchorExtentHeadingAuthority(transport, transport.RequestComposer, layoutBlockByAtom, () => { });
 
         var result = await authority.DecideAsync(source, CancellationToken.None);
 
@@ -110,6 +111,7 @@ public sealed class HeadingAuthorityByteParityTests
         public int ContextSize => 1 << 20;
         public string RuntimeDescription => "recording; no provider";
         public int SharedPrefixTokens => 0;
+        public IFrozenInferenceRequestComposer RequestComposer => new OpenRouterQwen37InferenceRequestComposer();
 
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             Task.FromResult("{\"headings\":[]}");

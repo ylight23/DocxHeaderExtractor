@@ -1,4 +1,5 @@
 using System.Text;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
@@ -85,8 +86,8 @@ public sealed class PdfReadOnlyCorrespondenceBuilderTests
                 Assert.True(Encoding.UTF8.GetBytes(expectedF1.UserMessage).AsSpan().SequenceEqual(Encoding.UTF8.GetBytes(actualF1.UserMessage)), $"F1 user message drift: {where}");
                 Assert.Equal(expectedF1.SystemPrompt, actualF1.SystemPrompt);
                 Assert.Equal(
-                    OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(expectedF1.SystemPrompt, expectedF1.UserMessage, PdfQualifiedInferencePolicy.CompletionTokenCeiling, LiveEnvelope).Hash,
-                    OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(actualF1.SystemPrompt, actualF1.UserMessage, PdfQualifiedInferencePolicy.CompletionTokenCeiling, LiveEnvelope).Hash);
+                    OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(expectedF1.SystemPrompt, expectedF1.UserMessage, PdfInferenceWireContract.CompletionTokenCeiling, LiveEnvelope).Hash,
+                    OpenRouterQwen37JsonObjectCarrierV2_1.BuildFromRawReasoningEnabled(actualF1.SystemPrompt, actualF1.UserMessage, PdfInferenceWireContract.CompletionTokenCeiling, LiveEnvelope).Hash);
 
                 packs++;
                 aliases += actual.Count;

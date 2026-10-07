@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
@@ -128,6 +129,7 @@ public sealed class PdfLiveExecutionLifecycleTests
         public int ContextSize => 1 << 20;
         public string RuntimeDescription => "P5c live-path fake; no provider";
         public int SharedPrefixTokens => 0;
+        public IFrozenInferenceRequestComposer RequestComposer => new OpenRouterQwen37InferenceRequestComposer();
 
         public Task<string> BoundaryCutAsync(
             string systemPrompt,

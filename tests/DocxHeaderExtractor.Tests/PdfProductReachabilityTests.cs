@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
@@ -168,6 +169,7 @@ public sealed class PdfProductReachabilityTests : IDisposable
         public int ContextSize => 1 << 20;
         public string RuntimeDescription => "test-only qualified PDF protocol script";
         public int SharedPrefixTokens => 0;
+        public IFrozenInferenceRequestComposer RequestComposer => new OpenRouterQwen37InferenceRequestComposer();
 
         public Task<string> BoundaryCutAsync(
             string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>

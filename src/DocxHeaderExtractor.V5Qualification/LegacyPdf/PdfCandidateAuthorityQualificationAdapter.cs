@@ -1,4 +1,5 @@
 using System.Text;
+using DocxHeaderExtractor.DocumentProcessing.Inference;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.V5;
@@ -23,8 +24,8 @@ public sealed record PdfCandidateAuthorityDocumentPlan(
 /// </summary>
 public static class PdfCandidateAuthorityQualificationAdapter
 {
-    public const int CompletionTokenCeiling = PdfQualifiedInferencePolicy.CompletionTokenCeiling;
-    public const int ResponseUtf8ByteCap = PdfQualifiedInferencePolicy.ResponseUtf8ByteCap;
+    public const int CompletionTokenCeiling = PdfInferenceWireContract.CompletionTokenCeiling;
+    public const int ResponseUtf8ByteCap = PdfInferenceWireContract.ResponseUtf8ByteCap;
 
     public static PdfCandidateAuthorityDocumentPlan PrepareFromSnapshot(string snapshotPath, string documentId)
     {

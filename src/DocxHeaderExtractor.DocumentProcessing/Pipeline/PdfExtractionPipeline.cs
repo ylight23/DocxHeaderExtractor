@@ -79,7 +79,7 @@ public static class PdfExtractionPipeline
         if (used is not null && !productionAuthorized)
         {
             throw new InvalidOperationException(
-                "PDF_PRODUCTION_AUTHORIZATION_REQUIRED: requires the OpenRouter/qwen/qwen3.7-flash PDF production transport.");
+                "PDF_PRODUCTION_AUTHORIZATION_REQUIRED: requires the production-authorized PDF inference transport.");
         }
 
         StructuralAuthorityResult authority;

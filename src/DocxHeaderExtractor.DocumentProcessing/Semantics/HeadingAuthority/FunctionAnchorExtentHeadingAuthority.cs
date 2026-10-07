@@ -19,18 +19,20 @@ namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 /// verbatim through the frozen transport.
 /// </summary>
 /// <param name="transport">The qualified frozen transport the route authorized.</param>
+/// <param name="composer">Builds the provider request body from the semantic prompt; owned by the provider side.</param>
 /// <param name="layoutBlockByAtom">Parser layout labels used only to size request packs.</param>
 /// <param name="ensureActive">Throws when the lane no longer owns the execution.</param>
 internal sealed class FunctionAnchorExtentHeadingAuthority(
     IFrozenInferenceTransport transport,
+    IFrozenInferenceRequestComposer composer,
     IReadOnlyDictionary<string, string> layoutBlockByAtom,
     Action ensureActive) : IHeadingAuthority
 {
     internal const string AuthorityId = "pdf-function-conditioned-heading-authority-v1";
-    private const int ResponseCap = PdfQualifiedInferencePolicy.ResponseUtf8ByteCap;
+    private const int ResponseCap = PdfInferenceWireContract.ResponseUtf8ByteCap;
     // Qualification serializes with the framework default encoder. Do not use the relaxed encoder
     // here: escaping is part of the provider-body identity.
-    private const int P05CompletionTokens = PdfQualifiedInferencePolicy.CompletionTokenCeiling;
+    private const int P05CompletionTokens = PdfInferenceWireContract.CompletionTokenCeiling;
 
     public async Task<HeadingAuthorityResult> DecideAsync(DocumentSourceSnapshot source, CancellationToken ct)
     {
@@ -59,7 +61,7 @@ internal sealed class FunctionAnchorExtentHeadingAuthority(
 
             var idByAlias = f1Request.Occurrences.ToDictionary(value => value.Atom.Alias, value => value.Id, StringComparer.Ordinal);
             var anchorUser = HeadingAnchorProtocolV1.ComposeUserMessage(owned, idByAlias, establishes.Select(value => (value.Id, value.Atom)).ToArray());
-            var anchorBody = QualifiedInferenceRequestFactory.Build(HeadingAnchorProtocolV1.SystemPrompt, anchorUser, P05CompletionTokens);
+            var anchorBody = composer.Build(HeadingAnchorProtocolV1.SystemPrompt, anchorUser, P05CompletionTokens);
             var anchors = await ExecuteAsync(HeadingAnchorProtocolV1.SystemPrompt, anchorUser, ct, anchorBody).ConfigureAwait(false);
             if (anchors is null) continue;
             raw.Add(anchors.Content);
@@ -74,7 +76,7 @@ internal sealed class FunctionAnchorExtentHeadingAuthority(
                 var tail = ownedAliases.Skip(start).ToArray(); // terminal anchors intentionally remain issued.
                 var evidenceByAlias = source.Evidence.ToDictionary(item => item.SourceAlias, StringComparer.Ordinal);
                 var user = HeadingExtentProtocolV2.ComposeUserMessage(anchor.Id, tail, idByAlias, atoms, evidenceByAlias);
-                var body = QualifiedInferenceRequestFactory.Build(HeadingExtentProtocolV2.SystemPrompt, user, P05CompletionTokens);
+                var body = composer.Build(HeadingExtentProtocolV2.SystemPrompt, user, P05CompletionTokens);
                 var extent = await ExecuteAsync(HeadingExtentProtocolV2.SystemPrompt, user, ct, body).ConfigureAwait(false);
                 if (extent is null) continue;
                 raw.Add(extent.Content);
@@ -106,7 +108,7 @@ internal sealed class FunctionAnchorExtentHeadingAuthority(
 
     private async Task<FrozenInferenceResult?> ExecuteAsync(string prompt, string user, CancellationToken ct, byte[]? body = null)
     {
-        body ??= QualifiedInferenceRequestFactory.Build(prompt, user, P05CompletionTokens);
+        body ??= composer.Build(prompt, user, P05CompletionTokens);
         var result = await transport.ExecuteFrozenRequestAsync(body, P05CompletionTokens, prompt, user, ct).ConfigureAwait(false);
         return string.Equals(result.FinishReason, "stop", StringComparison.OrdinalIgnoreCase) && Encoding.UTF8.GetByteCount(result.Content) <= ResponseCap ? result : null;
     }

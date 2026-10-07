@@ -42,6 +42,7 @@ public sealed class HeadingAuthorityArchitectureTests
             "CanonicalTextHeadingAuthority", "FunctionConditionedHeadingAuthority", "HeadingProposalBinder",
             "HeadingProposalValidator", "HeaderClassifierCanonicalTextModel", "PdfProductionOpenRouterHeaderClassifier",
             "HeadingPlacementCoordinator", "ResolvedHeadingPlacement", "CanonicalStructureMaterializer", "CanonicalSourceOccurrence",
+            "QualifiedInferenceRequestFactory", "PdfQualifiedInferencePolicy",
         };
         var retiredSourceSymbols = new[]
         {

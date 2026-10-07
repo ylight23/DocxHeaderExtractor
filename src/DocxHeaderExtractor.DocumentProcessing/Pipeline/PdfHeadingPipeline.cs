@@ -88,6 +88,7 @@ internal static class PdfHeadingPipeline
         var leaseBound = new LeaseBoundFrozenInferenceTransport(frozen, lease);
         IHeadingAuthority authority = new FunctionAnchorExtentHeadingAuthority(
             leaseBound,
+            frozen.RequestComposer,
             pdfDetails.LayoutBlockByAtom,
             () => { if (!lease.IsActive) throw new PdfExecutionLeaseLostException(); });
         var decided = await authority.DecideAsync(source, ct).ConfigureAwait(false);
@@ -134,6 +135,7 @@ internal static class PdfHeadingPipeline
         public int ContextSize => _inner.ContextSize;
         public string RuntimeDescription => _inner.RuntimeDescription;
         public int SharedPrefixTokens => _inner.SharedPrefixTokens;
+        public IFrozenInferenceRequestComposer RequestComposer => _inner.RequestComposer;
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             StartAndObserve(() => _inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount));
         public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default) =>

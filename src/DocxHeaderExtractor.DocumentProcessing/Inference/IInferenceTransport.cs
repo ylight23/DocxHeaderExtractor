@@ -61,6 +61,9 @@ public sealed record FrozenInferenceResult(
 /// </summary>
 public interface IFrozenInferenceTransport : IInferenceTransport
 {
+    /// <summary>Composes the exact request body this transport's provider accepts for a semantic prompt.</summary>
+    IFrozenInferenceRequestComposer RequestComposer { get; }
+
     Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(
         byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
         CancellationToken cancellationToken = default);

@@ -79,6 +79,7 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
         public int ContextSize => inner.ContextSize;
         public string RuntimeDescription => inner.RuntimeDescription;
         public int SharedPrefixTokens => inner.SharedPrefixTokens;
+        public IFrozenInferenceRequestComposer RequestComposer => inner.RequestComposer;
 
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage,
             CancellationToken ct = default, int expectedItemCount = 0) =>
