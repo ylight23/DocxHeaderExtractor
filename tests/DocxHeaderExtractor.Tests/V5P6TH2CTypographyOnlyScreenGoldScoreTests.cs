@@ -134,7 +134,7 @@ public sealed class V5P6TH2CTypographyOnlyScreenGoldScoreTests
                 anchor = item.Request.Anchor,
                 anchorAlias = item.Request.AnchorAlias,
                 sourceSha256 = item.Request.SourceSha256,
-                canonicalGoldPath = CanonicalGoldRegistry.Entry(item.Request.Source.DocumentId).CanonicalGoldPath,
+                canonicalGoldPath = FrozenHistoryGold.Entry(item.Request.Source.DocumentId).CanonicalGoldPath,
                 canonicalGoldSha256 = gold.GoldSha256,
                 goldExtent = expected,
                 historicalA = historicalScore,
@@ -240,9 +240,9 @@ public sealed class V5P6TH2CTypographyOnlyScreenGoldScoreTests
     private sealed record GoldDocument(string GoldSha256, IReadOnlyList<string[]> Extents);
     private static GoldDocument LoadGold(string documentId)
     {
-        var entry = CanonicalGoldRegistry.Entry(documentId);
-        CanonicalGoldRegistry.RequireCapability(documentId, GoldCapability.Occurrence);
-        using var document = CanonicalGoldRegistry.Resolve(documentId);
+        var entry = FrozenHistoryGold.Entry(documentId);
+        FrozenHistoryGold.RequireCapability(documentId, GoldCapability.Occurrence);
+        using var document = FrozenHistoryGold.Resolve(documentId);
         Assert.Equal(entry.SourceSha256, document.RootElement.GetProperty("source").GetProperty("sourceSha256").GetString());
         var extents = document.RootElement.GetProperty("semantic").GetProperty("claims").EnumerateArray()
             .Select(claim => claim.GetProperty("sourceParts").EnumerateArray().Select(part => part.GetProperty("sourceAlias").GetString()!).ToArray()).ToArray();

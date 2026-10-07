@@ -44,8 +44,8 @@ public static class V5PdfPreflightBuilder
 
     /// <summary>The exact-coordinate atoms for a PDF's source universe, for a caller that needs to
     /// bind a provider response outside this assembly. Never opens a provider or Gold.</summary>
-    public static IReadOnlyList<SemanticSourceAtom> LoadAtoms(string pdfPath) =>
-        PdfSourceOccurrenceAdapter.Build(pdfPath).Atoms;
+    public static IReadOnlyList<SemanticSourceAtom> LoadAtoms(string pdfPath, string? frozenSnapshotRoot = null) =>
+        PdfFrozenSourceView.Load(pdfPath, frozenSnapshotRoot).Atoms;
 
     /// <summary>
     /// Builds the same deterministic P05 pack boundaries as the historical cohort, but composes
@@ -57,7 +57,8 @@ public static class V5PdfPreflightBuilder
         string documentId,
         DocumentTaskContract contract,
         string packingPolicy,
-        V5ProviderEnvelope providerEnvelope)
+        V5ProviderEnvelope providerEnvelope,
+        string? frozenSnapshotRoot = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
         ArgumentException.ThrowIfNullOrWhiteSpace(documentId);
@@ -72,11 +73,10 @@ public static class V5PdfPreflightBuilder
 
         providerEnvelope = providerEnvelope with { UsageInclude = true, OpenRouterResponseCacheDisabled = true };
         var policy = ResolvePolicy(packingPolicy);
-        var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(pdfPath);
-        var authority = sourceBuild.Universe;
-        var graph = BuildGraph(authority, documentId);
+        var authority = PdfFrozenSourceView.Load(pdfPath, frozenSnapshotRoot);
+        var graph = BuildGraph(authority.Atoms, documentId);
         var byAlias = graph.Nodes.ToDictionary(node => node.SourceAlias, StringComparer.Ordinal);
-        var packs = policy.BuildPacks(authority.Evidence, sourceBuild.Details.LayoutBlockByAtom);
+        var packs = policy.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom);
         return packs.Select(pack =>
         {
             var ownedAliases = pack.Owned.Select(item => item.SourceAlias).ToArray();
@@ -106,7 +106,8 @@ public static class V5PdfPreflightBuilder
         string documentId,
         DocumentTaskContract contract,
         string packingPolicy,
-        V5ProviderEnvelope providerEnvelope)
+        V5ProviderEnvelope providerEnvelope,
+        string? frozenSnapshotRoot = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
         ArgumentException.ThrowIfNullOrWhiteSpace(documentId);
@@ -116,11 +117,10 @@ public static class V5PdfPreflightBuilder
         contract.Validate();
         providerEnvelope = providerEnvelope with { UsageInclude = true, OpenRouterResponseCacheDisabled = true };
         var policy = ResolvePolicy(packingPolicy);
-        var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(pdfPath);
-        var authority = sourceBuild.Universe;
-        var graph = BuildGraph(authority, documentId);
+        var authority = PdfFrozenSourceView.Load(pdfPath, frozenSnapshotRoot);
+        var graph = BuildGraph(authority.Atoms, documentId);
         var byAlias = graph.Nodes.ToDictionary(node => node.SourceAlias, StringComparer.Ordinal);
-        var packs = policy.BuildPacks(authority.Evidence, sourceBuild.Details.LayoutBlockByAtom);
+        var packs = policy.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom);
         var requests = packs.Select(pack =>
         {
             var (ownedAliases, visibleAliases, owned, visible) = ResolvePack(pack, byAlias);
@@ -154,7 +154,10 @@ public static class V5PdfPreflightBuilder
     };
 
     internal static UniversalEvidenceGraph BuildGraph(SourceOccurrenceUniverse authority, string documentId) =>
-        EvidenceGraphBuilder.Build(authority.Atoms.Select(atom => new SourceObservation(
+        BuildGraph(authority.Atoms, documentId);
+
+    internal static UniversalEvidenceGraph BuildGraph(IReadOnlyList<SemanticSourceAtom> atoms, string documentId) =>
+        EvidenceGraphBuilder.Build(atoms.Select(atom => new SourceObservation(
             $"V5:{atom.SourceId}", atom.SourceId, atom.Alias, atom.Ordinal, EvidenceModality.TEXT, atom.Text,
             new StructuralSpan(0, atom.Text.Length), new EvidenceGeometry(atom.Page),
             new Dictionary<string, string?> { ["sourceType"] = "PDF", ["documentId"] = documentId })));

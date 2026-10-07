@@ -35,7 +35,7 @@ public sealed class V5P6TG1FunctionConditionedCandidateProjectionTests
         using var primary = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{CaptureRoot}/result.v1.json")));
         using var retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{CaptureRoot}/retry-src089-result.v1.json")));
         using var anchorAudit = JsonDocument.Parse(File.ReadAllText(TestRepository.Path("artifacts/v5-p6t-total-occurrence-role/p6tb-anchor-role-audit/anchor-role-audit.v1.json")));
-        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path("eval/a99-closed-loop/gold/SRC-089.gold.json")));
+        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(FrozenHistoryGold.Src089AuthoredPath)));
 
         var prepared089 = Prepare("SRC-089", SourcePdfCorpus.Src089, retry.RootElement.GetProperty("row"));
         var prepared095 = Prepare("SRC-095", SourcePdfCorpus.Src095,
@@ -119,7 +119,7 @@ public sealed class V5P6TG1FunctionConditionedCandidateProjectionTests
         Assert.Equal(96, parsed.Decisions.Count);
         var atomByOccurrence = functionPack.Request.Occurrences.ToDictionary(item => item.Id, item => item.Atom, StringComparer.Ordinal);
         var functionByAlias = parsed.Decisions.ToDictionary(item => atomByOccurrence[item.OccurrenceId].Alias,
-            item => item.Function.ToString(), StringComparer.Ordinal);
+            item => item.Function.Wire(), StringComparer.Ordinal);
         Assert.Equal(96, functionByAlias.Count);
         return new Prepared(plan, sourcePack, functionPack, functionByAlias);
     }

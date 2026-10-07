@@ -84,7 +84,7 @@ public sealed class V5P6TF1FunctionMembershipAuditTests
     {
         var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089);
         var functions = Parse(prepared, retry.GetProperty("row"));
-        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path("eval/a99-closed-loop/gold/SRC-089.gold.json")));
+        using var gold = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(FrozenHistoryGold.Src089AuthoredPath)));
         var claims = gold.RootElement.GetProperty("occurrence").GetProperty("claims").EnumerateArray()
             .Select(claim => claim.GetProperty("sourceParts").EnumerateArray().Select(part => part.GetProperty("sourceAlias").GetString()!).ToArray())
             .ToArray();
@@ -173,7 +173,7 @@ public sealed class V5P6TF1FunctionMembershipAuditTests
         Assert.Equal(row.GetProperty("rawResponseSha256").GetString(), Hashing.Sha256(raw));
         var parsed = PdfTotalOccurrenceRoleQualificationAdapter.ParseFunctionMembershipF1(prepared, raw);
         Assert.Equal(96, parsed.Decisions.Count);
-        return parsed.Decisions.ToDictionary(value => value.OccurrenceId, value => value.Function.ToString(), StringComparer.Ordinal);
+        return parsed.Decisions.ToDictionary(value => value.OccurrenceId, value => value.Function.Wire(), StringComparer.Ordinal);
     }
 
     private static IReadOnlyDictionary<string, IReadOnlyList<V5ReadOnlyCorrespondenceV1>> Correspondences(PdfCandidateAuthorityPreparedPack pack)

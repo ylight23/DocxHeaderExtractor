@@ -68,3 +68,31 @@ internal sealed record PdfCandidateSourceAuthorityV1(string SourceSha256, IReadO
     public string ModelVisibleEvidenceSha256 => Hash(new { schemaVersion = "a99-pdf-model-visible-evidence-v2", rows = Evidence.Select(e => new { alias = e.SourceAlias, block = LayoutBlockByAtom.GetValueOrDefault(e.SourceId), text = e.ExactSourceText, owned = true, location = e.LocationFacts, style = e.StyleFacts, numbering = e.NumberingFacts }).ToArray() });
     private static string Hash(object value) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(value, new JsonSerializerOptions { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }))));
 }
+
+/// <summary>
+/// The source a historical qualification artifact was built over. With a snapshot root, a PDF whose canonical snapshot is
+/// committed resolves to that snapshot, so replaying a frozen capture never depends on how the parser reads the PDF today;
+/// without one (or without a committed snapshot) it is the live parse.
+/// </summary>
+internal sealed record PdfFrozenSourceView(
+    string SourceSha256, IReadOnlyList<SemanticSourceAtom> Atoms,
+    IReadOnlyList<CanonicalSemanticSourceEvidence> Evidence, IReadOnlyDictionary<string, string> LayoutBlockByAtom)
+{
+    public static PdfFrozenSourceView Load(string pdfPath, string? frozenSnapshotRoot)
+    {
+        if (frozenSnapshotRoot is not null)
+        {
+            var path = Path.Combine(frozenSnapshotRoot, CanonicalSemanticSourceHash.Compute(pdfPath) + ".json");
+            if (File.Exists(path))
+            {
+                var snapshot = JsonSerializer.Deserialize<PdfCanonicalSourceSnapshotV1>(File.ReadAllText(path), new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping })
+                               ?? throw new InvalidOperationException("pdf-canonical-source-snapshot-unreadable");
+                var replay = snapshot.Rehydrate();
+                return new PdfFrozenSourceView(replay.SourceSha256, replay.Atoms, replay.Evidence, replay.LayoutBlockByAtom);
+            }
+        }
+
+        var build = PdfSourceOccurrenceAdapter.BuildWithDetails(pdfPath);
+        return new PdfFrozenSourceView(build.Universe.SourceSha256, build.Universe.Atoms, build.Universe.Evidence, build.Details.LayoutBlockByAtom);
+    }
+}

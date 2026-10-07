@@ -13,9 +13,19 @@ internal static partial class ResidualFamilies
     [GeneratedRegex(@"^(Bishop Standards Track Page|RFC 9114 HTTP/3 June)")] private static partial Regex Rfc9114Furniture();
     [GeneratedRegex(@"^(Table|Figure|Chart|Exhibit) [A-Z]?\d")] private static partial Regex Caption();
 
+    /// <summary>
+    /// The source review these frozen audits read: the vintage over the universe they were produced against when the
+    /// authority has migrated (SRC-089), otherwise the active review.
+    /// </summary>
+    internal static string FrozenReview(string id, string file)
+    {
+        var vintage = $"eval/a99-closed-loop/gold-history/pdf-universe-v1/source-review/{id}/{file}";
+        return File.Exists(TestRepository.Path(vintage)) ? vintage : $"eval/a99-closed-loop/source-review-v1/{id}/{file}";
+    }
+
     internal static Dictionary<string, int> PageOfAlias(string id)
     {
-        var rows = File.ReadAllLines(TestRepository.Path($"eval/a99-closed-loop/source-review-v1/{id}/atom-glyph-facts.tsv"))
+        var rows = File.ReadAllLines(TestRepository.Path(FrozenReview(id, "atom-glyph-facts.tsv")))
             .Select(l => l.Split('\t'));
         return rows.ToDictionary(r => r[0], r => int.Parse(r[1]), StringComparer.Ordinal);
     }
@@ -51,7 +61,7 @@ internal static partial class ResidualFamilies
     /// <summary>What the source-only review named as a set-apart non-heading, by alias: its pattern.</summary>
     internal static Dictionary<string, string> ReviewedNonHeadings(string id)
     {
-        using var items = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"eval/a99-closed-loop/source-review-v1/{id}/review-items.json")));
+        using var items = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(FrozenReview(id, "review-items.json"))));
         var map = new Dictionary<string, string>(StringComparer.Ordinal);
         foreach (var item in items.RootElement.GetProperty("items").EnumerateArray()
                      .Where(i => i.GetProperty("verdict").GetString() == "NON_HEADING"))

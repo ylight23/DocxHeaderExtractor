@@ -272,10 +272,10 @@ public sealed class V5P6TH3GoldPopulationAuditTests
             authorities = DocumentIds.Select(documentId => new
             {
                 authorityId = documentId,
-                canonicalGoldPath = CanonicalGoldRegistry.Entry(documentId).CanonicalGoldPath,
+                canonicalGoldPath = FrozenHistoryGold.Entry(documentId).CanonicalGoldPath,
                 goldSha256 = goldByDocument[documentId].GoldSha256,
                 sourceSha256 = goldByDocument[documentId].SourceSha256,
-                semanticHeadingTotal = CanonicalGoldRegistry.SemanticHeadingTotal(documentId),
+                semanticHeadingTotal = FrozenHistoryGold.SemanticHeadingTotal(documentId),
                 goldMutation = "NONE",
             }).ToArray(),
             g2a = new
@@ -392,9 +392,9 @@ public sealed class V5P6TH3GoldPopulationAuditTests
 
     private static GoldDocument LoadGold(string authorityId)
     {
-        var entry = CanonicalGoldRegistry.Entry(authorityId);
-        CanonicalGoldRegistry.RequireCapability(authorityId, GoldCapability.Occurrence);
-        using var doc = CanonicalGoldRegistry.Resolve(authorityId);
+        var entry = FrozenHistoryGold.Entry(authorityId);
+        FrozenHistoryGold.RequireCapability(authorityId, GoldCapability.Occurrence);
+        using var doc = FrozenHistoryGold.Resolve(authorityId);
         var root = doc.RootElement;
         var sourceHash = root.GetProperty("source").GetProperty("sourceSha256").GetString()!;
         Assert.Equal(entry.SourceSha256, sourceHash);

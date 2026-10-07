@@ -253,14 +253,13 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
 
     private static IReadOnlyList<(string PackId, V5EvidencePacketV2_1 Packet)> RealPacketsFor(string documentId, string pdfPath)
     {
-        var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(pdfPath);
-        var authority = sourceBuild.Universe;
+        var authority = PdfFrozenSourceView.Load(pdfPath, FrozenSourceSnapshots.V1Root);
         var graph = EvidenceGraphBuilder.Build(authority.Atoms.Select(atom => new SourceObservation(
             $"V5:{atom.SourceId}", atom.SourceId, atom.Alias, atom.Ordinal, EvidenceModality.TEXT, atom.Text,
             new StructuralSpan(0, atom.Text.Length), new EvidenceGeometry(atom.Page),
             new Dictionary<string, string?> { ["sourceType"] = "PDF", ["documentId"] = documentId })));
         var byAlias = graph.Nodes.ToDictionary(node => node.SourceAlias, StringComparer.Ordinal);
-        var packs = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, sourceBuild.Details.LayoutBlockByAtom);
+        var packs = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, authority.LayoutBlockByAtom);
         return packs.Select(pack =>
         {
             var ownedAliases = pack.Owned.Select(item => item.SourceAlias).ToHashSet(StringComparer.Ordinal);
@@ -342,7 +341,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
             {
                 var pdf = documentId == "SRC-089" ? SourcePdfCorpus.Src089 : SourcePdfCorpus.Src095;
                 var built = V5PdfPreflightBuilder.BuildV2_1(TestRepository.Path(pdf), documentId, Contract,
-                    V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId, Envelope);
+                    V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId, Envelope, FrozenSourceSnapshots.V1Root);
                 builtByDoc[documentId] = requests = built.Requests;
             }
             var pack = requests.Single(r => r.PackId == packId);
@@ -360,9 +359,9 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
     [Fact]
     public void Tool_auto_preflight_for_PACK_006_matches_the_canonical_semantic_hash_and_is_never_sent()
     {
-        var atoms = V5PdfPreflightBuilder.LoadAtoms(TestRepository.Path(SourcePdfCorpus.Src089));
+        var atoms = V5PdfPreflightBuilder.LoadAtoms(TestRepository.Path(SourcePdfCorpus.Src089), FrozenSourceSnapshots.V1Root);
         var built = V5PdfPreflightBuilder.BuildV2_1(TestRepository.Path(SourcePdfCorpus.Src089), "SRC-089", Contract,
-            V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId, Envelope);
+            V5PdfPreflightBuilder.PdfResourceBoundedPackingPolicyId, Envelope, FrozenSourceSnapshots.V1Root);
         var pack006 = built.Requests.Single(r => r.PackId == "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006");
 
         var semanticHashBeforeToolAutoPreflight = pack006.Request.RequestHash;

@@ -114,7 +114,7 @@ public sealed class V5P6TH2CCleanPairedGoldAuditTests
                 preflightSha256 = Hash(preflightBytes),
                 v1ResultSha256 = Hash(File.ReadAllBytes(TestRepository.Path(V1ResultPath))),
                 v2ResultSha256 = Hash(File.ReadAllBytes(TestRepository.Path(V2ResultPath))),
-                goldAuthorities = Sources.Select(source => new { documentId = source.DocumentId, canonicalGoldPath = CanonicalGoldRegistry.Entry(source.DocumentId).CanonicalGoldPath,
+                goldAuthorities = Sources.Select(source => new { documentId = source.DocumentId, canonicalGoldPath = FrozenHistoryGold.Entry(source.DocumentId).CanonicalGoldPath,
                     goldSha256 = gold[source.DocumentId].GoldSha256, sourceSha256 = gold[source.DocumentId].SourceSha256 }).ToArray(),
                 primaryProviderCallsDuringAudit = 0,
                 goldMutation = "NONE",
@@ -269,9 +269,9 @@ public sealed class V5P6TH2CCleanPairedGoldAuditTests
 
     private static GoldDocument LoadGold(Source source)
     {
-        var entry = CanonicalGoldRegistry.Entry(source.DocumentId);
-        CanonicalGoldRegistry.RequireCapability(source.DocumentId, GoldCapability.Occurrence);
-        using var document = CanonicalGoldRegistry.Resolve(source.DocumentId);
+        var entry = FrozenHistoryGold.Entry(source.DocumentId);
+        FrozenHistoryGold.RequireCapability(source.DocumentId, GoldCapability.Occurrence);
+        using var document = FrozenHistoryGold.Resolve(source.DocumentId);
         Assert.Equal(entry.SourceSha256, document.RootElement.GetProperty("source").GetProperty("sourceSha256").GetString());
         var extents = document.RootElement.GetProperty("semantic").GetProperty("claims").EnumerateArray()
             .Select(claim => claim.GetProperty("sourceParts").EnumerateArray().Select(part => part.GetProperty("sourceAlias").GetString()!).ToArray()).ToArray();

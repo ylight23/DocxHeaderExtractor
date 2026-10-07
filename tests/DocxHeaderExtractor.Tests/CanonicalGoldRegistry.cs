@@ -374,3 +374,64 @@ public enum GoldCapability
     CharacterSpan,
     VisualBinding,
 }
+
+/// <summary>
+/// The Gold a frozen historical artifact was produced against. When an authority's source universe changes (SRC-089 and
+/// SRC-029 moved to the font-independent PDF geometry), the registry names only the migrated Gold; a test that replays a
+/// frozen capture over the previous universe reads the previous vintage here, hash-pinned, and never the live registry row.
+/// Authorities with no vintage resolve to the registry unchanged. The recorded <c>CanonicalGoldPath</c> stays the registry's
+/// path, because that is the string the frozen artifacts carry; only the bytes read and the hash returned are the vintage's.
+/// </summary>
+public static class FrozenHistoryGold
+{
+    private static readonly IReadOnlyDictionary<string, (string Path, string Sha256)> Vintages =
+        new Dictionary<string, (string, string)>(StringComparer.Ordinal)
+        {
+            ["SRC-089"] = (CanonicalGoldRegistry.Root + "/documents/SRC-089.pdf-universe-v1.gold.v1.json",
+                "50d9e57225d9cf9dcf174e5b5b7422158c06d7327241d77fc4d019831b8a808d"),
+        };
+
+    /// <summary>The authored (pre-consumer-view) Gold of a vintage, hash-pinned.</summary>
+    public const string Src089AuthoredPath = "eval/a99-closed-loop/gold-history/pdf-universe-v1/SRC-089.gold.json";
+    /// <summary>The path the frozen artifacts recorded; the bytes now live at <see cref="Src089AuthoredPath"/>.</summary>
+    public const string Src089AuthoredRecordedPath = "eval/a99-closed-loop/gold/SRC-089.gold.json";
+    public const string Src089AuthoredSha256 = "83db6b93462e9bcaf41bc22151b2b31d98c4898973da8ffb86de2d3b18ec9b88";
+
+    public static string ReadSrc089Authored()
+    {
+        var text = File.ReadAllText(TestRepository.Path(Src089AuthoredPath));
+        if (CanonicalArtifactHash.OfText(text) != Src089AuthoredSha256)
+            throw new InvalidOperationException("The SRC-089 v1-universe authored Gold does not match its pinned hash.");
+        return text;
+    }
+
+    public static CanonicalGoldEntry Entry(string authorityId)
+    {
+        var current = CanonicalGoldRegistry.Entry(authorityId);
+        return Vintages.TryGetValue(authorityId, out var vintage)
+            ? CanonicalGoldRegistry.EntryAt(vintage.Path, vintage.Sha256) with { CanonicalGoldPath = current.CanonicalGoldPath }
+            : current;
+    }
+
+    public static JsonDocument Resolve(string authorityId) =>
+        Vintages.TryGetValue(authorityId, out var vintage)
+            ? CanonicalGoldRegistry.ResolveAt(vintage.Path, vintage.Sha256)
+            : CanonicalGoldRegistry.Resolve(authorityId);
+
+    public static int SemanticHeadingTotal(string authorityId) => Entry(authorityId).SemanticHeadingTotal;
+
+    public static void RequireCapability(string authorityId, GoldCapability capability)
+    {
+        var entry = Entry(authorityId);
+        var granted = capability switch
+        {
+            GoldCapability.SemanticCount => entry.SemanticCountAuthoritative,
+            GoldCapability.SemanticClaims => entry.SemanticClaimsEvaluable,
+            GoldCapability.Occurrence => entry.OccurrenceEvaluable,
+            GoldCapability.CharacterSpan => entry.CharacterSpanEvaluable,
+            GoldCapability.VisualBinding => entry.VisualBindingEvaluable,
+            _ => false,
+        };
+        if (!granted) CanonicalGoldRegistry.RequireCapability(authorityId, capability);
+    }
+}

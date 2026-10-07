@@ -142,7 +142,7 @@ public sealed class V5P6TH2CMixedPromptResidualAuditTests
         var prepared = PdfTotalOccurrenceRoleQualificationAdapter.PrepareFunctionMembershipF1(plan, pack,
             source.UsesCorrespondence ? Correspondences(pack) : new Dictionary<string, IReadOnlyList<V5ReadOnlyCorrespondenceV1>>(StringComparer.Ordinal));
         var functions = PdfTotalOccurrenceRoleQualificationAdapter.ParseFunctionMembershipF1(prepared, f1Row.GetProperty("rawResponse").GetString()!)
-            .Decisions.ToDictionary(value => value.OccurrenceId, value => value.Function.ToString(), StringComparer.Ordinal);
+            .Decisions.ToDictionary(value => value.OccurrenceId, value => value.Function.Wire(), StringComparer.Ordinal);
         var aliases = prepared.Request.Occurrences.ToDictionary(value => value.Id, value => value.Atom.Alias, StringComparer.Ordinal);
         using var g2a = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{G2ARoot}/{source.DocumentId}.raw-capture.v1.json")));
         var g2aMap = ParseG2A(g2a.RootElement.GetProperty("rawResponse").GetString()!);
@@ -250,9 +250,9 @@ public sealed class V5P6TH2CMixedPromptResidualAuditTests
 
     private static Gold LoadGold(string id)
     {
-        var entry = CanonicalGoldRegistry.Entry(id);
-        CanonicalGoldRegistry.RequireCapability(id, GoldCapability.Occurrence);
-        using var document = CanonicalGoldRegistry.Resolve(id);
+        var entry = FrozenHistoryGold.Entry(id);
+        FrozenHistoryGold.RequireCapability(id, GoldCapability.Occurrence);
+        using var document = FrozenHistoryGold.Resolve(id);
         var extents = document.RootElement.GetProperty("semantic").GetProperty("claims").EnumerateArray().Select(claim =>
             claim.GetProperty("sourceParts").EnumerateArray().Select(part => part.GetProperty("sourceAlias").GetString()!).ToArray()).ToArray();
         return new(entry.GoldSha256, entry.SourceSha256, extents);

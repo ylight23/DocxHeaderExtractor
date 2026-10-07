@@ -103,7 +103,7 @@ public sealed class V5P6TH2CMixedPromptGoldAuditTests
                 goldAuthorities = Sources.Select(source => new
                 {
                     documentId = source.DocumentId,
-                    canonicalGoldPath = CanonicalGoldRegistry.Entry(source.DocumentId).CanonicalGoldPath,
+                    canonicalGoldPath = FrozenHistoryGold.Entry(source.DocumentId).CanonicalGoldPath,
                     goldSha256 = gold[source.DocumentId].GoldSha256,
                     sourceSha256 = gold[source.DocumentId].SourceSha256,
                 }).ToArray(),
@@ -252,9 +252,9 @@ public sealed class V5P6TH2CMixedPromptGoldAuditTests
 
     private static GoldDocument LoadGold(string documentId)
     {
-        var entry = CanonicalGoldRegistry.Entry(documentId);
-        CanonicalGoldRegistry.RequireCapability(documentId, GoldCapability.Occurrence);
-        using var document = CanonicalGoldRegistry.Resolve(documentId);
+        var entry = FrozenHistoryGold.Entry(documentId);
+        FrozenHistoryGold.RequireCapability(documentId, GoldCapability.Occurrence);
+        using var document = FrozenHistoryGold.Resolve(documentId);
         Assert.Equal(entry.SourceSha256, document.RootElement.GetProperty("source").GetProperty("sourceSha256").GetString());
         var extents = document.RootElement.GetProperty("semantic").GetProperty("claims").EnumerateArray().Select(claim =>
             claim.GetProperty("sourceParts").EnumerateArray().Select(part => part.GetProperty("sourceAlias").GetString()!).ToArray()).ToArray();

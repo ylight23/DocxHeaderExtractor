@@ -231,7 +231,7 @@ public sealed class V5P6TH2CEvidencePairedGoldScoreTests
                 retryReservationSha256 = Hash(retryReservationBytes),
                 retryRawCaptureSha256 = Hash(retryRawBytes),
                 retryResultSha256 = Hash(retryResultBytes),
-                goldAuthorities = Sources.Select(source => new { documentId = source.DocumentId, canonicalGoldPath = CanonicalGoldRegistry.Entry(source.DocumentId).CanonicalGoldPath,
+                goldAuthorities = Sources.Select(source => new { documentId = source.DocumentId, canonicalGoldPath = FrozenHistoryGold.Entry(source.DocumentId).CanonicalGoldPath,
                     goldSha256 = gold[source.DocumentId].GoldSha256, sourceSha256 = gold[source.DocumentId].SourceSha256 }).ToArray(),
                 goldMutation = "NONE",
                 providerCallsDuringAudit = 0,
@@ -336,7 +336,7 @@ public sealed class V5P6TH2CEvidencePairedGoldScoreTests
         Assert.Equal("O66", retryScoredRow.GetProperty("Anchor").GetString());
         foreach (var goldAuthority in authority.GetProperty("goldAuthorities").EnumerateArray())
         {
-            var entry = CanonicalGoldRegistry.Entry(goldAuthority.GetProperty("documentId").GetString()!);
+            var entry = FrozenHistoryGold.Entry(goldAuthority.GetProperty("documentId").GetString()!);
             Assert.Equal(entry.GoldSha256, goldAuthority.GetProperty("goldSha256").GetString());
             Assert.Equal(entry.SourceSha256, goldAuthority.GetProperty("sourceSha256").GetString());
         }
@@ -437,9 +437,9 @@ public sealed class V5P6TH2CEvidencePairedGoldScoreTests
 
     private static GoldDocument LoadGold(P6TH2CEndPointerCanary.Source source)
     {
-        var entry = CanonicalGoldRegistry.Entry(source.DocumentId);
-        CanonicalGoldRegistry.RequireCapability(source.DocumentId, GoldCapability.Occurrence);
-        using var document = CanonicalGoldRegistry.Resolve(source.DocumentId);
+        var entry = FrozenHistoryGold.Entry(source.DocumentId);
+        FrozenHistoryGold.RequireCapability(source.DocumentId, GoldCapability.Occurrence);
+        using var document = FrozenHistoryGold.Resolve(source.DocumentId);
         Assert.Equal(entry.SourceSha256, document.RootElement.GetProperty("source").GetProperty("sourceSha256").GetString());
         var extents = document.RootElement.GetProperty("semantic").GetProperty("claims").EnumerateArray()
             .Select(claim => claim.GetProperty("sourceParts").EnumerateArray().Select(part => part.GetProperty("sourceAlias").GetString()!).ToArray()).ToArray();

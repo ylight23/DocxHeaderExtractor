@@ -42,7 +42,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
     private const string ContinuationBoundaryGoldAuditRoot = "artifacts/v5-p6t-function-membership/p6th2-function-conditioned-continuation-gold-audit";
     private const string ContinuationCompositionAuditRoot = "artifacts/v5-p6t-function-membership/p6th21-anchor-continuation-composition-audit";
     private const string CrossDocumentShapeAuditRoot = "artifacts/v5-p6t-function-membership/p6th3-cross-document-shape-audit";
-    private const string Gold089Path = "eval/a99-closed-loop/gold/SRC-089.gold.json";
+    private const string Gold089Path = FrozenHistoryGold.Src089AuthoredPath;
     private const string Gold095Path = "eval/a99-closed-loop/gold/SRC-095.gold.json";
     private const string Review095Path = "eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json";
     private const string RunVariable = "A99_RUN_P6TG2_CANARY";
@@ -2153,7 +2153,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         var parsed = PdfTotalOccurrenceRoleQualificationAdapter.ParseFunctionMembershipF1(f1Pack, raw);
         Assert.Equal(96, parsed.Decisions.Count);
         var atomById = f1Pack.Request.Occurrences.ToDictionary(item => item.Id, item => item.Atom, StringComparer.Ordinal);
-        var functionByAlias = parsed.Decisions.ToDictionary(item => atomById[item.OccurrenceId].Alias, item => item.Function.ToString(), StringComparer.Ordinal);
+        var functionByAlias = parsed.Decisions.ToDictionary(item => atomById[item.OccurrenceId].Alias, item => item.Function.Wire(), StringComparer.Ordinal);
         var occurrenceByAlias = f1Pack.Request.Occurrences.ToDictionary(item => item.Atom.Alias, item => item.Id, StringComparer.Ordinal);
         var classes = Classify(sourcePack, functionByAlias);
         var persistedCounts = g1Document.GetProperty("classes");
@@ -2514,7 +2514,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
                 },
                 evaluationBasis = new
                 {
-                    goldPath = Gold089Path,
+                    goldPath = FrozenHistoryGold.Src089AuthoredRecordedPath,
                     canonicalGoldSha256 = Hashing.Sha256(File.ReadAllText(TestRepository.Path(Gold089Path))),
                     goldMutation = "NONE",
                     anchorCount = has.Length,
