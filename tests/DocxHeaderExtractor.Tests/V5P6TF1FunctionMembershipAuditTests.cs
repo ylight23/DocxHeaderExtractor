@@ -27,7 +27,7 @@ public sealed class V5P6TF1FunctionMembershipAuditTests
         using var primary = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{Root}/result.v1.json")));
         using var retry = JsonDocument.Parse(File.ReadAllText(TestRepository.Path($"{Root}/retry-src089-result.v1.json")));
         using var anchorAudit = JsonDocument.Parse(File.ReadAllText(TestRepository.Path("artifacts/v5-p6t-total-occurrence-role/p6tb-anchor-role-audit/anchor-role-audit.v1.json")));
-        var src089 = Audit089(primary.RootElement, retry.RootElement, anchorAudit.RootElement);
+        var src089 = Audit089(retry.RootElement, anchorAudit.RootElement);
         var src095 = Audit095(primary.RootElement, anchorAudit.RootElement);
         FreezeArtifact.AssertJson(OutputRoot, "function-membership-audit.v1.json", new
         {
@@ -80,7 +80,7 @@ public sealed class V5P6TF1FunctionMembershipAuditTests
         };
     }
 
-    private static object Audit089(JsonElement primary, JsonElement retry, JsonElement anchorAudit)
+    private static object Audit089(JsonElement retry, JsonElement anchorAudit)
     {
         var prepared = Prepare("SRC-089", SourcePdfCorpus.Src089);
         var functions = Parse(prepared, retry.GetProperty("row"));

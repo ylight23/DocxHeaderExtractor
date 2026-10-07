@@ -382,8 +382,8 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             .Where(item => item.RootElement.GetProperty("anchor").GetString() == "HAS_STRUCTURAL_EXTENT")
             .Select(item => item.RootElement.GetProperty("primary").GetString()!).ToHashSet(StringComparer.Ordinal);
         var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
-        var reverse = ComposeExactExtentWithCandidateOrder(prepared, baseline, true);
-        var permutation = ComposeExactExtentWithHashPermutation(prepared, baseline, "G2D");
+        var reverse = ComposeExactExtentWithCandidateOrder(baseline, true);
+        var permutation = ComposeExactExtentWithHashPermutation(baseline, "G2D");
         var b = ParseExactExtentLedger(baseline, g2bRaw.RootElement.GetProperty("rawResponse").GetString()!);
         var c = ParseExactExtentLedger(reverse, g2cRaw.RootElement.GetProperty("rawResponse").GetString()!);
         var d = ParseExactExtentLedger(permutation, g2dRaw.RootElement.GetProperty("rawResponse").GetString()!);
@@ -537,8 +537,8 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         Assert.Equal(6, hasPrimaries.Count);
 
         var g2bRequest = ComposeExactExtentFromHas(prepared, hasPrimaries);
-        var g2cRequest = ComposeExactExtentWithCandidateOrder(prepared, g2bRequest, true);
-        var g2dRequest = ComposeExactExtentWithHashPermutation(prepared, g2bRequest, "G2D");
+        var g2cRequest = ComposeExactExtentWithCandidateOrder(g2bRequest, true);
+        var g2dRequest = ComposeExactExtentWithHashPermutation(g2bRequest, "G2D");
         var g2eRequest = ComposeExactExtentWithWholeMoved(prepared, g2bRequest);
         Assert.Equal(g2bPreflight.RootElement.GetProperty("callPlan").GetProperty("providerBodySha256").GetString(), g2bRequest.ProviderHash);
         Assert.Equal(g2cPreflight.RootElement.GetProperty("candidateOrderArm").GetProperty("providerBodySha256").GetString(), g2cRequest.ProviderHash);
@@ -684,7 +684,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         Assert.Equal(6, hasPrimaries.Count);
 
         var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
-        var reversed = ComposeExactExtentWithCandidateOrder(prepared, baseline, true);
+        var reversed = ComposeExactExtentWithCandidateOrder(baseline, true);
         var independent = ComposeIndependentCandidateJudgments(prepared, baseline);
         var independentFromReversed = ComposeIndependentCandidateJudgments(prepared, reversed);
 
@@ -1240,7 +1240,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             .ToHashSet(StringComparer.Ordinal);
         Assert.Equal(6, hasPrimaries.Count);
         var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
-        var request = ComposeExactExtentWithHashPermutation(prepared, baseline, "G2D");
+        var request = ComposeExactExtentWithHashPermutation(baseline, "G2D");
         var callPlan = preflight.RootElement.GetProperty("permutationArm");
         Assert.Equal(request.MessageHash, callPlan.GetProperty("userMessageSha256").GetString());
         Assert.Equal(request.MessageBytes, callPlan.GetProperty("userMessageUtf8Bytes").GetInt32());
@@ -1393,8 +1393,8 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         Assert.Equal(6, hasPrimaries.Count);
 
         var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
-        var reversed = ComposeExactExtentWithCandidateOrder(prepared, baseline, reverse: true);
-        var permuted = ComposeExactExtentWithHashPermutation(prepared, baseline, "G2D");
+        var reversed = ComposeExactExtentWithCandidateOrder(baseline, reverse: true);
+        var permuted = ComposeExactExtentWithHashPermutation(baseline, "G2D");
         Assert.Equal(baseline.OccurrenceGroups.Count, permuted.OccurrenceGroups.Count);
         Assert.All(baseline.OccurrenceGroups, group =>
         {
@@ -1490,7 +1490,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             .Select(item => item.RootElement.GetProperty("primary").GetString()!)
             .ToHashSet(StringComparer.Ordinal);
         var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
-        var reordered = ComposeExactExtentWithCandidateOrder(prepared, baseline, reverse: true);
+        var reordered = ComposeExactExtentWithCandidateOrder(baseline, reverse: true);
         var baselineLedger = ParseExactExtentLedger(baseline, g2bRaw.RootElement.GetProperty("rawResponse").GetString()!);
         var reorderedLedger = ParseExactExtentLedger(reordered, g2cRaw.RootElement.GetProperty("rawResponse").GetString()!);
         Assert.Equal(6, baselineLedger.AcceptedSelections);
@@ -1624,7 +1624,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             .ToHashSet(StringComparer.Ordinal);
         Assert.Equal(6, hasPrimaries.Count);
         var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
-        var request = ComposeExactExtentWithCandidateOrder(prepared, baseline, reverse: true);
+        var request = ComposeExactExtentWithCandidateOrder(baseline, reverse: true);
         var frozen = preflight.RootElement;
         Assert.Equal("PREPARED_NOT_AUTHORIZED", frozen.GetProperty("status").GetString());
         var callPlan = frozen.GetProperty("candidateOrderArm");
@@ -2055,7 +2055,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         Assert.Equal(6, hasPrimaries.Count);
 
         var baseline = ComposeExactExtentFromHas(prepared, hasPrimaries);
-        var reversed = ComposeExactExtentWithCandidateOrder(prepared, baseline, reverse: true);
+        var reversed = ComposeExactExtentWithCandidateOrder(baseline, reverse: true);
         var frozenCallPlan = g2b.RootElement.GetProperty("callPlan");
         Assert.Equal(baseline.MessageHash, frozenCallPlan.GetProperty("userMessageSha256").GetString());
         Assert.Equal(baseline.ProviderHash, frozenCallPlan.GetProperty("providerBodySha256").GetString());
@@ -3402,7 +3402,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
         }).OrderBy(item => item.Anchor, StringComparer.Ordinal).ToArray();
     }
 
-    private static PreparedRequest ComposeExactExtentWithCandidateOrder(PreparedDocument prepared, PreparedRequest baseline, bool reverse)
+    private static PreparedRequest ComposeExactExtentWithCandidateOrder(PreparedRequest baseline, bool reverse)
     {
         var document = JsonNode.Parse(baseline.UserMessage)!.AsObject();
         var groups = document["occurrenceGroups"]!.AsArray();
@@ -3425,7 +3425,7 @@ public sealed class V5P6TG2ExactExtentResolverPreflightTests
             requestModel.UserMessageUtf8Bytes, body.PayloadBytes, body.Bytes, body.Hash, groupsReordered, baseline.MaxCompletionTokens);
     }
 
-    private static PreparedRequest ComposeExactExtentWithHashPermutation(PreparedDocument prepared, PreparedRequest baseline, string salt)
+    private static PreparedRequest ComposeExactExtentWithHashPermutation(PreparedRequest baseline, string salt)
     {
         var orderedGroups = baseline.OccurrenceGroups.ToDictionary(group => group.PrimaryOccurrence,
             group => group.CandidateIds.OrderBy(id => Hashing.Sha256($"{group.PrimaryOccurrence}|{id}|{salt}"), StringComparer.Ordinal).ToArray(), StringComparer.Ordinal);

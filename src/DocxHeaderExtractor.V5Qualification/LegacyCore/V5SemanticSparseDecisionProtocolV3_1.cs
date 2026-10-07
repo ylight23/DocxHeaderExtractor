@@ -225,7 +225,7 @@ public static class V5SemanticSparseDecisionContractV3_1
             }
         }
         var response = new V5SemanticSparseDecisionResponseV3_1(parsed) { ParseRefusals = refusals };
-        ValidateEnvelope(response, contract, ownedCount, contextOnlyCount, bounds);
+        ValidateEnvelope(response, ownedCount, bounds);
         return response;
     }
 
@@ -237,7 +237,7 @@ public static class V5SemanticSparseDecisionContractV3_1
         var bounds = Bounds(ownedEvidence.Count, ownedEvidence.Count + contextOnlyEvidence.Count);
         try
         {
-            ValidateEnvelope(response, contract, ownedEvidence.Count, contextOnlyEvidence.Count, bounds);
+            ValidateEnvelope(response, ownedEvidence.Count, bounds);
         }
         catch (InvalidOperationException ex)
         {
@@ -292,8 +292,8 @@ public static class V5SemanticSparseDecisionContractV3_1
         return oldBounds with { MaxResponseUtf8Bytes = checked(oldBounds.MaxResponseUtf8Bytes + ownedCount * 32) };
     }
 
-    private static void ValidateEnvelope(V5SemanticSparseDecisionResponseV3_1 response, DocumentTaskContract contract,
-        int ownedCount, int contextOnlyCount, V5SemanticDecisionResponseBoundsV3 bounds)
+    private static void ValidateEnvelope(V5SemanticSparseDecisionResponseV3_1 response,
+        int ownedCount, V5SemanticDecisionResponseBoundsV3 bounds)
     {
         ArgumentNullException.ThrowIfNull(response);
         if (response.Decisions is null || response.Decisions.Count > ownedCount || response.Decisions.Any(decision => decision is null))

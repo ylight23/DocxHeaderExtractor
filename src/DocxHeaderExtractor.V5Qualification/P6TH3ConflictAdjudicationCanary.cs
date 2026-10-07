@@ -78,7 +78,7 @@ internal static class P6TH3ConflictAdjudicationCanary
             try { response = await client.ExecuteObservedAsync(item.Body, item.MaxCompletion, item.System, item.User).ConfigureAwait(false); }
             catch (Exception exception) { error = exception.Message; }
             var parsed = response is not null && error is null && string.Equals(response.FinishReason, "stop", StringComparison.OrdinalIgnoreCase)
-                ? Parse(item, response.Content) : null;
+                ? Parse(response.Content) : null;
             var path = Path.Combine(directory, $"{item.Spec.Id}.raw-capture.v1.json");
             if (File.Exists(path)) return Fail($"p6th3: immutable capture exists:{item.Spec.Id}");
             File.WriteAllText(path, JsonSerializer.Serialize(new
@@ -172,7 +172,7 @@ internal static class P6TH3ConflictAdjudicationCanary
     }
 
     private sealed record Decision(string ConflictId, string Resolution);
-    private static Decision? Parse(Built request, string raw)
+    private static Decision? Parse(string raw)
     {
         try
         {

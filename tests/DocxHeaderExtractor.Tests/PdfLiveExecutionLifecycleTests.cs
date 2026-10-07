@@ -19,7 +19,7 @@ public sealed class PdfLiveExecutionLifecycleTests
 
         var executionTask = RunAsync(transport, new SemanticLaneOptions(TimeSpan.FromSeconds(30)));
         await transport.Started.Task;
-        transport.Complete("{\"headings\":[]}");
+        transport.Complete();
         var execution = await executionTask;
 
         Assert.Equal("pdf-canonical-vnext", execution.Result.Provenance.Route);
@@ -53,7 +53,7 @@ public sealed class PdfLiveExecutionLifecycleTests
         await transport.Started.Task;
         await Assert.ThrowsAsync<TimeoutException>(() => execution);
 
-        transport.Complete("{\"headings\":[]}");
+        transport.Complete();
         await transport.FirstCallCompleted.Task;
 
         Assert.Equal(1, transport.Calls);
@@ -73,7 +73,7 @@ public sealed class PdfLiveExecutionLifecycleTests
         cancellation.Cancel();
         await Assert.ThrowsAsync<OperationCanceledException>(() => execution);
 
-        transport.Complete("{\"headings\":[]}");
+        transport.Complete();
         await transport.FirstCallCompleted.Task;
 
         Assert.Equal(1, transport.Calls);
@@ -153,7 +153,7 @@ public sealed class PdfLiveExecutionLifecycleTests
             return AwaitFirstCallAsync();
         }
 
-        public void Complete(string response) => _firstCall.TrySetResult(F1AllOther(_firstUserMessage!));
+        public void Complete() => _firstCall.TrySetResult(F1AllOther(_firstUserMessage!));
         public void Fail(Exception exception) => _firstCall.TrySetException(exception);
         public void Dispose() { }
 
