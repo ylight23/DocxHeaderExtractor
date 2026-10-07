@@ -305,9 +305,8 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
         Assert.Equal(0, providerByteDrift);
         Assert.Equal(0, providerHashDrift);
 
-        var path = TestRepository.Path($"{CarrierArtifactRoot}/json-object-equivalence.v1.json");
-        Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-        File.WriteAllText(path,
+        // Compared with the committed artifact; written only in explicit freeze-update mode (A99_FREEZE_UPDATE=1).
+        FreezeArtifact.AssertText(CarrierArtifactRoot, "json-object-equivalence.v1.json",
             JsonSerializer.Serialize(new
             {
                 schemaVersion = "v5-openrouter-json-object-carrier-equivalence-v1",
@@ -323,8 +322,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
                 perPack,
                 providerCalls = 0,
                 goldRead = false,
-            }, new JsonSerializerOptions { WriteIndented = true }) + Environment.NewLine,
-            new UTF8Encoding(false));
+            }, new JsonSerializerOptions { WriteIndented = true }) + "\n");
     }
 
     [Fact]
@@ -371,9 +369,8 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
         // The canonical semantic hash is untouched by preparing a ToolAuto body.
         Assert.Equal(semanticHashBeforeToolAutoPreflight, pack006.Request.RequestHash);
 
-        var path = TestRepository.Path($"{CarrierArtifactRoot}/tool-auto-preflight-pack006.v1.json");
-        Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-        File.WriteAllText(path,
+        // Compared with the committed artifact; written only in explicit freeze-update mode (A99_FREEZE_UPDATE=1).
+        FreezeArtifact.AssertText(CarrierArtifactRoot, "tool-auto-preflight-pack006.v1.json",
             JsonSerializer.Serialize(new
             {
                 schemaVersion = "v5-openrouter-tool-auto-preflight-v1",
@@ -391,7 +388,6 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
                 },
                 providerCalls = 0,
                 goldRead = false,
-            }, new JsonSerializerOptions { WriteIndented = true }) + Environment.NewLine,
-            new UTF8Encoding(false));
+            }, new JsonSerializerOptions { WriteIndented = true }) + "\n");
     }
 }
