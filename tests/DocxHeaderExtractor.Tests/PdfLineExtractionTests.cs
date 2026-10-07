@@ -3,7 +3,7 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
-using Glyph = DocxHeaderExtractor.DocumentProcessing.Pipeline.PdfVisualLineBucket.Glyph;
+using Glyph = DocxHeaderExtractor.DocumentProcessing.Source.Pdf.PdfVisualLineBucket.Glyph;
 
 namespace DocxHeaderExtractor.Tests;
 

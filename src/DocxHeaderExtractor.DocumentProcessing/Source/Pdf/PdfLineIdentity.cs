@@ -1,4 +1,5 @@
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 /// <summary>
 /// A stable identity for one parser line, so a block can say which lines it was built from and an

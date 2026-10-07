@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 /// <summary>
 /// Raw layout measurements of one parser line. Positions and counts only - no "header/footer",

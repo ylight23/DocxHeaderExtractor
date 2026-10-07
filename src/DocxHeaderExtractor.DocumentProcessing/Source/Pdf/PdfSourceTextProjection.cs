@@ -1,4 +1,5 @@
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 /// <summary>
 /// One run of glyphs, and where it sits in both the raw parser string and the canonical one.

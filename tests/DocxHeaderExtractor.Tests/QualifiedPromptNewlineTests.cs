@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Security.Cryptography;
 using System.Text;
 using DocxHeaderExtractor.Core.Models;

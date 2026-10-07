@@ -368,7 +368,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
             pair.First.OccurrenceHandles.SequenceEqual(pair.Second.OccurrenceHandles)));
         var preflightPath = TestRepository.Path(Root + "/p6th2c-end-pointer-preflight-v2/h2c-exact-end-pointer-preflight.v2.json");
         var sanitizedAuditPath = TestRepository.Path(Root + "/p6th2c-clean-boundary-separability-audit/h2c-clean-boundary-separability-sanitized.v1.json");
-        var sourceEvidencePath = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceEvidence.cs");
+        var sourceEvidencePath = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Source/Pdf/PdfSourceEvidence.cs");
         using var frozenPreflight = JsonDocument.Parse(File.ReadAllBytes(
             TestRepository.Path(OutputRoot + "/h2c-evidence-complete-preflight.v1.json")));
         var frozenAuthorities = frozenPreflight.RootElement.GetProperty("authorities");

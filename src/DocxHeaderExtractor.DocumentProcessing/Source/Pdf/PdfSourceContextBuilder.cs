@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;

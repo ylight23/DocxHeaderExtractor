@@ -60,7 +60,7 @@ public sealed class V5P6TH2CEvidenceAvailabilityMatrixTests
         Assert.True(styleFields.SetEquals(["fontSize", "bodyFontSize", "fontSizeToBodyRatio", "boldRatio", "italicRatio", "lineCount"]));
         Assert.True(locationFields.SetEquals(["verticalPosition", "sameNormalizedTextPageCount", "sameNormalizedTextFirstPage", "sameNormalizedTextLastPage"]));
 
-        var evidenceSource = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceEvidence.cs");
+        var evidenceSource = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Source/Pdf/PdfSourceEvidence.cs");
         var productionAdapter = ReadSource("src/DocxHeaderExtractor.V5Qualification/LegacyPdf/PdfHeadingMembershipProductionAdapter.cs");
         var sourceBuilder = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Source/Pdf/PdfSourceAdapter.cs");
         var pdfSourceDetails = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Source/Pdf/PdfSourceBuildResult.cs");
