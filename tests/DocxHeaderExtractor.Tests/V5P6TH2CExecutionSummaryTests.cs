@@ -44,6 +44,13 @@ public sealed class V5P6TH2CExecutionSummaryTests
         Assert.Equal(31, frozenV2.Count);
 
         var primaryFiles = Directory.GetFiles(TestRepository.Path(CaptureRoot), "*.raw-capture.v1.json");
+        if (primaryFiles.Length == 0)
+        {
+            // The raw captures are a local forensic archive and are not committed. Without them the committed sanitized summary is
+            // the authority, and it is verified in full against the tracked receipts and request manifests - never skipped.
+            AssertCommittedSummaryWithoutRawArchive(primaryFreeze.RootElement, clarified.RootElement, frozenV1, frozenV2);
+            return;
+        }
         Assert.Equal(31, primaryFiles.Length);
         foreach (var path in primaryFiles)
         {
@@ -162,6 +169,64 @@ public sealed class V5P6TH2CExecutionSummaryTests
             rawSourceDerivedResponsesIncluded = false,
             semanticScore = "NOT_EVALUATED_GOLD_CLOSED",
         });
+    }
+
+    private static void AssertCommittedSummaryWithoutRawArchive(JsonElement primaryFreeze, JsonElement clarified,
+        IReadOnlyDictionary<string, JsonElement> frozenV1, IReadOnlyDictionary<string, JsonElement> frozenV2)
+    {
+        using var summaryDocument = JsonDocument.Parse(File.ReadAllBytes(TestRepository.Path(OutputRoot + "/h2c-sanitized-execution-summary.v1.json")));
+        var summary = summaryDocument.RootElement;
+        Assert.Equal(Hash(File.ReadAllText(TestRepository.Path(V1Manifest))), summary.GetProperty("v1RequestManifestSha256").GetString());
+        Assert.Equal(Hash(File.ReadAllText(TestRepository.Path(V2Manifest))), summary.GetProperty("v2RequestManifestSha256").GetString());
+        Assert.Equal(primaryFreeze.GetProperty("captureSetSha256").GetString(), summary.GetProperty("v1PrimaryCaptureSetSha256").GetString());
+        Assert.Equal(31, summary.GetProperty("primaryProviderCalls").GetInt32());
+        Assert.Equal(29, summary.GetProperty("primaryAcceptedLedgers").GetInt32());
+        Assert.Equal(2, summary.GetProperty("primaryQuarantines").GetInt32());
+        Assert.Equal(13, summary.GetProperty("exactBodyRetryCallsBeforeClarification").GetInt32());
+        Assert.Equal(13, summary.GetProperty("exactBodyRetryEchoedFixedExampleForTargetAnchors").GetInt32());
+        Assert.Equal(2, summary.GetProperty("clarifiedRetryCalls").GetInt32());
+        Assert.Equal(2, summary.GetProperty("clarifiedRetryAccepted").GetInt32());
+        Assert.Equal(46, summary.GetProperty("totalProviderCalls").GetInt32());
+        Assert.Equal(31, summary.GetProperty("finalContractValidAnchorCount").GetInt32());
+        Assert.Equal(0, summary.GetProperty("transportRetries").GetInt32());
+        Assert.False(summary.GetProperty("repair").GetBoolean());
+        Assert.False(summary.GetProperty("fallback").GetBoolean());
+        Assert.False(summary.GetProperty("goldRead").GetBoolean());
+        Assert.Equal("NONE", summary.GetProperty("goldMutation").GetString());
+        Assert.False(summary.GetProperty("rawSourceDerivedResponsesIncluded").GetBoolean());
+
+        var receipts = summary.GetProperty("immutableCallReceipts").EnumerateArray().ToArray();
+        Assert.Equal(46, receipts.Length);
+        Assert.Equal(31, receipts.Count(item => item.GetProperty("AttemptClass").GetString() == "PRIMARY_PROMPT_V1"));
+        Assert.Equal(13, receipts.Count(item => item.GetProperty("AttemptClass").GetString() == "EXACT_BODY_RETRY_V1"));
+        Assert.Equal(2, receipts.Count(item => item.GetProperty("AttemptClass").GetString() == "CLARIFIED_PROMPT_V2_RECOVERY"));
+        foreach (var receipt in receipts)
+        {
+            foreach (var field in new[] { "RawCaptureSha256", "SystemPromptSha256", "ProviderBodySha256", "RawResponseSha256", "RawSseSha256", "FinishReason" })
+                Assert.False(string.IsNullOrWhiteSpace(receipt.GetProperty(field).GetString()), field);
+            Assert.Equal(0, receipt.GetProperty("TransportRetryCount").GetInt32());
+            var key = $"{receipt.GetProperty("DocumentId").GetString()}|{receipt.GetProperty("PackId").GetString()}|{receipt.GetProperty("Anchor").GetString()}";
+            var frozen = receipt.GetProperty("AttemptClass").GetString() == "CLARIFIED_PROMPT_V2_RECOVERY" ? frozenV2 : frozenV1;
+            Assert.Equal(frozen[key].GetProperty("ProviderBodySha256").GetString(), receipt.GetProperty("ProviderBodySha256").GetString());
+        }
+
+        var accepted = summary.GetProperty("acceptedClarifiedResponses").EnumerateArray().ToArray();
+        var clarifiedAccepted = clarified.GetProperty("accepted").EnumerateArray().ToArray();
+        Assert.Equal(2, accepted.Length);
+        Assert.Equal(clarifiedAccepted.Length, accepted.Length);
+        foreach (var item in accepted)
+        {
+            var source = clarifiedAccepted.Single(row => row.GetProperty("documentId").GetString() == item.GetProperty("documentId").GetString() &&
+                                                         row.GetProperty("anchor").GetString() == item.GetProperty("anchor").GetString());
+            foreach (var field in new[] { "providerBodySha256", "acceptedRawCaptureSha256", "acceptedRawResponseSha256", "acceptedRawSseSha256" })
+                Assert.Equal(source.GetProperty(field).GetString(), item.GetProperty(field).GetString());
+            var receipt = receipts.Single(r => r.GetProperty("AttemptClass").GetString() == "CLARIFIED_PROMPT_V2_RECOVERY" &&
+                                               r.GetProperty("DocumentId").GetString() == item.GetProperty("documentId").GetString() &&
+                                               r.GetProperty("Anchor").GetString() == item.GetProperty("anchor").GetString());
+            Assert.Equal(item.GetProperty("acceptedRawCaptureSha256").GetString(), receipt.GetProperty("RawCaptureSha256").GetString());
+            Assert.Equal(item.GetProperty("acceptedRawResponseSha256").GetString(), receipt.GetProperty("RawResponseSha256").GetString());
+            Assert.Equal(item.GetProperty("acceptedRawSseSha256").GetString(), receipt.GetProperty("RawSseSha256").GetString());
+        }
     }
 
     private static CallReceipt[] BuildCallReceipts(

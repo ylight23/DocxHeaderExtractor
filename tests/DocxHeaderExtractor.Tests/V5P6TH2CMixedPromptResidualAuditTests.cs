@@ -39,8 +39,8 @@ public sealed class V5P6TH2CMixedPromptResidualAuditTests
         Assert.Equal(31, v2Requests.Count);
 
         var authority = Sources.ToDictionary(source => source.DocumentId, BuildAuthority, StringComparer.Ordinal);
-        var clarifiedFiles = Directory.GetFiles(TestRepository.Path(ClarifiedRoot), "*.raw-capture.v2.json", SearchOption.AllDirectories);
-        Assert.Equal(2, clarifiedFiles.Length);
+        var clarifiedFiles = H2cCaptureArchive.List(ClarifiedRoot, "*.raw-capture.v2.json", SearchOption.AllDirectories);
+        Assert.Equal(2, clarifiedFiles.Count);
         var rows = new List<Residual>();
 
         foreach (var request in v2Requests.Values)
@@ -153,24 +153,23 @@ public sealed class V5P6TH2CMixedPromptResidualAuditTests
 
     private static Selected Select(string documentId, string anchor, IReadOnlyList<string> issued, IReadOnlyList<string> clarifiedFiles)
     {
-        var primary = Read(TestRepository.Path($"{PrimaryRoot}/{documentId}_{anchor}.raw-capture.v1.json"), "PRIMARY_PROMPT_V1");
+        var primary = Read(PrimaryRoot, $"{documentId}_{anchor}.raw-capture.v1.json", "PRIMARY_PROMPT_V1");
         if (Parse(primary.RawResponse, anchor, issued, out var primaryDecision)) return primary with { Members = primaryDecision.Members, FirstOutsideRole = primaryDecision.OutsideRole };
         var path = Assert.Single(clarifiedFiles.Where(value =>
         {
-            using var document = JsonDocument.Parse(File.ReadAllBytes(value));
-            return document.RootElement.GetProperty("documentId").GetString() == documentId && document.RootElement.GetProperty("anchor").GetString() == anchor;
+            using var capture = H2cCaptureArchive.Read(ClarifiedRoot, value);
+            return capture.Root.GetProperty("documentId").GetString() == documentId && capture.Root.GetProperty("anchor").GetString() == anchor;
         }));
-        var recovery = Read(path, "CLARIFIED_PROMPT_V2_RECOVERY");
+        var recovery = Read(ClarifiedRoot, path, "CLARIFIED_PROMPT_V2_RECOVERY");
         Assert.True(Parse(recovery.RawResponse, anchor, issued, out var decision));
         return recovery with { Members = decision.Members, FirstOutsideRole = decision.OutsideRole };
     }
 
-    private static Selected Read(string path, string promptVersion)
+    private static Selected Read(string captureRoot, string relativePath, string promptVersion)
     {
-        var bytes = File.ReadAllBytes(path);
-        using var document = JsonDocument.Parse(bytes);
-        var row = document.RootElement;
-        return new Selected(promptVersion, Hash(bytes), row.GetProperty("rawResponse").GetString()!, row.GetProperty("rawResponseSha256").GetString()!,
+        using var capture = H2cCaptureArchive.Read(captureRoot, relativePath);
+        var row = capture.Root;
+        return new Selected(promptVersion, capture.FileSha256, row.GetProperty("rawResponse").GetString()!, row.GetProperty("rawResponseSha256").GetString()!,
             row.GetProperty("rawSseSha256").GetString()!, row.GetProperty("providerBodySha256").GetString()!, [], string.Empty);
     }
 

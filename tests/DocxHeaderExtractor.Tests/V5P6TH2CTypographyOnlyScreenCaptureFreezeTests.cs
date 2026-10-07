@@ -16,7 +16,6 @@ public sealed class V5P6TH2CTypographyOnlyScreenCaptureFreezeTests
     {
         var repo = TestRepository.Root();
         var capturePath = TestRepository.Path(CaptureRoot);
-        if (!Directory.Exists(capturePath)) return; // No local raw archive on a clean clone.
 
         var preflightPath = TestRepository.Path(PreflightRoot + "/typography-only-screen-preflight.v1.json");
         var manifestPath = TestRepository.Path(PreflightRoot + "/execution-manifest.v1.json");
@@ -43,6 +42,19 @@ public sealed class V5P6TH2CTypographyOnlyScreenCaptureFreezeTests
         var summaries = result.RootElement.GetProperty("rows").EnumerateArray().ToArray();
         Assert.Equal(4, plans.Length);
         Assert.Equal(4, summaries.Length);
+        var rawArchive = plans.Select(plan =>
+        {
+            var planned = plan.GetProperty("row");
+            return Path.Combine(capturePath, $"{planned.GetProperty("documentId").GetString()}_{planned.GetProperty("anchor").GetString()}.raw-capture.v1.json");
+        }).ToArray();
+        if (rawArchive.Any(path => !File.Exists(path)))
+        {
+            // The raw archive is a local forensic archive and is not committed. Without it the committed freeze receipt is the
+            // authority, and it is verified in full against the manifest and the result summary - it is never skipped.
+            AssertReceiptAgainstManifestAndResult(capturePath, preflightBytes, manifestBytes, resultBytes, plans, summaries);
+            return;
+        }
+
         var frozenRows = new List<object>(4);
         for (var index = 0; index < 4; index++)
         {
@@ -122,6 +134,46 @@ public sealed class V5P6TH2CTypographyOnlyScreenCaptureFreezeTests
             rawResponses = "LOCAL_IMMUTABLE_ARCHIVE_NOT_COMMITTED; HASHES_AND_PROVIDER_USAGE_ONLY_IN_THIS_RECEIPT",
             calls = frozenRows,
         });
+    }
+
+    private static void AssertReceiptAgainstManifestAndResult(string capturePath, byte[] preflightBytes, byte[] manifestBytes,
+        byte[] resultBytes, JsonElement[] plans, JsonElement[] summaries)
+    {
+        var receiptPath = Path.Combine(capturePath, "capture-freeze.v1.json");
+        Assert.True(File.Exists(receiptPath), "the committed capture freeze receipt is missing");
+        using var receipt = JsonDocument.Parse(File.ReadAllBytes(receiptPath));
+        var root = receipt.RootElement;
+        Assert.Equal("RAW_HASH_VERIFIED_FOUR_CONTRACT_VALID_RESPONSES_GOLD_STILL_CLOSED", root.GetProperty("status").GetString());
+        Assert.Equal(Hash(preflightBytes), root.GetProperty("preflightSha256").GetString());
+        Assert.Equal(Hash(manifestBytes), root.GetProperty("executionManifestSha256").GetString());
+        Assert.Equal(Hash(resultBytes), root.GetProperty("resultSha256").GetString());
+        Assert.Equal(4, root.GetProperty("attemptedPrimaryCalls").GetInt32());
+        Assert.Equal(0, root.GetProperty("retry").GetInt32());
+        Assert.False(root.GetProperty("repair").GetBoolean());
+        Assert.False(root.GetProperty("fallback").GetBoolean());
+        Assert.False(root.GetProperty("goldRead").GetBoolean());
+        Assert.Equal("NONE", root.GetProperty("goldMutation").GetString());
+        var calls = root.GetProperty("calls").EnumerateArray().ToArray();
+        Assert.Equal(4, calls.Length);
+        for (var index = 0; index < 4; index++)
+        {
+            var row = plans[index].GetProperty("row");
+            var treatment = row.GetProperty("typographyOnlyTreatment");
+            var call = calls[index];
+            var summary = summaries[index];
+            Assert.Equal(index + 1, call.GetProperty("callOrdinal").GetInt32());
+            Assert.Equal(row.GetProperty("documentId").GetString(), call.GetProperty("documentId").GetString());
+            Assert.Equal(row.GetProperty("anchor").GetString(), call.GetProperty("anchor").GetString());
+            Assert.Equal(row.GetProperty("packId").GetString(), call.GetProperty("packId").GetString());
+            Assert.Equal(treatment.GetProperty("providerBodySha256").GetString(), call.GetProperty("providerBodySha256").GetString());
+            Assert.Equal(treatment.GetProperty("userMessageSha256").GetString(), call.GetProperty("userMessageSha256").GetString());
+            Assert.Equal(treatment.GetProperty("systemPromptSha256").GetString(), call.GetProperty("systemPromptSha256").GetString());
+            Assert.Equal(summary.GetProperty("rawSseSha256").GetString(), call.GetProperty("rawSseSha256").GetString());
+            Assert.Equal(summary.GetProperty("rawResponseSha256").GetString(), call.GetProperty("rawResponseSha256").GetString());
+            Assert.Equal("stop", call.GetProperty("finishReason").GetString());
+            Assert.Equal(0, call.GetProperty("retryCount").GetInt32());
+            Assert.Equal("VALID", call.GetProperty("contractStatus").GetString());
+        }
     }
 
     private static int? NullableInt(JsonElement root, string property) =>

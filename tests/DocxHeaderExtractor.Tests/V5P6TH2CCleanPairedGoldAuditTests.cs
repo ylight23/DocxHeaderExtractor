@@ -213,14 +213,12 @@ public sealed class V5P6TH2CCleanPairedGoldAuditTests
 
     private static Capture ReadCapture(string root, string documentId, string anchor)
     {
-        var path = TestRepository.Path($"{root}/{documentId}_{anchor}.raw-capture.v1.json");
-        var bytes = File.ReadAllBytes(path);
-        using var document = JsonDocument.Parse(bytes);
-        var row = document.RootElement;
+        using var capture = H2cCaptureArchive.Read(root, $"{documentId}_{anchor}.raw-capture.v1.json");
+        var row = capture.Root;
         var response = row.GetProperty("rawResponse").GetString()!;
-        var sse = row.GetProperty("rawSse").GetString()!;
         Assert.Equal(Hash(response), row.GetProperty("rawResponseSha256").GetString());
-        Assert.Equal(Hash(sse), row.GetProperty("rawSseSha256").GetString());
+        // The SSE text is only in the local raw archive; the ledger carries its hash, which is what the audit uses.
+        if (row.TryGetProperty("rawSse", out var sse)) Assert.Equal(Hash(sse.GetString()!), row.GetProperty("rawSseSha256").GetString());
         Assert.Equal(documentId, row.GetProperty("DocumentId").GetString());
         Assert.Equal(anchor, row.GetProperty("Anchor").GetString());
         var issued = row.TryGetProperty("issuedOccurrences", out var issuedValue)

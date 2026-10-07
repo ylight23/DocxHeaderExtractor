@@ -54,8 +54,8 @@ public sealed class V5P6TH2CMixedPromptGoldAuditTests
         Assert.Equal(31, manifest.Count);
         var aliases = Sources.ToDictionary(source => source.DocumentId, source => BuildOccurrenceAliases(source), StringComparer.Ordinal);
         var gold = Sources.ToDictionary(source => source.DocumentId, source => LoadGold(source.DocumentId), StringComparer.Ordinal);
-        var clarifiedFiles = Directory.GetFiles(TestRepository.Path(ClarifiedRoot), "*.raw-capture.v2.json", SearchOption.AllDirectories);
-        Assert.Equal(2, clarifiedFiles.Length);
+        var clarifiedFiles = H2cCaptureArchive.List(ClarifiedRoot, "*.raw-capture.v2.json", SearchOption.AllDirectories);
+        Assert.Equal(2, clarifiedFiles.Count);
 
         var rows = new List<Row>();
         foreach (var request in manifest.Values.OrderBy(value => value.GetProperty("DocumentId").GetString(), StringComparer.Ordinal)
@@ -69,7 +69,7 @@ public sealed class V5P6TH2CMixedPromptGoldAuditTests
             var expectedRequest = selected.PromptVersion == "PRIMARY_PROMPT_V1" ? v1Manifest[Key(request)] : request;
             Assert.Equal(expectedRequest.GetProperty("ProviderBodySha256").GetString(), selected.ProviderBodySha256);
             Assert.Equal(Hash(selected.RawResponse), selected.RawResponseSha256);
-            Assert.Equal(Hash(selected.RawSse), selected.RawSseSha256);
+            if (selected.RawSse is not null) Assert.Equal(Hash(selected.RawSse), selected.RawSseSha256);
             Assert.Equal("stop", selected.FinishReason);
 
             var predictedAliases = selected.HeadingMembers.Select(value => aliases[documentId][value]).ToArray();
@@ -176,34 +176,32 @@ public sealed class V5P6TH2CMixedPromptGoldAuditTests
 
     private static SelectedCapture SelectContractValidCapture(string documentId, string anchor, IReadOnlyList<string> issued, IReadOnlyList<string> clarifiedFiles)
     {
-        var primaryPath = TestRepository.Path($"{PrimaryRoot}/{documentId}_{anchor}.raw-capture.v1.json");
-        var primary = ReadCapture(primaryPath, "PRIMARY_PROMPT_V1");
+        var primary = ReadCapture(PrimaryRoot, $"{documentId}_{anchor}.raw-capture.v1.json", "PRIMARY_PROMPT_V1");
         if (TryParseLedger(primary.RawResponse, anchor, issued, out var primaryMembers))
             return primary with { HeadingMembers = primaryMembers };
 
         var matches = clarifiedFiles.Where(path =>
         {
-            using var document = JsonDocument.Parse(File.ReadAllBytes(path));
-            var root = document.RootElement;
+            using var capture = H2cCaptureArchive.Read(ClarifiedRoot, path);
+            var root = capture.Root;
             return root.GetProperty("documentId").GetString() == documentId && root.GetProperty("anchor").GetString() == anchor;
         }).ToArray();
         var path = Assert.Single(matches);
-        var recovery = ReadCapture(path, "CLARIFIED_PROMPT_V2_RECOVERY");
+        var recovery = ReadCapture(ClarifiedRoot, path, "CLARIFIED_PROMPT_V2_RECOVERY");
         Assert.True(TryParseLedger(recovery.RawResponse, anchor, issued, out var members), $"clarified recovery invalid: {documentId}/{anchor}");
         return recovery with { HeadingMembers = members };
     }
 
-    private static SelectedCapture ReadCapture(string path, string promptVersion)
+    private static SelectedCapture ReadCapture(string captureRoot, string relativePath, string promptVersion)
     {
-        var bytes = File.ReadAllBytes(path);
-        using var document = JsonDocument.Parse(bytes);
-        var root = document.RootElement;
+        using var capture = H2cCaptureArchive.Read(captureRoot, relativePath);
+        var root = capture.Root;
         return new SelectedCapture(
             promptVersion,
-            Hash(bytes),
+            capture.FileSha256,
             root.GetProperty("rawResponse").GetString()!,
             root.GetProperty("rawResponseSha256").GetString()!,
-            root.GetProperty("rawSse").GetString()!,
+            root.TryGetProperty("rawSse", out var sse) ? sse.GetString() : null,
             root.GetProperty("rawSseSha256").GetString()!,
             root.GetProperty("systemPromptSha256").GetString()!,
             root.GetProperty("providerBodySha256").GetString()!,
@@ -277,7 +275,7 @@ public sealed class V5P6TH2CMixedPromptGoldAuditTests
     private sealed record Source(string DocumentId, string PdfPath, string F1Path, F1Shape F1Shape, bool F1UsesCorrespondence);
     private sealed record GoldDocument(string GoldSha256, string SourceSha256, string[][] Extents);
     private sealed record SelectedCapture(string PromptVersion, string RawCaptureSha256, string RawResponse, string RawResponseSha256,
-        string RawSse, string RawSseSha256, string SystemPromptSha256, string ProviderBodySha256, string FinishReason,
+        string? RawSse, string RawSseSha256, string SystemPromptSha256, string ProviderBodySha256, string FinishReason,
         int? ReasoningTokens, IReadOnlyList<string> HeadingMembers);
     private sealed record Row(string DocumentId, string PackId, string Anchor, string PromptVersion, string RawCaptureSha256,
         string RawResponseSha256, string RawSseSha256, string SystemPromptSha256, string ProviderBodySha256, string FinishReason,
