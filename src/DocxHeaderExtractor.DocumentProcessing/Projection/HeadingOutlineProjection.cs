@@ -16,7 +16,7 @@ public static class HeadingOutlineProjection
         HeadingProjectionContext? projectionContext = null)
     {
         ArgumentNullException.ThrowIfNull(structure);
-        return structure.OutlineElements
+        return structure.Elements
             .Where(element => emittedElementIds is null || emittedElementIds.Contains(element.Id))
             // ValidatedStructure.Elements already carries the producer's canonical order. Sorting
             // by source ordinal here loses distinct PDF occurrences that share one paragraph.

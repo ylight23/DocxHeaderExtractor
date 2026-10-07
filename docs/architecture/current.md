@@ -70,6 +70,10 @@ qualification/history subsystems retain their distinct live responsibilities.
 - Input documents and tool output are untrusted until deterministic validation.
 - Parser-owned source coordinates are the only materialization source.
 - `ValidatedStructure` is structural authority.
+- S4 retains `ValidatedStructuralElement.ParentId` and `ValidatedStructure.OutlineElements`
+  as public/wire compatibility views, not independent authority. Graph admission derives
+  ParentId only from explicit validated relations. Production outline/grounding/section
+  projections read Elements directly; section hierarchy reads Relations.
 - `HeadingPipelineResult` is the DOCX/PDF runtime envelope, not a second authority. It carries
   Structure plus projection context, source catalog, audit, emitted IDs and reason. It remains
   in the existing DocumentProcessing/Authority audit/result-contract owner, outside orchestration

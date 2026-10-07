@@ -9,7 +9,7 @@ public static class CanonicalGroundingProjection
     /// <summary>Builds canonical occurrences using the producer's separate projection context.</summary>
     public static IReadOnlyList<CanonicalGrounding> Project(ValidatedStructure structure,
         HeadingProjectionContext? projectionContext = null) =>
-        structure.OutlineElements
+        structure.Elements
             .Select(element => (Element: element, Source: element.Sources.FirstOrDefault()))
             .Where(item => item.Source is not null)
             .Select(item =>

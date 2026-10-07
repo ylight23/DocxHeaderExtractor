@@ -97,7 +97,11 @@ public sealed record ValidatedStructuralElement
     [JsonPropertyName("level")]
     public int? Level { get; init; }
 
-    /// <summary>Compatibility view derived from validated ParentChild relations by the graph factory.</summary>
+    /// <summary>
+    /// Public/wire compatibility view derived from validated ParentChild relations by the graph factory.
+    /// Incoming DTO values are ignored on graph admission; use explicit relation proposals instead.
+    /// A standalone deserialized element is not an admitted graph and cannot grant parent authority.
+    /// </summary>
     [JsonPropertyName("parentId")]
     public string? ParentId { get; init; }
 

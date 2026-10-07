@@ -18,7 +18,7 @@ public static class StructuralSectionProjection
         ArgumentNullException.ThrowIfNull(sourceCatalog);
 
         var sourceIds = sourceCatalog.Units.Select(unit => unit.SourceId).ToHashSet(StringComparer.Ordinal);
-        var anchors = structure.OutlineElements.ToArray();
+        var anchors = structure.Elements.ToArray();
         var elementById = structure.Elements.ToDictionary(element => element.Id, StringComparer.Ordinal);
         var sectionElementIds = anchors.Select(element => element.Id).ToHashSet(StringComparer.Ordinal);
         var parentByChild = structure.Relations
