@@ -47,3 +47,15 @@
 # and those prompts are serialized into provider bodies whose hashes are frozen; a CRLF checkout must
 # not change the wire. QualifiedPromptText.Canonicalize is the second, checkout-independent layer.
 *.cs text eol=lf
+
+# Provider capture files are hashed as bytes by the tests that read them, and those hashes were recorded over a Windows
+# checkout, where the capture tooling's files have CRLF. Pinning the checkout reproduces exactly those bytes on every host;
+# the freeze artifacts the tests themselves write stay LF. Kept to the capture and result files named below.
+/artifacts/v5-p6t-function-membership/**/*.raw-capture.v1.json text eol=crlf
+/artifacts/v5-p6t-function-membership/**/result.v1.json text eol=crlf
+/artifacts/v5-p6t-function-membership/**/retry-src089-result.v1.json text eol=crlf
+/artifacts/v5-p6t-function-membership/**/retry-until-accepted-summary.v1.json text eol=crlf
+/artifacts/v5-p6t-function-membership/p6th2c-evidence-complete-retry-20261005/execution-reservation.v1.json text eol=crlf
+/artifacts/v5-p6t-total-occurrence-role/**/result.v1.json text eol=crlf
+# One file whose text a frozen audit hashed as checked out.
+/eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json text eol=crlf
