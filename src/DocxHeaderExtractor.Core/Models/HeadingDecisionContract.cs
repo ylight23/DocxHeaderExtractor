@@ -81,22 +81,3 @@ public sealed record ObservedEvidence(
     ObservedEvidenceKind Kind,
     string Value,
     EvidenceOrigin Origin);
-
-public enum ProposedRole
-{
-    HeadingTopic,
-    LocalSubheading,
-    ListItemTopic,
-    DocumentTitle,
-    CoverTitle,
-    TableHeader,
-    SignatureLabel,
-    RunningHeader,
-    RunningFooter,
-    Caption,
-    FigureTitle,
-    StructuralContainer,
-    BodyText,
-    Metadata,
-    Unknown,
-}

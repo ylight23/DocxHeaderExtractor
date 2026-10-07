@@ -138,6 +138,19 @@ without adding a second authority route or making a provider call.
 Value-object invariants and wire schema/encoding helpers remain valid contract behavior; this is
 not a blanket ban on methods in Models. `SemanticCoordinateContract` remains a descriptor that
 composes delegates from the separately owned parsing, validation and binding services.
+
+Materialized production structure is heading-only: `StructuralElementType.Heading = 2`,
+`ProposedRole.HeadingTopic = 0`, and `StructuralRelationType.ParentChild = 0`. These numerical
+identities and the live JSON field/enum names are retained. Title/subtitle/list/caption/table/figure
+materialization and non-parent relations are retired, not silently remapped to headings. This
+intentionally narrows the public contract; downstream consumers of retired members must migrate.
+It does not narrow the model's upstream semantic-role vocabulary or prevent title extraction.
+
+The former `StructuralContracts.cs` monolith is split into `SourceSelectionContracts.cs`
+(source identity/spans), `HeadingStructuralContracts.cs` (heading proposals/results),
+`HeadingHierarchyContracts.cs` (parent relation DTOs), and `ValidatedStructure.cs` (graph invariants).
+Exact source/multipart spans, hierarchy, provenance, source catalogs, sections and body-backed chunks
+remain live. Generic synthetic graph tests are replaced with heading/output and retirement guards.
 Neutral inference input/interface/context and occurrence contracts live in `Core/Models/Inference`.
 The neutral `Core.V5` namespaces are retained for source compatibility; the retired
 `Models/QualifiedInference` folder contains no current files.

@@ -8,7 +8,7 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
 
-public sealed class GenericDocumentExtractionOutputTests
+public sealed class HeadingDocumentExtractionOutputTests
 {
     [Fact]
     public async Task Authority_pipeline_without_a_model_exposes_the_source_catalog_and_claims_no_structure()
@@ -37,28 +37,17 @@ public sealed class GenericDocumentExtractionOutputTests
     }
 
     [Fact]
-    public void Generic_output_preserves_structure_relations_sections_and_source_backed_chunks()
+    public void Heading_output_preserves_hierarchy_sections_and_unclaimed_body_chunks()
     {
         var source = BuildSource();
         var elements = new[]
         {
-            Element("h1", "Architecture", 0, StructuralElementType.Heading, ProposedRole.HeadingTopic),
-            Element("h2", "Runtime", 1, StructuralElementType.Heading, ProposedRole.HeadingTopic),
-            Element("list", "One source of truth", 2, StructuralElementType.ListItem, ProposedRole.ListItemTopic),
-            Element("figure", "Figure 1", 3, StructuralElementType.Figure, ProposedRole.StructuralContainer),
-            Element("figure-title", "Figure 1", 3, StructuralElementType.FigureTitle, ProposedRole.FigureTitle),
-            Element("caption", "Architecture overview", 4, StructuralElementType.Caption, ProposedRole.Caption),
-            Element("table", "Table 1", 5, StructuralElementType.Table, ProposedRole.StructuralContainer),
-            Element("table-title", "Table 1", 5, StructuralElementType.TableTitle, ProposedRole.Caption),
+            Element("h1", "Architecture", 0),
+            Element("h2", "Runtime", 1),
         };
         var relations = new[]
         {
             new StructuralRelationProposal("h1", "h2", StructuralRelationType.ParentChild),
-            new StructuralRelationProposal("h2", "list", StructuralRelationType.ParentChild),
-            new StructuralRelationProposal("h2", "figure", StructuralRelationType.ParentChild),
-            new StructuralRelationProposal("figure-title", "figure", StructuralRelationType.Labels),
-            new StructuralRelationProposal("caption", "figure", StructuralRelationType.CaptionOf),
-            new StructuralRelationProposal("table-title", "table", StructuralRelationType.Labels),
         };
         var structure = ValidatedStructure.FromElements(elements, relations);
         var catalog = DocumentSourceCatalogBuilder.FromSourceDocument(source);
@@ -75,22 +64,21 @@ public sealed class GenericDocumentExtractionOutputTests
 
         Assert.NotEmpty(result.Sections);
         Assert.NotEmpty(result.Chunks);
-        Assert.Contains(result.Structure.Elements, element => element.Type == StructuralElementType.ListItem);
-        Assert.Contains(result.Structure.Elements, element => element.Type == StructuralElementType.Figure);
-        Assert.Contains(result.Structure.Elements, element => element.Type == StructuralElementType.FigureTitle);
-        Assert.Contains(result.Structure.Elements, element => element.Type == StructuralElementType.Caption);
-        Assert.Contains(result.Structure.Elements, element => element.Type == StructuralElementType.Table);
-        Assert.Contains(result.Structure.Elements, element => element.Type == StructuralElementType.TableTitle);
-        Assert.Contains(result.Structure.Relations, relation =>
-            relation.Type == StructuralRelationType.CaptionOf && relation.ToId == "figure");
-        Assert.Contains(result.Structure.Relations, relation =>
-            relation.Type == StructuralRelationType.Labels && relation.ToId == "table");
+        Assert.Equal(2, result.Structure.Elements.Count);
+        Assert.All(result.Structure.Elements, element =>
+        {
+            Assert.Equal(StructuralElementType.Heading, element.Type);
+            Assert.Equal(ProposedRole.HeadingTopic, element.Role);
+        });
+        var parent = Assert.Single(result.Structure.Relations);
+        Assert.Equal(new StructuralRelation("h1", "h2", StructuralRelationType.ParentChild), parent);
+        Assert.Equal("h1", result.Structure.Elements.Single(element => element.Id == "h2").ParentId);
 
         var firstChunk = result.Chunks.First();
         Assert.Contains("Architecture", firstChunk.Text);
         Assert.Contains("Architecture overview", firstChunk.Text);
-        Assert.Contains("caption", firstChunk.StructuralElementIds);
-        Assert.Contains("figure", firstChunk.StructuralElementIds);
+        Assert.Equal(new[] { "h1", "h2" }, firstChunk.StructuralElementIds);
+        Assert.Contains("p4", firstChunk.SourceIds); // body content is not a structural element
         Assert.Equal(firstChunk.Text, string.Join('\n', firstChunk.SourceIds.Select(id =>
             catalog.Units.Single(unit => unit.SourceId == id).Text)));
     }
@@ -120,7 +108,7 @@ public sealed class GenericDocumentExtractionOutputTests
 
         var sourceOccurrence = new StructuralSourceOccurrence
         {
-            SourceOccurrenceId = "caption-1",
+            SourceOccurrenceId = "heading-1",
             ObservedSourceFacts =
             [
                 new SourceFacts
@@ -136,12 +124,12 @@ public sealed class GenericDocumentExtractionOutputTests
             sourceOccurrence,
             new StructuralProposal
             {
-                SourceOccurrenceId = "caption-1",
-                Type = StructuralElementType.Caption,
-                Role = ProposedRole.Caption,
+                SourceOccurrenceId = "heading-1",
+                Type = StructuralElementType.Heading,
+                Role = ProposedRole.HeadingTopic,
                 ProposedSources = [new ProposedSourceReference("pdf-block-1", new StructuralSpan(7, 23))],
             },
-            "structural:caption:1",
+            "structural:heading:1",
             new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.RequiresReview), "parser-fact"));
 
         Assert.NotNull(element);
@@ -171,8 +159,8 @@ public sealed class GenericDocumentExtractionOutputTests
             new StructuralProposal
             {
                 SourceOccurrenceId = "multi",
-                Type = StructuralElementType.Caption,
-                Role = ProposedRole.Caption,
+                Type = StructuralElementType.Heading,
+                Role = ProposedRole.HeadingTopic,
                 ProposedSources =
                 [
                     new ProposedSourceReference("pdf-a", new StructuralSpan(0, 5)),
@@ -215,8 +203,6 @@ public sealed class GenericDocumentExtractionOutputTests
         string id,
         string text,
         int ordinal,
-        StructuralElementType type,
-        ProposedRole role,
         string? sourceId = null)
     {
         sourceId ??= $"p{ordinal}";
@@ -242,8 +228,8 @@ public sealed class GenericDocumentExtractionOutputTests
             new StructuralProposal
             {
                 SourceOccurrenceId = id,
-                Type = type,
-                Role = role,
+                Type = StructuralElementType.Heading,
+                Role = ProposedRole.HeadingTopic,
                 ProposedSources = [new ProposedSourceReference(facts.SourceId, new StructuralSpan(0, text.Length))],
             },
             id,

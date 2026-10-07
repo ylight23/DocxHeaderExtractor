@@ -4,7 +4,7 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
 
 /// <summary>
-/// Generic source/span gate for structural proposals. It validates proposed coordinates against
+/// Source/span gate for heading materialization proposals. It validates proposed coordinates against
 /// parser facts, but never lets a proposal replace observed source identity or source spans.
 /// </summary>
 public static class StructuralProposalValidator
@@ -115,16 +115,6 @@ public static class StructuralProposalValidator
         return selected;
     }
 
-    private static bool IsRoleCompatible(StructuralElementType type, ProposedRole role) => type switch
-    {
-        StructuralElementType.Title => role is ProposedRole.DocumentTitle or ProposedRole.CoverTitle,
-        StructuralElementType.Subtitle => role is ProposedRole.LocalSubheading or ProposedRole.CoverTitle,
-        StructuralElementType.Heading => role is ProposedRole.HeadingTopic or ProposedRole.LocalSubheading,
-        StructuralElementType.ListItem => role == ProposedRole.ListItemTopic,
-        StructuralElementType.Caption => role == ProposedRole.Caption,
-        StructuralElementType.TableTitle => role == ProposedRole.Caption,
-        StructuralElementType.FigureTitle => role is ProposedRole.FigureTitle or ProposedRole.Caption,
-        StructuralElementType.Figure or StructuralElementType.Table => role == ProposedRole.StructuralContainer,
-        _ => false,
-    };
+    private static bool IsRoleCompatible(StructuralElementType type, ProposedRole role) =>
+        type == StructuralElementType.Heading && role == ProposedRole.HeadingTopic;
 }

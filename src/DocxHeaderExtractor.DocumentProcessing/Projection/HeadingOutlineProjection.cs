@@ -5,7 +5,7 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 namespace DocxHeaderExtractor.DocumentProcessing.Projection;
 
 /// <summary>
-/// Outline projection from generic structural authority to the existing heading output.
+/// Outline projection from validated heading authority to the existing heading output.
 /// It performs no source selection, matching, validation, or hierarchy inference.
 /// </summary>
 public static class HeadingOutlineProjection
