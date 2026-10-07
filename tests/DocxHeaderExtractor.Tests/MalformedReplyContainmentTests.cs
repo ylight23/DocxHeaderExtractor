@@ -86,7 +86,7 @@ public sealed class MalformedReplyContainmentTests
         return node.ToJsonString();
     }
 
-    private static async Task<StructuralAuthorityResult> RunAsync(IReadOnlyList<string> replies)
+    private static async Task<HeadingPipelineResult> RunAsync(IReadOnlyList<string> replies)
     {
         var state = State();
         using var replay = new FrozenReplyClassifier(replies);

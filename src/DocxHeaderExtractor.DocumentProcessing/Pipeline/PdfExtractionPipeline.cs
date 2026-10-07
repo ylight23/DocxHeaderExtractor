@@ -84,7 +84,7 @@ public static class PdfExtractionPipeline
                 "PDF_PRODUCTION_AUTHORIZATION_REQUIRED: requires the production-authorized PDF inference transport.");
         }
 
-        StructuralAuthorityResult authority;
+        HeadingPipelineResult authority;
         // PDF heading authority is the promoted function-conditioned chain. Unlike the
         // historical canonical engine it has no semantic fallback: invalid stage output is
         // withheld by that adapter rather than delegated to a second membership authority.
@@ -140,7 +140,7 @@ public static class PdfExtractionPipeline
     private static DocumentOutline Outline(
         UploadedFile file,
         PipelineOptions options,
-        StructuralAuthorityResult authority,
+        HeadingPipelineResult authority,
         DocumentSourceCatalog catalog,
         IInferenceTransport? analyst,
         bool analystSendsDataExternally,

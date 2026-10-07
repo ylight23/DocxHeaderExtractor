@@ -5,8 +5,12 @@ using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 
-/// <summary>Common producer envelope used while DOCX and PDF producers converge on generic authority.</summary>
-public sealed record StructuralAuthorityResult(
+/// <summary>
+/// Runtime result of the DOCX/PDF heading pipeline. Only Structure is structural authority;
+/// projection context, source catalog, audit, emitted IDs and reason are execution/output data.
+/// This record carries those separate responsibilities without granting them graph authority.
+/// </summary>
+public sealed record HeadingPipelineResult(
     ValidatedStructure Structure,
     PipelineExecutionAudit? Audit,
     string Reason,

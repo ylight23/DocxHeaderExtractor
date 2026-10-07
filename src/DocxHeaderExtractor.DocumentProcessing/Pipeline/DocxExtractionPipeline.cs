@@ -176,8 +176,8 @@ public sealed class DocxExtractionPipeline : IDisposable
             CanonicalGroundingProjection.Project(structure, projectionContext));
     }
 
-    internal static StructuralAuthorityResult ApplyStructuralQuarantine(
-        StructuralAuthorityResult authority,
+    internal static HeadingPipelineResult ApplyStructuralQuarantine(
+        HeadingPipelineResult authority,
         IReadOnlySet<int>? quarantinedIndexes)
     {
         ArgumentNullException.ThrowIfNull(authority);

@@ -60,7 +60,7 @@ public sealed class HeadingProjectionContextTests
         var context = new HeadingProjectionContext(
             new Dictionary<string, HeadingProjectionMetadata> { ["a"] = Metadata(), ["b"] = Metadata() },
             new Dictionary<HeadingProjectionSourceKey, string> { [new("a", "s1")] = "stable-a", [new("b", "s2")] = "stable-b" });
-        var authority = new StructuralAuthorityResult(graph, null, "test") { ProjectionContext = context };
+        var authority = new HeadingPipelineResult(graph, null, "test") { ProjectionContext = context };
         var result = DocxExtractionPipeline.ApplyStructuralQuarantine(authority, new HashSet<int> { 0 });
         Assert.Equal("b", Assert.Single(result.Structure.Elements).Id);
         Assert.Null(result.ProjectionContext.ForElement("a"));

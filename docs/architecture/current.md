@@ -16,7 +16,7 @@ Web / CLI / MCP
   -> PipelineDocumentExtractionTool
   -> DocxExtractionPipeline / PdfExtractionPipeline
   -> DocxHeadingPipeline / PdfHeadingPipeline
-  -> ValidatedStructure
+  -> HeadingPipelineResult (runtime envelope; Structure = ValidatedStructure authority)
   -> PromptDrivenProjection
   -> GenericTaskResult
 ```
@@ -70,6 +70,11 @@ qualification/history subsystems retain their distinct live responsibilities.
 - Input documents and tool output are untrusted until deterministic validation.
 - Parser-owned source coordinates are the only materialization source.
 - `ValidatedStructure` is structural authority.
+- `HeadingPipelineResult` is the DOCX/PDF runtime envelope, not a second authority. It carries
+  Structure plus projection context, source catalog, audit, emitted IDs and reason. It remains
+  in the existing DocumentProcessing/Authority audit/result-contract owner, outside orchestration
+  source files and outside Core. ProjectionContext stays JsonIgnore. S3 renames the public C#
+  envelope API; it does not change default/Web JSON field names or graph semantics.
 - Application plan compilation creates stable `PlanId` values from task/resource identity and
   capability metadata; explicit idempotency keys override the resource identity when supplied.
 - Capability metadata is registered and resolved by the provider-independent Application catalog;

@@ -88,7 +88,7 @@ public sealed class FrozenReplayDoc0256Tests
         Assert.True(canonical == 23, counts);
     }
 
-    private static async Task<(StructuralAuthorityResult Authority, FrozenReplyClassifier Replay)> ReplayAsync()
+    private static async Task<(HeadingPipelineResult Authority, FrozenReplyClassifier Replay)> ReplayAsync()
     {
         var state = State();
         using var replay = new FrozenReplyClassifier(FrozenReplies());

@@ -19,7 +19,7 @@ internal static class PdfHeadingPipeline
 {
     private const string AuthorityId = FunctionAnchorExtentHeadingAuthority.AuthorityId;
 
-    public static async Task<StructuralAuthorityResult> RunAsync(
+    public static async Task<HeadingPipelineResult> RunAsync(
         DocumentSourceSnapshot authority,
         PdfSourceDetails pdfDetails,
         string sourceName,
@@ -31,9 +31,9 @@ internal static class PdfHeadingPipeline
         ArgumentNullException.ThrowIfNull(pdfDetails);
         ArgumentException.ThrowIfNullOrWhiteSpace(sourceName);
         if (pdfDetails.ParserLineCount == 0 || pdfDetails.Blocks.Count == 0)
-            return new StructuralAuthorityResult(ValidatedStructureFactory.Create([]), null, "pdf-no-text-layer") { SourceCatalog = authority.Catalog };
+            return new HeadingPipelineResult(ValidatedStructureFactory.Create([]), null, "pdf-no-text-layer") { SourceCatalog = authority.Catalog };
         if (transport is null)
-            return new StructuralAuthorityResult(
+            return new HeadingPipelineResult(
                 ValidatedStructureFactory.Create([]), SourceOnlyAudit(authority, pdfDetails), "pdf-function-conditioned-llm-disabled")
             { SourceCatalog = authority.Catalog };
         if (transport is not IPdfProductionAuthorizedInferenceTransport authorized)
@@ -84,7 +84,7 @@ internal static class PdfHeadingPipeline
         };
     }
 
-    private static async Task<StructuralAuthorityResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IPdfProductionAuthorizedInferenceTransport authorized, PdfLaneExecutionLease lease, CancellationToken ct)
+    private static async Task<HeadingPipelineResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IPdfProductionAuthorizedInferenceTransport authorized, PdfLaneExecutionLease lease, CancellationToken ct)
     {
         var leaseBound = new LeaseBoundFrozenInferenceTransport(authorized, lease);
         IHeadingAuthority authority = new FunctionAnchorExtentHeadingAuthority(
@@ -113,7 +113,7 @@ internal static class PdfHeadingPipeline
         {
             HierarchyFacts = PdfHierarchyFactsInventory.Inspect(assembly.Validated, pdfDetails.Contexts),
         };
-        return new StructuralAuthorityResult(
+        return new HeadingPipelineResult(
             assembly.Structure,
             decided.CompleteAudit(audit, assembly),
             AuthorityId,

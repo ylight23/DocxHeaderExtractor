@@ -20,7 +20,7 @@ internal static class DocxHeadingPipeline
 {
     internal const string RouteId = "docx-canonical-vnext";
 
-    public static async Task<StructuralAuthorityResult> RunAsync(
+    public static async Task<HeadingPipelineResult> RunAsync(
         SourceDocument sourceDocument,
         IInferenceTransport? transport,
         CancellationToken cancellationToken,
@@ -29,7 +29,7 @@ internal static class DocxHeadingPipeline
         ArgumentNullException.ThrowIfNull(sourceDocument);
         var source = DocxSourceAdapter.Build(sourceDocument).Snapshot;
         if (source.Occurrences.Count == 0)
-            return new StructuralAuthorityResult(ValidatedStructureFactory.Create([]), null, "empty-docx-source");
+            return new HeadingPipelineResult(ValidatedStructureFactory.Create([]), null, "empty-docx-source");
 
         IHeadingAuthority authority = new TextSemanticHeadingAuthority(transport, experiment);
         var decided = await authority.DecideAsync(source, cancellationToken).ConfigureAwait(false);
@@ -49,7 +49,7 @@ internal static class DocxHeadingPipeline
             blocks,
             decided.Decisions.Select(decision => new SourceBlockDecisionAudit(decision.Id, decision.SemanticFunction)).ToArray(),
             assembly.Validated.Select(item => item.SourceId).ToArray());
-        return new StructuralAuthorityResult(
+        return new HeadingPipelineResult(
             assembly.Structure,
             decided.CompleteAudit(audit, assembly),
             "docx-canonical-vnext-semantic-authority") { ProjectionContext = assembly.ProjectionContext };

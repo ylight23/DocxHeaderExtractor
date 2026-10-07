@@ -96,7 +96,7 @@ public sealed class HeadingAuthorityArchitectureTests
             ("Materialization", ["HeadingParentResolver", "HeadingHierarchyResolver", "HeadingStructureMaterializer", "HeadingStructureAssembler", "StructuralProposalValidator"]),
             ("Projection", ["CanonicalFinalStructureProjection", "DocumentProductOutputProjector", "HeadingOutlineProjection",
                 "SectionChunkProjection", "StructuralSectionProjection", "OutputDecisionPolicy"]),
-            ("Authority", ["ExecutionAuditBoundary", "HierarchyFactHash", "PipelineExecutionAudit", "HeadingHierarchyFactAudit", "PdfHierarchyFactsInventory"]),
+            ("Authority", ["ExecutionAuditBoundary", "HierarchyFactHash", "PipelineExecutionAudit", "HeadingHierarchyFactAudit", "PdfHierarchyFactsInventory", "HeadingPipelineResult"]),
             ("Provenance", ["BuildProvenance"]),
             ("OpenXmlLayer", ["DocxProductWriteback"]),
             ("Inference", ["IFrozenInferenceRequestComposer", "PdfInferenceWireContract"]),
