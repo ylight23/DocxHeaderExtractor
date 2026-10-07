@@ -19,8 +19,8 @@ internal static class PdfHeadingPipeline
     private const string AuthorityId = FunctionConditionedHeadingAuthority.AuthorityId;
 
     public static async Task<StructuralAuthorityResult> RunAsync(
-        SourceOccurrenceUniverse authority,
-        PdfSourceOccurrenceDetails pdfDetails,
+        DocumentSourceSnapshot authority,
+        PdfSourceDetails pdfDetails,
         string sourceName,
         IInferenceTransport? classifier,
         SemanticLaneOptions? semanticLaneOptions,
@@ -59,7 +59,7 @@ internal static class PdfHeadingPipeline
         return execution.Value;
     }
 
-    private static RouteExecutionAudit SourceOnlyAudit(SourceOccurrenceUniverse authority, PdfSourceOccurrenceDetails pdfDetails)
+    private static RouteExecutionAudit SourceOnlyAudit(DocumentSourceSnapshot authority, PdfSourceDetails pdfDetails)
     {
         var sourceBlocks = pdfDetails.Blocks
             .Select(block => new RouteBlockAudit(block.Id, block.Page, block.DisplayText))
@@ -83,7 +83,7 @@ internal static class PdfHeadingPipeline
         };
     }
 
-    private static async Task<StructuralAuthorityResult> RunCoreAsync(SourceOccurrenceUniverse source, PdfSourceOccurrenceDetails pdfDetails, IFrozenInferenceTransport frozen, PdfLaneExecutionLease lease, CancellationToken ct)
+    private static async Task<StructuralAuthorityResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IFrozenInferenceTransport frozen, PdfLaneExecutionLease lease, CancellationToken ct)
     {
         var leaseBound = new LeaseBoundFrozenInferenceTransport(frozen, lease);
         IHeadingAuthority authority = new FunctionConditionedHeadingAuthority(

@@ -84,7 +84,7 @@ public sealed class PdfSourceDeterminismLedgerProbe
         IReadOnlyList<PdfLine> lines;
         using (var document = PdfDocument.Open(pdfPath)) lines = PdfLineExtraction.ExtractLines(document);
         var byPageLines = lines.GroupBy(l => l.Page).ToDictionary(g => g.Key, g => g.Select(Line).ToList());
-        var universe = PdfSourceOccurrenceAdapter.Build(lines, CanonicalSemanticSourceHash.Compute(pdfPath));
+        var universe = PdfSourceAdapter.Build(lines, CanonicalSemanticSourceHash.Compute(pdfPath));
         var byPageAtoms = universe.Atoms.GroupBy(a => a.Page)
             .ToDictionary(g => g.Key, g => g.Select(a => string.Join('', a.Alias, a.Page, a.Ordinal, a.Row, a.Segment, a.Text)).ToList());
 

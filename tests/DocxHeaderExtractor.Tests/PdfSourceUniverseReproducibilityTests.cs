@@ -42,7 +42,7 @@ public sealed class PdfSourceUniverseReproducibilityTests
                 PdfFontEmbedding.HostResolvedFonts(document).ToArray());
         }
 
-        var universe = PdfSourceOccurrenceAdapter.Build(path);
+        var universe = PdfSourceAdapter.Build(path);
         Assert.Equal(row.GetProperty("sourceSha256").GetString(), universe.SourceSha256);
         Assert.Equal(row.GetProperty("atomCount").GetInt32(), universe.Atoms.Count);
         Assert.Equal(row.GetProperty("sourceAliasUniverseHash").GetString(), universe.SourceAliasUniverseHash);

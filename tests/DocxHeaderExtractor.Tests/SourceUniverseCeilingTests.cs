@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -17,7 +18,7 @@ public sealed class SourceUniverseCeilingTests
     public void EveryNonEmptyParagraphIsShownToTheModel()
     {
         var state = State();
-        var universe = DocxSourceOccurrenceAdapter.BuildForAudit(state).Universe.HeadingContexts;
+        var universe = DocxSourceAdapter.BuildForAudit(state).Snapshot.OccurrenceContexts;
 
         var nonEmpty = state.Paragraphs
             .Where(p => !string.IsNullOrWhiteSpace(p.Text))

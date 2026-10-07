@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;
@@ -24,7 +25,7 @@ internal static class DocxHeadingPipeline
         CanonicalSemanticExperiment? experiment = null)
     {
         ArgumentNullException.ThrowIfNull(sourceDocument);
-        var source = DocxSourceOccurrenceAdapter.Build(sourceDocument).Universe;
+        var source = DocxSourceAdapter.Build(sourceDocument).Snapshot;
         if (source.Occurrences.Count == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "empty-docx-source");
 

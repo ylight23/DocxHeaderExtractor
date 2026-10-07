@@ -1,3 +1,5 @@
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
+using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
@@ -36,6 +38,12 @@ public sealed class HeadingAuthorityArchitectureTests
             "DocxHeadingAuthorityRoute", "PdfHeadingAuthorityRoute", "AuthorityExtractionPipeline",
             "PdfCanonicalExtraction", "CanonicalExtractionDispatcher",
         };
+        var retiredSourceSymbols = new[]
+        {
+            "SourceOccurrenceUniverse", "SourceOccurrence", "HeadingSourceContext", "DocxSourceOccurrenceAdapter",
+            "PdfSourceOccurrenceAdapter", "PdfSourceOccurrenceBuildResult", "PdfSourceOccurrenceDetails",
+            "DocxAuthoritySource", "DocxAuthorityContext", "HeadingContexts",
+        };
         foreach (var file in Directory.EnumerateFiles(TestRepository.Path("src"), "*.cs", SearchOption.AllDirectories)
                      .Where(path => !path.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}") &&
                                     !path.Contains($"{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}")))
@@ -43,6 +51,9 @@ public sealed class HeadingAuthorityArchitectureTests
             var source = File.ReadAllText(file);
             foreach (var token in banned)
                 Assert.False(source.Contains(token, StringComparison.Ordinal), $"{token} in {Path.GetFileName(file)}");
+            // Whole-symbol match: prose and longer names that merely contain these words are not the retired symbols.
+            foreach (var symbol in retiredSourceSymbols)
+                Assert.False(System.Text.RegularExpressions.Regex.IsMatch(source, $@"\b{symbol}\b"), $"{symbol} in {Path.GetFileName(file)}");
         }
     }
 
@@ -80,14 +91,14 @@ public sealed class HeadingAuthorityArchitectureTests
         var route = File.ReadAllText(TestRepository.Path(
             "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfExtractionPipeline.cs"));
         var adapter = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceOccurrenceAdapter.cs"));
+            "src/DocxHeaderExtractor.DocumentProcessing/Source/Pdf/PdfSourceAdapter.cs"));
         var common = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Source/Common/SourceOccurrenceUniverse.cs"));
+            "src/DocxHeaderExtractor.DocumentProcessing/Source/Common/DocumentSourceSnapshot.cs"));
 
         Assert.Contains("BuildWithDetails", route, StringComparison.Ordinal);
-        Assert.Contains("sourceBuild.Universe", route, StringComparison.Ordinal);
+        Assert.Contains("sourceBuild.Snapshot", route, StringComparison.Ordinal);
         Assert.Contains("sourceBuild.Details", route, StringComparison.Ordinal);
-        Assert.Contains("PdfSourceOccurrenceBuildResult", adapter, StringComparison.Ordinal);
+        Assert.Contains("PdfSourceBuildResult", adapter, StringComparison.Ordinal);
         Assert.DoesNotContain("PdfDetails", common, StringComparison.Ordinal);
         Assert.DoesNotContain("PdfSemantic", common, StringComparison.Ordinal);
     }
@@ -96,11 +107,11 @@ public sealed class HeadingAuthorityArchitectureTests
     public void Docx_source_adapter_does_not_borrow_pdf_semantic_contracts_or_promote_docx()
     {
         var adapter = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxSourceOccurrenceAdapter.cs"));
+            "src/DocxHeaderExtractor.DocumentProcessing/Source/Docx/DocxSourceAdapter.cs"));
         var route = File.ReadAllText(TestRepository.Path(
             "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/DocxHeadingPipeline.cs"));
 
-        Assert.DoesNotContain("PdfSourceOccurrenceAdapter", adapter, StringComparison.Ordinal);
+        Assert.DoesNotContain("PdfSourceAdapter", adapter, StringComparison.Ordinal);
         Assert.DoesNotContain("PdfSemantic", adapter, StringComparison.Ordinal);
         // DOCX stays on the canonical-text authority until it has its own qualification evidence.
         Assert.Contains("CanonicalTextHeadingAuthority", route, StringComparison.Ordinal);
@@ -120,7 +131,7 @@ public sealed class HeadingAuthorityArchitectureTests
         var authority = File.ReadAllText(TestRepository.Path(
             "src/DocxHeaderExtractor.DocumentProcessing/Semantics/HeadingAuthority/FunctionConditionedHeadingAuthority.cs"));
 
-        Assert.Contains("PdfSourceOccurrenceAdapter.Build", extraction, StringComparison.Ordinal);
+        Assert.Contains("PdfSourceAdapter.Build", extraction, StringComparison.Ordinal);
         Assert.Contains("PdfHeadingPipeline.RunAsync", extraction, StringComparison.Ordinal);
         Assert.Contains("IPdfProductionAuthorizedInferenceTransport", extraction, StringComparison.Ordinal);
         Assert.Contains("IFrozenInferenceTransport", route, StringComparison.Ordinal);

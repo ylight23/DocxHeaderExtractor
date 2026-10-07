@@ -72,7 +72,7 @@ internal static class SourceTextBoundaryMap
 internal static class HeadingProposalValidator
 {
     public static IReadOnlyList<ValidatedHeading> Validate(
-        IReadOnlyDictionary<string, HeadingSourceContext> contexts,
+        IReadOnlyDictionary<string, OccurrenceContext> contexts,
         IReadOnlyList<HeadingExtentDecision> decisions) => decisions
         .Where(decision => contexts.TryGetValue(decision.Id, out var context) && IsEligibleHeading(decision, context))
         .Select(decision =>
@@ -85,7 +85,7 @@ internal static class HeadingProposalValidator
         .ToArray();
 
     public static IReadOnlyList<HeadingSourceStageTrace> Trace(
-        IReadOnlyDictionary<string, HeadingSourceContext> contexts,
+        IReadOnlyDictionary<string, OccurrenceContext> contexts,
         IReadOnlyList<HeadingExtentDecision> decisions)
     {
         var byId = decisions.GroupBy(d => d.Id).ToDictionary(g => g.Key, g => g.First(), StringComparer.Ordinal);
@@ -100,7 +100,7 @@ internal static class HeadingProposalValidator
         }).ToArray();
     }
 
-    public static bool IsEligibleHeading(HeadingExtentDecision decision, HeadingSourceContext context) =>
+    public static bool IsEligibleHeading(HeadingExtentDecision decision, OccurrenceContext context) =>
         context.EvidenceOrigins.All(origin => origin is "layout_parser" or "marker_parser" or "scope_detector" or "docx_parser" or "ooxml_parser") &&
         ValidateSpan(decision, context.RawText, out _) == "valid";
 

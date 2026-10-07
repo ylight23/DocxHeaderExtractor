@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -52,7 +53,7 @@ public sealed class Src042SourceReviewTests
     [Fact]
     public void The_layout_facts_are_this_pdf_atoms()
     {
-        var atoms = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(Pdf)).Atoms;
+        var atoms = PdfSourceAdapter.Build(TestRepository.Path(Pdf)).Atoms;
         var facts = File.ReadAllLines(TestRepository.Path($"{Dir}/atom-layout-facts.tsv")).Select(l => l.Split('\t')).ToArray();
         Assert.Equal(atoms.Count, facts.Length);
         Assert.Equal(atoms.Select(a => (a.Alias, a.Text.Replace('\t', ' '))), facts.Select(f => (f[0], f[10])));
@@ -61,7 +62,7 @@ public sealed class Src042SourceReviewTests
     [Fact]
     public void Freeze_the_source_review()
     {
-        var atoms = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(Pdf)).Atoms;
+        var atoms = PdfSourceAdapter.Build(TestRepository.Path(Pdf)).Atoms;
         var items = Items();
         var bindings = items.Select(i => (Item: i, Binding: Bind(atoms, i))).ToArray();
         var failures = bindings.Where(b => !b.Binding.IsBound).Select(b => new { b.Item.Text, b.Item.Pattern, reason = b.Binding.Reason }).ToArray();

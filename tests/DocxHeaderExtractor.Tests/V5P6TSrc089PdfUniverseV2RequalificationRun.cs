@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
@@ -40,10 +41,10 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         Directory.CreateDirectory(directory);
 
         var path = TestRepository.Path(SourcePdfCorpus.Src089);
-        var built = PdfSourceOccurrenceAdapter.BuildWithDetails(path);
+        var built = PdfSourceAdapter.BuildWithDetails(path);
         var snapshot = JsonSerializer.Deserialize<PdfCanonicalSourceSnapshotV1>(File.ReadAllText(TestRepository.Path(
-            $"eval/a99-closed-loop/pdf-canonical-source-v2/{built.Universe.SourceSha256}.json")), FreezeArtifact.Json)!.Rehydrate();
-        Assert.Equal(snapshot.SourceAliasUniverseSha256, built.Universe.SourceAliasUniverseHash);
+            $"eval/a99-closed-loop/pdf-canonical-source-v2/{built.Snapshot.SourceSha256}.json")), FreezeArtifact.Json)!.Rehydrate();
+        Assert.Equal(snapshot.SourceAliasUniverseSha256, built.Snapshot.SourceAliasUniverseHash);
 
         var options = RemoteInferenceOptions.FromEnvironment();
         options.Model = "qwen/qwen3.7-flash";
@@ -61,7 +62,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         string outcome;
         try
         {
-            await authority.DecideAsync(built.Universe, CancellationToken.None);
+            await authority.DecideAsync(built.Snapshot, CancellationToken.None);
             outcome = "COMPLETED";
         }
         catch (BoundedCapturingTransport.StopRun stop)
@@ -77,7 +78,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         {
             schemaVersion = "v5-p6t-src089-pdf-universe-v2-requalification-run-v1",
             sentinel = Sentinel,
-            sourceUniverseSha256 = built.Universe.SourceAliasUniverseHash,
+            sourceUniverseSha256 = built.Snapshot.SourceAliasUniverseHash,
             pack = Pack001,
             outcome,
             outboundCalls = transport.Calls.Count,
@@ -95,7 +96,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
     [Fact]
     public async Task The_first_request_is_the_frozen_pack001_F1_body_and_the_guard_refuses_a_second_F1()
     {
-        var built = PdfSourceOccurrenceAdapter.BuildWithDetails(TestRepository.Path(SourcePdfCorpus.Src089));
+        var built = PdfSourceAdapter.BuildWithDetails(TestRepository.Path(SourcePdfCorpus.Src089));
         var directory = Path.Combine(Path.GetTempPath(), "a99-src089-guard-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(directory);
         try
@@ -103,7 +104,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
             var fake = new NetworkRefusingTransport();
             var transport = new BoundedCapturingTransport(fake, directory);
             var authority = new FunctionConditionedHeadingAuthority(transport, built.Details.LayoutBlockByAtom, () => { });
-            await Assert.ThrowsAsync<NetworkRefusingTransport.WouldHaveSent>(() => authority.DecideAsync(built.Universe, CancellationToken.None));
+            await Assert.ThrowsAsync<NetworkRefusingTransport.WouldHaveSent>(() => authority.DecideAsync(built.Snapshot, CancellationToken.None));
             Assert.Equal(1, fake.Attempts);
             Assert.Empty(transport.Calls);
         }

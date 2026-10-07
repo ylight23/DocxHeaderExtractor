@@ -68,8 +68,8 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         using (var pdf = PdfDocument.Open(pdfPath)) lines = PdfLineExtraction.ExtractLines(pdf);
         var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
         Assert.Equal(request.SourceSha256, sourceSha);
-        var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(lines, sourceSha);
-        var authority = sourceBuild.Universe;
+        var sourceBuild = PdfSourceAdapter.BuildWithDetails(lines, sourceSha);
+        var authority = sourceBuild.Snapshot;
         var pdfDetails = sourceBuild.Details;
         Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
         var aliases = BuildF1OccurrenceAliasMap(repo, request.Source, request.PackId, sourceSha, request.SourceUniverseSha256);
@@ -150,8 +150,8 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         }
         var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
         Assert.Equal(request.SourceSha256, sourceSha);
-        var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(lines, sourceSha);
-        var authority = sourceBuild.Universe;
+        var sourceBuild = PdfSourceAdapter.BuildWithDetails(lines, sourceSha);
+        var authority = sourceBuild.Snapshot;
         var pdfDetails = sourceBuild.Details;
         Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
         var gaps = BuildPageMedianGaps(authority, pdfDetails);
@@ -227,8 +227,8 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         Assert.Contains("Do not output coordinates", prompt, StringComparison.Ordinal);
         Assert.DoesNotContain("Do not use hierarchy, candidate alternatives, relations, coordinates", prompt, StringComparison.Ordinal);
 
-        var authorityByDocument = new Dictionary<string, SourceOccurrenceUniverse>(StringComparer.Ordinal);
-        var pdfDetailsByDocument = new Dictionary<string, PdfSourceOccurrenceDetails>(StringComparer.Ordinal);
+        var authorityByDocument = new Dictionary<string, DocumentSourceSnapshot>(StringComparer.Ordinal);
+        var pdfDetailsByDocument = new Dictionary<string, PdfSourceDetails>(StringComparer.Ordinal);
         var pageSizesByDocument = new Dictionary<string, Dictionary<int, (double Width, double Height)>>(StringComparer.Ordinal);
         var pageMedianGapByDocument = new Dictionary<string, Dictionary<int, double?>>(StringComparer.Ordinal);
         var aliasByOccurrenceByDocument = new Dictionary<string, Dictionary<string, string>>(StringComparer.Ordinal);
@@ -245,8 +245,8 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
             }
             var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
             Assert.Equal(request.SourceSha256, sourceSha);
-            var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(lines, sourceSha);
-            var authority = sourceBuild.Universe;
+            var sourceBuild = PdfSourceAdapter.BuildWithDetails(lines, sourceSha);
+            var authority = sourceBuild.Snapshot;
             Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
             authorityByDocument.Add(request.Source.DocumentId, authority);
             pdfDetailsByDocument.Add(request.Source.DocumentId, sourceBuild.Details);
@@ -752,7 +752,7 @@ public sealed class V5P6TH2CEvidenceCompletePreflightTests
         };
     }
 
-    private static Dictionary<int, double?> BuildPageMedianGaps(SourceOccurrenceUniverse authority, PdfSourceOccurrenceDetails pdfDetails)
+    private static Dictionary<int, double?> BuildPageMedianGaps(DocumentSourceSnapshot authority, PdfSourceDetails pdfDetails)
     {
         return authority.Atoms.Select(atom => pdfDetails.Contexts[atom.SourceId].Source)
             .GroupBy(source => source.Page)

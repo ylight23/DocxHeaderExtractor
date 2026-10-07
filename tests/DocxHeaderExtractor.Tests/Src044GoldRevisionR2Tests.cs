@@ -1,4 +1,5 @@
 using System.Text;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -106,7 +107,7 @@ public sealed class Src044GoldRevisionR2Tests
     /// <summary>The label's own text: the atom up to where it runs on into the chart's unit line.</summary>
     private static string Title(string alias)
     {
-        var text = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(SourcePdfCorpus.Src044)).Atoms.Single(a => a.Alias == alias).Text;
+        var text = PdfSourceAdapter.Build(TestRepository.Path(SourcePdfCorpus.Src044)).Atoms.Single(a => a.Alias == alias).Text;
         var cut = text.IndexOf(UnitLine, StringComparison.Ordinal);
         Assert.True(cut > 0, text);
         return text[..cut];

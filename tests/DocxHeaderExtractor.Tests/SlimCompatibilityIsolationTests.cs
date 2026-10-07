@@ -1,4 +1,5 @@
 using System.Reflection;
+using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -25,8 +26,8 @@ public sealed class SlimCompatibilityIsolationTests
         var root = TestRepository.Root();
         var authority = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.DocumentProcessing", "Pipeline",
             "DocxExtractionPipeline.cs"));
-        var docxAuthority = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.DocumentProcessing", "Pipeline",
-            "DocxSourceOccurrenceAdapter.cs"));
+        var docxAuthority = File.ReadAllText(Path.Combine(root, "src", "DocxHeaderExtractor.DocumentProcessing", "Source", "Docx",
+            "DocxSourceAdapter.cs"));
 
         Assert.DoesNotContain("SlimCompatibility", authority, StringComparison.Ordinal);
         Assert.DoesNotContain("SlimCompatibility", docxAuthority, StringComparison.Ordinal);

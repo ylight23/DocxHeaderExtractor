@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -53,7 +54,7 @@ public sealed partial class Doc0133StructuralAuditTests
     internal static IReadOnlyList<Atom> ReadAtoms()
     {
         var pdf = TestRepository.Path(Source);
-        var atoms = PdfSourceOccurrenceAdapter.Build(pdf).Atoms;
+        var atoms = PdfSourceAdapter.Build(pdf).Atoms;
         Dictionary<string, PdfLine> lines;
         using (var document = UglyToad.PdfPig.PdfDocument.Open(pdf))
             lines = PdfLineExtraction.ExtractLines(document)

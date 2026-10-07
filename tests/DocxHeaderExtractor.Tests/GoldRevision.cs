@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -20,7 +21,7 @@ internal static class GoldRevision
 
     internal static JsonNode Add(JsonNode gold, string pdf, string template, IReadOnlyList<Addition> additions)
     {
-        var atoms = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(pdf)).Atoms;
+        var atoms = PdfSourceAdapter.Build(TestRepository.Path(pdf)).Atoms;
         var claims = gold["occurrence"]!["claims"]!.AsArray().Select(c => c!.DeepClone()).ToList();
         var model = claims.Single(c => First(c) == template);
         foreach (var addition in additions)

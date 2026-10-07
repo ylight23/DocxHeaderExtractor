@@ -18,7 +18,7 @@ internal sealed class CanonicalTextHeadingAuthority(
     CanonicalSemanticExperiment? experiment = null) : IHeadingAuthority
 {
     public async Task<HeadingAuthorityResult> DecideAsync(
-        SourceOccurrenceUniverse source, CancellationToken cancellationToken)
+        DocumentSourceSnapshot source, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(source);
         var evidence = source.Evidence;
@@ -69,7 +69,7 @@ internal sealed class CanonicalTextHeadingAuthority(
         {
             RawAnalystResponses = model?.RawResponses ?? [],
             ModelInputContracts = model is null ? [] : [model.Contract.ProtocolVersion],
-            SourceStageTraces = source.HeadingContexts.Values.Select(context =>
+            SourceStageTraces = source.OccurrenceContexts.Values.Select(context =>
             {
                 var selected = assembly.Validated.Any(item => item.SourceId == context.SourceId);
                 return new HeadingSourceStageTrace(

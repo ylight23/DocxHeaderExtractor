@@ -38,14 +38,14 @@ public sealed class V5P6TFullP05F1PdfUniverseV2PreflightTests
     {
         var path = TestRepository.Path(SourcePdfCorpus.Src089);
         var sourceSha256 = CanonicalSemanticSourceHash.Compute(path);
-        var live = PdfSourceOccurrenceAdapter.BuildWithDetails(path);
+        var live = PdfSourceAdapter.BuildWithDetails(path);
         if (FreezeArtifact.UpdateRequested)
             FreezeArtifact.AssertJson(SnapshotV2Root, $"{sourceSha256}.json", PdfCanonicalSourceSnapshotV1.From(live));
 
         var snapshotPath = Path.Combine(TestRepository.Root(), SnapshotV2Root.Replace('/', Path.DirectorySeparatorChar), $"{sourceSha256}.json");
         var replay = JsonSerializer.Deserialize<PdfCanonicalSourceSnapshotV1>(File.ReadAllText(snapshotPath), FreezeArtifact.Json)!.Rehydrate();
-        Assert.Equal(live.Universe.SourceAliasUniverseHash, replay.SourceAliasUniverseSha256);
-        Assert.Equal(live.Universe.ModelVisibleEvidenceHash, replay.ModelVisibleEvidenceSha256);
+        Assert.Equal(live.Snapshot.SourceAliasUniverseHash, replay.SourceAliasUniverseSha256);
+        Assert.Equal(live.Snapshot.ModelVisibleEvidenceHash, replay.ModelVisibleEvidenceSha256);
 
         var plan = PdfCandidateAuthorityQualificationAdapter.PrepareFromSnapshot(snapshotPath, "SRC-089");
         var rows = Rows(plan, readOnlyCorrespondences: true);
@@ -118,7 +118,7 @@ public sealed class V5P6TFullP05F1PdfUniverseV2PreflightTests
                 var path = TestRepository.Path(pdf);
                 var snapshot = Path.Combine(temp, id + ".json");
                 File.WriteAllText(snapshot, JsonSerializer.Serialize(
-                    PdfCanonicalSourceSnapshotV1.From(PdfSourceOccurrenceAdapter.BuildWithDetails(path)), FreezeArtifact.Json));
+                    PdfCanonicalSourceSnapshotV1.From(PdfSourceAdapter.BuildWithDetails(path)), FreezeArtifact.Json));
                 var plan = PdfCandidateAuthorityQualificationAdapter.PrepareFromSnapshot(snapshot, id);
                 var rows = Rows(plan, correspondences);
                 var expected = requests.Where(item => item.GetProperty("documentId").GetString() == id).ToArray();

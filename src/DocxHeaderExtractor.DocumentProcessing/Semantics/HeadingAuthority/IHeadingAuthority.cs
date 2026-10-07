@@ -15,7 +15,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 /// </summary>
 internal interface IHeadingAuthority
 {
-    Task<HeadingAuthorityResult> DecideAsync(SourceOccurrenceUniverse source, CancellationToken cancellationToken);
+    Task<HeadingAuthorityResult> DecideAsync(DocumentSourceSnapshot source, CancellationToken cancellationToken);
 }
 
 /// <summary>What an authority decided, plus what the shared stages need to continue.</summary>

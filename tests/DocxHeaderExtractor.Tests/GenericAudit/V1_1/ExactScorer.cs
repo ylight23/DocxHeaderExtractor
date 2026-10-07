@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -45,7 +46,7 @@ internal static class ExactScorer
 
         public static Universe For(string media, string sourcePath)
         {
-            if (media == "PDF") return new Universe(PdfSourceOccurrenceAdapter.Build(sourcePath).Atoms, null);
+            if (media == "PDF") return new Universe(PdfSourceAdapter.Build(sourcePath).Atoms, null);
             var document = new OpenXmlDocumentSource().Read(sourcePath);
             var aliases = SemanticSourceAliasCatalog.FromCatalog(DocumentSourceCatalogBuilder.FromSourceDocument(document));
             return new Universe(null, aliases.ToDictionary(a => a.Alias, a => a.Text, StringComparer.Ordinal));

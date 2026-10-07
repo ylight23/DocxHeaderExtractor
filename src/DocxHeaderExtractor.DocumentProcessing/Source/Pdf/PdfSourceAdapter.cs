@@ -1,11 +1,11 @@
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
-using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 /// <summary>
 /// The coordinate atoms of a PDF and the evidence attached to each - two hashes that pin exactly
@@ -28,7 +28,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// default fixed policy or an explicitly selected experiment policy.
 /// </para>
 /// </summary>
-internal static class PdfSourceOccurrenceAdapter
+internal static class PdfSourceAdapter
 {
     private static readonly JsonSerializerOptions Canonical = new()
     {
@@ -36,9 +36,9 @@ internal static class PdfSourceOccurrenceAdapter
         WriteIndented = false,
     };
 
-    public static SourceOccurrenceUniverse Build(string pdfPath) => BuildWithDetails(pdfPath).Universe;
+    public static DocumentSourceSnapshot Build(string pdfPath) => BuildWithDetails(pdfPath).Snapshot;
 
-    internal static PdfSourceOccurrenceBuildResult BuildWithDetails(string pdfPath)
+    internal static PdfSourceBuildResult BuildWithDetails(string pdfPath)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
 
@@ -49,7 +49,7 @@ internal static class PdfSourceOccurrenceAdapter
         return BuildWithDetails(segments, sourceSha256: CanonicalSemanticSourceHash.Compute(pdfPath));
     }
 
-    internal static PdfSourceOccurrenceBuildResult BuildWithDetails(
+    internal static PdfSourceBuildResult BuildWithDetails(
         IReadOnlyList<PdfLine> segments,
         string sourceSha256 = "") => BuildWithDetailsCore(segments, sourceSha256);
 
@@ -57,11 +57,11 @@ internal static class PdfSourceOccurrenceAdapter
     /// Retained for qualification/source-authority construction. Every other measurement here -
     /// the three hashes - depends on the PDF's text and geometry alone.
     /// </param>
-    public static SourceOccurrenceUniverse Build(
+    public static DocumentSourceSnapshot Build(
         IReadOnlyList<PdfLine> segments,
-        string sourceSha256 = "") => BuildWithDetails(segments, sourceSha256).Universe;
+        string sourceSha256 = "") => BuildWithDetails(segments, sourceSha256).Snapshot;
 
-    private static PdfSourceOccurrenceBuildResult BuildWithDetailsCore(
+    private static PdfSourceBuildResult BuildWithDetailsCore(
         IReadOnlyList<PdfLine> segments,
         string sourceSha256)
     {
@@ -77,7 +77,7 @@ internal static class PdfSourceOccurrenceAdapter
         var contexts = PdfSemanticSourceContextBuilder.Build(atomBlocks, annotations);
         var headingContexts = contexts.ToDictionary(
             pair => pair.Key,
-            pair => new HeadingSourceContext(
+            pair => new OccurrenceContext(
                 pair.Value.Source.SourceId,
                 pair.Value.Source.RawText,
                 pair.Value.Source.StructuralScope,
@@ -113,9 +113,9 @@ internal static class PdfSourceOccurrenceAdapter
         var ordinalByAtomSourceId = atoms.ToDictionary(
             atom => atom.SourceId, atom => atom.Ordinal, StringComparer.Ordinal);
 
-        var universe = new SourceOccurrenceUniverse(
+        var universe = new DocumentSourceSnapshot(
             atoms,
-            atoms.Select(atom => new SourceOccurrence(atom.SourceId, atom.Alias, atom.Ordinal, atom.Text, "pdf")).ToArray(),
+            atoms.Select(atom => new DocumentOccurrence(atom.SourceId, atom.Alias, atom.Ordinal, atom.Text, "pdf")).ToArray(),
             evidence,
             SourceAliasUniverseHash: Hash(new
             {
@@ -137,16 +137,16 @@ internal static class PdfSourceOccurrenceAdapter
                 rows = evidence.Select(item => VisibleV2(item, layoutBlockByAtom)).ToArray(),
             }),
             SourceSha256: sourceSha256,
-            HeadingContexts: headingContexts,
+            OccurrenceContexts: headingContexts,
             Catalog: catalog,
             Aliases: aliases,
             OrdinalBySourceId: ordinalByAtomSourceId)
         {
             SourceKind = "pdf",
         };
-        return new PdfSourceOccurrenceBuildResult(
+        return new PdfSourceBuildResult(
             universe,
-            new PdfSourceOccurrenceDetails(atomBlocks, contexts, layoutBlockByAtom, segments.Count));
+            new PdfSourceDetails(atomBlocks, contexts, layoutBlockByAtom, segments.Count));
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -31,7 +32,7 @@ public sealed class ResidualSemanticMechanismAuditTests
     public void Characterize_the_five_residual_semantic_false_positives()
     {
         Assert.Equal(GoldSha256, CanonicalGoldRegistry.EntryAt(HistoricalGoldVintages.Doc0252R1Path, HistoricalGoldVintages.Doc0252R1Sha256).GoldSha256);
-        var plan = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(Doc0252Pdf));
+        var plan = PdfSourceAdapter.Build(TestRepository.Path(Doc0252Pdf));
         var atomByAlias = plan.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
         var scopeByAlias = plan.Evidence.ToDictionary(
             item => item.SourceAlias, item => item.StructuralScope, StringComparer.Ordinal);

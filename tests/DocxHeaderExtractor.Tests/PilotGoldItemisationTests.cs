@@ -1,4 +1,5 @@
 using System.Text;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json.Nodes;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
@@ -177,7 +178,7 @@ public sealed class PilotGoldItemisationTests
 
     private static List<JsonObject> BindStructured(string[] texts, string pdf)
     {
-        var atoms = PdfSourceOccurrenceAdapter.Build(pdf).Atoms;
+        var atoms = PdfSourceAdapter.Build(pdf).Atoms;
         var claims = new List<JsonObject>();
         var from = 0;
         foreach (var text in texts)

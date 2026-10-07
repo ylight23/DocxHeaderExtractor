@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -19,7 +20,7 @@ internal sealed record CanonicalSourceOccurrence(
 /// Builds canonical structure from validated headings, for any source format.
 /// <para>
 /// It reads only what every format can supply: an identity, a position in reading order, the exact
-/// text, and an optional style name. It lived in DocxSourceOccurrenceAdapter while the PDF lane called
+/// text, and an optional style name. It lived in DocxSourceAdapter while the PDF lane called
 /// it, which read as though PDF structure were a DOCX by-product; it is neither lane's property.
 /// </para>
 /// <para>

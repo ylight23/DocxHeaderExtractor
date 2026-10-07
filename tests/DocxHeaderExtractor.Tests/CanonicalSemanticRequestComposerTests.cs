@@ -91,7 +91,7 @@ public sealed class CanonicalSemanticRequestComposerTests
     {
         // The authority carries atoms and their evidence only: no request bytes, and no partition of
         // its own - packing belongs to the lane's packing policy, requests to the one composer.
-        var fieldNames = typeof(SourceOccurrenceUniverse).GetProperties().Select(p => p.Name).ToArray();
+        var fieldNames = typeof(DocumentSourceSnapshot).GetProperties().Select(p => p.Name).ToArray();
 
         Assert.DoesNotContain("RequestPayload", fieldNames);
         Assert.DoesNotContain("RequestSha256", fieldNames);

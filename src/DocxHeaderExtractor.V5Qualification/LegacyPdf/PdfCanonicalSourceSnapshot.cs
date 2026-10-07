@@ -20,9 +20,9 @@ internal sealed record PdfCanonicalSourceSnapshotV1(
 {
     public const string Version = "a99-pdf-canonical-source-snapshot-v2";
 
-    public static PdfCanonicalSourceSnapshotV1 From(PdfSourceOccurrenceBuildResult sourceBuild)
+    public static PdfCanonicalSourceSnapshotV1 From(PdfSourceBuildResult sourceBuild)
     {
-        var authority = sourceBuild.Universe;
+        var authority = sourceBuild.Snapshot;
         return new PdfCanonicalSourceSnapshotV1(
             Version, authority.SourceSha256, authority.SourceAliasUniverseHash, authority.ModelVisibleEvidenceHash,
             authority.Atoms, authority.Evidence.Select(PdfCanonicalEvidenceSnapshotV1.From).ToArray(), sourceBuild.Details.LayoutBlockByAtom);
@@ -92,7 +92,7 @@ internal sealed record PdfFrozenSourceView(
             }
         }
 
-        var build = PdfSourceOccurrenceAdapter.BuildWithDetails(pdfPath);
-        return new PdfFrozenSourceView(build.Universe.SourceSha256, build.Universe.Atoms, build.Universe.Evidence, build.Details.LayoutBlockByAtom);
+        var build = PdfSourceAdapter.BuildWithDetails(pdfPath);
+        return new PdfFrozenSourceView(build.Snapshot.SourceSha256, build.Snapshot.Atoms, build.Snapshot.Evidence, build.Details.LayoutBlockByAtom);
     }
 }

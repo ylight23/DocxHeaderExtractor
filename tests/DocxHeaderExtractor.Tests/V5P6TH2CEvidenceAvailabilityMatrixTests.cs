@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.V5Qualification;
@@ -61,8 +62,8 @@ public sealed class V5P6TH2CEvidenceAvailabilityMatrixTests
 
         var evidenceSource = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceEvidence.cs");
         var productionAdapter = ReadSource("src/DocxHeaderExtractor.V5Qualification/LegacyPdf/PdfHeadingMembershipProductionAdapter.cs");
-        var sourceBuilder = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfSourceOccurrenceAdapter.cs");
-        var pdfSourceDetails = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Source/Pdf/PdfSourceOccurrenceBuildResult.cs");
+        var sourceBuilder = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Source/Pdf/PdfSourceAdapter.cs");
+        var pdfSourceDetails = ReadSource("src/DocxHeaderExtractor.DocumentProcessing/Source/Pdf/PdfSourceBuildResult.cs");
         var endPointerBuilder = ReadSource("src/DocxHeaderExtractor.V5Qualification/P6TH2CEndPointerCanary.cs");
         using var frozenMatrix = JsonDocument.Parse(File.ReadAllBytes(TestRepository.Path(
             OutputRoot + "/h2c-evidence-availability-matrix.v1.json")));

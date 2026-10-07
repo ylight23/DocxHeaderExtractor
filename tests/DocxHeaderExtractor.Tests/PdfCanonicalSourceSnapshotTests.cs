@@ -33,13 +33,13 @@ public sealed class PdfCanonicalSourceSnapshotTests
         {
             var path = TestRepository.Path(spec.Pdf);
             var sourceSha = CanonicalSemanticSourceHash.Compute(path);
-            PdfSourceOccurrenceBuildResult? live = null;
+            PdfSourceBuildResult? live = null;
             PdfCanonicalSourceSnapshotV1 snapshot;
             if (FreezeArtifact.UpdateRequested)
             {
-                live = PdfSourceOccurrenceAdapter.BuildWithDetails(path);
+                live = PdfSourceAdapter.BuildWithDetails(path);
                 snapshot = PdfCanonicalSourceSnapshotV1.From(live);
-                Assert.Equal(sourceSha, live.Universe.SourceSha256);
+                Assert.Equal(sourceSha, live.Snapshot.SourceSha256);
                 FreezeArtifact.AssertJson(Root, $"{sourceSha}.json", snapshot);
             }
 
@@ -51,23 +51,23 @@ public sealed class PdfCanonicalSourceSnapshotTests
             Assert.Equal(sourceSha, replay.SourceSha256);
             if (live is not null)
             {
-                Assert.Equal(live.Universe.SourceAliasUniverseHash, replay.SourceAliasUniverseSha256);
-                Assert.Equal(live.Universe.ModelVisibleEvidenceHash, replay.ModelVisibleEvidenceSha256);
-                Assert.Equal(live.Universe.Atoms.Select(AtomIdentity), replay.Atoms.Select(AtomIdentity));
+                Assert.Equal(live.Snapshot.SourceAliasUniverseHash, replay.SourceAliasUniverseSha256);
+                Assert.Equal(live.Snapshot.ModelVisibleEvidenceHash, replay.ModelVisibleEvidenceSha256);
+                Assert.Equal(live.Snapshot.Atoms.Select(AtomIdentity), replay.Atoms.Select(AtomIdentity));
                 Assert.Equal(live.Details.LayoutBlockByAtom.OrderBy(item => item.Key), replay.LayoutBlockByAtom.OrderBy(item => item.Key));
             }
 
-            var livePacks = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(live?.Universe.Evidence ?? replay.Evidence, live?.Details.LayoutBlockByAtom ?? replay.LayoutBlockByAtom);
+            var livePacks = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(live?.Snapshot.Evidence ?? replay.Evidence, live?.Details.LayoutBlockByAtom ?? replay.LayoutBlockByAtom);
             var replayPacks = SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(replay.Evidence, replay.LayoutBlockByAtom);
             Assert.Equal(spec.Packs, livePacks.Count); Assert.Equal(livePacks.Count, replayPacks.Count);
             Assert.Equal(livePacks.Select(PackIdentity), replayPacks.Select(PackIdentity));
 
-            var liveAtoms = (live?.Universe.Atoms ?? replay.Atoms).ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
+            var liveAtoms = (live?.Snapshot.Atoms ?? replay.Atoms).ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
             var replayAtoms = replay.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
             var candidateRows = new List<object>();
             foreach (var pair in livePacks.Zip(replayPacks))
             {
-                var liveUniverse = V5CandidateUniverseV1.Build(pair.First.Owned.Select(item => liveAtoms[item.SourceAlias]).ToArray(), live?.Universe.Atoms ?? replay.Atoms, V5CandidatePolicyV1.Default);
+                var liveUniverse = V5CandidateUniverseV1.Build(pair.First.Owned.Select(item => liveAtoms[item.SourceAlias]).ToArray(), live?.Snapshot.Atoms ?? replay.Atoms, V5CandidatePolicyV1.Default);
                 var replayUniverse = V5CandidateUniverseV1.Build(pair.Second.Owned.Select(item => replayAtoms[item.SourceAlias]).ToArray(), replay.Atoms, V5CandidatePolicyV1.Default);
                 Assert.Equal(liveUniverse.Fingerprint, replayUniverse.Fingerprint);
                 Assert.Equal(liveUniverse.Candidates.Select(CandidateIdentity), replayUniverse.Candidates.Select(CandidateIdentity));
@@ -82,7 +82,7 @@ public sealed class PdfCanonicalSourceSnapshotTests
             schemaVersion = "p6s-canonical-source-snapshot-replay-v1",
             authority = "compact sourceSha256 + atoms + materialized evidence + layoutBlockByAtom",
             // This rollup freezes the original capture authority's historical builder identity;
-            // the live implementation has since been moved behind PdfSourceOccurrenceAdapter.
+            // the live implementation has since been moved behind PdfSourceAdapter.
             captureParity = "A99_FREEZE_UPDATE capture host: live PdfStructuredSourceAuthorityBuilder equals serialized snapshot rehydrate",
             ciReplay = "ordinary runs rehydrate only; raw PdfPig drift is intentionally not a second authority",
             providerCalls = 0, goldRead = false, sharedRuntime = "UNCHANGED", documents = rows,

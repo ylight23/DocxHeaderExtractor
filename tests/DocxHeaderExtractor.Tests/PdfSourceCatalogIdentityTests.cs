@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 
 namespace DocxHeaderExtractor.Tests;
@@ -97,7 +98,7 @@ public sealed class PdfSourceCatalogIdentityTests
 
     /// <summary>The source units the PDF lane reasons over: one block per segment atom.</summary>
     private static IReadOnlyList<PdfSemanticBlock> Blocks() =>
-        PdfSourceOccurrenceAdapter.BuildWithDetails(
+        PdfSourceAdapter.BuildWithDetails(
             Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))).Details.Blocks;
 
 }

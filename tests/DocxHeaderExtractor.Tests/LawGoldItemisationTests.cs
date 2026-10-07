@@ -1,4 +1,5 @@
 using System.Text;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;
@@ -113,7 +114,7 @@ public sealed partial class LawGoldItemisationTests
     /// </summary>
     internal static List<Heading> PdfHeadings(string pdf, string[][] titles)
     {
-        var atoms = PdfSourceOccurrenceAdapter.Build(pdf).Atoms;
+        var atoms = PdfSourceAdapter.Build(pdf).Atoms;
         var bold = BoldBySourceId(pdf);
         var headings = new List<Heading>();
         var nextTitle = 0;
@@ -204,7 +205,7 @@ public sealed partial class LawGoldItemisationTests
 
     private static void ApplyPdf(string id, string pdf, List<Heading> headings, int total)
     {
-        var atoms = PdfSourceOccurrenceAdapter.Build(TestRepository.Path(pdf)).Atoms;
+        var atoms = PdfSourceAdapter.Build(TestRepository.Path(pdf)).Atoms;
         var claims = headings.Select(heading =>
         {
             var parts = atoms.Skip(heading.Start).Take(heading.Count).Select(a => new SemanticSourcePart(a.Alias, "WHOLE_ALIAS")).ToArray();

@@ -28,7 +28,7 @@ public sealed class PdfAtomFactsWriter
 
         IReadOnlyList<PdfLine> extracted;
         using (var document = PdfDocument.Open(pdf)) extracted = PdfLineExtraction.ExtractLines(document);
-        var atoms = PdfSourceOccurrenceAdapter.Build(extracted, CanonicalSemanticSourceHash.Compute(pdf)).Atoms;
+        var atoms = PdfSourceAdapter.Build(extracted, CanonicalSemanticSourceHash.Compute(pdf)).Atoms;
         var lines = extracted.GroupBy(PdfLineIdentity.Of, StringComparer.Ordinal)
             .ToDictionary(g => g.Key, g => g.First(), StringComparer.Ordinal);
 

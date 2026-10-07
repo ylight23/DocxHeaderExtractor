@@ -1,25 +1,26 @@
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 
 /// <summary>
 /// DOCX source adapter. It projects only facts OOXML actually owns into the common occurrence
 /// universe; it never fabricates PDF pages, lines, geometry, or layout blocks.
 /// </summary>
-internal static class DocxSourceOccurrenceAdapter
+internal static class DocxSourceAdapter
 {
-    internal static DocxAuthoritySource BuildForAudit(SourceDocument source) => Build(source);
+    internal static DocxSourceBuildResult BuildForAudit(SourceDocument source) => Build(source);
 
-    internal static DocxAuthoritySource Build(SourceDocument sourceDocument)
+    internal static DocxSourceBuildResult Build(SourceDocument sourceDocument)
     {
         var paragraphs = sourceDocument.Paragraphs
             .Where(source => !string.IsNullOrWhiteSpace(source.Text))
             .OrderBy(source => source.SourceOrdinal)
             .ToArray();
-        var result = new Dictionary<string, DocxAuthorityContext>(StringComparer.Ordinal);
-        var headingContexts = new Dictionary<string, HeadingSourceContext>(StringComparer.Ordinal);
+        var result = new Dictionary<string, DocxSourceContext>(StringComparer.Ordinal);
+        var headingContexts = new Dictionary<string, OccurrenceContext>(StringComparer.Ordinal);
         for (var index = 0; index < paragraphs.Length; index++)
         {
             var sourceParagraph = paragraphs[index];
@@ -36,8 +37,8 @@ internal static class DocxSourceOccurrenceAdapter
             var next = paragraphs.Skip(index + 1).Take(3).Select(item => Excerpt(item.Text)).ToArray();
             var origins = evidence.Select(item => item.StartsWith("marker:", StringComparison.Ordinal) ? "marker_parser" :
                 item.StartsWith("outline_level:", StringComparison.Ordinal) ? "ooxml_parser" : "docx_parser").ToArray();
-            var headingContext = new HeadingSourceContext(id, sourceParagraph.Text, scope, origins, previous, next);
-            var context = new DocxAuthorityContext(sourceParagraph, scope, headingContext, evidence);
+            var headingContext = new OccurrenceContext(id, sourceParagraph.Text, scope, origins, previous, next);
+            var context = new DocxSourceContext(sourceParagraph, scope, headingContext, evidence);
             result.Add(id, context);
             headingContexts.Add(id, headingContext);
         }
@@ -47,10 +48,10 @@ internal static class DocxSourceOccurrenceAdapter
         var universeEvidence = result.Values.OrderBy(item => item.Source.SourceOrdinal)
             .Select(item => EvidenceOf(item, aliasesBySourceId[item.Source.SourceId].Alias)).ToArray();
         var sourceHash = CanonicalSemanticSourceHash.Compute(sourceDocument.SourcePath);
-        var universe = new SourceOccurrenceUniverse(
+        var universe = new DocumentSourceSnapshot(
             [],
             result.Values.OrderBy(item => item.Source.SourceOrdinal)
-                .Select(item => new SourceOccurrence(item.Source.SourceId, aliasesBySourceId[item.Source.SourceId].Alias,
+                .Select(item => new DocumentOccurrence(item.Source.SourceId, aliasesBySourceId[item.Source.SourceId].Alias,
                     item.Source.SourceOrdinal, item.Source.Text, sourceDocument.SourceKind, item.Source.Style.StyleId)).ToArray(),
             universeEvidence,
             sourceHash,
@@ -64,12 +65,12 @@ internal static class DocxSourceOccurrenceAdapter
             SourceKind = sourceDocument.SourceKind,
             DocumentId = sourceDocument.DocumentId,
         };
-        return new DocxAuthoritySource(result, headingContexts, universe);
+        return new DocxSourceBuildResult(result, headingContexts, universe);
     }
 
     private static string Excerpt(string text) => text.Length <= 180 ? text : text[..180];
 
-    private static CanonicalSemanticSourceEvidence EvidenceOf(DocxAuthorityContext context, string alias)
+    private static CanonicalSemanticSourceEvidence EvidenceOf(DocxSourceContext context, string alias)
     {
         var source = context.Source;
         return new CanonicalSemanticSourceEvidence(
@@ -84,16 +85,16 @@ internal static class DocxSourceOccurrenceAdapter
         };
     }
 }
-internal sealed record DocxAuthorityContext(
+internal sealed record DocxSourceContext(
     SourceParagraph Source,
     string Scope,
-    HeadingSourceContext HeadingContext,
+    OccurrenceContext HeadingContext,
     IReadOnlyList<string> ObservedEvidence);
 
-internal sealed record DocxAuthoritySource(
-    IReadOnlyDictionary<string, DocxAuthorityContext> Contexts,
-    IReadOnlyDictionary<string, HeadingSourceContext> HeadingContexts,
-    SourceOccurrenceUniverse Universe)
+internal sealed record DocxSourceBuildResult(
+    IReadOnlyDictionary<string, DocxSourceContext> Contexts,
+    IReadOnlyDictionary<string, OccurrenceContext> OccurrenceContexts,
+    DocumentSourceSnapshot Snapshot)
 {
     public int Count => Contexts.Count;
 }

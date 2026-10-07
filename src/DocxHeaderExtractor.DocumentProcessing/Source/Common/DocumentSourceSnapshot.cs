@@ -6,14 +6,14 @@ namespace DocxHeaderExtractor.DocumentProcessing.Source.Common;
 /// Immutable source IR shared by format adapters and heading authority. Parser objects stay in
 /// format-owned adapter results; this record carries only source-derived identities and evidence.
 /// </summary>
-internal sealed record SourceOccurrenceUniverse(
+internal sealed record DocumentSourceSnapshot(
     IReadOnlyList<SemanticSourceAtom> Atoms,
-    IReadOnlyList<SourceOccurrence> Occurrences,
+    IReadOnlyList<DocumentOccurrence> Occurrences,
     IReadOnlyList<CanonicalSemanticSourceEvidence> Evidence,
     string SourceAliasUniverseHash,
     string ModelVisibleEvidenceHash,
     string SourceSha256,
-    IReadOnlyDictionary<string, HeadingSourceContext> HeadingContexts,
+    IReadOnlyDictionary<string, OccurrenceContext> OccurrenceContexts,
     DocumentSourceCatalog Catalog,
     IReadOnlyList<SemanticSourceAlias> Aliases,
     IReadOnlyDictionary<string, int> OrdinalBySourceId)

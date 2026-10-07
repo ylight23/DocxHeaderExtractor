@@ -1,4 +1,5 @@
 using System.Text;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.V5;
@@ -59,8 +60,8 @@ public sealed class PdfReadOnlyCorrespondenceBuilderTests
         int packs = 0, aliases = 0, correspondences = 0;
         foreach (var pdf in P05Cohort)
         {
-            var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(TestRepository.Path(pdf));
-            var authority = sourceBuild.Universe;
+            var sourceBuild = PdfSourceAdapter.BuildWithDetails(TestRepository.Path(pdf));
+            var authority = sourceBuild.Snapshot;
             var atoms = authority.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
             foreach (var pack in SemanticEvidencePackingPolicies.PdfResourceBoundedP05.BuildPacks(authority.Evidence, sourceBuild.Details.LayoutBlockByAtom))
             {

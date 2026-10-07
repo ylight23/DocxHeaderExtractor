@@ -1,7 +1,7 @@
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
 /// <summary>Format-neutral source occurrence identity with no parser-specific geometry.</summary>
-internal sealed record SourceOccurrence(
+internal sealed record DocumentOccurrence(
     string Id,
     string Alias,
     int Ordinal,

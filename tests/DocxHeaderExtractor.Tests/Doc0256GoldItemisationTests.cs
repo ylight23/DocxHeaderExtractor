@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;
@@ -76,7 +77,7 @@ public sealed class Doc0256GoldItemisationTests
     public void Materialize_structured_occurrence_gold()
     {
         var path = TestRepository.Path(Pdf);
-        var authority = PdfSourceOccurrenceAdapter.Build(path);
+        var authority = PdfSourceAdapter.Build(path);
         var atoms = authority.Atoms;
         var lastIndex = -1;
 

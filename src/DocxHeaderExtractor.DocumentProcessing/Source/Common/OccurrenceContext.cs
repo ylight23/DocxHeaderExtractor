@@ -1,7 +1,7 @@
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
 /// <summary>Format-neutral source context used to validate a heading against neighboring text.</summary>
-internal sealed record HeadingSourceContext(
+internal sealed record OccurrenceContext(
     string SourceId,
     string RawText,
     string StructuralScope,

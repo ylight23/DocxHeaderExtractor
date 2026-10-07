@@ -1,4 +1,5 @@
 using System.Text;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core.Models;
@@ -108,7 +109,7 @@ public sealed class GoldAuthoredSourceTests
             if (occurrence.ValueKind == JsonValueKind.Null
                 || occurrence.GetProperty("coordinateSystem").GetString() != "STRUCTURED_SOURCE_PARTS") continue;
 
-            var atoms = PdfSourceOccurrenceAdapter.Build(
+            var atoms = PdfSourceAdapter.Build(
                 TestRepository.Path(root.GetProperty("source").GetProperty("sourcePath").GetString()!)).Atoms;
             foreach (var claim in occurrence.GetProperty("claims").EnumerateArray())
             {

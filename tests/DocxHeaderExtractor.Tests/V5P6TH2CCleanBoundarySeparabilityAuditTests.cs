@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using UglyToad.PdfPig;
@@ -51,8 +52,8 @@ public sealed class V5P6TH2CCleanBoundarySeparabilityAuditTests
                 lines = PdfLineExtraction.ExtractLines(pdf);
                 pageSizes = pdf.GetPages().ToDictionary(page => page.Number, page => (page.Width, page.Height));
             }
-            var sourceBuild = PdfSourceOccurrenceAdapter.BuildWithDetails(lines, sourceSha);
-            var authority = sourceBuild.Universe;
+            var sourceBuild = PdfSourceAdapter.BuildWithDetails(lines, sourceSha);
+            var authority = sourceBuild.Snapshot;
             var pdfDetails = sourceBuild.Details;
             var atoms = authority.Atoms;
             var lineBySourceId = lines.ToDictionary(PdfLineIdentity.Of, StringComparer.Ordinal);

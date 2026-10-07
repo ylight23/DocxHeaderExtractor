@@ -32,7 +32,7 @@ internal sealed class FunctionConditionedHeadingAuthority(
     // here: escaping is part of the provider-body identity.
     private const int P05CompletionTokens = PdfQualifiedInferencePolicy.CompletionTokenCeiling;
 
-    public async Task<HeadingAuthorityResult> DecideAsync(SourceOccurrenceUniverse source, CancellationToken ct)
+    public async Task<HeadingAuthorityResult> DecideAsync(DocumentSourceSnapshot source, CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(source);
         var atoms = source.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);

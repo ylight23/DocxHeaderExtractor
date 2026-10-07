@@ -30,7 +30,7 @@ internal sealed record HeadingStructureAssembly(
 internal static class HeadingStructureAssembler
 {
     public static async Task<HeadingStructureAssembly> AssembleAsync(
-        SourceOccurrenceUniverse source,
+        DocumentSourceSnapshot source,
         HeadingAuthorityResult authority,
         PrimaryOccurrenceSelection primaryOccurrences,
         CancellationToken cancellationToken)
@@ -38,7 +38,7 @@ internal static class HeadingStructureAssembler
         ArgumentNullException.ThrowIfNull(source);
         ArgumentNullException.ThrowIfNull(authority);
 
-        var validated = HeadingProposalBinder.BindAndValidate(source.HeadingContexts, authority.Decisions);
+        var validated = HeadingProposalBinder.BindAndValidate(source.OccurrenceContexts, authority.Decisions);
         // Reasoning surface #3: headings the first pass left unplaced come back in one narrow
         // follow-up that asks only about position. Bounded to a single round; an unresolved heading
         // is a legitimate outcome.
@@ -50,14 +50,14 @@ internal static class HeadingStructureAssembler
         // route carries, so a bound heading can name a source this route cannot materialize.
         var derived = HeadingHierarchyResolver
             .DeriveHierarchyFromModelRelations(placed)
-            .Where(item => source.HeadingContexts.ContainsKey(item.SourceId))
+            .Where(item => source.OccurrenceContexts.ContainsKey(item.SourceId))
             .ToArray();
         var placements = derived.ToDictionary(
             item => item.SourceId,
             item => new ResolvedHeadingPlacement(
                 item.SourceId, item.Level, item.ParentSourceId, item.Resolution, "requires_review")
             {
-                StructuralScope = source.HeadingContexts[item.SourceId].StructuralScope,
+                StructuralScope = source.OccurrenceContexts[item.SourceId].StructuralScope,
             },
             StringComparer.Ordinal);
         var primarySourceIds = primaryOccurrences == PrimaryOccurrenceSelection.FirstOfSemanticNode
@@ -65,7 +65,7 @@ internal static class HeadingStructureAssembler
             : placements.Keys.ToHashSet(StringComparer.Ordinal);
 
         var styleBySourceId = source.Occurrences.ToDictionary(item => item.Id, item => item.StyleId, StringComparer.Ordinal);
-        var occurrences = source.HeadingContexts.ToDictionary(
+        var occurrences = source.OccurrenceContexts.ToDictionary(
             pair => pair.Key,
             pair => new CanonicalSourceOccurrence(
                 pair.Key,

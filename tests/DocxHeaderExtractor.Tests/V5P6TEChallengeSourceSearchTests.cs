@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -43,7 +44,7 @@ public sealed class V5P6TEChallengeSourceSearchTests
                 continue;
 
             var expectedSourceHash = source.GetProperty("sourceSha256").GetString()!;
-            var live = PdfSourceOccurrenceAdapter.Build(pdfPath);
+            var live = PdfSourceAdapter.Build(pdfPath);
             Assert.Equal(expectedSourceHash, live.SourceSha256);
 
             var atomByAlias = live.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);

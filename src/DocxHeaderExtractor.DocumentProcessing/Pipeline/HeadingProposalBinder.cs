@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 internal static class HeadingProposalBinder
 {
     public static IReadOnlyList<ValidatedHeading> BindAndValidate(
-        IReadOnlyDictionary<string, HeadingSourceContext> contexts,
+        IReadOnlyDictionary<string, OccurrenceContext> contexts,
         IReadOnlyList<HeadingExtentDecision> decisions)
     {
         ArgumentNullException.ThrowIfNull(contexts);
@@ -20,7 +20,7 @@ internal static class HeadingProposalBinder
     }
 
     public static IReadOnlyList<HeadingSourceStageTrace> Trace(
-        IReadOnlyDictionary<string, HeadingSourceContext> contexts,
+        IReadOnlyDictionary<string, OccurrenceContext> contexts,
         IReadOnlyList<HeadingExtentDecision> decisions)
     {
         ArgumentNullException.ThrowIfNull(contexts);

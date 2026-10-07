@@ -36,10 +36,10 @@ public sealed class HeadingAuthorityByteParityTests
         var frozen = FrozenRow(documentId);
         var snapshot = LoadSnapshot(pdf);
         var authorityInput = snapshot.Rehydrate();
-        var source = new SourceOccurrenceUniverse(
+        var source = new DocumentSourceSnapshot(
             authorityInput.Atoms, [], authorityInput.Evidence,
             authorityInput.SourceAliasUniverseSha256, authorityInput.ModelVisibleEvidenceSha256, authorityInput.SourceSha256,
-            new Dictionary<string, HeadingSourceContext>(), new DocumentSourceCatalog([]), [],
+            new Dictionary<string, OccurrenceContext>(), new DocumentSourceCatalog([]), [],
             new Dictionary<string, int>())
         { SourceKind = "pdf" };
 
@@ -57,15 +57,15 @@ public sealed class HeadingAuthorityByteParityTests
     public async Task Live_parsed_universe_sends_the_frozen_function_request_when_the_platform_reproduces_the_source(string documentId, string pdf)
     {
         var snapshot = LoadSnapshot(pdf);
-        var build = PdfSourceOccurrenceAdapter.BuildWithDetails(TestRepository.Path(pdf));
-        if (!string.Equals(build.Universe.SourceAliasUniverseHash, snapshot.SourceAliasUniverseSha256, StringComparison.Ordinal))
+        var build = PdfSourceAdapter.BuildWithDetails(TestRepository.Path(pdf));
+        if (!string.Equals(build.Snapshot.SourceAliasUniverseHash, snapshot.SourceAliasUniverseSha256, StringComparison.Ordinal))
             return;
 
-        await AssertFirstRequestMatches(FrozenRow(documentId), build.Universe, build.Details.LayoutBlockByAtom);
+        await AssertFirstRequestMatches(FrozenRow(documentId), build.Snapshot, build.Details.LayoutBlockByAtom);
     }
 
     private static async Task AssertFirstRequestMatches(
-        JsonElement frozen, SourceOccurrenceUniverse source, IReadOnlyDictionary<string, string> layoutBlockByAtom)
+        JsonElement frozen, DocumentSourceSnapshot source, IReadOnlyDictionary<string, string> layoutBlockByAtom)
     {
         var transport = new RecordingTransport();
         IHeadingAuthority authority = new FunctionConditionedHeadingAuthority(transport, layoutBlockByAtom, () => { });

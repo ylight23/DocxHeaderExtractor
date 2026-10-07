@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
@@ -235,7 +236,7 @@ public sealed class V5P6TH2CTypographyOnlyScreenGoldScoreTests
         using (var pdf = PdfDocument.Open(pdfPath)) lines = PdfLineExtraction.ExtractLines(pdf);
         var sourceSha = CanonicalSemanticSourceHash.Compute(pdfPath);
         Assert.Equal(request.SourceSha256, sourceSha);
-        var authority = PdfSourceOccurrenceAdapter.Build(lines, sourceSha);
+        var authority = PdfSourceAdapter.Build(lines, sourceSha);
         Assert.Equal(request.SourceUniverseSha256, authority.SourceAliasUniverseHash);
         var start = Array.FindIndex(authority.Atoms.ToArray(), atom => atom.Alias == request.AnchorAlias);
         Assert.True(start >= 0);
