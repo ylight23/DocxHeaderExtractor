@@ -1,0 +1,34 @@
+{
+ "schemaVersion": "v5-p6tg2a-src089-v2-replication-summary-v1",
+ "providerCalls": 1,
+ "requestBodySha256": "18ad52429cda4cc002af82e2b29a79c3b71d502ca9709db0219b909500c82e66",
+ "identicalRequestAsRun1": true,
+ "goldReadAfterCaptureFreeze": true,
+ "run1_8828480": {
+  "TP": 6,
+  "FP": 6,
+  "FN": 0,
+  "TN": 2,
+  "precision": 0.5,
+  "recall": 1.0,
+  "f1": 0.6667
+ },
+ "replication": {
+  "TP": 5,
+  "FP": 1,
+  "FN": 1,
+  "TN": 7,
+  "precision": 0.8333,
+  "recall": 0.8333,
+  "f1": 0.8333
+ },
+ "primariesWhereTheTwoRunsDisagree": [
+  "O10",
+  "O11",
+  "O28",
+  "O55",
+  "O84",
+  "O9"
+ ],
+ "conclusion": "G2A one-shot is NOT stable on the identical v2 request: the two runs disagree on 6 of 14 primaries and make different errors (run 1 FP 6, replication FP 1 and FN 1). A single G2A call cannot be an authority without a stability protocol."
+}
