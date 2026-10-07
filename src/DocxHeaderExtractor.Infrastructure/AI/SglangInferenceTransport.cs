@@ -22,7 +22,7 @@ namespace DocxHeaderExtractor.Infrastructure.AI;
 /// </list>
 /// response_format json_schema strict đã đo hoạt động đúng trên gateway này (id/level đúng schema).
 /// </summary>
-public sealed class SglangHeaderExtractor : IInferenceTransport
+public sealed class SglangInferenceTransport : IInferenceTransport
 {
     private readonly HttpClient _http;
     private readonly RemoteInferenceOptions _options;
@@ -34,16 +34,16 @@ public sealed class SglangHeaderExtractor : IInferenceTransport
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
     };
 
-    public SglangHeaderExtractor(HttpClient http, RemoteInferenceOptions options)
+    public SglangInferenceTransport(HttpClient http, RemoteInferenceOptions options)
     {
         _http = http;
         _options = Validate(options);
     }
 
-    private SglangHeaderExtractor(HttpClient http, RemoteInferenceOptions options, bool ownsHttp)
+    private SglangInferenceTransport(HttpClient http, RemoteInferenceOptions options, bool ownsHttp)
         : this(http, options) => _ownsHttp = ownsHttp;
 
-    public static SglangHeaderExtractor CreateOwned(RemoteInferenceOptions options) =>
+    public static SglangInferenceTransport CreateOwned(RemoteInferenceOptions options) =>
         new(new HttpClient { Timeout = TimeSpan.FromMinutes(10) }, options, ownsHttp: true);
 
     public string ModelName => _options.Model;

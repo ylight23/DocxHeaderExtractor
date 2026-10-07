@@ -34,7 +34,7 @@ public interface IInferenceTransport : IDisposable
 /// Composition-root seam for inference providers. Core consumes the neutral classifier contract;
 /// provider construction belongs to Infrastructure.
 /// </summary>
-public interface IHeaderClassifierFactory
+public interface IInferenceTransportFactory
 {
     bool SendsDataExternally => false;
 
@@ -51,7 +51,7 @@ public interface IHeaderClassifierFactory
 }
 
 /// <summary>Raw completion returned by executing an already frozen provider request body.</summary>
-public sealed record FrozenHeaderExecutionResult(
+public sealed record FrozenInferenceResult(
     string Content, string? FinishReason, JsonElement? Usage, string RawSse, int SseEventCount, int RetryCount);
 
 /// <summary>
@@ -61,7 +61,7 @@ public sealed record FrozenHeaderExecutionResult(
 /// </summary>
 public interface IFrozenInferenceTransport : IInferenceTransport
 {
-    Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(
+    Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(
         byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
         CancellationToken cancellationToken = default);
 }

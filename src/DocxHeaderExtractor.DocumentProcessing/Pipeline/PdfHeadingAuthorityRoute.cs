@@ -85,7 +85,7 @@ internal static class PdfHeadingAuthorityRoute
 
     private static async Task<StructuralAuthorityResult> RunCoreAsync(SourceOccurrenceUniverse source, PdfSourceOccurrenceDetails pdfDetails, IFrozenInferenceTransport frozen, PdfLaneExecutionLease lease, CancellationToken ct)
     {
-        var leaseBound = new LeaseBoundFrozenHeaderClassifier(frozen, lease);
+        var leaseBound = new LeaseBoundFrozenInferenceTransport(frozen, lease);
         IHeadingAuthority authority = new FunctionConditionedHeadingAuthority(
             leaseBound,
             pdfDetails.LayoutBlockByAtom,
@@ -119,12 +119,12 @@ internal static class PdfHeadingAuthorityRoute
         { SourceCatalog = source.Catalog };
     }
 
-    private sealed class LeaseBoundFrozenHeaderClassifier : IFrozenInferenceTransport
+    private sealed class LeaseBoundFrozenInferenceTransport : IFrozenInferenceTransport
     {
         private readonly IFrozenInferenceTransport _inner;
         private readonly PdfLaneExecutionLease _lease;
 
-        public LeaseBoundFrozenHeaderClassifier(IFrozenInferenceTransport inner, PdfLaneExecutionLease lease)
+        public LeaseBoundFrozenInferenceTransport(IFrozenInferenceTransport inner, PdfLaneExecutionLease lease)
         {
             _inner = inner;
             _lease = lease;
@@ -136,7 +136,7 @@ internal static class PdfHeadingAuthorityRoute
         public int SharedPrefixTokens => _inner.SharedPrefixTokens;
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             StartAndObserve(() => _inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount));
-        public Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default) =>
+        public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default) =>
             StartAndObserve(() => _inner.ExecuteFrozenRequestAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken));
         public void Dispose() { }
 

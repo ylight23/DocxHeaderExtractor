@@ -241,7 +241,7 @@ app.MapPost("/api/extract", async (
             // authorization marker, while local/LM Studio remain valid DOCX backends only.
             using var tool = new PipelineDocumentExtractionTool(
                 options,
-                new WebHeaderClassifierFactory(provider, httpClientFactory, modelCache));
+                new WebInferenceTransportFactory(provider, httpClientFactory, modelCache));
 
             // Đích ghi do server đặt bên trong thư mục tạm của request, không bao giờ lấy từ form:
             // một đường dẫn do client chỉ định là đường để ghi đè file bất kỳ trên máy chủ.
@@ -358,7 +358,7 @@ app.MapPost("/api/extract", async (
 // Cấu hình log của llama.cpp một lần cho cả tiến trình, trước khi có request nào chạm native lib.
 // Native backend selection is process-wide, while GPU layer count remains per model load. Prefer
 // the backend bundled with this web executable so a later request can legitimately offload layers.
-DocxHeaderExtractor.Infrastructure.AI.LlamaHeaderExtractor.ConfigureNativeLogging(verbose: false, gpuLayerCount: int.MaxValue);
+DocxHeaderExtractor.Infrastructure.AI.LlamaInferenceTransport.ConfigureNativeLogging(verbose: false, gpuLayerCount: int.MaxValue);
 
 Console.OutputEncoding = Encoding.UTF8;
 Console.WriteLine($"dhx-ui đang chạy: {string.Join(", ", app.Urls.DefaultIfEmpty("http://localhost:5099"))}");

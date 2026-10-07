@@ -715,7 +715,7 @@ ranh giới tiêu đề. Route hiện tại thiếu cơ chế cắt ranh giới 
 ## 2026-08-19: `LlmBoundaryCutter` — đã đo đủ 55 ca cho backend SGLang/Qwen3.8-27B (55/55), CHƯA đo đủ cho Local (xem handoff §109/§111)
 
 **ĐÃ XONG cho backend SGLang:** chạy lại TOÀN BỘ 55 ca gốc (21 pháp quy + 20 RFC + 14 biên bản) qua
-`LlmBoundaryCutter.TryCutAsync` thật (không phải scratch harness), backend `SglangHeaderExtractor` trỏ
+`LlmBoundaryCutter.TryCutAsync` thật (không phải scratch harness), backend `SglangInferenceTransport` trỏ
 gateway Qwen3.8-27B (`http://192.168.68.20/v1`, xem [[sglang-qwen-gateway]]) — **55/55 (100%)**, prompt
 giữ nguyên không tinh chỉnh lại cho Qwen. Xem handoff §111.
 

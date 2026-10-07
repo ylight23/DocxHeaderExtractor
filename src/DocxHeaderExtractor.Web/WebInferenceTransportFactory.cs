@@ -8,32 +8,32 @@ namespace DocxHeaderExtractor.Web;
 /// Web composition for a document run. DOCX keeps the web host's named HTTP clients and cached
 /// local model; PDF delegates to the separately-qualified production policy.
 /// </summary>
-internal sealed class WebHeaderClassifierFactory(
+internal sealed class WebInferenceTransportFactory(
     InferenceProviderSelection selection,
     IHttpClientFactory httpClients,
-    LlamaModelCache localModels) : IHeaderClassifierFactory
+    LlamaModelCache localModels) : IInferenceTransportFactory
 {
-    private readonly HeaderClassifierFactory _pdfFactory = new(selection);
+    private readonly InferenceTransportFactory _pdfFactory = new(selection);
 
     public bool SendsDataExternally => selection.SendsDataExternally;
 
     public async Task<IInferenceTransport> CreateAsync(PipelineOptions options, CancellationToken ct = default) =>
         selection.Backend switch
         {
-            InferenceBackend.OpenRouter => new OpenRouterHeaderExtractor(
+            InferenceBackend.OpenRouter => new OpenRouterInferenceTransport(
                 httpClients.CreateClient("OpenRouter"), selection.Remote),
-            InferenceBackend.LmStudio => new LmStudioHeaderExtractor(
+            InferenceBackend.LmStudio => new LmStudioInferenceTransport(
                 httpClients.CreateClient("LmStudio"), selection.Remote),
-            InferenceBackend.Local => new BorrowedHeaderClassifier(
+            InferenceBackend.Local => new BorrowedInferenceTransport(
                 await localModels.GetAsync(selection.LocalModel, ct).ConfigureAwait(false)),
-            _ => await new HeaderClassifierFactory(selection).CreateAsync(options, ct).ConfigureAwait(false),
+            _ => await new InferenceTransportFactory(selection).CreateAsync(options, ct).ConfigureAwait(false),
         };
 
     public Task<IInferenceTransport> CreatePdfProductionAsync(PipelineOptions options, CancellationToken ct = default) =>
         _pdfFactory.CreatePdfProductionAsync(options, ct);
 
     /// <summary>The cache, not an individual document pipeline, owns the local model lifetime.</summary>
-    private sealed class BorrowedHeaderClassifier(IInferenceTransport inner) : IInferenceTransport
+    private sealed class BorrowedInferenceTransport(IInferenceTransport inner) : IInferenceTransport
     {
         public string ModelName => inner.ModelName;
         public int ContextSize => inner.ContextSize;

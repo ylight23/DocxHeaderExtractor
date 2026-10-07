@@ -114,14 +114,14 @@ public sealed class HeadingAuthorityByteParityTests
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             Task.FromResult("{\"headings\":[]}");
 
-        public Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(
+        public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(
             byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
         {
             Calls.Add(new Recorded(providerBody, maxTokens, systemPrompt, userMessage));
             using var request = JsonDocument.Parse(userMessage);
             var decisions = request.RootElement.GetProperty("occurrences").EnumerateArray()
                 .Select(item => new { occurrence = item.GetProperty("id").GetString(), function = "OTHER" }).ToArray();
-            return Task.FromResult(new FrozenHeaderExecutionResult(
+            return Task.FromResult(new FrozenInferenceResult(
                 JsonSerializer.Serialize(new { decisions }), "stop", null, string.Empty, 0, 0));
         }
 

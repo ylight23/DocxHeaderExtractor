@@ -7,16 +7,16 @@ namespace DocxHeaderExtractor.Infrastructure.AI;
 /// unconstrained-response, and tool-call transport live in the qualification assembly, which reaches
 /// <see cref="OpenRouterTransportEngine"/> through InternalsVisibleTo.
 /// </summary>
-public sealed class OpenRouterHeaderExtractor : IFrozenInferenceTransport, IDisposable
+public sealed class OpenRouterInferenceTransport : IFrozenInferenceTransport, IDisposable
 {
     private readonly OpenRouterTransportEngine _engine;
 
-    public OpenRouterHeaderExtractor(HttpClient http, RemoteInferenceOptions options) =>
+    public OpenRouterInferenceTransport(HttpClient http, RemoteInferenceOptions options) =>
         _engine = new OpenRouterTransportEngine(http, options);
 
-    private OpenRouterHeaderExtractor(OpenRouterTransportEngine engine) => _engine = engine;
+    private OpenRouterInferenceTransport(OpenRouterTransportEngine engine) => _engine = engine;
 
-    public static OpenRouterHeaderExtractor CreateOwned(RemoteInferenceOptions options) =>
+    public static OpenRouterInferenceTransport CreateOwned(RemoteInferenceOptions options) =>
         new(OpenRouterTransportEngine.CreateOwned(options));
 
     public string ModelName => _engine.ModelName;
@@ -33,7 +33,7 @@ public sealed class OpenRouterHeaderExtractor : IFrozenInferenceTransport, IDisp
     public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default,
         int expectedItemCount = 0) => _engine.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount);
 
-    public Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens,
+    public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens,
         string systemPrompt, string userMessage, CancellationToken cancellationToken = default) =>
         _engine.ExecuteFrozenRequestAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken);
 

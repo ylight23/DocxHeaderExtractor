@@ -43,7 +43,7 @@ public sealed record Defaults(
     /// Backend GPU chỉ có mặt khi build với <c>-p:UseVulkan=true</c> hoặc <c>-p:UseCuda=true</c>:
     /// gói backend đổ native lib vào <c>runtimes/&lt;rid&gt;/native/vulkan</c> (hoặc <c>cuda12</c>),
     /// bản CPU không có thư mục đó. Dò theo thư mục thay vì thử nạp native lib, vì việc nạp phải
-    /// xảy ra đúng một lần cho cả tiến trình và đã do LlamaHeaderExtractor giữ.
+    /// xảy ra đúng một lần cho cả tiến trình và đã do LlamaInferenceTransport giữ.
     /// </summary>
     private static bool HasGpuBackend()
     {

@@ -13,7 +13,7 @@ namespace DocxHeaderExtractor.Infrastructure.AI;
 /// và vẫn hậu kiểm đủ ID cục bộ. Endpoint bị khóa vào loopback để form trình duyệt không trở
 /// thành SSRF proxy tới máy khác.
 /// </summary>
-public sealed class LmStudioHeaderExtractor : IInferenceTransport
+public sealed class LmStudioInferenceTransport : IInferenceTransport
 {
     private readonly HttpClient _http;
     private readonly RemoteInferenceOptions _options;
@@ -25,16 +25,16 @@ public sealed class LmStudioHeaderExtractor : IInferenceTransport
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
     };
 
-    public LmStudioHeaderExtractor(HttpClient http, RemoteInferenceOptions options)
+    public LmStudioInferenceTransport(HttpClient http, RemoteInferenceOptions options)
     {
         _http = http;
         _options = Validate(options);
     }
 
-    private LmStudioHeaderExtractor(HttpClient http, RemoteInferenceOptions options, bool ownsHttp)
+    private LmStudioInferenceTransport(HttpClient http, RemoteInferenceOptions options, bool ownsHttp)
         : this(http, options) => _ownsHttp = ownsHttp;
 
-    public static LmStudioHeaderExtractor CreateOwned(RemoteInferenceOptions options) =>
+    public static LmStudioInferenceTransport CreateOwned(RemoteInferenceOptions options) =>
         new(new HttpClient { Timeout = TimeSpan.FromMinutes(10) }, options, ownsHttp: true);
 
     public string ModelName => _options.Model;

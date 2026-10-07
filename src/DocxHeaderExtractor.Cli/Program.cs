@@ -93,7 +93,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         return 2;
     }
 
-    using var tool = new PipelineDocumentExtractionTool(o.Pipeline, new HeaderClassifierFactory(o.Provider));
+    using var tool = new PipelineDocumentExtractionTool(o.Pipeline, new InferenceTransportFactory(o.Provider));
     // Extraction writes through the canonical ProductOutput authority.
     using IDocumentActionTool? actionTool = o.WritebackPath is null
         ? null
@@ -184,7 +184,7 @@ static int RunModelInfo(CommandLineOptions o)
         return 2;
     }
 
-    DocxHeaderExtractor.Infrastructure.AI.LlamaHeaderExtractor.ConfigureNativeLogging(o.Provider.LocalModel.VerboseNativeLog);
+    DocxHeaderExtractor.Infrastructure.AI.LlamaInferenceTransport.ConfigureNativeLogging(o.Provider.LocalModel.VerboseNativeLog);
 
     var fi = new FileInfo(path);
     Console.WriteLine($"File   : {fi.FullName}");

@@ -34,14 +34,14 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     public PipelineDocumentExtractionTool(PipelineOptions options)
     {
         ArgumentNullException.ThrowIfNull(options);
-        var factory = new HeaderClassifierFactory();
+        var factory = new InferenceTransportFactory();
         _docxLane = new AuthorityExtractionPipeline(options, factory);
         _pdfLane = new PdfCanonicalSourceExtractor(options, factory);
         _dispatcher = Dispatch(_docxLane, _pdfLane);
         Descriptor = Describe(options, factory.SendsDataExternally);
     }
 
-    public PipelineDocumentExtractionTool(PipelineOptions options, IHeaderClassifierFactory factory)
+    public PipelineDocumentExtractionTool(PipelineOptions options, IInferenceTransportFactory factory)
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(factory);

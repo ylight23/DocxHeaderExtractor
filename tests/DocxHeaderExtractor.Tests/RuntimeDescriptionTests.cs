@@ -17,20 +17,20 @@ public sealed class RuntimeDescriptionTests
     public void GPU_backend_prefers_the_backend_shipped_with_the_executable()
     {
         Assert.Equal(
-            LlamaHeaderExtractor.NativeBackendPreference.Cuda,
-            LlamaHeaderExtractor.SelectNativeBackend(99, hasCudaBackend: true, hasVulkanBackend: true));
+            LlamaInferenceTransport.NativeBackendPreference.Cuda,
+            LlamaInferenceTransport.SelectNativeBackend(99, hasCudaBackend: true, hasVulkanBackend: true));
         Assert.Equal(
-            LlamaHeaderExtractor.NativeBackendPreference.Vulkan,
-            LlamaHeaderExtractor.SelectNativeBackend(20, hasCudaBackend: false, hasVulkanBackend: true));
+            LlamaInferenceTransport.NativeBackendPreference.Vulkan,
+            LlamaInferenceTransport.SelectNativeBackend(20, hasCudaBackend: false, hasVulkanBackend: true));
         Assert.Equal(
-            LlamaHeaderExtractor.NativeBackendPreference.Default,
-            LlamaHeaderExtractor.SelectNativeBackend(0, hasCudaBackend: true, hasVulkanBackend: true));
+            LlamaInferenceTransport.NativeBackendPreference.Default,
+            LlamaInferenceTransport.SelectNativeBackend(0, hasCudaBackend: true, hasVulkanBackend: true));
     }
 
     [Fact]
     public void Xin_GPU_ma_native_khong_offload_duoc_thi_log_phai_noi_dang_chay_CPU()
     {
-        var text = LlamaHeaderExtractor.Describe(
+        var text = LlamaInferenceTransport.Describe(
             gpuLayers: 20, threads: 8, supportsOffload: false, hasTemplate: true);
 
         Assert.Contains("đang chạy CPU", text);
@@ -41,7 +41,7 @@ public sealed class RuntimeDescriptionTests
     [Fact]
     public void Xin_GPU_va_native_offload_duoc_thi_bao_GPU()
     {
-        var text = LlamaHeaderExtractor.Describe(
+        var text = LlamaInferenceTransport.Describe(
             gpuLayers: 20, threads: 8, supportsOffload: true, hasTemplate: true);
 
         Assert.StartsWith("GPU 20 lớp", text);
@@ -51,7 +51,7 @@ public sealed class RuntimeDescriptionTests
     [Fact]
     public void Khong_xin_GPU_thi_khong_canh_bao_gi()
     {
-        var text = LlamaHeaderExtractor.Describe(
+        var text = LlamaInferenceTransport.Describe(
             gpuLayers: 0, threads: 4, supportsOffload: false, hasTemplate: false);
 
         Assert.StartsWith("CPU 4 luồng", text);

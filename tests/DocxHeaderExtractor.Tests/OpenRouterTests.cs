@@ -213,7 +213,7 @@ public sealed class OpenRouterTests
     {
         using var http = new HttpClient(new CaptureHandler(Reply.Sse("{}")));
         var ex = Assert.Throws<InvalidOperationException>(() =>
-            new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions()));
+            new OpenRouterInferenceTransport(http, new RemoteInferenceOptions()));
 
         Assert.Contains("OPENROUTER_API_KEY", ex.Message);
     }
@@ -316,10 +316,10 @@ public sealed class OpenRouterTests
         }
     }
 
-    private static OpenRouterHeaderExtractor Model(
+    private static OpenRouterInferenceTransport Model(
         CaptureHandler handler, RemoteInferenceOptions options, List<TimeSpan>? waits = null)
     {
-        var model = new OpenRouterHeaderExtractor(new HttpClient(handler), options);
+        var model = new OpenRouterInferenceTransport(new HttpClient(handler), options);
         model.RetryWait = (delay, _) =>
         {
             waits?.Add(delay);

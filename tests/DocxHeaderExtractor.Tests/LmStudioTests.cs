@@ -12,7 +12,7 @@ public sealed class LmStudioTests
         var handler = new CaptureHandler(
             """{"choices":[{"message":{"content":"  {\"ok\":true}\n"}}]}""");
         using var http = new HttpClient(handler);
-        using var model = new LmStudioHeaderExtractor(http, new RemoteInferenceOptions
+        using var model = new LmStudioInferenceTransport(http, new RemoteInferenceOptions
         {
             Model = "local/qwen",
             Endpoint = new Uri("http://127.0.0.1:1234/v1/chat/completions"),
@@ -35,7 +35,7 @@ public sealed class LmStudioTests
         using var http = new HttpClient(new CaptureHandler("{}"));
 
         var error = Assert.Throws<InvalidOperationException>(() =>
-            new LmStudioHeaderExtractor(http, new RemoteInferenceOptions
+            new LmStudioInferenceTransport(http, new RemoteInferenceOptions
             {
                 Model = "x",
                 Endpoint = new Uri("http://example.com/v1/chat/completions"),
@@ -50,7 +50,7 @@ public sealed class LmStudioTests
         var handler = new CaptureHandler(
             """{"choices":[{"message":{"content":"{\"items\":[{\"i\":1,\"r\":\"n\",\"l\":0}]}"}}]}""");
         using var http = new HttpClient(handler);
-        using var model = new LmStudioHeaderExtractor(http, new RemoteInferenceOptions
+        using var model = new LmStudioInferenceTransport(http, new RemoteInferenceOptions
         {
             Model = "local/model",
             Endpoint = new Uri("http://127.0.0.1:1234/v1/chat/completions"),

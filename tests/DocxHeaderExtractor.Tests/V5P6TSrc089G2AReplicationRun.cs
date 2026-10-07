@@ -50,7 +50,7 @@ public sealed class V5P6TSrc089G2AReplicationRun
         options.Validate();
 
         Directory.CreateDirectory(directory);
-        using var transport = OpenRouterHeaderExtractor.CreateOwned(options);
+        using var transport = OpenRouterInferenceTransport.CreateOwned(options);
         var result = await transport.ExecuteFrozenRequestAsync(body, maxTokens, system, user).ConfigureAwait(false);
 
         int? Usage(string name) => result.Usage is { ValueKind: JsonValueKind.Object } usage && usage.TryGetProperty(name, out var value) && value.TryGetInt32(out var number) ? number : null;

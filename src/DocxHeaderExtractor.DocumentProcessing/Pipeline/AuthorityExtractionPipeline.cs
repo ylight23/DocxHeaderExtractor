@@ -15,7 +15,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 public sealed class AuthorityExtractionPipeline : IDisposable
 {
     private readonly PipelineOptions _options;
-    private readonly IHeaderClassifierFactory? _analystFactory;
+    private readonly IInferenceTransportFactory? _analystFactory;
     private readonly bool _classifierSendsDataExternally;
     private IInferenceTransport? _analyst;
     private readonly bool _ownsAnalyst;
@@ -23,7 +23,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
     public AuthorityExtractionPipeline(PipelineOptions options)
         : this(options, null, null) { }
 
-    public AuthorityExtractionPipeline(PipelineOptions options, IHeaderClassifierFactory analystFactory)
+    public AuthorityExtractionPipeline(PipelineOptions options, IInferenceTransportFactory analystFactory)
         : this(options, null, analystFactory) { }
 
     public AuthorityExtractionPipeline(PipelineOptions options, IInferenceTransport analyst)
@@ -40,7 +40,7 @@ public sealed class AuthorityExtractionPipeline : IDisposable
     private AuthorityExtractionPipeline(
         PipelineOptions options,
         IInferenceTransport? analyst,
-        IHeaderClassifierFactory? analystFactory,
+        IInferenceTransportFactory? analystFactory,
         bool classifierSendsDataExternally = false)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));

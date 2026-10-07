@@ -16,7 +16,7 @@ namespace DocxHeaderExtractor.Infrastructure.AI;
 /// Bọc LLamaSharp: nạp mô hình .gguf lượng tử hoá, chạy suy luận trên CPU cho từng khối XML.
 /// Dùng <see cref="StatelessExecutor"/> nên mỗi khối là một lượt độc lập, không bị nhiễm ngữ cảnh khối trước.
 /// </summary>
-public sealed class LlamaHeaderExtractor : IInferenceTransport
+public sealed class LlamaInferenceTransport : IInferenceTransport
 {
     private readonly LLamaWeights _weights;
     private readonly ModelParams _modelParams;
@@ -79,7 +79,7 @@ public sealed class LlamaHeaderExtractor : IInferenceTransport
         }
     }
 
-    private LlamaHeaderExtractor(
+    private LlamaInferenceTransport(
         LLamaWeights weights,
         ModelParams modelParams,
         LocalModelOptions options,
@@ -188,7 +188,7 @@ public sealed class LlamaHeaderExtractor : IInferenceTransport
     /// Nạp weights. Làm việc trên BẢN SAO của <paramref name="options"/>; chỉ context đã chốt được
     /// ghi ngược lại để người gọi thấy đúng con số đã dùng.
     /// </summary>
-    public static async Task<LlamaHeaderExtractor> LoadAsync(LocalModelOptions options, CancellationToken ct = default)
+    public static async Task<LlamaInferenceTransport> LoadAsync(LocalModelOptions options, CancellationToken ct = default)
     {
         // Giữ tham chiếu bản GỐC để ghi lại context đã CHỐT (xem khối AutoContextSize bên dưới).
         var caller = options;
@@ -227,7 +227,7 @@ public sealed class LlamaHeaderExtractor : IInferenceTransport
         var usesQwen35Template = weights.Metadata.TryGetValue("general.architecture", out var architecture)
                                   && string.Equals(architecture, "qwen35", StringComparison.OrdinalIgnoreCase);
 
-        var extractor = new LlamaHeaderExtractor(weights, modelParams, options, hasTemplate, usesQwen35Template);
+        var extractor = new LlamaInferenceTransport(weights, modelParams, options, hasTemplate, usesQwen35Template);
 
         return extractor;
     }

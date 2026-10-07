@@ -9,10 +9,10 @@ namespace DocxHeaderExtractor.Web;
 /// </summary>
 public sealed class LlamaModelCache : IDisposable
 {
-    private LlamaHeaderExtractor? _model;
+    private LlamaInferenceTransport? _model;
     private ModelLoadKey? _key;
 
-    public async Task<LlamaHeaderExtractor> GetAsync(LocalModelOptions options, CancellationToken ct)
+    public async Task<LlamaInferenceTransport> GetAsync(LocalModelOptions options, CancellationToken ct)
     {
         var key = ModelLoadKey.From(options);
         if (_model is not null && key == _key) return _model;
@@ -22,7 +22,7 @@ public sealed class LlamaModelCache : IDisposable
         _model = null;
         _key = null;
 
-        var loaded = await LlamaHeaderExtractor.LoadAsync(options, ct);
+        var loaded = await LlamaInferenceTransport.LoadAsync(options, ct);
         _model = loaded;
         _key = key;
         return loaded;

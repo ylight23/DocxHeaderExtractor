@@ -39,7 +39,7 @@ public sealed class OpenRouterQualificationTransport : IFrozenInferenceTransport
         string systemPrompt, string userMessage, CancellationToken ct = default) =>
         _engine.ExecuteAsync(payloadBytes, maxTokens, systemPrompt, userMessage, ct);
 
-    public Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens,
+    public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens,
         string systemPrompt, string userMessage, CancellationToken cancellationToken = default) =>
         _engine.ExecuteFrozenRequestAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken);
 

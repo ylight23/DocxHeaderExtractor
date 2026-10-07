@@ -4,11 +4,11 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 namespace DocxHeaderExtractor.Infrastructure.AI;
 
 /// <summary>Provider composition for production hosts; no provider implementation is owned by Core.</summary>
-public sealed class HeaderClassifierFactory : IHeaderClassifierFactory
+public sealed class InferenceTransportFactory : IInferenceTransportFactory
 {
     private readonly InferenceProviderSelection _selection;
 
-    public HeaderClassifierFactory(InferenceProviderSelection? selection = null)
+    public InferenceTransportFactory(InferenceProviderSelection? selection = null)
     {
         _selection = selection ?? InferenceProviderSelection.LocalDefault();
     }
@@ -22,10 +22,10 @@ public sealed class HeaderClassifierFactory : IHeaderClassifierFactory
         ArgumentNullException.ThrowIfNull(options);
         return _selection.Backend switch
         {
-            InferenceBackend.OpenRouter => OpenRouterHeaderExtractor.CreateOwned(_selection.Remote),
-            InferenceBackend.LmStudio => LmStudioHeaderExtractor.CreateOwned(_selection.Remote),
-            InferenceBackend.Sglang => SglangHeaderExtractor.CreateOwned(_selection.Remote),
-            _ => await LlamaHeaderExtractor.LoadAsync(_selection.LocalModel, ct),
+            InferenceBackend.OpenRouter => OpenRouterInferenceTransport.CreateOwned(_selection.Remote),
+            InferenceBackend.LmStudio => LmStudioInferenceTransport.CreateOwned(_selection.Remote),
+            InferenceBackend.Sglang => SglangInferenceTransport.CreateOwned(_selection.Remote),
+            _ => await LlamaInferenceTransport.LoadAsync(_selection.LocalModel, ct),
         };
     }
 
@@ -57,7 +57,7 @@ public sealed class HeaderClassifierFactory : IHeaderClassifierFactory
                 $"selected {_selection.Remote.OpenRouterProviderRoute ?? "<automatic>"}.");
 
         IInferenceTransport classifier = new PdfProductionOpenRouterHeaderClassifier(
-            OpenRouterHeaderExtractor.CreateOwned(_selection.Remote));
+            OpenRouterInferenceTransport.CreateOwned(_selection.Remote));
         return Task.FromResult(classifier);
     }
 
@@ -70,7 +70,7 @@ public sealed class HeaderClassifierFactory : IHeaderClassifierFactory
     };
 
     /// <summary>Capability/authorization wrapper for the only qualified PDF production transport.</summary>
-    private sealed class PdfProductionOpenRouterHeaderClassifier(OpenRouterHeaderExtractor inner)
+    private sealed class PdfProductionOpenRouterHeaderClassifier(OpenRouterInferenceTransport inner)
         : IPdfProductionAuthorizedInferenceTransport
     {
         public string PdfProductionProvider => "OpenRouter/Alibaba";
@@ -84,7 +84,7 @@ public sealed class HeaderClassifierFactory : IHeaderClassifierFactory
             CancellationToken ct = default, int expectedItemCount = 0) =>
             inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount);
 
-        public Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(
+        public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(
             byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
             CancellationToken cancellationToken = default) =>
             inner.ExecuteFrozenRequestAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken);

@@ -91,8 +91,8 @@ public sealed class HostAuthorityE2ETests
         Assert.DoesNotContain("new AuthorityExtractionPipeline", normalCli);
         Assert.Contains("new PipelineDocumentExtractionTool", normalWeb);
         Assert.DoesNotContain("new AuthorityExtractionPipeline", normalWeb);
-        Assert.Contains("new WebHeaderClassifierFactory", normalWeb);
-        Assert.DoesNotContain("new DocxHeaderExtractor.Infrastructure.AI.OpenRouterHeaderExtractor", normalWeb);
+        Assert.Contains("new WebInferenceTransportFactory", normalWeb);
+        Assert.DoesNotContain("new DocxHeaderExtractor.Infrastructure.AI.OpenRouterInferenceTransport", normalWeb);
         Assert.Contains("new PipelineDocumentExtractionTool", normalMcp);
         Assert.DoesNotContain("new AuthorityExtractionPipeline", normalMcp);
         Assert.Contains("new AuthorityExtractionPipeline", tool);

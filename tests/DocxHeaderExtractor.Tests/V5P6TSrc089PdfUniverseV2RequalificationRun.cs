@@ -54,7 +54,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         options.ProviderTransportTimeoutSeconds = 300;
         options.Validate();
 
-        using var inner = OpenRouterHeaderExtractor.CreateOwned(options);
+        using var inner = OpenRouterInferenceTransport.CreateOwned(options);
         var transport = new BoundedCapturingTransport(inner, directory);
         var authority = new FunctionConditionedHeadingAuthority(transport, built.Details.LayoutBlockByAtom, () => { });
 
@@ -123,7 +123,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         public int SharedPrefixTokens => 0;
         public void Dispose() { }
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) => throw new WouldHaveSent();
-        public Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
+        public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
         {
             Attempts++;
             throw new WouldHaveSent();
@@ -148,7 +148,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             throw new StopRun("only frozen requests are authorized");
 
-        public async Task<FrozenHeaderExecutionResult> ExecuteFrozenRequestAsync(
+        public async Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(
             byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
         {
             var stage = string.Equals(systemPrompt, HeadingAnchorProtocolV1.SystemPrompt, StringComparison.Ordinal) ? "G2A"

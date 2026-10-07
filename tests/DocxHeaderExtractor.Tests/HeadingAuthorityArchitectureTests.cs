@@ -13,8 +13,8 @@ public sealed class HeadingAuthorityArchitectureTests
         var root = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Semantics/HeadingAuthority");
         var forbidden = new[]
         {
-            "UglyToad.PdfPig", "WordprocessingDocument", "OpenRouterHeaderExtractor",
-            "LmStudioHeaderExtractor", "SglangHeaderExtractor", "LlamaHeaderExtractor",
+            "UglyToad.PdfPig", "WordprocessingDocument", "OpenRouterInferenceTransport",
+            "LmStudioInferenceTransport", "SglangInferenceTransport", "LlamaInferenceTransport",
         };
 
         foreach (var file in Directory.EnumerateFiles(root, "*.cs", SearchOption.AllDirectories))
@@ -22,6 +22,25 @@ public sealed class HeadingAuthorityArchitectureTests
             var source = File.ReadAllText(file);
             foreach (var token in forbidden)
                 Assert.DoesNotContain(token, source, StringComparison.Ordinal);
+        }
+    }
+
+    [Fact]
+    public void Inference_backends_are_transports_not_header_extractors_or_classifiers()
+    {
+        var banned = new[]
+        {
+            "OpenRouterHeaderExtractor", "LmStudioHeaderExtractor", "SglangHeaderExtractor", "LlamaHeaderExtractor",
+            "IHeaderClassifierFactory", "HeaderClassifierFactory", "FrozenHeaderExecutionResult",
+            "LeaseBoundFrozenHeaderClassifier", "BorrowedHeaderClassifier",
+        };
+        foreach (var file in Directory.EnumerateFiles(TestRepository.Path("src"), "*.cs", SearchOption.AllDirectories)
+                     .Where(path => !path.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}") &&
+                                    !path.Contains($"{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}")))
+        {
+            var source = File.ReadAllText(file);
+            foreach (var token in banned)
+                Assert.False(source.Contains(token, StringComparison.Ordinal), $"{token} in {Path.GetFileName(file)}");
         }
     }
 

@@ -7,7 +7,7 @@ namespace DocxHeaderExtractor.Tests;
 /// <summary>
 /// The production streaming transport against real OpenRouter streams. The production re-baseline
 /// recorded every leaf's raw network chunks byte for byte, at their original chunk boundaries.
-/// Replaying them through <see cref="OpenRouterHeaderExtractor"/> must reproduce exactly the content
+/// Replaying them through <see cref="OpenRouterInferenceTransport"/> must reproduce exactly the content
 /// the qualified runner accepted - no provider call is made.
 /// </summary>
 public sealed class OpenRouterStreamingReplayTests
@@ -31,7 +31,7 @@ public sealed class OpenRouterStreamingReplayTests
             var expected = File.ReadAllText(Path.Combine(root, $"{stem}.content.json")).Trim();
 
             using var http = new HttpClient(new RecordedStream(chunks));
-            using var model = new OpenRouterHeaderExtractor(http, new RemoteInferenceOptions
+            using var model = new OpenRouterInferenceTransport(http, new RemoteInferenceOptions
             {
                 ApiKey = "replay-only",
                 Model = "qwen/qwen3.7-flash",

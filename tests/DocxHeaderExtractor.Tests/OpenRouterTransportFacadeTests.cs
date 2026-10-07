@@ -8,8 +8,8 @@ public sealed class OpenRouterTransportFacadeTests
     [Fact]
     public void Production_facade_exposes_no_raw_observation_or_forced_tool_transport()
     {
-        var publicMethods = typeof(OpenRouterHeaderExtractor).GetMethods()
-            .Where(method => method.DeclaringType == typeof(OpenRouterHeaderExtractor))
+        var publicMethods = typeof(OpenRouterInferenceTransport).GetMethods()
+            .Where(method => method.DeclaringType == typeof(OpenRouterInferenceTransport))
             .Select(method => method.Name)
             .ToHashSet(StringComparer.Ordinal);
 
@@ -22,13 +22,13 @@ public sealed class OpenRouterTransportFacadeTests
     [Fact]
     public void Production_infrastructure_assembly_exports_no_qualification_transport_types()
     {
-        var exported = typeof(OpenRouterHeaderExtractor).Assembly.GetExportedTypes()
+        var exported = typeof(OpenRouterInferenceTransport).Assembly.GetExportedTypes()
             .Select(type => type.Name)
             .ToHashSet(StringComparer.Ordinal);
 
         Assert.DoesNotContain(nameof(OpenRouterQualificationTransport), exported);
         Assert.DoesNotContain(nameof(OpenRouterExecutionObservation), exported);
-        Assert.NotEqual(typeof(OpenRouterHeaderExtractor).Assembly, typeof(OpenRouterQualificationTransport).Assembly);
+        Assert.NotEqual(typeof(OpenRouterInferenceTransport).Assembly, typeof(OpenRouterQualificationTransport).Assembly);
     }
 
     [Fact]

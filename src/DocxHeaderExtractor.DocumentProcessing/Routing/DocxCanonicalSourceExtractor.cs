@@ -36,7 +36,7 @@ public sealed class DocxCanonicalSourceExtractor(AuthorityExtractionPipeline pip
 public sealed class PdfCanonicalSourceExtractor : ICanonicalSourceExtractor, IDisposable
 {
     private readonly PipelineOptions _options;
-    private readonly IHeaderClassifierFactory? _analystFactory;
+    private readonly IInferenceTransportFactory? _analystFactory;
     private readonly bool _sendsDataExternally;
     private readonly bool _ownsAnalyst;
     private IInferenceTransport? _analyst;
@@ -55,7 +55,7 @@ public sealed class PdfCanonicalSourceExtractor : ICanonicalSourceExtractor, IDi
         _ownsAnalyst = false;
     }
 
-    public PdfCanonicalSourceExtractor(PipelineOptions options, IHeaderClassifierFactory analystFactory)
+    public PdfCanonicalSourceExtractor(PipelineOptions options, IInferenceTransportFactory analystFactory)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _analystFactory = analystFactory ?? throw new ArgumentNullException(nameof(analystFactory));

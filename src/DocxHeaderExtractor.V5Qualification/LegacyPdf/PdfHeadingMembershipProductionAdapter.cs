@@ -35,7 +35,7 @@ public sealed record PdfHeadingMembershipDocumentPlan(
 
 /// <summary>One frozen-body provider call and the exact production parser/binder outcome.</summary>
 public sealed record PdfHeadingMembershipPackExecution(
-    FrozenHeaderExecutionResult Provider,
+    FrozenInferenceResult Provider,
     OccurrenceLocatorResponseResult? Binding,
     string? ParseError);
 

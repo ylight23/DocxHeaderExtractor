@@ -411,7 +411,7 @@ cứu thì lấy cấp đã khai chứ không lấy cấp suy ra.
   request web** chạy ở chế độ mà chính doc của `PipelineOptions.SkipStyledCandidates` đã bác bỏ
   bằng số đo (precision 100% → 94,1%), và giao diện không có ô nào cho nó. Bỏ. Ba cờ chung
   (`TrustStyles`, `ShowRawOutput`, `TwoPass`) gom về một chỗ thay vì lặp ở cuối mỗi nhánh.
-- `LlamaHeaderExtractor.LoadAsync` áp `ApplyRecommendedModelProfile` lên chính `LlamaOptions` của
+- `LlamaInferenceTransport.LoadAsync` áp `ApplyRecommendedModelProfile` lên chính `LlamaOptions` của
   caller — một hàm tên "Load" âm thầm sửa `ContextSize`/`ChunkTokenBudget` của đối tượng người gọi
   đang giữ và dùng lại cho lượt sau. Nay áp lên bản sao (`LlamaOptions.Clone()`).
 - `OutlineStructureResolver.BulletRx` thiếu ký tự `o` so với `HeadingHeuristics.BulletPrefixRx`.
@@ -666,7 +666,7 @@ Số đo trực tiếp, cùng một view, cùng ngân sách 5000 token:
 Hai tokenizer **gần như bằng nhau**. Hằng 1.85 **quá bi quan ~1,64 lần** cho cả hai, nên triệu
 chứng KHÔNG phải tràn context mà là **chia nhỏ thừa: 26 khối thay vì 15 — khoảng 73% lượt gọi RPC
 thừa** cho LM Studio và OpenRouter (hai backend duy nhất chạy bằng ước lượng, vì `countTokens` chỉ
-khác null với `LlamaHeaderExtractor`).
+khác null với `LlamaInferenceTransport`).
 
 Chưa sửa: nâng hằng số lên ~3 làm khối to gần gấp đôi, tức đổi thành phần khối — biến đã đo được là
 làm lật câu trả lời cho cả những mục không liên quan (§4). Phải đo riêng. Hướng bền hơn là lấy số
@@ -2022,7 +2022,7 @@ Cả ba đều là **đổi môi trường rồi tin kết quả mà không đ�
 Viết xong mục trên, tôi build sạch lại chỉ với Vulkan rồi chạy thử: **vẫn** `CPU 8 luồng`. Nên
 nguyên nhân không phải (chỉ) cờ build.
 
-Câu trả lời nằm ngay trong `LlamaHeaderExtractor.Describe()`, hàm mà §7 đã viết riêng cho đúng
+Câu trả lời nằm ngay trong `LlamaInferenceTransport.Describe()`, hàm mà §7 đã viết riêng cho đúng
 tình huống này. Nó có HAI nhánh CPU khác nhau:
 
 ```csharp
@@ -7930,7 +7930,7 @@ xong rồi để đó".
 
 - `IHeaderClassifier.BoundaryCutAsync(system, user)` — thành viên MỚI trên interface dùng chung cho
   cả 4 backend (Local GGUF, LM Studio, OpenRouter, SGLang). Nhiệm vụ hẹp hơn hẳn `ClassifyAsync`:
-  không JSON schema, không multi-index, chỉ system+user rồi trả nguyên văn completion. `LlamaHeaderExtractor`
+  không JSON schema, không multi-index, chỉ system+user rồi trả nguyên văn completion. `LlamaInferenceTransport`
   tái dùng `_executor`/`BuildPrompt` sẵn có; ba backend HTTP còn lại tái dùng đúng cấu hình sampler
   (`temperature=0, seed cố định`) và `ExtractContent` đã có, chỉ bỏ `response_format`/grammar.
 - `LlmBoundaryCutter` (mới, `Pipeline/`) — bảng `DocumentMode → (system prompt, user prefix, label
@@ -7956,7 +7956,7 @@ của input** (grounding), từ chối khi domain chưa có bảng (không tốn
 ném lỗi thay vì làm hỏng cả lượt trích xuất. **570 test xanh** (555 + 15).
 
 **Smoke test qua đường sản xuất thật (không phải scratch harness) — đo trung thực, không chỉ báo
-"đã nối xong":** nạp `Llama-3.2-3B-Instruct-Q4_K_M.gguf` qua CHÍNH `LlamaHeaderExtractor.LoadAsync`
+"đã nối xong":** nạp `Llama-3.2-3B-Instruct-Q4_K_M.gguf` qua CHÍNH `LlamaInferenceTransport.LoadAsync`
 (không phải `StatelessExecutor` dựng tay như ba harness cũ), gọi `LlmBoundaryCutter.TryCutAsync` trực
 tiếp cho 3 ca mỗi domain (9 ca, KHÔNG trùng với 55 ca đã đo trong harness — chọn ngẫu hứng vài ca
 "khó" và "dễ" từ danh sách gốc, không phải lấy lại nguyên các ca đã biết chắc đúng):
@@ -7976,7 +7976,7 @@ tiếp cho 3 ca mỗi domain (9 ca, KHÔNG trùng với 55 ca đã đo trong har
 ```
 
 **6/9 (66,7%), thấp hơn 85,7%/95,0%/85,7% đã đo trong harness — ghi thật, không làm tròn lên.** Trước
-khi kết luận, cô lập biến: `LlamaHeaderExtractor.LoadAsync` mặc định `AutoContextSize=true` nên bump
+khi kết luận, cô lập biến: `LlamaInferenceTransport.LoadAsync` mặc định `AutoContextSize=true` nên bump
 context từ 4.096 (đúng cấu hình harness) lên tự động — nghi vấn đầu tiên là ContextSize khác làm lệch
 kết quả. Chạy lại đúng 9 ca với `AutoContextSize=false` (context về gần 4.096 nhất có thể) — **kết quả
 giống hệt tới từng ký tự, kể cả ba ca MISS**. Kết luận: **không phải bug cấu hình/wiring** — cắt greedy
@@ -8061,7 +8061,7 @@ phải "qwen3.6" người dùng gõ — lệch chính tả, không phải hạ t
 
 **Chạy đúng cả 55 ca gốc** (21 pháp quy + 20 RFC + 14 biên bản, y hệt tập đã dùng đo bảng cứng ở
 `docs/llm-boundary-few-shot-retrieval.md` §3) qua `LlmBoundaryCutter.TryCutAsync` thật — không phải
-scratch harness — với `IHeaderClassifier` là `SglangHeaderExtractor.CreateOwned` trỏ gateway trên,
+scratch harness — với `IHeaderClassifier` là `SglangInferenceTransport.CreateOwned` trỏ gateway trên,
 PROMPT GIỮ NGUYÊN (ba prompt vẫn tuned cho Llama-3.2-3B, không sửa gì cho Qwen):
 
 ```
@@ -8074,7 +8074,7 @@ minutes (Qwen3.8-27B) = 14/14 (100.0%)   -- harness gốc (Llama-3.2-3B): 12/14 
 few-shot: 6 ví dụ cố định trong ba prompt vốn CỐ Ý không lấy từ 55 ca test (đã ghi trong comment gốc
 của harness khi thiết kế). Kết quả xác nhận hai điều:
 
-1. **Wiring SGLang đúng end-to-end** — `SglangHeaderExtractor.BoundaryCutAsync` (nối ở §109, mới chỉ
+1. **Wiring SGLang đúng end-to-end** — `SglangInferenceTransport.BoundaryCutAsync` (nối ở §109, mới chỉ
    test bằng fake trước đó) hoạt động đúng qua gateway thật lần đầu tiên: `enable_thinking=false` vẫn
    cần và vẫn đúng (không có ca nào bị cắt cụt vì reasoning ăn hết ngân sách).
 2. **Qwen3.8-27B vượt xa sàn đã đo của Llama-3.2-3B trên ĐÚNG cùng prompt, không tinh chỉnh lại** —
@@ -12224,7 +12224,7 @@ role/pointer proposals, then existing canonical mapping and `PdfProposalValidato
 anything is accepted.
 
 The initial broad selector run was rejected: `132` blocks made Qwen responses incomplete. This
-revealed an adapter defect rather than a semantic conclusion: `OpenRouterHeaderExtractor.BoundaryCutAsync`
+revealed an adapter defect rather than a semantic conclusion: `OpenRouterInferenceTransport.BoundaryCutAsync`
 had a fixed `max_tokens=120`, too small for a multi-ID JSON decision. It now derives a bounded output
 budget from the number of request IDs and preserves raw response strings in the audit artifact.
 

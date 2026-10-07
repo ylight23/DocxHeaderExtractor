@@ -86,7 +86,7 @@ public sealed class McpExtractionService : IDisposable
         // path and fails before transport with a capability error rather than reaching the PDF
         // authority adapter through an unsupported local classifier.
         using var extractionTool = new PipelineDocumentExtractionTool(
-            pipeline, new HeaderClassifierFactory(provider));
+            pipeline, new InferenceTransportFactory(provider));
         var harness = _harnessFactory.Create(extractionTool);
         var run = await harness.RunAsync(new DocumentAgentRequest(resolved), ct);
         var outline = run.TaskResult.Value;

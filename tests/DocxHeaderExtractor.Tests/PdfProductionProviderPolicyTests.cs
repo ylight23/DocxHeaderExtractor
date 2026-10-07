@@ -13,7 +13,7 @@ public sealed class PdfProductionProviderPolicyTests
     public async Task Pdf_production_fails_before_transport_for_unsupported_provider(
         InferenceBackend backend, string name)
     {
-        var factory = new HeaderClassifierFactory(new InferenceProviderSelection
+        var factory = new InferenceTransportFactory(new InferenceProviderSelection
         {
             Backend = backend,
             Remote = QualifiedRemote(),
@@ -31,7 +31,7 @@ public sealed class PdfProductionProviderPolicyTests
     {
         var remote = QualifiedRemote();
         remote.Model = "another/model";
-        var factory = new HeaderClassifierFactory(new InferenceProviderSelection
+        var factory = new InferenceTransportFactory(new InferenceProviderSelection
         {
             Backend = InferenceBackend.OpenRouter,
             Remote = remote,
@@ -48,7 +48,7 @@ public sealed class PdfProductionProviderPolicyTests
     {
         var remote = QualifiedRemote();
         remote.OpenRouterProviderRoute = null;
-        var factory = new HeaderClassifierFactory(new InferenceProviderSelection
+        var factory = new InferenceTransportFactory(new InferenceProviderSelection
         {
             Backend = InferenceBackend.OpenRouter,
             Remote = remote,
@@ -63,7 +63,7 @@ public sealed class PdfProductionProviderPolicyTests
     [Fact]
     public async Task Qualified_OpenRouter_factory_returns_the_separate_PDF_production_authorization()
     {
-        var factory = new HeaderClassifierFactory(new InferenceProviderSelection
+        var factory = new InferenceTransportFactory(new InferenceProviderSelection
         {
             Backend = InferenceBackend.OpenRouter,
             Remote = QualifiedRemote(),
@@ -79,7 +79,7 @@ public sealed class PdfProductionProviderPolicyTests
     [Fact]
     public async Task A_factory_that_has_not_explicitly_authorized_PDF_fails_closed()
     {
-        IHeaderClassifierFactory factory = new LegacyFactory();
+        IInferenceTransportFactory factory = new LegacyFactory();
 
         var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
             factory.CreatePdfProductionAsync(new PipelineOptions()));
@@ -94,7 +94,7 @@ public sealed class PdfProductionProviderPolicyTests
         OpenRouterProviderRoute = RemoteInferenceOptions.DefaultProviderRoute,
     };
 
-    private sealed class LegacyFactory : IHeaderClassifierFactory
+    private sealed class LegacyFactory : IInferenceTransportFactory
     {
         public Task<IInferenceTransport> CreateAsync(PipelineOptions options, CancellationToken ct = default) =>
             throw new NotSupportedException();

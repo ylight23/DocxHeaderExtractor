@@ -242,7 +242,7 @@ public sealed class V5OpenRouterQwen37CarrierV2_1Tests
     {
         var productionCarrier = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Core/Models/QualifiedInference/OpenRouterQwen37JsonObjectCarrierV2_1.cs"));
         var qualificationCarriers = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.V5Qualification/LegacyCore/V5OpenRouterQwen37CarrierV2_1.cs"));
-        foreach (var forbidden in new[] { "HttpClient", "OpenRouterHeaderExtractor", "gold-current", "GoldLabel", "canonical-semantic-gold" })
+        foreach (var forbidden in new[] { "HttpClient", "OpenRouterInferenceTransport", "gold-current", "GoldLabel", "canonical-semantic-gold" })
         {
             Assert.DoesNotContain(forbidden, productionCarrier, StringComparison.OrdinalIgnoreCase);
             Assert.DoesNotContain(forbidden, qualificationCarriers, StringComparison.OrdinalIgnoreCase);
