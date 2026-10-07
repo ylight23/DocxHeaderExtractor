@@ -241,6 +241,14 @@ public sealed class PdfLineExtractionTests
         foreach (var item in adjudication.RootElement.GetProperty("cases").EnumerateArray())
         {
             var caseId = item.GetProperty("caseId").GetString()!;
+            if (item.TryGetProperty("status", out var status))
+            {
+                // A retired case names a row the current geometry no longer reconstructs. It is kept as history,
+                // and it is retired explicitly rather than silently dropped or re-keyed to a different row.
+                Assert.Equal("RETIRED_SOURCE_OCCURRENCE_REMOVED", status.GetString());
+                Assert.False(string.IsNullOrWhiteSpace(item.GetProperty("retirementReason").GetString()));
+                continue;
+            }
             var expected = item.GetProperty("expected").GetString()!;
             var parts = caseId.Split('|');
             var row = FindRow(parts[0], int.Parse(parts[1][1..]), double.Parse(parts[2]));

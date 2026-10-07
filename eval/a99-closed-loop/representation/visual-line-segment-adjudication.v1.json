@@ -67,6 +67,9 @@
     {
       "caseId": "004_Luat_Dau_tu_61-2020-QH14_EN.pdf|p19|469.1",
       "category": "WATERMARK_FRAGMENT",
+      "status": "RETIRED_SOURCE_OCCURRENCE_REMOVED",
+      "retiredBy": "a99-pdf-glyph-geometry-v2-font-independent",
+      "retirementReason": "StableGlyphGeometryV2 no longer reconstructs the adjudicated row (the row \"the law on land; m.vn\" was a product of host-font glyph boxes); no equivalent stable row exists. Retired by the user 2026-10-07; not re-keyed to the fused row at y 435.5 or to the clean row \"in accordance with the law on land;\", neither of which is the same occurrence. The v1 judgement stays here as historical evidence.",
       "expected": "WHOLE",
       "reason": "A watermark fragment lands on the baseline of a line of body text. It is arguably a separate region, but it appears at a different x on each row it touches, so there is no corridor to read. Left whole, and recorded as a residual rather than a success."
     },
