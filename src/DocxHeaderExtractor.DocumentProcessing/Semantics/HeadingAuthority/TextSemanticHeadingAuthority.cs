@@ -13,7 +13,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 /// the qualified F1 → anchor → extent chain, and DOCX does not use that chain until it has its own
 /// qualification evidence - replacing this class is the whole change that promotion needs.
 /// </summary>
-internal sealed class CanonicalTextHeadingAuthority(
+internal sealed class TextSemanticHeadingAuthority(
     IInferenceTransport? transport,
     CanonicalSemanticExperiment? experiment = null) : IHeadingAuthority
 {
@@ -37,7 +37,7 @@ internal sealed class CanonicalTextHeadingAuthority(
         };
 
         CanonicalSemanticTextProductionResult result;
-        CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel? model = null;
+        CanonicalSemanticEngine.CanonicalTextInferenceModel? model = null;
         if (transport is null)
         {
             // No model, no semantic claims: the harness does not declare headings from style,
@@ -46,7 +46,7 @@ internal sealed class CanonicalTextHeadingAuthority(
         }
         else
         {
-            model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+            model = new CanonicalSemanticEngine.CanonicalTextInferenceModel(
                 transport,
                 SemanticCoordinateContract.DocxAliasSpan,
                 SemanticEvidencePackingPolicies.FixedOwnedCount120,

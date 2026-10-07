@@ -124,7 +124,7 @@ internal static class PdfSourceOccurrenceBoundary
     /// ones its occurrence covers - rather than between two strings. Strings would make the answer
     /// depend on the very punctuation a broken line reconstruction drops, so a candidate that
     /// restored a lost period would be scored as having added text. Lines do not move when
-    /// punctuation is repaired, which is what makes one classifier usable on both sides of a
+    /// punctuation is repaired, which is what makes one transport usable on both sides of a
     /// change.
     /// </para>
     /// </summary>

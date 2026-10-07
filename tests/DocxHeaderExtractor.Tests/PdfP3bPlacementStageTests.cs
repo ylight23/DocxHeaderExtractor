@@ -15,13 +15,13 @@ public sealed class PdfP3bPlacementStageTests
             Heading("S0001", "p1", 1, "Root", "parent-node:ROOT"),
             Heading("S0002", "p2", 2, "Child", "parent-node:S0001"),
         };
-        using var classifier = new PlacementClassifier("not-used");
+        using var transport = new PlacementClassifier("not-used");
 
         var placed = await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
-            bound, classifier, CancellationToken.None);
+            bound, transport, CancellationToken.None);
 
         Assert.Equal(bound, placed);
-        Assert.Empty(classifier.Requests);
+        Assert.Empty(transport.Requests);
     }
 
     [Fact]
@@ -33,14 +33,14 @@ public sealed class PdfP3bPlacementStageTests
             Heading("S0002", "p2", 2, "Child"),
             Heading("S0003", "p3", 3, "Already placed", "parent-node:S0001"),
         };
-        using var classifier = new PlacementClassifier(
+        using var transport = new PlacementClassifier(
             "{\"placements\":[{\"alias\":\"S0002\",\"parent\":\"S0001\"}]}");
 
         var placed = await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
-            bound, classifier, CancellationToken.None);
+            bound, transport, CancellationToken.None);
 
-        Assert.Single(classifier.Requests);
-        Assert.Equal(1, classifier.Requests[0].ExpectedItemCount);
+        Assert.Single(transport.Requests);
+        Assert.Equal(1, transport.Requests[0].ExpectedItemCount);
         Assert.Equal(["p1", "p2", "p3"], placed.Select(item => item.SourceId));
         Assert.Equal(["parent-node:ROOT"], placed[0].RelationHints);
         Assert.Equal(["parent-node:S0001"], placed[1].RelationHints);
@@ -58,11 +58,11 @@ public sealed class PdfP3bPlacementStageTests
 
         foreach (var response in new[] { "not-json", "{\"placements\":[]}" })
         {
-            using var classifier = new PlacementClassifier(response);
+            using var transport = new PlacementClassifier(response);
             var placed = await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
-                bound, classifier, CancellationToken.None);
+                bound, transport, CancellationToken.None);
             Assert.Equal(bound, placed);
-            Assert.Single(classifier.Requests);
+            Assert.Single(transport.Requests);
         }
     }
 
@@ -74,19 +74,19 @@ public sealed class PdfP3bPlacementStageTests
             Heading("S0001", "p1", 1, "Root", "parent-node:ROOT"),
             Heading("S0002", "p2", 2, "Child"),
         };
-        using var classifier = new PlacementClassifier(
+        using var transport = new PlacementClassifier(
             "{\"placements\":[{\"alias\":\"S0002\",\"parent\":\"ROOT\"}]}");
 
         await HeadingPlacementCoordinator.PlaceUnresolvedHeadingsAsync(
-            bound, classifier, CancellationToken.None);
+            bound, transport, CancellationToken.None);
 
-        Assert.Single(classifier.Requests);
-        Assert.Contains("toPlace", classifier.Requests[0].UserMessage, StringComparison.Ordinal);
-        Assert.Equal(1, classifier.Requests[0].ExpectedItemCount);
-        Assert.Equal(1, classifier.BoundaryCutCalls);
-        Assert.Equal(0, classifier.ClassifyCalls);
-        Assert.Equal(0, classifier.CritiqueCalls);
-        Assert.Equal(0, classifier.HierarchyCalls);
+        Assert.Single(transport.Requests);
+        Assert.Contains("toPlace", transport.Requests[0].UserMessage, StringComparison.Ordinal);
+        Assert.Equal(1, transport.Requests[0].ExpectedItemCount);
+        Assert.Equal(1, transport.BoundaryCutCalls);
+        Assert.Equal(0, transport.ClassifyCalls);
+        Assert.Equal(0, transport.CritiqueCalls);
+        Assert.Equal(0, transport.HierarchyCalls);
     }
 
     private static CanonicalSemanticBoundHeading Heading(

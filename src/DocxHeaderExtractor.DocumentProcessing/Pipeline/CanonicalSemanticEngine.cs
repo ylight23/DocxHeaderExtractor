@@ -128,8 +128,8 @@ internal static class CanonicalSemanticEngine
     /// look at a file extension, a runtime type or a flag, it uses what it was given.
     /// </para>
     /// </summary>
-    internal sealed class HeaderClassifierCanonicalTextModel(
-        IInferenceTransport classifier,
+    internal sealed class CanonicalTextInferenceModel(
+        IInferenceTransport transport,
         SemanticCoordinateContract contract,
         ISemanticEvidencePackingPolicy packingPolicy,
         CanonicalSemanticExperiment? experiment = null,
@@ -246,7 +246,7 @@ internal static class CanonicalSemanticEngine
         /// <summary>
         /// Every request this input would produce, composed through
         /// <see cref="CanonicalSemanticRequestComposer"/> - the same composition
-        /// <see cref="InferAsync"/> sends to a classifier, available here without one. A dry-run
+        /// <see cref="InferAsync"/> sends to a transport, available here without one. A dry-run
         /// caller uses this directly; nothing re-derives request bytes from fields on the side.
         /// </summary>
         public IReadOnlyList<ComposedSegment> ComposeRequests(CanonicalSemanticTextInferenceInput input) =>
@@ -305,7 +305,7 @@ internal static class CanonicalSemanticEngine
                 var owned = segment.Owned;
                 var ownedAliases = owned.Select(item => item.SourceAlias).ToHashSet(StringComparer.Ordinal);
                 var systemPrompt = SystemPromptFor(Contract, _experiment);
-                var raw = await classifier.BoundaryCutAsync(
+                var raw = await transport.BoundaryCutAsync(
                     systemPrompt,
                     segment.RequestBytes,
                     cancellationToken,
@@ -363,7 +363,7 @@ internal static class CanonicalSemanticEngine
                     }
                 }
             }
-            return new(proposals, new CanonicalSemanticInferenceTelemetry(classifier.ModelName))
+            return new(proposals, new CanonicalSemanticInferenceTelemetry(transport.ModelName))
             {
                 ContractIssues = issues,
             };

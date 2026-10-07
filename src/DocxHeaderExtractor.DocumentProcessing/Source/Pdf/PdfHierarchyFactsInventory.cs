@@ -48,7 +48,7 @@ internal static class PdfHierarchyFactsInventory
             if (parent is not null) evidence.Add("marker_prefix_parent_observed");
             if (!hasResolvedRelation) evidence.Add("relationship_unresolved");
 
-            // M8.1a source occurrence identity. TextOffsetSpan.End is exclusive: HeadingProposalValidator
+            // M8.1a source occurrence identity. TextOffsetSpan.End is exclusive: HeadingDecisionValidator
             // rejects End > RawText.Length but accepts End == Length. The artifact keeps that
             // semantics verbatim instead of renormalising it for a prettier identity string.
             var span = heading.HeadingSpan;

@@ -112,7 +112,7 @@ Observability hardening does not require historical material loss either. It req
 **already-authoritative runtime fact is lost at an evidence boundary**, leaving operationally distinct
 executions indistinguishable after the run. It must show:
 
-1. the fact already exists and is already computed in production - no new classifier or status;
+1. the fact already exists and is already computed in production - no new transport or status;
 2. the fact is dropped where the artifact is materialised;
 3. at least two operationally different states become indistinguishable from the artifact without it;
 4. the artifact copies the fact exactly - no recompute, no inference, no renaming of its meaning;
@@ -1478,7 +1478,7 @@ duplicate là dòng riêng (`051` 30, `052` 32). Bỏ gộp continuation khỏi 
   remediation, or (2) a new hierarchy benchmark shows parent-resolver failure after required parent
   nodes and structural scope are correct.
 - [ ] Evaluation invariants earned in M8.1x, and cheaper to keep than any heuristic they replaced:
-  - A classifier signal must be evaluated on the population that classifier actually operates on.
+  - A transport signal must be evaluated on the population that transport actually operates on.
     Measuring the multi-entry signal on validated headings reported `0` false positives; the same
     signal over all source blocks reported `4.7%`.
   - First-loss attribution is invalid until the evaluated occurrence is bridged occurrence-safely.
@@ -2194,7 +2194,7 @@ is an outcome of the measurement, not an assumption of it.
   The repair belongs inside the existing owner: let the scorer read the next block's own text and
   leave `NextBlocks` alone so the prompt contract does not move. No new stage, no detector service -
   and `opens_content` must stay a ranking signal that gives a true candidate a chance to reach the
-  model, never a classifier that decides what a heading is.
+  model, never a transport that decides what a heading is.
 
   Not fixed here: C1 must first measure what reviving the signal costs, since +0.12 would reach every
   candidate that precedes a paragraph, including paragraphs themselves, and the ambiguity
@@ -2386,7 +2386,7 @@ not touch `TableLike`, hierarchy, or any model lane.
 
 - [x] M10.3-A2 reset counterfactual, diagnostic only. The tracker gained an evaluation-only set of
   withheld appendix entries - reviewed source ids, not a predicate, because inventing a TOC-shape
-  classifier or a body-boundary rule here would be a remediation wearing a counterfactual's clothes.
+  transport or a body-boundary rule here would be a remediation wearing a counterfactual's clothes.
   Exactly one transition was withheld, `b43`. Everything else, including the real appendix triggers
   on page 32, was left alone.
 
@@ -3146,7 +3146,7 @@ cannot order them.
 
 - [ ] Not opened, and named so it is not rediscovered: the mismatch could also be addressed by a
   weight between +0.10 and +0.42, or by a fact narrower than `HasStructuralMarker`. The first is
-  weight search and is refused. The second would be a new classifier, which M10.3-B already refused
+  weight search and is refused. The second would be a new transport, which M10.3-B already refused
   on its own evidence. Neither has a trigger.
 
 - [ ] Recorded: 032's strict parser reports `depth=1` for `22. 2. 8` while 091's reports depth 2-4
@@ -3225,7 +3225,7 @@ specific enough to justify a counterfactual. Trying body-opening v2, then headin
 typography evidence would be inventing features to find a patch, which is the failure mode M10 spent
 itself avoiding. Reopen only on: a reviewed corpus showing material loss from unnumbered-heading
 evidence; a product requirement naming an unnumbered-heading recall target; or an existing source or
-layout fact shown to discriminate without a new classifier.
+layout fact shown to discriminate without a new transport.
 
 ## M11 - validated structure and hierarchy, product acceptance
 
@@ -4256,7 +4256,7 @@ output eligibility.
      the Employer's decision..." and all of Section VII's ESHS/Code-of-Conduct commitments are sentence
      enumerations after a lead-in ("may challenge any of the following:", "the policy... commitments
      to:"), confirmed by reading the lead-in directly. Excluded by index as a reviewed classification -
-     no new production heuristic, no general list-vs-heading classifier.
+     no new production heuristic, no general list-vs-heading transport.
   2. **Numbering restarts within one section are real, not duplicates.** Section III has two local
      scopes (Margin of Preference/Evaluation, then the qualification-criteria table's own category
      headers restarting at 1). Section VIII has three: the main GC clauses, "APPENDIX A - General

@@ -28,8 +28,8 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     private readonly DocxExtractionPipeline _docxLane;
     private readonly PdfCanonicalSourceExtractor _pdfLane;
     private readonly DocumentExtractionRouter _dispatcher;
-    private readonly IInferenceTransport? _classifier;
-    private readonly bool _ownsClassifier;
+    private readonly IInferenceTransport? _transport;
+    private readonly bool _ownsTransport;
 
     public PipelineDocumentExtractionTool(PipelineOptions options)
     {
@@ -53,19 +53,19 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 
     public PipelineDocumentExtractionTool(
         PipelineOptions options,
-        IInferenceTransport classifier,
-        bool ownsClassifier = false,
+        IInferenceTransport transport,
+        bool ownsTransport = false,
         bool sendsDataExternally = false)
     {
         ArgumentNullException.ThrowIfNull(options);
-        ArgumentNullException.ThrowIfNull(classifier);
-        _docxLane = new DocxExtractionPipeline(options, classifier, sendsDataExternally);
-        // The same classifier instance both lanes use, owned by whoever handed it in. Creating a
+        ArgumentNullException.ThrowIfNull(transport);
+        _docxLane = new DocxExtractionPipeline(options, transport, sendsDataExternally);
+        // The same transport instance both lanes use, owned by whoever handed it in. Creating a
         // second one here would open a second provider connection for one document.
-        _pdfLane = new PdfCanonicalSourceExtractor(options, classifier, sendsDataExternally);
+        _pdfLane = new PdfCanonicalSourceExtractor(options, transport, sendsDataExternally);
         _dispatcher = Dispatch(_docxLane, _pdfLane);
-        _classifier = classifier;
-        _ownsClassifier = ownsClassifier;
+        _transport = transport;
+        _ownsTransport = ownsTransport;
         Descriptor = Describe(options, sendsDataExternally);
     }
 
@@ -155,6 +155,6 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     {
         _docxLane.Dispose();
         _pdfLane.Dispose();
-        if (_ownsClassifier) _classifier?.Dispose();
+        if (_ownsTransport) _transport?.Dispose();
     }
 }

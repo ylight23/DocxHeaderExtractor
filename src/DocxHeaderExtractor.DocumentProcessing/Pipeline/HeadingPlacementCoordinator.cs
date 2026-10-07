@@ -13,16 +13,16 @@ internal static class HeadingPlacementCoordinator
 {
     /// <summary>
     /// Re-asks only about headings the first pass left unplaced. Provider authority remains with
-    /// the classifier supplied by the caller; the PDF experiment caller supplies its gated
-    /// classifier, so this stage has no alternate transport or budget path.
+    /// the transport supplied by the caller; the PDF experiment caller supplies its gated
+    /// transport, so this stage has no alternate transport or budget path.
     /// </summary>
     public static async Task<IReadOnlyList<CanonicalSemanticBoundHeading>> PlaceUnresolvedHeadingsAsync(
         IReadOnlyList<CanonicalSemanticBoundHeading> bound,
-        IInferenceTransport classifier,
+        IInferenceTransport transport,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(bound);
-        ArgumentNullException.ThrowIfNull(classifier);
+        ArgumentNullException.ThrowIfNull(transport);
 
         var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(bound);
         var unplaced = derived
@@ -42,7 +42,7 @@ internal static class HeadingPlacementCoordinator
         string raw;
         try
         {
-            raw = await classifier.BoundaryCutAsync(
+            raw = await transport.BoundaryCutAsync(
                 CanonicalSemanticEngine.PlacementPrompt,
                 packet,
                 cancellationToken,

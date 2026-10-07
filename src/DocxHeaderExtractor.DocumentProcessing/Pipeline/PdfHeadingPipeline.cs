@@ -16,13 +16,13 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// </summary>
 internal static class PdfHeadingPipeline
 {
-    private const string AuthorityId = FunctionConditionedHeadingAuthority.AuthorityId;
+    private const string AuthorityId = FunctionAnchorExtentHeadingAuthority.AuthorityId;
 
     public static async Task<StructuralAuthorityResult> RunAsync(
         DocumentSourceSnapshot authority,
         PdfSourceDetails pdfDetails,
         string sourceName,
-        IInferenceTransport? classifier,
+        IInferenceTransport? transport,
         SemanticLaneOptions? semanticLaneOptions,
         CancellationToken ct)
     {
@@ -31,11 +31,11 @@ internal static class PdfHeadingPipeline
         ArgumentException.ThrowIfNullOrWhiteSpace(sourceName);
         if (pdfDetails.ParserLineCount == 0 || pdfDetails.Blocks.Count == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-no-text-layer") { SourceCatalog = authority.Catalog };
-        if (classifier is null)
+        if (transport is null)
             return new StructuralAuthorityResult(
                 new ValidatedStructure([]), SourceOnlyAudit(authority, pdfDetails), "pdf-function-conditioned-llm-disabled")
             { SourceCatalog = authority.Catalog };
-        if (classifier is not IFrozenInferenceTransport frozen)
+        if (transport is not IFrozenInferenceTransport frozen)
             throw new InvalidOperationException("PDF_H2C_PRODUCTION_ROUTE_REQUIRES_FROZEN_REQUEST_TRANSPORT");
 
         await using var scope = ProductionCheckpointScope.Create();
@@ -86,7 +86,7 @@ internal static class PdfHeadingPipeline
     private static async Task<StructuralAuthorityResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IFrozenInferenceTransport frozen, PdfLaneExecutionLease lease, CancellationToken ct)
     {
         var leaseBound = new LeaseBoundFrozenInferenceTransport(frozen, lease);
-        IHeadingAuthority authority = new FunctionConditionedHeadingAuthority(
+        IHeadingAuthority authority = new FunctionAnchorExtentHeadingAuthority(
             leaseBound,
             pdfDetails.LayoutBlockByAtom,
             () => { if (!lease.IsActive) throw new PdfExecutionLeaseLostException(); });

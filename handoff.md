@@ -6697,7 +6697,7 @@ Nav      89.6%
 Nav+cap 45.5%   (was 15.6%)
 ```
 
-Important negative result: do not re-enable `auto:part-section` until occurrence selection has a reliable body-anchor signal. The helper file remains because it is now used only as a level classifier for merged slices, which did not regress Eval14.
+Important negative result: do not re-enable `auto:part-section` until occurrence selection has a reliable body-anchor signal. The helper file remains because it is now used only as a level transport for merged slices, which did not regress Eval14.
 
 ## 2026-08-14 update - World Bank section levels
 
@@ -8243,7 +8243,7 @@ này BẮT ĐÚNG các marker thật (giải thích vì sao `01_phap_quy`/`06_di
 **Hướng đi tiếp theo (CHƯA đo, chỉ là giả thuyết có cơ sở):** `SplitMergedParagraphs` hiện dùng để
 DỰNG HEADING TRỰC TIẾP (declared route tự nhận, không qua model xác minh) — đó là lý do rác lọt thẳng
 ra ngoài. Nếu thay vì "dựng tất định" nó chỉ dùng để MỞ RỘNG TẬP ỨNG VIÊN đưa cho tầng model xác minh
-(critic/classifier có LLM, giống cách `07_system_generated`/`VietnameseLegal` sẽ chạm được
+(critic/transport có LLM, giống cách `07_system_generated`/`VietnameseLegal` sẽ chạm được
 `LlmBoundaryCutter` đã đo 100% ở §111), tầng ngữ nghĩa có thể lọc bớt cross-reference/số phương trình
 mà luật tất định không phân biệt được. **Chưa test** — cần đo trên vài file đại diện (không phải cả
 89, tốn nhiều lượt suy luận) trước khi tin giả thuyết này, đúng kỷ luật đo-trước-khi-xây.

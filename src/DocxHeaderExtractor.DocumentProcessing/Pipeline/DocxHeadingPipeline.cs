@@ -29,7 +29,7 @@ internal static class DocxHeadingPipeline
         if (source.Occurrences.Count == 0)
             return new StructuralAuthorityResult(new ValidatedStructure([]), null, "empty-docx-source");
 
-        IHeadingAuthority authority = new CanonicalTextHeadingAuthority(transport, experiment);
+        IHeadingAuthority authority = new TextSemanticHeadingAuthority(transport, experiment);
         var decided = await authority.DecideAsync(source, cancellationToken).ConfigureAwait(false);
         // The canonical-text authority defines semantic node identity, so a repeated heading keeps
         // one primary occurrence in the outline.

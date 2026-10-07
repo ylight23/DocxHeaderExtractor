@@ -68,7 +68,7 @@ public sealed class HeadingAuthorityByteParityTests
         JsonElement frozen, DocumentSourceSnapshot source, IReadOnlyDictionary<string, string> layoutBlockByAtom)
     {
         var transport = new RecordingTransport();
-        IHeadingAuthority authority = new FunctionConditionedHeadingAuthority(transport, layoutBlockByAtom, () => { });
+        IHeadingAuthority authority = new FunctionAnchorExtentHeadingAuthority(transport, layoutBlockByAtom, () => { });
 
         var result = await authority.DecideAsync(source, CancellationToken.None);
 

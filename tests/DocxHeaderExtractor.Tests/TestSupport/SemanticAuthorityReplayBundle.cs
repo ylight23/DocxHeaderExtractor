@@ -245,7 +245,7 @@ public sealed record SemanticAuthorityReplayResult(CanonicalSemanticPipelineResu
 }
 
 /// <summary>
-/// Replays only deterministic post-model work. It has no classifier, provider, prompt builder, or
+/// Replays only deterministic post-model work. It has no transport, provider, prompt builder, or
 /// source-document dependency; the alias catalog in the bundle is the complete source authority.
 /// </summary>
 public static class SemanticAuthorityReplay

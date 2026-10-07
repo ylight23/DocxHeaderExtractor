@@ -111,9 +111,9 @@ public sealed class SemanticCoordinateContractTests
 
     private static async Task<CanonicalSemanticTextInferenceResult> RunWith(SemanticCoordinateContract contract)
     {
-        using var classifier = new RecordingClassifier();
-        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
-            classifier, contract, SemanticEvidencePackingPolicies.FixedOwnedCount120);
+        using var transport = new RecordingClassifier();
+        var model = new CanonicalSemanticEngine.CanonicalTextInferenceModel(
+            transport, contract, SemanticEvidencePackingPolicies.FixedOwnedCount120);
         var source = Input();
         return await model.InferAsync(
             new CanonicalSemanticTextInferenceInput(source.SourceEvidence ?? []),
@@ -122,11 +122,11 @@ public sealed class SemanticCoordinateContractTests
 
     private static async Task<(string Prompt, string Request)> Capture(SemanticCoordinateContract contract)
     {
-        using var classifier = new RecordingClassifier();
-        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
-            classifier, contract, SemanticEvidencePackingPolicies.FixedOwnedCount120);
+        using var transport = new RecordingClassifier();
+        var model = new CanonicalSemanticEngine.CanonicalTextInferenceModel(
+            transport, contract, SemanticEvidencePackingPolicies.FixedOwnedCount120);
         await CanonicalSemanticTextProductionEntryPoint.RunAsync(Input(), model);
-        return (classifier.Prompt!, classifier.Request!);
+        return (transport.Prompt!, transport.Request!);
     }
 
     /// <summary>The request with its trailing schema removed: what the model reasons over.</summary>

@@ -84,7 +84,7 @@ public sealed class McpExtractionService : IDisposable
         // Let the shared factory choose per source type. DOCX keeps this MCP service's local
         // LM Studio selection; PDF deliberately enters the qualified OpenRouter-only factory
         // path and fails before transport with a capability error rather than reaching the PDF
-        // authority adapter through an unsupported local classifier.
+        // authority adapter through an unsupported local transport.
         using var extractionTool = new PipelineDocumentExtractionTool(
             pipeline, new InferenceTransportFactory(provider));
         var harness = _harnessFactory.Create(extractionTool);

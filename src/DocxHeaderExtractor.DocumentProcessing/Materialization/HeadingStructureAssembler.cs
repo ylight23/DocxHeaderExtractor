@@ -38,7 +38,7 @@ internal static class HeadingStructureAssembler
         ArgumentNullException.ThrowIfNull(source);
         ArgumentNullException.ThrowIfNull(authority);
 
-        var validated = HeadingProposalBinder.BindAndValidate(source.OccurrenceContexts, authority.Decisions);
+        var validated = HeadingDecisionBinder.BindAndValidate(source.OccurrenceContexts, authority.Decisions);
         // Reasoning surface #3: headings the first pass left unplaced come back in one narrow
         // follow-up that asks only about position. Bounded to a single round; an unresolved heading
         // is a legitimate outcome.

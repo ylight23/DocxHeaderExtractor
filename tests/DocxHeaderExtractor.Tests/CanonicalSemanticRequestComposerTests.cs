@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.Tests;
 /// One producer of final request bytes, proven to be the only one.
 /// <para>
 /// A routing preflight built a real request through
-/// <see cref="CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel.InferAsync"/> and found it
+/// <see cref="CanonicalSemanticEngine.CanonicalTextInferenceModel.InferAsync"/> and found it
 /// did not match the hash a measurement helper had frozen for the same six calls. Same evidence,
 /// same partition, different bytes: the helper embedded a contract's schema as a JSON field: the
 /// engine appends it as text after a literal <c>\nSCHEMA=</c>. Two implementations of one step,
@@ -47,14 +47,14 @@ public sealed class CanonicalSemanticRequestComposerTests
     private static async Task AssertComposerMatchesInferAsync(SemanticCoordinateContract contract)
     {
         var input = SampleInput();
-        var composed = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+        var composed = new CanonicalSemanticEngine.CanonicalTextInferenceModel(
             new UnreachableClassifier(), contract, SemanticEvidencePackingPolicies.FixedOwnedCount120)
             .ComposeRequests(input)
             .Select(segment => segment.RequestBytes)
             .ToArray();
 
         using var recording = new RecordingClassifier();
-        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+        var model = new CanonicalSemanticEngine.CanonicalTextInferenceModel(
             recording, contract, SemanticEvidencePackingPolicies.FixedOwnedCount120);
         await model.InferAsync(input, new SemanticContextPacket([], [], []), "composer-parity");
 
@@ -78,7 +78,7 @@ public sealed class CanonicalSemanticRequestComposerTests
     private static async Task<string> SingleRequest(SemanticCoordinateContract contract)
     {
         using var recording = new RecordingClassifier();
-        var model = new CanonicalSemanticEngine.HeaderClassifierCanonicalTextModel(
+        var model = new CanonicalSemanticEngine.CanonicalTextInferenceModel(
             recording, contract, SemanticEvidencePackingPolicies.FixedOwnedCount120);
         await model.InferAsync(SampleInput(), new SemanticContextPacket([], [], []), "non-regression");
         return Assert.Single(recording.Requests);

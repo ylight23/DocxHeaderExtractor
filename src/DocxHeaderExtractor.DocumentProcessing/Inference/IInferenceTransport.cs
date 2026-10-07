@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Inference;
 
-/// <summary>Provider-neutral classifier contract consumed by document processing.</summary>
+/// <summary>Provider-neutral transport contract consumed by document processing.</summary>
 public interface IInferenceTransport : IDisposable
 {
     string ModelName { get; }
@@ -31,7 +31,7 @@ public interface IInferenceTransport : IDisposable
 }
 
 /// <summary>
-/// Composition-root seam for inference providers. Core consumes the neutral classifier contract;
+/// Composition-root seam for inference providers. Core consumes the neutral transport contract;
 /// provider construction belongs to Infrastructure.
 /// </summary>
 public interface IInferenceTransportFactory
@@ -44,7 +44,7 @@ public interface IInferenceTransportFactory
     /// Creates the separately-authorized production transport for the PDF authority route.
     /// DOCX continues to use <see cref="CreateAsync"/> and may use any configured provider.
     /// A factory that has not explicitly opted into the qualified PDF route fails closed rather
-    /// than silently falling back to its default (usually local) classifier.
+    /// than silently falling back to its default (usually local) transport.
     /// </summary>
     Task<IInferenceTransport> CreatePdfProductionAsync(PipelineOptions options, CancellationToken ct = default) =>
         throw new InvalidOperationException("PDF_PRODUCTION_PROVIDER_FACTORY_REQUIRED");

@@ -12,14 +12,14 @@ DOCX -> DocxSourceOccurrenceAdapter -+
 PDF  -> PdfSourceOccurrenceAdapter --+          |
                                                 v
                                        IHeadingAuthority   (the replaceable seam)
-                         DOCX: CanonicalTextHeadingAuthority   (pending its own qualification)
-                         PDF:  FunctionConditionedHeadingAuthority
+                         DOCX: TextSemanticHeadingAuthority   (pending its own qualification)
+                         PDF:  FunctionAnchorExtentHeadingAuthority
                                OccurrenceFunctionProtocolV1 -> HeadingAnchorProtocolV1
                                -> HeadingExtentProtocolV2   (F1 -> G2A -> H2-C V2, frozen wire)
                                                 |
                                                 v
                                      HeadingStructureAssembler (shared, format-blind)
-        HeadingProposalBinder -> HeadingPlacementCoordinator -> HeadingHierarchyResolver
+        HeadingDecisionBinder -> HeadingPlacementCoordinator -> HeadingHierarchyResolver
                                 -> CanonicalStructureMaterializer
                                                 |
                                                 v
@@ -65,7 +65,7 @@ replay, qualification artifacts and diagnostics are never production authority.
 - `src/DocxHeaderExtractor.Cli/Program.cs:134-155` constructs the extraction tool/harness; writeback selection at `137-142` is conditional on `PdfFirstValidatedFallback`.
 - `src/DocxHeaderExtractor.Cli/Program.cs:743-744` directly invokes `HeaderExtractionPipeline` for a non-production evaluation path.
 - `src/DocxHeaderExtractor.Cli/Program.cs:2244-2247` uses `PdfFinalStructureProjection` and `PdfOutputDecisionPolicy` in a diagnostic shadow/evaluation route.
-- `src/DocxHeaderExtractor.Cli/Program.cs:2453-2471` constructs the selected text classifier/provider; this is not itself a final heading authority.
+- `src/DocxHeaderExtractor.Cli/Program.cs:2453-2471` constructs the selected text transport/provider; this is not itself a final heading authority.
 - `src/DocxHeaderExtractor.Web/Program.cs:305-350` creates the extraction tool/harness and runs the request.
 - `src/DocxHeaderExtractor.Mcp/McpExtractionService.cs:83-89` creates `PipelineDocumentExtractionTool`, then runs the harness.
 - `src/DocxHeaderExtractor.Core/Pipeline/HeaderExtractionPipeline.cs:184` defines `PdfFirstValidatedFallback`; the normal route remains conditional.

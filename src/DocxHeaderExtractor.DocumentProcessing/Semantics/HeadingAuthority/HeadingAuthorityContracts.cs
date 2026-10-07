@@ -69,7 +69,7 @@ internal static class SourceTextBoundaryMap
         offset >= 0 && offset <= sourceText.Length && For(sourceText).Contains(offset);
 }
 
-internal static class HeadingProposalValidator
+internal static class HeadingDecisionValidator
 {
     public static IReadOnlyList<ValidatedHeading> Validate(
         IReadOnlyDictionary<string, OccurrenceContext> contexts,

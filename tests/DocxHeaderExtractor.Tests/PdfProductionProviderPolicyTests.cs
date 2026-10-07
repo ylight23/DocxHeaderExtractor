@@ -69,9 +69,9 @@ public sealed class PdfProductionProviderPolicyTests
             Remote = QualifiedRemote(),
         });
 
-        using var classifier = await factory.CreatePdfProductionAsync(new PipelineOptions());
+        using var transport = await factory.CreatePdfProductionAsync(new PipelineOptions());
 
-        var authorized = Assert.IsAssignableFrom<IPdfProductionAuthorizedInferenceTransport>(classifier);
+        var authorized = Assert.IsAssignableFrom<IPdfProductionAuthorizedInferenceTransport>(transport);
         Assert.Equal("OpenRouter/Alibaba", authorized.PdfProductionProvider);
         Assert.Equal(RemoteInferenceOptions.DefaultModel, authorized.PdfProductionModel);
     }

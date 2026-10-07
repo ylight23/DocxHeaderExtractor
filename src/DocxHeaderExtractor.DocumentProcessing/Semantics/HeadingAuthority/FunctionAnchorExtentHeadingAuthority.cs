@@ -21,7 +21,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 /// <param name="transport">The qualified frozen transport the route authorized.</param>
 /// <param name="layoutBlockByAtom">Parser layout labels used only to size request packs.</param>
 /// <param name="ensureActive">Throws when the lane no longer owns the execution.</param>
-internal sealed class FunctionConditionedHeadingAuthority(
+internal sealed class FunctionAnchorExtentHeadingAuthority(
     IFrozenInferenceTransport transport,
     IReadOnlyDictionary<string, string> layoutBlockByAtom,
     Action ensureActive) : IHeadingAuthority

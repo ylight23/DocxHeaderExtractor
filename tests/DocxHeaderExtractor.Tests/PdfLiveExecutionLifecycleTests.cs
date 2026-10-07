@@ -13,89 +13,89 @@ public sealed class PdfLiveExecutionLifecycleTests
     [Fact]
     public async Task Live_pdf_path_succeeds_before_the_execution_deadline()
     {
-        using var classifier = new GateClassifier();
+        using var transport = new GateClassifier();
 
-        var executionTask = RunAsync(classifier, new SemanticLaneOptions(TimeSpan.FromSeconds(30)));
-        await classifier.Started.Task;
-        classifier.Complete("{\"headings\":[]}");
+        var executionTask = RunAsync(transport, new SemanticLaneOptions(TimeSpan.FromSeconds(30)));
+        await transport.Started.Task;
+        transport.Complete("{\"headings\":[]}");
         var execution = await executionTask;
 
         Assert.Equal("pdf-canonical-vnext", execution.Result.Provenance.Route);
-        Assert.True(classifier.Calls > 0);
+        Assert.True(transport.Calls > 0);
     }
 
     [Fact]
     public async Task Live_pdf_path_surfaces_a_provider_failure_before_the_deadline()
     {
-        using var classifier = new GateClassifier
+        using var transport = new GateClassifier
         {
             ImmediateFailure = new InvalidOperationException("live-provider-failure"),
         };
 
         var error = await Assert.ThrowsAsync<InvalidOperationException>(() => RunAsync(
-            classifier,
+            transport,
             new SemanticLaneOptions(TimeSpan.FromSeconds(30))));
 
         Assert.Equal("live-provider-failure", error.Message);
-        Assert.Equal(1, classifier.Calls);
+        Assert.Equal(1, transport.Calls);
     }
 
     [Fact]
     public async Task Live_pdf_timeout_quarantines_late_success_and_blocks_follow_up_provider_work()
     {
-        using var classifier = new GateClassifier();
+        using var transport = new GateClassifier();
         var execution = RunAsync(
-            classifier,
+            transport,
             new SemanticLaneOptions(TimeSpan.FromSeconds(2)));
 
-        await classifier.Started.Task;
+        await transport.Started.Task;
         await Assert.ThrowsAsync<TimeoutException>(() => execution);
 
-        classifier.Complete("{\"headings\":[]}");
-        await classifier.FirstCallCompleted.Task;
+        transport.Complete("{\"headings\":[]}");
+        await transport.FirstCallCompleted.Task;
 
-        Assert.Equal(1, classifier.Calls);
+        Assert.Equal(1, transport.Calls);
     }
 
     [Fact]
     public async Task Live_pdf_cancellation_quarantines_late_success_and_blocks_follow_up_provider_work()
     {
         using var cancellation = new CancellationTokenSource();
-        using var classifier = new GateClassifier();
+        using var transport = new GateClassifier();
         var execution = RunAsync(
-            classifier,
+            transport,
             new SemanticLaneOptions(TimeSpan.FromSeconds(30)),
             cancellation.Token);
 
-        await classifier.Started.Task;
+        await transport.Started.Task;
         cancellation.Cancel();
         await Assert.ThrowsAsync<OperationCanceledException>(() => execution);
 
-        classifier.Complete("{\"headings\":[]}");
-        await classifier.FirstCallCompleted.Task;
+        transport.Complete("{\"headings\":[]}");
+        await transport.FirstCallCompleted.Task;
 
-        Assert.Equal(1, classifier.Calls);
+        Assert.Equal(1, transport.Calls);
     }
 
     [Fact]
     public async Task Live_pdf_timeout_observes_a_late_provider_failure_without_reopening_execution()
     {
-        using var classifier = new GateClassifier();
+        using var transport = new GateClassifier();
         var execution = RunAsync(
-            classifier,
+            transport,
             new SemanticLaneOptions(TimeSpan.FromSeconds(2)));
 
-        await classifier.Started.Task;
+        await transport.Started.Task;
         await Assert.ThrowsAsync<TimeoutException>(() => execution);
 
-        classifier.Fail(new InvalidOperationException("late-live-failure"));
-        await classifier.FirstCallCompleted.Task;
+        transport.Fail(new InvalidOperationException("late-live-failure"));
+        await transport.FirstCallCompleted.Task;
 
-        Assert.Equal(1, classifier.Calls);
+        Assert.Equal(1, transport.Calls);
     }
 
     private static Task<AuthorityPipelineExecutionResult> RunAsync(
-        IFrozenInferenceTransport classifier,
+        IFrozenInferenceTransport transport,
         SemanticLaneOptions lane,
         CancellationToken cancellationToken = default)
     {
@@ -103,7 +103,7 @@ public sealed class PdfLiveExecutionLifecycleTests
         return PdfExtractionPipeline.RunExecutionAsync(
             file,
             new PipelineOptions(),
-            classifier,
+            transport,
             ct: cancellationToken,
             semanticLaneOptions: lane);
     }

@@ -57,7 +57,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
 
         using var inner = OpenRouterInferenceTransport.CreateOwned(options);
         var transport = new BoundedCapturingTransport(inner, directory);
-        var authority = new FunctionConditionedHeadingAuthority(transport, built.Details.LayoutBlockByAtom, () => { });
+        var authority = new FunctionAnchorExtentHeadingAuthority(transport, built.Details.LayoutBlockByAtom, () => { });
 
         string outcome;
         try
@@ -103,7 +103,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         {
             var fake = new NetworkRefusingTransport();
             var transport = new BoundedCapturingTransport(fake, directory);
-            var authority = new FunctionConditionedHeadingAuthority(transport, built.Details.LayoutBlockByAtom, () => { });
+            var authority = new FunctionAnchorExtentHeadingAuthority(transport, built.Details.LayoutBlockByAtom, () => { });
             await Assert.ThrowsAsync<NetworkRefusingTransport.WouldHaveSent>(() => authority.DecideAsync(built.Snapshot, CancellationToken.None));
             Assert.Equal(1, fake.Attempts);
             Assert.Empty(transport.Calls);

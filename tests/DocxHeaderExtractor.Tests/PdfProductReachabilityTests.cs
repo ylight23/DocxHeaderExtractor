@@ -62,7 +62,7 @@ public sealed class PdfProductReachabilityTests : IDisposable
 
         Assert.Equal("pdf-canonical-vnext", outline.DeterministicRoute);
         Assert.NotEmpty(outline.Headings);
-        Assert.True(model.Calls > 0, "the PDF lane never reached the classifier");
+        Assert.True(model.Calls > 0, "the PDF lane never reached the transport");
         Assert.Equal("qualified-pdf-script", outline.Model);
         // The text on the outline is the source occurrence's, never the model's echo of it.
         Assert.All(outline.Headings, heading => Assert.False(string.IsNullOrWhiteSpace(heading.Text)));

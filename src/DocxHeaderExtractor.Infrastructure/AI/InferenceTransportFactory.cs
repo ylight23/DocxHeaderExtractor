@@ -30,7 +30,7 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
     }
 
     /// <summary>
-    /// The promoted PDF route is deliberately narrower than the general heading classifier
+    /// The promoted PDF route is deliberately narrower than the general heading transport
     /// factory. Its frozen F1/G2A/H2-C bodies were qualified only on OpenRouter's Alibaba route
     /// for qwen/qwen3.7-flash, so selecting a local or alternate remote backend must fail before
     /// a PDF provider call is attempted.
@@ -56,9 +56,9 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
                 $"PDF_PRODUCTION_PROVIDER_ROUTE_UNSUPPORTED: requires {RemoteInferenceOptions.DefaultProviderRoute}; " +
                 $"selected {_selection.Remote.OpenRouterProviderRoute ?? "<automatic>"}.");
 
-        IInferenceTransport classifier = new PdfProductionOpenRouterHeaderClassifier(
+        IInferenceTransport transport = new PdfProductionOpenRouterInferenceTransport(
             OpenRouterInferenceTransport.CreateOwned(_selection.Remote));
-        return Task.FromResult(classifier);
+        return Task.FromResult(transport);
     }
 
     private static string Describe(InferenceBackend backend) => backend switch
@@ -70,7 +70,7 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
     };
 
     /// <summary>Capability/authorization wrapper for the only qualified PDF production transport.</summary>
-    private sealed class PdfProductionOpenRouterHeaderClassifier(OpenRouterInferenceTransport inner)
+    private sealed class PdfProductionOpenRouterInferenceTransport(OpenRouterInferenceTransport inner)
         : IPdfProductionAuthorizedInferenceTransport
     {
         public string PdfProductionProvider => "OpenRouter/Alibaba";

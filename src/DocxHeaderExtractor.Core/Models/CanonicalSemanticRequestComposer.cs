@@ -5,7 +5,7 @@ using System.Text.Json;
 namespace DocxHeaderExtractor.Core.Models;
 
 /// <summary>
-/// The one place a packet and a contract become the exact bytes a classifier receives.
+/// The one place a packet and a contract become the exact bytes a transport receives.
 /// <para>
 /// A measurement helper and the production engine each grew their own version of this step, and
 /// they disagreed: one embedded the schema as a field inside the packet, the other appended it as
@@ -22,7 +22,7 @@ namespace DocxHeaderExtractor.Core.Models;
 public static class CanonicalSemanticRequestComposer
 {
     /// <summary>
-    /// The exact string a classifier receives as its user message: the packet, exactly as the
+    /// The exact string a transport receives as its user message: the packet, exactly as the
     /// caller serialized it, followed by a literal newline, the token <c>SCHEMA=</c>, and the
     /// contract's schema serialized the same way. Neither side is reformatted here - composition
     /// only concatenates what it is given.

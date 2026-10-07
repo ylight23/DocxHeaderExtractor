@@ -1,14 +1,14 @@
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
-using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 
 /// <summary>
 /// Deterministic boundary between model-produced extent decisions and source-grounded headings.
 /// It owns source lookup and span validation only; it does not call a provider or infer meaning,
 /// relations, hierarchy, or product structure.
 /// </summary>
-internal static class HeadingProposalBinder
+internal static class HeadingDecisionBinder
 {
     public static IReadOnlyList<ValidatedHeading> BindAndValidate(
         IReadOnlyDictionary<string, OccurrenceContext> contexts,
@@ -16,7 +16,7 @@ internal static class HeadingProposalBinder
     {
         ArgumentNullException.ThrowIfNull(contexts);
         ArgumentNullException.ThrowIfNull(decisions);
-        return HeadingProposalValidator.Validate(contexts, decisions);
+        return HeadingDecisionValidator.Validate(contexts, decisions);
     }
 
     public static IReadOnlyList<HeadingSourceStageTrace> Trace(
@@ -25,6 +25,6 @@ internal static class HeadingProposalBinder
     {
         ArgumentNullException.ThrowIfNull(contexts);
         ArgumentNullException.ThrowIfNull(decisions);
-        return HeadingProposalValidator.Trace(contexts, decisions);
+        return HeadingDecisionValidator.Trace(contexts, decisions);
     }
 }

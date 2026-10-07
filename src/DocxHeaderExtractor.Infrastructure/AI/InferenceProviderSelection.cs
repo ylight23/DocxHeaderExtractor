@@ -2,7 +2,7 @@ namespace DocxHeaderExtractor.Infrastructure.AI;
 
 /// <summary>
 /// Provider choice and runtime configuration owned by the composition root. The document
-/// processing layer consumes only the classifier contract and never needs to know these values.
+/// processing layer consumes only the transport contract and never needs to know these values.
 /// </summary>
 public enum InferenceBackend
 {
