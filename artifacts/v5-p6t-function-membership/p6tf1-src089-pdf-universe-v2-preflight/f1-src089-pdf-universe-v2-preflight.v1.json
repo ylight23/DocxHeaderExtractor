@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "v5-p6tf1-src089-pdf-universe-v2-preflight-v1",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "geometryPolicy": "a99-pdf-glyph-geometry-v2-font-independent",
+  "authority": {
+    "source": "CANONICAL_PDF_SOURCE_SNAPSHOT_V2",
+    "snapshot": "eval/a99-closed-loop/pdf-canonical-source-v2/f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5.json",
+    "packing": "P05_EXACT_ONCE_OWNERSHIP",
+    "protocol": "V5_TOTAL_OCCURRENCE_FUNCTION_F1",
+    "transport": "OPENROUTER_QWEN37_JSON_OBJECT_CARRIER_V2_1_REASONING_ENABLED_EFFORT_OMITTED"
+  },
+  "execution": {
+    "providerCalls": 0,
+    "retry": 0,
+    "repair": false,
+    "fallback": false,
+    "goldRead": false,
+    "goldMutation": "NONE",
+    "runtimeChanged": false
+  },
+  "comparisonWithV1": {
+    "v1SourceUniverseSha256": "949dedfe976c1baeebf60bcad4bee75a5d5eafef7886bb2e9385f0708c7fb494",
+    "v1OccurrenceTotal": 582,
+    "v1PackCount": 7
+  },
+  "document": {
+    "documentId": "SRC-089",
+    "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+    "sourceUniverseSha256": "d45b4a027d4da6133c852f7ee470365d08fbf8f9a47c25aff9afd074278ec8cc",
+    "sourceOccurrenceTotal": 581,
+    "p05PackCount": 7
+  },
+  "cost": {
+    "maximumF1PrimaryCalls": 7,
+    "providerBodyBytes": 137127,
+    "maxCompletionTokens": 229376,
+    "estimatedInputTokensAtFourBytesPerToken": 34281,
+    "note": "estimate only; G2A and H2-C calls depend on the accepted F1 and G2A ledgers and are bounded in the report, not here"
+  },
+  "requests": [
+    {
+      "providerCallOrdinal": 1,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_001",
+      "ownedOccurrenceCount": 96,
+      "providerBodySha256": "85aca595db7e174b3f89ebea803a9d1e4a317d524378d3a5c91c22d9b42f989f",
+      "semanticRequestSha256": "b3da8832139dcc9ec2b57a26bb0b58b4d829a11ff14a2f56e39372e5aec97a42",
+      "providerBodyBytes": 21073,
+      "maxCompletionTokens": 32768
+    },
+    {
+      "providerCallOrdinal": 2,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_002",
+      "ownedOccurrenceCount": 96,
+      "providerBodySha256": "c024157873b19507f3ad6f146af0e166bd8259f0da10a5c7ffcb742b1c8436fc",
+      "semanticRequestSha256": "36737de942a92e6b0772643937806ccd792bd6010a0827418fefef2fb3f658e7",
+      "providerBodyBytes": 23052,
+      "maxCompletionTokens": 32768
+    },
+    {
+      "providerCallOrdinal": 3,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_003",
+      "ownedOccurrenceCount": 96,
+      "providerBodySha256": "165283383623ea96a3acb6b871804b6348836e8491b083a3acbec50899d9e141",
+      "semanticRequestSha256": "c8cc0f53760e5520d070d3f27219998d6599e85c57c90706d778f0d8f72d3669",
+      "providerBodyBytes": 22010,
+      "maxCompletionTokens": 32768
+    },
+    {
+      "providerCallOrdinal": 4,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_004",
+      "ownedOccurrenceCount": 96,
+      "providerBodySha256": "4fd0560b32378d7005e945f88cf952048eaa942e3f16e192b66de1473ede7886",
+      "semanticRequestSha256": "e943b535b1c28e61c79cbfb6fd5673f36594713f467e3d18914b5ba824b09945",
+      "providerBodyBytes": 22539,
+      "maxCompletionTokens": 32768
+    },
+    {
+      "providerCallOrdinal": 5,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_005",
+      "ownedOccurrenceCount": 96,
+      "providerBodySha256": "cd074daeaede6e1363bea9ef919a5f9b9596087057b57832ebeda02a079d90ac",
+      "semanticRequestSha256": "c7523af7fbeec87693b178179718dba833acad40b0d9341ec0e1a4937033f615",
+      "providerBodyBytes": 22890,
+      "maxCompletionTokens": 32768
+    },
+    {
+      "providerCallOrdinal": 6,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_006",
+      "ownedOccurrenceCount": 96,
+      "providerBodySha256": "1c54a2412274936c7a6737ef108ab8441d97bf6933615c7cd52507f3eac0a148",
+      "semanticRequestSha256": "4f0539b00f4b8ea58c382c8d3bbf15baa3c671f1cbe7df4874af4b9147cfdc21",
+      "providerBodyBytes": 21882,
+      "maxCompletionTokens": 32768
+    },
+    {
+      "providerCallOrdinal": 7,
+      "packId": "RESOURCE_BOUNDED_SOURCE_PACKING_V1:PACK_007",
+      "ownedOccurrenceCount": 5,
+      "providerBodySha256": "49251c9cd04c4d37c599d2813dc0b01aa6dfa0f65242fd2632100c5c02561917",
+      "semanticRequestSha256": "f052e1f71bb325c3a540590afd8bbce33853e8ccb21a0d7eadc0c4eebc6f7535",
+      "providerBodyBytes": 3681,
+      "maxCompletionTokens": 32768
+    }
+  ]
+}
