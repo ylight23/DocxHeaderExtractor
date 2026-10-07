@@ -1,6 +1,6 @@
 # Current architecture contract
 
-Status: `ACTIVE — N15 SOURCE OWNERSHIP CLOSURE`
+Status: `ACTIVE — N16 DEAD SOURCE TYPE CLOSURE`
 
 Baseline: `main@5678b454dc28c8bab811c5ce35a789d540fa82be`
 
@@ -53,6 +53,10 @@ Source ownership is namespace-aligned: shared `SourceMarkerFact` lives in `Sourc
 facts/context construction in `Source/Pdf`, and `HeadingHierarchyFactAudit` in `Authority`.
 `Source/**` may not depend on the `Pipeline` namespace; orchestration depends on source, never
 the reverse. The architecture guard checks both that dependency direction and source namespaces.
+
+PDF appearance grouping uses `PdfStyleKey.StyleOf` with the unchanged half-point default bucket.
+Readable text reconstruction belongs to `PdfTextUtilities`. The unused style-profile/statistics
+records and title/group collections are retired; these source utilities do not classify headings.
 
 ## Trust and authority boundaries
 

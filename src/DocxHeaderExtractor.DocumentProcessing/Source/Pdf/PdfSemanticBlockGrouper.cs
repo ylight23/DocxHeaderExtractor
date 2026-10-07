@@ -149,7 +149,7 @@ internal static class PdfSemanticBlockGrouper
         {
             var lines = group.Select(item => item.Line).ToArray();
             var primaryStyle = lines
-                .GroupBy(l => PdfStyleClusterProfile.StyleOf(l))
+                .GroupBy(l => PdfStyleKey.StyleOf(l))
                 .OrderByDescending(g => g.Sum(l => PdfTextUtilities.Readable(l.Text).Length))
                 .Select(g => g.Key)
                 .First();

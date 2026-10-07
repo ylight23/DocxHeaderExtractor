@@ -168,7 +168,7 @@ internal static class PdfSourceAdapter
     private static PdfSemanticBlock SingleLineBlock(PdfLine line) => new(
         PdfLineIdentity.Of(line),
         [line],
-        PdfStyleClusterProfile.StyleOf(line),
+        PdfStyleKey.StyleOf(line),
         line.Page,
         line.Y,
         line.Y,

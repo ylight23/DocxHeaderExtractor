@@ -1,37 +1,5 @@
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
-/// <summary>
-/// Learns the visual style baseline of a PDF from the PDF itself. The body baseline is the
-/// style cluster that carries the most readable characters; distinctive styles are styles that
-/// consistently differ from that baseline. Callers provide document-specific semantic predicates,
-/// but the style/baseline measurement is shared across PDF routes.
-/// </summary>
-internal sealed record PdfStyleClusterProfile(
-    PdfStyleKey BodyStyle,
-    IReadOnlyList<PdfStyleClusterStats> Clusters,
-    IReadOnlySet<PdfStyleKey> DistinctiveStyles,
-    IReadOnlySet<PdfStyleKey> TitleStyles,
-    IReadOnlySet<PdfStyleKey> GroupStyles)
-{
-    public static PdfStyleKey StyleOf(PdfLine line, double fontSizeBucket = 0.5)
-    {
-        var bucket = fontSizeBucket <= 0 ? line.FontSize : Math.Round(line.FontSize / fontSizeBucket) * fontSizeBucket;
-        return new PdfStyleKey(bucket, line.FontName, line.FillColorKey);
-    }
-}
-
-internal sealed record PdfStyleKey(double FontSizeBucket, string FontName, string FillColorKey);
-
-internal sealed record PdfStyleClusterStats(
-    PdfStyleKey Style,
-    int Characters,
-    int Lines,
-    int Pages,
-    int TitleLikeLines,
-    int GroupLikeLines,
-    double AverageFontSize,
-    double AverageBoldRatio);
-
 internal static class PdfTextUtilities
 {
     private static readonly HashSet<string> ShortWords = new(StringComparer.OrdinalIgnoreCase)

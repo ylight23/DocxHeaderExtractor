@@ -4,10 +4,9 @@ using UglyToad.PdfPig.Content;
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 /// <summary>
-/// Dòng PDF dựng lại từ letter theo toạ độ Y (không phải dòng logic OOXML). <see cref="BoldRatio"/>
-/// và <see cref="LeadingBoldPrefix"/> chỉ có ý nghĩa khi bộ gọi cần tín hiệu bold — hai bộ dựng
-/// heading khác nhau (font-size cho textbook, bold-run-in cho biên bản/minutes) đọc chung một lượt
-/// quét letter vì cùng một thuật toán bucket-theo-Y/khoảng-cách, chỉ khác tín hiệu dùng để quyết heading.
+/// Dòng PDF dựng lại từ glyph theo toạ độ và khoảng cách (không phải dòng logic OOXML).
+/// Typography như <see cref="BoldRatio"/> và <see cref="LeadingBoldPrefix"/> là source facts
+/// cho layout/context; parser không quyết định heading membership.
 /// </summary>
 internal sealed record PdfLine(
     int Page, double Y, double FontSize, string Text, double BoldRatio, string LeadingBoldPrefix,

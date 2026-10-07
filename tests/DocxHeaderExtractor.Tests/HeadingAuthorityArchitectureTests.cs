@@ -52,6 +52,7 @@ public sealed class HeadingAuthorityArchitectureTests
             "PdfSourceOccurrenceAdapter", "PdfSourceOccurrenceBuildResult", "PdfSourceOccurrenceDetails",
             "DocxAuthoritySource", "DocxAuthorityContext", "HeadingContexts",
             "SourceFactsBuilder",
+            "PdfStyleClusterProfile", "PdfStyleClusterStats",
         };
         foreach (var file in Directory.EnumerateFiles(TestRepository.Path("src"), "*.cs", SearchOption.AllDirectories)
                      .Where(path => !path.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}") &&
@@ -85,7 +86,7 @@ public sealed class HeadingAuthorityArchitectureTests
             ("Source/Docx", ["DocxSourceAdapter"]),
             ("Source/Pdf", ["PdfSourceAdapter", "PdfSourceBuildResult", "PdfLineExtraction", "PdfLineIdentity", "PdfLineObservationAnalyzer",
                 "PdfSegmentAtomCatalog", "PdfSemanticBlockGrouper", "PdfSourceFacts", "PdfSourceContextBuilder", "PdfSourceEvidence", "PdfSourceTextProjection",
-                "PdfStyleClusterProfile", "PdfVisualLineSegmentation", "PdfReadOnlyCorrespondenceBuilder", "PdfSourceFactsBuilder"]),
+                "PdfStyleKey", "PdfTextUtilities", "PdfVisualLineSegmentation", "PdfReadOnlyCorrespondenceBuilder", "PdfSourceFactsBuilder"]),
             ("Source", ["DocumentSourceCatalogBuilder"]),
             ("Source/Common", ["DocumentOccurrence", "DocumentSourceSnapshot", "OccurrenceContext", "LooseLabelledMarkerParser", "SourceMarkerFactsParser", "SourceMarkerFact"]),
             ("Semantics/HeadingAuthority", ["TextSemanticHeadingAuthority", "FunctionAnchorExtentHeadingAuthority", "HeadingDecisionBinder"]),
