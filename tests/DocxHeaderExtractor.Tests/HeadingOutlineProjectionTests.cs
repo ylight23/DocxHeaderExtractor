@@ -38,7 +38,7 @@ public sealed class HeadingOutlineProjectionTests
 
         var source = element.Sources.Single();
         var projected = HeadingOutlineProjection.Project(
-            new ValidatedStructure([element])).Single();
+            ValidatedStructureFactory.Create([element])).Single();
 
         Assert.Equal("b17", source.SourceId);
         Assert.Equal(16, source.SourceOrdinal);
@@ -54,7 +54,7 @@ public sealed class HeadingOutlineProjectionTests
     [Fact]
     public void Model_origin_projects_as_model_source_awaiting_review()
     {
-        var projected = HeadingOutlineProjection.Project(new ValidatedStructure(
+        var projected = HeadingOutlineProjection.Project(ValidatedStructureFactory.Create(
             [Element(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.RequiresReview))])).Single();
 
         Assert.Equal(HeadingSource.Model, projected.Source);
@@ -67,7 +67,7 @@ public sealed class HeadingOutlineProjectionTests
     public void Unknown_origin_or_status_fails_closed_instead_of_being_relabelled(string origin, string status)
     {
         Assert.Throws<InvalidOperationException>(() =>
-            HeadingOutlineProjection.Project(new ValidatedStructure([Element(origin, status)])));
+            HeadingOutlineProjection.Project(ValidatedStructureFactory.Create([Element(origin, status)])));
     }
 
     private static ValidatedStructuralElement Element(string origin, string status) => new()

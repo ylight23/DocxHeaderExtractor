@@ -1,5 +1,6 @@
 using System.Text;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Semantics.Validation;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;
@@ -30,10 +31,10 @@ internal static class PdfHeadingPipeline
         ArgumentNullException.ThrowIfNull(pdfDetails);
         ArgumentException.ThrowIfNullOrWhiteSpace(sourceName);
         if (pdfDetails.ParserLineCount == 0 || pdfDetails.Blocks.Count == 0)
-            return new StructuralAuthorityResult(new ValidatedStructure([]), null, "pdf-no-text-layer") { SourceCatalog = authority.Catalog };
+            return new StructuralAuthorityResult(ValidatedStructureFactory.Create([]), null, "pdf-no-text-layer") { SourceCatalog = authority.Catalog };
         if (transport is null)
             return new StructuralAuthorityResult(
-                new ValidatedStructure([]), SourceOnlyAudit(authority, pdfDetails), "pdf-function-conditioned-llm-disabled")
+                ValidatedStructureFactory.Create([]), SourceOnlyAudit(authority, pdfDetails), "pdf-function-conditioned-llm-disabled")
             { SourceCatalog = authority.Catalog };
         if (transport is not IPdfProductionAuthorizedInferenceTransport authorized)
             throw new InvalidOperationException("PDF_PRODUCTION_AUTHORIZATION_REQUIRED");

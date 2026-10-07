@@ -73,7 +73,6 @@ public static class StructuralProposalValidator
             Sources = sources,
             Text = text,
             Level = proposal.ProposedLevel,
-            ParentId = proposal.ProposedParentId,
             Validation = validation,
             Decision = decision,
             ProjectionMetadata = projectionMetadata,

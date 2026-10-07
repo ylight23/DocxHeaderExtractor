@@ -49,7 +49,7 @@ public sealed class HeadingDocumentExtractionOutputTests
         {
             new StructuralRelationProposal("h1", "h2", StructuralRelationType.ParentChild),
         };
-        var structure = ValidatedStructure.FromElements(elements, relations);
+        var structure = ValidatedStructureFactory.Create(elements, relations);
         var catalog = DocumentSourceCatalogBuilder.FromSourceDocument(source);
         var sections = StructuralSectionProjection.Project(structure, catalog);
         var chunks = SectionChunkProjection.Project(

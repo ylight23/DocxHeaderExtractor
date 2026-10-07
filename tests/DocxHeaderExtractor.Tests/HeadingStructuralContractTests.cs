@@ -22,10 +22,10 @@ public sealed class HeadingStructuralContractTests
     public void Heading_graph_wire_bytes_match_the_pre_cleanup_baseline()
     {
         // Captured provider-free from cb2246b before taxonomy retirement. Never rebaseline.
-        var graph = ValidatedStructure.FromElements([
+        var graph = ValidatedStructureFactory.Create([
             Heading("root", "p0", 0, "Root", 1, null),
             Heading("child", "p1", 1, "Wrapped heading", 2, "root"),
-        ]);
+        ], [new StructuralRelationProposal("root", "child", StructuralRelationType.ParentChild)]);
         Assert.Equal("931fc4b2312baf43bf7ccaef1efbd604dd2b8838e72f5ed0146ae2476fff39cd",
             Convert.ToHexStringLower(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(graph))));
     }
@@ -42,7 +42,7 @@ public sealed class HeadingStructuralContractTests
         Assert.Equal("unsupported-structural-type", validation.RejectionReason);
         var element = Heading("root", "p0", 0, "Root", 1, null) with { Type = proposal.Type };
         Assert.Equal("unsupported-structural-type",
-            Assert.Throws<InvalidOperationException>(() => new ValidatedStructure([element])).Message);
+            Assert.Throws<InvalidOperationException>(() => ValidatedStructureFactory.Create([element])).Message);
     }
 
     [Theory]
@@ -58,7 +58,7 @@ public sealed class HeadingStructuralContractTests
         Assert.Equal("incompatible-structural-role", validation.RejectionReason);
         var element = Heading("root", "p0", 0, "Root", 1, null) with { Role = proposal.Role };
         Assert.Equal("incompatible-structural-role",
-            Assert.Throws<InvalidOperationException>(() => ValidatedStructure.FromElements([element])).Message);
+            Assert.Throws<InvalidOperationException>(() => ValidatedStructureFactory.Create([element])).Message);
     }
 
     [Theory]
@@ -68,7 +68,7 @@ public sealed class HeadingStructuralContractTests
         var elements = new[] { Heading("root", "p0", 0, "Root", 1, null),
             Heading("child", "p1", 1, "Child", 2, null) };
         Assert.Equal("relation-type-unsupported", Assert.Throws<InvalidOperationException>(() =>
-            new ValidatedStructure(elements, [new StructuralRelation("root", "child", (StructuralRelationType)value)])).Message);
+            ValidatedStructureFactory.Create(elements, [new StructuralRelationProposal("root", "child", (StructuralRelationType)value)])).Message);
     }
 
     [Theory]
@@ -109,6 +109,72 @@ public sealed class HeadingStructuralContractTests
                 new StructuralRelationProposal("a", "c", StructuralRelationType.ParentChild),
                 new StructuralRelationProposal("b", "c", StructuralRelationType.ParentChild),
             ])).Message);
+    }
+
+    [Fact]
+    public void Parent_ids_are_only_a_view_of_explicit_validated_relations()
+    {
+        var root = Heading("root", "p0", 0, "Root", 1, null);
+        var child = Heading("child", "p1", 1, "Child", 2, "untrusted-parent");
+        var withoutRelations = ValidatedStructureFactory.Create([root, child]);
+        Assert.Empty(withoutRelations.Relations);
+        Assert.All(withoutRelations.Elements, element => Assert.Null(element.ParentId));
+        var withRelations = ValidatedStructureFactory.Create([root, child],
+            [new StructuralRelationProposal("root", "child", StructuralRelationType.ParentChild)]);
+        Assert.Equal("root", withRelations.Elements.Single(element => element.Id == "child").ParentId);
+        Assert.Equal("untrusted-parent", child.ParentId);
+    }
+
+    [Fact]
+    public void Factory_keeps_duplicate_endpoint_self_parent_and_cardinality_gates()
+    {
+        var root = Heading("root", "p0", 0, "Root", 1, null);
+        var child = Heading("child", "p1", 1, "Child", 2, null);
+        Assert.Equal("duplicate-structural-element-id", Assert.Throws<InvalidOperationException>(() =>
+            ValidatedStructureFactory.Create([root, root])).Message);
+        Assert.Equal("relation-endpoint-not-grounded", Assert.Throws<InvalidOperationException>(() =>
+            ValidatedStructureFactory.Create([root, child],
+                [new StructuralRelationProposal("missing", "child", StructuralRelationType.ParentChild)])).Message);
+        Assert.Equal("relation-self-reference", Assert.Throws<InvalidOperationException>(() =>
+            ValidatedStructureFactory.Create([root],
+                [new StructuralRelationProposal("root", "root", StructuralRelationType.ParentChild)])).Message);
+        var other = Heading("other", "p2", 2, "Other", 1, null);
+        Assert.Equal("multiple-parent-relations", Assert.Throws<InvalidOperationException>(() =>
+            ValidatedStructureFactory.Create([root, child, other], [
+                new StructuralRelationProposal("root", "child", StructuralRelationType.ParentChild),
+                new StructuralRelationProposal("other", "child", StructuralRelationType.ParentChild),
+            ])).Message);
+    }
+
+    [Fact]
+    public void Factory_snapshots_top_level_collections_and_deduplicates_relations()
+    {
+        var elements = new List<ValidatedStructuralElement> { Heading("root", "p0", 0, "Root", 1, null),
+            Heading("child", "p1", 1, "Child", 2, null) };
+        var relation = new StructuralRelationProposal("root", "child", StructuralRelationType.ParentChild);
+        var relations = new List<StructuralRelationProposal> { relation, relation };
+        var graph = ValidatedStructureFactory.Create(elements, relations);
+        elements.Clear();
+        relations.Clear();
+        Assert.Equal(2, graph.Elements.Count);
+        Assert.Single(graph.Relations);
+        Assert.Throws<NotSupportedException>(() => ((IList<ValidatedStructuralElement>)graph.Elements).Clear());
+        Assert.Throws<NotSupportedException>(() => ((IList<StructuralRelation>)graph.Relations).Clear());
+    }
+
+    [Fact]
+    public void Structural_data_contracts_do_not_import_semantic_services_or_construct_graphs()
+    {
+        var root = TestRepository.Path("src/DocxHeaderExtractor.Core/Models");
+        foreach (var file in new[] { "SourceFactsContracts.cs", "SourceSelectionContracts.cs",
+                     "HeadingStructuralContracts.cs", "HeadingHierarchyContracts.cs", "ValidatedStructure.cs" })
+        {
+            var source = File.ReadAllText(Path.Combine(root, file));
+            Assert.DoesNotContain("Core.Semantics", source, StringComparison.Ordinal);
+            Assert.DoesNotContain("StructuralRelationProposalValidator", source, StringComparison.Ordinal);
+            Assert.DoesNotContain("FromElements", source, StringComparison.Ordinal);
+        }
+        Assert.Empty(typeof(ValidatedStructure).GetConstructors());
     }
 
     [Fact]

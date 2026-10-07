@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Semantics.Validation;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
@@ -28,7 +29,7 @@ internal static class DocxHeadingPipeline
         ArgumentNullException.ThrowIfNull(sourceDocument);
         var source = DocxSourceAdapter.Build(sourceDocument).Snapshot;
         if (source.Occurrences.Count == 0)
-            return new StructuralAuthorityResult(new ValidatedStructure([]), null, "empty-docx-source");
+            return new StructuralAuthorityResult(ValidatedStructureFactory.Create([]), null, "empty-docx-source");
 
         IHeadingAuthority authority = new TextSemanticHeadingAuthority(transport, experiment);
         var decided = await authority.DecideAsync(source, cancellationToken).ConfigureAwait(false);

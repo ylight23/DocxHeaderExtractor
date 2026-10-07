@@ -133,6 +133,7 @@ public sealed record ValidatedStructuralElement
     [JsonPropertyName("level")]
     public int? Level { get; init; }
 
+    /// <summary>Compatibility view derived from validated ParentChild relations by the graph factory.</summary>
     [JsonPropertyName("parentId")]
     public string? ParentId { get; init; }
 

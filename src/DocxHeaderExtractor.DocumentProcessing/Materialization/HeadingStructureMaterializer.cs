@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Semantics.Validation;
 using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
@@ -69,6 +70,7 @@ internal static class HeadingStructureMaterializer
             item => $"structural:{routeKey}:{item.SourceId}",
             StringComparer.Ordinal);
         var elements = new List<ValidatedStructuralElement>(selected.Count);
+        var relationProposals = new List<StructuralRelationProposal>();
 
         foreach (var item in selected)
         {
@@ -140,13 +142,12 @@ internal static class HeadingStructureMaterializer
             {
                 Sources = element.Sources.Select(source => source with { StableId = sourceParagraph.SourceId }).ToArray(),
             });
+            if (proposal.ProposedParentId is { } parentElementId)
+                relationProposals.Add(new StructuralRelationProposal(
+                    parentElementId, element.Id, StructuralRelationType.ParentChild));
         }
 
-        var relationProposals = elements
-            .Where(element => element.ParentId is not null)
-            .Select(element => new StructuralRelationProposal(
-                element.ParentId!, element.Id, StructuralRelationType.ParentChild));
-        return ValidatedStructure.FromElements(elements, relationProposals);
+        return ValidatedStructureFactory.Create(elements, relationProposals);
     }
 
     private static SourceFacts FactsFor(StructureSourceOccurrence occurrence) => new()

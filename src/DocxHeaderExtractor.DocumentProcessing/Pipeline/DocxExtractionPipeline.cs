@@ -7,6 +7,7 @@ using DocxHeaderExtractor.DocumentProcessing.Materialization;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Semantics.Validation;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
@@ -100,7 +101,7 @@ public sealed class DocxExtractionPipeline : IDisposable
 
             var product = new DocumentProductOutput(FileSha256(inputPath), []);
             var structural = new StructuralMaterializationResult(
-                new ValidatedStructure([]), new HashSet<string>(StringComparer.Ordinal), 0, 0);
+                ValidatedStructureFactory.Create([]), new HashSet<string>(StringComparer.Ordinal), 0, 0);
             if (audit is not null)
             {
                 var finalStructure = BuildFinalStructure(inputPath, audit, authority.Structure);
@@ -217,7 +218,7 @@ public sealed class DocxExtractionPipeline : IDisposable
                 relation.FromId, relation.ToId, relation.Type));
         return authority with
         {
-            Structure = ValidatedStructure.FromElements(remaining, survivingRelations),
+            Structure = ValidatedStructureFactory.Create(remaining, survivingRelations),
             Audit = audit,
             EmittedElementIds = emitted,
         };
