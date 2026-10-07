@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Materialization;
+using DocxHeaderExtractor.Core.Semantics.Validation;
 
 namespace DocxHeaderExtractor.Tests;
 

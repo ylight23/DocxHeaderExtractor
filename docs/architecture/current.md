@@ -74,6 +74,11 @@ qualification/history subsystems retain their distinct live responsibilities.
   as public/wire compatibility views, not independent authority. Graph admission derives
   ParentId only from explicit validated relations. Production outline/grounding/section
   projections read Elements directly; section hierarchy reads Relations.
+- S5 places the pure source/span/type/role/level/parent validation and DTO materialization
+  gate `StructuralProposalValidator` in `Core/Semantics/Validation`. The processing
+  materializer still owns source assembly, hierarchy decisions, status/origin choice and
+  projection context. The validator accepts caller-supplied decision data; it has no
+  processing status or runtime dependency.
 - `HeadingPipelineResult` is the DOCX/PDF runtime envelope, not a second authority. It carries
   Structure plus projection context, source catalog, audit, emitted IDs and reason. It remains
   in the existing DocumentProcessing/Authority audit/result-contract owner, outside orchestration

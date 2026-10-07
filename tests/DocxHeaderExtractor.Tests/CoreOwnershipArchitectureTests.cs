@@ -17,7 +17,8 @@ public sealed class CoreOwnershipArchitectureTests
                 typeof(SemanticSourcePartBinder), typeof(SemanticSourceProjection),
                 typeof(SemanticCoordinateBinding), typeof(CanonicalSemanticHardBindingValidator),
                 typeof(DocxHeaderExtractor.Core.Semantics.Binding.SourceTextBoundaryMap)],
-            ["Validation"] = [typeof(CanonicalSemanticContractValidator), typeof(StructuralRelationProposalValidator)],
+            ["Validation"] = [typeof(CanonicalSemanticContractValidator), typeof(StructuralRelationProposalValidator),
+                typeof(StructuralProposalValidator), typeof(ValidatedStructureFactory)],
             ["Parsing"] = [typeof(CanonicalSemanticProposalParser), typeof(SemanticProposalDecoder)],
             ["Identity"] = [typeof(CanonicalSemanticIdentityResolver)],
         };

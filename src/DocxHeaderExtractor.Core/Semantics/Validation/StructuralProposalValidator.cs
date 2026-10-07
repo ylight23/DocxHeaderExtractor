@@ -1,7 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
+namespace DocxHeaderExtractor.Core.Semantics.Validation;
 
 /// <summary>
 /// Source/span gate for heading materialization proposals. It validates proposed coordinates against

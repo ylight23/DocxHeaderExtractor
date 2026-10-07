@@ -93,7 +93,7 @@ public sealed class HeadingAuthorityArchitectureTests
             ("Semantics/HeadingAuthority", ["TextSemanticHeadingAuthority", "FunctionAnchorExtentHeadingAuthority", "HeadingDecisionBinder"]),
             ("Semantics/Canonical", ["CanonicalSemanticEngine", "CanonicalSemanticExperiment", "CanonicalGrounding", "SemanticConflictCensus",
                 "SemanticEvidencePackingPolicy", "SemanticRequestVersion"]),
-            ("Materialization", ["HeadingParentResolver", "HeadingHierarchyResolver", "HeadingStructureMaterializer", "HeadingStructureAssembler", "StructuralProposalValidator"]),
+            ("Materialization", ["HeadingParentResolver", "HeadingHierarchyResolver", "HeadingStructureMaterializer", "HeadingStructureAssembler"]),
             ("Projection", ["CanonicalFinalStructureProjection", "DocumentProductOutputProjector", "HeadingOutlineProjection",
                 "SectionChunkProjection", "StructuralSectionProjection", "OutputDecisionPolicy"]),
             ("Authority", ["ExecutionAuditBoundary", "HierarchyFactHash", "PipelineExecutionAudit", "HeadingHierarchyFactAudit", "PdfHierarchyFactsInventory", "HeadingPipelineResult"]),
