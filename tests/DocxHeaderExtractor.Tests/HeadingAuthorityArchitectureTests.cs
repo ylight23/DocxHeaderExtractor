@@ -75,9 +75,10 @@ public sealed class HeadingAuthorityArchitectureTests
             "DocxExtractionPipeline.cs", "DocxHeadingPipeline.cs", "PdfExtractionPipeline.cs", "PdfHeadingPipeline.cs",
             "PdfLaneExecution.cs", "PdfStageCheckpoint.cs", "ProductionCheckpointScope.cs", "PipelineOptions.cs",
         ];
+        var pipeline = Path.Combine(root, "Pipeline");
         Assert.Equal(orchestrationFiles.Order(StringComparer.Ordinal),
-            Directory.EnumerateFiles(Path.Combine(root, "Pipeline"), "*", SearchOption.AllDirectories)
-                .Select(Path.GetFileName).Order(StringComparer.Ordinal));
+            Directory.EnumerateFiles(pipeline, "*", SearchOption.AllDirectories)
+                .Select(path => Path.GetRelativePath(pipeline, path)).Order(StringComparer.Ordinal));
         var layout = new (string Folder, string[] Files)[]
         {
             ("Source/Docx", ["DocxSourceAdapter"]),
