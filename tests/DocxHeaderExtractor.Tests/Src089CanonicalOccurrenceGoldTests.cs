@@ -188,15 +188,15 @@ public sealed class Src089CanonicalOccurrenceGoldTests
         Assert.Equal(JsonValueKind.Null, title.GetProperty("sourceParts")[2].GetProperty("verbatimText").ValueKind);
         // S089_Q2 (user): a chapter label and its title line are one claim of two parts.
         Claim("L0014:S0", "L0015:S0");
-        Claim("L0535:S0", "L0536:S0");
+        Claim("L0534:S0", "L0535:S0");
         // S089_Q3 (user, TRUE x4): the colon-ended clause labels.
-        foreach (var clause in new[] { "L0109:S0", "L0117:S0", "L0246:S0", "L0249:S0" })
+        foreach (var clause in new[] { "L0109:S0", "L0117:S0", "L0245:S0", "L0248:S0" })
             Claim(clause);
         // An article title wrapped onto lower-case lines is one claim; a complete one-line title stays alone.
         Claim("L0106:S0", "L0107:S0", "L0108:S0");
-        Claim("L0350:S0");
+        Claim("L0349:S0");
         // The number/date line, the signature block and the translation notice are in no claim.
-        foreach (var other in new[] { "L0005:S0", "L0576:S0", "L0577:S0", "L0578:S0", "L0000:S0", "L0001:S0" })
+        foreach (var other in new[] { "L0005:S0", "L0575:S0", "L0576:S0", "L0577:S0", "L0000:S0", "L0001:S0" })
             Assert.DoesNotContain(other, inAnyClaim);
     }
 

@@ -21,20 +21,20 @@
     },
     "atomLayoutFacts": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-089/atom-layout-facts.tsv",
-      "sha256": "ae3dc7a83742eb29164b7906757062c7fe25b6226775c610d13b5cf59ccfebd1"
+      "sha256": "d7658a088e054ea0d6a1cf860fda31a568eff314534af26389b2cd14195565fd"
     },
     "atomGlyphFacts": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-089/atom-glyph-facts.tsv",
-      "sha256": "3c7b4f6b08efecd5de8dfc0b3bc18715d876c087a6eaa5feeeada0e076960a0c",
+      "sha256": "777b43de31ce7e9c6e69068bdcb8a9895d7ae5868c9f78f1cb456fe8b2b4efb1",
       "writer": "ScaleUpSurveyDiagnosticTests.Dump_pdf_atom_glyph_facts"
     },
     "reviewItems": {
       "path": "eval/a99-closed-loop/source-review-v1/SRC-089/review-items.json",
-      "sha256": "42f1474e55a2708da80611ee5468c1626ef235b8362375a5b7843e2a667bb4b4"
+      "sha256": "a2f76bd59164f96db8aca980f1836a7d0d42b6526133339a7ae0eca919320c79"
     }
   },
   "summary": {
-    "SOURCE_OCCURRENCES": 582,
+    "SOURCE_OCCURRENCES": 581,
     "CLEAR_HEADING": 36,
     "CLEAR_NON_HEADING_SET_APART": 8,
     "AMBIGUOUS": 0,
