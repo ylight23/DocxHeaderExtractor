@@ -1,6 +1,6 @@
 # Current architecture contract
 
-Status: `ACTIVE — PHASE 2 SOURCE-TREE HYGIENE`
+Status: `ACTIVE — N13/N14 OWNERSHIP AND VOCABULARY CLOSURE`
 
 Baseline: `main@5678b454dc28c8bab811c5ce35a789d540fa82be`
 
@@ -15,7 +15,8 @@ workstream.
 Web / CLI / MCP
   -> DocumentAgentHarness
   -> PipelineDocumentExtractionTool
-  -> AuthorityExtractionPipeline
+  -> DocxExtractionPipeline / PdfExtractionPipeline
+  -> DocxHeadingPipeline / PdfHeadingPipeline
   -> ValidatedStructure
   -> PromptDrivenProjection
   -> GenericTaskResult
@@ -24,6 +25,28 @@ Web / CLI / MCP
 All three hosts currently use the same `DocumentAgentHarness`; Web, CLI, and MCP consume the
 validated `TaskResult.Value` projection. The compatibility `DocumentAgentRunResult.Outline` is
 retained for existing library/test callers and is not a second authority route.
+
+## Production ownership after N13/N14
+
+`DocumentProcessing/Pipeline/` is orchestration-only. Its exact, recursively checked allowlist is
+`DocxExtractionPipeline.cs`, `DocxHeadingPipeline.cs`, `PdfExtractionPipeline.cs`,
+`PdfHeadingPipeline.cs`, `PdfLaneExecution.cs`, `PdfStageCheckpoint.cs`,
+`ProductionCheckpointScope.cs`, and `PipelineOptions.cs`. Helpers, validators and parsers may not
+be added there.
+
+PDF parsing/adapters belong to `Source/Pdf`; DOCX adapters to `Source/Docx`; shared marker parsing
+to `Source/Common`. `DocumentSourceCatalogBuilder` belongs to the `Source` root because it builds
+both generic and PDF-facing catalogs. Canonical semantics belong to `Semantics/Canonical`, heading
+authority/decision contracts to `Semantics/HeadingAuthority`, and hierarchy/binding/materialization
+to `Materialization`. Output projections/policies belong to `Projection`, audit/result contracts
+to `Authority`, neutral transport/wire contracts to `Inference`, DOCX product writeback to
+`OpenXmlLayer`, and binary revision discovery to `Provenance`.
+
+The C# audit vocabulary is `PipelineExecutionAudit`, `LaneExecutionAudit`, `SourceBlockAudit`,
+`SourceBlockDecisionAudit`, and `ExecutionAuditBoundary`. `PipelineExecutionAudit.PipelineId`
+retains the JSON name `route`; serialized/API names and frozen experiment artifacts are unchanged.
+`HeadingAuthorityArchitectureTests` guards the exact layout, retired symbols, and provider-neutral
+DocumentProcessing vocabulary. This cleanup changes neither prompts nor semantic authority.
 
 ## Trust and authority boundaries
 
@@ -90,7 +113,7 @@ it was removed once nothing called it, and no evaluation command had been reachi
 
 The extension seam is executable-tested in
 `tests/DocxHeaderExtractor.Tests/AutoHarnessExtensionProofTests.cs`: a custom capability, semantic
-definition, allowlisted source, compiled task plan, and provider-neutral classifier can compose
+definition, allowlisted source, compiled task plan, and provider-neutral transport can compose
 without adding a second authority route or making a provider call.
 
 ## Open architecture findings

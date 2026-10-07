@@ -37,8 +37,8 @@ internal static class DocxHeadingPipeline
         var assembly = await HeadingStructureAssembler.AssembleAsync(
             source, decided, PrimaryOccurrenceSelection.FirstOfSemanticNode, cancellationToken).ConfigureAwait(false);
 
-        var blocks = source.Occurrences.Select(item => new RouteBlockAudit(item.Id, 0, item.Text)).ToArray();
-        var audit = CanonicalRouteAuditBoundary.Create(
+        var blocks = source.Occurrences.Select(item => new SourceBlockAudit(item.Id, 0, item.Text)).ToArray();
+        var audit = ExecutionAuditBoundary.Create(
             RouteId,
             blocks.Length,
             blocks.Length,
@@ -46,7 +46,7 @@ internal static class DocxHeadingPipeline
             0,
             blocks,
             blocks,
-            decided.Decisions.Select(decision => new RouteBlockDecisionAudit(decision.Id, decision.SemanticFunction)).ToArray(),
+            decided.Decisions.Select(decision => new SourceBlockDecisionAudit(decision.Id, decision.SemanticFunction)).ToArray(),
             assembly.Validated.Select(item => item.SourceId).ToArray());
         return new StructuralAuthorityResult(
             assembly.Structure,

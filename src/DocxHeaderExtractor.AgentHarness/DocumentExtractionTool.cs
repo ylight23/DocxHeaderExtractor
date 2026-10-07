@@ -142,7 +142,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         var remote = !options.DisableLlm && sendsDataExternally;
         return new CapabilityDescriptor(
             "extract_document_headings",
-            "Đọc cấu trúc tài liệu đã tải lên (DOCX hoặc PDF), gọi classifier khi cần, dựng cây heading và áp precision gate.",
+            "Đọc cấu trúc tài liệu đã tải lên (DOCX hoặc PDF), gọi inference transport khi cần, dựng cây heading và áp precision gate.",
             remote ? CapabilityRisk.Medium : CapabilityRisk.Low,
             SendsDataExternally: remote,
             MutatesExternalState: false)

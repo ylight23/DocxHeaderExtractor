@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Tests;

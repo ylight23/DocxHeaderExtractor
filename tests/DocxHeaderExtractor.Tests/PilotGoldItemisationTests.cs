@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Source;
 using System.Text;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json.Nodes;

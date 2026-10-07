@@ -6,7 +6,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 /// <summary>Common producer envelope used while DOCX and PDF producers converge on generic authority.</summary>
 public sealed record StructuralAuthorityResult(
     ValidatedStructure Structure,
-    RouteExecutionAudit? Audit,
+    PipelineExecutionAudit? Audit,
     string Reason,
     IReadOnlySet<string>? EmittedElementIds = null)
 {

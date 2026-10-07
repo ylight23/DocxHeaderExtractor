@@ -1,3 +1,5 @@
+using DocxHeaderExtractor.DocumentProcessing.Source;
+using DocxHeaderExtractor.DocumentProcessing.Provenance;
 using System.Security.Cryptography;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
@@ -19,7 +21,7 @@ public sealed class DocxExtractionPipeline : IDisposable
 {
     private readonly PipelineOptions _options;
     private readonly IInferenceTransportFactory? _analystFactory;
-    private readonly bool _classifierSendsDataExternally;
+    private readonly bool _transportSendsDataExternally;
     private IInferenceTransport? _analyst;
     private readonly bool _ownsAnalyst;
 
@@ -44,12 +46,12 @@ public sealed class DocxExtractionPipeline : IDisposable
         PipelineOptions options,
         IInferenceTransport? analyst,
         IInferenceTransportFactory? analystFactory,
-        bool classifierSendsDataExternally = false)
+        bool transportSendsDataExternally = false)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _analyst = analyst;
         _analystFactory = analystFactory;
-        _classifierSendsDataExternally = classifierSendsDataExternally || analystFactory?.SendsDataExternally == true;
+        _transportSendsDataExternally = transportSendsDataExternally || analystFactory?.SendsDataExternally == true;
         _ownsAnalyst = analystFactory is not null || analyst is null;
     }
 
@@ -146,7 +148,7 @@ public sealed class DocxExtractionPipeline : IDisposable
                 DeterministicRoute = route,
                 RouteAudit = audit,
                 Provenance = BuildProvenance(audit,
-                    !_options.DisableLlm && (_analystFactory?.SendsDataExternally ?? _classifierSendsDataExternally)),
+                    !_options.DisableLlm && (_analystFactory?.SendsDataExternally ?? _transportSendsDataExternally)),
             };
             return new AuthorityPipelineExecutionResult(extractionResult, outline);
     }
@@ -161,7 +163,7 @@ public sealed class DocxExtractionPipeline : IDisposable
         return _analyst;
     }
 
-    internal static CanonicalFinalStructure BuildFinalStructure(string docxPath, RouteExecutionAudit audit,
+    internal static CanonicalFinalStructure BuildFinalStructure(string docxPath, PipelineExecutionAudit audit,
         ValidatedStructure structure)
     {
         // Materializes only facts already validated upstream; resolves no identity, hierarchy or
@@ -221,7 +223,7 @@ public sealed class DocxExtractionPipeline : IDisposable
         };
     }
 
-    internal static OutlineRunProvenance BuildProvenance(RouteExecutionAudit? audit,
+    internal static OutlineRunProvenance BuildProvenance(PipelineExecutionAudit? audit,
         bool sentDataExternally)
     {
         if (audit is null)

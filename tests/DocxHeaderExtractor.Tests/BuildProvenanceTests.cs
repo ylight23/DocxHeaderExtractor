@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Provenance;
 using System.Reflection;
 using System.Reflection.Emit;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;

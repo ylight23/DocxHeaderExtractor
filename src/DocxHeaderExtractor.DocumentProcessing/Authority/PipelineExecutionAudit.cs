@@ -4,21 +4,21 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 
-/// <summary>Auditable losses for a bounded route, especially PDF source/LLM/grounding pipelines.</summary>
-public sealed record RouteExecutionAudit(
+/// <summary>Auditable losses for a bounded pipeline, especially PDF source/LLM/grounding pipelines.</summary>
+public sealed record PipelineExecutionAudit(
     [property: JsonPropertyName("summary")] string Summary,
     [property: JsonPropertyName("sourceBlocksAvailable")] int SourceBlocksAvailable,
     [property: JsonPropertyName("sourceBlocksSelected")] int SourceBlocksSelected,
     [property: JsonPropertyName("sourcePagesAvailable")] int SourcePagesAvailable,
     [property: JsonPropertyName("sourcePagesSelected")] int SourcePagesSelected,
-    [property: JsonPropertyName("sourceBlocks")] IReadOnlyList<RouteBlockAudit> SourceBlocks,
-    [property: JsonPropertyName("selectedSourceBlocks")] IReadOnlyList<RouteBlockAudit> SelectedSourceBlocks,
-    [property: JsonPropertyName("blockDecisions")] IReadOnlyList<RouteBlockDecisionAudit> BlockDecisions,
+    [property: JsonPropertyName("sourceBlocks")] IReadOnlyList<SourceBlockAudit> SourceBlocks,
+    [property: JsonPropertyName("selectedSourceBlocks")] IReadOnlyList<SourceBlockAudit> SelectedSourceBlocks,
+    [property: JsonPropertyName("blockDecisions")] IReadOnlyList<SourceBlockDecisionAudit> BlockDecisions,
     [property: JsonPropertyName("groundedBlockIds")] IReadOnlyList<string> GroundedBlockIds)
 {
-    /// <summary>Stable route identity for the promoted execution authority.</summary>
+    /// <summary>Stable pipeline identity for the promoted execution authority.</summary>
     [JsonPropertyName("route")]
-    public string? Route { get; init; }
+    public string? PipelineId { get; init; }
 
     /// <summary>Source identities selected before any provider execution; route-local id is diagnostic only.</summary>
     [JsonPropertyName("selectedSourceIdentities")]
@@ -55,11 +55,11 @@ public sealed record RouteExecutionAudit(
 
     /// <summary>Independent semantic execution outcome. A timeout is partial work, not provider unavailability.</summary>
     [JsonPropertyName("semanticLane")]
-    public RouteLaneExecutionAudit? SemanticLane { get; init; }
+    public LaneExecutionAudit? SemanticLane { get; init; }
 
     /// <summary>Independent visual execution outcome.</summary>
     [JsonPropertyName("visualLane")]
-    public RouteLaneExecutionAudit? VisualLane { get; init; }
+    public LaneExecutionAudit? VisualLane { get; init; }
 
     /// <summary>
     /// Independent span-resolution outcome. Reported separately from <see cref="SemanticLane"/> on
@@ -68,7 +68,7 @@ public sealed record RouteExecutionAudit(
     /// always meant.
     /// </summary>
     [JsonPropertyName("spanLane")]
-    public RouteLaneExecutionAudit? SpanLane { get; init; }
+    public LaneExecutionAudit? SpanLane { get; init; }
 
     [JsonPropertyName("batchTelemetry")]
     public HeadingAuthorityBatchTelemetry? BatchTelemetry { get; init; }
@@ -81,7 +81,7 @@ public sealed record PdfSelectedSourceIdentity(
     [property: JsonPropertyName("sourceText")] string SourceText,
     [property: JsonPropertyName("sourceSpan")] TextOffsetSpan? SourceSpan = null);
 
-public sealed record RouteLaneExecutionAudit(
+public sealed record LaneExecutionAudit(
     [property: JsonPropertyName("status")] string Status,
     [property: JsonPropertyName("scheduled")] int Scheduled,
     [property: JsonPropertyName("completed")] int Completed,
@@ -110,7 +110,7 @@ public sealed record HeadingAuthorityBatchTelemetry(
 /// <summary>
 /// One model-proposed parent link and what deterministic validation did with it.
 /// <para>
-/// Part of <see cref="RouteExecutionAudit.HierarchyProposals"/>, so it belongs with the audit
+/// Part of <see cref="PipelineExecutionAudit.HierarchyProposals"/>, so it belongs with the audit
 /// contract. It used to live inside <c>PdfSemanticHierarchyFallback</c> - the model stage that
 /// produced it - which meant deleting that dead stage would have taken a live production type with
 /// it.
@@ -122,12 +122,12 @@ public sealed record PdfHierarchyProposalAudit(
     string? ResolvedParentId,
     string Resolution);
 
-public sealed record RouteBlockAudit(
+public sealed record SourceBlockAudit(
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("page")] int Page,
     [property: JsonPropertyName("text")] string Text);
 
-public sealed record RouteBlockDecisionAudit(
+public sealed record SourceBlockDecisionAudit(
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("semanticFunction")] string? SemanticFunction,
     [property: JsonPropertyName("reason")] string? Reason = null);

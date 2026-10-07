@@ -1,7 +1,7 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
 
 /// <summary>
 /// Generic source/span gate for structural proposals. It validates proposed coordinates against

@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Provenance;
 
 /// <summary>
 /// What revision the running binary was built from, taken from the binary itself.

@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
 /// <summary>
 /// Reads a loosely labelled marker - a word followed by a number, as in "Điều 3", "Article 12",

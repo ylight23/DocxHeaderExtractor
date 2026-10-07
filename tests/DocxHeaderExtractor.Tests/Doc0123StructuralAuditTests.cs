@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Source;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Core.Models;

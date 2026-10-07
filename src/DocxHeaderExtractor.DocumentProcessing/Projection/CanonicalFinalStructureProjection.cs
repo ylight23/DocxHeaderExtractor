@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;

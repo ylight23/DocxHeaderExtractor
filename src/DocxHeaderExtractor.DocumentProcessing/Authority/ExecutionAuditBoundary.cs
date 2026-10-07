@@ -1,9 +1,7 @@
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 
 /// <summary>
-/// Creates the common, observation-only portion of a route audit.
+/// Creates the common, observation-only portion of a pipeline audit.
 /// <para>
 /// This boundary records stage inputs and decisions that have already been produced upstream. It
 /// does not decide heading membership, semantic identity, hierarchy, or materialization, and it
@@ -11,20 +9,20 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// attached by the lane adapters.
 /// </para>
 /// </summary>
-internal static class CanonicalRouteAuditBoundary
+internal static class ExecutionAuditBoundary
 {
-    internal static RouteExecutionAudit Create(
-        string route,
+    internal static PipelineExecutionAudit Create(
+        string pipelineId,
         int sourceBlocksAvailable,
         int sourceBlocksSelected,
         int sourcePagesAvailable,
         int sourcePagesSelected,
-        IReadOnlyList<RouteBlockAudit> sourceBlocks,
-        IReadOnlyList<RouteBlockAudit> selectedSourceBlocks,
-        IReadOnlyList<RouteBlockDecisionAudit> blockDecisions,
+        IReadOnlyList<SourceBlockAudit> sourceBlocks,
+        IReadOnlyList<SourceBlockAudit> selectedSourceBlocks,
+        IReadOnlyList<SourceBlockDecisionAudit> blockDecisions,
         IReadOnlyList<string> groundedBlockIds) =>
         new(
-            route,
+            pipelineId,
             sourceBlocksAvailable,
             sourceBlocksSelected,
             sourcePagesAvailable,
@@ -34,6 +32,6 @@ internal static class CanonicalRouteAuditBoundary
             blockDecisions,
             groundedBlockIds)
         {
-            Route = route,
+            PipelineId = pipelineId,
         };
 }

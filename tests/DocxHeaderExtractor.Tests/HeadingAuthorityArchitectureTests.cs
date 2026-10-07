@@ -43,12 +43,15 @@ public sealed class HeadingAuthorityArchitectureTests
             "HeadingProposalValidator", "HeaderClassifierCanonicalTextModel", "PdfProductionOpenRouterHeaderClassifier",
             "HeadingPlacementCoordinator", "ResolvedHeadingPlacement", "CanonicalStructureMaterializer", "CanonicalSourceOccurrence",
             "QualifiedInferenceRequestFactory", "PdfQualifiedInferencePolicy",
+            "RouteExecutionAudit", "RouteLaneExecutionAudit", "RouteBlockAudit", "RouteBlockDecisionAudit",
+            "CanonicalRouteAuditBoundary",
         };
         var retiredSourceSymbols = new[]
         {
             "SourceOccurrenceUniverse", "SourceOccurrence", "HeadingSourceContext", "DocxSourceOccurrenceAdapter",
             "PdfSourceOccurrenceAdapter", "PdfSourceOccurrenceBuildResult", "PdfSourceOccurrenceDetails",
             "DocxAuthoritySource", "DocxAuthorityContext", "HeadingContexts",
+            "SourceFactsBuilder",
         };
         foreach (var file in Directory.EnumerateFiles(TestRepository.Path("src"), "*.cs", SearchOption.AllDirectories)
                      .Where(path => !path.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}") &&
@@ -67,19 +70,31 @@ public sealed class HeadingAuthorityArchitectureTests
     public void Pipeline_folder_holds_orchestration_only_and_each_stage_lives_in_its_own_folder()
     {
         var root = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing");
+        string[] orchestrationFiles =
+        [
+            "DocxExtractionPipeline.cs", "DocxHeadingPipeline.cs", "PdfExtractionPipeline.cs", "PdfHeadingPipeline.cs",
+            "PdfLaneExecution.cs", "PdfStageCheckpoint.cs", "ProductionCheckpointScope.cs", "PipelineOptions.cs",
+        ];
+        Assert.Equal(orchestrationFiles.Order(StringComparer.Ordinal),
+            Directory.EnumerateFiles(Path.Combine(root, "Pipeline"), "*", SearchOption.AllDirectories)
+                .Select(Path.GetFileName).Order(StringComparer.Ordinal));
         var layout = new (string Folder, string[] Files)[]
         {
             ("Source/Docx", ["DocxSourceAdapter"]),
             ("Source/Pdf", ["PdfSourceAdapter", "PdfSourceBuildResult", "PdfLineExtraction", "PdfLineIdentity", "PdfLineObservationAnalyzer",
                 "PdfSegmentAtomCatalog", "PdfSemanticBlockGrouper", "PdfSemanticContracts", "PdfSourceEvidence", "PdfSourceTextProjection",
-                "PdfStyleClusterProfile", "PdfVisualLineSegmentation", "PdfReadOnlyCorrespondenceBuilder"]),
-            ("Source/Common", ["DocumentOccurrence", "DocumentSourceSnapshot", "OccurrenceContext"]),
+                "PdfStyleClusterProfile", "PdfVisualLineSegmentation", "PdfReadOnlyCorrespondenceBuilder", "PdfSourceFactsBuilder"]),
+            ("Source", ["DocumentSourceCatalogBuilder"]),
+            ("Source/Common", ["DocumentOccurrence", "DocumentSourceSnapshot", "OccurrenceContext", "LooseLabelledMarkerParser", "SourceMarkerFactsParser"]),
             ("Semantics/HeadingAuthority", ["TextSemanticHeadingAuthority", "FunctionAnchorExtentHeadingAuthority", "HeadingDecisionBinder"]),
             ("Semantics/Canonical", ["CanonicalSemanticEngine", "CanonicalSemanticExperiment", "CanonicalGrounding", "SemanticConflictCensus",
                 "SemanticEvidencePackingPolicy", "SemanticRequestVersion"]),
-            ("Materialization", ["HeadingParentResolver", "HeadingHierarchyResolver", "HeadingStructureMaterializer", "HeadingStructureAssembler"]),
+            ("Materialization", ["HeadingParentResolver", "HeadingHierarchyResolver", "HeadingStructureMaterializer", "HeadingStructureAssembler", "StructuralProposalValidator"]),
             ("Projection", ["CanonicalFinalStructureProjection", "DocumentProductOutputProjector", "HeadingOutlineProjection",
-                "SectionChunkProjection", "StructuralSectionProjection"]),
+                "SectionChunkProjection", "StructuralSectionProjection", "OutputDecisionPolicy"]),
+            ("Authority", ["ExecutionAuditBoundary", "HierarchyFactHash", "PipelineExecutionAudit"]),
+            ("Provenance", ["BuildProvenance"]),
+            ("OpenXmlLayer", ["DocxProductWriteback"]),
             ("Inference", ["IFrozenInferenceRequestComposer", "PdfInferenceWireContract"]),
         };
         foreach (var (folder, files) in layout)
@@ -88,6 +103,20 @@ public sealed class HeadingAuthorityArchitectureTests
                 Assert.True(File.Exists(Path.Combine(root, folder.Replace('/', Path.DirectorySeparatorChar), file + ".cs")), $"{folder}/{file}.cs");
                 Assert.False(File.Exists(Path.Combine(root, "Pipeline", file + ".cs")), $"Pipeline/{file}.cs should have moved");
             }
+    }
+
+    [Fact]
+    public void Document_processing_keeps_provider_names_and_classifier_vocabulary_out()
+    {
+        var root = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing");
+        foreach (var file in Directory.EnumerateFiles(root, "*.cs", SearchOption.AllDirectories)
+                     .Where(path => !path.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}") &&
+                                    !path.Contains($"{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}")))
+        {
+            var source = File.ReadAllText(file);
+            foreach (var token in new[] { "qwen", "alibaba", "OpenRouterQwen37", "V5ProviderEnvelope", "QualifiedInferenceRequestFactory", "classifier" })
+                Assert.DoesNotContain(token, source, StringComparison.OrdinalIgnoreCase);
+        }
     }
 
     [Fact]

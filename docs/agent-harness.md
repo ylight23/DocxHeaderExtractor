@@ -65,7 +65,7 @@ Bộ đọc front matter cố tình hẹp: một tầng, đúng các khoá đã 
 
 ## Critic và điều kiện dừng
 
-Vòng semantic nằm sát classifier trong Core vì đây là nơi còn đủ block cha/anh em/lân cận để
+Vòng semantic nằm sát inference transport vì đây là nơi còn đủ block cha/anh em/lân cận để
 phản biện có mục tiêu. Harness không retry mù toàn tài liệu. Nó giới hạn step, nhận kết quả đã qua
 critic/tree checks, chạy validator source-grounding, rồi kết thúc `Completed` hoặc
 `NeedsHumanReview`. Vi phạm ID/cấp/span là lỗi fail-closed, không được biến thành điểm confidence.
@@ -120,7 +120,7 @@ vì im lặng đổi tool là cách nhanh nhất để một run tưởng là c�
 
 ## Ranh giới project
 
-- `DocxHeaderExtractor.Core`: đọc DOCX, chunking, classifier, cấu trúc heading, calibration và
+- `DocxHeaderExtractor.Core`: source/structure contracts, inference transport contracts, calibration và
   pipeline hiện hữu. Không biết HTTP hay CLI.
 - `DocxHeaderExtractor.AgentHarness`: policy skill, run contract, tool descriptor, guardrail, trace,
   step/repair budget, human-review handoff, hành động ghi, narrator và adapter cho Core.

@@ -2,7 +2,7 @@ using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Source;
 
 /// <summary>Builds generic source units from parser-owned source representations.</summary>
 public static class DocumentSourceCatalogBuilder
@@ -79,7 +79,7 @@ public static class DocumentSourceCatalogBuilder
 
         return FromSourceFacts(uniqueBlocks.Select((block, index) =>
         {
-            var fact = SourceFactsBuilder.FromPdfBlock(block);
+            var fact = PdfSourceFactsBuilder.FromPdfBlock(block);
             var sourceOrdinal = block.Lines
                 .Select(PdfLineIdentity.Of)
                 .Where(lineId => lineIndexById?.ContainsKey(lineId) ?? false)

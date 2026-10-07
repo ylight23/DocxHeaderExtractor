@@ -1,11 +1,10 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 /// <summary>Builds immutable parser facts before any LLM/VLM call.</summary>
-public static class SourceFactsBuilder
+public static class PdfSourceFactsBuilder
 {
     internal static SourceFacts FromPdfBlock(PdfSemanticBlock block)
     {

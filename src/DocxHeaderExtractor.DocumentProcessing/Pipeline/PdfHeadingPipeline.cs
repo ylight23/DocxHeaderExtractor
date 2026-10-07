@@ -59,12 +59,12 @@ internal static class PdfHeadingPipeline
         return execution.Value;
     }
 
-    private static RouteExecutionAudit SourceOnlyAudit(DocumentSourceSnapshot authority, PdfSourceDetails pdfDetails)
+    private static PipelineExecutionAudit SourceOnlyAudit(DocumentSourceSnapshot authority, PdfSourceDetails pdfDetails)
     {
         var sourceBlocks = pdfDetails.Blocks
-            .Select(block => new RouteBlockAudit(block.Id, block.Page, block.DisplayText))
+            .Select(block => new SourceBlockAudit(block.Id, block.Page, block.DisplayText))
             .ToArray();
-        return CanonicalRouteAuditBoundary.Create(
+        return ExecutionAuditBoundary.Create(
             AuthorityId,
             pdfDetails.Blocks.Count,
             pdfDetails.Blocks.Count,
@@ -76,9 +76,9 @@ internal static class PdfHeadingPipeline
             []) with
         {
             ModelInputContracts = [],
-            SemanticLane = new RouteLaneExecutionAudit(
+            SemanticLane = new LaneExecutionAudit(
                 "not-run", authority.Atoms.Count, 0, 0, authority.Atoms.Count, "llm-disabled"),
-            SpanLane = new RouteLaneExecutionAudit(
+            SpanLane = new LaneExecutionAudit(
                 "not-run", 0, 0, 0, 0, "llm-disabled"),
         };
     }
@@ -97,9 +97,9 @@ internal static class PdfHeadingPipeline
         var assembly = await HeadingStructureAssembler.AssembleAsync(
             source, decided, PrimaryOccurrenceSelection.EverySourceOccurrence, ct).ConfigureAwait(false);
 
-        var sourceBlocks = pdfDetails.Blocks.Select(block => new RouteBlockAudit(block.Id, block.Page, block.DisplayText)).ToArray();
+        var sourceBlocks = pdfDetails.Blocks.Select(block => new SourceBlockAudit(block.Id, block.Page, block.DisplayText)).ToArray();
         var pages = pdfDetails.Blocks.Select(block => block.Page).Distinct().Count();
-        var audit = CanonicalRouteAuditBoundary.Create(
+        var audit = ExecutionAuditBoundary.Create(
             AuthorityId,
             pdfDetails.Blocks.Count,
             pdfDetails.Blocks.Count,
@@ -107,7 +107,7 @@ internal static class PdfHeadingPipeline
             pages,
             sourceBlocks,
             sourceBlocks,
-            decided.Decisions.Select(decision => new RouteBlockDecisionAudit(decision.Id, decision.SemanticFunction)).ToArray(),
+            decided.Decisions.Select(decision => new SourceBlockDecisionAudit(decision.Id, decision.SemanticFunction)).ToArray(),
             assembly.Validated.Select(item => item.SourceId).ToArray()) with
         {
             HierarchyFacts = PdfHierarchyFactsInventory.Inspect(assembly.Validated, pdfDetails.Contexts),

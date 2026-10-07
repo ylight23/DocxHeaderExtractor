@@ -4,9 +4,8 @@ using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
+namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 /// <summary>
 /// M9.3b. Writes the outline level a <see cref="DocumentProductOutput"/> already decided into a COPY of

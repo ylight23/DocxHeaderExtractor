@@ -171,7 +171,7 @@ public sealed class DocumentOutline
     /// </summary>
     [JsonPropertyName("routeAudit")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public RouteExecutionAudit? RouteAudit { get; init; }
+    public PipelineExecutionAudit? RouteAudit { get; init; }
 
     /// <summary>Bản ghi các lượt hỏi mô hình đã chạy thật; null khi chạy <c>--no-llm</c>.</summary>
     [JsonPropertyName("provenance")]

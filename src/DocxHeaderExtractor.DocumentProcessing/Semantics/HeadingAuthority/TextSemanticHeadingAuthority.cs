@@ -66,7 +66,7 @@ internal sealed class TextSemanticHeadingAuthority(
             SemanticFunction: item.SemanticRole)).ToArray();
         var count = source.Occurrences.Count;
 
-        RouteExecutionAudit Complete(RouteExecutionAudit audit, HeadingStructureAssembly assembly) => audit with
+        PipelineExecutionAudit Complete(PipelineExecutionAudit audit, HeadingStructureAssembly assembly) => audit with
         {
             RawAnalystResponses = model?.RawResponses ?? [],
             ModelInputContracts = model is null ? [] : [model.Contract.ProtocolVersion],
@@ -92,8 +92,8 @@ internal sealed class TextSemanticHeadingAuthority(
                 0,
                 0,
                 bound.Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal)),
-            SemanticLane = new RouteLaneExecutionAudit("complete", count, assembly.Validated.Count, 0, 0),
-            SpanLane = new RouteLaneExecutionAudit(
+            SemanticLane = new LaneExecutionAudit("complete", count, assembly.Validated.Count, 0, 0),
+            SpanLane = new LaneExecutionAudit(
                 "canonical-binder", bound.Count, bound.Count, 0, result.TextPipeline.BindingFailureCount),
             BatchTelemetry = new HeadingAuthorityBatchTelemetry(
                 count,

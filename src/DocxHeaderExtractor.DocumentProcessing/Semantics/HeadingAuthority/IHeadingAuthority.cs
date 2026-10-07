@@ -30,4 +30,4 @@ internal sealed record HeadingAuthorityResult(
     IReadOnlyList<HeadingExtentDecision> Decisions,
     IReadOnlyList<CanonicalSemanticBoundHeading> BoundHeadings,
     IInferenceTransport? PlacementTransport,
-    Func<RouteExecutionAudit, HeadingStructureAssembly, RouteExecutionAudit> CompleteAudit);
+    Func<PipelineExecutionAudit, HeadingStructureAssembly, PipelineExecutionAudit> CompleteAudit);

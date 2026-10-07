@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 using System.Collections.Immutable;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json.Serialization;

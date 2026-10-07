@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;

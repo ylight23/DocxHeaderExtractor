@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Source;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using System.Security.Cryptography;
 using System.Text;

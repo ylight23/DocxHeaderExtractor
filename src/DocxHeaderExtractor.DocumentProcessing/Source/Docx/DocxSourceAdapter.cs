@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Source;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;

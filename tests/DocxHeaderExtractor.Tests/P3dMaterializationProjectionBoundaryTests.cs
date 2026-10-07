@@ -93,7 +93,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
     {
         var structure = MaterializeOne();
         var before = System.Text.Json.JsonSerializer.Serialize(structure);
-        var audit = CanonicalRouteAuditBoundary.Create(
+        var audit = ExecutionAuditBoundary.Create(
             "test", 1, 1, 0, 0, [], [], [], ["S0001"]) with
         {
             ValidatedStructures =
@@ -127,16 +127,48 @@ public sealed class P3dMaterializationProjectionBoundaryTests
     [Fact]
     public void Audit_boundary_only_records_supplied_observations()
     {
-        var blocks = new[] { new RouteBlockAudit("B1", 1, "Alpha") };
-        var decisions = new[] { new RouteBlockDecisionAudit("B1", "REGION_STRUCTURE") };
+        var blocks = new[] { new SourceBlockAudit("B1", 1, "Alpha") };
+        var decisions = new[] { new SourceBlockDecisionAudit("B1", "REGION_STRUCTURE") };
 
-        var audit = CanonicalRouteAuditBoundary.Create(
+        var audit = ExecutionAuditBoundary.Create(
             "test-route", 1, 1, 1, 1, blocks, blocks, decisions, ["B1"]);
 
-        Assert.Equal("test-route", audit.Route);
+        Assert.Equal("test-route", audit.PipelineId);
         Assert.Same(blocks, audit.SourceBlocks);
         Assert.Same(decisions, audit.BlockDecisions);
         Assert.Empty(audit.RawAnalystResponses);
+    }
+
+    [Fact]
+    public void Renamed_audit_contracts_preserve_serialized_names_and_nested_wire_bytes()
+    {
+        var audit = ExecutionAuditBoundary.Create("test-pipeline", 1, 1, 1, 1,
+            [new SourceBlockAudit("B1", 1, "Alpha")], [],
+            [new SourceBlockDecisionAudit("B1", "REGION_STRUCTURE")], []) with
+        {
+            SemanticLane = new LaneExecutionAudit("complete", 1, 1, 0, 0),
+        };
+        foreach (var options in new[]
+                 {
+                     new System.Text.Json.JsonSerializerOptions(),
+                     new System.Text.Json.JsonSerializerOptions(System.Text.Json.JsonSerializerDefaults.Web),
+                 })
+        {
+            using var json = System.Text.Json.JsonDocument.Parse(System.Text.Json.JsonSerializer.Serialize(audit, options));
+            Assert.Equal(new[]
+            {
+                "summary", "sourceBlocksAvailable", "sourceBlocksSelected", "sourcePagesAvailable", "sourcePagesSelected",
+                "sourceBlocks", "selectedSourceBlocks", "blockDecisions", "groundedBlockIds", "route",
+                "selectedSourceIdentities", "rawAnalystResponses", "modelInputContracts", "sourceStageTraces",
+                "validatedStructures", "hierarchyProposals", "hierarchyFacts", "conflictCensus", "semanticLane",
+                "visualLane", "spanLane", "batchTelemetry",
+            }, json.RootElement.EnumerateObject().Select(property => property.Name));
+            Assert.Equal("test-pipeline", json.RootElement.GetProperty("route").GetString());
+            Assert.Equal("[{\"id\":\"B1\",\"page\":1,\"text\":\"Alpha\"}]", json.RootElement.GetProperty("sourceBlocks").GetRawText());
+            Assert.Equal("[{\"id\":\"B1\",\"semanticFunction\":\"REGION_STRUCTURE\",\"reason\":null}]", json.RootElement.GetProperty("blockDecisions").GetRawText());
+            Assert.Equal("{\"status\":\"complete\",\"scheduled\":1,\"completed\":1,\"timedOut\":0,\"notStarted\":0,\"failureClass\":null}",
+                json.RootElement.GetProperty("semanticLane").GetRawText());
+        }
     }
 
     private static ValidatedStructure MaterializeOne() =>

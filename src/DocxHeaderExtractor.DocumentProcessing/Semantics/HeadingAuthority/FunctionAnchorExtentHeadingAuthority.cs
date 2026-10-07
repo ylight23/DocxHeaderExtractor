@@ -90,13 +90,13 @@ internal sealed class FunctionAnchorExtentHeadingAuthority(
         var bound = decisions.Select(decision => ToBound(decision, atoms)).ToArray();
         var atomCount = source.Atoms.Count;
 
-        RouteExecutionAudit Complete(RouteExecutionAudit audit, HeadingStructureAssembly assembly) => audit with
+        PipelineExecutionAudit Complete(PipelineExecutionAudit audit, HeadingStructureAssembly assembly) => audit with
         {
             RawAnalystResponses = raw,
             ModelInputContracts = ["v5-total-occurrence-function-f1", "v5-function-conditioned-anchor-existence-1", "v5-function-conditioned-exact-end-pointer-clean-paired-1"],
             ValidatedStructures = assembly.Hierarchies.Values.ToArray(),
-            SemanticLane = new RouteLaneExecutionAudit("complete", atomCount, decisions.Count, 0, 0),
-            SpanLane = new RouteLaneExecutionAudit("exact-end-pointer", decisions.Count, assembly.Validated.Count, 0, decisions.Count - assembly.Validated.Count),
+            SemanticLane = new LaneExecutionAudit("complete", atomCount, decisions.Count, 0, 0),
+            SpanLane = new LaneExecutionAudit("exact-end-pointer", decisions.Count, assembly.Validated.Count, 0, decisions.Count - assembly.Validated.Count),
         };
         return new HeadingAuthorityResult(decisions, bound, transport, Complete);
     }
