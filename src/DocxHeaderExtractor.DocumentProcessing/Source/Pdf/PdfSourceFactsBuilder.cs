@@ -24,7 +24,7 @@ public static class PdfSourceFactsBuilder
                 RenderLineIds = block.Lines.Select((_, index) => $"{block.Id}:l{index + 1}").ToArray(),
                 BoundingBox = new PdfBoundingBox(block.Left, block.BottomY, block.Right, block.TopY),
             },
-            ParserBoundaries = DocxHeaderExtractor.Core.Models.SourceTextBoundaryMap.For(block.Text),
+            ParserBoundaries = DocxHeaderExtractor.Core.Semantics.Binding.SourceTextBoundaryMap.For(block.Text),
         };
     }
 }

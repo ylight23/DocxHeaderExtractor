@@ -134,7 +134,10 @@ without adding a second authority route or making a provider call.
 
 ## Core semantic and inference ownership
 
-`Core/Models` owns DTOs, value objects, validators and deterministic source binding contracts.
+`Core/Models` owns DTOs, value objects and neutral contract descriptors, not domain services.
+Value-object invariants and wire schema/encoding helpers remain valid contract behavior; this is
+not a blanket ban on methods in Models. `SemanticCoordinateContract` remains a descriptor that
+composes delegates from the separately owned parsing, validation and binding services.
 Neutral inference input/interface/context and occurrence contracts live in `Core/Models/Inference`.
 The neutral `Core.V5` namespaces are retained for source compatibility; the retired
 `Models/QualifiedInference` folder contains no current files.
@@ -143,6 +146,12 @@ The neutral `Core.V5` namespaces are retained for source compatibility; the reti
 `SemanticConflictNormalizer`, and `CanonicalSemanticGlobalConflictDetector`. These operate on
 supplied proposals/source aliases, perform no IO or inference, and cannot select a semantic winner.
 Their result/conflict DTOs remain in Core Models. Domain processing is not provider orchestration.
+
+`Core/Semantics/Binding`, `Validation`, `Parsing` and `Identity` own exact/source-part binding,
+coordinate-binding strategies, proposal and relation validators, proposal parsing/decoding and
+semantic identity resolution. Their contract/result DTOs keep the `Core.Models` namespace and
+unchanged serialized shapes. File-backed source hashing belongs to
+`DocumentProcessing/Provenance`, not the pure semantic services.
 
 `DocumentProcessing/Semantics/Canonical` owns `CanonicalSemanticTextProductionEntryPoint`,
 `CanonicalSemanticRequestComposer`, and `SemanticContextPacker`. The entrypoint invokes the
@@ -153,6 +162,12 @@ no reverse reference to DocumentProcessing. DOCX uses this text path; PDF uses F
 types. Moving them does not change provider payload bytes, prompt wording, token limits, or parser
 semantics. Assembly/namespace relocations require consumers to rebuild/update imports; this cleanup
 does not claim binary compatibility for relocated public implementation types.
+
+`IFrozenInferenceTransport` only executes supplied frozen bytes; it does not select a model-specific
+composer. The authorized `IPdfProductionAuthorizedInferenceTransport` owns the qualified PDF
+composer, and the production heading pipeline requires this capability before starting calls.
+Generic OpenRouter and qualification transports can target other models without implicitly
+advertising the qualified PDF composer. Qualification supplies its composer explicitly.
 
 The mixed `CanonicalSemanticVnextRuntime.cs` is split into context contracts, runtime packing,
 contract validation and hard-binding validation. No validation/binding logic is deleted.
@@ -171,7 +186,8 @@ ownership closure audit, not to stale branch status.
 
 The latest local Core ownership verification is recorded in
 [`core-ownership-closure-audit.md`](core-ownership-closure-audit.md), including the exact tested
-revision and clean tracked checkout caveat.
+revision and clean tracked checkout caveat. The subsequent C1/C2 ownership closure is recorded in
+[`core-domain-service-ownership-audit.md`](core-domain-service-ownership-audit.md).
 
 ## Phase control
 

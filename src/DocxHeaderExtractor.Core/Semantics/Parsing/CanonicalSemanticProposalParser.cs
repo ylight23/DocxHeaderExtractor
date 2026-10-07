@@ -1,6 +1,7 @@
 using System.Text.Json;
+using DocxHeaderExtractor.Core.Models;
 
-namespace DocxHeaderExtractor.Core.Models;
+namespace DocxHeaderExtractor.Core.Semantics.Parsing;
 
 /// <summary>
 /// Parses the model's semantic shape without consulting a source catalog. This is the freeze

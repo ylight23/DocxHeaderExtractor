@@ -1,3 +1,5 @@
+using DocxHeaderExtractor.Core.Semantics.Binding;
+using DocxHeaderExtractor.Core.Semantics.Identity;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.Core.Semantics.Canonical;

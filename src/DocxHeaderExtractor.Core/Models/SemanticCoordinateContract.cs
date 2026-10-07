@@ -1,3 +1,6 @@
+using DocxHeaderExtractor.Core.Semantics.Binding;
+using DocxHeaderExtractor.Core.Semantics.Validation;
+using DocxHeaderExtractor.Core.Semantics.Parsing;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;

@@ -9,6 +9,50 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class CoreOwnershipArchitectureTests
 {
     [Fact]
+    public void Models_cannot_reown_domain_services_after_the_contract_implementation_split()
+    {
+        var groups = new Dictionary<string, Type[]>
+        {
+            ["Binding"] = [typeof(SemanticSourceAliasCatalog), typeof(CanonicalSemanticExactBinder),
+                typeof(SemanticSourcePartBinder), typeof(SemanticSourceProjection),
+                typeof(SemanticCoordinateBinding), typeof(CanonicalSemanticHardBindingValidator),
+                typeof(DocxHeaderExtractor.Core.Semantics.Binding.SourceTextBoundaryMap)],
+            ["Validation"] = [typeof(CanonicalSemanticContractValidator), typeof(StructuralRelationProposalValidator)],
+            ["Parsing"] = [typeof(CanonicalSemanticProposalParser), typeof(SemanticProposalDecoder)],
+            ["Identity"] = [typeof(CanonicalSemanticIdentityResolver)],
+        };
+        var root = TestRepository.Path("src/DocxHeaderExtractor.Core");
+        var models = string.Join("\n", Directory.EnumerateFiles(Path.Combine(root, "Models"), "*.cs",
+            SearchOption.AllDirectories).Select(File.ReadAllText));
+        foreach (var (area, types) in groups)
+        foreach (var type in types)
+        {
+            Assert.Equal(typeof(CanonicalSemanticProposal).Assembly, type.Assembly);
+            Assert.Equal("DocxHeaderExtractor.Core.Semantics." + area, type.Namespace);
+            var source = File.ReadAllText(Path.Combine(root, "Semantics", area, type.Name + ".cs"));
+            Assert.DoesNotContain("File.Open", source, StringComparison.Ordinal);
+            Assert.DoesNotContain("HttpClient", source, StringComparison.Ordinal);
+            Assert.DoesNotContain("ICanonicalSemanticTextModel", source, StringComparison.Ordinal);
+            Assert.False(System.Text.RegularExpressions.Regex.IsMatch(models,
+                @"\b(?:class|record)\s+" + type.Name + @"\b"), type.Name);
+        }
+        Assert.DoesNotContain("class CanonicalSemanticSourceHash", models, StringComparison.Ordinal);
+        Assert.Equal("DocxHeaderExtractor.DocumentProcessing.Provenance", typeof(CanonicalSemanticSourceHash).Namespace);
+    }
+
+    [Fact]
+    public void Contract_and_value_object_namespaces_remain_stable()
+    {
+        foreach (var type in new[] { typeof(CanonicalSemanticProposal), typeof(SemanticSourceAlias),
+                     typeof(SemanticCoordinateBindingRequest), typeof(SemanticCoordinateBindingOutcome),
+                     typeof(SemanticContractIssue), typeof(SemanticProposalValidationSummary),
+                     typeof(CanonicalSemanticBindingValidation), typeof(SemanticProposalDecodeResult),
+                     typeof(SemanticProposalDecodeFailure), typeof(ValidatedStructure),
+                     typeof(StructuralRelationValidation), typeof(CanonicalSemanticGraph) })
+            Assert.Equal("DocxHeaderExtractor.Core.Models", type.Namespace);
+    }
+
+    [Fact]
     public void Core_contains_no_concrete_provider_or_reverse_project_dependency()
     {
         var root = TestRepository.Path("src/DocxHeaderExtractor.Core");

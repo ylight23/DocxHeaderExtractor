@@ -25,7 +25,6 @@ public sealed class OpenRouterQualificationTransport : IFrozenInferenceTransport
     public int ContextSize => _engine.ContextSize;
     public string RuntimeDescription => _engine.RuntimeDescription;
     public int SharedPrefixTokens => _engine.SharedPrefixTokens;
-    public IFrozenInferenceRequestComposer RequestComposer { get; } = new OpenRouterQwen37InferenceRequestComposer();
 
     internal Func<TimeSpan, CancellationToken, Task> RetryWait
     {

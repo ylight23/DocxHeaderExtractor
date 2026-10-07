@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Semantics.Identity;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Core.Models;
 

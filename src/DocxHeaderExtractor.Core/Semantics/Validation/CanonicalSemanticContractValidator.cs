@@ -1,12 +1,7 @@
 using System.Text.Json;
+using DocxHeaderExtractor.Core.Models;
 
-namespace DocxHeaderExtractor.Core.Models;
-
-public sealed record SemanticContractIssue(string Code, string? SourceAlias, string Message);
-
-public sealed record SemanticProposalValidationSummary(
-    IReadOnlyList<CanonicalSemanticProposal> ValidProposals,
-    IReadOnlyList<SemanticContractIssue> Issues);
+namespace DocxHeaderExtractor.Core.Semantics.Validation;
 
 /// <summary>
 /// Validates the model/harness semantic boundary without using Gold or deciding semantic truth.

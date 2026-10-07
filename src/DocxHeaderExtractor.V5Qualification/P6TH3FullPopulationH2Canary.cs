@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.DocumentProcessing.Provenance;
 using System.Security.Cryptography;
 using System.Diagnostics;
 using System.Text;

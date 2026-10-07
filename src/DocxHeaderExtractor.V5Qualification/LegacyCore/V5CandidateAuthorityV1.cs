@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Semantics.Binding;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;

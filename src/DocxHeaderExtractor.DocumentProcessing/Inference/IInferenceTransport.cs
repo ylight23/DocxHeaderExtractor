@@ -61,9 +61,6 @@ public sealed record FrozenInferenceResult(
 /// </summary>
 public interface IFrozenInferenceTransport : IInferenceTransport
 {
-    /// <summary>Composes the exact request body this transport's provider accepts for a semantic prompt.</summary>
-    IFrozenInferenceRequestComposer RequestComposer { get; }
-
     Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(
         byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
         CancellationToken cancellationToken = default);
@@ -76,6 +73,8 @@ public interface IFrozenInferenceTransport : IInferenceTransport
 /// </summary>
 public interface IPdfProductionAuthorizedInferenceTransport : IFrozenInferenceTransport
 {
+    /// <summary>Qualified PDF request composition, owned by the authorized capability, not generic transport.</summary>
+    IFrozenInferenceRequestComposer RequestComposer { get; }
     string PdfProductionProvider { get; }
     string PdfProductionModel { get; }
 }

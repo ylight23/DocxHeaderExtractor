@@ -1,8 +1,6 @@
-namespace DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Core.Models;
 
-public sealed record CanonicalSemanticBindingValidation(
-    bool IsValid,
-    IReadOnlyList<string> Errors);
+namespace DocxHeaderExtractor.Core.Semantics.Binding;
 
 /// <summary>Post-binder guard: coordinates are accepted only when they reproduce source bytes.</summary>
 public static class CanonicalSemanticHardBindingValidator

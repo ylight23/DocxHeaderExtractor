@@ -1,3 +1,5 @@
+using DocxHeaderExtractor.Core.Semantics.Binding;
+using DocxHeaderExtractor.DocumentProcessing.Provenance;
 using DocxHeaderExtractor.DocumentProcessing.Source;
 using System.Security.Cryptography;
 using System.Text;

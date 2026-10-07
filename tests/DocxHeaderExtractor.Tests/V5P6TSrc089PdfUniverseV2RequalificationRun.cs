@@ -57,7 +57,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
 
         using var inner = OpenRouterInferenceTransport.CreateOwned(options);
         var transport = new BoundedCapturingTransport(inner, directory);
-        var authority = new FunctionAnchorExtentHeadingAuthority(transport, transport.RequestComposer, built.Details.LayoutBlockByAtom, () => { });
+        var authority = new FunctionAnchorExtentHeadingAuthority(transport, new OpenRouterQwen37InferenceRequestComposer(), built.Details.LayoutBlockByAtom, () => { });
 
         string outcome;
         try
@@ -103,7 +103,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         {
             var fake = new NetworkRefusingTransport();
             var transport = new BoundedCapturingTransport(fake, directory);
-            var authority = new FunctionAnchorExtentHeadingAuthority(transport, transport.RequestComposer, built.Details.LayoutBlockByAtom, () => { });
+            var authority = new FunctionAnchorExtentHeadingAuthority(transport, new OpenRouterQwen37InferenceRequestComposer(), built.Details.LayoutBlockByAtom, () => { });
             await Assert.ThrowsAsync<NetworkRefusingTransport.WouldHaveSent>(() => authority.DecideAsync(built.Snapshot, CancellationToken.None));
             Assert.Equal(1, fake.Attempts);
             Assert.Empty(transport.Calls);
@@ -122,7 +122,6 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         public int ContextSize => 0;
         public string RuntimeDescription => "";
         public int SharedPrefixTokens => 0;
-        public IFrozenInferenceRequestComposer RequestComposer => new OpenRouterQwen37InferenceRequestComposer();
         public void Dispose() { }
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) => throw new WouldHaveSent();
         public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
@@ -145,7 +144,6 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         public int ContextSize => inner.ContextSize;
         public string RuntimeDescription => inner.RuntimeDescription;
         public int SharedPrefixTokens => inner.SharedPrefixTokens;
-        public IFrozenInferenceRequestComposer RequestComposer => inner.RequestComposer;
         public void Dispose() { }
 
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>

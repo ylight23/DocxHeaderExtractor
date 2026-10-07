@@ -35,8 +35,8 @@ internal static class PdfHeadingPipeline
             return new StructuralAuthorityResult(
                 new ValidatedStructure([]), SourceOnlyAudit(authority, pdfDetails), "pdf-function-conditioned-llm-disabled")
             { SourceCatalog = authority.Catalog };
-        if (transport is not IFrozenInferenceTransport frozen)
-            throw new InvalidOperationException("PDF_H2C_PRODUCTION_ROUTE_REQUIRES_FROZEN_REQUEST_TRANSPORT");
+        if (transport is not IPdfProductionAuthorizedInferenceTransport authorized)
+            throw new InvalidOperationException("PDF_PRODUCTION_AUTHORIZATION_REQUIRED");
 
         await using var scope = ProductionCheckpointScope.Create();
         await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, Path.GetFileNameWithoutExtension(sourceName));
@@ -44,7 +44,7 @@ internal static class PdfHeadingPipeline
             pdfDetails.Blocks.Select(block => new PdfSelectedSourceIdentity(
                 block.Id, block.Page, block.Lines.Select(PdfLineIdentity.Of).ToArray(), block.DisplayText)).ToArray(), ct).ConfigureAwait(false);
         var execution = await PdfLaneExecution.RunAsync(
-            (lease, laneCt) => RunCoreAsync(authority, pdfDetails, frozen, lease, laneCt),
+            (lease, laneCt) => RunCoreAsync(authority, pdfDetails, authorized, lease, laneCt),
             (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
             ct).ConfigureAwait(false);
         await checkpoint.StopAcceptingWritesAndDrainAsync().ConfigureAwait(false);
@@ -83,12 +83,12 @@ internal static class PdfHeadingPipeline
         };
     }
 
-    private static async Task<StructuralAuthorityResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IFrozenInferenceTransport frozen, PdfLaneExecutionLease lease, CancellationToken ct)
+    private static async Task<StructuralAuthorityResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IPdfProductionAuthorizedInferenceTransport authorized, PdfLaneExecutionLease lease, CancellationToken ct)
     {
-        var leaseBound = new LeaseBoundFrozenInferenceTransport(frozen, lease);
+        var leaseBound = new LeaseBoundFrozenInferenceTransport(authorized, lease);
         IHeadingAuthority authority = new FunctionAnchorExtentHeadingAuthority(
             leaseBound,
-            frozen.RequestComposer,
+            authorized.RequestComposer,
             pdfDetails.LayoutBlockByAtom,
             () => { if (!lease.IsActive) throw new PdfExecutionLeaseLostException(); });
         var decided = await authority.DecideAsync(source, ct).ConfigureAwait(false);
@@ -135,7 +135,6 @@ internal static class PdfHeadingPipeline
         public int ContextSize => _inner.ContextSize;
         public string RuntimeDescription => _inner.RuntimeDescription;
         public int SharedPrefixTokens => _inner.SharedPrefixTokens;
-        public IFrozenInferenceRequestComposer RequestComposer => _inner.RequestComposer;
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             StartAndObserve(() => _inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount));
         public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default) =>

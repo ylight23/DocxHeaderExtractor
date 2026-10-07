@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Core.Semantics.Binding;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -130,4 +131,3 @@ public static class PdfSemanticFunctionMembershipPromptClause
         coordinates, generated text, or any field not present in the schema.
         """;
 }
-
