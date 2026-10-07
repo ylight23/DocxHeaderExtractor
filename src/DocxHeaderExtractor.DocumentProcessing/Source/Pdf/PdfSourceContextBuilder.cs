@@ -7,17 +7,17 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
-internal static class PdfSemanticSourceContextBuilder
+internal static class PdfSourceContextBuilder
 {
-    public static IReadOnlyDictionary<string, PdfSemanticSourceContext> Build(
-        IReadOnlyList<PdfSemanticBlock> blocks,
+    public static IReadOnlyDictionary<string, PdfSourceContext> Build(
+        IReadOnlyList<PdfLayoutBlock> blocks,
         IReadOnlyList<PdfLineBlockAnnotation> annotations,
         int contextWindow = 2)
     {
         var annotationByLine = annotations.ToDictionary(a => LineKey(a.Line));
         var ordered = blocks.OrderBy(b => b.Page).ThenByDescending(b => b.TopY).ThenBy(b => b.Id, StringComparer.Ordinal).ToArray();
         const string regime = "document_body";
-        var result = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal);
+        var result = new Dictionary<string, PdfSourceContext>(StringComparer.Ordinal);
         for (var index = 0; index < ordered.Length; index++)
         {
             var block = ordered[index];
@@ -26,7 +26,7 @@ internal static class PdfSemanticSourceContextBuilder
             var previous = ordered.Take(index).TakeLast(window).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
             var next = ordered.Skip(index + 1).Take(window).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
             var parents = ordered.Take(index).TakeLast(8).Select(b => b.Id).ToArray();
-            result[block.Id] = new PdfSemanticSourceContext(facts, previous, next, parents, regime);
+            result[block.Id] = new PdfSourceContext(facts, previous, next, parents, regime);
         }
         return result;
     }
@@ -79,7 +79,7 @@ internal static class PdfSemanticSourceContextBuilder
         annotations.Count == 0 ? null : annotations.MinBy(a => a.SameNormalizedTextPageCount);
 
     private static PdfSourceFacts BuildFacts(
-        PdfSemanticBlock block,
+        PdfLayoutBlock block,
         IReadOnlyDictionary<string, PdfLineBlockAnnotation> annotationByLine,
         string regime)
     {

@@ -9,7 +9,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 internal static class PdfSourceEvidence
 {
     internal static CanonicalSemanticSourceEvidence EvidenceOf(
-        PdfSemanticSourceContext context,
+        PdfSourceContext context,
         string alias,
         int ordinal,
         double bodyFontSize)

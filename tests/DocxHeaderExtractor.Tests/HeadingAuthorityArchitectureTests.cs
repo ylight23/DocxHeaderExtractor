@@ -53,6 +53,7 @@ public sealed class HeadingAuthorityArchitectureTests
             "DocxAuthoritySource", "DocxAuthorityContext", "HeadingContexts",
             "SourceFactsBuilder",
             "PdfStyleClusterProfile", "PdfStyleClusterStats",
+            "PdfSemanticBlock", "PdfSemanticBlockGrouper", "PdfSemanticSourceContext", "PdfSemanticSourceContextBuilder", "HeadingReadable",
         };
         foreach (var file in Directory.EnumerateFiles(TestRepository.Path("src"), "*.cs", SearchOption.AllDirectories)
                      .Where(path => !path.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}") &&
@@ -85,7 +86,7 @@ public sealed class HeadingAuthorityArchitectureTests
         {
             ("Source/Docx", ["DocxSourceAdapter"]),
             ("Source/Pdf", ["PdfSourceAdapter", "PdfSourceBuildResult", "PdfLineExtraction", "PdfLineIdentity", "PdfLineObservationAnalyzer",
-                "PdfSegmentAtomCatalog", "PdfSemanticBlockGrouper", "PdfSourceFacts", "PdfSourceContextBuilder", "PdfSourceEvidence", "PdfSourceTextProjection",
+                "PdfSegmentAtomCatalog", "PdfLayoutBlockGrouper", "PdfSourceFacts", "PdfSourceContextBuilder", "PdfSourceEvidence", "PdfSourceTextProjection",
                 "PdfStyleKey", "PdfTextUtilities", "PdfVisualLineSegmentation", "PdfReadOnlyCorrespondenceBuilder", "PdfSourceFactsBuilder"]),
             ("Source", ["DocumentSourceCatalogBuilder"]),
             ("Source/Common", ["DocumentOccurrence", "DocumentSourceSnapshot", "OccurrenceContext", "LooseLabelledMarkerParser", "SourceMarkerFactsParser", "SourceMarkerFact"]),
@@ -95,7 +96,7 @@ public sealed class HeadingAuthorityArchitectureTests
             ("Materialization", ["HeadingParentResolver", "HeadingHierarchyResolver", "HeadingStructureMaterializer", "HeadingStructureAssembler", "StructuralProposalValidator"]),
             ("Projection", ["CanonicalFinalStructureProjection", "DocumentProductOutputProjector", "HeadingOutlineProjection",
                 "SectionChunkProjection", "StructuralSectionProjection", "OutputDecisionPolicy"]),
-            ("Authority", ["ExecutionAuditBoundary", "HierarchyFactHash", "PipelineExecutionAudit"]),
+            ("Authority", ["ExecutionAuditBoundary", "HierarchyFactHash", "PipelineExecutionAudit", "HeadingHierarchyFactAudit", "PdfHierarchyFactsInventory"]),
             ("Provenance", ["BuildProvenance"]),
             ("OpenXmlLayer", ["DocxProductWriteback"]),
             ("Inference", ["IFrozenInferenceRequestComposer", "PdfInferenceWireContract"]),

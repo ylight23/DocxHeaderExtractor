@@ -429,7 +429,7 @@ public sealed class PdfGoldAuthorityTests
         return (document.SourceCatalog, SemanticSourceAliasCatalog.FromCatalog(document.SourceCatalog));
     }
 
-    private static IReadOnlyList<PdfSemanticBlock> Blocks()
+    private static IReadOnlyList<PdfLayoutBlock> Blocks()
     {
         var path = Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar));
         IReadOnlyList<PdfLine> lines;
@@ -438,7 +438,7 @@ public sealed class PdfGoldAuthorityTests
             lines = PdfLineExtraction.ExtractLines(document);
         }
 
-        return PdfSemanticBlockGrouper.Build(PdfLineObservationAnalyzer.Analyze(lines));
+        return PdfLayoutBlockGrouper.Build(PdfLineObservationAnalyzer.Analyze(lines));
     }
 
 }

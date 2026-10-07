@@ -14,7 +14,7 @@ public sealed class PdfHierarchyFactsInventoryTests
         var chapter = Context("chapter", 1, 700, "1. Chapter", new SourceMarkerFact("Arabic:1", 1, "arabic", true));
         var section = Context("section", 1, 680, "1.1 Scope", new SourceMarkerFact("Arabic:2", 2, "arabic", true));
         var plain = Context("plain", 1, 660, "Topic without marker", null);
-        var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal)
+        var contexts = new Dictionary<string, PdfSourceContext>(StringComparer.Ordinal)
         {
             ["chapter"] = chapter,
             ["section"] = section,
@@ -41,13 +41,13 @@ public sealed class PdfHierarchyFactsInventoryTests
     private static ValidatedHeading Heading(string id) => new(id, new TextOffsetSpan(0, 1), "REGION_STRUCTURE",
         "document_body", "test");
 
-    private static PdfSemanticSourceContext Context(string id, int page, double topY, string text, SourceMarkerFact? marker,
+    private static PdfSourceContext Context(string id, int page, double topY, string text, SourceMarkerFact? marker,
         string scope = "document_body")
     {
         var source = new PdfSourceFacts(id, text, page, 1, 72, topY, 400, topY - 12, scope, [])
         {
             Marker = marker,
         };
-        return new PdfSemanticSourceContext(source, [], [], [], "document_body");
+        return new PdfSourceContext(source, [], [], [], "document_body");
     }
 }

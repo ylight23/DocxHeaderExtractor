@@ -135,7 +135,7 @@ public sealed class PdfSourceTextProjectionTests
     private static string Strip(string value) =>
         new(value.Where(character => !char.IsWhiteSpace(character)).ToArray());
 
-    private static IReadOnlyList<PdfSemanticBlock> Blocks()
+    private static IReadOnlyList<PdfLayoutBlock> Blocks()
     {
         var dir = new DirectoryInfo(AppContext.BaseDirectory);
         while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "DocxHeaderExtractor.sln")))
@@ -147,6 +147,6 @@ public sealed class PdfSourceTextProjectionTests
             lines = PdfLineExtraction.ExtractLines(document);
         }
 
-        return PdfSemanticBlockGrouper.Build(PdfLineObservationAnalyzer.Analyze(lines));
+        return PdfLayoutBlockGrouper.Build(PdfLineObservationAnalyzer.Analyze(lines));
     }
 }

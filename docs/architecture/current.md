@@ -1,6 +1,6 @@
 # Current architecture contract
 
-Status: `ACTIVE — N16 DEAD SOURCE TYPE CLOSURE`
+Status: `ACTIVE — N15–N17 SOURCE CLEANUP CLOSURE`
 
 Baseline: `main@5678b454dc28c8bab811c5ce35a789d540fa82be`
 
@@ -57,6 +57,13 @@ the reverse. The architecture guard checks both that dependency direction and so
 PDF appearance grouping uses `PdfStyleKey.StyleOf` with the unchanged half-point default bucket.
 Readable text reconstruction belongs to `PdfTextUtilities`. The unused style-profile/statistics
 records and title/group collections are retired; these source utilities do not classify headings.
+
+`PdfLayoutBlockGrouper`/`PdfLayoutBlock` describe geometric layout grouping, not semantic decisions.
+`PdfSourceContextBuilder`/`PdfSourceContext` describe parser context supplied to inference, and
+`PdfTextUtilities.DisplayReadable` is display reconstruction, not heading detection.
+`Authority/PdfHierarchyFactsInventory` inventories already-validated headings for observability;
+it cannot create headings or call a provider. Review, writeback, output projection, audit, and
+qualification/history subsystems retain their distinct live responsibilities.
 
 ## Trust and authority boundaries
 

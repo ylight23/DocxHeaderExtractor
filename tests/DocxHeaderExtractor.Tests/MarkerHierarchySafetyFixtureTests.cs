@@ -66,7 +66,7 @@ public sealed class MarkerHierarchySafetyFixtureTests
     [InlineData("1 2 Some ordinary prose sentence continues here")]
     public void WeakNumericEvidenceWithoutObservedAncestorResolvesNoParent(string raw)
     {
-        var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal)
+        var contexts = new Dictionary<string, PdfSourceContext>(StringComparer.Ordinal)
         {
             ["only"] = Context("only", 1, 700, raw),
         };
@@ -84,7 +84,7 @@ public sealed class MarkerHierarchySafetyFixtureTests
     {
         const string first = "4 3 Validation";
         const string second = "13 00 14 00 Lunch break";
-        var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal)
+        var contexts = new Dictionary<string, PdfSourceContext>(StringComparer.Ordinal)
         {
             ["a"] = Context("a", 1, 700, first),
             ["b"] = Context("b", 1, 680, second, scope: "table"),
@@ -108,7 +108,7 @@ public sealed class MarkerHierarchySafetyFixtureTests
     {
         const string parent = "4 Constructing Responses from Caches";
         const string child = "4 3 Validation";
-        var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal)
+        var contexts = new Dictionary<string, PdfSourceContext>(StringComparer.Ordinal)
         {
             ["parent"] = Context("parent", 1, 700, parent, scope: "reference_list"),
             ["child"] = Context("child", 2, 700, child),
@@ -124,10 +124,10 @@ public sealed class MarkerHierarchySafetyFixtureTests
     private static ValidatedHeading Heading(string id, string text) =>
         new(id, new TextOffsetSpan(0, text.Length), "REGION_STRUCTURE", "document_body", "test");
 
-    private static PdfSemanticSourceContext Context(string id, int page, double topY, string text,
+    private static PdfSourceContext Context(string id, int page, double topY, string text,
         string scope = "document_body")
     {
         var source = new PdfSourceFacts(id, text, page, 1, 72, topY, 400, topY - 12, scope, []);
-        return new PdfSemanticSourceContext(source, [], [], [], "document_body");
+        return new PdfSourceContext(source, [], [], [], "document_body");
     }
 }

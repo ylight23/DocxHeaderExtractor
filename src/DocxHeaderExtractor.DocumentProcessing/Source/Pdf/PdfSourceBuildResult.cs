@@ -7,7 +7,7 @@ internal sealed record PdfSourceBuildResult(
     PdfSourceDetails Details);
 
 internal sealed record PdfSourceDetails(
-    IReadOnlyList<PdfSemanticBlock> Blocks,
-    IReadOnlyDictionary<string, PdfSemanticSourceContext> Contexts,
+    IReadOnlyList<PdfLayoutBlock> Blocks,
+    IReadOnlyDictionary<string, PdfSourceContext> Contexts,
     IReadOnlyDictionary<string, string> LayoutBlockByAtom,
     int ParserLineCount);

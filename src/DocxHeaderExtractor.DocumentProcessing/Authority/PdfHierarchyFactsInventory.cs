@@ -1,8 +1,8 @@
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
+namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 
 /// <summary>
 /// M8.1 observability only. It inventories hierarchy evidence for headings that already passed
@@ -12,7 +12,7 @@ internal static class PdfHierarchyFactsInventory
 {
     internal static IReadOnlyList<HeadingHierarchyFactAudit> Inspect(
         IReadOnlyList<ValidatedHeading> validated,
-        IReadOnlyDictionary<string, PdfSemanticSourceContext> contexts)
+        IReadOnlyDictionary<string, PdfSourceContext> contexts)
     {
         var eligible = validated.Where(heading => contexts.ContainsKey(heading.SourceId))
             .OrderBy(heading => PositionOf(contexts[heading.SourceId]))
@@ -109,7 +109,7 @@ internal static class PdfHierarchyFactsInventory
         return null;
     }
 
-    private static (int Page, double InvertedY, string Id) PositionOf(PdfSemanticSourceContext context) =>
+    private static (int Page, double InvertedY, string Id) PositionOf(PdfSourceContext context) =>
         (context.Source.Page, -context.Source.TopY, context.Source.SourceId);
 
     private sealed record ObservedHeading(string Id, int[]? Path);

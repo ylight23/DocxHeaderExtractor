@@ -71,7 +71,7 @@ public sealed class MarkerComponentRepresentationTests
     public void RecoveredComponentsDoNotCreateAncestryOnTheirOwn()
     {
         var texts = new[] { "4 Constructing Responses", "4 3 Validation", "4 3 2 Sending a Validation Request" };
-        var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal);
+        var contexts = new Dictionary<string, PdfSourceContext>(StringComparer.Ordinal);
         var headings = new List<ValidatedHeading>();
         for (var index = 0; index < texts.Length; index++)
         {
@@ -92,7 +92,7 @@ public sealed class MarkerComponentRepresentationTests
     public void AuditExposesCompleteComponentsAlongsideStrictPath()
     {
         const string text = "4 3 2 Sending a Validation Request";
-        var contexts = new Dictionary<string, PdfSemanticSourceContext>(StringComparer.Ordinal)
+        var contexts = new Dictionary<string, PdfSourceContext>(StringComparer.Ordinal)
         {
             ["only"] = Context("only", 1, 700, text),
         };
@@ -107,9 +107,9 @@ public sealed class MarkerComponentRepresentationTests
         Assert.Equal(text, fact.SourceBlockText);
     }
 
-    private static PdfSemanticSourceContext Context(string id, int page, double topY, string text)
+    private static PdfSourceContext Context(string id, int page, double topY, string text)
     {
         var source = new PdfSourceFacts(id, text, page, 1, 72, topY, 400, topY - 12, "document_body", []);
-        return new PdfSemanticSourceContext(source, [], [], [], "document_body");
+        return new PdfSourceContext(source, [], [], [], "document_body");
     }
 }

@@ -63,7 +63,7 @@ internal static class PdfSourceOccurrenceBoundary
     /// tuned constant and cannot chain two body lines together through a run of near misses.
     /// </para>
     /// </summary>
-    public static IReadOnlyList<PdfVisualLine> VisualLines(IReadOnlyList<PdfSemanticBlock> occurrences)
+    public static IReadOnlyList<PdfVisualLine> VisualLines(IReadOnlyList<PdfLayoutBlock> occurrences)
     {
         var members = occurrences
             .SelectMany((block, index) => block.Lines.Select(line => (Block: index, Line: line)))
@@ -130,7 +130,7 @@ internal static class PdfSourceOccurrenceBoundary
     /// </para>
     /// </summary>
     public static IReadOnlyList<PdfBoundaryRow> Classify(
-        IReadOnlyList<PdfSemanticBlock> occurrences,
+        IReadOnlyList<PdfLayoutBlock> occurrences,
         IReadOnlyList<PdfGoldHeading> headings,
         IReadOnlyList<int> occurrenceOfHeading)
     {
@@ -204,7 +204,7 @@ internal static class PdfSourceOccurrenceBoundary
     /// </para>
     /// </summary>
     public static IReadOnlyList<int> Locate(
-        IReadOnlyList<PdfSemanticBlock> occurrences,
+        IReadOnlyList<PdfLayoutBlock> occurrences,
         IReadOnlyList<PdfGoldHeading> headings,
         IReadOnlyList<string> goldTexts,
         out IReadOnlyList<string> unresolved)
@@ -287,7 +287,7 @@ internal static class PdfSourceOccurrenceBoundary
     /// </para>
     /// </summary>
     public static IReadOnlyList<PdfPunctuationRow> PunctuationCensus(
-        IReadOnlyList<PdfSemanticBlock> occurrences,
+        IReadOnlyList<PdfLayoutBlock> occurrences,
         IReadOnlyCollection<int> goldOccurrenceIndexes)
     {
         var linesOf = VisualLines(occurrences)
@@ -321,7 +321,7 @@ internal static class PdfSourceOccurrenceBoundary
     /// same occurrence cannot lend its defects to a heading that has none.
     /// </para>
     /// </summary>
-    public static IReadOnlyList<PdfLine> LinesCarrying(PdfSemanticBlock occurrence, string? goldText)
+    public static IReadOnlyList<PdfLine> LinesCarrying(PdfLayoutBlock occurrence, string? goldText)
     {
         if (goldText is null) return occurrence.Lines;
 
@@ -367,7 +367,7 @@ internal static class PdfSourceOccurrenceBoundary
     }
 
     /// <summary>
-    /// How <see cref="PdfSemanticBlock.Projection"/> joins its lines. Asserted against the real
+    /// How <see cref="PdfLayoutBlock.Projection"/> joins its lines. Asserted against the real
     /// occurrence text before the offsets above are trusted, rather than assumed.
     /// </summary>
     public const string Separator = " ";

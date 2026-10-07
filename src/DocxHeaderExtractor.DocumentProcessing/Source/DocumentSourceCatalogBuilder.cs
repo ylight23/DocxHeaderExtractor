@@ -49,7 +49,7 @@ public static class DocumentSourceCatalogBuilder
     /// supplemental/window representation is the selected source unit.
     /// </summary>
     internal static DocumentSourceCatalog FromPdfParserBlocks(
-        IReadOnlyList<PdfSemanticBlock> blocks,
+        IReadOnlyList<PdfLayoutBlock> blocks,
         IReadOnlyList<PdfLine>? sourceLines = null)
     {
         ArgumentNullException.ThrowIfNull(blocks);

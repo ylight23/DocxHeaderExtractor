@@ -14,18 +14,18 @@ public sealed class PdfTextUtilitiesTests
     [InlineData("Financial Results an d Portfol io Performan ce", "Financial Results and Portfolio Performance")]
     [InlineData("SECTION III: IDA ’ S FINANCIAL RESOURCES", "SECTION III: IDA’s FINANCIAL RESOURCES")]
     [InlineData("Concessional Scale - up Window – Shorter Maturity Loans (SUW - SML)", "Concessional Scale-up Window – Shorter Maturity Loans (SUW-SML)")]
-    public void HeadingReadableRepairsPdfWordFragments(string input, string expected)
+    public void DisplayReadableRepairsPdfWordFragments(string input, string expected)
     {
-        Assert.Equal(expected, PdfTextUtilities.HeadingReadable(input));
+        Assert.Equal(expected, PdfTextUtilities.DisplayReadable(input));
     }
 
     [Theory]
     [InlineData("SECTION I: OVERVIEW")]
     [InlineData("Cash and Investments")]
     [InlineData("Basis of Reporting")]
-    public void HeadingReadableDoesNotCollapseNormalPhrases(string text)
+    public void DisplayReadableDoesNotCollapseNormalPhrases(string text)
     {
-        Assert.Equal(text, PdfTextUtilities.HeadingReadable(text));
+        Assert.Equal(text, PdfTextUtilities.DisplayReadable(text));
     }
 
     [Fact]

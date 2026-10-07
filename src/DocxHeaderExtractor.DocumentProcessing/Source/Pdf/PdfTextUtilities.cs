@@ -17,7 +17,7 @@ internal static class PdfTextUtilities
         return spaced.Trim();
     }
 
-    public static string HeadingReadable(string text)
+    public static string DisplayReadable(string text)
     {
         var readable = Readable(text);
         if (readable.Length == 0) return readable;

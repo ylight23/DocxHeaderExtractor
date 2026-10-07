@@ -413,8 +413,8 @@ public sealed class PdfGoldReviewPackTests
         }
 
         var annotations = PdfLineObservationAnalyzer.Analyze(lines);
-        var blocks = PdfSemanticBlockGrouper.Build(annotations);
-        return PdfSemanticSourceContextBuilder.Build(blocks, annotations)
+        var blocks = PdfLayoutBlockGrouper.Build(annotations);
+        return PdfSourceContextBuilder.Build(blocks, annotations)
             .ToDictionary(pair => pair.Key, pair => pair.Value.Source, StringComparer.Ordinal);
     }
 

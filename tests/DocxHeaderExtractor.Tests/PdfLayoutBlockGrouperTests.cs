@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.Tests;
 /// about a document: the gap between lines is measured against the document's own line pitch.
 /// </para>
 /// </summary>
-public sealed class PdfSemanticBlockGrouperTests
+public sealed class PdfLayoutBlockGrouperTests
 {
     [Fact]
     public void MergesNearbySameStyleTitleLinesButStopsAfterSentence()
@@ -24,7 +24,7 @@ public sealed class PdfSemanticBlockGrouperTests
             Ann(Line("This next sentence must not merge.", page: 1, y: 624)),
         };
 
-        var blocks = PdfSemanticBlockGrouper.Build(lines);
+        var blocks = PdfLayoutBlockGrouper.Build(lines);
 
         Assert.Equal(3, blocks.Count);
         Assert.Equal(2, blocks[0].LineCount);
@@ -198,11 +198,11 @@ public sealed class PdfSemanticBlockGrouperTests
         return PdfLineExtraction.ExtractLines(document);
     }
 
-    private static IReadOnlyList<PdfSemanticBlock> Doc0252Occurrences() =>
-        PdfSemanticBlockGrouper.Build(
+    private static IReadOnlyList<PdfLayoutBlock> Doc0252Occurrences() =>
+        PdfLayoutBlockGrouper.Build(
             PdfLineObservationAnalyzer.Analyze(Doc0252Lines()));
 
-    private static string[] LocateTexts(PdfGoldDocument gold, IReadOnlyList<PdfSemanticBlock> reference)
+    private static string[] LocateTexts(PdfGoldDocument gold, IReadOnlyList<PdfLayoutBlock> reference)
     {
         var aliases = PdfSourceOccurrenceBoundary.Aliases(reference.Count);
         return gold.Headings
@@ -210,7 +210,7 @@ public sealed class PdfSemanticBlockGrouperTests
             .ToArray();
     }
 
-    private static Dictionary<string, int> Histogram(IReadOnlyList<PdfSemanticBlock> blocks) =>
+    private static Dictionary<string, int> Histogram(IReadOnlyList<PdfLayoutBlock> blocks) =>
         new()
         {
             ["1"] = blocks.Count(block => block.LineCount == 1),
@@ -218,7 +218,7 @@ public sealed class PdfSemanticBlockGrouperTests
             ["3+"] = blocks.Count(block => block.LineCount >= 3),
         };
 
-    private static string[] Glyphs(IReadOnlyList<PdfSemanticBlock> blocks) =>
+    private static string[] Glyphs(IReadOnlyList<PdfLayoutBlock> blocks) =>
         blocks
             .SelectMany(block => block.Lines)
             .SelectMany(line => line.Projection.SpanMap.Select(entry =>
@@ -253,7 +253,7 @@ public sealed class PdfSemanticBlockGrouperTests
                     : "MODEL_ERROR_ON_A_SOUND_BOUNDARY";
 
     private static Dictionary<string, int> BreakReasons(
-        IReadOnlyList<PdfSemanticBlock> blocks, double ceiling)
+        IReadOnlyList<PdfLayoutBlock> blocks, double ceiling)
     {
         var reasons = new Dictionary<string, int>(StringComparer.Ordinal);
         for (var index = 1; index < blocks.Count; index++)
@@ -288,7 +288,7 @@ public sealed class PdfSemanticBlockGrouperTests
         return reasons;
     }
 
-    private static string[] SentencesBrokenAcrossBlocks(IReadOnlyList<PdfSemanticBlock> blocks)
+    private static string[] SentencesBrokenAcrossBlocks(IReadOnlyList<PdfLayoutBlock> blocks)
     {
         var broken = new List<string>();
         for (var index = 1; index < blocks.Count; index++)
@@ -309,8 +309,8 @@ public sealed class PdfSemanticBlockGrouperTests
         return [.. broken];
     }
 
-    private static IReadOnlyList<PdfSemanticBlock> Group(IReadOnlyList<PdfLine> lines) =>
-        PdfSemanticBlockGrouper.Build(lines.Select(Ann).ToArray());
+    private static IReadOnlyList<PdfLayoutBlock> Group(IReadOnlyList<PdfLine> lines) =>
+        PdfLayoutBlockGrouper.Build(lines.Select(Ann).ToArray());
 
     /// <summary>A page of lines, each placed a stated number of points below the one before.</summary>
     private static PdfLine[] Page(params (string Text, double Below)[] entries)

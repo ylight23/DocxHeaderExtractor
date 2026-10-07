@@ -69,8 +69,8 @@ internal sealed record PdfSourceFacts(
 
 internal sealed record PdfObservedEvidence(string Kind, string Value, string Origin);
 
-/// <summary>Small, stable context for a 9B semantic pass; no document-wide free-text prompt.</summary>
-internal sealed record PdfSemanticSourceContext(
+/// <summary>Bounded parser-owned source context supplied to semantic inference; no heading authority.</summary>
+internal sealed record PdfSourceContext(
     PdfSourceFacts Source,
     IReadOnlyList<string> PreviousBlocks,
     IReadOnlyList<string> NextBlocks,

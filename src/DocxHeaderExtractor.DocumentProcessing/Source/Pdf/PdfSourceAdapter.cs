@@ -74,7 +74,7 @@ internal static class PdfSourceAdapter
         // then produces a context per atom rather than per layout block, which is what makes the
         // lookup below succeed for every atom instead of for none of them.
         var atomBlocks = segments.Select(SingleLineBlock).ToArray();
-        var contexts = PdfSemanticSourceContextBuilder.Build(atomBlocks, annotations);
+        var contexts = PdfSourceContextBuilder.Build(atomBlocks, annotations);
         var headingContexts = contexts.ToDictionary(
             pair => pair.Key,
             pair => new OccurrenceContext(
@@ -87,7 +87,7 @@ internal static class PdfSourceAdapter
             StringComparer.Ordinal);
 
         // Layout blocks, still built, still grouped the same way - attached as a label.
-        var layoutBlocks = PdfSemanticBlockGrouper.Build(annotations);
+        var layoutBlocks = PdfLayoutBlockGrouper.Build(annotations);
         var layoutBlockByAtom = new Dictionary<string, string>(StringComparer.Ordinal);
         foreach (var block in layoutBlocks)
             foreach (var line in block.Lines)
@@ -165,7 +165,7 @@ internal static class PdfSourceAdapter
             numbering = item.NumberingFacts,
         };
 
-    private static PdfSemanticBlock SingleLineBlock(PdfLine line) => new(
+    private static PdfLayoutBlock SingleLineBlock(PdfLine line) => new(
         PdfLineIdentity.Of(line),
         [line],
         PdfStyleKey.StyleOf(line),

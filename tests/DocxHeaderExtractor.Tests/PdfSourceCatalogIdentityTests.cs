@@ -28,7 +28,7 @@ public sealed class PdfSourceCatalogIdentityTests
     [Fact]
     public void The_two_representations_of_a_block_really_do_disagree_on_this_document()
     {
-        // The discriminating premise. HeadingReadable repairs a PDF's broken spacing its own way;
+        // The discriminating premise. DisplayReadable repairs a PDF's broken spacing its own way;
         // the projection repairs it from glyph geometry. On a document where they happened to agree
         // everywhere, the catalog could be rebuilt from the audit and no test would notice.
         var blocks = Blocks();
@@ -97,7 +97,7 @@ public sealed class PdfSourceCatalogIdentityTests
     }
 
     /// <summary>The source units the PDF lane reasons over: one block per segment atom.</summary>
-    private static IReadOnlyList<PdfSemanticBlock> Blocks() =>
+    private static IReadOnlyList<PdfLayoutBlock> Blocks() =>
         PdfSourceAdapter.BuildWithDetails(
             Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar))).Details.Blocks;
 

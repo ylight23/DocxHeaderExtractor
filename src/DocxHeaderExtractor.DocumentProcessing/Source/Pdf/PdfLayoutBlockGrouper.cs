@@ -1,6 +1,6 @@
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
-internal sealed record PdfSemanticBlock(
+internal sealed record PdfLayoutBlock(
     string Id,
     IReadOnlyList<PdfLine> Lines,
     PdfStyleKey PrimaryStyle,
@@ -22,7 +22,7 @@ internal sealed record PdfSemanticBlock(
 
     /// <summary>What the model is shown and what the binder binds against.</summary>
     public string VerbatimText => Projection.VerbatimText;
-    public string DisplayText => PdfTextUtilities.HeadingReadable(Text);
+    public string DisplayText => PdfTextUtilities.DisplayReadable(Text);
 }
 
 /// <summary>
@@ -103,7 +103,7 @@ internal static class PdfLinePitch
         Estimate(lines) * ContinuationTolerance;
 }
 
-internal static class PdfSemanticBlockGrouper
+internal static class PdfLayoutBlockGrouper
 {
     /// <summary>
     /// Groups parser lines into layout blocks by geometry alone (line pitch, alignment, font).
@@ -113,7 +113,7 @@ internal static class PdfSemanticBlockGrouper
     /// belongs to the model.
     /// </para>
     /// </summary>
-    public static IReadOnlyList<PdfSemanticBlock> Build(
+    public static IReadOnlyList<PdfLayoutBlock> Build(
         IReadOnlyList<PdfLineBlockAnnotation> annotations,
         int maxLinesPerBlock = 4,
         bool allowSemicolonContinuation = false)
@@ -153,7 +153,7 @@ internal static class PdfSemanticBlockGrouper
                 .OrderByDescending(g => g.Sum(l => PdfTextUtilities.Readable(l.Text).Length))
                 .Select(g => g.Key)
                 .First();
-            return new PdfSemanticBlock(
+            return new PdfLayoutBlock(
                 $"b{id++}",
                 lines,
                 primaryStyle,
