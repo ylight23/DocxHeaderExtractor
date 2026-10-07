@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Semantics.Validation;
+using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
@@ -44,7 +45,7 @@ internal static class HeadingStructureMaterializer
     /// between two formats nobody could explain.
     /// </para>
     /// </summary>
-    internal static ValidatedStructure Materialize(
+    internal static HeadingStructureMaterialization Materialize(
         IReadOnlyList<ValidatedHeading> validated,
         IReadOnlyDictionary<string, ResolvedHeadingHierarchy> structures,
         IReadOnlyDictionary<string, StructureSourceOccurrence> occurrences,
@@ -71,6 +72,8 @@ internal static class HeadingStructureMaterializer
             StringComparer.Ordinal);
         var elements = new List<ValidatedStructuralElement>(selected.Count);
         var relationProposals = new List<StructuralRelationProposal>();
+        var projectionMetadata = new Dictionary<string, HeadingProjectionMetadata>(StringComparer.Ordinal);
+        var stableIds = new Dictionary<HeadingProjectionSourceKey, string>();
 
         foreach (var item in selected)
         {
@@ -121,8 +124,11 @@ internal static class HeadingStructureMaterializer
                 origin, nameof(HeadingDecisionStatus.RequiresReview), item.ValidationBasis);
             var element = StructuralProposalValidator.Materialize(
                 sourceOccurrence, proposal, elementIdBySourceId[item.SourceId], decision,
-                elementIdBySourceId.Values.ToHashSet(StringComparer.Ordinal),
-                new StructuralProjectionMetadata
+                elementIdBySourceId.Values.ToHashSet(StringComparer.Ordinal));
+            if (element is null)
+                throw new InvalidOperationException($"Validated heading '{item.SourceId}' failed canonical materialization.");
+
+            projectionMetadata.Add(element.Id, new HeadingProjectionMetadata
                 {
                     OutlineSourceId = sourceParagraph.SourceId,
                     // Declaring the level "set" while leaving it null made the projection prefer
@@ -135,19 +141,16 @@ internal static class HeadingStructureMaterializer
                     BoundarySource = sourceParagraph.BoundarySource,
                     StyleId = sourceParagraph.StyleId,
                 });
-            if (element is null)
-            throw new InvalidOperationException($"Validated heading '{item.SourceId}' failed canonical materialization.");
-
-            elements.Add(element with
-            {
-                Sources = element.Sources.Select(source => source with { StableId = sourceParagraph.SourceId }).ToArray(),
-            });
+            foreach (var source in element.Sources)
+                stableIds.Add(new HeadingProjectionSourceKey(element.Id, source.SourceId), sourceParagraph.SourceId);
+            elements.Add(element);
             if (proposal.ProposedParentId is { } parentElementId)
                 relationProposals.Add(new StructuralRelationProposal(
                     parentElementId, element.Id, StructuralRelationType.ParentChild));
         }
 
-        return ValidatedStructureFactory.Create(elements, relationProposals);
+        return new HeadingStructureMaterialization(ValidatedStructureFactory.Create(elements, relationProposals),
+            new HeadingProjectionContext(projectionMetadata, stableIds));
     }
 
     private static SourceFacts FactsFor(StructureSourceOccurrence occurrence) => new()
@@ -164,11 +167,12 @@ internal static class HeadingStructureMaterializer
     };
 }
 
-/// <summary>
-/// Canonical route transport for the materialized structure and the source elements it emitted.
-/// The old structural materializer implementation was removed; this shared result remains live
-/// because the normal authority pipeline uses it to carry canonical materialization output.
-/// </summary>
+/// <summary>Structural authority and a separate projection-only runtime sidecar.</summary>
+internal sealed record HeadingStructureMaterialization(
+    ValidatedStructure Structure,
+    [property: System.Text.Json.Serialization.JsonIgnore] HeadingProjectionContext ProjectionContext);
+
+/// <summary>Materialized structure and the source elements selected for output.</summary>
 public sealed record StructuralMaterializationResult(
     ValidatedStructure Structure,
     IReadOnlySet<string> EmittedElementIds,

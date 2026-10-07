@@ -37,9 +37,10 @@ public sealed class FrozenReplayDoc0256Tests
         var proposed = authority.Audit!.BlockDecisions.Select(item => item.Id).ToHashSet(StringComparer.Ordinal);
         var validated = authority.Audit.GroundedBlockIds.ToHashSet(StringComparer.Ordinal);
         var canonical = authority.Structure.Elements
-            .SelectMany(element => element.Sources.Select(source => source.StableId ?? source.SourceId))
+            .SelectMany(element => element.Sources.Select(source =>
+                authority.ProjectionContext.StableIdFor(element.Id, source.SourceId) ?? source.SourceId))
             .ToHashSet(StringComparer.Ordinal);
-        var output = HeadingOutlineProjection.Project(authority.Structure, authority.EmittedElementIds)
+        var output = HeadingOutlineProjection.Project(authority.Structure, authority.EmittedElementIds, authority.ProjectionContext)
             .Select(heading => heading.StableId)
             .ToHashSet(StringComparer.Ordinal);
 

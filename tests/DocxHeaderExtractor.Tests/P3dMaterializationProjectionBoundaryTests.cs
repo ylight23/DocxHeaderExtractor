@@ -32,7 +32,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
             validated, structures, occurrences, "test", StructuralDecisionOrigin.Model,
             new HashSet<string>(["S0001"], StringComparer.Ordinal));
 
-        var element = Assert.Single(result.Elements);
+        var element = Assert.Single(result.Structure.Elements);
         Assert.Equal("structural:test:S0001", element.Id);
         Assert.Equal(1, element.Level);
         Assert.Null(element.ParentId);
@@ -82,7 +82,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
             validated, structures, occurrences, "test", StructuralDecisionOrigin.Model,
             new HashSet<string>(["S0002"], StringComparer.Ordinal));
 
-        var element = Assert.Single(result.Elements);
+        var element = Assert.Single(result.Structure.Elements);
         Assert.Equal("structural:test:S0002", element.Id);
         Assert.Null(element.Level); // unresolved upstream hierarchy is not guessed as level 9
         Assert.Null(element.ParentId); // the absent parent is not synthesized
@@ -116,7 +116,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
 
         var projected = CanonicalFinalStructureProjection.Project(
             "source-sha", audit.ValidatedStructures, audit.HierarchyFacts,
-            CanonicalGrounding.FromValidatedStructure(structure));
+            CanonicalGroundingProjection.Project(structure.Structure, structure.ProjectionContext));
 
         Assert.Single(projected.Headings);
         Assert.Equal(before, System.Text.Json.JsonSerializer.Serialize(structure));
@@ -171,7 +171,7 @@ public sealed class P3dMaterializationProjectionBoundaryTests
         }
     }
 
-    private static ValidatedStructure MaterializeOne() =>
+    private static HeadingStructureMaterialization MaterializeOne() =>
         HeadingStructureMaterializer.Materialize(
             [Heading("S0001", 0, 5)],
             new Dictionary<string, ResolvedHeadingHierarchy>(StringComparer.Ordinal)

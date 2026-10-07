@@ -26,7 +26,10 @@ public sealed class HeadingOutlineProjectionTests
             Level = 2,
             Validation = new StructuralValidation(true, true, true, true, 1, true, true, true, null),
             Decision = new StructuralDecision(StructuralDecisionOrigin.Model, nameof(HeadingDecisionStatus.HumanVerified), "test"),
-            ProjectionMetadata = new StructuralProjectionMetadata
+        };
+        var context = new HeadingProjectionContext(new Dictionary<string, HeadingProjectionMetadata>
+        {
+            [element.Id] = new HeadingProjectionMetadata
             {
                 OutlineSourceId = "para-451",
                 OutlineSourceOrdinal = 451,
@@ -34,11 +37,11 @@ public sealed class HeadingOutlineProjectionTests
                 OutlineHeadingSpan = new StructuralSpan(10, 26),
                 OutlineText = "outline heading text",
             },
-        };
+        });
 
         var source = element.Sources.Single();
         var projected = HeadingOutlineProjection.Project(
-            ValidatedStructureFactory.Create([element])).Single();
+            ValidatedStructureFactory.Create([element]), projectionContext: context).Single();
 
         Assert.Equal("b17", source.SourceId);
         Assert.Equal(16, source.SourceOrdinal);

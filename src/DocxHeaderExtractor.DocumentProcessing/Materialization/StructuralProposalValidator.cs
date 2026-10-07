@@ -50,8 +50,7 @@ public static class StructuralProposalValidator
         StructuralProposal proposal,
         string structuralElementId,
         StructuralDecision decision,
-        IReadOnlySet<string>? knownStructuralElementIds = null,
-        StructuralProjectionMetadata? projectionMetadata = null)
+        IReadOnlySet<string>? knownStructuralElementIds = null)
     {
         ArgumentNullException.ThrowIfNull(sourceOccurrence);
         ArgumentException.ThrowIfNullOrWhiteSpace(structuralElementId);
@@ -75,7 +74,6 @@ public static class StructuralProposalValidator
             Level = proposal.ProposedLevel,
             Validation = validation,
             Decision = decision,
-            ProjectionMetadata = projectionMetadata,
         };
     }
 

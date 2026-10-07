@@ -12,28 +12,29 @@ public static class HeadingOutlineProjection
 {
     public static IReadOnlyList<HeadingRecord> Project(
         ValidatedStructure structure,
-        IReadOnlySet<string>? emittedElementIds = null)
+        IReadOnlySet<string>? emittedElementIds = null,
+        HeadingProjectionContext? projectionContext = null)
     {
         ArgumentNullException.ThrowIfNull(structure);
         return structure.OutlineElements
             .Where(element => emittedElementIds is null || emittedElementIds.Contains(element.Id))
             // ValidatedStructure.Elements already carries the producer's canonical order. Sorting
             // by source ordinal here loses distinct PDF occurrences that share one paragraph.
-            .Select(ProjectHeading)
+            .Select(element => ProjectHeading(element, projectionContext ?? HeadingProjectionContext.Empty))
             .ToArray();
     }
 
-    private static HeadingRecord ProjectHeading(ValidatedStructuralElement element)
+    private static HeadingRecord ProjectHeading(ValidatedStructuralElement element, HeadingProjectionContext context)
     {
         var source = element.Sources.FirstOrDefault();
         if (source is null)
             throw new InvalidOperationException($"Structural element '{element.Id}' has no validated source.");
-        var metadata = element.ProjectionMetadata;
+        var metadata = context.ForElement(element.Id);
 
         return new HeadingRecord
         {
             Index = metadata?.OutlineSourceOrdinal ?? source.SourceOrdinal,
-            StableId = metadata?.OutlineStableId ?? source.StableId ?? source.SourceId,
+            StableId = metadata?.OutlineStableId ?? context.StableIdFor(element.Id, source.SourceId) ?? source.SourceId,
             SourceId = metadata?.OutlineSourceId ?? source.SourceId,
             Level = metadata?.OutlineLevelIsSet == true ? metadata.OutlineLevel : element.Level,
             Text = metadata?.OutlineText ?? element.Text,

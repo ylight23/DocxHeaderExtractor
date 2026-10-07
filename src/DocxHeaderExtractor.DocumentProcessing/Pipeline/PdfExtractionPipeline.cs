@@ -151,7 +151,7 @@ public static class PdfExtractionPipeline
         if (audit is not null)
         {
             var final = DocxExtractionPipeline.BuildFinalStructure(
-                file.LocalPath, audit, authority.Structure);
+                file.LocalPath, audit, authority.Structure, authority.ProjectionContext);
             product = DocumentProductOutputProjector.Serialize(final, OutputDecisionPolicy.Decide(final));
         }
 
@@ -166,7 +166,7 @@ public static class PdfExtractionPipeline
             Headings = HeadingOutlineProjection.Project(
                 authority.Structure,
                 authority.EmittedElementIds ?? authority.Structure.Elements
-                    .Select(element => element.Id).ToHashSet(StringComparer.Ordinal)),
+                    .Select(element => element.Id).ToHashSet(StringComparer.Ordinal), authority.ProjectionContext),
             ProductOutput = product,
             ElapsedMs = Environment.TickCount64 - started,
             Model = analyst?.ModelName,

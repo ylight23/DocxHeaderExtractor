@@ -52,6 +52,6 @@ internal static class DocxHeadingPipeline
         return new StructuralAuthorityResult(
             assembly.Structure,
             decided.CompleteAudit(audit, assembly),
-            "docx-canonical-vnext-semantic-authority");
+            "docx-canonical-vnext-semantic-authority") { ProjectionContext = assembly.ProjectionContext };
     }
 }

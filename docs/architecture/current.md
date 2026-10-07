@@ -148,7 +148,14 @@ It does not narrow the model's upstream semantic-role vocabulary or prevent titl
 
 The former `StructuralContracts.cs` monolith is split into `SourceSelectionContracts.cs`
 (source identity/spans), `HeadingStructuralContracts.cs` (heading proposals/results),
-`HeadingHierarchyContracts.cs` (parent relation DTOs), and `ValidatedStructure.cs` (graph invariants).
+`HeadingHierarchyContracts.cs` (parent relation DTOs), and `ValidatedStructure.cs` (passive graph result).
+Graph construction/validation belongs to `Core/Semantics/Validation/ValidatedStructureFactory`;
+relations must be explicit and ParentId is derived only from the admitted relation graph.
+Projection metadata and outline stable-ID compatibility belong to the separate
+`DocumentProcessing/Projection/HeadingProjectionContext`, keyed by element/source identity and
+carried by the runtime envelope, not the Core authority graph. Heading/product output compatibility
+is tested separately from the intentional raw structural DTO/API retirement; see
+`structural-projection-context-audit.md`.
 Exact source/multipart spans, hierarchy, provenance, source catalogs, sections and body-backed chunks
 remain live. Generic synthetic graph tests are replaced with heading/output and retirement guards.
 Neutral inference input/interface/context and occurrence contracts live in `Core/Models/Inference`.
@@ -163,7 +170,8 @@ Their result/conflict DTOs remain in Core Models. Domain processing is not provi
 `Core/Semantics/Binding`, `Validation`, `Parsing` and `Identity` own exact/source-part binding,
 coordinate-binding strategies, proposal and relation validators, proposal parsing/decoding and
 semantic identity resolution. Their contract/result DTOs keep the `Core.Models` namespace and
-unchanged serialized shapes. File-backed source hashing belongs to
+serialized shapes preserved by that ownership move. Later DTO retirement/API changes are
+documented separately in the cleanup contract compatibility and S1/S2 audits. File-backed source hashing belongs to
 `DocumentProcessing/Provenance`, not the pure semantic services.
 
 `DocumentProcessing/Semantics/Canonical` owns `CanonicalSemanticTextProductionEntryPoint`,

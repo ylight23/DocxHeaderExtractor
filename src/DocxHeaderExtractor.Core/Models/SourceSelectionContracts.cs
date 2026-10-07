@@ -14,13 +14,7 @@ public sealed record StructuralSpan(
 public sealed record SourceReference(
     [property: JsonPropertyName("sourceId")] string SourceId,
     [property: JsonPropertyName("sourceOrdinal")] int SourceOrdinal,
-    [property: JsonPropertyName("span")] StructuralSpan Span)
-{
-    /// <summary>Optional stable source identity retained for outline projections.</summary>
-    [JsonPropertyName("stableId")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public string? StableId { get; init; }
-}
+    [property: JsonPropertyName("span")] StructuralSpan Span);
 
 /// <summary>Untrusted source/span selection checked by the materialization gate.</summary>
 public sealed record ProposedSourceReference(

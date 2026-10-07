@@ -118,7 +118,7 @@ internal static class PdfHeadingPipeline
             decided.CompleteAudit(audit, assembly),
             AuthorityId,
             assembly.Structure.Elements.Select(value => value.Id).ToHashSet(StringComparer.Ordinal))
-        { SourceCatalog = source.Catalog };
+        { SourceCatalog = source.Catalog, ProjectionContext = assembly.ProjectionContext };
     }
 
     private sealed class LeaseBoundFrozenInferenceTransport : IFrozenInferenceTransport

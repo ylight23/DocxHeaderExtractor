@@ -1,7 +1,4 @@
 using System.Text.Json.Serialization;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 
@@ -19,26 +16,7 @@ public sealed record CanonicalGrounding(
     [property: JsonPropertyName("paragraphIndex")] int ParagraphIndex,
     [property: JsonPropertyName("stableId")] string? StableId,
     [property: JsonPropertyName("span")] DocxTextSpan Span,
-    [property: JsonPropertyName("paragraphText")] string ParagraphText)
-{
-    /// <summary>Builds canonical occurrences from the generic authority projection metadata.</summary>
-    public static IReadOnlyList<CanonicalGrounding> FromValidatedStructure(ValidatedStructure structure) =>
-        structure.OutlineElements
-            .Select(element => (Element: element, Source: element.Sources.FirstOrDefault()))
-            .Where(item => item.Source is not null)
-            .Select(item =>
-            {
-                var source = item.Source!;
-                var paragraphText = item.Element.ProjectionMetadata?.OriginalText ?? item.Element.Text;
-                return new CanonicalGrounding(
-                    source.SourceId,
-                    source.SourceOrdinal,
-                    source.StableId,
-                    new DocxTextSpan(source.Span.Start, source.Span.End),
-                    paragraphText);
-            })
-            .ToArray();
-}
+    [property: JsonPropertyName("paragraphText")] string ParagraphText);
 
 /// <summary>
 /// An offset range inside a canonical DOCX paragraph. Deliberately a distinct type from

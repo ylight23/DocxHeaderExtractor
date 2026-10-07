@@ -104,7 +104,7 @@ public sealed class DocxExtractionPipeline : IDisposable
                 ValidatedStructureFactory.Create([]), new HashSet<string>(StringComparer.Ordinal), 0, 0);
             if (audit is not null)
             {
-                var finalStructure = BuildFinalStructure(inputPath, audit, authority.Structure);
+                var finalStructure = BuildFinalStructure(inputPath, audit, authority.Structure, authority.ProjectionContext);
                 var decisions = OutputDecisionPolicy.Decide(finalStructure);
                 product = DocumentProductOutputProjector.Serialize(finalStructure, decisions);
                 structural = new StructuralMaterializationResult(
@@ -116,7 +116,7 @@ public sealed class DocxExtractionPipeline : IDisposable
             }
 
             var headings = HeadingOutlineProjection.Project(
-                structural.Structure, structural.EmittedElementIds);
+                structural.Structure, structural.EmittedElementIds, authority.ProjectionContext);
             _options.Log?.Invoke($"Authority route {route}: validated={headings.Count}; {reason}");
             var sourceCatalog = DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument);
             var sections = StructuralSectionProjection.Project(structural.Structure, sourceCatalog);
@@ -165,7 +165,7 @@ public sealed class DocxExtractionPipeline : IDisposable
     }
 
     internal static CanonicalFinalStructure BuildFinalStructure(string docxPath, PipelineExecutionAudit audit,
-        ValidatedStructure structure)
+        ValidatedStructure structure, HeadingProjectionContext? projectionContext = null)
     {
         // Materializes only facts already validated upstream; resolves no identity, hierarchy or
         // provider work.
@@ -173,7 +173,7 @@ public sealed class DocxExtractionPipeline : IDisposable
             FileSha256(docxPath),
             audit.ValidatedStructures,
             audit.HierarchyFacts,
-            CanonicalGrounding.FromValidatedStructure(structure));
+            CanonicalGroundingProjection.Project(structure, projectionContext));
     }
 
     internal static StructuralAuthorityResult ApplyStructuralQuarantine(
@@ -189,8 +189,8 @@ public sealed class DocxExtractionPipeline : IDisposable
         if (removedElements.Length == 0) return authority;
 
         var removedElementIds = removedElements.Select(element => element.Id).ToHashSet(StringComparer.Ordinal);
-        var removedSourceIds = removedElements.SelectMany(element => element.Sources)
-            .SelectMany(source => new[] { source.SourceId, source.StableId })
+        var removedSourceIds = removedElements.SelectMany(element => element.Sources
+            .SelectMany(source => new[] { source.SourceId, authority.ProjectionContext.StableIdFor(element.Id, source.SourceId) }))
             .Where(id => !string.IsNullOrWhiteSpace(id))
             .ToHashSet(StringComparer.Ordinal);
         var remaining = authority.Structure.Elements
@@ -219,6 +219,7 @@ public sealed class DocxExtractionPipeline : IDisposable
         return authority with
         {
             Structure = ValidatedStructureFactory.Create(remaining, survivingRelations),
+            ProjectionContext = authority.ProjectionContext.Retain(remaining.Select(element => element.Id).ToHashSet(StringComparer.Ordinal)),
             Audit = audit,
             EmittedElementIds = emitted,
         };

@@ -1,4 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Projection;
+using System.Text.Json.Serialization;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
@@ -10,6 +12,10 @@ public sealed record StructuralAuthorityResult(
     string Reason,
     IReadOnlySet<string>? EmittedElementIds = null)
 {
+    /// <summary>Runtime output compatibility data; never part of graph authority or serialized audit.</summary>
+    [JsonIgnore]
+    public HeadingProjectionContext ProjectionContext { get; init; } = HeadingProjectionContext.Empty;
+
     /// <summary>
     /// The parser-owned source catalog this producer reasoned over, carried out rather than
     /// reconstructed downstream.

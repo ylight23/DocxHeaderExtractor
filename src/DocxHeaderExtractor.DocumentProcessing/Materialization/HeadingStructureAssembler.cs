@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
@@ -20,7 +21,8 @@ internal enum PrimaryOccurrenceSelection
 internal sealed record HeadingStructureAssembly(
     IReadOnlyList<ValidatedHeading> Validated,
     IReadOnlyDictionary<string, ResolvedHeadingHierarchy> Hierarchies,
-    ValidatedStructure Structure);
+    ValidatedStructure Structure,
+    HeadingProjectionContext ProjectionContext);
 
 /// <summary>
 /// The shared half of a heading route: bind and validate the authority's extents, place unresolved
@@ -78,6 +80,6 @@ internal static class HeadingStructureAssembler
         // Every validated heading that reaches here is a bound model claim.
         var structure = HeadingStructureMaterializer.Materialize(
             validated, placements, occurrences, source.SourceKind, StructuralDecisionOrigin.Model, primarySourceIds);
-        return new HeadingStructureAssembly(validated, placements, structure);
+        return new HeadingStructureAssembly(validated, placements, structure.Structure, structure.ProjectionContext);
     }
 }
