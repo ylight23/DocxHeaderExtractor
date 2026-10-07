@@ -155,10 +155,6 @@ public sealed record CanonicalSemanticGraphOccurrence(
     /// <summary>Optional structural facts resolved after semantic binding; absent means unresolved.</summary>
     public int? Level { get; init; }
 
-    /// <summary>Coordinate authority for this canonical occurrence. Text occurrences use
-    /// UTF-16; visual-only occurrences use a visual-region identity.</summary>
-    public string BindingMode { get; init; } = "TEXT_UTF16";
-
     /// <summary>Parser/render-owned order used to merge text and visual occurrences.</summary>
     [JsonIgnore]
     public CanonicalSemanticDocumentOrder? DocumentOrder { get; init; }
