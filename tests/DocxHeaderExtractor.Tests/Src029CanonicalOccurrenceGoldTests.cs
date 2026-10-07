@@ -135,6 +135,41 @@ public sealed class Src029CanonicalOccurrenceGoldTests
         File.WriteAllBytes(path, new UTF8Encoding(false).GetBytes(gold.ToJsonString(FreezeArtifact.Json).ReplaceLineEndings("\n")));
     }
 
+    /// <summary>
+    /// Coordinate migration to the font-independent PDF source universe (user approval 2026-10-07). Membership, wording,
+    /// patterns, axes, evidence and approval are the review items as migrated by
+    /// <c>gold-migration-proposals/pdf-universe-v2/rebind_review_items.py</c>; only aliases, spans, identities and projected
+    /// text follow the new atoms. The previous Gold is kept as a provenance predecessor by hash. A99_SRC029_MIGRATE=1.
+    /// </summary>
+    [Fact]
+    public void Migrate_to_the_font_independent_universe()
+    {
+        if (Environment.GetEnvironmentVariable("A99_SRC029_MIGRATE") != "1") return;
+
+        var path = TestRepository.Path(GoldPath);
+        var before = File.ReadAllText(path);
+        var gold = JsonNode.Parse(before)!;
+        var claims = BuildClaims();
+        Assert.Equal(ApprovedTotal, claims.Count);
+        var previousWording = gold["occurrence"]!["claims"]!.AsArray().Select(c => c!["approvedWording"]!.GetValue<string>()).ToArray();
+        Assert.Equal(previousWording.Order(StringComparer.Ordinal), claims.Select(c => c["approvedWording"]!.GetValue<string>()).Order(StringComparer.Ordinal));
+
+        gold["occurrence"]!["claims"] = new JsonArray(claims.Select(c => (JsonNode)c).ToArray());
+        var provenance = gold["provenance"]!.AsArray();
+        foreach (var item in new[] { Review, ReviewItems, Lineage, Policy, Addendum, Ontology, Principles })
+        {
+            var entry = Assert.Single(provenance, node => node!["path"]!.GetValue<string>() == item)!;
+            entry["sha256"] = CanonicalArtifactHash.OfTextFile(TestRepository.Path(item));
+        }
+        provenance.Add(new JsonObject
+        {
+            ["path"] = "gold-correction:SRC-029:pdf-universe-v2-coordinate-migration:2026-10-07",
+            ["sha256"] = CanonicalArtifactHash.OfText(before),
+            ["role"] = "GOLD_CORRECTION_PREDECESSOR",
+        });
+        File.WriteAllBytes(path, new UTF8Encoding(false).GetBytes(gold.ToJsonString(FreezeArtifact.Json).ReplaceLineEndings("\n")));
+    }
+
     [Fact]
     public void The_gold_is_the_decided_review_and_every_claim_is_exact()
     {
@@ -207,24 +242,24 @@ public sealed class Src029CanonicalOccurrenceGoldTests
         Assert.DoesNotContain("L0007:S0", inAnyClaim);
         Assert.DoesNotContain("L0008:S0", inAnyClaim);
         // A2, A3a, A4 x3: present, each its own atom.
-        Claim("L2930:S0");
-        Claim("L3216:S0");
-        Assert.Equal("REPEATED", Assert.Single(claims, c => c.Aliases.SequenceEqual(["L3216:S0"])).Axes.GetProperty("repeatStatus").GetString());
-        Claim("L3766:S0");
-        Claim("L3779:S0");
-        Claim("L3796:S0");
+        Claim("L2926:S0");
+        Claim("L3212:S0");
+        Assert.Equal("REPEATED", Assert.Single(claims, c => c.Aliases.SequenceEqual(["L3212:S0"])).Axes.GetProperty("repeatStatus").GetString());
+        Claim("L3760:S0");
+        Claim("L3773:S0");
+        Claim("L3790:S0");
         // A3b: the title line only; the "in accordance with ..." lines are in no claim.
-        Claim("L3275:S0");
-        Assert.DoesNotContain("L3276:S0", inAnyClaim);
-        Assert.DoesNotContain("L3277:S0", inAnyClaim);
+        Claim("L3271:S0");
+        Assert.DoesNotContain("L3272:S0", inAnyClaim);
+        Assert.DoesNotContain("L3273:S0", inAnyClaim);
 
         // T1/T2: full multipart identity; nothing between the parts is pulled in.
-        Assert.Equal([null, "SamePageNonAdjacent", "NextRowCompatible"], Claim("L4787:S0", "L4789:S0", "L4790:S0"));
-        Assert.Equal([null, "CrossPage", "NextRowCompatible"], Claim("L5519:S0", "L5523:S0", "L5524:S0"));
-        Assert.Equal([null, "SamePageNonAdjacent"], Claim("L5782:S0", "L5784:S0"));
-        Assert.Equal([null, "SamePageNonAdjacent"], Claim("L5802:S0", "L5804:S0"));
-        Assert.Equal([null, "CrossPage", "NextRowCompatible", "NextRowCompatible"], Claim("L5847:S0", "L5850:S0", "L5851:S0", "L5852:S0"));
-        foreach (var between in new[] { "L4788:S0", "L5520:S0", "L5521:S0", "L5522:S0", "L5783:S0", "L5803:S0", "L5848:S0", "L5849:S0" })
+        Assert.Equal([null, "SamePageNonAdjacent", "NextRowCompatible"], Claim("L4782:S0", "L4784:S0", "L4785:S0"));
+        Assert.Equal([null, "CrossPage", "NextRowCompatible"], Claim("L5514:S0", "L5518:S0", "L5519:S0"));
+        Assert.Equal([null, "SamePageNonAdjacent"], Claim("L5777:S0", "L5779:S0"));
+        Assert.Equal([null, "SamePageNonAdjacent"], Claim("L5797:S0", "L5799:S0"));
+        Assert.Equal([null, "CrossPage", "NextRowCompatible", "NextRowCompatible"], Claim("L5842:S0", "L5845:S0", "L5846:S0", "L5847:S0"));
+        foreach (var between in new[] { "L4783:S0", "L5515:S0", "L5516:S0", "L5517:S0", "L5778:S0", "L5798:S0", "L5843:S0", "L5844:S0" })
             Assert.DoesNotContain(between, inAnyClaim);
     }
 
