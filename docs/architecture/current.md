@@ -169,6 +169,10 @@ are not current repository entrypoints. Historical publication gates must not be
 evidence for a newer commit. Verification results belong to the exact tested revision and the
 ownership closure audit, not to stale branch status.
 
+The latest local Core ownership verification is recorded in
+[`core-ownership-closure-audit.md`](core-ownership-closure-audit.md), including the exact tested
+revision and clean tracked checkout caveat.
+
 ## Phase control
 
 `HUMAN_ADJUDICATION = NOT_STARTED_IN_PHASE1`
