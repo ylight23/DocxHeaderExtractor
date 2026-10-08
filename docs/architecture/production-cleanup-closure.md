@@ -1,5 +1,8 @@
 # S12–S15 production cleanup closure
 
+Status: `ARCHITECTURE STABLE / CLEANUP CLOSED`.
+Verified revision: `c5dec2ee700e7e04903e00d642d5d268b5e1b8e1`.
+
 Baseline: `cafe32e` (S6–S11). This closes the residual ownership findings without changing
 heading authority, prompts, schemas, provider selection, Gold, or frozen research artifacts.
 
@@ -59,7 +62,9 @@ Existing orchestration-folder allowlist and stage ownership guards remain in for
 
 ## Verification gate
 
-Tested source revision: `2f59cd799d81884348b33024a527a76d6060da72`.
+Windows-tested source revision: `2f59cd799d81884348b33024a527a76d6060da72`.
+Only documentation changed between that revision and the verified `c5dec2e` checkpoint;
+production source, tests, and project files are identical. Ubuntu CI tested `c5dec2e` directly.
 The verification checkout contains only committed files, without the main workspace's modified
 H3 preflight or untracked research files. Provider keys were blank and `A99_FREEZE_UPDATE=0`.
 
@@ -69,13 +74,16 @@ H3 preflight or untracked research files. Provider keys were blank and `A99_FREE
 - `git diff --check`: PASS; verification checkout status after the suite: clean.
 - Read-only Roslyn audit of DocumentProcessing: 0 unused imports, 0 compilation errors.
 - Provider calls: 0; Gold mutations: 0; frozen artifact rebaselines: 0.
-- GitHub publication/Ubuntu CI: PENDING. Both Git push and GitHub API timed out on HTTPS port 443.
+- GitHub publication: COMPLETE; `c5dec2e` is published on `main`.
+- Ubuntu CI at `c5dec2e`: PASS, Release build, focused 51/51, deterministic 1051/1051,
+  0 failed/skipped, and generated-artifact cleanliness. See
+  [deterministic CI run 37718570871](https://github.com/ylight23/DocxHeaderExtractor/actions/runs/37718570871).
 
 Commands: `dotnet build -c Release`; focused `dotnet test -c Release --no-build`;
 `pwsh -NoProfile -File scripts/Invoke-A99TestTier.ps1 -Tier CoreDeterministic -Configuration Release -NoBuild`.
 The tier used the unchanged official manifest, without ad-hoc exclusions.
 
-Local ignored verification records (`.verify-build` in the clean checkout):
+Local ignored Windows verification records for `2f59cd7` (`.verify-build` in the clean checkout):
 
 | Record | SHA-256 |
 | --- | --- |
@@ -83,7 +91,9 @@ Local ignored verification records (`.verify-build` in the clean checkout):
 | `s12-s15-focused.trx` | `f2d4c818103a384d649e4bfeaffe478ee98619030ce8228b43003377584833cb` |
 | `s12-s15-full.log` | `89d9d1f6da3284e1e3bff77a09e345da25477cfb4c5b8541b84a4f98ab4276fa` |
 
-GitHub Ubuntu deterministic CI is still required before marking the architecture status
-`ARCHITECTURE STABLE / CLEANUP CLOSED`. The prior baseline's green CI is not evidence for this revision.
+The Windows and Ubuntu verification gates are closed. The earlier publication/CI-pending status
+is superseded by the successful CI run of the verified revision, not by a prior baseline's result.
 
 No additional mass rename/move stage is planned. Accuracy/provider qualification remains separate.
+Separating `FrozenInferenceResult` runtime response fields from qualification diagnostics is an
+optional subsequent API refactor; no inference contract or runtime change is included in this closure.

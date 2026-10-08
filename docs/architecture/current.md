@@ -1,6 +1,10 @@
 # Current architecture contract
 
-Status: `IMPLEMENTATION COMPLETE — LOCAL VERIFICATION PASS / UBUNTU CI PENDING`
+Status: `ARCHITECTURE STABLE / CLEANUP CLOSED`
+
+Verified revision: `c5dec2ee700e7e04903e00d642d5d268b5e1b8e1`.
+Windows deterministic: PASS, 1051/1051. Ubuntu deterministic CI: PASS, 1051/1051.
+Provider calls: 0. Gold mutations: 0. Frozen artifact rebaselines: 0.
 
 Source-cleanup baseline: `main@a2fece331b05c9a59e3e998207be2b2596c3e745`.
 The subsequent Core ownership changes are described below; this is a current contract, not a frozen qualification artifact.
@@ -253,11 +257,15 @@ wire fields. V5Qualification legacy/replay owners and their internal access seam
 production cannot reference the qualification project or namespace.
 
 See [production-cleanup-closure.md](production-cleanup-closure.md) for intentional public API
-retirements, behavior-fix scope, regression coverage, and final verification gates. Implementation
-is complete. Revision `2f59cd7` passed clean tracked Windows Release, focused 201/201, and
-CoreDeterministic 1051/1051, with a clean checkout after the suite. Publication/Ubuntu CI remain
-pending because GitHub HTTPS connectivity timed out. Do not substitute the previous baseline's
-green CI for this revision. No further mass rename/move stage is planned.
+retirements, behavior-fix scope, regression coverage, and final verification gates. Cleanup is
+closed at verified revision `c5dec2e`. Clean tracked Windows verification at `2f59cd7` passed
+Release, expanded focused 201/201, and CoreDeterministic 1051/1051; only documentation changed
+between that revision and `c5dec2e`. The verification checkout remained clean after the suite.
+[Ubuntu CI for `c5dec2e`](https://github.com/ylight23/DocxHeaderExtractor/actions/runs/37718570871)
+passed Release, focused 51/51, deterministic 1051/1051, and generated-artifact cleanliness.
+Provider calls, Gold mutations, and frozen artifact rebaselines were all 0.
+No further mass rename/move stage is planned. Splitting inference response diagnostics is a
+separate optional API refactor, not an outstanding cleanup gate or a runtime change in this closure.
 
 ## Phase control
 
