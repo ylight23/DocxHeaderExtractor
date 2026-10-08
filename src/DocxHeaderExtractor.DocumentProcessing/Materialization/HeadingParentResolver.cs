@@ -1,6 +1,7 @@
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
 
@@ -37,6 +38,16 @@ internal static class HeadingParentResolver
     public static async Task<IReadOnlyList<CanonicalSemanticBoundHeading>> PlaceUnresolvedHeadingsAsync(
         IReadOnlyList<CanonicalSemanticBoundHeading> bound,
         IInferenceTransport transport,
+        CancellationToken cancellationToken) =>
+        (await PlaceWithObservationAsync(bound, transport, cancellationToken).ConfigureAwait(false)).Headings;
+
+    internal sealed record PlacementResult(
+        IReadOnlyList<CanonicalSemanticBoundHeading> Headings,
+        HeadingPlacementExecutionObservation Observation);
+
+    internal static async Task<PlacementResult> PlaceWithObservationAsync(
+        IReadOnlyList<CanonicalSemanticBoundHeading> bound,
+        IInferenceTransport transport,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(bound);
@@ -47,7 +58,8 @@ internal static class HeadingParentResolver
             .Where(item => item.Resolution == HeadingHierarchyResolver.Unresolved)
             .Select(item => item.SourceId)
             .ToHashSet(StringComparer.Ordinal);
-        if (unplaced.Count == 0) return bound;
+        if (unplaced.Count == 0)
+            return Observe(bound, unplaced, "placement-not-required");
 
         var ordered = bound.OrderBy(item => item.SourceOrdinal).ThenBy(item => item.Start).ToArray();
         var packet = JsonSerializer.Serialize(new
@@ -70,31 +82,39 @@ internal static class HeadingParentResolver
         {
             // Placement is an improvement pass. If it cannot run, the headings stay unresolved,
             // which is exactly what they already were.
-            return bound;
+            return Observe(bound, unplaced, "placement-transport-failed", failureClass: exception.GetType().Name);
         }
 
         Dictionary<string, string> parentByAlias;
+        var responseEntryCount = 0;
+        var malformedEntries = false;
         try
         {
             using var document = JsonDocument.Parse(raw);
-            parentByAlias = document.RootElement.TryGetProperty("placements", out var placements)
-                ? placements.EnumerateArray()
+            if (document.RootElement.ValueKind != JsonValueKind.Object ||
+                !document.RootElement.TryGetProperty("placements", out var placements) ||
+                placements.ValueKind != JsonValueKind.Array)
+                throw new JsonException("placement-root-shape-invalid");
+            responseEntryCount = placements.GetArrayLength();
+            malformedEntries = placements.EnumerateArray().Any(item => item.ValueKind != JsonValueKind.Object ||
+                !item.TryGetProperty("alias", out var alias) || alias.ValueKind != JsonValueKind.String ||
+                !item.TryGetProperty("parent", out var parent) || parent.ValueKind != JsonValueKind.String);
+            parentByAlias = placements.EnumerateArray()
                     .Where(item => item.TryGetProperty("alias", out _) && item.TryGetProperty("parent", out _))
                     .GroupBy(item => item.GetProperty("alias").GetString() ?? string.Empty, StringComparer.Ordinal)
                     .ToDictionary(
                         group => group.Key,
                         group => group.First().GetProperty("parent").GetString() ?? string.Empty,
-                        StringComparer.Ordinal)
-                : [];
+                        StringComparer.Ordinal);
         }
-        catch (JsonException)
+        catch (Exception exception) when (exception is JsonException or InvalidOperationException)
         {
-            return bound;
+            return Observe(bound, unplaced, "placement-invalid-response", responseEntryCount, exception.GetType().Name);
         }
 
         var aliasesToPlace = ordered.Where(item => unplaced.Contains(item.SourceId))
             .Select(item => item.Alias).ToHashSet(StringComparer.Ordinal);
-        return bound.Select(item =>
+        var placed = bound.Select(item =>
         {
             // Only a heading that was actually unresolved may gain a relation here, so a second
             // pass can never overwrite what the semantic pass already decided.
@@ -103,5 +123,29 @@ internal static class HeadingParentResolver
                 return item;
             return item with { RelationHints = [.. item.RelationHints, $"parent-node:{parent}"] };
         }).ToArray();
+        // Preserve the existing per-row admission behavior while observing malformed omitted rows.
+        // A syntactically parseable response is not automatically a successful placement response.
+        return Observe(placed, unplaced, malformedEntries ? "placement-invalid-response" : "placement-accepted",
+            responseEntryCount, malformedEntries ? "placement-entry-schema-invalid" : null);
+    }
+
+    internal static PlacementResult Observe(
+        IReadOnlyList<CanonicalSemanticBoundHeading> headings,
+        IReadOnlySet<string> requested,
+        string status,
+        int responseEntryCount = 0,
+        string? failureClass = null)
+    {
+        var hierarchy = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(headings)
+            .ToDictionary(item => item.SourceId, StringComparer.Ordinal);
+        var decisions = headings.Where(item => requested.Contains(item.SourceId))
+            .GroupBy(item => item.SourceId, StringComparer.Ordinal).Select(group => group.First()).Select(item =>
+            new HeadingPlacementDecisionObservation(item.SourceId, item.Alias, hierarchy[item.SourceId].Resolution)).ToArray();
+        var placed = decisions.Count(item => item.Resolution is HeadingHierarchyResolver.ResolvedParent or HeadingHierarchyResolver.ResolvedRoot);
+        var outside = decisions.Count(item => item.Resolution == HeadingHierarchyResolver.OutOfHierarchy);
+        var unresolved = decisions.Count(item => item.Resolution == HeadingHierarchyResolver.Unresolved);
+        if (status == "placement-accepted" && placed + outside == 0) status = "placement-unresolved";
+        var requestedCount = status == "placement-not-requested" ? 0 : requested.Count;
+        return new(headings, new(status, requestedCount, responseEntryCount, placed, outside, unresolved, failureClass, decisions));
     }
 }

@@ -72,6 +72,10 @@ public sealed record PipelineExecutionAudit(
 
     [JsonPropertyName("batchTelemetry")]
     public HeadingAuthorityBatchTelemetry? BatchTelemetry { get; init; }
+
+    /// <summary>Runtime-only placement observation; frozen audit JSON remains unchanged.</summary>
+    [JsonIgnore]
+    public HeadingPlacementExecutionObservation? PlacementExecution { get; init; }
 }
 
 public sealed record PdfSelectedSourceIdentity(

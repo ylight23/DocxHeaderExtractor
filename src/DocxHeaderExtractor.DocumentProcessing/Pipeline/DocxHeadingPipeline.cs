@@ -50,7 +50,7 @@ internal static class DocxHeadingPipeline
             assembly.Validated.Select(item => item.SourceId).ToArray());
         return new HeadingPipelineResult(
             assembly.Structure,
-            decided.CompleteAudit(audit, assembly),
+            decided.CompleteAudit(audit, assembly) with { PlacementExecution = assembly.PlacementObservation },
             "docx-canonical-vnext-semantic-authority") { ProjectionContext = assembly.ProjectionContext };
     }
 }

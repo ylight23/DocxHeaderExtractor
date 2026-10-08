@@ -28,6 +28,7 @@ public sealed class WebPipelineV2ApiTests
         Assert.Contains(result.GetProperty("pipeline").GetProperty("headings").EnumerateArray(),
             h => h.GetProperty("sources").GetArrayLength() > 1);
         Assert.Equal(transport.FunctionCalls * 3, transport.FrozenCalls); // F1 + G2A + H2-C per owned pack, no repair run.
+        Assert.Equal(0, result.GetProperty("agent").GetProperty("repairAttempts").GetInt32());
         Assert.DoesNotContain(events, e => e.TryGetProperty("stage", out var stage) && stage.GetString() == "repair");
     }
 
@@ -54,6 +55,15 @@ public sealed class WebPipelineV2ApiTests
             Assert.Equal("source-catalog", source.GetProperty("availability").GetString());
         }
         Assert.True(transport.FrozenCalls >= 3);
+        // This fake deliberately returns the text-inference shape, not a placement response.
+        // The real producer must report that failure without removing its grounded headings.
+        Assert.Equal("failed", dto.GetProperty("stages").EnumerateArray()
+            .Single(s => s.GetProperty("id").GetString() == "hierarchy-placement").GetProperty("status").GetString());
+        var placement = dto.GetProperty("audit").GetProperty("placementExecution");
+        Assert.Equal("placement-invalid-response", placement.GetProperty("status").GetString());
+        Assert.Equal(headings.Length, placement.GetProperty("requestedCount").GetInt32());
+        Assert.Equal(headings.Length, placement.GetProperty("unresolvedCount").GetInt32());
+        Assert.Equal(1, transport.TextCalls);
         Assert.Contains("source-selection:completed", dto.GetProperty("checkpoints").EnumerateArray().Select(e => e.GetString()));
         Assert.Contains(dto.GetProperty("stages").EnumerateArray(), e =>
             e.GetProperty("id").GetString() == "F1-semantic-function" && e.GetProperty("status").GetString() == "not-recorded");

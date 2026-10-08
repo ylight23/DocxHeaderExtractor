@@ -112,6 +112,29 @@ public sealed class WebPipelineV2ProjectionTests
         Assert.Empty(dto.Headings);
     }
 
+    [Theory]
+    [InlineData("placement-transport-failed", "failed")]
+    [InlineData("placement-invalid-response", "failed")]
+    [InlineData("placement-unresolved", "unresolved")]
+    [InlineData("placement-accepted", "partial")]
+    [InlineData("placement-not-required", "skipped")]
+    [InlineData("placement-not-requested", "not-recorded")]
+    public void Placement_stage_uses_actual_producer_observation_and_does_not_hide_or_reclassify_headings(string status, string expected)
+    {
+        var run = Run(ValidatedStructureFactory.Create([Element("a", "s1", null)]));
+        var audit = new PipelineExecutionAudit("test", 1, 1, 1, 1, [], [], [], [])
+        { PlacementExecution = new(status, 1, 0, 0, 0, 1, "safe-failure-class", [new("s1", "O1", "unresolved")]),
+          RawAnalystResponses = ["PRIVATE completion"] };
+        var execution = run.Execution! with { HeadingPipeline = run.Execution.HeadingPipeline! with { Audit = audit } };
+        var dto = WebPipelineProjection.Project(run with { Execution = execution }, "pdf");
+        Assert.Equal(expected, dto.Stages.Single(s => s.Id == "hierarchy-placement").Status);
+        Assert.Contains(status, dto.Stages.Single(s => s.Id == "hierarchy-placement").Evidence);
+        Assert.Null(Assert.Single(dto.Headings).Level);
+        Assert.Single(dto.Headings);
+        Assert.DoesNotContain("PRIVATE", JsonSerializer.Serialize(dto, Json));
+        Assert.Contains("placementExecution", JsonSerializer.Serialize(dto, Json));
+    }
+
     [Fact]
     public void Web_audit_is_whitelisted_and_runtime_sidecars_do_not_change_compatibility_JSON()
     {
@@ -133,6 +156,21 @@ public sealed class WebPipelineV2ProjectionTests
         Assert.Equal(JsonSerializer.Serialize(run with { Execution = null }), JsonSerializer.Serialize(run));
         Assert.Equal(JsonSerializer.Serialize(run.Execution!.HeadingPipeline! with { CheckpointObservations = [] }),
             JsonSerializer.Serialize(run.Execution.HeadingPipeline! with { CheckpointObservations = ["source-selection:completed"] }));
+    }
+
+    [Fact]
+    public void Explicit_NONE_can_complete_placement_without_a_level_or_a_guessed_root_relation()
+    {
+        var run = Run(ValidatedStructureFactory.Create([Element("a", "s1", null)]));
+        var audit = new PipelineExecutionAudit("test", 1, 1, 1, 1, [], [], [], [])
+        { PlacementExecution = new("placement-accepted", 1, 1, 0, 1, 0, null,
+            [new("s1", "O1", "model-out-of-hierarchy")]) };
+        var dto = WebPipelineProjection.Project(run with { Execution = run.Execution! with
+            { HeadingPipeline = run.Execution.HeadingPipeline! with { Audit = audit } } }, "pdf");
+        Assert.Equal("completed", dto.Stages.Single(s => s.Id == "hierarchy-placement").Status);
+        Assert.Contains("outside-tree=1", dto.Stages.Single(s => s.Id == "hierarchy-placement").Evidence);
+        Assert.Null(Assert.Single(dto.Headings).Level);
+        Assert.Empty(dto.Relations);
     }
 
     private static ValidatedStructuralElement Element(string id, string source, int? level) => new()

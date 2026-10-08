@@ -2,6 +2,7 @@ using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
+using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
 
@@ -20,7 +21,10 @@ internal sealed record HeadingStructureAssembly(
     IReadOnlyList<ValidatedHeading> Validated,
     IReadOnlyDictionary<string, ResolvedHeadingHierarchy> Hierarchies,
     ValidatedStructure Structure,
-    HeadingProjectionContext ProjectionContext);
+    HeadingProjectionContext ProjectionContext)
+{
+    public HeadingPlacementExecutionObservation? PlacementObservation { get; init; }
+}
 
 /// <summary>
 /// The shared half of a heading route: bind and validate the authority's extents, place unresolved
@@ -42,10 +46,14 @@ internal static class HeadingStructureAssembler
         // Reasoning surface #3: headings the first pass left unplaced come back in one narrow
         // follow-up that asks only about position. Bounded to a single round; an unresolved heading
         // is a legitimate outcome.
-        var placed = authority.PlacementTransport is null
-            ? authority.BoundHeadings
-            : await HeadingParentResolver.PlaceUnresolvedHeadingsAsync(
+        var placement = authority.PlacementTransport is null
+            ? HeadingParentResolver.Observe(authority.BoundHeadings,
+                HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(authority.BoundHeadings)
+                    .Where(item => item.Resolution == HeadingHierarchyResolver.Unresolved)
+                    .Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal), "placement-not-requested")
+            : await HeadingParentResolver.PlaceWithObservationAsync(
                 authority.BoundHeadings, authority.PlacementTransport, cancellationToken).ConfigureAwait(false);
+        var placed = placement.Headings;
         // The alias catalog spans the whole document while contexts hold only the occurrences the
         // route carries, so a bound heading can name a source this route cannot materialize.
         var derived = HeadingHierarchyResolver
@@ -78,6 +86,7 @@ internal static class HeadingStructureAssembler
         // Every validated heading that reaches here is a bound model claim.
         var structure = HeadingStructureMaterializer.Materialize(
             validated, placements, occurrences, source.SourceKind, StructuralDecisionOrigin.Model, primarySourceIds);
-        return new HeadingStructureAssembly(validated, placements, structure.Structure, structure.ProjectionContext);
+        return new HeadingStructureAssembly(validated, placements, structure.Structure, structure.ProjectionContext)
+        { PlacementObservation = placement.Observation };
     }
 }

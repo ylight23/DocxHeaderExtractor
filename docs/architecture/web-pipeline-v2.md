@@ -106,3 +106,20 @@ structure. Genuine missing source/invalid source-span errors remain grounding fa
 legacy tools retain their existing validator behavior. Web V2 continues reading every part directly
 from the validated graph/catalog, rather than interpreting the compatibility primary span as a
 multipart extent. No prompt, request, Gold or semantic authority changes are involved.
+
+### Placement observability versus heading admission
+
+The shared placement pass now carries a runtime-only producer observation into the safe Web
+projection. It distinguishes not-requested/not-required, accepted, unresolved, invalid response,
+and transport failure. Counts distinguish placed headings from explicit `NONE` (outside the section
+tree) and omitted/rejected placements. The Web hierarchy stage uses this observation, not the mere
+presence of derived hierarchy records, to report execution status. Legacy executions without the
+sidecar remain `not-recorded`. Transport exception messages, prompts and raw completions are not
+published. The compatibility audit JSON ignores this sidecar and frozen requests are unchanged.
+
+`L?` alone does not prove a failed placement call. An accepted `NONE` can have no level, while an
+unresolved placement is a separate outcome. Placement never adds/removes headings or fixes semantic
+membership. A table-cell/front-matter admission problem must be investigated through the source and
+F1/G2A/H2-C decisions, not hidden by the Web or "repaired" with a guessed level. Historical run-store
+metadata does not retain those completions; do not claim stage attribution from it or silently
+reexecute a provider request to manufacture a replay.

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "web-pdf-output-inventory-1",
+  "comparisonType": "OBSERVED_OUTPUT_INVENTORY_NOT_RAW_REPLAY",
+  "executionId": "1c32edb4-f6fd-4d72-bf4e-06aef78f71e0",
+  "codeRevisionObserved": "ffcd31fd28b2feb38e2b443f228dea8432375644",
+  "observationBasis": "Existing Web same-execution tree, source inspector and safe provenance; no reload or reexecution",
+  "sourceKind": "pdf",
+  "sourceFileSha256": null,
+  "sourceFileHashStatus": "NOT_AVAILABLE_FROM_SAFE_RUNTIME_OUTPUT",
+  "identityHashBasis": "SHA256 of the UTF-8 source ID displayed by the source inspector; not a source-file digest",
+  "model": "qwen/qwen3.7-flash",
+  "sourcePages": 2,
+  "sourceOccurrences": 79,
+  "acceptedHeadingCount": 5,
+  "unknownLevelCount": 5,
+  "filteredValidatedCount": 0,
+  "reportedHistoricalProviderCalls": 7,
+  "historicalProviderCallBasis": "Producer provenance; not independent transport-attempt count; not proof of placement execution",
+  "rawStageCapturesAvailable": false,
+  "rawStageAttribution": "NOT_EVALUABLE",
+  "placementExecutionStatus": "NOT_RECORDED",
+  "giayMoiPresentInCompleteReturnedTree": false,
+  "giayMoiFalseNegativeGoldScore": "NOT_SCORED",
+  "identities": [
+    { "ordinal": 0, "sourceIdSha256": "d55cfd20e19233ba60a5654d3b2973001e12a023689d524167b291dbe23344e5" },
+    { "ordinal": 1, "sourceIdSha256": "ba68438c00ffefa2a09f951d132613835f987bddd629d53d4407326e0a20de17" },
+    { "ordinal": 2, "sourceIdSha256": "13869435ff2b8a2e7b2096223fd2933594ed31d9155c15b6cb4d009b620493cc" },
+    { "ordinal": 38, "sourceIdSha256": "a80ba63084054f2d9fa33d76f8a0c5628457d8637677d7ef9927f1aa8be9a753" },
+    { "ordinal": 39, "sourceIdSha256": "c7c1da9ca3b327f14bc64ccfa546d7e1cf004ae9e2f335ed4133a72e60fd2385" },
+    { "ordinal": 40, "sourceIdSha256": "e1227d12693d4436ce8de5dab842e0ea3553d2767bf4e88baab571a2f7a1deee" },
+    { "ordinal": 44, "sourceIdSha256": "a17fc8864388d9cb5ac50318003a0c030b78f0edd64293ade566c96e0d75810e" },
+    { "ordinal": 45, "sourceIdSha256": "244c0719752f30d9b205d6ceca6af726d35047febdbd03b8d745860f615e9526" },
+    { "ordinal": 46, "sourceIdSha256": "8e7817a952ad34bf59c530b500fc7e2503e5ea8270da258b9caa41bbd99ed425" }
+  ],
+  "headings": [
+    { "diagnosticKey": "H1", "userReportedCategory": "ADMINISTRATIVE_FRONT_MATTER", "parts": [
+      { "ordinal": 0, "start": 0, "end": 24 }, { "ordinal": 1, "start": 0, "end": 34 }, { "ordinal": 2, "start": 0, "end": 27 }
+    ] },
+    { "diagnosticKey": "H2", "userReportedCategory": "PROGRAM_TITLE_AND_DESCRIPTION", "parts": [
+      { "ordinal": 38, "start": 0, "end": 12 }, { "ordinal": 39, "start": 0, "end": 78 }, { "ordinal": 40, "start": 0, "end": 37 }
+    ] },
+    { "diagnosticKey": "H3", "userReportedCategory": "TABLE_HEADER_ROW", "parts": [
+      { "ordinal": 44, "start": 0, "end": 9 }, { "ordinal": 45, "start": 0, "end": 8 }, { "ordinal": 46, "start": 0, "end": 9 }
+    ] },
+    { "diagnosticKey": "H4", "userReportedCategory": "TABLE_COLUMN_HEADER", "parts": [
+      { "ordinal": 45, "start": 0, "end": 8 }
+    ] },
+    { "diagnosticKey": "H5", "userReportedCategory": "TABLE_COLUMN_HEADER", "parts": [
+      { "ordinal": 46, "start": 0, "end": 9 }
+    ] }
+  ],
+  "exactSourceSelectionOverlaps": [
+    { "headings": ["H3", "H4"], "ordinal": 45, "start": 0, "end": 8, "basis": "SAME_SOURCE_ID_AND_SPAN" },
+    { "headings": ["H3", "H5"], "ordinal": 46, "start": 0, "end": 9, "basis": "SAME_SOURCE_ID_AND_SPAN" }
+  ],
+  "interpretation": "Source-part overlap is observed. User-reported semantic categories are not new Gold. Admission and boundary correctness are not scored without source/Gold authority. Do not deduplicate by text or silently drop overlap cases.",
+  "providerCallsDuringInventory": 0,
+  "goldMutation": "NONE",
+  "frozenRequestRebaseline": false,
+  "runtimeSemanticChange": false
+}

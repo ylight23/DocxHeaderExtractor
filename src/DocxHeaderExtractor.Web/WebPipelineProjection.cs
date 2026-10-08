@@ -80,8 +80,19 @@ public static class WebPipelineProjection
                     : new(stage, "not-recorded", "Declared protocols are not per-stage execution observations"));
         stages.Add(new("exact-binding-validation", elements.Length > 0 ? "completed" : "not-recorded",
             elements.Length > 0 ? "Validated structural elements" : "No binding-stage observation"));
-        stages.Add(new("hierarchy-placement", audit?.ValidatedStructures.Count > 0 ? "completed" : "not-recorded",
-            "Producer hierarchy records; no hierarchy is inferred by Web"));
+        var placement = audit?.PlacementExecution;
+        stages.Add(placement is null
+            ? new("hierarchy-placement", "not-recorded", "No placement execution observation; hierarchy records alone do not prove a placement call")
+            : new("hierarchy-placement", placement.Status switch
+                {
+                    "placement-accepted" when placement.UnresolvedCount > 0 => "partial",
+                    "placement-accepted" => "completed",
+                    "placement-unresolved" => "unresolved",
+                    "placement-invalid-response" or "placement-transport-failed" => "failed",
+                    "placement-not-required" => "skipped",
+                    _ => "not-recorded",
+                },
+                $"Producer {placement.Status}; requested={placement.RequestedCount}; placed={placement.PlacedCount}; outside-tree={placement.OutOfHierarchyCount}; unresolved={placement.UnresolvedCount}; failure={placement.FailureClass ?? "none"}"));
         stages.Add(new("projection", "completed", "Returned production outline"));
         stages.Add(new("final-result", "completed", "Validated harness task result"));
         return new("web-pipeline-v2", run.RunId, "same-execution", run.Outcome.ToString(), sourceKind, headings,
@@ -101,7 +112,8 @@ public static class WebPipelineProjection
     public static object? SafeAudit(PipelineExecutionAudit? audit) => audit is null ? null : new
     { audit.PipelineId, audit.SourceBlocksAvailable, audit.SourceBlocksSelected, audit.SourcePagesAvailable,
         audit.SourcePagesSelected, audit.SemanticLane, audit.SpanLane,
-        groundedSourceIds = audit.GroundedBlockIds, decisionCount = audit.BlockDecisions.Count };
+        groundedSourceIds = audit.GroundedBlockIds, decisionCount = audit.BlockDecisions.Count,
+        placementExecution = audit.PlacementExecution };
 
     /// <summary>Keep outline compatibility fields while withholding transport completions/payloads from the Web.</summary>
     public static JsonNode SafeOutline(DocumentOutline outline, JsonSerializerOptions options)

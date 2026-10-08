@@ -113,7 +113,7 @@ internal static class PdfHeadingPipeline
         };
         return new HeadingPipelineResult(
             assembly.Structure,
-            decided.CompleteAudit(audit, assembly),
+            decided.CompleteAudit(audit, assembly) with { PlacementExecution = assembly.PlacementObservation },
             AuthorityId,
             assembly.Structure.Elements.Select(value => value.Id).ToHashSet(StringComparer.Ordinal))
         { SourceCatalog = source.Catalog, ProjectionContext = assembly.ProjectionContext };
