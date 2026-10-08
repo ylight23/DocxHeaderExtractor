@@ -47,6 +47,8 @@ public sealed class MultipartOutlineGroundingTests
     [InlineData("wrong-span")]
     [InlineData("wrong-source-text")]
     [InlineData("wrong-joined-text")]
+    [InlineData("wrong-primary-original")]
+    [InlineData("wrong-primary-span")]
     public async Task Corrupt_projection_fails_closed_without_semantic_retry_and_retains_evidence(string corruption)
     {
         var original = Fixture();
@@ -62,6 +64,8 @@ public sealed class MultipartOutlineGroundingTests
             case "wrong-source-text": parts[1] = parts[1] with { OriginalText = "fabricated" }; break;
         }
         var bad = Copy(h, parts, corruption == "wrong-joined-text" ? "invented heading" : h.Text);
+        if (corruption == "wrong-primary-original") bad.OriginalText = "projection changed the primary source";
+        if (corruption == "wrong-primary-span") bad.HeadingSpan = new(0, 1);
         var execution = WithHeading(original, bad);
         using var tool = new ExecutionTool(execution);
         var error = await Assert.ThrowsAsync<AgentOutputValidationException>(() =>

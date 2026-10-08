@@ -162,6 +162,9 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
             ProjectionFailure();
             return multipart;
         }
+        if (element is not null && (heading.OriginalText != parts[0].OriginalText ||
+            heading.HeadingSpan != parts[0].Span))
+            ProjectionFailure(); // Compatibility primary fields must not drift from the retained source.
         var selected = new List<string>(parts.Count);
         for (var index = 0; index < parts.Count; index++)
         {
