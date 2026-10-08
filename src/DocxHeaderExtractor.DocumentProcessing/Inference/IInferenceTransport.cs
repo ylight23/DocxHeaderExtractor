@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using System.Text.Json;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Inference;
@@ -38,7 +37,7 @@ public interface IInferenceTransportFactory
 {
     bool SendsDataExternally => false;
 
-    Task<IInferenceTransport> CreateAsync(PipelineOptions options, CancellationToken ct = default);
+    Task<IInferenceTransport> CreateAsync(CancellationToken ct = default);
 
     /// <summary>
     /// Creates the separately-authorized production transport for the PDF authority route.
@@ -46,7 +45,7 @@ public interface IInferenceTransportFactory
     /// A factory that has not explicitly opted into the qualified PDF route fails closed rather
     /// than silently falling back to its default (usually local) transport.
     /// </summary>
-    Task<IInferenceTransport> CreatePdfProductionAsync(PipelineOptions options, CancellationToken ct = default) =>
+    Task<IInferenceTransport> CreatePdfProductionAsync(CancellationToken ct = default) =>
         throw new InvalidOperationException("PDF_PRODUCTION_PROVIDER_FACTORY_REQUIRED");
 }
 

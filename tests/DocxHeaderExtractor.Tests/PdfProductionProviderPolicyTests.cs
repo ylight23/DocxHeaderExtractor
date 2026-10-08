@@ -20,7 +20,7 @@ public sealed class PdfProductionProviderPolicyTests
         });
 
         var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
-            factory.CreatePdfProductionAsync(new PipelineOptions()));
+            factory.CreatePdfProductionAsync());
 
         Assert.Contains("PDF_PRODUCTION_PROVIDER_UNSUPPORTED", error.Message, StringComparison.Ordinal);
         Assert.Contains(name, error.Message, StringComparison.Ordinal);
@@ -38,7 +38,7 @@ public sealed class PdfProductionProviderPolicyTests
         });
 
         var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
-            factory.CreatePdfProductionAsync(new PipelineOptions()));
+            factory.CreatePdfProductionAsync());
 
         Assert.Contains("PDF_PRODUCTION_MODEL_UNSUPPORTED", error.Message, StringComparison.Ordinal);
     }
@@ -55,7 +55,7 @@ public sealed class PdfProductionProviderPolicyTests
         });
 
         var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
-            factory.CreatePdfProductionAsync(new PipelineOptions()));
+            factory.CreatePdfProductionAsync());
 
         Assert.Contains("PDF_PRODUCTION_PROVIDER_ROUTE_UNSUPPORTED", error.Message, StringComparison.Ordinal);
     }
@@ -69,7 +69,7 @@ public sealed class PdfProductionProviderPolicyTests
             Remote = QualifiedRemote(),
         });
 
-        using var transport = await factory.CreatePdfProductionAsync(new PipelineOptions());
+        using var transport = await factory.CreatePdfProductionAsync();
 
         var authorized = Assert.IsAssignableFrom<IPdfProductionAuthorizedInferenceTransport>(transport);
         Assert.Equal("OpenRouter/Alibaba", authorized.PdfProductionProvider);
@@ -97,7 +97,7 @@ public sealed class PdfProductionProviderPolicyTests
             Backend = InferenceBackend.OpenRouter,
             Remote = remote,
         });
-        using var transport = await factory.CreateAsync(new PipelineOptions());
+        using var transport = await factory.CreateAsync();
         Assert.IsAssignableFrom<IFrozenInferenceTransport>(transport);
         Assert.False(transport is IPdfProductionAuthorizedInferenceTransport);
         Assert.Equal("another/model", transport.ModelName);
@@ -109,7 +109,7 @@ public sealed class PdfProductionProviderPolicyTests
         IInferenceTransportFactory factory = new LegacyFactory();
 
         var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
-            factory.CreatePdfProductionAsync(new PipelineOptions()));
+            factory.CreatePdfProductionAsync());
 
         Assert.Equal("PDF_PRODUCTION_PROVIDER_FACTORY_REQUIRED", error.Message);
     }
@@ -157,7 +157,7 @@ public sealed class PdfProductionProviderPolicyTests
 
     private sealed class LegacyFactory : IInferenceTransportFactory
     {
-        public Task<IInferenceTransport> CreateAsync(PipelineOptions options, CancellationToken ct = default) =>
+        public Task<IInferenceTransport> CreateAsync(CancellationToken ct = default) =>
             throw new NotSupportedException();
     }
 }

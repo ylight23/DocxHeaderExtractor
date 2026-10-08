@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Web;
@@ -17,7 +16,7 @@ internal sealed class WebInferenceTransportFactory(
 
     public bool SendsDataExternally => selection.SendsDataExternally;
 
-    public async Task<IInferenceTransport> CreateAsync(PipelineOptions options, CancellationToken ct = default) =>
+    public async Task<IInferenceTransport> CreateAsync(CancellationToken ct = default) =>
         selection.Backend switch
         {
             InferenceBackend.OpenRouter => new OpenRouterInferenceTransport(
@@ -26,11 +25,11 @@ internal sealed class WebInferenceTransportFactory(
                 httpClients.CreateClient("LmStudio"), selection.Remote),
             InferenceBackend.Local => new BorrowedInferenceTransport(
                 await localModels.GetAsync(selection.LocalModel, ct).ConfigureAwait(false)),
-            _ => await new InferenceTransportFactory(selection).CreateAsync(options, ct).ConfigureAwait(false),
+            _ => await new InferenceTransportFactory(selection).CreateAsync(ct).ConfigureAwait(false),
         };
 
-    public Task<IInferenceTransport> CreatePdfProductionAsync(PipelineOptions options, CancellationToken ct = default) =>
-        _pdfFactory.CreatePdfProductionAsync(options, ct);
+    public Task<IInferenceTransport> CreatePdfProductionAsync(CancellationToken ct = default) =>
+        _pdfFactory.CreatePdfProductionAsync(ct);
 
     /// <summary>The cache, not an individual document pipeline, owns the local model lifetime.</summary>
     private sealed class BorrowedInferenceTransport(IInferenceTransport inner) : IInferenceTransport

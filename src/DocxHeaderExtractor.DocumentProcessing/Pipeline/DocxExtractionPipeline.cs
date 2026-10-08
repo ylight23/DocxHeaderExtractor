@@ -160,7 +160,7 @@ public sealed class DocxExtractionPipeline : IDisposable
         if (_analystFactory is null)
             throw new InvalidOperationException(
                 "Inference provider factory chưa được đăng ký ở composition root.");
-        _analyst = await _analystFactory.CreateAsync(_options, ct);
+        _analyst = await _analystFactory.CreateAsync(ct);
         return _analyst;
     }
 

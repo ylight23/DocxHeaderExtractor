@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Infrastructure.AI;
 
@@ -16,10 +15,8 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
     public bool SendsDataExternally => _selection.SendsDataExternally;
 
     public async Task<IInferenceTransport> CreateAsync(
-        PipelineOptions options,
         CancellationToken ct = default)
     {
-        ArgumentNullException.ThrowIfNull(options);
         return _selection.Backend switch
         {
             InferenceBackend.OpenRouter => OpenRouterInferenceTransport.CreateOwned(_selection.Remote),
@@ -36,10 +33,8 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
     /// a PDF provider call is attempted.
     /// </summary>
     public Task<IInferenceTransport> CreatePdfProductionAsync(
-        PipelineOptions options,
         CancellationToken ct = default)
     {
-        ArgumentNullException.ThrowIfNull(options);
         if (_selection.Backend is not InferenceBackend.OpenRouter)
             throw new InvalidOperationException(
                 $"PDF_PRODUCTION_PROVIDER_UNSUPPORTED: requires OpenRouter/{RemoteInferenceOptions.DefaultModel} " +
