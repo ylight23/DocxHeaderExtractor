@@ -1,6 +1,4 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Projection;
 

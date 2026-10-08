@@ -1,7 +1,5 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 

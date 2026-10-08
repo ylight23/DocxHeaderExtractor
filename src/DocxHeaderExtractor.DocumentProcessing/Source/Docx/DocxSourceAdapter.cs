@@ -1,8 +1,6 @@
 using DocxHeaderExtractor.Core.Semantics.Binding;
 using DocxHeaderExtractor.DocumentProcessing.Provenance;
-using DocxHeaderExtractor.DocumentProcessing.Source;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Docx;

@@ -2,7 +2,6 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Projection;
 

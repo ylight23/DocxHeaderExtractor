@@ -5,7 +5,6 @@ using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;

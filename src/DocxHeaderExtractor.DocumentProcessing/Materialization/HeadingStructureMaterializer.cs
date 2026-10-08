@@ -1,8 +1,7 @@
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Semantics.Validation;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
-using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Materialization;

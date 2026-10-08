@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.DocumentProcessing.Projection;
 namespace DocxHeaderExtractor.DocumentProcessing.Chunking;
 
 /// <summary>

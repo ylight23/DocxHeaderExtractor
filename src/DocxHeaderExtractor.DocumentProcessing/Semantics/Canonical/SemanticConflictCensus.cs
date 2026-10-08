@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;

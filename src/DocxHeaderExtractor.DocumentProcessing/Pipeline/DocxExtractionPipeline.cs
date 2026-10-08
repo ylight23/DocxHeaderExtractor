@@ -1,9 +1,6 @@
 using DocxHeaderExtractor.DocumentProcessing.Source;
-using DocxHeaderExtractor.DocumentProcessing.Provenance;
 using System.Security.Cryptography;
-using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
-using DocxHeaderExtractor.DocumentProcessing.Materialization;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.Core.Models;

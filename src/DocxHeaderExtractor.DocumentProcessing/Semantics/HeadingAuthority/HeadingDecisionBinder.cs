@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;

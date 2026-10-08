@@ -1,7 +1,6 @@
 using DocxHeaderExtractor.Core.Semantics.Binding;
 using System.Text;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.V5;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 

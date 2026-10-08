@@ -125,6 +125,33 @@ public sealed class HeadingAuthorityArchitectureTests
     }
 
     [Fact]
+    public void Stage_owners_have_no_pipeline_dependency_hidden_by_imports_or_global_usings()
+    {
+        var root = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing");
+        var symbols = new[]
+        {
+            "PipelineOptions", "DocxExtractionPipeline", "DocxHeadingPipeline", "PdfExtractionPipeline",
+            "PdfHeadingPipeline", "PdfLaneExecution", "PdfLaneExecutionLease", "PdfLaneExecutionState",
+            "PdfStageCheckpoint", "ProductionCheckpointScope", "SemanticLaneOptions",
+        };
+        foreach (var file in Directory.EnumerateFiles(root, "*.cs", SearchOption.AllDirectories)
+                     .Where(path => !path.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}") &&
+                                    !path.Contains($"{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}")))
+        {
+            var source = File.ReadAllText(file);
+            Assert.False(System.Text.RegularExpressions.Regex.IsMatch(source, @"\bglobal\s+using\b"), file);
+            var owner = Path.GetRelativePath(root, file).Split(Path.DirectorySeparatorChar)[0];
+            // Orchestration, routing and the review constructor are explicit composition consumers.
+            if (owner is "Pipeline" or "Routing" or "Review") continue;
+            Assert.DoesNotContain("DocxHeaderExtractor.DocumentProcessing.Pipeline", source, StringComparison.Ordinal);
+            foreach (var symbol in symbols)
+                Assert.False(System.Text.RegularExpressions.Regex.IsMatch(source, $@"\b{symbol}\b"), $"{symbol} in {file}");
+        }
+        Assert.DoesNotContain("DocxHeaderExtractor.DocumentProcessing.Source.Docx",
+            File.ReadAllText(Path.Combine(root, "Materialization", "HeadingStructureMaterializer.cs")), StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Document_processing_keeps_provider_names_and_classifier_vocabulary_out()
     {
         var root = TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing");

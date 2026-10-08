@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.Core.Models;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Routing;
 

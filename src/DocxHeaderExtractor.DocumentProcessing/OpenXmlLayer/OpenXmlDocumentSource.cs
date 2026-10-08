@@ -4,7 +4,6 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 

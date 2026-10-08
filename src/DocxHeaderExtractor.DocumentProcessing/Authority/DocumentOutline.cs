@@ -1,7 +1,4 @@
 using System.Text.Json.Serialization;
-using DocxHeaderExtractor.DocumentProcessing.Projection;
-using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 

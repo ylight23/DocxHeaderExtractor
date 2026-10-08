@@ -3,11 +3,9 @@ using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using System.Text.Json;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.V5;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority.Protocols;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 

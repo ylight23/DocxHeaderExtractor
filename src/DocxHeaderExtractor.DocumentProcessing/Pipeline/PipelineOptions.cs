@@ -1,8 +1,5 @@
-using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Chunking;
-using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 

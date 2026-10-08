@@ -1,7 +1,5 @@
 using System.Text.Json;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;

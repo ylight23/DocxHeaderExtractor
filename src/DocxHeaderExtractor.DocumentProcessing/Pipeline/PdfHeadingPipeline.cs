@@ -1,5 +1,3 @@
-using System.Text;
-using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Semantics.Validation;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;

@@ -2,8 +2,6 @@ using DocumentFormat.OpenXml.Packaging;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocumentFormat.OpenXml.Wordprocessing;
-using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 

@@ -1,7 +1,6 @@
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 using System.Text.Json.Serialization;
-using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 

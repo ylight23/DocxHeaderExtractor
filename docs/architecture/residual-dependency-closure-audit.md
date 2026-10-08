@@ -39,3 +39,20 @@ Removing the public wrapper is an intentional public API retirement; repository 
 does not prove absence of external clients. This is not a wire-removal claim. The guard tests
 the retired type and preserves the audit admission gate; existing output/replay parity tests
 remain authoritative for live serialized behavior.
+
+## S9: explicit dependencies and stale imports
+
+Unused Pipeline imports outside the legitimate Routing/Review composition consumers are removed.
+The format-neutral materializer no longer imports the DOCX source adapter. HeadingAuthorityGlobalUsings
+is retired; actual consumers import the heading/protocol contracts explicitly. IDE0005 cleanup is
+limited to DocumentProcessing, not user research or historical artifacts. A local read-only
+Roslyn compilation audit (using SDK assemblies and existing project references, 0 compiler errors)
+found 60 further CS8019 unnecessary imports after the first pass; they were removed. The repeat
+audit reported 0 unnecessary imports. The audit tool stays ignored under .verify-build; it is
+not a production/test dependency or a new runtime component.
+
+The architecture guard prohibits global usings in current processing source and checks qualified
+Pipeline namespace references as well as whole-symbol references to pipeline-owned orchestration
+and option types. Routing, Pipeline and Review are the explicit composition exceptions; Source,
+Projection, Materialization, Semantics, Authority and Inference are not exceptions. Build and wire/
+replay regressions separately verify that import cleanup did not alter type resolution or payloads.

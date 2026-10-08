@@ -1,9 +1,4 @@
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
-using System.Collections.Immutable;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
