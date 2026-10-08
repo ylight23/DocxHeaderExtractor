@@ -53,7 +53,7 @@ jobs:
         run: >-
           dotnet test tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj
           -c Release --no-build
-          --filter "FullyQualifiedName~WebPipelineV2|FullyQualifiedName~WebPipelineResultViewTests|FullyQualifiedName~HostAuthorityE2ETests|FullyQualifiedName~HostProviderDiagnosticsTests|FullyQualifiedName~HeadingAuthorityByteParityTests|FullyQualifiedName~PdfFunctionConditionedHeadingAuthorityContractTests|FullyQualifiedName~PdfLiveExecutionLifecycleTests|FullyQualifiedName~ExtractionRoutingContractTests"
+          --filter "FullyQualifiedName~WebPipelineV2|FullyQualifiedName~MultipartOutlineGroundingTests|FullyQualifiedName~WebPipelineResultViewTests|FullyQualifiedName~HostAuthorityE2ETests|FullyQualifiedName~HostProviderDiagnosticsTests|FullyQualifiedName~HeadingAuthorityByteParityTests|FullyQualifiedName~PdfFunctionConditionedHeadingAuthorityContractTests|FullyQualifiedName~PdfLiveExecutionLifecycleTests|FullyQualifiedName~ExtractionRoutingContractTests"
 
       - name: Focused authority and experiment contracts
         run: >-

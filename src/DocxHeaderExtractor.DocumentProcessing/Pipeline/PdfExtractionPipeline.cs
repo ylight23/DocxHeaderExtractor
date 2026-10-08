@@ -166,7 +166,7 @@ public static class PdfExtractionPipeline
             Headings = HeadingOutlineProjection.Project(
                 authority.Structure,
                 authority.EmittedElementIds ?? authority.Structure.Elements
-                    .Select(element => element.Id).ToHashSet(StringComparer.Ordinal), authority.ProjectionContext),
+                    .Select(element => element.Id).ToHashSet(StringComparer.Ordinal), authority.ProjectionContext, catalog),
             ProductOutput = product,
             ElapsedMs = Environment.TickCount64 - started,
             Model = transport?.ModelName,

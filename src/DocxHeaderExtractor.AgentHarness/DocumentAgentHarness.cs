@@ -252,7 +252,9 @@ public sealed class DocumentAgentHarness
                 await EmitAsync("capability.execute", AgentRunEventKind.Completed,
                     $"Capability hoàn tất lượt {attempt}.");
 
-                var validationContext = new DocumentAgentValidationContext(request, tool.Descriptor);
+                var execution = (tool as IDocumentExtractionExecutionSource)?.LastExecution;
+                var validationContext = new DocumentAgentValidationContext(request, tool.Descriptor)
+                { Execution = ReferenceEquals(execution?.Outline, outline) ? execution : null };
                 var issues = new List<AgentValidationIssue>();
                 foreach (var validator in _validators)
                 {
@@ -262,7 +264,7 @@ public sealed class DocumentAgentHarness
                     if (validation.IsValid)
                     {
                         await EmitAsync(stage, AgentRunEventKind.Passed,
-                            "Index, cấp, thứ tự và source span đều hợp lệ.");
+                            $"Validator {validator.Name} đã xác nhận các invariant thuộc contract của nó.");
                         continue;
                     }
 
@@ -272,6 +274,13 @@ public sealed class DocumentAgentHarness
                 }
 
                 if (issues.Count == 0) break;
+
+                // A lossy projection is an engineering failure, not a new semantic model question.
+                // Keep the authority/evidence intact and stop; never quarantine valid headings or
+                // spend another provider call trying to repair a projection contract violation.
+                if (issues.Any(issue => issue.Code == "outline_projection_inconsistent"))
+                    throw new AgentOutputValidationException(runId, issues, trace.ToArray())
+                    { Execution = validationContext.Execution };
 
                 var quarantine = issues
                     .Select(i => i.Index)

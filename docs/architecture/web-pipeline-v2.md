@@ -89,3 +89,20 @@ Limits: per-protocol live call instrumentation and a reliable rejected-heading c
 they remain explicitly not-recorded. This task makes no accuracy/generalization claim and changes no
 prompts, frozen requests, Gold, semantic decisions, binder, provider policy, authorization or retry.
 Windows/Ubuntu final verification is recorded separately after CI completes.
+
+## Multipart grounding boundary
+
+The outline compatibility fields `originalText` and `headingSpan` address the primary source only;
+they must not be used as a single span covering joined multipart text. Production outline projection
+retains ordered runtime-only source parts (source ID, ordinal, exact UTF-16 span, parser text), plus
+the structural element identity. These sidecars are `[JsonIgnore]`; compatibility JSON is unchanged.
+
+Harness grounding checks those parts against the same execution's validated structure and source
+catalog by source ID, including when multiple atoms share an ordinal. Multipart text must equal the
+exact space-joined source selections used by structural materialization. Missing, reordered or
+altered projection evidence raises `outline_projection_inconsistent`: the harness fails closed,
+retains the execution on the validation exception, and does not rerun inference or quarantine valid
+structure. Genuine missing source/invalid source-span errors remain grounding failures. Single-source
+legacy tools retain their existing validator behavior. Web V2 continues reading every part directly
+from the validated graph/catalog, rather than interpreting the compatibility primary span as a
+multipart extent. No prompt, request, Gold or semantic authority changes are involved.

@@ -23,7 +23,12 @@ public sealed record AgentValidationResult(IReadOnlyList<AgentValidationIssue> I
 /// </summary>
 public sealed record DocumentAgentValidationContext(
     DocumentAgentRequest Request,
-    CapabilityDescriptor Tool);
+    CapabilityDescriptor Tool)
+{
+    /// <summary>Only the retained execution whose Outline is the object being validated.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public DocumentExtractionExecutionResult? Execution { get; init; }
+}
 
 public interface IDocumentAgentValidator
 {
@@ -62,13 +67,13 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
         if (outline.SourceCount < 0)
             issues.Add(new("invalid_source_count", "Số nguồn không hợp lệ."));
 
-        var seen = new HashSet<(int Index, string Text, int SpanStart, int SpanEnd)>();
+        var seen = new HashSet<(string? SourceId, int Index, string Text, int SpanStart, int SpanEnd)>();
         var previous = -1;
         foreach (var heading in outline.Headings)
         {
             var spanStart = heading.HeadingSpan?.Start ?? -1;
             var spanEnd = heading.HeadingSpan?.End ?? -1;
-            if (!seen.Add((heading.Index, heading.Text.Trim(), spanStart, spanEnd)))
+            if (!seen.Add((heading.SourceId, heading.Index, heading.Text.Trim(), spanStart, spanEnd)))
                 issues.Add(new("duplicate_source_heading", $"Heading index {heading.Index} + text xuất hiện nhiều lần.", heading.Index));
             if (heading.Index < 0 || heading.Index >= outline.ParagraphCount)
                 issues.Add(new("source_index_out_of_range", $"Index {heading.Index} không thuộc tài liệu nguồn.", heading.Index));
@@ -82,7 +87,8 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
             if (string.IsNullOrWhiteSpace(heading.Text))
                 issues.Add(new("empty_heading_text", $"Heading index {heading.Index} không có văn bản nguồn.", heading.Index));
 
-            ValidateSpans(heading, issues);
+            ValidateSpans(heading, issues, ReferenceEquals(context.Execution?.Outline, outline)
+                ? context.Execution : null);
         }
 
         return ValueTask.FromResult(issues.Count == 0
@@ -90,8 +96,17 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
             : new AgentValidationResult(issues));
     }
 
-    private static void ValidateSpans(HeadingRecord heading, List<AgentValidationIssue> issues)
+    private static void ValidateSpans(HeadingRecord heading, List<AgentValidationIssue> issues,
+        DocumentExtractionExecutionResult? execution)
     {
+        var multipart = ValidateParts(heading, issues, execution);
+        if (multipart)
+        {
+            // The compatibility span refers to the first source only. It cannot represent the
+            // joined heading. Inline body, if present, still belongs to that original source.
+            ValidateBodySpan(heading, issues);
+            return;
+        }
         if (heading.OriginalText is null)
         {
             if (heading.HeadingSpan is not null || heading.InlineBodySpan is not null || heading.InlineBody is not null)
@@ -106,9 +121,14 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
             issues.Add(new("heading_span_not_grounded", $"Heading span của index {heading.Index} không khớp nguồn.", heading.Index));
         }
 
+        ValidateBodySpan(heading, issues);
+    }
+
+    private static void ValidateBodySpan(HeadingRecord heading, List<AgentValidationIssue> issues)
+    {
         if (heading.InlineBodySpan is { } bodySpan)
         {
-            if (!ValidRange(bodySpan, heading.OriginalText.Length) ||
+            if (heading.OriginalText is null || !ValidRange(bodySpan, heading.OriginalText.Length) ||
                 heading.InlineBody is null ||
                 heading.OriginalText[bodySpan.Start..bodySpan.End] != heading.InlineBody)
                 issues.Add(new("body_span_not_grounded", $"Body span của index {heading.Index} không khớp nguồn.", heading.Index));
@@ -117,6 +137,69 @@ public sealed class OutlineGroundingValidator : IDocumentAgentValidator
         {
             issues.Add(new("body_missing_span", $"Inline body của index {heading.Index} thiếu span nguồn.", heading.Index));
         }
+    }
+
+    private static bool ValidateParts(HeadingRecord heading, List<AgentValidationIssue> issues,
+        DocumentExtractionExecutionResult? execution)
+    {
+        var element = execution?.Result.Structure.Elements.SingleOrDefault(e => e.Id == heading.StructuralElementId);
+        var expectedCount = element?.Sources.Count ?? heading.ValidatedSourcePartCount;
+        var parts = heading.SourceParts;
+        var multipart = expectedCount > 1 || parts?.Count > 1;
+        void ProjectionFailure() => issues.Add(new("outline_projection_inconsistent",
+            $"Projection của index {heading.Index} không bảo toàn structural/source-part evidence.", heading.Index));
+
+        if ((execution is not null && element is null) ||
+            ((execution is not null || expectedCount > 1 || parts is not null) &&
+             expectedCount > 0 && (parts is null || parts.Count != expectedCount)))
+        {
+            ProjectionFailure();
+            return multipart;
+        }
+        if (parts is null) return false; // Legacy single-source tools retain their original contract.
+        if (parts.Count == 0 || parts.Select(p => p.SourceId).Distinct(StringComparer.Ordinal).Count() != parts.Count)
+        {
+            ProjectionFailure();
+            return multipart;
+        }
+        var selected = new List<string>(parts.Count);
+        for (var index = 0; index < parts.Count; index++)
+        {
+            var part = parts[index];
+            var expected = element?.Sources[index];
+            if (expected is not null && (part.SourceId != expected.SourceId || part.SourceOrdinal != expected.SourceOrdinal ||
+                part.Span.Start != expected.Span.Start || part.Span.End != expected.Span.End))
+            {
+                ProjectionFailure();
+                continue;
+            }
+            var unit = execution?.Result.SourceCatalog.Units.SingleOrDefault(u => u.SourceId == part.SourceId);
+            if (execution is not null && (unit is null || unit.SourceOrdinal != part.SourceOrdinal))
+            {
+                issues.Add(new("heading_part_source_missing", $"Source part {part.SourceId} không thuộc catalog.", heading.Index));
+                continue;
+            }
+            if (unit is not null && unit.Text != part.OriginalText)
+            {
+                ProjectionFailure();
+                continue;
+            }
+            if (!ValidRange(part.Span, part.OriginalText.Length) || part.Span.Start == part.Span.End)
+            {
+                issues.Add(new("heading_part_not_grounded", $"Span của source part {part.SourceId} không khớp nguồn.", heading.Index));
+                continue;
+            }
+            selected.Add(part.OriginalText[part.Span.Start..part.Span.End]);
+        }
+        if ((multipart || element is not null) && selected.Count == parts.Count)
+        {
+            var joined = string.Join(" ", selected); // Same exact composition as StructuralProposalValidator.
+            if (element is not null && joined != element.Text)
+                issues.Add(new("heading_parts_not_grounded", $"Structural text của index {heading.Index} không khớp các source parts.", heading.Index));
+            else if (joined != heading.Text)
+                ProjectionFailure();
+        }
+        return multipart;
     }
 
     private static bool ValidRange(TextOffsetSpan span, int length) =>
@@ -166,6 +249,10 @@ public sealed class AgentOutputValidationException(
     public Guid RunId { get; } = runId;
     public IReadOnlyList<AgentValidationIssue> Issues { get; } = issues;
     public IReadOnlyList<AgentRunEvent> Trace { get; } = trace;
+
+    /// <summary>Same-execution evidence retained for projection-failure diagnostics; never a wire payload.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public DocumentExtractionExecutionResult? Execution { get; init; }
 }
 
 /// <summary>

@@ -13,17 +13,26 @@ public static class HeadingOutlineProjection
         ValidatedStructure structure,
         IReadOnlySet<string>? emittedElementIds = null,
         HeadingProjectionContext? projectionContext = null)
+        => Project(structure, emittedElementIds, projectionContext, null);
+
+    public static IReadOnlyList<HeadingRecord> Project(
+        ValidatedStructure structure,
+        IReadOnlySet<string>? emittedElementIds,
+        HeadingProjectionContext? projectionContext,
+        DocumentSourceCatalog? sourceCatalog)
     {
         ArgumentNullException.ThrowIfNull(structure);
+        var units = sourceCatalog?.Units.ToDictionary(unit => unit.SourceId, StringComparer.Ordinal);
         return structure.Elements
             .Where(element => emittedElementIds is null || emittedElementIds.Contains(element.Id))
             // ValidatedStructure.Elements already carries the producer's canonical order. Sorting
             // by source ordinal here loses distinct PDF occurrences that share one paragraph.
-            .Select(element => ProjectHeading(element, projectionContext ?? HeadingProjectionContext.Empty))
+            .Select(element => ProjectHeading(element, projectionContext ?? HeadingProjectionContext.Empty, units))
             .ToArray();
     }
 
-    private static HeadingRecord ProjectHeading(ValidatedStructuralElement element, HeadingProjectionContext context)
+    private static HeadingRecord ProjectHeading(ValidatedStructuralElement element, HeadingProjectionContext context,
+        IReadOnlyDictionary<string, DocumentSourceUnit>? units)
     {
         var source = element.Sources.FirstOrDefault();
         if (source is null)
@@ -32,12 +41,20 @@ public static class HeadingOutlineProjection
 
         return new HeadingRecord
         {
+            StructuralElementId = element.Id,
+            ValidatedSourcePartCount = element.Sources.Count,
+            SourceParts = units is null ? null : Array.AsReadOnly(element.Sources.Select(part =>
+                units.TryGetValue(part.SourceId, out var unit)
+                    ? new HeadingSourcePart(part.SourceId, part.SourceOrdinal,
+                        new TextOffsetSpan(part.Span.Start, part.Span.End), unit.Text)
+                    : throw new InvalidOperationException($"outline-projection-source-missing:{element.Id}:{part.SourceId}"))
+                .ToArray()),
             Index = metadata?.OutlineSourceOrdinal ?? source.SourceOrdinal,
             StableId = metadata?.OutlineStableId ?? context.StableIdFor(element.Id, source.SourceId) ?? source.SourceId,
             SourceId = metadata?.OutlineSourceId ?? source.SourceId,
             Level = metadata?.OutlineLevelIsSet == true ? metadata.OutlineLevel : element.Level,
             Text = metadata?.OutlineText ?? element.Text,
-            OriginalText = metadata?.OriginalText,
+            OriginalText = metadata?.OriginalText ?? units?.GetValueOrDefault(source.SourceId)?.Text,
             HeadingSpan = metadata?.OutlineHeadingSpan is { } outlineSpan
                 ? new TextOffsetSpan(outlineSpan.Start, outlineSpan.End)
                 : new TextOffsetSpan(source.Span.Start, source.Span.End),

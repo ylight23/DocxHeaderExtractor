@@ -19,6 +19,19 @@ public sealed class WebPipelineV2ApiTests
     private const string Pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
 
     [Fact(Timeout = 180_000)]
+    public async Task Pdf_multipart_extent_survives_harness_grounding_without_provider_reexecution()
+    {
+        var transport = new FakeTransport { MultipartExtent = true };
+        await using var app = App(transport);
+        var events = await Upload(app, TestRepository.Path(Pdf), noLlm: false);
+        var result = Assert.Single(events, e => e.GetProperty("type").GetString() == "result");
+        Assert.Contains(result.GetProperty("pipeline").GetProperty("headings").EnumerateArray(),
+            h => h.GetProperty("sources").GetArrayLength() > 1);
+        Assert.Equal(transport.FunctionCalls * 3, transport.FrozenCalls); // F1 + G2A + H2-C per owned pack, no repair run.
+        Assert.DoesNotContain(events, e => e.TryGetProperty("stage", out var stage) && stage.GetString() == "repair");
+    }
+
+    [Fact(Timeout = 180_000)]
     public async Task Pdf_upload_reaches_real_pipeline_and_retains_source_grounding_without_raw_transport()
     {
         var transport = new FakeTransport();
@@ -171,6 +184,8 @@ public sealed class WebPipelineV2ApiTests
     {
         public int FrozenCalls { get; private set; }
         public int TextCalls { get; private set; }
+        public int FunctionCalls { get; private set; }
+        public bool MultipartExtent { get; init; }
         public bool Fail { get; init; }
         public bool TextHeading { get; init; }
         public bool WithholdFirstExtent { get; init; }
@@ -207,6 +222,7 @@ public sealed class WebPipelineV2ApiTests
             object response;
             if (protocol.Contains("total-occurrence-function"))
             {
+                FunctionCalls++;
                 var rows = request.GetProperty("occurrences").EnumerateArray().ToArray();
                 response = new { decisions = rows.Select((row, i) => new
                     { occurrence = row.GetProperty("id").GetString(), function = i == 0 || WithholdFirstExtent && i == 1 ? "ESTABLISHES_STRUCTURE" : "OTHER" }) };
@@ -221,9 +237,12 @@ public sealed class WebPipelineV2ApiTests
                 var anchor = request.GetProperty("anchors")[0];
                 var rows = anchor.GetProperty("occurrences").EnumerateArray().ToArray();
                 var id = anchor.GetProperty("anchor").GetString();
-                response = new { decisions = new[] { new { anchor = id, headingMembers = new[] { id }, endOccurrence = id,
-                    firstOutsideOccurrence = rows.Length > 1 ? rows[1].GetProperty("occurrence").GetString() : null,
-                    firstOutsideRole = rows.Length > 1 ? "BODY_CONTENT" : "NO_VISIBLE_SUCCESSOR" } } };
+                var count = MultipartExtent ? Math.Min(3, rows.Length) : 1;
+                response = new { decisions = new[] { new { anchor = id,
+                    headingMembers = rows.Take(count).Select(row => row.GetProperty("occurrence").GetString()).ToArray(),
+                    endOccurrence = rows[count - 1].GetProperty("occurrence").GetString(),
+                    firstOutsideOccurrence = rows.Length > count ? rows[count].GetProperty("occurrence").GetString() : null,
+                    firstOutsideRole = rows.Length > count ? "BODY_CONTENT" : "NO_VISIBLE_SUCCESSOR" } } };
             }
             return Task.FromResult(new FrozenInferenceResponse(JsonSerializer.Serialize(response), "stop"));
         }

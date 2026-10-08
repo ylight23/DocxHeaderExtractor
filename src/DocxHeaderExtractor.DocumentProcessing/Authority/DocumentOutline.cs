@@ -21,6 +21,17 @@ public enum HeadingDecisionStatus
 /// <summary>Document-level result of the common evidence-first workflow.</summary>
 public sealed class HeadingRecord
 {
+    /// <summary>Same-execution structural identity; not part of the compatibility wire contract.</summary>
+    [JsonIgnore]
+    public string? StructuralElementId { get; init; }
+
+    /// <summary>Ordered, validated source selections with parser-owned text. Never model-authored.</summary>
+    [JsonIgnore]
+    public IReadOnlyList<HeadingSourcePart>? SourceParts { get; init; }
+
+    [JsonIgnore]
+    public int ValidatedSourcePartCount { get; init; }
+
     /// <summary>Chỉ số đoạn trong tài liệu gốc.</summary>
     [JsonPropertyName("index")]
     public required int Index { get; init; }
@@ -102,6 +113,9 @@ public sealed class HeadingRecord
 public sealed record TextOffsetSpan(
     [property: JsonPropertyName("start")] int Start,
     [property: JsonPropertyName("end")] int End);
+
+/// <summary>Runtime grounding evidence for one exact source selection, keyed by identity, not ordinal.</summary>
+public sealed record HeadingSourcePart(string SourceId, int SourceOrdinal, TextOffsetSpan Span, string OriginalText);
 
 /// <summary>Một lượt hỏi mô hình đã thực sự chạy trong lượt trích xuất này.</summary>
 public sealed record OutlinePass(

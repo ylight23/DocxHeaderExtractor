@@ -109,10 +109,10 @@ public sealed class DocxExtractionPipeline : IDisposable
                     .Select(element => element.Id).ToHashSet(StringComparer.Ordinal);
             }
 
-            var headings = HeadingOutlineProjection.Project(
-                structure, emittedIds, authority.ProjectionContext);
-            _options.Log?.Invoke($"Authority route {route}: validated={headings.Count}; {reason}");
             var sourceCatalog = DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument);
+            var headings = HeadingOutlineProjection.Project(
+                structure, emittedIds, authority.ProjectionContext, sourceCatalog);
+            _options.Log?.Invoke($"Authority route {route}: validated={headings.Count}; {reason}");
             var sections = StructuralSectionProjection.Project(structure, sourceCatalog);
             var chunks = SectionChunkProjection.Project(
                 sections, sourceCatalog, structure,
