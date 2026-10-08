@@ -74,6 +74,13 @@
   .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
   .actions button { margin-top: 16px; }
 
+  .heading-evidence { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
+  .heading-evidence summary { cursor: pointer; }
+  .heading-evidence dl { display: grid; grid-template-columns: minmax(90px, 130px) minmax(0, 1fr); gap: 3px 10px; margin: 6px 0; }
+  .heading-evidence dt { font-weight: 650; }
+  .heading-evidence dd { margin: 0; overflow-wrap: anywhere; user-select: text; }
+  #tree caption { text-align: left; color: var(--muted); font-size: 12px; padding: 4px 0 8px; }
+
   .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 10px; }
   .tile { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 11px 13px; }
   .tile .v { font-size: 21px; font-weight: 650; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
@@ -1293,35 +1300,6 @@ function renderLiveLog() {
   $('log').scrollTop = $('log').scrollHeight;
 }
 
-// Cột trái đọc cùng một luồng log với cột phải, chỉ quy nó về năm bước. Chỉ số bước không lùi:
-// lùi thanh tiến trình về giữa chừng thì trông như pipeline chạy lại từ đầu.
-const STAGES = [
-  ['Intent proposal', /intent\.proposal|Intent extract-document-structure/i, 'Đang dựng intent…'],
-  ['Intent validation', /intent\.validation|Intent hợp lệ/i, 'Đang kiểm tra intent…'],
-  ['Semantic resolution', /semantic\.resolve|semantic registry/i, 'Đang resolve semantic…'],
-  ['Capability planning', /plan\.semantic|plan\.execution|plan\.tools|capability\.resolve/i, 'Đang lập execution plan…'],
-  ['Policy', /policy\.approval|policy-/i, 'Đang kiểm tra policy…'],
-  ['Capability execution', /tool\.|capability\.execute|Bắt đầu phân tích/i, 'Đang chạy capability…'],
-  ['Source validation', /source\.resolve|validation\.source-authority|validator\./i, 'Đang validate source…'],
-  ['Projection / result', /projection|Hoàn tất|completed/i, 'Đang tạo kết quả…'],
-];
-let stageIndex = -1;
-
-function renderStages(allDone = false) {
-  $('stages').innerHTML = STAGES.map(([label], i) => {
-    const cls = allDone || i < stageIndex ? ' done' : i === stageIndex ? ' live' : '';
-    return `<li class="stage${cls}"><span class="sdot"></span>${label}</li>`;
-  }).join('');
-}
-renderStages();
-
-function updateDevState(message) {
-  const m = String(message);
-  const hit = STAGES.findIndex(([, pattern]) => pattern.test(m));
-  $('devState').textContent = hit < 0 ? 'Đang xử lý…' : STAGES[hit][2];
-  if (hit > stageIndex) { stageIndex = hit; renderStages(); }
-}
-
 // Keep the run-lifecycle function names, but route rendering through the
 // contract-aware harness view above.
 function renderStages(allDone = false) { renderHarnessStages(); }
@@ -1377,17 +1355,40 @@ function render(o, s, review, agent) {
     return '';
   };
 
+  // Level indentation is a visual aid, not a claim of a validated ParentChild relation.
+  // Only the source-grounded fields actually supplied by the outline are shown here.
+  const headingEvidence = h => {
+    const fields = [
+      ['Stable ID', h.stableId],
+      ['Source ID', h.sourceId],
+      ['Heading span', h.headingSpan &&
+        Number.isInteger(h.headingSpan.start) && Number.isInteger(h.headingSpan.end)
+          ? `[${h.headingSpan.start}, ${h.headingSpan.end})` : null],
+      ['Hierarchy resolution', h.hierarchyResolution],
+      ['Boundary source', h.boundarySource],
+      ['Confidence basis', h.confidenceBasis],
+      ['Style ID', h.styleId],
+      ['Original text', h.originalText],
+      ['Inline body', h.inlineBody],
+    ].filter(([, value]) => value !== null && value !== undefined && value !== '');
+    return fields.length
+      ? `<details class="heading-evidence"><summary>Chi tiết nguồn và quyết định</summary><dl>${fields.map(([key, value]) =>
+          `<dt>${esc(key)}</dt><dd>${esc(String(value))}</dd>`).join('')}</dl></details>`
+      : '';
+  };
   $('tree').innerHTML =
-    '<thead><tr><th style="width:64px">Đoạn</th><th>Tiêu đề</th>' +
+    '<caption>Thụt lề theo cấp hiển thị; không suy diễn quan hệ cha–con.</caption>' +
+    '<thead><tr><th style="width:64px">Đoạn</th><th>Tiêu đề và bằng chứng nguồn</th>' +
     '<th style="width:96px">Nguồn</th></tr></thead><tbody>' +
-  o.headings.map(h => `<tr class="${h.disputed ? 'dis' : ''}">
+    (o.headings || []).map(h => `<tr class="${h.disputed ? 'dis' : ''}">
         <td class="i">${h.index}</td>
         <td style="padding-left:${10 + ((h.level ?? 1) - 1) * 22}px">
           <span class="lvl">${h.level == null ? 'H?' : 'H' + h.level}</span>${esc(h.text)}${
             h.inlineBody ? '<span class="tag dis">tách nội dung cùng dòng</span>' : ''}${
             decisionTag(h)}${
-            h.disputed ? '<span class="tag dis">cần xem lại</span>' : ''}</td>
-        <td><span class="tag ${h.source}">${h.source}</span></td>
+            h.disputed ? '<span class="tag dis">cần xem lại</span>' : ''}
+          ${headingEvidence(h)}</td>
+        <td><span class="tag ${esc(h.source || '')}">${esc(h.source || '—')}</span></td>
       </tr>`).join('') + '</tbody>';
 
   $('statsPanel').classList.remove('hidden');
