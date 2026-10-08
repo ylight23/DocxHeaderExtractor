@@ -1184,7 +1184,7 @@ $('run').onclick = async () => {
   $('log').textContent = '';
   $('harnessDetail').innerHTML = '<h3>Harness trace</h3><p class="note" style="margin:0">Select a stage to inspect its contract and emitted events.</p>';
   devStarted = Date.now(); devLogLines = 0;
-  stageIndex = 0; renderStages();
+  renderStages();
   $('devDot').className = 'devdot live';
   $('devState').textContent = 'Đang khởi tạo pipeline…';
   $('devElapsed').textContent = '0 s';
