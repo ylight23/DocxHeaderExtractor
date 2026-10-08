@@ -1,6 +1,6 @@
 # Current architecture contract
 
-Status: `ACTIVE — SOURCE CLEANUP AND CORE OWNERSHIP CLOSURE`
+Status: `IMPLEMENTATION COMPLETE — LOCAL VERIFICATION PASS / UBUNTU CI PENDING`
 
 Source-cleanup baseline: `main@a2fece331b05c9a59e3e998207be2b2596c3e745`.
 The subsequent Core ownership changes are described below; this is a current contract, not a frozen qualification artifact.
@@ -236,6 +236,28 @@ Stage owners have explicit imports and no reverse Pipeline dependency; Routing/R
 approved composition consumers. See residual-dependency-closure-audit.md for parity and API scope.
 Clean tracked Windows verification of S6-S10 is recorded in
 residual-dependency-closure-verification.md (S11). No additional structural cleanup stage is planned.
+
+## Production cleanup closure (S12-S15)
+
+AgentHarness consumes an explicitly injected neutral inference factory/transport; provider
+construction belongs to host composition roots, not the harness. CLI/Web own opt-in raw provider
+diagnostics, with CLI logging to stderr rather than result stdout. PipelineOptions no longer owns
+ShowRawOutput. LM Studio/SGLang implement the existing optional diagnostic callback; default
+logging remains off and provider request bodies remain unchanged.
+
+DOCX source reading honors ExtractionOptions, including --no-tables. Extraction, review, and
+immediate writeback use the same configured policy. The separate human-review upload endpoint
+retains default extraction; incompatible source ordinals must fail closed at writeback.
+Private transport names are normalized without renaming public named parameters or compatibility
+wire fields. V5Qualification legacy/replay owners and their internal access seams are retained;
+production cannot reference the qualification project or namespace.
+
+See [production-cleanup-closure.md](production-cleanup-closure.md) for intentional public API
+retirements, behavior-fix scope, regression coverage, and final verification gates. Implementation
+is complete. Revision `2f59cd7` passed clean tracked Windows Release, focused 201/201, and
+CoreDeterministic 1051/1051, with a clean checkout after the suite. Publication/Ubuntu CI remain
+pending because GitHub HTTPS connectivity timed out. Do not substitute the previous baseline's
+green CI for this revision. No further mass rename/move stage is planned.
 
 ## Phase control
 

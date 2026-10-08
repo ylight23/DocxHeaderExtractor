@@ -59,9 +59,31 @@ Existing orchestration-folder allowlist and stage ownership guards remain in for
 
 ## Verification gate
 
-New focused regressions pass locally. Final Release, expanded focused regressions, the clean tracked
-Windows `CoreDeterministic` tier, and GitHub Ubuntu deterministic CI are required before marking
-the architecture status `ARCHITECTURE STABLE / CLEANUP CLOSED`. Until those gates complete, do
-not treat the previous baseline's green suite as verification of this change.
+Tested source revision: `2f59cd799d81884348b33024a527a76d6060da72`.
+The verification checkout contains only committed files, without the main workspace's modified
+H3 preflight or untracked research files. Provider keys were blank and `A99_FREEZE_UPDATE=0`.
+
+- Release solution build: PASS, 0 errors, 34 pre-existing warnings; no new diagnostic in this scope.
+- Expanded focused regressions: PASS, 201/201, 0 failed/skipped (including 20 new S12–S15 cases).
+- Official Windows `CoreDeterministic` tier: PASS, 1051/1051, 0 failed/skipped, 19m29s.
+- `git diff --check`: PASS; verification checkout status after the suite: clean.
+- Read-only Roslyn audit of DocumentProcessing: 0 unused imports, 0 compilation errors.
+- Provider calls: 0; Gold mutations: 0; frozen artifact rebaselines: 0.
+- GitHub publication/Ubuntu CI: PENDING. Both Git push and GitHub API timed out on HTTPS port 443.
+
+Commands: `dotnet build -c Release`; focused `dotnet test -c Release --no-build`;
+`pwsh -NoProfile -File scripts/Invoke-A99TestTier.ps1 -Tier CoreDeterministic -Configuration Release -NoBuild`.
+The tier used the unchanged official manifest, without ad-hoc exclusions.
+
+Local ignored verification records (`.verify-build` in the clean checkout):
+
+| Record | SHA-256 |
+| --- | --- |
+| `s12-s15-release-build.log` | `86a1de3dea4cbb081c9bf96587ad40bbae2056c294c27326820d1397571a013f` |
+| `s12-s15-focused.trx` | `f2d4c818103a384d649e4bfeaffe478ee98619030ce8228b43003377584833cb` |
+| `s12-s15-full.log` | `89d9d1f6da3284e1e3bff77a09e345da25477cfb4c5b8541b84a4f98ab4276fa` |
+
+GitHub Ubuntu deterministic CI is still required before marking the architecture status
+`ARCHITECTURE STABLE / CLEANUP CLOSED`. The prior baseline's green CI is not evidence for this revision.
 
 No additional mass rename/move stage is planned. Accuracy/provider qualification remains separate.
