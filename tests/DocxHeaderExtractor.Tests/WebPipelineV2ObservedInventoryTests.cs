@@ -5,6 +5,32 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class WebPipelineV2ObservedInventoryTests
 {
     [Fact]
+    public void Source_review_pins_reference_without_retroactively_claiming_Web_input_hash_or_stage_replay()
+    {
+        var inventoryPath = TestRepository.Path("artifacts/web-pdf-semantic-diagnostic/run-1c32edb4.inventory.v1.json");
+        using var inventory = JsonDocument.Parse(File.ReadAllText(inventoryPath));
+        using var review = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(
+            "artifacts/web-pdf-semantic-diagnostic/run-1c32edb4.source-review.v1.json")));
+        var root = review.RootElement;
+        Assert.Equal(root.GetProperty("observedInventorySha256").GetString(),
+            Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(inventoryPath))).ToLowerInvariant());
+        Assert.Null(inventory.RootElement.GetProperty("sourceFileSha256").GetString());
+        Assert.False(root.GetProperty("actualWebInputBytesIndependentlyVerified").GetBoolean());
+        Assert.Equal("NOT_EVALUABLE_WITHOUT_FROZEN_F1_G2A_H2C_RESPONSES", root.GetProperty("stageAttribution").GetString());
+        Assert.Equal(0, root.GetProperty("providerCallsDuringSourceReview").GetInt32());
+        Assert.Equal("NONE", root.GetProperty("goldMutation").GetString());
+        Assert.Equal(inventory.RootElement.GetProperty("sourceOccurrences").GetInt32(), root.GetProperty("referenceOccurrences").GetInt32());
+        var comparisons = root.GetProperty("observedIdentityComparisons").EnumerateArray().ToArray();
+        Assert.Equal(inventory.RootElement.GetProperty("identities").GetArrayLength(), comparisons.Length);
+        Assert.All(comparisons, value => Assert.True(value.GetProperty("matches").GetBoolean()));
+        var title = root.GetProperty("omittedMainTitleProbe");
+        Assert.Equal(4, title.GetProperty("ordinal").GetInt32());
+        Assert.True(title.GetProperty("presentInReferenceSource").GetBoolean());
+        Assert.False(title.GetProperty("presentInCompleteObservedOutput").GetBoolean());
+        Assert.Equal("NOT_SCORED", title.GetProperty("goldFalseNegativeScore").GetString());
+    }
+
+    [Fact]
     public void Existing_run_inventory_freezes_physical_overlap_without_claiming_raw_replay_or_Gold_accuracy()
     {
         using var document = JsonDocument.Parse(File.ReadAllText(TestRepository.Path(

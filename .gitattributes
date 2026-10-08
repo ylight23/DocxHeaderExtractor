@@ -59,3 +59,6 @@
 /artifacts/v5-p6t-total-occurrence-role/**/result.v1.json text eol=crlf
 # One file whose text a frozen audit hashed as checked out.
 /eval/a99-closed-loop/source-review-v1/SRC-095/review-items.json text eol=crlf
+# This observed-output inventory is referenced by its Windows checkout byte hash in the separate
+# provider-free source-review receipt. Keep exactly those bytes on every verification host.
+/artifacts/web-pdf-semantic-diagnostic/run-1c32edb4.inventory.v1.json text eol=crlf

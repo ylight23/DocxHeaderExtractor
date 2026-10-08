@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "web-pdf-source-review-1",
+  "comparisonType": "PROVIDER_FREE_SOURCE_REVIEW_NOT_STAGE_REPLAY_OR_GOLD_SCORE",
+  "observedExecutionId": "1c32edb4-f6fd-4d72-bf4e-06aef78f71e0",
+  "observedInventoryCommit": "6149c2450a5bdf022d8b3a2dd71e639bade24da0",
+  "observedInventorySha256": "ad25e7b9ee797f6842360c21f9695a69ee0908ec5ed459f6b082640304c66f59",
+  "referenceSourceSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+  "referenceSourceHashBasis": "Local reference PDF matches the previously user-provided file hash",
+  "actualWebInputBytesIndependentlyVerified": false,
+  "sourceAdapterRevision": "6149c2450a5bdf022d8b3a2dd71e639bade24da0",
+  "sourceParseMethod": "PdfSourceAdapter.Build; no inference transport instantiated",
+  "referencePages": 2,
+  "referenceOccurrences": 79,
+  "visualReviewMethod": "Both pages rendered locally with Poppler and inspected; no unrelated search images",
+  "observedIdentityComparisons": [
+    { "ordinal": 0, "alias": "L0000:S0", "matches": true },
+    { "ordinal": 1, "alias": "L0000:S1", "matches": true },
+    { "ordinal": 2, "alias": "L0001:S0", "matches": true },
+    { "ordinal": 38, "alias": "L0034:S0", "matches": true },
+    { "ordinal": 39, "alias": "L0035:S0", "matches": true },
+    { "ordinal": 40, "alias": "L0036:S0", "matches": true },
+    { "ordinal": 44, "alias": "L0040:S0", "matches": true },
+    { "ordinal": 45, "alias": "L0040:S1", "matches": true },
+    { "ordinal": 46, "alias": "L0040:S2", "matches": true }
+  ],
+  "omittedMainTitleProbe": {
+    "alias": "L0003:S0",
+    "ordinal": 4,
+    "page": 1,
+    "sourceIdSha256": "c9ee03ea2f29df580c98f9f1bf460745ebb56c8fdc9809163be7fd17d0651b74",
+    "presentInReferenceSource": true,
+    "presentInCompleteObservedOutput": false,
+    "goldFalseNegativeScore": "NOT_SCORED"
+  },
+  "sourceReviewedOutputShapes": [
+    { "diagnosticKey": "H1", "shape": "ADMINISTRATIVE_FRONT_MATTER_ACROSS_TWO_COLUMNS", "ordinals": [0, 1, 2] },
+    { "diagnosticKey": "H2", "shape": "PROGRAM_TITLE_AND_WRAPPED_DESCRIPTION", "ordinals": [38, 39, 40], "exactSemanticUnitBoundary": "NOT_ADJUDICATED" },
+    { "diagnosticKey": "H3", "shape": "THREE_DISTINCT_TABLE_COLUMN_HEADERS_ON_ONE_ROW", "ordinals": [44, 45, 46] },
+    { "diagnosticKey": "H4", "shape": "TABLE_COLUMN_HEADER_ALREADY_INCLUDED_IN_H3", "ordinals": [45] },
+    { "diagnosticKey": "H5", "shape": "TABLE_COLUMN_HEADER_ALREADY_INCLUDED_IN_H3", "ordinals": [46] }
+  ],
+  "stageAttribution": "NOT_EVALUABLE_WITHOUT_FROZEN_F1_G2A_H2C_RESPONSES",
+  "interpretation": "Source identities and physical output overlap are verified. The table row was not one prejoined source atom. This is a diagnostic source review, not a new Gold benchmark or proof of which upstream stage erred.",
+  "providerCallsDuringSourceReview": 0,
+  "goldMutation": "NONE",
+  "frozenRequestRebaseline": false,
+  "runtimeSemanticChange": false
+}
