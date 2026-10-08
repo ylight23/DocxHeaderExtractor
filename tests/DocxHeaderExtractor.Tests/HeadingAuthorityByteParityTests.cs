@@ -115,15 +115,15 @@ public sealed class HeadingAuthorityByteParityTests
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             Task.FromResult("{\"headings\":[]}");
 
-        public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(
+        public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(
             byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
         {
             Calls.Add(new Recorded(providerBody, maxTokens, systemPrompt, userMessage));
             using var request = JsonDocument.Parse(userMessage);
             var decisions = request.RootElement.GetProperty("occurrences").EnumerateArray()
                 .Select(item => new { occurrence = item.GetProperty("id").GetString(), function = "OTHER" }).ToArray();
-            return Task.FromResult(new FrozenInferenceResult(
-                JsonSerializer.Serialize(new { decisions }), "stop", null, string.Empty, 0, 0));
+            return Task.FromResult(new FrozenInferenceResponse(
+                JsonSerializer.Serialize(new { decisions }), "stop"));
         }
 
         public void Dispose() { }

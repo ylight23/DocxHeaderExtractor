@@ -33,7 +33,7 @@ public sealed class OpenRouterInferenceTransport : IFrozenInferenceTransport, ID
     public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default,
         int expectedItemCount = 0) => _engine.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount);
 
-    public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens,
+    public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens,
         string systemPrompt, string userMessage, CancellationToken cancellationToken = default) =>
         _engine.ExecuteFrozenRequestAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken);
 

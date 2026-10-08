@@ -106,7 +106,7 @@ internal sealed class FunctionAnchorExtentHeadingAuthority(
         return new CanonicalSemanticBoundHeading(primary.Alias, primary.SourceId, primary.Ordinal, string.Join(" ", parts.Select(value => value.Text)), "ESTABLISHES_STRUCTURE", "heading", "document_body", [], 0, primary.Text.Length) { Parts = parts };
     }
 
-    private async Task<FrozenInferenceResult?> ExecuteAsync(string prompt, string user, CancellationToken ct, byte[]? body = null)
+    private async Task<FrozenInferenceResponse?> ExecuteAsync(string prompt, string user, CancellationToken ct, byte[]? body = null)
     {
         body ??= composer.Build(prompt, user, P05CompletionTokens);
         var result = await transport.ExecuteFrozenRequestAsync(body, P05CompletionTokens, prompt, user, ct).ConfigureAwait(false);

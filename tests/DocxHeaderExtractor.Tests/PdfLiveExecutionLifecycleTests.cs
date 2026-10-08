@@ -112,7 +112,7 @@ public sealed class PdfLiveExecutionLifecycleTests
 
     private sealed class GateClassifier : IPdfProductionAuthorizedInferenceTransport
     {
-        private readonly TaskCompletionSource<FrozenInferenceResult> _firstCall =
+        private readonly TaskCompletionSource<FrozenInferenceResponse> _firstCall =
             new(TaskCreationOptions.RunContinuationsAsynchronously);
         private string? _firstUserMessage;
 
@@ -141,11 +141,11 @@ public sealed class PdfLiveExecutionLifecycleTests
             return Task.FromResult("{\"headings\":[]}");
         }
 
-        public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
+        public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
         {
             Calls++;
             if (ImmediateFailure is not null)
-                return Task.FromException<FrozenInferenceResult>(ImmediateFailure);
+                return Task.FromException<FrozenInferenceResponse>(ImmediateFailure);
             if (Calls > 1)
                 return Task.FromResult(F1AllOther(userMessage));
             _firstUserMessage = userMessage;
@@ -157,16 +157,16 @@ public sealed class PdfLiveExecutionLifecycleTests
         public void Fail(Exception exception) => _firstCall.TrySetException(exception);
         public void Dispose() { }
 
-        private static FrozenInferenceResult F1AllOther(string userMessage)
+        private static FrozenInferenceResponse F1AllOther(string userMessage)
         {
             using var request = System.Text.Json.JsonDocument.Parse(userMessage);
             var decisions = request.RootElement.GetProperty("occurrences").EnumerateArray()
                 .Select(item => new { occurrence = item.GetProperty("id").GetString(), function = "OTHER" }).ToArray();
-            return new FrozenInferenceResult(
-                System.Text.Json.JsonSerializer.Serialize(new { decisions }), "stop", null, string.Empty, 0, 0);
+            return new FrozenInferenceResponse(
+                System.Text.Json.JsonSerializer.Serialize(new { decisions }), "stop");
         }
 
-        private async Task<FrozenInferenceResult> AwaitFirstCallAsync()
+        private async Task<FrozenInferenceResponse> AwaitFirstCallAsync()
         {
             try
             {

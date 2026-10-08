@@ -264,8 +264,10 @@ between that revision and `c5dec2e`. The verification checkout remained clean af
 [Ubuntu CI for `c5dec2e`](https://github.com/ylight23/DocxHeaderExtractor/actions/runs/37718570871)
 passed Release, focused 51/51, deterministic 1051/1051, and generated-artifact cleanliness.
 Provider calls, Gold mutations, and frozen artifact rebaselines were all 0.
-No further mass rename/move stage is planned. Splitting inference response diagnostics is a
-separate optional API refactor, not an outstanding cleanup gate or a runtime change in this closure.
+No further mass rename/move stage is planned. The subsequent
+[frozen inference response split](frozen-inference-response-split.md) is a separate deliberate
+API refactor: production consumes only `FrozenInferenceResponse(Content, FinishReason)`;
+qualification retains the full observation. It does not change this closure's verified revision.
 
 ## Phase control
 

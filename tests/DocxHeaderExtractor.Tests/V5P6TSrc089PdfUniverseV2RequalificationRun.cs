@@ -8,6 +8,7 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority.Protocols;
 using DocxHeaderExtractor.Infrastructure.AI;
+using DocxHeaderExtractor.V5Qualification;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -55,8 +56,8 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         options.ProviderTransportTimeoutSeconds = 300;
         options.Validate();
 
-        using var inner = OpenRouterInferenceTransport.CreateOwned(options);
-        var transport = new BoundedCapturingTransport(inner, directory);
+        using var inner = OpenRouterQualificationTransport.CreateOwned(options);
+        var transport = new BoundedCapturingTransport(inner, directory, inner.ExecuteObservedAsync);
         var authority = new FunctionAnchorExtentHeadingAuthority(transport, new OpenRouterQwen37InferenceRequestComposer(), built.Details.LayoutBlockByAtom, () => { });
 
         string outcome;
@@ -102,7 +103,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         try
         {
             var fake = new NetworkRefusingTransport();
-            var transport = new BoundedCapturingTransport(fake, directory);
+            var transport = new BoundedCapturingTransport(fake, directory, fake.ExecuteObservedAsync);
             var authority = new FunctionAnchorExtentHeadingAuthority(transport, new OpenRouterQwen37InferenceRequestComposer(), built.Details.LayoutBlockByAtom, () => { });
             await Assert.ThrowsAsync<NetworkRefusingTransport.WouldHaveSent>(() => authority.DecideAsync(built.Snapshot, CancellationToken.None));
             Assert.Equal(1, fake.Attempts);
@@ -124,14 +125,24 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         public int SharedPrefixTokens => 0;
         public void Dispose() { }
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) => throw new WouldHaveSent();
-        public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
+        public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
+        {
+            Attempts++;
+            throw new WouldHaveSent();
+        }
+
+        public Task<OpenRouterExecutionObservation> ExecuteObservedAsync(byte[] providerBody, int maxTokens,
+            string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
         {
             Attempts++;
             throw new WouldHaveSent();
         }
     }
 
-    private sealed class BoundedCapturingTransport(IFrozenInferenceTransport inner, string directory) : IFrozenInferenceTransport
+    private sealed class BoundedCapturingTransport(
+        IFrozenInferenceTransport inner, string directory,
+        Func<byte[], int, string, string, CancellationToken, Task<OpenRouterExecutionObservation>> executeObserved)
+        : IFrozenInferenceTransport
     {
         public sealed class StopRun(string message) : Exception(message);
 
@@ -149,7 +160,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             throw new StopRun("only frozen requests are authorized");
 
-        public async Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(
+        public async Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(
             byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
         {
             var stage = string.Equals(systemPrompt, HeadingAnchorProtocolV1.SystemPrompt, StringComparison.Ordinal) ? "G2A"
@@ -177,7 +188,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
             var stem = Path.Combine(directory, $"call-{ordinal:00}-{stage}");
             File.WriteAllBytes(stem + ".request-body.json", providerBody);
 
-            var result = await inner.ExecuteFrozenRequestAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken).ConfigureAwait(false);
+            var result = await executeObserved(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken).ConfigureAwait(false);
 
             int? Usage(string name) => result.Usage is { ValueKind: JsonValueKind.Object } usage && usage.TryGetProperty(name, out var value) && value.TryGetInt32(out var number) ? number : null;
             var row = new CallRow(ordinal, stage, bodySha, providerBody.Length, result.FinishReason, Encoding.UTF8.GetByteCount(result.Content),
@@ -199,7 +210,7 @@ public sealed class V5P6TSrc089PdfUniverseV2RequalificationRun
 
             if (stage == "G2A")
                 _hasAnchors = result.Content.Split("HAS_STRUCTURAL_EXTENT").Length - 1;
-            return result;
+            return new FrozenInferenceResponse(result.Content, result.FinishReason);
         }
     }
 }

@@ -175,7 +175,7 @@ public sealed class PdfProductReachabilityTests : IDisposable
             string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             Task.FromResult("{\"placements\":[]}");
 
-        public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(
+        public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(
             byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
             CancellationToken cancellationToken = default)
         {
@@ -190,7 +190,7 @@ public sealed class PdfProductReachabilityTests : IDisposable
                 "v5-function-conditioned-exact-end-pointer-clean-paired-1" => Boundary(root),
                 _ => throw new InvalidOperationException($"Unexpected PDF test protocol: {protocol}"),
             };
-            return Task.FromResult(new FrozenInferenceResult(content, "stop", null, string.Empty, 0, 0));
+            return Task.FromResult(new FrozenInferenceResponse(content, "stop"));
         }
 
         public void Dispose() { }

@@ -139,7 +139,7 @@ public sealed class PdfProductionProviderPolicyTests
             Calls++;
             throw new InvalidOperationException("must not start");
         }
-        public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens,
+        public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens,
             string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
         {
             Calls++;

@@ -138,12 +138,11 @@ internal sealed class OpenRouterTransportEngine : IDisposable
         byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
         => await ExecuteObservedCoreAsync(payloadBytes, maxTokens, systemPrompt, userMessage, enforceJsonObjectCompatibility: true, ct);
 
-    public async Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(
+    public async Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(
         byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
     {
         var observation = await ExecuteObservedAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken).ConfigureAwait(false);
-        return new FrozenInferenceResult(observation.Content, observation.FinishReason, observation.Usage,
-            observation.RawSse, observation.SseEventCount, observation.RetryCount);
+        return new FrozenInferenceResponse(observation.Content, observation.FinishReason);
     }
 
     /// <summary>

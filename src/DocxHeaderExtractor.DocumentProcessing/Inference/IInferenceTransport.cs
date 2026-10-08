@@ -1,5 +1,3 @@
-using System.Text.Json;
-
 namespace DocxHeaderExtractor.DocumentProcessing.Inference;
 
 /// <summary>Provider-neutral transport contract consumed by document processing.</summary>
@@ -49,9 +47,12 @@ public interface IInferenceTransportFactory
         throw new InvalidOperationException("PDF_PRODUCTION_PROVIDER_FACTORY_REQUIRED");
 }
 
-/// <summary>Raw completion returned by executing an already frozen provider request body.</summary>
-public sealed record FrozenInferenceResult(
-    string Content, string? FinishReason, JsonElement? Usage, string RawSse, int SseEventCount, int RetryCount);
+/// <summary>
+/// Runtime completion returned by executing an already frozen provider request body.
+/// Provider usage, raw transport evidence, and retry diagnostics belong to observation APIs,
+/// not to the document-processing response contract.
+/// </summary>
+public sealed record FrozenInferenceResponse(string Content, string? FinishReason);
 
 /// <summary>
 /// Optional exact-body surface for production candidates whose body composer is part of their
@@ -60,7 +61,7 @@ public sealed record FrozenInferenceResult(
 /// </summary>
 public interface IFrozenInferenceTransport : IInferenceTransport
 {
-    Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(
+    Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(
         byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
         CancellationToken cancellationToken = default);
 }

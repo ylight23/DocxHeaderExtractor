@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Infrastructure.AI;
+using DocxHeaderExtractor.V5Qualification;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -50,8 +51,8 @@ public sealed class V5P6TSrc089G2AReplicationRun
         options.Validate();
 
         Directory.CreateDirectory(directory);
-        using var transport = OpenRouterInferenceTransport.CreateOwned(options);
-        var result = await transport.ExecuteFrozenRequestAsync(body, maxTokens, system, user).ConfigureAwait(false);
+        using var transport = OpenRouterQualificationTransport.CreateOwned(options);
+        var result = await transport.ExecuteObservedAsync(body, maxTokens, system, user).ConfigureAwait(false);
 
         int? Usage(string name) => result.Usage is { ValueKind: JsonValueKind.Object } usage && usage.TryGetProperty(name, out var value) && value.TryGetInt32(out var number) ? number : null;
         File.WriteAllText(Path.Combine(directory, "g2a-replication.raw-capture.v1.json"), JsonSerializer.Serialize(new

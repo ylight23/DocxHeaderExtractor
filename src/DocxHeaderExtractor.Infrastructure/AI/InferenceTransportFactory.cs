@@ -80,7 +80,7 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
             CancellationToken ct = default, int expectedItemCount = 0) =>
             inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount);
 
-        public Task<FrozenInferenceResult> ExecuteFrozenRequestAsync(
+        public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(
             byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
             CancellationToken cancellationToken = default) =>
             inner.ExecuteFrozenRequestAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken);
