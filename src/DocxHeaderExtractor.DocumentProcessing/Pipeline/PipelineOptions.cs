@@ -13,9 +13,6 @@ public sealed class PipelineOptions
     /// <summary>Bỏ qua LLM, chỉ dùng luật (nhanh, để đối chiếu).</summary>
     public bool DisableLlm { get; set; }
 
-    /// <summary>In nguyên văn request/response của mô hình (debug).</summary>
-    public bool ShowRawOutput { get; set; }
-
     public Action<string>? Log { get; set; }
 
 }

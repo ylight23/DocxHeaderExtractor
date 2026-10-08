@@ -37,6 +37,8 @@ if (options.Inputs.Count == 0 && options.Command is not "info")
     return 2;
 }
 if (!options.Quiet) options.Pipeline.Log = m => Console.Error.WriteLine($"  {m}");
+// Explicit raw diagnostics remain available with --quiet; never mix them into result stdout.
+options.ConfigureProviderDiagnostics(m => Console.Error.WriteLine($"  {m}"));
 
 using var cts = new CancellationTokenSource();
 Console.CancelKeyPress += (_, e) => { e.Cancel = true; cts.Cancel(); };

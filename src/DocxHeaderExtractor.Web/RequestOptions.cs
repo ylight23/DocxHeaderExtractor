@@ -15,8 +15,6 @@ public static class RequestOptions
 
         o.DisableLlm = Flag(form, "noLlm");
 
-        o.ShowRawOutput = Flag(form, "showRaw");
-
         if (o.DisableLlm) return o;
 
         provider.Backend = form["backend"].ToString().ToLowerInvariant() switch
@@ -83,6 +81,14 @@ public static class RequestOptions
         if (Number(form, "gpuLayers") is { } gl and >= 0)
             provider.LocalModel.GpuLayerCount = (int)gl;
         return o;
+    }
+
+    /// <summary>Host-only, explicit opt-in for potentially sensitive provider payload logs.</summary>
+    public static void ConfigureProviderDiagnostics(
+        IFormCollection form, InferenceProviderSelection provider, Action<string> log)
+    {
+        if (Flag(form, "showRaw") && provider.Backend is InferenceBackend.LmStudio or InferenceBackend.OpenRouter)
+            provider.Remote.DebugLog = log;
     }
 
     private static bool Flag(IFormCollection form, string key) =>

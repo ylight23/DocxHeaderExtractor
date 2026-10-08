@@ -89,8 +89,12 @@ public sealed class SglangInferenceTransport : IInferenceTransport
                 if (!string.IsNullOrWhiteSpace(_options.ApiKey))
                     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
 
+                if (_options.DebugLog is { } debugLog)
+                    debugLog($"[SGLang] LLM REQUEST model={_options.Model} payload={await request.Content.ReadAsStringAsync(timeout.Token)}");
+
                 using var response = await _http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, timeout.Token);
                 var responseText = await response.Content.ReadAsStringAsync(timeout.Token);
+                _options.DebugLog?.Invoke($"[SGLang] LLM RESPONSE status={(int)response.StatusCode} payload={responseText}");
                 if (!response.IsSuccessStatusCode)
                     throw new HttpRequestException(
                         $"SGLang gateway trả {(int)response.StatusCode} {response.ReasonPhrase}: {Safe(responseText, 500)}",
@@ -163,4 +167,3 @@ public sealed class SglangInferenceTransport : IInferenceTransport
         if (_ownsHttp) _http.Dispose();
     }
 }
-

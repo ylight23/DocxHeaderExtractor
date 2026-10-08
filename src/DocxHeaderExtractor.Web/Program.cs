@@ -207,8 +207,7 @@ app.MapPost("/api/extract", async (
                 Console.WriteLine($"[{DateTimeOffset.Now:yyyy-MM-dd HH:mm:ss}] [DHX] {m}");
                 events.Writer.TryWrite(new { type = "log", message = m });
             };
-        if ((provider.Backend is InferenceBackend.LmStudio or InferenceBackend.OpenRouter) && options.ShowRawOutput)
-            provider.Remote.DebugLog = options.Log;
+        RequestOptions.ConfigureProviderDiagnostics(form, provider, options.Log);
 
         // Một quyết định duy nhất về định dạng, đọc từ byte, dùng chung cho mọi bước phía sau.
         var uploadedType = UploadedSourceDetector.Detect(inputPath);

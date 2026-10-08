@@ -13,6 +13,9 @@ public sealed class CommandLineOptions
     public OutlineFormat Format { get; private set; } = OutlineFormat.Json;
     public bool Quiet { get; private set; }
 
+    /// <summary>Explicit opt-in: provider payload diagnostics may contain document text.</summary>
+    public bool ShowRawOutput { get; private set; }
+
     /// <summary>In cả stack trace khi một tài liệu lỗi.</summary>
     public bool Verbose { get; private set; }
     public bool ShowHelp { get; private set; }
@@ -24,6 +27,14 @@ public sealed class CommandLineOptions
     public string? WritebackPath { get; private set; }
     public bool WritebackOverwrite { get; private set; }
     public bool WritebackHeadingStyles { get; private set; }
+
+    /// <summary>Configure only the host-owned remote provider, never processing options.</summary>
+    public void ConfigureProviderDiagnostics(Action<string> log)
+    {
+        ArgumentNullException.ThrowIfNull(log);
+        if (ShowRawOutput && Provider.Backend is InferenceBackend.LmStudio or InferenceBackend.OpenRouter or InferenceBackend.Sglang)
+            Provider.Remote.DebugLog = log;
+    }
 
     public static CommandLineOptions Parse(string[] args)
     {
@@ -108,7 +119,7 @@ public sealed class CommandLineOptions
                     o.Provider.Remote = RemoteInferenceOptions.FromEnvironment("sglang");
                     o.Provider.Remote.ContextSize = int.Parse(Next(a));
                     break;
-                case "--show-raw": o.Pipeline.ShowRawOutput = true; break;
+                case "--show-raw": o.ShowRawOutput = true; break;
 
                 case "--ctx": llama.ContextSize = uint.Parse(Next(a)); llama.AutoContextSize = false; break;
                 case "--threads" or "-t": llama.Threads = int.Parse(Next(a)); break;
@@ -171,7 +182,7 @@ public sealed class CommandLineOptions
               --sglang-endpoint u   Chat endpoint
               --sglang-api-key k    Bearer token cho gateway
               --sglang-context n    Context gateway khai
-              --show-raw            In nguyên văn JSON mô hình trả về
+              --show-raw            Log request/response remote (có thể chứa nội dung tài liệu)
           -q, --quiet               Không in tiến trình
           -v, --verbose             In stack trace khi một tài liệu lỗi
 

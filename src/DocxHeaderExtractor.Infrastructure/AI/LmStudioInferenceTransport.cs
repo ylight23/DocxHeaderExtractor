@@ -74,8 +74,12 @@ public sealed class LmStudioInferenceTransport : IInferenceTransport
         if (!string.IsNullOrWhiteSpace(_options.ApiKey))
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _options.ApiKey);
 
+        if (_options.DebugLog is { } debugLog)
+            debugLog($"[LM Studio] LLM REQUEST model={_options.Model} payload={await request.Content.ReadAsStringAsync(ct)}");
+
         using var response = await _http.SendAsync(request, ct);
         var responseText = await response.Content.ReadAsStringAsync(ct);
+        _options.DebugLog?.Invoke($"[LM Studio] LLM RESPONSE status={(int)response.StatusCode} payload={responseText}");
         if (!response.IsSuccessStatusCode)
             throw new HttpRequestException(
                 $"LM Studio trả {(int)response.StatusCode} {response.ReasonPhrase}: {responseText}",
@@ -124,4 +128,3 @@ public sealed class LmStudioInferenceTransport : IInferenceTransport
         if (_ownsHttp) _http.Dispose();
     }
 }
-
