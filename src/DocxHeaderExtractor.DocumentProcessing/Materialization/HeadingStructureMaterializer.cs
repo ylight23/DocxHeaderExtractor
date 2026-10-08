@@ -171,10 +171,3 @@ internal static class HeadingStructureMaterializer
 internal sealed record HeadingStructureMaterialization(
     ValidatedStructure Structure,
     [property: System.Text.Json.Serialization.JsonIgnore] HeadingProjectionContext ProjectionContext);
-
-/// <summary>Materialized structure and the source elements selected for output.</summary>
-public sealed record StructuralMaterializationResult(
-    ValidatedStructure Structure,
-    IReadOnlySet<string> EmittedElementIds,
-    int UnjoinedSourceCount,
-    int UnjoinedParentCount);

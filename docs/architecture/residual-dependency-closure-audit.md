@@ -25,3 +25,17 @@ behavior and constructors remain unchanged; Web review callers use the new names
 This is an intentional public C# type/API rename, not binary compatibility. Record property
 names and serialization shape are unchanged. ReviewSourceOwnershipTests checks snapshot
 shape, unique common IR naming and source/index parity against the existing OOXML reader.
+
+## S8: retire the unused materialization envelope
+
+StructuralMaterializationResult had one production consumer, no tests/serialization/config
+consumer in the repository, and two zero-only counters. DOCX now carries structure and emitted
+IDs as local variables. The audit-null branch still uses an empty validated graph and empty
+emitted IDs; only the audit-present branch admits authority.Structure and the identical ID
+fallback. Projection/product/sections/chunk construction retain their ordering and inputs.
+HeadingStructureMaterialization (graph + projection sidecar) remains live and is not removed.
+
+Removing the public wrapper is an intentional public API retirement; repository reachability
+does not prove absence of external clients. This is not a wire-removal claim. The guard tests
+the retired type and preserves the audit admission gate; existing output/replay parity tests
+remain authoritative for live serialized behavior.

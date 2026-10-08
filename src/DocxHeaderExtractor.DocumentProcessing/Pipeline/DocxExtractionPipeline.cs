@@ -100,28 +100,25 @@ public sealed class DocxExtractionPipeline : IDisposable
             var reason = authority.Reason;
 
             var product = new DocumentProductOutput(FileSha256(inputPath), []);
-            var structural = new StructuralMaterializationResult(
-                ValidatedStructureFactory.Create([]), new HashSet<string>(StringComparer.Ordinal), 0, 0);
+            var structure = ValidatedStructureFactory.Create([]);
+            IReadOnlySet<string> emittedIds = new HashSet<string>(StringComparer.Ordinal);
             if (audit is not null)
             {
                 var finalStructure = BuildFinalStructure(inputPath, audit, authority.Structure, authority.ProjectionContext);
                 var decisions = OutputDecisionPolicy.Decide(finalStructure);
                 product = DocumentProductOutputProjector.Serialize(finalStructure, decisions);
-                structural = new StructuralMaterializationResult(
-                    authority.Structure,
-                    authority.EmittedElementIds ?? authority.Structure.Elements
-                        .Select(element => element.Id).ToHashSet(StringComparer.Ordinal),
-                    0,
-                    0);
+                structure = authority.Structure;
+                emittedIds = authority.EmittedElementIds ?? structure.Elements
+                    .Select(element => element.Id).ToHashSet(StringComparer.Ordinal);
             }
 
             var headings = HeadingOutlineProjection.Project(
-                structural.Structure, structural.EmittedElementIds, authority.ProjectionContext);
+                structure, emittedIds, authority.ProjectionContext);
             _options.Log?.Invoke($"Authority route {route}: validated={headings.Count}; {reason}");
             var sourceCatalog = DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument);
-            var sections = StructuralSectionProjection.Project(structural.Structure, sourceCatalog);
+            var sections = StructuralSectionProjection.Project(structure, sourceCatalog);
             var chunks = SectionChunkProjection.Project(
-                sections, sourceCatalog, structural.Structure,
+                sections, sourceCatalog, structure,
                 new DocumentChunkingPolicy(Math.Max(1, _options.Chunking.TokenBudget)));
             var extractionResult = new DocumentExtractionResult(
                 new DocumentIdentity(
@@ -130,7 +127,7 @@ public sealed class DocxExtractionPipeline : IDisposable
                     sourceDocument.SourceKind,
                     inputPath),
                 sourceCatalog,
-                structural.Structure,
+                structure,
                 sections,
                 chunks,
                 new DocumentExtractionProvenance(
