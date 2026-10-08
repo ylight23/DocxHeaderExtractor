@@ -125,11 +125,11 @@ public sealed class PdfProductReachabilityTests : IDisposable
 
         File.Copy(Path.Combine(TestRepository.Root(), Pdf.Replace('/', Path.DirectorySeparatorChar)), path, overwrite: true);
         using var pipeline = new DocxExtractionPipeline(new PipelineOptions { DisableLlm = true });
-        using var pdfLane = new PdfCanonicalSourceExtractor(new PipelineOptions { DisableLlm = true });
+        using var pdfLane = new PdfExtractionHandler(new PipelineOptions { DisableLlm = true });
         var dispatcher = new DocumentExtractionRouter(
-            new DocxCanonicalSourceExtractor(pipeline), pdfLane);
+            new DocxExtractionHandler(pipeline), pdfLane);
 
-        var execution = await dispatcher.ExtractAsync(new AuthorityExtractionRequest(stale));
+        var execution = await dispatcher.ExtractAsync(new DocumentExtractionRequest(stale));
 
         Assert.Equal("pdf-canonical-vnext", execution.Result.Provenance.Route);
         // The hash travelled with the routing decision: what is recorded is what was read.

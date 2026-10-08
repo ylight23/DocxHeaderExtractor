@@ -61,10 +61,10 @@ public sealed class ExtractionBoundaryTests : IDisposable
         await File.WriteAllTextAsync(Path.Combine(_directory, "report.pdf"), "%PDF-1.7\n");
         using var pipeline = new DocxExtractionPipeline(new PipelineOptions { DisableLlm = true });
         var dispatcher = new DocumentExtractionRouter(
-            new DocxCanonicalSourceExtractor(pipeline), new PdfCanonicalSourceExtractor(new PipelineOptions { DisableLlm = true }));
+            new DocxExtractionHandler(pipeline), new PdfExtractionHandler(new PipelineOptions { DisableLlm = true }));
 
         var execution = await dispatcher.ExtractAsync(
-            new AuthorityExtractionRequest(UploadedFile.FromLocalPath(path)));
+            new DocumentExtractionRequest(UploadedFile.FromLocalPath(path)));
 
         Assert.Equal("docx-canonical-vnext", execution.Result.Provenance.Route);
         Assert.Equal(
@@ -77,22 +77,22 @@ public sealed class ExtractionBoundaryTests : IDisposable
     {
         var path = Path.Combine(_directory, "notes.docx");
         await File.WriteAllBytesAsync(path, [0x00, 0x01, 0x02, 0x03]);
-        var dispatcher = new DocumentExtractionRouter(new PdfCanonicalSourceExtractor(new PipelineOptions { DisableLlm = true }));
+        var dispatcher = new DocumentExtractionRouter(new PdfExtractionHandler(new PipelineOptions { DisableLlm = true }));
 
         await Assert.ThrowsAsync<UnsupportedSourceException>(() => dispatcher.ExtractAsync(
-            new AuthorityExtractionRequest(UploadedFile.FromLocalPath(path))));
+            new DocumentExtractionRequest(UploadedFile.FromLocalPath(path))));
     }
 
     [Fact]
     public void Intent_cannot_reach_the_authority_boundary_at_all()
     {
-        // Structural, not behavioural: AuthorityExtractionRequest carries one member, and no
+        // Structural, not behavioural: DocumentExtractionRequest carries one member, and no
         // projection type is reachable from the authority pipeline's signature. A future field
         // carrying intent would fail here rather than quietly making canonical truth depend on
         // the question being asked.
         Assert.Equal(
             [typeof(UploadedFile)],
-            typeof(AuthorityExtractionRequest).GetProperties().Select(property => property.PropertyType));
+            typeof(DocumentExtractionRequest).GetProperties().Select(property => property.PropertyType));
 
         Assert.DoesNotContain(
             typeof(DocxExtractionPipeline).GetMethods()

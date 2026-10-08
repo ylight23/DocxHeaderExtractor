@@ -2,7 +2,7 @@
 namespace DocxHeaderExtractor.DocumentProcessing.Routing;
 
 /// <summary>Extracts a canonical document from one uploaded file of a format it owns.</summary>
-public interface ICanonicalSourceExtractor
+public interface IDocumentExtractionHandler
 {
     SourceType Handles { get; }
 
@@ -16,10 +16,10 @@ public interface ICanonicalSourceExtractor
     /// <paramref name="quarantinedIndexes"/> is the harness repair loop removing source occurrences
     /// a validator rejected, then re-running. It is not intent - it says nothing about what the
     /// caller wants out of the document - so it stays a parameter here rather than joining
-    /// <see cref="AuthorityExtractionRequest"/>, which must carry the file and nothing else.
+    /// <see cref="DocumentExtractionRequest"/>, which must carry the file and nothing else.
     /// </para>
     /// </summary>
-    Task<Authority.AuthorityPipelineExecutionResult> ExtractAsync(
+    Task<Authority.DocumentExtractionExecutionResult> ExtractAsync(
         UploadedFile file,
         IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default);
@@ -36,16 +36,16 @@ public interface ICanonicalSourceExtractor
 /// </summary>
 public sealed class DocumentExtractionRouter
 {
-    private readonly IReadOnlyDictionary<SourceType, ICanonicalSourceExtractor> _extractors;
+    private readonly IReadOnlyDictionary<SourceType, IDocumentExtractionHandler> _extractors;
 
-    public DocumentExtractionRouter(params ICanonicalSourceExtractor[] extractors)
+    public DocumentExtractionRouter(params IDocumentExtractionHandler[] extractors)
     {
         ArgumentNullException.ThrowIfNull(extractors);
         _extractors = extractors.ToDictionary(item => item.Handles);
     }
 
-    public Task<Authority.AuthorityPipelineExecutionResult> ExtractAsync(
-        AuthorityExtractionRequest request,
+    public Task<Authority.DocumentExtractionExecutionResult> ExtractAsync(
+        DocumentExtractionRequest request,
         IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default)
     {

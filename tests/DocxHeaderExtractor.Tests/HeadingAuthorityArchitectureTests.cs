@@ -45,6 +45,9 @@ public sealed class HeadingAuthorityArchitectureTests
             "QualifiedInferenceRequestFactory", "PdfQualifiedInferencePolicy",
             "RouteExecutionAudit", "RouteLaneExecutionAudit", "RouteBlockAudit", "RouteBlockDecisionAudit",
             "CanonicalRouteAuditBoundary",
+            "AuthorityPipelineExecutionResult", "AuthorityExtractionRequest", "ICanonicalSourceExtractor",
+            "DocxCanonicalSourceExtractor", "PdfCanonicalSourceExtractor", "AuthorityDocumentSourceReader",
+            "StructuralMaterializationResult", "StructuralAuthorityResult",
         };
         var retiredSourceSymbols = new[]
         {
@@ -97,6 +100,8 @@ public sealed class HeadingAuthorityArchitectureTests
             ("Projection", ["CanonicalFinalStructureProjection", "DocumentProductOutputProjector", "HeadingOutlineProjection",
                 "SectionChunkProjection", "StructuralSectionProjection", "OutputDecisionPolicy"]),
             ("Authority", ["ExecutionAuditBoundary", "HierarchyFactHash", "PipelineExecutionAudit", "HeadingHierarchyFactAudit", "PdfHierarchyFactsInventory", "HeadingPipelineResult"]),
+            ("Routing", ["DocumentExtractionRouter", "DocxExtractionHandler", "PdfExtractionHandler"]),
+            ("Review", ["ReviewDocumentSourceReader"]),
             ("Provenance", ["BuildProvenance"]),
             ("OpenXmlLayer", ["DocxProductWriteback"]),
             ("Inference", ["IFrozenInferenceRequestComposer", "PdfInferenceWireContract"]),

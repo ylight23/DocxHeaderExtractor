@@ -65,13 +65,13 @@ public sealed class DocxExtractionPipeline : IDisposable
         return execution.Outline;
     }
 
-    public Task<AuthorityPipelineExecutionResult> RunDocumentExecutionAsync(
+    public Task<DocumentExtractionExecutionResult> RunDocumentExecutionAsync(
         string inputPath,
         IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default) =>
         ExecuteDocumentAsync(inputPath, quarantinedIndexes, ct);
 
-    private async Task<AuthorityPipelineExecutionResult> ExecuteDocumentAsync(
+    private async Task<DocumentExtractionExecutionResult> ExecuteDocumentAsync(
         string inputPath,
         IReadOnlySet<int>? quarantinedIndexes,
         CancellationToken ct = default)
@@ -145,7 +145,7 @@ public sealed class DocxExtractionPipeline : IDisposable
                 Provenance = BuildProvenance(audit,
                     !_options.DisableLlm && (_analystFactory?.SendsDataExternally ?? _transportSendsDataExternally)),
             };
-            return new AuthorityPipelineExecutionResult(extractionResult, outline);
+            return new DocumentExtractionExecutionResult(extractionResult, outline);
     }
 
     private async Task<IInferenceTransport> GetAnalystAsync(CancellationToken ct)

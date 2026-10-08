@@ -60,7 +60,7 @@ public sealed record UploadedFile
 /// Intent belongs to a projection request, on the far side of the semantic boundary.
 /// </para>
 /// </summary>
-public sealed record AuthorityExtractionRequest(UploadedFile File);
+public sealed record DocumentExtractionRequest(UploadedFile File);
 
 /// <summary>Raised when the uploaded bytes are not a format this system extracts.</summary>
 public sealed class UnsupportedSourceException(UploadedFile file)

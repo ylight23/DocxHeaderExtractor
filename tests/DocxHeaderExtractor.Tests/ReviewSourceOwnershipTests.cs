@@ -31,7 +31,7 @@ public sealed class ReviewSourceOwnershipTests
     public void Common_source_ir_and_review_snapshot_have_distinct_names_and_contracts()
     {
         var assembly = typeof(ReviewDocumentSourceSnapshot).Assembly;
-        Assert.Single(assembly.GetTypes().Where(type => type.Name == "DocumentSourceSnapshot"));
+        Assert.Single(assembly.GetTypes(), type => type.Name == "DocumentSourceSnapshot");
         Assert.Equal(new[] { "Document", "SourceIndexes" },
             typeof(ReviewDocumentSourceSnapshot).GetProperties().Select(p => p.Name));
         Assert.Null(assembly.GetType("DocxHeaderExtractor.DocumentProcessing.Review.DocumentSourceSnapshot"));

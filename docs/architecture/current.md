@@ -224,6 +224,17 @@ The latest local Core ownership verification is recorded in
 revision and clean tracked checkout caveat. The subsequent C1/C2 ownership closure is recorded in
 [`core-domain-service-ownership-audit.md`](core-domain-service-ownership-audit.md).
 
+## Residual dependency closure (S6-S10)
+
+Inference factories take only CancellationToken; provider selection is composition-owned,
+not passed through PipelineOptions. Source IR DocumentSourceSnapshot is distinct from the
+ReviewDocumentSourceSnapshot/ReviewDocumentSourceReader review boundary. Routing uses
+IDocumentExtractionHandler, DocxExtractionHandler/PdfExtractionHandler and the file-only
+DocumentExtractionRequest; DocumentExtractionExecutionResult carries extraction + outline.
+These public C# migrations are intentional; runtime behavior and serialized shapes are retained.
+Stage owners have explicit imports and no reverse Pipeline dependency; Routing/Review are
+approved composition consumers. See residual-dependency-closure-audit.md for parity and API scope.
+
 ## Phase control
 
 `HUMAN_ADJUDICATION = NOT_STARTED_IN_PHASE1`

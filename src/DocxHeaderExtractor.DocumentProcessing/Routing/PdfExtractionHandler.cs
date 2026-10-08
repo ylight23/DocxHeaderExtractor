@@ -4,21 +4,6 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Routing;
 
-/// <summary>The DOCX lane, owning DOCX uploads and nothing else.</summary>
-public sealed class DocxCanonicalSourceExtractor(DocxExtractionPipeline pipeline) : ICanonicalSourceExtractor
-{
-    public SourceType Handles => SourceType.Docx;
-
-    public Task<AuthorityPipelineExecutionResult> ExtractAsync(
-        UploadedFile file,
-        IReadOnlySet<int>? quarantinedIndexes = null,
-        CancellationToken ct = default)
-    {
-        ArgumentNullException.ThrowIfNull(file);
-        return pipeline.RunDocumentExecutionAsync(file.LocalPath, quarantinedIndexes, ct);
-    }
-}
-
 /// <summary>
 /// The PDF lane, owning PDF uploads and nothing else.
 /// <para>
@@ -33,7 +18,7 @@ public sealed class DocxCanonicalSourceExtractor(DocxExtractionPipeline pipeline
 /// handed to it belongs to whoever handed it over.
 /// </para>
 /// </summary>
-public sealed class PdfCanonicalSourceExtractor : ICanonicalSourceExtractor, IDisposable
+public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposable
 {
     private readonly PipelineOptions _options;
     private readonly IInferenceTransportFactory? _analystFactory;
@@ -41,10 +26,10 @@ public sealed class PdfCanonicalSourceExtractor : ICanonicalSourceExtractor, IDi
     private readonly bool _ownsAnalyst;
     private IInferenceTransport? _analyst;
 
-    public PdfCanonicalSourceExtractor(PipelineOptions options, IInferenceTransport? analyst = null)
+    public PdfExtractionHandler(PipelineOptions options, IInferenceTransport? analyst = null)
         : this(options, analyst, sendsDataExternally: false) { }
 
-    public PdfCanonicalSourceExtractor(
+    public PdfExtractionHandler(
         PipelineOptions options,
         IInferenceTransport? analyst,
         bool sendsDataExternally)
@@ -55,7 +40,7 @@ public sealed class PdfCanonicalSourceExtractor : ICanonicalSourceExtractor, IDi
         _ownsAnalyst = false;
     }
 
-    public PdfCanonicalSourceExtractor(PipelineOptions options, IInferenceTransportFactory analystFactory)
+    public PdfExtractionHandler(PipelineOptions options, IInferenceTransportFactory analystFactory)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _analystFactory = analystFactory ?? throw new ArgumentNullException(nameof(analystFactory));
@@ -65,7 +50,7 @@ public sealed class PdfCanonicalSourceExtractor : ICanonicalSourceExtractor, IDi
 
     public SourceType Handles => SourceType.Pdf;
 
-    public async Task<AuthorityPipelineExecutionResult> ExtractAsync(
+    public async Task<DocumentExtractionExecutionResult> ExtractAsync(
         UploadedFile file,
         IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default)

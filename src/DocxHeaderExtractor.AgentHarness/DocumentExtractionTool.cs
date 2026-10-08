@@ -26,7 +26,7 @@ public interface IDocumentExtractionTool : IDisposable
 public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 {
     private readonly DocxExtractionPipeline _docxLane;
-    private readonly PdfCanonicalSourceExtractor _pdfLane;
+    private readonly PdfExtractionHandler _pdfLane;
     private readonly DocumentExtractionRouter _dispatcher;
     private readonly IInferenceTransport? _transport;
     private readonly bool _ownsTransport;
@@ -36,7 +36,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         ArgumentNullException.ThrowIfNull(options);
         var factory = new InferenceTransportFactory();
         _docxLane = new DocxExtractionPipeline(options, factory);
-        _pdfLane = new PdfCanonicalSourceExtractor(options, factory);
+        _pdfLane = new PdfExtractionHandler(options, factory);
         _dispatcher = Dispatch(_docxLane, _pdfLane);
         Descriptor = Describe(options, factory.SendsDataExternally);
     }
@@ -46,7 +46,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(factory);
         _docxLane = new DocxExtractionPipeline(options, factory);
-        _pdfLane = new PdfCanonicalSourceExtractor(options, factory);
+        _pdfLane = new PdfExtractionHandler(options, factory);
         _dispatcher = Dispatch(_docxLane, _pdfLane);
         Descriptor = Describe(options, factory.SendsDataExternally);
     }
@@ -62,7 +62,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         _docxLane = new DocxExtractionPipeline(options, transport, sendsDataExternally);
         // The same transport instance both lanes use, owned by whoever handed it in. Creating a
         // second one here would open a second provider connection for one document.
-        _pdfLane = new PdfCanonicalSourceExtractor(options, transport, sendsDataExternally);
+        _pdfLane = new PdfExtractionHandler(options, transport, sendsDataExternally);
         _dispatcher = Dispatch(_docxLane, _pdfLane);
         _transport = transport;
         _ownsTransport = ownsTransport;
@@ -70,8 +70,8 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     }
 
     private static DocumentExtractionRouter Dispatch(
-        DocxExtractionPipeline pipeline, PdfCanonicalSourceExtractor pdfLane) =>
-        new(new DocxCanonicalSourceExtractor(pipeline), pdfLane);
+        DocxExtractionPipeline pipeline, PdfExtractionHandler pdfLane) =>
+        new(new DocxExtractionHandler(pipeline), pdfLane);
 
     public CapabilityDescriptor Descriptor { get; }
 
@@ -128,7 +128,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         string path, IReadOnlySet<int>? quarantine, CancellationToken ct)
     {
         var execution = await _dispatcher.ExtractAsync(
-                new AuthorityExtractionRequest(UploadedFile.FromLocalPath(path)), quarantine, ct)
+                new DocumentExtractionRequest(UploadedFile.FromLocalPath(path)), quarantine, ct)
             .ConfigureAwait(false);
         return execution.Outline;
     }

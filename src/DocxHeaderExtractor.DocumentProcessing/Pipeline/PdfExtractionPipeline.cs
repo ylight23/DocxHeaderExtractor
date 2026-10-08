@@ -33,7 +33,7 @@ public static class PdfExtractionPipeline
     /// re-derived one would be a second answer about the same document.
     /// </para>
     /// </summary>
-    public static Task<AuthorityPipelineExecutionResult> RunExecutionAsync(
+    public static Task<DocumentExtractionExecutionResult> RunExecutionAsync(
         UploadedFile file,
         PipelineOptions options,
         IInferenceTransport? analyst = null,
@@ -48,7 +48,7 @@ public static class PdfExtractionPipeline
     /// Internal lifecycle seam for deterministic lane-boundary tests. The public execution
     /// signature above remains source- and binary-compatible with the pre-P5c route.
     /// </summary>
-    internal static Task<AuthorityPipelineExecutionResult> RunExecutionAsync(
+    internal static Task<DocumentExtractionExecutionResult> RunExecutionAsync(
         UploadedFile file,
         PipelineOptions options,
         IInferenceTransport? analyst,
@@ -60,7 +60,7 @@ public static class PdfExtractionPipeline
             file, options, analyst, quarantinedIndexes, analystSendsDataExternally, ct,
             semanticLaneOptions);
 
-    private static async Task<AuthorityPipelineExecutionResult> RunExecutionCoreAsync(
+    private static async Task<DocumentExtractionExecutionResult> RunExecutionCoreAsync(
         UploadedFile file,
         PipelineOptions options,
         IInferenceTransport? analyst,
@@ -124,7 +124,7 @@ public static class PdfExtractionPipeline
                 ExecutionContract = ExecutionContracts.ExplicitUploadedPdfCanonical,
             });
 
-        return new AuthorityPipelineExecutionResult(
+        return new DocumentExtractionExecutionResult(
             result,
             Outline(file, options, authority, catalog, used, analystSendsDataExternally, started));
     }

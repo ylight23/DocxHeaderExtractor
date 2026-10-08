@@ -96,7 +96,7 @@ public sealed class PdfLiveExecutionLifecycleTests
         Assert.Equal(1, transport.Calls);
     }
 
-    private static Task<AuthorityPipelineExecutionResult> RunAsync(
+    private static Task<DocumentExtractionExecutionResult> RunAsync(
         IFrozenInferenceTransport transport,
         SemanticLaneOptions lane,
         CancellationToken cancellationToken = default)

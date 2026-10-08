@@ -56,3 +56,19 @@ Pipeline namespace references as well as whole-symbol references to pipeline-own
 and option types. Routing, Pipeline and Review are the explicit composition exceptions; Source,
 Projection, Materialization, Semantics, Authority and Inference are not exceptions. Build and wire/
 replay regressions separately verify that import cleanup did not alter type resolution or payloads.
+
+## S10: routing vocabulary
+
+AuthorityPipelineExecutionResult becomes DocumentExtractionExecutionResult; AuthorityExtractionRequest
+becomes DocumentExtractionRequest; ICanonicalSourceExtractor becomes IDocumentExtractionHandler;
+DocxCanonicalSourceExtractor/PdfCanonicalSourceExtractor become DocxExtractionHandler/PdfExtractionHandler.
+The two handlers have separate files; routing, lazy inference lifetime, provider policy and file-only
+request construction are unchanged. Hosts/tests are migrated, no legacy facade remains. These are
+intentional public C# source/binary API renames. Existing route identities and canonical technical
+terms, JSON property names/order and type-independent payloads are not renamed.
+
+ExtractionRoutingContractTests pins default/Web execution-envelope and request hashes captured
+provider-free from actual pre-rename types at e411bd8. These are new regression fixtures, not
+historical artifact rebaselines. Boundary, PDF lifecycle and byte/replay parity regressions are
+retained. The production retired-symbol guard includes the old names; historical docs/evidence
+are preserved rather than rewritten to pretend they used the new vocabulary.
