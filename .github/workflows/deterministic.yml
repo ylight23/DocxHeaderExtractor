@@ -26,9 +26,11 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Enable Windows long paths before checkout
+      - name: Preserve Windows paths and frozen bytes before checkout
         if: runner.os == 'Windows'
-        run: git config --global core.longpaths true
+        run: |
+          git config --global core.longpaths true
+          git config --global core.autocrlf false
 
       - name: Checkout
         uses: actions/checkout@v4
