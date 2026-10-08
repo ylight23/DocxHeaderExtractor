@@ -36,6 +36,7 @@ test('main Web script initializes escaping before the first progress render and 
   const html = fs.readFileSync(require.resolve('../../src/DocxHeaderExtractor.Web/wwwroot/index.html'), 'utf8');
   const script = html.match(/<script>\s*([\s\S]*?)<\/script>/)[1];
   assert.ok(script.indexOf('const esc =') < script.indexOf('\nrenderHarnessStages();'));
+  assert.ok(!script.includes('((h.level ?? 1) - 1) * 22')); // even the flat fallback must not suggest parentage
   assert.doesNotThrow(() => new vm.Script(script));
 });
 test('renderer uses inert text DOM sinks and responsive stylesheet', () => {
@@ -44,6 +45,7 @@ test('renderer uses inert text DOM sinks and responsive stylesheet', () => {
   assert.ok(!js.includes('innerHTML'));
   assert.ok(!js.includes('eval('));
   assert.ok(js.includes('e.textContent = String(text)'));
+  assert.ok(js.indexOf("document.getElementById('v2Diagnostics').replaceChildren();") < js.indexOf("model.availability !== 'same-execution'"));
   const css = fs.readFileSync(require.resolve('../../src/DocxHeaderExtractor.Web/wwwroot/pipeline-v2.css'), 'utf8');
   assert.ok(css.includes('@media(max-width:720px)'));
 });

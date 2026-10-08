@@ -66,6 +66,7 @@
     tree.replaceChildren();
     document.getElementById('v2Inspector').replaceChildren(element('p', 'Select a heading to inspect same-execution evidence.'));
     const summary = document.getElementById('v2Summary');
+    document.getElementById('v2Diagnostics').replaceChildren();
     if (!model || model.availability !== 'same-execution') {
       summary.textContent = 'Authority graph unavailable; compatibility outline below is not a hierarchy tree.';
       tree.append(element('p', 'Same-execution authority was not retained. No hierarchy has been inferred.'));

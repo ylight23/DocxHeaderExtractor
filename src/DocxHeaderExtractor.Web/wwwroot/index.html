@@ -1395,7 +1395,7 @@ function render(o, s, review, agent) {
     '<th style="width:96px">Nguồn</th></tr></thead><tbody>' +
     (o.headings || []).map(h => `<tr class="${h.disputed ? 'dis' : ''}">
         <td class="i">${h.index}</td>
-        <td style="padding-left:${10 + ((h.level ?? 1) - 1) * 22}px">
+        <td style="padding-left:10px">
           <span class="lvl">${h.level == null ? 'H?' : 'H' + h.level}</span>${esc(h.text)}${
             h.inlineBody ? '<span class="tag dis">tách nội dung cùng dòng</span>' : ''}${
             decisionTag(h)}${
