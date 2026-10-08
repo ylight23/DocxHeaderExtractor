@@ -35,4 +35,7 @@ public sealed record HeadingPipelineResult(
     /// </para>
     /// </summary>
     public DocumentSourceCatalog? SourceCatalog { get; init; }
+
+    [JsonIgnore]
+    public IReadOnlyList<string> CheckpointObservations { get; init; } = [];
 }

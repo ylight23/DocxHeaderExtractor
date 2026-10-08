@@ -55,7 +55,7 @@ internal static class PdfHeadingPipeline
             throw execution.Fault ?? new InvalidOperationException("PDF semantic execution failed.");
         if (!execution.Lease.CanPublishCompletedResult || execution.Value is null)
             throw new InvalidOperationException("PDF semantic result lost its execution lease.");
-        return execution.Value;
+        return execution.Value with { CheckpointObservations = ["source-selection:completed"] };
     }
 
     private static PipelineExecutionAudit SourceOnlyAudit(DocumentSourceSnapshot authority, PdfSourceDetails pdfDetails)

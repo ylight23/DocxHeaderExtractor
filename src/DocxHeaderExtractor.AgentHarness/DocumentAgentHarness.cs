@@ -371,6 +371,8 @@ public sealed class DocumentAgentHarness
                 ct);
             return new DocumentAgentRunResult(runId, outcome, outline, steps, trace.ToArray())
             {
+                Execution = tool is IDocumentExtractionExecutionSource observed &&
+                    ReferenceEquals(observed.LastExecution?.Outline, outline) ? observed.LastExecution : null,
                 TaskResult = new GenericTaskResult<DocumentOutline>(
                     runId,
                     semanticPlan.PlanId,

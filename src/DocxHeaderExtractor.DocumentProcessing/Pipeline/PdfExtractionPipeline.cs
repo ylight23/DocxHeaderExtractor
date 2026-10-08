@@ -126,7 +126,8 @@ public static class PdfExtractionPipeline
 
         return new DocumentExtractionExecutionResult(
             result,
-            Outline(file, options, authority, catalog, used, transportSendsDataExternally, started));
+            Outline(file, options, authority, catalog, used, transportSendsDataExternally, started))
+        { HeadingPipeline = authority };
     }
 
     /// <summary>

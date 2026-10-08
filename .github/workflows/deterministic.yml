@@ -20,7 +20,11 @@ env:
 
 jobs:
   deterministic:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,6 +39,15 @@ jobs:
 
       - name: Build Release
         run: dotnet build -c Release --no-restore
+
+      - name: Web tree projection and safe renderer
+        run: node --test tests/web/pipeline-v2.test.cjs
+
+      - name: Web pipeline V2 regression
+        run: >-
+          dotnet test tests/DocxHeaderExtractor.Tests/DocxHeaderExtractor.Tests.csproj
+          -c Release --no-build
+          --filter "FullyQualifiedName~WebPipelineV2|FullyQualifiedName~WebPipelineResultViewTests|FullyQualifiedName~HostAuthorityE2ETests|FullyQualifiedName~HostProviderDiagnosticsTests|FullyQualifiedName~HeadingAuthorityByteParityTests|FullyQualifiedName~PdfFunctionConditionedHeadingAuthorityContractTests|FullyQualifiedName~PdfLiveExecutionLifecycleTests|FullyQualifiedName~ExtractionRoutingContractTests"
 
       - name: Focused authority and experiment contracts
         run: >-

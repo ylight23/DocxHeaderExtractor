@@ -22,7 +22,12 @@ public interface IDocumentExtractionTool : IDisposable
 /// Adapter của canonical authority pipeline thành một tool của harness. Web/CLI/MCP dùng cùng
 /// orchestrator; evaluation callers are kept separate from normal authority.
 /// </summary>
-public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
+public interface IDocumentExtractionExecutionSource
+{
+    DocumentExtractionExecutionResult? LastExecution { get; }
+}
+
+public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool, IDocumentExtractionExecutionSource
 {
     private readonly DocxExtractionPipeline _docxLane;
     private readonly PdfExtractionHandler _pdfLane;
@@ -64,6 +69,8 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
 
     public CapabilityDescriptor Descriptor { get; }
 
+    public DocumentExtractionExecutionResult? LastExecution { get; private set; }
+
     /// <summary>
     /// Lượt sửa cách ly các đoạn bị validator bác rồi chạy lại pipeline từ đầu. Không lọc kết quả
     /// cũ: cây, cấp, evidence và cổng precision đều được dựng lại trên tập ứng viên đã hẹp hơn,
@@ -74,6 +81,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(invocation);
+        LastExecution = null;
         var quarantine = invocation.Feedback?.QuarantineIndexes;
         return ExecuteNormalizedAsync(invocation.Request.InputPath,
             quarantine is { Count: > 0 } ? quarantine.ToHashSet() : null, ct);
@@ -119,6 +127,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
         var execution = await _dispatcher.ExtractAsync(
                 new DocumentExtractionRequest(UploadedFile.FromLocalPath(path)), quarantine, ct)
             .ConfigureAwait(false);
+        LastExecution = execution;
         return execution.Outline;
     }
 

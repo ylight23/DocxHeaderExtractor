@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Web V2 component QA — synthetic source only</title>
+<link rel="stylesheet" href="http://127.0.0.1:5197/pipeline-v2.css">
+<style>.hidden{display:none}body{font-family:system-ui;max-width:1200px;margin:1rem auto;padding:1rem}button{padding:.5rem}pre{background:#eee}</style>
+<script src="http://127.0.0.1:5197/pipeline-v2.js" defer></script>
+<script src="browser-fixture.js" defer></script></head><body>
+<h1>Browser QA — synthetic fixtures, not production authority</h1>
+<button id="load">Load nested / multipart / duplicate fixture</button><button id="empty">Empty result</button>
+<button id="failure">Execution failure</button><button id="unavailable">Unavailable graph</button>
+<section id="statsPanel" class="hidden"></section><section id="treePanel" class="hidden"></section>
+<section id="pipelineV2" class="hidden"><h2>Heading Structure — validated authority</h2><p id="v2Summary"></p>
+<div class="v2-grid"><div id="v2Tree"></div><aside id="v2Inspector"></aside></div>
+<h3>Pipeline Execution Viewer</h3><ol id="v2Stages"></ol><details><summary>Safe diagnostics</summary><pre id="v2Diagnostics"></pre></details></section>
+</body></html>

@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.Core.Semantics.Validation;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
@@ -30,6 +31,10 @@ public sealed class ExtractionRoutingContractTests
         var file = (UploadedFile)constructor.Invoke(["fixture.pdf", "fixture.pdf", SourceType.Pdf, new string('a', 64)]);
         var options = web ? new JsonSerializerOptions(JsonSerializerDefaults.Web) : new();
         Assert.Equal(resultHash, Hash(fixture));
+        Assert.Equal(resultHash, Hash(fixture with
+        {
+            HeadingPipeline = new HeadingPipelineResult(fixture.Result.Structure, fixture.Outline.RouteAudit, "runtime-only")
+        }));
         Assert.Equal(requestHash, Hash(new DocumentExtractionRequest(file)));
         string Hash<T>(T value) => Convert.ToHexStringLower(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(value, options)));
     }
@@ -44,7 +49,11 @@ public sealed class ExtractionRoutingContractTests
         Assert.Contains(typeof(IDocumentExtractionHandler), typeof(DocxExtractionHandler).GetInterfaces());
         Assert.Contains(typeof(IDocumentExtractionHandler), typeof(PdfExtractionHandler).GetInterfaces());
         Assert.Equal(new[] { "Result", "Outline" },
-            typeof(DocumentExtractionExecutionResult).GetProperties().Select(p => p.Name));
+            typeof(DocumentExtractionExecutionResult).GetProperties()
+                .Where(p => p.GetCustomAttribute<JsonIgnoreAttribute>() is null).Select(p => p.Name));
+        var sidecar = typeof(DocumentExtractionExecutionResult).GetProperty("HeadingPipeline")!;
+        Assert.Equal(typeof(HeadingPipelineResult), sidecar.PropertyType);
+        Assert.NotNull(sidecar.GetCustomAttribute<JsonIgnoreAttribute>());
         Assert.Equal(new[] { typeof(UploadedFile) },
             typeof(DocumentExtractionRequest).GetProperties().Select(p => p.PropertyType));
     }

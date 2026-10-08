@@ -41,6 +41,9 @@ const long MaxUploadBytes = 128L * 1024 * 1024;
 builder.Services.Configure<FormOptions>(o => o.MultipartBodyLengthLimit = MaxUploadBytes);
 builder.WebHost.ConfigureKestrel(o => o.Limits.MaxRequestBodySize = MaxUploadBytes);
 builder.Services.AddSingleton<LlamaModelCache>();
+builder.Services.AddSingleton<WebTransportFactoryResolver>(sp => selection =>
+    new WebInferenceTransportFactory(selection, sp.GetRequiredService<IHttpClientFactory>(),
+        sp.GetRequiredService<LlamaModelCache>()));
 builder.Services.AddSingleton(_ => new CorrectionMemory(CorrectionMemory.DefaultPath()));
 builder.Services.AddSingleton<IHumanFeedbackStore>(sp =>
     new CorrectionMemoryFeedbackStore(sp.GetRequiredService<CorrectionMemory>()));
@@ -135,11 +138,10 @@ app.MapHumanReviewEndpoints(json);
 app.MapPost("/api/extract", async (
     HttpRequest req,
     HttpResponse res,
-    LlamaModelCache modelCache,
     DocumentAgentHarnessFactory harnessFactory,
-    IHttpClientFactory httpClientFactory,
     WritebackStore writebackStore,
     HumanReviewService humanReviewService,
+    WebTransportFactoryResolver transportFactory,
     CancellationToken ct) =>
 {
     if (!req.HasFormContentType)
@@ -160,6 +162,12 @@ app.MapPost("/api/extract", async (
         // ERR_CONNECTION_RESET và không có cách nào biết vì sao.
         res.StatusCode = StatusCodes.Status413PayloadTooLarge;
         await res.WriteAsync($"File quá lớn (trần {MaxUploadBytes / (1024 * 1024)} MB): {ex.Message}", ct);
+        return;
+    }
+    catch (InvalidDataException)
+    {
+        res.StatusCode = StatusCodes.Status400BadRequest;
+        await res.WriteAsync("Multipart upload không hợp lệ.", ct);
         return;
     }
 
@@ -200,14 +208,10 @@ app.MapPost("/api/extract", async (
             return;
         }
 
-        // Giữ log trong UI như trước, đồng thời ghi ra stdout để chạy `dhx-ui.cmd`
-            // có dev log tương tự cửa sổ Developer Logs của LM Studio.
-            options.Log = m =>
-            {
-                Console.WriteLine($"[{DateTimeOffset.Now:yyyy-MM-dd HH:mm:ss}] [DHX] {m}");
-                events.Writer.TryWrite(new { type = "log", message = m });
-            };
-        RequestOptions.ConfigureProviderDiagnostics(form, provider, options.Log);
+        // Production Web does not publish free-form provider diagnostics (which may contain
+        // source text, completions or credentials). Structured harness events remain visible.
+        options.Log = _ => { };
+        RequestOptions.ConfigureProviderDiagnostics(form, provider, _ => { });
 
         // Một quyết định duy nhất về định dạng, đọc từ byte, dùng chung cho mọi bước phía sau.
         var uploadedType = UploadedSourceDetector.Detect(inputPath);
@@ -240,7 +244,7 @@ app.MapPost("/api/extract", async (
             // authorization marker, while local/LM Studio remain valid DOCX backends only.
             using var tool = new PipelineDocumentExtractionTool(
                 options,
-                new WebInferenceTransportFactory(provider, httpClientFactory, modelCache));
+                transportFactory(provider));
 
             // Đích ghi do server đặt bên trong thư mục tạm của request, không bao giờ lấy từ form:
             // một đường dẫn do client chỉ định là đường để ghi đè file bất kỳ trên máy chủ.
@@ -305,7 +309,8 @@ app.MapPost("/api/extract", async (
             await EmitAsync(new
             {
                 type = "result",
-                outline,
+                outline = WebPipelineProjection.SafeOutline(outline, json),
+                pipeline = WebPipelineProjection.Project(agentRun, uploadedType.ToString().ToLowerInvariant()),
                 stats = Stats.From(outline),
                 sourceType = uploadedType.ToString().ToLowerInvariant(),
                 review = source is null ? null : ReviewBundle.Create(outline, source),
@@ -345,7 +350,10 @@ app.MapPost("/api/extract", async (
     }
     catch (Exception ex)
     {
-        try { await EmitAsync(new { type = "error", message = AgentRunNarrator.DescribeError(ex) }); }
+        try { await EmitAsync(new { type = "error",
+            message = $"Execution failed ({ex.GetType().Name}). Provider payload and source diagnostics are withheld.",
+            pipeline = new { schemaVersion = "web-pipeline-v2", availability = "unavailable", outcome = "Failed",
+                stages = new[] { new WebPipelineStage("execution", "failed", "Server exception; sub-stages not-recorded") } } }); }
         catch (Exception) { /* kết nối đã đứt */ }
     }
     finally

@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
+using System.Text.Json.Serialization;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
@@ -85,6 +86,10 @@ public sealed record DocumentAgentRunResult(
     /// projection for callers that still need that view beside the validated task result.
     /// </summary>
     public required GenericTaskResult<DocumentOutline> TaskResult { get; init; }
+
+    /// <summary>Runtime-only execution retained from the final tool attempt, never a second authority.</summary>
+    [JsonIgnore]
+    public DocumentExtractionExecutionResult? Execution { get; init; }
 
     public required AgentSkill Skill { get; init; }
 

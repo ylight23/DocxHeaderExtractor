@@ -145,7 +145,7 @@ public sealed class DocxExtractionPipeline : IDisposable
                 Provenance = BuildProvenance(audit,
                     !_options.DisableLlm && (_transportFactory?.SendsDataExternally ?? _transportSendsDataExternally)),
             };
-            return new DocumentExtractionExecutionResult(extractionResult, outline);
+            return new DocumentExtractionExecutionResult(extractionResult, outline) { HeadingPipeline = authority };
     }
 
     private async Task<IInferenceTransport> GetTransportAsync(CancellationToken ct)

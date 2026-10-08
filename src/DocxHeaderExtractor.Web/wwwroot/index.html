@@ -283,6 +283,8 @@
   @media (max-width: 700px) { .gold-form { grid-template-columns: 1fr; } }
   @media (max-width: 820px) { .audit-grid { grid-template-columns: 1fr; } .audit-list { max-height: 300px; } .audit-actions .next { margin-left: 0; } }
 </style>
+<link rel="stylesheet" href="pipeline-v2.css">
+<script src="pipeline-v2.js" defer></script>
 </head>
 <body>
 <div class="wrap">
@@ -396,7 +398,7 @@
       <div class="log-tabs" role="tablist" aria-label="Log filter">
         <button class="secondary active" data-log-tab="all" role="tab">All</button>
         <button class="secondary" data-log-tab="agent" role="tab">Agent</button>
-        <button class="secondary" data-log-tab="raw" role="tab">LLM raw</button>
+        <button class="secondary" data-log-tab="raw" role="tab">Host notices</button>
       </div>
       <div id="log" class="event-log" aria-live="polite"></div>
     </div>
@@ -509,8 +511,16 @@
 </details>
 </div>
 
+<section class="panel hidden" id="pipelineV2" aria-label="Validated pipeline result">
+  <h2>Heading Structure — validated authority</h2>
+  <p id="v2Summary" aria-live="polite"></p>
+  <div class="v2-grid"><div id="v2Tree"></div><aside id="v2Inspector"></aside></div>
+  <h3>Pipeline Execution Viewer</h3><ol id="v2Stages"></ol>
+  <details><summary>Developer — safe execution audit / provenance</summary><pre id="v2Diagnostics"></pre></details>
+</section>
 <script>
 const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 let picked = null, outline = null, reviewBundle = null, serverError = false;
 let defaults = null, gpuBaseNote = '', gpuBaseLabel = '';
 let devStarted = 0, devLogLines = 0;
@@ -535,9 +545,12 @@ const HARNESS_STAGE_DEFS = [
 function stageEvents(def) { return harnessEvents.filter(def.match); }
 
 function stageState(events) {
-  if (!events.length) return 'pending';
+  if (!events.length) return 'not-recorded';
   const latest = events[events.length - 1];
-  if (latest.kind === 'Failed' || latest.kind === 'Blocked') return 'failed';
+  if (latest.kind === 'Failed') return 'failed';
+  if (latest.kind === 'Blocked') return 'blocked';
+  if (latest.kind === 'Skipped') return 'skipped';
+  if (latest.kind === 'Cancelled') return 'cancelled';
   if (latest.kind === 'Started' || latest.kind === 'Repairing') return 'live';
   return 'done';
 }
@@ -549,7 +562,7 @@ function renderHarnessStages() {
   $('stages').innerHTML = HARNESS_STAGE_DEFS.map((def, index) => {
     const events = stageEvents(def), state = stageState(events);
     const selected = (harnessSelectedStage || currentKey) === def.key;
-    const status = state === 'done' ? 'DONE' : state === 'live' ? 'RUNNING' : state === 'failed' ? 'BLOCKED' : 'PENDING';
+    const status = state === 'done' ? 'DONE' : state === 'live' ? 'RUNNING' : state.toUpperCase();
     return `<li><button class="harness-stage ${state} ${selected ? 'selected' : ''}" data-harness-stage="${def.key}">
       <span class="sdot"></span><span><span class="stage-number">${index + 1}.</span> ${esc(def.label)}</span><span class="stage-status">${status}</span>
     </button></li>`;
@@ -569,14 +582,11 @@ function renderHarnessDetail(key) {
   const latest = events[events.length - 1];
   const prompt = $('userPrompt')?.value.trim() || 'Extract the document structure as a tree.';
   const facts = [
-    ['State', latest ? latest.kind.toUpperCase() : 'PENDING'],
-    ['Contract', def.contract],
+    ['State', latest ? latest.kind.toUpperCase() : 'NOT-RECORDED'],
+    ['Reference contract (not execution evidence)', def.contract],
     ['Stage', def.key],
     ['Latest event', latest?.message || 'Chưa có event'],
   ];
-  if (key === 'intent.validation') facts.push(['Operation', 'extract-document-structure'], ['Granularity', 'document / hierarchical'], ['OutputShape', 'outline'], ['Predicate', prompt]);
-  if (key === 'plan') facts.push(['Capabilities', 'inspect_document · extract_structure · semantic_filter · project_result']);
-  if (key === 'policy.approval') facts.push(['Decision', latest?.message || 'PENDING']);
   $('harnessDetail').innerHTML = `<h3>${esc(def.label)}</h3><dl class="harness-facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(String(v))}</dd>`).join('')}</dl>`;
 }
 
@@ -596,7 +606,7 @@ function renderLog() {
     ? rawDataVisible || !looksLikeRaw(item.message) || item.category === 'agent'
     : activeLogTab === item.category && (activeLogTab !== 'raw' || rawDataVisible || !looksLikeRaw(item.message)));
   const hiddenNote = activeLogTab === 'raw' && !rawDataVisible
-    ? `<div class="raw-hidden">Raw LLM content is hidden by default. Enable “Show raw LLM data” in Developer / Model settings to inspect it. ${rawCount} raw block(s) available.</div>` : '';
+    ? `<div class="raw-hidden">Raw provider payloads are not published by production Web. Only safe host notices and harness events are available.</div>` : '';
   $('log').innerHTML = hiddenNote + visible.map(item => {
     const agent = item.category === 'agent';
     if (!agent && looksLikeRaw(item.message)) {
@@ -632,20 +642,17 @@ function handleStreamEvent(evt) {
     $('workState').textContent = 'Error';
     $('workHint').textContent = evt.message;
     showError(evt.message);
+    window.WebPipelineV2.showFailure(evt.message);
   } else if (evt.type === 'result') {
     $('devDot').className = 'devdot done';
-    $('devState').textContent = 'Completed · ' + devLogLines + ' events';
+    $('devState').textContent = 'Completed · ' + logEvents.length + ' received events';
     renderStages(true);
     renderHarnessStages();
     $('workState').textContent = 'Completed';
     $('workHint').textContent = 'Pipeline complete; inspect the validated result and source evidence below.';
     outline = evt.outline;
-    if (evt.agent) {
-      const event = { category: 'agent', stage: 'run', kind: 'Completed', message: evt.agent.message || 'Run completed.', timestamp: Date.now(), order: logEvents.length };
-      logEvents.push(event);
-      renderLog();
-    }
     render(evt.outline, evt.stats, evt.review, evt.agent);
+    window.WebPipelineV2.render(evt.pipeline);
   }
 }
 
@@ -664,6 +671,8 @@ document.querySelectorAll('[data-log-tab]').forEach(button => button.onclick = (
   renderLog();
 });
 $('showRaw').checked = false;
+$('showRaw').disabled = true;
+$('showRaw').title = 'Raw provider payloads are unavailable in the production Web response.';
 
 function setWorkspaceMode(mode) {
   workspaceMode = mode;
@@ -994,7 +1003,9 @@ function setFile(f) {
   $('dropName').textContent = f.name + '  ·  ' + (f.size / 1024).toFixed(0) + ' KB';
   $('workFile').textContent = f.name;
   $('workState').textContent = 'Sẵn sàng phân tích';
-  $('workHint').textContent = 'Pipeline sẽ đọc OpenXML, lọc ứng viên rồi gọi LLM cho phần chưa chắc chắn.';
+  $('workHint').textContent = $('noLlm').checked
+    ? 'Pipeline chỉ đọc nguồn; không gọi mô hình và không tự nhận heading.'
+    : 'Pipeline xác định DOCX/PDF từ byte và chạy authority tương ứng.';
   $('run').disabled = false;
 }
 
@@ -1175,6 +1186,7 @@ $('run').onclick = async () => {
   $('cancelRun').classList.remove('hidden');
   runController = new AbortController();
   outline = null; serverError = false;
+  window.WebPipelineV2.reset();
   ['statsPanel', 'treePanel', 'reviewPanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
   logEvents = [];
   harnessEvents = [];
@@ -1192,7 +1204,7 @@ $('run').onclick = async () => {
   $('workState').textContent = 'Đang xử lý';
   $('workModel').textContent = activeModelLabel();
   $('workConfig').textContent = $('ctx').value ? `${$('ctx').value} token` : 'ngữ cảnh tự đọc';
-  $('workHint').textContent = 'Đang theo dõi request, JSON trả về và các bước hậu kiểm trong Dev log LLM.';
+  $('workHint').textContent = 'Đang theo dõi harness events; raw provider payload không được công bố.';
 
   const fd = new FormData();
   fd.append('file', picked);
@@ -1243,6 +1255,7 @@ $('run').onclick = async () => {
       $('workHint').textContent = 'Run đã dừng; có thể chọn lại file và thực hiện lại.';
     } else {
       showError(e.message);
+      window.WebPipelineV2.showFailure(e.message);
     }
   } finally {
     clearInterval(timer);
@@ -1325,7 +1338,7 @@ function render(o, s, review, agent) {
     [s.headings, 'tiêu đề', true],
     [s.humanVerified, 'người xác nhận'],
     [s.requiresReview, 'cần duyệt'],
-    [s.rejected, 'bị loại'],
+    ['not-recorded', 'bị loại — chưa có census'],
     [s.maxLevel, 'cấp sâu nhất'],
     [secs + ' s', 'thời gian'],
   ];
@@ -1498,7 +1511,6 @@ function tiles(id, items) {
     `<div class="tile${big ? ' big' : ''}"><div class="v">${esc(String(v))}</div><div class="k">${esc(k)}</div></div>`
   ).join('');
 }
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 </script>
 </body>
 </html>
