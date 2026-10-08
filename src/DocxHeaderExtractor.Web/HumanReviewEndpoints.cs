@@ -117,7 +117,7 @@ public static class HumanReviewEndpoints
                     await upload.CopyToAsync(stream, ct);
 
                 var extraction = new ExtractionOptions();
-                var source = new AuthorityDocumentSourceReader(extraction).Read(sourcePath).Document;
+                var source = new ReviewDocumentSourceReader(extraction).Read(sourcePath).Document;
                 var plan = await service.BuildWritebackPlanAsync(
                     rawDocumentId, source, allowSourceDocumentIdAlias: true, cancellationToken: ct);
                 if (plan is null)

@@ -15,3 +15,13 @@ This is an intentional public C# signature change; callers/implementers must rem
 PipelineOptions argument. No legacy overload is retained. No wire contract is affected.
 InferenceFactoryOwnershipTests checks both signatures and absence of the reverse dependency;
 PdfProductionProviderPolicyTests retains provider-policy behavior coverage without network calls.
+
+## S7: review source naming
+
+Review.DocumentSourceSnapshot becomes ReviewDocumentSourceSnapshot and its reader becomes
+ReviewDocumentSourceReader. The common source IR retains DocumentSourceSnapshot; it is not
+renamed or conflated with the review Document/SourceIndexes envelope. Read/conversion/cleanup
+behavior and constructors remain unchanged; Web review callers use the new names.
+This is an intentional public C# type/API rename, not binary compatibility. Record property
+names and serialization shape are unchanged. ReviewSourceOwnershipTests checks snapshot
+shape, unique common IR naming and source/index parity against the existing OOXML reader.

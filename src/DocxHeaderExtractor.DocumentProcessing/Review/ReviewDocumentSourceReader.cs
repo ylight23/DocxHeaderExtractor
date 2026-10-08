@@ -6,7 +6,7 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Review;
 
-public sealed record DocumentSourceSnapshot(
+public sealed record ReviewDocumentSourceSnapshot(
     SourceDocument Document,
     IReadOnlyList<int> SourceIndexes);
 
@@ -14,21 +14,21 @@ public sealed record DocumentSourceSnapshot(
 /// Explicit evaluation boundary. The outline projection is consumed here once to produce
 /// source facts and the frozen source-index view; evaluator code never receives Slim types.
 /// </summary>
-public sealed class AuthorityDocumentSourceReader
+public sealed class ReviewDocumentSourceReader
 {
     private readonly ExtractionOptions _options;
 
-    public AuthorityDocumentSourceReader(PipelineOptions? options = null)
+    public ReviewDocumentSourceReader(PipelineOptions? options = null)
         : this((options ?? new PipelineOptions()).Extraction)
     {
     }
 
-    public AuthorityDocumentSourceReader(ExtractionOptions options)
+    public ReviewDocumentSourceReader(ExtractionOptions options)
     {
         _options = options;
     }
 
-    public DocumentSourceSnapshot Read(string inputPath)
+    public ReviewDocumentSourceSnapshot Read(string inputPath)
     {
         var conversion = OfficeDocumentConverter.EnsureDocx(inputPath);
         try
@@ -38,7 +38,7 @@ public sealed class AuthorityDocumentSourceReader
                 .Where(p => !string.IsNullOrWhiteSpace(p.Text))
                 .Select(p => p.SourceOrdinal)
                 .ToArray();
-            return new DocumentSourceSnapshot(source, sourceIndexes);
+            return new ReviewDocumentSourceSnapshot(source, sourceIndexes);
         }
         finally
         {

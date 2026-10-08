@@ -219,7 +219,7 @@ app.MapPost("/api/extract", async (
         // dựng một snapshot hình dạng DOCX từ tài liệu không phải DOCX.
         var source = uploadedType == SourceType.Pdf
             ? null
-            : new AuthorityDocumentSourceReader(options).Read(inputPath).Document;
+            : new ReviewDocumentSourceReader(options).Read(inputPath).Document;
 
         // Hai backend dùng tài nguyên máy này cần khóa. OpenRouter có thể chạy đồng thời và không
         // được giữ hàng chỉ vì GPU local/LM Studio đang bận.
