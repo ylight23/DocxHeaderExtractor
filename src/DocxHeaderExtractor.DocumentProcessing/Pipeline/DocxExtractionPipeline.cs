@@ -87,7 +87,7 @@ public sealed class DocxExtractionPipeline : IDisposable
                 "source adapter phải chuyển đổi định dạng không phải OOXML trước khi gọi pipeline.");
 
         var started = Environment.TickCount64;
-        var sourceDocument = new OpenXmlDocumentSource().Read(inputPath);
+        var sourceDocument = new OpenXmlDocumentSource(_options.Extraction).Read(inputPath);
             var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
             var authority = await DocxHeadingPipeline.RunAsync(
                 sourceDocument, analyst, ct);
