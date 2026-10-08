@@ -6,7 +6,6 @@ using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.DocumentProcessing;
-using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
@@ -30,16 +29,6 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool
     private readonly DocumentExtractionRouter _dispatcher;
     private readonly IInferenceTransport? _transport;
     private readonly bool _ownsTransport;
-
-    public PipelineDocumentExtractionTool(PipelineOptions options)
-    {
-        ArgumentNullException.ThrowIfNull(options);
-        var factory = new InferenceTransportFactory();
-        _docxLane = new DocxExtractionPipeline(options, factory);
-        _pdfLane = new PdfExtractionHandler(options, factory);
-        _dispatcher = Dispatch(_docxLane, _pdfLane);
-        Descriptor = Describe(options, factory.SendsDataExternally);
-    }
 
     public PipelineDocumentExtractionTool(PipelineOptions options, IInferenceTransportFactory factory)
     {

@@ -104,13 +104,13 @@ public sealed class HostAuthorityE2ETests
 
     private static async Task<DocumentOutline> RunCanonicalToolAsync(string fixture)
     {
-        using var tool = new PipelineDocumentExtractionTool(DeterministicOptions());
+        using var tool = new PipelineDocumentExtractionTool(DeterministicOptions(), new NoCallInferenceTransportFactory());
         return await tool.ExecuteAsync(new AgentToolInvocation(new DocumentAgentRequest(fixture), 1));
     }
 
     private static async Task<DocumentOutline> RunAgentHarnessAsync(string fixture)
     {
-        using var tool = new PipelineDocumentExtractionTool(DeterministicOptions());
+        using var tool = new PipelineDocumentExtractionTool(DeterministicOptions(), new NoCallInferenceTransportFactory());
         var harness = new DocumentAgentHarness(tool);
         var run = await harness.RunAsync(new DocumentAgentRequest(fixture));
         return run.TaskResult.Value;

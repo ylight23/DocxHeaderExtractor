@@ -141,7 +141,7 @@ public sealed class PdfProductReachabilityTests : IDisposable
     {
         var options = new PipelineOptions { DisableLlm = model is null };
         using var tool = model is null
-            ? new PipelineDocumentExtractionTool(options)
+            ? new PipelineDocumentExtractionTool(options, new NoCallInferenceTransportFactory())
             : new PipelineDocumentExtractionTool(options, model);
         return await tool.ExecuteAsync(new AgentToolInvocation(
             new DocumentAgentRequest(path),
