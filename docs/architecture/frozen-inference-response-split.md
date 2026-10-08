@@ -51,11 +51,23 @@ Existing byte-parity, PDF provider policy, reachability, and timeout/cancellatio
 the minimal response without changing their semantic expectations. All transport tests use mock
 HTTP or frozen replay; no live provider call is authorized by this refactor.
 
-## Initial verification
+## Verification
 
-- Release solution build: PASS, 0 errors (existing warnings remain).
+Tested source revision: `caa038b105d5f613c7b57a3f66daf5a898f84b3c`.
+Verification uses a clean tracked Windows checkout, excluding the main workspace's modified H3
+preflight and untracked research tests. Provider keys and the provider sentinel were blank;
+`A99_FREEZE_UPDATE=0`.
+
+- Clean tracked Release solution build: PASS, 0 errors, 34 existing warnings.
 - Focused transport/byte-parity/lifecycle/provider-policy/reachability/architecture regressions:
   PASS, 61/61, 0 failed/skipped.
 - `git diff --check`: PASS. Provider calls: 0. Gold mutation: 0. Frozen rebaseline: 0.
+- Official Windows `CoreDeterministic` tier: PASS, 1056/1056, 0 failed/skipped, 17m13s.
+- Verification checkout after the deterministic suite: clean.
 
-These focused results do not substitute for the clean tracked deterministic suite or CI.
+Commands: `dotnet build -c Release`; focused `dotnet test -c Release --no-build`;
+`pwsh -NoProfile -File scripts/Invoke-A99TestTier.ps1 -Tier CoreDeterministic -Configuration Release -NoBuild`.
+The official tier manifest is unchanged; no ad-hoc exclusions or frozen artifact updates were used.
+
+CI for this API refactor is not yet verified. The prior `c5dec2e` CI establishes the earlier cleanup
+closure, not verification of this subsequent API change.
