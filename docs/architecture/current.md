@@ -234,6 +234,8 @@ DocumentExtractionRequest; DocumentExtractionExecutionResult carries extraction 
 These public C# migrations are intentional; runtime behavior and serialized shapes are retained.
 Stage owners have explicit imports and no reverse Pipeline dependency; Routing/Review are
 approved composition consumers. See residual-dependency-closure-audit.md for parity and API scope.
+Clean tracked Windows verification of S6-S10 is recorded in
+residual-dependency-closure-verification.md (S11). No additional structural cleanup stage is planned.
 
 ## Phase control
 
