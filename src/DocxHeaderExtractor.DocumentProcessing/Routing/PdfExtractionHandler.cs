@@ -12,19 +12,19 @@ namespace DocxHeaderExtractor.DocumentProcessing.Routing;
 /// canonical documents unless a user asks for them to be compared.
 /// </para>
 /// <para>
-/// The analyst is resolved the way the DOCX pipeline resolves it - lazily, from a factory, and only
+/// The transport is resolved the way the DOCX pipeline resolves it - lazily, from a factory, and only
 /// if a run actually needs one - so that composing the dispatcher never opens a provider connection
-/// for a lane the upload does not use. An analyst this class created is disposed by this class; one
+/// for a lane the upload does not use. A transport this class created is disposed by this class; one
 /// handed to it belongs to whoever handed it over.
 /// </para>
 /// </summary>
 public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposable
 {
     private readonly PipelineOptions _options;
-    private readonly IInferenceTransportFactory? _analystFactory;
+    private readonly IInferenceTransportFactory? _transportFactory;
     private readonly bool _sendsDataExternally;
-    private readonly bool _ownsAnalyst;
-    private IInferenceTransport? _analyst;
+    private readonly bool _ownsTransport;
+    private IInferenceTransport? _transport;
 
     public PdfExtractionHandler(PipelineOptions options, IInferenceTransport? analyst = null)
         : this(options, analyst, sendsDataExternally: false) { }
@@ -35,17 +35,17 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
         bool sendsDataExternally)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
-        _analyst = analyst;
+        _transport = analyst;
         _sendsDataExternally = sendsDataExternally;
-        _ownsAnalyst = false;
+        _ownsTransport = false;
     }
 
     public PdfExtractionHandler(PipelineOptions options, IInferenceTransportFactory analystFactory)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
-        _analystFactory = analystFactory ?? throw new ArgumentNullException(nameof(analystFactory));
+        _transportFactory = analystFactory ?? throw new ArgumentNullException(nameof(analystFactory));
         _sendsDataExternally = analystFactory.SendsDataExternally;
-        _ownsAnalyst = true;
+        _ownsTransport = true;
     }
 
     public SourceType Handles => SourceType.Pdf;
@@ -56,24 +56,24 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
         CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(file);
-        var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
+        var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
         return await PdfExtractionPipeline.RunExecutionAsync(
-            file, _options, analyst, quarantinedIndexes, _sendsDataExternally, ct);
+            file, _options, transport, quarantinedIndexes, _sendsDataExternally, ct);
     }
 
     public void Dispose()
     {
-        if (_ownsAnalyst) _analyst?.Dispose();
-        _analyst = null;
+        if (_ownsTransport) _transport?.Dispose();
+        _transport = null;
     }
 
-    private async Task<IInferenceTransport?> GetAnalystAsync(CancellationToken ct)
+    private async Task<IInferenceTransport?> GetTransportAsync(CancellationToken ct)
     {
-        if (_analyst is not null) return _analyst;
-        if (_analystFactory is null) return null;
+        if (_transport is not null) return _transport;
+        if (_transportFactory is null) return null;
         // PDF has its own qualified provider policy. It must never inherit the DOCX factory's
         // default local backend merely because both lanes share the same general abstraction.
-        _analyst = await _analystFactory.CreatePdfProductionAsync(ct);
-        return _analyst;
+        _transport = await _transportFactory.CreatePdfProductionAsync(ct);
+        return _transport;
     }
 }

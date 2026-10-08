@@ -30,7 +30,7 @@ public interface IInferenceTransport : IDisposable
 }
 
 /// <summary>
-/// Composition-root seam for inference providers. Core consumes the neutral transport contract;
+/// Composition-root seam for inference providers. DocumentProcessing consumes the neutral transport contract;
 /// provider construction belongs to Infrastructure.
 /// </summary>
 public interface IInferenceTransportFactory

@@ -18,10 +18,10 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 public sealed class DocxExtractionPipeline : IDisposable
 {
     private readonly PipelineOptions _options;
-    private readonly IInferenceTransportFactory? _analystFactory;
+    private readonly IInferenceTransportFactory? _transportFactory;
     private readonly bool _transportSendsDataExternally;
-    private IInferenceTransport? _analyst;
-    private readonly bool _ownsAnalyst;
+    private IInferenceTransport? _transport;
+    private readonly bool _ownsTransport;
 
     public DocxExtractionPipeline(PipelineOptions options)
         : this(options, null, null) { }
@@ -42,15 +42,15 @@ public sealed class DocxExtractionPipeline : IDisposable
 
     private DocxExtractionPipeline(
         PipelineOptions options,
-        IInferenceTransport? analyst,
-        IInferenceTransportFactory? analystFactory,
+        IInferenceTransport? transport,
+        IInferenceTransportFactory? transportFactory,
         bool transportSendsDataExternally = false)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
-        _analyst = analyst;
-        _analystFactory = analystFactory;
-        _transportSendsDataExternally = transportSendsDataExternally || analystFactory?.SendsDataExternally == true;
-        _ownsAnalyst = analystFactory is not null || analyst is null;
+        _transport = transport;
+        _transportFactory = transportFactory;
+        _transportSendsDataExternally = transportSendsDataExternally || transportFactory?.SendsDataExternally == true;
+        _ownsTransport = transportFactory is not null || transport is null;
     }
 
     public Task<DocumentOutline> RunAsync(string inputPath, CancellationToken ct = default) =>
@@ -88,9 +88,9 @@ public sealed class DocxExtractionPipeline : IDisposable
 
         var started = Environment.TickCount64;
         var sourceDocument = new OpenXmlDocumentSource(_options.Extraction).Read(inputPath);
-            var analyst = _options.DisableLlm ? null : await GetAnalystAsync(ct);
+            var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
             var authority = await DocxHeadingPipeline.RunAsync(
-                sourceDocument, analyst, ct);
+                sourceDocument, transport, ct);
             authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
             var audit = authority.Audit;
             const string route = "docx-canonical-vnext";
@@ -139,23 +139,23 @@ public sealed class DocxExtractionPipeline : IDisposable
                 Headings = headings,
                 ProductOutput = product,
                 ElapsedMs = Environment.TickCount64 - started,
-                Model = analyst?.ModelName,
+                Model = transport?.ModelName,
                 DeterministicRoute = route,
                 RouteAudit = audit,
                 Provenance = BuildProvenance(audit,
-                    !_options.DisableLlm && (_analystFactory?.SendsDataExternally ?? _transportSendsDataExternally)),
+                    !_options.DisableLlm && (_transportFactory?.SendsDataExternally ?? _transportSendsDataExternally)),
             };
             return new DocumentExtractionExecutionResult(extractionResult, outline);
     }
 
-    private async Task<IInferenceTransport> GetAnalystAsync(CancellationToken ct)
+    private async Task<IInferenceTransport> GetTransportAsync(CancellationToken ct)
     {
-        if (_analyst is not null) return _analyst;
-        if (_analystFactory is null)
+        if (_transport is not null) return _transport;
+        if (_transportFactory is null)
             throw new InvalidOperationException(
                 "Inference provider factory chưa được đăng ký ở composition root.");
-        _analyst = await _analystFactory.CreateAsync(ct);
-        return _analyst;
+        _transport = await _transportFactory.CreateAsync(ct);
+        return _transport;
     }
 
     internal static CanonicalFinalStructure BuildFinalStructure(string docxPath, PipelineExecutionAudit audit,
@@ -245,7 +245,7 @@ public sealed class DocxExtractionPipeline : IDisposable
 
     public void Dispose()
     {
-        if (_ownsAnalyst) _analyst?.Dispose();
-        _analyst = null;
+        if (_ownsTransport) _transport?.Dispose();
+        _transport = null;
     }
 }

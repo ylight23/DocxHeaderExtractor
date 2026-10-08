@@ -9,8 +9,8 @@ public sealed record ReviewDocumentSourceSnapshot(
     IReadOnlyList<int> SourceIndexes);
 
 /// <summary>
-/// Explicit evaluation boundary. The outline projection is consumed here once to produce
-/// source facts and the frozen source-index view; evaluator code never receives Slim types.
+/// Reads source-native DOCX facts and the nonblank source-index view for review callers.
+/// Extraction and writeback must use the same extraction policy to preserve ordinal mapping.
 /// </summary>
 public sealed class ReviewDocumentSourceReader
 {

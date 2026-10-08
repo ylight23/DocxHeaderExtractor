@@ -63,9 +63,9 @@ public static class PdfExtractionPipeline
     private static async Task<DocumentExtractionExecutionResult> RunExecutionCoreAsync(
         UploadedFile file,
         PipelineOptions options,
-        IInferenceTransport? analyst,
+        IInferenceTransport? transport,
         IReadOnlySet<int>? quarantinedIndexes,
-        bool analystSendsDataExternally,
+        bool transportSendsDataExternally,
         CancellationToken ct,
         SemanticLaneOptions semanticLaneOptions)
     {
@@ -75,7 +75,7 @@ public static class PdfExtractionPipeline
             throw new UnsupportedSourceException(file);
 
         var started = Environment.TickCount64;
-        var used = options.DisableLlm ? null : analyst;
+        var used = options.DisableLlm ? null : transport;
         var productionAuthorized = used is IPdfProductionAuthorizedInferenceTransport;
         if (used is not null && !productionAuthorized)
         {
@@ -126,7 +126,7 @@ public static class PdfExtractionPipeline
 
         return new DocumentExtractionExecutionResult(
             result,
-            Outline(file, options, authority, catalog, used, analystSendsDataExternally, started));
+            Outline(file, options, authority, catalog, used, transportSendsDataExternally, started));
     }
 
     /// <summary>
@@ -141,8 +141,8 @@ public static class PdfExtractionPipeline
         PipelineOptions options,
         HeadingPipelineResult authority,
         DocumentSourceCatalog catalog,
-        IInferenceTransport? analyst,
-        bool analystSendsDataExternally,
+        IInferenceTransport? transport,
+        bool transportSendsDataExternally,
         long started)
     {
         var audit = authority.Audit;
@@ -168,11 +168,11 @@ public static class PdfExtractionPipeline
                     .Select(element => element.Id).ToHashSet(StringComparer.Ordinal), authority.ProjectionContext),
             ProductOutput = product,
             ElapsedMs = Environment.TickCount64 - started,
-            Model = analyst?.ModelName,
+            Model = transport?.ModelName,
             DeterministicRoute = "pdf-canonical-vnext",
             RouteAudit = audit,
             Provenance = DocxExtractionPipeline.BuildProvenance(
-                audit, !options.DisableLlm && analystSendsDataExternally),
+                audit, !options.DisableLlm && transportSendsDataExternally),
         };
     }
 }
