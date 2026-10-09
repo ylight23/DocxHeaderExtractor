@@ -1,0 +1,18 @@
+{
+  "version": "P7_F1Q_HISTORY_PII_REDACTION_V1",
+  "issue": "ylight23/DocxHeaderExtractor#6",
+  "file": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/requests/D05-PACK_001.F1QToolsMandatory/turn-1/request.json",
+  "originalSha256": "45641da4747e255c70d7aa7e24d2fe2709168f2a31b3fcd93cc047fdd00d6389",
+  "redactedSha256": "89b52c81e739168340589bde4385b57806670fd8777d3fa7e4591c12388d1f1e",
+  "originalGitBlob": "e26405520311d53ff14d6baf24536cfbc24ff5b3",
+  "replacements": {
+    "phone": 1,
+    "email": 1
+  },
+  "replacementTokens": [
+    "[REDACTED_PHONE]",
+    "[REDACTED_EMAIL]"
+  ],
+  "originalLocation": "PRIVATE_BACKUP ~/.codex/diagnostic-captures/p7-f1q-pii-backup-20261010 (bundle + originals, sha256 verified)",
+  "provenance": "Frozen manifests and plans keep the ORIGINAL sha256; this file was redacted in place by a history rewrite approved by the user on 2026-10-10; no other byte changed"
+}

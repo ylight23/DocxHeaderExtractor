@@ -1,0 +1,1061 @@
+{
+  "protocolVersion": "P7_F1Q_V1",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document title",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Main title of the document, appearing at the top of page 1.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document subtitle",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Subtitle specifying the governing body meeting this document records.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Meeting date",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Administrative date associated with the meeting, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document type heading",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Heading indicating the document type, structuring the front matter.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Opening paragraph",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Narrative introduction to the minutes, providing context for the meeting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Continuation of opening paragraph",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Continues the narrative description of the meeting location and date.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Continuation of opening paragraph",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Completes the sentence describing the meeting format.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Describes the meeting's objectives, functioning as standard body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Continues the introductory narrative regarding attendees.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Provides administrative references and links within the introductory paragraph.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Heading introducing the first substantive section of the meeting minutes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Narrative account of the chair's actions under the welcome address section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Continues the narrative introducing the speaker for opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Describes the content of the opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Continues the summary of opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Concludes the summary of opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Narrative describing the agenda adoption process.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Records the board's action on the agenda.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Heading introducing the global progress report section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Introduces the presenter for the global progress report.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Details the scope of the progress report presentation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Lists topics covered in the presentation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Continues listing presentation topics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Provides statistical details from the presentation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Continues statistical details and operational status.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Describes regional operational timelines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Explains causes for delays in the presentation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Page number",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Footer or header page number, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Continues the global progress report narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Describes future meeting schedules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Outlines publication and outreach timelines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "References external reporting obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Summarizes recommendations from the UN Statistical Commission report.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Continues summarizing recommendations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Introduces an update on Technical Advisory Group leadership.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Details the outgoing TAG Chair role.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Identifies the incoming TAG Chair.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Confirms the agreement to take up the TAG Chair role.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Notes vacancies on the TAG.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "Introduces the TAG Chair's update on recent meetings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Lists topics discussed in the TAG meeting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "interpretation": "Continues listing TAG discussion topics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0042:S0"
+      ],
+      "interpretation": "Reports findings on pandemic impacts on price data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "interpretation": "Notes effects on expenditure weights.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "interpretation": "Explains geopolitical impacts on regional data linking.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0045:S0"
+      ],
+      "interpretation": "Describes ongoing efforts to link the CIS region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0046:S0"
+      ],
+      "interpretation": "Mentions the next TAG meeting schedule.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0047:S0"
+      ],
+      "interpretation": "Introduces uses of PPPs and ICP data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0048:S0"
+      ],
+      "interpretation": "Provides an example of PPP data usage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0049:S0"
+      ],
+      "interpretation": "Continues examples of data usage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0050:S0"
+      ],
+      "interpretation": "Describes another application of ICP data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0051:S0"
+      ],
+      "interpretation": "Notes UN agency reliance on the indicators.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0052:S0"
+      ],
+      "interpretation": "Introduces a forthcoming World Bank paper.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0053:S0"
+      ],
+      "interpretation": "Explains the paper's classification methodology.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0054:S0"
+      ],
+      "interpretation": "Details the classification's applications.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0055:S0"
+      ],
+      "interpretation": "Continues explaining classification purposes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0056:S0"
+      ],
+      "interpretation": "Notes the consultation status.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0057:S0"
+      ],
+      "interpretation": "Describes the presenter's closing recommendation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0058:S0"
+      ],
+      "interpretation": "Completes the recommendation regarding NSOs.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Transition phrase",
+      "evidenceRefs": [
+        "L0059:S0"
+      ],
+      "interpretation": "Introduces a bulleted list of board observations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet marker",
+      "evidenceRefs": [
+        "L0060:S0"
+      ],
+      "interpretation": "List formatting character, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet point text",
+      "evidenceRefs": [
+        "L0060:S1"
+      ],
+      "interpretation": "First item in the board's list of notes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet point continuation",
+      "evidenceRefs": [
+        "L0061:S0"
+      ],
+      "interpretation": "Completes the first bullet point.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet marker",
+      "evidenceRefs": [
+        "L0062:S0"
+      ],
+      "interpretation": "List formatting character.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet point text",
+      "evidenceRefs": [
+        "L0062:S1"
+      ],
+      "interpretation": "Second item in the board's list of notes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet point continuation",
+      "evidenceRefs": [
+        "L0063:S0"
+      ],
+      "interpretation": "Completes the second bullet point.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet marker",
+      "evidenceRefs": [
+        "L0064:S0"
+      ],
+      "interpretation": "List formatting character.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet point text",
+      "evidenceRefs": [
+        "L0064:S1"
+      ],
+      "interpretation": "Third item in the board's list of notes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet point continuation",
+      "evidenceRefs": [
+        "L0065:S0"
+      ],
+      "interpretation": "Completes the third bullet point.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet marker",
+      "evidenceRefs": [
+        "L0066:S0"
+      ],
+      "interpretation": "List formatting character.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet point text",
+      "evidenceRefs": [
+        "L0066:S1"
+      ],
+      "interpretation": "Fourth item in the board's list of notes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet point continuation",
+      "evidenceRefs": [
+        "L0067:S0"
+      ],
+      "interpretation": "Completes the fourth bullet point.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet marker",
+      "evidenceRefs": [
+        "L0068:S0"
+      ],
+      "interpretation": "List formatting character.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Bullet point text",
+      "evidenceRefs": [
+        "L0068:S1"
+      ],
+      "interpretation": "Fifth item in the board's list of notes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Page number",
+      "evidenceRefs": [
+        "L0069:S0"
+      ],
+      "interpretation": "Footer or header page number.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading",
+      "evidenceRefs": [
+        "L0070:S0"
+      ],
+      "interpretation": "Heading introducing the regional updates section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subheading",
+      "evidenceRefs": [
+        "L0071:S0"
+      ],
+      "interpretation": "Subheading for the Africa region report.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0072:S0"
+      ],
+      "interpretation": "Introduces the Africa region presenter.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0073:S0"
+      ],
+      "interpretation": "Describes the Africa region briefing content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0074:S0"
+      ],
+      "interpretation": "Continues describing briefing content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0075:S0"
+      ],
+      "interpretation": "Records key points from the Africa briefing.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0076:S0"
+      ],
+      "interpretation": "Continues recording briefing points.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0077:S0"
+      ],
+      "interpretation": "Final point of the Africa briefing summary.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subheading",
+      "evidenceRefs": [
+        "L0078:S0"
+      ],
+      "interpretation": "Subheading for the Asia and Pacific region report.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0079:S0"
+      ],
+      "interpretation": "Introduces the Asia and Pacific region presenter.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0080:S0"
+      ],
+      "interpretation": "Describes the Asia and Pacific briefing content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0081:S0"
+      ],
+      "interpretation": "Continues describing briefing content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0082:S0"
+      ],
+      "interpretation": "Records methodological adaptations noted in the briefing.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0083:S0"
+      ],
+      "interpretation": "Continues recording briefing points.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0084:S0"
+      ],
+      "interpretation": "Describes technical assistance activities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0085:S0"
+      ],
+      "interpretation": "Notes tool development and piloting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0086:S0"
+      ],
+      "interpretation": "Final point of the Asia and Pacific briefing summary.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subheading",
+      "evidenceRefs": [
+        "L0087:S0"
+      ],
+      "interpretation": "Subheading for the CIS region report.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0088:S0"
+      ],
+      "interpretation": "Introduces the CIS region presenter.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0089:S0"
+      ],
+      "interpretation": "Continues introducing the presenter and organization.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0090:S0"
+      ],
+      "interpretation": "Describes the CIS region briefing content.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,984 @@
+{
+  "protocolVersion": "P7_F1Q_V1",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item b in Article 16 enumeration of accounting document contents.",
+      "evidenceRefs": [
+        "L0362:S0"
+      ],
+      "interpretation": "Continuation of a statutory list of required fields; serves as body text, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item c in Article 16 enumeration.",
+      "evidenceRefs": [
+        "L0363:S0"
+      ],
+      "interpretation": "Statutory list item specifying entity details; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item d with repeal marker.",
+      "evidenceRefs": [
+        "L0364:S0"
+      ],
+      "interpretation": "Amended/repealed list item within Article 16; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item đ in Article 16 enumeration.",
+      "evidenceRefs": [
+        "L0365:S0"
+      ],
+      "interpretation": "Statutory list item specifying economic/financial transaction content; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item e in Article 16 enumeration.",
+      "evidenceRefs": [
+        "L0366:S0"
+      ],
+      "interpretation": "Statutory list item specifying quantities and amounts; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item f in Article 16.",
+      "evidenceRefs": [
+        "L0367:S0"
+      ],
+      "interpretation": "Completes the requirement for total amounts in figures and words; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item g in Article 16 enumeration.",
+      "evidenceRefs": [
+        "L0368:S0"
+      ],
+      "interpretation": "Statutory list item specifying signatures and names; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item g.",
+      "evidenceRefs": [
+        "L0369:S0"
+      ],
+      "interpretation": "Completes the reference to parties involved in the accounting document; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text regarding legislative amendment.",
+      "evidenceRefs": [
+        "L0370:S0"
+      ],
+      "interpretation": "Administrative note citing Law No. 56/2024/QH15; functions as metadata/footnote.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text continuation.",
+      "evidenceRefs": [
+        "L0371:S0"
+      ],
+      "interpretation": "Continues citation of amending laws; functions as metadata/footnote.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text continuation.",
+      "evidenceRefs": [
+        "L0372:S0"
+      ],
+      "interpretation": "Continues listing amending statutes; functions as metadata/footnote.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text continuation.",
+      "evidenceRefs": [
+        "L0373:S0"
+      ],
+      "interpretation": "Continues listing amending statutes; functions as metadata/footnote.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text effective date.",
+      "evidenceRefs": [
+        "L0374:S0"
+      ],
+      "interpretation": "States the effective date of the amendment; functions as metadata/footnote.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page header with gazette info.",
+      "evidenceRefs": [
+        "L0375:S0"
+      ],
+      "interpretation": "Official publication identifier and page number; functions as page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 2 in Article 16.",
+      "evidenceRefs": [
+        "L0376:S0"
+      ],
+      "interpretation": "Introduces optional additional contents for accounting documents; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2.",
+      "evidenceRefs": [
+        "L0377:S0"
+      ],
+      "interpretation": "Specifies that additional contents depend on document type; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 2.",
+      "evidenceRefs": [
+        "L0378:S0"
+      ],
+      "interpretation": "Concludes the provision on optional contents; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading for Article 17 on electronic accounting documents.",
+      "evidenceRefs": [
+        "L0379:S0"
+      ],
+      "interpretation": "Explicitly titles the next statutory section governing electronic documents; establishes document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 1 in Article 17.",
+      "evidenceRefs": [
+        "L0380:S0"
+      ],
+      "interpretation": "Defines conditions for electronic documents to qualify as accounting documents; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1.",
+      "evidenceRefs": [
+        "L0381:S0"
+      ],
+      "interpretation": "Describes electronic data representation requirements; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1.",
+      "evidenceRefs": [
+        "L0382:S0"
+      ],
+      "interpretation": "Specifies encryption and transmission integrity over networks; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1.",
+      "evidenceRefs": [
+        "L0383:S0"
+      ],
+      "interpretation": "Lists physical media examples for electronic storage; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 2 in Article 17.",
+      "evidenceRefs": [
+        "L0384:S0"
+      ],
+      "interpretation": "Imposes security and data preservation obligations; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2.",
+      "evidenceRefs": [
+        "L0385:S0"
+      ],
+      "interpretation": "Details monitoring and anti-tampering measures; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2.",
+      "evidenceRefs": [
+        "L0386:S0"
+      ],
+      "interpretation": "Prohibits unauthorized access, copying, or misuse; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2.",
+      "evidenceRefs": [
+        "L0387:S0"
+      ],
+      "interpretation": "Mandates management equivalent to original paper documents; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2.",
+      "evidenceRefs": [
+        "L0388:S0"
+      ],
+      "interpretation": "Clarifies original form retention and device compatibility; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 2.",
+      "evidenceRefs": [
+        "L0389:S0"
+      ],
+      "interpretation": "Concludes security and management requirements; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 3 in Article 17.",
+      "evidenceRefs": [
+        "L0390:S0"
+      ],
+      "interpretation": "Addresses conversion between paper and electronic formats; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3.",
+      "evidenceRefs": [
+        "L0391:S0"
+      ],
+      "interpretation": "Establishes electronic validity for transactions; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3.",
+      "evidenceRefs": [
+        "L0392:S0"
+      ],
+      "interpretation": "Limits paper document role to archival tracking; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 3.",
+      "evidenceRefs": [
+        "L0393:S0"
+      ],
+      "interpretation": "Concludes conversion rules; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading for Article 18 on creation and storage.",
+      "evidenceRefs": [
+        "L0394:S0"
+      ],
+      "interpretation": "Explicitly titles the next statutory section governing document preparation and archiving; establishes structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 1 in Article 18.",
+      "evidenceRefs": [
+        "L0395:S0"
+      ],
+      "interpretation": "Mandates document creation for relevant economic activities; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1.",
+      "evidenceRefs": [
+        "L0396:S0"
+      ],
+      "interpretation": "Requires single issuance per transaction; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 1.",
+      "evidenceRefs": [
+        "L0397:S0"
+      ],
+      "interpretation": "Concludes the one-time issuance rule; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 2 in Article 18.",
+      "evidenceRefs": [
+        "L0398:S0"
+      ],
+      "interpretation": "Sets quality standards (clear, complete, timely, accurate); functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2.",
+      "evidenceRefs": [
+        "L0399:S0"
+      ],
+      "interpretation": "Addresses non-standardized forms; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2.",
+      "evidenceRefs": [
+        "L0400:S0"
+      ],
+      "interpretation": "Allows self-created forms if they meet legal content requirements; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 2.",
+      "evidenceRefs": [
+        "L0401:S0"
+      ],
+      "interpretation": "Concludes flexibility for custom forms; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 3 in Article 18.",
+      "evidenceRefs": [
+        "L0402:S0"
+      ],
+      "interpretation": "Prohibits abbreviations and erasures; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3.",
+      "evidenceRefs": [
+        "L0403:S0"
+      ],
+      "interpretation": "Mandates continuous writing with ink and diagonal strikes for blanks; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3.",
+      "evidenceRefs": [
+        "L0404:S0"
+      ],
+      "interpretation": "Declares altered documents invalid for payment and ledger entry; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3.",
+      "evidenceRefs": [
+        "L0405:S0"
+      ],
+      "interpretation": "Requires crossing out errors rather than correction; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 3.",
+      "evidenceRefs": [
+        "L0406:S0"
+      ],
+      "interpretation": "Concludes error-handling procedure; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 4 in Article 18.",
+      "evidenceRefs": [
+        "L0407:S0"
+      ],
+      "interpretation": "Requires printing the mandated number of copies; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 4.",
+      "evidenceRefs": [
+        "L0408:S0"
+      ],
+      "interpretation": "Mandates identical content across multiple copies; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 4.",
+      "evidenceRefs": [
+        "L0409:S0"
+      ],
+      "interpretation": "Concludes copy-matching requirement; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 5 in Article 18.",
+      "evidenceRefs": [
+        "L0410:S0"
+      ],
+      "interpretation": "Identifies signatories responsible for document content; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 5.",
+      "evidenceRefs": [
+        "L0411:S0"
+      ],
+      "interpretation": "Assigns liability to preparers and approvers; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 6 in Article 18.",
+      "evidenceRefs": [
+        "L0412:S0"
+      ],
+      "interpretation": "Links electronic documents to Article 17 and storage rules; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 6.",
+      "evidenceRefs": [
+        "L0413:S0"
+      ],
+      "interpretation": "Specifies printing and archiving references; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 6.",
+      "evidenceRefs": [
+        "L0414:S0"
+      ],
+      "interpretation": "Addresses electronic-only storage scenarios; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page header with gazette info.",
+      "evidenceRefs": [
+        "L0415:S0"
+      ],
+      "interpretation": "Official publication identifier and page number; functions as page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 6.",
+      "evidenceRefs": [
+        "L0416:S0"
+      ],
+      "interpretation": "Emphasizes security and confidentiality for electronic storage; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 6.",
+      "evidenceRefs": [
+        "L0417:S0"
+      ],
+      "interpretation": "Requires retrievability throughout retention period; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading for Article 19 on signing and certification.",
+      "evidenceRefs": [
+        "L0418:S0"
+      ],
+      "interpretation": "Explicitly titles the next statutory section governing signatures; establishes structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 1 in Article 19.",
+      "evidenceRefs": [
+        "L0419:S0"
+      ],
+      "interpretation": "Requires signatures matching designated roles; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1.",
+      "evidenceRefs": [
+        "L0420:S0"
+      ],
+      "interpretation": "Mandates smudge-proof ink; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1.",
+      "evidenceRefs": [
+        "L0421:S0"
+      ],
+      "interpretation": "Prohibits red ink and pre-carved signature stamps; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1.",
+      "evidenceRefs": [
+        "L0422:S0"
+      ],
+      "interpretation": "Requires signature consistency per individual; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 1.",
+      "evidenceRefs": [
+        "L0423:S0"
+      ],
+      "interpretation": "Delegates blind person signature rules to government; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 2 in Article 19.",
+      "evidenceRefs": [
+        "L0424:S0"
+      ],
+      "interpretation": "Restricts signing to authorized persons or delegates; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2.",
+      "evidenceRefs": [
+        "L0425:S0"
+      ],
+      "interpretation": "Prohibits signing before full content entry; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 2.",
+      "evidenceRefs": [
+        "L0426:S0"
+      ],
+      "interpretation": "Concludes authorization and timing restrictions; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 3 in Article 19.",
+      "evidenceRefs": [
+        "L0427:S0"
+      ],
+      "interpretation": "Requires approval by authorized personnel and chief accountants for payments; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3.",
+      "evidenceRefs": [
+        "L0428:S0"
+      ],
+      "interpretation": "Specifies delegation and sequential signing; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 3.",
+      "evidenceRefs": [
+        "L0429:S0"
+      ],
+      "interpretation": "Mandates per-copy signing for payment documents; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 4 in Article 19.",
+      "evidenceRefs": [
+        "L0430:S0"
+      ],
+      "interpretation": "Requires digital signatures or equivalents for electronic documents; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 4.",
+      "evidenceRefs": [
+        "L0431:S0"
+      ],
+      "interpretation": "References electronic transaction law; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading for Article 20 on invoices.",
+      "evidenceRefs": [
+        "L0432:S0"
+      ],
+      "interpretation": "Explicitly titles the next statutory section governing invoices; establishes structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 1 in Article 20.",
+      "evidenceRefs": [
+        "L0433:S0"
+      ],
+      "interpretation": "Defines invoices as accounting documents for goods/services; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 1.",
+      "evidenceRefs": [
+        "L0434:S0"
+      ],
+      "interpretation": "Notes regulatory compliance for information recording; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 2 in Article 20.",
+      "evidenceRefs": [
+        "L0435:S0"
+      ],
+      "interpretation": "Delegates invoice content, format, and procedures to tax law; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 2.",
+      "evidenceRefs": [
+        "L0436:S0"
+      ],
+      "interpretation": "Concludes tax law reference; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading for Article 21 on management and use.",
+      "evidenceRefs": [
+        "L0437:S0"
+      ],
+      "interpretation": "Explicitly titles the next statutory section governing document lifecycle management; establishes structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 1 in Article 21.",
+      "evidenceRefs": [
+        "L0438:S0"
+      ],
+      "interpretation": "Establishes documents as the basis for ledger entries; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 2 in Article 21.",
+      "evidenceRefs": [
+        "L0439:S0"
+      ],
+      "interpretation": "Mandates sorting by content and chronological order; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "End of paragraph 2.",
+      "evidenceRefs": [
+        "L0440:S0"
+      ],
+      "interpretation": "Requires secure storage per law; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of paragraph 3 in Article 21.",
+      "evidenceRefs": [
+        "L0441:S0"
+      ],
+      "interpretation": "Reserves seizure/sealing powers to competent state agencies; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3.",
+      "evidenceRefs": [
+        "L0442:S0"
+      ],
+      "interpretation": "Triggers copying obligations upon seizure; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3.",
+      "evidenceRefs": [
+        "L0443:S0"
+      ],
+      "interpretation": "Details copying requirements for seized documents; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text regarding legislative amendment.",
+      "evidenceRefs": [
+        "L0444:S0"
+      ],
+      "interpretation": "Administrative note citing Law No. 56/2024/QH15; functions as metadata/footnote.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text continuation.",
+      "evidenceRefs": [
+        "L0445:S0"
+      ],
+      "interpretation": "Continues citation of amending laws; functions as metadata/footnote.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text continuation.",
+      "evidenceRefs": [
+        "L0446:S0"
+      ],
+      "interpretation": "Continues listing amending statutes; functions as metadata/footnote.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text continuation.",
+      "evidenceRefs": [
+        "L0447:S0"
+      ],
+      "interpretation": "Continues listing amending statutes; functions as metadata/footnote.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text effective date.",
+      "evidenceRefs": [
+        "L0448:S0"
+      ],
+      "interpretation": "States the effective date of the amendment; functions as metadata/footnote.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text regarding legislative amendment.",
+      "evidenceRefs": [
+        "L0449:S0"
+      ],
+      "interpretation": "Administrative note citing Law No. 56/2024/QH15; functions as metadata/footnote.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text continuation.",
+      "evidenceRefs": [
+        "L0450:S0"
+      ],
+      "interpretation": "Continues citation of amending laws; functions as metadata/footnote.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,869 @@
+{
+  "protocolVersion": "P7_F1Q_V1",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Metadata field label 'Stream:' on cover page",
+      "evidenceRefs": ["L0000:S0"],
+      "interpretation": "Administrative label identifying the publication stream; not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Organizational name in cover metadata",
+      "evidenceRefs": ["L0000:S1"],
+      "interpretation": "Identifies the issuing body on the cover page; administrative metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Metadata field label 'RFC:' on cover page",
+      "evidenceRefs": ["L0001:S0"],
+      "interpretation": "Administrative label preceding the document number; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Document number in cover metadata",
+      "evidenceRefs": ["L0001:S1"],
+      "interpretation": "Publication identifier on the cover page; administrative metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Metadata field label 'Category:' on cover page",
+      "evidenceRefs": ["L0002:S0"],
+      "interpretation": "Administrative label preceding classification; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Classification value in cover metadata",
+      "evidenceRefs": ["L0002:S1"],
+      "interpretation": "Indicates standards track status on the cover page; administrative metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Metadata field label 'Published:' on cover page",
+      "evidenceRefs": ["L0003:S0"],
+      "interpretation": "Administrative label preceding publication date; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Date value in cover metadata",
+      "evidenceRefs": ["L0003:S1"],
+      "interpretation": "Publication date on the cover page; administrative metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Metadata field label 'ISSN:' on cover page",
+      "evidenceRefs": ["L0004:S0"],
+      "interpretation": "Administrative label preceding identifier; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Identifier value in cover metadata",
+      "evidenceRefs": ["L0004:S1"],
+      "interpretation": "Serial number on the cover page; administrative metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Metadata field label 'Author:' on cover page",
+      "evidenceRefs": ["L0005:S0"],
+      "interpretation": "Administrative label preceding author name; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Author name in cover metadata",
+      "evidenceRefs": ["L0005:S1"],
+      "interpretation": "Identifies the editor on the cover page; administrative metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Affiliation in cover metadata",
+      "evidenceRefs": ["L0006:S0"],
+      "interpretation": "Institutional affiliation on the cover page; administrative metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Document identifier on cover page",
+      "evidenceRefs": ["L0007:S0"],
+      "interpretation": "RFC number displayed on the cover page alongside metadata; not a substantive heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Protocol name on cover page",
+      "evidenceRefs": ["L0008:S0"],
+      "interpretation": "Protocol designation on the cover page; administrative metadata rather than a body heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading 'Abstract'",
+      "evidenceRefs": ["L0009:S0"],
+      "interpretation": "Labels the abstract section immediately following it; establishes document structure here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Abstract body text",
+      "evidenceRefs": ["L0010:S0"],
+      "interpretation": "Continuation of the abstract paragraph; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Abstract body text",
+      "evidenceRefs": ["L0011:S0"],
+      "interpretation": "Continuation of the abstract paragraph; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Abstract body text",
+      "evidenceRefs": ["L0012:S0"],
+      "interpretation": "Continuation of the abstract paragraph; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Abstract body text",
+      "evidenceRefs": ["L0013:S0"],
+      "interpretation": "Continuation of the abstract paragraph; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Abstract body text",
+      "evidenceRefs": ["L0014:S0"],
+      "interpretation": "Final sentence of the abstract paragraph; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading 'Status ofThis Memo'",
+      "evidenceRefs": ["L0015:S0"],
+      "interpretation": "Labels the status section immediately following it; establishes document structure here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Status section body text",
+      "evidenceRefs": ["L0016:S0"],
+      "interpretation": "Describes document status; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Status section body text",
+      "evidenceRefs": ["L0017:S0"],
+      "interpretation": "Describes IETF process; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Status section body text",
+      "evidenceRefs": ["L0018:S0"],
+      "interpretation": "Describes review and approval; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Status section body text",
+      "evidenceRefs": ["L0019:S0"],
+      "interpretation": "References further information; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Status section body text",
+      "evidenceRefs": ["L0020:S0"],
+      "interpretation": "References RFC 7841; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Status section body text",
+      "evidenceRefs": ["L0021:S0"],
+      "interpretation": "Provides status URL; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Status section body text",
+      "evidenceRefs": ["L0022:S0"],
+      "interpretation": "Provides feedback URL; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading 'Copyright Notice'",
+      "evidenceRefs": ["L0023:S0"],
+      "interpretation": "Labels the copyright section immediately following it; establishes document structure here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Copyright body text",
+      "evidenceRefs": ["L0024:S0"],
+      "interpretation": "States copyright ownership; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Copyright body text",
+      "evidenceRefs": ["L0025:S0"],
+      "interpretation": "Completes rights statement; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal body text",
+      "evidenceRefs": ["L0026:S0"],
+      "interpretation": "References BCP 78 and Trust provisions; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal body text",
+      "evidenceRefs": ["L0027:S0"],
+      "interpretation": "Provides license URL; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal body text",
+      "evidenceRefs": ["L0028:S0"],
+      "interpretation": "Describes rights and restrictions; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal body text",
+      "evidenceRefs": ["L0029:S0"],
+      "interpretation": "Specifies license requirements for code components; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal body text",
+      "evidenceRefs": ["L0030:S0"],
+      "interpretation": "References Revised BSD License; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal body text",
+      "evidenceRefs": ["L0031:S0"],
+      "interpretation": "States warranty disclaimer; body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer",
+      "evidenceRefs": ["L0032:S0"],
+      "interpretation": "Running footer with author, track, and page number; page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header",
+      "evidenceRefs": ["L0033:S0"],
+      "interpretation": "Repeating header with RFC number, title, and date; page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Heading introducing table of contents",
+      "evidenceRefs": ["L0034:S0"],
+      "interpretation": "Labels the contents list that follows; navigates to headings operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 1",
+      "evidenceRefs": ["L0035:S0"],
+      "interpretation": "Lists 'Introduction' heading operating on page 5; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 1.1",
+      "evidenceRefs": ["L0036:S0"],
+      "interpretation": "Lists subsection heading operating on page 5; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 1.2",
+      "evidenceRefs": ["L0037:S0"],
+      "interpretation": "Lists subsection heading operating on page 5; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 2",
+      "evidenceRefs": ["L0038:S0"],
+      "interpretation": "Lists heading operating on page 6; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 2.1",
+      "evidenceRefs": ["L0039:S0"],
+      "interpretation": "Lists subsection heading operating on page 6; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 2.2",
+      "evidenceRefs": ["L0040:S0"],
+      "interpretation": "Lists subsection heading operating on page 7; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 3",
+      "evidenceRefs": ["L0041:S0"],
+      "interpretation": "Lists heading operating on page 8; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 3.1",
+      "evidenceRefs": ["L0042:S0"],
+      "interpretation": "Lists subsection heading operating on page 8; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 3.1.1",
+      "evidenceRefs": ["L0043:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 9; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 3.1.2",
+      "evidenceRefs": ["L0044:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 9; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 3.2",
+      "evidenceRefs": ["L0045:S0"],
+      "interpretation": "Lists subsection heading operating on page 9; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 3.3",
+      "evidenceRefs": ["L0046:S0"],
+      "interpretation": "Lists subsection heading operating on page 10; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4",
+      "evidenceRefs": ["L0047:S0"],
+      "interpretation": "Lists heading operating on page 10; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.1",
+      "evidenceRefs": ["L0048:S0"],
+      "interpretation": "Lists subsection heading operating on page 10; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.1.1",
+      "evidenceRefs": ["L0049:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 12; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.1.2",
+      "evidenceRefs": ["L0050:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 13; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.2",
+      "evidenceRefs": ["L0051:S0"],
+      "interpretation": "Lists subsection heading operating on page 13; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.2.1",
+      "evidenceRefs": ["L0052:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 14; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.2.2",
+      "evidenceRefs": ["L0053:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 14; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.3",
+      "evidenceRefs": ["L0054:S0"],
+      "interpretation": "Lists subsection heading operating on page 14; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.3.1",
+      "evidenceRefs": ["L0055:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 15; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.3.2",
+      "evidenceRefs": ["L0056:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 16; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.4",
+      "evidenceRefs": ["L0057:S0"],
+      "interpretation": "Lists subsection heading operating on page 16; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.5",
+      "evidenceRefs": ["L0058:S0"],
+      "interpretation": "Lists subsection heading operating on page 17; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.6",
+      "evidenceRefs": ["L0059:S0"],
+      "interpretation": "Lists subsection heading operating on page 17; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 5",
+      "evidenceRefs": ["L0060:S0"],
+      "interpretation": "Lists heading operating on page 19; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 5.1",
+      "evidenceRefs": ["L0061:S0"],
+      "interpretation": "Lists subsection heading operating on page 19; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer",
+      "evidenceRefs": ["L0062:S0"],
+      "interpretation": "Running footer with author, track, and page number; page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header",
+      "evidenceRefs": ["L0063:S0"],
+      "interpretation": "Repeating header with RFC number, title, and date; page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 5.2",
+      "evidenceRefs": ["L0064:S0"],
+      "interpretation": "Lists subsection heading operating on page 20; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 5.3",
+      "evidenceRefs": ["L0065:S0"],
+      "interpretation": "Lists subsection heading operating on page 21; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 5.4",
+      "evidenceRefs": ["L0066:S0"],
+      "interpretation": "Lists subsection heading operating on page 22; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 6",
+      "evidenceRefs": ["L0067:S0"],
+      "interpretation": "Lists heading operating on page 22; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 6.1",
+      "evidenceRefs": ["L0068:S0"],
+      "interpretation": "Lists subsection heading operating on page 22; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 6.2",
+      "evidenceRefs": ["L0069:S0"],
+      "interpretation": "Lists subsection heading operating on page 23; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 6.2.1",
+      "evidenceRefs": ["L0070:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 24; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 6.2.2",
+      "evidenceRefs": ["L0071:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 24; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 6.2.3",
+      "evidenceRefs": ["L0072:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 25; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 7",
+      "evidenceRefs": ["L0073:S0"],
+      "interpretation": "Lists heading operating on page 25; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 7.1",
+      "evidenceRefs": ["L0074:S0"],
+      "interpretation": "Lists subsection heading operating on page 26; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 7.2",
+      "evidenceRefs": ["L0075:S0"],
+      "interpretation": "Lists subsection heading operating on page 26; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 7.2.1",
+      "evidenceRefs": ["L0076:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 26; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 7.2.2",
+      "evidenceRefs": ["L0077:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 27; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 7.2.3",
+      "evidenceRefs": ["L0078:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 27; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 7.2.4",
+      "evidenceRefs": ["L0079:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 28; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 7.2.5",
+      "evidenceRefs": ["L0080:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 31; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 7.2.6",
+      "evidenceRefs": ["L0081:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 32; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 7.2.7",
+      "evidenceRefs": ["L0082:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 32; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 7.2.8",
+      "evidenceRefs": ["L0083:S0"],
+      "interpretation": "Lists sub-subsection heading operating on page 33; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 8",
+      "evidenceRefs": ["L0084:S0"],
+      "interpretation": "Lists heading operating on page 33; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 8.1",
+      "evidenceRefs": ["L0085:S0"],
+      "interpretation": "Lists subsection heading operating on page 34; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 9",
+      "evidenceRefs": ["L0086:S0"],
+      "interpretation": "Lists heading operating on page 35; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 10",
+      "evidenceRefs": ["L0087:S0"],
+      "interpretation": "Lists heading operating on page 36; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 10.1",
+      "evidenceRefs": ["L0088:S0"],
+      "interpretation": "Lists subsection heading operating on page 36; navigational entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 10.2",
+      "evidenceRefs": ["L0089:S0"],
+      "interpretation": "Lists subsection heading operating on page 36; navigational entry.",
+      "missingEvidence": []
+    }
+  ]
+}

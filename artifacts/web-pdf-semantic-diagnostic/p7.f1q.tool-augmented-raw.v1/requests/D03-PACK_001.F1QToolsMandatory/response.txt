@@ -1,0 +1,1061 @@
+{
+  "protocolVersion": "P7_F1Q_V1",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document title / program name",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Bold, centered text at the top of page 1 establishing the primary document title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtitle / event name",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Bold text directly below O1, specifying the governing board meeting as the event title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Date metadata",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Administrative date label within the title block; not a substantive content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Document type label",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Administrative label indicating document format ('Meeting Minutes'); functions as metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Opening body text",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Starts the introductory paragraph describing the meeting context.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Continuation of body text",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Continues the introductory sentence with location details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Continuation of body text",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Completes the introductory sentence regarding event format.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Describes the main objectives of the meeting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Lists attendees including Board members and secretariat staff.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "References annexes and provides links to agenda/presentations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Bold, left-aligned text introducing the first substantive section on welcome and agenda adoption.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Details the chair's opening actions and invitations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Introduces the speaker for opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Summarizes opening remarks regarding ICP 2021 cycle progress.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Continues summary of remarks acknowledging setbacks and looking forward.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Concludes summary of opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Describes the chair presenting the proposed agenda.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Records the Governing Board's adoption of the agenda.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Bold, left-aligned text introducing the global progress report section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Introduces the presenter of the global progress report.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Details the scope of the progress report covering timeline and milestones.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Continues listing report contents including governance and risks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Concludes listing report contents with transparency and outreach.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Discusses expected participation numbers for the ICP 2021 cycle.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Compares participation to 2017 cycle and notes ongoing operational activities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Notes delays in selected regions caused by disruptions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Concludes discussion on pandemic-related disruptions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Page number",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Footer/page marker indicating page 1.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Continues discussion on meeting frequency expectations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Notes future virtual meeting and results release schedule.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Continues scheduling details for outreach activities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Mentions the ICP report submitted to the UN Statistical Commission.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Continues details of the commission report invitation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Concludes commission report reference with national program incorporation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Updates on Sir Angus Deaton's intention to step down as TAG Chair.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Identifies Mr. Paul Schreyer as the incoming TAG Chair.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Continues identification of Schreyer's current role and background.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Notes vacant membership positions on the Technical Advisory Group.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Concludes TAG membership update.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "Introduces Schreyer's update on the most recent TAG meeting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Details topics discussed at the December 2022 TAG meeting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "interpretation": "Discusses the impact of the pandemic on Eurostat and OECD data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0042:S0"
+      ],
+      "interpretation": "Continues data impact analysis noting negligible effect on prices.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "interpretation": "Notes pronounced effect on expenditure weights and Russia's exclusion.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "interpretation": "Discusses preventing CIS region linking through Russia.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0045:S0"
+      ],
+      "interpretation": "Describes experiments to link the CIS region directly to the global program.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0046:S0"
+      ],
+      "interpretation": "Notes the next TAG meeting schedule for summer 2023.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0047:S0"
+      ],
+      "interpretation": "Introduces recent uses of PPPs and ICP data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0048:S0"
+      ],
+      "interpretation": "Details World Bank update of international poverty lines to 2017 PPPs.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0049:S0"
+      ],
+      "interpretation": "Notes use of ICP food price and expenditure data in new indicators.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0050:S0"
+      ],
+      "interpretation": "Continues noting diet cost indicators published by the Food Prices for Nutrition project.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0051:S0"
+      ],
+      "interpretation": "Concludes noting UN agency use of these indicators for food security monitoring.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0052:S0"
+      ],
+      "interpretation": "Notes a forthcoming World Bank paper exploring PPP classification methods.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0053:S0"
+      ],
+      "interpretation": "Explains the classification's use for operational lending terms.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0054:S0"
+      ],
+      "interpretation": "Continues explaining classification use for grouping countries by development level.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0055:S0"
+      ],
+      "interpretation": "Concludes noting the ongoing consultation on the classification paper.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0056:S0"
+      ],
+      "interpretation": "Summarizes Hamadeh's suggestion to send a letter to National Statistical Offices.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0057:S0"
+      ],
+      "interpretation": "Continues urging timely completion of the 2021 cycle and preparations for 2024.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0058:S0"
+      ],
+      "interpretation": "Concludes Hamadeh's presentation summary.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0059:S0"
+      ],
+      "interpretation": "Introduces a bulleted list of the Governing Board's noted points.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List marker",
+      "evidenceRefs": [
+        "L0060:S0"
+      ],
+      "interpretation": "Bullet point marker preceding the first board note item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List item text",
+      "evidenceRefs": [
+        "L0060:S1"
+      ],
+      "interpretation": "First board note item acknowledging progress despite challenges.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List item continuation",
+      "evidenceRefs": [
+        "L0061:S0"
+      ],
+      "interpretation": "Continues the first board note item referencing the war in Ukraine.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List marker",
+      "evidenceRefs": [
+        "L0062:S0"
+      ],
+      "interpretation": "Bullet point marker preceding the second board note item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List item text",
+      "evidenceRefs": [
+        "L0062:S1"
+      ],
+      "interpretation": "Second board note item regarding identifying a new approach for CIS linking.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List item continuation",
+      "evidenceRefs": [
+        "L0063:S0"
+      ],
+      "interpretation": "Continues the second board note item referencing ICP results.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List marker",
+      "evidenceRefs": [
+        "L0064:S0"
+      ],
+      "interpretation": "Bullet point marker preceding the third board note item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List item text",
+      "evidenceRefs": [
+        "L0064:S1"
+      ],
+      "interpretation": "Third board note item regarding approaching NSOs for timely completion.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List item continuation",
+      "evidenceRefs": [
+        "L0065:S0"
+      ],
+      "interpretation": "Continues the third board note item mentioning preparations for the 2024 cycle.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List marker",
+      "evidenceRefs": [
+        "L0066:S0"
+      ],
+      "interpretation": "Bullet point marker preceding the fourth board note item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List item text",
+      "evidenceRefs": [
+        "L0066:S1"
+      ],
+      "interpretation": "Fourth board note item regarding identifying sustained funding and advocacy.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List item continuation",
+      "evidenceRefs": [
+        "L0067:S0"
+      ],
+      "interpretation": "Concludes the fourth board note item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List marker",
+      "evidenceRefs": [
+        "L0068:S0"
+      ],
+      "interpretation": "Bullet point marker preceding the fifth board note item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "List item text",
+      "evidenceRefs": [
+        "L0068:S1"
+      ],
+      "interpretation": "Fifth board note item regarding current and anticipated uses of PPPs.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Page number",
+      "evidenceRefs": [
+        "L0069:S0"
+      ],
+      "interpretation": "Footer/page marker indicating page 2.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading",
+      "evidenceRefs": [
+        "L0070:S0"
+      ],
+      "interpretation": "Bold, left-aligned text introducing the regional progress reports section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading",
+      "evidenceRefs": [
+        "L0071:S0"
+      ],
+      "interpretation": "Bold italic, left-aligned text introducing the Africa regional report subsection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0072:S0"
+      ],
+      "interpretation": "Introduces the Africa region presenter and his role.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0073:S0"
+      ],
+      "interpretation": "Details the Africa region implementation status briefing.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0074:S0"
+      ],
+      "interpretation": "Continues detailing data submissions, validation, and workshops.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0075:S0"
+      ],
+      "interpretation": "Emphasizes the need for sufficient lead time for each cycle.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0076:S0"
+      ],
+      "interpretation": "Notes countries' need for support in leveraging CPI data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0077:S0"
+      ],
+      "interpretation": "Concludes the Africa presenter's notes on price collection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0078:S0"
+      ],
+      "interpretation": "Introduces the Asia and Pacific region section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0079:S0"
+      ],
+      "interpretation": "Introduces the Asia region presenter and his role.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0080:S0"
+      ],
+      "interpretation": "Details the Asia region implementation status briefing.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0081:S0"
+      ],
+      "interpretation": "Continues detailing data submissions, validation, and workshops.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0082:S0"
+      ],
+      "interpretation": "Notes standardized backcasting methodology for delayed surveys.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0083:S0"
+      ],
+      "interpretation": "Continues noting regional workshops and bespoke technical assistance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0084:S0"
+      ],
+      "interpretation": "Notes use of the ICP Asia Pacific data management tool.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0085:S0"
+      ],
+      "interpretation": "Continues noting CAPI tool development and web-scraping work.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0086:S0"
+      ],
+      "interpretation": "Concludes the Asia presenter's notes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0087:S0"
+      ],
+      "interpretation": "Introduces the Commonwealth of Independent States region section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0088:S0"
+      ],
+      "interpretation": "Introduces the CIS region presenter and his role.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0089:S0"
+      ],
+      "interpretation": "Details the CIS region implementation status briefing.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "assessment": "SUPPORTED",
+      "function": null,
+      "observedRole": "Body text",
+      "evidenceRefs": [
+        "L0090:S0"
+      ],
+      "interpretation": "Continues detailing data and metadata submissions and validation.",
+      "missingEvidence": []
+    }
+  ]
+}

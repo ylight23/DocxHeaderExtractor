@@ -142,7 +142,7 @@ switch (args[0])
         var tools = receipts.SelectMany(n => n["toolCallsByName"]!.AsObject()).GroupBy(p => p.Key).ToDictionary(g => g.Key, g => g.Sum(p => p.Value!.GetValue<int>()));
         var manifest = SpatialCanonical.Bytes(new
         {
-            version = "P7_F1Q_TOOL_AUGMENTED_RAW_MANIFEST_V1", planSha256 = SpatialCanonical.Hash(File.ReadAllBytes(args[1])),
+            version = "P7_F1Q_TOOL_AUGMENTED_RAW_MANIFEST_V1", plans = args[1].Split(',').Select(p => new { path = p.Replace('\\', '/'), sha256 = SpatialCanonical.Hash(File.ReadAllBytes(p)) }),
             requests = receipts.Length, httpAttempts = turns.Sum(t => t!["attempts"]!.GetValue<int>()), modelTurns = turns.Length,
             statuses = receipts.GroupBy(n => n["status"]!.GetValue<string>()).ToDictionary(g => g.Key, g => g.Count()),
             reportedCostUsd = total, allCostsReported = receipts.All(n => n["allCostsReported"]!.GetValue<bool>()),
