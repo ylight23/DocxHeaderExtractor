@@ -6,7 +6,7 @@ using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
 namespace DocxHeaderExtractor.V5Qualification.P7;
 
-internal enum F1QArm { Control, F1QNoTools, F1QTools }
+internal enum F1QArm { Control, F1QNoTools, F1QTools, F1QToolsMandatory }
 
 internal sealed record F1QIssuedOccurrence(string Occurrence, string SourceAlias, int Page, string Text);
 
@@ -50,6 +50,11 @@ internal static class P7F1QProtocol
         EVIDENCE TOOLS. You may call read-only evidence tools over this document's parser evidence store: get_occurrence_context (neighbouring lines), get_page_geometry (line boxes and font summaries for a page), get_source_span (full evidence record of targets), get_repeated_occurrences (repeated text elsewhere in the document). Tools return observations only, never labels. Call a tool when the supplied text leaves the function ambiguous, for example heading vs. metadata/letterhead, table label vs. heading, title vs. subtitle, contents entry vs. body heading, multi-part headings, or repeated page furniture. Do not call tools merely for the sake of calling them; decide directly when the supplied facts are sufficient. Batch your tool calls: you have at most 3 tool-calling rounds, after which you must answer. Each tool result carries an evidenceId such as E1.2 that you may cite.
         """;
 
+    // Plan V2 tool-chain qualification arm (Issue #5 update 2026-10-09): evidence must be requested via tools first.
+    private const string MandatoryToolClause = """
+
+        EVIDENCE TOOLS AND REQUIREMENT. Read-only evidence tools over this document's parser evidence store are available: get_occurrence_context (neighbouring lines), get_page_geometry (line boxes and font summaries for a page), get_source_span (full evidence record of targets), get_repeated_occurrences (repeated text elsewhere in the document). Tools return observations only, never labels; they can confirm or contradict your first reading. In this request you must obtain source evidence before deciding: your first response must be a batch of tool calls, not the final JSON. Target the occurrences whose function is least certain from the supplied text alone, for example possible titles or subtitles, letterhead or issuer metadata, table or column labels, contents entries versus body headings, multi-part headings and repeated lines. You have at most 3 tool-calling rounds, after which you must answer. Each tool result carries an evidenceId such as E1.2; cite the evidenceIds in evidenceRefs for the decisions they support.
+        """;
     private const string NoToolClause = """
 
         No evidence tools are available in this request. Use only the supplied occurrences and context.
@@ -73,6 +78,7 @@ internal static class P7F1QProtocol
     {
         F1QArm.F1QTools => Canonical(Join(Question, ToolClause, Contract)),
         F1QArm.F1QNoTools => Canonical(Join(Question, NoToolClause, Contract)),
+        F1QArm.F1QToolsMandatory => Canonical(Join(Question, MandatoryToolClause, Contract)),
         _ => throw new InvalidOperationException("F1Q_ARM_HAS_NO_F1Q_PROMPT"),
     };
 

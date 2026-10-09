@@ -365,15 +365,70 @@ public sealed class P7F1QToolAugmentedTests : IDisposable
             var arm = Enum.Parse<F1QArm>(q.GetProperty("arm").GetString()!);
             if (arm != F1QArm.Control)
                 Assert.Equal(P7F1QProtocol.SystemPrompt(arm), body["messages"]![0]!["content"]!.GetValue<string>());
-            Assert.Equal(arm == F1QArm.F1QTools, body["tools"] is not null);
+            Assert.Equal(arm is F1QArm.F1QTools or F1QArm.F1QToolsMandatory, body["tools"] is not null);
             Assert.DoesNotContain("semanticFunction", body["messages"]![1]!["content"]!.GetValue<string>());
         }
     }
 
+    [Fact] public void Frozen_v2_plan_binds_the_mandatory_evidence_arm_to_the_same_ten_cases()
+    {
+        var dir = TestRepository.Path("artifacts/web-pdf-semantic-diagnostic");
+        using var v1 = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(dir, "p7.f1q.execution-plan.v1.json")));
+        using var v2 = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(dir, "p7.f1q.execution-plan.v2.json")));
+        Assert.Equal("P7_F1Q_TOOL_CHAIN_QUALIFICATION_PLAN_V2", v2.RootElement.GetProperty("version").GetString());
+        Assert.False(v2.RootElement.GetProperty("goldRead").GetBoolean());
+        Assert.True(JsonElement.DeepEquals(v1.RootElement.GetProperty("cases"), v2.RootElement.GetProperty("cases")));
+        var requests = v2.RootElement.GetProperty("requests").EnumerateArray().ToArray();
+        Assert.Equal(10, requests.Length);
+        foreach (var q in requests)
+        {
+            Assert.Equal("F1QToolsMandatory", q.GetProperty("arm").GetString());
+            var bytes = File.ReadAllBytes(Path.Combine(dir, "p7.f1q.tool-augmented-raw.v1", "initial-bodies-v2", q.GetProperty("bodyFile").GetString()!));
+            Assert.Equal(q.GetProperty("bodySha256").GetString(), SpatialCanonical.Hash(bytes));
+            var body = JsonNode.Parse(bytes)!;
+            Assert.Equal(P7F1QProtocol.SystemPrompt(F1QArm.F1QToolsMandatory), body["messages"]![0]!["content"]!.GetValue<string>());
+            Assert.Equal("auto", body["tool_choice"]!.GetValue<string>());
+            // Same user payload as the V1 tool arm: only the question's evidence requirement differs.
+            var v1Body = JsonNode.Parse(File.ReadAllBytes(Path.Combine(dir, "p7.f1q.tool-augmented-raw.v1", "initial-bodies",
+                q.GetProperty("bodyFile").GetString()!.Replace("F1QToolsMandatory", "F1QTools"))))!;
+            Assert.Equal(v1Body["messages"]![1]!["content"]!.GetValue<string>(), body["messages"]![1]!["content"]!.GetValue<string>());
+        }
+    }
+
+    private F1QRequestSpec MandatorySpec() => new("case|F1QToolsMandatory", "case", F1QArm.F1QToolsMandatory, "sys", "user", Issued, Citable, Tools(), null, null);
+
+    [Fact] public async Task Mandatory_arm_rejects_a_valid_final_answer_given_without_any_tool_evidence()
+    {
+        var transport = new ScriptedTransport(_ => Final(Response(Decision("O1"), Decision("O2"), Decision("O3"))));
+        var outcome = await new P7F1QConversationRunner(transport, Policy, new()).RunAsync(MandatorySpec(), Path.Combine(root, "m1"), () => 0, default);
+        Assert.Equal(("CONTRACT_FAILED", "TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED"), (outcome.Status, outcome.FailureCode));
+        Assert.True(File.Exists(Path.Combine(root, "m1", "response.txt")));
+    }
+
+    [Fact] public async Task Mandatory_arm_accepts_tool_call_then_real_tool_result_then_final_citing_it()
+    {
+        var transport = new ScriptedTransport(_ => ToolCall("get_repeated_occurrences", """{"target":"O2","maxResults":5}"""),
+            _ => Final(Response(Decision("O1"), Decision("O2", function: "REPRESENTS_STRUCTURE", refs: "\"E1.1\",\"L0003:S0\""), Decision("O3"))));
+        var outcome = await new P7F1QConversationRunner(transport, Policy, new()).RunAsync(MandatorySpec(), Path.Combine(root, "m2"), () => 0, default);
+        Assert.Equal("ACCEPTED", outcome.Status);
+        var toolMessage = JsonNode.Parse(transport.Bodies[1])!["messages"]![3]!["content"]!.GetValue<string>();
+        Assert.Contains("L0003:S0", toolMessage); // the body heading the contents entry repeats, from the evidence store
+    }
+
+    [Fact] public async Task Mandatory_arm_with_only_invalid_tool_calls_does_not_meet_the_requirement()
+    {
+        var transport = new ScriptedTransport(_ => ToolCall("get_source_span", """{"targets":["O77"]}"""),
+            _ => Final(Response(Decision("O1"), Decision("O2"), Decision("O3"))));
+        var outcome = await new P7F1QConversationRunner(transport, Policy, new()).RunAsync(MandatorySpec(), Path.Combine(root, "m3"), () => 0, default);
+        Assert.Equal("TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED", outcome.FailureCode);
+        Assert.Equal(1, outcome.InvalidToolCalls);
+    }
     [Fact] public void Prompts_separate_arms_and_never_project_labels()
     {
         var tools = P7F1QProtocol.SystemPrompt(F1QArm.F1QTools); var none = P7F1QProtocol.SystemPrompt(F1QArm.F1QNoTools);
         Assert.Contains("EVIDENCE TOOLS", tools); Assert.DoesNotContain("EVIDENCE TOOLS", none);
+        Assert.Contains("must obtain source evidence before deciding", P7F1QProtocol.SystemPrompt(F1QArm.F1QToolsMandatory));
+        Assert.DoesNotContain("must obtain source evidence", tools);
         Assert.Contains("INSUFFICIENT_EVIDENCE", none);
         Assert.DoesNotContain("\r", tools);
         Assert.Throws<InvalidOperationException>(() => P7F1QProtocol.SystemPrompt(F1QArm.Control));

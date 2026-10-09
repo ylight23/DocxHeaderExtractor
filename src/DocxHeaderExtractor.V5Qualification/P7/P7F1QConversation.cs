@@ -155,7 +155,7 @@ internal sealed class P7F1QConversationRunner(IF1QTransport transport, F1QBodyPo
         };
         var citable = new HashSet<string>(spec.InitiallyCitable, StringComparer.Ordinal);
         var turns = new List<F1QTurnRecord>(); var byName = new SortedDictionary<string, int>(StringComparer.Ordinal);
-        var invalidCalls = 0; decimal cost = 0; var allCosts = true;
+        int invalidCalls = 0, okCalls = 0; decimal cost = 0; var allCosts = true;
         F1QRequestOutcome Done(string status, string? code, F1QValidation? v, string? finalSha)
         {
             var outcome = new F1QRequestOutcome(spec.Handle, status, code, turns, v, byName, invalidCalls, cost, allCosts, finalSha);
@@ -218,7 +218,7 @@ internal sealed class P7F1QConversationRunner(IF1QTransport transport, F1QBodyPo
                         result = new(evidenceId, call.Name ?? "", call.Arguments, "REJECTED", code, bytes, SpatialCanonical.Hash(bytes), []);
                     }
                     else result = spec.Tools.Execute(evidenceId, call.Name, call.Arguments);
-                    if (result.Status != "OK") invalidCalls++;
+                    if (result.Status != "OK") invalidCalls++; else okCalls++;
                     byName[result.Name] = byName.GetValueOrDefault(result.Name) + 1;
                     if (result.Status == "OK") { citable.Add(evidenceId); foreach (var a in result.ReturnedAliases) citable.Add(a); }
                     WriteNew(Path.Combine(turnDir, $"tool-{n:D2}-{evidenceId}.json"), JsonSerializer.SerializeToUtf8Bytes(new
@@ -249,6 +249,10 @@ internal sealed class P7F1QConversationRunner(IF1QTransport transport, F1QBodyPo
                 return Done("CONTRACT_FAILED", "FINISH_REASON_" + (asm.FinishReason ?? "NULL").ToUpperInvariant(), null, SpatialCanonical.Hash(final));
             var validation = spec.ControlValidator is not null ? spec.ControlValidator(asm.Content) : P7F1QProtocol.Validate(asm.Content, spec.Issued, citable);
             WriteNew(Path.Combine(directory, "validation.json"), JsonSerializer.SerializeToUtf8Bytes(validation, P7F1QEvidenceTools.WireJson));
+            // Mandatory-evidence arm: a final answer with no successful tool call fails the frozen requirement,
+            // even when the JSON itself is valid. Validation is still written for diagnostics.
+            if (spec.Arm == F1QArm.F1QToolsMandatory && okCalls == 0)
+                return Done("CONTRACT_FAILED", "TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED", validation with { StrictAccepted = false, FailureCode = "TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED" }, SpatialCanonical.Hash(final));
             return Done(validation.StrictAccepted ? "ACCEPTED" : "CONTRACT_FAILED", validation.FailureCode, validation, SpatialCanonical.Hash(final));
         }
         throw new InvalidOperationException("F1Q_TURN_LOOP_EXHAUSTED");

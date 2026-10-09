@@ -30,14 +30,17 @@ switch (args[0])
     }
     case "prepare":
     {
-        if (args.Length != 5) throw new ArgumentException("prepare <frozen-request-dir> <full-source-dir> <new-plan.json> <new-bodies-dir>");
+        if (args.Length is not (5 or 6)) throw new ArgumentException("prepare <frozen-request-dir> <full-source-dir> <new-plan.json> <new-bodies-dir> [arm,...]");
+        // V1: Control (fresh only where no historical D3 Control) + F1QNoTools + F1QTools. V2: an explicit arm list
+        // (F1QToolsMandatory), frozen as a separate plan and never pooled with V1.
+        var armOverride = args.Length == 6 ? args[5].Split(',').Select(Enum.Parse<F1QArm>).ToArray() : null;
         var cases = Cohort(args[1], args[2]);
         Need(!Directory.Exists(args[4]) && !File.Exists(args[3]), "PLAN_OR_BODIES_EXIST");
         Directory.CreateDirectory(args[4]);
         var runner = new P7F1QConversationRunner(new NoTransport(), policy, caps);
         var requests = new List<object>();
         foreach (var c in cases)
-            foreach (var arm in Arms(c))
+            foreach (var arm in armOverride ?? Arms(c))
             {
                 var body = InitialBody(runner, c, arm);
                 var file = $"{c.Case}.{arm}.initial-body.json";
@@ -48,13 +51,15 @@ switch (args[0])
                     bodyFile = file, bodySha256 = SpatialCanonical.Hash(body),
                     systemPromptSha256 = SpatialCanonical.Hash(Encoding.UTF8.GetBytes(SystemFor(c, arm))),
                     userMessageSha256 = SpatialCanonical.Hash(Encoding.UTF8.GetBytes(UserFor(c, arm))),
-                    issuedOccurrences = c.Issued.Count, maxModelTurns = arm == F1QArm.F1QTools ? caps.MaxToolRounds + 1 : 1,
+                    issuedOccurrences = c.Issued.Count, maxModelTurns = arm is F1QArm.F1QTools or F1QArm.F1QToolsMandatory ? caps.MaxToolRounds + 1 : 1,
                     controlSource = arm == F1QArm.Control ? "FRESH_FROZEN_PRODUCTION_F1_CONTROL_BODY" : null,
                 });
             }
         var plan = SpatialCanonical.Bytes(new
         {
-            version = "P7_F1Q_TOOL_AUGMENTED_EXECUTION_PLAN_V1", status = "FROZEN_BEFORE_PROVIDER_AND_BEFORE_GOLD_READ",
+            version = armOverride is null ? "P7_F1Q_TOOL_AUGMENTED_EXECUTION_PLAN_V1" : "P7_F1Q_TOOL_CHAIN_QUALIFICATION_PLAN_V2",
+            status = "FROZEN_BEFORE_PROVIDER_AND_BEFORE_GOLD_READ",
+            acceptance = armOverride is null ? null : "RAW_TRANSCRIPT_MUST_SHOW_QWEN_TOOL_CALL_TO_CSHARP_EVIDENCE_TOOL_TO_REAL_SOURCE_EVIDENCE_TO_QWEN_FINAL_F1_NO_MOCKS",
             issue = "ylight23/DocxHeaderExtractor#5", protocolVersion = P7F1QProtocol.Version, toolsVersion = P7F1QEvidenceTools.Version,
             model = policy.Model, providerRoute = new { order = new[] { "alibaba" }, allowFallbacks = false, requireParameters = true },
             endpoint = P7F1QOpenRouterTransport.Endpoint, temperature = 0, maxTokens = policy.MaxTokens, reasoning = "enabled",
@@ -111,7 +116,7 @@ switch (args[0])
             var body = ReadPinned(Path.Combine(args[3], S(r, "bodyFile")), S(r, "bodySha256"));
             Need(body.AsSpan().SequenceEqual(InitialBody(runner, c, arm)), "RECOMPOSED_BODY_DRIFT:" + handle);
             var spec = new F1QRequestSpec(handle, c.Case, arm, SystemFor(c, arm), UserFor(c, arm), c.Issued, c.InitialCitable,
-                arm == F1QArm.F1QTools ? c.Tools : null, body,
+                arm is F1QArm.F1QTools or F1QArm.F1QToolsMandatory ? c.Tools : null, body,
                 arm == F1QArm.Control ? response => P7F1QProtocol.ValidateControl(response, c.Control) : null);
             var outcome = await runner.RunAsync(spec, dir, () => Spent(root), CancellationToken.None);
             var line = JsonSerializer.Serialize(new { handle, outcome.Status, outcome.FailureCode, turns = outcome.Turns.Count,
@@ -168,7 +173,8 @@ static byte[] InitialBody(P7F1QConversationRunner runner, F1QCase c, F1QArm arm)
         new JsonObject { ["role"] = "system", ["content"] = P7F1QProtocol.SystemPrompt(arm) },
         new JsonObject { ["role"] = "user", ["content"] = c.F1QUser },
     };
-    return runner.Body(messages, arm == F1QArm.F1QTools, arm == F1QArm.F1QTools ? "auto" : "absent");
+    var tools = arm is F1QArm.F1QTools or F1QArm.F1QToolsMandatory;
+    return runner.Body(messages, tools, tools ? "auto" : "absent");
 }
 
 // Frozen production Control body shape, reproduced from the D3 template (verified byte-identical on D01-D05).
