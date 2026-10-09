@@ -1,0 +1,960 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_DRAFT_V1",
+  "status": "DRAFT_REVIEWER_A_NOT_APPROVED",
+  "id": "056",
+  "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/056_OpenStax_Business_Law_I_Essentials.pdf",
+  "sourceSha256": "c56eef123fd5699ef7fac923394687c34cb46f349bad0b0f5f59b2106bc303bc",
+  "sourceAliasUniverseSha256": "899af0838468a06fde30379a044f66f5d6d0bd603ceb276795c6e54223188e21",
+  "reviewBundleSha256": "3b6d5f84012d22c7913425a955b0d907399b7716c309e741988eabd84c8c7d32",
+  "reviewerA": "Claude (orchestrator), from parser text and layout only; PDF pages not rendered; independent of any provider prediction",
+  "visualEvidence": "NOT_RENDERED_IN_DRAFT_REVIEWER_TO_CONFIRM_AGAINST_PDF",
+  "notes": [],
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Essentials",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Cover word \"Essentials\" (102pt) — visible part of the cover title \"Business Law I Essentials\"; remaining title words are not parser text",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0078:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "CONTENTS",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Heading \"CONTENTS\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0079:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Preface 1",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry \"Preface 1\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0080:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 American Law, Legal Reasoning, and the Legal System 3",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry for chapter 1",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0081:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Introduction 3",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry \"Introduction 3\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0082:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.1 Basic American Legal Principles 3",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry 1.1",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0083:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2 Sources and Types of Law 5",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry 1.2",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0084:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.3 Important Business Laws and Regulations 7",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry 1.3",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0085:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Assessment Questions 10",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry \"Assessment Questions 10\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0086:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Endnotes 1 1",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry \"Endnotes 11\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0087:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2 Disputes and Dispute Settlement 13",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry for chapter 2",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0088:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Introduction 13",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0089:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1 Negotiation 13",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry 2.1",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0090:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2 Mediation 1 6",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry 2.2",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0091:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3 Arbitration 19",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry 2.3",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0092:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Assessment Questions 23",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0093:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Endnotes 24",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0094:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3 Business Ethics and Social Responsibility 27",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry for chapter 3",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0095:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Introduction 27",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0096:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1 Business Ethics 27",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry 3.1",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0097:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.2 Social Responsibility 31",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry 3.2",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0098:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Assessment Questions 35",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0099:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Endnotes 35",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0100:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4 Business and the United States Constitution 37",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry for chapter 4",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0101:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Introduction 37",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0102:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1 Commerce Clause 37",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry 4.1",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0103:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2 Constitutional Protections 41",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry 4.2",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0104:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Assessment Questions 45",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0105:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Endnotes 46",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0106:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5 Criminal Liability 47",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry for chapter 5",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0107:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Introduction 47",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0108:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.1 Common Business Crimes 47",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry 5.1",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0109:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.2 Civil vs. Criminal Liability 51",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry 5.2",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0110:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Assessment Questions 55",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0111:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Endnotes 55",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0466:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10 1 • Assessment Questions",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Running header \"10 1 • Assessment Questions\" (repeats the section name; page furniture)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0467:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Assessment Questions",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Section heading \"Assessment Questions\" (bold 15.6)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0468:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1. Which country is the United States legal system derived from?",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0469:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a. Germany.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0470:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b. United Kingdom.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0471:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c. United States ofAmerica.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0472:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d. Canada.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0473:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. What is the function of law in the United States?",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0474:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a. Establish standards.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0475:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b. Promote consistency.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0476:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c. Promote, provide, and maintain order.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0477:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d. All ofthe above.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0478:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3. As a judge, Baxter applies common law rules. These rules develop from:",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0479:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a. decisions ofthe courts in legal disputes.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0480:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b. regulations issued by administrative agencies.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0481:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c. statutes enacted by Congress and the state legislatures.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0482:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d. uniform laws drafted by legal scholars.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0483:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4. What is the difference between state and federal law?",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0484:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5. The legislature ofthe state ofWyoming enacts a new statute that sets standards for the liability of",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0485:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "businesses selling defective products. This statute applies in:",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0486:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a. Wyoming only.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0487:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b. only Wyoming and its bordering states.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0488:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c. all states.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0489:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d. all states but only to matters not covered by other states’ laws.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0490:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "6. Alex has been sued by Will for failure to pay rent for their apartment. Which source of law will govern this",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0491:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "lawsuit?",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0492:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a. Administrative law.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0493:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b. The Constitution.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0494:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c. Civil Law.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0495:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d. Criminal Law.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0496:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7. Four sources of law in the U.S. legal system are:",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0497:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a. Constitutional law, criminal law, civil law, and maritime law.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0498:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b. Federal law, state law, international law, and maritime law.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0499:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c. Statutory law, case law, equity, and common law.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0500:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d. Constitutional law, judicial law, legislative law, and administrative law.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0501:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8. Where can you find a codification offederal laws?",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0502:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a. The library.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0503:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b. Federal Court.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0504:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c. United States Code.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0505:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d. U.S. Library of Congress.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0506:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "9. What is the supreme law ofthe land? What are statutes? What are ordinances? What is an administrative",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0507:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "rule?",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0508:S0",
+      "page": 20,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Access for free at openstax.org",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Running footer \"Access for free at openstax.org\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3205:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "96 9 • Employment and Labor Law",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Running header \"96 9 • Employment and Labor Law\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3206:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Figure 9.4 Employees are protected against discrimination by employers by a number of laws enacted at both the federal and state",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Figure caption \"Figure 9.4 ...\" (object caption)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3207:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "level. (Credit: Wokandapix/ pixabay/ License: CC0)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3208:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Sexual harassment is also protected under Title VII. This type of harassment is defined as unwelcome sexual",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3209:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "advances, requests for sexual favors, and other verbal or physical conduct ofa sexual nature. Two types of",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3210:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "sexual harassment are recognized. Quid pro quo occurs when a manager makes a sexual demand on a",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3211:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "worker, and this demand is perceived as a condition of employment. Actions that create a hostile work",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3212:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "environment are another type ofsexual harassment. These issues have been used in cases of discrimination",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3213:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "based on race and religion as well as sex. Since the 1997 case Onca le v. Su n downer Offs hore Services Inc., it",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3214:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "has been established that sexual harassment undertaken by a member of one sex against a member ofthe",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3215:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "same sex is actionable under Title VII. In some limited circumstances, employers may also be liable for",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3216:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "harassment of employees by non-employees, e.g., customers. The employer is liable if it does nothing to",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3217:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "prevent and remedy harassment targeted at one of its employees. The Pregnancy Discrimination Act of 1987",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3218:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "expanded the definition ofsex discrimination to include discrimination based on pregnancy, childbirth, or",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3219:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "medical conditions related to the same.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3220:S0",
+      "page": 106,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Access for free at openstax.org",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Running footer",
+      "approval": "PENDING_USER"
+    }
+  ],
+  "counts": {
+    "ESTABLISHES_STRUCTURE": 3,
+    "REPRESENTS_STRUCTURE": 33,
+    "OTHER": 58
+  },
+  "flagged": 6
+}

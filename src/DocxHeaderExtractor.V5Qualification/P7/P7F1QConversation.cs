@@ -123,14 +123,20 @@ internal sealed record F1QBodyPolicy(string Model, string ProviderTag, int MaxTo
 
 internal sealed record F1QRequestSpec(string Handle, string Case, F1QArm Arm, string SystemPrompt, string UserMessage,
     IReadOnlyList<F1QIssuedOccurrence> Issued, IReadOnlySet<string> InitiallyCitable, P7F1QEvidenceTools? Tools,
-    byte[]? FrozenInitialBody, Func<string, F1QValidation>? ControlValidator);
+    byte[]? FrozenInitialBody, Func<string, F1QValidation>? ControlValidator, bool FenceNormalization = false);
 
 internal sealed record F1QTurnRecord(int Turn, int Attempts, int? StatusCode, string? TransportError, string? FinishReason,
     int ToolCalls, decimal? CostUsd, long PromptTokens, long CompletionTokens, long ReasoningTokens, string RequestSha256,
     string ResponseSha256, string? Provider, string? Model, string? GenerationId, string ToolChoice);
 
 internal sealed record F1QRunCaps(int MaxToolRounds = 3, int MaxCallsPerRound = 8, int MaxTransportAttemptsPerTurn = 2,
-    decimal RunawayUsd = 5m, decimal AnomalousRequestUsd = 0.5m);
+    decimal RunawayUsd = 5m, decimal AnomalousRequestUsd = 0.5m, decimal HardCapUsd = decimal.MaxValue,
+    decimal WorstCasePromptUsdPerToken = 0.0000002m, decimal WorstCaseCompletionUsdPerToken = 0.0000008m)
+{
+    /// <summary>Worst-case charge of one call before it is sent: body bytes / 2 as a prompt-token upper bound and the
+    /// full completion budget, both at the most expensive pricing tier of the pinned endpoint.</summary>
+    public decimal WorstCaseUsd(int bodyBytes, int maxTokens) => bodyBytes / 2m * WorstCasePromptUsdPerToken + maxTokens * WorstCaseCompletionUsdPerToken;
+}
 
 internal sealed record F1QRequestOutcome(string Handle, string Status, string? FailureCode, IReadOnlyList<F1QTurnRecord> Turns,
     F1QValidation? Validation, IReadOnlyDictionary<string, int> ToolCallsByName, int InvalidToolCalls, decimal CostUsd,
@@ -173,6 +179,8 @@ internal sealed class P7F1QConversationRunner(IF1QTransport transport, F1QBodyPo
                 throw new InvalidOperationException("F1Q_FROZEN_INITIAL_BODY_DRIFT");
             var turnDir = Path.Combine(directory, $"turn-{turn}");
             Directory.CreateDirectory(turnDir);
+            if (spentSoFar() + cost + caps.WorstCaseUsd(body.Length, policy.MaxTokens) > caps.HardCapUsd)
+                return Done("BUDGET_STOP", "PRE_CALL_WORST_CASE_EXCEEDS_CAP", null, null);
             WriteNew(Path.Combine(turnDir, "request.json"), body);
             F1QHttpObservation? obs = null; F1QStreamAssembly? asm = null; var attempts = 0;
             for (var attempt = 1; attempt <= caps.MaxTransportAttemptsPerTurn; attempt++)
@@ -248,9 +256,25 @@ internal sealed class P7F1QConversationRunner(IF1QTransport transport, F1QBodyPo
             }, P7F1QEvidenceTools.WireJson));
             if (asm.FinishReason != "stop")
                 return Done("CONTRACT_FAILED", "FINISH_REASON_" + (asm.FinishReason ?? "NULL").ToUpperInvariant(), null, SpatialCanonical.Hash(final));
-            var validation = spec.ControlValidator is not null ? spec.ControlValidator(asm.Content)
-                : spec.Arm == F1QArm.F1QEvidenceV2 ? P7F1QProtocolV2.Validate(asm.Content, spec.Issued, citable, coverage)
-                : P7F1QProtocol.Validate(asm.Content, spec.Issued, citable);
+            F1QValidation ValidateText(string text) => spec.ControlValidator is not null ? spec.ControlValidator(text)
+                : spec.Arm == F1QArm.F1QEvidenceV2 ? P7F1QProtocolV2.Validate(text, spec.Issued, citable, coverage)
+                : P7F1QProtocol.Validate(text, spec.Issued, citable);
+            var validation = ValidateText(asm.Content);
+            if (spec.FenceNormalization)
+            {
+                // Issue #6 Decision 4: strict RAW view is kept; the NORMALIZED view (one outer fence removed) is the
+                // acceptance view. Raw response.txt is never rewritten.
+                var fence = P7F1QFenceNormalization.Normalize(asm.Content);
+                var normalized = fence.Applied ? ValidateText(fence.Normalized) : validation;
+                WriteNew(Path.Combine(directory, "validation.raw.json"), JsonSerializer.SerializeToUtf8Bytes(validation, P7F1QEvidenceTools.WireJson));
+                WriteNew(Path.Combine(directory, "normalization.json"), JsonSerializer.SerializeToUtf8Bytes(new
+                {
+                    version = P7F1QFenceNormalization.Version, fence.Applied, fence.Reason, rawStrictAccepted = validation.StrictAccepted,
+                    rawFailureCode = validation.FailureCode, normalizedStrictAccepted = normalized.StrictAccepted, normalizedFailureCode = normalized.FailureCode,
+                    rawResponseSha256 = SpatialCanonical.Hash(final), normalizedSha256 = fence.Applied ? SpatialCanonical.Hash(System.Text.Encoding.UTF8.GetBytes(fence.Normalized)) : null,
+                }, P7F1QEvidenceTools.WireJson));
+                validation = normalized;
+            }
             WriteNew(Path.Combine(directory, "validation.json"), JsonSerializer.SerializeToUtf8Bytes(validation, P7F1QEvidenceTools.WireJson));
             // Mandatory-evidence arm: a final answer with no successful tool call fails the frozen requirement,
             // even when the JSON itself is valid. Validation is still written for diagnostics.

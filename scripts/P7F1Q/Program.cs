@@ -14,6 +14,8 @@ var caps = new F1QRunCaps();
 // Plan V3: json_object on every turn, tool set V2, no in-turn transport retry (one request-level retry instead).
 var policyV3 = new F1QBodyPolicy("qwen/qwen3.7-flash", "alibaba", 32768, JsonObjectResponse: true, ToolSet: 2);
 var capsV3 = new F1QRunCaps(MaxTransportAttemptsPerTurn: 1);
+// Held-out (Issue #6): V3 caps plus the USD 3.00 hard cap checked against worst-case cost before every call.
+var capsHeldout = capsV3 with { HardCapUsd = 3.00m };
 
 switch (args[0])
 {
@@ -255,8 +257,132 @@ switch (args[0])
         }
         break;
     }
+    case "prepare-heldout":
+    {
+        // Issue #6 held-out plan: the frozen V3 composition (prompt, payload, schema, tools, json_object, chunking)
+        // applied to the source-only selected pages of the 24 audited documents. No Gold, no provider calls.
+        if (args.Length != 4) throw new ArgumentException("prepare-heldout <page-selection.json> <new-plan.json> <new-bodies-dir>");
+        Need(!Directory.Exists(args[3]) && !File.Exists(args[2]), "PLAN_OR_BODIES_EXIST");
+        var selectionBytes = File.ReadAllBytes(args[1]);
+        var cases = HeldoutCases(selectionBytes);
+        using var v3 = JsonDocument.Parse(File.ReadAllBytes("artifacts/web-pdf-semantic-diagnostic/p7.f1q.execution-plan.v3.json"));
+        var promptSha = SpatialCanonical.Hash(Encoding.UTF8.GetBytes(P7F1QProtocolV2.SystemPrompt()));
+        var toolSha = SpatialCanonical.Hash(Encoding.UTF8.GetBytes(P7F1QEvidenceTools.DefinitionsV2().ToJsonString()));
+        Need(v3.RootElement.GetProperty("requests")[0].GetProperty("systemPromptSha256").GetString() == promptSha, "V3_PROMPT_CHANGED");
+        Need(v3.RootElement.GetProperty("toolDefinitionsSha256").GetString() == toolSha, "V3_TOOLS_CHANGED");
+        Directory.CreateDirectory(args[3]);
+        var runner = new P7F1QConversationRunner(new NoTransport(), policyV3, capsHeldout);
+        var requests = new List<object>();
+        foreach (var c in cases)
+            foreach (var (chunk, k) in ChunksOf(c).Select((x, i) => (x, i + 1)))
+            {
+                var handle = $"{c.Case}-C{k}|{F1QArm.F1QEvidenceV2}";
+                var body = InitialBodyV3(runner, c, chunk);
+                var file = $"{c.Case}-C{k}.{F1QArm.F1QEvidenceV2}.initial-body.json";
+                P7F1QConversationRunner.WriteNew(Path.Combine(args[3], file), body);
+                requests.Add(new { handle, @case = c.Case, chunk = k, document = c.Document, pack = c.Pack, bodyFile = file, bodySha256 = SpatialCanonical.Hash(body),
+                    issued = chunk.Select(i => new { occurrence = i.Occurrence, sourceAlias = i.SourceAlias }), worstCaseRequestUsd = capsHeldout.WorstCaseUsd(body.Length, policyV3.MaxTokens) * (capsHeldout.MaxToolRounds + 1) });
+            }
+        var plan = SpatialCanonical.Bytes(new
+        {
+            version = "P7_F1Q_HELDOUT_PLAN_V1", status = "FROZEN_BEFORE_PROVIDER", issue = "ylight23/DocxHeaderExtractor#6",
+            pageSelectionSha256 = SpatialCanonical.Hash(selectionBytes), frozenV3PlanSha256 = SpatialCanonical.Hash(File.ReadAllBytes("artifacts/web-pdf-semantic-diagnostic/p7.f1q.execution-plan.v3.json")),
+            systemPromptSha256 = promptSha, toolDefinitionsSha256 = toolSha, promptSchemaToolsRoute = "IDENTICAL_TO_FROZEN_V3",
+            protocolVersion = P7F1QProtocolV2.Version, model = policyV3.Model, providerRoute = new { order = new[] { "alibaba" }, allowFallbacks = false, requireParameters = true },
+            responseFormat = "json_object_on_every_turn", chunkSize = P7F1QProtocolV2.ChunkSize, caps = capsHeldout,
+            budget = new { hardCapUsd = capsHeldout.HardCapUsd, softAlertUsd = 1.00m, perDocumentCapUsd = PerDocumentCapUsd, preCallWorstCaseCheck = true },
+            retryPolicy = "AT_MOST_ONE_IDENTICAL_BODY_RETRY_PER_REQUEST_ON_TRANSPORT_OR_CONTRACT_FAILURE_NO_ERROR_FEEDBACK_NO_SEMANTIC_RETRY",
+            fenceNormalization = P7F1QFenceNormalization.Version, contractViews = new[] { "STRICT_RAW", "NORMALIZED_ACCEPTANCE" },
+            goldGate = "EXECUTION_REFUSES_TO_RUN_WITHOUT_A_PINNED_USER_APPROVED_GOLD_FREEZE_COVERING_EVERY_DOCUMENT",
+            cases = cases.Select(c => new { c.Case, c.Document, c.Pack, sourceSha256 = c.Source.SourceSha256, evidenceStoreSha256 = c.ToolsV2.EvidenceStoreSha256, packSha256 = c.PackSha256, issued = c.Issued.Count }),
+            requests, worstCaseTotalUsdAllRequestsTwoAttempts = requests.Sum(r => JsonSerializer.SerializeToElement(r).GetProperty("worstCaseRequestUsd").GetDecimal()) * 2,
+            goldRead = false, providerCalls = 0, productionChanged = false,
+            sources = new[] { "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QEvidenceTools.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QProtocolV2.cs",
+                "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QConversation.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QFenceNormalization.cs", "scripts/P7F1Q/Program.cs" }
+                .Select(path => new { path, sha256 = SpatialCanonical.Hash(File.ReadAllBytes(path)) }),
+        });
+        P7F1QConversationRunner.WriteNew(args[2], plan);
+        Console.WriteLine(JsonSerializer.Serialize(new { status = "PLAN_FROZEN", planSha256 = SpatialCanonical.Hash(plan), cases = cases.Count, requests = requests.Count, providerCalls = 0 }));
+        break;
+    }
+    case "execute-heldout":
+    {
+        if (args.Length < 7) throw new ArgumentException("execute-heldout <plan.json> <plan-sha256> <bodies-dir> <gold-freeze.json> <gold-freeze-sha256> <capture-root> [handle,...]");
+        var planBytes = ReadPinned(args[1], args[2]); using var plan = JsonDocument.Parse(planBytes);
+        foreach (var src in plan.RootElement.GetProperty("sources").EnumerateArray()) ReadPinned(S(src, "path"), S(src, "sha256"));
+        // Gold gate (Issue #6 Decision 2): user-approved, frozen Gold for every planned document, before any call.
+        using var gold = JsonDocument.Parse(ReadPinned(args[4], args[5]));
+        Need(S(gold.RootElement, "status") == "USER_APPROVED_GOLD_FROZEN", "GOLD_NOT_APPROVED_AND_FROZEN");
+        var goldDocs = gold.RootElement.GetProperty("documents").EnumerateArray().Select(d => S(d, "id")).ToHashSet();
+        Need(plan.RootElement.GetProperty("cases").EnumerateArray().All(c => goldDocs.Contains(S(c, "document"))), "GOLD_FREEZE_DOES_NOT_COVER_EVERY_DOCUMENT");
+        var cases = HeldoutCases(File.ReadAllBytes("artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.page-selection.v1.json")).ToDictionary(c => c.Case);
+        var only = args.Length > 7 ? args[7].Split(',', StringSplitOptions.RemoveEmptyEntries).ToHashSet(StringComparer.Ordinal) : null;
+        var root = Path.GetFullPath(args[6]); Directory.CreateDirectory(root);
+        var metadata = await FetchEndpointMetadata();
+        P7F1QConversationRunner.WriteNew(Path.Combine(root, $"endpoint-metadata.{DateTimeOffset.UtcNow:yyyyMMddTHHmmssZ}.json"), metadata);
+        VerifyEndpoint(metadata);
+        using var transport = new P7F1QOpenRouterTransport(() => Environment.GetEnvironmentVariable("OPENROUTER_API_KEY") ?? "", TimeSpan.FromSeconds(300));
+        var runner = new P7F1QConversationRunner(transport, policyV3, capsHeldout);
+        var consecutiveSystemic = 0; var stop = false; var alerted = false;
+        foreach (var r in plan.RootElement.GetProperty("requests").EnumerateArray())
+        {
+            if (stop) break;
+            var handle = S(r, "handle");
+            if (only is not null && !only.Contains(handle)) continue;
+            var requestDir = Path.Combine(root, "requests", handle.Replace('|', '.'));
+            if (Directory.Exists(requestDir)) { Console.WriteLine($"SKIP_EXISTING {handle}"); continue; }
+            var c = cases[S(r, "case")]; var chunk = ChunksOf(c)[r.GetProperty("chunk").GetInt32() - 1];
+            var body = ReadPinned(Path.Combine(args[3], S(r, "bodyFile")), S(r, "bodySha256"));
+            Need(body.AsSpan().SequenceEqual(InitialBodyV3(runner, c, chunk)), "RECOMPOSED_BODY_DRIFT:" + handle);
+            var docSpent = SpentFor(root, c.Document);
+            if (docSpent + r.GetProperty("worstCaseRequestUsd").GetDecimal() > PerDocumentCapUsd)
+            { var skip = JsonSerializer.Serialize(new { handle, status = "SKIPPED", reason = "PER_DOCUMENT_CAP_WORST_CASE", docSpent }); Console.WriteLine(skip); File.AppendAllText(Path.Combine(root, "execution-log.jsonl"), skip + "\n"); continue; }
+            var issued = chunk.Select(i => new F1QIssuedOccurrence(i.Occurrence, i.SourceAlias, i.Page, i.Text)).ToArray();
+            var citable = c.Issued.Select(i => i.SourceAlias).Concat(c.Context.Select(x => x.Alias)).ToHashSet(StringComparer.Ordinal);
+            var spec = new F1QRequestSpec(handle, c.Case, F1QArm.F1QEvidenceV2, P7F1QProtocolV2.SystemPrompt(), UserV3(c, chunk), issued, citable,
+                c.ToolsV2, body, null, FenceNormalization: true);
+            for (var attempt = 1; attempt <= 2; attempt++)
+            {
+                var outcome = await runner.RunAsync(spec, Path.Combine(requestDir, $"attempt-{attempt}"), () => Spent(root), CancellationToken.None);
+                var spent = Spent(root);
+                var line = JsonSerializer.Serialize(new { handle, attempt, outcome.Status, outcome.FailureCode, turns = outcome.Turns.Count,
+                    outcome.CostUsd, toolCalls = outcome.ToolCallsByName, outcome.InvalidToolCalls, spentUsd = spent });
+                Console.WriteLine(line);
+                File.AppendAllText(Path.Combine(root, "execution-log.jsonl"), line + "\n");
+                if (!alerted && spent >= 1.00m) { alerted = true; Console.WriteLine("SOFT_ALERT_1_USD_REACHED"); File.AppendAllText(Path.Combine(root, "execution-log.jsonl"), "{\"alert\":\"SOFT_ALERT_1_USD_REACHED\"}\n"); }
+                if (outcome.Status == "BUDGET_STOP") { stop = true; break; }
+                consecutiveSystemic = outcome.Status == "TRANSPORT_FAILED" ? consecutiveSystemic + 1 : 0;
+                if (consecutiveSystemic >= 3) { Console.WriteLine("STOP REPEATED_TRANSPORT_FAILURE"); stop = true; break; }
+                if (outcome.Status == "ACCEPTED") break;
+            }
+        }
+        break;
+    }
     default: throw new ArgumentException("UNKNOWN_MODE");
 }
+
+List<F1QCase> HeldoutCases(byte[] selectionBytes)
+{
+    using var selection = JsonDocument.Parse(selectionBytes);
+    var list = new List<F1QCase>();
+    foreach (var d in selection.RootElement.GetProperty("documents").EnumerateArray())
+    {
+        var id = S(d, "id");
+        var (source, details) = Parse(S(d, "sourceKey"), S(d, "sourceSha256"), S(d, "sourceAliasUniverseSha256"));
+        var store = PdfSourceEvidenceStore.Build(source, details);
+        Need(store.StoreSha256 == S(d, "evidenceStoreSha256"), "HELDOUT_STORE_DRIFT:" + id);
+        var pages = d.GetProperty("selectedPages").EnumerateArray().Select(p => p.GetProperty("page").GetInt32()).ToArray();
+        foreach (var pack in P7PilotRequestPreflight.SelectPacks(source, details, pages))
+            list.Add(Case($"H{id}-{Short(pack.PackId)}", id, pack, pages, "P7_F1Q_HELDOUT_ISSUE_6", source, details, store,
+                P7PilotRequestPreflight.F1(source, details, pack), null));
+    }
+    return list;
+}
+
+static decimal SpentFor(string root, string document) => !Directory.Exists(Path.Combine(root, "requests")) ? 0 :
+    Directory.GetDirectories(Path.Combine(root, "requests"), $"H{document}-*").Sum(d =>
+        Directory.GetFiles(d, "observation.json", SearchOption.AllDirectories).Sum(f =>
+        { using var j = JsonDocument.Parse(File.ReadAllBytes(f)); return j.RootElement.GetProperty("assembled").GetProperty("usage") is { ValueKind: JsonValueKind.Object } u && u.TryGetProperty("cost", out var c) ? c.GetDecimal() : 0m; }));
 
 static IReadOnlyList<IReadOnlyList<P7F1QProtocolV2.V5Issued>> ChunksOf(F1QCase c)
 {
@@ -410,4 +536,5 @@ internal sealed class NoTransport : IF1QTransport
 internal static partial class Program
 {
     internal static string ControlTemplatePath = "";
+    internal const decimal PerDocumentCapUsd = 0.30m;
 }

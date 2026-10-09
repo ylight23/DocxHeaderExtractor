@@ -1,0 +1,2032 @@
+{
+  "version": "P7_F1Q_HELDOUT_CONTAMINATION_AUDIT_V1",
+  "issue": "ylight23/DocxHeaderExtractor#6",
+  "rules": {
+    "reject": [
+      "F1_FAMILY_EXPOSURE: document text in any F1/F1Q request, response, capture or F1 Gold",
+      "MODEL_PREDICTION_EXPOSURE: the document (PDF or its DOCX twin) was the input of a recorded LLM run (semantic runs, harness-lift model runs, provider raw)",
+      "NEAR_DUPLICATE: word 5-shingle Jaccard >= 0.5 against any development document"
+    ],
+    "tagOnly": [
+      "HUMAN_REFERENCE_PRIOR (earlier human keys/Gold/review packets, not F1)",
+      "P7_SOURCE_REVIEW (P7 D2 source/shape screening, no labels, no model)",
+      "ENGINE_OR_INVENTORY (deterministic engine runs, inventories, documentation)"
+    ],
+    "search": "git grep on HEAD for source sha256 and file stem (stem also matches the DOCX twin), plus ~/.codex/diagnostic-captures json/html",
+    "reserveOrder": "same category, unused, sha256('P7F1Q-HELDOUT-RESERVE-V1|' + sourceSha256) ascending, first ELIGIBLE",
+    "familyMap": {
+      "legal": [
+        "012"
+      ],
+      "procurement": [
+        "029"
+      ],
+      "finance": [
+        "054"
+      ],
+      "minutes": [
+        "080"
+      ],
+      "translation": [
+        "089"
+      ],
+      "rfc": [
+        "092",
+        "095"
+      ],
+      "textbook": []
+    },
+    "exclusions": [
+      "012",
+      "029",
+      "054",
+      "080",
+      "092",
+      "089",
+      "095",
+      "USER_REFERENCE_PDF"
+    ]
+  },
+  "candidates": [
+    {
+      "id": "002",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/002_Bo_luat_Lao_dong_45-2019-QH14.pdf",
+      "sourceSha256": "a0c0fcc3b9e040bcdcab70191f0ab95952183be94a6f5bc6424e8d3e85697139",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0013.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "012",
+        "jaccard": 0
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:012"
+    },
+    {
+      "id": "006",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/006_Luat_Dat_dai_31-2024-QH15.pdf",
+      "sourceSha256": "2558044082ee768192a311aee548eb9fae4daada546013aa5181eb91c8842637",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0017.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/representation/visual-line-segment-adjudication.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "012",
+        "jaccard": 0.0063
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:012"
+    },
+    {
+      "id": "009",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/009_Luat_Giao_dich_dien_tu_20-2023-QH15.pdf",
+      "sourceSha256": "2458d01d6453cd11ab7aaddbae36e988110754bcb53a59eda729987a63882914",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0020.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/representation/visual-line-segment-adjudication.v1.json",
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0292.source.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "012",
+        "jaccard": 0.0083
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:012"
+    },
+    {
+      "id": "015",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/015_Luat_Cac_to_chuc_tin_dung_32-2024-QH15.pdf",
+      "sourceSha256": "3b65217f835653754346d5a348cca13b2dc43396c089e9da443b05f58de9cc32",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0026.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "012",
+        "jaccard": 0.008
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:012"
+    },
+    {
+      "id": "017",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/017_ND_123-2020_Hoa_don_chung_tu.pdf",
+      "sourceSha256": "cd567da7976beb9fea822c075fa147f5d4d16ba02c4b4c57eac05255a3ba1145",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0028.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "012",
+        "jaccard": 0.0007
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:012"
+    },
+    {
+      "id": "028",
+      "stratum": "procurement",
+      "sourceKey": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/028_WB_RFB_Works_Without_Prequal_2017.pdf",
+      "sourceSha256": "2dea390e45f4c07bc90d834be616cdbfc804db8c42e90b506d87bca037b29027",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "docs/handoff-2026-08-25.md",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v2.json",
+          "eval/harness-lift/r18-traces/DOC-0036.v1.json",
+          "eval/reconciliation/r4-behavior-corpus.v1.json",
+          "eval/reconciliation/r5-3d/fixtures/028-wb-rfb-works-without-prequal-2017.producer-replay.v1.json",
+          "eval/verification/rfc-preserving-architecture-replay.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md",
+          "TODO.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json",
+          "eval/harness-lift/reference-coverage.v1.json",
+          "eval/harness-lift/reference-coverage.v2.json",
+          "eval/harness-lift/reference-occurrence-bridge.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "029",
+        "jaccard": 0.1641
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:029"
+    },
+    {
+      "id": "030",
+      "stratum": "procurement",
+      "sourceKey": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/030_WB_RFP_Consulting_Services_2019.pdf",
+      "sourceSha256": "ac762b334e9285a32bcf9cefb707a84e0033439275ad5c11285bb08d684af5da",
+      "verdict": "REJECTED",
+      "rejectReasons": [
+        "MODEL_PREDICTION_EXPOSURE"
+      ],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR",
+        "MODEL_PREDICTION_EXPOSURE"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/accuracy/marker-only-policy-audit.v1.json",
+          "eval/accuracy/ranking-inversion-diagnosis.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0038.v1.json",
+          "eval/integration/int4b-clean-fingerprint-reproduction/runtime-inventory.after.v1.json",
+          "eval/integration/int4b-clean-fingerprint-reproduction/runtime-inventory.before.v1.json",
+          "eval/integration/int4c-clean-canonical-full-suite/runtime-inventory.after.v1.json",
+          "eval/integration/int4c-clean-canonical-full-suite/runtime-inventory.before.v1.json",
+          "eval/performance/authority-pipeline-cost-model.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ],
+        "MODEL_PREDICTION_EXPOSURE": [
+          "eval/accuracy-round4/k1024-role-span.jsonl",
+          "eval/accuracy-round4/k1024-semantic-run.v1.json",
+          "eval/accuracy-round4/k640-role-span.jsonl",
+          "eval/accuracy-round4/k640-semantic-run.v1.json",
+          "eval/accuracy-round6/k160-role-span.jsonl",
+          "eval/accuracy-round6/k160-semantic-run.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "029",
+        "jaccard": 0.0658
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:029"
+    },
+    {
+      "id": "035",
+      "stratum": "procurement",
+      "sourceKey": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/035_WB_EPC_Turnkey_SingleStage_2021.pdf",
+      "sourceSha256": "28090cb67afeaafe2e9bb41c67daf478de5ab8040ae83bd619b79f76b41e4620",
+      "verdict": "REJECTED",
+      "rejectReasons": [
+        "NEAR_DUPLICATE_OF_DEVELOPMENT_029"
+      ],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0040.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "029",
+        "jaccard": 0.6377
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:029"
+    },
+    {
+      "id": "043",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/043_IBRD_Financial_Statements_June_2024.pdf",
+      "sourceSha256": "fcde4a9909030c8c059ccf81c1c0c1a7c0b46af79967c0fea79d5a8fc5430c68",
+      "verdict": "REJECTED",
+      "rejectReasons": [
+        "MODEL_PREDICTION_EXPOSURE"
+      ],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR",
+        "MODEL_PREDICTION_EXPOSURE"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/accuracy/marker-only-policy-audit.v1.json",
+          "eval/accuracy/ranking-inversion-diagnosis.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0043.v1.json",
+          "eval/integration/int4b-clean-fingerprint-reproduction/runtime-inventory.after.v1.json",
+          "eval/integration/int4b-clean-fingerprint-reproduction/runtime-inventory.before.v1.json",
+          "eval/integration/int4c-clean-canonical-full-suite/runtime-inventory.after.v1.json",
+          "eval/integration/int4c-clean-canonical-full-suite/runtime-inventory.before.v1.json",
+          "eval/performance/authority-pipeline-cost-model.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/manual-labels/m105b-cross-document-review-labels.v1.json",
+          "eval/manual-labels/m105b-cross-document-review-sample.v1.json"
+        ],
+        "MODEL_PREDICTION_EXPOSURE": [
+          "eval/accuracy-round4/k1024-role-span.jsonl",
+          "eval/accuracy-round4/k1024-semantic-run.v1.json",
+          "eval/accuracy-round4/k640-role-span.jsonl",
+          "eval/accuracy-round4/k640-semantic-run.v1.json",
+          "eval/accuracy-round6/k160-role-span.jsonl",
+          "eval/accuracy-round6/k160-semantic-run.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "054",
+        "jaccard": 0.2949
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:054"
+    },
+    {
+      "id": "049",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/049_IDA_Financial_Statements_September_2024.pdf",
+      "sourceSha256": "d8a58945a6bfea431724b24118af6adfdf63502d1f32db8d103b62530420a60a",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0048.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "054",
+        "jaccard": 0.0354
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:054"
+    },
+    {
+      "id": "051",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/051_WBG_Trust_Fund_FIS_June_2024.pdf",
+      "sourceSha256": "7fd684159939651921105dcc478b4cc145bac8e7810b4ee7b83f15aec7fa0622",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v2.json",
+          "eval/harness-lift/r18-traces/DOC-0050.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-prov2.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/reusable-gold-cohort.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json",
+          "eval/harness-lift/reference-coverage.v1.json",
+          "eval/harness-lift/reference-coverage.v2.json",
+          "eval/harness-lift/reference-occurrence-bridge.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "029",
+        "jaccard": 0.0001
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:054"
+    },
+    {
+      "id": "056",
+      "stratum": "textbook",
+      "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/056_OpenStax_Business_Law_I_Essentials.pdf",
+      "sourceSha256": "c56eef123fd5699ef7fac923394687c34cb46f349bad0b0f5f59b2106bc303bc",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "docs/handoff-2026-08-25.md",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v2.json",
+          "eval/harness-lift/r18-traces/DOC-0054.v1.json",
+          "eval/reconciliation/r4-behavior-corpus.v1.json",
+          "eval/reconciliation/r5-3d/fixtures/056-openstax-business-law-essentials.producer-replay.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md",
+          "TODO.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0321.source.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/reusable-gold-cohort.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json",
+          "eval/harness-lift/reference-coverage.v1.json",
+          "eval/harness-lift/reference-coverage.v2.json",
+          "eval/harness-lift/reference-occurrence-bridge.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "029",
+        "jaccard": 0.0003
+      },
+      "family": "UNSEEN_FAMILY"
+    },
+    {
+      "id": "058",
+      "stratum": "textbook",
+      "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/058_Machine_Learning_Lecture_Note.pdf",
+      "sourceSha256": "628d11b525be857169de3a11606570e6fc8e9fc74918a26c564ecc6745cb5247",
+      "verdict": "REJECTED",
+      "rejectReasons": [
+        "MODEL_PREDICTION_EXPOSURE"
+      ],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR",
+        "MODEL_PREDICTION_EXPOSURE"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/accuracy/marker-only-policy-audit.v1.json",
+          "eval/accuracy/ranking-inversion-diagnosis.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0055.v1.json",
+          "eval/integration/int4b-clean-fingerprint-reproduction/runtime-inventory.after.v1.json",
+          "eval/integration/int4b-clean-fingerprint-reproduction/runtime-inventory.before.v1.json",
+          "eval/integration/int4c-clean-canonical-full-suite/runtime-inventory.after.v1.json",
+          "eval/integration/int4c-clean-canonical-full-suite/runtime-inventory.before.v1.json",
+          "eval/performance/authority-pipeline-cost-model.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ],
+        "MODEL_PREDICTION_EXPOSURE": [
+          "eval/accuracy-round4/k1024-role-span.jsonl",
+          "eval/accuracy-round4/k1024-semantic-run.v1.json",
+          "eval/accuracy-round4/k640-role-span.jsonl",
+          "eval/accuracy-round4/k640-semantic-run.v1.json",
+          "eval/accuracy-round6/k160-role-span.jsonl",
+          "eval/accuracy-round6/k160-semantic-run.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "029",
+        "jaccard": 0.0001
+      },
+      "family": "UNSEEN_FAMILY"
+    },
+    {
+      "id": "060",
+      "stratum": "textbook",
+      "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/060_Elements_of_Linear_Algebra_Lecture_Notes.pdf",
+      "sourceSha256": "b3bdfbece3c9df4409ac2012569553ac332dd35a6ca759571c0d74c9d06ccdb2",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0057.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "029",
+        "jaccard": 0
+      },
+      "family": "UNSEEN_FAMILY"
+    },
+    {
+      "id": "067",
+      "stratum": "textbook",
+      "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/067_Algorithms_for_Massive_Data_Lecture_Notes.pdf",
+      "sourceSha256": "810f3313d2aa43c53390de8b776d810856d9dbc1d5066fde1600b59530ba9d6f",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0247.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "029",
+        "jaccard": 0.0001
+      },
+      "family": "UNSEEN_FAMILY"
+    },
+    {
+      "id": "073",
+      "stratum": "minutes",
+      "sourceKey": "todo10_8/heading_corpus_100/05_bien_ban_hop/073_FORTIS_GC_Minutes_Mar_2026.pdf",
+      "sourceSha256": "e73ab5ca9d4d9f101e2f2b2d5f169cbf67e331bde84726860619c00473bf5da3",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/production-acceptance/authority-compatibility.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+          "eval/a99-closed-loop/research-r2/cohort-selection.v1.json",
+          "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/decision.v1.json",
+          "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/DOC-0158/occurrence-materialization.v1.json",
+          "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/manifest.v1.json",
+          "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/resolution/DOC-0158/resolved-occurrence.v1.json",
+          "eval/a99-closed-loop/research-r2/p2-occurrence-closure/whole-block-resolution.v1.json",
+          "eval/a99-closed-loop/research-r2/pilot-8/pilot-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/pilot-8/pilot-manifest.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v2.json",
+          "eval/harness-lift/r18-traces/DOC-0065.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0158.source.v1.json",
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0332.source.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/pilot8-overlap.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/reusable-gold-cohort.v1.json",
+          "eval/a99-closed-loop/research-r2/p2-occurrence-closure/strict-occurrence/DOC-0158.strict-occurrence-gold.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/pilot-authority.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json",
+          "eval/a99-closed-loop/review/identity-gold-pilot-manifest.v1.json",
+          "eval/harness-lift/reference-coverage.v1.json",
+          "eval/harness-lift/reference-coverage.v2.json",
+          "eval/harness-lift/reference-occurrence-bridge.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "012",
+        "jaccard": 0
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:080"
+    },
+    {
+      "id": "074",
+      "stratum": "minutes",
+      "sourceKey": "todo10_8/heading_corpus_100/05_bien_ban_hop/074_FORTIS_GC_Minutes_Nov27_2024.pdf",
+      "sourceSha256": "a72ce980c23f00196a257f63cf140edf700104f03fdd7fcfbd2d30d2c9f1eee8",
+      "verdict": "REJECTED",
+      "rejectReasons": [
+        "MODEL_PREDICTION_EXPOSURE"
+      ],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR",
+        "MODEL_PREDICTION_EXPOSURE"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "docs/architecture/harness-lift-route-aware-attribution.md",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/DOC-0158/occurrence-materialization.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/candidate-loss-reconciliation.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v2.json",
+          "eval/harness-lift/final-decision.v3.json",
+          "eval/harness-lift/final-lineage-reconciliation.v1.json",
+          "eval/harness-lift/harness-contribution-summary.v3.json",
+          "eval/harness-lift/model-exposure-reconciliation.v1.json",
+          "eval/harness-lift/occurrence-lineage.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0066.v1.json",
+          "eval/harness-lift/README-v3.md",
+          "eval/harness-lift/route-ownership.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/reusable-gold-cohort.v1.json",
+          "eval/harness-lift/reference-coverage.v1.json",
+          "eval/harness-lift/reference-coverage.v2.json",
+          "eval/harness-lift/reference-occurrence-bridge.v1.json"
+        ],
+        "MODEL_PREDICTION_EXPOSURE": [
+          "eval/harness-lift/model-exposure-reconciliation.v1.json#modelRunOccurredInDocument"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "054",
+        "jaccard": 0
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:080"
+    },
+    {
+      "id": "077",
+      "stratum": "minutes",
+      "sourceKey": "todo10_8/heading_corpus_100/05_bien_ban_hop/077_ICP_TAG_Minutes_Nov_2023.pdf",
+      "sourceSha256": "6db97b728d016a875fdc3187ee54632fd9de0b93f1bc65e903bc5c1c8825f9c3",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0069.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "080",
+        "jaccard": 0.0168
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:080"
+    },
+    {
+      "id": "083",
+      "stratum": "translation",
+      "sourceKey": "todo10_8/heading_corpus_100/06_dich_song_ngu/083_Luat_An_ninh_mang_2018_EN.pdf",
+      "sourceSha256": "30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR",
+        "P7_SOURCE_REVIEW"
+      ],
+      "exposures": {
+        "P7_SOURCE_REVIEW": [
+          "~/.codex/diagnostic-captures/p7-portable-review-20261009-repro-v1/source-manifest.original.json",
+          "~/.codex/diagnostic-captures/p7-portable-review-20261009-v1/source-manifest.original.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/index.html",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0001.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0002.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0003.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0004.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0005.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0006.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0007.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0008.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0009.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0010.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0011.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0012.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0013.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0014.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0015.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0016.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0017.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0018.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0019.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0020.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0021.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0022.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0023.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0024.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0025.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0026.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0027.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0028.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0029.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0030.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0031.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0032.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0033.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0034.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62/cue-cases.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-repro-v1/screening-receipt.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/index.html",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0001.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0002.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0003.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0004.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0005.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0006.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0007.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0008.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0009.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0010.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0011.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0012.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0013.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0014.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0015.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0016.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0017.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0018.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0019.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0020.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0021.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0022.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0023.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0024.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0025.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0026.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0027.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0028.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0029.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0030.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0031.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0032.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0033.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.page-0034.physical.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62/cue-cases.json",
+          "~/.codex/diagnostic-captures/p7-shape-audit-20261009-v1/screening-receipt.json",
+          "~/.codex/diagnostic-captures/p7-shape-review-20261009-repro-v1/index.html",
+          "~/.codex/diagnostic-captures/p7-shape-review-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.evaluation-scope.draft.json",
+          "~/.codex/diagnostic-captures/p7-shape-review-20261009-repro-v1/SHAPE-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62-P1.json",
+          "~/.codex/diagnostic-captures/p7-shape-review-20261009-repro-v1/shape-audit.json",
+          "~/.codex/diagnostic-captures/p7-shape-review-20261009-repro.v1.json",
+          "~/.codex/diagnostic-captures/p7-shape-review-20261009-v1/index.html",
+          "~/.codex/diagnostic-captures/p7-shape-review-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62.evaluation-scope.draft.json",
+          "~/.codex/diagnostic-captures/p7-shape-review-20261009-v1/SHAPE-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62-P1.json",
+          "~/.codex/diagnostic-captures/p7-shape-review-20261009-v1/shape-audit.json",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-repro-v1/index.html",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62/evidence-store.json",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62/review.draft.json",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-repro-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62/snapshot.json",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-repro-v1/selection.json",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-repro-v1/source-manifest.json",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-repro.v1.json",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-v1/index.html",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62/evidence-store.json",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62/review.draft.json",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-v1/PDF-30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62/snapshot.json",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-v1/selection.json",
+          "~/.codex/diagnostic-captures/p7-source-review-20261009-v1/source-manifest.json",
+          "artifacts/web-pdf-semantic-diagnostic/p7.d2.3.shape-audit.v1.json",
+          "artifacts/web-pdf-semantic-diagnostic/p7.d2.3.shape-screening.v1.json",
+          "artifacts/web-pdf-semantic-diagnostic/p7.d2.3.source-candidates-freeze.v1.json"
+        ],
+        "ENGINE_OR_INVENTORY": [
+          "~/.codex/diagnostic-captures/p7-shape-screening-20261009-repro.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0074.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0341.source.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "089",
+        "jaccard": 0.0059
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:089"
+    },
+    {
+      "id": "087",
+      "stratum": "translation",
+      "sourceKey": "todo10_8/heading_corpus_100/06_dich_song_ngu/087_ND_53-2022_An_ninh_mang_EN.pdf",
+      "sourceSha256": "a603afb1c59c438e1d6e72a0bb5d78e3d367a16ce28fb0bdedbe60360a884d4d",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0077.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "089",
+        "jaccard": 0.0054
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:089"
+    },
+    {
+      "id": "088",
+      "stratum": "translation",
+      "sourceKey": "todo10_8/heading_corpus_100/06_dich_song_ngu/088_ND_69-2018_Ngoai_thuong_EN.pdf",
+      "sourceSha256": "85e261f79c5e9360f3ca15f32929705b6635d66348d258e25de4287905ffe385",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0078.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "089",
+        "jaccard": 0.0033
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:089"
+    },
+    {
+      "id": "090",
+      "stratum": "translation",
+      "sourceKey": "todo10_8/heading_corpus_100/06_dich_song_ngu/090_ND_155-2018_Sua_doi_Bo_Y_te_EN.pdf",
+      "sourceSha256": "b1c648b8e97e629a3add667293b467a77f008603b389791633a3454aaa816644",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0080.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "089",
+        "jaccard": 0.0017
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:089"
+    },
+    {
+      "id": "093",
+      "stratum": "rfc",
+      "sourceKey": "todo10_8/heading_corpus_100/07_system_generated/093_RFC9112_HTTP_1_1.pdf",
+      "sourceSha256": "b260bba790c2da55a7e0795f356fcd9b70743686c55250f0ef1cc993c4d1abac",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0083.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "092",
+        "jaccard": 0.0358
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:092,095"
+    },
+    {
+      "id": "094",
+      "stratum": "rfc",
+      "sourceKey": "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf",
+      "sourceSha256": "8314f1034854548baf26f9912f79c6207299cb0520b31ed25af64889bd1500bc",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0084.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "095",
+        "jaccard": 0.0682
+      },
+      "family": "SEEN_FAMILY_IN_DEVELOPMENT:092,095"
+    }
+  ],
+  "replacements": [
+    {
+      "rejected": "030",
+      "stratum": "procurement",
+      "reserveOrder": [
+        "034",
+        "032"
+      ],
+      "tried": [
+        {
+          "id": "034",
+          "stratum": "procurement",
+          "sourceKey": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/034_WB_Plant_Without_Prequal_2016.pdf",
+          "sourceSha256": "ac8bba6f592e5f76a6f2908a7b7b23475de58cdab5f23660722087c26d4464ba",
+          "verdict": "ELIGIBLE",
+          "rejectReasons": [],
+          "exposureTags": [
+            "ENGINE_OR_INVENTORY",
+            "HUMAN_REFERENCE_PRIOR"
+          ],
+          "exposures": {
+            "ENGINE_OR_INVENTORY": [
+              "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+              "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+              "eval/a99-closed-loop/reference-campaign.v1.json",
+              "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+              "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+              "eval/a99-dataset/document-inventory.v1.json",
+              "eval/harness-lift/corpus-map.v1.json",
+              "eval/harness-lift/r18-traces/DOC-0214.v1.json",
+              "eval/verification/verify-6c-artifact.v1.json",
+              "eval/verification/verify-6c-materialization.v1.json",
+              "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+              "handoff.md"
+            ],
+            "HUMAN_REFERENCE_PRIOR": [
+              "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+              "eval/a99-closed-loop/review/dev-manifest.v1.json"
+            ]
+          },
+          "maxDevelopmentShingleJaccard": {
+            "development": "029",
+            "jaccard": 0.0947
+          },
+          "family": "SEEN_FAMILY_IN_DEVELOPMENT:029"
+        }
+      ],
+      "chosen": "034"
+    },
+    {
+      "rejected": "035",
+      "stratum": "procurement",
+      "reserveOrder": [
+        "032"
+      ],
+      "tried": [
+        {
+          "id": "032",
+          "stratum": "procurement",
+          "sourceKey": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/032_WB_Plant_TwoStage_2020.pdf",
+          "sourceSha256": "5c9fe5ebe4a283233cfb1fb2438b87d7d7ea209062ce9d49db79c52d3183223c",
+          "verdict": "ELIGIBLE",
+          "rejectReasons": [],
+          "exposureTags": [
+            "ENGINE_OR_INVENTORY",
+            "HUMAN_REFERENCE_PRIOR"
+          ],
+          "exposures": {
+            "ENGINE_OR_INVENTORY": [
+              "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+              "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+              "eval/a99-closed-loop/reference-campaign.v1.json",
+              "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+              "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+              "eval/a99-dataset/document-inventory.v1.json",
+              "eval/harness-lift/corpus-map.v1.json",
+              "eval/harness-lift/r18-traces/DOC-0039.v1.json",
+              "eval/verification/verify-6c-artifact.v1.json",
+              "eval/verification/verify-6c-materialization.v1.json",
+              "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+              "handoff.md"
+            ],
+            "HUMAN_REFERENCE_PRIOR": [
+              "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+              "eval/a99-closed-loop/review/dev-manifest.v1.json",
+              "eval/manual-labels/m105b-cross-document-review-labels.v1.json",
+              "eval/manual-labels/m105b-cross-document-review-sample.v1.json"
+            ]
+          },
+          "maxDevelopmentShingleJaccard": {
+            "development": "029",
+            "jaccard": 0.2319
+          },
+          "family": "SEEN_FAMILY_IN_DEVELOPMENT:029"
+        }
+      ],
+      "chosen": "032"
+    },
+    {
+      "rejected": "043",
+      "stratum": "finance",
+      "reserveOrder": [
+        "044",
+        "048",
+        "041",
+        "055",
+        "050",
+        "052",
+        "042",
+        "046",
+        "047",
+        "045",
+        "053"
+      ],
+      "tried": [
+        {
+          "id": "044",
+          "stratum": "finance",
+          "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/044_IDA_Financial_Statements_June_2024.pdf",
+          "sourceSha256": "55dee9b16b5616109ba186bb0a4d83632e24d06d5a00beab80b82ca59b3b0d6b",
+          "verdict": "ELIGIBLE",
+          "rejectReasons": [],
+          "exposureTags": [
+            "ENGINE_OR_INVENTORY",
+            "HUMAN_REFERENCE_PRIOR"
+          ],
+          "exposures": {
+            "HUMAN_REFERENCE_PRIOR": [
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-044.semantic-freeze.v1.json",
+              "eval/a99-closed-loop/gold-current/documents/SRC-044.gold.v1.json",
+              "eval/a99-closed-loop/gold-current/occurrence-baseline-preflight.v1.json",
+              "eval/a99-closed-loop/gold-current/registry.v1.json",
+              "eval/a99-closed-loop/gold-history/SRC-044.gold.r1.json",
+              "eval/a99-closed-loop/gold/SRC-044.gold.json",
+              "eval/a99-closed-loop/policy-audit/p6t-e-challenge-source-search/strict-gold-multipart-source-inventory.v1.json",
+              "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+              "eval/a99-closed-loop/review/dev-manifest.v1.json"
+            ],
+            "ENGINE_OR_INVENTORY": [
+              "eval/a99-closed-loop/generic-audit-v1_2/SRC-044.evidence-profile.v1_2.json",
+              "eval/a99-closed-loop/generic-audit-v1_2/SRC-044.preregistration.v1_2.json",
+              "eval/a99-closed-loop/generic-audit-v1_2/SRC-044.proposals.v1_2.json",
+              "eval/a99-closed-loop/generic-audit-v1_2/SRC-044.reveal-pin.v1_2.json",
+              "eval/a99-closed-loop/pdf-source-determinism-v2/universe-hashes.v1.json",
+              "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+              "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+              "eval/a99-closed-loop/reference-campaign.v1.json",
+              "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+              "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+              "eval/a99-closed-loop/scaleup-real-harness-v1/SRC-044/pdf-structured-r1.v1.json",
+              "eval/a99-closed-loop/source-review-v1/SRC-044.authority-lineage.v1.json",
+              "eval/a99-closed-loop/source-review-v1/SRC-044.source-review.v1.json",
+              "eval/a99-dataset/document-inventory.v1.json",
+              "eval/harness-lift/corpus-map.v1.json",
+              "eval/harness-lift/r18-traces/DOC-0044.v1.json",
+              "eval/verification/verify-6c-artifact.v1.json",
+              "eval/verification/verify-6c-materialization.v1.json",
+              "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+              "tests/DocxHeaderExtractor.Tests/PdfSourceDeterminismLedgerProbe.cs",
+              "tests/DocxHeaderExtractor.Tests/SourcePdfCorpus.cs"
+            ]
+          },
+          "maxDevelopmentShingleJaccard": {
+            "development": "054",
+            "jaccard": 0.0841
+          },
+          "family": "SEEN_FAMILY_IN_DEVELOPMENT:054"
+        }
+      ],
+      "chosen": "044"
+    },
+    {
+      "rejected": "058",
+      "stratum": "textbook",
+      "reserveOrder": [
+        "064",
+        "069",
+        "059",
+        "066",
+        "063",
+        "070",
+        "061",
+        "057",
+        "065",
+        "062",
+        "068"
+      ],
+      "tried": [
+        {
+          "id": "064",
+          "stratum": "textbook",
+          "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/064_Machine_Learning_with_Neural_Networks.pdf",
+          "sourceSha256": "1488210d01f56e8a1fcc21e6a5bf2dbd0b4d84e2cac016a3cee02895f4f69053",
+          "verdict": "ELIGIBLE",
+          "rejectReasons": [],
+          "exposureTags": [
+            "ENGINE_OR_INVENTORY",
+            "HUMAN_REFERENCE_PRIOR"
+          ],
+          "exposures": {
+            "ENGINE_OR_INVENTORY": [
+              "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+              "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+              "eval/a99-closed-loop/reference-campaign.v1.json",
+              "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+              "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+              "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+              "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+              "eval/a99-dataset/document-inventory.v1.json",
+              "eval/harness-lift/corpus-map.v1.json",
+              "eval/harness-lift/r18-traces/DOC-0244.v1.json",
+              "eval/verification/verify-6c-artifact.v1.json",
+              "eval/verification/verify-6c-materialization.v1.json",
+              "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+              "handoff.md"
+            ],
+            "HUMAN_REFERENCE_PRIOR": [
+              "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0282.source.v1.json",
+              "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+              "eval/a99-closed-loop/review/dev-manifest.v1.json"
+            ]
+          },
+          "maxDevelopmentShingleJaccard": {
+            "development": "095",
+            "jaccard": 0.0001
+          },
+          "family": "UNSEEN_FAMILY"
+        }
+      ],
+      "chosen": "064"
+    },
+    {
+      "rejected": "074",
+      "stratum": "minutes",
+      "reserveOrder": [
+        "072",
+        "076",
+        "079",
+        "075",
+        "078",
+        "071"
+      ],
+      "tried": [
+        {
+          "id": "072",
+          "stratum": "minutes",
+          "sourceKey": "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf",
+          "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+          "verdict": "REJECTED",
+          "rejectReasons": [
+            "F1_FAMILY_EXPOSURE"
+          ],
+          "exposureTags": [
+            "ENGINE_OR_INVENTORY",
+            "F1_FAMILY_EXPOSURE",
+            "HUMAN_REFERENCE_PRIOR"
+          ],
+          "exposures": {
+            "ENGINE_OR_INVENTORY": [
+              "docs/accuracy/accuracy99-strict-cohort-preflight.md",
+              "eval/a99-closed-loop/cross-document-replication-preflight.v1.json",
+              "eval/a99-closed-loop/direct-semantic-context-ablation-preflight-v1/direct-semantic-context-ablation-preflight.v1.json",
+              "eval/a99-closed-loop/direct-semantic-context-ablation-score-v1/DOC-0252/direct-semantic-context-ablation-score.v1.json",
+              "eval/a99-closed-loop/direct-semantic-discrimination-probe-continuation-v1/DOC-0252/direct-semantic-probe-continuation-run.v1.json",
+              "eval/a99-closed-loop/direct-semantic-discrimination-probe-continuation-v1/DOC-0252/r3/PACK_005.continuation-capture.v1.json",
+              "eval/a99-closed-loop/direct-semantic-discrimination-probe-continuation-v1/DOC-0252/r3/PACK_006.continuation-capture.v1.json",
+              "eval/a99-closed-loop/direct-semantic-discrimination-probe-retry-v1/DOC-0252/direct-semantic-probe-retry-run.v1.json",
+              "eval/a99-closed-loop/direct-semantic-discrimination-probe-retry-v1/DOC-0252/r1/PACK_001.direct-semantic-probe-retry-capture.v1.json",
+              "eval/a99-closed-loop/direct-semantic-discrimination-probe-retry-v1/DOC-0252/r1/PACK_005.direct-semantic-probe-retry-capture.v1.json",
+              "eval/a99-closed-loop/direct-semantic-discrimination-probe-retry-v1/DOC-0252/r1/PACK_006.direct-semantic-probe-retry-capture.v1.json",
+              "eval/a99-closed-loop/direct-semantic-discrimination-probe-retry-v1/DOC-0252/r2/PACK_001.direct-semantic-probe-retry-capture.v1.json",
+              "eval/a99-closed-loop/direct-semantic-discrimination-probe-retry-v1/DOC-0252/r2/PACK_005.direct-semantic-probe-retry-capture.v1.json",
+              "eval/a99-closed-loop/direct-semantic-discrimination-probe-retry-v1/DOC-0252/r2/PACK_006.direct-semantic-probe-retry-capture.v1.json",
+              "eval/a99-closed-loop/direct-semantic-discrimination-probe-retry-v1/DOC-0252/r3/PACK_001.direct-semantic-probe-retry-capture.v1.json",
+              "eval/a99-closed-loop/direct-semantic-discrimination-probe-score-v1/DOC-0252/direct-semantic-probe-score.v1.json",
+              "eval/a99-closed-loop/direct-semantic-probe-v1/DOC-0252/direct-semantic-probe-run.v1.json",
+              "eval/a99-closed-loop/early-dev-campaign.v1.json",
+              "eval/a99-closed-loop/early-dev-reference-audit.v1.json",
+              "eval/a99-closed-loop/exp-masthead-e2-v2-experiment-v1/DOC-0252/exp-masthead-e2-v2-run.v1.json",
+              "eval/a99-closed-loop/exp-masthead-e2-v2-experiment-v1/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-4e66614dd43a.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/exp-masthead-e2-v2-experiment-v1/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/exp-masthead-e2-v2-experiment-v1/DOC-0252/r1/semantic-authority-capture-slot.v1.json",
+              "eval/a99-closed-loop/exp-masthead-e2-v2-experiment-v1/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-2de4dc0c6e33.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/exp-masthead-e2-v2-experiment-v1/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/exp-masthead-e2-v2-experiment-v1/DOC-0252/r2/semantic-authority-capture-slot.v1.json",
+              "eval/a99-closed-loop/exp-masthead-e2-v2-experiment-v1/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-190d033dbad0.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/exp-masthead-e2-v2-experiment-v1/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/exp-masthead-e2-v2-experiment-v1/DOC-0252/r3/semantic-authority-capture-slot.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-experiment-v1/DOC-0252/exp-masthead-metadata-run.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-experiment-v1/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-f3e4b824fa70.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-experiment-v1/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-experiment-v1/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-ba38b30588c6.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-experiment-v1/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-experiment-v1/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-20dbda715599.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-experiment-v1/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-v2-experiment-v1/DOC-0252/exp-masthead-metadata-v2-run.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-v2-experiment-v1/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-b887436439bb.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-v2-experiment-v1/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-v2-experiment-v1/DOC-0252/r1/semantic-authority-capture-slot.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-v2-experiment-v1/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-139770739a4f.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-v2-experiment-v1/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-v2-experiment-v1/DOC-0252/r2/semantic-authority-capture-slot.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-v2-experiment-v1/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-bb98972c12a3.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-v2-experiment-v1/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-v2-experiment-v1/DOC-0252/r3/semantic-authority-capture-slot.v1.json",
+              "eval/a99-closed-loop/exp-masthead-metadata-v2-preflight-v1/exp-masthead-metadata-v2-preflight.v1.json",
+              "eval/a99-closed-loop/haiku-blind-minimal-semantic-classification-v1/DOC-0252/haiku-blind-semantic-score.v1.json",
+              "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.freeze.json",
+              "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.PDF_SOURCE_FACTS_V2.freeze.json",
+              "eval/a99-closed-loop/hardcode-audit-v1/MODEL_VISIBLE_CONTRACT_V2.PDF_SOURCE_FACTS_V3.freeze.json",
+              "eval/a99-closed-loop/luna-internal-minimal-semantic-replay-v1/DOC-0252/luna-semantic-evidence.v1.json",
+              "eval/a99-closed-loop/luna-internal-minimal-semantic-replay-v1/DOC-0252/luna-semantic-score.v1.json",
+              "eval/a99-closed-loop/model-visible-provenance-v1/v2-model-visible-provenance.v1.json",
+              "eval/a99-closed-loop/occurrence-baseline-structured-v1/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-4f53cda18c2b.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/occurrence-baseline-structured-v1/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-4f53cda18c2b.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/occurrence-baseline-structured-v1/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-4f53cda18c2b.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/occurrence-baseline-structured-v1/run.v1.json",
+              "eval/a99-closed-loop/occurrence-baseline-v1/causal-forensic.v1.json",
+              "eval/a99-closed-loop/occurrence-baseline-v1/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-cb3c9af67a7f.proposal-4ed45c50c837.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/occurrence-baseline-v1/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-cb3c9af67a7f.proposal-892175640df5.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/occurrence-baseline-v1/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-cb3c9af67a7f.proposal-c3ad46bc5a1e.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/occurrence-baseline-v1/run.v1.json",
+              "eval/a99-closed-loop/pdf-canary-072/experiment-manifest.v1.json",
+              "eval/a99-closed-loop/pdf-canary-072/preflight-findings.v1.json",
+              "eval/a99-closed-loop/pdf-canary-072/preflight.v1.json",
+              "eval/a99-closed-loop/pdf-canary-072/source-universe-reconciliation.v1.json",
+              "eval/a99-closed-loop/pdf-canonical-source-v1/a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61.json",
+              "eval/a99-closed-loop/pdf-canonical-source-v1/replay-parity.v1.json",
+              "eval/a99-closed-loop/pdf-source-determinism-v2/universe-hashes.v1.json",
+              "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+              "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+              "eval/a99-closed-loop/physical-stage1-membership-only-retry-v1/DOC-0252/r1/stage1-membership-retry-transport-capture.v1.json",
+              "eval/a99-closed-loop/physical-stage1-membership-only-retry-v1/DOC-0252/r2/stage1-membership-retry-transport-capture.v1.json",
+              "eval/a99-closed-loop/physical-stage1-membership-only-retry-v1/DOC-0252/r3/stage1-membership-retry-transport-capture.v1.json",
+              "eval/a99-closed-loop/physical-stage1-membership-only-retry-v1/DOC-0252/stage1-membership-retry-run.v1.json",
+              "eval/a99-closed-loop/production-acceptance/authority-compatibility.v1.json",
+              "eval/a99-closed-loop/reference-campaign.v1.json",
+              "eval/a99-closed-loop/representation/doc-0252-segment-evidence-authority.v1.json",
+              "eval/a99-closed-loop/representation/doc-0252-source-occurrence-boundary.v1.json",
+              "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+              "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/DOC-0165/occurrence-materialization.v1.json",
+              "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+              "eval/a99-closed-loop/second-model-minimal-replay-preflight-v1/second-model-minimal-replay-preflight.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/experiment-manifest.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/postflight-audit.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/preflight.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-cb3c9af67a7f.proposal-0da7345e2d99.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-cb3c9af67a7f.proposal-19cc50359418.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-cb3c9af67a7f.proposal-a3e7dc1ba574.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/repeat-results.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-baseline-v1-runtime-authority/DOC-0252/source-universe-runtime.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-successor-v1-runtime-authority/DOC-0252/adoption-result.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-successor-v1-runtime-authority/DOC-0252/bundle-census.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-successor-v1-runtime-authority/DOC-0252/experiment-manifest.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-successor-v1-runtime-authority/DOC-0252/i6-preflight.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-successor-v1-runtime-authority/DOC-0252/offline-score.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-successor-v1-runtime-authority/DOC-0252/offline-score.v2.json",
+              "eval/a99-closed-loop/semantic-text-replay-successor-v1-runtime-authority/DOC-0252/role-authority-audit.v1.json",
+              "eval/a99-closed-loop/semantic-text-replay-successor-v1-runtime-authority/DOC-0252/strict-omission-causal-audit.v1.json",
+              "eval/a99-closed-loop/stage1-membership-experiment-v1/DOC-0252/stage1-membership-run.v1.json",
+              "eval/a99-closed-loop/stage1-membership-preflight-v1/stage1-membership-preflight.v1.json",
+              "eval/a99-closed-loop/strict-cohort-preflight.v1.json",
+              "eval/a99-closed-loop/strict-cohort-reference-reconciliation.v3.json",
+              "eval/a99-closed-loop/strict-cohort-reference-reconciliation.v4.json",
+              "eval/a99-closed-loop/strict-review-queue.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v1/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-8460aef056bf.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v1/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-8460aef056bf.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v1/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-426e3e1c8616.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v1/DOC-0252/targeted-packing-experiment-run.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v1/DOC-0252/targeted-packing-score-and-causal-compare.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-683d4272bee0.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-3e8f42d0cd80.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-3e8f42d0cd80.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252/targeted-packing-rerun-v2-score.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252/targeted-packing-rerun-v2-successor-score.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-experiment-v2/DOC-0252/targeted-packing-rerun-v2-summary.v1.json",
+              "eval/a99-closed-loop/structured-context-packing-preflight-v1/targeted-packing-provider-plan.v1.json",
+              "eval/a99-closed-loop/structured-v2-target-baseline-score-v1/structured-v2-baseline-fp-identity-audit.v1.json",
+              "eval/a99-closed-loop/structured-v2-target-baseline-v1/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-d9a629d14f96.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/structured-v2-target-baseline-v1/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-fce8f5d2f4a1.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/structured-v2-target-baseline-v1/DOC-0252/r1/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/structured-v2-target-baseline-v1/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-4656ad1208c1.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/structured-v2-target-baseline-v1/DOC-0252/r2/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/structured-v2-target-baseline-v1/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.proposal-38350cc5e106.contract-21687e5a78d5.semantic-authority-replay.v1.json",
+              "eval/a99-closed-loop/structured-v2-target-baseline-v1/DOC-0252/r3/072_ICP_TAG_Minutes_Mar_2025.source-a005f25e3bb9.universe-2a953bf785ed.transport-capture.v1.json",
+              "eval/a99-closed-loop/structured-v2-target-baseline-v1/DOC-0252/structured-v2-target-baseline-capture-incident.v1.json",
+              "eval/a99-closed-loop/structured-v2-target-baseline-v1/DOC-0252/structured-v2-target-baseline-run.v1.json",
+              "eval/a99-dataset/document-inventory.v1.json",
+              "eval/harness-lift/corpus-map.v1.json",
+              "eval/harness-lift/current-measurement-manifest.v1.json",
+              "eval/harness-lift/current-measurement-manifest.v2.json",
+              "eval/harness-lift/r18-traces/DOC-0064.v1.json",
+              "eval/verification/verify-6c-artifact.v1.json",
+              "eval/verification/verify-6c-materialization.v1.json",
+              "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+              "handoff.md",
+              "src/DocxHeaderExtractor.V5Qualification/P6TEChallengeCanary.cs",
+              "src/DocxHeaderExtractor.V5Qualification/P6TG2AFullPackPopulationCanary.cs",
+              "src/DocxHeaderExtractor.V5Qualification/P6TH2CEndPointerCanary.cs",
+              "src/DocxHeaderExtractor.V5Qualification/P6TH3FullPopulationH2Canary.cs",
+              "tests/DocxHeaderExtractor.Tests/Assets/DOC-0252.frozen-responses.json",
+              "tests/DocxHeaderExtractor.Tests/Doc0252GoldCorrectionItem505430bbTests.cs",
+              "tests/DocxHeaderExtractor.Tests/MultipartOutlineGroundingTests.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfCanonicalLaneTests.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfGoldAuthorityTests.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfGoldOccurrenceAuthority.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfGoldReviewDecisionAuthorityTests.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfGoldReviewPackTests.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfLiveExecutionLifecycleTests.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfProductionProviderPolicyTests.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfProductReachabilityTests.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfReadOnlyCorrespondenceBuilderTests.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfSourceCatalogIdentityTests.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfSourceDeterminismLedgerProbe.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfSourceTextProjectionTests.cs",
+              "tests/DocxHeaderExtractor.Tests/ResidualSemanticMechanismAuditTests.cs",
+              "tests/DocxHeaderExtractor.Tests/SemanticSourcePartCanonicalizerTests.cs",
+              "tests/DocxHeaderExtractor.Tests/SourcePdfCorpus.cs",
+              "tests/DocxHeaderExtractor.Tests/StructuredGoldTextBoundaryAuditTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH2CCleanBoundarySeparabilityAuditTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH2CCleanPairedGoldAuditTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH2CEndPointerPreflightTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH2CEvidencePairedGoldScoreTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH2CMixedPromptGoldAuditTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH2CMixedPromptResidualAuditTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH3FullPopulationH2PreflightTests.cs",
+              "tests/DocxHeaderExtractor.Tests/WebPipelineV2ApiTests.cs",
+              "TODO.md"
+            ],
+            "F1_FAMILY_EXPOSURE": [
+              "artifacts/v5-p6t-function-membership/p6te-doc0252-e-challenge/f1-request-manifest.v1.json",
+              "artifacts/v5-p6t-function-membership/p6te-doc0252-e-challenge/f1.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6te-e-challenge-audit/false-anchor-inside-multipart-audit.v1.json",
+              "artifacts/v5-p6t-function-membership/p6tf1-full-p05-preflight/f1-full-p05-preflight.v1.json",
+              "artifacts/v5-p6t-function-membership/p6tg2a-full-pack-population-canary-20261005/DOC-0252.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6tg2a-full-pack-population-preflight/g2a-full-pack-preflight.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-clean-boundary-separability-audit/h2c-clean-boundary-separability-sanitized.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-clean-paired-gold-audit/h2c-clean-v1-v2-paired-gold-audit.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-clean-v1-rerun-capture-20261005/raw/sanitized-capture-ledger.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-end-pointer-capture-20261005/sanitized-capture-ledger.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-end-pointer-preflight-v2/h2c-exact-end-pointer-preflight.v2.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-end-pointer-preflight/h2c-exact-end-pointer-preflight.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-evidence-complete-preflight/execution-manifest.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-evidence-complete-preflight/h2c-evidence-complete-preflight.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-evidence-error-taxonomy/h2c-evidence-error-taxonomy.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-evidence-paired-gold-score/h2c-evidence-paired-gold-score.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-mixed-prompt-gold-audit/h2c-mixed-prompt-end-pointer-gold-audit.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-mixed-prompt-residual-audit/h2c-mixed-prompt-overextent-residual-audit.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-gold-audit/g2a-h2-canonical-gold-anchor-scoped-audit.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O30.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O42.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O43.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O44.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O47.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O51.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O59.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O66.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O70.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O71.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O92.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0252_O95.raw-capture.v1.json"
+            ],
+            "HUMAN_REFERENCE_PRIOR": [
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/bindings/DOC-0252.exact-bindings.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/freeze-registry.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/inventory.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/occurrence/DOC-0252.occurrence-gold.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/semantic/DOC-0252.semantic-gold.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/freeze-registry.v4.checked.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/inventory.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/semantic/DOC-0252.semantic-freeze.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.occurrence-gold.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.structured-source-parts.occurrence-gold.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.structured-source-parts.pre-agenda-identity-correction.occurrence-gold.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.structured-source-parts.pre-item505430bb-document-label-correction.occurrence-gold.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0252.semantic-freeze.v1.json",
+              "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json",
+              "eval/a99-closed-loop/gold-current/documents/DOC-0252.legacy-occurrence.gold.v1.json",
+              "eval/a99-closed-loop/gold-current/documents/DOC-0252.pre-agenda-identity-correction.gold.v1.json",
+              "eval/a99-closed-loop/gold-current/documents/DOC-0252.pre-item505430bb-document-label-correction.gold.v1.json",
+              "eval/a99-closed-loop/gold-current/documents/DOC-0252.pre-item505430bb-document-label-correction.semantic-freeze.v1.json",
+              "eval/a99-closed-loop/gold-current/documents/DOC-0252.structured-boundary-predecessor.gold.v1.json",
+              "eval/a99-closed-loop/gold-current/occurrence-baseline-preflight.v1.json",
+              "eval/a99-closed-loop/gold-current/registry.v1.json",
+              "eval/a99-closed-loop/gold/DOC-0252.gold.json",
+              "eval/a99-closed-loop/pdf-gold-doc0252/README.md",
+              "eval/a99-closed-loop/pdf-gold-doc0252/review-by-page.v1.json",
+              "eval/a99-closed-loop/pdf-gold-doc0252/review-by-parser-context.v1.json",
+              "eval/a99-closed-loop/pdf-gold-doc0252/review-decisions.v1.json",
+              "eval/a99-closed-loop/pdf-gold-doc0252/review-duplicate-text-index.v1.json",
+              "eval/a99-closed-loop/pdf-gold-doc0252/source-universe.v1.json",
+              "eval/a99-closed-loop/policy-audit/p6t-e-challenge-source-search/strict-gold-multipart-source-inventory.v1.json",
+              "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+              "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+              "eval/a99-closed-loop/research-r2/existing-gold-audit/reusable-gold-cohort.v1.json",
+              "eval/a99-closed-loop/review/dev-manifest.v1.json",
+              "eval/a99-closed-loop/strict-dev-gold-cohort.v1.json",
+              "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0252.occurrence-gold-v1.json",
+              "eval/a99-closed-loop/strict-gold-v3/DOC-0252.strict-gold-v3.json",
+              "eval/a99-closed-loop/strict-gold-v4/DOC-0252.strict-gold-v4.json",
+              "eval/harness-lift/reference-coverage.v1.json",
+              "eval/harness-lift/reference-coverage.v2.json",
+              "eval/harness-lift/reference-occurrence-bridge.v1.json"
+            ]
+          },
+          "maxDevelopmentShingleJaccard": {
+            "development": "080",
+            "jaccard": 0.0048
+          },
+          "family": "SEEN_FAMILY_IN_DEVELOPMENT:080"
+        },
+        {
+          "id": "076",
+          "stratum": "minutes",
+          "sourceKey": "todo10_8/heading_corpus_100/05_bien_ban_hop/076_ICP_IACG08_Minutes_2023.pdf",
+          "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+          "verdict": "REJECTED",
+          "rejectReasons": [
+            "F1_FAMILY_EXPOSURE"
+          ],
+          "exposureTags": [
+            "ENGINE_OR_INVENTORY",
+            "F1_FAMILY_EXPOSURE",
+            "HUMAN_REFERENCE_PRIOR"
+          ],
+          "exposures": {
+            "ENGINE_OR_INVENTORY": [
+              "docs/accuracy/accuracy99-strict-cohort-preflight.md",
+              "docs/accuracy/hierarchy-accuracy-audit.md",
+              "eval/a99-closed-loop/cross-document-replication-preflight.v1.json",
+              "eval/a99-closed-loop/docx-i8-doc0256/experiment-manifest.v1.json",
+              "eval/a99-closed-loop/early-dev-campaign.v1.json",
+              "eval/a99-closed-loop/early-dev-reference-audit.v1.json",
+              "eval/a99-closed-loop/pdf-canonical-source-v1/7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b.json",
+              "eval/a99-closed-loop/pdf-canonical-source-v1/replay-parity.v1.json",
+              "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+              "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+              "eval/a99-closed-loop/production-acceptance/authority-compatibility.v1.json",
+              "eval/a99-closed-loop/reference-campaign.v1.json",
+              "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+              "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+              "eval/a99-closed-loop/semantic-veto-removal-v1/replay-freeze.v1.json",
+              "eval/a99-closed-loop/strict-cohort-preflight.v1.json",
+              "eval/a99-closed-loop/strict-cohort-reference-reconciliation.v3.json",
+              "eval/a99-closed-loop/strict-cohort-reference-reconciliation.v4.json",
+              "eval/a99-closed-loop/strict-review-queue.v1.json",
+              "eval/a99-dataset/document-inventory.v1.json",
+              "eval/accuracy/hierarchy-accuracy-audit.v1.json",
+              "eval/architecture/legacy-reachability.v1.json",
+              "eval/harness-lift/corpus-map.v1.json",
+              "eval/harness-lift/current-measurement-manifest.v1.json",
+              "eval/harness-lift/current-measurement-manifest.v2.json",
+              "eval/harness-lift/r18-traces/DOC-0068.v1.json",
+              "eval/integration/round2-canonical-full-suite.v1.json",
+              "eval/verification/canonical-integrated-baseline.v1.json",
+              "eval/verification/canonical-integrated-full-suite.v1.json",
+              "eval/verification/current-full-suite-failure-reconciliation.v1.json",
+              "eval/verification/full-suite-failure-ledger.v1.json",
+              "eval/verification/full-suite-failure-packet.baseline.v1.json",
+              "eval/verification/full-suite-failure-packet.current.v1.json",
+              "eval/verification/post-arch4k-integrated-baseline.v1.json",
+              "eval/verification/post-mcp-full-suite-delta.v1.json",
+              "eval/verification/post-rfc-full-suite.v1.json",
+              "eval/verification/verify-6c-artifact.v1.json",
+              "eval/verification/verify-6c-materialization.v1.json",
+              "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+              "handoff.md",
+              "src/DocxHeaderExtractor.V5Qualification/P6TEChallengeCanary.cs",
+              "src/DocxHeaderExtractor.V5Qualification/P6TG2AFullPackPopulationCanary.cs",
+              "src/DocxHeaderExtractor.V5Qualification/P6TH2CEndPointerCanary.cs",
+              "src/DocxHeaderExtractor.V5Qualification/P6TH3FullPopulationH2Canary.cs",
+              "tests/DocxHeaderExtractor.Tests/Assets/DOC-0256.frozen-responses.json",
+              "tests/DocxHeaderExtractor.Tests/Doc0256GoldItemisationTests.cs",
+              "tests/DocxHeaderExtractor.Tests/FrozenReplayDoc0256Tests.cs",
+              "tests/DocxHeaderExtractor.Tests/MalformedReplyContainmentTests.cs",
+              "tests/DocxHeaderExtractor.Tests/PdfReadOnlyCorrespondenceBuilderTests.cs",
+              "tests/DocxHeaderExtractor.Tests/SourcePdfCorpus.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH2CCleanBoundarySeparabilityAuditTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH2CCleanPairedGoldAuditTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH2CEndPointerPreflightTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH2CEvidencePairedGoldScoreTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH2CMixedPromptGoldAuditTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH2CMixedPromptResidualAuditTests.cs",
+              "tests/DocxHeaderExtractor.Tests/V5P6TH3FullPopulationH2PreflightTests.cs",
+              "TODO.md"
+            ],
+            "F1_FAMILY_EXPOSURE": [
+              "artifacts/v5-p6t-function-membership/p6te-doc0256-e-challenge/f1-request-manifest.v1.json",
+              "artifacts/v5-p6t-function-membership/p6te-doc0256-e-challenge/f1.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6te-e-challenge-audit/false-anchor-inside-multipart-audit.v1.json",
+              "artifacts/v5-p6t-function-membership/p6tf1-full-p05-preflight/f1-full-p05-preflight.v1.json",
+              "artifacts/v5-p6t-function-membership/p6tg2a-full-pack-population-canary-20261005/DOC-0256.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6tg2a-full-pack-population-preflight/g2a-full-pack-preflight.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-clean-boundary-separability-audit/h2c-clean-boundary-separability-sanitized.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-clean-paired-gold-audit/h2c-clean-v1-v2-paired-gold-audit.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-clean-v1-rerun-capture-20261005/raw/sanitized-capture-ledger.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-end-pointer-capture-20261005/sanitized-capture-ledger.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-end-pointer-preflight-v2/h2c-exact-end-pointer-preflight.v2.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-end-pointer-preflight/h2c-exact-end-pointer-preflight.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-evidence-complete-preflight/execution-manifest.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-evidence-complete-preflight/h2c-evidence-complete-preflight.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-evidence-error-taxonomy/h2c-evidence-error-taxonomy.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-evidence-paired-gold-score/h2c-evidence-paired-gold-score.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-mixed-prompt-gold-audit/h2c-mixed-prompt-end-pointer-gold-audit.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-mixed-prompt-residual-audit/h2c-mixed-prompt-overextent-residual-audit.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-typography-only-screen-gold-score/h2c-typography-only-screen-gold-score.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-typography-only-screen-preflight/execution-manifest.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th2c-typography-only-screen-preflight/typography-only-screen-preflight.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-gold-audit/g2a-h2-canonical-gold-anchor-scoped-audit.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O1.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O2.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O23.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O24.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O48.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O5.raw-capture.v1.json",
+              "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/DOC-0256_O77.raw-capture.v1.json"
+            ],
+            "HUMAN_REFERENCE_PRIOR": [
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/bindings/DOC-0256.exact-bindings.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/freeze-registry.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/inventory.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/occurrence/DOC-0256.occurrence-gold.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/semantic/DOC-0256.semantic-gold.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/freeze-registry.v4.checked.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/inventory.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/semantic/DOC-0256.semantic-freeze.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0256.structured-source-parts.occurrence-gold.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0256.semantic-freeze.v1.json",
+              "eval/a99-closed-loop/gold-adjudication-v3/DOC-0256/adjudication-packet.v1.json",
+              "eval/a99-closed-loop/gold-adjudication-v3/DOC-0256/adjudication-review.md",
+              "eval/a99-closed-loop/gold-current/documents/DOC-0256.gold.v1.json",
+              "eval/a99-closed-loop/gold-current/occurrence-baseline-preflight.v1.json",
+              "eval/a99-closed-loop/gold-current/registry.v1.json",
+              "eval/a99-closed-loop/gold/DOC-0256.gold.json",
+              "eval/a99-closed-loop/policy-audit/p6t-e-challenge-source-search/strict-gold-multipart-source-inventory.v1.json",
+              "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+              "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+              "eval/a99-closed-loop/review/dev-manifest.v1.json",
+              "eval/a99-closed-loop/semantic-veto-removal-v1/gold-coordinate-adjudication.v1.json",
+              "eval/a99-closed-loop/strict-dev-gold-cohort.v1.json",
+              "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0256.occurrence-gold-v1.json",
+              "eval/a99-closed-loop/strict-gold-v3/DOC-0256.strict-gold-v3.json",
+              "eval/a99-closed-loop/strict-gold-v4/DOC-0256.strict-gold-v4.json",
+              "eval/harness-lift/reference-coverage.v1.json",
+              "eval/harness-lift/reference-coverage.v2.json",
+              "eval/harness-lift/reference-occurrence-bridge.v1.json"
+            ]
+          },
+          "maxDevelopmentShingleJaccard": {
+            "development": "080",
+            "jaccard": 0.0178
+          },
+          "family": "SEEN_FAMILY_IN_DEVELOPMENT:080"
+        },
+        {
+          "id": "079",
+          "stratum": "minutes",
+          "sourceKey": "todo10_8/heading_corpus_100/05_bien_ban_hop/079_ICP_TAG_Minutes_Apr_2024.pdf",
+          "sourceSha256": "68b7a89f3955e52e047f0741bbfc0d9581d508a74eff3ec40e08bbab69248d00",
+          "verdict": "ELIGIBLE",
+          "rejectReasons": [],
+          "exposureTags": [
+            "ENGINE_OR_INVENTORY",
+            "HUMAN_REFERENCE_PRIOR"
+          ],
+          "exposures": {
+            "HUMAN_REFERENCE_PRIOR": [
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/bindings/DOC-0259.exact-bindings.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/freeze-registry.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/inventory.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/occurrence/DOC-0259.occurrence-gold.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/semantic/DOC-0259.semantic-gold.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/freeze-registry.v4.checked.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/inventory.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/semantic/DOC-0259.semantic-freeze.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+              "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0259.semantic-freeze.v1.json",
+              "eval/a99-closed-loop/gold-current/documents/DOC-0259.gold.v1.json",
+              "eval/a99-closed-loop/gold-current/occurrence-baseline-preflight.v1.json",
+              "eval/a99-closed-loop/gold/DOC-0259.gold.json",
+              "eval/a99-closed-loop/research-r2/existing-gold-audit/decision.v1.json",
+              "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+              "eval/a99-closed-loop/research-r2/existing-gold-audit/reusable-gold-cohort.v1.json",
+              "eval/a99-closed-loop/review/dev-manifest.v1.json"
+            ],
+            "ENGINE_OR_INVENTORY": [
+              "eval/a99-closed-loop/early-dev-campaign.v1.json",
+              "eval/a99-closed-loop/early-dev-reference-audit.v1.json",
+              "eval/a99-closed-loop/generated-docx-v2/DOC-0259.conversion-manifest.v1.json",
+              "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+              "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+              "eval/a99-closed-loop/pilot-real-harness-v1/DOC-0259/docx-r1.v1.json",
+              "eval/a99-closed-loop/pilot-real-harness-v1/DOC-0259/docx-r2.v1.json",
+              "eval/a99-closed-loop/pilot-real-harness-v1/DOC-0259/docx-r3.v1.json",
+              "eval/a99-closed-loop/reference-campaign.v1.json",
+              "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+              "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+              "eval/a99-dataset/document-inventory.v1.json",
+              "eval/harness-lift/corpus-map.v1.json",
+              "eval/harness-lift/r18-traces/DOC-0071.v1.json",
+              "eval/verification/verify-6c-artifact.v1.json",
+              "eval/verification/verify-6c-materialization.v1.json",
+              "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+              "tests/DocxHeaderExtractor.Tests/PilotGoldItemisationTests.cs",
+              "tests/DocxHeaderExtractor.Tests/PilotSourceRegenerationTests.cs"
+            ]
+          },
+          "maxDevelopmentShingleJaccard": {
+            "development": "080",
+            "jaccard": 0.0074
+          },
+          "family": "SEEN_FAMILY_IN_DEVELOPMENT:080"
+        }
+      ],
+      "chosen": "079"
+    }
+  ],
+  "finalCohort": [
+    {
+      "id": "002",
+      "stratum": "legal",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "006",
+      "stratum": "legal",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "009",
+      "stratum": "legal",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "015",
+      "stratum": "legal",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "017",
+      "stratum": "legal",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "028",
+      "stratum": "procurement",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "034",
+      "stratum": "procurement",
+      "origin": "RESERVE_REPLACEMENT_FOR_030"
+    },
+    {
+      "id": "032",
+      "stratum": "procurement",
+      "origin": "RESERVE_REPLACEMENT_FOR_035"
+    },
+    {
+      "id": "044",
+      "stratum": "finance",
+      "origin": "RESERVE_REPLACEMENT_FOR_043"
+    },
+    {
+      "id": "049",
+      "stratum": "finance",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "051",
+      "stratum": "finance",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "056",
+      "stratum": "textbook",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "064",
+      "stratum": "textbook",
+      "origin": "RESERVE_REPLACEMENT_FOR_058"
+    },
+    {
+      "id": "060",
+      "stratum": "textbook",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "067",
+      "stratum": "textbook",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "073",
+      "stratum": "minutes",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "079",
+      "stratum": "minutes",
+      "origin": "RESERVE_REPLACEMENT_FOR_074"
+    },
+    {
+      "id": "077",
+      "stratum": "minutes",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "083",
+      "stratum": "translation",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "087",
+      "stratum": "translation",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "088",
+      "stratum": "translation",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "090",
+      "stratum": "translation",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "093",
+      "stratum": "rfc",
+      "origin": "ISSUE_6_CANDIDATE"
+    },
+    {
+      "id": "094",
+      "stratum": "rfc",
+      "origin": "ISSUE_6_CANDIDATE"
+    }
+  ],
+  "finalCount": 24,
+  "external25": {
+    "status": "NOT_MET_PENDING_INDEPENDENT_ADMINISTRATIVE_PDF",
+    "note": "No independent administrative letter/invitation is available; not imputed from the exposed Giấy mời."
+  },
+  "providerCalls": 0,
+  "goldRead": false,
+  "modelPredictionsRead": false
+}

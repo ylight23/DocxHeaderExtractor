@@ -1,0 +1,909 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_DRAFT_V1",
+  "status": "DRAFT_REVIEWER_A_NOT_APPROVED",
+  "id": "006",
+  "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/006_Luat_Dat_dai_31-2024-QH15.pdf",
+  "sourceSha256": "2558044082ee768192a311aee548eb9fae4daada546013aa5181eb91c8842637",
+  "sourceAliasUniverseSha256": "c62ab3dce54393802fc62a72403ff5d51ab23618449731983de17fc4a92b5c9c",
+  "reviewBundleSha256": "6c90a7e533893b5bfc37b2bac5bb5a2148b06212611537c332bb4c5a6ceabdf0",
+  "reviewerA": "Claude (orchestrator), from parser text and layout only; PDF pages not rendered; independent of any provider prediction",
+  "visualEvidence": "NOT_RENDERED_IN_DRAFT_REVIEWER_TO_CONFIRM_AGAINST_PDF",
+  "notes": [],
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "CÔNG BÁO/Số 363 + 364/Ngày 01-3-2024 3",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Official Gazette running header \"CÔNG BÁO/Số .../Ngày ... 3\" (page furniture)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Issuer QUỐC HỘI merged with national name; letterhead",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Độc lập - Tự do - Hạnh phúc",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "National motto",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Luật số: 3 1/2024/QH15",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Law number",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "LUẬT",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Document type title LUẬT (bold 14, centred)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "ĐẤT ĐAI",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Document title ĐẤT ĐAI (bold 14, centred under LUẬT)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Căn cứHiến pháp nước Cộng hòa xã hội chủ nghĩa Việt Nam;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Quốc hội ban hành Luật Đất đai.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Enactment formula \"Quốc hội ban hành Luật Đất đai.\" (prose, not a heading)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Chương I",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Chapter label \"Chương I\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "QUY ĐỊNH CHUNG",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Chapter title QUY ĐỊNH CHUNG",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Điều 1. Phạm vi điều chỉnh",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Article heading \"Điều 1. Phạm vi điều chỉnh\" (bold)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Luật này quy định về chế độ sở hữu đất đai, quyền hạn và trách nhiệm của",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Nhà nước đại diện chủ sở hữu toàn dân về đất đai và thống nhất quản lý về đất đai,",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "chế độ quản lý và sử dụng đất đai, quyền và nghĩa vụ của công dân, người sử dụng",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "đất đối với đất đai thuộc lãnh thổ của nước Cộng hòa xã hội chủ nghĩa Việt Nam.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Điều 2. Đối tượng áp dụng",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Article heading \"Điều 2. Đối tượng áp dụng\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "1 . Cơ quan nhà nước thực hiện quyền hạn và trách nhiệm đại diện chủ sở hữu",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "toàn dân về đất đai, thực hiện nhiệm vụ thống nhất quản lý nhà nước về đất đai.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "2. Người sử dụng đất.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "3. Các đối tượng khác có liên quan đến việc quản lý, sử dụng đất đai.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Điều 3. Giải thích từ ngữ",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Article heading \"Điều 3. Giải thích từ ngữ\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Trong Luật này, các từ ngữ dưới đây được hiểu như sau:",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "1 . Bản đồ địa chính là bản đồ thể hiện các thửa đất và các đối tượng địa lý có",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "liên quan, lập theo đơn vị hành chính cấp xã hoặc theo đơn vị hành chính cấp",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "huyện nơi không thành lập đơn vị hành chính cấp xã, được cơ quan nhà nước có",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "thẩm quyền xác nhận.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "2. Bản đồ hiện trạng sử dụng đất là bản đồ thể hiện sự phân bố các loại đất tại",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "một thời điểm xác định, được lập theo từng đơn vị hành chính các cấp, theo từng",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "vùng kinh tế - xã hội.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1353:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "CÔNG BÁO/Số 363 + 364/Ngày 01-3-2024 47",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Official Gazette running header (page furniture)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1354:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4. Ủy ban nhân dân cấp xã có trách nhiệm quản lý diện tích đất thu hồi theo",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1355:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "quy định tại khoản 1 Điều này.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1356:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Chương IV",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Chapter label \"Chương IV\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1357:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ĐỊA GIỚI ĐƠN VỊ HÀNH CHÍNH, ĐIỀU TRA CƠ BẢN VỀ ĐẤT ĐAI",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Chapter title (bold caps)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1358:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Mục 1",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Section label \"Mục 1\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1359:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ĐỊA GIỚI ĐƠN VỊ HÀNH CHÍNH, BẢN ĐỒ ĐỊA CHÍNH",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Section title (bold caps)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1360:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Điều 49. Địa giới đơn vị hành chính",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Article heading \"Điều 49. Địa giới đơn vị hành chính\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1361:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1 . Địa giới đơn vị hành chính được lập theo đơn vị hành chính cấp xã, cấp",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1362:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "huyện, cấp tỉnh. Hồ sơ địa giới đơn vị hành chính thể hiện thông tin về việc thành",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1363:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "lập, nhập, chia, điều chỉnh địa giới đơn vị hành chính và các mốc địa giới, đường",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1364:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "địa giới của đơn vị hành chính đó.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1365:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. Bộ Nội vụ hướng dẫn Ủy ban nhân dân cấp tỉnh có liên quan xác định địa",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1366:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "giới đơn vị hành chính cấp tỉnh; Ủy ban nhân dân cấp trên trực tiếp chỉ đạo, hướng",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1367:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "dẫn Ủy ban nhân dân cấp dưới có liên quan xác định địa giới đơn vị hành chính",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1368:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "trên thực địa và lập hồ sơ về địa giới đơn vị hành chính trong phạm vi địa phương.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1369:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3. Phạm vi quản lý đất đai trên đất liền được xác định theo đường địa giới đơn",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1370:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "vị hành chính của từng đơn vị hành chính theo quy định của pháp luật.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1371:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4. Trường hợp phạm vi quản lý đất đai cấp tỉnh chưa xác định được do",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1372:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "chưa xác định được địa giới đơn vị hành chính thì Bộ Nội vụ chủ trì phối hợp",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1373:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "với Bộ Tài nguyên và Môi trường và các địa phương có liên quan lập hồ sơ",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1374:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "trình Chính phủ.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1375:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5. Trường hợp phạm vi quản lý đất đai cấp huyện, cấp xã chưa xác định được",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1376:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "do chưa xác định được địa giới đơn vị hành chính cấp huyện, cấp xã thì Ủy ban",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1377:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "nhân dân cấp trên trực tiếp chỉ đạo Ủy ban nhân dân cấp dưới có liên quan phối",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1378:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "hợp giải quyết; trong thời gian chưa có quyết định về xác định địa giới đơn vị hành",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1379:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "chính cấp huyện, cấp xã thì Ủy ban nhân dân cấp trên trực tiếp thực hiện các nội",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1380:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "dung quản lý nhà nước về đất đai đối với khu vực chưa thống nhất. Trường hợp",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1381:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "không thống nhất được phương án giải quyết thì Ủy ban nhân dân cấp tỉnh lập hồ",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1382:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "sơ trình Chính phủ.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1714:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "CÔNG BÁO/Số 363 + 364/Ngày 01-3-2024 59",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Official Gazette running header (page furniture)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1715:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c) Xác định chỉ tiêu sử dụng đất quy định tại điểm b khoản này đến từng đơn",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1716:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "vị hành chính cấp huyện;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1717:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d) Xác định ranh giới, vị trí, diện tích khu vực lấn biển để sử dụng vào mục",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1718:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "đích nông nghiệp, phi nông nghiệp;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1719:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "đ) Khoanh vùng các khu vực sử dụng đất cần quản lýnghiêm ngặt, gồm: đất trồng",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1720:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "lúa, đất rừng đặc dụng, đất rừng phòng hộ, đất rừng sản xuất là rừng tự nhiên;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1721:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "e) Phân kỳ quy hoạch sử dụng cho từng kỳ kế hoạch 05 năm theo các nội dung",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1722:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "quy định tại các điểm b, c, d và đ khoản này;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1723:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "g) Giải pháp, nguồn lực thực hiện quy hoạch sử dụng đất.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1724:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3. Lập bản đồ quy hoạch sử dụng đất cấp tỉnh; xây dựng và cập nhật dữ liệu",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1725:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "quy hoạch sử dụng đất cấp tỉnh vào cơ sở dữ liệu quốc gia về đất đai.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1726:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4. Các tỉnh không phải là thành phố trực thuộc Trung ương không phải lập kế",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1727:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "hoạch sử dụng đất cấp tỉnh nhưng phải phân kỳ quy hoạch sử dụng đất cho từng kỳ",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1728:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "kế hoạch 05 năm theo quy định tại điểm e khoản 2 Điều này.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1729:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5. Thành phố trực thuộc Trung ương đã có quy hoạch chung được phê duyệt",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1730:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "theo quy định của pháp luật về quy hoạch đô thị thì không phải lập quy hoạch sử dụng",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1731:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "đất cấp tỉnh mà căn cứ quy hoạch chung để lập kếhoạch sử dụng đất cấp tỉnh.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1732:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Trường hợp quy hoạch chung được phê duyệt sau khi phê duyệt quy hoạch sử",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1733:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "dụng đất cấp tỉnh mà làm thay đổi chỉ tiêu sử dụng đất trong quy hoạch sử dụng",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1734:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "đất cấp tỉnh thì không phải thực hiện điều chỉnh quy hoạch sử dụng đất cấp tỉnh mà",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1735:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "căn cứ quy hoạch chung để lập kế hoạch sử dụng đất cấp tỉnh.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1736:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "6. Chính phủ quy định chi tiết Điều này.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1737:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Điều 66. Quy hoạch sử dụng đất cấp huyện",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Article heading \"Điều 66. Quy hoạch sử dụng đất cấp huyện\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1738:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1 . Căn cứ lập quy hoạch sử dụng đất cấp huyện bao gồm:",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1739:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a) Quy hoạch tỉnh, quy hoạch sử dụng đất cấp tỉnh; quy hoạch đô thị của thành",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1740:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "phố trực thuộc Trung ương đối với trường hợp không lập quy hoạch sử dụng đất",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1741:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "cấp tỉnh;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1742:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b) Các quy hoạch có tính chất kỹ thuật, chuyên ngành;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1743:S0",
+      "page": 57,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c) Kế hoạch phát triển kinh tế - xã hội cấp huyện;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    }
+  ],
+  "counts": {
+    "OTHER": 76,
+    "ESTABLISHES_STRUCTURE": 13
+  },
+  "flagged": 7
+}

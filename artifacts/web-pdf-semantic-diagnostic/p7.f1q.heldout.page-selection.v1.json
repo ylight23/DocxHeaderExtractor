@@ -1,0 +1,1011 @@
+{
+  "version": "P7_F1Q_HELDOUT_PAGE_SELECTION_V1",
+  "auditSha256": "eb1eb32458d1365cfb20c116c681f9463eb569f4ba4cf358b30292fb48538f37",
+  "rule": {
+    "firstPage": "lowest page with parser occurrences",
+    "seededInterior": "pages after the first split into halves (first half gets the extra page); index = uint64(sha256('P7F1Q-HELDOUT-PAGES-V1|' + sourceSha256)[0..8] or [8..16]) mod half length",
+    "targetedStructure": "lowest unselected page with >= 5 lines ending in dot leaders or a trailing page number after text, or a 'contents'/'mục lục' line followed by such lines (CONTENTS); else lowest unselected page with >= 3 baselines that each hold >= 3 parser segments (TABLE); else none",
+    "shortDocuments": "< 4 pages: all pages",
+    "gold": "every parser occurrence on every selected page gets a three-class F1 label; other occurrences of the issued packs stay UNKNOWN"
+  },
+  "documents": [
+    {
+      "id": "024",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/024_ND_15-2020_Xu_phat_BC_VT_CNTT.pdf",
+      "sourceSha256": "c3e1e732d195f7b6d3d931360babaab49e18ea26d91dd4dfff6d18c0724aef41",
+      "sourceAliasUniverseSha256": "0e4d33a841087be75c1ad9b674cee14b653ddba624d7f793cfdc52d75dcbb444",
+      "evidenceStoreSha256": "85e60268ffed9fa14d99ac9cbe2c4d610f0f1baf453f6c0b7101df79ddf50bba",
+      "pageCount": 85,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 39
+        },
+        {
+          "page": 15,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 49
+        },
+        {
+          "page": 67,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 52
+        }
+      ],
+      "goldOccurrences": 140,
+      "packs": [
+        "PACK_001",
+        "PACK_008",
+        "PACK_009",
+        "PACK_038"
+      ],
+      "packIssuedOccurrences": 351,
+      "v3Requests": 8
+    },
+    {
+      "id": "006",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/006_Luat_Dat_dai_31-2024-QH15.pdf",
+      "sourceSha256": "2558044082ee768192a311aee548eb9fae4daada546013aa5181eb91c8842637",
+      "sourceAliasUniverseSha256": "c62ab3dce54393802fc62a72403ff5d51ab23618449731983de17fc4a92b5c9c",
+      "evidenceStoreSha256": "7d0bd2a25af14ba2323f950aac43ae1ae22bc377d8fcf05e07cad792f38038b0",
+      "pageCount": 93,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 29
+        },
+        {
+          "page": 45,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 30
+        },
+        {
+          "page": 57,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 30
+        }
+      ],
+      "goldOccurrences": 89,
+      "packs": [
+        "PACK_001",
+        "PACK_016",
+        "PACK_020"
+      ],
+      "packIssuedOccurrences": 266,
+      "v3Requests": 6
+    },
+    {
+      "id": "009",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/009_Luat_Giao_dich_dien_tu_20-2023-QH15.pdf",
+      "sourceSha256": "2458d01d6453cd11ab7aaddbae36e988110754bcb53a59eda729987a63882914",
+      "sourceAliasUniverseSha256": "c791c8a26675496fe2d169859d266a431ab1448ca5d3a2bfe1ec2e6748d1d454",
+      "evidenceStoreSha256": "900e18eb67cafd95e4387f86198b6435fb90840220744964dbe9b45554acc683",
+      "pageCount": 30,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 31
+        },
+        {
+          "page": 16,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 30
+        },
+        {
+          "page": 22,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 33
+        }
+      ],
+      "goldOccurrences": 94,
+      "packs": [
+        "PACK_001",
+        "PACK_006",
+        "PACK_008"
+      ],
+      "packIssuedOccurrences": 268,
+      "v3Requests": 6
+    },
+    {
+      "id": "015",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/015_Luat_Cac_to_chuc_tin_dung_32-2024-QH15.pdf",
+      "sourceSha256": "3b65217f835653754346d5a348cca13b2dc43396c089e9da443b05f58de9cc32",
+      "sourceAliasUniverseSha256": "429815c01785337d943d1e02b730cfb5fad4ec900e40e4a070891ee665ab9d2b",
+      "evidenceStoreSha256": "8ad7916017a8d110c3fbb8dbb4cf37160bdccbd973bccedf029b4ba026dad7bc",
+      "pageCount": 104,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 40
+        },
+        {
+          "page": 44,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 37
+        },
+        {
+          "page": 58,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 37
+        }
+      ],
+      "goldOccurrences": 114,
+      "packs": [
+        "PACK_001",
+        "PACK_020",
+        "PACK_026"
+      ],
+      "packIssuedOccurrences": 266,
+      "v3Requests": 6
+    },
+    {
+      "id": "017",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/017_ND_123-2020_Hoa_don_chung_tu.pdf",
+      "sourceSha256": "cd567da7976beb9fea822c075fa147f5d4d16ba02c4b4c57eac05255a3ba1145",
+      "sourceAliasUniverseSha256": "e8529b48ff24abc2b516f32dd49ce31bc1230e7385ba05e2f0a094733282bef3",
+      "evidenceStoreSha256": "70abf965649b95d04567b3bb701e917a8eb1aec4b4bdd02ec009fbf6ffbc91be",
+      "pageCount": 76,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 38
+        },
+        {
+          "page": 38,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 47
+        },
+        {
+          "page": 39,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 42
+        },
+        {
+          "page": 45,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 37
+        }
+      ],
+      "goldOccurrences": 164,
+      "packs": [
+        "PACK_001",
+        "PACK_020",
+        "PACK_021",
+        "PACK_023"
+      ],
+      "packIssuedOccurrences": 372,
+      "v3Requests": 8
+    },
+    {
+      "id": "028",
+      "stratum": "procurement",
+      "sourceKey": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/028_WB_RFB_Works_Without_Prequal_2017.pdf",
+      "sourceSha256": "2dea390e45f4c07bc90d834be616cdbfc804db8c42e90b506d87bca037b29027",
+      "sourceAliasUniverseSha256": "071e1a7c9622c7f5b2e76db0d108fbef3fb7d6a87261f95ad93306e20e9a876f",
+      "evidenceStoreSha256": "3fb6a5fc2180efcc6de5cd5697ac21a22e41bcc3df18d3413e7a5f88637be56a",
+      "pageCount": 306,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 6
+        },
+        {
+          "page": 4,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 30
+        },
+        {
+          "page": 51,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 40
+        },
+        {
+          "page": 229,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 37
+        }
+      ],
+      "goldOccurrences": 113,
+      "packs": [
+        "PACK_001",
+        "PACK_019",
+        "PACK_081"
+      ],
+      "packIssuedOccurrences": 288,
+      "v3Requests": 6
+    },
+    {
+      "id": "034",
+      "stratum": "procurement",
+      "sourceKey": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/034_WB_Plant_Without_Prequal_2016.pdf",
+      "sourceSha256": "ac8bba6f592e5f76a6f2908a7b7b23475de58cdab5f23660722087c26d4464ba",
+      "sourceAliasUniverseSha256": "c3258d0081413dcfdeb7b14eeaba73007e07cb272860c8cdec5f08eceabb34b1",
+      "evidenceStoreSha256": "cf2224410a930332b95734c860352d906b8eb64464ec11a67fc8473785c64292",
+      "pageCount": 270,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 7
+        },
+        {
+          "page": 17,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 16
+        },
+        {
+          "page": 109,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 26
+        },
+        {
+          "page": 241,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 39
+        }
+      ],
+      "goldOccurrences": 88,
+      "packs": [
+        "PACK_001",
+        "PACK_003",
+        "PACK_032",
+        "PACK_078"
+      ],
+      "packIssuedOccurrences": 384,
+      "v3Requests": 8
+    },
+    {
+      "id": "032",
+      "stratum": "procurement",
+      "sourceKey": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/032_WB_Plant_TwoStage_2020.pdf",
+      "sourceSha256": "5c9fe5ebe4a283233cfb1fb2438b87d7d7ea209062ce9d49db79c52d3183223c",
+      "sourceAliasUniverseSha256": "b6897abb13d0d0108b494d430e508bfe1886daa282d519dcf7643c2791694aae",
+      "evidenceStoreSha256": "4b4fabdf8e02ade6af39aedaa7a176839f99b688e65348f23d678323b9dfc67c",
+      "pageCount": 284,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 11
+        },
+        {
+          "page": 14,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 15
+        },
+        {
+          "page": 29,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 49
+        },
+        {
+          "page": 165,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 40
+        }
+      ],
+      "goldOccurrences": 115,
+      "packs": [
+        "PACK_001",
+        "PACK_004",
+        "PACK_010",
+        "PACK_011",
+        "PACK_055",
+        "PACK_056"
+      ],
+      "packIssuedOccurrences": 571,
+      "v3Requests": 12
+    },
+    {
+      "id": "044",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/044_IDA_Financial_Statements_June_2024.pdf",
+      "sourceSha256": "55dee9b16b5616109ba186bb0a4d83632e24d06d5a00beab80b82ca59b3b0d6b",
+      "sourceAliasUniverseSha256": "f50cadd7ce549289f3c548bea4dfde7e0a9e0269eec2c6c11d3fd382fb33f886",
+      "evidenceStoreSha256": "cff8fd7def013b82838d84ba91f5b327fc498aefa6a3225efae6aefe989893c3",
+      "pageCount": 118,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 5
+        },
+        {
+          "page": 4,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 96
+        },
+        {
+          "page": 49,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 105
+        },
+        {
+          "page": 93,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 86
+        }
+      ],
+      "goldOccurrences": 292,
+      "packs": [
+        "PACK_001",
+        "PACK_002",
+        "PACK_031",
+        "PACK_032",
+        "PACK_033",
+        "PACK_053",
+        "PACK_054"
+      ],
+      "packIssuedOccurrences": 671,
+      "v3Requests": 14
+    },
+    {
+      "id": "049",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/049_IDA_Financial_Statements_September_2024.pdf",
+      "sourceSha256": "d8a58945a6bfea431724b24118af6adfdf63502d1f32db8d103b62530420a60a",
+      "sourceAliasUniverseSha256": "29e5ddc14fb6c615cfaf0cf80f43ea7725ddf557168d1684eccf3eb990df68e0",
+      "evidenceStoreSha256": "bec91a49b224accca58dbbe07bba5f0094f32c83654e5d11b41440c710ed86ae",
+      "pageCount": 55,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 6
+        },
+        {
+          "page": 29,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 74
+        },
+        {
+          "page": 39,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 149
+        },
+        {
+          "page": 52,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 112
+        }
+      ],
+      "goldOccurrences": 341,
+      "packs": [
+        "PACK_001",
+        "PACK_019",
+        "PACK_020",
+        "PACK_027",
+        "PACK_028",
+        "PACK_039",
+        "PACK_040"
+      ],
+      "packIssuedOccurrences": 672,
+      "v3Requests": 14
+    },
+    {
+      "id": "051",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/051_WBG_Trust_Fund_FIS_June_2024.pdf",
+      "sourceSha256": "7fd684159939651921105dcc478b4cc145bac8e7810b4ee7b83f15aec7fa0622",
+      "sourceAliasUniverseSha256": "e597f9b48d00ac1d5f22cfebdd767f6e9bb8c0d0c6b611cbcd20e11ede0bd786",
+      "evidenceStoreSha256": "e74c9e784c24a8e73a02e5e243be6991d14ef08765fe0c934f0c24164ec025ac",
+      "pageCount": 26,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 7
+        },
+        {
+          "page": 6,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "TABLE",
+          "occurrences": 31
+        },
+        {
+          "page": 9,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 14
+        },
+        {
+          "page": 15,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 14
+        }
+      ],
+      "goldOccurrences": 66,
+      "packs": [
+        "PACK_001",
+        "PACK_002",
+        "PACK_003"
+      ],
+      "packIssuedOccurrences": 288,
+      "v3Requests": 6
+    },
+    {
+      "id": "056",
+      "stratum": "textbook",
+      "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/056_OpenStax_Business_Law_I_Essentials.pdf",
+      "sourceSha256": "c56eef123fd5699ef7fac923394687c34cb46f349bad0b0f5f59b2106bc303bc",
+      "sourceAliasUniverseSha256": "899af0838468a06fde30379a044f66f5d6d0bd603ceb276795c6e54223188e21",
+      "evidenceStoreSha256": "d246e6f8f2b5c84afc577724c9a0490820e81edea09bd35a292201309546610f",
+      "pageCount": 164,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 1
+        },
+        {
+          "page": 7,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 34
+        },
+        {
+          "page": 20,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 43
+        },
+        {
+          "page": 106,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 16
+        }
+      ],
+      "goldOccurrences": 94,
+      "packs": [
+        "PACK_001",
+        "PACK_002",
+        "PACK_006",
+        "PACK_035"
+      ],
+      "packIssuedOccurrences": 384,
+      "v3Requests": 8
+    },
+    {
+      "id": "064",
+      "stratum": "textbook",
+      "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/064_Machine_Learning_with_Neural_Networks.pdf",
+      "sourceSha256": "1488210d01f56e8a1fcc21e6a5bf2dbd0b4d84e2cac016a3cee02895f4f69053",
+      "sourceAliasUniverseSha256": "7c45e141389d87df0786cc898be5993ce6ca2513fe529f81139c195610a88c09",
+      "evidenceStoreSha256": "74a28febab82d1da06b75324f14c4e3d10ba4122706b055d46beff5f69997d67",
+      "pageCount": 235,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 23
+        },
+        {
+          "page": 7,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 40
+        },
+        {
+          "page": 30,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 26
+        },
+        {
+          "page": 191,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 30
+        }
+      ],
+      "goldOccurrences": 119,
+      "packs": [
+        "PACK_001",
+        "PACK_008",
+        "PACK_063"
+      ],
+      "packIssuedOccurrences": 288,
+      "v3Requests": 6
+    },
+    {
+      "id": "060",
+      "stratum": "textbook",
+      "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/060_Elements_of_Linear_Algebra_Lecture_Notes.pdf",
+      "sourceSha256": "b3bdfbece3c9df4409ac2012569553ac332dd35a6ca759571c0d74c9d06ccdb2",
+      "sourceAliasUniverseSha256": "3cc200f6f2db79077ebe314607bf0752648ff2eb8f7268401448fa15e34fe7f4",
+      "evidenceStoreSha256": "cc367ff6b93e36dfd323787ab820fe24c31f28603c677d9c5ae1c397f5842079",
+      "pageCount": 45,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 33
+        },
+        {
+          "page": 2,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 32
+        },
+        {
+          "page": 21,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 48
+        },
+        {
+          "page": 44,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 37
+        }
+      ],
+      "goldOccurrences": 150,
+      "packs": [
+        "PACK_001",
+        "PACK_009",
+        "PACK_010",
+        "PACK_020",
+        "PACK_021"
+      ],
+      "packIssuedOccurrences": 397,
+      "v3Requests": 9
+    },
+    {
+      "id": "067",
+      "stratum": "textbook",
+      "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/067_Algorithms_for_Massive_Data_Lecture_Notes.pdf",
+      "sourceSha256": "810f3313d2aa43c53390de8b776d810856d9dbc1d5066fde1600b59530ba9d6f",
+      "sourceAliasUniverseSha256": "2284f13d62f396b42d0f89bc28d0efb7f58c1039fed1fd920a98910258b74ab9",
+      "evidenceStoreSha256": "aecdf44d301fab1893745ac1185e70fe47568782d2fc685e42e8d80e8f9a6195",
+      "pageCount": 121,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 20
+        },
+        {
+          "page": 2,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 41
+        },
+        {
+          "page": 21,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 55
+        },
+        {
+          "page": 119,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 33
+        }
+      ],
+      "goldOccurrences": 149,
+      "packs": [
+        "PACK_001",
+        "PACK_010",
+        "PACK_011",
+        "PACK_059",
+        "PACK_060"
+      ],
+      "packIssuedOccurrences": 477,
+      "v3Requests": 10
+    },
+    {
+      "id": "073",
+      "stratum": "minutes",
+      "sourceKey": "todo10_8/heading_corpus_100/05_bien_ban_hop/073_FORTIS_GC_Minutes_Mar_2026.pdf",
+      "sourceSha256": "e73ab5ca9d4d9f101e2f2b2d5f169cbf67e331bde84726860619c00473bf5da3",
+      "sourceAliasUniverseSha256": "c646d11d8effc05ac26730bc82a76ccfc1abe7a6d90844f9134dc34b1baa584e",
+      "evidenceStoreSha256": "3e5ce89349d4cd93d90b48f12286b738030086f990cef837a044e505cafe39d8",
+      "pageCount": 2,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "ALL_PAGES",
+          "rule": "DOCUMENT_UNDER_4_PAGES",
+          "occurrences": 35
+        },
+        {
+          "page": 2,
+          "stratum": "ALL_PAGES",
+          "rule": "DOCUMENT_UNDER_4_PAGES",
+          "occurrences": 11
+        }
+      ],
+      "goldOccurrences": 46,
+      "packs": [
+        "PACK_001"
+      ],
+      "packIssuedOccurrences": 46,
+      "v3Requests": 1
+    },
+    {
+      "id": "079",
+      "stratum": "minutes",
+      "sourceKey": "todo10_8/heading_corpus_100/05_bien_ban_hop/079_ICP_TAG_Minutes_Apr_2024.pdf",
+      "sourceSha256": "68b7a89f3955e52e047f0741bbfc0d9581d508a74eff3ec40e08bbab69248d00",
+      "sourceAliasUniverseSha256": "43d8bb960063b347f24a9bd2f2680d2c0d1ba2f8c4067a13bbd0d40cf5ed7752",
+      "evidenceStoreSha256": "ddded8ec0d6fafcffbf9579d12860b63ca7325afacba3702e5bd24b16ef134bf",
+      "pageCount": 7,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 29
+        },
+        {
+          "page": 4,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 41
+        },
+        {
+          "page": 5,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 37
+        }
+      ],
+      "goldOccurrences": 107,
+      "packs": [
+        "PACK_001",
+        "PACK_002"
+      ],
+      "packIssuedOccurrences": 192,
+      "v3Requests": 4
+    },
+    {
+      "id": "077",
+      "stratum": "minutes",
+      "sourceKey": "todo10_8/heading_corpus_100/05_bien_ban_hop/077_ICP_TAG_Minutes_Nov_2023.pdf",
+      "sourceSha256": "6db97b728d016a875fdc3187ee54632fd9de0b93f1bc65e903bc5c1c8825f9c3",
+      "sourceAliasUniverseSha256": "8fd236f33ef5afa6ee9d7c64d76d12d2597762847f32c5d41c654c7a028d1c7e",
+      "evidenceStoreSha256": "9ca5da80180a1994dd89687b846b12669cea8406be1b0dab8350e1904f8c9086",
+      "pageCount": 14,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 30
+        },
+        {
+          "page": 4,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 39
+        },
+        {
+          "page": 9,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 39
+        }
+      ],
+      "goldOccurrences": 108,
+      "packs": [
+        "PACK_001",
+        "PACK_002",
+        "PACK_004"
+      ],
+      "packIssuedOccurrences": 288,
+      "v3Requests": 6
+    },
+    {
+      "id": "083",
+      "stratum": "translation",
+      "sourceKey": "todo10_8/heading_corpus_100/06_dich_song_ngu/083_Luat_An_ninh_mang_2018_EN.pdf",
+      "sourceSha256": "30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62",
+      "sourceAliasUniverseSha256": "cd597a643f84c351f07efedb954ef7970e395e292c90302d6871511c94b3b94e",
+      "evidenceStoreSha256": "ab6219342f3af532b20c3bc76b69a7c677231f92c059d033bfdf052df38ec7d3",
+      "pageCount": 34,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 16
+        },
+        {
+          "page": 10,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 34
+        },
+        {
+          "page": 32,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 37
+        }
+      ],
+      "goldOccurrences": 87,
+      "packs": [
+        "PACK_001",
+        "PACK_004",
+        "PACK_012"
+      ],
+      "packIssuedOccurrences": 288,
+      "v3Requests": 6
+    },
+    {
+      "id": "087",
+      "stratum": "translation",
+      "sourceKey": "todo10_8/heading_corpus_100/06_dich_song_ngu/087_ND_53-2022_An_ninh_mang_EN.pdf",
+      "sourceSha256": "a603afb1c59c438e1d6e72a0bb5d78e3d367a16ce28fb0bdedbe60360a884d4d",
+      "sourceAliasUniverseSha256": "72270d763e4088557f52c0ba76f3996901fdd9dce268d1e2c841d4b97b7a997f",
+      "evidenceStoreSha256": "eed0cde2fba78707d20e4905a5366de7cd78b09a567c99855014d9a6f214a31c",
+      "pageCount": 43,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 35
+        },
+        {
+          "page": 11,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 35
+        },
+        {
+          "page": 33,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 27
+        },
+        {
+          "page": 38,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 37
+        }
+      ],
+      "goldOccurrences": 134,
+      "packs": [
+        "PACK_001",
+        "PACK_004",
+        "PACK_005",
+        "PACK_012",
+        "PACK_013",
+        "PACK_014"
+      ],
+      "packIssuedOccurrences": 576,
+      "v3Requests": 12
+    },
+    {
+      "id": "088",
+      "stratum": "translation",
+      "sourceKey": "todo10_8/heading_corpus_100/06_dich_song_ngu/088_ND_69-2018_Ngoai_thuong_EN.pdf",
+      "sourceSha256": "85e261f79c5e9360f3ca15f32929705b6635d66348d258e25de4287905ffe385",
+      "sourceAliasUniverseSha256": "266d4309a87b6de78283be7c5d9fc8cda9f54cc772760d2ca1e5b4ad126b493e",
+      "evidenceStoreSha256": "9ddeb25c1346357294c3a62ccc9bc29849e3b9ca7372065c3074847651c2aaa5",
+      "pageCount": 81,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 32
+        },
+        {
+          "page": 35,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 30
+        },
+        {
+          "page": 60,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 46
+        },
+        {
+          "page": 64,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 43
+        }
+      ],
+      "goldOccurrences": 151,
+      "packs": [
+        "PACK_001",
+        "PACK_012",
+        "PACK_022",
+        "PACK_023",
+        "PACK_024"
+      ],
+      "packIssuedOccurrences": 480,
+      "v3Requests": 10
+    },
+    {
+      "id": "090",
+      "stratum": "translation",
+      "sourceKey": "todo10_8/heading_corpus_100/06_dich_song_ngu/090_ND_155-2018_Sua_doi_Bo_Y_te_EN.pdf",
+      "sourceSha256": "b1c648b8e97e629a3add667293b467a77f008603b389791633a3454aaa816644",
+      "sourceAliasUniverseSha256": "86a39d43599a5ec872e2c7ba41a4fc52ca8a939088ea68ff6338cdde2e0856e0",
+      "evidenceStoreSha256": "e8ae80d28228810fa8af15cc750944efcf6634bfe318e75f7f133456739881db",
+      "pageCount": 67,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 34
+        },
+        {
+          "page": 24,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 32
+        },
+        {
+          "page": 62,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 27
+        }
+      ],
+      "goldOccurrences": 93,
+      "packs": [
+        "PACK_001",
+        "PACK_008",
+        "PACK_020"
+      ],
+      "packIssuedOccurrences": 288,
+      "v3Requests": 6
+    },
+    {
+      "id": "093",
+      "stratum": "rfc",
+      "sourceKey": "todo10_8/heading_corpus_100/07_system_generated/093_RFC9112_HTTP_1_1.pdf",
+      "sourceSha256": "b260bba790c2da55a7e0795f356fcd9b70743686c55250f0ef1cc993c4d1abac",
+      "sourceAliasUniverseSha256": "10df1733336be25b7b241f67bf9360db395c27c8dad6e80b3b46ef949bd21bb4",
+      "evidenceStoreSha256": "65d3450997ca58e60a6e8f288d44deea4c761d792b1455401c4439e90aa07eaa",
+      "pageCount": 46,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 44
+        },
+        {
+          "page": 12,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 29
+        },
+        {
+          "page": 18,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 38
+        },
+        {
+          "page": 42,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 38
+        }
+      ],
+      "goldOccurrences": 149,
+      "packs": [
+        "PACK_001",
+        "PACK_005",
+        "PACK_007",
+        "PACK_018"
+      ],
+      "packIssuedOccurrences": 384,
+      "v3Requests": 8
+    },
+    {
+      "id": "094",
+      "stratum": "rfc",
+      "sourceKey": "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf",
+      "sourceSha256": "8314f1034854548baf26f9912f79c6207299cb0520b31ed25af64889bd1500bc",
+      "sourceAliasUniverseSha256": "3d1d334b09b9a3fa5fc050a9f993b4f506dddfc8c0521c061f2972eb5fa36ad1",
+      "evidenceStoreSha256": "4b73a4e3807bd3bc176fde7f1829c847e81b20e9f3ffd05084ef93f10540995c",
+      "pageCount": 78,
+      "selectedPages": [
+        {
+          "page": 1,
+          "stratum": "FIRST",
+          "rule": "FIRST_PAGE",
+          "occurrences": 36
+        },
+        {
+          "page": 2,
+          "stratum": "TARGETED_STRUCTURE",
+          "rule": "CONTENTS",
+          "occurrences": 33
+        },
+        {
+          "page": 16,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_FIRST_HALF",
+          "occurrences": 38
+        },
+        {
+          "page": 63,
+          "stratum": "SEEDED_INTERIOR",
+          "rule": "SHA256_SEEDED_SECOND_HALF",
+          "occurrences": 41
+        }
+      ],
+      "goldOccurrences": 148,
+      "packs": [
+        "PACK_001",
+        "PACK_006",
+        "PACK_025"
+      ],
+      "packIssuedOccurrences": 288,
+      "v3Requests": 6
+    }
+  ],
+  "totalGoldOccurrences": 3151,
+  "totalV3Requests": 186,
+  "providerCalls": 0,
+  "goldRead": false
+}
