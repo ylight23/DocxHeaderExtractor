@@ -198,6 +198,36 @@ public sealed class P7F1QEvidenceV2Tests : IDisposable
         }
     }
 
+    [Fact] public void Published_v3_raw_matches_manifest_and_retries_at_most_once_only_after_failure()
+    {
+        var dir = TestRepository.Path("artifacts/web-pdf-semantic-diagnostic");
+        var root = Path.Combine(dir, "p7.f1q.evidence-v2-raw.v1");
+        var manifestBytes = File.ReadAllBytes(Path.Combine(root, "manifest.json"));
+        Assert.Equal(manifestBytes, File.ReadAllBytes(Path.Combine(dir, "p7.f1q.raw-capture-freeze.v3.json")));
+        using var manifest = JsonDocument.Parse(manifestBytes);
+        foreach (var f in manifest.RootElement.GetProperty("files").EnumerateArray())
+            Assert.Equal(f.GetProperty("sha256").GetString(), SpatialCanonical.Hash(File.ReadAllBytes(Path.Combine(root, f.GetProperty("path").GetString()!))));
+        Assert.Equal(0.043479936m, manifest.RootElement.GetProperty("reportedCostUsd").GetDecimal());
+        var requestDirs = Directory.GetDirectories(Path.Combine(root, "requests"));
+        Assert.Equal(20, requestDirs.Length);
+        var retried = 0;
+        foreach (var request in requestDirs)
+        {
+            var attempts = Directory.GetDirectories(request, "attempt-*").Order().ToArray();
+            Assert.InRange(attempts.Length, 1, 2);
+            string Status(string a) => JsonNode.Parse(File.ReadAllBytes(Path.Combine(a, "request-receipt.json")))!["status"]!.GetValue<string>();
+            if (attempts.Length == 2)
+            {
+                retried++;
+                Assert.NotEqual("ACCEPTED", Status(attempts[0]));
+                Assert.Equal(File.ReadAllBytes(Path.Combine(attempts[0], "turn-1", "request.json")), File.ReadAllBytes(Path.Combine(attempts[1], "turn-1", "request.json")));
+            }
+            Assert.Equal("ACCEPTED", Status(attempts[^1]));
+            Assert.Equal("Alibaba", P7F1QSse.Parse(File.ReadAllText(Path.Combine(attempts[^1], "turn-1", "attempt-1", "response.sse"))).Provider);
+        }
+        Assert.Equal(3, retried);
+    }
+
     // ---- runner with V2 validator, using scripted (non-provider) SSE ----
     private sealed class Scripted(params Func<byte[], F1QHttpObservation>[] script) : IF1QTransport
     {
