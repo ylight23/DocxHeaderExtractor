@@ -6,7 +6,7 @@ using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
 namespace DocxHeaderExtractor.V5Qualification.P7;
 
-internal enum F1QArm { Control, F1QNoTools, F1QTools, F1QToolsMandatory }
+internal enum F1QArm { Control, F1QNoTools, F1QTools, F1QToolsMandatory, F1QEvidenceV2 }
 
 internal sealed record F1QIssuedOccurrence(string Occurrence, string SourceAlias, int Page, string Text);
 

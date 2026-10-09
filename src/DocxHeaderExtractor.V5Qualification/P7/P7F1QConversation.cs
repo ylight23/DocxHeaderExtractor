@@ -119,7 +119,7 @@ internal sealed class P7F1QOpenRouterTransport(Func<string> readKey, TimeSpan ti
     public void Dispose() => http.Dispose();
 }
 
-internal sealed record F1QBodyPolicy(string Model, string ProviderTag, int MaxTokens, bool JsonObjectResponse);
+internal sealed record F1QBodyPolicy(string Model, string ProviderTag, int MaxTokens, bool JsonObjectResponse, int ToolSet = 1);
 
 internal sealed record F1QRequestSpec(string Handle, string Case, F1QArm Arm, string SystemPrompt, string UserMessage,
     IReadOnlyList<F1QIssuedOccurrence> Issued, IReadOnlySet<string> InitiallyCitable, P7F1QEvidenceTools? Tools,
@@ -154,6 +154,7 @@ internal sealed class P7F1QConversationRunner(IF1QTransport transport, F1QBodyPo
             new JsonObject { ["role"] = "user", ["content"] = spec.UserMessage },
         };
         var citable = new HashSet<string>(spec.InitiallyCitable, StringComparer.Ordinal);
+        var coverage = new Dictionary<string, IReadOnlyCollection<string>>(StringComparer.Ordinal);
         var turns = new List<F1QTurnRecord>(); var byName = new SortedDictionary<string, int>(StringComparer.Ordinal);
         int invalidCalls = 0, okCalls = 0; decimal cost = 0; var allCosts = true;
         F1QRequestOutcome Done(string status, string? code, F1QValidation? v, string? finalSha)
@@ -211,7 +212,7 @@ internal sealed class P7F1QConversationRunner(IF1QTransport transport, F1QBodyPo
                     var evidenceId = $"E{turn}.{n}";
                     var callId = call.Id ?? $"f1q_call_{turn}_{n}";
                     F1QToolResult result;
-                    if (n > caps.MaxCallsPerRound || call.Name is null || !P7F1QEvidenceTools.Names.Contains(call.Name))
+                    if (n > caps.MaxCallsPerRound || call.Name is null || !spec.Tools.ToolNames.Contains(call.Name))
                     {
                         var code = n > caps.MaxCallsPerRound ? "PER_ROUND_CALL_CAP_EXCEEDED" : "UNKNOWN_TOOL";
                         var bytes = JsonSerializer.SerializeToUtf8Bytes(new { evidenceId, tool = call.Name, status = "REJECTED", error = code }, P7F1QEvidenceTools.WireJson);
@@ -220,7 +221,7 @@ internal sealed class P7F1QConversationRunner(IF1QTransport transport, F1QBodyPo
                     else result = spec.Tools.Execute(evidenceId, call.Name, call.Arguments);
                     if (result.Status != "OK") invalidCalls++; else okCalls++;
                     byName[result.Name] = byName.GetValueOrDefault(result.Name) + 1;
-                    if (result.Status == "OK") { citable.Add(evidenceId); foreach (var a in result.ReturnedAliases) citable.Add(a); }
+                    if (result.Status == "OK") { citable.Add(evidenceId); coverage[evidenceId] = result.ReturnedAliases; foreach (var a in result.ReturnedAliases) citable.Add(a); }
                     WriteNew(Path.Combine(turnDir, $"tool-{n:D2}-{evidenceId}.json"), JsonSerializer.SerializeToUtf8Bytes(new
                     {
                         evidenceId, toolCallId = callId, providerToolCallId = call.Id, name = call.Name, rawArguments = call.Arguments,
@@ -247,7 +248,9 @@ internal sealed class P7F1QConversationRunner(IF1QTransport transport, F1QBodyPo
             }, P7F1QEvidenceTools.WireJson));
             if (asm.FinishReason != "stop")
                 return Done("CONTRACT_FAILED", "FINISH_REASON_" + (asm.FinishReason ?? "NULL").ToUpperInvariant(), null, SpatialCanonical.Hash(final));
-            var validation = spec.ControlValidator is not null ? spec.ControlValidator(asm.Content) : P7F1QProtocol.Validate(asm.Content, spec.Issued, citable);
+            var validation = spec.ControlValidator is not null ? spec.ControlValidator(asm.Content)
+                : spec.Arm == F1QArm.F1QEvidenceV2 ? P7F1QProtocolV2.Validate(asm.Content, spec.Issued, citable, coverage)
+                : P7F1QProtocol.Validate(asm.Content, spec.Issued, citable);
             WriteNew(Path.Combine(directory, "validation.json"), JsonSerializer.SerializeToUtf8Bytes(validation, P7F1QEvidenceTools.WireJson));
             // Mandatory-evidence arm: a final answer with no successful tool call fails the frozen requirement,
             // even when the JSON itself is valid. Validation is still written for diagnostics.
@@ -274,7 +277,7 @@ internal sealed class P7F1QConversationRunner(IF1QTransport transport, F1QBodyPo
         if (policy.JsonObjectResponse) body["response_format"] = new JsonObject { ["type"] = "json_object" };
         if (tools)
         {
-            body["tools"] = P7F1QEvidenceTools.Definitions();
+            body["tools"] = policy.ToolSet == 2 ? P7F1QEvidenceTools.DefinitionsV2() : P7F1QEvidenceTools.Definitions();
             body["tool_choice"] = toolChoice;
         }
         body["provider"] = new JsonObject

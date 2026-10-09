@@ -11,6 +11,9 @@ using DocxHeaderExtractor.V5Qualification.P7;
 if (args.Length < 1) throw new ArgumentException("probe|prepare|execute|freeze|score (see README)");
 var policy = new F1QBodyPolicy("qwen/qwen3.7-flash", "alibaba", 32768, JsonObjectResponse: false);
 var caps = new F1QRunCaps();
+// Plan V3: json_object on every turn, tool set V2, no in-turn transport retry (one request-level retry instead).
+var policyV3 = new F1QBodyPolicy("qwen/qwen3.7-flash", "alibaba", 32768, JsonObjectResponse: true, ToolSet: 2);
+var capsV3 = new F1QRunCaps(MaxTransportAttemptsPerTurn: 1);
 
 switch (args[0])
 {
@@ -156,8 +159,121 @@ switch (args[0])
         Console.WriteLine(JsonSerializer.Serialize(new { status = "RAW_FROZEN", manifestSha256 = SpatialCanonical.Hash(manifest), files = files.Length, total }));
         break;
     }
+    case "prepare-v3":
+    {
+        // Plan V3 (P7_F1Q_V2 protocol) after the 2026-10-09 audit: layout in the payload, evidence-grounded judgment,
+        // tool set V2, per-decision identity/relevance checks, json_object, packs split into <=48-occurrence chunks.
+        if (args.Length != 5) throw new ArgumentException("prepare-v3 <frozen-request-dir> <full-source-dir> <new-plan.json> <new-bodies-dir>");
+        var cases = Cohort(args[1], args[2]);
+        Need(!Directory.Exists(args[4]) && !File.Exists(args[3]), "PLAN_OR_BODIES_EXIST");
+        Directory.CreateDirectory(args[4]);
+        var runner = new P7F1QConversationRunner(new NoTransport(), policyV3, capsV3);
+        var requests = new List<object>();
+        foreach (var c in cases)
+            foreach (var (chunk, k) in ChunksOf(c).Select((x, i) => (x, i + 1)))
+            {
+                var handle = $"{c.Case}-C{k}|{F1QArm.F1QEvidenceV2}";
+                var body = InitialBodyV3(runner, c, chunk);
+                var file = $"{c.Case}-C{k}.{F1QArm.F1QEvidenceV2}.initial-body.json";
+                P7F1QConversationRunner.WriteNew(Path.Combine(args[4], file), body);
+                requests.Add(new
+                {
+                    handle, @case = c.Case, chunk = k, document = c.Document, pack = c.Pack, arm = F1QArm.F1QEvidenceV2.ToString(),
+                    bodyFile = file, bodySha256 = SpatialCanonical.Hash(body), issued = chunk.Select(i => new { occurrence = i.Occurrence, sourceAlias = i.SourceAlias }),
+                    systemPromptSha256 = SpatialCanonical.Hash(Encoding.UTF8.GetBytes(P7F1QProtocolV2.SystemPrompt())),
+                    maxModelTurns = capsV3.MaxToolRounds + 1, maxAttempts = 2,
+                });
+            }
+        var plan = SpatialCanonical.Bytes(new
+        {
+            version = "P7_F1Q_EVIDENCE_GROUNDED_PLAN_V3", status = "FROZEN_BEFORE_PROVIDER_AND_BEFORE_GOLD_READ",
+            issue = "ylight23/DocxHeaderExtractor#5", supersedes = "AUDIT_OF_PLANS_V1_V2_2026_10_09_V1_V2_RAW_UNCHANGED",
+            protocolVersion = P7F1QProtocolV2.Version, toolsVersion = P7F1QEvidenceTools.VersionV2, claimAudit = P7F1QClaimAudit.Version,
+            model = policyV3.Model, providerRoute = new { order = new[] { "alibaba" }, allowFallbacks = false, requireParameters = true },
+            endpoint = P7F1QOpenRouterTransport.Endpoint, temperature = 0, maxTokens = policyV3.MaxTokens, reasoning = "enabled",
+            responseFormat = "json_object_on_every_turn", chunkSize = P7F1QProtocolV2.ChunkSize, caps = capsV3,
+            toolDefinitionsSha256 = SpatialCanonical.Hash(Encoding.UTF8.GetBytes(P7F1QEvidenceTools.DefinitionsV2().ToJsonString())),
+            retryPolicy = "AT_MOST_ONE_IDENTICAL_INITIAL_BODY_RETRY_PER_REQUEST_ON_TRANSPORT_OR_CONTRACT_FAILURE_NEVER_ON_SEMANTICS_NO_REPAIR_NO_IN_TURN_TRANSPORT_RETRY",
+            repair = false, fallback = false, modelSwap = false,
+            budget = new { approvedUsdCap = (decimal?)null, userAuthorization = "USER_APPROVED_EXCEEDING_2_USD_2026_10_09_ISSUE_5_BOUNDED_COHORT_RERUN_WITH_ONE_RETRY_PER_REQUEST",
+                runawayStopUsd = capsV3.RunawayUsd, anomalousRequestStopUsd = capsV3.AnomalousRequestUsd, stopOnRepeatedSystemicFailure = 3 },
+            executionOrder = "CANARY_D05_CHUNKS_FIRST_THEN_REMAINING_IN_PLAN_ORDER",
+            cases = cases.Select(c => new { c.Case, c.Document, c.Pack, sourceSha256 = c.Source.SourceSha256, evidenceStoreSha256 = c.ToolsV2.EvidenceStoreSha256,
+                packSha256 = c.PackSha256, issued = c.Issued.Count, historicalControl = c.HistoricalControlBodySha256 }),
+            requests, goldRead = false, goldOrReviewerFieldsProjected = false, priorPredictionsProjected = false,
+            productionChanged = false, g2h2Coupling = "NONE", providerCalls = 0,
+            sources = new[] { "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QEvidenceTools.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QProtocol.cs",
+                "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QProtocolV2.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QConversation.cs",
+                "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QClaimAudit.cs", "scripts/P7F1Q/Program.cs" }
+                .Select(path => new { path, sha256 = SpatialCanonical.Hash(File.ReadAllBytes(path)) }),
+        });
+        P7F1QConversationRunner.WriteNew(args[3], plan);
+        Console.WriteLine(JsonSerializer.Serialize(new { status = "PLAN_FROZEN", planSha256 = SpatialCanonical.Hash(plan), requests = requests.Count, providerCalls = 0 }));
+        break;
+    }
+    case "execute-v3":
+    {
+        if (args.Length < 7) throw new ArgumentException("execute-v3 <plan.json> <plan-sha256> <bodies-dir> <frozen-request-dir> <full-source-dir> <capture-root> [handle,...]");
+        var planBytes = ReadPinned(args[1], args[2]); using var plan = JsonDocument.Parse(planBytes);
+        foreach (var src in plan.RootElement.GetProperty("sources").EnumerateArray()) ReadPinned(S(src, "path"), S(src, "sha256"));
+        var cases = Cohort(args[4], args[5]).ToDictionary(c => c.Case);
+        var only = args.Length > 7 ? args[7].Split(',', StringSplitOptions.RemoveEmptyEntries).ToHashSet(StringComparer.Ordinal) : null;
+        var root = Path.GetFullPath(args[6]); Directory.CreateDirectory(root);
+        var metadata = await FetchEndpointMetadata();
+        P7F1QConversationRunner.WriteNew(Path.Combine(root, $"endpoint-metadata.{DateTimeOffset.UtcNow:yyyyMMddTHHmmssZ}.json"), metadata);
+        VerifyEndpoint(metadata);
+        using var transport = new P7F1QOpenRouterTransport(() => Environment.GetEnvironmentVariable("OPENROUTER_API_KEY") ?? "", TimeSpan.FromSeconds(300));
+        var runner = new P7F1QConversationRunner(transport, policyV3, capsV3);
+        var consecutiveSystemic = 0; var stop = false;
+        foreach (var r in plan.RootElement.GetProperty("requests").EnumerateArray())
+        {
+            if (stop) break;
+            var handle = S(r, "handle");
+            if (only is not null && !only.Contains(handle)) continue;
+            var requestDir = Path.Combine(root, "requests", handle.Replace('|', '.'));
+            if (Directory.Exists(requestDir)) { Console.WriteLine($"SKIP_EXISTING {handle}"); continue; }
+            var c = cases[S(r, "case")]; var k = r.GetProperty("chunk").GetInt32();
+            var chunk = ChunksOf(c)[k - 1];
+            var body = ReadPinned(Path.Combine(args[3], S(r, "bodyFile")), S(r, "bodySha256"));
+            Need(body.AsSpan().SequenceEqual(InitialBodyV3(runner, c, chunk)), "RECOMPOSED_BODY_DRIFT:" + handle);
+            var issued = chunk.Select(i => new F1QIssuedOccurrence(i.Occurrence, i.SourceAlias, i.Page, i.Text)).ToArray();
+            var citable = c.Issued.Select(i => i.SourceAlias).Concat(c.Context.Select(x => x.Alias)).ToHashSet(StringComparer.Ordinal);
+            var spec = new F1QRequestSpec(handle, c.Case, F1QArm.F1QEvidenceV2, P7F1QProtocolV2.SystemPrompt(), UserV3(c, chunk), issued, citable,
+                c.ToolsV2, body, null);
+            for (var attempt = 1; attempt <= 2; attempt++)
+            {
+                var outcome = await runner.RunAsync(spec, Path.Combine(requestDir, $"attempt-{attempt}"), () => Spent(root), CancellationToken.None);
+                var line = JsonSerializer.Serialize(new { handle, attempt, outcome.Status, outcome.FailureCode, turns = outcome.Turns.Count,
+                    outcome.CostUsd, toolCalls = outcome.ToolCallsByName, outcome.InvalidToolCalls, spentUsd = Spent(root) });
+                Console.WriteLine(line);
+                File.AppendAllText(Path.Combine(root, "execution-log.jsonl"), line + "\n");
+                if (outcome.Status == "BUDGET_STOP") { stop = true; break; }
+                consecutiveSystemic = outcome.Status == "TRANSPORT_FAILED" ? consecutiveSystemic + 1 : 0;
+                if (consecutiveSystemic >= 3) { Console.WriteLine("STOP REPEATED_TRANSPORT_FAILURE"); stop = true; break; }
+                if (outcome.Status == "ACCEPTED") break;
+            }
+        }
+        break;
+    }
     default: throw new ArgumentException("UNKNOWN_MODE");
 }
+
+static IReadOnlyList<IReadOnlyList<P7F1QProtocolV2.V5Issued>> ChunksOf(F1QCase c)
+{
+    using var user = JsonDocument.Parse(c.Control.ControlUserMessage);
+    var correspondences = user.RootElement.GetProperty("occurrences").EnumerateArray().ToDictionary(o => o.GetProperty("id").GetString()!, o => o.GetProperty("correspondences").Clone());
+    return P7F1QProtocolV2.Chunks(c.Issued.Select(i => new P7F1QProtocolV2.V5Issued(i.Occurrence, i.SourceAlias, i.Page, i.Text, correspondences[i.Occurrence])).ToArray());
+}
+
+static string UserV3(F1QCase c, IReadOnlyList<P7F1QProtocolV2.V5Issued> chunk) =>
+    P7F1QProtocolV2.UserMessage(chunk, ChunksOf(c).SelectMany(x => x).ToArray(), c.Context, c.ToolsV2);
+
+static byte[] InitialBodyV3(P7F1QConversationRunner runner, F1QCase c, IReadOnlyList<P7F1QProtocolV2.V5Issued> chunk) =>
+    runner.Body(new JsonArray
+    {
+        new JsonObject { ["role"] = "system", ["content"] = P7F1QProtocolV2.SystemPrompt() },
+        new JsonObject { ["role"] = "user", ["content"] = UserV3(c, chunk) },
+    }, true, "auto");
 
 static IEnumerable<F1QArm> Arms(F1QCase c) => c.HistoricalControlBodySha256 is null
     ? [F1QArm.Control, F1QArm.F1QNoTools, F1QArm.F1QTools] : [F1QArm.F1QNoTools, F1QArm.F1QTools];
@@ -237,7 +353,8 @@ static F1QCase Case(string name, string document, DocxHeaderExtractor.DocumentPr
     var tools = P7F1QEvidenceTools.FromStore(store, issued.ToDictionary(i => i.Occurrence, i => i.SourceAlias));
     var citable = issued.Select(i => i.SourceAlias).Concat(context.Select(c => c.Alias)).ToHashSet(StringComparer.Ordinal);
     return new(name, document, Short(pack.PackId), pages, origin, source, control, context, issued, tools,
-        P7F1QProtocol.UserMessage(control, context), citable, SpatialCanonical.Hash(SpatialCanonical.Bytes(pack)), historical);
+        P7F1QProtocol.UserMessage(control, context), citable, SpatialCanonical.Hash(SpatialCanonical.Bytes(pack)), historical,
+        P7F1QEvidenceTools.FromStore(store, issued.ToDictionary(i => i.Occurrence, i => i.SourceAlias), toolSet: 2));
 }
 
 static (string Id, int[] Pages)[] ExternalDocuments() => [("SRC-089", [1, 2]), ("SRC-095", [1, 2, 3, 5])];
@@ -282,7 +399,8 @@ static byte[] ReadPinned(string path, string hash) { var b = File.ReadAllBytes(p
 
 internal sealed record F1QCase(string Case, string Document, string Pack, int[] Pages, string Origin, DocumentSourceSnapshot Source,
     InterpretationRequest Control, IReadOnlyList<(string Alias, int Page, string Text)> Context, IReadOnlyList<F1QIssuedOccurrence> Issued,
-    P7F1QEvidenceTools Tools, string F1QUser, IReadOnlySet<string> InitialCitable, string PackSha256, string? HistoricalControlBodySha256);
+    P7F1QEvidenceTools Tools, string F1QUser, IReadOnlySet<string> InitialCitable, string PackSha256, string? HistoricalControlBodySha256,
+    P7F1QEvidenceTools ToolsV2);
 
 internal sealed class NoTransport : IF1QTransport
 {
