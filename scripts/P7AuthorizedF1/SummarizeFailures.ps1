@@ -55,10 +55,12 @@ $rows = foreach ($file in $attemptDirectories) {
         rejectedStageDecisionsAdopted = $false; responseTextPublished = $false
     }
 }
-$report = [ordered]@{ version='P7_F1_ATTEMPT_PROTOCOL_FORENSICS_V1'; captureReceiptSha256=HashBytes $receiptBytes
+$report = [ordered]@{ version='P7_F1_ATTEMPT_PROTOCOL_FORENSICS_V2'; captureReceiptSha256=HashBytes $receiptBytes
+    supersedesDiagnosticReportSha256='900e00ba6a5e971a9374446168bf866d88da2503176eb2b52b09bb27a94160d4'
+    amendment='Correct Group-Object aggregation over ordered dictionaries; V1 attempt rows/raw captures/scoring unchanged'
     rawCaptureFreezeSha256=$receipt.rawCaptureFreezeSha256; attempts=$rows
     failedAttempts=@($rows | Where-Object status -ne ACCEPTED).Count
-    failureCounts=@($rows | Where-Object status -ne ACCEPTED | Group-Object validatorCode | ForEach-Object { @{code=$_.Name; count=$_.Count} })
+    failureCounts=@($rows | Where-Object status -ne ACCEPTED | ForEach-Object { [pscustomobject]$_ } | Group-Object validatorCode | ForEach-Object { [ordered]@{code=$_.Name; count=$_.Count} })
     providerCalls=0; goldRead=$false; parserRelaxed=$false; productionChanged=$false; frozenBodiesChanged=$false }
 $bytes = [Text.Encoding]::UTF8.GetBytes(($report | ConvertTo-Json -Depth 32 -Compress))
 $stream = [IO.FileStream]::new($NewReport,[IO.FileMode]::CreateNew)
