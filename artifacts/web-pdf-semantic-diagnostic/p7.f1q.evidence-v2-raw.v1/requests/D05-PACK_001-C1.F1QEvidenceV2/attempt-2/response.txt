@@ -1,0 +1,485 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Organizational letterhead indicating issuing ministry.",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Administrative letterhead, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0000:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National header/motto.",
+      "evidenceRefs": [
+        "L0000:S1"
+      ],
+      "interpretation": "Standard state header, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National motto.",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Standard state motto, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Document reference number, location, and date.",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Administrative metadata line, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document title \"INVITATION\".",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Centered, bold title establishing the document type here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Opening body text inviting attendance.",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Prose continuing the invitation sentence, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the event title in body prose.",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Textual continuation within a paragraph, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuing invitation.",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Ordinary body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuing invitation.",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Ordinary body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose repeating event title.",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Ordinary body text referencing the event.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing meeting topics.",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Ordinary body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuing topic list.",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Ordinary body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding topic list.",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Ordinary body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Chairperson information line.",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Administrative detail, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Participant composition description.",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Administrative detail.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Participant composition continuation.",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Administrative detail.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Participant composition conclusion.",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Administrative detail.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Event time information.",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Administrative detail.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Location label.",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Form field label, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0017:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Venue address line 1.",
+      "evidenceRefs": [
+        "L0017:S1"
+      ],
+      "interpretation": "Address detail.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Venue address line 2.",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Address detail.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Attendance instruction.",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Instructional note.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Attendance instruction continuation.",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Instructional note.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Registration deadline instruction.",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Instructional note.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "QR code reference.",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Instructional note.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Contact person introduction.",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Contact detail.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Contact department and phone.",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Contact detail.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Contact email.",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Contact detail.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Parenthetical note about attached program.",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Administrative note.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Formal closing remark.",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Closing prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Distribution list label.",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Administrative form label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0028:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Signature block prefix.",
+      "evidenceRefs": [
+        "L0028:S1"
+      ],
+      "interpretation": "Signature block element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Distribution list item.",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Administrative distribution entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0029:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Signature block title.",
+      "evidenceRefs": [
+        "L0029:S1"
+      ],
+      "interpretation": "Signature block element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Distribution list item.",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Administrative distribution entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Distribution list item.",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Administrative distribution entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Filing code.",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Administrative filing notation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Signatory name.",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Signature element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading \"PROGRAM\".",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Bold, centered heading introducing the attached agenda section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Program title opening.",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Subtitle/heading text for the program section.",
+      "missingEvidence": []
+    }
+  ]
+}

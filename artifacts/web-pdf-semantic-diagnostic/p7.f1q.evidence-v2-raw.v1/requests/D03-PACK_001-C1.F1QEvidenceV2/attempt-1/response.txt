@@ -1,0 +1,485 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Primary document title identifying the International Comparison Program.",
+      "evidenceRefs": ["L0000:S0"],
+      "interpretation": "Bold, larger font positioned at the top of the page establishes the overarching program title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtitle specifying the governing board meeting.",
+      "evidenceRefs": ["L0001:S0"],
+      "interpretation": "Bold formatting below the main title identifies the specific meeting event.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Meeting date metadata.",
+      "evidenceRefs": ["L0002:S0"],
+      "interpretation": "Standardized date line functioning as administrative metadata rather than a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document type heading indicating minutes.",
+      "evidenceRefs": ["L0003:S0"],
+      "interpretation": "Bold label classifying the document format directly following the event title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Opening body prose describing the meeting.",
+      "evidenceRefs": ["L0004:S0"],
+      "interpretation": "Regular font, left-aligned paragraph text continuing the narrative introduction.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of opening body prose.",
+      "evidenceRefs": ["L0005:S0"],
+      "interpretation": "Regular font paragraph text detailing location and date.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of opening body prose.",
+      "evidenceRefs": ["L0006:S0"],
+      "interpretation": "Regular font paragraph text concluding the introductory sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose outlining meeting objectives.",
+      "evidenceRefs": ["L0007:S0"],
+      "interpretation": "Regular font paragraph text describing procedural goals.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose listing attendees.",
+      "evidenceRefs": ["L0008:S0"],
+      "interpretation": "Regular font paragraph text enumerating participants.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose referencing annexes.",
+      "evidenceRefs": ["L0009:S0"],
+      "interpretation": "Regular font paragraph text providing logistical references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading for agenda items.",
+      "evidenceRefs": ["L0010:S0"],
+      "interpretation": "Bold formatting and distinct layout mark the start of a substantive content section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose recording chair's actions.",
+      "evidenceRefs": ["L0011:S0"],
+      "interpretation": "Regular font paragraph text narrating meeting proceedings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose introducing speaker.",
+      "evidenceRefs": ["L0012:S0"],
+      "interpretation": "Regular font paragraph text continuing narrative flow.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose summarizing remarks.",
+      "evidenceRefs": ["L0013:S0"],
+      "interpretation": "Regular font paragraph text detailing presentation content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation.",
+      "evidenceRefs": ["L0014:S0"],
+      "interpretation": "Regular font paragraph text maintaining narrative structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose conclusion.",
+      "evidenceRefs": ["L0015:S0"],
+      "interpretation": "Regular font paragraph text ending the introductory segment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on agenda presentation.",
+      "evidenceRefs": ["L0016:S0"],
+      "interpretation": "Regular font paragraph text describing procedural steps.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on agenda adoption.",
+      "evidenceRefs": ["L0017:S0"],
+      "interpretation": "Regular font paragraph text recording board decisions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading for global progress.",
+      "evidenceRefs": ["L0018:S0"],
+      "interpretation": "Bold formatting and spatial separation indicate a new substantive topic section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose introducing presenter.",
+      "evidenceRefs": ["L0019:S0"],
+      "interpretation": "Regular font paragraph text narrating presentation delivery.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on report contents.",
+      "evidenceRefs": ["L0020:S0"],
+      "interpretation": "Regular font paragraph text detailing report scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation.",
+      "evidenceRefs": ["L0021:S0"],
+      "interpretation": "Regular font paragraph text listing report components.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose conclusion.",
+      "evidenceRefs": ["L0022:S0"],
+      "interpretation": "Regular font paragraph text finishing the summary list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on participation numbers.",
+      "evidenceRefs": ["L0023:S0"],
+      "interpretation": "Regular font paragraph text providing statistical context.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on operational activities.",
+      "evidenceRefs": ["L0024:S0"],
+      "interpretation": "Regular font paragraph text describing ongoing work.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on delays.",
+      "evidenceRefs": ["L0025:S0"],
+      "interpretation": "Regular font paragraph text explaining scheduling factors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on disruptions.",
+      "evidenceRefs": ["L0026:S0"],
+      "interpretation": "Regular font paragraph text concluding the delay explanation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number footer.",
+      "evidenceRefs": ["L0027:S0"],
+      "interpretation": "Isolated numeric character positioned as standard page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on meeting frequency.",
+      "evidenceRefs": ["L0028:S0"],
+      "interpretation": "Regular font paragraph text continuing discussion on governance schedules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on future meetings.",
+      "evidenceRefs": ["L0029:S0"],
+      "interpretation": "Regular font paragraph text outlining upcoming events.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on release schedule.",
+      "evidenceRefs": ["L0030:S0"],
+      "interpretation": "Regular font paragraph text detailing publication timelines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on UN report.",
+      "evidenceRefs": ["L0031:S0"],
+      "interpretation": "Regular font paragraph text referencing external documentation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on member instructions.",
+      "evidenceRefs": ["L0032:S0"],
+      "interpretation": "Regular font paragraph text conveying directives.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on national programs.",
+      "evidenceRefs": ["L0033:S0"],
+      "interpretation": "Regular font paragraph text completing the directive sequence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on TAG chair change.",
+      "evidenceRefs": ["L0034:S0"],
+      "interpretation": "Regular font paragraph text reporting leadership transitions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on successor details.",
+      "evidenceRefs": ["L0035:S0"],
+      "interpretation": "Regular font paragraph text identifying new roles.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on alternate chair.",
+      "evidenceRefs": ["L0036:S0"],
+      "interpretation": "Regular font paragraph text confirming appointment acceptance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on vacancies.",
+      "evidenceRefs": ["L0037:S0"],
+      "interpretation": "Regular font paragraph text noting open positions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose conclusion.",
+      "evidenceRefs": ["L0038:S0"],
+      "interpretation": "Regular font paragraph text finishing the TAG update.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on TAG meeting.",
+      "evidenceRefs": ["L0039:S0"],
+      "interpretation": "Regular font paragraph text introducing subsequent discussion.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on discussion topics.",
+      "evidenceRefs": ["L0040:S0"],
+      "interpretation": "Regular font paragraph text listing agenda items.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on pandemic impact.",
+      "evidenceRefs": ["L0041:S0"],
+      "interpretation": "Regular font paragraph text analyzing data effects.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on price effects.",
+      "evidenceRefs": ["L0042:S0"],
+      "interpretation": "Regular font paragraph text contrasting impacts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on Russia exclusion.",
+      "evidenceRefs": ["L0043:S0"],
+      "interpretation": "Regular font paragraph text explaining geopolitical adjustments.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on CIS linking.",
+      "evidenceRefs": ["L0044:S0"],
+      "interpretation": "Regular font paragraph text describing methodological changes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0045:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on experiments.",
+      "evidenceRefs": ["L0045:S0"],
+      "interpretation": "Regular font paragraph text detailing technical trials.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0046:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on next meeting.",
+      "evidenceRefs": ["L0046:S0"],
+      "interpretation": "Regular font paragraph text concluding the TAG update.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0047:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on PPP uses.",
+      "evidenceRefs": ["L0047:S0"],
+      "interpretation": "Regular font paragraph text transitioning to data application topics.",
+      "missingEvidence": []
+    }
+  ]
+}

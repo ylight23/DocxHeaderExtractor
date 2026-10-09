@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L1852:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Template instruction line introducing electronic proposal opening procedures.",
+      "evidenceRefs": [
+        "L1852:S0"
+      ],
+      "interpretation": "Body text providing a placeholder for inserting procedural details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L1853:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of template instruction closing the procedure placeholder.",
+      "evidenceRefs": [
+        "L1853:S0"
+      ],
+      "interpretation": "Body text completing the bracketed instruction for opening procedures.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L1854:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main section heading evaluating technical proposal components.",
+      "evidenceRefs": [
+        "L1854:S0"
+      ],
+      "interpretation": "Substantive heading marking the start of Section G on technical evaluation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L1855:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing technical factors and weighting scheme.",
+      "evidenceRefs": [
+        "L1855:S0"
+      ],
+      "interpretation": "Instructional prose defining the scope of technical evaluation factors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L1856:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment completing the introductory sentence for factors.",
+      "evidenceRefs": [
+        "L1856:S0"
+      ],
+      "interpretation": "Body text serving as a verb fragment linking to the subsequent list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L1857:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header or label for technical factor weights.",
+      "evidenceRefs": [
+        "L1857:S0"
+      ],
+      "interpretation": "Layout element labeling the weight column in an evaluation table.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L1858:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell text specifying unit for weights.",
+      "evidenceRefs": [
+        "L1858:S0"
+      ],
+      "interpretation": "Italicized table text indicating percentage units.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L1859:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Placeholder instruction within table cell.",
+      "evidenceRefs": [
+        "L1859:S0"
+      ],
+      "interpretation": "Bracketed instruction for inserting numerical weights.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L1860:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-heading identifying first evaluation criterion.",
+      "evidenceRefs": [
+        "L1860:S0"
+      ],
+      "interpretation": "Structural marker for factor A regarding proposed works compliance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L1861:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item text describing first evaluation point.",
+      "evidenceRefs": [
+        "L1861:S0"
+      ],
+      "interpretation": "Italicized body text detailing the first scoring criterion.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L1862:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item ending with colon.",
+      "evidenceRefs": [
+        "L1862:S0"
+      ],
+      "interpretation": "Body text concluding the first criterion description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L1863:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-heading identifying second evaluation criterion.",
+      "evidenceRefs": [
+        "L1863:S0"
+      ],
+      "interpretation": "Structural marker for factor B regarding value addition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1864:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item text describing second evaluation point.",
+      "evidenceRefs": [
+        "L1864:S0"
+      ],
+      "interpretation": "Italicized body text detailing the second scoring criterion.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L1865:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item text.",
+      "evidenceRefs": [
+        "L1865:S0"
+      ],
+      "interpretation": "Body text concluding the second criterion description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L1866:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-heading identifying third evaluation criterion.",
+      "evidenceRefs": [
+        "L1866:S0"
+      ],
+      "interpretation": "Structural marker for factor C regarding approach and methodology.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L1867:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item for design methodology.",
+      "evidenceRefs": [
+        "L1867:S0"
+      ],
+      "interpretation": "Italicized list entry specifying a required methodology component.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L1868:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item for construction management.",
+      "evidenceRefs": [
+        "L1868:S0"
+      ],
+      "interpretation": "Italicized list entry specifying a required management component.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L1869:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item for method statement.",
+      "evidenceRefs": [
+        "L1869:S0"
+      ],
+      "interpretation": "Italicized list entry specifying a required construction component.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L1870:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item for code of conduct.",
+      "evidenceRefs": [
+        "L1870:S0"
+      ],
+      "interpretation": "Italicized list entry specifying a required compliance component.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L1871:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item for work program.",
+      "evidenceRefs": [
+        "L1871:S0"
+      ],
+      "interpretation": "Italicized list entry specifying a required scheduling component.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L1872:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item for organization chart.",
+      "evidenceRefs": [
+        "L1872:S0"
+      ],
+      "interpretation": "Italicized list entry specifying a required organizational component.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L1873:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item for personnel qualifications.",
+      "evidenceRefs": [
+        "L1873:S0"
+      ],
+      "interpretation": "Italicized list entry specifying a required staffing component.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L1874:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item text.",
+      "evidenceRefs": [
+        "L1874:S0"
+      ],
+      "interpretation": "Italicized body text completing the personnel schedule reference.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L1875:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item for risk assessment.",
+      "evidenceRefs": [
+        "L1875:S0"
+      ],
+      "interpretation": "Italicized list entry specifying a required risk component.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L1876:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item for equipment strategy.",
+      "evidenceRefs": [
+        "L1876:S0"
+      ],
+      "interpretation": "Italicized list entry specifying a required equipment component.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L1877:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header for Section II Proposal Data Sheet.",
+      "evidenceRefs": [
+        "L1877:S0"
+      ],
+      "interpretation": "Page furniture repeating the document section title and page number.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L1878:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Placeholder sub-heading for additional evaluation factors.",
+      "evidenceRefs": [
+        "L1878:S0"
+      ],
+      "interpretation": "Structural marker indicating where further criteria should be inserted.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L1879:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List continuation number.",
+      "evidenceRefs": [
+        "L1879:S0"
+      ],
+      "interpretation": "Numeric list marker continuing the sequence of factors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L1880:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instructional text modifying factors.",
+      "evidenceRefs": [
+        "L1880:S0"
+      ],
+      "interpretation": "Template instruction advising modification of technical factors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L1881:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of instructional text.",
+      "evidenceRefs": [
+        "L1881:S0"
+      ],
+      "interpretation": "Template instruction referencing Section IV documentation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L1882:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing bracket of instructional text.",
+      "evidenceRefs": [
+        "L1882:S0"
+      ],
+      "interpretation": "Template instruction concluding the reference to Section IV.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L1883:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instructional text on weight allocation.",
+      "evidenceRefs": [
+        "L1883:S0"
+      ],
+      "interpretation": "Bold-italic template instruction guiding weight distribution.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L1884:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of weight allocation instruction.",
+      "evidenceRefs": [
+        "L1884:S0"
+      ],
+      "interpretation": "Template instruction directing insertion of sub-factors and weights.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L1885:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing bracket of weight instruction.",
+      "evidenceRefs": [
+        "L1885:S0"
+      ],
+      "interpretation": "Template instruction concluding the weight allocation guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L1886:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main section heading for financial parts opening.",
+      "evidenceRefs": [
+        "L1886:S0"
+      ],
+      "interpretation": "Substantive heading marking the start of Section H on financial opening.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L1887:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing letter initiation requirement.",
+      "evidenceRefs": [
+        "L1887:S0"
+      ],
+      "interpretation": "Instructional prose defining initialing procedures for proposals.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L1888:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text.",
+      "evidenceRefs": [
+        "L1888:S0"
+      ],
+      "interpretation": "Instructional prose continuing the initiation procedure description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L1889:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example instruction for proposal numbering.",
+      "evidenceRefs": [
+        "L1889:S0"
+      ],
+      "interpretation": "Bold-italic example text illustrating numbering and modification rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L1890:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of example instruction.",
+      "evidenceRefs": [
+        "L1890:S0"
+      ],
+      "interpretation": "Bold-italic example text detailing price initiation requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L1891:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing bracket of example instruction.",
+      "evidenceRefs": [
+        "L1891:S0"
+      ],
+      "interpretation": "Bold-italic example text concluding the initiation procedure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L1892:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main section heading for financial part evaluation.",
+      "evidenceRefs": [
+        "L1892:S0"
+      ],
+      "interpretation": "Substantive heading marking the start of Section I on financial evaluation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L1893:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing currency conversion rule.",
+      "evidenceRefs": [
+        "L1893:S0"
+      ],
+      "interpretation": "Instructional prose defining currency usage for evaluation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L1894:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of currency conversion text.",
+      "evidenceRefs": [
+        "L1894:S0"
+      ],
+      "interpretation": "Instructional prose explaining price conversion mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L1895:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Placeholder for currency name.",
+      "evidenceRefs": [
+        "L1895:S0"
+      ],
+      "interpretation": "Instructional text with bracketed placeholder for currency specification.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L1896:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Placeholder for exchange rate source.",
+      "evidenceRefs": [
+        "L1896:S0"
+      ],
+      "interpretation": "Instructional text with blank line and placeholder for source identification.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L1897:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing bracket of source instruction.",
+      "evidenceRefs": [
+        "L1897:S0"
+      ],
+      "interpretation": "Bold-italic instructional text providing source examples.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L1898:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining exchange rate date.",
+      "evidenceRefs": [
+        "L1898:S0"
+      ],
+      "interpretation": "Instructional prose specifying the applicable date for rates.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L1899:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of date definition.",
+      "evidenceRefs": [
+        "L1899:S0"
+      ],
+      "interpretation": "Instructional prose linking date to proposal submission deadline.",
+      "missingEvidence": []
+    }
+  ]
+}

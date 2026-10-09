@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0046:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragmentary sentence completing a regulatory provision in body text.",
+      "evidenceRefs": [
+        "L0046:S0"
+      ],
+      "interpretation": "Continues a numbered list item discussing prize awards, functioning as substantive body prose rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0047:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (8.) outlining a regulatory obligation.",
+      "evidenceRefs": [
+        "L0047:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing a specific requirement, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0048:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (8.) body text.",
+      "evidenceRefs": [
+        "L0048:S0"
+      ],
+      "interpretation": "Completes the sentence for item 8 regarding suspension of publications, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0049:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (9.) outlining a regulatory obligation.",
+      "evidenceRefs": [
+        "L0049:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing complaint handling duties, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0050:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (9.) body text.",
+      "evidenceRefs": [
+        "L0050:S0"
+      ],
+      "interpretation": "Completes the sentence for item 9 regarding jurisdiction over publication activities, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0051:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "First line of a multi-line article heading introducing a substantive section.",
+      "evidenceRefs": [
+        "L0051:S0"
+      ],
+      "interpretation": "Begins 'Article 3.' followed by a descriptive title spanning two lines, establishing the section for ministry responsibilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0052:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Second line of a multi-line article heading.",
+      "evidenceRefs": [
+        "L0052:S0"
+      ],
+      "interpretation": "Completes the heading for Article 3, positioned immediately below the first line without intervening body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0053:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (1.) under Article 3 outlining ministry duties.",
+      "evidenceRefs": [
+        "L0053:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing the Ministry of Public Security's role, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0054:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (1.) body text.",
+      "evidenceRefs": [
+        "L0054:S0"
+      ],
+      "interpretation": "Completes the coordination clause for item 1, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0055:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (1.) body text.",
+      "evidenceRefs": [
+        "L0055:S0"
+      ],
+      "interpretation": "Continues the policy specification language for item 1, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0056:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of numbered list item (1.) body text.",
+      "evidenceRefs": [
+        "L0056:S0"
+      ],
+      "interpretation": "Finishes the security and order mandate for item 1, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0057:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (2.) under Article 3 outlining ministry duties.",
+      "evidenceRefs": [
+        "L0057:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing the Ministry of Industry and Trade's role, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0058:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (2.) body text.",
+      "evidenceRefs": [
+        "L0058:S0"
+      ],
+      "interpretation": "Completes the coordination clause for item 2, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0059:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (2.) body text.",
+      "evidenceRefs": [
+        "L0059:S0"
+      ],
+      "interpretation": "Continues the market management specification language for item 2, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0060:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of numbered list item (2.) body text.",
+      "evidenceRefs": [
+        "L0060:S0"
+      ],
+      "interpretation": "Finishes the trade management mandate for item 2, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0061:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (3.) under Article 3 outlining ministry duties.",
+      "evidenceRefs": [
+        "L0061:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing the Ministry of Natural Resources and Environment's role, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0062:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (3.) body text.",
+      "evidenceRefs": [
+        "L0062:S0"
+      ],
+      "interpretation": "Completes the coordination clause for item 3, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0063:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (3.) body text.",
+      "evidenceRefs": [
+        "L0063:S0"
+      ],
+      "interpretation": "Continues the environmental sanitation specification language for item 3, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0064:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (3.) body text.",
+      "evidenceRefs": [
+        "L0064:S0"
+      ],
+      "interpretation": "References specific clauses of the Publication Law for item 3, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0065:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of numbered list item (3.) body text.",
+      "evidenceRefs": [
+        "L0065:S0"
+      ],
+      "interpretation": "Finishes the legal citation for item 3, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0066:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (4.) under Article 3 outlining ministry duties.",
+      "evidenceRefs": [
+        "L0066:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing the Ministry of Planning and Investment's role, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0067:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (4.) body text.",
+      "evidenceRefs": [
+        "L0067:S0"
+      ],
+      "interpretation": "Completes the coordination clause for item 4, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0068:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (4.) body text.",
+      "evidenceRefs": [
+        "L0068:S0"
+      ],
+      "interpretation": "Continues the policy specification language for item 4, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0069:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (4.) body text.",
+      "evidenceRefs": [
+        "L0069:S0"
+      ],
+      "interpretation": "References specific clauses of the Publication Law for item 4, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0070:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of numbered list item (4.) body text.",
+      "evidenceRefs": [
+        "L0070:S0"
+      ],
+      "interpretation": "Finishes the legal citation for item 4, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0071:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (5.) under Article 3 outlining ministry duties.",
+      "evidenceRefs": [
+        "L0071:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing the Ministry of Finance's role, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0072:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (5.) body text.",
+      "evidenceRefs": [
+        "L0072:S0"
+      ],
+      "interpretation": "Completes the coordination clause for item 5, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0073:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (5.) body text.",
+      "evidenceRefs": [
+        "L0073:S0"
+      ],
+      "interpretation": "Continues the financial policy specification language for item 5, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0074:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (5.) body text.",
+      "evidenceRefs": [
+        "L0074:S0"
+      ],
+      "interpretation": "Details tax and budget allocation policies for item 5, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0075:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (5.) body text.",
+      "evidenceRefs": [
+        "L0075:S0"
+      ],
+      "interpretation": "References specific articles of the Publication Law for item 5, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0076:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of numbered list item (5.) body text.",
+      "evidenceRefs": [
+        "L0076:S0"
+      ],
+      "interpretation": "Finishes the financial mandate for item 5, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0077:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (6.) under Article 3 outlining general ministry duties.",
+      "evidenceRefs": [
+        "L0077:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing cross-ministerial coordination, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0078:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (6.) body text.",
+      "evidenceRefs": [
+        "L0078:S0"
+      ],
+      "interpretation": "Completes the coordination clause for item 6, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0079:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of numbered list item (6.) body text.",
+      "evidenceRefs": [
+        "L0079:S0"
+      ],
+      "interpretation": "Finishes the state management mandate for item 6, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L0080:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "First line of a multi-line article heading introducing a substantive section.",
+      "evidenceRefs": [
+        "L0080:S0"
+      ],
+      "interpretation": "Begins 'Article 4.' followed by a descriptive title spanning two lines, establishing the section for provincial committee tasks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L0081:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Second line of a multi-line article heading.",
+      "evidenceRefs": [
+        "L0081:S0"
+      ],
+      "interpretation": "Completes the heading for Article 4, positioned immediately below the first line without intervening body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L0082:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (1.) under Article 4 outlining provincial duties.",
+      "evidenceRefs": [
+        "L0082:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing master plan promulgation, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L0083:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (1.) body text.",
+      "evidenceRefs": [
+        "L0083:S0"
+      ],
+      "interpretation": "Completes the guidance implementation clause for item 1, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L0084:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of numbered list item (1.) body text.",
+      "evidenceRefs": [
+        "L0084:S0"
+      ],
+      "interpretation": "Finishes the local policy adoption mandate for item 1, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L0085:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (2.) under Article 4 outlining licensing duties.",
+      "evidenceRefs": [
+        "L0085:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing license management, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L0086:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of numbered list item (2.) body text.",
+      "evidenceRefs": [
+        "L0086:S0"
+      ],
+      "interpretation": "Finishes the legal citation for item 2, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L0087:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (3.) under Article 4 examining deposits.",
+      "evidenceRefs": [
+        "L0087:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing deposited publication review, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L0088:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item (3.) body text.",
+      "evidenceRefs": [
+        "L0088:S0"
+      ],
+      "interpretation": "Completes the legal framework reference for item 3, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L0089:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of numbered list item (3.) body text.",
+      "evidenceRefs": [
+        "L0089:S0"
+      ],
+      "interpretation": "Finishes the permit-related violation handling mandate for item 3, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L0090:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (4.) under Article 4 reporting duties.",
+      "evidenceRefs": [
+        "L0090:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing information regimes, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L0091:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of numbered list item (4.) body text.",
+      "evidenceRefs": [
+        "L0091:S0"
+      ],
+      "interpretation": "Finishes the commendation work mandate for item 4, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L0092:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (5.) under Article 4 handling violations.",
+      "evidenceRefs": [
+        "L0092:S0"
+      ],
+      "interpretation": "Standard decree paragraph item detailing complaint settlement, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L0093:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of numbered list item (5.) body text.",
+      "evidenceRefs": [
+        "L0093:S0"
+      ],
+      "interpretation": "Finishes the jurisdictional scope for item 5, functioning as body prose.",
+      "missingEvidence": []
+    }
+  ]
+}

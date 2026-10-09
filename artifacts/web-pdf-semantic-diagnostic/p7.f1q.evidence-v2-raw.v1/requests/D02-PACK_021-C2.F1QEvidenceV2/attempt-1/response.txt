@@ -1,0 +1,485 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L1758:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation regarding inputs to works.",
+      "evidenceRefs": ["L1758:S0"],
+      "interpretation": "Continuation of sentence from preceding line; functions as ordinary body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L1759:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation regarding employer's country.",
+      "evidenceRefs": ["L1759:S0"],
+      "interpretation": "Continuation of sentence; functions as ordinary body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L1760:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation regarding foreign currencies.",
+      "evidenceRefs": ["L1760:S0"],
+      "interpretation": "Continuation of sentence; functions as ordinary body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L1761:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Provision heading \"ITP 19\" introducing proposal security rules.",
+      "evidenceRefs": ["L1761:S0"],
+      "interpretation": "Starts with provision identifier 'ITP 19' at left margin; serves as a clause heading establishing document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L1762:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction continuing provision text.",
+      "evidenceRefs": ["L1762:S0"],
+      "interpretation": "Bracketed instructional text continuing the provision; functions as body/template instruction.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L1763:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Template instruction regarding proposal security requirement.",
+      "evidenceRefs": ["L1763:S0"],
+      "interpretation": "Bracketed placeholder instruction; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L1764:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Template instruction continuation.",
+      "evidenceRefs": ["L1764:S0"],
+      "interpretation": "Bracketed placeholder instruction; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L1765:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single word continuation.",
+      "evidenceRefs": ["L1765:S0"],
+      "interpretation": "Fragment continuing preceding instruction; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L1766:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text regarding proposal security amount.",
+      "evidenceRefs": ["L1766:S0"],
+      "interpretation": "Body prose specifying conditions for proposal security; functions as ordinary text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L1767:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": ["L1767:S0"],
+      "interpretation": "Fragment continuing preceding sentence; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L1768:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction for inserting amount/currency.",
+      "evidenceRefs": ["L1768:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L1769:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction for lots.",
+      "evidenceRefs": ["L1769:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1770:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction continuation.",
+      "evidenceRefs": ["L1770:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L1771:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed note regarding proposal security.",
+      "evidenceRefs": ["L1771:S0"],
+      "interpretation": "Bracketed explanatory note; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L1772:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed note continuation.",
+      "evidenceRefs": ["L1772:S0"],
+      "interpretation": "Bracketed explanatory note; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L1773:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed note continuation.",
+      "evidenceRefs": ["L1773:S0"],
+      "interpretation": "Bracketed explanatory note; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L1774:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed note continuation.",
+      "evidenceRefs": ["L1774:S0"],
+      "interpretation": "Bracketed explanatory note; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L1775:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed note continuation.",
+      "evidenceRefs": ["L1775:S0"],
+      "interpretation": "Bracketed explanatory note; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L1776:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed note conclusion.",
+      "evidenceRefs": ["L1776:S0"],
+      "interpretation": "Bracketed explanatory note; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L1777:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction regarding inclusion.",
+      "evidenceRefs": ["L1777:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L1778:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction continuation.",
+      "evidenceRefs": ["L1778:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L1779:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction continuation.",
+      "evidenceRefs": ["L1779:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L1780:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction continuation.",
+      "evidenceRefs": ["L1780:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L1781:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction conclusion.",
+      "evidenceRefs": ["L1781:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L1782:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header repeating section title across pages.",
+      "evidenceRefs": ["L1782:S0"],
+      "interpretation": "Repeats section title as page furniture/header across multiple pages; functions as navigation aid rather than substantive heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L1783:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text regarding proposer actions.",
+      "evidenceRefs": ["L1783:S0"],
+      "interpretation": "Body prose specifying conditions for ineligibility; functions as ordinary text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L1784:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": ["L1784:S0"],
+      "interpretation": "Body prose continuation; functions as ordinary text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L1785:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": ["L1785:S0"],
+      "interpretation": "Body prose with placeholder; functions as ordinary text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L1786:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": ["L1786:S0"],
+      "interpretation": "Body prose continuation; functions as ordinary text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L1787:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text conclusion.",
+      "evidenceRefs": ["L1787:S0"],
+      "interpretation": "Body prose fragment concluding sentence; functions as ordinary text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L1788:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Provision heading \"ITP 19.3 (d) Other types of acceptable securities:\".",
+      "evidenceRefs": ["L1788:S0"],
+      "interpretation": "Starts with provision identifier and descriptive title at left margin; serves as a sub-clause heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L1789:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction for inserting securities.",
+      "evidenceRefs": ["L1789:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L1790:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction continuation.",
+      "evidenceRefs": ["L1790:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L1791:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction continuation.",
+      "evidenceRefs": ["L1791:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L1792:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction conclusion.",
+      "evidenceRefs": ["L1792:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L1793:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Provision heading \"ITP 20.1 The Proposal shall be valid until...\".",
+      "evidenceRefs": ["L1793:S0"],
+      "interpretation": "Starts with provision identifier 'ITP 20.1'; serves as a clause heading establishing structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L1794:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": ["L1794:S0"],
+      "interpretation": "Body prose continuation; functions as ordinary text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L1795:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": ["L1795:S0"],
+      "interpretation": "Body prose continuation; functions as ordinary text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L1796:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed note regarding validity period.",
+      "evidenceRefs": ["L1796:S0"],
+      "interpretation": "Bracketed explanatory note; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L1797:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed note continuation.",
+      "evidenceRefs": ["L1797:S0"],
+      "interpretation": "Bracketed explanatory note; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L1798:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed note continuation.",
+      "evidenceRefs": ["L1798:S0"],
+      "interpretation": "Bracketed explanatory note; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L1799:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed note continuation.",
+      "evidenceRefs": ["L1799:S0"],
+      "interpretation": "Bracketed explanatory note; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L1800:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed note conclusion.",
+      "evidenceRefs": ["L1800:S0"],
+      "interpretation": "Bracketed explanatory note; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L1801:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Provision heading \"ITP 20.3 The Proposal price shall be adjusted...\".",
+      "evidenceRefs": ["L1801:S0"],
+      "interpretation": "Starts with provision identifier 'ITP 20.3'; serves as a clause heading establishing structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L1802:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction regarding price adjustment.",
+      "evidenceRefs": ["L1802:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L1803:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction continuation.",
+      "evidenceRefs": ["L1803:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L1804:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction continuation.",
+      "evidenceRefs": ["L1804:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L1805:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instruction conclusion.",
+      "evidenceRefs": ["L1805:S0"],
+      "interpretation": "Bracketed instructional text; functions as body/template guidance.",
+      "missingEvidence": []
+    }
+  ]
+}

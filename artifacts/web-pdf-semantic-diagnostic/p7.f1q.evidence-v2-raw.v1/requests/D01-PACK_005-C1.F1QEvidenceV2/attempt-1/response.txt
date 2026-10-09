@@ -1,0 +1,545 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0362:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'b)' specifying a required content field for accounting documents.",
+      "evidenceRefs": [
+        "L0362:S0"
+      ],
+      "interpretation": "Continues an enumerated list of mandatory fields under Article 16.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0363:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'c)' specifying entity identification details for accounting documents.",
+      "evidenceRefs": [
+        "L0363:S0"
+      ],
+      "interpretation": "Continues an enumerated list of mandatory fields under Article 16.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0364:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'd)' marked as abolished, indicating a removed regulatory requirement.",
+      "evidenceRefs": [
+        "L0364:S0"
+      ],
+      "interpretation": "Continues an enumerated list of mandatory fields under Article 16, noting legislative removal.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0365:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'đ)' specifying economic/financial transaction content requirements.",
+      "evidenceRefs": [
+        "L0365:S0"
+      ],
+      "interpretation": "Continues an enumerated list of mandatory fields under Article 16.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0366:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'e)' specifying quantity, unit price, and numerical amount requirements.",
+      "evidenceRefs": [
+        "L0366:S0"
+      ],
+      "interpretation": "Continues an enumerated list of mandatory fields under Article 16.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0367:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of item 'e)' regarding total amounts in numbers and words.",
+      "evidenceRefs": [
+        "L0367:S0"
+      ],
+      "interpretation": "Completes the specification for monetary values in item 'e' of Article 16.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0368:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'g)' specifying signature and name requirements for involved parties.",
+      "evidenceRefs": [
+        "L0368:S0"
+      ],
+      "interpretation": "Continues an enumerated list of mandatory fields under Article 16.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0369:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of item 'g)' referencing the accounting document.",
+      "evidenceRefs": [
+        "L0369:S0"
+      ],
+      "interpretation": "Completes the signature requirement clause for item 'g' of Article 16.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0370:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote beginning, citing legislative amendment abolishing a specific item.",
+      "evidenceRefs": [
+        "L0370:S0"
+      ],
+      "interpretation": "Administrative footnote explaining statutory changes, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0371:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote continuation listing amended laws.",
+      "evidenceRefs": [
+        "L0371:S0"
+      ],
+      "interpretation": "Continues the legislative citation footnote from O9.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0372:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote continuation listing additional amended statutes.",
+      "evidenceRefs": [
+        "L0372:S0"
+      ],
+      "interpretation": "Continues the legislative citation footnote from O9.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0373:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote continuation listing further amended statutes.",
+      "evidenceRefs": [
+        "L0373:S0"
+      ],
+      "interpretation": "Continues the legislative citation footnote from O9.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0374:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote ending with effective date of the cited amendments.",
+      "evidenceRefs": [
+        "L0374:S0"
+      ],
+      "interpretation": "Concludes the legislative citation footnote from O9.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0375:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page header containing publication name, issue number, date, and page number.",
+      "evidenceRefs": [
+        "L0375:S0"
+      ],
+      "interpretation": "Document furniture/page metadata, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0376:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph 2 of Article 16, allowing additional content beyond mandatory fields.",
+      "evidenceRefs": [
+        "L0376:S0"
+      ],
+      "interpretation": "Body text continuing Article 16 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0377:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2 regarding optional content types.",
+      "evidenceRefs": [
+        "L0377:S0"
+      ],
+      "interpretation": "Body text continuing Article 16 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0378:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of paragraph 2 sentence.",
+      "evidenceRefs": [
+        "L0378:S0"
+      ],
+      "interpretation": "Body text continuing Article 16 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0379:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bolded article heading introducing a new section on electronic accounting documents.",
+      "evidenceRefs": [
+        "L0379:S0"
+      ],
+      "interpretation": "Establishes the heading for Article 17, structuring the document into a new substantive topic.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0380:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph 1 of Article 17 defining conditions for electronic documents.",
+      "evidenceRefs": [
+        "L0380:S0"
+      ],
+      "interpretation": "Body text initiating Article 17 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0381:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1 regarding data format and transmission.",
+      "evidenceRefs": [
+        "L0381:S0"
+      ],
+      "interpretation": "Body text continuing Article 17 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0382:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1 regarding encryption and network transmission.",
+      "evidenceRefs": [
+        "L0382:S0"
+      ],
+      "interpretation": "Body text continuing Article 17 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0383:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1 listing physical media examples.",
+      "evidenceRefs": [
+        "L0383:S0"
+      ],
+      "interpretation": "Body text continuing Article 17 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0384:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph 2 of Article 17 mandating security and data integrity.",
+      "evidenceRefs": [
+        "L0384:S0"
+      ],
+      "interpretation": "Body text initiating Article 17 paragraph 2.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0385:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2 regarding usage, storage, and anti-tampering measures.",
+      "evidenceRefs": [
+        "L0385:S0"
+      ],
+      "interpretation": "Body text continuing Article 17 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0386:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2 listing prohibited unauthorized actions.",
+      "evidenceRefs": [
+        "L0386:S0"
+      ],
+      "interpretation": "Body text continuing Article 17 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0387:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2 regarding management as original documents.",
+      "evidenceRefs": [
+        "L0387:S0"
+      ],
+      "interpretation": "Body text continuing Article 17 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0388:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2 requiring compatible equipment for access.",
+      "evidenceRefs": [
+        "L0388:S0"
+      ],
+      "interpretation": "Body text continuing Article 17 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0389:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of paragraph 2 sentence.",
+      "evidenceRefs": [
+        "L0389:S0"
+      ],
+      "interpretation": "Body text continuing Article 17 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0390:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph 3 of Article 17 addressing conversion between paper and electronic forms.",
+      "evidenceRefs": [
+        "L0390:S0"
+      ],
+      "interpretation": "Body text initiating Article 17 paragraph 3.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0391:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3 regarding transaction validity.",
+      "evidenceRefs": [
+        "L0391:S0"
+      ],
+      "interpretation": "Body text continuing Article 17 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0392:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3 limiting paper form to archival purposes.",
+      "evidenceRefs": [
+        "L0392:S0"
+      ],
+      "interpretation": "Body text continuing Article 17 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0393:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of paragraph 3 stating paper form lacks transactional force.",
+      "evidenceRefs": [
+        "L0393:S0"
+      ],
+      "interpretation": "Body text continuing Article 17 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0394:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bolded article heading introducing a new section on preparation and storage.",
+      "evidenceRefs": [
+        "L0394:S0"
+      ],
+      "interpretation": "Establishes the heading for Article 18, structuring the document into a new substantive topic.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0395:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph 1 of Article 18 mandating document creation for relevant transactions.",
+      "evidenceRefs": [
+        "L0395:S0"
+      ],
+      "interpretation": "Body text initiating Article 18 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0396:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1 restricting creation to once per transaction.",
+      "evidenceRefs": [
+        "L0396:S0"
+      ],
+      "interpretation": "Body text continuing Article 18 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0397:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of paragraph 1 sentence.",
+      "evidenceRefs": [
+        "L0397:S0"
+      ],
+      "interpretation": "Body text continuing Article 18 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0398:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph 2 of Article 18 setting drafting standards (clear, complete, timely).",
+      "evidenceRefs": [
+        "L0398:S0"
+      ],
+      "interpretation": "Body text initiating Article 18 paragraph 2.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0399:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2 addressing unstandardized document scenarios.",
+      "evidenceRefs": [
+        "L0399:S0"
+      ],
+      "interpretation": "Body text continuing Article 18 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0400:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2 allowing self-preparation if mandatory fields are met.",
+      "evidenceRefs": [
+        "L0400:S0"
+      ],
+      "interpretation": "Body text continuing Article 18 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0401:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of paragraph 2 referencing Article 16 compliance.",
+      "evidenceRefs": [
+        "L0401:S0"
+      ],
+      "interpretation": "Body text continuing Article 18 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0402:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph 3 of Article 18 prohibiting abbreviations and erasures.",
+      "evidenceRefs": [
+        "L0402:S0"
+      ],
+      "interpretation": "Body text initiating Article 18 paragraph 3.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0403:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3 specifying ink and continuous writing requirements.",
+      "evidenceRefs": [
+        "L0403:S0"
+      ],
+      "interpretation": "Body text continuing Article 18 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0404:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3 addressing blank spaces and invalidity of alterations.",
+      "evidenceRefs": [
+        "L0404:S0"
+      ],
+      "interpretation": "Body text continuing Article 18 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0405:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 3 stating altered documents lack payment/accounting value.",
+      "evidenceRefs": [
+        "L0405:S0"
+      ],
+      "interpretation": "Body text continuing Article 18 regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0406:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of paragraph 3 prescribing cross-out method for correction.",
+      "evidenceRefs": [
+        "L0406:S0"
+      ],
+      "interpretation": "Body text continuing Article 18 regulations.",
+      "missingEvidence": []
+    }
+  ]
+}

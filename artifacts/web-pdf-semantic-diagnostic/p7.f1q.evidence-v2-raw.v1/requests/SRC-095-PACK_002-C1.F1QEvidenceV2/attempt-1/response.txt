@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0090:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section 10.3 heading",
+      "evidenceRefs": [
+        "L0090:S0"
+      ],
+      "interpretation": "Numbered section title introducing intermediary-encapsulation attacks content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0091:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section 10.4 heading",
+      "evidenceRefs": [
+        "L0091:S0"
+      ],
+      "interpretation": "Numbered section title regarding pushed response cacheability.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0092:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section 10.5 heading",
+      "evidenceRefs": [
+        "L0092:S0"
+      ],
+      "interpretation": "Numbered section title for denial-of-service considerations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0093:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection 10.5.1 heading",
+      "evidenceRefs": [
+        "L0093:S0"
+      ],
+      "interpretation": "Indented subsection title detailing field section size limits.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0094:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer",
+      "evidenceRefs": [
+        "L0094:S0"
+      ],
+      "interpretation": "Standard track and page number footer text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0095:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header",
+      "evidenceRefs": [
+        "L0095:S0"
+      ],
+      "interpretation": "Document identifier and date repeated across pages as page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0097:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection 10.5.2 heading",
+      "evidenceRefs": [
+        "L0097:S0"
+      ],
+      "interpretation": "Indented subsection title addressing CONNECT method issues.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0098:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section 10.6 heading",
+      "evidenceRefs": [
+        "L0098:S0"
+      ],
+      "interpretation": "Numbered section title on compression usage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0099:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section 10.7 heading",
+      "evidenceRefs": [
+        "L0099:S0"
+      ],
+      "interpretation": "Numbered section title covering padding and traffic analysis.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0100:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section 10.8 heading",
+      "evidenceRefs": [
+        "L0100:S0"
+      ],
+      "interpretation": "Numbered section title for frame parsing rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0101:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section 10.9 heading",
+      "evidenceRefs": [
+        "L0101:S0"
+      ],
+      "interpretation": "Numbered section title regarding early data handling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0102:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section 10.10 heading",
+      "evidenceRefs": [
+        "L0102:S0"
+      ],
+      "interpretation": "Numbered section title on migration procedures.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0103:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section 10.11 heading",
+      "evidenceRefs": [
+        "L0103:S0"
+      ],
+      "interpretation": "Numbered section title for privacy considerations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0104:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section 11 heading",
+      "evidenceRefs": [
+        "L0104:S0"
+      ],
+      "interpretation": "Numbered section title introducing IANA registration tasks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0105:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection 11.1 heading",
+      "evidenceRefs": [
+        "L0105:S0"
+      ],
+      "interpretation": "Indented subsection title for HTTP/3 identification string registration.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0106:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection 11.2 heading",
+      "evidenceRefs": [
+        "L0106:S0"
+      ],
+      "interpretation": "Indented subsection title creating new registries.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0107:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-subsection 11.2.1 heading",
+      "evidenceRefs": [
+        "L0107:S0"
+      ],
+      "interpretation": "Deeply indented subsection listing frame types.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0108:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-subsection 11.2.2 heading",
+      "evidenceRefs": [
+        "L0108:S0"
+      ],
+      "interpretation": "Deeply indented subsection listing settings parameters.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0109:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-subsection 11.2.3 heading",
+      "evidenceRefs": [
+        "L0109:S0"
+      ],
+      "interpretation": "Deeply indented subsection listing error codes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0110:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-subsection 11.2.4 heading",
+      "evidenceRefs": [
+        "L0110:S0"
+      ],
+      "interpretation": "Deeply indented subsection listing stream types.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0111:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section 12 heading",
+      "evidenceRefs": [
+        "L0111:S0"
+      ],
+      "interpretation": "Numbered section title for references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0112:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection 12.1 heading",
+      "evidenceRefs": [
+        "L0112:S0"
+      ],
+      "interpretation": "Indented subsection title for normative references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0113:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection 12.2 heading",
+      "evidenceRefs": [
+        "L0113:S0"
+      ],
+      "interpretation": "Indented subsection title for informative references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0114:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Appendix A heading",
+      "evidenceRefs": [
+        "L0114:S0"
+      ],
+      "interpretation": "Appendix title discussing HTTP/2 transition considerations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0115:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-appendix A.1 heading",
+      "evidenceRefs": [
+        "L0115:S0"
+      ],
+      "interpretation": "Indented appendix subsection on streams.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0116:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-appendix A.2 heading",
+      "evidenceRefs": [
+        "L0116:S0"
+      ],
+      "interpretation": "Indented appendix subsection on HTTP frame types.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0117:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-sub-appendix A.2.1 heading",
+      "evidenceRefs": [
+        "L0117:S0"
+      ],
+      "interpretation": "Deeply indented subsection on prioritization differences.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0118:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-sub-appendix A.2.2 heading",
+      "evidenceRefs": [
+        "L0118:S0"
+      ],
+      "interpretation": "Deeply indented subsection on field compression differences.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0119:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-sub-appendix A.2.3 heading",
+      "evidenceRefs": [
+        "L0119:S0"
+      ],
+      "interpretation": "Deeply indented subsection on flow-control differences.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0120:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-sub-appendix A.2.4 heading",
+      "evidenceRefs": [
+        "L0120:S0"
+      ],
+      "interpretation": "Deeply indented subsection on guidance for new frame types.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0121:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-sub-appendix A.2.5 heading",
+      "evidenceRefs": [
+        "L0121:S0"
+      ],
+      "interpretation": "Deeply indented subsection comparing HTTP/2 and HTTP/3 frame types.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0122:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-appendix A.3 heading",
+      "evidenceRefs": [
+        "L0122:S0"
+      ],
+      "interpretation": "Indented appendix subsection on HTTP/2 settings parameters.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0123:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-appendix A.4 heading",
+      "evidenceRefs": [
+        "L0123:S0"
+      ],
+      "interpretation": "Indented appendix subsection on HTTP/2 error codes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0124:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-sub-appendix A.4.1 heading",
+      "evidenceRefs": [
+        "L0124:S0"
+      ],
+      "interpretation": "Deeply indented subsection mapping HTTP/2 and HTTP/3 errors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0125:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Back-matter heading",
+      "evidenceRefs": [
+        "L0125:S0"
+      ],
+      "interpretation": "Unnumbered heading acknowledging contributors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0126:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Back-matter heading",
+      "evidenceRefs": [
+        "L0126:S0"
+      ],
+      "interpretation": "Unnumbered heading introducing the index.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0127:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer",
+      "evidenceRefs": [
+        "L0127:S0"
+      ],
+      "interpretation": "Standard track and page number footer text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0128:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header",
+      "evidenceRefs": [
+        "L0128:S0"
+      ],
+      "interpretation": "Document identifier and date repeated across pages as page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0129:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Back-matter heading",
+      "evidenceRefs": [
+        "L0129:S0"
+      ],
+      "interpretation": "Unnumbered heading providing author contact details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0130:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main section heading",
+      "evidenceRefs": [
+        "L0130:S0"
+      ],
+      "interpretation": "Prominently sized and bolded title introducing the document overview.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0131:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph",
+      "evidenceRefs": [
+        "L0131:S0"
+      ],
+      "interpretation": "Continuous prose explaining HTTP semantics usage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0132:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph",
+      "evidenceRefs": [
+        "L0132:S0"
+      ],
+      "interpretation": "Continuous prose detailing historical HTTP version usage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0133:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph",
+      "evidenceRefs": [
+        "L0133:S0"
+      ],
+      "interpretation": "Continuous prose describing transport layer associations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0134:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph",
+      "evidenceRefs": [
+        "L0134:S0"
+      ],
+      "interpretation": "Continuous prose stating HTTP/3's support over QUIC.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0135:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading",
+      "evidenceRefs": [
+        "L0135:S0"
+      ],
+      "interpretation": "Bolded subsection title reviewing prior HTTP versions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0136:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph",
+      "evidenceRefs": [
+        "L0136:S0"
+      ],
+      "interpretation": "Continuous prose describing HTTP/1.1 field formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0137:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph",
+      "evidenceRefs": [
+        "L0137:S0"
+      ],
+      "interpretation": "Continuous prose noting parsing complexity from whitespace.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0138:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph",
+      "evidenceRefs": [
+        "L0138:S0"
+      ],
+      "interpretation": "Continuous prose concluding the discussion on variant behavior tolerance.",
+      "missingEvidence": []
+    }
+  ]
+}
