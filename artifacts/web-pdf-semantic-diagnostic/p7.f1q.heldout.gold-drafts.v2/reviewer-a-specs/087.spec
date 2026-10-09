@@ -1,0 +1,41 @@
+E L0004:S0 | Document type title "DECREE"
+E L0005:S0 | Document title "Detailing a number of articles of the Law on Cyber Security"
+E L0015:S0 | Chapter label "Chapter I"
+E L0016:S0 | Chapter title "GENERAL PROVISIONS"
+E L0017:S0 | Article heading "Article 1. Scope of regulation"
+E L0385:S0 | Article heading "Article 11. Conditions for technical measures to monitor and protect" (line 1)
+E L0386:S0 | Article heading line 2 "cyber security"
+O? L0000:S0 | Issuer "THE GOVERNMENT" (letterhead)
+O? L0000:S1 | National name
+O? L0001:S1 | National motto
+O? L0002:S0 | Decree number
+O? L0003:S0 | Place and date
+O? L0014:S0 | Garbled interleaved text (overlapping text layers)
+O? L0378:S0 | Garbled interleaved text (overlapping text layers)
+O? L1114:S0 | Form number "Form No. 02" (form furniture)
+O? L1115:S0 | Placeholder issuer "AGENCY/ORGANIZATION" in the form letterhead
+O? L1115:S1 | National name in the form template
+O? L1116:S1 | National motto in the form template
+O L1118:S0 | Subject line (trích yếu) of the template letter: left administrative column under the number, regular 13pt; USER_DECISION_2026_10_10 (Issue #6): OTHER, not a title
+O L1119:S0 | Subject line continuation; USER_DECISION_2026_10_10 (Issue #6): OTHER, not a title
+O? L1124:S0 | Lead-in sentence of the template
+O? L1125:S0 | Table column label "Contact"
+O? L1126:S0 | Table column labels
+O? L1126:S1 | Table column label
+O? L1128:S0 | Garbled table row (overlapping text layers)
+O? L1129:S0 | "Receipt:" distribution label
+O? L1129:S1 | Signature block label
+O? L1130:S1 | Signature block label
+O? L1202:S0 | Form number "Form No. 05"
+O? L1203:S0 | Placeholder issuer in the form letterhead
+O L1207:S0 | Subject line (trích yếu) of the template letter; USER_DECISION_2026_10_10 (Issue #6): OTHER, not a title
+O L1208:S0 | Subject line continuation; USER_DECISION_2026_10_10 (Issue #6): OTHER, not a title
+O L1209:S0 | Subject line continuation; USER_DECISION_2026_10_10 (Issue #6): OTHER, not a title
+O L1210:S0 | Subject line continuation; USER_DECISION_2026_10_10 (Issue #6): OTHER, not a title
+O L1211:S0 | Subject line continuation; USER_DECISION_2026_10_10 (Issue #6): OTHER, not a title
+O? L1216:S0 | Garbled interleaved text (overlapping text layers)
+O? L1222:S0 | Form item "2. Reason" (form field, not a document heading)
+O? L1224:S0 | Form item "3. Enclosed documents ..." (form field)
+O? L1228:S0 | "Receipt:" distribution label
+O? L1228:S1 | Signature block label
+O? L1229:S1 | Signature block label

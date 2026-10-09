@@ -1,0 +1,3167 @@
+{
+  "version": "P7_F1Q_HELDOUT_REVIEW_BUNDLE_V1",
+  "id": "094",
+  "sourceKey": "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf",
+  "sourceSha256": "8314f1034854548baf26f9912f79c6207299cb0520b31ed25af64889bd1500bc",
+  "sourceAliasUniverseSha256": "3d1d334b09b9a3fa5fc050a9f993b4f506dddfc8c0521c061f2972eb5fa36ad1",
+  "evidenceStoreSha256": "4b73a4e3807bd3bc176fde7f1829c847e81b20e9f3ffd05084ef93f10540995c",
+  "pageSelectionSha256": "c4b9ebefbd5a15f0cef59bb1d11f00497b971effae91f185475d08b335851f94",
+  "pageStats": [
+    {
+      "page": 1,
+      "lineCount": 36,
+      "textExtent": [
+        56.4,
+        538.1,
+        105.9,
+        761.2
+      ],
+      "medianFontSize": 10
+    },
+    {
+      "page": 2,
+      "lineCount": 33,
+      "textExtent": [
+        56.4,
+        538.2,
+        105.9,
+        803.2
+      ],
+      "medianFontSize": 10
+    },
+    {
+      "page": 16,
+      "lineCount": 38,
+      "textExtent": [
+        56.4,
+        538.3,
+        105.9,
+        803.2
+      ],
+      "medianFontSize": 10
+    },
+    {
+      "page": 63,
+      "lineCount": 41,
+      "textExtent": [
+        56.4,
+        538.3,
+        105.9,
+        803.2
+      ],
+      "medianFontSize": 10
+    }
+  ],
+  "layoutBasis": "bbox=[left,right,bottom,top] in PDF points, bottom-left origin; font={size,name,boldRatio,italicRatio}; parser observations, not labels",
+  "occurrences": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "ordinal": 0,
+      "pageStratum": "FIRST",
+      "text": "Stream:",
+      "layout": {
+        "bbox": [
+          71.3,
+          103.5,
+          754.3,
+          760.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0000:S1",
+      "page": 1,
+      "ordinal": 1,
+      "pageStratum": "FIRST",
+      "text": "Internet Engineering Task Force (IETF)",
+      "layout": {
+        "bbox": [
+          152.2,
+          315,
+          752.2,
+          761.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "ordinal": 2,
+      "pageStratum": "FIRST",
+      "text": "RFC:",
+      "layout": {
+        "bbox": [
+          71.2,
+          89.3,
+          742.1,
+          748.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0001:S1",
+      "page": 1,
+      "ordinal": 3,
+      "pageStratum": "FIRST",
+      "text": "9113",
+      "layout": {
+        "bbox": [
+          152.4,
+          172.2,
+          742,
+          748.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "ordinal": 4,
+      "pageStratum": "FIRST",
+      "text": "Obsoletes:",
+      "layout": {
+        "bbox": [
+          71.4,
+          112.5,
+          729.8,
+          736.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0002:S1",
+      "page": 1,
+      "ordinal": 5,
+      "pageStratum": "FIRST",
+      "text": "7540, 8740",
+      "layout": {
+        "bbox": [
+          152.4,
+          197.8,
+          728.5,
+          736.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "ordinal": 6,
+      "pageStratum": "FIRST",
+      "text": "Category:",
+      "layout": {
+        "bbox": [
+          71.4,
+          110.3,
+          715.5,
+          724.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0003:S1",
+      "page": 1,
+      "ordinal": 7,
+      "pageStratum": "FIRST",
+      "text": "Standards Track",
+      "layout": {
+        "bbox": [
+          152.3,
+          221.7,
+          717.6,
+          724.5
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "ordinal": 8,
+      "pageStratum": "FIRST",
+      "text": "Published:",
+      "layout": {
+        "bbox": [
+          71.2,
+          114.8,
+          705.3,
+          712.3
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0004:S1",
+      "page": 1,
+      "ordinal": 9,
+      "pageStratum": "FIRST",
+      "text": "June 2022",
+      "layout": {
+        "bbox": [
+          151.8,
+          193.9,
+          703.3,
+          711.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "ordinal": 10,
+      "pageStratum": "FIRST",
+      "text": "ISSN:",
+      "layout": {
+        "bbox": [
+          71.2,
+          93,
+          693.1,
+          699.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0005:S1",
+      "page": 1,
+      "ordinal": 11,
+      "pageStratum": "FIRST",
+      "text": "2070-1721",
+      "layout": {
+        "bbox": [
+          152.5,
+          196,
+          693.1,
+          699.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "ordinal": 12,
+      "pageStratum": "FIRST",
+      "text": "Authors:",
+      "layout": {
+        "bbox": [
+          70.9,
+          107.3,
+          680.9,
+          687.8
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0006:S1",
+      "page": 1,
+      "ordinal": 13,
+      "pageStratum": "FIRST",
+      "text": "M. Thomson, Ed.",
+      "layout": {
+        "bbox": [
+          152.2,
+          221.1,
+          679.6,
+          687.8
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0006:S2",
+      "page": 1,
+      "ordinal": 14,
+      "pageStratum": "FIRST",
+      "text": "C. Benﬁeld, Ed.",
+      "layout": {
+        "bbox": [
+          237.9,
+          299.1,
+          679.6,
+          687.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "ordinal": 15,
+      "pageStratum": "FIRST",
+      "text": "Mozilla Apple Inc.",
+      "layout": {
+        "bbox": [
+          151.7,
+          277.8,
+          666.5,
+          675.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-italic",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "ordinal": 16,
+      "pageStratum": "FIRST",
+      "text": "RFC 9113",
+      "layout": {
+        "bbox": [
+          66.4,
+          142.2,
+          622.9,
+          635.5
+        ],
+        "font": {
+          "size": 17.2,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "ordinal": 17,
+      "pageStratum": "FIRST",
+      "text": "HTTP/2",
+      "layout": {
+        "bbox": [
+          66.4,
+          128,
+          598.6,
+          613.7
+        ],
+        "font": {
+          "size": 17.2,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "ordinal": 18,
+      "pageStratum": "FIRST",
+      "text": "Abstract",
+      "layout": {
+        "bbox": [
+          66,
+          127.7,
+          555,
+          566.1
+        ],
+        "font": {
+          "size": 14.4,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "ordinal": 19,
+      "pageStratum": "FIRST",
+      "text": "This speciﬁcation describes an optimized expression ofthe semantics ofthe Hypertext Transfer",
+      "layout": {
+        "bbox": [
+          66.1,
+          519,
+          531.1,
+          541.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "ordinal": 20,
+      "pageStratum": "FIRST",
+      "text": "Protocol (HTTP), referred to as HTTP version 2 (HTTP/2). HTTP/2 enables a more eﬃcient use of",
+      "layout": {
+        "bbox": [
+          66.3,
+          515,
+          518.4,
+          527.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "ordinal": 21,
+      "pageStratum": "FIRST",
+      "text": "network resources and a reduced latency by introducing ﬁeld compression and allowing multiple",
+      "layout": {
+        "bbox": [
+          66.2,
+          528.3,
+          503.9,
+          514.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "ordinal": 22,
+      "pageStratum": "FIRST",
+      "text": "concurrent exchanges on the same connection.",
+      "layout": {
+        "bbox": [
+          66.5,
+          291.3,
+          490.3,
+          500.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "ordinal": 23,
+      "pageStratum": "FIRST",
+      "text": "This document obsoletes RFCs 7540 and 8740.",
+      "layout": {
+        "bbox": [
+          66.1,
+          277.8,
+          469,
+          476.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "ordinal": 24,
+      "pageStratum": "FIRST",
+      "text": "Status ofThis Memo",
+      "layout": {
+        "bbox": [
+          66.3,
+          213.6,
+          433,
+          444.2
+        ],
+        "font": {
+          "size": 14.4,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "ordinal": 25,
+      "pageStratum": "FIRST",
+      "text": "This is an Internet Standards Track document.",
+      "layout": {
+        "bbox": [
+          66.1,
+          286,
+          411.4,
+          419.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 1,
+      "ordinal": 26,
+      "pageStratum": "FIRST",
+      "text": "This document is a product ofthe Internet Engineering Task Force (IETF). It represents the",
+      "layout": {
+        "bbox": [
+          66.1,
+          491.5,
+          385.5,
+          395.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 1,
+      "ordinal": 27,
+      "pageStratum": "FIRST",
+      "text": "consensus ofthe IETF community. It has received public review and has been approved for",
+      "layout": {
+        "bbox": [
+          66.5,
+          495,
+          371.9,
+          382
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 1,
+      "ordinal": 28,
+      "pageStratum": "FIRST",
+      "text": "publication by the Internet Engineering Steering Group (IESG). Further information on Internet",
+      "layout": {
+        "bbox": [
+          66,
+          518.4,
+          358.3,
+          368.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 1,
+      "ordinal": 29,
+      "pageStratum": "FIRST",
+      "text": "Standards is available in Section 2 ofRFC 7841.",
+      "layout": {
+        "bbox": [
+          66.4,
+          286,
+          347,
+          354.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 1,
+      "ordinal": 30,
+      "pageStratum": "FIRST",
+      "text": "Information about the current status ofthis document, any errata, and how to provide feedback",
+      "layout": {
+        "bbox": [
+          66.3,
+          521.8,
+          321.1,
+          331.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 1,
+      "ordinal": 31,
+      "pageStratum": "FIRST",
+      "text": "on it may be obtained at https://www.rfc-editor.org/info/rfc9113.",
+      "layout": {
+        "bbox": [
+          66.5,
+          368.5,
+          307.5,
+          317.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 1,
+      "ordinal": 32,
+      "pageStratum": "FIRST",
+      "text": "Copyright Notice",
+      "layout": {
+        "bbox": [
+          66.7,
+          189,
+          270.5,
+          285
+        ],
+        "font": {
+          "size": 14.4,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 1,
+      "ordinal": 33,
+      "pageStratum": "FIRST",
+      "text": "Copyright (c) 2022 IETF Trust and the persons identiﬁed as the document authors. All rights",
+      "layout": {
+        "bbox": [
+          66.5,
+          493.7,
+          249.9,
+          260
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 1,
+      "ordinal": 34,
+      "pageStratum": "FIRST",
+      "text": "reserved.",
+      "layout": {
+        "bbox": [
+          66.2,
+          109,
+          238.6,
+          246.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 1,
+      "ordinal": 35,
+      "pageStratum": "FIRST",
+      "text": "Thomson & Benﬁeld Standards Track Page 1",
+      "layout": {
+        "bbox": [
+          56.4,
+          538.1,
+          105.9,
+          115
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 2,
+      "ordinal": 36,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "RFC 9113 HTTP/2 June 2022",
+      "layout": {
+        "bbox": [
+          56.6,
+          538.2,
+          794.2,
+          803.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0029:S0",
+      "page": 2,
+      "ordinal": 37,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF",
+      "layout": {
+        "bbox": [
+          66.1,
+          481.6,
+          757.4,
+          767.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0030:S0",
+      "page": 2,
+      "ordinal": 38,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Documents (https://trustee.ietf.org/license-info) in eﬀect on the date ofpublication ofthis",
+      "layout": {
+        "bbox": [
+          66.3,
+          487,
+          743.8,
+          753.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0031:S0",
+      "page": 2,
+      "ordinal": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "document. Please review these documents carefully, as they describe your rights and restrictions",
+      "layout": {
+        "bbox": [
+          66.5,
+          521.5,
+          730.2,
+          740.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0032:S0",
+      "page": 2,
+      "ordinal": 40,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "with respect to this document. Code Components extracted from this document must include",
+      "layout": {
+        "bbox": [
+          65.9,
+          505,
+          716.6,
+          726.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0033:S0",
+      "page": 2,
+      "ordinal": 41,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Revised BSD License text as described in Section 4.e ofthe Trust Legal Provisions and are",
+      "layout": {
+        "bbox": [
+          66.3,
+          484,
+          703,
+          713.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0034:S0",
+      "page": 2,
+      "ordinal": 42,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "provided without warranty as described in the Revised BSD License.",
+      "layout": {
+        "bbox": [
+          66,
+          386.5,
+          689.4,
+          699.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0035:S0",
+      "page": 2,
+      "ordinal": 43,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table of Contents",
+      "layout": {
+        "bbox": [
+          66.1,
+          193.9,
+          655,
+          666.2
+        ],
+        "font": {
+          "size": 14.4,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0036:S0",
+      "page": 2,
+      "ordinal": 44,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1. Introduction",
+      "layout": {
+        "bbox": [
+          66.6,
+          138.8,
+          633.4,
+          641.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0037:S0",
+      "page": 2,
+      "ordinal": 45,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2. HTTP/2 Protocol Overview",
+      "layout": {
+        "bbox": [
+          66.5,
+          203.5,
+          611.7,
+          620.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0038:S0",
+      "page": 2,
+      "ordinal": 46,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1. Document Organization",
+      "layout": {
+        "bbox": [
+          78.5,
+          213.1,
+          590.1,
+          600.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0039:S0",
+      "page": 2,
+      "ordinal": 47,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2. Conventions and Terminology",
+      "layout": {
+        "bbox": [
+          78.5,
+          242.6,
+          569.6,
+          579.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0040:S0",
+      "page": 2,
+      "ordinal": 48,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3. Starting HTTP/2",
+      "layout": {
+        "bbox": [
+          66.5,
+          152.6,
+          546.6,
+          556.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0041:S0",
+      "page": 2,
+      "ordinal": 49,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1. HTTP/2 Version Identiﬁcation",
+      "layout": {
+        "bbox": [
+          78.5,
+          237.8,
+          527.2,
+          536.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0042:S0",
+      "page": 2,
+      "ordinal": 50,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.2. Starting HTTP/2 for \"htt ps\" URIs",
+      "layout": {
+        "bbox": [
+          78.5,
+          253,
+          505.6,
+          515.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0043:S0",
+      "page": 2,
+      "ordinal": 51,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3. Starting HTTP/2 with Prior Knowledge",
+      "layout": {
+        "bbox": [
+          78.5,
+          276.3,
+          484.9,
+          494.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0044:S0",
+      "page": 2,
+      "ordinal": 52,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.4. HTTP/2 Connection Preface",
+      "layout": {
+        "bbox": [
+          78.5,
+          227.5,
+          465.6,
+          474.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0045:S0",
+      "page": 2,
+      "ordinal": 53,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4. HTTP Frames",
+      "layout": {
+        "bbox": [
+          66.1,
+          142,
+          443.7,
+          450.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0046:S0",
+      "page": 2,
+      "ordinal": 54,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1. Frame Format",
+      "layout": {
+        "bbox": [
+          78.1,
+          165.9,
+          423.2,
+          430.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0047:S0",
+      "page": 2,
+      "ordinal": 55,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2. Frame Size",
+      "layout": {
+        "bbox": [
+          78.1,
+          149.5,
+          402.7,
+          410.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0048:S0",
+      "page": 2,
+      "ordinal": 56,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.3. Field Section Compression and Decompression",
+      "layout": {
+        "bbox": [
+          78.1,
+          319.6,
+          379.9,
+          389.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0049:S0",
+      "page": 2,
+      "ordinal": 57,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.3.1. Compression State",
+      "layout": {
+        "bbox": [
+          90.1,
+          205,
+          359.4,
+          369.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0050:S0",
+      "page": 2,
+      "ordinal": 58,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5. Streams and Multiplexing",
+      "layout": {
+        "bbox": [
+          66.5,
+          200.9,
+          336.4,
+          346.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0051:S0",
+      "page": 2,
+      "ordinal": 59,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.1. Stream States",
+      "layout": {
+        "bbox": [
+          78.5,
+          162.2,
+          318.2,
+          325.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0052:S0",
+      "page": 2,
+      "ordinal": 60,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.1.1. Stream Identiﬁers",
+      "layout": {
+        "bbox": [
+          90.5,
+          202.7,
+          297.7,
+          305.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0053:S0",
+      "page": 2,
+      "ordinal": 61,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.1.2. Stream Concurrency",
+      "layout": {
+        "bbox": [
+          90.5,
+          215.6,
+          274.9,
+          284.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0054:S0",
+      "page": 2,
+      "ordinal": 62,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.2. Flow Control",
+      "layout": {
+        "bbox": [
+          78.5,
+          158.9,
+          254.2,
+          261.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0055:S0",
+      "page": 2,
+      "ordinal": 63,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.2.1. Flow-Control Principles",
+      "layout": {
+        "bbox": [
+          90.5,
+          228.2,
+          231.4,
+          241.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0056:S0",
+      "page": 2,
+      "ordinal": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.2.2. Appropriate Use ofFlow Control",
+      "layout": {
+        "bbox": [
+          90.5,
+          269.9,
+          210.9,
+          221
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0057:S0",
+      "page": 2,
+      "ordinal": 65,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.2.3. Flow-Control Performance",
+      "layout": {
+        "bbox": [
+          90.5,
+          244,
+          192.7,
+          200.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0058:S0",
+      "page": 2,
+      "ordinal": 66,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.3. Prioritization",
+      "layout": {
+        "bbox": [
+          78.5,
+          161.3,
+          169.7,
+          177.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0059:S0",
+      "page": 2,
+      "ordinal": 67,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.3.1. Background on Priority in RFC 7540",
+      "layout": {
+        "bbox": [
+          90.5,
+          285.5,
+          146.9,
+          156.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0060:S0",
+      "page": 2,
+      "ordinal": 68,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Thomson & Benﬁeld Standards Track Page 2",
+      "layout": {
+        "bbox": [
+          56.4,
+          538.2,
+          105.9,
+          115
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0486:S0",
+      "page": 16,
+      "ordinal": 521,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "RFC 9113 HTTP/2 June 2022",
+      "layout": {
+        "bbox": [
+          56.6,
+          538.2,
+          794.2,
+          803.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0487:S0",
+      "page": 16,
+      "ordinal": 522,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Both endpoints have a subjective view ofthe state of a stream that could be diﬀerent when",
+      "layout": {
+        "bbox": [
+          66.3,
+          493.6,
+          757.4,
+          767.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0488:S0",
+      "page": 16,
+      "ordinal": 523,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "frames are in transit. Endpoints do not coordinate the creation ofstreams; they are created",
+      "layout": {
+        "bbox": [
+          66.2,
+          500.1,
+          743.8,
+          753.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0489:S0",
+      "page": 16,
+      "ordinal": 524,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "unilaterally by either endpoint. The negative consequences of a mismatch in states are limited to",
+      "layout": {
+        "bbox": [
+          66.1,
+          524.1,
+          730.2,
+          740.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0490:S0",
+      "page": 16,
+      "ordinal": 525,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the \"closed\" state after sending RST_STREAM, where frames might be received for some time after",
+      "layout": {
+        "bbox": [
+          66.1,
+          526.5,
+          716.6,
+          726.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0491:S0",
+      "page": 16,
+      "ordinal": 526,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "closing.",
+      "layout": {
+        "bbox": [
+          66.5,
+          101.5,
+          703,
+          713
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0492:S0",
+      "page": 16,
+      "ordinal": 527,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Streams have the following states:",
+      "layout": {
+        "bbox": [
+          66.4,
+          227,
+          679.4,
+          689.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0493:S0",
+      "page": 16,
+      "ordinal": 528,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "idle: All streams start in the \"idle\" state.",
+      "layout": {
+        "bbox": [
+          66.1,
+          257.8,
+          648.1,
+          655.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0494:S0",
+      "page": 16,
+      "ordinal": 529,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The following transitions are valid from this state:",
+      "layout": {
+        "bbox": [
+          81.1,
+          317.7,
+          622.2,
+          632.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0495:S0",
+      "page": 16,
+      "ordinal": 530,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Sending a HEADERS frame as a client, or receiving a HEADERS frame as a server, causes",
+      "layout": {
+        "bbox": [
+          95.4,
+          516.7,
+          598.6,
+          608.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0496:S0",
+      "page": 16,
+      "ordinal": 531,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the stream to become \"open\". The stream identiﬁer is selected as described in Section 5.1.1.",
+      "layout": {
+        "bbox": [
+          101.1,
+          525.8,
+          585,
+          595.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0497:S0",
+      "page": 16,
+      "ordinal": 532,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The same HEADERS frame can also cause a stream to immediately become \"half-closed\".",
+      "layout": {
+        "bbox": [
+          101.1,
+          519.8,
+          571.4,
+          581.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0498:S0",
+      "page": 16,
+      "ordinal": 533,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Sending a PUSH_PROMISE frame on another stream reserves the idle stream that is",
+      "layout": {
+        "bbox": [
+          95.4,
+          494.2,
+          555.3,
+          565.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0499:S0",
+      "page": 16,
+      "ordinal": 534,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "identiﬁed for later use. The stream state for the reserved stream transitions to \"reserved",
+      "layout": {
+        "bbox": [
+          101.1,
+          516.4,
+          544,
+          551.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0500:S0",
+      "page": 16,
+      "ordinal": 535,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(local)\". Only a server may send PUSH_PROMISE frames.",
+      "layout": {
+        "bbox": [
+          101.5,
+          367.5,
+          528.1,
+          538.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0501:S0",
+      "page": 16,
+      "ordinal": 536,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Receiving a PUSH_PROMISE frame on another stream reserves an idle stream that is",
+      "layout": {
+        "bbox": [
+          95.4,
+          500.2,
+          512,
+          522.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0502:S0",
+      "page": 16,
+      "ordinal": 537,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "identiﬁed for later use. The stream state for the reserved stream transitions to \"reserved",
+      "layout": {
+        "bbox": [
+          101.1,
+          516.4,
+          500.7,
+          508.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0503:S0",
+      "page": 16,
+      "ordinal": 538,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(remote)\". Only a client may receive PUSH_PROMISE frames.",
+      "layout": {
+        "bbox": [
+          101.5,
+          387.8,
+          484.8,
+          494.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0504:S0",
+      "page": 16,
+      "ordinal": 539,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Note that the PUSH_PROMISE frame is not sent on the idle stream but references the",
+      "layout": {
+        "bbox": [
+          95.4,
+          498,
+          469.7,
+          478.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0505:S0",
+      "page": 16,
+      "ordinal": 540,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "newly reserved stream in the Promised Stream ID ﬁeld.",
+      "layout": {
+        "bbox": [
+          101.2,
+          361.5,
+          455.1,
+          465.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0506:S0",
+      "page": 16,
+      "ordinal": 541,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Opening a stream with a higher-valued stream identiﬁer causes the stream to transition",
+      "layout": {
+        "bbox": [
+          95.4,
+          515.8,
+          439,
+          449.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0507:S0",
+      "page": 16,
+      "ordinal": 542,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "immediately to a \"closed\" state; note that this transition is not shown in the diagram.",
+      "layout": {
+        "bbox": [
+          101.1,
+          501.8,
+          425.4,
+          435.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0508:S0",
+      "page": 16,
+      "ordinal": 543,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Receiving any frame other than HEADERS or PRIORITY on a stream in this state MUST be",
+      "layout": {
+        "bbox": [
+          81.3,
+          499.8,
+          401.8,
+          411.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0509:S0",
+      "page": 16,
+      "ordinal": 544,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "treated as a connection error (Section 5.4.1) oftype PROTOCOL_ERROR. Ifthis stream is",
+      "layout": {
+        "bbox": [
+          81.1,
+          492.2,
+          388.2,
+          398.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0510:S0",
+      "page": 16,
+      "ordinal": 545,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "initiated by the server, as described in Section 5.1.1, then receiving a HEADERS frame MUST",
+      "layout": {
+        "bbox": [
+          81.1,
+          509.7,
+          374.6,
+          384.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0511:S0",
+      "page": 16,
+      "ordinal": 546,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "also be treated as a connection error (Section 5.4.1) oftype PROTOCOL_ERROR.",
+      "layout": {
+        "bbox": [
+          81.4,
+          452.5,
+          361,
+          371.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0512:S0",
+      "page": 16,
+      "ordinal": 547,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "reserved (local): A stream in the \"reserved (local)\" state is one that has been promised by",
+      "layout": {
+        "bbox": [
+          66.2,
+          491.8,
+          337.4,
+          347.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0513:S0",
+      "page": 16,
+      "ordinal": 548,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "sending a PUSH_PROMISE frame. A PUSH_PROMISE frame reserves an idle stream by",
+      "layout": {
+        "bbox": [
+          81.4,
+          483.3,
+          323.8,
+          333.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0514:S0",
+      "page": 16,
+      "ordinal": 549,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "associating the stream with an open stream that was initiated by the remote peer (see Section",
+      "layout": {
+        "bbox": [
+          81.4,
+          523.6,
+          310.2,
+          320.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0515:S0",
+      "page": 16,
+      "ordinal": 550,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8.4).",
+      "layout": {
+        "bbox": [
+          81.4,
+          99.3,
+          297.8,
+          306.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0516:S0",
+      "page": 16,
+      "ordinal": 551,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In this state, only the following transitions are possible:",
+      "layout": {
+        "bbox": [
+          81.3,
+          342.5,
+          273,
+          283.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0517:S0",
+      "page": 16,
+      "ordinal": 552,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• The endpoint can send a HEADERS frame. This causes the stream to open in a \"half-closed",
+      "layout": {
+        "bbox": [
+          95.4,
+          524.6,
+          249.4,
+          259.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0518:S0",
+      "page": 16,
+      "ordinal": 553,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(remote)\" state.",
+      "layout": {
+        "bbox": [
+          101.5,
+          174,
+          237,
+          245.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0519:S0",
+      "page": 16,
+      "ordinal": 554,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Either endpoint can send a RST_STREAM frame to cause the stream to become \"closed\".",
+      "layout": {
+        "bbox": [
+          95.4,
+          513,
+          219.7,
+          229.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0520:S0",
+      "page": 16,
+      "ordinal": 555,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "This releases the stream reservation.",
+      "layout": {
+        "bbox": [
+          101.1,
+          273.8,
+          208.4,
+          216.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0521:S0",
+      "page": 16,
+      "ordinal": 556,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "An endpoint MUST NOT send any type offrame other than HEADERS, RST_STREAM, or",
+      "layout": {
+        "bbox": [
+          80.9,
+          486,
+          182.5,
+          192.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0522:S0",
+      "page": 16,
+      "ordinal": 557,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "PRIORITY in this state.",
+      "layout": {
+        "bbox": [
+          81.3,
+          186.3,
+          171.2,
+          178.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0523:S0",
+      "page": 16,
+      "ordinal": 558,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Thomson & Benﬁeld Standards Track Page 16",
+      "layout": {
+        "bbox": [
+          56.4,
+          538.3,
+          105.9,
+          115
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2240:S0",
+      "page": 63,
+      "ordinal": 2323,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "RFC 9113 HTTP/2 June 2022",
+      "layout": {
+        "bbox": [
+          56.6,
+          538.2,
+          794.2,
+          803.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2241:S0",
+      "page": 63,
+      "ordinal": 2324,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10.5.",
+      "layout": {
+        "bbox": [
+          66.4,
+          92.7,
+          739.9,
+          748.7
+        ],
+        "font": {
+          "size": 12,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2241:S1",
+      "page": 63,
+      "ordinal": 2325,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Denial-of-Service Considerations",
+      "layout": {
+        "bbox": [
+          103,
+          303,
+          739.9,
+          749.3
+        ],
+        "font": {
+          "size": 12,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2242:S0",
+      "page": 63,
+      "ordinal": 2326,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "An HTTP/2 connection can demand a greater commitment ofresources to operate than an HTTP/",
+      "layout": {
+        "bbox": [
+          65.9,
+          527.8,
+          717.8,
+          727.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2243:S0",
+      "page": 63,
+      "ordinal": 2327,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1.1 connection. Both ﬁeld section compression and ﬂow control depend on a commitment of a",
+      "layout": {
+        "bbox": [
+          66.6,
+          513.6,
+          704.2,
+          714.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2244:S0",
+      "page": 63,
+      "ordinal": 2328,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "greater amount ofstate. Settings for these features ensure that memory commitments for these",
+      "layout": {
+        "bbox": [
+          66.1,
+          517.8,
+          690.6,
+          700.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2245:S0",
+      "page": 63,
+      "ordinal": 2329,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "features are strictly bounded.",
+      "layout": {
+        "bbox": [
+          66.2,
+          205,
+          677,
+          687.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2246:S0",
+      "page": 63,
+      "ordinal": 2330,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The number ofPUSH_PROMISE frames is not constrained in the same fashion. A client that",
+      "layout": {
+        "bbox": [
+          66.1,
+          495.2,
+          654.4,
+          663.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2247:S0",
+      "page": 63,
+      "ordinal": 2331,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "accepts server push SHOULD limit the number ofstreams it allows to be in the \"reserved (remote)\"",
+      "layout": {
+        "bbox": [
+          66.4,
+          526.9,
+          639.8,
+          649.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2248:S0",
+      "page": 63,
+      "ordinal": 2332,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "state. An excessive number ofserver push streams can be treated as a stream error (Section 5.4.2)",
+      "layout": {
+        "bbox": [
+          66.4,
+          525.5,
+          626.2,
+          636.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2249:S0",
+      "page": 63,
+      "ordinal": 2333,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "oftype ENHANCE_YOUR_CALM.",
+      "layout": {
+        "bbox": [
+          66.5,
+          216.3,
+          612.6,
+          622.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2250:S0",
+      "page": 63,
+      "ordinal": 2334,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A number ofHTTP/2 implementations were found to be vulnerable to denial ofservice",
+      "layout": {
+        "bbox": [
+          65.9,
+          474.3,
+          589,
+          599.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2251:S0",
+      "page": 63,
+      "ordinal": 2335,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[NFLX-2019-002]. Below is a list ofknown ways that implementations might be subject to denial-",
+      "layout": {
+        "bbox": [
+          66.9,
+          518,
+          575.4,
+          585.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2252:S0",
+      "page": 63,
+      "ordinal": 2336,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "of-service attacks:",
+      "layout": {
+        "bbox": [
+          66.5,
+          152,
+          564.1,
+          571.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2253:S0",
+      "page": 63,
+      "ordinal": 2337,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Ineﬃcient tracking of outstanding outbound frames can lead to overload if an adversary",
+      "layout": {
+        "bbox": [
+          80.4,
+          509.3,
+          538.2,
+          548.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2254:S0",
+      "page": 63,
+      "ordinal": 2338,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "can cause large numbers offrames to be enqueued for sending. A peer could use one of",
+      "layout": {
+        "bbox": [
+          86.5,
+          496.8,
+          524.6,
+          534.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2255:S0",
+      "page": 63,
+      "ordinal": 2339,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "several techniques to cause large numbers offrames to be generated:",
+      "layout": {
+        "bbox": [
+          86.4,
+          412.7,
+          511,
+          521.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2256:S0",
+      "page": 63,
+      "ordinal": 2340,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "◦ Providing tiny increments to ﬂow control in WINDOW_UPDATE frames can cause a sender",
+      "layout": {
+        "bbox": [
+          89.2,
+          526.5,
+          497.4,
+          507.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2257:S0",
+      "page": 63,
+      "ordinal": 2341,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "to generate a large number ofDATA frames.",
+      "layout": {
+        "bbox": [
+          96.1,
+          302.5,
+          483.8,
+          493.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2258:S0",
+      "page": 63,
+      "ordinal": 2342,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "◦ An endpoint is required to respond to a PING frame.",
+      "layout": {
+        "bbox": [
+          89.2,
+          341.5,
+          467.7,
+          477.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2259:S0",
+      "page": 63,
+      "ordinal": 2343,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "◦ Each SETTINGS frame requires acknowledgment.",
+      "layout": {
+        "bbox": [
+          89.2,
+          328.8,
+          451.6,
+          461.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2260:S0",
+      "page": 63,
+      "ordinal": 2344,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "◦ An invalid request (or server push) can cause a peer to send RST_STREAM frames in",
+      "layout": {
+        "bbox": [
+          89.2,
+          490.6,
+          435.5,
+          445.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2261:S0",
+      "page": 63,
+      "ordinal": 2345,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "response.",
+      "layout": {
+        "bbox": [
+          96.2,
+          140.5,
+          421.9,
+          429.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2262:S0",
+      "page": 63,
+      "ordinal": 2346,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• An attacker can provide large amounts ofﬂow-control credit at the HTTP/2 layer but",
+      "layout": {
+        "bbox": [
+          80.4,
+          485.9,
+          398.3,
+          408.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2263:S0",
+      "page": 63,
+      "ordinal": 2347,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "withhold credit at the TCP layer, preventing frames from being sent. An endpoint that",
+      "layout": {
+        "bbox": [
+          85.9,
+          488.9,
+          384.7,
+          394.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2264:S0",
+      "page": 63,
+      "ordinal": 2348,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "constructs and remembers frames for sending without considering TCP limits might be",
+      "layout": {
+        "bbox": [
+          86.5,
+          496.5,
+          371.1,
+          381.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2265:S0",
+      "page": 63,
+      "ordinal": 2349,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "subject to resource exhaustion.",
+      "layout": {
+        "bbox": [
+          86.4,
+          232.5,
+          357.5,
+          367.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2266:S0",
+      "page": 63,
+      "ordinal": 2350,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Large numbers ofsmall or empty frames can be abused to cause a peer to expend time",
+      "layout": {
+        "bbox": [
+          80.4,
+          495.8,
+          341.4,
+          351.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2267:S0",
+      "page": 63,
+      "ordinal": 2351,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "processing frame headers. Caution is required here as some uses ofsmall frames are entirely",
+      "layout": {
+        "bbox": [
+          86,
+          522.8,
+          327.8,
+          337.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2268:S0",
+      "page": 63,
+      "ordinal": 2352,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "legitimate, such as the sending of an empty DATA or CONTINUATION frame at the end of a",
+      "layout": {
+        "bbox": [
+          86,
+          509.6,
+          314.2,
+          324.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2269:S0",
+      "page": 63,
+      "ordinal": 2353,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "stream.",
+      "layout": {
+        "bbox": [
+          86.4,
+          121.5,
+          302.9,
+          309.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2270:S0",
+      "page": 63,
+      "ordinal": 2354,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• The SETTINGS frame might also be abused to cause a peer to expend additional processing",
+      "layout": {
+        "bbox": [
+          80.4,
+          512.7,
+          284.5,
+          294.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2271:S0",
+      "page": 63,
+      "ordinal": 2355,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "time. This might be done by pointlessly changing settings, sending multiple undeﬁned",
+      "layout": {
+        "bbox": [
+          86.1,
+          490.1,
+          270.9,
+          281.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2272:S0",
+      "page": 63,
+      "ordinal": 2356,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "settings, or changing the same setting multiple times in the same frame.",
+      "layout": {
+        "bbox": [
+          86.4,
+          424.5,
+          257.3,
+          267.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2273:S0",
+      "page": 63,
+      "ordinal": 2357,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Handling reprioritization with PRIORITY frames can require signiﬁcant processing time and",
+      "layout": {
+        "bbox": [
+          80.4,
+          523.9,
+          241.2,
+          251.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2274:S0",
+      "page": 63,
+      "ordinal": 2358,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "can lead to overload ifmany PRIORITY frames are sent.",
+      "layout": {
+        "bbox": [
+          86.5,
+          349.5,
+          227.6,
+          237.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2275:S0",
+      "page": 63,
+      "ordinal": 2359,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Field section compression also provides opportunities for an attacker to waste processing",
+      "layout": {
+        "bbox": [
+          80.4,
+          511.2,
+          211.5,
+          221.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2276:S0",
+      "page": 63,
+      "ordinal": 2360,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "resources; see Section 7 of [COMPRESSION] for more details on potential abuses.",
+      "layout": {
+        "bbox": [
+          86.2,
+          465,
+          197.9,
+          208
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2277:S0",
+      "page": 63,
+      "ordinal": 2361,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Limits in SETTINGS cannot be reduced instantaneously, which leaves an endpoint exposed to",
+      "layout": {
+        "bbox": [
+          80.4,
+          525.4,
+          181.8,
+          191.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2278:S0",
+      "page": 63,
+      "ordinal": 2362,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "behavior from a peer that could exceed the new limits. In particular, immediately after",
+      "layout": {
+        "bbox": [
+          86.1,
+          497,
+          168.2,
+          178.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2279:S0",
+      "page": 63,
+      "ordinal": 2363,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Thomson & Benﬁeld Standards Track Page 63",
+      "layout": {
+        "bbox": [
+          56.4,
+          538.3,
+          105.9,
+          115
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    }
+  ],
+  "labels": "NONE_SOURCE_FACTS_ONLY"
+}

@@ -1,0 +1,1529 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_DRAFT_V2",
+  "status": "DRAFT_REVIEWER_A_NOT_APPROVED",
+  "id": "088",
+  "sourceKey": "todo10_8/heading_corpus_100/06_dich_song_ngu/088_ND_69-2018_Ngoai_thuong_EN.pdf",
+  "sourceSha256": "85e261f79c5e9360f3ca15f32929705b6635d66348d258e25de4287905ffe385",
+  "sourceAliasUniverseSha256": "266d4309a87b6de78283be7c5d9fc8cda9f54cc772760d2ca1e5b4ad126b493e",
+  "reviewBundleSha256": "2c9f4a507cc36e989f23a4a1bac1a05bde761e8dd8f1da11c3846403f5cf012d",
+  "reviewerA": "Claude (orchestrator), from parser text and layout only; PDF pages not rendered; independent of any provider prediction",
+  "visualEvidence": "NOT_RENDERED_IN_DRAFT_REVIEWER_TO_CONFIRM_AGAINST_PDF",
+  "notes": [],
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Unofficial Translation –",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Translation disclaimer \"Unofficial Translation –\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "For Reference Purposes Only",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Translation disclaimer \"For Reference Purposes Only\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "THE GOVERNMENT",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Issuer \"THE GOVERNMENT\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0002:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "National name",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "-------",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0003:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Independence – Freedom – Happiness",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "National motto",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "-------------------",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "No. 69/2018/ND-CP Hanoi, May 15, 2018",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Decree number, place and date",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "DECREE",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Document type title \"DECREE\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "ON GUIDELINES FOR THE LAW ON FOREIGN TRADE MANAGEMENT",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Document title \"ON GUIDELINES FOR THE LAW ON FOREIGN TRADE MANAGEMENT\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Pursuant to the Law on Government Organization dated June 19, 2015;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Pursuant to the Law on Commerce dated June 14, 2005;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Pursuant to the Law on Foreign Trade Management dated June 12, 2017;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Pursuant to the Law on Investment dated November 26, 2014 and the Law on the amendments to",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Article 6 and Appendix 4 in terms of the list of conditional lines of business of Law on",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Investment;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "At the request of the Minister of Industry and Trade;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "The Government promulgates a Decree on guidelines for the Law on Foreign Trade",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Promulgation formula restating the title in prose",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Management.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Chapter I",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Chapter label \"Chapter I\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "GENERAL PROVISIONS",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Chapter title \"GENERAL PROVISIONS\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Article 1. Scope",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Article heading \"Article 1. Scope\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "1. This Decree provides guidelines for the Law on Commerce and the Law on Foreign Trade",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Management in terms of:",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "a) international exchange of goods in the forms of the export and import; temporary importation;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "temporary exportation temporary exportation; merchanting trade; transit and other activities",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "related to the international exchange of goods in accordance with regulations of Vietnam law and",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "international treaties to which the Socialist Republic of Vietnam is a signatory.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "b) dealing with disputes related to the imposition of measures for foreign trade management.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "2. Personal belongings; baggage; goods serving the need of individuals with diplomatic status;",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "gifts, donations, sample goods shall be regulated by the Government and the Prime Minister.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0029:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Article 2. Regulated entities",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Article heading \"Article 2. Regulated entities\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1096:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "6. Be eligible for export duty or import duty exemption in accordance with regulations of law on",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1097:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "taxation goods exported for processing, processed imports under the processing contract.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1098:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7. Have experts and technicians go abroad to inspect processed products for acceptance.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1099:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8. Fulfill tax liability against processed import for local consumption in accordance with",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1100:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "instructions of the Ministry of Finance.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1101:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Chapter VI",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Chapter label \"Chapter VI\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1102:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "TRADE AGENTS FOR FOREIGN TRADERS",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Chapter title \"TRADE AGENTS FOR FOREIGN TRADERS\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1103:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Section 1. TRADE AGENTS FOR FOREIGN TRADERS",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Section heading \"Section 1. TRADE AGENTS FOR FOREIGN TRADERS\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1104:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Article 50. TRADE AGENTS FOR FOREIGN TRADERS",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Article heading \"Article 50. ...\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1105:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1. A trader may act as a trade agent for foreign traders, except for goods under the list of",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1106:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "prohibited or suspended exports and imports. In case of exported goods and imported goods",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1107:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "requiring license, the trader may only enter into an agency agreement after obtaining a license",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1108:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "issued by the Ministry or ministerial-level agency.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1109:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. If, as required by laws and regulations, an agent and a principal may only enter into an agency",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1110:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "agreement associated with given category of good or service, the trader must comply with such",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1111:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "law or regulation.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1112:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3. The purchase agent shall require the foreign trader to make a bank transfer payment in freely",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1113:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "convertible foreign currency to purchase goods under the agency agreement",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1114:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4. The purchase agent shall register, declare and pay taxes and other financial obligations as to",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1115:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the goods under the agency agreement and related to the business as per the law.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1116:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Article 51. Tax liability",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Article heading \"Article 51. Tax liability\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1117:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1. Goods under agency agreement concluded with a foreign trader are liable to taxes and other",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1118:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "financial obligations as prescribed in Vietnam’s law.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1119:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. The Vietnamese trader shall register, declare and pay taxes and other financial obligations as",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1120:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "to the goods under the agency agreement and related to the business as per the law.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1121:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Article 52. Export or import procedures under agency agreement",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Article heading \"Article 52. ...\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1122:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Procedures for export or import of goods under agency agreement concluded with the foreign",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1123:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "trader shall be done in accordance with regulations on exported goods and imported goods as",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1124:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "prescribed in this Decree.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1125:S0",
+      "page": 35,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Article 53. Return of goods",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Article heading \"Article 53. Return of goods\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1952:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8 Medicines not granted marketing authorization in",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1952:S1",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Import license.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1953:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Vietnam.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1954:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "9 Medicinal materials not granted marketing Import license.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1955:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "authorization in Vietnam, other than medicinal",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1956:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "materials put under special control.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1957:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10 Reference materials, packages in physical contact",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1957:S1",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Import license.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1958:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "with medicinal products.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1959:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "11 Imported food under management of the Ministry of",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1959:S1",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Declaration of conformity, declaration",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1960:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Health as prescribed in laws and regulations on food",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1960:S1",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "of conformity with food safety and",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1961:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "safety. state inspection.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1962:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "12 Medical equipment not granted marketing",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1962:S1",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Import license.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1963:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "authorization for scientific research or testing or",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1964:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "instructions for use, or repairs of medical equipment.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1965:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "13 Medical equipment not granted marketing Import license.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1966:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "authorization for purpose of aid.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1967:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "14 Medical equipment not granted import marketing",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1967:S1",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Import license.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1968:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "authorization for individual therapy.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1969:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "15 Chemicals, preparations imported for research.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1969:S1",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Import license.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1970:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "16 Preparations imported for purpose of aid or other",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1970:S1",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Import license.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1971:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "particular purposes (gifts or no product or method",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1972:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "suitable for the need of importer).",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1973:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "17 Cosmetics. Announcing standards.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1974:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "VIII. LIST OF EXPORTED AND IMPORTED GOODS REQUIRING LICENSES AND",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Appendix part heading \"VIII. LIST OF EXPORTED AND IMPORTED GOODS ...\" line 1 (bold)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1975:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "UNDER GIVEN CONDITIONS SUBJECT TO SPECIFLIZED MANAGEMENT OF THE",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Appendix part heading line 2",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1976:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "STATE BANK OF VIETNAM",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Appendix part heading line 3",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1977:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table group label \"A\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1977:S1",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Exported goods",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table column label \"Exported goods\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1977:S2",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Mode of management",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table column label \"Mode of management\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1978:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1 Raw gold.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1978:S1",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Export license.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1979:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "B",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table group label \"B\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1979:S1",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Imported goods",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table column label \"Imported goods\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1979:S2",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Mode of management",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table column label",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1980:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1 Raw gold.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1980:S1",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Import license.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1981:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "APPENDIX IV",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Appendix label \"APPENDIX IV\" (bold, centred)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1982:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "LIST OF GOODS POSING THREATS TO NATIONAL DEFENSE AND SECURITY",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Appendix title \"LIST OF GOODS POSING THREATS TO NATIONAL DEFENSE AND SECURITY\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1983:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Issued together with Government's Decree No. 69/2018/ND-CP dated May 15, 2018)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Attachment note \"(Issued together with ...)\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2088:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chapter 28",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table cell \"Chapter 28\" (HS chapter code in a goods table, not a document chapter)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2088:S1",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chemicals under Schedule-2 and 3 chemicals provided in Annex 1",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2089:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "and 2 to the Government’s Decree No. 38/2014/ND-CP dated May",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2090:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chapter 29",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table cell \"Chapter 29\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2090:S1",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "6, 2014 on the management of chemicals under control of the",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2091:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Convention on the Prohibition of the Development, Production,",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2092:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Stockpiling and Use of Chemical Weapons and on their",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2093:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Destruction.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2094:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chapter 39",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table cell \"Chapter 39\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2094:S1",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3915",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2094:S2",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Waste, parings and scrap, of plastic.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2095:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chapter 84",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table cell \"Chapter 84\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2095:S1",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "8418",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2095:S2",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Refrigerators, freezers and other refrigerating or freezing",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2096:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "equipment, electric or other; heat pumps other than air",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2097:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "conditioning machines of head 84.15.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2098:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "(applies solely to equipment or machine using refrigerants",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2099:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "C.F.C12 (R12) (IUPAC name Dichlorodifluoromethane, chemical",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2100:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "formula CF2Cl2.)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2101:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Notes: See catalog of equipment, refrigerant section to know.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2102:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "8473 Used parts and accessories (other than covers, carrying cases and",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2103:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "the like) suitable for use or principally with the machines of",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2104:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "headings 84.70 to 84.72.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2105:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chapter 85 8507 Electric accumulators, including separators therefor, whether or",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table row \"Chapter 85 8507 ...\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2106:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "not rectangular (including square).",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2107:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "8507",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2107:S1",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "10",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2107:S2",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Lead-acid, of a kind used for starting piston engines (used)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2108:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "8507",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2108:S1",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "20",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2108:S2",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Other lead-acid accumulators (used)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2109:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "APPENDIX VII",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Appendix label \"APPENDIX VII\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2110:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "LIST OF FROZEN FOOD TRADED IN TEMPORARY IMPORTATION UNDER GIVEN",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Appendix title line 1",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2111:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "CONDITIONS",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Appendix title line 2 \"CONDITIONS\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2112:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "(Issued together with Government’s Decree No. 69/2018/NĐ-THE GOVERNMENT dated May",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Attachment note \"(Issued together with ...)\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2113:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "15, 2018)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2114:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1. This list applies solely to frozen food; excluding food, fresh, chilled, salted, in brine, dried or",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2115:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "smoked.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2116:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2. Items listed according to Chapter will apply to all 8-digit code in that Chapter.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2117:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3. Items, besides listed according to Chapter, are detailed in 8-digit code, only such code apply.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2118:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "HS code Description",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table column labels \"HS code Description\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2119:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chapter 02",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table cell \"Chapter 02\" (HS chapter code)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L2119:S1",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Meat and edible meat offal",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    }
+  ],
+  "counts": {
+    "OTHER": 130,
+    "ESTABLISHES_STRUCTURE": 21
+  },
+  "flagged": 22
+}

@@ -1,0 +1,2533 @@
+{
+  "version": "P7_F1Q_HELDOUT_REVIEW_BUNDLE_V1",
+  "id": "064",
+  "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/064_Machine_Learning_with_Neural_Networks.pdf",
+  "sourceSha256": "1488210d01f56e8a1fcc21e6a5bf2dbd0b4d84e2cac016a3cee02895f4f69053",
+  "sourceAliasUniverseSha256": "7c45e141389d87df0786cc898be5993ce6ca2513fe529f81139c195610a88c09",
+  "evidenceStoreSha256": "74a28febab82d1da06b75324f14c4e3d10ba4122706b055d46beff5f69997d67",
+  "pageSelectionSha256": "c4b9ebefbd5a15f0cef59bb1d11f00497b971effae91f185475d08b335851f94",
+  "pageStats": [
+    {
+      "page": 1,
+      "lineCount": 23,
+      "textExtent": [
+        18.2,
+        511.8,
+        137.3,
+        570.8
+      ],
+      "medianFontSize": 20
+    },
+    {
+      "page": 7,
+      "lineCount": 40,
+      "textExtent": [
+        98.9,
+        513.1,
+        110.3,
+        689.3
+      ],
+      "medianFontSize": 11.2
+    },
+    {
+      "page": 30,
+      "lineCount": 26,
+      "textExtent": [
+        99.1,
+        513.3,
+        107.8,
+        726.8
+      ],
+      "medianFontSize": 11.2
+    },
+    {
+      "page": 191,
+      "lineCount": 30,
+      "textExtent": [
+        98.5,
+        514.2,
+        107.7,
+        727
+      ],
+      "medianFontSize": 11.2
+    }
+  ],
+  "layoutBasis": "bbox=[left,right,bottom,top] in PDF points, bottom-left origin; font={size,name,boldRatio,italicRatio}; parser observations, not labels",
+  "occurrences": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "ordinal": 0,
+      "pageStratum": "FIRST",
+      "text": "12",
+      "layout": {
+        "bbox": [
+          18.5,
+          32,
+          568.1,
+          570.8
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "ordinal": 1,
+      "pageStratum": "FIRST",
+      "text": "02",
+      "layout": {
+        "bbox": [
+          18.5,
+          32.3,
+          548.1,
+          549.1
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "ordinal": 2,
+      "pageStratum": "FIRST",
+      "text": "tc",
+      "layout": {
+        "bbox": [
+          20.4,
+          32.2,
+          527.4,
+          528.3
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "ordinal": 3,
+      "pageStratum": "FIRST",
+      "text": "O",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "ordinal": 4,
+      "pageStratum": "FIRST",
+      "text": "27",
+      "layout": {
+        "bbox": [
+          18.5,
+          32.2,
+          489.2,
+          490.1
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "ordinal": 5,
+      "pageStratum": "FIRST",
+      "text": "]",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "ordinal": 6,
+      "pageStratum": "FIRST",
+      "text": "G",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "ordinal": 7,
+      "pageStratum": "FIRST",
+      "text": "L.",
+      "layout": {
+        "bbox": [
+          18.8,
+          32.2,
+          435,
+          436.7
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "ordinal": 8,
+      "pageStratum": "FIRST",
+      "text": "sc",
+      "layout": {
+        "bbox": [
+          22.8,
+          32.2,
+          423,
+          424.7
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "ordinal": 9,
+      "pageStratum": "FIRST",
+      "text": "[",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "ordinal": 10,
+      "pageStratum": "FIRST",
+      "text": "4v",
+      "layout": {
+        "bbox": [
+          18.5,
+          32.3,
+          387.6,
+          388.3
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "ordinal": 11,
+      "pageStratum": "FIRST",
+      "text": "93",
+      "layout": {
+        "bbox": [
+          18.5,
+          32.4,
+          366.7,
+          368.7
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "ordinal": 12,
+      "pageStratum": "FIRST",
+      "text": "56",
+      "layout": {
+        "bbox": [
+          18.2,
+          32.3,
+          346.9,
+          348.8
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "ordinal": 13,
+      "pageStratum": "FIRST",
+      "text": "0.",
+      "layout": {
+        "bbox": [
+          18.5,
+          32.3,
+          326.7,
+          328.6
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "ordinal": 14,
+      "pageStratum": "FIRST",
+      "text": "10",
+      "layout": {
+        "bbox": [
+          18.5,
+          32.3,
+          312.6,
+          315.3
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "ordinal": 15,
+      "pageStratum": "FIRST",
+      "text": "91",
+      "layout": {
+        "bbox": [
+          18.5,
+          32.4,
+          291,
+          293.7
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "ordinal": 16,
+      "pageStratum": "FIRST",
+      "text": ":v",
+      "layout": {
+        "bbox": [
+          22.8,
+          32.3,
+          277.1,
+          279.2
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "ordinal": 17,
+      "pageStratum": "FIRST",
+      "text": "i",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 1,
+      "ordinal": 18,
+      "pageStratum": "FIRST",
+      "text": "Xra Machine learningwith neural networks",
+      "layout": {
+        "bbox": [
+          18.8,
+          511.8,
+          230.4,
+          253.4
+        ],
+        "font": {
+          "size": 23.3,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 1,
+      "ordinal": 19,
+      "pageStratum": "FIRST",
+      "text": "BERNHARD MEHLIG",
+      "layout": {
+        "bbox": [
+          99.8,
+          257,
+          197.1,
+          208.7
+        ],
+        "font": {
+          "size": 16.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 1,
+      "ordinal": 20,
+      "pageStratum": "FIRST",
+      "text": "Department ofPhysics",
+      "layout": {
+        "bbox": [
+          99.6,
+          204.2,
+          164.4,
+          174.5
+        ],
+        "font": {
+          "size": 10.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 1,
+      "ordinal": 21,
+      "pageStratum": "FIRST",
+      "text": "UNIVERSITYOF GOTHENBURG",
+      "layout": {
+        "bbox": [
+          99.5,
+          250.4,
+          153.2,
+          160.6
+        ],
+        "font": {
+          "size": 10.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 1,
+      "ordinal": 22,
+      "pageStratum": "FIRST",
+      "text": "Göteborg, Sweden2021",
+      "layout": {
+        "bbox": [
+          99.7,
+          207,
+          137.3,
+          147.4
+        ],
+        "font": {
+          "size": 10.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0055:S0",
+      "page": 7,
+      "ordinal": 55,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "CONTENTS",
+      "layout": {
+        "bbox": [
+          268,
+          343.9,
+          677.6,
+          689.3
+        ],
+        "font": {
+          "size": 13,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0056:S0",
+      "page": 7,
+      "ordinal": 56,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Acknowledgements",
+      "layout": {
+        "bbox": [
+          98.9,
+          201,
+          624.8,
+          635.9
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0056:S1",
+      "page": 7,
+      "ordinal": 57,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "v",
+      "layout": {
+        "bbox": [
+          506.9,
+          513.1,
+          627.5,
+          633
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0057:S0",
+      "page": 7,
+      "ordinal": 58,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Contents",
+      "layout": {
+        "bbox": [
+          99.7,
+          146.7,
+          601.6,
+          609.7
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0057:S1",
+      "page": 7,
+      "ordinal": 59,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "vii",
+      "layout": {
+        "bbox": [
+          499.8,
+          512.7,
+          601.7,
+          609.8
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0058:S0",
+      "page": 7,
+      "ordinal": 60,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 Introduction",
+      "layout": {
+        "bbox": [
+          100.4,
+          183.7,
+          575.8,
+          584.3
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0058:S1",
+      "page": 7,
+      "ordinal": 61,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1",
+      "layout": {
+        "bbox": [
+          507.6,
+          511.7,
+          575.9,
+          583.6
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0059:S0",
+      "page": 7,
+      "ordinal": 62,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.1 Neural networks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+      "layout": {
+        "bbox": [
+          100.4,
+          490.2,
+          561.3,
+          569.8
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0059:S1",
+      "page": 7,
+      "ordinal": 63,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "6",
+      "layout": {
+        "bbox": [
+          507.3,
+          512.4,
+          561.3,
+          569.1
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0060:S0",
+      "page": 7,
+      "ordinal": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2 McCulloch-Pitts neurons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+      "layout": {
+        "bbox": [
+          100.4,
+          490.2,
+          546.7,
+          555.2
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0060:S1",
+      "page": 7,
+      "ordinal": 65,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "7",
+      "layout": {
+        "bbox": [
+          507.3,
+          512.4,
+          546.8,
+          554.4
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0061:S0",
+      "page": 7,
+      "ordinal": 66,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.3 Activation functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+      "layout": {
+        "bbox": [
+          100.4,
+          490.2,
+          532.3,
+          540.7
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0061:S1",
+      "page": 7,
+      "ordinal": 67,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "9",
+      "layout": {
+        "bbox": [
+          507.2,
+          512.2,
+          532.3,
+          540
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0062:S0",
+      "page": 7,
+      "ordinal": 68,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.4 Asynchronous updates . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11",
+      "layout": {
+        "bbox": [
+          100.4,
+          511.7,
+          515.2,
+          526.2
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0063:S0",
+      "page": 7,
+      "ordinal": 69,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.5 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11",
+      "layout": {
+        "bbox": [
+          100.4,
+          511.7,
+          500.6,
+          511.3
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0064:S0",
+      "page": 7,
+      "ordinal": 70,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.6 Furtherreading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12",
+      "layout": {
+        "bbox": [
+          100.4,
+          512.3,
+          486.1,
+          497.2
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0065:S0",
+      "page": 7,
+      "ordinal": 71,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "I Hopﬁeldnetworks",
+      "layout": {
+        "bbox": [
+          99.7,
+          233.5,
+          445.9,
+          459
+        ],
+        "font": {
+          "size": 13.5,
+          "name": "utopia-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0065:S1",
+      "page": 7,
+      "ordinal": 72,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "13",
+      "layout": {
+        "bbox": [
+          499.1,
+          512.2,
+          448.9,
+          458.2
+        ],
+        "font": {
+          "size": 13.5,
+          "name": "utopia-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0066:S0",
+      "page": 7,
+      "ordinal": 73,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2 DeterministicHopﬁeldnetworks",
+      "layout": {
+        "bbox": [
+          99.6,
+          287.5,
+          420.6,
+          431.6
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0066:S1",
+      "page": 7,
+      "ordinal": 74,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "15",
+      "layout": {
+        "bbox": [
+          501.4,
+          512.3,
+          423.1,
+          430.9
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0067:S0",
+      "page": 7,
+      "ordinal": 75,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1 Pattern recognition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.2,
+          406,
+          416.7
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0068:S0",
+      "page": 7,
+      "ordinal": 76,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2 Hopﬁeld networks and Hebb’s rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.4,
+          391.6,
+          402.5
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0069:S0",
+      "page": 7,
+      "ordinal": 77,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3 The cross-talkterm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.3,
+          379.5,
+          388
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0070:S0",
+      "page": 7,
+      "ordinal": 78,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.4 One-step errorprobability . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.4,
+          362.4,
+          373.5
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0071:S0",
+      "page": 7,
+      "ordinal": 79,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.5 Energyfunction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.4,
+          347.9,
+          359
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0072:S0",
+      "page": 7,
+      "ordinal": 80,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.6 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.3,
+          333.4,
+          344.1
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0073:S0",
+      "page": 7,
+      "ordinal": 81,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3 StochasticHopﬁeldnetworks 32",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.6,
+          307.8,
+          318.7
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0074:S0",
+      "page": 7,
+      "ordinal": 82,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1 Stochastic dynamics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.3,
+          293.1,
+          304.2
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0075:S0",
+      "page": 7,
+      "ordinal": 83,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.2 Orderparameters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.1,
+          278.7,
+          289.7
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0076:S0",
+      "page": 7,
+      "ordinal": 84,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3 Mean-ﬁeld theory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.2,
+          264.1,
+          275.1
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0077:S0",
+      "page": 7,
+      "ordinal": 85,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.4 Critical storage capacity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.2,
+          249.6,
+          260.6
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0078:S0",
+      "page": 7,
+      "ordinal": 86,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.5 Beyond mean-ﬁeld theory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.4,
+          235.1,
+          246.1
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0079:S0",
+      "page": 7,
+      "ordinal": 87,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.6 Correlated and non-randompatterns . . . . . . . . . . . . . . . . . . . . . . . . . . 47",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.4,
+          220.7,
+          231.6
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0080:S0",
+      "page": 7,
+      "ordinal": 88,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.7 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.3,
+          206,
+          216.7
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0081:S0",
+      "page": 7,
+      "ordinal": 89,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.8 Furtherreading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48",
+      "layout": {
+        "bbox": [
+          99.5,
+          512.3,
+          191.5,
+          202.6
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0082:S0",
+      "page": 7,
+      "ordinal": 90,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4 TheBoltzmanndistribution 50",
+      "layout": {
+        "bbox": [
+          99.4,
+          512.5,
+          168.3,
+          176.8
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0083:S0",
+      "page": 7,
+      "ordinal": 91,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1 Convergence ofthe stochastic dynamics . . . . . . . . . . . . . . . . . . . . . . . . 51",
+      "layout": {
+        "bbox": [
+          99.4,
+          511.7,
+          151.2,
+          162.3
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0084:S0",
+      "page": 7,
+      "ordinal": 92,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2 Monte-Carlo simulation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53",
+      "layout": {
+        "bbox": [
+          99.4,
+          512.1,
+          139.3,
+          147.8
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0085:S0",
+      "page": 7,
+      "ordinal": 93,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.3 Simulated annealing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55",
+      "layout": {
+        "bbox": [
+          99.4,
+          512.2,
+          122.2,
+          133.2
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0086:S0",
+      "page": 7,
+      "ordinal": 94,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.4 Boltzmann machines . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58",
+      "layout": {
+        "bbox": [
+          99.4,
+          512.3,
+          110.3,
+          118.7
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0687:S0",
+      "page": 30,
+      "ordinal": 717,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "20 DETERMINISTIC HOPFIELD NETWORKS",
+      "layout": {
+        "bbox": [
+          99.5,
+          509.6,
+          718.9,
+          726.8
+        ],
+        "font": {
+          "size": 9,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0688:S0",
+      "page": 30,
+      "ordinal": 718,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Figure 2.5:",
+      "layout": {
+        "bbox": [
+          99.6,
+          154.7,
+          433.9,
+          444.6
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0688:S1",
+      "page": 30,
+      "ordinal": 719,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Reproduced from xkcd.com/1838 under the creative commons",
+      "layout": {
+        "bbox": [
+          173.1,
+          512.4,
+          434,
+          445
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0689:S0",
+      "page": 30,
+      "ordinal": 720,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "attribution-noncommercial2.5 license.",
+      "layout": {
+        "bbox": [
+          99.8,
+          297.4,
+          422,
+          430.5
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0690:S0",
+      "page": 30,
+      "ordinal": 721,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "to as an outerproduct. Ifwe change the order ofx(1) and x(1)T in the product, we",
+      "layout": {
+        "bbox": [
+          99.6,
+          512.4,
+          389.8,
+          402.3
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0.2
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0691:S0",
+      "page": 30,
+      "ordinal": 722,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "obtain anumberinstead:",
+      "layout": {
+        "bbox": [
+          99.8,
+          226.5,
+          377.9,
+          386.4
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0692:S0",
+      "page": 30,
+      "ordinal": 723,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "x(1)Tx(1) =∑N [xj(1)]2 =N. (2.14)",
+      "layout": {
+        "bbox": [
+          244.9,
+          511.6,
+          342.7,
+          368.3
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "mathdesign-ut-regular-ot1-10",
+          "boldRatio": 0.1,
+          "italicRatio": 0.2
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0693:S0",
+      "page": 30,
+      "ordinal": 724,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "j=1",
+      "layout": {
+        "bbox": [
+          297.7,
+          310.1,
+          333.8,
+          341
+        ],
+        "font": {
+          "size": 7.5,
+          "name": "utopia-italic",
+          "boldRatio": 0,
+          "italicRatio": 0.3
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0694:S0",
+      "page": 30,
+      "ordinal": 725,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The product (2.14) is called scalarproduct. It is also denoted by a · b = aTb and",
+      "layout": {
+        "bbox": [
+          99.1,
+          512.6,
+          311.7,
+          324.3
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0.3
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0695:S0",
+      "page": 30,
+      "ordinal": 726,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "equals |a||b|cosϕ, where ϕ is the angle between thevectors a and b, and |a| is the",
+      "layout": {
+        "bbox": [
+          99.8,
+          512.4,
+          297.1,
+          308.4
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0.2
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0696:S0",
+      "page": 30,
+      "ordinal": 727,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "magnitude ofa. We use the same notationformultiplyingatransposedvectorwith",
+      "layout": {
+        "bbox": [
+          99.6,
+          512.6,
+          282.8,
+          293.8
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0697:S0",
+      "page": 30,
+      "ordinal": 728,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "T",
+      "layout": {
+        "bbox": [
+          256.1,
+          261.5,
+          275.2,
+          280.9
+        ],
+        "font": {
+          "size": 8.3,
+          "name": "sfss0800",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0698:S0",
+      "page": 30,
+      "ordinal": 729,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "amatrixfrom the left: x ·A=x A. An excellent source forthose notfamiliarwith",
+      "layout": {
+        "bbox": [
+          99.8,
+          512.6,
+          270.9,
+          279.4
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0699:S0",
+      "page": 30,
+      "ordinal": 730,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "these terms from LinearAlgebra (Figure 2.5) is Chapter 6 ofMathematicalmethods",
+      "layout": {
+        "bbox": [
+          99.6,
+          513.3,
+          253.9,
+          264.9
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0.2
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0700:S0",
+      "page": 30,
+      "ordinal": 731,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ofphysicsbyMathews andWalker [29].",
+      "layout": {
+        "bbox": [
+          100.2,
+          293.8,
+          239.4,
+          250.6
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0.3
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0701:S0",
+      "page": 30,
+      "ordinal": 732,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "UsingEquation (2.14) we see thatW projectsonto thevectorx(1),",
+      "layout": {
+        "bbox": [
+          113.7,
+          438.5,
+          225,
+          237.5
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0702:S0",
+      "page": 30,
+      "ordinal": 733,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Wx(1) =x(1) .",
+      "layout": {
+        "bbox": [
+          275.5,
+          335.8,
+          205.4,
+          216.3
+        ],
+        "font": {
+          "size": 7.5,
+          "name": "mathdesign-ut-regular-ot1-10",
+          "boldRatio": 0.1,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0702:S1",
+      "page": 30,
+      "ordinal": 734,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(2.15)",
+      "layout": {
+        "bbox": [
+          485.3,
+          511.6,
+          204.2,
+          213.4
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0703:S0",
+      "page": 30,
+      "ordinal": 735,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In addition, itfollows from Equation (2.14) thatthe matrix (2.13) is idempotent:",
+      "layout": {
+        "bbox": [
+          99.6,
+          496.9,
+          180.8,
+          191.8
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0704:S0",
+      "page": 30,
+      "ordinal": 736,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Wt =W for t = 1,2,3,... .",
+      "layout": {
+        "bbox": [
+          234.5,
+          376.7,
+          159.8,
+          171
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0704:S1",
+      "page": 30,
+      "ordinal": 737,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(2.16)",
+      "layout": {
+        "bbox": [
+          485.3,
+          511.6,
+          160,
+          169.2
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0705:S0",
+      "page": 30,
+      "ordinal": 738,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(1) (1)",
+      "layout": {
+        "bbox": [
+          346,
+          389,
+          143.7,
+          150.8
+        ],
+        "font": {
+          "size": 7.5,
+          "name": "mathdesign-ut-regular-ot1-10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0706:S0",
+      "page": 30,
+      "ordinal": 739,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Equations (2.15) and (2.16) together with sgn(xi ) = xi",
+      "layout": {
+        "bbox": [
+          99.6,
+          382.2,
+          135.9,
+          147.7
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0706:S1",
+      "page": 30,
+      "ordinal": 740,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "imply that the network",
+      "layout": {
+        "bbox": [
+          393.4,
+          513.2,
+          136.6,
+          147.6
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0707:S0",
+      "page": 30,
+      "ordinal": 741,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "recognises the patternx(1) as the stored one. This example illustrates the general",
+      "layout": {
+        "bbox": [
+          99.6,
+          512.6,
+          122.1,
+          134.6
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0708:S0",
+      "page": 30,
+      "ordinal": 742,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "proof, Equations (2.10) and (2.11).",
+      "layout": {
+        "bbox": [
+          99.5,
+          270.8,
+          107.8,
+          118.7
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5489:S0",
+      "page": 191,
+      "ordinal": 5982,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "SELF-ORGANISING MAPS 181",
+      "layout": {
+        "bbox": [
+          102.3,
+          511.7,
+          718.9,
+          727
+        ],
+        "font": {
+          "size": 9,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5490:S0",
+      "page": 191,
+      "ordinal": 5983,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Figure 10.9: Learning a distribution Pdata(x) (gray) of two-dimensional real-",
+      "layout": {
+        "bbox": [
+          99.6,
+          514.2,
+          582.7,
+          593.8
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5491:S0",
+      "page": 191,
+      "ordinal": 5984,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "valued inputs x with Kohonen’s algorithm. Illustration ofthe dynamics ofthe self-",
+      "layout": {
+        "bbox": [
+          98.9,
+          514.2,
+          568.2,
+          579.3
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5492:S0",
+      "page": 191,
+      "ordinal": 5985,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "organising map in terms ofan elastic net. (a) Initial condition. (b) Intermediate",
+      "layout": {
+        "bbox": [
+          99.8,
+          512.4,
+          553.8,
+          564.8
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5493:S0",
+      "page": 191,
+      "ordinal": 5986,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "stage. (c) In the steady-state the elastic networkresembles the shape deﬁnedbythe",
+      "layout": {
+        "bbox": [
+          99.7,
+          512.4,
+          539.3,
+          550.4
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5494:S0",
+      "page": 191,
+      "ordinal": 5987,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "input distribution Pdata(x).",
+      "layout": {
+        "bbox": [
+          99.6,
+          230.6,
+          525,
+          536
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5495:S0",
+      "page": 191,
+      "ordinal": 5988,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "This is a condition forthe steady-state learning outcome, the function w∗(r).",
+      "layout": {
+        "bbox": [
+          99.1,
+          485.9,
+          490.4,
+          501.5
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5496:S0",
+      "page": 191,
+      "ordinal": 5989,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In the continuumlimitthe position r0(x) ofthewinningneuron in the output",
+      "layout": {
+        "bbox": [
+          113.8,
+          512.8,
+          475.9,
+          487
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5497:S0",
+      "page": 191,
+      "ordinal": 5990,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "arrayforpatternx is givenby",
+      "layout": {
+        "bbox": [
+          99.8,
+          248.1,
+          461.4,
+          472.5
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5498:S0",
+      "page": 191,
+      "ordinal": 5991,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∗",
+      "layout": {
+        "bbox": [
+          288.6,
+          291.7,
+          454.5,
+          458.1
+        ],
+        "font": {
+          "size": 7.5,
+          "name": "mathdesign-ut-regular-symbol-10",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5499:S0",
+      "page": 191,
+      "ordinal": 5992,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "w (r0) =x . (10.21)",
+      "layout": {
+        "bbox": [
+          278.6,
+          511.6,
+          447.2,
+          457.9
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0.3,
+          "italicRatio": 0.3
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5500:S0",
+      "page": 191,
+      "ordinal": 5993,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "We use this relation to write Equation (10.20) as:",
+      "layout": {
+        "bbox": [
+          98.5,
+          341.1,
+          425.8,
+          436.7
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5501:S0",
+      "page": 191,
+      "ordinal": 5994,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∫dxPdata(x)h\u0000r−r0(x)\u0001\u0002w∗(r0(x))−w∗(r)\u0003= 0.",
+      "layout": {
+        "bbox": [
+          184.8,
+          426.8,
+          381.5,
+          412.9
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "mathdesign-ut-regular-ot1-10",
+          "boldRatio": 0.2,
+          "italicRatio": 0.4
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5501:S1",
+      "page": 191,
+      "ordinal": 5995,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(10.22)",
+      "layout": {
+        "bbox": [
+          479.3,
+          511.6,
+          392.8,
+          402
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5502:S0",
+      "page": 191,
+      "ordinal": 5996,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Equation (10.21) deﬁnes a mapping r0(x) from input space to output space, the",
+      "layout": {
+        "bbox": [
+          99.6,
+          512.4,
+          357.8,
+          368.9
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5503:S0",
+      "page": 191,
+      "ordinal": 5997,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "self-organisingmap (Figure 10.7). Assumingthatthis mappingis one-to-one, we",
+      "layout": {
+        "bbox": [
+          99.8,
+          512.4,
+          343.3,
+          354.4
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5504:S0",
+      "page": 191,
+      "ordinal": 5998,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "change integrationvariable fromx to r0:",
+      "layout": {
+        "bbox": [
+          99.8,
+          304.7,
+          328.9,
+          339.9
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5505:S0",
+      "page": 191,
+      "ordinal": 5999,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∫dr0 |detJ| Q(r0)h(r−r0)\u0002w∗(r0)−w∗(r)\u0003= 0, (10.23)",
+      "layout": {
+        "bbox": [
+          187.2,
+          511.6,
+          284.4,
+          315.9
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0.2,
+          "italicRatio": 0.3
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5506:S0",
+      "page": 191,
+      "ordinal": 6000,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "where Q(r0) ≡ Pdata\u0000x(r0)\u0001, andwhere the determinantrepresents thevolume ele-",
+      "layout": {
+        "bbox": [
+          98.8,
+          514.2,
+          257.5,
+          271.9
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5507:S0",
+      "page": 191,
+      "ordinal": 6001,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ment ofthevariable transformation. UsingEquation (10.21), theJacobianJ ofthe",
+      "layout": {
+        "bbox": [
+          99.6,
+          512.4,
+          244.1,
+          255.1
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5508:S0",
+      "page": 191,
+      "ordinal": 6002,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "transformationhas elements",
+      "layout": {
+        "bbox": [
+          99.6,
+          245.3,
+          232.2,
+          240.7
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5509:S0",
+      "page": 191,
+      "ordinal": 6003,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∂ wi(r0)",
+      "layout": {
+        "bbox": [
+          297.5,
+          335.9,
+          208.2,
+          219
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-italic",
+          "boldRatio": 0.1,
+          "italicRatio": 0.7
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5510:S0",
+      "page": 191,
+      "ordinal": 6004,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Jij = . (10.24)",
+      "layout": {
+        "bbox": [
+          270.8,
+          511.6,
+          198,
+          209.9
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0.3
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5511:S0",
+      "page": 191,
+      "ordinal": 6005,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∂rj",
+      "layout": {
+        "bbox": [
+          308.4,
+          324.3,
+          189.7,
+          202.3
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "mathdesign-ut-regular-italic-mathitalic-10",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5512:S0",
+      "page": 191,
+      "ordinal": 6006,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The neighbourhoodfunction is sharplypeaked at r = r0, and this makes itpossible",
+      "layout": {
+        "bbox": [
+          99.1,
+          512.4,
+          165.5,
+          176.5
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5513:S0",
+      "page": 191,
+      "ordinal": 6007,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "to evaluate the steady-state condition (10.23) approximately, expandingthe inte-",
+      "layout": {
+        "bbox": [
+          99.6,
+          514.1,
+          151,
+          162.1
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5514:S0",
+      "page": 191,
+      "ordinal": 6008,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∗",
+      "layout": {
+        "bbox": [
+          293,
+          296.2,
+          143.4,
+          147.1
+        ],
+        "font": {
+          "size": 7.5,
+          "name": "mathdesign-ut-regular-symbol-10",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5515:S0",
+      "page": 191,
+      "ordinal": 6009,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "grand in δr = r0 −r, assumingthat w (r) is a smooth function. This is illustrated",
+      "layout": {
+        "bbox": [
+          99.7,
+          512.6,
+          136.6,
+          147.8
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5516:S0",
+      "page": 191,
+      "ordinal": 6010,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "in Figure 10.10, for one-dimensional inputs and outputs. We considerthis special",
+      "layout": {
+        "bbox": [
+          99.6,
+          512.6,
+          122.1,
+          133.2
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L5517:S0",
+      "page": 191,
+      "ordinal": 6011,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "case not onlyto simplifythe notation, but also because it is one ofthe few cases",
+      "layout": {
+        "bbox": [
+          99.8,
+          512.4,
+          107.7,
+          118.7
+        ],
+        "font": {
+          "size": 11.2,
+          "name": "utopia-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    }
+  ],
+  "labels": "NONE_SOURCE_FACTS_ONLY"
+}

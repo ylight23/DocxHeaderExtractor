@@ -1,0 +1,3108 @@
+{
+  "version": "P7_F1Q_HELDOUT_REVIEW_BUNDLE_V1",
+  "id": "067",
+  "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/067_Algorithms_for_Massive_Data_Lecture_Notes.pdf",
+  "sourceSha256": "810f3313d2aa43c53390de8b776d810856d9dbc1d5066fde1600b59530ba9d6f",
+  "sourceAliasUniverseSha256": "2284f13d62f396b42d0f89bc28d0efb7f58c1039fed1fd920a98910258b74ab9",
+  "evidenceStoreSha256": "aecdf44d301fab1893745ac1185e70fe47568782d2fc685e42e8d80e8f9a6195",
+  "pageSelectionSha256": "c4b9ebefbd5a15f0cef59bb1d11f00497b971effae91f185475d08b335851f94",
+  "pageStats": [
+    {
+      "page": 1,
+      "lineCount": 20,
+      "textExtent": [
+        32,
+        501,
+        262.6,
+        445.9
+      ],
+      "medianFontSize": 20
+    },
+    {
+      "page": 2,
+      "lineCount": 41,
+      "textExtent": [
+        85.5,
+        526.5,
+        54.9,
+        634.4
+      ],
+      "medianFontSize": 10
+    },
+    {
+      "page": 21,
+      "lineCount": 55,
+      "textExtent": [
+        85.5,
+        526.5,
+        54.9,
+        703.9
+      ],
+      "medianFontSize": 10
+    },
+    {
+      "page": 119,
+      "lineCount": 33,
+      "textExtent": [
+        85.5,
+        526.5,
+        54.9,
+        636.5
+      ],
+      "medianFontSize": 10
+    }
+  ],
+  "layoutBasis": "bbox=[left,right,bottom,top] in PDF points, bottom-left origin; font={size,name,boldRatio,italicRatio}; parser observations, not labels",
+  "occurrences": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "ordinal": 0,
+      "pageStratum": "FIRST",
+      "text": "62",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "ordinal": 1,
+      "pageStratum": "FIRST",
+      "text": "02",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "ordinal": 2,
+      "pageStratum": "FIRST",
+      "text": "be",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "ordinal": 3,
+      "pageStratum": "FIRST",
+      "text": "F",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "ordinal": 4,
+      "pageStratum": "FIRST",
+      "text": "62",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "ordinal": 5,
+      "pageStratum": "FIRST",
+      "text": "]",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "ordinal": 6,
+      "pageStratum": "FIRST",
+      "text": "S",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "ordinal": 7,
+      "pageStratum": "FIRST",
+      "text": "D.s CM0622 - Algorithms for Massive Data",
+      "layout": {
+        "bbox": [
+          32,
+          501,
+          418.7,
+          445.9
+        ],
+        "font": {
+          "size": 24.8,
+          "name": "cmr17",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "ordinal": 8,
+      "pageStratum": "FIRST",
+      "text": "c[",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "ordinal": 9,
+      "pageStratum": "FIRST",
+      "text": "51",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "ordinal": 10,
+      "pageStratum": "FIRST",
+      "text": "v4",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0010:S1",
+      "page": 1,
+      "ordinal": 11,
+      "pageStratum": "FIRST",
+      "text": "Nicola Prezza",
+      "layout": {
+        "bbox": [
+          264.7,
+          347.3,
+          364.8,
+          375.2
+        ],
+        "font": {
+          "size": 14.4,
+          "name": "cmr12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "ordinal": 12,
+      "pageStratum": "FIRST",
+      "text": "57",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0011:S1",
+      "page": 1,
+      "ordinal": 13,
+      "pageStratum": "FIRST",
+      "text": "Ca’ Foscari University of Venice",
+      "layout": {
+        "bbox": [
+          224.5,
+          387.5,
+          344,
+          352.6
+        ],
+        "font": {
+          "size": 12,
+          "name": "cmr12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "ordinal": 14,
+      "pageStratum": "FIRST",
+      "text": "00.",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "ordinal": 15,
+      "pageStratum": "FIRST",
+      "text": "10",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "ordinal": 16,
+      "pageStratum": "FIRST",
+      "text": "32: Version: February 27, 2026",
+      "layout": {
+        "bbox": [
+          32,
+          374.6,
+          262.6,
+          292.6
+        ],
+        "font": {
+          "size": 12,
+          "name": "cmr12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "ordinal": 17,
+      "pageStratum": "FIRST",
+      "text": "vi",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "ordinal": 18,
+      "pageStratum": "FIRST",
+      "text": "Xr",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "ordinal": 19,
+      "pageStratum": "FIRST",
+      "text": "a",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 2,
+      "ordinal": 20,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Contents",
+      "layout": {
+        "bbox": [
+          86.3,
+          192.7,
+          616.6,
+          634.4
+        ],
+        "font": {
+          "size": 24.8,
+          "name": "cmbx12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 2,
+      "ordinal": 21,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 Compressed Data Structures 4",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          555.2,
+          562.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmbx10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 2,
+      "ordinal": 22,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.1 Full-text indexing - classical solutions . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4",
+      "layout": {
+        "bbox": [
+          100.5,
+          526.5,
+          543.3,
+          550.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 2,
+      "ordinal": 23,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.1.1 Inverted indexes and suffix trie . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          531.3,
+          538.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 2,
+      "ordinal": 24,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.1.2 Suffix tree . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          519.4,
+          526.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 2,
+      "ordinal": 25,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.1.3 Suffix array . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          507.4,
+          514.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 2,
+      "ordinal": 26,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2 Basics of information theory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7",
+      "layout": {
+        "bbox": [
+          100.5,
+          526.5,
+          495.5,
+          502.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 2,
+      "ordinal": 27,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2.1 Worst-case entropy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          483.5,
+          490.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 2,
+      "ordinal": 28,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2.2 Prefix-free codes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          471.5,
+          478.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 2,
+      "ordinal": 29,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2.3 Zero-order empirical entropy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          459.6,
+          466.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 2,
+      "ordinal": 30,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2.4 High-order empirical entropy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          447.6,
+          454.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0029:S0",
+      "page": 2,
+      "ordinal": 31,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.3 Zero-order compressed bitvectors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12",
+      "layout": {
+        "bbox": [
+          100.5,
+          526.5,
+          435.7,
+          442.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0030:S0",
+      "page": 2,
+      "ordinal": 32,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.3.1 Random access in n bits . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          423.7,
+          430.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0031:S0",
+      "page": 2,
+      "ordinal": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.3.2 Encoding a bitvector in nH0 + o(n) bits . . . . . . . . . . . . . . . . . . . . . . . 14",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          410.4,
+          418.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0032:S0",
+      "page": 2,
+      "ordinal": 34,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.3.3 Random access and rank in nH0 + o(n) bits . . . . . . . . . . . . . . . . . . . . . 16",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          398.4,
+          407
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0033:S0",
+      "page": 2,
+      "ordinal": 35,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.4 Sets of integers - the Elias-Fano data structure . . . . . . . . . . . . . . . . . . . . . . . 19",
+      "layout": {
+        "bbox": [
+          100.5,
+          526.5,
+          387.9,
+          395
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0034:S0",
+      "page": 2,
+      "ordinal": 36,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.5 The compressed suffix array (CSA) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21",
+      "layout": {
+        "bbox": [
+          100.5,
+          526.5,
+          375.9,
+          383.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0035:S0",
+      "page": 2,
+      "ordinal": 37,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.5.1 Compressing F and ψ and counting patterns . . . . . . . . . . . . . . . . . . . . 24",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          363.9,
+          371.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0036:S0",
+      "page": 2,
+      "ordinal": 38,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.5.2 Locating patterns and extracting substrings . . . . . . . . . . . . . . . . . . . . . 25",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          352,
+          359.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0037:S0",
+      "page": 2,
+      "ordinal": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.6 The FM-index . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27",
+      "layout": {
+        "bbox": [
+          100.5,
+          526.5,
+          340,
+          347.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0038:S0",
+      "page": 2,
+      "ordinal": 40,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.6.1 Wavelet Trees: WT . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          328.1,
+          335.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0039:S0",
+      "page": 2,
+      "ordinal": 41,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.6.2 The Burrows-Wheeler Transform: BWT . . . . . . . . . . . . . . . . . . . . . . . 32",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          316.1,
+          323.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0040:S0",
+      "page": 2,
+      "ordinal": 42,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.6.3 FM-index = WT(BWT) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          304.2,
+          311.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0041:S0",
+      "page": 2,
+      "ordinal": 43,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2 Probability Theory and Hashing 39",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          282.3,
+          289.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmbx10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0042:S0",
+      "page": 2,
+      "ordinal": 44,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1 Random variables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39",
+      "layout": {
+        "bbox": [
+          100.5,
+          526.5,
+          270.3,
+          277.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0043:S0",
+      "page": 2,
+      "ordinal": 45,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1.1 Distribution function . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          258.3,
+          265.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0044:S0",
+      "page": 2,
+      "ordinal": 46,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1.2 Events . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          246.4,
+          253.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0045:S0",
+      "page": 2,
+      "ordinal": 47,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1.3 Expected value and variance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          234.4,
+          241.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0046:S0",
+      "page": 2,
+      "ordinal": 48,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1.4 Bernoullian R.V.s . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          222.5,
+          229.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0047:S0",
+      "page": 2,
+      "ordinal": 49,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2 Concentration inequalities . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43",
+      "layout": {
+        "bbox": [
+          100.5,
+          526.5,
+          210.5,
+          217.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0048:S0",
+      "page": 2,
+      "ordinal": 50,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2.1 Markov’s inequality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          198.6,
+          205.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0049:S0",
+      "page": 2,
+      "ordinal": 51,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2.2 Chebyshev’s inequality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          186.6,
+          193.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0050:S0",
+      "page": 2,
+      "ordinal": 52,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2.3 Chernoff-Hoeffding’s inequalities . . . . . . . . . . . . . . . . . . . . . . . . . . . 44",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          174.7,
+          181.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0051:S0",
+      "page": 2,
+      "ordinal": 53,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2.4 Combining bounds: the mean and median tricks . . . . . . . . . . . . . . . . . . 47",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          162.7,
+          169.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0052:S0",
+      "page": 2,
+      "ordinal": 54,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3 Hashing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49",
+      "layout": {
+        "bbox": [
+          100.5,
+          526.5,
+          150.7,
+          157.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0053:S0",
+      "page": 2,
+      "ordinal": 55,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3.1 k-wise independent hashing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          138.8,
+          146
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0054:S0",
+      "page": 2,
+      "ordinal": 56,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3.2 Universal hashing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          126.8,
+          134
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0055:S0",
+      "page": 2,
+      "ordinal": 57,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3.3 Perfect hashing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          114.9,
+          122.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0056:S0",
+      "page": 2,
+      "ordinal": 58,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3.4 Hashing integers to the reals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          102.9,
+          110.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0057:S0",
+      "page": 2,
+      "ordinal": 59,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3.5 Hash tables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53",
+      "layout": {
+        "bbox": [
+          123.4,
+          526.5,
+          91,
+          98.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0058:S0",
+      "page": 2,
+      "ordinal": 60,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1",
+      "layout": {
+        "bbox": [
+          304,
+          308,
+          54.9,
+          62
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0813:S0",
+      "page": 21,
+      "ordinal": 911,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(sorted) integers in binary, using log n = 5 bits each:",
+      "layout": {
+        "bbox": [
+          85.5,
+          314.4,
+          696.7,
+          703.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.9
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0814:S0",
+      "page": 21,
+      "ordinal": 912,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "x ∈ S",
+      "layout": {
+        "bbox": [
+          276.6,
+          299.6,
+          670.7,
+          677.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmmi10",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0814:S1",
+      "page": 21,
+      "ordinal": 913,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(x)2",
+      "layout": {
+        "bbox": [
+          315,
+          331.6,
+          669.3,
+          677.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0.3
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0815:S0",
+      "page": 21,
+      "ordinal": 914,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "0",
+      "layout": {
+        "bbox": [
+          286.4,
+          290.4,
+          652.4,
+          659.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0815:S1",
+      "page": 21,
+      "ordinal": 915,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "00000",
+      "layout": {
+        "bbox": [
+          311.5,
+          335.4,
+          652.4,
+          659.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0816:S0",
+      "page": 21,
+      "ordinal": 916,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5",
+      "layout": {
+        "bbox": [
+          286.4,
+          290.4,
+          634.4,
+          641.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0816:S1",
+      "page": 21,
+      "ordinal": 917,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "00101",
+      "layout": {
+        "bbox": [
+          311.5,
+          335.4,
+          634.4,
+          641.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0817:S0",
+      "page": 21,
+      "ordinal": 918,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8",
+      "layout": {
+        "bbox": [
+          286.4,
+          290.4,
+          616.5,
+          623.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0817:S1",
+      "page": 21,
+      "ordinal": 919,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01000",
+      "layout": {
+        "bbox": [
+          311.5,
+          335.4,
+          616.5,
+          623.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0818:S0",
+      "page": 21,
+      "ordinal": 920,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "12",
+      "layout": {
+        "bbox": [
+          283.9,
+          292.9,
+          598.6,
+          605.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0818:S1",
+      "page": 21,
+      "ordinal": 921,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01100",
+      "layout": {
+        "bbox": [
+          311.5,
+          335.4,
+          598.6,
+          605.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0819:S0",
+      "page": 21,
+      "ordinal": 922,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "14",
+      "layout": {
+        "bbox": [
+          283.9,
+          292.9,
+          580.6,
+          587.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0819:S1",
+      "page": 21,
+      "ordinal": 923,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01110",
+      "layout": {
+        "bbox": [
+          311.5,
+          335.4,
+          580.6,
+          587.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0820:S0",
+      "page": 21,
+      "ordinal": 924,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "17",
+      "layout": {
+        "bbox": [
+          283.9,
+          292.9,
+          562.7,
+          569.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0820:S1",
+      "page": 21,
+      "ordinal": 925,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10001",
+      "layout": {
+        "bbox": [
+          311.5,
+          335.4,
+          562.7,
+          569.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0821:S0",
+      "page": 21,
+      "ordinal": 926,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "20",
+      "layout": {
+        "bbox": [
+          283.9,
+          292.9,
+          544.8,
+          551.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0821:S1",
+      "page": 21,
+      "ordinal": 927,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10100",
+      "layout": {
+        "bbox": [
+          311.5,
+          335.4,
+          544.8,
+          551.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0822:S0",
+      "page": 21,
+      "ordinal": 928,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "31",
+      "layout": {
+        "bbox": [
+          283.9,
+          292.9,
+          526.8,
+          534
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0822:S1",
+      "page": 21,
+      "ordinal": 929,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "11111",
+      "layout": {
+        "bbox": [
+          311.5,
+          335.4,
+          526.8,
+          534
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0823:S0",
+      "page": 21,
+      "ordinal": 930,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The next step is to break each integer into a prefix of log m = 3 bits, and a suffix of log n − log m =",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          503.6,
+          510.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.8
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0824:S0",
+      "page": 21,
+      "ordinal": 931,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "log(n/m) = 2 bits. The suffixes form the first component EF1 of the EF data structure:",
+      "layout": {
+        "bbox": [
+          85.5,
+          466.9,
+          490.2,
+          498.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.9
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0825:S0",
+      "page": 21,
+      "ordinal": 932,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "x ∈ S prefix of(x)2 EF1 = suffix of(x)2",
+      "layout": {
+        "bbox": [
+          213.7,
+          398,
+          464.2,
+          472.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0.3
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0826:S0",
+      "page": 21,
+      "ordinal": 933,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "0",
+      "layout": {
+        "bbox": [
+          223.5,
+          227.5,
+          447.3,
+          454.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0826:S1",
+      "page": 21,
+      "ordinal": 934,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "000",
+      "layout": {
+        "bbox": [
+          268.6,
+          282.6,
+          447.3,
+          454.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0826:S2",
+      "page": 21,
+      "ordinal": 935,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "00",
+      "layout": {
+        "bbox": [
+          351.6,
+          360.6,
+          447.3,
+          454.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0827:S0",
+      "page": 21,
+      "ordinal": 936,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5",
+      "layout": {
+        "bbox": [
+          223.5,
+          227.5,
+          429.4,
+          436.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0827:S1",
+      "page": 21,
+      "ordinal": 937,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "001",
+      "layout": {
+        "bbox": [
+          268.6,
+          282.6,
+          429.4,
+          436.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0827:S2",
+      "page": 21,
+      "ordinal": 938,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01",
+      "layout": {
+        "bbox": [
+          351.6,
+          360.6,
+          429.4,
+          436.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0828:S0",
+      "page": 21,
+      "ordinal": 939,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8",
+      "layout": {
+        "bbox": [
+          223.5,
+          227.5,
+          411.4,
+          418.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0828:S1",
+      "page": 21,
+      "ordinal": 940,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "010",
+      "layout": {
+        "bbox": [
+          268.6,
+          282.6,
+          411.4,
+          418.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0828:S2",
+      "page": 21,
+      "ordinal": 941,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "00",
+      "layout": {
+        "bbox": [
+          351.6,
+          360.6,
+          411.4,
+          418.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0829:S0",
+      "page": 21,
+      "ordinal": 942,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "12",
+      "layout": {
+        "bbox": [
+          221,
+          230,
+          393.5,
+          400.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0829:S1",
+      "page": 21,
+      "ordinal": 943,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "011",
+      "layout": {
+        "bbox": [
+          268.6,
+          282.6,
+          393.5,
+          400.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0829:S2",
+      "page": 21,
+      "ordinal": 944,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "00",
+      "layout": {
+        "bbox": [
+          351.6,
+          360.6,
+          393.5,
+          400.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0830:S0",
+      "page": 21,
+      "ordinal": 945,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "14",
+      "layout": {
+        "bbox": [
+          221,
+          230,
+          375.6,
+          382.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0830:S1",
+      "page": 21,
+      "ordinal": 946,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "011",
+      "layout": {
+        "bbox": [
+          268.6,
+          282.6,
+          375.6,
+          382.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0830:S2",
+      "page": 21,
+      "ordinal": 947,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10",
+      "layout": {
+        "bbox": [
+          351.6,
+          360.6,
+          375.6,
+          382.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0831:S0",
+      "page": 21,
+      "ordinal": 948,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "17",
+      "layout": {
+        "bbox": [
+          221,
+          230,
+          357.6,
+          364.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0831:S1",
+      "page": 21,
+      "ordinal": 949,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "100",
+      "layout": {
+        "bbox": [
+          268.6,
+          282.6,
+          357.6,
+          364.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0831:S2",
+      "page": 21,
+      "ordinal": 950,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01",
+      "layout": {
+        "bbox": [
+          351.6,
+          360.6,
+          357.6,
+          364.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0832:S0",
+      "page": 21,
+      "ordinal": 951,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "20",
+      "layout": {
+        "bbox": [
+          221,
+          230,
+          339.7,
+          346.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0832:S1",
+      "page": 21,
+      "ordinal": 952,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "101",
+      "layout": {
+        "bbox": [
+          268.6,
+          282.6,
+          339.7,
+          346.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0832:S2",
+      "page": 21,
+      "ordinal": 953,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "00",
+      "layout": {
+        "bbox": [
+          351.6,
+          360.6,
+          339.7,
+          346.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0833:S0",
+      "page": 21,
+      "ordinal": 954,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "31",
+      "layout": {
+        "bbox": [
+          221,
+          230,
+          321.8,
+          328.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0833:S1",
+      "page": 21,
+      "ordinal": 955,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "111",
+      "layout": {
+        "bbox": [
+          268.6,
+          282.6,
+          321.8,
+          328.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0833:S2",
+      "page": 21,
+      "ordinal": 956,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "11",
+      "layout": {
+        "bbox": [
+          351.6,
+          360.6,
+          321.8,
+          328.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0834:S0",
+      "page": 21,
+      "ordinal": 957,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Note that the suffixes use in total mlog(n/m) bits. We store EF1 = (00,01,00,00,10,01,00,11)",
+      "layout": {
+        "bbox": [
+          100.5,
+          526.5,
+          296.5,
+          305.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.7
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0835:S0",
+      "page": 21,
+      "ordinal": 958,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "with the packed array data structure of Theorem 1.3.9. As far as the prefixes are concerned, observe",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          286,
+          293.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0836:S0",
+      "page": 21,
+      "ordinal": 959,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "that they form a list of m nondecreasing integers of log m bits each. We will store the differences",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          274,
+          281.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0837:S0",
+      "page": 21,
+      "ordinal": 960,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "between consecutive integers in the list, in unary encoding: difference δi = pi − pi−1, where pi is the",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          260.7,
+          269.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0838:S0",
+      "page": 21,
+      "ordinal": 961,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "i-th prefix, is encoded as 0δi1 (i.e. δi occurrences of bit ’0’ followed by one bit ’1’). For example, the",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          248.7,
+          258.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0839:S0",
+      "page": 21,
+      "ordinal": 962,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "difference δ8 between the two adjacent prefixes p7 = 101 and p8 = 111 is (111 − 101)2 = 2; we encode",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          236.8,
+          245.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.7
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0840:S0",
+      "page": 21,
+      "ordinal": 963,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "this difference as δ8 = 021 = 001. The first difference is defined as δ1 = p1. The concatenated bits of",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          224.8,
+          234.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.8
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0841:S0",
+      "page": 21,
+      "ordinal": 964,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "this encoding of δ1,...,δm is the second part EF2 of the EF data structure:",
+      "layout": {
+        "bbox": [
+          85.5,
+          413.3,
+          212.9,
+          221.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0842:S0",
+      "page": 21,
+      "ordinal": 965,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "20",
+      "layout": {
+        "bbox": [
+          301.5,
+          310.5,
+          54.9,
+          62
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4828:S0",
+      "page": 119,
+      "ordinal": 5646,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Chapter 6",
+      "layout": {
+        "bbox": [
+          86.1,
+          186.4,
+          621.7,
+          636.5
+        ],
+        "font": {
+          "size": 20.7,
+          "name": "cmbx12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4829:S0",
+      "page": 119,
+      "ordinal": 5647,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Bibliography",
+      "layout": {
+        "bbox": [
+          86.3,
+          240.1,
+          571.7,
+          589.6
+        ],
+        "font": {
+          "size": 24.8,
+          "name": "cmbx12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4830:S0",
+      "page": 119,
+      "ordinal": 5648,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[1] Noga Alon, Martin Dietzfelbinger, Peter Bro Miltersen, Erez Petrank, and Ga´bor Tardos. Linear",
+      "layout": {
+        "bbox": [
+          90.5,
+          526.5,
+          519,
+          526.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4831:S0",
+      "page": 119,
+      "ordinal": 5649,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "hash functions. Journal of the ACM (JACM), 46(5):667–683, 1999.",
+      "layout": {
+        "bbox": [
+          106,
+          398.6,
+          507.1,
+          514.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0.4
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4832:S0",
+      "page": 119,
+      "ordinal": 5650,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[2] Noga Alon, Phillip B Gibbons, Yossi Matias, and Mario Szegedy. Tracking join and self-join sizes",
+      "layout": {
+        "bbox": [
+          90.5,
+          526.5,
+          487.8,
+          495
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4833:S0",
+      "page": 119,
+      "ordinal": 5651,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "in limited storage. In Proceedings of the eighteenth ACM SIGMOD-SIGACT-SIGART symposium",
+      "layout": {
+        "bbox": [
+          106,
+          526.5,
+          475.9,
+          483
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.7
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4834:S0",
+      "page": 119,
+      "ordinal": 5652,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "on Principles of database systems, pages 10–20, 1999.",
+      "layout": {
+        "bbox": [
+          106,
+          338.1,
+          463.9,
+          471.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.6
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4835:S0",
+      "page": 119,
+      "ordinal": 5653,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[3] Noga Alon, Yossi Matias, and Mario Szegedy. The space complexity of approximating the fre-",
+      "layout": {
+        "bbox": [
+          90.5,
+          526.5,
+          444.7,
+          451.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4836:S0",
+      "page": 119,
+      "ordinal": 5654,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "quency moments. Journal of Computer and System Sciences, 58:137–147, 1999.",
+      "layout": {
+        "bbox": [
+          106,
+          452,
+          432.7,
+          439.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.5
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4837:S0",
+      "page": 119,
+      "ordinal": 5655,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[4] Michael A Bender, Martin Farach-Colton, Rob Johnson, Bradley C Kuszmaul, Dzejla Medjedovic,",
+      "layout": {
+        "bbox": [
+          90.5,
+          526.5,
+          413.4,
+          420.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4838:S0",
+      "page": 119,
+      "ordinal": 5656,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Pablo Montes, Pradeep Shetty, Richard P Spillane, and Erez Zadok. Don’t thrash: how to cache",
+      "layout": {
+        "bbox": [
+          106,
+          526.5,
+          401.5,
+          408.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4839:S0",
+      "page": 119,
+      "ordinal": 5657,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "your hash on flash. In 3rd Workshop on Hot Topics in Storage and File Systems (HotStorage 11),",
+      "layout": {
+        "bbox": [
+          106,
+          526.5,
+          389.5,
+          396.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.7
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4840:S0",
+      "page": 119,
+      "ordinal": 5658,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2011.",
+      "layout": {
+        "bbox": [
+          106,
+          127.7,
+          377.6,
+          384.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4841:S0",
+      "page": 119,
+      "ordinal": 5659,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[5] Burton H Bloom. Space/time trade-offs in hash coding with allowable errors. Communications",
+      "layout": {
+        "bbox": [
+          90.5,
+          526.5,
+          358.3,
+          365.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4842:S0",
+      "page": 119,
+      "ordinal": 5660,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "of the ACM, 13(7):422–426, 1970.",
+      "layout": {
+        "bbox": [
+          106,
+          251.7,
+          346.4,
+          353.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0.3
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4843:S0",
+      "page": 119,
+      "ordinal": 5661,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[6] Alex Bowe. RRR: A Succinct Rank/Select Index for Bit Vectors. https://www.alexbowe.com/",
+      "layout": {
+        "bbox": [
+          90.5,
+          526.5,
+          327.1,
+          334.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4844:S0",
+      "page": 119,
+      "ordinal": 5662,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "rrr/. Accessed: 2024-02-20.",
+      "layout": {
+        "bbox": [
+          106,
+          228.2,
+          315.2,
+          322.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4845:S0",
+      "page": 119,
+      "ordinal": 5663,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[7] Dany Breslauer and Zvi Galil. Real-time streaming string-matching. ACM Transactions on",
+      "layout": {
+        "bbox": [
+          90.5,
+          526.5,
+          295.9,
+          303.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0.2
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4846:S0",
+      "page": 119,
+      "ordinal": 5664,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Algorithms (TALG), 10(4):1–12, 2014.",
+      "layout": {
+        "bbox": [
+          106,
+          272,
+          284,
+          291.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0.5
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4847:S0",
+      "page": 119,
+      "ordinal": 5665,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[8] Andrei Z Broder. Min-wise independent permutations: Theory and practice. In International",
+      "layout": {
+        "bbox": [
+          90.5,
+          526.5,
+          264.7,
+          271.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0.1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4848:S0",
+      "page": 119,
+      "ordinal": 5666,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Colloquium on Automata, Languages, and Programming, pages 808–808. Springer, 2000.",
+      "layout": {
+        "bbox": [
+          106,
+          489.1,
+          252.7,
+          259.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.6
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4849:S0",
+      "page": 119,
+      "ordinal": 5667,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[9] Michael Burrows and David J Wheeler. A block-sorting lossless data compression algorithm, 1994.",
+      "layout": {
+        "bbox": [
+          90.5,
+          526.5,
+          233.5,
+          240.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4850:S0",
+      "page": 119,
+      "ordinal": 5668,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[10] Amit Chakrabarti. Data Stream Algorithms - Lecture Notes. https://www.cs.dartmouth.edu/",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          214.2,
+          221.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4851:S0",
+      "page": 119,
+      "ordinal": 5669,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "~ac/Teach/data-streams-lecnotes.pdf. Accessed: 2023-01-03.",
+      "layout": {
+        "bbox": [
+          106,
+          391.3,
+          200.3,
+          209.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmtt10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4852:S0",
+      "page": 119,
+      "ordinal": 5670,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[11] Rapha¨el Clifford, Allyx Fontaine, Ely Porat, Benjamin Sach, and Tatiana Starikovskaya. The k-",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          183,
+          190.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4853:S0",
+      "page": 119,
+      "ordinal": 5671,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "mismatch problem revisited. In Proceedings of the twenty-seventh annual ACM-SIAM symposium",
+      "layout": {
+        "bbox": [
+          106,
+          526.5,
+          171.1,
+          178.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.7
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4854:S0",
+      "page": 119,
+      "ordinal": 5672,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "on Discrete algorithms, pages 2039–2052. SIAM, 2016.",
+      "layout": {
+        "bbox": [
+          106,
+          342.1,
+          159.1,
+          166.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0.4
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4855:S0",
+      "page": 119,
+      "ordinal": 5673,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[12] Rapha¨el Clifford, Tomasz Kociumaka, and Ely Porat. The streaming k-mismatch problem. In",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          139.9,
+          147
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4856:S0",
+      "page": 119,
+      "ordinal": 5674,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Proceedings of the Thirtieth Annual ACM-SIAM Symposium on Discrete Algorithms, pages 1106–",
+      "layout": {
+        "bbox": [
+          106,
+          526.5,
+          127.9,
+          135.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0.9
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4857:S0",
+      "page": 119,
+      "ordinal": 5675,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1125. SIAM, 2019.",
+      "layout": {
+        "bbox": [
+          106,
+          185.6,
+          116,
+          123.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4858:S0",
+      "page": 119,
+      "ordinal": 5676,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[13] Graham Cormode. Data sketching. https://cacm.acm.org/magazines/2017/9/",
+      "layout": {
+        "bbox": [
+          85.5,
+          526.5,
+          96.7,
+          103.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmtt10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4859:S0",
+      "page": 119,
+      "ordinal": 5677,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "220427-data-sketching/fulltext. Communications of the ACM, 60(9):48–55, 2017.",
+      "layout": {
+        "bbox": [
+          106,
+          483.2,
+          84.7,
+          91.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmtt10",
+          "boldRatio": 0,
+          "italicRatio": 0.3
+        }
+      }
+    },
+    {
+      "sourceAlias": "L4860:S0",
+      "page": 119,
+      "ordinal": 5678,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "118",
+      "layout": {
+        "bbox": [
+          299,
+          313,
+          54.9,
+          62
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    }
+  ],
+  "labels": "NONE_SOURCE_FACTS_ONLY"
+}

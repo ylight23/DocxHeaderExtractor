@@ -1,0 +1,1445 @@
+{
+  "version": "P7_F1Q_HELDOUT_REVIEW_BUNDLE_V1",
+  "id": "051",
+  "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/051_WBG_Trust_Fund_FIS_June_2024.pdf",
+  "sourceSha256": "7fd684159939651921105dcc478b4cc145bac8e7810b4ee7b83f15aec7fa0622",
+  "sourceAliasUniverseSha256": "e597f9b48d00ac1d5f22cfebdd767f6e9bb8c0d0c6b611cbcd20e11ede0bd786",
+  "evidenceStoreSha256": "e74c9e784c24a8e73a02e5e243be6991d14ef08765fe0c934f0c24164ec025ac",
+  "pageSelectionSha256": "c4b9ebefbd5a15f0cef59bb1d11f00497b971effae91f185475d08b335851f94",
+  "pageStats": [
+    {
+      "page": 1,
+      "lineCount": 7,
+      "textExtent": [
+        93.8,
+        523.2,
+        45.1,
+        754.5
+      ],
+      "medianFontSize": 9.3
+    },
+    {
+      "page": 6,
+      "lineCount": 31,
+      "textExtent": [
+        80,
+        531.1,
+        45,
+        754.4
+      ],
+      "medianFontSize": 9.4
+    },
+    {
+      "page": 9,
+      "lineCount": 14,
+      "textExtent": [
+        93.7,
+        523.4,
+        45.1,
+        754.5
+      ],
+      "medianFontSize": 7.1
+    },
+    {
+      "page": 15,
+      "lineCount": 14,
+      "textExtent": [
+        93.8,
+        523,
+        45,
+        754.4
+      ],
+      "medianFontSize": 9.4
+    }
+  ],
+  "layoutBasis": "bbox=[left,right,bottom,top] in PDF points, bottom-left origin; font={size,name,boldRatio,italicRatio}; parser observations, not labels",
+  "occurrences": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "ordinal": 0,
+      "pageStratum": "FIRST",
+      "text": "TrustFundFinancialInformationSummaryforfiscalyearsendedJune30,2024and2023",
+      "layout": {
+        "bbox": [
+          265.3,
+          517.5,
+          748.4,
+          754.5
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f1",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "ordinal": 1,
+      "pageStratum": "FIRST",
+      "text": "AllamountsinUSDmillions, unlessotherwisenoted",
+      "layout": {
+        "bbox": [
+          370.5,
+          518,
+          739.9,
+          745.7
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f1",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "ordinal": 2,
+      "pageStratum": "FIRST",
+      "text": "TrustFundOperations",
+      "layout": {
+        "bbox": [
+          93.8,
+          401.7,
+          459.4,
+          484.9
+        ],
+        "font": {
+          "size": 26.2,
+          "name": "f5",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "ordinal": 3,
+      "pageStratum": "FIRST",
+      "text": "Financial Information Summary",
+      "layout": {
+        "bbox": [
+          94.4,
+          523.2,
+          431.6,
+          455.4
+        ],
+        "font": {
+          "size": 24.4,
+          "name": "f5",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "ordinal": 4,
+      "pageStratum": "FIRST",
+      "text": "Fiscalyears endedJune30, 2024and2023",
+      "layout": {
+        "bbox": [
+          94.5,
+          506.9,
+          389.7,
+          409.8
+        ],
+        "font": {
+          "size": 20.6,
+          "name": "f6",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "ordinal": 5,
+      "pageStratum": "FIRST",
+      "text": "1",
+      "layout": {
+        "bbox": [
+          513.9,
+          517.3,
+          62.8,
+          68.7
+        ],
+        "font": {
+          "size": 9.3,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "ordinal": 6,
+      "pageStratum": "FIRST",
+      "text": "1",
+      "layout": {
+        "bbox": [
+          94.1,
+          96.4,
+          45.1,
+          49
+        ],
+        "font": {
+          "size": 6.1,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0067:S0",
+      "page": 6,
+      "ordinal": 79,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "TrustFundFinancialInformationSummaryforfiscalyearsendedJune30,2024and2023",
+      "layout": {
+        "bbox": [
+          265.3,
+          517.6,
+          748.3,
+          754.4
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f1",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0068:S0",
+      "page": 6,
+      "ordinal": 80,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "AllamountsinUSDmillions, unlessotherwisenoted",
+      "layout": {
+        "bbox": [
+          370.5,
+          518.1,
+          739.8,
+          745.6
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f1",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0069:S0",
+      "page": 6,
+      "ordinal": 81,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "PortfolioataGlance-FIFs",
+      "layout": {
+        "bbox": [
+          94,
+          273.4,
+          717.9,
+          728.2
+        ],
+        "font": {
+          "size": 13.2,
+          "name": "f5",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0070:S0",
+      "page": 6,
+      "ordinal": 82,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Contributions",
+      "layout": {
+        "bbox": [
+          195.6,
+          246.9,
+          693,
+          699.5
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0070:S1",
+      "page": 6,
+      "ordinal": 83,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "InvestmentIncome Disbursements",
+      "layout": {
+        "bbox": [
+          270,
+          408.1,
+          693,
+          699.5
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0070:S2",
+      "page": 6,
+      "ordinal": 84,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Fund Balance",
+      "layout": {
+        "bbox": [
+          434.8,
+          484.9,
+          693,
+          699.5
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0071:S0",
+      "page": 6,
+      "ordinal": 85,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2024",
+      "layout": {
+        "bbox": [
+          94,
+          112.4,
+          666.6,
+          672.7
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0071:S1",
+      "page": 6,
+      "ordinal": 86,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "$10,581",
+      "layout": {
+        "bbox": [
+          211.1,
+          244.4,
+          660.3,
+          669.5
+        ],
+        "font": {
+          "size": 10.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0071:S2",
+      "page": 6,
+      "ordinal": 87,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "$1,635",
+      "layout": {
+        "bbox": [
+          298.9,
+          326.9,
+          660.3,
+          669.5
+        ],
+        "font": {
+          "size": 10.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0071:S3",
+      "page": 6,
+      "ordinal": 88,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "$8,964",
+      "layout": {
+        "bbox": [
+          381.5,
+          409.7,
+          660.3,
+          669.5
+        ],
+        "font": {
+          "size": 10.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0071:S4",
+      "page": 6,
+      "ordinal": 89,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "$30,127",
+      "layout": {
+        "bbox": [
+          454.7,
+          487.9,
+          660.3,
+          669.5
+        ],
+        "font": {
+          "size": 10.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0072:S0",
+      "page": 6,
+      "ordinal": 90,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "YoYchange%",
+      "layout": {
+        "bbox": [
+          93.7,
+          152.5,
+          625.8,
+          634.6
+        ],
+        "font": {
+          "size": 10.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0072:S1",
+      "page": 6,
+      "ordinal": 91,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "14%",
+      "layout": {
+        "bbox": [
+          222.8,
+          238.1,
+          622.8,
+          629
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0072:S2",
+      "page": 6,
+      "ordinal": 92,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "76%",
+      "layout": {
+        "bbox": [
+          301.8,
+          317.4,
+          621.8,
+          628
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0072:S3",
+      "page": 6,
+      "ordinal": 93,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "15%",
+      "layout": {
+        "bbox": [
+          382,
+          397.4,
+          621.9,
+          628.1
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0072:S4",
+      "page": 6,
+      "ordinal": 94,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "6%",
+      "layout": {
+        "bbox": [
+          463.3,
+          474.2,
+          622.4,
+          628.6
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0073:S0",
+      "page": 6,
+      "ordinal": 95,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "KeyMetrices",
+      "layout": {
+        "bbox": [
+          80.2,
+          129.9,
+          588.4,
+          596.2
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0074:S0",
+      "page": 6,
+      "ordinal": 96,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "ContributionandDisbursements",
+      "layout": {
+        "bbox": [
+          80,
+          218.9,
+          576.4,
+          583.5
+        ],
+        "font": {
+          "size": 10.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0074:S1",
+      "page": 6,
+      "ordinal": 97,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Contributions",
+      "layout": {
+        "bbox": [
+          312.3,
+          370.5,
+          576.4,
+          583.5
+        ],
+        "font": {
+          "size": 10.4,
+          "name": "f3",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0075:S0",
+      "page": 6,
+      "ordinal": 98,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "\uF0B7",
+      "layout": {
+        "bbox": [
+          101.5,
+          104.9,
+          398.2,
+          401.5
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f9",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0075:S1",
+      "page": 6,
+      "ordinal": 99,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "In FY24,contributionsfromtopdonorshavedecreasedtowardsPPRandagricultureprograms(GAFSPand",
+      "layout": {
+        "bbox": [
+          119.2,
+          523,
+          395.5,
+          403.7
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0076:S0",
+      "page": 6,
+      "ordinal": 100,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "CGIAR);whileincreasedtowardsCIF,GEFandGBFF.",
+      "layout": {
+        "bbox": [
+          118.9,
+          315.5,
+          383.6,
+          391.7
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0077:S0",
+      "page": 6,
+      "ordinal": 101,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "\uF0B7 Top 2 donors GFATM and United Kingdom accounted for 50% of the total contributions in FY24 and an",
+      "layout": {
+        "bbox": [
+          101.5,
+          531.1,
+          371.7,
+          379.7
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0078:S0",
+      "page": 6,
+      "ordinal": 102,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "averageo2f%48%overthepast5years.",
+      "layout": {
+        "bbox": [
+          118.9,
+          260.7,
+          359.7,
+          367.7
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0079:S0",
+      "page": 6,
+      "ordinal": 103,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "\uF0B7",
+      "layout": {
+        "bbox": [
+          101.5,
+          104.9,
+          350.3,
+          353.6
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f9",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0079:S1",
+      "page": 6,
+      "ordinal": 104,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "DisbursementsfromGFATM,GCFandGEFprogramsaccountedfor74%oftotaldisbursementin FY24and",
+      "layout": {
+        "bbox": [
+          119.2,
+          522.3,
+          347.7,
+          355.7
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0080:S0",
+      "page": 6,
+      "ordinal": 105,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "onanaverage70%overthepast5years.",
+      "layout": {
+        "bbox": [
+          118.9,
+          274.3,
+          335.9,
+          343.9
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0081:S0",
+      "page": 6,
+      "ordinal": 106,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "\uF0B7 GFATM hasbeenthe leading FIFconstituting41%ofthetotal FIFcontributionsand50%oftotal FIF",
+      "layout": {
+        "bbox": [
+          101.5,
+          496,
+          323.9,
+          331.9
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0082:S0",
+      "page": 6,
+      "ordinal": 107,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "disbursementsoverthe past5years.",
+      "layout": {
+        "bbox": [
+          118.9,
+          258.2,
+          311.9,
+          319.9
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0083:S0",
+      "page": 6,
+      "ordinal": 108,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "6",
+      "layout": {
+        "bbox": [
+          513.6,
+          517.5,
+          62.6,
+          68.6
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0084:S0",
+      "page": 6,
+      "ordinal": 109,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1",
+      "layout": {
+        "bbox": [
+          94.1,
+          96.4,
+          45,
+          48.9
+        ],
+        "font": {
+          "size": 6.1,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0124:S0",
+      "page": 9,
+      "ordinal": 149,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "TrustFundFinancialInformationSummaryforfiscalyearsendedJune30,2024and2023",
+      "layout": {
+        "bbox": [
+          265.3,
+          517.5,
+          748.4,
+          754.5
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f1",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0125:S0",
+      "page": 9,
+      "ordinal": 150,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AllamountsinUSDmillions, unlessotherwisenoted",
+      "layout": {
+        "bbox": [
+          370.5,
+          518,
+          739.9,
+          745.7
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f1",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0126:S0",
+      "page": 9,
+      "ordinal": 151,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "KeyTrustFundActivity",
+      "layout": {
+        "bbox": [
+          95.3,
+          190.4,
+          716.8,
+          725.7
+        ],
+        "font": {
+          "size": 10.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0127:S0",
+      "page": 9,
+      "ordinal": 152,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "CompositionofActiveTrustFunds3 2",
+      "layout": {
+        "bbox": [
+          94.9,
+          333.2,
+          694.2,
+          706.6
+        ],
+        "font": {
+          "size": 12.7,
+          "name": "f5",
+          "boldRatio": 0.9,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0128:S0",
+      "page": 9,
+      "ordinal": 153,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "TheFIFportfoliohascontinuedtogrow,froma baseof9programsin2008to26in2024.Themajorsectorsin FIF",
+      "layout": {
+        "bbox": [
+          93.7,
+          522.4,
+          212.8,
+          220.8
+        ],
+        "font": {
+          "size": 9.3,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0129:S0",
+      "page": 9,
+      "ordinal": 154,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "areEnvironmentandClimatechange(12 FIFprograms), Health(4FIFprograms)andAgriculture(3FIFprograms).",
+      "layout": {
+        "bbox": [
+          94,
+          522.1,
+          201.4,
+          209.5
+        ],
+        "font": {
+          "size": 9.3,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0130:S0",
+      "page": 9,
+      "ordinal": 155,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3 The countis based on numberoftrustfunds establishedas trustees underprogram types - Umbrella, Programmatic, Standalone and",
+      "layout": {
+        "bbox": [
+          93.9,
+          523.3,
+          138.2,
+          146.8
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f8",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0131:S0",
+      "page": 9,
+      "ordinal": 156,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Free-standing. Apartfromtheactive trustfundsabove there areDPbalanceaccountsestablishedtoholdunusedfundsfromclosedtrust",
+      "layout": {
+        "bbox": [
+          93.9,
+          523.2,
+          129.6,
+          136.2
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f8",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0132:S0",
+      "page": 9,
+      "ordinal": 157,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "funds, investmentincomeearnedonactivetrustfundbalances, ortoholdDPcontributionstemporarilyawaitingestablishmentofaproject",
+      "layout": {
+        "bbox": [
+          93.9,
+          523.4,
+          121.4,
+          128
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f8",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0133:S0",
+      "page": 9,
+      "ordinal": 158,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "trustfund. ThetotalnumberofsuchactiveDPbalanceaccountsasofJune 30, 2024, is343andJune30, 2023is312.",
+      "layout": {
+        "bbox": [
+          94,
+          462.7,
+          113.7,
+          119.9
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f8",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0134:S0",
+      "page": 9,
+      "ordinal": 159,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4FIFProgramsmaybeadministeredthroughtheuseofmultipleaccounts. Thereare26FIFprograms (June2023:26) comprisingmultiple",
+      "layout": {
+        "bbox": [
+          93.7,
+          522.9,
+          90.2,
+          98.9
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f8",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0135:S0",
+      "page": 9,
+      "ordinal": 160,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "FIFtrusteeaccounts.",
+      "layout": {
+        "bbox": [
+          93.9,
+          159.1,
+          82.5,
+          87.6
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f8",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0136:S0",
+      "page": 9,
+      "ordinal": 161,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "9",
+      "layout": {
+        "bbox": [
+          513.5,
+          517.4,
+          62.7,
+          68.8
+        ],
+        "font": {
+          "size": 9.3,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0137:S0",
+      "page": 9,
+      "ordinal": 162,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1",
+      "layout": {
+        "bbox": [
+          94.1,
+          96.4,
+          45.1,
+          49
+        ],
+        "font": {
+          "size": 6.1,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0210:S0",
+      "page": 15,
+      "ordinal": 245,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "TrustFundFinancialInformationSummaryforfiscalyearsendedJune30,2024and2023",
+      "layout": {
+        "bbox": [
+          265.3,
+          517.6,
+          748.3,
+          754.4
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f1",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0211:S0",
+      "page": 15,
+      "ordinal": 246,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AllamountsinUSDmillions, unlessotherwisenoted",
+      "layout": {
+        "bbox": [
+          370.5,
+          518.1,
+          739.8,
+          745.6
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f1",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0212:S0",
+      "page": 15,
+      "ordinal": 247,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "TrustFundActivity",
+      "layout": {
+        "bbox": [
+          98.8,
+          177.2,
+          718.6,
+          727.5
+        ],
+        "font": {
+          "size": 10.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0213:S0",
+      "page": 15,
+      "ordinal": 248,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "NewAdministrationAgreements",
+      "layout": {
+        "bbox": [
+          98.9,
+          320.8,
+          695.5,
+          708.4
+        ],
+        "font": {
+          "size": 13.2,
+          "name": "f5",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0214:S0",
+      "page": 15,
+      "ordinal": 249,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "New administration agreements signed between the Bank Group and DPs represents contributions made to",
+      "layout": {
+        "bbox": [
+          99.5,
+          520,
+          673.3,
+          681.4
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0215:S0",
+      "page": 15,
+      "ordinal": 250,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "new trust funds and additional contributions made to existing trust funds. These are presented net of",
+      "layout": {
+        "bbox": [
+          99.5,
+          520.7,
+          661.8,
+          669.9
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0216:S0",
+      "page": 15,
+      "ordinal": 251,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "cancellations. The negative amounts are where the current period cancellations are greater than additional",
+      "layout": {
+        "bbox": [
+          99.2,
+          519.8,
+          650.4,
+          658.4
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0217:S0",
+      "page": 15,
+      "ordinal": 252,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "contributions.",
+      "layout": {
+        "bbox": [
+          99.2,
+          151.6,
+          640.6,
+          647
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0218:S0",
+      "page": 15,
+      "ordinal": 253,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8",
+      "layout": {
+        "bbox": [
+          99.2,
+          104,
+          502.8,
+          508.9
+        ],
+        "font": {
+          "size": 8.4,
+          "name": "f5",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0219:S0",
+      "page": 15,
+      "ordinal": 254,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Top10SovereignCountriesandEU",
+      "layout": {
+        "bbox": [
+          98.8,
+          252.2,
+          487,
+          495.3
+        ],
+        "font": {
+          "size": 8.4,
+          "name": "f5",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0220:S0",
+      "page": 15,
+      "ordinal": 255,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "11 OtherDPsincludesmultilateraldevelopmentbanks, UnitedNationsagencies, andpublicandprivateinstitutions. Outofthetotal$5,707m",
+      "layout": {
+        "bbox": [
+          94.3,
+          523,
+          91.5,
+          98.7
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f8",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0221:S0",
+      "page": 15,
+      "ordinal": 256,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "in OtherDPs, $4,470mpertainsto GFATMSecretariat.",
+      "layout": {
+        "bbox": [
+          93.8,
+          264,
+          82.4,
+          89.2
+        ],
+        "font": {
+          "size": 7.1,
+          "name": "f8",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0222:S0",
+      "page": 15,
+      "ordinal": 257,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "15",
+      "layout": {
+        "bbox": [
+          509.2,
+          517.3,
+          62.6,
+          68.6
+        ],
+        "font": {
+          "size": 9.4,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0223:S0",
+      "page": 15,
+      "ordinal": 258,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1",
+      "layout": {
+        "bbox": [
+          94.1,
+          96.4,
+          45,
+          48.9
+        ],
+        "font": {
+          "size": 6.1,
+          "name": "f2",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    }
+  ],
+  "labels": "NONE_SOURCE_FACTS_ONLY"
+}

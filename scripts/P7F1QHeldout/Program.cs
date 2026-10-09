@@ -273,14 +273,14 @@ switch (args[0])
                 {
                     sourceAlias = alias, page = o.GetProperty("page").GetInt32(), pageStratum = o.GetProperty("pageStratum").GetString(),
                     text = o.GetProperty("text").GetString(), draftLabel = label,
-                    reviewFlag = !has ? "NONE" : s.Rationale.Contains("DECISION_NEEDED") ? "DECISION_NEEDED" : s.Flag ? "REVIEW_FOCUS" : "NONE",
+                    reviewFlag = !has ? "NONE" : s.Rationale.Contains("USER_DECISION") ? "USER_DECIDED" : s.Rationale.Contains("DECISION_NEEDED") ? "DECISION_NEEDED" : s.Flag ? "REVIEW_FOCUS" : "NONE",
                     rationale = has ? s.Rationale : "Default: body text, list item, table cell, page number or other non-heading content on this page",
-                    approval = "PENDING_USER",
+                    approval = has && s.Rationale.Contains("USER_DECISION") ? "USER_DECIDED_2026_10_10" : "PENDING_USER",
                 };
             }).ToArray();
             File.WriteAllBytes(Path.Combine(args[3], $"{id}.gold-draft.json"), JsonSerializer.SerializeToUtf8Bytes(new
             {
-                version = "P7_F1Q_HELDOUT_GOLD_DRAFT_V1", status = "DRAFT_REVIEWER_A_NOT_APPROVED", id,
+                version = "P7_F1Q_HELDOUT_GOLD_DRAFT_V2", status = "DRAFT_REVIEWER_A_NOT_APPROVED", id,
                 sourceKey = r.GetProperty("sourceKey").GetString(), sourceSha256 = r.GetProperty("sourceSha256").GetString(),
                 sourceAliasUniverseSha256 = r.GetProperty("sourceAliasUniverseSha256").GetString(),
                 reviewBundleSha256 = Hex(SHA256.HashData(File.ReadAllBytes(file))),

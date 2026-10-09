@@ -142,6 +142,34 @@ public sealed class P7F1QHeldoutTests : IDisposable
         Assert.Equal(3151, total);
     }
 
+    [Fact] public void Gold_drafts_v2_apply_exactly_the_recorded_user_decisions()
+    {
+        var v2 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v2");
+        JsonElement[] Labels(string dir, string id) => JsonDocument.Parse(File.ReadAllBytes(Path.Combine(dir, id + ".gold-draft.json"))).RootElement.GetProperty("labels").EnumerateArray().ToArray();
+        var d087 = Labels(v2, "087").ToDictionary(l => l.GetProperty("sourceAlias").GetString()!);
+        foreach (var a in new[] { "L1118:S0", "L1119:S0", "L1207:S0", "L1208:S0", "L1209:S0", "L1210:S0", "L1211:S0" })
+        {
+            Assert.Equal("OTHER", d087[a].GetProperty("draftLabel").GetString());
+            Assert.Equal("USER_DECIDED_2026_10_10", d087[a].GetProperty("approval").GetString());
+        }
+        var d044 = Labels(v2, "044").ToDictionary(l => l.GetProperty("sourceAlias").GetString()!);
+        Assert.Equal("OTHER", d044["L0000:S0"].GetProperty("draftLabel").GetString());
+        foreach (var a in new[] { "L0044:S0", "L0045:S0", "L0074:S0", "L0091:S0" }) Assert.Equal("ESTABLISHES_STRUCTURE", d044[a].GetProperty("draftLabel").GetString());
+        Assert.Equal("OTHER", d044["L0046:S0"].GetProperty("draftLabel").GetString());
+        Assert.Equal("USER_DECIDED", d044["L0046:S0"].GetProperty("reviewFlag").GetString());
+        // Nothing else changed label between V1 and V2.
+        var changed = 0;
+        foreach (var file in Directory.GetFiles(v2, "*.gold-draft.json"))
+        {
+            var id = Path.GetFileName(file).Split('.')[0];
+            var before = Labels(Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v1"), id).ToDictionary(l => l.GetProperty("sourceAlias").GetString()!, l => l.GetProperty("draftLabel").GetString());
+            changed += Labels(v2, id).Count(l => before[l.GetProperty("sourceAlias").GetString()!] != l.GetProperty("draftLabel").GetString());
+        }
+        Assert.Equal(7, changed);
+        Assert.True(File.Exists(Path.Combine(Dir, "p7.f1q.heldout.review-bundles.v1", "087.review.json")));
+        Assert.Equal(86, Directory.GetFiles(Path.Combine(Dir, "p7.f1q.heldout.visual-review.v1"), "*.jpg", SearchOption.AllDirectories).Length);
+    }
+
     [Fact] public void Heldout_plan_reuses_the_frozen_v3_prompt_tools_and_route_and_gates_on_gold()
     {
         using var plan = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.execution-plan.v1.json")));

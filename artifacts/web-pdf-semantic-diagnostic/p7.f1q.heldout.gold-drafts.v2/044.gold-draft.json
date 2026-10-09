@@ -1,0 +1,2939 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_DRAFT_V2",
+  "status": "DRAFT_REVIEWER_A_NOT_APPROVED",
+  "id": "044",
+  "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/044_IDA_Financial_Statements_June_2024.pdf",
+  "sourceSha256": "55dee9b16b5616109ba186bb0a4d83632e24d06d5a00beab80b82ca59b3b0d6b",
+  "sourceAliasUniverseSha256": "f50cadd7ce549289f3c548bea4dfde7e0a9e0269eec2c6c11d3fd382fb33f886",
+  "reviewBundleSha256": "ec3961857e4670ad39d0ec8c80ea6e5daf783293a64aa9aa3446e5305adc2691",
+  "reviewerA": "Claude (orchestrator), from parser text and layout only; PDF pages not rendered; independent of any provider prediction",
+  "visualEvidence": "NOT_RENDERED_IN_DRAFT_REVIEWER_TO_CONFIRM_AGAINST_PDF",
+  "notes": [],
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "International DevelopmentAssociation",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "Issuer name on the cover; USER_DECISION_2026_10_10 (Issue #6): OTHER, issuing organization, not the report title",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Management’s Discussion & Analysis",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Cover title \"Management's Discussion & Analysis\" (24pt, centred)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "and",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Cover title connector \"and\" (part of the title block)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Financial Statements",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Cover title \"Financial Statements\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "June 30, 2024",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Reporting date on the cover",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0043:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Management’s Discussion and Analysis",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Running header \"Management's Discussion and Analysis\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0044:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "List ofTables, Figures and Box",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "Front-matter heading \"List of Tables, Figures and Box\" (bold 12); USER_DECISION_2026_10_10 (Issue #6): ESTABLISHES (names the list section here)",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0045:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Tables",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List subheading \"Tables\" (bold 11); USER_DECISION_2026_10_10 (Issue #6): ESTABLISHES (names the list section here)",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0046:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 1 : Selected Financial Data",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0046:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0047:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 2: IDA20Allocations",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0047:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "9",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0048:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 3: Cumulative Net Commitments under IDA20",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0048:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "10",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0049:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 4: Condensed Statements of Income",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0049:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "17",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0050:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 5: Condensed Balance Sheets",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0050:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "18",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0051:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 6: Changes in Equity",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0051:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "18",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0052:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 7: Gross Disbursements of Loans and Grants by Region",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0052:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "19",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0053:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 8: Revenue and Loan Balances by Product Category",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0053:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "20",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0054:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 9: Net Non-Interest Expenses",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0054:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "23",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0055:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 10: BudgetAnchor",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0055:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "23",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0056:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 11 : Other Revenue (Expenses), net",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0056:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "24",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0057:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 12: Unrealized Mark-to-Market gains (losses) on non-trading portfolios, net",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0057:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "24",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0058:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 13: Cumulative Loans approved under Single Currency program",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0058:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "27",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0059:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 14: Summary of Financial Terms for IDA Lending Products, effective June 30, 2024",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0059:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "27",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0060:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 15: Net Commitments of Loans and Guarantees by Region",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0060:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "28",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0061:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 16: Net Commitments of Grants by Region",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0061:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "29",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0062:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 17: Types of Guarantees",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0062:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "30",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0063:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 18: Pricing for IDA’s Project-Based and Policy-Based Guarantees, effective June 30, 2024",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0063:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "30",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0064:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 19: Funds Held in Trust by IDA",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0064:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "33",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0065:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 20: Investments Trading Portfolio",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0065:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "35",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0066:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 21 : Borrowing Portfolio",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0066:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "36",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0067:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 22: Concessional Partner Loans Terms",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0067:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "36",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0068:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 23: Short-Term Borrowings",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0068:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "37",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0069:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 24: Summary of IDA's Specific Risk Categories",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0069:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "41",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0070:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 25: Deployable Strategic Capital Ratio",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0070:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "42",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0071:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 26: Treatment of Overdue Payments",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0071:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "44",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0072:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 27: Eligibility Criteria for IDA’s Investments",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0072:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "46",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0073:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 28: Commercial Credit Exposure, Net of Collateral Held, by Counterparty Rating",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0073:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "47",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0074:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figures",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List subheading \"Figures\" (bold 11); USER_DECISION_2026_10_10 (Issue #6): ESTABLISHES (names the list section here)",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0075:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 1 : IDAWindows",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0075:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "10",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0076:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 2: Overview of IDA20 Financing Terms",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0076:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "11",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0077:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 3: Net Loans Outstanding Activity",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0077:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "19",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0078:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 4: Net Loans Outstanding",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0078:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "19",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0079:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 5: Net Investment Portfolio",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0079:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "21",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0080:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 6: Investment interest revenue, net of derivatives",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0080:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "21",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0081:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 7: Borrowing Portfolio",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0081:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "21",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0082:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 8: Borrowing expenses, net",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0082:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "21",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0083:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 9: NetAnnual Commitments and Percentage Share of Financing Categories",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0083:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "26",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0084:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 10: Net Investment Portfolio",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0084:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "34",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0085:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 11 : Effect of Derivatives on Currency Composition ofthe Borrowing Portfolio–June 30, 2024",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0085:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "37",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0086:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 12: Medium- and Long-Term Borrowings Issued by Currency during the year, excluding Derivatives",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0086:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "37",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0087:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 13: Management Risk Committee Structure for Financial and Operational Risks",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0087:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "39",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0088:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 14: Country Exposures as of June 30, 2024",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0088:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "43",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0089:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 15: Use of Derivatives for Market Borrowings at fair value",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0089:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "48",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0090:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 16: Governance Structure",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0090:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "52",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0091:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Box",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List subheading \"Box\" (bold 11); USER_DECISION_2026_10_10 (Issue #6): ESTABLISHES (names the list section here)",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0092:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Box 1 : Financing Principles",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0092:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "25",
+      "draftLabel": "OTHER",
+      "reviewFlag": "USER_DECIDED",
+      "rationale": "List-of-tables/figures/boxes entry or its page number; USER_DECISION_2026_10_10 (Issue #6): OTHER, navigates to an object caption, not to a document heading",
+      "approval": "USER_DECIDED_2026_10_10"
+    },
+    {
+      "sourceAlias": "L0093:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2 IDA Management's Discussion and Analysis: June 30, 2024",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Running footer with page number",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1875:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Management’s Discussion and Analysis Section IX: Risk Management",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Running header with section name",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1876:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table 28: Commercial Credit Exposure, Net of Collateral Held, by Counterparty Rating",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table caption \"Table 28: ...\" (object caption, not a heading)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1877:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In millions ofU.S. dollars, exceptrates in percentages",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1878:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "As ofJune 30, 2024",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1879:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Counterparty Rating a",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1879:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Sovereigns Non-Sovereigns",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1879:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Net Swap",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1879:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total Exposure",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1879:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "% ofTotal",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1880:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Exposure",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1881:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AAA",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1881:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1881:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "6,815",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1881:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1881:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2,774",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1881:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1881:S6",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1881:S7",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1881:S8",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "9,589",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1881:S9",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "28 %",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1882:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AA",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1882:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7,41 1",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1882:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "9,528",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1882:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "160",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1882:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "17,099",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1882:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "49",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1883:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1883:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3,200",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1883:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4,622",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1883:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "291",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1883:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8,113",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1883:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "23",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1884:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "BBB",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1884:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1884:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1884:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1884:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1884:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "*",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1885:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1885:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 17,426",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1885:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 16,931",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1885:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1885:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "451",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1885:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 34,808",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1885:S6",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "100 %",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1886:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "As of June 30, 2023",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1887:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Counterparty Rating a",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1887:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Sovereigns Non-Sovereigns",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1887:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Net Swap",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1887:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total Exposure",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1887:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "% ofTotal",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1888:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Exposure",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1889:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AAA",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1889:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1889:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "9,128",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1889:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1889:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3,021",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1889:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1889:S6",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1889:S7",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 12,149",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1889:S8",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "38 %",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1890:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AA",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1890:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5,563",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1890:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7,401",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1890:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "148",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1890:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "13,112",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1890:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "40",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1891:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1891:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2,353",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1891:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4,555",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1891:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "215",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1891:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7,123",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1891:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "22",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1892:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1892:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 17,044",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1892:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 14,977",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1892:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1892:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "363",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1892:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 32,384",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1892:S6",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "100 %",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1893:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a. Average rating is calculated using available ratings from the three majorrating agencies; however, ifratings are not available from",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1894:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "each ofthe three rating agencies, IDA uses the average ofthe ratings available from anyofsuch rating agencies ora single rating",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1895:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "to the extent that an instrument orissuer (as applicable) is ratedbyonlyone rating agency.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1896:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Forthe contractual value, notional amounts andrelated creditrisk exposure amounts by instrument, seeNotes to the",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1897:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Financial Statements forthe year endedJune 30, 2024, Note F - Derivative Instruments.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1898:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Credit and DebitValuation Adjustments",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Subsection heading \"Credit and Debit Valuation Adjustments\" (bold 10, standalone)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1899:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Most outstanding derivative positions are transacted over-the-counter and therefore valued using internally",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1900:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "developed valuation models. For commercial andnon-commercial counterparties where IDA has a net exposure (net",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1901:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "receivable position), IDA calculates a Credit Valuation Adjustment (CVA) to reflect credit risk. For net derivative",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1902:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "positions with commercial and non-commercial counterparties where IDA is in a net payable position, IDA",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1903:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "calculates aDebitValuationAdjustment (DVA) to reflect its own creditrisk.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1904:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The CVA is calculated using future projected exposures ofthe derivative contracts, net ofcollateral received under",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1905:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "credit support agreements, and the probability of counterparty default based on the Credit Default Swaps (CDS)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1906:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "spread and, where applicable, proxy CDS spreads. IDA does not currently hedge this exposure. The DVA",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1907:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "calculation is generally consistent with the CVA methodology and incorporates IDA’s own credit spread as",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1908:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "observed through the CDS market. As ofJune 30, 2024, IDA recorded a CVA on its balance sheet of$92 million,",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1909:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "and aDVA of$20 million.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1910:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Market Risk",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Subsection heading \"Market Risk\" (bold 11, standalone)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1911:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "IDA is exposed to changes in interest and exchange rates and uses derivatives to manage its exposure to market",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1912:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "risks. Derivatives are used to align the interest and currency composition ofits assets (loan and investment trading",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1913:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "portfolios) with that ofits liabilities (borrowing portfolio) and equity, with the exception ofthe long-term fixed rate",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1914:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "market debt that is used to fund fixed rate loans. Figure 15 below illustrates the use of derivatives for market",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1915:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "borrowing portfolios. The loan, investment and borrowing portfolios are largely maintained in SDR and its",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1916:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "component currencies.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L1917:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "IDA Management's Discussion and Analysis: June 30, 2024 47",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Running footer",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3349:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "NOTE B—MEMBERS’ SUBSCRIPTIONS AND CONTRIBUTIONS AND MEMBERSHIP",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Note heading \"NOTE B—MEMBERS' SUBSCRIPTIONS AND CONTRIBUTIONS AND MEMBERSHIP\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3350:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The movement in Subscriptions and Contributions paid-in is summarizedbelow:",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3351:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table B1: Subscriptions and contributions paid-in",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table caption \"Table B1: ...\" (object caption)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3352:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In millions ofU.S. dollars",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3353:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2024",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3353:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2023",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3354:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Beginning ofthe fiscal year",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table row label \"Beginning of the fiscal year\" (bold row label)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3354:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3354:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "271,258",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3354:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3354:S4",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "257,777",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3355:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Cash contributions received a",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3355:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4,620",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3355:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5,100",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3356:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Demand obligations received",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3356:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4,276",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3356:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8,506",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3357:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Translation adjustment",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3357:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(81)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3357:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(125)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3358:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "End ofthe fiscal year",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3358:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3358:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "280,073",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3358:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3358:S4",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "271,258",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3359:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a. Includes anyrestricted cash subscriptions.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3360:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table B2: Nonnegotiable, non interest-bearing demand obligations on account ofmembers' subscriptions and",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table caption \"Table B2: ...\" line 1 (object caption)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3361:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "contributions",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table caption \"Table B2: ...\" line 2",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3362:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In millions ofU.S. dollars",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3363:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2024",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3363:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2023",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3364:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Beginning ofthe fiscal year",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3364:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3364:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "13,477",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3364:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3364:S4",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10,167",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3365:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Demand obligations received",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3365:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4,276",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3365:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8,506",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3366:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Demand obligations encashed",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3366:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(5,1 19)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3366:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(5,071)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3367:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Translation adjustment",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3367:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(81)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3367:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(125)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3368:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "End ofthe fiscal year",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3368:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3368:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "12,553",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3368:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3368:S4",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "13,477",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3369:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "NOTE C—INVESTMENTS",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Note heading \"NOTE C—INVESTMENTS\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3370:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The investment securities held by IDA are designated as either trading or non-trading. All securities are carried and",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3371:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "reported at fairvalue, or at face value, which approximates fairvalue.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3372:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "As ofJune 30, 2024, IDA’s Investments were mainly comprised ofgovernment and agency obligations (56%) and",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3373:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "time deposits (43%), with all of the instruments classified as either Level 1 or Level 2 within the fair value",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3374:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "hierarchy.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3375:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A summary ofIDA’s Investments is as follows:",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3376:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table C1: Investments-composition",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table caption \"Table C1: ...\" (object caption)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3377:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In millions ofU.S. dollars",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3378:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2024",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3378:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2023",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3379:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Trading",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table row group label \"Trading\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3380:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Government and agency obligations",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3380:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3380:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "19,380",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3380:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3380:S4",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "19,770",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3381:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Time deposits",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3381:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "14,715",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3381:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1 1,703",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3382:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Asset-backed securities (ABS)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3382:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1 1 1",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3382:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "105",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3383:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3383:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "34,206",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3383:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3383:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "31,578",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3384:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Non-trading",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Table row group label \"Non-trading\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3385:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Debt security",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3385:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "171 244",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3386:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3386:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3386:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "34,377",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3386:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3386:S4",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "31,822",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L3387:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "IDA Financial Statements: June 30, 2024 91",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Running footer",
+      "approval": "PENDING_USER"
+    }
+  ],
+  "counts": {
+    "OTHER": 281,
+    "ESTABLISHES_STRUCTURE": 11
+  },
+  "flagged": 109
+}

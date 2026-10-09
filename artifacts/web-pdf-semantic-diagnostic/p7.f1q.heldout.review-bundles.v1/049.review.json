@@ -1,0 +1,7220 @@
+{
+  "version": "P7_F1Q_HELDOUT_REVIEW_BUNDLE_V1",
+  "id": "049",
+  "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/049_IDA_Financial_Statements_September_2024.pdf",
+  "sourceSha256": "d8a58945a6bfea431724b24118af6adfdf63502d1f32db8d103b62530420a60a",
+  "sourceAliasUniverseSha256": "29e5ddc14fb6c615cfaf0cf80f43ea7725ddf557168d1684eccf3eb990df68e0",
+  "evidenceStoreSha256": "bec91a49b224accca58dbbe07bba5f0094f32c83654e5d11b41440c710ed86ae",
+  "pageSelectionSha256": "c4b9ebefbd5a15f0cef59bb1d11f00497b971effae91f185475d08b335851f94",
+  "pageStats": [
+    {
+      "page": 1,
+      "lineCount": 6,
+      "textExtent": [
+        101.3,
+        510.9,
+        275.5,
+        702
+      ],
+      "medianFontSize": 24
+    },
+    {
+      "page": 29,
+      "lineCount": 74,
+      "textExtent": [
+        74.5,
+        539.5,
+        27,
+        706.7
+      ],
+      "medianFontSize": 9
+    },
+    {
+      "page": 39,
+      "lineCount": 149,
+      "textExtent": [
+        72,
+        540,
+        27,
+        720
+      ],
+      "medianFontSize": 8
+    },
+    {
+      "page": 52,
+      "lineCount": 112,
+      "textExtent": [
+        72.1,
+        539.9,
+        27,
+        720
+      ],
+      "medianFontSize": 8
+    }
+  ],
+  "layoutBasis": "bbox=[left,right,bottom,top] in PDF points, bottom-left origin; font={size,name,boldRatio,italicRatio}; parser observations, not labels",
+  "occurrences": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "ordinal": 0,
+      "pageStratum": "FIRST",
+      "text": "International DevelopmentAssociation",
+      "layout": {
+        "bbox": [
+          118,
+          494.6,
+          680.2,
+          702
+        ],
+        "font": {
+          "size": 24,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "ordinal": 1,
+      "pageStratum": "FIRST",
+      "text": "Management’s Discussion & Analysis",
+      "layout": {
+        "bbox": [
+          122.2,
+          489.6,
+          414.6,
+          436.5
+        ],
+        "font": {
+          "size": 24,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "ordinal": 2,
+      "pageStratum": "FIRST",
+      "text": "and",
+      "layout": {
+        "bbox": [
+          289.5,
+          323.4,
+          384.7,
+          401.7
+        ],
+        "font": {
+          "size": 24,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "ordinal": 3,
+      "pageStratum": "FIRST",
+      "text": "Condensed Quarterly Financial Statements",
+      "layout": {
+        "bbox": [
+          101.3,
+          510.9,
+          345,
+          366.9
+        ],
+        "font": {
+          "size": 24,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "ordinal": 4,
+      "pageStratum": "FIRST",
+      "text": "September 30, 2024",
+      "layout": {
+        "bbox": [
+          211.2,
+          401.5,
+          310.3,
+          332.1
+        ],
+        "font": {
+          "size": 24,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "ordinal": 5,
+      "pageStratum": "FIRST",
+      "text": "(Unaudited)",
+      "layout": {
+        "bbox": [
+          249,
+          363,
+          275.5,
+          297.3
+        ],
+        "font": {
+          "size": 24,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0970:S0",
+      "page": 29,
+      "ordinal": 1763,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "September30, 2024",
+      "layout": {
+        "bbox": [
+          374.6,
+          455.4,
+          698.4,
+          706.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0970:S1",
+      "page": 29,
+      "ordinal": 1764,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2024",
+      "layout": {
+        "bbox": [
+          472.4,
+          529,
+          698.9,
+          706.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0971:S0",
+      "page": 29,
+      "ordinal": 1765,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Unaudited) (Unaudited)",
+      "layout": {
+        "bbox": [
+          392,
+          523.6,
+          687.5,
+          695.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0972:S0",
+      "page": 29,
+      "ordinal": 1766,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Liabilities",
+      "layout": {
+        "bbox": [
+          75.3,
+          115.7,
+          676.5,
+          683.1
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0973:S0",
+      "page": 29,
+      "ordinal": 1767,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Borrowings—Notes EandJ",
+      "layout": {
+        "bbox": [
+          75,
+          193.5,
+          662,
+          670.3
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0974:S0",
+      "page": 29,
+      "ordinal": 1768,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Market borrowings, at fair value",
+      "layout": {
+        "bbox": [
+          84.3,
+          208.8,
+          649.2,
+          657.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0974:S1",
+      "page": 29,
+      "ordinal": 1769,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          374.2,
+          378.5,
+          650.2,
+          658.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0974:S2",
+      "page": 29,
+      "ordinal": 1770,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "33,284 $",
+      "layout": {
+        "bbox": [
+          427.4,
+          468.5,
+          649.9,
+          658.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0974:S3",
+      "page": 29,
+      "ordinal": 1771,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "26,425",
+      "layout": {
+        "bbox": [
+          509,
+          535.9,
+          649.9,
+          657.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0975:S0",
+      "page": 29,
+      "ordinal": 1772,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Market borrowings, at amortized cost",
+      "layout": {
+        "bbox": [
+          84.3,
+          231.1,
+          636.5,
+          644.8
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0975:S1",
+      "page": 29,
+      "ordinal": 1773,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "12,012",
+      "layout": {
+        "bbox": [
+          428,
+          454.1,
+          637.1,
+          644.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0975:S2",
+      "page": 29,
+      "ordinal": 1774,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1 1,494",
+      "layout": {
+        "bbox": [
+          509.7,
+          535.8,
+          637.1,
+          644.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0976:S0",
+      "page": 29,
+      "ordinal": 1775,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Concessional partner loans, at amortized cost",
+      "layout": {
+        "bbox": [
+          84.1,
+          266.1,
+          623.9,
+          632.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0976:S1",
+      "page": 29,
+      "ordinal": 1776,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7,470",
+      "layout": {
+        "bbox": [
+          432.4,
+          454.1,
+          624.4,
+          632.1
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0976:S2",
+      "page": 29,
+      "ordinal": 1777,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7,004",
+      "layout": {
+        "bbox": [
+          514.2,
+          535.8,
+          624.4,
+          632.1
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0977:S0",
+      "page": 29,
+      "ordinal": 1778,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "52,766",
+      "layout": {
+        "bbox": [
+          427.4,
+          454.1,
+          611.6,
+          619.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0977:S1",
+      "page": 29,
+      "ordinal": 1779,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "44,923",
+      "layout": {
+        "bbox": [
+          508.9,
+          535.9,
+          611.6,
+          619.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0978:S0",
+      "page": 29,
+      "ordinal": 1780,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Securities sold underrepurchase agreements, securities lent under",
+      "layout": {
+        "bbox": [
+          75.2,
+          364,
+          586.1,
+          594.5
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0979:S0",
+      "page": 29,
+      "ordinal": 1781,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "securities lending agreements, andpayable forcash collateral",
+      "layout": {
+        "bbox": [
+          79.3,
+          345.7,
+          575.3,
+          583.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0980:S0",
+      "page": 29,
+      "ordinal": 1782,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "received—Notes C andJ",
+      "layout": {
+        "bbox": [
+          79.4,
+          185.1,
+          566.3,
+          572.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0980:S1",
+      "page": 29,
+      "ordinal": 1783,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          445.5,
+          454.5,
+          568.4,
+          569
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0980:S2",
+      "page": 29,
+      "ordinal": 1784,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "71",
+      "layout": {
+        "bbox": [
+          526.7,
+          534.6,
+          566.4,
+          572.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0981:S0",
+      "page": 29,
+      "ordinal": 1785,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Derivative liabilities, net—Notes C, F, H andJ",
+      "layout": {
+        "bbox": [
+          75,
+          268.6,
+          539.5,
+          547.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0981:S1",
+      "page": 29,
+      "ordinal": 1786,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "704",
+      "layout": {
+        "bbox": [
+          439.9,
+          454.1,
+          540.8,
+          547.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0981:S2",
+      "page": 29,
+      "ordinal": 1787,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "667",
+      "layout": {
+        "bbox": [
+          521.6,
+          535.9,
+          540.8,
+          547.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0982:S0",
+      "page": 29,
+      "ordinal": 1788,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Payable fordevelopmentgrants",
+      "layout": {
+        "bbox": [
+          75,
+          211.1,
+          512,
+          520.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0982:S1",
+      "page": 29,
+      "ordinal": 1789,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1,584",
+      "layout": {
+        "bbox": [
+          433,
+          454.1,
+          512.6,
+          520.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0982:S2",
+      "page": 29,
+      "ordinal": 1790,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1,706",
+      "layout": {
+        "bbox": [
+          514.7,
+          535.9,
+          512.6,
+          520.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0983:S0",
+      "page": 29,
+      "ordinal": 1791,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Payable to affiliated organization—Note H",
+      "layout": {
+        "bbox": [
+          75,
+          253.5,
+          485,
+          493.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0983:S1",
+      "page": 29,
+      "ordinal": 1792,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "563",
+      "layout": {
+        "bbox": [
+          439.9,
+          454.1,
+          486.8,
+          493.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0983:S2",
+      "page": 29,
+      "ordinal": 1793,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "279",
+      "layout": {
+        "bbox": [
+          521.5,
+          535.9,
+          486.8,
+          493.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0984:S0",
+      "page": 29,
+      "ordinal": 1794,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Otherliabilities—Notes C andD",
+      "layout": {
+        "bbox": [
+          75.4,
+          210.2,
+          459.8,
+          466.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0984:S1",
+      "page": 29,
+      "ordinal": 1795,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4,342",
+      "layout": {
+        "bbox": [
+          432.1,
+          454,
+          458.6,
+          466.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0984:S2",
+      "page": 29,
+      "ordinal": 1796,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3,403",
+      "layout": {
+        "bbox": [
+          514.1,
+          535.9,
+          458.6,
+          466.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0985:S0",
+      "page": 29,
+      "ordinal": 1797,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total liabilities",
+      "layout": {
+        "bbox": [
+          74.8,
+          136.7,
+          447,
+          453.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0985:S1",
+      "page": 29,
+      "ordinal": 1798,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "59,959",
+      "layout": {
+        "bbox": [
+          427.4,
+          454.1,
+          445.9,
+          453.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0985:S2",
+      "page": 29,
+      "ordinal": 1799,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "51,049",
+      "layout": {
+        "bbox": [
+          509.1,
+          535.9,
+          445.9,
+          453.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0986:S0",
+      "page": 29,
+      "ordinal": 1800,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Equity",
+      "layout": {
+        "bbox": [
+          75.3,
+          102,
+          416.7,
+          425.1
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0987:S0",
+      "page": 29,
+      "ordinal": 1801,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Members'subscriptions and contributions—Note B",
+      "layout": {
+        "bbox": [
+          75,
+          294.2,
+          404.1,
+          412.3
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0988:S0",
+      "page": 29,
+      "ordinal": 1802,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Subscriptions and contributions committed",
+      "layout": {
+        "bbox": [
+          84,
+          252,
+          391.4,
+          399.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0988:S1",
+      "page": 29,
+      "ordinal": 1803,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "312,581",
+      "layout": {
+        "bbox": [
+          422.4,
+          452.9,
+          391.9,
+          399.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0988:S2",
+      "page": 29,
+      "ordinal": 1804,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "310,983",
+      "layout": {
+        "bbox": [
+          504.1,
+          535.9,
+          391.9,
+          399.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0989:S0",
+      "page": 29,
+      "ordinal": 1805,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Less:",
+      "layout": {
+        "bbox": [
+          84.3,
+          104.4,
+          380.3,
+          386.8
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0990:S0",
+      "page": 29,
+      "ordinal": 1806,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Subscriptions and contributions receivable",
+      "layout": {
+        "bbox": [
+          88.5,
+          256.3,
+          365.9,
+          374.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0990:S1",
+      "page": 29,
+      "ordinal": 1807,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(27,506)",
+      "layout": {
+        "bbox": [
+          424.6,
+          457.2,
+          365.7,
+          374.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0990:S2",
+      "page": 29,
+      "ordinal": 1808,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(26,690)",
+      "layout": {
+        "bbox": [
+          506.3,
+          539,
+          365.7,
+          374.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0991:S0",
+      "page": 29,
+      "ordinal": 1809,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Cumulative discounts/credits on subscriptions and contributions, net",
+      "layout": {
+        "bbox": [
+          88.6,
+          358.7,
+          353.1,
+          361.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0991:S1",
+      "page": 29,
+      "ordinal": 1810,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(4,220)",
+      "layout": {
+        "bbox": [
+          429.6,
+          457.2,
+          353,
+          361.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0991:S2",
+      "page": 29,
+      "ordinal": 1811,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(4,220)",
+      "layout": {
+        "bbox": [
+          511.3,
+          539,
+          353,
+          361.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0992:S0",
+      "page": 29,
+      "ordinal": 1812,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Subscriptions and contributions paid-in",
+      "layout": {
+        "bbox": [
+          84,
+          237.6,
+          340.4,
+          348.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0992:S1",
+      "page": 29,
+      "ordinal": 1813,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "280,855",
+      "layout": {
+        "bbox": [
+          422.3,
+          454.2,
+          340.9,
+          348.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0992:S2",
+      "page": 29,
+      "ordinal": 1814,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "280,073",
+      "layout": {
+        "bbox": [
+          504,
+          535.9,
+          340.9,
+          348.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0993:S0",
+      "page": 29,
+      "ordinal": 1815,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Nonnegotiable, non-interest-bearing demand obligations on account",
+      "layout": {
+        "bbox": [
+          75,
+          368.2,
+          313.2,
+          321.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0994:S0",
+      "page": 29,
+      "ordinal": 1816,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ofmembers'subscriptions and contributions",
+      "layout": {
+        "bbox": [
+          78.8,
+          271.4,
+          304.4,
+          312.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0994:S1",
+      "page": 29,
+      "ordinal": 1817,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(12,591)",
+      "layout": {
+        "bbox": [
+          424.6,
+          457.2,
+          304.2,
+          312.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0994:S2",
+      "page": 29,
+      "ordinal": 1818,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(12,553)",
+      "layout": {
+        "bbox": [
+          506.3,
+          539,
+          304.2,
+          312.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0995:S0",
+      "page": 29,
+      "ordinal": 1819,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Deferredamounts to maintain value ofcurrencyholdings",
+      "layout": {
+        "bbox": [
+          75,
+          319.1,
+          277.2,
+          285.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0995:S1",
+      "page": 29,
+      "ordinal": 1820,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(247)",
+      "layout": {
+        "bbox": [
+          437.1,
+          457.2,
+          277.2,
+          285.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0995:S2",
+      "page": 29,
+      "ordinal": 1821,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(248)",
+      "layout": {
+        "bbox": [
+          518.8,
+          538.9,
+          277.2,
+          285.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0996:S0",
+      "page": 29,
+      "ordinal": 1822,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Accumulated deficit",
+      "layout": {
+        "bbox": [
+          74.5,
+          160.7,
+          252,
+          258.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0996:S1",
+      "page": 29,
+      "ordinal": 1823,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(67,661)",
+      "layout": {
+        "bbox": [
+          424.6,
+          457.2,
+          250.2,
+          258.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0996:S2",
+      "page": 29,
+      "ordinal": 1824,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(66,379)",
+      "layout": {
+        "bbox": [
+          506.3,
+          539,
+          250.2,
+          258.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0997:S0",
+      "page": 29,
+      "ordinal": 1825,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Accumulated othercomprehensive loss—Note I",
+      "layout": {
+        "bbox": [
+          74.5,
+          279.7,
+          223.4,
+          231.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-bolditalicmt",
+          "boldRatio": 1,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0997:S1",
+      "page": 29,
+      "ordinal": 1826,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(5,677)",
+      "layout": {
+        "bbox": [
+          429.6,
+          457.2,
+          223.2,
+          231.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0997:S2",
+      "page": 29,
+      "ordinal": 1827,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(10,592)",
+      "layout": {
+        "bbox": [
+          506.3,
+          539,
+          223.2,
+          231.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0998:S0",
+      "page": 29,
+      "ordinal": 1828,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total equity",
+      "layout": {
+        "bbox": [
+          74.8,
+          125,
+          197.7,
+          206.1
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0998:S1",
+      "page": 29,
+      "ordinal": 1829,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "194,679",
+      "layout": {
+        "bbox": [
+          423,
+          454.1,
+          198.4,
+          206.1
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0998:S2",
+      "page": 29,
+      "ordinal": 1830,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "190,301",
+      "layout": {
+        "bbox": [
+          504.7,
+          534.6,
+          198.4,
+          206.1
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0999:S0",
+      "page": 29,
+      "ordinal": 1831,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total liabilities and equity",
+      "layout": {
+        "bbox": [
+          74.8,
+          184.5,
+          169.2,
+          177.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0999:S1",
+      "page": 29,
+      "ordinal": 1832,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          374.2,
+          378.5,
+          170.2,
+          178.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0999:S2",
+      "page": 29,
+      "ordinal": 1833,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "254,638 $",
+      "layout": {
+        "bbox": [
+          422.3,
+          468.5,
+          169.9,
+          178.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0999:S3",
+      "page": 29,
+      "ordinal": 1834,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "241,350",
+      "layout": {
+        "bbox": [
+          504,
+          535.9,
+          169.9,
+          177.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1000:S0",
+      "page": 29,
+      "ordinal": 1835,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The Notes to Condensed Quarterly Financial Statements are an integral part ofthese Statements.",
+      "layout": {
+        "bbox": [
+          98.9,
+          513,
+          114.6,
+          123
+        ],
+        "font": {
+          "size": 9,
+          "name": "arial-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1001:S0",
+      "page": 29,
+      "ordinal": 1836,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "IDAQuarterly Financial Statements: September 30, 2024 (Unaudited) 27",
+      "layout": {
+        "bbox": [
+          208.8,
+          539.5,
+          27,
+          36.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1361:S0",
+      "page": 39,
+      "ordinal": 2525,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table D2: Loans in nonaccrual status",
+      "layout": {
+        "bbox": [
+          72.4,
+          231.3,
+          713.1,
+          720
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1362:S0",
+      "page": 39,
+      "ordinal": 2526,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "In millions ofU.S. dollars",
+      "layout": {
+        "bbox": [
+          75.1,
+          162.6,
+          693.1,
+          699
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1363:S0",
+      "page": 39,
+      "ordinal": 2527,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Average",
+      "layout": {
+        "bbox": [
+          274.8,
+          304.6,
+          676.9,
+          684.3
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1363:S1",
+      "page": 39,
+      "ordinal": 2528,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Accumulated Accumulated",
+      "layout": {
+        "bbox": [
+          320.6,
+          423.6,
+          678.5,
+          684.3
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1363:S2",
+      "page": 39,
+      "ordinal": 2529,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Overdue amounts",
+      "layout": {
+        "bbox": [
+          453.1,
+          515.9,
+          681.1,
+          687
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1364:S0",
+      "page": 39,
+      "ordinal": 2530,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Nonaccrual",
+      "layout": {
+        "bbox": [
+          159.1,
+          199.4,
+          668.9,
+          674.7
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1364:S1",
+      "page": 39,
+      "ordinal": 2531,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Recorded",
+      "layout": {
+        "bbox": [
+          220.4,
+          255,
+          668.9,
+          674.7
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1364:S2",
+      "page": 39,
+      "ordinal": 2532,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "recorded",
+      "layout": {
+        "bbox": [
+          274.4,
+          306,
+          668.9,
+          674.7
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1364:S3",
+      "page": 39,
+      "ordinal": 2533,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "provision for",
+      "layout": {
+        "bbox": [
+          322,
+          366.3,
+          667.4,
+          674.8
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1364:S4",
+      "page": 39,
+      "ordinal": 2534,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "provision for",
+      "layout": {
+        "bbox": [
+          378.3,
+          422.6,
+          667.4,
+          674.8
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1364:S5",
+      "page": 39,
+      "ordinal": 2535,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Interest and",
+      "layout": {
+        "bbox": [
+          492,
+          534.1,
+          669.2,
+          675
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1365:S0",
+      "page": 39,
+      "ordinal": 2536,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "a",
+      "layout": {
+        "bbox": [
+          420,
+          422.5,
+          663,
+          665.8
+        ],
+        "font": {
+          "size": 5.2,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1365:S1",
+      "page": 39,
+      "ordinal": 2537,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Principal",
+      "layout": {
+        "bbox": [
+          442.5,
+          473.2,
+          662.9,
+          670.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1366:S0",
+      "page": 39,
+      "ordinal": 2538,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Borrower",
+      "layout": {
+        "bbox": [
+          75,
+          107.7,
+          659.3,
+          665.1
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1366:S1",
+      "page": 39,
+      "ordinal": 2539,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "since",
+      "layout": {
+        "bbox": [
+          169.9,
+          188,
+          659.3,
+          665.1
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1366:S2",
+      "page": 39,
+      "ordinal": 2540,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "investment",
+      "layout": {
+        "bbox": [
+          218.3,
+          257.1,
+          659.3,
+          665.1
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1366:S3",
+      "page": 39,
+      "ordinal": 2541,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "investment",
+      "layout": {
+        "bbox": [
+          270.8,
+          309.6,
+          659.3,
+          665.1
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1366:S4",
+      "page": 39,
+      "ordinal": 2542,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "debtrelief",
+      "layout": {
+        "bbox": [
+          326.8,
+          362.5,
+          659.3,
+          665.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1366:S5",
+      "page": 39,
+      "ordinal": 2543,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "loan losses",
+      "layout": {
+        "bbox": [
+          377.8,
+          417.6,
+          659.3,
+          665.1
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1366:S6",
+      "page": 39,
+      "ordinal": 2544,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Charges",
+      "layout": {
+        "bbox": [
+          498.3,
+          527.7,
+          658,
+          665.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1367:S0",
+      "page": 39,
+      "ordinal": 2545,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Syrian Arab",
+      "layout": {
+        "bbox": [
+          79.5,
+          120.1,
+          645.6,
+          653.1
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1368:S0",
+      "page": 39,
+      "ordinal": 2546,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Republic",
+      "layout": {
+        "bbox": [
+          84.3,
+          114.6,
+          636.1,
+          643.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1368:S1",
+      "page": 39,
+      "ordinal": 2547,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "June 2012",
+      "layout": {
+        "bbox": [
+          150.6,
+          187.3,
+          637.6,
+          643.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1368:S2",
+      "page": 39,
+      "ordinal": 2548,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "14",
+      "layout": {
+        "bbox": [
+          250.3,
+          258,
+          637.7,
+          643.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1368:S3",
+      "page": 39,
+      "ordinal": 2549,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "14",
+      "layout": {
+        "bbox": [
+          303.6,
+          311.2,
+          637.7,
+          643.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1368:S4",
+      "page": 39,
+      "ordinal": 2550,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          358.3,
+          366.3,
+          639.5,
+          640
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1368:S5",
+      "page": 39,
+      "ordinal": 2551,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1",
+      "layout": {
+        "bbox": [
+          420.5,
+          422.6,
+          637.7,
+          643.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1368:S6",
+      "page": 39,
+      "ordinal": 2552,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "14",
+      "layout": {
+        "bbox": [
+          473.1,
+          480.7,
+          637.7,
+          643.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1368:S7",
+      "page": 39,
+      "ordinal": 2553,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1",
+      "layout": {
+        "bbox": [
+          530.8,
+          532.9,
+          637.7,
+          643.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1369:S0",
+      "page": 39,
+      "ordinal": 2554,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Eritrea",
+      "layout": {
+        "bbox": [
+          79.8,
+          102.3,
+          625.6,
+          631.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1369:S1",
+      "page": 39,
+      "ordinal": 2555,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "March 2012",
+      "layout": {
+        "bbox": [
+          151,
+          192.2,
+          625.6,
+          631.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1369:S2",
+      "page": 39,
+      "ordinal": 2556,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "424",
+      "layout": {
+        "bbox": [
+          245.1,
+          258,
+          625.7,
+          631.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1369:S3",
+      "page": 39,
+      "ordinal": 2557,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "420",
+      "layout": {
+        "bbox": [
+          298.4,
+          311.2,
+          625.6,
+          631.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1369:S4",
+      "page": 39,
+      "ordinal": 2558,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "273",
+      "layout": {
+        "bbox": [
+          353.3,
+          366,
+          625.6,
+          631.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1369:S5",
+      "page": 39,
+      "ordinal": 2559,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "16",
+      "layout": {
+        "bbox": [
+          416.1,
+          423.7,
+          625.6,
+          631.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1369:S6",
+      "page": 39,
+      "ordinal": 2560,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "150",
+      "layout": {
+        "bbox": [
+          468.6,
+          480.7,
+          625.6,
+          631.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1369:S7",
+      "page": 39,
+      "ordinal": 2561,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "42",
+      "layout": {
+        "bbox": [
+          525.6,
+          533.9,
+          625.7,
+          631.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1370:S0",
+      "page": 39,
+      "ordinal": 2562,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Zimbabwe",
+      "layout": {
+        "bbox": [
+          79.3,
+          115.7,
+          613.6,
+          619.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1370:S1",
+      "page": 39,
+      "ordinal": 2563,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "October 2000",
+      "layout": {
+        "bbox": [
+          150.8,
+          198.4,
+          613.6,
+          619.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1370:S2",
+      "page": 39,
+      "ordinal": 2564,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "447",
+      "layout": {
+        "bbox": [
+          245.1,
+          258,
+          613.7,
+          619.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1370:S3",
+      "page": 39,
+      "ordinal": 2565,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "443",
+      "layout": {
+        "bbox": [
+          298.4,
+          311.2,
+          613.6,
+          619.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1370:S4",
+      "page": 39,
+      "ordinal": 2566,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          358.3,
+          366.3,
+          615.5,
+          616
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1370:S5",
+      "page": 39,
+      "ordinal": 2567,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "224",
+      "layout": {
+        "bbox": [
+          411,
+          423.7,
+          613.7,
+          619.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1370:S6",
+      "page": 39,
+      "ordinal": 2568,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "355",
+      "layout": {
+        "bbox": [
+          468.1,
+          480.8,
+          613.6,
+          619.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1370:S7",
+      "page": 39,
+      "ordinal": 2569,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "74",
+      "layout": {
+        "bbox": [
+          525.8,
+          534,
+          613.7,
+          619.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1371:S0",
+      "page": 39,
+      "ordinal": 2570,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Total - September 30, 2024",
+      "layout": {
+        "bbox": [
+          74.8,
+          170.6,
+          600.1,
+          607.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1371:S1",
+      "page": 39,
+      "ordinal": 2571,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          215.9,
+          219.7,
+          600.9,
+          607.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1371:S2",
+      "page": 39,
+      "ordinal": 2572,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "885 $",
+      "layout": {
+        "bbox": [
+          245.3,
+          271.5,
+          600.9,
+          607.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1371:S3",
+      "page": 39,
+      "ordinal": 2573,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "877 $",
+      "layout": {
+        "bbox": [
+          298.6,
+          324.7,
+          600.9,
+          607.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1371:S4",
+      "page": 39,
+      "ordinal": 2574,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "273 $",
+      "layout": {
+        "bbox": [
+          353.3,
+          379.5,
+          600.9,
+          607.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1371:S5",
+      "page": 39,
+      "ordinal": 2575,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "241 $",
+      "layout": {
+        "bbox": [
+          411,
+          437.2,
+          600.9,
+          607.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1371:S6",
+      "page": 39,
+      "ordinal": 2576,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "519 $",
+      "layout": {
+        "bbox": [
+          468.1,
+          494.2,
+          600.9,
+          607.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1371:S7",
+      "page": 39,
+      "ordinal": 2577,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 17",
+      "layout": {
+        "bbox": [
+          521.9,
+          534,
+          601.7,
+          607.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1372:S0",
+      "page": 39,
+      "ordinal": 2578,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Total - June 30, 2024",
+      "layout": {
+        "bbox": [
+          74.8,
+          148.9,
+          588.5,
+          595.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1372:S1",
+      "page": 39,
+      "ordinal": 2579,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          215.9,
+          219.7,
+          588.9,
+          595.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1372:S2",
+      "page": 39,
+      "ordinal": 2580,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "859 $",
+      "layout": {
+        "bbox": [
+          245.3,
+          271.5,
+          588.9,
+          595.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1372:S3",
+      "page": 39,
+      "ordinal": 2581,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "866 $",
+      "layout": {
+        "bbox": [
+          298.6,
+          324.7,
+          588.9,
+          595.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1372:S4",
+      "page": 39,
+      "ordinal": 2582,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "270 $",
+      "layout": {
+        "bbox": [
+          353.3,
+          379.5,
+          588.9,
+          595.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1372:S5",
+      "page": 39,
+      "ordinal": 2583,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "233 $",
+      "layout": {
+        "bbox": [
+          411,
+          437.2,
+          588.9,
+          595.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1372:S6",
+      "page": 39,
+      "ordinal": 2584,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "497 $",
+      "layout": {
+        "bbox": [
+          467.9,
+          494.2,
+          588.9,
+          595.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1372:S7",
+      "page": 39,
+      "ordinal": 2585,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 12",
+      "layout": {
+        "bbox": [
+          521.9,
+          533.9,
+          589.7,
+          595.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1373:S0",
+      "page": 39,
+      "ordinal": 2586,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "a. Loan lossprovisions are determined aftertaking into account accumulatedprovision fordebtrelief.",
+      "layout": {
+        "bbox": [
+          75,
+          431,
+          561.7,
+          569.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1374:S0",
+      "page": 39,
+      "ordinal": 2587,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "During the three months ended September 30, 2024, no new loans were placed into nonaccrual status or restored to",
+      "layout": {
+        "bbox": [
+          72.2,
+          539.5,
+          540.2,
+          549.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1375:S0",
+      "page": 39,
+      "ordinal": 2588,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "accrual status.",
+      "layout": {
+        "bbox": [
+          72.4,
+          127.9,
+          530.2,
+          537.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1376:S0",
+      "page": 39,
+      "ordinal": 2589,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "During the three months ended September 30, 2024, service charge revenue notrecognized as aresult ofloans being",
+      "layout": {
+        "bbox": [
+          72.2,
+          539.8,
+          510.2,
+          519.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1377:S0",
+      "page": 39,
+      "ordinal": 2590,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "innonaccrual status was $1 million ($2 million–three months ended September 30, 2023).",
+      "layout": {
+        "bbox": [
+          72.3,
+          436.5,
+          498.2,
+          507.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1378:S0",
+      "page": 39,
+      "ordinal": 2591,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "During the three months ended September 30, 2024, service charge revenue recognized on loans innonaccrual status",
+      "layout": {
+        "bbox": [
+          72.2,
+          539.6,
+          480.2,
+          489.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1379:S0",
+      "page": 39,
+      "ordinal": 2592,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "uponreceipt ofpaymentwas less than $1 million (less than $1 million–three months ended September 30, 2023).",
+      "layout": {
+        "bbox": [
+          72,
+          528.9,
+          468.2,
+          477.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1380:S0",
+      "page": 39,
+      "ordinal": 2593,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "IDA considers the signature date ofa loan as the best indicator ofthe decisionpoint inthe originationprocess, rather",
+      "layout": {
+        "bbox": [
+          72.2,
+          540,
+          450.2,
+          459.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1381:S0",
+      "page": 39,
+      "ordinal": 2594,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "than the disbursement date. The table below discloses the outstanding balances ofIDA’s loan portfolio classified by",
+      "layout": {
+        "bbox": [
+          72.1,
+          539.9,
+          438.2,
+          447.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1382:S0",
+      "page": 39,
+      "ordinal": 2595,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "the yearthe loan agreementwas signed.",
+      "layout": {
+        "bbox": [
+          72.1,
+          230.8,
+          426.2,
+          435.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1383:S0",
+      "page": 39,
+      "ordinal": 2596,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table D3: Loan portfolio vintage disclosure",
+      "layout": {
+        "bbox": [
+          72.4,
+          257.5,
+          408.3,
+          417.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1384:S0",
+      "page": 39,
+      "ordinal": 2597,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "In millions ofU.S. dollars",
+      "layout": {
+        "bbox": [
+          75.1,
+          162.6,
+          393.3,
+          399.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1385:S0",
+      "page": 39,
+      "ordinal": 2598,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "September30, 2024",
+      "layout": {
+        "bbox": [
+          322.9,
+          394.6,
+          379.8,
+          387.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1386:S0",
+      "page": 39,
+      "ordinal": 2599,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "CAT",
+      "layout": {
+        "bbox": [
+          405.6,
+          421.6,
+          369.5,
+          375.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1386:S1",
+      "page": 39,
+      "ordinal": 2600,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "CAT",
+      "layout": {
+        "bbox": [
+          450.6,
+          466.6,
+          369.5,
+          375.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1386:S2",
+      "page": 39,
+      "ordinal": 2601,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Loans",
+      "layout": {
+        "bbox": [
+          500.6,
+          522,
+          369.5,
+          375.3
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1387:S0",
+      "page": 39,
+      "ordinal": 2602,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "DDOs",
+      "layout": {
+        "bbox": [
+          402.3,
+          423.8,
+          359.9,
+          365.8
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1387:S1",
+      "page": 39,
+      "ordinal": 2603,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "DDOs",
+      "layout": {
+        "bbox": [
+          447.3,
+          468.8,
+          359.9,
+          365.8
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1387:S2",
+      "page": 39,
+      "ordinal": 2604,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Outstanding",
+      "layout": {
+        "bbox": [
+          490.3,
+          532.8,
+          358.3,
+          365.8
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1388:S0",
+      "page": 39,
+      "ordinal": 2605,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Fiscal Yearoforigination disbursed Converted",
+      "layout": {
+        "bbox": [
+          239.5,
+          476.7,
+          350.3,
+          358.7
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1388:S1",
+      "page": 39,
+      "ordinal": 2606,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "as of",
+      "layout": {
+        "bbox": [
+          502.8,
+          520.8,
+          350.3,
+          356.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1389:S0",
+      "page": 39,
+      "ordinal": 2607,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Prior",
+      "layout": {
+        "bbox": [
+          362,
+          379.3,
+          340.7,
+          346.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1389:S1",
+      "page": 39,
+      "ordinal": 2608,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "and",
+      "layout": {
+        "bbox": [
+          406.6,
+          419.9,
+          340.7,
+          346.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1389:S2",
+      "page": 39,
+      "ordinal": 2609,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "to Term",
+      "layout": {
+        "bbox": [
+          444.6,
+          471.5,
+          340.7,
+          346.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1389:S3",
+      "page": 39,
+      "ordinal": 2610,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "September30,",
+      "layout": {
+        "bbox": [
+          485.5,
+          536.5,
+          339.2,
+          346.6
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1390:S0",
+      "page": 39,
+      "ordinal": 2611,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Risk Class",
+      "layout": {
+        "bbox": [
+          75,
+          112.4,
+          331.1,
+          337
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1390:S1",
+      "page": 39,
+      "ordinal": 2612,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2025",
+      "layout": {
+        "bbox": [
+          182.5,
+          199.9,
+          331.1,
+          336.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1390:S2",
+      "page": 39,
+      "ordinal": 2613,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2024",
+      "layout": {
+        "bbox": [
+          214,
+          231.1,
+          331.1,
+          336.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1390:S3",
+      "page": 39,
+      "ordinal": 2614,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2023",
+      "layout": {
+        "bbox": [
+          247.7,
+          265,
+          331.1,
+          336.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1390:S4",
+      "page": 39,
+      "ordinal": 2615,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2022",
+      "layout": {
+        "bbox": [
+          284.5,
+          301.8,
+          331.1,
+          336.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1390:S5",
+      "page": 39,
+      "ordinal": 2616,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2021",
+      "layout": {
+        "bbox": [
+          322.3,
+          339,
+          331.1,
+          336.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1390:S6",
+      "page": 39,
+      "ordinal": 2617,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Years",
+      "layout": {
+        "bbox": [
+          360.6,
+          380.6,
+          331.1,
+          336.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1390:S7",
+      "page": 39,
+      "ordinal": 2618,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "revolving",
+      "layout": {
+        "bbox": [
+          397.2,
+          428.9,
+          329.5,
+          336.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1390:S8",
+      "page": 39,
+      "ordinal": 2619,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Loans",
+      "layout": {
+        "bbox": [
+          447.3,
+          468.8,
+          331.1,
+          336.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1390:S9",
+      "page": 39,
+      "ordinal": 2620,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2024",
+      "layout": {
+        "bbox": [
+          502.7,
+          519.9,
+          331.1,
+          336.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1391:S0",
+      "page": 39,
+      "ordinal": 2621,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Low",
+      "layout": {
+        "bbox": [
+          83.2,
+          97.2,
+          307.1,
+          312.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1391:S1",
+      "page": 39,
+      "ordinal": 2622,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "$ — $ — $",
+      "layout": {
+        "bbox": [
+          179.9,
+          246.7,
+          306.4,
+          313.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1391:S2",
+      "page": 39,
+      "ordinal": 2623,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          260.8,
+          282,
+          306.4,
+          313.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1391:S3",
+      "page": 39,
+      "ordinal": 2624,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          299.1,
+          320.2,
+          306.4,
+          313.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1391:S4",
+      "page": 39,
+      "ordinal": 2625,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "— $ — $",
+      "layout": {
+        "bbox": [
+          336.6,
+          399,
+          306.4,
+          313.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1391:S5",
+      "page": 39,
+      "ordinal": 2626,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          422.1,
+          443.2,
+          306.4,
+          313.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1391:S6",
+      "page": 39,
+      "ordinal": 2627,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          467.8,
+          489,
+          306.4,
+          313.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1391:S7",
+      "page": 39,
+      "ordinal": 2628,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          525.2,
+          533.2,
+          309,
+          309.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1392:S0",
+      "page": 39,
+      "ordinal": 2629,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Medium",
+      "layout": {
+        "bbox": [
+          83.2,
+          110.5,
+          295.1,
+          300.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1392:S1",
+      "page": 39,
+      "ordinal": 2630,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "31",
+      "layout": {
+        "bbox": [
+          192.8,
+          199.9,
+          295.1,
+          300.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1392:S2",
+      "page": 39,
+      "ordinal": 2631,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "57",
+      "layout": {
+        "bbox": [
+          225,
+          233.2,
+          295.1,
+          300.8
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1392:S3",
+      "page": 39,
+      "ordinal": 2632,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "83",
+      "layout": {
+        "bbox": [
+          260.3,
+          268.5,
+          295.1,
+          300.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1392:S4",
+      "page": 39,
+      "ordinal": 2633,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 12",
+      "layout": {
+        "bbox": [
+          294.6,
+          306.7,
+          295.2,
+          300.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1392:S5",
+      "page": 39,
+      "ordinal": 2634,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "396",
+      "layout": {
+        "bbox": [
+          331.6,
+          344.2,
+          295.1,
+          300.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1392:S6",
+      "page": 39,
+      "ordinal": 2635,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "15,512",
+      "layout": {
+        "bbox": [
+          362.3,
+          385.4,
+          294,
+          300.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1392:S7",
+      "page": 39,
+      "ordinal": 2636,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          422.1,
+          430.1,
+          297,
+          297.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1392:S8",
+      "page": 39,
+      "ordinal": 2637,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          467.8,
+          475.8,
+          297,
+          297.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1392:S9",
+      "page": 39,
+      "ordinal": 2638,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "16,191",
+      "layout": {
+        "bbox": [
+          513,
+          535.1,
+          294,
+          300.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1393:S0",
+      "page": 39,
+      "ordinal": 2639,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "High",
+      "layout": {
+        "bbox": [
+          83.3,
+          98.5,
+          281.5,
+          288.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1393:S1",
+      "page": 39,
+      "ordinal": 2640,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "516",
+      "layout": {
+        "bbox": [
+          188.3,
+          201,
+          283.1,
+          288.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1393:S2",
+      "page": 39,
+      "ordinal": 2641,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "6,289",
+      "layout": {
+        "bbox": [
+          213.9,
+          233.2,
+          282,
+          288.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1393:S3",
+      "page": 39,
+      "ordinal": 2642,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 1,417",
+      "layout": {
+        "bbox": [
+          245.3,
+          268.5,
+          282,
+          288.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1393:S4",
+      "page": 39,
+      "ordinal": 2643,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "10,096",
+      "layout": {
+        "bbox": [
+          283.5,
+          306.7,
+          282,
+          288.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1393:S5",
+      "page": 39,
+      "ordinal": 2644,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "14,078",
+      "layout": {
+        "bbox": [
+          321,
+          344.2,
+          282,
+          288.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1393:S6",
+      "page": 39,
+      "ordinal": 2645,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "149,638",
+      "layout": {
+        "bbox": [
+          357.8,
+          385.5,
+          282,
+          288.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1393:S7",
+      "page": 39,
+      "ordinal": 2646,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "125",
+      "layout": {
+        "bbox": [
+          417.6,
+          429.8,
+          283.1,
+          288.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1393:S8",
+      "page": 39,
+      "ordinal": 2647,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "340",
+      "layout": {
+        "bbox": [
+          462.8,
+          475.5,
+          283.1,
+          288.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1393:S9",
+      "page": 39,
+      "ordinal": 2648,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "192,499",
+      "layout": {
+        "bbox": [
+          508.6,
+          536.3,
+          282,
+          288.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1394:S0",
+      "page": 39,
+      "ordinal": 2649,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Loans in accrual status",
+      "layout": {
+        "bbox": [
+          75.2,
+          156.1,
+          271.1,
+          276.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1394:S1",
+      "page": 39,
+      "ordinal": 2650,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "547",
+      "layout": {
+        "bbox": [
+          188.3,
+          201,
+          271.1,
+          276.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1394:S2",
+      "page": 39,
+      "ordinal": 2651,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "6,346",
+      "layout": {
+        "bbox": [
+          213.9,
+          233.2,
+          270,
+          276.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1394:S3",
+      "page": 39,
+      "ordinal": 2652,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 1,500",
+      "layout": {
+        "bbox": [
+          245.3,
+          268.5,
+          270,
+          276.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1394:S4",
+      "page": 39,
+      "ordinal": 2653,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "10,208",
+      "layout": {
+        "bbox": [
+          283.5,
+          306.7,
+          270,
+          276.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1394:S5",
+      "page": 39,
+      "ordinal": 2654,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "14,474",
+      "layout": {
+        "bbox": [
+          321,
+          344.2,
+          270,
+          276.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1394:S6",
+      "page": 39,
+      "ordinal": 2655,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "165,150",
+      "layout": {
+        "bbox": [
+          357.8,
+          385.5,
+          270,
+          276.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1394:S7",
+      "page": 39,
+      "ordinal": 2656,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "125",
+      "layout": {
+        "bbox": [
+          417.6,
+          429.8,
+          271.1,
+          276.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1394:S8",
+      "page": 39,
+      "ordinal": 2657,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "340",
+      "layout": {
+        "bbox": [
+          462.8,
+          475.5,
+          271.1,
+          276.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1394:S9",
+      "page": 39,
+      "ordinal": 2658,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "208,690",
+      "layout": {
+        "bbox": [
+          508,
+          536.2,
+          270,
+          276.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1395:S0",
+      "page": 39,
+      "ordinal": 2659,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Loans in nonaccrual status",
+      "layout": {
+        "bbox": [
+          75.2,
+          169.4,
+          259.1,
+          264.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1395:S1",
+      "page": 39,
+      "ordinal": 2660,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          193.3,
+          201.3,
+          261,
+          261.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1395:S2",
+      "page": 39,
+      "ordinal": 2661,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "— — — — 885",
+      "layout": {
+        "bbox": [
+          225.6,
+          385.5,
+          259.1,
+          264.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1395:S3",
+      "page": 39,
+      "ordinal": 2662,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          422.1,
+          430.1,
+          261,
+          261.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1395:S4",
+      "page": 39,
+      "ordinal": 2663,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          467.8,
+          475.8,
+          261,
+          261.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1395:S5",
+      "page": 39,
+      "ordinal": 2664,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "885",
+      "layout": {
+        "bbox": [
+          523.6,
+          536.3,
+          259.1,
+          264.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1396:S0",
+      "page": 39,
+      "ordinal": 2665,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Total $ 547 $6,346 $1 1,500 $10,208 $14,474 $166,035 $",
+      "layout": {
+        "bbox": [
+          74.8,
+          399,
+          246,
+          253.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1396:S1",
+      "page": 39,
+      "ordinal": 2666,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "125 $",
+      "layout": {
+        "bbox": [
+          417.6,
+          443.2,
+          246.4,
+          253.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1396:S2",
+      "page": 39,
+      "ordinal": 2667,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "340 $",
+      "layout": {
+        "bbox": [
+          462.8,
+          489,
+          246.4,
+          253.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1396:S3",
+      "page": 39,
+      "ordinal": 2668,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "209,575",
+      "layout": {
+        "bbox": [
+          508,
+          536.3,
+          246,
+          252.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1397:S0",
+      "page": 39,
+      "ordinal": 2669,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Current period gross write-",
+      "layout": {
+        "bbox": [
+          75,
+          169,
+          219.1,
+          226.6
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1398:S0",
+      "page": 39,
+      "ordinal": 2670,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "a",
+      "layout": {
+        "bbox": [
+          93.5,
+          96,
+          214.7,
+          217.6
+        ],
+        "font": {
+          "size": 5.2,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1399:S0",
+      "page": 39,
+      "ordinal": 2671,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "offs $ — $ — $ — $ — $ — $ 3 n.a n.a $ 3",
+      "layout": {
+        "bbox": [
+          79.4,
+          536.2,
+          210.4,
+          217.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1400:S0",
+      "page": 39,
+      "ordinal": 2672,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "IDAQuarterly Financial Statements: September 30, 2024 (Unaudited)",
+      "layout": {
+        "bbox": [
+          208.8,
+          514.7,
+          27,
+          36.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1400:S1",
+      "page": 39,
+      "ordinal": 2673,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "37",
+      "layout": {
+        "bbox": [
+          529.3,
+          539.5,
+          29,
+          36.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1885:S0",
+      "page": 52,
+      "ordinal": 3664,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The following tables present IDA’s fair value hierarchy for assets and liabilities measured at fair value on a",
+      "layout": {
+        "bbox": [
+          72.3,
+          539.9,
+          710.9,
+          720
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1886:S0",
+      "page": 52,
+      "ordinal": 3665,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "recurringbasis.",
+      "layout": {
+        "bbox": [
+          72.1,
+          132.9,
+          698.9,
+          708
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1887:S0",
+      "page": 52,
+      "ordinal": 3666,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table J2: Fair value hierarchy ofIDA’s assets and liabilities",
+      "layout": {
+        "bbox": [
+          72.4,
+          327.8,
+          681.1,
+          690
+        ],
+        "font": {
+          "size": 10,
+          "name": "timesnewroman-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1888:S0",
+      "page": 52,
+      "ordinal": 3667,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In millions ofU.S. dollars",
+      "layout": {
+        "bbox": [
+          75.1,
+          162.6,
+          666.1,
+          672
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1889:S0",
+      "page": 52,
+      "ordinal": 3668,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Fair Value Measurements on a Recurring Basis",
+      "layout": {
+        "bbox": [
+          352.2,
+          519.8,
+          652.5,
+          659.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1890:S0",
+      "page": 52,
+      "ordinal": 3669,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "As ofSeptember30, 2024",
+      "layout": {
+        "bbox": [
+          389.2,
+          482.1,
+          640.6,
+          648
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1891:S0",
+      "page": 52,
+      "ordinal": 3670,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Level 1 Level 2 Level 3 Total",
+      "layout": {
+        "bbox": [
+          342.8,
+          525,
+          630.1,
+          635.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1892:S0",
+      "page": 52,
+      "ordinal": 3671,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Assets:",
+      "layout": {
+        "bbox": [
+          74.6,
+          102.7,
+          618.1,
+          623.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1893:S0",
+      "page": 52,
+      "ordinal": 3672,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Investments—Trading",
+      "layout": {
+        "bbox": [
+          79.9,
+          156.5,
+          604.5,
+          611.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1894:S0",
+      "page": 52,
+      "ordinal": 3673,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Government, agency and corporate obligations",
+      "layout": {
+        "bbox": [
+          84.1,
+          249.4,
+          592.5,
+          600
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1894:S1",
+      "page": 52,
+      "ordinal": 3674,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 13,148 $ 10,807 $",
+      "layout": {
+        "bbox": [
+          334.4,
+          447.7,
+          593,
+          600.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1894:S2",
+      "page": 52,
+      "ordinal": 3675,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $ 23,955",
+      "layout": {
+        "bbox": [
+          474.6,
+          536.3,
+          593,
+          600.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1895:S0",
+      "page": 52,
+      "ordinal": 3676,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Time deposits",
+      "layout": {
+        "bbox": [
+          83.8,
+          132.8,
+          580.6,
+          587.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1895:S1",
+      "page": 52,
+      "ordinal": 3677,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1,066",
+      "layout": {
+        "bbox": [
+          356.2,
+          375,
+          581,
+          587.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1895:S2",
+      "page": 52,
+      "ordinal": 3678,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "13,921",
+      "layout": {
+        "bbox": [
+          405.8,
+          427.9,
+          581,
+          587.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1895:S3",
+      "page": 52,
+      "ordinal": 3679,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          474.6,
+          482.6,
+          584,
+          584.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1895:S4",
+      "page": 52,
+      "ordinal": 3680,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "14,987",
+      "layout": {
+        "bbox": [
+          513,
+          536.2,
+          581,
+          587.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1896:S0",
+      "page": 52,
+      "ordinal": 3681,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ABS",
+      "layout": {
+        "bbox": [
+          83.6,
+          99.2,
+          570.1,
+          576
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1896:S1",
+      "page": 52,
+      "ordinal": 3682,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          367.3,
+          375.3,
+          572,
+          572.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1896:S2",
+      "page": 52,
+      "ordinal": 3683,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "107",
+      "layout": {
+        "bbox": [
+          416.9,
+          429,
+          570.1,
+          575.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1896:S3",
+      "page": 52,
+      "ordinal": 3684,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          474.6,
+          482.6,
+          572,
+          572.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1896:S4",
+      "page": 52,
+      "ordinal": 3685,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "107",
+      "layout": {
+        "bbox": [
+          524.1,
+          536.2,
+          570.1,
+          575.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1897:S0",
+      "page": 52,
+      "ordinal": 3686,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total Investments—Trading",
+      "layout": {
+        "bbox": [
+          79.3,
+          175.6,
+          556.5,
+          563.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1897:S1",
+      "page": 52,
+      "ordinal": 3687,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "14,214",
+      "layout": {
+        "bbox": [
+          351.8,
+          375,
+          557,
+          563.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1897:S2",
+      "page": 52,
+      "ordinal": 3688,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "24,835",
+      "layout": {
+        "bbox": [
+          405.2,
+          429,
+          557,
+          563.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1897:S3",
+      "page": 52,
+      "ordinal": 3689,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          474.6,
+          482.6,
+          560,
+          560.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1897:S4",
+      "page": 52,
+      "ordinal": 3690,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "39,049",
+      "layout": {
+        "bbox": [
+          512.5,
+          536.3,
+          557,
+          563.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1898:S0",
+      "page": 52,
+      "ordinal": 3691,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Investments—Non-trading",
+      "layout": {
+        "bbox": [
+          79.9,
+          171.4,
+          544.5,
+          551.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1898:S1",
+      "page": 52,
+      "ordinal": 3692,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          367.3,
+          375.3,
+          548,
+          548.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1898:S2",
+      "page": 52,
+      "ordinal": 3693,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "141",
+      "layout": {
+        "bbox": [
+          416.9,
+          427.9,
+          546.2,
+          551.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1898:S3",
+      "page": 52,
+      "ordinal": 3694,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          474.6,
+          482.6,
+          548,
+          548.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1898:S4",
+      "page": 52,
+      "ordinal": 3695,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "141",
+      "layout": {
+        "bbox": [
+          524.1,
+          535.1,
+          546.2,
+          551.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1899:S0",
+      "page": 52,
+      "ordinal": 3696,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total Investments",
+      "layout": {
+        "bbox": [
+          79.3,
+          141,
+          534.1,
+          539.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1899:S1",
+      "page": 52,
+      "ordinal": 3697,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 14,214 $ 24,976 $",
+      "layout": {
+        "bbox": [
+          334.4,
+          447.7,
+          533,
+          540.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1899:S2",
+      "page": 52,
+      "ordinal": 3698,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $ 39,190",
+      "layout": {
+        "bbox": [
+          474.6,
+          536.2,
+          533,
+          540.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1900:S0",
+      "page": 52,
+      "ordinal": 3699,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Securities purchased under resale agreements",
+      "layout": {
+        "bbox": [
+          79.5,
+          244.5,
+          509.2,
+          516.8
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1900:S1",
+      "page": 52,
+      "ordinal": 3700,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          334.4,
+          338.2,
+          510.1,
+          517.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1900:S2",
+      "page": 52,
+      "ordinal": 3701,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          367.3,
+          393.7,
+          510.1,
+          517.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1900:S3",
+      "page": 52,
+      "ordinal": 3702,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "188 $",
+      "layout": {
+        "bbox": [
+          416.9,
+          447.7,
+          510.1,
+          517.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1900:S4",
+      "page": 52,
+      "ordinal": 3703,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          474.6,
+          501,
+          510.1,
+          517.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1900:S5",
+      "page": 52,
+      "ordinal": 3704,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "188",
+      "layout": {
+        "bbox": [
+          524.1,
+          536.2,
+          510.8,
+          516.7
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1901:S0",
+      "page": 52,
+      "ordinal": 3705,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Derivative assets:",
+      "layout": {
+        "bbox": [
+          79.7,
+          141.5,
+          487.6,
+          493.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1902:S0",
+      "page": 52,
+      "ordinal": 3706,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Currency swaps and currency forward contracts",
+      "layout": {
+        "bbox": [
+          84,
+          252.6,
+          474,
+          481.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1902:S1",
+      "page": 52,
+      "ordinal": 3707,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          334.4,
+          338.2,
+          474.9,
+          481.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1902:S2",
+      "page": 52,
+      "ordinal": 3708,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          367.3,
+          393.7,
+          474.9,
+          481.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1902:S3",
+      "page": 52,
+      "ordinal": 3709,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "432 $",
+      "layout": {
+        "bbox": [
+          416.1,
+          447.7,
+          474.9,
+          481.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1902:S4",
+      "page": 52,
+      "ordinal": 3710,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          474.6,
+          501,
+          474.9,
+          481.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1902:S5",
+      "page": 52,
+      "ordinal": 3711,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "432",
+      "layout": {
+        "bbox": [
+          523.4,
+          536.2,
+          475.6,
+          481.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1903:S0",
+      "page": 52,
+      "ordinal": 3712,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Interest rate swaps",
+      "layout": {
+        "bbox": [
+          84.4,
+          150.8,
+          462.1,
+          469.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1903:S1",
+      "page": 52,
+      "ordinal": 3713,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          367.3,
+          375.3,
+          465.5,
+          466
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1903:S2",
+      "page": 52,
+      "ordinal": 3714,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2,309",
+      "layout": {
+        "bbox": [
+          409.6,
+          429,
+          462.5,
+          469.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1903:S3",
+      "page": 52,
+      "ordinal": 3715,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          474.6,
+          482.6,
+          465.5,
+          466
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1903:S4",
+      "page": 52,
+      "ordinal": 3716,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2,309",
+      "layout": {
+        "bbox": [
+          516.8,
+          536.3,
+          462.5,
+          469.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1904:S0",
+      "page": 52,
+      "ordinal": 3717,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Other a",
+      "layout": {
+        "bbox": [
+          84,
+          108.5,
+          451.6,
+          458.1
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1904:S1",
+      "page": 52,
+      "ordinal": 3718,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3",
+      "layout": {
+        "bbox": [
+          371.2,
+          375,
+          451.6,
+          457.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1904:S2",
+      "page": 52,
+      "ordinal": 3719,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          421.3,
+          429.3,
+          453.5,
+          454
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1904:S3",
+      "page": 52,
+      "ordinal": 3720,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          474.6,
+          482.6,
+          453.5,
+          454
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1904:S4",
+      "page": 52,
+      "ordinal": 3721,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3",
+      "layout": {
+        "bbox": [
+          532.5,
+          536.2,
+          451.6,
+          457.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1905:S0",
+      "page": 52,
+      "ordinal": 3722,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          334.4,
+          338.2,
+          438.9,
+          445.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1905:S1",
+      "page": 52,
+      "ordinal": 3723,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3 $",
+      "layout": {
+        "bbox": [
+          371.2,
+          393.7,
+          438.9,
+          445.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1905:S2",
+      "page": 52,
+      "ordinal": 3724,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2,741",
+      "layout": {
+        "bbox": [
+          409.6,
+          427.9,
+          438.5,
+          445.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1905:S3",
+      "page": 52,
+      "ordinal": 3725,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          443.9,
+          447.7,
+          438.9,
+          445.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1905:S4",
+      "page": 52,
+      "ordinal": 3726,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          474.6,
+          501,
+          438.9,
+          445.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1905:S5",
+      "page": 52,
+      "ordinal": 3727,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2,744",
+      "layout": {
+        "bbox": [
+          516.8,
+          536.2,
+          438.5,
+          445.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1906:S0",
+      "page": 52,
+      "ordinal": 3728,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Less:",
+      "layout": {
+        "bbox": [
+          79.7,
+          97.5,
+          427.6,
+          433.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1907:S0",
+      "page": 52,
+      "ordinal": 3729,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Amounts subject to legally enforceable master netting agreements b",
+      "layout": {
+        "bbox": [
+          83.6,
+          322.5,
+          414,
+          423
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1907:S1",
+      "page": 52,
+      "ordinal": 3730,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1,538",
+      "layout": {
+        "bbox": [
+          517.5,
+          536.3,
+          414.5,
+          421.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1908:S0",
+      "page": 52,
+      "ordinal": 3731,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Cash collateral received",
+      "layout": {
+        "bbox": [
+          84,
+          168.3,
+          403.6,
+          409.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1908:S1",
+      "page": 52,
+      "ordinal": 3732,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "807",
+      "layout": {
+        "bbox": [
+          523.6,
+          536.2,
+          403.6,
+          409.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1909:S0",
+      "page": 52,
+      "ordinal": 3733,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Derivative assets, net",
+      "layout": {
+        "bbox": [
+          79.7,
+          155.5,
+          390.5,
+          397.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1909:S1",
+      "page": 52,
+      "ordinal": 3734,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          497.2,
+          501,
+          390.9,
+          397.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1909:S2",
+      "page": 52,
+      "ordinal": 3735,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "399",
+      "layout": {
+        "bbox": [
+          523.6,
+          536.2,
+          391.6,
+          397.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1910:S0",
+      "page": 52,
+      "ordinal": 3736,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Liabilities:",
+      "layout": {
+        "bbox": [
+          75.2,
+          113.4,
+          365.3,
+          371.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1911:S0",
+      "page": 52,
+      "ordinal": 3737,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Market Borrowings, at fair value",
+      "layout": {
+        "bbox": [
+          79.7,
+          191.2,
+          351.7,
+          359.3
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1911:S1",
+      "page": 52,
+      "ordinal": 3738,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          334.4,
+          338.2,
+          352.6,
+          359.7
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1911:S2",
+      "page": 52,
+      "ordinal": 3739,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $ 33,284 $",
+      "layout": {
+        "bbox": [
+          367.3,
+          447.7,
+          352.3,
+          359.7
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1911:S3",
+      "page": 52,
+      "ordinal": 3740,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $ 33,284",
+      "layout": {
+        "bbox": [
+          474.6,
+          536.2,
+          352.3,
+          359.7
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1912:S0",
+      "page": 52,
+      "ordinal": 3741,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Securities sold under repurchase agreements, securities lent under",
+      "layout": {
+        "bbox": [
+          79.5,
+          316.4,
+          327.4,
+          335
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1913:S0",
+      "page": 52,
+      "ordinal": 3742,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "securities lending agreements, and payable for cash collateral",
+      "layout": {
+        "bbox": [
+          83.9,
+          302,
+          317.8,
+          325.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1914:S0",
+      "page": 52,
+      "ordinal": 3743,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c",
+      "layout": {
+        "bbox": [
+          116.2,
+          118.6,
+          313.5,
+          316.3
+        ],
+        "font": {
+          "size": 5.2,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1915:S0",
+      "page": 52,
+      "ordinal": 3744,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "received $",
+      "layout": {
+        "bbox": [
+          84.1,
+          338.2,
+          309.1,
+          316.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1915:S1",
+      "page": 52,
+      "ordinal": 3745,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          367.3,
+          393.7,
+          309.1,
+          316.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1915:S2",
+      "page": 52,
+      "ordinal": 3746,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          421.3,
+          447.7,
+          309.1,
+          316.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1915:S3",
+      "page": 52,
+      "ordinal": 3747,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          474.6,
+          501,
+          309.1,
+          316.2
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1915:S4",
+      "page": 52,
+      "ordinal": 3748,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "layout": {
+        "bbox": [
+          528.6,
+          536.6,
+          311.7,
+          312.3
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1916:S0",
+      "page": 52,
+      "ordinal": 3749,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Derivative liabilities:",
+      "layout": {
+        "bbox": [
+          79.7,
+          148.6,
+          286.6,
+          292.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1917:S0",
+      "page": 52,
+      "ordinal": 3750,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Currency swaps and currency forward contracts",
+      "layout": {
+        "bbox": [
+          84,
+          252.6,
+          273,
+          280.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1917:S1",
+      "page": 52,
+      "ordinal": 3751,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          334.4,
+          338.2,
+          273.9,
+          280.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1917:S2",
+      "page": 52,
+      "ordinal": 3752,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          367.3,
+          393.7,
+          273.9,
+          280.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1917:S3",
+      "page": 52,
+      "ordinal": 3753,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "741",
+      "layout": {
+        "bbox": [
+          416.4,
+          427.9,
+          274.7,
+          280.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1917:S4",
+      "page": 52,
+      "ordinal": 3754,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          443.9,
+          447.7,
+          273.9,
+          280.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1917:S5",
+      "page": 52,
+      "ordinal": 3755,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          474.6,
+          501,
+          273.9,
+          280.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1917:S6",
+      "page": 52,
+      "ordinal": 3756,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "741",
+      "layout": {
+        "bbox": [
+          523.6,
+          535.1,
+          274.7,
+          280.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1918:S0",
+      "page": 52,
+      "ordinal": 3757,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Interest rate swaps — 1,430",
+      "layout": {
+        "bbox": [
+          84.4,
+          429,
+          261.1,
+          268.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1918:S1",
+      "page": 52,
+      "ordinal": 3758,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— 1,430",
+      "layout": {
+        "bbox": [
+          474.6,
+          536.2,
+          261.5,
+          268.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1919:S0",
+      "page": 52,
+      "ordinal": 3759,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          334.4,
+          338.2,
+          249.9,
+          256.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1919:S1",
+      "page": 52,
+      "ordinal": 3760,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          367.3,
+          393.7,
+          249.9,
+          256.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1919:S2",
+      "page": 52,
+      "ordinal": 3761,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2,171",
+      "layout": {
+        "bbox": [
+          409.6,
+          427.9,
+          249.5,
+          256.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1919:S3",
+      "page": 52,
+      "ordinal": 3762,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          443.9,
+          447.7,
+          249.9,
+          256.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1919:S4",
+      "page": 52,
+      "ordinal": 3763,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "— $",
+      "layout": {
+        "bbox": [
+          474.6,
+          501,
+          249.9,
+          256.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1919:S5",
+      "page": 52,
+      "ordinal": 3764,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2,171",
+      "layout": {
+        "bbox": [
+          516.8,
+          535.1,
+          249.5,
+          256.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1920:S0",
+      "page": 52,
+      "ordinal": 3765,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Less:",
+      "layout": {
+        "bbox": [
+          84.2,
+          102,
+          238.6,
+          244.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1921:S0",
+      "page": 52,
+      "ordinal": 3766,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Amounts subject to legally enforceable master netting agreements d",
+      "layout": {
+        "bbox": [
+          88.1,
+          326.8,
+          225,
+          234
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1921:S1",
+      "page": 52,
+      "ordinal": 3767,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1,467",
+      "layout": {
+        "bbox": [
+          517.5,
+          536.2,
+          225.5,
+          232.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1922:S0",
+      "page": 52,
+      "ordinal": 3768,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Derivative liabilities, net",
+      "layout": {
+        "bbox": [
+          79.7,
+          162.6,
+          213.5,
+          220.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1922:S1",
+      "page": 52,
+      "ordinal": 3769,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "layout": {
+        "bbox": [
+          497.2,
+          501,
+          213.9,
+          220.9
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1922:S2",
+      "page": 52,
+      "ordinal": 3770,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "704",
+      "layout": {
+        "bbox": [
+          523.6,
+          536.2,
+          214.6,
+          220.4
+        ],
+        "font": {
+          "size": 8,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1923:S0",
+      "page": 52,
+      "ordinal": 3771,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a. These relate to TBA Securities, swaptions, exchange traded options and futures contracts.",
+      "layout": {
+        "bbox": [
+          75,
+          402.1,
+          189,
+          196.5
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1924:S0",
+      "page": 52,
+      "ordinal": 3772,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b. Includes $91 million CVA.",
+      "layout": {
+        "bbox": [
+          74.9,
+          173.8,
+          177.9,
+          184.8
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1925:S0",
+      "page": 52,
+      "ordinal": 3773,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c. Excludes amountpayable forcash collateralreceived of$807 million.",
+      "layout": {
+        "bbox": [
+          75.1,
+          326.9,
+          165,
+          172.8
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1926:S0",
+      "page": 52,
+      "ordinal": 3774,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d. Includes $20 million DVA.",
+      "layout": {
+        "bbox": [
+          75.1,
+          173.8,
+          153.9,
+          160.8
+        ],
+        "font": {
+          "size": 8,
+          "name": "arial-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 1
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1927:S0",
+      "page": 52,
+      "ordinal": 3775,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "50 IDAQuarterly Financial Statements: September 30, 2024 (Unaudited)",
+      "layout": {
+        "bbox": [
+          72.4,
+          403.8,
+          27,
+          36.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "arialmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    }
+  ],
+  "labels": "NONE_SOURCE_FACTS_ONLY"
+}

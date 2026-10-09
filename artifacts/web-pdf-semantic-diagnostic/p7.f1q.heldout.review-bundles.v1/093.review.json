@@ -1,0 +1,3188 @@
+{
+  "version": "P7_F1Q_HELDOUT_REVIEW_BUNDLE_V1",
+  "id": "093",
+  "sourceKey": "todo10_8/heading_corpus_100/07_system_generated/093_RFC9112_HTTP_1_1.pdf",
+  "sourceSha256": "b260bba790c2da55a7e0795f356fcd9b70743686c55250f0ef1cc993c4d1abac",
+  "sourceAliasUniverseSha256": "10df1733336be25b7b241f67bf9360db395c27c8dad6e80b3b46ef949bd21bb4",
+  "evidenceStoreSha256": "65d3450997ca58e60a6e8f288d44deea4c761d792b1455401c4439e90aa07eaa",
+  "pageSelectionSha256": "c4b9ebefbd5a15f0cef59bb1d11f00497b971effae91f185475d08b335851f94",
+  "pageStats": [
+    {
+      "page": 1,
+      "lineCount": 44,
+      "textExtent": [
+        56.6,
+        538.1,
+        105.9,
+        761.2
+      ],
+      "medianFontSize": 10
+    },
+    {
+      "page": 12,
+      "lineCount": 29,
+      "textExtent": [
+        56.6,
+        538.2,
+        105.9,
+        803.2
+      ],
+      "medianFontSize": 10
+    },
+    {
+      "page": 18,
+      "lineCount": 38,
+      "textExtent": [
+        56.6,
+        538.4,
+        105.9,
+        803.2
+      ],
+      "medianFontSize": 10
+    },
+    {
+      "page": 42,
+      "lineCount": 38,
+      "textExtent": [
+        56.6,
+        538.2,
+        105.9,
+        803.2
+      ],
+      "medianFontSize": 10
+    }
+  ],
+  "layoutBasis": "bbox=[left,right,bottom,top] in PDF points, bottom-left origin; font={size,name,boldRatio,italicRatio}; parser observations, not labels",
+  "occurrences": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "ordinal": 0,
+      "pageStratum": "FIRST",
+      "text": "Stream:",
+      "layout": {
+        "bbox": [
+          71.3,
+          103.5,
+          754.3,
+          760.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0000:S1",
+      "page": 1,
+      "ordinal": 1,
+      "pageStratum": "FIRST",
+      "text": "Internet Engineering Task Force (IETF)",
+      "layout": {
+        "bbox": [
+          152.2,
+          315,
+          752.2,
+          761.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "ordinal": 2,
+      "pageStratum": "FIRST",
+      "text": "RFC:",
+      "layout": {
+        "bbox": [
+          71.2,
+          89.3,
+          742.1,
+          748.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0001:S1",
+      "page": 1,
+      "ordinal": 3,
+      "pageStratum": "FIRST",
+      "text": "9112",
+      "layout": {
+        "bbox": [
+          152.4,
+          172.1,
+          742,
+          748.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "ordinal": 4,
+      "pageStratum": "FIRST",
+      "text": "STD:",
+      "layout": {
+        "bbox": [
+          71.3,
+          89.3,
+          729.8,
+          736.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0002:S1",
+      "page": 1,
+      "ordinal": 5,
+      "pageStratum": "FIRST",
+      "text": "99",
+      "layout": {
+        "bbox": [
+          152.4,
+          161.6,
+          729.8,
+          736.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "ordinal": 6,
+      "pageStratum": "FIRST",
+      "text": "Obsoletes:",
+      "layout": {
+        "bbox": [
+          71.4,
+          112.5,
+          717.6,
+          724.5
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0003:S1",
+      "page": 1,
+      "ordinal": 7,
+      "pageStratum": "FIRST",
+      "text": "7230",
+      "layout": {
+        "bbox": [
+          152.4,
+          172.3,
+          717.6,
+          724.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "ordinal": 8,
+      "pageStratum": "FIRST",
+      "text": "Category:",
+      "layout": {
+        "bbox": [
+          71.4,
+          110.3,
+          703.3,
+          711.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0004:S1",
+      "page": 1,
+      "ordinal": 9,
+      "pageStratum": "FIRST",
+      "text": "Standards Track",
+      "layout": {
+        "bbox": [
+          152.3,
+          221.7,
+          705.3,
+          712.3
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "ordinal": 10,
+      "pageStratum": "FIRST",
+      "text": "Published:",
+      "layout": {
+        "bbox": [
+          71.2,
+          114.8,
+          693.1,
+          700
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0005:S1",
+      "page": 1,
+      "ordinal": 11,
+      "pageStratum": "FIRST",
+      "text": "June 2022",
+      "layout": {
+        "bbox": [
+          151.8,
+          193.9,
+          691,
+          699.7
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "ordinal": 12,
+      "pageStratum": "FIRST",
+      "text": "ISSN:",
+      "layout": {
+        "bbox": [
+          71.2,
+          93,
+          680.9,
+          687.5
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0006:S1",
+      "page": 1,
+      "ordinal": 13,
+      "pageStratum": "FIRST",
+      "text": "2070-1721",
+      "layout": {
+        "bbox": [
+          152.5,
+          196,
+          680.9,
+          687.5
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "ordinal": 14,
+      "pageStratum": "FIRST",
+      "text": "Authors:",
+      "layout": {
+        "bbox": [
+          70.9,
+          107.3,
+          668.6,
+          675.5
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0007:S1",
+      "page": 1,
+      "ordinal": 15,
+      "pageStratum": "FIRST",
+      "text": "R. Fielding, Ed.",
+      "layout": {
+        "bbox": [
+          152.2,
+          213.6,
+          666.5,
+          675.5
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0007:S2",
+      "page": 1,
+      "ordinal": 16,
+      "pageStratum": "FIRST",
+      "text": "M. Nottingham, Ed.",
+      "layout": {
+        "bbox": [
+          230.2,
+          310.3,
+          666.5,
+          675.5
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0007:S3",
+      "page": 1,
+      "ordinal": 17,
+      "pageStratum": "FIRST",
+      "text": "J. Reschke, Ed.",
+      "layout": {
+        "bbox": [
+          326.6,
+          385.3,
+          666.5,
+          675.5
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "ordinal": 18,
+      "pageStratum": "FIRST",
+      "text": "Adobe Fastly greenbytes",
+      "layout": {
+        "bbox": [
+          151.4,
+          371.1,
+          654.3,
+          663.3
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-italic",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "ordinal": 19,
+      "pageStratum": "FIRST",
+      "text": "RFC 9112",
+      "layout": {
+        "bbox": [
+          66.4,
+          142.2,
+          610.6,
+          623.2
+        ],
+        "font": {
+          "size": 17.2,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "ordinal": 20,
+      "pageStratum": "FIRST",
+      "text": "HTTP/1. 1",
+      "layout": {
+        "bbox": [
+          66.4,
+          142.9,
+          586.3,
+          601.5
+        ],
+        "font": {
+          "size": 17.2,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "ordinal": 21,
+      "pageStratum": "FIRST",
+      "text": "Abstract",
+      "layout": {
+        "bbox": [
+          66,
+          127.7,
+          542.8,
+          553.9
+        ],
+        "font": {
+          "size": 14.4,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "ordinal": 22,
+      "pageStratum": "FIRST",
+      "text": "The Hypertext Transfer Protocol (HTTP) is a stateless application-level protocol for distributed,",
+      "layout": {
+        "bbox": [
+          66.1,
+          514.8,
+          518.9,
+          529
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "ordinal": 23,
+      "pageStratum": "FIRST",
+      "text": "collaborative, hypertext information systems. This document speciﬁes the HTTP/1.1 message",
+      "layout": {
+        "bbox": [
+          66.5,
+          504.3,
+          505.3,
+          515.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "ordinal": 24,
+      "pageStratum": "FIRST",
+      "text": "syntax, message parsing, connection management, and related security concerns.",
+      "layout": {
+        "bbox": [
+          66.4,
+          456.3,
+          491.7,
+          501.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "ordinal": 25,
+      "pageStratum": "FIRST",
+      "text": "This document obsoletes portions ofRFC 7230.",
+      "layout": {
+        "bbox": [
+          66.1,
+          283.8,
+          468.1,
+          478.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "ordinal": 26,
+      "pageStratum": "FIRST",
+      "text": "Status ofThis Memo",
+      "layout": {
+        "bbox": [
+          66.3,
+          213.6,
+          434.4,
+          445.6
+        ],
+        "font": {
+          "size": 14.4,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "ordinal": 27,
+      "pageStratum": "FIRST",
+      "text": "This is an Internet Standards Track document.",
+      "layout": {
+        "bbox": [
+          66.1,
+          286,
+          412.8,
+          420.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 1,
+      "ordinal": 28,
+      "pageStratum": "FIRST",
+      "text": "This document is a product ofthe Internet Engineering Task Force (IETF). It represents the",
+      "layout": {
+        "bbox": [
+          66.1,
+          491.5,
+          386.9,
+          396.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 1,
+      "ordinal": 29,
+      "pageStratum": "FIRST",
+      "text": "consensus ofthe IETF community. It has received public review and has been approved for",
+      "layout": {
+        "bbox": [
+          66.5,
+          495,
+          373.3,
+          383.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 1,
+      "ordinal": 30,
+      "pageStratum": "FIRST",
+      "text": "publication by the Internet Engineering Steering Group (IESG). Further information on Internet",
+      "layout": {
+        "bbox": [
+          66,
+          518.4,
+          359.7,
+          369.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 1,
+      "ordinal": 31,
+      "pageStratum": "FIRST",
+      "text": "Standards is available in Section 2 ofRFC 7841.",
+      "layout": {
+        "bbox": [
+          66.4,
+          286,
+          348.4,
+          356.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 1,
+      "ordinal": 32,
+      "pageStratum": "FIRST",
+      "text": "Information about the current status ofthis document, any errata, and how to provide feedback",
+      "layout": {
+        "bbox": [
+          66.3,
+          521.8,
+          322.5,
+          332.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 1,
+      "ordinal": 33,
+      "pageStratum": "FIRST",
+      "text": "on it may be obtained at https://www.rfc-editor.org/info/rfc9112.",
+      "layout": {
+        "bbox": [
+          66.5,
+          368.5,
+          308.9,
+          319
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 1,
+      "ordinal": 34,
+      "pageStratum": "FIRST",
+      "text": "Copyright Notice",
+      "layout": {
+        "bbox": [
+          66.7,
+          189,
+          271.8,
+          286.4
+        ],
+        "font": {
+          "size": 14.4,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 1,
+      "ordinal": 35,
+      "pageStratum": "FIRST",
+      "text": "Copyright (c) 2022 IETF Trust and the persons identiﬁed as the document authors. All rights",
+      "layout": {
+        "bbox": [
+          66.5,
+          493.7,
+          251.2,
+          261.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 1,
+      "ordinal": 36,
+      "pageStratum": "FIRST",
+      "text": "reserved.",
+      "layout": {
+        "bbox": [
+          66.2,
+          109,
+          239.9,
+          247.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 1,
+      "ordinal": 37,
+      "pageStratum": "FIRST",
+      "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF",
+      "layout": {
+        "bbox": [
+          66.1,
+          481.6,
+          214,
+          224
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 1,
+      "ordinal": 38,
+      "pageStratum": "FIRST",
+      "text": "Documents (https://trustee.ietf.org/license-info) in eﬀect on the date ofpublication ofthis",
+      "layout": {
+        "bbox": [
+          66.3,
+          487,
+          200.4,
+          210.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0029:S0",
+      "page": 1,
+      "ordinal": 39,
+      "pageStratum": "FIRST",
+      "text": "document. Please review these documents carefully, as they describe your rights and restrictions",
+      "layout": {
+        "bbox": [
+          66.5,
+          521.5,
+          186.8,
+          196.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0030:S0",
+      "page": 1,
+      "ordinal": 40,
+      "pageStratum": "FIRST",
+      "text": "with respect to this document. Code Components extracted from this document must include",
+      "layout": {
+        "bbox": [
+          65.9,
+          505,
+          173.2,
+          183.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0031:S0",
+      "page": 1,
+      "ordinal": 41,
+      "pageStratum": "FIRST",
+      "text": "Revised BSD License text as described in Section 4.e ofthe Trust Legal Provisions and are",
+      "layout": {
+        "bbox": [
+          66.3,
+          484,
+          159.6,
+          169.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0032:S0",
+      "page": 1,
+      "ordinal": 42,
+      "pageStratum": "FIRST",
+      "text": "provided without warranty as described in the Revised BSD License.",
+      "layout": {
+        "bbox": [
+          66,
+          386.5,
+          146,
+          156
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0033:S0",
+      "page": 1,
+      "ordinal": 43,
+      "pageStratum": "FIRST",
+      "text": "Fielding, et al. Standards Track Page 1",
+      "layout": {
+        "bbox": [
+          56.6,
+          538.1,
+          105.9,
+          114.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0372:S0",
+      "page": 12,
+      "ordinal": 419,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "RFC 9112 HTTP/1.1 June 2022",
+      "layout": {
+        "bbox": [
+          56.6,
+          538.2,
+          794.2,
+          803.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0373:S0",
+      "page": 12,
+      "ordinal": 420,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "When making a CONNECT request to establish a tunnel through one or more proxies, a client",
+      "layout": {
+        "bbox": [
+          66,
+          503.4,
+          757.4,
+          767.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0374:S0",
+      "page": 12,
+      "ordinal": 421,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "MUST send only the host and port ofthe tunnel destination as the request-target. The client",
+      "layout": {
+        "bbox": [
+          66.2,
+          493.7,
+          743.8,
+          753.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0375:S0",
+      "page": 12,
+      "ordinal": 422,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "obtains the host and port from the target URI's authority component, except that it sends the",
+      "layout": {
+        "bbox": [
+          66.5,
+          504.3,
+          730.2,
+          740.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0376:S0",
+      "page": 12,
+      "ordinal": 423,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "scheme's default port ifthe target URI elides the port. For example, a CONNECT request to \"http://",
+      "layout": {
+        "bbox": [
+          66.4,
+          520.3,
+          716.6,
+          726.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0377:S0",
+      "page": 12,
+      "ordinal": 424,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "www.example.com\" looks like the following:",
+      "layout": {
+        "bbox": [
+          65.9,
+          274.2,
+          703,
+          713.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0378:S0",
+      "page": 12,
+      "ordinal": 425,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "CONNECT www . examp le . com : 80 HTTP / 1 . 1",
+      "layout": {
+        "bbox": [
+          76.7,
+          283.7,
+          671.3,
+          680.4
+        ],
+        "font": {
+          "size": 9.5,
+          "name": "robotomono-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0379:S0",
+      "page": 12,
+      "ordinal": 426,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Host : www . example . com",
+      "layout": {
+        "bbox": [
+          76.8,
+          201.4,
+          660.7,
+          669.7
+        ],
+        "font": {
+          "size": 9.5,
+          "name": "robotomono-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0380:S0",
+      "page": 12,
+      "ordinal": 427,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.2.4. asterisk-form",
+      "layout": {
+        "bbox": [
+          66.2,
+          166.7,
+          618.6,
+          626.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0381:S0",
+      "page": 12,
+      "ordinal": 428,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "The \"asterisk-form\" ofrequest-target is only used for a server-wide OPTIONS request (Section 9.3.7",
+      "layout": {
+        "bbox": [
+          66.1,
+          524.8,
+          598,
+          608.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0382:S0",
+      "page": 12,
+      "ordinal": 429,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "of [HTTP]).",
+      "layout": {
+        "bbox": [
+          66.5,
+          117.3,
+          585.5,
+          594.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0383:S0",
+      "page": 12,
+      "ordinal": 430,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "a ste r is k- fo rm = \" * \"",
+      "layout": {
+        "bbox": [
+          88.9,
+          206.1,
+          554.2,
+          561.6
+        ],
+        "font": {
+          "size": 9.5,
+          "name": "robotomono-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0384:S0",
+      "page": 12,
+      "ordinal": 431,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "When a client wishes to request OPTIONS for the server as a whole, as opposed to a speciﬁc",
+      "layout": {
+        "bbox": [
+          66,
+          493.4,
+          519.8,
+          529.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0385:S0",
+      "page": 12,
+      "ordinal": 432,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "named resource ofthat server, the client MUST send only \"*\" (%x2A) as the request-target. For",
+      "layout": {
+        "bbox": [
+          66.2,
+          506.2,
+          506.2,
+          516.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0386:S0",
+      "page": 12,
+      "ordinal": 433,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "example,",
+      "layout": {
+        "bbox": [
+          66.5,
+          109.1,
+          492.6,
+          502.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0387:S0",
+      "page": 12,
+      "ordinal": 434,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "OPTIONS * HTTP / 1 . 1",
+      "layout": {
+        "bbox": [
+          76.6,
+          181.7,
+          462.2,
+          469.7
+        ],
+        "font": {
+          "size": 9.5,
+          "name": "robotomono-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0388:S0",
+      "page": 12,
+      "ordinal": 435,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "If a proxy receives an OPTIONS request with an absolute-form ofrequest-target in which the URI",
+      "layout": {
+        "bbox": [
+          66.3,
+          520.7,
+          428.4,
+          438.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0389:S0",
+      "page": 12,
+      "ordinal": 436,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "has an empty path and no query component, then the last proxy on the request chain MUST send",
+      "layout": {
+        "bbox": [
+          66.1,
+          524.1,
+          414.7,
+          424.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0390:S0",
+      "page": 12,
+      "ordinal": 437,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "a request-target of \"*\" when it forwards the request to the indicated origin server.",
+      "layout": {
+        "bbox": [
+          66.4,
+          447.3,
+          401.2,
+          411.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0391:S0",
+      "page": 12,
+      "ordinal": 438,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "For example, the request",
+      "layout": {
+        "bbox": [
+          66.3,
+          181.7,
+          377.5,
+          387.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0392:S0",
+      "page": 12,
+      "ordinal": 439,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "OPTIONS htt p : / /www . example . o rg : 800 1 HTTP / 1 . 1",
+      "layout": {
+        "bbox": [
+          76.6,
+          337.7,
+          345.8,
+          354.9
+        ],
+        "font": {
+          "size": 9.5,
+          "name": "robotomono-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0393:S0",
+      "page": 12,
+      "ordinal": 440,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "would be forwarded by the ﬁnal proxy as",
+      "layout": {
+        "bbox": [
+          65.9,
+          260.5,
+          313.3,
+          323.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0394:S0",
+      "page": 12,
+      "ordinal": 441,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "OPTIONS * HTTP / 1 . 1",
+      "layout": {
+        "bbox": [
+          76.6,
+          181.7,
+          283,
+          290.4
+        ],
+        "font": {
+          "size": 9.5,
+          "name": "robotomono-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0395:S0",
+      "page": 12,
+      "ordinal": 442,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Host : www . example . o rg : 800 1",
+      "layout": {
+        "bbox": [
+          76.8,
+          229.7,
+          270.9,
+          280
+        ],
+        "font": {
+          "size": 9.5,
+          "name": "robotomono-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0396:S0",
+      "page": 12,
+      "ordinal": 443,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "after connecting to port 8001 ofhost \"www.example.org\".",
+      "layout": {
+        "bbox": [
+          66.4,
+          335.5,
+          238.4,
+          248.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0397:S0",
+      "page": 12,
+      "ordinal": 444,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3. Reconstructing the Target URI",
+      "layout": {
+        "bbox": [
+          66.2,
+          276.6,
+          208.1,
+          220.2
+        ],
+        "font": {
+          "size": 12,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0398:S0",
+      "page": 12,
+      "ordinal": 445,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "The target URI is the request-target when the request-target is in absolute-form. In that case, a",
+      "layout": {
+        "bbox": [
+          66.1,
+          506.1,
+          188.7,
+          198.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0399:S0",
+      "page": 12,
+      "ordinal": 446,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "server will parse the URI into its generic components for further evaluation.",
+      "layout": {
+        "bbox": [
+          66.4,
+          424.8,
+          175.1,
+          185.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0400:S0",
+      "page": 12,
+      "ordinal": 447,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Fielding, et al. Standards Track Page 12",
+      "layout": {
+        "bbox": [
+          56.6,
+          538.2,
+          105.9,
+          114.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0579:S0",
+      "page": 18,
+      "ordinal": 630,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "RFC 9112 HTTP/1.1 June 2022",
+      "layout": {
+        "bbox": [
+          56.6,
+          538.2,
+          794.2,
+          803.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0580:S0",
+      "page": 18,
+      "ordinal": 631,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Transfer-Encoding was added in HTTP/1.1. It is generally assumed that implementations",
+      "layout": {
+        "bbox": [
+          66.1,
+          483.2,
+          757.4,
+          767.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0581:S0",
+      "page": 18,
+      "ordinal": 632,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "advertising only HTTP/1.0 support will not understand how to process transfer-encoded content,",
+      "layout": {
+        "bbox": [
+          66.4,
+          522.3,
+          743.8,
+          753.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0582:S0",
+      "page": 18,
+      "ordinal": 633,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "and that an HTTP/1.0 message received with a Transfer-Encoding is likely to have been forwarded",
+      "layout": {
+        "bbox": [
+          66.4,
+          527.9,
+          730.2,
+          740.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0583:S0",
+      "page": 18,
+      "ordinal": 634,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "without proper handling ofthe chunked transfer coding in transit.",
+      "layout": {
+        "bbox": [
+          65.9,
+          379,
+          716.6,
+          726.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0584:S0",
+      "page": 18,
+      "ordinal": 635,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A client MUST NOT send a request containing Transfer-Encoding unless it knows the server will",
+      "layout": {
+        "bbox": [
+          65.9,
+          512.9,
+          693,
+          703.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0585:S0",
+      "page": 18,
+      "ordinal": 636,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "handle HTTP/1.1 requests (or later minor revisions); such knowledge might be in the form of",
+      "layout": {
+        "bbox": [
+          66.1,
+          500.8,
+          679.4,
+          689.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0586:S0",
+      "page": 18,
+      "ordinal": 637,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "speciﬁc user conﬁguration or by remembering the version of a prior received response. A server",
+      "layout": {
+        "bbox": [
+          66.4,
+          520.5,
+          665.8,
+          676
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0587:S0",
+      "page": 18,
+      "ordinal": 638,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "MUST NOT send a response containing Transfer-Encoding unless the corresponding request",
+      "layout": {
+        "bbox": [
+          66.2,
+          496.7,
+          652.2,
+          662.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0588:S0",
+      "page": 18,
+      "ordinal": 639,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "indicates HTTP/1.1 (or later minor revisions).",
+      "layout": {
+        "bbox": [
+          66.1,
+          278.5,
+          639.7,
+          648.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0589:S0",
+      "page": 18,
+      "ordinal": 640,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Early implementations ofTransfer-Encoding would occasionally send both a chunked transfer",
+      "layout": {
+        "bbox": [
+          66.3,
+          516,
+          615,
+          625.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0590:S0",
+      "page": 18,
+      "ordinal": 641,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "coding for message framing and an estimated Content-Length header ﬁeld for use by progress",
+      "layout": {
+        "bbox": [
+          66.5,
+          510.2,
+          601.4,
+          611.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0591:S0",
+      "page": 18,
+      "ordinal": 642,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "bars. This is why Transfer-Encoding is deﬁned as overriding Content-Length, as opposed to them",
+      "layout": {
+        "bbox": [
+          66.1,
+          519.8,
+          587.8,
+          598
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0592:S0",
+      "page": 18,
+      "ordinal": 643,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "being mutually incompatible. Unfortunately, forwarding such a message can lead to",
+      "layout": {
+        "bbox": [
+          66.1,
+          463.4,
+          574.2,
+          584.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0593:S0",
+      "page": 18,
+      "ordinal": 644,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "vulnerabilities regarding request smuggling (Section 11.2) or response splitting (Section 11.1)",
+      "layout": {
+        "bbox": [
+          65.9,
+          500.8,
+          560.6,
+          570.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0594:S0",
+      "page": 18,
+      "ordinal": 645,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "attacks if any downstream recipient fails to parse the message according to this speciﬁcation,",
+      "layout": {
+        "bbox": [
+          66.4,
+          508.8,
+          547,
+          557.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0595:S0",
+      "page": 18,
+      "ordinal": 646,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "particularly when a downstream recipient only implements HTTP/1.0.",
+      "layout": {
+        "bbox": [
+          66,
+          397,
+          533.4,
+          543.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0596:S0",
+      "page": 18,
+      "ordinal": 647,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A server MAY reject a request that contains both Content-Length and Transfer-Encoding or",
+      "layout": {
+        "bbox": [
+          65.9,
+          494.2,
+          509.8,
+          519.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0597:S0",
+      "page": 18,
+      "ordinal": 648,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "process such a request in accordance with the Transfer-Encoding alone. Regardless, the server",
+      "layout": {
+        "bbox": [
+          66,
+          510.7,
+          496.2,
+          506.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0598:S0",
+      "page": 18,
+      "ordinal": 649,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "MUST close the connection after responding to such a request to avoid the potential attacks.",
+      "layout": {
+        "bbox": [
+          66.2,
+          499.8,
+          482.6,
+          492.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0599:S0",
+      "page": 18,
+      "ordinal": 650,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A server or client that receives an HTTP/1.0 message containing a Transfer-Encoding header ﬁeld",
+      "layout": {
+        "bbox": [
+          65.9,
+          524.9,
+          459,
+          469.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0600:S0",
+      "page": 18,
+      "ordinal": 651,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "MUST treat the message as ifthe framing is faulty, even if a Content-Length is present, and close",
+      "layout": {
+        "bbox": [
+          66.2,
+          515.5,
+          445.4,
+          455.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0601:S0",
+      "page": 18,
+      "ordinal": 652,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the connection after processing the message. The message sender might have retained a portion",
+      "layout": {
+        "bbox": [
+          66.1,
+          519.8,
+          431.8,
+          441.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0602:S0",
+      "page": 18,
+      "ordinal": 653,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ofthe message, in buﬀer, that could be misinterpreted by further use ofthe connection.",
+      "layout": {
+        "bbox": [
+          66.5,
+          476.5,
+          418.2,
+          428.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0603:S0",
+      "page": 18,
+      "ordinal": 654,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "6.2. Content-Length",
+      "layout": {
+        "bbox": [
+          66.4,
+          189.1,
+          387.9,
+          399.9
+        ],
+        "font": {
+          "size": 12,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0604:S0",
+      "page": 18,
+      "ordinal": 655,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "When a message does not have a Transfer-Encoding header ﬁeld, a Content-Length header ﬁeld",
+      "layout": {
+        "bbox": [
+          66,
+          517.4,
+          368.5,
+          378.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0605:S0",
+      "page": 18,
+      "ordinal": 656,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Section 8.6 of [HTTP]) can provide the anticipated size, as a decimal number of octets, for",
+      "layout": {
+        "bbox": [
+          66.5,
+          491.2,
+          354.9,
+          365
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0606:S0",
+      "page": 18,
+      "ordinal": 657,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "potential content. For messages that do include content, the Content-Length ﬁeld value provides",
+      "layout": {
+        "bbox": [
+          66,
+          520.7,
+          341.3,
+          351.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0607:S0",
+      "page": 18,
+      "ordinal": 658,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the framing information necessary for determining where the data (and message) ends. For",
+      "layout": {
+        "bbox": [
+          66.1,
+          501,
+          327.7,
+          337.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0608:S0",
+      "page": 18,
+      "ordinal": 659,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "messages that do not include content, the Content-Length indicates the size ofthe selected",
+      "layout": {
+        "bbox": [
+          66.2,
+          491.9,
+          314.1,
+          324.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0609:S0",
+      "page": 18,
+      "ordinal": 660,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "representation (Section 8.6 of [HTTP]).",
+      "layout": {
+        "bbox": [
+          66.2,
+          247,
+          300.5,
+          310.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0610:S0",
+      "page": 18,
+      "ordinal": 661,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A sender MUST NOT send a Content-Length header ﬁeld in any message that contains a Transfer-",
+      "layout": {
+        "bbox": [
+          65.9,
+          521,
+          276.9,
+          287.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0611:S0",
+      "page": 18,
+      "ordinal": 662,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Encoding header ﬁeld.",
+      "layout": {
+        "bbox": [
+          66.3,
+          171.3,
+          263.3,
+          273.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0612:S0",
+      "page": 18,
+      "ordinal": 663,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Note: HTTP's use of Content-Length for message framing diﬀers signiﬁcantly from",
+      "layout": {
+        "bbox": [
+          106.9,
+          496.1,
+          237.7,
+          247.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0.1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0613:S0",
+      "page": 18,
+      "ordinal": 664,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the same ﬁeld's use in MIME, where it is an optional ﬁeld used only within the",
+      "layout": {
+        "bbox": [
+          106.8,
+          472.3,
+          224.1,
+          234.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0614:S0",
+      "page": 18,
+      "ordinal": 665,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "\"message/external-body\" media-type.",
+      "layout": {
+        "bbox": [
+          107.2,
+          283.3,
+          210.5,
+          220.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0615:S0",
+      "page": 18,
+      "ordinal": 666,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "6.3. Message Body Length",
+      "layout": {
+        "bbox": [
+          66.4,
+          224.3,
+          173.2,
+          185.2
+        ],
+        "font": {
+          "size": 12,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0616:S0",
+      "page": 18,
+      "ordinal": 667,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Fielding, et al. Standards Track Page 18",
+      "layout": {
+        "bbox": [
+          56.6,
+          538.4,
+          105.9,
+          114.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1451:S0",
+      "page": 42,
+      "ordinal": 1668,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "RFC 9112 HTTP/1.1 June 2022",
+      "layout": {
+        "bbox": [
+          56.6,
+          538.2,
+          794.2,
+          803.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1452:S0",
+      "page": 42,
+      "ordinal": 1669,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "C.2.",
+      "layout": {
+        "bbox": [
+          66.6,
+          87.4,
+          739.9,
+          748.7
+        ],
+        "font": {
+          "size": 12,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1452:S1",
+      "page": 42,
+      "ordinal": 1670,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Changes from HTTP/1.0",
+      "layout": {
+        "bbox": [
+          98.1,
+          238.7,
+          737.2,
+          749.3
+        ],
+        "font": {
+          "size": 12,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1453:S0",
+      "page": 42,
+      "ordinal": 1671,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "C.2.1. Multihomed Web Servers",
+      "layout": {
+        "bbox": [
+          66.5,
+          228.4,
+          718.9,
+          726.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1454:S0",
+      "page": 42,
+      "ordinal": 1672,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The requirements that clients and servers support the Host header ﬁeld (Section 7.2 of [HTTP]),",
+      "layout": {
+        "bbox": [
+          66.1,
+          512.6,
+          698.3,
+          708.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1455:S0",
+      "page": 42,
+      "ordinal": 1673,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "report an error ifit is missing from an HTTP/1.1 request, and accept absolute URIs (Section 3.2)",
+      "layout": {
+        "bbox": [
+          66.2,
+          511.3,
+          684.7,
+          694.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1456:S0",
+      "page": 42,
+      "ordinal": 1674,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "are among the most important changes deﬁned by HTTP/1.1.",
+      "layout": {
+        "bbox": [
+          66.4,
+          352.8,
+          671.1,
+          681.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1457:S0",
+      "page": 42,
+      "ordinal": 1675,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Older HTTP/1.0 clients assumed a one-to-one relationship ofIP addresses and servers; there was",
+      "layout": {
+        "bbox": [
+          66.5,
+          517.7,
+          647.5,
+          657.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1458:S0",
+      "page": 42,
+      "ordinal": 1676,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "no established mechanism for distinguishing the intended server of a request other than the IP",
+      "layout": {
+        "bbox": [
+          66.2,
+          511.8,
+          633.9,
+          644
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1459:S0",
+      "page": 42,
+      "ordinal": 1677,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "address to which that request was directed. The Host header ﬁeld was introduced during the",
+      "layout": {
+        "bbox": [
+          66.4,
+          498.3,
+          620.3,
+          630.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1460:S0",
+      "page": 42,
+      "ordinal": 1678,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "development ofHTTP/1.1 and, though it was quickly implemented by most HTTP/1.0 browsers,",
+      "layout": {
+        "bbox": [
+          66.5,
+          509.6,
+          606.7,
+          616.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1461:S0",
+      "page": 42,
+      "ordinal": 1679,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "additional requirements were placed on all HTTP/1.1 requests in order to ensure complete",
+      "layout": {
+        "bbox": [
+          66.4,
+          490,
+          593.1,
+          603.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1462:S0",
+      "page": 42,
+      "ordinal": 1680,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "adoption. At the time ofthis writing, most HTTP-based services are dependent upon the Host",
+      "layout": {
+        "bbox": [
+          66.4,
+          502,
+          579.5,
+          589.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1463:S0",
+      "page": 42,
+      "ordinal": 1681,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "header ﬁeld for targeting requests.",
+      "layout": {
+        "bbox": [
+          66.1,
+          228.3,
+          565.9,
+          576.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1464:S0",
+      "page": 42,
+      "ordinal": 1682,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "C.2.2. Keep-Alive Connections",
+      "layout": {
+        "bbox": [
+          66.5,
+          220.1,
+          541.1,
+          551.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1465:S0",
+      "page": 42,
+      "ordinal": 1683,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In HTTP/1.0, each connection is established by the client prior to the request and closed by the",
+      "layout": {
+        "bbox": [
+          66.3,
+          508,
+          522.8,
+          532.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1466:S0",
+      "page": 42,
+      "ordinal": 1684,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "server after sending the response. However, some implementations implement the explicitly",
+      "layout": {
+        "bbox": [
+          66.4,
+          504.3,
+          509.2,
+          519.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1467:S0",
+      "page": 42,
+      "ordinal": 1685,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "negotiated (\"Keep-Alive\") version ofpersistent connections described in Section 19.7.1 of",
+      "layout": {
+        "bbox": [
+          66.2,
+          483.5,
+          495.6,
+          505.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1468:S0",
+      "page": 42,
+      "ordinal": 1686,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[RFC2068].",
+      "layout": {
+        "bbox": [
+          66.9,
+          115,
+          483.1,
+          492
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1469:S0",
+      "page": 42,
+      "ordinal": 1687,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Some clients and servers might wish to be compatible with these previous approaches to",
+      "layout": {
+        "bbox": [
+          66.4,
+          482.1,
+          458.4,
+          468.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1470:S0",
+      "page": 42,
+      "ordinal": 1688,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "persistent connections, by explicitly negotiating for them with a \"Connection: keep-alive\" request",
+      "layout": {
+        "bbox": [
+          66,
+          526,
+          444.8,
+          454.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1471:S0",
+      "page": 42,
+      "ordinal": 1689,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "header ﬁeld. However, some experimental implementations ofHTTP/1.0 persistent connections",
+      "layout": {
+        "bbox": [
+          66.1,
+          518.5,
+          431.2,
+          441.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1472:S0",
+      "page": 42,
+      "ordinal": 1690,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "are faulty; for example, if an HTTP/1.0 proxy server doesn't understand Connection, it will",
+      "layout": {
+        "bbox": [
+          66.4,
+          491.1,
+          417.6,
+          427.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1473:S0",
+      "page": 42,
+      "ordinal": 1691,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "erroneously forward that header ﬁeld to the next inbound server, which would result in a hung",
+      "layout": {
+        "bbox": [
+          66.5,
+          513.7,
+          404,
+          414.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1474:S0",
+      "page": 42,
+      "ordinal": 1692,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "connection.",
+      "layout": {
+        "bbox": [
+          66.5,
+          122.5,
+          392.7,
+          400.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1475:S0",
+      "page": 42,
+      "ordinal": 1693,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "One attempted solution was the introduction of a Proxy-Connection header ﬁeld, targeted",
+      "layout": {
+        "bbox": [
+          66.5,
+          491.9,
+          366.8,
+          377
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1476:S0",
+      "page": 42,
+      "ordinal": 1694,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "speciﬁcally at proxies. In practice, this was also unworkable, because proxies are often deployed",
+      "layout": {
+        "bbox": [
+          66.4,
+          521.1,
+          353.2,
+          363.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1477:S0",
+      "page": 42,
+      "ordinal": 1695,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "in multiple layers, bringing about the same problem discussed above.",
+      "layout": {
+        "bbox": [
+          66.1,
+          391.8,
+          339.6,
+          349.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1478:S0",
+      "page": 42,
+      "ordinal": 1696,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "As a result, clients are encouraged not to send the Proxy-Connection header ﬁeld in any requests.",
+      "layout": {
+        "bbox": [
+          65.9,
+          523.8,
+          316,
+          326.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1479:S0",
+      "page": 42,
+      "ordinal": 1697,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Clients are also encouraged to consider the use of \"Connection: keep-alive\" in requests carefully;",
+      "layout": {
+        "bbox": [
+          66.5,
+          519.5,
+          292.4,
+          302.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1480:S0",
+      "page": 42,
+      "ordinal": 1698,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "while they can enable persistent connections with HTTP/1.0 servers, clients using them will need",
+      "layout": {
+        "bbox": [
+          65.9,
+          520.4,
+          278.8,
+          288.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1481:S0",
+      "page": 42,
+      "ordinal": 1699,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "to monitor the connection for \"hung\" requests (which indicate that the client ought to stop",
+      "layout": {
+        "bbox": [
+          66.1,
+          491.5,
+          265.2,
+          275.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1482:S0",
+      "page": 42,
+      "ordinal": 1700,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "sending the header ﬁeld), and this mechanism ought not be used by clients at all when a proxy is",
+      "layout": {
+        "bbox": [
+          66.4,
+          520.7,
+          251.6,
+          261.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1483:S0",
+      "page": 42,
+      "ordinal": 1701,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "being used.",
+      "layout": {
+        "bbox": [
+          66.1,
+          118,
+          238,
+          248
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1484:S0",
+      "page": 42,
+      "ordinal": 1702,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "C.2.3. Introduction ofTransfer-Encoding",
+      "layout": {
+        "bbox": [
+          66.5,
+          273.7,
+          213.2,
+          223.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1485:S0",
+      "page": 42,
+      "ordinal": 1703,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "HTTP/1.1 introduces the Transfer-Encoding header ﬁeld (Section 6.1). Transfer codings need to be",
+      "layout": {
+        "bbox": [
+          66.3,
+          523.8,
+          194.9,
+          205.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1486:S0",
+      "page": 42,
+      "ordinal": 1704,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "decoded prior to forwarding an HTTP message over a MIME-compliant protocol.",
+      "layout": {
+        "bbox": [
+          66.5,
+          447.3,
+          181.3,
+          191.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1487:S0",
+      "page": 42,
+      "ordinal": 1705,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Fielding, et al. Standards Track Page 42",
+      "layout": {
+        "bbox": [
+          56.6,
+          538.2,
+          105.9,
+          114.9
+        ],
+        "font": {
+          "size": 9,
+          "name": "notoserif-regular",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    }
+  ],
+  "labels": "NONE_SOURCE_FACTS_ONLY"
+}

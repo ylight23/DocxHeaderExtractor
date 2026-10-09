@@ -1,0 +1,1907 @@
+{
+  "version": "P7_F1Q_HELDOUT_REVIEW_BUNDLE_V1",
+  "id": "034",
+  "sourceKey": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/034_WB_Plant_Without_Prequal_2016.pdf",
+  "sourceSha256": "ac8bba6f592e5f76a6f2908a7b7b23475de58cdab5f23660722087c26d4464ba",
+  "sourceAliasUniverseSha256": "c3258d0081413dcfdeb7b14eeaba73007e07cb272860c8cdec5f08eceabb34b1",
+  "evidenceStoreSha256": "cf2224410a930332b95734c860352d906b8eb64464ec11a67fc8473785c64292",
+  "pageSelectionSha256": "c4b9ebefbd5a15f0cef59bb1d11f00497b971effae91f185475d08b335851f94",
+  "pageStats": [
+    {
+      "page": 1,
+      "lineCount": 7,
+      "textExtent": [
+        93,
+        532.6,
+        82.1,
+        713.7
+      ],
+      "medianFontSize": 26
+    },
+    {
+      "page": 17,
+      "lineCount": 16,
+      "textExtent": [
+        90.6,
+        540.3,
+        365.5,
+        753.8
+      ],
+      "medianFontSize": 12
+    },
+    {
+      "page": 109,
+      "lineCount": 26,
+      "textExtent": [
+        90.5,
+        540.2,
+        333.4,
+        753.8
+      ],
+      "medianFontSize": 12
+    },
+    {
+      "page": 241,
+      "lineCount": 39,
+      "textExtent": [
+        90.5,
+        540.4,
+        76.8,
+        753.8
+      ],
+      "medianFontSize": 12
+    }
+  ],
+  "layoutBasis": "bbox=[left,right,bottom,top] in PDF points, bottom-left origin; font={size,name,boldRatio,italicRatio}; parser observations, not labels",
+  "occurrences": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "ordinal": 0,
+      "pageStratum": "FIRST",
+      "text": "STANDARD PROCUREMENT",
+      "layout": {
+        "bbox": [
+          93,
+          523.8,
+          695,
+          713.7
+        ],
+        "font": {
+          "size": 26,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "ordinal": 1,
+      "pageStratum": "FIRST",
+      "text": "DOCUMENT",
+      "layout": {
+        "bbox": [
+          218.6,
+          398.4,
+          665.2,
+          683.9
+        ],
+        "font": {
+          "size": 26,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "ordinal": 2,
+      "pageStratum": "FIRST",
+      "text": "Request for Bids",
+      "layout": {
+        "bbox": [
+          147,
+          483.7,
+          534.2,
+          568.8
+        ],
+        "font": {
+          "size": 48,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "ordinal": 3,
+      "pageStratum": "FIRST",
+      "text": "Plant",
+      "layout": {
+        "bbox": [
+          269.6,
+          361.1,
+          484.7,
+          514.9
+        ],
+        "font": {
+          "size": 42,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "ordinal": 4,
+      "pageStratum": "FIRST",
+      "text": "Design, Supply, and Installation",
+      "layout": {
+        "bbox": [
+          166.4,
+          464.3,
+          455.7,
+          471.5
+        ],
+        "font": {
+          "size": 22,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "ordinal": 5,
+      "pageStratum": "FIRST",
+      "text": "(Without Prequalification)",
+      "layout": {
+        "bbox": [
+          225.2,
+          405.3,
+          436.2,
+          447.6
+        ],
+        "font": {
+          "size": 16,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "ordinal": 6,
+      "pageStratum": "FIRST",
+      "text": "JULY, 2016",
+      "layout": {
+        "bbox": [
+          472.4,
+          532.6,
+          82.1,
+          90.7
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0209:S0",
+      "page": 17,
+      "ordinal": 219,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1",
+      "layout": {
+        "bbox": [
+          536.3,
+          540.3,
+          746.6,
+          753.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0210:S0",
+      "page": 17,
+      "ordinal": 220,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Standard Procurement Document",
+      "layout": {
+        "bbox": [
+          171.3,
+          459.5,
+          700.8,
+          715.2
+        ],
+        "font": {
+          "size": 20,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0211:S0",
+      "page": 17,
+      "ordinal": 221,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table of Contents",
+      "layout": {
+        "bbox": [
+          247.8,
+          383,
+          652.6,
+          665.6
+        ],
+        "font": {
+          "size": 18,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0212:S0",
+      "page": 17,
+      "ordinal": 222,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "PART 1 – Bidding Procedures................................................................................................3",
+      "layout": {
+        "bbox": [
+          90.6,
+          539.5,
+          611.1,
+          619.8
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0213:S0",
+      "page": 17,
+      "ordinal": 223,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Section I - Instructions to Bidders .......................................................................................5",
+      "layout": {
+        "bbox": [
+          108.6,
+          539.5,
+          591,
+          599.6
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0214:S0",
+      "page": 17,
+      "ordinal": 224,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Section II - Bid Data Sheet ................................................................................................35",
+      "layout": {
+        "bbox": [
+          108.6,
+          539.5,
+          570.5,
+          579.1
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0215:S0",
+      "page": 17,
+      "ordinal": 225,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Section III - Evaluation and Qualification Criteria............................................................43",
+      "layout": {
+        "bbox": [
+          108.6,
+          539.5,
+          549.9,
+          558.6
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0216:S0",
+      "page": 17,
+      "ordinal": 226,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Section IV - Bidding Forms...............................................................................................61",
+      "layout": {
+        "bbox": [
+          108.6,
+          539.5,
+          529.4,
+          538
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0217:S0",
+      "page": 17,
+      "ordinal": 227,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Section V - Eligible Countries.........................................................................................109",
+      "layout": {
+        "bbox": [
+          108.6,
+          539.5,
+          508.9,
+          517.5
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0218:S0",
+      "page": 17,
+      "ordinal": 228,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Section VI - Fraud and Corruption ..................................................................................111",
+      "layout": {
+        "bbox": [
+          108.6,
+          539.5,
+          488.4,
+          497
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0219:S0",
+      "page": 17,
+      "ordinal": 229,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "PART 2 - Employer’s Requirements..................................................................................115",
+      "layout": {
+        "bbox": [
+          90.6,
+          539.5,
+          467.7,
+          476.4
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0220:S0",
+      "page": 17,
+      "ordinal": 230,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Section VII - Employer’s Requirements..........................................................................117",
+      "layout": {
+        "bbox": [
+          108.6,
+          539.5,
+          447.4,
+          456.1
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0221:S0",
+      "page": 17,
+      "ordinal": 231,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "PART 3 – Conditions of Contract and Contract Forms ..................................................141",
+      "layout": {
+        "bbox": [
+          90.6,
+          539.5,
+          426.7,
+          435.3
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0222:S0",
+      "page": 17,
+      "ordinal": 232,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Section VIII - General Conditions of Contract................................................................143",
+      "layout": {
+        "bbox": [
+          108.6,
+          539.5,
+          406.4,
+          415
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0223:S0",
+      "page": 17,
+      "ordinal": 233,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Section IX - Particular Conditions of Contract................................................................237",
+      "layout": {
+        "bbox": [
+          108.6,
+          539.5,
+          385.9,
+          394.5
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0224:S0",
+      "page": 17,
+      "ordinal": 234,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Section X - Contract Forms .............................................................................................241",
+      "layout": {
+        "bbox": [
+          108.6,
+          539.5,
+          365.5,
+          374.1
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2499:S0",
+      "page": 109,
+      "ordinal": 2991,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Section IV - Bidding Forms 93",
+      "layout": {
+        "bbox": [
+          90.5,
+          539.7,
+          746.6,
+          753.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2500:S0",
+      "page": 109,
+      "ordinal": 2992,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Form CCC",
+      "layout": {
+        "bbox": [
+          287.6,
+          343.3,
+          708.6,
+          717.2
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2501:S0",
+      "page": 109,
+      "ordinal": 2993,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Current Contract Commitments / Works in Progress",
+      "layout": {
+        "bbox": [
+          112.8,
+          518.1,
+          682.2,
+          695.2
+        ],
+        "font": {
+          "size": 18,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2502:S0",
+      "page": 109,
+      "ordinal": 2994,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Bidders and each member to a JV should provide information on their current commitments on",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.2,
+          655.7,
+          664.3
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2503:S0",
+      "page": 109,
+      "ordinal": 2995,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "all contracts that have been awarded, or for which a letter of intent or acceptance has been",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.2,
+          641.9,
+          650.5
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2504:S0",
+      "page": 109,
+      "ordinal": 2996,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "received, or for contracts approaching completion, but for which an unqualified, full",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.2,
+          628.1,
+          636.7
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2505:S0",
+      "page": 109,
+      "ordinal": 2997,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "completion certificate has yet to be issued.",
+      "layout": {
+        "bbox": [
+          90.6,
+          289.3,
+          614.3,
+          622.9
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2506:S0",
+      "page": 109,
+      "ordinal": 2998,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Name of contract Employer,",
+      "layout": {
+        "bbox": [
+          94.7,
+          251.3,
+          574.5,
+          583.2
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2506:S1",
+      "page": 109,
+      "ordinal": 2999,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Value of",
+      "layout": {
+        "bbox": [
+          290.5,
+          331.4,
+          574.5,
+          583.2
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2506:S2",
+      "page": 109,
+      "ordinal": 3000,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Estimated",
+      "layout": {
+        "bbox": [
+          376,
+          425.9,
+          574.5,
+          583.2
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2506:S3",
+      "page": 109,
+      "ordinal": 3001,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Average",
+      "layout": {
+        "bbox": [
+          470.6,
+          511.5,
+          574.5,
+          583.2
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2507:S0",
+      "page": 109,
+      "ordinal": 3002,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "contact",
+      "layout": {
+        "bbox": [
+          207.8,
+          243.2,
+          560.7,
+          569.4
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2507:S1",
+      "page": 109,
+      "ordinal": 3003,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "outstanding",
+      "layout": {
+        "bbox": [
+          281.8,
+          340.3,
+          560.7,
+          569.4
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2507:S2",
+      "page": 109,
+      "ordinal": 3004,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "completion date",
+      "layout": {
+        "bbox": [
+          361.5,
+          440.6,
+          560.7,
+          569.4
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2507:S3",
+      "page": 109,
+      "ordinal": 3005,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "monthly",
+      "layout": {
+        "bbox": [
+          470.6,
+          511.4,
+          560.7,
+          569.4
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2508:S0",
+      "page": 109,
+      "ordinal": 3006,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "address/tel/fax work (current",
+      "layout": {
+        "bbox": [
+          189.4,
+          345.9,
+          546.9,
+          555.6
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2508:S1",
+      "page": 109,
+      "ordinal": 3007,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "invoicing over",
+      "layout": {
+        "bbox": [
+          456.2,
+          526,
+          546.9,
+          555.6
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2509:S0",
+      "page": 109,
+      "ordinal": 3008,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "US$ equivalent)",
+      "layout": {
+        "bbox": [
+          271.5,
+          350.5,
+          533.1,
+          541.8
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2509:S1",
+      "page": 109,
+      "ordinal": 3009,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "last six months",
+      "layout": {
+        "bbox": [
+          454.3,
+          527.6,
+          533.1,
+          541.8
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2510:S0",
+      "page": 109,
+      "ordinal": 3010,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(US$/month)",
+      "layout": {
+        "bbox": [
+          459.1,
+          522.8,
+          519.3,
+          528
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2511:S0",
+      "page": 109,
+      "ordinal": 3011,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1.",
+      "layout": {
+        "bbox": [
+          94.1,
+          100.5,
+          503.3,
+          510.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2512:S0",
+      "page": 109,
+      "ordinal": 3012,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2.",
+      "layout": {
+        "bbox": [
+          94.1,
+          100.5,
+          469.3,
+          476.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2513:S0",
+      "page": 109,
+      "ordinal": 3013,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3.",
+      "layout": {
+        "bbox": [
+          94.1,
+          100.5,
+          435.4,
+          442.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2514:S0",
+      "page": 109,
+      "ordinal": 3014,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4.",
+      "layout": {
+        "bbox": [
+          94.1,
+          100.5,
+          401.3,
+          408.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2515:S0",
+      "page": 109,
+      "ordinal": 3015,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5.",
+      "layout": {
+        "bbox": [
+          94.1,
+          100.5,
+          367.3,
+          374.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L2516:S0",
+      "page": 109,
+      "ordinal": 3016,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "etc.",
+      "layout": {
+        "bbox": [
+          94.1,
+          106.9,
+          333.4,
+          340.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6637:S0",
+      "page": 241,
+      "ordinal": 7433,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Section VIII – General Conditions of Contract 225",
+      "layout": {
+        "bbox": [
+          90.5,
+          539.7,
+          746.6,
+          753.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6638:S0",
+      "page": 241,
+      "ordinal": 7434,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "APPENDIX A",
+      "layout": {
+        "bbox": [
+          261,
+          369.9,
+          702.8,
+          715.7
+        ],
+        "font": {
+          "size": 18,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6639:S0",
+      "page": 241,
+      "ordinal": 7435,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "General Conditions of Dispute Board Agreement",
+      "layout": {
+        "bbox": [
+          149.3,
+          481.4,
+          677.3,
+          688.8
+        ],
+        "font": {
+          "size": 16,
+          "name": "times new roman,bold",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6640:S0",
+      "page": 241,
+      "ordinal": 7436,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1. Definitions",
+      "layout": {
+        "bbox": [
+          90.6,
+          172.2,
+          650.9,
+          659.5
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6641:S0",
+      "page": 241,
+      "ordinal": 7437,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Each “Dispute Board Agreement” is a tripartite agreement by and between:",
+      "layout": {
+        "bbox": [
+          90.6,
+          451.2,
+          627.1,
+          635.7
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6642:S0",
+      "page": 241,
+      "ordinal": 7438,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the “Employer”;",
+      "layout": {
+        "bbox": [
+          119.4,
+          197,
+          603.3,
+          612
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6643:S0",
+      "page": 241,
+      "ordinal": 7439,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the “Contractor”; and",
+      "layout": {
+        "bbox": [
+          119.4,
+          221.5,
+          579.5,
+          588.1
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6644:S0",
+      "page": 241,
+      "ordinal": 7440,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the “Member” who is defined in the Dispute Board Agreement as being:",
+      "layout": {
+        "bbox": [
+          119.4,
+          465.8,
+          555.7,
+          564.3
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6645:S0",
+      "page": 241,
+      "ordinal": 7441,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(i)",
+      "layout": {
+        "bbox": [
+          119.4,
+          129.5,
+          532,
+          540.7
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6645:S1",
+      "page": 241,
+      "ordinal": 7442,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the sole member of the “DB” and, where this is the case, all references to the",
+      "layout": {
+        "bbox": [
+          148.2,
+          540.1,
+          532,
+          540.7
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6646:S0",
+      "page": 241,
+      "ordinal": 7443,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "“Other Members” do not apply, or",
+      "layout": {
+        "bbox": [
+          148.2,
+          312.2,
+          518.1,
+          526.8
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6647:S0",
+      "page": 241,
+      "ordinal": 7444,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(ii)",
+      "layout": {
+        "bbox": [
+          119.4,
+          132.9,
+          494.4,
+          503
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6647:S1",
+      "page": 241,
+      "ordinal": 7445,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "one of the three persons who are jointly called the “DB” (or “dispute board”) and,",
+      "layout": {
+        "bbox": [
+          148.2,
+          540.1,
+          494.4,
+          503
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6648:S0",
+      "page": 241,
+      "ordinal": 7446,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "where this is the case, the other two persons are called the “Other Members”.",
+      "layout": {
+        "bbox": [
+          148.2,
+          517.3,
+          480.4,
+          489.1
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6649:S0",
+      "page": 241,
+      "ordinal": 7447,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The Employer and the Contractor have entered (or intend to enter) into a contract, which is",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.2,
+          456.8,
+          465.4
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6650:S0",
+      "page": 241,
+      "ordinal": 7448,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "called the “Contract” and is defined in the Dispute Board Agreement, which incorporates this",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.2,
+          443,
+          451.6
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6651:S0",
+      "page": 241,
+      "ordinal": 7449,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Appendix. In the Dispute Board Agreement, words and expressions which are not otherwise",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.3,
+          429.2,
+          437.8
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6652:S0",
+      "page": 241,
+      "ordinal": 7450,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "defined shall have the meanings assigned to them in the Contract.",
+      "layout": {
+        "bbox": [
+          90.6,
+          404.3,
+          415.3,
+          423.9
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6653:S0",
+      "page": 241,
+      "ordinal": 7451,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. General Provisions",
+      "layout": {
+        "bbox": [
+          90.6,
+          209.9,
+          391.5,
+          400.2
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6654:S0",
+      "page": 241,
+      "ordinal": 7452,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Unless otherwise stated in the Dispute Board Agreement, it shall take effect on the latest of",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.1,
+          367.7,
+          376.4
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6655:S0",
+      "page": 241,
+      "ordinal": 7453,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the following dates:",
+      "layout": {
+        "bbox": [
+          90.6,
+          184.7,
+          353.9,
+          362.6
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6656:S0",
+      "page": 241,
+      "ordinal": 7454,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(a)",
+      "layout": {
+        "bbox": [
+          119.4,
+          131.5,
+          330.1,
+          338.7
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6656:S1",
+      "page": 241,
+      "ordinal": 7455,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the Commencement Date defined in the Contract,",
+      "layout": {
+        "bbox": [
+          148.2,
+          385.1,
+          330.1,
+          338.7
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6657:S0",
+      "page": 241,
+      "ordinal": 7456,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(b)",
+      "layout": {
+        "bbox": [
+          119.4,
+          132.2,
+          306.4,
+          315.1
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6657:S1",
+      "page": 241,
+      "ordinal": 7457,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "when the Employer, the Contractor and the Member have each signed the",
+      "layout": {
+        "bbox": [
+          148.2,
+          540.2,
+          306.4,
+          315.1
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6658:S0",
+      "page": 241,
+      "ordinal": 7458,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Dispute Board Agreement, or",
+      "layout": {
+        "bbox": [
+          148.2,
+          289,
+          292.5,
+          301.1
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6659:S0",
+      "page": 241,
+      "ordinal": 7459,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(c)",
+      "layout": {
+        "bbox": [
+          119.4,
+          131.5,
+          268.9,
+          277.5
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6659:S1",
+      "page": 241,
+      "ordinal": 7460,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "when the Employer, the Contractor and each of the Other Members (if any) have",
+      "layout": {
+        "bbox": [
+          148.2,
+          540.1,
+          268.9,
+          277.5
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6660:S0",
+      "page": 241,
+      "ordinal": 7461,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "respectively each signed a dispute board agreement.",
+      "layout": {
+        "bbox": [
+          148.2,
+          396.6,
+          254.9,
+          263.6
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6661:S0",
+      "page": 241,
+      "ordinal": 7462,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "This employment of the Member is a personal appointment. At any time, the Member may",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.4,
+          231.2,
+          239.8
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6662:S0",
+      "page": 241,
+      "ordinal": 7463,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "give not less than 70 days’ notice of resignation to the Employer and to the Contractor, and",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.2,
+          217.4,
+          226
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6663:S0",
+      "page": 241,
+      "ordinal": 7464,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the Dispute Board Agreement shall terminate upon the expiry of this period.",
+      "layout": {
+        "bbox": [
+          90.6,
+          455.3,
+          203.4,
+          212.1
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6664:S0",
+      "page": 241,
+      "ordinal": 7465,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3. Warranties",
+      "layout": {
+        "bbox": [
+          90.6,
+          170.7,
+          179.7,
+          188.3
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6665:S0",
+      "page": 241,
+      "ordinal": 7466,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The Member warrants and agrees that he/she is and shall be impartial and independent of the",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.1,
+          156,
+          164.7
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6666:S0",
+      "page": 241,
+      "ordinal": 7467,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Employer, the Contractor and the Project Manager. The Member shall promptly disclose, to",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.1,
+          142.2,
+          150.9
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6667:S0",
+      "page": 241,
+      "ordinal": 7468,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "each of them and to the Other Members (if any), any fact or circumstance which might",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.1,
+          128.4,
+          137.1
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6668:S0",
+      "page": 241,
+      "ordinal": 7469,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "appear inconsistent with his/her warranty and agreement of impartiality and independence.",
+      "layout": {
+        "bbox": [
+          90.6,
+          525,
+          114.5,
+          123.1
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6669:S0",
+      "page": 241,
+      "ordinal": 7470,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "When appointing the Member, the Employer and the Contractor relied upon the Member’s",
+      "layout": {
+        "bbox": [
+          90.6,
+          540.1,
+          90.7,
+          99.4
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L6670:S0",
+      "page": 241,
+      "ordinal": 7471,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "representations that he/she is:",
+      "layout": {
+        "bbox": [
+          90.6,
+          231,
+          76.8,
+          85.5
+        ],
+        "font": {
+          "size": 12,
+          "name": "times new roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    }
+  ],
+  "labels": "NONE_SOURCE_FACTS_ONLY"
+}

@@ -1,0 +1,3174 @@
+{
+  "version": "P7_F1Q_HELDOUT_REVIEW_BUNDLE_V1",
+  "id": "060",
+  "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/060_Elements_of_Linear_Algebra_Lecture_Notes.pdf",
+  "sourceSha256": "b3bdfbece3c9df4409ac2012569553ac332dd35a6ca759571c0d74c9d06ccdb2",
+  "sourceAliasUniverseSha256": "3cc200f6f2db79077ebe314607bf0752648ff2eb8f7268401448fa15e34fe7f4",
+  "evidenceStoreSha256": "cc367ff6b93e36dfd323787ab820fe24c31f28603c677d9c5ae1c397f5842079",
+  "pageSelectionSha256": "c4b9ebefbd5a15f0cef59bb1d11f00497b971effae91f185475d08b335851f94",
+  "pageStats": [
+    {
+      "page": 1,
+      "lineCount": 33,
+      "textExtent": [
+        18.3,
+        452.4,
+        89.4,
+        627.5
+      ],
+      "medianFontSize": 20
+    },
+    {
+      "page": 2,
+      "lineCount": 32,
+      "textExtent": [
+        134.1,
+        477.4,
+        89.4,
+        667.3
+      ],
+      "medianFontSize": 10
+    },
+    {
+      "page": 21,
+      "lineCount": 48,
+      "textExtent": [
+        134,
+        478,
+        89.4,
+        665.5
+      ],
+      "medianFontSize": 10
+    },
+    {
+      "page": 44,
+      "lineCount": 37,
+      "textExtent": [
+        134,
+        486.8,
+        89.4,
+        664.7
+      ],
+      "medianFontSize": 10
+    }
+  ],
+  "layoutBasis": "bbox=[left,right,bottom,top] in PDF points, bottom-left origin; font={size,name,boldRatio,italicRatio}; parser observations, not labels",
+  "occurrences": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "ordinal": 0,
+      "pageStratum": "FIRST",
+      "text": "Elements of Linear Algebra",
+      "layout": {
+        "bbox": [
+          212,
+          400.2,
+          611.8,
+          627.5
+        ],
+        "font": {
+          "size": 17.2,
+          "name": "cmr17",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "ordinal": 1,
+      "pageStratum": "FIRST",
+      "text": "61 Lecture notes",
+      "layout": {
+        "bbox": [
+          18.3,
+          339.7,
+          593.4,
+          601.7
+        ],
+        "font": {
+          "size": 12,
+          "name": "cmr12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "ordinal": 2,
+      "pageStratum": "FIRST",
+      "text": "02",
+      "layout": {
+        "bbox": [
+          18.5,
+          32.3,
+          576.5,
+          577.4
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "ordinal": 3,
+      "pageStratum": "FIRST",
+      "text": "Ion I. Cota˘escu",
+      "layout": {
+        "bbox": [
+          267,
+          344.3,
+          564.3,
+          573
+        ],
+        "font": {
+          "size": 12,
+          "name": "cmr12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "ordinal": 4,
+      "pageStratum": "FIRST",
+      "text": "na",
+      "layout": {
+        "bbox": [
+          22.8,
+          32.2,
+          551.9,
+          552.3
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0004:S1",
+      "page": 1,
+      "ordinal": 5,
+      "pageStratum": "FIRST",
+      "text": "The West University of Timi¸soara,",
+      "layout": {
+        "bbox": [
+          218,
+          394.6,
+          548.2,
+          559.1
+        ],
+        "font": {
+          "size": 12,
+          "name": "cmti12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "ordinal": 6,
+      "pageStratum": "FIRST",
+      "text": "J",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0005:S1",
+      "page": 1,
+      "ordinal": 7,
+      "pageStratum": "FIRST",
+      "text": "V. Parvan Ave. 4, RO-1900 Timi¸soara",
+      "layout": {
+        "bbox": [
+          207.9,
+          406.3,
+          534.3,
+          545.2
+        ],
+        "font": {
+          "size": 12,
+          "name": "cmti12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "ordinal": 8,
+      "pageStratum": "FIRST",
+      "text": "6",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "ordinal": 9,
+      "pageStratum": "FIRST",
+      "text": "February 12, 2016",
+      "layout": {
+        "bbox": [
+          260.1,
+          351.3,
+          510.8,
+          521.5
+        ],
+        "font": {
+          "size": 12,
+          "name": "cmr12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "ordinal": 10,
+      "pageStratum": "FIRST",
+      "text": "]",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "ordinal": 11,
+      "pageStratum": "FIRST",
+      "text": "O",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "ordinal": 12,
+      "pageStratum": "FIRST",
+      "text": "H. Abstract",
+      "layout": {
+        "bbox": [
+          18.8,
+          325.2,
+          473.4,
+          483.6
+        ],
+        "font": {
+          "size": 9,
+          "name": "cmbx9",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "ordinal": 13,
+      "pageStratum": "FIRST",
+      "text": "ht",
+      "layout": {
+        "bbox": [
+          18.3,
+          32.2,
+          459.8,
+          459.9
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0011:S1",
+      "page": 1,
+      "ordinal": 14,
+      "pageStratum": "FIRST",
+      "text": "phyTsihcsesfeorpehdealpgionggictahlelmecttuoreunndoetresstaandddrtehses tmoetchheanstisumdesnotfstihnethlienoeraertiocpa-l",
+      "layout": {
+        "bbox": [
+          158.9,
+          452.2,
+          449,
+          468
+        ],
+        "font": {
+          "size": 9,
+          "name": "cmr9",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "ordinal": 15,
+      "pageStratum": "FIRST",
+      "text": "a",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "ordinal": 16,
+      "pageStratum": "FIRST",
+      "text": "erators deﬁned on ﬁnite-dimensional vector spaces equipped with deﬁnite",
+      "layout": {
+        "bbox": [
+          158.9,
+          452.4,
+          438.1,
+          446.1
+        ],
+        "font": {
+          "size": 9,
+          "name": "cmr9",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "ordinal": 17,
+      "pageStratum": "FIRST",
+      "text": "[m",
+      "layout": {
+        "bbox": [
+          18.8,
+          35.1,
+          429.1,
+          430.1
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0014:S1",
+      "page": 1,
+      "ordinal": 18,
+      "pageStratum": "FIRST",
+      "text": "or indeﬁnite inner products. The importance of the Dirac conjugation",
+      "layout": {
+        "bbox": [
+          158.9,
+          452.1,
+          427,
+          435.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "cmr9",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "ordinal": 19,
+      "pageStratum": "FIRST",
+      "text": "is pointed out presenting its general theory and a version of the Riesz",
+      "layout": {
+        "bbox": [
+          159,
+          452.1,
+          416.1,
+          424.3
+        ],
+        "font": {
+          "size": 9,
+          "name": "cmr9",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "ordinal": 20,
+      "pageStratum": "FIRST",
+      "text": "1v",
+      "layout": {
+        "bbox": [
+          18.5,
+          32.3,
+          402.6,
+          405.3
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0016:S1",
+      "page": 1,
+      "ordinal": 21,
+      "pageStratum": "FIRST",
+      "text": "tmhaeportehmatfocrotmhbeininedsetﬁhneitaecitnionneropfrtohdeucRtiesspzacmesa,pbwasietdh otnhattheofDtihreacm-Reitersizc",
+      "layout": {
+        "bbox": [
+          158.8,
+          452.3,
+          394.3,
+          413.2
+        ],
+        "font": {
+          "size": 9,
+          "name": "cmr9",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "ordinal": 22,
+      "pageStratum": "FIRST",
+      "text": "60",
+      "layout": {
+        "bbox": [
+          18.3,
+          32.3,
+          382.6,
+          383.8
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0017:S1",
+      "page": 1,
+      "ordinal": 23,
+      "pageStratum": "FIRST",
+      "text": "osppaecreastowr.ithTdheeﬁmniatetroixr irnedperﬁesneintetaitninoners porfotdhuectlsiniesaarlsoopperraetsoenrsteodn. vector",
+      "layout": {
+        "bbox": [
+          158.9,
+          452.3,
+          372.3,
+          391.4
+        ],
+        "font": {
+          "size": 9,
+          "name": "cmr9",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 1,
+      "ordinal": 24,
+      "pageStratum": "FIRST",
+      "text": "03",
+      "layout": {
+        "bbox": [
+          18.5,
+          32.3,
+          361.7,
+          363.6
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 1,
+      "ordinal": 25,
+      "pageStratum": "FIRST",
+      "text": "0.",
+      "layout": {
+        "bbox": [
+          18.5,
+          32.3,
+          341.7,
+          343.6
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 1,
+      "ordinal": 26,
+      "pageStratum": "FIRST",
+      "text": "20",
+      "layout": {
+        "bbox": [
+          18.5,
+          32.3,
+          327.6,
+          328.7
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 1,
+      "ordinal": 27,
+      "pageStratum": "FIRST",
+      "text": "61",
+      "layout": {
+        "bbox": [
+          18.3,
+          32.3,
+          306,
+          308.8
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 1,
+      "ordinal": 28,
+      "pageStratum": "FIRST",
+      "text": ":v",
+      "layout": {
+        "bbox": [
+          22.8,
+          32.3,
+          292.1,
+          294.2
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 1,
+      "ordinal": 29,
+      "pageStratum": "FIRST",
+      "text": "i",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 1,
+      "ordinal": 30,
+      "pageStratum": "FIRST",
+      "text": "Xr",
+      "layout": {
+        "bbox": [
+          18.8,
+          32,
+          262.6,
+          262.7
+        ],
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 1,
+      "ordinal": 31,
+      "pageStratum": "FIRST",
+      "text": "a",
+      "layout": {
+        "bbox": null,
+        "font": {
+          "size": 20,
+          "name": "times-roman",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 1,
+      "ordinal": 32,
+      "pageStratum": "FIRST",
+      "text": "1",
+      "layout": {
+        "bbox": [
+          304,
+          307.3,
+          89.4,
+          96
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 2,
+      "ordinal": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Contents",
+      "layout": {
+        "bbox": [
+          134.7,
+          196.1,
+          657.1,
+          667.3
+        ],
+        "font": {
+          "size": 14.4,
+          "name": "cmbx12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 2,
+      "ordinal": 34,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 Introduction",
+      "layout": {
+        "bbox": [
+          134.6,
+          211.6,
+          635.2,
+          642.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmbx10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0028:S1",
+      "page": 2,
+      "ordinal": 35,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3",
+      "layout": {
+        "bbox": [
+          472.2,
+          477,
+          635.2,
+          641.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmbx10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0029:S0",
+      "page": 2,
+      "ordinal": 36,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2 Preliminaries",
+      "layout": {
+        "bbox": [
+          134.4,
+          215,
+          613.4,
+          620.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmbx10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0029:S1",
+      "page": 2,
+      "ordinal": 37,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4",
+      "layout": {
+        "bbox": [
+          472,
+          477.1,
+          613.4,
+          620
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmbx10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0030:S0",
+      "page": 2,
+      "ordinal": 38,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1 Sets and mappings . . . . . . . . . . . . . . . . . . . . . . . . . . 4",
+      "layout": {
+        "bbox": [
+          149.2,
+          477.1,
+          599.4,
+          608.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0031:S0",
+      "page": 2,
+      "ordinal": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2 Algebraic structures . . . . . . . . . . . . . . . . . . . . . . . . . 5",
+      "layout": {
+        "bbox": [
+          149.2,
+          476.9,
+          587.4,
+          596.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0032:S0",
+      "page": 2,
+      "ordinal": 40,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3 Topologies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7",
+      "layout": {
+        "bbox": [
+          149.2,
+          477.3,
+          575.5,
+          584.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0033:S0",
+      "page": 2,
+      "ordinal": 41,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3 Some linear algebra 9",
+      "layout": {
+        "bbox": [
+          134.3,
+          477,
+          553.6,
+          562.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmbx10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0034:S0",
+      "page": 2,
+      "ordinal": 42,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1 Duality and tensors . . . . . . . . . . . . . . . . . . . . . . . . . . 10",
+      "layout": {
+        "bbox": [
+          149.1,
+          477.1,
+          541.7,
+          550.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0035:S0",
+      "page": 2,
+      "ordinal": 43,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1.1 Linear mappings . . . . . . . . . . . . . . . . . . . . . . . 10",
+      "layout": {
+        "bbox": [
+          172,
+          477.1,
+          529.7,
+          538.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0036:S0",
+      "page": 2,
+      "ordinal": 44,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1.2 Duality . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12",
+      "layout": {
+        "bbox": [
+          172,
+          477,
+          517.7,
+          526.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0037:S0",
+      "page": 2,
+      "ordinal": 45,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1.3 Tensors . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13",
+      "layout": {
+        "bbox": [
+          172,
+          477.1,
+          507.6,
+          514.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0038:S0",
+      "page": 2,
+      "ordinal": 46,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.2 Matrix algebra . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16",
+      "layout": {
+        "bbox": [
+          149.1,
+          477.1,
+          493.8,
+          502.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0039:S0",
+      "page": 2,
+      "ordinal": 47,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.2.1 Matrices and determinants . . . . . . . . . . . . . . . . . 16",
+      "layout": {
+        "bbox": [
+          172,
+          477.1,
+          483.6,
+          490.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0040:S0",
+      "page": 2,
+      "ordinal": 48,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.2.2 Arithmetic vector spaces . . . . . . . . . . . . . . . . . . . 18",
+      "layout": {
+        "bbox": [
+          172,
+          477.1,
+          470,
+          479.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0041:S0",
+      "page": 2,
+      "ordinal": 49,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3 Matrix representations . . . . . . . . . . . . . . . . . . . . . . . . 20",
+      "layout": {
+        "bbox": [
+          149.1,
+          477.1,
+          458,
+          466.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0042:S0",
+      "page": 2,
+      "ordinal": 50,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3.1 Representing vectors and tensors . . . . . . . . . . . . . . 20",
+      "layout": {
+        "bbox": [
+          172,
+          477.1,
+          445.9,
+          454.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0043:S0",
+      "page": 2,
+      "ordinal": 51,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3.2 Representing linear mappings . . . . . . . . . . . . . . . . 22",
+      "layout": {
+        "bbox": [
+          172,
+          477,
+          434,
+          443
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0044:S0",
+      "page": 2,
+      "ordinal": 52,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3.3 Changing the representation . . . . . . . . . . . . . . . . . 25",
+      "layout": {
+        "bbox": [
+          172,
+          477,
+          422,
+          431.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0045:S0",
+      "page": 2,
+      "ordinal": 53,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4 Inner product vector spaces 27",
+      "layout": {
+        "bbox": [
+          134.1,
+          477.4,
+          400.3,
+          409.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmbx10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0046:S0",
+      "page": 2,
+      "ordinal": 54,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1 Unitary vector spaces . . . . . . . . . . . . . . . . . . . . . . . . 27",
+      "layout": {
+        "bbox": [
+          149,
+          477.4,
+          388.2,
+          397
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0047:S0",
+      "page": 2,
+      "ordinal": 55,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1.1 Topologies in vector spaces . . . . . . . . . . . . . . . . . 27",
+      "layout": {
+        "bbox": [
+          171.9,
+          477.4,
+          376.2,
+          385.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0048:S0",
+      "page": 2,
+      "ordinal": 56,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1.2 Orthonormal dual bases . . . . . . . . . . . . . . . . . . . 28",
+      "layout": {
+        "bbox": [
+          171.9,
+          477.1,
+          366.1,
+          373.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0049:S0",
+      "page": 2,
+      "ordinal": 57,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1.3 Operators on unitary vector spaces . . . . . . . . . . . . . 30",
+      "layout": {
+        "bbox": [
+          171.9,
+          477.1,
+          352.3,
+          361.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0050:S0",
+      "page": 2,
+      "ordinal": 58,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1.4 Isometries . . . . . . . . . . . . . . . . . . . . . . . . . . . 34",
+      "layout": {
+        "bbox": [
+          171.9,
+          477.2,
+          342.1,
+          349.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0051:S0",
+      "page": 2,
+      "ordinal": 59,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2 Vector spaces with indeﬁnite inner product . . . . . . . . . . . . 35",
+      "layout": {
+        "bbox": [
+          149,
+          477,
+          328.5,
+          337.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0052:S0",
+      "page": 2,
+      "ordinal": 60,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2.1 Indeﬁnite metric . . . . . . . . . . . . . . . . . . . . . . . 35",
+      "layout": {
+        "bbox": [
+          171.9,
+          477,
+          318.3,
+          325.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0053:S0",
+      "page": 2,
+      "ordinal": 61,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2.2 Dirac conjugation . . . . . . . . . . . . . . . . . . . . . . 37",
+      "layout": {
+        "bbox": [
+          171.9,
+          477.4,
+          304.5,
+          313.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0054:S0",
+      "page": 2,
+      "ordinal": 62,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2.3 Representations in h-orthonormal dual bases . . . . . . . 39",
+      "layout": {
+        "bbox": [
+          171.9,
+          477.1,
+          292.7,
+          301.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0055:S0",
+      "page": 2,
+      "ordinal": 63,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2.4 Euclidean and pseudo-Euclidean spaces . . . . . . . . . . 42",
+      "layout": {
+        "bbox": [
+          171.9,
+          477,
+          280.7,
+          289.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0056:S0",
+      "page": 2,
+      "ordinal": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2",
+      "layout": {
+        "bbox": [
+          303.6,
+          307.6,
+          89.4,
+          96
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0789:S0",
+      "page": 21,
+      "ordinal": 863,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Then any vector x = xiei ∈ Vn is represented by the vector |x〉 = Repe(x) =",
+      "layout": {
+        "bbox": [
+          134.2,
+          476.9,
+          654.7,
+          665.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0790:S0",
+      "page": 21,
+      "ordinal": 864,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "i n i ∗",
+      "layout": {
+        "bbox": [
+          139.8,
+          321.8,
+          648.8,
+          653.5
+        ],
+        "font": {
+          "size": 7,
+          "name": "cmmi7",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0791:S0",
+      "page": 21,
+      "ordinal": 865,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "x |i〉 ∈ K while any covector xˆ = xˆieˆ ∈ Vn is represented by the covector 〈xˆ| =",
+      "layout": {
+        "bbox": [
+          134.1,
+          476.9,
+          642.7,
+          652.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0792:S0",
+      "page": 21,
+      "ordinal": 866,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Rˆepeˆ (xˆ) ∈ (Kn)∗ . Then the dual form reads 〈yˆ, x〉 = 〈yˆ|x〉 = Rˆepeˆ (yˆ)Repe(x).",
+      "layout": {
+        "bbox": [
+          134.1,
+          471.1,
+          630.8,
+          642.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0793:S0",
+      "page": 21,
+      "ordinal": 867,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Theorem 4 Given a representation as in deﬁnition 37 the dual isomorphisms",
+      "layout": {
+        "bbox": [
+          134.2,
+          477.3,
+          611.4,
+          620.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0794:S0",
+      "page": 21,
+      "ordinal": 868,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Repe)∗ : (Kn)∗ → Vn∗ and (Rˆepeˆ)∗ : Kn → Vn satisfy",
+      "layout": {
+        "bbox": [
+          134.8,
+          365.9,
+          598.9,
+          610.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0795:S0",
+      "page": 21,
+      "ordinal": 869,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Repe)∗ = (Rˆ epeˆ)−1 , (Rˆ epeˆ)∗ = (Repe)−1 . (55)",
+      "layout": {
+        "bbox": [
+          209.1,
+          476.5,
+          577,
+          588.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0796:S0",
+      "page": 21,
+      "ordinal": 870,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Proof: We write 〈yˆ, x〉 = 〈yˆ|x〉 = Rˆepeˆ (yˆ)Repe(x) = 〈yˆ, (Rˆ ep)e∗ˆ ◦ Repe(x)〉 and",
+      "layout": {
+        "bbox": [
+          134.4,
+          477.2,
+          551.7,
+          564.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0797:S0",
+      "page": 21,
+      "ordinal": 871,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "deduce (Rˆ ep)e∗ˆ ◦ Repe = idV that prove the second equation since all the maps",
+      "layout": {
+        "bbox": [
+          134.1,
+          477.1,
+          538.5,
+          550.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0798:S0",
+      "page": 21,
+      "ordinal": 872,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Rep are invertible as isomorphisms",
+      "layout": {
+        "bbox": [
+          134.1,
+          285.9,
+          527.5,
+          536.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0799:S0",
+      "page": 21,
+      "ordinal": 873,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The matrix representation of diﬀerent classes of tensors is in general a com-",
+      "layout": {
+        "bbox": [
+          149,
+          477,
+          515.4,
+          524.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0800:S0",
+      "page": 21,
+      "ordinal": 874,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "plicated procedure which is replaced often by the tensor calculus using indices.",
+      "layout": {
+        "bbox": [
+          134.1,
+          476.6,
+          503.5,
+          512.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0801:S0",
+      "page": 21,
+      "ordinal": 875,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "However there are some conjectures when we need to represent tensors as matri-",
+      "layout": {
+        "bbox": [
+          134.1,
+          477,
+          491.5,
+          500.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0802:S0",
+      "page": 21,
+      "ordinal": 876,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ces. Let us start with the set ofvector spaces Vi (i = 1, 2, ...N), with dimVi = ni,",
+      "layout": {
+        "bbox": [
+          134.1,
+          476.7,
+          479.1,
+          489
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0803:S0",
+      "page": 21,
+      "ordinal": 877,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "and the bases e(i) ⊂ Vi denoting with Repe(i) : Vi → Kni the representations",
+      "layout": {
+        "bbox": [
+          134.2,
+          477.3,
+          464.6,
+          476.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0804:S0",
+      "page": 21,
+      "ordinal": 878,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "corresponding to these bases.",
+      "layout": {
+        "bbox": [
+          134.1,
+          260.3,
+          455.6,
+          464.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0805:S0",
+      "page": 21,
+      "ordinal": 879,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Deﬁnition 38 The tensor product of matrix representations is the representa-",
+      "layout": {
+        "bbox": [
+          134.2,
+          477.3,
+          435.7,
+          444.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0806:S0",
+      "page": 21,
+      "ordinal": 880,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "tion",
+      "layout": {
+        "bbox": [
+          134.7,
+          151,
+          425.7,
+          432.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0807:S0",
+      "page": 21,
+      "ordinal": 881,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Repe(1) ⊗e(2) ...⊗e(N) = Repe(1) ⊗ Repe(2) .... ⊗ Repe(N) (56)",
+      "layout": {
+        "bbox": [
+          194.5,
+          476.5,
+          408.8,
+          421.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr5",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0808:S0",
+      "page": 21,
+      "ordinal": 882,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "corresponding to the bases e(1) , e(2) , ...e(N) .",
+      "layout": {
+        "bbox": [
+          134.9,
+          322.4,
+          392.3,
+          402.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0809:S0",
+      "page": 21,
+      "ordinal": 883,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "This representation is the isomorphism",
+      "layout": {
+        "bbox": [
+          134.2,
+          303.8,
+          374,
+          382.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0810:S0",
+      "page": 21,
+      "ordinal": 884,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Repe(1) ⊗e(2) ...⊗e(N) : V1 ⊗ V2 ... ⊗ VN → Kn1 ⊗ Kn2 ... ⊗ KnN (57)",
+      "layout": {
+        "bbox": [
+          178.1,
+          476.5,
+          349,
+          361.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr5",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0811:S0",
+      "page": 21,
+      "ordinal": 885,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "which maps each basis vectors e(1)i1 ⊗ e(2)i2 ... ⊗ e(N)iN ∈ V1 ⊗ V2 ... ⊗ VN into",
+      "layout": {
+        "bbox": [
+          134,
+          477.1,
+          328.6,
+          339.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0812:S0",
+      "page": 21,
+      "ordinal": 886,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "n1 n2",
+      "layout": {
+        "bbox": [
+          341.5,
+          378.2,
+          322.8,
+          326.8
+        ],
+        "font": {
+          "size": 5,
+          "name": "cmr5",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0812:S1",
+      "page": 21,
+      "ordinal": 887,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "nN",
+      "layout": {
+        "bbox": [
+          408.2,
+          418.2,
+          322.8,
+          326.8
+        ],
+        "font": {
+          "size": 5,
+          "name": "cmmi7",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0813:S0",
+      "page": 21,
+      "ordinal": 888,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the ket vectors of the tensor product basis in K ⊗ K ... ⊗ K",
+      "layout": {
+        "bbox": [
+          134,
+          407.7,
+          318.2,
+          327.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0813:S1",
+      "page": 21,
+      "ordinal": 889,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "as",
+      "layout": {
+        "bbox": [
+          423.4,
+          431.6,
+          320.1,
+          324.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0814:S0",
+      "page": 21,
+      "ordinal": 890,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Repe(1) ⊗e(2) ...⊗e(N) (e(1)i1 ⊗ e(2)i2 ... ⊗ e(N)iN )",
+      "layout": {
+        "bbox": [
+          180,
+          369.8,
+          293.2,
+          305.8
+        ],
+        "font": {
+          "size": 7,
+          "name": "cmr5",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0814:S1",
+      "page": 21,
+      "ordinal": 891,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(58)",
+      "layout": {
+        "bbox": [
+          460.7,
+          476.5,
+          295.8,
+          305.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0815:S0",
+      "page": 21,
+      "ordinal": 892,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "= Repe(1) (e(1)i1 ) ⊗ Repe(2) (e(2)i2 ).... ⊗ Repe(N) (e(N)iN ) (59)",
+      "layout": {
+        "bbox": [
+          216.1,
+          476.5,
+          276.8,
+          289.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0816:S0",
+      "page": 21,
+      "ordinal": 893,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "= |i1〉 ⊗ |i2〉... ⊗ |iN〉 .",
+      "layout": {
+        "bbox": [
+          216.1,
+          309,
+          262.8,
+          272.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmsy10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0816:S1",
+      "page": 21,
+      "ordinal": 894,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(60)",
+      "layout": {
+        "bbox": [
+          460.7,
+          476.5,
+          262.8,
+          272.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0817:S0",
+      "page": 21,
+      "ordinal": 895,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The ket vectors of the tensor product basis are denoted often by |i1 , i2...iN〉 =",
+      "layout": {
+        "bbox": [
+          134.2,
+          476.9,
+          240.9,
+          250.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0818:S0",
+      "page": 21,
+      "ordinal": 896,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "|i1〉 ⊗ |i2〉... ⊗ |iN〉. Obviously similar formulas hold for the dual spaces too.",
+      "layout": {
+        "bbox": [
+          135,
+          463.7,
+          229,
+          239
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0819:S0",
+      "page": 21,
+      "ordinal": 897,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "This formalism can be used for representing the tensors of a given pair of",
+      "layout": {
+        "bbox": [
+          149,
+          478,
+          217.4,
+          226.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0820:S0",
+      "page": 21,
+      "ordinal": 898,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∗ k",
+      "layout": {
+        "bbox": [
+          219.5,
+          460.9,
+          211.1,
+          216
+        ],
+        "font": {
+          "size": 7,
+          "name": "cmsy7",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0821:S0",
+      "page": 21,
+      "ordinal": 899,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "vector spaces (V, V ) with dimV = n. Thus the tensors of the space T (V)",
+      "layout": {
+        "bbox": [
+          134,
+          476.5,
+          205.1,
+          215.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0822:S0",
+      "page": 21,
+      "ordinal": 900,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "k",
+      "layout": {
+        "bbox": [
+          272.7,
+          276.1,
+          199.1,
+          204
+        ],
+        "font": {
+          "size": 7,
+          "name": "cmmi7",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0822:S1",
+      "page": 21,
+      "ordinal": 901,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "n",
+      "layout": {
+        "bbox": [
+          288.8,
+          293.1,
+          199.1,
+          202.3
+        ],
+        "font": {
+          "size": 7,
+          "name": "cmmi7",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0822:S2",
+      "page": 21,
+      "ordinal": 902,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "n",
+      "layout": {
+        "bbox": [
+          321.9,
+          326.2,
+          199.1,
+          202.3
+        ],
+        "font": {
+          "size": 7,
+          "name": "cmmi7",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0822:S3",
+      "page": 21,
+      "ordinal": 903,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "n",
+      "layout": {
+        "bbox": [
+          348.3,
+          352.6,
+          199.1,
+          202.3
+        ],
+        "font": {
+          "size": 7,
+          "name": "cmmi7",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0822:S4",
+      "page": 21,
+      "ordinal": 904,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "n ⊗k",
+      "layout": {
+        "bbox": [
+          389.6,
+          408.7,
+          198.4,
+          204
+        ],
+        "font": {
+          "size": 7,
+          "name": "cmmi7",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0823:S0",
+      "page": 21,
+      "ordinal": 905,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "can be represented in spaces T (K ) = K ⊗ K ... = (K ) while the dual",
+      "layout": {
+        "bbox": [
+          134.1,
+          477.3,
+          193.1,
+          203.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0824:S0",
+      "page": 21,
+      "ordinal": 906,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "tensors of the space Tk (V) are represented in tensor products of dual spaces,",
+      "layout": {
+        "bbox": [
+          134,
+          476.9,
+          181.1,
+          191.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0825:S0",
+      "page": 21,
+      "ordinal": 907,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Tk((Kn)) = (Kn)∗ ⊗ (Kn)∗ ... = [(Kn)∗]⊗k. Both these spaces can be seen as",
+      "layout": {
+        "bbox": [
+          134,
+          477.2,
+          169.2,
+          180.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0826:S0",
+      "page": 21,
+      "ordinal": 908,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "genuine arithmetic spaces whose bases may be constructed using the Kronecker",
+      "layout": {
+        "bbox": [
+          134.1,
+          477.5,
+          157.7,
+          166.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0827:S0",
+      "page": 21,
+      "ordinal": 909,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "product of matrices.",
+      "layout": {
+        "bbox": [
+          134.1,
+          221.2,
+          145.8,
+          154.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0828:S0",
+      "page": 21,
+      "ordinal": 910,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "21",
+      "layout": {
+        "bbox": [
+          301.1,
+          309.8,
+          89.4,
+          96
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1688:S0",
+      "page": 44,
+      "ordinal": 1886,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The linear operators f ∈ End(V, η) are represented by their matrices in η-",
+      "layout": {
+        "bbox": [
+          149,
+          476.9,
+          654.7,
+          664.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1689:S0",
+      "page": 44,
+      "ordinal": 1887,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "n",
+      "layout": {
+        "bbox": [
+          337.9,
+          342.1,
+          648.8,
+          651.9
+        ],
+        "font": {
+          "size": 7,
+          "name": "cmmi7",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1690:S0",
+      "page": 44,
+      "ordinal": 1888,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "orthonormal bases, |f| = Rep(e,e) (f) ∈ End(R ) (n = dim(V)), whose matrix",
+      "layout": {
+        "bbox": [
+          134.1,
+          477.5,
+          641.1,
+          652.7
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1691:S0",
+      "page": 44,
+      "ordinal": 1889,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "elements are given by Eq. (70). Then we can write",
+      "layout": {
+        "bbox": [
+          134.1,
+          356,
+          630.9,
+          640.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1692:S0",
+      "page": 44,
+      "ordinal": 1890,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "η(x, f(y)) = 〈x|Rep(e,e) (f)|y〉 = 〈x|f|y〉 = 〈x|ηf|y〉 . (148)",
+      "layout": {
+        "bbox": [
+          194,
+          476.6,
+          608.5,
+          620.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1693:S0",
+      "page": 44,
+      "ordinal": 1891,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Moreover, we recover the spectral representation in a pair of η-orthonormal",
+      "layout": {
+        "bbox": [
+          134.2,
+          477.5,
+          589.7,
+          598.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1694:S0",
+      "page": 44,
+      "ordinal": 1892,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "bases as in the case of the complex vector spaces.",
+      "layout": {
+        "bbox": [
+          134.1,
+          348.7,
+          577.9,
+          586.9
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1695:S0",
+      "page": 44,
+      "ordinal": 1893,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The orthogonal properties of the representation matrices are determined by",
+      "layout": {
+        "bbox": [
+          149,
+          477.3,
+          565.9,
+          575
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1696:S0",
+      "page": 44,
+      "ordinal": 1894,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the metric η that deﬁnes the Dirac conjugation.",
+      "layout": {
+        "bbox": [
+          134,
+          341.8,
+          553.8,
+          563
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1697:S0",
+      "page": 44,
+      "ordinal": 1895,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Theorem 25 The matrices in η-orthonormal bases of two Dirac conjugated",
+      "layout": {
+        "bbox": [
+          134.2,
+          477.9,
+          534.8,
+          544
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1698:S0",
+      "page": 44,
+      "ordinal": 1896,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "operators, f and f, are related as",
+      "layout": {
+        "bbox": [
+          134.9,
+          279.7,
+          523,
+          532
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1699:S0",
+      "page": 44,
+      "ordinal": 1897,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Rep(e,e) (f) = |η| Rep(e,e) (f)T |η| . (149)",
+      "layout": {
+        "bbox": [
+          234.7,
+          476.6,
+          500.1,
+          513.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1700:S0",
+      "page": 44,
+      "ordinal": 1898,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "This property enables us to denote Rep(e,e) (f) = Rep(e,e) (f) = |f| such that",
+      "layout": {
+        "bbox": [
+          134.2,
+          476.9,
+          476.7,
+          488.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1701:S0",
+      "page": 44,
+      "ordinal": 1899,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "|f| = |η| |f|T |η|. In this representation, the matrices of the Dirac selfadjoint",
+      "layout": {
+        "bbox": [
+          135,
+          476.9,
+          463.7,
+          474.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1702:S0",
+      "page": 44,
+      "ordinal": 1900,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "T",
+      "layout": {
+        "bbox": [
+          259.1,
+          264.3,
+          457.9,
+          462.6
+        ],
+        "font": {
+          "size": 7,
+          "name": "cmmi7",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1703:S0",
+      "page": 44,
+      "ordinal": 1901,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "operators satisfy |f| = |η| |f| |η| while for the pseudo-orthogonal operators we",
+      "layout": {
+        "bbox": [
+          134.1,
+          477.2,
+          451.8,
+          461.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1704:S0",
+      "page": 44,
+      "ordinal": 1902,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "have |f|−1 = |η| |f|T |η|.",
+      "layout": {
+        "bbox": [
+          134.1,
+          235.2,
+          439.8,
+          450.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmsy10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1705:S0",
+      "page": 44,
+      "ordinal": 1903,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Theorem 26 If (V, η) is a pseudo-Euclidean space and η has the signature",
+      "layout": {
+        "bbox": [
+          134.2,
+          477.6,
+          419.1,
+          429
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1706:S0",
+      "page": 44,
+      "ordinal": 1904,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(n+, n−) thenAut(V, h) is isomorphic to thepseudo-orthogonal group O(n+ , n−) ⊂",
+      "layout": {
+        "bbox": [
+          134.8,
+          486.8,
+          407.2,
+          417.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1707:S0",
+      "page": 44,
+      "ordinal": 1905,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Aut(V) ∼= GL(n,R).",
+      "layout": {
+        "bbox": [
+          134.1,
+          221.9,
+          395.2,
+          405.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1708:S0",
+      "page": 44,
+      "ordinal": 1906,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Proof: This is a particular case oftheorem (21) restricted to pseudo-orthogonal",
+      "layout": {
+        "bbox": [
+          134.4,
+          477.6,
+          371.7,
+          381.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1709:S0",
+      "page": 44,
+      "ordinal": 1907,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "automorphisms The pseudo-orthogonal automorphisms preserve the metric",
+      "layout": {
+        "bbox": [
+          134.2,
+          477.2,
+          360.2,
+          369.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1710:S0",
+      "page": 44,
+      "ordinal": 1908,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "and transform any η-orthonormal basis into another basis of the same type.",
+      "layout": {
+        "bbox": [
+          134.2,
+          463.6,
+          348.1,
+          357.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1711:S0",
+      "page": 44,
+      "ordinal": 1909,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "References",
+      "layout": {
+        "bbox": [
+          134.3,
+          208.6,
+          317.3,
+          327.6
+        ],
+        "font": {
+          "size": 14.4,
+          "name": "cmbx12",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1712:S0",
+      "page": 44,
+      "ordinal": 1910,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[1] C. T. J. Dodson and T. Poston, Tensor Geometry (Springer-Verlag, Berlin,",
+      "layout": {
+        "bbox": [
+          144.9,
+          476.7,
+          293.3,
+          303.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1713:S0",
+      "page": 44,
+      "ordinal": 1911,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Heidelberg, New York, 1990).",
+      "layout": {
+        "bbox": [
+          159.6,
+          287,
+          281.3,
+          291.3
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1714:S0",
+      "page": 44,
+      "ordinal": 1912,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[2] J. Heﬀerson, Linear Algebra ( Saint Michael’s College, 2006).",
+      "layout": {
+        "bbox": [
+          144.9,
+          424.7,
+          261.9,
+          271.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1715:S0",
+      "page": 44,
+      "ordinal": 1913,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[3] R. A. Shapirov, Course ofLinear Algebra and Multidimensional Geometry",
+      "layout": {
+        "bbox": [
+          144.9,
+          477.7,
+          242.4,
+          252.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1716:S0",
+      "page": 44,
+      "ordinal": 1914,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Bashkir State University, 1996).",
+      "layout": {
+        "bbox": [
+          160.2,
+          301.7,
+          230.4,
+          240.4
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1717:S0",
+      "page": 44,
+      "ordinal": 1915,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[4] P. R. Halmos, Finite-Dimensional Vector Spaces (Springer-Verlag, NY,",
+      "layout": {
+        "bbox": [
+          144.9,
+          476.6,
+          211,
+          221
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1718:S0",
+      "page": 44,
+      "ordinal": 1916,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1987).",
+      "layout": {
+        "bbox": [
+          160.1,
+          185.2,
+          199,
+          209
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1719:S0",
+      "page": 44,
+      "ordinal": 1917,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[5] J.J. Rotman, Advanced Modern Algebra (Pretice Hall, 2002).",
+      "layout": {
+        "bbox": [
+          144.9,
+          423.4,
+          179.5,
+          189.5
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1720:S0",
+      "page": 44,
+      "ordinal": 1918,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[6] E. H. Connel, Elements of Abstract and Linear Algebra (Univ. of Miami,",
+      "layout": {
+        "bbox": [
+          144.9,
+          476.7,
+          160.1,
+          170.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmti10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1721:S0",
+      "page": 44,
+      "ordinal": 1919,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2002).",
+      "layout": {
+        "bbox": [
+          159.7,
+          185.2,
+          148.2,
+          158.2
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1722:S0",
+      "page": 44,
+      "ordinal": 1920,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[7] W.-K. Tung, Group Theory in Physics (World Sci., Philadelphia, Singa-",
+      "layout": {
+        "bbox": [
+          144.9,
+          477,
+          128.7,
+          138.6
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1723:S0",
+      "page": 44,
+      "ordinal": 1921,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "pore, 1985).",
+      "layout": {
+        "bbox": [
+          159.5,
+          210.4,
+          116.8,
+          126.8
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L1724:S0",
+      "page": 44,
+      "ordinal": 1922,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "44",
+      "layout": {
+        "bbox": [
+          300.9,
+          310.3,
+          89.4,
+          96.1
+        ],
+        "font": {
+          "size": 10,
+          "name": "cmr10",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    }
+  ],
+  "labels": "NONE_SOURCE_FACTS_ONLY"
+}

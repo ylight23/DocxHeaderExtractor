@@ -1,0 +1,2022 @@
+{
+  "version": "P7_F1Q_HELDOUT_REVIEW_BUNDLE_V1",
+  "id": "009",
+  "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/009_Luat_Giao_dich_dien_tu_20-2023-QH15.pdf",
+  "sourceSha256": "2458d01d6453cd11ab7aaddbae36e988110754bcb53a59eda729987a63882914",
+  "sourceAliasUniverseSha256": "c791c8a26675496fe2d169859d266a431ab1448ca5d3a2bfe1ec2e6748d1d454",
+  "evidenceStoreSha256": "900e18eb67cafd95e4387f86198b6435fb90840220744964dbe9b45554acc683",
+  "pageSelectionSha256": "c4b9ebefbd5a15f0cef59bb1d11f00497b971effae91f185475d08b335851f94",
+  "pageStats": [
+    {
+      "page": 1,
+      "lineCount": 31,
+      "textExtent": [
+        64,
+        531.5,
+        81.3,
+        789.5
+      ],
+      "medianFontSize": 14
+    },
+    {
+      "page": 16,
+      "lineCount": 30,
+      "textExtent": [
+        64.2,
+        531.3,
+        82.4,
+        789.5
+      ],
+      "medianFontSize": 14
+    },
+    {
+      "page": 22,
+      "lineCount": 33,
+      "textExtent": [
+        64,
+        531.6,
+        82.7,
+        789.5
+      ],
+      "medianFontSize": 14
+    }
+  ],
+  "layoutBasis": "bbox=[left,right,bottom,top] in PDF points, bottom-left origin; font={size,name,boldRatio,italicRatio}; parser observations, not labels",
+  "occurrences": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "ordinal": 0,
+      "pageStratum": "FIRST",
+      "text": "4 CÔNG BÁO/Số 867 + 868/Ngày 30-7-2023",
+      "layout": {
+        "bbox": [
+          64.3,
+          420.7,
+          774,
+          789.5
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "ordinal": 1,
+      "pageStratum": "FIRST",
+      "text": "QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+      "layout": {
+        "bbox": [
+          109.4,
+          527.8,
+          740.8,
+          757.2
+        ],
+        "font": {
+          "size": 13,
+          "name": "timesnewromanps-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "ordinal": 2,
+      "pageStratum": "FIRST",
+      "text": "Độc lập - Tự do - Hạnh phúc",
+      "layout": {
+        "bbox": [
+          313,
+          471.7,
+          725.9,
+          737.7
+        ],
+        "font": {
+          "size": 13,
+          "name": "timesnewromanps-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "ordinal": 3,
+      "pageStratum": "FIRST",
+      "text": "Luật số: 20/2023/QH15",
+      "layout": {
+        "bbox": [
+          81.2,
+          203.6,
+          713.3,
+          727.4
+        ],
+        "font": {
+          "size": 13,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "ordinal": 4,
+      "pageStratum": "FIRST",
+      "text": "LUẬT",
+      "layout": {
+        "bbox": [
+          279.1,
+          317.2,
+          675.3,
+          689.3
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanps-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "ordinal": 5,
+      "pageStratum": "FIRST",
+      "text": "GIAO DỊCH ĐIỆN TỬ",
+      "layout": {
+        "bbox": [
+          228.3,
+          368.2,
+          656.3,
+          671.8
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanps-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "ordinal": 6,
+      "pageStratum": "FIRST",
+      "text": "Căn cứHiến pháp nước Cộng hòa xã hội chủ nghĩa Việt Nam;",
+      "layout": {
+        "bbox": [
+          86.6,
+          435.6,
+          618.2,
+          633.7
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanps-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 0.8
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "ordinal": 7,
+      "pageStratum": "FIRST",
+      "text": "Quốc hội ban hành Luật Giao dịch điện tử.",
+      "layout": {
+        "bbox": [
+          86.3,
+          326,
+          595.3,
+          610.7
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanps-italicmt",
+          "boldRatio": 0,
+          "italicRatio": 0.8
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "ordinal": 8,
+      "pageStratum": "FIRST",
+      "text": "Chương I",
+      "layout": {
+        "bbox": [
+          270,
+          326.8,
+          557.3,
+          569.8
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanps-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "ordinal": 9,
+      "pageStratum": "FIRST",
+      "text": "NHỮNG QUY ĐỊNH CHUNG",
+      "layout": {
+        "bbox": [
+          206.2,
+          389.2,
+          538.3,
+          553.3
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanps-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "ordinal": 10,
+      "pageStratum": "FIRST",
+      "text": "Điều 1. Phạm vi điều chỉnh",
+      "layout": {
+        "bbox": [
+          87,
+          247.4,
+          502.4,
+          517.8
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanps-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "ordinal": 11,
+      "pageStratum": "FIRST",
+      "text": "1. Luật này quy định việc thực hiện giao dịch bằng phương tiện điện tử.",
+      "layout": {
+        "bbox": [
+          88.4,
+          473.6,
+          479.6,
+          495.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "ordinal": 12,
+      "pageStratum": "FIRST",
+      "text": "2. Luật này không quy định về nội dung, điều kiện, hình thức của giao dịch.",
+      "layout": {
+        "bbox": [
+          87.1,
+          495.8,
+          457.1,
+          472.6
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "ordinal": 13,
+      "pageStratum": "FIRST",
+      "text": "3. Trường hợp luật khác quy định hoặc không quy định giao dịch được thực hiện",
+      "layout": {
+        "bbox": [
+          87.3,
+          531.4,
+          434.6,
+          447.4
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "ordinal": 14,
+      "pageStratum": "FIRST",
+      "text": "bằng phương tiện điện tử thì được áp dụng theo quy định của Luật này. Trường hợp",
+      "layout": {
+        "bbox": [
+          64,
+          531.1,
+          415.7,
+          431.2
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "ordinal": 15,
+      "pageStratum": "FIRST",
+      "text": "luật khác quy định không được thực hiện giao dịch bằng phương tiện điện tử thì thực",
+      "layout": {
+        "bbox": [
+          64.5,
+          531.2,
+          396.7,
+          412.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "ordinal": 16,
+      "pageStratum": "FIRST",
+      "text": "hiện theo quy định của luật đó.",
+      "layout": {
+        "bbox": [
+          64.2,
+          230.1,
+          377.6,
+          390.4
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "ordinal": 17,
+      "pageStratum": "FIRST",
+      "text": "Điều 2. Đối tượng áp dụng",
+      "layout": {
+        "bbox": [
+          87,
+          244.3,
+          355.1,
+          370.6
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanps-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 1,
+      "ordinal": 18,
+      "pageStratum": "FIRST",
+      "text": "Luật này áp dụng đối với cơ quan, tổ chức, cá nhân trực tiếp tham gia giao dịch",
+      "layout": {
+        "bbox": [
+          87,
+          531.5,
+          332.6,
+          348.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 1,
+      "ordinal": 19,
+      "pageStratum": "FIRST",
+      "text": "điện tử hoặc có liên quan đến giao dịch điện tử.",
+      "layout": {
+        "bbox": [
+          64.3,
+          319.7,
+          313.7,
+          329.2
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 1,
+      "ordinal": 20,
+      "pageStratum": "FIRST",
+      "text": "Điều 3. Giải thích từ ngữ",
+      "layout": {
+        "bbox": [
+          87,
+          235.3,
+          291.1,
+          306.6
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanps-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 1,
+      "ordinal": 21,
+      "pageStratum": "FIRST",
+      "text": "Trong Luật này, các từ ngữ dưới đây được hiểu như sau:",
+      "layout": {
+        "bbox": [
+          87.2,
+          401.8,
+          268.6,
+          284.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 1,
+      "ordinal": 22,
+      "pageStratum": "FIRST",
+      "text": "1 . Giao dịch điện tử là giao dịch được thực hiện bằng phương tiện điện tử.",
+      "layout": {
+        "bbox": [
+          88.4,
+          502.4,
+          246.1,
+          261.6
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0.2
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 1,
+      "ordinal": 23,
+      "pageStratum": "FIRST",
+      "text": "2. Phương tiện điện tử là phần cứng, phần mềm, hệ thống thông tin hoặc",
+      "layout": {
+        "bbox": [
+          87.1,
+          530.9,
+          223.6,
+          239.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0.2
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 1,
+      "ordinal": 24,
+      "pageStratum": "FIRST",
+      "text": "phương tiện khác hoạt động dựa trên công nghệ thông tin, công nghệ điện, điện tử,",
+      "layout": {
+        "bbox": [
+          64,
+          530.6,
+          204.7,
+          217.4
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 1,
+      "ordinal": 25,
+      "pageStratum": "FIRST",
+      "text": "kỹ thuật số, từ tính, truyền dẫn không dây, quang học, điện từ hoặc công nghệ khác",
+      "layout": {
+        "bbox": [
+          64.2,
+          530.9,
+          185.6,
+          201.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 1,
+      "ordinal": 26,
+      "pageStratum": "FIRST",
+      "text": "tương tự.",
+      "layout": {
+        "bbox": [
+          64.2,
+          114.4,
+          166.7,
+          178
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 1,
+      "ordinal": 27,
+      "pageStratum": "FIRST",
+      "text": "3. Môi trường điện tử là môi trường mạng viễn thông, mạng Internet, mạng",
+      "layout": {
+        "bbox": [
+          87.3,
+          531.1,
+          144.1,
+          159.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0.2
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 1,
+      "ordinal": 28,
+      "pageStratum": "FIRST",
+      "text": "máy tính, hệ thống thông tin.",
+      "layout": {
+        "bbox": [
+          64.2,
+          225.3,
+          125.2,
+          140.6
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0029:S0",
+      "page": 1,
+      "ordinal": 29,
+      "pageStratum": "FIRST",
+      "text": "4. Thông điệp dữ liệu là thông tin được tạo ra, được gửi, được nhận, được lưu",
+      "layout": {
+        "bbox": [
+          87,
+          531.3,
+          101.3,
+          114
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0.2
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0030:S0",
+      "page": 1,
+      "ordinal": 30,
+      "pageStratum": "FIRST",
+      "text": "trữ bằng phương tiện điện tử.",
+      "layout": {
+        "bbox": [
+          64.2,
+          227,
+          81.3,
+          96.8
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0469:S0",
+      "page": 16,
+      "ordinal": 469,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "CÔNG BÁO/Số 867 + 868/Ngày 30-7-2023 19",
+      "layout": {
+        "bbox": [
+          174.6,
+          531.3,
+          774,
+          789.5
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0470:S0",
+      "page": 16,
+      "ordinal": 470,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a) Dịch vụ cấp dấu thời gian;",
+      "layout": {
+        "bbox": [
+          87.3,
+          248.8,
+          737.6,
+          753.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0471:S0",
+      "page": 16,
+      "ordinal": 471,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b) Dịch vụ chứng thực thông điệp dữ liệu;",
+      "layout": {
+        "bbox": [
+          86.7,
+          321.7,
+          712.1,
+          724.9
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0472:S0",
+      "page": 16,
+      "ordinal": 472,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c) Dịch vụ chứng thực chữ ký số công cộng.",
+      "layout": {
+        "bbox": [
+          87.2,
+          334,
+          686.8,
+          702.2
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0473:S0",
+      "page": 16,
+      "ordinal": 473,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. Dịch vụ tin cậy là ngành, nghề đầu tư kinh doanh có điều kiện.",
+      "layout": {
+        "bbox": [
+          87.1,
+          451.5,
+          661.4,
+          676.9
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0474:S0",
+      "page": 16,
+      "ordinal": 474,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3. Tổ chức cung cấp dịch vụ tin cậy phải có giấy phép kinh doanh dịch vụ do Bộ",
+      "layout": {
+        "bbox": [
+          87.3,
+          530.9,
+          635.9,
+          651.4
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0475:S0",
+      "page": 16,
+      "ordinal": 475,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Thông tin và Truyền thông cấp, trừ dịch vụ chứng thực hợp đồng điện tử trong",
+      "layout": {
+        "bbox": [
+          64.5,
+          531.2,
+          614.6,
+          630.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0476:S0",
+      "page": 16,
+      "ordinal": 476,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "thương mại. Tổ chức được quyền đăng ký một hoặc các dịch vụ quy định tại khoản 1",
+      "layout": {
+        "bbox": [
+          64.2,
+          529.8,
+          593.2,
+          608.6
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0477:S0",
+      "page": 16,
+      "ordinal": 477,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Điều này. Thời hạn của giấy phép kinh doanh dịch vụ tin cậy là 10 năm.",
+      "layout": {
+        "bbox": [
+          64.3,
+          460.5,
+          571.8,
+          587.3
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0478:S0",
+      "page": 16,
+      "ordinal": 478,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Tổ chức cung cấp dịch vụ chứng thực hợp đồng điện tử trong thương mại phải",
+      "layout": {
+        "bbox": [
+          87.2,
+          531,
+          546.4,
+          561.8
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0479:S0",
+      "page": 16,
+      "ordinal": 479,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "đáp ứng điều kiện hoạt động cung cấp dịch vụ chứng thực hợp đồng điện tử theo",
+      "layout": {
+        "bbox": [
+          64.3,
+          530.9,
+          525,
+          540.5
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0480:S0",
+      "page": 16,
+      "ordinal": 480,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "quy định của pháp luật về thương mại điện tử và điều kiện kinh doanh dịch vụ tin",
+      "layout": {
+        "bbox": [
+          64.6,
+          531.3,
+          503.6,
+          519.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0481:S0",
+      "page": 16,
+      "ordinal": 481,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "cậy theo quy định tại Điều 29 của Luật này.",
+      "layout": {
+        "bbox": [
+          64.6,
+          308,
+          482.2,
+          497.6
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0482:S0",
+      "page": 16,
+      "ordinal": 482,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4. Chính phủ quy định chi tiết hoạt động của tổ chức cung cấp dịch vụ tin cậy;",
+      "layout": {
+        "bbox": [
+          87,
+          530.6,
+          456.8,
+          472.3
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0483:S0",
+      "page": 16,
+      "ordinal": 483,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "quy trình, thủ tục, hồ sơ cấp, gia hạn, thay đổi, cấp lại, tạm đình chỉ, thu hồi giấy phép",
+      "layout": {
+        "bbox": [
+          64.5,
+          531,
+          435.4,
+          450.8
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0484:S0",
+      "page": 16,
+      "ordinal": 484,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "kinh doanh dịch vụ tin cậy và các nội dung khác quy định tại Điều này.",
+      "layout": {
+        "bbox": [
+          64.2,
+          448.2,
+          414,
+          429.5
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0485:S0",
+      "page": 16,
+      "ordinal": 485,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Điều 29. Điều kiện kinh doanh dịch vụ tin cậy",
+      "layout": {
+        "bbox": [
+          87,
+          358.9,
+          388.6,
+          404
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanps-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0486:S0",
+      "page": 16,
+      "ordinal": 486,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1 . Điều kiện kinh doanh dịch vụ tin cậy bao gồm:",
+      "layout": {
+        "bbox": [
+          88.4,
+          362.7,
+          363.2,
+          378.7
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0487:S0",
+      "page": 16,
+      "ordinal": 487,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a) Là doanh nghiệp được thành lập và hoạt động hợp pháp trên lãnh thổViệt Nam;",
+      "layout": {
+        "bbox": [
+          87.3,
+          517.9,
+          337.7,
+          353.2
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0488:S0",
+      "page": 16,
+      "ordinal": 488,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b) Đáp ứng điều kiện tài chính, nhân lực quản lý và kỹ thuật phù hợp với từng",
+      "layout": {
+        "bbox": [
+          86.7,
+          531,
+          312.4,
+          327.8
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0489:S0",
+      "page": 16,
+      "ordinal": 489,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "loại dịch vụ tin cậy quy định tại khoản 1 Điều 28 của Luật này;",
+      "layout": {
+        "bbox": [
+          64.5,
+          417,
+          291,
+          306.5
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0490:S0",
+      "page": 16,
+      "ordinal": 490,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c) Hệ thống thông tin cung cấp dịch vụ tin cậy đáp ứng yêu cầu bảo đảm an",
+      "layout": {
+        "bbox": [
+          87.2,
+          531.2,
+          265.6,
+          281
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0491:S0",
+      "page": 16,
+      "ordinal": 491,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "toàn thông tin mạng tối thiểu cấp độ 3 theo quy định của pháp luật về an toàn",
+      "layout": {
+        "bbox": [
+          64.2,
+          531.3,
+          244.2,
+          259.7
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0492:S0",
+      "page": 16,
+      "ordinal": 492,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "thông tin mạng;",
+      "layout": {
+        "bbox": [
+          64.2,
+          151.8,
+          222.8,
+          235.5
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0493:S0",
+      "page": 16,
+      "ordinal": 493,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d) Có phương án kỹ thuật phục vụ hoạt động cung cấp dịch vụ phù hợp với",
+      "layout": {
+        "bbox": [
+          87.2,
+          530.9,
+          197.3,
+          212.8
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0494:S0",
+      "page": 16,
+      "ordinal": 494,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "từng loại dịch vụ tin cậy quy định tại khoản 1 Điều 28 của Luật này;",
+      "layout": {
+        "bbox": [
+          64.2,
+          445.9,
+          176,
+          191.5
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0495:S0",
+      "page": 16,
+      "ordinal": 495,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "đ) Có phương án sẵn sàng kết nối kỹ thuật phục vụ giám sát, kiểm tra, báo",
+      "layout": {
+        "bbox": [
+          87,
+          530.8,
+          150.5,
+          166
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0496:S0",
+      "page": 16,
+      "ordinal": 496,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "cáo số liệu bằng phương tiện điện tử đáp ứng yêu cầu quản lý nhà nước về dịch",
+      "layout": {
+        "bbox": [
+          64.6,
+          531.1,
+          129.2,
+          144.7
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0497:S0",
+      "page": 16,
+      "ordinal": 497,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "vụ tin cậy.",
+      "layout": {
+        "bbox": [
+          64.2,
+          122.9,
+          107.8,
+          120.5
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0498:S0",
+      "page": 16,
+      "ordinal": 498,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. Chính phủ quy định chi tiết khoản 1 Điều này.",
+      "layout": {
+        "bbox": [
+          87.1,
+          359.4,
+          82.4,
+          97.9
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0651:S0",
+      "page": 22,
+      "ordinal": 651,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "CÔNG BÁO/Số 867 + 868/Ngày 30-7-2023 25",
+      "layout": {
+        "bbox": [
+          174.6,
+          530.9,
+          774,
+          789.5
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0652:S0",
+      "page": 22,
+      "ordinal": 652,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4. Bộ Thông tin và Truyền thông tổng hợp và công bố danh sách các cơ quan",
+      "layout": {
+        "bbox": [
+          87,
+          531.3,
+          738.7,
+          754.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0653:S0",
+      "page": 22,
+      "ordinal": 653,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "cung cấp dữ liệu, danh mục dữ liệu được cung cấp, bảng mã danh mục dùng chung",
+      "layout": {
+        "bbox": [
+          64.6,
+          531.1,
+          718.7,
+          734.2
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0654:S0",
+      "page": 22,
+      "ordinal": 654,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "để cơ quan, tổ chức, cá nhân tra cứu, khai thác.",
+      "layout": {
+        "bbox": [
+          64.3,
+          326.5,
+          698.7,
+          714.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0655:S0",
+      "page": 22,
+      "ordinal": 655,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Điều 42. Kết nối, chia sẻ dữ liệu",
+      "layout": {
+        "bbox": [
+          87,
+          274.7,
+          674.7,
+          690.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanps-boldmt",
+          "boldRatio": 1,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0656:S0",
+      "page": 22,
+      "ordinal": 656,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1. Cơ quan nhà nước có trách nhiệm bảo đảm khả năng sẵn sàng kết nối, chia sẻ",
+      "layout": {
+        "bbox": [
+          88.4,
+          531.1,
+          650.6,
+          666.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0657:S0",
+      "page": 22,
+      "ordinal": 657,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "dữ liệu cho cơ quan, tổ chức, cá nhân, phục vụ giao dịch điện tử bao gồm:",
+      "layout": {
+        "bbox": [
+          64.5,
+          463.2,
+          630.7,
+          646.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0658:S0",
+      "page": 22,
+      "ordinal": 658,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a) Nhân lực thực hiện kết nối, chia sẻ dữ liệu bao gồm nguồn nhân lực tại chỗ",
+      "layout": {
+        "bbox": [
+          87.3,
+          530.8,
+          606.7,
+          622.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0659:S0",
+      "page": 22,
+      "ordinal": 659,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "đang thực hiện quản lý, vận hành các hệ thống thông tin hoặc nhân lực khác có liên",
+      "layout": {
+        "bbox": [
+          64.3,
+          531.2,
+          586.7,
+          602.2
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0660:S0",
+      "page": 22,
+      "ordinal": 660,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "quan trong cơ quan nhà nước; trường hợp nhân lực tại chỗ không đáp ứng được thì",
+      "layout": {
+        "bbox": [
+          64.5,
+          530.9,
+          566.6,
+          581.6
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0661:S0",
+      "page": 22,
+      "ordinal": 661,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "được thuê chuyên gia;",
+      "layout": {
+        "bbox": [
+          64.3,
+          187.4,
+          546.7,
+          559.4
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0662:S0",
+      "page": 22,
+      "ordinal": 662,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b) Dự án đầu tư ứng dụng công nghệ thông tin sử dụng ngân sách nhà nước để",
+      "layout": {
+        "bbox": [
+          86.7,
+          530.9,
+          522.7,
+          538.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0663:S0",
+      "page": 22,
+      "ordinal": 663,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "xây dựng các hệ thống thông tin, cơ sở dữ liệu trong cơ quan nhà nước phải có",
+      "layout": {
+        "bbox": [
+          64.3,
+          530.8,
+          502.7,
+          518.2
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0664:S0",
+      "page": 22,
+      "ordinal": 664,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "hạng mục phục vụ kết nối, chia sẻ dữ liệu. Trường hợp không có hạng mục này,",
+      "layout": {
+        "bbox": [
+          64.2,
+          530.6,
+          482.6,
+          498.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0665:S0",
+      "page": 22,
+      "ordinal": 665,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "phải có thuyết minh chứng minh về việc không có hoạt động kết nối, chia sẻ dữ",
+      "layout": {
+        "bbox": [
+          64,
+          531.3,
+          462.7,
+          478.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0666:S0",
+      "page": 22,
+      "ordinal": 666,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "liệu trong quá trình vận hành, khai thác;",
+      "layout": {
+        "bbox": [
+          64.5,
+          287.1,
+          442.7,
+          455.4
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0667:S0",
+      "page": 22,
+      "ordinal": 667,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c) Ban hành và công bố công khai quy chế khai thác, sử dụng dữ liệu đối với",
+      "layout": {
+        "bbox": [
+          87.2,
+          531,
+          418.6,
+          434.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0668:S0",
+      "page": 22,
+      "ordinal": 668,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "cơ sở dữ liệu thuộc thẩm quyền quản lý;",
+      "layout": {
+        "bbox": [
+          64.6,
+          288.6,
+          398.6,
+          414.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0669:S0",
+      "page": 22,
+      "ordinal": 669,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d) Áp dụng biện pháp bảo đảm an toàn thông tin mạng, an ninh mạng, bảo mật",
+      "layout": {
+        "bbox": [
+          87.2,
+          531.3,
+          374.6,
+          389.9
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0670:S0",
+      "page": 22,
+      "ordinal": 670,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "dữ liệu trong quá trình kết nối, chia sẻ dữ liệu theo quy định của pháp luật.",
+      "layout": {
+        "bbox": [
+          64.5,
+          481.1,
+          354.7,
+          370.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0671:S0",
+      "page": 22,
+      "ordinal": 671,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. Trừ trường hợp pháp luật có quy định khác, cơ quan nhà nước có trách nhiệm",
+      "layout": {
+        "bbox": [
+          87.1,
+          531.4,
+          330.7,
+          343.4
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0672:S0",
+      "page": 22,
+      "ordinal": 672,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "kết nối, chia sẻ dữ liệu với cơ quan, tổ chức khác; không cung cấp thông tin qua",
+      "layout": {
+        "bbox": [
+          64.2,
+          531.4,
+          310.7,
+          326.2
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0673:S0",
+      "page": 22,
+      "ordinal": 673,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "hình thức văn bản giấy đối với thông tin đã được khai thác qua hình thức kết nối,",
+      "layout": {
+        "bbox": [
+          64.2,
+          530.7,
+          290.6,
+          306.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0674:S0",
+      "page": 22,
+      "ordinal": 674,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "chia sẻ giữa các hệ thống thông tin; không thu phí việc chia sẻ dữ liệu giữa các cơ",
+      "layout": {
+        "bbox": [
+          64.6,
+          531.6,
+          270.7,
+          286.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0675:S0",
+      "page": 22,
+      "ordinal": 675,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "quan nhà nước.",
+      "layout": {
+        "bbox": [
+          64.5,
+          147.9,
+          250.7,
+          263.4
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0676:S0",
+      "page": 22,
+      "ordinal": 676,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3. Cơ quan nhà nước phải áp dụng phương thức kết nối, chia sẻ dữ liệu trực",
+      "layout": {
+        "bbox": [
+          87.3,
+          530.8,
+          226.6,
+          242.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0677:S0",
+      "page": 22,
+      "ordinal": 677,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "tuyến trên môi trường mạng giữa các hệ thống thông tin của cơ quan cung cấp dữ",
+      "layout": {
+        "bbox": [
+          64.2,
+          531.3,
+          206.6,
+          222.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0678:S0",
+      "page": 22,
+      "ordinal": 678,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "liệu và cơ quan, tổ chức khai thác dữ liệu, trừ trường hợp thông tin liên quan đến",
+      "layout": {
+        "bbox": [
+          64.5,
+          531.2,
+          186.7,
+          202.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0679:S0",
+      "page": 22,
+      "ordinal": 679,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "bí mật nhà nước hoặc yêu cầu bảo đảm quốc phòng, an ninh. Trường hợp không",
+      "layout": {
+        "bbox": [
+          64.1,
+          531,
+          166.7,
+          182.2
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0680:S0",
+      "page": 22,
+      "ordinal": 680,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "áp dụng phương thức kết nối, chia sẻ dữ liệu trực tuyến, phải nêu rõ lý do bằng",
+      "layout": {
+        "bbox": [
+          64.6,
+          530.9,
+          146.6,
+          162.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0681:S0",
+      "page": 22,
+      "ordinal": 681,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "văn bản.",
+      "layout": {
+        "bbox": [
+          64.2,
+          111.3,
+          129.5,
+          139.4
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0682:S0",
+      "page": 22,
+      "ordinal": 682,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4. Cơ quan nhà nước áp dụng mô hình kết nối, chia sẻ dữ liệu theo thứ tự ưu",
+      "layout": {
+        "bbox": [
+          87,
+          531.2,
+          102.7,
+          118.1
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    },
+    {
+      "sourceAlias": "L0683:S0",
+      "page": 22,
+      "ordinal": 683,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "tiên sau đây:",
+      "layout": {
+        "bbox": [
+          64.2,
+          133.7,
+          82.7,
+          95.4
+        ],
+        "font": {
+          "size": 14,
+          "name": "timesnewromanpsmt",
+          "boldRatio": 0,
+          "italicRatio": 0
+        }
+      }
+    }
+  ],
+  "labels": "NONE_SOURCE_FACTS_ONLY"
+}

@@ -1,0 +1,1512 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_DRAFT_V2",
+  "status": "DRAFT_REVIEWER_A_NOT_APPROVED",
+  "id": "067",
+  "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/067_Algorithms_for_Massive_Data_Lecture_Notes.pdf",
+  "sourceSha256": "810f3313d2aa43c53390de8b776d810856d9dbc1d5066fde1600b59530ba9d6f",
+  "sourceAliasUniverseSha256": "2284f13d62f396b42d0f89bc28d0efb7f58c1039fed1fd920a98910258b74ab9",
+  "reviewBundleSha256": "63bbb5f91896ba8ce074def807153e4ffdd46cd71873534b2afb53f1bf757539",
+  "reviewerA": "Claude (orchestrator), from parser text and layout only; PDF pages not rendered; independent of any provider prediction",
+  "visualEvidence": "NOT_RENDERED_IN_DRAFT_REVIEWER_TO_CONFIRM_AGAINST_PDF",
+  "notes": [
+    "stamp fragments without bbox (L0000-L0017 except title/author lines) and page numbers are OTHER"
+  ],
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "62",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "02",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "be",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "F",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "62",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "]",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "S",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "D.s CM0622 - Algorithms for Massive Data",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Title \"CM0622 - Algorithms for Massive Data\" (24.8pt) merged with stray stamp characters \"D.s\"",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "c[",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "51",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "v4",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0010:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Nicola Prezza",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Author name",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "57",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0011:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Ca’ Foscari University of Venice",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Author affiliation",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "00.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "10",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "32: Version: February 27, 2026",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Version date (merged with a stamp fragment)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "vi",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Xr",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "a",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Contents",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Heading \"Contents\" (24.8pt)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 Compressed Data Structures 4",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.1 Full-text indexing - classical solutions . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.1.1 Inverted indexes and suffix trie . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.1.2 Suffix tree . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.1.3 Suffix array . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2 Basics of information theory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2.1 Worst-case entropy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2.2 Prefix-free codes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2.3 Zero-order empirical entropy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2.4 High-order empirical entropy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0029:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.3 Zero-order compressed bitvectors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0030:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.3.1 Random access in n bits . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0031:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.3.2 Encoding a bitvector in nH0 + o(n) bits . . . . . . . . . . . . . . . . . . . . . . . 14",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0032:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.3.3 Random access and rank in nH0 + o(n) bits . . . . . . . . . . . . . . . . . . . . . 16",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0033:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.4 Sets of integers - the Elias-Fano data structure . . . . . . . . . . . . . . . . . . . . . . . 19",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0034:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.5 The compressed suffix array (CSA) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0035:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.5.1 Compressing F and ψ and counting patterns . . . . . . . . . . . . . . . . . . . . 24",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0036:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.5.2 Locating patterns and extracting substrings . . . . . . . . . . . . . . . . . . . . . 25",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0037:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.6 The FM-index . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0038:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.6.1 Wavelet Trees: WT . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0039:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.6.2 The Burrows-Wheeler Transform: BWT . . . . . . . . . . . . . . . . . . . . . . . 32",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0040:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.6.3 FM-index = WT(BWT) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0041:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2 Probability Theory and Hashing 39",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0042:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1 Random variables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0043:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1.1 Distribution function . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0044:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1.2 Events . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0045:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1.3 Expected value and variance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0046:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1.4 Bernoullian R.V.s . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0047:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2 Concentration inequalities . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0048:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2.1 Markov’s inequality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0049:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2.2 Chebyshev’s inequality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0050:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2.3 Chernoff-Hoeffding’s inequalities . . . . . . . . . . . . . . . . . . . . . . . . . . . 44",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0051:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2.4 Combining bounds: the mean and median tricks . . . . . . . . . . . . . . . . . . 47",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0052:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3 Hashing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0053:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3.1 k-wise independent hashing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0054:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3.2 Universal hashing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0055:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3.3 Perfect hashing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0056:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3.4 Hashing integers to the reals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0057:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3.5 Hash tables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53",
+      "draftLabel": "REPRESENTS_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Contents entry",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0058:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0813:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(sorted) integers in binary, using log n = 5 bits each:",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0814:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "x ∈ S",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Inline table header \"x in S\" in a worked example",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0814:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(x)2",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0815:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "0",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0815:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "00000",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0816:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0816:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "00101",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0817:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0817:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01000",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0818:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "12",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0818:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01100",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0819:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "14",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0819:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01110",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0820:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "17",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0820:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10001",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0821:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "20",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0821:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10100",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0822:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "31",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0822:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "11111",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0823:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The next step is to break each integer into a prefix of log m = 3 bits, and a suffix of log n − log m =",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0824:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "log(n/m) = 2 bits. The suffixes form the first component EF1 of the EF data structure:",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0825:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "x ∈ S prefix of(x)2 EF1 = suffix of(x)2",
+      "draftLabel": "OTHER",
+      "reviewFlag": "REVIEW_FOCUS",
+      "rationale": "Inline table header row of a worked example",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0826:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "0",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0826:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "000",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0826:S2",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "00",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0827:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0827:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "001",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0827:S2",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0828:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0828:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "010",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0828:S2",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "00",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0829:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "12",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0829:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "011",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0829:S2",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "00",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0830:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "14",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0830:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "011",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0830:S2",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0831:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "17",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0831:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "100",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0831:S2",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0832:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "20",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0832:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "101",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0832:S2",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "00",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0833:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "31",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0833:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "111",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0833:S2",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "11",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0834:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Note that the suffixes use in total mlog(n/m) bits. We store EF1 = (00,01,00,00,10,01,00,11)",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0835:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "with the packed array data structure of Theorem 1.3.9. As far as the prefixes are concerned, observe",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0836:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "that they form a list of m nondecreasing integers of log m bits each. We will store the differences",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0837:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "between consecutive integers in the list, in unary encoding: difference δi = pi − pi−1, where pi is the",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0838:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "i-th prefix, is encoded as 0δi1 (i.e. δi occurrences of bit ’0’ followed by one bit ’1’). For example, the",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0839:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "difference δ8 between the two adjacent prefixes p7 = 101 and p8 = 111 is (111 − 101)2 = 2; we encode",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0840:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "this difference as δ8 = 021 = 001. The first difference is defined as δ1 = p1. The concatenated bits of",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0841:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "this encoding of δ1,...,δm is the second part EF2 of the EF data structure:",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L0842:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "20",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4828:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Chapter 6",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Chapter label \"Chapter 6\" (20.7pt)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4829:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Bibliography",
+      "draftLabel": "ESTABLISHES_STRUCTURE",
+      "reviewFlag": "NONE",
+      "rationale": "Chapter title \"Bibliography\" (24.8pt)",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4830:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[1] Noga Alon, Martin Dietzfelbinger, Peter Bro Miltersen, Erez Petrank, and Ga´bor Tardos. Linear",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4831:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "hash functions. Journal of the ACM (JACM), 46(5):667–683, 1999.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4832:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[2] Noga Alon, Phillip B Gibbons, Yossi Matias, and Mario Szegedy. Tracking join and self-join sizes",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4833:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "in limited storage. In Proceedings of the eighteenth ACM SIGMOD-SIGACT-SIGART symposium",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4834:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "on Principles of database systems, pages 10–20, 1999.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4835:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[3] Noga Alon, Yossi Matias, and Mario Szegedy. The space complexity of approximating the fre-",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4836:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "quency moments. Journal of Computer and System Sciences, 58:137–147, 1999.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4837:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[4] Michael A Bender, Martin Farach-Colton, Rob Johnson, Bradley C Kuszmaul, Dzejla Medjedovic,",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4838:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Pablo Montes, Pradeep Shetty, Richard P Spillane, and Erez Zadok. Don’t thrash: how to cache",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4839:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "your hash on flash. In 3rd Workshop on Hot Topics in Storage and File Systems (HotStorage 11),",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4840:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2011.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4841:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[5] Burton H Bloom. Space/time trade-offs in hash coding with allowable errors. Communications",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4842:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "of the ACM, 13(7):422–426, 1970.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4843:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[6] Alex Bowe. RRR: A Succinct Rank/Select Index for Bit Vectors. https://www.alexbowe.com/",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4844:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "rrr/. Accessed: 2024-02-20.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4845:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[7] Dany Breslauer and Zvi Galil. Real-time streaming string-matching. ACM Transactions on",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4846:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Algorithms (TALG), 10(4):1–12, 2014.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4847:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[8] Andrei Z Broder. Min-wise independent permutations: Theory and practice. In International",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4848:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Colloquium on Automata, Languages, and Programming, pages 808–808. Springer, 2000.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4849:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[9] Michael Burrows and David J Wheeler. A block-sorting lossless data compression algorithm, 1994.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4850:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[10] Amit Chakrabarti. Data Stream Algorithms - Lecture Notes. https://www.cs.dartmouth.edu/",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4851:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "~ac/Teach/data-streams-lecnotes.pdf. Accessed: 2023-01-03.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4852:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[11] Rapha¨el Clifford, Allyx Fontaine, Ely Porat, Benjamin Sach, and Tatiana Starikovskaya. The k-",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4853:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "mismatch problem revisited. In Proceedings of the twenty-seventh annual ACM-SIAM symposium",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4854:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "on Discrete algorithms, pages 2039–2052. SIAM, 2016.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4855:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[12] Rapha¨el Clifford, Tomasz Kociumaka, and Ely Porat. The streaming k-mismatch problem. In",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4856:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Proceedings of the Thirtieth Annual ACM-SIAM Symposium on Discrete Algorithms, pages 1106–",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4857:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1125. SIAM, 2019.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4858:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[13] Graham Cormode. Data sketching. https://cacm.acm.org/magazines/2017/9/",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4859:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "220427-data-sketching/fulltext. Communications of the ACM, 60(9):48–55, 2017.",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    },
+    {
+      "sourceAlias": "L4860:S0",
+      "page": 119,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "118",
+      "draftLabel": "OTHER",
+      "reviewFlag": "NONE",
+      "rationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "approval": "PENDING_USER"
+    }
+  ],
+  "counts": {
+    "OTHER": 106,
+    "ESTABLISHES_STRUCTURE": 4,
+    "REPRESENTS_STRUCTURE": 39
+  },
+  "flagged": 5
+}
