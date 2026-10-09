@@ -1,0 +1,1169 @@
+{
+  "protocolVersion": "P7_B_INTERPRETATION_RECORD_V2",
+  "stage": "F1",
+  "sourceSha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c",
+  "evidenceStoreSha256": "ce0adc921761cb6c68bb85945315e483c80d146b3f841b2e0047b53de52b4ace",
+  "stageDecision": {
+    "decisions": [
+      { "occurrence": "O1", "function": "OTHER" },
+      { "occurrence": "O2", "function": "OTHER" },
+      { "occurrence": "O3", "function": "OTHER" },
+      { "occurrence": "O4", "function": "OTHER" },
+      { "occurrence": "O5", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O6", "function": "OTHER" },
+      { "occurrence": "O7", "function": "OTHER" },
+      { "occurrence": "O8", "function": "OTHER" },
+      { "occurrence": "O9", "function": "OTHER" },
+      { "occurrence": "O10", "function": "OTHER" },
+      { "occurrence": "O11", "function": "OTHER" },
+      { "occurrence": "O12", "function": "OTHER" },
+      { "occurrence": "O13", "function": "OTHER" },
+      { "occurrence": "O14", "function": "OTHER" },
+      { "occurrence": "O15", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O16", "function": "OTHER" },
+      { "occurrence": "O17", "function": "OTHER" },
+      { "occurrence": "O18", "function": "OTHER" },
+      { "occurrence": "O19", "function": "OTHER" },
+      { "occurrence": "O20", "function": "OTHER" },
+      { "occurrence": "O21", "function": "OTHER" },
+      { "occurrence": "O22", "function": "OTHER" },
+      { "occurrence": "O23", "function": "OTHER" },
+      { "occurrence": "O24", "function": "OTHER" },
+      { "occurrence": "O25", "function": "OTHER" },
+      { "occurrence": "O26", "function": "OTHER" },
+      { "occurrence": "O27", "function": "OTHER" },
+      { "occurrence": "O28", "function": "OTHER" },
+      { "occurrence": "O29", "function": "OTHER" },
+      { "occurrence": "O30", "function": "OTHER" },
+      { "occurrence": "O31", "function": "OTHER" },
+      { "occurrence": "O32", "function": "OTHER" },
+      { "occurrence": "O33", "function": "OTHER" },
+      { "occurrence": "O34", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O35", "function": "OTHER" },
+      { "occurrence": "O36", "function": "OTHER" },
+      { "occurrence": "O37", "function": "OTHER" },
+      { "occurrence": "O38", "function": "OTHER" },
+      { "occurrence": "O39", "function": "OTHER" },
+      { "occurrence": "O40", "function": "OTHER" },
+      { "occurrence": "O41", "function": "OTHER" },
+      { "occurrence": "O42", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O43", "function": "OTHER" },
+      { "occurrence": "O44", "function": "OTHER" },
+      { "occurrence": "O45", "function": "OTHER" },
+      { "occurrence": "O46", "function": "OTHER" },
+      { "occurrence": "O47", "function": "OTHER" },
+      { "occurrence": "O48", "function": "OTHER" },
+      { "occurrence": "O49", "function": "OTHER" },
+      { "occurrence": "O50", "function": "OTHER" },
+      { "occurrence": "O51", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O52", "function": "OTHER" },
+      { "occurrence": "O53", "function": "OTHER" },
+      { "occurrence": "O54", "function": "OTHER" },
+      { "occurrence": "O55", "function": "OTHER" },
+      { "occurrence": "O56", "function": "OTHER" },
+      { "occurrence": "O57", "function": "OTHER" },
+      { "occurrence": "O58", "function": "OTHER" },
+      { "occurrence": "O59", "function": "OTHER" },
+      { "occurrence": "O60", "function": "OTHER" },
+      { "occurrence": "O61", "function": "OTHER" },
+      { "occurrence": "O62", "function": "OTHER" },
+      { "occurrence": "O63", "function": "OTHER" },
+      { "occurrence": "O64", "function": "OTHER" },
+      { "occurrence": "O65", "function": "OTHER" },
+      { "occurrence": "O66", "function": "OTHER" },
+      { "occurrence": "O67", "function": "OTHER" },
+      { "occurrence": "O68", "function": "OTHER" },
+      { "occurrence": "O69", "function": "OTHER" },
+      { "occurrence": "O70", "function": "OTHER" },
+      { "occurrence": "O71", "function": "OTHER" },
+      { "occurrence": "O72", "function": "OTHER" },
+      { "occurrence": "O73", "function": "OTHER" },
+      { "occurrence": "O74", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O75", "function": "OTHER" },
+      { "occurrence": "O76", "function": "OTHER" },
+      { "occurrence": "O77", "function": "OTHER" },
+      { "occurrence": "O78", "function": "OTHER" },
+      { "occurrence": "O79", "function": "OTHER" },
+      { "occurrence": "O80", "function": "OTHER" },
+      { "occurrence": "O81", "function": "OTHER" },
+      { "occurrence": "O82", "function": "OTHER" },
+      { "occurrence": "O83", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O84", "function": "OTHER" },
+      { "occurrence": "O85", "function": "OTHER" },
+      { "occurrence": "O86", "function": "OTHER" },
+      { "occurrence": "O87", "function": "OTHER" },
+      { "occurrence": "O88", "function": "OTHER" },
+      { "occurrence": "O89", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O90", "function": "OTHER" },
+      { "occurrence": "O91", "function": "OTHER" },
+      { "occurrence": "O92", "function": "OTHER" },
+      { "occurrence": "O93", "function": "OTHER" },
+      { "occurrence": "O94", "function": "OTHER" },
+      { "occurrence": "O95", "function": "OTHER" },
+      { "occurrence": "O96", "function": "OTHER" }
+    ]
+  },
+  "analysis": [
+    {
+      "subject": "O1",
+      "references": [
+        { "occurrence": "O1", "sourceAlias": "L1806:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O1", "sourceAlias": "L1806:S0", "field": "text", "value": "period of extension.]" },
+        { "occurrence": "O1", "sourceAlias": "L1806:S0", "field": "page", "value": 52 }
+      ],
+      "interpretation": "The text is a fragment concluding a previous section's content, not a structural heading or navigation element."
+    },
+    {
+      "subject": "O2",
+      "references": [
+        { "occurrence": "O2", "sourceAlias": "L1807:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O2", "sourceAlias": "L1807:S0", "field": "text", "value": "ITP 21.1 The written confirmation of authorization to sign on behalf of the Proposer shall" },
+        { "occurrence": "O2", "sourceAlias": "L1807:S0", "field": "page", "value": 52 }
+      ],
+      "interpretation": "This is body text referencing a specific clause (ITP 21.1), not establishing document structure itself."
+    },
+    {
+      "subject": "O3",
+      "references": [
+        { "occurrence": "O3", "sourceAlias": "L1808:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O3", "sourceAlias": "L1808:S0", "field": "text", "value": "consist of: [insert the name and description of the documentation required to" },
+        { "occurrence": "O3", "sourceAlias": "L1808:S0", "field": "page", "value": 52 }
+      ],
+      "interpretation": "Continuation of body text from O2, providing instructions for form completion."
+    },
+    {
+      "subject": "O4",
+      "references": [
+        { "occurrence": "O4", "sourceAlias": "L1809:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O4", "sourceAlias": "L1809:S0", "field": "text", "value": "demonstrate the authority of the signatory to sign the Proposal]." },
+        { "occurrence": "O4", "sourceAlias": "L1809:S0", "field": "page", "value": 52 }
+      ],
+      "interpretation": "Conclusion of the sentence started in O2/O3, serving as body text."
+    },
+    {
+      "subject": "O5",
+      "references": [
+        { "occurrence": "O5", "sourceAlias": "L1810:S0", "fields": ["text", "page", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O5", "sourceAlias": "L1810:S0", "field": "text", "value": "D. Submission of Proposals" },
+        { "occurrence": "O5", "sourceAlias": "L1810:S0", "field": "page", "value": 52 },
+        { "occurrence": "O5", "sourceAlias": "L1810:S0", "field": "typography", "value": "{\"fontSize\":16,\"fontName\":\"timesnewromanps-boldmt\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "The text 'D. Submission of Proposals' is a capitalized, bolded header with a letter designation, clearly establishing a new section structure at this location."
+    },
+    {
+      "subject": "O6",
+      "references": [
+        { "occurrence": "O6", "sourceAlias": "L1811:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O6", "sourceAlias": "L1811:S0", "field": "text", "value": "ITP 22.1(b)" },
+        { "occurrence": "O6", "sourceAlias": "L1811:S0", "field": "page", "value": 52 }
+      ],
+      "interpretation": "A reference to a specific clause number, acting as a label for the following body text, not a structural heading."
+    },
+    {
+      "subject": "O7",
+      "references": [
+        { "occurrence": "O7", "sourceAlias": "L1811:S1", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O7", "sourceAlias": "L1811:S1", "field": "text", "value": "In addition to the original of the Proposal, the number of copies is: [insert" },
+        { "occurrence": "O7", "sourceAlias": "L1811:S1", "field": "page", "value": 52 }
+      ],
+      "interpretation": "Body text describing submission requirements."
+    },
+    {
+      "subject": "O8",
+      "references": [
+        { "occurrence": "O8", "sourceAlias": "L1812:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O8", "sourceAlias": "L1812:S0", "field": "text", "value": "number of copies]" },
+        { "occurrence": "O8", "sourceAlias": "L1812:S0", "field": "page", "value": 52 }
+      ],
+      "interpretation": "Fragment completing the instruction in O7."
+    },
+    {
+      "subject": "O9",
+      "references": [
+        { "occurrence": "O9", "sourceAlias": "L1813:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O9", "sourceAlias": "L1813:S0", "field": "text", "value": "ITP 23.1" },
+        { "occurrence": "O9", "sourceAlias": "L1813:S0", "field": "page", "value": 52 }
+      ],
+      "interpretation": "Clause reference label, not a structural heading."
+    },
+    {
+      "subject": "O10",
+      "references": [
+        { "occurrence": "O10", "sourceAlias": "L1813:S1", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O10", "sourceAlias": "L1813:S1", "field": "text", "value": "For Proposal submission purposes only, the Employer’s address is : [This" },
+        { "occurrence": "O10", "sourceAlias": "L1813:S1", "field": "page", "value": 52 }
+      ],
+      "interpretation": "Body text introducing address fields."
+    },
+    {
+      "subject": "O11",
+      "references": [
+        { "occurrence": "O11", "sourceAlias": "L1814:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O11", "sourceAlias": "L1814:S0", "field": "text", "value": "address may be the same as or different from that specified under provision" },
+        { "occurrence": "O11", "sourceAlias": "L1814:S0", "field": "page", "value": 52 }
+      ],
+      "interpretation": "Continuation of body text."
+    },
+    {
+      "subject": "O12",
+      "references": [
+        { "occurrence": "O12", "sourceAlias": "L1815:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O12", "sourceAlias": "L1815:S0", "field": "text", "value": "ITP 7.1 for clarifications]" },
+        { "occurrence": "O12", "sourceAlias": "L1815:S0", "field": "page", "value": 52 }
+      ],
+      "interpretation": "Fragment completing the sentence in O11."
+    },
+    {
+      "subject": "O13",
+      "references": [
+        { "occurrence": "O13", "sourceAlias": "L1816:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O13", "sourceAlias": "L1816:S0", "field": "text", "value": "Attention: [insert full name of person, if applicable]" },
+        { "occurrence": "O13", "sourceAlias": "L1816:S0", "field": "page", "value": 52 }
+      ],
+      "interpretation": "Form field label within body text."
+    },
+    {
+      "subject": "O14",
+      "references": [
+        { "occurrence": "O14", "sourceAlias": "L1817:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O14", "sourceAlias": "L1817:S0", "field": "text", "value": "Street Address: [insert street address and number]" },
+        { "occurrence": "O14", "sourceAlias": "L1817:S0", "field": "page", "value": 52 }
+      ],
+      "interpretation": "Form field label within body text."
+    },
+    {
+      "subject": "O15",
+      "references": [
+        { "occurrence": "O15", "sourceAlias": "L1818:S0", "fields": ["text", "page", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O15", "sourceAlias": "L1818:S0", "field": "text", "value": "Section II - Proposal Data Sheet (PDS) 41" },
+        { "occurrence": "O15", "sourceAlias": "L1818:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "This occurrence lists/repeats the section title 'Section II - Proposal Data Sheet (PDS)' which appears elsewhere (e.g., page 6, 21, 47). It serves to navigate or point to that broader document structure rather than establishing it at this specific location (which is likely a footer/header or repeated identifier)."
+    },
+    {
+      "subject": "O16",
+      "references": [
+        { "occurrence": "O16", "sourceAlias": "L1819:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O16", "sourceAlias": "L1819:S0", "field": "text", "value": "Floor/Room number: [insert floor and room number, if applicable]" },
+        { "occurrence": "O16", "sourceAlias": "L1819:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Form field label."
+    },
+    {
+      "subject": "O17",
+      "references": [
+        { "occurrence": "O17", "sourceAlias": "L1820:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O17", "sourceAlias": "L1820:S0", "field": "text", "value": "City: [insert name of city or town]" },
+        { "occurrence": "O17", "sourceAlias": "L1820:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Form field label."
+    },
+    {
+      "subject": "O18",
+      "references": [
+        { "occurrence": "O18", "sourceAlias": "L1821:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O18", "sourceAlias": "L1821:S0", "field": "text", "value": "ZIP Code: [insert postal (ZIP) code, if applicable]" },
+        { "occurrence": "O18", "sourceAlias": "L1821:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Form field label."
+    },
+    {
+      "subject": "O19",
+      "references": [
+        { "occurrence": "O19", "sourceAlias": "L1822:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O19", "sourceAlias": "L1822:S0", "field": "text", "value": "Country: [insert name of country]" },
+        { "occurrence": "O19", "sourceAlias": "L1822:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Form field label."
+    },
+    {
+      "subject": "O20",
+      "references": [
+        { "occurrence": "O20", "sourceAlias": "L1823:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O20", "sourceAlias": "L1823:S0", "field": "text", "value": "The deadline for Proposal submission is:" },
+        { "occurrence": "O20", "sourceAlias": "L1823:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Instructional text within a section, not a structural heading."
+    },
+    {
+      "subject": "O21",
+      "references": [
+        { "occurrence": "O21", "sourceAlias": "L1824:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O21", "sourceAlias": "L1824:S0", "field": "text", "value": "Date: [insert day, month, and year, e.g. 15 June, 2019]" },
+        { "occurrence": "O21", "sourceAlias": "L1824:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Form field label."
+    },
+    {
+      "subject": "O22",
+      "references": [
+        { "occurrence": "O22", "sourceAlias": "L1825:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O22", "sourceAlias": "L1825:S0", "field": "text", "value": "Time: [insert time, and identify if a.m. or p.m., e.g. 10:30 a.m.]" },
+        { "occurrence": "O22", "sourceAlias": "L1825:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Form field label."
+    },
+    {
+      "subject": "O23",
+      "references": [
+        { "occurrence": "O23", "sourceAlias": "L1826:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O23", "sourceAlias": "L1826:S0", "field": "text", "value": "[The date and time should be the same as those provided in the Request for" },
+        { "occurrence": "O23", "sourceAlias": "L1826:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Instructional note within body text."
+    },
+    {
+      "subject": "O24",
+      "references": [
+        { "occurrence": "O24", "sourceAlias": "L1827:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O24", "sourceAlias": "L1827:S0", "field": "text", "value": "Proposals, unless subsequently amended pursuant to ITP 23.2]" },
+        { "occurrence": "O24", "sourceAlias": "L1827:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Continuation of instructional note."
+    },
+    {
+      "subject": "O25",
+      "references": [
+        { "occurrence": "O25", "sourceAlias": "L1828:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O25", "sourceAlias": "L1828:S0", "field": "text", "value": "[If the deadline for the submission of Proposals is extended, the date for Proposal" },
+        { "occurrence": "O25", "sourceAlias": "L1828:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Instructional note."
+    },
+    {
+      "subject": "O26",
+      "references": [
+        { "occurrence": "O26", "sourceAlias": "L1829:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O26", "sourceAlias": "L1829:S0", "field": "text", "value": "validity specified in PDS ITP 20.1 shall be adjusted accordingly.]" },
+        { "occurrence": "O26", "sourceAlias": "L1829:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Continuation of instructional note."
+    },
+    {
+      "subject": "O27",
+      "references": [
+        { "occurrence": "O27", "sourceAlias": "L1830:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O27", "sourceAlias": "L1830:S0", "field": "text", "value": "ITP 23.1 Proposers _______________ [insert “shall” or “shall not”] have the option of" },
+        { "occurrence": "O27", "sourceAlias": "L1830:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Body text with clause reference."
+    },
+    {
+      "subject": "O28",
+      "references": [
+        { "occurrence": "O28", "sourceAlias": "L1831:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O28", "sourceAlias": "L1831:S0", "field": "text", "value": "submitting their Proposals electronically." },
+        { "occurrence": "O28", "sourceAlias": "L1831:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Continuation of body text."
+    },
+    {
+      "subject": "O29",
+      "references": [
+        { "occurrence": "O29", "sourceAlias": "L1832:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O29", "sourceAlias": "L1832:S0", "field": "text", "value": "[The following provision should be included and the required corresponding" },
+        { "occurrence": "O29", "sourceAlias": "L1832:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Instructional note."
+    },
+    {
+      "subject": "O30",
+      "references": [
+        { "occurrence": "O30", "sourceAlias": "L1833:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O30", "sourceAlias": "L1833:S0", "field": "text", "value": "information inserted only if Proposers have the option of submitting their" },
+        { "occurrence": "O30", "sourceAlias": "L1833:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Continuation of instructional note."
+    },
+    {
+      "subject": "O31",
+      "references": [
+        { "occurrence": "O31", "sourceAlias": "L1834:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O31", "sourceAlias": "L1834:S0", "field": "text", "value": "Proposals electronically. Otherwise omit.]" },
+        { "occurrence": "O31", "sourceAlias": "L1834:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Conclusion of instructional note."
+    },
+    {
+      "subject": "O32",
+      "references": [
+        { "occurrence": "O32", "sourceAlias": "L1835:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O32", "sourceAlias": "L1835:S0", "field": "text", "value": "The electronic Proposal submission procedures shall be: [insert a description of" },
+        { "occurrence": "O32", "sourceAlias": "L1835:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Body text/instruction."
+    },
+    {
+      "subject": "O33",
+      "references": [
+        { "occurrence": "O33", "sourceAlias": "L1836:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O33", "sourceAlias": "L1836:S0", "field": "text", "value": "the electronic Proposal submission procedures.]" },
+        { "occurrence": "O33", "sourceAlias": "L1836:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Continuation of body text."
+    },
+    {
+      "subject": "O34",
+      "references": [
+        { "occurrence": "O34", "sourceAlias": "L1837:S0", "fields": ["text", "page", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O34", "sourceAlias": "L1837:S0", "field": "text", "value": "E. Opening of Technical Parts of Proposals" },
+        { "occurrence": "O34", "sourceAlias": "L1837:S0", "field": "page", "value": 53 },
+        { "occurrence": "O34", "sourceAlias": "L1837:S0", "field": "typography", "value": "{\"fontSize\":16,\"fontName\":\"timesnewromanps-boldmt\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "The text 'E. Opening of Technical Parts of Proposals' is a capitalized, bolded header with a letter designation, clearly establishing a new section structure at this location."
+    },
+    {
+      "subject": "O35",
+      "references": [
+        { "occurrence": "O35", "sourceAlias": "L1838:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O35", "sourceAlias": "L1838:S0", "field": "text", "value": "ITP 26.1 The Proposal opening shall take place at:" },
+        { "occurrence": "O35", "sourceAlias": "L1838:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Body text starting a new paragraph under the section established by O34."
+    },
+    {
+      "subject": "O36",
+      "references": [
+        { "occurrence": "O36", "sourceAlias": "L1839:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O36", "sourceAlias": "L1839:S0", "field": "text", "value": "Street Address: [insert street address and number]" },
+        { "occurrence": "O36", "sourceAlias": "L1839:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Form field label."
+    },
+    {
+      "subject": "O37",
+      "references": [
+        { "occurrence": "O37", "sourceAlias": "L1840:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O37", "sourceAlias": "L1840:S0", "field": "text", "value": "Floor/Room number: [insert floor and room number, if applicable]" },
+        { "occurrence": "O37", "sourceAlias": "L1840:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Form field label."
+    },
+    {
+      "subject": "O38",
+      "references": [
+        { "occurrence": "O38", "sourceAlias": "L1841:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O38", "sourceAlias": "L1841:S0", "field": "text", "value": "City: [insert name of city or town]" },
+        { "occurrence": "O38", "sourceAlias": "L1841:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Form field label."
+    },
+    {
+      "subject": "O39",
+      "references": [
+        { "occurrence": "O39", "sourceAlias": "L1842:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O39", "sourceAlias": "L1842:S0", "field": "text", "value": "Country: [insert name of country]" },
+        { "occurrence": "O39", "sourceAlias": "L1842:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Form field label."
+    },
+    {
+      "subject": "O40",
+      "references": [
+        { "occurrence": "O40", "sourceAlias": "L1843:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O40", "sourceAlias": "L1843:S0", "field": "text", "value": "Date: [insert day, month, and year, e.g. 15 June, 2019]" },
+        { "occurrence": "O40", "sourceAlias": "L1843:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Form field label."
+    },
+    {
+      "subject": "O41",
+      "references": [
+        { "occurrence": "O41", "sourceAlias": "L1844:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O41", "sourceAlias": "L1844:S0", "field": "text", "value": "Time:" },
+        { "occurrence": "O41", "sourceAlias": "L1844:S0", "field": "page", "value": 53 }
+      ],
+      "interpretation": "Form field label."
+    },
+    {
+      "subject": "O42",
+      "references": [
+        { "occurrence": "O42", "sourceAlias": "L1845:S0", "fields": ["text", "page", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O42", "sourceAlias": "L1845:S0", "field": "text", "value": "Section II - Proposal Data Sheet (PDS) 42" },
+        { "occurrence": "O42", "sourceAlias": "L1845:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Similar to O15, this occurrence repeats the section title 'Section II - Proposal Data Sheet (PDS)' found elsewhere. It navigates to that structure rather than establishing it here."
+    },
+    {
+      "subject": "O43",
+      "references": [
+        { "occurrence": "O43", "sourceAlias": "L1846:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O43", "sourceAlias": "L1846:S0", "field": "text", "value": "[insert time, and identify if a.m. or p.m. e.g. 10:30 a.m.] [Date and time should" },
+        { "occurrence": "O43", "sourceAlias": "L1846:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Instructional text."
+    },
+    {
+      "subject": "O44",
+      "references": [
+        { "occurrence": "O44", "sourceAlias": "L1847:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O44", "sourceAlias": "L1847:S0", "field": "text", "value": "be the same as those given for the deadline for submission of Proposals in ITP" },
+        { "occurrence": "O44", "sourceAlias": "L1847:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Continuation of instructional text."
+    },
+    {
+      "subject": "O45",
+      "references": [
+        { "occurrence": "O45", "sourceAlias": "L1848:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O45", "sourceAlias": "L1848:S0", "field": "text", "value": "23.1]" },
+        { "occurrence": "O45", "sourceAlias": "L1848:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Fragment completing the sentence in O44."
+    },
+    {
+      "subject": "O46",
+      "references": [
+        { "occurrence": "O46", "sourceAlias": "L1849:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O46", "sourceAlias": "L1849:S0", "field": "text", "value": "ITP 26.1 [The following provision should be included and the required corresponding" },
+        { "occurrence": "O46", "sourceAlias": "L1849:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Instructional note."
+    },
+    {
+      "subject": "O47",
+      "references": [
+        { "occurrence": "O47", "sourceAlias": "L1850:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O47", "sourceAlias": "L1850:S0", "field": "text", "value": "information inserted only if Proposers have the option of submitting their" },
+        { "occurrence": "O47", "sourceAlias": "L1850:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Continuation of instructional note."
+    },
+    {
+      "subject": "O48",
+      "references": [
+        { "occurrence": "O48", "sourceAlias": "L1851:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O48", "sourceAlias": "L1851:S0", "field": "text", "value": "Proposals electronically. Otherwise omit.]" },
+        { "occurrence": "O48", "sourceAlias": "L1851:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Conclusion of instructional note."
+    },
+    {
+      "subject": "O49",
+      "references": [
+        { "occurrence": "O49", "sourceAlias": "L1852:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O49", "sourceAlias": "L1852:S0", "field": "text", "value": "The electronic Proposal opening procedures shall be: [insert a description of" },
+        { "occurrence": "O49", "sourceAlias": "L1852:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Body text/instruction."
+    },
+    {
+      "subject": "O50",
+      "references": [
+        { "occurrence": "O50", "sourceAlias": "L1853:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O50", "sourceAlias": "L1853:S0", "field": "text", "value": "the electronic Proposal opening procedures.]" },
+        { "occurrence": "O50", "sourceAlias": "L1853:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Continuation of body text."
+    },
+    {
+      "subject": "O51",
+      "references": [
+        { "occurrence": "O51", "sourceAlias": "L1854:S0", "fields": ["text", "page", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O51", "sourceAlias": "L1854:S0", "field": "text", "value": "G. Evaluation of Technical Parts of Proposals" },
+        { "occurrence": "O51", "sourceAlias": "L1854:S0", "field": "page", "value": 54 },
+        { "occurrence": "O51", "sourceAlias": "L1854:S0", "field": "typography", "value": "{\"fontSize\":16,\"fontName\":\"timesnewromanps-boldmt\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "The text 'G. Evaluation of Technical Parts of Proposals' is a capitalized, bolded header with a letter designation, clearly establishing a new section structure at this location."
+    },
+    {
+      "subject": "O52",
+      "references": [
+        { "occurrence": "O52", "sourceAlias": "L1855:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O52", "sourceAlias": "L1855:S0", "field": "text", "value": "ITP 31.2 The technical factors (sub-factors) and the corresponding weight out of 100%" },
+        { "occurrence": "O52", "sourceAlias": "L1855:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Body text introducing evaluation criteria."
+    },
+    {
+      "subject": "O53",
+      "references": [
+        { "occurrence": "O53", "sourceAlias": "L1856:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O53", "sourceAlias": "L1856:S0", "field": "text", "value": "are:" },
+        { "occurrence": "O53", "sourceAlias": "L1856:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Fragment completing the sentence in O52."
+    },
+    {
+      "subject": "O54",
+      "references": [
+        { "occurrence": "O54", "sourceAlias": "L1857:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O54", "sourceAlias": "L1857:S0", "field": "text", "value": "Technical Factor weight in" },
+        { "occurrence": "O54", "sourceAlias": "L1857:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Table header or list item start."
+    },
+    {
+      "subject": "O55",
+      "references": [
+        { "occurrence": "O55", "sourceAlias": "L1858:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O55", "sourceAlias": "L1858:S0", "field": "text", "value": "percentage" },
+        { "occurrence": "O55", "sourceAlias": "L1858:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Table header continuation."
+    },
+    {
+      "subject": "O56",
+      "references": [
+        { "occurrence": "O56", "sourceAlias": "L1859:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O56", "sourceAlias": "L1859:S0", "field": "text", "value": "(insert weight in %)" },
+        { "occurrence": "O56", "sourceAlias": "L1859:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Table header instruction."
+    },
+    {
+      "subject": "O57",
+      "references": [
+        { "occurrence": "O57", "sourceAlias": "L1860:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O57", "sourceAlias": "L1860:S0", "field": "text", "value": "A. Proposed Works" },
+        { "occurrence": "O57", "sourceAlias": "L1860:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "List item/sub-factor label within the evaluation criteria table/list, not a top-level document structure."
+    },
+    {
+      "subject": "O58",
+      "references": [
+        { "occurrence": "O58", "sourceAlias": "L1861:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O58", "sourceAlias": "L1861:S0", "field": "text", "value": "1. to what extent the Proposed Works meet the" },
+        { "occurrence": "O58", "sourceAlias": "L1861:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Sub-factor detail."
+    },
+    {
+      "subject": "O59",
+      "references": [
+        { "occurrence": "O59", "sourceAlias": "L1862:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O59", "sourceAlias": "L1862:S0", "field": "text", "value": "Employer’s Requirement:" },
+        { "occurrence": "O59", "sourceAlias": "L1862:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Continuation of sub-factor detail."
+    },
+    {
+      "subject": "O60",
+      "references": [
+        { "occurrence": "O60", "sourceAlias": "L1863:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O60", "sourceAlias": "L1863:S0", "field": "text", "value": "B. Value Addition" },
+        { "occurrence": "O60", "sourceAlias": "L1863:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "List item/sub-factor label."
+    },
+    {
+      "subject": "O61",
+      "references": [
+        { "occurrence": "O61", "sourceAlias": "L1864:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O61", "sourceAlias": "L1864:S0", "field": "text", "value": "2. to what extent the Proposal adds value in terms" },
+        { "occurrence": "O61", "sourceAlias": "L1864:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Sub-factor detail."
+    },
+    {
+      "subject": "O62",
+      "references": [
+        { "occurrence": "O62", "sourceAlias": "L1865:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O62", "sourceAlias": "L1865:S0", "field": "text", "value": "of performance, functionality and/or O&M costs." },
+        { "occurrence": "O62", "sourceAlias": "L1865:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Continuation of sub-factor detail."
+    },
+    {
+      "subject": "O63",
+      "references": [
+        { "occurrence": "O63", "sourceAlias": "L1866:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O63", "sourceAlias": "L1866:S0", "field": "text", "value": "C. Approach and Methodology" },
+        { "occurrence": "O63", "sourceAlias": "L1866:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "List item/sub-factor label."
+    },
+    {
+      "subject": "O64",
+      "references": [
+        { "occurrence": "O64", "sourceAlias": "L1867:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O64", "sourceAlias": "L1867:S0", "field": "text", "value": "3. Design Methodology;" },
+        { "occurrence": "O64", "sourceAlias": "L1867:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Sub-factor detail."
+    },
+    {
+      "subject": "O65",
+      "references": [
+        { "occurrence": "O65", "sourceAlias": "L1868:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O65", "sourceAlias": "L1868:S0", "field": "text", "value": "4. Construction Management strategy;" },
+        { "occurrence": "O65", "sourceAlias": "L1868:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Sub-factor detail."
+    },
+    {
+      "subject": "O66",
+      "references": [
+        { "occurrence": "O66", "sourceAlias": "L1869:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O66", "sourceAlias": "L1869:S0", "field": "text", "value": "5. Method Statement for key construction activities;" },
+        { "occurrence": "O66", "sourceAlias": "L1869:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Sub-factor detail."
+    },
+    {
+      "subject": "O67",
+      "references": [
+        { "occurrence": "O67", "sourceAlias": "L1870:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O67", "sourceAlias": "L1870:S0", "field": "text", "value": "6. Code of Conduct" },
+        { "occurrence": "O67", "sourceAlias": "L1870:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Sub-factor detail."
+    },
+    {
+      "subject": "O68",
+      "references": [
+        { "occurrence": "O68", "sourceAlias": "L1871:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O68", "sourceAlias": "L1871:S0", "field": "text", "value": "7. Work Program;" },
+        { "occurrence": "O68", "sourceAlias": "L1871:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Sub-factor detail."
+    },
+    {
+      "subject": "O69",
+      "references": [
+        { "occurrence": "O69", "sourceAlias": "L1872:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O69", "sourceAlias": "L1872:S0", "field": "text", "value": "8. Contract personnel Organization Chart" },
+        { "occurrence": "O69", "sourceAlias": "L1872:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Sub-factor detail."
+    },
+    {
+      "subject": "O70",
+      "references": [
+        { "occurrence": "O70", "sourceAlias": "L1873:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O70", "sourceAlias": "L1873:S0", "field": "text", "value": "9. Key Personnel qualifications and resource" },
+        { "occurrence": "O70", "sourceAlias": "L1873:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Sub-factor detail."
+    },
+    {
+      "subject": "O71",
+      "references": [
+        { "occurrence": "O71", "sourceAlias": "L1874:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O71", "sourceAlias": "L1874:S0", "field": "text", "value": "schedule," },
+        { "occurrence": "O71", "sourceAlias": "L1874:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Continuation of sub-factor detail."
+    },
+    {
+      "subject": "O72",
+      "references": [
+        { "occurrence": "O72", "sourceAlias": "L1875:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O72", "sourceAlias": "L1875:S0", "field": "text", "value": "10. Risk assessment" },
+        { "occurrence": "O72", "sourceAlias": "L1875:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Sub-factor detail."
+    },
+    {
+      "subject": "O73",
+      "references": [
+        { "occurrence": "O73", "sourceAlias": "L1876:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O73", "sourceAlias": "L1876:S0", "field": "text", "value": "11. key equipment strategy; and" },
+        { "occurrence": "O73", "sourceAlias": "L1876:S0", "field": "page", "value": 54 }
+      ],
+      "interpretation": "Sub-factor detail."
+    },
+    {
+      "subject": "O74",
+      "references": [
+        { "occurrence": "O74", "sourceAlias": "L1877:S0", "fields": ["text", "page", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O74", "sourceAlias": "L1877:S0", "field": "text", "value": "Section II - Proposal Data Sheet (PDS) 43" },
+        { "occurrence": "O74", "sourceAlias": "L1877:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Similar to O15 and O42, this occurrence repeats the section title 'Section II - Proposal Data Sheet (PDS)' found elsewhere. It navigates to that structure rather than establishing it here."
+    },
+    {
+      "subject": "O75",
+      "references": [
+        { "occurrence": "O75", "sourceAlias": "L1878:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O75", "sourceAlias": "L1878:S0", "field": "text", "value": "D. [D. Add any other factors as appropriate]" },
+        { "occurrence": "O75", "sourceAlias": "L1878:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "List item/sub-factor label placeholder."
+    },
+    {
+      "subject": "O76",
+      "references": [
+        { "occurrence": "O76", "sourceAlias": "L1879:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O76", "sourceAlias": "L1879:S0", "field": "text", "value": "12." },
+        { "occurrence": "O76", "sourceAlias": "L1879:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "List item number."
+    },
+    {
+      "subject": "O77",
+      "references": [
+        { "occurrence": "O77", "sourceAlias": "L1880:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O77", "sourceAlias": "L1880:S0", "field": "text", "value": "[The above technical factors may be modified as appropriate to ensure that the" },
+        { "occurrence": "O77", "sourceAlias": "L1880:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Instructional note."
+    },
+    {
+      "subject": "O78",
+      "references": [
+        { "occurrence": "O78", "sourceAlias": "L1881:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O78", "sourceAlias": "L1881:S0", "field": "text", "value": "documents requested from Proposers as part of their technical proposals" },
+        { "occurrence": "O78", "sourceAlias": "L1881:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Continuation of instructional note."
+    },
+    {
+      "subject": "O79",
+      "references": [
+        { "occurrence": "O79", "sourceAlias": "L1882:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O79", "sourceAlias": "L1882:S0", "field": "text", "value": "(Section IV) enable evaluation of the technical factors.]" },
+        { "occurrence": "O79", "sourceAlias": "L1882:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Conclusion of instructional note."
+    },
+    {
+      "subject": "O80",
+      "references": [
+        { "occurrence": "O80", "sourceAlias": "L1883:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O80", "sourceAlias": "L1883:S0", "field": "text", "value": "[The weights should be allocated in terms of the relative significance of the" },
+        { "occurrence": "O80", "sourceAlias": "L1883:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Instructional note."
+    },
+    {
+      "subject": "O81",
+      "references": [
+        { "occurrence": "O81", "sourceAlias": "L1884:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O81", "sourceAlias": "L1884:S0", "field": "text", "value": "technical factors. Insert technical sub-factors and corresponding weights, as" },
+        { "occurrence": "O81", "sourceAlias": "L1884:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Continuation of instructional note."
+    },
+    {
+      "subject": "O82",
+      "references": [
+        { "occurrence": "O82", "sourceAlias": "L1885:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O82", "sourceAlias": "L1885:S0", "field": "text", "value": "appropriate]." },
+        { "occurrence": "O82", "sourceAlias": "L1885:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Conclusion of instructional note."
+    },
+    {
+      "subject": "O83",
+      "references": [
+        { "occurrence": "O83", "sourceAlias": "L1886:S0", "fields": ["text", "page", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O83", "sourceAlias": "L1886:S0", "field": "text", "value": "H. Opening of Financial Parts" },
+        { "occurrence": "O83", "sourceAlias": "L1886:S0", "field": "page", "value": 55 },
+        { "occurrence": "O83", "sourceAlias": "L1886:S0", "field": "typography", "value": "{\"fontSize\":16,\"fontName\":\"timesnewromanps-boldmt\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "The text 'H. Opening of Financial Parts' is a capitalized, bolded header with a letter designation, clearly establishing a new section structure at this location."
+    },
+    {
+      "subject": "O84",
+      "references": [
+        { "occurrence": "O84", "sourceAlias": "L1887:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O84", "sourceAlias": "L1887:S0", "field": "text", "value": "ITP 34.1 The Letter of Proposal and Price Schedules shall be initialed by [insert number]" },
+        { "occurrence": "O84", "sourceAlias": "L1887:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Body text under the section established by O83."
+    },
+    {
+      "subject": "O85",
+      "references": [
+        { "occurrence": "O85", "sourceAlias": "L1888:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O85", "sourceAlias": "L1888:S0", "field": "text", "value": "representatives of the Employer conducting Proposal opening. [Insert" },
+        { "occurrence": "O85", "sourceAlias": "L1888:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Continuation of body text."
+    },
+    {
+      "subject": "O86",
+      "references": [
+        { "occurrence": "O86", "sourceAlias": "L1889:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O86", "sourceAlias": "L1889:S0", "field": "text", "value": "procedure: Example: Each Proposal shall be numbered and any modification" },
+        { "occurrence": "O86", "sourceAlias": "L1889:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Continuation of body text."
+    },
+    {
+      "subject": "O87",
+      "references": [
+        { "occurrence": "O87", "sourceAlias": "L1890:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O87", "sourceAlias": "L1890:S0", "field": "text", "value": "to the unit or total price shall be initialed by the Representative of the" },
+        { "occurrence": "O87", "sourceAlias": "L1890:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Continuation of body text."
+    },
+    {
+      "subject": "O88",
+      "references": [
+        { "occurrence": "O88", "sourceAlias": "L1891:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O88", "sourceAlias": "L1891:S0", "field": "text", "value": "Employer, etc.]" },
+        { "occurrence": "O88", "sourceAlias": "L1891:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Conclusion of body text."
+    },
+    {
+      "subject": "O89",
+      "references": [
+        { "occurrence": "O89", "sourceAlias": "L1892:S0", "fields": ["text", "page", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O89", "sourceAlias": "L1892:S0", "field": "text", "value": "I. Evaluation of Financial Part" },
+        { "occurrence": "O89", "sourceAlias": "L1892:S0", "field": "page", "value": 55 },
+        { "occurrence": "O89", "sourceAlias": "L1892:S0", "field": "typography", "value": "{\"fontSize\":16,\"fontName\":\"timesnewromanps-boldmt\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "The text 'I. Evaluation of Financial Part' is a capitalized, bolded header with a letter designation, clearly establishing a new section structure at this location."
+    },
+    {
+      "subject": "O90",
+      "references": [
+        { "occurrence": "O90", "sourceAlias": "L1893:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O90", "sourceAlias": "L1893:S0", "field": "text", "value": "ITP 38.1 The currency that shall be used for Proposal evaluation and comparison" },
+        { "occurrence": "O90", "sourceAlias": "L1893:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Body text under the section established by O89."
+    },
+    {
+      "subject": "O91",
+      "references": [
+        { "occurrence": "O91", "sourceAlias": "L1894:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O91", "sourceAlias": "L1894:S0", "field": "text", "value": "purposes to convert, at the selling exchange rate, all Proposal prices expressed" },
+        { "occurrence": "O91", "sourceAlias": "L1894:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Continuation of body text."
+    },
+    {
+      "subject": "O92",
+      "references": [
+        { "occurrence": "O92", "sourceAlias": "L1895:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O92", "sourceAlias": "L1895:S0", "field": "text", "value": "in various currencies into a single currency is: [Insert name of currency]" },
+        { "occurrence": "O92", "sourceAlias": "L1895:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Continuation of body text."
+    },
+    {
+      "subject": "O93",
+      "references": [
+        { "occurrence": "O93", "sourceAlias": "L1896:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O93", "sourceAlias": "L1896:S0", "field": "text", "value": "The source of exchange rate shall be: ________ [Insert name of the source of" },
+        { "occurrence": "O93", "sourceAlias": "L1896:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Body text."
+    },
+    {
+      "subject": "O94",
+      "references": [
+        { "occurrence": "O94", "sourceAlias": "L1897:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O94", "sourceAlias": "L1897:S0", "field": "text", "value": "exchange rates (e.g., the Central Bank in the Employer’s Country).]" },
+        { "occurrence": "O94", "sourceAlias": "L1897:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Continuation of body text."
+    },
+    {
+      "subject": "O95",
+      "references": [
+        { "occurrence": "O95", "sourceAlias": "L1898:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O95", "sourceAlias": "L1898:S0", "field": "text", "value": "The date for the exchange rate shall be the deadline for submission of Proposals" },
+        { "occurrence": "O95", "sourceAlias": "L1898:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Body text."
+    },
+    {
+      "subject": "O96",
+      "references": [
+        { "occurrence": "O96", "sourceAlias": "L1899:S0", "fields": ["text", "page"] }
+      ],
+      "assertions": [
+        { "occurrence": "O96", "sourceAlias": "L1899:S0", "field": "text", "value": "as specified in ITP 23, unless otherwise specified by the Employer." },
+        { "occurrence": "O96", "sourceAlias": "L1899:S0", "field": "page", "value": 55 }
+      ],
+      "interpretation": "Continuation of body text."
+    }
+  ]
+}

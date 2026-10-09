@@ -1,0 +1,190 @@
+{
+  "protocolVersion": "P7_B_INTERPRETATION_RECORD_V2",
+  "stage": "F1",
+  "sourceSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+  "evidenceStoreSha256": "1767414774ebfcce2ddc588e06391ef63d5bf99d666bc67cc61ac8b44a63937b",
+  "stageDecision": {
+    "decisions": [
+      { "occurrence": "O1", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O2", "function": "OTHER" },
+      { "occurrence": "O3", "function": "OTHER" },
+      { "occurrence": "O4", "function": "OTHER" },
+      { "occurrence": "O5", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O6", "function": "OTHER" },
+      { "occurrence": "O7", "function": "OTHER" },
+      { "occurrence": "O8", "function": "OTHER" },
+      { "occurrence": "O9", "function": "OTHER" },
+      { "occurrence": "O10", "function": "OTHER" },
+      { "occurrence": "O11", "function": "OTHER" },
+      { "occurrence": "O12", "function": "OTHER" },
+      { "occurrence": "O13", "function": "OTHER" },
+      { "occurrence": "O14", "function": "OTHER" },
+      { "occurrence": "O15", "function": "OTHER" },
+      { "occurrence": "O16", "function": "OTHER" },
+      { "occurrence": "O17", "function": "OTHER" },
+      { "occurrence": "O18", "function": "OTHER" },
+      { "occurrence": "O19", "function": "OTHER" },
+      { "occurrence": "O20", "function": "OTHER" },
+      { "occurrence": "O21", "function": "OTHER" },
+      { "occurrence": "O22", "function": "OTHER" },
+      { "occurrence": "O23", "function": "OTHER" },
+      { "occurrence": "O24", "function": "OTHER" },
+      { "occurrence": "O25", "function": "OTHER" },
+      { "occurrence": "O26", "function": "OTHER" },
+      { "occurrence": "O27", "function": "OTHER" },
+      { "occurrence": "O28", "function": "OTHER" },
+      { "occurrence": "O29", "function": "OTHER" },
+      { "occurrence": "O30", "function": "OTHER" },
+      { "occurrence": "O31", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O32", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O33", "function": "OTHER" },
+      { "occurrence": "O34", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O35", "function": "OTHER" },
+      { "occurrence": "O36", "function": "OTHER" },
+      { "occurrence": "O37", "function": "OTHER" },
+      { "occurrence": "O38", "function": "OTHER" },
+      { "occurrence": "O39", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O40", "function": "OTHER" },
+      { "occurrence": "O41", "function": "OTHER" },
+      { "occurrence": "O42", "function": "OTHER" },
+      { "occurrence": "O43", "function": "OTHER" },
+      { "occurrence": "O44", "function": "OTHER" },
+      { "occurrence": "O45", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O46", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O47", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O48", "function": "OTHER" },
+      { "occurrence": "O49", "function": "OTHER" },
+      { "occurrence": "O50", "function": "OTHER" },
+      { "occurrence": "O51", "function": "OTHER" },
+      { "occurrence": "O52", "function": "OTHER" },
+      { "occurrence": "O53", "function": "OTHER" },
+      { "occurrence": "O54", "function": "OTHER" },
+      { "occurrence": "O55", "function": "OTHER" },
+      { "occurrence": "O56", "function": "OTHER" },
+      { "occurrence": "O57", "function": "OTHER" },
+      { "occurrence": "O58", "function": "OTHER" },
+      { "occurrence": "O59", "function": "OTHER" },
+      { "occurrence": "O60", "function": "OTHER" },
+      { "occurrence": "O61", "function": "OTHER" },
+      { "occurrence": "O62", "function": "OTHER" },
+      { "occurrence": "O63", "function": "OTHER" },
+      { "occurrence": "O64", "function": "OTHER" },
+      { "occurrence": "O65", "function": "OTHER" },
+      { "occurrence": "O66", "function": "OTHER" },
+      { "occurrence": "O67", "function": "OTHER" },
+      { "occurrence": "O68", "function": "OTHER" },
+      { "occurrence": "O69", "function": "OTHER" },
+      { "occurrence": "O70", "function": "OTHER" },
+      { "occurrence": "O71", "function": "OTHER" },
+      { "occurrence": "O72", "function": "OTHER" },
+      { "occurrence": "O73", "function": "OTHER" },
+      { "occurrence": "O74", "function": "OTHER" },
+      { "occurrence": "O75", "function": "OTHER" },
+      { "occurrence": "O76", "function": "OTHER" },
+      { "occurrence": "O77", "function": "OTHER" },
+      { "occurrence": "O78", "function": "OTHER" },
+      { "occurrence": "O79", "function": "OTHER" }
+    ]
+  },
+  "analysis": [
+    {
+      "subject": "O1",
+      "references": [
+        { "occurrence": "O1", "sourceAlias": "L0000:S0", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O1", "sourceAlias": "L0000:S0", "field": "text", "value": "BỘ KHOA HỌC VÀ CÔNG NGHỆ" },
+        { "occurrence": "O1", "sourceAlias": "L0000:S0", "field": "typography", "value": "{\"fontSize\":12,\"fontName\":\"times new roman bold,bold\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "O1 contains the name of the issuing authority in bold typography, serving as a header establishing the document's origin structure."
+    },
+    {
+      "subject": "O5",
+      "references": [
+        { "occurrence": "O5", "sourceAlias": "L0003:S0", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O5", "sourceAlias": "L0003:S0", "field": "text", "value": "GIẤY MỜI" },
+        { "occurrence": "O5", "sourceAlias": "L0003:S0", "field": "typography", "value": "{\"fontSize\":14,\"fontName\":\"times new roman,bold\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "O5 is the title 'GIẤY MỜI' (Invitation) in bold, establishing the document type structure."
+    },
+    {
+      "subject": "O31",
+      "references": [
+        { "occurrence": "O31", "sourceAlias": "L0028:S0", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O31", "sourceAlias": "L0028:S0", "field": "text", "value": "Nơi nhận:" },
+        { "occurrence": "O31", "sourceAlias": "L0028:S0", "field": "typography", "value": "{\"fontSize\":12,\"fontName\":\"times new roman,bolditalic\",\"boldRatio\":1,\"italicRatio\":1}" }
+      ],
+      "interpretation": "O31 is the heading 'Nơi nhận:' (Distribution list), establishing the distribution section structure."
+    },
+    {
+      "subject": "O32",
+      "references": [
+        { "occurrence": "O32", "sourceAlias": "L0028:S1", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O32", "sourceAlias": "L0028:S1", "field": "text", "value": "KT. BỘ TRƯỞNG" },
+        { "occurrence": "O32", "sourceAlias": "L0028:S1", "field": "typography", "value": "{\"fontSize\":14,\"fontName\":\"times new roman,bold\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "O32 is the signature block heading 'KT. BỘ TRƯỞNG' (On behalf of Minister), establishing the signatory structure."
+    },
+    {
+      "subject": "O34",
+      "references": [
+        { "occurrence": "O34", "sourceAlias": "L0029:S1", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O34", "sourceAlias": "L0029:S1", "field": "text", "value": "THỨ TRƯỞNG" },
+        { "occurrence": "O34", "sourceAlias": "L0029:S1", "field": "typography", "value": "{\"fontSize\":14,\"fontName\":\"times new roman,bold\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "O34 is the role title 'THỨ TRƯỞNG' (Deputy Minister), establishing the specific signatory position structure."
+    },
+    {
+      "subject": "O39",
+      "references": [
+        { "occurrence": "O39", "sourceAlias": "L0034:S0", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O39", "sourceAlias": "L0034:S0", "field": "text", "value": "CHƯƠNG TRÌNH" },
+        { "occurrence": "O39", "sourceAlias": "L0034:S0", "field": "typography", "value": "{\"fontSize\":14,\"fontName\":\"times new roman,bold\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "O39 is the section header 'CHƯƠNG TRÌNH' (Program/Agenda), establishing the agenda section structure."
+    },
+    {
+      "subject": "O45",
+      "references": [
+        { "occurrence": "O45", "sourceAlias": "L0040:S0", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O45", "sourceAlias": "L0040:S0", "field": "text", "value": "Thời gian" },
+        { "occurrence": "O45", "sourceAlias": "L0040:S0", "field": "typography", "value": "{\"fontSize\":13,\"fontName\":\"times new roman,bold\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "O45 is the column header 'Thời gian' (Time), establishing the table structure for the agenda."
+    },
+    {
+      "subject": "O46",
+      "references": [
+        { "occurrence": "O46", "sourceAlias": "L0040:S1", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O46", "sourceAlias": "L0040:S1", "field": "text", "value": "Nội dung" },
+        { "occurrence": "O46", "sourceAlias": "L0040:S1", "field": "typography", "value": "{\"fontSize\":13,\"fontName\":\"times new roman,bold\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "O46 is the column header 'Nội dung' (Content), establishing the table structure for the agenda."
+    },
+    {
+      "subject": "O47",
+      "references": [
+        { "occurrence": "O47", "sourceAlias": "L0040:S2", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O47", "sourceAlias": "L0040:S2", "field": "text", "value": "Thực hiện" },
+        { "occurrence": "O47", "sourceAlias": "L0040:S2", "field": "typography", "value": "{\"fontSize\":13,\"fontName\":\"times new roman,bold\",\"boldRatio\":1,\"italicRatio\":0}" }
+      ],
+      "interpretation": "O47 is the column header 'Thực hiện' (Executor), establishing the table structure for the agenda."
+    }
+  ]
+}

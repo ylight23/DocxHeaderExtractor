@@ -1,0 +1,1114 @@
+{
+  "protocolVersion": "P7_B_INTERPRETATION_RECORD_V2",
+  "stage": "F1",
+  "sourceSha256": "2663227a94ec8a81892a02f5697fc15c578571cdee96407adb5c60a60236c76f",
+  "evidenceStoreSha256": "a1521d434b9b310fe7378e509a7b4600b35eb8c39e762d9542bd48c1ac9a80c8",
+  "stageDecision": {
+    "decisions": [
+      { "occurrence": "O1", "function": "OTHER" },
+      { "occurrence": "O2", "function": "OTHER" },
+      { "occurrence": "O3", "function": "OTHER" },
+      { "occurrence": "O4", "function": "OTHER" },
+      { "occurrence": "O5", "function": "OTHER" },
+      { "occurrence": "O6", "function": "OTHER" },
+      { "occurrence": "O7", "function": "OTHER" },
+      { "occurrence": "O8", "function": "OTHER" },
+      { "occurrence": "O9", "function": "OTHER" },
+      { "occurrence": "O10", "function": "OTHER" },
+      { "occurrence": "O11", "function": "OTHER" },
+      { "occurrence": "O12", "function": "OTHER" },
+      { "occurrence": "O13", "function": "OTHER" },
+      { "occurrence": "O14", "function": "OTHER" },
+      { "occurrence": "O15", "function": "OTHER" },
+      { "occurrence": "O16", "function": "OTHER" },
+      { "occurrence": "O17", "function": "OTHER" },
+      { "occurrence": "O18", "function": "OTHER" },
+      { "occurrence": "O19", "function": "OTHER" },
+      { "occurrence": "O20", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O21", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O22", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O23", "function": "OTHER" },
+      { "occurrence": "O24", "function": "OTHER" },
+      { "occurrence": "O25", "function": "OTHER" },
+      { "occurrence": "O26", "function": "OTHER" },
+      { "occurrence": "O27", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O28", "function": "OTHER" },
+      { "occurrence": "O29", "function": "OTHER" },
+      { "occurrence": "O30", "function": "OTHER" },
+      { "occurrence": "O31", "function": "OTHER" },
+      { "occurrence": "O32", "function": "OTHER" },
+      { "occurrence": "O33", "function": "OTHER" },
+      { "occurrence": "O34", "function": "OTHER" },
+      { "occurrence": "O35", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O36", "function": "OTHER" },
+      { "occurrence": "O37", "function": "OTHER" },
+      { "occurrence": "O38", "function": "OTHER" },
+      { "occurrence": "O39", "function": "OTHER" },
+      { "occurrence": "O40", "function": "OTHER" },
+      { "occurrence": "O41", "function": "OTHER" },
+      { "occurrence": "O42", "function": "OTHER" },
+      { "occurrence": "O43", "function": "OTHER" },
+      { "occurrence": "O44", "function": "OTHER" },
+      { "occurrence": "O45", "function": "OTHER" },
+      { "occurrence": "O46", "function": "OTHER" },
+      { "occurrence": "O47", "function": "OTHER" },
+      { "occurrence": "O48", "function": "OTHER" },
+      { "occurrence": "O49", "function": "OTHER" },
+      { "occurrence": "O50", "function": "OTHER" },
+      { "occurrence": "O51", "function": "OTHER" },
+      { "occurrence": "O52", "function": "OTHER" },
+      { "occurrence": "O53", "function": "OTHER" },
+      { "occurrence": "O54", "function": "ESTABLISHES_STRUCTURE" },
+      { "occurrence": "O55", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O56", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O57", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O58", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O59", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O60", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O61", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O62", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O63", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O64", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O65", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O66", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O67", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O68", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O69", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O70", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O71", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O72", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O73", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O74", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O75", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O76", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O77", "function": "OTHER" },
+      { "occurrence": "O78", "function": "OTHER" },
+      { "occurrence": "O79", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O80", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O81", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O82", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O83", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O84", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O85", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O86", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O87", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O88", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O89", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O90", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O91", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O92", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O93", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O94", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O95", "function": "REPRESENTS_STRUCTURE" },
+      { "occurrence": "O96", "function": "REPRESENTS_STRUCTURE" }
+    ]
+  },
+  "analysis": [
+    {
+      "subject": "O1",
+      "references": [
+        { "occurrence": "O1", "sourceAlias": "L0000:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O1", "sourceAlias": "L0000:S0", "field": "text", "value": "Stream:" }
+      ],
+      "interpretation": "O1 is a metadata label in the document header, not a structural heading."
+    },
+    {
+      "subject": "O2",
+      "references": [
+        { "occurrence": "O2", "sourceAlias": "L0000:S1", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O2", "sourceAlias": "L0000:S1", "field": "text", "value": "Internet Engineering Task Force (IETF)" }
+      ],
+      "interpretation": "O2 is an author/organization entity in the header, not a structural heading."
+    },
+    {
+      "subject": "O3",
+      "references": [
+        { "occurrence": "O3", "sourceAlias": "L0001:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O3", "sourceAlias": "L0001:S0", "field": "text", "value": "RFC:" }
+      ],
+      "interpretation": "O3 is a metadata label in the document header."
+    },
+    {
+      "subject": "O4",
+      "references": [
+        { "occurrence": "O4", "sourceAlias": "L0001:S1", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O4", "sourceAlias": "L0001:S1", "field": "text", "value": "9111" }
+      ],
+      "interpretation": "O4 is a metadata value in the document header."
+    },
+    {
+      "subject": "O5",
+      "references": [
+        { "occurrence": "O5", "sourceAlias": "L0002:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O5", "sourceAlias": "L0002:S0", "field": "text", "value": "STD:" }
+      ],
+      "interpretation": "O5 is a metadata label in the document header."
+    },
+    {
+      "subject": "O6",
+      "references": [
+        { "occurrence": "O6", "sourceAlias": "L0002:S1", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O6", "sourceAlias": "L0002:S1", "field": "text", "value": "98" }
+      ],
+      "interpretation": "O6 is a metadata value in the document header."
+    },
+    {
+      "subject": "O7",
+      "references": [
+        { "occurrence": "O7", "sourceAlias": "L0003:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O7", "sourceAlias": "L0003:S0", "field": "text", "value": "Obsoletes:" }
+      ],
+      "interpretation": "O7 is a metadata label in the document header."
+    },
+    {
+      "subject": "O8",
+      "references": [
+        { "occurrence": "O8", "sourceAlias": "L0003:S1", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O8", "sourceAlias": "L0003:S1", "field": "text", "value": "7234" }
+      ],
+      "interpretation": "O8 is a metadata value in the document header."
+    },
+    {
+      "subject": "O9",
+      "references": [
+        { "occurrence": "O9", "sourceAlias": "L0004:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O9", "sourceAlias": "L0004:S0", "field": "text", "value": "Category:" }
+      ],
+      "interpretation": "O9 is a metadata label in the document header."
+    },
+    {
+      "subject": "O10",
+      "references": [
+        { "occurrence": "O10", "sourceAlias": "L0004:S1", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O10", "sourceAlias": "L0004:S1", "field": "text", "value": "Standards Track" }
+      ],
+      "interpretation": "O10 is a metadata value in the document header."
+    },
+    {
+      "subject": "O11",
+      "references": [
+        { "occurrence": "O11", "sourceAlias": "L0005:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O11", "sourceAlias": "L0005:S0", "field": "text", "value": "Published:" }
+      ],
+      "interpretation": "O11 is a metadata label in the document header."
+    },
+    {
+      "subject": "O12",
+      "references": [
+        { "occurrence": "O12", "sourceAlias": "L0005:S1", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O12", "sourceAlias": "L0005:S1", "field": "text", "value": "June 2022" }
+      ],
+      "interpretation": "O12 is a metadata value in the document header."
+    },
+    {
+      "subject": "O13",
+      "references": [
+        { "occurrence": "O13", "sourceAlias": "L0006:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O13", "sourceAlias": "L0006:S0", "field": "text", "value": "ISSN:" }
+      ],
+      "interpretation": "O13 is a metadata label in the document header."
+    },
+    {
+      "subject": "O14",
+      "references": [
+        { "occurrence": "O14", "sourceAlias": "L0006:S1", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O14", "sourceAlias": "L0006:S1", "field": "text", "value": "2070-1721" }
+      ],
+      "interpretation": "O14 is a metadata value in the document header."
+    },
+    {
+      "subject": "O15",
+      "references": [
+        { "occurrence": "O15", "sourceAlias": "L0007:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O15", "sourceAlias": "L0007:S0", "field": "text", "value": "Authors:" }
+      ],
+      "interpretation": "O15 is a metadata label in the document header."
+    },
+    {
+      "subject": "O16",
+      "references": [
+        { "occurrence": "O16", "sourceAlias": "L0007:S1", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O16", "sourceAlias": "L0007:S1", "field": "text", "value": "R. Fielding, Ed." }
+      ],
+      "interpretation": "O16 is an author entity in the header."
+    },
+    {
+      "subject": "O17",
+      "references": [
+        { "occurrence": "O17", "sourceAlias": "L0007:S2", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O17", "sourceAlias": "L0007:S2", "field": "text", "value": "M. Nottingham, Ed." }
+      ],
+      "interpretation": "O17 is an author entity in the header."
+    },
+    {
+      "subject": "O18",
+      "references": [
+        { "occurrence": "O18", "sourceAlias": "L0007:S3", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O18", "sourceAlias": "L0007:S3", "field": "text", "value": "J. Reschke, Ed." }
+      ],
+      "interpretation": "O18 is an author entity in the header."
+    },
+    {
+      "subject": "O19",
+      "references": [
+        { "occurrence": "O19", "sourceAlias": "L0008:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O19", "sourceAlias": "L0008:S0", "field": "text", "value": "Adobe Fastly greenbytes" }
+      ],
+      "interpretation": "O19 is an affiliation entity in the header."
+    },
+    {
+      "subject": "O20",
+      "references": [
+        { "occurrence": "O20", "sourceAlias": "L0009:S0", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O20", "sourceAlias": "L0009:S0", "field": "text", "value": "RFC 9111" },
+        { "occurrence": "O20", "sourceAlias": "L0009:S0", "field": "typography", "value": "{\"fontSize\":17.2,\"fontName\":\"notoserif-bold\",\"boldRatio\":1,\"italicRatio\":0,\"richTypography\":{\"version\":0,\"nominalFontSize\":1,\"effectivePointSize\":17.2,\"fontBoldFlagRatio\":0,\"fontNameBoldRatio\":1,\"derivedBoldRatio\":1,\"boldEvidenceSource\":\"FONT_NAME\",\"fontName\":\"notoserif-bold\",\"glyphs\":{\"dominantPointSize\":17.2,\"medianPointSize\":17.2,\"minPointSize\":17.2,\"maxPointSize\":17.2,\"dominantFontName\":\"notoserif-bold\",\"boldGlyphRatio\":1,\"italicGlyphRatio\":0}}}" }
+      ],
+      "interpretation": "O20 is the main title of the document, establishing the primary structure."
+    },
+    {
+      "subject": "O21",
+      "references": [
+        { "occurrence": "O21", "sourceAlias": "L0010:S0", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O21", "sourceAlias": "L0010:S0", "field": "text", "value": "HTTP Caching" },
+        { "occurrence": "O21", "sourceAlias": "L0010:S0", "field": "typography", "value": "{\"fontSize\":17.2,\"fontName\":\"notoserif-bold\",\"boldRatio\":1,\"italicRatio\":0,\"richTypography\":{\"version\":0,\"nominalFontSize\":1,\"effectivePointSize\":17.199999999999996,\"fontBoldFlagRatio\":0,\"fontNameBoldRatio\":1,\"derivedBoldRatio\":1,\"boldEvidenceSource\":\"FONT_NAME\",\"fontName\":\"notoserif-bold\",\"glyphs\":{\"dominantPointSize\":17.2,\"medianPointSize\":17.2,\"minPointSize\":17.2,\"maxPointSize\":17.2,\"dominantFontName\":\"notoserif-bold\",\"boldGlyphRatio\":1,\"italicGlyphRatio\":0}}}" }
+      ],
+      "interpretation": "O21 is the subtitle of the document, establishing the primary structure."
+    },
+    {
+      "subject": "O22",
+      "references": [
+        { "occurrence": "O22", "sourceAlias": "L0011:S0", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O22", "sourceAlias": "L0011:S0", "field": "text", "value": "Abstract" },
+        { "occurrence": "O22", "sourceAlias": "L0011:S0", "field": "typography", "value": "{\"fontSize\":14.4,\"fontName\":\"notoserif-bold\",\"boldRatio\":1,\"italicRatio\":0,\"richTypography\":{\"version\":0,\"nominalFontSize\":1,\"effectivePointSize\":14.400000000000002,\"fontBoldFlagRatio\":0,\"fontNameBoldRatio\":1,\"derivedBoldRatio\":1,\"boldEvidenceSource\":\"FONT_NAME\",\"fontName\":\"notoserif-bold\",\"glyphs\":{\"dominantPointSize\":14.4,\"medianPointSize\":14.4,\"minPointSize\":14.4,\"maxPointSize\":14.4,\"dominantFontName\":\"notoserif-bold\",\"boldGlyphRatio\":1,\"italicGlyphRatio\":0}}}" }
+      ],
+      "interpretation": "O22 is a section heading for the Abstract, establishing document structure."
+    },
+    {
+      "subject": "O23",
+      "references": [
+        { "occurrence": "O23", "sourceAlias": "L0012:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O23", "sourceAlias": "L0012:S0", "field": "text", "value": "The Hypertext Transfer Protocol (HTTP) is a stateless application-level protocol for distributed," }
+      ],
+      "interpretation": "O23 is body text within the Abstract."
+    },
+    {
+      "subject": "O24",
+      "references": [
+        { "occurrence": "O24", "sourceAlias": "L0013:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O24", "sourceAlias": "L0013:S0", "field": "text", "value": "collaborative, hypertext information systems. This document deﬁnes HTTP caches and the" }
+      ],
+      "interpretation": "O24 is body text within the Abstract."
+    },
+    {
+      "subject": "O25",
+      "references": [
+        { "occurrence": "O25", "sourceAlias": "L0014:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O25", "sourceAlias": "L0014:S0", "field": "text", "value": "associated header ﬁelds that control cache behavior or indicate cacheable response messages." }
+      ],
+      "interpretation": "O25 is body text within the Abstract."
+    },
+    {
+      "subject": "O26",
+      "references": [
+        { "occurrence": "O26", "sourceAlias": "L0015:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O26", "sourceAlias": "L0015:S0", "field": "text", "value": "This document obsoletes RFC 7234." }
+      ],
+      "interpretation": "O26 is body text within the Abstract."
+    },
+    {
+      "subject": "O27",
+      "references": [
+        { "occurrence": "O27", "sourceAlias": "L0016:S0", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O27", "sourceAlias": "L0016:S0", "field": "text", "value": "Status ofThis Memo" },
+        { "occurrence": "O27", "sourceAlias": "L0016:S0", "field": "typography", "value": "{\"fontSize\":14.4,\"fontName\":\"notoserif-bold\",\"boldRatio\":1,\"italicRatio\":0,\"richTypography\":{\"version\":0,\"nominalFontSize\":1,\"effectivePointSize\":14.400000000000004,\"fontBoldFlagRatio\":0,\"fontNameBoldRatio\":1,\"derivedBoldRatio\":1,\"boldEvidenceSource\":\"FONT_NAME\",\"fontName\":\"notoserif-bold\",\"glyphs\":{\"dominantPointSize\":14.4,\"medianPointSize\":14.4,\"minPointSize\":14.4,\"maxPointSize\":14.4,\"dominantFontName\":\"notoserif-bold\",\"boldGlyphRatio\":1,\"italicGlyphRatio\":0}}}" }
+      ],
+      "interpretation": "O27 is a section heading for Status of This Memo, establishing document structure."
+    },
+    {
+      "subject": "O28",
+      "references": [
+        { "occurrence": "O28", "sourceAlias": "L0017:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O28", "sourceAlias": "L0017:S0", "field": "text", "value": "This is an Internet Standards Track document." }
+      ],
+      "interpretation": "O28 is body text within the Status of This Memo section."
+    },
+    {
+      "subject": "O29",
+      "references": [
+        { "occurrence": "O29", "sourceAlias": "L0018:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O29", "sourceAlias": "L0018:S0", "field": "text", "value": "This document is a product ofthe Internet Engineering Task Force (IETF). It represents the" }
+      ],
+      "interpretation": "O29 is body text within the Status of This Memo section."
+    },
+    {
+      "subject": "O30",
+      "references": [
+        { "occurrence": "O30", "sourceAlias": "L0019:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O30", "sourceAlias": "L0019:S0", "field": "text", "value": "consensus ofthe IETF community. It has received public review and has been approved for" }
+      ],
+      "interpretation": "O30 is body text within the Status of This Memo section."
+    },
+    {
+      "subject": "O31",
+      "references": [
+        { "occurrence": "O31", "sourceAlias": "L0020:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O31", "sourceAlias": "L0020:S0", "field": "text", "value": "publication by the Internet Engineering Steering Group (IESG). Further information on Internet" }
+      ],
+      "interpretation": "O31 is body text within the Status of This Memo section."
+    },
+    {
+      "subject": "O32",
+      "references": [
+        { "occurrence": "O32", "sourceAlias": "L0021:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O32", "sourceAlias": "L0021:S0", "field": "text", "value": "Standards is available in Section 2 ofRFC 7841." }
+      ],
+      "interpretation": "O32 is body text within the Status of This Memo section."
+    },
+    {
+      "subject": "O33",
+      "references": [
+        { "occurrence": "O33", "sourceAlias": "L0022:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O33", "sourceAlias": "L0022:S0", "field": "text", "value": "Information about the current status ofthis document, any errata, and how to provide feedback" }
+      ],
+      "interpretation": "O33 is body text within the Status of This Memo section."
+    },
+    {
+      "subject": "O34",
+      "references": [
+        { "occurrence": "O34", "sourceAlias": "L0023:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O34", "sourceAlias": "L0023:S0", "field": "text", "value": "on it may be obtained at https://www.rfc-editor.org/info/rfc9111." }
+      ],
+      "interpretation": "O34 is body text within the Status of This Memo section."
+    },
+    {
+      "subject": "O35",
+      "references": [
+        { "occurrence": "O35", "sourceAlias": "L0024:S0", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O35", "sourceAlias": "L0024:S0", "field": "text", "value": "Copyright Notice" },
+        { "occurrence": "O35", "sourceAlias": "L0024:S0", "field": "typography", "value": "{\"fontSize\":14.4,\"fontName\":\"notoserif-bold\",\"boldRatio\":1,\"italicRatio\":0,\"richTypography\":{\"version\":0,\"nominalFontSize\":1,\"effectivePointSize\":14.400000000000004,\"fontBoldFlagRatio\":0,\"fontNameBoldRatio\":1,\"derivedBoldRatio\":1,\"boldEvidenceSource\":\"FONT_NAME\",\"fontName\":\"notoserif-bold\",\"glyphs\":{\"dominantPointSize\":14.4,\"medianPointSize\":14.4,\"minPointSize\":14.4,\"maxPointSize\":14.4,\"dominantFontName\":\"notoserif-bold\",\"boldGlyphRatio\":1,\"italicGlyphRatio\":0}}}" }
+      ],
+      "interpretation": "O35 is a section heading for Copyright Notice, establishing document structure."
+    },
+    {
+      "subject": "O36",
+      "references": [
+        { "occurrence": "O36", "sourceAlias": "L0025:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O36", "sourceAlias": "L0025:S0", "field": "text", "value": "Copyright (c) 2022 IETF Trust and the persons identiﬁed as the document authors. All rights" }
+      ],
+      "interpretation": "O36 is body text within the Copyright Notice section."
+    },
+    {
+      "subject": "O37",
+      "references": [
+        { "occurrence": "O37", "sourceAlias": "L0026:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O37", "sourceAlias": "L0026:S0", "field": "text", "value": "reserved." }
+      ],
+      "interpretation": "O37 is body text within the Copyright Notice section."
+    },
+    {
+      "subject": "O38",
+      "references": [
+        { "occurrence": "O38", "sourceAlias": "L0027:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O38", "sourceAlias": "L0027:S0", "field": "text", "value": "This document is subject to BCP 78 and the IETF Trust’s Legal Provisions Relating to IETF" }
+      ],
+      "interpretation": "O38 is body text within the Copyright/Legal section."
+    },
+    {
+      "subject": "O39",
+      "references": [
+        { "occurrence": "O39", "sourceAlias": "L0028:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O39", "sourceAlias": "L0028:S0", "field": "text", "value": "Documents (https://trustee.ietf.org/license-info) in eﬀect on the date ofpublication ofthis" }
+      ],
+      "interpretation": "O39 is body text within the Copyright/Legal section."
+    },
+    {
+      "subject": "O40",
+      "references": [
+        { "occurrence": "O40", "sourceAlias": "L0029:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O40", "sourceAlias": "L0029:S0", "field": "text", "value": "document. Please review these documents carefully, as they describe your rights and restrictions" }
+      ],
+      "interpretation": "O40 is body text within the Copyright/Legal section."
+    },
+    {
+      "subject": "O41",
+      "references": [
+        { "occurrence": "O41", "sourceAlias": "L0030:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O41", "sourceAlias": "L0030:S0", "field": "text", "value": "with respect to this document. Code Components extracted from this document must include" }
+      ],
+      "interpretation": "O41 is body text within the Copyright/Legal section."
+    },
+    {
+      "subject": "O42",
+      "references": [
+        { "occurrence": "O42", "sourceAlias": "L0031:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O42", "sourceAlias": "L0031:S0", "field": "text", "value": "Revised BSD License text as described in Section 4.e ofthe Trust Legal Provisions and are" }
+      ],
+      "interpretation": "O42 is body text within the Copyright/Legal section."
+    },
+    {
+      "subject": "O43",
+      "references": [
+        { "occurrence": "O43", "sourceAlias": "L0032:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O43", "sourceAlias": "L0032:S0", "field": "text", "value": "provided without warranty as described in the Revised BSD License." }
+      ],
+      "interpretation": "O43 is body text within the Copyright/Legal section."
+    },
+    {
+      "subject": "O44",
+      "references": [
+        { "occurrence": "O44", "sourceAlias": "L0033:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O44", "sourceAlias": "L0033:S0", "field": "text", "value": "Fielding, et al. Standards Track Page 1" }
+      ],
+      "interpretation": "O44 is a footer/header line containing page info, not a structural heading."
+    },
+    {
+      "subject": "O45",
+      "references": [
+        { "occurrence": "O45", "sourceAlias": "L0034:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O45", "sourceAlias": "L0034:S0", "field": "text", "value": "RFC 9111 HTTP Caching June 2022" }
+      ],
+      "interpretation": "O45 is a running header/footer, not a structural heading."
+    },
+    {
+      "subject": "O46",
+      "references": [
+        { "occurrence": "O46", "sourceAlias": "L0035:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O46", "sourceAlias": "L0035:S0", "field": "text", "value": "This document may contain material from IETF Documents or IETF Contributions published or" }
+      ],
+      "interpretation": "O46 is body text in the legal notice."
+    },
+    {
+      "subject": "O47",
+      "references": [
+        { "occurrence": "O47", "sourceAlias": "L0036:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O47", "sourceAlias": "L0036:S0", "field": "text", "value": "made publicly available before November 10, 2008. The person(s) controlling the copyright in" }
+      ],
+      "interpretation": "O47 is body text in the legal notice."
+    },
+    {
+      "subject": "O48",
+      "references": [
+        { "occurrence": "O48", "sourceAlias": "L0037:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O48", "sourceAlias": "L0037:S0", "field": "text", "value": "some ofthis material may not have granted the IETF Trust the right to allow modiﬁcations of" }
+      ],
+      "interpretation": "O48 is body text in the legal notice."
+    },
+    {
+      "subject": "O49",
+      "references": [
+        { "occurrence": "O49", "sourceAlias": "L0038:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O49", "sourceAlias": "L0038:S0", "field": "text", "value": "such material outside the IETF Standards Process. Without obtaining an adequate license from" }
+      ],
+      "interpretation": "O49 is body text in the legal notice."
+    },
+    {
+      "subject": "O50",
+      "references": [
+        { "occurrence": "O50", "sourceAlias": "L0039:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O50", "sourceAlias": "L0039:S0", "field": "text", "value": "the person(s) controlling the copyright in such materials, this document may not be modiﬁed" }
+      ],
+      "interpretation": "O50 is body text in the legal notice."
+    },
+    {
+      "subject": "O51",
+      "references": [
+        { "occurrence": "O51", "sourceAlias": "L0040:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O51", "sourceAlias": "L0040:S0", "field": "text", "value": "outside the IETF Standards Process, and derivative works ofit may not be created outside the" }
+      ],
+      "interpretation": "O51 is body text in the legal notice."
+    },
+    {
+      "subject": "O52",
+      "references": [
+        { "occurrence": "O52", "sourceAlias": "L0041:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O52", "sourceAlias": "L0041:S0", "field": "text", "value": "IETF Standards Process, except to format it for publication as an RFC or to translate it into" }
+      ],
+      "interpretation": "O52 is body text in the legal notice."
+    },
+    {
+      "subject": "O53",
+      "references": [
+        { "occurrence": "O53", "sourceAlias": "L0042:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O53", "sourceAlias": "L0042:S0", "field": "text", "value": "languages other than English." }
+      ],
+      "interpretation": "O53 is body text in the legal notice."
+    },
+    {
+      "subject": "O54",
+      "references": [
+        { "occurrence": "O54", "sourceAlias": "L0043:S0", "fields": ["text", "typography"] }
+      ],
+      "assertions": [
+        { "occurrence": "O54", "sourceAlias": "L0043:S0", "field": "text", "value": "Table of Contents" },
+        { "occurrence": "O54", "sourceAlias": "L0043:S0", "field": "typography", "value": "{\"fontSize\":14.4,\"fontName\":\"notoserif-bold\",\"boldRatio\":1,\"italicRatio\":0,\"richTypography\":{\"version\":0,\"nominalFontSize\":1,\"effectivePointSize\":14.400000000000004,\"fontBoldFlagRatio\":0,\"fontNameBoldRatio\":1,\"derivedBoldRatio\":1,\"boldEvidenceSource\":\"FONT_NAME\",\"fontName\":\"notoserif-bold\",\"glyphs\":{\"dominantPointSize\":14.4,\"medianPointSize\":14.4,\"minPointSize\":14.4,\"maxPointSize\":14.4,\"dominantFontName\":\"notoserif-bold\",\"boldGlyphRatio\":1,\"italicGlyphRatio\":0}}}" }
+      ],
+      "interpretation": "O54 is a structural heading for the Table of Contents."
+    },
+    {
+      "subject": "O55",
+      "references": [
+        { "occurrence": "O55", "sourceAlias": "L0044:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O55", "sourceAlias": "L0044:S0", "field": "text", "value": "1. Introduction" },
+        { "occurrence": "O55", "sourceAlias": "L0044:S0", "field": "correspondences", "value": "[{\"targetPage\":4,\"targetText\":\"1. Introduction\"}]" }
+      ],
+      "interpretation": "O55 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O56",
+      "references": [
+        { "occurrence": "O56", "sourceAlias": "L0045:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O56", "sourceAlias": "L0045:S0", "field": "text", "value": "1.1. Requirements Notation" },
+        { "occurrence": "O56", "sourceAlias": "L0045:S0", "field": "correspondences", "value": "[{\"targetPage\":5,\"targetText\":\"1.1. Requirements Notation\"}]" }
+      ],
+      "interpretation": "O56 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O57",
+      "references": [
+        { "occurrence": "O57", "sourceAlias": "L0046:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O57", "sourceAlias": "L0046:S0", "field": "text", "value": "1.2. Syntax Notation" },
+        { "occurrence": "O57", "sourceAlias": "L0046:S0", "field": "correspondences", "value": "[{\"targetPage\":5,\"targetText\":\"1.2. Syntax Notation\"}]" }
+      ],
+      "interpretation": "O57 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O58",
+      "references": [
+        { "occurrence": "O58", "sourceAlias": "L0047:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O58", "sourceAlias": "L0047:S0", "field": "text", "value": "1.2.1. Imported Rules" },
+        { "occurrence": "O58", "sourceAlias": "L0047:S0", "field": "correspondences", "value": "[{\"targetPage\":5,\"targetText\":\"1.2.1. Imported Rules\"}]" }
+      ],
+      "interpretation": "O58 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O59",
+      "references": [
+        { "occurrence": "O59", "sourceAlias": "L0048:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O59", "sourceAlias": "L0048:S0", "field": "text", "value": "1.2.2. Delta Seconds" },
+        { "occurrence": "O59", "sourceAlias": "L0048:S0", "field": "correspondences", "value": "[{\"targetPage\":6,\"targetText\":\"1.2.2. Delta Seconds\"}]" }
+      ],
+      "interpretation": "O59 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O60",
+      "references": [
+        { "occurrence": "O60", "sourceAlias": "L0049:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O60", "sourceAlias": "L0049:S0", "field": "text", "value": "2. Overview of Cache Operation" },
+        { "occurrence": "O60", "sourceAlias": "L0049:S0", "field": "correspondences", "value": "[{\"targetPage\":6,\"targetText\":\"2. Overview of Cache Operation\"}]" }
+      ],
+      "interpretation": "O60 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O61",
+      "references": [
+        { "occurrence": "O61", "sourceAlias": "L0050:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O61", "sourceAlias": "L0050:S0", "field": "text", "value": "3. Storing Responses in Caches" },
+        { "occurrence": "O61", "sourceAlias": "L0050:S0", "field": "correspondences", "value": "[{\"targetPage\":7,\"targetText\":\"3. Storing Responses in Caches\"}]" }
+      ],
+      "interpretation": "O61 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O62",
+      "references": [
+        { "occurrence": "O62", "sourceAlias": "L0051:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O62", "sourceAlias": "L0051:S0", "field": "text", "value": "3.1. Storing Header and Trailer Fields" },
+        { "occurrence": "O62", "sourceAlias": "L0051:S0", "field": "correspondences", "value": "[{\"targetPage\":8,\"targetText\":\"3.1. Storing Header and Trailer Fields\"}]" }
+      ],
+      "interpretation": "O62 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O63",
+      "references": [
+        { "occurrence": "O63", "sourceAlias": "L0052:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O63", "sourceAlias": "L0052:S0", "field": "text", "value": "3.2. Updating Stored Header Fields" },
+        { "occurrence": "O63", "sourceAlias": "L0052:S0", "field": "correspondences", "value": "[{\"targetPage\":8,\"targetText\":\"3.2. Updating Stored Header Fields\"}]" }
+      ],
+      "interpretation": "O63 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O64",
+      "references": [
+        { "occurrence": "O64", "sourceAlias": "L0053:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O64", "sourceAlias": "L0053:S0", "field": "text", "value": "3.3. Storing Incomplete Responses" },
+        { "occurrence": "O64", "sourceAlias": "L0053:S0", "field": "correspondences", "value": "[{\"targetPage\":9,\"targetText\":\"3.3. Storing Incomplete Responses\"}]" }
+      ],
+      "interpretation": "O64 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O65",
+      "references": [
+        { "occurrence": "O65", "sourceAlias": "L0054:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O65", "sourceAlias": "L0054:S0", "field": "text", "value": "3.4. Combining Partial Content" },
+        { "occurrence": "O65", "sourceAlias": "L0054:S0", "field": "correspondences", "value": "[{\"targetPage\":9,\"targetText\":\"3.4. Combining Partial Content\"}]" }
+      ],
+      "interpretation": "O65 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O66",
+      "references": [
+        { "occurrence": "O66", "sourceAlias": "L0055:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O66", "sourceAlias": "L0055:S0", "field": "text", "value": "3.5. Storing Responses to Authenticated Requests" },
+        { "occurrence": "O66", "sourceAlias": "L0055:S0", "field": "correspondences", "value": "[{\"targetPage\":10,\"targetText\":\"3.5. Storing Responses to Authenticated Requests\"}]" }
+      ],
+      "interpretation": "O66 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O67",
+      "references": [
+        { "occurrence": "O67", "sourceAlias": "L0056:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O67", "sourceAlias": "L0056:S0", "field": "text", "value": "4. Constructing Responses from Caches" },
+        { "occurrence": "O67", "sourceAlias": "L0056:S0", "field": "correspondences", "value": "[{\"targetPage\":10,\"targetText\":\"4. Constructing Responses from Caches\"}]" }
+      ],
+      "interpretation": "O67 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O68",
+      "references": [
+        { "occurrence": "O68", "sourceAlias": "L0057:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O68", "sourceAlias": "L0057:S0", "field": "text", "value": "4.1. Calculating Cache Keys with the Vary Header Field" },
+        { "occurrence": "O68", "sourceAlias": "L0057:S0", "field": "correspondences", "value": "[{\"targetPage\":11,\"targetText\":\"4.1. Calculating Cache Keys with the Vary Header Field\"}]" }
+      ],
+      "interpretation": "O68 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O69",
+      "references": [
+        { "occurrence": "O69", "sourceAlias": "L0058:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O69", "sourceAlias": "L0058:S0", "field": "text", "value": "4.2. Freshness" },
+        { "occurrence": "O69", "sourceAlias": "L0058:S0", "field": "correspondences", "value": "[{\"targetPage\":11,\"targetText\":\"4.2. Freshness\"}]" }
+      ],
+      "interpretation": "O69 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O70",
+      "references": [
+        { "occurrence": "O70", "sourceAlias": "L0059:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O70", "sourceAlias": "L0059:S0", "field": "text", "value": "4.2.1. Calculating Freshness Lifetime" },
+        { "occurrence": "O70", "sourceAlias": "L0059:S0", "field": "correspondences", "value": "[{\"targetPage\":13,\"targetText\":\"4.2.1. Calculating Freshness Lifetime\"}]" }
+      ],
+      "interpretation": "O70 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O71",
+      "references": [
+        { "occurrence": "O71", "sourceAlias": "L0060:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O71", "sourceAlias": "L0060:S0", "field": "text", "value": "4.2.2. Calculating Heuristic Freshness" },
+        { "occurrence": "O71", "sourceAlias": "L0060:S0", "field": "correspondences", "value": "[{\"targetPage\":13,\"targetText\":\"4.2.2. Calculating Heuristic Freshness\"}]" }
+      ],
+      "interpretation": "O71 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O72",
+      "references": [
+        { "occurrence": "O72", "sourceAlias": "L0061:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O72", "sourceAlias": "L0061:S0", "field": "text", "value": "4.2.3. Calculating Age" },
+        { "occurrence": "O72", "sourceAlias": "L0061:S0", "field": "correspondences", "value": "[{\"targetPage\":14,\"targetText\":\"4.2.3. Calculating Age\"}]" }
+      ],
+      "interpretation": "O72 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O73",
+      "references": [
+        { "occurrence": "O73", "sourceAlias": "L0062:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O73", "sourceAlias": "L0062:S0", "field": "text", "value": "4.2.4. Serving Stale Responses" },
+        { "occurrence": "O73", "sourceAlias": "L0062:S0", "field": "correspondences", "value": "[{\"targetPage\":15,\"targetText\":\"4.2.4. Serving Stale Responses\"}]" }
+      ],
+      "interpretation": "O73 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O74",
+      "references": [
+        { "occurrence": "O74", "sourceAlias": "L0063:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O74", "sourceAlias": "L0063:S0", "field": "text", "value": "4.3. Validation" },
+        { "occurrence": "O74", "sourceAlias": "L0063:S0", "field": "correspondences", "value": "[{\"targetPage\":15,\"targetText\":\"4.3. Validation\"}]" }
+      ],
+      "interpretation": "O74 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O75",
+      "references": [
+        { "occurrence": "O75", "sourceAlias": "L0064:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O75", "sourceAlias": "L0064:S0", "field": "text", "value": "4.3.1. Sending a Validation Request" },
+        { "occurrence": "O75", "sourceAlias": "L0064:S0", "field": "correspondences", "value": "[{\"targetPage\":15,\"targetText\":\"4.3.1. Sending a Validation Request\"}]" }
+      ],
+      "interpretation": "O75 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O76",
+      "references": [
+        { "occurrence": "O76", "sourceAlias": "L0065:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O76", "sourceAlias": "L0065:S0", "field": "text", "value": "4.3.2. Handling a Received Validation Request" },
+        { "occurrence": "O76", "sourceAlias": "L0065:S0", "field": "correspondences", "value": "[{\"targetPage\":16,\"targetText\":\"4.3.2. Handling a Received Validation Request\"}]" }
+      ],
+      "interpretation": "O76 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O77",
+      "references": [
+        { "occurrence": "O77", "sourceAlias": "L0066:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O77", "sourceAlias": "L0066:S0", "field": "text", "value": "Fielding, et al. Standards Track Page 2" }
+      ],
+      "interpretation": "O77 is a footer/header line containing page info, not a structural heading."
+    },
+    {
+      "subject": "O78",
+      "references": [
+        { "occurrence": "O78", "sourceAlias": "L0067:S0", "fields": ["text"] }
+      ],
+      "assertions": [
+        { "occurrence": "O78", "sourceAlias": "L0067:S0", "field": "text", "value": "RFC 9111 HTTP Caching June 2022" }
+      ],
+      "interpretation": "O78 is a running header/footer, not a structural heading."
+    },
+    {
+      "subject": "O79",
+      "references": [
+        { "occurrence": "O79", "sourceAlias": "L0068:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O79", "sourceAlias": "L0068:S0", "field": "text", "value": "4.3.3. Handling a Validation Response" },
+        { "occurrence": "O79", "sourceAlias": "L0068:S0", "field": "correspondences", "value": "[{\"targetPage\":17,\"targetText\":\"4.3.3. Handling a Validation Response\"}]" }
+      ],
+      "interpretation": "O79 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O80",
+      "references": [
+        { "occurrence": "O80", "sourceAlias": "L0069:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O80", "sourceAlias": "L0069:S0", "field": "text", "value": "4.3.4. Freshening Stored Responses upon Validation" },
+        { "occurrence": "O80", "sourceAlias": "L0069:S0", "field": "correspondences", "value": "[{\"targetPage\":18,\"targetText\":\"4.3.4. Freshening Stored Responses upon Validation\"}]" }
+      ],
+      "interpretation": "O80 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O81",
+      "references": [
+        { "occurrence": "O81", "sourceAlias": "L0070:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O81", "sourceAlias": "L0070:S0", "field": "text", "value": "4.3.5. Freshening Responses with HEAD" },
+        { "occurrence": "O81", "sourceAlias": "L0070:S0", "field": "correspondences", "value": "[{\"targetPage\":18,\"targetText\":\"4.3.5. Freshening Responses with HEAD\"}]" }
+      ],
+      "interpretation": "O81 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O82",
+      "references": [
+        { "occurrence": "O82", "sourceAlias": "L0071:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O82", "sourceAlias": "L0071:S0", "field": "text", "value": "4.4. Invalidating Stored Responses" },
+        { "occurrence": "O82", "sourceAlias": "L0071:S0", "field": "correspondences", "value": "[{\"targetPage\":19,\"targetText\":\"4.4. Invalidating Stored Responses\"}]" }
+      ],
+      "interpretation": "O82 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O83",
+      "references": [
+        { "occurrence": "O83", "sourceAlias": "L0072:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O83", "sourceAlias": "L0072:S0", "field": "text", "value": "5. Field Deﬁnitions" },
+        { "occurrence": "O83", "sourceAlias": "L0072:S0", "field": "correspondences", "value": "[{\"targetPage\":19,\"targetText\":\"5. Field Deﬁnitions\"}]" }
+      ],
+      "interpretation": "O83 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O84",
+      "references": [
+        { "occurrence": "O84", "sourceAlias": "L0073:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O84", "sourceAlias": "L0073:S0", "field": "text", "value": "5.1. Age" },
+        { "occurrence": "O84", "sourceAlias": "L0073:S0", "field": "correspondences", "value": "[{\"targetPage\":19,\"targetText\":\"5.1. Age\"},{\"targetPage\":30,\"targetText\":\"Age\"}]" }
+      ],
+      "interpretation": "O84 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O85",
+      "references": [
+        { "occurrence": "O85", "sourceAlias": "L0074:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O85", "sourceAlias": "L0074:S0", "field": "text", "value": "5.2. Cache-Control" },
+        { "occurrence": "O85", "sourceAlias": "L0074:S0", "field": "correspondences", "value": "[{\"targetPage\":20,\"targetText\":\"5.2. Cache-Control\"},{\"targetPage\":30,\"targetText\":\"Cache-Control\"},{\"targetPage\":33,\"targetText\":\"Cache-Control\"}]" }
+      ],
+      "interpretation": "O85 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O86",
+      "references": [
+        { "occurrence": "O86", "sourceAlias": "L0075:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O86", "sourceAlias": "L0075:S0", "field": "text", "value": "5.2.1. Request Directives" },
+        { "occurrence": "O86", "sourceAlias": "L0075:S0", "field": "correspondences", "value": "[{\"targetPage\":20,\"targetText\":\"5.2.1. Request Directives\"}]" }
+      ],
+      "interpretation": "O86 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O87",
+      "references": [
+        { "occurrence": "O87", "sourceAlias": "L0076:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O87", "sourceAlias": "L0076:S0", "field": "text", "value": "5.2.1.1. max-age" },
+        { "occurrence": "O87", "sourceAlias": "L0076:S0", "field": "correspondences", "value": "[{\"targetPage\":20,\"targetText\":\"5.2.1.1. max-age\"},{\"targetPage\":30,\"targetText\":\"max-age\"}]" }
+      ],
+      "interpretation": "O87 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O88",
+      "references": [
+        { "occurrence": "O88", "sourceAlias": "L0077:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O88", "sourceAlias": "L0077:S0", "field": "text", "value": "5.2.1.2. max-stale" },
+        { "occurrence": "O88", "sourceAlias": "L0077:S0", "field": "correspondences", "value": "[{\"targetPage\":21,\"targetText\":\"5.2.1.2. max-stale\"},{\"targetPage\":30,\"targetText\":\"max-stale\"}]" }
+      ],
+      "interpretation": "O88 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O89",
+      "references": [
+        { "occurrence": "O89", "sourceAlias": "L0078:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O89", "sourceAlias": "L0078:S0", "field": "text", "value": "5.2.1.3. min-fresh" },
+        { "occurrence": "O89", "sourceAlias": "L0078:S0", "field": "correspondences", "value": "[{\"targetPage\":21,\"targetText\":\"5.2.1.3. min-fresh\"},{\"targetPage\":30,\"targetText\":\"min-fresh\"}]" }
+      ],
+      "interpretation": "O89 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O90",
+      "references": [
+        { "occurrence": "O90", "sourceAlias": "L0079:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O90", "sourceAlias": "L0079:S0", "field": "text", "value": "5.2.1.4. no-cache" },
+        { "occurrence": "O90", "sourceAlias": "L0079:S0", "field": "correspondences", "value": "[{\"targetPage\":21,\"targetText\":\"5.2.1.4. no-cache\"},{\"targetPage\":30,\"targetText\":\"no-cache\"}]" }
+      ],
+      "interpretation": "O90 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O91",
+      "references": [
+        { "occurrence": "O91", "sourceAlias": "L0080:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O91", "sourceAlias": "L0080:S0", "field": "text", "value": "5.2.1.5. no-store" },
+        { "occurrence": "O91", "sourceAlias": "L0080:S0", "field": "correspondences", "value": "[{\"targetPage\":21,\"targetText\":\"5.2.1.5. no-store\"},{\"targetPage\":30,\"targetText\":\"no-store\"}]" }
+      ],
+      "interpretation": "O91 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O92",
+      "references": [
+        { "occurrence": "O92", "sourceAlias": "L0081:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O92", "sourceAlias": "L0081:S0", "field": "text", "value": "5.2.1.6. no-transform" },
+        { "occurrence": "O92", "sourceAlias": "L0081:S0", "field": "correspondences", "value": "[{\"targetPage\":22,\"targetText\":\"5.2.1.6. no-transform\"},{\"targetPage\":30,\"targetText\":\"no-transform\"}]" }
+      ],
+      "interpretation": "O92 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O93",
+      "references": [
+        { "occurrence": "O93", "sourceAlias": "L0082:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O93", "sourceAlias": "L0082:S0", "field": "text", "value": "5.2.1.7. only-if-cached" },
+        { "occurrence": "O93", "sourceAlias": "L0082:S0", "field": "correspondences", "value": "[{\"targetPage\":22,\"targetText\":\"5.2.1.7. only-if-cached\"},{\"targetPage\":30,\"targetText\":\"only-if-cached\"}]" }
+      ],
+      "interpretation": "O93 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O94",
+      "references": [
+        { "occurrence": "O94", "sourceAlias": "L0083:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O94", "sourceAlias": "L0083:S0", "field": "text", "value": "5.2.2. Response Directives" },
+        { "occurrence": "O94", "sourceAlias": "L0083:S0", "field": "correspondences", "value": "[{\"targetPage\":22,\"targetText\":\"5.2.2. Response Directives\"}]" }
+      ],
+      "interpretation": "O94 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O95",
+      "references": [
+        { "occurrence": "O95", "sourceAlias": "L0084:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O95", "sourceAlias": "L0084:S0", "field": "text", "value": "5.2.2.1. max-age" },
+        { "occurrence": "O95", "sourceAlias": "L0084:S0", "field": "correspondences", "value": "[{\"targetPage\":22,\"targetText\":\"5.2.2.1. max-age\"},{\"targetPage\":30,\"targetText\":\"max-age\"}]" }
+      ],
+      "interpretation": "O95 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    },
+    {
+      "subject": "O96",
+      "references": [
+        { "occurrence": "O96", "sourceAlias": "L0085:S0", "fields": ["text", "correspondences"] }
+      ],
+      "assertions": [
+        { "occurrence": "O96", "sourceAlias": "L0085:S0", "field": "text", "value": "5.2.2.2. must-revalidate" },
+        { "occurrence": "O96", "sourceAlias": "L0085:S0", "field": "correspondences", "value": "[{\"targetPage\":22,\"targetText\":\"5.2.2.2. must-revalidate\"},{\"targetPage\":30,\"targetText\":\"must-revalidate\"}]" }
+      ],
+      "interpretation": "O96 is a TOC entry pointing to the actual heading elsewhere, thus REPRESENTS_STRUCTURE."
+    }
+  ]
+}
