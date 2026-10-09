@@ -395,6 +395,46 @@ public sealed class P7F1QToolAugmentedTests : IDisposable
         }
     }
 
+    [Fact] public void Published_raw_capture_matches_its_freeze_manifest_and_proves_the_tool_chain()
+    {
+        var dir = TestRepository.Path("artifacts/web-pdf-semantic-diagnostic");
+        var root = Path.Combine(dir, "p7.f1q.tool-augmented-raw.v1");
+        var manifestBytes = File.ReadAllBytes(Path.Combine(root, "manifest.json"));
+        Assert.Equal(manifestBytes, File.ReadAllBytes(Path.Combine(dir, "p7.f1q.raw-capture-freeze.v1.json")));
+        using var manifest = JsonDocument.Parse(manifestBytes);
+        var m = manifest.RootElement;
+        foreach (var f in m.GetProperty("files").EnumerateArray())
+            Assert.Equal(f.GetProperty("sha256").GetString(), SpatialCanonical.Hash(File.ReadAllBytes(Path.Combine(root, f.GetProperty("path").GetString()!))));
+        Assert.Equal(33, m.GetProperty("requests").GetInt32());
+        Assert.Equal(44, m.GetProperty("httpAttempts").GetInt32());
+        Assert.Equal(0.072387504m, m.GetProperty("reportedCostUsd").GetDecimal());
+        Assert.True(m.GetProperty("allCostsReported").GetBoolean());
+
+        // Canary transcript: Qwen tool_calls -> C# evidence tool results (role=tool, matching ids) -> Qwen final F1.
+        var canary = Path.Combine(root, "requests", "D05-PACK_001.F1QToolsMandatory");
+        var turn1 = P7F1QSse.Parse(File.ReadAllText(Path.Combine(canary, "turn-1", "attempt-1", "response.sse")));
+        Assert.Equal("tool_calls", turn1.FinishReason);
+        Assert.Equal("Alibaba", turn1.Provider);
+        var turn2Body = JsonNode.Parse(File.ReadAllBytes(Path.Combine(canary, "turn-2", "request.json")))!;
+        var toolMessages = turn2Body["messages"]!.AsArray().Where(x => x!["role"]!.GetValue<string>() == "tool").ToArray();
+        Assert.Equal(turn1.ToolCalls.Count, toolMessages.Length);
+        Assert.Equal(turn1.ToolCalls.Select(c => c.Id), toolMessages.Select(x => x!["tool_call_id"]!.GetValue<string>()));
+        foreach (var (call, n) in turn1.ToolCalls.Select((c, i) => (c, i + 1)))
+        {
+            var record = JsonNode.Parse(File.ReadAllBytes(Directory.GetFiles(Path.Combine(canary, "turn-1"), $"tool-{n:D2}-*.json").Single()))!;
+            Assert.Equal(call.Arguments, record["rawArguments"]!.GetValue<string>());
+            Assert.Equal("OK", record["status"]!.GetValue<string>());
+            var content = record["content"]!.GetValue<string>();
+            Assert.Equal(record["contentSha256"]!.GetValue<string>(), SpatialCanonical.Hash(Encoding.UTF8.GetBytes(content)));
+            Assert.Equal(content, toolMessages[n - 1]!["content"]!.GetValue<string>());
+            Assert.Contains("\"sourceSha256\":\"f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318\"", content);
+        }
+        var turn2 = P7F1QSse.Parse(File.ReadAllText(Path.Combine(canary, "turn-2", "attempt-1", "response.sse")));
+        Assert.Equal("stop", turn2.FinishReason);
+        Assert.Equal(turn2.Content, File.ReadAllText(Path.Combine(canary, "response.txt")));
+        Assert.Equal("ACCEPTED", JsonNode.Parse(File.ReadAllBytes(Path.Combine(canary, "request-receipt.json")))!["status"]!.GetValue<string>());
+    }
+
     private F1QRequestSpec MandatorySpec() => new("case|F1QToolsMandatory", "case", F1QArm.F1QToolsMandatory, "sys", "user", Issued, Citable, Tools(), null, null);
 
     [Fact] public async Task Mandatory_arm_rejects_a_valid_final_answer_given_without_any_tool_evidence()
