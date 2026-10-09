@@ -1,6 +1,8 @@
 # P7-F1Q — independent semantic question experiment (PRE-EXECUTION)
 
-Status: DESIGN_ONLY. Provider calls = 0. Raw response files = 0. This branch is separate from production; do not merge or rewrite historical D3 receipts.
+Status update 2026-10-09: EXECUTED under Issue #5 (V1 plan + separately frozen V2 mandatory-evidence arm). 33 logical requests, 44 provider turns, USD 0.072387504; raw published before Gold read. Results: `artifacts/web-pdf-semantic-diagnostic/p7.f1q.summary.v1.md`. The design text below is preserved as originally written.
+
+Original status: DESIGN_ONLY. Provider calls = 0. Raw response files = 0. This branch is separate from production; do not merge or rewrite historical D3 receipts.
 
 ## Research question
 Can an independent, source-grounded question about an occurrence's function **relative to the user's goal of extracting document headings** reduce semantic errors without coupling F1 to grouping, anchors, candidate selection, hierarchy or exact spans?
