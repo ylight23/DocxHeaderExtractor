@@ -1,0 +1,3443 @@
+{
+  "schemaVersion": "p7-page-context-provider-free-preflight-1",
+  "status": "CONTEXT_BUILDER_ONLY_NOT_PROVIDER_REQUEST_READY",
+  "preflightSha256": "348312e37a9e92295e0928ef13376c6b2fd266a54bc2dfea4a7d62aa89b1d76e",
+  "sourceSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+  "sourceAliasUniverseSha256": "a7960a793b2c42c1f87c543423fefa07c368e865da2bf25180c713878d6267cb",
+  "evidenceStoreSha256": "1767414774ebfcce2ddc588e06391ef63d5bf99d666bc67cc61ac8b44a63937b",
+  "policy": {
+    "localVerticalRadiusPoints": 72,
+    "adjacentPageRadius": 1,
+    "maxContextUtf8Bytes": 262144,
+    "maxDraftUserEnvelopeUtf8Bytes": 1048576,
+    "missingBounds": "NO_GEOMETRIC_INCLUSION_EXCEPT_SUBJECT_REPORTED_NOT_FALSE",
+    "truncation": "FORBIDDEN_FAIL_CLOSED_ON_BUDGET",
+    "glyphProjection": "NONE_PARSER_SPAN_MAP_RETAINED_UNCHANGED"
+  },
+  "contextCandidates": [
+    {
+      "name": "F1",
+      "scope": "LocalVerticalWindow",
+      "contextSha256": "fe97409d66be1e3cc43452cbf9f52539b9ba59c40bc945e462a69156b646e965",
+      "contextUtf8Bytes": 140192,
+      "draftUserEnvelopeUtf8Bytes": 316465,
+      "draftUserEnvelopeSha256": "1646e6c11eb4719885724dd8096dca325581d232b64f004bcd0f220c34e80b53",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 316465,
+      "contextOccurrences": 79,
+      "addedAliases": [],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0000:S0",
+          "earlierSamePageOccurrences": 0
+        },
+        {
+          "alias": "L0000:S1",
+          "earlierSamePageOccurrences": 1
+        },
+        {
+          "alias": "L0001:S0",
+          "earlierSamePageOccurrences": 2
+        },
+        {
+          "alias": "L0002:S0",
+          "earlierSamePageOccurrences": 3
+        },
+        {
+          "alias": "L0003:S0",
+          "earlierSamePageOccurrences": 4
+        },
+        {
+          "alias": "L0004:S0",
+          "earlierSamePageOccurrences": 5
+        },
+        {
+          "alias": "L0005:S0",
+          "earlierSamePageOccurrences": 6
+        },
+        {
+          "alias": "L0006:S0",
+          "earlierSamePageOccurrences": 7
+        },
+        {
+          "alias": "L0007:S0",
+          "earlierSamePageOccurrences": 8
+        },
+        {
+          "alias": "L0008:S0",
+          "earlierSamePageOccurrences": 9
+        },
+        {
+          "alias": "L0009:S0",
+          "earlierSamePageOccurrences": 10
+        },
+        {
+          "alias": "L0010:S0",
+          "earlierSamePageOccurrences": 11
+        },
+        {
+          "alias": "L0011:S0",
+          "earlierSamePageOccurrences": 12
+        },
+        {
+          "alias": "L0012:S0",
+          "earlierSamePageOccurrences": 13
+        },
+        {
+          "alias": "L0013:S0",
+          "earlierSamePageOccurrences": 14
+        },
+        {
+          "alias": "L0014:S0",
+          "earlierSamePageOccurrences": 15
+        },
+        {
+          "alias": "L0015:S0",
+          "earlierSamePageOccurrences": 16
+        },
+        {
+          "alias": "L0016:S0",
+          "earlierSamePageOccurrences": 17
+        },
+        {
+          "alias": "L0017:S0",
+          "earlierSamePageOccurrences": 18
+        },
+        {
+          "alias": "L0017:S1",
+          "earlierSamePageOccurrences": 19
+        },
+        {
+          "alias": "L0018:S0",
+          "earlierSamePageOccurrences": 20
+        },
+        {
+          "alias": "L0019:S0",
+          "earlierSamePageOccurrences": 21
+        },
+        {
+          "alias": "L0020:S0",
+          "earlierSamePageOccurrences": 22
+        },
+        {
+          "alias": "L0021:S0",
+          "earlierSamePageOccurrences": 23
+        },
+        {
+          "alias": "L0022:S0",
+          "earlierSamePageOccurrences": 24
+        },
+        {
+          "alias": "L0023:S0",
+          "earlierSamePageOccurrences": 25
+        },
+        {
+          "alias": "L0024:S0",
+          "earlierSamePageOccurrences": 26
+        },
+        {
+          "alias": "L0025:S0",
+          "earlierSamePageOccurrences": 27
+        },
+        {
+          "alias": "L0026:S0",
+          "earlierSamePageOccurrences": 28
+        },
+        {
+          "alias": "L0027:S0",
+          "earlierSamePageOccurrences": 29
+        },
+        {
+          "alias": "L0028:S0",
+          "earlierSamePageOccurrences": 30
+        },
+        {
+          "alias": "L0028:S1",
+          "earlierSamePageOccurrences": 31
+        },
+        {
+          "alias": "L0029:S0",
+          "earlierSamePageOccurrences": 32
+        },
+        {
+          "alias": "L0029:S1",
+          "earlierSamePageOccurrences": 33
+        },
+        {
+          "alias": "L0030:S0",
+          "earlierSamePageOccurrences": 34
+        },
+        {
+          "alias": "L0031:S0",
+          "earlierSamePageOccurrences": 35
+        },
+        {
+          "alias": "L0032:S0",
+          "earlierSamePageOccurrences": 36
+        },
+        {
+          "alias": "L0033:S0",
+          "earlierSamePageOccurrences": 37
+        },
+        {
+          "alias": "L0034:S0",
+          "earlierSamePageOccurrences": 0
+        },
+        {
+          "alias": "L0035:S0",
+          "earlierSamePageOccurrences": 1
+        },
+        {
+          "alias": "L0036:S0",
+          "earlierSamePageOccurrences": 2
+        },
+        {
+          "alias": "L0037:S0",
+          "earlierSamePageOccurrences": 3
+        },
+        {
+          "alias": "L0038:S0",
+          "earlierSamePageOccurrences": 4
+        },
+        {
+          "alias": "L0039:S0",
+          "earlierSamePageOccurrences": 5
+        },
+        {
+          "alias": "L0040:S0",
+          "earlierSamePageOccurrences": 6
+        },
+        {
+          "alias": "L0040:S1",
+          "earlierSamePageOccurrences": 7
+        },
+        {
+          "alias": "L0040:S2",
+          "earlierSamePageOccurrences": 8
+        },
+        {
+          "alias": "L0041:S0",
+          "earlierSamePageOccurrences": 9
+        },
+        {
+          "alias": "L0041:S1",
+          "earlierSamePageOccurrences": 10
+        },
+        {
+          "alias": "L0041:S2",
+          "earlierSamePageOccurrences": 11
+        },
+        {
+          "alias": "L0042:S0",
+          "earlierSamePageOccurrences": 12
+        },
+        {
+          "alias": "L0042:S1",
+          "earlierSamePageOccurrences": 13
+        },
+        {
+          "alias": "L0042:S2",
+          "earlierSamePageOccurrences": 14
+        },
+        {
+          "alias": "L0043:S0",
+          "earlierSamePageOccurrences": 15
+        },
+        {
+          "alias": "L0044:S0",
+          "earlierSamePageOccurrences": 16
+        },
+        {
+          "alias": "L0044:S1",
+          "earlierSamePageOccurrences": 17
+        },
+        {
+          "alias": "L0044:S2",
+          "earlierSamePageOccurrences": 18
+        },
+        {
+          "alias": "L0045:S0",
+          "earlierSamePageOccurrences": 19
+        },
+        {
+          "alias": "L0046:S0",
+          "earlierSamePageOccurrences": 20
+        },
+        {
+          "alias": "L0046:S1",
+          "earlierSamePageOccurrences": 21
+        },
+        {
+          "alias": "L0047:S0",
+          "earlierSamePageOccurrences": 22
+        },
+        {
+          "alias": "L0047:S1",
+          "earlierSamePageOccurrences": 23
+        },
+        {
+          "alias": "L0048:S0",
+          "earlierSamePageOccurrences": 24
+        },
+        {
+          "alias": "L0049:S0",
+          "earlierSamePageOccurrences": 25
+        },
+        {
+          "alias": "L0049:S1",
+          "earlierSamePageOccurrences": 26
+        },
+        {
+          "alias": "L0050:S0",
+          "earlierSamePageOccurrences": 27
+        },
+        {
+          "alias": "L0050:S1",
+          "earlierSamePageOccurrences": 28
+        },
+        {
+          "alias": "L0051:S0",
+          "earlierSamePageOccurrences": 29
+        },
+        {
+          "alias": "L0052:S0",
+          "earlierSamePageOccurrences": 30
+        },
+        {
+          "alias": "L0053:S0",
+          "earlierSamePageOccurrences": 31
+        },
+        {
+          "alias": "L0053:S1",
+          "earlierSamePageOccurrences": 32
+        },
+        {
+          "alias": "L0053:S2",
+          "earlierSamePageOccurrences": 33
+        },
+        {
+          "alias": "L0054:S0",
+          "earlierSamePageOccurrences": 34
+        },
+        {
+          "alias": "L0055:S0",
+          "earlierSamePageOccurrences": 35
+        },
+        {
+          "alias": "L0055:S1",
+          "earlierSamePageOccurrences": 36
+        },
+        {
+          "alias": "L0055:S2",
+          "earlierSamePageOccurrences": 37
+        },
+        {
+          "alias": "L0056:S0",
+          "earlierSamePageOccurrences": 38
+        },
+        {
+          "alias": "L0056:S1",
+          "earlierSamePageOccurrences": 39
+        },
+        {
+          "alias": "L0056:S2",
+          "earlierSamePageOccurrences": 40
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        },
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "F1",
+      "scope": "SubjectPages",
+      "contextSha256": "65ed21b14ff05312ca242a131daf294fc4e312f9edcc72b5f4dd3c4454a3233e",
+      "contextUtf8Bytes": 140192,
+      "draftUserEnvelopeUtf8Bytes": 316465,
+      "draftUserEnvelopeSha256": "5bd20cf2b3a689f964215d30412f2fea5151d58c8f04fcb8849d88cc7cc29363",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 316465,
+      "contextOccurrences": 79,
+      "addedAliases": [],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0000:S0",
+          "earlierSamePageOccurrences": 0
+        },
+        {
+          "alias": "L0000:S1",
+          "earlierSamePageOccurrences": 1
+        },
+        {
+          "alias": "L0001:S0",
+          "earlierSamePageOccurrences": 2
+        },
+        {
+          "alias": "L0002:S0",
+          "earlierSamePageOccurrences": 3
+        },
+        {
+          "alias": "L0003:S0",
+          "earlierSamePageOccurrences": 4
+        },
+        {
+          "alias": "L0004:S0",
+          "earlierSamePageOccurrences": 5
+        },
+        {
+          "alias": "L0005:S0",
+          "earlierSamePageOccurrences": 6
+        },
+        {
+          "alias": "L0006:S0",
+          "earlierSamePageOccurrences": 7
+        },
+        {
+          "alias": "L0007:S0",
+          "earlierSamePageOccurrences": 8
+        },
+        {
+          "alias": "L0008:S0",
+          "earlierSamePageOccurrences": 9
+        },
+        {
+          "alias": "L0009:S0",
+          "earlierSamePageOccurrences": 10
+        },
+        {
+          "alias": "L0010:S0",
+          "earlierSamePageOccurrences": 11
+        },
+        {
+          "alias": "L0011:S0",
+          "earlierSamePageOccurrences": 12
+        },
+        {
+          "alias": "L0012:S0",
+          "earlierSamePageOccurrences": 13
+        },
+        {
+          "alias": "L0013:S0",
+          "earlierSamePageOccurrences": 14
+        },
+        {
+          "alias": "L0014:S0",
+          "earlierSamePageOccurrences": 15
+        },
+        {
+          "alias": "L0015:S0",
+          "earlierSamePageOccurrences": 16
+        },
+        {
+          "alias": "L0016:S0",
+          "earlierSamePageOccurrences": 17
+        },
+        {
+          "alias": "L0017:S0",
+          "earlierSamePageOccurrences": 18
+        },
+        {
+          "alias": "L0017:S1",
+          "earlierSamePageOccurrences": 19
+        },
+        {
+          "alias": "L0018:S0",
+          "earlierSamePageOccurrences": 20
+        },
+        {
+          "alias": "L0019:S0",
+          "earlierSamePageOccurrences": 21
+        },
+        {
+          "alias": "L0020:S0",
+          "earlierSamePageOccurrences": 22
+        },
+        {
+          "alias": "L0021:S0",
+          "earlierSamePageOccurrences": 23
+        },
+        {
+          "alias": "L0022:S0",
+          "earlierSamePageOccurrences": 24
+        },
+        {
+          "alias": "L0023:S0",
+          "earlierSamePageOccurrences": 25
+        },
+        {
+          "alias": "L0024:S0",
+          "earlierSamePageOccurrences": 26
+        },
+        {
+          "alias": "L0025:S0",
+          "earlierSamePageOccurrences": 27
+        },
+        {
+          "alias": "L0026:S0",
+          "earlierSamePageOccurrences": 28
+        },
+        {
+          "alias": "L0027:S0",
+          "earlierSamePageOccurrences": 29
+        },
+        {
+          "alias": "L0028:S0",
+          "earlierSamePageOccurrences": 30
+        },
+        {
+          "alias": "L0028:S1",
+          "earlierSamePageOccurrences": 31
+        },
+        {
+          "alias": "L0029:S0",
+          "earlierSamePageOccurrences": 32
+        },
+        {
+          "alias": "L0029:S1",
+          "earlierSamePageOccurrences": 33
+        },
+        {
+          "alias": "L0030:S0",
+          "earlierSamePageOccurrences": 34
+        },
+        {
+          "alias": "L0031:S0",
+          "earlierSamePageOccurrences": 35
+        },
+        {
+          "alias": "L0032:S0",
+          "earlierSamePageOccurrences": 36
+        },
+        {
+          "alias": "L0033:S0",
+          "earlierSamePageOccurrences": 37
+        },
+        {
+          "alias": "L0034:S0",
+          "earlierSamePageOccurrences": 0
+        },
+        {
+          "alias": "L0035:S0",
+          "earlierSamePageOccurrences": 1
+        },
+        {
+          "alias": "L0036:S0",
+          "earlierSamePageOccurrences": 2
+        },
+        {
+          "alias": "L0037:S0",
+          "earlierSamePageOccurrences": 3
+        },
+        {
+          "alias": "L0038:S0",
+          "earlierSamePageOccurrences": 4
+        },
+        {
+          "alias": "L0039:S0",
+          "earlierSamePageOccurrences": 5
+        },
+        {
+          "alias": "L0040:S0",
+          "earlierSamePageOccurrences": 6
+        },
+        {
+          "alias": "L0040:S1",
+          "earlierSamePageOccurrences": 7
+        },
+        {
+          "alias": "L0040:S2",
+          "earlierSamePageOccurrences": 8
+        },
+        {
+          "alias": "L0041:S0",
+          "earlierSamePageOccurrences": 9
+        },
+        {
+          "alias": "L0041:S1",
+          "earlierSamePageOccurrences": 10
+        },
+        {
+          "alias": "L0041:S2",
+          "earlierSamePageOccurrences": 11
+        },
+        {
+          "alias": "L0042:S0",
+          "earlierSamePageOccurrences": 12
+        },
+        {
+          "alias": "L0042:S1",
+          "earlierSamePageOccurrences": 13
+        },
+        {
+          "alias": "L0042:S2",
+          "earlierSamePageOccurrences": 14
+        },
+        {
+          "alias": "L0043:S0",
+          "earlierSamePageOccurrences": 15
+        },
+        {
+          "alias": "L0044:S0",
+          "earlierSamePageOccurrences": 16
+        },
+        {
+          "alias": "L0044:S1",
+          "earlierSamePageOccurrences": 17
+        },
+        {
+          "alias": "L0044:S2",
+          "earlierSamePageOccurrences": 18
+        },
+        {
+          "alias": "L0045:S0",
+          "earlierSamePageOccurrences": 19
+        },
+        {
+          "alias": "L0046:S0",
+          "earlierSamePageOccurrences": 20
+        },
+        {
+          "alias": "L0046:S1",
+          "earlierSamePageOccurrences": 21
+        },
+        {
+          "alias": "L0047:S0",
+          "earlierSamePageOccurrences": 22
+        },
+        {
+          "alias": "L0047:S1",
+          "earlierSamePageOccurrences": 23
+        },
+        {
+          "alias": "L0048:S0",
+          "earlierSamePageOccurrences": 24
+        },
+        {
+          "alias": "L0049:S0",
+          "earlierSamePageOccurrences": 25
+        },
+        {
+          "alias": "L0049:S1",
+          "earlierSamePageOccurrences": 26
+        },
+        {
+          "alias": "L0050:S0",
+          "earlierSamePageOccurrences": 27
+        },
+        {
+          "alias": "L0050:S1",
+          "earlierSamePageOccurrences": 28
+        },
+        {
+          "alias": "L0051:S0",
+          "earlierSamePageOccurrences": 29
+        },
+        {
+          "alias": "L0052:S0",
+          "earlierSamePageOccurrences": 30
+        },
+        {
+          "alias": "L0053:S0",
+          "earlierSamePageOccurrences": 31
+        },
+        {
+          "alias": "L0053:S1",
+          "earlierSamePageOccurrences": 32
+        },
+        {
+          "alias": "L0053:S2",
+          "earlierSamePageOccurrences": 33
+        },
+        {
+          "alias": "L0054:S0",
+          "earlierSamePageOccurrences": 34
+        },
+        {
+          "alias": "L0055:S0",
+          "earlierSamePageOccurrences": 35
+        },
+        {
+          "alias": "L0055:S1",
+          "earlierSamePageOccurrences": 36
+        },
+        {
+          "alias": "L0055:S2",
+          "earlierSamePageOccurrences": 37
+        },
+        {
+          "alias": "L0056:S0",
+          "earlierSamePageOccurrences": 38
+        },
+        {
+          "alias": "L0056:S1",
+          "earlierSamePageOccurrences": 39
+        },
+        {
+          "alias": "L0056:S2",
+          "earlierSamePageOccurrences": 40
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        },
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "F1",
+      "scope": "SubjectAndAdjacentPages",
+      "contextSha256": "79ea892d488d033e1751e6f6bc7f074980589ed950be7e6d7f66219e78632f68",
+      "contextUtf8Bytes": 140192,
+      "draftUserEnvelopeUtf8Bytes": 316465,
+      "draftUserEnvelopeSha256": "55858f34980056e3bf576c7c309af43ff9d1af9d7562b9d97c241aea02ba4cae",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 316465,
+      "contextOccurrences": 79,
+      "addedAliases": [],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0000:S0",
+          "earlierSamePageOccurrences": 0
+        },
+        {
+          "alias": "L0000:S1",
+          "earlierSamePageOccurrences": 1
+        },
+        {
+          "alias": "L0001:S0",
+          "earlierSamePageOccurrences": 2
+        },
+        {
+          "alias": "L0002:S0",
+          "earlierSamePageOccurrences": 3
+        },
+        {
+          "alias": "L0003:S0",
+          "earlierSamePageOccurrences": 4
+        },
+        {
+          "alias": "L0004:S0",
+          "earlierSamePageOccurrences": 5
+        },
+        {
+          "alias": "L0005:S0",
+          "earlierSamePageOccurrences": 6
+        },
+        {
+          "alias": "L0006:S0",
+          "earlierSamePageOccurrences": 7
+        },
+        {
+          "alias": "L0007:S0",
+          "earlierSamePageOccurrences": 8
+        },
+        {
+          "alias": "L0008:S0",
+          "earlierSamePageOccurrences": 9
+        },
+        {
+          "alias": "L0009:S0",
+          "earlierSamePageOccurrences": 10
+        },
+        {
+          "alias": "L0010:S0",
+          "earlierSamePageOccurrences": 11
+        },
+        {
+          "alias": "L0011:S0",
+          "earlierSamePageOccurrences": 12
+        },
+        {
+          "alias": "L0012:S0",
+          "earlierSamePageOccurrences": 13
+        },
+        {
+          "alias": "L0013:S0",
+          "earlierSamePageOccurrences": 14
+        },
+        {
+          "alias": "L0014:S0",
+          "earlierSamePageOccurrences": 15
+        },
+        {
+          "alias": "L0015:S0",
+          "earlierSamePageOccurrences": 16
+        },
+        {
+          "alias": "L0016:S0",
+          "earlierSamePageOccurrences": 17
+        },
+        {
+          "alias": "L0017:S0",
+          "earlierSamePageOccurrences": 18
+        },
+        {
+          "alias": "L0017:S1",
+          "earlierSamePageOccurrences": 19
+        },
+        {
+          "alias": "L0018:S0",
+          "earlierSamePageOccurrences": 20
+        },
+        {
+          "alias": "L0019:S0",
+          "earlierSamePageOccurrences": 21
+        },
+        {
+          "alias": "L0020:S0",
+          "earlierSamePageOccurrences": 22
+        },
+        {
+          "alias": "L0021:S0",
+          "earlierSamePageOccurrences": 23
+        },
+        {
+          "alias": "L0022:S0",
+          "earlierSamePageOccurrences": 24
+        },
+        {
+          "alias": "L0023:S0",
+          "earlierSamePageOccurrences": 25
+        },
+        {
+          "alias": "L0024:S0",
+          "earlierSamePageOccurrences": 26
+        },
+        {
+          "alias": "L0025:S0",
+          "earlierSamePageOccurrences": 27
+        },
+        {
+          "alias": "L0026:S0",
+          "earlierSamePageOccurrences": 28
+        },
+        {
+          "alias": "L0027:S0",
+          "earlierSamePageOccurrences": 29
+        },
+        {
+          "alias": "L0028:S0",
+          "earlierSamePageOccurrences": 30
+        },
+        {
+          "alias": "L0028:S1",
+          "earlierSamePageOccurrences": 31
+        },
+        {
+          "alias": "L0029:S0",
+          "earlierSamePageOccurrences": 32
+        },
+        {
+          "alias": "L0029:S1",
+          "earlierSamePageOccurrences": 33
+        },
+        {
+          "alias": "L0030:S0",
+          "earlierSamePageOccurrences": 34
+        },
+        {
+          "alias": "L0031:S0",
+          "earlierSamePageOccurrences": 35
+        },
+        {
+          "alias": "L0032:S0",
+          "earlierSamePageOccurrences": 36
+        },
+        {
+          "alias": "L0033:S0",
+          "earlierSamePageOccurrences": 37
+        },
+        {
+          "alias": "L0034:S0",
+          "earlierSamePageOccurrences": 0
+        },
+        {
+          "alias": "L0035:S0",
+          "earlierSamePageOccurrences": 1
+        },
+        {
+          "alias": "L0036:S0",
+          "earlierSamePageOccurrences": 2
+        },
+        {
+          "alias": "L0037:S0",
+          "earlierSamePageOccurrences": 3
+        },
+        {
+          "alias": "L0038:S0",
+          "earlierSamePageOccurrences": 4
+        },
+        {
+          "alias": "L0039:S0",
+          "earlierSamePageOccurrences": 5
+        },
+        {
+          "alias": "L0040:S0",
+          "earlierSamePageOccurrences": 6
+        },
+        {
+          "alias": "L0040:S1",
+          "earlierSamePageOccurrences": 7
+        },
+        {
+          "alias": "L0040:S2",
+          "earlierSamePageOccurrences": 8
+        },
+        {
+          "alias": "L0041:S0",
+          "earlierSamePageOccurrences": 9
+        },
+        {
+          "alias": "L0041:S1",
+          "earlierSamePageOccurrences": 10
+        },
+        {
+          "alias": "L0041:S2",
+          "earlierSamePageOccurrences": 11
+        },
+        {
+          "alias": "L0042:S0",
+          "earlierSamePageOccurrences": 12
+        },
+        {
+          "alias": "L0042:S1",
+          "earlierSamePageOccurrences": 13
+        },
+        {
+          "alias": "L0042:S2",
+          "earlierSamePageOccurrences": 14
+        },
+        {
+          "alias": "L0043:S0",
+          "earlierSamePageOccurrences": 15
+        },
+        {
+          "alias": "L0044:S0",
+          "earlierSamePageOccurrences": 16
+        },
+        {
+          "alias": "L0044:S1",
+          "earlierSamePageOccurrences": 17
+        },
+        {
+          "alias": "L0044:S2",
+          "earlierSamePageOccurrences": 18
+        },
+        {
+          "alias": "L0045:S0",
+          "earlierSamePageOccurrences": 19
+        },
+        {
+          "alias": "L0046:S0",
+          "earlierSamePageOccurrences": 20
+        },
+        {
+          "alias": "L0046:S1",
+          "earlierSamePageOccurrences": 21
+        },
+        {
+          "alias": "L0047:S0",
+          "earlierSamePageOccurrences": 22
+        },
+        {
+          "alias": "L0047:S1",
+          "earlierSamePageOccurrences": 23
+        },
+        {
+          "alias": "L0048:S0",
+          "earlierSamePageOccurrences": 24
+        },
+        {
+          "alias": "L0049:S0",
+          "earlierSamePageOccurrences": 25
+        },
+        {
+          "alias": "L0049:S1",
+          "earlierSamePageOccurrences": 26
+        },
+        {
+          "alias": "L0050:S0",
+          "earlierSamePageOccurrences": 27
+        },
+        {
+          "alias": "L0050:S1",
+          "earlierSamePageOccurrences": 28
+        },
+        {
+          "alias": "L0051:S0",
+          "earlierSamePageOccurrences": 29
+        },
+        {
+          "alias": "L0052:S0",
+          "earlierSamePageOccurrences": 30
+        },
+        {
+          "alias": "L0053:S0",
+          "earlierSamePageOccurrences": 31
+        },
+        {
+          "alias": "L0053:S1",
+          "earlierSamePageOccurrences": 32
+        },
+        {
+          "alias": "L0053:S2",
+          "earlierSamePageOccurrences": 33
+        },
+        {
+          "alias": "L0054:S0",
+          "earlierSamePageOccurrences": 34
+        },
+        {
+          "alias": "L0055:S0",
+          "earlierSamePageOccurrences": 35
+        },
+        {
+          "alias": "L0055:S1",
+          "earlierSamePageOccurrences": 36
+        },
+        {
+          "alias": "L0055:S2",
+          "earlierSamePageOccurrences": 37
+        },
+        {
+          "alias": "L0056:S0",
+          "earlierSamePageOccurrences": 38
+        },
+        {
+          "alias": "L0056:S1",
+          "earlierSamePageOccurrences": 39
+        },
+        {
+          "alias": "L0056:S2",
+          "earlierSamePageOccurrences": 40
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        },
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "G2A",
+      "scope": "LocalVerticalWindow",
+      "contextSha256": "f5c5e89310809c585c7a2c1d070bb7bcef947da74363ac53e51fa318d68bcb84",
+      "contextUtf8Bytes": 60270,
+      "draftUserEnvelopeUtf8Bytes": 103573,
+      "draftUserEnvelopeSha256": "a7194233b0f50565dc3b2b95794b941abc465c271b6aeead017ff4139b61ebe7",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 103573,
+      "contextOccurrences": 34,
+      "addedAliases": [
+        "L0005:S0",
+        "L0006:S0",
+        "L0007:S0",
+        "L0025:S0",
+        "L0026:S0",
+        "L0027:S0",
+        "L0031:S0",
+        "L0032:S0",
+        "L0036:S0",
+        "L0037:S0",
+        "L0038:S0",
+        "L0041:S1",
+        "L0041:S2",
+        "L0042:S0",
+        "L0042:S1",
+        "L0042:S2"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0000:S0",
+          "earlierSamePageOccurrences": 0
+        },
+        {
+          "alias": "L0000:S1",
+          "earlierSamePageOccurrences": 1
+        },
+        {
+          "alias": "L0001:S0",
+          "earlierSamePageOccurrences": 2
+        },
+        {
+          "alias": "L0003:S0",
+          "earlierSamePageOccurrences": 4
+        },
+        {
+          "alias": "L0028:S1",
+          "earlierSamePageOccurrences": 13
+        },
+        {
+          "alias": "L0029:S1",
+          "earlierSamePageOccurrences": 15
+        },
+        {
+          "alias": "L0034:S0",
+          "earlierSamePageOccurrences": 0
+        },
+        {
+          "alias": "L0040:S0",
+          "earlierSamePageOccurrences": 6
+        },
+        {
+          "alias": "L0040:S1",
+          "earlierSamePageOccurrences": 7
+        },
+        {
+          "alias": "L0040:S2",
+          "earlierSamePageOccurrences": 8
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "PARTIAL_VERTICAL_WINDOW",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0"
+          ]
+        },
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "PARTIAL_VERTICAL_WINDOW",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "G2A",
+      "scope": "SubjectPages",
+      "contextSha256": "fdbfa6e2998c056547946d806a3867851ce6eecc1f05d39bf244fd139371d07f",
+      "contextUtf8Bytes": 139433,
+      "draftUserEnvelopeUtf8Bytes": 182736,
+      "draftUserEnvelopeSha256": "a2e8d54b932ea6588a04b17dfa18d5e6b475b8b2297e9182223d3e0f10e40531",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 182736,
+      "contextOccurrences": 79,
+      "addedAliases": [
+        "L0005:S0",
+        "L0006:S0",
+        "L0007:S0",
+        "L0008:S0",
+        "L0009:S0",
+        "L0010:S0",
+        "L0011:S0",
+        "L0012:S0",
+        "L0013:S0",
+        "L0014:S0",
+        "L0015:S0",
+        "L0016:S0",
+        "L0017:S0",
+        "L0017:S1",
+        "L0018:S0",
+        "L0019:S0",
+        "L0020:S0",
+        "L0021:S0",
+        "L0022:S0",
+        "L0023:S0",
+        "L0024:S0",
+        "L0025:S0",
+        "L0026:S0",
+        "L0027:S0",
+        "L0031:S0",
+        "L0032:S0",
+        "L0036:S0",
+        "L0037:S0",
+        "L0038:S0",
+        "L0041:S1",
+        "L0041:S2",
+        "L0042:S0",
+        "L0042:S1",
+        "L0042:S2",
+        "L0043:S0",
+        "L0044:S0",
+        "L0044:S1",
+        "L0044:S2",
+        "L0045:S0",
+        "L0046:S0",
+        "L0046:S1",
+        "L0047:S0",
+        "L0047:S1",
+        "L0048:S0",
+        "L0049:S0",
+        "L0049:S1",
+        "L0050:S0",
+        "L0050:S1",
+        "L0051:S0",
+        "L0052:S0",
+        "L0053:S0",
+        "L0053:S1",
+        "L0053:S2",
+        "L0054:S0",
+        "L0055:S0",
+        "L0055:S1",
+        "L0055:S2",
+        "L0056:S0",
+        "L0056:S1",
+        "L0056:S2"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0000:S0",
+          "earlierSamePageOccurrences": 0
+        },
+        {
+          "alias": "L0000:S1",
+          "earlierSamePageOccurrences": 1
+        },
+        {
+          "alias": "L0001:S0",
+          "earlierSamePageOccurrences": 2
+        },
+        {
+          "alias": "L0003:S0",
+          "earlierSamePageOccurrences": 4
+        },
+        {
+          "alias": "L0028:S1",
+          "earlierSamePageOccurrences": 31
+        },
+        {
+          "alias": "L0029:S1",
+          "earlierSamePageOccurrences": 33
+        },
+        {
+          "alias": "L0034:S0",
+          "earlierSamePageOccurrences": 0
+        },
+        {
+          "alias": "L0040:S0",
+          "earlierSamePageOccurrences": 6
+        },
+        {
+          "alias": "L0040:S1",
+          "earlierSamePageOccurrences": 7
+        },
+        {
+          "alias": "L0040:S2",
+          "earlierSamePageOccurrences": 8
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        },
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "G2A",
+      "scope": "SubjectAndAdjacentPages",
+      "contextSha256": "0b3ad18b4065585653e1c04ba569125f5d34802ddcea0e93a43998481f2a5623",
+      "contextUtf8Bytes": 139433,
+      "draftUserEnvelopeUtf8Bytes": 182736,
+      "draftUserEnvelopeSha256": "c96b6488fcfd5817ae37fda5e2b46a73ded476f05f8f4c0b8de719f127e38574",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 182736,
+      "contextOccurrences": 79,
+      "addedAliases": [
+        "L0005:S0",
+        "L0006:S0",
+        "L0007:S0",
+        "L0008:S0",
+        "L0009:S0",
+        "L0010:S0",
+        "L0011:S0",
+        "L0012:S0",
+        "L0013:S0",
+        "L0014:S0",
+        "L0015:S0",
+        "L0016:S0",
+        "L0017:S0",
+        "L0017:S1",
+        "L0018:S0",
+        "L0019:S0",
+        "L0020:S0",
+        "L0021:S0",
+        "L0022:S0",
+        "L0023:S0",
+        "L0024:S0",
+        "L0025:S0",
+        "L0026:S0",
+        "L0027:S0",
+        "L0031:S0",
+        "L0032:S0",
+        "L0036:S0",
+        "L0037:S0",
+        "L0038:S0",
+        "L0041:S1",
+        "L0041:S2",
+        "L0042:S0",
+        "L0042:S1",
+        "L0042:S2",
+        "L0043:S0",
+        "L0044:S0",
+        "L0044:S1",
+        "L0044:S2",
+        "L0045:S0",
+        "L0046:S0",
+        "L0046:S1",
+        "L0047:S0",
+        "L0047:S1",
+        "L0048:S0",
+        "L0049:S0",
+        "L0049:S1",
+        "L0050:S0",
+        "L0050:S1",
+        "L0051:S0",
+        "L0052:S0",
+        "L0053:S0",
+        "L0053:S1",
+        "L0053:S2",
+        "L0054:S0",
+        "L0055:S0",
+        "L0055:S1",
+        "L0055:S2",
+        "L0056:S0",
+        "L0056:S1",
+        "L0056:S2"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0000:S0",
+          "earlierSamePageOccurrences": 0
+        },
+        {
+          "alias": "L0000:S1",
+          "earlierSamePageOccurrences": 1
+        },
+        {
+          "alias": "L0001:S0",
+          "earlierSamePageOccurrences": 2
+        },
+        {
+          "alias": "L0003:S0",
+          "earlierSamePageOccurrences": 4
+        },
+        {
+          "alias": "L0028:S1",
+          "earlierSamePageOccurrences": 31
+        },
+        {
+          "alias": "L0029:S1",
+          "earlierSamePageOccurrences": 33
+        },
+        {
+          "alias": "L0034:S0",
+          "earlierSamePageOccurrences": 0
+        },
+        {
+          "alias": "L0040:S0",
+          "earlierSamePageOccurrences": 6
+        },
+        {
+          "alias": "L0040:S1",
+          "earlierSamePageOccurrences": 7
+        },
+        {
+          "alias": "L0040:S2",
+          "earlierSamePageOccurrences": 8
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        },
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O1",
+      "scope": "LocalVerticalWindow",
+      "contextSha256": "e6089424323d321ce0932d84eff764dfe4cbf7d6e2d52ac04cd311b904d73f30",
+      "contextUtf8Bytes": 7691,
+      "draftUserEnvelopeUtf8Bytes": 201679,
+      "draftUserEnvelopeSha256": "fd26fe60905c6fb45a66d3828c4897062dab4bf5658545b1c70fb8a30ca51146",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 201679,
+      "contextOccurrences": 4,
+      "addedAliases": [],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0000:S0",
+          "earlierSamePageOccurrences": 0
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "PARTIAL_VERTICAL_WINDOW",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O1",
+      "scope": "SubjectPages",
+      "contextSha256": "c74fd957fe318c735fffb752e612d9ec686e2bea19301659e401fc1c522e32e8",
+      "contextUtf8Bytes": 68312,
+      "draftUserEnvelopeUtf8Bytes": 262300,
+      "draftUserEnvelopeSha256": "169aec7260e266c43d5995d0f1271aad72a92e2fe77540b37655a2a52233e6e8",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 262300,
+      "contextOccurrences": 38,
+      "addedAliases": [],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0000:S0",
+          "earlierSamePageOccurrences": 0
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O1",
+      "scope": "SubjectAndAdjacentPages",
+      "contextSha256": "32acf8b787fd520c2d6c759ec0e3d24b01bb2a5a4b3469beb324823fc0c89cfd",
+      "contextUtf8Bytes": 139334,
+      "draftUserEnvelopeUtf8Bytes": 333322,
+      "draftUserEnvelopeSha256": "37b4c9071255bbb5bdbd4e6fc299fde22da5e9ebf378aacc6b43e5090a54f6d7",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 333322,
+      "contextOccurrences": 79,
+      "addedAliases": [],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0000:S0",
+          "earlierSamePageOccurrences": 0
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        },
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O5",
+      "scope": "LocalVerticalWindow",
+      "contextSha256": "286da8c908f8cf3ea055b9873de7fd7b22b0344dcc64b45bf44e9ccaf4ae0909",
+      "contextUtf8Bytes": 11523,
+      "draftUserEnvelopeUtf8Bytes": 195789,
+      "draftUserEnvelopeSha256": "5c8a7fe4c679e9de0771eb46f5f97339c464ecd63cdba443c6b02ea185171b96",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 195789,
+      "contextOccurrences": 6,
+      "addedAliases": [
+        "L0002:S0"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0003:S0",
+          "earlierSamePageOccurrences": 1
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "PARTIAL_VERTICAL_WINDOW",
+          "aliases": [
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O5",
+      "scope": "SubjectPages",
+      "contextSha256": "f03a560d3fa4de64f2fe653ee4d17067bc685dfd421952768d71dfa2a59c768f",
+      "contextUtf8Bytes": 68312,
+      "draftUserEnvelopeUtf8Bytes": 252578,
+      "draftUserEnvelopeSha256": "de3278bae05a86569be9748d4969790c4a38c0884527db7d6ff54e89ab6651e1",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 252578,
+      "contextOccurrences": 38,
+      "addedAliases": [
+        "L0000:S0",
+        "L0000:S1",
+        "L0001:S0",
+        "L0002:S0"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0003:S0",
+          "earlierSamePageOccurrences": 4
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O5",
+      "scope": "SubjectAndAdjacentPages",
+      "contextSha256": "c6a30f256db84d96942ce02073e0a816d675c7296669bc4932d2db0f51e7b541",
+      "contextUtf8Bytes": 139334,
+      "draftUserEnvelopeUtf8Bytes": 323600,
+      "draftUserEnvelopeSha256": "cb82c4b37bea9b29c591ed9d67cd9d4744aca406569209145ba87a2ae2129c07",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 323600,
+      "contextOccurrences": 79,
+      "addedAliases": [
+        "L0000:S0",
+        "L0000:S1",
+        "L0001:S0",
+        "L0002:S0"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0003:S0",
+          "earlierSamePageOccurrences": 4
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        },
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O39",
+      "scope": "LocalVerticalWindow",
+      "contextSha256": "590cb3bb3e48ccf6f9a68d404ed110e28751c2c147610469f6af95fb993fc068",
+      "contextUtf8Bytes": 7913,
+      "draftUserEnvelopeUtf8Bytes": 107211,
+      "draftUserEnvelopeSha256": "cb91668231356a5ddeb3c92be9c7ec87a4450f08952c68aee8d4734ae88773ab",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 107211,
+      "contextOccurrences": 4,
+      "addedAliases": [],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0034:S0",
+          "earlierSamePageOccurrences": 0
+        }
+      ],
+      "pages": [
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "PARTIAL_VERTICAL_WINDOW",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O39",
+      "scope": "SubjectPages",
+      "contextSha256": "fce5e5d993eae1f24b88973d10680af9f5bd202328a9ca4290a99100ad106504",
+      "contextUtf8Bytes": 71642,
+      "draftUserEnvelopeUtf8Bytes": 170940,
+      "draftUserEnvelopeSha256": "b305eb4a14b064fdeebca812172cb25cf011ec90dd88fca990e2ef68245777c3",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 170940,
+      "contextOccurrences": 41,
+      "addedAliases": [],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0034:S0",
+          "earlierSamePageOccurrences": 0
+        }
+      ],
+      "pages": [
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O39",
+      "scope": "SubjectAndAdjacentPages",
+      "contextSha256": "651de534f681faa7b49a3f1f5eb0203fc66ee8cf3cbeb0320d10a5453c5efa26",
+      "contextUtf8Bytes": 139334,
+      "draftUserEnvelopeUtf8Bytes": 238632,
+      "draftUserEnvelopeSha256": "46e1e18f2a978827c0c07b1f4bc1f3a38bb443758d5921ecea1d82f5a6fddaaa",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 238632,
+      "contextOccurrences": 79,
+      "addedAliases": [
+        "L0000:S0",
+        "L0000:S1",
+        "L0001:S0",
+        "L0002:S0",
+        "L0003:S0",
+        "L0004:S0",
+        "L0005:S0",
+        "L0006:S0",
+        "L0007:S0",
+        "L0008:S0",
+        "L0009:S0",
+        "L0010:S0",
+        "L0011:S0",
+        "L0012:S0",
+        "L0013:S0",
+        "L0014:S0",
+        "L0015:S0",
+        "L0016:S0",
+        "L0017:S0",
+        "L0017:S1",
+        "L0018:S0",
+        "L0019:S0",
+        "L0020:S0",
+        "L0021:S0",
+        "L0022:S0",
+        "L0023:S0",
+        "L0024:S0",
+        "L0025:S0",
+        "L0026:S0",
+        "L0027:S0",
+        "L0028:S0",
+        "L0028:S1",
+        "L0029:S0",
+        "L0029:S1",
+        "L0030:S0",
+        "L0031:S0",
+        "L0032:S0",
+        "L0033:S0"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0034:S0",
+          "earlierSamePageOccurrences": 0
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        },
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O45",
+      "scope": "LocalVerticalWindow",
+      "contextSha256": "781f60db9f1628bb4deaf23717417e42040d054d44504c8f6a2e6903ef9ab994",
+      "contextUtf8Bytes": 19642,
+      "draftUserEnvelopeUtf8Bytes": 103796,
+      "draftUserEnvelopeSha256": "9ab8a331d71b0a00a30e5c40783c16bb4f2ded274fa6b1d1ad9387844b9f6357",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 103796,
+      "contextOccurrences": 11,
+      "addedAliases": [
+        "L0038:S0",
+        "L0039:S0"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0040:S0",
+          "earlierSamePageOccurrences": 2
+        }
+      ],
+      "pages": [
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "PARTIAL_VERTICAL_WINDOW",
+          "aliases": [
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O45",
+      "scope": "SubjectPages",
+      "contextSha256": "4f65790382cf26d70f4ddc4dd0ec93d3a8bce80a0821d2480c1a687eef22879b",
+      "contextUtf8Bytes": 71642,
+      "draftUserEnvelopeUtf8Bytes": 155796,
+      "draftUserEnvelopeSha256": "b52757a7310e1fe353d47a0d69c05d2ed7215a73cac53054a968b57360ad456e",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 155796,
+      "contextOccurrences": 41,
+      "addedAliases": [
+        "L0034:S0",
+        "L0035:S0",
+        "L0036:S0",
+        "L0037:S0",
+        "L0038:S0",
+        "L0039:S0"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0040:S0",
+          "earlierSamePageOccurrences": 6
+        }
+      ],
+      "pages": [
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O45",
+      "scope": "SubjectAndAdjacentPages",
+      "contextSha256": "8f6e7d1531228c02b6d48464b1e8eddd97e33bd691a26d5da1f1bc1d87b8ace1",
+      "contextUtf8Bytes": 139334,
+      "draftUserEnvelopeUtf8Bytes": 223488,
+      "draftUserEnvelopeSha256": "8fbab019f32e72d382e6b2a41349d96081e96dd11c72d2391adf842b591b68ca",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 223488,
+      "contextOccurrences": 79,
+      "addedAliases": [
+        "L0000:S0",
+        "L0000:S1",
+        "L0001:S0",
+        "L0002:S0",
+        "L0003:S0",
+        "L0004:S0",
+        "L0005:S0",
+        "L0006:S0",
+        "L0007:S0",
+        "L0008:S0",
+        "L0009:S0",
+        "L0010:S0",
+        "L0011:S0",
+        "L0012:S0",
+        "L0013:S0",
+        "L0014:S0",
+        "L0015:S0",
+        "L0016:S0",
+        "L0017:S0",
+        "L0017:S1",
+        "L0018:S0",
+        "L0019:S0",
+        "L0020:S0",
+        "L0021:S0",
+        "L0022:S0",
+        "L0023:S0",
+        "L0024:S0",
+        "L0025:S0",
+        "L0026:S0",
+        "L0027:S0",
+        "L0028:S0",
+        "L0028:S1",
+        "L0029:S0",
+        "L0029:S1",
+        "L0030:S0",
+        "L0031:S0",
+        "L0032:S0",
+        "L0033:S0",
+        "L0034:S0",
+        "L0035:S0",
+        "L0036:S0",
+        "L0037:S0",
+        "L0038:S0",
+        "L0039:S0"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0040:S0",
+          "earlierSamePageOccurrences": 6
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        },
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O46",
+      "scope": "LocalVerticalWindow",
+      "contextSha256": "be3f020c9e821142c4c6ceeeebf95d3a23c47bc034d0e4cbf53d64053a8efdb1",
+      "contextUtf8Bytes": 19642,
+      "draftUserEnvelopeUtf8Bytes": 101455,
+      "draftUserEnvelopeSha256": "ebbb7f6e12e452537de3ceb39cd5c4575872e6917553b00b7c2682400e67661d",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 101455,
+      "contextOccurrences": 11,
+      "addedAliases": [
+        "L0038:S0",
+        "L0039:S0",
+        "L0040:S0"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0040:S1",
+          "earlierSamePageOccurrences": 3
+        }
+      ],
+      "pages": [
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "PARTIAL_VERTICAL_WINDOW",
+          "aliases": [
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O46",
+      "scope": "SubjectPages",
+      "contextSha256": "2f1ad9ae635b4c0a9d3d3fa158dc24066f470d3a9f0a26ce71ba41f4017135c1",
+      "contextUtf8Bytes": 71642,
+      "draftUserEnvelopeUtf8Bytes": 153455,
+      "draftUserEnvelopeSha256": "ed4ee93f656e412db534d5ff39254946d7382969a77996a64b1928393a788da4",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 153455,
+      "contextOccurrences": 41,
+      "addedAliases": [
+        "L0034:S0",
+        "L0035:S0",
+        "L0036:S0",
+        "L0037:S0",
+        "L0038:S0",
+        "L0039:S0",
+        "L0040:S0"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0040:S1",
+          "earlierSamePageOccurrences": 7
+        }
+      ],
+      "pages": [
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O46",
+      "scope": "SubjectAndAdjacentPages",
+      "contextSha256": "bd45171e8944c73d5ed13ce44ce388c8ff6bf02d831be7b221a5a6092dc57dca",
+      "contextUtf8Bytes": 139334,
+      "draftUserEnvelopeUtf8Bytes": 221147,
+      "draftUserEnvelopeSha256": "791b03a5a74f81fee67dc069d62dc3d25b0e42453f1f82ce8e4d64e90cc9905e",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 221147,
+      "contextOccurrences": 79,
+      "addedAliases": [
+        "L0000:S0",
+        "L0000:S1",
+        "L0001:S0",
+        "L0002:S0",
+        "L0003:S0",
+        "L0004:S0",
+        "L0005:S0",
+        "L0006:S0",
+        "L0007:S0",
+        "L0008:S0",
+        "L0009:S0",
+        "L0010:S0",
+        "L0011:S0",
+        "L0012:S0",
+        "L0013:S0",
+        "L0014:S0",
+        "L0015:S0",
+        "L0016:S0",
+        "L0017:S0",
+        "L0017:S1",
+        "L0018:S0",
+        "L0019:S0",
+        "L0020:S0",
+        "L0021:S0",
+        "L0022:S0",
+        "L0023:S0",
+        "L0024:S0",
+        "L0025:S0",
+        "L0026:S0",
+        "L0027:S0",
+        "L0028:S0",
+        "L0028:S1",
+        "L0029:S0",
+        "L0029:S1",
+        "L0030:S0",
+        "L0031:S0",
+        "L0032:S0",
+        "L0033:S0",
+        "L0034:S0",
+        "L0035:S0",
+        "L0036:S0",
+        "L0037:S0",
+        "L0038:S0",
+        "L0039:S0",
+        "L0040:S0"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0040:S1",
+          "earlierSamePageOccurrences": 7
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        },
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O47",
+      "scope": "LocalVerticalWindow",
+      "contextSha256": "13b5eb3f7146a48567fdee38572fa739528adef93ad5a90aacbfad582897574e",
+      "contextUtf8Bytes": 19642,
+      "draftUserEnvelopeUtf8Bytes": 99116,
+      "draftUserEnvelopeSha256": "afd3bae5ee525e5e8fcd7bdb11baa035eec0824d124ebd8fdef06b153ed204b1",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 99116,
+      "contextOccurrences": 11,
+      "addedAliases": [
+        "L0038:S0",
+        "L0039:S0",
+        "L0040:S0",
+        "L0040:S1"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0040:S2",
+          "earlierSamePageOccurrences": 4
+        }
+      ],
+      "pages": [
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "PARTIAL_VERTICAL_WINDOW",
+          "aliases": [
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O47",
+      "scope": "SubjectPages",
+      "contextSha256": "7e9d980625887a1b439ba4dcb32d36d5321f462b541176350c57d4e87c83efa7",
+      "contextUtf8Bytes": 71642,
+      "draftUserEnvelopeUtf8Bytes": 151116,
+      "draftUserEnvelopeSha256": "304298ecb1edcdb0db231087a42f2479a24b18275070ac41d250675775653ec0",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 151116,
+      "contextOccurrences": 41,
+      "addedAliases": [
+        "L0034:S0",
+        "L0035:S0",
+        "L0036:S0",
+        "L0037:S0",
+        "L0038:S0",
+        "L0039:S0",
+        "L0040:S0",
+        "L0040:S1"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0040:S2",
+          "earlierSamePageOccurrences": 8
+        }
+      ],
+      "pages": [
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    },
+    {
+      "name": "H2C_O47",
+      "scope": "SubjectAndAdjacentPages",
+      "contextSha256": "d0de04e9a8c8a6d8f0b6c97d743fe87650c0471bb143109e366030311e76156d",
+      "contextUtf8Bytes": 139334,
+      "draftUserEnvelopeUtf8Bytes": 218808,
+      "draftUserEnvelopeSha256": "9fca22e66ea30210bf42ee9890b4c1c7e489cb4fed857c2ccbdd0b6b10bbab3b",
+      "inputTokens": null,
+      "inputTokensStatus": "NOT_MEASURED_NO_PINNED_MODEL_TOKENIZER_PROVIDER_GATE_BLOCKED",
+      "unicodeScalars": 218808,
+      "contextOccurrences": 79,
+      "addedAliases": [
+        "L0000:S0",
+        "L0000:S1",
+        "L0001:S0",
+        "L0002:S0",
+        "L0003:S0",
+        "L0004:S0",
+        "L0005:S0",
+        "L0006:S0",
+        "L0007:S0",
+        "L0008:S0",
+        "L0009:S0",
+        "L0010:S0",
+        "L0011:S0",
+        "L0012:S0",
+        "L0013:S0",
+        "L0014:S0",
+        "L0015:S0",
+        "L0016:S0",
+        "L0017:S0",
+        "L0017:S1",
+        "L0018:S0",
+        "L0019:S0",
+        "L0020:S0",
+        "L0021:S0",
+        "L0022:S0",
+        "L0023:S0",
+        "L0024:S0",
+        "L0025:S0",
+        "L0026:S0",
+        "L0027:S0",
+        "L0028:S0",
+        "L0028:S1",
+        "L0029:S0",
+        "L0029:S1",
+        "L0030:S0",
+        "L0031:S0",
+        "L0032:S0",
+        "L0033:S0",
+        "L0034:S0",
+        "L0035:S0",
+        "L0036:S0",
+        "L0037:S0",
+        "L0038:S0",
+        "L0039:S0",
+        "L0040:S0",
+        "L0040:S1"
+      ],
+      "contextOnlySelectableCount": 0,
+      "prefixAvailableForSubjects": [
+        {
+          "alias": "L0040:S2",
+          "earlierSamePageOccurrences": 8
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "availableSourceOccurrences": 38,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0000:S0",
+            "L0000:S1",
+            "L0001:S0",
+            "L0002:S0",
+            "L0003:S0",
+            "L0004:S0",
+            "L0005:S0",
+            "L0006:S0",
+            "L0007:S0",
+            "L0008:S0",
+            "L0009:S0",
+            "L0010:S0",
+            "L0011:S0",
+            "L0012:S0",
+            "L0013:S0",
+            "L0014:S0",
+            "L0015:S0",
+            "L0016:S0",
+            "L0017:S0",
+            "L0017:S1",
+            "L0018:S0",
+            "L0019:S0",
+            "L0020:S0",
+            "L0021:S0",
+            "L0022:S0",
+            "L0023:S0",
+            "L0024:S0",
+            "L0025:S0",
+            "L0026:S0",
+            "L0027:S0",
+            "L0028:S0",
+            "L0028:S1",
+            "L0029:S0",
+            "L0029:S1",
+            "L0030:S0",
+            "L0031:S0",
+            "L0032:S0",
+            "L0033:S0"
+          ]
+        },
+        {
+          "page": 2,
+          "availableSourceOccurrences": 41,
+          "coverage": "FULL_CANONICAL_OCCURRENCE_PAGE_NOT_FULL_VISUAL_PAGE",
+          "aliases": [
+            "L0034:S0",
+            "L0035:S0",
+            "L0036:S0",
+            "L0037:S0",
+            "L0038:S0",
+            "L0039:S0",
+            "L0040:S0",
+            "L0040:S1",
+            "L0040:S2",
+            "L0041:S0",
+            "L0041:S1",
+            "L0041:S2",
+            "L0042:S0",
+            "L0042:S1",
+            "L0042:S2",
+            "L0043:S0",
+            "L0044:S0",
+            "L0044:S1",
+            "L0044:S2",
+            "L0045:S0",
+            "L0046:S0",
+            "L0046:S1",
+            "L0047:S0",
+            "L0047:S1",
+            "L0048:S0",
+            "L0049:S0",
+            "L0049:S1",
+            "L0050:S0",
+            "L0050:S1",
+            "L0051:S0",
+            "L0052:S0",
+            "L0053:S0",
+            "L0053:S1",
+            "L0053:S2",
+            "L0054:S0",
+            "L0055:S0",
+            "L0055:S1",
+            "L0055:S2",
+            "L0056:S0",
+            "L0056:S1",
+            "L0056:S2"
+          ]
+        }
+      ],
+      "missingGeometryAliases": []
+    }
+  ],
+  "ablationDesign": {
+    "currentBAlreadyIncludesInterpretation": true,
+    "proposedAxes": [
+      "CONTEXT_SCOPE: EXISTING / LOCAL / SUBJECT_PAGES",
+      "RESPONSE: EVIDENCE_ONLY / REFERENCES_AND_INTERPRETATION"
+    ],
+    "warning": "B_PLUS_PAGE_VS_B_PLUS_PAGE_PLUS_INTERPRETATION_IS_NOT_A_NEW_AXIS_B_ALREADY_HAS_INTERPRETATION",
+    "runnableTreatmentRequestsFrozen": false
+  },
+  "gates": {
+    "providerCalls": 0,
+    "goldRead": false,
+    "runtimeChanged": false,
+    "sourceUniverseChanged": false,
+    "controlBodiesChanged": false,
+    "existingBRequestsChanged": false,
+    "semanticPredicates": false,
+    "corpusFrozen": false,
+    "scoringPolicyFrozen": false,
+    "exactTokenizerAvailable": false,
+    "productionPromotion": "LOCKED"
+  }
+}

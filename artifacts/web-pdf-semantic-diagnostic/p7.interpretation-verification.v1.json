@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "p7-b-interpretation-verification-1",
+  "productionBaselineRevision": "57b553172c2527921697e3e6eeb15ad68baa84bd",
+  "status": "P7_B_PROVIDER_FREE_IMPLEMENTATION_AND_ENGINEERING_PREFLIGHT_COMPLETE",
+  "activeProtocolVersion": "P7_B_INTERPRETATION_RECORD_V2",
+  "activePreflightArtifact": "p7.interpretation-preflight.v2.json",
+  "activePreflightSha256": "348312e37a9e92295e0928ef13376c6b2fd266a54bc2dfea4a7d62aa89b1d76e",
+  "independentReproductionSha256": "348312e37a9e92295e0928ef13376c6b2fd266a54bc2dfea4a7d62aa89b1d76e",
+  "reproductionByteIdentical": true,
+  "supersededPreflight": {
+    "artifact": "p7.interpretation-preflight.v1.json",
+    "sha256": "1459e20d5b05b98cca7cfeb0ddc584e618fe53dcd6530d9570e295e17e3b82fa",
+    "reason": "V2 permits exact copied text field values inside assertions; V1 blanket source-text output prohibition was inconsistent. V1 preserved without mutation, no calls executed."
+  },
+  "sourceSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+  "evidenceStoreSha256": "1767414774ebfcce2ddc588e06391ef63d5bf99d666bc67cc61ac8b44a63937b",
+  "sourceOccurrences": 79,
+  "preparedRequests": {
+    "F1": 1,
+    "G2A": 1,
+    "H2C": 6,
+    "total": 8
+  },
+  "decisionSubjects": {
+    "F1": 79,
+    "G2A": 10,
+    "H2CAnchors": [
+      "O1",
+      "O5",
+      "O39",
+      "O45",
+      "O46",
+      "O47"
+    ]
+  },
+  "controlProviderBodyParity": "8_OF_8_BYTE_EQUIVALENT",
+  "stageCohortBasis": "FROZEN_CONTROL_UPSTREAM_OUTPUTS_NOT_GOLD_OR_TREATMENT_OUTPUTS",
+  "referenceDocumentRole": "ENGINEERING_FIXTURE_NOT_MULTI_DOCUMENT_QUALIFICATION",
+  "codeSha256": {
+    "src/DocxHeaderExtractor.V5Qualification/P7/PdfSourceEvidenceStore.cs": "09e68b6eb5ef76069cc4b8f095ac9a77c20fa2228d9c6a74728bf3d5974686ec",
+    "src/DocxHeaderExtractor.V5Qualification/P7/PdfInterpretationProtocol.cs": "0e2f22005d1305a4516b825e2fdbc06f04bac902666639e7280aade7e5089d76",
+    "scripts/P7InterpretationPreflight/P7InterpretationPreflight.csproj": "adc1212fe48c5ed1047f1034d012451788ed2672f3f2e3673e468dc5b5588f8d",
+    "scripts/P7InterpretationPreflight/Program.cs": "a53134dd7fbaf02bb2cb4905adacaa03ff507a4989a52c0add3b72cee59228a8",
+    "scripts/P7InterpretationPreflight/README.md": "28592e41cfeae65647384b91a2a4bd40242822aeafdc63eeb19c20399680eae5",
+    "tests/DocxHeaderExtractor.Tests/P7InterpretationProtocolTests.cs": "1116cb40cf03b60e370177f24b2095ee3eed9a33f6489e7b01ed49a96dd3a06b"
+  },
+  "releasePreflightBuild": {
+    "status": "PASS",
+    "warnings": 0,
+    "errors": 0
+  },
+  "interpretationTests": {
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0
+  },
+  "focusedRegression": {
+    "passed": 128,
+    "failed": 0,
+    "skipped": 0,
+    "classes": [
+      "P7InterpretationProtocolTests",
+      "P7SpatialEvidenceLedgerTests",
+      "P7SemanticAdmissionExtentDiagnosticTests",
+      "MultipartOutlineGroundingTests",
+      "PdfFunctionConditionedHeadingAuthorityContractTests",
+      "HeadingAuthorityByteParityTests",
+      "HeadingAuthorityArchitectureTests",
+      "ProductionClosureArchitectureTests",
+      "PdfProductionProviderPolicyTests",
+      "WebPipeline*"
+    ],
+    "isolation": "Ignored .verify-build/p7-tests output; no running host DLL replacement"
+  },
+  "fullSuite": "NOT_RUN_FOR_THIS_CHECKPOINT",
+  "newRemoteCi": "NOT_RUN_UNCOMMITTED_CHECKPOINT",
+  "gitDiffCheck": "PASS",
+  "providerCalls": 0,
+  "authorizedProviderCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "sourceUniverseMutation": false,
+  "frozenArtifactRebaseline": false,
+  "productionRequestsChanged": false,
+  "runtimeSemanticChange": false,
+  "semanticAuthorityCreated": false,
+  "semanticAccuracyClaim": "NONE",
+  "evidenceVerificationDoesNotCertifyInterpretation": true,
+  "rawStoreAndRequests": "PRIVATE_LOCAL_NOT_INCLUDED_IN_REPO_ARTIFACTS",
+  "glyphAvailability": "NOT_AVAILABLE_NOT_PROJECTED",
+  "multiDocumentCorpus": "NOT_YET_FROZEN",
+  "titleSubtitleScoringAuthority": "UNADJUDICATED",
+  "providerExecution": "LOCKED",
+  "p7D3": "LOCKED",
+  "p7E": "LOCKED",
+  "retrievalC": "NOT_IMPLEMENTED",
+  "webRestart": false,
+  "commitOrPushPerformed": false
+}

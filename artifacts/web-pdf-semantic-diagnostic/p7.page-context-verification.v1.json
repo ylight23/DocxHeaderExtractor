@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "p7-page-context-verification-1",
+  "status": "PAGE_CONTEXT_BUILDER_COMPLETE_PROVIDER_REQUEST_FREEZE_PENDING",
+  "preflight": {
+    "file": "p7.page-context-preflight.v1.json",
+    "sha256": "d7cdfd5ccebcfd2c771f66184f51e7781682c10ca270557806a5d4998bbb7b91",
+    "reproductionSha256": "d7cdfd5ccebcfd2c771f66184f51e7781682c10ca270557806a5d4998bbb7b91",
+    "contextCandidates": 24,
+    "contextFilesReproducedByteIdentically": 24
+  },
+  "baseline": {
+    "bPreflightSha256": "348312e37a9e92295e0928ef13376c6b2fd266a54bc2dfea4a7d62aa89b1d76e",
+    "sourceSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+    "controlBodiesHashVerified": 8,
+    "bBodiesHashVerified": 8,
+    "g2aDecisionSubjects": 10,
+    "g2aExistingVisibleOccurrences": 19
+  },
+  "files": [
+    { "path": "src/DocxHeaderExtractor.V5Qualification/P7/PdfPageEvidenceContextBuilder.cs", "sha256": "a157d993e84d6f6f6294b2fc265f3a932b7cdfaaadf67f9cb10827eaff1c1482" },
+    { "path": "scripts/P7PageContextPreflight/Program.cs", "sha256": "2bfaa9eb45ab0f6991bd73ae50b57421feb326fea8e0bf31981642bc5a39ff64" },
+    { "path": "scripts/P7PageContextPreflight/P7PageContextPreflight.csproj", "sha256": "33d66fb55e52af8193bdc457e8e828c2182bb0d5d232f56b1dc3feabc150da70" },
+    { "path": "scripts/P7PageContextPreflight/README.md", "sha256": "f34c5e427db3a4d8ecb6d783c530102a00dad6528a6401d08ebc57053267be83" },
+    { "path": "tests/DocxHeaderExtractor.Tests/P7PageEvidenceContextTests.cs", "sha256": "01f776222c48dd6380c8b5ed2bf04a1047b613e8260b400b269311a8cd849e24" }
+  ],
+  "verification": {
+    "releaseBuild": "PASS",
+    "focusedPassed": 148,
+    "focusedFailed": 0,
+    "newContextTestsPassed": 8,
+    "fullSuite": "NOT_RUN",
+    "ci": "NOT_RUN",
+    "gitDiffCheck": "PASS",
+    "syntheticGeometryTestsAreNotSemanticGeneralization": true
+  },
+  "observations": {
+    "localTableLabelContextOccurrences": 11,
+    "localSourcesInclude": ["L0038:S0", "L0039:S0", "L0040:S0", "L0040:S1", "L0040:S2", "L0041:S0", "L0041:S1", "L0041:S2", "L0042:S0", "L0042:S1", "L0042:S2"],
+    "h2cO45O46O47LocalPrefixCounts": [2, 3, 4],
+    "h2cO45O46O47PagePrefixCounts": [6, 7, 8],
+    "glyphsBulkProjected": false,
+    "allAddedContextSelectable": false,
+    "semanticRoleAssertionsGenerated": false
+  },
+  "pendingProviderGates": [
+    "MULTI_DOCUMENT_COHORT_AND_SCORING_POLICY",
+    "PINNED_MODEL_TOKENIZER_AND_COMPLETE_INPUT_BUDGET",
+    "VERSIONED_CONTEXT_REFERENCE_SCOPE_AND_VALIDATOR",
+    "STAGE_ISOLATED_SYSTEM_USER_PROVIDER_REQUEST_FREEZE",
+    "EXPLICIT_CALL_AUTHORIZATION"
+  ],
+  "gates": {
+    "providerCalls": 0,
+    "goldReadDuringContextPreflight": false,
+    "goldMutation": false,
+    "runtimeChanged": false,
+    "sourceUniverseOrSpansChanged": false,
+    "existingFrozenRequestsChanged": false,
+    "productionPromotion": "LOCKED",
+    "commitOrPush": "NOT_REQUESTED_NOT_EXECUTED"
+  }
+}

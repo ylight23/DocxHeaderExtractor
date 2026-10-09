@@ -1,0 +1,381 @@
+{
+  "schemaVersion": "p7-provider-free-production-stage-replay-1",
+  "status": "COMPLETE_DEVELOPMENT_DIAGNOSTIC_NOT_QUALIFICATION",
+  "sourceSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+  "SourceAliasUniverseHash": "a7960a793b2c42c1f87c543423fefa07c368e865da2bf25180c713878d6267cb",
+  "ModelVisibleEvidenceHash": "36fc28bb3979c817cca5f1fd270becc2feb5bd7a04bf22af003adca921fcb383",
+  "sourceReviewSha256": "067c471bcb9678208321562b2cbb0361a0ba4bd1d8bbb7e42265c59df628833f",
+  "receiptHashes": {
+    "f1": "0002facaedfc94ac2ca52b22430962b9f49d5cd656742fa4bb33024e69937fe0",
+    "g2a": "d8f79129e19aedf6f3d4ebd785c448ac188ae70814beac89440498a4685c43e6",
+    "h2c": "cd38b46ec43bfea83311366d87e81e717a37335b863f1459ec6d4b00965c4b32"
+  },
+  "rawFreezesVerified": 8,
+  "frozenBodyParity": "8_OF_8_BYTE_IDENTICAL_AT_SHARED_PRODUCTION_TRANSPORT_BOUNDARY",
+  "historicalProviderAttempts": 8,
+  "providerCallsDuringReplay": 0,
+  "FrozenRequestsConsumed": 8,
+  "placement": {
+    "mode": "OFFLINE_EMPTY_PLACEMENTS_STUB_NOT_HISTORICAL_OR_PROVIDER_AUTHORITY",
+    "PlacementStubCalls": 1,
+    "result": "placement-unresolved",
+    "semanticMembershipUnchanged": true
+  },
+  "stageCounts": {
+    "decisions": 6,
+    "bound": 6,
+    "materialized": 6,
+    "outline": 6,
+    "web": 6
+  },
+  "harness": {
+    "grounding": "PASS",
+    "provenance": "PASS_WITH_OFFLINE_DIAGNOSTIC_ENVELOPE",
+    "RepairAttempts": 0,
+    "Calls": 1
+  },
+  "membership": {
+    "eligibleAnchors": 6,
+    "sourceReviewedDocumentTitles": 2,
+    "sourceReviewedNonHeadingAdmissions": 4,
+    "authority": "SOURCE_REVIEW_NOT_GOLD_OR_DOCUMENT_RECALL"
+  },
+  "exactHeadingBoundary": "NOT_SCORED_PENDING_TITLE_SUBTITLE_UNIT_POLICY; NONHEADINGS_NOT_IN_EXACT_HEADING_DENOMINATOR",
+  "rows": [
+    {
+      "anchor": "O1",
+      "sourceOrdinal": 0,
+      "sourceFunction": "INSTITUTIONAL_IDENTITY",
+      "expectedDocumentHeadingMembership": false,
+      "observedMembership": true,
+      "membershipReviewOutcome": "FALSE_ADMISSION_SOURCE_REVIEW",
+      "boundaryOutcome": "NOT_APPLICABLE_NOT_A_DOCUMENT_HEADING",
+      "rawParts": [
+        {
+          "alias": "L0000:S0",
+          "ordinal": 0,
+          "sourceIdSha256": "d55cfd20e19233ba60a5654d3b2973001e12a023689d524167b291dbe23344e5",
+          "start": 0,
+          "end": 24
+        }
+      ],
+      "binderAccepted": true,
+      "materialized": true,
+      "outlineEmitted": true,
+      "webEmitted": true,
+      "outputTextSha256": "16704517d6ea4b76bde391766f3588203b8c5bfac3c3cc1479551a051d34361c",
+      "sourcePartsPreserved": [
+        {
+          "sourceIdSha256": "d55cfd20e19233ba60a5654d3b2973001e12a023689d524167b291dbe23344e5",
+          "ordinal": 0,
+          "start": 0,
+          "end": 24
+        }
+      ]
+    },
+    {
+      "anchor": "O5",
+      "sourceOrdinal": 4,
+      "sourceFunction": "DOCUMENT_TITLE",
+      "expectedDocumentHeadingMembership": true,
+      "observedMembership": true,
+      "membershipReviewOutcome": "SUPPORTED_SOURCE_REVIEW",
+      "boundaryOutcome": "TITLE_SUBTITLE_POLICY_UNRESOLVED",
+      "rawParts": [
+        {
+          "alias": "L0003:S0",
+          "ordinal": 4,
+          "sourceIdSha256": "c9ee03ea2f29df580c98f9f1bf460745ebb56c8fdc9809163be7fd17d0651b74",
+          "start": 0,
+          "end": 8
+        },
+        {
+          "alias": "L0004:S0",
+          "ordinal": 5,
+          "sourceIdSha256": "3e79a18a5074b5d64db36d577628be623545ba9adaa92120a07c573ddd349f74",
+          "start": 0,
+          "end": 68
+        },
+        {
+          "alias": "L0005:S0",
+          "ordinal": 6,
+          "sourceIdSha256": "fdd1975ab7be3f5fcbb55467ae9185a4262f924267040d11bfd185aad21feab6",
+          "start": 0,
+          "end": 55
+        }
+      ],
+      "binderAccepted": true,
+      "materialized": true,
+      "outlineEmitted": true,
+      "webEmitted": true,
+      "outputTextSha256": "7bf140600c31285aeef72f22a66aa11df5129326be491160eb8074def09413a3",
+      "sourcePartsPreserved": [
+        {
+          "sourceIdSha256": "c9ee03ea2f29df580c98f9f1bf460745ebb56c8fdc9809163be7fd17d0651b74",
+          "ordinal": 4,
+          "start": 0,
+          "end": 8
+        },
+        {
+          "sourceIdSha256": "3e79a18a5074b5d64db36d577628be623545ba9adaa92120a07c573ddd349f74",
+          "ordinal": 5,
+          "start": 0,
+          "end": 68
+        },
+        {
+          "sourceIdSha256": "fdd1975ab7be3f5fcbb55467ae9185a4262f924267040d11bfd185aad21feab6",
+          "ordinal": 6,
+          "start": 0,
+          "end": 55
+        }
+      ]
+    },
+    {
+      "anchor": "O39",
+      "sourceOrdinal": 38,
+      "sourceFunction": "PROGRAM_TITLE",
+      "expectedDocumentHeadingMembership": true,
+      "observedMembership": true,
+      "membershipReviewOutcome": "SUPPORTED_SOURCE_REVIEW",
+      "boundaryOutcome": "TITLE_SUBTITLE_POLICY_UNRESOLVED",
+      "rawParts": [
+        {
+          "alias": "L0034:S0",
+          "ordinal": 38,
+          "sourceIdSha256": "a80ba63084054f2d9fa33d76f8a0c5628457d8637677d7ef9927f1aa8be9a753",
+          "start": 0,
+          "end": 12
+        },
+        {
+          "alias": "L0035:S0",
+          "ordinal": 39,
+          "sourceIdSha256": "c7c1da9ca3b327f14bc64ccfa546d7e1cf004ae9e2f335ed4133a72e60fd2385",
+          "start": 0,
+          "end": 78
+        },
+        {
+          "alias": "L0036:S0",
+          "ordinal": 40,
+          "sourceIdSha256": "e1227d12693d4436ce8de5dab842e0ea3553d2767bf4e88baab571a2f7a1deee",
+          "start": 0,
+          "end": 37
+        }
+      ],
+      "binderAccepted": true,
+      "materialized": true,
+      "outlineEmitted": true,
+      "webEmitted": true,
+      "outputTextSha256": "8eb3ea6bd6b6807b857533e7269001127b11dc13eb5f45079d779f2d22fc4e57",
+      "sourcePartsPreserved": [
+        {
+          "sourceIdSha256": "a80ba63084054f2d9fa33d76f8a0c5628457d8637677d7ef9927f1aa8be9a753",
+          "ordinal": 38,
+          "start": 0,
+          "end": 12
+        },
+        {
+          "sourceIdSha256": "c7c1da9ca3b327f14bc64ccfa546d7e1cf004ae9e2f335ed4133a72e60fd2385",
+          "ordinal": 39,
+          "start": 0,
+          "end": 78
+        },
+        {
+          "sourceIdSha256": "e1227d12693d4436ce8de5dab842e0ea3553d2767bf4e88baab571a2f7a1deee",
+          "ordinal": 40,
+          "start": 0,
+          "end": 37
+        }
+      ]
+    },
+    {
+      "anchor": "O45",
+      "sourceOrdinal": 44,
+      "sourceFunction": "TABLE_COLUMN_LABEL",
+      "expectedDocumentHeadingMembership": false,
+      "observedMembership": true,
+      "membershipReviewOutcome": "FALSE_ADMISSION_SOURCE_REVIEW",
+      "boundaryOutcome": "NOT_APPLICABLE_NOT_A_DOCUMENT_HEADING",
+      "rawParts": [
+        {
+          "alias": "L0040:S0",
+          "ordinal": 44,
+          "sourceIdSha256": "a17fc8864388d9cb5ac50318003a0c030b78f0edd64293ade566c96e0d75810e",
+          "start": 0,
+          "end": 9
+        },
+        {
+          "alias": "L0040:S1",
+          "ordinal": 45,
+          "sourceIdSha256": "244c0719752f30d9b205d6ceca6af726d35047febdbd03b8d745860f615e9526",
+          "start": 0,
+          "end": 8
+        },
+        {
+          "alias": "L0040:S2",
+          "ordinal": 46,
+          "sourceIdSha256": "8e7817a952ad34bf59c530b500fc7e2503e5ea8270da258b9caa41bbd99ed425",
+          "start": 0,
+          "end": 9
+        }
+      ],
+      "binderAccepted": true,
+      "materialized": true,
+      "outlineEmitted": true,
+      "webEmitted": true,
+      "outputTextSha256": "cc9f2d92c9d6745da7c5317fe1a11aff23462ffcc7838b663c8033868e960df8",
+      "sourcePartsPreserved": [
+        {
+          "sourceIdSha256": "a17fc8864388d9cb5ac50318003a0c030b78f0edd64293ade566c96e0d75810e",
+          "ordinal": 44,
+          "start": 0,
+          "end": 9
+        },
+        {
+          "sourceIdSha256": "244c0719752f30d9b205d6ceca6af726d35047febdbd03b8d745860f615e9526",
+          "ordinal": 45,
+          "start": 0,
+          "end": 8
+        },
+        {
+          "sourceIdSha256": "8e7817a952ad34bf59c530b500fc7e2503e5ea8270da258b9caa41bbd99ed425",
+          "ordinal": 46,
+          "start": 0,
+          "end": 9
+        }
+      ]
+    },
+    {
+      "anchor": "O46",
+      "sourceOrdinal": 45,
+      "sourceFunction": "TABLE_COLUMN_LABEL",
+      "expectedDocumentHeadingMembership": false,
+      "observedMembership": true,
+      "membershipReviewOutcome": "FALSE_ADMISSION_SOURCE_REVIEW",
+      "boundaryOutcome": "NOT_APPLICABLE_NOT_A_DOCUMENT_HEADING",
+      "rawParts": [
+        {
+          "alias": "L0040:S1",
+          "ordinal": 45,
+          "sourceIdSha256": "244c0719752f30d9b205d6ceca6af726d35047febdbd03b8d745860f615e9526",
+          "start": 0,
+          "end": 8
+        },
+        {
+          "alias": "L0040:S2",
+          "ordinal": 46,
+          "sourceIdSha256": "8e7817a952ad34bf59c530b500fc7e2503e5ea8270da258b9caa41bbd99ed425",
+          "start": 0,
+          "end": 9
+        }
+      ],
+      "binderAccepted": true,
+      "materialized": true,
+      "outlineEmitted": true,
+      "webEmitted": true,
+      "outputTextSha256": "76b751a79fa25120e61adae82e12cf9145d38d6be826a66b2c0f5f24fedfd388",
+      "sourcePartsPreserved": [
+        {
+          "sourceIdSha256": "244c0719752f30d9b205d6ceca6af726d35047febdbd03b8d745860f615e9526",
+          "ordinal": 45,
+          "start": 0,
+          "end": 8
+        },
+        {
+          "sourceIdSha256": "8e7817a952ad34bf59c530b500fc7e2503e5ea8270da258b9caa41bbd99ed425",
+          "ordinal": 46,
+          "start": 0,
+          "end": 9
+        }
+      ]
+    },
+    {
+      "anchor": "O47",
+      "sourceOrdinal": 46,
+      "sourceFunction": "TABLE_COLUMN_LABEL",
+      "expectedDocumentHeadingMembership": false,
+      "observedMembership": true,
+      "membershipReviewOutcome": "FALSE_ADMISSION_SOURCE_REVIEW",
+      "boundaryOutcome": "NOT_APPLICABLE_NOT_A_DOCUMENT_HEADING",
+      "rawParts": [
+        {
+          "alias": "L0040:S2",
+          "ordinal": 46,
+          "sourceIdSha256": "8e7817a952ad34bf59c530b500fc7e2503e5ea8270da258b9caa41bbd99ed425",
+          "start": 0,
+          "end": 9
+        }
+      ],
+      "binderAccepted": true,
+      "materialized": true,
+      "outlineEmitted": true,
+      "webEmitted": true,
+      "outputTextSha256": "e508b329138b374f6c61bca72ddaeb8a599de54c329b1dfff308429349088127",
+      "sourcePartsPreserved": [
+        {
+          "sourceIdSha256": "8e7817a952ad34bf59c530b500fc7e2503e5ea8270da258b9caa41bbd99ed425",
+          "ordinal": 46,
+          "start": 0,
+          "end": 9
+        }
+      ]
+    }
+  ],
+  "overlaps": [
+    {
+      "leftAnchor": "O45",
+      "rightAnchor": "O46",
+      "sharedParts": [
+        {
+          "sourceIdSha256": "244c0719752f30d9b205d6ceca6af726d35047febdbd03b8d745860f615e9526",
+          "ordinal": 45,
+          "Start": 0,
+          "End": 8
+        },
+        {
+          "sourceIdSha256": "8e7817a952ad34bf59c530b500fc7e2503e5ea8270da258b9caa41bbd99ed425",
+          "ordinal": 46,
+          "Start": 0,
+          "End": 9
+        }
+      ]
+    },
+    {
+      "leftAnchor": "O45",
+      "rightAnchor": "O47",
+      "sharedParts": [
+        {
+          "sourceIdSha256": "8e7817a952ad34bf59c530b500fc7e2503e5ea8270da258b9caa41bbd99ed425",
+          "ordinal": 46,
+          "Start": 0,
+          "End": 9
+        }
+      ]
+    },
+    {
+      "leftAnchor": "O46",
+      "rightAnchor": "O47",
+      "sharedParts": [
+        {
+          "sourceIdSha256": "8e7817a952ad34bf59c530b500fc7e2503e5ea8270da258b9caa41bbd99ed425",
+          "ordinal": 46,
+          "Start": 0,
+          "End": 9
+        }
+      ]
+    }
+  ],
+  "firstOutsideRoleScored": false,
+  "historicalO5OmissionAttribution": "NOT_EVALUABLE_OLD_REQUEST_RESPONSE_HASHES_UNAVAILABLE;_NEW_O5_SURVIVES_ALL_REPLAYED_STAGES",
+  "runtimeSemanticChange": false,
+  "goldMutation": "NONE",
+  "frozenRebaseline": false,
+  "webRestart": false,
+  "limitations": [
+    "One development PDF, source review already open",
+    "Replay uses current shared production components, no network or live Web execution",
+    "Placement omitted via explicit stub; hierarchy is not independently qualified",
+    "Sections/chunks/writeback and host HTTP/UI are not executed",
+    "Review is distinct from canonical Gold",
+    "No overlap suppression or semantic remediation implemented"
+  ]
+}

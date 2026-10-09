@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>dhx-v5-qualify</AssemblyName><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../src/DocxHeaderExtractor.V5Qualification/P7/PdfSpatialEvidence*.cs" Link="Ledger/%(Filename)%(Extension)" />
+    <Compile Include="../../src/DocxHeaderExtractor.V5Qualification/P7/PdfSourceEvidenceStore.cs" Link="Store.cs" />
+    <Compile Include="../../src/DocxHeaderExtractor.V5Qualification/P7/PageEvidenceCoverageAudit.cs" Link="Coverage.cs" />
+    <ProjectReference Include="../../src/DocxHeaderExtractor.DocumentProcessing/DocxHeaderExtractor.DocumentProcessing.csproj" />
+  </ItemGroup>
+</Project>

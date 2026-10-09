@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "p7-page-evidence-coverage-verification-1",
+  "status": "PROVIDER_FREE_COVERAGE_AUDIT_COMPLETE_NOT_SEMANTIC_QUALIFICATION",
+  "activeAudit": {
+    "file": "p7.page-evidence-coverage.v2.json",
+    "sha256": "caa3bfa25d361bf1ede2e09ffd5d245b2e5d91a6321f3084cb667497e085027b",
+    "reproductionSha256": "caa3bfa25d361bf1ede2e09ffd5d245b2e5d91a6321f3084cb667497e085027b",
+    "byteIdentical": true,
+    "supersedes": "p7.page-evidence-coverage.v1.json",
+    "revisionReason": "ADDITIVE_CONTROL_JSON_FIELD_NAME_INVENTORY_NO_REQUEST_OR_COVERAGE_CHANGE"
+  },
+  "preflightSha256": "348312e37a9e92295e0928ef13376c6b2fd266a54bc2dfea4a7d62aa89b1d76e",
+  "controlBodiesHashVerified": 8,
+  "treatmentBodiesHashVerified": 8,
+  "controlStageInputEquality": "8/8",
+  "projectedEvidenceEqualsRebuiltStore": "8/8",
+  "files": [
+    { "path": "src/DocxHeaderExtractor.V5Qualification/P7/PageEvidenceCoverageAudit.cs", "sha256": "ebdac3c8c5c241b05051fc4e11b0b93281b6acb5e25d4489e5110ca59cf063aa" },
+    { "path": "scripts/P7PageEvidenceCoverage/Program.cs", "sha256": "8640b6728760d5e4125dbdad4c42e89bab6d09b8f7f7026f18dc77e31726d5b1" },
+    { "path": "scripts/P7PageEvidenceCoverage/P7PageEvidenceCoverage.csproj", "sha256": "d50fb0b7ced88318a673dac0cbdcb18ec329feaa21e603a446ff04bcaa88965d" },
+    { "path": "scripts/P7PageEvidenceCoverage/README.md", "sha256": "5019f8be832f6df43bdc1aee4c12aca334b5abf56381d1fac36e84f12599a6df" },
+    { "path": "tests/DocxHeaderExtractor.Tests/P7PageEvidenceCoverageTests.cs", "sha256": "cd7984689e91dd475638205111f43bd7dc534ac044782b56db62cbf57d76b695" }
+  ],
+  "verification": {
+    "releaseBuild": "PASS",
+    "focusedTestsPassed": 140,
+    "focusedTestsFailed": 0,
+    "newCoverageTestsPassed": 7,
+    "fullSuite": "NOT_RUN",
+    "ci": "NOT_RUN",
+    "gitDiffCheck": "PASS"
+  },
+  "limits": {
+    "singlePreviouslyReviewedDevelopmentPdf": true,
+    "fullCanonicalPageDoesNotMeanFullVisualPage": true,
+    "physicalPairAvailabilityDoesNotProveSemanticRelation": true,
+    "missingEvidenceCausesError": "NOT_ESTABLISHED"
+  },
+  "gates": {
+    "providerCallsDuringAudit": 0,
+    "goldReadDuringAudit": false,
+    "goldMutation": false,
+    "runtimeChanged": false,
+    "frozenRequestRebaseline": false,
+    "bSpatialImplemented": false,
+    "productionPromotion": "LOCKED",
+    "commitOrPush": "NOT_REQUESTED_NOT_EXECUTED"
+  }
+}

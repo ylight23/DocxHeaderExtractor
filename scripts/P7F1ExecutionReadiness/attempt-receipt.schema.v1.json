@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P7-D3 F1 attempt accounting receipt V1",
+  "description": "Attempt evidence and quarantine accounting, not semantic correctness or downstream authorization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "executionManifestSha256", "callHandle", "identity", "status", "httpAttempts", "finishReason", "errorClass", "availableRawFiles", "usage", "successfulCaptureReceiptSha256", "downstreamAuthorized"],
+  "properties": {
+    "version": { "const": "P7_D3_F1_ATTEMPT_RECEIPT_V1" },
+    "executionManifestSha256": { "$ref": "#/$defs/hash" },
+    "callHandle": { "type": "string", "minLength": 1 },
+    "identity": {
+      "allOf": [
+        { "$ref": "../P7UpstreamCaptureReadiness/capture-receipt.schema.v1.json#/$defs/identity" },
+        { "properties": { "stage": { "const": "F1" }, "mode": { "const": "SharedF1Root" } } }
+      ]
+    },
+    "status": { "enum": ["NOT_ATTEMPTED", "ACCEPTED", "TRANSPORT_FAILURE", "NON_STOP_FINISH", "RESPONSE_CAP_EXCEEDED", "JSON_OR_SCHEMA_ERROR", "MISSING_OR_DUPLICATE_DECISIONS", "INVALID_EVIDENCE_REFERENCE", "CONTRADICTED_EVIDENCE_ASSERTION", "RAW_FREEZE_OR_IDENTITY_ERROR"] },
+    "httpAttempts": { "type": "integer", "minimum": 0, "maximum": 1 },
+    "finishReason": { "type": ["string", "null"] },
+    "errorClass": { "type": ["string", "null"] },
+    "availableRawFiles": { "type": "array", "items": {
+      "type": "object", "additionalProperties": false, "required": ["file", "sha256"],
+      "properties": { "file": { "type": "string", "minLength": 1 }, "sha256": { "$ref": "#/$defs/hash" } }
+    } },
+    "usage": { "type": ["object", "null"] },
+    "successfulCaptureReceiptSha256": { "anyOf": [{ "$ref": "#/$defs/hash" }, { "type": "null" }] },
+    "downstreamAuthorized": { "const": false }
+  },
+  "allOf": [
+    { "if": { "properties": { "status": { "const": "NOT_ATTEMPTED" } } }, "then": { "properties": { "httpAttempts": { "const": 0 }, "usage": { "type": "null" }, "finishReason": { "type": "null" }, "successfulCaptureReceiptSha256": { "type": "null" } } }, "else": { "properties": { "httpAttempts": { "const": 1 } } } },
+    { "if": { "properties": { "status": { "const": "ACCEPTED" } } }, "then": { "properties": { "finishReason": { "const": "stop" }, "errorClass": { "type": "null" }, "successfulCaptureReceiptSha256": { "$ref": "#/$defs/hash" } } }, "else": { "properties": { "successfulCaptureReceiptSha256": { "type": "null" } } } }
+  ],
+  "$defs": { "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" } }
+}

@@ -1,0 +1,29 @@
+{
+  "version": "P7_SOURCE_ONLY_VISUAL_SHAPE_NOTES_V1",
+  "reviewer": "CODEX_SOURCE_RENDER_REVIEW_NOT_USER_GOLD_APPROVAL",
+  "sourceOnlyThisPass": true,
+  "semanticMembershipAdjudicated": false,
+  "interpretationRecordsConsulted": false,
+  "reviewScope": "19_RENDERED_PAGES_FROM_43_SOURCE_ONLY_SAMPLES_NOT_ALL_647_PAGES",
+  "cases": [
+    { "documentPrefix": "03c86fc3", "page": 10, "shapes": ["MULTILINE_TITLE_OR_HEADING", "REPEATED_HEADER_FOOTER"], "observation": "Numbered structural labels wrap across lines; running gazette title is at page top." },
+    { "documentPrefix": "03c86fc3", "page": 16, "shapes": ["MULTILINE_TITLE_OR_HEADING", "REPEATED_HEADER_FOOTER"], "observation": "Centered section label and descriptive line are adjacent; running gazette title repeats." },
+    { "documentPrefix": "08f459b8", "page": 6, "shapes": ["MULTILINE_TITLE_OR_HEADING", "TOC_CROSS_REFERENCE"], "observation": "Large centered title wraps; section summaries refer to operative sections elsewhere. Membership of each label remains open." },
+    { "documentPrefix": "08f459b8", "page": 52, "shapes": ["RULED_TABLE"], "pendingSemanticShapes": ["DOCUMENT_HEADING_INSIDE_TABLE"], "observation": "Grid contains a centered section label in a spanning row followed by numbered entries. Candidate table-contained document heading requires independent membership adjudication." },
+    { "documentPrefix": "08f459b8", "page": 87, "shapes": ["RULED_TABLE", "MULTICOLUMN_TABLE"], "observation": "Five-column schedule form with outer border and internal ruled rows." },
+    { "documentPrefix": "08f459b8", "page": 212, "shapes": ["RULED_TABLE", "MULTICOLUMN_TABLE"], "observation": "Labeled contract forms and a multi-column proposer comparison grid." },
+    { "documentPrefix": "02c949f2", "page": 8, "shapes": ["PARTIALLY_RULED_TABLE", "MULTICOLUMN_TABLE", "TOC_CROSS_REFERENCE"], "observation": "Financial rows align under three numeric columns; sparse horizontal rules, no full cell grid. Not classified as strictly unruled." },
+    { "documentPrefix": "02c949f2", "page": 27, "shapes": ["ROTATED_OR_UNUSUAL_LAYOUT", "TOC_CROSS_REFERENCE"], "observation": "Chart includes a vertical axis label; body text contains pointers to sections and a table." },
+    { "documentPrefix": "02c949f2", "page": 59, "shapes": ["RULED_TABLE", "PARTIALLY_RULED_TABLE", "MULTICOLUMN_TABLE"], "observation": "A cell-grid instrument table and a sparsely ruled numeric table occur on the same page." },
+    { "documentPrefix": "02c949f2", "page": 90, "shapes": ["MULTILINE_TITLE_OR_HEADING", "TOC_CROSS_REFERENCE"], "observation": "Multi-line large title above dotted-leader section entries and page references." },
+    { "documentPrefix": "02c949f2", "page": 131, "shapes": ["PARTIALLY_RULED_TABLE", "MULTICOLUMN_TABLE"], "observation": "Dense financial tables use grouped numeric columns and horizontal rules without full cell borders." },
+    { "documentPrefix": "0106d65c", "page": 86, "shapes": ["ROTATED_OR_UNUSUAL_LAYOUT"], "observation": "Displayed mathematical expressions interleave with prose. This is formula layout evidence, not a claim of rotated text on this page." },
+    { "documentPrefix": "2b1a4e73", "page": 1, "shapes": ["TITLE_SUBTITLE", "TOC_CROSS_REFERENCE"], "observation": "Centered front-matter lines include meeting identity, date and minutes label; body points to an annex. Exact title/subtitle units remain unadjudicated." },
+    { "documentPrefix": "2b1a4e73", "page": 6, "shapes": ["RULED_TABLE", "MULTICOLUMN_TABLE"], "observation": "Participant table uses two columns and vertically merged country/organization cells." },
+    { "documentPrefix": "30f921f1", "page": 1, "shapes": ["TITLE_SUBTITLE", "ROTATED_OR_UNUSUAL_LAYOUT", "PARALLEL_FRONT_MATTER_REGIONS"], "observation": "Left/right administrative headers, centered title and descriptive line, diagonal watermark. Not two-column body text." },
+    { "documentPrefix": "2663227a", "page": 2, "shapes": ["TOC_CROSS_REFERENCE", "REPEATED_HEADER_FOOTER"], "observation": "Linked contents entries plus RFC running header/footer, also visible on page 30." },
+    { "documentPrefix": "2663227a", "page": 30, "shapes": ["RULED_TABLE", "MULTICOLUMN_TABLE", "TOC_CROSS_REFERENCE", "REPEATED_HEADER_FOOTER"], "observation": "Lightly bordered protocol tables include section references; RFC margin text repeats." },
+    { "documentPrefix": "f427233d", "page": 1, "shapes": ["ADMINISTRATIVE_DOCUMENT", "TITLE_SUBTITLE", "MULTILINE_TITLE_OR_HEADING", "PARALLEL_FRONT_MATTER_REGIONS"], "observation": "Invitation title and two-line event description below administrative front matter. Title/subtitle extent is not assigned here." },
+    { "documentPrefix": "f427233d", "page": 2, "shapes": ["TITLE_SUBTITLE", "MULTILINE_TITLE_OR_HEADING", "RULED_TABLE", "MULTICOLUMN_TABLE"], "observation": "Program title and two-line event description precede a three-column agenda grid. Column labels are visually distinct; membership decisions are not recorded in shape audit." }
+  ]
+}

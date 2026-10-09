@@ -1,0 +1,41 @@
+{
+  "version": "P7_D23_OFFLINE_CLOSURE_ACCEPTANCE_V2",
+  "provenance": "USER_REQUESTED_OFFLINE_ACCEPTANCE_SCOPE_AMENDMENT",
+  "scope": "OFFLINE_EXPERIMENT_PREPARATION_ONLY",
+  "requiredChecks": [
+    "PINNED_INPUTS_UNCHANGED",
+    "VALID_FIXTURES_DETERMINISTIC",
+    "INVALID_MISSING_LINEAGE_REJECTED",
+    "NO_GOLD_OR_SIDECAR_GENERATION_INPUT",
+    "FIXTURES_NOT_ACCURACY_OR_BASELINE",
+    "HISTORICAL_CAPTURE_NOT_ADOPTED",
+    "MODES_AND_METRICS_SEPARATE",
+    "DEPENDENCY_HASHES_TRACK_UPSTREAM",
+    "NO_SILENT_FALLBACK",
+    "OFFLINE_PASS_NOT_EXECUTION_AUTHORIZATION"
+  ],
+  "historicalReadinessReceiptSha256": "6e7ef07e466f81b6e7c98ef949c8fe4820d5baeb194ddae1abfd7fe22a56cea2",
+  "historicalReadinessStatus": "CONDITIONALLY_FROZEN_CAPTURE_AND_GENERATION_CONTRACTS",
+  "historicalD23": "OPEN_EXECUTION_DEPENDENT_BODIES_AND_BUDGET_PENDING",
+  "historicalStatesRewritten": false,
+  "offlinePassDoesNotImplyExecutionFreeze": true,
+  "downstreamBodyMaterialization": "DEFERRED_UNTIL_EXECUTION",
+  "providerUsageCalibration": "PENDING",
+  "exactTokenizerMapping": "BLOCKED",
+  "d3ProviderExecution": "LOCKED",
+  "productionPromotion": "LOCKED",
+  "historicalCaptureStatus": "HISTORICAL_DIAGNOSTIC_NOT_ADOPTED",
+  "fixtures": {
+    "purpose": "PROTOCOL_TEST_FIXTURE_ONLY",
+    "semanticAccuracyEligible": false,
+    "productionBaselineEligible": false,
+    "actualPilotDownstreamBodyFreeze": false
+  },
+  "executionPrerequisites": [
+    "SEPARATE_EXPLICIT_PROVIDER_AUTHORIZATION_AND_SPEND_CAP",
+    "PINNED_ENDPOINT_AND_CAPTURE_POLICY",
+    "ACTUAL_UPSTREAM_RAW_CAPTURE_AND_VALIDATION",
+    "DEPENDENCY_BOUND_DOWNSTREAM_BODY_FREEZE",
+    "ENDPOINT_USAGE_MEASUREMENT_NOT_TOKENIZER_REVISION_VERIFICATION"
+  ]
+}

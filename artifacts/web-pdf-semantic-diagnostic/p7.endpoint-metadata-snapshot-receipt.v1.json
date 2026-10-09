@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "p7-public-endpoint-metadata-snapshot-receipt-1",
+  "endpoint": "https://openrouter.ai/api/v1/models/qwen/qwen3.7-flash/endpoints",
+  "method": "GET",
+  "requestStartedAtUtc": "2026-10-09T01:42:18.7909351+00:00",
+  "responseReceivedAtUtc": "2026-10-09T01:42:19.2413461+00:00",
+  "responseReceivedAtAsiaSaigon": "2026-10-09T08:42:19.2413461+07:00",
+  "statusCode": 200,
+  "snapshot": {
+    "file": "p7.openrouter-endpoint-metadata.20261009.v1.json",
+    "sha256": "d38b7fb531a59602d0bf73ffc4b3cb3838756f5270d9bed3545dc22e8b381069",
+    "bytes": 1762,
+    "representation": "DECODED_HTTP_CONTENT_SAVED_UTF8_WITH_FILE_NEWLINE_NOT_RAW_COMPRESSED_HTTP_BYTES"
+  },
+  "identityProjection": {
+    "id": "qwen/qwen3.7-flash",
+    "tokenizerFamily": "Qwen",
+    "instructType": null,
+    "providerTag": "alibaba",
+    "advertisedEndpointName": "Alibaba | qwen/qwen3.7-flash-20260727",
+    "contextLength": 1000000,
+    "maxPromptTokens": 983616,
+    "maxCompletionTokens": 65536,
+    "sha256": "d8c26ea31dc7b96d1f4effa2af845e1869bbf6379fb0698752f17ba60b8c612a",
+    "hashRule": "ORDERED_COMPACT_JSON_ID_TOKENIZER_FAMILY_INSTRUCT_TYPE_AND_ALIBABA_ENDPOINTS_WITH_SORTED_SUPPORTED_PARAMETERS"
+  },
+  "historicalComparison": {
+    "file": "artifacts/qwen38-27b-free-3pack-canary/raw-qwen37-flash-endpoints-response.json",
+    "sha256": "4e5bfff6faf6515fb917e2baf20395011b629f4cd880e3b5ab1f51b47eaabf5a",
+    "rawSnapshotMatches": false,
+    "identityProjectionMatches": true,
+    "rawDifferenceAloneDoesNotProveModelDrift": true,
+    "identityProjectionDoesNotPinHiddenModelWeightsOrTokenizerRevision": true
+  },
+  "gates": {
+    "EXACT_TOKENIZER_MAPPING": "NOT_ESTABLISHED",
+    "TOKEN_BUDGET_MEASUREMENT": "NOT_ESTABLISHED",
+    "inferenceCalls": 0,
+    "sourceDataSent": false,
+    "credentialsUsed": false,
+    "calibrationAuthorized": false
+  }
+}

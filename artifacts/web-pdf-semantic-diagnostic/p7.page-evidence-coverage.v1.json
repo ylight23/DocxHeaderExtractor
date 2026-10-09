@@ -1,0 +1,1027 @@
+{
+  "schemaVersion": "p7-page-evidence-coverage-audit-1",
+  "status": "SINGLE_DOCUMENT_ENGINEERING_AUDIT_NOT_SEMANTIC_QUALIFICATION",
+  "sourceSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+  "sourceAliasUniverseSha256": "a7960a793b2c42c1f87c543423fefa07c368e865da2bf25180c713878d6267cb",
+  "preflightSha256": "348312e37a9e92295e0928ef13376c6b2fd266a54bc2dfea4a7d62aa89b1d76e",
+  "evidenceStoreSha256": "1767414774ebfcce2ddc588e06391ef63d5bf99d666bc67cc61ac8b44a63937b",
+  "parser": {
+    "occurrences": 79,
+    "nativeBounds": 79,
+    "linesWithGlyphProvenance": 79,
+    "glyphSpanMapEntries": 2114,
+    "sourcePages": [
+      1,
+      2
+    ],
+    "pageDimensionsRetained": false,
+    "pageImagesRetained": false,
+    "pageVectorGraphicsRetained": false,
+    "parserLayoutBlockMapRetained": true
+  },
+  "store": {
+    "occurrences": 79,
+    "fields": [
+      {
+        "field": "bbox",
+        "observed": 79,
+        "notAvailable": 0
+      },
+      {
+        "field": "glyphs",
+        "observed": 0,
+        "notAvailable": 79
+      },
+      {
+        "field": "page",
+        "observed": 79,
+        "notAvailable": 0
+      },
+      {
+        "field": "readingOrder",
+        "observed": 79,
+        "notAvailable": 0
+      },
+      {
+        "field": "text",
+        "observed": 79,
+        "notAvailable": 0
+      },
+      {
+        "field": "typography",
+        "observed": 79,
+        "notAvailable": 0
+      }
+    ],
+    "pageGroupsProjected": false,
+    "parserLayoutBlockIdsProjected": false
+  },
+  "interpretation": {
+    "pairCountsMeaning": "RAW_BOUNDS_AVAILABLE_FOR_COMPARISON_NOT_ASSERTED_ROW_COLUMN_OR_HEADING_RELATIONS",
+    "pageCoverageMeaning": "CANONICAL_OCCURRENCES_ONLY_NOT_COMPLETE_VISUAL_PDF_PAGE",
+    "crossPageMeaning": "VISIBLE_TEXT_OR_BOUNDS_ON_MULTIPLE_PAGES_NOT_CROSS_PAGE_SEMANTIC_RELATION",
+    "fullStoreHashDoesNotImplyFullRequestVisibility": true,
+    "controlAnonymousContextsNotCountedAsBoundIdentities": true
+  },
+  "requests": [
+    {
+      "name": "F1",
+      "controlBodySha256": "a6d816f1ab37a1c475d13caeedf6033e40495427b457e8530ffb17de326fa149",
+      "bBodySha256": "6433572cd10fa0d5363d367a6e81cf62c8fd856a3e0a54684ca7791c69208a8a",
+      "control": {
+        "visibleTextOccurrences": 79,
+        "visibleBoundsOccurrences": 0,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 0,
+        "crossPagePairsWithBounds": 0,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 38,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "FULL_CANONICAL_OCCURRENCE_PAGE",
+            "missingAliases": []
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 41,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "FULL_CANONICAL_OCCURRENCE_PAGE",
+            "missingAliases": []
+          }
+        ],
+        "fullVisualPageEvidence": false
+      },
+      "interpretationB": {
+        "visibleTextOccurrences": 79,
+        "visibleBoundsOccurrences": 79,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 1523,
+        "crossPagePairsWithBounds": 1558,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 38,
+            "visibleBoundsOccurrences": 38,
+            "canonicalOccurrenceCoverage": "FULL_CANONICAL_OCCURRENCE_PAGE",
+            "missingAliases": []
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 41,
+            "visibleBoundsOccurrences": 41,
+            "canonicalOccurrenceCoverage": "FULL_CANONICAL_OCCURRENCE_PAGE",
+            "missingAliases": []
+          }
+        ],
+        "fullVisualPageEvidence": false
+      }
+    },
+    {
+      "name": "G2A",
+      "controlBodySha256": "c703a4d1b9a4a6d5c1f22039393b4dd0eb76966ccb3288ccd011a1f4d2779331",
+      "bBodySha256": "4849a380db600cb934e2abbaed928eb75bf8f35e9b6d662160b11b7f01f30a7d",
+      "control": {
+        "visibleTextOccurrences": 19,
+        "visibleBoundsOccurrences": 0,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 0,
+        "crossPagePairsWithBounds": 0,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 12,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "PARTIAL",
+            "missingAliases": [
+              "L0005:S0",
+              "L0006:S0",
+              "L0007:S0",
+              "L0008:S0",
+              "L0009:S0",
+              "L0010:S0",
+              "L0011:S0",
+              "L0012:S0",
+              "L0013:S0",
+              "L0014:S0",
+              "L0015:S0",
+              "L0016:S0",
+              "L0017:S0",
+              "L0017:S1",
+              "L0018:S0",
+              "L0019:S0",
+              "L0020:S0",
+              "L0021:S0",
+              "L0022:S0",
+              "L0023:S0",
+              "L0024:S0",
+              "L0025:S0",
+              "L0026:S0",
+              "L0027:S0",
+              "L0031:S0",
+              "L0032:S0"
+            ]
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 7,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "PARTIAL",
+            "missingAliases": [
+              "L0036:S0",
+              "L0037:S0",
+              "L0038:S0",
+              "L0041:S1",
+              "L0041:S2",
+              "L0042:S0",
+              "L0042:S1",
+              "L0042:S2",
+              "L0043:S0",
+              "L0044:S0",
+              "L0044:S1",
+              "L0044:S2",
+              "L0045:S0",
+              "L0046:S0",
+              "L0046:S1",
+              "L0047:S0",
+              "L0047:S1",
+              "L0048:S0",
+              "L0049:S0",
+              "L0049:S1",
+              "L0050:S0",
+              "L0050:S1",
+              "L0051:S0",
+              "L0052:S0",
+              "L0053:S0",
+              "L0053:S1",
+              "L0053:S2",
+              "L0054:S0",
+              "L0055:S0",
+              "L0055:S1",
+              "L0055:S2",
+              "L0056:S0",
+              "L0056:S1",
+              "L0056:S2"
+            ]
+          }
+        ],
+        "fullVisualPageEvidence": false
+      },
+      "interpretationB": {
+        "visibleTextOccurrences": 19,
+        "visibleBoundsOccurrences": 19,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 87,
+        "crossPagePairsWithBounds": 84,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 12,
+            "visibleBoundsOccurrences": 12,
+            "canonicalOccurrenceCoverage": "PARTIAL",
+            "missingAliases": [
+              "L0005:S0",
+              "L0006:S0",
+              "L0007:S0",
+              "L0008:S0",
+              "L0009:S0",
+              "L0010:S0",
+              "L0011:S0",
+              "L0012:S0",
+              "L0013:S0",
+              "L0014:S0",
+              "L0015:S0",
+              "L0016:S0",
+              "L0017:S0",
+              "L0017:S1",
+              "L0018:S0",
+              "L0019:S0",
+              "L0020:S0",
+              "L0021:S0",
+              "L0022:S0",
+              "L0023:S0",
+              "L0024:S0",
+              "L0025:S0",
+              "L0026:S0",
+              "L0027:S0",
+              "L0031:S0",
+              "L0032:S0"
+            ]
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 7,
+            "visibleBoundsOccurrences": 7,
+            "canonicalOccurrenceCoverage": "PARTIAL",
+            "missingAliases": [
+              "L0036:S0",
+              "L0037:S0",
+              "L0038:S0",
+              "L0041:S1",
+              "L0041:S2",
+              "L0042:S0",
+              "L0042:S1",
+              "L0042:S2",
+              "L0043:S0",
+              "L0044:S0",
+              "L0044:S1",
+              "L0044:S2",
+              "L0045:S0",
+              "L0046:S0",
+              "L0046:S1",
+              "L0047:S0",
+              "L0047:S1",
+              "L0048:S0",
+              "L0049:S0",
+              "L0049:S1",
+              "L0050:S0",
+              "L0050:S1",
+              "L0051:S0",
+              "L0052:S0",
+              "L0053:S0",
+              "L0053:S1",
+              "L0053:S2",
+              "L0054:S0",
+              "L0055:S0",
+              "L0055:S1",
+              "L0055:S2",
+              "L0056:S0",
+              "L0056:S1",
+              "L0056:S2"
+            ]
+          }
+        ],
+        "fullVisualPageEvidence": false
+      }
+    },
+    {
+      "name": "H2C_O1",
+      "controlBodySha256": "9433640fd7402b208c785097f23d189a4829bebeef7fe27d539b2fbb27cf8937",
+      "bBodySha256": "1d51513af71d7811a9df7d4d636229d63952d2b9dec7f2ee594cad5f3fc113eb",
+      "control": {
+        "visibleTextOccurrences": 79,
+        "visibleBoundsOccurrences": 0,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 0,
+        "crossPagePairsWithBounds": 0,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 38,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "FULL_CANONICAL_OCCURRENCE_PAGE",
+            "missingAliases": []
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 41,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "FULL_CANONICAL_OCCURRENCE_PAGE",
+            "missingAliases": []
+          }
+        ],
+        "fullVisualPageEvidence": false
+      },
+      "interpretationB": {
+        "visibleTextOccurrences": 79,
+        "visibleBoundsOccurrences": 79,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 1523,
+        "crossPagePairsWithBounds": 1558,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 38,
+            "visibleBoundsOccurrences": 38,
+            "canonicalOccurrenceCoverage": "FULL_CANONICAL_OCCURRENCE_PAGE",
+            "missingAliases": []
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 41,
+            "visibleBoundsOccurrences": 41,
+            "canonicalOccurrenceCoverage": "FULL_CANONICAL_OCCURRENCE_PAGE",
+            "missingAliases": []
+          }
+        ],
+        "fullVisualPageEvidence": false
+      }
+    },
+    {
+      "name": "H2C_O5",
+      "controlBodySha256": "14d9cb8033dccec6c2a881a559f4857a27493d16ab7bbc909f8318784f2ed649",
+      "bBodySha256": "1a68cfdfd606e1032758478c368674730038d7233583f56a099799737b7aecb7",
+      "control": {
+        "visibleTextOccurrences": 75,
+        "visibleBoundsOccurrences": 0,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 0,
+        "crossPagePairsWithBounds": 0,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 34,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "PARTIAL",
+            "missingAliases": [
+              "L0000:S0",
+              "L0000:S1",
+              "L0001:S0",
+              "L0002:S0"
+            ]
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 41,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "FULL_CANONICAL_OCCURRENCE_PAGE",
+            "missingAliases": []
+          }
+        ],
+        "fullVisualPageEvidence": false
+      },
+      "interpretationB": {
+        "visibleTextOccurrences": 75,
+        "visibleBoundsOccurrences": 75,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 1381,
+        "crossPagePairsWithBounds": 1394,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 34,
+            "visibleBoundsOccurrences": 34,
+            "canonicalOccurrenceCoverage": "PARTIAL",
+            "missingAliases": [
+              "L0000:S0",
+              "L0000:S1",
+              "L0001:S0",
+              "L0002:S0"
+            ]
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 41,
+            "visibleBoundsOccurrences": 41,
+            "canonicalOccurrenceCoverage": "FULL_CANONICAL_OCCURRENCE_PAGE",
+            "missingAliases": []
+          }
+        ],
+        "fullVisualPageEvidence": false
+      }
+    },
+    {
+      "name": "H2C_O39",
+      "controlBodySha256": "ee25f2908472734e2b94f28fcc519fd6e2dbdd8745aac865911251b74e4704c7",
+      "bBodySha256": "0070fa8c867aa28ea9d6aa9780b5cfac676914b6aef6eb7ffa1882a41b140854",
+      "control": {
+        "visibleTextOccurrences": 41,
+        "visibleBoundsOccurrences": 0,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 0,
+        "crossPagePairsWithBounds": 0,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 0,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "NONE",
+            "missingAliases": [
+              "L0000:S0",
+              "L0000:S1",
+              "L0001:S0",
+              "L0002:S0",
+              "L0003:S0",
+              "L0004:S0",
+              "L0005:S0",
+              "L0006:S0",
+              "L0007:S0",
+              "L0008:S0",
+              "L0009:S0",
+              "L0010:S0",
+              "L0011:S0",
+              "L0012:S0",
+              "L0013:S0",
+              "L0014:S0",
+              "L0015:S0",
+              "L0016:S0",
+              "L0017:S0",
+              "L0017:S1",
+              "L0018:S0",
+              "L0019:S0",
+              "L0020:S0",
+              "L0021:S0",
+              "L0022:S0",
+              "L0023:S0",
+              "L0024:S0",
+              "L0025:S0",
+              "L0026:S0",
+              "L0027:S0",
+              "L0028:S0",
+              "L0028:S1",
+              "L0029:S0",
+              "L0029:S1",
+              "L0030:S0",
+              "L0031:S0",
+              "L0032:S0",
+              "L0033:S0"
+            ]
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 41,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "FULL_CANONICAL_OCCURRENCE_PAGE",
+            "missingAliases": []
+          }
+        ],
+        "fullVisualPageEvidence": false
+      },
+      "interpretationB": {
+        "visibleTextOccurrences": 41,
+        "visibleBoundsOccurrences": 41,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 820,
+        "crossPagePairsWithBounds": 0,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 0,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "NONE",
+            "missingAliases": [
+              "L0000:S0",
+              "L0000:S1",
+              "L0001:S0",
+              "L0002:S0",
+              "L0003:S0",
+              "L0004:S0",
+              "L0005:S0",
+              "L0006:S0",
+              "L0007:S0",
+              "L0008:S0",
+              "L0009:S0",
+              "L0010:S0",
+              "L0011:S0",
+              "L0012:S0",
+              "L0013:S0",
+              "L0014:S0",
+              "L0015:S0",
+              "L0016:S0",
+              "L0017:S0",
+              "L0017:S1",
+              "L0018:S0",
+              "L0019:S0",
+              "L0020:S0",
+              "L0021:S0",
+              "L0022:S0",
+              "L0023:S0",
+              "L0024:S0",
+              "L0025:S0",
+              "L0026:S0",
+              "L0027:S0",
+              "L0028:S0",
+              "L0028:S1",
+              "L0029:S0",
+              "L0029:S1",
+              "L0030:S0",
+              "L0031:S0",
+              "L0032:S0",
+              "L0033:S0"
+            ]
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 41,
+            "visibleBoundsOccurrences": 41,
+            "canonicalOccurrenceCoverage": "FULL_CANONICAL_OCCURRENCE_PAGE",
+            "missingAliases": []
+          }
+        ],
+        "fullVisualPageEvidence": false
+      }
+    },
+    {
+      "name": "H2C_O45",
+      "controlBodySha256": "8f57a78e26a743c71dbbc202f06f17ffe2550ab05619c12452da20db142d93b0",
+      "bBodySha256": "3258b5a451cf1a7c9c128c605813d0e26bdaf8a12a1c73c9daa95d7a284a9c16",
+      "control": {
+        "visibleTextOccurrences": 35,
+        "visibleBoundsOccurrences": 0,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 0,
+        "crossPagePairsWithBounds": 0,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 0,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "NONE",
+            "missingAliases": [
+              "L0000:S0",
+              "L0000:S1",
+              "L0001:S0",
+              "L0002:S0",
+              "L0003:S0",
+              "L0004:S0",
+              "L0005:S0",
+              "L0006:S0",
+              "L0007:S0",
+              "L0008:S0",
+              "L0009:S0",
+              "L0010:S0",
+              "L0011:S0",
+              "L0012:S0",
+              "L0013:S0",
+              "L0014:S0",
+              "L0015:S0",
+              "L0016:S0",
+              "L0017:S0",
+              "L0017:S1",
+              "L0018:S0",
+              "L0019:S0",
+              "L0020:S0",
+              "L0021:S0",
+              "L0022:S0",
+              "L0023:S0",
+              "L0024:S0",
+              "L0025:S0",
+              "L0026:S0",
+              "L0027:S0",
+              "L0028:S0",
+              "L0028:S1",
+              "L0029:S0",
+              "L0029:S1",
+              "L0030:S0",
+              "L0031:S0",
+              "L0032:S0",
+              "L0033:S0"
+            ]
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 35,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "PARTIAL",
+            "missingAliases": [
+              "L0034:S0",
+              "L0035:S0",
+              "L0036:S0",
+              "L0037:S0",
+              "L0038:S0",
+              "L0039:S0"
+            ]
+          }
+        ],
+        "fullVisualPageEvidence": false
+      },
+      "interpretationB": {
+        "visibleTextOccurrences": 35,
+        "visibleBoundsOccurrences": 35,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 595,
+        "crossPagePairsWithBounds": 0,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 0,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "NONE",
+            "missingAliases": [
+              "L0000:S0",
+              "L0000:S1",
+              "L0001:S0",
+              "L0002:S0",
+              "L0003:S0",
+              "L0004:S0",
+              "L0005:S0",
+              "L0006:S0",
+              "L0007:S0",
+              "L0008:S0",
+              "L0009:S0",
+              "L0010:S0",
+              "L0011:S0",
+              "L0012:S0",
+              "L0013:S0",
+              "L0014:S0",
+              "L0015:S0",
+              "L0016:S0",
+              "L0017:S0",
+              "L0017:S1",
+              "L0018:S0",
+              "L0019:S0",
+              "L0020:S0",
+              "L0021:S0",
+              "L0022:S0",
+              "L0023:S0",
+              "L0024:S0",
+              "L0025:S0",
+              "L0026:S0",
+              "L0027:S0",
+              "L0028:S0",
+              "L0028:S1",
+              "L0029:S0",
+              "L0029:S1",
+              "L0030:S0",
+              "L0031:S0",
+              "L0032:S0",
+              "L0033:S0"
+            ]
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 35,
+            "visibleBoundsOccurrences": 35,
+            "canonicalOccurrenceCoverage": "PARTIAL",
+            "missingAliases": [
+              "L0034:S0",
+              "L0035:S0",
+              "L0036:S0",
+              "L0037:S0",
+              "L0038:S0",
+              "L0039:S0"
+            ]
+          }
+        ],
+        "fullVisualPageEvidence": false
+      }
+    },
+    {
+      "name": "H2C_O46",
+      "controlBodySha256": "72251cc0655734bdc648c24d3f2800e95f8b10aef57a435f655932aa2577f0b4",
+      "bBodySha256": "293fc52cbf8884badd5386b9c787803d802f1974eb41fd2abae8f98cdd659ee3",
+      "control": {
+        "visibleTextOccurrences": 34,
+        "visibleBoundsOccurrences": 0,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 0,
+        "crossPagePairsWithBounds": 0,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 0,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "NONE",
+            "missingAliases": [
+              "L0000:S0",
+              "L0000:S1",
+              "L0001:S0",
+              "L0002:S0",
+              "L0003:S0",
+              "L0004:S0",
+              "L0005:S0",
+              "L0006:S0",
+              "L0007:S0",
+              "L0008:S0",
+              "L0009:S0",
+              "L0010:S0",
+              "L0011:S0",
+              "L0012:S0",
+              "L0013:S0",
+              "L0014:S0",
+              "L0015:S0",
+              "L0016:S0",
+              "L0017:S0",
+              "L0017:S1",
+              "L0018:S0",
+              "L0019:S0",
+              "L0020:S0",
+              "L0021:S0",
+              "L0022:S0",
+              "L0023:S0",
+              "L0024:S0",
+              "L0025:S0",
+              "L0026:S0",
+              "L0027:S0",
+              "L0028:S0",
+              "L0028:S1",
+              "L0029:S0",
+              "L0029:S1",
+              "L0030:S0",
+              "L0031:S0",
+              "L0032:S0",
+              "L0033:S0"
+            ]
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 34,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "PARTIAL",
+            "missingAliases": [
+              "L0034:S0",
+              "L0035:S0",
+              "L0036:S0",
+              "L0037:S0",
+              "L0038:S0",
+              "L0039:S0",
+              "L0040:S0"
+            ]
+          }
+        ],
+        "fullVisualPageEvidence": false
+      },
+      "interpretationB": {
+        "visibleTextOccurrences": 34,
+        "visibleBoundsOccurrences": 34,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 561,
+        "crossPagePairsWithBounds": 0,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 0,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "NONE",
+            "missingAliases": [
+              "L0000:S0",
+              "L0000:S1",
+              "L0001:S0",
+              "L0002:S0",
+              "L0003:S0",
+              "L0004:S0",
+              "L0005:S0",
+              "L0006:S0",
+              "L0007:S0",
+              "L0008:S0",
+              "L0009:S0",
+              "L0010:S0",
+              "L0011:S0",
+              "L0012:S0",
+              "L0013:S0",
+              "L0014:S0",
+              "L0015:S0",
+              "L0016:S0",
+              "L0017:S0",
+              "L0017:S1",
+              "L0018:S0",
+              "L0019:S0",
+              "L0020:S0",
+              "L0021:S0",
+              "L0022:S0",
+              "L0023:S0",
+              "L0024:S0",
+              "L0025:S0",
+              "L0026:S0",
+              "L0027:S0",
+              "L0028:S0",
+              "L0028:S1",
+              "L0029:S0",
+              "L0029:S1",
+              "L0030:S0",
+              "L0031:S0",
+              "L0032:S0",
+              "L0033:S0"
+            ]
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 34,
+            "visibleBoundsOccurrences": 34,
+            "canonicalOccurrenceCoverage": "PARTIAL",
+            "missingAliases": [
+              "L0034:S0",
+              "L0035:S0",
+              "L0036:S0",
+              "L0037:S0",
+              "L0038:S0",
+              "L0039:S0",
+              "L0040:S0"
+            ]
+          }
+        ],
+        "fullVisualPageEvidence": false
+      }
+    },
+    {
+      "name": "H2C_O47",
+      "controlBodySha256": "72d24257a290f2451ae58679d46228dca692de4d6c4196d630ca5f854d7488a3",
+      "bBodySha256": "c8365a117e3386d12c54abb8f66172b32107926dac05a992f35c463d8b45318c",
+      "control": {
+        "visibleTextOccurrences": 33,
+        "visibleBoundsOccurrences": 0,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 0,
+        "crossPagePairsWithBounds": 0,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 0,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "NONE",
+            "missingAliases": [
+              "L0000:S0",
+              "L0000:S1",
+              "L0001:S0",
+              "L0002:S0",
+              "L0003:S0",
+              "L0004:S0",
+              "L0005:S0",
+              "L0006:S0",
+              "L0007:S0",
+              "L0008:S0",
+              "L0009:S0",
+              "L0010:S0",
+              "L0011:S0",
+              "L0012:S0",
+              "L0013:S0",
+              "L0014:S0",
+              "L0015:S0",
+              "L0016:S0",
+              "L0017:S0",
+              "L0017:S1",
+              "L0018:S0",
+              "L0019:S0",
+              "L0020:S0",
+              "L0021:S0",
+              "L0022:S0",
+              "L0023:S0",
+              "L0024:S0",
+              "L0025:S0",
+              "L0026:S0",
+              "L0027:S0",
+              "L0028:S0",
+              "L0028:S1",
+              "L0029:S0",
+              "L0029:S1",
+              "L0030:S0",
+              "L0031:S0",
+              "L0032:S0",
+              "L0033:S0"
+            ]
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 33,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "PARTIAL",
+            "missingAliases": [
+              "L0034:S0",
+              "L0035:S0",
+              "L0036:S0",
+              "L0037:S0",
+              "L0038:S0",
+              "L0039:S0",
+              "L0040:S0",
+              "L0040:S1"
+            ]
+          }
+        ],
+        "fullVisualPageEvidence": false
+      },
+      "interpretationB": {
+        "visibleTextOccurrences": 33,
+        "visibleBoundsOccurrences": 33,
+        "anonymousTextContexts": 0,
+        "samePagePairsWithBounds": 528,
+        "crossPagePairsWithBounds": 0,
+        "pages": [
+          {
+            "page": 1,
+            "sourceOccurrences": 38,
+            "visibleTextOccurrences": 0,
+            "visibleBoundsOccurrences": 0,
+            "canonicalOccurrenceCoverage": "NONE",
+            "missingAliases": [
+              "L0000:S0",
+              "L0000:S1",
+              "L0001:S0",
+              "L0002:S0",
+              "L0003:S0",
+              "L0004:S0",
+              "L0005:S0",
+              "L0006:S0",
+              "L0007:S0",
+              "L0008:S0",
+              "L0009:S0",
+              "L0010:S0",
+              "L0011:S0",
+              "L0012:S0",
+              "L0013:S0",
+              "L0014:S0",
+              "L0015:S0",
+              "L0016:S0",
+              "L0017:S0",
+              "L0017:S1",
+              "L0018:S0",
+              "L0019:S0",
+              "L0020:S0",
+              "L0021:S0",
+              "L0022:S0",
+              "L0023:S0",
+              "L0024:S0",
+              "L0025:S0",
+              "L0026:S0",
+              "L0027:S0",
+              "L0028:S0",
+              "L0028:S1",
+              "L0029:S0",
+              "L0029:S1",
+              "L0030:S0",
+              "L0031:S0",
+              "L0032:S0",
+              "L0033:S0"
+            ]
+          },
+          {
+            "page": 2,
+            "sourceOccurrences": 41,
+            "visibleTextOccurrences": 33,
+            "visibleBoundsOccurrences": 33,
+            "canonicalOccurrenceCoverage": "PARTIAL",
+            "missingAliases": [
+              "L0034:S0",
+              "L0035:S0",
+              "L0036:S0",
+              "L0037:S0",
+              "L0038:S0",
+              "L0039:S0",
+              "L0040:S0",
+              "L0040:S1"
+            ]
+          }
+        ],
+        "fullVisualPageEvidence": false
+      }
+    }
+  ],
+  "gates": {
+    "providerCalls": 0,
+    "goldRead": false,
+    "goldMutation": false,
+    "runtimeChanged": false,
+    "frozenRequestsChanged": false,
+    "bSpatialImplemented": false,
+    "productionPromotion": "LOCKED"
+  }
+}

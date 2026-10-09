@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "p7-d2-1-token-budget-integrity-1",
+  "status": "PARTIAL_CONTEXT_INTEGRITY_PASS_EXACT_TOKEN_BUDGET_BLOCKED",
+  "model": "qwen/qwen3.7-flash",
+  "provider": "alibaba",
+  "completionTokenCeiling": 32768,
+  "baselinePreflightSha256": "348312e37a9e92295e0928ef13376c6b2fd266a54bc2dfea4a7d62aa89b1d76e",
+  "pageContextPreflightSha256": "d7cdfd5ccebcfd2c771f66184f51e7781682c10ca270557806a5d4998bbb7b91",
+  "tokenizer": {
+    "advertisedFamily": "Qwen",
+    "verifiedModelTokenizerArtifact": null,
+    "verifiedTokenizerRevision": null,
+    "verifiedChatTemplate": null,
+    "localExactInputTokens": null,
+    "addedTokensVersusControl": null,
+    "providerBillingTokens": null,
+    "status": "NO_AUTHORITATIVE_LOCAL_MAPPING_ESTABLISHED_DO_NOT_SUBSTITUTE_GENERIC_QWEN_TOKENIZER",
+    "notAClaimThatArtifactCannotExist": true,
+    "consultedSources": [
+      "https://openrouter.ai/docs/guides/overview/models",
+      "https://openrouter.ai/api/v1/models/qwen/qwen3.7-flash/endpoints",
+      "https://www.alibabacloud.com/help/en/model-studio/qwen3-7-flash"
+    ],
+    "consultedDateAsiaSaigon": "2026-10-09",
+    "retainedHistoricalMetadata": {
+      "path": "artifacts/qwen38-27b-free-3pack-canary/raw-qwen37-flash-endpoints-response.json",
+      "sha256": "4e5bfff6faf6515fb917e2baf20395011b629f4cd880e3b5ab1f51b47eaabf5a",
+      "notLiveEndpointOrTokenizerRevisionAuthority": true
+    }
+  },
+  "draftSizeMeasurements": {
+    "maxContextUtf8Bytes": 140192,
+    "maxDraftUserEnvelopeUtf8Bytes": 333322,
+    "areTokenCounts": false,
+    "contextSystemInstructionFrozen": false,
+    "completeTreatmentProviderBodiesFrozen": false
+  },
+  "integrity": {
+    "originalStageDecisionParsersUsed": true,
+    "contextDoesNotRebuildIssuedUniverse": true,
+    "validIssuedExtentAccepted": true,
+    "validIssuedTerminalNullSuccessorAccepted": true,
+    "prefixMemberEndpointSuccessorRejected": true,
+    "adjacentMemberEndpointSuccessorRejected": true,
+    "F1ContextOccurrenceCannotReplaceIssuedOccurrence": true,
+    "G2AContextNeighborCannotBecomeDecisionSubject": true,
+    "futureExpandedReferenceParserParity": "NOT_YET_IMPLEMENTED_OR_CLAIMED"
+  },
+  "verification": {
+    "releaseTestBuild": "PASS",
+    "focusedTestsPassed": 157,
+    "focusedTestsFailed": 0,
+    "newDecisionUniverseCasesPassed": 9,
+    "fullSuite": "NOT_RUN",
+    "ci": "NOT_RUN",
+    "gitDiffCheck": "PASS"
+  },
+  "files": [
+    { "path": "tests/DocxHeaderExtractor.Tests/P7PageContextDecisionUniverseTests.cs", "sha256": "3d6181c088f2c393e08fc12261f0f249b3c140ec6b579de9886e0b584281f272" },
+    { "path": "scripts/P7PageContextPreflight/TOKEN-BUDGET-GATE.md", "sha256": "eb082ae2e0aa7d3e3bb493c7c7bd89721b0bb1b4a53aa48afdcd8d07a3112546" }
+  ],
+  "gates": {
+    "inferenceProviderCalls": 0,
+    "publicMetadataAndDocumentationRead": true,
+    "sourceSentToRemoteTokenCountingService": false,
+    "goldMutation": false,
+    "runtimeChanged": false,
+    "existingFrozenRequestsChanged": false,
+    "D2_1": "PARTIAL",
+    "D2_2": "PENDING",
+    "D2_3": "PENDING",
+    "productionPromotion": "LOCKED",
+    "commitPush": "NOT_EXECUTED"
+  }
+}

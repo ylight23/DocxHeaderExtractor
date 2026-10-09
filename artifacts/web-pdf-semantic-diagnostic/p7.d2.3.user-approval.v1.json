@@ -1,0 +1,30 @@
+{
+  "version": "P7_PILOT_USER_APPROVAL_V1",
+  "approvalDateLocal": "2026-10-09",
+  "approvalAuthority": "USER_IN_CURRENT_CONVERSATION",
+  "provenance": "ASSISTANT_SOURCE_ONLY_PROPOSAL_THEN_USER_SOURCE_REVIEW_AND_FINAL_APPROVAL",
+  "independentReviewerCountAttested": null,
+  "providerVerified": false,
+  "userApproved": true,
+  "scopeApproved": true,
+  "proposalSha256": "1c0185b6ef3285db69bfb4b0a15a68aef6e33ee61612364f42a3ae296d59f5d5",
+  "proposalZipSha256": "3934f028b59b82a735d00c2ffee8f9087fda90295c225269808db9c657328b45",
+  "sourceZipSha256": "e130cc7cd36a8e49cd20f09a013229e893d18c9dda32372a65bdebbdf37048dc",
+  "scopeManifestSha256": "be97555cd3f8a2bd4562d9c143bceaa717aeeab5ec16efa98777657368096386",
+  "approvedDocuments": 5,
+  "approvedPages": 6,
+  "approvedOccurrences": 213,
+  "approvedHeadingUnits": 15,
+  "approvedHeadingParts": 20,
+  "titleSubtitlePolicy": "INCLUDE_BOTH_ADJUDICATE_EACH_UNIT_INDEPENDENTLY",
+  "chapterSectionPolicy": "MARKER_AND_CAPTION_FORM_ONE_MULTIPART_UNIT_EACH_CHAPTER_AND_SECTION_REMAIN_DISTINCT",
+  "policyProposalOrigin": "ASSISTANT_PROPOSAL_USER_RATIFIED_NOT_TWO_INDEPENDENT_REVIEWERS",
+  "resolutions": [
+    { "document": "PDF-2b1a4e73ce2df40e46446ff7a772b44284ba6bbcff9e02062f838b5498b4085f", "alias": "L0000:S0", "semanticFunction": "OTHER", "headingMembership": false, "isDistinctAnchor": false, "unitRole": "PROGRAM_BRANDING" },
+    { "document": "PDF-2b1a4e73ce2df40e46446ff7a772b44284ba6bbcff9e02062f838b5498b4085f", "alias": "L0001:S0", "semanticFunction": "ESTABLISHES_STRUCTURE", "headingMembership": true, "isDistinctAnchor": true, "unitRole": "EVENT_TITLE" },
+    { "document": "PDF-f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318", "alias": "L0028:S0", "semanticFunction": "OTHER", "headingMembership": false, "isDistinctAnchor": false, "unitRole": "ADMINISTRATIVE_RECIPIENT_LABEL" }
+  ],
+  "providerExecution": "LOCKED",
+  "productionPromotion": "LOCKED",
+  "full647PageGoldApproved": false
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P7 successful raw upstream capture receipt V1",
+  "description": "Qualification-only. Describes raw freeze prior to parse, not semantic correctness. Failed attempts remain separate diagnostic receipts and cannot drive downstream generation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["identity", "origin", "status", "finishReason", "httpAttempts", "retryCount", "repair", "fallback", "failureClass", "responseSha256", "sseSha256", "observationSha256", "rawFreezeSha256", "parsedDecisionSha256", "endpointMetadataSnapshotSha256"],
+  "properties": {
+    "identity": { "$ref": "#/$defs/identity" },
+    "origin": { "const": "PROVIDER_RAW" },
+    "status": { "const": "RAW_FROZEN_BEFORE_PARSE" },
+    "finishReason": { "const": "stop" },
+    "httpAttempts": { "const": 1 },
+    "retryCount": { "const": 0 },
+    "repair": { "const": false },
+    "fallback": { "const": false },
+    "failureClass": { "type": "null" },
+    "responseSha256": { "$ref": "#/$defs/hash" },
+    "sseSha256": { "$ref": "#/$defs/hash" },
+    "observationSha256": { "$ref": "#/$defs/hash" },
+    "rawFreezeSha256": { "$ref": "#/$defs/hash" },
+    "parsedDecisionSha256": { "$ref": "#/$defs/hash" },
+    "endpointMetadataSnapshotSha256": { "$ref": "#/$defs/hash" }
+  },
+  "$defs": {
+    "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["document", "sourceSha256", "sourceUniverseSha256", "pack", "packSha256", "issuedUniverseSha256", "stage", "arm", "mode", "providerBodySha256", "systemPromptSha256", "userMessageSha256", "parentCaptureSha256"],
+      "properties": {
+        "document": { "type": "string", "minLength": 1 },
+        "sourceSha256": { "$ref": "#/$defs/hash" },
+        "sourceUniverseSha256": { "$ref": "#/$defs/hash" },
+        "pack": { "type": "string", "minLength": 1 },
+        "packSha256": { "$ref": "#/$defs/hash" },
+        "issuedUniverseSha256": { "$ref": "#/$defs/hash" },
+        "stage": { "enum": ["F1", "G2A", "H2C"] },
+        "arm": { "enum": ["Control", "B"] },
+        "mode": { "enum": ["SharedF1Root", "ControlledDownstream", "NaturalEndToEnd"] },
+        "providerBodySha256": { "$ref": "#/$defs/hash" },
+        "systemPromptSha256": { "$ref": "#/$defs/hash" },
+        "userMessageSha256": { "$ref": "#/$defs/hash" },
+        "parentCaptureSha256": { "type": "array", "maxItems": 2, "uniqueItems": true, "items": { "$ref": "#/$defs/hash" } }
+      },
+      "allOf": [
+        { "if": { "properties": { "stage": { "const": "F1" } } }, "then": { "properties": { "mode": { "const": "SharedF1Root" }, "parentCaptureSha256": { "maxItems": 0 } } } },
+        { "if": { "properties": { "stage": { "const": "G2A" } } }, "then": { "properties": { "mode": { "enum": ["ControlledDownstream", "NaturalEndToEnd"] }, "parentCaptureSha256": { "minItems": 1, "maxItems": 1 } } } },
+        { "if": { "properties": { "stage": { "const": "H2C" } } }, "then": { "properties": { "mode": { "enum": ["ControlledDownstream", "NaturalEndToEnd"] }, "parentCaptureSha256": { "minItems": 2, "maxItems": 2 } } } }
+      ]
+    }
+  }
+}

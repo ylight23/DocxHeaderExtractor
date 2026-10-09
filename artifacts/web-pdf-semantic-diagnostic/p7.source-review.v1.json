@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "p7-source-only-review-1",
+  "authority": "DEVELOPMENT_SOURCE_REVIEW_NOT_GOLD",
+  "referenceSourceSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+  "reviewMethod": "Read both rendered PDF pages; classify source function, not provider judgment. Predictions were already known: this is not blinded or independent qualification.",
+  "headingScope": "Document-level structural headings/titles, excluding institutional identity and table column labels.",
+  "rows": [
+    { "anchor": "O1", "ordinal": 0, "page": 1, "sourceFunction": "INSTITUTIONAL_IDENTITY", "expectedDocumentHeadingMembership": false, "expectedExtentOrdinals": null, "boundaryStatus": "NOT_APPLICABLE_NOT_A_DOCUMENT_HEADING" },
+    { "anchor": "O5", "ordinal": 4, "page": 1, "sourceFunction": "DOCUMENT_TITLE", "expectedDocumentHeadingMembership": true, "expectedExtentOrdinals": null, "boundaryStatus": "TITLE_SUBTITLE_POLICY_UNRESOLVED", "sourceOnlyAlternatives": [[4], [4, 5, 6]], "evidence": "A main title followed by two centered bold event-description lines. Appearance alone does not decide whether title and description are one heading or distinct title/subtitle units." },
+    { "anchor": "O39", "ordinal": 38, "page": 2, "sourceFunction": "PROGRAM_TITLE", "expectedDocumentHeadingMembership": true, "expectedExtentOrdinals": null, "boundaryStatus": "TITLE_SUBTITLE_POLICY_UNRESOLVED", "sourceOnlyAlternatives": [[38], [38, 39, 40]], "evidence": "Program title followed by a two-line conference name; no frozen unit policy adjudicates their grouping." },
+    { "anchor": "O45", "ordinal": 44, "page": 2, "sourceFunction": "TABLE_COLUMN_LABEL", "expectedDocumentHeadingMembership": false, "expectedExtentOrdinals": null, "boundaryStatus": "NOT_APPLICABLE_NOT_A_DOCUMENT_HEADING", "localCellOrdinals": [44] },
+    { "anchor": "O46", "ordinal": 45, "page": 2, "sourceFunction": "TABLE_COLUMN_LABEL", "expectedDocumentHeadingMembership": false, "expectedExtentOrdinals": null, "boundaryStatus": "NOT_APPLICABLE_NOT_A_DOCUMENT_HEADING", "localCellOrdinals": [45] },
+    { "anchor": "O47", "ordinal": 46, "page": 2, "sourceFunction": "TABLE_COLUMN_LABEL", "expectedDocumentHeadingMembership": false, "expectedExtentOrdinals": null, "boundaryStatus": "NOT_APPLICABLE_NOT_A_DOCUMENT_HEADING", "localCellOrdinals": [46] }
+  ],
+  "cellBoundaryIsNotHeadingGold": true,
+  "firstOutsideRoleScored": false,
+  "sourceReviewCoverage": "SIX_ISSUED_ANCHORS_ONLY_NOT_DOCUMENT_RECALL",
+  "providerCalls": 0,
+  "goldRead": false,
+  "goldMutation": "NONE",
+  "runtimeChange": false
+}

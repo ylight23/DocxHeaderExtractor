@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "P7 financial attempt receipt V1, not authorization",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["financialManifestSha256", "executionManifestSha256", "callHandle", "bodySha256", "endpointBindingSha256", "metadataSnapshotSha256", "observationSha256", "reservedUsd", "promptTokens", "completionTokens", "reasoningTokens", "costUsd", "knownCumulativeCostUsd", "unsettledExposureUsd", "status"],
+  "properties": {
+    "financialManifestSha256": {"$ref": "#/$defs/hash"},
+    "executionManifestSha256": {"$ref": "#/$defs/hash"},
+    "callHandle": {"type": "string", "minLength": 1},
+    "bodySha256": {"$ref": "#/$defs/hash"},
+    "endpointBindingSha256": {"$ref": "#/$defs/hash"},
+    "metadataSnapshotSha256": {"$ref": "#/$defs/hash"},
+    "observationSha256": {"$ref": "#/$defs/hash"},
+    "reservedUsd": {"type": "number", "minimum": 0},
+    "promptTokens": {"$ref": "#/$defs/count"},
+    "completionTokens": {"$ref": "#/$defs/count"},
+    "reasoningTokens": {"$ref": "#/$defs/count"},
+    "costUsd": {"type": ["number", "null"], "minimum": 0},
+    "knownCumulativeCostUsd": {"type": "number", "minimum": 0},
+    "unsettledExposureUsd": {"type": "number", "minimum": 0},
+    "status": {"enum": ["SETTLED_PROVIDER_REPORTED_NOT_BILLING_AUDIT", "USAGE_OR_COST_INCOMPLETE_HALT", "BOUND_EXCEEDED_HALT", "TRANSPORT_FAILURE_HALT"]}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "count": {"type": ["integer", "null"], "minimum": 0}
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "p7-d2-parallel-gates-verification-1",
+  "status": "OFFLINE_BUDGET_AND_VALIDATOR_COMPLETE_REAL_COHORT_FREEZE_PENDING",
+  "gateDecoupling": {
+    "EXACT_TOKENIZER_MAPPING": "NOT_ESTABLISHED",
+    "TOKEN_BUDGET_MEASUREMENT": "NOT_ESTABLISHED",
+    "D2_1_INTEGRITY": "PASS",
+    "D2_1_OFFLINE_SIZE_MEASUREMENT": "PASS_NOT_TOKEN_COUNTS",
+    "D2_2_ENGINEERING_VALIDATOR": "PASS",
+    "D2_2_RUNNABLE_TREATMENT_PROTOCOL_FREEZE": "PENDING",
+    "D2_3_COHORT_FREEZE_GATE_IMPLEMENTATION": "PASS",
+    "D2_3_ACTUAL_APPROVED_COHORT_AND_SCORING_FREEZE": "NOT_FROZEN",
+    "tokenizerBlocksOfflineValidatorAndCohortWork": false
+  },
+  "offlineMeasurements": {
+    "artifact": "p7.offline-size-budget.v1.json",
+    "sha256": "31f9eb6884e0a7dfac87028042709416899f6992e0ac073629c63dcaede7634d",
+    "reproductionSha256": "31f9eb6884e0a7dfac87028042709416899f6992e0ac073629c63dcaede7634d",
+    "rows": 40,
+    "controlBodies": 8,
+    "B_frozenBodies": 8,
+    "contextAddedDraftBodies": 24,
+    "B_providerComposerByteParity": "8/8",
+    "bytesAreTokenUpperBound": false,
+    "proxyTokenizerUsed": false,
+    "completeContextTreatmentSystemInstructionsFrozen": false,
+    "measurementMeaning": "EXACT_UTF8_BYTES_AND_DELTAS_NOT_INPUT_OR_BILLING_TOKENS"
+  },
+  "metadataSnapshot": {
+    "file": "p7.openrouter-endpoint-metadata.20261009.v1.json",
+    "sha256": "d38b7fb531a59602d0bf73ffc4b3cb3838756f5270d9bed3545dc22e8b381069",
+    "timeAndHttpIdentityReceipt": "p7.endpoint-metadata-snapshot-receipt.v1.json",
+    "rawHashChangedVersusHistorical": true,
+    "configurationIdentityProjectionChanged": false,
+    "hiddenWeightsAndTokenizerRevisionAreNotCertifiedByMetadataEquality": true
+  },
+  "verification": {
+    "releaseBuild": "PASS",
+    "focusedTestsPassed": 207,
+    "focusedTestsFailed": 0,
+    "D2_2_tests": 26,
+    "D2_3_tests": 24,
+    "gitDiffCheck": "PASS",
+    "fullSuite": "NOT_RUN",
+    "ci": "NOT_RUN"
+  },
+  "files": [
+    { "path": "scripts/P7OfflineBudgetAudit/Program.cs", "sha256": "d5630844db3fc84bbf7c45a6cedd900f92889226c4613196a29045f9481a5702" },
+    { "path": "scripts/P7OfflineBudgetAudit/P7OfflineBudgetAudit.csproj", "sha256": "eadfdd7194c94ccc14b3419fefc7d2cccbbc5b64f63b5ffe3cc82e59f4b40902" },
+    { "path": "scripts/P7OfflineBudgetAudit/README.md", "sha256": "a50be35fba5d03800740abfb07c080d18e363d2ebc0497642cf595e0dd8f5686" },
+    { "path": "src/DocxHeaderExtractor.V5Qualification/P7/PdfPageContextEvidenceValidator.cs", "sha256": "ab55598f41bd64536265aea6aab5e12fcc34de5b35e75cb3e5b4acfaf62248ba" },
+    { "path": "tests/DocxHeaderExtractor.Tests/P7PageContextEvidenceValidatorTests.cs", "sha256": "953770e5949c8c2c91536cde2f643f75648e0791ba08989088aab1849119dfb6" },
+    { "path": "scripts/P7PageContextPreflight/REFERENCE-VALIDATOR.md", "sha256": "98addb7d9b8bd03c3dcddd18811c05555d65f35d0d6cb14c715032742d93a9eb" },
+    { "path": "src/DocxHeaderExtractor.V5Qualification/P7/P7CohortScoringFreeze.cs", "sha256": "062cf9dfeb98148ca7fe2dd36b80ccd6fca320379d57f520a4be9238af297aec" },
+    { "path": "tests/DocxHeaderExtractor.Tests/P7CohortScoringFreezeTests.cs", "sha256": "c8739da8ae14973bbeb94c52f2d01cff22391ebbaa46d32c9ee27a4ac687c2ca" },
+    { "path": "scripts/P7CohortInventory/SCORING-FREEZE.md", "sha256": "28743b8300d6ca9802a49441a9b2dd599eff76d476842c521d64795474230b7d" },
+    { "path": "artifacts/web-pdf-semantic-diagnostic/p7.d2.3.freeze-readiness.v1.json", "sha256": "426cb16117e72b973a08063bd07694a2d11d35af9fb5f21e1b8f4079a6ab404d" }
+  ],
+  "remainingWork": [
+    "INDEPENDENT_SOURCE_ONLY_MULTI_DOCUMENT_SHAPE_REVIEW",
+    "APPROVED_TITLE_SUBTITLE_EXACT_UNIT_POLICY",
+    "SOURCE_GOLD_SCORER_AUTHORITY_AND_REQUEST_MANIFEST_FREEZE",
+    "VERSIONED_STAGE_ISOLATED_CONTEXT_REFERENCE_PROVIDER_TREATMENT",
+    "SEPARATELY_AUTHORIZED_USAGE_CALIBRATION_IF_NEEDED"
+  ],
+  "gates": {
+    "inferenceCalls": 0,
+    "publicMetadataGetCalls": 1,
+    "sourceTextSentExternally": false,
+    "goldMutation": false,
+    "runtimeChanged": false,
+    "existingFrozenRequestsChanged": false,
+    "userOwnedDirtyChangesPreserved": true,
+    "usageCalibrationAuthorized": false,
+    "productionPromotion": "LOCKED",
+    "commitPushPerformed": false
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "P7_D23_FREEZE_READINESS_V1",
+  "status": "SCAFFOLD_IMPLEMENTED_REAL_COHORT_NOT_FROZEN",
+  "sourcePoolArtifactSha256": "77559c935a665c155ed06c3b219061d0716dacb6bbeab308cf8d35a87c54330c",
+  "sourcePoolDocuments": 84,
+  "approvedCohortDocuments": 0,
+  "sourceOnlyShapeReviewsApproved": 0,
+  "titleSubtitleInclusionPolicy": "OPEN_REQUIRES_INDEPENDENT_APPROVAL",
+  "titleSubtitleGroupingPolicy": "OPEN_REQUIRES_SOURCE_REVIEWED_EXACT_UNITS",
+  "independentScoringAuthority": "NOT_FROZEN",
+  "multiDocumentRequestManifest": "NOT_FROZEN",
+  "heldOutClaim": false,
+  "blockers": [
+    "SOURCE_ONLY_SHAPE_REVIEWS_MISSING",
+    "SOURCE_SNAPSHOT_UNIVERSE_STORE_PACK_COHORT_MANIFEST_MISSING",
+    "PRIOR_EXPOSURE_REVIEW_OPEN",
+    "TITLE_SUBTITLE_POLICY_ADJUDICATION_OPEN",
+    "INDEPENDENT_GOLD_SCORER_APPROVAL_HASHES_NOT_FROZEN",
+    "MULTI_DOCUMENT_CONTROL_TREATMENT_REQUESTS_NOT_FROZEN"
+  ],
+  "implementationSha256": "062cf9dfeb98148ca7fe2dd36b80ccd6fca320379d57f520a4be9238af297aec",
+  "testsSha256": "c8739da8ae14973bbeb94c52f2d01cff22391ebbaa46d32c9ee27a4ac687c2ca",
+  "policyDraftSha256": "28743b8300d6ca9802a49441a9b2dd599eff76d476842c521d64795474230b7d",
+  "verification": {
+    "configuration": "Release",
+    "focusedTests": "P7CohortScoringFreezeTests",
+    "passed": 24,
+    "failed": 0,
+    "fixtures": "SYNTHETIC_IDENTITIES_AND_APPROVALS_NOT_REAL_GOLD",
+    "artifactsPath": ".verify-build/p7-d23-tests",
+    "fullSuite": "NOT_RUN"
+  },
+  "providerCalls": 0,
+  "goldReadForSelection": false,
+  "goldMutation": "NONE",
+  "productionChanged": false,
+  "frozenRequestMutation": "NONE",
+  "providerAuthorization": "NOT_GRANTED",
+  "runtimePromotion": "FORBIDDEN",
+  "commitOrPushPerformed": false
+}
