@@ -101,14 +101,16 @@ foreach (var draftPath in draftPaths)
         // Typography outliers among OTHER rows: bold, or larger than the page's most common size, and short (<= 12 words).
         var sizes = onPage.Select(x => Font(layout[x.L.GetProperty("sourceAlias").GetString()!]).Size).Where(s => s is not null).Select(s => Math.Round(s!.Value * 2) / 2).ToArray();
         var body = sizes.Length == 0 ? (double?)null : sizes.GroupBy(s => s).OrderByDescending(g => g.Count()).ThenBy(g => g.Key).First().Key;
+        // Bold only discriminates when it is the exception: on a page where most rows are bold it is ignored.
+        var useBold = onPage.Count(x => Font(layout[x.L.GetProperty("sourceAlias").GetString()!]).Bold) * 2 < onPage.Length;
         var check = onPage.Where(x => Label(x.L) == "OTHER").Where(x =>
         {
             var f = Font(layout[x.L.GetProperty("sourceAlias").GetString()!]); var words = (x.L.GetProperty("text").GetString() ?? "").Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
-            return words is > 0 and <= 12 && (f.Bold || (f.Size is { } s && body is { } b && s >= b + 1.0));
+            return words is > 0 and <= 12 && ((useBold && f.Bold) || (f.Size is { } s && body is { } b && s >= b + 1.0));
         }).ToArray();
         otherToCheck += check.Length;
         md.AppendLine();
-        md.AppendLine($"**OTHER rows to check for a missed heading on page {page}** (body size {(body is { } bs ? bs.ToString("0.#") : "?")}pt; bold or ≥ body+1pt, ≤ 12 words): " +
+        md.AppendLine($"**OTHER rows to check for a missed heading on page {page}** (body size {(body is { } bs ? bs.ToString("0.#") : "?")}pt; {(useBold ? "bold or " : "most rows on this page are bold, so bold is ignored; ")}≥ body+1pt, ≤ 12 words): " +
             (check.Length == 0 ? "none." : string.Join(", ", check.Select(x => $"#{x.No} `{x.L.GetProperty("sourceAlias").GetString()}` {Cell(x.L.GetProperty("text").GetString(), 60)} ({FontText(layout[x.L.GetProperty("sourceAlias").GetString()!])})")) + "."));
     }
     File.WriteAllText(Path.Combine(output, id + ".md"), md.ToString());

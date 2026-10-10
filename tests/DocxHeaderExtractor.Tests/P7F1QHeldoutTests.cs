@@ -344,6 +344,34 @@ public sealed class P7F1QHeldoutTests : IDisposable
         }
     }
 
+    [Fact] public void Visual_review_v3_shows_every_v6_occurrence_of_the_remaining_twenty_documents_on_already_public_pages()
+    {
+        var vr = Path.Combine(Dir, "p7.f1q.heldout.visual-review.v3");
+        using var m = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(vr, "render-manifest.json")));
+        Assert.Equal("P7_F1Q_HELDOUT_GOLD_DRAFT_V6", m.RootElement.GetProperty("drafts").GetString());
+        var ids = m.RootElement.GetProperty("documents").EnumerateArray().Select(e => e.GetString()!).ToArray();
+        using var sel = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.page-selection.v1.json")));
+        var all = sel.RootElement.GetProperty("documents").EnumerateArray().Select(d => d.GetProperty("id").GetString()!).ToHashSet();
+        Assert.Equal(all.Except(["044", "049", "087", "032"]).Order(), ids.Order());
+        Assert.Equal(110, m.RootElement.GetProperty("dpi").GetInt32());
+        var images = m.RootElement.GetProperty("images").EnumerateArray().ToArray();
+        Assert.Equal(70, images.Length);
+        foreach (var image in images)
+        {
+            var rel = image.GetProperty("file").GetString()!;
+            Assert.Equal(image.GetProperty("sha256").GetString(), Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(Path.Combine(vr, rel)))));
+            Assert.True(File.Exists(Path.Combine(Dir, "p7.f1q.heldout.visual-review.v1", rel)), "page must already be public in v1: " + rel);
+        }
+        foreach (var id in ids)
+        {
+            var md = File.ReadAllText(Path.Combine(vr, id + ".md"));
+            using var d = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v6", id + ".gold-draft.json")));
+            foreach (var l in d.RootElement.GetProperty("labels").EnumerateArray())
+                Assert.Contains($"| {l.GetProperty("sourceAlias").GetString()} |", md);
+        }
+        Assert.Contains("most rows on this page are bold, so bold is ignored", File.ReadAllText(Path.Combine(vr, "024.md")));
+    }
+
     [Fact] public void Gold_drafts_v6_change_exactly_the_three_032_cover_rows_and_record_no_approval()
     {
         var v5 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v5"); var v6 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v6");
