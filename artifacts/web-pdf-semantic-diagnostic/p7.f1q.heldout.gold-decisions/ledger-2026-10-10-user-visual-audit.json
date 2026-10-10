@@ -1,0 +1,82 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_DECISION_LEDGER_V1",
+  "source": "USER_VISUAL_AUDIT_2026_10_10_ISSUE_6",
+  "decisionsFileSha256": "319becd59e147ee8cf5b7dad19ab521c8f06ebe4cbaad4c279d2b5a8d9be330e",
+  "inputDrafts": "p7.f1q.heldout.gold-drafts.v2",
+  "outputDrafts": "p7.f1q.heldout.gold-drafts.v3",
+  "decisions": [
+    {
+      "id": "049",
+      "alias": "L0005:S0",
+      "text": "(Unaudited)",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": "OTHER",
+      "goldStatus": "LABELED",
+      "reason": "\"(Unaudited)\" states the audit status of the report; it does not open a heading or content region although it sits under the title in prominent type",
+      "source": "USER_VISUAL_AUDIT_2026_10_10_ISSUE_6"
+    },
+    {
+      "id": "017",
+      "alias": "L1688:S0",
+      "text": "1.Hìnhthứchóađơn:",
+      "previousLabel": "OTHER",
+      "newLabel": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED",
+      "reason": "numbered form heading \"1. Hình thức hóa đơn\" opens its own content region of the form (form-heading policy), not a single data field",
+      "source": "USER_VISUAL_AUDIT_2026_10_10_ISSUE_6"
+    },
+    {
+      "id": "017",
+      "alias": "L1691:S0",
+      "text": "2.Hìnhthứcgửidữliệuhóađơnđiệntử:",
+      "previousLabel": "OTHER",
+      "newLabel": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED",
+      "reason": "numbered form heading \"2. Hình thức gửi dữ liệu hóa đơn điện tử\" opens its own content region of the form (form-heading policy)",
+      "source": "USER_VISUAL_AUDIT_2026_10_10_ISSUE_6"
+    },
+    {
+      "id": "087",
+      "alias": "L1222:S0",
+      "text": "2. Reason",
+      "previousLabel": "OTHER",
+      "newLabel": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED",
+      "reason": "numbered form heading \"2. Reason\" opens its own content region of the form (form-heading policy)",
+      "source": "USER_VISUAL_AUDIT_2026_10_10_ISSUE_6"
+    },
+    {
+      "id": "087",
+      "alias": "L1224:S0",
+      "text": "3. Enclosed documents (documents proving that the information system is",
+      "previousLabel": "OTHER",
+      "newLabel": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED",
+      "reason": "numbered form heading \"3. Enclosed documents ...\" opens its own content region of the form (form-heading policy)",
+      "source": "USER_VISUAL_AUDIT_2026_10_10_ISSUE_6"
+    },
+    {
+      "id": "083",
+      "alias": "L1075:S0",
+      "text": "iomnnafoncraymAgbearemttriiocesnlenects.u3yr9si.ttLeyRmeosnumpotahnnaesaiigrbteislreVistrivieniscireoeesfmtahontevdniGninogafvoienrrfmnmomarmteionan.ttiCovsnyipsvnhteieomrlaCstiounmngdmtehirtettehleaewir",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": null,
+      "goldStatus": "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION",
+      "reason": "the parser merged body text, the real \"Article 39\" heading and the watermark into one corrupted atom (page 32); no clean heading occurrence exists to classify by text",
+      "source": "USER_VISUAL_AUDIT_2026_10_10_ISSUE_6"
+    },
+    {
+      "id": "087",
+      "alias": "L1216:S0",
+      "text": "inform.1-a...Itin2GofrneoenrqsmeyursaeattsleitomisnntsfoosoyrefmsxtnLaceatlmtiuioudonnenaatmalheese:ftc.o.uV.lrloitwyiiinemgpiotnrfntoarnmcaea:timon sy.stvemnfrom the List of",
+      "previousLabel": "OTHER",
+      "newLabel": null,
+      "goldStatus": "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION",
+      "reason": "the parser merged the \"1. General information\" form heading with body text and the watermark into one corrupted atom (page 38); label must not be guessed from the corrupted string",
+      "source": "USER_VISUAL_AUDIT_2026_10_10_ISSUE_6"
+    }
+  ],
+  "documentApprovals": [],
+  "goldApprovedDocuments": 0,
+  "providerCalls": 0
+}

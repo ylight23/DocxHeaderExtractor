@@ -170,6 +170,38 @@ public sealed class P7F1QHeldoutTests : IDisposable
         Assert.Equal(86, Directory.GetFiles(Path.Combine(Dir, "p7.f1q.heldout.visual-review.v1"), "*.jpg", SearchOption.AllDirectories).Length);
     }
 
+    [Fact] public void Gold_drafts_v3_apply_the_user_visual_audit_with_an_append_only_ledger()
+    {
+        var v3 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v3");
+        Dictionary<string, JsonElement> Rows(string dir, string id) => JsonDocument.Parse(File.ReadAllBytes(Path.Combine(dir, id + ".gold-draft.json")))
+            .RootElement.GetProperty("labels").EnumerateArray().ToDictionary(l => l.GetProperty("sourceAlias").GetString()!);
+        string? Label(string id, string alias) => Rows(v3, id)[alias].GetProperty("draftLabel").ValueKind == JsonValueKind.Null ? null : Rows(v3, id)[alias].GetProperty("draftLabel").GetString();
+        Assert.Equal("OTHER", Label("049", "L0005:S0"));
+        Assert.Equal("ESTABLISHES_STRUCTURE", Label("017", "L1688:S0")); Assert.Equal("ESTABLISHES_STRUCTURE", Label("017", "L1691:S0"));
+        Assert.Equal("ESTABLISHES_STRUCTURE", Label("087", "L1222:S0")); Assert.Equal("ESTABLISHES_STRUCTURE", Label("087", "L1224:S0"));
+        Assert.Null(Label("083", "L1075:S0")); Assert.Null(Label("087", "L1216:S0"));
+        Assert.Equal("EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION", Rows(v3, "083")["L1075:S0"].GetProperty("goldStatus").GetString());
+        var history = Rows(v3, "049")["L0005:S0"].GetProperty("decisions")[0];
+        Assert.Equal("ESTABLISHES_STRUCTURE", history.GetProperty("previousLabel").GetString());
+        Assert.Equal("OTHER", history.GetProperty("newLabel").GetString());
+        Assert.False(string.IsNullOrWhiteSpace(history.GetProperty("reason").GetString()));
+        using var ledger = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.gold-decisions", "ledger-2026-10-10-user-visual-audit.json")));
+        Assert.Equal(7, ledger.RootElement.GetProperty("decisions").GetArrayLength());
+        Assert.Equal(0, ledger.RootElement.GetProperty("goldApprovedDocuments").GetInt32());
+        var changed = 0;
+        foreach (var file in Directory.GetFiles(v3, "*.gold-draft.json"))
+        {
+            var id = Path.GetFileName(file).Split('.')[0]; var before = Rows(Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v2"), id); var after = Rows(v3, id);
+            Assert.Equal(before.Keys.Order(), after.Keys.Order());
+            changed += after.Count(p => p.Value.GetProperty("draftLabel").ToString() != before[p.Key].GetProperty("draftLabel").ToString());
+            Assert.Equal("DRAFT_USER_REVIEWED_NOT_APPROVED", JsonDocument.Parse(File.ReadAllBytes(file)).RootElement.GetProperty("status").GetString());
+        }
+        Assert.Equal(7, changed);
+        using var audit = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.source-quality-audit.v1.json")));
+        Assert.Equal(2, audit.RootElement.GetProperty("missingSourceHeadings").GetArrayLength());
+        Assert.True(audit.RootElement.GetProperty("declaredBeforeProviderRun").GetBoolean());
+    }
+
     [Fact] public void Heldout_plan_reuses_the_frozen_v3_prompt_tools_and_route_and_gates_on_gold()
     {
         using var plan = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.execution-plan.v1.json")));

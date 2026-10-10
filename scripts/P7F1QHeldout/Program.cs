@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.V5Qualification.P7;
@@ -338,6 +339,94 @@ switch (args[0])
             redacted.Add(new { file = rel, emails, phones });
         }
         Console.WriteLine(JsonSerializer.Serialize(new { redacted }));
+        break;
+    }
+    case "review-apply":
+    {
+        // Applies user review decisions to Gold drafts as a new, append-only version. Accepted lines:
+        //   <id> <alias> -> E|R|O because <reason>
+        //   <id> <alias> EXCLUDE <STATUS> because <reason>      (row kept, never scored; label null)
+        //   APPROVE <id> by <reviewer> [because <note>]         (only explicit user approvals)
+        // Every change records the previous label, the new label, the reason and the decision source.
+        if (args.Length != 6) throw new ArgumentException("review-apply <drafts-in-dir> <decisions.txt> <decision-source> <new-drafts-out-dir> <new-ledger.json>");
+        Need(!Directory.Exists(args[4]) && !File.Exists(args[5]), "OUTPUT_EXISTS");
+        var lines = File.ReadAllLines(args[2]).Select(l => l.Trim().TrimStart('﻿')).Where(l => l.Length > 0 && !l.StartsWith('#')).ToArray();
+        var decisionsBytes = File.ReadAllBytes(args[2]);
+        var drafts = Directory.GetFiles(args[1], "*.gold-draft.json").ToDictionary(f => Path.GetFileName(f).Split('.')[0], f => JsonNode.Parse(File.ReadAllBytes(f))!.AsObject());
+        var ledger = new List<object>(); var approvals = new List<object>();
+        foreach (var line in lines)
+        {
+            var mEdit = Regex.Match(line, @"^(\d{3})\s+(L\d{4}:S\d+)\s*->\s*([ERO])\s+because\s+(.+)$");
+            var mEx = Regex.Match(line, @"^(\d{3})\s+(L\d{4}:S\d+)\s+EXCLUDE\s+([A-Z_]+)\s+because\s+(.+)$");
+            var mAp = Regex.Match(line, @"^APPROVE\s+(\d{3})\s+by\s+(\S.*?)(?:\s+because\s+(.+))?$");
+            if (mAp.Success)
+            {
+                var docId = mAp.Groups[1].Value; Need(drafts.ContainsKey(docId), "UNKNOWN_DOCUMENT:" + docId);
+                drafts[docId]["documentApproval"] = new JsonObject { ["approved"] = true, ["by"] = mAp.Groups[2].Value, ["note"] = mAp.Groups[3].Value, ["source"] = args[3] };
+                approvals.Add(new { id = docId, by = mAp.Groups[2].Value, source = args[3] }); continue;
+            }
+            var m = mEdit.Success ? mEdit : mEx.Success ? mEx : throw new InvalidOperationException("DECISION_LINE_INVALID:" + line);
+            var id = m.Groups[1].Value; var alias = m.Groups[2].Value; Need(drafts.ContainsKey(id), "UNKNOWN_DOCUMENT:" + id);
+            var row = drafts[id]["labels"]!.AsArray().Select(n => n!.AsObject()).SingleOrDefault(n => n["sourceAlias"]!.GetValue<string>() == alias)
+                ?? throw new InvalidOperationException($"ALIAS_NOT_IN_DRAFT:{id}:{alias}");
+            var old = row["draftLabel"]?.GetValue<string>();
+            string? label = mEdit.Success ? m.Groups[3].Value switch { "E" => "ESTABLISHES_STRUCTURE", "R" => "REPRESENTS_STRUCTURE", _ => "OTHER" } : null;
+            var status = mEx.Success ? "EXCLUDED_" + m.Groups[3].Value : "LABELED";
+            var reason = m.Groups[4].Value.Trim();
+            row["draftLabel"] = label; row["goldStatus"] = status;
+            var history = row["decisions"]?.AsArray() ?? new JsonArray(); row["decisions"] = history;
+            history.Add(new JsonObject { ["previousLabel"] = old, ["newLabel"] = label, ["goldStatus"] = status, ["reason"] = reason, ["source"] = args[3] });
+            row["reviewFlag"] = "USER_DECIDED"; row["approval"] = "USER_DECIDED_ROW";
+            ledger.Add(new { id, alias, text = row["text"]!.GetValue<string>(), previousLabel = old, newLabel = label, goldStatus = status, reason, source = args[3] });
+        }
+        Directory.CreateDirectory(args[4]);
+        foreach (var (id, d) in drafts.OrderBy(p => p.Key))
+        {
+            d["version"] = "P7_F1Q_HELDOUT_GOLD_DRAFT_V3"; d["status"] = "DRAFT_USER_REVIEWED_NOT_APPROVED";
+            var labels = d["labels"]!.AsArray().Select(n => n!.AsObject()).ToArray();
+            foreach (var l in labels) l["goldStatus"] ??= "LABELED";
+            d["counts"] = new JsonObject(labels.GroupBy(l => l["draftLabel"]?.GetValue<string>() ?? "EXCLUDED").Select(g => KeyValuePair.Create(g.Key, (JsonNode?)g.Count())));
+            File.WriteAllBytes(Path.Combine(args[4], id + ".gold-draft.json"), JsonSerializer.SerializeToUtf8Bytes(d, json));
+        }
+        File.WriteAllBytes(args[5], JsonSerializer.SerializeToUtf8Bytes(new
+        {
+            version = "P7_F1Q_HELDOUT_GOLD_DECISION_LEDGER_V1", source = args[3], decisionsFileSha256 = Hex(SHA256.HashData(decisionsBytes)),
+            inputDrafts = Path.GetFileName(Path.GetFullPath(args[1]).TrimEnd(Path.DirectorySeparatorChar)), outputDrafts = Path.GetFileName(Path.GetFullPath(args[4]).TrimEnd(Path.DirectorySeparatorChar)),
+            decisions = ledger, documentApprovals = approvals, goldApprovedDocuments = approvals.Count, providerCalls = 0,
+        }, json));
+        Console.WriteLine(JsonSerializer.Serialize(new { applied = ledger.Count, approvals = approvals.Count }));
+        break;
+    }
+    case "freeze-gold":
+    {
+        // Issue #6: Gold is frozen only when EVERY planned document carries an explicit user approval. Writes the
+        // approved Gold files and the USER_APPROVED_GOLD_FROZEN manifest consumed by execute-heldout and the scorer.
+        if (args.Length != 4) throw new ArgumentException("freeze-gold <drafts-dir> <page-selection.json> <new-gold-dir>");
+        Need(!Directory.Exists(args[3]), "OUTPUT_EXISTS");
+        using var sel = JsonDocument.Parse(File.ReadAllBytes(args[2]));
+        var ids = sel.RootElement.GetProperty("documents").EnumerateArray().Select(d => d.GetProperty("id").GetString()!).ToArray();
+        var drafts = ids.ToDictionary(id => id, id => JsonNode.Parse(File.ReadAllBytes(Path.Combine(args[1], id + ".gold-draft.json")))!.AsObject());
+        var missing = ids.Where(id => drafts[id]["documentApproval"]?["approved"]?.GetValue<bool>() != true).ToArray();
+        Need(missing.Length == 0, "GOLD_NOT_APPROVED_FOR:" + string.Join(",", missing));
+        Directory.CreateDirectory(args[3]);
+        var docs = new List<object>();
+        foreach (var id in ids)
+        {
+            var d = drafts[id];
+            var labels = d["labels"]!.AsArray().Select(n => n!.AsObject()).Select(l => new
+            {
+                sourceAlias = l["sourceAlias"]!.GetValue<string>(), page = l["page"]!.GetValue<int>(), pageStratum = l["pageStratum"]!.GetValue<string>(),
+                text = l["text"]!.GetValue<string>(), label = l["draftLabel"]?.GetValue<string>(), goldStatus = l["goldStatus"]?.GetValue<string>() ?? "LABELED",
+            }).ToArray();
+            Need(labels.All(l => l.goldStatus.StartsWith("EXCLUDED_") ? l.label is null : l.label is "ESTABLISHES_STRUCTURE" or "REPRESENTS_STRUCTURE" or "OTHER"), "GOLD_LABEL_INVALID:" + id);
+            var bytes = JsonSerializer.SerializeToUtf8Bytes(new { version = "P7_F1Q_HELDOUT_GOLD_V1", status = "USER_APPROVED", id, sourceSha256 = d["sourceSha256"]!.GetValue<string>(),
+                approval = d["documentApproval"], labels }, json);
+            File.WriteAllBytes(Path.Combine(args[3], id + ".gold.json"), bytes);
+            docs.Add(new { id, goldFile = id + ".gold.json", goldSha256 = Hex(SHA256.HashData(bytes)), occurrences = labels.Length });
+        }
+        var manifestBytes = JsonSerializer.SerializeToUtf8Bytes(new { version = "P7_F1Q_HELDOUT_GOLD_FREEZE_V1", status = "USER_APPROVED_GOLD_FROZEN", documents = docs }, json);
+        File.WriteAllBytes(Path.Combine(args[3], "gold-freeze.json"), manifestBytes);
+        Console.WriteLine(JsonSerializer.Serialize(new { status = "USER_APPROVED_GOLD_FROZEN", sha256 = Hex(SHA256.HashData(manifestBytes)), documents = docs.Count }));
         break;
     }
     case "atoms":

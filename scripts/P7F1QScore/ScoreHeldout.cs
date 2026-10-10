@@ -66,7 +66,7 @@ internal static class F1QHeldoutScorer
             }
         }
 
-        var rows = new List<Row>();
+        var rows = new List<Row>(); var excluded = new List<object>();
         foreach (var d in goldFreeze.RootElement.GetProperty("documents").EnumerateArray())
         {
             var id = d.GetProperty("id").GetString()!;
@@ -75,7 +75,13 @@ internal static class F1QHeldoutScorer
             using var g = JsonDocument.Parse(bytes);
             foreach (var l in g.RootElement.GetProperty("labels").EnumerateArray())
             {
-                var alias = l.GetProperty("sourceAlias").GetString()!; var label = l.GetProperty("label").GetString()!;
+                var alias = l.GetProperty("sourceAlias").GetString()!;
+                var goldStatus = l.TryGetProperty("goldStatus", out var gs) ? gs.GetString()! : "LABELED";
+                if (goldStatus.StartsWith("EXCLUDED_", StringComparison.Ordinal))
+                {   // Declared before the run (source-quality audit): kept in requests, never scored, reported separately.
+                    excluded.Add(new { document = id, alias, goldStatus, predicted = final.GetValueOrDefault(alias) ?? "MISSING" }); continue;
+                }
+                var label = l.GetProperty("label").GetString()!;
                 Need(Labels.Contains(label), "GOLD_LABEL_INVALID:" + id + alias);
                 rows.Add(new(id, stratumOf[id], family[id], l.GetProperty("pageStratum").GetString()!, alias, label,
                     final.GetValueOrDefault(alias), first.GetValueOrDefault(alias), raw.GetValueOrDefault(alias)));
@@ -134,6 +140,7 @@ internal static class F1QHeldoutScorer
             byStratum = rows.GroupBy(r => r.Stratum).ToDictionary(g => g.Key, g => Metrics(g, r => r.Final)),
             byFamily = rows.GroupBy(r => r.Family).ToDictionary(g => g.Key, g => Metrics(g, r => r.Final)),
             byPageStratum = rows.GroupBy(r => r.PageStratum).ToDictionary(g => g.Key, g => Metrics(g, r => r.Final)),
+            excludedSourceCorrupted = excluded, excludedCount = excluded.Count,
             errors = rows.Where(r => r.Final != r.Gold).Select(r => new { r.Doc, r.Alias, r.PageStratum, r.Gold, predicted = r.Final ?? "MISSING" }),
             sparseRule = $"slices with fewer than {SparseThreshold} Gold positives for a class are INCONCLUSIVE for that class",
             missingAndAbstentionAreNotOTHER = true, goldMutation = "NONE", providerCallsDuringScoring = 0, productionPromotion = "BLOCKED",

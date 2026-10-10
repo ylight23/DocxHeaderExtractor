@@ -1,0 +1,10 @@
+# User Gold review 2026-10-10 (Issue #6 comments "Gold visual audit — 24 documents, 86 pages" and form-heading policy).
+# Policy: an independent heading that opens a content region of a form may be ESTABLISHES; data-field names, column
+# labels, subject lines, signatures and administrative details stay OTHER.
+049 L0005:S0 -> O because "(Unaudited)" states the audit status of the report; it does not open a heading or content region although it sits under the title in prominent type
+017 L1688:S0 -> E because numbered form heading "1. Hình thức hóa đơn" opens its own content region of the form (form-heading policy), not a single data field
+017 L1691:S0 -> E because numbered form heading "2. Hình thức gửi dữ liệu hóa đơn điện tử" opens its own content region of the form (form-heading policy)
+087 L1222:S0 -> E because numbered form heading "2. Reason" opens its own content region of the form (form-heading policy)
+087 L1224:S0 -> E because numbered form heading "3. Enclosed documents ..." opens its own content region of the form (form-heading policy)
+083 L1075:S0 EXCLUDE SOURCE_CORRUPTED_MIXED_FUNCTION because the parser merged body text, the real "Article 39" heading and the watermark into one corrupted atom (page 32); no clean heading occurrence exists to classify by text
+087 L1216:S0 EXCLUDE SOURCE_CORRUPTED_MIXED_FUNCTION because the parser merged the "1. General information" form heading with body text and the watermark into one corrupted atom (page 38); label must not be guessed from the corrupted string

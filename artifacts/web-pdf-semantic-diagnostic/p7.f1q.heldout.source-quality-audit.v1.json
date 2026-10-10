@@ -1,0 +1,39 @@
+{
+  "version": "P7_F1Q_HELDOUT_SOURCE_QUALITY_AUDIT_V1",
+  "issue": "ylight23/DocxHeaderExtractor#6",
+  "basis": "User visual audit of all 86 selected pages (2026-10-10), confirmed by orchestrator against the rendered pages and parser output before any held-out provider call",
+  "declaredBeforeProviderRun": true,
+  "corruptedSourceOccurrences": [
+    {
+      "document": "083", "page": 32, "sourceAlias": "L1075:S0", "goldStatus": "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION",
+      "evidence": "The parser merged three body lines, the real heading 'Article 39. Responsibilities of the Government Cipher Committee' and the diagonal 'LuatVietnam.vn' watermark into one atom whose text is interleaved and unreadable",
+      "scoring": "Row kept in the request universe; never scored in F1 (no clean occurrence to classify). Reported separately."
+    },
+    {
+      "document": "087", "page": 38, "sourceAlias": "L1216:S0", "goldStatus": "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION",
+      "evidence": "The parser merged the form heading '1. General information' with body text and the watermark into one corrupted atom",
+      "scoring": "Row kept in the request universe; never scored in F1. Reported separately."
+    }
+  ],
+  "missingSourceHeadings": [
+    {
+      "document": "028", "page": 229, "visibleHeading": "14. Contract Price and Payment",
+      "evidence": "Bold, centred clause heading visible on the rendered page; no parser occurrence or bbox on the page and the text is absent from every 028 request pack",
+      "scoring": "MISSING_SOURCE_HEADING: no synthetic occurrence created; outside the F1 denominator; reported as a parser coverage gap"
+    },
+    {
+      "document": "056", "page": 1, "visibleHeading": "Business Law I (cover title, graphic lettering)",
+      "evidence": "Most of the cover title is drawn as graphics; the parser yields only the word 'Essentials'",
+      "scoring": "MISSING_SOURCE_HEADING: no synthetic occurrence; outside the F1 denominator; reported as a parser coverage gap"
+    }
+  ],
+  "policyNotes": [
+    {
+      "document": "034", "sourceAlias": "L0210:S0", "text": "Standard Procurement Document",
+      "note": "Document title restated above the contents page; drafted ESTABLISHES and kept for now. Policy to fix before freeze: a restated document title presented as a page heading versus a running header (repeated page furniture). Pending user decision."
+    }
+  ],
+  "consequence": "Occurrence-level F1 and heading-level recall are different scopes: even a perfect F1 on parser occurrences cannot recover headings the parser never emits. The held-out report must state both coverage gaps.",
+  "providerCalls": 0,
+  "goldApproved": false
+}
