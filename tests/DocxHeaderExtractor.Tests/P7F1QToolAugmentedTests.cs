@@ -357,8 +357,9 @@ public sealed class P7F1QToolAugmentedTests : IDisposable
         Assert.Equal(10, r.GetProperty("cases").GetArrayLength());
         foreach (var q in requests)
         {
-            var bytes = File.ReadAllBytes(Path.Combine(dir, "p7.f1q.tool-augmented-raw.v1", "initial-bodies", q.GetProperty("bodyFile").GetString()!));
-            Assert.Equal(q.GetProperty("bodySha256").GetString(), SpatialCanonical.Hash(bytes));
+            var bodyPath = Path.Combine(dir, "p7.f1q.tool-augmented-raw.v1", "initial-bodies", q.GetProperty("bodyFile").GetString()!);
+            var bytes = File.ReadAllBytes(bodyPath);
+            RedactionAware.AssertSha(bodyPath, q.GetProperty("bodySha256").GetString());
             var body = JsonNode.Parse(bytes)!;
             Assert.Equal("qwen/qwen3.7-flash", body["model"]!.GetValue<string>());
             Assert.False(body["provider"]!["allow_fallbacks"]!.GetValue<bool>());
@@ -383,8 +384,9 @@ public sealed class P7F1QToolAugmentedTests : IDisposable
         foreach (var q in requests)
         {
             Assert.Equal("F1QToolsMandatory", q.GetProperty("arm").GetString());
-            var bytes = File.ReadAllBytes(Path.Combine(dir, "p7.f1q.tool-augmented-raw.v1", "initial-bodies-v2", q.GetProperty("bodyFile").GetString()!));
-            Assert.Equal(q.GetProperty("bodySha256").GetString(), SpatialCanonical.Hash(bytes));
+            var bodyPath = Path.Combine(dir, "p7.f1q.tool-augmented-raw.v1", "initial-bodies-v2", q.GetProperty("bodyFile").GetString()!);
+            var bytes = File.ReadAllBytes(bodyPath);
+            RedactionAware.AssertSha(bodyPath, q.GetProperty("bodySha256").GetString());
             var body = JsonNode.Parse(bytes)!;
             Assert.Equal(P7F1QProtocol.SystemPrompt(F1QArm.F1QToolsMandatory), body["messages"]![0]!["content"]!.GetValue<string>());
             Assert.Equal("auto", body["tool_choice"]!.GetValue<string>());
@@ -404,7 +406,7 @@ public sealed class P7F1QToolAugmentedTests : IDisposable
         using var manifest = JsonDocument.Parse(manifestBytes);
         var m = manifest.RootElement;
         foreach (var f in m.GetProperty("files").EnumerateArray())
-            Assert.Equal(f.GetProperty("sha256").GetString(), SpatialCanonical.Hash(File.ReadAllBytes(Path.Combine(root, f.GetProperty("path").GetString()!))));
+            RedactionAware.AssertSha(Path.Combine(root, f.GetProperty("path").GetString()!), f.GetProperty("sha256").GetString());
         Assert.Equal(33, m.GetProperty("requests").GetInt32());
         Assert.Equal(44, m.GetProperty("httpAttempts").GetInt32());
         Assert.Equal(0.072387504m, m.GetProperty("reportedCostUsd").GetDecimal());
@@ -472,5 +474,29 @@ public sealed class P7F1QToolAugmentedTests : IDisposable
         Assert.Contains("INSUFFICIENT_EVIDENCE", none);
         Assert.DoesNotContain("\r", tools);
         Assert.Throws<InvalidOperationException>(() => P7F1QProtocol.SystemPrompt(F1QArm.Control));
+    }
+}
+
+/// <summary>Issue #6 history PII redaction: a file with a sibling <c>.redaction.json</c> receipt must match the ORIGINAL
+/// sha256 through the receipt (frozen manifests keep the original hash) and carry no PII; any other file must match
+/// its recorded sha256 byte for byte.</summary>
+internal static class RedactionAware
+{
+    public static void AssertSha(string path, string? expected)
+    {
+        var bytes = File.ReadAllBytes(path);
+        var receiptPath = Path.ChangeExtension(path, ".redaction.json");
+        if (!File.Exists(receiptPath)) { Assert.Equal(expected, SpatialCanonical.Hash(bytes)); return; }
+        using var receipt = JsonDocument.Parse(File.ReadAllBytes(receiptPath));
+        var r = receipt.RootElement;
+        Assert.Equal("P7_F1Q_HISTORY_PII_REDACTION_V1", r.GetProperty("version").GetString());
+        Assert.Equal(expected, r.GetProperty("originalSha256").GetString());
+        Assert.Equal(r.GetProperty("redactedSha256").GetString(), SpatialCanonical.Hash(bytes));
+        var text = Encoding.UTF8.GetString(bytes);
+        // The redacted tokens are identified by sha256 only, so no personal data appears in this source.
+        var forbidden = new HashSet<string> { "bd23f69a663e4e8e050156ae14774b3c1a10c138fe20da4682fc658f89dcc8e7", "b3c5e8a1d99a9c36446756b1aae7c9204b31c342c7fd0ba8369ef0a120ed7398" };
+        foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(text, @"\d{10}|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"))
+            Assert.DoesNotContain(SpatialCanonical.Hash(Encoding.UTF8.GetBytes(m.Value.TrimEnd('.'))), forbidden);
+        Assert.Contains("[REDACTED_PHONE]", text);
     }
 }

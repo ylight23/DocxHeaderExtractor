@@ -189,7 +189,7 @@ public sealed class P7F1QEvidenceV2Tests : IDisposable
         foreach (var q in requests)
         {
             var bytes = File.ReadAllBytes(Path.Combine(dir, "p7.f1q.evidence-v2-raw.v1", "initial-bodies", q.GetProperty("bodyFile").GetString()!));
-            Assert.Equal(q.GetProperty("bodySha256").GetString(), SpatialCanonical.Hash(bytes));
+            RedactionAware.AssertSha(Path.Combine(dir, "p7.f1q.evidence-v2-raw.v1", "initial-bodies", q.GetProperty("bodyFile").GetString()!), q.GetProperty("bodySha256").GetString());
             var body = JsonNode.Parse(bytes)!;
             Assert.Equal(P7F1QProtocolV2.SystemPrompt(), body["messages"]![0]!["content"]!.GetValue<string>());
             Assert.Equal("json_object", body["response_format"]!["type"]!.GetValue<string>());
@@ -206,7 +206,7 @@ public sealed class P7F1QEvidenceV2Tests : IDisposable
         Assert.Equal(manifestBytes, File.ReadAllBytes(Path.Combine(dir, "p7.f1q.raw-capture-freeze.v3.json")));
         using var manifest = JsonDocument.Parse(manifestBytes);
         foreach (var f in manifest.RootElement.GetProperty("files").EnumerateArray())
-            Assert.Equal(f.GetProperty("sha256").GetString(), SpatialCanonical.Hash(File.ReadAllBytes(Path.Combine(root, f.GetProperty("path").GetString()!))));
+            RedactionAware.AssertSha(Path.Combine(root, f.GetProperty("path").GetString()!), f.GetProperty("sha256").GetString());
         Assert.Equal(0.043479936m, manifest.RootElement.GetProperty("reportedCostUsd").GetDecimal());
         var requestDirs = Directory.GetDirectories(Path.Combine(root, "requests"));
         Assert.Equal(20, requestDirs.Length);

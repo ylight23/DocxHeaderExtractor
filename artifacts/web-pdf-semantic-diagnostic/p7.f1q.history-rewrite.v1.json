@@ -1,0 +1,195 @@
+{
+  "version": "P7_F1Q_HISTORY_REWRITE_RECEIPT_V1",
+  "issue": "ylight23/DocxHeaderExtractor#6",
+  "approvedBy": "user, 2026-10-10 (Issue #6)",
+  "scope": "main..experiment/p7-f1-semantic-question-v1 only; main untouched",
+  "method": "git filter-branch --index-filter replacing only blobs equal to the inventoried original blob; aborts on any other content",
+  "previousTip": "ea1048d23a47fc12bb8dbe0822e09bc5c5f1c74e",
+  "rewrittenTipBeforeThisCommit": "58cc28d299097eaa0a39683dcfd4a952980230dd",
+  "files": [
+    {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.evidence-v2-raw.v1/initial-bodies/D05-PACK_001-C1.F1QEvidenceV2.initial-body.json",
+      "originalGitBlob": "e8ba336245c5471dfdf3f643283d60e541b7e5fe",
+      "redactedGitBlob": "75c2fe527b09e8b456f751e2a98cb960f5246a92",
+      "receipt": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.evidence-v2-raw.v1/initial-bodies/D05-PACK_001-C1.F1QEvidenceV2.initial-body.redaction.json",
+      "phoneReplacements": 1,
+      "emailReplacements": 1
+    },
+    {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.evidence-v2-raw.v1/initial-bodies/D05-PACK_001-C2.F1QEvidenceV2.initial-body.json",
+      "originalGitBlob": "5dd3cc22fcfe5e92e847395bf87f3e378ef2f993",
+      "redactedGitBlob": "4dd688483b7baf6ef701b22ffcfc83dbf25c8961",
+      "receipt": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.evidence-v2-raw.v1/initial-bodies/D05-PACK_001-C2.F1QEvidenceV2.initial-body.redaction.json",
+      "phoneReplacements": 1,
+      "emailReplacements": 1
+    },
+    {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.evidence-v2-raw.v1/requests/D05-PACK_001-C1.F1QEvidenceV2/attempt-1/turn-1/request.json",
+      "originalGitBlob": "e8ba336245c5471dfdf3f643283d60e541b7e5fe",
+      "redactedGitBlob": "75c2fe527b09e8b456f751e2a98cb960f5246a92",
+      "receipt": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.evidence-v2-raw.v1/requests/D05-PACK_001-C1.F1QEvidenceV2/attempt-1/turn-1/request.redaction.json",
+      "phoneReplacements": 1,
+      "emailReplacements": 1
+    },
+    {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.evidence-v2-raw.v1/requests/D05-PACK_001-C1.F1QEvidenceV2/attempt-2/turn-1/request.json",
+      "originalGitBlob": "e8ba336245c5471dfdf3f643283d60e541b7e5fe",
+      "redactedGitBlob": "75c2fe527b09e8b456f751e2a98cb960f5246a92",
+      "receipt": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.evidence-v2-raw.v1/requests/D05-PACK_001-C1.F1QEvidenceV2/attempt-2/turn-1/request.redaction.json",
+      "phoneReplacements": 1,
+      "emailReplacements": 1
+    },
+    {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.evidence-v2-raw.v1/requests/D05-PACK_001-C2.F1QEvidenceV2/attempt-1/turn-1/request.json",
+      "originalGitBlob": "5dd3cc22fcfe5e92e847395bf87f3e378ef2f993",
+      "redactedGitBlob": "4dd688483b7baf6ef701b22ffcfc83dbf25c8961",
+      "receipt": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.evidence-v2-raw.v1/requests/D05-PACK_001-C2.F1QEvidenceV2/attempt-1/turn-1/request.redaction.json",
+      "phoneReplacements": 1,
+      "emailReplacements": 1
+    },
+    {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/initial-bodies-v2/D05-PACK_001.F1QToolsMandatory.initial-body.json",
+      "originalGitBlob": "e26405520311d53ff14d6baf24536cfbc24ff5b3",
+      "redactedGitBlob": "eab2f353867420f51851f72e724bd43f8b278bec",
+      "receipt": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/initial-bodies-v2/D05-PACK_001.F1QToolsMandatory.initial-body.redaction.json",
+      "phoneReplacements": 1,
+      "emailReplacements": 1
+    },
+    {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/initial-bodies/D05-PACK_001.F1QNoTools.initial-body.json",
+      "originalGitBlob": "2634cf02271cf20a03fc0271ca790ced3815212d",
+      "redactedGitBlob": "ad06d28ae02315bfa8d47a03f9391b487592018c",
+      "receipt": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/initial-bodies/D05-PACK_001.F1QNoTools.initial-body.redaction.json",
+      "phoneReplacements": 1,
+      "emailReplacements": 1
+    },
+    {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/initial-bodies/D05-PACK_001.F1QTools.initial-body.json",
+      "originalGitBlob": "85abeebde7b3268733b27eab10d7f3f1377a8745",
+      "redactedGitBlob": "450697ea11c1514376ab7f4da7a4975c145238cc",
+      "receipt": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/initial-bodies/D05-PACK_001.F1QTools.initial-body.redaction.json",
+      "phoneReplacements": 1,
+      "emailReplacements": 1
+    },
+    {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/requests/D05-PACK_001.F1QNoTools/turn-1/request.json",
+      "originalGitBlob": "2634cf02271cf20a03fc0271ca790ced3815212d",
+      "redactedGitBlob": "ad06d28ae02315bfa8d47a03f9391b487592018c",
+      "receipt": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/requests/D05-PACK_001.F1QNoTools/turn-1/request.redaction.json",
+      "phoneReplacements": 1,
+      "emailReplacements": 1
+    },
+    {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/requests/D05-PACK_001.F1QTools/turn-1/request.json",
+      "originalGitBlob": "85abeebde7b3268733b27eab10d7f3f1377a8745",
+      "redactedGitBlob": "450697ea11c1514376ab7f4da7a4975c145238cc",
+      "receipt": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/requests/D05-PACK_001.F1QTools/turn-1/request.redaction.json",
+      "phoneReplacements": 1,
+      "emailReplacements": 1
+    },
+    {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/requests/D05-PACK_001.F1QToolsMandatory/turn-1/request.json",
+      "originalGitBlob": "e26405520311d53ff14d6baf24536cfbc24ff5b3",
+      "redactedGitBlob": "eab2f353867420f51851f72e724bd43f8b278bec",
+      "receipt": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/requests/D05-PACK_001.F1QToolsMandatory/turn-1/request.redaction.json",
+      "phoneReplacements": 1,
+      "emailReplacements": 1
+    },
+    {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/requests/D05-PACK_001.F1QToolsMandatory/turn-2/request.json",
+      "originalGitBlob": "e508cbf3a4ecf9acf57204da77bf3bd3391cd27d",
+      "redactedGitBlob": "b289e1e9c6c3d1cb9d30a3c85c3ad56befc1a528",
+      "receipt": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/requests/D05-PACK_001.F1QToolsMandatory/turn-2/request.redaction.json",
+      "phoneReplacements": 1,
+      "emailReplacements": 1
+    }
+  ],
+  "commits": [
+    {
+      "old": "29e6dcd75dabb788656a5f298f85921d0a43433d",
+      "new": "29e6dcd75dabb788656a5f298f85921d0a43433d",
+      "subject": "docs(p7): specify independent F1 semantic-question experiment and raw evidence gates",
+      "changedFiles": 0
+    },
+    {
+      "old": "dc2754894f1b5db8d0723287618764affce5451c",
+      "new": "6e1f1139603c84e2dc3dec9c6a8b7ad7036a56a9",
+      "subject": "test(p7): implement F1Q tool-augmented harness and freeze execution plan",
+      "changedFiles": 4
+    },
+    {
+      "old": "9b645eafd089e0523bca26d0895957a981c77485",
+      "new": "b41265d4680b7d5dafb034c552d852f1ec4c9642",
+      "subject": "test(p7): freeze F1Q mandatory-evidence tool-chain arm (plan V2)",
+      "changedFiles": 6
+    },
+    {
+      "old": "eacd9a0f6174f5688cc283a938b7518e1255ba95",
+      "new": "81b5402e441bf3bef405d0b73f655f5846ceaa26",
+      "subject": "test(p7): freeze and publish F1Q raw provider transcripts before Gold read",
+      "changedFiles": 14
+    },
+    {
+      "old": "a4354de5a55d75dd8707d2fadf9a45fe677087c1",
+      "new": "0935404f4b520fdf6ca6f8430f3e7a4109173fdf",
+      "subject": "test(p7): score F1Q after raw freeze and audit interpretations against source",
+      "changedFiles": 14
+    },
+    {
+      "old": "7adcd18fbcab53719c7b0944e69611d9bcb72055",
+      "new": "69dca4245df2c71f758d7ede98e04af8597eef36",
+      "subject": "docs(p7): mark F1Q design executed and document the scorer command",
+      "changedFiles": 14
+    },
+    {
+      "old": "6ebdce4e41d09c3b100c09fe7e7b84156c3282be",
+      "new": "646276eaebbad5b383ab346bf4afa0087efd2193",
+      "subject": "test(p7): fix F1Q per audit and freeze evidence-grounded plan V3",
+      "changedFiles": 18
+    },
+    {
+      "old": "7e906bc649d9819e70e43a4e3e17fc57a27577d9",
+      "new": "42fdc394447d0e4aa7e03dbcf2f6d758e4d1df0f",
+      "subject": "test(p7): freeze and publish F1Q plan V3 raw transcripts before Gold read",
+      "changedFiles": 24
+    },
+    {
+      "old": "e266978f225fedc13007b04cf5dbd14bae397450",
+      "new": "b4490eec24bda2eae4dacb96bd9879f5c7027a72",
+      "subject": "test(p7): score F1Q plan V3 after raw freeze and summarize the rerun",
+      "changedFiles": 24
+    },
+    {
+      "old": "429472c38750e02124b0a760cb0f35c6772069fa",
+      "new": "023557a94812bfe0f95de6c3afc980c67364e743",
+      "subject": "test(p7): prepare F1Q held-out gate (Issue #6) up to Gold approval",
+      "changedFiles": 24
+    },
+    {
+      "old": "91f02defc99b1b592e5e85e5261438c132b5e89c",
+      "new": "133048a4ead652c9ffd490374eeaff721a313bc7",
+      "subject": "docs(p7): record that the offered Giay moi.pdf is the exposed development file",
+      "changedFiles": 24
+    },
+    {
+      "old": "4e313197f720483660d23945005d027a9c64788f",
+      "new": "8e3e56589afa24d4c40aad68d5a31f7eff535f0c",
+      "subject": "test(p7): apply Issue #6 Gold decisions and publish visual review evidence",
+      "changedFiles": 24
+    },
+    {
+      "old": "ea1048d23a47fc12bb8dbe0822e09bc5c5f1c74e",
+      "new": "58cc28d299097eaa0a39683dcfd4a952980230dd",
+      "subject": "docs(p7): record PII inventory, verified private backup and rewrite plan",
+      "changedFiles": 24
+    }
+  ],
+  "verification": {
+    "piiHitsInRewrittenCommits": 0,
+    "unexpectedChangedPaths": 0,
+    "authorCommitterDatesMessagesPreserved": true,
+    "p7Tests": "546/546"
+  },
+  "privateBackup": "~/.codex/diagnostic-captures/p7-f1q-pii-backup-20261010 (bundles at 4e31319 and ea1048d verified; 12 originals sha256-verified)",
+  "limits": "Old commits stay reachable on GitHub by SHA until GitHub Support purges cached objects; existing clones/forks keep copies. Older summaries in this branch cite pre-rewrite SHAs; use this map."
+}
