@@ -1,0 +1,975 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_V1",
+  "status": "AI_REVIEWER_APPROVED_USER_DELEGATED",
+  "id": "064",
+  "sourceSha256": "1488210d01f56e8a1fcc21e6a5bf2dbd0b4d84e2cac016a3cee02895f4f69053",
+  "approval": {
+    "approved": true,
+    "by": "GPT-6",
+    "reviewerType": "AI_REVIEWER",
+    "authority": "USER_DELEGATED",
+    "delegation": "user delegated Gold approval to the AI reviewer GPT-6 (Issue #6, 2026-10-10)",
+    "evidence": {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.visual-review.v3/render-manifest.json",
+      "sha256": "3d69de21abfcac40405552f631b7b49715214d7434cf1ffa94ee0004e53b9b66"
+    },
+    "inputDraftSha256": "869fa604a4d065a6301ddcf29b56e2e37ac769466f00b35f54953d6b7021edf2",
+    "labelsSha256": "125f67fa85445e4de2cdb0d53b562560f20fc374a83f59bfa298b10f9511eed1",
+    "note": "AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 119 rows; title/contents E, TOC R, author/captions/prose O against Gold V8 3643ee6.",
+    "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10G_ISSUE_6"
+  },
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "12",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "02",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "tc",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "O",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "27",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "]",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "G",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "L.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "sc",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "[",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "4v",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "93",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "56",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "0.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "10",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "91",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": ":v",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "i",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Xra Machine learningwith neural networks",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "BERNHARD MEHLIG",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Department ofPhysics",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "UNIVERSITYOF GOTHENBURG",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Göteborg, Sweden2021",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0055:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "CONTENTS",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0056:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Acknowledgements",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0056:S1",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "v",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0057:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Contents",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0057:S1",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "vii",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0058:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 Introduction",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0058:S1",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0059:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.1 Neural networks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0059:S1",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "6",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0060:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.2 McCulloch-Pitts neurons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0060:S1",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "7",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0061:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.3 Activation functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0061:S1",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "9",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0062:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.4 Asynchronous updates . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0063:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.5 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0064:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.6 Furtherreading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0065:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "I Hopﬁeldnetworks",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0065:S1",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "13",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0066:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2 DeterministicHopﬁeldnetworks",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0066:S1",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "15",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0067:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1 Pattern recognition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0068:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2 Hopﬁeld networks and Hebb’s rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0069:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3 The cross-talkterm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0070:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.4 One-step errorprobability . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0071:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.5 Energyfunction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0072:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.6 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0073:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3 StochasticHopﬁeldnetworks 32",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0074:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1 Stochastic dynamics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0075:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.2 Orderparameters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0076:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3 Mean-ﬁeld theory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0077:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.4 Critical storage capacity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0078:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.5 Beyond mean-ﬁeld theory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0079:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.6 Correlated and non-randompatterns . . . . . . . . . . . . . . . . . . . . . . . . . . 47",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0080:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.7 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0081:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.8 Furtherreading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0082:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4 TheBoltzmanndistribution 50",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0083:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1 Convergence ofthe stochastic dynamics . . . . . . . . . . . . . . . . . . . . . . . . 51",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0084:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2 Monte-Carlo simulation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0085:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.3 Simulated annealing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0086:S0",
+      "page": 7,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.4 Boltzmann machines . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0687:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "20 DETERMINISTIC HOPFIELD NETWORKS",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0688:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Figure 2.5:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0688:S1",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Reproduced from xkcd.com/1838 under the creative commons",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0689:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "attribution-noncommercial2.5 license.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0690:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "to as an outerproduct. Ifwe change the order ofx(1) and x(1)T in the product, we",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0691:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "obtain anumberinstead:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0692:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "x(1)Tx(1) =∑N [xj(1)]2 =N. (2.14)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0693:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "j=1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0694:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The product (2.14) is called scalarproduct. It is also denoted by a · b = aTb and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0695:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "equals |a||b|cosϕ, where ϕ is the angle between thevectors a and b, and |a| is the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0696:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "magnitude ofa. We use the same notationformultiplyingatransposedvectorwith",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0697:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "T",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0698:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "amatrixfrom the left: x ·A=x A. An excellent source forthose notfamiliarwith",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0699:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "these terms from LinearAlgebra (Figure 2.5) is Chapter 6 ofMathematicalmethods",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0700:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ofphysicsbyMathews andWalker [29].",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0701:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "UsingEquation (2.14) we see thatW projectsonto thevectorx(1),",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0702:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Wx(1) =x(1) .",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0702:S1",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(2.15)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0703:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In addition, itfollows from Equation (2.14) thatthe matrix (2.13) is idempotent:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0704:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Wt =W for t = 1,2,3,... .",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0704:S1",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(2.16)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0705:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(1) (1)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0706:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Equations (2.15) and (2.16) together with sgn(xi ) = xi",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0706:S1",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "imply that the network",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0707:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "recognises the patternx(1) as the stored one. This example illustrates the general",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0708:S0",
+      "page": 30,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "proof, Equations (2.10) and (2.11).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5489:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "SELF-ORGANISING MAPS 181",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5490:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Figure 10.9: Learning a distribution Pdata(x) (gray) of two-dimensional real-",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5491:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "valued inputs x with Kohonen’s algorithm. Illustration ofthe dynamics ofthe self-",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5492:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "organising map in terms ofan elastic net. (a) Initial condition. (b) Intermediate",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5493:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "stage. (c) In the steady-state the elastic networkresembles the shape deﬁnedbythe",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5494:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "input distribution Pdata(x).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5495:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "This is a condition forthe steady-state learning outcome, the function w∗(r).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5496:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In the continuumlimitthe position r0(x) ofthewinningneuron in the output",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5497:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "arrayforpatternx is givenby",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5498:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∗",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5499:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "w (r0) =x . (10.21)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5500:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "We use this relation to write Equation (10.20) as:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5501:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∫dxPdata(x)h\u0000r−r0(x)\u0001\u0002w∗(r0(x))−w∗(r)\u0003= 0.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5501:S1",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(10.22)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5502:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Equation (10.21) deﬁnes a mapping r0(x) from input space to output space, the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5503:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "self-organisingmap (Figure 10.7). Assumingthatthis mappingis one-to-one, we",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5504:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "change integrationvariable fromx to r0:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5505:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∫dr0 |detJ| Q(r0)h(r−r0)\u0002w∗(r0)−w∗(r)\u0003= 0, (10.23)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5506:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "where Q(r0) ≡ Pdata\u0000x(r0)\u0001, andwhere the determinantrepresents thevolume ele-",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5507:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ment ofthevariable transformation. UsingEquation (10.21), theJacobianJ ofthe",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5508:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "transformationhas elements",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5509:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∂ wi(r0)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5510:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Jij = . (10.24)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5511:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∂rj",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5512:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The neighbourhoodfunction is sharplypeaked at r = r0, and this makes itpossible",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5513:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "to evaluate the steady-state condition (10.23) approximately, expandingthe inte-",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5514:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∗",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5515:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "grand in δr = r0 −r, assumingthat w (r) is a smooth function. This is illustrated",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5516:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "in Figure 10.10, for one-dimensional inputs and outputs. We considerthis special",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L5517:S0",
+      "page": 191,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "case not onlyto simplifythe notation, but also because it is one ofthe few cases",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    }
+  ]
+}

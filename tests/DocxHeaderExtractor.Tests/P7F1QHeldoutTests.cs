@@ -408,6 +408,38 @@ public sealed class P7F1QHeldoutTests : IDisposable
         Assert.Equal(246, ledger.RootElement.GetProperty("totalsAfter").GetProperty("ESTABLISHES_STRUCTURE").GetInt32());
     }
 
+    [Fact] public void Gold_drafts_v9_approve_all_24_as_ai_reviewer_and_the_freeze_pins_exactly_those_labels()
+    {
+        var v8 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v8"); var v9 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v9");
+        var frozen = Path.Combine(Dir, "p7.f1q.heldout.gold-frozen.v1");
+        string Sha(byte[] b) => Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(b));
+        using var freeze = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(frozen, "gold-freeze.json")));
+        Assert.Equal("GOLD_FROZEN_AI_REVIEWED_USER_DELEGATED", freeze.RootElement.GetProperty("status").GetString());
+        Assert.Equal(24, freeze.RootElement.GetProperty("approvalKinds").GetProperty("AI_REVIEWER_USER_DELEGATED").GetInt32());
+        var docs = freeze.RootElement.GetProperty("documents").EnumerateArray().ToArray();
+        Assert.Equal(24, docs.Length);
+        foreach (var doc in docs)
+        {
+            var id = doc.GetProperty("id").GetString()!;
+            using var d = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(v9, id + ".gold-draft.json"))); var r = d.RootElement;
+            using var b = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(v8, id + ".gold-draft.json")));
+            Assert.Equal(b.RootElement.GetProperty("labels").GetRawText(), r.GetProperty("labels").GetRawText());
+            var a = r.GetProperty("documentApproval");
+            Assert.Equal("GPT-6", a.GetProperty("by").GetString());
+            Assert.Equal("AI_REVIEWER", a.GetProperty("reviewerType").GetString()); Assert.Equal("USER_DELEGATED", a.GetProperty("authority").GetString());
+            var goldBytes = File.ReadAllBytes(Path.Combine(frozen, doc.GetProperty("goldFile").GetString()!));
+            Assert.Equal(doc.GetProperty("goldSha256").GetString(), Sha(goldBytes));
+            using var g = JsonDocument.Parse(goldBytes);
+            Assert.Equal("AI_REVIEWER_APPROVED_USER_DELEGATED", g.RootElement.GetProperty("status").GetString());
+            Assert.Equal(r.GetProperty("labels").GetArrayLength(), g.RootElement.GetProperty("labels").GetArrayLength());
+        }
+        using var ledger = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.gold-decisions", "ledger-2026-10-10g-gpt6-approvals-batch2.json")));
+        Assert.Equal(24, ledger.RootElement.GetProperty("goldApprovedDocuments").GetInt32());
+        Assert.Equal(20, ledger.RootElement.GetProperty("documentApprovals").GetArrayLength());
+        Assert.Equal(0, ledger.RootElement.GetProperty("decisions").GetArrayLength());
+        Assert.Equal(0, ledger.RootElement.GetProperty("providerCalls").GetInt32());
+    }
+
     [Fact] public void Gold_drafts_v8_change_only_the_051_chart_title_and_keep_the_four_batch_one_approvals()
     {
         var v7 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v7"); var v8 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v8");

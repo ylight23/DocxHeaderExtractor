@@ -1,0 +1,719 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_V1",
+  "status": "AI_REVIEWER_APPROVED_USER_DELEGATED",
+  "id": "083",
+  "sourceSha256": "30f921f155045d5adc04822d795b6fc4014b004d7763a59536bdb4467914ff62",
+  "approval": {
+    "approved": true,
+    "by": "GPT-6",
+    "reviewerType": "AI_REVIEWER",
+    "authority": "USER_DELEGATED",
+    "delegation": "user delegated Gold approval to the AI reviewer GPT-6 (Issue #6, 2026-10-10)",
+    "evidence": {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.visual-review.v3/render-manifest.json",
+      "sha256": "3d69de21abfcac40405552f631b7b49715214d7434cf1ffa94ee0004e53b9b66"
+    },
+    "inputDraftSha256": "a552db85f5bdfe25e1b18556ce0b3f10d2ad8decb262ccca1f74c6950bd15b8c",
+    "labelsSha256": "0f8cb444b01ebdca872e31d40787bb42fe76d666c13b1942d0a401dadf533fba",
+    "note": "AI_REVIEWER/USER_DELEGATED; reviewed 3 pages / 87 rows; title/article E, government/body O; L1075:S0 excluded as mixed source corruption against Gold V8 3643ee6.",
+    "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10G_ISSUE_6"
+  },
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "THE PRESIDENT",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0000:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Independence - Freedom - Happiness",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "No. 06/2018/L-CTN Hanoi, June 25, 2018",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "ORDER",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "On the promulgation of law1",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Pursuant to Articles 88 and 91 of the Constitution of the Socialist",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Republic of Vietnam;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Pursuant to Article 80 of the Law on Promulgation of Legal",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Documents,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "PROMULGATES:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "The Law on Cyber Security,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "AssemwbhliychofwthaesPLSrpoeacsusiiadsleeiadnstt RootfneVtphuJebuSilnioeeccoi1aft2lVin,site2Rta0ne1apm8um,balbticyito.sftv5hVtehiensteXnsaIsVimotnh . National",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "TRAN DAI QUANG",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "1 Công Báo Nos 775-776 (14/7/2018)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "\uF0D3 Vietnam Law & Legal Forum 1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0290:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. Subject to cyber security appraisal of an information system of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0291:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "national security importance are:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0292:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a/ Pre-feasibility study report and construction design dossier of the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0293:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "investment project to build the information system before they are",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0294:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "approved;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0295:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b/ Scheme on upgrading the information system before it is",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0296:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "approved.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0297:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3. Cyber security appraisal of an information system of national",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0298:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "security importance covers:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0299:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a/ Compliance of the system’s design with cyber security",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0300:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "regulations and conditions;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0301:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b/ Conformity with plans on cyber security protection, incident",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0302:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "response and remediation and cyber security protection personnel.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0303:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4. The competence to appraise cyber security of information",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0304:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "systems of national security importance is as follows:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0305:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "pnthraiotsitoeCnabcl/ta/ailouTTsnshheeecef;ouMrrMcitieyinnLisiismhsttarrpuylylooraotafpafpnNrcPtaaeuit,VsbioeelxincccaiyelSebpDeetcretuthfseroeninsctsyeue’rars’iestfypepmrrororofeffediesns.tsfsoioivooranmntaanPalltoiccionyynbtbsesebryrsasstneeemccduuscrriioottyyff",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0306:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "protection force shall appraise cyber security of military information",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0307:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "systems;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0308:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c/ The Government Cipher Committee shall appraise cyber security",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0309:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "of its cryptographic information systems.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0310:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Article 12. Assessment of cyber security conditions of information",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0311:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "systems of national security importance",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0312:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1. Assessment of cyber security conditions means the consideration",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0313:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "of the satisfaction of cyber security requirements by information systems",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0314:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "before they are put into operation and use.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0315:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. An information system of national security importance must meet",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0316:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "conditions regarding:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0317:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a/ Cyber security regulations, processes and plans; and system",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0318:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "operation and administration staffs;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0319:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b/ Cyber security of equipment, devices, hardware and software",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0320:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "which are parts of the information system;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0321:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c/ Technical measures to supervise and protect cyber security;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0322:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "measures to protect automatic control and supervision systems; the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0323:S0",
+      "page": 10,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "\uF0D3 Vietnam Law & Legal Forum 10",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1059:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4. To coordinate with the Ministry of Public Security in organizing",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1060:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "cyber-attack prevention and fighting drills, cyber security incident",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1061:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "response and remedy drills for information systems of national security",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1062:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "importance, and organizing cyber security protection work.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1063:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5. To conduct examination and inspection, settle complaints and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1064:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "denunciations and handle violations of the law on cyber security within",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1065:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the scope of its management.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1066:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Article 38. Responsibilities of the Ministry of Information and",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1067:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Communications",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1068:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1. To coordinate with the Ministry of Public Security and the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1069:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Ministry of National Defense in cyber security protection work.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1070:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. To coordinate with related agencies in refuting information",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1071:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "opposing the State of the Socialist Republic of Vietnam prescribed in",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1072:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Clause 1, Clause 16 of this Law.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1073:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3. To request enterprises providing services in telecommunications",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1074:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "networks or the Internet and value-added services in cyberspace and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1075:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "iomnnafoncraymAgbearemttriiocesnlenects.u3yr9si.ttLeyRmeosnumpotahnnaesaiigrbteislreVistrivieniscireoeesfmtahontevdniGninogafvoienrrfmnmomarmteionan.ttiCovsnyipsvnhteieomrlaCstiounmngdmtehirtettehleaewir",
+      "label": null,
+      "goldStatus": "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION"
+    },
+    {
+      "sourceAlias": "L1076:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1. To advise and propose the Minister of National Defense to",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1077:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "promulgate or propose competent agencies to promulgate legal",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1078:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "documents, programs and plans on cryptography and organize the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1079:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "implementation thereof to protect cyber security under its management.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1080:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. To protect cyber security for cryptographic information systems",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1081:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "under the Committee and cryptographic products provided by the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1082:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Committee in accordance with this Law.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1083:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3. To perform the unified management of scientific and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1084:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "technological research in cryptography; use and provision of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1085:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "cryptographic products to protect information classified as state secrets",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1086:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "stored and exchanged in cyberspace.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1087:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Article 40. Responsibilities of ministries, sectors and provincial-",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1088:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "level People’s Committees",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1089:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Within the ambit of their tasks and powers, ministries, sectors and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1090:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "provincial-level People’s Committees shall conduct cyber security",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1091:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "inspection of information and information systems under their",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1092:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "management; and coordinate with the Ministry of Public Security in",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1093:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "performing the state management of cyber security in their ministries,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1094:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "sectors and localities.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1095:S0",
+      "page": 32,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "\uF0D3 Vietnam Law & Legal Forum 32",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    }
+  ]
+}

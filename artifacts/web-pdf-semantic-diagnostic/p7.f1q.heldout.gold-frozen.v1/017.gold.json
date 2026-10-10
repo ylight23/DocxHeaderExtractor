@@ -1,0 +1,1335 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_V1",
+  "status": "AI_REVIEWER_APPROVED_USER_DELEGATED",
+  "id": "017",
+  "sourceSha256": "cd567da7976beb9fea822c075fa147f5d4d16ba02c4b4c57eac05255a3ba1145",
+  "approval": {
+    "approved": true,
+    "by": "GPT-6",
+    "reviewerType": "AI_REVIEWER",
+    "authority": "USER_DELEGATED",
+    "delegation": "user delegated Gold approval to the AI reviewer GPT-6 (Issue #6, 2026-10-10)",
+    "evidence": {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.visual-review.v3/render-manifest.json",
+      "sha256": "3d69de21abfcac40405552f631b7b49715214d7434cf1ffa94ee0004e53b9b66"
+    },
+    "inputDraftSha256": "4f5f46a45719c12a45a95ce52a2520b35bb40b9bc1a178e5c2e4ebaf9fa80298",
+    "labelsSha256": "a7af21d5d1f928acf5077c2931910ffa4460aeda12b5725aea9495d634bb1078",
+    "note": "AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 164 rows; decree, appendix and independent form headings E; signature, table fields O against Gold V8 3643ee6.",
+    "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10G_ISSUE_6"
+  },
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "CHÍNHPHỦ",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0000:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "CỘNGHÒAXÃHỘICHỦNGHĨAVIỆTNAM",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "_________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0001:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Độclập-Tựdo-Hạnhphúc",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Số: 123/2020/NĐ-CP",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0002:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "_______________________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "HàNội,ngày19tháng10năm2020",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "NGHỊĐỊNH",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Quyđịnhvềhóađơn,chứngtừ",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "__________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "CăncứLuậtTổchứcChínhphủngày19tháng6năm2015;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "CăncứLuậtQuảnlýthuếngày13tháng6năm2019;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "CăncứLuậtThuếgiátrịgiatăngngày03tháng6năm2008;Luậtsửađổi, bổsungmộtsốđiềucủaLuậtThuếgiátrịgia",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "tăngngày19tháng6năm2013;Luậtsửađổi, bổsungmộtsốđiềucủacácluậtvềthuếngày26tháng 11 năm2014;Luậtsửa",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "đổi, bổsungmộtsốđiềucủaLuậtThuếgiátrịgiatăng, LuậtThuếtiêuthụđặcbiệtvàLuậtQuảnlýthuếngày06tháng4năm",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "2016;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "CăncứLuậtKếtoánngày20tháng11năm2015;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "CăncứLuậtGiaodịchđiệntửngày29tháng11năm2005;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "CăncứLuậtCôngnghệthôngtinngày29tháng6năm2016;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "TheođềnghịcủaBộtrưởngBộTàichính;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "ChínhphủbanhànhNghịđịnhquyđịnhvềhóađơn, chứngtừ.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "ChươngI.NHỮNGQUYĐỊNHCHUNG",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Điều1.Phạmviđiềuchỉnh",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Nghịđịnhnàyquyđịnhviệcquảnlý,sửdụnghóađơnkhibánhànghóa,cungcấpdịchvụ;việcquảnlý,sửdụngchứngtừ",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "khithựchiệncácthủtụcvềthuế,thu phí, lệphívàquyđịnh nhiệmvụ,quyền hạnvàtrách nhiệmcủacơquan,tổchức,cánhân",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "trongviệcquảnlý,sửdụnghóađơn,chứngtừ.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Điều2.Đốitượngápdụng",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "1.Tổchức,cánhânbánhànghóa,cungcấpdịchvụbaogồm:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "a)Doanh nghiệpđượcthành lậpvàhoạtđộngtheophápluậtViệtNam; chi nhánh,văn phòngđạidiệncủadoanh nghiệp",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "nướcngoàihoạtđộngtạiViệtNam;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "b)Hợptácxã,liênhiệphợptácxã;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "c)Hộ,cánhânkinhdoanh,tổhợptác;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0029:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "d)Đơnvịsựnghiệpcônglậpcóbánhànghóa,cungcấpdịchvụ;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0030:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "đ)Tổchứckhôngphảilàdoanhnghiệpnhưngcóhoạtđộngkinhdoanh.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0031:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "2.Tổchức,cánhânmuahànghóa,dịchvụ.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0032:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "3.Tổchứcthuthuế,phívàlệphí.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0033:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "4. Ngườinộpthuế,phívàlệphí.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0034:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "5.Tổchứccótráchnhiệmkhấutrừthuếthunhậpcánhân.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1615:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3.Chủtịch Ủybannhândâncáctỉnh,thànhphốtrựcthuộctrungươngchỉđạocáccơquan,đơnvịtrênđịabànphốihợp",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1616:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "đểtriểnkhaithựchiệnNghịđịnhnày./.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1617:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Nơinhận:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1617:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "TM.CHÍNHPHỦ",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1618:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-BanBíthưTrungươngĐảng;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1618:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "THỦTƯỚNG",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1619:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-Thủtướng,cácPhóThủtướngChínhphủ;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1620:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-Cácbộ,cơquanngangbộ,cơquanthuộcChínhphủ;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1621:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-HĐND, UBNDcáctỉnh,thànhphốtrựcthuộctrungương;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1622:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-VănphòngTrungươngvàcácBancủaĐảng;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1623:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-VănphòngTổngBíthư;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1624:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-VănphòngChủtịchnước; NguyễnXuânPhúc",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1625:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-HộiđồngDântộcvàcácỦybancủaQuốchội;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1626:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-VănphòngQuốchội;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1627:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-Tòaánnhândântốicao;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1628:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-Việnkiểmsátnhânđântốicao;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1629:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-KiểmtoánNhànước;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1630:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-ỦybanGiámsáttàichínhQuốcgia;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1631:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-NgânhàngChínhsáchxãhội;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1632:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-NgânhàngPháttriểnViệtNam;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1633:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-ỦybanTrungươngMặttrậnTổquốcViệtNam;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1634:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-Cơquantrungươngcủacácđoànthể;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1635:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-VPCP: BTCN, cácPCN, Trợ lýTTg, TGĐ cổng TTĐT, cácVụ, Cục, đơn vị",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1636:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "trựcthuộc,Côngbáo;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1637:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "-Lưu:VT, KTTH(2b).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1638:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "PhụlụcIA",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1639:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "HỒSƠHÓAĐƠN,CHỨNGTỪ-NGƯỜINỘPTHUẾ",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1640:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(KèmtheoNghịđịnhsố 123/2020/NĐ-CPngày19tháng10năm2020củaChínhphủ)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1641:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "_____________________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1642:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Mẫusố Tênhồsơ,mẫubiểu Điều,Chươngcóliên",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1643:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "quan",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1644:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1.Hóađơnđiệntử",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1645:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01/ĐKTĐ-HĐĐT Tờkhaiđăngký/thayđổithôngtinsửdụnghóađơnđiệntử Điều 15",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1646:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "04/SS-HĐĐT Thôngbáohóađơnđiệntửcósaisót Điều 19",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1647:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "06/ĐN-PSĐT ĐơnđềnghịcấphóađơnđiệntửcómãcủaCQTtheotừnglầnphátKhoản2Điều 13",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1648:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "sinh",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1649:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01/TH-HĐĐT Bảngtổnghợpdữliệuhóađơnđiệntử Khoản2Điều22",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1650:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "03/DL-HĐĐT Tờkhaidữliệuhóađơn,chứngtừhànghóa,dịchvụbánra Khoản 1 Điều60",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1651:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2.Hóađơndocơquanthuếđặtin",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1652:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "02/ĐN-HĐG Đơnđềnghịmuahóađơn",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1652:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Điều24",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1653:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "02/CK-HĐG Camkết",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1653:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Điều24",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1654:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "02/HUY-HĐG Thôngbáokếtquảtiêuhủyhóađơngiấy",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1654:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Điều27",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1655:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "BC21/HĐG Báocáomất,cháy,hỏnghóađơngiấy",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1655:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Điều28",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1656:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "BC26/HĐG Báocáotìnhhìnhsửdụnghóađơngiấy Điều29",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1657:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "BK02/CĐĐ-HĐG Bảngkêhóađơnchưasửdụngcủatổchức,cánhânchuyểnđịa Khoản3Điều29",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1658:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "điểmkinhdoanhkhácđịabàncơquanthuếquảnlý",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1659:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "BK02/QT-HĐG Bảngkêchitiếthóađơncủatổchức,cánhânđếnthờiđiểmquyết Khoản2Điều29",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1660:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "toánhóađơn",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1661:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.Biênlai",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1662:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "01/ĐKTĐ-BL Tờkhaiđăngký/thayđổithôngtinsửdụngbiênlai Điều34",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1663:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "02/PH-BLG Thôngbáopháthànhbiênlai",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1663:S1",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Khoản3Điều35",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1664:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "02/ĐCPH-BLG ThôngbáođiềuchỉnhthôngtintạiThôngbáopháthànhbiênlai Khoản4Điều35",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1665:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "02/BK-BLG Bảngkêbiênlaikhichuyểnđịađiểm",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1665:S1",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Điều35",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1666:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "02/UN-BLG Thôngbáovềviệcủynhiệm/chấmdứtủynhiệmlậpbiênlaithutiền Điều36",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1667:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "phí,lệphí",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1668:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "BC26/BLĐT Báocáotìnhhìnhsửdụngbiênlaiphí,lệphíđiệntử. Điều37",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1669:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "BC26/BLG Báocáotìnhhìnhsửdụngbiênlaiphí,lệphí Điều37",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1670:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "02/HUY-BLG Thôngbáokếtquảtiêuhủybiênlai",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1670:S1",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Điều38",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1671:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "BC21/BLG Báocáomất,cháy,hỏngbiênlai",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1671:S1",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Điều39",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1672:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Mẫusố:01ĐKTĐ/HĐĐT",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1673:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "CỘNGHÒAXÃHỘICHỦNGHĨAVIỆTNAM",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1674:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Độclập-Tựdo-Hạnhphúc",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1675:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "_______________________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1676:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "TỜKHAI",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1677:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Đăngký/thayđổithôngtinsửdụnghóađơnđiệntử",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1678:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "__________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1679:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "□Đăngkýmới",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1680:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "□Thayđổithôngtin",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1681:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Tênngườinộpthuế: …………………….",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1682:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Mãsốthuế: ………………………….",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1683:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Cơquanthuếquảnlý: …………………………",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1684:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Ngườiliênhệ: ……………………. Điệnthoạiliênhệ:.....................",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1685:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Địachỉliênhệ: ………………………… Thưđiệntử:.........",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1686:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "TheoNghịđịnhsố..../2020/NĐ-CPngày...tháng...năm2020củaChínhphủ,chúngtôi/tôithuộcđốitượngsửdụnghóađơn",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1687:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "điệntử.Chúngtôi/tôiđăngký/thayđổithôngtinđãđăngkývớicơquanthuếvềviệcsửdụnghóađơnđiệntửnhưsau:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1688:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1.Hìnhthứchóađơn:",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1689:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "□Cómãcủacơquanthuế",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1690:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "□Khôngcómãcủacơquanthuế",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1691:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.Hìnhthứcgửidữliệuhóađơnđiệntử:",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1692:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "a. □Trườnghợpsửdụnghóađơnđiệntửcómãkhôngphảitrảtiềndịchvụtheokhoản 1 Điều 14củaNghịđịnh:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1693:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "□Doanhnghiệpnhỏvàvừa,hợptácxã,hộ,cánhânkinhdoanhtạiđịabàncóđiềukiệnkinhtếxãhộikhókhăn,địabàncóđiều",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1879:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Đềnghịcơquanthuếbánhóađơnđểsửdụngtheosốlượngvàloạinhưsau:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1880:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Đơnvịtính:số",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1881:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Loạihóa Tồnđầukỳ Sốlượngmua Sửdụngtrongkỳ Sốlượngmua",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1882:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "STT đơn trước kỳtrước Sửdụng Mất/cháy/ Hủy",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1882:S1",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Cộng",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1882:S2",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Còncuốikỳ kỳnày",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1883:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "hỏng",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1884:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Tôixincamkết:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1885:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Đã nghiên cứu kỹcácquyđịnhtrong Luậtthuế, Nghịđịnh .../…/NĐ-CPcủaChính phủvàThôngtưsố ..../.../TT-BTCcủa",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1886:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "BộTàichínhhướngdẫnvềhóađơnbánhànghóacungứngdịchvụ.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1887:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Quảnlývàsửdụnghóađơndocơquanthuếpháthànhđúngquyđịnh. Nếuviphạmtổchức,cánhânxinhoàntoànchịu",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1888:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "tráchnhiệmtrướcphápluật.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1889:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "NGƯỜIĐẠIDIỆNTHEOPHÁPLUẬT",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1890:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Ký,đóngdấuvàghirõhọ, tên)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1891:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Ghichú:Hộ,cánhânkinhdoanhkhôngcầnđóngdấu.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1892:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Mẫusố:02/CK-HĐG",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1893:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "CỘNGHÒAXÃHỘICHỦNGHĨAVIỆTNAM",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1894:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Độclập-Tựdo-Hạnhphúc",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1895:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "_______________________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1896:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "CAMKẾT",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1897:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Kínhgửi:(Têncơquanthuếquảnlýtrựctiếp)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1898:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Tênngườinộpthuế:......................................................................................................",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1899:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Mãsốthuế:....................................................................",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1900:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Địachỉtrụsởchính..........................",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1901:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Địachỉnhậnthôngbáothuế...........................................................................................",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1902:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Sốđiệnthoạiliênhệ:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1903:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Cốđịnh:........................................................................................................................",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1904:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Diđộng:........................................................................................................................",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1905:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Ngườiđạidiệntheophápluật.........................................................................................",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1906:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Nghềnghiệp/Lĩnhvựchoạtđộng/Ngànhnghềkinhdoanhchính:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1907:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Chúng tôi cam kếtđịa chỉsản xuất, kinh doanh thựctế phù hợpvới giấychứng nhận đăng kýdoanh nghiệp hoặcgiấy",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1908:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "phépđầutư(giấyphéphànhnghề)hoặcquyếtđịnhthànhlậpcủacơquancóthẩmquyền.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1909:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Việckhaibáotrênlàđúngsựthật,nếupháthiệnsaiđơnvịxinchịutráchnhiệmtrướcphápluật./.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1910:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Ngày...tháng...năm...",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1911:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "NGƯỜINỘPTHUẾhoặc",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1912:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ĐẠIDIỆNHỢPPHÁPCỦANGƯỜINỘPTHUẾ",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1913:S0",
+      "page": 45,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Ký,ghirõhọtên;chứcvụvàđóngdấu(nếucó))",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    }
+  ]
+}

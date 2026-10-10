@@ -1,0 +1,28 @@
+# Second batch of Gold document approvals (Issue #6, 2026-10-10): the remaining 20 held-out documents.
+# Authority: the user delegated Gold approval to the AI reviewer GPT-6 ("ỦY QUYỀN ai duyệt gold"; recorded at b955950).
+# These are AI-reviewer approvals under user delegation, not independent human sign-offs, and must never be presented as such.
+# Source: GPT-6's Issue #6 comment of 2026-10-10T16:26:25Z, APPROVE lines copied verbatim. GPT-6 states it reviewed all
+# selected annotated page images of p7.f1q.heldout.visual-review.v3 (V6 overlay; 051 L0074:S0 checked as OTHER in V8)
+# with each document's complete occurrence table, against drafts V8 (3643ee6). Labels are not changed by this batch.
+# Scope: the selected pages only, not full-document heading recall.
+APPROVAL_CONTEXT reviewerType=AI_REVIEWER authority=USER_DELEGATED evidence=artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.visual-review.v3/render-manifest.json because user delegated Gold approval to the AI reviewer GPT-6 (Issue #6, 2026-10-10)
+APPROVE 006 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 3 pages / 89 rows; law/chapter/article E; Gazette, issuer, provisions O against Gold V8 3643ee6.
+APPROVE 009 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 3 pages / 94 rows; law/chapter/article E; Gazette, issuer, body clauses O against Gold V8 3643ee6.
+APPROVE 015 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 3 pages / 114 rows; law/section/article E; administrative and body O against Gold V8 3643ee6.
+APPROVE 017 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 164 rows; decree, appendix and independent form headings E; signature, table fields O against Gold V8 3643ee6.
+APPROVE 024 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 3 pages / 140 rows; decree and article E; amendment notes and body O against Gold V8 3643ee6.
+APPROVE 028 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 113 rows; procurement titles and revisions E; tabular bid provisions O; page 229 lost heading remains source-quality defect against Gold V8 3643ee6.
+APPROVE 034 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 88 rows; title/TOC header/form/appendix E, TOC entries R, table cells O against Gold V8 3643ee6.
+APPROVE 051 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 66 rows; document and section E, chart labels O; checked V8 L0074:S0 OTHER rather than stale visual overlay against Gold V8 3643ee6.
+APPROVE 056 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 94 rows; title fragment and assessment heading E; contents entries R, figure and body O; cover source loss remains against Gold V8 3643ee6.
+APPROVE 060 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 150 rows; title/abstract/contents/references E, TOC R, theorem statements/formulas O against Gold V8 3643ee6.
+APPROVE 064 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 119 rows; title/contents E, TOC R, author/captions/prose O against Gold V8 3643ee6.
+APPROVE 067 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 149 rows; title/bibliography E, TOC R, provenance/body/tables O against Gold V8 3643ee6.
+APPROVE 073 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 2 pages / 46 rows; meeting/agenda/run-in topic headings E, body O; mixed atoms remain span risk against Gold V8 3643ee6.
+APPROVE 077 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 3 pages / 108 rows; minutes/session/topic headings E, agenda prose/date O against Gold V8 3643ee6.
+APPROVE 079 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 3 pages / 107 rows; minutes/session/topic headings E, lists/prose O against Gold V8 3643ee6.
+APPROVE 083 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 3 pages / 87 rows; title/article E, government/body O; L1075:S0 excluded as mixed source corruption against Gold V8 3643ee6.
+APPROVE 088 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 151 rows; decree/chapter/article/appendix E; HS tariff chapter and table labels O against Gold V8 3643ee6.
+APPROVE 090 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 3 pages / 93 rows; decree/chapter/article E; amendatory provisions O; L0015:S0 mixed heading-body documented against Gold V8 3643ee6.
+APPROVE 093 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 149 rows; HTTP/1.1 heading E; RFC metadata/code/running furniture O against Gold V8 3643ee6.
+APPROVE 094 by GPT-6 because AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 148 rows; HTTP/2/operative headings E; contents entries R; protocol states and furniture O against Gold V8 3643ee6.

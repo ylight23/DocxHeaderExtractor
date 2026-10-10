@@ -1,0 +1,551 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_V1",
+  "status": "AI_REVIEWER_APPROVED_USER_DELEGATED",
+  "id": "051",
+  "sourceSha256": "7fd684159939651921105dcc478b4cc145bac8e7810b4ee7b83f15aec7fa0622",
+  "approval": {
+    "approved": true,
+    "by": "GPT-6",
+    "reviewerType": "AI_REVIEWER",
+    "authority": "USER_DELEGATED",
+    "delegation": "user delegated Gold approval to the AI reviewer GPT-6 (Issue #6, 2026-10-10)",
+    "evidence": {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.visual-review.v3/render-manifest.json",
+      "sha256": "3d69de21abfcac40405552f631b7b49715214d7434cf1ffa94ee0004e53b9b66"
+    },
+    "inputDraftSha256": "d3a3b60fb13c66e8e2e62ba41a857272d04b6174c29a3ae788ff7d87d3f7667f",
+    "labelsSha256": "39f3fa500c202615857c24538cc0687e23184805817e850c21a2363e7d1ec8a5",
+    "note": "AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 66 rows; document and section E, chart labels O; checked V8 L0074:S0 OTHER rather than stale visual overlay against Gold V8 3643ee6.",
+    "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10G_ISSUE_6"
+  },
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "TrustFundFinancialInformationSummaryforfiscalyearsendedJune30,2024and2023",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "AllamountsinUSDmillions, unlessotherwisenoted",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "TrustFundOperations",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Financial Information Summary",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Fiscalyears endedJune30, 2024and2023",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0067:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "TrustFundFinancialInformationSummaryforfiscalyearsendedJune30,2024and2023",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0068:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "AllamountsinUSDmillions, unlessotherwisenoted",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0069:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "PortfolioataGlance-FIFs",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0070:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Contributions",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0070:S1",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "InvestmentIncome Disbursements",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0070:S2",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Fund Balance",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0071:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2024",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0071:S1",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "$10,581",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0071:S2",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "$1,635",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0071:S3",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "$8,964",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0071:S4",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "$30,127",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0072:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "YoYchange%",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0072:S1",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "14%",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0072:S2",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "76%",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0072:S3",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "15%",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0072:S4",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "6%",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0073:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "KeyMetrices",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0074:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "ContributionandDisbursements",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0074:S1",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Contributions",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0075:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "\uF0B7",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0075:S1",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "In FY24,contributionsfromtopdonorshavedecreasedtowardsPPRandagricultureprograms(GAFSPand",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0076:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "CGIAR);whileincreasedtowardsCIF,GEFandGBFF.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0077:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "\uF0B7 Top 2 donors GFATM and United Kingdom accounted for 50% of the total contributions in FY24 and an",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0078:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "averageo2f%48%overthepast5years.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0079:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "\uF0B7",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0079:S1",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "DisbursementsfromGFATM,GCFandGEFprogramsaccountedfor74%oftotaldisbursementin FY24and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0080:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "onanaverage70%overthepast5years.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0081:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "\uF0B7 GFATM hasbeenthe leading FIFconstituting41%ofthetotal FIFcontributionsand50%oftotal FIF",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0082:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "disbursementsoverthe past5years.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0083:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "6",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0084:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0124:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "TrustFundFinancialInformationSummaryforfiscalyearsendedJune30,2024and2023",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0125:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AllamountsinUSDmillions, unlessotherwisenoted",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0126:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "KeyTrustFundActivity",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0127:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "CompositionofActiveTrustFunds3 2",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0128:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "TheFIFportfoliohascontinuedtogrow,froma baseof9programsin2008to26in2024.Themajorsectorsin FIF",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0129:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "areEnvironmentandClimatechange(12 FIFprograms), Health(4FIFprograms)andAgriculture(3FIFprograms).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0130:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3 The countis based on numberoftrustfunds establishedas trustees underprogram types - Umbrella, Programmatic, Standalone and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0131:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Free-standing. Apartfromtheactive trustfundsabove there areDPbalanceaccountsestablishedtoholdunusedfundsfromclosedtrust",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0132:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "funds, investmentincomeearnedonactivetrustfundbalances, ortoholdDPcontributionstemporarilyawaitingestablishmentofaproject",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0133:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "trustfund. ThetotalnumberofsuchactiveDPbalanceaccountsasofJune 30, 2024, is343andJune30, 2023is312.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0134:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4FIFProgramsmaybeadministeredthroughtheuseofmultipleaccounts. Thereare26FIFprograms (June2023:26) comprisingmultiple",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0135:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "FIFtrusteeaccounts.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0136:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "9",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0137:S0",
+      "page": 9,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0210:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "TrustFundFinancialInformationSummaryforfiscalyearsendedJune30,2024and2023",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0211:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AllamountsinUSDmillions, unlessotherwisenoted",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0212:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "TrustFundActivity",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0213:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "NewAdministrationAgreements",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0214:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "New administration agreements signed between the Bank Group and DPs represents contributions made to",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0215:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "new trust funds and additional contributions made to existing trust funds. These are presented net of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0216:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "cancellations. The negative amounts are where the current period cancellations are greater than additional",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0217:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "contributions.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0218:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0219:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Top10SovereignCountriesandEU",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0220:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "11 OtherDPsincludesmultilateraldevelopmentbanks, UnitedNationsagencies, andpublicandprivateinstitutions. Outofthetotal$5,707m",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0221:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "in OtherDPs, $4,470mpertainsto GFATMSecretariat.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0222:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "15",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0223:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    }
+  ]
+}

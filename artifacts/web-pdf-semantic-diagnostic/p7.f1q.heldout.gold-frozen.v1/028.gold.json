@@ -1,0 +1,927 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_V1",
+  "status": "AI_REVIEWER_APPROVED_USER_DELEGATED",
+  "id": "028",
+  "sourceSha256": "2dea390e45f4c07bc90d834be616cdbfc804db8c42e90b506d87bca037b29027",
+  "approval": {
+    "approved": true,
+    "by": "GPT-6",
+    "reviewerType": "AI_REVIEWER",
+    "authority": "USER_DELEGATED",
+    "delegation": "user delegated Gold approval to the AI reviewer GPT-6 (Issue #6, 2026-10-10)",
+    "evidence": {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.visual-review.v3/render-manifest.json",
+      "sha256": "3d69de21abfcac40405552f631b7b49715214d7434cf1ffa94ee0004e53b9b66"
+    },
+    "inputDraftSha256": "4574ce25d1b2d9bd11b308ccb79fd2b0cf8e4b33d9e0b0508032c39548771ce8",
+    "labelsSha256": "8538a6b46de5df655baa62e25dd960ae0c59dc969c27ae5004f83aae8fbbed40",
+    "note": "AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 113 rows; procurement titles and revisions E; tabular bid provisions O; page 229 lost heading remains source-quality defect against Gold V8 3643ee6.",
+    "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10G_ISSUE_6"
+  },
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "STANDARD PROCUREMENT",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "DOCUMENT",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Request for Bids",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Works",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "(Without Prequalification)",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "JANUARY, 2017",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "ii",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Revisions",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "January 2017",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "This revision dated January, 2017 incorporates changes to enhance environmental, social, health",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "and safety performance. In addition, a template for notification of intention to award a contract",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "has been added and a few editorial enhancements made.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "July 2016",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "This revision dated July, 2016 incorporates a number of changes reflecting the Procurement",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Regulations for IPF Borrowers, July 2016 (“Procurement Regulations”). This Standard",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Procurement Document (SPD) is applicable to Procurement of Works funded by IBRD or IDA",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "financed projects whose Legal Agreement refers to the Procurement Regulations.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "April 2015",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "This revision dated April, 2015 expands paragraph (j) of Section IV Letter of Bid on eligibility",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "of Bidders.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "March 2012",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "This revision dated March, 2012 incorporates a number of changes reflecting the experience of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "the Bank in using previous versions of this document (last updated version was dated August",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2010), corrects inconsistencies within document clauses, and incorporates the changes as per the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0029:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Guidelines for Procurement of Goods, Works and Non-Consulting Services, issued in January",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0030:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2011. This revision also incorporates in Section VIII, General Conditions (GC), the most recent",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0031:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "changes agreed between the Multilateral Development Banks (MDBs) and the International",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0032:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Federation of Consulting Engineers (FIDIC).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0033:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "August 2010",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0034:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "This revision dated August, 2010 is to include in the Section VII, General Conditions the clauses",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0035:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "6.23 and 6.24 regarding to Workers’ Organizations and Non-Discrimination and Equal",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0036:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Opportunity.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0037:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "May 2010",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0038:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "This revision dated May, 2010 is, inter alia, to modify the Eligibility and Fraud and Corruption",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0039:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "clauses to align their text with that of the May 2010 corrigendum to the Procurement Guidelines,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0040:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "reflecting the changes related to Fraud and Corruption as per the Agreement for Mutual",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1578:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Section II – Bid Data Sheet (BDS) 39",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1579:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ITB 32.1 The currency that shall be used for Bid evaluation and comparison purposes",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1580:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "to convert at the selling exchange rate all Bid prices expressed in various",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1581:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "currencies into a single currency is: ____________[insert name of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1582:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "currency]",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1583:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The source of exchange rate shall be: [Insert name of the source of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1584:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "exchange rates (e.g., the Central Bank in the Employer’s Country).]",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1585:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The date for the exchange rate shall be: _______ [insert day, month and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1586:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "year, e.g. 15 June, 2016 not earlier than 28 days prior to the deadline for",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1587:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "submission of the Bids, nor later than the original date for the expiry of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1588:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Bid validity period].",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1589:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The currency(ies) of the Bid shall be converted into a single currency in",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1590:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "accordance with the procedure under Alternative _____ that follows:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1591:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Alternative A: Bidders quote entirely in local currency",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1592:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "For comparison of Bids, the Bid Price, corrected pursuant to ITB 31, shall",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1593:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "first be broken down into the respective amounts payable in various",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1594:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "currencies by using the selling exchange rates specified by the Bidder in",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1595:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "accordance with ITB 15.1.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1596:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In the second step, the Employer will convert the amounts in various",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1597:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "currencies in which the Bid Price is payable (excluding Provisional Sums but",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1598:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "including Daywork where priced competitively) to the single currency",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1599:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "identified above at the selling rates established for similar transactions by the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1600:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "authority specified and on the date stipulated above.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1601:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "OR",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1602:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Alternative B: Bidders quote in local and foreign currencies",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1603:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The Employer will convert the amounts in various currencies in which the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1604:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Bid Price, corrected pursuant to ITB 31, is payable (excluding Provisional",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1605:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Sums but including Daywork where priced competitively) to the single",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1606:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "currency identified above at the selling rates established for similar",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1607:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "transactions by the authority specified and on the date stipulated above.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1608:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ITB 33.1 [The following provision should be included and the required",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1609:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "corresponding information inserted only if the Procurement Plan",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1610:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "authorizes the application of margin of preference and the Employer",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1611:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "intends to apply it to the subject contract. Otherwise omit]",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1612:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A margin of domestic preference [insert either “shall” or “shall not”]",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1613:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "_________apply.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1614:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[If a margin of preference applies, the application methodology shall be",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1615:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "defined in Section III – Evaluation and Qualification Criteria.]",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1616:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ITB 34.1 At this time the Employer ______________ [insert “intends” or “does not",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1617:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "intend”] to execute certain specific parts of the Works by subcontractors",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6552:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Section VIII – General Conditions of Contract 217",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6553:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "favourable to the Employer.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6554:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The weightings (coefficients) for each of the factors of cost",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6555:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "stated in the table(s) of adjustment data shall only be adjusted if",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6556:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "they have been rendered unreasonable, unbalanced or",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6557:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "inapplicable, as a result of Variations.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6558:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "14.1 The Contract Unless otherwise stated in the Particular Conditions:",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6559:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Price",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6560:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(a) the Contract Price shall be agreed or determined under",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6561:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Sub-Clause 12.3 [Evaluation] and be subject to",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6562:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "adjustments in accordance with the Contract;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6563:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(b) the Contractor shall pay all taxes, duties and fees required",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6564:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "to be paid by him under the Contract, and the Contract",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6565:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Price shall not be adjusted for any of these costs except as",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6566:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "stated in Sub-Clause 13.7 [Adjustments for Changes in",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6567:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Legislation];",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6568:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(c) any quantities which may be set out in the Bill of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6569:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Quantities or other Schedule are estimated quantities and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6570:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "are not to be taken as the actual and correct quantities:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6571:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(i) of the Works which the Contractor is required to",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6572:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "execute, or",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6573:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(ii) for the purposes of Clause 12 [Measurement and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6574:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Evaluation]; and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6575:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(d) the Contractor shall submit to the Engineer, within 28 days",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6576:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "after the Commencement Date, a proposed breakdown of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6577:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "each lump sum price in the Schedules. The Engineer may",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6578:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "take account of the breakdown when preparing Payment",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6579:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Certificates, but shall not be bound by it.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6580:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Notwithstanding the provisions of subparagraph (b),",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6581:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Contractor's Equipment, including essential spare parts therefor,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6582:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "imported by the Contractor for the sole purpose of executing the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6583:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Contract shall be exempt from the payment of import duties and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6584:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "taxes upon importation.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6585:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "14.2 Advance Payment The Employer shall make an advance payment, as an interest-",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6586:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "free loan for mobilisation and cash flow support, when the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6587:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Contractor submits a guarantee in accordance with this Sub-",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L6588:S0",
+      "page": 229,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Copyright FIDIC",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    }
+  ]
+}

@@ -1,0 +1,1207 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_V1",
+  "status": "AI_REVIEWER_APPROVED_USER_DELEGATED",
+  "id": "094",
+  "sourceSha256": "8314f1034854548baf26f9912f79c6207299cb0520b31ed25af64889bd1500bc",
+  "approval": {
+    "approved": true,
+    "by": "GPT-6",
+    "reviewerType": "AI_REVIEWER",
+    "authority": "USER_DELEGATED",
+    "delegation": "user delegated Gold approval to the AI reviewer GPT-6 (Issue #6, 2026-10-10)",
+    "evidence": {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.visual-review.v3/render-manifest.json",
+      "sha256": "3d69de21abfcac40405552f631b7b49715214d7434cf1ffa94ee0004e53b9b66"
+    },
+    "inputDraftSha256": "e6de36cf1a2ec738351157414f6a2efa94c8dfa1086ebce94dd1b800de800fba",
+    "labelsSha256": "79cf6cd957cd5053ef2ef7dd76c55c56b921adb9b069d697608c27b4c44ea65a",
+    "note": "AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 148 rows; HTTP/2/operative headings E; contents entries R; protocol states and furniture O against Gold V8 3643ee6.",
+    "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10G_ISSUE_6"
+  },
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Stream:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0000:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Internet Engineering Task Force (IETF)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "RFC:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0001:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "9113",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Obsoletes:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0002:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "7540, 8740",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Category:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0003:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Standards Track",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Published:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0004:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "June 2022",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "ISSN:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0005:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "2070-1721",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Authors:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0006:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "M. Thomson, Ed.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0006:S2",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "C. Benﬁeld, Ed.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Mozilla Apple Inc.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "RFC 9113",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "HTTP/2",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Abstract",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "This speciﬁcation describes an optimized expression ofthe semantics ofthe Hypertext Transfer",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Protocol (HTTP), referred to as HTTP version 2 (HTTP/2). HTTP/2 enables a more eﬃcient use of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "network resources and a reduced latency by introducing ﬁeld compression and allowing multiple",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "concurrent exchanges on the same connection.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "This document obsoletes RFCs 7540 and 8740.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Status ofThis Memo",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "This is an Internet Standards Track document.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "This document is a product ofthe Internet Engineering Task Force (IETF). It represents the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "consensus ofthe IETF community. It has received public review and has been approved for",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "publication by the Internet Engineering Steering Group (IESG). Further information on Internet",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Standards is available in Section 2 ofRFC 7841.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Information about the current status ofthis document, any errata, and how to provide feedback",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "on it may be obtained at https://www.rfc-editor.org/info/rfc9113.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Copyright Notice",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Copyright (c) 2022 IETF Trust and the persons identiﬁed as the document authors. All rights",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "reserved.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Thomson & Benﬁeld Standards Track Page 1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "RFC 9113 HTTP/2 June 2022",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0029:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0030:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Documents (https://trustee.ietf.org/license-info) in eﬀect on the date ofpublication ofthis",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0031:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "document. Please review these documents carefully, as they describe your rights and restrictions",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0032:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "with respect to this document. Code Components extracted from this document must include",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0033:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Revised BSD License text as described in Section 4.e ofthe Trust Legal Provisions and are",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0034:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "provided without warranty as described in the Revised BSD License.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0035:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table of Contents",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0036:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1. Introduction",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0037:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2. HTTP/2 Protocol Overview",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0038:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1. Document Organization",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0039:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2. Conventions and Terminology",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0040:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3. Starting HTTP/2",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0041:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1. HTTP/2 Version Identiﬁcation",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0042:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.2. Starting HTTP/2 for \"htt ps\" URIs",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0043:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3. Starting HTTP/2 with Prior Knowledge",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0044:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.4. HTTP/2 Connection Preface",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0045:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4. HTTP Frames",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0046:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1. Frame Format",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0047:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2. Frame Size",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0048:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.3. Field Section Compression and Decompression",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0049:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.3.1. Compression State",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0050:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5. Streams and Multiplexing",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0051:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.1. Stream States",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0052:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.1.1. Stream Identiﬁers",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0053:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.1.2. Stream Concurrency",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0054:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.2. Flow Control",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0055:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.2.1. Flow-Control Principles",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0056:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.2.2. Appropriate Use ofFlow Control",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0057:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.2.3. Flow-Control Performance",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0058:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.3. Prioritization",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0059:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5.3.1. Background on Priority in RFC 7540",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0060:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Thomson & Benﬁeld Standards Track Page 2",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0486:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "RFC 9113 HTTP/2 June 2022",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0487:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Both endpoints have a subjective view ofthe state of a stream that could be diﬀerent when",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0488:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "frames are in transit. Endpoints do not coordinate the creation ofstreams; they are created",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0489:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "unilaterally by either endpoint. The negative consequences of a mismatch in states are limited to",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0490:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the \"closed\" state after sending RST_STREAM, where frames might be received for some time after",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0491:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "closing.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0492:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Streams have the following states:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0493:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "idle: All streams start in the \"idle\" state.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0494:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The following transitions are valid from this state:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0495:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Sending a HEADERS frame as a client, or receiving a HEADERS frame as a server, causes",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0496:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the stream to become \"open\". The stream identiﬁer is selected as described in Section 5.1.1.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0497:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The same HEADERS frame can also cause a stream to immediately become \"half-closed\".",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0498:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Sending a PUSH_PROMISE frame on another stream reserves the idle stream that is",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0499:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "identiﬁed for later use. The stream state for the reserved stream transitions to \"reserved",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0500:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(local)\". Only a server may send PUSH_PROMISE frames.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0501:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Receiving a PUSH_PROMISE frame on another stream reserves an idle stream that is",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0502:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "identiﬁed for later use. The stream state for the reserved stream transitions to \"reserved",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0503:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(remote)\". Only a client may receive PUSH_PROMISE frames.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0504:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Note that the PUSH_PROMISE frame is not sent on the idle stream but references the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0505:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "newly reserved stream in the Promised Stream ID ﬁeld.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0506:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Opening a stream with a higher-valued stream identiﬁer causes the stream to transition",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0507:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "immediately to a \"closed\" state; note that this transition is not shown in the diagram.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0508:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Receiving any frame other than HEADERS or PRIORITY on a stream in this state MUST be",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0509:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "treated as a connection error (Section 5.4.1) oftype PROTOCOL_ERROR. Ifthis stream is",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0510:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "initiated by the server, as described in Section 5.1.1, then receiving a HEADERS frame MUST",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0511:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "also be treated as a connection error (Section 5.4.1) oftype PROTOCOL_ERROR.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0512:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "reserved (local): A stream in the \"reserved (local)\" state is one that has been promised by",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0513:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "sending a PUSH_PROMISE frame. A PUSH_PROMISE frame reserves an idle stream by",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0514:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "associating the stream with an open stream that was initiated by the remote peer (see Section",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0515:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8.4).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0516:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In this state, only the following transitions are possible:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0517:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• The endpoint can send a HEADERS frame. This causes the stream to open in a \"half-closed",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0518:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(remote)\" state.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0519:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Either endpoint can send a RST_STREAM frame to cause the stream to become \"closed\".",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0520:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "This releases the stream reservation.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0521:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "An endpoint MUST NOT send any type offrame other than HEADERS, RST_STREAM, or",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0522:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "PRIORITY in this state.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0523:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Thomson & Benﬁeld Standards Track Page 16",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2240:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "RFC 9113 HTTP/2 June 2022",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2241:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10.5.",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2241:S1",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Denial-of-Service Considerations",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2242:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "An HTTP/2 connection can demand a greater commitment ofresources to operate than an HTTP/",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2243:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1.1 connection. Both ﬁeld section compression and ﬂow control depend on a commitment of a",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2244:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "greater amount ofstate. Settings for these features ensure that memory commitments for these",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2245:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "features are strictly bounded.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2246:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The number ofPUSH_PROMISE frames is not constrained in the same fashion. A client that",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2247:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "accepts server push SHOULD limit the number ofstreams it allows to be in the \"reserved (remote)\"",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2248:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "state. An excessive number ofserver push streams can be treated as a stream error (Section 5.4.2)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2249:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "oftype ENHANCE_YOUR_CALM.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2250:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A number ofHTTP/2 implementations were found to be vulnerable to denial ofservice",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2251:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[NFLX-2019-002]. Below is a list ofknown ways that implementations might be subject to denial-",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2252:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "of-service attacks:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2253:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Ineﬃcient tracking of outstanding outbound frames can lead to overload if an adversary",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2254:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "can cause large numbers offrames to be enqueued for sending. A peer could use one of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2255:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "several techniques to cause large numbers offrames to be generated:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2256:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "◦ Providing tiny increments to ﬂow control in WINDOW_UPDATE frames can cause a sender",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2257:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "to generate a large number ofDATA frames.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2258:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "◦ An endpoint is required to respond to a PING frame.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2259:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "◦ Each SETTINGS frame requires acknowledgment.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2260:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "◦ An invalid request (or server push) can cause a peer to send RST_STREAM frames in",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2261:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "response.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2262:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• An attacker can provide large amounts ofﬂow-control credit at the HTTP/2 layer but",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2263:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "withhold credit at the TCP layer, preventing frames from being sent. An endpoint that",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2264:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "constructs and remembers frames for sending without considering TCP limits might be",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2265:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "subject to resource exhaustion.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2266:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Large numbers ofsmall or empty frames can be abused to cause a peer to expend time",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2267:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "processing frame headers. Caution is required here as some uses ofsmall frames are entirely",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2268:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "legitimate, such as the sending of an empty DATA or CONTINUATION frame at the end of a",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2269:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "stream.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2270:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• The SETTINGS frame might also be abused to cause a peer to expend additional processing",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2271:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "time. This might be done by pointlessly changing settings, sending multiple undeﬁned",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2272:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "settings, or changing the same setting multiple times in the same frame.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2273:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Handling reprioritization with PRIORITY frames can require signiﬁcant processing time and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2274:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "can lead to overload ifmany PRIORITY frames are sent.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2275:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Field section compression also provides opportunities for an attacker to waste processing",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2276:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "resources; see Section 7 of [COMPRESSION] for more details on potential abuses.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2277:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "• Limits in SETTINGS cannot be reduced instantaneously, which leaves an endpoint exposed to",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2278:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "behavior from a peer that could exceed the new limits. In particular, immediately after",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L2279:S0",
+      "page": 63,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Thomson & Benﬁeld Standards Track Page 63",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    }
+  ]
+}

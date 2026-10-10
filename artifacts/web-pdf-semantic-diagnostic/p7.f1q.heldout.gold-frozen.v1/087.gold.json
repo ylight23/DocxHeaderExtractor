@@ -1,0 +1,1095 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_V1",
+  "status": "AI_REVIEWER_APPROVED_USER_DELEGATED",
+  "id": "087",
+  "sourceSha256": "a603afb1c59c438e1d6e72a0bb5d78e3d367a16ce28fb0bdedbe60360a884d4d",
+  "approval": {
+    "approved": true,
+    "by": "GPT-6",
+    "reviewerType": "AI_REVIEWER",
+    "authority": "USER_DELEGATED",
+    "delegation": "user delegated Gold approval to the AI reviewer GPT-6 (Issue #6, 2026-10-10)",
+    "evidence": {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.visual-review.v2/render-manifest.json",
+      "sha256": "e35e4b36df0d6abddc1c96feb73efb64297b1e3f867f9fc69352057f4883cade"
+    },
+    "inputDraftSha256": "45da5cb7faab08b824dcbcce060c25ef721fd571ad231c928cd185b86eb40a53",
+    "labelsSha256": "442c730139c46b5db2efcc702c2b74adbbe646f4217bc31764044609f488ce3a",
+    "note": "all 134 occurrences on four selected pages reviewed against the images and table; legal headings and form sections distinguished from metadata, reference lines and the parenthetical continuation; L1216:S0 excluded as a corrupted mixed atom, its heading \"1. General information\" recorded as SOURCE_COVERAGE_LOSS",
+    "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10E_ISSUE_6"
+  },
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "THE GOVERNMENT",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0000:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "__________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0001:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Independence - Freedom - Happiness",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "No. 53/2022/ND-CP",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0002:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "__________________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Hanoi, August 15, 2022",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "DECREE",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Detailing a number of articles of the Law on Cyber Security",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "_____________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Pursuant to the Law on Organization of the Government dated June 19,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "2015 and the Law Amending and Supplementing a Number of Articles of the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Law on Organization of the Government and the Law on Organization of Local",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Administration dated November 22, 2019;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Pursuant to the Law on National Security dated December 03, 2004;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Pursuant to the Law on Cyber Security dated June 12, 2018;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Pursuant to the Law on Cyberinformation Security dated November 19,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "2o0f 1th5e;LATahtwethGoenopvrCoeyrpbnoemsraeSlneotcfLputrhroieutmyM.uailngiasttteesVr tohfeiPeDubelctircneSeedcauetraimtiyli;ng.avnunmber of articles",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Chapter I",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "GENERAL PROVISIONS",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Article 1. Scope of regulation",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "This Decree details Points a, b, c, d, dd, g, i, k, and l Clause 1 Article 5,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Clause 4 Article 10, Clause 5 Article 12, Clause 1 Article 23, Clause 7 Article",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "24, Clauses 2 and 4 Article 26, Clause 5 Article 36 of the Law on Cyber",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Security, including:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "1. Cyber security protection measures: Conducting cyber security",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "appraisal; assessing cyber security conditions; conducting cyber security",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "inspection; conducting cyber security supervision; responding to and remedying",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "cyber security incidents; using cryptography to protect cyber information;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "requesting the removal of unlawful or false information in cyberspace which",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "infringes upon national security, social order and safety, or lawful rights and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "interests of agencies, organizations and individuals; collecting electronic data",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0029:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "relating to activities in cyberspace which infringe upon national security, social",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0030:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "order and safety, or lawful rights and interests of agencies, organizations and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0031:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0361:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. Products whose cyber security risks are warned or notified by",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0362:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "professional cyber security protection forces shall not be put into use or must be",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0363:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "taken measures for handling or remedying security weaknesses and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0364:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "vulnerabilities, malware and malicious hardware before putting into use.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0365:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3. Digital data and information shall be processed and stored through",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0366:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "information systems classified as state secrets that must be encrypted or taken",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0367:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "protective measures during the process of creation, exchange, and storage in the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0368:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Internet in accordance with the law on protection of the state secrets.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0369:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4. Information technology devices, communication means, information",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0370:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "carriers and devices serving the information systems’ operations must be",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0371:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "managed, destroyed, or repaired according to the law and protection of state",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0372:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "secrets, and working regulations of the managers of information systems.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0373:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5. System software, utility software, middleware, databases, application",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0374:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "programs, source code and development tools shall be periodically reviewed",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0375:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "and updated with patches.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0376:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "6. Mobile devices and equipment with information storage function when",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0377:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "connecting to internal networks of information systems of national security",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0378:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "iuamnsedpdomrote7anaa).lnyncUBseienpmmociunnhusfestco:tcorkmbneenadetcicfhotoeinLrncsgksy,eeuscdttrueaarmnaintssydmotbciftoeVtnfnionatrrgtoieioloelcnreoadsnlttnstooeenrccienutnigrnais,tguyirntmeiofmostrpahmfoee.rattityavnin,ofocnanernms.dtoatrthiaoegynessdhyeasvtlelicmbeess",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0379:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "of national security importance;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0380:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b) Have the connection or disconnection from devices of the information",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0381:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "systems of national security importance controlled;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0382:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c) Taking measures for security assurance upon transmitting, storing, and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0383:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "measures for protecting information classified as state secrets that has already",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0384:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "been stored.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0385:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Article 11. Conditions for technical measures to monitor and protect",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0386:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "cyber security",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0387:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1. Operation environment of the information systems of national security",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0388:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "importance must satisfy the following requirements:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0389:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a) Separating from environments for development, inspection and testing;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0390:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "b) Taking solutions for information security assurance;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0391:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c) Application development tools or means are not allowed to be",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0392:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "installed;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0393:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d) Removing or turning off utility software or functions that are no longer",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0394:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "in use or unnecessary in the information systems.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0395:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "11",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1114:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Form No. 02",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1115:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "AGENCY/ORGANIZATION",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1115:S1",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1116:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "_________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1116:S1",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Independence - Freedom - Happiness",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1117:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "No. .......",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1117:S1",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "__________________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1118:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Regarding the provision of the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1118:S1",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Place, date...... month......year…….",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1119:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "list of information systems",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1120:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "To: ....................... 1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1121:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Pursuant to the Law on Cyber Security dated June 12, 2018;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1122:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Pursuant to the Government’s Decree No. /2022/ND-CP dated ....,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1123:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "detailing a number of articles of the Law on Cyber Security;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1124:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "............... 2 provides the list of current information systems as follows:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1125:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Contact",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1126:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "No. Information system name Manager Address",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1126:S1",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "information",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1127:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "- Person in",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1128:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 Information systLemuA a-tUVnit ineamet:nam.vncntnaehaudlamemdrprgbeeh,eesorspn,)oeseitm(ifoaunilll,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1129:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Receipt:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1129:S1",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "AGENCY/ORGANIZATION",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1130:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "- As above;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1130:S1",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "REPRESENTATIVE",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1131:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "- ................",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1131:S1",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "(Signature, full name, title and seal)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1132:S0",
+      "page": 33,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "5",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1202:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Form No. 05",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1203:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AGENCY/ORGANIZATIO",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1203:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "THE SOCIALIST REPUBLIC OF VIETNAM",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1204:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "N",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1204:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Independence - Freedom - Happiness",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1205:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "_________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1205:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "__________________",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1206:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "No. .......",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1206:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Place, date...... month......year…….",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1207:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Regarding request for",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1208:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "excluding an information",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1209:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "system from the List of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1210:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "information systems of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1211:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "national security importance",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1212:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "To: ............................................................ 1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1213:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Pursuant to the Law on Cyber Security dated June 12, 2018;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1214:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Pursuant to the Government’s Decree No. /2022/ND-CP dated ....,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1215:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "detailing a number of articles of the Law on Cyber Security;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1216:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "inform.1-a...Itin2GofrneoenrqsmeyursaeattsleitomisnntsfoosoyrefmsxtnLaceatlmtiuioudonnenaatmalheese:ftc.o.uV.lrloitwyiiinemgpiotnrfntoarnmcaea:timon sy.stvemnfrom the List of",
+      "label": null,
+      "goldStatus": "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION"
+    },
+    {
+      "sourceAlias": "L1217:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "- Unit managing the information system ...",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1218:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "- Address: ...",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1219:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "- Decision on including the information system in the List of information",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1220:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "systems of national security importance (specify the number, date and month,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1221:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "abstract):",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1222:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2. Reason",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1223:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "...................................................................................................................",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1224:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3. Enclosed documents (documents proving that the information system is",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1225:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "no longer appropriate to be classified as an information system of national",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1226:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "security importance)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1227:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "...................................................................................................................",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1228:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Receipt:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1228:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AGENCY/ORGANIZATION",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1229:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "- As above;",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1229:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "REPRESENTATIVE",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1230:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "- ................",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1230:S1",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Signature, full name, title and seal)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1231:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    }
+  ]
+}

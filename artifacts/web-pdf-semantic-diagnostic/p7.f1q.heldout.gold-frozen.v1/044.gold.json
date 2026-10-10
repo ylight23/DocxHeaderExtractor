@@ -1,0 +1,2359 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_V1",
+  "status": "AI_REVIEWER_APPROVED_USER_DELEGATED",
+  "id": "044",
+  "sourceSha256": "55dee9b16b5616109ba186bb0a4d83632e24d06d5a00beab80b82ca59b3b0d6b",
+  "approval": {
+    "approved": true,
+    "by": "GPT-6",
+    "reviewerType": "AI_REVIEWER",
+    "authority": "USER_DELEGATED",
+    "delegation": "user delegated Gold approval to the AI reviewer GPT-6 (Issue #6, 2026-10-10)",
+    "evidence": {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.visual-review.v2/render-manifest.json",
+      "sha256": "e35e4b36df0d6abddc1c96feb73efb64297b1e3f867f9fc69352057f4883cade"
+    },
+    "inputDraftSha256": "940dc26480394f79e1165bd8de273e942d9bc745e99f8a5003fd92ed64bf454e",
+    "labelsSha256": "f752fdad1cfc0f4d982f46b8ae643d16aa4324ba875bd1255c4a174c0eea4d89",
+    "note": "all 292 occurrences on four selected pages reviewed against the annotated images and font table; headings, TOC list headings vs figure/table references, table captions, financial data labels and running furniture keep their V5 functions",
+    "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10E_ISSUE_6"
+  },
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "International DevelopmentAssociation",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Management’s Discussion & Analysis",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "and",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Financial Statements",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "June 30, 2024",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0043:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Management’s Discussion and Analysis",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0044:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "List ofTables, Figures and Box",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0045:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Tables",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0046:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 1 : Selected Financial Data",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0046:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0047:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 2: IDA20Allocations",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0047:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "9",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0048:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 3: Cumulative Net Commitments under IDA20",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0048:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "10",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0049:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 4: Condensed Statements of Income",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0049:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "17",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0050:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 5: Condensed Balance Sheets",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0050:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "18",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0051:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 6: Changes in Equity",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0051:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "18",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0052:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 7: Gross Disbursements of Loans and Grants by Region",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0052:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "19",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0053:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 8: Revenue and Loan Balances by Product Category",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0053:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "20",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0054:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 9: Net Non-Interest Expenses",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0054:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "23",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0055:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 10: BudgetAnchor",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0055:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "23",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0056:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 11 : Other Revenue (Expenses), net",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0056:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "24",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0057:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 12: Unrealized Mark-to-Market gains (losses) on non-trading portfolios, net",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0057:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "24",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0058:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 13: Cumulative Loans approved under Single Currency program",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0058:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "27",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0059:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 14: Summary of Financial Terms for IDA Lending Products, effective June 30, 2024",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0059:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "27",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0060:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 15: Net Commitments of Loans and Guarantees by Region",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0060:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "28",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0061:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 16: Net Commitments of Grants by Region",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0061:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "29",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0062:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 17: Types of Guarantees",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0062:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "30",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0063:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 18: Pricing for IDA’s Project-Based and Policy-Based Guarantees, effective June 30, 2024",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0063:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "30",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0064:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 19: Funds Held in Trust by IDA",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0064:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "33",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0065:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 20: Investments Trading Portfolio",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0065:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "35",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0066:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 21 : Borrowing Portfolio",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0066:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "36",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0067:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 22: Concessional Partner Loans Terms",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0067:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "36",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0068:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 23: Short-Term Borrowings",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0068:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "37",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0069:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 24: Summary of IDA's Specific Risk Categories",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0069:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "41",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0070:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 25: Deployable Strategic Capital Ratio",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0070:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "42",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0071:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 26: Treatment of Overdue Payments",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0071:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "44",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0072:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 27: Eligibility Criteria for IDA’s Investments",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0072:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "46",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0073:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table 28: Commercial Credit Exposure, Net of Collateral Held, by Counterparty Rating",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0073:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "47",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0074:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figures",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0075:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 1 : IDAWindows",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0075:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "10",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0076:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 2: Overview of IDA20 Financing Terms",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0076:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "11",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0077:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 3: Net Loans Outstanding Activity",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0077:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "19",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0078:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 4: Net Loans Outstanding",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0078:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "19",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0079:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 5: Net Investment Portfolio",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0079:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "21",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0080:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 6: Investment interest revenue, net of derivatives",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0080:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "21",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0081:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 7: Borrowing Portfolio",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0081:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "21",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0082:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 8: Borrowing expenses, net",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0082:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "21",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0083:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 9: NetAnnual Commitments and Percentage Share of Financing Categories",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0083:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "26",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0084:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 10: Net Investment Portfolio",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0084:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "34",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0085:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 11 : Effect of Derivatives on Currency Composition ofthe Borrowing Portfolio–June 30, 2024",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0085:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "37",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0086:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 12: Medium- and Long-Term Borrowings Issued by Currency during the year, excluding Derivatives",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0086:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "37",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0087:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 13: Management Risk Committee Structure for Financial and Operational Risks",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0087:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "39",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0088:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 14: Country Exposures as of June 30, 2024",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0088:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "43",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0089:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 15: Use of Derivatives for Market Borrowings at fair value",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0089:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "48",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0090:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Figure 16: Governance Structure",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0090:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "52",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0091:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Box",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0092:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Box 1 : Financing Principles",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0092:S1",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "25",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0093:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2 IDA Management's Discussion and Analysis: June 30, 2024",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1875:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Management’s Discussion and Analysis Section IX: Risk Management",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1876:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table 28: Commercial Credit Exposure, Net of Collateral Held, by Counterparty Rating",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1877:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In millions ofU.S. dollars, exceptrates in percentages",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1878:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "As ofJune 30, 2024",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1879:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Counterparty Rating a",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1879:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Sovereigns Non-Sovereigns",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1879:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Net Swap",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1879:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total Exposure",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1879:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "% ofTotal",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1880:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Exposure",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1881:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AAA",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1881:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1881:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "6,815",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1881:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1881:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2,774",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1881:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1881:S6",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1881:S7",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1881:S8",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "9,589",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1881:S9",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "28 %",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1882:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AA",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1882:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7,41 1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1882:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "9,528",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1882:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "160",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1882:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "17,099",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1882:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "49",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1883:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1883:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3,200",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1883:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4,622",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1883:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "291",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1883:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8,113",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1883:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "23",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1884:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "BBB",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1884:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1884:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1884:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1884:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1884:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "*",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1885:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1885:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 17,426",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1885:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 16,931",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1885:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1885:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "451",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1885:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 34,808",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1885:S6",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "100 %",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1886:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "As of June 30, 2023",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1887:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Counterparty Rating a",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1887:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Sovereigns Non-Sovereigns",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1887:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Net Swap",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1887:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total Exposure",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1887:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "% ofTotal",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1888:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Exposure",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1889:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AAA",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1889:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1889:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "9,128",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1889:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1889:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3,021",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1889:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1889:S6",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "—",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1889:S7",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 12,149",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1889:S8",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "38 %",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1890:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "AA",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1890:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5,563",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1890:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7,401",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1890:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "148",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1890:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "13,112",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1890:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "40",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1891:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1891:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2,353",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1891:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4,555",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1891:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "215",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1891:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "7,123",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1891:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "22",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1892:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1892:S1",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 17,044",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1892:S2",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 14,977",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1892:S3",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1892:S4",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "363",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1892:S5",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$ 32,384",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1892:S6",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "100 %",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1893:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a. Average rating is calculated using available ratings from the three majorrating agencies; however, ifratings are not available from",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1894:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "each ofthe three rating agencies, IDA uses the average ofthe ratings available from anyofsuch rating agencies ora single rating",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1895:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "to the extent that an instrument orissuer (as applicable) is ratedbyonlyone rating agency.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1896:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Forthe contractual value, notional amounts andrelated creditrisk exposure amounts by instrument, seeNotes to the",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1897:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Financial Statements forthe year endedJune 30, 2024, Note F - Derivative Instruments.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1898:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Credit and DebitValuation Adjustments",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1899:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Most outstanding derivative positions are transacted over-the-counter and therefore valued using internally",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1900:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "developed valuation models. For commercial andnon-commercial counterparties where IDA has a net exposure (net",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1901:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "receivable position), IDA calculates a Credit Valuation Adjustment (CVA) to reflect credit risk. For net derivative",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1902:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "positions with commercial and non-commercial counterparties where IDA is in a net payable position, IDA",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1903:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "calculates aDebitValuationAdjustment (DVA) to reflect its own creditrisk.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1904:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The CVA is calculated using future projected exposures ofthe derivative contracts, net ofcollateral received under",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1905:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "credit support agreements, and the probability of counterparty default based on the Credit Default Swaps (CDS)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1906:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "spread and, where applicable, proxy CDS spreads. IDA does not currently hedge this exposure. The DVA",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1907:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "calculation is generally consistent with the CVA methodology and incorporates IDA’s own credit spread as",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1908:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "observed through the CDS market. As ofJune 30, 2024, IDA recorded a CVA on its balance sheet of$92 million,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1909:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "and aDVA of$20 million.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1910:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Market Risk",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1911:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "IDA is exposed to changes in interest and exchange rates and uses derivatives to manage its exposure to market",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1912:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "risks. Derivatives are used to align the interest and currency composition ofits assets (loan and investment trading",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1913:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "portfolios) with that ofits liabilities (borrowing portfolio) and equity, with the exception ofthe long-term fixed rate",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1914:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "market debt that is used to fund fixed rate loans. Figure 15 below illustrates the use of derivatives for market",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1915:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "borrowing portfolios. The loan, investment and borrowing portfolios are largely maintained in SDR and its",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1916:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "component currencies.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1917:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "IDA Management's Discussion and Analysis: June 30, 2024 47",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3349:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "NOTE B—MEMBERS’ SUBSCRIPTIONS AND CONTRIBUTIONS AND MEMBERSHIP",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3350:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The movement in Subscriptions and Contributions paid-in is summarizedbelow:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3351:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table B1: Subscriptions and contributions paid-in",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3352:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In millions ofU.S. dollars",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3353:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2024",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3353:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2023",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3354:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Beginning ofthe fiscal year",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3354:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3354:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "271,258",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3354:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3354:S4",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "257,777",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3355:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Cash contributions received a",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3355:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4,620",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3355:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "5,100",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3356:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Demand obligations received",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3356:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4,276",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3356:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8,506",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3357:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Translation adjustment",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3357:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(81)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3357:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(125)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3358:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "End ofthe fiscal year",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3358:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3358:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "280,073",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3358:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3358:S4",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "271,258",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3359:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "a. Includes anyrestricted cash subscriptions.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3360:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table B2: Nonnegotiable, non interest-bearing demand obligations on account ofmembers' subscriptions and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3361:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "contributions",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3362:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In millions ofU.S. dollars",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3363:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2024",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3363:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2023",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3364:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Beginning ofthe fiscal year",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3364:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3364:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "13,477",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3364:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3364:S4",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10,167",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3365:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Demand obligations received",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3365:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "4,276",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3365:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "8,506",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3366:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Demand obligations encashed",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3366:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(5,1 19)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3366:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(5,071)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3367:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Translation adjustment",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3367:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(81)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3367:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(125)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3368:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "End ofthe fiscal year",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3368:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3368:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "12,553",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3368:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3368:S4",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "13,477",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3369:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "NOTE C—INVESTMENTS",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3370:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The investment securities held by IDA are designated as either trading or non-trading. All securities are carried and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3371:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "reported at fairvalue, or at face value, which approximates fairvalue.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3372:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "As ofJune 30, 2024, IDA’s Investments were mainly comprised ofgovernment and agency obligations (56%) and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3373:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "time deposits (43%), with all of the instruments classified as either Level 1 or Level 2 within the fair value",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3374:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "hierarchy.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3375:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "A summary ofIDA’s Investments is as follows:",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3376:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table C1: Investments-composition",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3377:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "In millions ofU.S. dollars",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3378:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2024",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3378:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "June 30, 2023",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3379:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Trading",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3380:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Government and agency obligations",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3380:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3380:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "19,380",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3380:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3380:S4",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "19,770",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3381:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Time deposits",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3381:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "14,715",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3381:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1 1,703",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3382:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Asset-backed securities (ABS)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3382:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1 1 1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3382:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "105",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3383:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3383:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "34,206",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3383:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3383:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "31,578",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3384:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Non-trading",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3385:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Debt security",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3385:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "171 244",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3386:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3386:S1",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3386:S2",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "34,377",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3386:S3",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "$",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3386:S4",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "31,822",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L3387:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "IDA Financial Statements: June 30, 2024 91",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    }
+  ]
+}

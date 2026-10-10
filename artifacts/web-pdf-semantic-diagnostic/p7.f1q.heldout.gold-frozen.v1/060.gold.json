@@ -1,0 +1,1223 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_V1",
+  "status": "AI_REVIEWER_APPROVED_USER_DELEGATED",
+  "id": "060",
+  "sourceSha256": "b3bdfbece3c9df4409ac2012569553ac332dd35a6ca759571c0d74c9d06ccdb2",
+  "approval": {
+    "approved": true,
+    "by": "GPT-6",
+    "reviewerType": "AI_REVIEWER",
+    "authority": "USER_DELEGATED",
+    "delegation": "user delegated Gold approval to the AI reviewer GPT-6 (Issue #6, 2026-10-10)",
+    "evidence": {
+      "path": "artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.visual-review.v3/render-manifest.json",
+      "sha256": "3d69de21abfcac40405552f631b7b49715214d7434cf1ffa94ee0004e53b9b66"
+    },
+    "inputDraftSha256": "145c22919463f5cfb70a25c911af7061bb8d83f29685034bb31a504066129ae0",
+    "labelsSha256": "3adb9c3c70f80f109e43d9996908247794bc5e6d240793d3437d4c2d0ce885a1",
+    "note": "AI_REVIEWER/USER_DELEGATED; reviewed 4 pages / 150 rows; title/abstract/contents/references E, TOC R, theorem statements/formulas O against Gold V8 3643ee6.",
+    "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10G_ISSUE_6"
+  },
+  "labels": [
+    {
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Elements of Linear Algebra",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "61 Lecture notes",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "02",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Ion I. Cota˘escu",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "na",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0004:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "The West University of Timi¸soara,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0005:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "J",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0005:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "V. Parvan Ave. 4, RO-1900 Timi¸soara",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "6",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "February 12, 2016",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "]",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "O",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "H. Abstract",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0011:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "ht",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0011:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "phyTsihcsesfeorpehdealpgionggictahlelmecttuoreunndoetresstaandddrtehses tmoetchheanstisumdesnotfstihnethlienoeraertiocpa-l",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0012:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "a",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0013:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "erators deﬁned on ﬁnite-dimensional vector spaces equipped with deﬁnite",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0014:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "[m",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0014:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "or indeﬁnite inner products. The importance of the Dirac conjugation",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0015:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "is pointed out presenting its general theory and a version of the Riesz",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "1v",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0016:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "tmhaeportehmatfocrotmhbeininedsetﬁhneitaecitnionneropfrtohdeucRtiesspzacmesa,pbwasietdh otnhattheofDtihreacm-Reitersizc",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0017:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "60",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0017:S1",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "osppaecreastowr.ithTdheeﬁmniatetroixr irnedperﬁesneintetaitninoners porfotdhuectlsiniesaarlsoopperraetsoenrsteodn. vector",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0018:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "03",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0019:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "0.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0020:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "20",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0021:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "61",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0022:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": ":v",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0023:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "i",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0024:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Xr",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0025:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "a",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0026:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "1",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0027:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Contents",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0028:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "1 Introduction",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0028:S1",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0029:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2 Preliminaries",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0029:S1",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0030:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.1 Sets and mappings . . . . . . . . . . . . . . . . . . . . . . . . . . 4",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0031:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.2 Algebraic structures . . . . . . . . . . . . . . . . . . . . . . . . . 5",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0032:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2.3 Topologies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0033:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3 Some linear algebra 9",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0034:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1 Duality and tensors . . . . . . . . . . . . . . . . . . . . . . . . . . 10",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0035:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1.1 Linear mappings . . . . . . . . . . . . . . . . . . . . . . . 10",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0036:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1.2 Duality . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0037:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.1.3 Tensors . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0038:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.2 Matrix algebra . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0039:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.2.1 Matrices and determinants . . . . . . . . . . . . . . . . . 16",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0040:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.2.2 Arithmetic vector spaces . . . . . . . . . . . . . . . . . . . 18",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0041:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3 Matrix representations . . . . . . . . . . . . . . . . . . . . . . . . 20",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0042:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3.1 Representing vectors and tensors . . . . . . . . . . . . . . 20",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0043:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3.2 Representing linear mappings . . . . . . . . . . . . . . . . 22",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0044:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.3.3 Changing the representation . . . . . . . . . . . . . . . . . 25",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0045:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4 Inner product vector spaces 27",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0046:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1 Unitary vector spaces . . . . . . . . . . . . . . . . . . . . . . . . 27",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0047:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1.1 Topologies in vector spaces . . . . . . . . . . . . . . . . . 27",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0048:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1.2 Orthonormal dual bases . . . . . . . . . . . . . . . . . . . 28",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0049:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1.3 Operators on unitary vector spaces . . . . . . . . . . . . . 30",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0050:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.1.4 Isometries . . . . . . . . . . . . . . . . . . . . . . . . . . . 34",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0051:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2 Vector spaces with indeﬁnite inner product . . . . . . . . . . . . 35",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0052:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2.1 Indeﬁnite metric . . . . . . . . . . . . . . . . . . . . . . . 35",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0053:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2.2 Dirac conjugation . . . . . . . . . . . . . . . . . . . . . . 37",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0054:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2.3 Representations in h-orthonormal dual bases . . . . . . . 39",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0055:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "4.2.4 Euclidean and pseudo-Euclidean spaces . . . . . . . . . . 42",
+      "label": "REPRESENTS_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0056:S0",
+      "page": 2,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "2",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0789:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Then any vector x = xiei ∈ Vn is represented by the vector |x〉 = Repe(x) =",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0790:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "i n i ∗",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0791:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "x |i〉 ∈ K while any covector xˆ = xˆieˆ ∈ Vn is represented by the covector 〈xˆ| =",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0792:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Rˆepeˆ (xˆ) ∈ (Kn)∗ . Then the dual form reads 〈yˆ, x〉 = 〈yˆ|x〉 = Rˆepeˆ (yˆ)Repe(x).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0793:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Theorem 4 Given a representation as in deﬁnition 37 the dual isomorphisms",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0794:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Repe)∗ : (Kn)∗ → Vn∗ and (Rˆepeˆ)∗ : Kn → Vn satisfy",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0795:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Repe)∗ = (Rˆ epeˆ)−1 , (Rˆ epeˆ)∗ = (Repe)−1 . (55)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0796:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Proof: We write 〈yˆ, x〉 = 〈yˆ|x〉 = Rˆepeˆ (yˆ)Repe(x) = 〈yˆ, (Rˆ ep)e∗ˆ ◦ Repe(x)〉 and",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0797:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "deduce (Rˆ ep)e∗ˆ ◦ Repe = idV that prove the second equation since all the maps",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0798:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Rep are invertible as isomorphisms",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0799:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The matrix representation of diﬀerent classes of tensors is in general a com-",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0800:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "plicated procedure which is replaced often by the tensor calculus using indices.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0801:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "However there are some conjectures when we need to represent tensors as matri-",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0802:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ces. Let us start with the set ofvector spaces Vi (i = 1, 2, ...N), with dimVi = ni,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0803:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "and the bases e(i) ⊂ Vi denoting with Repe(i) : Vi → Kni the representations",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0804:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "corresponding to these bases.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0805:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Deﬁnition 38 The tensor product of matrix representations is the representa-",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0806:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "tion",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0807:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Repe(1) ⊗e(2) ...⊗e(N) = Repe(1) ⊗ Repe(2) .... ⊗ Repe(N) (56)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0808:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "corresponding to the bases e(1) , e(2) , ...e(N) .",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0809:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "This representation is the isomorphism",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0810:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Repe(1) ⊗e(2) ...⊗e(N) : V1 ⊗ V2 ... ⊗ VN → Kn1 ⊗ Kn2 ... ⊗ KnN (57)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0811:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "which maps each basis vectors e(1)i1 ⊗ e(2)i2 ... ⊗ e(N)iN ∈ V1 ⊗ V2 ... ⊗ VN into",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0812:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "n1 n2",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0812:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "nN",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0813:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the ket vectors of the tensor product basis in K ⊗ K ... ⊗ K",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0813:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "as",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0814:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Repe(1) ⊗e(2) ...⊗e(N) (e(1)i1 ⊗ e(2)i2 ... ⊗ e(N)iN )",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0814:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(58)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0815:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "= Repe(1) (e(1)i1 ) ⊗ Repe(2) (e(2)i2 ).... ⊗ Repe(N) (e(N)iN ) (59)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0816:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "= |i1〉 ⊗ |i2〉... ⊗ |iN〉 .",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0816:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(60)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0817:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The ket vectors of the tensor product basis are denoted often by |i1 , i2...iN〉 =",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0818:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "|i1〉 ⊗ |i2〉... ⊗ |iN〉. Obviously similar formulas hold for the dual spaces too.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0819:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "This formalism can be used for representing the tensors of a given pair of",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0820:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "∗ k",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0821:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "vector spaces (V, V ) with dimV = n. Thus the tensors of the space T (V)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0822:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "k",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0822:S1",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "n",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0822:S2",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "n",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0822:S3",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "n",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0822:S4",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "n ⊗k",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0823:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "can be represented in spaces T (K ) = K ⊗ K ... = (K ) while the dual",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0824:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "tensors of the space Tk (V) are represented in tensor products of dual spaces,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0825:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Tk((Kn)) = (Kn)∗ ⊗ (Kn)∗ ... = [(Kn)∗]⊗k. Both these spaces can be seen as",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0826:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "genuine arithmetic spaces whose bases may be constructed using the Kronecker",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0827:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "product of matrices.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L0828:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "21",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1688:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The linear operators f ∈ End(V, η) are represented by their matrices in η-",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1689:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "n",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1690:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "orthonormal bases, |f| = Rep(e,e) (f) ∈ End(R ) (n = dim(V)), whose matrix",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1691:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "elements are given by Eq. (70). Then we can write",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1692:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "η(x, f(y)) = 〈x|Rep(e,e) (f)|y〉 = 〈x|f|y〉 = 〈x|ηf|y〉 . (148)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1693:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Moreover, we recover the spectral representation in a pair of η-orthonormal",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1694:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "bases as in the case of the complex vector spaces.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1695:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "The orthogonal properties of the representation matrices are determined by",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1696:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "the metric η that deﬁnes the Dirac conjugation.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1697:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Theorem 25 The matrices in η-orthonormal bases of two Dirac conjugated",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1698:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "operators, f and f, are related as",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1699:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Rep(e,e) (f) = |η| Rep(e,e) (f)T |η| . (149)",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1700:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "This property enables us to denote Rep(e,e) (f) = Rep(e,e) (f) = |f| such that",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1701:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "|f| = |η| |f|T |η|. In this representation, the matrices of the Dirac selfadjoint",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1702:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "T",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1703:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "operators satisfy |f| = |η| |f| |η| while for the pseudo-orthogonal operators we",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1704:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "have |f|−1 = |η| |f|T |η|.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1705:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Theorem 26 If (V, η) is a pseudo-Euclidean space and η has the signature",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1706:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(n+, n−) thenAut(V, h) is isomorphic to thepseudo-orthogonal group O(n+ , n−) ⊂",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1707:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Aut(V) ∼= GL(n,R).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1708:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Proof: This is a particular case oftheorem (21) restricted to pseudo-orthogonal",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1709:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "automorphisms The pseudo-orthogonal automorphisms preserve the metric",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1710:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "and transform any η-orthonormal basis into another basis of the same type.",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1711:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "References",
+      "label": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1712:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[1] C. T. J. Dodson and T. Poston, Tensor Geometry (Springer-Verlag, Berlin,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1713:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Heidelberg, New York, 1990).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1714:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[2] J. Heﬀerson, Linear Algebra ( Saint Michael’s College, 2006).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1715:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[3] R. A. Shapirov, Course ofLinear Algebra and Multidimensional Geometry",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1716:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Bashkir State University, 1996).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1717:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[4] P. R. Halmos, Finite-Dimensional Vector Spaces (Springer-Verlag, NY,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1718:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1987).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1719:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[5] J.J. Rotman, Advanced Modern Algebra (Pretice Hall, 2002).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1720:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[6] E. H. Connel, Elements of Abstract and Linear Algebra (Univ. of Miami,",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1721:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2002).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1722:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "[7] W.-K. Tung, Group Theory in Physics (World Sci., Philadelphia, Singa-",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1723:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "pore, 1985).",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    },
+    {
+      "sourceAlias": "L1724:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "44",
+      "label": "OTHER",
+      "goldStatus": "LABELED"
+    }
+  ]
+}
