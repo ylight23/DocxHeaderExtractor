@@ -346,16 +346,31 @@ switch (args[0])
         // Applies user review decisions to Gold drafts as a new, append-only version. Accepted lines:
         //   <id> <alias> -> E|R|O because <reason>
         //   <id> <alias> EXCLUDE <STATUS> because <reason>      (row kept, never scored; label null)
-        //   APPROVE <id> by <reviewer> [because <note>]         (only explicit user approvals)
-        // Every change records the previous label, the new label, the reason and the decision source.
+        //   APPROVE <id> by <reviewer> [because <note>]         (explicit document approvals only)
+        //   APPROVAL_CONTEXT reviewerType=AI_REVIEWER authority=USER_DELEGATED evidence=<path> because <delegation>
+        //       sets who approves for the APPROVE lines after it. Without it an approval is the user's own (USER / USER).
+        //       The user delegated Gold approval to an AI reviewer (Issue #6, 2026-10-10); such an approval is recorded
+        //       as AI_REVIEWER / USER_DELEGATED and is never presented as a human sign-off.
+        // Every change records the previous label, the new label, the reason and the decision source. An approval binds to
+        // the labels as they stand (labelsSha256); a later edit to that document revokes its approval and keeps it in history.
         if (args.Length != 6) throw new ArgumentException("review-apply <drafts-in-dir> <decisions.txt> <decision-source> <new-drafts-out-dir> <new-ledger.json>");
         Need(!Directory.Exists(args[4]) && !File.Exists(args[5]), "OUTPUT_EXISTS");
         var lines = File.ReadAllLines(args[2]).Select(l => l.Trim().TrimStart('﻿')).Where(l => l.Length > 0 && !l.StartsWith('#')).ToArray();
         var decisionsBytes = File.ReadAllBytes(args[2]);
-        var drafts = Directory.GetFiles(args[1], "*.gold-draft.json").ToDictionary(f => Path.GetFileName(f).Split('.')[0], f => JsonNode.Parse(File.ReadAllBytes(f))!.AsObject());
-        var ledger = new List<object>(); var approvals = new List<object>();
+        var draftFiles = Directory.GetFiles(args[1], "*.gold-draft.json").ToDictionary(f => Path.GetFileName(f).Split('.')[0]);
+        var drafts = draftFiles.ToDictionary(p => p.Key, p => JsonNode.Parse(File.ReadAllBytes(p.Value))!.AsObject());
+        var ledger = new List<object>(); var approvals = new List<object>(); var revoked = new List<object>();
+        (string Type, string Authority, string? Evidence, string? EvidenceSha, string? Delegation) context = ("USER", "USER", null, null, null);
         foreach (var line in lines)
         {
+            var mCtx = Regex.Match(line, @"^APPROVAL_CONTEXT\s+reviewerType=(USER|AI_REVIEWER)\s+authority=(USER|USER_DELEGATED)\s+evidence=(\S+)\s+because\s+(.+)$");
+            if (mCtx.Success)
+            {
+                Need(mCtx.Groups[1].Value == "USER" == (mCtx.Groups[2].Value == "USER"), "APPROVAL_CONTEXT_INCONSISTENT");
+                Need(File.Exists(mCtx.Groups[3].Value), "APPROVAL_EVIDENCE_MISSING:" + mCtx.Groups[3].Value);
+                context = (mCtx.Groups[1].Value, mCtx.Groups[2].Value, mCtx.Groups[3].Value, Hex(SHA256.HashData(File.ReadAllBytes(mCtx.Groups[3].Value))), mCtx.Groups[4].Value.Trim());
+                continue;
+            }
             var mEdit = Regex.Match(line, @"^(\d{3})\s+(L\d{4}:S\d+)\s*->\s*([ERO])\s+because\s+(.+)$");
             var mEx = Regex.Match(line, @"^(\d{3})\s+(L\d{4}:S\d+)\s+EXCLUDE\s+([A-Z_]+)\s+because\s+(.+)$");
             var mAp = Regex.Match(line, @"^APPROVE\s+(\d{3})\s+by\s+(\S.*?)(?:\s+because\s+(.+))?$");
@@ -373,11 +388,27 @@ switch (args[0])
             if (mAp.Success)
             {
                 var docId = mAp.Groups[1].Value; Need(drafts.ContainsKey(docId), "UNKNOWN_DOCUMENT:" + docId);
-                drafts[docId]["documentApproval"] = new JsonObject { ["approved"] = true, ["by"] = mAp.Groups[2].Value, ["note"] = mAp.Groups[3].Value, ["source"] = args[3] };
-                approvals.Add(new { id = docId, by = mAp.Groups[2].Value, source = args[3] }); continue;
+                Need(drafts[docId]["labels"]!.AsArray().All(l => l!["reviewFlag"]?.GetValue<string>() != "DECISION_NEEDED"), "APPROVE_WITH_OPEN_DECISION:" + docId);
+                drafts[docId]["documentApproval"] = new JsonObject
+                {
+                    ["approved"] = true, ["by"] = mAp.Groups[2].Value, ["reviewerType"] = context.Type, ["authority"] = context.Authority,
+                    ["delegation"] = context.Delegation,
+                    ["evidence"] = context.Evidence is null ? null : new JsonObject { ["path"] = context.Evidence, ["sha256"] = context.EvidenceSha },
+                    ["inputDraftSha256"] = Hex(SHA256.HashData(File.ReadAllBytes(draftFiles[docId]))), ["labelsSha256"] = LabelsSha(drafts[docId]),
+                    ["note"] = mAp.Groups[3].Value, ["source"] = args[3],
+                };
+                approvals.Add(new { id = docId, by = mAp.Groups[2].Value, reviewerType = context.Type, authority = context.Authority, labelsSha256 = LabelsSha(drafts[docId]), source = args[3] });
+                continue;
             }
             var m = mEdit.Success ? mEdit : mEx.Success ? mEx : throw new InvalidOperationException("DECISION_LINE_INVALID:" + line);
             var id = m.Groups[1].Value; var alias = m.Groups[2].Value; Need(drafts.ContainsKey(id), "UNKNOWN_DOCUMENT:" + id);
+            if (drafts[id]["documentApproval"]?["approved"]?.GetValue<bool>() == true)
+            {   // A change after approval revokes that document's approval only; the old approval stays in history.
+                var past = drafts[id]["revokedApprovals"]?.AsArray() ?? new JsonArray(); drafts[id]["revokedApprovals"] = past;
+                var previous = drafts[id]["documentApproval"]!.DeepClone().AsObject(); previous["revokedBy"] = $"{alias} edit ({args[3]})";
+                past.Add(previous); drafts[id].Remove("documentApproval");
+                revoked.Add(new { id, alias, source = args[3] });
+            }
             var row = drafts[id]["labels"]!.AsArray().Select(n => n!.AsObject()).SingleOrDefault(n => n["sourceAlias"]!.GetValue<string>() == alias)
                 ?? throw new InvalidOperationException($"ALIAS_NOT_IN_DRAFT:{id}:{alias}");
             var old = row["draftLabel"]?.GetValue<string>();
@@ -400,7 +431,9 @@ switch (args[0])
         Directory.CreateDirectory(args[4]);
         foreach (var (id, d) in drafts.OrderBy(p => p.Key))
         {
-            d["version"] = "P7_F1Q_HELDOUT_GOLD_DRAFT_" + Path.GetFileName(Path.GetFullPath(args[4]).TrimEnd(Path.DirectorySeparatorChar)).Split('.').Last().ToUpperInvariant(); d["status"] = "DRAFT_USER_REVIEWED_NOT_APPROVED";
+            d["version"] = "P7_F1Q_HELDOUT_GOLD_DRAFT_" + Path.GetFileName(Path.GetFullPath(args[4]).TrimEnd(Path.DirectorySeparatorChar)).Split('.').Last().ToUpperInvariant();
+            d["status"] = d["documentApproval"]?["approved"]?.GetValue<bool>() != true ? "DRAFT_USER_REVIEWED_NOT_APPROVED"
+                : d["documentApproval"]!["reviewerType"]?.GetValue<string>() == "AI_REVIEWER" ? "APPROVED_AI_REVIEWER_USER_DELEGATED" : "APPROVED_BY_USER";
             var labels = d["labels"]!.AsArray().Select(n => n!.AsObject()).ToArray();
             foreach (var l in labels) l["goldStatus"] ??= "LABELED";
             d["counts"] = new JsonObject(labels.GroupBy(l => l["draftLabel"]?.GetValue<string>() ?? "EXCLUDED").Select(g => KeyValuePair.Create(g.Key, (JsonNode?)g.Count())));
@@ -410,18 +443,21 @@ switch (args[0])
         {
             version = "P7_F1Q_HELDOUT_GOLD_DECISION_LEDGER_V1", source = args[3], decisionsFileSha256 = Hex(SHA256.HashData(decisionsBytes)),
             inputDrafts = Path.GetFileName(Path.GetFullPath(args[1]).TrimEnd(Path.DirectorySeparatorChar)), outputDrafts = Path.GetFileName(Path.GetFullPath(args[4]).TrimEnd(Path.DirectorySeparatorChar)),
-            decisions = ledger, documentApprovals = approvals, goldApprovedDocuments = approvals.Count, providerCalls = 0,
+            decisions = ledger, documentApprovals = approvals, revokedApprovals = revoked,
+            goldApprovedDocuments = drafts.Values.Count(d => d["documentApproval"]?["approved"]?.GetValue<bool>() == true), providerCalls = 0,
             totalsAfter = drafts.Values.SelectMany(d => d["labels"]!.AsArray()).GroupBy(l => l!["goldStatus"]?.GetValue<string>() is { } s && s.StartsWith("EXCLUDED_") ? s : l!["draftLabel"]?.GetValue<string>() ?? "NULL")
                 .OrderBy(g => g.Key).ToDictionary(g => g.Key, g => g.Count()),
             occurrencesAfter = drafts.Values.Sum(d => d["labels"]!.AsArray().Count),
         }, json));
-        Console.WriteLine(JsonSerializer.Serialize(new { applied = ledger.Count, approvals = approvals.Count }));
+        Console.WriteLine(JsonSerializer.Serialize(new { applied = ledger.Count, approvals = approvals.Count, revoked = revoked.Count }));
         break;
     }
     case "freeze-gold":
     {
-        // Issue #6: Gold is frozen only when EVERY planned document carries an explicit user approval. Writes the
-        // approved Gold files and the USER_APPROVED_GOLD_FROZEN manifest consumed by execute-heldout and the scorer.
+        // Issue #6: Gold is frozen only when EVERY planned document carries an explicit approval whose labels hash still
+        // matches. The manifest status names who approved: USER_APPROVED_GOLD_FROZEN when every approval is the user's,
+        // GOLD_FROZEN_AI_REVIEWED_USER_DELEGATED when any came from the AI reviewer the user delegated to (never shown as
+        // human-reviewed Gold). execute-heldout and the scorer accept exactly these two statuses.
         if (args.Length != 4) throw new ArgumentException("freeze-gold <drafts-dir> <page-selection.json> <new-gold-dir>");
         Need(!Directory.Exists(args[3]), "OUTPUT_EXISTS");
         using var sel = JsonDocument.Parse(File.ReadAllBytes(args[2]));
@@ -429,6 +465,10 @@ switch (args[0])
         var drafts = ids.ToDictionary(id => id, id => JsonNode.Parse(File.ReadAllBytes(Path.Combine(args[1], id + ".gold-draft.json")))!.AsObject());
         var missing = ids.Where(id => drafts[id]["documentApproval"]?["approved"]?.GetValue<bool>() != true).ToArray();
         Need(missing.Length == 0, "GOLD_NOT_APPROVED_FOR:" + string.Join(",", missing));
+        var stale = ids.Where(id => drafts[id]["documentApproval"]!["labelsSha256"]?.GetValue<string>() != LabelsSha(drafts[id])).ToArray();
+        Need(stale.Length == 0, "GOLD_APPROVAL_DOES_NOT_MATCH_LABELS:" + string.Join(",", stale));
+        string Kind(string id) => drafts[id]["documentApproval"]!["reviewerType"]?.GetValue<string>() == "AI_REVIEWER" ? "AI_REVIEWER_USER_DELEGATED" : "USER";
+        var freezeStatus = ids.Any(id => Kind(id) != "USER") ? "GOLD_FROZEN_AI_REVIEWED_USER_DELEGATED" : "USER_APPROVED_GOLD_FROZEN";
         Directory.CreateDirectory(args[3]);
         var docs = new List<object>();
         foreach (var id in ids)
@@ -440,14 +480,16 @@ switch (args[0])
                 text = l["text"]!.GetValue<string>(), label = l["draftLabel"]?.GetValue<string>(), goldStatus = l["goldStatus"]?.GetValue<string>() ?? "LABELED",
             }).ToArray();
             Need(labels.All(l => l.goldStatus.StartsWith("EXCLUDED_") ? l.label is null : l.label is "ESTABLISHES_STRUCTURE" or "REPRESENTS_STRUCTURE" or "OTHER"), "GOLD_LABEL_INVALID:" + id);
-            var bytes = JsonSerializer.SerializeToUtf8Bytes(new { version = "P7_F1Q_HELDOUT_GOLD_V1", status = "USER_APPROVED", id, sourceSha256 = d["sourceSha256"]!.GetValue<string>(),
-                approval = d["documentApproval"], labels }, json);
+            var bytes = JsonSerializer.SerializeToUtf8Bytes(new { version = "P7_F1Q_HELDOUT_GOLD_V1", status = Kind(id) == "USER" ? "USER_APPROVED" : "AI_REVIEWER_APPROVED_USER_DELEGATED",
+                id, sourceSha256 = d["sourceSha256"]!.GetValue<string>(), approval = d["documentApproval"], labels }, json);
             File.WriteAllBytes(Path.Combine(args[3], id + ".gold.json"), bytes);
-            docs.Add(new { id, goldFile = id + ".gold.json", goldSha256 = Hex(SHA256.HashData(bytes)), occurrences = labels.Length });
+            docs.Add(new { id, goldFile = id + ".gold.json", goldSha256 = Hex(SHA256.HashData(bytes)), occurrences = labels.Length, approvalKind = Kind(id),
+                approvedBy = d["documentApproval"]!["by"]!.GetValue<string>() });
         }
-        var manifestBytes = JsonSerializer.SerializeToUtf8Bytes(new { version = "P7_F1Q_HELDOUT_GOLD_FREEZE_V1", status = "USER_APPROVED_GOLD_FROZEN", documents = docs }, json);
+        var manifestBytes = JsonSerializer.SerializeToUtf8Bytes(new { version = "P7_F1Q_HELDOUT_GOLD_FREEZE_V1", status = freezeStatus,
+            approvalKinds = ids.GroupBy(Kind).OrderBy(g => g.Key).ToDictionary(g => g.Key, g => g.Count()), documents = docs }, json);
         File.WriteAllBytes(Path.Combine(args[3], "gold-freeze.json"), manifestBytes);
-        Console.WriteLine(JsonSerializer.Serialize(new { status = "USER_APPROVED_GOLD_FROZEN", sha256 = Hex(SHA256.HashData(manifestBytes)), documents = docs.Count }));
+        Console.WriteLine(JsonSerializer.Serialize(new { status = freezeStatus, sha256 = Hex(SHA256.HashData(manifestBytes)), documents = docs.Count }));
         break;
     }
     case "atoms":
@@ -508,5 +550,8 @@ static HashSet<string> Shingles(string text)
 static double Jaccard(HashSet<string> a, HashSet<string> b) => a.Count + b.Count == 0 ? 0 : (double)a.Intersect(b).Count() / a.Union(b).Count();
 static string Hex(byte[] b) => Convert.ToHexStringLower(b);
 static void Need(bool ok, string code) { if (!ok) throw new InvalidOperationException(code); }
+// What an approval binds to: every occurrence's alias, label and Gold status, in draft order.
+static string LabelsSha(JsonObject draft) => Hex(SHA256.HashData(Encoding.UTF8.GetBytes(string.Join("\n", draft["labels"]!.AsArray().Select(l =>
+    $"{l!["sourceAlias"]!.GetValue<string>()}|{l["draftLabel"]?.GetValue<string>() ?? "NULL"}|{l["goldStatus"]?.GetValue<string>() ?? "LABELED"}")))));
 
 internal static partial class Program { internal const double NearDuplicateJaccard = 0.5; }

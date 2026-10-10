@@ -372,6 +372,42 @@ public sealed class P7F1QHeldoutTests : IDisposable
         Assert.Contains("most rows on this page are bold, so bold is ignored", File.ReadAllText(Path.Combine(vr, "024.md")));
     }
 
+    [Fact] public void Gold_drafts_v7_record_four_ai_reviewer_approvals_under_user_delegation_bound_to_v6_labels()
+    {
+        var v6 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v6"); var v7 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v7");
+        string Sha(byte[] b) => Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(b));
+        string LabelsSha(JsonElement d) => Sha(Encoding.UTF8.GetBytes(string.Join("\n", d.GetProperty("labels").EnumerateArray().Select(l =>
+            $"{l.GetProperty("sourceAlias").GetString()}|{(l.GetProperty("draftLabel").ValueKind == JsonValueKind.Null ? "NULL" : l.GetProperty("draftLabel").GetString())}|{l.GetProperty("goldStatus").GetString()}"))));
+        string[] batch = ["032", "044", "049", "087"];
+        var approved = new List<string>();
+        foreach (var file in Directory.GetFiles(v7, "*.gold-draft.json"))
+        {
+            using var d = JsonDocument.Parse(File.ReadAllBytes(file)); var r = d.RootElement; var id = r.GetProperty("id").GetString()!;
+            var before = File.ReadAllBytes(Path.Combine(v6, id + ".gold-draft.json"));
+            using var b = JsonDocument.Parse(before);
+            Assert.Equal(b.RootElement.GetProperty("labels").GetRawText(), r.GetProperty("labels").GetRawText());
+            if (!r.TryGetProperty("documentApproval", out var a)) { Assert.Equal("DRAFT_USER_REVIEWED_NOT_APPROVED", r.GetProperty("status").GetString()); continue; }
+            approved.Add(id);
+            Assert.Equal("APPROVED_AI_REVIEWER_USER_DELEGATED", r.GetProperty("status").GetString());
+            Assert.True(a.GetProperty("approved").GetBoolean());
+            Assert.Equal("GPT-6", a.GetProperty("by").GetString());
+            Assert.Equal("AI_REVIEWER", a.GetProperty("reviewerType").GetString());
+            Assert.Equal("USER_DELEGATED", a.GetProperty("authority").GetString());
+            Assert.Equal(Sha(before), a.GetProperty("inputDraftSha256").GetString());
+            Assert.Equal(LabelsSha(r), a.GetProperty("labelsSha256").GetString());
+            var evidence = a.GetProperty("evidence");
+            Assert.Equal(Sha(File.ReadAllBytes(TestRepository.Path(evidence.GetProperty("path").GetString()!))), evidence.GetProperty("sha256").GetString());
+            Assert.False(string.IsNullOrWhiteSpace(a.GetProperty("note").GetString()));
+        }
+        Assert.Equal(batch, approved.Order().ToArray());
+        using var ledger = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.gold-decisions", "ledger-2026-10-10e-gpt6-approvals-batch1.json")));
+        Assert.Equal(4, ledger.RootElement.GetProperty("goldApprovedDocuments").GetInt32());
+        Assert.Equal(0, ledger.RootElement.GetProperty("decisions").GetArrayLength());
+        Assert.Equal(0, ledger.RootElement.GetProperty("revokedApprovals").GetArrayLength());
+        Assert.Equal(0, ledger.RootElement.GetProperty("providerCalls").GetInt32());
+        Assert.Equal(246, ledger.RootElement.GetProperty("totalsAfter").GetProperty("ESTABLISHES_STRUCTURE").GetInt32());
+    }
+
     [Fact] public void Gold_drafts_v6_change_exactly_the_three_032_cover_rows_and_record_no_approval()
     {
         var v5 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v5"); var v6 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v6");

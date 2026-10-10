@@ -22,7 +22,8 @@ internal static class F1QHeldoutScorer
         var goldFreezeBytes = File.ReadAllBytes(goldFreezePath);
         Need(SpatialCanonical.Hash(goldFreezeBytes) == goldFreezeSha, "GOLD_FREEZE_DRIFT");
         using var goldFreeze = JsonDocument.Parse(goldFreezeBytes);
-        Need(goldFreeze.RootElement.GetProperty("status").GetString() == "USER_APPROVED_GOLD_FROZEN", "GOLD_NOT_APPROVED");
+        var goldApproval = goldFreeze.RootElement.GetProperty("status").GetString();
+        Need(goldApproval is "USER_APPROVED_GOLD_FROZEN" or "GOLD_FROZEN_AI_REVIEWED_USER_DELEGATED", "GOLD_NOT_APPROVED");
         using var plan = JsonDocument.Parse(File.ReadAllBytes(planPath));
         using var selection = JsonDocument.Parse(File.ReadAllBytes(selectionPath));
         using var audit = JsonDocument.Parse(File.ReadAllBytes(auditPath));
@@ -130,7 +131,9 @@ internal static class F1QHeldoutScorer
         return SpatialCanonical.Bytes(new
         {
             version = "P7_F1Q_HELDOUT_SCORE_V1", mode = "PER_OCCURRENCE_F1_ON_SAMPLED_PAGES_NOT_FULL_DOCUMENT_RECALL",
-            rawManifestSha256 = manifestSha, goldFreezeSha256 = goldFreezeSha, planSha256 = SpatialCanonical.Hash(File.ReadAllBytes(planPath)),
+            rawManifestSha256 = manifestSha, goldFreezeSha256 = goldFreezeSha,
+            goldApproval = goldApproval == "USER_APPROVED_GOLD_FROZEN" ? "USER_APPROVED" : "AI_REVIEWED_UNDER_USER_DELEGATION_NOT_INDEPENDENT_HUMAN_REVIEW",
+            planSha256 = SpatialCanonical.Hash(File.ReadAllBytes(planPath)),
             requests = new { total = requests, acceptedFirstAttemptNormalized = acceptedFirst, acceptedFinalNormalized = acceptedFinal,
                 acceptedFirstAttemptStrictRaw = rawFirst, acceptedFinalStrictRaw = rawFinal, acceptedViaFenceNormalization = normalizedUsed,
                 failureCodesAllAttempts = failures, reportedCostUsd = cost },

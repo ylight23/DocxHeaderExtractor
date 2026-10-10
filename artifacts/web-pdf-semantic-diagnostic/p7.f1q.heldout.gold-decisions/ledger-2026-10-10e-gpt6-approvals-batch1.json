@@ -1,0 +1,52 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_DECISION_LEDGER_V1",
+  "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10E_ISSUE_6",
+  "decisionsFileSha256": "cedce75a0f7ebf9a692d218f025bc4644b9fc1f6764aef682ba05421788a4924",
+  "inputDrafts": "p7.f1q.heldout.gold-drafts.v6",
+  "outputDrafts": "p7.f1q.heldout.gold-drafts.v7",
+  "decisions": [],
+  "documentApprovals": [
+    {
+      "id": "044",
+      "by": "GPT-6",
+      "reviewerType": "AI_REVIEWER",
+      "authority": "USER_DELEGATED",
+      "labelsSha256": "f752fdad1cfc0f4d982f46b8ae643d16aa4324ba875bd1255c4a174c0eea4d89",
+      "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10E_ISSUE_6"
+    },
+    {
+      "id": "049",
+      "by": "GPT-6",
+      "reviewerType": "AI_REVIEWER",
+      "authority": "USER_DELEGATED",
+      "labelsSha256": "5b32aeca78c5c6f80d035e4b101777d024891905e3b790769dd91ce7a148fa4d",
+      "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10E_ISSUE_6"
+    },
+    {
+      "id": "087",
+      "by": "GPT-6",
+      "reviewerType": "AI_REVIEWER",
+      "authority": "USER_DELEGATED",
+      "labelsSha256": "442c730139c46b5db2efcc702c2b74adbbe646f4217bc31764044609f488ce3a",
+      "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10E_ISSUE_6"
+    },
+    {
+      "id": "032",
+      "by": "GPT-6",
+      "reviewerType": "AI_REVIEWER",
+      "authority": "USER_DELEGATED",
+      "labelsSha256": "5c938f07788a03df43a6e4807ad8a7a0fcd7ecf37eaaaa23f587ae3f553f4b80",
+      "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10E_ISSUE_6"
+    }
+  ],
+  "revokedApprovals": [],
+  "goldApprovedDocuments": 4,
+  "providerCalls": 0,
+  "totalsAfter": {
+    "ESTABLISHES_STRUCTURE": 246,
+    "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION": 2,
+    "OTHER": 2712,
+    "REPRESENTS_STRUCTURE": 191
+  },
+  "occurrencesAfter": 3151
+}

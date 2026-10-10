@@ -1,0 +1,12 @@
+# First batch of Gold document approvals (Issue #6, 2026-10-10): 044, 049, 087, 032.
+# Authority: the user delegated Gold approval to the AI reviewer GPT-6, in the user's own words ("ỦY QUYỀN ai duyệt gold",
+# then "tiếp tục ghi phê duyệt AI cho phép toàn bộ, không hỏi lại"). These are AI-reviewer approvals under user delegation,
+# not independent human sign-offs, and must never be presented as such.
+# Evidence: the 16 bbox page images and all-occurrence tables of p7.f1q.heldout.visual-review.v2 (V5 labels; the user
+# uploaded the ZIP, hashes verified), 882 rows reviewed (044: 292, 049: 341, 087: 134, 032: 115). Input drafts: V6, which
+# already contain the three 032 cover edits GPT-6 made a condition of approving 032. Scope: the selected pages only.
+APPROVAL_CONTEXT reviewerType=AI_REVIEWER authority=USER_DELEGATED evidence=artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.visual-review.v2/render-manifest.json because user delegated Gold approval to the AI reviewer GPT-6 (Issue #6, 2026-10-10)
+APPROVE 044 by GPT-6 because all 292 occurrences on four selected pages reviewed against the annotated images and font table; headings, TOC list headings vs figure/table references, table captions, financial data labels and running furniture keep their V5 functions
+APPROVE 049 by GPT-6 because all 341 occurrences on four selected pages reviewed against the annotated images and table; cover issuer/date/audit metadata OTHER, operative report title ESTABLISHES, table labels and captions OTHER
+APPROVE 087 by GPT-6 because all 134 occurrences on four selected pages reviewed against the images and table; legal headings and form sections distinguished from metadata, reference lines and the parenthetical continuation; L1216:S0 excluded as a corrupted mixed atom, its heading "1. General information" recorded as SOURCE_COVERAGE_LOSS
+APPROVE 032 by GPT-6 because after the three V6 cover edits (L0006-L0008 E -> O), all 115 occurrences on four selected pages reviewed against the images and table; document title/subtitle E vs red applicability notice O, TOC label E and entries R, sidebar clause headings E, numbered body clauses O

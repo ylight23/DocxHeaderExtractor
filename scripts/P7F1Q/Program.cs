@@ -310,9 +310,10 @@ switch (args[0])
         if (args.Length < 7) throw new ArgumentException("execute-heldout <plan.json> <plan-sha256> <bodies-dir> <gold-freeze.json> <gold-freeze-sha256> <capture-root> [handle,...]");
         var planBytes = ReadPinned(args[1], args[2]); using var plan = JsonDocument.Parse(planBytes);
         foreach (var src in plan.RootElement.GetProperty("sources").EnumerateArray()) ReadPinned(S(src, "path"), S(src, "sha256"));
-        // Gold gate (Issue #6 Decision 2): user-approved, frozen Gold for every planned document, before any call.
+        // Gold gate (Issue #6 Decision 2): approved, frozen Gold for every planned document, before any call. Approved means
+        // by the user, or by the AI reviewer the user delegated Gold approval to (2026-10-10); freeze-gold names which.
         using var gold = JsonDocument.Parse(ReadPinned(args[4], args[5]));
-        Need(S(gold.RootElement, "status") == "USER_APPROVED_GOLD_FROZEN", "GOLD_NOT_APPROVED_AND_FROZEN");
+        Need(S(gold.RootElement, "status") is "USER_APPROVED_GOLD_FROZEN" or "GOLD_FROZEN_AI_REVIEWED_USER_DELEGATED", "GOLD_NOT_APPROVED_AND_FROZEN");
         var goldDocs = gold.RootElement.GetProperty("documents").EnumerateArray().Select(d => S(d, "id")).ToHashSet();
         Need(plan.RootElement.GetProperty("cases").EnumerateArray().All(c => goldDocs.Contains(S(c, "document"))), "GOLD_FREEZE_DOES_NOT_COVER_EVERY_DOCUMENT");
         var cases = HeldoutCases(File.ReadAllBytes("artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.page-selection.v1.json")).ToDictionary(c => c.Case);
