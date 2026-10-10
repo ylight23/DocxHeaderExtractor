@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1823:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Repeated section title appearing identically across pages 44–52; functions as a running header.",
+      "evidenceRefs": [
+        "L1823:S0"
+      ],
+      "interpretation": "Identical text repeated on eight consecutive pages indicates page furniture (running header) rather than a unique structural heading at this location.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1824:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body paragraph discussing collateral requirements and credit ratings.",
+      "evidenceRefs": [
+        "L1824:S0"
+      ],
+      "interpretation": "Plain text with normal typography and sentence structure serves as narrative body content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1825:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose referencing contractual values and risk exposure.",
+      "evidenceRefs": [
+        "L1825:S0"
+      ],
+      "interpretation": "Fragmentary sentence continuing prior body text; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1826:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose directing readers to financial statement notes.",
+      "evidenceRefs": [
+        "L1826:S0"
+      ],
+      "interpretation": "Standard narrative instruction within a paragraph; does not introduce a content region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1827:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing parenthetical reference to a financial note.",
+      "evidenceRefs": [
+        "L1827:S0"
+      ],
+      "interpretation": "Fragment completing a citation; purely referential body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1828:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold, standalone phrase introducing the investment securities discussion.",
+      "evidenceRefs": [
+        "L1828:S0"
+      ],
+      "interpretation": "Typography (boldRatio=1, size 10) and isolated placement signal a substantive section heading governing the following body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1829:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining board-approved investment authorization.",
+      "evidenceRefs": [
+        "L1829:S0"
+      ],
+      "interpretation": "Narrative sentence elaborating on governance authority; functions as standard paragraph content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1830:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing compliance with investment guidelines.",
+      "evidenceRefs": [
+        "L1830:S0"
+      ],
+      "interpretation": "Continuation of explanatory paragraph; no heading characteristics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1831:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing guideline approval and implementation chain.",
+      "evidenceRefs": [
+        "L1831:S0"
+      ],
+      "interpretation": "Standard descriptive prose within the investment guidelines discussion.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1832:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose noting recent guideline update and hybrid model changes.",
+      "evidenceRefs": [
+        "L1832:S0"
+      ],
+      "interpretation": "Narrative detail supporting the preceding guideline description; not a structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1833:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose outlining core components of investment guidelines.",
+      "evidenceRefs": [
+        "L1833:S0"
+      ],
+      "interpretation": "Explanatory sentence fragment continuing the paragraph on guideline mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1834:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing consultative loss limits and tolerance metrics.",
+      "evidenceRefs": [
+        "L1834:S0"
+      ],
+      "interpretation": "Standard paragraph content detailing risk parameters; lacks heading formatting or isolation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1835:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose highlighting responsibility lines for risk monitoring.",
+      "evidenceRefs": [
+        "L1835:S0"
+      ],
+      "interpretation": "Continuing narrative on governance and compliance; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1836:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose conveying credit risk appetite via eligibility criteria.",
+      "evidenceRefs": [
+        "L1836:S0"
+      ],
+      "interpretation": "Descriptive sentence linking policy to tabular data; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1837:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing performance monitoring procedures against limits.",
+      "evidenceRefs": [
+        "L1837:S0"
+      ],
+      "interpretation": "Operational detail within the risk management narrative; plain text formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1838:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose noting limit-reach actions and additional investment conditions.",
+      "evidenceRefs": [
+        "L1838:S0"
+      ],
+      "interpretation": "Standard paragraph continuation; no structural heading role.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1839:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying market and counterparty risk department conditions.",
+      "evidenceRefs": [
+        "L1839:S0"
+      ],
+      "interpretation": "Concluding sentence of the investment guidelines paragraph; plain text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1840:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table caption/title introducing eligibility criteria data.",
+      "evidenceRefs": [
+        "L1840:S0"
+      ],
+      "interpretation": "Local table label providing a descriptive title for the adjacent data grid; excluded from document-level headings per instructions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1841:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header with footnote marker.",
+      "evidenceRefs": [
+        "L1841:S0"
+      ],
+      "interpretation": "Data table column label; functions as a local table header, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1841:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header.",
+      "evidenceRefs": [
+        "L1841:S1"
+      ],
+      "interpretation": "Data table column label; local table structure only.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1842:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text defining sovereign investment rules.",
+      "evidenceRefs": [
+        "L1842:S0"
+      ],
+      "interpretation": "Narrative cell content within the eligibility table; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1843:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row category label.",
+      "evidenceRefs": [
+        "L1843:S0"
+      ],
+      "interpretation": "Data table row header identifying an investment category; local table label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1843:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text continuing sovereign rating requirements.",
+      "evidenceRefs": [
+        "L1843:S1"
+      ],
+      "interpretation": "Cell content describing credit rating thresholds; plain table text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1844:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text on currency denomination exceptions.",
+      "evidenceRefs": [
+        "L1844:S0"
+      ],
+      "interpretation": "Supplementary rule within the sovereign category; table body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1845:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text defining agency/instrumentality investments.",
+      "evidenceRefs": [
+        "L1845:S0"
+      ],
+      "interpretation": "Rule description for a new investment category; standard table cell prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1846:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row category label.",
+      "evidenceRefs": [
+        "L1846:S0"
+      ],
+      "interpretation": "Data table row header identifying the agencies category; local table label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1847:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text specifying AA- rating requirement for agencies.",
+      "evidenceRefs": [
+        "L1847:S0"
+      ],
+      "interpretation": "Criterion detail within the agencies row; table body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1848:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row category label.",
+      "evidenceRefs": [
+        "L1848:S0"
+      ],
+      "interpretation": "Data table row header for corporates and asset-backed securities; local table label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1848:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text stating triple-A rating requirement.",
+      "evidenceRefs": [
+        "L1848:S1"
+      ],
+      "interpretation": "Rating criterion for the corporates/asset-backed row; table cell text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1849:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row category label continuation.",
+      "evidenceRefs": [
+        "L1849:S0"
+      ],
+      "interpretation": "Completes the multi-line row header for asset-backed securities; local table label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1850:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text with footnote marker on time deposit rules.",
+      "evidenceRefs": [
+        "L1850:S0"
+      ],
+      "interpretation": "Rule description for time deposits; table body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1851:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row category label.",
+      "evidenceRefs": [
+        "L1851:S0"
+      ],
+      "interpretation": "Data table row header identifying time deposits; local table label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1851:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text specifying A- senior debt rating.",
+      "evidenceRefs": [
+        "L1851:S1"
+      ],
+      "interpretation": "Criterion detail within the time deposits row; table cell text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1852:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text on short-term borrowing eligibility.",
+      "evidenceRefs": [
+        "L1852:S0"
+      ],
+      "interpretation": "Rule description for commercial bank borrowings; table body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1853:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row category label.",
+      "evidenceRefs": [
+        "L1853:S0"
+      ],
+      "interpretation": "Data table row header for commercial paper; local table label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1853:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text requiring Prime-1 ratings.",
+      "evidenceRefs": [
+        "L1853:S1"
+      ],
+      "interpretation": "Rating criterion for commercial paper; table cell text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1854:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row category label.",
+      "evidenceRefs": [
+        "L1854:S0"
+      ],
+      "interpretation": "Data table row header for securities lending/borrowing; local table label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1854:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text describing lending engagement terms.",
+      "evidenceRefs": [
+        "L1854:S1"
+      ],
+      "interpretation": "Rule description for securities lending; table body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1855:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text listing repurchase and resale activities.",
+      "evidenceRefs": [
+        "L1855:S0"
+      ],
+      "interpretation": "Detailed activity enumeration within the lending row; table cell text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1856:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text specifying eligible underlying security categories.",
+      "evidenceRefs": [
+        "L1856:S0"
+      ],
+      "interpretation": "Scope limitation for lending activities; table body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1857:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text on forward transaction types.",
+      "evidenceRefs": [
+        "L1857:S0"
+      ],
+      "interpretation": "Transaction type enumeration; table cell prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1858:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text describing collateralized transactions.",
+      "evidenceRefs": [
+        "L1858:S0"
+      ],
+      "interpretation": "Further transaction detail; table body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1859:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row category label.",
+      "evidenceRefs": [
+        "L1859:S0"
+      ],
+      "interpretation": "Data table row header for collateral assets; local table label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1859:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text on margin protection requirements.",
+      "evidenceRefs": [
+        "L1859:S1"
+      ],
+      "interpretation": "Risk mitigation condition for collateral assets; table cell text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1860:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table body text concluding margin requirement clause.",
+      "evidenceRefs": [
+        "L1860:S0"
+      ],
+      "interpretation": "Sentence fragment completing the collateral rule; table body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1861:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table footnote (a) requiring Market and Counterparty Risk department approval.",
+      "evidenceRefs": [
+        "L1861:S0"
+      ],
+      "interpretation": "Footnote annotation attached to table data; local table metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L1862:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table footnote (a) continuation referencing the approved list.",
+      "evidenceRefs": [
+        "L1862:S0"
+      ],
+      "interpretation": "Footnote continuation; local table metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L1863:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table footnote (b) defining time deposit instruments.",
+      "evidenceRefs": [
+        "L1863:S0"
+      ],
+      "interpretation": "Footnote definition for table terminology; local table metadata.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1790:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing provisioning rates and loan exposure calculations.",
+      "evidenceRefs": [
+        "L1790:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1791:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuing explanation of provisioning rates and underlying exposures.",
+      "evidenceRefs": [
+        "L1791:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1792:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose directing reader to financial statement notes for nonaccrual status details.",
+      "evidenceRefs": [
+        "L1792:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1793:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding cross-reference to specific financial statement note.",
+      "evidenceRefs": [
+        "L1793:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1794:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading introducing the discussion of commercial counterparty credit risk.",
+      "evidenceRefs": [
+        "L1794:S0"
+      ],
+      "interpretation": "Bold typography and left-edge alignment mark a substantive section heading governing the following body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1795:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose defining commercial counterparty credit risk and payment obligations.",
+      "evidenceRefs": [
+        "L1795:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1796:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining the importance of managing counterparty credit risk.",
+      "evidenceRefs": [
+        "L1796:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1797:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose linking risk management to funding and investment success.",
+      "evidenceRefs": [
+        "L1797:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1798:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose stating that risk monitoring is continuous.",
+      "evidenceRefs": [
+        "L1798:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1799:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing mitigation strategies for counterparty credit risk.",
+      "evidenceRefs": [
+        "L1799:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1800:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing collateral agreements and risk limits usage.",
+      "evidenceRefs": [
+        "L1800:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1801:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining the credit approval process and rating assignment.",
+      "evidenceRefs": [
+        "L1801:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1802:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing limit setting and transaction risk profiling.",
+      "evidenceRefs": [
+        "L1802:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1803:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining daily counterparty exposure updates.",
+      "evidenceRefs": [
+        "L1803:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1804:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing potential future exposure and collateral agreements.",
+      "evidenceRefs": [
+        "L1804:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1805:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose outlining collateral posting thresholds and held assets.",
+      "evidenceRefs": [
+        "L1805:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1806:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose mentioning ESG assessments in credit risk management.",
+      "evidenceRefs": [
+        "L1806:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1807:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing approval and monitoring processes for high-exposure counterparts.",
+      "evidenceRefs": [
+        "L1807:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1808:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding the sentence on derivative counterparties.",
+      "evidenceRefs": [
+        "L1808:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1809:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing the composition of IDA's liquid asset portfolio.",
+      "evidenceRefs": [
+        "L1809:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1810:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose listing sovereign bonds, debt instruments, and time deposits.",
+      "evidenceRefs": [
+        "L1810:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1811:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading introducing the discussion of derivative instruments.",
+      "evidenceRefs": [
+        "L1811:S0"
+      ],
+      "interpretation": "Bold typography and left-edge alignment mark a substantive section heading governing the following body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1812:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining IDA's use of derivatives for FX and interest rate risk.",
+      "evidenceRefs": [
+        "L1812:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1813:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose noting derivatives help borrowers manage financial risks.",
+      "evidenceRefs": [
+        "L1813:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1814:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose stating derivative transactions entail commercial counterparty risk.",
+      "evidenceRefs": [
+        "L1814:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1815:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose fragment concluding the risk statement.",
+      "evidenceRefs": [
+        "L1815:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1816:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose contrasting notional value with actual risk measurement.",
+      "evidenceRefs": [
+        "L1816:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1817:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining replacement cost and PFE as risk measures.",
+      "evidenceRefs": [
+        "L1817:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1818:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose fragment concluding the PFE measurement explanation.",
+      "evidenceRefs": [
+        "L1818:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1819:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing mark-to-market collateral arrangement mechanics.",
+      "evidenceRefs": [
+        "L1819:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1820:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose reporting cash collateral received as of June 30, 2024.",
+      "evidenceRefs": [
+        "L1820:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1821:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose providing comparative collateral figures for prior year.",
+      "evidenceRefs": [
+        "L1821:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1822:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running footer repeating the report title and fiscal date.",
+      "evidenceRefs": [
+        "L1822:S0"
+      ],
+      "interpretation": "Repeated page furniture identifying the report, not a local content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1823:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header repeating the section name across multiple consecutive pages.",
+      "evidenceRefs": [
+        "L1823:S0"
+      ],
+      "interpretation": "Repeated page furniture identifying the section, not a local content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1824:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose stating IDA's exemption from posting collateral due to credit rating.",
+      "evidenceRefs": [
+        "L1824:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1825:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose opening a parenthetical cross-reference to financial statement notes.",
+      "evidenceRefs": [
+        "L1825:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1826:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuing the parenthetical reference to downgrade scenarios.",
+      "evidenceRefs": [
+        "L1826:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1827:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose closing the parenthetical reference to Note F.",
+      "evidenceRefs": [
+        "L1827:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1828:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading introducing the discussion of investment securities.",
+      "evidenceRefs": [
+        "L1828:S0"
+      ],
+      "interpretation": "Bold typography and left-edge alignment mark a substantive section heading governing the following body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1829:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing the Board-approved authorization for investments.",
+      "evidenceRefs": [
+        "L1829:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1830:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose stating investment activities follow detailed guidelines.",
+      "evidenceRefs": [
+        "L1830:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1831:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining management approval and implementation of guidelines.",
+      "evidenceRefs": [
+        "L1831:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1832:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose noting the FY18 update to guidelines for the hybrid model.",
+      "evidenceRefs": [
+        "L1832:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1833:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing core components of the investment guidelines.",
+      "evidenceRefs": [
+        "L1833:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1834:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining consultative loss limits and tolerance levels.",
+      "evidenceRefs": [
+        "L1834:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1835:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose mentioning duration deviation metrics and responsibility lines.",
+      "evidenceRefs": [
+        "L1835:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L1836:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose conveying credit risk appetite through eligibility criteria.",
+      "evidenceRefs": [
+        "L1836:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L1837:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose referencing Table 27 and procedures for limit monitoring.",
+      "evidenceRefs": [
+        "L1837:S0"
+      ],
+      "interpretation": "Standard paragraph text continuing financial disclosure narrative.",
+      "missingEvidence": []
+    }
+  ]
+}

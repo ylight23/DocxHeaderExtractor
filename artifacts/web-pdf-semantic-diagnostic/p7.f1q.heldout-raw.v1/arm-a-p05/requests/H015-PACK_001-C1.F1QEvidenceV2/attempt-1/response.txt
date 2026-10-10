@@ -1,0 +1,545 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Header indicating the issuing legislative body.",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Organizational metadata/header for the National Assembly, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0000:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "State name printed at the top of the document.",
+      "evidenceRefs": [
+        "L0000:S1"
+      ],
+      "interpretation": "Administrative state header, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative horizontal line separating header sections.",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Page furniture/decorative separator, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0001:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National motto printed below the state header.",
+      "evidenceRefs": [
+        "L0001:S1"
+      ],
+      "interpretation": "National motto, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative horizontal line separating motto from document details.",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Page furniture/decorative separator, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Document identification number and code.",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Administrative reference number, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0003:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Place and date of enactment.",
+      "evidenceRefs": [
+        "L0003:S1"
+      ],
+      "interpretation": "Metadata indicating location and date, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "First word of the main document title.",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Contributes to the primary title 'LUẬT CÁC TỔ CHỨC TÍN DỤNG' establishing the document's main heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Second part of the main document title.",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Completes the primary title 'LUẬT CÁC TỔ CHỨC TÍN DỤNG' establishing the document's main heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal basis clause citing the Constitution.",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Preamble/legal basis statement, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Enacting clause stating the National Assembly passes the law.",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Preamble/enacting clause, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter number heading.",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Establishes the structural division 'Chương I' (Chapter I).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter title.",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Establishes the substantive heading 'NHỮNG QUY ĐỊNH CHUNG' (General Provisions).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading with topic.",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Establishes the substantive heading 'Điều 1 . Phạm vi điều chỉnh' (Article 1. Scope of Regulation).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining the law's regulatory scope.",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Substantive body prose under Article 1, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text listing regulated entities.",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Substantive body prose continuation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text listing foreign bank branches.",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Substantive body prose continuation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text listing representative offices.",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Substantive body prose continuation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text listing bad debt handling.",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Substantive body prose continuation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text listing state-owned debt organizations.",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Substantive body prose continuation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of the scope definition paragraph.",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Substantive body prose conclusion, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading with topic.",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Establishes the substantive heading 'Điều 2. Đối tượng áp dụng' (Article 2. Applicable Objects).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item defining credit institutions.",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Body text list item under Article 2, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item defining foreign bank branches.",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Body text list item under Article 2, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item defining representative offices.",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Body text list item under Article 2, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Abbreviation definition continuing previous list item.",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Body text continuation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item defining state-owned debt organizations.",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Body text list item under Article 2, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Abbreviation definition continuing previous list item.",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Body text continuation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item defining related bodies/persons.",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Body text list item under Article 2, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item describing activities.",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Body text continuation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item describing activities.",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Body text continuation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item describing activities.",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Body text continuation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of the list item.",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Body text conclusion, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading with topic.",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Establishes the substantive heading 'Điều 3. Áp dụng tập quán thương mại' (Article 3. Application of Commercial Customs).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text permitting agreement on commercial customs.",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Substantive body prose under Article 3, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Transition phrase introducing a list.",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Body text transition, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item specifying international customs.",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Body text list item under Article 3, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item specifying other customs.",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Body text list item under Article 3, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading with topic.",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Establishes the substantive heading 'Điều 4. Giải thích từ ngữ' (Article 4. Terminology Interpretation).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory sentence for the definitions section.",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Body text introduction to definitions, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition item for factoring.",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Body text definition item under Article 4, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the factoring definition.",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Body text definition continuation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of the factoring definition.",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "Body text definition conclusion, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition item for bank guarantees.",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Body text definition item under Article 4, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the bank guarantee definition.",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "interpretation": "Body text definition continuation, not a heading.",
+      "missingEvidence": []
+    }
+  ]
+}

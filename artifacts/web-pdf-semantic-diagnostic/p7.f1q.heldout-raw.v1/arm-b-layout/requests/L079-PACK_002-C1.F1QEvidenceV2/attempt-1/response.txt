@@ -1,0 +1,405 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0072:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of body text continuing a sentence about inflation rates and WDI methods.",
+      "evidenceRefs": ["L0072:S0"],
+      "interpretation": "Standard paragraph prose continuing a discussion on inflation rate comparisons.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0073:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text completing a reference to World Development Indicators methodology.",
+      "evidenceRefs": ["L0073:S0"],
+      "interpretation": "Standard paragraph prose concluding a methodological reference.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0074:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Transitional sentence introducing the TAG's conclusions on discussed points.",
+      "evidenceRefs": ["L0074:S0"],
+      "interpretation": "Narrative bridge leading into enumerated conclusions within body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0075:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of a bulleted paragraph discussing methodological changes in ICP 2021.",
+      "evidenceRefs": ["L0075:S0"],
+      "interpretation": "Body text opening a detailed discussion point marked by a dash.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0076:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text explaining standardization improvements.",
+      "evidenceRefs": ["L0076:S0"],
+      "interpretation": "Standard paragraph prose elaborating on methodological impacts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0077:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text assessing methodology impact.",
+      "evidenceRefs": ["L0077:S0"],
+      "interpretation": "Standard paragraph prose continuing the evaluation of consistency.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0078:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single-word conclusion of a sentence fragment regarding methodology correction.",
+      "evidenceRefs": ["L0078:S0"],
+      "interpretation": "Standard paragraph prose completing a thought on impact classification.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0079:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of a bulleted paragraph evaluating ICP 2021 benchmark results.",
+      "evidenceRefs": ["L0079:S0"],
+      "interpretation": "Body text opening a new discussion point marked by a dash.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0080:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text comparing benchmark and extrapolated results.",
+      "evidenceRefs": ["L0080:S0"],
+      "interpretation": "Standard paragraph prose detailing historical comparison observations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0081:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text noting TAG discussion on country rankings.",
+      "evidenceRefs": ["L0081:S0"],
+      "interpretation": "Standard paragraph prose tracking meeting deliberations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0082:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text referencing factors affecting differences.",
+      "evidenceRefs": ["L0082:S0"],
+      "interpretation": "Standard paragraph prose continuing analysis of result variances.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0083:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text mentioning future uses of ICP 2021 PPPs.",
+      "evidenceRefs": ["L0083:S0"],
+      "interpretation": "Standard paragraph prose outlining practical applications.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0084:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of a bulleted paragraph addressing PPP estimates beyond 2021.",
+      "evidenceRefs": ["L0084:S0"],
+      "interpretation": "Body text opening a temporal scope discussion marked by a dash.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0085:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text specifying data requirements for extrapolations.",
+      "evidenceRefs": ["L0085:S0"],
+      "interpretation": "Standard paragraph prose defining methodological constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0086:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text contrasting extrapolation with forecasting approaches.",
+      "evidenceRefs": ["L0086:S0"],
+      "interpretation": "Standard paragraph prose distinguishing estimation techniques.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0087:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text referencing WDI approach and external results.",
+      "evidenceRefs": ["L0087:S0"],
+      "interpretation": "Standard paragraph prose citing authoritative sources for integration.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0088:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text noting agreement to construct 2022/2023 series.",
+      "evidenceRefs": ["L0088:S0"],
+      "interpretation": "Standard paragraph prose recording administrative decisions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0089:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single-word conclusion of a sentence fragment confirming construction accordingly.",
+      "evidenceRefs": ["L0089:S0"],
+      "interpretation": "Standard paragraph prose finalizing the procedural agreement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0090:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph opening introducing Computation Task Team feedback presentation.",
+      "evidenceRefs": ["L0090:S0"],
+      "interpretation": "Narrative transition marking a new speaker and topic in meeting minutes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0091:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text listing potential future research agenda topics.",
+      "evidenceRefs": ["L0091:S0"],
+      "interpretation": "Standard paragraph prose enumerating proposed research directions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0092:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text detailing specific research topics.",
+      "evidenceRefs": ["L0092:S0"],
+      "interpretation": "Standard paragraph prose expanding on methodological research areas.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0093:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text concluding research list and noting TAG acknowledgment.",
+      "evidenceRefs": ["L0093:S0"],
+      "interpretation": "Standard paragraph prose wrapping up the research agenda items.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0094:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text recommending written proposals for each topic.",
+      "evidenceRefs": ["L0094:S0"],
+      "interpretation": "Standard paragraph prose documenting follow-up actions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0095:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text referencing past TAG recommendations.",
+      "evidenceRefs": ["L0095:S0"],
+      "interpretation": "Standard paragraph prose linking current decisions to historical precedent.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0096:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of body text announcing establishment of a methodological Task Force.",
+      "evidenceRefs": ["L0096:S0"],
+      "interpretation": "Standard paragraph prose recording organizational commitments.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0097:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bolded standalone line serving as a section heading introducing revised results discussion.",
+      "evidenceRefs": ["L0097:S0"],
+      "interpretation": "Typography (boldRatio:1) and isolated layout position mark this as a substantive section heading governing subsequent body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0098:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text beginning a recap of revised benchmark results approach.",
+      "evidenceRefs": ["L0098:S0"],
+      "interpretation": "Standard paragraph prose immediately following the section heading, detailing presentation content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0099:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text describing historical revision basis.",
+      "evidenceRefs": ["L0099:S0"],
+      "interpretation": "Standard paragraph prose elaborating on prior revision methodologies.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0100:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text detailing global result revision components.",
+      "evidenceRefs": ["L0100:S0"],
+      "interpretation": "Standard paragraph prose listing technical inputs for revisions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0101:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text noting TAG support for recalculating linking factors.",
+      "evidenceRefs": ["L0101:S0"],
+      "interpretation": "Standard paragraph prose recording methodological approvals.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0102:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text allowing housing linking factor updates.",
+      "evidenceRefs": ["L0102:S0"],
+      "interpretation": "Standard paragraph prose extending approval to specific component updates.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0103:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text noting inclusion of hybrid housing approach.",
+      "evidenceRefs": ["L0103:S0"],
+      "interpretation": "Standard paragraph prose identifying regional methodological adoption.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0104:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of body text confirming prior TAG agreement on housing approach.",
+      "evidenceRefs": ["L0104:S0"],
+      "interpretation": "Standard paragraph prose closing the housing methodology note.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0105:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing presentation demonstration of percentage changes.",
+      "evidenceRefs": ["L0105:S0"],
+      "interpretation": "Standard paragraph prose transitioning to visual/data presentation summary.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0106:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text outlining data categories compared.",
+      "evidenceRefs": ["L0106:S0"],
+      "interpretation": "Standard paragraph prose specifying analytical dimensions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0107:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text reporting typical revision ranges and observations.",
+      "evidenceRefs": ["L0107:S0"],
+      "interpretation": "Standard paragraph prose summarizing quantitative findings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0108:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote providing a URL reference for PPP extrapolation methodology.",
+      "evidenceRefs": ["L0108:S0"],
+      "interpretation": "Supplementary reference text located outside main body flow, serving as a citation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0109:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of footnote URL text.",
+      "evidenceRefs": ["L0109:S0"],
+      "interpretation": "Supplementary reference text completing the web address citation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0110:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote explaining Eurostat-OECD base region status.",
+      "evidenceRefs": ["L0110:S0"],
+      "interpretation": "Supplementary explanatory text attached to a numbered reference marker.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0111:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standalone footnote marker or page number artifact.",
+      "evidenceRefs": ["L0111:S0"],
+      "interpretation": "Isolated numeric token functioning as a reference indicator rather than substantive content.",
+      "missingEvidence": []
+    }
+  ]
+}

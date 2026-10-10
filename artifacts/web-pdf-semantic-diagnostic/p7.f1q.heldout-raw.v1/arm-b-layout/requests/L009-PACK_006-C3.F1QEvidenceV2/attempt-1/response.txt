@@ -1,0 +1,285 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0530:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page header containing publication name, issue number, and date.",
+      "evidenceRefs": ["L0530:S0"],
+      "interpretation": "OTHER: Serves as page furniture/administrative metadata rather than a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0531:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item describing a data message integrity service.",
+      "evidenceRefs": ["L0531:S0"],
+      "interpretation": "OTHER: Functions as an enumerated list item within body text, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0532:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item describing a secure data message transmission service.",
+      "evidenceRefs": ["L0532:S0"],
+      "interpretation": "OTHER: Functions as an enumerated list item within body text, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0533:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading introducing provisions on public digital signature certification services.",
+      "evidenceRefs": ["L0533:S0"],
+      "interpretation": "ESTABLISHES_STRUCTURE: Operates as a substantive legal article heading, marked by 'Điều' numbering and bold typography (boldRatio=1).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0534:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition text continuing the scope of public digital signature certification services.",
+      "evidenceRefs": ["L0534:S0"],
+      "interpretation": "OTHER: Functions as ordinary body prose defining the preceding article heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0535:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation line completing the definition of public digital signature certification services.",
+      "evidenceRefs": ["L0535:S0"],
+      "interpretation": "OTHER: Functions as a continuation of body prose, spatially aligned below the definition start.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0536:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph stating who provides public digital signature certificates.",
+      "evidenceRefs": ["L0536:S0"],
+      "interpretation": "OTHER: Functions as a numbered body paragraph outlining regulatory provisions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0537:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation line referencing compliance with the Law.",
+      "evidenceRefs": ["L0537:S0"],
+      "interpretation": "OTHER: Functions as a continuation of the preceding numbered paragraph.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0538:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph listing activities performed by certification service providers.",
+      "evidenceRefs": ["L0538:S0"],
+      "interpretation": "OTHER: Functions as a numbered body paragraph introducing a list of activities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0539:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation line ending the introductory phrase for the activity list.",
+      "evidenceRefs": ["L0539:S0"],
+      "interpretation": "OTHER: Functions as a continuation line bridging to the subsequent lettered list items.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0540:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered list item detailing certificate issuance and validity maintenance.",
+      "evidenceRefs": ["L0540:S0"],
+      "interpretation": "OTHER: Functions as an enumerated list item within the provider's activity obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0541:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation line completing the certificate issuance list item.",
+      "evidenceRefs": ["L0541:S0"],
+      "interpretation": "OTHER: Functions as a continuation of the preceding lettered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0542:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered list item regarding certificate revocation.",
+      "evidenceRefs": ["L0542:S0"],
+      "interpretation": "OTHER: Functions as an enumerated list item within the provider's activity obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0543:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered list item regarding validity checking and status maintenance.",
+      "evidenceRefs": ["L0543:S0"],
+      "interpretation": "OTHER: Functions as an enumerated list item within the provider's activity obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0544:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation line prohibiting technical barriers to validity checking.",
+      "evidenceRefs": ["L0544:S0"],
+      "interpretation": "OTHER: Functions as a continuation of the preceding lettered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0545:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation line completing the prohibition on technical barriers.",
+      "evidenceRefs": ["L0545:S0"],
+      "interpretation": "OTHER: Functions as a continuation of the preceding lettered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0546:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered list item regarding information provision for certification.",
+      "evidenceRefs": ["L0546:S0"],
+      "interpretation": "OTHER: Functions as an enumerated list item within the provider's activity obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0547:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered list item regarding national interconnection for electronic certification.",
+      "evidenceRefs": ["L0547:S0"],
+      "interpretation": "OTHER: Functions as an enumerated list item within the provider's activity obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0548:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation line completing the interconnection requirement.",
+      "evidenceRefs": ["L0548:S0"],
+      "interpretation": "OTHER: Functions as a continuation of the preceding lettered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0549:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph setting technical standards for certificates.",
+      "evidenceRefs": ["L0549:S0"],
+      "interpretation": "OTHER: Functions as a numbered body paragraph establishing compliance requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0550:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation line specifying technical requirements for signatures and services.",
+      "evidenceRefs": ["L0550:S0"],
+      "interpretation": "OTHER: Functions as a continuation of the preceding numbered paragraph.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L0551:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation line referencing legal compliance for technical standards.",
+      "evidenceRefs": ["L0551:S0"],
+      "interpretation": "OTHER: Functions as a continuation of the preceding numbered paragraph.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L0552:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing paragraph delegating detailed regulations to the Government.",
+      "evidenceRefs": ["L0552:S0"],
+      "interpretation": "OTHER: Functions as a standard legislative closing clause for the article.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L0553:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter heading marking the beginning of a new major document section.",
+      "evidenceRefs": ["L0553:S0"],
+      "interpretation": "ESTABLISHES_STRUCTURE: Operates as a high-level chapter heading ('Chương IV') with bold typography (boldRatio=1).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L0554:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter subheading specifying the topic of electronic contract conclusion and performance.",
+      "evidenceRefs": ["L0554:S0"],
+      "interpretation": "ESTABLISHES_STRUCTURE: Operates as a chapter subtitle in all-caps bold typography, structuring the following articles.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L0555:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading introducing provisions on electronic contracts.",
+      "evidenceRefs": ["L0555:S0"],
+      "interpretation": "ESTABLISHES_STRUCTURE: Operates as a substantive legal article heading ('Điều 34') with bold typography (boldRatio=1).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L0556:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition text explaining how electronic contracts are concluded or performed.",
+      "evidenceRefs": ["L0556:S0"],
+      "interpretation": "OTHER: Functions as ordinary body prose defining the preceding article heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L0557:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation line completing the definition of electronic contract interactions.",
+      "evidenceRefs": ["L0557:S0"],
+      "interpretation": "OTHER: Functions as a continuation of body prose, spatially aligned below the definition start.",
+      "missingEvidence": []
+    }
+  ]
+}

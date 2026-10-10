@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0333:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing a legal provision regarding assessment responsibilities.",
+      "evidenceRefs": [
+        "L0333:S0"
+      ],
+      "interpretation": "Ordinary prose continuing a list item describing duties of a protection force.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0334:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying conditions for information systems.",
+      "evidenceRefs": [
+        "L0334:S0"
+      ],
+      "interpretation": "Standard regulatory text detailing compliance requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0335:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text providing an exception clause reference.",
+      "evidenceRefs": [
+        "L0335:S0"
+      ],
+      "interpretation": "Cross-referential legal text excluding specific points from the preceding rule.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0336:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item identifying an assessing authority.",
+      "evidenceRefs": [
+        "L0336:S0"
+      ],
+      "interpretation": "Enumerated provision assigning competence to a ministry's protection force.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0337:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text repeating assessment duty language.",
+      "evidenceRefs": [
+        "L0337:S0"
+      ],
+      "interpretation": "Continuation of regulatory prose outlining certification obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0338:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding a condition specification.",
+      "evidenceRefs": [
+        "L0338:S0"
+      ],
+      "interpretation": "Standard text finalizing requirements for military information systems.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0339:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item introducing another assessing authority.",
+      "evidenceRefs": [
+        "L0339:S0"
+      ],
+      "interpretation": "Enumerated provision assigning competence to the Government Cipher Committee.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0340:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Corrupted or mixed-text line with no clear semantic role.",
+      "evidenceRefs": [
+        "L0340:S0"
+      ],
+      "interpretation": "Garbled parser output lacking coherent legal or structural meaning.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0341:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding clause delegating rulemaking authority for the prior article.",
+      "evidenceRefs": [
+        "L0341:S0"
+      ],
+      "interpretation": "Standard legislative closing provision directing the Government to detail previous clauses.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0342:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading start marking Article 13 and its subject matter.",
+      "evidenceRefs": [
+        "L0342:S0"
+      ],
+      "interpretation": "Formal article heading introducing a new substantive section on cyber security inspection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0343:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading continuation completing the Article 13 title.",
+      "evidenceRefs": [
+        "L0343:S0"
+      ],
+      "interpretation": "Second line of the article heading, specifying scope as nationally important systems.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0344:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered subheading introducing the definition of inspection.",
+      "evidenceRefs": [
+        "L0344:S0"
+      ],
+      "interpretation": "Clause marker functioning as a subheading that defines the core term for the section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0345:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the definition sentence.",
+      "evidenceRefs": [
+        "L0345:S0"
+      ],
+      "interpretation": "Prose elaborating the scope of objects covered by the inspection definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0346:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text extending the definition list.",
+      "evidenceRefs": [
+        "L0346:S0"
+      ],
+      "interpretation": "Continuation of definitional prose covering infrastructure and stored information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0347:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text stating the purpose of inspection activities.",
+      "evidenceRefs": [
+        "L0347:S0"
+      ],
+      "interpretation": "Regulatory text explaining the preventive and detection goals of the defined activity.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0348:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the definition's purpose clause.",
+      "evidenceRefs": [
+        "L0348:S0"
+      ],
+      "interpretation": "Final segment of the definition paragraph outlining operational assurance measures.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0349:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text ending the definition sentence.",
+      "evidenceRefs": [
+        "L0349:S0"
+      ],
+      "interpretation": "Closing phrase of the definition establishing normal operation as the objective.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0350:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered subheading beginning the inspection trigger conditions.",
+      "evidenceRefs": [
+        "L0350:S0"
+      ],
+      "interpretation": "Clause marker serving as a subheading that introduces scenarios requiring inspection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0351:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered subheading completion leading to an enumerated list.",
+      "evidenceRefs": [
+        "L0351:S0"
+      ],
+      "interpretation": "Subheading finish explicitly signaling the forthcoming case-based enumeration.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0352:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item describing a trigger condition.",
+      "evidenceRefs": [
+        "L0352:S0"
+      ],
+      "interpretation": "Enumerated provision detailing device introduction as an inspection trigger.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0353:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item completing the first trigger condition.",
+      "evidenceRefs": [
+        "L0353:S0"
+      ],
+      "interpretation": "Continuation of the 'a/' item finalizing the system introduction scenario.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0354:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item describing a second trigger condition.",
+      "evidenceRefs": [
+        "L0354:S0"
+      ],
+      "interpretation": "Enumerated provision identifying state changes as an inspection trigger.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0355:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item describing a periodic trigger condition.",
+      "evidenceRefs": [
+        "L0355:S0"
+      ],
+      "interpretation": "Enumerated provision establishing annual inspection frequency.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0356:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item describing an ad-hoc trigger condition.",
+      "evidenceRefs": [
+        "L0356:S0"
+      ],
+      "interpretation": "Enumerated provision initiating unscheduled inspection triggers based on incidents.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0357:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuing ad-hoc trigger details.",
+      "evidenceRefs": [
+        "L0357:S0"
+      ],
+      "interpretation": "Continuation of the 'd/' item adding state management and infringement references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0358:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer containing publication name and page number.",
+      "evidenceRefs": [
+        "L0358:S0"
+      ],
+      "interpretation": "Document pagination and journal branding, excluded from substantive structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0359:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation spanning page break.",
+      "evidenceRefs": [
+        "L0359:S0"
+      ],
+      "interpretation": "Continuation of the unscheduled inspection trigger referencing state management.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0360:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation referencing vulnerability remediation.",
+      "evidenceRefs": [
+        "L0360:S0"
+      ],
+      "interpretation": "Continuation of the trigger condition tied to professional force recommendations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0361:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item concluding the trigger enumeration.",
+      "evidenceRefs": [
+        "L0361:S0"
+      ],
+      "interpretation": "Final phrase of the 'd/' item closing the inspection trigger list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0362:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered subheading beginning the inspection subject list.",
+      "evidenceRefs": [
+        "L0362:S0"
+      ],
+      "interpretation": "Clause marker serving as a subheading that introduces objects subject to inspection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0363:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered subheading completion leading to an enumerated list.",
+      "evidenceRefs": [
+        "L0363:S0"
+      ],
+      "interpretation": "Subheading finish explicitly signaling the forthcoming subject-based enumeration.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0364:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item identifying hardware and software as inspection subjects.",
+      "evidenceRefs": [
+        "L0364:S0"
+      ],
+      "interpretation": "Enumerated provision listing physical and digital components under inspection scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0365:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item concluding the first subject category.",
+      "evidenceRefs": [
+        "L0365:S0"
+      ],
+      "interpretation": "Continuation of the 'a/' item finalizing the hardware/software scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0366:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item identifying protection regulations as a subject.",
+      "evidenceRefs": [
+        "L0366:S0"
+      ],
+      "interpretation": "Enumerated provision listing regulatory frameworks under inspection scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L0367:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item identifying data as a subject.",
+      "evidenceRefs": [
+        "L0367:S0"
+      ],
+      "interpretation": "Enumerated provision listing stored and transmitted information under inspection scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L0368:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item concluding the data subject category.",
+      "evidenceRefs": [
+        "L0368:S0"
+      ],
+      "interpretation": "Continuation of the 'c/' item finalizing the information scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L0369:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item identifying incident response plans as a subject.",
+      "evidenceRefs": [
+        "L0369:S0"
+      ],
+      "interpretation": "Enumerated provision listing emergency planning under inspection scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L0370:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item concluding the plan subject category.",
+      "evidenceRefs": [
+        "L0370:S0"
+      ],
+      "interpretation": "Continuation of the 'd/' item attributing plans to system managers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L0371:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item identifying state secret protection as a subject.",
+      "evidenceRefs": [
+        "L0371:S0"
+      ],
+      "interpretation": "Enumerated provision listing classified information safeguards under inspection scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L0372:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item concluding the state secret subject category.",
+      "evidenceRefs": [
+        "L0372:S0"
+      ],
+      "interpretation": "Continuation of the 'dd/' item specifying technical channel risks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L0373:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item identifying personnel as a subject.",
+      "evidenceRefs": [
+        "L0373:S0"
+      ],
+      "interpretation": "Enumerated provision listing protection staff under inspection scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L0374:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Corrupted or mixed-text line with no clear semantic role.",
+      "evidenceRefs": [
+        "L0374:S0"
+      ],
+      "interpretation": "Garbled parser output lacking coherent legal or structural meaning.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L0375:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing a provision on inspection authorities.",
+      "evidenceRefs": [
+        "L0375:S0"
+      ],
+      "interpretation": "Prose elaborating the role of defense ministry forces in inspection contexts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L0376:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the authority provision.",
+      "evidenceRefs": [
+        "L0376:S0"
+      ],
+      "interpretation": "Final segment of the authority assignment limiting scope to military systems.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L0377:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered subheading beginning unscheduled inspection procedures.",
+      "evidenceRefs": [
+        "L0377:S0"
+      ],
+      "interpretation": "Clause marker serving as a subheading that introduces procedural rules for ad-hoc inspections.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L0378:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered subheading completion leading to an enumerated list.",
+      "evidenceRefs": [
+        "L0378:S0"
+      ],
+      "interpretation": "Subheading finish explicitly signaling the forthcoming procedural enumeration.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L0379:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item describing pre-inspection notification timing.",
+      "evidenceRefs": [
+        "L0379:S0"
+      ],
+      "interpretation": "Enumerated provision detailing advance notice requirements before inspection execution.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L0380:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuing notification procedure details.",
+      "evidenceRefs": [
+        "L0380:S0"
+      ],
+      "interpretation": "Continuation of the 'a/' item specifying written notification to system managers.",
+      "missingEvidence": []
+    }
+  ]
+}

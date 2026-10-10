@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L1369:S5",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1369:S5"
+      ],
+      "interpretation": "Numeric value within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L1369:S6",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1369:S6"
+      ],
+      "interpretation": "Numeric value within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L1369:S7",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1369:S7"
+      ],
+      "interpretation": "Numeric value within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L1370:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row label (country name)",
+      "evidenceRefs": [
+        "L1370:S0"
+      ],
+      "interpretation": "Country identifier serving as a row label in a financial table; functions as data navigation, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L1370:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row label (date)",
+      "evidenceRefs": [
+        "L1370:S1"
+      ],
+      "interpretation": "Date identifier serving as a row label in a financial table; functions as data navigation, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L1370:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1370:S2"
+      ],
+      "interpretation": "Numeric value within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L1370:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1370:S3"
+      ],
+      "interpretation": "Numeric value within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L1370:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value (separator)",
+      "evidenceRefs": [
+        "L1370:S4"
+      ],
+      "interpretation": "Dash character used as a placeholder or separator in a financial table cell; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L1370:S5",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1370:S5"
+      ],
+      "interpretation": "Numeric value within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L1370:S6",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1370:S6"
+      ],
+      "interpretation": "Numeric value within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L1370:S7",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1370:S7"
+      ],
+      "interpretation": "Numeric value within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L1371:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table total row label",
+      "evidenceRefs": [
+        "L1371:S0"
+      ],
+      "interpretation": "Label for a summary row aggregating financial data for a specific period; functions as a table component, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1371:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table currency symbol",
+      "evidenceRefs": [
+        "L1371:S1"
+      ],
+      "interpretation": "Currency symbol placed in a table column header area; functions as a local table label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L1371:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1371:S2"
+      ],
+      "interpretation": "Numeric value with currency symbol within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L1371:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1371:S3"
+      ],
+      "interpretation": "Numeric value with currency symbol within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L1371:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1371:S4"
+      ],
+      "interpretation": "Numeric value with currency symbol within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L1371:S5",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1371:S5"
+      ],
+      "interpretation": "Numeric value with currency symbol within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L1371:S6",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1371:S6"
+      ],
+      "interpretation": "Numeric value with currency symbol within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L1371:S7",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1371:S7"
+      ],
+      "interpretation": "Numeric value within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L1372:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table total row label",
+      "evidenceRefs": [
+        "L1372:S0"
+      ],
+      "interpretation": "Label for a summary row aggregating financial data for a specific period; functions as a table component, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L1372:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table currency symbol",
+      "evidenceRefs": [
+        "L1372:S1"
+      ],
+      "interpretation": "Currency symbol placed in a table column header area; functions as a local table label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L1372:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1372:S2"
+      ],
+      "interpretation": "Numeric value with currency symbol within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L1372:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1372:S3"
+      ],
+      "interpretation": "Numeric value with currency symbol within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L1372:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1372:S4"
+      ],
+      "interpretation": "Numeric value with currency symbol within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L1372:S5",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1372:S5"
+      ],
+      "interpretation": "Numeric value with currency symbol within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L1372:S6",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1372:S6"
+      ],
+      "interpretation": "Numeric value with currency symbol within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L1372:S7",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell value",
+      "evidenceRefs": [
+        "L1372:S7"
+      ],
+      "interpretation": "Numeric value within a financial table row; functions as data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L1373:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text",
+      "evidenceRefs": [
+        "L1373:S0"
+      ],
+      "interpretation": "Italicized explanatory note clarifying accounting methodology for the preceding table; functions as supplementary documentation, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L1374:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text paragraph opening",
+      "evidenceRefs": [
+        "L1374:S0"
+      ],
+      "interpretation": "Standard body prose describing loan status changes; functions as narrative content, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L1375:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text paragraph continuation",
+      "evidenceRefs": [
+        "L1375:S0"
+      ],
+      "interpretation": "Continuation of standard body prose; functions as narrative content, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L1376:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text paragraph opening",
+      "evidenceRefs": [
+        "L1376:S0"
+      ],
+      "interpretation": "Standard body prose describing service charge revenue; functions as narrative content, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L1377:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text paragraph continuation",
+      "evidenceRefs": [
+        "L1377:S0"
+      ],
+      "interpretation": "Continuation of standard body prose; functions as narrative content, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L1378:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text paragraph opening",
+      "evidenceRefs": [
+        "L1378:S0"
+      ],
+      "interpretation": "Standard body prose describing recognized revenue; functions as narrative content, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L1379:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text paragraph continuation",
+      "evidenceRefs": [
+        "L1379:S0"
+      ],
+      "interpretation": "Continuation of standard body prose; functions as narrative content, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L1380:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text paragraph opening",
+      "evidenceRefs": [
+        "L1380:S0"
+      ],
+      "interpretation": "Standard body prose explaining policy on loan signature dates; functions as narrative content, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L1381:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text paragraph continuation",
+      "evidenceRefs": [
+        "L1381:S0"
+      ],
+      "interpretation": "Continuation of standard body prose introducing a table; functions as narrative content, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L1382:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text paragraph continuation",
+      "evidenceRefs": [
+        "L1382:S0"
+      ],
+      "interpretation": "Continuation of standard body prose; functions as narrative content, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L1383:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table title",
+      "evidenceRefs": [
+        "L1383:S0"
+      ],
+      "interpretation": "Bolded label explicitly prefixed with 'Table D3:' identifying a financial disclosure table; functions as a local table title, not a document section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L1384:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table unit label",
+      "evidenceRefs": [
+        "L1384:S0"
+      ],
+      "interpretation": "Italicized phrase specifying the monetary scale for the table; functions as a local table label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L1385:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header",
+      "evidenceRefs": [
+        "L1385:S0"
+      ],
+      "interpretation": "Italicized date label serving as a column header in a financial table; functions as a local table label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L1386:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header",
+      "evidenceRefs": [
+        "L1386:S0"
+      ],
+      "interpretation": "Abbreviated term serving as a column header in a financial table; functions as a local table label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L1386:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header",
+      "evidenceRefs": [
+        "L1386:S1"
+      ],
+      "interpretation": "Abbreviated term serving as a column header in a financial table; functions as a local table label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L1386:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header",
+      "evidenceRefs": [
+        "L1386:S2"
+      ],
+      "interpretation": "Category term serving as a column header in a financial table; functions as a local table label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L1387:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header",
+      "evidenceRefs": [
+        "L1387:S0"
+      ],
+      "interpretation": "Abbreviated term serving as a column header in a financial table; functions as a local table label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L1387:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header",
+      "evidenceRefs": [
+        "L1387:S1"
+      ],
+      "interpretation": "Abbreviated term serving as a column header in a financial table; functions as a local table label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L1387:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header",
+      "evidenceRefs": [
+        "L1387:S2"
+      ],
+      "interpretation": "Category term serving as a column header in a financial table; functions as a local table label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L1388:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header",
+      "evidenceRefs": [
+        "L1388:S0"
+      ],
+      "interpretation": "Multi-concept phrase serving as a column header in a financial table; functions as a local table label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L1388:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header",
+      "evidenceRefs": [
+        "L1388:S1"
+      ],
+      "interpretation": "Prepositional phrase serving as a column header in a financial table; functions as a local table label, not a document heading.",
+      "missingEvidence": []
+    }
+  ]
+}

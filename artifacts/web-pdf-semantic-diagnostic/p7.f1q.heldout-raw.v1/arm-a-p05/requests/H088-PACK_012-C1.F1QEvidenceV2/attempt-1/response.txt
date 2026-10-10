@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1054:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of regulatory text referencing Chapter V.",
+      "evidenceRefs": [
+        "L1054:S0"
+      ],
+      "interpretation": "Regular font, standard paragraph flow; functions as body prose rather than a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1055:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment completing a legal reference.",
+      "evidenceRefs": [
+        "L1055:S0"
+      ],
+      "interpretation": "Isolated fragment in regular font; continues preceding sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1056:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered clause item under an article.",
+      "evidenceRefs": [
+        "L1056:S0"
+      ],
+      "interpretation": "Standard numbered list item in regular font; details a specific procedure rather than marking a major section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1057:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item describing trader conditions.",
+      "evidenceRefs": [
+        "L1057:S0"
+      ],
+      "interpretation": "Alphabetical list marker with regular font; provides procedural detail.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1058:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item text.",
+      "evidenceRefs": [
+        "L1058:S0"
+      ],
+      "interpretation": "Regular font continuation; completes the condition described in O4.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1059:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Second alphabetical list item.",
+      "evidenceRefs": [
+        "L1059:S0"
+      ],
+      "interpretation": "Standard list format in regular font; introduces alternative procedure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1060:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Transition phrase for subsequent steps.",
+      "evidenceRefs": [
+        "L1060:S0"
+      ],
+      "interpretation": "Regular font; sets up the bulleted list that follows.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1061:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted procedural step.",
+      "evidenceRefs": [
+        "L1061:S0"
+      ],
+      "interpretation": "Bullet point in regular font; details application submission requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1062:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of procedural step.",
+      "evidenceRefs": [
+        "L1062:S0"
+      ],
+      "interpretation": "Regular font; elaborates on required documentation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1063:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of procedural step.",
+      "evidenceRefs": [
+        "L1063:S0"
+      ],
+      "interpretation": "Regular font; specifies submission channels and recipient agency.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1064:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Agency name completion.",
+      "evidenceRefs": [
+        "L1064:S0"
+      ],
+      "interpretation": "Short fragment in regular font; concludes the agency reference.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1065:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted procedural step regarding incomplete applications.",
+      "evidenceRefs": [
+        "L1065:S0"
+      ],
+      "interpretation": "Bullet point in regular font; outlines ministry notification timeline.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1066:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of procedural step.",
+      "evidenceRefs": [
+        "L1066:S0"
+      ],
+      "interpretation": "Regular font; specifies timing and trigger for ministry action.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1067:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of procedural step.",
+      "evidenceRefs": [
+        "L1067:S0"
+      ],
+      "interpretation": "Regular font; describes deficiency notification process.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1068:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted procedural step regarding valid applications.",
+      "evidenceRefs": [
+        "L1068:S0"
+      ],
+      "interpretation": "Bullet point in regular font; initiates consultation request phase.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1069:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of procedural step.",
+      "evidenceRefs": [
+        "L1069:S0"
+      ],
+      "interpretation": "Regular font; identifies consulting ministries.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1070:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Completion of consulting ministry names.",
+      "evidenceRefs": [
+        "L1070:S0"
+      ],
+      "interpretation": "Regular font; concludes the list of consulted entities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1071:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted procedural step regarding consultation timeline.",
+      "evidenceRefs": [
+        "L1071:S0"
+      ],
+      "interpretation": "Bullet point in regular font; sets response deadline.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1072:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of procedural step.",
+      "evidenceRefs": [
+        "L1072:S0"
+      ],
+      "interpretation": "Regular font; identifies responding authorities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1073:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Completion of response requirement.",
+      "evidenceRefs": [
+        "L1073:S0"
+      ],
+      "interpretation": "Regular font; mandates written response.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1074:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted procedural step regarding response receipt.",
+      "evidenceRefs": [
+        "L1074:S0"
+      ],
+      "interpretation": "Bullet point in regular font; starts final approval phase.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1075:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of procedural step.",
+      "evidenceRefs": [
+        "L1075:S0"
+      ],
+      "interpretation": "Regular font; identifies receiving ministry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1076:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of procedural step.",
+      "evidenceRefs": [
+        "L1076:S0"
+      ],
+      "interpretation": "Regular font; describes permit issuance or refusal outcome.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1077:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Completion of refusal explanation requirement.",
+      "evidenceRefs": [
+        "L1077:S0"
+      ],
+      "interpretation": "Regular font; mandates written explanation upon refusal.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1078:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Third alphabetical list item on sample limits.",
+      "evidenceRefs": [
+        "L1078:S0"
+      ],
+      "interpretation": "Alphabetical list marker in regular font; specifies quantity cap.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1079:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Completion of sample limit specification.",
+      "evidenceRefs": [
+        "L1079:S0"
+      ],
+      "interpretation": "Regular font; clarifies per-product-code restriction.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1080:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading introducing processing goods abroad.",
+      "evidenceRefs": [
+        "L1080:S0"
+      ],
+      "interpretation": "Bold typography and 'Section 2.' prefix mark a substantive structural division.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1081:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading detailing contract and customs procedures.",
+      "evidenceRefs": [
+        "L1081:S0"
+      ],
+      "interpretation": "Bold typography and 'Article 48.' prefix establish a formal legislative heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1082:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text referencing prior articles.",
+      "evidenceRefs": [
+        "L1082:S0"
+      ],
+      "interpretation": "Regular font; implements the article heading with cross-references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1083:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of cross-reference.",
+      "evidenceRefs": [
+        "L1083:S0"
+      ],
+      "interpretation": "Regular font; completes the statutory citation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1084:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading outlining trader rights and obligations.",
+      "evidenceRefs": [
+        "L1084:S0"
+      ],
+      "interpretation": "Bold typography and 'Article 49.' prefix designate a formal legislative heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1085:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "First numbered obligation item.",
+      "evidenceRefs": [
+        "L1085:S0"
+      ],
+      "interpretation": "Numbered list item in regular font; begins enumerated duties.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1086:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of first obligation.",
+      "evidenceRefs": [
+        "L1086:S0"
+      ],
+      "interpretation": "Regular font; specifies applicable law reference.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1087:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Second numbered obligation item.",
+      "evidenceRefs": [
+        "L1087:S0"
+      ],
+      "interpretation": "Numbered list item in regular font; addresses trademark responsibility.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1088:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Third numbered obligation item.",
+      "evidenceRefs": [
+        "L1088:S0"
+      ],
+      "interpretation": "Numbered list item in regular font; covers temporary export duties.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1089:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of third obligation.",
+      "evidenceRefs": [
+        "L1089:S0"
+      ],
+      "interpretation": "Regular font; elaborates on merchanting trade transactions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1090:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Completion of third obligation.",
+      "evidenceRefs": [
+        "L1090:S0"
+      ],
+      "interpretation": "Regular font; concludes the processing contract performance scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1091:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fourth numbered obligation item.",
+      "evidenceRefs": [
+        "L1091:S0"
+      ],
+      "interpretation": "Numbered list item in regular font; addresses re-importation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1092:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Completion of fourth obligation.",
+      "evidenceRefs": [
+        "L1092:S0"
+      ],
+      "interpretation": "Regular font; clarifies redundant equipment handling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1093:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fifth numbered obligation item.",
+      "evidenceRefs": [
+        "L1093:S0"
+      ],
+      "interpretation": "Numbered list item in regular font; covers product sales.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1094:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of fifth obligation.",
+      "evidenceRefs": [
+        "L1094:S0"
+      ],
+      "interpretation": "Regular font; specifies permissible markets.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1095:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Completion of fifth obligation.",
+      "evidenceRefs": [
+        "L1095:S0"
+      ],
+      "interpretation": "Regular font; mandates tax compliance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1096:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sixth numbered obligation item.",
+      "evidenceRefs": [
+        "L1096:S0"
+      ],
+      "interpretation": "Numbered list item in regular font; addresses duty exemptions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1097:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of sixth obligation.",
+      "evidenceRefs": [
+        "L1097:S0"
+      ],
+      "interpretation": "Regular font; references taxation regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1098:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Seventh numbered obligation item.",
+      "evidenceRefs": [
+        "L1098:S0"
+      ],
+      "interpretation": "Numbered list item in regular font; permits expert inspections.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1099:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Eighth numbered obligation item.",
+      "evidenceRefs": [
+        "L1099:S0"
+      ],
+      "interpretation": "Numbered list item in regular font; covers tax liability.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L1100:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Completion of eighth obligation.",
+      "evidenceRefs": [
+        "L1100:S0"
+      ],
+      "interpretation": "Regular font; directs compliance with Ministry of Finance instructions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L1101:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter heading marking a new major section.",
+      "evidenceRefs": [
+        "L1101:S0"
+      ],
+      "interpretation": "Bold typography and 'Chapter VI' label establish a primary structural division.",
+      "missingEvidence": []
+    }
+  ]
+}

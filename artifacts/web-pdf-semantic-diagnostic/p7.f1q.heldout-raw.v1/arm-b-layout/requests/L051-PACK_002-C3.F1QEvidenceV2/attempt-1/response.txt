@@ -1,0 +1,173 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0124:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Repeated running header text across multiple pages in small italic font.",
+      "evidenceRefs": [
+        "L0124:S0"
+      ],
+      "interpretation": "Functions as page furniture/running head rather than a substantive structural heading at this location.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0125:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Repeated subtitle/note line accompanying the running header in small italic font.",
+      "evidenceRefs": [
+        "L0125:S0"
+      ],
+      "interpretation": "Serves as a recurring table note or running header supplement, not a local document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0126:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading introducing content on key trust fund activity.",
+      "evidenceRefs": [
+        "L0126:S0"
+      ],
+      "interpretation": "Acts as a substantive section heading at this location, introducing the following body text and tables.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0127:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading regarding composition of active trust funds, with appended numeric artifacts.",
+      "evidenceRefs": [
+        "L0127:S0"
+      ],
+      "interpretation": "Functions as a subsection heading here, despite trailing numbers likely being footnote markers or page artifacts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0128:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph text describing portfolio growth and major sectors.",
+      "evidenceRefs": [
+        "L0128:S0"
+      ],
+      "interpretation": "Ordinary body prose continuing a narrative, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0129:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph text listing specific sectors and program counts.",
+      "evidenceRefs": [
+        "L0129:S0"
+      ],
+      "interpretation": "Continuation of body prose detailing sector breakdowns.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0130:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text explaining trust fund establishment criteria.",
+      "evidenceRefs": [
+        "L0130:S0"
+      ],
+      "interpretation": "Standard footnote providing definitional context, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0131:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text continuation regarding DP balance accounts.",
+      "evidenceRefs": [
+        "L0131:S0"
+      ],
+      "interpretation": "Footnote continuation explaining account purposes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0132:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text continuation regarding investment income and contributions.",
+      "evidenceRefs": [
+        "L0132:S0"
+      ],
+      "interpretation": "Footnote continuation detailing fund holding purposes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0133:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text concluding with account counts for 2024 and 2023.",
+      "evidenceRefs": [
+        "L0133:S0"
+      ],
+      "interpretation": "Footnote conclusion providing statistical counts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0134:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text explaining multi-account administration for FIF programs.",
+      "evidenceRefs": [
+        "L0134:S0"
+      ],
+      "interpretation": "Footnote explaining program administration structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0135:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text concluding the multi-account explanation.",
+      "evidenceRefs": [
+        "L0135:S0"
+      ],
+      "interpretation": "Footnote conclusion regarding trustee accounts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L0136:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '9' in standard body font, positioned as a page number.",
+      "evidenceRefs": [
+        "L0136:S0"
+      ],
+      "interpretation": "Page number element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L0137:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '1' in smaller font, consistent with footer or running mark.",
+      "evidenceRefs": [
+        "L0137:S0"
+      ],
+      "interpretation": "Footer or running mark element, not a heading.",
+      "missingEvidence": []
+    }
+  ]
+}

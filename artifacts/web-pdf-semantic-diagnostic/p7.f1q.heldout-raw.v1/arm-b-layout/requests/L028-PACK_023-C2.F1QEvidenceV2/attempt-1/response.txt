@@ -1,0 +1,497 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1618:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Running section header identifying the document segment.",
+      "evidenceRefs": [
+        "L1618:S0"
+      ],
+      "interpretation": "Identifies the current section as 'Bid Data Sheet (BDS) 40', establishing document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1619:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of instructional or form text continuing a sentence.",
+      "evidenceRefs": [
+        "L1619:S0"
+      ],
+      "interpretation": "Body text fragment completing a preceding instruction or form field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1620:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading introducing contractual subcontracting rules.",
+      "evidenceRefs": [
+        "L1620:S0"
+      ],
+      "interpretation": "Heading marks ITB 34.2 topic on maximum subcontracting percentage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1621:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field continuation specifying percentage limits.",
+      "evidenceRefs": [
+        "L1621:S0"
+      ],
+      "interpretation": "Body text providing fill-in blanks for contract amount percentages.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1622:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field continuation specifying work volume limits.",
+      "evidenceRefs": [
+        "L1622:S0"
+      ],
+      "interpretation": "Body text completing the percentage limit instruction.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1623:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text regarding subcontracting thresholds.",
+      "evidenceRefs": [
+        "L1623:S0"
+      ],
+      "interpretation": "Directs bidders on actions required when exceeding 10% subcontracting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L1624:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text requiring specification of activities.",
+      "evidenceRefs": [
+        "L1624:S0"
+      ],
+      "interpretation": "Body prose instructing bidders to detail subcontracted works.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L1625:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text requiring subcontractor details.",
+      "evidenceRefs": [
+        "L1625:S0"
+      ],
+      "interpretation": "Body prose continuing the instruction to provide subcontractor information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L1626:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text concluding qualification requirements.",
+      "evidenceRefs": [
+        "L1626:S0"
+      ],
+      "interpretation": "Body prose finishing the requirement for subcontractor qualifications.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L1627:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading for specialized subcontractor designation.",
+      "evidenceRefs": [
+        "L1627:S0"
+      ],
+      "interpretation": "Heading introduces ITB 34.3 provision for designating specialized subcontractors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L1628:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text introducing designated parts.",
+      "evidenceRefs": [
+        "L1628:S0"
+      ],
+      "interpretation": "Body prose setting up the list of permitted specialized subcontractor parts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L1629:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text concluding the introduction.",
+      "evidenceRefs": [
+        "L1629:S0"
+      ],
+      "interpretation": "Body prose directing bidders to designate parts below.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L1630:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item placeholder for specialized subcontractor designation.",
+      "evidenceRefs": [
+        "L1630:S0"
+      ],
+      "interpretation": "Form field 'a.' awaiting bidder input for designated work parts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L1631:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item placeholder for specialized subcontractor designation.",
+      "evidenceRefs": [
+        "L1631:S0"
+      ],
+      "interpretation": "Form field 'b.' awaiting bidder input for designated work parts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L1632:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item placeholder for specialized subcontractor designation.",
+      "evidenceRefs": [
+        "L1632:S0"
+      ],
+      "interpretation": "Form field 'c.' awaiting bidder input for designated work parts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L1633:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text regarding specialized subcontractor evaluation.",
+      "evidenceRefs": [
+        "L1633:S0"
+      ],
+      "interpretation": "Body prose explaining how specialized subcontractor qualifications are handled.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L1634:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text continuing evaluation explanation.",
+      "evidenceRefs": [
+        "L1634:S0"
+      ],
+      "interpretation": "Body prose detailing qualification addition for specialized subcontractors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L1635:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text continuing evaluation explanation.",
+      "evidenceRefs": [
+        "L1635:S0"
+      ],
+      "interpretation": "Body prose explaining the purpose of adding qualifications.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L1636:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text concluding evaluation explanation.",
+      "evidenceRefs": [
+        "L1636:S0"
+      ],
+      "interpretation": "Body prose finishing the sentence on evaluation purposes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L1637:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading for additional procurement requirements.",
+      "evidenceRefs": [
+        "L1637:S0"
+      ],
+      "interpretation": "Heading introduces ITB 35.2(f) provision regarding additional requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1638:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text pointing to evaluation criteria.",
+      "evidenceRefs": [
+        "L1638:S0"
+      ],
+      "interpretation": "Body prose directing readers to Section III for detailed criteria.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L1639:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text completing the reference.",
+      "evidenceRefs": [
+        "L1639:S0"
+      ],
+      "interpretation": "Body prose naming the specific section containing evaluation criteria.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L1640:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading for standstill period duration.",
+      "evidenceRefs": [
+        "L1640:S0"
+      ],
+      "interpretation": "Heading introduces ITB 42 provision defining the standstill period length.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L1641:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text clarifying standstill period start date.",
+      "evidenceRefs": [
+        "L1641:S0"
+      ],
+      "interpretation": "Body prose specifying the ten-day minimum and trigger event.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L1642:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Isolated bold label or keyword fragment.",
+      "evidenceRefs": [
+        "L1642:S0"
+      ],
+      "interpretation": "Standalone bold term likely serving as a form label or keyword rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L1642:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text describing notification transmission.",
+      "evidenceRefs": [
+        "L1642:S1"
+      ],
+      "interpretation": "Body prose explaining how the award notification is sent to bidders.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L1643:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Isolated bold label or keyword fragment.",
+      "evidenceRefs": [
+        "L1643:S0"
+      ],
+      "interpretation": "Standalone bold term likely serving as a form label or keyword rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L1643:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text completing the notification description.",
+      "evidenceRefs": [
+        "L1643:S1"
+      ],
+      "interpretation": "Body prose finishing the sentence on notifying the successful bidder.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L1644:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instructional text for form completion.",
+      "evidenceRefs": [
+        "L1644:S0"
+      ],
+      "interpretation": "Instructional guidance telling the drafter what to state regarding the standstill period.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L1645:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instructional text continuing guidance.",
+      "evidenceRefs": [
+        "L1645:S0"
+      ],
+      "interpretation": "Instructional guidance addressing emergency situations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L1646:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instructional text closing guidance.",
+      "evidenceRefs": [
+        "L1646:S0"
+      ],
+      "interpretation": "Instructional guidance closing the bracketed note.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L1647:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading for environmental and social security.",
+      "evidenceRefs": [
+        "L1647:S0"
+      ],
+      "interpretation": "Heading introduces ITB 48.1 provision on performance security.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L1647:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instructional text for form deletion.",
+      "evidenceRefs": [
+        "L1647:S1"
+      ],
+      "interpretation": "Instructional guidance telling the drafter to delete the section if not applicable.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L1648:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading continuation for performance security.",
+      "evidenceRefs": [
+        "L1648:S0"
+      ],
+      "interpretation": "Heading continues ITB 48.1 into 48.2, maintaining the structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L1648:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text requiring performance security submission.",
+      "evidenceRefs": [
+        "L1648:S1"
+      ],
+      "interpretation": "Body prose mandating the successful bidder to submit ESHS security.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L1649:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text completing the security requirement.",
+      "evidenceRefs": [
+        "L1649:S0"
+      ],
+      "interpretation": "Body prose naming the specific security type required.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L1650:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instructional note on security applicability.",
+      "evidenceRefs": [
+        "L1650:S0"
+      ],
+      "interpretation": "Instructional note explaining when the ESHS security is normally required.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L1651:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bracketed instructional note closing the condition.",
+      "evidenceRefs": [
+        "L1651:S0"
+      ],
+      "interpretation": "Instructional note finishing the condition regarding significant ESHS risks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L1652:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading for procurement complaint procedures.",
+      "evidenceRefs": [
+        "L1652:S0"
+      ],
+      "interpretation": "Heading introduces ITB 49.1 provision detailing complaint procedures.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L1653:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text citing regulations.",
+      "evidenceRefs": [
+        "L1653:S0"
+      ],
+      "interpretation": "Body prose referencing the specific procurement regulations annex.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L1654:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text directing complaint submission.",
+      "evidenceRefs": [
+        "L1654:S0"
+      ],
+      "interpretation": "Body prose instructing bidders on how to submit a procurement complaint.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,415 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Small italic text (7.1pt) repeated identically on pages 1-9 as a running header.",
+      "evidenceRefs": ["L0000:S0"],
+      "interpretation": "Page furniture functioning as a running header; does not establish document structure here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Small italic text (7.1pt) repeated on pages 1-9 indicating currency units.",
+      "evidenceRefs": ["L0001:S0"],
+      "interpretation": "Running header footnote providing unit context; classified as page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Large bold text (26.2pt) positioned prominently at the top of page 1.",
+      "evidenceRefs": ["L0002:S0"],
+      "interpretation": "Main document title establishing the primary subject matter.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Large bold text (24.4pt) directly following the main title on page 1.",
+      "evidenceRefs": ["L0003:S0"],
+      "interpretation": "Subtitle completing the document title block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Medium-large text (20.6pt) specifying fiscal years beneath the subtitle on page 1.",
+      "evidenceRefs": ["L0004:S0"],
+      "interpretation": "Date qualifier forming the complete title phrase for this report.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '1' in standard body font (9.3pt) positioned as a page number.",
+      "evidenceRefs": ["L0005:S0"],
+      "interpretation": "Page numbering furniture; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '1' in small font (6.1pt) located in the footer area.",
+      "evidenceRefs": ["L0006:S0"],
+      "interpretation": "Footer page number; classified as page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header text identical to O1, appearing on page 2.",
+      "evidenceRefs": ["L0007:S0"],
+      "interpretation": "Repeating page furniture/header; does not introduce new structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header note identical to O2, appearing on page 2.",
+      "evidenceRefs": ["L0008:S0"],
+      "interpretation": "Repeating page furniture/header note; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Full-width text spanning page 2, restating the report title before the introduction.",
+      "evidenceRefs": ["L0009:S0"],
+      "interpretation": "Section heading reintroducing the document title at the start of the substantive body content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold text (12.7pt) labeled 'Introduction' marking the first body section.",
+      "evidenceRefs": ["L0010:S0"],
+      "interpretation": "Substantive section heading introducing the introductory content region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) defining trust funds.",
+      "evidenceRefs": ["L0011:S0"],
+      "interpretation": "Body prose paragraph; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) continuing the definition of trust funds.",
+      "evidenceRefs": ["L0012:S0"],
+      "interpretation": "Body prose continuation; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) listing development needs.",
+      "evidenceRefs": ["L0013:S0"],
+      "interpretation": "Body prose continuation; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) describing trust fund contributions to mission.",
+      "evidenceRefs": ["L0014:S0"],
+      "interpretation": "Body prose continuation; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) concluding the introductory definition paragraph.",
+      "evidenceRefs": ["L0015:S0"],
+      "interpretation": "Body prose continuation; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) stating the report's purpose.",
+      "evidenceRefs": ["L0016:S0"],
+      "interpretation": "Body prose paragraph; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) listing administering entities.",
+      "evidenceRefs": ["L0017:S0"],
+      "interpretation": "Body prose continuation; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) continuing entity listing.",
+      "evidenceRefs": ["L0018:S0"],
+      "interpretation": "Body prose continuation; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) defining Bank Group and noting audit status.",
+      "evidenceRefs": ["L0019:S0"],
+      "interpretation": "Body prose paragraph; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) clarifying report scope limitations.",
+      "evidenceRefs": ["L0020:S0"],
+      "interpretation": "Body prose continuation; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) noting regrouping of previous periods.",
+      "evidenceRefs": ["L0021:S0"],
+      "interpretation": "Body prose continuation; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) concluding the introductory notes.",
+      "evidenceRefs": ["L0022:S0"],
+      "interpretation": "Body prose continuation; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) providing contact information.",
+      "evidenceRefs": ["L0023:S0"],
+      "interpretation": "Administrative contact line; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard body text (9.3pt) providing email address.",
+      "evidenceRefs": ["L0024:S0"],
+      "interpretation": "Administrative contact line; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Small italic text (7.1pt) formatted as a footnote marker and content.",
+      "evidenceRefs": ["L0025:S0"],
+      "interpretation": "Footnote explaining typology; classified as auxiliary text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Small italic text (7.1pt) continuing footnote exclusions.",
+      "evidenceRefs": ["L0026:S0"],
+      "interpretation": "Footnote continuation; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Small italic text (7.1pt) continuing footnote exclusions.",
+      "evidenceRefs": ["L0027:S0"],
+      "interpretation": "Footnote continuation; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Small italic text (7.1pt) concluding footnote exclusions.",
+      "evidenceRefs": ["L0028:S0"],
+      "interpretation": "Footnote conclusion; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '2' in standard body font (9.3pt) positioned as a page number.",
+      "evidenceRefs": ["L0029:S0"],
+      "interpretation": "Page numbering furniture; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '1' in small font (6.1pt) located in the footer area.",
+      "evidenceRefs": ["L0030:S0"],
+      "interpretation": "Footer page number; classified as page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header text identical to O1, appearing on page 3.",
+      "evidenceRefs": ["L0031:S0"],
+      "interpretation": "Repeating page furniture/header; does not introduce new structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header note identical to O2, appearing on page 3.",
+      "evidenceRefs": ["L0032:S0"],
+      "interpretation": "Repeating page furniture/header note; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold text (13.2pt) labeling a reference section on page 3.",
+      "evidenceRefs": ["L0033:S0"],
+      "interpretation": "Substantive section heading introducing abbreviations content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '3' in standard body font (9.3pt) positioned as a page number.",
+      "evidenceRefs": ["L0034:S0"],
+      "interpretation": "Page numbering furniture; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '1' in small font (6.1pt) located in the footer area.",
+      "evidenceRefs": ["L0035:S0"],
+      "interpretation": "Footer page number; classified as page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header text identical to O1, appearing on page 4.",
+      "evidenceRefs": ["L0036:S0"],
+      "interpretation": "Repeating page furniture/header; does not introduce new structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header note identical to O2, appearing on page 4.",
+      "evidenceRefs": ["L0037:S0"],
+      "interpretation": "Repeating page furniture/header note; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold text (13.2pt) labeling a contents/data summary section on page 4.",
+      "evidenceRefs": ["L0038:S0"],
+      "interpretation": "Substantive section heading introducing financial data summary.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '4' in standard body font (9.3pt) positioned as a page number.",
+      "evidenceRefs": ["L0039:S0"],
+      "interpretation": "Page numbering furniture; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '1' in small font (6.1pt) located in the footer area.",
+      "evidenceRefs": ["L0040:S0"],
+      "interpretation": "Footer page number; classified as page furniture.",
+      "missingEvidence": []
+    }
+  ]
+}

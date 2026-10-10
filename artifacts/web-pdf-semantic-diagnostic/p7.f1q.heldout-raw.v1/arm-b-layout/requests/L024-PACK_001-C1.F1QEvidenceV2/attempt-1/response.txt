@@ -1,0 +1,473 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Administrative letterhead identifying the issuing state authority.",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Official header text establishing the government entity, functioning as administrative metadata rather than a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National motto/slogan line.",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Standard national slogan accompanying the state letterhead, serving as page furniture/metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Official document reference number.",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Legal document identifier and code, classified as administrative metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Issuance location and date.",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Standard issuance metadata line, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main document title indicator (\"NGHỊ ĐỊNH\").",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Bold, prominent typeface marks the legal instrument type, functioning as the primary document title anchor.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "First segment of the decree title.",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Continues the title block established by O5, specifying the subject matter of the regulation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Second segment of the decree title.",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Completes the full title spanning O5-O7, maintaining title typography and semantic role.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative horizontal separator.",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Non-textual layout element separating header metadata from body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative bullet/separator.",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Layout punctuation marking section breaks, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Amendment attribution note.",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Administrative note tracking legislative amendments, distinct from structural headings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble legal basis clause.",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": \"Căn cứ Luật...\" phrasing indicates standard statutory preamble, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble legal basis clause.",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": \"Căn cứ Luật...\" phrasing indicates standard statutory preamble, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble legal basis clause.",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": \"Căn cứ Luật...\" phrasing indicates standard statutory preamble, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble legal basis clause.",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": \"Căn cứ Luật...\" phrasing indicates standard statutory preamble, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble legal basis clause.",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": \"Căn cứ Luật...\" phrasing indicates standard statutory preamble, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble legal basis clause.",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": \"Căn cứ Luật...\" phrasing indicates standard statutory preamble, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble legal basis clause.",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": \"Căn cứ Luật...\" phrasing indicates standard statutory preamble, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble legal basis clause.",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": \"Căn cứ Luật...\" phrasing indicates standard statutory preamble, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble recommendation clause.",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": Standard procedural preamble text leading to the operative phrase, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble operative phrase.",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": Transitional prose concluding the preamble before the main title repetition, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble repetition of the decree title.",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": Identical wording to O6 but embedded in italicized preamble prose, functioning as narrative reference rather than a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble continuation of title repetition.",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": Continues the italicized preamble sentence referencing the title, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Terminal punctuation mark.",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": Sentence-ending period closing the preamble block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Amendment note referencing modifying decree.",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": Administrative tracking note for legislative updates, distinct from structural headings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter heading (\"Chương I\").",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": Bold, isolated line marking the start of the first major content division.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading (\"QUY ĐỊNH CHUNG\").",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": Bold, uppercase line immediately following the chapter marker, establishing the general provisions section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading (\"Điều 1. Phạm vi điều chỉnh\").",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": Bold line introducing the first substantive article, clearly demarcating a new regulatory provision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining regulatory scope.",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": Regular font paragraph text elaborating on the scope defined in O27, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation listing authorities.",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": Continuation of the introductory paragraph for Article 1, setting up the subsequent list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item a) specifying postal sector.",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": Alphanumeric list item within the body text, not a standalone heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item b) start specifying telecom sector.",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": Continuation of the enumerated list under Article 1, formatted as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item b) continuation on network planning.",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": Line-wrapped continuation of list item b, maintaining body text function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item b) continuation on quality management.",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": Final wrapped segment of list item b, part of the paragraph flow.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item c) specifying radio frequency spectrum.",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": Next enumerated item in the regulatory scope list, formatted as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item d) start specifying IT sector.",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": New list item introducing the information technology category, part of the paragraph structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item d) continuation on social networks & games.",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": Wrapped continuation of list item d, maintaining body text function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Amendment note within list item d.",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": Inline legislative tracking note embedded within the list paragraph, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item e) specifying electronic transactions.",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": Subsequent enumerated item in the scope list, formatted as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item f) specifying network information security.",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": Final enumerated item in the scope list, continuing the paragraph structure.",
+      "missingEvidence": []
+    }
+  ]
+}

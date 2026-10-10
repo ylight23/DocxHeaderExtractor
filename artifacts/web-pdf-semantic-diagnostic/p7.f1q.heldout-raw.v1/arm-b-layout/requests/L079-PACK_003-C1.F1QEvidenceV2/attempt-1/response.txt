@@ -1,0 +1,375 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0153:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose discussing TAG's acknowledgment of estimation difficulties for certain cases.",
+      "evidenceRefs": ["L0153:S0"],
+      "interpretation": "Standard paragraph text conveying meeting discussion points, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0154:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuing explanation of imputation limitations with extreme input data.",
+      "evidenceRefs": ["L0154:S0"],
+      "interpretation": "Continuation of technical discussion paragraph, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0155:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose addressing model reliability and questionable input data, introducing TAG.",
+      "evidenceRefs": ["L0155:S0"],
+      "interpretation": "Technical narrative sentence within a paragraph, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0156:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing TAG recommendation to review input data for time series estimates.",
+      "evidenceRefs": ["L0156:S0"],
+      "interpretation": "Actionable note within body text, serving as standard paragraph content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0157:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose on ensuring result plausibility and noting limited country participation.",
+      "evidenceRefs": ["L0157:S0"],
+      "interpretation": "Descriptive body text summarizing methodological safeguards and participation status.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0158:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose recording Eurostat's suggestion regarding Kosovo’s HHC-level data.",
+      "evidenceRefs": ["L0158:S0"],
+      "interpretation": "Record of stakeholder proposal within meeting minutes, not a structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0159:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose stressing metadata importance for clarifying non-benchmark estimation limits.",
+      "evidenceRefs": ["L0159:S0"],
+      "interpretation": "Methodological guidance statement embedded in paragraph flow.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0160:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose contrasting approximation reliability with benchmark results.",
+      "evidenceRefs": ["L0160:S0"],
+      "interpretation": "Concluding technical observation of the paragraph, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0161:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold, 12pt heading marking the transition to the closing session.",
+      "evidenceRefs": ["L0161:S0"],
+      "interpretation": "Section heading establishing the final agenda block, visually distinct and structurally labeled.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0162:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold, 11pt subheading listing agenda items for the closing session.",
+      "evidenceRefs": ["L0162:S0"],
+      "interpretation": "Subordinate heading detailing specific topics under Session II, operating as a structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0163:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose noting incorporation of minor regional updates prior to release.",
+      "evidenceRefs": ["L0163:S0"],
+      "interpretation": "Procedural note within closing remarks paragraph, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0164:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing ICP Global Office coordination with regional agencies.",
+      "evidenceRefs": ["L0164:S0"],
+      "interpretation": "Operational detail in body text, maintaining paragraph continuity.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0165:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose stating target release date for ICP 2021 cycle results.",
+      "evidenceRefs": ["L0165:S0"],
+      "interpretation": "Timeline announcement embedded in narrative prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0166:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose covering regional release plans and surrounding organizational matters.",
+      "evidenceRefs": ["L0166:S0"],
+      "interpretation": "Summary of administrative discussions, functioning as standard paragraph text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0167:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory sentence preceding a bulleted list of release assets.",
+      "evidenceRefs": ["L0167:S0"],
+      "interpretation": "Lead-in clause setting up a list, lacking heading typography or structural isolation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0168:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bullet marker ('–') initiating a list item.",
+      "evidenceRefs": ["L0168:S0"],
+      "interpretation": "List formatting character, not a textual heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0168:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item describing press release, blog, and social media assets.",
+      "evidenceRefs": ["L0168:S1"],
+      "interpretation": "Content element of a bulleted enumeration, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0169:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bullet marker ('–') initiating a subsequent list item.",
+      "evidenceRefs": ["L0169:S0"],
+      "interpretation": "List formatting character, not a textual heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0169:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item describing FAQ, factsheets, and results highlights.",
+      "evidenceRefs": ["L0169:S1"],
+      "interpretation": "Enumeration content within a list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0170:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bullet marker ('–') initiating a subsequent list item.",
+      "evidenceRefs": ["L0170:S0"],
+      "interpretation": "List formatting character, not a textual heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0170:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item describing interactive portal for charts and figures.",
+      "evidenceRefs": ["L0170:S1"],
+      "interpretation": "Enumeration content within a list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0171:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bullet marker ('–') initiating a subsequent list item.",
+      "evidenceRefs": ["L0171:S0"],
+      "interpretation": "List formatting character, not a textual heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0171:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item describing World Bank ICP Databank.",
+      "evidenceRefs": ["L0171:S1"],
+      "interpretation": "Enumeration content within a list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0172:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bullet marker ('o') initiating a nested or indented list item.",
+      "evidenceRefs": ["L0172:S0"],
+      "interpretation": "List formatting character, not a textual heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0172:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item specifying count of publication headings.",
+      "evidenceRefs": ["L0172:S1"],
+      "interpretation": "Data point within an enumeration, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0173:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bullet marker ('o') initiating a subsequent indented list item.",
+      "evidenceRefs": ["L0173:S0"],
+      "interpretation": "List formatting character, not a textual heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0173:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item specifying count of indicator series.",
+      "evidenceRefs": ["L0173:S1"],
+      "interpretation": "Data point within an enumeration, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0174:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bullet marker ('o') initiating a subsequent indented list item.",
+      "evidenceRefs": ["L0174:S0"],
+      "interpretation": "List formatting character, not a textual heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0174:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item specifying count of PPP timeseries publication headings.",
+      "evidenceRefs": ["L0174:S1"],
+      "interpretation": "Data point within an enumeration, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0175:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item describing WDI DataBank update for GDP and household consumption.",
+      "evidenceRefs": ["L0175:S0"],
+      "interpretation": "Enumeration content within a list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0176:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment completing the previous list item regarding PPPs.",
+      "evidenceRefs": ["L0176:S0"],
+      "interpretation": "Continuation of list syntax, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0177:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose stating scheduled publication quarter for the complete ICP 2021 cycle report.",
+      "evidenceRefs": ["L0177:S0"],
+      "interpretation": "Schedule announcement embedded in narrative prose, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0178:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose recording Chair's conclusion and call for future research agenda.",
+      "evidenceRefs": ["L0178:S0"],
+      "interpretation": "Closing procedural note within paragraph text, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0179:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuing Chair's remarks post-publication and acknowledging agency work.",
+      "evidenceRefs": ["L0179:S0"],
+      "interpretation": "Narrative continuation of closing remarks, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0180:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose acknowledging national, regional, and global implementing agencies.",
+      "evidenceRefs": ["L0180:S0"],
+      "interpretation": "Formal acknowledgment embedded in paragraph flow, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0181:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment concluding the acknowledgment of successfully concluding the cycle.",
+      "evidenceRefs": ["L0181:S0"],
+      "interpretation": "Paragraph closure fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0182:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '5' positioned in footer area.",
+      "evidenceRefs": ["L0182:S0"],
+      "interpretation": "Pagination artifact, excluded from document heading classification.",
+      "missingEvidence": []
+    }
+  ]
+}

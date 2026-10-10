@@ -1,0 +1,569 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0653:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Penalty amount range description for dominant market position violations.",
+      "evidenceRefs": [
+        "L0653:S0"
+      ],
+      "interpretation": "Body text specifying a monetary penalty tier under a preceding article heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0654:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of penalty condition describing market dominance criteria.",
+      "evidenceRefs": [
+        "L0654:S0"
+      ],
+      "interpretation": "Prose continuing the violation description initiated in the previous line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0655:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of penalty condition regarding technical information requirements.",
+      "evidenceRefs": [
+        "L0655:S0"
+      ],
+      "interpretation": "Prose continuing the violation description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0656:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Terminal phrase of the penalty condition clause.",
+      "evidenceRefs": [
+        "L0656:S0"
+      ],
+      "interpretation": "Prose concluding the violation description sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0657:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Second penalty amount range for market dominance violations.",
+      "evidenceRefs": [
+        "L0657:S0"
+      ],
+      "interpretation": "Body text listing a higher monetary penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0658:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of second penalty condition regarding network advantages.",
+      "evidenceRefs": [
+        "L0658:S0"
+      ],
+      "interpretation": "Prose detailing specific anti-competitive behaviors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0659:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation describing market obstruction and service provision hindrance.",
+      "evidenceRefs": [
+        "L0659:S0"
+      ],
+      "interpretation": "Prose elaborating on competitive harm mechanisms.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0660:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Terminal phrase of the second penalty condition.",
+      "evidenceRefs": [
+        "L0660:S0"
+      ],
+      "interpretation": "Prose concluding the violation description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0661:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Third penalty amount range introducing specific violation categories.",
+      "evidenceRefs": [
+        "L0661:S0"
+      ],
+      "interpretation": "Body text listing a higher monetary penalty tier with sub-items.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0662:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item 'a' describing competition law exemption request violations.",
+      "evidenceRefs": [
+        "L0662:S0"
+      ],
+      "interpretation": "Listed violation type under the third penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0663:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of sub-item 'a' regarding Ministry written approval.",
+      "evidenceRefs": [
+        "L0663:S0"
+      ],
+      "interpretation": "Prose completing the exemption request violation description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0664:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item 'b' describing failure to notify regulatory bodies before market entry.",
+      "evidenceRefs": [
+        "L0664:S0"
+      ],
+      "interpretation": "Listed violation type under the third penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0665:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of sub-item 'b' specifying market share thresholds.",
+      "evidenceRefs": [
+        "L0665:S0"
+      ],
+      "interpretation": "Prose completing the notification failure violation description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0666:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fourth penalty amount range introducing specific violation categories.",
+      "evidenceRefs": [
+        "L0666:S0"
+      ],
+      "interpretation": "Body text listing the highest monetary penalty tier with sub-items.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0667:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item 'a' describing misuse of competitor data for unfair competition.",
+      "evidenceRefs": [
+        "L0667:S0"
+      ],
+      "interpretation": "Listed violation type under the fourth penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0668:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of sub-item 'a' specifying data usage purpose.",
+      "evidenceRefs": [
+        "L0668:S0"
+      ],
+      "interpretation": "Prose completing the data misuse violation description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0669:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item 'b' describing service compensation for unfair competition.",
+      "evidenceRefs": [
+        "L0669:S0"
+      ],
+      "interpretation": "Listed violation type under the fourth penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0670:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of sub-item 'b' specifying compensation mechanism.",
+      "evidenceRefs": [
+        "L0670:S0"
+      ],
+      "interpretation": "Prose completing the service compensation violation description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0671:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article 24 heading: Violations of dispute resolution regulations in telecom services.",
+      "evidenceRefs": [
+        "L0671:S0"
+      ],
+      "interpretation": "Bold, larger-font (10.8pt) standalone line introducing a new regulatory article and its scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0672:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "First penalty amount range under Article 24.",
+      "evidenceRefs": [
+        "L0672:S0"
+      ],
+      "interpretation": "Body text listing a monetary penalty tier following the article heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0673:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item 'a' describing incomplete information provision to the Ministry.",
+      "evidenceRefs": [
+        "L0673:S0"
+      ],
+      "interpretation": "Listed violation type under the first penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0674:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of sub-item 'a' regarding mediation organization.",
+      "evidenceRefs": [
+        "L0674:S0"
+      ],
+      "interpretation": "Prose completing the information provision violation description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0675:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item 'b' describing refusal to participate in mandated mediation.",
+      "evidenceRefs": [
+        "L0675:S0"
+      ],
+      "interpretation": "Listed violation type under the first penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0676:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Second penalty amount range under Article 24.",
+      "evidenceRefs": [
+        "L0676:S0"
+      ],
+      "interpretation": "Body text listing a higher monetary penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0677:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of second penalty condition regarding non-compliance with decisions.",
+      "evidenceRefs": [
+        "L0677:S0"
+      ],
+      "interpretation": "Prose detailing the administrative decision violation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0678:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subheading: Supplementary penalty measures.",
+      "evidenceRefs": [
+        "L0678:S0"
+      ],
+      "interpretation": "Numbered subheading introducing a distinct category of sanctions within the article.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0679:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Detail of supplementary penalty: suspension of leasing business development.",
+      "evidenceRefs": [
+        "L0679:S0"
+      ],
+      "interpretation": "Body text specifying the duration and scope of the suspension sanction.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0680:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation referencing the applicable paragraph of the article.",
+      "evidenceRefs": [
+        "L0680:S0"
+      ],
+      "interpretation": "Prose linking the sanction to the specific legal provision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0681:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Amendment note referencing a subsequent government decree.",
+      "evidenceRefs": [
+        "L0681:S0"
+      ],
+      "interpretation": "Administrative metadata indicating legislative updates to the article.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0682:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading: Mục 3 (Section 3).",
+      "evidenceRefs": [
+        "L0682:S0"
+      ],
+      "interpretation": "Bold, larger-font (10.8pt) centered line marking a major document division.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0683:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section title: VIOLATIONS REGARDING NETWORK SETUP AND TELECOM SERVICE PROVISION.",
+      "evidenceRefs": [
+        "L0683:S0"
+      ],
+      "interpretation": "Bold, larger-font (10.8pt) uppercase line defining the substantive scope of the section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0684:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article 25 heading: Violations of network setup and service provision regulations.",
+      "evidenceRefs": [
+        "L0684:S0"
+      ],
+      "interpretation": "Bold, larger-font (10.8pt) standalone line introducing a new regulatory article.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0685:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "First penalty amount range under Article 25.",
+      "evidenceRefs": [
+        "L0685:S0"
+      ],
+      "interpretation": "Body text listing a monetary penalty tier following the article heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0686:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of first penalty condition regarding emergency service access.",
+      "evidenceRefs": [
+        "L0686:S0"
+      ],
+      "interpretation": "Prose detailing the specific service access violation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0687:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation specifying fixed-line and emergency assistance services.",
+      "evidenceRefs": [
+        "L0687:S0"
+      ],
+      "interpretation": "Prose completing the service access violation description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0688:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Second penalty amount range under Article 25.",
+      "evidenceRefs": [
+        "L0688:S0"
+      ],
+      "interpretation": "Body text listing a higher monetary penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0689:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of second penalty condition regarding subscriber information disclosure.",
+      "evidenceRefs": [
+        "L0689:S0"
+      ],
+      "interpretation": "Prose detailing the information sharing violation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0690:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation specifying Internet service providers.",
+      "evidenceRefs": [
+        "L0690:S0"
+      ],
+      "interpretation": "Prose completing the information sharing violation description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0691:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Third penalty amount range under Article 25.",
+      "evidenceRefs": [
+        "L0691:S0"
+      ],
+      "interpretation": "Body text listing a higher monetary penalty tier with sub-items.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0692:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item 'a' describing unauthorized service provision beyond license terms.",
+      "evidenceRefs": [
+        "L0692:S0"
+      ],
+      "interpretation": "Listed violation type under the third penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0693:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item 'b' describing improper resale of telecom services.",
+      "evidenceRefs": [
+        "L0693:S0"
+      ],
+      "interpretation": "Listed violation type under the third penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0694:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item 'c' describing failure to provide subscriber privacy information upon request.",
+      "evidenceRefs": [
+        "L0694:S0"
+      ],
+      "interpretation": "Listed violation type under the third penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0695:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of sub-item 'c' specifying competent state agencies.",
+      "evidenceRefs": [
+        "L0695:S0"
+      ],
+      "interpretation": "Prose completing the privacy information violation description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0696:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Amendment note referencing a subsequent government decree.",
+      "evidenceRefs": [
+        "L0696:S0"
+      ],
+      "interpretation": "Administrative metadata indicating legislative updates to the article.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0697:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fourth penalty amount range under Article 25.",
+      "evidenceRefs": [
+        "L0697:S0"
+      ],
+      "interpretation": "Body text listing the highest monetary penalty tier with sub-items.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0698:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item 'a' describing premature network activation before contract signing.",
+      "evidenceRefs": [
+        "L0698:S0"
+      ],
+      "interpretation": "Listed violation type under the fourth penalty tier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0699:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of sub-item 'a' specifying SIM card registration requirements.",
+      "evidenceRefs": [
+        "L0699:S0"
+      ],
+      "interpretation": "Prose completing the network activation violation description.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,445 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of numbered list item 6 defining applicable organizations.",
+      "evidenceRefs": ["L0035:S0"],
+      "interpretation": "Body text continuing a numbered list of organization types subject to the regulation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item 6 text.",
+      "evidenceRefs": ["L0036:S0"],
+      "interpretation": "Body text completing the definition of electronic documents in list item 6.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item 7 defining tax authorities.",
+      "evidenceRefs": ["L0037:S0"],
+      "interpretation": "Body text listing components of the tax authority structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item 8 defining customs authorities.",
+      "evidenceRefs": ["L0038:S0"],
+      "interpretation": "Body text listing components of the customs authority structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item 9 defining related organizations/individuals.",
+      "evidenceRefs": ["L0039:S0"],
+      "interpretation": "Body text identifying entities involved in invoice and document management.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold heading introducing Article 3 definitions.",
+      "evidenceRefs": ["L0040:S0"],
+      "interpretation": "Structural heading marking the start of Article 3, which provides definitions for terms used in the regulation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory sentence preceding the definitions list.",
+      "evidenceRefs": ["L0041:S0"],
+      "interpretation": "Standard legal preamble introducing the subsequent numbered definitions; functions as body text, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item 1 for 'invoice'.",
+      "evidenceRefs": ["L0042:S0"],
+      "interpretation": "Body text providing the first defined term in Article 3.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 1.",
+      "evidenceRefs": ["L0043:S0"],
+      "interpretation": "Body text completing the definition of invoice forms.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item 2 start for 'electronic invoice'.",
+      "evidenceRefs": ["L0044:S0"],
+      "interpretation": "Body text beginning the second defined term.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0045:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 2.",
+      "evidenceRefs": ["L0045:S0"],
+      "interpretation": "Body text continuing the electronic invoice definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0046:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 2.",
+      "evidenceRefs": ["L0046:S0"],
+      "interpretation": "Body text detailing legal and accounting requirements for electronic invoices.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0047:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 2.",
+      "evidenceRefs": ["L0047:S0"],
+      "interpretation": "Body text concluding the main clause of definition item 2.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0048:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item 'a' definition for electronic invoice with tax code.",
+      "evidenceRefs": ["L0048:S0"],
+      "interpretation": "Body text specifying the first subtype of electronic invoice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0049:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of sub-item 'a'.",
+      "evidenceRefs": ["L0049:S0"],
+      "interpretation": "Body text completing the description of electronic invoices with tax codes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0050:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-definition explaining tax code on electronic invoice.",
+      "evidenceRefs": ["L0050:S0"],
+      "interpretation": "Body text defining the composition of the tax code identifier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0051:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of tax code explanation.",
+      "evidenceRefs": ["L0051:S0"],
+      "interpretation": "Body text finishing the technical description of the tax code generation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0052:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item 'b' definition for electronic invoice without tax code.",
+      "evidenceRefs": ["L0052:S0"],
+      "interpretation": "Body text specifying the second subtype of electronic invoice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0053:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of sub-item 'b'.",
+      "evidenceRefs": ["L0053:S0"],
+      "interpretation": "Body text completing the description of electronic invoices without tax codes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0054:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item 3 for tax-issued invoices.",
+      "evidenceRefs": ["L0054:S0"],
+      "interpretation": "Body text beginning the third defined term.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0055:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 3.",
+      "evidenceRefs": ["L0055:S0"],
+      "interpretation": "Body text detailing eligibility conditions for purchasing tax-issued invoices.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0056:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 3.",
+      "evidenceRefs": ["L0056:S0"],
+      "interpretation": "Body text concluding the definition of tax-issued invoices.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0057:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item 4 for 'documents'.",
+      "evidenceRefs": ["L0057:S0"],
+      "interpretation": "Body text beginning the fourth defined term.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0058:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 4.",
+      "evidenceRefs": ["L0058:S0"],
+      "interpretation": "Body text specifying the scope of documents under state budget regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0059:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 4.",
+      "evidenceRefs": ["L0059:S0"],
+      "interpretation": "Body text listing examples of document formats.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0060:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item 5 for 'electronic documents'.",
+      "evidenceRefs": ["L0060:S0"],
+      "interpretation": "Body text beginning the fifth defined term.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0061:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 5.",
+      "evidenceRefs": ["L0061:S0"],
+      "interpretation": "Body text describing the transmission process of electronic documents.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0062:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 5.",
+      "evidenceRefs": ["L0062:S0"],
+      "interpretation": "Body text concluding the definition based on legal frameworks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0063:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item 6 for 'printed/self-printed documents'.",
+      "evidenceRefs": ["L0063:S0"],
+      "interpretation": "Body text beginning the sixth defined term.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0064:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 6.",
+      "evidenceRefs": ["L0064:S0"],
+      "interpretation": "Body text detailing printing methods and equipment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0065:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 6.",
+      "evidenceRefs": ["L0065:S0"],
+      "interpretation": "Body text concluding the definition with regulatory references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0066:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item 7 for 'legal invoices/documents'.",
+      "evidenceRefs": ["L0066:S0"],
+      "interpretation": "Body text beginning the seventh defined term.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0067:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 7.",
+      "evidenceRefs": ["L0067:S0"],
+      "interpretation": "Body text completing the requirement for form and content compliance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0068:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item 8 for 'fake invoices/documents'.",
+      "evidenceRefs": ["L0068:S0"],
+      "interpretation": "Body text beginning the eighth defined term.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0069:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 8.",
+      "evidenceRefs": ["L0069:S0"],
+      "interpretation": "Body text describing unauthorized reproduction and forgery methods.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0070:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 8.",
+      "evidenceRefs": ["L0070:S0"],
+      "interpretation": "Body text concluding the definition covering electronic variants.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0071:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item 9 for 'illegal use of invoices/documents'.",
+      "evidenceRefs": ["L0071:S0"],
+      "interpretation": "Body text beginning the ninth defined term.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0072:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 9.",
+      "evidenceRefs": ["L0072:S0"],
+      "interpretation": "Body text listing scenarios of invalid or expired document usage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0073:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 9.",
+      "evidenceRefs": ["L0073:S0"],
+      "interpretation": "Body text describing forced suspension periods and exceptions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0074:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 9.",
+      "evidenceRefs": ["L0074:S0"],
+      "interpretation": "Body text addressing unregistered electronic invoice usage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0075:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 9.",
+      "evidenceRefs": ["L0075:S0"],
+      "interpretation": "Body text covering mismatched dates and inactive seller locations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0076:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 9.",
+      "evidenceRefs": ["L0076:S0"],
+      "interpretation": "Body text detailing registration discrepancies with state authorities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0077:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 9.",
+      "evidenceRefs": ["L0077:S0"],
+      "interpretation": "Body text describing pre-dated document usage violations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0078:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 9.",
+      "evidenceRefs": ["L0078:S0"],
+      "interpretation": "Body text concluding the comprehensive list of illegal usage scenarios.",
+      "missingEvidence": []
+    }
+  ]
+}

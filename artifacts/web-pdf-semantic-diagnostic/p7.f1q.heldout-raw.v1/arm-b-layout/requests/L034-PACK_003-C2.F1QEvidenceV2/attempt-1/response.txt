@@ -1,0 +1,367 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0191:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '2' on page 14.",
+      "evidenceRefs": ["L0191:S0"],
+      "interpretation": "Page furniture indicating page sequence, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0192:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Placeholder for telephone number and codes.",
+      "evidenceRefs": ["L0192:S0"],
+      "interpretation": "Contact information placeholder in the header block, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0193:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Placeholder for facsimile number and codes.",
+      "evidenceRefs": ["L0193:S0"],
+      "interpretation": "Contact information placeholder in the header block, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0194:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Placeholder for email address.",
+      "evidenceRefs": ["L0194:S0"],
+      "interpretation": "Contact information placeholder in the header block, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0195:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Placeholder for web site address.",
+      "evidenceRefs": ["L0195:S0"],
+      "interpretation": "Contact information placeholder in the header block, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0196:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main title text 'Request for Bids' on page 15.",
+      "evidenceRefs": ["L0196:S0"],
+      "interpretation": "Primary document title displayed prominently on the cover page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0197:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title continuation 'Plant' on page 15.",
+      "evidenceRefs": ["L0197:S0"],
+      "interpretation": "Continuation of the main document title, sharing identical prominent typography.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0198:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtitle 'Design, Supply& Installation' on page 15.",
+      "evidenceRefs": ["L0198:S0"],
+      "interpretation": "Substantive subtitle describing the scope, formatted as part of the title block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0199:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtitle '(Without Prequalification)' on page 15.",
+      "evidenceRefs": ["L0199:S0"],
+      "interpretation": "Qualifying subtitle modifying the procurement method, part of the title block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0200:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title phrase 'Procurement of' on page 15.",
+      "evidenceRefs": ["L0200:S0"],
+      "interpretation": "Structural component of the full document title, formatted consistently with adjacent title lines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0201:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title placeholder '[insert identification...' on page 15.",
+      "evidenceRefs": ["L0201:S0"],
+      "interpretation": "Placeholder text occupying a designated slot within the document title structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0202:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title placeholder '& Installation)]' on page 15.",
+      "evidenceRefs": ["L0202:S0"],
+      "interpretation": "Continuation of the title placeholder, completing the scope description in the title block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0203:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Signature line underscores on page 15.",
+      "evidenceRefs": ["L0203:S0"],
+      "interpretation": "Administrative signature placeholder, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0204:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Metadata field 'RFB No: ...' on page 15.",
+      "evidenceRefs": ["L0204:S0"],
+      "interpretation": "Reference number metadata field, distinct from document headings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0205:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Metadata field 'Project: ...' on page 15.",
+      "evidenceRefs": ["L0205:S0"],
+      "interpretation": "Project identification metadata field, distinct from document headings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0206:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Metadata field 'Employer: ...' on page 15.",
+      "evidenceRefs": ["L0206:S0"],
+      "interpretation": "Employer identification metadata field, distinct from document headings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0207:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Metadata field 'Country: ...' on page 15.",
+      "evidenceRefs": ["L0207:S0"],
+      "interpretation": "Geographic metadata field, distinct from document headings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0208:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Metadata field 'Issued on: ...' on page 15.",
+      "evidenceRefs": ["L0208:S0"],
+      "interpretation": "Date metadata field, distinct from document headings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0209:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '1' on page 17.",
+      "evidenceRefs": ["L0209:S0"],
+      "interpretation": "Page furniture indicating page sequence, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0210:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document type heading 'Standard Procurement Document' on page 17.",
+      "evidenceRefs": ["L0210:S0"],
+      "interpretation": "Prominent heading identifying the document template type, operating as a title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0211:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading 'Table of Contents' on page 17.",
+      "evidenceRefs": ["L0211:S0"],
+      "interpretation": "Heading introducing the contents section, establishing document navigation structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0212:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'PART 1 – Bidding Procedures' with page number on page 17.",
+      "evidenceRefs": ["L0212:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0213:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Section I - Instructions to Bidders' with page number on page 17.",
+      "evidenceRefs": ["L0213:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0214:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Section II - Bid Data Sheet' with page number on page 17.",
+      "evidenceRefs": ["L0214:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0215:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Section III - Evaluation...' with page number on page 17.",
+      "evidenceRefs": ["L0215:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0216:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Section IV - Bidding Forms' with page number on page 17.",
+      "evidenceRefs": ["L0216:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0217:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Section V - Eligible Countries' with page number on page 17.",
+      "evidenceRefs": ["L0217:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0218:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Section VI - Fraud and Corruption' with page number on page 17.",
+      "evidenceRefs": ["L0218:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0219:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'PART 2 - Employer’s Requirements' with page number on page 17.",
+      "evidenceRefs": ["L0219:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0220:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Section VII - Employer’s Requirements' with page number on page 17.",
+      "evidenceRefs": ["L0220:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0221:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'PART 3 – Conditions of Contract...' with page number on page 17.",
+      "evidenceRefs": ["L0221:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0222:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Section VIII - General Conditions...' with page number on page 17.",
+      "evidenceRefs": ["L0222:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0223:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Section IX - Particular Conditions...' with page number on page 17.",
+      "evidenceRefs": ["L0223:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0224:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Section X - Contract Forms' with page number on page 17.",
+      "evidenceRefs": ["L0224:S0"],
+      "interpretation": "Table of contents listing referencing the corresponding body heading on another page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0225:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '3' on page 19.",
+      "evidenceRefs": ["L0225:S0"],
+      "interpretation": "Page furniture indicating page sequence, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0226:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Body heading 'PART 1 – Bidding Procedures' on page 19.",
+      "evidenceRefs": ["L0226:S0"],
+      "interpretation": "Substantive section heading operating at this source location, introducing the bidding procedures content.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

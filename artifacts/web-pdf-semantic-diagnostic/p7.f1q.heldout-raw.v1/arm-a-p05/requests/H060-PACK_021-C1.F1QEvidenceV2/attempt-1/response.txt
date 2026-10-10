@@ -1,0 +1,135 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1722:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic citation entry listing author, book title, publisher, and publication year.",
+      "evidenceRefs": ["L1722:S0"],
+      "interpretation": "This occurrence functions as a standard reference item in a bibliography, not as a structural heading or title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1723:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic citation providing publisher location and year.",
+      "evidenceRefs": ["L1723:S0"],
+      "interpretation": "This line completes the publication details for reference [7]; it serves no heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1724:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number printed in the header/footer area.",
+      "evidenceRefs": ["L1724:S0"],
+      "interpretation": "This is a pagination marker, not a document heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1725:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic citation entry listing author, book title, and publisher.",
+      "evidenceRefs": ["L1725:S0"],
+      "interpretation": "This occurrence functions as a standard reference item in a bibliography, not as a structural heading or title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1726:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic citation providing publisher location and year.",
+      "evidenceRefs": ["L1726:S0"],
+      "interpretation": "This line completes the publication details for reference [8]; it serves no heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1727:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic citation entry listing authors, book title, and publisher.",
+      "evidenceRefs": ["L1727:S0"],
+      "interpretation": "This occurrence functions as a standard reference item in a bibliography, not as a structural heading or title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1728:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic citation providing publisher location and year.",
+      "evidenceRefs": ["L1728:S0"],
+      "interpretation": "This line completes the publication details for reference [9]; it serves no heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1729:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic citation entry listing author, book title, and publisher.",
+      "evidenceRefs": ["L1729:S0"],
+      "interpretation": "This occurrence functions as a standard reference item in a bibliography, not as a structural heading or title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1730:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic citation providing publisher location and year.",
+      "evidenceRefs": ["L1730:S0"],
+      "interpretation": "This line completes the publication details for reference [10]; it serves no heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1731:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic citation entry listing author, book title, publisher, and year.",
+      "evidenceRefs": ["L1731:S0"],
+      "interpretation": "This occurrence functions as a standard reference item in a bibliography, not as a structural heading or title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1732:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic citation entry listing authors, book title, and publisher.",
+      "evidenceRefs": ["L1732:S0"],
+      "interpretation": "This occurrence functions as a standard reference item in a bibliography, not as a structural heading or title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1733:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic citation providing publisher location and year.",
+      "evidenceRefs": ["L1733:S0"],
+      "interpretation": "This line completes the publication details for reference [12]; it serves no heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1734:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number printed in the header/footer area.",
+      "evidenceRefs": ["L1734:S0"],
+      "interpretation": "This is a pagination marker, not a document heading or structural label.",
+      "missingEvidence": []
+    }
+  ]
+}

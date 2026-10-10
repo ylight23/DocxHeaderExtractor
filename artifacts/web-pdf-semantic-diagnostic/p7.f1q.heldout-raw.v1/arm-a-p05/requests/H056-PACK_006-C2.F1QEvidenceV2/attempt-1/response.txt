@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0509:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header containing page and section markers.",
+      "evidenceRefs": [
+        "L0509:S0"
+      ],
+      "interpretation": "Small bold font and numeric markers indicate page furniture rather than a substantive heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0510:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Assessment question stem introducing a list of options.",
+      "evidenceRefs": [
+        "L0510:S0"
+      ],
+      "interpretation": "Regular font and numbered format identify this as a test question, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0511:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'a'.",
+      "evidenceRefs": [
+        "L0511:S0"
+      ],
+      "interpretation": "Indented regular text serves as a selectable answer choice within an assessment item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0512:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'b'.",
+      "evidenceRefs": [
+        "L0512:S0"
+      ],
+      "interpretation": "Indented regular text serves as a selectable answer choice within an assessment item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0513:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'c'.",
+      "evidenceRefs": [
+        "L0513:S0"
+      ],
+      "interpretation": "Indented regular text serves as a selectable answer choice within an assessment item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0514:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'd'.",
+      "evidenceRefs": [
+        "L0514:S0"
+      ],
+      "interpretation": "Indented regular text serves as a selectable answer choice within an assessment item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0515:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Assessment question stem.",
+      "evidenceRefs": [
+        "L0515:S0"
+      ],
+      "interpretation": "Numbered query text functions as a test item, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0516:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Assessment question stem.",
+      "evidenceRefs": [
+        "L0516:S0"
+      ],
+      "interpretation": "Numbered declarative query functions as a test item, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0517:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'a'.",
+      "evidenceRefs": [
+        "L0517:S0"
+      ],
+      "interpretation": "Short indented text serves as a selectable answer choice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0518:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'b'.",
+      "evidenceRefs": [
+        "L0518:S0"
+      ],
+      "interpretation": "Short indented text serves as a selectable answer choice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0519:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Assessment question stem.",
+      "evidenceRefs": [
+        "L0519:S0"
+      ],
+      "interpretation": "Numbered query text functions as a test item, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0520:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'a'.",
+      "evidenceRefs": [
+        "L0520:S0"
+      ],
+      "interpretation": "Indented regular text serves as a selectable answer choice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0521:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'b'.",
+      "evidenceRefs": [
+        "L0521:S0"
+      ],
+      "interpretation": "Indented regular text serves as a selectable answer choice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0522:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'c'.",
+      "evidenceRefs": [
+        "L0522:S0"
+      ],
+      "interpretation": "Indented regular text serves as a selectable answer choice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0523:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'd'.",
+      "evidenceRefs": [
+        "L0523:S0"
+      ],
+      "interpretation": "Indented regular text serves as a selectable answer choice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0524:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Assessment question stem.",
+      "evidenceRefs": [
+        "L0524:S0"
+      ],
+      "interpretation": "Numbered query text functions as a test item, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0525:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'a'.",
+      "evidenceRefs": [
+        "L0525:S0"
+      ],
+      "interpretation": "Indented regular text serves as a selectable answer choice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0526:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'b'.",
+      "evidenceRefs": [
+        "L0526:S0"
+      ],
+      "interpretation": "Indented regular text serves as a selectable answer choice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0527:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'c'.",
+      "evidenceRefs": [
+        "L0527:S0"
+      ],
+      "interpretation": "Indented regular text serves as a selectable answer choice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0528:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'd'.",
+      "evidenceRefs": [
+        "L0528:S0"
+      ],
+      "interpretation": "Indented regular text serves as a selectable answer choice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0529:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Assessment question stem.",
+      "evidenceRefs": [
+        "L0529:S0"
+      ],
+      "interpretation": "Numbered declarative query functions as a test item, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0530:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'a'.",
+      "evidenceRefs": [
+        "L0530:S0"
+      ],
+      "interpretation": "Short indented text serves as a selectable answer choice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0531:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Multiple-choice option labeled 'b'.",
+      "evidenceRefs": [
+        "L0531:S0"
+      ],
+      "interpretation": "Short indented text serves as a selectable answer choice.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0532:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading introducing the endnotes bibliography.",
+      "evidenceRefs": [
+        "L0532:S0"
+      ],
+      "interpretation": "Large bold typography (15.6pt) distinctly separates this line as a structural heading for the endnotes section on page 21.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0533:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry.",
+      "evidenceRefs": [
+        "L0533:S0"
+      ],
+      "interpretation": "Standard citation format with retrieval URL indicates a reference list entry, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0534:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic reference URL.",
+      "evidenceRefs": [
+        "L0534:S0"
+      ],
+      "interpretation": "Fragmentary text continuing a web address functions as part of a citation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0535:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry.",
+      "evidenceRefs": [
+        "L0535:S0"
+      ],
+      "interpretation": "Standard citation format with retrieval URL indicates a reference list entry, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0536:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic reference URL.",
+      "evidenceRefs": [
+        "L0536:S0"
+      ],
+      "interpretation": "Fragmentary text continuing a web address functions as part of a citation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0537:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry.",
+      "evidenceRefs": [
+        "L0537:S0"
+      ],
+      "interpretation": "Standard citation format indicates a reference list entry, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0538:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic reference URL.",
+      "evidenceRefs": [
+        "L0538:S0"
+      ],
+      "interpretation": "Fragmentary text continuing a web address functions as part of a citation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0539:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic reference URL.",
+      "evidenceRefs": [
+        "L0539:S0"
+      ],
+      "interpretation": "Fragmentary text continuing a web address functions as part of a citation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0540:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry.",
+      "evidenceRefs": [
+        "L0540:S0"
+      ],
+      "interpretation": "Standard citation format indicates a reference list entry, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0541:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic reference URL.",
+      "evidenceRefs": [
+        "L0541:S0"
+      ],
+      "interpretation": "Fragmentary text continuing a web address functions as part of a citation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0542:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry.",
+      "evidenceRefs": [
+        "L0542:S0"
+      ],
+      "interpretation": "Standard citation format indicates a reference list entry, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L0543:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry.",
+      "evidenceRefs": [
+        "L0543:S0"
+      ],
+      "interpretation": "Standard citation format indicates a reference list entry, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L0544:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic reference URL.",
+      "evidenceRefs": [
+        "L0544:S0"
+      ],
+      "interpretation": "Fragmentary text continuing a web address functions as part of a citation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L0545:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry.",
+      "evidenceRefs": [
+        "L0545:S0"
+      ],
+      "interpretation": "Standard citation format indicates a reference list entry, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L0546:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic reference URL.",
+      "evidenceRefs": [
+        "L0546:S0"
+      ],
+      "interpretation": "Fragmentary text continuing a web address functions as part of a citation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L0547:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry.",
+      "evidenceRefs": [
+        "L0547:S0"
+      ],
+      "interpretation": "Standard citation format indicates a reference list entry, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L0548:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry.",
+      "evidenceRefs": [
+        "L0548:S0"
+      ],
+      "interpretation": "Standard citation format indicates a reference list entry, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L0549:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic reference URL.",
+      "evidenceRefs": [
+        "L0549:S0"
+      ],
+      "interpretation": "Fragmentary text continuing a web address functions as part of a citation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L0550:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header containing page and section markers.",
+      "evidenceRefs": [
+        "L0550:S0"
+      ],
+      "interpretation": "Small bold font and numeric markers indicate page furniture rather than a substantive heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L0551:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Publisher access instruction in footer position.",
+      "evidenceRefs": [
+        "L0551:S0"
+      ],
+      "interpretation": "Repetitive promotional text at page bottom functions as publisher metadata, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L0552:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter number heading.",
+      "evidenceRefs": [
+        "L0552:S0"
+      ],
+      "interpretation": "Large bold typography (15.6pt) identifies this digit as the structural marker for Chapter 2.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L0553:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter title.",
+      "evidenceRefs": [
+        "L0553:S0"
+      ],
+      "interpretation": "Large bold typography establishes this phrase as the main title for Chapter 2.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L0554:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Figure caption with attribution credit.",
+      "evidenceRefs": [
+        "L0554:S0"
+      ],
+      "interpretation": "Smaller font and explicit credit notation mark this as a figure label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L0555:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading for the chapter outline.",
+      "evidenceRefs": [
+        "L0555:S0"
+      ],
+      "interpretation": "Bold typography introduces the list of subsections for the chapter.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L0556:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading.",
+      "evidenceRefs": [
+        "L0556:S0"
+      ],
+      "interpretation": "Numbered label with distinct typography marks the start of subsection 2.1.",
+      "missingEvidence": []
+    }
+  ]
+}

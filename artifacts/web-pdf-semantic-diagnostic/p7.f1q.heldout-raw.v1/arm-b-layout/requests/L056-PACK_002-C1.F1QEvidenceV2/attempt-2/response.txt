@@ -1,0 +1,425 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0070:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Large bold title fragment on page 6",
+      "evidenceRefs": ["L0070:S0"],
+      "interpretation": "Forms part of the prominent book title or main slogan displayed at the top of the introductory page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0071:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Large bold title continuation on page 6",
+      "evidenceRefs": ["L0071:S0"],
+      "interpretation": "Completes the prominent title/slogan phrase alongside O1.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0072:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing web view features",
+      "evidenceRefs": ["L0072:S0"],
+      "interpretation": "Standard paragraph prose explaining product functionality.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0073:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation about study guides",
+      "evidenceRefs": ["L0073:S0"],
+      "interpretation": "Continues the descriptive body paragraph from O3.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0074:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text stating pricing model",
+      "evidenceRefs": ["L0074:S0"],
+      "interpretation": "Descriptive sentence about the book's availability.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0075:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Call-to-action URL for getting started",
+      "evidenceRefs": ["L0075:S0"],
+      "interpretation": "Instructional link directing readers to a website.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0076:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Tagline and mission statement",
+      "evidenceRefs": ["L0076:S0"],
+      "interpretation": "Promotional slogan rather than a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0077:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Publisher website address",
+      "evidenceRefs": ["L0077:S0"],
+      "interpretation": "Footer-style URL reference.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0078:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents heading",
+      "evidenceRefs": ["L0078:S0"],
+      "interpretation": "Header introducing the navigational list of document sections.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0079:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Preface",
+      "evidenceRefs": ["L0079:S0"],
+      "interpretation": "Lists a section heading that appears on page 11.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0080:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Chapter 1",
+      "evidenceRefs": ["L0080:S0"],
+      "interpretation": "Lists a chapter heading that appears on page 13.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0081:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Introduction",
+      "evidenceRefs": ["L0081:S0"],
+      "interpretation": "Lists an introduction heading appearing on multiple pages.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0082:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 1.1",
+      "evidenceRefs": ["L0082:S0"],
+      "interpretation": "Lists a subsection heading appearing on page 13.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0083:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 1.2",
+      "evidenceRefs": ["L0083:S0"],
+      "interpretation": "Lists a subsection heading appearing on page 15.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0084:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 1.3",
+      "evidenceRefs": ["L0084:S0"],
+      "interpretation": "Lists a subsection heading appearing on page 17.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0085:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Assessment Questions",
+      "evidenceRefs": ["L0085:S0"],
+      "interpretation": "Lists a recurring section heading appearing on page 20.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0086:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Endnotes",
+      "evidenceRefs": ["L0086:S0"],
+      "interpretation": "Lists an endnotes section heading appearing on page 119.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0087:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Chapter 2",
+      "evidenceRefs": ["L0087:S0"],
+      "interpretation": "Lists a chapter heading appearing on page 23.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0088:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Introduction",
+      "evidenceRefs": ["L0088:S0"],
+      "interpretation": "Lists an introduction heading appearing on page 23.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0089:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 2.1",
+      "evidenceRefs": ["L0089:S0"],
+      "interpretation": "Lists a subsection heading appearing on page 23.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0090:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 2.2",
+      "evidenceRefs": ["L0090:S0"],
+      "interpretation": "Lists a subsection heading appearing on page 162.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0091:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 2.3",
+      "evidenceRefs": ["L0091:S0"],
+      "interpretation": "Lists a subsection heading appearing on page 29.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0092:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Assessment Questions",
+      "evidenceRefs": ["L0092:S0"],
+      "interpretation": "Lists a recurring section heading appearing on page 33.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0093:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Endnotes",
+      "evidenceRefs": ["L0093:S0"],
+      "interpretation": "Lists an endnotes section heading appearing on page 21.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0094:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Chapter 3",
+      "evidenceRefs": ["L0094:S0"],
+      "interpretation": "Lists a chapter heading appearing on page 37.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0095:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Introduction",
+      "evidenceRefs": ["L0095:S0"],
+      "interpretation": "Lists an introduction heading appearing on page 37.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0096:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 3.1",
+      "evidenceRefs": ["L0096:S0"],
+      "interpretation": "Lists a subsection heading appearing on page 37.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0097:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 3.2",
+      "evidenceRefs": ["L0097:S0"],
+      "interpretation": "Lists a subsection heading appearing on page 41.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0098:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Assessment Questions",
+      "evidenceRefs": ["L0098:S0"],
+      "interpretation": "Lists a recurring section heading appearing on page 45.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0099:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Endnotes",
+      "evidenceRefs": ["L0099:S0"],
+      "interpretation": "Lists an endnotes section heading appearing on page 34.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0100:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Chapter 4",
+      "evidenceRefs": ["L0100:S0"],
+      "interpretation": "Lists a chapter heading appearing on page 47.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0101:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Introduction",
+      "evidenceRefs": ["L0101:S0"],
+      "interpretation": "Lists an introduction heading appearing on page 47.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0102:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.1",
+      "evidenceRefs": ["L0102:S0"],
+      "interpretation": "Lists a subsection heading appearing on page 47.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0103:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.2",
+      "evidenceRefs": ["L0103:S0"],
+      "interpretation": "Lists a subsection heading appearing on page 51.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0104:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Assessment Questions",
+      "evidenceRefs": ["L0104:S0"],
+      "interpretation": "Lists a recurring section heading appearing on page 55.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0105:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Endnotes",
+      "evidenceRefs": ["L0105:S0"],
+      "interpretation": "Lists an endnotes section heading appearing on page 45.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0106:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Chapter 5",
+      "evidenceRefs": ["L0106:S0"],
+      "interpretation": "Lists a chapter heading appearing on page 57.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0107:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Introduction",
+      "evidenceRefs": ["L0107:S0"],
+      "interpretation": "Lists an introduction heading appearing on page 57.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0108:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 5.1",
+      "evidenceRefs": ["L0108:S0"],
+      "interpretation": "Lists a subsection heading appearing on page 57.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0109:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 5.2",
+      "evidenceRefs": ["L0109:S0"],
+      "interpretation": "Lists a subsection heading appearing on page 61.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0110:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Assessment Questions",
+      "evidenceRefs": ["L0110:S0"],
+      "interpretation": "Lists a recurring section heading appearing on page 65.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0111:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Endnotes",
+      "evidenceRefs": ["L0111:S0"],
+      "interpretation": "Lists an endnotes section heading appearing on page 55.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1867:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "First numbered item listing an annulment under Article 16",
+      "evidenceRefs": [
+        "L1867:S0"
+      ],
+      "interpretation": "Lists a specific regulation to be annulled under the preceding article heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1868:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the annulment reference",
+      "evidenceRefs": [
+        "L1868:S0"
+      ],
+      "interpretation": "Completes the date and subject of the annulled decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1869:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item listing an article to be annulled",
+      "evidenceRefs": [
+        "L1869:S0"
+      ],
+      "interpretation": "Identifies a specific article within the annulled decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1870:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item listing clauses and articles",
+      "evidenceRefs": [
+        "L1870:S0"
+      ],
+      "interpretation": "Identifies specific clauses and articles within the annulled decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1871:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item listing clauses and articles",
+      "evidenceRefs": [
+        "L1871:S0"
+      ],
+      "interpretation": "Identifies specific clauses and articles within the annulled decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1872:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Second numbered item listing an annulment",
+      "evidenceRefs": [
+        "L1872:S0"
+      ],
+      "interpretation": "Lists a second regulation to be annulled under Article 16.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1873:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the second annulment reference",
+      "evidenceRefs": [
+        "L1873:S0"
+      ],
+      "interpretation": "Completes the date and subject of the second annulled decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1874:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item listing clauses and articles",
+      "evidenceRefs": [
+        "L1874:S0"
+      ],
+      "interpretation": "Identifies specific clauses and articles within the annulled decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1875:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item listing clauses and articles",
+      "evidenceRefs": [
+        "L1875:S0"
+      ],
+      "interpretation": "Identifies specific clauses and articles within the annulled decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1876:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item quoting a sentence to be annulled",
+      "evidenceRefs": [
+        "L1876:S0"
+      ],
+      "interpretation": "Quotes a specific sentence from the annulled decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1877:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the quoted sentence",
+      "evidenceRefs": [
+        "L1877:S0"
+      ],
+      "interpretation": "Completes the quoted sentence and identifies its source clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1878:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item listing clauses and articles",
+      "evidenceRefs": [
+        "L1878:S0"
+      ],
+      "interpretation": "Identifies specific clauses and articles within the annulled decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1879:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Third numbered item listing an annulment",
+      "evidenceRefs": [
+        "L1879:S0"
+      ],
+      "interpretation": "Lists a circular to be annulled under Article 16.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1880:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the third annulment reference",
+      "evidenceRefs": [
+        "L1880:S0"
+      ],
+      "interpretation": "Completes the subject of the annulled circular.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1881:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading for Article 17",
+      "evidenceRefs": [
+        "L1881:S0"
+      ],
+      "interpretation": "Bolded line establishing the title and scope of Article 17.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1882:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Continuation of Article 17 heading",
+      "evidenceRefs": [
+        "L1882:S0"
+      ],
+      "interpretation": "Bolded line completing the title of Article 17.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L1883:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered item introducing amendment details",
+      "evidenceRefs": [
+        "L1883:S0"
+      ],
+      "interpretation": "Introduces the specific article being amended under Article 17.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L1884:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted text describing screening tests",
+      "evidenceRefs": [
+        "L1884:S0"
+      ],
+      "interpretation": "Body text detailing requirements for laboratory screening tests.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L1885:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Label for personnel requirements",
+      "evidenceRefs": [
+        "L1885:S0"
+      ],
+      "interpretation": "Body text label specifying personnel criteria.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L1886:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory phrase for tester qualifications",
+      "evidenceRefs": [
+        "L1886:S0"
+      ],
+      "interpretation": "Body text introducing qualifications for testers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L1887:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item specifying educational requirements",
+      "evidenceRefs": [
+        "L1887:S0"
+      ],
+      "interpretation": "Body text listing required educational majors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L1888:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of educational requirements",
+      "evidenceRefs": [
+        "L1888:S0"
+      ],
+      "interpretation": "Body text completing the list of required majors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L1889:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item specifying training requirement",
+      "evidenceRefs": [
+        "L1889:S0"
+      ],
+      "interpretation": "Body text stating training requirement for testers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L1890:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item describing equipment requirements",
+      "evidenceRefs": [
+        "L1890:S0"
+      ],
+      "interpretation": "Body text specifying laboratory equipment needs.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L1891:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of equipment requirements",
+      "evidenceRefs": [
+        "L1891:S0"
+      ],
+      "interpretation": "Body text completing the equipment specification.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L1892:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item describing facility requirements",
+      "evidenceRefs": [
+        "L1892:S0"
+      ],
+      "interpretation": "Body text specifying facility location requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L1893:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered item introducing community testing section",
+      "evidenceRefs": [
+        "L1893:S0"
+      ],
+      "interpretation": "Body text heading for the next subsection on community testing.",
+      "missingEvidence": []
+    }
+  ]
+}

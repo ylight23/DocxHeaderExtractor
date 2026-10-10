@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L4617:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment completing the preceding sentence regarding securities to be provided.",
+      "evidenceRefs": [
+        "L4617:S0"
+      ],
+      "interpretation": "Prose fragment finishing the clause introduction about securities specified below.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L4618:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section heading introducing advance payment security provisions.",
+      "evidenceRefs": [
+        "L4618:S0"
+      ],
+      "interpretation": "Substantive contractual heading marking the start of section 13.2 on advance payment security.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L4619:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered sub-clause heading initiating the first obligation under section 13.2.",
+      "evidenceRefs": [
+        "L4619:S0"
+      ],
+      "interpretation": "Substantive sub-clause heading establishing the initial timeline for providing advance payment security.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L4620:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the sub-clause requirement regarding security provision.",
+      "evidenceRefs": [
+        "L4620:S0"
+      ],
+      "interpretation": "Prose continuing the sentence from the preceding sub-clause heading about security amounts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L4621:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running page header displaying the document section title and page number.",
+      "evidenceRefs": [
+        "L4621:S0"
+      ],
+      "interpretation": "Standard page furniture containing the section name and pagination metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L4622:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying the monetary basis for the required security amount.",
+      "evidenceRefs": [
+        "L4622:S0"
+      ],
+      "interpretation": "Prose detailing how the advance payment amount determines the security value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L4623:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text referencing a specific contract appendix for calculation methodology.",
+      "evidenceRefs": [
+        "L4623:S0"
+      ],
+      "interpretation": "Prose citing the Appendix to the Contract Agreement for payment terms.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L4624:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text completing the appendix title and introducing currency requirements.",
+      "evidenceRefs": [
+        "L4624:S0"
+      ],
+      "interpretation": "Prose finishing the appendix reference and specifying currency matching rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L4625:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single-word fragment closing the sentence on acceptable currencies for security.",
+      "evidenceRefs": [
+        "L4625:S0"
+      ],
+      "interpretation": "Prose fragment terminating the currency specification clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L4626:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered sub-clause heading defining the required form of advance payment security.",
+      "evidenceRefs": [
+        "L4626:S0"
+      ],
+      "interpretation": "Substantive sub-clause heading establishing format requirements for the security instrument.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L4627:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text completing the sentence on acceptable security formats per employer approval.",
+      "evidenceRefs": [
+        "L4627:S0"
+      ],
+      "interpretation": "Prose finishing the clause regarding RFP forms or employer-approved alternatives.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L4628:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text outlining the proportional reduction schedule for the security amount.",
+      "evidenceRefs": [
+        "L4628:S0"
+      ],
+      "interpretation": "Prose describing how the security amount decreases relative to executed facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L4629:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying the execution and payment milestones triggering reduction.",
+      "evidenceRefs": [
+        "L4629:S0"
+      ],
+      "interpretation": "Prose linking facility execution and payment to the reduction mechanism.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L4630:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text linking facility execution to automatic security adjustment.",
+      "evidenceRefs": [
+        "L4630:S0"
+      ],
+      "interpretation": "Prose continuing the description of automatic proportional adjustments over time.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L4631:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text stating the condition under which the security becomes void.",
+      "evidenceRefs": [
+        "L4631:S0"
+      ],
+      "interpretation": "Prose defining the full recovery trigger that invalidates the security.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L4632:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text completing the recovery trigger and transitioning to return obligations.",
+      "evidenceRefs": [
+        "L4632:S0"
+      ],
+      "interpretation": "Prose finishing the void condition and introducing the return process.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L4633:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text mandating immediate return of security upon expiration.",
+      "evidenceRefs": [
+        "L4633:S0"
+      ],
+      "interpretation": "Prose specifying the timing for returning the security to the Contractor.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L4634:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section heading marking the start of provisions on performance security.",
+      "evidenceRefs": [
+        "L4634:S0"
+      ],
+      "interpretation": "Substantive contractual heading introducing section 13.3 regarding performance security.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L4635:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered sub-clause heading establishing the initial timeline for performance security.",
+      "evidenceRefs": [
+        "L4635:S0"
+      ],
+      "interpretation": "Substantive sub-clause heading setting the 28-day deadline for providing performance security.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L4636:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the sentence from the preceding sub-clause heading.",
+      "evidenceRefs": [
+        "L4636:S0"
+      ],
+      "interpretation": "Prose detailing the purpose of the security for due contract performance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L4637:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining the security's purpose and referencing the stipulated amount.",
+      "evidenceRefs": [
+        "L4637:S0"
+      ],
+      "interpretation": "Prose linking the security amount to the PCC documentation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L4638:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Abbreviation fragment closing the reference to the Project Control Committee document.",
+      "evidenceRefs": [
+        "L4638:S0"
+      ],
+      "interpretation": "Prose fragment terminating the amount specification clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L4639:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered sub-clause heading establishing currency requirements for performance security.",
+      "evidenceRefs": [
+        "L4639:S0"
+      ],
+      "interpretation": "Substantive sub-clause heading defining the denominations allowed for the security.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L4640:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text listing acceptable currency options for the security.",
+      "evidenceRefs": [
+        "L4640:S0"
+      ],
+      "interpretation": "Prose specifying contract currency or freely convertible alternatives.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L4641:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text finalizing currency acceptability criteria and transitioning to form requirements.",
+      "evidenceRefs": [
+        "L4641:S0"
+      ],
+      "interpretation": "Prose confirming employer approval for convertible currencies and introducing form rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L4642:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text citing the contract forms section for required security format.",
+      "evidenceRefs": [
+        "L4642:S0"
+      ],
+      "interpretation": "Prose referencing Section X, Contract Forms for the guarantee template.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L4643:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text linking the security form to the guaranteed type specified by the employer.",
+      "evidenceRefs": [
+        "L4643:S0"
+      ],
+      "interpretation": "Prose aligning the bank guarantee type with employer stipulations in the PCC.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L4644:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text offering alternative forms acceptable to the employer.",
+      "evidenceRefs": [
+        "L4644:S0"
+      ],
+      "interpretation": "Prose permitting employer-approved substitutes for the standard guarantee form.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L4645:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single-word fragment closing the sentence on employer-approved forms.",
+      "evidenceRefs": [
+        "L4645:S0"
+      ],
+      "interpretation": "Prose fragment terminating the form specification clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L4646:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered sub-clause heading establishing the default reduction schedule for performance security.",
+      "evidenceRefs": [
+        "L4646:S0"
+      ],
+      "interpretation": "Substantive sub-clause heading setting the baseline reduction rules absent PCC modifications.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L4647:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text detailing the fifty percent reduction triggered by operational acceptance.",
+      "evidenceRefs": [
+        "L4647:S0"
+      ],
+      "interpretation": "Prose specifying the first major milestone for security reduction.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L4648:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text outlining the conditions for complete expiration or further proportional reduction.",
+      "evidenceRefs": [
+        "L4648:S0"
+      ],
+      "interpretation": "Prose describing the security's path to becoming void or partially reduced.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L4649:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining the pro-rata reduction mechanism tied to specific facility parts.",
+      "evidenceRefs": [
+        "L4649:S0"
+      ],
+      "interpretation": "Prose linking reduction percentages to individual facility components.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L4650:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text identifying facilities with independent completion dates for reduction purposes.",
+      "evidenceRefs": [
+        "L4650:S0"
+      ],
+      "interpretation": "Prose clarifying that separate completion timelines apply to distinct facility sections.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L4651:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text stating the 540-day post-completion threshold for security expiration.",
+      "evidenceRefs": [
+        "L4651:S0"
+      ],
+      "interpretation": "Prose defining the primary expiration window measured from facility completion.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L4652:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text presenting the 365-day post-acceptance alternative expiration trigger.",
+      "evidenceRefs": [
+        "L4652:S0"
+      ],
+      "interpretation": "Prose offering a secondary expiration metric based on operational acceptance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L4653:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose selecting the earlier expiration date and introducing conditional exceptions.",
+      "evidenceRefs": [
+        "L4653:S0"
+      ],
+      "interpretation": "Prose applying the whichever-occurs-first rule and pivoting to liability extensions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L4654:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing the exception where extended liability periods affect security duration.",
+      "evidenceRefs": [
+        "L4654:S0"
+      ],
+      "interpretation": "Prose addressing scenarios where the Defects Liability Period is prolonged.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L4655:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose citing the specific general conditions clause authorizing liability extensions.",
+      "evidenceRefs": [
+        "L4655:S0"
+      ],
+      "interpretation": "Prose referencing GCC Sub-Clause 27.8 as the governing authority for extensions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L4656:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose mandating supplementary security issuance following liability period extensions.",
+      "evidenceRefs": [
+        "L4656:S0"
+      ],
+      "interpretation": "Prose imposing an obligation to issue additional security when defects liability extends.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L4657:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose calculating the additional security value and shifting focus to return procedures.",
+      "evidenceRefs": [
+        "L4657:S0"
+      ],
+      "interpretation": "Prose tying the extra security amount to the affected contract price portion.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L4658:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose requiring prompt return of security upon expiration.",
+      "evidenceRefs": [
+        "L4658:S0"
+      ],
+      "interpretation": "Prose establishing the standard return rule following security expiration.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L4659:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose establishing the standard return rule while introducing contractor liability exceptions.",
+      "evidenceRefs": [
+        "L4659:S0"
+      ],
+      "interpretation": "Prose adding a proviso that retention may occur if the Contractor faces extended liability.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L4660:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose citing the general conditions clause governing extended defect liability obligations.",
+      "evidenceRefs": [
+        "L4660:S0"
+      ],
+      "interpretation": "Prose referencing GCC Sub-Clause 27.10 as the basis for prolonged defect responsibilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L4661:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose connecting extended defect liability to mandatory security prolongation.",
+      "evidenceRefs": [
+        "L4661:S0"
+      ],
+      "interpretation": "Prose linking the Contractor's extended obligations to the necessity of extending the security.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L4662:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose directing that extension length follows PCC specifications and governing clauses.",
+      "evidenceRefs": [
+        "L4662:S0"
+      ],
+      "interpretation": "Prose specifying that the PCC dictates the authorized extension period.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L4663:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose finalizing the authorized extension period and maximum security amount.",
+      "evidenceRefs": [
+        "L4663:S0"
+      ],
+      "interpretation": "Prose concluding the extension parameters by capping the amount per PCC directives.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L4664:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered sub-clause heading establishing limitations on employer claims against performance security.",
+      "evidenceRefs": [
+        "L4664:S0"
+      ],
+      "interpretation": "Substantive sub-clause heading introducing section 13.3.4 restrictions on claim rights.",
+      "missingEvidence": []
+    }
+  ]
+}

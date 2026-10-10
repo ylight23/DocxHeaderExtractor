@@ -1,0 +1,461 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'a/' detailing transmission systems components.",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "interpretation": "Functions as a definitional sub-clause within Article 1, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item 'a/' describing transmission systems.",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "interpretation": "Body text continuing the definition of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0045:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item 'a/' specifying enterprise services.",
+      "evidenceRefs": [
+        "L0045:S0"
+      ],
+      "interpretation": "Body text continuing the definition of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0046:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item 'a/' regarding telecommunications networks.",
+      "evidenceRefs": [
+        "L0046:S0"
+      ],
+      "interpretation": "Body text continuing the definition of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0047:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of list item 'a/' referencing cyberspace services.",
+      "evidenceRefs": [
+        "L0047:S0"
+      ],
+      "interpretation": "Body text concluding the first sub-list of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0048:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'b/' introducing core service systems.",
+      "evidenceRefs": [
+        "L0048:S0"
+      ],
+      "interpretation": "Functions as a definitional sub-clause within Article 1, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0049:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Detailing DNS and channeling systems in item 'b/'.",
+      "evidenceRefs": [
+        "L0049:S0"
+      ],
+      "interpretation": "Body text continuing the definition of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0050:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuing item 'b/' with PKI/CA systems.",
+      "evidenceRefs": [
+        "L0050:S0"
+      ],
+      "interpretation": "Body text continuing the definition of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0051:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuing item 'b/' on internet access services.",
+      "evidenceRefs": [
+        "L0051:S0"
+      ],
+      "interpretation": "Body text continuing the definition of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0052:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuing item 'b/' on telecommunications networks.",
+      "evidenceRefs": [
+        "L0052:S0"
+      ],
+      "interpretation": "Body text continuing the definition of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0053:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding item 'b/' referencing cyberspace services.",
+      "evidenceRefs": [
+        "L0053:S0"
+      ],
+      "interpretation": "Body text concluding the second sub-list of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0054:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'c/' introducing IT services and applications.",
+      "evidenceRefs": [
+        "L0054:S0"
+      ],
+      "interpretation": "Functions as a definitional sub-clause within Article 1, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0055:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Detailing online services in item 'c/'.",
+      "evidenceRefs": [
+        "L0055:S0"
+      ],
+      "interpretation": "Body text continuing the definition of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0056:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuing item 'c/' on management work.",
+      "evidenceRefs": [
+        "L0056:S0"
+      ],
+      "interpretation": "Body text continuing the definition of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0057:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuing item 'c/' on organizations and national entities.",
+      "evidenceRefs": [
+        "L0057:S0"
+      ],
+      "interpretation": "Body text continuing the definition of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0058:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding item 'c/' with databases.",
+      "evidenceRefs": [
+        "L0058:S0"
+      ],
+      "interpretation": "Body text concluding the third sub-list of infrastructure facilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0059:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-item elaborating on online services types.",
+      "evidenceRefs": [
+        "L0059:S0"
+      ],
+      "interpretation": "Body text providing examples within the definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0060:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Garbled/OCR text likely continuing the list of online services.",
+      "evidenceRefs": [
+        "L0060:S0"
+      ],
+      "interpretation": "Body text continuation despite OCR artifacts, functioning as definition detail.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0061:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition 6 for International gateway.",
+      "evidenceRefs": [
+        "L0061:S0"
+      ],
+      "interpretation": "Functions as a definitional clause within Article 1, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0062:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition 6.",
+      "evidenceRefs": [
+        "L0062:S0"
+      ],
+      "interpretation": "Body text continuing the definition of international gateway.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0063:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition 6.",
+      "evidenceRefs": [
+        "L0063:S0"
+      ],
+      "interpretation": "Body text concluding the definition of international gateway.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0064:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition 7 for Cybercrime.",
+      "evidenceRefs": [
+        "L0064:S0"
+      ],
+      "interpretation": "Functions as a definitional clause within Article 1, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0065:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition 7.",
+      "evidenceRefs": [
+        "L0065:S0"
+      ],
+      "interpretation": "Body text continuing the definition of cybercrime.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0066:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition 7 referencing Penal Code.",
+      "evidenceRefs": [
+        "L0066:S0"
+      ],
+      "interpretation": "Body text concluding the definition of cybercrime.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0067:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition 8 for Cyber-attack.",
+      "evidenceRefs": [
+        "L0067:S0"
+      ],
+      "interpretation": "Functions as a definitional clause within Article 1, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0068:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition 8.",
+      "evidenceRefs": [
+        "L0068:S0"
+      ],
+      "interpretation": "Body text continuing the definition of cyber-attack.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0069:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition 8 listing network types.",
+      "evidenceRefs": [
+        "L0069:S0"
+      ],
+      "interpretation": "Body text continuing the definition of cyber-attack.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0070:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition 8 listing systems.",
+      "evidenceRefs": [
+        "L0070:S0"
+      ],
+      "interpretation": "Body text continuing the definition of cyber-attack.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0071:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition 8.",
+      "evidenceRefs": [
+        "L0071:S0"
+      ],
+      "interpretation": "Body text concluding the definition of cyber-attack.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0072:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition 9 for Cyber terrorism.",
+      "evidenceRefs": [
+        "L0072:S0"
+      ],
+      "interpretation": "Functions as a definitional clause within Article 1, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0073:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition 9.",
+      "evidenceRefs": [
+        "L0073:S0"
+      ],
+      "interpretation": "Body text continuing the definition of cyber terrorism.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0074:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition 9.",
+      "evidenceRefs": [
+        "L0074:S0"
+      ],
+      "interpretation": "Body text concluding the definition of cyber terrorism.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0075:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition 10 for Cyber espionage.",
+      "evidenceRefs": [
+        "L0075:S0"
+      ],
+      "interpretation": "Functions as a definitional clause within Article 1, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0076:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition 10.",
+      "evidenceRefs": [
+        "L0076:S0"
+      ],
+      "interpretation": "Body text continuing the definition of cyber espionage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0077:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition 10.",
+      "evidenceRefs": [
+        "L0077:S0"
+      ],
+      "interpretation": "Body text continuing the definition of cyber espionage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0078:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition 10.",
+      "evidenceRefs": [
+        "L0078:S0"
+      ],
+      "interpretation": "Body text continuing the definition of cyber espionage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L0079:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition 10.",
+      "evidenceRefs": [
+        "L0079:S0"
+      ],
+      "interpretation": "Body text concluding the definition of cyber espionage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L0080:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer containing publication info.",
+      "evidenceRefs": [
+        "L0080:S0"
+      ],
+      "interpretation": "Functions as page furniture/footer, not a structural heading.",
+      "missingEvidence": []
+    }
+  ]
+}

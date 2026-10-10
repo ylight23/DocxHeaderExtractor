@@ -1,0 +1,467 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1952:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (8) detailing regulatory scope for medicines.",
+      "evidenceRefs": ["L1952:S0"],
+      "interpretation": "Body prose continuing a numbered list of goods subject to import licensing rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1952:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment specifying license type for the preceding list item.",
+      "evidenceRefs": ["L1952:S1"],
+      "interpretation": "Continuation of list item formatting, indicating required documentation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1953:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Geographic qualifier completing the preceding list entry.",
+      "evidenceRefs": ["L1953:S0"],
+      "interpretation": "Part of the list item's descriptive text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1954:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (9) heading for medicinal materials.",
+      "evidenceRefs": ["L1954:S0"],
+      "interpretation": "List entry title within a regulatory catalog.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1955:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Descriptive continuation for item 9.",
+      "evidenceRefs": ["L1955:S0"],
+      "interpretation": "Body text elaborating on the scope of item 9.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1956:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase for item 9.",
+      "evidenceRefs": ["L1956:S0"],
+      "interpretation": "Part of the list item's regulatory description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1957:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (10) introducing reference materials.",
+      "evidenceRefs": ["L1957:S0"],
+      "interpretation": "List entry title within a regulatory catalog.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1957:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "License requirement fragment for item 10.",
+      "evidenceRefs": ["L1957:S1"],
+      "interpretation": "Continuation of list item formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1958:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Descriptive continuation for item 10.",
+      "evidenceRefs": ["L1958:S0"],
+      "interpretation": "Body text elaborating on the scope of item 10.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1959:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (11) introducing imported food.",
+      "evidenceRefs": ["L1959:S0"],
+      "interpretation": "List entry title within a regulatory catalog.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1959:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Document type fragment for item 11.",
+      "evidenceRefs": ["L1959:S1"],
+      "interpretation": "Continuation of list item formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1960:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regulatory authority reference for item 11.",
+      "evidenceRefs": ["L1960:S0"],
+      "interpretation": "Body text elaborating on the scope of item 11.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1960:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conformity declaration fragment for item 11.",
+      "evidenceRefs": ["L1960:S1"],
+      "interpretation": "Continuation of list item formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1961:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase for item 11.",
+      "evidenceRefs": ["L1961:S0"],
+      "interpretation": "Part of the list item's regulatory description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1962:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (12) introducing medical equipment.",
+      "evidenceRefs": ["L1962:S0"],
+      "interpretation": "List entry title within a regulatory catalog.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1962:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "License requirement fragment for item 12.",
+      "evidenceRefs": ["L1962:S1"],
+      "interpretation": "Continuation of list item formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1963:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Research/testing exception for item 12.",
+      "evidenceRefs": ["L1963:S0"],
+      "interpretation": "Body text elaborating on the scope of item 12.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1964:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Repair/use instruction exception for item 12.",
+      "evidenceRefs": ["L1964:S0"],
+      "interpretation": "Body text elaborating on the scope of item 12.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1965:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (13) introducing medical equipment.",
+      "evidenceRefs": ["L1965:S0"],
+      "interpretation": "List entry title within a regulatory catalog.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1966:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Aid purpose exception for item 13.",
+      "evidenceRefs": ["L1966:S0"],
+      "interpretation": "Body text elaborating on the scope of item 13.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1967:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (14) introducing medical equipment.",
+      "evidenceRefs": ["L1967:S0"],
+      "interpretation": "List entry title within a regulatory catalog.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1967:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "License requirement fragment for item 14.",
+      "evidenceRefs": ["L1967:S1"],
+      "interpretation": "Continuation of list item formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1968:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Therapy exception for item 14.",
+      "evidenceRefs": ["L1968:S0"],
+      "interpretation": "Body text elaborating on the scope of item 14.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1969:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (15) introducing chemicals.",
+      "evidenceRefs": ["L1969:S0"],
+      "interpretation": "List entry title within a regulatory catalog.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1969:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "License requirement fragment for item 15.",
+      "evidenceRefs": ["L1969:S1"],
+      "interpretation": "Continuation of list item formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1970:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (16) introducing preparations.",
+      "evidenceRefs": ["L1970:S0"],
+      "interpretation": "List entry title within a regulatory catalog.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1970:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "License requirement fragment for item 16.",
+      "evidenceRefs": ["L1970:S1"],
+      "interpretation": "Continuation of list item formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1971:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Purpose clarification for item 16.",
+      "evidenceRefs": ["L1971:S0"],
+      "interpretation": "Body text elaborating on the scope of item 16.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1972:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase for item 16.",
+      "evidenceRefs": ["L1972:S0"],
+      "interpretation": "Part of the list item's regulatory description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1973:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (17) introducing cosmetics.",
+      "evidenceRefs": ["L1973:S0"],
+      "interpretation": "List entry title within a regulatory catalog.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1974:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "First line of a major section heading (VIII) regarding exported/imported goods.",
+      "evidenceRefs": ["L1974:S0"],
+      "interpretation": "Bold-formatted section title initiating a new structural region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1975:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Second line of the section heading (VIII), continuing the title.",
+      "evidenceRefs": ["L1975:S0"],
+      "interpretation": "Bold-formatted continuation of the section title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1976:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Third line of the section heading (VIII), naming the managing authority.",
+      "evidenceRefs": ["L1976:S0"],
+      "interpretation": "Bold-formatted conclusion of the section title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1977:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label 'A'.",
+      "evidenceRefs": ["L1977:S0"],
+      "interpretation": "Local table data label organizing column content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1977:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header 'Exported goods'.",
+      "evidenceRefs": ["L1977:S1"],
+      "interpretation": "Local table data label organizing column content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1977:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header 'Mode of management'.",
+      "evidenceRefs": ["L1977:S2"],
+      "interpretation": "Local table data label organizing column content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1978:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row entry '1 Raw gold.'.",
+      "evidenceRefs": ["L1978:S0"],
+      "interpretation": "Data row within a regulatory table.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1978:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row entry 'Export license.'.",
+      "evidenceRefs": ["L1978:S1"],
+      "interpretation": "Data row within a regulatory table.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1979:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label 'B'.",
+      "evidenceRefs": ["L1979:S0"],
+      "interpretation": "Local table data label organizing column content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1979:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header 'Imported goods'.",
+      "evidenceRefs": ["L1979:S1"],
+      "interpretation": "Local table data label organizing column content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1979:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header 'Mode of management'.",
+      "evidenceRefs": ["L1979:S2"],
+      "interpretation": "Local table data label organizing column content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1980:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row entry '1 Raw gold.'.",
+      "evidenceRefs": ["L1980:S0"],
+      "interpretation": "Data row within a regulatory table.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1980:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row entry 'Import license.'.",
+      "evidenceRefs": ["L1980:S1"],
+      "interpretation": "Data row within a regulatory table.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1981:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Appendix identifier heading.",
+      "evidenceRefs": ["L1981:S0"],
+      "interpretation": "Bold-formatted structural marker for a new appendix section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1982:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title of Appendix IV listing security-threat goods.",
+      "evidenceRefs": ["L1982:S0"],
+      "interpretation": "Substantive title introducing the appendix's content region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1983:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Italicized legal citation note accompanying the appendix title.",
+      "evidenceRefs": ["L1983:S0"],
+      "interpretation": "Subtitle/legal reference establishing the regulatory basis for the appendix.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

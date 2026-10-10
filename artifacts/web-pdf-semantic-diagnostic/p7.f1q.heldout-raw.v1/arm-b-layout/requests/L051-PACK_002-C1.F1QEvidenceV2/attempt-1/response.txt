@@ -1,0 +1,315 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0067:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header text repeated across multiple pages in small italic font.",
+      "evidenceRefs": ["L0067:S0"],
+      "interpretation": "Repeated page-furniture header serving navigation/layout rather than establishing new structure here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0068:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header disclaimer note repeated across pages in small italic font.",
+      "evidenceRefs": ["L0068:S0"],
+      "interpretation": "Repeated page-furniture note providing currency context, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0069:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Large bold standalone text indicating a major section overview.",
+      "evidenceRefs": ["L0069:S0"],
+      "interpretation": "Prominent typography and isolation mark a substantive section heading introducing portfolio highlights.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0070:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Small normal-weight text aligned within a tabular layout.",
+      "evidenceRefs": ["L0070:S0"],
+      "interpretation": "Functions as a local table column header organizing financial data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0070:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Small normal-weight text adjacent to other column headers.",
+      "evidenceRefs": ["L0070:S1"],
+      "interpretation": "Local table label for a financial data column, distinct from structural headings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0070:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Small normal-weight text aligned with tabular columns.",
+      "evidenceRefs": ["L0070:S2"],
+      "interpretation": "Local table label for a financial data column, distinct from structural headings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0071:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bold small text marking a temporal column in a financial table.",
+      "evidenceRefs": ["L0071:S0"],
+      "interpretation": "Table column header for fiscal year data, serving local organization rather than document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0071:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric currency value formatted as a table cell entry.",
+      "evidenceRefs": ["L0071:S1"],
+      "interpretation": "Data value within a financial table, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0071:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric currency value formatted as a table cell entry.",
+      "evidenceRefs": ["L0071:S2"],
+      "interpretation": "Data value within a financial table, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0071:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric currency value formatted as a table cell entry.",
+      "evidenceRefs": ["L0071:S3"],
+      "interpretation": "Data value within a financial table, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0071:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric currency value formatted as a table cell entry.",
+      "evidenceRefs": ["L0071:S4"],
+      "interpretation": "Data value within a financial table, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0072:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bold small text marking a percentage change column in a financial table.",
+      "evidenceRefs": ["L0072:S0"],
+      "interpretation": "Table column header for year-over-year metrics, serving local organization rather than document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0072:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric percentage value formatted as a table cell entry.",
+      "evidenceRefs": ["L0072:S1"],
+      "interpretation": "Data value within a financial table, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0072:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric percentage value formatted as a table cell entry.",
+      "evidenceRefs": ["L0072:S2"],
+      "interpretation": "Data value within a financial table, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0072:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric percentage value formatted as a table cell entry.",
+      "evidenceRefs": ["L0072:S3"],
+      "interpretation": "Data value within a financial table, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0072:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric percentage value formatted as a table cell entry.",
+      "evidenceRefs": ["L0072:S4"],
+      "interpretation": "Data value within a financial table, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0073:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold standalone text introducing a metrics subsection.",
+      "evidenceRefs": ["L0073:S0"],
+      "interpretation": "Typography and isolation indicate a substantive subheading organizing key performance indicators.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0074:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold standalone text labeling a visual or tabular summary.",
+      "evidenceRefs": ["L0074:S0"],
+      "interpretation": "Prominent bold text functions as a chart or table heading, establishing a content region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0074:S1",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold text positioned above bulleted analysis.",
+      "evidenceRefs": ["L0074:S1"],
+      "interpretation": "Bold formatting and placement above narrative bullets mark it as a subheading introducing the list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0075:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Symbolic bullet character initiating a list item.",
+      "evidenceRefs": ["L0075:S0"],
+      "interpretation": "List marker formatting, not a textual heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0075:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Narrative sentence continuing a bulleted list analysis.",
+      "evidenceRefs": ["L0075:S1"],
+      "interpretation": "Body prose describing donor contribution trends, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0076:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Narrative sentence fragment completing a bulleted list analysis.",
+      "evidenceRefs": ["L0076:S0"],
+      "interpretation": "Continuation of body prose detailing program disbursement shifts, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0077:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Narrative sentence initiating a second bulleted list item.",
+      "evidenceRefs": ["L0077:S0"],
+      "interpretation": "Body prose analyzing top donor concentration, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0078:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Narrative sentence fragment completing a bulleted list analysis.",
+      "evidenceRefs": ["L0078:S0"],
+      "interpretation": "Continuation of body prose on historical donor averages, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0079:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Symbolic bullet character initiating a list item.",
+      "evidenceRefs": ["L0079:S0"],
+      "interpretation": "List marker formatting, not a textual heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0079:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Narrative sentence continuing a bulleted list analysis.",
+      "evidenceRefs": ["L0079:S1"],
+      "interpretation": "Body prose detailing disbursement concentration by program, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0080:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Narrative sentence fragment completing a bulleted list analysis.",
+      "evidenceRefs": ["L0080:S0"],
+      "interpretation": "Continuation of body prose on historical disbursement averages, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0081:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Narrative sentence initiating a third bulleted list item.",
+      "evidenceRefs": ["L0081:S0"],
+      "interpretation": "Body prose identifying the leading trust fund program, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0082:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Narrative sentence fragment completing a bulleted list analysis.",
+      "evidenceRefs": ["L0082:S0"],
+      "interpretation": "Continuation of body prose on historical funding shares, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0083:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Isolated numeric digit positioned in page margin.",
+      "evidenceRefs": ["L0083:S0"],
+      "interpretation": "Page number functioning as page furniture, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0084:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Small isolated digit in margin.",
+      "evidenceRefs": ["L0084:S0"],
+      "interpretation": "Reference or footnote marker functioning as page furniture, not a heading.",
+      "missingEvidence": []
+    }
+  ]
+}

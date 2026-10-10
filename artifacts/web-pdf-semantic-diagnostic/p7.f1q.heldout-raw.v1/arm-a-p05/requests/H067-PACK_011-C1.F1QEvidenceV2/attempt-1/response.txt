@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0837:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining unary encoding of differences between consecutive integers.",
+      "evidenceRefs": [
+        "L0837:S0"
+      ],
+      "interpretation": "Standard body text (font size 10, italic) continuing a technical paragraph; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0838:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing the binary encoding format for prefix differences.",
+      "evidenceRefs": [
+        "L0838:S0"
+      ],
+      "interpretation": "Continues the explanatory paragraph with consistent typography and layout; serves as body content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0839:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose providing a concrete numerical example of difference calculation.",
+      "evidenceRefs": [
+        "L0839:S0"
+      ],
+      "interpretation": "Maintains paragraph flow and standard font metrics; functions as illustrative body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0840:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose completing the encoding example and defining the first difference.",
+      "evidenceRefs": [
+        "L0840:S0"
+      ],
+      "interpretation": "Inline continuation of the example explanation; lacks heading layout or typographic emphasis.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0841:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding the encoding description and naming the EF2 data structure component.",
+      "evidenceRefs": [
+        "L0841:S0"
+      ],
+      "interpretation": "Standard paragraph text; introduces a term but does not act as a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0842:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '20' located at the bottom margin.",
+      "evidenceRefs": [
+        "L0842:S0"
+      ],
+      "interpretation": "Positioned at page bottom with standard roman font; functions as page furniture, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0843:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table or formula row aligning mathematical expressions and variable definitions.",
+      "evidenceRefs": [
+        "L0843:S0"
+      ],
+      "interpretation": "Structured layout with equalized spacing and non-italic text; serves as a data/formula row, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0844:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '0' in a tabular or aligned data sequence.",
+      "evidenceRefs": [
+        "L0844:S0"
+      ],
+      "interpretation": "Isolated numeric token in a grid-like layout; functions as a table cell value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0844:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric string '000' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0844:S1"
+      ],
+      "interpretation": "Aligned with adjacent digits in a fixed-width column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0844:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '1' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0844:S2"
+      ],
+      "interpretation": "Part of a structured numeric matrix; functions as a table cell value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0844:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric string '00' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0844:S3"
+      ],
+      "interpretation": "Aligned in a fixed column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0845:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Digit '5' marking a row index or value in a table.",
+      "evidenceRefs": [
+        "L0845:S0"
+      ],
+      "interpretation": "Consistent with surrounding numeric columns; functions as table metadata/value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0845:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '001' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0845:S1"
+      ],
+      "interpretation": "Aligned in a fixed-width column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0845:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '01' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0845:S2"
+      ],
+      "interpretation": "Part of a structured numeric matrix; functions as a table cell value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0845:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '01' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0845:S3"
+      ],
+      "interpretation": "Aligned in a fixed column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0846:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Digit '8' marking a row index or value in a table.",
+      "evidenceRefs": [
+        "L0846:S0"
+      ],
+      "interpretation": "Consistent with surrounding numeric columns; functions as table metadata/value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0846:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '010' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0846:S1"
+      ],
+      "interpretation": "Aligned in a fixed-width column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0846:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '01' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0846:S2"
+      ],
+      "interpretation": "Part of a structured numeric matrix; functions as a table cell value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0846:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '00' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0846:S3"
+      ],
+      "interpretation": "Aligned in a fixed column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0847:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Number '12' marking a row index or value in a table.",
+      "evidenceRefs": [
+        "L0847:S0"
+      ],
+      "interpretation": "Consistent with surrounding numeric columns; functions as table metadata/value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0847:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '011' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0847:S1"
+      ],
+      "interpretation": "Aligned in a fixed-width column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0847:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '01' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0847:S2"
+      ],
+      "interpretation": "Part of a structured numeric matrix; functions as a table cell value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0847:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '00' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0847:S3"
+      ],
+      "interpretation": "Aligned in a fixed column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0848:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Number '14' marking a row index or value in a table.",
+      "evidenceRefs": [
+        "L0848:S0"
+      ],
+      "interpretation": "Consistent with surrounding numeric columns; functions as table metadata/value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0848:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '011' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0848:S1"
+      ],
+      "interpretation": "Aligned in a fixed-width column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0848:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit '1' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0848:S2"
+      ],
+      "interpretation": "Part of a structured numeric matrix; functions as a table cell value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0848:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '10' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0848:S3"
+      ],
+      "interpretation": "Aligned in a fixed column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0849:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Number '17' marking a row index or value in a table.",
+      "evidenceRefs": [
+        "L0849:S0"
+      ],
+      "interpretation": "Consistent with surrounding numeric columns; functions as table metadata/value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0849:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '100' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0849:S1"
+      ],
+      "interpretation": "Aligned in a fixed-width column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0849:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '01' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0849:S2"
+      ],
+      "interpretation": "Part of a structured numeric matrix; functions as a table cell value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0849:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '01' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0849:S3"
+      ],
+      "interpretation": "Aligned in a fixed column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0850:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Number '20' marking a row index or value in a table.",
+      "evidenceRefs": [
+        "L0850:S0"
+      ],
+      "interpretation": "Consistent with surrounding numeric columns; functions as table metadata/value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0850:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '101' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0850:S1"
+      ],
+      "interpretation": "Aligned in a fixed-width column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0850:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '01' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0850:S2"
+      ],
+      "interpretation": "Part of a structured numeric matrix; functions as a table cell value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0850:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '00' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0850:S3"
+      ],
+      "interpretation": "Aligned in a fixed column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0851:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Number '31' marking a row index or value in a table.",
+      "evidenceRefs": [
+        "L0851:S0"
+      ],
+      "interpretation": "Consistent with surrounding numeric columns; functions as table metadata/value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0851:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '111' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0851:S1"
+      ],
+      "interpretation": "Aligned in a fixed-width column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0851:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '001' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0851:S2"
+      ],
+      "interpretation": "Part of a structured numeric matrix; functions as a table cell value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0851:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bitstring '11' in a tabular data sequence.",
+      "evidenceRefs": [
+        "L0851:S3"
+      ],
+      "interpretation": "Aligned in a fixed column; serves as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0852:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose introducing a construction example for the Elias-Fano data structure.",
+      "evidenceRefs": [
+        "L0852:S0"
+      ],
+      "interpretation": "Standard paragraph text (size 10, italic); continues technical narrative without heading formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0853:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose defining the EF data structure pair.",
+      "evidenceRefs": [
+        "L0853:S0"
+      ],
+      "interpretation": "Inline continuation of the definition; maintains body typography and layout.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0854:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose observing properties of the EF2 bitvector.",
+      "evidenceRefs": [
+        "L0854:S0"
+      ],
+      "interpretation": "Standard roman font, paragraph flow; functions as analytical body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0855:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuing the analysis of zero counts in the bitvector.",
+      "evidenceRefs": [
+        "L0855:S0"
+      ],
+      "interpretation": "Consistent paragraph structure; serves as explanatory body content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0856:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose bounding the maximum difference between integers.",
+      "evidenceRefs": [
+        "L0856:S0"
+      ],
+      "interpretation": "Continues the mathematical derivation in standard body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0857:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose deriving the bit length bound for EF2.",
+      "evidenceRefs": [
+        "L0857:S0"
+      ],
+      "interpretation": "Maintains paragraph flow and standard metrics; functions as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0858:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding the space complexity analysis.",
+      "evidenceRefs": [
+        "L0858:S0"
+      ],
+      "interpretation": "Standard paragraph text; states a result but lacks heading layout or separation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0859:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Transition sentence introducing the next procedural explanation.",
+      "evidenceRefs": [
+        "L0859:S0"
+      ],
+      "interpretation": "Inline paragraph text; guides reader flow rather than structuring a new section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0860:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph opening an example case for integer extraction.",
+      "evidenceRefs": [
+        "L0860:S0"
+      ],
+      "interpretation": "Starts with 'Example 1.4.4.' but uses identical body typography and indentation; functions as inline example text, not a structural heading.",
+      "missingEvidence": []
+    }
+  ]
+}

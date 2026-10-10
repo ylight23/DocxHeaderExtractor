@@ -1,0 +1,397 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1635:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading for Article 78 on transfer of capital contribution shares",
+      "evidenceRefs": ["L1635:S0"],
+      "interpretation": "Bold, smaller font (size 10) line serving as a substantive section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1636:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing paragraph 1 under Article 78",
+      "evidenceRefs": ["L1636:S0"],
+      "interpretation": "Regular font (size 12) line forming part of the article's body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1637:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text from previous line",
+      "evidenceRefs": ["L1637:S0"],
+      "interpretation": "Regular font line completing the sentence started in the preceding occurrence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1638:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text for paragraph 2 under Article 78",
+      "evidenceRefs": ["L1638:S0"],
+      "interpretation": "Regular font line starting a new numbered paragraph within the article.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1639:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text from previous line",
+      "evidenceRefs": ["L1639:S0"],
+      "interpretation": "Regular font line completing the sentence from the preceding occurrence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1640:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading for Article 79 regarding member councils",
+      "evidenceRefs": ["L1640:S0"],
+      "interpretation": "Bold, smaller font (size 10) line serving as a substantive section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1641:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Continuation of Article 79 heading",
+      "evidenceRefs": ["L1641:S0"],
+      "interpretation": "Bold, smaller font (size 10) line completing the heading text from the preceding occurrence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1642:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text for paragraph 1 under Article 79",
+      "evidenceRefs": ["L1642:S0"],
+      "interpretation": "Regular font line starting a new numbered paragraph within the article.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1643:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text from previous line",
+      "evidenceRefs": ["L1643:S0"],
+      "interpretation": "Regular font line completing the sentence started in the preceding occurrence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1644:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text from previous line",
+      "evidenceRefs": ["L1644:S0"],
+      "interpretation": "Regular font line completing the sentence from the preceding occurrence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1645:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text from previous line",
+      "evidenceRefs": ["L1645:S0"],
+      "interpretation": "Regular font line completing the sentence from the preceding occurrence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1646:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text from previous line",
+      "evidenceRefs": ["L1646:S0"],
+      "interpretation": "Regular font line completing the sentence from the preceding occurrence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1647:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory line for paragraph 2 listing duties",
+      "evidenceRefs": ["L1647:S0"],
+      "interpretation": "Regular font numbered paragraph introducing a subsequent list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1648:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (a) detailing duties",
+      "evidenceRefs": ["L1648:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1649:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item (a)",
+      "evidenceRefs": ["L1649:S0"],
+      "interpretation": "Regular font line completing the reference in the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1650:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (b) detailing duties",
+      "evidenceRefs": ["L1650:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1651:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (c) detailing duties",
+      "evidenceRefs": ["L1651:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1652:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item (c)",
+      "evidenceRefs": ["L1652:S0"],
+      "interpretation": "Regular font line completing the sentence from the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1653:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item (c)",
+      "evidenceRefs": ["L1653:S0"],
+      "interpretation": "Regular font line completing the sentence from the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1654:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item (c)",
+      "evidenceRefs": ["L1654:S0"],
+      "interpretation": "Regular font line concluding the provision in the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1655:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (d) detailing duties",
+      "evidenceRefs": ["L1655:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1656:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item (d)",
+      "evidenceRefs": ["L1656:S0"],
+      "interpretation": "Regular font line completing the sentence from the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1657:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item (d)",
+      "evidenceRefs": ["L1657:S0"],
+      "interpretation": "Regular font line concluding the provision in the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1658:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (đ) detailing duties",
+      "evidenceRefs": ["L1658:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1659:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (e) detailing duties",
+      "evidenceRefs": ["L1659:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1660:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item (e)",
+      "evidenceRefs": ["L1660:S0"],
+      "interpretation": "Regular font line completing the sentence from the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1661:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item (e)",
+      "evidenceRefs": ["L1661:S0"],
+      "interpretation": "Regular font line completing the sentence from the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1662:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item (e)",
+      "evidenceRefs": ["L1662:S0"],
+      "interpretation": "Regular font line concluding the provision in the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1663:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (g) detailing duties",
+      "evidenceRefs": ["L1663:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1664:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item (g)",
+      "evidenceRefs": ["L1664:S0"],
+      "interpretation": "Regular font line completing the sentence from the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1665:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (h) detailing duties",
+      "evidenceRefs": ["L1665:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1666:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item (h)",
+      "evidenceRefs": ["L1666:S0"],
+      "interpretation": "Regular font line concluding the provision in the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1667:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (i) detailing duties",
+      "evidenceRefs": ["L1667:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1668:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item (i)",
+      "evidenceRefs": ["L1668:S0"],
+      "interpretation": "Regular font line concluding the provision in the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1669:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (k) detailing duties",
+      "evidenceRefs": ["L1669:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1670:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (l) detailing duties",
+      "evidenceRefs": ["L1670:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1671:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (m) detailing duties",
+      "evidenceRefs": ["L1671:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1672:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory line for paragraph 3 listing rights",
+      "evidenceRefs": ["L1672:S0"],
+      "interpretation": "Regular font numbered paragraph introducing a subsequent list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1673:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (a) detailing rights",
+      "evidenceRefs": ["L1673:S0"],
+      "interpretation": "Regular font line beginning an alphabetical list item.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

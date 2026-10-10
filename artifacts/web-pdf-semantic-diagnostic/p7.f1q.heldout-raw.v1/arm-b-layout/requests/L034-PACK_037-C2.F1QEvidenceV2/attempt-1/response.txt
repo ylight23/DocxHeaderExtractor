@@ -1,0 +1,547 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L2486:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section header identifying the document section.",
+      "evidenceRefs": [
+        "L2486:S0"
+      ],
+      "interpretation": "Acts as a section title establishing the structural division for the bidding forms.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L2487:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional placeholder within a form field.",
+      "evidenceRefs": [
+        "L2487:S0"
+      ],
+      "interpretation": "Serves as a bracketed instruction for form completion, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L2487:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional placeholder within a form field.",
+      "evidenceRefs": [
+        "L2487:S1"
+      ],
+      "interpretation": "Serves as a bracketed instruction for form completion, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L2487:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Component of a form field label.",
+      "evidenceRefs": [
+        "L2487:S2"
+      ],
+      "interpretation": "Part of the compound label 'Contract Identification:' functioning as a form field marker.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L2487:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of form field label.",
+      "evidenceRefs": [
+        "L2487:S3"
+      ],
+      "interpretation": "Completes the form field label 'Contract Identification:' acting as a local data label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L2487:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional placeholder.",
+      "evidenceRefs": [
+        "L2487:S4"
+      ],
+      "interpretation": "Bracketed instruction guiding form entry, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L2488:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing bracket for form instruction.",
+      "evidenceRefs": [
+        "L2488:S0"
+      ],
+      "interpretation": "Terminates a bracketed instruction phrase within a form field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L2488:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing bracket for form instruction.",
+      "evidenceRefs": [
+        "L2488:S1"
+      ],
+      "interpretation": "Terminates a bracketed instruction phrase within a form field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L2488:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional text within form.",
+      "evidenceRefs": [
+        "L2488:S2"
+      ],
+      "interpretation": "Provides entry guidance inside a bracketed instruction, functioning as a local form label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L2489:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional text within form.",
+      "evidenceRefs": [
+        "L2489:S0"
+      ],
+      "interpretation": "Provides entry guidance inside a bracketed instruction, functioning as a local form label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L2490:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label with instruction.",
+      "evidenceRefs": [
+        "L2490:S0"
+      ],
+      "interpretation": "Standard form field label directing user input, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L2491:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label start.",
+      "evidenceRefs": [
+        "L2491:S0"
+      ],
+      "interpretation": "Begins a form field label with instructional placeholder.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L2492:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label continuation.",
+      "evidenceRefs": [
+        "L2492:S0"
+      ],
+      "interpretation": "Completes the address instruction within a form field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L2493:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label.",
+      "evidenceRefs": [
+        "L2493:S0"
+      ],
+      "interpretation": "Label for a dispute description field containing instructional text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L2494:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label continuation.",
+      "evidenceRefs": [
+        "L2494:S0"
+      ],
+      "interpretation": "Closes the instructional phrase for the dispute matter field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L2495:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label.",
+      "evidenceRefs": [
+        "L2495:S0"
+      ],
+      "interpretation": "Label for identifying the disputing party, includes instruction.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L2496:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field option/instruction.",
+      "evidenceRefs": [
+        "L2496:S0"
+      ],
+      "interpretation": "Provides selection options within a form field instruction.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L2497:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label.",
+      "evidenceRefs": [
+        "L2497:S0"
+      ],
+      "interpretation": "Label for litigation reason field, functioning as a local data marker.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L2498:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label continuation.",
+      "evidenceRefs": [
+        "L2498:S0"
+      ],
+      "interpretation": "Completes the litigation reason instruction within a form field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L2499:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section header.",
+      "evidenceRefs": [
+        "L2499:S0"
+      ],
+      "interpretation": "Repeats the section title as a running header, establishing the document's structural division.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L2500:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form identifier/title.",
+      "evidenceRefs": [
+        "L2500:S0"
+      ],
+      "interpretation": "Identifies the specific form type; serves as a local reference label rather than a substantive content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L2501:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Substantive heading.",
+      "evidenceRefs": [
+        "L2501:S0"
+      ],
+      "interpretation": "Prominent 18pt bold title introducing the substantive content region detailing bidder commitments.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L2502:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text.",
+      "evidenceRefs": [
+        "L2502:S0"
+      ],
+      "interpretation": "Standard paragraph prose instructing bidders on required disclosures.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L2503:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L2503:S0"
+      ],
+      "interpretation": "Continues the instructional paragraph defining scope of required contract information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L2504:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L2504:S0"
+      ],
+      "interpretation": "Extends the instructional paragraph regarding contract status requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L2505:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text conclusion.",
+      "evidenceRefs": [
+        "L2505:S0"
+      ],
+      "interpretation": "Concludes the instructional paragraph on contract completion status.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L2506:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header.",
+      "evidenceRefs": [
+        "L2506:S0"
+      ],
+      "interpretation": "Bold label serving as a table column header for local data organization.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L2506:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header.",
+      "evidenceRefs": [
+        "L2506:S1"
+      ],
+      "interpretation": "Bold label serving as a table column header for local data organization.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L2506:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header.",
+      "evidenceRefs": [
+        "L2506:S2"
+      ],
+      "interpretation": "Bold label serving as a table column header for local data organization.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L2506:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header.",
+      "evidenceRefs": [
+        "L2506:S3"
+      ],
+      "interpretation": "Bold label serving as a table column header for local data organization.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L2507:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header fragment.",
+      "evidenceRefs": [
+        "L2507:S0"
+      ],
+      "interpretation": "Fragment of a multi-line table header label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L2507:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header fragment.",
+      "evidenceRefs": [
+        "L2507:S1"
+      ],
+      "interpretation": "Fragment of a multi-line table header label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L2507:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header.",
+      "evidenceRefs": [
+        "L2507:S2"
+      ],
+      "interpretation": "Bold label serving as a table column header for local data organization.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L2507:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header fragment.",
+      "evidenceRefs": [
+        "L2507:S3"
+      ],
+      "interpretation": "Fragment of a multi-line table header label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L2508:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header.",
+      "evidenceRefs": [
+        "L2508:S0"
+      ],
+      "interpretation": "Bold label serving as a table column header for local data organization.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L2508:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header fragment.",
+      "evidenceRefs": [
+        "L2508:S1"
+      ],
+      "interpretation": "Fragment of a multi-line table header label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L2509:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header.",
+      "evidenceRefs": [
+        "L2509:S0"
+      ],
+      "interpretation": "Bold label serving as a table column header for local data organization.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L2509:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header fragment.",
+      "evidenceRefs": [
+        "L2509:S1"
+      ],
+      "interpretation": "Fragment of a multi-line table header label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L2510:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header unit.",
+      "evidenceRefs": [
+        "L2510:S0"
+      ],
+      "interpretation": "Unit specification within a table column header.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L2511:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List enumeration.",
+      "evidenceRefs": [
+        "L2511:S0"
+      ],
+      "interpretation": "Numeric list marker organizing subsequent items, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L2512:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List enumeration.",
+      "evidenceRefs": [
+        "L2512:S0"
+      ],
+      "interpretation": "Numeric list marker organizing subsequent items, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L2513:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List enumeration.",
+      "evidenceRefs": [
+        "L2513:S0"
+      ],
+      "interpretation": "Numeric list marker organizing subsequent items, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L2514:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List enumeration.",
+      "evidenceRefs": [
+        "L2514:S0"
+      ],
+      "interpretation": "Numeric list marker organizing subsequent items, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L2515:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List enumeration.",
+      "evidenceRefs": [
+        "L2515:S0"
+      ],
+      "interpretation": "Numeric list marker organizing subsequent items, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L2516:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List continuation marker.",
+      "evidenceRefs": [
+        "L2516:S0"
+      ],
+      "interpretation": "Indicates continuation of a numbered list, not a heading.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

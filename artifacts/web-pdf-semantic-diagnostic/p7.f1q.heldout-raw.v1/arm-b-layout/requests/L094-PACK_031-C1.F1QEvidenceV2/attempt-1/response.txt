@@ -1,0 +1,377 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L2204:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header repeating RFC title and date across pages.",
+      "evidenceRefs": ["L2204:S0"],
+      "interpretation": "Repeated page furniture indicating document title and publication date, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L2205:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section number '10.3.' formatted in bold 12pt font.",
+      "evidenceRefs": ["L2205:S0"],
+      "interpretation": "Part of a numbered section heading establishing document structure at this location.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L2205:S1",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section title 'Intermediary Encapsulation Attacks' in bold 12pt font.",
+      "evidenceRefs": ["L2205:S1"],
+      "interpretation": "Second line of a section heading, continuing the structural marker from the preceding number.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L2206:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph discussing HPACK encoding rules.",
+      "evidenceRefs": ["L2206:S0"],
+      "interpretation": "Standard body prose elaborating on section 10.3 content, formatted in regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L2207:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph continuation regarding intermediary validation.",
+      "evidenceRefs": ["L2207:S0"],
+      "interpretation": "Continuation of body text explaining protocol requirements, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L2208:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph referencing Section 8.2 validation rules.",
+      "evidenceRefs": ["L2208:S0"],
+      "interpretation": "Body prose citing cross-references, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L2209:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph describing attack vectors via invalid delimiters.",
+      "evidenceRefs": ["L2209:S0"],
+      "interpretation": "Body text detailing security implications, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L2210:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph concluding attacker exploitation risks.",
+      "evidenceRefs": ["L2210:S0"],
+      "interpretation": "Continuation of body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L2211:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph noting lack of specific rules for pseudo-headers.",
+      "evidenceRefs": ["L2211:S0"],
+      "interpretation": "Body text discussing protocol edge cases, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L2212:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph emphasizing validation importance.",
+      "evidenceRefs": ["L2212:S0"],
+      "interpretation": "Body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L2213:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph listing pseudo-header field names.",
+      "evidenceRefs": ["L2213:S0"],
+      "interpretation": "Body text with technical examples, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L2214:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph discussing URI combination problems.",
+      "evidenceRefs": ["L2214:S0"],
+      "interpretation": "Body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L2215:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on request line construction security.",
+      "evidenceRefs": ["L2215:S0"],
+      "interpretation": "Body text, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L2216:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph concluding input validation necessity.",
+      "evidenceRefs": ["L2216:S0"],
+      "interpretation": "Body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L2217:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on intermediary rejection of invalid fields.",
+      "evidenceRefs": ["L2217:S0"],
+      "interpretation": "Body text, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L2218:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph referencing HTTP ABNF grammar.",
+      "evidenceRefs": ["L2218:S0"],
+      "interpretation": "Body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L2219:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on intermediaries skipping validation.",
+      "evidenceRefs": ["L2219:S0"],
+      "interpretation": "Body text, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L2220:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph warning about forwarding invalid fields.",
+      "evidenceRefs": ["L2220:S0"],
+      "interpretation": "Body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L2221:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on removing fields before forwarding.",
+      "evidenceRefs": ["L2221:S0"],
+      "interpretation": "Body text, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L2222:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph mandating header field removal/replacement.",
+      "evidenceRefs": ["L2222:S0"],
+      "interpretation": "Body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L2223:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph cautioning on Content-Length fields.",
+      "evidenceRefs": ["L2223:S0"],
+      "interpretation": "Body text, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L2224:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph ensuring well-formed messages.",
+      "evidenceRefs": ["L2224:S0"],
+      "interpretation": "Body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L2225:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on HTTP/1.1 framing correctness.",
+      "evidenceRefs": ["L2225:S0"],
+      "interpretation": "Body text, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L2226:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading '10.4. Cacheability of Pushed Responses' in bold 12pt font.",
+      "evidenceRefs": ["L2226:S0"],
+      "interpretation": "Numbered section heading establishing a new substantive content region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L2227:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph explaining push response requests.",
+      "evidenceRefs": ["L2227:S0"],
+      "interpretation": "Body prose following the new section heading, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L2228:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on PUSH_PROMISE frame.",
+      "evidenceRefs": ["L2228:S0"],
+      "interpretation": "Body text, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L2229:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on caching pushed responses.",
+      "evidenceRefs": ["L2229:S0"],
+      "interpretation": "Body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L2230:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on Cache-Control header issues.",
+      "evidenceRefs": ["L2230:S0"],
+      "interpretation": "Body text, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L2231:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on multi-tenant server scenarios.",
+      "evidenceRefs": ["L2231:S0"],
+      "interpretation": "Body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L2232:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph fragment on URI space allocation.",
+      "evidenceRefs": ["L2232:S0"],
+      "interpretation": "Body text, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L2233:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph mandating tenant separation.",
+      "evidenceRefs": ["L2233:S0"],
+      "interpretation": "Body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L2234:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on authority over pushed resources.",
+      "evidenceRefs": ["L2234:S0"],
+      "interpretation": "Body text, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L2235:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on cache override risks.",
+      "evidenceRefs": ["L2235:S0"],
+      "interpretation": "Body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L2236:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on authoritative representation overriding.",
+      "evidenceRefs": ["L2236:S0"],
+      "interpretation": "Body text, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L2237:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph on non-authoritative pushed responses.",
+      "evidenceRefs": ["L2237:S0"],
+      "interpretation": "Body prose, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L2238:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph fragment concluding cache prohibition.",
+      "evidenceRefs": ["L2238:S0"],
+      "interpretation": "Body text, regular 10pt font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L2239:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footer containing author names, track type, and page number.",
+      "evidenceRefs": ["L2239:S0"],
+      "interpretation": "Page furniture providing metadata, not a content heading.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

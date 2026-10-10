@@ -1,0 +1,557 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document title opening",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Forms the initial line of the formal document title identifying the meeting type and date.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document title middle",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Continues the formal document title specifying the committee name.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document title closing",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Completes the formal document title with the fund name.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading 'Opening:'",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Acts as a bolded section heading marking the start of the meeting proceedings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Standard narrative text recording the call to order and chair.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Continues the narrative sentence regarding remote participation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "List heading 'Present:'",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Bolded label introducing the attendance roster.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Attendee list item",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Records a member's name and country affiliation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Attendee list item",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Continues the attendance roster.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Attendee list item",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Records observer affiliation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Attendee list item",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Records secretariat staff names.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Attendee list item",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Records trustee name.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Attendee list item",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Records legal department representative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Attendee list item",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Records additional participant names and affiliations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Attendee list item",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Continues additional participant list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory sentence",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Transitional prose introducing the substantive discussion topics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Topic heading part 1",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Semi-bolded label initiating the first agenda item on resource reports.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Narrative text detailing the trustee's financial confirmation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Topic heading 'Operating Context.'",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Italicized run-in label marking the second agenda item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Continues the operating context narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Continues the operating context narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Continues the operating context narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Continues the operating context narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Continues the operating context narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Continues the operating context narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Concludes the operating context narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Topic heading part 1",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Bolded label initiating the third agenda item on funding requests.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Topic heading part 2",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Bolded label completing the third agenda item title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Narrative text recording the committee's approval vote.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Details the approved funding amount and project.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Describes fund usage for wages and expenses.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Continues describing fund usage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Continues describing fund usage.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Records US abstention stance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Standalone numeric pagination marker.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Continues US abstention rationale across page break.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Concludes US abstention rationale.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Topic heading 'Next Bi-Annual Meeting...'",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Italicized run-in label marking the fourth agenda item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Narrative text recording meeting schedule decision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "Continues schedule decision details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Continues schedule decision details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "interpretation": "Continues schedule decision details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0042:S0"
+      ],
+      "interpretation": "Concludes schedule decision details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Topic heading 'Next Steps.'",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "interpretation": "Italicized run-in label marking the final agenda item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "interpretation": "Narrative text concluding next steps action.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0045:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number",
+      "evidenceRefs": [
+        "L0045:S0"
+      ],
+      "interpretation": "Standalone numeric pagination marker.",
+      "missingEvidence": []
+    }
+  ]
+}

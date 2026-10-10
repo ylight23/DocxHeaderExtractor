@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Official letterhead component indicating the issuing authority.",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Part of the formal document header identifying the government body, functioning as administrative metadata rather than a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0000:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Official letterhead component stating the nation's full name.",
+      "evidenceRefs": [
+        "L0000:S1"
+      ],
+      "interpretation": "Part of the formal document header displaying the sovereign state's name, functioning as administrative metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative separator line composed of underscores.",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Purely decorative page furniture separating header elements from the decree details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0001:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National motto displayed in the header block.",
+      "evidenceRefs": [
+        "L0001:S1"
+      ],
+      "interpretation": "Standard national motto ('Independence - Freedom - Happiness') placed in the letterhead area, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Official decree reference number.",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Administrative identifier for the legal instrument, serving as metadata rather than a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0002:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative separator line composed of underscores.",
+      "evidenceRefs": [
+        "L0002:S1"
+      ],
+      "interpretation": "Purely decorative page furniture separating the decree number from the issuance details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Issuance location and date.",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Standard administrative dating and location line for official decrees, classified as metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document type heading.",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Bold, centered typographic label 'DECREE' that formally names the legal instrument type, establishing the document's primary structural identity.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main title/subtitle specifying the decree's subject matter.",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Bold, prominent text immediately following the document type label, functioning as the substantive title defining the decree's regulatory scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative separator line composed of underscores.",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Purely decorative page furniture separating the title block from the preamble.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble clause citing legal basis.",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Italicized statutory citation opening the preamble, functioning as ordinary legal prose rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble clause citing legal basis.",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Continuation of the italicized preamble listing governing laws, serving as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble clause citing legal basis.",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Continuation of the italicized preamble listing governing laws, serving as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble clause citing legal basis.",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Concluding line of the first statutory citation cluster in the preamble, functioning as ordinary legal prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble clause citing legal basis.",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Italicized statutory citation opening a new preamble clause, functioning as ordinary legal prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble clause citing legal basis.",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Italicized statutory citation continuing the preamble's legal basis section, functioning as ordinary legal prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble clause citing legal basis.",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Italicized statutory citation opening another preamble clause, functioning as ordinary legal prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble clause citing legal basis.",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Concluding line of the final statutory citation cluster in the preamble, functioning as ordinary legal prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter heading.",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Bold, isolated label 'Chapter I' marking the beginning of the first major structural division of the decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading.",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Bold, capitalized label 'GENERAL PROVISIONS' immediately following the chapter marker, functioning as a substantive section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading.",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Bold, numbered label 'Article 1. Scope of regulation' introducing the first substantive provision, functioning as an article heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text detailing regulatory scope.",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Regular-weight prose immediately following the article heading, providing the substantive content of Article 1.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation listing referenced articles.",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight body prose enumerating specific legal provisions being detailed.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation listing referenced articles.",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight body prose enumerating specific legal provisions being detailed.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation concluding scope list.",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Concluding line of the introductory paragraph for Article 1, transitioning into the enumerated list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item describing protection measures.",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "First item in a numbered enumeration within Article 1, functioning as body text rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight prose for the first numbered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight prose for the first numbered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight prose for the first numbered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight prose for the first numbered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight prose for the first numbered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight prose for the first numbered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight prose for the first numbered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Concluding line of the first numbered list item's description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number.",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Small-font numeric character positioned at the bottom of the page, functioning as page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight body prose for the first numbered list item across the page break.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item conclusion.",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Concluding line of the first numbered list item's description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item describing coordination procedures.",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Second item in the numbered enumeration within Article 1, functioning as body text rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight prose for the second numbered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight prose for the second numbered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item conclusion.",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Concluding line of the second numbered list item's description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item describing security conditions.",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Third item in the numbered enumeration within Article 1, functioning as body text rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item conclusion.",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "Concluding line of the third numbered list item's description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item describing implementation activities.",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Fourth item in the numbered enumeration within Article 1, functioning as body text rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item conclusion.",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "interpretation": "Concluding line of the fourth numbered list item's description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item describing inspection procedures.",
+      "evidenceRefs": [
+        "L0042:S0"
+      ],
+      "interpretation": "Fifth item in the numbered enumeration within Article 1, functioning as body text rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight prose for the fifth numbered list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation.",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "interpretation": "Continuation of the regular-weight prose for the fifth numbered list item.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Official gazette publication header with issue number and date.",
+      "evidenceRefs": ["L0000:S0"],
+      "interpretation": "Functions as a periodic publication header rather than a structural document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Organizational metadata identifying the issuing state body.",
+      "evidenceRefs": ["L0001:S0"],
+      "interpretation": "Serves as a state header/metadata line, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National motto printed on the first page.",
+      "evidenceRefs": ["L0002:S0"],
+      "interpretation": "Standard national motto, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Law reference number and administrative code.",
+      "evidenceRefs": ["L0003:S0"],
+      "interpretation": "Administrative reference identifier, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main document title component indicating the legal instrument type.",
+      "evidenceRefs": ["L0004:S0"],
+      "interpretation": "Bold typography and central placement mark it as the primary title word 'LUẬT'.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main document title component specifying the subject matter.",
+      "evidenceRefs": ["L0005:S0"],
+      "interpretation": "Bold typography directly follows 'LUẬT' to form the full title 'LUẬT ĐẤT ĐAI'.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble clause citing constitutional authority.",
+      "evidenceRefs": ["L0006:S0"],
+      "interpretation": "Italicized opening provision establishing legal basis, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Preamble clause stating enactment action.",
+      "evidenceRefs": ["L0007:S0"],
+      "interpretation": "Italicized continuation of the preamble, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter heading marking the start of the first chapter.",
+      "evidenceRefs": ["L0008:S0"],
+      "interpretation": "Bold formatting and standalone position indicate a major structural division.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading for general provisions.",
+      "evidenceRefs": ["L0009:S0"],
+      "interpretation": "Bold formatting and repetition elsewhere confirm it as a substantive section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading defining scope of regulation.",
+      "evidenceRefs": ["L0010:S0"],
+      "interpretation": "Bold formatting and explicit numbering mark it as a legislative article heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the first article's definition.",
+      "evidenceRefs": ["L0011:S0"],
+      "interpretation": "Regular font and paragraph indentation identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the first article's definition.",
+      "evidenceRefs": ["L0012:S0"],
+      "interpretation": "Regular font and paragraph indentation identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the first article's definition.",
+      "evidenceRefs": ["L0013:S0"],
+      "interpretation": "Regular font and paragraph indentation identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the first article's definition.",
+      "evidenceRefs": ["L0014:S0"],
+      "interpretation": "Regular font and paragraph indentation identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading specifying applicable subjects.",
+      "evidenceRefs": ["L0015:S0"],
+      "interpretation": "Bold formatting and explicit numbering mark it as a legislative article heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text listing applicable entities under the second article.",
+      "evidenceRefs": ["L0016:S0"],
+      "interpretation": "Regular font and numbered list format identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the second article's list.",
+      "evidenceRefs": ["L0017:S0"],
+      "interpretation": "Regular font and numbered list format identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the second article's list.",
+      "evidenceRefs": ["L0018:S0"],
+      "interpretation": "Regular font and numbered list format identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the second article's list.",
+      "evidenceRefs": ["L0019:S0"],
+      "interpretation": "Regular font and numbered list format identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading for terminology definitions.",
+      "evidenceRefs": ["L0020:S0"],
+      "interpretation": "Bold formatting and explicit numbering mark it as a legislative article heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory sentence for the definitions section.",
+      "evidenceRefs": ["L0021:S0"],
+      "interpretation": "Regular font and transitional phrasing identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition item 1 beginning.",
+      "evidenceRefs": ["L0022:S0"],
+      "interpretation": "Regular font and numbered list format identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition item 1 continuation.",
+      "evidenceRefs": ["L0023:S0"],
+      "interpretation": "Regular font and numbered list format identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition item 1 continuation.",
+      "evidenceRefs": ["L0024:S0"],
+      "interpretation": "Regular font and numbered list format identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition item 1 conclusion.",
+      "evidenceRefs": ["L0025:S0"],
+      "interpretation": "Regular font and numbered list format identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition item 2 beginning.",
+      "evidenceRefs": ["L0026:S0"],
+      "interpretation": "Regular font and numbered list format identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition item 2 continuation.",
+      "evidenceRefs": ["L0027:S0"],
+      "interpretation": "Regular font and numbered list format identify it as standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition item 2 conclusion.",
+      "evidenceRefs": ["L0028:S0"],
+      "interpretation": "Regular font and numbered list format identify it as standard body prose.",
+      "missingEvidence": []
+    }
+  ]
+}

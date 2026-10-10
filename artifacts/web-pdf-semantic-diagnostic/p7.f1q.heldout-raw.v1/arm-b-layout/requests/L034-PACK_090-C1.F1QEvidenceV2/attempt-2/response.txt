@@ -1,0 +1,559 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L6593:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header repeating section title and page number.",
+      "evidenceRefs": [
+        "L6593:S0"
+      ],
+      "interpretation": "Functions as page furniture rather than a structural heading; combines section name with page number 223.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L6594:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing arbitration procedural rules.",
+      "evidenceRefs": [
+        "L6594:S0"
+      ],
+      "interpretation": "Standard contractual prose detailing arbitration rules without heading characteristics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L6595:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing arbitration procedural rules.",
+      "evidenceRefs": [
+        "L6595:S0"
+      ],
+      "interpretation": "Standard contractual prose continuing the sentence from the previous line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L6596:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text listing arbitration venue conditions.",
+      "evidenceRefs": [
+        "L6596:S0"
+      ],
+      "interpretation": "Listed condition within a paragraph, formatted as standard body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L6597:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text listing arbitration venue conditions.",
+      "evidenceRefs": [
+        "L6597:S0"
+      ],
+      "interpretation": "Continuation of the venue condition list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L6598:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text listing arbitration venue conditions.",
+      "evidenceRefs": [
+        "L6598:S0"
+      ],
+      "interpretation": "Continuation of the venue condition list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L6599:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding venue condition list item.",
+      "evidenceRefs": [
+        "L6599:S0"
+      ],
+      "interpretation": "Concluding phrase of the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L6600:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text listing arbitration language conditions.",
+      "evidenceRefs": [
+        "L6600:S0"
+      ],
+      "interpretation": "New list item specifying arbitration language requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L6601:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding language condition list item.",
+      "evidenceRefs": [
+        "L6601:S0"
+      ],
+      "interpretation": "Concluding phrase of the language condition list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L6602:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing domestic contractor arbitration rules.",
+      "evidenceRefs": [
+        "L6602:S0"
+      ],
+      "interpretation": "Sub-list item differentiating rules for domestic contractors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L6603:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying governing law for domestic arbitration.",
+      "evidenceRefs": [
+        "L6603:S0"
+      ],
+      "interpretation": "Continuation of the domestic contractor rule specification.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L6604:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding domestic arbitration rule.",
+      "evidenceRefs": [
+        "L6604:S0"
+      ],
+      "interpretation": "Concluding phrase of the domestic contractor rule.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L6605:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining arbitrator powers over project documents.",
+      "evidenceRefs": [
+        "L6605:S0"
+      ],
+      "interpretation": "Standard contractual prose outlining arbitrator authority.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L6606:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining arbitrator powers over project documents.",
+      "evidenceRefs": [
+        "L6606:S0"
+      ],
+      "interpretation": "Continuation of the sentence describing arbitrator powers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L6607:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining arbitrator powers over project documents.",
+      "evidenceRefs": [
+        "L6607:S0"
+      ],
+      "interpretation": "Continuation of the sentence describing arbitrator powers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L6608:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text clarifying Project Manager role in arbitration.",
+      "evidenceRefs": [
+        "L6608:S0"
+      ],
+      "interpretation": "Standard contractual prose regarding witness qualifications.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L6609:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text clarifying Project Manager role in arbitration.",
+      "evidenceRefs": [
+        "L6609:S0"
+      ],
+      "interpretation": "Continuation of the sentence regarding witness testimony.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L6610:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text clarifying Project Manager role in arbitration.",
+      "evidenceRefs": [
+        "L6610:S0"
+      ],
+      "interpretation": "Continuation of the sentence regarding witness testimony scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L6611:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding Project Manager witness provision.",
+      "evidenceRefs": [
+        "L6611:S0"
+      ],
+      "interpretation": "Concluding phrase of the witness provision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L6612:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining evidentiary rights before arbitrators.",
+      "evidenceRefs": [
+        "L6612:S0"
+      ],
+      "interpretation": "Standard contractual prose establishing party rights in proceedings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L6613:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining evidentiary rights before arbitrators.",
+      "evidenceRefs": [
+        "L6613:S0"
+      ],
+      "interpretation": "Continuation of the sentence regarding admissible evidence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L6614:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining evidentiary rights before arbitrators.",
+      "evidenceRefs": [
+        "L6614:S0"
+      ],
+      "interpretation": "Continuation of the sentence regarding arguments and reasons.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L6615:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining evidentiary rights before arbitrators.",
+      "evidenceRefs": [
+        "L6615:S0"
+      ],
+      "interpretation": "Continuation of the sentence regarding dissatisfaction notices.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L6616:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text stating admissibility of DB decisions.",
+      "evidenceRefs": [
+        "L6616:S0"
+      ],
+      "interpretation": "Standard contractual prose regarding evidence admissibility.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L6617:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding DB decision admissibility provision.",
+      "evidenceRefs": [
+        "L6617:S0"
+      ],
+      "interpretation": "Concluding phrase of the admissibility provision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L6618:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining timing for commencing arbitration.",
+      "evidenceRefs": [
+        "L6618:S0"
+      ],
+      "interpretation": "Standard contractual prose establishing procedural timing.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L6619:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text preserving obligations during arbitration.",
+      "evidenceRefs": [
+        "L6619:S0"
+      ],
+      "interpretation": "Continuation of the sentence regarding ongoing contractual duties.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L6620:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text preserving obligations during arbitration.",
+      "evidenceRefs": [
+        "L6620:S0"
+      ],
+      "interpretation": "Continuation of the sentence regarding unaltered obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L6621:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding preservation of obligations provision.",
+      "evidenceRefs": [
+        "L6621:S0"
+      ],
+      "interpretation": "Concluding phrase of the obligation preservation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L6622:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-clause heading introducing a contractual provision on non-compliance with DB decisions.",
+      "evidenceRefs": [
+        "L6622:S0"
+      ],
+      "interpretation": "Numbered sub-clause heading (46.6) with a descriptive title, indented left (198.7) relative to body text (227.5), marking a new substantive provision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L6623:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text initiating the failure-to-comply scenario.",
+      "evidenceRefs": [
+        "L6623:S0"
+      ],
+      "interpretation": "Standard contractual prose detailing the triggering condition for the sub-clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L6624:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying remedies for non-compliance.",
+      "evidenceRefs": [
+        "L6624:S0"
+      ],
+      "interpretation": "Continuation of the remedial procedure description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L6625:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying remedies for non-compliance.",
+      "evidenceRefs": [
+        "L6625:S0"
+      ],
+      "interpretation": "Continuation of the remedial procedure description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L6626:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying arbitration reference for non-compliance.",
+      "evidenceRefs": [
+        "L6626:S0"
+      ],
+      "interpretation": "Continuation of the remedial procedure description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L6627:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text excluding prior sub-clauses from this reference.",
+      "evidenceRefs": [
+        "L6627:S0"
+      ],
+      "interpretation": "Concluding proviso limiting the application of previous clauses.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L6628:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-clause heading introducing a provision on the termination of the Dispute Board's appointment.",
+      "evidenceRefs": [
+        "L6628:S0"
+      ],
+      "interpretation": "Numbered sub-clause heading (46.7) with a descriptive title, indented left (198.7) relative to body text (227.5), marking a new substantive provision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L6629:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text initiating the no-DB dispute scenario.",
+      "evidenceRefs": [
+        "L6629:S0"
+      ],
+      "interpretation": "Standard contractual prose detailing the triggering condition for the sub-clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L6630:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the no-DB dispute scenario.",
+      "evidenceRefs": [
+        "L6630:S0"
+      ],
+      "interpretation": "Continuation of the conditional clause regarding DB absence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L6631:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the no-DB dispute scenario.",
+      "evidenceRefs": [
+        "L6631:S0"
+      ],
+      "interpretation": "Continuation of the conditional clause regarding DB expiry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L6632:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header repeating section title and page number.",
+      "evidenceRefs": [
+        "L6632:S0"
+      ],
+      "interpretation": "Functions as page furniture rather than a structural heading; combines section name with page number 224.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L6633:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a conditional clause.",
+      "evidenceRefs": [
+        "L6633:S0"
+      ],
+      "interpretation": "Standard contractual prose completing the 'whether by reason...' phrase.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L6634:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item marker.",
+      "evidenceRefs": [
+        "L6634:S0"
+      ],
+      "interpretation": "Alphanumeric list marker structuring subsequent procedural options.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L6634:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying procedural exclusions.",
+      "evidenceRefs": [
+        "L6634:S1"
+      ],
+      "interpretation": "Standard contractual prose detailing excluded sub-clauses.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L6635:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item marker.",
+      "evidenceRefs": [
+        "L6635:S0"
+      ],
+      "interpretation": "Alphanumeric list marker structuring subsequent procedural options.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L6635:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing direct arbitration referral.",
+      "evidenceRefs": [
+        "L6635:S1"
+      ],
+      "interpretation": "Standard contractual prose outlining the alternative dispute resolution path.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L6636:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text citing specific sub-clause.",
+      "evidenceRefs": [
+        "L6636:S0"
+      ],
+      "interpretation": "Concluding phrase referencing the governing contractual provision.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

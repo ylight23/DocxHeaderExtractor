@@ -1,0 +1,401 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main title of the document, positioned at the top of page 1 with the largest font size (17.2pt).",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Serves as the primary document title identifying the work.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Series or publication identifier ('61 Lecture notes') placed near the title area.",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Administrative or series metadata, not a substantive document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment '02' with large font size and null bbox, likely part of page furniture or running header.",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Parser-split fragment or page number component, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Author name 'Ion I. Cota˘escu' below the title.",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Author attribution metadata, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment 'na' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0004:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Institutional affiliation 'The West University of Timi¸soara,'.",
+      "evidenceRefs": [
+        "L0004:S1"
+      ],
+      "interpretation": "Affiliation metadata, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment 'J' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0005:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Physical address 'V. Parvan Ave. 4, RO-1900 Timi¸soara'.",
+      "evidenceRefs": [
+        "L0005:S1"
+      ],
+      "interpretation": "Contact/address metadata, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment '6' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Date 'February 12, 2016' below author information.",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Publication date metadata, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment ']' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment 'O' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading 'H. Abstract' introducing the abstract section on page 1.",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Functions as a substantive heading marking the start of the abstract.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment 'ht' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0011:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text of the abstract discussing physics applications.",
+      "evidenceRefs": [
+        "L0011:S1"
+      ],
+      "interpretation": "Abstract prose, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment 'a' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of abstract body text describing operators.",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Abstract prose, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment '[m' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0014:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of abstract body text mentioning Dirac conjugation.",
+      "evidenceRefs": [
+        "L0014:S1"
+      ],
+      "interpretation": "Abstract prose, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of abstract body text mentioning Riesz.",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Abstract prose, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment '1v' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0016:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of abstract body text.",
+      "evidenceRefs": [
+        "L0016:S1"
+      ],
+      "interpretation": "Abstract prose, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment '60' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0017:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of abstract body text.",
+      "evidenceRefs": [
+        "L0017:S1"
+      ],
+      "interpretation": "Abstract prose, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment '03' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment '0.' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment '20' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment '61' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment ':v' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment 'i' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment 'Xr' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment 'a' with large font size and null bbox.",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Parser-split fragment, likely part of page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '1' at bottom of page 1.",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Page furniture, not a document heading.",
+      "missingEvidence": []
+    }
+  ]
+}

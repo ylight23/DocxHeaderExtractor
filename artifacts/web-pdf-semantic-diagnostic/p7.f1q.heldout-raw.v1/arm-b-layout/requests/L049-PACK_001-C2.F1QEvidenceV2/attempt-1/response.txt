@@ -1,0 +1,485 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0025:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0025:S1"],
+      "interpretation": "Numeric value aligned with TOC entries, functioning as a page reference rather than a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a table.",
+      "evidenceRefs": ["L0026:S0"],
+      "interpretation": "TOC line listing a table title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0026:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0026:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a table.",
+      "evidenceRefs": ["L0027:S0"],
+      "interpretation": "TOC line listing a table title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0027:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0027:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a table.",
+      "evidenceRefs": ["L0028:S0"],
+      "interpretation": "TOC line listing a table title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0028:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0028:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a table.",
+      "evidenceRefs": ["L0029:S0"],
+      "interpretation": "TOC line listing a table title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0029:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0029:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a table.",
+      "evidenceRefs": ["L0030:S0"],
+      "interpretation": "TOC line listing a table title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0030:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0030:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a table.",
+      "evidenceRefs": ["L0031:S0"],
+      "interpretation": "TOC line listing a table title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0031:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0031:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a table.",
+      "evidenceRefs": ["L0032:S0"],
+      "interpretation": "TOC line listing a table title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0032:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0032:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a table.",
+      "evidenceRefs": ["L0033:S0"],
+      "interpretation": "TOC line listing a table title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0033:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0033:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a table.",
+      "evidenceRefs": ["L0034:S0"],
+      "interpretation": "TOC line listing a table title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0034:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0034:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Section header within the table of contents.",
+      "evidenceRefs": ["L0035:S0"],
+      "interpretation": "Label organizing the figures list in the TOC; functions as TOC navigation furniture rather than a body document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a figure.",
+      "evidenceRefs": ["L0036:S0"],
+      "interpretation": "TOC line listing a figure title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0036:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0036:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a figure.",
+      "evidenceRefs": ["L0037:S0"],
+      "interpretation": "TOC line listing a figure title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0037:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0037:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a figure.",
+      "evidenceRefs": ["L0038:S0"],
+      "interpretation": "TOC line listing a figure title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0038:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0038:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a figure.",
+      "evidenceRefs": ["L0039:S0"],
+      "interpretation": "TOC line listing a figure title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0039:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0039:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a figure.",
+      "evidenceRefs": ["L0040:S0"],
+      "interpretation": "TOC line listing a figure title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0040:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0040:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a figure.",
+      "evidenceRefs": ["L0041:S0"],
+      "interpretation": "TOC line listing a figure title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0041:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0041:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a figure.",
+      "evidenceRefs": ["L0042:S0"],
+      "interpretation": "TOC line listing a figure title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0042:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0042:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for a figure.",
+      "evidenceRefs": ["L0043:S0"],
+      "interpretation": "TOC line listing a figure title that operates as a heading on a different page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L0043:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0043:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header on the table of contents page.",
+      "evidenceRefs": ["L0044:S0"],
+      "interpretation": "Repeated title text positioned as page furniture on the TOC page, not introducing new body content here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L0044:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number in table of contents.",
+      "evidenceRefs": ["L0044:S1"],
+      "interpretation": "Numeric value serving as a page reference for the preceding TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L0045:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header on page 4.",
+      "evidenceRefs": ["L0045:S0"],
+      "interpretation": "Repeated section title formatted as page furniture (smaller font, lower bold ratio) rather than a primary content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L0046:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Substantive section heading introducing executive summary content.",
+      "evidenceRefs": ["L0046:S0"],
+      "interpretation": "Prominently displayed title (larger font, full bold) marking the start of a substantive content region on page 4.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L0047:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Opening sentence of the executive summary body text.",
+      "evidenceRefs": ["L0047:S0"],
+      "interpretation": "Standard prose paragraph introducing the MD&A scope, functioning as body text rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L0048:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of executive summary body text.",
+      "evidenceRefs": ["L0048:S0"],
+      "interpretation": "Prose describing financial performance period, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L0049:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of executive summary body text.",
+      "evidenceRefs": ["L0049:S0"],
+      "interpretation": "Standard disclaimer/procedural prose, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L0050:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of executive summary body text.",
+      "evidenceRefs": ["L0050:S0"],
+      "interpretation": "Forward-looking statement disclaimer, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L0051:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of executive summary body text.",
+      "evidenceRefs": ["L0051:S0"],
+      "interpretation": "Accounting reclassification note, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L0052:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Table title introducing selected financial data.",
+      "evidenceRefs": ["L0052:S0"],
+      "interpretation": "Bold, larger-font label functioning as a heading for the table data region immediately following it.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L0053:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table unit/footnote caption.",
+      "evidenceRefs": ["L0053:S0"],
+      "interpretation": "Italicized explanatory note specifying measurement units, functioning as table metadata rather than a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L0054:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of a table column header.",
+      "evidenceRefs": ["L0054:S0"],
+      "interpretation": "Partial text forming part of a table header cell, functioning as local table data labeling.",
+      "missingEvidence": []
+    }
+  ]
+}

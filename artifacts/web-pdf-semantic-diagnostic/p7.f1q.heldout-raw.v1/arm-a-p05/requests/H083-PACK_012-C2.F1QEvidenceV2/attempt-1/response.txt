@@ -1,0 +1,485 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L1101:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation of preceding clause listing enterprise responsibilities.",
+      "evidenceRefs": ["L1101:S0"],
+      "interpretation": "Continuation of legal obligations for service providers, formatted as standard paragraph text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L1102:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'b/' detailing a specific responsibility regarding incident reaction plans.",
+      "evidenceRefs": ["L1102:S0"],
+      "interpretation": "Sub-item in a numbered/bulleted list of duties, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L1103:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation describing handling of security weaknesses.",
+      "evidenceRefs": ["L1103:S0"],
+      "interpretation": "Standard prose continuing the obligation listed in the preceding list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L1104:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation listing types of security risks and incidents.",
+      "evidenceRefs": ["L1104:S0"],
+      "interpretation": "Continuation of the risk enumeration within the same list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L1105:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation specifying immediate implementation of emergency plans.",
+      "evidenceRefs": ["L1105:S0"],
+      "interpretation": "Prose detailing procedural steps following an incident.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L1106:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation regarding response measures and reporting timing.",
+      "evidenceRefs": ["L1106:S0"],
+      "interpretation": "Standard legal phrasing extending the obligation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L1107:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation naming the authority to report incidents to.",
+      "evidenceRefs": ["L1107:S0"],
+      "interpretation": "Continuation of the reporting requirement within the same list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L1108:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of list item 'b/' referencing compliance with the Law.",
+      "evidenceRefs": ["L1108:S0"],
+      "interpretation": "End of the second responsibility clause, marked by semicolon and legal reference.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L1109:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'c/' introducing technical solutions and preventive measures.",
+      "evidenceRefs": ["L1109:S0"],
+      "interpretation": "Third enumerated duty in the article, formatted as a list marker rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L1110:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation describing security during information collection.",
+      "evidenceRefs": ["L1110:S0"],
+      "interpretation": "Prose elaborating on the scope of technical measures.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L1111:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation listing data breach risks and incident triggers.",
+      "evidenceRefs": ["L1111:S0"],
+      "interpretation": "Continuation of the risk enumeration within the same list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L1112:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Garbled text fragment, likely OCR artifact or formatting error within body prose.",
+      "evidenceRefs": ["L1112:S0"],
+      "interpretation": "Unreadable character sequence embedded in the clause flow, serving no structural role.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1113:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of list item 'c/' referencing cyber security protection forces.",
+      "evidenceRefs": ["L1113:S0"],
+      "interpretation": "End of the third responsibility clause, completing the sentence started earlier.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L1114:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause '2.' introducing obligations for telecommunications and internet enterprises.",
+      "evidenceRefs": ["L1114:S0"],
+      "interpretation": "Second numbered clause of the article, structurally distinct from headings but part of body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L1115:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation specifying value-added service providers.",
+      "evidenceRefs": ["L1115:S0"],
+      "interpretation": "Prose extending the subject scope of Clause 2.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L1116:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation mandating compliance with referenced legal provisions.",
+      "evidenceRefs": ["L1116:S0"],
+      "interpretation": "Standard cross-reference language within the operative clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L1117:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of Clause 2 citing specific articles and clauses.",
+      "evidenceRefs": ["L1117:S0"],
+      "interpretation": "End of the compliance directive, marked by period and legal citation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L1118:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading start: 'Article 42. Responsibilities of agencies, organizations and'",
+      "evidenceRefs": ["L1118:S0"],
+      "interpretation": "Introduces a new article with formal numbering and topic description, establishing document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L1119:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading continuation: 'individuals using cyberspace'",
+      "evidenceRefs": ["L1119:S0"],
+      "interpretation": "Completes the article title on a new line, maintaining the structural function of the heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L1120:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause '1.' stating general compliance obligation with cyber security law.",
+      "evidenceRefs": ["L1120:S0"],
+      "interpretation": "First numbered provision under the newly established article, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L1121:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause '2.' initiating a requirement to provide information on security matters.",
+      "evidenceRefs": ["L1121:S0"],
+      "interpretation": "Second numbered provision, structurally a list item/clause rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L1122:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation listing specific threat categories requiring reporting.",
+      "evidenceRefs": ["L1122:S0"],
+      "interpretation": "Prose elaborating on the scope of information to be reported.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L1123:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of Clause 2 naming competent agencies and protection forces.",
+      "evidenceRefs": ["L1123:S0"],
+      "interpretation": "End of the reporting obligation, completing the sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L1124:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause '3.' initiating a requirement to comply with agency instructions.",
+      "evidenceRefs": ["L1124:S0"],
+      "interpretation": "Third numbered provision, functioning as a body clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L1125:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation describing cooperation and facilitation duties.",
+      "evidenceRefs": ["L1125:S0"],
+      "interpretation": "Prose detailing supportive actions required under the clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L1126:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation specifying targets of cooperation efforts.",
+      "evidenceRefs": ["L1126:S0"],
+      "interpretation": "Continuation of the cooperation mandate within the same clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L1127:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of Clause 3 regarding implementation of protection measures.",
+      "evidenceRefs": ["L1127:S0"],
+      "interpretation": "End of the third provision, marked by period.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L1128:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer containing publication name and page number.",
+      "evidenceRefs": ["L1128:S0"],
+      "interpretation": "Document furniture indicating source and pagination, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L1129:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter heading: 'Chapter VII'",
+      "evidenceRefs": ["L1129:S0"],
+      "interpretation": "Formal chapter marker establishing a major structural division in the law.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L1130:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter subheading: 'IMPLEMENTATION PROVISIONS'",
+      "evidenceRefs": ["L1130:S0"],
+      "interpretation": "All-caps title clarifying the scope of Chapter VII, functioning as a substantive heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L1131:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading: 'Article 43. Effect'",
+      "evidenceRefs": ["L1131:S0"],
+      "interpretation": "Bold-formatted article title establishing the next structural unit and its subject matter.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L1132:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause '1.' stating the law's effective date.",
+      "evidenceRefs": ["L1132:S0"],
+      "interpretation": "First numbered provision under Article 43, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L1133:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause '2.' initiating obligations for managers of critical information systems.",
+      "evidenceRefs": ["L1133:S0"],
+      "interpretation": "Second numbered provision, structurally a clause rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L1134:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation defining the target list of nationally important systems.",
+      "evidenceRefs": ["L1134:S0"],
+      "interpretation": "Prose extending the subject scope of Clause 2.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L1135:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation specifying a 12-month compliance deadline.",
+      "evidenceRefs": ["L1135:S0"],
+      "interpretation": "Continuation of the temporal obligation within the same clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L1136:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation regarding assessment by protection forces.",
+      "evidenceRefs": ["L1136:S0"],
+      "interpretation": "Prose detailing the verification mechanism for compliance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L1137:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation referencing Article 12 for assessment standards.",
+      "evidenceRefs": ["L1137:S0"],
+      "interpretation": "Cross-reference language within the operational clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L1138:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation describing conditions for deadline extension.",
+      "evidenceRefs": ["L1138:S0"],
+      "interpretation": "Prose outlining administrative flexibility within the compliance timeline.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L1139:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of Clause 2 naming the approving authority and max extension.",
+      "evidenceRefs": ["L1139:S0"],
+      "interpretation": "End of the second provision, completing the deadline rule.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L1140:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause '3.' initiating obligations for newly added information system managers.",
+      "evidenceRefs": ["L1140:S0"],
+      "interpretation": "Third numbered provision, structurally a clause mirroring Clause 2.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L1141:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation defining the target list for newly added systems.",
+      "evidenceRefs": ["L1141:S0"],
+      "interpretation": "Prose extending the subject scope of Clause 3.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L1142:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation specifying a 12-month compliance deadline from addition date.",
+      "evidenceRefs": ["L1142:S0"],
+      "interpretation": "Continuation of the temporal obligation within the same clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L1143:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation regarding assessment by protection forces.",
+      "evidenceRefs": ["L1143:S0"],
+      "interpretation": "Prose detailing the verification mechanism for compliance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L1144:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation referencing Article 12 for assessment standards.",
+      "evidenceRefs": ["L1144:S0"],
+      "interpretation": "Cross-reference language within the operational clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L1145:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Garbled text fragment, likely OCR artifact or formatting error near signature area.",
+      "evidenceRefs": ["L1145:S0"],
+      "interpretation": "Unreadable character sequence embedded in the closing section, serving no structural role.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L1146:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Signature block identifying the official role: Chairwoman of the National Assembly.",
+      "evidenceRefs": ["L1146:S0"],
+      "interpretation": "Administrative signatory designation, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L1147:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Signature block identifying the official's name: NGUYEN THI KIM NGAN.",
+      "evidenceRefs": ["L1147:S0"],
+      "interpretation": "Administrative signatory name, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L1148:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer containing publication name and page number.",
+      "evidenceRefs": ["L1148:S0"],
+      "interpretation": "Document furniture indicating source and pagination, not a content heading.",
+      "missingEvidence": []
+    }
+  ]
+}

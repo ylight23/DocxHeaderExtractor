@@ -1,0 +1,257 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0183:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main document title identifying the program",
+      "evidenceRefs": [
+        "L0183:S0"
+      ],
+      "interpretation": "Functions as the primary title of the agenda document, presented prominently at the top of the page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0184:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtitle identifying the advisory group",
+      "evidenceRefs": [
+        "L0184:S0"
+      ],
+      "interpretation": "Acts as a subtitle specifying the committee convening the meeting, positioned directly under the main title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0185:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtitle indicating meeting format",
+      "evidenceRefs": [
+        "L0185:S0"
+      ],
+      "interpretation": "Specifies the modality of the meeting as part of the title block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0186:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Meeting date",
+      "evidenceRefs": [
+        "L0186:S0"
+      ],
+      "interpretation": "Administrative date metadata providing temporal context, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0187:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document type heading",
+      "evidenceRefs": [
+        "L0187:S0"
+      ],
+      "interpretation": "Labels the document as an agenda, serving as a secondary title within the header block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0188:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Full meeting date",
+      "evidenceRefs": [
+        "L0188:S0"
+      ],
+      "interpretation": "Date metadata providing temporal context, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0189:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Time slot marker",
+      "evidenceRefs": [
+        "L0189:S0"
+      ],
+      "interpretation": "Temporal marker organizing the schedule sequence, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0189:S1",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Agenda item heading",
+      "evidenceRefs": [
+        "L0189:S1"
+      ],
+      "interpretation": "Structural heading introducing the first scheduled topic of the meeting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0190:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Session heading",
+      "evidenceRefs": [
+        "L0190:S0"
+      ],
+      "interpretation": "Major section heading dividing the agenda into Session I.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0191:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Time slot marker",
+      "evidenceRefs": [
+        "L0191:S0"
+      ],
+      "interpretation": "Temporal marker organizing the schedule sequence, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0191:S1",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Agenda item heading",
+      "evidenceRefs": [
+        "L0191:S1"
+      ],
+      "interpretation": "Structural heading introducing the second scheduled topic of the meeting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0192:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Time slot marker",
+      "evidenceRefs": [
+        "L0192:S0"
+      ],
+      "interpretation": "Temporal marker organizing the schedule sequence, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0192:S1",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Agenda item heading",
+      "evidenceRefs": [
+        "L0192:S1"
+      ],
+      "interpretation": "Structural heading introducing the third scheduled topic of the meeting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0193:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Time slot marker",
+      "evidenceRefs": [
+        "L0193:S0"
+      ],
+      "interpretation": "Temporal marker organizing the schedule sequence, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0193:S1",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Agenda item heading",
+      "evidenceRefs": [
+        "L0193:S1"
+      ],
+      "interpretation": "Structural heading introducing the fourth scheduled topic of the meeting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0194:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Time slot marker",
+      "evidenceRefs": [
+        "L0194:S0"
+      ],
+      "interpretation": "Temporal marker organizing the schedule sequence, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0194:S1",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Agenda item heading",
+      "evidenceRefs": [
+        "L0194:S1"
+      ],
+      "interpretation": "Structural heading introducing the fifth scheduled topic of the meeting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0195:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Session heading",
+      "evidenceRefs": [
+        "L0195:S0"
+      ],
+      "interpretation": "Major section heading dividing the agenda into Session II.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0196:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Time slot marker",
+      "evidenceRefs": [
+        "L0196:S0"
+      ],
+      "interpretation": "Temporal marker organizing the schedule sequence, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0196:S1",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Agenda item heading",
+      "evidenceRefs": [
+        "L0196:S1"
+      ],
+      "interpretation": "Structural heading introducing the final scheduled topic of the meeting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0197:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number",
+      "evidenceRefs": [
+        "L0197:S0"
+      ],
+      "interpretation": "Pagination furniture located in the margin, not a structural heading.",
+      "missingEvidence": []
+    }
+  ]
+}

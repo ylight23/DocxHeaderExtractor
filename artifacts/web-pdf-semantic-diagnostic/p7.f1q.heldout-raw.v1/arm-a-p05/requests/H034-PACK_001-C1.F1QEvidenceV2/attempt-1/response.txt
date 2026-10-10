@@ -1,0 +1,569 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title component; prominent bold typography on cover page.",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Contributes to the primary document title identifying the procurement document type.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title component; prominent bold typography on cover page.",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Completes the main title phrase alongside preceding occurrence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Primary title line; largest font size on cover page.",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Establishes the core document title 'Request for Bids'.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Primary title line; large bold typography on cover page.",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Specifies the subject matter 'Plant' within the title block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtitle/descriptor; bold typography below main title.",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Describes the scope 'Design, Supply, and Installation'.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtitle/descriptor; smaller bold typography completing title block.",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Clarifies bidding conditions '(Without Prequalification)'.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Publication date; standard metadata placement on cover.",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Indicates document version date; functions as metadata, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Roman numeral page number; standard page furniture.",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Serves as pagination marker; not structural text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Copyright notice; standard legal boilerplate.",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "States copyright ownership; administrative/legal text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Usage license restriction; standard legal boilerplate.",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Defines permitted non-commercial reproduction rights.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Usage license restriction continuation; standard legal boilerplate.",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Restricts commercial exploitation and redistribution.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Usage license restriction continuation; standard legal boilerplate.",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Prohibits unauthorized derivative works and translations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Roman numeral page number; standard page furniture.",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Serves as pagination marker; not structural text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading; bold typography introducing revision history.",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Establishes the 'Revisions' section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision date; metadata marker rather than substantive heading.",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Marks the July 2016 revision date; functions as list metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing July 2016 revision changes.",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Narrative description of regulatory updates in July 2016.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing revision description.",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Continues narrative description of regulatory alignment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision date; metadata marker rather than substantive heading.",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Marks the April 2015 revision date; functions as list metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing April 2015 revision changes.",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Narrative description of bidder eligibility expansions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing revision description.",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Lists specific sections modified in April 2015.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing revision description.",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Continues listing modified bidding stages.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding revision description.",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Concludes the April 2015 modification list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision date; metadata marker rather than substantive heading.",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Marks the August 2010 revision date; functions as list metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing August 2010 revision changes.",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Narrative description of fraud and corruption clause updates.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing revision description.",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Explains alignment with May 2010 corrigendum.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing revision description.",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "References mutual enforcement agreements between banks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing revision description.",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Continues referencing bank signatory agreements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing revision description.",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Notes applicability to plant procurement projects.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing revision description.",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Specifies funding sources (IBRD/IDA) and legal references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing revision description.",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Continues specifying legal agreement references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing revision description; italicized citation.",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Cites May 2004 procurement guidelines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing revision description; italicized citation.",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Cites revised October 2006 guidelines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding revision description.",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Concludes guideline citations and applicability notes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Roman numeral page number; standard page furniture.",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Serves as pagination marker; not structural text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading; prominent bold typography introducing foreword.",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Establishes the 'Foreword' section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text opening the foreword paragraph.",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Introduces the SPD's purpose and preparation authority.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing foreword description.",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Identifies IBRD and IDA as preparing entities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing foreword description.",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Traces document lineage to Master Bidding Document.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding foreword sentence.",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Completes the lineage statement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing SPD update rationale.",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "Explains update driven by July 2016 Borrower Regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing update description.",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Specifies applicability to IBRD/IDA funded projects.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying project applicability.",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "interpretation": "Details legal agreement reference requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding applicability statement.",
+      "evidenceRefs": [
+        "L0042:S0"
+      ],
+      "interpretation": "Concludes the applicability criteria.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Roman numeral page number; standard page furniture.",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "interpretation": "Serves as pagination marker; not structural text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading; prominent bold typography introducing preface.",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "interpretation": "Establishes the 'Preface' section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0045:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text opening the preface paragraph.",
+      "evidenceRefs": [
+        "L0045:S0"
+      ],
+      "interpretation": "Introduces the SPD's intended contract financing context.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0046:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing preface description.",
+      "evidenceRefs": [
+        "L0046:S0"
+      ],
+      "interpretation": "Identifies IBRD and IDA as financing entities.",
+      "missingEvidence": []
+    }
+  ]
+}

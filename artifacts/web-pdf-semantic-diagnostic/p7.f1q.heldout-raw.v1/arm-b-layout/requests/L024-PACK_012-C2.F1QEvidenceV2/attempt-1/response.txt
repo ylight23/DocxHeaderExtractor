@@ -1,0 +1,29 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0700:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Letter 'b)' list item detailing a specific violation condition within a regulatory penalty clause.",
+      "evidenceRefs": [
+        "L0700:S0"
+      ],
+      "interpretation": "Functions as subordinate body text continuing a numbered list of violations, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0701:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lowercase continuation line completing the sentence for list item 'b' within the same clause.",
+      "evidenceRefs": [
+        "L0701:S0"
+      ],
+      "interpretation": "Serves as ordinary body prose completing a legal provision sentence, lacking heading characteristics.",
+      "missingEvidence": []
+    }
+  ]
+}

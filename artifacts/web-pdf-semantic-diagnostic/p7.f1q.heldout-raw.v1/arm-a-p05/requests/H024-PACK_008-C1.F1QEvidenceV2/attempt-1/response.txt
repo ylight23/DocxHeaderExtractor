@@ -1,0 +1,533 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0613:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Penalty amount clause specifying fine range for telecom business violations.",
+      "evidenceRefs": [
+        "L0613:S0"
+      ],
+      "interpretation": "Body text clause detailing a specific monetary penalty tier under Article 20.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0614:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-clause itemizing a prohibited conduct regarding agency contracts.",
+      "evidenceRefs": [
+        "L0614:S0"
+      ],
+      "interpretation": "Body text listing a specific violation type under the preceding penalty clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0615:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation completing the sentence from the previous line.",
+      "evidenceRefs": [
+        "L0615:S0"
+      ],
+      "interpretation": "Continuation of the prohibited conduct description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0616:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-clause itemizing another prohibited conduct regarding state authority requests.",
+      "evidenceRefs": [
+        "L0616:S0"
+      ],
+      "interpretation": "Body text listing a second violation type under the same penalty provision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0617:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation completing the sentence from the previous line.",
+      "evidenceRefs": [
+        "L0617:S0"
+      ],
+      "interpretation": "Continuation of the prohibited conduct description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0618:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation ending the sentence describing the violation.",
+      "evidenceRefs": [
+        "L0618:S0"
+      ],
+      "interpretation": "Final fragment completing the violation description from the preceding lines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0619:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause heading for remedial measures following a penalty provision.",
+      "evidenceRefs": [
+        "L0619:S0"
+      ],
+      "interpretation": "Body text introducing the remedial actions applicable to the preceding violation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0620:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text specifying mandatory repayment of illegal gains.",
+      "evidenceRefs": [
+        "L0620:S0"
+      ],
+      "interpretation": "Body text detailing a specific remedial measure requirement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0621:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation ending the remedial measure sentence.",
+      "evidenceRefs": [
+        "L0621:S0"
+      ],
+      "interpretation": "Final fragment completing the remedial measure description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0622:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading identifying regulatory scope for service use and leasing violations.",
+      "evidenceRefs": [
+        "L0622:S0"
+      ],
+      "interpretation": "Document heading marking the start of Article 21, formatted in bold with larger font size.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0623:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Penalty amount clause specifying fine range for service use violations.",
+      "evidenceRefs": [
+        "L0623:S0"
+      ],
+      "interpretation": "Body text clause detailing a specific monetary penalty tier under Article 21.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0624:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation completing the sentence describing the violation.",
+      "evidenceRefs": [
+        "L0624:S0"
+      ],
+      "interpretation": "Continuation of the prohibited conduct description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0625:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause heading for supplementary penalty types.",
+      "evidenceRefs": [
+        "L0625:S0"
+      ],
+      "interpretation": "Body text introducing additional penalty categories applicable to the preceding violation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0626:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text specifying confiscation of contraband vehicles/items.",
+      "evidenceRefs": [
+        "L0626:S0"
+      ],
+      "interpretation": "Body text detailing a specific supplementary penalty measure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0627:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause heading for remedial measures.",
+      "evidenceRefs": [
+        "L0627:S0"
+      ],
+      "interpretation": "Body text introducing remedial actions applicable to the preceding violation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0628:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text specifying mandatory repayment of illegal gains.",
+      "evidenceRefs": [
+        "L0628:S0"
+      ],
+      "interpretation": "Body text detailing a specific remedial measure requirement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0629:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading identifying regulatory scope for ownership in telecom business.",
+      "evidenceRefs": [
+        "L0629:S0"
+      ],
+      "interpretation": "Document heading marking the start of Article 22, formatted in bold with larger font size.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0630:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Penalty amount clause specifying fine range for ownership violations.",
+      "evidenceRefs": [
+        "L0630:S0"
+      ],
+      "interpretation": "Body text clause detailing a specific monetary penalty tier under Article 22.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0631:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-clause itemizing a prohibited conduct regarding reporting changes.",
+      "evidenceRefs": [
+        "L0631:S0"
+      ],
+      "interpretation": "Body text listing a specific violation type under the preceding penalty clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0632:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation completing the sentence from the previous line.",
+      "evidenceRefs": [
+        "L0632:S0"
+      ],
+      "interpretation": "Continuation of the prohibited conduct description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0633:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-clause itemizing another prohibited conduct regarding capital restructuring plans.",
+      "evidenceRefs": [
+        "L0633:S0"
+      ],
+      "interpretation": "Body text listing a second violation type under the same penalty provision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0634:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation completing the sentence from the previous line.",
+      "evidenceRefs": [
+        "L0634:S0"
+      ],
+      "interpretation": "Continuation of the prohibited conduct description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0635:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation ending the sentence describing the violation.",
+      "evidenceRefs": [
+        "L0635:S0"
+      ],
+      "interpretation": "Final fragment completing the violation description from the preceding lines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0636:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Penalty amount clause specifying fine range for ownership violations.",
+      "evidenceRefs": [
+        "L0636:S0"
+      ],
+      "interpretation": "Body text clause detailing a higher monetary penalty tier under Article 22.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0637:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-clause itemizing a prohibited conduct regarding capital restructuring.",
+      "evidenceRefs": [
+        "L0637:S0"
+      ],
+      "interpretation": "Body text listing a specific violation type under the preceding penalty clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0638:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation completing the sentence from the previous line.",
+      "evidenceRefs": [
+        "L0638:S0"
+      ],
+      "interpretation": "Continuation of the prohibited conduct description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0639:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-clause itemizing another prohibited conduct regarding timing of restructuring.",
+      "evidenceRefs": [
+        "L0639:S0"
+      ],
+      "interpretation": "Body text listing a second violation type under the same penalty provision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0640:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation completing the sentence from the previous line.",
+      "evidenceRefs": [
+        "L0640:S0"
+      ],
+      "interpretation": "Continuation of the prohibited conduct description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0641:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation ending the sentence describing the violation.",
+      "evidenceRefs": [
+        "L0641:S0"
+      ],
+      "interpretation": "Final fragment completing the violation description from the preceding lines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0642:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Penalty amount clause specifying fine range for ownership violations.",
+      "evidenceRefs": [
+        "L0642:S0"
+      ],
+      "interpretation": "Body text clause detailing the highest monetary penalty tier under Article 22.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0643:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-clause itemizing a prohibited conduct regarding minority shareholding.",
+      "evidenceRefs": [
+        "L0643:S0"
+      ],
+      "interpretation": "Body text listing a specific violation type under the preceding penalty clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0644:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation completing the sentence from the previous line.",
+      "evidenceRefs": [
+        "L0644:S0"
+      ],
+      "interpretation": "Continuation of the prohibited conduct description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0645:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-clause itemizing another prohibited conduct regarding simultaneous ownership.",
+      "evidenceRefs": [
+        "L0645:S0"
+      ],
+      "interpretation": "Body text listing a second violation type under the same penalty provision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0646:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation completing the sentence from the previous line.",
+      "evidenceRefs": [
+        "L0646:S0"
+      ],
+      "interpretation": "Continuation of the prohibited conduct description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0647:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation ending the sentence describing the violation.",
+      "evidenceRefs": [
+        "L0647:S0"
+      ],
+      "interpretation": "Final fragment completing the violation description from the preceding lines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0648:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause heading for supplementary penalty types.",
+      "evidenceRefs": [
+        "L0648:S0"
+      ],
+      "interpretation": "Body text introducing additional penalty categories applicable to the preceding violation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0649:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text specifying suspension of telecom license usage rights.",
+      "evidenceRefs": [
+        "L0649:S0"
+      ],
+      "interpretation": "Body text detailing a specific supplementary penalty measure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0650:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation ending the penalty description.",
+      "evidenceRefs": [
+        "L0650:S0"
+      ],
+      "interpretation": "Final fragment completing the supplementary penalty description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0651:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legislative amendment note referencing another decree.",
+      "evidenceRefs": [
+        "L0651:S0"
+      ],
+      "interpretation": "Administrative note indicating that paragraph 4 of Article 22 was repealed by a subsequent decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0652:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading identifying regulatory scope for competition in telecom business.",
+      "evidenceRefs": [
+        "L0652:S0"
+      ],
+      "interpretation": "Document heading marking the start of Article 23, formatted in bold with larger font size.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0653:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Penalty amount clause specifying fine range for market dominance violations.",
+      "evidenceRefs": [
+        "L0653:S0"
+      ],
+      "interpretation": "Body text clause detailing a specific monetary penalty tier under Article 23.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0654:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation completing the sentence describing the violation.",
+      "evidenceRefs": [
+        "L0654:S0"
+      ],
+      "interpretation": "Continuation of the prohibited conduct description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0655:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation completing the sentence from the previous line.",
+      "evidenceRefs": [
+        "L0655:S0"
+      ],
+      "interpretation": "Continuation of the prohibited conduct description from the prior line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0656:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text continuation ending the sentence describing the violation.",
+      "evidenceRefs": [
+        "L0656:S0"
+      ],
+      "interpretation": "Final fragment completing the violation description from the preceding lines.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,509 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1656:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "List entry referencing another form/report",
+      "evidenceRefs": [
+        "L1656:S0"
+      ],
+      "interpretation": "Acts as a table-of-contents or index entry pointing to a separate document/form rather than establishing a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1657:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "List entry referencing another form/report",
+      "evidenceRefs": [
+        "L1657:S0"
+      ],
+      "interpretation": "Acts as a table-of-contents or index entry pointing to a separate document/form rather than establishing a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1658:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text fragment continuing a sentence",
+      "evidenceRefs": [
+        "L1658:S0"
+      ],
+      "interpretation": "Fragmentary text serving as body prose or a field continuation, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1659:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "List entry referencing another form/report",
+      "evidenceRefs": [
+        "L1659:S0"
+      ],
+      "interpretation": "Acts as a table-of-contents or index entry pointing to a separate document/form rather than establishing a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1660:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text fragment",
+      "evidenceRefs": [
+        "L1660:S0"
+      ],
+      "interpretation": "Fragmentary text serving as body prose or a field continuation, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1661:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading introducing content about receipts",
+      "evidenceRefs": [
+        "L1661:S0"
+      ],
+      "interpretation": "Bold formatting and numeric prefix mark this as a substantive section heading organizing the following content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1662:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "List entry referencing another form/report",
+      "evidenceRefs": [
+        "L1662:S0"
+      ],
+      "interpretation": "Acts as a table-of-contents or index entry pointing to a separate document/form rather than establishing a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1663:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "List entry referencing another form/report",
+      "evidenceRefs": [
+        "L1663:S0"
+      ],
+      "interpretation": "Acts as a table-of-contents or index entry pointing to a separate document/form rather than establishing a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1663:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal reference fragment",
+      "evidenceRefs": [
+        "L1663:S1"
+      ],
+      "interpretation": "Standalone legal citation fragment attached to a list item, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1664:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "List entry referencing another form/report",
+      "evidenceRefs": [
+        "L1664:S0"
+      ],
+      "interpretation": "Acts as a table-of-contents or index entry pointing to a separate document/form rather than establishing a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1665:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "List entry referencing another form/report",
+      "evidenceRefs": [
+        "L1665:S0"
+      ],
+      "interpretation": "Acts as a table-of-contents or index entry pointing to a separate document/form rather than establishing a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1665:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal reference fragment",
+      "evidenceRefs": [
+        "L1665:S1"
+      ],
+      "interpretation": "Standalone legal citation fragment attached to a list item, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1666:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "List entry referencing another form/report",
+      "evidenceRefs": [
+        "L1666:S0"
+      ],
+      "interpretation": "Acts as a table-of-contents or index entry pointing to a separate document/form rather than establishing a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1667:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Keyword fragment/reference",
+      "evidenceRefs": [
+        "L1667:S0"
+      ],
+      "interpretation": "Isolated keyword fragment used for indexing or cross-referencing, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1668:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "List entry referencing another form/report",
+      "evidenceRefs": [
+        "L1668:S0"
+      ],
+      "interpretation": "Acts as a table-of-contents or index entry pointing to a separate document/form rather than establishing a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1669:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "List entry referencing another form/report",
+      "evidenceRefs": [
+        "L1669:S0"
+      ],
+      "interpretation": "Acts as a table-of-contents or index entry pointing to a separate document/form rather than establishing a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1670:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "List entry referencing another form/report",
+      "evidenceRefs": [
+        "L1670:S0"
+      ],
+      "interpretation": "Acts as a table-of-contents or index entry pointing to a separate document/form rather than establishing a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1670:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal reference fragment",
+      "evidenceRefs": [
+        "L1670:S1"
+      ],
+      "interpretation": "Standalone legal citation fragment attached to a list item, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1671:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "List entry referencing another form/report",
+      "evidenceRefs": [
+        "L1671:S0"
+      ],
+      "interpretation": "Acts as a table-of-contents or index entry pointing to a separate document/form rather than establishing a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1671:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal reference fragment",
+      "evidenceRefs": [
+        "L1671:S1"
+      ],
+      "interpretation": "Standalone legal citation fragment attached to a list item, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1672:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form identification number",
+      "evidenceRefs": [
+        "L1672:S0"
+      ],
+      "interpretation": "Administrative metadata identifying the specific form template, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1673:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National header/motto",
+      "evidenceRefs": [
+        "L1673:S0"
+      ],
+      "interpretation": "Standard national motto header repeated across pages; administrative furniture, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1674:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National motto continuation",
+      "evidenceRefs": [
+        "L1674:S0"
+      ],
+      "interpretation": "Continuation of the national motto header; administrative furniture, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1675:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Signature line placeholder",
+      "evidenceRefs": [
+        "L1675:S0"
+      ],
+      "interpretation": "Visual placeholder for a signature or date; functional form element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1676:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main title of the form",
+      "evidenceRefs": [
+        "L1676:S0"
+      ],
+      "interpretation": "Bold, centered typography identifies this as the primary document title establishing the form's identity.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1677:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtitle specifying form purpose",
+      "evidenceRefs": [
+        "L1677:S0"
+      ],
+      "interpretation": "Bold typography immediately following the main title functions as a descriptive subtitle defining the scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1678:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Underline placeholder",
+      "evidenceRefs": [
+        "L1678:S0"
+      ],
+      "interpretation": "Visual placeholder for handwritten input; functional form element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1679:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Checkbox option for new registration",
+      "evidenceRefs": [
+        "L1679:S0"
+      ],
+      "interpretation": "Interactive selection control within the form body; functional element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1680:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Checkbox option for information change",
+      "evidenceRefs": [
+        "L1680:S0"
+      ],
+      "interpretation": "Interactive selection control within the form body; functional element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1681:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Taxpayer name field label",
+      "evidenceRefs": [
+        "L1681:S0"
+      ],
+      "interpretation": "Standard form field label directing user input; functional element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1682:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Tax code field label",
+      "evidenceRefs": [
+        "L1682:S0"
+      ],
+      "interpretation": "Standard form field label directing user input; functional element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1683:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Tax authority field label",
+      "evidenceRefs": [
+        "L1683:S0"
+      ],
+      "interpretation": "Standard form field label directing user input; functional element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1684:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Contact person/phone field labels",
+      "evidenceRefs": [
+        "L1684:S0"
+      ],
+      "interpretation": "Standard form field labels directing user input; functional elements, not headings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1685:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Address/email field labels",
+      "evidenceRefs": [
+        "L1685:S0"
+      ],
+      "interpretation": "Standard form field labels directing user input; functional elements, not headings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1686:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regulatory preamble text",
+      "evidenceRefs": [
+        "L1686:S0"
+      ],
+      "interpretation": "Declaratory body prose citing legal basis; functional text, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1687:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Declaration preamble text",
+      "evidenceRefs": [
+        "L1687:S0"
+      ],
+      "interpretation": "Declaratory body prose introducing form data; functional text, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1688:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section heading for invoice type",
+      "evidenceRefs": [
+        "L1688:S0"
+      ],
+      "interpretation": "Bold formatting and numeric prefix mark this as a substantive section heading organizing the following content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1689:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Checkbox option for tax-code invoices",
+      "evidenceRefs": [
+        "L1689:S0"
+      ],
+      "interpretation": "Interactive selection control within the form body; functional element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1690:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Checkbox option for non-tax-code invoices",
+      "evidenceRefs": [
+        "L1690:S0"
+      ],
+      "interpretation": "Interactive selection control within the form body; functional element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1691:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section heading for data transmission method",
+      "evidenceRefs": [
+        "L1691:S0"
+      ],
+      "interpretation": "Bold formatting and numeric prefix mark this as a substantive section heading organizing the following content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1692:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Checkbox option text with legal reference",
+      "evidenceRefs": [
+        "L1692:S0"
+      ],
+      "interpretation": "Detailed selection instruction containing legal citations; functional text, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1693:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Checkbox option text describing eligible enterprises",
+      "evidenceRefs": [
+        "L1693:S0"
+      ],
+      "interpretation": "Detailed selection instruction describing eligibility criteria; functional text, not a heading.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Translation notice header",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Administrative label indicating the document is an unofficial translation, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Reference purpose notice",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Administrative disclaimer for internal use, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Government letterhead component",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Part of the issuing authority's letterhead, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0002:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Republic name in letterhead",
+      "evidenceRefs": [
+        "L0002:S1"
+      ],
+      "interpretation": "National entity name positioned as letterhead metadata, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative separator line",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Visual divider using dashes, carries no semantic heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0003:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National motto",
+      "evidenceRefs": [
+        "L0003:S1"
+      ],
+      "interpretation": "State motto printed as letterhead decoration, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative separator line",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Visual divider using dashes, carries no semantic heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decree number and date",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Administrative reference and issuance date, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main title keyword",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Standalone capitalized term forming the primary document title 'DECREE'.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title continuation part 1",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Completes the decree title specifying subject matter regarding business conditions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title continuation part 2",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Finalizes the decree title by defining the managing ministry scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal preamble clause",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Standard statutory preamble citing enabling legislation, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal preamble clause",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Procedural preamble stating ministerial request, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Enacting clause start",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Formal enaction statement introducing the decree's operative text, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Enacting clause end",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Continuation of the enaction sentence, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter heading",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Explicit chapter marker establishing the first major structural division.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Thematic subtitle identifying the chapter's substantive topic area.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading start",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Identifies Article 1 and states its annulment purpose, forming the article heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading completion",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Completes the Article 1 heading phrase, maintaining heading typography and alignment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Annulment list item 1",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Numbered list entry detailing a specific annulled decree, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Continues the citation of the annulled decree, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item conclusion",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Concludes the first annulment citation, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Annulment list item 2 start",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Numbered list entry referencing another annulled decree, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Continues the citation details, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item abbreviation",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Provides shorthand reference for the cited decree, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Annulment list item 3",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Numbered list entry citing an annulled circular, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item conclusion",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Concludes the third annulment citation, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Annulment list item 4",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Numbered list entry citing another annulled circular, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Continues the fourth citation, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item conclusion",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Concludes the fourth annulment citation, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Annulment list item 5",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Numbered list entry citing a fifth annulled circular, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Continues the fifth citation, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item continuation",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Continues product scope description, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item conclusion",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Concludes the fifth annulment citation, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Annulment list item 6",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Numbered list entry citing a sixth annulled circular, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item conclusion",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Concludes the sixth annulment citation, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Annulment list item 7",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Numbered list entry citing a seventh annulled circular, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item conclusion",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Concludes the seventh annulment citation, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Annulment list item 8 start",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Numbered list entry citing an eighth annulled provision, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item conclusion",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Concludes the eighth annulment citation, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading start",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Identifies Article 2 and begins specifying the targeted decree for amendment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading continuation",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "Continues the Article 2 heading with the decree's date and subject matter.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading completion",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Finalizes the Article 2 heading by naming the managing ministry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-article heading",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "interpretation": "Numbered structural marker introducing the first amendment provision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted body text start",
+      "evidenceRefs": [
+        "L0042:S0"
+      ],
+      "interpretation": "Opening quotation of the amended decree text, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted body text continuation",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "interpretation": "Continues the quoted regulatory definition, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted body text continuation",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "interpretation": "Continues the quoted definition, functioning as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0045:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted body text continuation",
+      "evidenceRefs": [
+        "L0045:S0"
+      ],
+      "interpretation": "Continues the quoted scope description, functioning as body prose.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,450 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L6552:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header containing section title and trailing page number.",
+      "evidenceRefs": [
+        "L6552:S0"
+      ],
+      "interpretation": "Identified as page furniture due to full-width layout, small font size (10pt), and exact textual repetition on consecutive pages (L6510:S0, L6589:S0) with incrementing page numbers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L6553:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph discussing contract terms.",
+      "evidenceRefs": [
+        "L6553:S0"
+      ],
+      "interpretation": "Standard body text flowing from preceding clause content, regular font size and indentation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L6554:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining adjustment coefficients.",
+      "evidenceRefs": [
+        "L6554:S0"
+      ],
+      "interpretation": "Standard body text continuing the technical explanation of cost adjustment factors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L6555:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing coefficient discussion.",
+      "evidenceRefs": [
+        "L6555:S0"
+      ],
+      "interpretation": "Standard body text maintaining paragraph flow.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L6556:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing coefficient discussion.",
+      "evidenceRefs": [
+        "L6556:S0"
+      ],
+      "interpretation": "Standard body text maintaining paragraph flow.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L6557:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding coefficient condition.",
+      "evidenceRefs": [
+        "L6557:S0"
+      ],
+      "interpretation": "Standard body text completing the conditional statement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L6558:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Clause heading '14.1 The Contract' merged with introductory text.",
+      "evidenceRefs": [
+        "L6558:S0"
+      ],
+      "interpretation "introductory text.",
+      "interpretation": "Introduces substantive clause content with numbered heading format, positioned at left margin before indented body text begins.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L6559:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subheading 'Price' indicating new topic within clause.",
+      "evidenceRefs": [
+        "L6559:S0"
+      ],
+      "interpretation": "Standalone line with bold typography (boldRatio=1) and distinct left-edge alignment marks it as a structural subheading introducing the following enumerated items.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L6560:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text under 'Price' subheading.",
+      "evidenceRefs": [
+        "L6560:S0"
+      ],
+      "interpretation": "Standard body text beginning sub-item (a) under the Price subheading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L6561:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6561:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L6562:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6562:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L6563:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text under '(b)' sub-item.",
+      "evidenceRefs": [
+        "L6563:S0"
+      ],
+      "interpretation": "Standard body text beginning sub-item (b).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L6564:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6564:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L6565:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6565:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L6566:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6566:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L6567:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6567:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L6568:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text under '(c)' sub-item.",
+      "evidenceRefs": [
+        "L6568:S0"
+      ],
+      "interpretation": "Standard body text beginning sub-item (c).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L6569:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6569:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L6570:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6570:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L6571:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text under '(i)' sub-item.",
+      "evidenceRefs": [
+        "L6571:S0"
+      ],
+      "interpretation": "Standard body text beginning sub-item (i).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L6572:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6572:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L6573:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text under '(ii)' sub-item.",
+      "evidenceRefs": [
+        "L6573:S0"
+      ],
+      "interpretation": "Standard body text beginning sub-item (ii).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L6574:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6574:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L6575:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text under '(d)' sub-item.",
+      "evidenceRefs": [
+        "L6575:S0"
+      ],
+      "interpretation": "Standard body text beginning sub-item (d).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L6576:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6576:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L6577:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6577:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L6578:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6578:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L6579:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6579:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L6580:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6580:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L6581:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6581:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L6582:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6582:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L6583:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6583:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L6584:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6584:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L6585:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Clause heading '14.2 Advance Payment' merged with introductory text.",
+      "evidenceRefs": [
+        "L6585:S0"
+      ],
+      "interpretation": "Introduces substantive clause content with numbered heading format, positioned at left margin before indented body text begins.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L6586:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6586:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L6587:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation.",
+      "evidenceRefs": [
+        "L6587:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L6588:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footer text indicating copyright notice.",
+      "evidenceRefs": [
+        "L6588:S0"
+      ],
+      "interpretation": "Identified as page furniture due to small font size (10pt), bottom-of-page placement, and exact textual repetition across consecutive pages (L6509:S0, L6510:S0, L6551:S0).",
+      "missingEvidence": []
+    }
+  ]
+}

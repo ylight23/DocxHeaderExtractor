@@ -1,0 +1,391 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading introducing the table of contents section",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Establishes the TOC section heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry listing '1 Introduction' with page reference",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Represents the body heading '1 Introduction' located on page 3.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0028:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '3' associated with the preceding TOC entry",
+      "evidenceRefs": [
+        "L0028:S1"
+      ],
+      "interpretation": "Functions as a page number reference for the previous TOC line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry listing '2 Preliminaries' with page reference",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Represents the body heading '2 Preliminaries' located on page 4.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0029:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '4' associated with the preceding TOC entry",
+      "evidenceRefs": [
+        "L0029:S1"
+      ],
+      "interpretation": "Functions as a page number reference for the previous TOC line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for subsection '2.1 Sets and mappings'",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Represents the body heading '2.1 Sets and mappings' located on page 4.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for subsection '2.2 Algebraic structures'",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Represents the body heading '2.2 Algebraic structures' located on page 5.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for subsection '2.3 Topologies'",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Represents the body heading '2.3 Topologies' located on page 7.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for chapter '3 Some linear algebra'",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Represents the body heading '3 Some linear algebra' located on page 9.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for subsection '3.1 Duality and tensors'",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Represents the body heading '3.1 Duality and tensors' located on page 10.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '3.1.1 Linear mappings'",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Represents the body heading '3.1.1 Linear mappings' located on page 10.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '3.1.2 Duality'",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Represents the body heading '3.1.2 Duality' located on page 12.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '3.1.3 Tensors'",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Represents the body heading '3.1.3 Tensors' located on page 13.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for subsection '3.2 Matrix algebra'",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Represents the body heading '3.2 Matrix algebra' located on page 16.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '3.2.1 Matrices and determinants'",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "Represents the body heading '3.2.1 Matrices and determinants' located on page 16.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '3.2.2 Arithmetic vector spaces'",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Represents the body heading '3.2.2 Arithmetic vector spaces' located on page 18.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for subsection '3.3 Matrix representations'",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "interpretation": "Represents the body heading '3.3 Matrix representations' located on page 20.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '3.3.1 Representing vectors and tensors'",
+      "evidenceRefs": [
+        "L0042:S0"
+      ],
+      "interpretation": "Represents the body heading '3.3.1 Representing vectors and tensors' located on page 20.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '3.3.2 Representing linear mappings'",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "interpretation": "Represents the body heading '3.3.2 Representing linear mappings' located on page 22.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '3.3.3 Changing the representation'",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "interpretation": "Represents the body heading '3.3.3 Changing the representation' located on page 25.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0045:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for chapter '4 Inner product vector spaces'",
+      "evidenceRefs": [
+        "L0045:S0"
+      ],
+      "interpretation": "Represents the body heading '4 Inner product vector spaces' located on page 27.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0046:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for subsection '4.1 Unitary vector spaces'",
+      "evidenceRefs": [
+        "L0046:S0"
+      ],
+      "interpretation": "Represents the body heading '4.1 Unitary vector spaces' located on page 27.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0047:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '4.1.1 Topologies in vector spaces'",
+      "evidenceRefs": [
+        "L0047:S0"
+      ],
+      "interpretation": "Represents the body heading '4.1.1 Topologies in vector spaces' located on page 27.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0048:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '4.1.2 Orthonormal dual bases'",
+      "evidenceRefs": [
+        "L0048:S0"
+      ],
+      "interpretation": "Represents the body heading '4.1.2 Orthonormal dual bases' located on page 28.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0049:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '4.1.3 Operators on unitary vector spaces'",
+      "evidenceRefs": [
+        "L0049:S0"
+      ],
+      "interpretation": "Represents the body heading '4.1.3 Operators on unitary vector spaces' located on page 30.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0050:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '4.1.4 Isometries'",
+      "evidenceRefs": [
+        "L0050:S0"
+      ],
+      "interpretation": "Represents the body heading '4.1.4 Isometries' located on page 34.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0051:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for subsection '4.2 Vector spaces with indefinite inner product'",
+      "evidenceRefs": [
+        "L0051:S0"
+      ],
+      "interpretation": "Represents the body heading '4.2 Vector spaces with indefinite inner product' located on page 35.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0052:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '4.2.1 Indefinite metric'",
+      "evidenceRefs": [
+        "L0052:S0"
+      ],
+      "interpretation": "Represents the body heading '4.2.1 Indefinite metric' located on page 35.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0053:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '4.2.2 Dirac conjugation'",
+      "evidenceRefs": [
+        "L0053:S0"
+      ],
+      "interpretation": "Represents the body heading '4.2.2 Dirac conjugation' located on page 37.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0054:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '4.2.3 Representations in h-orthonormal dual bases'",
+      "evidenceRefs": [
+        "L0054:S0"
+      ],
+      "interpretation": "Represents the body heading '4.2.3 Representations in h-orthonormal dual bases' located on page 39.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0055:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for sub-subsection '4.2.4 Euclidean and pseudo-Euclidean spaces'",
+      "evidenceRefs": [
+        "L0055:S0"
+      ],
+      "interpretation": "Represents the body heading '4.2.4 Euclidean and pseudo-Euclidean spaces' located on page 42.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0056:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '2' appearing at the bottom of the TOC page",
+      "evidenceRefs": [
+        "L0056:S0"
+      ],
+      "interpretation": "Functions as a page footer or pagination marker.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

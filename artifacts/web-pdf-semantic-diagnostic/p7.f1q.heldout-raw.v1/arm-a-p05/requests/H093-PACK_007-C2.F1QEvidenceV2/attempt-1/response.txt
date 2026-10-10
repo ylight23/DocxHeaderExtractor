@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0573:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying server restrictions on Transfer-Encoding header fields.",
+      "evidenceRefs": [
+        "L0573:S0"
+      ],
+      "interpretation": "Standard specification language defining protocol constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0574:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose detailing status codes and header restrictions.",
+      "evidenceRefs": [
+        "L0574:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0575:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose referencing CONNECT request responses.",
+      "evidenceRefs": [
+        "L0575:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0576:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing server behavior for unknown transfer codings.",
+      "evidenceRefs": [
+        "L0576:S0"
+      ],
+      "interpretation": "Standard specification language defining protocol constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0577:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose specifying 501 response requirement.",
+      "evidenceRefs": [
+        "L0577:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0578:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page header/footer metadata indicating author and page number.",
+      "evidenceRefs": [
+        "L0578:S0"
+      ],
+      "interpretation": "Document pagination and attribution metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0579:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header/footer identifying the RFC title and date.",
+      "evidenceRefs": [
+        "L0579:S0"
+      ],
+      "interpretation": "Document pagination and attribution metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0580:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose discussing historical context of Transfer-Encoding.",
+      "evidenceRefs": [
+        "L0580:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0581:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose regarding HTTP/1.0 compatibility assumptions.",
+      "evidenceRefs": [
+        "L0581:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0582:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose about HTTP/1.0 message forwarding.",
+      "evidenceRefs": [
+        "L0582:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0583:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose regarding chunked transfer coding handling.",
+      "evidenceRefs": [
+        "L0583:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0584:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying client restrictions on sending Transfer-Encoding.",
+      "evidenceRefs": [
+        "L0584:S0"
+      ],
+      "interpretation": "Standard specification language defining protocol constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0585:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose detailing server capability requirements.",
+      "evidenceRefs": [
+        "L0585:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0586:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose explaining configuration or memory cues.",
+      "evidenceRefs": [
+        "L0586:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0587:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying server restrictions on sending Transfer-Encoding.",
+      "evidenceRefs": [
+        "L0587:S0"
+      ],
+      "interpretation": "Standard specification language defining protocol constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0588:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose requiring HTTP/1.1 indication.",
+      "evidenceRefs": [
+        "L0588:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0589:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing early implementation behaviors.",
+      "evidenceRefs": [
+        "L0589:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0590:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose regarding Content-Length usage.",
+      "evidenceRefs": [
+        "L0590:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0591:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose explaining Transfer-Encoding override rules.",
+      "evidenceRefs": [
+        "L0591:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0592:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose warning about forwarding vulnerabilities.",
+      "evidenceRefs": [
+        "L0592:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0593:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose citing specific attack vectors.",
+      "evidenceRefs": [
+        "L0593:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0594:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose regarding downstream parsing failures.",
+      "evidenceRefs": [
+        "L0594:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0595:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose noting HTTP/1.0 limitations.",
+      "evidenceRefs": [
+        "L0595:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0596:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose allowing servers to reject conflicting headers.",
+      "evidenceRefs": [
+        "L0596:S0"
+      ],
+      "interpretation": "Standard specification language defining protocol constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0597:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose specifying processing rules.",
+      "evidenceRefs": [
+        "L0597:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0598:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose mandating connection closure.",
+      "evidenceRefs": [
+        "L0598:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0599:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing handling of HTTP/1.0 messages with Transfer-Encoding.",
+      "evidenceRefs": [
+        "L0599:S0"
+      ],
+      "interpretation": "Standard specification language defining protocol constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0600:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose requiring faulty framing treatment.",
+      "evidenceRefs": [
+        "L0600:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0601:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose regarding connection closure rationale.",
+      "evidenceRefs": [
+        "L0601:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0602:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose warning about buffer misinterpretation.",
+      "evidenceRefs": [
+        "L0602:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0603:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading '6.2. Content-Length' formatted in larger bold typeface.",
+      "evidenceRefs": [
+        "L0603:S0"
+      ],
+      "interpretation": "Structural marker introducing the Content-Length specification section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0604:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining Content-Length usage when Transfer-Encoding is absent.",
+      "evidenceRefs": [
+        "L0604:S0"
+      ],
+      "interpretation": "Standard specification language defining protocol constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0605:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose referencing HTTP specification sections.",
+      "evidenceRefs": [
+        "L0605:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0606:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose describing Content-Length field value purpose.",
+      "evidenceRefs": [
+        "L0606:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L0607:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose explaining framing information role.",
+      "evidenceRefs": [
+        "L0607:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L0608:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose addressing messages without content.",
+      "evidenceRefs": [
+        "L0608:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L0609:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose referencing representation semantics.",
+      "evidenceRefs": [
+        "L0609:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L0610:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose prohibiting simultaneous Content-Length and Transfer-Encoding.",
+      "evidenceRefs": [
+        "L0610:S0"
+      ],
+      "interpretation": "Standard specification language defining protocol constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L0611:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose completing the prohibition statement.",
+      "evidenceRefs": [
+        "L0611:S0"
+      ],
+      "interpretation": "Continuation of protocol constraint definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L0612:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Indented note text comparing HTTP and MIME field usage.",
+      "evidenceRefs": [
+        "L0612:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L0613:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of note text regarding MIME optional field usage.",
+      "evidenceRefs": [
+        "L0613:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L0614:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of note text specifying media-type context.",
+      "evidenceRefs": [
+        "L0614:S0"
+      ],
+      "interpretation": "Explanatory background text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L0615:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading '6.3. Message Body Length' formatted in larger bold typeface.",
+      "evidenceRefs": [
+        "L0615:S0"
+      ],
+      "interpretation": "Structural marker introducing the Message Body Length specification section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L0616:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page header/footer metadata indicating author and page number.",
+      "evidenceRefs": [
+        "L0616:S0"
+      ],
+      "interpretation": "Document pagination and attribution metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L0617:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header/footer identifying the RFC title and date.",
+      "evidenceRefs": [
+        "L0617:S0"
+      ],
+      "interpretation": "Document pagination and attribution metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L0618:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose introducing ordered precedence rules for message body length.",
+      "evidenceRefs": [
+        "L0618:S0"
+      ],
+      "interpretation": "Standard specification language defining protocol constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L0619:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item beginning enumeration of precedence rules.",
+      "evidenceRefs": [
+        "L0619:S0"
+      ],
+      "interpretation": "Structured list element defining protocol constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L0620:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item detailing status code termination rules.",
+      "evidenceRefs": [
+        "L0620:S0"
+      ],
+      "interpretation": "Continuation of structured list element.",
+      "missingEvidence": []
+    }
+  ]
+}

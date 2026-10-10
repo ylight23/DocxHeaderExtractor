@@ -1,0 +1,485 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1578:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading marking the start of the Bid Data Sheet.",
+      "evidenceRefs": [
+        "L1578:S0"
+      ],
+      "interpretation": "Identifies the beginning of Section II, functioning as a major structural divider for the Bid Data Sheet content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1579:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Clause heading for ITB 32.1 regarding bid currency selection.",
+      "evidenceRefs": [
+        "L1579:S0"
+      ],
+      "interpretation": "Serves as a substantive heading introducing the clause that governs currency conversion for bid evaluation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1580:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the currency conversion clause.",
+      "evidenceRefs": [
+        "L1580:S0"
+      ],
+      "interpretation": "Continues the prose of the preceding clause; functions as ordinary body text rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1581:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text with placeholder for currency name.",
+      "evidenceRefs": [
+        "L1581:S0"
+      ],
+      "interpretation": "Continues the clause sentence and provides a fill-in-the-blank instruction; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1582:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing bracket for the currency placeholder.",
+      "evidenceRefs": [
+        "L1582:S0"
+      ],
+      "interpretation": "Completes the instructional placeholder from the previous line; serves no heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1583:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying exchange rate source.",
+      "evidenceRefs": [
+        "L1583:S0"
+      ],
+      "interpretation": "Introduces a new requirement within the same clause via body prose; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1584:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text with example for exchange rate source.",
+      "evidenceRefs": [
+        "L1584:S0"
+      ],
+      "interpretation": "Provides an illustrative example within the clause; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1585:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying exchange rate date.",
+      "evidenceRefs": [
+        "L1585:S0"
+      ],
+      "interpretation": "Continues the clause requirements with a date specification; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1586:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text detailing acceptable date range.",
+      "evidenceRefs": [
+        "L1586:S0"
+      ],
+      "interpretation": "Elaborates on the date constraint within the clause; serves as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1587:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing date constraint details.",
+      "evidenceRefs": [
+        "L1587:S0"
+      ],
+      "interpretation": "Continues the sentence describing temporal limits; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1588:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing phrase for the date constraint.",
+      "evidenceRefs": [
+        "L1588:S0"
+      ],
+      "interpretation": "Completes the clause instruction; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1589:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing conversion procedure.",
+      "evidenceRefs": [
+        "L1589:S0"
+      ],
+      "interpretation": "Starts a new procedural statement within the clause; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1590:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text referencing alternative procedure.",
+      "evidenceRefs": [
+        "L1590:S0"
+      ],
+      "interpretation": "Directs the reader to the following alternative; serves as transitional body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1591:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subheading introducing Alternative A.",
+      "evidenceRefs": [
+        "L1591:S0"
+      ],
+      "interpretation": "Marks the start of Alternative A, functioning as a substantive subheading within the BDS.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1592:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing bid price breakdown.",
+      "evidenceRefs": [
+        "L1592:S0"
+      ],
+      "interpretation": "Details the first step of the conversion procedure under Alternative A; body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1593:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing price breakdown description.",
+      "evidenceRefs": [
+        "L1593:S0"
+      ],
+      "interpretation": "Continues the procedural instruction; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1594:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying exchange rate usage.",
+      "evidenceRefs": [
+        "L1594:S0"
+      ],
+      "interpretation": "Elaborates on how rates are applied; serves as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1595:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing phrase for the first step.",
+      "evidenceRefs": [
+        "L1595:S0"
+      ],
+      "interpretation": "Completes the first procedural step; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1596:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing the second conversion step.",
+      "evidenceRefs": [
+        "L1596:S0"
+      ],
+      "interpretation": "Starts the next procedural phase; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1597:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text detailing applicable bid amounts.",
+      "evidenceRefs": [
+        "L1597:S0"
+      ],
+      "interpretation": "Specifies which amounts are converted; serves as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1598:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing amount specification.",
+      "evidenceRefs": [
+        "L1598:S0"
+      ],
+      "interpretation": "Continues the procedural description; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1599:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying rate establishment method.",
+      "evidenceRefs": [
+        "L1599:S0"
+      ],
+      "interpretation": "Describes how selling rates are determined; serves as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1600:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing phrase for the second step.",
+      "evidenceRefs": [
+        "L1600:S0"
+      ],
+      "interpretation": "Completes the alternative A procedure; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1601:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Connective word separating alternatives.",
+      "evidenceRefs": [
+        "L1601:S0"
+      ],
+      "interpretation": "Acts as a logical separator between Alternative A and B; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1602:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subheading introducing Alternative B.",
+      "evidenceRefs": [
+        "L1602:S0"
+      ],
+      "interpretation": "Marks the start of Alternative B, functioning as a substantive subheading within the BDS.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1603:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing employer conversion action.",
+      "evidenceRefs": [
+        "L1603:S0"
+      ],
+      "interpretation": "Details the employer's role in Alternative B; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1604:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying payable bid amounts.",
+      "evidenceRefs": [
+        "L1604:S0"
+      ],
+      "interpretation": "Continues the procedural instruction; serves as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1605:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing amount specification.",
+      "evidenceRefs": [
+        "L1605:S0"
+      ],
+      "interpretation": "Elaborates on excluded and included amounts; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1606:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying rate establishment method.",
+      "evidenceRefs": [
+        "L1606:S0"
+      ],
+      "interpretation": "Describes how rates are determined for Alternative B; serves as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1607:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing phrase for the conversion procedure.",
+      "evidenceRefs": [
+        "L1607:S0"
+      ],
+      "interpretation": "Completes the alternative B procedure; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1608:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Clause header for ITB 33.1 with instructional bracket.",
+      "evidenceRefs": [
+        "L1608:S0"
+      ],
+      "interpretation": "Introduces clause ITB 33.1, serving as a structural marker despite containing template instructions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1609:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional text continuing the bracketed note.",
+      "evidenceRefs": [
+        "L1609:S0"
+      ],
+      "interpretation": "Continues the conditional instruction for applying the clause; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1610:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional text specifying conditions.",
+      "evidenceRefs": [
+        "L1610:S0"
+      ],
+      "interpretation": "Elaborates on procurement plan authorization; serves as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1611:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing bracket for the instructional note.",
+      "evidenceRefs": [
+        "L1611:S0"
+      ],
+      "interpretation": "Completes the conditional instruction; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1612:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing margin of preference.",
+      "evidenceRefs": [
+        "L1612:S0"
+      ],
+      "interpretation": "Starts the substantive clause content regarding domestic preference; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1613:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Placeholder for modal verb selection.",
+      "evidenceRefs": [
+        "L1613:S0"
+      ],
+      "interpretation": "Provides a fill-in blank for contractual obligation; serves as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1614:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional bracket for methodology definition.",
+      "evidenceRefs": [
+        "L1614:S0"
+      ],
+      "interpretation": "Directs where to find methodology if applicable; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1615:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing bracket referencing Section III.",
+      "evidenceRefs": [
+        "L1615:S0"
+      ],
+      "interpretation": "Completes the instructional note; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1616:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Clause header for ITB 34.1 with instructional bracket.",
+      "evidenceRefs": [
+        "L1616:S0"
+      ],
+      "interpretation": "Introduces clause ITB 34.1, serving as a structural marker despite containing template instructions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1617:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the subcontracting clause.",
+      "evidenceRefs": [
+        "L1617:S0"
+      ],
+      "interpretation": "Elaborates on the employer's intent regarding subcontracting; functions as body text.",
+      "missingEvidence": []
+    }
+  ]
+}

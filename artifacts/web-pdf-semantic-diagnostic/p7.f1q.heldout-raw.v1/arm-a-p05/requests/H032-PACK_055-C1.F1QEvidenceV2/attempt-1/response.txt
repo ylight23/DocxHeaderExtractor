@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L4476:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of body prose discussing health and working conditions.",
+      "evidenceRefs": [
+        "L4476:S0"
+      ],
+      "interpretation": "Continuation of a contractual clause defining obligations; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L4477:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining hazardous work for children.",
+      "evidenceRefs": [
+        "L4477:S0"
+      ],
+      "interpretation": "Standard contractual definition paragraph; functions as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L4478:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the definition of hazardous work circumstances.",
+      "evidenceRefs": [
+        "L4478:S0"
+      ],
+      "interpretation": "Prose continuation within a single paragraph; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L4479:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying prohibited activities for children.",
+      "evidenceRefs": [
+        "L4479:S0"
+      ],
+      "interpretation": "Contractual obligation statement; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L4480:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory line for a lettered list of prohibited work types.",
+      "evidenceRefs": [
+        "L4480:S0"
+      ],
+      "interpretation": "Clause lead-in to a list; standard body text formatting, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L4481:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (a) detailing exposure to abuse.",
+      "evidenceRefs": [
+        "L4481:S0"
+      ],
+      "interpretation": "Enumerated condition within a clause; functions as list body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L4482:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (b) detailing physical environments.",
+      "evidenceRefs": [
+        "L4482:S0"
+      ],
+      "interpretation": "Enumerated condition within a clause; functions as list body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L4483:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (b) continuation specifying confined spaces.",
+      "evidenceRefs": [
+        "L4483:S0"
+      ],
+      "interpretation": "Continuation of previous list item; functions as list body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L4484:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (c) detailing dangerous machinery and tools.",
+      "evidenceRefs": [
+        "L4484:S0"
+      ],
+      "interpretation": "Enumerated condition within a clause; functions as list body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L4485:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (c) continuation regarding heavy loads.",
+      "evidenceRefs": [
+        "L4485:S0"
+      ],
+      "interpretation": "Continuation of previous list item; functions as list body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L4486:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (d) detailing unhealthy environments.",
+      "evidenceRefs": [
+        "L4486:S0"
+      ],
+      "interpretation": "Enumerated condition within a clause; functions as list body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L4487:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (d) continuation listing hazardous substances and processes.",
+      "evidenceRefs": [
+        "L4487:S0"
+      ],
+      "interpretation": "Continuation of previous list item; functions as list body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L4488:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (d) final part regarding vibration damage.",
+      "evidenceRefs": [
+        "L4488:S0"
+      ],
+      "interpretation": "Continuation of previous list item; functions as list body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L4489:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (e) detailing difficult working conditions.",
+      "evidenceRefs": [
+        "L4489:S0"
+      ],
+      "interpretation": "Enumerated condition within a clause; functions as list body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L4490:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item (e) continuation regarding night work and confinement.",
+      "evidenceRefs": [
+        "L4490:S0"
+      ],
+      "interpretation": "Continuation of previous list item; functions as list body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L4491:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text imposing supplier child labor requirements on the Contractor.",
+      "evidenceRefs": [
+        "L4491:S0"
+      ],
+      "interpretation": "Contractual obligation paragraph; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L4492:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing supplier engagement restrictions.",
+      "evidenceRefs": [
+        "L4492:S0"
+      ],
+      "interpretation": "Prose continuation within a single paragraph; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L4493:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing remediation steps for identified child labor cases.",
+      "evidenceRefs": [
+        "L4493:S0"
+      ],
+      "interpretation": "Contractual procedure description; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L4494:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text outlining supplier remedy requirements.",
+      "evidenceRefs": [
+        "L4494:S0"
+      ],
+      "interpretation": "Contractual obligation statement; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L4495:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying contractor action when suppliers fail to remedy.",
+      "evidenceRefs": [
+        "L4495:S0"
+      ],
+      "interpretation": "Contractual contingency clause; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L4496:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header identifying the document section and page number.",
+      "evidenceRefs": [
+        "L4496:S0"
+      ],
+      "interpretation": "Page furniture/header; explicitly excluded from document heading classification per instructions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L4497:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing supplier substitution requirements.",
+      "evidenceRefs": [
+        "L4497:S0"
+      ],
+      "interpretation": "Prose continuation within a single paragraph; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L4498:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the supplier risk management requirement.",
+      "evidenceRefs": [
+        "L4498:S0"
+      ],
+      "interpretation": "Contractual obligation conclusion; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L4499:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered clause heading '9.14 Serious Safety Issues'.",
+      "evidenceRefs": [
+        "L4499:S0"
+      ],
+      "interpretation": "Stand-alone numbered title introducing a substantive contract clause; establishes document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L4500:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text stating compliance with safety obligations.",
+      "evidenceRefs": [
+        "L4500:S0"
+      ],
+      "interpretation": "Contractual duty statement following the heading; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L4501:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text extending safety measures to suppliers.",
+      "evidenceRefs": [
+        "L4501:S0"
+      ],
+      "interpretation": "Prose continuation within a single paragraph; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L4502:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text requiring supplier adoption of safety procedures.",
+      "evidenceRefs": [
+        "L4502:S0"
+      ],
+      "interpretation": "Contractual obligation statement; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L4503:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text detailing mitigation measure requirements.",
+      "evidenceRefs": [
+        "L4503:S0"
+      ],
+      "interpretation": "Contractual procedure description; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L4504:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text addressing identification of serious safety issues.",
+      "evidenceRefs": [
+        "L4504:S0"
+      ],
+      "interpretation": "Contractual contingency trigger; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L4505:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text requiring supplier remediation upon issue identification.",
+      "evidenceRefs": [
+        "L4505:S0"
+      ],
+      "interpretation": "Contractual obligation statement; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L4506:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing supplier failure scenario.",
+      "evidenceRefs": [
+        "L4506:S0"
+      ],
+      "interpretation": "Prose continuation within a single paragraph; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L4507:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying contractor substitution action.",
+      "evidenceRefs": [
+        "L4507:S0"
+      ],
+      "interpretation": "Contractual contingency clause; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L4508:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing supplier substitution requirement.",
+      "evidenceRefs": [
+        "L4508:S0"
+      ],
+      "interpretation": "Prose continuation within a single paragraph; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L4509:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the risk management clause.",
+      "evidenceRefs": [
+        "L4509:S0"
+      ],
+      "interpretation": "Contractual obligation conclusion; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L4510:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered clause heading '9.15 Obtaining natural resource materials'.",
+      "evidenceRefs": [
+        "L4510:S0"
+      ],
+      "interpretation": "Stand-alone numbered title introducing a substantive contract clause; establishes document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L4511:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text imposing material sourcing requirements.",
+      "evidenceRefs": [
+        "L4511:S0"
+      ],
+      "interpretation": "Contractual duty statement following the heading; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L4512:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing supplier qualification requirements.",
+      "evidenceRefs": [
+        "L4512:S0"
+      ],
+      "interpretation": "Prose continuation within a single paragraph; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L4512:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing supplier demonstration requirements.",
+      "evidenceRefs": [
+        "L4512:S1"
+      ],
+      "interpretation": "Prose continuation within a single paragraph; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L4513:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text referencing verification and certification.",
+      "evidenceRefs": [
+        "L4513:S0"
+      ],
+      "interpretation": "Contractual procedure description; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L4514:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text linking material acquisition to habitat risk.",
+      "evidenceRefs": [
+        "L4514:S0"
+      ],
+      "interpretation": "Contractual obligation statement; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L4515:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text detailing conversion and degradation risks.",
+      "evidenceRefs": [
+        "L4515:S0"
+      ],
+      "interpretation": "Contractual contingency trigger; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L4516:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text providing examples of regulated materials.",
+      "evidenceRefs": [
+        "L4516:S0"
+      ],
+      "interpretation": "Contractual example clause; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L4517:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the material examples.",
+      "evidenceRefs": [
+        "L4517:S0"
+      ],
+      "interpretation": "Contractual obligation conclusion; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L4518:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text addressing supplier failure to demonstrate compliance.",
+      "evidenceRefs": [
+        "L4518:S0"
+      ],
+      "interpretation": "Contractual contingency trigger; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L4519:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing habitat risk demonstration failure.",
+      "evidenceRefs": [
+        "L4519:S0"
+      ],
+      "interpretation": "Prose continuation within a single paragraph; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L4520:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying contractor substitution action.",
+      "evidenceRefs": [
+        "L4520:S0"
+      ],
+      "interpretation": "Contractual contingency clause; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L4521:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing supplier substitution requirement.",
+      "evidenceRefs": [
+        "L4521:S0"
+      ],
+      "interpretation": "Prose continuation within a single paragraph; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L4522:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the risk management clause.",
+      "evidenceRefs": [
+        "L4522:S0"
+      ],
+      "interpretation": "Contractual obligation conclusion; functions as body text.",
+      "missingEvidence": []
+    }
+  ]
+}

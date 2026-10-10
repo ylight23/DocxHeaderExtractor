@@ -1,0 +1,29 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0864:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of body text discussing proposal submission and RFP amendments.",
+      "evidenceRefs": [
+        "L0864:S0"
+      ],
+      "interpretation": "Continues a procedural clause regarding amendment of RFP documents; functions as ordinary body prose, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0865:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of body text detailing rights and obligations under ITP 8.3.",
+      "evidenceRefs": [
+        "L0865:S0"
+      ],
+      "interpretation": "Continues the procedural clause from the preceding line; functions as ordinary body prose, not a heading.",
+      "missingEvidence": []
+    }
+  ]
+}

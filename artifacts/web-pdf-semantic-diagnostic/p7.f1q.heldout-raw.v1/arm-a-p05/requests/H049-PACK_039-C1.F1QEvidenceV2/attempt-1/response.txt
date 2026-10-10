@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1877:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value representing a financial amount.",
+      "evidenceRefs": [
+        "L1877:S4"
+      ],
+      "interpretation": "This occurrence is a numerical entry within a financial table, serving as data rather than a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1878:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row label identifying a financial instrument category.",
+      "evidenceRefs": [
+        "L1878:S0"
+      ],
+      "interpretation": "Functions as a local table row label describing a specific liability type, not a document section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1879:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a multi-line table row label.",
+      "evidenceRefs": [
+        "L1879:S0"
+      ],
+      "interpretation": "Completes the textual description of a table row item; operates as tabular data labeling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1880:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Final segment of a table row label.",
+      "evidenceRefs": [
+        "L1880:S0"
+      ],
+      "interpretation": "Concludes the descriptive phrase for a table row; serves as local table labeling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1880:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Em dash placeholder in a table cell indicating zero or null value.",
+      "evidenceRefs": [
+        "L1880:S1"
+      ],
+      "interpretation": "Standard tabular notation for absent or zero data; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1880:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Em dash placeholder in a table cell indicating zero or null value.",
+      "evidenceRefs": [
+        "L1880:S2"
+      ],
+      "interpretation": "Standard tabular notation for absent or zero data; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1880:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1880:S3"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1880:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1880:S4"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1881:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row label identifying derivative liabilities.",
+      "evidenceRefs": [
+        "L1881:S0"
+      ],
+      "interpretation": "Local table row identifier for a specific financial line item; not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1881:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1881:S1"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1881:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1881:S2"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1881:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1881:S3"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1881:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1881:S4"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1882:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph text describing loan commitment amounts.",
+      "evidenceRefs": [
+        "L1882:S0"
+      ],
+      "interpretation": "Narrative prose explaining financial figures; serves as standard body text, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1883:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body paragraph continuation regarding fair value amounts.",
+      "evidenceRefs": [
+        "L1883:S0"
+      ],
+      "interpretation": "Continues the explanatory narrative; functions as standard body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1884:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running page header containing report title and page number.",
+      "evidenceRefs": [
+        "L1884:S0"
+      ],
+      "interpretation": "Page furniture/header providing document identification and pagination; not a substantive content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1885:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory sentence preceding a table.",
+      "evidenceRefs": [
+        "L1885:S0"
+      ],
+      "interpretation": "Standard transitional prose introducing tabular data; does not establish a document section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1886:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of introductory sentence.",
+      "evidenceRefs": [
+        "L1886:S0"
+      ],
+      "interpretation": "Completes the narrative introduction to the table; functions as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1887:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table caption/title identifying Table J2.",
+      "evidenceRefs": [
+        "L1887:S0"
+      ],
+      "interpretation": "Serves as a local table title/caption organizing tabular content; excluded per instruction to treat local table labels separately from document headings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1888:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Italicized table unit label specifying currency scale.",
+      "evidenceRefs": [
+        "L1888:S0"
+      ],
+      "interpretation": "Metadata label defining measurement units for the table; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1889:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Italicized table column header spanning multiple columns.",
+      "evidenceRefs": [
+        "L1889:S0"
+      ],
+      "interpretation": "Tabular column grouping label; functions as local table organization, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1890:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Italicized table date header.",
+      "evidenceRefs": [
+        "L1890:S0"
+      ],
+      "interpretation": "Temporal metadata for the table columns; serves as local table labeling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1891:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column headers listing valuation levels.",
+      "evidenceRefs": [
+        "L1891:S0"
+      ],
+      "interpretation": "Column title row defining fair value hierarchy categories; local table structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1892:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bolded table row label introducing the Assets subsection.",
+      "evidenceRefs": [
+        "L1892:S0"
+      ],
+      "interpretation": "Acts as a local table section header for asset categories; classified as a table label per guidelines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1893:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row label for an investment category.",
+      "evidenceRefs": [
+        "L1893:S0"
+      ],
+      "interpretation": "Identifies a specific line item within the table; functions as tabular data labeling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1894:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row label detailing obligation types.",
+      "evidenceRefs": [
+        "L1894:S0"
+      ],
+      "interpretation": "Sub-category label within the table structure; not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1894:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell values with currency symbols.",
+      "evidenceRefs": [
+        "L1894:S1"
+      ],
+      "interpretation": "Financial data entries aligned to table columns; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1894:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell values with currency symbols.",
+      "evidenceRefs": [
+        "L1894:S2"
+      ],
+      "interpretation": "Financial data entries aligned to table columns; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1895:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row label for a deposit type.",
+      "evidenceRefs": [
+        "L1895:S0"
+      ],
+      "interpretation": "Identifies a specific financial instrument row; serves as local table labeling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1895:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1895:S1"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1895:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1895:S2"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1895:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Em dash placeholder in a table cell.",
+      "evidenceRefs": [
+        "L1895:S3"
+      ],
+      "interpretation": "Standard tabular notation for absent or zero data; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1895:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1895:S4"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1896:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row label abbreviation for asset-backed securities.",
+      "evidenceRefs": [
+        "L1896:S0"
+      ],
+      "interpretation": "Abbreviated line item identifier within the table; functions as tabular labeling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1896:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Em dash placeholder in a table cell.",
+      "evidenceRefs": [
+        "L1896:S1"
+      ],
+      "interpretation": "Standard tabular notation for absent or zero data; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1896:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1896:S2"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1896:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Em dash placeholder in a table cell.",
+      "evidenceRefs": [
+        "L1896:S3"
+      ],
+      "interpretation": "Standard tabular notation for absent or zero data; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1896:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1896:S4"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1897:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table total row label summarizing investments.",
+      "evidenceRefs": [
+        "L1897:S0"
+      ],
+      "interpretation": "Aggregation label for a table section; serves as local table structure, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1897:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1897:S1"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1897:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1897:S2"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1897:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Em dash placeholder in a table cell.",
+      "evidenceRefs": [
+        "L1897:S3"
+      ],
+      "interpretation": "Standard tabular notation for absent or zero data; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1897:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1897:S4"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1898:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table row label for non-trading investments.",
+      "evidenceRefs": [
+        "L1898:S0"
+      ],
+      "interpretation": "Identifies a specific investment category row; functions as local table labeling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1898:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Em dash placeholder in a table cell.",
+      "evidenceRefs": [
+        "L1898:S1"
+      ],
+      "interpretation": "Standard tabular notation for absent or zero data; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1898:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1898:S2"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L1898:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Em dash placeholder in a table cell.",
+      "evidenceRefs": [
+        "L1898:S3"
+      ],
+      "interpretation": "Standard tabular notation for absent or zero data; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L1898:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric table cell value.",
+      "evidenceRefs": [
+        "L1898:S4"
+      ],
+      "interpretation": "Numerical data point within a financial table; functions as raw data.",
+      "missingEvidence": []
+    }
+  ]
+}

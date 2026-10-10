@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L1462:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation discussing HTTP-based services and dependency on the Host header.",
+      "evidenceRefs": [
+        "L1462:S0"
+      ],
+      "interpretation": "Regular-font prose continuing a paragraph from the preceding page about service dependencies.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L1463:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text completion of the sentence regarding the Host header field's targeting purpose.",
+      "evidenceRefs": [
+        "L1463:S0"
+      ],
+      "interpretation": "Regular-font prose completing the syntactic unit started in the previous line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L1464:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bolded section heading 'C.2.2. Keep-Alive Connections' introducing the subsection.",
+      "evidenceRefs": [
+        "L1464:S0"
+      ],
+      "interpretation": "Bold typography and alphanumeric numbering mark this as a substantive section heading operating at this location.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L1465:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining HTTP/1.0 connection establishment and closure procedures.",
+      "evidenceRefs": [
+        "L1465:S0"
+      ],
+      "interpretation": "Regular-font prose detailing standard HTTP/1.0 connection lifecycle mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L1466:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation describing server response handling and implementation variations.",
+      "evidenceRefs": [
+        "L1466:S0"
+      ],
+      "interpretation": "Regular-font prose continuing the technical explanation of connection handling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L1467:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text referencing the negotiated Keep-Alive version in RFC2068.",
+      "evidenceRefs": [
+        "L1467:S0"
+      ],
+      "interpretation": "Regular-font prose citing prior specification context for persistent connections.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L1468:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text completion of the RFC2068 citation.",
+      "evidenceRefs": [
+        "L1468:S0"
+      ],
+      "interpretation": "Regular-font prose concluding the reference marker.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L1469:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text discussing client/server compatibility with previous connection approaches.",
+      "evidenceRefs": [
+        "L1469:S0"
+      ],
+      "interpretation": "Regular-font prose introducing backward-compatibility considerations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L1470:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining explicit negotiation via the Connection header field.",
+      "evidenceRefs": [
+        "L1470:S0"
+      ],
+      "interpretation": "Regular-font prose detailing the mechanism for requesting persistent connections.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L1471:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text noting experimental HTTP/1.0 persistent connection implementations.",
+      "evidenceRefs": [
+        "L1471:S0"
+      ],
+      "interpretation": "Regular-font prose transitioning to discussion of non-standard implementations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L1472:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text providing an example of faulty proxy behavior with the Connection header.",
+      "evidenceRefs": [
+        "L1472:S0"
+      ],
+      "interpretation": "Regular-font prose illustrating a specific failure mode in proxy servers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L1473:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing erroneous header forwarding leading to hung connections.",
+      "evidenceRefs": [
+        "L1473:S0"
+      ],
+      "interpretation": "Regular-font prose explaining the consequence of misdirected headers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1474:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text completion of the hung connection description.",
+      "evidenceRefs": [
+        "L1474:S0"
+      ],
+      "interpretation": "Regular-font prose finishing the syntactic unit.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L1475:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing the Proxy-Connection header field as a proposed solution.",
+      "evidenceRefs": [
+        "L1475:S0"
+      ],
+      "interpretation": "Regular-font prose presenting an alternative technical approach.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L1476:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining why the Proxy-Connection approach was unworkable.",
+      "evidenceRefs": [
+        "L1476:S0"
+      ],
+      "interpretation": "Regular-font prose critiquing the proposed solution based on deployment realities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L1477:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation regarding proxy layering complications.",
+      "evidenceRefs": [
+        "L1477:S0"
+      ],
+      "interpretation": "Regular-font prose elaborating on the structural limitations of layered proxies.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L1478:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text recommending against sending the Proxy-Connection header field.",
+      "evidenceRefs": [
+        "L1478:S0"
+      ],
+      "interpretation": "Regular-font prose delivering a normative recommendation based on prior analysis.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L1479:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text advising careful use of Connection: keep-alive in requests.",
+      "evidenceRefs": [
+        "L1479:S0"
+      ],
+      "interpretation": "Regular-font prose offering guidance on header usage caution.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L1480:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining monitoring requirements for HTTP/1.0 persistent connections.",
+      "evidenceRefs": [
+        "L1480:S0"
+      ],
+      "interpretation": "Regular-font prose detailing operational burdens on clients.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L1481:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying detection of hung requests as a stop condition.",
+      "evidenceRefs": [
+        "L1481:S0"
+      ],
+      "interpretation": "Regular-font prose defining the trigger for ceasing header transmission.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L1482:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text warning against using the mechanism when proxies are present.",
+      "evidenceRefs": [
+        "L1482:S0"
+      ],
+      "interpretation": "Regular-font prose restricting the applicability of the keep-alive strategy.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L1483:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text completion of the proxy usage warning.",
+      "evidenceRefs": [
+        "L1483:S0"
+      ],
+      "interpretation": "Regular-font prose finishing the conditional restriction.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L1484:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bolded section heading 'C.2.3. Introduction of Transfer-Encoding' introducing the subsection.",
+      "evidenceRefs": [
+        "L1484:S0"
+      ],
+      "interpretation": "Bold typography and sequential numbering mark this as a substantive section heading operating at this location.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L1485:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing the Transfer-Encoding header field and its decoding requirements.",
+      "evidenceRefs": [
+        "L1485:S0"
+      ],
+      "interpretation": "Regular-font prose initiating the technical description of the new header field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L1486:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation regarding MIME-compliant protocol forwarding constraints.",
+      "evidenceRefs": [
+        "L1486:S0"
+      ],
+      "interpretation": "Regular-font prose elaborating on interoperability requirements for transfer codings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L1487:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard document footer containing author attribution and page number.",
+      "evidenceRefs": [
+        "L1487:S0"
+      ],
+      "interpretation": "Small-font, low-position text serving as recurring page furniture rather than content structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L1488:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Repeating document header showing RFC number, title, and publication date.",
+      "evidenceRefs": [
+        "L1488:S0"
+      ],
+      "interpretation": "Small-font, high-position text functioning as page furniture across multiple pages.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L1489:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bolded section heading 'C.3. Changes from RFC 7230' introducing the changes summary.",
+      "evidenceRefs": [
+        "L1489:S0"
+      ],
+      "interpretation": "Larger bold typography and alphanumeric numbering mark this as a substantive section heading operating at this location.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L1490:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text listing sections moved to another document.",
+      "evidenceRefs": [
+        "L1490:S0"
+      ],
+      "interpretation": "Regular-font prose enumerating relocated content areas under the new heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L1491:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation of the list of moved sections.",
+      "evidenceRefs": [
+        "L1491:S0"
+      ],
+      "interpretation": "Regular-font prose extending the enumeration of relocated material.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L1492:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text stating the current document's narrowed scope.",
+      "evidenceRefs": [
+        "L1492:S0"
+      ],
+      "interpretation": "Regular-font prose clarifying the remaining focus on messaging syntax and connection management.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L1493:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text completion of the scope limitation statement.",
+      "evidenceRefs": [
+        "L1493:S0"
+      ],
+      "interpretation": "Regular-font prose finishing the sentence regarding HTTP/1.1-specific requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L1494:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text list item noting the prohibition of bare CRs outside content.",
+      "evidenceRefs": [
+        "L1494:S0"
+      ],
+      "interpretation": "Regular-font prose recording a specific protocol change with a section reference.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L1495:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing changes to the ABNF definition of authority-form.",
+      "evidenceRefs": [
+        "L1495:S0"
+      ],
+      "interpretation": "Regular-font prose detailing syntax modifications for authority parsing.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L1496:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation of the authority-form change description.",
+      "evidenceRefs": [
+        "L1496:S0"
+      ],
+      "interpretation": "Regular-font prose explaining the shift to host:port format for CONNECT.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L1497:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text section reference concluding the authority-form change note.",
+      "evidenceRefs": [
+        "L1497:S0"
+      ],
+      "interpretation": "Regular-font prose providing the normative reference for the change.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L1498:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text requirement for recipients to avoid smuggling/splitting attacks.",
+      "evidenceRefs": [
+        "L1498:S0"
+      ],
+      "interpretation": "Regular-font prose stating a security-related processing obligation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L1499:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation regarding message framing obligations.",
+      "evidenceRefs": [
+        "L1499:S0"
+      ],
+      "interpretation": "Regular-font prose completing the security requirement statement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L1500:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text noting reintroduction of whitespace in ABNF for chunked extensions.",
+      "evidenceRefs": [
+        "L1500:S0"
+      ],
+      "interpretation": "Regular-font prose recording a syntax relaxation for parser compatibility.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L1501:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining that prior whitespace removal broke implementations.",
+      "evidenceRefs": [
+        "L1501:S0"
+      ],
+      "interpretation": "Regular-font prose providing historical context for the syntax reversal.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L1502:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text section reference concluding the whitespace change note.",
+      "evidenceRefs": [
+        "L1502:S0"
+      ],
+      "interpretation": "Regular-font prose pointing to the relevant specification section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L1503:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing updated trailer field semantics beyond chunked coding.",
+      "evidenceRefs": [
+        "L1503:S0"
+      ],
+      "interpretation": "Regular-font prose explaining the broadened scope of trailer handling rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L1504:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text detail on the updated decoding algorithm for chunked data.",
+      "evidenceRefs": [
+        "L1504:S0"
+      ],
+      "interpretation": "Regular-font prose outlining procedural updates for trailer processing.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L1505:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text condition for allowing trailer field merging into the header section.",
+      "evidenceRefs": [
+        "L1505:S0"
+      ],
+      "interpretation": "Regular-font prose specifying the permissive rule contingent on field definitions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L1506:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation of the trailer field merging conditions.",
+      "evidenceRefs": [
+        "L1506:S0"
+      ],
+      "interpretation": "Regular-font prose extending the conditional logic for trailer handling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L1507:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text instruction to discard trailers otherwise and rename the trailer part.",
+      "evidenceRefs": [
+        "L1507:S0"
+      ],
+      "interpretation": "Regular-font prose defining the fallback behavior and terminology shift.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L1508:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text rationale for the new naming to distinguish it from the body part.",
+      "evidenceRefs": [
+        "L1508:S0"
+      ],
+      "interpretation": "Regular-font prose justifying the terminology update for clarity.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L1509:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text section reference concluding the trailer section update note.",
+      "evidenceRefs": [
+        "L1509:S0"
+      ],
+      "interpretation": "Regular-font prose providing the normative reference for the trailer section changes.",
+      "missingEvidence": []
+    }
+  ]
+}

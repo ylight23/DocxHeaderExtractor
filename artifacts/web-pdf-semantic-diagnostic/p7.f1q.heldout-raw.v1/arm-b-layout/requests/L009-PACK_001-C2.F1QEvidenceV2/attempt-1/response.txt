@@ -1,0 +1,377 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page header containing publication name, issue numbers, date, and page number.",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Administrative page furniture identifying the gazette issue, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item (5) defining electronic certification.",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Body text providing a statutory definition within a glossary list, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 5.",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Prose continuation of a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition item 5.",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Prose continuation closing a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item (6) defining data.",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Body text introducing a statutory definition within a glossary list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition item 6.",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Prose continuation closing a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item (7) defining electronic data.",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Body text introducing a statutory definition within a glossary list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item (8) defining digital data.",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Body text introducing a statutory definition within a glossary list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item (9) defining primary data.",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "Body text introducing a statutory definition within a glossary list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 9.",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Prose continuation of a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition item 9.",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "interpretation": "Prose continuation closing a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item (10) defining database.",
+      "evidenceRefs": [
+        "L0042:S0"
+      ],
+      "interpretation": "Body text introducing a statutory definition within a glossary list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition item 10.",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "interpretation": "Prose continuation closing a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item (11) defining electronic signature.",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "interpretation": "Body text introducing a statutory definition within a glossary list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0045:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 11.",
+      "evidenceRefs": [
+        "L0045:S0"
+      ],
+      "interpretation": "Prose continuation of a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0046:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition item 11.",
+      "evidenceRefs": [
+        "L0046:S0"
+      ],
+      "interpretation": "Prose continuation closing a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0047:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item (12) defining digital signature.",
+      "evidenceRefs": [
+        "L0047:S0"
+      ],
+      "interpretation": "Body text introducing a statutory definition within a glossary list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0048:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 12.",
+      "evidenceRefs": [
+        "L0048:S0"
+      ],
+      "interpretation": "Prose continuation of a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0049:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 12.",
+      "evidenceRefs": [
+        "L0049:S0"
+      ],
+      "interpretation": "Prose continuation of a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0050:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 12.",
+      "evidenceRefs": [
+        "L0050:S0"
+      ],
+      "interpretation": "Prose continuation of a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0051:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition item 12.",
+      "evidenceRefs": [
+        "L0051:S0"
+      ],
+      "interpretation": "Prose continuation closing a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0052:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item (13) defining electronic signature certificate.",
+      "evidenceRefs": [
+        "L0052:S0"
+      ],
+      "interpretation": "Body text introducing a statutory definition within a glossary list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0053:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 13.",
+      "evidenceRefs": [
+        "L0053:S0"
+      ],
+      "interpretation": "Prose continuation of a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0054:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition item 13.",
+      "evidenceRefs": [
+        "L0054:S0"
+      ],
+      "interpretation": "Prose continuation closing a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0055:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item (14) defining digital signature certification service.",
+      "evidenceRefs": [
+        "L0055:S0"
+      ],
+      "interpretation": "Body text introducing a statutory definition within a glossary list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0056:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 14.",
+      "evidenceRefs": [
+        "L0056:S0"
+      ],
+      "interpretation": "Prose continuation of a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0057:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition item 14.",
+      "evidenceRefs": [
+        "L0057:S0"
+      ],
+      "interpretation": "Prose continuation of a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0058:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition item 14.",
+      "evidenceRefs": [
+        "L0058:S0"
+      ],
+      "interpretation": "Prose continuation closing a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0059:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item (15) defining timestamp.",
+      "evidenceRefs": [
+        "L0059:S0"
+      ],
+      "interpretation": "Body text introducing a statutory definition within a glossary list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0060:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition item 15.",
+      "evidenceRefs": [
+        "L0060:S0"
+      ],
+      "interpretation": "Prose continuation closing a definition list item, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0061:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered definition item (16) defining electronic contract.",
+      "evidenceRefs": [
+        "L0061:S0"
+      ],
+      "interpretation": "Body text introducing a statutory definition within a glossary list.",
+      "missingEvidence": []
+    }
+  ]
+}

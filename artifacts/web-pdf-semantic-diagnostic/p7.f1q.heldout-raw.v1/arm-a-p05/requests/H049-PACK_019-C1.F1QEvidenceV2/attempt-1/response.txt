@@ -1,0 +1,485 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0955:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric reference/page number",
+      "evidenceRefs": ["L0955:S1"],
+      "interpretation": "Standalone numeric value likely serving as a page reference or index entry rather than a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0955:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric reference/page number",
+      "evidenceRefs": ["L0955:S2"],
+      "interpretation": "Standalone numeric value likely serving as a page reference or index entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0956:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Financial statement line item heading",
+      "evidenceRefs": ["L0956:S0"],
+      "interpretation": "Bold italic text functioning as a substantive heading for a specific asset line item in the balance sheet.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0956:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0956:S1"],
+      "interpretation": "Numeric data point aligned with a preceding heading, serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0956:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0956:S2"],
+      "interpretation": "Numeric data point aligned with a preceding heading, serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0957:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Financial statement line item heading",
+      "evidenceRefs": ["L0957:S0"],
+      "interpretation": "Bold italic text functioning as a substantive heading for a major asset category.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0958:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtotal/line item heading",
+      "evidenceRefs": ["L0958:S0"],
+      "interpretation": "Text functioning as a structural subtotal heading within the loans section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0958:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0958:S1"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0958:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0958:S2"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0959:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Deduction line item heading",
+      "evidenceRefs": ["L0959:S0"],
+      "interpretation": "Text functioning as a structural heading for a deduction line in the calculation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0960:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of line item description",
+      "evidenceRefs": ["L0960:S0"],
+      "interpretation": "Text continuing the description of the preceding deduction line, not a standalone heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0961:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of line item description",
+      "evidenceRefs": ["L0961:S0"],
+      "interpretation": "Text continuing the description of the preceding deduction line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0961:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0961:S1"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0961:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0961:S2"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0962:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Line item heading",
+      "evidenceRefs": ["L0962:S0"],
+      "interpretation": "Text functioning as a structural heading for a net loans line item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0962:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0962:S1"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0962:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0962:S2"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0963:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Deduction indicator heading",
+      "evidenceRefs": ["L0963:S0"],
+      "interpretation": "Text functioning as a structural indicator for a deduction line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0964:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Line item heading",
+      "evidenceRefs": ["L0964:S0"],
+      "interpretation": "Text functioning as a structural heading for a contra-asset line item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0964:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0964:S1"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0964:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0964:S2"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0965:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Line item heading",
+      "evidenceRefs": ["L0965:S0"],
+      "interpretation": "Text functioning as a structural heading for a contra-asset line item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0965:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0965:S1"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0965:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0965:S2"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0966:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtotal heading",
+      "evidenceRefs": ["L0966:S0"],
+      "interpretation": "Text functioning as a structural subtotal heading summarizing the loans section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0966:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0966:S1"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0966:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0966:S2"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0967:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Line item heading",
+      "evidenceRefs": ["L0967:S0"],
+      "interpretation": "Bold italic text functioning as a substantive heading for an asset category.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0967:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0967:S1"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0967:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0967:S2"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0968:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Total/subtotal heading",
+      "evidenceRefs": ["L0968:S0"],
+      "interpretation": "Bold text functioning as a major structural heading summing the asset section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0968:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Currency symbol",
+      "evidenceRefs": ["L0968:S1"],
+      "interpretation": "Symbol indicating monetary units, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0968:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0968:S2"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0968:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0968:S3"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0969:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Running header/document title",
+      "evidenceRefs": ["L0969:S0"],
+      "interpretation": "Prominent text functioning as a document title or running header identifying the report.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0970:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Column header/date",
+      "evidenceRefs": ["L0970:S0"],
+      "interpretation": "Italic text functioning as a column header for a financial table date.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0970:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Column header/date",
+      "evidenceRefs": ["L0970:S1"],
+      "interpretation": "Italic text functioning as a column header for a financial table date.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0971:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Audit status note",
+      "evidenceRefs": ["L0971:S0"],
+      "interpretation": "Italic text indicating audit status, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0972:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Major section heading",
+      "evidenceRefs": ["L0972:S0"],
+      "interpretation": "Bold text functioning as a major structural heading for the liabilities section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0973:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading",
+      "evidenceRefs": ["L0973:S0"],
+      "interpretation": "Bold italic text functioning as a substantive heading for a liability subsection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0974:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Line item heading",
+      "evidenceRefs": ["L0974:S0"],
+      "interpretation": "Text functioning as a structural heading for a specific liability line item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0974:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Currency symbol",
+      "evidenceRefs": ["L0974:S1"],
+      "interpretation": "Symbol indicating monetary units.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0974:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0974:S2"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0974:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0974:S3"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0975:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Line item heading",
+      "evidenceRefs": ["L0975:S0"],
+      "interpretation": "Text functioning as a structural heading for a specific liability line item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0975:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0975:S1"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0975:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monetary value",
+      "evidenceRefs": ["L0975:S2"],
+      "interpretation": "Numeric data point serving as a table value.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0976:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Line item heading",
+      "evidenceRefs": ["L0976:S0"],
+      "interpretation": "Text functioning as a structural heading for a specific liability line item.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1822:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of procedural body text regarding document requests.",
+      "evidenceRefs": [
+        "L1822:S0"
+      ],
+      "interpretation": "Standard clause prose continuing a sentence; does not function as a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1823:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of procedural body text setting a timeline.",
+      "evidenceRefs": [
+        "L1823:S0"
+      ],
+      "interpretation": "Standard clause prose; continues a conditional statement without structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1824:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of procedural body text outlining applicant obligations.",
+      "evidenceRefs": [
+        "L1824:S0"
+      ],
+      "interpretation": "Standard clause prose detailing requirements; no heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1825:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of procedural body text describing consequences.",
+      "evidenceRefs": [
+        "L1825:S0"
+      ],
+      "interpretation": "Standard clause prose; continues narrative without structural role.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1826:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single word completing a procedural sentence.",
+      "evidenceRefs": [
+        "L1826:S0"
+      ],
+      "interpretation": "Fragmentary body text concluding a clause; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1827:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of procedural body text outlining ministry actions.",
+      "evidenceRefs": [
+        "L1827:S0"
+      ],
+      "interpretation": "Standard clause prose; continues conditional narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1828:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of procedural body text referencing prior points.",
+      "evidenceRefs": [
+        "L1828:S0"
+      ],
+      "interpretation": "Standard clause prose; lacks heading characteristics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1829:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of procedural body text describing issuance process.",
+      "evidenceRefs": [
+        "L1829:S0"
+      ],
+      "interpretation": "Standard clause prose; continues narrative flow.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1830:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment closing a procedural clause.",
+      "evidenceRefs": [
+        "L1830:S0"
+      ],
+      "interpretation": "Standard clause prose concluding a sentence; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1831:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered heading introducing amendments to a specific government decree.",
+      "evidenceRefs": [
+        "L1831:S0"
+      ],
+      "interpretation": "Acts as a substantive heading introducing a new amendment section targeting a specific decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1832:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Continuation of the heading specifying the subject matter.",
+      "evidenceRefs": [
+        "L1832:S0"
+      ],
+      "interpretation": "Completes the heading phrase 'on vaccination:', finalizing the section title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1833:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-heading introducing an amendment to a specific clause.",
+      "evidenceRefs": [
+        "L1833:S0"
+      ],
+      "interpretation": "Functions as a structural marker introducing quoted amendments for a targeted clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1834:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body detailing equipment requirements.",
+      "evidenceRefs": [
+        "L1834:S0"
+      ],
+      "interpretation": "Body text of the amendment itself; serves as regulatory content, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1835:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body detailing recording procedures.",
+      "evidenceRefs": [
+        "L1835:S0"
+      ],
+      "interpretation": "Continuation of the amendment's regulatory content; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1836:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body closing the provision.",
+      "evidenceRefs": [
+        "L1836:S0"
+      ],
+      "interpretation": "Concluding line of the quoted amendment; standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1837:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-heading introducing an amendment to a specific clause.",
+      "evidenceRefs": [
+        "L1837:S0"
+      ],
+      "interpretation": "Structural marker introducing quoted amendments for a targeted clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1838:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body detailing facility protection requirements.",
+      "evidenceRefs": [
+        "L1838:S0"
+      ],
+      "interpretation": "Regulatory content within the amendment; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1839:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body detailing facility arrangement.",
+      "evidenceRefs": [
+        "L1839:S0"
+      ],
+      "interpretation": "Continuation of amendment prose; lacks heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1840:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body listing patient flow steps.",
+      "evidenceRefs": [
+        "L1840:S0"
+      ],
+      "interpretation": "Standard amendment body text; descriptive rather than structural.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1841:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body closing the provision.",
+      "evidenceRefs": [
+        "L1841:S0"
+      ],
+      "interpretation": "Concluding line of the quoted amendment; standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1842:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-heading introducing an amendment to a specific clause.",
+      "evidenceRefs": [
+        "L1842:S0"
+      ],
+      "interpretation": "Structural marker introducing quoted amendments for a targeted clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1843:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body detailing worker training requirements.",
+      "evidenceRefs": [
+        "L1843:S0"
+      ],
+      "interpretation": "Regulatory content within the amendment; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1844:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body listing worker duties.",
+      "evidenceRefs": [
+        "L1844:S0"
+      ],
+      "interpretation": "Continuation of amendment prose; lacks heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1845:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body specifying degree requirements.",
+      "evidenceRefs": [
+        "L1845:S0"
+      ],
+      "interpretation": "Standard amendment body text; descriptive rather than structural.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1846:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body closing the provision.",
+      "evidenceRefs": [
+        "L1846:S0"
+      ],
+      "interpretation": "Concluding line of the quoted amendment; standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1847:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-heading introducing an amendment to a specific clause.",
+      "evidenceRefs": [
+        "L1847:S0"
+      ],
+      "interpretation": "Structural marker introducing quoted amendments for a targeted clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1848:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body detailing container requirements.",
+      "evidenceRefs": [
+        "L1848:S0"
+      ],
+      "interpretation": "Regulatory content within the amendment; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1849:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body closing the provision.",
+      "evidenceRefs": [
+        "L1849:S0"
+      ],
+      "interpretation": "Concluding line of the quoted amendment; standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1850:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-heading introducing an amendment to a specific clause.",
+      "evidenceRefs": [
+        "L1850:S0"
+      ],
+      "interpretation": "Structural marker introducing quoted amendments for a targeted clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1851:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body detailing facility flow patterns.",
+      "evidenceRefs": [
+        "L1851:S0"
+      ],
+      "interpretation": "Regulatory content within the amendment; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1852:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body listing patient flow steps.",
+      "evidenceRefs": [
+        "L1852:S0"
+      ],
+      "interpretation": "Continuation of amendment prose; lacks heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1853:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body closing the provision.",
+      "evidenceRefs": [
+        "L1853:S0"
+      ],
+      "interpretation": "Concluding line of the quoted amendment; standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1854:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-heading introducing an amendment to a specific clause.",
+      "evidenceRefs": [
+        "L1854:S0"
+      ],
+      "interpretation": "Structural marker introducing quoted amendments for a targeted clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1855:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body detailing equipment requirements.",
+      "evidenceRefs": [
+        "L1855:S0"
+      ],
+      "interpretation": "Regulatory content within the amendment; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1856:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body closing the provision.",
+      "evidenceRefs": [
+        "L1856:S0"
+      ],
+      "interpretation": "Concluding line of the quoted amendment; standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1857:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-heading introducing an amendment to a specific clause.",
+      "evidenceRefs": [
+        "L1857:S0"
+      ],
+      "interpretation": "Structural marker introducing quoted amendments for a targeted clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1858:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body detailing personnel requirements.",
+      "evidenceRefs": [
+        "L1858:S0"
+      ],
+      "interpretation": "Regulatory content within the amendment; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1859:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body closing the provision.",
+      "evidenceRefs": [
+        "L1859:S0"
+      ],
+      "interpretation": "Concluding line of the quoted amendment; standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1860:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-heading introducing an amendment to a specific clause.",
+      "evidenceRefs": [
+        "L1860:S0"
+      ],
+      "interpretation": "Structural marker introducing quoted amendments for a targeted clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1861:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body detailing declaration timelines.",
+      "evidenceRefs": [
+        "L1861:S0"
+      ],
+      "interpretation": "Regulatory content within the amendment; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1862:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body detailing website posting requirements.",
+      "evidenceRefs": [
+        "L1862:S0"
+      ],
+      "interpretation": "Continuation of amendment prose; lacks heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1863:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amended text body closing the provision.",
+      "evidenceRefs": [
+        "L1863:S0"
+      ],
+      "interpretation": "Concluding line of the quoted amendment; standard body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1864:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold chapter heading marking a new major section.",
+      "evidenceRefs": [
+        "L1864:S0"
+      ],
+      "interpretation": "Clear structural heading identifying the start of Chapter VIII.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1865:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold chapter title identifying the substantive topic.",
+      "evidenceRefs": [
+        "L1865:S0"
+      ],
+      "interpretation": "Prominent title establishing the chapter's subject matter.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1866:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold article heading introducing annulments.",
+      "evidenceRefs": [
+        "L1866:S0"
+      ],
+      "interpretation": "Structural heading marking Article 16 and its scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1867:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered clause heading introducing a list of annulled regulations.",
+      "evidenceRefs": [
+        "L1867:S0"
+      ],
+      "interpretation": "Functions as a structural marker introducing the annulment list for a specific decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L1868:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Continuation of the clause heading specifying the target decree.",
+      "evidenceRefs": [
+        "L1868:S0"
+      ],
+      "interpretation": "Completes the heading phrase identifying the specific decree and topic.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L1869:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item referencing a specific article.",
+      "evidenceRefs": [
+        "L1869:S0"
+      ],
+      "interpretation": "Standard enumerated list item under the annulment clause; not a heading.",
+      "missingEvidence": []
+    }
+  ]
+}

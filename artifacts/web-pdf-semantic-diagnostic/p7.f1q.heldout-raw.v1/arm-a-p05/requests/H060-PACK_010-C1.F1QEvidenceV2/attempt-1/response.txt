@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0790:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical symbol fragment.",
+      "evidenceRefs": [
+        "L0790:S0"
+      ],
+      "interpretation": "Isolated mathematical notation without structural or navigational function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0791:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining vector and covector representation.",
+      "evidenceRefs": [
+        "L0791:S0"
+      ],
+      "interpretation": "Continues mathematical exposition describing vector and covector mappings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0792:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose stating dual form equations.",
+      "evidenceRefs": [
+        "L0792:S0"
+      ],
+      "interpretation": "Continues mathematical exposition presenting dual form relationships.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0793:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Theorem heading introducing a mathematical result.",
+      "evidenceRefs": [
+        "L0793:S0"
+      ],
+      "interpretation": "Explicitly names 'Theorem 4' and introduces the statement of the theorem, functioning as a structural heading for this section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0794:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of theorem statement with mapping notation.",
+      "evidenceRefs": [
+        "L0794:S0"
+      ],
+      "interpretation": "Extends the theorem statement introduced in the preceding line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0795:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical equation concluding the theorem.",
+      "evidenceRefs": [
+        "L0795:S0"
+      ],
+      "interpretation": "Presents the final equations of the theorem block, marked with reference (55).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0796:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Proof text beginning derivation.",
+      "evidenceRefs": [
+        "L0796:S0"
+      ],
+      "interpretation": "Starts the proof section following the theorem statement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0797:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Proof text continuing derivation.",
+      "evidenceRefs": [
+        "L0797:S0"
+      ],
+      "interpretation": "Continues the logical steps of the proof.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0798:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Proof text concluding argument.",
+      "evidenceRefs": [
+        "L0798:S0"
+      ],
+      "interpretation": "Completes the proof by citing invertibility of maps.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0799:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose discussing matrix representation complexity.",
+      "evidenceRefs": [
+        "L0799:S0"
+      ],
+      "interpretation": "Introduces a new paragraph on tensor matrix representation challenges.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0800:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuing discussion on tensor calculus.",
+      "evidenceRefs": [
+        "L0800:S0"
+      ],
+      "interpretation": "Continues the paragraph on index-based tensor calculus.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0801:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose introducing matrix representation conditions.",
+      "evidenceRefs": [
+        "L0801:S0"
+      ],
+      "interpretation": "Transitions to specific cases where tensor-to-matrix representation applies.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0802:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose defining vector spaces and dimensions.",
+      "evidenceRefs": [
+        "L0802:S0"
+      ],
+      "interpretation": "Sets up notation for multiple vector spaces and their dimensions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0803:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose defining bases and representations.",
+      "evidenceRefs": [
+        "L0803:S0"
+      ],
+      "interpretation": "Continues setting up basis notation and representation mappings.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0804:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding setup sentence.",
+      "evidenceRefs": [
+        "L0804:S0"
+      ],
+      "interpretation": "Finishes the introductory sentence for the upcoming definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0805:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Definition heading introducing a mathematical concept.",
+      "evidenceRefs": [
+        "L0805:S0"
+      ],
+      "interpretation": "Begins with 'Deﬁnition 38' and introduces the formal definition, serving as a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0806:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition text.",
+      "evidenceRefs": [
+        "L0806:S0"
+      ],
+      "interpretation": "Completes the word 'representation' split across lines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0807:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical equation defining tensor product.",
+      "evidenceRefs": [
+        "L0807:S0"
+      ],
+      "interpretation": "Presents the core equation of Definition 38, marked (56).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0808:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying basis correspondence.",
+      "evidenceRefs": [
+        "L0808:S0"
+      ],
+      "interpretation": "Clarifies the bases associated with the defined representation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0809:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose introducing isomorphism.",
+      "evidenceRefs": [
+        "L0809:S0"
+      ],
+      "interpretation": "Transitions to describing the isomorphism property.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0810:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical equation showing isomorphism mapping.",
+      "evidenceRefs": [
+        "L0810:S0"
+      ],
+      "interpretation": "Displays the domain and codomain of the isomorphism, marked (57).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0811:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing basis vector mapping.",
+      "evidenceRefs": [
+        "L0811:S0"
+      ],
+      "interpretation": "Explains how basis vectors are transformed under the isomorphism.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0812:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical superscript fragment.",
+      "evidenceRefs": [
+        "L0812:S0"
+      ],
+      "interpretation": "Standalone mathematical exponent fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0812:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical superscript fragment.",
+      "evidenceRefs": [
+        "L0812:S1"
+      ],
+      "interpretation": "Standalone mathematical exponent fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0813:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose identifying target ket vectors.",
+      "evidenceRefs": [
+        "L0813:S0"
+      ],
+      "interpretation": "Specifies the image space of the mapped basis vectors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0813:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single word connector.",
+      "evidenceRefs": [
+        "L0813:S1"
+      ],
+      "interpretation": "Connector word linking to subsequent equation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0814:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical expression applying operator.",
+      "evidenceRefs": [
+        "L0814:S0"
+      ],
+      "interpretation": "Shows the operator acting on basis vectors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0814:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Equation reference number.",
+      "evidenceRefs": [
+        "L0814:S1"
+      ],
+      "interpretation": "Labels the preceding equation as (58).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0815:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical equation expanding operator action.",
+      "evidenceRefs": [
+        "L0815:S0"
+      ],
+      "interpretation": "Expands the tensor product operation, marked (59).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0816:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical equation showing final ket form.",
+      "evidenceRefs": [
+        "L0816:S0"
+      ],
+      "interpretation": "Presents the resulting ket vector product, marked (60).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0816:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Equation reference number.",
+      "evidenceRefs": [
+        "L0816:S1"
+      ],
+      "interpretation": "Labels the preceding equation as (60).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0817:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose defining ket vector notation.",
+      "evidenceRefs": [
+        "L0817:S0"
+      ],
+      "interpretation": "Introduces alternative notation for tensor product basis kets.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0818:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose extending notation to dual spaces.",
+      "evidenceRefs": [
+        "L0818:S0"
+      ],
+      "interpretation": "Notes that analogous formulas apply to dual spaces.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0819:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose discussing formalism application.",
+      "evidenceRefs": [
+        "L0819:S0"
+      ],
+      "interpretation": "Describes how the formalism applies to tensor pairs.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0820:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical symbol fragment.",
+      "evidenceRefs": [
+        "L0820:S0"
+      ],
+      "interpretation": "Isolated mathematical symbol fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0821:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying vector space dimensions.",
+      "evidenceRefs": [
+        "L0821:S0"
+      ],
+      "interpretation": "Continues description of vector space parameters.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0822:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical superscript fragment.",
+      "evidenceRefs": [
+        "L0822:S0"
+      ],
+      "interpretation": "Standalone mathematical exponent fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0822:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical superscript fragment.",
+      "evidenceRefs": [
+        "L0822:S1"
+      ],
+      "interpretation": "Standalone mathematical exponent fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0822:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical superscript fragment.",
+      "evidenceRefs": [
+        "L0822:S2"
+      ],
+      "interpretation": "Standalone mathematical exponent fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0822:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical superscript fragment.",
+      "evidenceRefs": [
+        "L0822:S3"
+      ],
+      "interpretation": "Standalone mathematical exponent fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0822:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical symbol fragment.",
+      "evidenceRefs": [
+        "L0822:S4"
+      ],
+      "interpretation": "Standalone mathematical symbol fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0823:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing tensor space representation.",
+      "evidenceRefs": [
+        "L0823:S0"
+      ],
+      "interpretation": "Explains how tensor spaces map to product spaces.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0824:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing dual tensor representation.",
+      "evidenceRefs": [
+        "L0824:S0"
+      ],
+      "interpretation": "Details representation of dual tensors in dual space products.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0825:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose defining dual tensor space notation.",
+      "evidenceRefs": [
+        "L0825:S0"
+      ],
+      "interpretation": "Provides explicit notation for dual tensor spaces.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0826:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose discussing basis construction.",
+      "evidenceRefs": [
+        "L0826:S0"
+      ],
+      "interpretation": "Describes constructing bases via Kronecker products.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0827:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding sentence.",
+      "evidenceRefs": [
+        "L0827:S0"
+      ],
+      "interpretation": "Finishes the paragraph on matrix product bases.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0828:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number.",
+      "evidenceRefs": [
+        "L0828:S0"
+      ],
+      "interpretation": "Standard page footer/header indicating page 21.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0829:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Definition heading introducing a mathematical concept.",
+      "evidenceRefs": [
+        "L0829:S0"
+      ],
+      "interpretation": "Begins with 'Deﬁnition 39' and introduces the formal definition, serving as a structural heading.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,533 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0480:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text referencing a diagram and explaining frame/flag effects on stream state transitions.",
+      "evidenceRefs": [
+        "L0480:S0"
+      ],
+      "interpretation": "Standard paragraph prose continuing from prior page, providing technical context for a figure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0481:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text clarifying CONTINUATION frame behavior regarding state transitions.",
+      "evidenceRefs": [
+        "L0481:S0"
+      ],
+      "interpretation": "Technical explanation continuing a sentence across line boundaries, formatted identically to surrounding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0482:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text defining CONTINUATION frame relationship to HEADERS/PUSH_PROMISE.",
+      "evidenceRefs": [
+        "L0482:S0"
+      ],
+      "interpretation": "Prose clarifying protocol semantics, maintaining standard font size and alignment with adjacent lines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0483:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text explaining END_STREAM flag processing.",
+      "evidenceRefs": [
+        "L0483:S0"
+      ],
+      "interpretation": "Technical specification prose detailing flag handling, structurally identical to body paragraphs.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0484:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of body text noting dual state transitions for HEADERS with END_STREAM.",
+      "evidenceRefs": [
+        "L0484:S0"
+      ],
+      "interpretation": "Sentence completion within a technical paragraph, lacking heading typography or structural separation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0485:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer containing author names, track type, and page number.",
+      "evidenceRefs": [
+        "L0485:S0"
+      ],
+      "interpretation": "Document furniture positioned at bottom margin (y≈115), distinct from content flow.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0486:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header displaying RFC number, protocol name, and publication date.",
+      "evidenceRefs": [
+        "L0486:S0"
+      ],
+      "interpretation": "Repeated page furniture spanning full width at top margin, serving navigation rather than content structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0487:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing endpoint state views and potential discrepancies.",
+      "evidenceRefs": [
+        "L0487:S0"
+      ],
+      "interpretation": "Standard paragraph prose introducing protocol behavior constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0488:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text explaining uncoordinated stream creation.",
+      "evidenceRefs": [
+        "L0488:S0"
+      ],
+      "interpretation": "Technical explanation continuing sentence structure, aligned with body baseline.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0489:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text limiting mismatch consequences.",
+      "evidenceRefs": [
+        "L0489:S0"
+      ],
+      "interpretation": "Prose detailing protocol safety guarantees, formatted as standard paragraph text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0490:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text specifying post-RST_STREAM frame reception window.",
+      "evidenceRefs": [
+        "L0490:S0"
+      ],
+      "interpretation": "Technical specification prose continuing a single sentence across line breaks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0491:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single-word conclusion of preceding sentence.",
+      "evidenceRefs": [
+        "L0491:S0"
+      ],
+      "interpretation": "Fragment completing a paragraph, sharing identical typography and baseline with surrounding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0492:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory sentence listing subsequent stream state definitions.",
+      "evidenceRefs": [
+        "L0492:S0"
+      ],
+      "interpretation": "Lead-in phrase preceding a definition list, rendered in standard body font without heading emphasis.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0493:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition list item describing the initial 'idle' stream state.",
+      "evidenceRefs": [
+        "L0493:S0"
+      ],
+      "interpretation": "Term-definition pair formatted as standard paragraph text, indented slightly but lacking heading styling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0494:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory sentence preceding valid transition rules for the idle state.",
+      "evidenceRefs": [
+        "L0494:S0"
+      ],
+      "interpretation": "Contextual lead-in to a bulleted list, maintaining body typography and baseline alignment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0495:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted list item detailing client/server HEADERS frame triggers.",
+      "evidenceRefs": [
+        "L0495:S0"
+      ],
+      "interpretation": "List element marked with bullet, indented further than body, describing protocol mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0496:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item explaining stream identifier selection.",
+      "evidenceRefs": [
+        "L0496:S0"
+      ],
+      "interpretation": "List continuation referencing external section, formatted consistently with parent list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0497:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Additional list item noting immediate 'half-closed' transition possibility.",
+      "evidenceRefs": [
+        "L0497:S0"
+      ],
+      "interpretation": "Supplementary list element describing alternative state path, sharing indentation and font.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0498:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted list item describing PUSH_PROMISE reservation mechanism.",
+      "evidenceRefs": [
+        "L0498:S0"
+      ],
+      "interpretation": "List element explaining server-side stream reservation via specific frame type.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0499:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item specifying reserved stream state transition.",
+      "evidenceRefs": [
+        "L0499:S0"
+      ],
+      "interpretation": "List continuation detailing state change outcome, maintaining list formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0500:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of list item restricting PUSH_PROMISE sending to servers.",
+      "evidenceRefs": [
+        "L0500:S0"
+      ],
+      "interpretation": "Constraint clause closing a list element, formatted as standard list text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0501:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted list item describing client-side PUSH_PROMISE reception reservation.",
+      "evidenceRefs": [
+        "L0501:S0"
+      ],
+      "interpretation": "Symmetric list element covering client perspective, indented and styled as list prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0502:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item specifying reserved stream state transition.",
+      "evidenceRefs": [
+        "L0502:S0"
+      ],
+      "interpretation": "List continuation mirroring sibling item structure, describing state change.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0503:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of list item restricting PUSH_PROMISE reception to clients.",
+      "evidenceRefs": [
+        "L0503:S0"
+      ],
+      "interpretation": "Constraint clause closing client-side list element, consistent with list formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0504:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted list item clarifying PUSH_PROMISE placement and field usage.",
+      "evidenceRefs": [
+        "L0504:S0"
+      ],
+      "interpretation": "Clarification list element noting frame routing rules, indented as list prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0505:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item explaining Promised Stream ID field reference.",
+      "evidenceRefs": [
+        "L0505:S0"
+      ],
+      "interpretation": "List continuation specifying technical field behavior, maintaining list alignment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0506:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted list item describing higher-valued stream identifier effect.",
+      "evidenceRefs": [
+        "L0506:S0"
+      ],
+      "interpretation": "List element detailing protocol rule for stream numbering, formatted as list text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0507:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item noting immediate 'closed' transition exception.",
+      "evidenceRefs": [
+        "L0507:S0"
+      ],
+      "interpretation": "List continuation describing edge case behavior, consistent with list typography.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0508:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying mandatory PROTOCOL_ERROR for invalid frames in idle state.",
+      "evidenceRefs": [
+        "L0508:S0"
+      ],
+      "interpretation": "Regulatory clause returning to paragraph format, indented similarly to preceding list but functioning as prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0509:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text defining connection error handling.",
+      "evidenceRefs": [
+        "L0509:S0"
+      ],
+      "interpretation": "Technical specification prose continuing error condition description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0510:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text addressing server-initiated stream exceptions.",
+      "evidenceRefs": [
+        "L0510:S0"
+      ],
+      "interpretation": "Prose elaborating protocol requirements for specific stream origins.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0511:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of body text reiterating PROTOCOL_ERROR requirement.",
+      "evidenceRefs": [
+        "L0511:S0"
+      ],
+      "interpretation": "Sentence completion closing regulatory clause, formatted as standard body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0512:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition list item describing 'reserved (local)' state origin.",
+      "evidenceRefs": [
+        "L0512:S0"
+      ],
+      "interpretation": "Term-definition pair introducing next state category, styled as list/prose hybrid.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0513:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition explaining PUSH_PROMISE reservation mechanics.",
+      "evidenceRefs": [
+        "L0513:S0"
+      ],
+      "interpretation": "Definition continuation detailing frame interaction, maintaining definition formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0514:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of definition linking reserved stream to remote peer.",
+      "evidenceRefs": [
+        "L0514:S0"
+      ],
+      "interpretation": "Definition prose specifying peer relationship, indented consistently with definition block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L0515:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of definition citing relevant section.",
+      "evidenceRefs": [
+        "L0515:S0"
+      ],
+      "interpretation": "Short fragment closing definition with cross-reference, formatted as definition text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L0516:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory sentence preceding valid transitions for reserved (local) state.",
+      "evidenceRefs": [
+        "L0516:S0"
+      ],
+      "interpretation": "Lead-in phrase to next list, rendered in standard body font without heading emphasis.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L0517:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted list item detailing HEADERS frame trigger for half-closed state.",
+      "evidenceRefs": [
+        "L0517:S0"
+      ],
+      "interpretation": "List element describing state transition mechanism, indented as list prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L0518:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of list item specifying resulting state.",
+      "evidenceRefs": [
+        "L0518:S0"
+      ],
+      "interpretation": "Fragment completing list element, maintaining list alignment and typography.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L0519:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted list item describing RST_STREAM frame trigger for closed state.",
+      "evidenceRefs": [
+        "L0519:S0"
+      ],
+      "interpretation": "List element detailing termination mechanism, formatted consistently with sibling list items.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L0520:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding sentence releasing stream reservation.",
+      "evidenceRefs": [
+        "L0520:S0"
+      ],
+      "interpretation": "Statement closing list context, indented as list continuation rather than new paragraph.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L0521:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying prohibited frame types in reserved (local) state.",
+      "evidenceRefs": [
+        "L0521:S0"
+      ],
+      "interpretation": "Regulatory clause returning to paragraph format, indented similarly to preceding list but functioning as prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L0522:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of constraint listing allowed frame types.",
+      "evidenceRefs": [
+        "L0522:S0"
+      ],
+      "interpretation": "Short fragment closing regulatory clause, formatted as standard body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L0523:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer containing author names, track type, and page number.",
+      "evidenceRefs": [
+        "L0523:S0"
+      ],
+      "interpretation": "Document furniture positioned at bottom margin (y≈115), distinct from content flow.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,485 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0527:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Code snippet defining a message body syntax.",
+      "evidenceRefs": ["L0527:S0"],
+      "interpretation": "Technical notation providing a syntax definition, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0528:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining rules for message body presence.",
+      "evidenceRefs": ["L0528:S0"],
+      "interpretation": "Standard paragraph text continuing the discussion of HTTP/1.1 message framing.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0529:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation regarding requests and responses.",
+      "evidenceRefs": ["L0529:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0530:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing request message body signaling.",
+      "evidenceRefs": ["L0530:S0"],
+      "interpretation": "Standard paragraph text detailing how Content-Length or Transfer-Encoding signals a body.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0531:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on request framing independence.",
+      "evidenceRefs": ["L0531:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0532:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing response message body conditions.",
+      "evidenceRefs": ["L0532:S0"],
+      "interpretation": "Standard paragraph text explaining when a response body is present.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0533:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on response status codes.",
+      "evidenceRefs": ["L0533:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0534:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation referencing HTTP semantics.",
+      "evidenceRefs": ["L0534:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0535:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section heading '6.1. Transfer-Encoding'.",
+      "evidenceRefs": ["L0535:S0"],
+      "interpretation": "The occurrence serves as a numbered section heading that introduces the substantive content region discussing transfer encoding rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0536:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose defining the Transfer-Encoding header field.",
+      "evidenceRefs": ["L0536:S0"],
+      "interpretation": "Standard paragraph text following the section heading, explaining the header's purpose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0537:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on transfer codings sequence.",
+      "evidenceRefs": ["L0537:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0538:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation referencing Section 7.",
+      "evidenceRefs": ["L0538:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0539:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer containing author and page number.",
+      "evidenceRefs": ["L0539:S0"],
+      "interpretation": "Running footer metadata, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0540:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header with RFC title and date.",
+      "evidenceRefs": ["L0540:S0"],
+      "interpretation": "Page furniture repeating document metadata across multiple pages.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0541:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "ABNF grammar definition line.",
+      "evidenceRefs": ["L0541:S0"],
+      "interpretation": "Technical notation defining the syntax for Transfer-Encoding, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0542:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Punctuation character in ABNF grammar.",
+      "evidenceRefs": ["L0542:S0"],
+      "interpretation": "Syntax element within a grammar block, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0542:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "ABNF grammar continuation referencing [HTTP].",
+      "evidenceRefs": ["L0542:S1"],
+      "interpretation": "Syntax element within a grammar block, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0542:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "ABNF grammar reference to Section 10.1.4.",
+      "evidenceRefs": ["L0542:S2"],
+      "interpretation": "Syntax element within a grammar block, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0543:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose comparing Transfer-Encoding to MIME.",
+      "evidenceRefs": ["L0543:S0"],
+      "interpretation": "Standard paragraph text elaborating on the concept after the grammar block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0544:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on MIME design goals.",
+      "evidenceRefs": ["L0544:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0545:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation contrasting HTTP focus.",
+      "evidenceRefs": ["L0545:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0546:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose stating primary intent of Transfer-Encoding.",
+      "evidenceRefs": ["L0546:S0"],
+      "interpretation": "Standard paragraph text explaining the header's main purpose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0547:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on distinguishing encodings.",
+      "evidenceRefs": ["L0547:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0548:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on representation characteristics.",
+      "evidenceRefs": ["L0548:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0549:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose mandating parsing of chunked coding.",
+      "evidenceRefs": ["L0549:S0"],
+      "interpretation": "Standard paragraph text specifying implementation requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0550:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on chunked role in framing.",
+      "evidenceRefs": ["L0550:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0551:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose prohibiting multiple chunked applications.",
+      "evidenceRefs": ["L0551:S0"],
+      "interpretation": "Standard paragraph text specifying a constraint on senders.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0552:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on already chunked messages.",
+      "evidenceRefs": ["L0552:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0553:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose requiring chunked as final coding for requests.",
+      "evidenceRefs": ["L0553:S0"],
+      "interpretation": "Standard paragraph text specifying framing requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0554:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on response framing.",
+      "evidenceRefs": ["L0554:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0555:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying options for non-chunked responses.",
+      "evidenceRefs": ["L0555:S0"],
+      "interpretation": "Standard paragraph text outlining sender obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0556:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on connection termination.",
+      "evidenceRefs": ["L0556:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0557:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Transitional phrase introducing an example.",
+      "evidenceRefs": ["L0557:S0"],
+      "interpretation": "Standard prose connector leading into a technical example.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0558:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example header value showing gzip and chunked.",
+      "evidenceRefs": ["L0558:S0"],
+      "interpretation": "Technical notation illustrating the preceding explanation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0559:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose interpreting the example header.",
+      "evidenceRefs": ["L0559:S0"],
+      "interpretation": "Standard paragraph text explaining the example's meaning.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0560:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on message body formation.",
+      "evidenceRefs": ["L0560:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0561:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose contrasting with Content-Encoding.",
+      "evidenceRefs": ["L0561:S0"],
+      "interpretation": "Standard paragraph text clarifying scope differences.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0562:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on message vs representation property.",
+      "evidenceRefs": ["L0562:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0563:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose allowing recipients to decode or re-encode.",
+      "evidenceRefs": ["L0563:S0"],
+      "interpretation": "Standard paragraph text describing interoperability rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0564:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation assuming field updates.",
+      "evidenceRefs": ["L0564:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0565:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose noting other header fields may provide info.",
+      "evidenceRefs": ["L0565:S0"],
+      "interpretation": "Standard paragraph text acknowledging external parameters.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0566:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on specification boundaries.",
+      "evidenceRefs": ["L0566:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0567:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose permitting Transfer-Encoding in HEAD/304 responses.",
+      "evidenceRefs": ["L0567:S0"],
+      "interpretation": "Standard paragraph text specifying conditional usage rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0568:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation referencing GET requests.",
+      "evidenceRefs": ["L0568:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0569:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining hypothetical application to bodies.",
+      "evidenceRefs": ["L0569:S0"],
+      "interpretation": "Standard paragraph text clarifying the indication's purpose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0570:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation noting indication is optional.",
+      "evidenceRefs": ["L0570:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0571:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose allowing recipients to remove codings.",
+      "evidenceRefs": ["L0571:S0"],
+      "interpretation": "Standard paragraph text describing chain processing flexibility.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0572:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation on necessity condition.",
+      "evidenceRefs": ["L0572:S0"],
+      "interpretation": "Sentence fragment completing the preceding body text.",
+      "missingEvidence": []
+    }
+  ]
+}

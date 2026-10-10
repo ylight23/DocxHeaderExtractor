@@ -1,0 +1,509 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0070:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "36pt bold text forming a prominent title-like phrase on page 6.",
+      "evidenceRefs": [
+        "L0070:S0"
+      ],
+      "interpretation": "Acts as a primary visual heading or subtitle on the introductory page due to its dominant 36pt size and bold weight.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0071:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Continuation of the 36pt bold title phrase on page 6.",
+      "evidenceRefs": [
+        "L0071:S0"
+      ],
+      "interpretation": "Completes the prominent heading/subtitle text block alongside O1.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0072:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard 10pt body text describing web view features.",
+      "evidenceRefs": [
+        "L0072:S0"
+      ],
+      "interpretation": "Functions as ordinary descriptive prose explaining platform capabilities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0073:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard 10pt body text continuing feature description.",
+      "evidenceRefs": [
+        "L0073:S0"
+      ],
+      "interpretation": "Continues standard body prose regarding study guide creation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0074:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard 10pt body text stating book availability.",
+      "evidenceRefs": [
+        "L0074:S0"
+      ],
+      "interpretation": "Functions as standard body prose highlighting open access terms.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0075:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "10pt bold URL directing readers to a specific book page.",
+      "evidenceRefs": [
+        "L0075:S0"
+      ],
+      "interpretation": "Functions as a call-to-action link rather than a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0077:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "14pt bold slogan/tagline serving as a publisher motto.",
+      "evidenceRefs": [
+        "L0077:S0"
+      ],
+      "interpretation": "Operates as a branding slogan, not a document title or content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0078:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "14pt bold website address.",
+      "evidenceRefs": [
+        "L0078:S0"
+      ],
+      "interpretation": "Functions as a navigation URL, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0079:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "13pt bold heading marking the start of the table of contents.",
+      "evidenceRefs": [
+        "L0079:S0"
+      ],
+      "interpretation": "Establishes the table of contents section heading on page 7.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0080:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Preface 1' with page number reference.",
+      "evidenceRefs": [
+        "L0080:S0"
+      ],
+      "interpretation": "Lists a preface heading located elsewhere in the document.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0081:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Chapter 1 with page number.",
+      "evidenceRefs": [
+        "L0081:S0"
+      ],
+      "interpretation": "Navigates to the chapter heading operating on page 13.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0082:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Introduction 3'.",
+      "evidenceRefs": [
+        "L0082:S0"
+      ],
+      "interpretation": "References an introduction heading located elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0083:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 1.1.",
+      "evidenceRefs": [
+        "L0083:S0"
+      ],
+      "interpretation": "References a subsection heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0084:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 1.2.",
+      "evidenceRefs": [
+        "L0084:S0"
+      ],
+      "interpretation": "References a subsection heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0085:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 1.3.",
+      "evidenceRefs": [
+        "L0085:S0"
+      ],
+      "interpretation": "References a subsection heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0086:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Assessment Questions 10'.",
+      "evidenceRefs": [
+        "L0086:S0"
+      ],
+      "interpretation": "References an assessment section heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0087:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Endnotes 1 1'.",
+      "evidenceRefs": [
+        "L0087:S0"
+      ],
+      "interpretation": "References an endnotes section heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0088:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Chapter 2.",
+      "evidenceRefs": [
+        "L0088:S0"
+      ],
+      "interpretation": "Navigates to the chapter heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0089:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Introduction 13'.",
+      "evidenceRefs": [
+        "L0089:S0"
+      ],
+      "interpretation": "References an introduction heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0090:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 2.1.",
+      "evidenceRefs": [
+        "L0090:S0"
+      ],
+      "interpretation": "References a subsection heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0091:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 2.2.",
+      "evidenceRefs": [
+        "L0091:S0"
+      ],
+      "interpretation": "References a subsection heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0092:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 2.3.",
+      "evidenceRefs": [
+        "L0092:S0"
+      ],
+      "interpretation": "References a subsection heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0093:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Assessment Questions 23'.",
+      "evidenceRefs": [
+        "L0093:S0"
+      ],
+      "interpretation": "References an assessment section heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0094:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Endnotes 24'.",
+      "evidenceRefs": [
+        "L0094:S0"
+      ],
+      "interpretation": "References an endnotes section heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0095:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Chapter 3.",
+      "evidenceRefs": [
+        "L0095:S0"
+      ],
+      "interpretation": "Navigates to the chapter heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0096:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Introduction 27'.",
+      "evidenceRefs": [
+        "L0096:S0"
+      ],
+      "interpretation": "References an introduction heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0097:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 3.1.",
+      "evidenceRefs": [
+        "L0097:S0"
+      ],
+      "interpretation": "References a subsection heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0098:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 3.2.",
+      "evidenceRefs": [
+        "L0098:S0"
+      ],
+      "interpretation": "References a subsection heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0099:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Assessment Questions 35'.",
+      "evidenceRefs": [
+        "L0099:S0"
+      ],
+      "interpretation": "References an assessment section heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0100:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Endnotes 35'.",
+      "evidenceRefs": [
+        "L0100:S0"
+      ],
+      "interpretation": "References an endnotes section heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0101:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Chapter 4.",
+      "evidenceRefs": [
+        "L0101:S0"
+      ],
+      "interpretation": "Navigates to the chapter heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0102:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Introduction 37'.",
+      "evidenceRefs": [
+        "L0102:S0"
+      ],
+      "interpretation": "References an introduction heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0103:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.1.",
+      "evidenceRefs": [
+        "L0103:S0"
+      ],
+      "interpretation": "References a subsection heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0104:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 4.2.",
+      "evidenceRefs": [
+        "L0104:S0"
+      ],
+      "interpretation": "References a subsection heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0105:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Assessment Questions 45'.",
+      "evidenceRefs": [
+        "L0105:S0"
+      ],
+      "interpretation": "References an assessment section heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0106:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Endnotes 46'.",
+      "evidenceRefs": [
+        "L0106:S0"
+      ],
+      "interpretation": "References an endnotes section heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0107:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for Chapter 5.",
+      "evidenceRefs": [
+        "L0107:S0"
+      ],
+      "interpretation": "Navigates to the chapter heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0108:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Introduction 47'.",
+      "evidenceRefs": [
+        "L0108:S0"
+      ],
+      "interpretation": "References an introduction heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0109:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 5.1.",
+      "evidenceRefs": [
+        "L0109:S0"
+      ],
+      "interpretation": "References a subsection heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0110:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry for section 5.2.",
+      "evidenceRefs": [
+        "L0110:S0"
+      ],
+      "interpretation": "References a subsection heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0111:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Assessment Questions 55'.",
+      "evidenceRefs": [
+        "L0111:S0"
+      ],
+      "interpretation": "References an assessment section heading operating elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0112:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "TOC entry 'Endnotes 55'.",
+      "evidenceRefs": [
+        "L0112:S0"
+      ],
+      "interpretation": "References an endnotes section heading operating elsewhere.",
+      "missingEvidence": []
+    }
+  ]
+}

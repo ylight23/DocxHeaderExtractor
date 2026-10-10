@@ -1,0 +1,305 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document title",
+      "evidenceRefs": ["L0000:S0"],
+      "interpretation": "Identifies the document as the official minutes for the International Comparison Program.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Administrative metadata",
+      "evidenceRefs": ["L0001:S0"],
+      "interpretation": "Indicates the governing body responsible for the meeting; functions as header metadata rather than a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Date metadata",
+      "evidenceRefs": ["L0002:S0"],
+      "interpretation": "Records the meeting date; serves as administrative information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Format metadata",
+      "evidenceRefs": ["L0003:S0"],
+      "interpretation": "Describes the meeting modality; serves as administrative information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading",
+      "evidenceRefs": ["L0004:S0"],
+      "interpretation": "Introduces the opening segment covering welcome remarks and stated objectives.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0005:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0006:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0007:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0008:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0009:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0010:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0011:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0012:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0013:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0014:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0015:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0016:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0017:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0018:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0019:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0020:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0021:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0022:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0023:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0024:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0025:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading",
+      "evidenceRefs": ["L0026:S0"],
+      "interpretation": "Marks the beginning of the first substantive session updating the group on the ICP 2021 cycle.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0027:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose",
+      "evidenceRefs": ["L0028:S0"],
+      "interpretation": "Narrative record of meeting proceedings, attendance, and opening remarks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number",
+      "evidenceRefs": ["L0029:S0"],
+      "interpretation": "Pagination marker at the end of the page.",
+      "missingEvidence": []
+    }
+  ]
+}

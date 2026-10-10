@@ -1,0 +1,365 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L1714:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header containing publication number and date.",
+      "evidenceRefs": [
+        "L1714:S0"
+      ],
+      "interpretation": "Administrative page furniture indicating the gazette issue and date, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1715:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a list item detailing land use indicators.",
+      "evidenceRefs": [
+        "L1715:S0"
+      ],
+      "interpretation": "Ordinary body prose continuing a regulatory clause from a preceding paragraph.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L1716:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text fragment completing the administrative level specification.",
+      "evidenceRefs": [
+        "L1716:S0"
+      ],
+      "interpretation": "Body text continuation forming part of a single regulatory sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L1717:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item defining boundaries and areas for sea encroachment.",
+      "evidenceRefs": [
+        "L1717:S0"
+      ],
+      "interpretation": "Regulatory body text specifying technical planning parameters.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L1718:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text fragment specifying agricultural and non-agricultural purposes.",
+      "evidenceRefs": [
+        "L1718:S0"
+      ],
+      "interpretation": "Body text continuation completing the purpose classification for sea encroachment zones.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L1719:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item outlining strict management zones for land use.",
+      "evidenceRefs": [
+        "L1719:S0"
+      ],
+      "interpretation": "Regulatory body text enumerating specific land categories requiring strict control.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L1720:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List of specific forest and rice land types under strict management.",
+      "evidenceRefs": [
+        "L1720:S0"
+      ],
+      "interpretation": "Body text continuation listing protected land classifications.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L1721:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item regarding five-year plan periodization for land use.",
+      "evidenceRefs": [
+        "L1721:S0"
+      ],
+      "interpretation": "Regulatory body text prescribing temporal planning frameworks.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L1722:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Reference to preceding sub-points within the same paragraph.",
+      "evidenceRefs": [
+        "L1722:S0"
+      ],
+      "interpretation": "Body text continuation linking back to earlier clauses in the regulatory sequence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L1723:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item on solutions and resources for land use planning implementation.",
+      "evidenceRefs": [
+        "L1723:S0"
+      ],
+      "interpretation": "Regulatory body text concluding the content enumeration for provincial planning.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L1724:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph 3 instruction on drafting provincial land use maps.",
+      "evidenceRefs": [
+        "L1724:S0"
+      ],
+      "interpretation": "Body text initiating a new procedural requirement within the article.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L1725:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instruction on updating provincial planning data into national databases.",
+      "evidenceRefs": [
+        "L1725:S0"
+      ],
+      "interpretation": "Body text continuation completing the mapping and database update mandate.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L1726:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph 4 exception for provinces not directly under central government.",
+      "evidenceRefs": [
+        "L1726:S0"
+      ],
+      "interpretation": "Regulatory body text establishing jurisdictional exemptions for provincial planning.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L1727:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Requirement for these provinces to periodize land use planning instead.",
+      "evidenceRefs": [
+        "L1727:S0"
+      ],
+      "interpretation": "Body text continuation specifying alternative planning obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L1728:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Reference to the five-year periodization rule in point e.",
+      "evidenceRefs": [
+        "L1728:S0"
+      ],
+      "interpretation": "Body text completion linking the exemption to the previously defined periodization standard.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L1729:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph 5 condition for centrally-run cities with approved general plans.",
+      "evidenceRefs": [
+        "L1729:S0"
+      ],
+      "interpretation": "Regulatory body text introducing another jurisdictional scenario for urban planning.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L1730:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal basis reference exempting these cities from provincial land use planning.",
+      "evidenceRefs": [
+        "L1730:S0"
+      ],
+      "interpretation": "Body text continuation detailing the statutory exemption criteria.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L1731:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Directive to base provincial land use plans on the approved general plan.",
+      "evidenceRefs": [
+        "L1731:S0"
+      ],
+      "interpretation": "Body text completion prescribing the hierarchical planning dependency.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L1732:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Scenario describing late approval of general plans after provincial plans.",
+      "evidenceRefs": [
+        "L1732:S0"
+      ],
+      "interpretation": "Regulatory body text setting up a conditional exception for plan adjustments.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L1733:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Condition where general plan changes affect provincial land use indicators.",
+      "evidenceRefs": [
+        "L1733:S0"
+      ],
+      "interpretation": "Body text continuation specifying the trigger for the subsequent exemption.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L1734:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Exemption from adjusting provincial land use plans under the stated condition.",
+      "evidenceRefs": [
+        "L1734:S0"
+      ],
+      "interpretation": "Regulatory body text granting relief from redundant plan revision procedures.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L1735:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fallback directive to use the general plan for provincial land use planning.",
+      "evidenceRefs": [
+        "L1735:S0"
+      ],
+      "interpretation": "Body text completion finalizing the conditional planning workflow.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L1736:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Delegation clause assigning detailed regulation authority to the Government.",
+      "evidenceRefs": [
+        "L1736:S0"
+      ],
+      "interpretation": "Standard legislative closing paragraph delegating implementation details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L1737:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold heading marking the start of Article 66 on district land use planning.",
+      "evidenceRefs": [
+        "L1737:S0"
+      ],
+      "interpretation": "Structural heading that formally introduces the substantive content region for Article 66, distinguished by bold typography and explicit article numbering.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L1738:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Paragraph 1 introduction listing bases for district land use planning.",
+      "evidenceRefs": [
+        "L1738:S0"
+      ],
+      "interpretation": "Body text paragraph opening that enumerates foundational documents for the new article.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L1739:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item a referencing provincial and urban planning documents.",
+      "evidenceRefs": [
+        "L1739:S0"
+      ],
+      "interpretation": "Regulatory body text specifying higher-level planning instruments as bases.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L1740:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item a regarding exceptions for centrally-run cities.",
+      "evidenceRefs": [
+        "L1740:S0"
+      ],
+      "interpretation": "Body text completion clarifying the scope of provincial planning references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L1741:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment concluding the provincial planning exception clause.",
+      "evidenceRefs": [
+        "L1741:S0"
+      ],
+      "interpretation": "Body text continuation finalizing the syntactic unit of list item a.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L1742:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item b citing technical and sectoral planning documents.",
+      "evidenceRefs": [
+        "L1742:S0"
+      ],
+      "interpretation": "Regulatory body text adding specialized planning layers to the required bases.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L1743:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item c citing socio-economic development plans at the district level.",
+      "evidenceRefs": [
+        "L1743:S0"
+      ],
+      "interpretation": "Regulatory body text incorporating economic planning directives into the land use framework.",
+      "missingEvidence": []
+    }
+  ]
+}

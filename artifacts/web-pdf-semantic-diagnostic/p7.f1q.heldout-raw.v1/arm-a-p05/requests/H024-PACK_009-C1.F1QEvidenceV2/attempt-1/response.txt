@@ -1,0 +1,445 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0700:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation description line starting with 'b)'",
+      "evidenceRefs": ["L0700:S0"],
+      "interpretation": "Body text detailing a specific violation condition; does not function as a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0701:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation description regarding SIM cards",
+      "evidenceRefs": ["L0701:S0"],
+      "interpretation": "Body text completing the violation clause; no heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0702:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Amendment reference note citing Nghị định số 14/2022/NĐ-",
+      "evidenceRefs": ["L0702:S0"],
+      "interpretation": "Administrative amendment citation embedded in body text; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0703:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Abbreviation 'CP' completing a decree reference",
+      "evidenceRefs": ["L0703:S0"],
+      "interpretation": "Fragment of a legal reference (Nghị định...CP); serves as metadata, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0704:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause marker introducing fine range 50M-70M VND",
+      "evidenceRefs": ["L0704:S0"],
+      "interpretation": "Sub-clause starter for penalty amounts; functions as body text structure, not a distinct heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0705:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Violation item 'a)' regarding cross-border telecommunication services",
+      "evidenceRefs": ["L0705:S0"],
+      "interpretation": "Listed violation detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0706:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation item 'a)'",
+      "evidenceRefs": ["L0706:S0"],
+      "interpretation": "Body text completing the violation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0707:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Violation item 'b)' regarding contract application",
+      "evidenceRefs": ["L0707:S0"],
+      "interpretation": "Listed violation detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0708:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation item 'b)'",
+      "evidenceRefs": ["L0708:S0"],
+      "interpretation": "Body text completing the violation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0709:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Violation item 'c)' regarding notification obligations",
+      "evidenceRefs": ["L0709:S0"],
+      "interpretation": "Listed violation detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0710:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation item 'c)'",
+      "evidenceRefs": ["L0710:S0"],
+      "interpretation": "Body text completing the violation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0711:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause marker introducing fine range 100M-140M VND",
+      "evidenceRefs": ["L0711:S0"],
+      "interpretation": "Sub-clause starter for penalty amounts; functions as body text structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0712:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Violation item 'a)' regarding network establishment standards",
+      "evidenceRefs": ["L0712:S0"],
+      "interpretation": "Listed violation detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0713:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Violation item 'b)' regarding public/private networks",
+      "evidenceRefs": ["L0713:S0"],
+      "interpretation": "Listed violation detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0714:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation item 'b)'",
+      "evidenceRefs": ["L0714:S0"],
+      "interpretation": "Body text completing the violation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0715:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation item 'b)'",
+      "evidenceRefs": ["L0715:S0"],
+      "interpretation": "Body text completing the violation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0716:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause marker introducing fine range 140M-170M VND",
+      "evidenceRefs": ["L0716:S0"],
+      "interpretation": "Sub-clause starter for penalty amounts; functions as body text structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0717:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation description under fine range",
+      "evidenceRefs": ["L0717:S0"],
+      "interpretation": "Body text detailing service provision violations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0718:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation description",
+      "evidenceRefs": ["L0718:S0"],
+      "interpretation": "Body text completing the violation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0719:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause marker introducing fine range 170M-200M VND",
+      "evidenceRefs": ["L0719:S0"],
+      "interpretation": "Sub-clause starter for penalty amounts; functions as body text structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0720:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation description regarding traffic routing",
+      "evidenceRefs": ["L0720:S0"],
+      "interpretation": "Body text detailing illegal traffic routing violations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0721:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation description",
+      "evidenceRefs": ["L0721:S0"],
+      "interpretation": "Body text completing the violation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0722:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section header '9. Hình thức xử phạt bổ sung:'",
+      "evidenceRefs": ["L0722:S0"],
+      "interpretation": "Explicitly introduces the supplementary penalty forms subsection; functions as a substantive heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0723:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Penalty measure item 'a)' regarding confiscation",
+      "evidenceRefs": ["L0723:S0"],
+      "interpretation": "Listed penalty measure detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0724:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Penalty measure item 'b)' regarding activity suspension",
+      "evidenceRefs": ["L0724:S0"],
+      "interpretation": "Listed penalty measure detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0725:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of penalty measure item 'b)'",
+      "evidenceRefs": ["L0725:S0"],
+      "interpretation": "Body text completing the penalty clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0726:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Amendment reference note citing Nghị định số 14/2022/NĐ-",
+      "evidenceRefs": ["L0726:S0"],
+      "interpretation": "Administrative amendment citation embedded in body text; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0727:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Abbreviation 'CP' completing a decree reference",
+      "evidenceRefs": ["L0727:S0"],
+      "interpretation": "Fragment of a legal reference; serves as metadata, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0728:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section header '10. Biện pháp khắc phục hậu quả:'",
+      "evidenceRefs": ["L0728:S0"],
+      "interpretation": "Explicitly introduces the remedial measures subsection; functions as a substantive heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0729:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Remedial measure requirement regarding illegal profits",
+      "evidenceRefs": ["L0729:S0"],
+      "interpretation": "Body text detailing mandatory repayment obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0730:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of remedial measure requirement",
+      "evidenceRefs": ["L0730:S0"],
+      "interpretation": "Body text completing the remedial clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0731:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article header 'Điều 26. Vi phạm các quy định về dịch vụ viễn thông công ích'",
+      "evidenceRefs": ["L0731:S0"],
+      "interpretation": "Typographically distinct (10.8pt, bold) article title introducing a new substantive content region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0732:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause marker introducing fine range 20M-30M VND",
+      "evidenceRefs": ["L0732:S0"],
+      "interpretation": "Sub-clause starter for penalty amounts under Article 26; functions as body text structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0733:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Violation item 'a)' regarding misleading advertising",
+      "evidenceRefs": ["L0733:S0"],
+      "interpretation": "Listed violation detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0734:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Violation item 'b)' regarding price notice submission",
+      "evidenceRefs": ["L0734:S0"],
+      "interpretation": "Listed violation detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0735:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation item 'b)'",
+      "evidenceRefs": ["L0735:S0"],
+      "interpretation": "Body text completing the violation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0736:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Violation item 'c)' regarding financial contribution plans",
+      "evidenceRefs": ["L0736:S0"],
+      "interpretation": "Listed violation detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0737:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation item 'c)'",
+      "evidenceRefs": ["L0737:S0"],
+      "interpretation": "Body text completing the violation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0738:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Clause marker introducing fine range 30M-50M VND",
+      "evidenceRefs": ["L0738:S0"],
+      "interpretation": "Sub-clause starter for penalty amounts; functions as body text structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0739:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Violation item 'a)' regarding service catalog compliance",
+      "evidenceRefs": ["L0739:S0"],
+      "interpretation": "Listed violation detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0740:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Violation item 'b)' regarding invoice content requirements",
+      "evidenceRefs": ["L0740:S0"],
+      "interpretation": "Listed violation detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0741:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Violation item 'c)' regarding price framework decisions",
+      "evidenceRefs": ["L0741:S0"],
+      "interpretation": "Listed violation detail; body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0742:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of violation item 'c)'",
+      "evidenceRefs": ["L0742:S0"],
+      "interpretation": "Body text completing the violation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0743:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Violation item 'd)' regarding price notice publication",
+      "evidenceRefs": ["L0743:S0"],
+      "interpretation": "Listed violation detail; body prose.",
+      "missingEvidence": []
+    }
+  ]
+}

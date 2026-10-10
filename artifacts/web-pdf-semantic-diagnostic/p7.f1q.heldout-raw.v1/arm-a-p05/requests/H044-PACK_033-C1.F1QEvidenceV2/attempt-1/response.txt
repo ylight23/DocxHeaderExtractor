@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1913:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment continuing discussion of portfolio liabilities and equity.",
+      "evidenceRefs": [
+        "L1913:S0"
+      ],
+      "interpretation": "Functions as standard paragraph prose detailing financial portfolio components.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1914:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text discussing market debt funding and derivative usage.",
+      "evidenceRefs": [
+        "L1914:S0"
+      ],
+      "interpretation": "Standard paragraph prose explaining how market debt funds loans and illustrates derivatives.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1915:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing portfolio maintenance in SDR and component currencies.",
+      "evidenceRefs": [
+        "L1915:S0"
+      ],
+      "interpretation": "Standard paragraph prose detailing currency composition of maintained portfolios.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1916:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment concluding the previous sentence on currency components.",
+      "evidenceRefs": [
+        "L1916:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose, not a structural element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1917:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page header containing document title and page number positioned at margins.",
+      "evidenceRefs": [
+        "L1917:S0"
+      ],
+      "interpretation": "Operating as page furniture rather than establishing substantive structure here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1918:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Repeated section title appearing at the top of the page across multiple pages.",
+      "evidenceRefs": [
+        "L1918:S0"
+      ],
+      "interpretation": "Functions as a running header/page furniture, repeating a heading that operates elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1919:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bold, smaller font line identifying a figure number and descriptive title.",
+      "evidenceRefs": [
+        "L1919:S0"
+      ],
+      "interpretation": "Functions as a figure caption label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1920:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Standalone italicized line introducing a discussion of interest rate exposure.",
+      "evidenceRefs": [
+        "L1920:S0"
+      ],
+      "interpretation": "Functions as a section subheading introducing the subsequent body text on interest rate risk.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1921:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining IDA's exposure to interest rate risk due to asset-liability mismatches.",
+      "evidenceRefs": [
+        "L1921:S0"
+      ],
+      "interpretation": "Standard paragraph prose detailing financial risk exposure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1922:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text on liability maturity and instrument type alongside disbursement profiles.",
+      "evidenceRefs": [
+        "L1922:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose analyzing financial structures.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1923:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing the long weighted average maturity of IDA's loans.",
+      "evidenceRefs": [
+        "L1923:S0"
+      ],
+      "interpretation": "Standard paragraph prose providing specific financial metrics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1924:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text linking market volatility to year-on-year fair value variability.",
+      "evidenceRefs": [
+        "L1924:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose explaining financial impacts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1925:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text noting loan portfolio reporting status under U.S. GAAP.",
+      "evidenceRefs": [
+        "L1925:S0"
+      ],
+      "interpretation": "Standard paragraph prose clarifying accounting treatment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1926:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing IDA's investment-trading portfolio liquidity.",
+      "evidenceRefs": [
+        "L1926:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose detailing portfolio characteristics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1927:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text stating low interest rate sensitivity and duration metrics.",
+      "evidenceRefs": [
+        "L1927:S0"
+      ],
+      "interpretation": "Standard paragraph prose providing quantitative risk metrics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1928:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing IDA's integrated financial model strategies.",
+      "evidenceRefs": [
+        "L1928:S0"
+      ],
+      "interpretation": "Transitional paragraph prose leading into enumerated strategies.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1929:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List marker indicating the start of an enumerated strategy.",
+      "evidenceRefs": [
+        "L1929:S0"
+      ],
+      "interpretation": "Bullet point formatting element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1929:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing capital adequacy policies and interest rate sensitivity.",
+      "evidenceRefs": [
+        "L1929:S1"
+      ],
+      "interpretation": "First item in an enumerated list of risk management strategies.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1930:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List marker indicating the next enumerated strategy.",
+      "evidenceRefs": [
+        "L1930:S0"
+      ],
+      "interpretation": "Bullet point formatting element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1930:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing interest rate matching strategies between assets and funding.",
+      "evidenceRefs": [
+        "L1930:S1"
+      ],
+      "interpretation": "Second item in an enumerated list of risk management strategies.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1931:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List marker indicating the next enumerated strategy.",
+      "evidenceRefs": [
+        "L1931:S0"
+      ],
+      "interpretation": "Bullet point formatting element, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1931:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing monitoring of funding risk related to maturity mismatches.",
+      "evidenceRefs": [
+        "L1931:S1"
+      ],
+      "interpretation": "Third item in an enumerated list of risk management strategies.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1932:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining duration measurements and capital requirement adjustments.",
+      "evidenceRefs": [
+        "L1932:S0"
+      ],
+      "interpretation": "Continuation of the third enumerated strategy item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1933:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment concluding the discussion on funding risk monitoring.",
+      "evidenceRefs": [
+        "L1933:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose, not a structural element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1934:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Standalone italicized line introducing a discussion on alternative reference rates.",
+      "evidenceRefs": [
+        "L1934:S0"
+      ],
+      "interpretation": "Functions as a section subheading introducing the subsequent body text on reference rate transitions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1935:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text detailing the cessation of LIBOR rates as of June 2023.",
+      "evidenceRefs": [
+        "L1935:S0"
+      ],
+      "interpretation": "Standard paragraph prose explaining regulatory changes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1936:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text citing FCA regulatory guidance on LIBOR representation.",
+      "evidenceRefs": [
+        "L1936:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose detailing regulatory context.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1937:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing IDA's preparation for transitioning away from LIBOR.",
+      "evidenceRefs": [
+        "L1937:S0"
+      ],
+      "interpretation": "Standard paragraph prose outlining institutional response.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1938:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining steps taken to facilitate smooth financial instrument transition.",
+      "evidenceRefs": [
+        "L1938:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose detailing implementation actions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1939:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying the transition timeline from January 2022 to December 2023.",
+      "evidenceRefs": [
+        "L1939:S0"
+      ],
+      "interpretation": "Standard paragraph prose providing chronological details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1940:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment confirming transition completion for applicable portfolios.",
+      "evidenceRefs": [
+        "L1940:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose, not a structural element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1941:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Standalone italicized line introducing analysis of currency mismatch risks.",
+      "evidenceRefs": [
+        "L1941:S0"
+      ],
+      "interpretation": "Functions as a section subheading introducing the subsequent body text on exchange rate risk.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1942:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining IDA's foreign exchange risk from currency mismatches.",
+      "evidenceRefs": [
+        "L1942:S0"
+      ],
+      "interpretation": "Standard paragraph prose detailing risk exposure sources.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1943:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text listing currency denominations for loans, grants, and equity contributions.",
+      "evidenceRefs": [
+        "L1943:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose enumerating financial instruments.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1944:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing internal resources and expenditures denominated in various currencies.",
+      "evidenceRefs": [
+        "L1944:S0"
+      ],
+      "interpretation": "Standard paragraph prose continuing currency composition details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1945:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment concluding the description of USD-denominated portions.",
+      "evidenceRefs": [
+        "L1945:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose, not a structural element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1946:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining how exchange rate changes affect capital adequacy.",
+      "evidenceRefs": [
+        "L1946:S0"
+      ],
+      "interpretation": "Standard paragraph prose analyzing financial impacts.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1947:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text contrasting currency of equity supporting loans with risk exposure.",
+      "evidenceRefs": [
+        "L1947:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose detailing risk mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1948:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text stating the primary objective of currency risk management.",
+      "evidenceRefs": [
+        "L1948:S0"
+      ],
+      "interpretation": "Standard paragraph prose defining management goals.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1949:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing multi-currency balance sheet management approach.",
+      "evidenceRefs": [
+        "L1949:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose explaining operational methodology.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1950:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text listing SDR basket currencies and hedging methodology components.",
+      "evidenceRefs": [
+        "L1950:S0"
+      ],
+      "interpretation": "Standard paragraph prose detailing hedging scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1951:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text enumerating specific currency risks arising from settlements and debt.",
+      "evidenceRefs": [
+        "L1951:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose listing risk categories.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1952:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment completing the enumeration of hedged risk categories.",
+      "evidenceRefs": [
+        "L1952:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose, not a structural element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1953:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining how financial statement levels are affected by reported metrics.",
+      "evidenceRefs": [
+        "L1953:S0"
+      ],
+      "interpretation": "Standard paragraph prose discussing accounting effects.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1954:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing exchange rate movements relative to the reporting currency.",
+      "evidenceRefs": [
+        "L1954:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose detailing translation mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1955:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text classifying movements as currency translation adjustments.",
+      "evidenceRefs": [
+        "L1955:S0"
+      ],
+      "interpretation": "Standard paragraph prose defining accounting classifications.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L1956:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing revaluation adjustments for SDR-denominated assets and liabilities.",
+      "evidenceRefs": [
+        "L1956:S0"
+      ],
+      "interpretation": "Continuation of paragraph prose explaining adjustment types.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L1957:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer containing document title and page number positioned at margins.",
+      "evidenceRefs": [
+        "L1957:S0"
+      ],
+      "interpretation": "Operating as page furniture rather than establishing substantive structure here.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric string \"12\" on page 1.",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Reference number or metadata fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric string \"02\" on page 1.",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Reference number or metadata fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Alphabetic fragment \"tc\" on page 1.",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "OCR artifact or metadata fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single letter \"O\" on page 1.",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Fragment or symbol, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric string \"27\" on page 1.",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Reference number or metadata fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Symbol \"]\" on page 1.",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Punctuation or bracket fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single letter \"G\" on page 1.",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Fragment or symbol, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text \"L.\" on page 1.",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Abbreviation or metadata fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Alphabetic fragment \"sc\" on page 1.",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Metadata fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Symbol \"[\" on page 1.",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Punctuation or bracket fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Alphanumeric fragment \"4v\" on page 1.",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Metadata or reference code, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric string \"93\" on page 1.",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Reference number or metadata fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric string \"56\" on page 1.",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Reference number or metadata fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Text \"0.\" on page 1.",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Decimal or numbering fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric string \"10\" on page 1.",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Reference number or metadata fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric string \"91\" on page 1.",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Reference number or metadata fragment, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Alphanumeric fragment \":v\" on page 1.",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Metadata or reference code, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single letter \"i\" on page 1.",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Fragment or symbol, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Large font text on page 1 reading \"Xra Machine learningwith neural networks\".",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation " : "Main title of the document, presented prominently on the cover/front matter.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Author name \"BERNHARD MEHLIG\" on page 1.",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Administrative author attribution, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Affiliation \"Department ofPhysics\" on page 1.",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Organizational metadata, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Institution \"UNIVERSITYOF GOTHENBURG\" on page 1.",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Institutional metadata, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Location and year \"Göteborg, Sweden2021\" on page 1.",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Publication metadata, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title text \"Machine learningwith neural networks\" on page 3.",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Main title repeated at the beginning of the substantive text body.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Author name \"BERNHARD MEHLIG\" on page 3.",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Author attribution, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Affiliation \"Department ofPhysics\" on page 3.",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Organizational metadata, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Institution \"UniversityofGothenburg\" on page 3.",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Institutional metadata, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Location and year \"Göteborg, Sweden2021\" on page 3.",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Publication metadata, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "All-caps text \"ACKNOWLEDGEMENTS\" on page 5.",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Section heading introducing the acknowledgements region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0042:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0045:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0045:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0046:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0046:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0047:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence on page 5.",
+      "evidenceRefs": [
+        "L0047:S0"
+      ],
+      "interpretation": "Narrative text within the acknowledgements, not a structural heading.",
+      "missingEvidence": []
+    }
+  ]
+}

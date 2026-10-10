@@ -1,0 +1,389 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0684:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page header identifying the official gazette issue number and publication date.",
+      "evidenceRefs": [
+        "L0684:S0"
+      ],
+      "interpretation": "Functions as page furniture/gazette identifier, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0685:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing a numbered list item describing data connection methods.",
+      "evidenceRefs": [
+        "L0685:S0"
+      ],
+      "interpretation": "Ordinary body prose listing technical requirements, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0686:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation of the list item regarding national data infrastructure.",
+      "evidenceRefs": [
+        "L0686:S0"
+      ],
+      "interpretation": "Continues body prose describing system integration scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0687:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment naming the national digital architecture framework.",
+      "evidenceRefs": [
+        "L0687:S0"
+      ],
+      "interpretation": "Part of a sentence within body text, not a standalone heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0688:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text starting a new list item (b) on direct system connections.",
+      "evidenceRefs": [
+        "L0688:S0"
+      ],
+      "interpretation": "List item within body text detailing connection protocols.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0689:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation explaining conditions for direct connections.",
+      "evidenceRefs": [
+        "L0689:S0"
+      ],
+      "interpretation": "Ordinary body prose elaborating on list item b.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0690:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the condition for direct data sharing.",
+      "evidenceRefs": [
+        "L0690:S0"
+      ],
+      "interpretation": "Ends the sentence for list item b, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0691:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text beginning paragraph 5 referencing prior provisions.",
+      "evidenceRefs": [
+        "L0691:S0"
+      ],
+      "interpretation": "Numbered paragraph within body text, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0692:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation listing electronic government architecture components.",
+      "evidenceRefs": [
+        "L0692:S0"
+      ],
+      "interpretation": "Continues body prose defining architectural scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0693:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment completing the list of entities covered by the framework.",
+      "evidenceRefs": [
+        "L0693:S0"
+      ],
+      "interpretation": "Sentence fragment within body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0694:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text beginning paragraph 6 delegating regulatory authority.",
+      "evidenceRefs": [
+        "L0694:S0"
+      ],
+      "interpretation": "Numbered paragraph within body text assigning implementation rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0695:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment concluding the delegation clause.",
+      "evidenceRefs": [
+        "L0695:S0"
+      ],
+      "interpretation": "Ends paragraph 6, functioning as ordinary body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0696:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bolded article heading introducing 'Data open of state agencies'.",
+      "evidenceRefs": [
+        "L0696:S0"
+      ],
+      "interpretation": "Typographically distinct (boldRatio=1) and structurally formatted as a substantive article heading governing the following text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0697:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text beginning paragraph 1 defining open data.",
+      "evidenceRefs": [
+        "L0697:S0"
+      ],
+      "interpretation": "Numbered paragraph providing a legal definition, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0698:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation of the open data definition.",
+      "evidenceRefs": [
+        "L0698:S0"
+      ],
+      "interpretation": "Ordinary body prose extending the definition.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0699:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation regarding data disclosure purposes.",
+      "evidenceRefs": [
+        "L0699:S0"
+      ],
+      "interpretation": "Continues body text outlining agency obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0700:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation linking data use to digital transformation goals.",
+      "evidenceRefs": [
+        "L0700:S0"
+      ],
+      "interpretation": "Part of the definitional paragraph, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0701:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the first paragraph's purpose statement.",
+      "evidenceRefs": [
+        "L0701:S0"
+      ],
+      "interpretation": "Ends paragraph 1, serving as ordinary body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0702:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text beginning paragraph 2 on data integrity requirements.",
+      "evidenceRefs": [
+        "L0702:S0"
+      ],
+      "interpretation": "Numbered paragraph setting quality standards, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0703:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation specifying update and access conditions.",
+      "evidenceRefs": [
+        "L0703:S0"
+      ],
+      "interpretation": "Continues body prose detailing technical accessibility.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0704:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation on device compatibility and format compliance.",
+      "evidenceRefs": [
+        "L0704:S0"
+      ],
+      "interpretation": "Part of the integrity/access paragraph, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0705:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the format and fee requirements.",
+      "evidenceRefs": [
+        "L0705:S0"
+      ],
+      "interpretation": "Ends paragraph 2, serving as ordinary body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0706:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text beginning paragraph 3 on free access rights.",
+      "evidenceRefs": [
+        "L0706:S0"
+      ],
+      "interpretation": "Numbered paragraph granting usage rights, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0707:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the access provision regarding identification.",
+      "evidenceRefs": [
+        "L0707:S0"
+      ],
+      "interpretation": "Ends paragraph 3, functioning as ordinary body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0708:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text beginning paragraph 4 on copying and sharing permissions.",
+      "evidenceRefs": [
+        "L0708:S0"
+      ],
+      "interpretation": "Numbered paragraph detailing permitted uses, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0709:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation on combining data and commercial application.",
+      "evidenceRefs": [
+        "L0709:S0"
+      ],
+      "interpretation": "Continues body prose expanding on usage rights.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0710:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation noting statutory exceptions.",
+      "evidenceRefs": [
+        "L0710:S0"
+      ],
+      "interpretation": "Part of the permission clause, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0711:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the exception clause.",
+      "evidenceRefs": [
+        "L0711:S0"
+      ],
+      "interpretation": "Ends paragraph 4, serving as ordinary body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0712:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text beginning paragraph 5 on attribution requirements.",
+      "evidenceRefs": [
+        "L0712:S0"
+      ],
+      "interpretation": "Numbered paragraph imposing citation duties, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0713:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the attribution requirement.",
+      "evidenceRefs": [
+        "L0713:S0"
+      ],
+      "interpretation": "Ends paragraph 5, functioning as ordinary body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0714:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text beginning paragraph 6 on liability limitation.",
+      "evidenceRefs": [
+        "L0714:S0"
+      ],
+      "interpretation": "Numbered paragraph limiting state agency liability, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0715:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the liability disclaimer.",
+      "evidenceRefs": [
+        "L0715:S0"
+      ],
+      "interpretation": "Ends paragraph 6, serving as ordinary body prose.",
+      "missingEvidence": []
+    }
+  ]
+}

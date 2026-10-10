@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1049:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for use purposes.",
+      "evidenceRefs": [
+        "L1049:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1050:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for objects of service.",
+      "evidenceRefs": [
+        "L1050:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1051:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for cybersecurity requirements.",
+      "evidenceRefs": [
+        "L1051:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1052:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section heading introducing unit management details.",
+      "evidenceRefs": [
+        "L1052:S0"
+      ],
+      "interpretation": "Substantive heading marking a major division in the form/document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1053:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for unit name.",
+      "evidenceRefs": [
+        "L1053:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1054:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for establishment decision details.",
+      "evidenceRefs": [
+        "L1054:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1055:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for representative details.",
+      "evidenceRefs": [
+        "L1055:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1056:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for address.",
+      "evidenceRefs": [
+        "L1056:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1057:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for contact information.",
+      "evidenceRefs": [
+        "L1057:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1058:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section heading introducing unit operation details.",
+      "evidenceRefs": [
+        "L1058:S0"
+      ],
+      "interpretation": "Substantive heading marking a major division in the form/document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1059:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number indicator.",
+      "evidenceRefs": [
+        "L1059:S0"
+      ],
+      "interpretation": "Pagination marker, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1060:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for unit name.",
+      "evidenceRefs": [
+        "L1060:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1061:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for establishment decision details.",
+      "evidenceRefs": [
+        "L1061:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1062:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for representative details.",
+      "evidenceRefs": [
+        "L1062:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1063:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for address.",
+      "evidenceRefs": [
+        "L1063:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1064:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label prompting for contact information.",
+      "evidenceRefs": [
+        "L1064:S0"
+      ],
+      "interpretation": "Standardized form prompt, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1065:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "First line of a numbered section heading regarding conformity grounds.",
+      "evidenceRefs": [
+        "L1065:S0"
+      ],
+      "interpretation": "Contributes to a substantive heading dividing the document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1066:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Second line completing the section heading on conformity grounds.",
+      "evidenceRefs": [
+        "L1066:S0"
+      ],
+      "interpretation": "Completes the substantive heading introduced by the previous line.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1067:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered sub-item prompt referencing legal provisions.",
+      "evidenceRefs": [
+        "L1067:S0"
+      ],
+      "interpretation": "Instructional prompt within a form section, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1068:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the lettered sub-item prompt.",
+      "evidenceRefs": [
+        "L1068:S0"
+      ],
+      "interpretation": "Body text continuing the instructional prompt.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1069:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing parenthesis of the lettered sub-item prompt.",
+      "evidenceRefs": [
+        "L1069:S0"
+      ],
+      "interpretation": "Ends the instructional prompt sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1070:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered sub-item prompt referencing national information systems.",
+      "evidenceRefs": [
+        "L1070:S0"
+      ],
+      "interpretation": "Instructional prompt within a form section, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1071:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the lettered sub-item prompt.",
+      "evidenceRefs": [
+        "L1071:S0"
+      ],
+      "interpretation": "Body text continuing the instructional prompt.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1072:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the lettered sub-item prompt.",
+      "evidenceRefs": [
+        "L1072:S0"
+      ],
+      "interpretation": "Body text continuing the instructional prompt.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1073:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing parenthesis of the lettered sub-item prompt.",
+      "evidenceRefs": [
+        "L1073:S0"
+      ],
+      "interpretation": "Ends the instructional prompt sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1074:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered sub-item prompt regarding scope assessment.",
+      "evidenceRefs": [
+        "L1074:S0"
+      ],
+      "interpretation": "Instructional prompt within a form section, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1075:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Garbled continuation text of the scope assessment prompt.",
+      "evidenceRefs": [
+        "L1075:S0"
+      ],
+      "interpretation": "Corrupted or misparsed continuation of the instructional prompt.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1076:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered sub-item prompt describing physical structure.",
+      "evidenceRefs": [
+        "L1076:S0"
+      ],
+      "interpretation": "Instructional prompt within a form section, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1077:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the physical structure prompt.",
+      "evidenceRefs": [
+        "L1077:S0"
+      ],
+      "interpretation": "Body text continuing the instructional prompt.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1078:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing parenthesis of the physical structure prompt.",
+      "evidenceRefs": [
+        "L1078:S0"
+      ],
+      "interpretation": "Ends the instructional prompt sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1079:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered sub-item prompt describing logical structure.",
+      "evidenceRefs": [
+        "L1079:S0"
+      ],
+      "interpretation": "Instructional prompt within a form section, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1080:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the logical structure prompt.",
+      "evidenceRefs": [
+        "L1080:S0"
+      ],
+      "interpretation": "Body text continuing the instructional prompt.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1081:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing parenthesis of the logical structure prompt.",
+      "evidenceRefs": [
+        "L1081:S0"
+      ],
+      "interpretation": "Ends the instructional prompt sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1082:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered sub-item prompt listing device information.",
+      "evidenceRefs": [
+        "L1082:S0"
+      ],
+      "interpretation": "Instructional prompt within a form section, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1083:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the device list prompt.",
+      "evidenceRefs": [
+        "L1083:S0"
+      ],
+      "interpretation": "Body text continuing the instructional prompt.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1084:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing parenthesis of the device list prompt.",
+      "evidenceRefs": [
+        "L1084:S0"
+      ],
+      "interpretation": "Ends the instructional prompt sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1085:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered sub-item prompt listing application information.",
+      "evidenceRefs": [
+        "L1085:S0"
+      ],
+      "interpretation": "Instructional prompt within a form section, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1086:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the application list prompt.",
+      "evidenceRefs": [
+        "L1086:S0"
+      ],
+      "interpretation": "Body text continuing the instructional prompt.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1087:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing parenthesis of the application list prompt.",
+      "evidenceRefs": [
+        "L1087:S0"
+      ],
+      "interpretation": "Ends the instructional prompt sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1088:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered sub-item prompt listing network devices.",
+      "evidenceRefs": [
+        "L1088:S0"
+      ],
+      "interpretation": "Instructional prompt within a form section, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1089:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the network device prompt.",
+      "evidenceRefs": [
+        "L1089:S0"
+      ],
+      "interpretation": "Body text continuing the instructional prompt.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1090:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Closing parenthesis of the network device prompt.",
+      "evidenceRefs": [
+        "L1090:S0"
+      ],
+      "interpretation": "Ends the instructional prompt sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1091:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section heading regarding cyber security plans.",
+      "evidenceRefs": [
+        "L1091:S0"
+      ],
+      "interpretation": "Substantive heading marking a major division in the form/document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1092:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered sub-item prompt for managerial plan details.",
+      "evidenceRefs": [
+        "L1092:S0"
+      ],
+      "interpretation": "Instructional prompt within a form section, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1093:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the managerial plan prompt.",
+      "evidenceRefs": [
+        "L1093:S0"
+      ],
+      "interpretation": "Body text continuing the instructional prompt.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1094:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number indicator.",
+      "evidenceRefs": [
+        "L1094:S0"
+      ],
+      "interpretation": "Pagination marker, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L1095:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered sub-item prompt for technical plan details.",
+      "evidenceRefs": [
+        "L1095:S0"
+      ],
+      "interpretation": "Instructional prompt within a form section, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L1096:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of the technical plan prompt.",
+      "evidenceRefs": [
+        "L1096:S0"
+      ],
+      "interpretation": "Body text continuing the instructional prompt.",
+      "missingEvidence": []
+    }
+  ]
+}

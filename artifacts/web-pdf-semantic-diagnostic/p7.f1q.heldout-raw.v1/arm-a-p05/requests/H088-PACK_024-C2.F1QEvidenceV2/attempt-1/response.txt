@@ -1,0 +1,487 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L2098:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regulatory note fragment specifying scope limitation for refrigerant equipment.",
+      "evidenceRefs": ["L2098:S0"],
+      "interpretation": "Parenthetical scope restriction attached to a preceding tariff entry, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L2099:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Chemical identification text for CFC-12.",
+      "evidenceRefs": ["L2099:S0"],
+      "interpretation": "Descriptive body text providing IUPAC and chemical formula details within a tariff schedule row.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L2100:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Chemical formula completion.",
+      "evidenceRefs": ["L2100:S0"],
+      "interpretation": "Continuation of the chemical description sentence, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L2101:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional note referencing a catalog.",
+      "evidenceRefs": ["L2101:S0"],
+      "interpretation": "Administrative instruction directing readers to external reference material, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L2102:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Tariff heading code and partial product description.",
+      "evidenceRefs": ["L2102:S0"],
+      "interpretation": "Standard HS code row entry describing used parts, functioning as table content rather than a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L2103:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Product description continuation.",
+      "evidenceRefs": ["L2103:S0"],
+      "interpretation": "Sentence fragment extending the tariff description, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L2104:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Tariff cross-reference phrase.",
+      "evidenceRefs": ["L2104:S0"],
+      "interpretation": "Concluding clause linking to other HS headings, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L2105:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Combined chapter and heading identifier with product description.",
+      "evidenceRefs": ["L2105:S0"],
+      "interpretation": "Major section marker introducing Chapter 85 and heading 8507, establishing a substantive content region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L2106:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Product description continuation.",
+      "evidenceRefs": ["L2106:S0"],
+      "interpretation": "Wrapping clause for the accumulator description, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L2107:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "HS code number.",
+      "evidenceRefs": ["L2107:S0"],
+      "interpretation": "Numeric tariff code serving as a table cell value, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L2107:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-heading code digit.",
+      "evidenceRefs": ["L2107:S1"],
+      "interpretation": "Numeric suffix for the tariff classification, functioning as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L2107:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Product specification text.",
+      "evidenceRefs": ["L2107:S2"],
+      "interpretation": "Descriptive classifier for lead-acid accumulators, functioning as table content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L2108:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "HS code number.",
+      "evidenceRefs": ["L2108:S0"],
+      "interpretation": "Numeric tariff code for a subsequent entry, functioning as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L2108:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-heading code digit.",
+      "evidenceRefs": ["L2108:S1"],
+      "interpretation": "Numeric suffix for the tariff classification, functioning as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L2108:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Product specification text.",
+      "evidenceRefs": ["L2108:S2"],
+      "interpretation": "Descriptive classifier for other lead-acid accumulators, functioning as table content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L2109:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bolded appendix identifier.",
+      "evidenceRefs": ["L2109:S0"],
+      "interpretation": "Structural marker introducing Appendix VII, establishing a new document section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L2110:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "First line of a multi-line appendix title.",
+      "evidenceRefs": ["L2110:S0"],
+      "interpretation": "Title component naming the frozen food list, contributing to the section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L2111:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Second line completing the appendix title.",
+      "evidenceRefs": ["L2111:S0"],
+      "interpretation": "Title component completing the temporary importation conditions phrase, contributing to the section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L2112:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal citation fragment.",
+      "evidenceRefs": ["L2112:S0"],
+      "interpretation": "Parenthetical decree reference providing administrative provenance, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L2113:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal citation date fragment.",
+      "evidenceRefs": ["L2113:S0"],
+      "interpretation": "Closing date of the decree citation, functioning as metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L2114:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered regulatory rule.",
+      "evidenceRefs": ["L2114:S0"],
+      "interpretation": "Scope limitation rule for the appendix, functioning as instructional body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L2115:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Rule continuation fragment.",
+      "evidenceRefs": ["L2115:S0"],
+      "interpretation": "Completing the exclusion list in the numbered rule, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L2116:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered regulatory rule.",
+      "evidenceRefs": ["L2116:S0"],
+      "interpretation": "Application rule for chapter-level codes, functioning as instructional body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L2117:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered regulatory rule.",
+      "evidenceRefs": ["L2117:S0"],
+      "interpretation": "Clarification rule for detailed 8-digit codes, functioning as instructional body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L2118:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header.",
+      "evidenceRefs": ["L2118:S0"],
+      "interpretation": "Label for the data columns in the tariff schedule table, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L2119:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter identifier.",
+      "evidenceRefs": ["L2119:S0"],
+      "interpretation": "Section marker introducing Chapter 02, establishing a substantive content region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L2119:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Product category description.",
+      "evidenceRefs": ["L2119:S1"],
+      "interpretation": "Descriptive text accompanying the chapter code, functioning as table content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L2120:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter identifier.",
+      "evidenceRefs": ["L2120:S0"],
+      "interpretation": "Section marker introducing Chapter 03, establishing a substantive content region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L2120:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Product category description.",
+      "evidenceRefs": ["L2120:S1"],
+      "interpretation": "Descriptive text accompanying the chapter code, functioning as table content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L2121:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter identifier.",
+      "evidenceRefs": ["L2121:S0"],
+      "interpretation": "Section marker introducing Chapter 05, establishing a substantive content region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L2121:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Product category description.",
+      "evidenceRefs": ["L2121:S1"],
+      "interpretation": "Descriptive text accompanying the chapter code, functioning as table content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L2122:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "HS code number.",
+      "evidenceRefs": ["L2122:S0"],
+      "interpretation": "Numeric tariff code for a specific sub-heading, functioning as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L2122:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-heading code digit.",
+      "evidenceRefs": ["L2122:S1"],
+      "interpretation": "Numeric suffix for the tariff classification, functioning as table data.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L2122:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Product specification text.",
+      "evidenceRefs": ["L2122:S2"],
+      "interpretation": "Descriptive classifier for animal guts and bladders, functioning as table content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L2123:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Product specification continuation.",
+      "evidenceRefs": ["L2123:S0"],
+      "interpretation": "Sentence fragment extending the product description, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L2124:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Product specification completion.",
+      "evidenceRefs": ["L2124:S0"],
+      "interpretation": "Concluding processing state term for the product description, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L2125:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bolded appendix identifier.",
+      "evidenceRefs": ["L2125:S0"],
+      "interpretation": "Structural marker introducing Appendix VIII, establishing a new document section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L2126:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "First line of a multi-line appendix title.",
+      "evidenceRefs": ["L2126:S0"],
+      "interpretation": "Title component naming the excise duty goods list, contributing to the section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L2127:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Second line completing the appendix title.",
+      "evidenceRefs": ["L2127:S0"],
+      "interpretation": "Title component completing the temporary importation conditions phrase, contributing to the section heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L2128:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal citation fragment.",
+      "evidenceRefs": ["L2128:S0"],
+      "interpretation": "Parenthetical decree reference providing administrative provenance, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L2129:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal citation date fragment.",
+      "evidenceRefs": ["L2129:S0"],
+      "interpretation": "Closing date of the decree citation, functioning as metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L2130:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered regulatory rule.",
+      "evidenceRefs": ["L2130:S0"],
+      "interpretation": "Application rule for 4-digit HS codes, functioning as instructional body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L2131:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Rule continuation fragment.",
+      "evidenceRefs": ["L2131:S0"],
+      "interpretation": "Completing the code application instruction, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L2132:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header.",
+      "evidenceRefs": ["L2132:S0"],
+      "interpretation": "Label for the data columns in the tariff schedule table, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L2133:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Combined chapter and heading identifier.",
+      "evidenceRefs": ["L2133:S0"],
+      "interpretation": "Section marker introducing Chapter 22 and heading 2203, establishing a substantive content region.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L2133:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Product category description.",
+      "evidenceRefs": ["L2133:S1"],
+      "interpretation": "Descriptive text accompanying the heading code, functioning as table content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L2134:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Product specification text.",
+      "evidenceRefs": ["L2134:S0"],
+      "interpretation": "Descriptive classifier for wine products, functioning as table content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L2135:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "HS code number.",
+      "evidenceRefs": ["L2135:S0"],
+      "interpretation": "Numeric tariff code for a subsequent heading, functioning as table data.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

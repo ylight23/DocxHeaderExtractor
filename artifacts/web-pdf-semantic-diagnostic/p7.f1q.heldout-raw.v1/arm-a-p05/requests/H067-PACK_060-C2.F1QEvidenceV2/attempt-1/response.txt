@@ -1,0 +1,557 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L4893:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry containing conference name, pages, publisher, and year.",
+      "evidenceRefs": [
+        "L4893:S0"
+      ],
+      "interpretation": "Text functions as a citation detail in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L4894:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and partial article title.",
+      "evidenceRefs": [
+        "L4894:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L4895:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic reference entry describing a conference proceeding.",
+      "evidenceRefs": [
+        "L4895:S0"
+      ],
+      "interpretation": "Text functions as a citation continuation in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L4896:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with conference name, pages, and year.",
+      "evidenceRefs": [
+        "L4896:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L4897:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing author and journal/article title.",
+      "evidenceRefs": [
+        "L4897:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L4898:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with journal volume, pages, and year.",
+      "evidenceRefs": [
+        "L4898:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L4899:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and book/chapter title.",
+      "evidenceRefs": [
+        "L4899:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L4900:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with journal name, volume, pages, and year.",
+      "evidenceRefs": [
+        "L4900:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L4901:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '119' centered in footer/margin area.",
+      "evidenceRefs": [
+        "L4901:S0"
+      ],
+      "interpretation": "Text functions as a page marker, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L4902:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing author and conference title.",
+      "evidenceRefs": [
+        "L4902:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L4903:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with conference details, pages, publisher, and year.",
+      "evidenceRefs": [
+        "L4903:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L4904:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and book title.",
+      "evidenceRefs": [
+        "L4904:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L4905:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with publisher and year.",
+      "evidenceRefs": [
+        "L4905:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L4906:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and journal title.",
+      "evidenceRefs": [
+        "L4906:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L4907:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with journal volume, pages, and year.",
+      "evidenceRefs": [
+        "L4907:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L4908:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and paper title.",
+      "evidenceRefs": [
+        "L4908:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L4909:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with conference acronym, volume, pages, publisher, and year.",
+      "evidenceRefs": [
+        "L4909:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L4910:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing author and journal title.",
+      "evidenceRefs": [
+        "L4910:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L4911:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with journal volume, pages, and year.",
+      "evidenceRefs": [
+        "L4911:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L4912:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing author and journal title.",
+      "evidenceRefs": [
+        "L4912:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L4913:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with journal volume, pages, and year.",
+      "evidenceRefs": [
+        "L4913:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L4914:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing author and book title.",
+      "evidenceRefs": [
+        "L4914:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L4915:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with publisher and year.",
+      "evidenceRefs": [
+        "L4915:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L4916:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and corpus name with URL.",
+      "evidenceRefs": [
+        "L4916:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L4917:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with URL path and access date.",
+      "evidenceRefs": [
+        "L4917:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L4918:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing author, course title, and URL.",
+      "evidenceRefs": [
+        "L4918:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L4919:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with URL path and access date.",
+      "evidenceRefs": [
+        "L4919:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L4920:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and paper title.",
+      "evidenceRefs": [
+        "L4920:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L4921:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry continuing conference proceedings description.",
+      "evidenceRefs": [
+        "L4921:S0"
+      ],
+      "interpretation": "Text functions as a citation continuation in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L4922:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with conference name, pages, publisher, and year.",
+      "evidenceRefs": [
+        "L4922:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L4923:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and paper title.",
+      "evidenceRefs": [
+        "L4923:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L4924:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with conference name, pages, and publisher.",
+      "evidenceRefs": [
+        "L4924:S0"
+      ],
+      "interpretation": "Text functions as a citation continuation in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L4925:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with year.",
+      "evidenceRefs": [
+        "L4925:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L4926:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and journal title.",
+      "evidenceRefs": [
+        "L4926:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L4927:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with journal abbreviation, volume, pages, and year.",
+      "evidenceRefs": [
+        "L4927:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L4928:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing author, title, report type, and year.",
+      "evidenceRefs": [
+        "L4928:S0"
+      ],
+      "interpretation": "Text functions as a citation in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L4929:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and paper title.",
+      "evidenceRefs": [
+        "L4929:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L4930:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry continuing conference proceedings description.",
+      "evidenceRefs": [
+        "L4930:S0"
+      ],
+      "interpretation": "Text functions as a citation continuation in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L4931:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with symposium name, pages, and year.",
+      "evidenceRefs": [
+        "L4931:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L4932:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and paper title.",
+      "evidenceRefs": [
+        "L4932:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L4933:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing editors and book/symposium title.",
+      "evidenceRefs": [
+        "L4933:S0"
+      ],
+      "interpretation": "Text functions as a citation continuation in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L4934:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with pages, location, year, and publisher.",
+      "evidenceRefs": [
+        "L4934:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L4935:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and book title.",
+      "evidenceRefs": [
+        "L4935:S0"
+      ],
+      "interpretation": "Text functions as a citation start in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L4936:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry continuing book chapter title and URL.",
+      "evidenceRefs": [
+        "L4936:S0"
+      ],
+      "interpretation": "Text functions as a citation continuation in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L4937:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry concluding with URL path and publisher.",
+      "evidenceRefs": [
+        "L4937:S0"
+      ],
+      "interpretation": "Text functions as a citation end in a reference list, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L4938:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '120' centered in footer/margin area.",
+      "evidenceRefs": [
+        "L4938:S0"
+      ],
+      "interpretation": "Text functions as a page marker, not a structural heading.",
+      "missingEvidence": []
+    }
+  ]
+}

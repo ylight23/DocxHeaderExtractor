@@ -1,0 +1,425 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0112:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a chapter heading with its target page number.",
+      "evidenceRefs": [
+        "L0112:S0"
+      ],
+      "interpretation": "Functions as a navigation index pointing to a heading on page 67, not establishing structure here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0113:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an introduction section with its target page number.",
+      "evidenceRefs": [
+        "L0113:S0"
+      ],
+      "interpretation": "Points to introduction headings on multiple pages; serves as a navigational list item here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0114:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a subsection heading with its target page number.",
+      "evidenceRefs": [
+        "L0114:S0"
+      ],
+      "interpretation": "Navigational reference to a subsection on page 67, not a structural heading at this location.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0115:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a subsection heading with its target page number.",
+      "evidenceRefs": [
+        "L0115:S0"
+      ],
+      "interpretation": "Points to a subsection on page 67; operates as a directory entry here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0116:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an assessment section with its target page number.",
+      "evidenceRefs": [
+        "L0116:S0"
+      ],
+      "interpretation": "Lists a recurring section type; functions as a navigational pointer, not a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0117:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an endnotes section with its target page number.",
+      "evidenceRefs": [
+        "L0117:S0"
+      ],
+      "interpretation": "Directory entry pointing to endnotes on page 67; represents structure elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0118:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a chapter heading with its target page number.",
+      "evidenceRefs": [
+        "L0118:S0"
+      ],
+      "interpretation": "Points to chapter 7 start on page 79; serves as a TOC navigation item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0119:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an introduction section with its target page number.",
+      "evidenceRefs": [
+        "L0119:S0"
+      ],
+      "interpretation": "Navigational pointer to introduction on page 79; acts as a directory entry here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0120:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a subsection heading with its target page number.",
+      "evidenceRefs": [
+        "L0120:S0"
+      ],
+      "interpretation": "References a subsection on page 79; functions as a TOC list item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0121:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a subsection heading with its target page number.",
+      "evidenceRefs": [
+        "L0121:S0"
+      ],
+      "interpretation": "Points to a subsection on page 79; operates as a navigational index entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0122:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a subsection heading with its target page number.",
+      "evidenceRefs": [
+        "L0122:S0"
+      ],
+      "interpretation": "Directory reference to a subsection on page 79; represents structure elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0123:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an assessment section with its target page number.",
+      "evidenceRefs": [
+        "L0123:S0"
+      ],
+      "interpretation": "Lists a recurring section; functions as a navigational pointer, not a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0124:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an endnotes section with its target page number.",
+      "evidenceRefs": [
+        "L0124:S0"
+      ],
+      "interpretation": "Points to endnotes on page 76; serves as a TOC directory entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0125:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a chapter heading with its target page number.",
+      "evidenceRefs": [
+        "L0125:S0"
+      ],
+      "interpretation": "References chapter 8 start on page 87; acts as a navigational index item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0126:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an introduction section with its target page number.",
+      "evidenceRefs": [
+        "L0126:S0"
+      ],
+      "interpretation": "Points to introduction on page 87; functions as a directory entry here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0127:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a subsection heading with its target page number.",
+      "evidenceRefs": [
+        "L0127:S0"
+      ],
+      "interpretation": "References a subsection on page 87; serves as a TOC navigation item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0128:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a subsection heading with its target page number.",
+      "evidenceRefs": [
+        "L0128:S0"
+      ],
+      "interpretation": "Points to a subsection on page 87; operates as a navigational index entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0129:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an assessment section with its target page number.",
+      "evidenceRefs": [
+        "L0129:S0"
+      ],
+      "interpretation": "Lists a recurring section; functions as a navigational pointer, not a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0130:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an endnotes section with its target page number.",
+      "evidenceRefs": [
+        "L0130:S0"
+      ],
+      "interpretation": "Points to endnotes on page 86; serves as a TOC directory entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0131:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a chapter heading with its target page number.",
+      "evidenceRefs": [
+        "L0131:S0"
+      ],
+      "interpretation": "References chapter 9 start on page 97; acts as a navigational index item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0132:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an introduction section with its target page number.",
+      "evidenceRefs": [
+        "L0132:S0"
+      ],
+      "interpretation": "Points to introduction on page 97; functions as a directory entry here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0133:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a subsection heading with its target page number.",
+      "evidenceRefs": [
+        "L0133:S0"
+      ],
+      "interpretation": "References a subsection on page 97; serves as a TOC navigation item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0134:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a subsection heading with its target page number.",
+      "evidenceRefs": [
+        "L0134:S0"
+      ],
+      "interpretation": "Points to a subsection on page 97; operates as a navigational index entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0135:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a subsection heading with its target page number.",
+      "evidenceRefs": [
+        "L0135:S0"
+      ],
+      "interpretation": "References a subsection on page 97; serves as a TOC navigation item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0136:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an assessment section with its target page number.",
+      "evidenceRefs": [
+        "L0136:S0"
+      ],
+      "interpretation": "Lists a recurring section; functions as a navigational pointer, not a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0137:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an endnotes section with its target page number.",
+      "evidenceRefs": [
+        "L0137:S0"
+      ],
+      "interpretation": "Points to endnotes on page 100; serves as a TOC directory entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0138:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a chapter heading with its target page number.",
+      "evidenceRefs": [
+        "L0138:S0"
+      ],
+      "interpretation": "References chapter 10 start on page 111; acts as a navigational index item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0139:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an introduction section with its target page number.",
+      "evidenceRefs": [
+        "L0139:S0"
+      ],
+      "interpretation": "Points to introduction on page 111; functions as a directory entry here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0140:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a subsection heading with its target page number.",
+      "evidenceRefs": [
+        "L0140:S0"
+      ],
+      "interpretation": "References a subsection on page 111; serves as a TOC navigation item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0141:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a subsection heading with its target page number.",
+      "evidenceRefs": [
+        "L0141:S0"
+      ],
+      "interpretation": "Points to a subsection on page 111; operates as a navigational index entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0142:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an assessment section with its target page number.",
+      "evidenceRefs": [
+        "L0142:S0"
+      ],
+      "interpretation": "Lists a recurring section; functions as a navigational pointer, not a heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0143:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an endnotes section with its target page number.",
+      "evidenceRefs": [
+        "L0143:S0"
+      ],
+      "interpretation": "Points to endnotes on page 107; serves as a TOC directory entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0144:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing a chapter heading with its target page number.",
+      "evidenceRefs": [
+        "L0144:S0"
+      ],
+      "interpretation": "References chapter 11 start on page 119; acts as a navigational index item.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0145:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing an introduction section with its target page number.",
+      "evidenceRefs": [
+        "L0145:S0"
+      ],
+      "interpretation": "Points to introduction on page 119; functions as a directory entry here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0138:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Publisher access notice repeated across pages as footer/header metadata.",
+      "evidenceRefs": [
+        "L0138:S0"
+      ],
+      "interpretation": "Administrative distribution text providing open-access information, not a document heading.",
+      "missingEvidence": []
+    }
+  ]
+}

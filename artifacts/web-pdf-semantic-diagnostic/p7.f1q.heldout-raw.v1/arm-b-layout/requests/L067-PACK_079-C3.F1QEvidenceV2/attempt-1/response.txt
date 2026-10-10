@@ -1,0 +1,497 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L4861:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors, title, and publication details.",
+      "evidenceRefs": [
+        "L4861:S0"
+      ],
+      "interpretation": "The text follows standard academic citation format, serving as a reference list item rather than a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L4862:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a bibliographic reference entry with venue and page numbers.",
+      "evidenceRefs": [
+        "L4862:S0"
+      ],
+      "interpretation": "Italicized font indicates journal/conference proceedings title within a citation, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L4863:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Publisher and year for a bibliographic reference.",
+      "evidenceRefs": [
+        "L4863:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L4864:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and article title.",
+      "evidenceRefs": [
+        "L4864:S0"
+      ],
+      "interpretation": "Numbered citation format continues the bibliography list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L4865:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Journal name, volume, issue, pages, and year for a reference.",
+      "evidenceRefs": [
+        "L4865:S0"
+      ],
+      "interpretation": "Standard citation metadata, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L4866:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and query processing topic.",
+      "evidenceRefs": [
+        "L4866:S0"
+      ],
+      "interpretation": "Continues numbered bibliography list with author and title information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L4867:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conference proceedings title and year for a reference.",
+      "evidenceRefs": [
+        "L4867:S0"
+      ],
+      "interpretation": "Italicized conference name within a citation block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L4868:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page range and year concluding a bibliographic reference.",
+      "evidenceRefs": [
+        "L4868:S0"
+      ],
+      "interpretation": "Standard citation continuation, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L4869:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and algorithm symposium.",
+      "evidenceRefs": [
+        "L4869:S0"
+      ],
+      "interpretation": "Numbered citation format continues the bibliography list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L4870:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page range and publisher for a reference.",
+      "evidenceRefs": [
+        "L4870:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L4871:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and bitmap algorithms topic.",
+      "evidenceRefs": [
+        "L4871:S0"
+      ],
+      "interpretation": "Continues numbered bibliography list with author and title information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L4872:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conference proceedings title for a reference.",
+      "evidenceRefs": [
+        "L4872:S0"
+      ],
+      "interpretation": "Italicized conference name within a citation block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L4873:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page range and year concluding a bibliographic reference.",
+      "evidenceRefs": [
+        "L4873:S0"
+      ],
+      "interpretation": "Standard citation continuation, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L4874:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and data structures topic.",
+      "evidenceRefs": [
+        "L4874:S0"
+      ],
+      "interpretation": "Numbered citation format continues the bibliography list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L4875:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Symposium name, page range, publisher, and year for a reference.",
+      "evidenceRefs": [
+        "L4875:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L4876:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and Hyperloglog topic.",
+      "evidenceRefs": [
+        "L4876:S0"
+      ],
+      "interpretation": "Continues numbered bibliography list with author and title information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L4877:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Journal name for a reference.",
+      "evidenceRefs": [
+        "L4877:S0"
+      ],
+      "interpretation": "Standard citation continuation within a bibliography.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L4878:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page range, journal name repetition, and year for a reference.",
+      "evidenceRefs": [
+        "L4878:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L4879:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and probabilistic counting topic.",
+      "evidenceRefs": [
+        "L4879:S0"
+      ],
+      "interpretation": "Numbered citation format continues the bibliography list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L4880:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Symposium name, page range, publisher, and year for a reference.",
+      "evidenceRefs": [
+        "L4880:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L4881:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing author and incompressibility topic.",
+      "evidenceRefs": [
+        "L4881:S0"
+      ],
+      "interpretation": "Continues numbered bibliography list with author and title information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L4882:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Journal volume, issue, pages, and year for a reference.",
+      "evidenceRefs": [
+        "L4882:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L4883:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing author, course title, and URL.",
+      "evidenceRefs": [
+        "L4883:S0"
+      ],
+      "interpretation": "Numbered citation format continues the bibliography list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L4884:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Access date for an online reference.",
+      "evidenceRefs": [
+        "L4884:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a web reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L4885:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing author, bloom filters topic, and journal.",
+      "evidenceRefs": [
+        "L4885:S0"
+      ],
+      "interpretation": "Continues numbered bibliography list with author and title information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L4886:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and entropy-compressed indexes topic.",
+      "evidenceRefs": [
+        "L4886:S0"
+      ],
+      "interpretation": "Numbered citation format continues the bibliography list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L4887:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conference proceedings title for a reference.",
+      "evidenceRefs": [
+        "L4887:S0"
+      ],
+      "interpretation": "Italicized conference name within a citation block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L4888:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conference acronym, page range, country, year, and publisher for a reference.",
+      "evidenceRefs": [
+        "L4888:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L4889:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing author, Morris's algorithm topic, and URL.",
+      "evidenceRefs": [
+        "L4889:S0"
+      ],
+      "interpretation": "Continues numbered bibliography list with author and title information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L4890:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Full URL path and access date for an online reference.",
+      "evidenceRefs": [
+        "L4890:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a web reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L4891:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and pattern matching topic.",
+      "evidenceRefs": [
+        "L4891:S0"
+      ],
+      "interpretation": "Numbered citation format continues the bibliography list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L4892:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conference name for a reference.",
+      "evidenceRefs": [
+        "L4892:S0"
+      ],
+      "interpretation": "Standard citation continuation within a bibliography.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L4893:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conference acronym, page range, publisher, and year for a reference.",
+      "evidenceRefs": [
+        "L4893:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L4894:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and Hyperloglog practice topic.",
+      "evidenceRefs": [
+        "L4894:S0"
+      ],
+      "interpretation": "Continues numbered bibliography list with author and title information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L4895:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conference name for a reference.",
+      "evidenceRefs": [
+        "L4895:S0"
+      ],
+      "interpretation": "Standard citation continuation within a bibliography.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L4896:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conference acronym, page range, and year for a reference.",
+      "evidenceRefs": [
+        "L4896:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L4897:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing author and hash functions topic.",
+      "evidenceRefs": [
+        "L4897:S0"
+      ],
+      "interpretation": "Numbered citation format continues the bibliography list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L4898:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Journal name, volume, issue, pages, and year for a reference.",
+      "evidenceRefs": [
+        "L4898:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L4899:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bibliographic reference entry listing authors and Lipschitz maps topic.",
+      "evidenceRefs": [
+        "L4899:S0"
+      ],
+      "interpretation": "Continues numbered bibliography list with author and title information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L4900:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Journal name, volume, issue, pages, and year for a reference.",
+      "evidenceRefs": [
+        "L4900:S0"
+      ],
+      "interpretation": "Standard citation metadata concluding a reference entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L4901:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number footer.",
+      "evidenceRefs": [
+        "L4901:S0"
+      ],
+      "interpretation": "Centered numeric value at bottom of page serves as pagination, not a heading.",
+      "missingEvidence": []
+    }
+  ]
+}

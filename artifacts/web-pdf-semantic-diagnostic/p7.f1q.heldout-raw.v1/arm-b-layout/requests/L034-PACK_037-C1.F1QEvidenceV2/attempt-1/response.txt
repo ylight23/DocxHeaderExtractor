@@ -1,0 +1,571 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L2454:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading identifying the Bidding Forms section",
+      "evidenceRefs": [
+        "L2454:S0"
+      ],
+      "interpretation": "Names the document section containing bidding forms.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L2454:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number indicating current page position",
+      "evidenceRefs": [
+        "L2454:S1"
+      ],
+      "interpretation": "Standard sequential page numbering.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L2455:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2455:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L2455:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2455:S1"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L2455:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2455:S2"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L2455:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2455:S3"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L2456:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2456:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L2456:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2456:S1"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L2456:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2456:S2"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L2457:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2457:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L2457:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2457:S1"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L2458:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2458:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L2459:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2459:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L2460:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2460:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L2461:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2461:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L2462:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2462:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L2463:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label with fill-in blank",
+      "evidenceRefs": [
+        "L2463:S0"
+      ],
+      "interpretation": "Instructional label for a data entry field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L2464:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label with fill-in blank",
+      "evidenceRefs": [
+        "L2464:S0"
+      ],
+      "interpretation": "Instructional label for a data entry field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L2465:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label with fill-in blank",
+      "evidenceRefs": [
+        "L2465:S0"
+      ],
+      "interpretation": "Instructional label for a data entry field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L2466:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label with fill-in blank",
+      "evidenceRefs": [
+        "L2466:S0"
+      ],
+      "interpretation": "Instructional label for a data entry field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L2467:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label with fill-in blank",
+      "evidenceRefs": [
+        "L2467:S0"
+      ],
+      "interpretation": "Instructional label for a data entry field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L2468:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label with fill-in blank",
+      "evidenceRefs": [
+        "L2468:S0"
+      ],
+      "interpretation": "Instructional label for a data entry field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L2469:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label",
+      "evidenceRefs": [
+        "L2469:S0"
+      ],
+      "interpretation": "Instructional label for a data entry field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L2470:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label",
+      "evidenceRefs": [
+        "L2470:S0"
+      ],
+      "interpretation": "Instructional label for a data entry field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L2471:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label",
+      "evidenceRefs": [
+        "L2471:S0"
+      ],
+      "interpretation": "Instructional label for a data entry field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L2472:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label",
+      "evidenceRefs": [
+        "L2472:S0"
+      ],
+      "interpretation": "Instructional label for a data entry field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L2473:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label",
+      "evidenceRefs": [
+        "L2473:S0"
+      ],
+      "interpretation": "Instructional label for a data entry field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L2474:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label",
+      "evidenceRefs": [
+        "L2474:S0"
+      ],
+      "interpretation": "Instructional label for a data entry field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L2475:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form section instruction referencing external criteria",
+      "evidenceRefs": [
+        "L2475:S0"
+      ],
+      "interpretation": "Guidance text for completing the litigation history checklist.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L2476:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bullet symbol for checklist item",
+      "evidenceRefs": [
+        "L2476:S0"
+      ],
+      "interpretation": "Visual marker for a selectable option.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L2476:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Checkbox option text",
+      "evidenceRefs": [
+        "L2476:S1"
+      ],
+      "interpretation": "Selectable statement for the checklist.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L2477:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of checkbox option text",
+      "evidenceRefs": [
+        "L2477:S0"
+      ],
+      "interpretation": "Completes the selectable statement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L2478:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bullet symbol for checklist item",
+      "evidenceRefs": [
+        "L2478:S0"
+      ],
+      "interpretation": "Visual marker for a selectable option.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L2478:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Checkbox option text",
+      "evidenceRefs": [
+        "L2478:S1"
+      ],
+      "interpretation": "Selectable statement for the checklist.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L2479:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of checkbox option text",
+      "evidenceRefs": [
+        "L2479:S0"
+      ],
+      "interpretation": "Completes the selectable statement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L2480:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2480:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L2480:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2480:S1"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L2480:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2480:S2"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L2480:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2480:S3"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L2481:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2481:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L2481:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2481:S1"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L2481:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2481:S2"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L2482:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2482:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L2482:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2482:S1"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L2483:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2483:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L2484:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2484:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L2485:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header label",
+      "evidenceRefs": [
+        "L2485:S0"
+      ],
+      "interpretation": "Label for a form table column.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

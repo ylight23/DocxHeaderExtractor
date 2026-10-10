@@ -1,0 +1,307 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L1353:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header/footer containing publication name, issue number, date, and page number.",
+      "evidenceRefs": ["L1353:S0"],
+      "interpretation": "Standard page furniture identifying the official gazette issue and page, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L1354:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a numbered paragraph detailing administrative responsibilities regarding land recovery.",
+      "evidenceRefs": ["L1354:S0"],
+      "interpretation": "Body prose continuing a regulatory provision, formatted as standard paragraph text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L1355:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of a numbered paragraph referencing legal provisions.",
+      "evidenceRefs": ["L1355:S0"],
+      "interpretation": "Body prose completing a regulatory clause, maintaining standard paragraph formatting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L1356:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold, centered chapter identifier 'Chương IV' marking a major structural division.",
+      "evidenceRefs": ["L1356:S0"],
+      "interpretation": "Chapter heading establishing a new major section of the document, distinguished by bold typography and central alignment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L1357:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold, uppercase chapter title describing the scope of the following regulations.",
+      "evidenceRefs": ["L1357:S0"],
+      "interpretation": "Substantive chapter heading providing the thematic title for Chapter IV, formatted in bold uppercase to signal structural importance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L1358:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold section identifier 'Mục 1' introducing the first subsection.",
+      "evidenceRefs": ["L1358:S0"],
+      "interpretation": "Section heading establishing the first subsection within the chapter, marked by bold typography and distinct placement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L1359:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold, uppercase section title outlining the specific topics covered in the subsection.",
+      "evidenceRefs": ["L1359:S0"],
+      "interpretation": "Substantive section heading defining the scope of Mục 1, formatted in bold uppercase to denote structural hierarchy.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L1360:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold article heading 'Điều 49. Địa giới đơn vị hành chính' introducing a specific legal provision.",
+      "evidenceRefs": ["L1360:S0"],
+      "interpretation": "Article heading establishing a discrete regulatory unit, distinguished by bold typeface and explicit numbering.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L1361:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph 1 detailing the establishment of administrative boundaries.",
+      "evidenceRefs": ["L1361:S0"],
+      "interpretation": "Body text implementing the article's directive, presented in standard non-bold paragraph format.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L1362:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1 describing boundary dossier information.",
+      "evidenceRefs": ["L1362:S0"],
+      "interpretation": "Body prose elaborating on administrative boundary documentation, maintaining standard paragraph styling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L1363:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 1 listing boundary markers and lines.",
+      "evidenceRefs": ["L1363:S0"],
+      "interpretation": "Body prose completing the description of boundary dossier contents, formatted as standard text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L1364:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of paragraph 1.",
+      "evidenceRefs": ["L1364:S0"],
+      "interpretation": "Body prose finalizing the first paragraph's regulatory statement, consistent with standard paragraph layout.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L1365:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph 2 assigning guidance responsibilities to provincial authorities.",
+      "evidenceRefs": ["L1365:S0"],
+      "interpretation": "Body text introducing the second paragraph's procedural rules, displayed in standard non-bold format.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L1366:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2 specifying supervisory roles.",
+      "evidenceRefs": ["L1366:S0"],
+      "interpretation": "Body prose detailing hierarchical oversight for boundary determination, maintaining standard paragraph styling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L1367:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 2 regarding lower-level authority duties.",
+      "evidenceRefs": ["L1367:S0"],
+      "interpretation": "Body prose extending the regulatory chain of command, formatted as standard text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L1368:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of paragraph 2 on field verification and dossier preparation.",
+      "evidenceRefs": ["L1368:S0"],
+      "interpretation": "Body prose completing the second paragraph's operational instructions, consistent with standard paragraph layout.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L1369:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph 3 defining land management scope on land borders.",
+      "evidenceRefs": ["L1369:S0"],
+      "interpretation": "Body text introducing the third paragraph's territorial scope definition, presented in standard non-bold format.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L1370:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of paragraph 3 referencing legal regulations.",
+      "evidenceRefs": ["L1370:S0"],
+      "interpretation": "Body prose finalizing the third paragraph's legal basis, maintaining standard paragraph styling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L1371:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph 4 addressing unresolved provincial land management scopes.",
+      "evidenceRefs": ["L1371:S0"],
+      "interpretation": "Body text introducing the fourth paragraph's contingency procedures, displayed in standard non-bold format.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L1372:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 4 assigning coordination roles to the Ministry of Internal Affairs.",
+      "evidenceRefs": ["L1372:S0"],
+      "interpretation": "Body prose detailing inter-ministerial coordination for unresolved boundaries, consistent with standard paragraph layout.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L1373:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 4 involving environmental ministry and localities.",
+      "evidenceRefs": ["L1373:S0"],
+      "interpretation": "Body prose extending the coordination mandate, formatted as standard text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L1374:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of paragraph 4 regarding government submission.",
+      "evidenceRefs": ["L1374:S0"],
+      "interpretation": "Body prose completing the fourth paragraph's procedural step, maintaining standard paragraph styling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L1375:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph 5 addressing unresolved district and commune land scopes.",
+      "evidenceRefs": ["L1375:S0"],
+      "interpretation": "Body text introducing the fifth paragraph's lower-level contingency rules, presented in standard non-bold format.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L1376:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 5 specifying provincial committee directives.",
+      "evidenceRefs": ["L1376:S0"],
+      "interpretation": "Body prose detailing hierarchical oversight for unresolved lower-boundary issues, consistent with standard paragraph layout.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L1377:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 5 on cooperative resolution processes.",
+      "evidenceRefs": ["L1377:S0"],
+      "interpretation": "Body prose extending the coordination mechanism, formatted as standard text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L1378:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 5 managing areas pending boundary unification.",
+      "evidenceRefs": ["L1378:S0"],
+      "interpretation": "Body prose clarifying interim management responsibilities, maintaining standard paragraph styling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L1379:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 5 on state management actions during disputes.",
+      "evidenceRefs": ["L1379:S0"],
+      "interpretation": "Body prose detailing provisional administrative measures, consistent with standard paragraph layout.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L1380:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 5 addressing unresolved solution proposals.",
+      "evidenceRefs": ["L1380:S0"],
+      "interpretation": "Body prose extending the dispute escalation path, formatted as standard text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L1381:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of paragraph 5 requiring provincial dossier preparation.",
+      "evidenceRefs": ["L1381:S0"],
+      "interpretation": "Body prose specifying final reporting obligations for unresolved cases, maintaining standard paragraph styling.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L1382:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of paragraph 5 regarding government submission.",
+      "evidenceRefs": ["L1382:S0"],
+      "interpretation": "Body prose completing the fifth paragraph's procedural directive, consistent with standard paragraph layout.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

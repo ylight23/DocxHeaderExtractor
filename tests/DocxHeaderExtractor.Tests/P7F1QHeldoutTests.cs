@@ -408,6 +408,55 @@ public sealed class P7F1QHeldoutTests : IDisposable
         Assert.Equal(246, ledger.RootElement.GetProperty("totalsAfter").GetProperty("ESTABLISHES_STRUCTURE").GetInt32());
     }
 
+    [Theory]
+    [InlineData("arm-a-p05", "p7.f1q.heldout-raw.v1.capture-manifest.json", "f22e5d4406dd912671900aa8499be9196315883ed9fda279b49bbfc166488ca2")]
+    [InlineData("arm-b-layout", "p7.f1q.heldout-raw.v1.layout-arm-capture-manifest.json", "d64751f0aa35915f696c17db9dbb12043ca8444557f4896ac634247b7f8ac546")]
+    public void Published_heldout_raw_reproduces_every_frozen_byte_or_its_redaction_receipt(string arm, string manifestFile, string manifestSha)
+    {
+        string Sha(byte[] b) => Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(b));
+        var manifestBytes = File.ReadAllBytes(Path.Combine(Dir, manifestFile));
+        Assert.Equal(manifestSha, Sha(manifestBytes));
+        var root = Path.Combine(Dir, "p7.f1q.heldout-raw.v1", arm);
+        Assert.Equal(manifestSha, Sha(File.ReadAllBytes(Path.Combine(root, "manifest.json"))));
+        using var m = JsonDocument.Parse(manifestBytes);
+        Assert.False(m.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean());
+        int plain = 0, gz = 0, redacted = 0;
+        foreach (var f in m.RootElement.GetProperty("files").EnumerateArray())
+        {
+            var rel = f.GetProperty("path").GetString()!; var expected = f.GetProperty("sha256").GetString();
+            var path = Path.Combine(root, rel);
+            if (File.Exists(path)) { Assert.Equal(expected, Sha(File.ReadAllBytes(path))); plain++; continue; }
+            if (File.Exists(path + ".gz"))
+            {   // SSE is published gzip -n; the frozen hash is over the decompressed bytes.
+                using var z = new System.IO.Compression.GZipStream(File.OpenRead(path + ".gz"), System.IO.Compression.CompressionMode.Decompress);
+                using var ms = new MemoryStream(); z.CopyTo(ms);
+                Assert.Equal(expected, Sha(ms.ToArray())); gz++; continue;
+            }
+            using var receipt = JsonDocument.Parse(File.ReadAllBytes(Path.ChangeExtension(path, ".redaction.json")));
+            Assert.Equal(expected, receipt.RootElement.GetProperty("originalSha256").GetString());
+            Assert.Equal(receipt.RootElement.GetProperty("redactedSha256").GetString(),
+                Sha(File.ReadAllBytes(Path.ChangeExtension(path, ".redacted" + Path.GetExtension(path)))));
+            redacted++;
+        }
+        Assert.True(gz > 0 && plain > 0 && redacted > 0);
+        Assert.Equal(m.RootElement.GetProperty("files").GetArrayLength(), plain + gz + redacted);
+    }
+
+    [Fact] public void Layout_arm_paired_comparison_is_pre_registered_and_significant_by_exact_mcnemar()
+    {
+        using var c = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.layout-arm.paired-comparison.v1.json")));
+        var r = c.RootElement; var p = r.GetProperty("paired");
+        Assert.Equal(3149, r.GetProperty("scoredRows").GetInt32());
+        Assert.Equal(56, p.GetProperty("wrongToRight").GetInt32()); Assert.Equal(30, p.GetProperty("rightToWrong").GetInt32());
+        // Exact two-sided McNemar recomputed here: 2 * P(X <= 30), X ~ Binomial(86, 0.5).
+        double tail = 0; for (var i = 0; i <= 30; i++) tail += Math.Exp(LogChoose(86, i) + 86 * Math.Log(0.5));
+        Assert.Equal(Math.Round(2 * tail, 6), p.GetProperty("mcnemarExactTwoSidedP").GetDouble(), 6);
+        Assert.Equal("B_BETTER_SIGNIFICANT", p.GetProperty("verdict").GetString());
+        Assert.Equal(2964, r.GetProperty("armA").GetProperty("summary").GetProperty("correct").GetInt32());
+        Assert.Equal(2990, r.GetProperty("armB").GetProperty("summary").GetProperty("correct").GetInt32());
+        static double LogChoose(int n, int k) { double s = 0; for (var i = 1; i <= k; i++) s += Math.Log(n - k + i) - Math.Log(i); return s; }
+    }
+
     [Fact] public void Gold_drafts_v9_approve_all_24_as_ai_reviewer_and_the_freeze_pins_exactly_those_labels()
     {
         var v8 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v8"); var v9 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v9");

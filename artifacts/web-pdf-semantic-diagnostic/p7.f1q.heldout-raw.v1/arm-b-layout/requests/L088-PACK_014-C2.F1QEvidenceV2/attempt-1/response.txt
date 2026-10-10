@@ -1,0 +1,365 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1096:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (clause 6) detailing rights/obligations; regular font indicates body text.",
+      "evidenceRefs": [
+        "L1096:S0"
+      ],
+      "interpretation": "Continuation of a numbered list from a preceding article; standard paragraph font and numeric prefix mark it as body prose rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1097:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of clause 6 text; regular font indicates body prose.",
+      "evidenceRefs": [
+        "L1097:S0"
+      ],
+      "interpretation": "Textual continuation of the preceding numbered clause; unbolded typeface confirms ordinary body content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1098:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (clause 7) detailing rights/obligations; regular font indicates body text.",
+      "evidenceRefs": [
+        "L1098:S0"
+      ],
+      "interpretation": "Sequential numbered clause continuing the list of rights/obligations; standard font weight identifies it as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1099:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list item (clause 8) opening statement; regular font indicates body text.",
+      "evidenceRefs": [
+        "L1099:S0"
+      ],
+      "interpretation": "Start of another numbered clause in the ongoing list; unbolded typography marks it as regular prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1100:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of clause 8 text; regular font indicates body prose.",
+      "evidenceRefs": [
+        "L1100:S0"
+      ],
+      "interpretation": "Finishes the sentence begun in clause 8; standard font confirms body text status.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1101:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter heading marking a new major division of the decree.",
+      "evidenceRefs": [
+        "L1101:S0"
+      ],
+      "interpretation": "Explicit chapter designation ('Chapter VI') set in bold typeface, functioning as a primary structural heading for the document.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1102:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section title identifying the substantive topic of the chapter.",
+      "evidenceRefs": [
+        "L1102:S0"
+      ],
+      "interpretation": "Thematic title presented in bold uppercase, serving as a secondary structural heading introducing the chapter's focus.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1103:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading with explicit numbering and topic label.",
+      "evidenceRefs": [
+        "L1103:S0"
+      ],
+      "interpretation": "Formal section marker ('Section 1.') paired with the topic title; bold formatting confirms its role as a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1104:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading introducing the first substantive provisions of the section.",
+      "evidenceRefs": [
+        "L1104:S0"
+      ],
+      "interpretation": "Standard legislative article identifier ('Article 50.') with matching topic; bold type establishes it as a primary content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1105:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "First clause of Article 50; regular font and numbering indicate body prose.",
+      "evidenceRefs": [
+        "L1105:S0"
+      ],
+      "interpretation": "Clause 1 of the newly introduced article; unbolded font and numeric prefix identify it as regulatory body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1106:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of clause 1 text; regular font indicates body prose.",
+      "evidenceRefs": [
+        "L1106:S0"
+      ],
+      "interpretation": "Sentence continuation within clause 1; standard typography confirms ordinary prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1107:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of clause 1 text; regular font indicates body prose.",
+      "evidenceRefs": [
+        "L1107:S0"
+      ],
+      "interpretation": "Further continuation of clause 1; unbolded layout marks it as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1108:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of clause 1 text; regular font indicates body prose.",
+      "evidenceRefs": [
+        "L1108:S0"
+      ],
+      "interpretation": "Final segment of clause 1; standard font weight confirms body content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1109:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Second clause of Article 50; regular font and numbering indicate body prose.",
+      "evidenceRefs": [
+        "L1109:S0"
+      ],
+      "interpretation": "Clause 2 beginning; numeric prefix and unbolded typeface designate it as regulatory body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1110:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of clause 2 text; regular font indicates body prose.",
+      "evidenceRefs": [
+        "L1110:S0"
+      ],
+      "interpretation": "Middle segment of clause 2; standard typography confirms ordinary prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L1111:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of clause 2 text; regular font indicates body prose.",
+      "evidenceRefs": [
+        "L1111:S0"
+      ],
+      "interpretation": "Ending of clause 2; unbolded layout marks it as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L1112:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Third clause of Article 50; regular font and numbering indicate body prose.",
+      "evidenceRefs": [
+        "L1112:S0"
+      ],
+      "interpretation": "Clause 3 opening; numeric prefix and regular font identify it as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L1113:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of clause 3 text; regular font indicates body prose.",
+      "evidenceRefs": [
+        "L1113:S0"
+      ],
+      "interpretation": "Continuation of clause 3; standard typography confirms ordinary prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L1114:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fourth clause of Article 50; regular font and numbering indicate body prose.",
+      "evidenceRefs": [
+        "L1114:S0"
+      ],
+      "interpretation": "Clause 4 opening; numeric prefix and unbolded typeface designate it as regulatory body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L1115:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of clause 4 text; regular font indicates body prose.",
+      "evidenceRefs": [
+        "L1115:S0"
+      ],
+      "interpretation": "Ending of clause 4; standard font weight confirms body content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L1116:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading introducing tax liability provisions.",
+      "evidenceRefs": [
+        "L1116:S0"
+      ],
+      "interpretation": "Formal article marker ('Article 51.') with thematic title; bold formatting establishes it as a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L1117:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "First clause of Article 51; regular font and numbering indicate body prose.",
+      "evidenceRefs": [
+        "L1117:S0"
+      ],
+      "interpretation": "Clause 1 of the new article; unbolded font and numeric prefix identify it as regulatory body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L1118:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of clause 1 text; regular font indicates body prose.",
+      "evidenceRefs": [
+        "L1118:S0"
+      ],
+      "interpretation": "Finishes clause 1; standard typography confirms ordinary prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L1119:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Second clause of Article 51; regular font and numbering indicate body prose.",
+      "evidenceRefs": [
+        "L1119:S0"
+      ],
+      "interpretation": "Clause 2 opening; numeric prefix and unbolded typeface designate it as regulatory body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L1120:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of clause 2 text; regular font indicates body prose.",
+      "evidenceRefs": [
+        "L1120:S0"
+      ],
+      "interpretation": "Ending of clause 2; standard font weight confirms body content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L1121:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading introducing export/import procedure rules.",
+      "evidenceRefs": [
+        "L1121:S0"
+      ],
+      "interpretation": "Formal article marker ('Article 52.') with descriptive title; bold formatting establishes it as a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L1122:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Opening line of Article 52 body text; regular font indicates prose.",
+      "evidenceRefs": [
+        "L1122:S0"
+      ],
+      "interpretation": "Start of the article's regulatory text; unbolded typeface marks it as body content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L1123:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of Article 52 body text; regular font indicates prose.",
+      "evidenceRefs": [
+        "L1123:S0"
+      ],
+      "interpretation": "Middle segment of the article; standard typography confirms ordinary prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L1124:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of Article 52 body text; regular font indicates prose.",
+      "evidenceRefs": [
+        "L1124:S0"
+      ],
+      "interpretation": "Finishes the article's provision; unbolded layout marks it as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1125:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading introducing return of goods rules.",
+      "evidenceRefs": [
+        "L1125:S0"
+      ],
+      "interpretation": "Formal article marker ('Article 53.') with thematic title; bold formatting establishes it as a structural heading.",
+      "missingEvidence": []
+    }
+  ]
+}

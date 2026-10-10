@@ -1,0 +1,545 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National government header line.",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Administrative state motto/header, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative motto line with separators.",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Standard national motto presentation with decorative leaders, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Official document number identifier.",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Administrative tracking number, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Issuance location and date line.",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Metadata date/location stamp, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document type heading component.",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Bold standalone term 'DECREE' functioning as the primary document title anchor.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Primary title component specifying regulatory scope.",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Continues the decree title by naming the core subject matter.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title component continuation listing regulated fields.",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Completes the decree title by enumerating additional technical domains.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative horizontal separator line.",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Purely graphical leader line, no semantic heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative bullet/separator mark.",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Isolated punctuation mark used for layout separation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Inline amendment reference note.",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Administrative note citing modifying legislation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal basis preamble clause.",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Standard statutory citation opening ('Based on Law...'), not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal basis preamble clause.",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Continuation of statutory citations, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal basis preamble clause.",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Continuation of statutory citations, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal basis preamble clause.",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Continuation of statutory citations, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal basis preamble clause.",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Continuation of statutory citations, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal basis preamble clause.",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Continuation of statutory citations, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal basis preamble clause.",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Continuation of statutory citations, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal basis preamble clause.",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Continuation of statutory citations, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Requesting authority preamble clause.",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Procedural lead-in citing the proposing ministry, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Standard operative clause lead-in phrase.",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Formal enactment verb phrase ('Government issues Decree'), not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation of the operative clause.",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Continues the enactment sentence into substantive body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuation of the operative clause.",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Continues the enactment sentence into substantive body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Terminal punctuation for the operative clause.",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Period ending the preamble/enactment block, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Inline amendment reference note.",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Administrative note citing modifying legislation, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter-level structural heading.",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Bold chapter marker 'CHAPTER I' establishing a major document section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section-level structural heading.",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Bold section title 'GENERAL PROVISIONS' organizing the chapter content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article-level structural heading.",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Bold article marker 'ARTICLE 1. Scope of Regulation' introducing substantive rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Substantive body text defining regulatory scope.",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Regular paragraph text detailing the first clause of Article 1.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Substantive body text continuing scope definition.",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Continuation of the regular paragraph text for Article 1(1).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Enumerated list item within scope definition.",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Lettered sub-item 'a)' listing a regulated domain, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Enumerated list item within scope definition.",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Lettered sub-item 'b)' listing a regulated domain, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of enumerated list item.",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Wraps the long list item 'b)' onto the next line, maintaining body text status.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of enumerated list item.",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Final segment of list item 'b)', still body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Enumerated list item within scope definition.",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Lettered sub-item 'c)' listing a regulated domain, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Enumerated list item within scope definition.",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Lettered sub-item 'd)' listing a regulated domain, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of enumerated list item.",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Wraps the long list item 'd)' onto the next line, maintaining body text status.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Inline amendment reference within list.",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Small-print amendment note embedded in the list, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Enumerated list item within scope definition.",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Lettered sub-item 'e)' listing a regulated domain, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Enumerated list item within scope definition.",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Lettered sub-item 'f)' listing a regulated domain, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Inline amendment reference note.",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "Small-print amendment note on page 2, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Substantive body text extending scope to other authorities.",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Regular paragraph text for Article 1(2), not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Substantive body text referencing alternative regulations.",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "interpretation": "Continuation of Article 1(2) paragraph, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Substantive body text concluding scope provision.",
+      "evidenceRefs": [
+        "L0042:S0"
+      ],
+      "interpretation": "Final segment of Article 1(2) paragraph, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article-level structural heading.",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "interpretation": "Bold article marker 'ARTICLE 2. Subjects subject to penalty' introducing new rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Substantive body text defining penalized subjects.",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "interpretation": "Regular paragraph text for Article 2(1), not a heading.",
+      "missingEvidence": []
+    }
+  ]
+}

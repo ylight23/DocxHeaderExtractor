@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L3378:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Date string appearing in running header and table column headers.",
+      "evidenceRefs": [
+        "L3378:S1"
+      ],
+      "interpretation": "Functions as a date marker for page furniture and table columns, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L3379:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bold table row label indicating a portfolio classification.",
+      "evidenceRefs": [
+        "L3379:S0"
+      ],
+      "interpretation": "Serves as a local table/data label for a financial statement row, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L3380:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Plain text table row label for a security type.",
+      "evidenceRefs": [
+        "L3380:S0"
+      ],
+      "interpretation": "Functions as a local table row identifier within a financial schedule, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L3380:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Currency symbol aligned with numeric values in a table column.",
+      "evidenceRefs": [
+        "L3380:S1"
+      ],
+      "interpretation": "Acts as a table cell delimiter/unit indicator, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L3380:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3380:S2"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L3380:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Currency symbol aligned with numeric values in a table column.",
+      "evidenceRefs": [
+        "L3380:S3"
+      ],
+      "interpretation": "Acts as a table cell delimiter/unit indicator, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L3380:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3380:S4"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L3381:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Plain text table row label for a deposit type.",
+      "evidenceRefs": [
+        "L3381:S0"
+      ],
+      "interpretation": "Functions as a local table row identifier within a financial schedule, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L3381:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3381:S1"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L3381:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3381:S2"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L3382:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Plain text table row label for a security type.",
+      "evidenceRefs": [
+        "L3382:S0"
+      ],
+      "interpretation": "Functions as a local table row identifier within a financial schedule, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L3382:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3382:S1"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L3382:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3382:S2"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L3383:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Currency symbol aligned with numeric values in a table column.",
+      "evidenceRefs": [
+        "L3383:S0"
+      ],
+      "interpretation": "Acts as a table cell delimiter/unit indicator, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L3383:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3383:S1"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L3383:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Currency symbol aligned with numeric values in a table column.",
+      "evidenceRefs": [
+        "L3383:S2"
+      ],
+      "interpretation": "Acts as a table cell delimiter/unit indicator, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L3383:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3383:S3"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L3384:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bold table row label indicating a portfolio classification.",
+      "evidenceRefs": [
+        "L3384:S0"
+      ],
+      "interpretation": "Serves as a local table/data label for a financial statement row, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L3385:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Plain text table row label for a security type.",
+      "evidenceRefs": [
+        "L3385:S0"
+      ],
+      "interpretation": "Functions as a local table row identifier within a financial schedule, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L3385:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric values representing monetary amounts in a table cell.",
+      "evidenceRefs": [
+        "L3385:S1"
+      ],
+      "interpretation": "Pure tabular data values, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L3386:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bold table row label indicating a summation row.",
+      "evidenceRefs": [
+        "L3386:S0"
+      ],
+      "interpretation": "Serves as a local table subtotal label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L3386:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Currency symbol aligned with numeric values in a table column.",
+      "evidenceRefs": [
+        "L3386:S1"
+      ],
+      "interpretation": "Acts as a table cell delimiter/unit indicator, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L3386:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3386:S2"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L3386:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Currency symbol aligned with numeric values in a table column.",
+      "evidenceRefs": [
+        "L3386:S3"
+      ],
+      "interpretation": "Acts as a table cell delimiter/unit indicator, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L3386:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3386:S4"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L3387:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header containing document title and page number.",
+      "evidenceRefs": [
+        "L3387:S0"
+      ],
+      "interpretation": "Functions as page furniture/header metadata, not a substantive content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L3388:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence describing investment management policy.",
+      "evidenceRefs": [
+        "L3388:S0"
+      ],
+      "interpretation": "Ordinary narrative text explaining portfolio strategy, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L3389:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence continuing portfolio risk description.",
+      "evidenceRefs": [
+        "L3389:S0"
+      ],
+      "interpretation": "Ordinary narrative text detailing counterparty exposure, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L3390:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence describing derivative usage.",
+      "evidenceRefs": [
+        "L3390:S0"
+      ],
+      "interpretation": "Ordinary narrative text explaining risk management tools, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L3391:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose sentence directing reader to a note.",
+      "evidenceRefs": [
+        "L3391:S0"
+      ],
+      "interpretation": "Cross-reference prose within a paragraph, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L3392:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose fragment introducing a table.",
+      "evidenceRefs": [
+        "L3392:S0"
+      ],
+      "interpretation": "Transitional phrase leading into tabular data, not a standalone heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L3393:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bold table title/caption.",
+      "evidenceRefs": [
+        "L3393:S0"
+      ],
+      "interpretation": "Functions as a local table identifier, not a document-level content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L3394:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Italicized table unit specification.",
+      "evidenceRefs": [
+        "L3394:S0"
+      ],
+      "interpretation": "Provides measurement units for the table below, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L3395:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Italicized table column header for a reporting date.",
+      "evidenceRefs": [
+        "L3395:S0"
+      ],
+      "interpretation": "Serves as a column label for tabular data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L3395:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Italicized table column header for a comparative reporting date.",
+      "evidenceRefs": [
+        "L3395:S1"
+      ],
+      "interpretation": "Serves as a column label for tabular data, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L3396:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bold table row label for a major asset category.",
+      "evidenceRefs": [
+        "L3396:S0"
+      ],
+      "interpretation": "Functions as a local table section/row identifier within a financial schedule, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L3397:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Plain text table row label indicating a portfolio classification.",
+      "evidenceRefs": [
+        "L3397:S0"
+      ],
+      "interpretation": "Serves as a local table/data label for a financial statement row, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L3397:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Currency symbol aligned with numeric values in a table column.",
+      "evidenceRefs": [
+        "L3397:S1"
+      ],
+      "interpretation": "Acts as a table cell delimiter/unit indicator, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L3397:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3397:S2"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L3397:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Currency symbol aligned with numeric values in a table column.",
+      "evidenceRefs": [
+        "L3397:S3"
+      ],
+      "interpretation": "Acts as a table cell delimiter/unit indicator, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L3397:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3397:S4"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L3398:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Plain text table row label indicating a portfolio classification.",
+      "evidenceRefs": [
+        "L3398:S0"
+      ],
+      "interpretation": "Serves as a local table/data label for a financial statement row, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L3398:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3398:S1"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L3398:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3398:S2"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L3399:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Plain text table row label indicating a summation row.",
+      "evidenceRefs": [
+        "L3399:S0"
+      ],
+      "interpretation": "Serves as a local table subtotal label, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L3399:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3399:S1"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L3399:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numeric value representing a monetary amount in a table cell.",
+      "evidenceRefs": [
+        "L3399:S2"
+      ],
+      "interpretation": "Pure tabular data value, not a heading or structural label.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L3400:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Plain text table row label for a financial instrument.",
+      "evidenceRefs": [
+        "L3400:S0"
+      ],
+      "interpretation": "Functions as a local table row identifier within a financial schedule, not a document heading.",
+      "missingEvidence": []
+    }
+  ]
+}

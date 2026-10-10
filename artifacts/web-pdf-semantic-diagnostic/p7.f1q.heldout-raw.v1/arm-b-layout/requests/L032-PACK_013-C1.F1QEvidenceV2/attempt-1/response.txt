@@ -1,0 +1,569 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0828:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header indicating section title and page number.",
+      "evidenceRefs": [
+        "L0828:S0"
+      ],
+      "interpretation": "Identified as a running header by its small font size (10pt), lack of bold formatting, and position at the top of the page, consistent with similar headers on adjacent pages.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0829:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing instructions regarding proposal signing.",
+      "evidenceRefs": [
+        "L0829:S0"
+      ],
+      "interpretation": "Standard paragraph text in 12pt font, indented, continuing the sentence from preceding lines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0830:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding a sentence about the proposal.",
+      "evidenceRefs": [
+        "L0830:S0"
+      ],
+      "interpretation": "Standard paragraph text in 12pt font, completing the instruction on signatures.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0831:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing section 17.3 rules on interlineations.",
+      "evidenceRefs": [
+        "L0831:S0"
+      ],
+      "interpretation": "Standard paragraph text in 12pt font, beginning a new numbered clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0832:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text detailing correction procedures for overwriting.",
+      "evidenceRefs": [
+        "L0832:S0"
+      ],
+      "interpretation": "Standard paragraph text in 12pt font, continuing clause 17.3.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0833:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying initialed corrections.",
+      "evidenceRefs": [
+        "L0833:S0"
+      ],
+      "interpretation": "Standard paragraph text in 12pt font, continuing clause 17.3.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0834:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding clause 17.3.",
+      "evidenceRefs": [
+        "L0834:S0"
+      ],
+      "interpretation": "Standard paragraph text in 12pt font, ending the sentence on signatures.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0835:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing clause 17.4 on binding obligations.",
+      "evidenceRefs": [
+        "L0835:S0"
+      ],
+      "interpretation": "Standard paragraph text in 12pt font, beginning a new numbered clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0836:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text clarifying non-binding nature of first stage proposals.",
+      "evidenceRefs": [
+        "L0836:S0"
+      ],
+      "interpretation": "Standard paragraph text in 12pt font, continuing clause 17.4.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0837:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding clause 17.4.",
+      "evidenceRefs": [
+        "L0837:S0"
+      ],
+      "interpretation": "Standard paragraph text in 12pt font, ending the sentence on combined proposals.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0838:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Substantive heading 'D. SUBMISSION OF FIRST STAGE TECHNICAL PROPOSALS'.",
+      "evidenceRefs": [
+        "L0838:S0"
+      ],
+      "interpretation": "Bold 13pt text standing alone above subsequent body clauses, functioning as a clear structural heading for the following section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0839:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading fragment '18. Sealing and' marking section 18 start.",
+      "evidenceRefs": [
+        "L0839:S0"
+      ],
+      "interpretation": "Bold 12pt text at left margin, initiating a multi-line heading for section 18.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0839:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text beginning clause 18.1 on sealing proposals.",
+      "evidenceRefs": [
+        "L0839:S1"
+      ],
+      "interpretation": "Standard 12pt paragraph text, indented, continuing the instruction after the heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0840:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading fragment 'Marking of' continuing section 18 title.",
+      "evidenceRefs": [
+        "L0840:S0"
+      ],
+      "interpretation": "Bold 12pt text at slightly indented margin, forming the second line of the multi-line heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0840:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing clause 18.1 instructions.",
+      "evidenceRefs": [
+        "L0840:S1"
+      ],
+      "interpretation": "Standard 12pt paragraph text, indented, following the heading fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0841:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading fragment 'First Stage' continuing section 18 title.",
+      "evidenceRefs": [
+        "L0841:S0"
+      ],
+      "interpretation": "Bold 12pt text at indented margin, third line of the multi-line heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0841:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing clause 18.1 instructions.",
+      "evidenceRefs": [
+        "L0841:S1"
+      ],
+      "interpretation": "Standard 12pt paragraph text, indented, following the heading fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0842:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading fragment 'Technical' continuing section 18 title.",
+      "evidenceRefs": [
+        "L0842:S0"
+      ],
+      "interpretation": "Bold 12pt text at indented margin, fourth line of the multi-line heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0842:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing clause 18.1 envelope marking instructions.",
+      "evidenceRefs": [
+        "L0842:S1"
+      ],
+      "interpretation": "Standard 12pt paragraph text, indented, following the heading fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0843:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading fragment 'Proposal' completing section 18 title.",
+      "evidenceRefs": [
+        "L0843:S0"
+      ],
+      "interpretation": "Bold 12pt text at indented margin, fifth and final line of the multi-line heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0843:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing clause 18.1 envelope marking instructions.",
+      "evidenceRefs": [
+        "L0843:S1"
+      ],
+      "interpretation": "Standard 12pt paragraph text, indented, following the heading fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0844:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text referencing ITP 17.1 requirements.",
+      "evidenceRefs": [
+        "L0844:S0"
+      ],
+      "interpretation": "Standard 12pt paragraph text, continuing clause 18.1.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0845:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding clause 18.1 outer envelope instruction.",
+      "evidenceRefs": [
+        "L0845:S0"
+      ],
+      "interpretation": "Standard 12pt paragraph text, ending the sentence on sealing.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0846:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing clause 18.2 requirements for envelopes.",
+      "evidenceRefs": [
+        "L0846:S0"
+      ],
+      "interpretation": "Standard 12pt paragraph text, beginning a new numbered clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0847:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List marker '(a)' for clause 18.2 item.",
+      "evidenceRefs": [
+        "L0847:S0"
+      ],
+      "interpretation": "Standard 12pt text, serving as a list enumeration marker.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0847:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying proposer name/address on envelopes.",
+      "evidenceRefs": [
+        "L0847:S1"
+      ],
+      "interpretation": "Standard 12pt paragraph text, continuing list item (a).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0848:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List marker '(b)' and text for clause 18.2 item.",
+      "evidenceRefs": [
+        "L0848:S0"
+      ],
+      "interpretation": "Standard 12pt italicized text, serving as list enumeration marker and content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0849:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding clause 18.2(b).",
+      "evidenceRefs": [
+        "L0849:S0"
+      ],
+      "interpretation": "Standard 12pt paragraph text, finishing the address instruction.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0850:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List marker '(c)' for clause 18.2 item.",
+      "evidenceRefs": [
+        "L0850:S0"
+      ],
+      "interpretation": "Standard 12pt text, serving as a list enumeration marker.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0850:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying contract/RFP details on envelopes.",
+      "evidenceRefs": [
+        "L0850:S1"
+      ],
+      "interpretation": "Standard 12pt paragraph text, continuing list item (c).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0851:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing clause 18.2(c) RFP reference.",
+      "evidenceRefs": [
+        "L0851:S0"
+      ],
+      "interpretation": "Standard 12pt italicized text, finishing the RFP specification.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0852:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying 'Do Not Open' statement on envelopes.",
+      "evidenceRefs": [
+        "L0852:S0"
+      ],
+      "interpretation": "Standard 12pt paragraph text, continuing list item (c).",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0853:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing deadline placeholder instruction.",
+      "evidenceRefs": [
+        "L0853:S0"
+      ],
+      "interpretation": "Standard 12pt paragraph text, finishing the statement requirement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0854:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding clause 18.2(c).",
+      "evidenceRefs": [
+        "L0854:S0"
+      ],
+      "interpretation": "Standard 12pt italicized text, ending the PDS reference.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0855:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing clause 18.3 liability limitation.",
+      "evidenceRefs": [
+        "L0855:S0"
+      ],
+      "interpretation": "Standard 12pt paragraph text, beginning a new numbered clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0856:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing clause 18.3 employer responsibility disclaimer.",
+      "evidenceRefs": [
+        "L0856:S0"
+      ],
+      "interpretation": "Standard 12pt paragraph text, continuing clause 18.3.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0857:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding clause 18.3.",
+      "evidenceRefs": [
+        "L0857:S0"
+      ],
+      "interpretation": "Standard 12pt paragraph text, ending the misplacement warning.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0858:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading fragment '19. Deadline for' marking section 19 start.",
+      "evidenceRefs": [
+        "L0858:S0"
+      ],
+      "interpretation": "Bold 12pt text at left margin, initiating a multi-line heading for section 19.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0858:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text beginning clause 19.1 on proposal receipt deadlines.",
+      "evidenceRefs": [
+        "L0858:S1"
+      ],
+      "interpretation": "Standard 12pt paragraph text, indented, continuing the instruction after the heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0859:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading fragment 'Submission of' continuing section 19 title.",
+      "evidenceRefs": [
+        "L0859:S0"
+      ],
+      "interpretation": "Bold 12pt text at indented margin, second line of the multi-line heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0859:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing clause 19.1 submission location/time.",
+      "evidenceRefs": [
+        "L0859:S1"
+      ],
+      "interpretation": "Standard 12pt paragraph text, indented, following the heading fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0860:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading fragment 'First Stage' continuing section 19 title.",
+      "evidenceRefs": [
+        "L0860:S0"
+      ],
+      "interpretation": "Bold 12pt text at indented margin, third line of the multi-line heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0860:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing clause 19.1 time/date specification.",
+      "evidenceRefs": [
+        "L0860:S1"
+      ],
+      "interpretation": "Standard 12pt italicized text, indented, following the heading fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0861:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading fragment 'Technical-' continuing section 19 title.",
+      "evidenceRefs": [
+        "L0861:S0"
+      ],
+      "interpretation": "Bold 12pt text at indented margin, fourth line of the multi-line heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0861:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding clause 19.1 electronic option.",
+      "evidenceRefs": [
+        "L0861:S1"
+      ],
+      "interpretation": "Standard 12pt italicized text, indented, following the heading fragment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0862:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading fragment 'Proposals' completing section 19 title.",
+      "evidenceRefs": [
+        "L0862:S0"
+      ],
+      "interpretation": "Bold 12pt text at indented margin, fifth and final line of the multi-line heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0863:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing clause 19.2 deadline extension authority.",
+      "evidenceRefs": [
+        "L0863:S0"
+      ],
+      "interpretation": "Standard 12pt paragraph text, beginning a new numbered clause.",
+      "missingEvidence": []
+    }
+  ]
+}

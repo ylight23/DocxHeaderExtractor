@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0119:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing trust fund asset composition and cash balances.",
+      "evidenceRefs": [
+        "L0119:S0"
+      ],
+      "interpretation": "Narrative text explaining financial figures, functioning as standard paragraph content rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0120:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuation regarding deferred fees and contribution receivables.",
+      "evidenceRefs": [
+        "L0120:S0"
+      ],
+      "interpretation": "Continuation of the financial narrative paragraph, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0121:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose fragment concluding a fiscal year date reference.",
+      "evidenceRefs": [
+        "L0121:S0"
+      ],
+      "interpretation": "Fragment of ongoing body text, serving no heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0122:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit page number indicator positioned at bottom-right.",
+      "evidenceRefs": [
+        "L0122:S0"
+      ],
+      "interpretation": "Standard page furniture marking document pagination.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0123:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit footnote reference marker.",
+      "evidenceRefs": [
+        "L0123:S0"
+      ],
+      "interpretation": "Superscript-style reference linking body text to explanatory notes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0124:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Repeated running header spanning top of page across multiple pages.",
+      "evidenceRefs": [
+        "L0124:S0"
+      ],
+      "interpretation": "Page furniture acting as a persistent running header, not a substantive local heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0125:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Repeated sub-header indicating currency and unit conventions.",
+      "evidenceRefs": [
+        "L0125:S0"
+      ],
+      "interpretation": "Standardized disclaimer/footer text repeated as page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0126:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading introducing key trust fund activity content.",
+      "evidenceRefs": [
+        "L0126:S0"
+      ],
+      "interpretation": "Mid-page heading establishing a substantive content region summarizing trust fund performance metrics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0127:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Prominent section heading for active trust fund composition.",
+      "evidenceRefs": [
+        "L0127:S0"
+      ],
+      "interpretation": "Large, bold typography marks a clear structural break introducing a detailed breakdown of active funds.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0128:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing FIF portfolio growth trajectory.",
+      "evidenceRefs": [
+        "L0128:S0"
+      ],
+      "interpretation": "Narrative explanation supporting the preceding heading, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0129:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose listing primary sectors within the FIF portfolio.",
+      "evidenceRefs": [
+        "L0129:S0"
+      ],
+      "interpretation": "Continuation of the sectoral analysis paragraph, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0130:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text clarifying trust fund counting methodology.",
+      "evidenceRefs": [
+        "L0130:S0"
+      ],
+      "interpretation": "Explanatory note attached to a reference marker, distinct from main document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0131:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote continuation detailing DP balance accounts.",
+      "evidenceRefs": [
+        "L0131:S0"
+      ],
+      "interpretation": "Continuation of the methodological footnote, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0132:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote continuation explaining account purposes.",
+      "evidenceRefs": [
+        "L0132:S0"
+      ],
+      "interpretation": "Continuation of the methodological footnote, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0133:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote conclusion providing statistical totals.",
+      "evidenceRefs": [
+        "L0133:S0"
+      ],
+      "interpretation": "Final segment of the explanatory footnote, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0134:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote text explaining multi-account program administration.",
+      "evidenceRefs": [
+        "L0134:S0"
+      ],
+      "interpretation": "Explanatory note clarifying program structures, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0135:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote continuation regarding trustee accounts.",
+      "evidenceRefs": [
+        "L0135:S0"
+      ],
+      "interpretation": "Continuation of the administrative footnote, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0136:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit page number indicator.",
+      "evidenceRefs": [
+        "L0136:S0"
+      ],
+      "interpretation": "Standard page furniture marking document pagination.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0137:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Single digit footnote reference marker.",
+      "evidenceRefs": [
+        "L0137:S0"
+      ],
+      "interpretation": "Superscript-style reference linking body text to explanatory notes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0138:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Repeated running header spanning top of page.",
+      "evidenceRefs": [
+        "L0138:S0"
+      ],
+      "interpretation": "Page furniture acting as a persistent running header, not a substantive local heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0139:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Repeated sub-header indicating currency and unit conventions.",
+      "evidenceRefs": [
+        "L0139:S0"
+      ],
+      "interpretation": "Standardized disclaimer/footer text repeated as page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0140:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading introducing key trust fund activity content.",
+      "evidenceRefs": [
+        "L0140:S0"
+      ],
+      "interpretation": "Mid-page heading establishing a substantive content region summarizing trust fund performance metrics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0141:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Prominent section heading for active umbrella trust funds.",
+      "evidenceRefs": [
+        "L0141:S0"
+      ],
+      "interpretation": "Large, bold typography marks a clear structural break introducing a detailed breakdown of umbrella funds.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0142:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose stating umbrella program statistics and FHIT values.",
+      "evidenceRefs": [
+        "L0142:S0"
+      ],
+      "interpretation": "Narrative data presentation supporting the preceding heading, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0143:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose reporting cash contributions and disbursements.",
+      "evidenceRefs": [
+        "L0143:S0"
+      ],
+      "interpretation": "Continuation of the financial narrative paragraph, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0144:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Garbled table header row with overlapping column labels.",
+      "evidenceRefs": [
+        "L0144:S0"
+      ],
+      "interpretation": "Dense tabular metadata containing merged or misaligned text, serving as a table header rather than a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0145:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header row with fragmented labels.",
+      "evidenceRefs": [
+        "L0145:S0"
+      ],
+      "interpretation": "Tabular metadata organizing data columns, not a substantive document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0145:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table data cell containing numeric values.",
+      "evidenceRefs": [
+        "L0145:S1"
+      ],
+      "interpretation": "Numeric data point within a tabular grid, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0145:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table data cell containing numeric values.",
+      "evidenceRefs": [
+        "L0145:S2"
+      ],
+      "interpretation": "Numeric data point within a tabular grid, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0145:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table data cell containing prefixed numeric values.",
+      "evidenceRefs": [
+        "L0145:S3"
+      ],
+      "interpretation": "Numeric data point within a tabular grid, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0145:S4",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table data cell containing prefixed numeric values.",
+      "evidenceRefs": [
+        "L0145:S4"
+      ],
+      "interpretation": "Numeric data point within a tabular grid, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0146:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header row with fragmented labels.",
+      "evidenceRefs": [
+        "L0146:S0"
+      ],
+      "interpretation": "Tabular metadata organizing data columns, not a substantive document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0146:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table data cell containing alphanumeric identifiers.",
+      "evidenceRefs": [
+        "L0146:S1"
+      ],
+      "interpretation": "Data point within a tabular grid, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0146:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table data cell containing descriptive labels.",
+      "evidenceRefs": [
+        "L0146:S2"
+      ],
+      "interpretation": "Data point within a tabular grid, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L0147:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table footnote referencing a total monetary figure.",
+      "evidenceRefs": [
+        "L0147:S0"
+      ],
+      "interpretation": "Explanatory note attached to a table value, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L0147:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote reference marker pointing to external page.",
+      "evidenceRefs": [
+        "L0147:S1"
+      ],
+      "interpretation": "Superscript-style reference linking table data to explanatory notes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L0147:S2",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table data cell containing a monetary value.",
+      "evidenceRefs": [
+        "L0147:S2"
+      ],
+      "interpretation": "Numeric data point within a tabular grid, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L0147:S3",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table data cell containing a monetary value and reference.",
+      "evidenceRefs": [
+        "L0147:S3"
+      ],
+      "interpretation": "Numeric data point within a tabular grid, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L0148:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Repeated running header spanning top of page.",
+      "evidenceRefs": [
+        "L0148:S0"
+      ],
+      "interpretation": "Page furniture acting as a persistent running header, not a substantive local heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L0149:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Repeated sub-header indicating currency and unit conventions.",
+      "evidenceRefs": [
+        "L0149:S0"
+      ],
+      "interpretation": "Standardized disclaimer/footer text repeated as page furniture.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L0150:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading introducing key trust fund activity content.",
+      "evidenceRefs": [
+        "L0150:S0"
+      ],
+      "interpretation": "Mid-page heading establishing a substantive content region summarizing trust fund performance metrics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L0151:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Prominent section heading for active grants.",
+      "evidenceRefs": [
+        "L0151:S0"
+      ],
+      "interpretation": "Large, bold typography marks a clear structural break introducing a dedicated grants section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L0152:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose defining grants and their purpose.",
+      "evidenceRefs": [
+        "L0152:S0"
+      ],
+      "interpretation": "Narrative definition supporting the preceding heading, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L0153:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose fragment completing the grant definition.",
+      "evidenceRefs": [
+        "L0153:S0"
+      ],
+      "interpretation": "Continuation of the definitional paragraph, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L0154:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header labeling total grant counts.",
+      "evidenceRefs": [
+        "L0154:S0"
+      ],
+      "interpretation": "Tabular metadata organizing numerical columns, not a substantive document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L0155:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table header row with dense, overlapping column labels.",
+      "evidenceRefs": [
+        "L0155:S0"
+      ],
+      "interpretation": "Dense tabular metadata containing merged or misaligned text, serving as a table header rather than a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L0155:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table data cell containing numeric values.",
+      "evidenceRefs": [
+        "L0155:S1"
+      ],
+      "interpretation": "Numeric data point within a tabular grid, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L0156:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table data cell containing a monetary value.",
+      "evidenceRefs": [
+        "L0156:S0"
+      ],
+      "interpretation": "Numeric data point within a tabular grid, not a heading.",
+      "missingEvidence": []
+    }
+  ]
+}

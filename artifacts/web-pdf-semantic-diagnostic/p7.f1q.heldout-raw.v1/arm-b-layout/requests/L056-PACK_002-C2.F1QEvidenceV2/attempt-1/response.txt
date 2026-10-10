@@ -1,0 +1,355 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0112:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing chapter title and target page number.",
+      "evidenceRefs": ["L0112:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a structural heading located on the referenced target page rather than establishing structure here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0113:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0113:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an introductory section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0114:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing subsection title and target page number.",
+      "evidenceRefs": ["L0114:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a subsection heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0115:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing subsection title and target page number.",
+      "evidenceRefs": ["L0115:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a subsection heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0116:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0116:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an assessment section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0117:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0117:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an endnotes section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0118:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing chapter title and target page number.",
+      "evidenceRefs": ["L0118:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a chapter heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0119:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0119:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an introductory section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0120:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing subsection title and target page number.",
+      "evidenceRefs": ["L0120:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a subsection heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0121:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing subsection title and target page number.",
+      "evidenceRefs": ["L0121:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a subsection heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0122:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing subsection title and target page number.",
+      "evidenceRefs": ["L0122:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a subsection heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0123:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0123:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an assessment section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0124:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0124:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an endnotes section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0125:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing chapter title and target page number.",
+      "evidenceRefs": ["L0125:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a chapter heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0126:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0126:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an introductory section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0127:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing subsection title and target page number.",
+      "evidenceRefs": ["L0127:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a subsection heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0128:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing subsection title and target page number.",
+      "evidenceRefs": ["L0128:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a subsection heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0129:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0129:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an assessment section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0130:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0130:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an endnotes section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0131:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing chapter title and target page number.",
+      "evidenceRefs": ["L0131:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a chapter heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0132:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0132:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an introductory section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0133:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing subsection title and target page number.",
+      "evidenceRefs": ["L0133:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a subsection heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0134:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing subsection title and target page number.",
+      "evidenceRefs": ["L0134:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a subsection heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0135:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing subsection title and target page number.",
+      "evidenceRefs": ["L0135:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a subsection heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0136:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0136:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an assessment section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0137:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0137:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an endnotes section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0138:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing chapter title and target page number.",
+      "evidenceRefs": ["L0138:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a chapter heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0139:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0139:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an introductory section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0140:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing subsection title and target page number.",
+      "evidenceRefs": ["L0140:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a subsection heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0141:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing subsection title and target page number.",
+      "evidenceRefs": ["L0141:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a subsection heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0142:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0142:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an assessment section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0143:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0143:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an endnotes section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0144:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing chapter title and target page number.",
+      "evidenceRefs": ["L0144:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing a chapter heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0145:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry listing section title and target page number.",
+      "evidenceRefs": ["L0145:S0"],
+      "interpretation": "Functions as a navigation item in the table of contents, representing an introductory section heading located on the referenced target page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0138:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Publisher access link formatted as a small-size footer element.",
+      "evidenceRefs": ["L0138:S0"],
+      "interpretation": "This line serves as a marketing or access instruction footer, not a document heading.",
+      "missingEvidence": []
+    }
+  ]
+}

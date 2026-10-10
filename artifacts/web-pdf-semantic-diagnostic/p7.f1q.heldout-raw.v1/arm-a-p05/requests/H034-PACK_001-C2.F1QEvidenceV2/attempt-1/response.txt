@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0048:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the Preface discussion on SPD usage conditions.",
+      "evidenceRefs": [
+        "L0048:S0"
+      ],
+      "interpretation": "Continues prose from the Preface explaining when the SPD applies.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0049:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text detailing procurement method specifications.",
+      "evidenceRefs": [
+        "L0049:S0"
+      ],
+      "interpretation": "Continues sentence describing international competitive procurement procedures.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0050:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying RFB method application conditions.",
+      "evidenceRefs": [
+        "L0050:S0"
+      ],
+      "interpretation": "Explains when the Request for Bids method is applicable per project status.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0051:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text identifying financing sources and project types.",
+      "evidenceRefs": [
+        "L0051:S0"
+      ],
+      "interpretation": "Clarifies funding mechanisms (IBRD/IDA IPF) governing the document's use.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0052:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text noting alternative SPD availability for different scenarios.",
+      "evidenceRefs": [
+        "L0052:S0"
+      ],
+      "interpretation": "Directs users to a separate SPD when prequalification has occurred.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0053:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing standard usage conditions.",
+      "evidenceRefs": [
+        "L0053:S0"
+      ],
+      "interpretation": "Starts enumerated conditions for appropriate document deployment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0054:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing first usage condition.",
+      "evidenceRefs": [
+        "L0054:S0"
+      ],
+      "interpretation": "Elaborates on contract value thresholds triggering this SPD.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0055:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing second usage condition.",
+      "evidenceRefs": [
+        "L0055:S0"
+      ],
+      "interpretation": "Describes technical complexity factors requiring this document.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0056:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text elaborating on employer takeover constraints.",
+      "evidenceRefs": [
+        "L0056:S0"
+      ],
+      "interpretation": "Details safety and procedural barriers to direct employer takeover.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0057:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding acceptance procedure requirements.",
+      "evidenceRefs": [
+        "L0057:S0"
+      ],
+      "interpretation": "Finishes listing mandatory testing and commissioning steps.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0058:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining Contractor responsibility scope.",
+      "evidenceRefs": [
+        "L0058:S0"
+      ],
+      "interpretation": "Establishes Contractor accountability for facility completion activities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0059:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text enumerating Contractor activities.",
+      "evidenceRefs": [
+        "L0059:S0"
+      ],
+      "interpretation": "Lists specific operational phases under Contractor responsibility.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0060:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text addressing contract structure adaptations.",
+      "evidenceRefs": [
+        "L0060:S0"
+      ],
+      "interpretation": "Notes flexibility for single-responsibility contracting models.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0061:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text clarifying scope exclusions.",
+      "evidenceRefs": [
+        "L0061:S0"
+      ],
+      "interpretation": "Identifies tasks potentially performed by third parties.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0062:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text advising consultation for SPD selection.",
+      "evidenceRefs": [
+        "L0062:S0"
+      ],
+      "interpretation": "Instructs users to seek Bank guidance for ambiguous cases.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0063:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding consultation advice.",
+      "evidenceRefs": [
+        "L0063:S0"
+      ],
+      "interpretation": "Finalizes directive to consult appropriate Bank officials.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0064:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing contact information request.",
+      "evidenceRefs": [
+        "L0064:S0"
+      ],
+      "interpretation": "Transitions to providing channels for procurement inquiries.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0065:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text directing contact for SPD questions.",
+      "evidenceRefs": [
+        "L0065:S0"
+      ],
+      "interpretation": "Specifies purpose for contacting the listed department.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0066:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Contact role title.",
+      "evidenceRefs": [
+        "L0066:S0"
+      ],
+      "interpretation": "Identifies the primary administrative contact position.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0067:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Department name for contact.",
+      "evidenceRefs": [
+        "L0067:S0"
+      ],
+      "interpretation": "Names the administrative unit handling procurement queries.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0068:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Organization name for contact.",
+      "evidenceRefs": [
+        "L0068:S0"
+      ],
+      "interpretation": "States the issuing institution for correspondence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L0069:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Street address component.",
+      "evidenceRefs": [
+        "L0069:S0"
+      ],
+      "interpretation": "Provides physical mailing street location.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L0070:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "City, state, zip, country address.",
+      "evidenceRefs": [
+        "L0070:S0"
+      ],
+      "interpretation": "Completes physical mailing address with geographic identifiers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L0071:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Website URL.",
+      "evidenceRefs": [
+        "L0071:S0"
+      ],
+      "interpretation": "Lists digital portal for document access and information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0072:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote defining institutional terminology.",
+      "evidenceRefs": [
+        "L0072:S0"
+      ],
+      "interpretation": "Clarifies that IBRD and IDA collectively constitute the World Bank.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0073:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote continuing terminology definition.",
+      "evidenceRefs": [
+        "L0073:S0"
+      ],
+      "interpretation": "Equates 'World Bank' and 'loan' references to both IBRD and IDA instruments.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L0074:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote concluding terminology definition.",
+      "evidenceRefs": [
+        "L0074:S0"
+      ],
+      "interpretation": "Extends loan equivalence to IDA credits/grants.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L0075:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Roman numeral page number.",
+      "evidenceRefs": [
+        "L0075:S0"
+      ],
+      "interpretation": "Marks pagination for front matter sequence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L0076:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Document title on cover/title page.",
+      "evidenceRefs": [
+        "L0076:S0"
+      ],
+      "interpretation": "Functions as the primary document identifier at this location.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L0077:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for Summary section.",
+      "evidenceRefs": [
+        "L0077:S0"
+      ],
+      "interpretation": "Lists a section heading that operates in the main body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0078:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for Specific Procurement Notice.",
+      "evidenceRefs": [
+        "L0078:S0"
+      ],
+      "interpretation": "Navigates to a substantive section heading located elsewhere.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0079:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents sub-entry for RFB notice.",
+      "evidenceRefs": [
+        "L0079:S0"
+      ],
+      "interpretation": "Refines the preceding TOC entry with method specification.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L0080:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Descriptive paragraph explaining the RFB template.",
+      "evidenceRefs": [
+        "L0080:S0"
+      ],
+      "interpretation": "Provides contextual prose accompanying the TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L0081:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Descriptive paragraph concluding template explanation.",
+      "evidenceRefs": [
+        "L0081:S0"
+      ],
+      "interpretation": "Continues body prose clarifying template usage instructions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L0082:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for Bidding Document title.",
+      "evidenceRefs": [
+        "L0082:S0"
+      ],
+      "interpretation": "Lists a major section heading operating in the document body.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L0083:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry continuation for Bidding Document.",
+      "evidenceRefs": [
+        "L0083:S0"
+      ],
+      "interpretation": "Completes the split heading for the Bidding Document entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L0084:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for Part 1.",
+      "evidenceRefs": [
+        "L0084:S0"
+      ],
+      "interpretation": "Catalogs a structural division heading found later in the text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L0085:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for Section I.",
+      "evidenceRefs": [
+        "L0085:S0"
+      ],
+      "interpretation": "References a subsection heading operating in the main body.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L0086:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Descriptive paragraph for Section I.",
+      "evidenceRefs": [
+        "L0086:S0"
+      ],
+      "interpretation": "Summarizes Section I content for the contents list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L0087:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Descriptive paragraph for Section I.",
+      "evidenceRefs": [
+        "L0087:S0"
+      ],
+      "interpretation": "Continues content summary for the TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L0088:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Descriptive paragraph for Section I.",
+      "evidenceRefs": [
+        "L0088:S0"
+      ],
+      "interpretation": "Further elaborates on Section I scope in the summary.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L0089:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Descriptive paragraph for Section I.",
+      "evidenceRefs": [
+        "L0089:S0"
+      ],
+      "interpretation": "Concludes the descriptive note for Section I.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L0090:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for Section II.",
+      "evidenceRefs": [
+        "L0090:S0"
+      ],
+      "interpretation": "Lists a subsequent section heading for navigation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L0091:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Descriptive paragraph for Section II.",
+      "evidenceRefs": [
+        "L0091:S0"
+      ],
+      "interpretation": "Provides content overview for the Section II TOC entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L0092:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Descriptive paragraph for Section II.",
+      "evidenceRefs": [
+        "L0092:S0"
+      ],
+      "interpretation": "Continues summary of Section II provisions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L0093:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Descriptive paragraph for Section II.",
+      "evidenceRefs": [
+        "L0093:S0"
+      ],
+      "interpretation": "Finishes the descriptive note linking to Section I.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L0094:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Table of contents entry for Section III.",
+      "evidenceRefs": [
+        "L0094:S0"
+      ],
+      "interpretation": "Catalogs another structural division heading in the body.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L0095:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Descriptive paragraph for Section III.",
+      "evidenceRefs": [
+        "L0095:S0"
+      ],
+      "interpretation": "Summarizes Section III criteria for the contents list.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,401 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L4828:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Large-font heading marking the start of a new chapter.",
+      "evidenceRefs": [
+        "L4828:S0"
+      ],
+      "interpretation": "Functions as a substantive chapter heading in the main text, indicated by its prominent size (20.7pt) and placement at the top of the page following exercise content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L4829:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Large-font heading introducing the reference list.",
+      "evidenceRefs": [
+        "L4829:S0"
+      ],
+      "interpretation": "Serves as a section heading for the bibliography, distinguished by the largest font size on the page (24.8pt) and immediate succession to the chapter heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L4830:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "First bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4830:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing authors, title, and publication venue.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L4831:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [1].",
+      "evidenceRefs": [
+        "L4831:S0"
+      ],
+      "interpretation": "Body-text continuation line completing the journal citation for reference [1].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L4832:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Second bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4832:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing authors and paper title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L4833:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [2].",
+      "evidenceRefs": [
+        "L4833:S0"
+      ],
+      "interpretation": "Body-text continuation line providing conference proceedings details for reference [2].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L4834:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [2].",
+      "evidenceRefs": [
+        "L4834:S0"
+      ],
+      "interpretation": "Body-text continuation line concluding the citation for reference [2] with year.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L4835:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Third bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4835:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing authors and paper title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L4836:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [3].",
+      "evidenceRefs": [
+        "L4836:S0"
+      ],
+      "interpretation": "Body-text continuation line providing journal name and year for reference [3].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L4837:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fourth bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4837:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing authors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L4838:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [4].",
+      "evidenceRefs": [
+        "L4838:S0"
+      ],
+      "interpretation": "Body-text continuation line providing paper title for reference [4].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L4839:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [4].",
+      "evidenceRefs": [
+        "L4839:S0"
+      ],
+      "interpretation": "Body-text continuation line providing workshop details for reference [4].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L4840:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [4].",
+      "evidenceRefs": [
+        "L4840:S0"
+      ],
+      "interpretation": "Body-text continuation line concluding the citation for reference [4] with year.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L4841:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fifth bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4841:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing author and paper title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L4842:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [5].",
+      "evidenceRefs": [
+        "L4842:S0"
+      ],
+      "interpretation": "Body-text continuation line providing journal name, volume, and year for reference [5].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L4843:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sixth bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4843:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing author and title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L4844:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [6].",
+      "evidenceRefs": [
+        "L4844:S0"
+      ],
+      "interpretation": "Body-text continuation line providing URL and access date for reference [6].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L4845:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Seventh bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4845:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing authors and title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L4846:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [7].",
+      "evidenceRefs": [
+        "L4846:S0"
+      ],
+      "interpretation": "Body-text continuation line providing journal name, volume, and year for reference [7].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L4847:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Eighth bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4847:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing author and title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L4848:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [8].",
+      "evidenceRefs": [
+        "L4848:S0"
+      ],
+      "interpretation": "Body-text continuation line providing conference name and year for reference [8].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L4849:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Ninth bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4849:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing authors and title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L4850:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Tenth bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4850:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing author and title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L4851:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [10].",
+      "evidenceRefs": [
+        "L4851:S0"
+      ],
+      "interpretation": "Body-text continuation line providing URL and access date for reference [10].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L4852:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Eleventh bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4852:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing authors and title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L4853:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [11].",
+      "evidenceRefs": [
+        "L4853:S0"
+      ],
+      "interpretation": "Body-text continuation line providing conference proceedings details for reference [11].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L4854:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [11].",
+      "evidenceRefs": [
+        "L4854:S0"
+      ],
+      "interpretation": "Body-text continuation line concluding the citation for reference [11] with year.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L4855:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Twelfth bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4855:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing authors and title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L4856:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [12].",
+      "evidenceRefs": [
+        "L4856:S0"
+      ],
+      "interpretation": "Body-text continuation line providing conference proceedings details for reference [12].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L4857:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [12].",
+      "evidenceRefs": [
+        "L4857:S0"
+      ],
+      "interpretation": "Body-text continuation line concluding the citation for reference [12] with year.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L4858:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Thirteenth bibliographic reference entry.",
+      "evidenceRefs": [
+        "L4858:S0"
+      ],
+      "interpretation": "Standard numbered reference item formatted in body text size (10pt), listing author and title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L4859:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bibliographic reference [13].",
+      "evidenceRefs": [
+        "L4859:S0"
+      ],
+      "interpretation": "Body-text continuation line providing journal name, volume, and year for reference [13].",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L4860:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number footer.",
+      "evidenceRefs": [
+        "L4860:S0"
+      ],
+      "interpretation": "Centered numeric value at the bottom of the page, consistent with pagination furniture rather than structural heading.",
+      "missingEvidence": []
+    }
+  ]
+}

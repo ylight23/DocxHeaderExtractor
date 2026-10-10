@@ -1,0 +1,347 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0161:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Running header text repeated across multiple pages.",
+      "evidenceRefs": ["L0161:S0"],
+      "interpretation": "Recurring page header identifying the document section rather than introducing new content here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0162:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Running header/note repeated across pages.",
+      "evidenceRefs": ["L0162:S0"],
+      "interpretation": "Recurring header note indicating currency units, not a substantive heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0163:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading 'KeyTrustFundActivity' with larger font size (10.4pt).",
+      "evidenceRefs": ["L0163:S0"],
+      "interpretation": "Introduces the Key Trust Fund Activity section on this page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0164:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subheading 'DisbursementsandFIFTransfers6' with largest font (13.2pt) and bold formatting.",
+      "evidenceRefs": ["L0164:S0"],
+      "interpretation": "Introduces the Disbursements and FIF Transfers subsection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0165:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text/table data describing disbursement figures and year-over-year changes.",
+      "evidenceRefs": ["L0165:S0"],
+      "interpretation": "Narrative content explaining financial data, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0166:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote clarifying indirect costs included in the preceding data.",
+      "evidenceRefs": ["L0166:S0"],
+      "interpretation": "Supplementary footnote text attached to a table or figure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0167:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing FIF program disbursement percentages.",
+      "evidenceRefs": ["L0167:S0"],
+      "interpretation": "Analytical narrative continuing the section discussion.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0168:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuing the discussion on FIF disbursement increases.",
+      "evidenceRefs": ["L0168:S0"],
+      "interpretation": "Continuation of analytical narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0169:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying GFATM and CEPI disbursement amounts.",
+      "evidenceRefs": ["L0169:S0"],
+      "interpretation": "Continuation of analytical narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0170:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose discussing IBRD/IDATF disbursements for RE activities.",
+      "evidenceRefs": ["L0170:S0"],
+      "interpretation": "Continuation of analytical narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0171:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose naming leading programs in ECA and AFE regions.",
+      "evidenceRefs": ["L0171:S0"],
+      "interpretation": "Continuation of analytical narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0172:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing Ukraine-related disbursements and RE activity factors.",
+      "evidenceRefs": ["L0172:S0"],
+      "interpretation": "Continuation of analytical narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0173:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding remarks on country environment impacts.",
+      "evidenceRefs": ["L0173:S0"],
+      "interpretation": "Continuation of analytical narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0174:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining BE activities disbursement increase.",
+      "evidenceRefs": ["L0174:S0"],
+      "interpretation": "Continuation of analytical narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0175:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing workshop and travel cost drivers.",
+      "evidenceRefs": ["L0175:S0"],
+      "interpretation": "Continuation of analytical narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0176:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose attributing increases to advisory management and staff costs.",
+      "evidenceRefs": ["L0176:S0"],
+      "interpretation": "Continuation of analytical narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0177:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose quantifying STC and ETC cost increases.",
+      "evidenceRefs": ["L0177:S0"],
+      "interpretation": "Continuation of analytical narrative.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0178:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Horizontal line separator used in layout.",
+      "evidenceRefs": ["L0178:S0"],
+      "interpretation": "Visual divider, not textual content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0179:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote 6 defining FIF transfer exclusions.",
+      "evidenceRefs": ["L0179:S0"],
+      "interpretation": "Supplementary footnote text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0180:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote continuation regarding trustee expenses.",
+      "evidenceRefs": ["L0180:S0"],
+      "interpretation": "Supplementary footnote text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0181:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote 7 regarding IBRD/IFC implementing agency disbursements.",
+      "evidenceRefs": ["L0181:S0"],
+      "interpretation": "Supplementary footnote text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0182:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '12'.",
+      "evidenceRefs": ["L0182:S0"],
+      "interpretation": "Pagination marker.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0183:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '1'.",
+      "evidenceRefs": ["L0183:S0"],
+      "interpretation": "Pagination marker.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0184:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Running header text repeated across pages.",
+      "evidenceRefs": ["L0184:S0"],
+      "interpretation": "Recurring page header identifying the document section rather than introducing new content here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0185:S0",
+      "assessment": "SUPPORTED",
+      "function": "REPRESENTS_STRUCTURE",
+      "observedRole": "Running header/note repeated across pages.",
+      "evidenceRefs": ["L0185:S0"],
+      "interpretation": "Recurring header note indicating currency units, not a substantive heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0186:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading 'KeyTrustFundActivity' with larger font size (10.4pt).",
+      "evidenceRefs": ["L0186:S0"],
+      "interpretation": "Introduces the Key Trust Fund Activity section on this page.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0187:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subheading 'UndisbursedCommitments5' with largest font (13.2pt) and bold formatting.",
+      "evidenceRefs": ["L0187:S0"],
+      "interpretation": "Introduces the Undisbursed Commitments subsection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0188:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition of 'Commitments' in the financial context.",
+      "evidenceRefs": ["L0188:S0"],
+      "interpretation": "Explanatory body text defining terminology.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0189:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Definition of 'Undisbursed commitments'.",
+      "evidenceRefs": ["L0189:S0"],
+      "interpretation": "Explanatory body text defining terminology.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0190:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote 8 regarding FIF liabilities as undisbursed commitments.",
+      "evidenceRefs": ["L0190:S0"],
+      "interpretation": "Supplementary footnote text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0191:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote 9 regarding available fund balances.",
+      "evidenceRefs": ["L0191:S0"],
+      "interpretation": "Supplementary footnote text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0192:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footnote 10 regarding trust funds where IBRD/IFC is an agency.",
+      "evidenceRefs": ["L0192:S0"],
+      "interpretation": "Supplementary footnote text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0193:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '13'.",
+      "evidenceRefs": ["L0193:S0"],
+      "interpretation": "Pagination marker.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0194:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '1'.",
+      "evidenceRefs": ["L0194:S0"],
+      "interpretation": "Pagination marker.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

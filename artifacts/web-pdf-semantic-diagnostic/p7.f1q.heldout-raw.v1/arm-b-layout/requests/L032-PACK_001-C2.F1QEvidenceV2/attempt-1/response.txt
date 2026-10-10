@@ -1,0 +1,215 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number 'v' in Roman numerals.",
+      "evidenceRefs": ["L0031:S0"],
+      "interpretation": "Serves as page furniture indicating the fifth page of front matter, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading 'Preface' in large bold type (size 24).",
+      "evidenceRefs": ["L0032:S0"],
+      "interpretation": "Establishes document structure by marking the beginning of the Preface section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing the SPD and RFP scope.",
+      "evidenceRefs": ["L0033:S0"],
+      "interpretation": "Functions as introductory body prose explaining the document's purpose, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text describing preparation by the World Bank.",
+      "evidenceRefs": ["L0034:S0"],
+      "interpretation": "Serves as standard body prose continuing the introductory paragraph.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text referencing the Master Document.",
+      "evidenceRefs": ["L0035:S0"],
+      "interpretation": "Functions as ordinary body prose detailing document derivation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Italicized body text citing regulatory alignment.",
+      "evidenceRefs": ["L0036:S0"],
+      "interpretation": "Serves as body prose referencing specific procurement regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the regulatory reference sentence.",
+      "evidenceRefs": ["L0037:S0"],
+      "interpretation": "Functions as standard body prose completing a citation clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text stating SPD usage for procurement.",
+      "evidenceRefs": ["L0038:S0"],
+      "interpretation": "Serves as introductory body prose defining the document's application.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing the procurement method.",
+      "evidenceRefs": ["L0039:S0"],
+      "interpretation": "Functions as ordinary body prose detailing the two-stage RFP process.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the procurement method description.",
+      "evidenceRefs": ["L0040:S0"],
+      "interpretation": "Serves as standard body prose finishing the procedural explanation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying funding sources.",
+      "evidenceRefs": ["L0041:S0"],
+      "interpretation": "Functions as introductory body prose identifying IBRD and IDA funding.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing funding source specification.",
+      "evidenceRefs": ["L0042:S0"],
+      "interpretation": "Serves as ordinary body prose elaborating on legal agreement references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Italicized body text concluding the funding clause.",
+      "evidenceRefs": ["L0043:S0"],
+      "interpretation": "Functions as standard body prose finalizing the regulatory applicability statement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text directing readers to contact information.",
+      "evidenceRefs": ["L0044:S0"],
+      "interpretation": "Serves as transitional body prose leading into contact details.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0045:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the contact directive.",
+      "evidenceRefs": ["L0045:S0"],
+      "interpretation": "Functions as ordinary body prose ending the instruction to contact.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0046:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Contact role title 'Chief Procurement Officer'.",
+      "evidenceRefs": ["L0046:S0"],
+      "interpretation": "Serves as administrative contact metadata, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0047:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Department name for contact information.",
+      "evidenceRefs": ["L0047:S0"],
+      "interpretation": "Functions as organizational metadata within the contact block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0048:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Organization name 'The World Bank'.",
+      "evidenceRefs": ["L0048:S0"],
+      "interpretation": "Serves as publisher/organizational metadata in the contact block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0049:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Street address line.",
+      "evidenceRefs": ["L0049:S0"],
+      "interpretation": "Functions as physical address data within contact information.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0050:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "City, state, zip, country address line.",
+      "evidenceRefs": ["L0050:S0"],
+      "interpretation": "Serves as physical address data completing the contact block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0051:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Website URL.",
+      "evidenceRefs": ["L0051:S0"],
+      "interpretation": "Functions as digital contact metadata, not a structural heading.",
+      "missingEvidence": []
+    }
+  ]
+}

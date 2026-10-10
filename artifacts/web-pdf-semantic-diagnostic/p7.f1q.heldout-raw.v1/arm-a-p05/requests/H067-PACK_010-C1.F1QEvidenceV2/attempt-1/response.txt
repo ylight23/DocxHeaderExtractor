@@ -1,0 +1,583 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0766:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing a proof discussing RRR data structure properties.",
+      "evidenceRefs": [
+        "L0766:S0"
+      ],
+      "interpretation": "Standard body prose continuing the discussion of bitvector concatenation and RRR data size.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0767:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text referencing a general case and an exercise.",
+      "evidenceRefs": [
+        "L0767:S0"
+      ],
+      "interpretation": "Continuation of proof text directing the reader to prove a generalization.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0768:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Corrupted mathematical definition and text fragment.",
+      "evidenceRefs": [
+        "L0768:S0"
+      ],
+      "interpretation": "Garbled OCR output containing mathematical notation and partial definitions, functioning as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0769:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of a mathematical summation expression.",
+      "evidenceRefs": [
+        "L0769:S0"
+      ],
+      "interpretation": "Mathematical symbol fragment serving as part of a larger formula in the proof.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0770:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical inequality bounding RRR data structure size.",
+      "evidenceRefs": [
+        "L0770:S0"
+      ],
+      "interpretation": "Formal mathematical statement presenting an upper bound on data structure size.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0771:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Summation index notation.",
+      "evidenceRefs": [
+        "L0771:S0"
+      ],
+      "interpretation": "Small-font mathematical index marking the lower limit of a summation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0772:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '18'.",
+      "evidenceRefs": [
+        "L0772:S0"
+      ],
+      "interpretation": "Document page furniture indicating the current page number.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0773:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Opening line of a proof recalling RRR partitioning.",
+      "evidenceRefs": [
+        "L0773:S0"
+      ],
+      "interpretation": "Standard proof opening sentence establishing context for the argument.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0774:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing block size and overlap.",
+      "evidenceRefs": [
+        "L0774:S0"
+      ],
+      "interpretation": "Continuation of the proof detailing technical parameters of the partitioning scheme.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0775:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text referencing analysis results.",
+      "evidenceRefs": [
+        "L0775:S0"
+      ],
+      "interpretation": "Prose linking the current argument to previously established analytical results.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0776:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Mathematical summation symbols.",
+      "evidenceRefs": [
+        "L0776:S0"
+      ],
+      "interpretation": "Italicized mathematical operators forming part of a formula.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0777:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text with mathematical derivation.",
+      "evidenceRefs": [
+        "L0777:S0"
+      ],
+      "interpretation": "Text combining algebraic simplification with explanatory prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0778:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text discussing space bounds.",
+      "evidenceRefs": [
+        "L0778:S0"
+      ],
+      "interpretation": "Prose quantifying the space required for border blocks in the data structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0779:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding a parenthetical remark.",
+      "evidenceRefs": [
+        "L0779:S0"
+      ],
+      "interpretation": "Closing phrase of a technical aside regarding encoding classes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0780:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text stating future utility of a result.",
+      "evidenceRefs": [
+        "L0780:S0"
+      ],
+      "interpretation": "Transitional prose indicating how the current result applies to later sections.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0781:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding a paragraph on indexing.",
+      "evidenceRefs": [
+        "L0781:S0"
+      ],
+      "interpretation": "Final sentence of the preceding section's discussion on compressed indexing applications.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0782:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading introducing content on Elias-Fano data structure.",
+      "evidenceRefs": [
+        "L0782:S0"
+      ],
+      "interpretation": "The occurrence displays a numbered section title ('1.4') with a descriptive subtitle, formatted in a larger font (14.4pt vs 10pt body), establishing the start of a new substantive section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0783:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Cross-referencing external literature for further details.",
+      "evidenceRefs": [
+        "L0783:S0"
+      ],
+      "interpretation": "Introductory sentence directing readers to supplementary material outside the main text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0784:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Problem statement defining set encoding parameters.",
+      "evidenceRefs": [
+        "L0784:S0"
+      ],
+      "interpretation": "Formal definition of the encoding problem setting up the section's scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0785:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text citing prior section and necessary bits.",
+      "evidenceRefs": [
+        "L0785:S0"
+      ],
+      "interpretation": "Prose establishing information-theoretic lower bounds referenced from earlier work.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0786:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text stating sufficient bits and data structure goal.",
+      "evidenceRefs": [
+        "L0786:S0"
+      ],
+      "interpretation": "Statement of the section's primary claim regarding achievable compression and supported operations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0787:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text completing the query support statement.",
+      "evidenceRefs": [
+        "L0787:S0"
+      ],
+      "interpretation": "Concluding fragment of the problem formulation sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0788:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text recalling observations from a prior section.",
+      "evidenceRefs": [
+        "L0788:S0"
+      ],
+      "interpretation": "Recall of established equivalences between sets and bitvectors to motivate the current approach.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0789:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text equating sets and bitvectors.",
+      "evidenceRefs": [
+        "L0789:S0"
+      ],
+      "interpretation": "Explanatory prose bridging conceptual models with technical constraints.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0790:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text clarifying set constraints.",
+      "evidenceRefs": [
+        "L0790:S0"
+      ],
+      "interpretation": "Parenthetical clarification of boundary conditions for the integer sets under consideration.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0791:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example label and introductory text for a set encoding illustration.",
+      "evidenceRefs": [
+        "L0791:S0"
+      ],
+      "interpretation": "Numbered example header followed by initial setup of a concrete instance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0792:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example text illustrating bitvector encoding.",
+      "evidenceRefs": [
+        "L0792:S0"
+      ],
+      "interpretation": "Demonstration of how a specific set maps to a binary string.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0793:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example text confirming bidirectional representation.",
+      "evidenceRefs": [
+        "L0793:S0"
+      ],
+      "interpretation": "Statement reinforcing the equivalence between bitvectors and integer sets.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0794:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text applying previous section's data structure.",
+      "evidenceRefs": [
+        "L0794:S0"
+      ],
+      "interpretation": "Logical deduction extending prior results to the current set encoding context.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0795:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text noting applicability to set storage.",
+      "evidenceRefs": [
+        "L0795:S0"
+      ],
+      "interpretation": "Observation that the RRR structure can directly store integer sets.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0796:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text analyzing space optimality.",
+      "evidenceRefs": [
+        "L0796:S0"
+      ],
+      "interpretation": "Evaluation of the storage efficiency relative to theoretical bounds.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0797:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text contrasting cases where approximation fails.",
+      "evidenceRefs": [
+        "L0797:S0"
+      ],
+      "interpretation": "Analysis of scenarios where the o(n) overhead becomes problematic.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0798:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text quantifying the extra space term.",
+      "evidenceRefs": [
+        "L0798:S0"
+      ],
+      "interpretation": "Technical specification of the asymptotic overhead magnitude.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0799:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the sparsity observation.",
+      "evidenceRefs": [
+        "L0799:S0"
+      ],
+      "interpretation": "Single-word conclusion emphasizing the impact of low set density.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0800:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example label and scenario setup for IPv4 addresses.",
+      "evidenceRefs": [
+        "L0800:S0"
+      ],
+      "interpretation": "Numbered example header introducing a practical application case.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0801:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example text calculating naive storage cost.",
+      "evidenceRefs": [
+        "L0801:S0"
+      ],
+      "interpretation": "Quantitative comparison of straightforward versus optimized storage approaches.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0802:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example text comparing against information-theoretic bounds.",
+      "evidenceRefs": [
+        "L0802:S0"
+      ],
+      "interpretation": "Reference to fundamental limits to contextualize the naive approach's inefficiency.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0803:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example text evaluating previous section's solution cost.",
+      "evidenceRefs": [
+        "L0803:S0"
+      ],
+      "interpretation": "Application of the RRR-based method to the IPv4 scenario.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0804:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example text computing actual space usage.",
+      "evidenceRefs": [
+        "L0804:S0"
+      ],
+      "interpretation": "Numerical demonstration of the excessive memory consumption caused by the o(n) term.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0805:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example text concluding the o(n) term analysis.",
+      "evidenceRefs": [
+        "L0805:S0"
+      ],
+      "interpretation": "Summary judgment on when the asymptotic overhead is acceptable.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0806:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing a new data structure to remove overhead.",
+      "evidenceRefs": [
+        "L0806:S0"
+      ],
+      "interpretation": "Motivational transition proposing a solution to the identified inefficiency.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0807:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text naming the Elias-Fano structure.",
+      "evidenceRefs": [
+        "L0807:S0"
+      ],
+      "interpretation": "Attribution of the proposed method to its original authors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0808:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text transitioning to an illustrative example.",
+      "evidenceRefs": [
+        "L0808:S0"
+      ],
+      "interpretation": "Pedagogical shift from abstract description to concrete construction.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0809:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying simplifying assumptions.",
+      "evidenceRefs": [
+        "L0809:S0"
+      ],
+      "interpretation": "Clarification of parameter constraints adopted for the upcoming demonstration.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0810:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example label and set definition for Elias-Fano construction.",
+      "evidenceRefs": [
+        "L0810:S0"
+      ],
+      "interpretation": "Numbered example header providing the input set for the algorithm walkthrough.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0811:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example text providing universe and cardinality values.",
+      "evidenceRefs": [
+        "L0811:S0"
+      ],
+      "interpretation": "Parameter initialization for the Elias-Fano construction steps.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0812:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '19'.",
+      "evidenceRefs": [
+        "L0812:S0"
+      ],
+      "interpretation": "Document page furniture indicating the current page number.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0813:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Example continuation describing binary encoding step.",
+      "evidenceRefs": [
+        "L0813:S0"
+      ],
+      "interpretation": "Instructional text guiding the reader through the first transformation phase.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

@@ -1,0 +1,485 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1415:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Fragment of body prose concluding a sentence.",
+      "evidenceRefs": ["L1415:S0"],
+      "interpretation": "Continues body paragraph discussing checksums and canonical form; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1416:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer containing author, track, and page number.",
+      "evidenceRefs": ["L1416:S0"],
+      "interpretation": "Administrative page furniture repeating across pages; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1417:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header repeating document title across pages.",
+      "evidenceRefs": ["L1417:S0"],
+      "interpretation": "Page furniture indicating document identity; operates as navigation metadata rather than a substantive heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1418:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Substantive appendix subheading introducing section B.4.",
+      "evidenceRefs": ["L1418:S0"],
+      "interpretation": "Bold, larger font (12pt) at left margin marks a distinct content region about Content-Encoding conversion.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1419:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Opening line of body paragraph explaining MIME vs HTTP.",
+      "evidenceRefs": ["L1419:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph indentation; continues explanatory prose following the heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1420:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on proxy behavior.",
+      "evidenceRefs": ["L1420:S0"],
+      "interpretation": "Regular 10pt font, flows directly from preceding line; standard body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1421:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on header field handling.",
+      "evidenceRefs": ["L1421:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1422:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph citing experimental apps.",
+      "evidenceRefs": ["L1422:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1423:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on media-type parameters.",
+      "evidenceRefs": ["L1423:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1424:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph noting parameter exclusion.",
+      "evidenceRefs": ["L1424:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1425:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding fragment of body paragraph.",
+      "evidenceRefs": ["L1425:S0"],
+      "interpretation": "Regular 10pt font, closes parenthetical note; standard body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1426:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Substantive appendix subheading introducing section B.5.",
+      "evidenceRefs": ["L1426:S0"],
+      "interpretation": "Bold, larger font (12pt) at left margin marks a distinct content region about Content-Transfer-Encoding.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1427:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Opening line of body paragraph on MIME fields.",
+      "evidenceRefs": ["L1427:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph indentation; follows heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1428:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on gateway requirements.",
+      "evidenceRefs": ["L1428:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1429:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on response delivery.",
+      "evidenceRefs": ["L1429:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1430:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Opening line of new body paragraph on HTTP-to-MIME proxies.",
+      "evidenceRefs": ["L1430:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph indentation; introduces next procedural point.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1431:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph defining safe transport.",
+      "evidenceRefs": ["L1431:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1432:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on proxy obligations.",
+      "evidenceRefs": ["L1432:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1433:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on data transformation.",
+      "evidenceRefs": ["L1433:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1434:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding line of body paragraph.",
+      "evidenceRefs": ["L1434:S0"],
+      "interpretation": "Regular 10pt font, closes procedural explanation; standard body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1435:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Substantive appendix subheading introducing section B.6.",
+      "evidenceRefs": ["L1435:S0"],
+      "interpretation": "Bold, larger font (12pt) at left margin marks a distinct content region about MHTML limitations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1436:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Opening line of body paragraph on shared code implications.",
+      "evidenceRefs": ["L1436:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph indentation; follows heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1437:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on line length limits.",
+      "evidenceRefs": ["L1437:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1438:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on MHTML conventions.",
+      "evidenceRefs": ["L1438:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1439:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on folding rules.",
+      "evidenceRefs": ["L1439:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1440:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on byte ranges.",
+      "evidenceRefs": ["L1440:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1441:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on content interpretation.",
+      "evidenceRefs": ["L1441:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1442:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding fragment of body paragraph.",
+      "evidenceRefs": ["L1442:S0"],
+      "interpretation": "Regular 10pt font, closes sentence; standard body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1443:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Major appendix heading introducing Appendix C.",
+      "evidenceRefs": ["L1443:S0"],
+      "interpretation": "Largest font (14.4pt), bold, positioned at left margin; clearly demarcates a new major section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1444:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading introducing C.1 changes.",
+      "evidenceRefs": ["L1444:S0"],
+      "interpretation": "Bold, larger font (12pt) at left margin; hierarchical subheading under Appendix C.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1445:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Opening line of body paragraph on HTTP/0.9 limitations.",
+      "evidenceRefs": ["L1445:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph indentation; follows heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1446:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on virtual hosts.",
+      "evidenceRefs": ["L1446:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1447:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on server implementation.",
+      "evidenceRefs": ["L1447:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1448:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on malformed requests.",
+      "evidenceRefs": ["L1448:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1449:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding line of body paragraph.",
+      "evidenceRefs": ["L1449:S0"],
+      "interpretation": "Regular 10pt font, closes explanation; standard body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1450:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer containing author, track, and page number.",
+      "evidenceRefs": ["L1450:S0"],
+      "interpretation": "Administrative page furniture repeating across pages; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1451:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header repeating document title across pages.",
+      "evidenceRefs": ["L1451:S0"],
+      "interpretation": "Page furniture indicating document identity; operates as navigation metadata rather than a substantive heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1452:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "First part of subsection heading 'C.2.'.",
+      "evidenceRefs": ["L1452:S0"],
+      "interpretation": "Bold, larger font (12pt); initiates hierarchical heading structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1452:S1",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Second part of subsection heading 'Changes from HTTP/1.0'.",
+      "evidenceRefs": ["L1452:S1"],
+      "interpretation": "Bold, larger font (12pt); completes hierarchical heading structure alongside O38.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1453:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Sub-subsection heading introducing C.2.1.",
+      "evidenceRefs": ["L1453:S0"],
+      "interpretation": "Bold font (10pt) at left margin; hierarchical subheading under C.2.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1454:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Opening line of body paragraph on Host header requirements.",
+      "evidenceRefs": ["L1454:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph indentation; follows heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1455:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on error reporting.",
+      "evidenceRefs": ["L1455:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1456:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on importance of changes.",
+      "evidenceRefs": ["L1456:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1457:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Opening line of new body paragraph on older clients.",
+      "evidenceRefs": ["L1457:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph indentation; introduces next historical point.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1458:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on IP addressing.",
+      "evidenceRefs": ["L1458:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1459:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on request targeting.",
+      "evidenceRefs": ["L1459:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L1460:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on Host field introduction.",
+      "evidenceRefs": ["L1460:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L1461:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body paragraph on additional requirements.",
+      "evidenceRefs": ["L1461:S0"],
+      "interpretation": "Regular 10pt font, standard paragraph flow; no structural markers.",
+      "missingEvidence": []
+    }
+  ]
+}

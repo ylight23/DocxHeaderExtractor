@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0337:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory phrase preceding an example command.",
+      "evidenceRefs": [
+        "L0337:S0"
+      ],
+      "interpretation": "Functions as body prose introducing a code example, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0338:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monospaced example HTTP request line.",
+      "evidenceRefs": [
+        "L0338:S0"
+      ],
+      "interpretation": "Serves as illustrative technical data within body text, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0339:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monospaced example Host header field.",
+      "evidenceRefs": [
+        "L0339:S0"
+      ],
+      "interpretation": "Serves as illustrative technical data within body text, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0340:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer containing author and page number metadata.",
+      "evidenceRefs": [
+        "L0340:S0"
+      ],
+      "interpretation": "Page furniture providing publication metadata, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0341:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header displaying RFC title and date.",
+      "evidenceRefs": [
+        "L0341:S0"
+      ],
+      "interpretation": "Repeating page furniture for navigation, not a substantive document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0342:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose describing request message structure.",
+      "evidenceRefs": [
+        "L0342:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining protocol mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0343:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading '3.2.2. absolute-form' in bold typeface.",
+      "evidenceRefs": [
+        "L0343:S0"
+      ],
+      "interpretation": "Bold, numbered label introducing a substantive section defining absolute-form request-targets.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0344:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining proxy request requirements.",
+      "evidenceRefs": [
+        "L0344:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0345:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying client MUST behavior for absolute-form.",
+      "evidenceRefs": [
+        "L0345:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0346:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monospaced ABNF grammar definition for absolute-form.",
+      "evidenceRefs": [
+        "L0346:S0"
+      ],
+      "interpretation": "Technical syntax specification embedded in body text, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0347:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing proxy caching and forwarding actions.",
+      "evidenceRefs": [
+        "L0347:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining protocol mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0348:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuing proxy forwarding instructions.",
+      "evidenceRefs": [
+        "L0348:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining protocol mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0349:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying origin server targeting.",
+      "evidenceRefs": [
+        "L0349:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining protocol mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0350:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose referencing external specification.",
+      "evidenceRefs": [
+        "L0350:S0"
+      ],
+      "interpretation": "Standard paragraph text citing normative references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0351:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Transitional sentence introducing an example.",
+      "evidenceRefs": [
+        "L0351:S0"
+      ],
+      "interpretation": "Body prose bridging explanation to illustrative code.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0352:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monospaced example HTTP request line with absolute-form.",
+      "evidenceRefs": [
+        "L0352:S0"
+      ],
+      "interpretation": "Illustrative technical data within body text, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0353:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose mandating Host header presence.",
+      "evidenceRefs": [
+        "L0353:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0354:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining Host header forwarding rationale.",
+      "evidenceRefs": [
+        "L0354:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining protocol mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0355:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding Host header explanation.",
+      "evidenceRefs": [
+        "L0355:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining protocol mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0356:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing proxy handling of absolute-form.",
+      "evidenceRefs": [
+        "L0356:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0357:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying Host header replacement rule.",
+      "evidenceRefs": [
+        "L0357:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0358:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose defining proxy forwarding Host field generation.",
+      "evidenceRefs": [
+        "L0358:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0359:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding proxy Host field requirement.",
+      "evidenceRefs": [
+        "L0359:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0360:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing origin server handling of absolute-form.",
+      "evidenceRefs": [
+        "L0360:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0361:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying origin server Host header replacement.",
+      "evidenceRefs": [
+        "L0361:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0362:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose noting edge case for missing authority component.",
+      "evidenceRefs": [
+        "L0362:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining protocol edge cases.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0363:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining empty Host header consequence.",
+      "evidenceRefs": [
+        "L0363:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining protocol mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0364:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose mandating server acceptance of absolute-form.",
+      "evidenceRefs": [
+        "L0364:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0365:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose clarifying typical client usage patterns.",
+      "evidenceRefs": [
+        "L0365:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining implementation norms.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0366:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading '3.2.3. authority-form' in bold typeface.",
+      "evidenceRefs": [
+        "L0366:S0"
+      ],
+      "interpretation": "Bold, numbered label introducing a substantive section defining authority-form request-targets.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0367:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose restricting authority-form to CONNECT requests.",
+      "evidenceRefs": [
+        "L0367:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0368:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose defining authority-form composition.",
+      "evidenceRefs": [
+        "L0368:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining syntax structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0369:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose completing syntax description.",
+      "evidenceRefs": [
+        "L0369:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining syntax structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0370:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monospaced ABNF grammar definition for authority-form.",
+      "evidenceRefs": [
+        "L0370:S0"
+      ],
+      "interpretation": "Technical syntax specification embedded in body text, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0371:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page footer containing author and page number metadata.",
+      "evidenceRefs": [
+        "L0371:S0"
+      ],
+      "interpretation": "Page furniture providing publication metadata, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0372:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header displaying RFC title and date.",
+      "evidenceRefs": [
+        "L0372:S0"
+      ],
+      "interpretation": "Repeating page furniture for navigation, not a substantive document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0373:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing CONNECT tunnel establishment.",
+      "evidenceRefs": [
+        "L0373:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0374:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying request-target content for CONNECT.",
+      "evidenceRefs": [
+        "L0374:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0375:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining host/port extraction from URI.",
+      "evidenceRefs": [
+        "L0375:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining protocol mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0376:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose covering default port handling.",
+      "evidenceRefs": [
+        "L0376:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining protocol mechanics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0377:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Transitional sentence introducing a CONNECT example.",
+      "evidenceRefs": [
+        "L0377:S0"
+      ],
+      "interpretation": "Body prose bridging explanation to illustrative code.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0378:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monospaced example CONNECT request line.",
+      "evidenceRefs": [
+        "L0378:S0"
+      ],
+      "interpretation": "Illustrative technical data within body text, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0379:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monospaced example Host header for CONNECT.",
+      "evidenceRefs": [
+        "L0379:S0"
+      ],
+      "interpretation": "Illustrative technical data within body text, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0380:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading '3.2.4. asterisk-form' in bold typeface.",
+      "evidenceRefs": [
+        "L0380:S0"
+      ],
+      "interpretation": "Bold, numbered label introducing a substantive section defining asterisk-form request-targets.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0381:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose restricting asterisk-form to server-wide OPTIONS.",
+      "evidenceRefs": [
+        "L0381:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing protocol rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0382:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose completing reference to external specification.",
+      "evidenceRefs": [
+        "L0382:S0"
+      ],
+      "interpretation": "Standard paragraph text citing normative references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0383:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monospaced ABNF grammar definition for asterisk-form.",
+      "evidenceRefs": [
+        "L0383:S0"
+      ],
+      "interpretation": "Technical syntax specification embedded in body text, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0384:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing client intent for server-wide OPTIONS.",
+      "evidenceRefs": [
+        "L0384:S0"
+      ],
+      "interpretation": "Standard paragraph text explaining protocol mechanics.",
+      "missingEvidence": []
+    }
+  ]
+}

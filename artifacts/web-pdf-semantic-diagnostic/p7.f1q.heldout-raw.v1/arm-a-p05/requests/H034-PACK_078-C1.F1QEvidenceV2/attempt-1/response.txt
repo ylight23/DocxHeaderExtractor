@@ -1,0 +1,582 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L6597:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment continuing arbitration location details.",
+      "evidenceRefs": [
+        "L6597:S0"
+      ],
+      "interpretation": "Continues prose describing arbitration venue logistics within a clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L6598:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment regarding place selection criteria.",
+      "evidenceRefs": [
+        "L6598:S0"
+      ],
+      "interpretation": "Continues procedural prose about selecting an arbitration venue.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L6599:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment referencing applicable arbitration rules.",
+      "evidenceRefs": [
+        "L6599:S0"
+      ],
+      "interpretation": "Continues clause prose specifying governing arbitration rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L6600:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment listing arbitration language requirements.",
+      "evidenceRefs": [
+        "L6600:S0"
+      ],
+      "interpretation": "Continues enumerated clause text defining communication language.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L6601:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment concluding language provision.",
+      "evidenceRefs": [
+        "L6601:S0"
+      ],
+      "interpretation": "Finishes the language specification clause referencing Sub-Clause 5.3.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L6602:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment introducing domestic contractor arbitration.",
+      "evidenceRefs": [
+        "L6602:S0"
+      ],
+      "interpretation": "Starts a new enumerated provision distinguishing domestic contractor procedures.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L6603:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment specifying governing law for proceedings.",
+      "evidenceRefs": [
+        "L6603:S0"
+      ],
+      "interpretation": "Continues legal framework text defining applicable jurisdictional laws.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L6604:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment concluding governing law provision.",
+      "evidenceRefs": [
+        "L6604:S0"
+      ],
+      "interpretation": "Finishes the jurisdiction clause referencing the Employer’s Country.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L6605:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment defining arbitrator powers.",
+      "evidenceRefs": [
+        "L6605:S0"
+      ],
+      "interpretation": "Introduces substantive clause text granting arbitrators review authority.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L6606:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment listing items subject to arbitrator revision.",
+      "evidenceRefs": [
+        "L6606:S0"
+      ],
+      "interpretation": "Continues enumerating certificates and opinions arbitrators may revise.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L6607:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment extending arbitrator review scope.",
+      "evidenceRefs": [
+        "L6607:S0"
+      ],
+      "interpretation": "Continues clause text covering Project Manager valuations and DB decisions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L6608:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment limiting Project Manager disqualification.",
+      "evidenceRefs": [
+        "L6608:S0"
+      ],
+      "interpretation": "Continues prose clarifying Project Manager eligibility as a witness.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L6609:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment authorizing Project Manager testimony.",
+      "evidenceRefs": [
+        "L6609:S0"
+      ],
+      "interpretation": "Continues clause text permitting Project Manager evidence submission.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L6610:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment broadening witness testimony scope.",
+      "evidenceRefs": [
+        "L6610:S0"
+      ],
+      "interpretation": "Continues prose allowing testimony on any relevant matter whatsoever.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L6611:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment concluding witness provision.",
+      "evidenceRefs": [
+        "L6611:S0"
+      ],
+      "interpretation": "Finishes the clause regarding arbitrator access to project evidence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L6612:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment restricting party limitations in proceedings.",
+      "evidenceRefs": [
+        "L6612:S0"
+      ],
+      "interpretation": "Introduces clause text ensuring parties retain full evidentiary rights.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L6613:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment expanding admissible arguments.",
+      "evidenceRefs": [
+        "L6613:S0"
+      ],
+      "interpretation": "Continues prose allowing arguments beyond those previously presented to DB.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L6614:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment referencing DB decision reasoning.",
+      "evidenceRefs": [
+        "L6614:S0"
+      ],
+      "interpretation": "Continues clause text permitting challenge of DB satisfaction reasons.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L6615:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment introducing notice of dissatisfaction.",
+      "evidenceRefs": [
+        "L6615:S0"
+      ],
+      "interpretation": "Continues prose detailing formal notice requirements for disputes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L6616:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment establishing DB decision admissibility.",
+      "evidenceRefs": [
+        "L6616:S0"
+      ],
+      "interpretation": "Introduces clause text making DB decisions admissible as evidence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L6617:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment concluding evidence admissibility.",
+      "evidenceRefs": [
+        "L6617:S0"
+      ],
+      "interpretation": "Finishes the provision confirming DB decision utility in arbitration.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L6618:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment timing arbitration commencement.",
+      "evidenceRefs": [
+        "L6618:S0"
+      ],
+      "interpretation": "Introduces clause text allowing arbitration before or after work completion.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L6619:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment preserving party obligations during arbitration.",
+      "evidenceRefs": [
+        "L6619:S0"
+      ],
+      "interpretation": "Continues prose stating contractual duties remain unchanged pending arbitration.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L6620:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment protecting DB status during arbitration.",
+      "evidenceRefs": [
+        "L6620:S0"
+      ],
+      "interpretation": "Continues clause text ensuring DB and Project Manager roles persist.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L6621:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment concluding concurrent arbitration provision.",
+      "evidenceRefs": [
+        "L6621:S0"
+      ],
+      "interpretation": "Finishes the clause addressing parallel arbitration and construction progress.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L6622:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subclause heading '46.6 Failure to Comply with Dispute Board’s Decision'.",
+      "evidenceRefs": [
+        "L6622:S0"
+      ],
+      "interpretation": "Functions as a numbered subclause heading introducing a new substantive rule.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L6623:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment initiating non-compliance scenario.",
+      "evidenceRefs": [
+        "L6623:S0"
+      ],
+      "interpretation": "Continues prose describing conditions triggering arbitration for DB non-compliance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L6624:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment specifying finality condition.",
+      "evidenceRefs": [
+        "L6624:S0"
+      ],
+      "interpretation": "Continues clause text requiring DB decision to be final and binding.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L6625:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment preserving alternative rights.",
+      "evidenceRefs": [
+        "L6625:S0"
+      ],
+      "interpretation": "Continues prose noting non-prejudice to other contractual remedies.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L6626:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment directing failure to arbitration.",
+      "evidenceRefs": [
+        "L6626:S0"
+      ],
+      "interpretation": "Continues clause text mandating referral of non-compliance to arbitration.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L6627:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment excluding prior subclauses.",
+      "evidenceRefs": [
+        "L6627:S0"
+      ],
+      "interpretation": "Continues prose explicitly waiving application of GC Sub-Clauses 46.3 and 46.4.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L6628:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subclause heading '46.7 Expiry of Dispute Board’s Appointment'.",
+      "evidenceRefs": [
+        "L6628:S0"
+      ],
+      "interpretation": "Functions as a numbered subclause heading introducing a new substantive rule.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L6629:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment setting dispute arising condition.",
+      "evidenceRefs": [
+        "L6629:S0"
+      ],
+      "interpretation": "Continues prose describing trigger events when no DB is operational.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L6630:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment identifying absence of DB.",
+      "evidenceRefs": [
+        "L6630:S0"
+      ],
+      "interpretation": "Continues clause text specifying scenarios where DB is not in place.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L6631:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment citing expiry as cause.",
+      "evidenceRefs": [
+        "L6631:S0"
+      ],
+      "interpretation": "Continues prose listing appointment expiry as a reason for DB absence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L6632:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header containing section title and page number.",
+      "evidenceRefs": [
+        "L6632:S0"
+      ],
+      "interpretation": "Functions as page furniture/navigation aid, not a substantive heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L6633:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment providing alternative condition.",
+      "evidenceRefs": [
+        "L6633:S0"
+      ],
+      "interpretation": "Continues clause text offering catch-all phrasing for DB absence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L6634:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List marker '(a)' initiating enumerated provision.",
+      "evidenceRefs": [
+        "L6634:S0"
+      ],
+      "interpretation": "Functions as a structural list indicator, not a substantive heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L6634:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment applying exclusion rule.",
+      "evidenceRefs": [
+        "L6634:S1"
+      ],
+      "interpretation": "Continues clause text reiterating non-application of specific subclauses.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L6635:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List marker '(b)' initiating second enumerated provision.",
+      "evidenceRefs": [
+        "L6635:S0"
+      ],
+      "interpretation": "Functions as a structural list indicator for subsequent arbitration path.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L6635:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment directing direct arbitration referral.",
+      "evidenceRefs": [
+        "L6635:S1"
+      ],
+      "interpretation": "Continues prose allowing bypass of DB process when appointment expires.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L6636:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text fragment citing governing subclause.",
+      "evidenceRefs": [
+        "L6636:S0"
+      ],
+      "interpretation": "Continues clause text referencing GC Sub-Clause 46.5 as procedural basis.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L6637:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header containing section title and page number.",
+      "evidenceRefs": [
+        "L6637:S0"
+      ],
+      "interpretation": "Functions as page furniture/navigation aid, not a substantive heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L6638:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Major appendix title 'APPENDIX A' in large bold type.",
+      "evidenceRefs": [
+        "L6638:S0"
+      ],
+      "interpretation": "Functions as a prominent document-level heading marking a new appendix section.",
+      "missingEvidence": []
+    },
+    {
+      {
+      "occurrence": "O45",
+      "sourceAlias": "L6639:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtitle heading 'General Conditions of Dispute Board Agreement' in bold.",
+      "evidenceRefs": [
+        "L6639:S0"
+      ],
+      "interpretation": "Functions as a substantive heading identifying the specific agreement template.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L6640:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section heading '1. Definitions'.",
+      "evidenceRefs": [
+        "L6640:S0"
+      ],
+      "interpretation": "Functions as a standard section heading introducing definitional provisions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L6641:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Introductory body text defining agreement parties.",
+      "evidenceRefs": [
+        "L6641:S0"
+      ],
+      "interpretation": "Continues prose establishing the tripartite nature of the Dispute Board Agreement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L6642:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item identifying the Employer party.",
+      "evidenceRefs": [
+        "L6642:S0"
+      ],
+      "interpretation": "Functions as a definitional list element naming a contracting party.",
+      "missingEvidence": []
+    }
+  ]
+}

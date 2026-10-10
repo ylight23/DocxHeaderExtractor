@@ -1,0 +1,389 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Administrative translation disclaimer",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Serves as a metadata label indicating the document is an unofficial translation, not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Administrative reference restriction",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Functions as an internal distribution or handling instruction, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Issuing authority identifier",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Identifies the government body issuing the decree; acts as organizational metadata rather than a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0002:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National header",
+      "evidenceRefs": [
+        "L0002:S1"
+      ],
+      "interpretation": "States the sovereign state name as a formal header; classified as administrative/national metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative separator line",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Purely graphical punctuation separating header elements from the main title block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0003:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National motto",
+      "evidenceRefs": [
+        "L0003:S1"
+      ],
+      "interpretation": "Displays the official state motto; functions as national metadata, not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Decorative separator line",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Graphical element used for visual separation within the cover page header.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Document reference and date",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Provides the decree number, issuance location, and date; serves as bibliographic metadata.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main document title",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Acts as the primary title identifying the legal instrument type ('DECREE') at the document's opening.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subject subtitle",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Completes the full title by specifying the decree's regulatory scope and subject matter.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal preamble clause",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Standard statutory preamble language citing enabling legislation; functions as introductory body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal preamble clause",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Continues the statutory preamble citing another enabling law; functions as introductory body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal preamble clause",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Continues the statutory preamble citing the specific foreign trade law; functions as introductory body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal preamble clause",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Continues the statutory preamble citing investment laws; functions as introductory body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal preamble clause continuation",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Extends the citation of investment law amendments; functions as introductory body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Legal preamble clause conclusion",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Concludes the series of 'Pursuant to' citations; functions as introductory body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Request citation",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Cites the ministerial request triggering the decree; functions as introductory body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Promulgation statement",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Contains the operative verb 'promulgates'; functions as the main clause of the preamble.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Promulgation statement continuation",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Completes the promulgation sentence; functions as introductory body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Chapter heading",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Marks the beginning of the first major structural division of the decree.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Names the thematic content of Chapter I; functions as a substantive structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Identifies the first article and its topic ('Scope'); functions as a substantive structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text clause",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Begins the substantive provisions defining the decree's scope; functions as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text clause",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Continues the scope definition; functions as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text sub-clause",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Lists specific trade activities covered by the decree; functions as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text sub-clause",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Continues listing trade activities; functions as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text sub-clause",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "References compliance with Vietnamese and international law; functions as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text sub-clause",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Concludes the first sub-clause on international exchange; functions as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text sub-clause",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Introduces dispute resolution scope; functions as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text sub-clause",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Begins paragraph 2 listing exclusions; functions as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text sub-clause",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Continues listing exclusions like diplomatic goods; functions as body prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Article heading",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Identifies the second article and its topic ('Regulated entities'); functions as a substantive structural heading.",
+      "missingEvidence": []
+    }
+  ]
+}

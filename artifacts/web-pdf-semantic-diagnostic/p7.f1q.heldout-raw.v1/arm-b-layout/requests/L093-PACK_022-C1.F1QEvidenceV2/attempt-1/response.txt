@@ -1,0 +1,385 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1451:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header repeating RFC title and publication date across pages",
+      "evidenceRefs": ["L1451:S0"],
+      "interpretation": "Document running header, not a substantive content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1452:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section number 'C.2.' rendered in bold 12pt type",
+      "evidenceRefs": ["L1452:S0"],
+      "interpretation": "First line of section heading 'C.2. Changes from HTTP/1.0' establishing document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1452:S1",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Heading text 'Changes from HTTP/1.0' rendered in bold 12pt type",
+      "evidenceRefs": ["L1452:S1"],
+      "interpretation": "Second line of section heading continuing 'C.2.' to establish document structure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1453:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading 'C.2.1. Multihomed Web Servers' in bold 10pt type",
+      "evidenceRefs": ["L1453:S0"],
+      "interpretation": "Subsection heading introducing content about multihomed web servers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1454:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1454:S0"],
+      "interpretation": "Body prose explaining Host header field requirements and their importance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1455:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1455:S0"],
+      "interpretation": "Continuation of body prose regarding error reporting and URI acceptance.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1456:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1456:S0"],
+      "interpretation": "Conclusion of the sentence identifying these as key HTTP/1.1 changes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1457:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1457:S0"],
+      "interpretation": "Body prose describing legacy HTTP/1.0 client assumptions about IP addresses.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1458:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1458:S0"],
+      "interpretation": "Continuation of body prose on server distinction mechanisms.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1459:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1459:S0"],
+      "interpretation": "Body prose introducing the Host header field during HTTP/1.1 development.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1460:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1460:S0"],
+      "interpretation": "Continuation of body prose on browser implementation and new requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1461:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1461:S0"],
+      "interpretation": "Body prose detailing requirements placed on HTTP/1.1 requests.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1462:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1462:S0"],
+      "interpretation": "Body prose noting current dependency of HTTP services on the Host field.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1463:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1463:S0"],
+      "interpretation": "Conclusion of the paragraph on Host header targeting.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1464:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading 'C.2.2. Keep-Alive Connections' in bold 10pt type",
+      "evidenceRefs": ["L1464:S0"],
+      "interpretation": "Subsection heading introducing content about persistent connections.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1465:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1465:S0"],
+      "interpretation": "Body prose describing standard HTTP/1.0 connection establishment and closure.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1466:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1466:S0"],
+      "interpretation": "Continuation of body prose on explicit keep-alive implementations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1467:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1467:S0"],
+      "interpretation": "Body prose referencing negotiated persistent connections from earlier specs.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1468:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1468:S0"],
+      "interpretation": "Reference citation concluding the sentence on persistent connections.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1469:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1469:S0"],
+      "interpretation": "Body prose discussing client compatibility needs with previous approaches.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1470:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1470:S0"],
+      "interpretation": "Body prose explaining explicit keep-alive negotiation via request headers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1471:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1471:S0"],
+      "interpretation": "Body prose warning about faulty experimental HTTP/1.0 persistent connection implementations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1472:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1472:S0"],
+      "interpretation": "Body prose illustrating proxy handling errors with Connection headers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1473:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1473:S0"],
+      "interpretation": "Body prose describing erroneous header forwarding causing hung connections.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1474:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1474:S0"],
+      "interpretation": "Conclusion of the sentence on hung connections.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1475:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1475:S0"],
+      "interpretation": "Body prose introducing the Proxy-Connection header field as a solution attempt.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1476:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1476:S0"],
+      "interpretation": "Body prose explaining why Proxy-Connection was unworkable due to proxy layers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1477:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1477:S0"],
+      "interpretation": "Continuation of body prose on multi-layer proxy problems.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1478:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1478:S0"],
+      "interpretation": "Body prose advising clients against sending Proxy-Connection headers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1479:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1479:S0"],
+      "interpretation": "Body prose cautioning careful use of Connection: keep-alive in requests.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L1480:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1480:S0"],
+      "interpretation": "Body prose noting monitoring requirements for persistent connections with HTTP/1.0 servers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L1481:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1481:S0"],
+      "interpretation": "Body prose describing hung request indicators and client behavior adjustments.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L1482:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1482:S0"],
+      "interpretation": "Body prose warning against using the mechanism when proxies are involved.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L1483:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1483:S0"],
+      "interpretation": "Conclusion of the paragraph on proxy usage restrictions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1484:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subsection heading 'C.2.3. Introduction ofTransfer-Encoding' in bold 10pt type",
+      "evidenceRefs": ["L1484:S0"],
+      "interpretation": "Subsection heading introducing content about transfer encoding changes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L1485:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1485:S0"],
+      "interpretation": "Body prose explaining the Transfer-Encoding header field and its purpose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1486:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Regular paragraph text in 10pt regular type",
+      "evidenceRefs": ["L1486:S0"],
+      "interpretation": "Body prose requiring MIME-compliant decoding before forwarding messages.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1487:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running footer with author attribution and page number in 9pt type",
+      "evidenceRefs": ["L1487:S0"],
+      "interpretation": "Document running footer, not a substantive content heading.",
+      "missingEvidence": []
+    }
+  ]
+}

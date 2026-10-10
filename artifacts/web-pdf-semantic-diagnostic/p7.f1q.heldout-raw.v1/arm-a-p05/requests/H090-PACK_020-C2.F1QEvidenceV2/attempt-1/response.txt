@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L1870:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item referencing legal clauses",
+      "evidenceRefs": [
+        "L1870:S0"
+      ],
+      "interpretation": "Standard enumerated list item within body text, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L1871:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item referencing legal clauses",
+      "evidenceRefs": [
+        "L1871:S0"
+      ],
+      "interpretation": "Standard enumerated list item within body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L1872:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered clause starting annulment list",
+      "evidenceRefs": [
+        "L1872:S0"
+      ],
+      "interpretation": "Body text clause initiating a list of annulled regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L1873:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of annulment clause",
+      "evidenceRefs": [
+        "L1873:S0"
+      ],
+      "interpretation": "Line continuation completing the decree reference.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L1874:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item referencing legal clauses",
+      "evidenceRefs": [
+        "L1874:S0"
+      ],
+      "interpretation": "Standard enumerated list item within body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L1875:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item referencing legal clauses",
+      "evidenceRefs": [
+        "L1875:S0"
+      ],
+      "interpretation": "Standard enumerated list item within body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L1876:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item quoting regulation text",
+      "evidenceRefs": [
+        "L1876:S0"
+      ],
+      "interpretation": "Body text clause quoting specific regulatory language.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L1877:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of quoted regulation",
+      "evidenceRefs": [
+        "L1877:S0"
+      ],
+      "interpretation": "Line continuation completing the quoted sentence.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L1878:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item referencing legal clauses",
+      "evidenceRefs": [
+        "L1878:S0"
+      ],
+      "interpretation": "Standard enumerated list item within body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L1879:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered clause starting annulment list",
+      "evidenceRefs": [
+        "L1879:S0"
+      ],
+      "interpretation": "Body text clause initiating a list of annulled circulars.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L1880:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of annulment clause",
+      "evidenceRefs": [
+        "L1880:S0"
+      ],
+      "interpretation": "Line continuation completing the circular reference.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L1881:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold article title line 1",
+      "evidenceRefs": [
+        "L1881:S0"
+      ],
+      "interpretation": "Bold typography marks this line as the primary heading for Article 17.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1882:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold article title line 2",
+      "evidenceRefs": [
+        "L1882:S0"
+      ],
+      "interpretation": "Bold typography continues the Article 17 heading across lines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L1883:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered amendment clause",
+      "evidenceRefs": [
+        "L1883:S0"
+      ],
+      "interpretation": "Standard numbered clause introducing amendments within the article.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L1884:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amendment text",
+      "evidenceRefs": [
+        "L1884:S0"
+      ],
+      "interpretation": "Indented quoted text detailing specific amendments.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L1885:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-list label",
+      "evidenceRefs": [
+        "L1885:S0"
+      ],
+      "interpretation": "Inline label organizing personnel requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L1886:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Requirement statement",
+      "evidenceRefs": [
+        "L1886:S0"
+      ],
+      "interpretation": "Body text stating qualification requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L1887:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted requirement",
+      "evidenceRefs": [
+        "L1887:S0"
+      ],
+      "interpretation": "Dashed list item specifying educational majors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L1888:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of bulleted requirement",
+      "evidenceRefs": [
+        "L1888:S0"
+      ],
+      "interpretation": "Line continuation listing remaining majors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L1889:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Bulleted requirement",
+      "evidenceRefs": [
+        "L1889:S0"
+      ],
+      "interpretation": "Dashed list item specifying training requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L1890:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered requirement",
+      "evidenceRefs": [
+        "L1890:S0"
+      ],
+      "interpretation": "Enumerated clause specifying equipment requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L1891:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of lettered requirement",
+      "evidenceRefs": [
+        "L1891:S0"
+      ],
+      "interpretation": "Line continuation completing the equipment specification.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L1892:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered requirement",
+      "evidenceRefs": [
+        "L1892:S0"
+      ],
+      "interpretation": "Enumerated clause specifying facility requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L1893:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered sub-section",
+      "evidenceRefs": [
+        "L1893:S0"
+      ],
+      "interpretation": "Numbered clause introducing community testing rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L1894:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered requirement",
+      "evidenceRefs": [
+        "L1894:S0"
+      ],
+      "interpretation": "Enumerated clause specifying tester knowledge requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L1895:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of lettered requirement",
+      "evidenceRefs": [
+        "L1895:S0"
+      ],
+      "interpretation": "Line continuation completing the instruction reference.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O75",
+      "sourceAlias": "L1896:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered requirement",
+      "evidenceRefs": [
+        "L1896:S0"
+      ],
+      "interpretation": "Enumerated clause specifying equipment requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O76",
+      "sourceAlias": "L1897:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of quoted text",
+      "evidenceRefs": [
+        "L1897:S0"
+      ],
+      "interpretation": "Line continuation closing the quoted amendment section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O77",
+      "sourceAlias": "L1898:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered amendment clause",
+      "evidenceRefs": [
+        "L1898:S0"
+      ],
+      "interpretation": "Standard numbered clause introducing further amendments.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L1899:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amendment text",
+      "evidenceRefs": [
+        "L1899:S0"
+      ],
+      "interpretation": "Indented quoted text detailing chief technician qualifications.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L1900:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of quoted text",
+      "evidenceRefs": [
+        "L1900:S0"
+      ],
+      "interpretation": "Line continuation closing the quoted amendment section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L1901:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered amendment clause",
+      "evidenceRefs": [
+        "L1901:S0"
+      ],
+      "interpretation": "Standard numbered clause introducing facility amendments.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O81",
+      "sourceAlias": "L1902:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amendment text",
+      "evidenceRefs": [
+        "L1902:S0"
+      ],
+      "interpretation": "Indented quoted text opening facility requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O82",
+      "sourceAlias": "L1903:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered requirement",
+      "evidenceRefs": [
+        "L1903:S0"
+      ],
+      "interpretation": "Enumerated clause specifying material requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O83",
+      "sourceAlias": "L1904:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of lettered requirement",
+      "evidenceRefs": [
+        "L1904:S0"
+      ],
+      "interpretation": "Line continuation describing environmental conditions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O84",
+      "sourceAlias": "L1905:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of lettered requirement",
+      "evidenceRefs": [
+        "L1905:S0"
+      ],
+      "interpretation": "Line continuation specifying hygiene standards.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L1906:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered requirement",
+      "evidenceRefs": [
+        "L1906:S0"
+      ],
+      "interpretation": "Enumerated clause specifying table requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L1907:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of lettered requirement",
+      "evidenceRefs": [
+        "L1907:S0"
+      ],
+      "interpretation": "Line continuation describing positioning.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L1908:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered requirement",
+      "evidenceRefs": [
+        "L1908:S0"
+      ],
+      "interpretation": "Enumerated clause specifying station requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L1909:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Lettered requirement",
+      "evidenceRefs": [
+        "L1909:S0"
+      ],
+      "interpretation": "Enumerated clause specifying waste treatment requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O89",
+      "sourceAlias": "L1910:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of quoted text",
+      "evidenceRefs": [
+        "L1910:S0"
+      ],
+      "interpretation": "Line continuation closing the quoted amendment section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O90",
+      "sourceAlias": "L1911:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered amendment clause",
+      "evidenceRefs": [
+        "L1911:S0"
+      ],
+      "interpretation": "Standard numbered clause introducing reference sample amendments.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O91",
+      "sourceAlias": "L1912:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Quoted amendment text",
+      "evidenceRefs": [
+        "L1912:S0"
+      ],
+      "interpretation": "Indented quoted text detailing result reception requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L1913:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of quoted text",
+      "evidenceRefs": [
+        "L1913:S0"
+      ],
+      "interpretation": "Line continuation closing the quoted amendment section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O93",
+      "sourceAlias": "L1914:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold chapter heading",
+      "evidenceRefs": [
+        "L1914:S0"
+      ],
+      "interpretation": "Bold typography explicitly marks the start of Chapter IX.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O94",
+      "sourceAlias": "L1915:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold chapter title",
+      "evidenceRefs": [
+        "L1915:S0"
+      ],
+      "interpretation": "Bold, capitalized typography identifies the chapter subject.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O95",
+      "sourceAlias": "L1916:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold article heading",
+      "evidenceRefs": [
+        "L1916:S0"
+      ],
+      "interpretation": "Bold typography marks the start of Article 18.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O96",
+      "sourceAlias": "L1917:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered annulment clause",
+      "evidenceRefs": [
+        "L1917:S0"
+      ],
+      "interpretation": "Standard numbered clause initiating annulment list.",
+      "missingEvidence": []
+    }
+  ]
+}

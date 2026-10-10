@@ -1,0 +1,305 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1655:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header displaying gazette name, issue numbers, publication date, and page number.",
+      "evidenceRefs": ["L1655:S0"],
+      "interpretation": "Page furniture providing publication metadata rather than a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1656:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing definition of provincial and district land use planning scope.",
+      "evidenceRefs": ["L1656:S0"],
+      "interpretation": "Standard legislative prose elaborating on planning categories.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1657:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing technical and specialized planning characteristics.",
+      "evidenceRefs": ["L1657:S0"],
+      "interpretation": "Continuation of definitional body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1658:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of the preceding definitional sentence.",
+      "evidenceRefs": ["L1658:S0"],
+      "interpretation": "Standard legislative prose completing a clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L1659:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold-formatted article heading introducing regulatory provisions on planning periods.",
+      "evidenceRefs": ["L1659:S0"],
+      "interpretation": "Substantive legal heading marking the start of Article 62.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L1660:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph detailing national land use planning timeframes.",
+      "evidenceRefs": ["L1660:S0"],
+      "interpretation": "Regulatory clause under Article 62 specifying planning duration.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1661:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text referencing defense and security planning legal frameworks.",
+      "evidenceRefs": ["L1661:S0"],
+      "interpretation": "Continuation of the numbering clause referencing external statutes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1662:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase of the preceding paragraph.",
+      "evidenceRefs": ["L1662:S0"],
+      "interpretation": "Standard legislative prose closing a clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1663:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph aligning provincial planning periods with provincial plans.",
+      "evidenceRefs": ["L1663:S0"],
+      "interpretation": "Regulatory clause under Article 62 specifying alignment requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1664:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of provincial planning timeframe provision.",
+      "evidenceRefs": ["L1664:S0"],
+      "interpretation": "Standard legislative prose completing a clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1665:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph specifying ten-year district planning periods.",
+      "evidenceRefs": ["L1665:S0"],
+      "interpretation": "Regulatory clause under Article 62 setting fixed durations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1666:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation stating twenty-year vision for district planning.",
+      "evidenceRefs": ["L1666:S0"],
+      "interpretation": "Standard legislative prose extending the duration specification.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1667:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph setting five-year national and provincial plan periods.",
+      "evidenceRefs": ["L1667:S0"],
+      "interpretation": "Regulatory clause under Article 62 defining plan cycles.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L1668:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation regarding annual district plan preparation.",
+      "evidenceRefs": ["L1668:S0"],
+      "interpretation": "Standard legislative prose completing the cycle specification.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1669:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold-formatted article heading establishing funding rules for planning activities.",
+      "evidenceRefs": ["L1669:S0"],
+      "interpretation": "Substantive legal heading marking the start of Article 63.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1670:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text enumerating cost components covered by state budget.",
+      "evidenceRefs": ["L1670:S0"],
+      "interpretation": "Regulatory clause under Article 63 detailing financial obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1671:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation specifying economic business funding sources.",
+      "evidenceRefs": ["L1671:S0"],
+      "interpretation": "Standard legislative prose completing the funding provision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1672:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold-formatted article heading introducing national land use planning regulations.",
+      "evidenceRefs": ["L1672:S0"],
+      "interpretation": "Substantive legal heading marking the start of Article 64.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L1673:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list introduction for national planning bases.",
+      "evidenceRefs": ["L1673:S0"],
+      "interpretation": "Regulatory clause under Article 64 initiating a enumerated list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1674:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Alphabetical list item citing socio-economic and defense strategies.",
+      "evidenceRefs": ["L1674:S0"],
+      "interpretation": "List element under Article 64 specifying strategic references.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L1675:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of strategy list item.",
+      "evidenceRefs": ["L1675:S0"],
+      "interpretation": "Standard legislative prose extending the list element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L1676:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Alphabetical list item on natural and socio-economic conditions.",
+      "evidenceRefs": ["L1676:S0"],
+      "interpretation": "List element under Article 64 specifying contextual factors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L1677:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Alphabetical list item on current land status and potential.",
+      "evidenceRefs": ["L1677:S0"],
+      "interpretation": "List element under Article 64 specifying baseline data requirements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1678:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of previous list item.",
+      "evidenceRefs": ["L1678:S0"],
+      "interpretation": "Standard legislative prose completing the list element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L1679:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Alphabetical list item on sectoral land demand.",
+      "evidenceRefs": ["L1679:S0"],
+      "interpretation": "List element under Article 64 specifying demand projections.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L1680:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Alphabetical list item on relevant scientific and technological progress.",
+      "evidenceRefs": ["L1680:S0"],
+      "interpretation": "List element under Article 64 specifying innovation factors.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1681:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered paragraph directing national planning content per legal framework.",
+      "evidenceRefs": ["L1681:S0"],
+      "interpretation": "Regulatory clause under Article 64 referencing statutory content rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L1682:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Concluding phrase referencing planning legislation.",
+      "evidenceRefs": ["L1682:S0"],
+      "interpretation": "Standard legislative prose closing the clause.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1683:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Numbered list introduction for national plan preparation bases.",
+      "evidenceRefs": ["L1683:S0"],
+      "interpretation": "Regulatory clause under Article 64 initiating a second enumerated list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1684:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Alphabetical list item citing national land use planning.",
+      "evidenceRefs": ["L1684:S0"],
+      "interpretation": "List element under Article 64 specifying foundational documents.",
+      "missingEvidence": []
+    }
+  ]
+}

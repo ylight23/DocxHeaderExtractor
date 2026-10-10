@@ -1,0 +1,497 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Opening phrase of the main document title",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Large bold typography on page 1 forms the first line of the document title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Second line of the main document title",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Large bold typography on page 1 completes the title phrase alongside O1.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Primary document title",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Largest bold typography on page 1 identifies the core title of the document.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title continuation specifying scope",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Large bold typography on page 1 extends the title to define the procurement category.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title qualifier",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Medium bold typography on page 1 adds a parenthetical condition to the title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Publication date on title page",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Small bold text indicating the document release date, functioning as metadata rather than a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Front matter pagination marker",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Tiny roman numeral serving as a page number for the preliminary pages.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Copyright notice",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Standard legal disclaimer text in regular font asserting copyright ownership.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "License permission statement",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Body prose detailing non-commercial usage and reproduction rights.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "License restriction clause",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Continuation of copyright license terms listing prohibited commercial activities.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "License prohibition clause",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Final sentence of the license block prohibiting unauthorized derivative works.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number for revisions section",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Roman numeral pagination marker preceding the revision history content.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading for revision history",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Prominent bold text on page 4 introduces the chronological revision log.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Revision entry subheading",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Bold date label structuring the first block of the revision history.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Regular font prose explaining the scope of changes in the January 2017 update.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Continuation of the January 2017 revision notes describing new templates.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Concluding sentence of the January 2017 revision notes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Revision entry subheading",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Bold date label structuring the second block of the revision history.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Regular font prose explaining alignment with July 2016 Procurement Regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Continuation of the July 2016 revision notes referencing regulatory updates.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Continuation of the July 2016 revision notes defining document applicability.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Concluding sentence of the July 2016 revision notes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Revision entry subheading",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Bold date label structuring the third block of the revision history.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Regular font prose explaining expansion of bid eligibility criteria in April 2015.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Fragment completing the April 2015 revision description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Revision entry subheading",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Bold date label structuring the fourth block of the revision history.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Regular font prose explaining operational experience driving March 2012 changes.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Continuation of the March 2012 revision notes referencing prior versions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Continuation of the March 2012 revision notes addressing clause consistency.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "Continuation of the March 2012 revision notes citing external guidelines.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Continuation of the March 2012 revision notes detailing General Conditions updates.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Continuation of the March 2012 revision notes identifying stakeholder agreements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Concluding sentence of the March 2012 revision notes naming FIDIC.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Revision entry subheading",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Bold date label structuring the fifth block of the revision history.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Regular font prose explaining inclusion of specific worker organization clauses.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Continuation of the August 2010 revision notes listing clause numbers.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Fragment completing the August 2010 revision description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Revision entry subheading",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Bold date label structuring the sixth block of the revision history.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Regular font prose explaining modifications to eligibility and corruption clauses.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "Continuation of the May 2010 revision notes referencing corrigenda alignment.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Continuation of the May 2010 revision notes citing mutual agreement documents.",
+      "missingEvidence": []
+    }
+  ]
+}

@@ -1,0 +1,581 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main title component",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "interpretation": "Large bold typography on the cover page establishes the primary document title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Main title component",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "interpretation": "Continues the primary document title with matching prominent layout.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Primary title line",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "interpretation": "Largest font size on the cover page identifies the core document type.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Primary title line",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "interpretation": "Matches the largest font size and bold styling, completing the main title scope.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Subtitle variant",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "interpretation": "Parenthetical qualifier in bold, smaller font, structurally attached to the main title.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Publication date",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "interpretation": "Standard date metadata accompanying the title block, not a content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Roman numeral page number",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "interpretation": "Small italicized numeral indicating front-matter pagination.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0007:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Copyright notice",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "interpretation": "Legal boilerplate statement regarding intellectual property rights.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "License restriction text",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "interpretation": "Continuation of copyright usage terms and non-commercial license conditions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0009:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "License restriction text",
+      "evidenceRefs": [
+        "L0009:S0"
+      ],
+      "interpretation": "Details prohibited commercial uses within the license boilerplate.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "License restriction text",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "interpretation": "Concludes the copyright and reproduction restrictions paragraph.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0011:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Roman numeral page number",
+      "evidenceRefs": [
+        "L0011:S0"
+      ],
+      "interpretation": "Pagination marker for the subsequent front-matter section.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0012:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Section heading",
+      "evidenceRefs": [
+        "L0012:S0"
+      ],
+      "interpretation": "Prominent bold heading introducing the revision history list.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0013:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision date marker",
+      "evidenceRefs": [
+        "L0013:S0"
+      ],
+      "interpretation": "Date serving as a list item label rather than a substantive content heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0014:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0014:S0"
+      ],
+      "interpretation": "Standard paragraph text detailing changes made in the specified revision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0015:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0015:S0"
+      ],
+      "interpretation": "Continuation of the January 2017 revision summary paragraph.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0016:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0016:S0"
+      ],
+      "interpretation": "Final sentence of the January 2017 revision summary.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision date marker",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "interpretation": "Date serving as a list item label for the next revision entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "interpretation": "Body text explaining regulatory updates incorporated in the July 2016 revision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0019:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "interpretation": "Continuation of the July 2016 revision summary referencing specific regulations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0020:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0020:S0"
+      ],
+      "interpretation": "Describes the applicability scope of the Standard Procurement Document.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0021:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0021:S0"
+      ],
+      "interpretation": "Concludes the applicability clause for the July 2016 revision entry.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0022:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision date marker",
+      "evidenceRefs": [
+        "L0022:S0"
+      ],
+      "interpretation": "Date serving as a list item label for the April 2015 revision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0023:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0023:S0"
+      ],
+      "interpretation": "Body text detailing paragraph expansions in the April 2015 revision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "interpretation": "Fragment concluding the April 2015 revision description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0025:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision date marker",
+      "evidenceRefs": [
+        "L0025:S0"
+      ],
+      "interpretation": "Date serving as a list item label for the March 2012 revision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0026:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0026:S0"
+      ],
+      "interpretation": "Body text explaining experiential updates in the March 2012 revision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0027:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "interpretation": "Continuation of the March 2012 revision summary referencing prior versions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0028:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0028:S0"
+      ],
+      "interpretation": "Details clause corrections and guideline incorporations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0029:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0029:S0"
+      ],
+      "interpretation": "References specific procurement guidelines updated in this revision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0030:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0030:S0"
+      ],
+      "interpretation": "Describes updates to General Conditions in Section VIII.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0031:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0031:S0"
+      ],
+      "interpretation": "Continuation of the March 2012 revision text regarding MDB agreements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0032:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0032:S0"
+      ],
+      "interpretation": "Concludes the March 2012 revision description mentioning FIDIC.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0033:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision date marker",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "interpretation": "Date serving as a list item label for the August 2010 revision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0034:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0034:S0"
+      ],
+      "interpretation": "Body text outlining new clauses added to General Conditions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0035:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "interpretation": "Specifies the exact clause numbers and topics updated.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0036:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "interpretation": "Fragment concluding the August 2010 revision description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0037:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision date marker",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "interpretation": "Date serving as a list item label for the May 2010 revision.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0038:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "interpretation": "Body text describing modifications to eligibility and corruption clauses.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0039:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "interpretation": "References alignment with the May 2010 corrigendum.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0040:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "interpretation": "Continuation of the May 2010 revision text regarding fraud agreements.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0041:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Roman numeral page number",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "interpretation": "Pagination marker for the continuation of front-matter text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0042:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0042:S0"
+      ],
+      "interpretation": "Continues the May 2010 revision description referencing debarment decisions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0043:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "interpretation": "Describes document applicability to IBRD/IDA funded projects.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0044:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "interpretation": "Specifies legal agreement references triggering applicability.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0045:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0045:S0"
+      ],
+      "interpretation": "References specific procurement guidelines and revision dates.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0046:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0046:S0"
+      ],
+      "interpretation": "Continues listing applicable guideline versions.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0047:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Revision description body text",
+      "evidenceRefs": [
+        "L0047:S0"
+      ],
+      "interpretation": "Concludes the May 2010 revision applicability statement.",
+      "missingEvidence": []
+    }
+  ]
+}

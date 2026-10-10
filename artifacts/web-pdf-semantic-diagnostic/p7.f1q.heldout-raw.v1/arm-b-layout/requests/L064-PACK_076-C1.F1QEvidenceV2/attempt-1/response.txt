@@ -1,0 +1,227 @@
+```json
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L5439:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header spanning page top with chapter title and page number.",
+      "evidenceRefs": ["L5439:S0"],
+      "interpretation": "Functions as page furniture (running head) rather than a substantive document heading at this location.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L5440:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Start of a figure caption referencing Figure 10.7.",
+      "evidenceRefs": ["L5440:S0"],
+      "interpretation": "Serves as a local descriptive label for an illustration, not a structural document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L5441:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body text describing pattern activation in neurons.",
+      "evidenceRefs": ["L5441:S0"],
+      "interpretation": "Standard prose explaining technical concepts within a paragraph.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L5442:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Isolated single character 'T' in small font, likely a figure or equation label.",
+      "evidenceRefs": ["L5442:S0"],
+      "interpretation": "Typographic artifact or local label, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L5443:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text discussing output array dimensions and coordinates.",
+      "evidenceRefs": ["L5443:S0"],
+      "interpretation": "Technical prose continuing the paragraph's explanation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L5444:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding a sentence about input/output space dimensions.",
+      "evidenceRefs": ["L5444:S0"],
+      "interpretation": "Standard paragraph continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L5445:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text defining neuron position and referencing Figure 10.7.",
+      "evidenceRefs": ["L5445:S0"],
+      "interpretation": "Explanatory prose within the main text block.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L5446:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text discussing Gaussian normalizations and learning rates.",
+      "evidenceRefs": ["L5446:S0"],
+      "interpretation": "Technical discussion in standard paragraph form.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L5447:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing Kohonen's rule parameters.",
+      "evidenceRefs": ["L5447:S0"],
+      "interpretation": "Prose introducing technical variables within a paragraph.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L5448:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing parameter adjustment during learning.",
+      "evidenceRefs": ["L5448:S0"],
+      "interpretation": "Continuation of technical explanation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L5449:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text detailing initial large values for ordering phase.",
+      "evidenceRefs": ["L5449:S0"],
+      "interpretation": "Standard explanatory prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L5450:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing parameter reduction during convergence phase.",
+      "evidenceRefs": ["L5450:S0"],
+      "interpretation": "Paragraph continuation explaining algorithm dynamics.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L5451:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing convergence steps and citing references.",
+      "evidenceRefs": ["L5451:S0"],
+      "interpretation": "Technical prose with citations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L5452:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text referencing equations and pattern activation.",
+      "evidenceRefs": ["L5452:S0"],
+      "interpretation": "Continuation of mathematical/algorithmic explanation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L5453:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text discussing weight vector changes and Kohonen's rule.",
+      "evidenceRefs": ["L5453:S0"],
+      "interpretation": "Standard paragraph text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L5454:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining weight vector dragging mechanism.",
+      "evidenceRefs": ["L5454:S0"],
+      "interpretation": "Explanatory prose within the main text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L5455:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text comparing rules and referencing Figure 10.9.",
+      "evidenceRefs": ["L5455:S0"],
+      "interpretation": "Technical comparison in paragraph form.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L5456:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text introducing geometric interpretation of Kohonen's rule.",
+      "evidenceRefs": ["L5456:S0"],
+      "interpretation": "Prose transitioning to conceptual explanation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L5457:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing weight vectors as elastic net nodes.",
+      "evidenceRefs": ["L5457:S0"],
+      "interpretation": "Metaphorical explanation in standard prose.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L5458:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing weight updates and network movement.",
+      "evidenceRefs": ["L5458:S0"],
+      "interpretation": "Continuation of algorithmic description.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L5459:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text explaining how updates change network shape.",
+      "evidenceRefs": ["L5459:S0"],
+      "interpretation": "Standard paragraph text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L5460:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the elastic network analogy.",
+      "evidenceRefs": ["L5460:S0"],
+      "interpretation": "Final sentence of the explanatory paragraph.",
+      "missingEvidence": []
+    }
+  ]
+}
+```

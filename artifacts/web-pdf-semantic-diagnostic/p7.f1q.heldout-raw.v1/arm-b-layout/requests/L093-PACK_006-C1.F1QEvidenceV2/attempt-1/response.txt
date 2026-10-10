@@ -1,0 +1,377 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0341:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Running header repeating document identifier across pages.",
+      "evidenceRefs": [
+        "L0341:S0"
+      ],
+      "interpretation": "Page furniture serving as a running header, not a substantive document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0342:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of body prose describing request message structure.",
+      "evidenceRefs": [
+        "L0342:S0"
+      ],
+      "interpretation": "Standard body text continuing a paragraph.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0343:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold section heading '3.2.2. absolute-form' marking a subsection.",
+      "evidenceRefs": [
+        "L0343:S0"
+      ],
+      "interpretation": "Substantive section heading establishing document structure at this location.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0344:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining proxy request handling rules.",
+      "evidenceRefs": [
+        "L0344:S0"
+      ],
+      "interpretation": "Standard body text defining protocol behavior.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0345:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose specifying client requirements for absolute-form.",
+      "evidenceRefs": [
+        "L0345:S0"
+      ],
+      "interpretation": "Standard body text continuing the section's technical explanation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0346:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "ABNF syntax definition for absolute-form.",
+      "evidenceRefs": [
+        "L0346:S0"
+      ],
+      "interpretation": "Technical specification syntax block, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0347:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose detailing proxy caching and forwarding duties.",
+      "evidenceRefs": [
+        "L0347:S0"
+      ],
+      "interpretation": "Standard body text elaborating on proxy operations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0348:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose continuing proxy forwarding instructions.",
+      "evidenceRefs": [
+        "L0348:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0349:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose referencing origin server and forwarding messages.",
+      "evidenceRefs": [
+        "L0349:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0350:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose citing external specification for forwarding requirements.",
+      "evidenceRefs": [
+        "L0350:S0"
+      ],
+      "interpretation": "Standard body text with normative reference.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0351:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose introducing an example request-line.",
+      "evidenceRefs": [
+        "L0351:S0"
+      ],
+      "interpretation": "Standard body text transitioning to an illustrative example.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0352:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Monospaced example HTTP request line.",
+      "evidenceRefs": [
+        "L0352:S0"
+      ],
+      "interpretation": "Code/example block illustrating the preceding text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0353:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose mandating Host header presence.",
+      "evidenceRefs": [
+        "L0353:S0"
+      ],
+      "interpretation": "Standard body text stating protocol requirement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0354:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose explaining Host header forwarding rationale.",
+      "evidenceRefs": [
+        "L0354:S0"
+      ],
+      "interpretation": "Standard body text providing technical justification.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0355:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding Host header explanation.",
+      "evidenceRefs": [
+        "L0355:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0356:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose dictating proxy behavior on absolute-form.",
+      "evidenceRefs": [
+        "L0356:S0"
+      ],
+      "interpretation": "Standard body text specifying mandatory proxy action.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0357:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose instructing Host field replacement.",
+      "evidenceRefs": [
+        "L0357:S0"
+      ],
+      "interpretation": "Standard body text continuation of proxy rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0358:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose requiring new Host field generation on forwarding.",
+      "evidenceRefs": [
+        "L0358:S0"
+      ],
+      "interpretation": "Standard body text specifying forwarding constraint.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0359:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding forwarding Host field rule.",
+      "evidenceRefs": [
+        "L0359:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0360:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose addressing origin server behavior on absolute-form.",
+      "evidenceRefs": [
+        "L0360:S0"
+      ],
+      "interpretation": "Standard body text shifting focus to origin server rules.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0361:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose mandating origin server Host field override.",
+      "evidenceRefs": [
+        "L0361:S0"
+      ],
+      "interpretation": "Standard body text specifying mandatory server action.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0362:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose noting empty authority implications.",
+      "evidenceRefs": [
+        "L0362:S0"
+      ],
+      "interpretation": "Standard body text providing edge-case clarification.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0363:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose concluding empty Host field scenario.",
+      "evidenceRefs": [
+        "L0363:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0364:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose requiring server acceptance of absolute-form.",
+      "evidenceRefs": [
+        "L0364:S0"
+      ],
+      "interpretation": "Standard body text stating normative requirement.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0365:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose clarifying typical client usage.",
+      "evidenceRefs": [
+        "L0365:S0"
+      ],
+      "interpretation": "Standard body text providing contextual observation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0366:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Bold section heading '3.2.3. authority-form' marking a subsection.",
+      "evidenceRefs": [
+        "L0366:S0"
+      ],
+      "interpretation": "Substantive section heading establishing document structure at this location.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0367:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose restricting authority-form to CONNECT requests.",
+      "evidenceRefs": [
+        "L0367:S0"
+      ],
+      "interpretation": "Standard body text defining scope of the new form.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0368:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose describing authority-form composition.",
+      "evidenceRefs": [
+        "L0368:S0"
+      ],
+      "interpretation": "Standard body text explaining structural components.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0369:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body prose completing colon separator description.",
+      "evidenceRefs": [
+        "L0369:S0"
+      ],
+      "interpretation": "Standard body text continuation.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0370:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "ABNF syntax definition for authority-form.",
+      "evidenceRefs": [
+        "L0370:S0"
+      ],
+      "interpretation": "Technical specification syntax block, not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0371:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Footer containing author attribution and page number.",
+      "evidenceRefs": [
+        "L0371:S0"
+      ],
+      "interpretation": "Page furniture serving as a footer, not a substantive document heading.",
+      "missingEvidence": []
+    }
+  ]
+}

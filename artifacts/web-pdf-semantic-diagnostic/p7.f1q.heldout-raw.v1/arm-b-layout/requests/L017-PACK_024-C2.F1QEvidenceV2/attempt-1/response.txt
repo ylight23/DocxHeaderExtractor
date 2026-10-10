@@ -1,0 +1,449 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1914:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form identification number.",
+      "evidenceRefs": [
+        "L1914:S0"
+      ],
+      "interpretation": "Administrative metadata indicating the specific form template version.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1915:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National motto/header repeated on official documents.",
+      "evidenceRefs": [
+        "L1915:S0"
+      ],
+      "interpretation": "Standardized state header text appearing across multiple pages; functions as administrative letterhead rather than a document-specific heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1916:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National motto phrase.",
+      "evidenceRefs": [
+        "L1916:S0"
+      ],
+      "interpretation": "Continuation of the standardized state header; functions as administrative letterhead.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1917:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Horizontal separator line.",
+      "evidenceRefs": [
+        "L1917:S0"
+      ],
+      "interpretation": "Visual divider separating the header area from the form body; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1918:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title of the first form section.",
+      "evidenceRefs": [
+        "L1918:S0"
+      ],
+      "interpretation": "Bold, centered text introducing the 'Notice of Request for Destruction of Paper Invoices' form; operates as a substantive document heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L1919:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Salutation/address field label.",
+      "evidenceRefs": [
+        "L1919:S0"
+      ],
+      "interpretation": "Instructional label directing the user to address the tax authority; functions as a form field prompt.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L1920:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label for organization/person name.",
+      "evidenceRefs": [
+        "L1920:S0"
+      ],
+      "interpretation": "Data entry prompt within the form body; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L1921:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label for tax code.",
+      "evidenceRefs": [
+        "L1921:S0"
+      ],
+      "interpretation": "Data entry prompt within the form body; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L1922:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label for address.",
+      "evidenceRefs": [
+        "L1922:S0"
+      ],
+      "interpretation": "Data entry prompt within the form body; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L1923:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label for destruction method.",
+      "evidenceRefs": [
+        "L1923:S0"
+      ],
+      "interpretation": "Data entry prompt within the form body; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L1924:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text for date/time entry.",
+      "evidenceRefs": [
+        "L1924:S0"
+      ],
+      "interpretation": "Prose instruction guiding the user on how to complete the form; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L1925:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header row.",
+      "evidenceRefs": [
+        "L1925:S0"
+      ],
+      "interpretation": "Labels for data columns within a table; local table structure, not a document-level heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L1926:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column numbering.",
+      "evidenceRefs": [
+        "L1926:S0"
+      ],
+      "interpretation": "Numeric indices for table columns; local table structure, not a document-level heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L1927:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Signature block role label.",
+      "evidenceRefs": [
+        "L1927:S0"
+      ],
+      "interpretation": "Designates the preparer's signature area; administrative footer element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L1927:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Date entry field.",
+      "evidenceRefs": [
+        "L1927:S1"
+      ],
+      "interpretation": "Placeholder for signing date; administrative footer element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L1928:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Signature instruction.",
+      "evidenceRefs": [
+        "L1928:S0"
+      ],
+      "interpretation": "Directive for completing the signature; administrative footer element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L1928:S1",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Signature block role label.",
+      "evidenceRefs": [
+        "L1928:S1"
+      ],
+      "interpretation": "Designates the legal representative's signature area; administrative footer element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L1929:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Signature instruction.",
+      "evidenceRefs": [
+        "L1929:S0"
+      ],
+      "interpretation": "Directive for completing the signature; administrative footer element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L1930:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form identification number.",
+      "evidenceRefs": [
+        "L1930:S0"
+      ],
+      "interpretation": "Administrative metadata indicating the second form template version.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L1931:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National motto/header repeated on official documents.",
+      "evidenceRefs": [
+        "L1931:S0"
+      ],
+      "interpretation": "Standardized state header text; functions as administrative letterhead.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L1932:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "National motto phrase.",
+      "evidenceRefs": [
+        "L1932:S0"
+      ],
+      "interpretation": "Continuation of the standardized state header; functions as administrative letterhead.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L1933:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Horizontal separator line.",
+      "evidenceRefs": [
+        "L1933:S0"
+      ],
+      "interpretation": "Visual divider separating the header area from the form body; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L1934:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Date entry field.",
+      "evidenceRefs": [
+        "L1934:S0"
+      ],
+      "interpretation": "Placeholder for document date; administrative form element.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1935:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Title of the second form section.",
+      "evidenceRefs": [
+        "L1935:S0"
+      ],
+      "interpretation": "Bold text introducing the 'Report of Loss, Fire, Damage of Paper Invoices' form; operates as a substantive document heading here.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L1936:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label for organization/person name.",
+      "evidenceRefs": [
+        "L1936:S0"
+      ],
+      "interpretation": "Data entry prompt within the form body; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L1937:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label for tax code.",
+      "evidenceRefs": [
+        "L1937:S0"
+      ],
+      "interpretation": "Data entry prompt within the form body; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L1938:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Form field label for address.",
+      "evidenceRefs": [
+        "L1938:S0"
+      ],
+      "interpretation": "Data entry prompt within the form body; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L1939:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text referencing a record.",
+      "evidenceRefs": [
+        "L1939:S0"
+      ],
+      "interpretation": "Prose instruction linking the report to an incident record; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L1940:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Instructional body text for date/time entry.",
+      "evidenceRefs": [
+        "L1940:S0"
+      ],
+      "interpretation": "Prose instruction guiding the user on how to complete the form; functions as body text.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L1941:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column header row.",
+      "evidenceRefs": [
+        "L1941:S0"
+      ],
+      "interpretation": "Labels for data columns within a table; local table structure, not a document-level heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L1942:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table header continuation.",
+      "evidenceRefs": [
+        "L1942:S0"
+      ],
+      "interpretation": "Fragment of a split table header; local table structure, not a document-level heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L1943:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table column numbering.",
+      "evidenceRefs": [
+        "L1943:S0"
+      ],
+      "interpretation": "Numeric indices for table columns; local table structure, not a document-level heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L1944:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell content describing invoice type.",
+      "evidenceRefs": [
+        "L1944:S0"
+      ],
+      "interpretation": "Data value within a table cell; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L1945:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell content describing usage status.",
+      "evidenceRefs": [
+        "L1945:S0"
+      ],
+      "interpretation": "Data value within a table cell; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L1946:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell content describing usage status.",
+      "evidenceRefs": [
+        "L1946:S0"
+      ],
+      "interpretation": "Data value within a table cell; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L1947:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell content describing usage status.",
+      "evidenceRefs": [
+        "L1947:S0"
+      ],
+      "interpretation": "Data value within a table cell; not a structural heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L1948:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Table cell content describing invoice type.",
+      "evidenceRefs": [
+        "L1948:S0"
+      ],
+      "interpretation": "Data value within a table cell; not a structural heading.",
+      "missingEvidence": []
+    }
+  ]
+}

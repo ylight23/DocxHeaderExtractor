@@ -1,0 +1,485 @@
+{
+  "protocolVersion": "P7_F1Q_V2",
+  "decisions": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0381:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of a regulatory clause regarding controlled systems.",
+      "evidenceRefs": ["L0381:S0"],
+      "interpretation": "Body prose continuing a previous requirement; does not function as a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0382:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'c)' detailing security assurance measures.",
+      "evidenceRefs": ["L0382:S0"],
+      "interpretation": "Subordinate list item providing specific requirements; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0383:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing protection measures for classified information.",
+      "evidenceRefs": ["L0383:S0"],
+      "interpretation": "Regular paragraph text elaborating on security obligations.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0384:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sentence fragment concluding a regulatory clause.",
+      "evidenceRefs": ["L0384:S0"],
+      "interpretation": "Body prose completing a prior statement; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0385:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "First line of a bolded article heading introducing technical cybersecurity measures.",
+      "evidenceRefs": ["L0385:S0"],
+      "interpretation": "Bold typography and 'Article 11.' numbering establish it as a substantive document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0386:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Second line of the same bolded article heading.",
+      "evidenceRefs": ["L0386:S0"],
+      "interpretation": "Completes the heading phrase 'cyber security' under Article 11.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0387:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section marker '1.' introducing operational environment requirements.",
+      "evidenceRefs": ["L0387:S0"],
+      "interpretation": "Standard legal numbering introduces a substantive section heading for this subsection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0388:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Continuation of the numbered section heading introducing requirements.",
+      "evidenceRefs": ["L0388:S0"],
+      "interpretation": "Completes the introductory clause for section 1; functions as part of the heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0389:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'a)' specifying environmental separation requirements.",
+      "evidenceRefs": ["L0389:S0"],
+      "interpretation": "Subordinate list item detailing a specific condition; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0390:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'b)' specifying information security assurance solutions.",
+      "evidenceRefs": ["L0390:S0"],
+      "interpretation": "Subordinate list item providing a specific requirement; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0391:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'c)' prohibiting application development tools.",
+      "evidenceRefs": ["L0391:S0"],
+      "interpretation": "Subordinate list item stating a prohibition; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L0392:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sentence fragment concluding list item 'c'.",
+      "evidenceRefs": ["L0392:S0"],
+      "interpretation": "Body prose completing a prior list item; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L0393:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'd)' requiring removal of unused utility software.",
+      "evidenceRefs": ["L0393:S0"],
+      "interpretation": "Subordinate list item detailing a maintenance requirement; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O14",
+      "sourceAlias": "L0394:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sentence fragment concluding list item 'd'.",
+      "evidenceRefs": ["L0394:S0"],
+      "interpretation": "Body prose completing a prior list item; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L0395:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Page number '11' in small monospaced font at page bottom.",
+      "evidenceRefs": ["L0395:S0"],
+      "interpretation": "Page furniture indicating pagination; not a document heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L0396:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section marker '2.' introducing data backup requirements.",
+      "evidenceRefs": ["L0396:S0"],
+      "interpretation": "Standard legal numbering introduces a substantive section heading for this subsection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L0397:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the clause on data backup plans.",
+      "evidenceRefs": ["L0397:S0"],
+      "interpretation": "Regular paragraph text elaborating on backup frequency requirements; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0398:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text describing backup timing and data handling.",
+      "evidenceRefs": ["L0398:S0"],
+      "interpretation": "Continuation of regulatory body prose; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0399:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text specifying 24-hour backup windows and verification.",
+      "evidenceRefs": ["L0399:S0"],
+      "interpretation": "Regulatory requirement prose; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0400:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the backup verification requirement.",
+      "evidenceRefs": ["L0400:S0"],
+      "interpretation": "Final clause of the paragraph; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0401:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section marker '3.' introducing network system requirements.",
+      "evidenceRefs": ["L0401:S0"],
+      "interpretation": "Standard legal numbering introduces a substantive section heading for this subsection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0402:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'a)' specifying network area division.",
+      "evidenceRefs": ["L0402:S0"],
+      "interpretation": "Subordinate list item detailing a network segmentation requirement; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0403:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item 'a)' describing server zones.",
+      "evidenceRefs": ["L0403:S0"],
+      "interpretation": "Body prose elaborating on network zoning; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L0404:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item 'a)' describing DMZ and internet services.",
+      "evidenceRefs": ["L0404:S0"],
+      "interpretation": "Body prose elaborating on network zoning; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0405:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item 'a)' describing wireless and database zones.",
+      "evidenceRefs": ["L0405:S0"],
+      "interpretation": "Body prose elaborating on network zoning; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0406:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of list item 'a)' regarding database server zones.",
+      "evidenceRefs": ["L0406:S0"],
+      "interpretation": "Final clause of the list item; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0407:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'b)' specifying traffic control devices.",
+      "evidenceRefs": ["L0407:S0"],
+      "interpretation": "Subordinate list item detailing a security control requirement; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0408:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of list item 'b)' regarding network zone traffic.",
+      "evidenceRefs": ["L0408:S0"],
+      "interpretation": "Body prose completing a prior list item; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L0409:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'c)' specifying intrusion detection and prevention solutions.",
+      "evidenceRefs": ["L0409:S0"],
+      "interpretation": "Subordinate list item detailing a security control requirement; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L0410:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of list item 'c)' regarding untrusted connections.",
+      "evidenceRefs": ["L0410:S0"],
+      "interpretation": "Body prose completing a prior list item; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0411:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'd)' specifying DoS attack response plans.",
+      "evidenceRefs": ["L0411:S0"],
+      "interpretation": "Subordinate list item detailing an incident response requirement; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0412:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of list item 'd)' regarding attack scales.",
+      "evidenceRefs": ["L0412:S0"],
+      "interpretation": "Body prose completing a prior list item; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0413:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Garbled text resulting from OCR or encoding error.",
+      "evidenceRefs": ["L0413:S0"],
+      "interpretation": "Corrupted data string with no coherent semantic or structural function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0414:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section marker '5.' introducing log recording requirements.",
+      "evidenceRefs": ["L0414:S0"],
+      "interpretation": "Standard legal numbering introduces a substantive section heading for this subsection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L0415:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text continuing the clause on log storage and incident reporting.",
+      "evidenceRefs": ["L0415:S0"],
+      "interpretation": "Regular paragraph text elaborating on monitoring frequencies; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O36",
+      "sourceAlias": "L0416:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Body text concluding the log backup requirement.",
+      "evidenceRefs": ["L0416:S0"],
+      "interpretation": "Final clause of the paragraph; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L0417:S0",
+      "assessment": "SUPPORTED",
+      "function": "ESTABLISHES_STRUCTURE",
+      "observedRole": "Numbered section marker '6.' introducing user access control requirements.",
+      "evidenceRefs": ["L0417:S0"],
+      "interpretation": "Standard legal numbering introduces a substantive section heading for this subsection.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0418:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'a)' specifying access right registration and revocation.",
+      "evidenceRefs": ["L0418:S0"],
+      "interpretation": "Subordinate list item detailing an access management procedure; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0419:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of list item 'a)' regarding devices and users.",
+      "evidenceRefs": ["L0419:S0"],
+      "interpretation": "Body prose completing a prior list item; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L0420:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'b)' specifying single-user account grants.",
+      "evidenceRefs": ["L0420:S0"],
+      "interpretation": "Subordinate list item detailing an account policy; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0421:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item 'b)' regarding shared accounts.",
+      "evidenceRefs": ["L0421:S0"],
+      "interpretation": "Body prose elaborating on shared account usage; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0422:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of list item 'b)' requiring authority approval for shared accounts.",
+      "evidenceRefs": ["L0422:S0"],
+      "interpretation": "Body prose elaborating on authorization protocols; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0423:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Conclusion of list item 'b)' regarding individual responsibility.",
+      "evidenceRefs": ["L0423:S0"],
+      "interpretation": "Body prose completing a prior list item; no structural heading function.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0424:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "List item 'c)' specifying restrictions on administrative accounts.",
+      "evidenceRefs": ["L0424:S0"],
+      "interpretation": "Subordinate list item detailing privileged access controls; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0425:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-clause '(i)' establishing mechanisms for admin account creation.",
+      "evidenceRefs": ["L0425:S0"],
+      "interpretation": "Detailed procedural requirement nested under list item 'c'; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0426:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Continuation of sub-clause '(i)' requiring authority approval before use.",
+      "evidenceRefs": ["L0426:S0"],
+      "interpretation": "Body prose elaborating on account provisioning rules; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0427:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-clause '(ii)' specifying measures to control administrative account use.",
+      "evidenceRefs": ["L0427:S0"],
+      "interpretation": "Detailed procedural requirement nested under list item 'c'; not a heading.",
+      "missingEvidence": []
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0428:S0",
+      "assessment": "SUPPORTED",
+      "function": "OTHER",
+      "observedRole": "Sub-clause '(iii)' restricting administrative account functionality.",
+      "evidenceRefs": ["L0428:S0"],
+      "interpretation": "Detailed procedural requirement nested under list item 'c'; not a heading.",
+      "missingEvidence": []
+    }
+  ]
+}
