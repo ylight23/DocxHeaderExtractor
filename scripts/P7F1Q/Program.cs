@@ -285,7 +285,8 @@ switch (args[0])
             }
         var plan = SpatialCanonical.Bytes(new
         {
-            version = "P7_F1Q_HELDOUT_PLAN_V1", status = "FROZEN_BEFORE_PROVIDER", issue = "ylight23/DocxHeaderExtractor#6",
+            // Version from the plan file name (…execution-plan.v2.json -> P7_F1Q_HELDOUT_PLAN_V2).
+            version = "P7_F1Q_HELDOUT_PLAN_" + Path.GetFileNameWithoutExtension(args[2]).Split('.').Last().ToUpperInvariant(), status = "FROZEN_BEFORE_PROVIDER", issue = "ylight23/DocxHeaderExtractor#6",
             pageSelectionSha256 = SpatialCanonical.Hash(selectionBytes), frozenV3PlanSha256 = SpatialCanonical.Hash(File.ReadAllBytes("artifacts/web-pdf-semantic-diagnostic/p7.f1q.execution-plan.v3.json")),
             systemPromptSha256 = promptSha, toolDefinitionsSha256 = toolSha, promptSchemaToolsRoute = "IDENTICAL_TO_FROZEN_V3",
             protocolVersion = P7F1QProtocolV2.Version, model = policyV3.Model, providerRoute = new { order = new[] { "alibaba" }, allowFallbacks = false, requireParameters = true },
@@ -293,7 +294,7 @@ switch (args[0])
             budget = new { hardCapUsd = capsHeldout.HardCapUsd, softAlertUsd = 1.00m, perDocumentCapUsd = PerDocumentCapUsd, preCallWorstCaseCheck = true },
             retryPolicy = "AT_MOST_ONE_IDENTICAL_BODY_RETRY_PER_REQUEST_ON_TRANSPORT_OR_CONTRACT_FAILURE_NO_ERROR_FEEDBACK_NO_SEMANTIC_RETRY",
             fenceNormalization = P7F1QFenceNormalization.Version, contractViews = new[] { "STRICT_RAW", "NORMALIZED_ACCEPTANCE" },
-            goldGate = "EXECUTION_REFUSES_TO_RUN_WITHOUT_A_PINNED_USER_APPROVED_GOLD_FREEZE_COVERING_EVERY_DOCUMENT",
+            goldGate = "EXECUTION_REFUSES_TO_RUN_WITHOUT_A_PINNED_GOLD_FREEZE_COVERING_EVERY_DOCUMENT_STATUS_USER_APPROVED_OR_AI_REVIEWED_USER_DELEGATED",
             cases = cases.Select(c => new { c.Case, c.Document, c.Pack, sourceSha256 = c.Source.SourceSha256, evidenceStoreSha256 = c.ToolsV2.EvidenceStoreSha256, packSha256 = c.PackSha256, issued = c.Issued.Count }),
             requests, worstCaseTotalUsdAllRequestsTwoAttempts = requests.Sum(r => JsonSerializer.SerializeToElement(r).GetProperty("worstCaseRequestUsd").GetDecimal()) * 2,
             goldRead = false, providerCalls = 0, productionChanged = false,
