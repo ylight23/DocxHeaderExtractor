@@ -17,6 +17,8 @@ var capsV3 = new F1QRunCaps(MaxTransportAttemptsPerTurn: 1);
 // Held-out (Issue #6): V3 caps plus the USD 3.00 hard cap checked against worst-case cost before every call.
 var capsHeldout = capsV3 with { HardCapUsd = 3.00m };
 
+// "-layout" modes run the layout-aware chunking arm (2026-10-11): same composition, only pack/chunk boundaries differ.
+LayoutArm.On = args[0].EndsWith("-layout", StringComparison.Ordinal);
 switch (args[0])
 {
     case "probe":
@@ -258,6 +260,7 @@ switch (args[0])
         break;
     }
     case "prepare-heldout":
+    case "prepare-heldout-layout":
     {
         // Issue #6 held-out plan: the frozen V3 composition (prompt, payload, schema, tools, json_object, chunking)
         // applied to the source-only selected pages of the 24 audited documents. No Gold, no provider calls.
@@ -291,6 +294,7 @@ switch (args[0])
             systemPromptSha256 = promptSha, toolDefinitionsSha256 = toolSha, promptSchemaToolsRoute = "IDENTICAL_TO_FROZEN_V3",
             protocolVersion = P7F1QProtocolV2.Version, model = policyV3.Model, providerRoute = new { order = new[] { "alibaba" }, allowFallbacks = false, requireParameters = true },
             responseFormat = "json_object_on_every_turn", chunkSize = P7F1QProtocolV2.ChunkSize, caps = capsHeldout,
+            packing = LayoutArm.On ? P7F1QLayoutPacking.Version : "P05_RESOURCE_BOUNDED_PACKS_BALANCED_COUNT_CHUNKS",
             budget = new { hardCapUsd = capsHeldout.HardCapUsd, softAlertUsd = 1.00m, perDocumentCapUsd = PerDocumentCapUsd, preCallWorstCaseCheck = true },
             retryPolicy = "AT_MOST_ONE_IDENTICAL_BODY_RETRY_PER_REQUEST_ON_TRANSPORT_OR_CONTRACT_FAILURE_NO_ERROR_FEEDBACK_NO_SEMANTIC_RETRY",
             fenceNormalization = P7F1QFenceNormalization.Version, contractViews = new[] { "STRICT_RAW", "NORMALIZED_ACCEPTANCE" },
@@ -299,7 +303,8 @@ switch (args[0])
             requests, worstCaseTotalUsdAllRequestsTwoAttempts = requests.Sum(r => JsonSerializer.SerializeToElement(r).GetProperty("worstCaseRequestUsd").GetDecimal()) * 2,
             goldRead = false, providerCalls = 0, productionChanged = false,
             sources = new[] { "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QEvidenceTools.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QProtocolV2.cs",
-                "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QConversation.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QFenceNormalization.cs", "scripts/P7F1Q/Program.cs" }
+                "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QConversation.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QFenceNormalization.cs",
+                "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QLayoutPacking.cs", "scripts/P7F1Q/Program.cs" }
                 .Select(path => new { path, sha256 = SpatialCanonical.Hash(File.ReadAllBytes(path)) }),
         });
         P7F1QConversationRunner.WriteNew(args[2], plan);
@@ -307,6 +312,7 @@ switch (args[0])
         break;
     }
     case "execute-heldout":
+    case "execute-heldout-layout":
     {
         if (args.Length < 7) throw new ArgumentException("execute-heldout <plan.json> <plan-sha256> <bodies-dir> <gold-freeze.json> <gold-freeze-sha256> <capture-root> [handle,...]");
         var planBytes = ReadPinned(args[1], args[2]); using var plan = JsonDocument.Parse(planBytes);
@@ -374,15 +380,21 @@ List<F1QCase> HeldoutCases(byte[] selectionBytes)
         var store = PdfSourceEvidenceStore.Build(source, details);
         Need(store.StoreSha256 == S(d, "evidenceStoreSha256"), "HELDOUT_STORE_DRIFT:" + id);
         var pages = d.GetProperty("selectedPages").EnumerateArray().Select(p => p.GetProperty("page").GetInt32()).ToArray();
-        foreach (var pack in P7PilotRequestPreflight.SelectPacks(source, details, pages))
-            list.Add(Case($"H{id}-{Short(pack.PackId)}", id, pack, pages, "P7_F1Q_HELDOUT_ISSUE_6", source, details, store,
+        var packs = LayoutArm.On ? P7F1QLayoutPacking.SelectPacks(source, details, pages) : P7PilotRequestPreflight.SelectPacks(source, details, pages);
+        foreach (var pack in packs)
+        {
+            var name = $"{LayoutArm.Prefix}{id}-{Short(pack.PackId)}";
+            if (LayoutArm.On)
+                foreach (var e in pack.Owned) LayoutArm.Block[name + "|" + e.SourceAlias] = P7F1QLayoutPacking.Block(details, e);
+            list.Add(Case(name, id, pack, pages, "P7_F1Q_HELDOUT_ISSUE_6", source, details, store,
                 P7PilotRequestPreflight.F1(source, details, pack), null));
+        }
     }
     return list;
 }
 
 static decimal SpentFor(string root, string document) => !Directory.Exists(Path.Combine(root, "requests")) ? 0 :
-    Directory.GetDirectories(Path.Combine(root, "requests"), $"H{document}-*").Sum(d =>
+    Directory.GetDirectories(Path.Combine(root, "requests"), $"{LayoutArm.Prefix}{document}-*").Sum(d =>
         Directory.GetFiles(d, "observation.json", SearchOption.AllDirectories).Sum(f =>
         { using var j = JsonDocument.Parse(File.ReadAllBytes(f)); return j.RootElement.GetProperty("assembled").GetProperty("usage") is { ValueKind: JsonValueKind.Object } u && u.TryGetProperty("cost", out var c) ? c.GetDecimal() : 0m; }));
 
@@ -390,7 +402,10 @@ static IReadOnlyList<IReadOnlyList<P7F1QProtocolV2.V5Issued>> ChunksOf(F1QCase c
 {
     using var user = JsonDocument.Parse(c.Control.ControlUserMessage);
     var correspondences = user.RootElement.GetProperty("occurrences").EnumerateArray().ToDictionary(o => o.GetProperty("id").GetString()!, o => o.GetProperty("correspondences").Clone());
-    return P7F1QProtocolV2.Chunks(c.Issued.Select(i => new P7F1QProtocolV2.V5Issued(i.Occurrence, i.SourceAlias, i.Page, i.Text, correspondences[i.Occurrence])).ToArray());
+    var issued = c.Issued.Select(i => new P7F1QProtocolV2.V5Issued(i.Occurrence, i.SourceAlias, i.Page, i.Text, correspondences[i.Occurrence])).ToArray();
+    return LayoutArm.On
+        ? P7F1QLayoutPacking.Chunks(issued, i => i.Page, i => LayoutArm.Block[c.Case + "|" + i.SourceAlias], P7F1QProtocolV2.ChunkSize)
+        : P7F1QProtocolV2.Chunks(issued);
 }
 
 static string UserV3(F1QCase c, IReadOnlyList<P7F1QProtocolV2.V5Issued> chunk) =>
@@ -524,6 +539,14 @@ static string Short(string packId) => packId[(packId.LastIndexOf(':') + 1)..];
 static string S(JsonElement e, string key) => e.GetProperty(key).GetString()!;
 static void Need(bool ok, string code) { if (!ok) throw new InvalidOperationException(code); }
 static byte[] ReadPinned(string path, string hash) { var b = File.ReadAllBytes(path); Need(SpatialCanonical.Hash(b) == hash, "PINNED_INPUT_DRIFT:" + Path.GetFileName(path)); return b; }
+
+/// <summary>Layout-aware chunking arm switch: held-out cases are prefixed L (P05 arm: H); layout block per (case, alias).</summary>
+internal static class LayoutArm
+{
+    public static bool On;
+    public static string Prefix => On ? "L" : "H";
+    public static readonly Dictionary<string, string> Block = new(StringComparer.Ordinal);
+}
 
 internal sealed record F1QCase(string Case, string Document, string Pack, int[] Pages, string Origin, DocumentSourceSnapshot Source,
     InterpretationRequest Control, IReadOnlyList<(string Alias, int Page, string Text)> Context, IReadOnlyList<F1QIssuedOccurrence> Issued,
