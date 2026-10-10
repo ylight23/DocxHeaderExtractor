@@ -37,9 +37,12 @@ internal static class F1QHeldoutScorer
         var raw = new Dictionary<string, string>(StringComparer.Ordinal);
         int requests = 0, acceptedFirst = 0, acceptedFinal = 0, rawFirst = 0, rawFinal = 0, normalizedUsed = 0; var failures = new SortedDictionary<string, int>();
         decimal cost = 0;
+        // Prediction maps are keyed by document|alias: source aliases (L0004:S0, ...) repeat across documents.
+        // (Keyed by alias alone, later documents overwrote earlier ones - found 2026-10-11 on the first held-out score.)
         foreach (var q in plan.RootElement.GetProperty("requests").EnumerateArray())
         {
             requests++;
+            var document = q.GetProperty("document").GetString()!;
             var aliasById = q.GetProperty("issued").EnumerateArray().ToDictionary(i => i.GetProperty("occurrence").GetString()!, i => i.GetProperty("sourceAlias").GetString()!);
             var dir = Path.Combine(root, "requests", q.GetProperty("handle").GetString()!.Replace('|', '.'));
             var attempts = Enumerable.Range(1, 2).Select(k => Path.Combine(dir, $"attempt-{k}")).Where(Directory.Exists).ToArray();
@@ -57,12 +60,12 @@ internal static class F1QHeldoutScorer
                 if (status == "ACCEPTED" && !doneFinal)
                 {
                     doneFinal = true; acceptedFinal++; if (k == 0) acceptedFirst++;
-                    foreach (var (alias, fn) in Decisions(Path.Combine(attempts[k], "validation.json"), aliasById)) { final[alias] = fn; if (k == 0) first[alias] = fn; }
+                    foreach (var (alias, fn) in Decisions(Path.Combine(attempts[k], "validation.json"), aliasById)) { final[Key(document, alias)] = fn; if (k == 0) first[Key(document, alias)] = fn; }
                 }
                 if (rawAccepted && !doneRaw)
                 {
                     doneRaw = true; rawFinal++; if (k == 0) rawFirst++;
-                    foreach (var (alias, fn) in Decisions(rawPath, aliasById)) raw[alias] = fn;
+                    foreach (var (alias, fn) in Decisions(rawPath, aliasById)) raw[Key(document, alias)] = fn;
                 }
             }
         }
@@ -80,12 +83,12 @@ internal static class F1QHeldoutScorer
                 var goldStatus = l.TryGetProperty("goldStatus", out var gs) ? gs.GetString()! : "LABELED";
                 if (goldStatus.StartsWith("EXCLUDED_", StringComparison.Ordinal))
                 {   // Declared before the run (source-quality audit): kept in requests, never scored, reported separately.
-                    excluded.Add(new { document = id, alias, goldStatus, predicted = final.GetValueOrDefault(alias) ?? "MISSING" }); continue;
+                    excluded.Add(new { document = id, alias, goldStatus, predicted = final.GetValueOrDefault(Key(id, alias)) ?? "MISSING" }); continue;
                 }
                 var label = l.GetProperty("label").GetString()!;
                 Need(Labels.Contains(label), "GOLD_LABEL_INVALID:" + id + alias);
                 rows.Add(new(id, stratumOf[id], family[id], l.GetProperty("pageStratum").GetString()!, alias, label,
-                    final.GetValueOrDefault(alias), first.GetValueOrDefault(alias), raw.GetValueOrDefault(alias)));
+                    final.GetValueOrDefault(Key(id, alias)), first.GetValueOrDefault(Key(id, alias)), raw.GetValueOrDefault(Key(id, alias))));
             }
         }
 
@@ -149,6 +152,8 @@ internal static class F1QHeldoutScorer
             missingAndAbstentionAreNotOTHER = true, goldMutation = "NONE", providerCallsDuringScoring = 0, productionPromotion = "BLOCKED",
         });
     }
+
+    internal static string Key(string document, string alias) => document + "|" + alias;
 
     private static IEnumerable<(string Alias, string Function)> Decisions(string validationPath, IReadOnlyDictionary<string, string> aliasById)
     {

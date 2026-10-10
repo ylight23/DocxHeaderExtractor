@@ -3,6 +3,7 @@ using System.Text;
 // P7-F1Q post-freeze scorers (Issue #5). Each opens Gold only after its raw manifest is frozen and pinned.
 //   <plan-v1.json> <capture-root> <raw-manifest-sha256> <pilot-gold-dir> <d3-raw-dir> <new-score.json>
 //   heldout <plan.json> <capture-root> <raw-manifest-sha256> <gold-freeze.json> <gold-freeze-sha256> <page-selection.json> <contamination-audit.json> <new-score.json>
+//   heldout-paired <score-a.json> <score-b.json> <label-a> <label-b> <new-comparison.json>
 //   v3 <plan-v3.json> <v3-root> <v3-manifest-sha256> <v1-root> <pilot-gold-dir> <d3-raw-dir> <full-source-dir> <new-score.json>
 byte[] bytes; string output;
 if (args.Length == 9 && args[0] == "v3")
@@ -16,6 +17,12 @@ else if (args.Length == 9 && args[0] == "heldout")
     output = args[8];
     if (File.Exists(output)) throw new InvalidOperationException("SCORE_EXISTS");
     bytes = F1QHeldoutScorer.Run(args[1], args[2], args[3], args[4], args[5], args[6], args[7]);
+}
+else if (args.Length == 6 && args[0] == "heldout-paired")
+{
+    output = args[5];
+    if (File.Exists(output)) throw new InvalidOperationException("SCORE_EXISTS");
+    bytes = F1QHeldoutPairedComparison.Run(args[1], args[2], args[3], args[4]);
 }
 else if (args.Length == 6)
 {
