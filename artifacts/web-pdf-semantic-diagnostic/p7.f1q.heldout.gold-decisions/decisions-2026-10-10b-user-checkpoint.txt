@@ -1,0 +1,18 @@
+# User checkpoint review of Gold v3 (Issue #6, 2026-10-10, second pass).
+# Rule for restated document titles: repetition alone does not decide the label; judge the function at the source
+# location. A title presented independently (own line, prominent, not page furniture) establishes structure there;
+# a title repeated as header/footer information is OTHER.
+034 L0210:S0 -> E because the document title "Standard Procurement Document" is presented independently at the head of the contents page (bold 20pt, centred, own line), not as a small repeated running header; restated-title rule
+# Rationale synchronisation for the rows changed in v3 (labels unchanged; the decision reason becomes the rationale).
+049 L0005:S0 -> O because "(Unaudited)" states the audit status of the report; it does not open a heading or content region although it sits under the title in prominent type
+017 L1688:S0 -> E because numbered form heading "1. Hình thức hóa đơn" opens its own content region of the form (form-heading policy), not a single data field
+017 L1691:S0 -> E because numbered form heading "2. Hình thức gửi dữ liệu hóa đơn điện tử" opens its own content region of the form (form-heading policy)
+087 L1222:S0 -> E because numbered form heading "2. Reason" opens its own content region of the form (form-heading policy)
+087 L1224:S0 -> E because numbered form heading "3. Enclosed documents" opens its own content region of the form (form-heading policy); the line also carries the start of an italic parenthetical
+083 L1075:S0 EXCLUDE SOURCE_CORRUPTED_MIXED_FUNCTION because the parser merged body text, the real "Article 39" heading and the watermark into one corrupted atom (page 32); no clean heading occurrence exists to classify by text
+087 L1216:S0 EXCLUDE SOURCE_CORRUPTED_MIXED_FUNCTION because the parser merged the "1. General information" form heading with body text and the watermark into one corrupted atom (page 38); label must not be guessed from the corrupted string
+# Open question (label NOT changed): page 38 shows "3. Enclosed documents" in regular type followed by an italic parenthetical that continues on L1225/L1226, the same form as the italic fill-in instruction "(specify the number, date and month, abstract)" on rows L1219-L1221. Heading wording (E) or fill-in instruction (O)?
+087 L1225:S0 FLAG DECISION_NEEDED because continuation of the italic parenthetical after "3. Enclosed documents": user proposed E as part of one multi-line form heading; the page shows the same italic instruction style as L1219-L1221 (OTHER); confirm E or O
+087 L1226:S0 FLAG DECISION_NEEDED because end of the same italic parenthetical "security importance)"; confirm E or O together with L1225:S0
+# Found by the label/rationale consistency scan of all 3,151 rows (only remaining contradiction). Label NOT changed.
+051 L0004:S0 FLAG DECISION_NEEDED because drafted E but the rationale reads "subtitle or reporting-period metadata"; by consistency with 049 "(Unaudited)" -> O and the cover reporting dates of 044/049 (OTHER), the suggestion is O; confirm E or O

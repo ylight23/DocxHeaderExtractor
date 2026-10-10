@@ -72,3 +72,5 @@
 /artifacts/web-pdf-semantic-diagnostic/p7.f1q.tool-augmented-raw.v1/** -text -diff
 /artifacts/web-pdf-semantic-diagnostic/p7.f1q.evidence-v2-raw.v1/** -text -diff
 /artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout-raw.v1/** -text -diff
+# P7-F1Q held-out Gold drafts/decisions/workspace manifest: hashed as bytes by the freeze gate and workspace manifest (CRLF as written).
+/artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.gold-*/** -text

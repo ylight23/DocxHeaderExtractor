@@ -63,3 +63,7 @@ outline_llm/
 # skills và worktrees khác nhau giữa các máy, và worktrees còn chứa bản sao repo.
 .claude/
 .agents/
+
+# Gold visual review workspace: 150 DPI renders of held-out pages; public repo, keep local/private (manifest pins hashes)
+artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.gold-workspace.*/*.review.html
+artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.gold-workspace.*/*.review.pdf

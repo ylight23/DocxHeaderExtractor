@@ -1,0 +1,129 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_DECISION_LEDGER_V1",
+  "source": "USER_CHECKPOINT_2026_10_10B_ISSUE_6",
+  "decisionsFileSha256": "3d7816693b586bcf039d7fbc2722ae4fb91d0b79b506745f459faa02b0cb1cc9",
+  "inputDrafts": "p7.f1q.heldout.gold-drafts.v3",
+  "outputDrafts": "p7.f1q.heldout.gold-drafts.v4",
+  "decisions": [
+    {
+      "id": "034",
+      "alias": "L0210:S0",
+      "text": "Standard Procurement Document",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED",
+      "reason": "the document title \"Standard Procurement Document\" is presented independently at the head of the contents page (bold 20pt, centred, own line), not as a small repeated running header; restated-title rule",
+      "source": "USER_CHECKPOINT_2026_10_10B_ISSUE_6"
+    },
+    {
+      "id": "049",
+      "alias": "L0005:S0",
+      "text": "(Unaudited)",
+      "previousLabel": "OTHER",
+      "newLabel": "OTHER",
+      "goldStatus": "LABELED",
+      "reason": "\"(Unaudited)\" states the audit status of the report; it does not open a heading or content region although it sits under the title in prominent type",
+      "source": "USER_CHECKPOINT_2026_10_10B_ISSUE_6"
+    },
+    {
+      "id": "017",
+      "alias": "L1688:S0",
+      "text": "1.Hìnhthứchóađơn:",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED",
+      "reason": "numbered form heading \"1. Hình thức hóa đơn\" opens its own content region of the form (form-heading policy), not a single data field",
+      "source": "USER_CHECKPOINT_2026_10_10B_ISSUE_6"
+    },
+    {
+      "id": "017",
+      "alias": "L1691:S0",
+      "text": "2.Hìnhthứcgửidữliệuhóađơnđiệntử:",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED",
+      "reason": "numbered form heading \"2. Hình thức gửi dữ liệu hóa đơn điện tử\" opens its own content region of the form (form-heading policy)",
+      "source": "USER_CHECKPOINT_2026_10_10B_ISSUE_6"
+    },
+    {
+      "id": "087",
+      "alias": "L1222:S0",
+      "text": "2. Reason",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED",
+      "reason": "numbered form heading \"2. Reason\" opens its own content region of the form (form-heading policy)",
+      "source": "USER_CHECKPOINT_2026_10_10B_ISSUE_6"
+    },
+    {
+      "id": "087",
+      "alias": "L1224:S0",
+      "text": "3. Enclosed documents (documents proving that the information system is",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "LABELED",
+      "reason": "numbered form heading \"3. Enclosed documents\" opens its own content region of the form (form-heading policy); the line also carries the start of an italic parenthetical",
+      "source": "USER_CHECKPOINT_2026_10_10B_ISSUE_6"
+    },
+    {
+      "id": "083",
+      "alias": "L1075:S0",
+      "text": "iomnnafoncraymAgbearemttriiocesnlenects.u3yr9si.ttLeyRmeosnumpotahnnaesaiigrbteislreVistrivieniscireoeesfmtahontevdniGninogafvoienrrfmnmomarmteionan.ttiCovsnyipsvnhteieomrlaCstiounmngdmtehirtettehleaewir",
+      "previousLabel": null,
+      "newLabel": null,
+      "goldStatus": "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION",
+      "reason": "the parser merged body text, the real \"Article 39\" heading and the watermark into one corrupted atom (page 32); no clean heading occurrence exists to classify by text",
+      "source": "USER_CHECKPOINT_2026_10_10B_ISSUE_6"
+    },
+    {
+      "id": "087",
+      "alias": "L1216:S0",
+      "text": "inform.1-a...Itin2GofrneoenrqsmeyursaeattsleitomisnntsfoosoyrefmsxtnLaceatlmtiuioudonnenaatmalheese:ftc.o.uV.lrloitwyiiinemgpiotnrfntoarnmcaea:timon sy.stvemnfrom the List of",
+      "previousLabel": null,
+      "newLabel": null,
+      "goldStatus": "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION",
+      "reason": "the parser merged the \"1. General information\" form heading with body text and the watermark into one corrupted atom (page 38); label must not be guessed from the corrupted string",
+      "source": "USER_CHECKPOINT_2026_10_10B_ISSUE_6"
+    },
+    {
+      "id": "087",
+      "alias": "L1225:S0",
+      "text": "no longer appropriate to be classified as an information system of national",
+      "previousLabel": "OTHER",
+      "newLabel": "OTHER",
+      "goldStatus": "FLAGGED_DECISION_NEEDED",
+      "reason": "continuation of the italic parenthetical after \"3. Enclosed documents\": user proposed E as part of one multi-line form heading; the page shows the same italic instruction style as L1219-L1221 (OTHER); confirm E or O",
+      "source": "USER_CHECKPOINT_2026_10_10B_ISSUE_6"
+    },
+    {
+      "id": "087",
+      "alias": "L1226:S0",
+      "text": "security importance)",
+      "previousLabel": "OTHER",
+      "newLabel": "OTHER",
+      "goldStatus": "FLAGGED_DECISION_NEEDED",
+      "reason": "end of the same italic parenthetical \"security importance)\"; confirm E or O together with L1225:S0",
+      "source": "USER_CHECKPOINT_2026_10_10B_ISSUE_6"
+    },
+    {
+      "id": "051",
+      "alias": "L0004:S0",
+      "text": "Fiscalyears endedJune30, 2024and2023",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": "ESTABLISHES_STRUCTURE",
+      "goldStatus": "FLAGGED_DECISION_NEEDED",
+      "reason": "drafted E but the rationale reads \"subtitle or reporting-period metadata\"; by consistency with 049 \"(Unaudited)\" -> O and the cover reporting dates of 044/049 (OTHER), the suggestion is O; confirm E or O",
+      "source": "USER_CHECKPOINT_2026_10_10B_ISSUE_6"
+    }
+  ],
+  "documentApprovals": [],
+  "goldApprovedDocuments": 0,
+  "providerCalls": 0,
+  "totalsAfter": {
+    "ESTABLISHES_STRUCTURE": 250,
+    "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION": 2,
+    "OTHER": 2708,
+    "REPRESENTS_STRUCTURE": 191
+  },
+  "occurrencesAfter": 3151
+}

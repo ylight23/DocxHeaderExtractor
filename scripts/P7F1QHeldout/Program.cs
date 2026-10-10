@@ -359,6 +359,17 @@ switch (args[0])
             var mEdit = Regex.Match(line, @"^(\d{3})\s+(L\d{4}:S\d+)\s*->\s*([ERO])\s+because\s+(.+)$");
             var mEx = Regex.Match(line, @"^(\d{3})\s+(L\d{4}:S\d+)\s+EXCLUDE\s+([A-Z_]+)\s+because\s+(.+)$");
             var mAp = Regex.Match(line, @"^APPROVE\s+(\d{3})\s+by\s+(\S.*?)(?:\s+because\s+(.+))?$");
+            var mFlag = Regex.Match(line, @"^(\d{3})\s+(L\d{4}:S\d+)\s+FLAG\s+(DECISION_NEEDED|REVIEW_FOCUS)\s+because\s+(.+)$");
+            if (mFlag.Success)
+            {   // Flag only: the label is NOT changed; the evidence/question is recorded for the user.
+                var fid = mFlag.Groups[1].Value; Need(drafts.ContainsKey(fid), "UNKNOWN_DOCUMENT:" + fid);
+                var frow = drafts[fid]["labels"]!.AsArray().Select(n => n!.AsObject()).SingleOrDefault(n => n["sourceAlias"]!.GetValue<string>() == mFlag.Groups[2].Value)
+                    ?? throw new InvalidOperationException("ALIAS_NOT_IN_DRAFT:" + fid + ":" + mFlag.Groups[2].Value);
+                frow["reviewFlag"] = mFlag.Groups[3].Value; frow["openQuestion"] = mFlag.Groups[4].Value.Trim();
+                ledger.Add(new { id = fid, alias = mFlag.Groups[2].Value, text = frow["text"]!.GetValue<string>(), previousLabel = frow["draftLabel"]?.GetValue<string>(),
+                    newLabel = frow["draftLabel"]?.GetValue<string>(), goldStatus = "FLAGGED_" + mFlag.Groups[3].Value, reason = mFlag.Groups[4].Value.Trim(), source = args[3] });
+                continue;
+            }
             if (mAp.Success)
             {
                 var docId = mAp.Groups[1].Value; Need(drafts.ContainsKey(docId), "UNKNOWN_DOCUMENT:" + docId);
@@ -373,16 +384,19 @@ switch (args[0])
             string? label = mEdit.Success ? m.Groups[3].Value switch { "E" => "ESTABLISHES_STRUCTURE", "R" => "REPRESENTS_STRUCTURE", _ => "OTHER" } : null;
             var status = mEx.Success ? "EXCLUDED_" + m.Groups[3].Value : "LABELED";
             var reason = m.Groups[4].Value.Trim();
+            var previousRationale = row["rationale"]?.GetValue<string>();
             row["draftLabel"] = label; row["goldStatus"] = status;
+            // Keep label and rationale consistent: the decision reason becomes the rationale; the old one stays in history.
+            row["rationale"] = $"USER DECISION ({args[3]}): {reason}";
             var history = row["decisions"]?.AsArray() ?? new JsonArray(); row["decisions"] = history;
-            history.Add(new JsonObject { ["previousLabel"] = old, ["newLabel"] = label, ["goldStatus"] = status, ["reason"] = reason, ["source"] = args[3] });
+            history.Add(new JsonObject { ["previousLabel"] = old, ["newLabel"] = label, ["goldStatus"] = status, ["reason"] = reason, ["previousRationale"] = previousRationale, ["source"] = args[3] });
             row["reviewFlag"] = "USER_DECIDED"; row["approval"] = "USER_DECIDED_ROW";
             ledger.Add(new { id, alias, text = row["text"]!.GetValue<string>(), previousLabel = old, newLabel = label, goldStatus = status, reason, source = args[3] });
         }
         Directory.CreateDirectory(args[4]);
         foreach (var (id, d) in drafts.OrderBy(p => p.Key))
         {
-            d["version"] = "P7_F1Q_HELDOUT_GOLD_DRAFT_V3"; d["status"] = "DRAFT_USER_REVIEWED_NOT_APPROVED";
+            d["version"] = "P7_F1Q_HELDOUT_GOLD_DRAFT_" + Path.GetFileName(Path.GetFullPath(args[4]).TrimEnd(Path.DirectorySeparatorChar)).Split('.').Last().ToUpperInvariant(); d["status"] = "DRAFT_USER_REVIEWED_NOT_APPROVED";
             var labels = d["labels"]!.AsArray().Select(n => n!.AsObject()).ToArray();
             foreach (var l in labels) l["goldStatus"] ??= "LABELED";
             d["counts"] = new JsonObject(labels.GroupBy(l => l["draftLabel"]?.GetValue<string>() ?? "EXCLUDED").Select(g => KeyValuePair.Create(g.Key, (JsonNode?)g.Count())));
@@ -393,6 +407,9 @@ switch (args[0])
             version = "P7_F1Q_HELDOUT_GOLD_DECISION_LEDGER_V1", source = args[3], decisionsFileSha256 = Hex(SHA256.HashData(decisionsBytes)),
             inputDrafts = Path.GetFileName(Path.GetFullPath(args[1]).TrimEnd(Path.DirectorySeparatorChar)), outputDrafts = Path.GetFileName(Path.GetFullPath(args[4]).TrimEnd(Path.DirectorySeparatorChar)),
             decisions = ledger, documentApprovals = approvals, goldApprovedDocuments = approvals.Count, providerCalls = 0,
+            totalsAfter = drafts.Values.SelectMany(d => d["labels"]!.AsArray()).GroupBy(l => l!["goldStatus"]?.GetValue<string>() is { } s && s.StartsWith("EXCLUDED_") ? s : l!["draftLabel"]?.GetValue<string>() ?? "NULL")
+                .OrderBy(g => g.Key).ToDictionary(g => g.Key, g => g.Count()),
+            occurrencesAfter = drafts.Values.Sum(d => d["labels"]!.AsArray().Count),
         }, json));
         Console.WriteLine(JsonSerializer.Serialize(new { applied = ledger.Count, approvals = approvals.Count }));
         break;

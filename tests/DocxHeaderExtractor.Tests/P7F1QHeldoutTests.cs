@@ -202,6 +202,77 @@ public sealed class P7F1QHeldoutTests : IDisposable
         Assert.True(audit.RootElement.GetProperty("declaredBeforeProviderRun").GetBoolean());
     }
 
+    [Fact] public void Gold_drafts_v4_sync_rationale_with_the_decided_labels_and_keep_open_questions_unlabelled()
+    {
+        var v3 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v3"); var v4 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v4");
+        Dictionary<string, JsonElement> Rows(string dir, string id) => JsonDocument.Parse(File.ReadAllBytes(Path.Combine(dir, id + ".gold-draft.json")))
+            .RootElement.GetProperty("labels").EnumerateArray().ToDictionary(l => l.GetProperty("sourceAlias").GetString()!);
+        var title = Rows(v4, "034")["L0210:S0"];
+        Assert.Equal("ESTABLISHES_STRUCTURE", title.GetProperty("draftLabel").GetString());
+        Assert.Contains("restated-title rule", title.GetProperty("rationale").GetString());
+        foreach (var (id, alias) in new[] { ("049", "L0005:S0"), ("017", "L1688:S0"), ("017", "L1691:S0"), ("087", "L1222:S0"), ("087", "L1224:S0"), ("083", "L1075:S0"), ("087", "L1216:S0") })
+        {
+            var row = Rows(v4, id)[alias]; var last = row.GetProperty("decisions").EnumerateArray().Last();
+            Assert.Equal($"USER DECISION (USER_CHECKPOINT_2026_10_10B_ISSUE_6): {last.GetProperty("reason").GetString()}", row.GetProperty("rationale").GetString());
+            Assert.Equal(Rows(v3, id)[alias].GetProperty("rationale").GetString(), last.GetProperty("previousRationale").GetString());
+        }
+        foreach (var (id, alias) in new[] { ("087", "L1225:S0"), ("087", "L1226:S0"), ("051", "L0004:S0") })
+        {
+            var row = Rows(v4, id)[alias];
+            Assert.Equal("DECISION_NEEDED", row.GetProperty("reviewFlag").GetString());
+            Assert.Equal(Rows(v3, id)[alias].GetProperty("draftLabel").GetString(), row.GetProperty("draftLabel").GetString());
+            Assert.Contains("confirm E or O", row.GetProperty("openQuestion").GetString());
+        }
+        var totals = new Dictionary<string, int>();
+        foreach (var file in Directory.GetFiles(v4, "*.gold-draft.json"))
+        {
+            using var d = JsonDocument.Parse(File.ReadAllBytes(file));
+            Assert.Equal("DRAFT_USER_REVIEWED_NOT_APPROVED", d.RootElement.GetProperty("status").GetString());
+            var id = d.RootElement.GetProperty("id").GetString()!; var before = Rows(v3, id);
+            foreach (var l in d.RootElement.GetProperty("labels").EnumerateArray())
+            {
+                Assert.Equal(before[l.GetProperty("sourceAlias").GetString()!].GetProperty("draftLabel").ToString(), l.GetProperty("draftLabel").ToString());
+                var key = l.GetProperty("draftLabel").ValueKind == JsonValueKind.Null ? l.GetProperty("goldStatus").GetString()! : l.GetProperty("draftLabel").GetString()!;
+                totals[key] = totals.GetValueOrDefault(key) + 1;
+            }
+        }
+        Assert.Equal(250, totals["ESTABLISHES_STRUCTURE"]); Assert.Equal(191, totals["REPRESENTS_STRUCTURE"]);
+        Assert.Equal(2708, totals["OTHER"]); Assert.Equal(2, totals["EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION"]);
+        using var ledger = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.gold-decisions", "ledger-2026-10-10b-user-checkpoint.json")));
+        Assert.Equal(0, ledger.RootElement.GetProperty("goldApprovedDocuments").GetInt32());
+        Assert.Equal(0, ledger.RootElement.GetProperty("providerCalls").GetInt32());
+        Assert.Equal(250, ledger.RootElement.GetProperty("totalsAfter").GetProperty("ESTABLISHES_STRUCTURE").GetInt32());
+        Assert.Equal(Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.gold-decisions", "decisions-2026-10-10b-user-checkpoint.txt")))),
+            ledger.RootElement.GetProperty("decisionsFileSha256").GetString());
+    }
+
+    [Fact] public void Gold_workspace_manifest_binds_every_document_to_the_v4_draft_and_keeps_page_renders_out_of_git()
+    {
+        var ws = Path.Combine(Dir, "p7.f1q.heldout.gold-workspace.v1");
+        using var m = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(ws, "workspace-manifest.json")));
+        var r = m.RootElement;
+        Assert.False(r.GetProperty("goldApproved").GetBoolean()); Assert.Equal(0, r.GetProperty("providerCalls").GetInt32());
+        Assert.Equal(3151, r.GetProperty("totalOccurrences").GetInt32()); Assert.Equal(86, r.GetProperty("totalPages").GetInt32());
+        Assert.Equal(["044", "049", "087", "032"], r.GetProperty("reviewOrder").EnumerateArray().Take(4).Select(e => e.GetString()!).ToArray());
+        string Sha(string path) => Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(path)));
+        var docs = r.GetProperty("documents").EnumerateArray().ToArray();
+        Assert.Equal(24, docs.Length);
+        foreach (var d in docs)
+        {
+            var id = d.GetProperty("id").GetString()!;
+            Assert.Equal(Sha(Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v4", id + ".gold-draft.json")), d.GetProperty("draftSha256").GetString());
+            foreach (var kind in new[] { "html", "pdf" })
+            {
+                var local = Path.Combine(ws, d.GetProperty(kind).GetString()!);
+                if (File.Exists(local)) Assert.Equal(d.GetProperty(kind + "Sha256").GetString(), Sha(local));
+            }
+        }
+        var ignore = File.ReadAllText(TestRepository.Path(".gitignore"));
+        Assert.Contains("p7.f1q.heldout.gold-workspace.*/*.review.html", ignore);
+        Assert.Contains("p7.f1q.heldout.gold-workspace.*/*.review.pdf", ignore);
+        Assert.Contains("E 250 · R 191 · O 2708 · excluded 2", File.ReadAllText(Path.Combine(ws, "README.md")));
+    }
+
     [Fact] public void Heldout_plan_reuses_the_frozen_v3_prompt_tools_and_route_and_gates_on_gold()
     {
         using var plan = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.execution-plan.v1.json")));
