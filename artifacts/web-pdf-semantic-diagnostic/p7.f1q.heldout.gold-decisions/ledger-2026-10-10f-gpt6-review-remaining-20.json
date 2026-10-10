@@ -1,0 +1,32 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_DECISION_LEDGER_V1",
+  "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10F_ISSUE_6",
+  "decisionsFileSha256": "8c6925c8820ea33172d2ed58a24496e8c9fc5616553843cd871b071bbac5a541",
+  "inputDrafts": "p7.f1q.heldout.gold-drafts.v7",
+  "outputDrafts": "p7.f1q.heldout.gold-drafts.v8",
+  "decisions": [
+    {
+      "id": "051",
+      "alias": "L0074:S0",
+      "text": "ContributionandDisbursements",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": "OTHER",
+      "goldStatus": "LABELED",
+      "reason": "\"Contribution and Disbursements\" is a local chart title, parallel to the adjacent \"Contributions\" chart title already labeled OTHER; it does not independently establish a document heading (GPT-6 visual review)",
+      "previousFlag": "REVIEW_FOCUS",
+      "resolvedQuestion": null,
+      "source": "GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10F_ISSUE_6"
+    }
+  ],
+  "documentApprovals": [],
+  "revokedApprovals": [],
+  "goldApprovedDocuments": 4,
+  "providerCalls": 0,
+  "totalsAfter": {
+    "ESTABLISHES_STRUCTURE": 245,
+    "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION": 2,
+    "OTHER": 2713,
+    "REPRESENTS_STRUCTURE": 191
+  },
+  "occurrencesAfter": 3151
+}

@@ -1,0 +1,136 @@
+{
+  "version": "P7_F1Q_HELDOUT_SOURCE_QUALITY_AUDIT_V3",
+  "issue": "ylight23/DocxHeaderExtractor#6",
+  "supersedes": "p7.f1q.heldout.source-quality-audit.v2.json (kept unchanged; v1 also kept)",
+  "basis": "V1: user visual audit of all 86 selected pages (2026-10-10). V2 adds: GPT-6 visual review of the 16 bbox page images for 044/049/087/032 (relayed by the user, 2026-10-10), which reports a visible heading inside the corrupted 087 atom; and the restated-title rule decided by the user at the V4 checkpoint. V3 adds the mixed heading/body occurrences reported by the GPT-6 visual review of the remaining 20 documents (relayed by the user, 2026-10-10) and by the user for 087 L1224:S0, each checked by the runner against the parser text and font data.",
+  "declaredBeforeProviderRun": true,
+  "corruptedSourceOccurrences": [
+    {
+      "document": "083",
+      "page": 32,
+      "sourceAlias": "L1075:S0",
+      "goldStatus": "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION",
+      "evidence": "The parser merged three body lines, the real heading 'Article 39. Responsibilities of the Government Cipher Committee' and the diagonal 'LuatVietnam.vn' watermark into one atom whose text is interleaved and unreadable",
+      "scoring": "Row kept in the request universe; never scored in F1 (no clean occurrence to classify). Reported separately."
+    },
+    {
+      "document": "087",
+      "page": 38,
+      "sourceAlias": "L1216:S0",
+      "goldStatus": "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION",
+      "evidence": "The parser merged the form heading '1. General information' with body text and the watermark into one corrupted atom",
+      "scoring": "Row kept in the request universe; never scored in F1. Reported separately."
+    }
+  ],
+  "sourceCoverageLoss": [
+    {
+      "document": "087",
+      "page": 38,
+      "sourceAlias": "L1216:S0",
+      "visibleHeading": "1. General information",
+      "status": "SOURCE_COVERAGE_LOSS",
+      "evidence": "The page image shows the real form heading '1. General information' inside the bbox of the corrupted atom L1216:S0, together with body text and the watermark; no clean occurrence exists for this heading",
+      "basis": "GPT-6 visual review relayed by the user (Issue #6, 2026-10-10)",
+      "scoring": "No synthetic occurrence, no label change; outside the F1 denominator; not counted as an F1 semantic error. Reported as a parser coverage loss."
+    },
+    {
+      "document": "083",
+      "page": 32,
+      "sourceAlias": "L1075:S0",
+      "visibleHeading": "Article 39. Responsibilities of the Government Cipher Committee",
+      "status": "SOURCE_COVERAGE_LOSS",
+      "evidence": "Same condition as 087 L1216:S0, already stated in the V1 evidence of this atom: a real heading exists only inside a corrupted atom",
+      "basis": "Orchestrator, for consistency with the 087 entry; from the V1 audit evidence (no new label or scoring change)",
+      "scoring": "No synthetic occurrence, no label change; outside the F1 denominator; not counted as an F1 semantic error. Reported as a parser coverage loss."
+    }
+  ],
+  "missingSourceHeadings": [
+    {
+      "document": "028",
+      "page": 229,
+      "visibleHeading": "14. Contract Price and Payment",
+      "evidence": "Bold, centred clause heading visible on the rendered page; no parser occurrence or bbox on the page and the text is absent from every 028 request pack",
+      "scoring": "MISSING_SOURCE_HEADING: no synthetic occurrence created; outside the F1 denominator; reported as a parser coverage gap"
+    },
+    {
+      "document": "056",
+      "page": 1,
+      "visibleHeading": "Business Law I (cover title, graphic lettering)",
+      "evidence": "Most of the cover title is drawn as graphics; the parser yields only the word 'Essentials'",
+      "scoring": "MISSING_SOURCE_HEADING: no synthetic occurrence; outside the F1 denominator; reported as a parser coverage gap"
+    }
+  ],
+  "policyNotes": [
+    {
+      "document": "034",
+      "sourceAlias": "L0210:S0",
+      "text": "Standard Procurement Document",
+      "note": "RESOLVED at the V4 checkpoint by the restated-title rule: repetition alone does not decide; a title presented independently at its location (own line, prominent, not page furniture) is ESTABLISHES, a title repeated as header/footer information is OTHER. Kept ESTABLISHES."
+    },
+    {
+      "document": "028",
+      "note": "GPT-6 also reports that some parsed 028 clauses mix a heading fragment with sentence text; no aliases were named, so none are listed above. To be identified before any span-level benchmark."
+    }
+  ],
+  "consequence": "Occurrence-level F1 and heading-level recall are different scopes: even a perfect F1 on parser occurrences cannot recover headings the parser never emits or emits only inside corrupted atoms. The held-out report must state the missing headings and the coverage losses.",
+  "providerCalls": 0,
+  "goldApproved": false,
+  "mixedSpanOccurrences": [
+    {
+      "document": "073",
+      "page": 1,
+      "sourceAlias": "L0016:S0",
+      "status": "MIXED_HEADING_AND_BODY_SPAN",
+      "evidence": "Bold run-in topic 'Report on Currently Available Resources in the F.O.R.T.I.S. Ukraine FIF.' followed by body text 'The Trustee ...' in the same atom (boldRatio 0.9)",
+      "scoring": "Label kept (ESTABLISHES because the occurrence carries a heading); scored in occurrence F1 as is. An exact-span or G2 benchmark must treat the heading as partial coverage of this occurrence."
+    },
+    {
+      "document": "073",
+      "page": 1,
+      "sourceAlias": "L0018:S0",
+      "status": "MIXED_HEADING_AND_BODY_SPAN",
+      "evidence": "Run-in topic 'Operating Context.' followed by body text 'The Governing Committee welcomed ...' (boldRatio 0.2)",
+      "scoring": "Label kept (ESTABLISHES because the occurrence carries a heading); scored in occurrence F1 as is. An exact-span or G2 benchmark must treat the heading as partial coverage of this occurrence."
+    },
+    {
+      "document": "073",
+      "page": 1,
+      "sourceAlias": "L0027:S0",
+      "status": "MIXED_HEADING_AND_BODY_SPAN",
+      "evidence": "End of a bold topic line '... Investment Project Financing.' followed by body text 'The Governing ...' (boldRatio 1.0)",
+      "scoring": "Label kept (ESTABLISHES because the occurrence carries a heading); scored in occurrence F1 as is. An exact-span or G2 benchmark must treat the heading as partial coverage of this occurrence."
+    },
+    {
+      "document": "073",
+      "page": 2,
+      "sourceAlias": "L0037:S0",
+      "status": "MIXED_HEADING_AND_BODY_SPAN",
+      "evidence": "Run-in topic 'Next Bi-Annual Meeting of the GC.' followed by body text 'The Governing Committee agreed ...' (boldRatio 0.4)",
+      "scoring": "Label kept (ESTABLISHES because the occurrence carries a heading); scored in occurrence F1 as is. An exact-span or G2 benchmark must treat the heading as partial coverage of this occurrence."
+    },
+    {
+      "document": "073",
+      "page": 2,
+      "sourceAlias": "L0043:S0",
+      "status": "MIXED_HEADING_AND_BODY_SPAN",
+      "evidence": "Run-in topic 'Next Steps.' followed by body text 'The Secretariat will issue ...' (boldRatio 0.1)",
+      "scoring": "Label kept (ESTABLISHES because the occurrence carries a heading); scored in occurrence F1 as is. An exact-span or G2 benchmark must treat the heading as partial coverage of this occurrence."
+    },
+    {
+      "document": "087",
+      "page": 38,
+      "sourceAlias": "L1224:S0",
+      "status": "MIXED_HEADING_AND_BODY_SPAN",
+      "evidence": "Form section name '3. Enclosed documents' followed by the opening of the italic explanatory parenthetical (user decision 2026-10-10)",
+      "scoring": "Label kept (ESTABLISHES because the occurrence carries a heading); scored in occurrence F1 as is. An exact-span or G2 benchmark must treat the heading as partial coverage of this occurrence."
+    },
+    {
+      "document": "090",
+      "page": 1,
+      "sourceAlias": "L0015:S0",
+      "status": "MIXED_HEADING_AND_BODY_SPAN",
+      "evidence": "Heading 'Article 1. Annulment of some documents and regulations on food safety' followed by body text 'The documents ...'",
+      "scoring": "Label kept (ESTABLISHES because the occurrence carries a heading); scored in occurrence F1 as is. An exact-span or G2 benchmark must treat the heading as partial coverage of this occurrence."
+    }
+  ]
+}

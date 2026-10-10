@@ -1,0 +1,7 @@
+# GPT-6 visual review of the remaining 20 documents (Issue #6, 2026-10-10), relayed by the user.
+# Evidence: p7.f1q.heldout.visual-review.v3 (V6 labels; 70 page images, SHA256SUMS checked 70/70) and the 20 occurrence
+# tables, 2,269 rows. Images were inspected at contact-sheet level, plus 051 p6, 051 p9 and 073 p1 at native resolution.
+# Label edit under the user's delegation of Gold decisions to GPT-6. The runner checked 051/p6.jpg before applying: the two
+# panel labels under "Key Metrices" (L0073:S0, E) have the same font (10.4pt bold) and layout, and L0074:S1 is already OTHER.
+# NO approvals: the review is marked REVIEW_ONLY / NOT_USER_APPROVED and states it does not sign APPROVE.
+051 L0074:S0 -> O because "Contribution and Disbursements" is a local chart title, parallel to the adjacent "Contributions" chart title already labeled OTHER; it does not independently establish a document heading (GPT-6 visual review)
