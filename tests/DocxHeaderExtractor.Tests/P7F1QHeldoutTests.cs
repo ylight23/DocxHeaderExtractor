@@ -344,6 +344,62 @@ public sealed class P7F1QHeldoutTests : IDisposable
         }
     }
 
+    [Fact] public void Gold_drafts_v6_change_exactly_the_three_032_cover_rows_and_record_no_approval()
+    {
+        var v5 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v5"); var v6 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v6");
+        Dictionary<string, JsonElement> Rows(string dir, string id) => JsonDocument.Parse(File.ReadAllBytes(Path.Combine(dir, id + ".gold-draft.json")))
+            .RootElement.GetProperty("labels").EnumerateArray().ToDictionary(l => l.GetProperty("sourceAlias").GetString()!);
+        var changed = new List<(string, string)>(); var totals = new Dictionary<string, int>();
+        foreach (var file in Directory.GetFiles(v6, "*.gold-draft.json"))
+        {
+            using var d = JsonDocument.Parse(File.ReadAllBytes(file));
+            Assert.Equal("DRAFT_USER_REVIEWED_NOT_APPROVED", d.RootElement.GetProperty("status").GetString());
+            Assert.False(d.RootElement.TryGetProperty("documentApproval", out _));
+            var id = d.RootElement.GetProperty("id").GetString()!; var before = Rows(v5, id);
+            Assert.Equal(before.Keys.Order(), d.RootElement.GetProperty("labels").EnumerateArray().Select(l => l.GetProperty("sourceAlias").GetString()!).Order());
+            foreach (var l in d.RootElement.GetProperty("labels").EnumerateArray())
+            {
+                var alias = l.GetProperty("sourceAlias").GetString()!;
+                if (l.GetRawText() != before[alias].GetRawText()) changed.Add((id, alias));
+                var key = l.GetProperty("draftLabel").ValueKind == JsonValueKind.Null ? l.GetProperty("goldStatus").GetString()! : l.GetProperty("draftLabel").GetString()!;
+                totals[key] = totals.GetValueOrDefault(key) + 1;
+            }
+        }
+        Assert.Equal([("032", "L0006:S0"), ("032", "L0007:S0"), ("032", "L0008:S0")], changed.Order().ToArray());
+        foreach (var alias in new[] { "L0006:S0", "L0007:S0", "L0008:S0" })
+        {
+            var row = Rows(v6, "032")[alias]; var last = row.GetProperty("decisions").EnumerateArray().Last();
+            Assert.Equal("OTHER", row.GetProperty("draftLabel").GetString());
+            Assert.Equal("ESTABLISHES_STRUCTURE", last.GetProperty("previousLabel").GetString());
+            Assert.Equal("GPT6_RECOMMENDATION_USER_AUTHORIZED_EDITS_2026_10_10D_ISSUE_6", last.GetProperty("source").GetString());
+        }
+        Assert.Equal(246, totals["ESTABLISHES_STRUCTURE"]); Assert.Equal(191, totals["REPRESENTS_STRUCTURE"]);
+        Assert.Equal(2712, totals["OTHER"]); Assert.Equal(2, totals["EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION"]);
+        using var ledger = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.gold-decisions", "ledger-2026-10-10d-gpt6-visual-review.json")));
+        Assert.Equal(3, ledger.RootElement.GetProperty("decisions").GetArrayLength());
+        Assert.Equal(0, ledger.RootElement.GetProperty("goldApprovedDocuments").GetInt32());
+        Assert.DoesNotContain("APPROVE", File.ReadAllLines(Path.Combine(Dir, "p7.f1q.heldout.gold-decisions", "decisions-2026-10-10d-gpt6-visual-review.txt")).Where(l => !l.StartsWith('#')).SelectMany(l => l.Split(' ')));
+    }
+
+    [Fact] public void Source_quality_audit_v2_keeps_v1_and_records_headings_lost_inside_corrupted_atoms()
+    {
+        using var v1 = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.source-quality-audit.v1.json")));
+        using var v2 = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.source-quality-audit.v2.json")));
+        Assert.Equal(v1.RootElement.GetProperty("corruptedSourceOccurrences").GetRawText(), v2.RootElement.GetProperty("corruptedSourceOccurrences").GetRawText());
+        Assert.Equal(v1.RootElement.GetProperty("missingSourceHeadings").GetRawText(), v2.RootElement.GetProperty("missingSourceHeadings").GetRawText());
+        var loss = v2.RootElement.GetProperty("sourceCoverageLoss").EnumerateArray().ToArray();
+        Assert.Equal(["083:L1075:S0", "087:L1216:S0"], loss.Select(l => l.GetProperty("document").GetString() + ":" + l.GetProperty("sourceAlias").GetString()).Order().ToArray());
+        Assert.All(loss, l => Assert.Equal("SOURCE_COVERAGE_LOSS", l.GetProperty("status").GetString()));
+        foreach (var l in loss)
+        {   // Coverage loss changes no label: the atom stays excluded in V6.
+            using var d = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v6", l.GetProperty("document").GetString() + ".gold-draft.json")));
+            var row = d.RootElement.GetProperty("labels").EnumerateArray().Single(r => r.GetProperty("sourceAlias").GetString() == l.GetProperty("sourceAlias").GetString());
+            Assert.Equal("EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION", row.GetProperty("goldStatus").GetString());
+        }
+        Assert.False(v2.RootElement.GetProperty("goldApproved").GetBoolean());
+        Assert.True(v2.RootElement.GetProperty("declaredBeforeProviderRun").GetBoolean());
+    }
+
     [Fact] public void Heldout_plan_reuses_the_frozen_v3_prompt_tools_and_route_and_gates_on_gold()
     {
         using var plan = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.execution-plan.v1.json")));

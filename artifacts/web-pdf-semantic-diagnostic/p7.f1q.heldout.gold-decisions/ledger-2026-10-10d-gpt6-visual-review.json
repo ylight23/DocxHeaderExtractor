@@ -1,0 +1,55 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_DECISION_LEDGER_V1",
+  "source": "GPT6_RECOMMENDATION_USER_AUTHORIZED_EDITS_2026_10_10D_ISSUE_6",
+  "decisionsFileSha256": "b813d27fef82b0ff3e5655351ec7fc00f5b75a07621cccae113f2638417e757c",
+  "inputDrafts": "p7.f1q.heldout.gold-drafts.v5",
+  "outputDrafts": "p7.f1q.heldout.gold-drafts.v6",
+  "decisions": [
+    {
+      "id": "032",
+      "alias": "L0006:S0",
+      "text": "For Projects with Project Concept Notes (PCN)",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": "OTHER",
+      "goldStatus": "LABELED",
+      "reason": "This line states applicability of the procurement template, not a document heading: the separate red 18pt centred cover block specifies projects with PCN Decision Notes (GPT-6 visual review)",
+      "previousFlag": "REVIEW_FOCUS",
+      "resolvedQuestion": null,
+      "source": "GPT6_RECOMMENDATION_USER_AUTHORIZED_EDITS_2026_10_10D_ISSUE_6"
+    },
+    {
+      "id": "032",
+      "alias": "L0007:S0",
+      "text": "Decision Notes",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": "OTHER",
+      "goldStatus": "LABELED",
+      "reason": "This line continues the applicability statement, not an independent heading (GPT-6 visual review)",
+      "previousFlag": "REVIEW_FOCUS",
+      "resolvedQuestion": null,
+      "source": "GPT6_RECOMMENDATION_USER_AUTHORIZED_EDITS_2026_10_10D_ISSUE_6"
+    },
+    {
+      "id": "032",
+      "alias": "L0008:S0",
+      "text": "dated after October 1, 2018",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": "OTHER",
+      "goldStatus": "LABELED",
+      "reason": "This is an applicability date qualifier, not a heading: \"dated after October 1, 2018\" (GPT-6 visual review)",
+      "previousFlag": "REVIEW_FOCUS",
+      "resolvedQuestion": null,
+      "source": "GPT6_RECOMMENDATION_USER_AUTHORIZED_EDITS_2026_10_10D_ISSUE_6"
+    }
+  ],
+  "documentApprovals": [],
+  "goldApprovedDocuments": 0,
+  "providerCalls": 0,
+  "totalsAfter": {
+    "ESTABLISHES_STRUCTURE": 246,
+    "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION": 2,
+    "OTHER": 2712,
+    "REPRESENTS_STRUCTURE": 191
+  },
+  "occurrencesAfter": 3151
+}
