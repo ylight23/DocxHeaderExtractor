@@ -1,0 +1,10 @@
+# User decisions on the two Gold V4 open questions (Issue #6, 2026-10-10, third pass).
+# Checked by the user against 087.review.json / 051.review.json occurrences and layout, and the 044/049 covers at bcaa57f.
+# Row-level decisions only; NOT a document approval. The user states they did not view the private page renders,
+# so no pixel-level check of the PDF is claimed.
+087 L1225:S0 -> O because fully italic 14pt continuation of the explanatory parenthetical after "3. Enclosed documents" ("documents proving that the information system is no longer appropriate to be classified as an information system of national security importance"); fill-in instruction, it does not establish a heading
+087 L1226:S0 -> O because end of the same fully italic 14pt explanatory parenthetical ("security importance)"); fill-in instruction, it does not establish a heading
+051 L0004:S0 -> O because "Fiscal years ended June 30, 2024 and 2023" (20.6pt regular, under the bold 26.2pt/24.4pt title lines) states the reporting period: metadata, not an independent content title; consistent with the cover reporting dates of 044 and 049 (OTHER). Large type or a position directly under the title is not enough to establish a heading
+# Note, label NOT changed: 087 L1224:S0 stays ESTABLISHES_STRUCTURE because it carries the form-section name "3. Enclosed documents",
+# but the same occurrence also carries the opening of the italic parenthetical. Mixed content is recorded here (and in its V4 rationale)
+# for the later span-boundary step.

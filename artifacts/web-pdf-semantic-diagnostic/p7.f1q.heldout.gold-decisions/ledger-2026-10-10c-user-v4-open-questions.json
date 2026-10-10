@@ -1,0 +1,55 @@
+{
+  "version": "P7_F1Q_HELDOUT_GOLD_DECISION_LEDGER_V1",
+  "source": "USER_DECISION_2026_10_10C_ISSUE_6",
+  "decisionsFileSha256": "ad95eabfc0e8f20198fc0a61602a55b981ed4737d78dc8d8f28e533a5f49cdab",
+  "inputDrafts": "p7.f1q.heldout.gold-drafts.v4",
+  "outputDrafts": "p7.f1q.heldout.gold-drafts.v5",
+  "decisions": [
+    {
+      "id": "087",
+      "alias": "L1225:S0",
+      "text": "no longer appropriate to be classified as an information system of national",
+      "previousLabel": "OTHER",
+      "newLabel": "OTHER",
+      "goldStatus": "LABELED",
+      "reason": "fully italic 14pt continuation of the explanatory parenthetical after \"3. Enclosed documents\" (\"documents proving that the information system is no longer appropriate to be classified as an information system of national security importance\"); fill-in instruction, it does not establish a heading",
+      "previousFlag": "DECISION_NEEDED",
+      "resolvedQuestion": "continuation of the italic parenthetical after \"3. Enclosed documents\": user proposed E as part of one multi-line form heading; the page shows the same italic instruction style as L1219-L1221 (OTHER); confirm E or O",
+      "source": "USER_DECISION_2026_10_10C_ISSUE_6"
+    },
+    {
+      "id": "087",
+      "alias": "L1226:S0",
+      "text": "security importance)",
+      "previousLabel": "OTHER",
+      "newLabel": "OTHER",
+      "goldStatus": "LABELED",
+      "reason": "end of the same fully italic 14pt explanatory parenthetical (\"security importance)\"); fill-in instruction, it does not establish a heading",
+      "previousFlag": "DECISION_NEEDED",
+      "resolvedQuestion": "end of the same italic parenthetical \"security importance)\"; confirm E or O together with L1225:S0",
+      "source": "USER_DECISION_2026_10_10C_ISSUE_6"
+    },
+    {
+      "id": "051",
+      "alias": "L0004:S0",
+      "text": "Fiscalyears endedJune30, 2024and2023",
+      "previousLabel": "ESTABLISHES_STRUCTURE",
+      "newLabel": "OTHER",
+      "goldStatus": "LABELED",
+      "reason": "\"Fiscal years ended June 30, 2024 and 2023\" (20.6pt regular, under the bold 26.2pt/24.4pt title lines) states the reporting period: metadata, not an independent content title; consistent with the cover reporting dates of 044 and 049 (OTHER). Large type or a position directly under the title is not enough to establish a heading",
+      "previousFlag": "DECISION_NEEDED",
+      "resolvedQuestion": "drafted E but the rationale reads \"subtitle or reporting-period metadata\"; by consistency with 049 \"(Unaudited)\" -> O and the cover reporting dates of 044/049 (OTHER), the suggestion is O; confirm E or O",
+      "source": "USER_DECISION_2026_10_10C_ISSUE_6"
+    }
+  ],
+  "documentApprovals": [],
+  "goldApprovedDocuments": 0,
+  "providerCalls": 0,
+  "totalsAfter": {
+    "ESTABLISHES_STRUCTURE": 249,
+    "EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION": 2,
+    "OTHER": 2709,
+    "REPRESENTS_STRUCTURE": 191
+  },
+  "occurrencesAfter": 3151
+}

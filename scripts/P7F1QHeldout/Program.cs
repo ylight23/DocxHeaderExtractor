@@ -385,13 +385,17 @@ switch (args[0])
             var status = mEx.Success ? "EXCLUDED_" + m.Groups[3].Value : "LABELED";
             var reason = m.Groups[4].Value.Trim();
             var previousRationale = row["rationale"]?.GetValue<string>();
+            var previousFlag = row["reviewFlag"]?.GetValue<string>(); var resolvedQuestion = row["openQuestion"]?.GetValue<string>();
             row["draftLabel"] = label; row["goldStatus"] = status;
             // Keep label and rationale consistent: the decision reason becomes the rationale; the old one stays in history.
             row["rationale"] = $"USER DECISION ({args[3]}): {reason}";
             var history = row["decisions"]?.AsArray() ?? new JsonArray(); row["decisions"] = history;
-            history.Add(new JsonObject { ["previousLabel"] = old, ["newLabel"] = label, ["goldStatus"] = status, ["reason"] = reason, ["previousRationale"] = previousRationale, ["source"] = args[3] });
+            var entry = new JsonObject { ["previousLabel"] = old, ["newLabel"] = label, ["goldStatus"] = status, ["reason"] = reason, ["previousRationale"] = previousRationale, ["source"] = args[3] };
+            // A decision answers the row's open question: the question moves into the history and the flag is cleared.
+            if (resolvedQuestion is not null) { entry["previousFlag"] = previousFlag; entry["resolvedQuestion"] = resolvedQuestion; row.Remove("openQuestion"); }
+            history.Add(entry);
             row["reviewFlag"] = "USER_DECIDED"; row["approval"] = "USER_DECIDED_ROW";
-            ledger.Add(new { id, alias, text = row["text"]!.GetValue<string>(), previousLabel = old, newLabel = label, goldStatus = status, reason, source = args[3] });
+            ledger.Add(new { id, alias, text = row["text"]!.GetValue<string>(), previousLabel = old, newLabel = label, goldStatus = status, reason, previousFlag, resolvedQuestion, source = args[3] });
         }
         Directory.CreateDirectory(args[4]);
         foreach (var (id, d) in drafts.OrderBy(p => p.Key))

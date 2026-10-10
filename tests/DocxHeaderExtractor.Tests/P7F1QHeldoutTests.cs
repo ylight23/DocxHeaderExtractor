@@ -273,6 +273,51 @@ public sealed class P7F1QHeldoutTests : IDisposable
         Assert.Contains("E 250 · R 191 · O 2708 · excluded 2", File.ReadAllText(Path.Combine(ws, "README.md")));
     }
 
+    [Fact] public void Gold_drafts_v5_resolve_exactly_the_three_open_questions_and_nothing_else()
+    {
+        var v4 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v4"); var v5 = Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v5");
+        Dictionary<string, JsonElement> Rows(string dir, string id) => JsonDocument.Parse(File.ReadAllBytes(Path.Combine(dir, id + ".gold-draft.json")))
+            .RootElement.GetProperty("labels").EnumerateArray().ToDictionary(l => l.GetProperty("sourceAlias").GetString()!);
+        var expected = new Dictionary<(string, string), string> { [("087", "L1225:S0")] = "OTHER", [("087", "L1226:S0")] = "OTHER", [("051", "L0004:S0")] = "OTHER" };
+        var changed = new List<(string, string)>(); var totals = new Dictionary<string, int>();
+        foreach (var file in Directory.GetFiles(v5, "*.gold-draft.json"))
+        {
+            using var d = JsonDocument.Parse(File.ReadAllBytes(file));
+            Assert.Equal("DRAFT_USER_REVIEWED_NOT_APPROVED", d.RootElement.GetProperty("status").GetString());
+            Assert.False(d.RootElement.TryGetProperty("documentApproval", out _));
+            var id = d.RootElement.GetProperty("id").GetString()!; var before = Rows(v4, id);
+            foreach (var l in d.RootElement.GetProperty("labels").EnumerateArray())
+            {
+                var alias = l.GetProperty("sourceAlias").GetString()!;
+                Assert.NotEqual("DECISION_NEEDED", l.GetProperty("reviewFlag").GetString());
+                if (l.GetRawText() != before[alias].GetRawText()) changed.Add((id, alias));
+                var key = l.GetProperty("draftLabel").ValueKind == JsonValueKind.Null ? l.GetProperty("goldStatus").GetString()! : l.GetProperty("draftLabel").GetString()!;
+                totals[key] = totals.GetValueOrDefault(key) + 1;
+            }
+        }
+        Assert.Equal(expected.Keys.Order(), changed.Order());
+        foreach (var ((id, alias), label) in expected)
+        {
+            var row = Rows(v5, id)[alias]; var last = row.GetProperty("decisions").EnumerateArray().Last();
+            Assert.Equal(label, row.GetProperty("draftLabel").GetString());
+            Assert.Equal("USER_DECIDED", row.GetProperty("reviewFlag").GetString());
+            Assert.False(row.TryGetProperty("openQuestion", out _));
+            Assert.Equal("DECISION_NEEDED", last.GetProperty("previousFlag").GetString());
+            Assert.Equal(Rows(v4, id)[alias].GetProperty("openQuestion").GetString(), last.GetProperty("resolvedQuestion").GetString());
+            Assert.Equal("USER_DECISION_2026_10_10C_ISSUE_6", last.GetProperty("source").GetString());
+        }
+        Assert.Equal("ESTABLISHES_STRUCTURE", Rows(v5, "087")["L1224:S0"].GetProperty("draftLabel").GetString());
+        Assert.Equal(249, totals["ESTABLISHES_STRUCTURE"]); Assert.Equal(191, totals["REPRESENTS_STRUCTURE"]);
+        Assert.Equal(2709, totals["OTHER"]); Assert.Equal(2, totals["EXCLUDED_SOURCE_CORRUPTED_MIXED_FUNCTION"]);
+        using var ledger = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.gold-decisions", "ledger-2026-10-10c-user-v4-open-questions.json")));
+        Assert.Equal(3, ledger.RootElement.GetProperty("decisions").GetArrayLength());
+        Assert.Equal(0, ledger.RootElement.GetProperty("goldApprovedDocuments").GetInt32());
+        using var ws = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.gold-workspace.v2", "workspace-manifest.json")));
+        string Sha(string path) => Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(path)));
+        foreach (var d in ws.RootElement.GetProperty("documents").EnumerateArray())
+            Assert.Equal(Sha(Path.Combine(v5, d.GetProperty("id").GetString() + ".gold-draft.json")), d.GetProperty("draftSha256").GetString());
+    }
+
     [Fact] public void Heldout_plan_reuses_the_frozen_v3_prompt_tools_and_route_and_gates_on_gold()
     {
         using var plan = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.execution-plan.v1.json")));
