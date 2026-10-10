@@ -318,6 +318,32 @@ public sealed class P7F1QHeldoutTests : IDisposable
             Assert.Equal(Sha(Path.Combine(v5, d.GetProperty("id").GetString() + ".gold-draft.json")), d.GetProperty("draftSha256").GetString());
     }
 
+    [Fact] public void Visual_review_v2_shows_every_v5_occurrence_of_the_first_four_documents_on_already_public_pages()
+    {
+        var vr = Path.Combine(Dir, "p7.f1q.heldout.visual-review.v2");
+        using var m = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(vr, "render-manifest.json")));
+        Assert.Equal("P7_F1Q_HELDOUT_GOLD_DRAFT_V5", m.RootElement.GetProperty("drafts").GetString());
+        Assert.Equal(["044", "049", "087", "032"], m.RootElement.GetProperty("documents").EnumerateArray().Select(e => e.GetString()!).ToArray());
+        Assert.Equal(110, m.RootElement.GetProperty("dpi").GetInt32());
+        Assert.Equal(0, m.RootElement.GetProperty("providerCalls").GetInt32());
+        var images = m.RootElement.GetProperty("images").EnumerateArray().ToArray();
+        Assert.Equal(16, images.Length);
+        foreach (var image in images)
+        {
+            var rel = image.GetProperty("file").GetString()!;
+            Assert.Equal(image.GetProperty("sha256").GetString(), Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(Path.Combine(vr, rel)))));
+            Assert.True(File.Exists(Path.Combine(Dir, "p7.f1q.heldout.visual-review.v1", rel)), "page must already be public in v1: " + rel);
+        }
+        foreach (var id in new[] { "044", "049", "087", "032" })
+        {
+            var md = File.ReadAllText(Path.Combine(vr, id + ".md"));
+            using var d = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.gold-drafts.v5", id + ".gold-draft.json")));
+            foreach (var l in d.RootElement.GetProperty("labels").EnumerateArray())
+                Assert.Contains($"| {l.GetProperty("sourceAlias").GetString()} |", md);
+            Assert.Contains("OTHER rows to check for a missed heading", md);
+        }
+    }
+
     [Fact] public void Heldout_plan_reuses_the_frozen_v3_prompt_tools_and_route_and_gates_on_gold()
     {
         using var plan = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(Dir, "p7.f1q.heldout.execution-plan.v1.json")));

@@ -1,0 +1,82 @@
+{
+  "version": "P7_F1Q_HELDOUT_VISUAL_REVIEW_V2",
+  "renderer": "PDFtoImage_5.4.0_PDFium",
+  "dpi": 110,
+  "overlay": "parser bbox per occurrence; colour = draft label",
+  "drafts": "P7_F1Q_HELDOUT_GOLD_DRAFT_V5",
+  "documents": [
+    "044",
+    "049",
+    "087",
+    "032"
+  ],
+  "images": [
+    {
+      "file": "044/p1.jpg",
+      "sha256": "f8001d5f7903238ab8b4a8eb959b032465389aa1b9eb8812f326da2b53f82657"
+    },
+    {
+      "file": "044/p4.jpg",
+      "sha256": "afce2ae54280d384af524caa76daf2831a9396af3260a79fd4bc326756fa354c"
+    },
+    {
+      "file": "044/p49.jpg",
+      "sha256": "e8688f83f8cd64633170d99238f2117712139311b3c7021ce71022539c9bd4c7"
+    },
+    {
+      "file": "044/p93.jpg",
+      "sha256": "199fb4d994e9e1437508f4496e1a5ab8f19d05b454859e4c855302074fa9c6a1"
+    },
+    {
+      "file": "049/p1.jpg",
+      "sha256": "efe4d391671ee8d306ca5f7812c24ee00a9dca52b9a4a0a24182123948ff1d7f"
+    },
+    {
+      "file": "049/p29.jpg",
+      "sha256": "90a913772f9ac0f174a5af18f8097180b40c34bf40c65050c24975b244d9f9fb"
+    },
+    {
+      "file": "049/p39.jpg",
+      "sha256": "784fbdc5d8f97221f615ed7f08eaed069cf6c31d5d2f0fe66d37879ee94b0fb0"
+    },
+    {
+      "file": "049/p52.jpg",
+      "sha256": "a13e6184e32c109f47fd02b7b732cc554738e2d03ba59eb0769992a21a9235e7"
+    },
+    {
+      "file": "087/p1.jpg",
+      "sha256": "ac5f282cfa0fab9258ad5c76b1bc52fef1b533b434902e0e1fe394c1725253ec"
+    },
+    {
+      "file": "087/p11.jpg",
+      "sha256": "351e7f03e995beb703fa0fc8099d9fcbee1453544f677604febb30a63582fd7c"
+    },
+    {
+      "file": "087/p33.jpg",
+      "sha256": "90994481ce426fb4bf27979da6450a2f1e8cf5ab8178e12e29f90cc601355848"
+    },
+    {
+      "file": "087/p38.jpg",
+      "sha256": "882af540c8fcf08b04899661592383e27a5c811b60742ab5664dc77e9d4c5523"
+    },
+    {
+      "file": "032/p1.jpg",
+      "sha256": "c2afcef78b69754207e1e980bcf093479622c275cf6d5f3a4cd3a0b505d8a834"
+    },
+    {
+      "file": "032/p14.jpg",
+      "sha256": "6ced4edf52f2b30ba3f422c0d55d5402e4f4aa9601c041c6ba7a7c7884eb03ea"
+    },
+    {
+      "file": "032/p29.jpg",
+      "sha256": "c67cc7da7fadfc623b123e5a401bbe0d0850517c7b9f4c831e8e51d60d21c572"
+    },
+    {
+      "file": "032/p165.jpg",
+      "sha256": "19f362a6fec608cbb414aa3adcd6976f08b5040c49e33460ab6a4dd9dfdd0129"
+    }
+  ],
+  "providerCalls": 0,
+  "predictionsShown": false,
+  "gold": "DRAFT_NOT_APPROVED"
+}
