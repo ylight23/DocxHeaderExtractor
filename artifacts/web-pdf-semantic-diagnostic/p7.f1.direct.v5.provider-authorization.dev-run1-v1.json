@@ -1,0 +1,14 @@
+{
+  "version": "P7_F1_DIRECT_PROVIDER_AUTHORIZATION_V1",
+  "issue": "ylight23/DocxHeaderExtractor#8",
+  "authorizedBy": "user",
+  "statement": "chấp thuận một lượt chạy sàng lọc V5 trên bộ 24 tài liệu dev, với trần tổng chi phí $0,30",
+  "statementDate": "2026-10-11",
+  "scope": "P7_F1_REGION_HEADING_V5 screening run on the old 24 documents (development, not a fresh held-out)",
+  "planSha256": "0fad3058af9a38373d5186157123b35b4ce6513026f1b529fdb5877f958c3473",
+  "capUsd": 0.30,
+  "replicateRoots": ["rep-v5-1"],
+  "model": "qwen/qwen3.7-flash",
+  "route": "OpenRouter -> Alibaba only, no fallback",
+  "notAuthorized": "fresh-cohort runs, other models, a second run, any spend beyond the cap, any other plan sha"
+}
