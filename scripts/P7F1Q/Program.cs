@@ -366,7 +366,180 @@ switch (args[0])
         }
         break;
     }
+    case "prepare-direct":
+    {
+        // Issue #7 P7_F1_DIRECT_HEADING_V1: layout-aware packs/chunks (same as the F1Q V2 layout control), the direct
+        // heading-membership prompt and source enrichment V1. No Gold, no provider calls.
+        if (args.Length != 4) throw new ArgumentException("prepare-direct <page-selection.json> <new-plan.json> <new-bodies-dir>");
+        Need(!Directory.Exists(args[3]) && !File.Exists(args[2]), "PLAN_OR_BODIES_EXIST");
+        LayoutArm.On = true;
+        var selectionBytes = File.ReadAllBytes(args[1]);
+        var requests = DirectRequests(selectionBytes).ToArray();
+        Directory.CreateDirectory(args[3]);
+        var runner = new P7F1QConversationRunner(new NoTransport(), policyV3, capsHeldout);
+        var rows = new List<object>();
+        foreach (var r in requests)
+        {
+            var body = DirectBody(runner, r);
+            var file = r.RequestId + ".direct.initial-body.json";
+            P7F1QConversationRunner.WriteNew(Path.Combine(args[3], file), body);
+            rows.Add(new { handle = r.RequestId + "|DIRECT", requestId = r.RequestId, @case = r.Case.Case, chunk = r.Chunk, document = r.Case.Document, pack = r.Case.Pack,
+                issuedSetSha256 = r.Scope, issued = r.Subjects.Select(s => new { occurrence = s.Occurrence, sourceAlias = s.SourceAlias, page = s.Page, text = s.Text }),
+                contextAliases = r.Context.Select(c => c.Alias), bodyFile = file, bodySha256 = SpatialCanonical.Hash(body), bodyBytes = body.Length,
+                worstCaseRequestUsd = capsHeldout.WorstCaseUsd(body.Length, policyV3.MaxTokens) * (capsHeldout.MaxToolRounds + 1) });
+        }
+        var plan = SpatialCanonical.Bytes(new
+        {
+            version = "P7_F1_DIRECT_PLAN_" + Path.GetFileNameWithoutExtension(args[2]).Split('.').Last().ToUpperInvariant(), status = "FROZEN_BEFORE_PROVIDER",
+            issue = "ylight23/DocxHeaderExtractor#7", protocolVersion = P7F1DirectProtocol.Version, systemPromptSha256 = P7F1DirectProtocol.PromptSha256(),
+            enrichmentVersion = P7F1SourceEnrichment.Version, packing = P7F1QLayoutPacking.Version, chunkSize = P7F1QProtocolV2.ChunkSize,
+            toolsVersion = P7F1QEvidenceTools.VersionV2, toolDefinitionsSha256 = SpatialCanonical.Hash(Encoding.UTF8.GetBytes(P7F1QEvidenceTools.DefinitionsV2().ToJsonString())),
+            model = policyV3.Model, providerRoute = new { order = new[] { "alibaba" }, allowFallbacks = false, requireParameters = true },
+            responseFormat = "json_object_on_every_turn", reasoning = "enabled", temperature = 0, maxTokens = policyV3.MaxTokens, caps = capsHeldout,
+            retryPolicy = "AT_MOST_ONE_IDENTICAL_BODY_RETRY_PER_REQUEST_ON_TRANSPORT_OR_CONTRACT_FAILURE_NO_ERROR_FEEDBACK_NO_SEMANTIC_RETRY",
+            fenceNormalization = P7F1QFenceNormalization.Version,
+            providerGate = "EXECUTE_DIRECT_REFUSES_WITHOUT_A_PINNED_USER_PROVIDER_AUTHORIZATION_FOR_THIS_PLAN_SHA",
+            pageSelectionSha256 = SpatialCanonical.Hash(selectionBytes),
+            requests = rows, worstCaseTotalUsdAllRequestsTwoAttempts = rows.Sum(x => JsonSerializer.SerializeToElement(x).GetProperty("worstCaseRequestUsd").GetDecimal()) * 2,
+            goldRead = false, providerCalls = 0, productionChanged = false,
+            sources = new[] { "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectProtocol.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1SourceEnrichment.cs",
+                "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectBinder.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QEvidenceTools.cs",
+                "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QConversation.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QFenceNormalization.cs",
+                "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QLayoutPacking.cs", "scripts/P7F1Q/Program.cs" }
+                .Select(path => new { path, sha256 = SpatialCanonical.Hash(File.ReadAllBytes(path)) }),
+        });
+        P7F1QConversationRunner.WriteNew(args[2], plan);
+        Console.WriteLine(JsonSerializer.Serialize(new { status = "PLAN_FROZEN", planSha256 = SpatialCanonical.Hash(plan), requests = rows.Count,
+            maxBodyBytes = rows.Max(x => JsonSerializer.SerializeToElement(x).GetProperty("bodyBytes").GetInt32()), providerCalls = 0 }));
+        break;
+    }
+    case "execute-direct":
+    {
+        // Paid-call gate (Issue #7): a user provider authorization pinned to THIS plan sha, with its own USD cap, is required.
+        if (args.Length < 6) throw new ArgumentException("execute-direct <plan.json> <plan-sha256> <bodies-dir> <authorization.json> <capture-root> [handle,...]");
+        LayoutArm.On = true;
+        var planBytes = ReadPinned(args[1], args[2]); using var plan = JsonDocument.Parse(planBytes);
+        foreach (var src in plan.RootElement.GetProperty("sources").EnumerateArray()) ReadPinned(S(src, "path"), S(src, "sha256"));
+        using var auth = JsonDocument.Parse(File.ReadAllBytes(args[4]));
+        Need(S(auth.RootElement, "version") == "P7_F1_DIRECT_PROVIDER_AUTHORIZATION_V1", "AUTHORIZATION_VERSION");
+        Need(S(auth.RootElement, "planSha256") == args[2], "AUTHORIZATION_NOT_FOR_THIS_PLAN");
+        Need(S(auth.RootElement, "authorizedBy") == "user", "AUTHORIZATION_NOT_BY_USER");
+        var capUsd = auth.RootElement.GetProperty("capUsd").GetDecimal();
+        Need(capUsd > 0 && capUsd <= 10m, "AUTHORIZATION_CAP_INVALID");
+        var directCaps = capsHeldout with { HardCapUsd = capUsd };
+        var direct = DirectRequests(File.ReadAllBytes(PageSelectionFor(plan.RootElement))).ToDictionary(r => r.RequestId);
+        var only = args.Length > 6 ? args[6].Split(',', StringSplitOptions.RemoveEmptyEntries).ToHashSet(StringComparer.Ordinal) : null;
+        var root = Path.GetFullPath(args[5]); Directory.CreateDirectory(root);
+        var metadata = await FetchEndpointMetadata();
+        P7F1QConversationRunner.WriteNew(Path.Combine(root, $"endpoint-metadata.{DateTimeOffset.UtcNow:yyyyMMddTHHmmssfffZ}.{Environment.ProcessId}.json"), metadata);
+        VerifyEndpoint(metadata);
+        using var transport = new P7F1QOpenRouterTransport(() => Environment.GetEnvironmentVariable("OPENROUTER_API_KEY") ?? "", TimeSpan.FromSeconds(300));
+        var runner = new P7F1QConversationRunner(transport, policyV3, directCaps);
+        var stop = false; var systemic = 0;
+        foreach (var q in plan.RootElement.GetProperty("requests").EnumerateArray())
+        {
+            if (stop) break;
+            var handle = S(q, "handle");
+            if (only is not null && !only.Contains(handle)) continue;
+            var requestDir = Path.Combine(root, "requests", handle.Replace('|', '.'));
+            if (Directory.Exists(requestDir)) { Console.WriteLine($"SKIP_EXISTING {handle}"); continue; }
+            var r = direct[S(q, "requestId")];
+            var body = ReadPinned(Path.Combine(args[3], S(q, "bodyFile")), S(q, "bodySha256"));
+            Need(body.AsSpan().SequenceEqual(DirectBody(runner, r)), "RECOMPOSED_BODY_DRIFT:" + handle);
+            var spec = DirectSpec(r, body, handle);
+            for (var attempt = 1; attempt <= 2; attempt++)
+            {
+                var outcome = await runner.RunAsync(spec, Path.Combine(requestDir, $"attempt-{attempt}"), () => Spent(root), CancellationToken.None);
+                var line = JsonSerializer.Serialize(new { handle, attempt, outcome.Status, outcome.FailureCode, turns = outcome.Turns.Count, outcome.CostUsd,
+                    toolCalls = outcome.ToolCallsByName, spentUsd = Spent(root) });
+                Console.WriteLine(line);
+                if (outcome.Status == "BUDGET_STOP") { stop = true; break; }
+                systemic = outcome.Status == "TRANSPORT_FAILED" ? systemic + 1 : 0;
+                if (systemic >= 3) { Console.WriteLine("STOP REPEATED_TRANSPORT_FAILURE"); stop = true; break; }
+                if (outcome.Status == "ACCEPTED") break;
+            }
+        }
+        break;
+    }
+    case "bind-direct":
+    {
+        // Exact binding of FROZEN raw (manifest pinned) to parser-authoritative source; no Gold is read here.
+        if (args.Length != 6) throw new ArgumentException("bind-direct <plan.json> <plan-sha256> <capture-root> <raw-manifest-sha256> <new-bound.json>");
+        Need(!File.Exists(args[5]), "OUTPUT_EXISTS");
+        LayoutArm.On = true;
+        var planBytes = ReadPinned(args[1], args[2]); using var plan = JsonDocument.Parse(planBytes);
+        var root = Path.GetFullPath(args[3]);
+        ReadPinned(Path.Combine(root, "manifest.json"), args[4]);
+        var bound = BindDirect(plan.RootElement, root, PageSelectionFor(plan.RootElement));
+        var bytes = SpatialCanonical.Bytes(new { version = "P7_F1_DIRECT_BOUND_PREDICTIONS_V1", binder = P7F1DirectBinder.Version, planSha256 = args[2], rawManifestSha256 = args[4],
+            goldRead = false, statuses = bound.GroupBy(b => b["status"]!.GetValue<string>()).ToDictionary(g => g.Key, g => g.Count()), requests = bound });
+        P7F1QConversationRunner.WriteNew(args[5], bytes);
+        Console.WriteLine(JsonSerializer.Serialize(new { status = "BOUND", sha256 = SpatialCanonical.Hash(bytes), requests = bound.Count }));
+        break;
+    }
     default: throw new ArgumentException("UNKNOWN_MODE");
+}
+
+IEnumerable<DirectRequest> DirectRequests(byte[] selectionBytes)
+{
+    var enrichments = new Dictionary<string, P7F1SourceEnrichment>(StringComparer.Ordinal);
+    foreach (var c in HeldoutCases(selectionBytes))
+    {
+        if (!enrichments.TryGetValue(c.Document, out var enrichment))
+            enrichments[c.Document] = enrichment = new P7F1SourceEnrichment(c.ToolsV2, c.Source, LayoutArm.Details[c.Document]);
+        var chunks = ChunksOf(c);
+        foreach (var (chunk, k) in chunks.Select((x, i) => (x, i + 1)))
+        {
+            var requestId = $"D{c.Case[1..]}-C{k}";
+            var subjects = chunk.Select(i => new P7F1DirectProtocol.Subject(i.Occurrence, i.SourceAlias, i.Page, i.Text)).ToArray();
+            var inChunk = subjects.Select(s => s.SourceAlias).ToHashSet(StringComparer.Ordinal);
+            var context = chunks.SelectMany(x => x).Where(p => !inChunk.Contains(p.SourceAlias)).Select(p => (Alias: p.SourceAlias, p.Page, p.Text)).Concat(c.Context).ToArray();
+            var scope = P7F1DirectProtocol.IssuedSetSha256(requestId, c.Document, subjects);
+            yield return new DirectRequest(requestId, c, k, subjects, context, scope, enrichment);
+        }
+    }
+}
+
+static byte[] DirectBody(P7F1QConversationRunner runner, DirectRequest r) => runner.Body(new JsonArray
+{
+    new JsonObject { ["role"] = "system", ["content"] = P7F1DirectProtocol.SystemPrompt() },
+    new JsonObject { ["role"] = "user", ["content"] = DirectUser(r) },
+}, true, "auto");
+
+static string DirectUser(DirectRequest r) =>
+    P7F1DirectProtocol.UserMessage(r.RequestId, r.Scope, r.Subjects, r.Context, r.Case.ToolsV2, r.Enrichment);
+
+static F1QRequestSpec DirectSpec(DirectRequest r, byte[] body, string handle)
+{
+    var issued = r.Subjects.Select(s => new F1QIssuedOccurrence(s.Occurrence, s.SourceAlias, s.Page, s.Text)).ToArray();
+    // Runner-level check cites any alias of this document (tool results may return lines outside the request);
+    // the binder then verifies every reference against the request evidence and the raw tool transcript.
+    var citable = r.Case.Source.Atoms.Select(a => a.Alias).ToHashSet(StringComparer.Ordinal);
+    return new F1QRequestSpec(handle, r.Case.Case, F1QArm.F1QEvidenceV2, P7F1DirectProtocol.SystemPrompt(), DirectUser(r), issued, citable,
+        r.Case.ToolsV2, body, text => P7F1DirectProtocol.Validate(text, r.RequestId, r.Scope, issued, citable), FenceNormalization: true);
+}
+
+List<JsonObject> BindDirect(JsonElement plan, string root, string selectionPath)
+{
+    var facts = new Dictionary<string, P7F1QEvidenceTools>(StringComparer.Ordinal);
+    foreach (var c in HeldoutCases(File.ReadAllBytes(selectionPath))) facts.TryAdd(c.Document, c.ToolsV2);
+    var list = new List<JsonObject>();
+    foreach (var q in plan.GetProperty("requests").EnumerateArray())
+    {
+        var tools = facts[S(q, "document")];
+        list.Add(P7F1DirectBinder.Bind(q, Path.Combine(root, "requests", S(q, "handle").Replace('|', '.')),
+            alias => { var l = tools.LineOf(alias); return new P7F1DirectBinder.SourceFact(l.Page ?? -1, l.Text, l.Bbox); }));
+    }
+    return list;
+}
+
+static string PageSelectionFor(JsonElement plan)
+{
+    // The plan pins the page-selection sha; the selection is looked up among the known selection files.
+    var sha = plan.GetProperty("pageSelectionSha256").GetString();
+    foreach (var f in Directory.GetFiles("artifacts/web-pdf-semantic-diagnostic", "*page-selection*.json"))
+        if (SpatialCanonical.Hash(File.ReadAllBytes(f)) == sha) return f;
+    throw new InvalidOperationException("PAGE_SELECTION_FOR_PLAN_NOT_FOUND");
 }
 
 List<F1QCase> HeldoutCases(byte[] selectionBytes)
@@ -381,6 +554,7 @@ List<F1QCase> HeldoutCases(byte[] selectionBytes)
         Need(store.StoreSha256 == S(d, "evidenceStoreSha256"), "HELDOUT_STORE_DRIFT:" + id);
         var pages = d.GetProperty("selectedPages").EnumerateArray().Select(p => p.GetProperty("page").GetInt32()).ToArray();
         var packs = LayoutArm.On ? P7F1QLayoutPacking.SelectPacks(source, details, pages) : P7PilotRequestPreflight.SelectPacks(source, details, pages);
+        LayoutArm.Details[id] = details;
         foreach (var pack in packs)
         {
             var name = $"{LayoutArm.Prefix}{id}-{Short(pack.PackId)}";
@@ -546,7 +720,11 @@ internal static class LayoutArm
     public static bool On;
     public static string Prefix => On ? "L" : "H";
     public static readonly Dictionary<string, string> Block = new(StringComparer.Ordinal);
+    public static readonly Dictionary<string, PdfSourceDetails> Details = new(StringComparer.Ordinal);
 }
+
+internal sealed record DirectRequest(string RequestId, F1QCase Case, int Chunk, IReadOnlyList<P7F1DirectProtocol.Subject> Subjects,
+    IReadOnlyList<(string Alias, int Page, string Text)> Context, string Scope, P7F1SourceEnrichment Enrichment);
 
 internal sealed record F1QCase(string Case, string Document, string Pack, int[] Pages, string Origin, DocumentSourceSnapshot Source,
     InterpretationRequest Control, IReadOnlyList<(string Alias, int Page, string Text)> Context, IReadOnlyList<F1QIssuedOccurrence> Issued,

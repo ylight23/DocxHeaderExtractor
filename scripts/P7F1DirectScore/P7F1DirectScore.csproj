@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Issue #7 independent binary evaluator: no project references, no inference/binder code. It reads only frozen,
+       hash-pinned bound predictions or frozen F1Q raw, and the frozen Gold. -->
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net9.0</TargetFramework><AssemblyName>dhx-f1-direct-score</AssemblyName><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
+</Project>

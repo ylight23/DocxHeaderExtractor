@@ -1,0 +1,69 @@
+{
+  "version": "P7_F1_BINARY_HEADING_EVALUATOR_V1_PAIRED",
+  "armA": "P7_F1Q_V2_CONVERTED_IN_EVALUATOR",
+  "armB": "P7_F1Q_V2_CONVERTED_IN_EVALUATOR",
+  "scoreASha256": "a8436333fa6caa58ae22a68944910e538e50d6d640fc9f0cd80a6a4a709e9869",
+  "scoreBSha256": "bf06d6cb35dedd8dcd00cf89a18fb3a789b926a6db4d284f3fe3388f8f1c1ee7",
+  "rows": 3149,
+  "documents": 24,
+  "armAF1": 0.8127,
+  "armBF1": 0.8384,
+  "armAPrecision": 0.7165,
+  "armBPrecision": 0.7421,
+  "armARecall": 0.9388,
+  "armBRecall": 0.9633,
+  "rowMcNemar": {
+    "wrongToRight": 46,
+    "rightToWrong": 31,
+    "exactTwoSidedP": 0.11,
+    "note": "rows within a page/document are correlated"
+  },
+  "documentSignTestOnF1": {
+    "better": 12,
+    "worse": 4,
+    "ties": 8,
+    "exactTwoSidedP": 0.0768
+  },
+  "documentClusterBootstrap": {
+    "resamples": 10000,
+    "seed": 20261011,
+    "deltaF1Ci95": {
+      "low": -0.0237,
+      "high": 0.0775
+    },
+    "deltaPrecisionCi95": {
+      "low": -0.0315,
+      "high": 0.0993
+    },
+    "deltaRecallCi95": {
+      "low": -0.0361,
+      "high": 0.0901
+    }
+  },
+  "perDocumentF1Delta": {
+    "006": 0.04,
+    "009": 0,
+    "015": 0,
+    "017": 0,
+    "024": 0.1686,
+    "028": 0.2333,
+    "032": 0.1429,
+    "034": -0.0667,
+    "044": -0.1986,
+    "049": -0.05,
+    "051": 0.0409,
+    "056": 0,
+    "060": 0.0714,
+    "064": 0.3333,
+    "067": 0,
+    "073": 0,
+    "077": 0.0383,
+    "079": 0,
+    "083": 0.0588,
+    "087": 0.058,
+    "088": -0.0098,
+    "090": 0.2381,
+    "093": 0,
+    "094": 0.1098
+  }
+}
