@@ -1,0 +1,43 @@
+{
+  "version": "P7_F1_PLAN_V1_HISTORY_REMOVAL_RECEIPT_V1",
+  "approvedBy": "user, 2026-10-11 (\"Có viết lại lịch sử nhánh để xoá plan V1\")",
+  "scope": "b6a1536..experiment/p7-f1-semantic-question-v1 only (6 commits); main and every other branch untouched",
+  "method": "git filter-branch --index-filter 'git rm --cached --ignore-unmatch' of exactly one path; force-push with lease pinned to fc629e6",
+  "removedPath": "artifacts/web-pdf-semantic-diagnostic/p7.f1.direct.dev-regression.execution-plan.v1.json",
+  "removedFileSha256": "38e2fd1d48c8c7d357fffa22bb6a71f6eeebf574861f3582da5418831d6d720d",
+  "reason": "plan V1 listed issued source text including two institutional emails printed in public PDFs (051 p2, 056 p4); plan V2 (690c1e20) replaced text with textSha256",
+  "commits": [
+    {
+      "old": "3f50b79e1c01273fdfba887964c5dbec510eccd9",
+      "new": "5ee67251bcbd012d2c32b03a492f070cc3879945"
+    },
+    {
+      "old": "3e1b405f6ec5560233d1782b40b4a750cc5c754e",
+      "new": "b51de14377a7a6498842101f387e0daa559cd90c"
+    },
+    {
+      "old": "b1ecf58dfe484ac854a7331e3fc3c62ed0dfeb21",
+      "new": "a9ca73ad73886ee6bd6a9c616c98b850a8392537"
+    },
+    {
+      "old": "83e1cb7fb6461f73dfff0a0f99a8dda3a137beaa",
+      "new": "26f4c8a04d6598451d5bbade70da3a3dc04e8d22"
+    },
+    {
+      "old": "a9f755e9c57606d70316e410340cb0933d6e77b5",
+      "new": "844b7629ca16243492973f805a75c6e075f8ab7b"
+    },
+    {
+      "old": "fc629e608a94b3f46ef423d1f9d65fff7fe18f54",
+      "new": "33901f2ed35827e97f1e630e95bb86f385fd1652"
+    }
+  ],
+  "verification": {
+    "pathAbsentFromRewrittenHistory": true,
+    "otherPathsChangedPerCommit": 0,
+    "authorCommitterDatesMessagesPreserved": true,
+    "finalTreeIdentical": true
+  },
+  "privateBackup": "~/.codex/diagnostic-captures/p7-f1-plan-v1-history-backup-20261011 (branch bundle at fc629e6, original file)",
+  "limits": "GitHub may still serve the old commits by SHA until garbage collection or a GitHub Support purge; the two emails are also printed in the public source PDFs tracked on main."
+}
