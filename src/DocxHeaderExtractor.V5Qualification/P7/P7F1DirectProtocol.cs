@@ -153,5 +153,8 @@ internal static class P7F1DirectProtocol
     static string? Str(JsonElement e, string key) =>
         e.ValueKind == JsonValueKind.Object && e.TryGetProperty(key, out var v) && v.ValueKind == JsonValueKind.String ? v.GetString() : null;
 
+    /// <summary>Plans carry this instead of source text, so a public plan never republishes source text (e.g. emails).</summary>
+    public static string TextSha256(string text) => SpatialCanonical.Hash(Encoding.UTF8.GetBytes(text));
+
     public static string PromptSha256() => SpatialCanonical.Hash(Encoding.UTF8.GetBytes(SystemPrompt()));
 }

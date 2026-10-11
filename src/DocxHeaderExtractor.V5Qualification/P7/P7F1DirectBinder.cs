@@ -23,21 +23,21 @@ internal static class P7F1DirectBinder
         var document = planRequest.GetProperty("document").GetString()!;
         var requestId = planRequest.GetProperty("requestId").GetString()!;
         var scope = planRequest.GetProperty("issuedSetSha256").GetString()!;
-        var issued = planRequest.GetProperty("issued").EnumerateArray()
-            .Select(i => new P7F1DirectProtocol.Subject(i.GetProperty("occurrence").GetString()!, i.GetProperty("sourceAlias").GetString()!,
-                i.GetProperty("page").GetInt32(), i.GetProperty("text").GetString()!)).ToArray();
         var result = new JsonObject { ["version"] = Version, ["handle"] = handle, ["document"] = document, ["requestId"] = requestId };
         JsonObject Status(string s, string? code = null) { result["status"] = s; result["failureCode"] = code; return result; }
-
-        // Scope integrity: the plan's signed scope must be the hash of exactly these issued subjects, all bound to the source.
-        if (P7F1DirectProtocol.IssuedSetSha256(requestId, document, issued) != scope) return Status("CONTRACT_FAILED", "PLAN_SCOPE_HASH_MISMATCH");
-        if (issued.Select(i => i.Occurrence).Distinct().Count() != issued.Length || issued.Select(i => i.SourceAlias).Distinct().Count() != issued.Length)
+        // The plan carries page and text SHA-256 per issued alias; the text itself comes from the parser-authoritative source.
+        var planned = planRequest.GetProperty("issued").EnumerateArray().Select(i => (Occurrence: i.GetProperty("occurrence").GetString()!,
+            Alias: i.GetProperty("sourceAlias").GetString()!, Page: i.GetProperty("page").GetInt32(), TextSha: i.GetProperty("textSha256").GetString()!)).ToArray();
+        if (planned.Select(i => i.Occurrence).Distinct().Count() != planned.Length || planned.Select(i => i.Alias).Distinct().Count() != planned.Length)
             return Status("CONTRACT_FAILED", "PLAN_SCOPE_DUPLICATE_ID");
-        foreach (var i in issued)
+        foreach (var i in planned)
         {
-            var f = source(i.SourceAlias);
-            if (f.Page != i.Page || f.Text != i.Text) return Status("CONTRACT_FAILED", "PLAN_SOURCE_IDENTITY_MISMATCH:" + i.SourceAlias);
+            var f = source(i.Alias);
+            if (f.Page != i.Page || P7F1DirectProtocol.TextSha256(f.Text) != i.TextSha) return Status("CONTRACT_FAILED", "PLAN_SOURCE_IDENTITY_MISMATCH:" + i.Alias);
         }
+        var issued = planned.Select(i => new P7F1DirectProtocol.Subject(i.Occurrence, i.Alias, i.Page, source(i.Alias).Text)).ToArray();
+        // Scope integrity: the plan's signed scope must be the hash of exactly these issued subjects.
+        if (P7F1DirectProtocol.IssuedSetSha256(requestId, document, issued) != scope) return Status("CONTRACT_FAILED", "PLAN_SCOPE_HASH_MISMATCH");
         var attempts = Directory.Exists(requestDir) ? Directory.GetDirectories(requestDir, "attempt-*").Order(StringComparer.Ordinal).ToArray() : [];
         if (attempts.Length == 0) return Status("MISSING", "NO_RAW_ATTEMPT");
         var diagnostics = new JsonArray();

@@ -384,7 +384,7 @@ switch (args[0])
             var file = r.RequestId + ".direct.initial-body.json";
             P7F1QConversationRunner.WriteNew(Path.Combine(args[3], file), body);
             rows.Add(new { handle = r.RequestId + "|DIRECT", requestId = r.RequestId, @case = r.Case.Case, chunk = r.Chunk, document = r.Case.Document, pack = r.Case.Pack,
-                issuedSetSha256 = r.Scope, issued = r.Subjects.Select(s => new { occurrence = s.Occurrence, sourceAlias = s.SourceAlias, page = s.Page, text = s.Text }),
+                issuedSetSha256 = r.Scope, issued = r.Subjects.Select(s => new { occurrence = s.Occurrence, sourceAlias = s.SourceAlias, page = s.Page, textSha256 = P7F1DirectProtocol.TextSha256(s.Text) }), // text itself stays out of the public plan (source emails)
                 contextAliases = r.Context.Select(c => c.Alias), bodyFile = file, bodySha256 = SpatialCanonical.Hash(body), bodyBytes = body.Length,
                 worstCaseRequestUsd = capsHeldout.WorstCaseUsd(body.Length, policyV3.MaxTokens) * (capsHeldout.MaxToolRounds + 1) });
         }

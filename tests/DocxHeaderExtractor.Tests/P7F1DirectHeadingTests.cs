@@ -117,7 +117,7 @@ public sealed class P7F1DirectHeadingTests
     static JsonElement PlanRequest(string? scopeOverride = null) => JsonDocument.Parse(JsonSerializer.Serialize(new
     {
         handle = "D001-PACK_001-C1|DIRECT", requestId = "D001-PACK_001-C1", document = "001", issuedSetSha256 = scopeOverride ?? Scope,
-        issued = Subjects.Select(s => new { occurrence = s.Occurrence, sourceAlias = s.SourceAlias, page = s.Page, text = s.Text }),
+        issued = Subjects.Select(s => new { occurrence = s.Occurrence, sourceAlias = s.SourceAlias, page = s.Page, textSha256 = P7F1DirectProtocol.TextSha256(s.Text) }),
         contextAliases = new[] { "L0005:S0" },
     })).RootElement;
     static P7F1DirectBinder.SourceFact Fact(string alias) => Subjects.FirstOrDefault(s => s.SourceAlias == alias) is { } s
