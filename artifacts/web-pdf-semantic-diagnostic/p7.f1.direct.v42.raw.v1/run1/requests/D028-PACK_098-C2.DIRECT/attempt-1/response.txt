@@ -1,0 +1,25 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D028-PACK_098-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "kdgm",
+      "evidenceRefs": ["kdgm"],
+      "justification": "Clause heading for 14.1; bold ratio 0.3, positioned directly above the enumerated contract price provisions."
+    },
+    {
+      "id": "mhsc",
+      "evidenceRefs": ["mhsc"],
+      "justification": "Bold subheading 'Price' (boldRatio 1.0) standing alone to introduce the subsequent list items on contract pricing."
+    },
+    {
+      "id": "hhcg",
+      "evidenceRefs": ["hhcg"],
+      "justification": "Clause heading for 14.2; bold ratio 0.3, positioned directly above the body text describing advance payments."
+    }
+  ],
+  "unresolved": []
+}
+```

@@ -1,0 +1,18 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D032-PACK_001-C3",
+  "assessment": "COMPLETE",
+  "headings": [
+    {"id": "qfnh", "evidenceRefs": ["qfnh"], "justification": "Main title line, large bold font at top of page, identifying the document type."},
+    {"id": "ptdb", "evidenceRefs": ["ptdb"], "justification": "Subtitle or secondary heading, large bold font below title, introducing the summary section."},
+    {"id": "vndj", "evidenceRefs": ["vndj"], "justification": "Distinctive bold heading introducing the specific procurement notice details."},
+    {"id": "fmvz", "evidenceRefs": ["fmvz"], "justification": "Detailed bold heading specifying the RFP type and selection stage."},
+    {"id": "sdhc", "evidenceRefs": ["sdhc"], "justification": "Bold section heading introducing content regarding proposers."},
+    {"id": "wxdg", "evidenceRefs": ["wxdg"], "justification": "Major part heading in bold, introducing Part 1 procedural rules."},
+    {"id": "sxbd", "evidenceRefs": ["sxbd"], "justification": "Bold section heading introducing Section I instructions for proposers."},
+    {"id": "wxwb", "evidenceRefs": ["wxwb"], "justification": "Bold section heading introducing Section II proposal data sheet."},
+    {"id": "rkmd", "evidenceRefs": ["rkmd"], "justification": "Bold section heading introducing Section III evaluation criteria."},
+    {"id": "rzst", "evidenceRefs": ["rzst"], "justification": "Bold section heading introducing Section IV proposal forms."},
+    {"id": "nhzd", "evidenceRefs": ["nhzd"], "justification": "Bold section heading introducing Section V eligible countries."}
+  ]
+}

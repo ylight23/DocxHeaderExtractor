@@ -1,0 +1,73 @@
+{
+  "version": "P7_F1_BINARY_HEADING_EVALUATOR_V1_PAIRED",
+  "armA": "P7_F1_DIRECT_HEADING_V1",
+  "armB": "P7_F1_DIRECT_HEADING_V1",
+  "scoreASha256": "7df200db59b44e13b5b314453f54b2773d2c61bf13c74c67053fda66ba728404",
+  "scoreBSha256": "fe4c622e1de3de06a854b096542e5c2c0c931eb8e289c178efd1dfd84ac121df",
+  "rows": 3149,
+  "documents": 24,
+  "identicalPredictionRows": 3103,
+  "identicalPredictionRate": 0.9854,
+  "armAF1": 0.8678,
+  "armBF1": 0.8646,
+  "armAPrecision": 0.7979,
+  "armBPrecision": 0.7925,
+  "armARecall": 0.951,
+  "armBRecall": 0.951,
+  "rowMcNemar": {
+    "wrongToRight": 22,
+    "rightToWrong": 24,
+    "exactTwoSidedP": 0.8829959121223967,
+    "pDisplay": "p = 0.8830",
+    "note": "rows within a page/document are correlated; p kept at full precision (V1 rounded it to 4 decimals)"
+  },
+  "documentSignTestOnF1": {
+    "better": 10,
+    "worse": 6,
+    "ties": 8,
+    "exactTwoSidedP": 0.45449829101562467,
+    "pDisplay": "p = 0.4545"
+  },
+  "documentClusterBootstrap": {
+    "resamples": 10000,
+    "seed": 20261011,
+    "deltaF1Ci95": {
+      "low": -0.0401,
+      "high": 0.0324
+    },
+    "deltaPrecisionCi95": {
+      "low": -0.037,
+      "high": 0.0272
+    },
+    "deltaRecallCi95": {
+      "low": -0.0656,
+      "high": 0.0622
+    }
+  },
+  "perDocumentF1Delta": {
+    "006": 0,
+    "009": 0,
+    "015": 0,
+    "017": -0.0659,
+    "024": 0.0461,
+    "028": 0.0098,
+    "032": -0.1584,
+    "034": 0,
+    "044": -0.1579,
+    "049": 0.15,
+    "051": 0.0139,
+    "056": 0.2,
+    "060": -0.0556,
+    "064": -0.4667,
+    "067": 0,
+    "073": 0.2222,
+    "077": -0.1111,
+    "079": 0,
+    "083": 0.0588,
+    "087": 0.0238,
+    "088": 0.0244,
+    "090": 0.1579,
+    "093": 0,
+    "094": 0
+  }
+}

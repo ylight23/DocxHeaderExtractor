@@ -1,0 +1,42 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D017-PACK_020-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "sqrc",
+      "evidenceRefs": [
+        "sqrc"
+      ],
+      "justification": "Bold form identifier 'Mẫu số...' positioned above the declaration, naming the template that follows."
+    },
+    {
+      "id": "gdzr",
+      "evidenceRefs": [
+        "gdzr"
+      ],
+      "justification": "Bold capitalized title 'TỜ KHAI' centered on the page, opening the declaration form."
+    },
+    {
+      "id": "pktf",
+      "evidenceRefs": [
+        "pktf"
+      ],
+      "justification": "Bold subtitle specifying the form's purpose, directly following the main title."
+    },
+    {
+      "id": "hscm",
+      "evidenceRefs": [
+        "hscm"
+      ],
+      "justification": "Bold numbered section heading '1. Hình thức hóa đơn:' introducing the first set of options."
+    },
+    {
+      "id": "xqtk",
+      "evidenceRefs": [
+        "xqtk"
+      ],
+      "justification": "Bold numbered section heading '2. Hình thức gửi dữ liệu hóa đơn điện tử:' introducing the second set of options."
+    }
+  ]
+}

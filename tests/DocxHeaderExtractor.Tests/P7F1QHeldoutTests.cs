@@ -414,6 +414,7 @@ public sealed class P7F1QHeldoutTests : IDisposable
     [InlineData("p7.f1.direct.pilot-raw.v1/capture", "p7.f1.direct.pilot-raw.capture-manifest.v1.json", "6bcda0c28f8ba64de70c9c039ba21b5a323981e2dcb667747c24ae3a2d000bd8")]
     [InlineData("p7.f1.direct.v11.raw.v1/rep-1", "p7.f1.direct.v11.rep-1.raw-capture-manifest.v1.json", "cf4d751c8947a3a0f52b7b3ac89da46204d053a4b2907ad5bb6478fe31bf05c8")]
     [InlineData("p7.f1.direct.v11.raw.v1/rep-2", "p7.f1.direct.v11.rep-2.raw-capture-manifest.v1.json", "897b7390f27c70376380d28c3f3279464ac8812a089c1d45867ae0f645c5f99e")]
+    [InlineData("p7.f1.direct.v42.raw.v1/run1", "p7.f1.direct.v42.run1.raw-capture-manifest.v1.json", "aa545fb3d8073035e80fc4ae9092c8aa88a03dc086b19b2066d9996dfaa69c36")]
     public void Published_heldout_raw_reproduces_every_frozen_byte_or_its_redaction_receipt(string arm, string manifestFile, string manifestSha)
     {
         string Sha(byte[] b) => Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(b));

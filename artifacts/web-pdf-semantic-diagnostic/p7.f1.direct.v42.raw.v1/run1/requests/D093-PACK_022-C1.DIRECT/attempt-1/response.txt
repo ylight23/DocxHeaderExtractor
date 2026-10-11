@@ -1,0 +1,43 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D093-PACK_022-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "gzvm",
+      "evidenceRefs": [
+        "gzvm"
+      ],
+      "justification": "Bold, size 12 font at page top; numbered section marker 'C.2.' introducing the following content block."
+    },
+    {
+      "id": "mmpg",
+      "evidenceRefs": [
+        "mmpg"
+      ],
+      "justification": "Bold, size 12 font; completes the section title 'C.2. Changes from HTTP/1.0' opening the discussion below."
+    },
+    {
+      "id": "kzhf",
+      "evidenceRefs": [
+        "kzhf"
+      ],
+      "justification": "Bold, size 10 font; numbered subsection 'C.2.1.' positioned above body text, introducing the multihomed servers discussion."
+    },
+    {
+      "id": "cjkq",
+      "evidenceRefs": [
+        "cjkq"
+      ],
+      "justification": "Bold, size 10 font; numbered subsection 'C.2.2.' positioned above body text, introducing the keep-alive connections discussion."
+    },
+    {
+      "id": "wsnp",
+      "evidenceRefs": [
+        "wsnp"
+      ],
+      "justification": "Bold, size 10 font; numbered subsection 'C.2.3.' positioned above body text, introducing the transfer-encoding discussion."
+    }
+  ],
+  "unresolved": []
+}

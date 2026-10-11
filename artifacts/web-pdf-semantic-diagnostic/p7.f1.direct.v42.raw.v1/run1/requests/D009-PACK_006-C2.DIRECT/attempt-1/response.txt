@@ -1,0 +1,30 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D009-PACK_006-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "xjqd",
+      "evidenceRefs": [
+        "xjqd"
+      ],
+      "justification": "Bold layout (boldRatio=1) on page 17. 'Điều 30...' stands alone at the top of block b268, naming and opening the substantive article provisions that follow immediately below."
+    },
+    {
+      "id": "vtbf",
+      "evidenceRefs": [
+        "vtbf"
+      ],
+      "justification": "Bold layout on page 17, block b277. 'Điều 31. Dịch vụ cấp dấu thời gian' operates as a standalone article heading introducing the definition and rules for timestamp services at this location."
+    },
+    {
+      "id": "qksz",
+      "evidenceRefs": [
+        "qksz"
+      ],
+      "justification": "Bold layout on page 17, block b283. 'Điều 32. Dịch vụ chứng thực thông điệp dữ liệu' functions as a genuine article heading opening the subsequent content, distinct from clause items or headers."
+    }
+  ]
+}
+```

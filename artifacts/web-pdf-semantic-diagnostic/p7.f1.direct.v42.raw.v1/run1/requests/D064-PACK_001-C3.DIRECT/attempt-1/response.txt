@@ -1,0 +1,22 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D064-PACK_001-C3",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "jhsq",
+      "evidenceRefs": ["jhsq"],
+      "justification": "Bold 'Contents' heading at top of page 7 opens the table of contents listing chapters and sections."
+    },
+    {
+      "id": "dbnw",
+      "evidenceRefs": ["dbnw"],
+      "justification": "Bold 'Acknowledgements' title at page top introduces the acknowledgements section following it."
+    },
+    {
+      "id": "cjff",
+      "evidenceRefs": ["cjff"],
+      "justification": "Bold '1 Introduction' heading marks the start of Chapter 1, followed by its page number and body text."
+    }
+  ]
+}

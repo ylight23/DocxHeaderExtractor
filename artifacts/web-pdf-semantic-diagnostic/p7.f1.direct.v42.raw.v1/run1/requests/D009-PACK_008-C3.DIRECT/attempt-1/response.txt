@@ -1,0 +1,30 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D009-PACK_008-C3",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "pkfk",
+      "evidenceRefs": ["pkfk"],
+      "justification": "Bold layout, numbered 'Điều 44.', positioned above continuous clause text introducing Article 44 content."
+    },
+    {
+      "id": "ttbh",
+      "evidenceRefs": ["ttbh"],
+      "justification": "Bold layout, standalone 'Chương VI', positioned centrally above chapter title and article text."
+    },
+    {
+      "id": "wfmr",
+      "evidenceRefs": ["wfmr"],
+      "justification": "Bold uppercase layout, serves as chapter title following 'Chương VI', introducing subsequent article."
+    },
+    {
+      "id": "kcdz",
+      "evidenceRefs": ["kcdz"],
+      "justification": "Bold layout, numbered 'Điều 45.', positioned above continuous clause text introducing Article 45 content."
+    }
+  ],
+  "unresolved": []
+}
+```

@@ -1,0 +1,32 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D034-PACK_090-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "hgcc",
+      "evidenceRefs": ["hgcc"],
+      "justification": "Bold, large font (size 18) at top of page, introduces the appendix content that follows."
+    },
+    {
+      "id": "xjmm",
+      "evidenceRefs": ["xjmm"],
+      "justification": "Bold, prominent font (size 16) immediately below APPENDIX A, names the specific agreement section."
+    },
+    {
+      "id": "xfdj",
+      "evidenceRefs": ["xfdj"],
+      "justification": "Numbered heading '1. Definitions' marks the start of the definitions section."
+    },
+    {
+      "id": "hfgh",
+      "evidenceRefs": ["hfgh"],
+      "justification": "Numbered heading '2. General Provisions' introduces the subsequent provisions."
+    },
+    {
+      "id": "vjpq",
+      "evidenceRefs": ["vjpq"],
+      "justification": "Numbered heading '3. Warranties' introduces the warranties clause."
+    }
+  ]
+}

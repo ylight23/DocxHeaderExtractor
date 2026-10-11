@@ -1,0 +1,45 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D087-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "vsgq",
+      "evidenceRefs": [
+        "vsgq"
+      ],
+      "justification": "Document-type title word 'DECREE' in bold, centrally placed, introducing the decree's main title below."
+    },
+    {
+      "id": "fmsr",
+      "evidenceRefs": [
+        "fmsr"
+      ],
+      "justification": "Main title of the decree detailing specific legal articles, formatted in bold directly following the document type."
+    },
+    {
+      "id": "dhrd",
+      "evidenceRefs": [
+        "dhrd"
+      ],
+      "justification": "Bold chapter heading 'Chapter I' marking the start of the first substantive section of the decree."
+    },
+    {
+      "id": "hhsf",
+      "evidenceRefs": [
+        "hhsf"
+      ],
+      "justification": "Bold section heading 'GENERAL PROVISIONS' immediately following the chapter number, introducing the chapter's content."
+    },
+    {
+      "id": "rvtz",
+      "evidenceRefs": [
+        "rvtz"
+      ],
+      "justification": "Bold article heading 'Article 1. Scope of regulation' introducing the regulatory scope text that follows."
+    }
+  ],
+  "unresolved": []
+}
+```

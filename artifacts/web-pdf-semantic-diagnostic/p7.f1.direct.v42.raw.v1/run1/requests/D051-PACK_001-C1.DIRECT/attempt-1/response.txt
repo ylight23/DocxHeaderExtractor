@@ -1,0 +1,49 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D051-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "qtxs",
+      "evidenceRefs": [
+        "qtxs"
+      ],
+      "justification": "Large bold font (26.2pt) on page 1, positioned at top of page, operates as the main document title."
+    },
+    {
+      "id": "dknn",
+      "evidenceRefs": [
+        "dknn"
+      ],
+      "justification": "Large bold font (24.4pt) on page 1, directly below title line, continues the document title."
+    },
+    {
+      "id": "rgdf",
+      "evidenceRefs": [
+        "rgdf"
+      ],
+      "justification": "Medium bold font (20.6pt) on page 1, specifies fiscal years, completes the title block."
+    },
+    {
+      "id": "kksk",
+      "evidenceRefs": [
+        "kksk"
+      ],
+      "justification": "Bold font (12.7pt) on page 2, introduces the 'Introduction' section following the title page."
+    },
+    {
+      "id": "jmhm",
+      "evidenceRefs": [
+        "jmhm"
+      ],
+      "justification": "Bold font (13.2pt) on page 3, introduces the 'Abbreviations and Acronyms' section."
+    },
+    {
+      "id": "kdtm",
+      "evidenceRefs": [
+        "kdtm"
+      ],
+      "justification": "Bold font (13.2pt) on page 4, introduces the 'Contents and Summary of Financial Data' section."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D088-PACK_028-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "bnpz",
+      "evidenceRefs": [
+        "bnpz"
+      ],
+      "justification": "Bold layout at page top, introduces the subsequent list of goods subject to special excise duty. Operates as a main appendix heading."
+    },
+    {
+      "id": "kzmf",
+      "evidenceRefs": [
+        "kzmf"
+      ],
+      "justification": "Continues the appendix title, positioned directly above the descriptive text and table headers, introducing the substantive list."
+    },
+    {
+      "id": "wsxc",
+      "evidenceRefs": [
+        "wsxc"
+      ],
+      "justification": "Completes the appendix title phrase, structurally aligned with preceding title lines, opening the regulatory list."
+    },
+    {
+      "id": "rszn",
+      "evidenceRefs": [
+        "rszn"
+      ],
+      "justification": "Bold layout marking a new appendix section, introduces the following list of used goods."
+    },
+    {
+      "id": "rphg",
+      "evidenceRefs": [
+        "rphg"
+      ],
+      "justification": "Title line for Appendix IX, positioned above the conditions list, functioning as a section heading."
+    },
+    {
+      "id": "jrrs",
+      "evidenceRefs": [
+        "jrrs"
+      ],
+      "justification": "Completes the Appendix IX title, structurally consistent with preceding title lines, introducing the regulatory scope."
+    }
+  ],
+  "unresolved": []
+}
+```

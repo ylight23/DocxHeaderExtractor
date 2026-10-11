@@ -1,0 +1,29 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D083-PACK_016-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "nhfc",
+      "evidenceRefs": ["nhfc"],
+      "justification": "Opens the Article 41 heading at its location; followed by continuation line and substantive clause text detailing responsibilities."
+    },
+    {
+      "id": "spbt",
+      "evidenceRefs": ["spbt"],
+      "justification": "Completes the Article 41 heading; introduces the subsequent numbered clauses detailing enterprise responsibilities."
+    },
+    {
+      "id": "hwsz",
+      "evidenceRefs": ["hwsz"],
+      "justification": "Opens the Article 42 heading at its location; followed by continuation line and substantive clause text regarding agencies and individuals."
+    },
+    {
+      "id": "kqhp",
+      "evidenceRefs": ["kqhp"],
+      "justification": "Completes the Article 42 heading; introduces the subsequent numbered clauses regarding agencies and individuals."
+    }
+  ]
+}
+```

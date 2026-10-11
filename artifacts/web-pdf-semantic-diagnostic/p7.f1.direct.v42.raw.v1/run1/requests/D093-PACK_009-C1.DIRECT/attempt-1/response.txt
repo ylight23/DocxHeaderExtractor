@@ -1,0 +1,18 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D093-PACK_009-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "jpwt",
+      "evidenceRefs": ["jpwt"],
+      "justification": "Bold 12pt section heading '6.2. Content-Length' introducing the subsequent paragraph defining Content-Length usage and rules."
+    },
+    {
+      "id": "brcg",
+      "evidenceRefs": ["brcg"],
+      "justification": "Bold 12pt section heading '6.3. Message Body Length' introducing the numbered list of rules for determining message body length."
+    }
+  ],
+  "unresolved": []
+}

@@ -1,0 +1,28 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D051-PACK_003-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "gjvk",
+      "evidenceRefs": ["gjvk"],
+      "justification": "Top-of-page position, larger font (10.4pt), introduces subsequent section and body text. Repeats as a standard section opener across pages."
+    },
+    {
+      "id": "rgjp",
+      "evidenceRefs": ["rgjp"],
+      "justification": "Bold, largest font (13.2pt) on page, sits at top of layout block, directly precedes explanatory paragraph. Operates as a subheading."
+    },
+    {
+      "id": "npqw",
+      "evidenceRefs": ["npqw"],
+      "justification": "Identical to gjvk; repeats 'KeyTrustFundActivity' at top of page 13, introducing new content block and definitions below."
+    },
+    {
+      "id": "hsvs",
+      "evidenceRefs": ["hsvs"],
+      "justification": "Bold, large font (13.2pt), positioned at top of page 13 block, introduces definitions of commitments below."
+    }
+  ],
+  "unresolved": []
+}

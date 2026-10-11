@@ -1,0 +1,17 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D094-PACK_031-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "gdcg",
+      "evidenceRefs": ["gdcg"],
+      "justification": "Bold, 12pt section number at top of page, immediately preceding the section title and introducing the following body text."
+    },
+    {
+      "id": "rmjc",
+      "evidenceRefs": ["rmjc"],
+      "justification": "Bold, 12pt section title aligned with the section number, opening the substantive discussion of denial-of-service risks below."
+    }
+  ]
+}

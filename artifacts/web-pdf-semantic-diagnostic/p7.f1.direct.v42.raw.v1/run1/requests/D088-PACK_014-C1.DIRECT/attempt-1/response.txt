@@ -1,0 +1,24 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D088-PACK_014-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "vmsn",
+      "evidenceRefs": ["vmsn"],
+      "justification": "Bold line 'Section 2. PLACING ORDER TO PROCESS GOODS ABROAD' introduces the subsequent regulatory provisions at its location."
+    },
+    {
+      "id": "nczc",
+      "evidenceRefs": ["nczc"],
+      "justification": "Bold line 'Article 48. Processing contract and customs procedures' opens the substantive content of this article here."
+    },
+    {
+      "id": "wgmb",
+      "evidenceRefs": ["wgmb"],
+      "justification": "Bold line 'Article 49. Rights and obligations of trader placing order to process goods abroad' introduces the numbered clauses that follow."
+    }
+  ]
+}
+```

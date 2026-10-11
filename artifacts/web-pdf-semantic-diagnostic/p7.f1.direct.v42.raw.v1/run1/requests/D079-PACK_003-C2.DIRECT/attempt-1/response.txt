@@ -1,0 +1,15 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D079-PACK_003-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {"id": "qhmj", "evidenceRefs": ["qhmj"], "justification": "First line of the document title, 16pt bold, positioned at page top."},
+    {"id": "nqmx", "evidenceRefs": ["nqmx"], "justification": "Second line of the document title, 16pt bold, directly below first line."},
+    {"id": "qhhq", "evidenceRefs": ["qhhq"], "justification": "Third line of the document title, 12pt bold, specifying meeting type."},
+    {"id": "vkbf", "evidenceRefs": ["vkbf"], "justification": "Heading 'Agenda' introduces the subsequent schedule of sessions."},
+    {"id": "rtbh", "evidenceRefs": ["rtbh"], "justification": "Section heading 'SESSION I' opens the first block of agenda items."},
+    {"id": "wsfr", "evidenceRefs": ["wsfr"], "justification": "Section heading 'SESSION II' opens the closing block of agenda items."}
+  ]
+}
+```

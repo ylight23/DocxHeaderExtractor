@@ -1,0 +1,36 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D051-PACK_002-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "wpcn",
+      "evidenceRefs": [
+        "wpcn"
+      ],
+      "justification": "Large bold font (13.2pt) at page top (pos 0.96). Introduces subsequent bullet-pointed highlights section. Not repeated elsewhere."
+    },
+    {
+      "id": "znpf",
+      "evidenceRefs": [
+        "znpf"
+      ],
+      "justification": "Bold large font (12.7pt) mid-page (pos 0.58). Opens a data region/table regarding top trust funds."
+    },
+    {
+      "id": "hdmt",
+      "evidenceRefs": [
+        "hdmt"
+      ],
+      "justification": "Continuation of preceding heading line, completing the title for the following data region."
+    },
+    {
+      "id": "kbbz",
+      "evidenceRefs": [
+        "kbbz"
+      ],
+      "justification": "Large bold font (13.2pt) at page top (pos 0.93). Introduces descriptive body text on trust fund assets. Unique occurrence."
+    }
+  ],
+  "unresolved": []
+}

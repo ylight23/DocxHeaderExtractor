@@ -1,0 +1,63 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D073-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "kdmp",
+      "evidenceRefs": ["kdmp"],
+      "justification": "Bold title line at the top of the document, identifying the meeting type and date."
+    },
+    {
+      "id": "nmdj",
+      "evidenceRefs": ["nmdj"],
+      "justification": "Bold title continuation specifying the governing committee name."
+    },
+    {
+      "id": "frks",
+      "evidenceRefs": ["frks"],
+      "justification": "Bold title continuation naming the specific financial intermediary fund."
+    },
+    {
+      "id": "kvbs",
+      "evidenceRefs": ["kvbs"],
+      "justification": "Bold section header 'Opening:' introducing the meeting's opening remarks."
+    },
+    {
+      "id": "xhjk",
+      "evidenceRefs": ["xhjk"],
+      "justification": "Bold section header 'Present:' introducing the list of attending members."
+    },
+    {
+      "id": "gnmf",
+      "evidenceRefs": ["gnmf"],
+      "justification": "Semi-bold heading 'Report on Currently Available Resources...' introducing the resource report section."
+    },
+    {
+      "id": "hsmc",
+      "evidenceRefs": ["hsmc"],
+      "justification": "Heading 'Operating Context.' introducing the contextual discussion section."
+    },
+    {
+      "id": "hbxr",
+      "evidenceRefs": ["hbxr"],
+      "justification": "Bold heading start 'Funding Request for Eighth Additional Financing...' introducing the funding request section."
+    },
+    {
+      "id": "rwjr",
+      "evidenceRefs": ["rwjr"],
+      "justification": "Bold heading continuation completing the PEACE project funding request title."
+    },
+    {
+      "id": "qprm",
+      "evidenceRefs": ["qprm"],
+      "justification": "Heading 'Next Bi-Annual Meeting of the GC.' introducing the scheduling discussion."
+    },
+    {
+      "id": "kdht",
+      "evidenceRefs": ["kdht"],
+      "justification": "Heading 'Next Steps.' introducing the follow-up action items section."
+    }
+  ],
+  "unresolved": []
+}

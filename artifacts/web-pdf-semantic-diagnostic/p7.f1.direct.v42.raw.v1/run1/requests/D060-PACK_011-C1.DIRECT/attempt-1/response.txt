@@ -1,0 +1,17 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D060-PACK_011-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "rcnp",
+      "evidenceRefs": ["rcnp"],
+      "justification": "\"Theorem 4\" explicitly names and opens the theorem statement that follows, introducing the mathematical content of the theorem block."
+    },
+    {
+      "id": "wtwm",
+      "evidenceRefs": ["wtwm"],
+      "justification": "\"Deﬁnition 38\" explicitly names and opens the definition that follows, introducing the mathematical formulation and explanation."
+    }
+  ]
+}

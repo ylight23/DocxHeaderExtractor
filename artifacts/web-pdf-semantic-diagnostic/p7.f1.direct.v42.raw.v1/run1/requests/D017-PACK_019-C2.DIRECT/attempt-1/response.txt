@@ -1,0 +1,32 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D017-PACK_019-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "spkf",
+      "evidenceRefs": ["spkf"],
+      "justification": "Phụ lục IA introduces the appendix region. Bold layout, sequential position marks it as a heading."
+    },
+    {
+      "id": "qfxx",
+      "evidenceRefs": ["qfxx"],
+      "justification": "Main title of the appendix form. Bold layout, directly follows the appendix label."
+    },
+    {
+      "id": "pmmk",
+      "evidenceRefs": ["pmmk"],
+      "justification": "Subtitle referencing the issuing decree. Italic layout, standard form heading component."
+    },
+    {
+      "id": "ksvn",
+      "evidenceRefs": ["ksvn"],
+      "justification": "Section heading 1. Bold layout, introduces the following invoice types list."
+    },
+    {
+      "id": "vdcr",
+      "evidenceRefs": ["vdcr"],
+      "justification": "Section heading 2. Bold layout, introduces the next category of invoices."
+    }
+  ]
+}

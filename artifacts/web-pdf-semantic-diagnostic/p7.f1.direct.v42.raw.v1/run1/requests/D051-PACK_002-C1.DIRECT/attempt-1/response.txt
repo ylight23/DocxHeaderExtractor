@@ -1,0 +1,17 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D051-PACK_002-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "pbsk",
+      "evidenceRefs": ["pbsk"],
+      "justification": "Large font (13.2pt), bold, positioned at the top of the page (pos 0.96). Introduces the subsequent financial summary and data tables."
+    },
+    {
+      "id": "bskx",
+      "evidenceRefs": ["bskx"],
+      "justification": "Bold text at vertical position 0.78. Acts as a section heading introducing the bulleted key metrics discussion that follows."
+    }
+  ]
+}
