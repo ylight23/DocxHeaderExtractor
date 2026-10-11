@@ -18,6 +18,8 @@ public sealed class P7F1RegionV5Tests
     static F1QValidation V(string json) => P7F1RegionProtocolV5.Validate(json, "D001-C1", Subjects, IdByAlias, Citable);
 
     const string Head = "\"protocolVersion\":\"P7_F1_REGION_HEADING_V5\",\"requestId\":\"D001-C1\",\"assessment\":\"COMPLETE\"";
+    static string Span(string from, string to, string f) => $"{{\"from\":\"{from}\",\"to\":\"{to}\",\"function\":\"{f}\",\"evidence\":[]}}";
+    static string Doc(string regions, string headings) => $"{{{Head},\"regions\":[{regions}],\"headings\":[{headings}]}}";
 
     [Fact] public void Prompt_asks_for_regions_then_headings_and_keeps_the_V1_evidence_text()
     {
@@ -30,9 +32,9 @@ public sealed class P7F1RegionV5Tests
         Assert.DoesNotContain('\r', p);
     }
 
-    [Fact] public void A_valid_region_then_heading_is_accepted_and_rows_carry_the_region_function()
+    [Fact] public void Full_coverage_with_a_heading_inside_its_region_is_accepted_and_rows_carry_the_region_function()
     {
-        var v = V($"{{{Head},\"regions\":[{{\"from\":\"kqzt\",\"to\":\"mbxr\",\"function\":\"opening title and body\",\"evidence\":[\"kqzt\"]}}],\"headings\":[{{\"id\":\"kqzt\",\"region\":0,\"evidenceRefs\":[\"kqzt\"],\"justification\":\"title\"}}]}}");
+        var v = V(Doc(Span("kqzt", "hpdv", "opening title and body"), "{\"id\":\"kqzt\",\"region\":0,\"evidenceRefs\":[\"kqzt\"],\"justification\":\"title\"}"));
         Assert.True(v.StrictAccepted, v.FailureCode);
         var row = Assert.Single(v.Rows.Where(r => r.Valid));
         Assert.Equal("O1", row.Occurrence);
@@ -41,47 +43,55 @@ public sealed class P7F1RegionV5Tests
 
     [Fact] public void A_heading_inside_a_region_described_as_navigation_is_not_filtered_by_C_sharp()
     {
-        var v = V($"{{{Head},\"regions\":[{{\"from\":\"kqzt\",\"to\":\"mbxr\",\"function\":\"table of contents entries\",\"evidence\":[]}}],\"headings\":[{{\"id\":\"kqzt\",\"region\":0,\"evidenceRefs\":[\"kqzt\"],\"justification\":\"opens content here\"}}]}}");
+        var v = V(Doc(Span("kqzt", "hpdv", "table of contents entries"), "{\"id\":\"kqzt\",\"region\":0,\"evidenceRefs\":[\"kqzt\"],\"justification\":\"opens content here\"}"));
         Assert.True(v.StrictAccepted, v.FailureCode);
         Assert.Single(v.Rows.Where(r => r.Valid));
     }
 
+    [Fact] public void Complete_coverage_is_required_missing_regions_gap_or_short_end_are_rejected()
+    {
+        Assert.Equal("REGION_COVERAGE_INCOMPLETE", V(Doc("", "")).FailureCode);
+        Assert.Equal("REGION_COVERAGE_INCOMPLETE", V(Doc(Span("kqzt", "kqzt", "title") + "," + Span("hpdv", "hpdv", "body"), "")).FailureCode);
+        Assert.Equal("REGION_COVERAGE_INCOMPLETE", V(Doc(Span("kqzt", "mbxr", "body"), "")).FailureCode);
+        Assert.Equal("REGION_COVERAGE_INCOMPLETE", V(Doc(Span("mbxr", "hpdv", "body"), "")).FailureCode);
+    }
+
     [Fact] public void Headings_must_name_a_region_index_that_exists()
     {
-        var v = V($"{{{Head},\"regions\":[{{\"from\":\"kqzt\",\"to\":\"mbxr\",\"function\":\"body\",\"evidence\":[]}}],\"headings\":[{{\"id\":\"kqzt\",\"region\":3,\"evidenceRefs\":[\"kqzt\"],\"justification\":\"x\"}}]}}");
+        var v = V(Doc(Span("kqzt", "hpdv", "body"), "{\"id\":\"kqzt\",\"region\":3,\"evidenceRefs\":[\"kqzt\"],\"justification\":\"x\"}"));
         Assert.False(v.StrictAccepted);
         Assert.Equal("HEADING_REGION_INVALID", v.FailureCode);
     }
 
     [Fact] public void A_heading_outside_the_region_it_cites_is_rejected()
     {
-        var v = V($"{{{Head},\"regions\":[{{\"from\":\"kqzt\",\"to\":\"kqzt\",\"function\":\"title\",\"evidence\":[]}}],\"headings\":[{{\"id\":\"hpdv\",\"region\":0,\"evidenceRefs\":[\"hpdv\"],\"justification\":\"x\"}}]}}");
+        var v = V(Doc(Span("kqzt", "kqzt", "title") + "," + Span("mbxr", "hpdv", "body"),
+            "{\"id\":\"hpdv\",\"region\":0,\"evidenceRefs\":[\"hpdv\"],\"justification\":\"x\"}"));
         Assert.Equal("HEADING_OUTSIDE_ITS_REGION", v.FailureCode);
     }
 
     [Fact] public void Regions_must_be_in_reading_order_and_not_overlap()
     {
-        var reversed = V($"{{{Head},\"regions\":[{{\"from\":\"mbxr\",\"to\":\"kqzt\",\"function\":\"a\",\"evidence\":[]}}],\"headings\":[]}}");
-        Assert.Equal("REGION_FROM_AFTER_TO", reversed.FailureCode);
-        var overlap = V($"{{{Head},\"regions\":[{{\"from\":\"kqzt\",\"to\":\"mbxr\",\"function\":\"a\",\"evidence\":[]}},{{\"from\":\"mbxr\",\"to\":\"hpdv\",\"function\":\"b\",\"evidence\":[]}}],\"headings\":[]}}");
-        Assert.Equal("REGIONS_NOT_IN_READING_ORDER_OR_OVERLAP", overlap.FailureCode);
+        Assert.Equal("REGION_FROM_AFTER_TO", V(Doc(Span("mbxr", "kqzt", "a") + "," + Span("hpdv", "hpdv", "b"), "")).FailureCode);
+        Assert.Equal("REGIONS_NOT_IN_READING_ORDER_OR_OVERLAP", V(Doc(Span("kqzt", "mbxr", "a") + "," + Span("mbxr", "hpdv", "b"), "")).FailureCode);
     }
 
     [Fact] public void Region_ids_must_be_issued_and_functions_must_be_non_empty()
     {
-        Assert.Equal("REGION_ID_NOT_ISSUED", V($"{{{Head},\"regions\":[{{\"from\":\"zzzz\",\"to\":\"mbxr\",\"function\":\"a\",\"evidence\":[]}}],\"headings\":[]}}").FailureCode);
-        Assert.Equal("REGION_FUNCTION_INVALID", V($"{{{Head},\"regions\":[{{\"from\":\"kqzt\",\"to\":\"mbxr\",\"function\":\"  \",\"evidence\":[]}}],\"headings\":[]}}").FailureCode);
+        Assert.Equal("REGION_ID_NOT_ISSUED", V(Doc(Span("zzzz", "hpdv", "a"), "")).FailureCode);
+        Assert.Equal("REGION_FUNCTION_INVALID", V(Doc(Span("kqzt", "hpdv", "  "), "")).FailureCode);
     }
 
-    [Fact] public void Missing_region_key_and_truncated_json_are_rejected()
+    [Fact] public void Missing_heading_key_and_truncated_json_are_rejected()
     {
-        Assert.Equal("HEADING_KEYS_INVALID", V($"{{{Head},\"regions\":[{{\"from\":\"kqzt\",\"to\":\"mbxr\",\"function\":\"a\",\"evidence\":[]}}],\"headings\":[{{\"id\":\"kqzt\",\"evidenceRefs\":[\"kqzt\"],\"justification\":\"x\"}}]}}").FailureCode);
+        Assert.Equal("HEADING_KEYS_INVALID", V(Doc(Span("kqzt", "hpdv", "a"), "{\"id\":\"kqzt\",\"evidenceRefs\":[\"kqzt\"],\"justification\":\"x\"}")).FailureCode);
         Assert.Equal("RESPONSE_NOT_JSON", V($"{{{Head},\"regions\":[").FailureCode);
     }
 
     [Fact] public void RegionsOf_gives_each_heading_its_region_index_and_the_region_words()
     {
-        var json = $"{{{Head},\"regions\":[{{\"from\":\"kqzt\",\"to\":\"kqzt\",\"function\":\"title\",\"evidence\":[\"kqzt\"]}},{{\"from\":\"mbxr\",\"to\":\"hpdv\",\"function\":\"form\",\"evidence\":[]}}],\"headings\":[{{\"id\":\"hpdv\",\"region\":1,\"evidenceRefs\":[\"hpdv\"],\"justification\":\"x\"}}]}}";
+        var json = Doc(Span("kqzt", "kqzt", "title") + "," + Span("mbxr", "hpdv", "form"),
+            "{\"id\":\"hpdv\",\"region\":1,\"evidenceRefs\":[\"hpdv\"],\"justification\":\"x\"}");
         var aliasById = IdByAlias.ToDictionary(p => p.Value, p => p.Key, StringComparer.Ordinal);
         var (regions, of) = P7F1RegionProtocolV5.RegionsOf(json, aliasById);
         Assert.Equal(2, regions.Count);

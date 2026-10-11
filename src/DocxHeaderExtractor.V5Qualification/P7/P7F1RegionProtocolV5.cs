@@ -106,6 +106,11 @@ internal static class P7F1RegionProtocolV5
                 if (spans.Count > 0 && span.From <= spans[^1].To) return Fail("REGIONS_NOT_IN_READING_ORDER_OR_OVERLAP");
                 spans.Add(span);
             }
+            // Coverage (audit): a COMPLETE response must place every issued subject in exactly one contiguous region, from the
+            // first subject to the last. Without it an uncovered subject would be scored negative with no region statement.
+            if (spans.Count == 0 || spans[0].From != 0 || spans[^1].To != subjects.Count - 1 ||
+                Enumerable.Range(1, spans.Count - 1).Any(k => spans[k].From != spans[k - 1].To + 1))
+                return Fail("REGION_COVERAGE_INCOMPLETE");
             var seen = new HashSet<string>(StringComparer.Ordinal); string? first = null;
             void Add(F1QRowResult r) { if (r.Valid && !seen.Add(r.Occurrence)) r = r with { Valid = false, FailureCode = "SUBJECT_LISTED_TWICE" }; rows.Add(r); first ??= r.Valid ? null : r.FailureCode; }
             foreach (var h in root.GetProperty("headings").EnumerateArray()) Add(Heading(h, byId, position, spans, idByAlias, citable, unresolvedRefs));

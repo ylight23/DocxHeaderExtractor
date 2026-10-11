@@ -67,6 +67,9 @@ internal static class P7F1RegionBinderV5
             if (!v.StrictAccepted) return Bound(result, "CONTRACT_FAILED", "BINDER_REVALIDATION:" + v.FailureCode, a, diagnostics);
             var aliasById = idByAlias.ToDictionary(p => p.Value, p => p.Key, StringComparer.Ordinal);
             var (regionRows, regionOf) = P7F1RegionProtocolV5.RegionsOf(text, aliasById);
+            // Region evidence that cites a tool result must exist in the raw tool transcript (no invented evidence).
+            var unknownRegionTool = regionRows.SelectMany(r => r.Evidence).FirstOrDefault(e => System.Text.RegularExpressions.Regex.IsMatch(e, @"^E\d+\.\d+$") && !tools.ContainsKey(e));
+            if (unknownRegionTool is not null) return Bound(result, "CONTRACT_FAILED", "REGION_EVIDENCE_NOT_IN_TRANSCRIPT:" + unknownRegionTool, a, diagnostics);
             var regionsJson = new JsonArray(regionRows.Select(r => (JsonNode?)new JsonObject { ["index"] = r.Index, ["fromAlias"] = r.FromAlias, ["toAlias"] = r.ToAlias,
                 ["function"] = r.Function, ["evidenceAliases"] = new JsonArray(r.Evidence.Select(e => (JsonNode?)e).ToArray()) }).ToArray());
             var bySubject = issued.ToDictionary(i => i.Occurrence);

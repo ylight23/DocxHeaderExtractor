@@ -400,7 +400,7 @@ switch (args[0])
         var plan = SpatialCanonical.Bytes(new
         {
             version = "P7_F1_DIRECT_PLAN_" + Path.GetFileNameWithoutExtension(args[2]).Split('.').Last().ToUpperInvariant(), status = "FROZEN_BEFORE_PROVIDER",
-            issue = "ylight23/DocxHeaderExtractor#7", protocolVersion = DirectV.V5 ? P7F1RegionProtocolV5.Version : DirectV.V11 ? P7F1DirectProtocolV11.Version : P7F1DirectProtocol.Version, systemPromptSha256 = DirectV.V5 ? P7F1RegionProtocolV5.PromptSha256() : DirectV.V11 ? P7F1DirectProtocolV11.PromptSha256() : P7F1DirectProtocol.PromptSha256(),
+            issue = DirectV.V5 ? "ylight23/DocxHeaderExtractor#8" : "ylight23/DocxHeaderExtractor#7", protocolVersion = DirectV.V5 ? P7F1RegionProtocolV5.Version : DirectV.V11 ? P7F1DirectProtocolV11.Version : P7F1DirectProtocol.Version, systemPromptSha256 = DirectV.V5 ? P7F1RegionProtocolV5.PromptSha256() : DirectV.V11 ? P7F1DirectProtocolV11.PromptSha256() : P7F1DirectProtocol.PromptSha256(),
             enrichmentVersion = DirectV.V42 ? P7F1SourceEnrichment.VersionV2 : P7F1SourceEnrichment.Version, packing = P7F1QLayoutPacking.Version, chunkSize = P7F1QProtocolV2.ChunkSize,
             toolsVersion = DirectV.V42 ? P7F1QEvidenceTools.VersionV3 : P7F1QEvidenceTools.VersionV2, toolDefinitionsSha256 = SpatialCanonical.Hash(Encoding.UTF8.GetBytes(P7F1QEvidenceTools.DefinitionsV2(DirectV.V42).ToJsonString())),
             model = policyV3.Model, providerRoute = new { order = new[] { "alibaba" }, allowFallbacks = false, requireParameters = true },
@@ -416,6 +416,7 @@ switch (args[0])
                 "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectBinder.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QEvidenceTools.cs",
                 "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QConversation.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QFenceNormalization.cs",
                 "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QLayoutPacking.cs", "scripts/P7F1Q/Program.cs" }
+                .Concat(DirectV.V5 ? new[] { "artifacts/web-pdf-semantic-diagnostic/p7.f1.v5.design.v1.md" } : Array.Empty<string>())
                 .Select(path => new { path, sha256 = SpatialCanonical.Hash(File.ReadAllBytes(path)) }),
         });
         P7F1QConversationRunner.WriteNew(args[2], plan);
@@ -508,6 +509,56 @@ switch (args[0])
             goldRead = false, statuses = bound.GroupBy(b => b["status"]!.GetValue<string>()).ToDictionary(g => g.Key, g => g.Count()), requests = bound });
         P7F1QConversationRunner.WriteNew(args[5], bytes);
         Console.WriteLine(JsonSerializer.Serialize(new { status = "BOUND", sha256 = SpatialCanonical.Hash(bytes), requests = bound.Count }));
+        break;
+    }
+    case "preflight-v5":
+    {
+        // Issue #8 output preflight on REAL source (094 chunks from the parser), no provider call. Checks plan pins and sizes,
+        // then runs the V5 contract on real issued ids: complete coverage passes; missing, gapped, truncated and
+        // navigation-described responses behave as designed (a region's words never remove a heading in C#).
+        if (args.Length != 5) throw new ArgumentException("preflight-v5 <plan.json> <plan-sha256> <bodies-dir> <receipt.json>");
+        LayoutArm.On = true; DirectV.V5 = true; DirectV.V11 = true; DirectV.V42 = true;
+        var planBytes = ReadPinned(args[1], args[2]); using var plan = JsonDocument.Parse(planBytes);
+        var sizes = new List<object>();
+        foreach (var q in plan.RootElement.GetProperty("requests").EnumerateArray())
+        {
+            ReadPinned(Path.Combine(args[3], S(q, "bodyFile")), S(q, "bodySha256"));
+            var n = q.GetProperty("issued").GetArrayLength();
+            sizes.Add(new { requestId = S(q, "requestId"), issued = n, bodyBytes = q.GetProperty("bodyBytes").GetInt32(),
+                // Upper bound of a valid response's characters: each subject at most one region and one heading.
+                responseCharsBound = n * (P7F1RegionProtocolV5.MaxFunctionChars + 80) + n * (P7F1RegionProtocolV5.MaxJustificationChars + 160) });
+        }
+        var direct = DirectRequests(File.ReadAllBytes(PageSelectionFor(plan.RootElement))).ToDictionary(r => r.RequestId);
+        var r94 = direct["D094-PACK_001-C2"];
+        var subjects = r94.Subjects; var ids = r94.Ids!;
+        var citable = new HashSet<string>(r94.Case.Source.Atoms.Select(a => a.Alias), StringComparer.Ordinal);
+        string Id(int k) => ids[subjects[k].SourceAlias];
+        string Json(string regions, string headings) => $"{{\"protocolVersion\":\"{P7F1RegionProtocolV5.Version}\",\"requestId\":\"{r94.RequestId}\",\"assessment\":\"COMPLETE\",\"regions\":[{regions}],\"headings\":[{headings}]}}";
+        string Region(int a, int b, string f) => $"{{\"from\":\"{Id(a)}\",\"to\":\"{Id(b)}\",\"function\":\"{f}\",\"evidence\":[]}}";
+        var last = subjects.Count - 1;
+        var cases = new (string Name, string Json)[]
+        {
+            ("full_coverage_one_region_no_headings", Json(Region(0, last, "table of contents entries"), "")),
+            ("two_regions_title_then_body_heading_selected", Json(Region(0, 0, "title") + "," + Region(1, last, "body"),
+                $"{{\"id\":\"{Id(0)}\",\"region\":0,\"evidenceRefs\":[\"{subjects[0].SourceAlias}\"],\"justification\":\"title line\"}}")),
+            ("navigation_described_region_heading_still_selected_by_model", Json(Region(0, last, "table of contents entries"),
+                $"{{\"id\":\"{Id(0)}\",\"region\":0,\"evidenceRefs\":[\"{subjects[0].SourceAlias}\"],\"justification\":\"opens content here\"}}")),
+            ("missing_regions_must_be_rejected", Json("", "")),
+            ("gap_in_middle_must_be_rejected", Json(Region(0, 0, "title") + "," + Region(2, last, "body"), "")),
+            ("short_by_one_at_the_end_must_be_rejected", Json(Region(0, last - 1, "body"), "")),
+            ("truncated_json_must_be_rejected", Json(Region(0, last, "body"), "").Substring(0, 120)),
+        };
+        var results = cases.Select(c =>
+        {
+            var v = P7F1RegionProtocolV5.Validate(c.Json, r94.RequestId, subjects, ids, citable);
+            return (object)new { c.Name, accepted = v.StrictAccepted, failureCode = v.FailureCode, responseChars = c.Json.Length };
+        }).ToArray();
+        var receipt = SpatialCanonical.Bytes(new { version = "P7_F1_REGION_PREFLIGHT_V1", planSha256 = args[2], real = "094 chunk C2 from the parser, not a fixture",
+            requestId = r94.RequestId, issuedSubjects = subjects.Count, maxIssuedPerRequest = sizes.Max(x => JsonSerializer.SerializeToElement(x).GetProperty("issued").GetInt32()),
+            maxBodyBytes = sizes.Max(x => JsonSerializer.SerializeToElement(x).GetProperty("bodyBytes").GetInt32()), requests = sizes, contractCases = results,
+            outputBudget = new { maxTokens = policyV42.MaxTokens, note = "reasoning counts toward max_tokens; responseCharsBound is a character bound, not a token count" }, providerCalls = 0 });
+        P7F1QConversationRunner.WriteNew(args[4], receipt);
+        Console.WriteLine(JsonSerializer.Serialize(new { status = "PREFLIGHT_WRITTEN", sha256 = SpatialCanonical.Hash(receipt), cases = results.Length, providerCalls = 0 }));
         break;
     }
     default: throw new ArgumentException("UNKNOWN_MODE");
