@@ -112,6 +112,80 @@ public sealed class P7F1DirectHeadingTests
             SpatialCanonical.Hash(Encoding.UTF8.GetBytes(P7F1QProtocolV2.SystemPrompt())));
     }
 
+    // ---------------- V4.1 contract (P7_F1_DIRECT_HEADING_V1_1) ----------------
+
+    static readonly IReadOnlyDictionary<string, string> Ids = P7F1DirectProtocolV11.OpaqueIds("D001-PACK_001-C1", Subjects);
+    static string R11(string headings = "[]", string? unresolved = null, string assessment = "COMPLETE", string extra = "") =>
+        $$"""{"protocolVersion":"P7_F1_DIRECT_HEADING_V1_1","requestId":"D001-PACK_001-C1","assessment":"{{assessment}}","headings":{{headings}}{{(unresolved is null ? "" : ",\"unresolved\":" + unresolved)}}{{extra}}}""";
+    static string H11(string alias, string? refs = null) => $$"""{"id":"{{Ids[alias]}}","evidenceRefs":{{refs ?? $"[\"{Ids[alias]}\"]"}},"justification":"Bold centred line opening the chapter at this location"}""";
+    static F1QValidation V11(string text) => P7F1DirectProtocolV11.Validate(text, "D001-PACK_001-C1", Subjects, Ids, Citable);
+
+    [Fact] public void V11_ids_are_four_unique_consonants_that_cannot_read_as_line_numbers()
+    {
+        Assert.Equal(Subjects.Length, Ids.Values.Distinct().Count());
+        Assert.All(Ids.Values, id => Assert.Matches("^[bcdfghjkmnpqrstvwxz]{4}$", id));
+        Assert.Equal(Ids, P7F1DirectProtocolV11.OpaqueIds("D001-PACK_001-C1", Subjects)); // deterministic
+    }
+
+    [Fact] public void V11_accepts_id_only_answers_without_hash_echo_and_with_unresolved_omitted()
+    {
+        var v = V11(R11($"[{H11("L0001:S0")},{H11("L0002:S0", "[\"L0002:S0\"]")}]"));
+        Assert.True(v.StrictAccepted);
+        Assert.Equal(["O1", "O2"], v.Rows.Select(r => r.Occurrence).ToArray()); // ids resolved to issued occurrences by C#
+        Assert.Equal(["L0001:S0"], v.Rows[0].Decision!.EvidenceRefs); // an id ref is normalised to its sourceAlias
+        Assert.True(V11(R11(unresolved: "[]")).StrictAccepted);
+        Assert.True(V11(R11(unresolved: $$"""[{"id":"{{Ids["L0003:S0"]}}","missingEvidence":["x"]}]""")).StrictAccepted);
+    }
+
+    [Theory]
+    [InlineData("hash-echo", "ROOT_KEYS_INVALID")]
+    [InlineData("foreign-id", "ID_NOT_ISSUED")]
+    [InlineData("alias-as-id", "ID_NOT_ISSUED")]
+    [InlineData("dup", "SUBJECT_LISTED_TWICE")]
+    [InlineData("not-about-subject", "EVIDENCE_NOT_ABOUT_SUBJECT")]
+    [InlineData("old-keys", "HEADING_KEYS_INVALID")]
+    [InlineData("old-version", "PROTOCOL_VERSION_INVALID")]
+    public void V11_contract_violations_fail_closed(string kind, string code)
+    {
+        var text = kind switch
+        {
+            "hash-echo" => R11(extra: ",\"issuedSetSha256\":\"x\""),
+            "foreign-id" => R11("""[{"id":"zzzz","evidenceRefs":["zzzz"],"justification":"x"}]"""),
+            "alias-as-id" => R11("""[{"id":"L0001:S0","evidenceRefs":["L0001:S0"],"justification":"x"}]"""),
+            "dup" => R11($"[{H11("L0001:S0")},{H11("L0001:S0")}]"),
+            "not-about-subject" => R11($"[{H11("L0001:S0", "[\"L0002:S0\"]")}]"),
+            "old-keys" => R11($$"""[{"id":"{{Ids["L0001:S0"]}}","sourceAlias":"L0001:S0","evidenceRefs":["L0001:S0"],"justification":"x"}]"""),
+            "old-version" => R11().Replace("V1_1", "V1"),
+            _ => throw new ArgumentException(kind),
+        };
+        var v = V11(text); Assert.False(v.StrictAccepted); Assert.Equal(code, v.FailureCode);
+    }
+
+    [Fact] public void V11_prompt_adds_the_at_location_condition_reuses_V1_evidence_text_and_asks_no_classes()
+    {
+        var p = P7F1DirectProtocolV11.SystemPrompt();
+        Assert.Contains("AT-LOCATION CONDITION", p); Assert.Contains("navigation", p);
+        var v1 = P7F1DirectProtocol.SystemPrompt();
+        Assert.Contains(v1[v1.IndexOf("EVIDENCE.", StringComparison.Ordinal)..v1.IndexOf("OUTPUT.", StringComparison.Ordinal)].Trim('\n'), p);
+        foreach (var banned in new[] { "ESTABLISHES_STRUCTURE", "REPRESENTS_STRUCTURE", "issuedSetSha256", "semanticKind" }) Assert.DoesNotContain(banned, p);
+        Assert.DoesNotContain('\r', p);
+    }
+
+    [Fact] public void V11_binder_resolves_ids_from_the_plan_and_binds_parser_text()
+    {
+        var plan = JsonDocument.Parse(JsonSerializer.Serialize(new
+        {
+            handle = "D001-PACK_001-C1|DIRECT", requestId = "D001-PACK_001-C1", document = "001",
+            issuedSetSha256 = P7F1DirectProtocolV11.ScopeSha256("D001-PACK_001-C1", "001", Subjects, Ids),
+            issued = Subjects.Select(s => new { occurrence = s.Occurrence, sourceAlias = s.SourceAlias, page = s.Page, textSha256 = P7F1DirectProtocol.TextSha256(s.Text), id = Ids[s.SourceAlias] }),
+            contextAliases = new[] { "L0005:S0" },
+        })).RootElement;
+        var b = P7F1DirectBinderV11.Bind(plan, Raw(("ACCEPTED", null, R11($"[{H11("L0004:S0")}]"), [])), Fact);
+        Assert.Equal("ACCEPTED_COMPLETE", b["status"]!.GetValue<string>());
+        Assert.Equal("This Decree applies to agencies.", b["selected"]![0]!["text"]!.GetValue<string>());
+        Assert.Equal(3, b["negativeEligible"]!.AsArray().Count);
+    }
+
     // ---------------- Binder ----------------
 
     static JsonElement PlanRequest(string? scopeOverride = null) => JsonDocument.Parse(JsonSerializer.Serialize(new

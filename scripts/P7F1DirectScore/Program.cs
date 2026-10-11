@@ -6,6 +6,7 @@ using System.Text.Json.Nodes;
 //   direct  <bound-predictions.json> <bound-sha256> <gold-freeze.json> <gold-freeze-sha256> <new-score.json>
 //   control <f1q-plan.json> <capture-root> <raw-manifest-sha256> <gold-freeze.json> <gold-freeze-sha256> <new-score.json>
 //   paired  <score-a.json> <score-b.json> <new-comparison.json>
+//   consistency <bound-predictions.json> <bound-sha256> <new-audit.json>   (no Gold: decision-evidence consistency audit, report only)
 // Universe: adjudicated Gold rows (goldStatus LABELED). Positive = Gold ESTABLISHES_STRUCTURE; negative = every other
 // adjudicated label (old REPRESENTS/OTHER alike). EXCLUDED_* rows, unissued parser headings and unseen pages are never negatives.
 // Prediction per row: POS | NEG | UNRESOLVED | MISSING. Only POS counts as a selection; recall is over ALL Gold positives,
@@ -74,6 +75,40 @@ switch (args.Length > 0 ? args[0] : "")
             ["planSha256"] = Sha(File.ReadAllBytes(args[1])), ["rawManifestSha256"] = args[3], ["requestStatuses"] = JsonSerializer.SerializeToNode(requestStatus),
             ["conversion"] = "ESTABLISHES_STRUCTURE->POS; REPRESENTS_STRUCTURE/OTHER->NEG; INSUFFICIENT_EVIDENCE->UNRESOLVED; not accepted->MISSING",
         });
+        break;
+    }
+    case "consistency" when args.Length == 4:
+    {
+        // Audit only: selections whose own justification names a non-heading role. Never removes or rescores anything.
+        output = args[3];
+        using var bound = JsonDocument.Parse(Pinned(args[1], args[2]));
+        var cues = new (string Cue, System.Text.RegularExpressions.Regex Rx)[]
+        {
+            ("NAVIGATION", new(@"(?i)table of contents|TOC|contents (entry|list|page)|list of (tables|figures)|index entry|navigat")),
+            ("TABLE_DATA", new(@"(?i)row label|line item|table (row|cell|column)|column header|data (row|label)|balance sheet (row|item)")),
+            ("CAPTION", new(@"(?i)caption|chart (title|label)|figure title|table title")),
+            ("RUNNING_FURNITURE", new(@"(?i)running (header|footer)|page number|repeated on (every|each|other) page")),
+            ("FRONT_MATTER", new(@"(?i)letterhead|national motto|document number|issuer name|reporting date|reporting period")),
+        };
+        var flagged = new JsonArray(); var total = 0;
+        foreach (var q in bound.RootElement.GetProperty("requests").EnumerateArray())
+        {
+            if (q.GetProperty("status").GetString() != "ACCEPTED_COMPLETE") continue;
+            foreach (var s in q.GetProperty("selected").EnumerateArray())
+            {
+                total++; var j = s.GetProperty("justification").GetString() ?? "";
+                var hit = cues.Where(c => c.Rx.IsMatch(j)).Select(c => c.Cue).ToArray();
+                if (hit.Length > 0) flagged.Add(new JsonObject { ["document"] = q.GetProperty("document").GetString(), ["sourceAlias"] = s.GetProperty("sourceAlias").GetString(),
+                    ["cues"] = new JsonArray(hit.Select(h => (JsonNode?)h).ToArray()), ["justification"] = j });
+            }
+        }
+        report = new JsonObject
+        {
+            ["version"] = Version + "_DECISION_EVIDENCE_CONSISTENCY_AUDIT", ["boundPredictionsSha256"] = args[2], ["goldRead"] = false,
+            ["selections"] = total, ["flagged"] = flagged.Count,
+            ["byCue"] = JsonSerializer.SerializeToNode(flagged.SelectMany(f => f!["cues"]!.AsArray().Select(c => c!.GetValue<string>())).GroupBy(c => c).ToDictionary(g => g.Key, g => g.Count())),
+            ["rows"] = flagged, ["note"] = "audit only: a flagged selection is a selection whose own justification names a non-heading role; nothing is removed or rescored",
+        };
         break;
     }
     case "paired" when args.Length == 4:
@@ -198,6 +233,7 @@ JsonObject Paired(string aPath, string bPath)
     {
         ["version"] = Version + "_PAIRED", ["armA"] = a["arm"]!.GetValue<string>(), ["armB"] = b["arm"]!.GetValue<string>(),
         ["scoreASha256"] = Sha(File.ReadAllBytes(aPath)), ["scoreBSha256"] = Sha(File.ReadAllBytes(bPath)), ["rows"] = ra.Count, ["documents"] = docs.Length,
+        ["identicalPredictionRows"] = ra.Keys.Count(k => ra[k].Pred == rb[k].Pred), ["identicalPredictionRate"] = R((double)ra.Keys.Count(k => ra[k].Pred == rb[k].Pred) / ra.Count),
         ["armAF1"] = R(F1(all)), ["armBF1"] = R(F1(allB)), ["armAPrecision"] = R(Prec(all)), ["armBPrecision"] = R(Prec(allB)), ["armARecall"] = R(Rec(all)), ["armBRecall"] = R(Rec(allB)),
         ["rowMcNemar"] = new JsonObject { ["wrongToRight"] = w2r, ["rightToWrong"] = r2w, ["exactTwoSidedP"] = McNemar(w2r, r2w), ["pDisplay"] = PDisplay(McNemar(w2r, r2w)), ["note"] = "rows within a page/document are correlated; p kept at full precision (V1 rounded it to 4 decimals)" },
         ["documentSignTestOnF1"] = new JsonObject { ["better"] = better, ["worse"] = worse, ["ties"] = docs.Length - better - worse, ["exactTwoSidedP"] = McNemar(better, worse), ["pDisplay"] = PDisplay(McNemar(better, worse)) },

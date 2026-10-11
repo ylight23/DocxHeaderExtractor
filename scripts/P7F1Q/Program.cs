@@ -19,6 +19,8 @@ var capsHeldout = capsV3 with { HardCapUsd = 3.00m };
 
 // "-layout" modes run the layout-aware chunking arm (2026-10-11): same composition, only pack/chunk boundaries differ.
 LayoutArm.On = args[0].EndsWith("-layout", StringComparison.Ordinal);
+// "-v11" direct modes use P7_F1_DIRECT_HEADING_V1_1 (opaque ids, no hash echo, at-location prompt); V1 stays for the pilot.
+DirectV.V11 = args[0].EndsWith("-v11", StringComparison.Ordinal);
 switch (args[0])
 {
     case "probe":
@@ -367,6 +369,7 @@ switch (args[0])
         break;
     }
     case "prepare-direct":
+    case "prepare-direct-v11":
     {
         // Issue #7 P7_F1_DIRECT_HEADING_V1: layout-aware packs/chunks (same as the F1Q V2 layout control), the direct
         // heading-membership prompt and source enrichment V1. No Gold, no provider calls.
@@ -384,14 +387,14 @@ switch (args[0])
             var file = r.RequestId + ".direct.initial-body.json";
             P7F1QConversationRunner.WriteNew(Path.Combine(args[3], file), body);
             rows.Add(new { handle = r.RequestId + "|DIRECT", requestId = r.RequestId, @case = r.Case.Case, chunk = r.Chunk, document = r.Case.Document, pack = r.Case.Pack,
-                issuedSetSha256 = r.Scope, issued = r.Subjects.Select(s => new { occurrence = s.Occurrence, sourceAlias = s.SourceAlias, page = s.Page, textSha256 = P7F1DirectProtocol.TextSha256(s.Text) }), // text itself stays out of the public plan (source emails)
+                issuedSetSha256 = r.Scope, issued = r.Subjects.Select(s => new { occurrence = s.Occurrence, sourceAlias = s.SourceAlias, page = s.Page, textSha256 = P7F1DirectProtocol.TextSha256(s.Text), id = r.Ids?.GetValueOrDefault(s.SourceAlias) }), // text itself stays out of the public plan (source emails)
                 contextAliases = r.Context.Select(c => c.Alias), bodyFile = file, bodySha256 = SpatialCanonical.Hash(body), bodyBytes = body.Length,
                 worstCaseRequestUsd = capsHeldout.WorstCaseUsd(body.Length, policyV3.MaxTokens) * (capsHeldout.MaxToolRounds + 1) });
         }
         var plan = SpatialCanonical.Bytes(new
         {
             version = "P7_F1_DIRECT_PLAN_" + Path.GetFileNameWithoutExtension(args[2]).Split('.').Last().ToUpperInvariant(), status = "FROZEN_BEFORE_PROVIDER",
-            issue = "ylight23/DocxHeaderExtractor#7", protocolVersion = P7F1DirectProtocol.Version, systemPromptSha256 = P7F1DirectProtocol.PromptSha256(),
+            issue = "ylight23/DocxHeaderExtractor#7", protocolVersion = DirectV.V11 ? P7F1DirectProtocolV11.Version : P7F1DirectProtocol.Version, systemPromptSha256 = DirectV.V11 ? P7F1DirectProtocolV11.PromptSha256() : P7F1DirectProtocol.PromptSha256(),
             enrichmentVersion = P7F1SourceEnrichment.Version, packing = P7F1QLayoutPacking.Version, chunkSize = P7F1QProtocolV2.ChunkSize,
             toolsVersion = P7F1QEvidenceTools.VersionV2, toolDefinitionsSha256 = SpatialCanonical.Hash(Encoding.UTF8.GetBytes(P7F1QEvidenceTools.DefinitionsV2().ToJsonString())),
             model = policyV3.Model, providerRoute = new { order = new[] { "alibaba" }, allowFallbacks = false, requireParameters = true },
@@ -402,7 +405,8 @@ switch (args[0])
             pageSelectionSha256 = SpatialCanonical.Hash(selectionBytes),
             requests = rows, worstCaseTotalUsdAllRequestsTwoAttempts = rows.Sum(x => JsonSerializer.SerializeToElement(x).GetProperty("worstCaseRequestUsd").GetDecimal()) * 2,
             goldRead = false, providerCalls = 0, productionChanged = false,
-            sources = new[] { "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectProtocol.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1SourceEnrichment.cs",
+            sources = new[] { "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectProtocol.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectProtocolV11.cs",
+                "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectBinderV11.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1SourceEnrichment.cs",
                 "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectBinder.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QEvidenceTools.cs",
                 "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QConversation.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QFenceNormalization.cs",
                 "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QLayoutPacking.cs", "scripts/P7F1Q/Program.cs" }
@@ -414,6 +418,7 @@ switch (args[0])
         break;
     }
     case "execute-direct":
+    case "execute-direct-v11":
     {
         // Paid-call gate (Issue #7): a user provider authorization pinned to THIS plan sha, with its own USD cap, is required.
         if (args.Length < 6) throw new ArgumentException("execute-direct <plan.json> <plan-sha256> <bodies-dir> <authorization.json> <capture-root> [handle,...]");
@@ -430,6 +435,22 @@ switch (args[0])
         var direct = DirectRequests(File.ReadAllBytes(PageSelectionFor(plan.RootElement))).ToDictionary(r => r.RequestId);
         var only = args.Length > 6 ? args[6].Split(',', StringSplitOptions.RemoveEmptyEntries).ToHashSet(StringComparer.Ordinal) : null;
         var root = Path.GetFullPath(args[5]); Directory.CreateDirectory(root);
+        // Replicate runs under one authorization share ONE cap: the capture root must be a named replicate, and every
+        // worker of every replicate reserves a worst-case turn in a locked ledger before the runner's pre-call check.
+        Func<decimal> spentFn = () => Spent(root);
+        SharedBudget? shared = null;
+        if (auth.RootElement.TryGetProperty("replicateRoots", out var reps))
+        {
+            var names = reps.EnumerateArray().Select(v => v.GetString()!).ToArray();
+            Need(names.Contains(Path.GetFileName(root), StringComparer.Ordinal), "CAPTURE_ROOT_NOT_AN_AUTHORIZED_REPLICATE");
+            var parent = Path.GetDirectoryName(root)!;
+            // Reservation per in-flight turn: full completion budget plus a prompt bound of 4x the largest initial body
+            // (later turns append tool results).
+            var worstTurn = plan.RootElement.GetProperty("requests").EnumerateArray()
+                .Max(q => directCaps.WorstCaseUsd(q.GetProperty("bodyBytes").GetInt32() * 4, policyV3.MaxTokens));
+            shared = new SharedBudget(Path.Combine(parent, "budget-ledger"), names.Select(n => Path.Combine(parent, n)).ToArray(), worstTurn, capUsd, Spent);
+            spentFn = shared.ReserveAndReadOthers;
+        }
         var metadata = await FetchEndpointMetadata();
         P7F1QConversationRunner.WriteNew(Path.Combine(root, $"endpoint-metadata.{DateTimeOffset.UtcNow:yyyyMMddTHHmmssfffZ}.{Environment.ProcessId}.json"), metadata);
         VerifyEndpoint(metadata);
@@ -449,9 +470,9 @@ switch (args[0])
             var spec = DirectSpec(r, body, handle);
             for (var attempt = 1; attempt <= 2; attempt++)
             {
-                var outcome = await runner.RunAsync(spec, Path.Combine(requestDir, $"attempt-{attempt}"), () => Spent(root), CancellationToken.None);
+                var outcome = await runner.RunAsync(spec, Path.Combine(requestDir, $"attempt-{attempt}"), spentFn, CancellationToken.None);
                 var line = JsonSerializer.Serialize(new { handle, attempt, outcome.Status, outcome.FailureCode, turns = outcome.Turns.Count, outcome.CostUsd,
-                    toolCalls = outcome.ToolCallsByName, spentUsd = Spent(root) });
+                    toolCalls = outcome.ToolCallsByName, spentUsd = Spent(root), sharedSpentUsd = shared?.Realized() });
                 Console.WriteLine(line);
                 if (outcome.Status == "BUDGET_STOP") { stop = true; break; }
                 systemic = outcome.Status == "TRANSPORT_FAILED" ? systemic + 1 : 0;
@@ -459,9 +480,11 @@ switch (args[0])
                 if (outcome.Status == "ACCEPTED") break;
             }
         }
+        shared?.Release();
         break;
     }
     case "bind-direct":
+    case "bind-direct-v11":
     {
         // Exact binding of FROZEN raw (manifest pinned) to parser-authoritative source; no Gold is read here.
         if (args.Length != 6) throw new ArgumentException("bind-direct <plan.json> <plan-sha256> <capture-root> <raw-manifest-sha256> <new-bound.json>");
@@ -471,7 +494,7 @@ switch (args[0])
         var root = Path.GetFullPath(args[3]);
         ReadPinned(Path.Combine(root, "manifest.json"), args[4]);
         var bound = BindDirect(plan.RootElement, root, PageSelectionFor(plan.RootElement));
-        var bytes = SpatialCanonical.Bytes(new { version = "P7_F1_DIRECT_BOUND_PREDICTIONS_V1", binder = P7F1DirectBinder.Version, planSha256 = args[2], rawManifestSha256 = args[4],
+        var bytes = SpatialCanonical.Bytes(new { version = "P7_F1_DIRECT_BOUND_PREDICTIONS_V1", binder = DirectV.V11 ? P7F1DirectBinderV11.Version : P7F1DirectBinder.Version, planSha256 = args[2], rawManifestSha256 = args[4],
             goldRead = false, statuses = bound.GroupBy(b => b["status"]!.GetValue<string>()).ToDictionary(g => g.Key, g => g.Count()), requests = bound });
         P7F1QConversationRunner.WriteNew(args[5], bytes);
         Console.WriteLine(JsonSerializer.Serialize(new { status = "BOUND", sha256 = SpatialCanonical.Hash(bytes), requests = bound.Count }));
@@ -494,20 +517,22 @@ IEnumerable<DirectRequest> DirectRequests(byte[] selectionBytes)
             var subjects = chunk.Select(i => new P7F1DirectProtocol.Subject(i.Occurrence, i.SourceAlias, i.Page, i.Text)).ToArray();
             var inChunk = subjects.Select(s => s.SourceAlias).ToHashSet(StringComparer.Ordinal);
             var context = chunks.SelectMany(x => x).Where(p => !inChunk.Contains(p.SourceAlias)).Select(p => (Alias: p.SourceAlias, p.Page, p.Text)).Concat(c.Context).ToArray();
-            var scope = P7F1DirectProtocol.IssuedSetSha256(requestId, c.Document, subjects);
-            yield return new DirectRequest(requestId, c, k, subjects, context, scope, enrichment);
+            var ids = DirectV.V11 ? P7F1DirectProtocolV11.OpaqueIds(requestId, subjects) : null;
+            var scope = ids is null ? P7F1DirectProtocol.IssuedSetSha256(requestId, c.Document, subjects) : P7F1DirectProtocolV11.ScopeSha256(requestId, c.Document, subjects, ids);
+            yield return new DirectRequest(requestId, c, k, subjects, context, scope, enrichment, ids);
         }
     }
 }
 
 static byte[] DirectBody(P7F1QConversationRunner runner, DirectRequest r) => runner.Body(new JsonArray
 {
-    new JsonObject { ["role"] = "system", ["content"] = P7F1DirectProtocol.SystemPrompt() },
+    new JsonObject { ["role"] = "system", ["content"] = r.Ids is null ? P7F1DirectProtocol.SystemPrompt() : P7F1DirectProtocolV11.SystemPrompt() },
     new JsonObject { ["role"] = "user", ["content"] = DirectUser(r) },
 }, true, "auto");
 
-static string DirectUser(DirectRequest r) =>
-    P7F1DirectProtocol.UserMessage(r.RequestId, r.Scope, r.Subjects, r.Context, r.Case.ToolsV2, r.Enrichment);
+static string DirectUser(DirectRequest r) => r.Ids is null
+    ? P7F1DirectProtocol.UserMessage(r.RequestId, r.Scope, r.Subjects, r.Context, r.Case.ToolsV2, r.Enrichment)
+    : P7F1DirectProtocolV11.UserMessage(r.RequestId, r.Subjects, r.Ids, r.Context, r.Case.ToolsV2, r.Enrichment);
 
 static F1QRequestSpec DirectSpec(DirectRequest r, byte[] body, string handle)
 {
@@ -515,8 +540,11 @@ static F1QRequestSpec DirectSpec(DirectRequest r, byte[] body, string handle)
     // Runner-level check cites any alias of this document (tool results may return lines outside the request);
     // the binder then verifies every reference against the request evidence and the raw tool transcript.
     var citable = r.Case.Source.Atoms.Select(a => a.Alias).ToHashSet(StringComparer.Ordinal);
-    return new F1QRequestSpec(handle, r.Case.Case, F1QArm.F1QEvidenceV2, P7F1DirectProtocol.SystemPrompt(), DirectUser(r), issued, citable,
-        r.Case.ToolsV2, body, text => P7F1DirectProtocol.Validate(text, r.RequestId, r.Scope, issued, citable), FenceNormalization: true);
+    Func<string, F1QValidation> validator = r.Ids is null
+        ? text => P7F1DirectProtocol.Validate(text, r.RequestId, r.Scope, issued, citable)
+        : text => P7F1DirectProtocolV11.Validate(text, r.RequestId, r.Subjects, r.Ids, citable);
+    return new F1QRequestSpec(handle, r.Case.Case, F1QArm.F1QEvidenceV2, r.Ids is null ? P7F1DirectProtocol.SystemPrompt() : P7F1DirectProtocolV11.SystemPrompt(),
+        DirectUser(r), issued, citable, r.Case.ToolsV2, body, validator, FenceNormalization: true);
 }
 
 List<JsonObject> BindDirect(JsonElement plan, string root, string selectionPath)
@@ -527,8 +555,9 @@ List<JsonObject> BindDirect(JsonElement plan, string root, string selectionPath)
     foreach (var q in plan.GetProperty("requests").EnumerateArray())
     {
         var tools = facts[S(q, "document")];
-        list.Add(P7F1DirectBinder.Bind(q, Path.Combine(root, "requests", S(q, "handle").Replace('|', '.')),
-            alias => { var l = tools.LineOf(alias); return new P7F1DirectBinder.SourceFact(l.Page ?? -1, l.Text, l.Bbox); }));
+        Func<string, P7F1DirectBinder.SourceFact> fact = alias => { var l = tools.LineOf(alias); return new P7F1DirectBinder.SourceFact(l.Page ?? -1, l.Text, l.Bbox); };
+        var dir = Path.Combine(root, "requests", S(q, "handle").Replace('|', '.'));
+        list.Add(DirectV.V11 ? P7F1DirectBinderV11.Bind(q, dir, fact) : P7F1DirectBinder.Bind(q, dir, fact));
     }
     return list;
 }
@@ -714,6 +743,49 @@ static string S(JsonElement e, string key) => e.GetProperty(key).GetString()!;
 static void Need(bool ok, string code) { if (!ok) throw new InvalidOperationException(code); }
 static byte[] ReadPinned(string path, string hash) { var b = File.ReadAllBytes(path); Need(SpatialCanonical.Hash(b) == hash, "PINNED_INPUT_DRIFT:" + Path.GetFileName(path)); return b; }
 
+/// <summary>
+/// One USD cap across replicate capture roots and concurrent workers. Under an exclusive lock a worker records its own
+/// worst-case in-flight turn and gets back realized spend of all replicates plus OTHER workers' reservations, so the
+/// runner's pre-call check bounds realized + every in-flight call by the cap. When only other in-flight reservations
+/// would breach the cap the worker holds no reservation and waits for them to settle (no deadlock: waiting workers
+/// reserve nothing), so the tail of a run serializes instead of stopping early. Own finished calls are counted twice
+/// until the next reservation (conservative).
+/// </summary>
+internal sealed class SharedBudget(string ledger, string[] roots, decimal worstTurn, decimal cap, Func<string, decimal> spent)
+{
+    readonly string mine = Path.Combine(ledger, $"reservation.{Environment.ProcessId}.{Guid.NewGuid():N}.txt");
+    public decimal Realized() => roots.Sum(spent);
+    public decimal ReserveAndReadOthers()
+    {
+        Directory.CreateDirectory(ledger);
+        for (var waited = 0; ; waited++)
+        {
+            using (var gate = Lock())
+            {
+                File.Delete(mine);
+                var others = Directory.GetFiles(ledger, "reservation.*.txt")
+                    .Sum(f => decimal.Parse(File.ReadAllText(f), System.Globalization.CultureInfo.InvariantCulture));
+                var realized = Realized();
+                // Proceed when the cap holds with every in-flight call, when nothing else is in flight (the runner then
+                // decides alone), or after 15 minutes (a crashed worker's stale reservation: the runner then stops).
+                if (realized + others + worstTurn <= cap || others == 0 || waited >= 900)
+                {
+                    File.WriteAllText(mine, worstTurn.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                    return realized + others;
+                }
+            }
+            Thread.Sleep(1000);
+        }
+    }
+    public void Release() { using var gate = Lock(); File.Delete(mine); }
+    FileStream Lock()
+    {
+        for (var i = 0; ; i++)
+            try { return new FileStream(Path.Combine(ledger, "lock"), FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None); }
+            catch (IOException) when (i < 1200) { Thread.Sleep(50); }
+    }
+}
+
 /// <summary>Layout-aware chunking arm switch: held-out cases are prefixed L (P05 arm: H); layout block per (case, alias).</summary>
 internal static class LayoutArm
 {
@@ -723,8 +795,10 @@ internal static class LayoutArm
     public static readonly Dictionary<string, PdfSourceDetails> Details = new(StringComparer.Ordinal);
 }
 
+internal static class DirectV { public static bool V11; }
+
 internal sealed record DirectRequest(string RequestId, F1QCase Case, int Chunk, IReadOnlyList<P7F1DirectProtocol.Subject> Subjects,
-    IReadOnlyList<(string Alias, int Page, string Text)> Context, string Scope, P7F1SourceEnrichment Enrichment);
+    IReadOnlyList<(string Alias, int Page, string Text)> Context, string Scope, P7F1SourceEnrichment Enrichment, IReadOnlyDictionary<string, string>? Ids = null);
 
 internal sealed record F1QCase(string Case, string Document, string Pack, int[] Pages, string Origin, DocumentSourceSnapshot Source,
     InterpretationRequest Control, IReadOnlyList<(string Alias, int Page, string Text)> Context, IReadOnlyList<F1QIssuedOccurrence> Issued,
