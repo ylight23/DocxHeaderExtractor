@@ -1,0 +1,25 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D051-PACK_003-C1",
+  "issuedSetSha256": "f7693083843e41d6311c1e7a13753df6dacbb4a2b900f702511fdeeb5fb6c26",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0141:S0",
+      "evidenceRefs": [
+        "L0141:S0"
+      ],
+      "justification": "Font 12.7pt, bold, positioned at page top (0.93), unique to page 10, introduces subsequent trust fund composition data and narrative."
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0151:S0",
+      "evidenceRefs": [
+        "L0151:S0"
+      ],
+      "justification": "Font 12.7pt, bold, positioned at page top (0.93), unique to page 11, introduces grant definitions and associated activity tables."
+    }
+  ],
+  "unresolved": []
+}

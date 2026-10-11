@@ -1,0 +1,209 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D094-PACK_001-C2",
+  "issuedSetSha256": "dd6027ea0879523fae4892d7d43730234e935d3524cd260f5543de671c8f019d",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0035:S0",
+      "evidenceRefs": [
+        "L0035:S0"
+      ],
+      "justification": "Bold heading introducing the Table of Contents region, distinct layout block."
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L0036:S0",
+      "evidenceRefs": [
+        "L0036:S0"
+      ],
+      "justification": "Numbered section heading introducing the Introduction region."
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0037:S0",
+      "evidenceRefs": [
+        "L0037:S0"
+      ],
+      "justification": "Numbered section heading introducing the HTTP/2 Protocol Overview region."
+    },
+    {
+      "occurrence": "O47",
+      "sourceAlias": "L0038:S0",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "justification": "Numbered subsection heading introducing Document Organization."
+    },
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L0039:S0",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "justification": "Numbered subsection heading introducing Conventions and Terminology."
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0040:S0",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "justification": "Numbered section heading introducing Starting HTTP/2."
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0041:S0",
+      "evidenceRefs": [
+        "L0041:S0"
+      ],
+      "justification": "Numbered subsection heading introducing HTTP/2 Version Identification."
+    },
+    {
+      "occurrence": "O51",
+      "sourceAlias": "L0042:S0",
+      "evidenceRefs": [
+        "L0042:S0"
+      ],
+      "justification": "Numbered subsection heading introducing HTTPS URI startup procedures."
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0043:S0",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "justification": "Numbered subsection heading introducing Prior Knowledge startup."
+    },
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0044:S0",
+      "evidenceRefs": [
+        "L0044:S0"
+      ],
+      "justification": "Numbered subsection heading introducing the Connection Preface."
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0045:S0",
+      "evidenceRefs": [
+        "L0045:S0"
+      ],
+      "justification": "Numbered section heading introducing HTTP Frames."
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0046:S0",
+      "evidenceRefs": [
+        "L0046:S0"
+      ],
+      "justification": "Numbered subsection heading introducing Frame Format."
+    },
+    {
+      "occurrence": "O56",
+      "sourceAlias": "L0047:S0",
+      "evidenceRefs": [
+        "L0047:S0"
+      ],
+      "justification": "Numbered subsection heading introducing Frame Size."
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0048:S0",
+      "evidenceRefs": [
+        "L0048:S0"
+      ],
+      "justification": "Numbered subsection heading introducing Field Section Compression."
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0049:S0",
+      "evidenceRefs": [
+        "L0049:S0"
+      ],
+      "justification": "Numbered sub-subsection heading introducing Compression State."
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0050:S0",
+      "evidenceRefs": [
+        "L0050:S0"
+      ],
+      "justification": "Numbered section heading introducing Streams and Multiplexing."
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0051:S0",
+      "evidenceRefs": [
+        "L0051:S0"
+      ],
+      "justification": "Numbered subsection heading introducing Stream States."
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L0052:S0",
+      "evidenceRefs": [
+        "L0052:S0"
+      ],
+      "justification": "Numbered sub-subsection heading introducing Stream Identifiers."
+    },
+    {
+      "occurrence": "O62",
+      "sourceAlias": "L0053:S0",
+      "evidenceRefs": [
+        "L0053:S0"
+      ],
+      "justification": "Numbered sub-subsection heading introducing Stream Concurrency."
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L0054:S0",
+      "evidenceRefs": [
+        "L0054:S0"
+      ],
+      "justification": "Numbered subsection heading introducing Flow Control."
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0055:S0",
+      "evidenceRefs": [
+        "L0055:S0"
+      ],
+      "justification": "Numbered sub-subsection heading introducing Flow-Control Principles."
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0056:S0",
+      "evidenceRefs": [
+        "L0056:S0"
+      ],
+      "justification": "Numbered sub-subsection heading introducing Appropriate Use of Flow Control."
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L0057:S0",
+      "evidenceRefs": [
+        "L0057:S0"
+      ],
+      "justification": "Numbered sub-subsection heading introducing Flow-Control Performance."
+    },
+    {
+      "occurrence": "O67",
+      "sourceAlias": "L0058:S0",
+      "evidenceRefs": [
+        "L0058:S0"
+      ],
+      "justification": "Numbered subsection heading introducing Prioritization."
+    },
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L0059:S0",
+      "evidenceRefs": [
+        "L0059:S0"
+      ],
+      "justification": "Numbered sub-subsection heading introducing Background on Priority."
+    }
+  ],
+  "unresolved": []
+}

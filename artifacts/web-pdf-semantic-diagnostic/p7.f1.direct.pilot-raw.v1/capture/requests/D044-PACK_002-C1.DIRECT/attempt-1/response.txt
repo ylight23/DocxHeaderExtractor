@@ -1,0 +1,21 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D044-PACK_002-C1",
+  "issuedSetSha256": "54d931693e55039049308ab9acf9635205c065c5d412cfdeab1cb771cf2ac5cf",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0044:S0",
+      "evidenceRefs": ["L0044:S0"],
+      "justification": "Bold, 12pt font at page top, unique text introducing the following list of tables, figures, and boxes. Functions as a section heading."
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0045:S0",
+      "evidenceRefs": ["L0045:S0"],
+      "justification": "Bold, 11pt font below O2, unique text acting as a subheading specifically introducing the table listings on this page."
+    }
+  ],
+  "unresolved": []
+}

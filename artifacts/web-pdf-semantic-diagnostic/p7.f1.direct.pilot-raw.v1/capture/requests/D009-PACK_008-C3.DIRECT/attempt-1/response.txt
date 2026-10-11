@@ -1,0 +1,33 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D009-PACK_008-C3",
+  "issuedSetSha256": "a9a7f43a12fde6ba22fe87123fb95fe702d085e2bd730c43c693ce1df59db4ab",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0719:S0",
+      "evidenceRefs": ["L0719:S0"],
+      "justification": "Bold font, distinct layout block, introduces Article 44 provisions following standard legal numbering."
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L0736:S0",
+      "evidenceRefs": ["L0736:S0"],
+      "justification": "Bold, narrow centered layout, marks start of Chapter VI section."
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L0737:S0",
+      "evidenceRefs": ["L0737:S0"],
+      "justification": "Bold, all-caps text immediately following chapter number, titles the chapter region."
+    },
+    {
+      "occurrence": "O88",
+      "sourceAlias": "L0738:S0",
+      "evidenceRefs": ["L0738:S0"],
+      "justification": "Bold font, distinct layout block, introduces Article 45 provisions following standard legal numbering."
+    }
+  ],
+  "unresolved": []
+}

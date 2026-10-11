@@ -409,14 +409,15 @@ public sealed class P7F1QHeldoutTests : IDisposable
     }
 
     [Theory]
-    [InlineData("arm-a-p05", "p7.f1q.heldout-raw.v1.capture-manifest.json", "f22e5d4406dd912671900aa8499be9196315883ed9fda279b49bbfc166488ca2")]
-    [InlineData("arm-b-layout", "p7.f1q.heldout-raw.v1.layout-arm-capture-manifest.json", "d64751f0aa35915f696c17db9dbb12043ca8444557f4896ac634247b7f8ac546")]
+    [InlineData("p7.f1q.heldout-raw.v1/arm-a-p05", "p7.f1q.heldout-raw.v1.capture-manifest.json", "f22e5d4406dd912671900aa8499be9196315883ed9fda279b49bbfc166488ca2")]
+    [InlineData("p7.f1q.heldout-raw.v1/arm-b-layout", "p7.f1q.heldout-raw.v1.layout-arm-capture-manifest.json", "d64751f0aa35915f696c17db9dbb12043ca8444557f4896ac634247b7f8ac546")]
+    [InlineData("p7.f1.direct.pilot-raw.v1/capture", "p7.f1.direct.pilot-raw.capture-manifest.v1.json", "6bcda0c28f8ba64de70c9c039ba21b5a323981e2dcb667747c24ae3a2d000bd8")]
     public void Published_heldout_raw_reproduces_every_frozen_byte_or_its_redaction_receipt(string arm, string manifestFile, string manifestSha)
     {
         string Sha(byte[] b) => Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(b));
         var manifestBytes = File.ReadAllBytes(Path.Combine(Dir, manifestFile));
         Assert.Equal(manifestSha, Sha(manifestBytes));
-        var root = Path.Combine(Dir, "p7.f1q.heldout-raw.v1", arm);
+        var root = Path.Combine(Dir, arm);
         Assert.Equal(manifestSha, Sha(File.ReadAllBytes(Path.Combine(root, "manifest.json"))));
         using var m = JsonDocument.Parse(manifestBytes);
         Assert.False(m.RootElement.GetProperty("goldReadBeforeFreeze").GetBoolean());

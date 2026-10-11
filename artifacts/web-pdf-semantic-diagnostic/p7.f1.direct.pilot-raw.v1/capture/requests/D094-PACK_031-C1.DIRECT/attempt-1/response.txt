@@ -1,0 +1,29 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D094-PACK_031-C1",
+  "issuedSetSha256": "45d8e3efe873098a332ecbcaec7bd1213dfb6787f03f7607598966f762affb7e",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L2205:S0",
+      "evidenceRefs": ["L2205:S0"],
+      "justification": "Bold 12pt section number '10.3.' appearing on multiple pages; structurally precedes title text to introduce a substantive section."
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L2205:S1",
+      "evidenceRefs": ["L2205:S1"],
+      "justification": "Bold 12pt section title 'Intermediary Encapsulation Attacks'; visually paired with preceding section number to introduce a substantive section."
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L2226:S0",
+      "evidenceRefs": ["L2226:S0"],
+      "justification": "Bold 12pt section heading '10.4. Cacheability of Pushed Responses'; introduces a substantive section of the document."
+    }
+  ],
+  "unresolved": []
+}
+```

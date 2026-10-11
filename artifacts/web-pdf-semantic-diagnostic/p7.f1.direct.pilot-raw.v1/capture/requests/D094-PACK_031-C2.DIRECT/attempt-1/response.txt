@@ -1,0 +1,25 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D094-PACK_031-C2",
+  "issuedSetSha256": "b66060298327f794fd821c893354e928f5ab76f42afe58b1d83d287f5a007b46",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L2241:S0",
+      "evidenceRefs": [
+        "L2241:S0"
+      ],
+      "justification": "Bold size-12 section number '10.5.' positioned at the top of the page, sharing a same-baseline row peer with the section title. Repeats across pages as a standard section marker, introducing a new substantive region."
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L2241:S1",
+      "evidenceRefs": [
+        "L2241:S1"
+      ],
+      "justification": "Bold size-12 section title 'Denial-of-Service Considerations' positioned at the top of the page, paired with section number 10.5. Unique text introducing a new substantive region of the document."
+    }
+  ],
+  "unresolved": []
+}

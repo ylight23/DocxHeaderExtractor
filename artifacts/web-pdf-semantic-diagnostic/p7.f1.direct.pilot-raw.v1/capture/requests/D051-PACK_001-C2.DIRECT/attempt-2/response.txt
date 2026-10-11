@@ -1,0 +1,19 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D051-PACK_001-C2",
+  "issuedSetSha256": "9c9e0eb3ccf22ecb397d930512ffdd944571d5d4d70a49dbf44549802ea47f62",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0043:S0",
+      "evidenceRefs": [
+        "L0043:S0"
+      ],
+      "justification": "Large font size (13.2pt) and bold formatting at top of page 5. Unique text with no running header pattern, clearly introducing the portfolio summary section."
+    }
+  ],
+  "unresolved": []
+}
+```

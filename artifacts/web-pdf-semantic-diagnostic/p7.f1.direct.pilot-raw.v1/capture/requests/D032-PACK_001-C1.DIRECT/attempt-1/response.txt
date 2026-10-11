@@ -1,0 +1,113 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D032-PACK_001-C1",
+  "issuedSetSha256": "a351fc951fdc5363bc5cf11cba5c7b392a9a3bcd10f910a5286c4570d34414d2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "justification": "First line of the main document title; large bold font (26pt) on cover page."
+    },
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "evidenceRefs": [
+        "L0001:S0"
+      ],
+      "justification": "Continues main document title; large bold font (26pt) on cover page."
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "justification": "Primary subtitle identifying document type; largest font (42pt) on cover."
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "justification": "Key subject term in title; largest font (42pt) on cover."
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "justification": "Scope descriptor in title; large bold font (22pt) on cover."
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "evidenceRefs": [
+        "L0005:S0"
+      ],
+      "justification": "Subtitle modifier specifying procurement method; bold font (14pt)."
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "evidenceRefs": [
+        "L0006:S0"
+      ],
+      "justification": "Subtitle condition specifying project type; bold font (18pt)."
+    },
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0007:S0",
+      "evidenceRefs": [
+        "L0007:S0"
+      ],
+      "justification": "Subtitle specifying document variant; bold font (18pt)."
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "evidenceRefs": [
+        "L0008:S0"
+      ],
+      "justification": "Subtitle condition specifying applicable date range; bold font (18pt)."
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "justification": "Section heading introducing revisions; large bold font (24pt) on page 3."
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L0019:S0",
+      "evidenceRefs": [
+        "L0019:S0"
+      ],
+      "justification": "Subheading introducing February 2020 revision details; bold font (16pt)."
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "evidenceRefs": [
+        "L0024:S0"
+      ],
+      "justification": "Subheading introducing October 2017 revision details; bold font (16pt)."
+    },
+    {
+      "occurrence": "O28",
+      "sourceAlias": "L0027:S0",
+      "evidenceRefs": [
+        "L0027:S0"
+      ],
+      "justification": "Subheading introducing January 2017 revision details; bold font (16pt)."
+    }
+  ],
+  "unresolved": []
+}

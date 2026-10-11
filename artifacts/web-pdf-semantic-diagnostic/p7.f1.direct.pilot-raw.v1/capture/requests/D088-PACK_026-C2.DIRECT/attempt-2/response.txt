@@ -1,0 +1,17 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D088-PACK_026-C2",
+  "issuedSetSha256": "0f7e71be04cf0189ebea8470e4685a49c0e853fd47850c1d76b87734119fccd3",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L2005:S0",
+      "evidenceRefs": ["L2005:S0"],
+      "justification": "Standalone bold line 'APPENDIX V' positioned above tabular data, introducing the appendix section of the document."
+    }
+  ],
+  "unresolved": []
+}
+```

@@ -1,0 +1,23 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D051-PACK_001-C2",
+  "issuedSetSha256": "9c9e0eb3ccf22ecb397d930512ffdd944571d5d4d70a49dbf44549802ea47f62",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0043:S0",
+      "evidenceRefs": ["L0043:S0"],
+      "justification": "Large bold font (13.2pt) at top of page, unique text, introduces the 'Portfolio at a Glance' section."
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0059:S0",
+      "evidenceRefs": ["L0059:S0"],
+      "justification": "Bold text introducing a bulleted list of metrics below; functions as a subsection heading."
+    }
+  ],
+  "unresolved": []
+}
+```

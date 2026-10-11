@@ -1,0 +1,38 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D024-PACK_001-C1",
+  "issuedSetSha256": "b97841a1ca4ed8c239cc049d2881b4f61d32774e26aac896d2eda046e30865d1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "evidenceRefs": ["L0005:S0"],
+      "justification": "First line of the document title, formatted in bold, identifying the decree's subject matter."
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0006:S0",
+      "evidenceRefs": ["L0006:S0"],
+      "justification": "Second line of the document title, continuing the subject matter description."
+    },
+    {
+      "occurrence": "O25",
+      "sourceAlias": "L0024:S0",
+      "evidenceRefs": ["L0024:S0"],
+      "justification": "Heading marking the start of Chapter I."
+    },
+    {
+      "occurrence": "O26",
+      "sourceAlias": "L0025:S0",
+      "evidenceRefs": ["L0025:S0"],
+      "justification": "Heading for the General Provisions section."
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0026:S0",
+      "evidenceRefs": ["L0026:S0"],
+      "justification": "Heading for Article 1, defining the scope of regulation."
+    }
+  ]
+}

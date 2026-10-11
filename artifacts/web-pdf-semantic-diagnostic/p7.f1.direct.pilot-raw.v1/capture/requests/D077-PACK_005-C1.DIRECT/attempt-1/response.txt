@@ -1,0 +1,21 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D077-PACK_005-C1",
+  "issuedSetSha256": "31b8e75691cbf39887d2a80de93255c2ea7e205a85e1e04ab4f8067c36b562be",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0311:S0",
+      "evidenceRefs": ["L0311:S0"],
+      "justification": "Bold, 12pt font at top of page. Labels 'Session IV', clearly functioning as a major section heading introducing the subsequent discussion on ICP PPPs."
+    },
+    {
+      "occurrence": "O33",
+      "sourceAlias": "L0343:S0",
+      "evidenceRefs": ["L0343:S0"],
+      "justification": "Bold, 12pt font near bottom of page. Standard meeting agenda heading 'Any other Business' introducing the next agenda item on COICOP 2018."
+    }
+  ],
+  "unresolved": []
+}

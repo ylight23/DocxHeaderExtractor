@@ -1,0 +1,15 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D064-PACK_001-C1",
+  "issuedSetSha256": "605bd9d8857ef204edb7234e60fa5f38bba0035144dbaa26f27965f35bd8a553",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "evidenceRefs": ["L0018:S0"],
+      "justification": "Large font size (23.3) at top of page 1, introduces the document content. Distinct from surrounding metadata lines."
+    }
+  ],
+  "unresolved": []
+}

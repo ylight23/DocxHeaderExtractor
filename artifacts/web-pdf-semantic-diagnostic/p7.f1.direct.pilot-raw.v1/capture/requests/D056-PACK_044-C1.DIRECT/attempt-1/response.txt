@@ -1,0 +1,21 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D056-PACK_044-C1",
+  "issuedSetSha256": "a9470c2dff87c0fbfef478da18655860cadede5a80c53405592eb54f116ef54c",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L3184:S0",
+      "evidenceRefs": ["L3184:S0"],
+      "justification": "Stands alone in its layout block and functions as a subheading introducing the subsequent list of permissible damages."
+    },
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L3222:S0",
+      "evidenceRefs": ["L3222:S0"],
+      "justification": "Visually distinct major section heading (size 13, bold) introducing the defenses region on page 107."
+    }
+  ],
+  "unresolved": []
+}

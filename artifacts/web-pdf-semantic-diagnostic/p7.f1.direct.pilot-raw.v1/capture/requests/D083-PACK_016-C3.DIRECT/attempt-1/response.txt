@@ -1,0 +1,33 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D083-PACK_016-C3",
+  "issuedSetSha256": "165622594bb6bd28707812055e30da7d7a9e79becf43fbf2af15c403af12a217",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O71",
+      "sourceAlias": "L1129:S0",
+      "evidenceRefs": [
+        "L1129:S0"
+      ],
+      "justification": "Top-of-page placement and 'Chapter VII' wording clearly introduce the chapter region."
+    },
+    {
+      "occurrence": "O72",
+      "sourceAlias": "L1130:S0",
+      "evidenceRefs": [
+        "L1130:S0"
+      ],
+      "justification": "All-caps sub-title immediately following the chapter heading, introducing the implementation provisions section."
+    },
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L1131:S0",
+      "evidenceRefs": [
+        "L1131:S0"
+      ],
+      "justification": "Bolded 'Article 43. Effect' follows standard legal numbering and introduces the operative clause."
+    }
+  ],
+  "unresolved": []
+}

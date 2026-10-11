@@ -1,0 +1,21 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D083-PACK_005-C1",
+  "issuedSetSha256": "7edad664dc073fd83561f8d714888e15af717371f99f889073fd4f3529004aba",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0310:S0",
+      "evidenceRefs": ["L0310:S0"],
+      "justification": "Begins with 'Article 12.' and introduces the substantive section on assessment conditions."
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0311:S0",
+      "evidenceRefs": ["L0311:S0"],
+      "justification": "Completes the article title '...systems of national security importance' introducing the same section."
+    }
+  ],
+  "unresolved": []
+}

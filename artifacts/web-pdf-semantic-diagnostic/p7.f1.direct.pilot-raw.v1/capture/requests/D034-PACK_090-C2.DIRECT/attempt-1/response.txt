@@ -1,0 +1,51 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D034-PACK_090-C2",
+  "issuedSetSha256": "26091a9bccd27dac1e14746fd645ff820fb531375ccc7b7ae294cfb23c544da1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O48",
+      "sourceAlias": "L6638:S0",
+      "evidenceRefs": [
+        "L6638:S0"
+      ],
+      "justification": "Large bold font (18pt) at page top, single occurrence, introduces Appendix A region."
+    },
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L6639:S0",
+      "evidenceRefs": [
+        "L6639:S0"
+      ],
+      "justification": "Bold font (16pt) below Appendix A, single occurrence, functions as subtitle/heading for appendix content."
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L6640:S0",
+      "evidenceRefs": [
+        "L6640:S0"
+      ],
+      "justification": "Numbered clause '1. Definitions', single occurrence, introduces definitions section."
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L6653:S0",
+      "evidenceRefs": [
+        "L6653:S0"
+      ],
+      "justification": "Numbered clause '2. General Provisions', single occurrence, introduces general provisions section."
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L6664:S0",
+      "evidenceRefs": [
+        "L6664:S0"
+      ],
+      "justification": "Numbered clause '3. Warranties', single occurrence, introduces warranties section."
+    }
+  ],
+  "unresolved": []
+}
+```

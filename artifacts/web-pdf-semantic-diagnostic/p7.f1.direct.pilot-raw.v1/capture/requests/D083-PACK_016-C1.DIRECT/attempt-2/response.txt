@@ -1,0 +1,35 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D083-PACK_016-C1",
+  "issuedSetSha256": "bc1125abe2f371a3a8c9c8c9e12eeaa740275dc9e2703f4b7716370a9ec6739f",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L1066:S0",
+      "evidenceRefs": ["L1066:S0"],
+      "justification": "Starts with 'Article 38.' followed by a descriptive title. Bold ratio 0.2 distinguishes it from body text, marking it as a section heading."
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1067:S0",
+      "evidenceRefs": ["L1067:S0"],
+      "justification": "Completes the department name 'Communications' for Article 38. Positioned directly below the main title line, continuing the heading."
+    },
+    {
+      "occurrence": "O29",
+      "sourceAlias": "L1087:S0",
+      "evidenceRefs": ["L1087:S0"],
+      "justification": "Starts with 'Article 40.' followed by a descriptive title. Bold ratio 0.2 distinguishes it from body text, marking it as a section heading."
+    },
+    {
+      "occurrence": "O30",
+      "sourceAlias": "L1088:S0",
+      "evidenceRefs": ["L1088:S0"],
+      "justification": "Completes the entity description 'People’s Committees' for Article 40. Positioned directly below the main title line, continuing the heading."
+    }
+  ],
+  "unresolved": []
+}
+```

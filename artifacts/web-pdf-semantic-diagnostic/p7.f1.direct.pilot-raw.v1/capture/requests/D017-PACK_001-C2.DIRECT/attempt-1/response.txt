@@ -1,0 +1,19 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D017-PACK_001-C2",
+  "issuedSetSha256": "26a15ae796dda8704e27ab3798e922b28192c56b84a80396190bc32125a5b2f3",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0040:S0",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "justification": "Bolded standalone line 'Điều 3. Giải thích từ ngữ' functioning as an article heading that introduces the subsequent definitions section."
+    }
+  ],
+  "unresolved": []
+}
+```

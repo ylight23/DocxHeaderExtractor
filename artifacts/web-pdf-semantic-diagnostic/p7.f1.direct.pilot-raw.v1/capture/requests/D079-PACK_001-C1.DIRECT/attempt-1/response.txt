@@ -1,0 +1,41 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D079-PACK_001-C1",
+  "issuedSetSha256": "94e76353eb7375d983abc15c9d8655baacdd302479c94b5d8e2885bb2d7b2088",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L0000:S0",
+      "evidenceRefs": [
+        "L0000:S0"
+      ],
+      "justification": "Main document title positioned at the top of page 1, bold formatting, introduces the entire document."
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "justification": "Section heading introducing the opening remarks and goals, bold and larger font size than body text."
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "evidenceRefs": [
+        "L0017:S0"
+      ],
+      "justification": "Major section heading marking the start of the first session, bold and larger font size."
+    },
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0018:S0",
+      "evidenceRefs": [
+        "L0018:S0"
+      ],
+      "justification": "Subsection heading detailing the specific topic presented within Session I, bold formatting."
+    }
+  ],
+  "unresolved": []
+}

@@ -1,0 +1,41 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D017-PACK_001-C1",
+  "issuedSetSha256": "599795115dbe4b0943844f21a346d7dd4a73d18a03d7d708559148dd9824d891",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O8",
+      "sourceAlias": "L0004:S0",
+      "evidenceRefs": ["L0004:S0"],
+      "justification": "Bold, prominent placement near top of page; serves as the document type heading for this official decree."
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0005:S0",
+      "evidenceRefs": ["L0005:S0"],
+      "justification": "Bold text immediately following the decree title, specifying the subject matter; functions as the document subtitle."
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0018:S0",
+      "evidenceRefs": ["L0018:S0"],
+      "justification": "Bold, capitalized text with chapter numbering; clearly introduces the general provisions section of the document."
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0019:S0",
+      "evidenceRefs": ["L0019:S0"],
+      "justification": "Bold text with article numbering; introduces the scope of regulation subsection."
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L0023:S0",
+      "evidenceRefs": ["L0023:S0"],
+      "justification": "Bold text with article numbering; introduces the subjects of application subsection."
+    }
+  ],
+  "unresolved": []
+}
+```

@@ -1,0 +1,47 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D009-PACK_001-C1",
+  "issuedSetSha256": "82e2abda2adc280db92e6e3cf0c1cf9bd99b81f90fd6e8b165c39c60a27eacdb",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "evidenceRefs": ["L0005:S0"],
+      "justification": "Main title of the law, displayed prominently in bold uppercase, introducing the substantive legislative text."
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L0008:S0",
+      "evidenceRefs": ["L0008:S0"],
+      "justification": "Chapter heading marking the start of the first major division of the statute."
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L0009:S0",
+      "evidenceRefs": ["L0009:S0"],
+      "justification": "Section heading introducing the general provisions that apply throughout the law."
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "evidenceRefs": ["L0010:S0"],
+      "justification": "Article heading defining the scope and regulatory boundaries of the legislation."
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L0017:S0",
+      "evidenceRefs": ["L0017:S0"],
+      "justification": "Article heading specifying the entities and individuals subject to the law."
+    },
+    {
+      "occurrence": "O21",
+      "sourceAlias": "L0020:S0",
+      "evidenceRefs": ["L0020:S0"],
+      "justification": "Article heading introducing the list of defined terms used within the statute."
+    }
+  ],
+  "unresolved": []
+}
+```

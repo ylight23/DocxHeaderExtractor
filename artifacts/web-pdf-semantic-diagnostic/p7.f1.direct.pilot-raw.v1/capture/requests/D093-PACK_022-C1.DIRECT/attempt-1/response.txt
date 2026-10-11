@@ -1,0 +1,39 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D093-PACK_022-C1",
+  "issuedSetSha256": "23a6bb62beaa68df76b99122afdf7e80ffcc857af96859145ad50d8db4c2f454",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L1452:S0",
+      "evidenceRefs": ["L1452:S0"],
+      "justification": "Bold, 12pt section number at page top, introducing the following text block."
+    },
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L1452:S1",
+      "evidenceRefs": ["L1452:S1"],
+      "justification": "Bold, 12pt subtitle completing the section heading with O2, introducing body text."
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L1453:S0",
+      "evidenceRefs": ["L1453:S0"],
+      "justification": "Bold, 10pt subsection heading introducing the subsequent paragraph."
+    },
+    {
+      "occurrence": "O15",
+      "sourceAlias": "L1464:S0",
+      "evidenceRefs": ["L1464:S0"],
+      "justification": "Bold, 10pt subsection heading introducing the subsequent paragraph."
+    },
+    {
+      "occurrence": "O35",
+      "sourceAlias": "L1484:S0",
+      "evidenceRefs": ["L1484:S0"],
+      "justification": "Bold, 10pt subsection heading introducing the subsequent paragraph."
+    }
+  ],
+  "unresolved": []
+}

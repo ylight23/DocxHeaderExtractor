@@ -1,0 +1,33 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D009-PACK_006-C3",
+  "issuedSetSha256": "5f563183345e698a9ef811d2861cc5a855894f501c5f0ff6836ad02fca6f6a78",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L0533:S0",
+      "evidenceRefs": ["L0533:S0"],
+      "justification": "Bold formatting, standard legal article heading structure ('Điều 33.'), introduces substantive regulatory content."
+    },
+    {
+      "occurrence": "O85",
+      "sourceAlias": "L0553:S0",
+      "evidenceRefs": ["L0553:S0"],
+      "justification": "Bold formatting, centered layout, marks the beginning of a new chapter in the legal document."
+    },
+    {
+      "occurrence": "O86",
+      "sourceAlias": "L0554:S0",
+      "evidenceRefs": ["L0554:S0"],
+      "justification": "Bold, all-caps title corresponding to Chapter IV, introduces the chapter's thematic region."
+    },
+    {
+      "occurrence": "O87",
+      "sourceAlias": "L0555:S0",
+      "evidenceRefs": ["L0555:S0"],
+      "justification": "Bold formatting, standard legal article heading structure ('Điều 34.'), introduces the next substantive section."
+    }
+  ],
+  "unresolved": []
+}

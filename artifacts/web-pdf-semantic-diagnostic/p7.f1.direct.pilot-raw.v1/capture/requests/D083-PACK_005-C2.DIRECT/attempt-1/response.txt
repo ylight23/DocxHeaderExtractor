@@ -1,0 +1,25 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D083-PACK_005-C2",
+  "issuedSetSha256": "9680b2bce67873bc5905d70db5de183acdf54a31bea614a4a265848cf869e54",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L0342:S0",
+      "evidenceRefs": [
+        "L0342:S0"
+      ],
+      "justification": "Starts with 'Article 13.' and introduces the substantive region of Article 13, formatted as a standard legal heading."
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L0343:S0",
+      "evidenceRefs": [
+        "L0343:S0"
+      ],
+      "justification": "Completes the title of Article 13, continuing directly from the preceding line to form the full heading."
+    }
+  ],
+  "unresolved": []
+}

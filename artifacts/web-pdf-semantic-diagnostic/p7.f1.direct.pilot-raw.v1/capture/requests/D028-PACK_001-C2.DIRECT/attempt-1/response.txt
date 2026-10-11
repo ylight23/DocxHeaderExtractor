@@ -1,0 +1,33 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D028-PACK_001-C2",
+  "issuedSetSha256": "33bff82c738227ef95b3d2a9bab3f55cf71b17ba2ec4b464aefc998310812aa3",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L0048:S0",
+      "evidenceRefs": ["L0048:S0"],
+      "justification": "Bold size-16 text standing alone on its line, immediately preceding a revision description paragraph. Functions as a chronological subheading."
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L0054:S0",
+      "evidenceRefs": ["L0054:S0"],
+      "justification": "Bold size-16 text standing alone on its line, immediately preceding a revision description paragraph. Functions as a chronological subheading."
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0059:S0",
+      "evidenceRefs": ["L0059:S0"],
+      "justification": "Bold size-16 text standing alone on its line, immediately preceding a revision description paragraph. Functions as a chronological subheading."
+    },
+    {
+      "occurrence": "O69",
+      "sourceAlias": "L0068:S0",
+      "evidenceRefs": ["L0068:S0"],
+      "justification": "Bold size-16 text standing alone on its line, immediately preceding a revision description paragraph. Functions as a chronological subheading."
+    }
+  ],
+  "unresolved": []
+}

@@ -1,0 +1,27 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D093-PACK_022-C2",
+  "issuedSetSha256": "aba1bd47f816e7f6ede9dc708fd6346325411d0e18c367c1a2d87e773d06f45b",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1489:S0",
+      "evidenceRefs": ["L1489:S0"],
+      "justification": "Bold 12pt section title 'C.3.' introducing subsequent body text detailing changes from RFC 7230."
+    },
+    {
+      "occurrence": "O63",
+      "sourceAlias": "L1509:S0",
+      "evidenceRefs": ["L1509:S0"],
+      "justification": "Bold 14.4pt standalone title 'Acknowledgements' introducing a brief reference paragraph."
+    },
+    {
+      "occurrence": "O65",
+      "sourceAlias": "L1511:S0",
+      "evidenceRefs": ["L1511:S0"],
+      "justification": "Bold 14.4pt standalone title 'Index' introducing alphabetical index entries."
+    }
+  ],
+  "unresolved": []
+}

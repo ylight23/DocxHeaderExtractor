@@ -1,0 +1,39 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D088-PACK_001-C3",
+  "issuedSetSha256": "f73d288387530c95ff81924594671bc5a7d46826e855610b124dfb319a8d67f9",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L0061:S0",
+      "evidenceRefs": ["L0061:S0"],
+      "justification": "Bold font at top of page, introduces substantive legal article section."
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0071:S0",
+      "evidenceRefs": ["L0071:S0"],
+      "justification": "Bold font, introduces next substantive legal article section."
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L0076:S0",
+      "evidenceRefs": ["L0076:S0"],
+      "justification": "Bold font, starts multi-line article heading introducing regulatory provisions."
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L0077:S0",
+      "evidenceRefs": ["L0077:S0"],
+      "justification": "Bold font continuation of preceding article heading line."
+    },
+    {
+      "occurrence": "O92",
+      "sourceAlias": "L0089:S0",
+      "evidenceRefs": ["L0089:S0"],
+      "justification": "Bold font, introduces final substantive legal article section."
+    }
+  ],
+  "unresolved": []
+}

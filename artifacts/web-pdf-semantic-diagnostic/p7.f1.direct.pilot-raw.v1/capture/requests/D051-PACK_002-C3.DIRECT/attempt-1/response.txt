@@ -1,0 +1,21 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D051-PACK_002-C3",
+  "issuedSetSha256": "333b05f0c303654eca1af74401c8758ffcbef6ecce15c067ab4e81fd4c879013",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O73",
+      "sourceAlias": "L0126:S0",
+      "evidenceRefs": ["L0126:S0"],
+      "justification": "Section heading introducing 'Key Trust Fund Activity' region; prominent font size (10.4) and top-of-page position (0.96) indicate it organizes subsequent content."
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L0127:S0",
+      "evidenceRefs": ["L0127:S0"],
+      "justification": "Subheading for 'Composition of Active Trust Funds'; largest font size (12.7) and high bold ratio (0.9) at top of page (0.93) mark a distinct subsection."
+    }
+  ],
+  "unresolved": []
+}

@@ -1,0 +1,20 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D064-PACK_001-C3",
+  "issuedSetSha256": "9bb1142c809ee505bf96e3d69a874ed7aeb91aedadc5c92051e3eb5eb2943d6d",
+  "assessment": "COMPLETE",
+  "headings": [],
+  "unresolved": [
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0057:S0",
+      "missingEvidence": [
+        "confirmation whether 'Contents' is a TOC title or TOC entry",
+        "cross-page context to verify if 'Contents' appears as a heading elsewhere",
+        "parser interpretation of peer 'vii' as page number vs. other text"
+      ]
+    }
+  ]
+}
+```

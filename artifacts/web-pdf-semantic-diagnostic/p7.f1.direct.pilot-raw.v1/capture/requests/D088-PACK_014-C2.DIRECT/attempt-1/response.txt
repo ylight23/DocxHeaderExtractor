@@ -1,0 +1,51 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D088-PACK_014-C2",
+  "issuedSetSha256": "9a914e67cf595c926fd445c49933d3b36702cb09e4ed0665941e7cfb355f3b2b",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O37",
+      "sourceAlias": "L1101:S0",
+      "evidenceRefs": ["L1101:S0"],
+      "justification": "Bold, standalone line 'Chapter VI' structurally introduces a major document region, consistent with legislative chapter headings."
+    },
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1102:S0",
+      "evidenceRefs": ["L1102:S0"],
+      "justification": "Bold, all-caps standalone line 'TRADE AGENTS FOR FOREIGN TRADERS' acts as a prominent section or subtitle heading introducing the following content."
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1103:S0",
+      "evidenceRefs": ["L1103:S0"],
+      "justification": "Bold, numbered 'Section 1.' line explicitly structures the document, functioning as a legislative section heading."
+    },
+    {
+      "occurrence": "O40",
+      "sourceAlias": "L1104:S0",
+      "evidenceRefs": ["L1104:S0"],
+      "justification": "Bold, numbered 'Article 50.' line serves as a formal legislative article heading introducing the subsequent clauses."
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L1116:S0",
+      "evidenceRefs": ["L1116:S0"],
+      "justification": "Bold, numbered 'Article 51.' line functions as a formal legislative article heading introducing tax liability provisions."
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L1121:S0",
+      "evidenceRefs": ["L1121:S0"],
+      "justification": "Bold, numbered 'Article 52.' line functions as a formal legislative article heading introducing export/import procedures."
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1125:S0",
+      "evidenceRefs": ["L1125:S0"],
+      "justification": "Bold, numbered 'Article 53.' line functions as a formal legislative article heading introducing return of goods provisions."
+    }
+  ],
+  "unresolved": []
+}

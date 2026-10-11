@@ -1,0 +1,29 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D087-PACK_017-C2",
+  "issuedSetSha256": "b6b86cbae9f12849b242ce74bbe50d5ae2822d03a9c1a28de12f234e7612b9f9",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O68",
+      "sourceAlias": "L1222:S0",
+      "evidenceRefs": ["L1222:S0"],
+      "justification": "Numbered section label \"2. Reason\" functioning as a heading that introduces the corresponding form field region below it."
+    },
+    {
+      "occurrence": "O70",
+      "sourceAlias": "L1224:S0",
+      "evidenceRefs": ["L1224:S0"],
+      "justification": "Numbered section label \"3. Enclosed documents\" acting as a heading introducing the documentation requirements section."
+    },
+    {
+      "occurrence": "O74",
+      "sourceAlias": "L1228:S0",
+      "evidenceRefs": ["L1228:S0"],
+      "justification": "Bold italic section label \"Receipt:\" serving as a heading that introduces the acknowledgment and signature region."
+    }
+  ],
+  "unresolved": []
+}
+```

@@ -1,0 +1,45 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D088-PACK_028-C2",
+  "issuedSetSha256": "4d81862ce4353b6536725fd4fc83cade0f1fc10b3cae457b94cf86430b7a9211",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O53",
+      "sourceAlias": "L2125:S0",
+      "evidenceRefs": ["L2125:S0"],
+      "justification": "Bold font ratio (1.0), isolated on its own line, introduces the substantive list of goods liable to special excise duty."
+    },
+    {
+      "occurrence": "O54",
+      "sourceAlias": "L2126:S0",
+      "evidenceRefs": ["L2126:S0"],
+      "justification": "Continues the appendix title block, defining the specific category of goods covered by this section."
+    },
+    {
+      "occurrence": "O55",
+      "sourceAlias": "L2127:S0",
+      "evidenceRefs": ["L2127:S0"],
+      "justification": "Completes the multi-line title phrase, clearly operating as a document heading introducing the following list."
+    },
+    {
+      "occurrence": "O78",
+      "sourceAlias": "L2145:S0",
+      "evidenceRefs": ["L2145:S0"],
+      "justification": "Bold font ratio (1.0), stands alone, marks the start of the next major section covering used goods."
+    },
+    {
+      "occurrence": "O79",
+      "sourceAlias": "L2146:S0",
+      "evidenceRefs": ["L2146:S0"],
+      "justification": "Part of the appendix IX title, specifies the subject matter for the upcoming list of goods."
+    },
+    {
+      "occurrence": "O80",
+      "sourceAlias": "L2147:S0",
+      "evidenceRefs": ["L2147:S0"],
+      "justification": "Finalizes the appendix IX title block, functioning as a heading component preceding the rules."
+    }
+  ],
+  "unresolved": []
+}

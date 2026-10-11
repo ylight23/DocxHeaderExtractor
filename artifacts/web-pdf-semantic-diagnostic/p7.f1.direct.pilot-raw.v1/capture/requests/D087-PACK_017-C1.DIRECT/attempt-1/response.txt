@@ -1,0 +1,73 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D087-PACK_017-C1",
+  "issuedSetSha256": "cf35fe08b130c1ed0b2dc96746f5e004ef243de8cfafe5ca4d559514d4c81498",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L1173:S0",
+      "evidenceRefs": [
+        "L1173:S0"
+      ],
+      "justification": "Opening of the form's title, introducing the document's subject matter."
+    },
+    {
+      "occurrence": "O9",
+      "sourceAlias": "L1174:S0",
+      "evidenceRefs": [
+        "L1174:S0"
+      ],
+      "justification": "Continues the form title, specifying the appraisal council's opinions."
+    },
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1175:S0",
+      "evidenceRefs": [
+        "L1175:S0"
+      ],
+      "justification": "Continues the form title, detailing the request scope."
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L1176:S0",
+      "evidenceRefs": [
+        "L1176:S0"
+      ],
+      "justification": "Continues the form title, identifying the target information system."
+    },
+    {
+      "occurrence": "O12",
+      "sourceAlias": "L1177:S0",
+      "evidenceRefs": [
+        "L1177:S0"
+      ],
+      "justification": "Continues the form title, referencing the official list."
+    },
+    {
+      "occurrence": "O13",
+      "sourceAlias": "L1178:S0",
+      "evidenceRefs": [
+        "L1178:S0"
+      ],
+      "justification": "Completes the form title, specifying national security importance."
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1185:S0",
+      "evidenceRefs": [
+        "L1185:S0"
+      ],
+      "justification": "Numbered section heading introducing the conclusion region of the form."
+    },
+    {
+      "occurrence": "O27",
+      "sourceAlias": "L1188:S0",
+      "evidenceRefs": [
+        "L1188:S0"
+      ],
+      "justification": "Numbered section heading introducing the request region of the form."
+    }
+  ],
+  "unresolved": []
+}

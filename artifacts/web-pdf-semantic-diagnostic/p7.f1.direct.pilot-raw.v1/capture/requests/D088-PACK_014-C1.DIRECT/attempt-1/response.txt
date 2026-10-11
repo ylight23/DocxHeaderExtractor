@@ -1,0 +1,33 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D088-PACK_014-C1",
+  "issuedSetSha256": "2e473b7f00e17fbd58c5e26f903ab8775ce3d21ad5308c3c17940d0191e67bd7",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O16",
+      "sourceAlias": "L1080:S0",
+      "evidenceRefs": [
+        "L1080:S0"
+      ],
+      "justification": "Bold formatting and 'Section 2.' prefix indicate a structural heading introducing a new substantive region."
+    },
+    {
+      "occurrence": "O17",
+      "sourceAlias": "L1081:S0",
+      "evidenceRefs": [
+        "L1081:S0"
+      ],
+      "justification": "Bold formatting and 'Article 48.' prefix mark a formal legal heading introducing the following provisions."
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1084:S0",
+      "evidenceRefs": [
+        "L1084:S0"
+      ],
+      "justification": "Bold formatting and 'Article 49.' prefix mark a formal legal heading introducing the rights and obligations section."
+    }
+  ],
+  "unresolved": []
+}

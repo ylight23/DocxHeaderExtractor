@@ -1,0 +1,29 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D044-PACK_001-C1",
+  "issuedSetSha256": "d9e2de13906cc8b415a37023ed2a9e462ffe8e8738f97c5661746274301724ff",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O2",
+      "sourceAlias": "L0001:S0",
+      "evidenceRefs": ["L0001:S0"],
+      "justification": "Cover page title component; large font (24pt) and prominent vertical position indicate it identifies the document."
+    },
+    {
+      "occurrence": "O6",
+      "sourceAlias": "L0005:S0",
+      "evidenceRefs": ["L0005:S0"],
+      "justification": "Bold, top-of-page placement on page 3 introduces the substantive body section following the contents."
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L0007:S0",
+      "evidenceRefs": ["L0007:S0"],
+      "justification": "Large bold font at top of page 3 clearly marks the table of contents region."
+    }
+  ],
+  "unresolved": []
+}
+```

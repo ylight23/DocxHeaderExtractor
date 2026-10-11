@@ -1,0 +1,21 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D017-PACK_024-C2",
+  "issuedSetSha256": "799acf397f17f69298092eb426e1fcf0512f4fe554eeab826b6968d03fdbdad3",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L1918:S0",
+      "evidenceRefs": ["L1918:S0"],
+      "justification": "Bold, centered, uppercase text serving as the title for the first form section, introducing the destruction report region."
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1935:S0",
+      "evidenceRefs": ["L1935:S0"],
+      "justification": "Bold, centered, uppercase text serving as the title for the second form section, introducing the loss and damage report region."
+    }
+  ],
+  "unresolved": []
+}

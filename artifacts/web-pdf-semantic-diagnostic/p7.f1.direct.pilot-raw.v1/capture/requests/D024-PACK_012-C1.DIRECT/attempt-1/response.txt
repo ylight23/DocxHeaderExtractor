@@ -1,0 +1,33 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D024-PACK_012-C1",
+  "issuedSetSha256": "45a3f3f1a974ab84b1e9ea8fe750e31335674e563e3542b7c66b3336d30fc8b6",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O19",
+      "sourceAlias": "L0671:S0",
+      "evidenceRefs": [
+        "L0671:S0"
+      ],
+      "justification": "Bold, larger font (10.8), standalone line introducing Article 24 on dispute resolution violations."
+    },
+    {
+      "occurrence": "O31",
+      "sourceAlias": "L0683:S0",
+      "evidenceRefs": [
+        "L0683:S0"
+      ],
+      "justification": "All caps, bold, larger font (10.8), introduces substantive region on network establishment offenses."
+    },
+    {
+      "occurrence": "O32",
+      "sourceAlias": "L0684:S0",
+      "evidenceRefs": [
+        "L0684:S0"
+      ],
+      "justification": "Bold, larger font (10.8), standalone line introducing Article 25 on network establishment violations."
+    }
+  ],
+  "unresolved": []
+}

@@ -1,0 +1,45 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D087-PACK_001-C2",
+  "issuedSetSha256": "52a7a93060b78a92fb2e8d2ce5185d7607f0079b97d3fdb839d6ffe08b36d61a",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L0034:S0",
+      "evidenceRefs": ["L0034:S0"],
+      "justification": "Numbered section title introducing grounds and procedures. Indented layout and sequential numbering mark it as a structural heading."
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0038:S0",
+      "evidenceRefs": ["L0038:S0"],
+      "justification": "Numbered section title introducing cyber security conditions. Indentation and sequential numbering indicate a document heading."
+    },
+    {
+      "occurrence": "O44",
+      "sourceAlias": "L0040:S0",
+      "evidenceRefs": ["L0040:S0"],
+      "justification": "Numbered section title detailing implementation of protection activities. Functions as a substantive region heading."
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L0042:S0",
+      "evidenceRefs": ["L0042:S0"],
+      "justification": "Numbered section title outlining procedures for cyber security inspection. Sequential numbering and indentation confirm heading status."
+    },
+    {
+      "occurrence": "O50",
+      "sourceAlias": "L0046:S0",
+      "evidenceRefs": ["L0046:S0"],
+      "justification": "Numbered section title addressing data storage and location requirements. Introduces a distinct regulatory region."
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L0048:S0",
+      "evidenceRefs": ["L0048:S0"],
+      "justification": "Numbered section title covering assignment and coordination of measures. Acts as a structural heading for following provisions."
+    }
+  ],
+  "unresolved": []
+}

@@ -1,0 +1,27 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D017-PACK_019-C1",
+  "issuedSetSha256": "ea4a5ee7e68c6feae37b9262d5efefe62a33146c06a5fa318c4ab1752018ae93",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L1569:S0",
+      "evidenceRefs": ["L1569:S0"],
+      "justification": "Bold font at block start, follows 'Điều' numbering convention for legal articles, introduces subsequent numbered paragraphs."
+    },
+    {
+      "occurrence": "O20",
+      "sourceAlias": "L1588:S0",
+      "evidenceRefs": ["L1588:S0"],
+      "justification": "Bold font at block start, marks transition to next article ('Điều 60'), structurally identical to preceding article heading."
+    },
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L1609:S0",
+      "evidenceRefs": ["L1609:S0"],
+      "justification": "Bold font at block start, introduces final article on implementation responsibilities, consistent with document's article heading format."
+    }
+  ],
+  "unresolved": []
+}

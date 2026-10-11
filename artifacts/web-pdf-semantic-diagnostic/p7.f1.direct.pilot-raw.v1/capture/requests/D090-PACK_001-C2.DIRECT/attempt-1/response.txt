@@ -1,0 +1,67 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D090-PACK_001-C2",
+  "issuedSetSha256": "261d814db4fc63b3e0e85045a474b9847752ed6d4c05cdbd74a2694eb88124d3",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O41",
+      "sourceAlias": "L0038:S0",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "justification": "Bold 'Article 2.' heading introducing amendments to Decree 67/2016/ND-CP."
+    },
+    {
+      "occurrence": "O42",
+      "sourceAlias": "L0039:S0",
+      "evidenceRefs": [
+        "L0039:S0"
+      ],
+      "justification": "Continuation of Article 2 heading, specifying date and regulatory scope."
+    },
+    {
+      "occurrence": "O43",
+      "sourceAlias": "L0040:S0",
+      "evidenceRefs": [
+        "L0040:S0"
+      ],
+      "justification": "Final line of Article 2 heading, completing the Ministry of Health jurisdiction."
+    },
+    {
+      "occurrence": "O57",
+      "sourceAlias": "L0054:S0",
+      "evidenceRefs": [
+        "L0054:S0"
+      ],
+      "justification": "All-caps bold heading introducing the food safety requirements section."
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L0055:S0",
+      "evidenceRefs": [
+        "L0055:S0"
+      ],
+      "justification": "Continuation of all-caps bold heading, specifying management authority."
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L0056:S0",
+      "evidenceRefs": [
+        "L0056:S0"
+      ],
+      "justification": "Final line of all-caps bold heading, completing the covered establishments."
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L0057:S0",
+      "evidenceRefs": [
+        "L0057:S0"
+      ],
+      "justification": "Bold 'Article 4.' heading introducing specific manufacturer and seller rules."
+    }
+  ],
+  "unresolved": []
+}
+```

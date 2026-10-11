@@ -1,0 +1,27 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D060-PACK_025-C1",
+  "issuedSetSha256": "2bde3bd00d71fdbe7582d6c1355d2e1981227f943bb373ee8c9c20b893f0c880",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O10",
+      "sourceAlias": "L1697:S0",
+      "evidenceRefs": ["L1697:S0"],
+      "justification": "Starts a theorem statement introducing the proposition and its subsequent mathematical derivation."
+    },
+    {
+      "occurrence": "O18",
+      "sourceAlias": "L1705:S0",
+      "evidenceRefs": ["L1705:S0"],
+      "justification": "Starts a second theorem statement introducing a new proposition on pseudo-Euclidean spaces."
+    },
+    {
+      "occurrence": "O24",
+      "sourceAlias": "L1711:S0",
+      "evidenceRefs": ["L1711:S0"],
+      "justification": "Section heading 'References' in larger bold font (14.4pt) introducing the bibliography list."
+    }
+  ],
+  "unresolved": []
+}

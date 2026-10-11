@@ -1,0 +1,33 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D017-PACK_020-C2",
+  "issuedSetSha256": "d3fe9ca981f0a535a5ae2bd566af765abe1f0f9f571585d2b4644af89d569ea6",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O49",
+      "sourceAlias": "L1700:S0",
+      "evidenceRefs": ["L1700:S0"],
+      "justification": "Bold, numbered '3.' line standing alone in its layout block, introducing the section on electronic invoice data transfer methods."
+    },
+    {
+      "occurrence": "O52",
+      "sourceAlias": "L1703:S0",
+      "evidenceRefs": ["L1703:S0"],
+      "justification": "Bold, numbered '4.' line standing alone in its layout block, introducing the section on applicable invoice types."
+    },
+    {
+      "occurrence": "O59",
+      "sourceAlias": "L1710:S0",
+      "evidenceRefs": ["L1710:S0"],
+      "justification": "Bold, numbered '5.' line standing alone in its layout block, introducing the section listing used digital certificates."
+    },
+    {
+      "occurrence": "O66",
+      "sourceAlias": "L1715:S0",
+      "evidenceRefs": ["L1715:S0"],
+      "justification": "Bold, numbered '6.' line standing alone in its layout block, introducing the section on authorizing invoice creation."
+    }
+  ],
+  "unresolved": []
+}

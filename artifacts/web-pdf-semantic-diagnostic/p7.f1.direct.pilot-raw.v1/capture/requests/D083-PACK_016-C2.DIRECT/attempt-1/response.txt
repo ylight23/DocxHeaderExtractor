@@ -1,0 +1,33 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D083-PACK_016-C2",
+  "issuedSetSha256": "054bde416ed1156fb9630c554b53f8cf2e946a9c799799d2b917049754956278",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O38",
+      "sourceAlias": "L1096:S0",
+      "evidenceRefs": ["L1096:S0"],
+      "justification": "Introduces Article 41, marking the start of a new substantive section governing enterprise responsibilities."
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L1097:S0",
+      "evidenceRefs": ["L1097:S0"],
+      "justification": "Completes the title of Article 41 by specifying the scope 'cyberspace', functioning as part of the article heading."
+    },
+    {
+      "occurrence": "O60",
+      "sourceAlias": "L1118:S0",
+      "evidenceRefs": ["L1118:S0"],
+      "justification": "Introduces Article 42, marking the start of a new substantive section governing agency and individual responsibilities."
+    },
+    {
+      "occurrence": "O61",
+      "sourceAlias": "L1119:S0",
+      "evidenceRefs": ["L1119:S0"],
+      "justification": "Completes the title of Article 42 by specifying the scope 'individuals using cyberspace', functioning as part of the article heading."
+    }
+  ],
+  "unresolved": []
+}

@@ -1,0 +1,41 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D051-PACK_003-C1",
+  "issuedSetSha256": "f7693083843e41d6311c1e7a13753df6dacbb4a2b900f702511fdeeb5fb6c26d",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0140:S0",
+      "evidenceRefs": [
+        "L0140:S0"
+      ],
+      "justification": "Recurring section title at top of page with larger font (10.4pt), introduces subsequent activity summary text and tables."
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0141:S0",
+      "evidenceRefs": [
+        "L0141:S0"
+      ],
+      "justification": "Prominent bold heading (12.7pt) at top of page, introduces a specific trust fund composition section."
+    },
+    {
+      "occurrence": "O22",
+      "sourceAlias": "L0150:S0",
+      "evidenceRefs": [
+        "L0150:S0"
+      ],
+      "justification": "Identical to O3, recurring section title introducing activity data and tables on this page."
+    },
+    {
+      "occurrence": "O23",
+      "sourceAlias": "L0151:S0",
+      "evidenceRefs": [
+        "L0151:S0"
+      ],
+      "justification": "Prominent bold heading (12.7pt) at top of page, introduces the active grants subsection."
+    }
+  ],
+  "unresolved": []
+}

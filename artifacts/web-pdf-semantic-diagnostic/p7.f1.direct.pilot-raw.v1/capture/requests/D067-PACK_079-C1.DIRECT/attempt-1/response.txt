@@ -1,0 +1,21 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D067-PACK_079-C1",
+  "issuedSetSha256": "d9cd1d6764fbde03d6a24ff59b8d136d3b7960739dcda47ccb3aef7e60437b5e",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O1",
+      "sourceAlias": "L4810:S0",
+      "evidenceRefs": ["L4810:S0"],
+      "justification": "Set in 12pt font at the top of the page, directly preceding the problem statement. Its layout and position clearly mark it as a heading introducing the exercise region."
+    },
+    {
+      "occurrence": "O7",
+      "sourceAlias": "L4816:S0",
+      "evidenceRefs": ["L4816:S0"],
+      "justification": "Shares the same 12pt font size and top-of-page placement as O1, immediately leading into the subsequent problem description. Functions as a standard exercise heading."
+    }
+  ],
+  "unresolved": []
+}

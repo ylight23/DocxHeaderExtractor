@@ -1,0 +1,33 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D015-PACK_029-C2",
+  "issuedSetSha256": "8fdd3be7d3feca14288c9968207158c344cfa802934aaa37a1c5f3a2180966cf",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O45",
+      "sourceAlias": "L2219:S0",
+      "evidenceRefs": ["L2219:S0"],
+      "justification": "Bold font (ratio 1) and 'Điều 112' prefix clearly mark a statutory article heading introducing the foreign exchange business section."
+    },
+    {
+      "occurrence": "O46",
+      "sourceAlias": "L2220:S0",
+      "evidenceRefs": ["L2220:S0"],
+      "justification": "Continues the bolded article title with the target entity, maintaining heading typography and function."
+    },
+    {
+      "occurrence": "O58",
+      "sourceAlias": "L2232:S0",
+      "evidenceRefs": ["L2232:S0"],
+      "justification": "Bold 10pt font and 'Điều 113' prefix mark a distinct statutory article heading introducing delegated banking activities."
+    },
+    {
+      "occurrence": "O64",
+      "sourceAlias": "L2238:S0",
+      "evidenceRefs": ["L2238:S0"],
+      "justification": "Bold 10pt font and 'Điều 114' prefix mark a distinct statutory article heading introducing other commercial activities."
+    }
+  ],
+  "unresolved": []
+}

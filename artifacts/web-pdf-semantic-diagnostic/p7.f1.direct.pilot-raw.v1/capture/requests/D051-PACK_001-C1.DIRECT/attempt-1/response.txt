@@ -1,0 +1,57 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1",
+  "requestId": "D051-PACK_001-C1",
+  "issuedSetSha256": "ecdd253ba960a7f506b9a0260463619e67092d71a9babdc992ef605248d99b41",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "occurrence": "O3",
+      "sourceAlias": "L0002:S0",
+      "evidenceRefs": [
+        "L0002:S0"
+      ],
+      "justification": "Large bold font (26.2pt), unique text (rep=1), positioned prominently on page 1. Introduces the primary subject of the document."
+    },
+    {
+      "occurrence": "O4",
+      "sourceAlias": "L0003:S0",
+      "evidenceRefs": [
+        "L0003:S0"
+      ],
+      "justification": "Large bold font (24.4pt), unique text, directly follows O3. Functions as a subtitle specifying the report's financial focus."
+    },
+    {
+      "occurrence": "O5",
+      "sourceAlias": "L0004:S0",
+      "evidenceRefs": [
+        "L0004:S0"
+      ],
+      "justification": "Prominent font size (20.6pt), unique text, follows O4. Specifies the fiscal years covered by the financial summary."
+    },
+    {
+      "occurrence": "O11",
+      "sourceAlias": "L0010:S0",
+      "evidenceRefs": [
+        "L0010:S0"
+      ],
+      "justification": "Bold font (12.7pt), unique text, positioned near the top of page 2. Marks the start of the introductory section."
+    },
+    {
+      "occurrence": "O34",
+      "sourceAlias": "L0033:S0",
+      "evidenceRefs": [
+        "L0033:S0"
+      ],
+      "justification": "Bold font (13.2pt), unique text, positioned near the top of page 3. Introduces the list of abbreviations and acronyms."
+    },
+    {
+      "occurrence": "O39",
+      "sourceAlias": "L0038:S0",
+      "evidenceRefs": [
+        "L0038:S0"
+      ],
+      "justification": "Bold font (13.2pt), unique text, positioned near the top of page 4. Introduces the contents and summary of financial data section."
+    }
+  ],
+  "unresolved": []
+}
