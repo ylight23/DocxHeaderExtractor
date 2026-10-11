@@ -1,0 +1,2250 @@
+{
+  "version": "P7_F1Q_HELDOUT_E_FALSE_POSITIVE_ANALYSIS_V1",
+  "basis": "arm A raw f22e5d44 + arm B raw d64751f0, Gold 36bfea0f; analysis only, no provider call, no Gold change",
+  "counts": {
+    "A": {
+      "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN": 26,
+      "COVER_FRONT_MATTER_METADATA": 14,
+      "TABLE_ROW_LABEL_OR_DATA_CELL": 35,
+      "RUNNING_HEADER_FOOTER": 3,
+      "TABLE_OR_CHART_CAPTION": 8,
+      "FORM_SUBJECT_OR_INSTRUCTION_LINE": 5
+    },
+    "B": {
+      "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN": 9,
+      "COVER_FRONT_MATTER_METADATA": 8,
+      "TABLE_ROW_LABEL_OR_DATA_CELL": 47,
+      "RUNNING_HEADER_FOOTER": 4,
+      "TABLE_OR_CHART_CAPTION": 7,
+      "FORM_SUBJECT_OR_INSTRUCTION_LINE": 7
+    }
+  },
+  "union": 114,
+  "rows": [
+    {
+      "document": "017",
+      "sourceAlias": "L1640:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(KèmtheoNghịđịnhsố 123/2020/NĐ-CPngày19tháng10năm2020củaChínhphủ)",
+      "fontSize": 9.9,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Attachment note \"(Kèm theo Nghị định ...)\" under the appendix title",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Italicized legal citation serving as a subtitle for the appendix.",
+      "qwenInterpretation": "Provides statutory basis directly tied to the appendix title; functions as a structural subtitle.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "017",
+      "sourceAlias": "L1644:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1.Hóađơnđiệntử",
+      "fontSize": 9.9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Group label \"1. Hóa đơn điện tử\" inside the appendix table (local list grouping)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold numbered heading introducing the first subsection of the appendix.",
+      "qwenInterpretation": "Typographically distinct (bold) and hierarchically structured within the appendix; establishes a substantive content region.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "017",
+      "sourceAlias": "L1651:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2.Hóađơndocơquanthuếđặtin",
+      "fontSize": 9.9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Group label \"2. Hóa đơn do cơ quan thuế đặt in\" inside the appendix table",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold section heading organizing subsequent form list in appendix table.",
+      "qwenInterpretation": "Genuine bold heading within a table that structurally divides the catalog into thematic sections.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "017",
+      "sourceAlias": "L1661:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "3.Biênlai",
+      "fontSize": 9.9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Group label \"3. Biên lai\" inside the appendix table",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold section heading organizing subsequent form list in appendix table.",
+      "qwenInterpretation": "Genuine bold heading within a table that structurally divides the catalog into thematic sections.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "024",
+      "sourceAlias": "L0678:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3.Hìnhthứcxửphạtbổsung:",
+      "fontSize": 10.2,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Numbered clause lead \"3. Hình thức xử phạt bổ sung:\" inside an article, not a heading",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Subheading introducing supplementary penalty measures for specified violations.",
+      "qwenInterpretation": "Document subheading structuring the supplementary sanctions section within Article 24.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "024",
+      "sourceAlias": "L3247:S0",
+      "page": 67,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1.Phạttiềntừ10.000.000đồngđến20.000.000đồngđốivớihànhvilợidụngmạngxãhộiđểthựchiệnmột",
+      "fontSize": 10.2,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Numbered subheading specifying fine ranges for specific social network violations.",
+      "qwenInterpretation": "Structural subheading introducing a penalty tier and its associated prohibited acts.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "024",
+      "sourceAlias": "L3263:S0",
+      "page": 67,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2.Phạttiềntừ20.000.000đồngđến30.000.000đồngđốivớihànhvitiếtlộthôngtinthuộcdanhmụcbímật",
+      "fontSize": 10.2,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Numbered penalty clause introducing a fine tier for leaking confidential information.",
+      "qwenInterpretation": "Functions as a substantive subheading defining a specific penalty range and corresponding violation behavior.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "024",
+      "sourceAlias": "L3265:S0",
+      "page": 67,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3.Biệnphápkhắcphụchậuquả:",
+      "fontSize": 10.2,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Numbered clause lead \"3. Biện pháp khắc phục hậu quả:\" inside an article",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Numbered section heading 'Remedial measures'.",
+      "qwenInterpretation": "Establishes a substantive structural heading for the remedial measures section, confirmed by repeated occurrences across multiple pages.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "024",
+      "sourceAlias": "L3270:S0",
+      "page": 67,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1.Phạttiềntừ2.000.000đồngđến5.000.000đồngđốivớihànhvilưutrữthôngtincánhâncủangườikhác",
+      "fontSize": 10.2,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Numbered penalty clause introducing a fine tier for storing others' personal information.",
+      "qwenInterpretation": "Functions as a substantive subheading defining a specific penalty range and corresponding violation.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "024",
+      "sourceAlias": "L3273:S0",
+      "page": 67,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "2.Phạttiềntừ5.000.000đồngđến10.000.000đồngđốivớimộttrongcáchànhvisau:",
+      "fontSize": 10.2,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Numbered penalty clause introducing a fine tier for listed violations.",
+      "qwenInterpretation": "Functions as a substantive subheading defining a specific penalty range and corresponding violations.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "024",
+      "sourceAlias": "L3284:S0",
+      "page": 67,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "3.Phạttiềntừ10.000.000đồngđến20.000.000đồngđốivớimộttrongcáchànhvisau:",
+      "fontSize": 10.2,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Numbered penalty clause introducing a fine tier for listed violations.",
+      "qwenInterpretation": "Functions as a substantive subheading defining a specific penalty range and corresponding violations.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "028",
+      "sourceAlias": "L1578:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Section II – Bid Data Sheet (BDS) 39",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Running header \"Section II – Bid Data Sheet (BDS) 39\" (page furniture)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Full-width section header identifying the Bid Data Sheet part.",
+      "qwenInterpretation": "Spans the page width with section numbering, establishing the primary structural division for this document segment.",
+      "cause": "RUNNING_HEADER_FOOTER",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "028",
+      "sourceAlias": "L1579:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ITB 32.1 The currency that shall be used for Bid evaluation and comparison purposes",
+      "fontSize": 12,
+      "boldRatio": 0.1,
+      "gold": "OTHER",
+      "goldRationale": "Bid Data Sheet entry \"ITB 32.1 ...\" (data-sheet row, not a heading)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Subheading introducing the ITB 32.1 clause on bid currency.",
+      "qwenInterpretation": "Numbered clause title sets up the substantive content regarding currency selection for bid evaluation.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "028",
+      "sourceAlias": "L1591:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Alternative A: Bidders quote entirely in local currency",
+      "fontSize": 12,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Option label \"Alternative A: ...\" inside a data-sheet entry",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Subheading for Alternative A procedure.",
+      "qwenInterpretation": "Bold italic label introduces the first alternative method for bidders to quote in local currency.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "028",
+      "sourceAlias": "L1602:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Alternative B: Bidders quote in local and foreign currencies",
+      "fontSize": 12,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Option label \"Alternative B: ...\" inside a data-sheet entry",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Subheading for Alternative B procedure.",
+      "qwenInterpretation": "Bold italic label introduces the second alternative method allowing mixed currency quotes.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "028",
+      "sourceAlias": "L1608:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ITB 33.1 [The following provision should be included and the required",
+      "fontSize": 12,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Data-sheet entry \"ITB 33.1 [...]\" with drafting instruction",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Subheading for ITB 33.1 clause.",
+      "qwenInterpretation": "Numbered clause title with instructional bracket introduces the margin of preference provision.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "028",
+      "sourceAlias": "L1616:S0",
+      "page": 51,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ITB 34.1 At this time the Employer ______________ [insert “intends” or “does not",
+      "fontSize": 12,
+      "boldRatio": 0.5,
+      "gold": "OTHER",
+      "goldRationale": "Data-sheet entry \"ITB 34.1 ...\"",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Subheading for ITB 34.1 clause.",
+      "qwenInterpretation": "Numbered clause title introduces the employer's intention regarding subcontractor execution.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "032",
+      "sourceAlias": "L0006:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "For Projects with Project Concept Notes (PCN)",
+      "fontSize": 18,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "USER DECISION (GPT6_RECOMMENDATION_USER_AUTHORIZED_EDITS_2026_10_10D_ISSUE_6): This line states applicability of the procurement template, not a document heading: the separate red 18pt centred cover block specifies projects with PCN Decision Notes (GPT-6 visual review)",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Subtitle specifying project eligibility condition.",
+      "qwenInterpretation": "Restricts applicability to projects with PCNs.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "032",
+      "sourceAlias": "L0007:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Decision Notes",
+      "fontSize": 18,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "USER DECISION (GPT6_RECOMMENDATION_USER_AUTHORIZED_EDITS_2026_10_10D_ISSUE_6): This line continues the applicability statement, not an independent heading (GPT-6 visual review)",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Subtitle specifying document applicability condition.",
+      "qwenInterpretation": "Restricts applicability to projects with Decision Notes.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "032",
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "dated after October 1, 2018",
+      "fontSize": 18,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "USER DECISION (GPT6_RECOMMENDATION_USER_AUTHORIZED_EDITS_2026_10_10D_ISSUE_6): This is an applicability date qualifier, not a heading: \"dated after October 1, 2018\" (GPT-6 visual review)",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Subtitle specifying temporal eligibility condition.",
+      "qwenInterpretation": "Restricts applicability to projects dated after Oct 1, 2018.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "032",
+      "sourceAlias": "L4546:S0",
+      "page": 165,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10.4 If requested by the Contractor, the Employer shall use its best",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Starts with '10.4' and is indented (192.7 pts), marking a sub-clause heading.",
+      "qwenInterpretation": "Introduces Sub-clause 10.4 heading; numbering and indentation establish structural division.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "032",
+      "sourceAlias": "L4554:S0",
+      "page": 165,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10.5 Unless otherwise specified in the Contract or agreed upon by the",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Starts with '10.5' and is indented (192.7 pts), marking a sub-clause heading.",
+      "qwenInterpretation": "Introduces Sub-clause 10.5 heading; numbering and indentation establish structural division.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "032",
+      "sourceAlias": "L4567:S0",
+      "page": 165,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "10.6 The Employer shall be responsible for the continued operation of the",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Starts with '10.6' and is indented (192.7 pts), marking a sub-clause heading.",
+      "qwenInterpretation": "Introduces Sub-clause 10.6 heading; numbering and indentation establish structural division.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "034",
+      "sourceAlias": "L2499:S0",
+      "page": 109,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Section IV - Bidding Forms 93",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Running header \"Section IV - Bidding Forms 93\"",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Section header.",
+      "qwenInterpretation": "Repeats the section title as a running header, establishing the document's structural division.",
+      "cause": "RUNNING_HEADER_FOOTER",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "International DevelopmentAssociation",
+      "fontSize": 24,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Issuer name on the cover; USER_DECISION_2026_10_10 (Issue #6): OTHER, issuing organization, not the report title",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Primary document title on the cover page",
+      "qwenInterpretation": "Establishes the main title of the document by naming the issuing organization on the cover.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "June 30, 2024",
+      "fontSize": 24,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Reporting date on the cover",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Dateline specifying the reporting period",
+      "qwenInterpretation": "Acts as a dateline/subtitle on the cover, anchoring the document to a specific fiscal year-end.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0043:S0",
+      "page": 4,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Management’s Discussion and Analysis",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Running header \"Management's Discussion and Analysis\"",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Bold section heading 'Management’s Discussion and Analysis' on page 4",
+      "qwenInterpretation": "This line establishes the substantive section heading operating here on page 4, introducing the body content.",
+      "cause": "RUNNING_HEADER_FOOTER",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L1875:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Management’s Discussion and Analysis Section IX: Risk Management",
+      "fontSize": 9,
+      "boldRatio": 0.6,
+      "gold": "OTHER",
+      "goldRationale": "Running header with section name",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Major section heading for Risk Management.",
+      "qwenInterpretation": "Section heading establishing structure for the risk management discussion.",
+      "cause": "RUNNING_HEADER_FOOTER",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L1876:S0",
+      "page": 49,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table 28: Commercial Credit Exposure, Net of Collateral Held, by Counterparty Rating",
+      "fontSize": 8,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Table caption \"Table 28: ...\" (object caption, not a heading)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Table caption introducing commercial credit exposure data.",
+      "qwenInterpretation": "Bold table heading establishing the structure of Table 28 here.",
+      "cause": "TABLE_OR_CHART_CAPTION",
+      "deterministicSignal": "OBJECT_CAPTION_PATTERN",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L3351:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table B1: Subscriptions and contributions paid-in",
+      "fontSize": 10,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Table caption \"Table B1: ...\" (object caption)",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Table caption heading",
+      "qwenInterpretation": "Bold 10pt line labeling the table that follows, functioning as a genuine heading for the table region.",
+      "cause": "TABLE_OR_CHART_CAPTION",
+      "deterministicSignal": "OBJECT_CAPTION_PATTERN",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L3360:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table B2: Nonnegotiable, non interest-bearing demand obligations on account ofmembers' subscriptions and",
+      "fontSize": 10,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Table caption \"Table B2: ...\" line 1 (object caption)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "First part of a table title.",
+      "qwenInterpretation": "A bolded, larger-font title introducing a financial schedule, structurally organizing the following tabular data.",
+      "cause": "TABLE_OR_CHART_CAPTION",
+      "deterministicSignal": "OBJECT_CAPTION_PATTERN",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L3361:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "contributions",
+      "fontSize": 10,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Table caption \"Table B2: ...\" line 2",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Second part of a table title.",
+      "qwenInterpretation": "Continuation of the bolded table title, completing the heading that introduces the financial schedule.",
+      "cause": "TABLE_OR_CHART_CAPTION",
+      "deterministicSignal": "DATA_TABLE_REGION",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L3376:S0",
+      "page": 93,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Table C1: Investments-composition",
+      "fontSize": 10,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Table caption \"Table C1: ...\" (object caption)",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Table title introducing an investment schedule.",
+      "qwenInterpretation": "A bolded, larger-font title explicitly labeling the following tabular data ('Table C1: Investments-composition'), structuring the content.",
+      "cause": "TABLE_OR_CHART_CAPTION",
+      "deterministicSignal": "OBJECT_CAPTION_PATTERN",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0000:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "International DevelopmentAssociation",
+      "fontSize": 24,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Issuer name on the cover; USER_DECISION_2026_10_10 (Issue #6): OTHER, issuing organization, not the report title",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Document title/organization name on cover page.",
+      "qwenInterpretation": "Large font title line establishing document identity.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0972:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Liabilities",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Balance-sheet row group label \"Liabilities\" (bold, table label)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Major section heading",
+      "qwenInterpretation": "Bold text functioning as a major structural heading for the liabilities section.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_TABLE_REGION",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0973:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Borrowings—Notes EandJ",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Section heading",
+      "qwenInterpretation": "Bold italic text functioning as a substantive heading for a liability subsection.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0974:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Market borrowings, at fair value",
+      "fontSize": 9,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Line item heading",
+      "qwenInterpretation": "Text functioning as a structural heading for a specific liability line item.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0975:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Market borrowings, at amortized cost",
+      "fontSize": 9,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Line item heading",
+      "qwenInterpretation": "Text functioning as a structural heading for a specific liability line item.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0976:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Concessional partner loans, at amortized cost",
+      "fontSize": 9,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Line item heading",
+      "qwenInterpretation": "Text functioning as a structural heading for a specific liability line item.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0978:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Securities sold underrepurchase agreements, securities lent under",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold-italic first line of a multi-line liability heading.",
+      "qwenInterpretation": "Typographically emphasized line item heading introducing a liability category.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_TABLE_REGION",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0979:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "securities lending agreements, andpayable forcash collateral",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold-italic continuation of the liability heading.",
+      "qwenInterpretation": "Continuation of the multi-line bold-italic heading for the same liability category.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_TABLE_REGION",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0980:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "received—Notes C andJ",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold-italic final part of the liability heading with note references.",
+      "qwenInterpretation": "Concluding segment of the bold-italic liability heading.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_TABLE_REGION",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0981:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Derivative liabilities, net—Notes C, F, H andJ",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold-italic line item heading for derivative liabilities.",
+      "qwenInterpretation": "Typographically emphasized heading labeling a specific liability category.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0982:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Payable fordevelopmentgrants",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold-italic line item heading for payable for development grants.",
+      "qwenInterpretation": "Typographically emphasized heading labeling a specific liability category.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0983:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Payable to affiliated organization—Note H",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold-italic line item heading for payable to affiliated organization.",
+      "qwenInterpretation": "Typographically emphasized heading labeling a specific liability category.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0984:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Otherliabilities—Notes C andD",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold-italic line item heading for other liabilities.",
+      "qwenInterpretation": "Typographically emphasized heading labeling a catch-all liability category.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0985:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total liabilities",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Table total row label",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold main section heading summing liabilities.",
+      "qwenInterpretation": "Prominent bold heading marking the total of the liabilities section.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0986:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Equity",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Balance-sheet row group label \"Equity\"",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold main section heading for equity.",
+      "qwenInterpretation": "Prominent bold heading marking the start of the equity section.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_TABLE_REGION",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0987:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Members'subscriptions and contributions—Note B",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold-italic line item heading for members' subscriptions.",
+      "qwenInterpretation": "Typographically emphasized heading labeling a primary equity component.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_TABLE_REGION",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0988:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Subscriptions and contributions committed",
+      "fontSize": 9,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Regular-weight line item label.",
+      "qwenInterpretation": "Functions as a substantive row heading categorizing committed subscriptions.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0990:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Subscriptions and contributions receivable",
+      "fontSize": 9,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Regular-weight line item label.",
+      "qwenInterpretation": "Functions as a substantive row heading categorizing receivable subscriptions.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0991:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Cumulative discounts/credits on subscriptions and contributions, net",
+      "fontSize": 9,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Regular-weight line item label.",
+      "qwenInterpretation": "Functions as a substantive row heading categorizing cumulative discounts and credits.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0993:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Nonnegotiable, non-interest-bearing demand obligations on account",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Bold-italic first line of a multi-line equity heading.",
+      "qwenInterpretation": "Typographically emphasized line item heading introducing an equity category.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_TABLE_REGION",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0994:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "ofmembers'subscriptions and contributions",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Bold-italic continuation of the equity heading.",
+      "qwenInterpretation": "Continuation of the multi-line bold-italic heading for the same equity category.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0995:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Deferredamounts to maintain value ofcurrencyholdings",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Bold-italic line item heading for deferred currency amounts.",
+      "qwenInterpretation": "Typographically emphasized heading labeling a specific equity category.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0996:S0",
+      "page": 29,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Accumulated deficit",
+      "fontSize": 9,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Bold-italic line item heading for accumulated deficit.",
+      "qwenInterpretation": "Typographically emphasized heading labeling a key equity component.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1361:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Table D2: Loans in nonaccrual status",
+      "fontSize": 10,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Table caption \"Table D2: ...\" (object caption)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Table title introducing the 'Loans in nonaccrual status' data region",
+      "qwenInterpretation": "Bold, larger font (10pt) line explicitly labeling Table D2, functioning as a structural heading that introduces the subsequent table content.",
+      "cause": "TABLE_OR_CHART_CAPTION",
+      "deterministicSignal": "OBJECT_CAPTION_PATTERN",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1400:S0",
+      "page": 39,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "IDAQuarterly Financial Statements: September 30, 2024 (Unaudited)",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Running footer",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Document/section title identifying the quarterly financial statements.",
+      "qwenInterpretation": "Running header or page title that names the document section ('IDA Quarterly Financial Statements: September 30, 2024 (Unaudited)'), establishing the substantive content region.",
+      "cause": "RUNNING_HEADER_FOOTER",
+      "deterministicSignal": "DATA_TABLE_REGION",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1899:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Total Investments",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Table section heading for total investment categories",
+      "qwenInterpretation": "Textual label introducing a grouped row of investment figures, operating as a substantive table heading.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1900:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Securities purchased under resale agreements",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Table row heading for financial instrument category",
+      "qwenInterpretation": "Descriptive label identifying a specific financial arrangement, functioning as a row heading.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1901:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Derivative assets:",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Section heading for derivative asset categories",
+      "qwenInterpretation": "Colon-terminated label introducing a subsection of derivative instruments, operating as a structural heading.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_TABLE_REGION",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1902:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Currency swaps and currency forward contracts",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Sub-heading for specific swap contract type",
+      "qwenInterpretation": "Descriptive phrase identifying a subclass of derivatives, functioning as a row heading under the parent section.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1903:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Interest rate swaps",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Sub-heading for interest rate swap category",
+      "qwenInterpretation": "Descriptive label identifying a specific derivative type, functioning as a row heading.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1904:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Other a",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Sub-heading for miscellaneous items with footnote reference",
+      "qwenInterpretation": "Label identifying a catch-all category, functioning as a row heading despite attached footnote marker.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1906:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Less:",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Deduction section heading",
+      "qwenInterpretation": "Colon-terminated label introducing a reduction section, operating as a structural heading.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_TABLE_REGION",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1907:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Amounts subject to legally enforceable master netting agreements b",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Sub-heading for netting agreement amounts with footnote",
+      "qwenInterpretation": "Descriptive label identifying a specific deduction category, functioning as a row heading.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1908:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Cash collateral received",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Sub-heading for collateral received category",
+      "qwenInterpretation": "Descriptive label identifying a specific deduction item, functioning as a row heading.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1909:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Derivative assets, net",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Summary heading for net derivative assets",
+      "qwenInterpretation": "Comma-separated label indicating a calculated subtotal, functioning as a summary row heading.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1910:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Liabilities:",
+      "fontSize": 8,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Table row group label \"Liabilities:\"",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Major section heading for liabilities",
+      "qwenInterpretation": "Bold, colon-terminated label introducing a primary financial statement section, operating as a major structural heading.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1911:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Market Borrowings, at fair value",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Sub-heading for market borrowings category",
+      "qwenInterpretation": "Descriptive label identifying a specific liability class, functioning as a row heading under the parent section.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1916:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Derivative liabilities:",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Heading text introducing a liability category.",
+      "qwenInterpretation": "Establishes a structural heading for the derivative liabilities section of the financial statement.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1917:S0",
+      "page": 52,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Currency swaps and currency forward contracts",
+      "fontSize": 8,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Text labeling a specific derivative instrument type.",
+      "qwenInterpretation": "Establishes a subheading for a specific liability item under derivative liabilities.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": "DATA_ROW_NUMERIC_CELLS",
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "051",
+      "sourceAlias": "L0004:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Fiscalyears endedJune30, 2024and2023",
+      "fontSize": 20.6,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "USER DECISION (USER_DECISION_2026_10_10C_ISSUE_6): \"Fiscal years ended June 30, 2024 and 2023\" (20.6pt regular, under the bold 26.2pt/24.4pt title lines) states the reporting period: metadata, not an independent content title; consistent with the cover reporting dates of 044 and 049 (OTHER). Large type or a position directly under the title is not enough to establish a heading",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Subtitle date range.",
+      "qwenInterpretation": "Medium-large font (20.6pt) below O4, providing fiscal year context for the title block.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "051",
+      "sourceAlias": "L0074:S0",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "ContributionandDisbursements",
+      "fontSize": 10.4,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "USER DECISION (GPT6_AI_REVIEWER_USER_DELEGATED_2026_10_10F_ISSUE_6): \"Contribution and Disbursements\" is a local chart title, parallel to the adjacent \"Contributions\" chart title already labeled OTHER; it does not independently establish a document heading (GPT-6 visual review)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold section heading introducing Contributions and Disbursements content.",
+      "qwenInterpretation": "Establishes a structural heading for the contributions and disbursements section.",
+      "cause": "TABLE_OR_CHART_CAPTION",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "051",
+      "sourceAlias": "L0074:S1",
+      "page": 6,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Contributions",
+      "fontSize": 10.4,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Chart title \"Contributions\" (object caption)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Bold subheading 'Contributions' under the main section.",
+      "qwenInterpretation": "Establishes a structural subheading for the contributions subsection.",
+      "cause": "TABLE_OR_CHART_CAPTION",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "051",
+      "sourceAlias": "L0219:S0",
+      "page": 15,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Top10SovereignCountriesandEU",
+      "fontSize": 8.4,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Chart title \"Top 10 Sovereign Countries and EU\" (object caption)",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Bold table/section heading 'Top10SovereignCountriesandEU'.",
+      "qwenInterpretation": "Bold typography and distinct positioning establish this as a substantive table or section heading operating here.",
+      "cause": "TABLE_OR_CHART_CAPTION",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "060",
+      "sourceAlias": "L0793:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Theorem 4 Given a representation as in deﬁnition 37 the dual isomorphisms",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Theorem lead-in \"Theorem 4 Given ...\" (statement text, not a heading)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Theorem heading introducing a mathematical result.",
+      "qwenInterpretation": "Explicitly names 'Theorem 4' and introduces the statement of the theorem, functioning as a structural heading for this section.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "060",
+      "sourceAlias": "L0805:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Deﬁnition 38 The tensor product of matrix representations is the representa-",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Definition lead-in \"Definition 38 ...\" (statement text)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Definition heading introducing a mathematical concept.",
+      "qwenInterpretation": "Begins with 'Deﬁnition 38' and introduces the formal definition, serving as a structural heading.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "060",
+      "sourceAlias": "L0806:S0",
+      "page": 21,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "tion",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Continuation of Definition 38 heading completing the word 'representation'.",
+      "qwenInterpretation": "Line break continuation of the definition title.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "060",
+      "sourceAlias": "L1697:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Theorem 25 The matrices in η-orthonormal bases of two Dirac conjugated",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Theorem lead-in \"Theorem 25 ...\"",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Starts the formal statement of Theorem 25.",
+      "qwenInterpretation": "Introduces a substantive mathematical result regarding conjugated operators.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "060",
+      "sourceAlias": "L1698:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "operators, f and f, are related as",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Continues the statement of Theorem 25, leading to the main relation.",
+      "qwenInterpretation": "Completes the theorem preamble before presenting the core equation.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "060",
+      "sourceAlias": "L1705:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Theorem 26 If (V, η) is a pseudo-Euclidean space and η has the signature",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Theorem lead-in \"Theorem 26 ...\"",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Starts the formal statement of Theorem 26.",
+      "qwenInterpretation": "Introduces a substantive mathematical result on pseudo-Euclidean spaces.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "060",
+      "sourceAlias": "L1706:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(n+, n−) thenAut(V, h) is isomorphic to thepseudo-orthogonal group O(n+ , n−) ⊂",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Continues the statement of Theorem 26, specifying group isomorphism.",
+      "qwenInterpretation": "States the isomorphism between the automorphism group and the orthogonal group.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "060",
+      "sourceAlias": "L1707:S0",
+      "page": 44,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Aut(V) ∼= GL(n,R).",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Concludes the statement of Theorem 26.",
+      "qwenInterpretation": "Finishes the theorem declaration with the general linear group relation.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "077",
+      "sourceAlias": "L0002:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "NOVEMBER 6-7, 2023",
+      "fontSize": 11,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Meeting dates in the masthead (metadata)",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Meeting date.",
+      "qwenInterpretation": "Part of the title block providing the specific date of the event.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "077",
+      "sourceAlias": "L0003:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "Hybrid Meeting",
+      "fontSize": 11,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Meeting mode \"Hybrid Meeting\" in the masthead (metadata)",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Meeting format descriptor.",
+      "qwenInterpretation": "Part of the title block indicating the hybrid nature of the meeting.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "083",
+      "sourceAlias": "L0010:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "The Law on Cyber Security,",
+      "fontSize": 14,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Name of the promulgated law inside the order's body (bold); refers to the law, not a heading here",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Title of the law being promulgated.",
+      "qwenInterpretation": "Bold text (size 14) naming the specific legislation, functioning as a title heading.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "087",
+      "sourceAlias": "L0387:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1. Operation environment of the information systems of national security",
+      "fontSize": 14,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Numbered section marker '1.' introducing operational environment requirements.",
+      "qwenInterpretation": "Standard legal numbering introduces a substantive section heading for this subsection.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "087",
+      "sourceAlias": "L0388:S0",
+      "page": 11,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "importance must satisfy the following requirements:",
+      "fontSize": 14,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Continuation of the numbered section heading introducing requirements.",
+      "qwenInterpretation": "Completes the introductory clause for section 1; functions as part of the heading.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "087",
+      "sourceAlias": "L1207:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "Regarding request for",
+      "fontSize": 13,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Subject line (trích yếu) of the template letter; USER_DECISION_2026_10_10 (Issue #6): OTHER, not a title",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Opening phrase 'Regarding request for' initiating the form title.",
+      "qwenInterpretation": "First segment of the document title identifying the form's purpose.",
+      "cause": "FORM_SUBJECT_OR_INSTRUCTION_LINE",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "087",
+      "sourceAlias": "L1208:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "excluding an information",
+      "fontSize": 13,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Subject line continuation; USER_DECISION_2026_10_10 (Issue #6): OTHER, not a title",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Continuation 'excluding an information' specifying the action.",
+      "qwenInterpretation": "Second segment of the document title specifying the requested action.",
+      "cause": "FORM_SUBJECT_OR_INSTRUCTION_LINE",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "087",
+      "sourceAlias": "L1209:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "system from the List of",
+      "fontSize": 13,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Subject line continuation; USER_DECISION_2026_10_10 (Issue #6): OTHER, not a title",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Continuation 'system from the List of' referencing the regulatory register.",
+      "qwenInterpretation": "Third segment of the document title referencing the applicable list.",
+      "cause": "FORM_SUBJECT_OR_INSTRUCTION_LINE",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "087",
+      "sourceAlias": "L1210:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "information systems of",
+      "fontSize": 13,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Subject line continuation; USER_DECISION_2026_10_10 (Issue #6): OTHER, not a title",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Continuation 'information systems of' narrowing the subject scope.",
+      "qwenInterpretation": "Fourth segment of the document title refining the subject category.",
+      "cause": "FORM_SUBJECT_OR_INSTRUCTION_LINE",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "087",
+      "sourceAlias": "L1211:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "national security importance",
+      "fontSize": 13,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Subject line continuation; USER_DECISION_2026_10_10 (Issue #6): OTHER, not a title",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Final phrase 'national security importance' completing the title.",
+      "qwenInterpretation": "Fifth segment of the document title completing the subject designation.",
+      "cause": "FORM_SUBJECT_OR_INSTRUCTION_LINE",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "087",
+      "sourceAlias": "L1225:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "no longer appropriate to be classified as an information system of national",
+      "fontSize": 14,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "USER DECISION (USER_DECISION_2026_10_10C_ISSUE_6): fully italic 14pt continuation of the explanatory parenthetical after \"3. Enclosed documents\" (\"documents proving that the information system is no longer appropriate to be classified as an information system of national security importance\"); fill-in instruction, it does not establish a heading",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Section heading continuation",
+      "qwenInterpretation": "Continues the numbered section heading, contributing to its substantive heading function.",
+      "cause": "FORM_SUBJECT_OR_INSTRUCTION_LINE",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "087",
+      "sourceAlias": "L1226:S0",
+      "page": 38,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "security importance)",
+      "fontSize": 14,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "USER DECISION (USER_DECISION_2026_10_10C_ISSUE_6): end of the same fully italic 14pt explanatory parenthetical (\"security importance)\"); fill-in instruction, it does not establish a heading",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Section heading completion",
+      "qwenInterpretation": "Completes the numbered section heading, establishing the substantive heading for this region.",
+      "cause": "FORM_SUBJECT_OR_INSTRUCTION_LINE",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": true
+    },
+    {
+      "document": "088",
+      "sourceAlias": "L1983:S0",
+      "page": 60,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "(Issued together with Government's Decree No. 69/2018/ND-CP dated May 15, 2018)",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Attachment note \"(Issued together with ...)\"",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Italicized parenthetical legal attribution functioning as a subtitle.",
+      "qwenInterpretation": "Italicized text providing statutory context and issuance date, operating as a formal subtitle.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "088",
+      "sourceAlias": "L2088:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chapter 28",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Table cell \"Chapter 28\" (HS chapter code in a goods table, not a document chapter)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Section heading marking a new chapter grouping.",
+      "qwenInterpretation": "Introduces the substantive region for Chapter 28 goods.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "088",
+      "sourceAlias": "L2088:S1",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chemicals under Schedule-2 and 3 chemicals provided in Annex 1",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Subtitle specifying chapter scope.",
+      "qwenInterpretation": "Immediately follows chapter marker, functioning as a descriptive subtitle defining the regulated materials.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "088",
+      "sourceAlias": "L2090:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chapter 29",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Table cell \"Chapter 29\"",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Section heading marking a new chapter grouping.",
+      "qwenInterpretation": "Introduces the substantive region for Chapter 29 goods.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "088",
+      "sourceAlias": "L2094:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chapter 39",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Table cell \"Chapter 39\"",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Section heading marking a new chapter grouping.",
+      "qwenInterpretation": "Introduces the substantive region for Chapter 39 goods.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "088",
+      "sourceAlias": "L2095:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chapter 84",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Table cell \"Chapter 84\"",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Section heading marking a new chapter grouping.",
+      "qwenInterpretation": "Introduces the substantive region for Chapter 84 goods.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "088",
+      "sourceAlias": "L2105:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chapter 85 8507 Electric accumulators, including separators therefor, whether or",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Table row \"Chapter 85 8507 ...\"",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Combined chapter and heading identifier with product description.",
+      "qwenInterpretation": "Major section marker introducing Chapter 85 and heading 8507, establishing a substantive content region.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "088",
+      "sourceAlias": "L2119:S0",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Chapter 02",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Table cell \"Chapter 02\" (HS chapter code)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Chapter identifier.",
+      "qwenInterpretation": "Section marker introducing Chapter 02, establishing a substantive content region.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "088",
+      "sourceAlias": "L2119:S1",
+      "page": 64,
+      "pageStratum": "TARGETED_STRUCTURE",
+      "text": "Meat and edible meat offal",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "B"
+      ],
+      "qwenObservedRole": "Subtitle specifying chapter scope.",
+      "qwenInterpretation": "Immediately follows chapter marker, functioning as a descriptive subtitle defining the commodity category.",
+      "cause": "TABLE_ROW_LABEL_OR_DATA_CELL",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "090",
+      "sourceAlias": "L0016:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "and regulations below are annulled:",
+      "fontSize": 12,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Bold lead sentence continuation \"and regulations below are annulled:\" (article body, not heading wording)",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Article heading completion",
+      "qwenInterpretation": "Completes the Article 1 heading phrase, maintaining heading typography and alignment.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "090",
+      "sourceAlias": "L0710:S0",
+      "page": 24,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "c. Clause 8a, Article 91 is amended as follows:",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Amendment instruction \"c. Clause 8a, Article 91 is amended as follows:\" (body)",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Sub-heading specifying amendment to Clause 8a of Article 91.",
+      "qwenInterpretation": "Structural marker for detailed amendment content.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "090",
+      "sourceAlias": "L0714:S0",
+      "page": 24,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "d. Clause 15, Article 91 is amended as follows;",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Amendment instruction (body)",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Sub-heading specifying amendment to Clause 15 of Article 91.",
+      "qwenInterpretation": "Structural marker for detailed amendment content.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "090",
+      "sourceAlias": "L1867:S0",
+      "page": 62,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "1. Annul the following regulations of the Government’s Decree No. 75/2016/ND-CP dated July",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Numbered clause heading introducing a list of annulled regulations.",
+      "qwenInterpretation": "Functions as a structural marker introducing the annulment list for a specific decree.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "090",
+      "sourceAlias": "L1868:S0",
+      "page": 62,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "01, 2016 on conditions for HIV testing:",
+      "fontSize": 12,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Default: body text, list item, table cell, page number or other non-heading content on this page",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Continuation of the clause heading specifying the target decree.",
+      "qwenInterpretation": "Completes the heading phrase identifying the specific decree and topic.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "093",
+      "sourceAlias": "L0009:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "RFC 9112",
+      "fontSize": 17.2,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Document number \"RFC 9112\" above the title (bold 17.2) — drafted OTHER following the approved SRC-095 Gold convention (the RFC number is not a heading; the protocol name is the title)",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Main document title line.",
+      "qwenInterpretation": "Prominent bold title (size 17.2) establishing the primary document identity.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "094",
+      "sourceAlias": "L0008:S0",
+      "page": 1,
+      "pageStratum": "FIRST",
+      "text": "RFC 9113",
+      "fontSize": 17.2,
+      "boldRatio": 1,
+      "gold": "OTHER",
+      "goldRationale": "Document number \"RFC 9113\" above the title — drafted OTHER following the approved SRC-095 Gold convention",
+      "falsePositiveInArms": [
+        "A",
+        "B"
+      ],
+      "qwenObservedRole": "Primary document title.",
+      "qwenInterpretation": "Large bold typography (17.2pt) positioned centrally, establishing the main document title.",
+      "cause": "COVER_FRONT_MATTER_METADATA",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "094",
+      "sourceAlias": "L0493:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "idle: All streams start in the \"idle\" state.",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Definition-list term \"idle:\" run into its definition (state description, not a heading)",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Run-in heading defining the 'idle' stream state.",
+      "qwenInterpretation": "Substantive heading introducing the idle state section.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    },
+    {
+      "document": "094",
+      "sourceAlias": "L0512:S0",
+      "page": 16,
+      "pageStratum": "SEEDED_INTERIOR",
+      "text": "reserved (local): A stream in the \"reserved (local)\" state is one that has been promised by",
+      "fontSize": 10,
+      "boldRatio": 0,
+      "gold": "OTHER",
+      "goldRationale": "Definition-list term \"reserved (local):\" run into its definition",
+      "falsePositiveInArms": [
+        "A"
+      ],
+      "qwenObservedRole": "Run-in heading defining the 'reserved (local)' state.",
+      "qwenInterpretation": "Substantive heading introducing the reserved (local) state section.",
+      "cause": "NUMBERED_CLAUSE_LIST_ITEM_OR_THEOREM_LEADIN",
+      "deterministicSignal": null,
+      "goldDecidedThisCycle": false
+    }
+  ]
+}
