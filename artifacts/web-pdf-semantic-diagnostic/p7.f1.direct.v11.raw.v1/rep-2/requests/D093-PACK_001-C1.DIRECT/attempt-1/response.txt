@@ -1,0 +1,33 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D093-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "hhbq",
+      "evidenceRefs": ["hhbq"],
+      "justification": "Large bold font (17.2pt) positioned at the top of the page, forming the first line of the document title alongside the subsequent line."
+    },
+    {
+      "id": "zjqs",
+      "evidenceRefs": ["zjqs"],
+      "justification": "Large bold font (17.2pt) directly below 'RFC 9112', completing the two-line document title."
+    },
+    {
+      "id": "pcpv",
+      "evidenceRefs": ["pcpv"],
+      "justification": "Bold 14.4pt heading introducing the abstract section immediately following the title block."
+    },
+    {
+      "id": "wvpg",
+      "evidenceRefs": ["wvpg"],
+      "justification": "Bold 14.4pt heading introducing the 'Status of This Memo' section detailing publication and standards-track details."
+    },
+    {
+      "id": "czhc",
+      "evidenceRefs": ["czhc"],
+      "justification": "Bold 14.4pt heading introducing the copyright and legal provisions section at the bottom of the front matter."
+    }
+  ],
+  "unresolved": []
+}

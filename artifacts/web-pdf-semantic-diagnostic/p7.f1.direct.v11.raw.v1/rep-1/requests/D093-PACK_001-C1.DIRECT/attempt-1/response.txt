@@ -1,0 +1,34 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D093-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "hhbq",
+      "evidenceRefs": ["hhbq"],
+      "justification": "Main title line 1; large bold font (17.2pt) at top of page, naming the document and opening its content."
+    },
+    {
+      "id": "zjqs",
+      "evidenceRefs": ["zjqs"],
+      "justification": "Main title line 2; large bold font (17.2pt) directly below first line, completing the document name."
+    },
+    {
+      "id": "pcpv",
+      "evidenceRefs": ["pcpv"],
+      "justification": "Section heading; bold 14.4pt font positioned above abstract paragraph, opening the summary region."
+    },
+    {
+      "id": "wvpg",
+      "evidenceRefs": ["wvpg"],
+      "justification": "Section heading; bold 14.4pt font positioned above status paragraph, opening the memo status region."
+    },
+    {
+      "id": "czhc",
+      "evidenceRefs": ["czhc"],
+      "justification": "Section heading; bold 14.4pt font positioned above legal text, opening the copyright notice region."
+    }
+  ]
+}
+```

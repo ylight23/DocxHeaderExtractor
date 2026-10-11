@@ -1,0 +1,32 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D093-PACK_022-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "gzvm",
+      "evidenceRefs": ["gzvm"],
+      "justification": "Bold, size 12 at page top; forms first line of appendix section heading 'C.2.' introducing following content."
+    },
+    {
+      "id": "mmpg",
+      "evidenceRefs": ["mmpg"],
+      "justification": "Bold, size 12 aligned with preceding line; completes heading 'Changes from HTTP/1.0' opening this subsection."
+    },
+    {
+      "id": "kzhf",
+      "evidenceRefs": ["kzhf"],
+      "justification": "Bold, size 10; numbered subsection heading 'C.2.1. Multihomed Web Servers' introducing subsequent body text."
+    },
+    {
+      "id": "cjkq",
+      "evidenceRefs": ["cjkq"],
+      "justification": "Bold, size 10; numbered subsection heading 'C.2.2. Keep-Alive Connections' introducing subsequent body text."
+    },
+    {
+      "id": "wsnp",
+      "evidenceRefs": ["wsnp"],
+      "justification": "Bold, size 10; numbered subsection heading 'C.2.3. Introduction ofTransfer-Encoding' introducing subsequent body text."
+    }
+  ]
+}

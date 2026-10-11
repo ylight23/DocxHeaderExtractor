@@ -1,0 +1,30 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D093-PACK_001-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {"id": "sndf", "evidenceRefs": ["sndf"], "justification": "Heading opening the navigation region; operates at its location per guidelines."},
+    {"id": "wpfh", "evidenceRefs": ["wpfh"], "justification": "Numbered section heading introducing the following body text; standard RFC structural layout."},
+    {"id": "bbrv", "evidenceRefs": ["bbrv"], "justification": "Subsection heading introducing the following notation rules; standard RFC structural layout."},
+    {"id": "qfmc", "evidenceRefs": ["qfmc"], "justification": "Subsection heading introducing the following syntax rules; standard RFC structural layout."},
+    {"id": "sbjr", "evidenceRefs": ["sbjr"], "justification": "Numbered section heading introducing the following message definitions; standard RFC structural layout."},
+    {"id": "mpsn", "evidenceRefs": ["mpsn"], "justification": "Subsection heading introducing the following format specifications; standard RFC structural layout."},
+    {"id": "dsfq", "evidenceRefs": ["dsfq"], "justification": "Subsection heading introducing the following parsing procedures; standard RFC structural layout."},
+    {"id": "tfdf", "evidenceRefs": ["tfdf"], "justification": "Subsection heading introducing the following version details; standard RFC structural layout."},
+    {"id": "xzmk", "evidenceRefs": ["xzmk"], "justification": "Numbered section heading introducing the following request line specifications; standard RFC structural layout."},
+    {"id": "wwgn", "evidenceRefs": ["wwgn"], "justification": "Subsection heading introducing the following method definitions; standard RFC structural layout."},
+    {"id": "cpqc", "evidenceRefs": ["cpqc"], "justification": "Subsection heading introducing the following target forms; standard RFC structural layout."},
+    {"id": "hgvg", "evidenceRefs": ["hgvg"], "justification": "Sub-subsection heading introducing the following origin-form specification; standard RFC structural layout."},
+    {"id": "znnv", "evidenceRefs": ["znnv"], "justification": "Sub-subsection heading introducing the following absolute-form specification; standard RFC structural layout."},
+    {"id": "vpgg", "evidenceRefs": ["vpgg"], "justification": "Sub-subsection heading introducing the following authority-form specification; standard RFC structural layout."},
+    {"id": "fzzs", "evidenceRefs": ["fzzs"], "justification": "Sub-subsection heading introducing the following asterisk-form specification; standard RFC structural layout."},
+    {"id": "ddcg", "evidenceRefs": ["ddcg"], "justification": "Subsection heading introducing the following URI reconstruction procedure; standard RFC structural layout."},
+    {"id": "zqcd", "evidenceRefs": ["zqcd"], "justification": "Numbered section heading introducing the following status line specifications; standard RFC structural layout."},
+    {"id": "xjxb", "evidenceRefs": ["xjxb"], "justification": "Numbered section heading introducing the following field syntax rules; standard RFC structural layout."},
+    {"id": "rfsk", "evidenceRefs": ["rfsk"], "justification": "Subsection heading introducing the following field line parsing rules; standard RFC structural layout."},
+    {"id": "rmhk", "evidenceRefs": ["rmhk"], "justification": "Subsection heading introducing the following obsolete folding rules; standard RFC structural layout."},
+    {"id": "zsrx", "evidenceRefs": ["zsrx"], "justification": "Numbered section heading introducing the following message body definitions; standard RFC structural layout."},
+    {"id": "vtgd", "evidenceRefs": ["vtgd"], "justification": "Subsection heading introducing the following transfer encoding rules; standard RFC structural layout."},
+    {"id": "mjjv", "evidenceRefs": ["mjjv"], "justification": "Subsection heading introducing the following content-length rules; standard RFC structural layout."}
+  ]
+}

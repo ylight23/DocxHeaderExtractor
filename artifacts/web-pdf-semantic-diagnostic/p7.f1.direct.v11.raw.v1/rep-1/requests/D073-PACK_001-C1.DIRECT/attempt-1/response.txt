@@ -1,0 +1,59 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D073-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "kdmp",
+      "evidenceRefs": [
+        "kdmp"
+      ],
+      "justification": "Bold title line at the top of the page identifying the document."
+    },
+    {
+      "id": "nmdj",
+      "evidenceRefs": [
+        "nmdj"
+      ],
+      "justification": "Bold title line continuing the governing committee name."
+    },
+    {
+      "id": "frks",
+      "evidenceRefs": [
+        "frks"
+      ],
+      "justification": "Bold title line specifying the FORTIS Ukraine FIF fund."
+    },
+    {
+      "id": "kvbs",
+      "evidenceRefs": [
+        "kvbs"
+      ],
+      "justification": "Bold 'Opening:' label structurally introduces the opening remarks section."
+    },
+    {
+      "id": "gnmf",
+      "evidenceRefs": [
+        "gnmf"
+      ],
+      "justification": "Bold line introducing the first substantive discussion topic on available resources."
+    },
+    {
+      "id": "hbxr",
+      "evidenceRefs": [
+        "hbxr"
+      ],
+      "justification": "Bold line introducing the second major agenda item on PEACE financing."
+    },
+    {
+      "id": "rwjr",
+      "evidenceRefs": [
+        "rwjr"
+      ],
+      "justification": "Bold continuation of the PEACE financing heading."
+    }
+  ],
+  "unresolved": []
+}
+```

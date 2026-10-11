@@ -1,0 +1,25 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D015-PACK_022-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "btzq",
+      "evidenceRefs": ["btzq"],
+      "justification": "Bold 10pt, positioned at top of page block, introduces substantive legal provisions following it."
+    },
+    {
+      "id": "tbrj",
+      "evidenceRefs": ["tbrj"],
+      "justification": "Bold 10pt, structured as 'Article 79', opens the subsequent regulatory text block."
+    },
+    {
+      "id": "fjks",
+      "evidenceRefs": ["fjks"],
+      "justification": "Bold 10pt, directly continues the preceding heading line, completing the article title."
+    }
+  ],
+  "unresolved": []
+}
+```

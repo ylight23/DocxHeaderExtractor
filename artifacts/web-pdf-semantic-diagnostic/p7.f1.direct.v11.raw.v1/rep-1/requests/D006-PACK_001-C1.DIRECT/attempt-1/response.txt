@@ -1,0 +1,45 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D006-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "zgnk",
+      "evidenceRefs": ["zgnk"],
+      "justification": "Bold, centered title line 'LUẬT' identifying the document type, operating at its location before the substantive title."
+    },
+    {
+      "id": "trfs",
+      "evidenceRefs": ["trfs"],
+      "justification": "Bold, centered title line 'ĐẤT ĐAI' naming the law, operating at its location as the main title."
+    },
+    {
+      "id": "wfsk",
+      "evidenceRefs": ["wfsk"],
+      "justification": "Bold chapter heading 'Chương I' introducing the first substantive region of the law."
+    },
+    {
+      "id": "vmbk",
+      "evidenceRefs": ["vmbk"],
+      "justification": "Bold chapter title 'QUY ĐỊNH CHUNG' introducing the general provisions section."
+    },
+    {
+      "id": "zgpm",
+      "evidenceRefs": ["zgpm"],
+      "justification": "Bold article heading 'Điều 1. Phạm vi điều chỉnh' introducing the scope of regulation."
+    },
+    {
+      "id": "vjjj",
+      "evidenceRefs": ["vjjj"],
+      "justification": "Bold article heading 'Điều 2. Đối tượng áp dụng' introducing applicable targets."
+    },
+    {
+      "id": "ztwd",
+      "evidenceRefs": ["ztwd"],
+      "justification": "Bold article heading 'Điều 3. Giải thích từ ngữ' introducing terminology definitions."
+    }
+  ],
+  "unresolved": []
+}
+```

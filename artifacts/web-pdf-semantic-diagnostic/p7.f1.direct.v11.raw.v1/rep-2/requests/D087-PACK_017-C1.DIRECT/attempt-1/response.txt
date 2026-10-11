@@ -1,0 +1,30 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D087-PACK_017-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "cqpw",
+      "evidenceRefs": [
+        "cqpw"
+      ],
+      "justification": "Form title identifying the document; operates at its location to name the form that follows."
+    },
+    {
+      "id": "vpkf",
+      "evidenceRefs": [
+        "vpkf"
+      ],
+      "justification": "Numbered section heading introducing the conclusion region of the form."
+    },
+    {
+      "id": "hpjw",
+      "evidenceRefs": [
+        "hpjw"
+      ],
+      "justification": "Numbered section heading introducing the request region of the form."
+    }
+  ]
+}
+```

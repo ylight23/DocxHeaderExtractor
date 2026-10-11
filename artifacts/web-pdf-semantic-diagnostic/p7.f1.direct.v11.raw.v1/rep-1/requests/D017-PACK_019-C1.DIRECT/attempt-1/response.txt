@@ -1,0 +1,25 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D017-PACK_019-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "hfsd",
+      "evidenceRefs": ["hfsd"],
+      "justification": "Bold font (arial-boldmt) at page top (pos:1). Names Article 59 'Hiệu lực thi hành' and opens the subsequent numbered provisions on effective date."
+    },
+    {
+      "id": "gpfb",
+      "evidenceRefs": ["gpfb"],
+      "justification": "Bold font at mid-page (pos:0.58). Names Article 60 'Xử lý chuyển tiếp' and introduces the following transitional measures clauses."
+    },
+    {
+      "id": "cpjt",
+      "evidenceRefs": ["cpjt"],
+      "justification": "Bold font near page bottom (pos:0.13). Names Article 61 'Trách nhiệm thi hành' and opens the final provisions assigning implementation duties."
+    }
+  ],
+  "unresolved": []
+}
+```

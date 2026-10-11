@@ -1,0 +1,142 @@
+{
+  "version": "P7_F1_BINARY_HEADING_EVALUATOR_V1_DECISION_EVIDENCE_CONSISTENCY_AUDIT",
+  "boundPredictionsSha256": "55523a8eca7539c83beb4f1cbddd61f7db648fcb61aef8f539417fa76583288d",
+  "goldRead": false,
+  "selections": 504,
+  "flagged": 16,
+  "byCue": {
+    "NAVIGATION": 15,
+    "RUNNING_FURNITURE": 1
+  },
+  "rows": [
+    {
+      "document": "034",
+      "sourceAlias": "L0211:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading opening the Table of Contents navigation region, bold font."
+    },
+    {
+      "document": "034",
+      "sourceAlias": "L2454:S0",
+      "cues": [
+        "RUNNING_FURNITURE"
+      ],
+      "justification": "Section heading introducing the bidding forms region at its location; repeated elsewhere as running header but operates here as main section title."
+    },
+    {
+      "document": "032",
+      "sourceAlias": "L0283:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading opening the table of contents navigation region, operates at its location."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0006:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Bold 14pt line at top of page 3; explicitly names and opens the table of contents navigation region."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0044:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Opens the navigation region for tables, figures, and boxes; bold layout at page top functions as a genuine heading at its location."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0045:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Introduces the subsequent list of tables; bold layout at page top marks it as a genuine heading operating at its own location."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0074:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Bold, larger font (size 11) line introducing the subsequent list of figure captions; operates as a section heading for the list of figures."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0007:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Opens the table of contents navigation section, bold and prominent at top of page 3."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0020:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Opens the list of tables navigation section, bold and prominent below the main contents list."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0035:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Bold, size 14 layout marking the start of the figures list. Operates as the heading opening the list-of-figures navigation region."
+    },
+    {
+      "document": "056",
+      "sourceAlias": "L0078:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Opens the table of contents navigation region on page 7; functions as the heading for this section at its location."
+    },
+    {
+      "document": "064",
+      "sourceAlias": "L0057:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Opens the table of contents navigation region on this page; operates as the heading for the TOC block."
+    },
+    {
+      "document": "060",
+      "sourceAlias": "L0027:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading opening the table of contents navigation region; positioned at top of page with larger font size than entries below."
+    },
+    {
+      "document": "067",
+      "sourceAlias": "L0018:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading opening the table of contents region. Visually prominent (size 24.8) and positioned at top of page 2, introducing the navigation list below."
+    },
+    {
+      "document": "093",
+      "sourceAlias": "L0043:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading opening the navigation region; operates at its location per guidelines."
+    },
+    {
+      "document": "094",
+      "sourceAlias": "L0035:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading opening the Table of Contents navigation region; bold layout at top of page."
+    }
+  ],
+  "note": "audit only: a flagged selection is a selection whose own justification names a non-heading role; nothing is removed or rescored"
+}

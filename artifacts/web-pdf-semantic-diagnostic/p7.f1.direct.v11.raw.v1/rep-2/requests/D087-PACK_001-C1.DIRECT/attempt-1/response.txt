@@ -1,0 +1,32 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D087-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "vsgq",
+      "evidenceRefs": ["vsgq"],
+      "justification": "Document type title line. Bold, size 14, centered layout block b7, positioned prominently at top of page preceding the specific decree title."
+    },
+    {
+      "id": "fmsr",
+      "evidenceRefs": ["fmsr"],
+      "justification": "Subtitle specifying the decree's scope. Bold, size 14, layout block b8, directly follows the document type heading and introduces the regulatory content."
+    },
+    {
+      "id": "dhrd",
+      "evidenceRefs": ["dhrd"],
+      "justification": "Chapter heading. Bold, size 14, layout block b16, isolated line introducing the first substantive section of the decree."
+    },
+    {
+      "id": "hhsf",
+      "evidenceRefs": ["hhsf"],
+      "justification": "Chapter title. Bold, size 14, layout block b17, follows the chapter number and names the general provisions region."
+    },
+    {
+      "id": "rvtz",
+      "evidenceRefs": ["rvtz"],
+      "justification": "Article heading. Bold, size 14, layout block b18, introduces the first article's scope of regulation, followed by detailed regulatory text."
+    }
+  ]
+}

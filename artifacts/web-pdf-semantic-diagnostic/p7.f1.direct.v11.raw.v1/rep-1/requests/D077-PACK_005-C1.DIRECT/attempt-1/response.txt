@@ -1,0 +1,31 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D077-PACK_005-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "cwpp",
+      "evidenceRefs": [
+        "cwpp"
+      ],
+      "justification": "Bold, large font at page top; names Session IV and introduces the substantive discussion content that follows on this page."
+    },
+    {
+      "id": "cqrk",
+      "evidenceRefs": [
+        "cqrk"
+      ],
+      "justification": "Standalone line directly below Session IV heading; functions as an agenda item title introducing the presentation and discussion that follow."
+    },
+    {
+      "id": "tmjv",
+      "evidenceRefs": [
+        "tmjv"
+      ],
+      "justification": "Bold, distinct layout near page bottom; standard meeting agenda heading introducing the Any Other Business section."
+    }
+  ],
+  "unresolved": []
+}
+```

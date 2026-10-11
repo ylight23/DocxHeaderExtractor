@@ -1,0 +1,24 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D088-PACK_028-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "qkpd",
+      "evidenceRefs": ["qkpd"],
+      "justification": "Bold standalone line 'APPENDIX VII' introduces the subsequent list and notes at this location."
+    },
+    {
+      "id": "ktcr",
+      "evidenceRefs": ["ktcr"],
+      "justification": "First line of the appendix title 'LIST OF FROZEN FOOD TRADED IN TEMPORARY IMPORTATION UNDER GIVEN', operating at its location to name the following content."
+    },
+    {
+      "id": "cxkq",
+      "evidenceRefs": ["cxkq"],
+      "justification": "Second line completing the appendix title 'CONDITIONS', directly continuing the heading above."
+    }
+  ]
+}
+```

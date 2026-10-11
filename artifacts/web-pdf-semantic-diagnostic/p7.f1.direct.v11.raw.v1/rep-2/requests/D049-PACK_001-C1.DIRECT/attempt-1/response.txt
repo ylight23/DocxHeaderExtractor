@@ -1,0 +1,27 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D049-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "scgm",
+      "evidenceRefs": ["scgm"],
+      "justification": "Main document title, large font at top of page 1, names the report."
+    },
+    {
+      "id": "srtv",
+      "evidenceRefs": ["srtv"],
+      "justification": "Subtitle specifying the financial statements covered, part of the title block on page 1."
+    },
+    {
+      "id": "bsvb",
+      "evidenceRefs": ["bsvb"],
+      "justification": "Opens the table of contents navigation section, bold and prominent at top of page 3."
+    },
+    {
+      "id": "rxsx",
+      "evidenceRefs": ["rxsx"],
+      "justification": "Opens the list of tables navigation section, bold and prominent below the main contents list."
+    }
+  ]
+}

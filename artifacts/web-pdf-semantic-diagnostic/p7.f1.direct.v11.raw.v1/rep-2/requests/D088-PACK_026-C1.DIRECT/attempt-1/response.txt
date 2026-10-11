@@ -1,0 +1,45 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D088-PACK_026-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "mhhx",
+      "evidenceRefs": [
+        "mhhx"
+      ],
+      "justification": "Bold, uppercase opening line of a multi-line section heading introducing the following list of exported/imported goods."
+    },
+    {
+      "id": "pnnf",
+      "evidenceRefs": [
+        "pnnf"
+      ],
+      "justification": "Bold, uppercase middle line continuing the section heading across layout blocks."
+    },
+    {
+      "id": "qnkg",
+      "evidenceRefs": [
+        "qnkg"
+      ],
+      "justification": "Bold, uppercase closing line of the section heading, naming the State Bank of Vietnam as authority."
+    },
+    {
+      "id": "tvsq",
+      "evidenceRefs": [
+        "tvsq"
+      ],
+      "justification": "Bold, standalone text marking the beginning of Appendix IV."
+    },
+    {
+      "id": "mwfx",
+      "evidenceRefs": [
+        "mwfx"
+      ],
+      "justification": "Uppercase title introducing the specific list of goods threatening national defense and security."
+    }
+  ],
+  "unresolved": []
+}
+```

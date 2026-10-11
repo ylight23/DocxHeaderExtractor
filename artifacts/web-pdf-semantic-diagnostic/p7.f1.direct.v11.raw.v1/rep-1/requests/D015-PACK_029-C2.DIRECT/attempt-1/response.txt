@@ -1,0 +1,27 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D015-PACK_029-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "drmz",
+      "evidenceRefs": ["drmz"],
+      "justification": "Bold font (boldRatio=1) with 'Điều 112.' prefix, positioned above continuous body text. Operates as the title for Article 112 at this location."
+    },
+    {
+      "id": "xqbp",
+      "evidenceRefs": ["xqbp"],
+      "justification": "Bold font continuing the article title from the preceding line. Completes the heading 'Điều 112. ... ngân hàng thương mại' introducing the following provisions."
+    },
+    {
+      "id": "vxjg",
+      "evidenceRefs": ["vxjg"],
+      "justification": "Bold font (size 10) with 'Điều 1 1 3.' prefix, separated from previous text by vertical space. Introduces the substantive region of Article 113."
+    },
+    {
+      "id": "rkzv",
+      "evidenceRefs": ["rkzv"],
+      "justification": "Bold font (size 10) with 'Điều 1 1 4.' prefix, distinct layout block. Functions as the heading opening Article 114's content."
+    }
+  ]
+}

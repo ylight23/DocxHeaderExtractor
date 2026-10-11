@@ -1,0 +1,29 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D083-PACK_016-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "wscr",
+      "evidenceRefs": ["wscr"],
+      "justification": "Identifies the start of the Article 38 heading; names the ministry and introduces the substantive responsibilities listed immediately below at this location."
+    },
+    {
+      "id": "ddrr",
+      "evidenceRefs": ["ddrr"],
+      "justification": "Completes the Article 38 heading wording; sits directly below the first line and jointly names the section opening the following clauses."
+    },
+    {
+      "id": "rfdm",
+      "evidenceRefs": ["rfdm"],
+      "justification": "Identifies the start of the Article 40 heading; names the responsible bodies and introduces the substantive provisions listed immediately below at this location."
+    },
+    {
+      "id": "pmrs",
+      "evidenceRefs": ["pmrs"],
+      "justification": "Completes the Article 40 heading wording; sits directly below the first line and jointly names the section opening the following clauses."
+    }
+  ]
+}
+```

@@ -1,0 +1,168 @@
+{
+  "version": "P7_F1_BINARY_HEADING_EVALUATOR_V1_DECISION_EVIDENCE_CONSISTENCY_AUDIT",
+  "boundPredictionsSha256": "a3c4bf8f7715cd794d184fa16e0780f70c4687213ef34b6e64779621602f549c",
+  "goldRead": false,
+  "selections": 540,
+  "flagged": 19,
+  "byCue": {
+    "NAVIGATION": 15,
+    "TABLE_DATA": 1,
+    "FRONT_MATTER": 1,
+    "RUNNING_FURNITURE": 2
+  },
+  "rows": [
+    {
+      "document": "034",
+      "sourceAlias": "L0211:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading for the navigation region itself; bold layout, introduces the contents list."
+    },
+    {
+      "document": "032",
+      "sourceAlias": "L0283:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading opening the Table of Contents region; bold layout at top of page 14."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0006:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading introducing the table of contents; positioned at top of page 3, distinct from subsequent navigation entries."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0044:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading opening the navigation region; bold, larger font at page top distinguishes it from subsequent list entries."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0074:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Opens the list of figures navigation region; bold layout and position distinguish it as a section heading introducing the following entries."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0091:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Opens the list of boxes navigation region; bold layout and position distinguish it as a section heading introducing the following entries."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0007:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Opens the table-of-contents navigation region; operates as a heading at its location."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0020:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Opens the list-of-tables navigation region; operates as a heading at its location."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0035:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Bold, larger font (size 14) serving as a section heading introducing the list of figures on this page."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1934:S0",
+      "cues": [
+        "TABLE_DATA"
+      ],
+      "justification": "Category label introducing the Investments\u2014Trading subsection within Assets, structuring detailed line items."
+    },
+    {
+      "document": "051",
+      "sourceAlias": "L0004:S0",
+      "cues": [
+        "FRONT_MATTER"
+      ],
+      "justification": "Medium-large font (20.6pt) below dknn, provides the reporting period for the title."
+    },
+    {
+      "document": "051",
+      "sourceAlias": "L0126:S0",
+      "cues": [
+        "RUNNING_FURNITURE"
+      ],
+      "justification": "Section heading \u0027Key Trust Fund Activity\u0027 at page 9, top position (pos=0.96), larger font (10.4pt) than body text (9.3pt), introduces substantive content region. Repeats on pages 8, 10, 11 as a recurring section heading, not a running header (no page number)."
+    },
+    {
+      "document": "051",
+      "sourceAlias": "L0212:S0",
+      "cues": [
+        "RUNNING_FURNITURE"
+      ],
+      "justification": "10.4pt font near top of page, introduces section content, distinct from repeating running headers."
+    },
+    {
+      "document": "056",
+      "sourceAlias": "L0078:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading opening the table of contents navigation region; positioned at top of page with distinct layout."
+    },
+    {
+      "document": "064",
+      "sourceAlias": "L0055:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Opens the table of contents navigation region; acts as the section heading for this page."
+    },
+    {
+      "document": "060",
+      "sourceAlias": "L0027:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading opening the table of contents navigation region; operates at its own location on page 2."
+    },
+    {
+      "document": "067",
+      "sourceAlias": "L0018:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Opens the Table of Contents navigation region at its location. The heading introducing a navigation area operates here per the at-location condition."
+    },
+    {
+      "document": "093",
+      "sourceAlias": "L0043:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading \u0027Table of Contents\u0027 introduces the navigation region at this location."
+    },
+    {
+      "document": "094",
+      "sourceAlias": "L0035:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading introducing the table of contents region at its location."
+    }
+  ],
+  "note": "audit only: a flagged selection is a selection whose own justification names a non-heading role; nothing is removed or rescored"
+}

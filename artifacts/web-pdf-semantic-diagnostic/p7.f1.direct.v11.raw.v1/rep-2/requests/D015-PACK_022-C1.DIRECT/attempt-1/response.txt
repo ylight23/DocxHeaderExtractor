@@ -1,0 +1,30 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D015-PACK_022-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "btzq",
+      "evidenceRefs": [
+        "btzq"
+      ],
+      "justification": "Bold, size 10 font at top of page block; introduces Article 78 content below. Standard legal article heading format."
+    },
+    {
+      "id": "tbrj",
+      "evidenceRefs": [
+        "tbrj"
+      ],
+      "justification": "Bold, size 10 font; opens Article 79 section on member councils. Splits across two lines with subsequent line."
+    },
+    {
+      "id": "fjks",
+      "evidenceRefs": [
+        "fjks"
+      ],
+      "justification": "Continuation of the preceding heading line; shares identical bold typography and layout position, completing the article title."
+    }
+  ]
+}
+```

@@ -1,0 +1,24 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D051-PACK_002-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "pbsk",
+      "evidenceRefs": [
+        "pbsk"
+      ],
+      "justification": "Large bold font at top of page, introduces the subsequent portfolio overview section."
+    },
+    {
+      "id": "bskx",
+      "evidenceRefs": [
+        "bskx"
+      ],
+      "justification": "Bold formatting at mid-page, introduces the bulleted key metrics discussion below."
+    }
+  ],
+  "unresolved": []
+}
+```

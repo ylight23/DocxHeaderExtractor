@@ -1,0 +1,36 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D017-PACK_020-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "gdzr",
+      "evidenceRefs": [
+        "gdzr"
+      ],
+      "justification": "Bold, centered text 'TỜKHAI' sits at the top of the form block, operating as the document's primary title identifying the form type."
+    },
+    {
+      "id": "pktf",
+      "evidenceRefs": [
+        "pktf"
+      ],
+      "justification": "Bold, centered subtitle directly below the form title, specifying the exact registration purpose and operating as the form's subtitle."
+    },
+    {
+      "id": "hscm",
+      "evidenceRefs": [
+        "hscm"
+      ],
+      "justification": "Numbered section heading '1.Hìnhthứchóađơn:' introduces the subsequent checkbox options for invoice types within the form structure."
+    },
+    {
+      "id": "xqtk",
+      "evidenceRefs": [
+        "xqtk"
+      ],
+      "justification": "Numbered section heading '2.Hìnhthứcgửidữliệuhóađơnđiệntử:' introduces the following data transmission method options, functioning as a substantive section heading."
+    }
+  ],
+  "unresolved": []
+}

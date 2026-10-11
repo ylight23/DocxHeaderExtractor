@@ -1,0 +1,34 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D088-PACK_026-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "mhhx",
+      "evidenceRefs": ["mhhx"],
+      "justification": "Bold, uppercase text starting a multi-line section heading 'VIII. LIST OF EXPORTED AND IMPORTED GOODS...' that introduces the following regulatory list."
+    },
+    {
+      "id": "pnnf",
+      "evidenceRefs": ["pnnf"],
+      "justification": "Continuation of the bold, uppercase section heading spanning multiple lines, introducing the substantive list below."
+    },
+    {
+      "id": "qnkg",
+      "evidenceRefs": ["qnkg"],
+      "justification": "Final line of the bold, uppercase section heading '...STATE BANK OF VIETNAM', opening the subsequent table/list."
+    },
+    {
+      "id": "tvsq",
+      "evidenceRefs": ["tvsq"],
+      "justification": "Bold, uppercase standalone line 'APPENDIX IV' marking the start of a new appendix section."
+    },
+    {
+      "id": "mwfx",
+      "evidenceRefs": ["mwfx"],
+      "justification": "Uppercase title line 'LIST OF GOODS POSING THREATS...' introducing the appendix content at its location."
+    }
+  ]
+}
+```

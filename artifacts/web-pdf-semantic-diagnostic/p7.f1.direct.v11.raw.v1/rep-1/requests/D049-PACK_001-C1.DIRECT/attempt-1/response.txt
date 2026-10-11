@@ -1,0 +1,32 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D049-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "scgm",
+      "evidenceRefs": ["scgm"],
+      "justification": "Title component; large font on cover page, introduces the document content."
+    },
+    {
+      "id": "hmbq",
+      "evidenceRefs": ["hmbq"],
+      "justification": "Connects title phrases on cover page; part of the full document title."
+    },
+    {
+      "id": "srtv",
+      "evidenceRefs": ["srtv"],
+      "justification": "Title component; large font on cover page, names the financial statements section."
+    },
+    {
+      "id": "bsvb",
+      "evidenceRefs": ["bsvb"],
+      "justification": "Opens the table-of-contents navigation region; operates as a heading at its location."
+    },
+    {
+      "id": "rxsx",
+      "evidenceRefs": ["rxsx"],
+      "justification": "Opens the list-of-tables navigation region; operates as a heading at its location."
+    }
+  ]
+}

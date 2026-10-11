@@ -1,0 +1,31 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D049-PACK_047-C2",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "qtbg",
+      "evidenceRefs": [
+        "qtbg"
+      ],
+      "justification": "Colon-suffixed label introducing the derivative liabilities subsection, structuring the financial data that follows."
+    },
+    {
+      "id": "cmcv",
+      "evidenceRefs": [
+        "cmcv"
+      ],
+      "justification": "Bold text marking the start of the Assets section, organizing the subsequent fair value measurements."
+    },
+    {
+      "id": "xrpf",
+      "evidenceRefs": [
+        "xrpf"
+      ],
+      "justification": "Category label introducing the Investments—Trading subsection within Assets, structuring detailed line items."
+    }
+  ],
+  "unresolved": []
+}
+```

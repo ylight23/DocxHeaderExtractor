@@ -1,0 +1,35 @@
+```json
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D094-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "gtrk",
+      "evidenceRefs": ["gtrk"],
+      "justification": "Large bold font (17.2pt) at top of page; forms first line of the document title introducing the specification."
+    },
+    {
+      "id": "hfpt",
+      "evidenceRefs": ["hfpt"],
+      "justification": "Large bold font (17.2pt) directly below title line; forms second line of the document title introducing the specification."
+    },
+    {
+      "id": "prnw",
+      "evidenceRefs": ["prnw"],
+      "justification": "Larger bold font (14.4pt) positioned above summary paragraph; introduces the abstract section at its location."
+    },
+    {
+      "id": "tvsp",
+      "evidenceRefs": ["tvsp"],
+      "justification": "Larger bold font (14.4pt) positioned above legal text; introduces the status section at its location."
+    },
+    {
+      "id": "wmjp",
+      "evidenceRefs": ["wmjp"],
+      "justification": "Larger bold font (14.4pt) positioned above copyright text; introduces the copyright notice section at its location."
+    }
+  ],
+  "unresolved": []
+}
+```

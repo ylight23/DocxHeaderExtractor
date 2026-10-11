@@ -1,0 +1,28 @@
+{
+  "protocolVersion": "P7_F1_DIRECT_HEADING_V1_1",
+  "requestId": "D079-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "headings": [
+    {
+      "id": "mgjq",
+      "evidenceRefs": ["mgjq"],
+      "justification": "Main document title positioned at the top of page 1, bold, introducing the entire record."
+    },
+    {
+      "id": "fxnp",
+      "evidenceRefs": ["fxnp"],
+      "justification": "Bold, larger font (size 12) line introducing the first substantive section of the meeting minutes."
+    },
+    {
+      "id": "ppgc",
+      "evidenceRefs": ["ppgc"],
+      "justification": "Bold, larger font (size 12) line marking the start of Session I content."
+    },
+    {
+      "id": "mmsh",
+      "evidenceRefs": ["mmsh"],
+      "justification": "Bold line introducing the specific presentation topic within Session I."
+    }
+  ],
+  "unresolved": []
+}
