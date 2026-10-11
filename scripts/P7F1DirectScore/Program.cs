@@ -135,6 +135,8 @@ JsonObject Score(Dictionary<string, string> pred, string goldFreezePath, string 
         ["version"] = Version, ["arm"] = arm, ["goldFreezeSha256"] = goldFreezeSha, ["provenance"] = provenance,
         ["universe"] = "adjudicated Gold rows (LABELED); EXCLUDED_* not scored", ["excludedRows"] = excluded,
         ["overall"] = overall,
+        // Diagnostic only (never a gate): the same metrics over rows whose request was accepted, separating contract loss from semantic error.
+        ["acceptedRequestsOnlyDiagnostic"] = M(rows.Where(r => r.Pred != "MISSING")),
         ["gates"] = new JsonObject
         {
             ["headingPrecision>=0.90"] = overall["precision"] is { } pp && pp.GetValue<double>() >= 0.90,
@@ -197,8 +199,8 @@ JsonObject Paired(string aPath, string bPath)
         ["version"] = Version + "_PAIRED", ["armA"] = a["arm"]!.GetValue<string>(), ["armB"] = b["arm"]!.GetValue<string>(),
         ["scoreASha256"] = Sha(File.ReadAllBytes(aPath)), ["scoreBSha256"] = Sha(File.ReadAllBytes(bPath)), ["rows"] = ra.Count, ["documents"] = docs.Length,
         ["armAF1"] = R(F1(all)), ["armBF1"] = R(F1(allB)), ["armAPrecision"] = R(Prec(all)), ["armBPrecision"] = R(Prec(allB)), ["armARecall"] = R(Rec(all)), ["armBRecall"] = R(Rec(allB)),
-        ["rowMcNemar"] = new JsonObject { ["wrongToRight"] = w2r, ["rightToWrong"] = r2w, ["exactTwoSidedP"] = R(McNemar(w2r, r2w)), ["note"] = "rows within a page/document are correlated" },
-        ["documentSignTestOnF1"] = new JsonObject { ["better"] = better, ["worse"] = worse, ["ties"] = docs.Length - better - worse, ["exactTwoSidedP"] = R(McNemar(better, worse)) },
+        ["rowMcNemar"] = new JsonObject { ["wrongToRight"] = w2r, ["rightToWrong"] = r2w, ["exactTwoSidedP"] = McNemar(w2r, r2w), ["pDisplay"] = PDisplay(McNemar(w2r, r2w)), ["note"] = "rows within a page/document are correlated; p kept at full precision (V1 rounded it to 4 decimals)" },
+        ["documentSignTestOnF1"] = new JsonObject { ["better"] = better, ["worse"] = worse, ["ties"] = docs.Length - better - worse, ["exactTwoSidedP"] = McNemar(better, worse), ["pDisplay"] = PDisplay(McNemar(better, worse)) },
         ["documentClusterBootstrap"] = new JsonObject { ["resamples"] = B, ["seed"] = 20261011, ["deltaF1Ci95"] = Ci(dF1), ["deltaPrecisionCi95"] = Ci(dP), ["deltaRecallCi95"] = Ci(dR) },
         ["perDocumentF1Delta"] = new JsonObject(perDoc.Select(x => KeyValuePair.Create(x.d, (JsonNode?)R(x.delta)))),
     };
@@ -211,6 +213,7 @@ static double McNemar(int b, int c)
     for (var i = 0; i <= Math.Min(b, c); i++) { double lc = 0; for (var j = 1; j <= i; j++) lc += Math.Log(n - i + j) - Math.Log(j); tail += Math.Exp(lc + logHalf); }
     return Math.Min(1.0, 2 * tail);
 }
+static string PDisplay(double p) => p < 1e-4 ? "p < 0.0001" : $"p = {p:0.0000}";
 static double? R(double? v) => v is null ? null : Math.Round(v.Value, 4);
 static JsonObject? Wilson(int k, int n)
 {
