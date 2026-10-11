@@ -22,8 +22,9 @@ var policyV42 = policyV3 with { ToolSet = 3 };
 // "-layout" modes run the layout-aware chunking arm (2026-10-11): same composition, only pack/chunk boundaries differ.
 LayoutArm.On = args[0].EndsWith("-layout", StringComparison.Ordinal);
 // "-v11" direct modes use P7_F1_DIRECT_HEADING_V1_1 (opaque ids, no hash echo, at-location prompt); V1 stays for the pilot.
-DirectV.V11 = args[0].EndsWith("-v11", StringComparison.Ordinal) || args[0].EndsWith("-v42", StringComparison.Ordinal);
-DirectV.V42 = args[0].EndsWith("-v42", StringComparison.Ordinal);
+DirectV.V5 = args[0].EndsWith("-v5", StringComparison.Ordinal);
+DirectV.V11 = args[0].EndsWith("-v11", StringComparison.Ordinal) || args[0].EndsWith("-v42", StringComparison.Ordinal) || DirectV.V5;
+DirectV.V42 = args[0].EndsWith("-v42", StringComparison.Ordinal) || DirectV.V5;
 switch (args[0])
 {
     case "probe":
@@ -374,6 +375,7 @@ switch (args[0])
     case "prepare-direct":
     case "prepare-direct-v11":
     case "prepare-direct-v42":
+    case "prepare-direct-v5":
     {
         // Issue #7 P7_F1_DIRECT_HEADING_V1: layout-aware packs/chunks (same as the F1Q V2 layout control), the direct
         // heading-membership prompt and source enrichment V1. No Gold, no provider calls.
@@ -398,7 +400,7 @@ switch (args[0])
         var plan = SpatialCanonical.Bytes(new
         {
             version = "P7_F1_DIRECT_PLAN_" + Path.GetFileNameWithoutExtension(args[2]).Split('.').Last().ToUpperInvariant(), status = "FROZEN_BEFORE_PROVIDER",
-            issue = "ylight23/DocxHeaderExtractor#7", protocolVersion = DirectV.V11 ? P7F1DirectProtocolV11.Version : P7F1DirectProtocol.Version, systemPromptSha256 = DirectV.V11 ? P7F1DirectProtocolV11.PromptSha256() : P7F1DirectProtocol.PromptSha256(),
+            issue = "ylight23/DocxHeaderExtractor#7", protocolVersion = DirectV.V5 ? P7F1RegionProtocolV5.Version : DirectV.V11 ? P7F1DirectProtocolV11.Version : P7F1DirectProtocol.Version, systemPromptSha256 = DirectV.V5 ? P7F1RegionProtocolV5.PromptSha256() : DirectV.V11 ? P7F1DirectProtocolV11.PromptSha256() : P7F1DirectProtocol.PromptSha256(),
             enrichmentVersion = DirectV.V42 ? P7F1SourceEnrichment.VersionV2 : P7F1SourceEnrichment.Version, packing = P7F1QLayoutPacking.Version, chunkSize = P7F1QProtocolV2.ChunkSize,
             toolsVersion = DirectV.V42 ? P7F1QEvidenceTools.VersionV3 : P7F1QEvidenceTools.VersionV2, toolDefinitionsSha256 = SpatialCanonical.Hash(Encoding.UTF8.GetBytes(P7F1QEvidenceTools.DefinitionsV2(DirectV.V42).ToJsonString())),
             model = policyV3.Model, providerRoute = new { order = new[] { "alibaba" }, allowFallbacks = false, requireParameters = true },
@@ -410,7 +412,7 @@ switch (args[0])
             requests = rows, worstCaseTotalUsdAllRequestsTwoAttempts = rows.Sum(x => JsonSerializer.SerializeToElement(x).GetProperty("worstCaseRequestUsd").GetDecimal()) * 2,
             goldRead = false, providerCalls = 0, productionChanged = false,
             sources = new[] { "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectProtocol.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectProtocolV11.cs",
-                "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectBinderV11.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1SourceEnrichment.cs",
+                "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectBinderV11.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1RegionProtocolV5.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1RegionBinderV5.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1SourceEnrichment.cs",
                 "src/DocxHeaderExtractor.V5Qualification/P7/P7F1DirectBinder.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QEvidenceTools.cs",
                 "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QConversation.cs", "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QFenceNormalization.cs",
                 "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QLayoutPacking.cs", "scripts/P7F1Q/Program.cs" }
@@ -424,6 +426,7 @@ switch (args[0])
     case "execute-direct":
     case "execute-direct-v11":
     case "execute-direct-v42":
+    case "execute-direct-v5":
     {
         // Paid-call gate (Issue #7): a user provider authorization pinned to THIS plan sha, with its own USD cap, is required.
         if (args.Length < 6) throw new ArgumentException("execute-direct <plan.json> <plan-sha256> <bodies-dir> <authorization.json> <capture-root> [handle,...]");
@@ -491,6 +494,7 @@ switch (args[0])
     case "bind-direct":
     case "bind-direct-v11":
     case "bind-direct-v42":
+    case "bind-direct-v5":
     {
         // Exact binding of FROZEN raw (manifest pinned) to parser-authoritative source; no Gold is read here.
         if (args.Length != 6) throw new ArgumentException("bind-direct <plan.json> <plan-sha256> <capture-root> <raw-manifest-sha256> <new-bound.json>");
@@ -500,7 +504,7 @@ switch (args[0])
         var root = Path.GetFullPath(args[3]);
         ReadPinned(Path.Combine(root, "manifest.json"), args[4]);
         var bound = BindDirect(plan.RootElement, root, PageSelectionFor(plan.RootElement));
-        var bytes = SpatialCanonical.Bytes(new { version = "P7_F1_DIRECT_BOUND_PREDICTIONS_V1", binder = DirectV.V11 ? P7F1DirectBinderV11.Version : P7F1DirectBinder.Version, planSha256 = args[2], rawManifestSha256 = args[4],
+        var bytes = SpatialCanonical.Bytes(new { version = "P7_F1_DIRECT_BOUND_PREDICTIONS_V1", binder = DirectV.V5 ? P7F1RegionBinderV5.Version : DirectV.V11 ? P7F1DirectBinderV11.Version : P7F1DirectBinder.Version, planSha256 = args[2], rawManifestSha256 = args[4],
             goldRead = false, statuses = bound.GroupBy(b => b["status"]!.GetValue<string>()).ToDictionary(g => g.Key, g => g.Count()), requests = bound });
         P7F1QConversationRunner.WriteNew(args[5], bytes);
         Console.WriteLine(JsonSerializer.Serialize(new { status = "BOUND", sha256 = SpatialCanonical.Hash(bytes), requests = bound.Count }));
@@ -534,12 +538,13 @@ IEnumerable<DirectRequest> DirectRequests(byte[] selectionBytes)
 
 static byte[] DirectBody(P7F1QConversationRunner runner, DirectRequest r) => runner.Body(new JsonArray
 {
-    new JsonObject { ["role"] = "system", ["content"] = r.Ids is null ? P7F1DirectProtocol.SystemPrompt() : P7F1DirectProtocolV11.SystemPrompt() },
+    new JsonObject { ["role"] = "system", ["content"] = r.Ids is null ? P7F1DirectProtocol.SystemPrompt() : DirectV.V5 ? P7F1RegionProtocolV5.SystemPrompt() : P7F1DirectProtocolV11.SystemPrompt() },
     new JsonObject { ["role"] = "user", ["content"] = DirectUser(r) },
 }, true, "auto");
 
 static string DirectUser(DirectRequest r) => r.Ids is null
     ? P7F1DirectProtocol.UserMessage(r.RequestId, r.Scope, r.Subjects, r.Context, r.Case.ToolsV2, r.Enrichment)
+    : DirectV.V5 ? P7F1RegionProtocolV5.UserMessage(r.RequestId, r.Subjects, r.Ids, r.Context, r.Case.ToolsV2, r.Enrichment)
     : P7F1DirectProtocolV11.UserMessage(r.RequestId, r.Subjects, r.Ids, r.Context, r.Case.ToolsV2, r.Enrichment);
 
 static F1QRequestSpec DirectSpec(DirectRequest r, byte[] body, string handle)
@@ -550,8 +555,9 @@ static F1QRequestSpec DirectSpec(DirectRequest r, byte[] body, string handle)
     var citable = r.Case.Source.Atoms.Select(a => a.Alias).ToHashSet(StringComparer.Ordinal);
     Func<string, F1QValidation> validator = r.Ids is null
         ? text => P7F1DirectProtocol.Validate(text, r.RequestId, r.Scope, issued, citable)
+        : DirectV.V5 ? text => P7F1RegionProtocolV5.Validate(text, r.RequestId, r.Subjects, r.Ids, citable)
         : text => P7F1DirectProtocolV11.Validate(text, r.RequestId, r.Subjects, r.Ids, citable);
-    return new F1QRequestSpec(handle, r.Case.Case, F1QArm.F1QEvidenceV2, r.Ids is null ? P7F1DirectProtocol.SystemPrompt() : P7F1DirectProtocolV11.SystemPrompt(),
+    return new F1QRequestSpec(handle, r.Case.Case, F1QArm.F1QEvidenceV2, r.Ids is null ? P7F1DirectProtocol.SystemPrompt() : DirectV.V5 ? P7F1RegionProtocolV5.SystemPrompt() : P7F1DirectProtocolV11.SystemPrompt(),
         DirectUser(r), issued, citable, r.RequestTools ?? r.Case.ToolsV2, body, validator, FenceNormalization: true);
 }
 
@@ -565,7 +571,7 @@ List<JsonObject> BindDirect(JsonElement plan, string root, string selectionPath)
         var tools = facts[S(q, "document")];
         Func<string, P7F1DirectBinder.SourceFact> fact = alias => { var l = tools.LineOf(alias); return new P7F1DirectBinder.SourceFact(l.Page ?? -1, l.Text, l.Bbox); };
         var dir = Path.Combine(root, "requests", S(q, "handle").Replace('|', '.'));
-        list.Add(DirectV.V11 ? P7F1DirectBinderV11.Bind(q, dir, fact) : P7F1DirectBinder.Bind(q, dir, fact));
+        list.Add(DirectV.V5 ? P7F1RegionBinderV5.Bind(q, dir, fact) : DirectV.V11 ? P7F1DirectBinderV11.Bind(q, dir, fact) : P7F1DirectBinder.Bind(q, dir, fact));
     }
     return list;
 }
@@ -803,7 +809,7 @@ internal static class LayoutArm
     public static readonly Dictionary<string, PdfSourceDetails> Details = new(StringComparer.Ordinal);
 }
 
-internal static class DirectV { public static bool V11; public static bool V42; }
+internal static class DirectV { public static bool V11; public static bool V42; public static bool V5; }
 
 internal sealed record DirectRequest(string RequestId, F1QCase Case, int Chunk, IReadOnlyList<P7F1DirectProtocol.Subject> Subjects,
     IReadOnlyList<(string Alias, int Page, string Text)> Context, string Scope, P7F1SourceEnrichment Enrichment, IReadOnlyDictionary<string, string>? Ids = null,
