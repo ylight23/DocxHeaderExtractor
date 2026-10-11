@@ -1,0 +1,20 @@
+{
+  "version": "P7_F1_GOLD_REVIEW_DECISION_V1",
+  "document": "087",
+  "decision": "APPROVE_KEEP_FROZEN_GOLD",
+  "authority": "USER",
+  "reviewedPages": [1, 11, 33, 38],
+  "reviewedOccurrences": 134,
+  "reviewCounts": { "E": 9, "O": 124, "parserExcluded": 1, "labelsChanged": 0 },
+  "scoredRowsInFrozenUniverse": 133,
+  "frozenGoldPositivesOnReviewedPages": 9,
+  "frozenGoldFileSha256Prefix": "36bfea0fb746517e",
+  "goldFrozenModified": false,
+  "keyDecisions": [
+    "Form No. 02 / Form No. 05 kept OTHER: form identifier codes",
+    "Regarding request for... (subtitle lines) kept OTHER: administrative summary"
+  ],
+  "sourcePdfSha256MatchedGoldSource": true,
+  "predictionDependence": "Decision made after V4.1 predictions were visible; it keeps the frozen labels unchanged. Under the post-prediction rule, the pre-review score is the reported one, and no label change occurred.",
+  "providerCalls": 0
+}
