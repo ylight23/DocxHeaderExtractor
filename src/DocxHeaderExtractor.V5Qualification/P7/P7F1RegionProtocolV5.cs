@@ -18,7 +18,8 @@ internal static class P7F1RegionProtocolV5
     public const int MaxJustificationChars = 300, MaxFunctionChars = 300, MaxEvidenceRefs = 8, MaxMissingEvidence = 6;
     static readonly string[] RootRequired = ["protocolVersion", "requestId", "assessment", "regions", "headings"];
     static readonly string[] RootAllowed = ["protocolVersion", "requestId", "assessment", "regions", "headings", "unresolved"];
-    static readonly string[] RegionKeys = ["from", "to", "function", "evidence"];
+    static readonly string[] RegionRequiredKeys = ["from", "to", "function"];
+    static readonly string[] RegionAllowedKeys = ["from", "to", "function", "evidence"];
     static readonly string[] HeadingKeys = ["id", "region", "evidenceRefs", "justification"];
     static readonly string[] UnresolvedKeys = ["id", "missingEvidence"];
     static readonly Regex ToolEvidenceId = new(@"^E\d+\.\d+$", RegexOptions.CultureInvariant);
@@ -35,10 +36,10 @@ internal static class P7F1RegionProtocolV5
 
     private const string Contract = """
         OUTPUT. Return exactly one JSON object and nothing else:
-        {"protocolVersion":"P7_F1_REGION_HEADING_V5","requestId":"<requestId>","assessment":"COMPLETE","regions":[{"from":"kqzt","to":"mbxr","function":"<your words>","evidence":["kqzt"]}],"headings":[{"id":"kqzt","region":0,"evidenceRefs":["kqzt"],"justification":"..."}],"unresolved":[{"id":"hpdv","missingEvidence":["cross-page context"]}]}
+        {"protocolVersion":"P7_F1_REGION_HEADING_V5","requestId":"<requestId>","assessment":"COMPLETE","regions":[{"from":"kqzt","to":"mbxr","function":"<your words>"}],"headings":[{"id":"kqzt","region":0,"evidenceRefs":["kqzt"],"justification":"..."}],"unresolved":[{"id":"hpdv","missingEvidence":["cross-page context"]}]}
         - requestId: copy the value given in the request.
         - assessment: COMPLETE when every issued subject has been considered; INCOMPLETE only if you could not finish.
-        - regions: in reading order, non-overlapping, one entry per region. from and to are issued ids; from comes at or before to. function: 1 to 300 characters, your own description. evidence: 0 to 8 refs, each an issued id, a sourceAlias from the request, or a tool evidenceId.
+        - regions: in reading order, non-overlapping, one entry per region. from and to are issued ids; from comes at or before to. function: 1 to 300 characters, your own description. evidence (optional): the refs that support the function, each an issued id, a sourceAlias from the request, or a tool evidenceId.
         - headings: one entry per selected subject (may be empty), identified by its four-letter id. region: the 0-based index of the region in your regions array that contains this subject; every heading must sit inside a region. evidenceRefs: 1 to 8 strings, each an issued id, a sourceAlias from the request, or a tool evidenceId; at least one must be this subject's own id, its own sourceAlias, or a tool evidenceId whose result includes it. justification: at most 300 characters, a brief source-checkable reason.
         - unresolved (optional, may be omitted when empty): subjects the evidence cannot decide; missingEvidence lists 1 to 6 short kinds of evidence that would decide it.
         - A subject appears at most once overall. Use only issued ids; context-only lines are never subjects.
@@ -144,15 +145,18 @@ internal static class P7F1RegionProtocolV5
     {
         span = default;
         if (r.ValueKind != JsonValueKind.Object) return "REGION_NOT_OBJECT";
+        // "evidence" is optional (a region statement stands on its function text); other keys are not allowed.
         var names = r.EnumerateObject().Select(p => p.Name).ToArray();
-        if (names.Length != RegionKeys.Length || RegionKeys.Any(k => !names.Contains(k, StringComparer.Ordinal))) return "REGION_KEYS_INVALID";
+        if (RegionRequiredKeys.Any(k => !names.Contains(k, StringComparer.Ordinal)) || names.Any(n => !RegionAllowedKeys.Contains(n, StringComparer.Ordinal))) return "REGION_KEYS_INVALID";
         var from = Str(r, "from") ?? ""; var to = Str(r, "to") ?? "";
         if (!position.TryGetValue(from, out var a) || !position.TryGetValue(to, out var b)) return "REGION_ID_NOT_ISSUED";
         if (a > b) return "REGION_FROM_AFTER_TO";
         var f = Str(r, "function");
         if (string.IsNullOrWhiteSpace(f) || f.Length > MaxFunctionChars) return "REGION_FUNCTION_INVALID";
-        var ev = r.GetProperty("evidence");
-        if (ev.ValueKind != JsonValueKind.Array || ev.GetArrayLength() > MaxEvidenceRefs || ev.EnumerateArray().Any(x => x.ValueKind != JsonValueKind.String)) return "REGION_EVIDENCE_INVALID";
+        // Region evidence is capped only by the chunk size plus the normal cap (a span may cite its whole chunk).
+        var ev = r.TryGetProperty("evidence", out var evEl) ? evEl : default;
+        if (ev.ValueKind is not (JsonValueKind.Array or JsonValueKind.Undefined) || (ev.ValueKind == JsonValueKind.Array && (ev.GetArrayLength() > position.Count + MaxEvidenceRefs || ev.EnumerateArray().Any(x => x.ValueKind != JsonValueKind.String)))) return "REGION_EVIDENCE_INVALID";
+        if (ev.ValueKind == JsonValueKind.Array)
         foreach (var e in ev.EnumerateArray().Select(x => x.GetString()!))
         {
             if (ToolEvidenceId.IsMatch(e)) { unresolved.Add(e); continue; }

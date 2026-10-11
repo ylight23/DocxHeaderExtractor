@@ -88,6 +88,21 @@ public sealed class P7F1RegionV5Tests
         Assert.Equal("RESPONSE_NOT_JSON", V($"{{{Head},\"regions\":[").FailureCode);
     }
 
+    [Fact] public void Region_evidence_is_optional_and_may_cite_more_than_eight_refs_within_the_chunk()
+    {
+        var noEvidence = V(Doc("{\"from\":\"kqzt\",\"to\":\"hpdv\",\"function\":\"body\"}", ""));
+        Assert.True(noEvidence.StrictAccepted, noEvidence.FailureCode);
+        var manyRefs = string.Join(",", Enumerable.Repeat("\"kqzt\"", 9));
+        var many = V(Doc($"{{\"from\":\"kqzt\",\"to\":\"hpdv\",\"function\":\"body\",\"evidence\":[{manyRefs}]}}", ""));
+        Assert.True(many.StrictAccepted, many.FailureCode);
+    }
+
+    [Fact] public void Region_with_an_unknown_key_is_rejected_and_a_missing_function_too()
+    {
+        Assert.Equal("REGION_KEYS_INVALID", V(Doc("{\"from\":\"kqzt\",\"to\":\"hpdv\",\"function\":\"b\",\"id\":\"x\"}", "")).FailureCode);
+        Assert.Equal("REGION_KEYS_INVALID", V(Doc("{\"from\":\"kqzt\",\"to\":\"hpdv\"}", "")).FailureCode);
+    }
+
     [Fact] public void RegionsOf_gives_each_heading_its_region_index_and_the_region_words()
     {
         var json = Doc(Span("kqzt", "kqzt", "title") + "," + Span("mbxr", "hpdv", "form"),
