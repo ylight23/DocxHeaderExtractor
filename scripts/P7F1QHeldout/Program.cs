@@ -124,6 +124,59 @@ switch (args[0])
         Console.WriteLine(JsonSerializer.Serialize(new { final = final.Count, rejected = rows.Count(r => Verdict(r) != "ELIGIBLE"), sha = Hex(SHA256.HashData(bytes)) }));
         break;
     }
+    case "audit-fresh":
+    {
+        // Issue #7 fresh cohort. Same contamination rules as the Issue #6 audit V2; development set widened to the old
+        // dev documents AND the 24 Issue #6 held-out documents (used for error-driven design). Every document the Issue #6
+        // audit examined (candidates, tried reserves, final cohort) is excluded. Predeclared quota per stratum, filled in
+        // sha256("P7F1-V4-FRESH-V1|" + sourceSha256) ascending order with the first ELIGIBLE documents. Source-only.
+        if (args.Length != 3) throw new ArgumentException("audit-fresh <issue6-audit.json> <new-audit.json>");
+        Need(!File.Exists(args[2]), "OUTPUT_EXISTS");
+        var issue6Bytes = File.ReadAllBytes(args[1]);
+        using var issue6 = JsonDocument.Parse(issue6Bytes);
+        var r6 = issue6.RootElement;
+        var examined = r6.GetProperty("candidates").EnumerateArray().Select(c => c.GetProperty("id").GetString()!)
+            .Concat(r6.GetProperty("replacements").EnumerateArray().SelectMany(r => r.GetProperty("tried").EnumerateArray().Select(t => t.GetProperty("id").GetString()!)))
+            .Concat(r6.GetProperty("finalCohort").EnumerateArray().Select(f => f.GetProperty("id").GetString()!)).ToHashSet();
+        var oldCohort = r6.GetProperty("finalCohort").EnumerateArray().Select(f => f.GetProperty("id").GetString()!).ToArray();
+        var development = devIds.Concat(oldCohort).Distinct().Order(StringComparer.Ordinal).ToArray();
+        var quota = new (string Stratum, int N)[] { ("legal", 6), ("finance", 6), ("textbook", 4), ("minutes", 3), ("translation", 3), ("rfc", 1), ("procurement", 1) };
+        var audit = MakeAuditor(development);
+        var rows = new List<object>(); var final = new List<object>(); var order = new Dictionary<string, string[]>();
+        foreach (var (stratum, n) in quota)
+        {
+            var reserve = sources.Where(x => x.Category == strataCategory[stratum] && !examined.Contains(IdOf(x.Key)) && !development.Contains(IdOf(x.Key)))
+                .OrderBy(x => Hex(SHA256.HashData(Encoding.UTF8.GetBytes("P7F1-V4-FRESH-V1|" + x.Sha))), StringComparer.Ordinal).ToArray();
+            order[stratum] = reserve.Select(x => IdOf(x.Key)).ToArray();
+            var taken = 0;
+            foreach (var x in reserve)
+            {
+                if (taken == n) break;
+                var row = audit(IdOf(x.Key), stratum); rows.Add(row);
+                if (Verdict(row) == "ELIGIBLE") { final.Add(new { id = IdOf(x.Key), stratum, origin = "ISSUE_7_FRESH_RESERVE_ORDER" }); taken++; }
+            }
+            if (taken < n) final.Add(new { id = "UNFILLED", stratum, origin = $"ONLY_{taken}_OF_{n}_ELIGIBLE" });
+        }
+        var bytes = JsonSerializer.SerializeToUtf8Bytes(new
+        {
+            version = "P7_F1_V4_FRESH_COHORT_CONTAMINATION_AUDIT_V1", issue = "ylight23/DocxHeaderExtractor#7",
+            basedOn = new { audit = "p7.f1q.heldout.contamination-audit.v2.json", sha256 = Hex(SHA256.HashData(issue6Bytes)) },
+            rules = new
+            {
+                reject = new[] { "F1_FAMILY_EXPOSURE", "MODEL_PREDICTION_EXPOSURE", $"NEAR_DUPLICATE (word 5-shingle Jaccard >= {NearDuplicateJaccard}) against any development document",
+                    "NO_PARSER_TEXT_LAYER" },
+                development, excludedAsExamined = examined.Order(StringComparer.Ordinal),
+                quota = quota.ToDictionary(q => q.Stratum, q => q.N),
+                order = "per stratum: unused, not examined, sha256('P7F1-V4-FRESH-V1|' + sourceSha256) ascending, first ELIGIBLE until the quota is met",
+                note = "the 24 Issue #6 held-out documents are development data for V4 (error-driven design); they are never called fresh",
+            },
+            reserveOrder = order, audited = rows, finalCohort = final, finalCount = final.Count(f => JsonSerializer.SerializeToElement(f).GetProperty("id").GetString() != "UNFILLED"),
+            providerCalls = 0, goldRead = false, modelPredictionsRead = false,
+        }, json);
+        File.WriteAllBytes(args[2], bytes);
+        Console.WriteLine(JsonSerializer.Serialize(new { final = final.Count, audited = rows.Count, rejected = rows.Count(r => Verdict(r) != "ELIGIBLE"), sha = Hex(SHA256.HashData(bytes)) }));
+        break;
+    }
     case "pages":
     {
         // Issue #6 Decision 2: first page + two seeded interior pages (one per half) + up to one source-identified
@@ -135,7 +188,7 @@ switch (args[0])
         var docs = new List<object>();
         foreach (var f in audit.RootElement.GetProperty("finalCohort").EnumerateArray())
         {
-            var id = f.GetProperty("id").GetString()!; var s = Src(id);
+            var id = f.GetProperty("id").GetString()!; if (id == "UNFILLED") continue; var s = Src(id); // Issue #7 audits record unfilled quotas
             Need(Hex(SHA256.HashData(File.ReadAllBytes(s.Key))) == s.Sha, "SOURCE_SHA_DRIFT:" + id);
             var parsed = PdfSourceAdapter.BuildWithDetails(s.Key); var src = parsed.Snapshot;
             var store = PdfSourceEvidenceStore.Build(src, parsed.Details);
@@ -522,6 +575,41 @@ static (int Page, string Rule)? StructuredPage(DocxHeaderExtractor.DocumentProce
 }
 
 static string Cell(string? s) => (s ?? "").Replace("|", "\\|").Replace("\n", " ").Length > 110 ? (s ?? "").Replace("|", "\\|").Replace("\n", " ")[..110] + "…" : (s ?? "").Replace("|", "\\|").Replace("\n", " ");
+// Same contamination checks as the Issue #6 audit, against a caller-supplied development set (Issue #7 fresh cohort).
+Func<string, string, object> MakeAuditor(string[] development)
+{
+    var codex = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".codex", "diagnostic-captures");
+    var codexText = Directory.Exists(codex) ? Directory.EnumerateFiles(codex, "*", SearchOption.AllDirectories)
+        .Where(f => f.EndsWith(".json") || f.EndsWith(".html")).Select(f => (Path: f, Size: new FileInfo(f).Length)).Where(f => f.Size < 50_000_000).ToArray() : [];
+    var modelRuns = JsonDocument.Parse(File.ReadAllBytes("eval/harness-lift/model-exposure-reconciliation.v1.json")).RootElement
+        .GetProperty("rows").EnumerateArray().Where(r => r.GetProperty("modelRunOccurredInDocument").GetBoolean())
+        .Select(r => r.GetProperty("referenceId").GetString()!).ToArray();
+    var devTexts = development.Select(id => (Id: id, Shingles: Shingles(Text(Src(id).Key)))).ToArray();
+    return (id, stratum) =>
+    {
+        var s = Src(id); var stem = Path.GetFileNameWithoutExtension(s.Key);
+        var classified = GitGrep(s.Sha, stem).Where(p => !p.StartsWith("todo10_8/") && !p.Contains("p7.d2.source-pool")).Select(p => (Path: p, Class: Classify(p))).ToList();
+        if (modelRuns.Any(r => r.Contains(stem, StringComparison.Ordinal)))
+            classified.Add(("eval/harness-lift/model-exposure-reconciliation.v1.json#modelRunOccurredInDocument", "MODEL_PREDICTION_EXPOSURE"));
+        foreach (var f in codexText.Where(f => { var t = File.ReadAllText(f.Path); return t.Contains(stem, StringComparison.Ordinal) || t.Contains(s.Sha, StringComparison.Ordinal); }))
+            classified.Add(("~/.codex/diagnostic-captures/" + Path.GetRelativePath(codex, f.Path).Replace('\\', '/'), ClassifyCodex(f.Path)));
+        var text = Text(s.Key); var shingles = Shingles(text);
+        var nearDev = devTexts.Select(d => (d.Id, J: Jaccard(shingles, d.Shingles))).OrderByDescending(x => x.J).First();
+        var reasons = new List<string>();
+        if (text.Trim().Length == 0) reasons.Add("NO_PARSER_TEXT_LAYER");
+        if (classified.Any(c => c.Class == "F1_FAMILY_EXPOSURE")) reasons.Add("F1_FAMILY_EXPOSURE");
+        if (classified.Any(c => c.Class == "MODEL_PREDICTION_EXPOSURE")) reasons.Add("MODEL_PREDICTION_EXPOSURE");
+        if (nearDev.J >= NearDuplicateJaccard) reasons.Add("NEAR_DUPLICATE_OF_DEVELOPMENT_" + nearDev.Id);
+        return new
+        {
+            id, stratum, sourceKey = s.Key, sourceSha256 = s.Sha, verdict = reasons.Count == 0 ? "ELIGIBLE" : "REJECTED", rejectReasons = reasons,
+            exposureTags = classified.Select(c => c.Class).Distinct().Order(),
+            exposures = classified.GroupBy(c => c.Class).ToDictionary(g => g.Key, g => g.Select(x => x.Path).Distinct().Order().ToArray()),
+            maxDevelopmentShingleJaccard = new { development = nearDev.Id, jaccard = Math.Round(nearDev.J, 4) },
+        };
+    };
+}
+
 static string Verdict(object row) => JsonSerializer.SerializeToElement(row).GetProperty("verdict").GetString()!;
 
 static string Classify(string path)

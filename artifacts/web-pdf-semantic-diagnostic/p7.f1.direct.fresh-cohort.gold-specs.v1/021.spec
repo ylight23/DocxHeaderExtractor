@@ -1,0 +1,1 @@
+NOTE SOURCE_UNREADABLE: every parser occurrence on the selected pages (1, 14, 20) is interleaved/garbled text from overlapping text layers (e.g. "NHgưhSịớốđnB:ịgỘn7dh8T..."). No occurrence can be judged; proposed as EXCLUDED_SOURCE_CORRUPTED for all rows or replacement by the next eligible legal document under a predeclared parseability amendment (user decision).

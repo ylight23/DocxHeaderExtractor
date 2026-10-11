@@ -1,0 +1,22 @@
+NOTE Luật Kinh doanh bất động sản 29/2023/QH15 (Công Báo layout, same family as development 006/009/015).
+O L0000:S0 | Công Báo running header (page furniture)
+O L0001:S0 | Issuer "QUỐC HỘI" and national name (letterhead)
+O L0002:S0 | National motto
+O L0003:S0 | Document number "Luật số: 29/2023/QH15"
+E L0004:S0 | Document type title "LUẬT" (bold, centred)
+E L0005:S0 | Document title "KINH DOANH BẤT ĐỘNG SẢN" (bold, centred)
+E L0008:S0 | Chapter label "Chương I" (bold, centred)
+E L0009:S0 | Chapter title "NHỮNG QUY ĐỊNH CHUNG" (bold, centred)
+E L0010:S0 | Article heading "Điều 1. Phạm vi điều chỉnh" (bold)
+O L1118:S0 | Công Báo running header (page furniture)
+E L1119:S0 | Section label "Mục 2" (bold, centred)
+E L1120:S0 | Section title line 1 "CHUYỂN NHƯỢNG QUYỀN SỬ DỤNG ĐẤT" (bold, centred)
+E L1121:S0 | Section title line 2 (bold, centred)
+E L1122:S0 | Section title line 3 (bold, centred)
+E L1123:S0 | Article heading "Điều 31. Điều kiện đối với đất ..." line 1 (bold)
+E L1124:S0 | Article heading line 2 (bold continuation)
+O L1150:S0 | Công Báo running header (page furniture)
+E L1158:S0 | Article heading "Điều 32. Yêu cầu đối với bên chuyển nhượng ..." line 1 (bold)
+E L1159:S0 | Article heading line 2 (bold continuation)
+E L1172:S0 | Article heading "Điều 33. Quyền, nghĩa vụ của bên chuyển nhượng ..." line 1 (bold)
+E L1173:S0 | Article heading line 2 (bold continuation)

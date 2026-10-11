@@ -1,0 +1,1622 @@
+{
+  "version": "P7_F1_V4_FRESH_COHORT_CONTAMINATION_AUDIT_V1",
+  "issue": "ylight23/DocxHeaderExtractor#7",
+  "basedOn": {
+    "audit": "p7.f1q.heldout.contamination-audit.v2.json",
+    "sha256": "eb1eb32458d1365cfb20c116c681f9463eb569f4ba4cf358b30292fb48538f37"
+  },
+  "rules": {
+    "reject": [
+      "F1_FAMILY_EXPOSURE",
+      "MODEL_PREDICTION_EXPOSURE",
+      "NEAR_DUPLICATE (word 5-shingle Jaccard >= 0.5) against any development document",
+      "NO_PARSER_TEXT_LAYER"
+    ],
+    "development": [
+      "006",
+      "009",
+      "012",
+      "015",
+      "017",
+      "024",
+      "028",
+      "029",
+      "032",
+      "034",
+      "044",
+      "049",
+      "051",
+      "054",
+      "056",
+      "060",
+      "064",
+      "067",
+      "073",
+      "077",
+      "079",
+      "080",
+      "083",
+      "087",
+      "088",
+      "089",
+      "090",
+      "092",
+      "093",
+      "094",
+      "095"
+    ],
+    "excludedAsExamined": [
+      "002",
+      "006",
+      "009",
+      "015",
+      "017",
+      "024",
+      "028",
+      "030",
+      "032",
+      "034",
+      "035",
+      "043",
+      "044",
+      "049",
+      "051",
+      "056",
+      "058",
+      "060",
+      "064",
+      "067",
+      "072",
+      "073",
+      "074",
+      "076",
+      "077",
+      "079",
+      "083",
+      "087",
+      "088",
+      "090",
+      "093",
+      "094"
+    ],
+    "quota": {
+      "legal": 6,
+      "finance": 6,
+      "textbook": 4,
+      "minutes": 3,
+      "translation": 3,
+      "rfc": 1,
+      "procurement": 1
+    },
+    "order": "per stratum: unused, not examined, sha256('P7F1-V4-FRESH-V1|' + sourceSha256) ascending, first ELIGIBLE until the quota is met",
+    "note": "the 24 Issue #6 held-out documents are development data for V4 (error-driven design); they are never called fresh"
+  },
+  "reserveOrder": {
+    "legal": [
+      "019",
+      "014",
+      "008",
+      "011",
+      "003",
+      "010",
+      "021",
+      "016",
+      "007",
+      "018",
+      "004",
+      "001",
+      "022",
+      "020",
+      "013",
+      "005",
+      "023"
+    ],
+    "finance": [
+      "048",
+      "055",
+      "041",
+      "046",
+      "045",
+      "050",
+      "053",
+      "047",
+      "052",
+      "042"
+    ],
+    "textbook": [
+      "063",
+      "062",
+      "070",
+      "068",
+      "061",
+      "057",
+      "065",
+      "069",
+      "059",
+      "066"
+    ],
+    "minutes": [
+      "075",
+      "078",
+      "071"
+    ],
+    "translation": [
+      "086",
+      "081",
+      "085"
+    ],
+    "rfc": [
+      "091"
+    ],
+    "procurement": []
+  },
+  "audited": [
+    {
+      "id": "019",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/019_TT_200-2014_Che_do_ke_toan_DN.pdf",
+      "sourceSha256": "6173038de76a842c0fed697f70f3bf109d45566dbfda014ab984d1930533e44c",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0030.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md",
+          "TODO.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/representation/visual-line-segment-adjudication.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "015",
+        "jaccard": 0.0041
+      }
+    },
+    {
+      "id": "014",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/014_Luat_Chung_khoan_54-2019-QH14.pdf",
+      "sourceSha256": "ab61112793d0b09aee980543ec1003049fe23c794a5fff5e2475e9104b7b7a99",
+      "verdict": "REJECTED",
+      "rejectReasons": [
+        "NO_PARSER_TEXT_LAYER"
+      ],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0025.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "006",
+        "jaccard": 0
+      }
+    },
+    {
+      "id": "008",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/008_Luat_Kinh_doanh_BDS_29-2023-QH15.pdf",
+      "sourceSha256": "a4399dc8e26063d753ecdf96e5833cfb573ad9265c3e74ab86e3e6f51ce00063",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0019.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "006",
+        "jaccard": 0.0289
+      }
+    },
+    {
+      "id": "011",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/011_Luat_An_toan_thong_tin_mang_86-2015-QH13.pdf",
+      "sourceSha256": "ac6ab85b9eea4f81379573fdd85ef3e3651d458f382ad9da809191d04df593b3",
+      "verdict": "REJECTED",
+      "rejectReasons": [
+        "NO_PARSER_TEXT_LAYER"
+      ],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0022.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json",
+          "eval/a99-closed-loop/review/identity-gold-pilot-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "006",
+        "jaccard": 0
+      }
+    },
+    {
+      "id": "003",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/003_Luat_Doanh_nghiep_59-2020-QH14.pdf",
+      "sourceSha256": "909d1da77ead7b5db5e4c3ddcae5e9aeb74405af75ed5a56c30eb7a24ca39060",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "HUMAN_REFERENCE_PRIOR": [
+          "docs/accuracy/accuracy99-historical-gold-reconciliation-v3.md",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/bindings/SRC-003.exact-bindings.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/freeze-registry.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/occurrence/SRC-003.occurrence-gold.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/semantic/SRC-003.semantic-gold.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/freeze-registry.v4.checked.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/semantic/SRC-003.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-003.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/gold-current/documents/SRC-003.gold.v1.json",
+          "eval/a99-closed-loop/gold/SRC-003.gold.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json",
+          "eval/benchmark-n0/audit-samples/n1.4-silver-human-audit-binding.v1.json",
+          "eval/benchmark-n0/audit-samples/n1.4-silver-human-audit-source.v1.json"
+        ],
+        "ENGINE_OR_INVENTORY": [
+          "docs/architecture/harness-lift-route-aware-attribution.md",
+          "eval/a99-closed-loop/generated-docx-v2/SRC-003.conversion-manifest.v1.json",
+          "eval/a99-closed-loop/historical-reference-census.v3.json",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-closed-loop/scaleup-real-harness-v1/SRC-003/docx-r1.v1.json",
+          "eval/a99-closed-loop/scaleup-real-harness-v1/SRC-003/docx-r2.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/benchmark-n0/n2-s/checkpoints/003-n2-s.jsonl",
+          "eval/benchmark-n0/n2-s/counterfactual/c1-gate7-cross-document-inventory.v1.json",
+          "eval/benchmark-n0/n2-s/invalid-runs/concurrency-1/003-n2s-checkpoint.v1.jsonl",
+          "eval/benchmark-n0/n2-s/invalid-runs/concurrency-1/003-n2s-run.v1.json",
+          "eval/benchmark-n0/n2-s/manifest.v1.json",
+          "eval/benchmark-n0/n2-s/runs/003-n2-s-run.v1.json",
+          "eval/benchmark-n0/silver-labels/003-n1.2-silver-model-assisted.v1.json",
+          "eval/benchmark-n0/silver-labels/n1.2-silver-bundle-manifest.v1.json",
+          "eval/benchmark-n0/source-packets/003-blind-source-review.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/final-decision.v3.json",
+          "eval/harness-lift/historical-current-reconciliation.v1.json",
+          "eval/harness-lift/historical-evidence-ledger.v1.json",
+          "eval/harness-lift/hl3-historical-reconciliation.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0014.v1.json",
+          "eval/harness-lift/README-v3.md",
+          "eval/integration/int4b-clean-fingerprint-reproduction/runtime-inventory.after.v1.json",
+          "eval/integration/int4b-clean-fingerprint-reproduction/runtime-inventory.before.v1.json",
+          "eval/integration/int4c-clean-canonical-full-suite/runtime-inventory.after.v1.json",
+          "eval/integration/int4c-clean-canonical-full-suite/runtime-inventory.before.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md",
+          "tests/DocxHeaderExtractor.Tests/LawGoldItemisationTests.cs",
+          "tests/DocxHeaderExtractor.Tests/ScaleUpSourceRegenerationTests.cs"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "015",
+        "jaccard": 0.0433
+      }
+    },
+    {
+      "id": "010",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/010_Luat_An_ninh_mang_24-2018-QH14.pdf",
+      "sourceSha256": "7ba6b742325359b442b4e5a7a905defba286eedb39210f59a1d8983d3d916a4a",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v2.json",
+          "eval/harness-lift/r18-traces/DOC-0021.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md",
+          "TODO.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/reusable-gold-cohort.v1.json",
+          "eval/harness-lift/reference-coverage.v1.json",
+          "eval/harness-lift/reference-coverage.v2.json",
+          "eval/harness-lift/reference-occurrence-bridge.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "009",
+        "jaccard": 0.0196
+      }
+    },
+    {
+      "id": "021",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/021_TT_78-2021_Hoa_don_dien_tu.pdf",
+      "sourceSha256": "1447272076823c6450966e3f2119f03f5441b9a787763139004a7acb070a7c8c",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "docs/accuracy/accuracy99-strict-cohort-preflight.md",
+          "eval/a99-closed-loop/early-dev-campaign.v1.json",
+          "eval/a99-closed-loop/early-dev-reference-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-closed-loop/strict-cohort-preflight.v1.json",
+          "eval/a99-closed-loop/strict-review-queue.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0032.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json",
+          "eval/a99-closed-loop/strict-dev-gold-cohort.v1.json",
+          "eval/a99-closed-loop/strict-gold-v4/DOC-0201.strict-gold-v4.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "017",
+        "jaccard": 0.0001
+      }
+    },
+    {
+      "id": "016",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/016_ND_13-2023_Bao_ve_du_lieu_ca_nhan.pdf",
+      "sourceSha256": "1b7739edaf16bfe3acd35a7a31dfe2786e134f7f63e6f0c06800f212846943a6",
+      "verdict": "REJECTED",
+      "rejectReasons": [
+        "NO_PARSER_TEXT_LAYER"
+      ],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0027.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "006",
+        "jaccard": 0
+      }
+    },
+    {
+      "id": "007",
+      "stratum": "legal",
+      "sourceKey": "todo10_8/heading_corpus_100/01_phap_quy/007_Luat_Nha_o_27-2023-QH15.pdf",
+      "sourceSha256": "c647b16e5570e74ade61f6fc23128f8d878a81d979753f95160579cb5a3fb907",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/bindings/DOC-0092.exact-bindings.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/freeze-registry.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/occurrence/DOC-0092.occurrence-gold.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/semantic/DOC-0092.semantic-gold.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/freeze-registry.v4.checked.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/semantic/DOC-0092.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0092.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/gold-current/documents/DOC-0092.gold.v1.json",
+          "eval/a99-closed-loop/gold-current/registry.v1.json",
+          "eval/a99-closed-loop/gold/DOC-0092.gold.json",
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0092.source.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/pilot8-overlap.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/annotation-scope.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/A/DOC-0092.annotation.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/B/DOC-0092.annotation.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/packets/DOC-0092.source.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/pilot-authority.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ],
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+          "eval/a99-closed-loop/research-r2/cohort-selection.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-isolated-review/decision.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-isolated-review/sources/DOC-0092.review-source.v1.json",
+          "eval/a99-closed-loop/research-r2/pilot-8/pilot-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/pilot-8/pilot-manifest.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-closed-loop/scaleup-real-harness-v1/DOC-0092/pdf-structured-r1.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0018.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md",
+          "tests/DocxHeaderExtractor.Tests/LawGoldItemisationTests.cs"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "006",
+        "jaccard": 0.0315
+      }
+    },
+    {
+      "id": "048",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/048_IBRD_Financial_Statements_March_2025.pdf",
+      "sourceSha256": "08af1ba4ddb0adab18a838cb63a5daddf70d2dbf8f731b7b78ba1049bfc3ba12",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/bindings/DOC-0133.exact-bindings.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/freeze-registry.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/occurrence/DOC-0133.occurrence-gold.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/semantic/DOC-0133.semantic-gold.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/freeze-registry.v4.checked.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/semantic/DOC-0133.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0133.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/gold-current/documents/DOC-0133.gold.v1.json",
+          "eval/a99-closed-loop/gold-current/occurrence-baseline-preflight.v1.json",
+          "eval/a99-closed-loop/gold-current/registry.v1.json",
+          "eval/a99-closed-loop/gold/DOC-0133.gold.json",
+          "eval/a99-closed-loop/policy-audit/p6t-e-challenge-source-search/strict-gold-multipart-source-inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0133.source.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/pilot8-overlap.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/annotation-scope.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/A/DOC-0133.annotation.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/B/DOC-0133.annotation.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/packets/DOC-0133.source.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/pilot-authority.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json"
+        ],
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/generic-audit-v1_1/DOC-0133.proposals.v1_1.json",
+          "eval/a99-closed-loop/generic-audit-v1_2/DOC-0133.proposals.v1_2.json",
+          "eval/a99-closed-loop/generic-audit-v1/DOC-0133.proposals.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/policy-audit/DOC-0133.structural-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+          "eval/a99-closed-loop/research-r2/cohort-selection.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-isolated-review/decision.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-isolated-review/sources/DOC-0133.review-source.v1.json",
+          "eval/a99-closed-loop/research-r2/pilot-8/pilot-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/pilot-8/pilot-manifest.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-closed-loop/scaleup-real-harness-v1/DOC-0133/pdf-structured-r1.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0047.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "tests/DocxHeaderExtractor.Tests/Doc0133StructuralAuditTests.cs"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "054",
+        "jaccard": 0.126
+      }
+    },
+    {
+      "id": "055",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/055_IDA_External_Review_FY25.pdf",
+      "sourceSha256": "3b9d4317f2e8ca32ff9288d5f7c653fefd7231d5656a5b8a996be656b1dee455",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-055.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/gold-current/documents/SRC-055.gold.v1.json",
+          "eval/a99-closed-loop/gold-current/occurrence-baseline-preflight.v1.json",
+          "eval/a99-closed-loop/gold-current/registry.v1.json",
+          "eval/a99-closed-loop/gold/SRC-055.gold.json",
+          "eval/a99-closed-loop/policy-audit/p6t-e-challenge-source-search/strict-gold-multipart-source-inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json"
+        ],
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0235.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md",
+          "tests/DocxHeaderExtractor.Tests/PilotGoldItemisationTests.cs"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "054",
+        "jaccard": 0.0006
+      }
+    },
+    {
+      "id": "041",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/041_IBRD_Financial_Statements_June_2025.pdf",
+      "sourceSha256": "bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38",
+      "verdict": "REJECTED",
+      "rejectReasons": [
+        "F1_FAMILY_EXPOSURE",
+        "NEAR_DUPLICATE_OF_DEVELOPMENT_054"
+      ],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "F1_FAMILY_EXPOSURE",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "docs/handoff-2026-08-25.md",
+          "eval/a99-closed-loop/generic-audit-v1_1/SRC-041.evidence-profile.v1_1.json",
+          "eval/a99-closed-loop/generic-audit-v1_1/SRC-041.preregistration.v1_1.json",
+          "eval/a99-closed-loop/generic-audit-v1_1/SRC-041.proposals.v1_1.json",
+          "eval/a99-closed-loop/generic-audit-v1_1/SRC-041.reveal-pin.v1_1.json",
+          "eval/a99-closed-loop/generic-audit-v1_2/SRC-041.proposals.v1_2.json",
+          "eval/a99-closed-loop/pdf-canonical-source-v1/bcd55336b6f98b6e887a4d9392b53495057744c51a5e2052bf1aeb78df07dc38.json",
+          "eval/a99-closed-loop/pdf-canonical-source-v1/replay-parity.v1.json",
+          "eval/a99-closed-loop/pdf-source-determinism-v2/universe-hashes.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+          "eval/a99-closed-loop/research-r2/cohort-selection.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-closed-loop/scaleup-real-harness-v1/SRC-041/pdf-structured-r1.v1.json",
+          "eval/a99-closed-loop/source-review-v1/SRC-041.authority-lineage.v1.json",
+          "eval/a99-closed-loop/source-review-v1/SRC-041.historical-delta-audit.v1.json",
+          "eval/a99-closed-loop/source-review-v1/SRC-041.source-review.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v2.json",
+          "eval/harness-lift/r18-traces/DOC-0041.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md",
+          "src/DocxHeaderExtractor.V5Qualification/P6TEChallengeCanary.cs",
+          "src/DocxHeaderExtractor.V5Qualification/P6TEH2ContinuationCanary.cs",
+          "src/DocxHeaderExtractor.V5Qualification/P6TG2AFullPackPopulationCanary.cs",
+          "src/DocxHeaderExtractor.V5Qualification/P6TH2CEndPointerCanary.cs",
+          "src/DocxHeaderExtractor.V5Qualification/P6TH3ConflictAdjudicationCanary.cs",
+          "src/DocxHeaderExtractor.V5Qualification/P6TH3FullPopulationH2Canary.cs",
+          "tests/DocxHeaderExtractor.Tests/PdfReadOnlyCorrespondenceBuilderTests.cs",
+          "tests/DocxHeaderExtractor.Tests/PdfSourceDeterminismLedgerProbe.cs",
+          "tests/DocxHeaderExtractor.Tests/SourcePdfCorpus.cs",
+          "tests/DocxHeaderExtractor.Tests/V5P6TEH2ContinuationPreflightTests.cs",
+          "tests/DocxHeaderExtractor.Tests/V5P6TEH2FalseAnchorCompositionAuditTests.cs",
+          "tests/DocxHeaderExtractor.Tests/V5P6TH2CCleanBoundarySeparabilityAuditTests.cs",
+          "tests/DocxHeaderExtractor.Tests/V5P6TH2CCleanPairedGoldAuditTests.cs",
+          "tests/DocxHeaderExtractor.Tests/V5P6TH2CEndPointerPreflightTests.cs",
+          "tests/DocxHeaderExtractor.Tests/V5P6TH2CEvidencePairedGoldScoreTests.cs",
+          "tests/DocxHeaderExtractor.Tests/V5P6TH2CMixedPromptGoldAuditTests.cs",
+          "tests/DocxHeaderExtractor.Tests/V5P6TH2CMixedPromptResidualAuditTests.cs",
+          "tests/DocxHeaderExtractor.Tests/V5P6TH3FullPopulationH2PreflightTests.cs",
+          "TODO.md"
+        ],
+        "F1_FAMILY_EXPOSURE": [
+          "artifacts/v5-p6t-function-membership/p6te-e-challenge-audit/false-anchor-inside-multipart-audit.v1.json",
+          "artifacts/v5-p6t-function-membership/p6te-src041-e-challenge/f1-request-manifest.v1.json",
+          "artifacts/v5-p6t-function-membership/p6te-src041-e-challenge/f1.raw-capture.v1.json",
+          "artifacts/v5-p6t-function-membership/p6te-src041-h2-challenge/h2-e-composition-audit.v1.json",
+          "artifacts/v5-p6t-function-membership/p6te-src041-h2-challenge/h2-request-manifest.v1.json",
+          "artifacts/v5-p6t-function-membership/p6tf1-full-p05-preflight/f1-full-p05-preflight.v1.json",
+          "artifacts/v5-p6t-function-membership/p6tg2a-full-pack-population-canary-20261005/SRC-041.raw-capture.v1.json",
+          "artifacts/v5-p6t-function-membership/p6tg2a-full-pack-population-preflight/g2a-full-pack-preflight.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-clean-boundary-separability-audit/h2c-clean-boundary-separability-sanitized.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-clean-paired-gold-audit/h2c-clean-v1-v2-paired-gold-audit.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-clean-v1-rerun-capture-20261005/raw/sanitized-capture-ledger.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-end-pointer-capture-20261005/sanitized-capture-ledger.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-end-pointer-preflight-v2/h2c-exact-end-pointer-preflight.v2.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-end-pointer-preflight/h2c-exact-end-pointer-preflight.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-evidence-complete-preflight/execution-manifest.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-evidence-complete-preflight/h2c-evidence-complete-preflight.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-evidence-error-taxonomy/h2c-evidence-error-taxonomy.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-evidence-paired-gold-score/h2c-evidence-paired-gold-score.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-mixed-prompt-gold-audit/h2c-mixed-prompt-end-pointer-gold-audit.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-mixed-prompt-residual-audit/h2c-mixed-prompt-overextent-residual-audit.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-typography-only-screen-gold-score/h2c-typography-only-screen-gold-score.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-typography-only-screen-preflight/execution-manifest.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th2c-typography-only-screen-preflight/typography-only-screen-preflight.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th3-conflict-adjudication-v2/gold-audit.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th3-conflict-adjudication-v2/SRC-041.raw-capture.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th3-conflict-adjudication-v2/SRC-041.request-manifest.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th3-conflict-adjudication/SRC-041.raw-capture.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th3-conflict-adjudication/SRC-041.request-manifest.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th3-full-population-gold-audit/g2a-h2-canonical-gold-anchor-scoped-audit.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-041_O3.raw-capture.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-041_O4.raw-capture.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th3-full-population-h2-canary-20261005/SRC-041_O5.raw-capture.v1.json",
+          "artifacts/v5-p6t-function-membership/p6th3-population-conflict-inventory/population-conflict-gold-stratification.v1.json"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-041.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/gold-current/documents/SRC-041.gold.v1.json",
+          "eval/a99-closed-loop/gold-current/occurrence-baseline-preflight.v1.json",
+          "eval/a99-closed-loop/gold-current/registry.v1.json",
+          "eval/a99-closed-loop/gold/SRC-041.gold.json",
+          "eval/a99-closed-loop/policy-audit/p6t-e-challenge-source-search/strict-gold-multipart-source-inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0126.source.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json",
+          "eval/harness-lift/reference-coverage.v1.json",
+          "eval/harness-lift/reference-coverage.v2.json",
+          "eval/harness-lift/reference-occurrence-bridge.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "054",
+        "jaccard": 0.7245
+      }
+    },
+    {
+      "id": "046",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/046_IBRD_Financial_Statements_September_2024.pdf",
+      "sourceSha256": "82de685967f40fcda7ed172b989a2f504f94e74ccd723bce6954fa23983dae0c",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0045.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "054",
+        "jaccard": 0.115
+      }
+    },
+    {
+      "id": "045",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/045_IBRD_Financial_Statements_June_2023.pdf",
+      "sourceSha256": "7ed6e6d9e1ac3b174b8ed3dc7be2a28bbf48be52df276c2546919b20c682fda6",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0225.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "054",
+        "jaccard": 0.2458
+      }
+    },
+    {
+      "id": "050",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/050_IDA_Financial_Statements_March_2025.pdf",
+      "sourceSha256": "a07844b6665da03ef55abb7a0cb6e069d99f7135e5b459619525690f583749e8",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0049.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "049",
+        "jaccard": 0.4503
+      }
+    },
+    {
+      "id": "053",
+      "stratum": "finance",
+      "sourceKey": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/053_IDA_Information_Statement_FY25.pdf",
+      "sourceSha256": "6d3cd46d6297031fd3fd4c2afd066f8d947f18d55ef1418a185e5ef9e0a344da",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/SRC-053.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/gold-current/documents/SRC-053.gold.v1.json",
+          "eval/a99-closed-loop/gold-current/occurrence-baseline-preflight.v1.json",
+          "eval/a99-closed-loop/gold-current/registry.v1.json",
+          "eval/a99-closed-loop/gold/SRC-053.gold.json",
+          "eval/a99-closed-loop/policy-audit/p6t-e-challenge-source-search/strict-gold-multipart-source-inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json"
+        ],
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/generic-audit-v1_2/SRC-053.evidence-profile.v1_2.json",
+          "eval/a99-closed-loop/generic-audit-v1_2/SRC-053.preregistration.v1_2.json",
+          "eval/a99-closed-loop/generic-audit-v1_2/SRC-053.proposals.v1_2.json",
+          "eval/a99-closed-loop/generic-audit-v1_2/SRC-053.reveal-pin.v1_2.json",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-closed-loop/scaleup-real-harness-v1/SRC-053/pdf-structured-r1.v1.json",
+          "eval/a99-closed-loop/source-review-v1/SRC-053.authority-lineage.v1.json",
+          "eval/a99-closed-loop/source-review-v1/SRC-053.source-review.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0052.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md",
+          "tests/DocxHeaderExtractor.Tests/SourcePdfCorpus.cs"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "044",
+        "jaccard": 0.2898
+      }
+    },
+    {
+      "id": "063",
+      "stratum": "textbook",
+      "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/063_Advanced_Linear_Algebra.pdf",
+      "sourceSha256": "063078807adcaab114c0e521d2e937231f7537ee90b61e37eadb7f1e4e5d56ac",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "docs/accuracy/accuracy99-strict-cohort-preflight.md",
+          "eval/a99-closed-loop/early-dev-campaign.v1.json",
+          "eval/a99-closed-loop/early-dev-reference-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-closed-loop/strict-cohort-preflight.v1.json",
+          "eval/a99-closed-loop/strict-cohort-reference-reconciliation.v3.json",
+          "eval/a99-closed-loop/strict-cohort-reference-reconciliation.v4.json",
+          "eval/a99-closed-loop/strict-review-queue.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v2.json",
+          "eval/harness-lift/r18-traces/DOC-0243.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md",
+          "src/DocxHeaderExtractor.AgentHarness/DocumentAgentHarness.cs",
+          "TODO.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/decision.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/reusable-gold-cohort.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json",
+          "eval/a99-closed-loop/strict-dev-gold-cohort.v1.json",
+          "eval/a99-closed-loop/strict-gold-v4/DOC-0243.strict-gold-v4.json",
+          "eval/harness-lift/reference-coverage.v1.json",
+          "eval/harness-lift/reference-coverage.v2.json",
+          "eval/harness-lift/reference-occurrence-bridge.v1.json",
+          "eval/manual-labels/m105b-cross-document-review-labels.v1.json",
+          "eval/manual-labels/m105b-cross-document-review-sample.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "060",
+        "jaccard": 0.0006
+      }
+    },
+    {
+      "id": "062",
+      "stratum": "textbook",
+      "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/062_Lectures_on_Probability_Theory.pdf",
+      "sourceSha256": "a4811a78083161a64930d6c9061fa0cb54fa7135d15f6fd3bfa443c875d77d8f",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0242.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "067",
+        "jaccard": 0.0011
+      }
+    },
+    {
+      "id": "070",
+      "stratum": "textbook",
+      "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/070_Lectures_on_Optimization_Yale.pdf",
+      "sourceSha256": "9e28afeacb0121b79691fadc6af9c145ccd787bffd2cf9c3f2310806112e644b",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0062.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "067",
+        "jaccard": 0.0006
+      }
+    },
+    {
+      "id": "068",
+      "stratum": "textbook",
+      "sourceKey": "todo10_8/heading_corpus_100/04_giao_trinh/068_SDEs_for_Finance_Course_Notes.pdf",
+      "sourceSha256": "f598bef9d41c5401a9248f806c4dc36e0e20dec51d99ed280fd8a9e4a74a8839",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0248.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "067",
+        "jaccard": 0.0002
+      }
+    },
+    {
+      "id": "075",
+      "stratum": "minutes",
+      "sourceKey": "todo10_8/heading_corpus_100/05_bien_ban_hop/075_FORTIS_GC_Minutes_Nov21_2024.pdf",
+      "sourceSha256": "c48a9e9ac95820685c48def8b91df697484f81996cb6c4094234ed6c8319afc3",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/bindings/DOC-0255.exact-bindings.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/freeze-registry.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/occurrence/DOC-0255.occurrence-gold.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/semantic/DOC-0255.semantic-gold.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/freeze-registry.v4.checked.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/semantic/DOC-0255.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0255.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/gold-current/documents/DOC-0255.gold.v1.json",
+          "eval/a99-closed-loop/gold-current/occurrence-baseline-preflight.v1.json",
+          "eval/a99-closed-loop/gold/DOC-0255.gold.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/decision.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/reusable-gold-cohort.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json",
+          "eval/harness-lift/reference-coverage.v1.json",
+          "eval/harness-lift/reference-coverage.v2.json",
+          "eval/harness-lift/reference-occurrence-bridge.v1.json"
+        ],
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/early-dev-campaign.v1.json",
+          "eval/a99-closed-loop/early-dev-reference-audit.v1.json",
+          "eval/a99-closed-loop/generated-docx-v2/DOC-0255.conversion-manifest.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/pilot-real-harness-v1/DOC-0255/docx-r1.v1.json",
+          "eval/a99-closed-loop/pilot-real-harness-v1/DOC-0255/docx-r2.v1.json",
+          "eval/a99-closed-loop/pilot-real-harness-v1/DOC-0255/docx-r3.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/p1-key-occurrence-audit/DOC-0165/occurrence-materialization.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v2.json",
+          "eval/harness-lift/r18-traces/DOC-0067.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "tests/DocxHeaderExtractor.Tests/PilotGoldItemisationTests.cs",
+          "tests/DocxHeaderExtractor.Tests/PilotSourceRegenerationTests.cs"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "073",
+        "jaccard": 0.0154
+      }
+    },
+    {
+      "id": "078",
+      "stratum": "minutes",
+      "sourceKey": "todo10_8/heading_corpus_100/05_bien_ban_hop/078_ICP_IACG07_Minutes_May_2023.pdf",
+      "sourceSha256": "c3080d4d0c681aed636c860268eccc37b7ca0f0d2c9645f2469823e83ed92168",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "docs/accuracy/accuracy99-strict-cohort-preflight.md",
+          "eval/a99-closed-loop/cross-document-replication-preflight.v1.json",
+          "eval/a99-closed-loop/early-dev-campaign.v1.json",
+          "eval/a99-closed-loop/early-dev-reference-audit.v1.json",
+          "eval/a99-closed-loop/generated-docx-v2/DOC-0258.conversion-manifest.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/production-acceptance/authority-compatibility.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-closed-loop/strict-cohort-preflight.v1.json",
+          "eval/a99-closed-loop/strict-cohort-reference-reconciliation.v3.json",
+          "eval/a99-closed-loop/strict-cohort-reference-reconciliation.v4.json",
+          "eval/a99-closed-loop/strict-review-queue.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/architecture/legacy-reachability.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v1.json",
+          "eval/harness-lift/current-measurement-manifest.v2.json",
+          "eval/harness-lift/r18-traces/DOC-0070.v1.json",
+          "eval/integration/round2-canonical-full-suite.v1.json",
+          "eval/verification/canonical-integrated-baseline.v1.json",
+          "eval/verification/canonical-integrated-full-suite.v1.json",
+          "eval/verification/current-full-suite-failure-reconciliation.v1.json",
+          "eval/verification/full-suite-failure-ledger.v1.json",
+          "eval/verification/full-suite-failure-packet.baseline.v1.json",
+          "eval/verification/full-suite-failure-packet.current.v1.json",
+          "eval/verification/post-arch4k-integrated-baseline.v1.json",
+          "eval/verification/post-mcp-full-suite-delta.v1.json",
+          "eval/verification/post-rfc-full-suite.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md",
+          "tests/DocxHeaderExtractor.Tests/A99StrictGoldV4Tests.cs",
+          "tests/DocxHeaderExtractor.Tests/Assets/DOC-0258.frozen-responses.json",
+          "tests/DocxHeaderExtractor.Tests/Doc0258SourceRegenerationTests.cs"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/freeze-registry.v6.visual-unified.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/bindings/DOC-0258.exact-bindings.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/freeze-registry.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/occurrence/DOC-0258.occurrence-gold.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v3/semantic/DOC-0258.semantic-gold.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/freeze-registry.v4.checked.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/historical-v4/semantic/DOC-0258.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/inventory.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0258.occurrence-gold.v1.json",
+          "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0258.semantic-freeze.v1.json",
+          "eval/a99-closed-loop/gold-current/documents/DOC-0258.gold.v1.json",
+          "eval/a99-closed-loop/gold-current/occurrence-baseline-preflight.v1.json",
+          "eval/a99-closed-loop/gold/DOC-0258.gold.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/paths.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json",
+          "eval/a99-closed-loop/strict-dev-gold-cohort.v1.json",
+          "eval/a99-closed-loop/strict-gold-occurrence-v1/DOC-0258.occurrence-gold-v1.json",
+          "eval/a99-closed-loop/strict-gold-v3/DOC-0258.strict-gold-v3.json",
+          "eval/a99-closed-loop/strict-gold-v4/DOC-0258.strict-gold-v4.json",
+          "eval/harness-lift/reference-coverage.v1.json",
+          "eval/harness-lift/reference-coverage.v2.json",
+          "eval/harness-lift/reference-occurrence-bridge.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "080",
+        "jaccard": 0.0133
+      }
+    },
+    {
+      "id": "071",
+      "stratum": "minutes",
+      "sourceKey": "todo10_8/heading_corpus_100/05_bien_ban_hop/071_ICP_IACG_Minutes_Oct_2025.pdf",
+      "sourceSha256": "fe99f544b10e690812acb1362c067c520968a7e1d2cddc232c24db2d3ba790e4",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+          "eval/a99-closed-loop/research-r2/cohort-selection.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0063.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0156.source.v1.json",
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0330.source.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json",
+          "eval/a99-closed-loop/review/identity-gold-pilot-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "077",
+        "jaccard": 0.0035
+      }
+    },
+    {
+      "id": "086",
+      "stratum": "translation",
+      "sourceKey": "todo10_8/heading_corpus_100/06_dich_song_ngu/086_Luat_Dau_tu_2020_EN_alt.pdf",
+      "sourceSha256": "46c95bde68c1e38d7ca1ff88c2be9dea55252eaa7dff66578484a78d37437e26",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+          "eval/a99-closed-loop/research-r2/cohort-selection.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-isolated-review/decision.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-isolated-review/sources/DOC-0171.review-source.v1.json",
+          "eval/a99-closed-loop/research-r2/pilot-8/pilot-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/pilot-8/pilot-manifest.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0076.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0171.source.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/pilot8-overlap.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/annotation-scope.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/A/DOC-0171.annotation.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/annotations/B/DOC-0171.annotation.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/packets/DOC-0171.source.v1.json",
+          "eval/a99-closed-loop/research-r2/p3-human-gold/pilot-authority.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "083",
+        "jaccard": 0.0084
+      }
+    },
+    {
+      "id": "081",
+      "stratum": "translation",
+      "sourceKey": "todo10_8/heading_corpus_100/06_dich_song_ngu/081_Luat_Doanh_nghiep_2020_EN.pdf",
+      "sourceSha256": "aaa07d753ab59add123f3a50ebdd38f586552090b473348426809a328afccee8",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0073.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "083",
+        "jaccard": 0.0024
+      }
+    },
+    {
+      "id": "085",
+      "stratum": "translation",
+      "sourceKey": "todo10_8/heading_corpus_100/06_dich_song_ngu/085_Luat_Nha_o_2023_EN.pdf",
+      "sourceSha256": "61762a372a48bc7474a1abee4850a1ae1ae49cb56cfb5dd0e034411892b8a30b",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "docs/accuracy/accuracy99-strict-cohort-preflight.md",
+          "eval/a99-closed-loop/early-dev-campaign.v1.json",
+          "eval/a99-closed-loop/early-dev-reference-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-closed-loop/strict-cohort-preflight.v1.json",
+          "eval/a99-closed-loop/strict-review-queue.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0075.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0342.source.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/dev-manifest.v1.json",
+          "eval/a99-closed-loop/strict-dev-gold-cohort.v1.json",
+          "eval/a99-closed-loop/strict-gold-v4/DOC-0265.strict-gold-v4.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "083",
+        "jaccard": 0.0037
+      }
+    },
+    {
+      "id": "091",
+      "stratum": "rfc",
+      "sourceKey": "todo10_8/heading_corpus_100/07_system_generated/091_RFC9110_HTTP_Semantics.pdf",
+      "sourceSha256": "60b30efa1048900833d1758440247fe8ac85a3134f2327388dcb24e07d814c89",
+      "verdict": "ELIGIBLE",
+      "rejectReasons": [],
+      "exposureTags": [
+        "ENGINE_OR_INVENTORY",
+        "HUMAN_REFERENCE_PRIOR"
+      ],
+      "exposures": {
+        "ENGINE_OR_INVENTORY": [
+          "eval/a99-closed-loop/pdf-source-facts-v2/pdf-source-facts-v2-audit.v1.json",
+          "eval/a99-closed-loop/pdf-source-facts-v3/pdf-source-facts-v3-audit.v1.json",
+          "eval/a99-closed-loop/reference-campaign.v1.json",
+          "eval/a99-closed-loop/representation/doc-0252-visual-line-segment-shadow.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v1.json",
+          "eval/a99-closed-loop/research-r2/cohort-freeze.v2.json",
+          "eval/a99-closed-loop/research-r2/cohort-selection.v1.json",
+          "eval/a99-closed-loop/research-r2/sampling-frame.v1.json",
+          "eval/a99-dataset/document-inventory.v1.json",
+          "eval/harness-lift/corpus-map.v1.json",
+          "eval/harness-lift/r18-traces/DOC-0081.v1.json",
+          "eval/reconciliation/r4-behavior-corpus.v1.json",
+          "eval/reconciliation/r5-3d/fixtures/091-rfc9110-http-semantics.producer-replay.v1.json",
+          "eval/verification/verify-6c-artifact.v1.json",
+          "eval/verification/verify-6c-materialization.v1.json",
+          "eval/verification/verify-6c-provenance-reconstruction.v1.json",
+          "handoff.md"
+        ],
+        "HUMAN_REFERENCE_PRIOR": [
+          "eval/a99-closed-loop/research-r2/annotation/sources/DOC-0176.source.v1.json",
+          "eval/a99-closed-loop/research-r2/existing-gold-audit/inventory.v1.json",
+          "eval/a99-closed-loop/review/holdout-manifest.v1.json",
+          "eval/manual-labels/m105b-cross-document-review-labels.v1.json",
+          "eval/manual-labels/m105b-cross-document-review-sample.v1.json"
+        ]
+      },
+      "maxDevelopmentShingleJaccard": {
+        "development": "093",
+        "jaccard": 0.0224
+      }
+    }
+  ],
+  "finalCohort": [
+    {
+      "id": "019",
+      "stratum": "legal",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "008",
+      "stratum": "legal",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "003",
+      "stratum": "legal",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "010",
+      "stratum": "legal",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "021",
+      "stratum": "legal",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "007",
+      "stratum": "legal",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "048",
+      "stratum": "finance",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "055",
+      "stratum": "finance",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "046",
+      "stratum": "finance",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "045",
+      "stratum": "finance",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "050",
+      "stratum": "finance",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "053",
+      "stratum": "finance",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "063",
+      "stratum": "textbook",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "062",
+      "stratum": "textbook",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "070",
+      "stratum": "textbook",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "068",
+      "stratum": "textbook",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "075",
+      "stratum": "minutes",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "078",
+      "stratum": "minutes",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "071",
+      "stratum": "minutes",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "086",
+      "stratum": "translation",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "081",
+      "stratum": "translation",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "085",
+      "stratum": "translation",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "091",
+      "stratum": "rfc",
+      "origin": "ISSUE_7_FRESH_RESERVE_ORDER"
+    },
+    {
+      "id": "UNFILLED",
+      "stratum": "procurement",
+      "origin": "ONLY_0_OF_1_ELIGIBLE"
+    }
+  ],
+  "finalCount": 23,
+  "providerCalls": 0,
+  "goldRead": false,
+  "modelPredictionsRead": false
+}

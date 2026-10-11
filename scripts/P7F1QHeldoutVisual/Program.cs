@@ -71,6 +71,8 @@ foreach (var draftPath in draftPaths)
             using var stroke = new SKPaint { Color = flag == "USER_DECIDED" ? new SKColor(118, 42, 131) : flag != "NONE" ? new SKColor(230, 120, 0) : colour,
                 Style = SKPaintStyle.Stroke, StrokeWidth = flag != "NONE" ? 2.2f : 1.0f, IsAntialias = true };
             canvas.DrawRect(rect, fill); canvas.DrawRect(rect, stroke);
+            // Privacy (Issue #6/#7 publication rule): an atom carrying an email or phone number is blacked out on the image.
+            if (Private(l.GetProperty("text").GetString())) { using var black = new SKPaint { Color = SKColors.Black, Style = SKPaintStyle.Fill }; canvas.DrawRect(new SKRect(rect.Left - 3, rect.Top - 3, rect.Right + 3, rect.Bottom + 3), black); }
             var tag = no.ToString();
             var w = font.MeasureText(tag);
             using var tagBg = new SKPaint { Color = stroke.Color, Style = SKPaintStyle.Fill };
@@ -143,8 +145,17 @@ static string FontText(JsonElement occurrence)
     return f.Size is null && !f.Bold && !f.Italic ? "-" : (f.Size is { } s ? s.ToString("0.#") : "?") + (f.Bold ? " B" : "") + (f.Italic ? " I" : "");
 }
 
+// Loose on purpose: parser text may split an email ("name@host. com"); any '@' between word characters counts.
+static bool Private(string? s) => s is not null && (System.Text.RegularExpressions.Regex.IsMatch(s, @"\w@\w")
+    || System.Text.RegularExpressions.Regex.IsMatch(s, @"(?i)(tel|phone|fax|mobile|điện thoại|đt|di động)\s*[:.]?\s*\+?\d[\d .\-()]{6,}\d"));
+
+static string Redact(string s) =>
+    System.Text.RegularExpressions.Regex.Replace(
+        System.Text.RegularExpressions.Regex.Replace(s, @"[\w.%+-]+@[\w.-]+(\.\s?[A-Za-z]{2,})?", "[REDACTED_EMAIL]"),
+        @"(?i)((tel|phone|fax|mobile|điện thoại|đt|di động)\s*[:.]?\s*)\+?\d[\d .\-()]{6,}\d", "$1[REDACTED_PHONE]");
+
 static string Cell(string? s, int max)
 {
-    var t = WebUtility.HtmlEncode((s ?? "").Replace("\n", " ")).Replace("|", "\\|");
+    var t = WebUtility.HtmlEncode(Redact((s ?? "").Replace("\n", " "))).Replace("|", "\\|");
     return t.Length > max ? t[..max] + "…" : t;
 }
