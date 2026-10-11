@@ -16,11 +16,14 @@ var policyV3 = new F1QBodyPolicy("qwen/qwen3.7-flash", "alibaba", 32768, JsonObj
 var capsV3 = new F1QRunCaps(MaxTransportAttemptsPerTurn: 1);
 // Held-out (Issue #6): V3 caps plus the USD 3.00 hard cap checked against worst-case cost before every call.
 var capsHeldout = capsV3 with { HardCapUsd = 3.00m };
+// Issue #7 V4.2 (-v42 modes only): tool set 3 = targets are this request's issued ids, V3 tool definitions.
+var policyV42 = policyV3 with { ToolSet = 3 };
 
 // "-layout" modes run the layout-aware chunking arm (2026-10-11): same composition, only pack/chunk boundaries differ.
 LayoutArm.On = args[0].EndsWith("-layout", StringComparison.Ordinal);
 // "-v11" direct modes use P7_F1_DIRECT_HEADING_V1_1 (opaque ids, no hash echo, at-location prompt); V1 stays for the pilot.
-DirectV.V11 = args[0].EndsWith("-v11", StringComparison.Ordinal);
+DirectV.V11 = args[0].EndsWith("-v11", StringComparison.Ordinal) || args[0].EndsWith("-v42", StringComparison.Ordinal);
+DirectV.V42 = args[0].EndsWith("-v42", StringComparison.Ordinal);
 switch (args[0])
 {
     case "probe":
@@ -370,6 +373,7 @@ switch (args[0])
     }
     case "prepare-direct":
     case "prepare-direct-v11":
+    case "prepare-direct-v42":
     {
         // Issue #7 P7_F1_DIRECT_HEADING_V1: layout-aware packs/chunks (same as the F1Q V2 layout control), the direct
         // heading-membership prompt and source enrichment V1. No Gold, no provider calls.
@@ -379,7 +383,7 @@ switch (args[0])
         var selectionBytes = File.ReadAllBytes(args[1]);
         var requests = DirectRequests(selectionBytes).ToArray();
         Directory.CreateDirectory(args[3]);
-        var runner = new P7F1QConversationRunner(new NoTransport(), policyV3, capsHeldout);
+        var runner = new P7F1QConversationRunner(new NoTransport(), DirectV.V42 ? policyV42 : policyV3, capsHeldout);
         var rows = new List<object>();
         foreach (var r in requests)
         {
@@ -395,8 +399,8 @@ switch (args[0])
         {
             version = "P7_F1_DIRECT_PLAN_" + Path.GetFileNameWithoutExtension(args[2]).Split('.').Last().ToUpperInvariant(), status = "FROZEN_BEFORE_PROVIDER",
             issue = "ylight23/DocxHeaderExtractor#7", protocolVersion = DirectV.V11 ? P7F1DirectProtocolV11.Version : P7F1DirectProtocol.Version, systemPromptSha256 = DirectV.V11 ? P7F1DirectProtocolV11.PromptSha256() : P7F1DirectProtocol.PromptSha256(),
-            enrichmentVersion = P7F1SourceEnrichment.Version, packing = P7F1QLayoutPacking.Version, chunkSize = P7F1QProtocolV2.ChunkSize,
-            toolsVersion = P7F1QEvidenceTools.VersionV2, toolDefinitionsSha256 = SpatialCanonical.Hash(Encoding.UTF8.GetBytes(P7F1QEvidenceTools.DefinitionsV2().ToJsonString())),
+            enrichmentVersion = DirectV.V42 ? P7F1SourceEnrichment.VersionV2 : P7F1SourceEnrichment.Version, packing = P7F1QLayoutPacking.Version, chunkSize = P7F1QProtocolV2.ChunkSize,
+            toolsVersion = DirectV.V42 ? P7F1QEvidenceTools.VersionV3 : P7F1QEvidenceTools.VersionV2, toolDefinitionsSha256 = SpatialCanonical.Hash(Encoding.UTF8.GetBytes(P7F1QEvidenceTools.DefinitionsV2(DirectV.V42).ToJsonString())),
             model = policyV3.Model, providerRoute = new { order = new[] { "alibaba" }, allowFallbacks = false, requireParameters = true },
             responseFormat = "json_object_on_every_turn", reasoning = "enabled", temperature = 0, maxTokens = policyV3.MaxTokens, caps = capsHeldout,
             retryPolicy = "AT_MOST_ONE_IDENTICAL_BODY_RETRY_PER_REQUEST_ON_TRANSPORT_OR_CONTRACT_FAILURE_NO_ERROR_FEEDBACK_NO_SEMANTIC_RETRY",
@@ -419,6 +423,7 @@ switch (args[0])
     }
     case "execute-direct":
     case "execute-direct-v11":
+    case "execute-direct-v42":
     {
         // Paid-call gate (Issue #7): a user provider authorization pinned to THIS plan sha, with its own USD cap, is required.
         if (args.Length < 6) throw new ArgumentException("execute-direct <plan.json> <plan-sha256> <bodies-dir> <authorization.json> <capture-root> [handle,...]");
@@ -455,7 +460,7 @@ switch (args[0])
         P7F1QConversationRunner.WriteNew(Path.Combine(root, $"endpoint-metadata.{DateTimeOffset.UtcNow:yyyyMMddTHHmmssfffZ}.{Environment.ProcessId}.json"), metadata);
         VerifyEndpoint(metadata);
         using var transport = new P7F1QOpenRouterTransport(() => Environment.GetEnvironmentVariable("OPENROUTER_API_KEY") ?? "", TimeSpan.FromSeconds(300));
-        var runner = new P7F1QConversationRunner(transport, policyV3, directCaps);
+        var runner = new P7F1QConversationRunner(transport, DirectV.V42 ? policyV42 : policyV3, directCaps);
         var stop = false; var systemic = 0;
         foreach (var q in plan.RootElement.GetProperty("requests").EnumerateArray())
         {
@@ -485,6 +490,7 @@ switch (args[0])
     }
     case "bind-direct":
     case "bind-direct-v11":
+    case "bind-direct-v42":
     {
         // Exact binding of FROZEN raw (manifest pinned) to parser-authoritative source; no Gold is read here.
         if (args.Length != 6) throw new ArgumentException("bind-direct <plan.json> <plan-sha256> <capture-root> <raw-manifest-sha256> <new-bound.json>");
@@ -509,7 +515,7 @@ IEnumerable<DirectRequest> DirectRequests(byte[] selectionBytes)
     foreach (var c in HeldoutCases(selectionBytes))
     {
         if (!enrichments.TryGetValue(c.Document, out var enrichment))
-            enrichments[c.Document] = enrichment = new P7F1SourceEnrichment(c.ToolsV2, c.Source, LayoutArm.Details[c.Document]);
+            enrichments[c.Document] = enrichment = new P7F1SourceEnrichment(c.ToolsV2, c.Source, LayoutArm.Details[c.Document], exactEvidence: DirectV.V42);
         var chunks = ChunksOf(c);
         foreach (var (chunk, k) in chunks.Select((x, i) => (x, i + 1)))
         {
@@ -519,7 +525,9 @@ IEnumerable<DirectRequest> DirectRequests(byte[] selectionBytes)
             var context = chunks.SelectMany(x => x).Where(p => !inChunk.Contains(p.SourceAlias)).Select(p => (Alias: p.SourceAlias, p.Page, p.Text)).Concat(c.Context).ToArray();
             var ids = DirectV.V11 ? P7F1DirectProtocolV11.OpaqueIds(requestId, subjects) : null;
             var scope = ids is null ? P7F1DirectProtocol.IssuedSetSha256(requestId, c.Document, subjects) : P7F1DirectProtocolV11.ScopeSha256(requestId, c.Document, subjects, ids);
-            yield return new DirectRequest(requestId, c, k, subjects, context, scope, enrichment, ids);
+            // V4.2: this request's own tools instance resolves only its issued ids (plus source aliases).
+            var requestTools = DirectV.V42 && ids is not null ? c.ToolsV2.WithIssued(ids.ToDictionary(kv => kv.Value, kv => kv.Key, StringComparer.Ordinal)) : null;
+            yield return new DirectRequest(requestId, c, k, subjects, context, scope, enrichment, ids, requestTools);
         }
     }
 }
@@ -544,7 +552,7 @@ static F1QRequestSpec DirectSpec(DirectRequest r, byte[] body, string handle)
         ? text => P7F1DirectProtocol.Validate(text, r.RequestId, r.Scope, issued, citable)
         : text => P7F1DirectProtocolV11.Validate(text, r.RequestId, r.Subjects, r.Ids, citable);
     return new F1QRequestSpec(handle, r.Case.Case, F1QArm.F1QEvidenceV2, r.Ids is null ? P7F1DirectProtocol.SystemPrompt() : P7F1DirectProtocolV11.SystemPrompt(),
-        DirectUser(r), issued, citable, r.Case.ToolsV2, body, validator, FenceNormalization: true);
+        DirectUser(r), issued, citable, r.RequestTools ?? r.Case.ToolsV2, body, validator, FenceNormalization: true);
 }
 
 List<JsonObject> BindDirect(JsonElement plan, string root, string selectionPath)
@@ -795,10 +803,11 @@ internal static class LayoutArm
     public static readonly Dictionary<string, PdfSourceDetails> Details = new(StringComparer.Ordinal);
 }
 
-internal static class DirectV { public static bool V11; }
+internal static class DirectV { public static bool V11; public static bool V42; }
 
 internal sealed record DirectRequest(string RequestId, F1QCase Case, int Chunk, IReadOnlyList<P7F1DirectProtocol.Subject> Subjects,
-    IReadOnlyList<(string Alias, int Page, string Text)> Context, string Scope, P7F1SourceEnrichment Enrichment, IReadOnlyDictionary<string, string>? Ids = null);
+    IReadOnlyList<(string Alias, int Page, string Text)> Context, string Scope, P7F1SourceEnrichment Enrichment, IReadOnlyDictionary<string, string>? Ids = null,
+    P7F1QEvidenceTools? RequestTools = null);
 
 internal sealed record F1QCase(string Case, string Document, string Pack, int[] Pages, string Origin, DocumentSourceSnapshot Source,
     InterpretationRequest Control, IReadOnlyList<(string Alias, int Page, string Text)> Context, IReadOnlyList<F1QIssuedOccurrence> Issued,

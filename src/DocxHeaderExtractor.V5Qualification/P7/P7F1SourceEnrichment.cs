@@ -16,6 +16,8 @@ namespace DocxHeaderExtractor.V5Qualification.P7;
 internal sealed class P7F1SourceEnrichment
 {
     public const string Version = "P7_F1_SOURCE_ENRICHMENT_V1";
+    /// <summary>V2 (V4.2): V1 plus nav.exact, exact-text evidence for same-text lines elsewhere. Nothing removed.</summary>
+    public const string VersionV2 = "P7_F1_SOURCE_ENRICHMENT_V2";
     public const double BaselineTolerance = P7F1QEvidenceTools.SameBaselineTolerance;
     public const int NeighbourRows = 6, MaxPeers = 4, MaxTargets = 3, CaptionRowWindow = 25, PeerTextChars = 40;
     public const string Basis = "Observations from parser geometry and text only. status says how an inferred relation is supported; "
@@ -33,6 +35,10 @@ internal sealed class P7F1SourceEnrichment
     readonly Dictionary<string, int> blockSize = new(StringComparer.Ordinal);
     readonly Dictionary<int, (double Bottom, double Top)> extent = new();
     readonly Dictionary<string, List<Line>> byRepeatKey = new(StringComparer.Ordinal);
+    readonly bool exact;
+    /// <summary>Version and legend that match what this instance emits (V1 is the frozen V4.1 form).</summary>
+    public string Ver => exact ? VersionV2 : Version;
+    public string LegendText => exact ? LegendV2 : Legend;
     readonly Dictionary<object, object> memo = new();
 
     sealed record Line(string Alias, int Ordinal, int Page, string Text, double Left, double Right, double Bottom, double Top);
@@ -42,9 +48,10 @@ internal sealed class P7F1SourceEnrichment
         public bool DataRow => NumericCells >= 2 && Cells.Any(c => !NumericCell.IsMatch(c.Text));
     }
 
-    public P7F1SourceEnrichment(P7F1QEvidenceTools tools, DocumentSourceSnapshot source, PdfSourceDetails details)
+    public P7F1SourceEnrichment(P7F1QEvidenceTools tools, DocumentSourceSnapshot source, PdfSourceDetails details, bool exactEvidence = false)
     {
         this.tools = tools;
+        exact = exactEvidence;
         var idByAlias = source.Evidence.ToDictionary(e => e.SourceAlias, e => e.SourceId, StringComparer.Ordinal);
         foreach (var page in source.Atoms.Select(a => a.Page).Distinct().Order())
         {
@@ -144,13 +151,42 @@ internal sealed class P7F1SourceEnrichment
             cap = caption,
             prev = previousPage,
             rep = tools.RepeatPageCount(alias),
-            nav = pageRef is null && !dots && elsewhere.Length == 0 ? null : new
+            nav = pageRef is null && !dots && elsewhere.Length == 0 ? null : exact ? (object)new
+            {
+                pageNo = pageRef, dots, same = elsewhere.Select(e => new object[] { e.Alias, e.Page }),
+                target = elsewhere.Length == 0 ? "NOT_AVAILABLE" : pageRef is not null && elsewhere.Any(e => e.Page == pageRef) ? "SAME_TEXT_ON_REFERENCED_PAGE_CANDIDATE" : "UNRESOLVED",
+                exact = elsewhere.Length == 0 ? null : ExactEvidence(self, elsewhere),
+            } : new
             {
                 pageNo = pageRef, dots, same = elsewhere.Select(e => new object[] { e.Alias, e.Page }),
                 target = elsewhere.Length == 0 ? "NOT_AVAILABLE" : pageRef is not null && elsewhere.Any(e => e.Page == pageRef) ? "SAME_TEXT_ON_REFERENCED_PAGE_CANDIDATE" : "UNRESOLVED",
             },
             pos = band,
             blk = blockId is null ? null : new object[] { blockId, blockSize[blockId] },
+        };
+    }
+
+    /// <summary>V2 only: the same-text lines elsewhere with exact-text, trailing-page and dot-leader observations, each with
+    /// the line that follows it on its own page, and the line that follows this one. Observations only; no copy is chosen.</summary>
+    object ExactEvidence(Line self, Line[] elsewhere)
+    {
+        var selfNext = tools.NextOf(self.Alias);
+        return new
+        {
+            selfNext = selfNext is null ? null : Clip(selfNext.Text, PeerTextChars),
+            cands = elsewhere.Select(e =>
+            {
+                var at = rowOf[e.Alias]; var rowText = string.Join(" ", rowsByPage[at.Page][at.Row].Cells.Select(c => c.Text));
+                var trailing = TrailingPage.Match(rowText);
+                var next = tools.NextOf(e.Alias);
+                return new object[]
+                {
+                    e.Alias, e.Page, e.Text.Trim() == self.Text.Trim() ? 1 : 0,
+                    trailing.Success ? (object)int.Parse(trailing.Groups[1].Value) : null,
+                    DotLeaders.IsMatch(rowText) ? 1 : 0,
+                    next is null ? null : Clip(next.Text, PeerTextChars),
+                };
+            }).ToArray(),
         };
     }
 
@@ -178,4 +214,8 @@ internal sealed class P7F1SourceEnrichment
         context lines carry only {num, data, rep, cap}: numeric peer cells, own row has 2+ numeric cells, pages with same text, caption pattern.
         Statuses: SUPPORTED_BY_LAYOUT (parser geometry), SUPPORTED_BY_PARSER (parser text), UNRESOLVED, NOT_AVAILABLE. All are observations, not labels.
         """;
+
+    /// <summary>V2 legend: V1 plus the exact-text evidence. Sent once per request with the V2 enrichment version.</summary>
+    public const string LegendV2 = Legend + "\n"
+        + "exact (nav, V2 only, present when same-text lines exist elsewhere): selfNext = the line that follows this one on its page; cands = [alias, page, exact 1/0 = identical trimmed text, pageNo of that line's row, dots of that row 1/0, the line that follows it on its page]. Observations only: they do not say which copy opens content at its own location.";
 }

@@ -301,7 +301,7 @@ internal sealed class P7F1QConversationRunner(IF1QTransport transport, F1QBodyPo
         if (policy.JsonObjectResponse) body["response_format"] = new JsonObject { ["type"] = "json_object" };
         if (tools)
         {
-            body["tools"] = policy.ToolSet == 2 ? P7F1QEvidenceTools.DefinitionsV2() : P7F1QEvidenceTools.Definitions();
+            body["tools"] = policy.ToolSet == 3 ? P7F1QEvidenceTools.DefinitionsV2(issuedIds: true) : policy.ToolSet == 2 ? P7F1QEvidenceTools.DefinitionsV2() : P7F1QEvidenceTools.Definitions();
             body["tool_choice"] = toolChoice;
         }
         body["provider"] = new JsonObject

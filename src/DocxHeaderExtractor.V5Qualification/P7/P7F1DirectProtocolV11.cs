@@ -86,8 +86,8 @@ internal static class P7F1DirectProtocolV11
         return JsonSerializer.Serialize(new
         {
             protocolVersion = Version, requestId,
-            layoutBasis = P7F1QEvidenceTools.LayoutBasis, enrichmentVersion = P7F1SourceEnrichment.Version,
-            enrichmentLegend = P7F1SourceEnrichment.Legend.Replace("\r\n", "\n", StringComparison.Ordinal),
+            layoutBasis = P7F1QEvidenceTools.LayoutBasis, enrichmentVersion = enrichment.Ver,
+            enrichmentLegend = enrichment.LegendText.Replace("\r\n", "\n", StringComparison.Ordinal),
             pageStats = pages.Select(tools.PageStats).ToArray(),
             issuedSubjects = subjects.Select(i => new { id = ids[i.SourceAlias], sourceAlias = i.SourceAlias, page = i.Page, text = i.Text,
                 layout = tools.Layout(i.SourceAlias), sourceEnrichment = enrichment.Of(i.SourceAlias) }).ToArray(),

@@ -26,11 +26,13 @@ internal sealed class P7F1QEvidenceTools
     public const int MaxNeighbors = 6, MaxGeometryLines = 40, MaxSpanTargets = 8, MaxRepeated = 20, ResultByteCap = 16384, MaxTextChars = 160;
     public static readonly string[] Names = ["get_occurrence_context", "get_page_geometry", "get_source_span", "get_repeated_occurrences"];
     public const string VersionV2 = "P7_F1Q_READ_ONLY_EVIDENCE_TOOLS_V2";
+    /// <summary>V3: same tools as V2; targets are this request's issued ids (no O# wording) or source aliases; exact-text evidence in enrichment.</summary>
+    public const string VersionV3 = "P7_F1Q_READ_ONLY_EVIDENCE_TOOLS_V3";
     public static readonly string[] NamesV2 = [.. Names, "compare_occurrences"];
     public const double SameBaselineTolerance = 2.0;
     /// <summary>1: frozen V1 tool set. 2: context with layout and spatial relations, plus compare_occurrences.</summary>
     public int ToolSet { get; }
-    public IReadOnlyList<string> ToolNames => ToolSet == 2 ? NamesV2 : Names;
+    public IReadOnlyList<string> ToolNames => ToolSet >= 2 ? NamesV2 : Names;
 
     internal static readonly JsonSerializerOptions WireJson = new()
     {
@@ -50,7 +52,7 @@ internal sealed class P7F1QEvidenceTools
     public P7F1QEvidenceTools(string sourceSha256, string universeSha256, string storeSha256,
         IReadOnlyList<F1QSourceLine> documentLines, IReadOnlyDictionary<string, string> issuedAliasByOccurrence, int toolSet = 1)
     {
-        if (toolSet is not (1 or 2)) throw new InvalidOperationException("F1Q_TOOL_SET_INVALID");
+        if (toolSet is not (1 or 2 or 3)) throw new InvalidOperationException("F1Q_TOOL_SET_INVALID");
         ToolSet = toolSet;
         lines = documentLines.OrderBy(l => l.Ordinal).ThenBy(l => l.Alias, StringComparer.Ordinal).ToArray();
         indexByAlias = new(StringComparer.Ordinal);
@@ -81,11 +83,11 @@ internal sealed class P7F1QEvidenceTools
     public IReadOnlyCollection<string> DocumentAliases => indexByAlias.Keys;
 
     /// <summary>OpenAI-compatible tool declarations. Frozen into every tool-arm request body.</summary>
-    public static JsonArray Definitions() => new(
+    public static JsonArray Definitions(bool issuedIds = false) => new(
         Tool(Names[0], "Read the neighbouring parser source lines before and after one target in document reading order (text and page only).",
             new JsonObject
             {
-                ["target"] = Target(),
+                ["target"] = Target(issuedIds),
                 ["before"] = Int(0, MaxNeighbors, "Lines before the target."),
                 ["after"] = Int(0, MaxNeighbors, "Lines after the target."),
             }, "target", "before", "after"),
@@ -102,13 +104,13 @@ internal sealed class P7F1QEvidenceTools
                 ["targets"] = new JsonObject
                 {
                     ["type"] = "array", ["minItems"] = 1, ["maxItems"] = MaxSpanTargets,
-                    ["items"] = Target(), ["description"] = "Issued occurrence ids (O#) or source aliases.",
+                    ["items"] = Target(issuedIds), ["description"] = issuedIds ? "Issued ids of this request (issuedSubjects id) or source aliases." : "Issued occurrence ids (O#) or source aliases.",
                 },
             }, "targets"),
         Tool(Names[3], "Find other lines in the same document whose text repeats the target after a fixed normalization (case, dot leaders, trailing page number, digits masked). Useful for running headers/footers or contents entries vs. body headings.",
             new JsonObject
             {
-                ["target"] = Target(),
+                ["target"] = Target(issuedIds),
                 ["maxResults"] = Int(1, MaxRepeated, "Maximum matches to return."),
             }, "target", "maxResults"));
 
@@ -121,7 +123,7 @@ internal sealed class P7F1QEvidenceTools
             using var parsed = ParseArguments(rawArguments);
             var args = parsed.RootElement;
             if (!ToolNames.Contains(name)) throw new F1QToolArgumentException("UNKNOWN_TOOL");
-            if (ToolSet == 2 && name is "get_occurrence_context" or "compare_occurrences")
+            if (ToolSet >= 2 && name is "get_occurrence_context" or "compare_occurrences")
             {
                 (arguments, result) = name == "get_occurrence_context" ? ContextV2(args, returned) : Compare(args, returned);
                 goto done;
@@ -352,29 +354,40 @@ internal sealed class P7F1QEvidenceTools
     internal static double? Bold(JsonElement? t) =>
         t is { ValueKind: JsonValueKind.Object } v && v.TryGetProperty("boldRatio", out var s) && s.ValueKind == JsonValueKind.Number ? s.GetDouble() : null;
 
-    public static JsonArray DefinitionsV2()
+    public static JsonArray DefinitionsV2(bool issuedIds = false)
     {
-        var tools = Definitions();
+        var tools = Definitions(issuedIds);
         tools[0] = Tool(Names[0], "Read neighbouring parser lines before and after one target in reading order, each with its layout (bbox, font size, bold/italic ratio) and its spatial relation to the target (same baseline, vertical offset, horizontal overlap, font-size delta), plus other lines on the target's baseline (row peers) and page statistics. Observations only.",
             new JsonObject
             {
-                ["target"] = Target(),
+                ["target"] = Target(issuedIds),
                 ["before"] = Int(0, MaxNeighbors, "Lines before the target."),
                 ["after"] = Int(0, MaxNeighbors, "Lines after the target."),
             }, "target", "before", "after");
         tools.Add(Tool("compare_occurrences", "Compare two source locations side by side, for example a contents entry and the body line it may refer to, or a title and the line below it: each with its context window, layout and page statistics, plus arithmetic deltas (page distance, same normalized text, font-size, bold and left-edge differences). Observations only.",
             new JsonObject
             {
-                ["first"] = Target(), ["second"] = Target(),
+                ["first"] = Target(issuedIds), ["second"] = Target(issuedIds),
                 ["window"] = Int(0, 3, "Context lines before and after each location."),
             }, "first", "second", "window"));
         return tools;
     }
 
+    /// <summary>V3 instance for one request: same lines and universe, resolving only this request's issued ids (and any source alias).</summary>
+    public P7F1QEvidenceTools WithIssued(IReadOnlyDictionary<string, string> aliasById) =>
+        new(SourceSha256, SourceAliasUniverseSha256, EvidenceStoreSha256, lines, aliasById, 3);
+
+    /// <summary>Next line in reading order on the same page, or null. An observation for enrichment, never a label.</summary>
+    public F1QSourceLine? NextOf(string alias)
+    {
+        var i = indexByAlias[alias] + 1;
+        return i < lines.Count && lines[i].Page == lines[i - 1].Page ? lines[i] : null;
+    }
+
     private byte[] Serialize(string evidenceId, string name, string status, string? error, object? arguments, object? result) =>
         JsonSerializer.SerializeToUtf8Bytes(new
         {
-            evidenceId, tool = name, version = ToolSet == 2 ? VersionV2 : Version, status, error, arguments, result,
+            evidenceId, tool = name, version = ToolSet == 3 ? VersionV3 : ToolSet == 2 ? VersionV2 : Version, status, error, arguments, result,
             provenance = new
             {
                 sourceSha256 = SourceSha256, sourceAliasUniverseSha256 = SourceAliasUniverseSha256,
@@ -466,7 +479,9 @@ internal sealed class P7F1QEvidenceTools
             },
         },
     };
-    private static JsonObject Target() => new() { ["type"] = "string", ["description"] = "An issued occurrence id such as O7, or a source alias such as L0012:S0 seen in supplied evidence." };
+    private static JsonObject Target(bool issuedIds = false) => new() { ["type"] = "string", ["description"] = issuedIds
+        ? "An issued id from this request's issuedSubjects (the id field, four letters), or a source alias such as L0012:S0 seen in supplied evidence."
+        : "An issued occurrence id such as O7, or a source alias such as L0012:S0 seen in supplied evidence." };
     private static JsonObject Int(int min, int max, string description) => new() { ["type"] = "integer", ["minimum"] = min, ["maximum"] = max, ["description"] = description };
 }
 
