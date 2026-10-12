@@ -1,0 +1,361 @@
+{
+  "artifact": "p7.f1.v6.d4.10-canary-analysis.v1",
+  "label": "Development canary; segments chosen from earlier errors; semantic numbers are a diagnostic on 144 targets, not F1",
+  "arms": [
+    {
+      "arm": "B",
+      "format": "Objects",
+      "calls": 3,
+      "reservedUsd": 0.015459150000000001,
+      "actualUsd": 0.00296141,
+      "halt": null,
+      "segments": [
+        {
+          "unit": "SEG-001",
+          "outcome": "COMPLETE",
+          "failure": null,
+          "calls": 1,
+          "replies": [
+            {
+              "status": "COMPLETE",
+              "rootKeys": [
+                "decisions",
+                "protocolVersion",
+                "status"
+              ],
+              "decisions": 48,
+              "missingTargets": 0,
+              "contextOrOtherAliases": 0,
+              "duplicates": 0,
+              "selectWithoutEvidence": 0,
+              "round": 1,
+              "contentBytes": 5818,
+              "reasoningTokens": "3976",
+              "completionTokens": "6421",
+              "consistency": {
+                "draftSelected": 0,
+                "outputSelected": 46,
+                "same": false
+              }
+            }
+          ],
+          "semanticFromLastDecisionReply": {
+            "selected": 46,
+            "goldAtoms": 0,
+            "tp": 0,
+            "fp": 46,
+            "fn": 0,
+            "falsePositives": [
+              "L0042:S0",
+              "L0043:S0",
+              "L0044:S0",
+              "L0045:S0",
+              "L0046:S0",
+              "L0047:S0",
+              "L0048:S0",
+              "L0049:S0",
+              "L0050:S0",
+              "L0051:S0",
+              "L0052:S0",
+              "L0053:S0",
+              "L0054:S0",
+              "L0055:S0",
+              "L0056:S0",
+              "L0057:S0",
+              "L0058:S0",
+              "L0059:S0",
+              "L0060:S0",
+              "L0061:S0",
+              "L0064:S0",
+              "L0065:S0",
+              "L0066:S0",
+              "L0067:S0",
+              "L0068:S0",
+              "L0069:S0",
+              "L0070:S0",
+              "L0071:S0",
+              "L0072:S0",
+              "L0073:S0",
+              "L0074:S0",
+              "L0075:S0",
+              "L0076:S0",
+              "L0077:S0",
+              "L0078:S0",
+              "L0079:S0",
+              "L0080:S0",
+              "L0081:S0",
+              "L0082:S0",
+              "L0083:S0",
+              "L0084:S0",
+              "L0085:S0",
+              "L0086:S0",
+              "L0087:S0",
+              "L0088:S0",
+              "L0089:S0"
+            ],
+            "falseNegatives": []
+          }
+        },
+        {
+          "unit": "SEG-008",
+          "outcome": "FAILED",
+          "failure": "PROTOCOL:ROOT_KEYS_INVALID",
+          "calls": 1,
+          "replies": [
+            {
+              "status": "COMPLETE",
+              "rootKeys": [
+                "decisions",
+                "protocolVersion",
+                "responseVersion",
+                "status"
+              ],
+              "decisions": 48,
+              "missingTargets": 0,
+              "contextOrOtherAliases": 0,
+              "duplicates": 0,
+              "selectWithoutEvidence": 0,
+              "round": 1,
+              "contentBytes": 3625,
+              "reasoningTokens": "4206",
+              "completionTokens": "5691",
+              "consistency": null
+            }
+          ],
+          "semanticFromLastDecisionReply": {
+            "selected": 1,
+            "goldAtoms": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "falsePositives": [],
+            "falseNegatives": []
+          }
+        },
+        {
+          "unit": "SEG-009",
+          "outcome": "FAILED",
+          "failure": "PROTOCOL:ROOT_KEYS_INVALID",
+          "calls": 1,
+          "replies": [
+            {
+              "status": "COMPLETE",
+              "rootKeys": [
+                "decisions",
+                "protocolVersion",
+                "responseVersion",
+                "status"
+              ],
+              "decisions": 48,
+              "missingTargets": 0,
+              "contextOrOtherAliases": 0,
+              "duplicates": 0,
+              "selectWithoutEvidence": 0,
+              "round": 1,
+              "contentBytes": 2338,
+              "reasoningTokens": "3519",
+              "completionTokens": "4306",
+              "consistency": {
+                "draftSelected": 2,
+                "outputSelected": 2,
+                "same": true
+              }
+            }
+          ],
+          "semanticFromLastDecisionReply": {
+            "selected": 2,
+            "goldAtoms": 2,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "falsePositives": [],
+            "falseNegatives": []
+          }
+        }
+      ],
+      "semanticTotals": {
+        "tp": 3,
+        "fp": 46,
+        "fn": 0
+      }
+    },
+    {
+      "arm": "C",
+      "format": "Compact",
+      "calls": 3,
+      "reservedUsd": 0.03774392,
+      "actualUsd": 0.00255133,
+      "halt": "CONSECUTIVE_CONTRACT_FAILURES",
+      "segments": [
+        {
+          "unit": "SEG-001",
+          "outcome": "FAILED",
+          "failure": "PROTOCOL:BLOCK_COUNT_INVALID",
+          "calls": 1,
+          "replies": [
+            {
+              "status": "COMPLETE",
+              "rootKeys": [
+                "blocks",
+                "protocolVersion",
+                "selectedEvidence",
+                "status",
+                "targetCount"
+              ],
+              "targetCount": 48,
+              "blocks": 4,
+              "codes": 48,
+              "missingCodes": 0,
+              "badBlocks": 3,
+              "selectWithoutEvidence": 0,
+              "round": 1,
+              "contentBytes": 2938,
+              "reasoningTokens": "4332",
+              "completionTokens": "5734",
+              "consistency": {
+                "draftSelected": 0,
+                "outputSelected": 34,
+                "same": false
+              }
+            }
+          ],
+          "semanticFromLastDecisionReply": {
+            "selected": 34,
+            "goldAtoms": 0,
+            "tp": 0,
+            "fp": 34,
+            "fn": 0,
+            "falsePositives": [
+              "L0042:S0",
+              "L0043:S0",
+              "L0044:S0",
+              "L0045:S0",
+              "L0046:S0",
+              "L0047:S0",
+              "L0048:S0",
+              "L0049:S0",
+              "L0050:S0",
+              "L0051:S0",
+              "L0052:S0",
+              "L0053:S0",
+              "L0054:S0",
+              "L0055:S0",
+              "L0058:S0",
+              "L0059:S0",
+              "L0060:S0",
+              "L0061:S0",
+              "L0062:S0",
+              "L0063:S0",
+              "L0064:S0",
+              "L0065:S0",
+              "L0066:S0",
+              "L0067:S0",
+              "L0068:S0",
+              "L0069:S0",
+              "L0070:S0",
+              "L0071:S0",
+              "L0072:S0",
+              "L0073:S0",
+              "L0074:S0",
+              "L0075:S0",
+              "L0076:S0",
+              "L0077:S0"
+            ],
+            "falseNegatives": []
+          }
+        },
+        {
+          "unit": "SEG-008",
+          "outcome": "FAILED",
+          "failure": "PROTOCOL:BLOCK_COUNT_INVALID",
+          "calls": 1,
+          "replies": [
+            {
+              "status": "COMPLETE",
+              "rootKeys": [
+                "blocks",
+                "protocolVersion",
+                "selectedEvidence",
+                "status",
+                "targetCount"
+              ],
+              "targetCount": 48,
+              "blocks": 2,
+              "codes": 42,
+              "missingCodes": 6,
+              "badBlocks": 2,
+              "selectWithoutEvidence": 0,
+              "round": 1,
+              "contentBytes": 385,
+              "reasoningTokens": "2734",
+              "completionTokens": "2927",
+              "consistency": {
+                "draftSelected": 1,
+                "outputSelected": 1,
+                "same": true
+              }
+            }
+          ],
+          "semanticFromLastDecisionReply": {
+            "selected": 1,
+            "goldAtoms": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "falsePositives": [],
+            "falseNegatives": []
+          }
+        },
+        {
+          "unit": "SEG-009",
+          "outcome": "FAILED",
+          "failure": "PROTOCOL:BLOCK_COUNT_INVALID",
+          "calls": 1,
+          "replies": [
+            {
+              "status": "COMPLETE",
+              "rootKeys": [
+                "blocks",
+                "protocolVersion",
+                "selectedEvidence",
+                "status",
+                "targetCount"
+              ],
+              "targetCount": 48,
+              "blocks": 5,
+              "codes": 48,
+              "missingCodes": 0,
+              "badBlocks": 3,
+              "selectWithoutEvidence": 0,
+              "round": 1,
+              "contentBytes": 883,
+              "reasoningTokens": "3941",
+              "completionTokens": "4345",
+              "consistency": {
+                "draftSelected": 2,
+                "outputSelected": 1,
+                "same": false
+              }
+            }
+          ],
+          "semanticFromLastDecisionReply": {
+            "selected": 1,
+            "goldAtoms": 2,
+            "tp": 1,
+            "fp": 0,
+            "fn": 1,
+            "falsePositives": [],
+            "falseNegatives": [
+              "L0451:S0"
+            ]
+          }
+        }
+      ],
+      "semanticTotals": {
+        "tp": 2,
+        "fp": 34,
+        "fn": 1
+      }
+    }
+  ]
+}
