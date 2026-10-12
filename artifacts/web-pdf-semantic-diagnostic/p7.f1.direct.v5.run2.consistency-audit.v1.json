@@ -1,0 +1,194 @@
+{
+  "version": "P7_F1_BINARY_HEADING_EVALUATOR_V1_DECISION_EVIDENCE_CONSISTENCY_AUDIT",
+  "boundPredictionsSha256": "587bb66c6901c7eb5c3f3b79b5f39145a584d4c13bdc6de92d9955b5f205a897",
+  "goldRead": false,
+  "selections": 523,
+  "flagged": 22,
+  "byCue": {
+    "FRONT_MATTER": 2,
+    "TABLE_DATA": 10,
+    "RUNNING_FURNITURE": 1,
+    "NAVIGATION": 8,
+    "CAPTION": 2
+  },
+  "rows": [
+    {
+      "document": "009",
+      "sourceAlias": "L0002:S0",
+      "cues": [
+        "FRONT_MATTER"
+      ],
+      "justification": "National motto positioned directly below the authority name."
+    },
+    {
+      "document": "017",
+      "sourceAlias": "L1715:S0",
+      "cues": [
+        "TABLE_DATA"
+      ],
+      "justification": "Bold numbered line \u00276.\u0110\u0103ng k\u00FD \u1EE7y quy\u1EC1n...\u0027 introduces the subsequent table headers and data rows for authorization."
+    },
+    {
+      "document": "028",
+      "sourceAlias": "L1655:S0",
+      "cues": [
+        "RUNNING_FURNITURE"
+      ],
+      "justification": "Names the document section at the page top; repeated across pages as a running header identifying the substantive region."
+    },
+    {
+      "document": "034",
+      "sourceAlias": "L0211:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading introducing the table of contents list, bold font (18pt)."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0004:S0",
+      "cues": [
+        "FRONT_MATTER"
+      ],
+      "justification": "Date line of the title block specifying the reporting period end date."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0006:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading introducing the table of contents list that follows immediately below."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L0044:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Bold heading at page top introducing the following list of tables, figures, and boxes."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L3360:S0",
+      "cues": [
+        "TABLE_DATA"
+      ],
+      "justification": "First half of a bold, multi-line table caption introducing the subsequent data rows."
+    },
+    {
+      "document": "044",
+      "sourceAlias": "L3376:S0",
+      "cues": [
+        "TABLE_DATA",
+        "CAPTION"
+      ],
+      "justification": "Bold, 10pt line \u0027Table C1: Investments-composition\u0027 serves as the table title, introducing the subsequent column headers and numerical data rows."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0007:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading on page 3 introducing the table of contents listing sections and pages."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0020:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Heading on page 3 introducing the list of tables with page references."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0972:S0",
+      "cues": [
+        "TABLE_DATA"
+      ],
+      "justification": "Bold label positioned above a contiguous block of liability line items, introducing the liabilities section of the financial statement."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L0986:S0",
+      "cues": [
+        "TABLE_DATA"
+      ],
+      "justification": "Bold label positioned above a contiguous block of equity line items, introducing the equity section of the financial statement."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1892:S0",
+      "cues": [
+        "TABLE_DATA"
+      ],
+      "justification": "Bold, size 8, positioned above table data rows, introduces the Assets section of Table J2."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1901:S0",
+      "cues": [
+        "TABLE_DATA"
+      ],
+      "justification": "Structural table label introducing the derivative assets subsection; positioned above corresponding data rows."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1910:S0",
+      "cues": [
+        "TABLE_DATA"
+      ],
+      "justification": "Bold font label introducing the liabilities subsection; positioned above liability data rows."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1928:S0",
+      "cues": [
+        "CAPTION"
+      ],
+      "justification": "Bold, prominent table title positioned above the table body, naming the structured data that follows."
+    },
+    {
+      "document": "049",
+      "sourceAlias": "L1930:S0",
+      "cues": [
+        "TABLE_DATA"
+      ],
+      "justification": "Italicized subtitle directly below the table number, describing the table\u0027s scope and opening the column headers."
+    },
+    {
+      "document": "056",
+      "sourceAlias": "L0078:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Bold 13pt text at the top of the contents page, labeling the table of contents section itself."
+    },
+    {
+      "document": "067",
+      "sourceAlias": "L0018:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Functions as the title for the table of contents at this location."
+    },
+    {
+      "document": "088",
+      "sourceAlias": "L2132:S0",
+      "cues": [
+        "TABLE_DATA"
+      ],
+      "justification": "Bold, capitalized line functioning as table column headers immediately preceding the data rows."
+    },
+    {
+      "document": "093",
+      "sourceAlias": "L0043:S0",
+      "cues": [
+        "NAVIGATION"
+      ],
+      "justification": "Acts as a heading introducing the table of contents list that follows immediately below it on the same page."
+    }
+  ],
+  "note": "audit only: a flagged selection is a selection whose own justification names a non-heading role; nothing is removed or rescored"
+}

@@ -1,0 +1,19 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D051-PACK_003-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {"from": "gwnx", "to": "gjvk", "function": "Running header and document title block at page tops"},
+    {"from": "rgjp", "to": "prvn", "function": "Substantive section heading and accompanying body text discussing disbursement figures"},
+    {"from": "mfkd", "to": "bxnm", "function": "Footnotes and page number footer"},
+    {"from": "cccv", "to": "npqw", "function": "Running header and document title block at page tops"},
+    {"from": "hsvs", "to": "tnwz", "function": "Substantive section heading and definition text"},
+    {"from": "zzgq", "to": "pdrn", "function": "Footnotes and page number footer"}
+  ],
+  "headings": [
+    {"id": "gwnx", "region": 0, "evidenceRefs": ["gwnx"], "justification": "Italic text at page top (pos 1) serving as the document title, repeated across pages."},
+    {"id": "nxgg", "region": 0, "evidenceRefs": ["nxgg"], "justification": "Italic text immediately below title (pos 0.99) providing currency/unit context, repeated across pages."},
+    {"id": "rgjp", "region": 1, "evidenceRefs": ["rgjp"], "justification": "Bold, large font (13.2pt) at pos 0.93, clearly labels the subsequent disbursement discussion text."},
+    {"id": "hsvs", "region": 4, "evidenceRefs": ["hsvs"], "justification": "Bold, large font (13.2pt) at pos 0.94, clearly labels the subsequent commitments definition text."}
+  ]
+}

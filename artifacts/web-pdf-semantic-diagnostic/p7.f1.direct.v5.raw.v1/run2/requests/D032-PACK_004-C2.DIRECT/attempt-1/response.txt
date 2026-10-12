@@ -1,0 +1,18 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D032-PACK_004-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {"from": "tjrh", "to": "xnkc", "function": "Document title block and metadata fields for RFP identification."},
+    {"from": "mqkc", "to": "sjtt", "function": "Table of contents listing document parts and sections with page references."},
+    {"from": "mfth", "to": "kjtk", "function": "Main body opening featuring the Part 1 heading and page footer."}
+  ],
+  "headings": [
+    {"id": "tjrh", "region": 0, "evidenceRefs": ["tjrh"], "justification": "Large bold font at top of page, forms first line of document title."},
+    {"id": "ckwt", "region": 0, "evidenceRefs": ["ckwt"], "justification": "Large bold font below title, second line of document title."},
+    {"id": "pbsn", "region": 0, "evidenceRefs": ["pbsn"], "justification": "Medium-large bold font below title, third line of document title."},
+    {"id": "ndbb", "region": 0, "evidenceRefs": ["ndbb"], "justification": "Bold font below title, provides descriptive subtitle."},
+    {"id": "mqkc", "region": 1, "evidenceRefs": ["mqkc"], "justification": "Bold centered text introducing the table of contents list."},
+    {"id": "mfth", "region": 2, "evidenceRefs": ["mfth"], "justification": "Bold large text introducing Part 1 in the main body."}
+  ]
+}

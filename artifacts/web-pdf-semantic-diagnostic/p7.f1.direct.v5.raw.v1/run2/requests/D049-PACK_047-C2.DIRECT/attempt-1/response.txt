@@ -1,0 +1,54 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D049-PACK_047-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "ndtw",
+      "to": "vxgf",
+      "function": "Continuation of a financial statement table detailing derivative liabilities, line items, values, and explanatory footnotes."
+    },
+    {
+      "from": "bndb",
+      "to": "bndb",
+      "function": "Running footer containing publication title and reporting period."
+    },
+    {
+      "from": "mvgc",
+      "to": "jgxp",
+      "function": "Beginning of a new financial table presenting fair value measurements, including table caption, units, date, column headers, and initial asset section rows."
+    }
+  ],
+  "headings": [
+    {
+      "id": "qtbg",
+      "region": 0,
+      "evidenceRefs": ["qtbg"],
+      "justification": "Acts as a section heading introducing the subsequent list of derivative liability instruments and their values."
+    },
+    {
+      "id": "mvgc",
+      "region": 2,
+      "evidenceRefs": ["mvgc"],
+      "justification": "Bold, prominent table title positioned above the table body, naming the structured data that follows."
+    },
+    {
+      "id": "kqxs",
+      "region": 2,
+      "evidenceRefs": ["kqxs"],
+      "justification": "Italicized subtitle directly below the table number, describing the table's scope and opening the column headers."
+    },
+    {
+      "id": "cmcv",
+      "region": 2,
+      "evidenceRefs": ["cmcv"],
+      "justification": "Bold section header dividing the table into liability and asset categories, introducing the asset valuation rows."
+    },
+    {
+      "id": "xrpf",
+      "region": 2,
+      "evidenceRefs": ["xrpf"],
+      "justification": "Indented subsection header categorizing the first group of assets within the table structure."
+    }
+  ]
+}

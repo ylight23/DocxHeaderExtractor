@@ -1,0 +1,44 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D060-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "dthq",
+      "to": "qvxv",
+      "function": "Title, series identifier, author name, affiliation, and date block"
+    },
+    {
+      "from": "mzbf",
+      "to": "qznz",
+      "function": "Abstract heading and summary text"
+    },
+    {
+      "from": "nvvd",
+      "to": "skrh",
+      "function": "Fragmented page numbers and running header elements at the bottom of the first page"
+    }
+  ],
+  "headings": [
+    {
+      "id": "dthq",
+      "region": 0,
+      "evidenceRefs": ["dthq"],
+      "justification": "Largest font size (17.2pt) at page top, centrally positioned, clearly naming the document."
+    },
+    {
+      "id": "nswr",
+      "region": 0,
+      "evidenceRefs": ["nswr"],
+      "justification": "Positioned directly below the main title, identifying the lecture note series."
+    },
+    {
+      "id": "mzbf",
+      "region": 1,
+      "evidenceRefs": ["mzbf"],
+      "justification": "Uses bold face typeface (cmbx9) and explicitly labels the abstract section that follows."
+    }
+  ]
+}
+```

@@ -1,0 +1,117 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D034-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "jxjn",
+      "to": "cbrf",
+      "function": "Title block and cover page identifying the document type, full title, scope, and publication date."
+    },
+    {
+      "from": "rbcn",
+      "to": "hhjt",
+      "function": "Copyright statement and usage restriction notice."
+    },
+    {
+      "from": "hfhk",
+      "to": "cgmz",
+      "function": "Revisions history log listing amendment dates and summaries of changes."
+    },
+    {
+      "from": "sscb",
+      "to": "xfsr",
+      "function": "Foreword introducing the document's preparation, regulatory updates, and project applicability."
+    }
+  ],
+  "headings": [
+    {
+      "id": "jxjn",
+      "region": 0,
+      "evidenceRefs": [
+        "jxjn"
+      ],
+      "justification": "Large bold font at top of page, forms first line of the document title block."
+    },
+    {
+      "id": "tcgx",
+      "region": 0,
+      "evidenceRefs": [
+        "tcgx"
+      ],
+      "justification": "Continues title block immediately below, completing 'STANDARD PROCUREMENT DOCUMENT' phrase."
+    },
+    {
+      "id": "ttnt",
+      "region": 0,
+      "evidenceRefs": [
+        "ttnt"
+      ],
+      "justification": "Largest font size (48pt) on page, serves as primary title line."
+    },
+    {
+      "id": "xhhs",
+      "region": 0,
+      "evidenceRefs": [
+        "xhhs"
+      ],
+      "justification": "Bold prominent text specifying the subject matter 'Plant' as part of the title."
+    },
+    {
+      "id": "ggdt",
+      "region": 0,
+      "evidenceRefs": [
+        "ggdt"
+      ],
+      "justification": "Bold text detailing scope 'Design, Supply, and Installation' within title block."
+    },
+    {
+      "id": "gdrt",
+      "region": 0,
+      "evidenceRefs": [
+        "gdrt"
+      ],
+      "justification": "Parenthetical clarification '(Without Prequalification)' functioning as a subtitle line."
+    },
+    {
+      "id": "gzws",
+      "region": 2,
+      "evidenceRefs": [
+        "gzws"
+      ],
+      "justification": "Bold heading 'Revisions' introduces the subsequent chronological list of amendments."
+    },
+    {
+      "id": "wrpn",
+      "region": 2,
+      "evidenceRefs": [
+        "wrpn"
+      ],
+      "justification": "Bold date 'July 2016' acts as a sub-heading opening the corresponding revision description."
+    },
+    {
+      "id": "smsz",
+      "region": 2,
+      "evidenceRefs": [
+        "smsz"
+      ],
+      "justification": "Bold date 'April 2015' acts as a sub-heading opening its revision description."
+    },
+    {
+      "id": "wnwm",
+      "region": 2,
+      "evidenceRefs": [
+        "wnwm"
+      ],
+      "justification": "Bold date 'August 2010' acts as a sub-heading opening its revision description."
+    },
+    {
+      "id": "wjdt",
+      "region": 3,
+      "evidenceRefs": [
+        "wjdt"
+      ],
+      "justification": "Bold heading 'Foreword' introduces the introductory prose on the following lines."
+    }
+  ]
+}

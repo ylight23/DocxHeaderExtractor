@@ -1,0 +1,40 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D006-PACK_019-C3",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "htff",
+      "to": "gjzt",
+      "function": "Running header followed by continuation of list items (c through g) detailing plan content from the preceding article."
+    },
+    {
+      "from": "jbbp",
+      "to": "tfkv",
+      "function": "Concluding provisions (items 3 through 6) of the preceding article covering map preparation, provincial exceptions, and implementation details."
+    },
+    {
+      "from": "tcgc",
+      "to": "cczj",
+      "function": "Heading for Article 66 and introductory list items (a through c) establishing bases for county-level land planning."
+    }
+  ],
+  "headings": [
+    {
+      "id": "tcgc",
+      "region": 2,
+      "evidenceRefs": [
+        "tcgc"
+      ],
+      "justification": "Bold-formatted line 'Điều 66. Quy hoạch sử dụng đất cấp huyện' stands alone on the page, introducing the subsequent list of bases for county-level land planning."
+    },
+    {
+      "id": "tvnm",
+      "region": 2,
+      "evidenceRefs": [
+        "tvnm"
+      ],
+      "justification": "Numbered introductory line '1 . Căn cứ lập...' directly precedes and opens the alphabetical list (a, b, c) detailing planning bases."
+    }
+  ]
+}

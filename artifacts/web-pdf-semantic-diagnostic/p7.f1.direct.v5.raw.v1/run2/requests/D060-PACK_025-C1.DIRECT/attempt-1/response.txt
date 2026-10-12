@@ -1,0 +1,43 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D060-PACK_025-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "zmtb",
+      "to": "hxdx",
+      "function": "Body text presenting mathematical theory, including theorem statements and a proof."
+    },
+    {
+      "from": "zkpd",
+      "to": "chrf",
+      "function": "References section listing bibliographic citations."
+    }
+  ],
+  "headings": [
+    {
+      "id": "zkpd",
+      "region": 1,
+      "evidenceRefs": ["zkpd"],
+      "justification": "Larger font (14.4pt) and boldface style clearly mark it as a section heading introducing the bibliography."
+    },
+    {
+      "id": "cpqp",
+      "region": 0,
+      "evidenceRefs": ["cpqp"],
+      "justification": "Italicized theorem label and statement that opens the formal theorem content following it."
+    },
+    {
+      "id": "jtss",
+      "region": 0,
+      "evidenceRefs": ["jtss"],
+      "justification": "Italicized theorem label and statement that opens the second theorem's content."
+    },
+    {
+      "id": "tjkt",
+      "region": 0,
+      "evidenceRefs": ["tjkt"],
+      "justification": "Explicit \"Proof:\" label structurally introduces the proof paragraph that follows."
+    }
+  ]
+}

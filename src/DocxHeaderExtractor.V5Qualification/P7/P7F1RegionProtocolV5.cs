@@ -130,7 +130,8 @@ internal static class P7F1RegionProtocolV5
         foreach (var r in doc.RootElement.GetProperty("regions").EnumerateArray())
         {
             var index = regions.Count;
-            var evidence = r.GetProperty("evidence").EnumerateArray().Select(e => e.GetString()!)
+            // "evidence" is optional (see Region); a missing key reads as no evidence.
+            var evidence = (r.TryGetProperty("evidence", out var evEl) ? evEl.EnumerateArray().Select(e => e.GetString()!) : [])
                 .Select(e => aliasById.TryGetValue(e, out var a) ? a : e).ToArray();
             regions.Add(new RegionRow(index, aliasById[Str(r, "from")!], aliasById[Str(r, "to")!], Str(r, "function")!, evidence));
         }

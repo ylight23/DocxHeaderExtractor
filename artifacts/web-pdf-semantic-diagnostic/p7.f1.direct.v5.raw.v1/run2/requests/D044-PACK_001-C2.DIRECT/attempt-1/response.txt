@@ -1,0 +1,12 @@
+{
+  "protocolVersion":"P7_F1_REGION_HEADING_V5",
+  "requestId":"D044-PACK_001-C2",
+  "assessment":"COMPLETE",
+  "regions":[
+    {"from":"hkzz","to":"wpst","function":"Table of contents listing document sections, subsections, and their corresponding page numbers."},
+    {"from":"bgmx","to":"zqhp","function":"Report title and starting page number marking the beginning of the main body text."}
+  ],
+  "headings":[
+    {"id":"bgmx","region":1,"evidenceRefs":["bgmx"],"justification":"Serves as the primary title identifying the document at the start of the report body."}
+  ]
+}

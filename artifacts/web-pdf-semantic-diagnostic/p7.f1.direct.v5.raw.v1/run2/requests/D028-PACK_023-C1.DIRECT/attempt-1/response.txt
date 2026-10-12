@@ -1,0 +1,59 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D028-PACK_023-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "qndg",
+      "to": "qndg",
+      "function": "Running header repeating the section title and page number"
+    },
+    {
+      "from": "dbsj",
+      "to": "cdzc",
+      "function": "Body text and form fields for ITB sections 32.1, 33.1, and 34.1 containing procedural instructions and fill-in blanks"
+    }
+  ],
+  "headings": [
+    {
+      "id": "dbsj",
+      "region": 1,
+      "evidenceRefs": [
+        "dbsj"
+      ],
+      "justification": "ITB reference line introducing the paragraph on currency conversion rules below it."
+    },
+    {
+      "id": "ggdt",
+      "region": 1,
+      "evidenceRefs": [
+        "ggdt"
+      ],
+      "justification": "Bold/italic line labeling Alternative A and introducing its specific pricing instruction."
+    },
+    {
+      "id": "gctd",
+      "region": 1,
+      "evidenceRefs": [
+        "gctd"
+      ],
+      "justification": "Bold/italic line labeling Alternative B and introducing its corresponding pricing instruction."
+    },
+    {
+      "id": "svcp",
+      "region": 1,
+      "evidenceRefs": [
+        "svcp"
+      ],
+      "justification": "Bold/italic ITB reference line opening the provision regarding margin of preference."
+    },
+    {
+      "id": "nrkc",
+      "region": 1,
+      "evidenceRefs": [
+        "nrkc"
+      ],
+      "justification": "Bold/italic ITB reference line opening the clause on subcontracting intentions."
+    }
+  ]
+}

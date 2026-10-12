@@ -1,0 +1,37 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D028-PACK_023-C3",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "zdmb",
+      "to": "zdmb",
+      "function": "Running header repeating the section title 'Section II – Bid Data Sheet (BDS)' with a trailing page number."
+    },
+    {
+      "from": "nngs",
+      "to": "wbrw",
+      "function": "Continuation of body prose detailing procedures for submitting complaints in writing."
+    },
+    {
+      "from": "kmjv",
+      "to": "jstd",
+      "function": "Block of form-style contact fields for directing complaints to a specific person or department."
+    },
+    {
+      "from": "qkjj",
+      "to": "xpzt",
+      "function": "Body prose concluding an introductory sentence and listing numbered items subject to procurement complaints."
+    }
+  ],
+  "headings": [
+    {
+      "id": "zdmb",
+      "region": 0,
+      "evidenceRefs": [
+        "zdmb"
+      ],
+      "justification": "Names the document section at the page top; repeated across pages as a running header identifying the substantive region."
+    }
+  ]
+}

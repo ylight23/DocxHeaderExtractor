@@ -1,0 +1,84 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D032-PACK_004-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "tjrh",
+      "to": "ndbb",
+      "function": "Document title and subtitle block identifying the RFP type and subject."
+    },
+    {
+      "from": "dxwf",
+      "to": "xnkc",
+      "function": "Metadata form fields for entering procurement details, parties, and dates."
+    },
+    {
+      "from": "pbqp",
+      "to": "mqkc",
+      "function": "Pagination markers and the heading introducing the table of contents."
+    },
+    {
+      "from": "wjks",
+      "to": "sjtt",
+      "function": "Table of contents entries listing document parts and sections with page references."
+    },
+    {
+      "from": "hwfk",
+      "to": "kjtk",
+      "function": "Pagination and major section heading marking the start of Part 1 content."
+    }
+  ],
+  "headings": [
+    {
+      "id": "tjrh",
+      "region": 0,
+      "evidenceRefs": [
+        "tjrh"
+      ],
+      "justification": "Large bold font at top of page 13, serves as the primary document title."
+    },
+    {
+      "id": "ckwt",
+      "region": 0,
+      "evidenceRefs": [
+        "ckwt"
+      ],
+      "justification": "Large bold font directly below title, specifies the plant subject matter."
+    },
+    {
+      "id": "pbsn",
+      "region": 0,
+      "evidenceRefs": [
+        "pbsn"
+      ],
+      "justification": "Medium bold font below Plant, describes the design and installation scope."
+    },
+    {
+      "id": "ndbb",
+      "region": 0,
+      "evidenceRefs": [
+        "ndbb"
+      ],
+      "justification": "Smaller bold font clarifies the two-stage procurement method."
+    },
+    {
+      "id": "mqkc",
+      "region": 2,
+      "evidenceRefs": [
+        "mqkc"
+      ],
+      "justification": "Bold centered text introducing the following list of TOC entries."
+    },
+    {
+      "id": "mfth",
+      "region": 4,
+      "evidenceRefs": [
+        "mfth"
+      ],
+      "justification": "Bold large font on page 15, introduces the substantive content of Part 1."
+    }
+  ]
+}
+```

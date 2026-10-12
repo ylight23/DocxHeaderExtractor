@@ -1,0 +1,53 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D028-PACK_001-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "smfq",
+      "to": "smfq",
+      "function": "Page number 'iii' marking the beginning of the revisions section."
+    },
+    {
+      "from": "ntdv",
+      "to": "wpwn",
+      "function": "Chronological list of document revisions, each comprising a date heading and a descriptive paragraph explaining changes made."
+    }
+  ],
+  "headings": [
+    {
+      "id": "mmgc",
+      "region": 1,
+      "evidenceRefs": [
+        "mmgc"
+      ],
+      "justification": "Bold, 16pt date line functioning as a subheading that introduces the subsequent April 2007 revision description."
+    },
+    {
+      "id": "trkt",
+      "region": 1,
+      "evidenceRefs": [
+        "trkt"
+      ],
+      "justification": "Bold, 16pt date line functioning as a subheading that introduces the subsequent March 2007 revision description."
+    },
+    {
+      "id": "zgkb",
+      "region": 1,
+      "evidenceRefs": [
+        "zgkb"
+      ],
+      "justification": "Bold, 16pt date line functioning as a subheading that introduces the subsequent May 2006 revision description."
+    },
+    {
+      "id": "crxg",
+      "region": 1,
+      "evidenceRefs": [
+        "crxg"
+      ],
+      "justification": "Bold, 16pt date line functioning as a subheading that introduces the subsequent May 2005 revision description."
+    }
+  ]
+}
+```

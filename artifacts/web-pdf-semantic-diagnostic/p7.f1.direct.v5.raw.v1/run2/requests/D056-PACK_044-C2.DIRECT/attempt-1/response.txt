@@ -1,0 +1,42 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D056-PACK_044-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "mjbn",
+      "to": "kcbb",
+      "function": "Structured table or list presenting legal defenses (BFOQ, qualification, merit, seniority, system) alongside their descriptions."
+    },
+    {
+      "from": "djmb",
+      "to": "gjnn",
+      "function": "Section detailing the Equal Pay Act, its provisions, criteria for violation, and affirmative defenses."
+    },
+    {
+      "from": "gkrm",
+      "to": "srkt",
+      "function": "Section detailing the Americans with Disabilities Act, employer obligations, and claim requirements."
+    }
+  ],
+  "headings": [
+    {
+      "id": "gnvb",
+      "region": 1,
+      "evidenceRefs": [
+        "gnvb",
+        "bsfx"
+      ],
+      "justification": "Bold, 13pt heading at top of block, introducing the paragraph defining the Equal Pay Act and its criteria."
+    },
+    {
+      "id": "gkrm",
+      "region": 2,
+      "evidenceRefs": [
+        "gkrm",
+        "vtpn"
+      ],
+      "justification": "Bold, 13pt heading at top of block, introducing the paragraph defining the ADA and claim requirements."
+    }
+  ]
+}

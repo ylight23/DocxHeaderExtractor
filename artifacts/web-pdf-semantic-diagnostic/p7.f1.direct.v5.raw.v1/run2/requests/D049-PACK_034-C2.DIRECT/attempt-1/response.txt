@@ -1,0 +1,43 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D049-PACK_034-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "hcdg",
+      "to": "jxwh",
+      "function": "Table data rows showing loan amounts by vintage year"
+    },
+    {
+      "from": "dmhd",
+      "to": "dnzc",
+      "function": "Table row label 'Loans in nonaccrual status' with corresponding numeric data cells"
+    },
+    {
+      "from": "jhfd",
+      "to": "sjpt",
+      "function": "Table total row summarizing column sums"
+    },
+    {
+      "from": "nwcj",
+      "to": "cjhf",
+      "function": "Multi-line table row label continuing 'Current period gross write-offs'"
+    },
+    {
+      "from": "chbf",
+      "to": "qhsr",
+      "function": "Running footer containing the document title and page number"
+    }
+  ],
+  "headings": [
+    {
+      "id": "chbf",
+      "region": 4,
+      "evidenceRefs": [
+        "chbf"
+      ],
+      "justification": "Identifies the report title and date at the page footer position."
+    }
+  ],
+  "unresolved": []
+}

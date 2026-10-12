@@ -1,0 +1,49 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D088-PACK_028-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "jdkn",
+      "to": "txjs",
+      "function": "Tabular list entries of HS chapters and sub-codes with product descriptions, continuing from a prior section."
+    },
+    {
+      "from": "qskt",
+      "to": "cxkq",
+      "function": "Heading and title lines for Appendix VII, identifying the specific trade list."
+    },
+    {
+      "from": "pbkm",
+      "to": "spnw",
+      "function": "Legal attribution and numbered regulatory notes establishing the scope and application rules for the list."
+    },
+    {
+      "from": "jgxb",
+      "to": "zgwj",
+      "function": "Table column headers and the initial data row of the appendix listing."
+    }
+  ],
+  "headings": [
+    {
+      "id": "qskt",
+      "region": 1,
+      "evidenceRefs": ["qskt"],
+      "justification": "Bold layout and vertical separation mark the start of a new appendix section."
+    },
+    {
+      "id": "ktcr",
+      "region": 1,
+      "evidenceRefs": ["ktcr"],
+      "justification": "Centered, full-width text forming the primary descriptive title of the appendix."
+    },
+    {
+      "id": "cxkq",
+      "region": 1,
+      "evidenceRefs": ["cxkq"],
+      "justification": "Continuation of the appendix title line, completing the phrase 'UNDER GIVEN CONDITIONS'."
+    }
+  ]
+}
+```

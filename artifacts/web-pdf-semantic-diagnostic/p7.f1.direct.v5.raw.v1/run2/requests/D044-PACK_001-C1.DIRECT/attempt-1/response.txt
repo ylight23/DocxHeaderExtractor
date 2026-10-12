@@ -1,0 +1,67 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D044-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "hjtr",
+      "to": "fczj",
+      "function": "Document title and date block on the cover page."
+    },
+    {
+      "from": "ckfv",
+      "to": "vdpn",
+      "function": "Table of contents page listing sections, subsections, and corresponding page numbers."
+    }
+  ],
+  "headings": [
+    {
+      "id": "hjtr",
+      "region": 0,
+      "evidenceRefs": [
+        "hjtr"
+      ],
+      "justification": "First line of the document title block identifying the issuing organization."
+    },
+    {
+      "id": "mfmp",
+      "region": 0,
+      "evidenceRefs": [
+        "mfmp"
+      ],
+      "justification": "Second line of the title block specifying the report's primary focus."
+    },
+    {
+      "id": "fmpm",
+      "region": 0,
+      "evidenceRefs": [
+        "fmpm"
+      ],
+      "justification": "Connector line within the title block linking report components."
+    },
+    {
+      "id": "rtrf",
+      "region": 0,
+      "evidenceRefs": [
+        "rtrf"
+      ],
+      "justification": "Third line of the title block indicating the financial statements component."
+    },
+    {
+      "id": "fczj",
+      "region": 0,
+      "evidenceRefs": [
+        "fczj"
+      ],
+      "justification": "Date line of the title block specifying the reporting period end date."
+    },
+    {
+      "id": "dwgf",
+      "region": 1,
+      "evidenceRefs": [
+        "dwgf"
+      ],
+      "justification": "Heading introducing the table of contents list that follows immediately below."
+    }
+  ]
+}

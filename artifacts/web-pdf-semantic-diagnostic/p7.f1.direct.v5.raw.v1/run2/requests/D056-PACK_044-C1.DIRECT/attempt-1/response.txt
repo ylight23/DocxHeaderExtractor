@@ -1,0 +1,48 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D056-PACK_044-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "dkvv",
+      "to": "zhfk",
+      "function": "Section running header and introductory body text on employment discrimination burden of proof."
+    },
+    {
+      "from": "rcbg",
+      "to": "trjf",
+      "function": "Subheading and bulleted list of permissible damages under Title VII."
+    },
+    {
+      "from": "bwqj",
+      "to": "rfgw",
+      "function": "Table caption and body text explaining disparate impact doctrine and the Griggs v. Duke Power case."
+    },
+    {
+      "from": "wdrg",
+      "to": "nszn",
+      "function": "Running header, figure caption, and body text on sexual harassment and pregnancy discrimination protections."
+    },
+    {
+      "from": "dtzg",
+      "to": "zbvm",
+      "function": "Running header, section subheading, table column headers, and the first row of a defense description table."
+    }
+  ],
+  "headings": [
+    {
+      "id": "rcbg",
+      "region": 1,
+      "evidenceRefs": ["rcbg"],
+      "justification": "Standalone line immediately preceding a vertical list of damage awards; functions as a descriptive subheading introducing the content below."
+    },
+    {
+      "id": "kfhd",
+      "region": 4,
+      "evidenceRefs": ["kfhd"],
+      "justification": "Prominently sized and bolded line placed directly above a structured table; clearly names and opens the substantive section on legal defenses."
+    }
+  ]
+}
+```

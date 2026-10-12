@@ -1,0 +1,24 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D034-PACK_003-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {"from": "zqvx", "to": "fgfj", "function": "Contact information placeholders for telephone, facsimile, email, and website."},
+    {"from": "dncv", "to": "gnnj", "function": "Cover page title block and project metadata fields including RFB number, project name, employer, country, and issue date."},
+    {"from": "bwts", "to": "zggs", "function": "Table of Contents listing document parts and sections with dot-leader page references."},
+    {"from": "cdqg", "to": "mjfw", "function": "Start of Part 1 section heading introducing bidding procedures."}
+  ],
+  "headings": [
+    {"id": "dncv", "region": 1, "evidenceRefs": ["dncv"], "justification": "Main title line 1, large bold font (48pt) at top of cover page."},
+    {"id": "grtp", "region": 1, "evidenceRefs": ["grtp"], "justification": "Main title line 2, large bold font (48pt), directly below first title line."},
+    {"id": "gfzq", "region": 1, "evidenceRefs": ["gfzq"], "justification": "Main title line 3, bold font (22pt), specifies scope."},
+    {"id": "bdgm", "region": 1, "evidenceRefs": ["bdgm"], "justification": "Main title line 4, bold font (16pt), qualifies procurement type."},
+    {"id": "fxxm", "region": 1, "evidenceRefs": ["fxxm"], "justification": "Main title line 5, bold font (22pt), begins specific object phrase."},
+    {"id": "thmn", "region": 1, "evidenceRefs": ["thmn"], "justification": "Main title line 6, italic font (22pt), continues object description."},
+    {"id": "ctns", "region": 1, "evidenceRefs": ["ctns"], "justification": "Main title line 7, italic font (22pt), completes title phrase."},
+    {"id": "xhrw", "region": 2, "evidenceRefs": ["xhrw"], "justification": "Heading introducing the table of contents list, bold font (18pt)."},
+    {"id": "mjfw", "region": 3, "evidenceRefs": ["mjfw"], "justification": "Part heading introducing bidding procedures section, bold font (24pt)."}
+  ]
+}
+```

@@ -1,0 +1,66 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D017-PACK_020-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "dnkk",
+      "to": "qkmg",
+      "function": "Index entries listing electronic invoice reports and unutilized invoice tables with article references."
+    },
+    {
+      "from": "sfwd",
+      "to": "ffnv",
+      "function": "Index section heading and entries for receipt-related reports and forms."
+    },
+    {
+      "from": "sqrc",
+      "to": "tzjh",
+      "function": "Official tax declaration form header, taxpayer identification fields, preamble, and initial option sections."
+    }
+  ],
+  "headings": [
+    {
+      "id": "sfwd",
+      "region": 1,
+      "evidenceRefs": [
+        "sfwd"
+      ],
+      "justification": "Bold section marker '3.Biên lai' introducing the subsequent list of receipt-related form indices."
+    },
+    {
+      "id": "gdzr",
+      "region": 2,
+      "evidenceRefs": [
+        "gdzr"
+      ],
+      "justification": "Centered bold title line 'TỜ KHAI' opening the declaration form document."
+    },
+    {
+      "id": "pktf",
+      "region": 2,
+      "evidenceRefs": [
+        "pktf"
+      ],
+      "justification": "Centered bold subtitle specifying the declaration's purpose for electronic invoice usage."
+    },
+    {
+      "id": "hscm",
+      "region": 2,
+      "evidenceRefs": [
+        "hscm"
+      ],
+      "justification": "Numbered bold heading '1.Hình thức hóa đơn:' introducing invoice type options."
+    },
+    {
+      "id": "xqtk",
+      "region": 2,
+      "evidenceRefs": [
+        "xqtk"
+      ],
+      "justification": "Numbered bold heading '2.Hình thức gửi dữ liệu...' introducing data transmission method options."
+    }
+  ]
+}
+```

@@ -1,0 +1,81 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D034-PACK_037-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "dhqs",
+      "to": "dhqs",
+      "function": "Running header identifying the document section and page number."
+    },
+    {
+      "from": "mfqc",
+      "to": "pgkw",
+      "function": "Form template containing field labels and instructional placeholders for litigation history details."
+    },
+    {
+      "from": "rzjx",
+      "to": "rzjx",
+      "function": "Running header identifying the document section and page number."
+    },
+    {
+      "from": "zmzd",
+      "to": "zmzd",
+      "function": "Form title indicating the specific bidding form type."
+    },
+    {
+      "from": "hbjq",
+      "to": "hbjq",
+      "function": "Subheading introducing the form's subject matter regarding current commitments."
+    },
+    {
+      "from": "tvjz",
+      "to": "wjqf",
+      "function": "Instructional prose explaining bidder requirements for the form."
+    },
+    {
+      "from": "fcsq",
+      "to": "ngkn",
+      "function": "Table column headers defining data fields for contract information."
+    },
+    {
+      "from": "rwdv",
+      "to": "kmcq",
+      "function": "Numbered list items providing additional instructions or footnotes."
+    }
+  ],
+  "headings": [
+    {
+      "id": "dhqs",
+      "region": 0,
+      "evidenceRefs": [
+        "dhqs"
+      ],
+      "justification": "Top-of-page section title naming the document part."
+    },
+    {
+      "id": "rzjx",
+      "region": 2,
+      "evidenceRefs": [
+        "rzjx"
+      ],
+      "justification": "Top-of-page section title naming the document part."
+    },
+    {
+      "id": "zmzd",
+      "region": 3,
+      "evidenceRefs": [
+        "zmzd"
+      ],
+      "justification": "Bold centered line acting as the explicit title for the form below."
+    },
+    {
+      "id": "hbjq",
+      "region": 4,
+      "evidenceRefs": [
+        "hbjq"
+      ],
+      "justification": "Large bold subheading introducing the form's content and table."
+    }
+  ]
+}

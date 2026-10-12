@@ -1,0 +1,16 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D093-PACK_006-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {"from": "jbrp", "to": "jbrp", "function": "Running header at top of page"},
+    {"from": "wxzf", "to": "gjfv", "function": "Body prose continuing from previous section, followed by a code example"},
+    {"from": "pnsw", "to": "nrjc", "function": "Section 3.2.4 content, including heading, definition, operational rules, and illustrative examples"},
+    {"from": "pggv", "to": "rhgz", "function": "Opening of Section 3.3, containing its heading and introductory prose"},
+    {"from": "pffq", "to": "pffq", "function": "Running footer at bottom of page"}
+  ],
+  "headings": [
+    {"id": "pnsw", "region": 2, "evidenceRefs": ["pnsw"], "justification": "Bold, numbered line '3.2.4. asterisk-form' at font size 10, positioned above related body text and ABNF definition, clearly introducing this subsection."},
+    {"id": "pggv", "region": 3, "evidenceRefs": ["pggv"], "justification": "Largest font size (12pt) and bold formatting for '3.3. Reconstructing the Target URI', structurally marking the start of a new major subsection with following explanatory prose."}
+  ]
+}

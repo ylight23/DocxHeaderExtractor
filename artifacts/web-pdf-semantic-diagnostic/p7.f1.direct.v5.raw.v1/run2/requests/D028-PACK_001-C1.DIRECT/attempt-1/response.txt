@@ -1,0 +1,98 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D028-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "zqgk",
+      "to": "htzt",
+      "function": "Title block containing the document name, type, scope, and publication date."
+    },
+    {
+      "from": "rpgx",
+      "to": "gthj",
+      "function": "Copyright and usage restriction notice on the front matter page."
+    },
+    {
+      "from": "chsj",
+      "to": "kwxn",
+      "function": "List of historical revisions with dates and descriptive paragraphs."
+    }
+  ],
+  "headings": [
+    {
+      "id": "zqgk",
+      "region": 0,
+      "evidenceRefs": ["zqgk"],
+      "justification": "Main title line; large bold font at page top."
+    },
+    {
+      "id": "fdck",
+      "region": 0,
+      "evidenceRefs": ["fdck"],
+      "justification": "Main title continuation; same size and style as preceding line."
+    },
+    {
+      "id": "cnps",
+      "region": 0,
+      "evidenceRefs": ["cnps"],
+      "justification": "Subtitle indicating document type; prominent size below title."
+    },
+    {
+      "id": "czdn",
+      "region": 0,
+      "evidenceRefs": ["czdn"],
+      "justification": "Subtitle specifying scope; matches subtitle formatting."
+    },
+    {
+      "id": "bfwd",
+      "region": 0,
+      "evidenceRefs": ["bfwd"],
+      "justification": "Subtitle clarifying procedure; smaller but bold, follows scope."
+    },
+    {
+      "id": "mkbk",
+      "region": 2,
+      "evidenceRefs": ["mkbk"],
+      "justification": "Section heading 'Revisions'; bold, larger font, opens the list below."
+    },
+    {
+      "id": "txzs",
+      "region": 2,
+      "evidenceRefs": ["txzs"],
+      "justification": "Revision date heading; bold, introduces subsequent descriptive paragraph."
+    },
+    {
+      "id": "cgcb",
+      "region": 2,
+      "evidenceRefs": ["cgcb"],
+      "justification": "Revision date heading; bold, introduces subsequent descriptive paragraph."
+    },
+    {
+      "id": "zqbf",
+      "region": 2,
+      "evidenceRefs": ["zqbf"],
+      "justification": "Revision date heading; bold, introduces subsequent descriptive paragraph."
+    },
+    {
+      "id": "xskn",
+      "region": 2,
+      "evidenceRefs": ["xskn"],
+      "justification": "Revision date heading; bold, introduces subsequent descriptive paragraph."
+    },
+    {
+      "id": "ktcj",
+      "region": 2,
+      "evidenceRefs": ["ktcj"],
+      "justification": "Revision date heading; bold, introduces subsequent descriptive paragraph."
+    },
+    {
+      "id": "rbjm",
+      "region": 2,
+      "evidenceRefs": ["rbjm"],
+      "justification": "Revision date heading; bold, introduces subsequent descriptive paragraph."
+    }
+  ]
+}
+```

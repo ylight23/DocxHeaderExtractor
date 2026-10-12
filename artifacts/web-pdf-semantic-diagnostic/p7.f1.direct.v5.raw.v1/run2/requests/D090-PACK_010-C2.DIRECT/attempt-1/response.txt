@@ -1,0 +1,44 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D090-PACK_010-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "hjnf",
+      "to": "sfcz",
+      "function": "Legal amendment provision modifying Clause 16 of Article 91."
+    },
+    {
+      "from": "rkjz",
+      "to": "dfhv",
+      "function": "Provisions adding and detailing Clauses 22, 23, and 24 to Article 91."
+    },
+    {
+      "from": "bdcg",
+      "to": "bdcg",
+      "function": "Structural marker introducing the amendment of Article 92."
+    }
+  ],
+  "headings": [
+    {
+      "id": "hjnf",
+      "region": 0,
+      "evidenceRefs": ["hjnf"],
+      "justification": "Explicitly opens the amendment block for Clause 16, Article 91."
+    },
+    {
+      "id": "rkjz",
+      "region": 1,
+      "evidenceRefs": ["rkjz"],
+      "justification": "Explicitly opens the addition block for Clauses 22-24, Article 91."
+    },
+    {
+      "id": "bdcg",
+      "region": 2,
+      "evidenceRefs": ["bdcg"],
+      "justification": "Recurring structural marker (rep:11) opening the amendment block for Article 92."
+    }
+  ]
+}
+```

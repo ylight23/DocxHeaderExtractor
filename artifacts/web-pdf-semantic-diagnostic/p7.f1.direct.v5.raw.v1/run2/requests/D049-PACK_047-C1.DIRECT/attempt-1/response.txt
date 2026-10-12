@@ -1,0 +1,32 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D049-PACK_047-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "jmfg",
+      "to": "jpbr",
+      "function": "Financial table data rows and labels (Table J2 continuation), presenting fair value hierarchy measurements with numeric columns and section dividers."
+    }
+  ],
+  "headings": [
+    {
+      "id": "khtj",
+      "region": 0,
+      "evidenceRefs": ["khtj"],
+      "justification": "Structural table label introducing the derivative assets subsection; positioned above corresponding data rows."
+    },
+    {
+      "id": "mwjb",
+      "region": 0,
+      "evidenceRefs": ["mwjb"],
+      "justification": "Structural table label introducing the netting adjustment subsection; positioned above deduction rows."
+    },
+    {
+      "id": "kvdc",
+      "region": 0,
+      "evidenceRefs": ["kvdc"],
+      "justification": "Bold font label introducing the liabilities subsection; positioned above liability data rows."
+    }
+  ]
+}

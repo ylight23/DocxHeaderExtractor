@@ -1,0 +1,79 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D094-PACK_007-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "tbwn",
+      "to": "xrpk",
+      "function": "Body prose continuing the discussion of stream state transitions and frame processing from the previous page."
+    },
+    {
+      "from": "ptsx",
+      "to": "ptsx",
+      "function": "Running footer with author name, track type, and page number."
+    },
+    {
+      "from": "krhd",
+      "to": "krhd",
+      "function": "Running header with document identifier, protocol name, and publication date."
+    },
+    {
+      "from": "ngbr",
+      "to": "kzhn",
+      "function": "Body prose explaining how endpoints maintain a subjective view of stream state and handle mismatches."
+    },
+    {
+      "from": "chsm",
+      "to": "zbpz",
+      "function": "Structured description of stream states and their transitions, organized by state names and transition rules."
+    },
+    {
+      "from": "pxnx",
+      "to": "pxnx",
+      "function": "Running footer with author name, track type, and page number."
+    }
+  ],
+  "headings": [
+    {
+      "id": "chsm",
+      "region": 4,
+      "evidenceRefs": [
+        "chsm"
+      ],
+      "justification": "Introduces the enumeration of stream states that follows, acting as a structural heading for the state machine description."
+    },
+    {
+      "id": "tzwv",
+      "region": 4,
+      "evidenceRefs": [
+        "tzwv"
+      ],
+      "justification": "Names the idle state and introduces its definition and initial conditions."
+    },
+    {
+      "id": "mwvx",
+      "region": 4,
+      "evidenceRefs": [
+        "mwvx"
+      ],
+      "justification": "Introduces the list of valid state transitions originating from the idle state."
+    },
+    {
+      "id": "qgpb",
+      "region": 4,
+      "evidenceRefs": [
+        "qgpb"
+      ],
+      "justification": "Names the reserved (local) state and introduces its definition and usage context."
+    },
+    {
+      "id": "tfcs",
+      "region": 4,
+      "evidenceRefs": [
+        "tfcs"
+      ],
+      "justification": "Introduces the list of valid state transitions originating from the reserved (local) state."
+    }
+  ]
+}

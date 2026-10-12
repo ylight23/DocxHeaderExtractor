@@ -1,0 +1,60 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D044-PACK_039-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "tjdw",
+      "to": "tjdw",
+      "function": "Running header repeating the section title across multiple pages."
+    },
+    {
+      "from": "vjds",
+      "to": "rjvh",
+      "function": "Body prose concluding the prior discussion on derivative collateral and credit risk."
+    },
+    {
+      "from": "zfjt",
+      "to": "zfjt",
+      "function": "Section heading introducing the Investment Securities topic."
+    },
+    {
+      "from": "xsdj",
+      "to": "rptn",
+      "function": "Body prose detailing IDA's Board-approved Investment Guidelines and risk monitoring procedures."
+    },
+    {
+      "from": "rqwq",
+      "to": "rqwq",
+      "function": "Table caption introducing the eligibility criteria table."
+    },
+    {
+      "from": "gqmd",
+      "to": "vcgm",
+      "function": "Table body rows listing investment categories and their corresponding eligibility requirements."
+    },
+    {
+      "from": "qxvj",
+      "to": "crwj",
+      "function": "Table footnotes providing supplementary conditions and definitions."
+    }
+  ],
+  "headings": [
+    {
+      "id": "zfjt",
+      "region": 2,
+      "evidenceRefs": [
+        "zfjt"
+      ],
+      "justification": "Bold, standalone line positioned immediately above the paragraph block it introduces."
+    },
+    {
+      "id": "rqwq",
+      "region": 4,
+      "evidenceRefs": [
+        "rqwq"
+      ],
+      "justification": "Bold table caption directly preceding the structured eligibility criteria rows."
+    }
+  ]
+}

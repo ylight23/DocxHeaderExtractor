@@ -1,0 +1,40 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D051-PACK_002-C3",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "mjcp",
+      "to": "nvmn",
+      "function": "Running header containing the document title and currency disclaimer, repeated across 26 pages."
+    },
+    {
+      "from": "nhbg",
+      "to": "jvgb",
+      "function": "Section heading and subheading introducing the substantive content on this page."
+    },
+    {
+      "from": "ptkp",
+      "to": "gjxs",
+      "function": "Body prose detailing FIF portfolio growth and sector breakdown, followed by explanatory footnotes and page number."
+    }
+  ],
+  "headings": [
+    {
+      "id": "nhbg",
+      "region": 1,
+      "evidenceRefs": [
+        "nhbg"
+      ],
+      "justification": "Bold 10.4pt font positioned at the top of the page, introducing the section content that follows. Repeated on 8 pages as a standard section marker."
+    },
+    {
+      "id": "jvgb",
+      "region": 1,
+      "evidenceRefs": [
+        "jvgb"
+      ],
+      "justification": "Largest bold font (12.7pt) on the page, clearly demarcating a subsection within the Key Trust Fund Activity section."
+    }
+  ]
+}

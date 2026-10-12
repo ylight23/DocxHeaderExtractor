@@ -1,0 +1,53 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D024-PACK_012-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "jjcb",
+      "to": "qpns",
+      "function": "Continuation of penalty provisions for competitive practices under the preceding article."
+    },
+    {
+      "from": "xfgd",
+      "to": "gdcx",
+      "function": "Heading and penalty provisions for Article 24 regarding dispute resolution violations."
+    },
+    {
+      "from": "hckg",
+      "to": "jrtq",
+      "function": "Supplementary penalties for Article 24, transition to Section 3, and heading with initial penalty for Article 25."
+    },
+    {
+      "from": "rxmf",
+      "to": "gnsb",
+      "function": "Continuation of penalty provisions for Article 25 regarding network establishment and service provision."
+    }
+  ],
+  "headings": [
+    {
+      "id": "xfgd",
+      "region": 1,
+      "evidenceRefs": ["xfgd"],
+      "justification": "Bold, larger font (10.8pt), introduces the subsequent penalty clauses for Article 24."
+    },
+    {
+      "id": "mfzg",
+      "region": 2,
+      "evidenceRefs": ["mfzg"],
+      "justification": "Bold, larger font (10.8pt), marks the start of Section 3."
+    },
+    {
+      "id": "fnnz",
+      "region": 2,
+      "evidenceRefs": ["fnnz"],
+      "justification": "Bold, larger font (10.8pt), serves as a subheading describing the scope of Section 3."
+    },
+    {
+      "id": "bsvs",
+      "region": 2,
+      "evidenceRefs": ["bsvs"],
+      "justification": "Bold, larger font (10.8pt), introduces the heading and penalty provisions for Article 25."
+    }
+  ]
+}

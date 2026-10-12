@@ -1,0 +1,44 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D015-PACK_029-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "mjwq",
+      "to": "gdmj",
+      "function": "Article 109 body: clauses 1\u20133 detailing requirements and permissions for commercial banks to open domestic and foreign accounts."
+    },
+    {
+      "from": "wwsr",
+      "to": "fcts",
+      "function": "Article 110 body: clauses 1\u20133 covering internal payment organization, national/international system participation, and State Bank approval procedures."
+    },
+    {
+      "from": "mjtr",
+      "to": "grfw",
+      "function": "Article 111 body: clauses 1\u20136 specifying permitted activities for capital contribution, subsidiary formation, and regulatory conditions."
+    }
+  ],
+  "headings": [
+    {
+      "id": "mjwq",
+      "region": 0,
+      "evidenceRefs": ["mjwq"],
+      "justification": "Bold 10pt line at page top, structurally distinct from surrounding 12pt body text, directly introduces numbered clauses 1\u20133 on account opening."
+    },
+    {
+      "id": "wwsr",
+      "region": 1,
+      "evidenceRefs": ["wwsr"],
+      "justification": "Bold 10pt line following prior article, visually separated from 12pt body text, opens clauses 1\u20133 governing payment system participation."
+    },
+    {
+      "id": "mjtr",
+      "region": 2,
+      "evidenceRefs": ["mjtr"],
+      "justification": "Bold 10pt line continuing sequential articles, layout shift from 12pt body text, introduces clauses 1\u20136 on capital contribution and share purchases."
+    }
+  ]
+}
+```

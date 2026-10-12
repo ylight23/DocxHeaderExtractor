@@ -1,0 +1,88 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D087-PACK_017-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "bbgm",
+      "to": "pgvf",
+      "function": "Masthead and form identification block containing form number, state motto, agency placeholder, and date/number lines."
+    },
+    {
+      "from": "bxnj",
+      "to": "kkmb",
+      "function": "Document title block stating the purpose of the request regarding exclusion from the national security information systems list."
+    },
+    {
+      "from": "dhqc",
+      "to": "mzcp",
+      "function": "Form body containing recipient address, legal citations, and structured data-entry fields for unit details, reasons, and enclosed documents."
+    },
+    {
+      "from": "mdzq",
+      "to": "sczw",
+      "function": "Receipt and signature block for agency acknowledgment and representative authorization, ending with page number."
+    },
+    {
+      "from": "rrkb",
+      "to": "bkcx",
+      "function": "Explanatory footnotes defining numbered references, publisher watermark, and continuation page number."
+    }
+  ],
+  "headings": [
+    {
+      "id": "bbgm",
+      "region": 0,
+      "evidenceRefs": ["bbgm"],
+      "justification": "Bold form identifier at top right; establishes the document type and opens the header block."
+    },
+    {
+      "id": "bxnj",
+      "region": 1,
+      "evidenceRefs": ["bxnj"],
+      "justification": "First line of the centered title block; names the request's purpose and opens the title region."
+    },
+    {
+      "id": "vrwn",
+      "region": 1,
+      "evidenceRefs": ["vrwn"],
+      "justification": "Continues the title phrasing; maintains title formatting and flow."
+    },
+    {
+      "id": "xjvx",
+      "region": 1,
+      "evidenceRefs": ["xjvx"],
+      "justification": "Continues the title phrasing; maintains title formatting and flow."
+    },
+    {
+      "id": "ncdk",
+      "region": 1,
+      "evidenceRefs": ["ncdk"],
+      "justification": "Continues the title phrasing; maintains title formatting and flow."
+    },
+    {
+      "id": "kkmb",
+      "region": 1,
+      "evidenceRefs": ["kkmb"],
+      "justification": "Final line of the title; completes the document name before the recipient field."
+    },
+    {
+      "id": "pcnp",
+      "region": 2,
+      "evidenceRefs": ["pcnp"],
+      "justification": "Numbered section label '2. Reason' introduces the blank line and instructions following it."
+    },
+    {
+      "id": "bxtx",
+      "region": 2,
+      "evidenceRefs": ["bxtx"],
+      "justification": "Numbered section label '3. Enclosed documents...' introduces the subsequent field and explanatory text."
+    },
+    {
+      "id": "mdzq",
+      "region": 3,
+      "evidenceRefs": ["mdzq"],
+      "justification": "Label 'Receipt:' opens the acknowledgment and signature block at the bottom of the form."
+    }
+  ]
+}

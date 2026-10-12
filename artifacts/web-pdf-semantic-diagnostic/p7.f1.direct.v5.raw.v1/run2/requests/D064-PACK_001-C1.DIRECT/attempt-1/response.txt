@@ -1,0 +1,36 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D064-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "sksx",
+      "to": "cqkb",
+      "function": "Fragmented text lines, likely parsing artifacts or dense column fragments from a table of contents or references."
+    },
+    {
+      "from": "zqcb",
+      "to": "zrch",
+      "function": "Document title block containing the main title, author name, institutional affiliation, and publication location/date."
+    },
+    {
+      "from": "tmft",
+      "to": "zkkp",
+      "function": "Half-title page repeating the document title and author information."
+    }
+  ],
+  "headings": [
+    {
+      "id": "zqcb",
+      "region": 1,
+      "evidenceRefs": ["zqcb"],
+      "justification": "Largest font size (23.3) and prominent placement identify this as the primary document title."
+    },
+    {
+      "id": "tmft",
+      "region": 2,
+      "evidenceRefs": ["tmft"],
+      "justification": "Repeats the title on a dedicated page, functioning as a half-title heading."
+    }
+  ]
+}

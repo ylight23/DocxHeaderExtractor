@@ -1,0 +1,71 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D044-PACK_068-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "vkhh",
+      "to": "vkhh",
+      "function": "Section heading for Note B, identifying the substantive financial note on members' subscriptions."
+    },
+    {
+      "from": "tmtr",
+      "to": "tmtr",
+      "function": "Introductory prose sentence summarizing the upcoming table data."
+    },
+    {
+      "from": "mvxt",
+      "to": "mvxt",
+      "function": "Table B1 caption serving as a heading for the subscription and contribution data table."
+    },
+    {
+      "from": "mkcj",
+      "to": "dzzc",
+      "function": "Tabular data rows and footnote detailing figures for Table B1."
+    },
+    {
+      "from": "mkbx",
+      "to": "fkvq",
+      "function": "Table B2 caption split across two lines, serving as a heading for the demand obligations data table."
+    },
+    {
+      "from": "kcjc",
+      "to": "fgvk",
+      "function": "Tabular data rows detailing figures for Table B2."
+    }
+  ],
+  "headings": [
+    {
+      "id": "vkhh",
+      "region": 0,
+      "evidenceRefs": [
+        "vkhh"
+      ],
+      "justification": "Bold, large font line at top of page acting as a section heading for Note B content."
+    },
+    {
+      "id": "mvxt",
+      "region": 2,
+      "evidenceRefs": [
+        "mvxt"
+      ],
+      "justification": "Bold caption line immediately preceding tabular data, functioning as a table heading."
+    },
+    {
+      "id": "mkbx",
+      "region": 4,
+      "evidenceRefs": [
+        "mkbx"
+      ],
+      "justification": "First half of a bold, multi-line table caption introducing the subsequent data rows."
+    },
+    {
+      "id": "fkvq",
+      "region": 4,
+      "evidenceRefs": [
+        "fkvq"
+      ],
+      "justification": "Second half of the table caption, completing the heading text for Table B2."
+    }
+  ]
+}

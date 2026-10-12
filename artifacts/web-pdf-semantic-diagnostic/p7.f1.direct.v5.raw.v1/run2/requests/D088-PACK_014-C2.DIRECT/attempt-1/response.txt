@@ -1,0 +1,95 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D088-PACK_014-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "tpqr",
+      "to": "cbrk",
+      "function": "Continuation of a numbered list of conditions or requirements from a preceding section."
+    },
+    {
+      "from": "kwkm",
+      "to": "wgcq",
+      "function": "Heading block establishing the chapter, section, and article titles for the new substantive region."
+    },
+    {
+      "from": "bfbs",
+      "to": "cwcp",
+      "function": "Body provisions detailing the rules and exceptions for trade agents acting for foreign traders."
+    },
+    {
+      "from": "nmcf",
+      "to": "zvtd",
+      "function": "Heading and body provisions specifying tax liabilities for goods under agency agreements."
+    },
+    {
+      "from": "djxw",
+      "to": "dvbk",
+      "function": "Heading and body provisions outlining export/import procedures for agency agreements."
+    },
+    {
+      "from": "ffwb",
+      "to": "ffwb",
+      "function": "Heading introducing provisions on the return of goods."
+    }
+  ],
+  "headings": [
+    {
+      "id": "kwkm",
+      "region": 1,
+      "evidenceRefs": [
+        "kwkm"
+      ],
+      "justification": "Bold, standalone line marking the start of a new chapter. Operates as a chapter heading at this location."
+    },
+    {
+      "id": "nnqv",
+      "region": 1,
+      "evidenceRefs": [
+        "nnqv"
+      ],
+      "justification": "Bold, standalone line repeating the topic. Functions as a section or thematic heading introducing the following text."
+    },
+    {
+      "id": "zctw",
+      "region": 1,
+      "evidenceRefs": [
+        "zctw"
+      ],
+      "justification": "Bold line explicitly labeled 'Section 1'. Opens the substantive content of Section 1 at this location."
+    },
+    {
+      "id": "wgcq",
+      "region": 1,
+      "evidenceRefs": [
+        "wgcq"
+      ],
+      "justification": "Bold line explicitly labeled 'Article 50'. Opens the substantive content of Article 50 at this location."
+    },
+    {
+      "id": "nmcf",
+      "region": 3,
+      "evidenceRefs": [
+        "nmcf"
+      ],
+      "justification": "Bold line explicitly labeled 'Article 51'. Opens the substantive content of Article 51 at this location."
+    },
+    {
+      "id": "djxw",
+      "region": 4,
+      "evidenceRefs": [
+        "djxw"
+      ],
+      "justification": "Bold line explicitly labeled 'Article 52'. Opens the substantive content of Article 52 at this location."
+    },
+    {
+      "id": "ffwb",
+      "region": 5,
+      "evidenceRefs": [
+        "ffwb"
+      ],
+      "justification": "Bold line explicitly labeled 'Article 53'. Opens the substantive content of Article 53 at this location."
+    }
+  ]
+}

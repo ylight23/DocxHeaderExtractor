@@ -1,0 +1,58 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D017-PACK_024-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "qhgh",
+      "to": "cxdf",
+      "function": "Form identification header containing form number, state motto, and decorative line."
+    },
+    {
+      "from": "stsj",
+      "to": "grfr",
+      "function": "Document title 'THÔNG BÁO KẾT QUẢ TIÊU HỦY HÓA ĐƠN GIẤY' followed by recipient and declarant fill-in fields."
+    },
+    {
+      "from": "vfgs",
+      "to": "jjjv",
+      "function": "Column headers and numbering row for the invoice destruction table."
+    },
+    {
+      "from": "nhgx",
+      "to": "mmdb",
+      "function": "Preparer and legal representative signature and date block."
+    },
+    {
+      "from": "hfdr",
+      "to": "qkpb",
+      "function": "Header for the second report form including form number, state motto, and date placeholder."
+    },
+    {
+      "from": "gdtb",
+      "to": "kfqg",
+      "function": "Report title 'BÁO CÁO MẤT, CHÁY, HỎNG HÓA ĐƠN GIẤY' followed by declarant information fields."
+    },
+    {
+      "from": "mmqg",
+      "to": "qdzp",
+      "function": "Table headers and row labels describing invoice types and usage status."
+    }
+  ],
+  "headings": [
+    {
+      "id": "stsj",
+      "region": 1,
+      "evidenceRefs": ["stsj"],
+      "justification": "Centered bold title text at top of page 46, uniquely formatted, introduces the first form's content below."
+    },
+    {
+      "id": "gdtb",
+      "region": 5,
+      "evidenceRefs": ["gdtb"],
+      "justification": "Centered bold title text midway down page 46, uniquely formatted, introduces the second report section below."
+    }
+  ]
+}
+```

@@ -1,0 +1,71 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D093-PACK_022-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "dcms",
+      "to": "dcms",
+      "function": "Running header containing document reference and publication date."
+    },
+    {
+      "from": "gzvm",
+      "to": "mmpg",
+      "function": "Section heading 'C.2. Changes from HTTP/1.0' introducing the appendix's comparative discussion."
+    },
+    {
+      "from": "kzhf",
+      "to": "dpjq",
+      "function": "Subsection heading 'C.2.1. Multihomed Web Servers' followed by explanatory body text on Host header requirements."
+    },
+    {
+      "from": "cjkq",
+      "to": "kqtd",
+      "function": "Subsection heading 'C.2.2. Keep-Alive Connections' followed by explanatory body text on persistent connection negotiation."
+    },
+    {
+      "from": "wsnp",
+      "to": "gvdc",
+      "function": "Subsection heading 'C.2.3. Introduction ofTransfer-Encoding' followed by explanatory body text on transfer codings."
+    },
+    {
+      "from": "gpvm",
+      "to": "gpvm",
+      "function": "Running footer containing author attribution and page number."
+    }
+  ],
+  "headings": [
+    {
+      "id": "gzvm",
+      "region": 1,
+      "evidenceRefs": ["gzvm"],
+      "justification": "Bold 12pt line at top of section; forms first part of heading 'C.2.' opening subsequent content."
+    },
+    {
+      "id": "mmpg",
+      "region": 1,
+      "evidenceRefs": ["mmpg"],
+      "justification": "Bold 12pt line immediately following 'C.2.'; completes the section heading introducing changes discussion."
+    },
+    {
+      "id": "kzhf",
+      "region": 2,
+      "evidenceRefs": ["kzhf"],
+      "justification": "Bold 10pt numbered line introducing subsection body on multihomed servers and Host header requirements."
+    },
+    {
+      "id": "cjkq",
+      "region": 3,
+      "evidenceRefs": ["cjkq"],
+      "justification": "Bold 10pt numbered line introducing subsection body discussing persistent connection negotiation."
+    },
+    {
+      "id": "wsnp",
+      "region": 4,
+      "evidenceRefs": ["wsnp"],
+      "justification": "Bold 10pt numbered line introducing subsection body on Transfer-Encoding header field introduction."
+    }
+  ]
+}
+```

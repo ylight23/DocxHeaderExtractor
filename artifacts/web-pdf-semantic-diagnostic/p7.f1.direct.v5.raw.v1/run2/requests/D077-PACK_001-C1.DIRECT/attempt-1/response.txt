@@ -1,0 +1,65 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D077-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "mdtt",
+      "to": "bpkq",
+      "function": "Document title and identifying information block"
+    },
+    {
+      "from": "vcrq",
+      "to": "qjhk",
+      "function": "Welcome and meeting objectives introduction"
+    },
+    {
+      "from": "xpfj",
+      "to": "wsgd",
+      "function": "Opening remarks by chair and speaker"
+    },
+    {
+      "from": "rhqn",
+      "to": "dmqp",
+      "function": "Session I heading and presentation summary"
+    }
+  ],
+  "headings": [
+    {
+      "id": "mdtt",
+      "region": 0,
+      "evidenceRefs": ["mdtt"],
+      "justification": "Top-aligned bold title line identifying the document type and program."
+    },
+    {
+      "id": "tpnc",
+      "region": 0,
+      "evidenceRefs": ["tpnc"],
+      "justification": "Bold title line specifying the advisory group name."
+    },
+    {
+      "id": "ftdq",
+      "region": 0,
+      "evidenceRefs": ["ftdq"],
+      "justification": "Bold title line providing the meeting date."
+    },
+    {
+      "id": "bpkq",
+      "region": 0,
+      "evidenceRefs": ["bpkq"],
+      "justification": "Bold title line indicating the meeting format."
+    },
+    {
+      "id": "vcrq",
+      "region": 1,
+      "evidenceRefs": ["vcrq"],
+      "justification": "Bold size-12 heading introducing the welcome and objectives section."
+    },
+    {
+      "id": "rhqn",
+      "region": 3,
+      "evidenceRefs": ["rhqn"],
+      "justification": "Bold size-12 heading marking the start of Session I content."
+    }
+  ]
+}

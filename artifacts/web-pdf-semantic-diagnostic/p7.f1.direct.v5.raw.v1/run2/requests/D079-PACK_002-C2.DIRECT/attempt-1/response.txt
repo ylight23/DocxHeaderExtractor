@@ -1,0 +1,47 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D079-PACK_002-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "gtwb",
+      "to": "tjts",
+      "function": "Continuation of body prose from a preceding section, concluding prior discussion points."
+    },
+    {
+      "from": "xcjz",
+      "to": "swbh",
+      "function": "Section opening with a bold heading followed by presentation notes and methodological discussion regarding PPP time series revisions."
+    },
+    {
+      "from": "nrqq",
+      "to": "wxrb",
+      "function": "Section opening with a bold heading followed by presentation notes summarizing estimation methods and chart results for non-benchmark estimates."
+    },
+    {
+      "from": "fkrs",
+      "to": "fkrs",
+      "function": "Page footer displaying the document page number."
+    }
+  ],
+  "headings": [
+    {
+      "id": "xcjz",
+      "region": 1,
+      "evidenceRefs": [
+        "xcjz"
+      ],
+      "justification": "Bold layout (boldRatio=1) positioned above presentation text; names the substantive section on time series revisions that follows here."
+    },
+    {
+      "id": "nrqq",
+      "region": 2,
+      "evidenceRefs": [
+        "nrqq"
+      ],
+      "justification": "Bold layout (boldRatio=1) positioned above presentation text; names the substantive section on non-benchmark estimates that follows here."
+    }
+  ]
+}
+```

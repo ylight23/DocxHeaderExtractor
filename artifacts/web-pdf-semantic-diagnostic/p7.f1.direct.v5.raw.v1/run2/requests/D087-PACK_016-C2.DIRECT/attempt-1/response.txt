@@ -1,0 +1,38 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D087-PACK_016-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "zxrr",
+      "to": "bhwc",
+      "function": "Form header and title block containing form number, issuing authority placeholder, national motto, and reference number line."
+    },
+    {
+      "from": "hkfx",
+      "to": "jrsv",
+      "function": "Main form body containing the request statement, addressee field, and fillable sections for supplement requests and feedback deadlines."
+    },
+    {
+      "from": "vdqg",
+      "to": "svbw",
+      "function": "Receipt and signature block for acknowledging the form submission."
+    },
+    {
+      "from": "ghqd",
+      "to": "fkgd",
+      "function": "Footnotes defining the numerical references used throughout the form."
+    }
+  ],
+  "headings": [
+    {
+      "id": "zxrr",
+      "region": 0,
+      "evidenceRefs": [
+        "zxrr"
+      ],
+      "justification": "Bold, prominent placement at the top right, explicitly naming the document type and version number as the primary title."
+    }
+  ],
+  "unresolved": []
+}

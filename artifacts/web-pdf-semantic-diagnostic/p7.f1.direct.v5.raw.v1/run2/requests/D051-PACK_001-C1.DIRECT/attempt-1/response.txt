@@ -1,0 +1,85 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D051-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "zmzm",
+      "to": "jrxh",
+      "function": "Cover page title block containing the full document title, subtitle, and fiscal year specification."
+    },
+    {
+      "from": "gtwq",
+      "to": "rwwj",
+      "function": "Running headers, introduction section heading, and introductory body text defining trust funds."
+    },
+    {
+      "from": "zjnt",
+      "to": "rgsq",
+      "function": "Running headers, abbreviations section heading, and page numbers."
+    },
+    {
+      "from": "wthp",
+      "to": "cvrf",
+      "function": "Running headers, contents and summary section heading, and page numbers."
+    }
+  ],
+  "headings": [
+    {
+      "id": "zmzm",
+      "region": 0,
+      "evidenceRefs": [
+        "zmzm"
+      ],
+      "justification": "Small italic line at top of cover; forms complete title string with larger lines below."
+    },
+    {
+      "id": "qtxs",
+      "region": 0,
+      "evidenceRefs": [
+        "qtxs"
+      ],
+      "justification": "Large bold text centered on cover; primary document title."
+    },
+    {
+      "id": "dknn",
+      "region": 0,
+      "evidenceRefs": [
+        "dknn"
+      ],
+      "justification": "Large bold text below title; secondary title specifying report type."
+    },
+    {
+      "id": "rgdf",
+      "region": 0,
+      "evidenceRefs": [
+        "rgdf"
+      ],
+      "justification": "Medium text below subtitle; specifies fiscal years covered."
+    },
+    {
+      "id": "kksk",
+      "region": 1,
+      "evidenceRefs": [
+        "kksk"
+      ],
+      "justification": "Bold 12.7pt text followed by body prose; introduces introduction section."
+    },
+    {
+      "id": "jmhm",
+      "region": 2,
+      "evidenceRefs": [
+        "jmhm"
+      ],
+      "justification": "Bold 13.2pt text on page 3; introduces abbreviations list."
+    },
+    {
+      "id": "kdtm",
+      "region": 3,
+      "evidenceRefs": [
+        "kdtm"
+      ],
+      "justification": "Bold 13.2pt text on page 4; introduces contents and summary section."
+    }
+  ]
+}

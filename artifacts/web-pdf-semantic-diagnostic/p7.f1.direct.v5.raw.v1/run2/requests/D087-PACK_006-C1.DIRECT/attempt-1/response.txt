@@ -1,0 +1,65 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D087-PACK_006-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "wrvd",
+      "to": "hfqm",
+      "function": "Continuation of regulatory clauses 2 through 6 and their sub-items detailing cybersecurity product rules, data encryption mandates, IT device lifecycle management, software patching, and mobile device restrictions."
+    },
+    {
+      "from": "cxwh",
+      "to": "gtgv",
+      "function": "Heading for Article 11 and its opening sub-clause introducing operational environment requirements for national security information systems."
+    },
+    {
+      "from": "krhj",
+      "to": "wtwx",
+      "function": "List of specific compliance requirements for the operational environment of national security information systems."
+    },
+    {
+      "from": "ntss",
+      "to": "ntss",
+      "function": "Trailing page number."
+    }
+  ],
+  "headings": [
+    {
+      "id": "cxwh",
+      "region": 1,
+      "evidenceRefs": [
+        "cxwh",
+        "tckd"
+      ],
+      "justification": "Bold typography and 'Article 11' marker clearly designate it as a major section heading introducing the following regulatory content."
+    },
+    {
+      "id": "tckd",
+      "region": 1,
+      "evidenceRefs": [
+        "tckd",
+        "cxwh"
+      ],
+      "justification": "Continues the Article 11 title on the next line, sharing bold formatting and spatial proximity to complete the heading phrase."
+    },
+    {
+      "id": "qgmf",
+      "region": 1,
+      "evidenceRefs": [
+        "qgmf",
+        "gtgv"
+      ],
+      "justification": "Numbered sub-clause '1.' acts as a sub-heading, structurally opening the list of operational environment requirements that follows."
+    },
+    {
+      "id": "gtgv",
+      "region": 1,
+      "evidenceRefs": [
+        "gtgv",
+        "qgmf"
+      ],
+      "justification": "Completes the sub-heading sentence, maintaining alignment with the preceding line to formally introduce the subsequent requirement list."
+    }
+  ]
+}

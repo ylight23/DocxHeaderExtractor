@@ -1,0 +1,43 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D056-PACK_002-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "fqsf",
+      "to": "kkps",
+      "function": "Cover page and title block presenting the main title, descriptive text, and publisher website."
+    },
+    {
+      "from": "bhwm",
+      "to": "zhgm",
+      "function": "Table of contents listing chapters, sections, and back matter with page references."
+    }
+  ],
+  "headings": [
+    {
+      "id": "fqsf",
+      "region": 0,
+      "evidenceRefs": [
+        "fqsf"
+      ],
+      "justification": "Large 36pt bold text at the top of the cover page, forming the first line of the document's main title."
+    },
+    {
+      "id": "jgrb",
+      "region": 0,
+      "evidenceRefs": [
+        "jgrb"
+      ],
+      "justification": "Large 36pt bold text directly below fqsf, completing the main title phrase."
+    },
+    {
+      "id": "bhwm",
+      "region": 1,
+      "evidenceRefs": [
+        "bhwm"
+      ],
+      "justification": "Bold 13pt text at the top of the contents page, labeling the table of contents section itself."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D093-PACK_006-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "jbrp",
+      "to": "bfgq",
+      "function": "Running header and body prose detailing CONNECT request target requirements."
+    },
+    {
+      "from": "rgqr",
+      "to": "gjfv",
+      "function": "Monospaced example lines illustrating a CONNECT request structure."
+    },
+    {
+      "from": "pnsw",
+      "to": "kjbk",
+      "function": "Section heading 3.2.4 and its immediate explanatory text."
+    },
+    {
+      "from": "dbqp",
+      "to": "nrjc",
+      "function": "ABNF definition, usage rules, and forwarding examples for asterisk-form."
+    },
+    {
+      "from": "pggv",
+      "to": "pffq",
+      "function": "Section heading 3.3, descriptive prose, and page footer."
+    }
+  ],
+  "headings": [
+    {
+      "id": "pnsw",
+      "region": 2,
+      "evidenceRefs": [
+        "pnsw",
+        "cgwh"
+      ],
+      "justification": "Bold numbered line '3.2.4. asterisk-form' opens the subsection defining and explaining the asterisk-form usage."
+    },
+    {
+      "id": "pggv",
+      "region": 4,
+      "evidenceRefs": [
+        "pggv",
+        "rbpx"
+      ],
+      "justification": "Larger bold numbered line '3.3. Reconstructing the Target URI' introduces the following paragraph describing URI reconstruction logic."
+    }
+  ]
+}

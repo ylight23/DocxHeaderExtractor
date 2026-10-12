@@ -1,0 +1,106 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D017-PACK_024-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "wqdf",
+      "to": "jbvc",
+      "function": "Invoice quantity request table headers and introductory line."
+    },
+    {
+      "from": "rpwv",
+      "to": "mnkz",
+      "function": "Formal tax compliance declaration paragraph."
+    },
+    {
+      "from": "zscz",
+      "to": "frbf",
+      "function": "Legal representative signature placeholder and stamping note."
+    },
+    {
+      "from": "snvq",
+      "to": "dnxb",
+      "function": "Official form title block, addressee, and taxpayer identification fields."
+    },
+    {
+      "from": "hdrd",
+      "to": "dfjp",
+      "function": "Business address commitment, final declaration, and taxpayer signature block."
+    }
+  ],
+  "headings": [
+    {
+      "id": "wqdf",
+      "region": 0,
+      "evidenceRefs": [
+        "wqdf"
+      ],
+      "justification": "Introduces the invoice quantity request table immediately following it."
+    },
+    {
+      "id": "rpwv",
+      "region": 1,
+      "evidenceRefs": [
+        "rpwv"
+      ],
+      "justification": "Opens the formal declaration of tax regulation compliance."
+    },
+    {
+      "id": "zscz",
+      "region": 2,
+      "evidenceRefs": [
+        "zscz"
+      ],
+      "justification": "Labels the signature line for the legal representative below."
+    },
+    {
+      "id": "snvq",
+      "region": 3,
+      "evidenceRefs": [
+        "snvq"
+      ],
+      "justification": "First line of the official form title block identifying the document model."
+    },
+    {
+      "id": "xkbs",
+      "region": 3,
+      "evidenceRefs": [
+        "xkbs"
+      ],
+      "justification": "State motto line forming the upper portion of the document title."
+    },
+    {
+      "id": "rkdd",
+      "region": 3,
+      "evidenceRefs": [
+        "rkdd"
+      ],
+      "justification": "State motto line forming the middle portion of the document title."
+    },
+    {
+      "id": "rxdh",
+      "region": 3,
+      "evidenceRefs": [
+        "rxdh"
+      ],
+      "justification": "Main document type heading CAM KẾT opening the form purpose."
+    },
+    {
+      "id": "zzrz",
+      "region": 4,
+      "evidenceRefs": [
+        "zzrz"
+      ],
+      "justification": "Labels the primary signature position for the taxpayer."
+    },
+    {
+      "id": "npgc",
+      "region": 4,
+      "evidenceRefs": [
+        "npgc"
+      ],
+      "justification": "Completes the signature label specifying the legal representative role."
+    }
+  ]
+}

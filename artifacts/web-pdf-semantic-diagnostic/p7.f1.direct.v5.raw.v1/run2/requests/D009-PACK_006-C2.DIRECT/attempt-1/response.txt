@@ -1,0 +1,53 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D009-PACK_006-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "xswh",
+      "to": "xswh",
+      "function": "Running header with publication name and date."
+    },
+    {
+      "from": "xjqd",
+      "to": "gcjv",
+      "function": "Article 30 body: numbered provisions detailing responsibilities of trust service providers."
+    },
+    {
+      "from": "vtbf",
+      "to": "nfdg",
+      "function": "Article 31 body: numbered provisions defining timestamp services and their requirements."
+    },
+    {
+      "from": "qksz",
+      "to": "vgbc",
+      "function": "Article 32 opening: heading and introductory line for data message authentication services."
+    }
+  ],
+  "headings": [
+    {
+      "id": "xjqd",
+      "region": 1,
+      "evidenceRefs": [
+        "xjqd"
+      ],
+      "justification": "Bold font at block start, introduces the eight numbered provisions detailing provider responsibilities."
+    },
+    {
+      "id": "vtbf",
+      "region": 2,
+      "evidenceRefs": [
+        "vtbf"
+      ],
+      "justification": "Bold font at block start, introduces the four numbered provisions defining timestamp services."
+    },
+    {
+      "id": "qksz",
+      "region": 3,
+      "evidenceRefs": [
+        "qksz"
+      ],
+      "justification": "Bold font at block start, introduces the subsequent paragraph outlining data message authentication services."
+    }
+  ]
+}

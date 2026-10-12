@@ -1,0 +1,33 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D079-PACK_003-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "vtbz",
+      "to": "hrnp",
+      "function": "Body prose continuing discussion on estimation difficulties, imputation reliability, and metadata limitations."
+    },
+    {
+      "from": "hgnr",
+      "to": "vkjq",
+      "function": "Closing session notes containing headings, release plan details, a bulleted list of global release assets, and concluding remarks."
+    }
+  ],
+  "headings": [
+    {
+      "id": "hgnr",
+      "region": 1,
+      "evidenceRefs": ["hgnr"],
+      "justification": "Bold, larger font line positioned above subsequent closing session text; matches agenda entry on page 6."
+    },
+    {
+      "id": "bjqx",
+      "region": 1,
+      "evidenceRefs": ["bjqx"],
+      "justification": "Bold line introducing the next steps and closing remarks section; aligns with agenda structure on page 6."
+    }
+  ]
+}
+```

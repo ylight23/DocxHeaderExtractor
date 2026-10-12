@@ -1,0 +1,39 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D056-PACK_007-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "ptns",
+      "to": "ptns",
+      "function": "Running header or footer line indicating section and page number."
+    },
+    {
+      "from": "thrv",
+      "to": "cqhb",
+      "function": "Block of assessment questions (10–15) with corresponding multiple-choice options."
+    },
+    {
+      "from": "fpmk",
+      "to": "jcrp",
+      "function": "Endnotes section containing a prominent heading followed by a sequence of bibliographic references."
+    },
+    {
+      "from": "stcg",
+      "to": "rtrf",
+      "function": "Running header and footer lines providing section labels and publisher access information."
+    }
+  ],
+  "headings": [
+    {
+      "id": "fpmk",
+      "region": 2,
+      "evidenceRefs": [
+        "fpmk"
+      ],
+      "justification": "Set in large 15.6pt bold type, it stands alone above the reference list, functioning as a section heading that opens the endnotes content here."
+    }
+  ]
+}
+```

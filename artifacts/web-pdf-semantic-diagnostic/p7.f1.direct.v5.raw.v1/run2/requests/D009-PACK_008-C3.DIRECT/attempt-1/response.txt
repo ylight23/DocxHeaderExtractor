@@ -1,0 +1,65 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D009-PACK_008-C3",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "cqtz",
+      "to": "wqqt",
+      "function": "Running header and concluding clauses of the preceding article."
+    },
+    {
+      "from": "pkfk",
+      "to": "stpw",
+      "function": "Article 44 detailing state agency operations on the electronic environment."
+    },
+    {
+      "from": "ttbh",
+      "to": "wfmr",
+      "function": "Opening heading and title for Chapter VI."
+    },
+    {
+      "from": "kcdz",
+      "to": "mvcn",
+      "function": "Article 45 defining information systems for electronic transactions."
+    }
+  ],
+  "headings": [
+    {
+      "id": "pkfk",
+      "region": 1,
+      "evidenceRefs": [
+        "pkfk",
+        "pgbq"
+      ],
+      "justification": "Bold layout, numbered 'Điều 44', introduces the subsequent paragraphs of Article 44."
+    },
+    {
+      "id": "ttbh",
+      "region": 2,
+      "evidenceRefs": [
+        "ttbh",
+        "wfmr"
+      ],
+      "justification": "Bold layout, centered, marks the start of Chapter VI."
+    },
+    {
+      "id": "wfmr",
+      "region": 2,
+      "evidenceRefs": [
+        "wfmr",
+        "ttbh"
+      ],
+      "justification": "Bold layout, all caps, provides the substantive title for Chapter VI."
+    },
+    {
+      "id": "kcdz",
+      "region": 3,
+      "evidenceRefs": [
+        "kcdz",
+        "hmzw"
+      ],
+      "justification": "Bold layout, numbered 'Điều 45', introduces the definition and classification in the following text."
+    }
+  ]
+}

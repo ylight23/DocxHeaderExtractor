@@ -1,0 +1,44 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D049-PACK_046-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "ccbw",
+      "to": "xxjc",
+      "function": "Table J1 data rows and cell values for financial liabilities"
+    },
+    {
+      "from": "qnwr",
+      "to": "tqwt",
+      "function": "Body prose and page footer"
+    },
+    {
+      "from": "sftj",
+      "to": "bdsm",
+      "function": "Table J2 caption, headers, and data rows"
+    }
+  ],
+  "headings": [
+    {
+      "id": "cgpb",
+      "region": 2,
+      "evidenceRefs": [
+        "cgpb",
+        "L1887:S0"
+      ],
+      "justification": "Bold, size 10, positioned near top of page 52, parser identifies it as a table caption introducing the subsequent table data."
+    },
+    {
+      "id": "ncmt",
+      "region": 2,
+      "evidenceRefs": [
+        "ncmt",
+        "L1892:S0"
+      ],
+      "justification": "Bold, size 8, positioned above table data rows, introduces the Assets section of Table J2."
+    }
+  ]
+}
+```

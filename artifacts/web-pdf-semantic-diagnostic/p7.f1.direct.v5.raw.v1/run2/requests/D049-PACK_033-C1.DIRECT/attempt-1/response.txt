@@ -1,0 +1,42 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D049-PACK_033-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "bqhh",
+      "to": "jbvd",
+      "function": "Continuation of a financial table showing total values and row data."
+    },
+    {
+      "from": "spqf",
+      "to": "vtxb",
+      "function": "Footnotes explaining table symbols and a running footer with report title and date."
+    },
+    {
+      "from": "jfdt",
+      "to": "cvrf",
+      "function": "Title and currency specification line introducing a new table."
+    },
+    {
+      "from": "vmxd",
+      "to": "whzn",
+      "function": "Column headers defining data categories for the table."
+    },
+    {
+      "from": "ckpm",
+      "to": "psrv",
+      "function": "Data rows listing borrower names and corresponding loan figures."
+    }
+  ],
+  "headings": [
+    {
+      "id": "jfdt",
+      "region": 2,
+      "evidenceRefs": [
+        "jfdt"
+      ],
+      "justification": "Bold title line at page top introducing the subsequent table data."
+    }
+  ]
+}

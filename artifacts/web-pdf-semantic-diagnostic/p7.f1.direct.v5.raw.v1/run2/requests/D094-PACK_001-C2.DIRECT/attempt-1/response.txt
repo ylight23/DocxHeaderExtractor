@@ -1,0 +1,17 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D094-PACK_001-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {"from": "nrsj", "to": "nrsj", "function": "Running header containing document identifier and date"},
+    {"from": "nchr", "to": "fnfz", "function": "Legal provisions and license text block"},
+    {"from": "skvf", "to": "skvf", "function": "Heading introducing the table of contents"},
+    {"from": "hcpq", "to": "bhtd", "function": "Sequential list of table of contents entries mapping sections to pages"},
+    {"from": "frvm", "to": "frvm", "function": "Running footer with author names and page number"}
+  ],
+  "headings": [
+    {"id": "skvf", "region": 2, "evidenceRefs": ["skvf"], "justification": "Larger bold font (14.4pt) positioned directly above the numbered section list, introducing the TOC entries at this location."}
+  ]
+}
+```

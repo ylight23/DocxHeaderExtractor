@@ -1,0 +1,60 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D024-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "jzvs",
+      "to": "gzdm",
+      "function": "Document header, title, and preamble containing legal basis and amendment notes."
+    },
+    {
+      "from": "gkqd",
+      "to": "dpsc",
+      "function": "Heading for Chapter I General Provisions."
+    },
+    {
+      "from": "xhwm",
+      "to": "gqmz",
+      "function": "Heading and content for Article 1 Scope of Regulation."
+    }
+  ],
+  "headings": [
+    {
+      "id": "kbqr",
+      "region": 0,
+      "evidenceRefs": ["kbqr"],
+      "justification": "Bold decree-type heading opening the main title below."
+    },
+    {
+      "id": "vhpw",
+      "region": 0,
+      "evidenceRefs": ["vhpw"],
+      "justification": "Main title line 1, bold, introduces the decree's subject matter."
+    },
+    {
+      "id": "zwbf",
+      "region": 0,
+      "evidenceRefs": ["zwbf"],
+      "justification": "Main title line 2, bold, completes the title opening the preamble."
+    },
+    {
+      "id": "gkqd",
+      "region": 1,
+      "evidenceRefs": ["gkqd"],
+      "justification": "Bold chapter heading line 1, names the section below."
+    },
+    {
+      "id": "dpsc",
+      "region": 1,
+      "evidenceRefs": ["dpsc"],
+      "justification": "Bold chapter heading line 2, completes the chapter title."
+    },
+    {
+      "id": "xhwm",
+      "region": 2,
+      "evidenceRefs": ["xhwm"],
+      "justification": "Bold article heading naming the scope of regulation section."
+    }
+  ]
+}

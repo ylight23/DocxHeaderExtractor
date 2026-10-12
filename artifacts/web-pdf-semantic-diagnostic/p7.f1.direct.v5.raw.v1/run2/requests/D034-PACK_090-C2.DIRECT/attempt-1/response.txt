@@ -1,0 +1,74 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D034-PACK_090-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "pjcd",
+      "to": "pjcd",
+      "function": "Running header repeating across pages with page number and section title."
+    },
+    {
+      "from": "hgcc",
+      "to": "xjmm",
+      "function": "Title block for the appendix, featuring prominent bold typography."
+    },
+    {
+      "from": "xfdj",
+      "to": "sbpq",
+      "function": "Section 1 heading followed by definitional body text and contract parties listing."
+    },
+    {
+      "from": "hfgh",
+      "to": "btqk",
+      "function": "Section 2 heading followed by body text detailing effective dates and termination conditions."
+    },
+    {
+      "from": "vjpq",
+      "to": "svcm",
+      "function": "Section 3 heading followed by body text outlining member warranties and impartiality requirements."
+    }
+  ],
+  "headings": [
+    {
+      "id": "hgcc",
+      "region": 1,
+      "evidenceRefs": [
+        "hgcc"
+      ],
+      "justification": "Large 18pt bold font at page top, clearly titles the appendix content that follows."
+    },
+    {
+      "id": "xjmm",
+      "region": 1,
+      "evidenceRefs": [
+        "xjmm"
+      ],
+      "justification": "16pt bold font directly below appendix title, specifying the document's specific subject."
+    },
+    {
+      "id": "xfdj",
+      "region": 2,
+      "evidenceRefs": [
+        "xfdj"
+      ],
+      "justification": "Numbered '1.' prefix with standard heading layout, introducing the definitions section."
+    },
+    {
+      "id": "hfgh",
+      "region": 3,
+      "evidenceRefs": [
+        "hfgh"
+      ],
+      "justification": "Numbered '2.' prefix with standard heading layout, introducing the general provisions section."
+    },
+    {
+      "id": "vjpq",
+      "region": 4,
+      "evidenceRefs": [
+        "vjpq"
+      ],
+      "justification": "Numbered '3.' prefix with standard heading layout, introducing the warranties section."
+    }
+  ]
+}

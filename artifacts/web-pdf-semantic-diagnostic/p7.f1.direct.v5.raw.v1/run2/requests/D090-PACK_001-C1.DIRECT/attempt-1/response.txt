@@ -1,0 +1,82 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D090-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "nqvj",
+      "to": "kwxw",
+      "function": "Official letterhead, decree reference, and main title block"
+    },
+    {
+      "from": "pcct",
+      "to": "qfvb",
+      "function": "Enacting formula and preamble stating legal basis and promulgation"
+    },
+    {
+      "from": "hmfv",
+      "to": "vzsr",
+      "function": "Chapter I heading, Article 1 heading, and numbered list of annulled regulations"
+    }
+  ],
+  "headings": [
+    {
+      "id": "xqzw",
+      "region": 0,
+      "evidenceRefs": [
+        "xqzw"
+      ],
+      "justification": "Bold, centered layout at top of page, functioning as the primary document title identifying the legal instrument."
+    },
+    {
+      "id": "nhzg",
+      "region": 0,
+      "evidenceRefs": [
+        "nhzg"
+      ],
+      "justification": "Continues the title block directly below DECREE, specifying the scope of amendments."
+    },
+    {
+      "id": "kwxw",
+      "region": 0,
+      "evidenceRefs": [
+        "kwxw"
+      ],
+      "justification": "Final line of the title block, clarifying the regulatory domain under the Ministry of Health."
+    },
+    {
+      "id": "hmfv",
+      "region": 2,
+      "evidenceRefs": [
+        "hmfv"
+      ],
+      "justification": "Bold, standalone line marking the start of the first substantive chapter."
+    },
+    {
+      "id": "bpth",
+      "region": 2,
+      "evidenceRefs": [
+        "bpth"
+      ],
+      "justification": "Bold, centered line immediately following Chapter I, naming the chapter's topic."
+    },
+    {
+      "id": "wvbg",
+      "region": 2,
+      "evidenceRefs": [
+        "wvbg"
+      ],
+      "justification": "Bold line starting with Article 1., introducing the annulment provisions that follow."
+    },
+    {
+      "id": "wdfk",
+      "region": 2,
+      "evidenceRefs": [
+        "wdfk"
+      ],
+      "justification": "Completes the Article 1 heading by introducing the subsequent list of annulled documents."
+    }
+  ]
+}
+```

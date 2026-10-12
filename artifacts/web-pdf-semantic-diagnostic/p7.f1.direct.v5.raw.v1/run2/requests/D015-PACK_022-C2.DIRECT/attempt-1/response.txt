@@ -1,0 +1,76 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D015-PACK_022-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "npqv",
+      "to": "gbpw",
+      "function": "Body prose detailing the rights and duties of board members, continuing a numbered list of statutory provisions."
+    },
+    {
+      "from": "fvkm",
+      "to": "rpdt",
+      "function": "Major section heading and introductory article defining the nature and objectives of cooperative credit organizations."
+    },
+    {
+      "from": "vqpz",
+      "to": "skvx",
+      "function": "Article heading and body text specifying the composition of members for cooperative banks and credit funds."
+    },
+    {
+      "from": "jgjm",
+      "to": "vkwf",
+      "function": "Article heading and body text outlining the internal management structure and audit requirements."
+    },
+    {
+      "from": "jvmx",
+      "to": "fckj",
+      "function": "Article heading and body text enumerating sources of charter capital for cooperative financial institutions."
+    }
+  ],
+  "headings": [
+    {
+      "id": "fvkm",
+      "region": 1,
+      "evidenceRefs": [
+        "fvkm"
+      ],
+      "justification": "Bold italic font (size 10), distinct layout block, names the following section on cooperative credit organizations."
+    },
+    {
+      "id": "chpb",
+      "region": 1,
+      "evidenceRefs": [
+        "chpb"
+      ],
+      "justification": "Bold font (size 10), precedes definition text, standard article heading format opening the section."
+    },
+    {
+      "id": "vqpz",
+      "region": 2,
+      "evidenceRefs": [
+        "vqpz"
+      ],
+      "justification": "Bold font (size 10), precedes member composition rules, standard article heading format."
+    },
+    {
+      "id": "jgjm",
+      "region": 3,
+      "evidenceRefs": [
+        "jgjm"
+      ],
+      "justification": "Bold font (size 10), precedes management structure description, standard article heading format."
+    },
+    {
+      "id": "jvmx",
+      "region": 4,
+      "evidenceRefs": [
+        "jvmx"
+      ],
+      "justification": "Bold font (size 10), precedes capital composition rules, standard article heading format."
+    }
+  ]
+}
+```

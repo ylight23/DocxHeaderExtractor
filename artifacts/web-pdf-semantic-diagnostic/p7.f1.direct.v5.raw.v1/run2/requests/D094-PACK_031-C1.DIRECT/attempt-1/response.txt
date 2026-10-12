@@ -1,0 +1,20 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D094-PACK_031-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {"from": "jqsw", "to": "jqsw", "function": "Running header containing document reference and date."},
+    {"from": "crxn", "to": "wdvr", "function": "Section heading numbering and title for subsection 10.3."},
+    {"from": "tgbv", "to": "fqfr", "function": "Body prose detailing validation rules for intermediaries translating HTTP fields."},
+    {"from": "nbqs", "to": "nbqs", "function": "Section heading numbering and title for subsection 10.4."},
+    {"from": "hczj", "to": "kjdh", "function": "Body prose explaining caching constraints for server-pushed responses."},
+    {"from": "jwhb", "to": "jwhb", "function": "Footer containing author names, track type, and page number."}
+  ],
+  "headings": [
+    {"id": "crxn", "region": 1, "evidenceRefs": ["crxn"], "justification": "Bold 12pt font, positioned at column top, numbered '10.3.', structurally opens the following section."},
+    {"id": "wdvr", "region": 1, "evidenceRefs": ["wdvr"], "justification": "Bold 12pt font, directly follows section number, provides the descriptive title for the subsection."},
+    {"id": "nbqs", "region": 3, "evidenceRefs": ["nbqs"], "justification": "Bold 12pt font, numbered '10.4.', clearly demarcates the start of a new substantive section."}
+  ]
+}
+```

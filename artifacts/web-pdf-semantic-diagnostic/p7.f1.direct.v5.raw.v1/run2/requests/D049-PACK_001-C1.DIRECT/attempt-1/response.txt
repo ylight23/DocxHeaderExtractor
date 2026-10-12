@@ -1,0 +1,54 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D049-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "fcmw",
+      "to": "fcfx",
+      "function": "Cover page title block identifying the organization, report type, and financial statement period."
+    },
+    {
+      "from": "mqhv",
+      "to": "pvqn",
+      "function": "Table of contents listing document sections and subsections with page references."
+    },
+    {
+      "from": "rxsx",
+      "to": "wvjr",
+      "function": "List of tables providing titles and page numbers for financial data tables."
+    }
+  ],
+  "headings": [
+    {
+      "id": "fcmw",
+      "region": 0,
+      "evidenceRefs": ["fcmw"],
+      "justification": "First line of the cover title block, identifying the issuing organization."
+    },
+    {
+      "id": "scgm",
+      "region": 0,
+      "evidenceRefs": ["scgm"],
+      "justification": "Second line of the cover title block, stating the report type."
+    },
+    {
+      "id": "srtv",
+      "region": 0,
+      "evidenceRefs": ["srtv"],
+      "justification": "Third line of the cover title block, specifying the financial statement period."
+    },
+    {
+      "id": "bsvb",
+      "region": 1,
+      "evidenceRefs": ["bsvb"],
+      "justification": "Heading on page 3 introducing the table of contents listing sections and pages."
+    },
+    {
+      "id": "rxsx",
+      "region": 2,
+      "evidenceRefs": ["rxsx"],
+      "justification": "Heading on page 3 introducing the list of tables with page references."
+    }
+  ]
+}

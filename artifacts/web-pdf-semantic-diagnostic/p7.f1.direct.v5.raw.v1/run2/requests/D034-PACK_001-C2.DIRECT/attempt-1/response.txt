@@ -1,0 +1,42 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D034-PACK_001-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "mqsm",
+      "to": "mfqx",
+      "function": "Page number and section title 'Preface' marking the start of the preface."
+    },
+    {
+      "from": "gttv",
+      "to": "wncd",
+      "function": "Introductory prose of the preface explaining the purpose and scope of the SPD."
+    },
+    {
+      "from": "wzth",
+      "to": "grpf",
+      "function": "Instructional text directing readers to contact officials for questions."
+    },
+    {
+      "from": "nssv",
+      "to": "pmtz",
+      "function": "Contact information and address block for the World Bank procurement department."
+    },
+    {
+      "from": "fzzr",
+      "to": "wjbk",
+      "function": "Footnotes clarifying terminology and abbreviations."
+    }
+  ],
+  "headings": [
+    {
+      "id": "mfqx",
+      "region": 0,
+      "evidenceRefs": [
+        "mfqx"
+      ],
+      "justification": "Bold, large font (size 24) positioned at the top of the page, introducing the subsequent preface text."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D015-PACK_029-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "pkdj",
+      "to": "zsfc",
+      "function": "Body text containing items 7 and 8 of a preceding article, detailing conditions for establishing subsidiaries and acquiring shares."
+    },
+    {
+      "from": "drmz",
+      "to": "dtbd",
+      "function": "Body text of Article 112, outlining permitted foreign exchange business and derivatives services for commercial banks."
+    },
+    {
+      "from": "vxjg",
+      "to": "xbnh",
+      "function": "Body text of Article 113, covering entrusted agency and intermediary banking activities including insurance agency."
+    },
+    {
+      "from": "rkzv",
+      "to": "grzp",
+      "function": "Body text of Article 114, listing other permitted commercial bank business activities such as cash management, payment services, and gold trading."
+    }
+  ],
+  "headings": [
+    {
+      "id": "drmz",
+      "region": 1,
+      "evidenceRefs": ["drmz", "xqbp"],
+      "justification": "Bold font (ratio 1), positioned at top of block b1131, followed by continuation line xqbp and numbered item 1, indicating it opens Article 112."
+    },
+    {
+      "id": "xqbp",
+      "region": 1,
+      "evidenceRefs": ["xqbp", "drmz"],
+      "justification": "Bold font (ratio 1), same block b1131 as drmz, completes the heading phrase before item 1 begins."
+    },
+    {
+      "id": "vxjg",
+      "region": 2,
+      "evidenceRefs": ["vxjg"],
+      "justification": "Bold font (ratio 1), smaller size (10pt), stands alone at top of block b1137, immediately precedes numbered item 1, marking start of Article 113."
+    },
+    {
+      "id": "rkzv",
+      "region": 3,
+      "evidenceRefs": ["rkzv"],
+      "justification": "Bold font (ratio 1), smaller size (10pt), stands alone at top of block b1140, immediately precedes numbered item 1, marking start of Article 114."
+    }
+  ]
+}

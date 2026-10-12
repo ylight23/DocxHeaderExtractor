@@ -1,0 +1,64 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D032-PACK_069-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "sqgg",
+      "to": "sqgg",
+      "function": "Running header repeating the section title and page number."
+    },
+    {
+      "from": "zhjm",
+      "to": "bsgp",
+      "function": "Body prose containing the conclusion of a prior clause and clauses 9.14 and 9.15."
+    },
+    {
+      "from": "csmw",
+      "to": "hrdg",
+      "function": "Body prose containing clause 10 and subclauses 10.1 through 10.3."
+    }
+  ],
+  "headings": [
+    {
+      "id": "kbmt",
+      "region": 1,
+      "evidenceRefs": [
+        "kbmt"
+      ],
+      "justification": "Numbered clause heading introducing the safety obligations text that follows."
+    },
+    {
+      "id": "pxzd",
+      "region": 1,
+      "evidenceRefs": [
+        "pxzd"
+      ],
+      "justification": "Numbered clause heading introducing the natural resource sourcing requirements that follow."
+    },
+    {
+      "id": "csmw",
+      "region": 2,
+      "evidenceRefs": [
+        "csmw"
+      ],
+      "justification": "Combined section and subclause heading introducing employer responsibilities and information supply duties."
+    },
+    {
+      "id": "swtw",
+      "region": 2,
+      "evidenceRefs": [
+        "swtw"
+      ],
+      "justification": "Subclause heading introducing the employer's site possession responsibilities."
+    },
+    {
+      "id": "jsjq",
+      "region": 2,
+      "evidenceRefs": [
+        "jsjq"
+      ],
+      "justification": "Subclause heading introducing the employer's permit and license acquisition duties."
+    }
+  ]
+}

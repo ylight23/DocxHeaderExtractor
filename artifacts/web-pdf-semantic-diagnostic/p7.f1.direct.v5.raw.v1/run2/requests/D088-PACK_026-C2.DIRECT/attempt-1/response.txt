@@ -1,0 +1,19 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D088-PACK_026-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {"from": "swfp", "to": "vrqg", "function": "Instructional notes on applying HS code lengths"},
+    {"from": "zvmr", "to": "nnst", "function": "Table header row defining column labels"},
+    {"from": "bsfn", "to": "bfwk", "function": "Data rows listing Harmonized System chapter codes and descriptions"},
+    {"from": "mhhf", "to": "crck", "function": "Title block identifying the appendix and its legal basis"},
+    {"from": "sqwx", "to": "qgrs", "function": "Tabular list of regulated goods paired with responsible management authorities"}
+  ],
+  "headings": [
+    {"id": "mhhf", "region": 3, "evidenceRefs": ["mhhf"], "justification": "Bold centered line identifying the document section as Appendix V."},
+    {"id": "qxjc", "region": 3, "evidenceRefs": ["qxjc"], "justification": "Descriptive subtitle specifying the appendix's scope over goods and CFS authority."},
+    {"id": "crck", "region": 3, "evidenceRefs": ["crck"], "justification": "Italicized legal reference line providing the decree issuance context."}
+  ]
+}
+```

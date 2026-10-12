@@ -1,0 +1,47 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D006-PACK_019-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "fssh",
+      "to": "fssh",
+      "function": "Running header displaying publication name, issue number, and date"
+    },
+    {
+      "from": "kqzd",
+      "to": "pqnf",
+      "function": "Body text continuing an enumerated list of requirements or criteria"
+    },
+    {
+      "from": "dfsh",
+      "to": "smvk",
+      "function": "Body text defining the content of the national land use plan"
+    },
+    {
+      "from": "bxrm",
+      "to": "xbhb",
+      "function": "Body text specifying data recording and updating requirements"
+    },
+    {
+      "from": "rxxz",
+      "to": "nzhv",
+      "function": "Article heading and introductory paragraph listing bases for provincial land use planning"
+    },
+    {
+      "from": "jjqg",
+      "to": "dsds",
+      "function": "Body text detailing the contents of provincial land use planning"
+    }
+  ],
+  "headings": [
+    {
+      "id": "rxxz",
+      "region": 4,
+      "evidenceRefs": [
+        "rxxz"
+      ],
+      "justification": "Bold layout and explicit 'Điều 65' marker indicate a formal article heading introducing the subsequent regulatory provisions."
+    }
+  ]
+}

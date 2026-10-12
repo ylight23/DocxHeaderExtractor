@@ -1,0 +1,92 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D032-PACK_001-C3",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "npvp",
+      "to": "sdhc",
+      "function": "Page number and title block identifying the document type, summary status, and specific procurement notice."
+    },
+    {
+      "from": "fdmk",
+      "to": "pnfz",
+      "function": "Introductory prose outlining the two-stage procurement process and proposal stages."
+    },
+    {
+      "from": "wxbg",
+      "to": "nhzd",
+      "function": "Main body comprising Part 1 and Sections I through V, each introduced by a bold heading followed by descriptive text."
+    }
+  ],
+  "headings": [
+    {
+      "id": "qfnh",
+      "region": 0,
+      "evidenceRefs": ["qfnh"],
+      "justification": "Top-aligned bold title line (size 24) naming the document type."
+    },
+    {
+      "id": "ptdb",
+      "region": 0,
+      "evidenceRefs": ["ptdb"],
+      "justification": "Bold subtitle line (size 24) identifying this document as a Summary."
+    },
+    {
+      "id": "vndj",
+      "region": 0,
+      "evidenceRefs": ["vndj"],
+      "justification": "Bold title continuation (size 16) naming the Specific Procurement Notice."
+    },
+    {
+      "id": "fmvz",
+      "region": 0,
+      "evidenceRefs": ["fmvz"],
+      "justification": "Bold title continuation (size 14) specifying the RFP scope."
+    },
+    {
+      "id": "sdhc",
+      "region": 0,
+      "evidenceRefs": ["sdhc"],
+      "justification": "Bold title completion (size 14) indicating target audience."
+    },
+    {
+      "id": "wxbg",
+      "region": 2,
+      "evidenceRefs": ["wxbg"],
+      "justification": "Bold major section heading (size 14) introducing Part 1 procedures."
+    },
+    {
+      "id": "sxbd",
+      "region": 2,
+      "evidenceRefs": ["sxbd"],
+      "justification": "Bold section heading (size 12) introducing Section I instructions."
+    },
+    {
+      "id": "wxwb",
+      "region": 2,
+      "evidenceRefs": ["wxwb"],
+      "justification": "Bold section heading (size 12) introducing Section II data sheet."
+    },
+    {
+      "id": "rkmd",
+      "region": 2,
+      "evidenceRefs": ["rkmd"],
+      "justification": "Bold section heading (size 12) introducing Section III criteria."
+    },
+    {
+      "id": "rzst",
+      "region": 2,
+      "evidenceRefs": ["rzst"],
+      "justification": "Bold section heading (size 12) introducing Section IV forms."
+    },
+    {
+      "id": "nhzd",
+      "region": 2,
+      "evidenceRefs": ["nhzd"],
+      "justification": "Bold section heading (size 12) introducing Section V eligibility."
+    }
+  ]
+}
+```

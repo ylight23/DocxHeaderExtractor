@@ -1,0 +1,20 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D079-PACK_003-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {"from": "qhmj", "to": "vkbf", "function": "Document title and identifying metadata block."},
+    {"from": "xdgt", "to": "xjmf", "function": "Meeting agenda schedule with time slots and session topics."},
+    {"from": "nrmq", "to": "nrmq", "function": "Page number footer."}
+  ],
+  "headings": [
+    {"id": "qhmj", "region": 0, "evidenceRefs": ["qhmj"], "justification": "Large bold font at page top; first line of the document title block."},
+    {"id": "nqmx", "region": 0, "evidenceRefs": ["nqmx"], "justification": "Large bold font below title; identifies the advisory group."},
+    {"id": "qhhq", "region": 0, "evidenceRefs": ["qhhq"], "justification": "Bold font indicating meeting format; completes the title block."},
+    {"id": "vkbf", "region": 0, "evidenceRefs": ["vkbf"], "justification": "Standalone bold line 'Agenda' functioning as a document subtitle."},
+    {"id": "rtbh", "region": 1, "evidenceRefs": ["rtbh"], "justification": "Bold line introducing the first major session block of the schedule."},
+    {"id": "wsfr", "region": 1, "evidenceRefs": ["wsfr"], "justification": "Bold line introducing the final session block of the schedule."}
+  ]
+}
+```

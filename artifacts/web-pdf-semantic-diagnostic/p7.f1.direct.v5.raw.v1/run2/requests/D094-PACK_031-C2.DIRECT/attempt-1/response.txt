@@ -1,0 +1,45 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D094-PACK_031-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "chzd",
+      "to": "chzd",
+      "function": "Running header line identifying the RFC title and publication date at the top of the page."
+    },
+    {
+      "from": "gdcg",
+      "to": "rmjc",
+      "function": "Section heading numbering and title introducing the subsection content."
+    },
+    {
+      "from": "kbtp",
+      "to": "jrqt",
+      "function": "Substantive body prose and bulleted list detailing potential denial-of-service attack vectors and implementation considerations."
+    },
+    {
+      "from": "vzvr",
+      "to": "vzvr",
+      "function": "Running footer line containing author names, track type, and page number."
+    }
+  ],
+  "headings": [
+    {
+      "id": "gdcg",
+      "region": 1,
+      "evidenceRefs": [
+        "gdcg"
+      ],
+      "justification": "Bold 12pt font at page top, row-peer to rmjc, introduces section 10.5 numbering before the following body text."
+    },
+    {
+      "id": "rmjc",
+      "region": 1,
+      "evidenceRefs": [
+        "rmjc"
+      ],
+      "justification": "Bold 12pt font at page top, row-peer to gdcg, supplies the descriptive title for section 10.5 opening the subsequent discussion."
+    }
+  ]
+}

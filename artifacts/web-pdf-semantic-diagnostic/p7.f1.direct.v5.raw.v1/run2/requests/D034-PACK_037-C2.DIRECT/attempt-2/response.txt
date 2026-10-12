@@ -1,0 +1,21 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D034-PACK_037-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {"from": "dhqs", "to": "dhqs", "function": "Section running header and page title"},
+    {"from": "mfqc", "to": "pgkw", "function": "Form fields and labels for pending litigation disclosure"},
+    {"from": "rzjx", "to": "rzjx", "function": "Section running header and page title"},
+    {"from": "zmzd", "to": "zmzd", "function": "Form title heading"},
+    {"from": "hbjq", "to": "hbjq", "function": "Subheading introducing the commitments table"},
+    {"from": "tvjz", "to": "wjqf", "function": "Instructional prose for the form"},
+    {"from": "fcsq", "to": "ngkn", "function": "Table column headers and data labels"},
+    {"from": "rwdv", "to": "kmcq", "function": "Numbered list items or footnotes"}
+  ],
+  "headings": [
+    {"id": "dhqs", "region": 0, "evidenceRefs": ["dhqs"], "justification": "Acts as a section running header and page title identifying the document section at this location."},
+    {"id": "rzjx", "region": 2, "evidenceRefs": ["rzjx"], "justification": "Repeats the section running header and page title format at the start of the next page."},
+    {"id": "zmzd", "region": 3, "evidenceRefs": ["zmzd"], "justification": "Bold, centered form title 'Form CCC' operating as a heading introducing the form content below."},
+    {"id": "hbjq", "region": 4, "evidenceRefs": ["hbjq"], "justification": "Large bold subheading 'Current Contract Commitments / Works in Progress' opening the table and instructions that follow."}
+  ]
+}

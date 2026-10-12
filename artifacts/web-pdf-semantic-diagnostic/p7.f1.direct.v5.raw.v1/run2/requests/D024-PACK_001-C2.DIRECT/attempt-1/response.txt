@@ -1,0 +1,40 @@
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D024-PACK_001-C2",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "jnbn",
+      "to": "fjmg",
+      "function": "Continuation of Article 1 provisions and amendment notes"
+    },
+    {
+      "from": "tccp",
+      "to": "vkdd",
+      "function": "Article 2 heading and enumeration of penalty targets"
+    },
+    {
+      "from": "gmrs",
+      "to": "kfmz",
+      "function": "Article 3 heading and enumeration of penalty forms and measures"
+    }
+  ],
+  "headings": [
+    {
+      "id": "tccp",
+      "region": 1,
+      "evidenceRefs": [
+        "tccp"
+      ],
+      "justification": "Font size 10.8 and bold ratio 1 distinguish it as the Article 2 heading, opening the list of penalty targets below."
+    },
+    {
+      "id": "gmrs",
+      "region": 2,
+      "evidenceRefs": [
+        "gmrs"
+      ],
+      "justification": "Font size 10.8 and bold ratio 1 distinguish it as the Article 3 heading, opening the list of penalty forms and measures below."
+    }
+  ]
+}

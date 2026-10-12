@@ -1,0 +1,81 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D094-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "bpjz",
+      "to": "zqdr",
+      "function": "RFC metadata header block containing stream, organization, RFC number, obsoleted references, category, publication date, ISSN, authors, and affiliations."
+    },
+    {
+      "from": "gtrk",
+      "to": "hfpt",
+      "function": "Document title block consisting of the RFC number and protocol name."
+    },
+    {
+      "from": "prnw",
+      "to": "tnfn",
+      "function": "Abstract section with the abstract heading followed by summary prose and obsolescence statement."
+    },
+    {
+      "from": "tvsp",
+      "to": "gskz",
+      "function": "Status of This Memo section with heading and legal/IETF status prose."
+    },
+    {
+      "from": "wmjp",
+      "to": "cdvp",
+      "function": "Copyright Notice section with heading and legal copyright text."
+    },
+    {
+      "from": "jfkh",
+      "to": "jfkh",
+      "function": "Page footer line containing author names, track type, and page number."
+    }
+  ],
+  "headings": [
+    {
+      "id": "gtrk",
+      "region": 1,
+      "evidenceRefs": [
+        "gtrk"
+      ],
+      "justification": "Large bold font (17.2pt) at top of page, forms first line of document title."
+    },
+    {
+      "id": "hfpt",
+      "region": 1,
+      "evidenceRefs": [
+        "hfpt"
+      ],
+      "justification": "Large bold font (17.2pt) directly below RFC number, forms second line of document title."
+    },
+    {
+      "id": "prnw",
+      "region": 2,
+      "evidenceRefs": [
+        "prnw"
+      ],
+      "justification": "Bold 14.4pt heading introducing the abstract paragraph that follows immediately below."
+    },
+    {
+      "id": "tvsp",
+      "region": 3,
+      "evidenceRefs": [
+        "tvsp"
+      ],
+      "justification": "Bold 14.4pt heading opening the Status of This Memo section with subsequent legal text."
+    },
+    {
+      "id": "wmjp",
+      "region": 4,
+      "evidenceRefs": [
+        "wmjp"
+      ],
+      "justification": "Bold 14.4pt heading introducing the copyright notice paragraph below it."
+    }
+  ]
+}
+```

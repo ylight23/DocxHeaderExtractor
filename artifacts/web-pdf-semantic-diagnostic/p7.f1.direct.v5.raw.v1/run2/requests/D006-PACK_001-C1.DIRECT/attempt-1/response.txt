@@ -1,0 +1,78 @@
+```json
+{
+  "protocolVersion": "P7_F1_REGION_HEADING_V5",
+  "requestId": "D006-PACK_001-C1",
+  "assessment": "COMPLETE",
+  "regions": [
+    {
+      "from": "gxpx",
+      "to": "srkc",
+      "function": "Document front matter: publication header, issuing authority, motto, law number, type, title, and preamble recitals."
+    },
+    {
+      "from": "wfsk",
+      "to": "vmbk",
+      "function": "Chapter I heading introducing the general provisions section."
+    },
+    {
+      "from": "zgpm",
+      "to": "mrgx",
+      "function": "Article 1 heading and its regulatory scope body text."
+    },
+    {
+      "from": "vjjj",
+      "to": "htbg",
+      "function": "Article 2 heading and its application target body text."
+    },
+    {
+      "from": "ztwd",
+      "to": "bzzt",
+      "function": "Article 3 heading and introductory definition text."
+    }
+  ],
+  "headings": [
+    {
+      "id": "zgnk",
+      "region": 0,
+      "evidenceRefs": ["zgnk"],
+      "justification": "Centered bold title line identifying document type, part of the main title block."
+    },
+    {
+      "id": "trfs",
+      "region": 0,
+      "evidenceRefs": ["trfs"],
+      "justification": "Centered bold title line naming the law, completes the main title."
+    },
+    {
+      "id": "wfsk",
+      "region": 1,
+      "evidenceRefs": ["wfsk"],
+      "justification": "Bold chapter marker opening the following chapter section."
+    },
+    {
+      "id": "vmbk",
+      "region": 1,
+      "evidenceRefs": ["vmbk"],
+      "justification": "Bold chapter title naming the general provisions content below."
+    },
+    {
+      "id": "zgpm",
+      "region": 2,
+      "evidenceRefs": ["zgpm"],
+      "justification": "Bold article heading introducing the scope of regulation text."
+    },
+    {
+      "id": "vjjj",
+      "region": 3,
+      "evidenceRefs": ["vjjj"],
+      "justification": "Bold article heading introducing the application targets list."
+    },
+    {
+      "id": "ztwd",
+      "region": 4,
+      "evidenceRefs": ["ztwd"],
+      "justification": "Bold article heading introducing the terminology definitions."
+    }
+  ]
+}
+```

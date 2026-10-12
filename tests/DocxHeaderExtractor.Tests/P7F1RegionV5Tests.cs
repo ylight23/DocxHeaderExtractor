@@ -103,6 +103,17 @@ public sealed class P7F1RegionV5Tests
         Assert.Equal("REGION_KEYS_INVALID", V(Doc("{\"from\":\"kqzt\",\"to\":\"hpdv\"}", "")).FailureCode);
     }
 
+    [Fact] public void RegionsOf_accepts_a_region_without_evidence_as_the_validator_does()
+    {
+        var json = Doc(Span("kqzt", "hpdv", "body").Replace(",\"evidence\":[]", ""),
+            "{\"id\":\"kqzt\",\"region\":0,\"evidenceRefs\":[\"kqzt\"],\"justification\":\"x\"}");
+        Assert.True(V(json).StrictAccepted);
+        var aliasById = IdByAlias.ToDictionary(p => p.Value, p => p.Key, StringComparer.Ordinal);
+        var (regions, of) = P7F1RegionProtocolV5.RegionsOf(json, aliasById);
+        Assert.Empty(regions[0].Evidence);
+        Assert.Equal(0, of["kqzt"]);
+    }
+
     [Fact] public void RegionsOf_gives_each_heading_its_region_index_and_the_region_words()
     {
         var json = Doc(Span("kqzt", "kqzt", "title") + "," + Span("mbxr", "hpdv", "form"),
