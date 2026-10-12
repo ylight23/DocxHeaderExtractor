@@ -492,7 +492,8 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
     public void OverThePerTurnCap_EveryCallIsAnsweredUnderQwensOwnId_AndTheNinthIsRejected()
     {
         P7F1V6Protocol.PreparedRequest? second = null;
-        var nine = Enumerable.Range(1, 9).Select(k => ((string?)("qwen_" + k), P7F1V6AgentTools.DocumentOverview, (object)new { })).ToArray();
+        // Small results, so only the per-turn cap is at work, not the byte cap.
+        var nine = Enumerable.Range(1, 9).Select(k => ((string?)("qwen_" + k), P7F1V6AgentTools.SourceSpan, (object)new { aliases = new[] { L(47 + k) } })).ToArray();
         var outcome = Run(A.Arm.Auto, (unit, turn, req) =>
         {
             if (turn == 2) second = req;
@@ -530,6 +531,9 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.Equal(failure, outcome.Unit.Failure);
         Assert.Empty(outcome.ToolCalls);              // nothing was dispatched
         Assert.Equal(0, outcome.Evidence.ToolSucceeded);
+        // Qwen did emit two calls; a refused turn still counts them (D4.11b).
+        Assert.Equal(2, outcome.Evidence.ModelToolCallsEmitted);
+        Assert.Equal(0, outcome.Evidence.ToolsDispatched);
         Assert.Equal(1, posts);
     }
 
@@ -573,7 +577,9 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
             ? Call(("o1", P7F1V6AgentTools.DocumentOverview, new { }), ("o2", P7F1V6AgentTools.SourceContext, new { alias = "nope", before = 1, after = 1 }))
             : Answer(Final(Targets(req))));
         Assert.Equal("COMPLETE", overview.Unit.Status);
-        Assert.Equal(2, overview.Evidence.ToolInvoked);
+        Assert.Equal(2, overview.Evidence.ModelToolCallsEmitted);
+        Assert.Equal(2, overview.Evidence.ToolsDispatched);
+        Assert.Equal(0, overview.Evidence.ToolsRejectedBeforeDispatch);
         Assert.Equal(1, overview.Evidence.ToolSucceeded);
         Assert.Equal(0, overview.Evidence.SuccessfulResultsShowingATarget);
         Assert.Empty(overview.Evidence.TargetsShownByTools);
@@ -604,9 +610,78 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
                 : Answer(Final(Targets(req)));
         });
         Assert.Equal("COMPLETE", outcome.Unit.Status);
-        Assert.Contains(outcome.ToolCalls, c => c.ErrorCode == "UNIT_TOOL_RESULT_BYTES_EXHAUSTED");
-        Assert.True(outcome.ToolCalls.Where(c => c.Status == "OK").Sum(c => c.ContentBytes) <= A.MaxToolResultBytesPerUnit);
+        Assert.Contains(outcome.ToolCalls, c => c.ErrorCode == "UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED");
+        // The cap counts every tool message, rejected ones included (D4.11b: the D4.11a dry-run reached 68,938 B).
+        Assert.True(outcome.ToolCalls.Sum(c => c.ContentBytes) <= A.MaxToolMessageBytesPerUnit, outcome.ToolCalls.Sum(c => c.ContentBytes).ToString());
+        Assert.Equal(outcome.ToolCalls.Sum(c => c.ContentBytes), outcome.Evidence.ToolMessageBytes);
         Assert.True(last!.Bytes <= P7F1V6DirectAgentCanary.MaxRequestBytes, last.Bytes.ToString());
+    }
+
+    /// <summary>The bytes of the tool messages actually sent back in the last request, read from that request.</summary>
+    static int ToolMessageBytesIn(P7F1V6Protocol.PreparedRequest req) =>
+        Body(req).GetProperty("messages").EnumerateArray().Where(m => m.GetProperty("role").GetString() == "tool")
+            .Sum(m => Encoding.UTF8.GetByteCount(m.GetProperty("content").GetString()!));
+
+    public static TheoryData<int, int> Floods => new() { { 8, 3 }, { 9, 3 }, { 20, 3 }, { 60, 1 }, { 60, 3 } };
+
+    [Theory]
+    [MemberData(nameof(Floods))]
+    public void Adversarial_ManyCallsPerTurn_NeverPushTheToolMessagesOverTheCap(int callsPerTurn, int toolTurns)
+    {
+        var pages = U.Value.Lines.Select(l => l.Page).Distinct().ToArray();
+        P7F1V6Protocol.PreparedRequest? last = null;
+        var outcome = Run(A.Arm.Auto, (unit, turn, req) =>
+        {
+            last = req;
+            return turn <= toolTurns
+                ? Call(Enumerable.Range(0, callsPerTurn).Select(k => ((string?)$"f{turn}_{k}", P7F1V6AgentTools.PageLayout,
+                    (object)new { page = pages[(turn * 31 + k) % pages.Length], offset = 0, limit = 40 })).ToArray())
+                : Answer(Final(Targets(req)));
+        });
+        var sent = ToolMessageBytesIn(last!);
+        Assert.True(sent <= A.MaxToolMessageBytesPerUnit, sent.ToString());
+        Assert.True(outcome.Evidence.ToolMessageBytes <= A.MaxToolMessageBytesPerUnit);
+        Assert.Equal(outcome.Evidence.ModelToolCallsEmitted, outcome.Evidence.ToolsDispatched + outcome.Evidence.ToolsRejectedBeforeDispatch
+            + (outcome.Unit.Failure == "BUDGET:UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED" ? callsPerTurn : 0));
+        Assert.True(last!.Bytes <= P7F1V6DirectAgentCanary.MaxRequestBytes);
+        // Within the per-turn cap, every turn is answered and the unit completes; only a flood above it may be refused.
+        if (callsPerTurn <= A.MaxCallsPerTurn) Assert.Equal("COMPLETE", outcome.Unit.Status);
+        else Assert.True(outcome.Unit.Status is "COMPLETE" or "INCOMPLETE", outcome.Unit.Failure);
+    }
+
+    [Fact]
+    public void ATurnWhoseRejectionsAloneDoNotFit_IsRefusedBeforeAnyDispatch()
+    {
+        // 200 calls: their rejections alone exceed 64 KB. Nothing runs, nothing is sent back, the unit stops INCOMPLETE.
+        var posts = 0;
+        var outcome = Run(A.Arm.Auto, (unit, turn, req) =>
+        {
+            posts++;
+            return Call(Enumerable.Range(0, 200).Select(k => ((string?)$"x{k}", P7F1V6AgentTools.DocumentOverview, (object)new { })).ToArray());
+        });
+        Assert.Equal("INCOMPLETE", outcome.Unit.Status);
+        Assert.Equal("BUDGET:UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED", outcome.Unit.Failure);
+        Assert.Empty(outcome.ToolCalls);
+        Assert.Equal(1, posts);
+        Assert.Equal(200, outcome.Evidence.ModelToolCallsEmitted);
+        Assert.Equal(0, outcome.Evidence.ToolsDispatched);
+        Assert.Equal(0, outcome.Evidence.ToolMessageBytes);
+    }
+
+    [Fact]
+    public void AnUnregisteredToolName_IsNeverEchoed_SoItCannotInflateAMessage()
+    {
+        var huge = new string('n', 50_000);
+        var tools = NewTools();
+        var r = tools.Execute("E1.01", huge, "{}");
+        Assert.Equal("UNKNOWN_TOOL", r.Status);
+        Assert.True(r.Content.Length < 1024, r.Content.Length.ToString());
+        Assert.Equal("UNREGISTERED", tools.Ledger.Single().Tool);
+        Assert.Equal(tools.RejectionBytes("E1.01", P7F1V6AgentTools.Names[0]) - P7F1V6AgentTools.Names[0].Length + "null".Length - 2,
+            tools.RejectionBytes("E1.01", huge));
+        var rejected = tools.Reject("E1.02", huge, "{}", "PER_TURN_CALL_CAP_EXCEEDED");
+        Assert.DoesNotContain(huge, Encoding.UTF8.GetString(rejected.Content));
+        Assert.Throws<ArgumentException>(() => tools.Reject("E1.03", "x", "{}", "MADE_UP"));
     }
 
     [Fact]
@@ -694,6 +769,54 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.Equal(new[] { "OK" }, P7F1V6Usage.Check(text, 4100, P7F1V6Protocol.MaxTokens, toolCallsAllowed: true).Codes);
     }
 
+    // ================= read-only prompt-cache telemetry (D4.11b) =================
+
+    static P7F1V6Usage.CacheTelemetry Cache(string json)
+    {
+        using var d = JsonDocument.Parse(json);
+        return P7F1V6Usage.ReadCache(d.RootElement);
+    }
+
+    [Theory]
+    [InlineData("4fea52e68926352bac1b77fc272b2ed54dbc6d1642c1c376ff2168c9272e0444")]
+    [InlineData("26922f43d610ebdc80206d5e0ec4e52d1ac524598aa9df8594ca66ab1689ce43")]
+    [InlineData("c00b214b80d97da8a7f4c9ddc881cda57ecd7925421c9950c613f166f2bfb7cb")]
+    public void RecordedAlibabaResponses_ReportZeroCachedAndZeroWrittenTokens_AndNoDiscount(string rawKey)
+    {
+        var path = Path.Combine(TestRepository.Root(), "artifacts", "v5-p7-f1-v6-d4-contractfix", "d410-canary", "arm-B", "raw", rawKey + ".json");
+        var c = Cache(File.ReadAllText(path));
+        Assert.Equal(new P7F1V6Usage.CacheField("ZERO", 0, "usage.prompt_tokens_details.cached_tokens"), c.CachedTokens);
+        Assert.Equal(new P7F1V6Usage.CacheField("ZERO", 0, "usage.prompt_tokens_details.cache_write_tokens"), c.CacheWriteTokens);
+        Assert.Equal("ABSENT", c.CacheDiscount.Status);
+    }
+
+    [Fact]
+    public void CacheTelemetry_TellsAbsentZeroPositiveAndNotNumberApart()
+    {
+        var absent = Cache("{\"usage\":{\"prompt_tokens\":10}}");
+        Assert.All(new[] { absent.CachedTokens, absent.CacheWriteTokens, absent.CacheDiscount }, f => Assert.Equal(new P7F1V6Usage.CacheField("ABSENT", null, null), f));
+        var positive = Cache("{\"usage\":{\"prompt_tokens_details\":{\"cached_tokens\":8000,\"cache_write_tokens\":0},\"cache_discount\":0.0021}}");
+        Assert.Equal(new P7F1V6Usage.CacheField("POSITIVE", 8000, "usage.prompt_tokens_details.cached_tokens"), positive.CachedTokens);
+        Assert.Equal("ZERO", positive.CacheWriteTokens.Status);
+        Assert.Equal(new P7F1V6Usage.CacheField("POSITIVE", 0.0021, "usage.cache_discount"), positive.CacheDiscount);
+        var odd = Cache("{\"usage\":{\"prompt_tokens_details\":{\"cached_tokens\":\"8000\",\"cache_write_tokens\":null}},\"cache_discount\":-0.5}");
+        Assert.Equal("NOT_NUMBER", odd.CachedTokens.Status);
+        Assert.Equal("ABSENT", odd.CacheWriteTokens.Status);           // null is treated as not reported
+        Assert.Equal(new P7F1V6Usage.CacheField("NEGATIVE", -0.5, "cache_discount"), odd.CacheDiscount);
+    }
+
+    [Fact]
+    public void CacheTelemetry_ChangesNoAuditVerdict_AndNoRequestCarriesACacheDirective()
+    {
+        var text = ChatStop("{\"x\":\"" + new string('a', 4000) + "\"}", "{}");
+        var withCache = text.Replace("\"completion_tokens_details\"", "\"prompt_tokens_details\":{\"cached_tokens\":900},\"completion_tokens_details\"");
+        Assert.Equal(P7F1V6Usage.Check(text, 4100, P7F1V6Protocol.MaxTokens).Codes, P7F1V6Usage.Check(withCache, 4100, P7F1V6Protocol.MaxTokens).Codes);
+        Assert.Equal("POSITIVE", P7F1V6Usage.Check(withCache, 4100, P7F1V6Protocol.MaxTokens).Cache!.CachedTokens.Status);
+        var body = P7F1V6DirectAgentCanary.FirstRequest(A.Arm.Auto, U.Value, "SEG-001").Body;
+        Assert.DoesNotContain("cache_control", body);
+        Assert.DoesNotContain("session_id", body);
+    }
+
     sealed class Handler(Func<string, string> respond) : HttpMessageHandler
     {
         public List<string> Bodies { get; } = new();
@@ -733,8 +856,11 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         var p = doc.RootElement;
         Assert.Equal(P7F1V6DirectAgentCanary.PlanArtifact, p.GetProperty("artifact").GetString());
         Assert.False(p.GetProperty("approvalToSend").GetBoolean());
-        Assert.Equal(P7F1V6DirectAgentCanary.SupersededPlanSha256, p.GetProperty("supersedes").GetProperty("planSha256").GetString());
-        Assert.False(p.GetProperty("supersedes").GetProperty("run").GetBoolean());
+        Assert.Equal(new[] { "e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf", "51daf9412732f9685b0d3ea36a7637a0e4d2b561ee7044d857c662c7fc2e6cfa" },
+            p.GetProperty("supersedes").EnumerateArray().Select(x => x.GetProperty("planSha256").GetString()));
+        Assert.All(p.GetProperty("supersedes").EnumerateArray(), x => Assert.False(x.GetProperty("run").GetBoolean()));
+        Assert.Contains("rejected and invalid ones included", p.GetProperty("toolMessageBytes").GetString());
+        Assert.Equal(A.MaxToolMessageBytesPerUnit, p.GetProperty("limits").GetProperty("MaxToolMessageBytesPerUnit").GetInt32());
         Assert.Contains("never makes up an id", p.GetProperty("toolCallIds").GetString());
         Assert.Equal(new[] { "SEG-001", "SEG-008" }, p.GetProperty("segments").EnumerateArray().Select(x => x.GetString()));
         Assert.Equal(16, p.GetProperty("budget").GetProperty("maxCalls").GetInt32());
@@ -802,6 +928,7 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
             Assert.All(a.Units, x => Assert.Equal(1, x.SuccessfulToolCalls));
             Assert.Equal(new[] { "TOOL_CALLS_TO_DISPATCHER", "PASSED_AUDIT_TO_PARSER", "TOOL_CALLS_TO_DISPATCHER", "PASSED_AUDIT_TO_PARSER" }, a.Ledger.Select(l => l.Verdict));
             Assert.Equal(new[] { "tool_calls", "stop", "tool_calls", "stop" }, a.Ledger.Select(l => l.FinishReason));
+            Assert.All(a.Ledger, l => Assert.Equal("ABSENT", l.Cache!.CachedTokens.Status));   // the fake responses report no cache fields
         });
         Assert.NotEqual(arms[0].SafeRunDirectory, arms[1].SafeRunDirectory);
         Assert.DoesNotContain(http.Bodies, b => b.Contains(Key, StringComparison.Ordinal));

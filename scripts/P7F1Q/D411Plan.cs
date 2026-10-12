@@ -89,7 +89,7 @@ internal static class D411Plan
 
         var report = new
         {
-            artifact = "p7.f1.v6.d4.11a-tool-canary-dryrun.v1",
+            artifact = "p7.f1.v6.d4.11b-tool-canary-dryrun.v1",
             providerCalls = 0,
             planFile = Path.GetFileName(planPath), planSha256 = planSha, planVerifiesNow = verify.Count == 0, codeCommit = head,
             firstRequests = P7F1V6DirectAgentCanary.Arms.SelectMany(a => P7F1V6DirectAgentCanary.Segments.Select(s =>
@@ -102,17 +102,17 @@ internal static class D411Plan
             notes = new[]
             {
                 "Scripted models only; no provider call. They show the loop, the caps and the reserve, not what Qwen will do.",
-                "A unit stops calling tools when 64 KB of results is reached (UNIT_TOOL_RESULT_BYTES_EXHAUSTED), so its last turn stays under 131,072 bytes.",
+                "Every tool message of a unit, rejected ones included, counts against a 65,536-byte hard cap: room for a rejection of each call is reserved before a turn runs; a call runs only if a full 16 KB result plus that reserve and the rejections of up to 8 calls in each later tool turn fit (else UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED); a turn whose rejections alone would not fit is refused before dispatch.",
                 "Each arm has its own 8-post, $0.25 budget and early stop.",
             },
         };
-        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.11a-tool-canary-dryrun.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
+        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.11b-tool-canary-dryrun.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
         Console.WriteLine($"plan {planSha} verifies={verify.Count == 0} commit={head}");
         foreach (var f in report.firstRequests) Console.WriteLine(JsonSerializer.Serialize(f));
         foreach (var s in sims)
             foreach (var a in s.arms)
                 Console.WriteLine($"{s.simulation} | {a.arm}: posts {a.calls}, reserve {a.reservedUsd}, halt {a.halt ?? "none"}; " +
-                    string.Join("; ", a.units.Select(x => $"{x.UnitId} {x.Status} {x.Failure} posts={x.posts} maxBytes={x.maxRequestBytes} tools={x.okToolCalls}/{x.toolCalls}")));
+                    string.Join("; ", a.units.Select(x => $"{x.UnitId} {x.Status} {x.Failure} posts={x.posts} maxBytes={x.maxRequestBytes} tools={x.okToolCalls}/{x.toolCalls} msgBytes={x.evidence.ToolMessageBytes}")));
     }
 
     /// <summary>The live canary. Not run in D4.11: it needs an APPROVED authorization for the plan. The key is never printed. Request bodies

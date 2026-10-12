@@ -29,7 +29,7 @@ internal sealed class P7F1V6DirectAuditedModel
     public sealed record LedgerEntry(int Seq, string UnitId, string Stage, int Round, string RequestSha256, int RequestBytes, double ReserveUsd,
         string Transport, int? HttpStatus, string? ResponseSha256, string? RawStoreKey, string FinishReason, string PromptTokens,
         string CompletionTokens, string ReasoningTokens, double? ProviderCostUsd, double? ComputedCostUsd, string Endpoint, string Model,
-        IReadOnlyList<string> AuditCodes, string Verdict);
+        IReadOnlyList<string> AuditCodes, string Verdict, P7F1V6Usage.CacheTelemetry? Cache = null);
 
     public List<LedgerEntry> Ledger { get; } = new();
 
@@ -62,7 +62,7 @@ internal sealed class P7F1V6DirectAuditedModel
         LedgerEntry Entry(string transportOutcome, int? status, string? responseSha, string? rawKey, P7F1V6Usage.Audit? audit, string endpoint,
             string model, string verdict) => new(seq, unitId, stage, round, request.Sha256, request.Bytes, reserve, transportOutcome, status,
             responseSha, rawKey, audit?.FinishReason ?? "UNKNOWN", N(audit?.PromptTokens), N(audit?.CompletionTokens), N(audit?.ReasoningTokens),
-            audit?.ProviderCostUsd, audit?.ComputedCostUsd, endpoint, model, audit?.Codes ?? Array.Empty<string>(), verdict);
+            audit?.ProviderCostUsd, audit?.ComputedCostUsd, endpoint, model, audit?.Codes ?? Array.Empty<string>(), verdict, audit?.Cache);
 
         var r = transport.Send(request, apiKey);
         if (r.Outcome != "HTTP_OK")

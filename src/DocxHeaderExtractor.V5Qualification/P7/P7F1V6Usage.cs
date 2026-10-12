@@ -24,7 +24,42 @@ internal static class P7F1V6Usage
     /// <summary>ComputedCostUsd is this audit's estimate from the route price table. ProviderCostUsd is usage.cost as the provider reported
     /// it, when it did. The two are kept apart and never overwrite each other.</summary>
     public sealed record Audit(IReadOnlyList<string> Codes, int? PromptTokens, int? CompletionTokens, int? ReasoningTokens,
-        string? FinishReason, int? VisibleTokens, double? ComputedCostUsd, double? ProviderCostUsd);
+        string? FinishReason, int? VisibleTokens, double? ComputedCostUsd, double? ProviderCostUsd, CacheTelemetry? Cache = null);
+
+    /// <summary>Read-only prompt-cache telemetry (D4.11b). Each field is read where the response puts it and reported as ABSENT (no such field),
+    /// ZERO, POSITIVE or NOT_NUMBER, with the path it was found at. Nothing here enables caching, changes a request or a cost check; a
+    /// POSITIVE value is a provider report, not proof of a saving.</summary>
+    public sealed record CacheField(string Status, double? Value, string? Path);
+    public sealed record CacheTelemetry(CacheField CachedTokens, CacheField CacheWriteTokens, CacheField CacheDiscount);
+
+    public static readonly IReadOnlyDictionary<string, string[]> CachePaths = new Dictionary<string, string[]>
+    {
+        ["cachedTokens"] = ["usage.prompt_tokens_details.cached_tokens", "usage.cached_tokens"],
+        ["cacheWriteTokens"] = ["usage.prompt_tokens_details.cache_write_tokens", "usage.cache_write_tokens"],
+        ["cacheDiscount"] = ["usage.cache_discount", "cache_discount"],
+    };
+
+    public static CacheTelemetry ReadCache(JsonElement root)
+    {
+        CacheField Read(string key)
+        {
+            foreach (var path in CachePaths[key])
+            {
+                var e = root;
+                var found = true;
+                foreach (var part in path.Split('.'))
+                {
+                    if (e.ValueKind != JsonValueKind.Object || !e.TryGetProperty(part, out e)) { found = false; break; }
+                }
+                if (!found || e.ValueKind == JsonValueKind.Null) continue;
+                if (e.ValueKind != JsonValueKind.Number) return new CacheField("NOT_NUMBER", null, path);
+                var v = e.GetDouble();
+                return new CacheField(v == 0 ? "ZERO" : v > 0 ? "POSITIVE" : "NEGATIVE", v, path);
+            }
+            return new CacheField("ABSENT", null, null);
+        }
+        return new CacheTelemetry(Read("cachedTokens"), Read("cacheWriteTokens"), Read("cacheDiscount"));
+    }
 
     /// <summary>The tier is chosen on the prompt tokens actually billed for the request, as the E1 metadata describes the override rule
     /// (its per-request application is still to be confirmed; the audit states it as an assumption).</summary>
@@ -59,7 +94,7 @@ internal static class P7F1V6Usage
             if (!root.TryGetProperty("usage", out var usage) || usage.ValueKind != JsonValueKind.Object)
             {
                 codes.Add("USAGE_MISSING");
-                return new Audit(codes, null, null, null, finish, null, null, null);
+                return new Audit(codes, null, null, null, finish, null, null, null, ReadCache(root));
             }
 
             int? prompt = IntOrNull(usage, "prompt_tokens");
@@ -91,7 +126,7 @@ internal static class P7F1V6Usage
             double? cost = prompt is not null && completion is not null ? Cost(prompt.Value, completion.Value) : null;
             double? providerCost = usage.TryGetProperty("cost", out var pc) && pc.ValueKind == JsonValueKind.Number ? pc.GetDouble() : null;
             if (codes.Count == 0) codes.Add("OK");
-            return new Audit(codes, prompt, completion, reasoning, finish, visible, cost, providerCost);
+            return new Audit(codes, prompt, completion, reasoning, finish, visible, cost, providerCost, ReadCache(root));
         }
     }
 

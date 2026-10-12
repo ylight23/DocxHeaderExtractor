@@ -63,6 +63,13 @@ internal sealed class P7F1V6AgentTools
     readonly List<CallRecord> ledger = new();
     readonly HashSet<string> observed = new(StringComparer.Ordinal);
 
+    /// <summary>Codes of a call refused before dispatch. Every one is answered under the call's own id.</summary>
+    public static readonly string[] RejectionCodes = ["PER_TURN_CALL_CAP_EXCEEDED", "UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED"];
+
+    /// <summary>The name a result and the ledger carry: a registered name, or null. A name Qwen made up is never echoed back, so a result's
+    /// size does not depend on it (D4.11b).</summary>
+    static string? Registered(string? name) => name is not null && Names.Contains(name, StringComparer.Ordinal) ? name : null;
+
     public P7F1V6AgentTools(P7F1QEvidenceTools source)
     {
         this.source = source;
@@ -172,25 +179,29 @@ internal sealed class P7F1V6AgentTools
             };
         }
         catch (ArgumentError e) { status = name is null || !Names.Contains(name, StringComparer.Ordinal) ? "UNKNOWN_TOOL" : "INVALID_ARGUMENT"; error = e.Code; result = null; returned.Clear(); truncated = false; }
-        var content = Body(evidenceId, name, status, error, arguments, result);
+        var content = Body(evidenceId, Registered(name), status, error, arguments, result);
         if (content.Length > MaxResultBytes) throw new InvalidOperationException("V6_TOOL_RESULT_CAP_EXCEEDED");   // the handlers fit before this point
         var aliases = returned.Distinct(StringComparer.Ordinal).ToArray();
         if (status == "OK") foreach (var a in aliases) observed.Add(a);
         var sha = Convert.ToHexStringLower(SHA256.HashData(content));
-        ledger.Add(new CallRecord(evidenceId, name ?? "", Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(raw))), status, error,
+        ledger.Add(new CallRecord(evidenceId, Registered(name) ?? "UNREGISTERED", Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(raw))), status, error,
             sha, content.Length, truncated, aliases));
-        return new Result(evidenceId, name ?? "", status, error, content, sha, truncated, aliases);
+        return new Result(evidenceId, Registered(name) ?? "UNREGISTERED", status, error, content, sha, truncated, aliases);
     }
 
     /// <summary>A call the loop refuses before dispatch (over the per-turn cap). It is answered and recorded like any other call.</summary>
     public Result Reject(string evidenceId, string? name, string? rawArguments, string code)
     {
-        var content = Body(evidenceId, name, "REJECTED", code, null, null);
+        if (!RejectionCodes.Contains(code, StringComparer.Ordinal)) throw new ArgumentException("REJECTION_CODE_UNKNOWN", nameof(code));
+        var content = Body(evidenceId, Registered(name), "REJECTED", code, null, null);
         var sha = Convert.ToHexStringLower(SHA256.HashData(content));
-        ledger.Add(new CallRecord(evidenceId, name ?? "", Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(rawArguments ?? ""))),
+        ledger.Add(new CallRecord(evidenceId, Registered(name) ?? "UNREGISTERED", Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(rawArguments ?? ""))),
             "REJECTED", code, sha, content.Length, false, Array.Empty<string>()));
-        return new Result(evidenceId, name ?? "", "REJECTED", code, content, sha, false, Array.Empty<string>());
+        return new Result(evidenceId, Registered(name) ?? "UNREGISTERED", "REJECTED", code, content, sha, false, Array.Empty<string>());
     }
+
+    /// <summary>The exact size of the largest rejection this call could receive. Used to reserve room before any call of a turn runs.</summary>
+    public int RejectionBytes(string evidenceId, string? name) => RejectionCodes.Max(c => Body(evidenceId, Registered(name), "REJECTED", c, null, null).Length);
 
     byte[] Body(string evidenceId, string? name, string status, string? error, JsonNode? arguments, JsonNode? result) =>
         Encoding.UTF8.GetBytes(new JsonObject

@@ -24,9 +24,14 @@ internal static class P7F1V6DirectAgentCanary
     public const double CeilingUsdPerArm = 0.25;      // >= 8 posts x the worst-case reserve of one 131,072-byte request
     public const int MaxRequestBytes = 131072;
     public const int Retries = 0;
-    /// <summary>D4.11a: the D4.11 plan (e3f8e57e, never run) is superseded after the tool_call_id and finish_reason checks changed the code.</summary>
-    public const string PlanArtifact = "p7.f1.v6.d4.11a-tool-canary-plan.v1";
-    public const string SupersededPlanSha256 = "e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf";
+    /// <summary>D4.11b. Earlier plans, never run, are superseded: D4.11 (e3f8e57e) by the tool_call_id and finish_reason checks of D4.11a,
+    /// and D4.11a (51daf941) by the hard tool-message byte cap and the split telemetry of D4.11b.</summary>
+    public const string PlanArtifact = "p7.f1.v6.d4.11b-tool-canary-plan.v1";
+    public static readonly (string Sha256, string Reason)[] SupersededPlans =
+    {
+        ("e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf", "D4.11a review: tool_call_id integrity and finish_reason/tool_calls consistency"),
+        ("51daf9412732f9685b0d3ea36a7637a0e4d2b561ee7044d857c662c7fc2e6cfa", "D4.11b review: 64 KB tool-message cap not enforced on rejected messages (68,938 B in the dry-run); ToolInvoked undercounted refused turns"),
+    };
     public const string EvaluationLabel = "Development canary — tool-calling chain on segments chosen from previous errors; Stage 1 only; not an F1 estimate";
 
     static readonly JsonSerializerOptions Indented = new() { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -65,7 +70,7 @@ internal static class P7F1V6DirectAgentCanary
         {
             ["artifact"] = PlanArtifact,
             ["approvalToSend"] = false,
-            ["supersedes"] = new { planSha256 = SupersededPlanSha256, run = false, reason = "D4.11a review: tool_call_id integrity and finish_reason/tool_calls consistency" },
+            ["supersedes"] = SupersededPlans.Select(x => new { planSha256 = x.Sha256, run = false, reason = x.Reason }).ToArray(),
             ["codeCommit"] = codeCommit,
             ["authorityId"] = P7F1V6DirectD45.AuthorityId,
             ["document"] = P7F1V6DirectD45.Document,
@@ -97,8 +102,10 @@ internal static class P7F1V6DirectAgentCanary
             },
             ["toolCallIds"] = "Qwen's own ids only: every id non-empty and unique in the conversation; a missing or repeated id refuses the whole tool turn before any tool runs (TOOL_CALL_ID_MISSING, TOOL_CALL_ID_DUPLICATE); calls over a cap are answered REJECTED under their own id; C# never makes up an id",
             ["finishReason"] = "tool calls only with finish_reason tool_calls (else TOOL_CALLS_WITH_FINISH_<x>); an answer only with stop (else ANSWER_WITH_FINISH_<x>); tool_calls without calls is refused",
+            ["toolMessageBytes"] = "hard cap 65,536 content bytes per unit over every role tool message, rejected and invalid ones included; a rejection is reserved for each call before a turn runs; a call runs only if a full 16,384-byte result plus the reserve for the calls after it and for the rejections of up to 8 calls in each later tool turn fits (else UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED); a turn whose rejections alone do not fit is refused before dispatch (BUDGET:UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED, unit INCOMPLETE); an unregistered tool name is never echoed back",
+            ["promptCache"] = "telemetry only: cached_tokens, cache_write_tokens and cache_discount are read from each response when present (ABSENT, ZERO or POSITIVE) and kept in the ledger; no cache_control, no session_id, no response caching; request bytes unchanged",
             ["toolChoice"] = new { turns1To3 = "auto", turn4 = "none", required = "not used: unsupported on the Alibaba route (F1Q 2026-10-09)" },
-            ["limits"] = new { P7F1V6DirectAgent.MaxToolTurns, P7F1V6DirectAgent.MaxCallsPerTurn, P7F1V6DirectAgent.MaxPostsPerUnit, P7F1V6DirectAgent.MaxToolResultBytesPerUnit },
+            ["limits"] = new { P7F1V6DirectAgent.MaxToolTurns, P7F1V6DirectAgent.MaxCallsPerTurn, P7F1V6DirectAgent.MaxPostsPerUnit, P7F1V6DirectAgent.MaxToolMessageBytesPerUnit },
             ["model"] = P7F1V6Protocol.ChatModel,
             ["route"] = new { only = new[] { P7F1V6Protocol.ProviderTag }, ignore = P7F1V6Protocol.DefaultIgnore, allowFallbacks = false, requireParameters = true },
             ["zdr"] = "false (owner decision, to be accepted again in the authorization)",
@@ -118,7 +125,7 @@ internal static class P7F1V6DirectAgentCanary
             ["measurements"] = new[]
             {
                 "tool calls per arm, segment and tool name; invalid and rejected calls with their codes",
-                "four levels kept apart per unit: tool_invoked, tool_succeeded, targets shown by a successful result (observation only), evidence_used (final refs to lines seen only through tools); relevant_evidence_observed is audited offline after the responses are frozen, not by C#",
+                "levels kept apart per unit: model_tool_calls_emitted (in Qwen's responses, refused turns included), tools_dispatched, tools_rejected_before_dispatch, tool_succeeded, tool_message_bytes, targets shown by a successful result (observation only), evidence_used (final refs to lines seen only through tools); relevant_evidence_observed is audited offline after the responses are frozen, not by C#",
                 "EVIDENCE_FIRST counts any successful call (an overview included) as meeting its requirement; the four levels show whether it was more than that",
                 "chain proof: a tool_call answered by a role tool message with the same tool_call_id, followed by a final answer",
                 "use proof: final evidenceRefs that cite a line seen only through a tool result (RefsToToolOnlyLines)",

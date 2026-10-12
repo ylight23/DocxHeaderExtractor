@@ -28,9 +28,14 @@ internal static class P7F1V6DirectAgent
     public const string RequestVersion = "P7_F1_V6_SELECT_AGENT_REQUEST_V1";
     public const string PromptVersion = "P7_F1_V6_SELECT_AGENT_PROMPT_V1";
     public const int MaxToolTurns = 3, MaxCallsPerTurn = 8;
-    /// <summary>Tool-result bytes one unit may receive. A call is run only while a full result (16 KB) still fits, so the final turn stays
-    /// within the request byte cap; later calls are answered UNIT_TOOL_RESULT_BYTES_EXHAUSTED, never trimmed.</summary>
-    public const int MaxToolResultBytesPerUnit = 65536;
+    /// <summary>Hard cap (D4.11b) on the content bytes of every role tool message of one unit, rejected and invalid ones included. Before a
+    /// tool turn runs, room is reserved for a rejection of each of its calls; if even that does not fit, the turn is refused before any call
+    /// is dispatched (BUDGET:UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED) and the unit stops INCOMPLETE. A call is run only if a full result (16 KB)
+    /// plus the reserve for the calls after it in this turn, plus the rejections of up to MaxCallsPerTurn calls in each later tool turn,
+    /// still fits; otherwise it is answered UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED. So a later turn within the per-turn cap can always be
+    /// answered; only a turn with more calls than that can be refused. The sum never exceeds the cap, and the final turn stays within the
+    /// request byte cap. Nothing is trimmed.</summary>
+    public const int MaxToolMessageBytesPerUnit = 65536;
     public const int MaxPostsPerUnit = MaxToolTurns + 1;
 
     public enum Arm { Auto, EvidenceFirst }
@@ -169,12 +174,15 @@ internal static class P7F1V6DirectAgent
         IReadOnlyList<int> ObservedPages, int WholeDocumentLines, bool WholeDocumentObserved, int RefsTotal, int RefsToToolOnlyLines,
         IReadOnlyList<string> DecisionsCitingToolOnlyLines);
 
-    /// <summary>Four levels kept apart (D4.11a). ToolInvoked: calls Qwen made. ToolSucceeded: calls that returned data. TargetsShownByTools:
-    /// targets of this unit that a successful result showed; an observation of scope, not a judgement that the result was relevant.
-    /// RelevantEvidenceObserved is left to an offline audit of the frozen responses; C# does not judge relevance. EvidenceUsed: decisions
-    /// whose final evidenceRefs cite a line Qwen saw only through a tool.</summary>
-    public sealed record EvidenceReport(int ToolInvoked, int ToolSucceeded, int SuccessfulResultsShowingATarget, IReadOnlyList<string> TargetsShownByTools,
-        string RelevantEvidenceObserved, IReadOnlyList<string> EvidenceUsed);
+    /// <summary>Levels kept apart (D4.11a, D4.11b). ModelToolCallsEmitted: tool calls in Qwen's responses, refused turns included.
+    /// ToolsDispatched: calls that reached a handler. ToolsRejectedBeforeDispatch: calls answered REJECTED by a cap. ToolSucceeded: calls that
+    /// returned data. ToolMessageBytes: content bytes of every tool message sent back (the hard-capped quantity). TargetsShownByTools: targets
+    /// that a successful result showed; an observation of scope, not a judgement that the result was relevant. RelevantEvidenceObserved is
+    /// left to an offline audit of the frozen responses; C# does not judge relevance. EvidenceUsed: decisions whose final evidenceRefs cite a
+    /// line Qwen saw only through a tool.</summary>
+    public sealed record EvidenceReport(int ModelToolCallsEmitted, int ToolsDispatched, int ToolsRejectedBeforeDispatch, int ToolSucceeded,
+        int ToolMessageBytes, int SuccessfulResultsShowingATarget, IReadOnlyList<string> TargetsShownByTools, string RelevantEvidenceObserved,
+        IReadOnlyList<string> EvidenceUsed);
 
     public const string RelevanceAuditedOffline = "OFFLINE_AUDIT_AFTER_FREEZE";
 
@@ -196,7 +204,7 @@ internal static class P7F1V6DirectAgent
         var requests = new List<P7F1V6Protocol.PreparedRequest>();
         var turns = new List<TurnRecord>();
         var issuedIds = new HashSet<string>(StringComparer.Ordinal);   // every tool_call_id Qwen used in this conversation
-        int calls = 0, okCalls = 0, resultBytes = 0;
+        int calls = 0, okCalls = 0, messageBytes = 0, emitted = 0;
         IReadOnlyDictionary<string, IReadOnlyList<string>>? finalRefs = null;
 
         AgentUnitOutcome Done(string status, string? failure, IReadOnlyDictionary<string, string>? decisions = null, P7F1V6DirectV2.Clarification? clarification = null,
@@ -214,7 +222,9 @@ internal static class P7F1V6DirectAgent
                 refs.Where(kv => kv.Value.Any(toolOnly.Contains)).Select(kv => kv.Key).OrderBy(tools.PositionOf).ToArray());
             var targetSet = ordered.ToHashSet(StringComparer.Ordinal);
             var okRecords = tools.Ledger.Where(c => c.Status == "OK").ToArray();
-            var evidence = new EvidenceReport(tools.Ledger.Count, okRecords.Length, okRecords.Count(c => c.ReturnedAliases.Any(targetSet.Contains)),
+            var rejected = tools.Ledger.Count(c => c.Status == "REJECTED");
+            var evidence = new EvidenceReport(emitted, tools.Ledger.Count - rejected, rejected, okRecords.Length, messageBytes,
+                okRecords.Count(c => c.ReturnedAliases.Any(targetSet.Contains)),
                 ordered.Where(a => okRecords.Any(c => c.ReturnedAliases.Contains(a, StringComparer.Ordinal))).ToArray(),
                 RelevanceAuditedOffline, scope.DecisionsCitingToolOnlyLines);
             return new AgentUnitOutcome(arm.ToString(), unit, turns, tools.Ledger.ToArray(), okCalls, scope, evidence);
@@ -242,6 +252,7 @@ internal static class P7F1V6DirectAgent
                 return Done("FAILED", "MODEL_CALL_FAILED");
             }
             turns.Add(new TurnRecord(turn, toolChoice, req.Sha256, req.Bytes, reply.ToolCalls.Count, reply.FinishReason, reply.Content is not null));
+            emitted += reply.ToolCalls.Count;
 
             // finish_reason and tool_calls must agree: tool calls only with finish_reason tool_calls, an answer only with stop. A stop reply
             // that carries tool calls is not read as a tool turn: that shape is not a confirmed provider format.
@@ -262,18 +273,28 @@ internal static class P7F1V6DirectAgent
                     if (!turnIds.Add(c.Id) || issuedIds.Contains(c.Id)) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_CALL_ID_DUPLICATE"); }
                 }
                 issuedIds.UnionWith(turnIds);
+                // Reserve: every call of this turn must at least fit its rejection. If not, refuse the turn before any call is dispatched.
+                var ids = Enumerable.Range(1, reply.ToolCalls.Count).Select(n => $"E{turn}.{n:00}").ToArray();
+                var reserve = reply.ToolCalls.Select((c, i) => tools.RejectionBytes(ids[i], c.Name)).ToArray();
+                if (messageBytes + reserve.Sum() > MaxToolMessageBytesPerUnit) return Done("INCOMPLETE", "BUDGET:UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED");
+                var future = Enumerable.Range(turn + 1, Math.Max(0, MaxToolTurns - turn))
+                    .Sum(t => Enumerable.Range(1, MaxCallsPerTurn).Sum(k => P7F1V6AgentTools.Names.Max(name => tools.RejectionBytes($"E{t}.{k:00}", name))));
                 var assistantCalls = new JsonArray();
                 var results = new List<JsonObject>();
                 for (int n = 1; n <= reply.ToolCalls.Count; n++)
                 {
                     var call = reply.ToolCalls[n - 1];
-                    var evidenceId = $"E{turn}.{n:00}";
+                    var evidenceId = ids[n - 1];
                     var callId = call.Id!;
+                    var later = reserve.Skip(n).Sum();
                     // A call over a cap is still answered, under its own id, with REJECTED.
                     var result = n > MaxCallsPerTurn ? tools.Reject(evidenceId, call.Name, call.Arguments, "PER_TURN_CALL_CAP_EXCEEDED")
-                        : resultBytes + P7F1V6AgentTools.MaxResultBytes > MaxToolResultBytesPerUnit ? tools.Reject(evidenceId, call.Name, call.Arguments, "UNIT_TOOL_RESULT_BYTES_EXHAUSTED")
+                        : messageBytes + P7F1V6AgentTools.MaxResultBytes + later + future > MaxToolMessageBytesPerUnit
+                            ? tools.Reject(evidenceId, call.Name, call.Arguments, "UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED")
                         : tools.Execute(evidenceId, call.Name, call.Arguments);
-                    resultBytes += result.Content.Length;
+                    messageBytes += result.Content.Length;
+                    // The reserve makes this unreachable; it stays as a fail-closed guard.
+                    if (messageBytes + later > MaxToolMessageBytesPerUnit) throw new InvalidOperationException("TOOL_MESSAGE_BYTES_INVARIANT_BROKEN");
                     if (result.Status == "OK") okCalls++;
                     assistantCalls.Add(new JsonObject
                     {
