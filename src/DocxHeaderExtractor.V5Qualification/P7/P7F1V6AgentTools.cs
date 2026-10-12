@@ -47,8 +47,9 @@ internal sealed class P7F1V6AgentTools
     public const string PageImageStatus = "NOT_REGISTERED: the V6 evidence store holds no page image and image input on the pinned route is not verified";
 
     /// <summary>One call as the ledger keeps it. RawArgumentsSha256 is over the argument string exactly as Qwen sent it.</summary>
+    /// <param name="CacheOf">The evidence id of the earlier call whose result this call repeated, or null (D4.11f).</param>
     public sealed record CallRecord(string EvidenceId, string Tool, string RawArgumentsSha256, string Status, string? ErrorCode,
-        string ContentSha256, int ContentBytes, bool Truncated, IReadOnlyList<string> ReturnedAliases);
+        string ContentSha256, int ContentBytes, bool Truncated, IReadOnlyList<string> ReturnedAliases, string? CacheOf = null);
 
     /// <summary>Content is the exact body that goes back to Qwen as the tool message.</summary>
     public sealed record Result(string EvidenceId, string Tool, string Status, string? ErrorCode, byte[] Content, string ContentSha256,
@@ -62,6 +63,21 @@ internal sealed class P7F1V6AgentTools
     readonly ILookup<string, int> repeatIndex;
     readonly List<CallRecord> ledger = new();
     readonly HashSet<string> observed = new(StringComparer.Ordinal);
+    // Result cache (D4.11f). The tools read a fixed source, so the same call gives the same result. Only successful calls are kept, keyed by
+    // the tool and its arguments in canonical form (keys sorted); a repeat returns the stored result, byte for byte but for the evidence id,
+    // and says so. The cache lives as long as this registry, i.e. one unit's conversation; nothing is shared between units or arms.
+    sealed record Cached(string EvidenceId, JsonNode? Arguments, JsonNode? Result, bool Truncated, string[] Returned);
+    readonly Dictionary<string, Cached> cache = new(StringComparer.Ordinal);
+    public int CacheHits => ledger.Count(c => c.CacheOf is not null);
+    public const int ResultMargin = 192;   // room, inside the result cap, for a longer evidence id and the cache note of a repeated call
+
+    static string Canonical(JsonElement e) => e.ValueKind switch
+    {
+        JsonValueKind.Object => "{" + string.Join(",", e.EnumerateObject().OrderBy(p => p.Name, StringComparer.Ordinal)
+            .Select(p => JsonSerializer.Serialize(p.Name) + ":" + Canonical(p.Value))) + "}",
+        JsonValueKind.Array => "[" + string.Join(",", e.EnumerateArray().Select(Canonical)) + "]",
+        _ => e.GetRawText(),
+    };
 
     /// <summary>Codes of a call refused before dispatch. Every one is answered under the call's own id.</summary>
     public static readonly string[] RejectionCodes = ["PER_TURN_CALL_CAP_EXCEEDED", "UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED"];
@@ -161,31 +177,39 @@ internal sealed class P7F1V6AgentTools
         var raw = rawArguments ?? "";
         var returned = new List<string>();
         JsonNode? arguments = null, result = null;
-        string status = "OK"; string? error = null; var truncated = false;
+        string status = "OK"; string? error = null; var truncated = false; string? cacheOf = null; string? key = null;
         try
         {
             if (name is null || !Names.Contains(name, StringComparer.Ordinal)) throw new ArgumentError("UNKNOWN_TOOL");
             using var doc = ParseArguments(raw);
             var args = doc.RootElement;
-            (arguments, result, truncated) = name switch
+            key = name + "\n" + Canonical(args);
+            if (cache.TryGetValue(key, out var hit))
             {
-                DocumentOverview => Overview(args),
-                SourceContext => Context(args, returned),
-                PageLayout => Page(args, returned),
-                SourceSpan => Span(args, returned),
-                SearchText => Search(args, returned),
-                Repeated => Repeat(args, returned),
-                _ => CompareTwo(args, returned),
-            };
+                (arguments, result, truncated, cacheOf) = (hit.Arguments, hit.Result, hit.Truncated, hit.EvidenceId);
+                returned.AddRange(hit.Returned);
+            }
+            else
+                (arguments, result, truncated) = name switch
+                {
+                    DocumentOverview => Overview(args),
+                    SourceContext => Context(args, returned),
+                    PageLayout => Page(args, returned),
+                    SourceSpan => Span(args, returned),
+                    SearchText => Search(args, returned),
+                    Repeated => Repeat(args, returned),
+                    _ => CompareTwo(args, returned),
+                };
         }
-        catch (ArgumentError e) { status = name is null || !Names.Contains(name, StringComparer.Ordinal) ? "UNKNOWN_TOOL" : "INVALID_ARGUMENT"; error = e.Code; result = null; returned.Clear(); truncated = false; }
-        var content = Body(evidenceId, Registered(name), status, error, arguments, result);
+        catch (ArgumentError e) { status = name is null || !Names.Contains(name, StringComparer.Ordinal) ? "UNKNOWN_TOOL" : "INVALID_ARGUMENT"; error = e.Code; result = null; returned.Clear(); truncated = false; cacheOf = null; key = null; }
+        var content = Body(evidenceId, Registered(name), status, error, arguments, result, cacheOf);
         if (content.Length > MaxResultBytes) throw new InvalidOperationException("V6_TOOL_RESULT_CAP_EXCEEDED");   // the handlers fit before this point
         var aliases = returned.Distinct(StringComparer.Ordinal).ToArray();
         if (status == "OK") foreach (var a in aliases) observed.Add(a);
+        if (status == "OK" && key is not null && cacheOf is null) cache[key] = new Cached(evidenceId, arguments, result, truncated, aliases);
         var sha = Convert.ToHexStringLower(SHA256.HashData(content));
         ledger.Add(new CallRecord(evidenceId, Registered(name) ?? "UNREGISTERED", Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(raw))), status, error,
-            sha, content.Length, truncated, aliases));
+            sha, content.Length, truncated, aliases, cacheOf));
         return new Result(evidenceId, Registered(name) ?? "UNREGISTERED", status, error, content, sha, truncated, aliases);
     }
 
@@ -203,8 +227,9 @@ internal sealed class P7F1V6AgentTools
     /// <summary>The exact size of the largest rejection this call could receive. Used to reserve room before any call of a turn runs.</summary>
     public int RejectionBytes(string evidenceId, string? name) => RejectionCodes.Max(c => Body(evidenceId, Registered(name), "REJECTED", c, null, null).Length);
 
-    byte[] Body(string evidenceId, string? name, string status, string? error, JsonNode? arguments, JsonNode? result) =>
-        Encoding.UTF8.GetBytes(new JsonObject
+    byte[] Body(string evidenceId, string? name, string status, string? error, JsonNode? arguments, JsonNode? result, string? cacheOf = null)
+    {
+        var body = new JsonObject
         {
             ["evidenceId"] = evidenceId, ["tool"] = name, ["version"] = Version, ["status"] = status, ["errorCode"] = error,
             ["arguments"] = arguments?.DeepClone(), ["result"] = result?.DeepClone(),
@@ -213,7 +238,11 @@ internal sealed class P7F1V6AgentTools
                 ["sourceSha256"] = source.SourceSha256, ["sourceAliasUniverseSha256"] = source.SourceAliasUniverseSha256,
                 ["evidenceStoreSha256"] = source.EvidenceStoreSha256, ["readOnly"] = true, ["semanticLabels"] = "NONE",
             },
-        }.ToJsonString(Wire));
+        };
+        // Only a repeated call carries this note, so every other result keeps its bytes. The result above is the stored one.
+        if (cacheOf is not null) body["cache"] = new JsonObject { ["hit"] = true, ["sameResultAs"] = cacheOf };
+        return Encoding.UTF8.GetBytes(body.ToJsonString(Wire));
+    }
 
     /// <summary>The largest prefix of the items whose exact body fits the cap. build(k) makes the result with the first k items.</summary>
     (JsonNode Result, int Taken) Fit(string tool, JsonNode? arguments, int available, Func<int, JsonObject> build)
@@ -221,7 +250,7 @@ internal sealed class P7F1V6AgentTools
         for (int k = available; k >= 0; k--)
         {
             var r = build(k);
-            if (Body("E0.00", tool, "OK", null, arguments, r).Length + 16 <= MaxResultBytes) return (r, k);   // 16: room for a longer evidence id
+            if (Body("E0.00", tool, "OK", null, arguments, r).Length + ResultMargin <= MaxResultBytes) return (r, k);   // the margin leaves room for a longer evidence id and the cache note
         }
         throw new InvalidOperationException("V6_TOOL_EMPTY_RESULT_OVER_CAP");
     }
@@ -410,7 +439,7 @@ internal sealed class P7F1V6AgentTools
             ["basis"] = P7F1QEvidenceTools.LayoutBasis,
         };
         // Two windows of at most 7 lines of 300 characters each fit the cap; checked anyway.
-        if (Body("E0.00", Compare, "OK", null, arguments, result).Length + 16 > MaxResultBytes) throw new InvalidOperationException("V6_TOOL_COMPARE_OVER_CAP");
+        if (Body("E0.00", Compare, "OK", null, arguments, result).Length + ResultMargin > MaxResultBytes) throw new InvalidOperationException("V6_TOOL_COMPARE_OVER_CAP");
         returned.AddRange(Around(index[first]).Concat(Around(index[second])).Select(i => lines[i].Alias));
         return (arguments, result, false);
     }

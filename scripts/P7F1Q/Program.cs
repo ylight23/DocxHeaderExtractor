@@ -626,6 +626,11 @@ switch (args[0])
         if (args.Length != 6) throw new ArgumentException("d411-run <repo-root> <plan> <confirmed-plan-sha> <authorization> <safe-root>");
         D411Plan.Live(args[1], args[2], args[3], args[4], args[5]);
         break;
+    case "d411-publish":
+        // Issue #9 D4.11: d411-publish <plan> <out-dir> <run-dir> [<run-dir>...]. Copies the safe-store runs of a consumed plan into the repo. No network call.
+        if (args.Length < 4) throw new ArgumentException("d411-publish <plan> <out-dir> <run-dir> [<run-dir>...]");
+        D411Plan.Publish(args[1], args[2], args.Skip(3).ToArray());
+        break;
     case "d49-dryrun":
         // Issue #9 D4.9 (offline): d49-dryrun <repo-root> <artifact-dir>. Variants A/B/C with scripted models. No network call.
         if (args.Length != 3) throw new ArgumentException("d49-dryrun <repo-root> <artifact-dir>");

@@ -254,7 +254,7 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         }
         Assert.Contains("your first reply must be a batch of tool calls", A.EvidenceFirstPrompt);
         Assert.DoesNotContain("must be a batch of tool calls", A.AutoPrompt);
-        Assert.Equal("P7_F1_V6_SELECT_AGENT_PROMPT_V2", A.PromptVersion);
+        Assert.Equal("P7_F1_V6_SELECT_AGENT_PROMPT_V3", A.PromptVersion);
     }
 
     [Fact]
@@ -1161,7 +1161,7 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.StartsWith("true", p.GetProperty("stream").GetString(), StringComparison.Ordinal);
         Assert.Equal(new[] { "e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf", "51daf9412732f9685b0d3ea36a7637a0e4d2b561ee7044d857c662c7fc2e6cfa",
             "9a6bcbd1aecd961a25e4a0c0c52359135750ab2f0ab4bc4642a9854634729697",
-            "281ad5d0b99ce308e389121cf0c92b53521351b8858c1d0b34354f585610fadd" },
+            "281ad5d0b99ce308e389121cf0c92b53521351b8858c1d0b34354f585610fadd", "842d7fb042982965d3afcb3ac8b277655f0eb2029c15049a1d2bddd355b11531" },
             p.GetProperty("supersedes").EnumerateArray().Select(x => x.GetProperty("planSha256").GetString()));
         Assert.All(p.GetProperty("supersedes").EnumerateArray(), x => Assert.False(x.GetProperty("run").GetBoolean()));
         Assert.Contains("rejected and invalid ones included", p.GetProperty("toolMessageBytes").GetString());

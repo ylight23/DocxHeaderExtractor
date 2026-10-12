@@ -26,7 +26,7 @@ internal static class P7F1V6DirectAgentCanary
     public const int Retries = 0;
     /// <summary>D4.11b. Earlier plans, never run, are superseded: D4.11 (e3f8e57e) by the tool_call_id and finish_reason checks of D4.11a,
     /// and D4.11a (51daf941) by the hard tool-message byte cap and the split telemetry of D4.11b.</summary>
-    public const string PlanArtifact = "p7.f1.v6.d4.11e-tool-canary-plan.v1";
+    public const string PlanArtifact = "p7.f1.v6.d4.11f-tool-canary-plan.v1";
     /// <summary>The D4.11b campaign that ran (plan consumed): non-streaming, no reasoning field; Qwen made 0 tool calls in 4/4 replies.</summary>
     public const string PreviousCampaignPlanSha256 = "c50833bb0fe5ca8a609ee6d883e6c84dc86887a49ec0f4daebca26d494c83f08";
     public static readonly (string Sha256, string Reason)[] SupersededPlans =
@@ -35,6 +35,7 @@ internal static class P7F1V6DirectAgentCanary
         ("51daf9412732f9685b0d3ea36a7637a0e4d2b561ee7044d857c662c7fc2e6cfa", "D4.11b review: 64 KB tool-message cap not enforced on rejected messages (68,938 B in the dry-run); ToolInvoked undercounted refused turns"),
         ("9a6bcbd1aecd961a25e4a0c0c52359135750ab2f0ab4bc4642a9854634729697", "D4.11d review: 'event: error' with a payload lacking an error key passed the SSE check; the stored response was a decoded string encoded again, not the received bytes"),
         ("281ad5d0b99ce308e389121cf0c92b53521351b8858c1d0b34354f585610fadd", "D4.11e: the agent prompt is rewritten so that the model is told when and how to gather evidence by tool calls (prompt V2)"),
+        ("842d7fb042982965d3afcb3ac8b277655f0eb2029c15049a1d2bddd355b11531", "D4.11f: prompt V3 states the task as heading extraction as the user defines it; per-unit tool-result cache; frozen provider and request template; raw publication policy"),
     };
     public const string EvaluationLabel = "Development canary — tool-calling chain on segments chosen from previous errors; Stage 1 only; not an F1 estimate";
 
@@ -70,19 +71,43 @@ internal static class P7F1V6DirectAgentCanary
                 requestPlanSha256 = P7F1V6Protocol.Sha(string.Join("\n", first.Select(r => r.Sha256))),
             };
         }).ToArray();
+        var autoFirst = FirstRequest(P7F1V6DirectAgent.Arm.Auto, u, Segments[0]);
+        string ProviderBlockSha()
+        {
+            using var d = JsonDocument.Parse(autoFirst.Body);
+            return P7F1V6Protocol.Sha(d.RootElement.GetProperty("provider").GetRawText());
+        }
+        var template = P7F1V6DirectAgent.Build("<<SYSTEM_PROMPT>>", "<<USER_PAYLOAD>>", new System.Text.Json.Nodes.JsonArray(), "auto");
         return new Dictionary<string, object?>
         {
             ["artifact"] = PlanArtifact,
             ["approvalToSend"] = false,
             ["supersedes"] = SupersededPlans.Select(x => new { planSha256 = x.Sha256, run = false, reason = x.Reason }).ToArray(),
+            ["frozen"] = new
+            {
+                scope = "SRC-095 only: the runner rebuilds the universe from the pinned PDF and refuses any other document, source hash or universe hash; the plan is re-derived from code and source and any drift refuses the run",
+                document = P7F1V6DirectD45.Document,
+                sourceSha256 = u.SourceSha256,
+                universeSha256 = u.UniverseSha256,
+                provider = new { only = new[] { P7F1V6Protocol.ProviderTag }, ignore = P7F1V6Protocol.DefaultIgnore, allowFallbacks = false, requireParameters = true,
+                    providerBlockSha256 = ProviderBlockSha(), model = P7F1V6Protocol.ChatModel, endpointCheck = "response provider must be Alibaba and model qwen/qwen3.7-flash, else the run halts" },
+                requestTemplateSha256 = template.Sha256,
+                requestTemplateCovers = "model, response_format, temperature, max_tokens, reasoning, tools, tool_choice, provider block, stream, usage; the system prompt, the user payload and the history are the only parts that vary",
+                toolDefinitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(),
+                promptSha256 = new { auto = P7F1V6DirectAgent.AutoPromptSha256, evidenceFirst = P7F1V6DirectAgent.EvidenceFirstPromptSha256 },
+                firstRequestsSha256 = P7F1V6Protocol.Sha(string.Join("\n", Arms.SelectMany(a => Segments.Select(sg => FirstRequest(a.Mode, u, sg).Sha256)))),
+                laterTurns = "turn 2 onward are built from the first request plus Qwen's own tool calls and the tool results; their bodies are stored with the run and are not pre-computable",
+            },
+            ["rawPublication"] = "After the run, the raw SSE responses (reasoning included), the request bodies with every tool result, the run summaries and the analysis are copied from the safe store into the repository under artifacts/v5-p7-f1-v6-d4-contractfix/d411/run-<plan sha8>/ and pushed, as the owner instructed on 2026-10-13. The document is the public IETF RFC 9114. Done only if the approving message repeats this instruction; the copy refuses a file that contains the API key. Until then, and for any run whose approval does not say so, raw stays in the safe store.",
             ["previousCampaign"] = new { planSha256 = PreviousCampaignPlanSha256, run = true, consumed = true,
                 outcome = "4 of 16 POSTs; Qwen emitted 0 tool calls in 4/4 replies (AUTO and EVIDENCE_FIRST); requests were non-streaming with no reasoning field" },
             ["promptChange"] = new
             {
-                from = "P7_F1_V6_SELECT_AGENT_PROMPT_V1 (AUTO 3ffe3356…, EVIDENCE_FIRST f36f16eb…)",
+                from = "P7_F1_V6_SELECT_AGENT_PROMPT_V1 (AUTO 3ffe3356…, EVIDENCE_FIRST f36f16eb…), as in the consumed D4.11b campaign",
                 to = P7F1V6DirectAgent.PromptVersion,
-                what = "The tools paragraph now says what the tools read (neighbouring lines, a page, a line's full record, text search, same-text lines, two lines side by side; observations only), that the request shows only part of the document, that before answering the model asks for each target whether the lines shown are enough under the instruction, that if not it gathers evidence first by replying with tool calls instead of the JSON (up to 8 calls per reply, 3 rounds), and that if they are enough it answers directly. AUTO still allows an answer without tools. EVIDENCE_FIRST adds that the first reply must be a batch of tool calls and to aim them at the targets for which the lines shown are least sufficient. evidenceRefs cite aliases a result shows (not evidence ids).",
-                neverSays = "no kind of line is named and nothing says what any line is; what to select stays in the user's instruction; a regression bans structure vocabulary from the prompt",
+                task = "The prompt states the task as extracting headings from one document as the user defines them. It gives no definition of a heading and no rule about any kind of line: the user's instruction alone defines what counts as a heading and which lines to select, to be applied as written; the model must not assume a fixed meaning for heading or any other label, nor add or drop a requirement the instruction does not state. Selection is membership of a heading or of a line of a heading; grouping stays a later step.",
+                tools = "The tools paragraph says what the tools read (neighbouring lines, a page, a line's full record, text search, same-text lines, two lines side by side; observations only), that the request shows only part of the document, that before answering the model asks for each target whether the lines shown are enough under the instruction, that if not it gathers evidence first by replying with tool calls instead of the JSON (up to 8 calls per reply, 3 rounds), that if they are enough it answers directly, and that a repeated call returns the same result and says so. AUTO still allows an answer without tools. EVIDENCE_FIRST adds that the first reply must be a batch of tool calls aimed at the targets for which the lines shown are least sufficient. evidenceRefs cite aliases a result shows (not evidence ids).",
+                neverSays = "no kind of line is named and nothing says what any line is; a regression bans structure vocabulary from the prompt",
                 evidenceBehind = "D4.11b: with the V1 wording Qwen made 0 tool calls in 4/4 requests. F1Q: the arm whose prompt required a first reply of tool calls had them in 9/10, the arm that said only to call a tool when ambiguous had 0/10. The F1Q prompts named kinds of line; this one does not. Whether this wording makes Qwen call tools is unknown until a run."
             },
             ["changeFromPreviousCampaign"] = "two changes together: the request shape (\"stream\": true (SSE) and \"reasoning\": {\"enabled\": true} in every request) and the agent prompt (V2, see promptChange); tools, instruction, arms, segments, caps and budget unchanged",
@@ -119,6 +144,7 @@ internal static class P7F1V6DirectAgentCanary
             ["toolCallIds"] = "Qwen's own ids only: every id non-empty and unique in the conversation; a missing or repeated id refuses the whole tool turn before any tool runs (TOOL_CALL_ID_MISSING, TOOL_CALL_ID_DUPLICATE); calls over a cap are answered REJECTED under their own id; C# never makes up an id",
             ["finishReason"] = "tool calls only with finish_reason tool_calls (else TOOL_CALLS_WITH_FINISH_<x>); an answer only with stop (else ANSWER_WITH_FINISH_<x>); tool_calls without calls is refused",
             ["toolMessageBytes"] = "hard cap 65,536 content bytes per unit over every role tool message, rejected and invalid ones included; a rejection is reserved for each call before a turn runs; a call runs only if a full 16,384-byte result plus the reserve for the calls after it and for the rejections of up to 8 calls in each later tool turn fits (else UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED); a turn whose rejections alone do not fit is refused before dispatch (BUDGET:UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED, unit INCOMPLETE); an unregistered tool name is never echoed back",
+            ["toolResultCache"] = "per unit (one conversation), in memory: a successful call is stored under the tool and its arguments in canonical form (keys sorted); a repeated call returns the stored result, byte for byte except the evidence id, with a note {cache: {hit: true, sameResultAs: <first evidence id>}}, and still counts in full toward the 65,536-byte tool-message cap; failed, invalid and rejected calls are never cached; nothing is shared between units or arms; hits are recorded in the ledger (CacheOf) and in the evidence report (ToolCacheHits). Results are deterministic reads of a fixed source, so the cache changes no evidence.",
             ["promptCache"] = "telemetry only: cached_tokens, cache_write_tokens and cache_discount are read from each response when present (ABSENT, ZERO or POSITIVE) and kept in the ledger; no cache_control, no session_id, no response caching; request bytes unchanged",
             ["toolChoice"] = new { turns1To3 = "auto", turn4 = "none", required = "not used: unsupported on the Alibaba route (F1Q 2026-10-09)" },
             ["limits"] = new { P7F1V6DirectAgent.MaxToolTurns, P7F1V6DirectAgent.MaxCallsPerTurn, P7F1V6DirectAgent.MaxPostsPerUnit, P7F1V6DirectAgent.MaxToolMessageBytesPerUnit },

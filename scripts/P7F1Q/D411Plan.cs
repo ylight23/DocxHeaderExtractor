@@ -89,7 +89,7 @@ internal static class D411Plan
 
         var report = new
         {
-            artifact = "p7.f1.v6.d4.11e-tool-canary-dryrun.v1",
+            artifact = "p7.f1.v6.d4.11f-tool-canary-dryrun.v1",
             providerCalls = 0,
             planFile = Path.GetFileName(planPath), planSha256 = planSha, planVerifiesNow = verify.Count == 0, codeCommit = head,
             firstRequests = P7F1V6DirectAgentCanary.Arms.SelectMany(a => P7F1V6DirectAgentCanary.Segments.Select(s =>
@@ -106,13 +106,21 @@ internal static class D411Plan
                 "Each arm has its own 8-post, $0.25 budget and early stop.",
             },
         };
-        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.11e-tool-canary-dryrun.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
+        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.11f-tool-canary-dryrun.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
         Console.WriteLine($"plan {planSha} verifies={verify.Count == 0} commit={head}");
         foreach (var f in report.firstRequests) Console.WriteLine(JsonSerializer.Serialize(f));
         foreach (var s in sims)
             foreach (var a in s.arms)
                 Console.WriteLine($"{s.simulation} | {a.arm}: posts {a.calls}, reserve {a.reservedUsd}, halt {a.halt ?? "none"}; " +
                     string.Join("; ", a.units.Select(x => $"{x.UnitId} {x.Status} {x.Failure} posts={x.posts} maxBytes={x.maxRequestBytes} tools={x.okToolCalls}/{x.toolCalls} msgBytes={x.evidence.ToolMessageBytes}")));
+    }
+
+    /// <summary>Copies the safe-store runs of a consumed plan into the repository (P7F1V6Publication): only when the approving message said to push.</summary>
+    public static void Publish(string planPath, string outDir, IReadOnlyList<string> runDirs)
+    {
+        var r = P7F1V6Publication.Publish(planPath, outDir, runDirs, Environment.GetEnvironmentVariable("OPENROUTER_API_KEY"));
+        if (r.Refusal is not null) { Console.WriteLine("D411 PUBLISH REFUSED: " + r.Refusal); Environment.ExitCode = 2; return; }
+        Console.WriteLine($"published {r.Files.Count} files to {outDir}");
     }
 
     /// <summary>The live canary. Not run in D4.11: it needs an APPROVED authorization for the plan. The key is never printed. Request bodies
