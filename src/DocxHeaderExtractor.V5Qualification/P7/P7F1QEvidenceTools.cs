@@ -273,6 +273,8 @@ internal sealed class P7F1QEvidenceTools
 
     public const string LayoutBasis = "bbox=[left,right,bottom,top] in PDF points, bottom-left origin; font={size,name,boldRatio,italicRatio}; parser observations, not labels";
 
+    /// <summary>Whole-document parser lines in reading order (read-only; used for observation evidence only).</summary>
+    public IReadOnlyList<F1QSourceLine> AllLines => lines;
     public F1QSourceLine LineOf(string alias) => lines[indexByAlias[alias]];
     public IEnumerable<F1QSourceLine> LinesOnPage(int page) => lines.Where(l => l.Page == page);
     public int RepeatPageCount(string alias) { var key = RepeatKey(LineOf(alias).Text); return key.Length == 0 ? 0 : repeatIndex[key].Select(i => lines[i].Page).Distinct().Count(); }
