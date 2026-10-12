@@ -566,6 +566,11 @@ switch (args[0])
         if (args.Length != 3) throw new ArgumentException("preflight-v6 <docs.json> <out-dir>");
         V6Preflight.Run(args[1], args[2]);
         break;
+    case "preflight-d2":
+        // Issue #9 D2 preflight (offline): preflight-d2 <docs.json> <out-dir>. Hierarchical run per shard size. No provider call.
+        if (args.Length != 3) throw new ArgumentException("preflight-d2 <docs.json> <out-dir>");
+        V6PreflightD2.Run(args[1], args[2]);
+        break;
     default: throw new ArgumentException("UNKNOWN_MODE");
 }
 
