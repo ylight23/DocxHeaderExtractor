@@ -77,9 +77,11 @@ internal static class P7F1V6Core
     /// Parses one decision pass for a request whose set of ids is <paramref name="setIds"/>. A COMPLETE pass must decide every
     /// id. Non-COMPLETE passes may decide a subset; the rest stay undecided (MISSING), never NOT_SELECT.
     /// </summary>
-    public static DecisionPass ParseDecisions(string response, string requestId, IReadOnlyCollection<string> setIds, IReadOnlySet<string> citable)
+    public static DecisionPass ParseDecisions(string response, string requestId, IReadOnlyCollection<string> setIds, IReadOnlySet<string> citable,
+        IReadOnlyDictionary<string, string> aliasById, string expectedSourceSha256, IReadOnlyList<P7F1V6Tools.Record> transcript)
     {
         var set = setIds.ToHashSet(StringComparer.Ordinal);
+        var byEvidence = transcript.GroupBy(t => t.EvidenceId, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.First(), StringComparer.Ordinal);
         DecisionPass Fail(string code) => new(null!, new Dictionary<string, Decision>(), code);
         JsonDocument doc;
         try { doc = JsonDocument.Parse(response); } catch (JsonException) { return Fail("RESPONSE_NOT_JSON"); }
@@ -123,9 +125,21 @@ internal static class P7F1V6Core
                 if (value is "SELECT" or "NOT_SELECT")
                 {
                     if (refs.Count == 0) return Fail("EVIDENCE_REQUIRED");
+                    var subjectAlias = aliasById.TryGetValue(id, out var sa) ? sa : null;
                     foreach (var r in refs)
-                        if (!citable.Contains(r) && !set.Contains(r) && !System.Text.RegularExpressions.Regex.IsMatch(r, @"^E\d+\.\d+$"))
-                            return Fail("EVIDENCE_REF_NOT_CITABLE");
+                    {
+                        if (System.Text.RegularExpressions.Regex.IsMatch(r, @"^E\d+\.\d+$"))
+                        {
+                            // A tool evidence id counts only if the transcript proves it: issued in this request, from this
+                            // source, returned successfully, and it returned the subject's own alias.
+                            if (!byEvidence.TryGetValue(r, out var rec)) return Fail("EVIDENCE_ID_NOT_IN_TRANSCRIPT");
+                            if (rec.RequestId != requestId || rec.SourceSha256 != expectedSourceSha256) return Fail("EVIDENCE_ID_WRONG_REQUEST_OR_SOURCE");
+                            if (rec.Status != "OK") return Fail("EVIDENCE_ID_NOT_OK");
+                            if (subjectAlias is null || !rec.ReturnedAliases.Contains(subjectAlias)) return Fail("EVIDENCE_DOES_NOT_CONTAIN_SUBJECT");
+                            continue;
+                        }
+                        if (!citable.Contains(r) && !set.Contains(r)) return Fail("EVIDENCE_REF_NOT_CITABLE");
+                    }
                 }
                 var note = Str(d, "note");
                 if (note is not null && note.Length > MaxNoteChars) return Fail("NOTE_TOO_LONG");
@@ -160,8 +174,22 @@ internal static class P7F1V6Core
         return ids.Select(id => final.TryGetValue(id, out var f) ? new FinalDecision(id, f.State, f.Source) : new FinalDecision(id, "MISSING", null)).ToArray();
     }
 
-    /// <summary>A document is COMPLETE only when every id has a final decision that is not MISSING.</summary>
-    public static bool DocumentComplete(IReadOnlyList<FinalDecision> finals) => finals.All(f => f.State != "MISSING");
+    public sealed record DocumentStatus(bool CoverageComplete, bool ResolvedComplete, int Selected, int NotSelected, int Unresolved, int Missing,
+        string Assessment);
+
+    /// <summary>
+    /// Four separate facts, never merged into one flag. CoverageComplete: every required id has an explicit state (none
+    /// MISSING; UNRESOLVED counts as explicit). ResolvedComplete: every id is SELECTED or NOT_SELECTED. UNRESOLVED is neither
+    /// missing nor resolved. Assessment is a conclusion about the request scope, and it is PARTIAL whenever any id is unresolved
+    /// or missing. Evidence coverage (what was observed) is reported by the tools, see P7F1V6Tools.ScopeLedger.
+    /// </summary>
+    public static DocumentStatus Status(IReadOnlyList<FinalDecision> finals)
+    {
+        int sel = finals.Count(f => f.State == "SELECTED"), nsel = finals.Count(f => f.State == "NOT_SELECTED");
+        int unr = finals.Count(f => f.State == "UNRESOLVED"), mis = finals.Count(f => f.State == "MISSING");
+        var assessment = mis > 0 ? "INCOMPLETE" : unr > 0 ? "PARTIAL_UNRESOLVED" : "RESOLVED";
+        return new DocumentStatus(CoverageComplete: mis == 0, ResolvedComplete: mis == 0 && unr == 0, sel, nsel, unr, mis, assessment);
+    }
 
     // ---------------- Document overview (observations only) ----------------
 
@@ -190,6 +218,19 @@ internal static class P7F1V6Core
             }).ToArray();
         return new { version = Version, pageCount = pages.Length, lineCount = lines.Count, pages, repeatGroups = repeats,
             basis = "PARSER_OBSERVATIONS_ONLY: counts, repeats, numbering and dot leaders. No heading label is produced." };
+    }
+
+    /// <summary>
+    /// Observed scope (what the tools returned to the model) against evaluated scope (what a decision was made on). An id
+    /// decided without any observation is a violation: it is reported, not silently accepted.
+    /// </summary>
+    public sealed record ScopeReport(int InScope, int Observed, int Evaluated, int ObservedNotEvaluated, int EvaluatedNotObserved);
+
+    public static ScopeReport Scope(IReadOnlyCollection<string> inScopeAliases, IReadOnlySet<string> observedAliases, IReadOnlyList<FinalDecision> finals, IReadOnlyDictionary<string, string> aliasById)
+    {
+        var evaluated = finals.Where(f => f.State != "MISSING").Select(f => aliasById.TryGetValue(f.Id, out var a) ? a : f.Id).ToHashSet(StringComparer.Ordinal);
+        return new ScopeReport(inScopeAliases.Count, observedAliases.Count, evaluated.Count,
+            observedAliases.Count(a => !evaluated.Contains(a)), evaluated.Count(a => !observedAliases.Contains(a)));
     }
 
     /// <summary>Same normalisation as the repeat index used by the evidence tools.</summary>
