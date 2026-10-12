@@ -23,6 +23,13 @@ internal static class P7F1V6Protocol
     public const string ProviderTag = "alibaba";
     /// <summary>Visible output 16,384 plus an assumed reasoning reserve of 16,384. The reserve is not verified (Gate T).</summary>
     public const int MaxTokens = 32768;
+    /// <summary>Caps for qualification (D3.1b). The payload cap bounds the user message only. The envelope cap bounds the whole serialized
+    /// body that is sent (system message, user message, JSON escaping and structure). Neither is a context limit of the endpoint.
+    /// The visible response cap is the output budget of the node parser.</summary>
+    public const int PayloadCapBytes = 131072, EnvelopeCapBytes = 147456, VisibleResponseCapBytes = 16384;
+
+    /// <summary>One request body, built once. The measured bytes, the stored bytes and the transported bytes are all this value.</summary>
+    public sealed record PreparedRequest(string Body, int Bytes, string Sha256);
 
     /// <summary>Shared rules for every request. Identical in each node's system message.</summary>
     public const string PlatformPrompt =
@@ -145,6 +152,18 @@ internal static class P7F1V6Protocol
     /// <summary>The request body with placeholders in place of the system message and the payload. Its hash pins every other field.</summary>
     public static string TemplateEnvelope(EnvelopeSpec spec) => EnvelopeFrom(spec, "<<SYSTEM_PROMPT>>", "<<USER_PAYLOAD>>");
 
+    /// <summary>The request body for a node kind or the interpretation: built once, measured in UTF-8 bytes, hashed.</summary>
+    public static PreparedRequest Prepare(string systemPrompt, string userPayload, string providerTag, int maxTokens)
+    {
+        var body = Envelope(systemPrompt, userPayload, providerTag, maxTokens);
+        var bytes = Encoding.UTF8.GetBytes(body);
+        return new PreparedRequest(body, bytes.Length, Convert.ToHexStringLower(SHA256.HashData(bytes)));
+    }
+
+    /// <summary>The transport guard: the body that is about to be sent must be byte-identical to the one that was measured and stored.</summary>
+    public static bool VerifyTransportBody(string body, string expectedSha256) =>
+        Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(body))) == expectedSha256;
+
     public static string Sha(string s) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(s)));
 
     /// <summary>Every hash the freeze would pin. Each is computed from the text or the spec in this file, not copied.</summary>
@@ -168,6 +187,9 @@ internal static class P7F1V6Protocol
             nodeResponseSchemaSha256 = Sha(NodeResponseSchema),
             providerBlockSha256 = Sha(JsonSerializer.Serialize(ProviderBlock(providerTag), Options)),
             requestTemplateSha256 = Sha(TemplateEnvelope(spec)),
+            payloadCapBytes = PayloadCapBytes,
+            envelopeCapBytes = EnvelopeCapBytes,
+            visibleResponseCapBytes = VisibleResponseCapBytes,
             systemPromptSha256 = kinds.ToDictionary(k => k.ToString(), k => Sha(SystemPrompt(k))),
             kindPromptSha256 = kinds.ToDictionary(k => k.ToString(), k => Sha(KindPrompts[k])),
         };

@@ -106,7 +106,7 @@ internal static class P7F1V6Hier
     public sealed record Options(string Instruction, string SourceSha256, int ShardSize, int Context, int FanIn, int PassUpCap,
         string? RawDir = null, int OutputBudgetBytes = 16384, string PromptOrder = "NORMAL", int MaxInputBytes = 131072,
         int MaxRetrievalRounds = 2, int MaxSearchResults = 20, int MaxReopen = 8,
-        string SourceUniverseSha256 = "", string ParserVersion = "", string EvidenceStoreVersion = "", string? ExpectedCandidatesSha256 = null, bool RequirePinned = false);
+        string SourceUniverseSha256 = "", string ParserVersion = "", string EvidenceStoreVersion = "", string? ExpectedCandidatesSha256 = null, bool RequirePinned = false, int MaxEnvelopeBytes = P7F1V6Protocol.EnvelopeCapBytes);
 
     static void Validate(Options o)
     {
@@ -117,6 +117,7 @@ internal static class P7F1V6Hier
         if (o.OutputBudgetBytes < 1024) throw new ArgumentOutOfRangeException(nameof(o.OutputBudgetBytes));
         if (o.MaxInputBytes < 1024) throw new ArgumentOutOfRangeException(nameof(o.MaxInputBytes));
         if (o.MaxRetrievalRounds < 0 || o.MaxSearchResults < 1 || o.MaxReopen < 1) throw new ArgumentOutOfRangeException(nameof(o.MaxRetrievalRounds));
+        if (o.MaxEnvelopeBytes < 1024) throw new ArgumentOutOfRangeException(nameof(o.MaxEnvelopeBytes));
         if (string.IsNullOrWhiteSpace(o.SourceSha256)) throw new ArgumentException("MANIFEST_INCOMPLETE:sourceSha256");
         if (string.IsNullOrWhiteSpace(o.SourceUniverseSha256)) throw new ArgumentException("MANIFEST_INCOMPLETE:sourceUniverseSha256");
         if (string.IsNullOrWhiteSpace(o.ParserVersion)) throw new ArgumentException("MANIFEST_INCOMPLETE:parserVersion");
@@ -200,6 +201,8 @@ internal static class P7F1V6Hier
             InstructionSha = instructionSha, Manifest = manifest, Raw = new P7F1V6RawStore(o.RawDir),
         };
         var (interp, interpFailure, _) = Interpret(env, model);
+        if (interpFailure == "ENVELOPE_OVER_BUDGET")
+            return Stopped(env, "STOPPED_ENVELOPE_OVER_BUDGET:INTERPRET", null, candidatesSha, manifestSha);
         if (interpFailure is not null)
         {
             env.Violations.Add("INTERPRET:" + interpFailure);
@@ -277,8 +280,11 @@ internal static class P7F1V6Hier
         var inBytes = Encoding.UTF8.GetBytes(payload);
         var inSha = e.Raw.Put(inBytes);
         if (inBytes.Length > e.O.MaxInputBytes) return (null, "INPUT_OVER_BUDGET", "");
-        e.MaxEnvelopeBytes = Math.Max(e.MaxEnvelopeBytes,
-            Encoding.UTF8.GetByteCount(P7F1V6Protocol.Envelope(P7F1V6Protocol.InterpretPrompt, payload, P7F1V6Protocol.ProviderTag, P7F1V6Protocol.MaxTokens)));
+        var prepared = P7F1V6Protocol.Prepare(P7F1V6Protocol.InterpretPrompt, payload, P7F1V6Protocol.ProviderTag, P7F1V6Protocol.MaxTokens);
+        e.MaxEnvelopeBytes = Math.Max(e.MaxEnvelopeBytes, prepared.Bytes);
+        if (prepared.Bytes > e.O.MaxEnvelopeBytes) return (null, "ENVELOPE_OVER_BUDGET", "");
+        e.Raw.Put(Encoding.UTF8.GetBytes(prepared.Body));
+        e.Transcript.Add($"INTERPRET|r0|REQUEST|{prepared.Sha256}|{prepared.Bytes}");
         var response = model("INTERPRET", Kind.Interpretation, payload);
         var outBytes = Encoding.UTF8.GetBytes(response);
         var outSha = e.Raw.Put(outBytes);
@@ -385,12 +391,19 @@ internal static class P7F1V6Hier
     {
         for (int round = 0; ; round++)
         {
+            // A run that has stopped makes no further request, and the first stop reason is the one that is reported.
+            if (e.Stopped) return null;
             var payload = build(rs);
             var inBytes = Encoding.UTF8.GetBytes(payload);
             var inSha = e.Raw.Put(inBytes);
             if (inBytes.Length > e.O.MaxInputBytes) { e.StopReason = "INPUT_OVER_BUDGET:" + nodeId; return null; }
-            e.MaxEnvelopeBytes = Math.Max(e.MaxEnvelopeBytes,
-                Encoding.UTF8.GetByteCount(P7F1V6Protocol.Envelope(P7F1V6Protocol.SystemPrompt(kind), payload, P7F1V6Protocol.ProviderTag, P7F1V6Protocol.MaxTokens)));
+            // The body is built once: it is measured, checked against the envelope cap before the model is called, stored by hash,
+            // and recorded in the transcript. The transport must send this same body (P7F1V6Protocol.VerifyTransportBody).
+            var prepared = P7F1V6Protocol.Prepare(P7F1V6Protocol.SystemPrompt(kind), payload, P7F1V6Protocol.ProviderTag, P7F1V6Protocol.MaxTokens);
+            e.MaxEnvelopeBytes = Math.Max(e.MaxEnvelopeBytes, prepared.Bytes);
+            if (prepared.Bytes > e.O.MaxEnvelopeBytes) { e.StopReason = "ENVELOPE_OVER_BUDGET:" + nodeId; return null; }
+            e.Raw.Put(Encoding.UTF8.GetBytes(prepared.Body));
+            e.Transcript.Add($"{nodeId}|r{round}|REQUEST|{prepared.Sha256}|{prepared.Bytes}");
             var response = model(nodeId, kind, payload);
             var outBytes = Encoding.UTF8.GetBytes(response);
             var outSha = e.Raw.Put(outBytes);

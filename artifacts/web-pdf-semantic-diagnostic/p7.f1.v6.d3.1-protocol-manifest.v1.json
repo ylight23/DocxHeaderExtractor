@@ -13,6 +13,9 @@
   "nodeResponseSchemaSha256": "0451ea379034fe46b95832c511a6c2206294f4a05b7e8fdf7d47e22378934f2d",
   "providerBlockSha256": "b47a3b144cfaf6d53b90f9512ad96a1eabc45e05f1ac9ffcbb264ec64bcb605e",
   "requestTemplateSha256": "25f8e40f9e8e682235cfbae9a65e6ac22cce75004497bdc26c5a9aad669ef07e",
+  "payloadCapBytes": 131072,
+  "envelopeCapBytes": 147456,
+  "visibleResponseCapBytes": 16384,
   "systemPromptSha256": {
     "Local": "df5989a8ea4a796418a66f1267612cad863f52682526bfb590bd11fd3d37a618",
     "Reconcile": "80b4e15a42375d61890e73c2c0c4c1423c47309c20378ed5265e63a27dd6af30",

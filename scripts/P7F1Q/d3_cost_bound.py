@@ -20,7 +20,8 @@ E1 = ART / "p7.f1.v6.d3-gate-e1-endpoints.raw.json"
 PREFLIGHT = ART / "p7.f1.v6.d2-preflight.v6-retrieve-d23-pin"
 OUT = ART / "p7.f1.v6.d3-cost-bound.v1.json"
 
-MAX_INPUT_BYTES = 131072          # internal budget, unchanged
+PAYLOAD_CAP_BYTES = 131072        # node payload cap (user message only), unchanged
+ENVELOPE_CAP_BYTES = 147456       # serialized request envelope cap (D3.1b); the whole body is what is priced
 RETRIEVAL_ROUNDS = 2              # MaxRetrievalRounds in the protocol
 VISIBLE_TOKENS = 16384            # visible output cap by bytes (tokens <= bytes)
 REASONING_RESERVE = 16384         # assumed reasoning share; NOT verified at the endpoint
@@ -57,9 +58,9 @@ def call_cost(base, over, input_bytes, completion_tokens):
 
 
 def structural_calls(node_counts, rounds):
-    """Maximum model calls: every local and reconcile node is one call; every synthesis or global node may use
-    up to rounds+1 calls (rounds retrieval turns followed by one final response)."""
-    fixed = node_counts["local"] + node_counts["reconcile"]
+    """Maximum model calls: the interpretation is one call; every local and reconcile node is one call; every synthesis or
+    global node may use up to rounds+1 calls (rounds retrieval turns followed by one final response)."""
+    fixed = 1 + node_counts["local"] + node_counts["reconcile"]
     retrieving = node_counts["synthesis"] + node_counts["global"]
     return fixed + retrieving * (rounds + 1)
 
@@ -90,11 +91,12 @@ def bound_for_tag(tag, plan):
         calls_max = structural_calls(nc, RETRIEVAL_ROUNDS)
         for completion in COMPLETION_CAPS:
             # completion includes visible output and reasoning; the input is bounded by the internal budget for every call
-            per_call = call_cost(base, over, MAX_INPUT_BYTES, completion)
+            # the priced input is the whole request body, so the envelope cap bounds it, not the payload cap
+            per_call = call_cost(base, over, ENVELOPE_CAP_BYTES, completion)
             block["scenarios"].append({
                 "step": step, "document": doc, "shardSize": shard,
                 "scriptedRequests": nc["scriptedRequests"], "structuralMaxCalls": calls_max,
-                "completionTokensPerCall": completion, "maxInputBytesPerCall": MAX_INPUT_BYTES,
+                "completionTokensPerCall": completion, "maxRequestBytesPerCall": ENVELOPE_CAP_BYTES,
                 "usdPerCallWorst": round(per_call, 6), "usdRunOperatingBound": round(per_call * calls_max, 4),
                 "retriesIncluded": 0,
             })
@@ -109,12 +111,13 @@ def main():
         "model": "qwen/qwen3.7-flash",
         "endpointSource": E1.name,
         "endpointSourceSha256": __import__("hashlib").sha256(E1.read_bytes()).hexdigest(),
-        "inputBudgetBytes": MAX_INPUT_BYTES,
+        "payloadCapBytes": PAYLOAD_CAP_BYTES,
+        "envelopeCapBytes": ENVELOPE_CAP_BYTES,
         "retrievalRounds": RETRIEVAL_ROUNDS,
         "retries": 0,
         "routes": [bound_for_tag(tag, plan) for tag in TAGS],
         "c1Example": {"structuralMaxCalls": structural_calls(counts("073", 60), RETRIEVAL_ROUNDS),
-                      "note": "local + reconcile + global with two retrieval rounds"},
+                      "note": "interpretation + local + reconcile + global with two retrieval rounds"},
     }
     OUT.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"wrote {OUT}")

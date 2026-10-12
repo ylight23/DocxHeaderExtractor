@@ -4,7 +4,8 @@
   "model": "qwen/qwen3.7-flash",
   "endpointSource": "p7.f1.v6.d3-gate-e1-endpoints.raw.json",
   "endpointSourceSha256": "021ffee89340bcb13d210f6b66dbe9578d34c97f1c05f89a37be3905e78c095c",
-  "inputBudgetBytes": 131072,
+  "payloadCapBytes": 131072,
+  "envelopeCapBytes": 147456,
   "retrievalRounds": 2,
   "retries": 0,
   "routes": [
@@ -35,11 +36,11 @@
           "document": "073",
           "shardSize": 60,
           "scriptedRequests": 3,
-          "structuralMaxCalls": 5,
+          "structuralMaxCalls": 6,
           "completionTokensPerCall": 32768,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.026214,
-          "usdRunOperatingBound": 0.1311,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.027853,
+          "usdRunOperatingBound": 0.1671,
           "retriesIncluded": 0
         },
         {
@@ -47,11 +48,11 @@
           "document": "073",
           "shardSize": 60,
           "scriptedRequests": 3,
-          "structuralMaxCalls": 5,
+          "structuralMaxCalls": 6,
           "completionTokensPerCall": 65536,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.039322,
-          "usdRunOperatingBound": 0.1966,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.04096,
+          "usdRunOperatingBound": 0.2458,
           "retriesIncluded": 0
         },
         {
@@ -59,11 +60,11 @@
           "document": "094",
           "shardSize": 60,
           "scriptedRequests": 125,
-          "structuralMaxCalls": 175,
+          "structuralMaxCalls": 176,
           "completionTokensPerCall": 32768,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.026214,
-          "usdRunOperatingBound": 4.5875,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.027853,
+          "usdRunOperatingBound": 4.9021,
           "retriesIncluded": 0
         },
         {
@@ -71,11 +72,11 @@
           "document": "094",
           "shardSize": 60,
           "scriptedRequests": 125,
-          "structuralMaxCalls": 175,
+          "structuralMaxCalls": 176,
           "completionTokensPerCall": 65536,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.039322,
-          "usdRunOperatingBound": 6.8813,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.04096,
+          "usdRunOperatingBound": 7.209,
           "retriesIncluded": 0
         },
         {
@@ -83,11 +84,11 @@
           "document": "024",
           "shardSize": 60,
           "scriptedRequests": 177,
-          "structuralMaxCalls": 251,
+          "structuralMaxCalls": 252,
           "completionTokensPerCall": 32768,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.026214,
-          "usdRunOperatingBound": 6.5798,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.027853,
+          "usdRunOperatingBound": 7.0189,
           "retriesIncluded": 0
         },
         {
@@ -95,11 +96,11 @@
           "document": "024",
           "shardSize": 60,
           "scriptedRequests": 177,
-          "structuralMaxCalls": 251,
+          "structuralMaxCalls": 252,
           "completionTokensPerCall": 65536,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.039322,
-          "usdRunOperatingBound": 9.8697,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.04096,
+          "usdRunOperatingBound": 10.3219,
           "retriesIncluded": 0
         },
         {
@@ -107,11 +108,11 @@
           "document": "028",
           "shardSize": 60,
           "scriptedRequests": 442,
-          "structuralMaxCalls": 606,
+          "structuralMaxCalls": 607,
           "completionTokensPerCall": 32768,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.026214,
-          "usdRunOperatingBound": 15.8859,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.027853,
+          "usdRunOperatingBound": 16.9066,
           "retriesIncluded": 0
         },
         {
@@ -119,11 +120,11 @@
           "document": "028",
           "shardSize": 60,
           "scriptedRequests": 442,
-          "structuralMaxCalls": 606,
+          "structuralMaxCalls": 607,
           "completionTokensPerCall": 65536,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.039322,
-          "usdRunOperatingBound": 23.8289,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.04096,
+          "usdRunOperatingBound": 24.8627,
           "retriesIncluded": 0
         }
       ]
@@ -155,11 +156,11 @@
           "document": "073",
           "shardSize": 60,
           "scriptedRequests": 3,
-          "structuralMaxCalls": 5,
+          "structuralMaxCalls": 6,
           "completionTokensPerCall": 32768,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.030147,
-          "usdRunOperatingBound": 0.1507,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.032031,
+          "usdRunOperatingBound": 0.1922,
           "retriesIncluded": 0
         },
         {
@@ -167,11 +168,11 @@
           "document": "073",
           "shardSize": 60,
           "scriptedRequests": 3,
-          "structuralMaxCalls": 5,
+          "structuralMaxCalls": 6,
           "completionTokensPerCall": 65536,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.04522,
-          "usdRunOperatingBound": 0.2261,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.047104,
+          "usdRunOperatingBound": 0.2826,
           "retriesIncluded": 0
         },
         {
@@ -179,11 +180,11 @@
           "document": "094",
           "shardSize": 60,
           "scriptedRequests": 125,
-          "structuralMaxCalls": 175,
+          "structuralMaxCalls": 176,
           "completionTokensPerCall": 32768,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.030147,
-          "usdRunOperatingBound": 5.2756,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.032031,
+          "usdRunOperatingBound": 5.6374,
           "retriesIncluded": 0
         },
         {
@@ -191,11 +192,11 @@
           "document": "094",
           "shardSize": 60,
           "scriptedRequests": 125,
-          "structuralMaxCalls": 175,
+          "structuralMaxCalls": 176,
           "completionTokensPerCall": 65536,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.04522,
-          "usdRunOperatingBound": 7.9135,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.047104,
+          "usdRunOperatingBound": 8.2903,
           "retriesIncluded": 0
         },
         {
@@ -203,11 +204,11 @@
           "document": "024",
           "shardSize": 60,
           "scriptedRequests": 177,
-          "structuralMaxCalls": 251,
+          "structuralMaxCalls": 252,
           "completionTokensPerCall": 32768,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.030147,
-          "usdRunOperatingBound": 7.5668,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.032031,
+          "usdRunOperatingBound": 8.0717,
           "retriesIncluded": 0
         },
         {
@@ -215,11 +216,11 @@
           "document": "024",
           "shardSize": 60,
           "scriptedRequests": 177,
-          "structuralMaxCalls": 251,
+          "structuralMaxCalls": 252,
           "completionTokensPerCall": 65536,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.04522,
-          "usdRunOperatingBound": 11.3502,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.047104,
+          "usdRunOperatingBound": 11.8702,
           "retriesIncluded": 0
         },
         {
@@ -227,11 +228,11 @@
           "document": "028",
           "shardSize": 60,
           "scriptedRequests": 442,
-          "structuralMaxCalls": 606,
+          "structuralMaxCalls": 607,
           "completionTokensPerCall": 32768,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.030147,
-          "usdRunOperatingBound": 18.2688,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.032031,
+          "usdRunOperatingBound": 19.4426,
           "retriesIncluded": 0
         },
         {
@@ -239,18 +240,18 @@
           "document": "028",
           "shardSize": 60,
           "scriptedRequests": 442,
-          "structuralMaxCalls": 606,
+          "structuralMaxCalls": 607,
           "completionTokensPerCall": 65536,
-          "maxInputBytesPerCall": 131072,
-          "usdPerCallWorst": 0.04522,
-          "usdRunOperatingBound": 27.4032,
+          "maxRequestBytesPerCall": 147456,
+          "usdPerCallWorst": 0.047104,
+          "usdRunOperatingBound": 28.5921,
           "retriesIncluded": 0
         }
       ]
     }
   ],
   "c1Example": {
-    "structuralMaxCalls": 5,
-    "note": "local + reconcile + global with two retrieval rounds"
+    "structuralMaxCalls": 6,
+    "note": "interpretation + local + reconcile + global with two retrieval rounds"
   }
 }

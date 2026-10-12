@@ -107,7 +107,9 @@ internal static class D31Snapshot
         sb.AppendLine("`requestTemplateSha256` pins every envelope field except the system message and the user payload: model, roles, response format, temperature, max_tokens, and the provider block. A test changes each field in turn and expects the fingerprint to change.");
         sb.AppendLine();
         sb.AppendLine("## 7.5 Request size");
-        sb.AppendLine("The input budget of 131,072 bytes applies to the user payload. The preflight reports the largest serialized request envelope (`maxEnvelopeBytes`), which adds the system message and JSON escaping. The envelope is not capped separately yet; that is a decision for the reviewer.");
+        sb.AppendLine("Three caps, each a different budget. The payload cap of 131,072 bytes bounds the user message. The envelope cap of 147,456 bytes (qualification) bounds the whole serialized request body and is checked before any model call; an envelope over it stops the run with STOPPED_ENVELOPE_OVER_BUDGET. The visible response cap of 16,384 bytes bounds the node reply. None of these is the endpoint's context limit, and byte counts are not token counts: the endpoint charges tokens, and the token count of the request is not yet measured (gate T).");
+        sb.AppendLine();
+        sb.AppendLine("The body is built once. The same bytes are measured, checked, stored under their SHA-256, recorded in the transcript, and must be the bytes a transport sends; `VerifyTransportBody` is the guard at that boundary. No transport exists yet.");
         sb.AppendLine();
         sb.AppendLine("## 8. Not decided here (gates still open)");
         sb.AppendLine("- Gate T: reasoning mode, reserve inside `max_tokens`, usage accounting, tokenizer or sourced measurement, timeout, and the retry policy (zero by default).");
