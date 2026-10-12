@@ -1,0 +1,430 @@
+{
+  "artifact": "p7.f1.v6.d4.8-reasoning-vs-output.v1",
+  "method": "last parseable JSON object starting with protocolVersion inside the reasoning, compared with the returned content",
+  "rows": [
+    {
+      "unit": "SEG-000",
+      "round": 1,
+      "unitOutcome": [
+        "FAILED",
+        "PROTOCOL:COVERAGE_INCOMPLETE"
+      ],
+      "output": {
+        "status": "COMPLETE",
+        "decisions": 26,
+        "selected": [
+          "L0007:S0",
+          "L0008:S0",
+          "L0009:S0",
+          "L0015:S0",
+          "L0023:S0",
+          "L0034:S0",
+          "L0035:S0",
+          "L0036:S0",
+          "L0037:S0",
+          "L0038:S0",
+          "L0039:S0",
+          "L0040:S0",
+          "L0041:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "reasoningDraft": {
+        "status": "COMPLETE",
+        "decisions": 48,
+        "selected": [
+          "L0007:S0",
+          "L0008:S0",
+          "L0009:S0",
+          "L0015:S0",
+          "L0023:S0",
+          "L0034:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "draftMatchesOutput": false
+    },
+    {
+      "unit": "SEG-001",
+      "round": 1,
+      "unitOutcome": [
+        "COMPLETE",
+        null
+      ],
+      "output": {
+        "status": "COMPLETE",
+        "decisions": 48,
+        "selected": [
+          "L0042:S0",
+          "L0043:S0",
+          "L0044:S0",
+          "L0045:S0",
+          "L0046:S0",
+          "L0047:S0",
+          "L0048:S0",
+          "L0049:S0",
+          "L0050:S0",
+          "L0051:S0",
+          "L0052:S0",
+          "L0053:S0",
+          "L0054:S0",
+          "L0055:S0",
+          "L0056:S0",
+          "L0057:S0",
+          "L0058:S0",
+          "L0059:S0",
+          "L0060:S0",
+          "L0061:S0",
+          "L0064:S0",
+          "L0065:S0",
+          "L0066:S0",
+          "L0067:S0",
+          "L0068:S0",
+          "L0069:S0",
+          "L0070:S0",
+          "L0071:S0",
+          "L0072:S0",
+          "L0073:S0",
+          "L0074:S0",
+          "L0075:S0",
+          "L0076:S0",
+          "L0077:S0",
+          "L0078:S0",
+          "L0079:S0",
+          "L0080:S0",
+          "L0081:S0",
+          "L0082:S0",
+          "L0083:S0",
+          "L0084:S0",
+          "L0085:S0",
+          "L0086:S0",
+          "L0087:S0",
+          "L0088:S0",
+          "L0089:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "reasoningDraft": {
+        "status": "COMPLETE",
+        "decisions": 48,
+        "selected": [],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "draftMatchesOutput": false
+    },
+    {
+      "unit": "SEG-002",
+      "round": 1,
+      "unitOutcome": [
+        "COMPLETE",
+        null
+      ],
+      "output": {
+        "status": "COMPLETE",
+        "decisions": 48,
+        "selected": [
+          "L0090:S0",
+          "L0091:S0",
+          "L0092:S0",
+          "L0093:S0",
+          "L0096:S0",
+          "L0097:S0",
+          "L0098:S0",
+          "L0099:S0",
+          "L0100:S0",
+          "L0101:S0",
+          "L0102:S0",
+          "L0103:S0",
+          "L0104:S0",
+          "L0105:S0",
+          "L0106:S0",
+          "L0107:S0",
+          "L0108:S0",
+          "L0109:S0",
+          "L0110:S0",
+          "L0111:S0",
+          "L0112:S0",
+          "L0113:S0",
+          "L0114:S0",
+          "L0115:S0",
+          "L0116:S0",
+          "L0117:S0",
+          "L0118:S0",
+          "L0119:S0",
+          "L0120:S0",
+          "L0121:S0",
+          "L0122:S0",
+          "L0123:S0",
+          "L0124:S0",
+          "L0125:S0",
+          "L0128:S0",
+          "L0129:S0",
+          "L0134:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "reasoningDraft": null,
+      "draftMatchesOutput": null
+    },
+    {
+      "unit": "SEG-003",
+      "round": 1,
+      "unitOutcome": [
+        "COMPLETE",
+        null
+      ],
+      "output": {
+        "status": "COMPLETE",
+        "decisions": 48,
+        "selected": [
+          "L0146:S0",
+          "L0162:S0",
+          "L0185:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "reasoningDraft": null,
+      "draftMatchesOutput": null
+    },
+    {
+      "unit": "SEG-004",
+      "round": 1,
+      "unitOutcome": [
+        "COMPLETE",
+        null
+      ],
+      "output": {
+        "status": "COMPLETE",
+        "decisions": 48,
+        "selected": [
+          "L0205:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "reasoningDraft": null,
+      "draftMatchesOutput": null
+    },
+    {
+      "unit": "SEG-005",
+      "round": 1,
+      "unitOutcome": [
+        "COMPLETE",
+        null
+      ],
+      "output": {
+        "status": "COMPLETE",
+        "decisions": 48,
+        "selected": [
+          "L0243:S0",
+          "L0244:S0",
+          "L0268:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "reasoningDraft": null,
+      "draftMatchesOutput": null
+    },
+    {
+      "unit": "SEG-006",
+      "round": 1,
+      "unitOutcome": [
+        "COMPLETE",
+        null
+      ],
+      "output": {
+        "status": "COMPLETE",
+        "decisions": 48,
+        "selected": [
+          "L0277:S0",
+          "L0288:S0",
+          "L0305:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "reasoningDraft": null,
+      "draftMatchesOutput": null
+    },
+    {
+      "unit": "SEG-007",
+      "round": 1,
+      "unitOutcome": [
+        "COMPLETE",
+        null
+      ],
+      "output": {
+        "status": "COMPLETE",
+        "decisions": 48,
+        "selected": [
+          "L0335:S0",
+          "L0336:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "reasoningDraft": null,
+      "draftMatchesOutput": null
+    },
+    {
+      "unit": "SEG-008",
+      "round": 1,
+      "unitOutcome": [
+        "FAILED",
+        "PROTOCOL:EVIDENCE_REFS_INVALID"
+      ],
+      "output": {
+        "status": "COMPLETE",
+        "decisions": 2,
+        "selected": [
+          "L0396:S0",
+          "L0428:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "reasoningDraft": {
+        "status": "COMPLETE",
+        "decisions": 48,
+        "selected": [
+          "L0396:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "draftMatchesOutput": false
+    },
+    {
+      "unit": "SEG-009",
+      "round": 1,
+      "unitOutcome": [
+        "FAILED",
+        "PROTOCOL:COVERAGE_INCOMPLETE"
+      ],
+      "output": {
+        "status": "COMPLETE",
+        "decisions": 2,
+        "selected": [
+          "L0428:S0",
+          "L0451:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "reasoningDraft": null,
+      "draftMatchesOutput": null
+    },
+    {
+      "unit": "SEG-010",
+      "round": 1,
+      "unitOutcome": [
+        "FAILED",
+        "PROTOCOL:REPLY_OVER_CAP"
+      ],
+      "output": {
+        "status": "COMPLETE",
+        "decisions": 48,
+        "selected": [
+          "L0472:S0",
+          "L0483:S0",
+          "L0497:S0",
+          "L0514:S0"
+        ],
+        "rootKeys": [
+          "context",
+          "decisions",
+          "documentSha256",
+          "headings",
+          "instruction",
+          "instructionSha256",
+          "maxRounds",
+          "promptVersion",
+          "protocolVersion",
+          "retrievalAllowed",
+          "retrievals",
+          "round",
+          "stage",
+          "status",
+          "targets",
+          "unitId"
+        ]
+      },
+      "reasoningDraft": {
+        "status": "COMPLETE",
+        "decisions": 48,
+        "selected": [
+          "L0472:S0",
+          "L0483:S0",
+          "L0497:S0",
+          "L0514:S0"
+        ],
+        "rootKeys": [
+          "decisions",
+          "headings",
+          "protocolVersion",
+          "status"
+        ]
+      },
+      "draftMatchesOutput": false
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "artifact": "p7.f1.v6.d4.8-contract-comparison.v1",
+  "rules": "every violation per reply under the V2.2+ contract (NOT_SELECT may omit evidence); counted per reply that carries decisions",
+  "note": "D4.8 SEG-010 also echoed the whole request into its reply (REPLY_OVER_CAP, root keys invalid); the checker counts alias violations only.",
+  "runs": [
+    {
+      "run": "D4.5",
+      "request": "V2.1 prompt, one lines array",
+      "decisionReplies": 11,
+      "contextAliasesDecided": {
+        "replies": 2,
+        "aliases": 31
+      },
+      "missingDecisions": {
+        "replies": 1,
+        "aliases": 1
+      },
+      "headingsOver8Parts": {
+        "replies": 2,
+        "aliases": 3
+      },
+      "selectWithoutEvidence": {
+        "replies": 0,
+        "aliases": 0
+      },
+      "repliesWithoutViolation": 7
+    },
+    {
+      "run": "D4.7",
+      "request": "V2.3 prompt, one lines array",
+      "decisionReplies": 3,
+      "contextAliasesDecided": {
+        "replies": 3,
+        "aliases": 58
+      },
+      "missingDecisions": {
+        "replies": 1,
+        "aliases": 2
+      },
+      "headingsOver8Parts": {
+        "replies": 0,
+        "aliases": 0
+      },
+      "selectWithoutEvidence": {
+        "replies": 1,
+        "aliases": 4
+      },
+      "repliesWithoutViolation": 0
+    },
+    {
+      "run": "D4.8",
+      "request": "V2.4 prompt, request V3 targets/context",
+      "decisionReplies": 11,
+      "contextAliasesDecided": {
+        "replies": 1,
+        "aliases": 1
+      },
+      "missingDecisions": {
+        "replies": 3,
+        "aliases": 115
+      },
+      "headingsOver8Parts": {
+        "replies": 0,
+        "aliases": 0
+      },
+      "selectWithoutEvidence": {
+        "replies": 1,
+        "aliases": 1
+      },
+      "repliesWithoutViolation": 8
+    }
+  ]
+}

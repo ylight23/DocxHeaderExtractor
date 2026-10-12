@@ -1,0 +1,1007 @@
+{
+  "artifact": "p7.f1.v6.d4.5-run-summary.v1",
+  "planSha256": "8b13a1edc190cef053125365dba5e424ce678df52e9cf3d12b1367007645b0f6",
+  "Status": "INCOMPLETE",
+  "Finalization": "SKIPPED_OPEN_ALIASES",
+  "Assurance": "NONE",
+  "Calls": 11,
+  "reservedUsd": 0.056698059999999995,
+  "refusals": [
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES",
+    "HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+  ],
+  "units": [
+    {
+      "UnitId": "SEG-000",
+      "Stage": "SEGMENT",
+      "Status": "FAILED",
+      "Calls": 1,
+      "Failure": "PROTOCOL:COVERAGE_INCOMPLETE"
+    },
+    {
+      "UnitId": "SEG-001",
+      "Stage": "SEGMENT",
+      "Status": "COMPLETE",
+      "Calls": 1,
+      "Failure": null
+    },
+    {
+      "UnitId": "SEG-002",
+      "Stage": "SEGMENT",
+      "Status": "COMPLETE",
+      "Calls": 1,
+      "Failure": null
+    },
+    {
+      "UnitId": "SEG-003",
+      "Stage": "SEGMENT",
+      "Status": "COMPLETE",
+      "Calls": 1,
+      "Failure": null
+    },
+    {
+      "UnitId": "SEG-004",
+      "Stage": "SEGMENT",
+      "Status": "COMPLETE",
+      "Calls": 1,
+      "Failure": null
+    },
+    {
+      "UnitId": "SEG-005",
+      "Stage": "SEGMENT",
+      "Status": "COMPLETE",
+      "Calls": 1,
+      "Failure": null
+    },
+    {
+      "UnitId": "SEG-006",
+      "Stage": "SEGMENT",
+      "Status": "COMPLETE",
+      "Calls": 1,
+      "Failure": null
+    },
+    {
+      "UnitId": "SEG-007",
+      "Stage": "SEGMENT",
+      "Status": "COMPLETE",
+      "Calls": 1,
+      "Failure": null
+    },
+    {
+      "UnitId": "SEG-008",
+      "Stage": "SEGMENT",
+      "Status": "FAILED",
+      "Calls": 1,
+      "Failure": "PROTOCOL:EVIDENCE_REFS_INVALID"
+    },
+    {
+      "UnitId": "SEG-009",
+      "Stage": "SEGMENT",
+      "Status": "FAILED",
+      "Calls": 1,
+      "Failure": "PROTOCOL:COVERAGE_INCOMPLETE"
+    },
+    {
+      "UnitId": "SEG-010",
+      "Stage": "SEGMENT",
+      "Status": "FAILED",
+      "Calls": 1,
+      "Failure": "PROTOCOL:REPLY_OVER_CAP"
+    },
+    {
+      "UnitId": "SEG-011",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-012",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-013",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-014",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-015",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-016",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-017",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-018",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-019",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-020",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-021",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-022",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-023",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-024",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-025",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-026",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-027",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-028",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-029",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-030",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-031",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-032",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-033",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-034",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-035",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-036",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-037",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-038",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-039",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-040",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-041",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-042",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-043",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-044",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-045",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-046",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "SEG-047",
+      "Stage": "SEGMENT",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-000",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-001",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-002",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-003",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-004",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-005",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-006",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-007",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-008",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-009",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-010",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-011",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-012",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-013",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-014",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-015",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-016",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-017",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-018",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-019",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-020",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-021",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-022",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-023",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-024",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-025",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-026",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-027",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-028",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-029",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-030",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-031",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-032",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-033",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-034",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-035",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-036",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-037",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-038",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-039",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-040",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    },
+    {
+      "UnitId": "RESOLVE-041",
+      "Stage": "RESOLVE",
+      "Status": "INCOMPLETE",
+      "Calls": 0,
+      "Failure": "BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES"
+    }
+  ],
+  "score": {
+    "Status": "REFUSED",
+    "Reason": "RUN_HAS_UNRESOLVED:1971",
+    "Official": false,
+    "Label": null,
+    "atomF1": null,
+    "headingF1": null
+  },
+  "ledger": [
+    {
+      "Seq": 1,
+      "UnitId": "SEG-000",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "78a3693fc1851a22717c2297ed0d9126db2ebae5cdbfd892680b221a6e3e1e34",
+      "RequestBytes": 22774,
+      "ReserveUsd": 0.00494306,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "d65ff049b0e9aa077525db22d586da30d5989f3ed5791e4930fccfd622901bc4",
+      "RawStoreKey": "d65ff049b0e9aa077525db22d586da30d5989f3ed5791e4930fccfd622901bc4",
+      "FinishReason": "stop",
+      "PromptTokens": "7021",
+      "CompletionTokens": "7189",
+      "ReasoningTokens": "6422",
+      "ProviderCostUsd": 0.0011452,
+      "ComputedCostUsd": 0.0011452,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "Seq": 2,
+      "UnitId": "SEG-001",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "486cc33b4c11b670ae858e35ab387b1b15dd43a621c7f9c0a0d2123fbc29f54a",
+      "RequestBytes": 27397,
+      "ReserveUsd": 0.0050817499999999995,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "dfd03b949b7a929d2e86e3d5c1a3fc269298fe9d3a1025ab9374fcb676ab74df",
+      "RawStoreKey": "dfd03b949b7a929d2e86e3d5c1a3fc269298fe9d3a1025ab9374fcb676ab74df",
+      "FinishReason": "stop",
+      "PromptTokens": "8761",
+      "CompletionTokens": "5692",
+      "ReasoningTokens": "2660",
+      "ProviderCostUsd": 0.00100279,
+      "ComputedCostUsd": 0.00100279,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "Seq": 3,
+      "UnitId": "SEG-002",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "d1f1c6bb076bfa406428d6db7003a57cd0302463c171b0c8790ad587839c3823",
+      "RequestBytes": 28545,
+      "ReserveUsd": 0.00511619,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "2d613ed9c0516ab712f1473011dfba17279004c9da28e15635e7c6343439bbe3",
+      "RawStoreKey": "2d613ed9c0516ab712f1473011dfba17279004c9da28e15635e7c6343439bbe3",
+      "FinishReason": "stop",
+      "PromptTokens": "8988",
+      "CompletionTokens": "10821",
+      "ReasoningTokens": "7359",
+      "ProviderCostUsd": 0.00167637,
+      "ComputedCostUsd": 0.00167637,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "Seq": 4,
+      "UnitId": "SEG-003",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "74fbe02372c50248cb31e4e38c8771d9478caac0c7b347fe1c6883f2b62c416c",
+      "RequestBytes": 30562,
+      "ReserveUsd": 0.0051767,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "e8ed767936dded48a76eada5cac72b89ca2dded74db9f60af4a9b314c64702e2",
+      "RawStoreKey": "e8ed767936dded48a76eada5cac72b89ca2dded74db9f60af4a9b314c64702e2",
+      "FinishReason": "stop",
+      "PromptTokens": "9268",
+      "CompletionTokens": "6765",
+      "ReasoningTokens": "5374",
+      "ProviderCostUsd": 0.00115749,
+      "ComputedCostUsd": 0.00115749,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "Seq": 5,
+      "UnitId": "SEG-004",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "06e56e9d10b8528d1541c6ef840142030a8f595823b1629eadcf514e03845a12",
+      "RequestBytes": 30413,
+      "ReserveUsd": 0.00517223,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "5693fe67ade04d300d12ee18206d6ae24b2322f2b8d967d4353dac21fcd32247",
+      "RawStoreKey": "5693fe67ade04d300d12ee18206d6ae24b2322f2b8d967d4353dac21fcd32247",
+      "FinishReason": "stop",
+      "PromptTokens": "9192",
+      "CompletionTokens": "5982",
+      "ReasoningTokens": "4690",
+      "ProviderCostUsd": 0.00105342,
+      "ComputedCostUsd": 0.00105342,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "Seq": 6,
+      "UnitId": "SEG-005",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "39b819526411a218e5bfd5c5f270ef898a837fbe811be6d201b0e62651936bec",
+      "RequestBytes": 30803,
+      "ReserveUsd": 0.00518393,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "029ab97191756bf072ce40611e3a7edf654ff00df2f169a572dd0b090edb49f8",
+      "RawStoreKey": "029ab97191756bf072ce40611e3a7edf654ff00df2f169a572dd0b090edb49f8",
+      "FinishReason": "stop",
+      "PromptTokens": "9282",
+      "CompletionTokens": "5219",
+      "ReasoningTokens": "4407",
+      "ProviderCostUsd": 0.00095693,
+      "ComputedCostUsd": 0.0009569299999999999,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "Seq": 7,
+      "UnitId": "SEG-006",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "056a66153447d08e2ada8bef8499bf418d734f247e638e1bdbcac9a0610da37c",
+      "RequestBytes": 31549,
+      "ReserveUsd": 0.00520631,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "c17632e865c0e0a3191d1d52a61061cbbc3077d3b15ff12ca958051a317b7662",
+      "RawStoreKey": "c17632e865c0e0a3191d1d52a61061cbbc3077d3b15ff12ca958051a317b7662",
+      "FinishReason": "stop",
+      "PromptTokens": "9481",
+      "CompletionTokens": "4545",
+      "ReasoningTokens": "3727",
+      "ProviderCostUsd": 0.00087528,
+      "ComputedCostUsd": 0.00087528,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "Seq": 8,
+      "UnitId": "SEG-007",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "3e8f4987ec82db1d6e78f9b8a938f2f2ef017e433a392be4ea2fbdd1038ee790",
+      "RequestBytes": 31750,
+      "ReserveUsd": 0.00521234,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "4c61a4ab497abb57c40d0fd6222d9999a4dfc05becca57241c117b7c7cdf3201",
+      "RawStoreKey": "4c61a4ab497abb57c40d0fd6222d9999a4dfc05becca57241c117b7c7cdf3201",
+      "FinishReason": "stop",
+      "PromptTokens": "9554",
+      "CompletionTokens": "4609",
+      "ReasoningTokens": "3817",
+      "ProviderCostUsd": 0.00088579,
+      "ComputedCostUsd": 0.00088579,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "Seq": 9,
+      "UnitId": "SEG-008",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "9c64953eb27409044a9451a96622649ecfad07b514915e6be55e7b11b1bcb4bb",
+      "RequestBytes": 31455,
+      "ReserveUsd": 0.00520349,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "1003aa9f5c90eb3aea644ad8e33780b9e29d27b78fb724d2b18296aa2c034ef8",
+      "RawStoreKey": "1003aa9f5c90eb3aea644ad8e33780b9e29d27b78fb724d2b18296aa2c034ef8",
+      "FinishReason": "stop",
+      "PromptTokens": "9475",
+      "CompletionTokens": "4589",
+      "ReasoningTokens": "4492",
+      "ProviderCostUsd": 0.00088082,
+      "ComputedCostUsd": 0.00088082,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "Seq": 10,
+      "UnitId": "SEG-009",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "4501bf1a5342183359121f5cea723cfa131240831f150e4513f9b22f3efa0a51",
+      "RequestBytes": 31369,
+      "ReserveUsd": 0.0052009099999999996,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "e8f78eb059b3f840663efbf3072b7de14dce2999865499d46efdc7dbd17a645e",
+      "RawStoreKey": "e8f78eb059b3f840663efbf3072b7de14dce2999865499d46efdc7dbd17a645e",
+      "FinishReason": "stop",
+      "PromptTokens": "9519",
+      "CompletionTokens": "4410",
+      "ReasoningTokens": "4206",
+      "ProviderCostUsd": 0.00085887,
+      "ComputedCostUsd": 0.00085887,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "Seq": 11,
+      "UnitId": "SEG-010",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "d0070669dbab4c82c484961756fd5a055eb47007fb473fd03da797040f5eeb08",
+      "RequestBytes": 31377,
+      "ReserveUsd": 0.00520115,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "64edd3f902893b01e8fad900c58c806ac48b0b1ab398d175e711c29d78b96432",
+      "RawStoreKey": "64edd3f902893b01e8fad900c58c806ac48b0b1ab398d175e711c29d78b96432",
+      "FinishReason": "stop",
+      "PromptTokens": "9601",
+      "CompletionTokens": "15280",
+      "ReasoningTokens": "5662",
+      "ProviderCostUsd": 0.00227443,
+      "ComputedCostUsd": 0.00227443,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER"
+    }
+  ]
+}
