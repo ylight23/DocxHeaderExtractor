@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "APPROVED",
+  "planFile": "p7.f1.v6.d4.10-canary-plan.v1.json",
+  "planSha256": "8beb3fd10e428e050c61ea3aafd8ff71f56ccafb62794b26e1c9770c8c9a0d91",
+  "codeCommit": "c75d18da9b523d996d6a04e8095ae19b466de411",
+  "authorityId": "SRC-095",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 18,
+  "ceilingUsd": 0.6,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
+  "dataSharing": {
+    "documentPublicity": "IETF RFC 9114, published publicly by the IETF",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "allow: the request does not declare data_collection (pinned configuration), so the OpenRouter default allow applies; public RFC 9114 (SRC-095) only. Accepted in the GPT-6 technical review and adopted by the repository owner's run approval.",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ]
+  },
+  "approvedBy": "ylight23 (repository owner; run approval in own words). Technical review: GPT-6 (AI reviewer), recorded in approvalText, not a signature.",
+  "approvedAtUtc": "2026-10-12T15:38:58.8140736Z",
+  "approvalText": "[Repository owner ylight23, own words, run approval]\nCHO PHÉP CHẠY VÀ PUSH RAW RESPONSE\n(Recorded notes: the owner approves running the D4.10 canary (plan 8beb3fd1, at most 18 posts and $0.60 in total, 9 posts and $0.30 per arm, retry 0) and pushing the raw responses afterwards. The GPT-6 review below recommended safe store only for raw responses; the owner's decision to push them overrides that recommendation. The owner did not restate the three open data-policy items or data_collection; they are accepted in the GPT-6 technical review below and adopted by this run approval, as for plans fe378a6a and 8b13a1ed.)\n\n[AI technical review, GPT-6, excerpt verbatim; not a signature of the repository owner]\nAPPROVE D4.10 — TECHNICAL REVIEW ONLY.\nGPT-6 phê duyệt về mặt kỹ thuật kế hoạch canary D4.10, plan SHA-256 8beb3fd10e428e050c61ea3aafd8ff71f56ccafb62794b26e1c9770c8c9a0d91, code commit c75d18da9b523d996d6a04e8095ae19b466de411.\nPhạm vi giới hạn ở SRC-095, task A-STRUCTURAL-OCCURRENCES, hai arm B/C và ba segment SEG-001, SEG-008, SEG-009; tổng tối đa 18 POST, reserve tối đa 0,60 USD; không retry, không fallback.\nĐối với tài liệu công khai này, người rà soát kỹ thuật chấp nhận ba rủi ro data policy còn mở, với ZDR=false và data_collection=allow. Raw response và reasoning chỉ được lưu trong safe store ngoài repository.\nĐây là quyết định rà soát của AI, không phải chữ ký hoặc phê duyệt chi tiêu của chủ repository. Chỉ được chạy khi có authorization APPROVED từ người có thẩm quyền, qua kiểm toán và chưa có consumed marker.",
+  "approvalSha256": "f0c76646f212c8787ce165c4812be49aaa54df97fdb7f2f1c88a22354aab3151"
+}
