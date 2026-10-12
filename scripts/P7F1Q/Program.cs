@@ -606,6 +606,16 @@ switch (args[0])
         if (args.Length != 3) throw new ArgumentException("d45-plan <repo-root> <artifact-dir>");
         D45Plan.Run(args[1], args[2]);
         break;
+    case "d49-dryrun":
+        // Issue #9 D4.9 (offline): d49-dryrun <repo-root> <artifact-dir>. Variants A/B/C with scripted models. No network call.
+        if (args.Length != 3) throw new ArgumentException("d49-dryrun <repo-root> <artifact-dir>");
+        D49DryRun.Run(args[1], args[2]);
+        break;
+    case "d49-replay":
+        // Issue #9 D4.9 (offline): d49-replay <repo-root> <run-dir-with-raw> <out>. Representation-change replay. No network call.
+        if (args.Length != 4) throw new ArgumentException("d49-replay <repo-root> <run-dir> <out>");
+        D49DryRun.Replay(args[1], args[2], args[3]);
+        break;
     case "d45-run":
         // Issue #9 D4.5: d45-run <repo-root> <plan-path> <confirmed-plan-sha> <authorization-path> <safe-root>. Sends requests; needs an APPROVED authorization.
         if (args.Length != 6) throw new ArgumentException("d45-run <repo-root> <plan-path> <confirmed-plan-sha> <authorization-path> <safe-root>");
