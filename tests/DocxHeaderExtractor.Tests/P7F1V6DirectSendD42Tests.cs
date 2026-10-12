@@ -262,6 +262,21 @@ public sealed class P7F1V6DirectSendD42Tests : IDisposable
     }
 
     [Fact]
+    public void RecordedCanaryResponse_FailsTheV1ParserOnTheDecisionKey()
+    {
+        // The one real canary T1 response (2026-10-12). Qwen named the decision key "line"; the V1 system prompt never named that key.
+        // This records the parser's verdict on real output; it is not a judgement of the model's selections.
+        var path = Path.Combine(TestRepository.Root(), PinnedDir, P7F1V6DirectCanarySend.ResponseFile);
+        using var doc = JsonDocument.Parse(File.ReadAllText(path));
+        var content = doc.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString()!;
+        var lines = new[] { "S0001", "S0002", "S0003", "S0004" }.Select(a => new P7F1V6Direct.Line(a, 1, "x")).ToList();
+        var r = P7F1V6Direct.Parse(content, lines, 0, 4);
+        Assert.False(r.Ok);
+        Assert.Equal("DECISION_KEYS_INVALID", r.Failure);
+        Assert.DoesNotContain("\"alias\"", P7F1V6Direct.SystemPrompt, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Pinned_BodyRequestsNoReasoningAndTheApprovedRoute()
     {
         var body = File.ReadAllText(Path.Combine(TestRepository.Root(), PinnedDir, P7F1V6DirectCanarySend.BodyFile));

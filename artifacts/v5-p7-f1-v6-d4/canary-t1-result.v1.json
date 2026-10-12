@@ -1,0 +1,29 @@
+{
+  "status": "HTTP_OK",
+  "sent": true,
+  "attempts": 1,
+  "httpStatus": 200,
+  "boundarySha256": "681ecdd320d346ddc6d11ef9ecfa22b8f4b599ee4ce64e256f9da9473f8aa645",
+  "boundaryBytes": 1804,
+  "boundaryMatchesPinned": true,
+  "responseSha256": "98a4e1e303c9d49bbc42aa6f22c7e90a41d3e3578cd35cd1ee14b51fdd4f034d",
+  "responseFile": "canary-t1-response.raw.json",
+  "apiKeyEchoedInResponse": false,
+  "providerReportedModel": "qwen/qwen3.7-flash",
+  "providerReportedEndpoint": "Alibaba",
+  "finishReason": "stop",
+  "usage": {
+    "promptTokens": 454,
+    "completionTokens": 1695,
+    "reasoningTokens": 1499,
+    "visibleTokens": 196,
+    "providerCostUsd": 0.00023397,
+    "computedCostUsd": 0.00023396999999999998
+  },
+  "auditCodes": [
+    "OK"
+  ],
+  "reasoningNote": "UNKNOWN means the response did not report reasoning tokens. It does not establish whether thinking was on or off.",
+  "worstCaseReserveUsd": 0.00431396,
+  "ceilingUsd": 0.02
+}
