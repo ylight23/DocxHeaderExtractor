@@ -1,0 +1,122 @@
+{
+  "artifact": "p7.f1.v6.d4.10-canary-plan.v1",
+  "approvalToSend": false,
+  "codeCommit": "c75d18da9b523d996d6a04e8095ae19b466de411",
+  "authorityId": "SRC-095",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "universeSha256": "1eee2105941098eb50e79fd866fddeb36718c49ca02da9906aeaaf2ba3673ead",
+  "evidenceStoreSha256": "fb550ed7f4b9e95cb943be9fe358001d78cad5155cc109363001e1cb8927c569",
+  "atoms": 2302,
+  "evidenceParserVersion": "P7_F1Q_READ_ONLY_EVIDENCE_TOOLS_V3",
+  "goldForScorerOnly": {
+    "path": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+    "sha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+    "sentToProvider": false,
+    "use": "offline diagnostic on the 144 targets only"
+  },
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "evaluationLabel": "Development canary — segments chosen from previous errors; Stage 1 only; not an F1 estimate",
+  "instruction": "Trích xuất tất cả các heading thực sự tổ chức cấu trúc tài liệu, xét theo vai trò của từng lần xuất hiện tại chính vị trí đó.\nChọn những dòng hoặc nhóm dòng có chức năng đặt tên, mở đầu hoặc phân chia một phần nội dung của tài liệu.\nKhông chọn các dòng trong mục lục chỉ liệt kê hoặc dẫn chiếu đến heading xuất hiện ở vị trí khác. Tuy nhiên, vẫn xem xét các heading thực sự tổ chức chính mục lục, chỉ mục và những phần khác của tài liệu.\nSử dụng văn bản, bố cục và ngữ cảnh để xác định chức năng của từng lần xuất hiện. Khi chưa đủ bằng chứng, hãy yêu cầu thêm ngữ cảnh hoặc báo chưa thể quyết định thay vì suy đoán.",
+  "instructionSha256": "c0adeaa57a791fb57eb254f334435eaf29aa398da71a21f74159e72ecdac76ab",
+  "requestVersion": "P7_F1_V6_SELECT_REQUEST_V2",
+  "model": "qwen/qwen3.7-flash",
+  "route": {
+    "only": [
+      "alibaba"
+    ],
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "zdr": "false (owner decision, accepted again in the authorization)",
+  "maxTokens": 32768,
+  "reasoning": "not declared (endpoint default)",
+  "retries": 0,
+  "unit": 48,
+  "overlap": 20,
+  "stages": "SELECT, stage SEGMENT only; no RESOLVE, FINALIZE or GROUP",
+  "segments": [
+    "SEG-001",
+    "SEG-008",
+    "SEG-009"
+  ],
+  "order": "per segment: arm B, then arm C",
+  "arms": [
+    {
+      "arm": "B",
+      "format": "Objects",
+      "responseVersion": "P7_F1_V6_SELECT_OBJECTS_V1",
+      "promptSha256": "1ae3392a5de67572dceef15f5421a63a3f3b6b88084a03f2300376dae17ddcbe",
+      "budget": {
+        "maxCalls": 9,
+        "ceilingUsd": 0.3,
+        "maxRequestBytes": 131072
+      },
+      "earlyStop": 3,
+      "firstRequests": [
+        {
+          "unitId": "SEG-001",
+          "sha256": "771e9cfd9fe8c44cd59b8adeae3ea8a94f75f4ad7d4d13675938a9d384078ae0",
+          "bytes": 27097
+        },
+        {
+          "unitId": "SEG-008",
+          "sha256": "951b4680d6244062ed6963c4279e1080bf94a330f627f2fc0287f81284e6d2f6",
+          "bytes": 31155
+        },
+        {
+          "unitId": "SEG-009",
+          "sha256": "2bbc437f14f9cd40b56ef37a204817d42ed15f085628a88e7c2d52c09ffa94b7",
+          "bytes": 31069
+        }
+      ],
+      "requestPlanSha256": "b61947fd366d6cfbd5f0c53363e702e97af54d80ec71a10ce5fa3149b443b8dc"
+    },
+    {
+      "arm": "C",
+      "format": "Compact",
+      "responseVersion": "P7_F1_V6_SELECT_COMPACT_V1",
+      "promptSha256": "7142c22c0a57f3ad2119ff23699dfc57fdae5ebfcbe108dad425db04d12b5b86",
+      "budget": {
+        "maxCalls": 9,
+        "ceilingUsd": 0.3,
+        "maxRequestBytes": 131072
+      },
+      "earlyStop": 3,
+      "firstRequests": [
+        {
+          "unitId": "SEG-001",
+          "sha256": "d9d450c9c3c3ac9434c00bf2ae89ac7cf94370361bd2ea589528e0f61a133739",
+          "bytes": 28116
+        },
+        {
+          "unitId": "SEG-008",
+          "sha256": "3b125f43aa7abfbcbda904b5923a986f4d5f62ceafa67b62bf301be584b9684e",
+          "bytes": 32174
+        },
+        {
+          "unitId": "SEG-009",
+          "sha256": "bdc3ad4d2a92954bc8cf61eadbb96c86b9a55a72e92e46d35cc4a50bc1da683f",
+          "bytes": 32088
+        }
+      ],
+      "requestPlanSha256": "afd6982bc1e5e7a7427eb7f64010fd6c208b4e898123302d3da5e199dd09b31c"
+    }
+  ],
+  "budget": {
+    "maxCalls": 18,
+    "ceilingUsd": 0.6,
+    "maxRequestBytes": 131072,
+    "perArm": "each arm has its own budget and early stop; totals are the sum"
+  },
+  "rawResponses": "safe store outside the repository, one run directory per arm",
+  "liveAuthorization": {
+    "required": true,
+    "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+    "status": "APPROVED",
+    "campaigns": 1
+  }
+}

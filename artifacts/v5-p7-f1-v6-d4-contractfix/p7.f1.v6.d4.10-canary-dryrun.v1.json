@@ -1,0 +1,280 @@
+{
+  "artifact": "p7.f1.v6.d4.10-canary-dryrun.v1",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.10-canary-plan.v1.json",
+  "planSha256": "8beb3fd10e428e050c61ea3aafd8ff71f56ccafb62794b26e1c9770c8c9a0d91",
+  "planVerifiesNow": true,
+  "codeCommit": "c75d18da9b523d996d6a04e8095ae19b466de411",
+  "armRequestPlans": [
+    {
+      "Arm": "B",
+      "requestPlanSha256": "b61947fd366d6cfbd5f0c53363e702e97af54d80ec71a10ce5fa3149b443b8dc"
+    },
+    {
+      "Arm": "C",
+      "requestPlanSha256": "afd6982bc1e5e7a7427eb7f64010fd6c208b4e898123302d3da5e199dd09b31c"
+    }
+  ],
+  "reserveMatrix": [
+    {
+      "arm": "B",
+      "segments": [
+        {
+          "segment": "SEG-001",
+          "firstRequestBytes": 27097,
+          "firstReserveUsd": 0.005073,
+          "worstFinalRoundBytes": 130570,
+          "worstWithinCap": true,
+          "worstReserveUsd": 0.026164
+        },
+        {
+          "segment": "SEG-008",
+          "firstRequestBytes": 31155,
+          "firstReserveUsd": 0.005194,
+          "worstFinalRoundBytes": 134611,
+          "worstWithinCap": false,
+          "worstReserveUsd": 0.026568
+        },
+        {
+          "segment": "SEG-009",
+          "firstRequestBytes": 31069,
+          "firstReserveUsd": 0.005192,
+          "worstFinalRoundBytes": 134486,
+          "worstWithinCap": false,
+          "worstReserveUsd": 0.026556
+        }
+      ]
+    },
+    {
+      "arm": "C",
+      "segments": [
+        {
+          "segment": "SEG-001",
+          "firstRequestBytes": 28116,
+          "firstReserveUsd": 0.005103,
+          "worstFinalRoundBytes": 131589,
+          "worstWithinCap": false,
+          "worstReserveUsd": 0.026266
+        },
+        {
+          "segment": "SEG-008",
+          "firstRequestBytes": 32174,
+          "firstReserveUsd": 0.016325,
+          "worstFinalRoundBytes": 135630,
+          "worstWithinCap": false,
+          "worstReserveUsd": 0.02667
+        },
+        {
+          "segment": "SEG-009",
+          "firstRequestBytes": 32088,
+          "firstReserveUsd": 0.016316,
+          "worstFinalRoundBytes": 135505,
+          "worstWithinCap": false,
+          "worstReserveUsd": 0.026658
+        }
+      ]
+    }
+  ],
+  "simulations": [
+    {
+      "simulation": "ORACLE_FROM_GOLD (capacity only)",
+      "arms": [
+        {
+          "arm": "B",
+          "calls": 3,
+          "reservedUsd": 0.015459,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 1,
+              "selected": 0
+            },
+            {
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 1,
+              "selected": 1
+            },
+            {
+              "UnitId": "SEG-009",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 1,
+              "selected": 2
+            }
+          ]
+        },
+        {
+          "arm": "C",
+          "calls": 3,
+          "reservedUsd": 0.037744,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 1,
+              "selected": 0
+            },
+            {
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 1,
+              "selected": 1
+            },
+            {
+              "UnitId": "SEG-009",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 1,
+              "selected": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "simulation": "ALL_NEGATIVE",
+      "arms": [
+        {
+          "arm": "B",
+          "calls": 3,
+          "reservedUsd": 0.015459,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 1,
+              "selected": 0
+            },
+            {
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 1,
+              "selected": 0
+            },
+            {
+              "UnitId": "SEG-009",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 1,
+              "selected": 0
+            }
+          ]
+        },
+        {
+          "arm": "C",
+          "calls": 3,
+          "reservedUsd": 0.037744,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 1,
+              "selected": 0
+            },
+            {
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 1,
+              "selected": 0
+            },
+            {
+              "UnitId": "SEG-009",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 1,
+              "selected": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "simulation": "RETRIEVAL_EVERY_ROUND (two searches, then answer)",
+      "arms": [
+        {
+          "arm": "B",
+          "calls": 9,
+          "reservedUsd": 0.121192,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 3,
+              "selected": 0
+            },
+            {
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 3,
+              "selected": 1
+            },
+            {
+              "UnitId": "SEG-009",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 3,
+              "selected": 2
+            }
+          ]
+        },
+        {
+          "arm": "C",
+          "calls": 9,
+          "reservedUsd": 0.144089,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 3,
+              "selected": 0
+            },
+            {
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 3,
+              "selected": 1
+            },
+            {
+              "UnitId": "SEG-009",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "Calls": 3,
+              "selected": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only. The oracle reads the Gold for capacity; it is not a model result.",
+    "Each arm has its own 9-post, $0.30 budget and its own early stop. A request over 131,072 B or a reserve over the arm ceiling is refused, never trimmed.",
+    "Worst final-round bytes assume the 300 largest lines of the document were retrieved; real retrievals are usually smaller."
+  ]
+}
