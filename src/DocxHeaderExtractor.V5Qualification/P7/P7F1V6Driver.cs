@@ -15,7 +15,14 @@ internal sealed class P7F1V6RawStore
     readonly Dictionary<string, byte[]> items = new(StringComparer.Ordinal);
     readonly string? dir;
 
-    public P7F1V6RawStore(string? dir = null) { this.dir = dir; if (dir is not null) Directory.CreateDirectory(dir); }
+    readonly P7F1V6SafeRawStore? safe;
+
+    public P7F1V6RawStore(string? dir = null, P7F1V6SafeRawStore? safe = null)
+    {
+        this.dir = dir;
+        this.safe = safe;
+        if (dir is not null) Directory.CreateDirectory(dir);
+    }
 
     public IReadOnlyDictionary<string, byte[]> Items => items;
 
@@ -25,7 +32,9 @@ internal sealed class P7F1V6RawStore
         if (!items.ContainsKey(sha))
         {
             items[sha] = bytes;
-            if (dir is not null)
+            // When a safe store is given, every item goes there and is read back by hash; the legacy directory is not used.
+            if (safe is not null) safe.Put(bytes);
+            else if (dir is not null)
             {
                 var path = Path.Combine(dir, sha + ".bin");
                 if (!File.Exists(path)) File.WriteAllBytes(path, bytes);
