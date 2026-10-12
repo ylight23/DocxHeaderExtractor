@@ -1,0 +1,98 @@
+{
+  "artifact": "p7.f1.v6.d4.1-canary-t1-request.v1",
+  "status": "BUILT_NOT_SENT",
+  "generatedAtCommit": "13bbf5e130f70f4d8557f9e0c2252c07e5f237dc",
+  "model": "qwen/qwen3.7-flash",
+  "route": {
+    "only": [
+      "alibaba"
+    ],
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "data": {
+    "kind": "SYNTHETIC_PUBLIC_FOUR_LINES",
+    "syntheticTextSha256": "58fff319fb5010670e52de6262d1fedaf75432f6330ddee7f88c5497c50098a6",
+    "lines": [
+      {
+        "Alias": "S0001",
+        "Text": "Mục A. Phần mở đầu giả lập"
+      },
+      {
+        "Alias": "S0002",
+        "Text": "Đây là đoạn văn bản thường dùng để kiểm tra độ dài."
+      },
+      {
+        "Alias": "S0003",
+        "Text": "Mục B. Phần thứ hai giả lập"
+      },
+      {
+        "Alias": "S0004",
+        "Text": "Một dòng nội dung khác, không phải tiêu đề."
+      }
+    ]
+  },
+  "requestBodyFile": "canary-t1-request.body.json",
+  "requestSha256": "681ecdd320d346ddc6d11ef9ecfa22b8f4b599ee4ce64e256f9da9473f8aa645",
+  "requestBytes": 1804,
+  "byteLengthMatchesBuild": true,
+  "maxTokens": 32768,
+  "reasoningDeclared": false,
+  "retry": 0,
+  "postsApproved": 1,
+  "ceilingUsd": 0.02,
+  "worstCaseReserveUsd": 0.00431396,
+  "checks": [
+    {
+      "Code": "REQUEST_BYTES",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Code": "REQUEST_SHA",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Code": "MAX_TOKENS",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Code": "NO_REASONING_DECLARED",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Code": "ROUTE",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Code": "MODEL",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Code": "USAGE_INCLUDED",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Code": "RESERVE_UNDER_CEILING",
+      "Passed": true,
+      "Reason": "OK"
+    }
+  ],
+  "notSent": "No POST has been made. The send path does not exist in this commit; a separate reviewed step is required.",
+  "recordedAfterSend": [
+    "usage (prompt, completion, reasoning_tokens if any, UNKNOWN if absent)",
+    "finish_reason",
+    "usage.cost",
+    "endpoint info",
+    "response SHA"
+  ]
+}

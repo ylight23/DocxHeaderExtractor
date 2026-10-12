@@ -64,4 +64,41 @@ internal static class P7F1V6DirectCanary
         var ready = checks.All(c => c.Passed);
         return new Built(req, checks, ready, reserve, syntheticSha);
     }
+
+    /// <summary>Writes the exact UTF-8 HTTP body and its audit record. Nothing is sent. The body file is the pinned object: its SHA is the
+    /// request SHA, and a reader recomputes it from the file bytes.</summary>
+    public static string WriteArtifact(string dir, string generatedAtCommit)
+    {
+        var built = Build();
+        Directory.CreateDirectory(dir);
+        var bodyPath = Path.Combine(dir, "canary-t1-request.body.json");
+        File.WriteAllBytes(bodyPath, Encoding.UTF8.GetBytes(built.Request.Body));
+        var onDisk = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(bodyPath)));
+        var audit = new
+        {
+            artifact = "p7.f1.v6.d4.1-canary-t1-request.v1",
+            status = built.ReadyForReviewedSend ? "BUILT_NOT_SENT" : "NOT_READY",
+            generatedAtCommit,
+            model = P7F1V6Protocol.ChatModel,
+            route = new { only = new[] { P7F1V6Protocol.ProviderTag }, ignore = P7F1V6Protocol.DefaultIgnore, allowFallbacks = false, requireParameters = true },
+            data = new { kind = "SYNTHETIC_PUBLIC_FOUR_LINES", syntheticTextSha256 = built.SyntheticSha256, lines = SyntheticLines.Select(l => new { l.Alias, l.Text }) },
+            requestBodyFile = "canary-t1-request.body.json",
+            requestSha256 = onDisk,
+            requestBytes = new FileInfo(bodyPath).Length,
+            byteLengthMatchesBuild = onDisk == built.Request.Sha256,
+            maxTokens = P7F1V6Protocol.MaxTokens,
+            reasoningDeclared = false,
+            retry = 0,
+            postsApproved = 1,
+            ceilingUsd = CeilingUsd,
+            worstCaseReserveUsd = built.ReserveUsd,
+            checks = built.Checks.Select(c => new { c.Code, c.Passed, c.Reason }),
+            notSent = "No POST has been made. The send path does not exist in this commit; a separate reviewed step is required.",
+            recordedAfterSend = new[] { "usage (prompt, completion, reasoning_tokens if any, UNKNOWN if absent)", "finish_reason", "usage.cost", "endpoint info", "response SHA" },
+        };
+        File.WriteAllText(Path.Combine(dir, "canary-t1-request.audit.v1.json"), JsonSerializer.Serialize(audit,
+            new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }) + "\n",
+            new UTF8Encoding(false));
+        return onDisk;
+    }
 }

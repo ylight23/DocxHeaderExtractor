@@ -110,7 +110,6 @@ public sealed class P7F1V6DirectD4Tests : IDisposable
     [InlineData("{\"protocolVersion\":\"P7_F1_V6_DIRECT_RESPONSE_V1\",\"decisions\":[],\"extra\":1}", "ROOT_KEYS_INVALID")]
     [InlineData("{\"protocolVersion\":\"WRONG\",\"decisions\":[]}", "PROTOCOL_VERSION_INVALID")]
     [InlineData("{\"protocolVersion\":\"P7_F1_V6_DIRECT_RESPONSE_V1\",\"decisions\":[{\"alias\":\"S0001\",\"decision\":\"SELECT\",\"evidenceRefs\":[\"S0001\"]},{\"alias\":\"S0001\",\"decision\":\"SELECT\",\"evidenceRefs\":[\"S0001\"]}]}", "ALIAS_LISTED_TWICE")]
-    [InlineData("{\"protocolVersion\":\"P7_F1_V6_DIRECT_RESPONSE_V1\",\"decisions\":[{\"alias\":\"S\\u0030001\",\"decision\":\"SELECT\",\"evidenceRefs\":[\"S0001\"]}]}", "ESCAPED_UNICODE_NOT_ALLOWED")]
     [InlineData("not json", "REPLY_NOT_JSON")]
     public void Reply_MalformedShapes_AreRefused(string reply, string code)
     {
@@ -151,10 +150,81 @@ public sealed class P7F1V6DirectD4Tests : IDisposable
         return g.RootElement.GetProperty("semantic").GetProperty("claims").EnumerateArray().Select(c => c.GetProperty("sourceAlias").GetString()!).ToList();
     }
 
+    const string Doc1Source = "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14";
+    const string Doc1Universe = "309bfc5571c2eb0567d296c730a8348e6ee2b7460e55e01931fd1841fb8346ba";
+
+    static P7F1V6DirectScorer.RunEvidence Ev(IEnumerable<string> predicted, string source = Doc1Source, string universe = Doc1Universe,
+        string[]? missing = null, string[]? unexpected = null) =>
+        new(source, universe, predicted.ToList(), missing ?? Array.Empty<string>(), unexpected ?? Array.Empty<string>());
+
+    [Fact]
+    public void Scorer_RefusesASourceOrUniverseOrCoverageThatDoesNotMatch()
+    {
+        var gold = GoldClaims("DOC-0001");
+        var root = TestRepository.Root();
+        Assert.Equal("SOURCE_SHA_MISMATCH", P7F1V6DirectScorer.Score(root, Registry, "DOC-0001", Ev(gold, source: new string('0', 64))).Reason);
+        Assert.Equal("UNIVERSE_SHA_MISMATCH", P7F1V6DirectScorer.Score(root, Registry, "DOC-0001", Ev(gold, universe: new string('0', 64))).Reason);
+        Assert.Equal("COVERAGE_INCOMPLETE", P7F1V6DirectScorer.Score(root, Registry, "DOC-0001", Ev(gold, missing: new[] { "S0002" })).Reason);
+        Assert.Equal("COVERAGE_INCOMPLETE", P7F1V6DirectScorer.Score(root, Registry, "DOC-0001", Ev(gold, unexpected: new[] { "S9999" })).Reason);
+    }
+
+    [Fact]
+    public void Scorer_RefusesWhenOccurrenceAndSemanticUnitsDiffer()
+    {
+        var copy = CopyGoldAuthority("DOC-0001");
+        var goldPath = Path.Combine(copy, "eval", "a99-closed-loop", "gold-current", "documents", "DOC-0001.gold.v1.json");
+        var text = File.ReadAllText(goldPath);
+        // The occurrence claims come after the semantic claims in the file; the last S0001 alias is the occurrence one.
+        var at = text.LastIndexOf("\"sourceAlias\": \"S0001\"", StringComparison.Ordinal);
+        Assert.True(at > 0);
+        var edited = text[..at] + "\"sourceAlias\": \"S9999\"" + text[(at + "\"sourceAlias\": \"S0001\"".Length)..];
+        File.WriteAllText(goldPath, edited);
+        var newSha = Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(goldPath)));
+        var reg = Path.Combine(copy, Registry);
+        File.WriteAllText(reg, File.ReadAllText(reg).Replace("3904295073179700f3c74e60d1f0b16eea19937c8aaea7ee5962ff0a6d9f2fcc", newSha));
+        var r = P7F1V6DirectScorer.Score(copy, Registry, "DOC-0001", Ev(new[] { "S0001" }));
+        Assert.False(r.Scored);
+        Assert.Equal("UNIT_MISMATCH_OCCURRENCE_VS_SEMANTIC", r.Reason);
+    }
+
+    [Fact]
+    public void Unicode_EscapesThatDecodeToTheAliasAreAccepted()
+    {
+        // A valid JSON escape is data like any other: S0001 decodes to S0001 and is accepted.
+        var reply = "{\"protocolVersion\":\"P7_F1_V6_DIRECT_RESPONSE_V1\",\"decisions\":[{\"alias\":\"S\\u0030001\",\"decision\":\"SELECT\",\"evidenceRefs\":[\"S0001\"]}]}";
+        var r = P7F1V6Direct.Parse(reply, Lines(1), 0, 1);
+        Assert.True(r.Ok, r.Failure);
+        Assert.Equal("S0001", r.Decisions[0].Alias);
+    }
+
+    [Fact]
+    public void Unicode_VietnameseTextInEvidenceRefs_IsDecodedNotRefused()
+    {
+        var lines = new List<P7F1V6Direct.Line> { new("S0001", 1, "Chương 1. Quy định chung") };
+        var reply = "{\"protocolVersion\":\"P7_F1_V6_DIRECT_RESPONSE_V1\",\"decisions\":[{\"alias\":\"S0001\",\"decision\":\"SELECT\",\"evidenceRefs\":[\"S0001\"]}]}";
+        Assert.True(P7F1V6Direct.Parse(reply, lines, 0, 1).Ok);
+    }
+
+    [Fact]
+    public void Canary_ArtifactBodyBytes_MatchTheRecordedSha()
+    {
+        var dir = Path.Combine(scratch, "canary");
+        var sha = P7F1V6DirectCanary.WriteArtifact(dir, "13bbf5e130f70f4d8557f9e0c2252c07e5f237dc");
+        var body = File.ReadAllBytes(Path.Combine(dir, "canary-t1-request.body.json"));
+        Assert.Equal(sha, Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(body)));
+        Assert.Equal(P7F1V6DirectCanary.Build().Request.Sha256, sha);
+        Assert.True(body.Length <= P7F1V6DirectCanary.MaxRequestBytes);
+        using var audit = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "canary-t1-request.audit.v1.json")));
+        Assert.Equal(sha, audit.RootElement.GetProperty("requestSha256").GetString());
+        Assert.Equal(0, audit.RootElement.GetProperty("retry").GetInt32());
+        Assert.Equal(1, audit.RootElement.GetProperty("postsApproved").GetInt32());
+        Assert.False(audit.RootElement.GetProperty("reasoningDeclared").GetBoolean());
+    }
+
     [Fact]
     public void Scorer_RefusesRfc_BecauseNoApprovedGoldIsRegistered()
     {
-        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0179", new[] { "S0001" });
+        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0179", Ev(new[] { "S0001" }));
         Assert.False(r.Scored);
         Assert.Equal("NO_APPROVED_GOLD_FOR_AUTHORITY", r.Reason);
         Assert.Null(r.F1);
@@ -164,14 +234,14 @@ public sealed class P7F1V6DirectD4Tests : IDisposable
     public void Scorer_ScoresAnApprovedGold_WithExactF1()
     {
         var gold = GoldClaims("DOC-0001");
-        var exact = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0001", gold);
+        var exact = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0001", Ev(gold));
         Assert.True(exact.Scored);
         Assert.Equal($"{2 * gold.Count}/{2 * gold.Count}", exact.F1Exact);
         Assert.Equal(1.0, exact.F1);
 
         // One true claim dropped and one wrong alias added: TP = n-1, FP = 1, FN = 1, F1 = 2(n-1)/(2(n-1)+2).
         var miss = gold.Skip(1).Append("S9999").ToList();
-        var partial = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0001", miss);
+        var partial = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0001", Ev(miss));
         Assert.True(partial.Scored);
         Assert.Equal(gold.Count - 1, partial.TruePositive);
         Assert.Equal(1, partial.FalsePositive);
@@ -186,7 +256,7 @@ public sealed class P7F1V6DirectD4Tests : IDisposable
         var copy = CopyGoldAuthority("DOC-0001");
         var reg = Path.Combine(copy, Registry);
         File.WriteAllText(reg, File.ReadAllText(reg).Replace("3904295073179700f3c74e60d1f0b16eea19937c8aaea7ee5962ff0a6d9f2fcc", new string('0', 64)));
-        var r = P7F1V6DirectScorer.Score(copy, Registry, "DOC-0001", new[] { "S0001" });
+        var r = P7F1V6DirectScorer.Score(copy, Registry, "DOC-0001", Ev(new[] { "S0001" }));
         Assert.False(r.Scored);
         Assert.Equal("GOLD_SHA_MISMATCH", r.Reason);
     }
@@ -197,7 +267,7 @@ public sealed class P7F1V6DirectD4Tests : IDisposable
         var copy = CopyGoldAuthority("DOC-0001");
         var reg = Path.Combine(copy, Registry);
         File.WriteAllText(reg, File.ReadAllText(reg).Replace("eval/a99-closed-loop/gold-current/documents/DOC-0001.gold.v1.json", "eval/a99-closed-loop/gold-current/registry.v1.json"));
-        var r = P7F1V6DirectScorer.Score(copy, Registry, "DOC-0001", new[] { "S0001" });
+        var r = P7F1V6DirectScorer.Score(copy, Registry, "DOC-0001", Ev(new[] { "S0001" }));
         Assert.False(r.Scored);
         Assert.Equal("GOLD_PATH_OUTSIDE_AUTHORITY_FOLDER", r.Reason);
     }

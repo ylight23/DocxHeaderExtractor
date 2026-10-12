@@ -81,7 +81,8 @@ internal static class P7F1V6Direct
         var none = Array.Empty<(string, string, IReadOnlyList<string>)>();
         Parsed Fail(string code) => new(false, code, none, Array.Empty<string>(), Array.Empty<string>());
         if (Encoding.UTF8.GetByteCount(reply) > VisibleResponseCapBytes) return Fail("REPLY_OVER_CAP");
-        if (reply.Contains("\\u", StringComparison.Ordinal)) return Fail("ESCAPED_UNICODE_NOT_ALLOWED");
+        // Valid JSON escapes (including \uXXXX) are accepted: the parser decodes them, and aliases are compared after decoding.
+        // Malformed escapes fail in JsonDocument.Parse and are reported as REPLY_NOT_JSON.
         JsonDocument doc;
         try { doc = JsonDocument.Parse(reply); } catch (JsonException) { return Fail("REPLY_NOT_JSON"); }
         using (doc)

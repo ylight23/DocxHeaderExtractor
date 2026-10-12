@@ -155,6 +155,33 @@ internal static class C0Replay
         var maxAlias = lines.Max(l => l.Alias.Length);
         var perReply = P7F1V6Direct.DecisionsPerReply(maxAlias);
         var (single, segmented) = P7F1V6Direct.Compare(Instruction, sourceSha, lines);
+
+        // Boundary exposure (PROXY, not Gold). RFC 9113 has no approved Gold, so no error rate can be measured. These numbers show where
+        // the segmented cores meet and how much context each side has. A proxy heading is a line whose text starts with a numbering pattern.
+        var overlap = P7F1V6Direct.DefaultOverlapLines;
+        var heading = new System.Text.RegularExpressions.Regex(@"^\d+(\.\d+)*\.?\s+\S", System.Text.RegularExpressions.RegexOptions.CultureInvariant);
+        var proxy = lines.Select((l, i) => (l, i)).Where(x => x.l.Text.Length <= 100 && heading.IsMatch(x.l.Text)).Select(x => x.i).ToList();
+        var boundaries = Enumerable.Range(1, Math.Max(0, (lines.Count + perReply - 1) / perReply - 1))
+            .Select(k => k * perReply).Where(b => b < lines.Count)
+            .Select(b => new
+            {
+                boundaryLine = b,
+                leftContextLines = Math.Min(overlap, b),
+                rightContextLines = Math.Min(overlap, lines.Count - b),
+                proxyHeadingsInOverlapZone = proxy.Count(i => i >= b - overlap && i < b + overlap),
+                nearestProxyHeadingDistance = proxy.Count == 0 ? (int?)null : proxy.Min(i => Math.Abs(i - b)),
+            }).ToList();
+        var boundaryAudit = new
+        {
+            status = "PROXY_NOT_GOLD",
+            overlapLines = overlap,
+            boundaries = boundaries.Count,
+            proxyHeadingLines = proxy.Count,
+            proxyHeadingsInAnyOverlapZone = proxy.Count(i => boundaries.Any(b => i >= b.boundaryLine - overlap && i < b.boundaryLine + overlap)),
+            boundaryDetail = boundaries,
+            limitation = "Without an approved Gold for RFC 9113, whether 20 lines of overlap are enough cannot be measured. Only exposure is shown. Context retrieval (asking for more lines) is not implemented in D4.1.",
+        };
+
         var audit = new
         {
             artifact = "p7.f1.v6.d4-size-audit.v1",
@@ -176,9 +203,17 @@ internal static class C0Replay
             tokenBoundNote = "Token counts are not measured. Every token covers at least one UTF-8 byte, so the request byte count bounds the prompt tokens from above. Cost uses that bound and the tier the bound reaches.",
             singleContext = single,
             segmented,
+            boundaryExposure = boundaryAudit,
         };
         File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4-size-audit.v1.json"), JsonSerializer.Serialize(audit, Indented) + "\n", new UTF8Encoding(false));
         Console.WriteLine($"d4 size audit: {lines.Count} lines, {perReply} decisions per reply, single {single.Requests} requests (covered {single.Covered}, max {single.MaxRequestBytes} bytes, ${single.WorstUsd:F4}), segmented {segmented.Requests} requests (covered {segmented.Covered}, max {segmented.MaxRequestBytes} bytes, ${segmented.WorstUsd:F4})");
+    }
+
+    /// <summary>D4.1 canary T1 (offline): writes the exact HTTP body and its audit record. Nothing is sent.</summary>
+    public static void D4CanaryArtifact(string artifactDir, string generatedAtCommit)
+    {
+        var sha = P7F1V6DirectCanary.WriteArtifact(artifactDir, generatedAtCommit);
+        Console.WriteLine($"canary T1 request written: sha256 {sha}, not sent");
     }
 
     static (List<P7F1V6Hier.Cand> Cands, P7F1QEvidenceTools Legacy) Load(string repoRoot)
