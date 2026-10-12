@@ -1,0 +1,50 @@
+{
+  "artifact": "p7.f1.v6.d4.5-reply-violations.v1",
+  "rules": "V2.2 contract (NOT_SELECT may omit evidenceRefs or give []); every violation, not only the first",
+  "rows": [
+    {
+      "unit": "SEG-000",
+      "round": 1,
+      "status": "NEEDS_EVIDENCE",
+      "violations": []
+    },
+    {
+      "unit": "SEG-000",
+      "round": 2,
+      "status": "COMPLETE",
+      "decisions": 68,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 35,
+      "notSelectEvidenceEmpty": 0,
+      "violations": [
+        "DECIDED_CONTEXT_ALIASES:20",
+        "SELECT_WITHOUT_EVIDENCE:4"
+      ]
+    },
+    {
+      "unit": "SEG-001",
+      "round": 1,
+      "status": "COMPLETE",
+      "decisions": 64,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 0,
+      "notSelectEvidenceEmpty": 0,
+      "violations": [
+        "DECIDED_CONTEXT_ALIASES:18",
+        "MISSING_DECISIONS:2:L0062:S0,L0063:S0"
+      ]
+    },
+    {
+      "unit": "SEG-002",
+      "round": 1,
+      "status": "COMPLETE",
+      "decisions": 68,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 1,
+      "notSelectEvidenceEmpty": 0,
+      "violations": [
+        "DECIDED_CONTEXT_ALIASES:20"
+      ]
+    }
+  ]
+}

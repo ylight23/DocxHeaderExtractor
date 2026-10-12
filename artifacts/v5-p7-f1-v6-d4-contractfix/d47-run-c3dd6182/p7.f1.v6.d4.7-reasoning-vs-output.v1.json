@@ -1,0 +1,54 @@
+{
+  "artifact": "p7.f1.v6.d4.7-reasoning-vs-output.v1",
+  "finding": "SEG-001: the reasoning plans 48 NOT_SELECT decisions and no headings; the output has 64 SELECT decisions. SEG-000 r2: the reasoning counts 42 aliases in decide (there are 48); the output has 68 decisions. Reasoning and output are not consistent; C# validates only the output.",
+  "rows": [
+    {
+      "unit": "SEG-000",
+      "round": 1,
+      "responseSha256": "00e15732fe8e1166f2cddc2e7fe118d9446f338f4c9d09726f2ae43ff88f872e",
+      "status": "NEEDS_EVIDENCE",
+      "outputDecisionCounts": {},
+      "outputDecisions": 0,
+      "reasoningChars": 13650,
+      "reasoningTail": " NOT_SELECT.\nWhat about L0000:S0 to L0006:S0? These are metadata headers (Stream, RFC, Category, Published, ISSN, Author, Affiliation). They are not document structure headings. Correctly NOT_SELECT.\nAll decisions are solid.\nOutput generation. \nProceeds. \n[Final Check of the Prompt]\n\"Trích xuất tất cả các heading thực sự tổ chức cấu trúc tài liệu, xét theo vai trò của từng lần xuất hiện tại chính vị trí đó.\"\nMatches my selection.\nJSON structure matches requirements.\nDone. \nOutput Generation. \n(Note: I will format the JSON compactly or pretty-printed as per standard, but the prompt doesn't specify formatting, just valid JSON.)\nI'll produce it now. \nAll good. \n[Output Generation] -> *Proceeds*"
+    },
+    {
+      "unit": "SEG-000",
+      "round": 2,
+      "responseSha256": "6dcff543be3197adf3b39ecf5734cee6b8e37c1387237d2834f87e20b06b02d7",
+      "status": "COMPLETE",
+      "outputDecisionCounts": {
+        "NOT_SELECT": 35,
+        "SELECT": 33
+      },
+      "outputDecisions": 68,
+      "reasoningChars": 17269,
+      "reasoningTail": "lf-Correction/Note during thought)\nWait, the prompt says \"decide holds the aliases you must decide\". The list provided in the prompt has exactly 42 aliases. I've covered all.\nThe JSON structure is correct.\nI will produce it now. \nAll steps verified. Output matches. \n[Final Check]\n- Status: COMPLETE\n- Decisions: 42 items, each with alias and decision. SELECT ones have evidenceRefs.\n- Headings: 5 items, each with parts in doc order.\n- Instruction followed: Extracts actual headings, excludes TOC entries, excludes metadata/body.\n- Format: Valid JSON.\nReady. \nOutput Generation. \n(Note: I'll make sure the JSON is compact or formatted nicely, but valid.)\nProceeds. \n[Output Generation] -> *Proceeds*"
+    },
+    {
+      "unit": "SEG-001",
+      "round": 1,
+      "responseSha256": "cc3faae54df097756864d81ac32020717509fc582261c27875f677a03a2292bf",
+      "status": "COMPLETE",
+      "outputDecisionCounts": {
+        "SELECT": 64
+      },
+      "outputDecisions": 64,
+      "reasoningChars": 9373,
+      "reasoningTail": "on/Refinement during generation prep)\nWait, the prompt says \"trích xuất tất cả các heading thực sự tổ chức cấu trúc tài liệu... Không chọn các dòng trong mục lục chỉ liệt kê hoặc dẫn chiếu đến heading xuất hiện ở vị trí khác.\"\nIt's clear. All are TOC entries. I will output exactly as planned.\nOne detail: `evidenceRefs` for NOT_SELECT is optional. I'll leave it out.\nAll good. \nOutput matches. \nProceeds. \n[Final Check]\n- Status: COMPLETE\n- Decisions: one per alias in decide, all NOT_SELECT.\n- Headings: []\n- Format: JSON only.\nMatches instructions.\nDone. \nOutput Generation. \n(Note: I will ensure the JSON is compact or formatted, but valid.)\nAll set. \nProceeds. \n[Output Generation] -> *Proceeds*"
+    },
+    {
+      "unit": "SEG-002",
+      "round": 1,
+      "responseSha256": "db7bd07106475bb9eeed370a6eb1960003354ced7775b9db45ce30b3afba23a0",
+      "status": "COMPLETE",
+      "outputDecisionCounts": {
+        "SELECT": 38,
+        "NOT_SELECT": 30
+      },
+      "outputDecisions": 68,
+      "reasoningChars": 17082,
+      "reasoningTail": "ó chức năng đặt tên, mở đầu hoặc phân chia một phần nội dung của tài liệu.\" -> Select lines/groups functioning as names/openings/divisions.\n\"Không chọn các dòng trong mục lục chỉ liệt kê hoặc dẫn chiếu đến heading xuất hiện ở vị trí khác.\" -> Don't select TOC lines referencing other headings. (Not applicable here, these are actual section headings).\n\"However, still consider actual headings organizing TOC, index, and other parts.\" -> Index, Acknowledgments, Author's Address are valid.\nAll good.\nOutput Generation. \n(Note: I will format the JSON compactly or pretty-printed, both are fine. I'll stick to pretty-printed for readability but ensure it's valid JSON.)\nDone. \nOutput Generation. \n[Done]"
+    }
+  ]
+}
