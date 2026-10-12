@@ -1,0 +1,64 @@
+{
+  "artifact": "p7.f1.v6.d3.4-data-policy-snapshot.v1",
+  "status": "ROUTE_GATE_CLOSED",
+  "route": "alibaba",
+  "gateDecision": "CLOSED: at least one fact for alibaba is UNKNOWN. A provider run is refused by the guard until every fact is VERIFIED with a source and a read date.",
+  "facts": [
+    {
+      "route": "openrouter",
+      "subject": "own storage of prompts and responses",
+      "status": "VERIFIED",
+      "source": "https://www.openrouter.ai/docs/guides/privacy/data-collection",
+      "readOn": "2026-10-12",
+      "note": "Prompts and responses are not stored unless the account opts in to Private Input & Output Logging; request metadata (token counts, latency) is stored. Read with WebFetch in this session."
+    },
+    {
+      "route": "openrouter",
+      "subject": "per-request data-policy filter parameter",
+      "status": "UNKNOWN",
+      "source": null,
+      "readOn": null,
+      "note": "The data-collection page does not name the request parameter. A search result mentioned a data-policy filter; not confirmed."
+    },
+    {
+      "route": "openrouter",
+      "subject": "provider-specific training and retention",
+      "status": "UNKNOWN",
+      "source": null,
+      "readOn": null,
+      "note": "The page says OpenRouter documents which providers may train on data and gives no retention periods. Per-provider terms not read."
+    },
+    {
+      "route": "openrouter",
+      "subject": "logging of prompts by the privacy page (secondary)",
+      "status": "UNKNOWN",
+      "source": "https://openrouter.ai/docs/features/privacy-and-logging",
+      "readOn": null,
+      "note": "Found in search results only; not read. Listed for follow-up, not used as a verified fact."
+    },
+    {
+      "route": "alibaba",
+      "subject": "training on request data",
+      "status": "UNKNOWN",
+      "source": null,
+      "readOn": null,
+      "note": "Not on the OpenRouter page. Alibaba Model Studio documentation has not been read."
+    },
+    {
+      "route": "alibaba",
+      "subject": "retention period of request data",
+      "status": "UNKNOWN",
+      "source": null,
+      "readOn": null,
+      "note": "Not on the OpenRouter page. Alibaba Model Studio documentation has not been read."
+    },
+    {
+      "route": "alibaba",
+      "subject": "logging of request content",
+      "status": "UNKNOWN",
+      "source": null,
+      "readOn": null,
+      "note": "Not established."
+    }
+  ]
+}

@@ -571,6 +571,16 @@ switch (args[0])
         if (args.Length is not (3 or 4) || (args.Length == 4 && args[3] != "retrieve")) throw new ArgumentException("preflight-d2 <docs.json> <out-dir> [retrieve]");
         V6PreflightD2.Run(args[1], args[2], args.Length == 4);
         break;
+    case "c0-pin":
+        // Gate C0 (D3.4): c0-pin <repo-root> <artifact-dir>. Writes the pins for document 073. No network call.
+        if (args.Length != 3) throw new ArgumentException("c0-pin <repo-root> <artifact-dir>");
+        C0Replay.Pin(args[1], args[2]);
+        break;
+    case "c0-replay":
+        // Gate C0 (D3.4): c0-replay <repo-root> <artifact-dir> <safe-root>. Refuses when the pins differ. No network call.
+        if (args.Length != 4) throw new ArgumentException("c0-replay <repo-root> <artifact-dir> <safe-root>");
+        C0Replay.Replay(args[1], args[2], args[3]);
+        break;
     case "d31-snapshot":
         // Issue #9 D3.1 candidate (offline): d31-snapshot <repo-root>. Writes the manifest and the candidate document. No network call.
         if (args.Length != 2) throw new ArgumentException("d31-snapshot <repo-root>");

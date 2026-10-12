@@ -1,0 +1,26 @@
+{
+  "artifact": "p7.f1.v6.d3.4-c0-replay.v1",
+  "status": "PROTOCOL_RESOLVED",
+  "protocolResolved": true,
+  "pins": {
+    "candidatesSha256": "12eb9bb00099564b838613ddf2c4753f39e69be0421a2025424550a549aff68d",
+    "sourceSha256": "e73ab5ca9d4d9f101e2f2b2d5f169cbf67e331bde84726860619c00473bf5da3",
+    "manifestSha256": "d1911921a4da3d7fee390d0b60d0eab5920db43bff9bb986fd491ac65bd8e889"
+  },
+  "pinsMatched": true,
+  "sourceGate": {
+    "allowed": true,
+    "code": "OK"
+  },
+  "providerCalls": 0,
+  "scriptedModelCalls": 4,
+  "occurrences": 46,
+  "decided": 46,
+  "maxEnvelopeBytes": 21812,
+  "rawItemsInSafeStore": 12,
+  "rawItemsOnDiskVerified": 12,
+  "safeStoreDamagedItems": 0,
+  "safeStoreDirectoryName": "run-617b67a572a44dc5ab894c5629a7ec4f",
+  "violations": 0,
+  "noteOnSourceGate": "The source gate checks the prefix and the pinned hash. It does not establish that the document is public."
+}

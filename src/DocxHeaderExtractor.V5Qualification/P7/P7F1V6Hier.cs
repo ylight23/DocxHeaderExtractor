@@ -109,7 +109,8 @@ internal static class P7F1V6Hier
     public sealed record Options(string Instruction, string SourceSha256, int ShardSize, int Context, int FanIn, int PassUpCap,
         string? RawDir = null, int OutputBudgetBytes = 16384, string PromptOrder = "NORMAL", int MaxInputBytes = 131072,
         int MaxRetrievalRounds = 2, int MaxSearchResults = 20, int MaxReopen = 8,
-        string SourceUniverseSha256 = "", string ParserVersion = "", string EvidenceStoreVersion = "", string? ExpectedCandidatesSha256 = null, bool RequirePinned = false, int MaxEnvelopeBytes = P7F1V6Protocol.EnvelopeCapBytes);
+        string SourceUniverseSha256 = "", string ParserVersion = "", string EvidenceStoreVersion = "", string? ExpectedCandidatesSha256 = null, bool RequirePinned = false, int MaxEnvelopeBytes = P7F1V6Protocol.EnvelopeCapBytes,
+        P7F1V6SafeRawStore? SafeStore = null, bool RequireSafeStore = false);
 
     static void Validate(Options o)
     {
@@ -121,6 +122,9 @@ internal static class P7F1V6Hier
         if (o.MaxInputBytes < 1024) throw new ArgumentOutOfRangeException(nameof(o.MaxInputBytes));
         if (o.MaxRetrievalRounds < 0 || o.MaxSearchResults < 1 || o.MaxReopen < 1) throw new ArgumentOutOfRangeException(nameof(o.MaxRetrievalRounds));
         if (o.MaxEnvelopeBytes < 1024) throw new ArgumentOutOfRangeException(nameof(o.MaxEnvelopeBytes));
+        // A qualification run stores raw data only in the safe store. The legacy directory option is refused, never used silently.
+        if (o.RequireSafeStore && o.SafeStore is null) throw new ArgumentException("SAFE_STORE_REQUIRED");
+        if (o.RequireSafeStore && o.RawDir is not null) throw new ArgumentException("LEGACY_RAW_DIR_REFUSED");
         if (string.IsNullOrWhiteSpace(o.SourceSha256)) throw new ArgumentException("MANIFEST_INCOMPLETE:sourceSha256");
         if (string.IsNullOrWhiteSpace(o.SourceUniverseSha256)) throw new ArgumentException("MANIFEST_INCOMPLETE:sourceUniverseSha256");
         if (string.IsNullOrWhiteSpace(o.ParserVersion)) throw new ArgumentException("MANIFEST_INCOMPLETE:parserVersion");
@@ -208,7 +212,7 @@ internal static class P7F1V6Hier
             O = o, Call = call, Ids = ids, IdToAlias = ids.ToDictionary(p => p.Value, p => p.Key, StringComparer.Ordinal),
             ByAlias = ordered.ToDictionary(c => c.Alias, c => c, StringComparer.Ordinal), Ordered = ordered,
             Overview = P7F1V6Core.Overview(ordered.Select(c => new F1QSourceLine(c.Alias, 0, c.Page, c.Text, null, null)).ToArray()),
-            InstructionSha = instructionSha, Manifest = manifest, Raw = new P7F1V6RawStore(o.RawDir),
+            InstructionSha = instructionSha, Manifest = manifest, Raw = new P7F1V6RawStore(o.RawDir, o.SafeStore),
         };
         var (interp, interpFailure, _) = Interpret(env);
         if (interpFailure == "ENVELOPE_OVER_BUDGET")
