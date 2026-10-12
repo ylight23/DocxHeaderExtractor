@@ -5,26 +5,29 @@ using System.Text.RegularExpressions;
 namespace DocxHeaderExtractor.V5Qualification.P7;
 
 /// <summary>
-/// P7-F1 V6 core (Issue #9, design D0.v2; offline D1 only). Task-conditioned contracts with no fixed heading taxonomy:
+/// P7-F1 V6 core (Issue #9, D1 offline). Task-conditioned contracts with no fixed heading taxonomy:
 /// <list type="bullet">
-/// <item>originalUserInstruction: verbatim text, pinned by SHA-256, never interpreted by code.</item>
-/// <item>modelTaskInterpretation: Qwen's free text plus open questions. Status values are technical only.</item>
-/// <item>Decision passes: every id in a request's set is decided explicitly (SELECT, NOT_SELECT or UNRESOLVED). A COMPLETE
-/// pass must decide every id; an id that is absent is MISSING, never NOT_SELECT. Only an explicit NOT_SELECT is a negative.</item>
-/// <item>Reconcile pass: the last pass that decides an id is its final decision. C# never chooses between decisions.</item>
-/// <item>Document overview: observations only (page map, repeated lines, numbering, dot leaders). No heading label is produced.</item>
+/// <item>originalUserInstruction: verbatim text, pinned by SHA-256; code never interprets it.</item>
+/// <item>Interpretation: free text plus open questions. Status values are technical only.</item>
+/// <item>Decision passes: each id of a request's set is decided explicitly (SELECT, NOT_SELECT or UNRESOLVED). A COMPLETE pass
+/// decides every id. An absent id is MISSING, never NOT_SELECT. Only an explicit NOT_SELECT is a negative.</item>
+/// <item>Evidence: a reference is valid only if the model was shown that alias (in a request payload or a tool result of this
+/// run). A tool evidence id is valid only if exactly one transcript record holds it, for the same request and source, with
+/// status OK, and that record returned the decided subject's alias.</item>
+/// <item>Resolution: any failed pass makes the document PASS_FAILED. A document is RESOLVED only after a COMPLETE reconcile
+/// pass that decides every id, with no id MISSING or UNRESOLVED.</item>
 /// </list>
-/// The code path does not branch on the instruction text, so the same contracts serve any request.
 /// </summary>
 internal static class P7F1V6Core
 {
-    public const string Version = "P7_F1_V6_TASK_CONDITIONED_CORE_V1";
+    public const string Version = "P7_F1_V6_TASK_CONDITIONED_CORE_V2";
     public const string InterpretVersion = "P7_F1_V6_INTERPRET_V1";
     public const string DecisionVersion = "P7_F1_V6_DECISIONS_V1";
     public const int MaxInterpretationChars = 1000, MaxOpenQuestions = 5, MaxEvidenceRefs = 8, MaxNoteChars = 300;
     public static readonly string[] TechnicalStatuses = ["COMPLETE", "INCOMPLETE", "CLARIFICATION_REQUIRED", "NOT_ANSWERABLE"];
     public static readonly string[] Decisions = ["SELECT", "NOT_SELECT", "UNRESOLVED"];
 
+    static readonly Regex ToolEvidence = new(@"^E\d+\.\d+$", RegexOptions.CultureInvariant);
     static readonly Regex Numbered = new(@"^\s*(\d+(\.\d+)*|[IVX]+|[a-z])[\.\)]?\s", RegexOptions.CultureInvariant);
     static readonly Regex DotLeader = new(@"(?:\s*[.·…]){3,}", RegexOptions.CultureInvariant);
 
@@ -71,18 +74,19 @@ internal static class P7F1V6Core
 
     public sealed record Decision(string Id, string Value, IReadOnlyList<string> EvidenceRefs, string? Note);
 
-    public sealed record DecisionPass(string Status, IReadOnlyDictionary<string, Decision> Decisions, string? FailureCode);
+    /// <summary>A parsed or failed pass. Name identifies it (for example "pack-1" or "reconcile"); FailureCode is null when it parsed.</summary>
+    public sealed record DecisionPass(string Name, string? Status, IReadOnlyDictionary<string, Decision> Decisions, string? FailureCode);
 
     /// <summary>
-    /// Parses one decision pass for a request whose set of ids is <paramref name="setIds"/>. A COMPLETE pass must decide every
-    /// id. Non-COMPLETE passes may decide a subset; the rest stay undecided (MISSING), never NOT_SELECT.
+    /// Parses one decision pass for a request whose set of ids is <paramref name="setIds"/>. <paramref name="shownAliases"/> is
+    /// every alias the model was shown in this request (its payload and the results of this run's tool calls).
     /// </summary>
-    public static DecisionPass ParseDecisions(string response, string requestId, IReadOnlyCollection<string> setIds, IReadOnlySet<string> citable,
-        IReadOnlyDictionary<string, string> aliasById, string expectedSourceSha256, IReadOnlyList<P7F1V6Tools.Record> transcript)
+    public static DecisionPass ParseDecisions(string name, string response, string requestId, IReadOnlyCollection<string> setIds,
+        IReadOnlySet<string> shownAliases, IReadOnlyDictionary<string, string> aliasById, string expectedSourceSha256,
+        IReadOnlyList<P7F1V6Tools.Record> transcript)
     {
         var set = setIds.ToHashSet(StringComparer.Ordinal);
-        var byEvidence = transcript.GroupBy(t => t.EvidenceId, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.First(), StringComparer.Ordinal);
-        DecisionPass Fail(string code) => new(null!, new Dictionary<string, Decision>(), code);
+        DecisionPass Fail(string code) => new(name, null, new Dictionary<string, Decision>(), code);
         JsonDocument doc;
         try { doc = JsonDocument.Parse(response); } catch (JsonException) { return Fail("RESPONSE_NOT_JSON"); }
         using (doc)
@@ -121,24 +125,27 @@ internal static class P7F1V6Core
                         return Fail("EVIDENCE_REFS_INVALID");
                     refs.AddRange(er.EnumerateArray().Select(x => x.GetString()!));
                 }
-                // SELECT and NOT_SELECT need a source-grounded reason; a tool evidence id is checked against the transcript by the binder.
                 if (value is "SELECT" or "NOT_SELECT")
                 {
                     if (refs.Count == 0) return Fail("EVIDENCE_REQUIRED");
                     var subjectAlias = aliasById.TryGetValue(id, out var sa) ? sa : null;
                     foreach (var r in refs)
                     {
-                        if (System.Text.RegularExpressions.Regex.IsMatch(r, @"^E\d+\.\d+$"))
+                        if (ToolEvidence.IsMatch(r))
                         {
-                            // A tool evidence id counts only if the transcript proves it: issued in this request, from this
-                            // source, returned successfully, and it returned the subject's own alias.
-                            if (!byEvidence.TryGetValue(r, out var rec)) return Fail("EVIDENCE_ID_NOT_IN_TRANSCRIPT");
+                            // Exactly one transcript record must hold this id: duplicates are rejected, never resolved by choice.
+                            var recs = transcript.Where(t => t.EvidenceId == r).ToArray();
+                            if (recs.Length == 0) return Fail("EVIDENCE_ID_NOT_IN_TRANSCRIPT");
+                            if (recs.Length > 1) return Fail("EVIDENCE_ID_DUPLICATE");
+                            var rec = recs[0];
                             if (rec.RequestId != requestId || rec.SourceSha256 != expectedSourceSha256) return Fail("EVIDENCE_ID_WRONG_REQUEST_OR_SOURCE");
                             if (rec.Status != "OK") return Fail("EVIDENCE_ID_NOT_OK");
                             if (subjectAlias is null || !rec.ReturnedAliases.Contains(subjectAlias)) return Fail("EVIDENCE_DOES_NOT_CONTAIN_SUBJECT");
                             continue;
                         }
-                        if (!citable.Contains(r) && !set.Contains(r)) return Fail("EVIDENCE_REF_NOT_CITABLE");
+                        // A source alias, or an id of this request, must have been SHOWN to the model in this run.
+                        var alias = aliasById.TryGetValue(r, out var ra) ? ra : r;
+                        if (!shownAliases.Contains(alias)) return Fail("EVIDENCE_NOT_SHOWN");
                     }
                 }
                 var note = Str(d, "note");
@@ -147,68 +154,89 @@ internal static class P7F1V6Core
             }
             if (status == "COMPLETE")
             {
-                var undecided = set.Where(id => !result.ContainsKey(id)).ToArray();
+                var undecided = set.Where(id => !result.ContainsKey(id)).OrderBy(x => x, StringComparer.Ordinal).ToArray();
                 if (undecided.Length > 0) return Fail("SUBJECT_NOT_DECIDED:" + undecided[0]);
             }
-            return new DecisionPass(status, result, null);
+            return new DecisionPass(name, status, result, null);
         }
     }
 
-    // ---------------- Binder-side final decisions ----------------
+    // ---------------- Resolution (binder side) ----------------
 
     public sealed record FinalDecision(string Id, string State, string? Source);
 
+    /// <summary>All passes of one run, with the failed ones kept. Nothing is dropped.</summary>
+    public sealed record Resolution(IReadOnlyList<FinalDecision> Finals, IReadOnlyList<string> FailedPasses, bool ReconcileCompleted);
+
     /// <summary>
-    /// Final state per id: the decision of the LAST pass that decided it (reconcile overrides earlier passes). An id no pass
-    /// decided is MISSING. Only an explicit NOT_SELECT is a negative. UNRESOLVED stays unresolved.
+    /// Final state per id: the decision of the LAST parsed pass that decided it (a reconcile overrides earlier passes). An id that
+    /// no pass decided is MISSING. A failed pass is recorded in FailedPasses; it is never skipped silently. A reconcile counts as
+    /// completed only when it parsed, was COMPLETE and decided every id.
     /// </summary>
-    public static IReadOnlyList<FinalDecision> Finalise(IReadOnlyList<string> ids, IReadOnlyList<(string Pass, DecisionPass Result)> passesInOrder)
+    public static Resolution Finalise(IReadOnlyList<string> ids, IReadOnlyList<DecisionPass> passesInOrder)
     {
         var final = new Dictionary<string, (string State, string Source)>(StringComparer.Ordinal);
-        foreach (var (pass, r) in passesInOrder)
+        foreach (var p in passesInOrder)
         {
-            if (r.FailureCode is not null) continue;
-            foreach (var d in r.Decisions.Values)
-                final[d.Id] = (d.Value switch { "SELECT" => "SELECTED", "NOT_SELECT" => "NOT_SELECTED", _ => "UNRESOLVED" }, pass);
+            if (p.FailureCode is not null) continue;
+            foreach (var d in p.Decisions.Values)
+                final[d.Id] = (d.Value switch { "SELECT" => "SELECTED", "NOT_SELECT" => "NOT_SELECTED", _ => "UNRESOLVED" }, p.Name);
         }
-        return ids.Select(id => final.TryGetValue(id, out var f) ? new FinalDecision(id, f.State, f.Source) : new FinalDecision(id, "MISSING", null)).ToArray();
+        var finals = ids.Select(id => final.TryGetValue(id, out var f) ? new FinalDecision(id, f.State, f.Source) : new FinalDecision(id, "MISSING", null)).ToArray();
+        var failed = passesInOrder.Where(p => p.FailureCode is not null).Select(p => $"{p.Name}:{p.FailureCode}").ToArray();
+        var reconcileCompleted = passesInOrder.Any(p => p.Name == "reconcile" && p.FailureCode is null && p.Status == "COMPLETE"
+            && ids.All(id => p.Decisions.ContainsKey(id)));
+        return new Resolution(finals, failed, reconcileCompleted);
     }
 
     public sealed record DocumentStatus(bool CoverageComplete, bool ResolvedComplete, int Selected, int NotSelected, int Unresolved, int Missing,
-        string Assessment);
+        int FailedPasses, string Assessment);
 
     /// <summary>
-    /// Four separate facts, never merged into one flag. CoverageComplete: every required id has an explicit state (none
-    /// MISSING; UNRESOLVED counts as explicit). ResolvedComplete: every id is SELECTED or NOT_SELECTED. UNRESOLVED is neither
-    /// missing nor resolved. Assessment is a conclusion about the request scope, and it is PARTIAL whenever any id is unresolved
-    /// or missing. Evidence coverage (what was observed) is reported by the tools, see P7F1V6Tools.ScopeLedger.
+    /// Separate facts, never merged. CoverageComplete: no pass failed and no id is MISSING. ResolvedComplete: coverage holds, every
+    /// id is SELECTED or NOT_SELECTED, and a COMPLETE reconcile decided every id. Assessment: PASS_FAILED if any pass failed;
+    /// INCOMPLETE if an id is missing; PARTIAL_UNRESOLVED if an id is unresolved; UNRECONCILED if the decisions are resolved but
+    /// no reconcile completed; RESOLVED otherwise.
     /// </summary>
-    public static DocumentStatus Status(IReadOnlyList<FinalDecision> finals)
+    public static DocumentStatus Status(Resolution r)
     {
-        int sel = finals.Count(f => f.State == "SELECTED"), nsel = finals.Count(f => f.State == "NOT_SELECTED");
-        int unr = finals.Count(f => f.State == "UNRESOLVED"), mis = finals.Count(f => f.State == "MISSING");
-        var assessment = mis > 0 ? "INCOMPLETE" : unr > 0 ? "PARTIAL_UNRESOLVED" : "RESOLVED";
-        return new DocumentStatus(CoverageComplete: mis == 0, ResolvedComplete: mis == 0 && unr == 0, sel, nsel, unr, mis, assessment);
+        var f = r.Finals;
+        int sel = f.Count(x => x.State == "SELECTED"), nsel = f.Count(x => x.State == "NOT_SELECTED");
+        int unr = f.Count(x => x.State == "UNRESOLVED"), mis = f.Count(x => x.State == "MISSING");
+        int failed = r.FailedPasses.Count;
+        bool coverage = failed == 0 && mis == 0;
+        bool resolved = coverage && unr == 0 && r.ReconcileCompleted;
+        var assessment = failed > 0 ? "PASS_FAILED" : mis > 0 ? "INCOMPLETE" : unr > 0 ? "PARTIAL_UNRESOLVED"
+            : r.ReconcileCompleted ? "RESOLVED" : "UNRECONCILED";
+        return new DocumentStatus(coverage, resolved, sel, nsel, unr, mis, failed, assessment);
+    }
+
+    // ---------------- Scope ----------------
+
+    /// <summary>Observed (shown to the model) and evaluated (has an explicit state), and the differences between them.</summary>
+    public sealed record ScopeReport(int InScope, int Observed, int Evaluated, int ObservedNotEvaluated, int EvaluatedNotObserved);
+
+    public static ScopeReport Scope(IReadOnlyCollection<string> inScopeAliases, IReadOnlySet<string> observedAliases,
+        IReadOnlyList<FinalDecision> finals, IReadOnlyDictionary<string, string> aliasById)
+    {
+        var evaluated = finals.Where(f => f.State != "MISSING").Select(f => aliasById.TryGetValue(f.Id, out var a) ? a : f.Id).ToHashSet(StringComparer.Ordinal);
+        return new ScopeReport(inScopeAliases.Count, observedAliases.Count, evaluated.Count,
+            observedAliases.Count(a => !evaluated.Contains(a)), evaluated.Count(a => !observedAliases.Contains(a)));
     }
 
     // ---------------- Document overview (observations only) ----------------
 
-    /// <summary>
-    /// Whole-document evidence built from parser geometry and text, for Qwen to query. It contains counts and groupings,
-    /// never a heading label. Repeated groups show lines that recur on several pages (running furniture candidates, navigation
-    /// repeats); numbered and dot-leader lines are counted per page.
-    /// </summary>
+    /// <summary>Whole-document evidence from parser geometry and text. Counts and groupings, never a heading label.</summary>
     public static object Overview(IReadOnlyList<F1QSourceLine> lines, int maxRepeatGroups = 25)
     {
         var pages = lines.Where(l => l.Page is not null).GroupBy(l => l.Page!.Value).OrderBy(g => g.Key).Select(g => new
         {
-            page = g.Key,
-            lines = g.Count(),
+            page = g.Key, lines = g.Count(),
             numbered = g.Count(l => Numbered.IsMatch(l.Text)),
             dotLeader = g.Count(l => DotLeader.IsMatch(l.Text)),
         }).ToArray();
-        var repeats = lines.Where(l => l.Page is not null && RepeatKey(l.Text).Length > 0)
-            .GroupBy(l => RepeatKey(l.Text)).Where(g => g.Select(l => l.Page).Distinct().Count() >= 2)
+        var repeats = lines.Where(l => l.Page is not null && P7F1QEvidenceTools.RepeatKey(l.Text).Length > 0)
+            .GroupBy(l => P7F1QEvidenceTools.RepeatKey(l.Text)).Where(g => g.Select(l => l.Page).Distinct().Count() >= 2)
             .OrderByDescending(g => g.Select(l => l.Page).Distinct().Count()).ThenBy(g => g.Key, StringComparer.Ordinal)
             .Take(maxRepeatGroups).Select(g => new
             {
@@ -219,22 +247,6 @@ internal static class P7F1V6Core
         return new { version = Version, pageCount = pages.Length, lineCount = lines.Count, pages, repeatGroups = repeats,
             basis = "PARSER_OBSERVATIONS_ONLY: counts, repeats, numbering and dot leaders. No heading label is produced." };
     }
-
-    /// <summary>
-    /// Observed scope (what the tools returned to the model) against evaluated scope (what a decision was made on). An id
-    /// decided without any observation is a violation: it is reported, not silently accepted.
-    /// </summary>
-    public sealed record ScopeReport(int InScope, int Observed, int Evaluated, int ObservedNotEvaluated, int EvaluatedNotObserved);
-
-    public static ScopeReport Scope(IReadOnlyCollection<string> inScopeAliases, IReadOnlySet<string> observedAliases, IReadOnlyList<FinalDecision> finals, IReadOnlyDictionary<string, string> aliasById)
-    {
-        var evaluated = finals.Where(f => f.State != "MISSING").Select(f => aliasById.TryGetValue(f.Id, out var a) ? a : f.Id).ToHashSet(StringComparer.Ordinal);
-        return new ScopeReport(inScopeAliases.Count, observedAliases.Count, evaluated.Count,
-            observedAliases.Count(a => !evaluated.Contains(a)), evaluated.Count(a => !observedAliases.Contains(a)));
-    }
-
-    /// <summary>Same normalisation as the repeat index used by the evidence tools.</summary>
-    static string RepeatKey(string text) => P7F1QEvidenceTools.RepeatKey(text);
 
     static string? Str(JsonElement e, string key) =>
         e.ValueKind == JsonValueKind.Object && e.TryGetProperty(key, out var v) && v.ValueKind == JsonValueKind.String ? v.GetString() : null;
