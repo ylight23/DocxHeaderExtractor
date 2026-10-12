@@ -1,0 +1,197 @@
+{
+  "artifact": "p7.f1.v6.d4.5-dryrun.v1",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.5-plan.v1.json",
+  "planSha256": "9e05c5255ac193d474c3343a0ec182352d74d91f17c97c0f7c66468774d075e6",
+  "planVerifiesNow": true,
+  "planVerifyFailures": [],
+  "codeCommit": "b7f16c0a27043cff228787f9f645d920f80aa628",
+  "budget": {
+    "MaxCalls": 64,
+    "MaxRequestBytes": 131072,
+    "CeilingUsd": 1
+  },
+  "goldAtoms": 109,
+  "goldHeadings": 103,
+  "simulations": [
+    {
+      "simulation": "ORACLE_FROM_GOLD (perfect scripted model; capacity check only)",
+      "status": "COMPLETE",
+      "finalization": "DONE",
+      "assurance": "FINAL_SELECTION_REVIEWED",
+      "calls": 51,
+      "reservedUsd": 0.312503,
+      "unresolved": 0,
+      "headings": 103,
+      "budgetRefusals": [],
+      "refusedRequestMaxBytes": null,
+      "byStage": [
+        {
+          "stage": "SEGMENT",
+          "calls": 48,
+          "minBytes": 22010,
+          "maxBytes": 30986,
+          "reserveUsd": 0.246309
+        },
+        {
+          "stage": "FINALIZE",
+          "calls": 3,
+          "minBytes": 89270,
+          "maxBytes": 89725,
+          "reserveUsd": 0.066194
+        }
+      ],
+      "score": {
+        "Status": "SCORED",
+        "Reason": null,
+        "Official": true,
+        "Label": "END_TO_END:FINAL_SELECTION_REVIEWED",
+        "atomF1": "218/218",
+        "headingF1": "206/206"
+      }
+    },
+    {
+      "simulation": "ALL_NEGATIVE (every segment NOT_SELECT)",
+      "status": "NOT_FINALIZED",
+      "finalization": "NO_CANDIDATES",
+      "assurance": "SEGMENT_COMPLETE",
+      "calls": 48,
+      "reservedUsd": 0.246309,
+      "unresolved": 0,
+      "headings": 0,
+      "budgetRefusals": [],
+      "refusedRequestMaxBytes": null,
+      "byStage": [
+        {
+          "stage": "SEGMENT",
+          "calls": 48,
+          "minBytes": 22010,
+          "maxBytes": 30986,
+          "reserveUsd": 0.246309
+        }
+      ],
+      "score": {
+        "Status": "SCORED_PROVISIONAL",
+        "Reason": null,
+        "Official": false,
+        "Label": "PROVISIONAL_DIAGNOSTIC:NOT_FINALIZED/NO_CANDIDATES/SEGMENT_COMPLETE",
+        "atomF1": "0/109",
+        "headingF1": "0/103"
+      }
+    },
+    {
+      "simulation": "SELECT_ALL (every atom its own heading)",
+      "status": "INCOMPLETE",
+      "finalization": "OUTLINE_OVER_CAP",
+      "assurance": "SEGMENT_COMPLETE",
+      "calls": 48,
+      "reservedUsd": 0.246309,
+      "unresolved": 0,
+      "headings": 2302,
+      "budgetRefusals": [],
+      "refusedRequestMaxBytes": null,
+      "byStage": [
+        {
+          "stage": "SEGMENT",
+          "calls": 48,
+          "minBytes": 22010,
+          "maxBytes": 30986,
+          "reserveUsd": 0.246309
+        }
+      ],
+      "score": {
+        "Status": "SCORED_PROVISIONAL",
+        "Reason": null,
+        "Official": false,
+        "Label": "PROVISIONAL_DIAGNOSTIC:INCOMPLETE/OUTLINE_OVER_CAP/SEGMENT_COMPLETE",
+        "atomF1": "218/2411",
+        "headingF1": "194/2405"
+      }
+    },
+    {
+      "simulation": "RETRIEVAL_HEAVY (one SEARCH per unit, then the oracle)",
+      "status": "INCOMPLETE",
+      "finalization": "SKIPPED_OPEN_ALIASES",
+      "assurance": "NONE",
+      "calls": 64,
+      "reservedUsd": 0.696492,
+      "unresolved": 766,
+      "headings": 74,
+      "budgetRefusals": [
+        {
+          "code": "CALL_LIMIT",
+          "count": 32
+        }
+      ],
+      "refusedRequestMaxBytes": 30132,
+      "byStage": [
+        {
+          "stage": "SEGMENT",
+          "calls": 64,
+          "minBytes": 22010,
+          "maxBytes": 40490,
+          "reserveUsd": 0.696492
+        }
+      ],
+      "score": {
+        "Status": "REFUSED",
+        "Reason": "RUN_HAS_UNRESOLVED:766",
+        "Official": false,
+        "Label": null,
+        "atomF1": null,
+        "headingF1": null
+      }
+    }
+  ],
+  "stageMatrix": [
+    {
+      "stage": "SEGMENT round 1",
+      "minBytes": 22010,
+      "medianBytes": 29776,
+      "maxBytes": 30986,
+      "withinCap": true,
+      "reserveUsdAtMax": 0.00518942
+    },
+    {
+      "stage": "SEGMENT worst (all retrieval)",
+      "maxBytes": 140835,
+      "withinCap": false,
+      "reserveUsdAtMax": 0.027190699999999998
+    },
+    {
+      "stage": "RESOLVE worst",
+      "maxBytes": 318489,
+      "withinCap": false,
+      "reserveUsdAtMax": 0.0899122
+    },
+    {
+      "stage": "FINALIZE worst (1,200-line outline)",
+      "maxBytes": 509113,
+      "withinCap": false,
+      "reserveUsdAtMax": 0.128037
+    }
+  ],
+  "worstCaseBound": {
+    "PerUnit": 48,
+    "Segments": 48,
+    "Round1MinBytes": 22010,
+    "Round1MedianBytes": 29776,
+    "Round1MaxBytes": 30986,
+    "ReplyBoundBytes": 9328,
+    "ReplyBoundWithinCap": true,
+    "MinCalls": 48,
+    "WorstCalls": 363,
+    "WorstSegmentRequestBytes": 140835,
+    "WorstResolveRequestBytes": 318489,
+    "WorstFinalizeRequestBytes": 509113,
+    "FinalizeChunksWorst": 25,
+    "MinUsd": 0.2463092699999999,
+    "WorstUsd": 26.4379341,
+    "MinUsdPerUnit": 0.0051314431249999985
+  },
+  "notes": [
+    "Scripted models only. The oracle reads the Gold to play a perfect model so that capacity can be checked; it is not a Qwen result and its F1 is not a finding.",
+    "Bytes bound prompt tokens from above; reserves use max_tokens 32,768 per attempt at the tier the bytes reach.",
+    "A run that is refused by the budget is fail-closed: aliases stay UNRESOLVED, nothing is trimmed and no budget is raised."
+  ]
+}
