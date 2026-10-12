@@ -17,12 +17,10 @@ namespace DocxHeaderExtractor.V5Qualification.P7;
 /// </summary>
 internal static class P7F1V6DirectScorer
 {
-    /// <summary>UniverseAliases is the pinned atom list the run decided over. UniverseSha256 binds it to the Gold's universe; this code does
-    /// not recompute that hash from the source (a separate pipeline makes it), so the binding rests on the registry and Gold checks.
-    /// Headings are the model's accepted groups, each an ordered list of atoms.</summary>
-    public sealed record RunEvidence(string SourceSha256, string UniverseSha256, IReadOnlyCollection<string> UniverseAliases,
-        IReadOnlyCollection<string> SelectedAtoms, IReadOnlyList<IReadOnlyList<string>> Headings, IReadOnlyCollection<string> Unresolved,
-        IReadOnlyCollection<string> CoverageMissing, IReadOnlyCollection<string> CoverageUnexpected);
+    /// <summary>Universe is rebuilt from the pinned source by the run's parser and evidence store (<see cref="P7F1V6Universe.Rebuild"/>); a
+    /// caller cannot declare it. Decisions is the run's final value per alias (SELECT, NOT_SELECT or UNRESOLVED). The scorer derives
+    /// coverage, UNRESOLVED and the selected atoms from these two itself. Headings are the run's accepted groups.</summary>
+    public sealed record RunEvidence(P7F1V6Universe Universe, IReadOnlyDictionary<string, string> Decisions, IReadOnlyList<IReadOnlyList<string>> Headings);
 
     public sealed record Counts(int TruePositive, int FalsePositive, int FalseNegative, string F1Exact, double F1);
 
@@ -85,7 +83,7 @@ internal static class P7F1V6DirectScorer
             return Refuse("REGISTRY_APPROVAL_NOT_USER_FINAL");
         if (!authority.GetProperty("semanticClaimsEvaluable").GetBoolean()) return Refuse("SEMANTIC_CLAIMS_NOT_EVALUABLE");
         if (!authority.GetProperty("occurrenceEvaluable").GetBoolean()) return Refuse("OCCURRENCE_NOT_EVALUABLE");
-        if (run.SourceSha256 != authority.GetProperty("sourceSha256").GetString()) return Refuse("SOURCE_SHA_MISMATCH");
+        if (run.Universe.SourceSha256 != authority.GetProperty("sourceSha256").GetString()) return Refuse("SOURCE_SHA_MISMATCH");
 
         var goldRel = authority.GetProperty("canonicalGoldPath").GetString() ?? "";
         var goldPath = Path.GetFullPath(Path.Combine(repoRoot, goldRel));
@@ -98,6 +96,7 @@ internal static class P7F1V6DirectScorer
         using var gold = JsonDocument.Parse(goldBytes);
         var g = gold.RootElement;
         if (g.GetProperty("authorityId").GetString() != authorityId) return Refuse("GOLD_AUTHORITY_DIFFERS");
+        if (g.GetProperty("source").GetProperty("sourcePath").GetString() != run.Universe.DocumentRelativePath) return Refuse("GOLD_SOURCE_PATH_DIFFERS");
         if (!g.GetProperty("approval").GetProperty("userFinalApproval").GetBoolean()) return Refuse("GOLD_APPROVAL_NOT_USER_FINAL");
         var semantic = g.GetProperty("semantic");
         if (!semantic.GetProperty("headingSetExhaustive").GetBoolean()) return Refuse("GOLD_NOT_EXHAUSTIVE");
@@ -115,7 +114,7 @@ internal static class P7F1V6DirectScorer
 
         var occurrence = g.GetProperty("occurrence");
         if (!occurrence.GetProperty("occurrenceEvaluable").GetBoolean()) return Refuse("OCCURRENCE_NOT_EVALUABLE");
-        if (occurrence.GetProperty("sourceUniverseSha256").GetString() != run.UniverseSha256) return Refuse("UNIVERSE_SHA_MISMATCH");
+        if (occurrence.GetProperty("sourceUniverseSha256").GetString() != run.Universe.UniverseSha256) return Refuse("UNIVERSE_SHA_MISMATCH");
         var occurrenceKeys = new List<string>();
         foreach (var c in occurrence.GetProperty("claims").EnumerateArray())
         {
@@ -126,14 +125,17 @@ internal static class P7F1V6DirectScorer
         if (occurrenceKeys.Distinct(StringComparer.Ordinal).Count() != occurrenceKeys.Count) return Refuse("GOLD_OCCURRENCE_DUPLICATE_CLAIM");
         if (!occurrenceKeys.ToHashSet(StringComparer.Ordinal).SetEquals(claims.Select(c => c.Key))) return Refuse("UNIT_MISMATCH_OCCURRENCE_VS_SEMANTIC");
 
-        // The run.
-        if (run.CoverageMissing.Count > 0 || run.CoverageUnexpected.Count > 0) return Refuse("COVERAGE_INCOMPLETE");
-        if (run.Unresolved.Count > 0) return Refuse($"RUN_HAS_UNRESOLVED:{run.Unresolved.Count}");
-        var universe = run.UniverseAliases.ToHashSet(StringComparer.Ordinal);
-        if (universe.Count == 0 || universe.Count != run.UniverseAliases.Count) return Refuse("UNIVERSE_EMPTY_OR_DUPLICATE_ALIAS");
+        // The run, against the rebuilt universe: every alias decided, nothing outside, nothing UNRESOLVED.
+        var universe = run.Universe.Aliases.ToHashSet(StringComparer.Ordinal);
+        if (run.Decisions.Values.Any(v => v is not ("SELECT" or "NOT_SELECT" or "UNRESOLVED"))) return Refuse("DECISION_VALUE_INVALID");
+        var missing = run.Universe.Aliases.Count(a => !run.Decisions.ContainsKey(a));
+        var unexpected = run.Decisions.Keys.Count(a => !universe.Contains(a));
+        if (missing > 0 || unexpected > 0) return Refuse($"COVERAGE_INCOMPLETE:missing={missing},unexpected={unexpected}");
+        var unresolved = run.Decisions.Values.Count(v => v == "UNRESOLVED");
+        if (unresolved > 0) return Refuse($"RUN_HAS_UNRESOLVED:{unresolved}");
         var goldAtoms = claims.SelectMany(c => c.Aliases).ToHashSet(StringComparer.Ordinal);
         if (!goldAtoms.All(universe.Contains)) return Refuse("GOLD_OUTSIDE_UNIVERSE");
-        var selected = run.SelectedAtoms.ToHashSet(StringComparer.Ordinal);
+        var selected = run.Decisions.Where(kv => kv.Value == "SELECT").Select(kv => kv.Key).ToHashSet(StringComparer.Ordinal);
         var outside = selected.Concat(run.Headings.SelectMany(h => h)).Where(a => !universe.Contains(a)).Distinct().OrderBy(a => a, StringComparer.Ordinal).ToList();
         if (outside.Count > 0) return Refuse("PREDICTED_OUTSIDE_UNIVERSE:" + string.Join(",", outside.Take(10)) + (outside.Count > 10 ? ",..." : ""));
 

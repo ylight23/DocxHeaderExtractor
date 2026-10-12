@@ -591,6 +591,16 @@ switch (args[0])
         if (args.Length != 3) throw new ArgumentException("d43-size-audit <repo-root> <artifact-dir>");
         C0Replay.D43SizeAudit(args[1], args[2]);
         break;
+    case "d44-universe-check":
+        // Issue #9 D4.4 (offline): d44-universe-check <repo-root> <artifact-dir>. Rebuilds PDF Gold universes and compares. No network call.
+        if (args.Length != 3) throw new ArgumentException("d44-universe-check <repo-root> <artifact-dir>");
+        C0Replay.D44UniverseCheck(args[1], args[2]);
+        break;
+    case "d44-plan":
+        // Issue #9 D4.4 (offline): d44-plan <repo-root> <artifact-dir>. Unit-size study and task A/B/C requests. No network call.
+        if (args.Length != 3) throw new ArgumentException("d44-plan <repo-root> <artifact-dir>");
+        C0Replay.D44Plan(args[1], args[2]);
+        break;
     case "d4-canary-artifact":
         // Issue #9 D4.1 (offline): d4-canary-artifact <artifact-dir> <generated-at-commit>. Writes the canary T1 body and audit. No network call.
         if (args.Length != 3) throw new ArgumentException("d4-canary-artifact <artifact-dir> <generated-at-commit>");

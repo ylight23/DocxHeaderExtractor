@@ -1,0 +1,215 @@
+{
+  "artifact": "p7.f1.v6.d4.4-plan.v1",
+  "providerCalls": 0,
+  "approvalToSend": false,
+  "prompt": {
+    "version": "P7_F1_V6_DIRECT_PROMPT_V2_1",
+    "systemPromptSha256": "b9e9bff868b72d5a1c502072453bbfcc44ae4155cb558f53aea9caa7757c2b25",
+    "pinned": true
+  },
+  "contract": {
+    "request": "P7_F1_V6_DIRECT_REQUEST_V2_1",
+    "response": "P7_F1_V6_DIRECT_RESPONSE_V2",
+    "MaxRounds": 3,
+    "MaxFinalizeOutlineLines": 1200,
+    "MaxResolveContextLines": 600,
+    "MaxAddedLinesPerUnit": 300,
+    "maxTokens": 32768
+  },
+  "documents": [
+    {
+      "document": "RFC9113 (DOC-0179, no approved Gold)",
+      "rel": "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf",
+      "sourceSha256": "8314f1034854548baf26f9912f79c6207299cb0520b31ed25af64889bd1500bc",
+      "universeSha256": "3d1d334b09b9a3fa5fc050a9f993b4f506dddfc8c0521c061f2972eb5fa36ad1",
+      "atoms": 2953,
+      "unitSizes": [
+        {
+          "PerUnit": 12,
+          "Segments": 247,
+          "Round1MinBytes": 9428,
+          "Round1MedianBytes": 18835,
+          "Round1MaxBytes": 19846,
+          "ReplyBoundBytes": 3100,
+          "ReplyBoundWithinCap": true,
+          "MinCalls": 247,
+          "WorstCalls": 1782,
+          "WorstSegmentRequestBytes": 130308,
+          "WorstResolveRequestBytes": 308505,
+          "WorstFinalizeRequestBytes": 521521,
+          "FinalizeChunksWorst": 100,
+          "MinUsd": 1.19018954,
+          "WorstUsd": 123.57946799999999,
+          "MinUsdPerUnit": 0.0048185811336032384
+        },
+        {
+          "PerUnit": 24,
+          "Segments": 124,
+          "Round1MinBytes": 9428,
+          "Round1MedianBytes": 22488,
+          "Round1MaxBytes": 23627,
+          "ReplyBoundBytes": 5176,
+          "ReplyBoundWithinCap": true,
+          "MinCalls": 124,
+          "WorstCalls": 894,
+          "WorstSegmentRequestBytes": 134089,
+          "WorstResolveRequestBytes": 312429,
+          "WorstFinalizeRequestBytes": 521677,
+          "FinalizeChunksWorst": 50,
+          "MinUsd": 0.6104558900000003,
+          "WorstUsd": 62.3865687,
+          "MinUsdPerUnit": 0.004923031370967745
+        },
+        {
+          "PerUnit": 48,
+          "Segments": 62,
+          "Round1MinBytes": 16723,
+          "Round1MedianBytes": 29752,
+          "Round1MaxBytes": 31083,
+          "ReplyBoundBytes": 9328,
+          "ReplyBoundWithinCap": true,
+          "MinCalls": 62,
+          "WorstCalls": 447,
+          "WorstSegmentRequestBytes": 141484,
+          "WorstResolveRequestBytes": 320261,
+          "WorstFinalizeRequestBytes": 521989,
+          "FinalizeChunksWorst": 25,
+          "MinUsd": 0.31830217000000005,
+          "WorstUsd": 31.6198689,
+          "MinUsdPerUnit": 0.005133905967741936
+        },
+        {
+          "PerUnit": 88,
+          "Segments": 34,
+          "Round1MinBytes": 23410,
+          "Round1MedianBytes": 41607,
+          "Round1MaxBytes": 43481,
+          "ReplyBoundBytes": 16248,
+          "ReplyBoundWithinCap": true,
+          "MinCalls": 34,
+          "WorstCalls": 246,
+          "WorstSegmentRequestBytes": 153805,
+          "WorstResolveRequestBytes": 333301,
+          "WorstFinalizeRequestBytes": 522509,
+          "FinalizeChunksWorst": 14,
+          "MinUsd": 0.57344994,
+          "WorstUsd": 17.8415853,
+          "MinUsdPerUnit": 0.016866174705882354
+        }
+      ]
+    },
+    {
+      "document": "RFC9114 (SRC-095, approved Gold: ALL_TRUE_HEADING_OCCURRENCES)",
+      "rel": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+      "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+      "universeSha256": "1eee2105941098eb50e79fd866fddeb36718c49ca02da9906aeaaf2ba3673ead",
+      "atoms": 2302,
+      "unitSizes": [
+        {
+          "PerUnit": 12,
+          "Segments": 192,
+          "Round1MinBytes": 12236,
+          "Round1MedianBytes": 18954,
+          "Round1MaxBytes": 19797,
+          "ReplyBoundBytes": 3100,
+          "ReplyBoundWithinCap": true,
+          "MinCalls": 192,
+          "WorstCalls": 1452,
+          "WorstSegmentRequestBytes": 129656,
+          "WorstResolveRequestBytes": 306851,
+          "WorstFinalizeRequestBytes": 508646,
+          "FinalizeChunksWorst": 100,
+          "MinUsd": 0.9249023999999999,
+          "WorstUsd": 103.7805261,
+          "MinUsdPerUnit": 0.0048172
+        },
+        {
+          "PerUnit": 24,
+          "Segments": 96,
+          "Round1MinBytes": 15709,
+          "Round1MedianBytes": 22531,
+          "Round1MaxBytes": 23584,
+          "ReplyBoundBytes": 5176,
+          "ReplyBoundWithinCap": true,
+          "MinCalls": 96,
+          "WorstCalls": 726,
+          "WorstSegmentRequestBytes": 133441,
+          "WorstResolveRequestBytes": 310738,
+          "WorstFinalizeRequestBytes": 508802,
+          "FinalizeChunksWorst": 50,
+          "MinUsd": 0.4725768900000001,
+          "WorstUsd": 52.2199356,
+          "MinUsdPerUnit": 0.004922675937500001
+        },
+        {
+          "PerUnit": 48,
+          "Segments": 48,
+          "Round1MinBytes": 22011,
+          "Round1MedianBytes": 29777,
+          "Round1MaxBytes": 30987,
+          "ReplyBoundBytes": 9328,
+          "ReplyBoundWithinCap": true,
+          "MinCalls": 48,
+          "WorstCalls": 363,
+          "WorstSegmentRequestBytes": 140836,
+          "WorstResolveRequestBytes": 318490,
+          "WorstFinalizeRequestBytes": 509114,
+          "FinalizeChunksWorst": 25,
+          "MinUsd": 0.24631071000000004,
+          "WorstUsd": 26.437992299999998,
+          "MinUsdPerUnit": 0.005131473125000001
+        },
+        {
+          "PerUnit": 88,
+          "Segments": 27,
+          "Round1MinBytes": 13615,
+          "Round1MedianBytes": 41825,
+          "Round1MaxBytes": 43502,
+          "ReplyBoundBytes": 16248,
+          "ReplyBoundWithinCap": true,
+          "MinCalls": 27,
+          "WorstCalls": 204,
+          "WorstSegmentRequestBytes": 153312,
+          "WorstResolveRequestBytes": 331385,
+          "WorstFinalizeRequestBytes": 509634,
+          "FinalizeChunksWorst": 14,
+          "MinUsd": 0.45167378999999985,
+          "WorstUsd": 15.1478772,
+          "MinUsdPerUnit": 0.016728658888888883
+        }
+      ]
+    }
+  ],
+  "tasksOnSrc095": {
+    "rows": [
+      {
+        "task": "A",
+        "instruction": "Trích xuất tất cả heading",
+        "requestSha256": "9130ec33c192b6a32a14135afc2b4bc5ef145c78d3a8d3a2f60246df52adde23",
+        "requestBytes": 15708,
+        "payloadWithoutInstructionSha256": "9247e0e05aa3ca64cd3e7c65fb64143a5d9f4fdad8101deb285966559adfb113"
+      },
+      {
+        "task": "B",
+        "instruction": "Trích xuất các heading chính",
+        "requestSha256": "df900e9dd2b694ff2c6488df383f666961a47fd0b6b2e3c2cffa50024959e09e",
+        "requestBytes": 15709,
+        "payloadWithoutInstructionSha256": "9247e0e05aa3ca64cd3e7c65fb64143a5d9f4fdad8101deb285966559adfb113"
+      },
+      {
+        "task": "C",
+        "instruction": "Chỉ trích xuất các heading cấp cao nhất của tài liệu",
+        "requestSha256": "6272e41dbacbd413792d5d39d0159a04725bc2c02358642cc0624d92fe497a32",
+        "requestBytes": 15743,
+        "payloadWithoutInstructionSha256": "9247e0e05aa3ca64cd3e7c65fb64143a5d9f4fdad8101deb285966559adfb113"
+      }
+    ],
+    "onlyInstructionDiffers": true,
+    "gold": "Task A matches the SRC-095 Gold truth definition (ALL_TRUE_HEADING_OCCURRENCES; all parts WHOLE_ALIAS). Tasks B and C have no Gold: no F1 is claimed for them."
+  },
+  "notes": [
+    "Bytes bound prompt tokens from above. Canary T1 measured 454 prompt tokens for 1,804 request bytes on one synthetic request; that ratio is not applied here.",
+    "Completion is bounded by max_tokens 32,768 per attempt. Canary T1 reported 1,499 reasoning tokens of 1,695 on four lines; that count is not scaled to any unit size.",
+    "MinUsd assumes one call per segment and no resolve or finalization; a real run is at least that plus finalization."
+  ]
+}

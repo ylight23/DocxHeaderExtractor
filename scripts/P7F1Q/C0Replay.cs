@@ -238,6 +238,106 @@ internal static class C0Replay
         Console.WriteLine($"d4.3 size audit: {lines.Count} lines, {b.PerUnit} per unit, {b.Segments} segments, calls {b.MinCalls}..{b.WorstCalls}, round-1 max {b.Round1MaxBytes} B, worst segment {b.WorstSegmentRequestBytes} B, worst resolve {b.WorstResolveRequestBytes} B, ${b.MinUsd:F4}..${b.WorstUsd:F4}");
     }
 
+    /// <summary>D4.4 universe provenance (offline): rebuilds the universe of every evaluable PDF Gold with the current parser and evidence
+    /// store, and compares it with the Gold's recorded universe SHA. Nothing is sent and no Gold is changed.</summary>
+    public static void D44UniverseCheck(string repoRoot, string artifactDir)
+    {
+        using var reg = JsonDocument.Parse(File.ReadAllText(Path.Combine(repoRoot, "eval/a99-closed-loop/gold-current/registry.v1.json")));
+        var rows = new List<object>();
+        foreach (var a in reg.RootElement.GetProperty("authorities").EnumerateArray())
+        {
+            if (!a.GetProperty("occurrenceEvaluable").GetBoolean()) continue;
+            using var g = JsonDocument.Parse(File.ReadAllText(Path.Combine(repoRoot, a.GetProperty("canonicalGoldPath").GetString()!)));
+            var src = g.RootElement.GetProperty("source");
+            var rel = src.GetProperty("sourcePath").GetString()!;
+            var goldUniverse = g.RootElement.GetProperty("occurrence").GetProperty("sourceUniverseSha256").GetString();
+            if (src.GetProperty("mediaType").GetString() != "PDF")
+            {
+                rows.Add(new { authorityId = a.GetProperty("authorityId").GetString(), rel, status = "NOT_PDF_NOT_REBUILT" });
+                continue;
+            }
+            var u = P7F1V6Universe.Rebuild(repoRoot, rel, a.GetProperty("sourceSha256").GetString()!, out var failure);
+            rows.Add(new
+            {
+                authorityId = a.GetProperty("authorityId").GetString(),
+                rel,
+                status = u is null ? "REBUILD_FAILED:" + failure : u.UniverseSha256 == goldUniverse ? "UNIVERSE_MATCHES_GOLD" : "UNIVERSE_DIFFERS_FROM_GOLD",
+                goldUniverseSha256 = goldUniverse,
+                rebuiltUniverseSha256 = u?.UniverseSha256,
+                atoms = u?.Aliases.Count,
+            });
+        }
+        var audit = new { artifact = "p7.f1.v6.d4.4-universe-provenance.v1", providerCalls = 0, goldChanged = false, rows };
+        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.4-universe-provenance.v1.json"), JsonSerializer.Serialize(audit, Indented) + "\n", new UTF8Encoding(false));
+        foreach (var r in rows) Console.WriteLine(JsonSerializer.Serialize(r));
+    }
+
+    /// <summary>D4.4 plan (offline): per-unit and per-run size and cost for unit sizes 12/24/48/88 on RFC 9113 and RFC 9114 (SRC-095), and
+    /// the first request of tasks A/B/C on SRC-095 over the same rebuilt universe. Nothing is sent. The plan is not an approval to send.</summary>
+    public static void D44Plan(string repoRoot, string artifactDir)
+    {
+        var tasks = new[] { ("A", "Trích xuất tất cả heading"), ("B", "Trích xuất các heading chính"), ("C", "Chỉ trích xuất các heading cấp cao nhất của tài liệu") };
+        using var d4 = JsonDocument.Parse(File.ReadAllText(Path.Combine(artifactDir, "p7.f1.v6.d4-size-audit.v1.json")));
+        using var reg = JsonDocument.Parse(File.ReadAllText(Path.Combine(repoRoot, "eval/a99-closed-loop/gold-current/registry.v1.json")));
+        var src095 = reg.RootElement.GetProperty("authorities").EnumerateArray().First(a => a.GetProperty("authorityId").GetString() == "SRC-095");
+        var docs = new[]
+        {
+            (Id: "RFC9113 (DOC-0179, no approved Gold)", Rel, Sha: d4.RootElement.GetProperty("documentSha256").GetString()!),
+            (Id: "RFC9114 (SRC-095, approved Gold: ALL_TRUE_HEADING_OCCURRENCES)", Rel: "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+                Sha: src095.GetProperty("sourceSha256").GetString()!),
+        };
+        var documents = new List<object>();
+        P7F1V6Universe? u095 = null;
+        foreach (var d in docs)
+        {
+            var u = P7F1V6Universe.Rebuild(repoRoot, d.Rel, d.Sha, out var failure) ?? throw new InvalidOperationException(failure);
+            if (d.Rel.Contains("095_")) u095 = u;
+            var sizes = new[] { 12, 24, 48, 88 }.Select(n => P7F1V6DirectV2.WorstCase(tasks[1].Item2, u.SourceSha256, u.Lines, perUnit: n)).ToList();
+            documents.Add(new { document = d.Id, rel = d.Rel, sourceSha256 = u.SourceSha256, universeSha256 = u.UniverseSha256, atoms = u.Aliases.Count, unitSizes = sizes });
+        }
+
+        // Tasks A/B/C on SRC-095: the same universe, the same first unit; only the instruction differs.
+        var firstDecide = u095!.Aliases.Take(24).ToArray();
+        var firstContext = u095.Lines.Take(24 + P7F1V6Direct.DefaultOverlapLines).ToArray();
+        var taskRows = tasks.Select(t =>
+        {
+            var req = P7F1V6DirectV2.BuildRequest(t.Item2, u095.SourceSha256, "SEGMENT", "SEG-000", 1, firstDecide, firstContext, Array.Empty<P7F1V6DirectV2.Retrieval>());
+            using var body = JsonDocument.Parse(req.Body);
+            var payload = System.Text.Json.Nodes.JsonNode.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!)!.AsObject();
+            payload.Remove("instruction");
+            payload.Remove("instructionSha256");
+            return new { task = t.Item1, instruction = t.Item2, requestSha256 = req.Sha256, requestBytes = req.Bytes,
+                payloadWithoutInstructionSha256 = P7F1V6Protocol.Sha(payload.ToJsonString()) };
+        }).ToList();
+
+        var plan = new
+        {
+            artifact = "p7.f1.v6.d4.4-plan.v1",
+            providerCalls = 0,
+            approvalToSend = false,
+            prompt = new { version = P7F1V6DirectV2.PromptVersion, systemPromptSha256 = P7F1V6DirectV2.ComputedSystemPromptSha256(),
+                pinned = P7F1V6DirectV2.ComputedSystemPromptSha256() == P7F1V6DirectV2.SystemPromptSha256 },
+            contract = new { request = P7F1V6DirectV2.RequestVersion, response = P7F1V6DirectV2.ResponseVersion, P7F1V6DirectV2.MaxRounds,
+                P7F1V6DirectV2.MaxFinalizeOutlineLines, P7F1V6DirectV2.MaxResolveContextLines, P7F1V6DirectV2.MaxAddedLinesPerUnit, maxTokens = P7F1V6Protocol.MaxTokens },
+            documents,
+            tasksOnSrc095 = new
+            {
+                rows = taskRows,
+                onlyInstructionDiffers = taskRows.Select(r => r.payloadWithoutInstructionSha256).Distinct().Count() == 1,
+                gold = "Task A matches the SRC-095 Gold truth definition (ALL_TRUE_HEADING_OCCURRENCES; all parts WHOLE_ALIAS). Tasks B and C have no Gold: no F1 is claimed for them.",
+            },
+            notes = new[]
+            {
+                "Bytes bound prompt tokens from above. Canary T1 measured 454 prompt tokens for 1,804 request bytes on one synthetic request; that ratio is not applied here.",
+                "Completion is bounded by max_tokens 32,768 per attempt. Canary T1 reported 1,499 reasoning tokens of 1,695 on four lines; that count is not scaled to any unit size.",
+                "MinUsd assumes one call per segment and no resolve or finalization; a real run is at least that plus finalization.",
+            },
+        };
+        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.4-plan.v1.json"), JsonSerializer.Serialize(plan, Indented) + "\n", new UTF8Encoding(false));
+        foreach (var d in documents) Console.WriteLine(JsonSerializer.Serialize(d));
+        Console.WriteLine(JsonSerializer.Serialize(plan.tasksOnSrc095));
+    }
+
     /// <summary>D4.1 canary T1 (offline): writes the exact HTTP body and its audit record. Nothing is sent.</summary>
     public static void D4CanaryArtifact(string artifactDir, string generatedAtCommit)
     {

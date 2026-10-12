@@ -24,6 +24,8 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
 
     static string A(int i) => $"L{i:0000}:S0";
 
+    static P7F1V6DirectV2.Budget Gen() => new(10_000, 1_000, 2_000_000);
+
     static List<P7F1V6Direct.Line> Lines(int n, Func<int, string>? text = null) =>
         Enumerable.Range(0, n).Select(i => new P7F1V6Direct.Line(A(i), 1, text?.Invoke(i) ?? $"Dòng {i}")).ToList();
 
@@ -154,14 +156,14 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
     {
         var lines = Lines(100, i => i == 80 ? "Mục lục đặc biệt" : $"Dòng {i}");
         var seen = new List<P7F1V6Protocol.PreparedRequest>();
-        var run = P7F1V6DirectV2.Run(Instruction, "sha", lines, (u, round, req) =>
+        var run = P7F1V6DirectV2.Run(Instruction, "sha", lines, budget: Gen(), finalize: false, model: (u, round, req) =>
         {
             seen.Add(req);
             if (u == "SEG-000" && round == 1) return Needs(new { kind = "SEARCH", text = "đặc biệt" }, new { kind = "RANGE", fromAlias = "L9999:S0", toAlias = A(3) });
             return AllNot(req);
         }, overlap: 2, perUnit: 10);
 
-        Assert.Equal("COMPLETE", run.Status);
+        Assert.Equal("NOT_FINALIZED", run.Status);
         var seg0 = run.Units[0];
         Assert.Equal(2, seg0.Calls);
         Assert.DoesNotContain(A(80), Shown(seg0.Requests[0]));
@@ -187,7 +189,7 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
     public void Retrieval_RoundsExhausted_LeavesAliasesUnresolved_NeverNotSelect()
     {
         var lines = Lines(20);
-        var run = P7F1V6DirectV2.Run(Instruction, "sha", lines, (u, round, req) =>
+        var run = P7F1V6DirectV2.Run(Instruction, "sha", lines, budget: Gen(), finalize: false, model: (u, round, req) =>
             u == "SEG-000" || u.StartsWith("RESOLVE", StringComparison.Ordinal) ? Needs(new { kind = "SEARCH", text = "Dòng" }) : AllNot(req),
             overlap: 2, perUnit: 10);
 
@@ -203,7 +205,7 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
     public void Clarification_StopsTheRunAtOnce()
     {
         var lines = Lines(50);
-        var run = P7F1V6DirectV2.Run(Instruction, "sha", lines, (u, round, req) => Clarify("Chỉ cấp chương", "Chương và mục"), perUnit: 10);
+        var run = P7F1V6DirectV2.Run(Instruction, "sha", lines, budget: Gen(), finalize: false, model: (u, round, req) => Clarify("Chỉ cấp chương", "Chương và mục"), perUnit: 10);
         Assert.Equal("CLARIFICATION_REQUIRED", run.Status);
         Assert.Equal(1, run.Calls);
         Assert.Single(run.Units);
@@ -215,12 +217,12 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
     public void ProtocolFailure_LeavesAliasesUnresolved_AndTheResolvePassDecidesThem()
     {
         var lines = Lines(20);
-        var run = P7F1V6DirectV2.Run(Instruction, "sha", lines, (u, round, req) => u == "SEG-001" ? "not json" : AllNot(req), overlap: 2, perUnit: 10);
+        var run = P7F1V6DirectV2.Run(Instruction, "sha", lines, budget: Gen(), finalize: false, model: (u, round, req) => u == "SEG-001" ? "not json" : AllNot(req), overlap: 2, perUnit: 10);
         Assert.Equal("FAILED", run.Units[1].Status);
         Assert.Equal("PROTOCOL:REPLY_NOT_JSON", run.Units[1].Failure);
         var resolve = Assert.Single(run.Units, u => u.UnitId == "RESOLVE-000");
         Assert.Equal(Enumerable.Range(10, 10).Select(A), Decide(resolve.Requests[0]));
-        Assert.Equal("COMPLETE", run.Status);
+        Assert.Equal("NOT_FINALIZED", run.Status);
     }
 
     /// <summary>Segment 0 owns L0009, segment 1 owns L0010; one heading spans both.</summary>
@@ -238,8 +240,8 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
     [Fact]
     public void MultipartHeading_AcrossTheSegmentBoundary_IsAssembledFromBothOwners()
     {
-        var run = P7F1V6DirectV2.Run(Instruction, "sha", Lines(20), CrossBoundary(secondAgrees: true), overlap: 2, perUnit: 10);
-        Assert.Equal("COMPLETE", run.Status);
+        var run = P7F1V6DirectV2.Run(Instruction, "sha", Lines(20), CrossBoundary(secondAgrees: true), Gen(), overlap: 2, perUnit: 10, finalize: false);
+        Assert.Equal("NOT_FINALIZED", run.Status);
         Assert.Equal(2, run.Calls);
         var h = Assert.Single(run.Headings);
         Assert.Equal(new[] { A(9), A(10) }, h);
@@ -249,10 +251,10 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
     public void ConflictingOwners_GoToTheResolvePass_WhichDecides()
     {
         var run = P7F1V6DirectV2.Run(Instruction, "sha", Lines(20), CrossBoundary(secondAgrees: false,
-            req => Decisions("COMPLETE", Decide(req).Select(a => (Idx(a), "SELECT")), new[] { new[] { 9, 10 } })), overlap: 2, perUnit: 10);
+            req => Decisions("COMPLETE", Decide(req).Select(a => (Idx(a), "SELECT")), new[] { new[] { 9, 10 } })), Gen(), overlap: 2, perUnit: 10, finalize: false);
         var resolve = Assert.Single(run.Units, u => u.UnitId == "RESOLVE-000");
         Assert.Equal(new[] { A(9), A(10) }, Decide(resolve.Requests[0]));
-        Assert.Equal("COMPLETE", run.Status);
+        Assert.Equal("NOT_FINALIZED", run.Status);
         Assert.Equal(new[] { A(9), A(10) }, Assert.Single(run.Headings));
     }
 
@@ -260,7 +262,7 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
     public void ConflictingOwners_UnresolvedByTheResolvePass_StayOpen()
     {
         var run = P7F1V6DirectV2.Run(Instruction, "sha", Lines(20), CrossBoundary(secondAgrees: false,
-            req => Decisions("INCOMPLETE", Decide(req).Select(a => (Idx(a), "UNRESOLVED")), reason: "không đủ bằng chứng")), overlap: 2, perUnit: 10);
+            req => Decisions("INCOMPLETE", Decide(req).Select(a => (Idx(a), "UNRESOLVED")), reason: "không đủ bằng chứng")), Gen(), overlap: 2, perUnit: 10, finalize: false);
         Assert.Equal("INCOMPLETE", run.Status);
         Assert.Equal(new[] { A(9), A(10) }, run.Unresolved);
         Assert.Empty(run.Headings);
@@ -269,10 +271,10 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
     [Fact]
     public void CallBudget_LeavesTheRestUnresolved()
     {
-        var run = P7F1V6DirectV2.Run(Instruction, "sha", Lines(30), (u, r, req) => AllNot(req), perUnit: 10, maxCalls: 1);
+        var run = P7F1V6DirectV2.Run(Instruction, "sha", Lines(30), (u, r, req) => AllNot(req), new P7F1V6DirectV2.Budget(1, 100, 2_000_000), perUnit: 10, finalize: false);
         Assert.Equal(1, run.Calls);
         Assert.Equal("INCOMPLETE", run.Status);
-        Assert.Equal("CALL_BUDGET_EXHAUSTED", run.Units[1].Failure);
+        Assert.Equal("BUDGET:CALL_LIMIT", run.Units[1].Failure);
         Assert.Equal(20, run.Unresolved.Count);
     }
 
@@ -285,7 +287,7 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
         var bodies = tasks.Select(t =>
         {
             P7F1V6Protocol.PreparedRequest? first = null;
-            P7F1V6DirectV2.Run(t, "sha", lines, (u, r, req) => { first ??= req; return AllNot(req); }, perUnit: 12);
+            P7F1V6DirectV2.Run(t, "sha", lines, (u, r, req) => { first ??= req; return AllNot(req); }, Gen(), perUnit: 12, finalize: false);
             return Payload(first!);
         }).ToArray();
         for (int k = 0; k < tasks.Length; k++)
@@ -338,7 +340,7 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
         var lines = Lines(400, i => i % 7 == 0 ? $"Mục \"{i}\" — tiêu đề dài {new string('ữ', 40)}" : $"Dòng {i}");
         var bound = P7F1V6DirectV2.WorstCase(Instruction, "sha", lines, overlap: 20, perUnit: 40);
         var segMax = 0; var resMax = 0;
-        var run = P7F1V6DirectV2.Run(Instruction, "sha", lines, (u, round, req) =>
+        var run = P7F1V6DirectV2.Run(Instruction, "sha", lines, budget: Gen(), finalize: false, model: (u, round, req) =>
         {
             if (u.StartsWith("SEG", StringComparison.Ordinal)) segMax = Math.Max(segMax, req.Bytes); else resMax = Math.Max(resMax, req.Bytes);
             if (round < P7F1V6DirectV2.MaxRounds)
@@ -354,13 +356,16 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
         Assert.Equal("INCOMPLETE", run.Status);
     }
 
-    // ---------------- scorer on real Gold ----------------
+    // ---------------- scorer on real Gold, with universes rebuilt from the pinned PDFs ----------------
 
-    sealed record GoldFacts(string Source, string Universe, List<List<string>> Claims);
+    sealed record GoldFacts(string SourcePath, string SourceSha, List<List<string>> Claims);
 
-    static GoldFacts ReadGold(string id, string? root = null)
+    static readonly Dictionary<string, P7F1V6Universe> Universes = new();
+    static readonly object UniverseLock = new();
+
+    static GoldFacts ReadGold(string id)
     {
-        root ??= TestRepository.Root();
+        var root = TestRepository.Root();
         using var reg = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, Registry)));
         var a = reg.RootElement.GetProperty("authorities").EnumerateArray().First(x => x.GetProperty("authorityId").GetString() == id);
         using var g = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, a.GetProperty("canonicalGoldPath").GetString()!)));
@@ -368,68 +373,81 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
             c.TryGetProperty("sourceParts", out var ps)
                 ? ps.EnumerateArray().Select(p => p.GetProperty("sourceAlias").GetString()!).ToList()
                 : new List<string> { c.GetProperty("sourceAlias").GetString()! }).ToList();
-        var universe = g.RootElement.GetProperty("occurrence").TryGetProperty("sourceUniverseSha256", out var u) && u.ValueKind == JsonValueKind.String ? u.GetString()! : "";
-        return new GoldFacts(a.GetProperty("sourceSha256").GetString()!, universe, claims);
+        return new GoldFacts(g.RootElement.GetProperty("source").GetProperty("sourcePath").GetString()!, a.GetProperty("sourceSha256").GetString()!, claims);
     }
 
-    static P7F1V6DirectScorer.RunEvidence Perfect(GoldFacts f, IEnumerable<IReadOnlyList<string>>? headings = null, IEnumerable<string>? unresolved = null,
-        IEnumerable<string>? universe = null, string? source = null, string? universeSha = null)
+    static P7F1V6Universe Universe(string id)
     {
-        var hs = (headings ?? f.Claims).ToList();
-        return new(source ?? f.Source, universeSha ?? f.Universe, (universe ?? f.Claims.SelectMany(c => c).Append("ZZZZ:S0").Distinct()).ToList(),
-            hs.SelectMany(h => h).ToList(), hs, (unresolved ?? Array.Empty<string>()).ToList(), Array.Empty<string>(), Array.Empty<string>());
+        lock (UniverseLock)
+        {
+            if (Universes.TryGetValue(id, out var u)) return u;
+            var f = ReadGold(id);
+            u = P7F1V6Universe.Rebuild(TestRepository.Root(), f.SourcePath, f.SourceSha, out var failure) ?? throw new InvalidOperationException(failure);
+            Universes[id] = u;
+            return u;
+        }
+    }
+
+    /// <summary>A run that decides every alias of the universe: the given headings SELECT, everything else NOT_SELECT.</summary>
+    static P7F1V6DirectScorer.RunEvidence RunOn(P7F1V6Universe u, IEnumerable<IReadOnlyList<string>> headings, Action<Dictionary<string, string>>? edit = null)
+    {
+        var hs = headings.ToList();
+        var selected = hs.SelectMany(h => h).ToHashSet(StringComparer.Ordinal);
+        var decisions = u.Aliases.ToDictionary(a => a, a => selected.Contains(a) ? "SELECT" : "NOT_SELECT", StringComparer.Ordinal);
+        edit?.Invoke(decisions);
+        return new(u, decisions, hs);
+    }
+
+    static P7F1V6DirectScorer.RunEvidence Perfect(string id) => RunOn(Universe(id), ReadGold(id).Claims);
+
+    [Fact]
+    public void Universe_IsRebuiltFromThePinnedPdf_AndMatchesTheGold()
+    {
+        var u = Universe("SRC-089");
+        Assert.Equal(581, u.Aliases.Count);
+        Assert.Equal("d45b4a027d4da6133c852f7ee470365d08fbf8f9a47c25aff9afd074278ec8cc", u.UniverseSha256);
+        Assert.Equal(ReadGold("SRC-089").SourceSha, u.SourceSha256);
+        Assert.Null(P7F1V6Universe.Rebuild(TestRepository.Root(), ReadGold("SRC-089").SourcePath, new string('0', 64), out var failure));
+        Assert.StartsWith("SOURCE_GATE:", failure, StringComparison.Ordinal);
+        Assert.Null(P7F1V6Universe.Rebuild(TestRepository.Root(), "bench/01-style-chuan.docx", ReadGold("DOC-0001").SourceSha, out failure));
+        Assert.Equal("UNIVERSE_REBUILD_PDF_ONLY", failure);
     }
 
     [Fact]
     public void Scorer_Src089_MultipartGold_IsReadFromSourceParts_AndScoresBothMetrics()
     {
-        var f = ReadGold("SRC-089");
-        Assert.Contains(f.Claims, c => c.SequenceEqual(new[] { "L0006:S0", "L0007:S0", "L0008:S0" }));
-        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "SRC-089", Perfect(f));
+        var claims = ReadGold("SRC-089").Claims;
+        Assert.Contains(claims, c => c.SequenceEqual(new[] { "L0006:S0", "L0007:S0", "L0008:S0" }));
+        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "SRC-089", Perfect("SRC-089"));
         Assert.True(r.Scored, r.Reason);
         Assert.Equal(1.0, r.AtomMembership!.F1);
         Assert.Equal(1.0, r.HeadingOccurrence!.F1);
-        Assert.Equal($"{2 * f.Claims.Count}/{2 * f.Claims.Count}", r.HeadingOccurrence.F1Exact);
+        Assert.Equal($"{2 * claims.Count}/{2 * claims.Count}", r.HeadingOccurrence.F1Exact);
     }
 
     [Fact]
     public void Scorer_ThreeAtomsOfOneHeading_AreOneOccurrence_NotThree()
     {
-        var f = ReadGold("SRC-089");
-        // Same atoms, but every atom reported as its own heading: atom membership is perfect, heading occurrence is not.
-        var split = f.Claims.SelectMany(c => c).Select(a => (IReadOnlyList<string>)new[] { a }).ToList();
-        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "SRC-089", Perfect(f, split));
+        var claims = ReadGold("SRC-089").Claims;
+        var split = claims.SelectMany(c => c).Select(a => (IReadOnlyList<string>)new[] { a }).ToList();
+        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "SRC-089", RunOn(Universe("SRC-089"), split));
         Assert.True(r.Scored, r.Reason);
         Assert.Equal(1.0, r.AtomMembership!.F1);
-        var single = f.Claims.Count(c => c.Count == 1);
-        var multi = f.Claims.Count - single;
-        var atomsInMulti = f.Claims.Where(c => c.Count > 1).Sum(c => c.Count);
-        Assert.Equal(single, r.HeadingOccurrence!.TruePositive);
-        Assert.Equal(atomsInMulti, r.HeadingOccurrence.FalsePositive);
-        Assert.Equal(multi, r.HeadingOccurrence.FalseNegative);
+        Assert.Equal(claims.Count(c => c.Count == 1), r.HeadingOccurrence!.TruePositive);
+        Assert.Equal(claims.Where(c => c.Count > 1).Sum(c => c.Count), r.HeadingOccurrence.FalsePositive);
+        Assert.Equal(claims.Count(c => c.Count > 1), r.HeadingOccurrence.FalseNegative);
         Assert.True(r.HeadingOccurrence.F1 < 1.0);
     }
 
     [Fact]
     public void Scorer_VerbatimTextParts_MakeHeadingOccurrenceNotComparable()
     {
-        var f = ReadGold("SRC-044");
-        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "SRC-044", Perfect(f));
+        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "SRC-044", Perfect("SRC-044"));
         Assert.True(r.Scored, r.Reason);
         Assert.Null(r.HeadingOccurrence);
         Assert.StartsWith("VERBATIM_TEXT_PARTS:", r.HeadingOccurrenceNotComparable, StringComparison.Ordinal);
         Assert.Contains("ATOM_MEMBERSHIP_COUNTS_A_VERBATIM_TEXT_PART_AS_ITS_WHOLE_ATOM", r.Notes);
         Assert.NotNull(r.AtomMembership);
-    }
-
-    [Fact]
-    public void Scorer_UnstatedSelectionMode_MakesHeadingOccurrenceNotComparable()
-    {
-        var f = ReadGold("DOC-0001");
-        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0001", Perfect(f));
-        Assert.True(r.Scored, r.Reason);
-        Assert.Null(r.HeadingOccurrence);
-        Assert.StartsWith("SELECTION_MODE_NOT_STATED:", r.HeadingOccurrenceNotComparable, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -440,43 +458,46 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
         {
             var id = a.GetProperty("authorityId").GetString()!;
             var evaluable = a.GetProperty("semanticClaimsEvaluable").GetBoolean() && a.GetProperty("occurrenceEvaluable").GetBoolean();
-            var f = evaluable ? ReadGold(id) : null;
-            var ev = f is null
-                ? new P7F1V6DirectScorer.RunEvidence(a.GetProperty("sourceSha256").GetString()!, "", new[] { "X" }, Array.Empty<string>(),
-                    Array.Empty<IReadOnlyList<string>>(), Array.Empty<string>(), Array.Empty<string>(), Array.Empty<string>())
-                : Perfect(f);
-            var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, id, ev);
-            if (evaluable)
+            if (!evaluable)
             {
-                Assert.True(r.Scored, id + ": " + r.Reason);
-                Assert.Equal(1.0, r.AtomMembership!.F1);
-                if (r.HeadingOccurrence is not null) Assert.Equal(1.0, r.HeadingOccurrence.F1);
-                else Assert.NotNull(r.HeadingOccurrenceNotComparable);
+                var refused = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, id, Perfect("SRC-089"));
+                Assert.False(refused.Scored, id);
+                Assert.NotNull(refused.Reason);
+                continue;
             }
-            else
+            var f = ReadGold(id);
+            if (!f.SourcePath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
             {
-                Assert.False(r.Scored, id);
-                Assert.NotNull(r.Reason);
+                // A DOCX universe cannot be rebuilt by the PDF parser, so a DOCX Gold cannot be scored by this path at all.
+                Assert.Null(P7F1V6Universe.Rebuild(TestRepository.Root(), f.SourcePath, f.SourceSha, out var why));
+                Assert.Equal("UNIVERSE_REBUILD_PDF_ONLY", why);
+                continue;
             }
+            var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, id, Perfect(id));
+            Assert.True(r.Scored, id + ": " + r.Reason);
+            Assert.Equal(1.0, r.AtomMembership!.F1);
+            if (r.HeadingOccurrence is not null) Assert.Equal(1.0, r.HeadingOccurrence.F1);
+            else Assert.NotNull(r.HeadingOccurrenceNotComparable);
         }
     }
 
     [Fact]
     public void Scorer_RefusesRunEvidenceThatDoesNotMatch()
     {
-        var f = ReadGold("SRC-089");
         var root = TestRepository.Root();
-        string? Reason(P7F1V6DirectScorer.RunEvidence e) => P7F1V6DirectScorer.Score(root, Registry, "SRC-089", e).Reason;
-        Assert.Equal("SOURCE_SHA_MISMATCH", Reason(Perfect(f, source: new string('0', 64))));
-        Assert.Equal("UNIVERSE_SHA_MISMATCH", Reason(Perfect(f, universeSha: new string('0', 64))));
-        Assert.Equal("RUN_HAS_UNRESOLVED:1", Reason(Perfect(f, unresolved: new[] { "L0001:S0" })));
-        Assert.Equal("GOLD_OUTSIDE_UNIVERSE", Reason(Perfect(f, universe: f.Claims.SelectMany(c => c).Skip(1).Distinct())));
-        var outside = f.Claims.Append(new List<string> { "QQQQ:S0" }).Select(c => (IReadOnlyList<string>)c).ToList();
-        Assert.StartsWith("PREDICTED_OUTSIDE_UNIVERSE:QQQQ:S0", Reason(Perfect(f, outside)), StringComparison.Ordinal);
-        var good = Perfect(f);
-        Assert.Equal("PREDICTION_INCONSISTENT", Reason(good with { SelectedAtoms = good.SelectedAtoms.Skip(1).ToList() }));
-        Assert.Equal("COVERAGE_INCOMPLETE", Reason(good with { CoverageMissing = new[] { "L0001:S0" } }));
-        Assert.Equal("NO_APPROVED_GOLD_FOR_AUTHORITY", P7F1V6DirectScorer.Score(root, Registry, "DOC-0179", good).Reason);
+        var u = Universe("SRC-089");
+        var claims = ReadGold("SRC-089").Claims.Select(c => (IReadOnlyList<string>)c).ToList();
+        string? Reason(P7F1V6DirectScorer.RunEvidence e, string id = "SRC-089") => P7F1V6DirectScorer.Score(root, Registry, id, e).Reason;
+
+        Assert.Equal("SOURCE_SHA_MISMATCH", Reason(RunOn(Universe("SRC-095"), Array.Empty<IReadOnlyList<string>>())));
+        Assert.Equal("RUN_HAS_UNRESOLVED:1", Reason(RunOn(u, claims, d => d["L0001:S0"] = "UNRESOLVED")));
+        Assert.Equal("COVERAGE_INCOMPLETE:missing=1,unexpected=0", Reason(RunOn(u, claims, d => d.Remove("L0001:S0"))));
+        Assert.Equal("COVERAGE_INCOMPLETE:missing=0,unexpected=1", Reason(RunOn(u, claims, d => d["QQQQ:S0"] = "NOT_SELECT")));
+        Assert.Equal("DECISION_VALUE_INVALID", Reason(RunOn(u, claims, d => d["L0001:S0"] = "MAYBE")));
+        Assert.StartsWith("PREDICTED_OUTSIDE_UNIVERSE:QQQQ:S0", Reason(new P7F1V6DirectScorer.RunEvidence(u, RunOn(u, claims).Decisions,
+            claims.Append(new[] { "QQQQ:S0" }).ToList())), StringComparison.Ordinal);
+        Assert.Equal("PREDICTION_INCONSISTENT", Reason(RunOn(u, claims, d => d[claims[0][0]] = "NOT_SELECT")));
+        Assert.Equal("NO_APPROVED_GOLD_FOR_AUTHORITY", Reason(RunOn(u, claims), "DOC-0179"));
     }
 
     string CopyGold(string id)
@@ -507,9 +528,27 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
     public void Scorer_GoldBytesThatDoNotMatchTheRegistry_AreRefused()
     {
         var root = CopyGold("SRC-089");
-        var path = Path.Combine(root, "eval", "a99-closed-loop", "gold-current", "documents", "SRC-089.gold.v1.json");
-        File.AppendAllText(path, " ");
-        Assert.Equal("GOLD_SHA_MISMATCH", P7F1V6DirectScorer.Score(root, Registry, "SRC-089", Perfect(ReadGold("SRC-089"))).Reason);
+        File.AppendAllText(Path.Combine(root, "eval", "a99-closed-loop", "gold-current", "documents", "SRC-089.gold.v1.json"), " ");
+        Assert.Equal("GOLD_SHA_MISMATCH", P7F1V6DirectScorer.Score(root, Registry, "SRC-089", Perfect("SRC-089")).Reason);
+    }
+
+    [Fact]
+    public void Scorer_AGoldWhoseUniverseDiffersFromTheRebuiltOne_IsRefused()
+    {
+        var root = CopyGold("SRC-089");
+        Rehash(root, "SRC-089", n => n["occurrence"]!["sourceUniverseSha256"] = new string('a', 64));
+        Assert.Equal("UNIVERSE_SHA_MISMATCH", P7F1V6DirectScorer.Score(root, Registry, "SRC-089", Perfect("SRC-089")).Reason);
+    }
+
+    [Fact]
+    public void Scorer_UnstatedSelectionMode_MakesHeadingOccurrenceNotComparable()
+    {
+        var root = CopyGold("SRC-089");
+        Rehash(root, "SRC-089", n => n["semantic"]!["claims"]![0]!["sourceParts"]![0]!["selectionMode"] = null);
+        var r = P7F1V6DirectScorer.Score(root, Registry, "SRC-089", Perfect("SRC-089"));
+        Assert.True(r.Scored, r.Reason);
+        Assert.Null(r.HeadingOccurrence);
+        Assert.Equal("SELECTION_MODE_NOT_STATED:1", r.HeadingOccurrenceNotComparable);
     }
 
     [Fact]
@@ -523,7 +562,7 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
             claim.Remove("sourceParts");
             claim["sourcePartz"] = parts;
         });
-        var r = P7F1V6DirectScorer.Score(root, Registry, "SRC-089", Perfect(ReadGold("SRC-089")));
+        var r = P7F1V6DirectScorer.Score(root, Registry, "SRC-089", Perfect("SRC-089"));
         Assert.False(r.Scored);
         Assert.Equal("GOLD_CLAIM_SHAPE_UNKNOWN", r.Reason);
     }
@@ -532,10 +571,8 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
     public void Scorer_OccurrenceAndSemanticUnitsThatDiffer_AreRefused()
     {
         var root = CopyGold("SRC-089");
-        // Change one part of the first occurrence claim only; the semantic claims stay as they were.
         Rehash(root, "SRC-089", n => n["occurrence"]!["claims"]![0]!["sourceParts"]![0]!["sourceAlias"] = "L0099:S0");
-        var r = P7F1V6DirectScorer.Score(root, Registry, "SRC-089", Perfect(ReadGold("SRC-089")));
-        Assert.Equal("UNIT_MISMATCH_OCCURRENCE_VS_SEMANTIC", r.Reason);
+        Assert.Equal("UNIT_MISMATCH_OCCURRENCE_VS_SEMANTIC", P7F1V6DirectScorer.Score(root, Registry, "SRC-089", Perfect("SRC-089")).Reason);
     }
 
     [Fact]
@@ -544,6 +581,7 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
         var root = CopyGold("SRC-089");
         var reg = Path.Combine(root, Registry);
         File.WriteAllText(reg, File.ReadAllText(reg).Replace("eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json", "eval/a99-closed-loop/gold-current/registry.v1.json"));
-        Assert.Equal("GOLD_PATH_OUTSIDE_AUTHORITY_FOLDER", P7F1V6DirectScorer.Score(root, Registry, "SRC-089", Perfect(ReadGold("SRC-089"))).Reason);
+        Assert.Equal("GOLD_PATH_OUTSIDE_AUTHORITY_FOLDER", P7F1V6DirectScorer.Score(root, Registry, "SRC-089", Perfect("SRC-089")).Reason);
     }
 }
+
