@@ -1,0 +1,64 @@
+{
+  "version": "P7_F1_V5_POST_RUN_RECEIPT_V1",
+  "issue": "ylight23/DocxHeaderExtractor#8",
+  "planSha256": "f32d6f77b2852166e0decafa42958c504e470a95e9ed88a1ede148883868d58a",
+  "rawManifestSha256": "0c382567018783513f37167e6b189d9efe2e8527b51dc000f45bcacdefd21cbc",
+  "boundPredictionsSha256": "587bb66c6901c7eb5c3f3b79b5f39145a584d4c13bdc6de92d9955b5f205a897",
+  "reproducibility": {
+    "bindRunTwiceIdentical": true,
+    "bindDeterministic": "same raw + same plan gives the same bound sha on two runs"
+  },
+  "binderFix": {
+    "what": "RegionsOf required the optional evidence key; crash on the first region without evidence",
+    "when": "found after the provider run, before binding, binding was not run before the fix",
+    "validatorChanged": false,
+    "readerChanged": true,
+    "testAdded": "RegionsOf_accepts_a_region_without_evidence_as_the_validator_does",
+    "where": "RegionsOf in P7F1RegionProtocolV5.cs (the reader used by the binder), not the binder file"
+  },
+  "provenance": {
+    "planV3PinsSourcesAtFreezeTime": true,
+    "sourcesNowDifferFromPlanPin": {
+      "src/DocxHeaderExtractor.V5Qualification/P7/P7F1RegionProtocolV5.cs": {
+        "pinnedInPlanV3": "c87b6bb7f59243013359a71f2147b9c6f7d9657365fe506ac4caecb2392f6472",
+        "currentWorkingCopy": "be41fca52700804cb3bbd7952791f91454baa15c077047d92daabec3ca2896d8",
+        "matchesPlanPin": false
+      },
+      "src/DocxHeaderExtractor.V5Qualification/P7/P7F1RegionBinderV5.cs": {
+        "pinnedInPlanV3": "2d9664e22eb225e247e25532dc2e59dbd32252e4ab2a4fae4b9de793e0e7486d",
+        "currentWorkingCopy": "2d9664e22eb225e247e25532dc2e59dbd32252e4ab2a4fae4b9de793e0e7486d",
+        "matchesPlanPin": true
+      }
+    },
+    "note": "The binder reader changed after plan freeze. The request bodies, tool definitions and validator are unchanged, so the provider run is valid. The plan source pin for P7F1RegionProtocolV5.cs and P7F1RegionBinderV5.cs is out of date and is recorded here as a known discrepancy, not hidden."
+  },
+  "costReconciliation": {
+    "reportedUsdFromTurns": 0.217318,
+    "manifestReportedCostUsd": 0.21731794,
+    "turnsWithCostMissing": 5,
+    "missingTurns": [
+      {
+        "handle": "D067-PACK_079-C2",
+        "transportError": "STREAM_READ_FAILED:IOException"
+      },
+      {
+        "handle": "D067-PACK_079-C2",
+        "transportError": "STREAM_READ_FAILED:IOException"
+      },
+      {
+        "handle": "D087-PACK_001-C2",
+        "transportError": "STREAM_READ_FAILED:IOException"
+      },
+      {
+        "handle": "D087-PACK_001-C2",
+        "transportError": "STREAM_READ_FAILED:IOException"
+      },
+      {
+        "handle": "D087-PACK_017-C1",
+        "transportError": "TRANSPORT_FAILED:HttpRequestException"
+      }
+    ],
+    "interpretation": "Transport failures returned no response body, so no usage object exists. Cost for these turns is unknown and not included. Reported total is a lower bound. Within the USD 0.30 cap in any case."
+  },
+  "providerCallsAfterRun": 0
+}
