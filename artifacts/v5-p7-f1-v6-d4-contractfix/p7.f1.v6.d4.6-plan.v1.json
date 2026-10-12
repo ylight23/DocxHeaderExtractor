@@ -1,0 +1,331 @@
+{
+  "artifact": "p7.f1.v6.d4.6-plan.v1",
+  "approvalToSend": false,
+  "codeCommit": "dec4ef4b3cd70452e03a5eade85f3f7aff7aea96",
+  "authorityId": "SRC-095",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "universeSha256": "1eee2105941098eb50e79fd866fddeb36718c49ca02da9906aeaaf2ba3673ead",
+  "evidenceStoreSha256": "fb550ed7f4b9e95cb943be9fe358001d78cad5155cc109363001e1cb8927c569",
+  "atoms": 2302,
+  "evidenceParserVersion": "P7_F1Q_READ_ONLY_EVIDENCE_TOOLS_V3",
+  "goldForScorerOnly": {
+    "path": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+    "sha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+    "universeSha256": "1eee2105941098eb50e79fd866fddeb36718c49ca02da9906aeaaf2ba3673ead",
+    "sentToProvider": false
+  },
+  "task": "A",
+  "instruction": "Trích xuất tất cả heading",
+  "instructionSha256": "1055842829c1e5eaa13bb8d005e8e67480bfbdfeabc079a55ece81d4a766b334",
+  "promptVersion": "P7_F1_V6_DIRECT_PROMPT_V2_3",
+  "systemPromptSha256": "ed33c467b63ad5307f88557c7b3cbb61df1df7d0ce9c73b50a7b120da0c696b6",
+  "requestVersion": "P7_F1_V6_DIRECT_REQUEST_V2_1",
+  "responseVersion": "P7_F1_V6_DIRECT_RESPONSE_V2",
+  "model": "qwen/qwen3.7-flash",
+  "route": {
+    "only": [
+      "alibaba"
+    ],
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "zdr": "false (user decision recorded as WAIVER_NOT_VERIFIED)",
+  "maxTokens": 32768,
+  "reasoning": "not declared (endpoint default)",
+  "retries": 0,
+  "unit": 48,
+  "overlap": 20,
+  "finalization": "REQUIRED",
+  "budget": {
+    "maxCalls": 100,
+    "maxRequestBytes": 131072,
+    "ceilingUsd": 1,
+    "promptTokenBudget": 900000,
+    "tokenBound": "request UTF-8 bytes bound prompt tokens from above"
+  },
+  "limits": {
+    "MaxRounds": 3,
+    "MaxRetrievePerRound": 4,
+    "MaxAddedLinesPerUnit": 300,
+    "MaxResolveContextLines": 600,
+    "MaxFinalizeOutlineLines": 1200
+  },
+  "rawResponses": "safe store outside the repository, per-run directory, retention policy; never committed",
+  "earlyStop": {
+    "consecutiveContractFailures": 3,
+    "counts": "parser failures, usage/finish audit failures and missing content; transport failures neither count nor reset"
+  },
+  "liveAuthorization": {
+    "required": true,
+    "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+    "status": "APPROVED",
+    "campaigns": 1,
+    "consumedMarker": "consumed-<planSha256>.json in the safe root"
+  },
+  "safeRootPolicy": {
+    "location": "%LOCALAPPDATA%\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
+    "mustExistBeforeRun": true,
+    "outsideRepository": true,
+    "fileSystem": "NTFS",
+    "noReparsePointsInPath": true,
+    "acl": "current user only, inheritance cut",
+    "runDirectories": "run-<32 hex>"
+  },
+  "retention": {
+    "files": [
+      "<sha256>.bin",
+      "<sha256>.<guid>.tmp",
+      "run.review.json",
+      "run-summary.json"
+    ],
+    "rawRetentionDays": 30
+  },
+  "segments": 48,
+  "firstRequests": [
+    {
+      "unitId": "SEG-000",
+      "sha256": "a7fb9befbccf0e2b93b5c1dd83237a5bc86a8905b72d8c60ec41f014f479a956",
+      "bytes": 22236
+    },
+    {
+      "unitId": "SEG-001",
+      "sha256": "79881e63c74e4215b89071027ebb85079b0b96d2ef9d92f04f76402371757664",
+      "bytes": 26859
+    },
+    {
+      "unitId": "SEG-002",
+      "sha256": "6b005c9a16aecc17f67a2adaa296d9a372174b86e143a9cc6c5413db4fd84bc3",
+      "bytes": 28007
+    },
+    {
+      "unitId": "SEG-003",
+      "sha256": "f827ae5344a581cb2eacd946bd89b1863f1f1c12659ba29b21f273b75e2072ba",
+      "bytes": 30024
+    },
+    {
+      "unitId": "SEG-004",
+      "sha256": "ef6de24faa82d1c57e3cded99d70cdf1ef62d20ef5a0e458e9340b1ad186ebda",
+      "bytes": 29875
+    },
+    {
+      "unitId": "SEG-005",
+      "sha256": "46a5d489bbc98fe0d97f03451831d835ebf170faf58bb29b937611ab4ee3d4fa",
+      "bytes": 30265
+    },
+    {
+      "unitId": "SEG-006",
+      "sha256": "abefd3fc3a3744a544c8ad0efdbd86de01004e6e4b5242564f01c0433f00a777",
+      "bytes": 31011
+    },
+    {
+      "unitId": "SEG-007",
+      "sha256": "fe0265335b95eeeb61820c08ac98ebd26c5742108aea5bd75b6f9bec0d90264e",
+      "bytes": 31212
+    },
+    {
+      "unitId": "SEG-008",
+      "sha256": "2849d61909251cc3efad7975d1b872cc0b3538b6b9e48636fee22351d53c2d5b",
+      "bytes": 30917
+    },
+    {
+      "unitId": "SEG-009",
+      "sha256": "c40a46ac3f2f03388006222fc1cdedc554b8fb9bed7ec89bb7a8deb1de986148",
+      "bytes": 30831
+    },
+    {
+      "unitId": "SEG-010",
+      "sha256": "28f67740632d85b390d3f3f6e81ff1f374d01d5c004a32652b7364847ae3078e",
+      "bytes": 30839
+    },
+    {
+      "unitId": "SEG-011",
+      "sha256": "49b6e7f505b2c1f4a8ff8f393abe57861a88d172eb4b8565711fac05ec11ba57",
+      "bytes": 30640
+    },
+    {
+      "unitId": "SEG-012",
+      "sha256": "de0dbac1e02e533907e40fee5bd5ee45bfce3c50ca156720425a8f5174f6adb5",
+      "bytes": 31025
+    },
+    {
+      "unitId": "SEG-013",
+      "sha256": "357a0c04ff840c9c9c6d588c7fa9f62d4313269f9d872e15d676e11f1c3e5be4",
+      "bytes": 31186
+    },
+    {
+      "unitId": "SEG-014",
+      "sha256": "144e378e10b1cbf476a2cebae401836b1c122d21887507e17b3ca294a00a1554",
+      "bytes": 31049
+    },
+    {
+      "unitId": "SEG-015",
+      "sha256": "84b8f160f888eba4ff9fab2d9665290c207832be03744b47dc096e712ae4c196",
+      "bytes": 30770
+    },
+    {
+      "unitId": "SEG-016",
+      "sha256": "8ce76597739939440b333723f87c954efa243a79e4dc86dbd1d37d2bb45cdc22",
+      "bytes": 30548
+    },
+    {
+      "unitId": "SEG-017",
+      "sha256": "e9137dd397b860648f4ba2e4c7a5c53ae578b429725c14a27bd09f0f9c68bf7e",
+      "bytes": 30872
+    },
+    {
+      "unitId": "SEG-018",
+      "sha256": "6fa945a5629552f86d4c94b4f217534a8859d5ca1d4219156c25da14bd7b36d7",
+      "bytes": 30002
+    },
+    {
+      "unitId": "SEG-019",
+      "sha256": "0500abcd4c78cac1d503b37bd28a425acb4c2c95a70bea0681d55013f00d739b",
+      "bytes": 26854
+    },
+    {
+      "unitId": "SEG-020",
+      "sha256": "406ac006339ff077c07c05f641bed22655a34f5f35e8e1d1721745a6d4711f3f",
+      "bytes": 26847
+    },
+    {
+      "unitId": "SEG-021",
+      "sha256": "fb041c197ec6472d7ec42691713032965f663b6b0cdbca58c963e5b58021f8d1",
+      "bytes": 29499
+    },
+    {
+      "unitId": "SEG-022",
+      "sha256": "f4e67d7292ed97f0af5b94c755cd6a69e7a9f3c15b00571d718c976a0c9881a9",
+      "bytes": 29756
+    },
+    {
+      "unitId": "SEG-023",
+      "sha256": "7c2962f12cc3e54750ba7db206b7ac6678d8266c65737ee9a3a05a6c21f5632f",
+      "bytes": 29935
+    },
+    {
+      "unitId": "SEG-024",
+      "sha256": "4563b01b916327ff61b9f254660b7b1527930f3426c8c38c631982d019e7e68a",
+      "bytes": 30177
+    },
+    {
+      "unitId": "SEG-025",
+      "sha256": "f1b5d442eed8c0053e160ccfc4762cca4af3c1810dfd1ae33211ce6912b5f82a",
+      "bytes": 30156
+    },
+    {
+      "unitId": "SEG-026",
+      "sha256": "7a6ea275533532b344c4653bea547b4136ad71260ea612a9335b43a090a4b01b",
+      "bytes": 29617
+    },
+    {
+      "unitId": "SEG-027",
+      "sha256": "c3eebb12c3b785de7e57faf00944c81d30eb6d015008768903a19e780bbfe264",
+      "bytes": 29696
+    },
+    {
+      "unitId": "SEG-028",
+      "sha256": "45069b9aae312621c716c17788ac5d8ee6eed34a7ef169f9b7c4e00e3e1c5811",
+      "bytes": 30922
+    },
+    {
+      "unitId": "SEG-029",
+      "sha256": "e7779258b181c01d0f222b47d87972be137d4b0736d625d6afbcc4062d402a42",
+      "bytes": 30773
+    },
+    {
+      "unitId": "SEG-030",
+      "sha256": "81a6ada9631f951b80598f12abfb25f04edd7c537a5acc9bff5e08483ab8949e",
+      "bytes": 30623
+    },
+    {
+      "unitId": "SEG-031",
+      "sha256": "25449cdab390fe07c7395d2156e649e52a03c80fd80bae782f536126bc276500",
+      "bytes": 30283
+    },
+    {
+      "unitId": "SEG-032",
+      "sha256": "02522ae3a46aabf40dd29751712cd9e7e0d28cab01a3ea2e49266699e64c0eb2",
+      "bytes": 27617
+    },
+    {
+      "unitId": "SEG-033",
+      "sha256": "64c9f7b63dd6c7063a6fabd6ba6daf6b1ee339d76a4b598212c117b545fedd1a",
+      "bytes": 26498
+    },
+    {
+      "unitId": "SEG-034",
+      "sha256": "4e3d5b4def2c6afcb8247d004efbc9336f00e97600b1bd8141333e6f2c5d6d26",
+      "bytes": 27045
+    },
+    {
+      "unitId": "SEG-035",
+      "sha256": "4671cfdf9c7f7f03da0f6a7ce0055d064fd3cded761ab7033847bbb6b768d248",
+      "bytes": 26583
+    },
+    {
+      "unitId": "SEG-036",
+      "sha256": "af724ee43b61b370040ab71090169f0287c292db1be0fcb588d3a9953e760be9",
+      "bytes": 26591
+    },
+    {
+      "unitId": "SEG-037",
+      "sha256": "2c88a45903f2b06fc1a906b9a53137d3f10074afa44a3e4fffb3c6e1f175ce77",
+      "bytes": 28342
+    },
+    {
+      "unitId": "SEG-038",
+      "sha256": "1675e0fae341c13c536a135fd317ccdc0ea27032e561869c05d157a525181339",
+      "bytes": 29358
+    },
+    {
+      "unitId": "SEG-039",
+      "sha256": "2a2762031e289d6caed04fbde5779d1a72faa7e37ae857e514d37178bf1f9581",
+      "bytes": 30003
+    },
+    {
+      "unitId": "SEG-040",
+      "sha256": "ffef5e88c18db8243ae2cb4946d1400de9bbca383b04db72c189c62011d815a7",
+      "bytes": 30358
+    },
+    {
+      "unitId": "SEG-041",
+      "sha256": "d8848068ef5e23b629c3e79b684b345952f023e28387ba6444b535c9f605b017",
+      "bytes": 30209
+    },
+    {
+      "unitId": "SEG-042",
+      "sha256": "30dea43c6bc381b61cf23fc2f4ed44a400cbb42f1236fb4aa9110e9ae981f9b4",
+      "bytes": 29815
+    },
+    {
+      "unitId": "SEG-043",
+      "sha256": "2321af5cd573bc37ebdbb4961ad770489d34c878565fe00ce75348360e2964c0",
+      "bytes": 28235
+    },
+    {
+      "unitId": "SEG-044",
+      "sha256": "55d2be4e9e74e853dea3250e1a1c014728faf7b712edbb898b6d5895af5b23ae",
+      "bytes": 28581
+    },
+    {
+      "unitId": "SEG-045",
+      "sha256": "8d72cbbf10e99a6a61860e3af00d078436af2d1bf480aabdb6eaa2fe4d788110",
+      "bytes": 29531
+    },
+    {
+      "unitId": "SEG-046",
+      "sha256": "aa45c25a5397e9649422613044601ff20d3aa4b4f2481f406c3841b395c5b4c7",
+      "bytes": 29848
+    },
+    {
+      "unitId": "SEG-047",
+      "sha256": "68c390c47e742cb8d3e3f7e016d897f81c719ece794a792e78ef89525e00b6c1",
+      "bytes": 23493
+    }
+  ],
+  "firstRequestsSha256": "849f828d18c77c58b9d72a364456668b842021995266ef4d26bd911f41b02cf6"
+}

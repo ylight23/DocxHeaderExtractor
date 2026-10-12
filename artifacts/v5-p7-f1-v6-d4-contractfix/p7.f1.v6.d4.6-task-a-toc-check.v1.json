@@ -1,0 +1,163 @@
+{
+  "artifact": "p7.f1.v6.d4.6-task-a-toc-check.v1",
+  "question": "Does Task A ('Trích xuất tất cả heading') state how heading titles repeated in the table of contents are treated, and what does the SRC-095 Gold do?",
+  "goldTruthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
+  "goldReviewNote": "Source review: contents entries are non-headings (CONTENTS_ENTRY); the TOC opener and the index group letters are headings.",
+  "falsePositivesFromRun": 89,
+  "falsePositivesByReviewPattern": {
+    "NOT_LISTED_IN_REVIEW": 89
+  },
+  "falsePositivesWhoseTextRepeatsAGoldHeading": 84,
+  "samples": [
+    {
+      "alias": "L0007:S0",
+      "page": 1,
+      "text": "RFC 9114",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0035:S0",
+      "page": 2,
+      "text": "1. Introduction",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0036:S0",
+      "page": 2,
+      "text": "1.1. Prior Versions ofHTTP",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0037:S0",
+      "page": 2,
+      "text": "1.2. Delegation to QUIC",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0038:S0",
+      "page": 2,
+      "text": "2. HTTP/3 Protocol Overview",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0039:S0",
+      "page": 2,
+      "text": "2.1. Document Organization",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0040:S0",
+      "page": 2,
+      "text": "2.2. Conventions and Terminology",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0041:S0",
+      "page": 2,
+      "text": "3. Connection Setup and Management",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0042:S0",
+      "page": 2,
+      "text": "3.1. Discovering an HTTP/3 Endpoint",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0043:S0",
+      "page": 2,
+      "text": "3.1.1. HTTP Alternative Services",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0044:S0",
+      "page": 2,
+      "text": "3.1.2. Other Schemes",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0045:S0",
+      "page": 2,
+      "text": "3.2. Connection Establishment",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0046:S0",
+      "page": 2,
+      "text": "3.3. Connection Reuse",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0047:S0",
+      "page": 2,
+      "text": "4. Expressing HTTP Semantics in HTTP/3",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0048:S0",
+      "page": 2,
+      "text": "4.1. HTTP Message Framing",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0049:S0",
+      "page": 2,
+      "text": "4.1.1. Request Cancellation and Rejection",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0050:S0",
+      "page": 2,
+      "text": "4.1.2. Malformed Requests and Responses",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0051:S0",
+      "page": 2,
+      "text": "4.2. HTTP Fields",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0052:S0",
+      "page": 2,
+      "text": "4.2.1. Field Compression",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0053:S0",
+      "page": 2,
+      "text": "4.2.2. Header Size Constraints",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0054:S0",
+      "page": 2,
+      "text": "4.3. HTTP Control Data",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0055:S0",
+      "page": 2,
+      "text": "4.3.1. Request Pseudo-Header Fields",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0056:S0",
+      "page": 2,
+      "text": "4.3.2. Response Pseudo-Header Fields",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0057:S0",
+      "page": 2,
+      "text": "4.4. The CONNECT Method",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    },
+    {
+      "alias": "L0058:S0",
+      "page": 2,
+      "text": "4.5. HTTP Upgrade",
+      "reviewPattern": "NOT_LISTED_IN_REVIEW"
+    }
+  ]
+}
