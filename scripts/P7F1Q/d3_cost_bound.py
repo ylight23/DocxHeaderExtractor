@@ -72,44 +72,56 @@ def counts(doc, shard):
             "scriptedRequests": s["requests"], "occurrences": s["candidates"]}
 
 
-def main():
-    e = endpoint("alibaba")
+TAGS = ["alibaba", "alibaba/us-east-1"]   # both routes stay open until E2 closes; the bound is reported for each
+
+
+def bound_for_tag(tag, plan):
+    e = endpoint(tag)
     base, over = tiers(e)
-    result = {
-        "artifact": "p7.f1.v6.d3-cost-bound.v1",
-        "status": "PLANNING_AND_OPERATING_BOUNDS_NOT_A_PROVIDER_CALL",
-        "endpointTag": "alibaba",
-        "endpointSource": E1.name,
-        "endpointSourceSha256": __import__("hashlib").sha256(E1.read_bytes()).hexdigest(),
+    block = {
+        "endpointTag": tag,
+        "endpointName": e["name"],
         "tiers": {"base": {"promptUsdPerToken": base[0], "completionUsdPerToken": base[1]},
                   "overrides": [{"minPromptTokens": t, "promptUsdPerToken": p, "completionUsdPerToken": c} for t, p, c in over]},
-        "inputBudgetBytes": MAX_INPUT_BYTES,
-        "retrievalRounds": RETRIEVAL_ROUNDS,
-        "retries": 0,
         "scenarios": [],
     }
-    plan = [("073", 60, "C1"), ("094", 60, "C2"), ("024", 60, "C2"), ("028", 60, "C3")]
     for doc, shard, step in plan:
         nc = counts(doc, shard)
         calls_max = structural_calls(nc, RETRIEVAL_ROUNDS)
         for completion in COMPLETION_CAPS:
             # completion includes visible output and reasoning; the input is bounded by the internal budget for every call
             per_call = call_cost(base, over, MAX_INPUT_BYTES, completion)
-            result["scenarios"].append({
+            block["scenarios"].append({
                 "step": step, "document": doc, "shardSize": shard,
                 "scriptedRequests": nc["scriptedRequests"], "structuralMaxCalls": calls_max,
                 "completionTokensPerCall": completion, "maxInputBytesPerCall": MAX_INPUT_BYTES,
                 "usdPerCallWorst": round(per_call, 6), "usdRunOperatingBound": round(per_call * calls_max, 4),
                 "retriesIncluded": 0,
             })
-    # The C1 example from the review: global node with two retrieval rounds on document 073 (3 nodes -> 5 calls)
-    c1 = next(s for s in result["scenarios"] if s["document"] == "073" and s["completionTokensPerCall"] == 65536)
-    result["c1Example"] = {"structuralMaxCalls": c1["structuralMaxCalls"], "note": "local + reconcile + global with two retrieval rounds"}
+    return block
+
+
+def main():
+    plan = [("073", 60, "C1"), ("094", 60, "C2"), ("024", 60, "C2"), ("028", 60, "C3")]
+    result = {
+        "artifact": "p7.f1.v6.d3-cost-bound.v1",
+        "status": "PLANNING_AND_OPERATING_BOUNDS_NOT_A_PROVIDER_CALL",
+        "model": "qwen/qwen3.7-flash",
+        "endpointSource": E1.name,
+        "endpointSourceSha256": __import__("hashlib").sha256(E1.read_bytes()).hexdigest(),
+        "inputBudgetBytes": MAX_INPUT_BYTES,
+        "retrievalRounds": RETRIEVAL_ROUNDS,
+        "retries": 0,
+        "routes": [bound_for_tag(tag, plan) for tag in TAGS],
+        "c1Example": {"structuralMaxCalls": structural_calls(counts("073", 60), RETRIEVAL_ROUNDS),
+                      "note": "local + reconcile + global with two retrieval rounds"},
+    }
     OUT.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"wrote {OUT}")
-    for s in result["scenarios"]:
-        print(s["step"], s["document"], s["shardSize"], "calls<=", s["structuralMaxCalls"], "completion", s["completionTokensPerCall"],
-              "usd/call", s["usdPerCallWorst"], "run<=", s["usdRunOperatingBound"])
+    for block in result["routes"]:
+        for s in block["scenarios"]:
+            print(block["endpointTag"], s["step"], s["document"], "calls<=", s["structuralMaxCalls"],
+                  "completion", s["completionTokensPerCall"], "usd/call", s["usdPerCallWorst"], "run<=", s["usdRunOperatingBound"])
 
 
 if __name__ == "__main__":
