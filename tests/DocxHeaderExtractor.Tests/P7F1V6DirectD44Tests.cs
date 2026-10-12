@@ -71,7 +71,7 @@ public sealed class P7F1V6DirectD44Tests
         var shown = Enumerable.Range(0, 4).ToDictionary(A, i => i);
         var fills = new Dictionary<string, (string[] Values, string[] Decide)>
         {
-            ["COMPLETE"] = (new[] { A(0), A(0), A(1), A(1), A(0), A(2) }, new[] { A(0), A(1) }),
+            ["COMPLETE"] = (new[] { A(0), A(0), A(1), A(0), A(2) }, new[] { A(0), A(1) }),
             ["INCOMPLETE"] = (new[] { A(0), A(0), "thiếu bằng chứng" }, new[] { A(0) }),
             ["NEEDS_EVIDENCE"] = (new[] { A(0), A(3), "Mục lục" }, new[] { A(0) }),
             ["CLARIFICATION_REQUIRED"] = (new[] { "Ý bạn là gì?", "cách hiểu 1", "cách hiểu 2" }, new[] { A(0) }),
