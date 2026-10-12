@@ -1,7 +1,14 @@
 {
   "artifact": "p7.f1q.tool-chain-raw-verification.v1",
   "method": "Read from raw files only (no report numbers): each turn's SSE (response.sse or .gz) is parsed into content, reasoning, tool_calls (id, name, concatenated arguments) and finish_reason; each tool file must carry the same provider id, name and arguments and a content SHA-256 that matches its content; the next turn's request.json must echo the same assistant tool_calls and carry one role tool message per call with the same tool_call_id and byte-identical content; the last turn must end finish stop with content equal to response.txt; request and response bytes are hashed against observation.json. Script: artifacts/v5-p7-f1-v6-d4-contractfix/tools/f1q_chain_verify.py.",
-  "source": "C:/dhx-f1q (branch experiment/p7-f1-semantic-question-v1), artifacts/web-pdf-semantic-diagnostic",
+  "source": {
+    "repository": "https://github.com/ylight23/DocxHeaderExtractor.git",
+    "branch": "experiment/p7-f1-semantic-question-v1",
+    "commit": "29c72e7581b2e1ffc45a91b5e6accb11d299ac0c",
+    "path": "artifacts/web-pdf-semantic-diagnostic",
+    "sseBodiesTracked": 1443,
+    "workingTreeClean": true
+  },
   "groups": {
     "p7.f1.direct.pilot-raw.v1/capture": {
       "requestDirs": 199,
@@ -123,5 +130,13 @@
       "finding": "request.json SHA differs from observation.json for turns 1-2; the directory holds request.redaction.json (approved PII redaction of D05 request bodies, 2026-10-10). Tool ids, arguments, tool-message content identity and the final answer all verify."
     }
   ],
-  "conclusion": "On qwen/qwen3.7-flash via Alibaba, with stream true and reasoning enabled true in every request, Qwen did emit native tool_calls (45 turns, all finish tool_calls, tool_choice auto); the C# handler ran (each call has a tool file); the next request carried every result under the same tool_call_id with byte-identical content; and the request ended with a stop answer. In the Issue #5 experiment this happened only in the mandatory-evidence arm (9/10 requests, 28/28 results OK); the optional-tools arm made 0 calls in 10 requests."
+  "conclusion": "On qwen/qwen3.7-flash via Alibaba, with stream true and reasoning enabled true in every request, Qwen did emit native tool_calls (45 turns, all finish tool_calls, tool_choice auto); the C# handler ran (each call has a tool file); the next request carried every result under the same tool_call_id with byte-identical content; and the request ended with a stop answer. In the Issue #5 experiment this happened only in the mandatory-evidence arm (9/10 requests, 28/28 results OK); the optional-tools arm made 0 calls in 10 requests.",
+  "script": {
+    "path": "artifacts/v5-p7-f1-v6-d4-contractfix/tools/f1q_chain_verify.py",
+    "branch": "qualification/p7-f1-v6-d4-contractfix-clean",
+    "addedInCommit": "a025af0",
+    "sha256": "2ae988eedf91bdb5a5715dc733496793907ada15ec4d6e6b17fdaa650620e183",
+    "reproduce": "git checkout 29c72e7581b2e1ffc45a91b5e6accb11d299ac0c (in a checkout of the F1Q branch); python -I f1q_chain_verify.py <that checkout>/artifacts/web-pdf-semantic-diagnostic <out.json>"
+  },
+  "relatedSurvey": "p7.f1.v6.d4.11d-sse-guard-survey.v1.json (line kinds, event shapes and guard result over the same 1,443 SSE bodies)"
 }

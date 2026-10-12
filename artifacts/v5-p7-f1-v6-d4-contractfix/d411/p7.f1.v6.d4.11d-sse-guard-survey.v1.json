@@ -1,0 +1,30 @@
+{
+  "artifact": "p7.f1.v6.d4.11d-sse-guard-survey.v1",
+  "providerCalls": 0,
+  "purpose": "Show that the strict V6 SSE guard (P7F1V6SseGuard) does not refuse streams the Alibaba route really sent, before it is used on a live run.",
+  "source": "F1Q raw SSE bodies, C:/dhx-f1q branch experiment/p7-f1-semantic-question-v1, artifacts/web-pdf-semantic-diagnostic (response.sse and response.sse.gz)",
+  "survey": {
+    "bodies": 1443,
+    "invalidUtf8Bodies": 0,
+    "bodiesWithByteOrderMark": 0,
+    "bodiesWithCarriageReturn": 0,
+    "lineKinds": { "data": 2494725, "blank": 2496603, "comment": "437 x \": OPENROUTER PROCESSING\"", "event": 0, "id": 0, "retry": 0, "otherFields": 0 },
+    "dataEventKeySets": [
+      { "keys": "choices,created,id,model,object,provider", "events": 2491848 },
+      { "keys": "choices,created,id,model,object,provider,service_tier,usage", "events": 1438 },
+      { "keys": "choices,created,error,id,model,object,provider", "events": 4 }
+    ],
+    "dataNotJson": 1,
+    "dataAfterDone": 0
+  },
+  "guardResultOnTheSameBodies": { "refusals": 0, "streamsWithAnErrorPayload": 4, "note": "The 4 error-payload streams are reported by the assembly check (STREAM_ERROR), not by the guard; the 1 data line that is not JSON is reported as STREAM_MALFORMED." },
+  "rules": [
+    "event: error in any spelling of the value -> STREAM_ERROR_EVENT, even if the payload has no error key",
+    "any other event: line -> STREAM_NAMED_EVENT",
+    "id:, retry: or any field other than data -> STREAM_FIELD_UNKNOWN",
+    "data after [DONE] -> STREAM_DATA_AFTER_DONE",
+    "a data event that is not an object, or has neither choices nor error -> STREAM_EVENT_SHAPE_UNKNOWN",
+    "comments (a line starting with a colon) and blank lines are allowed"
+  ],
+  "limit": "A survey of one route's past streams: it shows the guard does not refuse what was sent then. It does not prove the route will never add another field."
+}
