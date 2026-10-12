@@ -114,7 +114,18 @@ internal static class P7F1V6DirectD45
 {
     public const string AuthorityId = "SRC-095";
     public const string Document = "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf";
-    public const string Instruction = "Trích xuất tất cả heading";
+    /// <summary>D4.7: the user's clarified task A-STRUCTURAL-OCCURRENCES, verbatim. It replaces task A ("Trích xuất tất cả heading"), kept as a
+    /// historical baseline. This is the instruction of one research task, not a system-wide definition of a heading: it is user content in
+    /// the request, never part of the system prompt, and C# never filters an alias by it.</summary>
+    public const string Instruction =
+        "Trích xuất tất cả các heading thực sự tổ chức cấu trúc tài liệu, xét theo vai trò của từng lần xuất hiện tại chính vị trí đó.\n" +
+        "Chọn những dòng hoặc nhóm dòng có chức năng đặt tên, mở đầu hoặc phân chia một phần nội dung của tài liệu.\n" +
+        "Không chọn các dòng trong mục lục chỉ liệt kê hoặc dẫn chiếu đến heading xuất hiện ở vị trí khác. Tuy nhiên, vẫn xem xét các heading thực sự tổ chức chính mục lục, chỉ mục và những phần khác của tài liệu.\n" +
+        "Sử dụng văn bản, bố cục và ngữ cảnh để xác định chức năng của từng lần xuất hiện. Khi chưa đủ bằng chứng, hãy yêu cầu thêm ngữ cảnh hoặc báo chưa thể quyết định thay vì suy đoán.";
+    public const string TaskId = "A-STRUCTURAL-OCCURRENCES";
+    public const string EvaluationLabel = "Development evaluation — task clarification informed by previous model errors";
+    public const string BaselineTaskId = "A";
+    public const string BaselineInstruction = "Trích xuất tất cả heading";
     public const string Registry = "eval/a99-closed-loop/gold-current/registry.v1.json";
     public const int Unit = 48;
     public const int Overlap = P7F1V6Direct.DefaultOverlapLines;
@@ -163,7 +174,7 @@ internal static class P7F1V6DirectD45
         var first = FirstRequests(u);
         return new Dictionary<string, object?>
         {
-            ["artifact"] = "p7.f1.v6.d4.6-plan.v1",
+            ["artifact"] = "p7.f1.v6.d4.7-plan.v1",
             ["approvalToSend"] = false,
             ["codeCommit"] = codeCommit,
             ["authorityId"] = AuthorityId,
@@ -174,7 +185,11 @@ internal static class P7F1V6DirectD45
             ["atoms"] = u.Aliases.Count,
             ["evidenceParserVersion"] = P7F1QEvidenceTools.VersionV3,
             ["goldForScorerOnly"] = new { path = gold.Path, sha256 = gold.Sha256, universeSha256 = gold.UniverseSha256, sentToProvider = false },
-            ["task"] = "A",
+            ["task"] = TaskId,
+            ["evaluationLabel"] = EvaluationLabel,
+            ["notHeldOut"] = "The instruction was clarified after the D4.5 run's errors on SRC-095 were seen. Not held-out; F1 is not comparable with task A as an independent improvement.",
+            ["historicalBaseline"] = new { task = BaselineTaskId, instruction = BaselineInstruction,
+                instructionSha256 = P7F1V6Core.InstructionSha256(BaselineInstruction), consumedPlanSha256 = "340d7cbf5e8694ba411ec06aec6e6fe6a1db7082cf895a880c294f65e86978a6" },
             ["instruction"] = Instruction,
             ["instructionSha256"] = P7F1V6Core.InstructionSha256(Instruction),
             ["promptVersion"] = P7F1V6DirectV2.PromptVersion,
