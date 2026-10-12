@@ -154,8 +154,26 @@ public sealed class P7F1V6DirectD4Tests : IDisposable
     const string Doc1Universe = "309bfc5571c2eb0567d296c730a8348e6ee2b7460e55e01931fd1841fb8346ba";
 
     static P7F1V6DirectScorer.RunEvidence Ev(IEnumerable<string> predicted, string source = Doc1Source, string universe = Doc1Universe,
-        string[]? missing = null, string[]? unexpected = null) =>
-        new(source, universe, predicted.ToList(), missing ?? Array.Empty<string>(), unexpected ?? Array.Empty<string>());
+        string[]? missing = null, string[]? unexpected = null, IEnumerable<string>? universeAliases = null) =>
+        new(source, universe, (universeAliases ?? GoldClaims("DOC-0001").Append("S9999")).ToList(), predicted.ToList(),
+            missing ?? Array.Empty<string>(), unexpected ?? Array.Empty<string>());
+
+    [Fact]
+    public void Scorer_RefusesPredictedAliasOutsidePinnedUniverse()
+    {
+        var gold = GoldClaims("DOC-0001");
+        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0001", Ev(gold.Append("S8888")));
+        Assert.False(r.Scored);
+        Assert.StartsWith("PREDICTED_OUTSIDE_UNIVERSE:S8888", r.Reason, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Scorer_RefusesWhenGoldAliasIsNotInTheUniverse()
+    {
+        var gold = GoldClaims("DOC-0001");
+        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0001", Ev(gold, universeAliases: gold.Skip(1)));
+        Assert.Equal("GOLD_OUTSIDE_UNIVERSE", r.Reason);
+    }
 
     [Fact]
     public void Scorer_RefusesASourceOrUniverseOrCoverageThatDoesNotMatch()

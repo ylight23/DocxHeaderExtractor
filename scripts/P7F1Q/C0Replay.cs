@@ -216,6 +216,16 @@ internal static class C0Replay
         Console.WriteLine($"canary T1 request written: sha256 {sha}, not sent");
     }
 
+    /// <summary>D4.2 canary T1 send. The only network call in D4. Needs the confirmed pinned SHA and the key in OPENROUTER_API_KEY; the key is
+    /// never printed. Preflight runs before any connection. Not run in D4.2; a run needs its own confirmation.</summary>
+    public static void D4CanarySend(string artifactDir, string confirmSha)
+    {
+        var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+        var record = P7F1V6DirectCanarySend.Run(artifactDir, confirmSha, key, P7F1V6DirectCanarySend.MaxPosts,
+            P7F1V6OpenRouterTransport.CreateProductionHandler());
+        Console.WriteLine($"canary T1: {record.Outcome}, sent {record.Sent}, attempts {record.Attempts}, status {record.Status?.ToString() ?? "none"}");
+    }
+
     static (List<P7F1V6Hier.Cand> Cands, P7F1QEvidenceTools Legacy) Load(string repoRoot)
     {
         var parsed = PdfSourceAdapter.BuildWithDetails(Path.Combine(repoRoot, Rel));

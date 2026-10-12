@@ -591,6 +591,11 @@ switch (args[0])
         if (args.Length != 3) throw new ArgumentException("d4-canary-artifact <artifact-dir> <generated-at-commit>");
         C0Replay.D4CanaryArtifact(args[1], args[2]);
         break;
+    case "d4-canary-send":
+        // Issue #9 D4.2: d4-canary-send <artifact-dir> <confirmed-sha>. Sends the single pinned canary POST. Needs OPENROUTER_API_KEY. Not run in D4.2.
+        if (args.Length != 3) throw new ArgumentException("d4-canary-send <artifact-dir> <confirmed-sha>");
+        C0Replay.D4CanarySend(args[1], args[2]);
+        break;
     case "d31-snapshot":
         // Issue #9 D3.1 candidate (offline): d31-snapshot <repo-root>. Writes the manifest and the candidate document. No network call.
         if (args.Length != 2) throw new ArgumentException("d31-snapshot <repo-root>");

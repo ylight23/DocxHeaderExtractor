@@ -16,8 +16,11 @@ namespace DocxHeaderExtractor.V5Qualification.P7;
 internal static class P7F1V6DirectScorer
 {
     /// <summary>What the run must show before it can be scored.</summary>
-    public sealed record RunEvidence(string SourceSha256, string UniverseSha256, IReadOnlyCollection<string> PredictedSelected,
-        IReadOnlyCollection<string> CoverageMissing, IReadOnlyCollection<string> CoverageUnexpected);
+    /// <summary>UniverseAliases is the pinned alias list the run decided over. Every predicted alias and every Gold alias must be in it. The
+    /// UniverseSha256 binds the list to the Gold's universe; this code does not recompute that hash from the source (the pipeline that makes it
+    /// is separate), so the binding rests on the registry and Gold check.</summary>
+    public sealed record RunEvidence(string SourceSha256, string UniverseSha256, IReadOnlyCollection<string> UniverseAliases,
+        IReadOnlyCollection<string> PredictedSelected, IReadOnlyCollection<string> CoverageMissing, IReadOnlyCollection<string> CoverageUnexpected);
 
     public sealed record Result(bool Scored, string Status, string? Reason, int? TruePositive, int? FalsePositive, int? FalseNegative,
         string? F1Exact, double? F1, IReadOnlyList<string> PredictedOutsideGold);
@@ -67,6 +70,13 @@ internal static class P7F1V6DirectScorer
         if (!occurrenceAliases.ToHashSet(StringComparer.Ordinal).SetEquals(claims)) return Refuse("UNIT_MISMATCH_OCCURRENCE_VS_SEMANTIC");
 
         if (run.CoverageMissing.Count > 0 || run.CoverageUnexpected.Count > 0) return Refuse("COVERAGE_INCOMPLETE");
+
+        var universe = run.UniverseAliases.ToHashSet(StringComparer.Ordinal);
+        if (universe.Count == 0 || universe.Count != run.UniverseAliases.Count) return Refuse("UNIVERSE_EMPTY_OR_DUPLICATE_ALIAS");
+        if (!claims.All(universe.Contains)) return Refuse("GOLD_OUTSIDE_UNIVERSE");
+        var predictedOutsideUniverse = run.PredictedSelected.Where(p => !universe.Contains(p)).OrderBy(p => p, StringComparer.Ordinal).ToList();
+        if (predictedOutsideUniverse.Count > 0)
+            return Refuse("PREDICTED_OUTSIDE_UNIVERSE:" + string.Join(",", predictedOutsideUniverse.Take(10)) + (predictedOutsideUniverse.Count > 10 ? ",..." : ""));
 
         var gold1 = new HashSet<string>(claims, StringComparer.Ordinal);
         var pred = new HashSet<string>(run.PredictedSelected, StringComparer.Ordinal);
