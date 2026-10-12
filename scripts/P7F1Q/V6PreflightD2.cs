@@ -75,7 +75,7 @@ internal static class V6PreflightD2
             {
                 // Reported apart: a protocol result is not a claim that Qwen re-reviewed every occurrence.
                 run.Summary.ProtocolStatus, run.Summary.ProtocolResolved, run.Summary.EvidenceRefsPresent, run.Summary.Occurrences, run.Summary.Decided,
-                run.Summary.PresentedOccurrences, run.Summary.PresentedShare, run.Summary.UnreadMatches, run.Summary.CandidatesPinned, run.Summary.SearchQueries, run.Summary.SearchGapQueries,
+                run.Summary.PresentedOccurrences, run.Summary.PresentedShare, run.Summary.UnreadMatches, run.Summary.CandidatesPinned, run.Summary.SearchQueries, run.Summary.SearchGapQueries, run.Summary.MaxEnvelopeBytes,
                 run.Summary.GlobalReviewed, run.Summary.GlobalReviewCoverage, run.Summary.AcceptedNodes, run.Summary.RetrievalTurns,
                 run.Summary.RejectedNodes, run.Summary.StoppedNodes, run.Summary.SearchPagesWithMore, run.Summary.UnpagedSearches,
                 run.Summary.CandidatesSha256, run.Summary.ManifestSha256,
@@ -110,7 +110,7 @@ internal static class V6PreflightD2
                 interpretation = "Task: " + r.GetProperty("originalUserInstruction").GetString() }, new JsonSerializerOptions { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
         string Quoted(IEnumerable<string> ids) => string.Join(",", ids.Select(i => $"\"{i}\""));
         string Node(string items, string passUp = "", string confirmed = "") =>
-            $"{{\"protocolVersion\":\"P7_F1_V6_HIER_NODE_V2\",\"nodeId\":\"{nodeId}\",\"status\":\"COMPLETE\",\"items\":[{items}]"
+            $"{{\"protocolVersion\":\"P7_F1_V6_HIER_NODE_V3\",\"nodeId\":\"{nodeId}\",\"status\":\"COMPLETE\",\"items\":[{items}]"
             + (passUp == "" ? "" : $",\"passUp\":[{passUp}]") + (confirmed == "" ? "" : $",\"confirmed\":[{confirmed}]") + "}";
         if (kind == P7F1V6Hier.Kind.Local)
         {
@@ -131,13 +131,13 @@ internal static class V6PreflightD2
             {
                 var rt = r.GetProperty("retrieved");
                 if (rt.GetProperty("searches").GetArrayLength() == 0)
-                    return JsonSerializer.Serialize(new { protocolVersion = "P7_F1_V6_HIER_NODE_V2", nodeId, status = "RETRIEVE", retrieve = new { search = "1" } });
+                    return JsonSerializer.Serialize(new { protocolVersion = "P7_F1_V6_HIER_NODE_V3", nodeId, status = "RETRIEVE", retrieve = new { search = "1" } });
                 // Reopen the first match that is not already shown: reopening a shown id adds nothing and would loop until the round limit.
                 var shownSet = shown.EnumerateArray().Select(s => s.GetProperty("id").GetString()!).ToHashSet();
                 var fresh = rt.GetProperty("searches")[0].GetProperty("matches").EnumerateArray()
                     .Select(m => m.GetProperty("id").GetString()!).FirstOrDefault(id => !shownSet.Contains(id));
                 if (rt.GetProperty("reopened").GetArrayLength() == 0 && fresh is not null)
-                    return JsonSerializer.Serialize(new { protocolVersion = "P7_F1_V6_HIER_NODE_V2", nodeId, status = "RETRIEVE", retrieve = new { reopen = new[] { fresh } } });
+                    return JsonSerializer.Serialize(new { protocolVersion = "P7_F1_V6_HIER_NODE_V3", nodeId, status = "RETRIEVE", retrieve = new { reopen = new[] { fresh } } });
             }
             var up = shown.EnumerateArray().Where(s => s.GetProperty("current").GetString() == "SELECT")
                 .Take(PassUpCap - 2 * Context).Select(s => s.GetProperty("id").GetString()!);
