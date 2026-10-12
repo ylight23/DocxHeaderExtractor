@@ -1,0 +1,39 @@
+{
+  "artifact": "p7.f1.v6.d4.11b-run-receipt.v1",
+  "label": "Development canary on segments chosen from earlier errors; not an F1 estimate. Sanitized receipt: no source text, no reasoning, no request body, no tool result, no decision list. Raw responses, reasoning, request bodies and the analysis are in the safe store only (owner decision: not pushed).",
+  "planSha256": "c50833bb0fe5ca8a609ee6d883e6c84dc86887a49ec0f4daebca26d494c83f08",
+  "codeCommit": "53828f77abf1ed6bd961d4a1ad2408a74c3801ee",
+  "authorizationFileSha256": "e75ec48ad9a5be36938b6e6b7ab4ec6423e7cd7579c6461c7a1c76c86b267e2d",
+  "consumedMarker": "consumed-c50833bb….json written in the safe root before the first POST; the plan cannot run again",
+  "retriesUsed": 0,
+  "posts": 4,
+  "postsAllowed": 16,
+  "actualUsd": 0.00406124,
+  "reservedUsd": 0.04372,
+  "ceilingUsd": 0.5,
+  "safeStoreRuns": { "AUTO": "run-b2bca0e4dc774d84a6db360b6acfc9fc", "EVIDENCE_FIRST": "run-ee4cfeb2e89147f0804c547ece108fbb" },
+  "calls": [
+    { "arm": "AUTO", "unit": "SEG-001", "turn": 1, "requestSha256": "e0a4560e55c8f70aeb76b082f1daed6c22ac9c47e00c3ee0bd69b24e9126a643", "requestMatchesPlan": true,
+      "responseSha256": "f7e8e13cc5d2a932d0b4cab94c8f7eb34e045601d98855fbad45ca41bbfee72e", "provider": "Alibaba", "finish": "stop", "toolCalls": 0,
+      "promptTokens": 10078, "completionTokens": 5183, "reasoningTokens": 4132, "costUsd": 0.00097613, "cachedTokens": "ZERO",
+      "unitStatus": "COMPLETE" },
+    { "arm": "AUTO", "unit": "SEG-008", "turn": 1, "requestSha256": "e99bad775234872f06c9e20c12f103f86482f82319b01adf7047ac9de687480a", "requestMatchesPlan": true,
+      "responseSha256": "31a89805fe4561766f7b87d5d63e54c799213b8847ff5ec49e809467f92eaeff", "provider": "Alibaba", "finish": "stop", "toolCalls": 0,
+      "promptTokens": 10792, "completionTokens": 4614, "reasoningTokens": 3549, "costUsd": 0.00092358, "cachedTokens": "ZERO",
+      "unitStatus": "COMPLETE" },
+    { "arm": "EVIDENCE_FIRST", "unit": "SEG-001", "turn": 1, "requestSha256": "6b01c3b4297d3e68939b608feb183dc55008e908acfa49be1913e1d5267846c7", "requestMatchesPlan": true,
+      "responseSha256": "3f3a4963cfa0ecee29125d16300391596a54d6621772d44c3069ceb81cb8a384", "provider": "Alibaba", "finish": "stop", "toolCalls": 0,
+      "promptTokens": 10104, "completionTokens": 6878, "reasoningTokens": 5184, "costUsd": 0.00119726, "cachedTokens": "ZERO",
+      "unitStatus": "FAILED", "failure": "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED" },
+    { "arm": "EVIDENCE_FIRST", "unit": "SEG-008", "turn": 1, "requestSha256": "6d8242675d4d8ec97b7a2da1419db2f124d05063445bd306398587231b953691", "requestMatchesPlan": true,
+      "responseSha256": "059d2c6fd89bf0916fe264c8c9cf7670703ab241bd873378a27da821c155de2b", "provider": "Alibaba", "finish": "stop", "toolCalls": 0,
+      "promptTokens": 10818, "completionTokens": 4921, "reasoningTokens": 3856, "costUsd": 0.00096427, "cachedTokens": "ZERO",
+      "unitStatus": "FAILED", "failure": "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED" }
+  ],
+  "findings": {
+    "capability": "NOT DEMONSTRATED. Each request declared the 7 tools with tool_choice auto on the Alibaba route; Qwen emitted 0 tool calls in 4/4 responses, including both EVIDENCE_FIRST requests whose prompt requires a tool call before the answer. The reasoning text never mentions a tool. No native tool_calls response was observed, so the C# Qwen -> tool -> Qwen loop was not exercised live. Consistent with F1Q (2026-10-09): 0/10 optional tool calls on this route.",
+    "evidence": "No tool evidence: tool_invoked 0, tool_succeeded 0, evidence_used 0 in all units. SEG-001 has 46 targets whose normalized text also occurs outside the shown window; tools showed none of those other occurrences.",
+    "semanticDiagnostic": "Offline against Gold on the 96 targets; not F1, and not attributable to tools (none were called). AUTO SEG-001: 0 selected, Gold has 0 heading atoms there (D4.10 arm B selected 46 on the same targets). EVIDENCE_FIRST SEG-001 (unit refused; its answer read only for this diagnostic): 46 selected, all non-Gold. So two answers to nearly the same request differ by 46 decisions. SEG-008: Gold has 1 heading atom; AUTO selected the adjacent body line instead (tp 0, fp 1, fn 1), and its reasoning paired that alias with the heading text of the next line, an alias-to-text shift by one; EVIDENCE_FIRST selected the Gold line (unit refused).",
+    "cache": "usage.prompt_tokens_details.cached_tokens = 0 and cache_write_tokens = 0 in all 4 responses; no cache_discount field."
+  }
+}

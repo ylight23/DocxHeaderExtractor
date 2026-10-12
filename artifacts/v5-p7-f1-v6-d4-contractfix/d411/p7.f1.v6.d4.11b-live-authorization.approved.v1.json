@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "APPROVED",
+  "planFile": "p7.f1.v6.d4.11b-tool-canary-plan.v1.json",
+  "planSha256": "c50833bb0fe5ca8a609ee6d883e6c84dc86887a49ec0f4daebca26d494c83f08",
+  "codeCommit": "53828f77abf1ed6bd961d4a1ad2408a74c3801ee",
+  "authorityId": "SRC-095",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 16,
+  "ceilingUsd": 0.5,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
+  "dataSharing": {
+    "documentPublicity": "IETF RFC 9114, published publicly by the IETF",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "allow (OpenRouter default; no data_collection field added to the request)",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ]
+  },
+  "approvedBy": "gpt",
+  "approvedAtUtc": "2026-10-12T17:24:51.3462023Z",
+  "approvalText": "[Approval message sent in the repository owner's session (git user ylight23), verbatim]\nTôi là người có thẩm quyền phê duyệt chiến dịch D4.11b. Tôi đồng ý chạy đúng plan SHA c50833bb0fe5ca8a609ee6d883e6c84dc86887a49ec0f4daebca26d494c83f08, tối đa 16 POST và $0,50, retry 1. Tôi chấp nhận ZDR=false, waiver chưa xác minh và rủi ro logging qua OpenRouter chưa rõ. Tôi chọn data_collection=allow, không khai báo thêm trường vào request. Raw response, reasoning, request và tool results chỉ được lưu trong safe store ngoài repository, không push lên GitHub. Người phê duyệt: gpt. sau đó lưu kết quả raw response\n(Recorded notes: approvedBy is \"gpt\", the name the approving message gives; the message was sent in the repository owner's session by a person who states they hold authority for this campaign. It is not recorded as the repository owner's signature. The plan pins retries 0 and the authorization check requires the plan's value; \"retry 1\" is read as an allowance of at most one, and the run uses 0. data_collection: allow, as the OpenRouter default, with no field added to the request. Raw responses, reasoning, request bodies and tool results stay in the safe store outside the repository and are not pushed. The GPT-6 technical review of plan c50833bb (APPROVE — TECHNICAL LIVE GATE) is a review, not this approval.)",
+  "approvalSha256": "5281924cdeecf5875531964ad7ed6c48febad79f331a6168208dba1e59789905"
+}
