@@ -1,0 +1,30 @@
+{
+  "name": "completion_over_cap",
+  "requestBytes": 20000,
+  "maxTokens": 32768,
+  "expectCodes": [
+    "COMPLETION_OVER_CAP"
+  ],
+  "response": {
+    "id": "fixture",
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2000,
+      "completion_tokens": 40000,
+      "total_tokens": 42000,
+      "completion_tokens_details": {
+        "reasoning_tokens": 100
+      }
+    }
+  }
+}

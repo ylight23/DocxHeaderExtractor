@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 ART = ROOT / "artifacts" / "web-pdf-semantic-diagnostic"
 E1 = ART / "p7.f1.v6.d3-gate-e1-endpoints.raw.json"
-PREFLIGHT = ART / "p7.f1.v6.d2-preflight.v6-retrieve-d23-pin"
+PREFLIGHT = ART / "p7.f1.v6.d2-preflight.v10-d31b-guard"
 OUT = ART / "p7.f1.v6.d3-cost-bound.v1.json"
 
 PAYLOAD_CAP_BYTES = 131072        # node payload cap (user message only), unchanged
@@ -95,7 +95,7 @@ def bound_for_tag(tag, plan):
             per_call = call_cost(base, over, ENVELOPE_CAP_BYTES, completion)
             block["scenarios"].append({
                 "step": step, "document": doc, "shardSize": shard,
-                "scriptedRequests": nc["scriptedRequests"], "structuralMaxCalls": calls_max,
+                "scriptedModelCalls": nc["scriptedRequests"], "structuralMaxCallsConfigured": calls_max, "callsLabel": "scripted count is measured on the scripted model; structural max is the configured ceiling",
                 "completionTokensPerCall": completion, "maxRequestBytesPerCall": ENVELOPE_CAP_BYTES,
                 "usdPerCallWorst": round(per_call, 6), "usdRunOperatingBound": round(per_call * calls_max, 4),
                 "retriesIncluded": 0,
@@ -123,7 +123,7 @@ def main():
     print(f"wrote {OUT}")
     for block in result["routes"]:
         for s in block["scenarios"]:
-            print(block["endpointTag"], s["step"], s["document"], "calls<=", s["structuralMaxCalls"],
+            print(block["endpointTag"], s["step"], s["document"], "calls<=", s["structuralMaxCallsConfigured"],
                   "completion", s["completionTokensPerCall"], "usd/call", s["usdPerCallWorst"], "run<=", s["usdRunOperatingBound"])
 
 

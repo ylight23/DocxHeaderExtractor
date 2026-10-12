@@ -1,0 +1,27 @@
+{
+  "name": "reasoning_details_absent",
+  "requestBytes": 20000,
+  "maxTokens": 32768,
+  "expectCodes": [
+    "OK"
+  ],
+  "response": {
+    "id": "fixture",
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"status\":\"COMPLETE\"}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2000,
+      "completion_tokens": 300,
+      "total_tokens": 2300
+    }
+  }
+}

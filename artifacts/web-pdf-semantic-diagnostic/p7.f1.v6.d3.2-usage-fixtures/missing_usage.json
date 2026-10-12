@@ -1,0 +1,22 @@
+{
+  "name": "missing_usage",
+  "requestBytes": 20000,
+  "maxTokens": 32768,
+  "expectCodes": [
+    "USAGE_MISSING"
+  ],
+  "response": {
+    "id": "fixture",
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{}"
+        }
+      }
+    ]
+  }
+}

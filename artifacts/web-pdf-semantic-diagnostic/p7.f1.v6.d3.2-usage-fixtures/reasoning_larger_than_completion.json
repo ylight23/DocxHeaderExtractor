@@ -1,0 +1,30 @@
+{
+  "name": "reasoning_larger_than_completion",
+  "requestBytes": 20000,
+  "maxTokens": 32768,
+  "expectCodes": [
+    "USAGE_INCONSISTENT"
+  ],
+  "response": {
+    "id": "fixture",
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2000,
+      "completion_tokens": 300,
+      "total_tokens": 2300,
+      "completion_tokens_details": {
+        "reasoning_tokens": 500
+      }
+    }
+  }
+}
