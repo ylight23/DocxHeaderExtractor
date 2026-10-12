@@ -430,6 +430,108 @@ public sealed class P7F1V6HierTests
         Assert.Equal((0, 0, 0, 0), (diff.Decisions, diff.Parents, diff.Continuations, diff.Evidence));
     }
 
+    [Fact] public void Target_at_head_middle_and_tail_keeps_the_source_set_and_ids_fixed_and_moves_only_the_sensitive_decision()
+    {
+        var c = Cands();
+        var target = c[10].Alias;     // shard 1 at size 6: owned c[6..11]
+        var sensitive = new Dictionary<string, P7F1V6Hier.RunResult>();
+        var insensitive = new Dictionary<string, P7F1V6Hier.RunResult>();
+        foreach (var pos in new[] { "HEAD", "MIDDLE", "TAIL" })
+        {
+            var o = Opts() with { PromptOrder = $"TARGET:{target}:{pos}" };
+            sensitive[pos] = P7F1V6Hier.Run(c, o, (n, k, p) => FirstOnly(n, k, p));
+            insensitive[pos] = P7F1V6Hier.Run(c, o, (n, k, p) => Honest(n, k, p));
+        }
+        var ids = sensitive["HEAD"].IdByAlias.OrderBy(x => x.Key);
+        Assert.All(sensitive.Values, r => Assert.Equal(ids, r.IdByAlias.OrderBy(x => x.Key)));
+        Assert.All(insensitive.Values, r => Assert.Equal(ids, r.IdByAlias.OrderBy(x => x.Key)));
+        var tid = sensitive["HEAD"].IdByAlias[target];
+        Assert.Equal("SELECT", sensitive["HEAD"].Final[tid].Decision);
+        Assert.Equal("NOT_SELECT", sensitive["MIDDLE"].Final[tid].Decision);
+        Assert.Equal("NOT_SELECT", sensitive["TAIL"].Final[tid].Decision);
+        Assert.All(insensitive.Values, r => Assert.Equal(insensitive["HEAD"].Final[tid].Decision, r.Final[tid].Decision));
+        Assert.All(sensitive.Values, r => Assert.Equal(c.Count, r.Final.Count));
+    }
+
+    [Fact] public void Retrieval_scenario_one_search_round_then_confirmation_is_accepted()
+    {
+        var c = Cands();
+        var run = P7F1V6Hier.Run(c, Opts(), (nodeId, kind, payload) =>
+        {
+            if (nodeId != "L1-N0001") return Honest(nodeId, kind, payload);
+            var rt = Root(payload).GetProperty("retrieved");
+            if (rt.GetProperty("searches").GetArrayLength() == 0)
+                return JsonSerializer.Serialize(new { protocolVersion = Proto, nodeId, status = "RETRIEVE", retrieve = new { search = "the" } }, Json);
+            return Node(nodeId, "COMPLETE", confirmed: Quoted(ShownIds(payload)));
+        });
+        Assert.Empty(run.Violations);
+        Assert.Equal("RESOLVED", run.RunStatus);
+        Assert.Single(run.Nodes.Where(n => n.NodeId == "L1-N0001" && n.Status == "RETRIEVE"));
+    }
+
+    [Fact] public void Provenance_accounting_partitions_every_final_state_and_links_to_raw_outputs()
+    {
+        var c = Cands();
+        var run = P7F1V6Hier.Run(c, Opts(), (nodeId, kind, payload) => Honest(nodeId, kind, payload));
+        var acc = P7F1V6Hier.Account(run);
+        Assert.Equal(c.Count, acc.Total);
+        Assert.Equal(acc.Total, acc.LocalResolved + acc.ReopenedConfirmed + acc.ReopenedResolved + acc.SynthesisResolved);
+        Assert.Equal(acc.Total, acc.GloballyReviewed + acc.CarriedWithoutGlobalReview);
+        Assert.Equal(0, acc.ReopenedConfirmed + acc.ReopenedResolved);          // no reopening in the honest run
+        Assert.True(acc.GloballyReviewed > 0 && acc.CarriedWithoutGlobalReview > 0);
+        Assert.All(run.Final.Values, s =>
+        {
+            var rec = run.Nodes.Last(n => n.NodeId == s.SourceNode && n.Status == "ACCEPTED");
+            Assert.Equal(rec.OutputSha256, s.SourceOutputSha256);
+            Assert.True(run.Raw.Items.ContainsKey(s.SourceOutputSha256));
+        });
+    }
+
+    [Fact] public void Reopened_then_revised_id_is_counted_as_ReopenedResolved()
+    {
+        var c = Cands();
+        var t = c.Skip(2).Take(2).First(x => !Even(x.Alias));   // a middle NOT_SELECT line of shard 0
+        var needle = t.Text.Length > 60 ? t.Text[..60] : t.Text;
+        var run = P7F1V6Hier.Run(c, Opts(), (nodeId, kind, payload) =>
+        {
+            if (nodeId != "L1-N0001") return Honest(nodeId, kind, payload);
+            var rt = Root(payload).GetProperty("retrieved");
+            if (rt.GetProperty("searches").GetArrayLength() == 0)
+                return JsonSerializer.Serialize(new { protocolVersion = Proto, nodeId, status = "RETRIEVE", retrieve = new { search = needle } }, Json);
+            if (rt.GetProperty("reopened").GetArrayLength() == 0)
+            {
+                var found = rt.GetProperty("searches").EnumerateArray().First().GetProperty("matches").EnumerateArray()
+                    .First(m => m.GetProperty("sourceAlias").GetString() == t.Alias).GetProperty("id").GetString()!;
+                return JsonSerializer.Serialize(new { protocolVersion = Proto, nodeId, status = "RETRIEVE", retrieve = new { reopen = new[] { found } } }, Json);
+            }
+            var reopened = rt.GetProperty("reopened").EnumerateArray().First().GetProperty("id").GetString()!;
+            return Node(nodeId, "COMPLETE", $"{{\"id\":\"{reopened}\",\"decision\":\"SELECT\",\"evidenceRefs\":[\"{t.Alias}\"]}}", confirmed: Others(payload, reopened));
+        });
+        Assert.Empty(run.Violations);
+        var acc = P7F1V6Hier.Account(run);
+        Assert.Equal(1, acc.ReopenedResolved);
+        Assert.Equal(0, acc.ReopenedConfirmed);
+        Assert.Equal(c.Count, acc.Total);
+    }
+
+    [Fact] public void A_rejected_synthesis_node_never_yields_RESOLVED_even_when_global_is_accepted()
+    {
+        var c = Cands();
+        var run = P7F1V6Hier.Run(c, Opts(), (nodeId, kind, payload) =>
+            nodeId == "L1-N0001" ? "not json" : Honest(nodeId, kind, payload));
+        Assert.Contains(run.Violations, v => v == "L1-N0001:RESPONSE_NOT_JSON");
+        Assert.True(run.GlobalAccepted);
+        Assert.NotEqual("RESOLVED", run.RunStatus);
+    }
+
+    [Fact] public void Input_over_the_budget_stops_the_run_and_is_never_RESOLVED()
+    {
+        var c = Cands();
+        var run = P7F1V6Hier.Run(c, Opts() with { MaxInputBytes = 1024 }, (nodeId, kind, payload) => Honest(nodeId, kind, payload));
+        Assert.StartsWith("STOPPED_INPUT_OVER_BUDGET", run.RunStatus, StringComparison.Ordinal);
+        Assert.NotEqual("RESOLVED", run.RunStatus);
+    }
+
     [Fact] public void A_seeded_order_is_reproducible_and_changes_only_the_transcript_order()
     {
         var c = Cands();

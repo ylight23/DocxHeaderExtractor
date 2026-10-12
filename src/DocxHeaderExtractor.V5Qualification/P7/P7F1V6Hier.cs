@@ -51,7 +51,33 @@ internal static class P7F1V6Hier
 
     public sealed record RunResult(string RunStatus, IReadOnlyDictionary<string, State> Final, IReadOnlyList<NodeRecord> Nodes,
         IReadOnlyList<string> Violations, string TranscriptSha256, IReadOnlyDictionary<string, string> IdByAlias, P7F1V6RawStore Raw,
-        int OpenUnresolved, bool GlobalAccepted, int GlobalShown);
+        int OpenUnresolved, bool GlobalAccepted, int GlobalShown, IReadOnlySet<string> ReopenedIds, IReadOnlySet<string> GlobalReviewedIds);
+
+    /// <summary>
+    /// Provenance accounting, a partition of the final states. Source: LocalResolved (decided or revised by a local or reconcile node, not
+    /// reopened), ReopenedConfirmed (reopened, then confirmed without change), ReopenedResolved (reopened, then revised by a synthesis
+    /// or global node), SynthesisResolved (revised by a synthesis or global node without reopening). Global: GloballyReviewed (shown to
+    /// the global node, which was accepted) and CarriedWithoutGlobalReview (every other final state).
+    /// </summary>
+    public sealed record Accounting(int LocalResolved, int ReopenedConfirmed, int ReopenedResolved, int SynthesisResolved,
+        int GloballyReviewed, int CarriedWithoutGlobalReview, int Total);
+
+    public static Accounting Account(RunResult r)
+    {
+        int local = 0, reopenedConf = 0, reopenedRes = 0, synth = 0, global = 0;
+        foreach (var kv in r.Final)
+        {
+            var reopened = r.ReopenedIds.Contains(kv.Key);
+            if (kv.Value.SourceNode.StartsWith("L0", StringComparison.Ordinal))
+            {
+                if (reopened) reopenedConf++; else local++;
+            }
+            else if (reopened) reopenedRes++;
+            else synth++;
+            if (r.GlobalReviewedIds.Contains(kv.Key)) global++;
+        }
+        return new Accounting(local, reopenedConf, reopenedRes, synth, global, r.Final.Count - global, r.Final.Count);
+    }
 
     /// <summary>The scripted model: returns the node's raw response text for a node payload.</summary>
     public delegate string NodeModel(string nodeId, Kind kind, string payloadJson);
@@ -95,6 +121,8 @@ internal static class P7F1V6Hier
         public bool Stopped => StopReason is not null;
         public bool GlobalAccepted { get; set; }
         public int GlobalShown { get; set; }
+        public HashSet<string> Reopened { get; } = new(StringComparer.Ordinal);
+        public HashSet<string> GlobalReviewed { get; } = new(StringComparer.Ordinal);
     }
 
     /// <summary>What a node has been shown so far: its own ids, the retrieval results, and the aliases that may be cited as evidence.</summary>
@@ -163,7 +191,8 @@ internal static class P7F1V6Hier
             : !env.GlobalAccepted ? "NO_GLOBAL_REVIEW"
             : "RESOLVED";
         var sha = Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(string.Join("\n", env.Transcript))));
-        return new RunResult(status, env.States, env.Nodes, env.Violations, sha, ids, env.Raw, open, env.GlobalAccepted, env.GlobalShown);
+        return new RunResult(status, env.States, env.Nodes, env.Violations, sha, ids, env.Raw, open, env.GlobalAccepted, env.GlobalShown,
+            env.Reopened, env.GlobalReviewed);
     }
 
     // ------------------------------------------------------------------------------------------------------------------
@@ -186,7 +215,7 @@ internal static class P7F1V6Hier
         {
             protocolVersion = NodeVersion, nodeId, kind = kind.ToString(), level, instruction = o.Instruction, instructionSha256 = e.InstructionSha,
             overview = e.Overview,
-            owned = Order(ownedCands, o.PromptOrder).Select(x => new { id = x.Id, sourceAlias = x.C.Alias, page = x.C.Page, text = x.C.Text,
+            owned = Order(ownedCands, o.PromptOrder, x => x.C.Alias).Select(x => new { id = x.Id, sourceAlias = x.C.Alias, page = x.C.Page, text = x.C.Text,
                 current = e.States.TryGetValue(x.Id, out var s) ? s.Decision : "NONE" }).ToArray(),
             context = context.Select(c => new { id = e.Ids[c.Alias], sourceAlias = c.Alias, page = c.Page, text = c.Text, role = "CONTEXT_ONLY" }).ToArray(),
         });
@@ -202,6 +231,8 @@ internal static class P7F1V6Hier
         if (kind == Kind.Global) e.GlobalShown = baseShown.Count;
         var up = Exec(e, nodeId, kind, level, shown,
             rs => SynthPayload(e, nodeId, kind, level, rs), model, allowRetrieve: true, passUpCap: e.O.PassUpCap, owned: null);
+        // The global review covers every id it ended with, including ids reopened during the node.
+        if (kind == Kind.Global && e.GlobalAccepted) e.GlobalReviewed.UnionWith(shown.Revisable);
         return up ?? Mandatory(e, baseShown);
     }
 
@@ -215,7 +246,7 @@ internal static class P7F1V6Hier
         {
             protocolVersion = NodeVersion, nodeId, kind = kind.ToString(), level, instruction = o.Instruction, instructionSha256 = e.InstructionSha,
             overview = e.Overview,
-            shown = Order(shownCands, o.PromptOrder).Select(x => new { id = x.Id, sourceAlias = x.C.Alias, page = x.C.Page, text = x.C.Text,
+            shown = Order(shownCands, o.PromptOrder, x => x.C.Alias).Select(x => new { id = x.Id, sourceAlias = x.C.Alias, page = x.C.Page, text = x.C.Text,
                 current = e.States.TryGetValue(x.Id, out var s) ? s.Decision : "NONE" }).ToArray(),
             pairObservations = pairs,
             retrieved = new { searches = rs.Searches, reopened = rs.Reopened },
@@ -340,6 +371,7 @@ internal static class P7F1V6Hier
                     decision = e.States.TryGetValue(e.Ids[n.Alias], out var ns) ? ns.Decision : "NONE", role = "CONTEXT_ONLY" }).ToArray(),
             });
             rs.Ids.Add(id); rs.Revisable.Add(id); rs.Citable.Add(alias);
+            e.Reopened.Add(id);
         }
         return null;
     }
@@ -468,7 +500,8 @@ internal static class P7F1V6Hier
     }
 
     /// <summary>Order of items inside a prompt. NORMAL keeps reading order. REVERSED and SEEDED:n permute the same items.</summary>
-    public static IEnumerable<T> Order<T>(IEnumerable<T> xs, string mode)
+    /// <summary>TARGET:alias:HEAD|MIDDLE|TAIL moves one candidate (when it is in the list) to that position and keeps the rest in reading order.</summary>
+    public static IEnumerable<T> Order<T>(IEnumerable<T> xs, string mode, Func<T, string> alias)
     {
         var list = xs.ToList();
         if (mode == "NORMAL") return list;
@@ -477,6 +510,26 @@ internal static class P7F1V6Hier
         {
             var rng = new Random(int.Parse(mode["SEEDED:".Length..]));
             return list.OrderBy(_ => rng.Next()).ToList();
+        }
+        if (mode.StartsWith("TARGET:", StringComparison.Ordinal))
+        {
+            // The alias itself contains ':' (for example L0005:S0), so the position is the text after the last ':'.
+            int cut = mode.LastIndexOf(':');
+            var targetAlias = mode["TARGET:".Length..cut];
+            var position = mode[(cut + 1)..];
+            var idx = list.FindIndex(x => alias(x) == targetAlias);
+            if (idx < 0) return list;
+            var target = list[idx];
+            list.RemoveAt(idx);
+            int pos = position switch
+            {
+                "HEAD" => 0,
+                "MIDDLE" => list.Count / 2,
+                "TAIL" => list.Count,
+                _ => throw new ArgumentException("PROMPT_ORDER_UNKNOWN:" + mode),
+            };
+            list.Insert(pos, target);
+            return list;
         }
         throw new ArgumentException("PROMPT_ORDER_UNKNOWN:" + mode);
     }

@@ -16,8 +16,12 @@ internal static class V6PreflightD2
 
     sealed record DocRef(string Id, string Path);
 
-    public static void Run(string docsJsonPath, string outDir)
+    /// <summary>When set, synthesis nodes search and reopen before they confirm (a cost and size stress, not a recovery measurement).</summary>
+    static bool retrieveMode;
+
+    public static void Run(string docsJsonPath, string outDir, bool retrieve = false)
     {
+        retrieveMode = retrieve;
         Directory.CreateDirectory(outDir);
         var docs = JsonSerializer.Deserialize<List<DocRef>>(File.ReadAllText(docsJsonPath), new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
         var summary = new List<object>();
@@ -63,6 +67,19 @@ internal static class V6PreflightD2
             coverageAllDecided = run.Final.Count == cands.Length && run.Final.Values.All(v => v.Decision != "MISSING"),
             selected = run.Final.Values.Count(v => v.Decision == "SELECT"), confirmationsTotal = run.Final.Values.Sum(v => v.Confirmations),
             local = Kind("Local"), reconcile = Kind("Reconcile"), synthesis = Kind("Synthesis"), global = Kind("Global"),
+            statusRun = run.RunStatus, accounting = P7F1V6Hier.Account(run),
+            retrieval = new
+            {
+                mode = retrieveMode ? "SEARCH_THEN_REOPEN" : "NONE",
+                calls = nodes.Count(n => n.Status == "RETRIEVE"),
+                nodesWithRetrieval = nodes.Where(n => n.Status == "RETRIEVE").Select(n => n.NodeId).Distinct().Count(),
+                maxCallsPerNode = nodes.GroupBy(n => n.NodeId).Max(g => g.Count()),
+                maxRetrieveInputBytes = nodes.Where(n => n.Status == "RETRIEVE").DefaultIfEmpty().Max(n => n?.InputBytes ?? 0),
+                maxRetrieveOutputBytes = nodes.Where(n => n.Status == "RETRIEVE").DefaultIfEmpty().Max(n => n?.OutputBytes ?? 0),
+                maxNodeInputGrowthBytes = nodes.GroupBy(n => n.NodeId).Where(g => g.Count() > 1)
+                    .Select(g => g.Max(x => x.InputBytes) - g.Min(x => x.InputBytes)).DefaultIfEmpty(0).Max(),
+                rejected = nodes.Count(n => n.Status == "REJECTED" || n.Status == "STOPPED"),
+            },
             maxOutputBytesAccepted = nodes.Where(n => n.Status == "ACCEPTED").DefaultIfEmpty().Max(n => n?.OutputBytes ?? 0),
             seconds = Math.Round(sw.Elapsed.TotalSeconds, 1), transcriptSha256 = run.TranscriptSha256,
         };
@@ -94,6 +111,18 @@ internal static class V6PreflightD2
             return Node("", confirmed: Quoted(r.GetProperty("owned").EnumerateArray().Select(o => o.GetProperty("id").GetString()!)));
         if (kind == P7F1V6Hier.Kind.Synthesis)
         {
+            if (retrieveMode)
+            {
+                var rt = r.GetProperty("retrieved");
+                if (rt.GetProperty("searches").GetArrayLength() == 0)
+                    return JsonSerializer.Serialize(new { protocolVersion = "P7_F1_V6_HIER_NODE_V2", nodeId, status = "RETRIEVE", retrieve = new { search = "1" } });
+                // Reopen the first match that is not already shown: reopening a shown id adds nothing and would loop until the round limit.
+                var shownSet = shown.EnumerateArray().Select(s => s.GetProperty("id").GetString()!).ToHashSet();
+                var fresh = rt.GetProperty("searches")[0].GetProperty("matches").EnumerateArray()
+                    .Select(m => m.GetProperty("id").GetString()!).FirstOrDefault(id => !shownSet.Contains(id));
+                if (rt.GetProperty("reopened").GetArrayLength() == 0 && fresh is not null)
+                    return JsonSerializer.Serialize(new { protocolVersion = "P7_F1_V6_HIER_NODE_V2", nodeId, status = "RETRIEVE", retrieve = new { reopen = new[] { fresh } } });
+            }
             var up = shown.EnumerateArray().Where(s => s.GetProperty("current").GetString() == "SELECT")
                 .Take(PassUpCap - 2 * Context).Select(s => s.GetProperty("id").GetString()!);
             return Node("", passUp: Quoted(up), confirmed: Quoted(shownIds));
