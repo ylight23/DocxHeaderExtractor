@@ -23,8 +23,8 @@ internal static class P7F1V6DirectV2
 {
     public const string RequestVersion = "P7_F1_V6_DIRECT_REQUEST_V2_1";
     public const string ResponseVersion = "P7_F1_V6_DIRECT_RESPONSE_V2";
-    public const string PromptVersion = "P7_F1_V6_DIRECT_PROMPT_V2_1";
-    public const string SystemPromptSha256 = "b9e9bff868b72d5a1c502072453bbfcc44ae4155cb558f53aea9caa7757c2b25";
+    public const string PromptVersion = "P7_F1_V6_DIRECT_PROMPT_V2_2";
+    public const string SystemPromptSha256 = "9dbd5d79a01747e297272ac61e0b093a4ef4b9877a89c383224f47dc9cf8a3c6";
     public const int MaxRounds = 3;                 // per unit: at most two retrieval rounds, then a final answer
     public const int MaxRetrievePerRound = 4;
     public const int MaxRangeLines = 60;
@@ -47,15 +47,15 @@ internal static class P7F1V6DirectV2
         "The request gives stage (SEGMENT, RESOLVE or FINALIZE), decide (the aliases you must decide), lines (the aliases shown to you, with page, text and layout), currentHeadings (groups selected so far, when any), retrievals (lines you asked for earlier) and retrievalAllowed.",
         "In stage FINALIZE, decide holds aliases selected so far, and lines show every alias selected anywhere in the document, in document order, with neighbouring lines. Decide again for each alias in decide whether it fits the instruction when the whole document is considered.",
         "Reply with exactly one JSON object and nothing else. Use only the keys shown below. Replace each <...> with a value.",
-        "Status COMPLETE: every alias in decide is SELECT or NOT_SELECT.",
-        "{\"protocolVersion\":\"P7_F1_V6_DIRECT_RESPONSE_V2\",\"status\":\"COMPLETE\",\"decisions\":[{\"alias\":\"<alias from decide>\",\"decision\":\"SELECT\",\"evidenceRefs\":[\"<alias from lines>\"]},{\"alias\":\"<alias from decide>\",\"decision\":\"NOT_SELECT\",\"evidenceRefs\":[\"<alias from lines>\"]}],\"headings\":[{\"parts\":[\"<alias>\",\"<alias>\"]}]}",
+        "Status COMPLETE: every alias in decide is SELECT or NOT_SELECT. Only SELECT needs evidenceRefs with 1 to 8 shown aliases; NOT_SELECT may omit evidenceRefs or supply 0 to 8 shown aliases.",
+        "{\"protocolVersion\":\"P7_F1_V6_DIRECT_RESPONSE_V2\",\"status\":\"COMPLETE\",\"decisions\":[{\"alias\":\"<alias from decide>\",\"decision\":\"SELECT\",\"evidenceRefs\":[\"<alias from lines>\"]},{\"alias\":\"<alias from decide>\",\"decision\":\"NOT_SELECT\"}],\"headings\":[{\"parts\":[\"<alias>\",\"<alias>\"]}]}",
         "Status INCOMPLETE: you cannot decide some aliases from the evidence you have; mark them UNRESOLVED and say why.",
         "{\"protocolVersion\":\"P7_F1_V6_DIRECT_RESPONSE_V2\",\"status\":\"INCOMPLETE\",\"decisions\":[{\"alias\":\"<alias from decide>\",\"decision\":\"UNRESOLVED\",\"evidenceRefs\":[\"<alias from lines>\"]}],\"headings\":[],\"incompleteReason\":\"<why>\"}",
         "Status NEEDS_EVIDENCE: you need more of the document before deciding. Only when retrievalAllowed is true. 1 to 4 requests; RANGE returns lines between two aliases, SEARCH returns lines containing the literal text.",
         "{\"protocolVersion\":\"P7_F1_V6_DIRECT_RESPONSE_V2\",\"status\":\"NEEDS_EVIDENCE\",\"retrieve\":[{\"kind\":\"RANGE\",\"fromAlias\":\"<alias>\",\"toAlias\":\"<alias>\"},{\"kind\":\"SEARCH\",\"text\":\"<literal text>\"}]}",
         "Status CLARIFICATION_REQUIRED: the instruction has more than one reasonable reading for this document. Give 2 to 5 readings and no decisions.",
         "{\"protocolVersion\":\"P7_F1_V6_DIRECT_RESPONSE_V2\",\"status\":\"CLARIFICATION_REQUIRED\",\"clarification\":{\"question\":\"<question to the user>\",\"interpretations\":[\"<reading>\",\"<reading>\"]}}",
-        "Rules: decisions has exactly one entry for every alias in decide and for no other alias. The key of each entry is \"alias\", not \"line\" or \"id\". decision is SELECT, NOT_SELECT or UNRESOLVED; UNRESOLVED only with status INCOMPLETE. evidenceRefs holds 1 to 8 aliases shown in lines. Every SELECT alias is in exactly one heading; parts are aliases shown in lines, in document order, 1 to 8 of them; a heading written over several lines lists all of them, including shown lines outside decide. Do not add levels, parents or any other field.");
+        "Rules: decide is the EXACT output universe: return one decision for each alias in decide, NO decisions for context-only aliases from lines, and NO duplicates. The key is \"alias\", not \"line\" or \"id\". SELECT requires evidenceRefs with 1 to 8 aliases shown in lines; NOT_SELECT permits evidenceRefs omitted, empty, or up to 8 shown aliases; UNRESOLVED requires 1 to 8 shown aliases and is only for INCOMPLETE. Every SELECT alias is in exactly one heading; heading parts may include shown context aliases but cannot exceed 8 parts and must be in document order. Do not group unrelated navigation entries into a heading. If a genuine heading exceeds 8 parts, report INCOMPLETE rather than truncate. Do not add levels, parents or other fields.");
 
     public static string ComputedSystemPromptSha256() => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(SystemPrompt)));
 
@@ -279,14 +279,20 @@ internal static class P7F1V6DirectV2
                 var value = Str(d, "decision");
                 if (value is not ("SELECT" or "NOT_SELECT" or "UNRESOLVED")) return Fail("DECISION_VALUE_INVALID");
                 if (value == "UNRESOLVED" && status != "INCOMPLETE") return Fail("UNRESOLVED_ONLY_IN_INCOMPLETE");
-                if (!d.TryGetProperty("evidenceRefs", out var er) || er.ValueKind != JsonValueKind.Array || er.GetArrayLength() is < 1 or > MaxEvidenceRefs)
+                // Negative decisions do not have to cite a line: the model may omit evidenceRefs or provide an empty array.
+                // SELECT and UNRESOLVED still require positive evidence. Never synthesize or rename citations.
+                var hasRefs = d.TryGetProperty("evidenceRefs", out var er);
+                var minRefs = value == "NOT_SELECT" ? 0 : 1;
+                if ((hasRefs && (er.ValueKind != JsonValueKind.Array || er.GetArrayLength() < minRefs || er.GetArrayLength() > MaxEvidenceRefs))
+                    || (!hasRefs && minRefs > 0))
                     return Fail("EVIDENCE_REFS_INVALID");
                 var refs = new List<string>();
-                foreach (var r in er.EnumerateArray())
-                {
-                    if (r.ValueKind != JsonValueKind.String || !shownOrder.ContainsKey(r.GetString()!)) return Fail("EVIDENCE_NOT_SHOWN");
-                    refs.Add(r.GetString()!);
-                }
+                if (hasRefs)
+                    foreach (var r in er.EnumerateArray())
+                    {
+                        if (r.ValueKind != JsonValueKind.String || !shownOrder.ContainsKey(r.GetString()!)) return Fail("EVIDENCE_NOT_SHOWN");
+                        refs.Add(r.GetString()!);
+                    }
                 if (!decideSet.Contains(alias)) return Fail("UNEXPECTED_ALIAS");
                 if (!seen.Add(alias)) return Fail("ALIAS_LISTED_TWICE");
                 decisions.Add(new Decision(alias, value!, refs));
