@@ -1,0 +1,39 @@
+{
+  "artifact": "p7.f1.v6.d4.3-size-audit.v1",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf",
+  "documentSha256": "8314f1034854548baf26f9912f79c6207299cb0520b31ed25af64889bd1500bc",
+  "universeSha256": "3d1d334b09b9a3fa5fc050a9f993b4f506dddfc8c0521c061f2972eb5fa36ad1",
+  "providerCalls": 0,
+  "instruction": "Trích xuất các heading chính",
+  "lineCount": 2953,
+  "aliasSample": [
+    "L0000:S0",
+    "L0000:S1",
+    "L0001:S0"
+  ],
+  "contract": {
+    "request": "P7_F1_V6_DIRECT_REQUEST_V2",
+    "response": "P7_F1_V6_DIRECT_RESPONSE_V2",
+    "MaxRounds": 3,
+    "MaxRetrievePerRound": 4,
+    "MaxRangeLines": 60,
+    "MaxSearchHits": 30,
+    "MaxAddedLinesPerUnit": 300,
+    "MaxResolveContextLines": 600,
+    "overlapLines": 20,
+    "maxTokens": 32768
+  },
+  "bound": {
+    "PerUnit": 88,
+    "Segments": 34,
+    "ResolveChunksWorst": 34,
+    "MinCalls": 34,
+    "WorstCalls": 204,
+    "Round1MaxBytes": 41736,
+    "WorstSegmentRequestBytes": 152060,
+    "WorstResolveRequestBytes": 331556,
+    "MinUsd": 0.5566456699999999,
+    "WorstUsd": 12.298107899999998
+  },
+  "note": "MinCalls/MinUsd: one call per segment, no retrieval, no resolve. WorstCalls/WorstUsd: every unit uses every round, every alias goes to the resolve pass, every request at its largest. Bytes bound prompt tokens from above; real tokens are not measured. Cost uses max_tokens 32,768 per attempt as the completion bound."
+}

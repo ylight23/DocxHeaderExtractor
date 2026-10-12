@@ -586,6 +586,11 @@ switch (args[0])
         if (args.Length != 3) throw new ArgumentException("d4-size-audit <repo-root> <artifact-dir>");
         C0Replay.D4SizeAudit(args[1], args[2]);
         break;
+    case "d43-size-audit":
+        // Issue #9 D4.3 (offline): d43-size-audit <repo-root> <artifact-dir>. Sizes the DIRECT-F1 V2 requests for RFC 9113. No network call.
+        if (args.Length != 3) throw new ArgumentException("d43-size-audit <repo-root> <artifact-dir>");
+        C0Replay.D43SizeAudit(args[1], args[2]);
+        break;
     case "d4-canary-artifact":
         // Issue #9 D4.1 (offline): d4-canary-artifact <artifact-dir> <generated-at-commit>. Writes the canary T1 body and audit. No network call.
         if (args.Length != 3) throw new ArgumentException("d4-canary-artifact <artifact-dir> <generated-at-commit>");

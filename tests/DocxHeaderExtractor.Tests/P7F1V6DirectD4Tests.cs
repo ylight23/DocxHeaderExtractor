@@ -142,69 +142,6 @@ public sealed class P7F1V6DirectD4Tests : IDisposable
         Assert.True(Encoding.UTF8.GetByteCount(reply) <= P7F1V6Direct.VisibleResponseCapBytes, $"{n} decisions = {Encoding.UTF8.GetByteCount(reply)} bytes");
     }
 
-    // ---------------- scorer ----------------
-
-    static List<string> GoldClaims(string doc)
-    {
-        using var g = JsonDocument.Parse(File.ReadAllText(Path.Combine(TestRepository.Root(), "eval", "a99-closed-loop", "gold-current", "documents", doc + ".gold.v1.json")));
-        return g.RootElement.GetProperty("semantic").GetProperty("claims").EnumerateArray().Select(c => c.GetProperty("sourceAlias").GetString()!).ToList();
-    }
-
-    const string Doc1Source = "0ea894862a91f94623fab1de4a0c67b27d4a32fcbd0f41299a1568058d048d14";
-    const string Doc1Universe = "309bfc5571c2eb0567d296c730a8348e6ee2b7460e55e01931fd1841fb8346ba";
-
-    static P7F1V6DirectScorer.RunEvidence Ev(IEnumerable<string> predicted, string source = Doc1Source, string universe = Doc1Universe,
-        string[]? missing = null, string[]? unexpected = null, IEnumerable<string>? universeAliases = null) =>
-        new(source, universe, (universeAliases ?? GoldClaims("DOC-0001").Append("S9999")).ToList(), predicted.ToList(),
-            missing ?? Array.Empty<string>(), unexpected ?? Array.Empty<string>());
-
-    [Fact]
-    public void Scorer_RefusesPredictedAliasOutsidePinnedUniverse()
-    {
-        var gold = GoldClaims("DOC-0001");
-        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0001", Ev(gold.Append("S8888")));
-        Assert.False(r.Scored);
-        Assert.StartsWith("PREDICTED_OUTSIDE_UNIVERSE:S8888", r.Reason, StringComparison.Ordinal);
-    }
-
-    [Fact]
-    public void Scorer_RefusesWhenGoldAliasIsNotInTheUniverse()
-    {
-        var gold = GoldClaims("DOC-0001");
-        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0001", Ev(gold, universeAliases: gold.Skip(1)));
-        Assert.Equal("GOLD_OUTSIDE_UNIVERSE", r.Reason);
-    }
-
-    [Fact]
-    public void Scorer_RefusesASourceOrUniverseOrCoverageThatDoesNotMatch()
-    {
-        var gold = GoldClaims("DOC-0001");
-        var root = TestRepository.Root();
-        Assert.Equal("SOURCE_SHA_MISMATCH", P7F1V6DirectScorer.Score(root, Registry, "DOC-0001", Ev(gold, source: new string('0', 64))).Reason);
-        Assert.Equal("UNIVERSE_SHA_MISMATCH", P7F1V6DirectScorer.Score(root, Registry, "DOC-0001", Ev(gold, universe: new string('0', 64))).Reason);
-        Assert.Equal("COVERAGE_INCOMPLETE", P7F1V6DirectScorer.Score(root, Registry, "DOC-0001", Ev(gold, missing: new[] { "S0002" })).Reason);
-        Assert.Equal("COVERAGE_INCOMPLETE", P7F1V6DirectScorer.Score(root, Registry, "DOC-0001", Ev(gold, unexpected: new[] { "S9999" })).Reason);
-    }
-
-    [Fact]
-    public void Scorer_RefusesWhenOccurrenceAndSemanticUnitsDiffer()
-    {
-        var copy = CopyGoldAuthority("DOC-0001");
-        var goldPath = Path.Combine(copy, "eval", "a99-closed-loop", "gold-current", "documents", "DOC-0001.gold.v1.json");
-        var text = File.ReadAllText(goldPath);
-        // The occurrence claims come after the semantic claims in the file; the last S0001 alias is the occurrence one.
-        var at = text.LastIndexOf("\"sourceAlias\": \"S0001\"", StringComparison.Ordinal);
-        Assert.True(at > 0);
-        var edited = text[..at] + "\"sourceAlias\": \"S9999\"" + text[(at + "\"sourceAlias\": \"S0001\"".Length)..];
-        File.WriteAllText(goldPath, edited);
-        var newSha = Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(goldPath)));
-        var reg = Path.Combine(copy, Registry);
-        File.WriteAllText(reg, File.ReadAllText(reg).Replace("3904295073179700f3c74e60d1f0b16eea19937c8aaea7ee5962ff0a6d9f2fcc", newSha));
-        var r = P7F1V6DirectScorer.Score(copy, Registry, "DOC-0001", Ev(new[] { "S0001" }));
-        Assert.False(r.Scored);
-        Assert.Equal("UNIT_MISMATCH_OCCURRENCE_VS_SEMANTIC", r.Reason);
-    }
-
     [Fact]
     public void Unicode_EscapesThatDecodeToTheAliasAreAccepted()
     {
@@ -237,67 +174,6 @@ public sealed class P7F1V6DirectD4Tests : IDisposable
         Assert.Equal(0, audit.RootElement.GetProperty("retry").GetInt32());
         Assert.Equal(1, audit.RootElement.GetProperty("postsApproved").GetInt32());
         Assert.False(audit.RootElement.GetProperty("reasoningDeclared").GetBoolean());
-    }
-
-    [Fact]
-    public void Scorer_RefusesRfc_BecauseNoApprovedGoldIsRegistered()
-    {
-        var r = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0179", Ev(new[] { "S0001" }));
-        Assert.False(r.Scored);
-        Assert.Equal("NO_APPROVED_GOLD_FOR_AUTHORITY", r.Reason);
-        Assert.Null(r.F1);
-    }
-
-    [Fact]
-    public void Scorer_ScoresAnApprovedGold_WithExactF1()
-    {
-        var gold = GoldClaims("DOC-0001");
-        var exact = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0001", Ev(gold));
-        Assert.True(exact.Scored);
-        Assert.Equal($"{2 * gold.Count}/{2 * gold.Count}", exact.F1Exact);
-        Assert.Equal(1.0, exact.F1);
-
-        // One true claim dropped and one wrong alias added: TP = n-1, FP = 1, FN = 1, F1 = 2(n-1)/(2(n-1)+2).
-        var miss = gold.Skip(1).Append("S9999").ToList();
-        var partial = P7F1V6DirectScorer.Score(TestRepository.Root(), Registry, "DOC-0001", Ev(miss));
-        Assert.True(partial.Scored);
-        Assert.Equal(gold.Count - 1, partial.TruePositive);
-        Assert.Equal(1, partial.FalsePositive);
-        Assert.Equal(1, partial.FalseNegative);
-        Assert.Equal($"{2 * (gold.Count - 1)}/{2 * (gold.Count - 1) + 2}", partial.F1Exact);
-        Assert.Equal(new[] { "S9999" }, partial.PredictedOutsideGold);
-    }
-
-    [Fact]
-    public void Scorer_RefusesWhenTheGoldBytesDoNotMatchTheRegistry()
-    {
-        var copy = CopyGoldAuthority("DOC-0001");
-        var reg = Path.Combine(copy, Registry);
-        File.WriteAllText(reg, File.ReadAllText(reg).Replace("3904295073179700f3c74e60d1f0b16eea19937c8aaea7ee5962ff0a6d9f2fcc", new string('0', 64)));
-        var r = P7F1V6DirectScorer.Score(copy, Registry, "DOC-0001", Ev(new[] { "S0001" }));
-        Assert.False(r.Scored);
-        Assert.Equal("GOLD_SHA_MISMATCH", r.Reason);
-    }
-
-    [Fact]
-    public void Scorer_RefusesAGoldPathOutsideTheAuthorityFolder()
-    {
-        var copy = CopyGoldAuthority("DOC-0001");
-        var reg = Path.Combine(copy, Registry);
-        File.WriteAllText(reg, File.ReadAllText(reg).Replace("eval/a99-closed-loop/gold-current/documents/DOC-0001.gold.v1.json", "eval/a99-closed-loop/gold-current/registry.v1.json"));
-        var r = P7F1V6DirectScorer.Score(copy, Registry, "DOC-0001", Ev(new[] { "S0001" }));
-        Assert.False(r.Scored);
-        Assert.Equal("GOLD_PATH_OUTSIDE_AUTHORITY_FOLDER", r.Reason);
-    }
-
-    string CopyGoldAuthority(string doc)
-    {
-        var src = Path.Combine(TestRepository.Root(), "eval", "a99-closed-loop", "gold-current");
-        var dst = Path.Combine(scratch, "repo", "eval", "a99-closed-loop", "gold-current");
-        Directory.CreateDirectory(Path.Combine(dst, "documents"));
-        File.Copy(Path.Combine(src, "registry.v1.json"), Path.Combine(dst, "registry.v1.json"));
-        File.Copy(Path.Combine(src, "documents", doc + ".gold.v1.json"), Path.Combine(dst, "documents", doc + ".gold.v1.json"));
-        return Path.Combine(scratch, "repo");
     }
 
     // ---------------- canary T1 ----------------

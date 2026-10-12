@@ -209,6 +209,35 @@ internal static class C0Replay
         Console.WriteLine($"d4 size audit: {lines.Count} lines, {perReply} decisions per reply, single {single.Requests} requests (covered {single.Covered}, max {single.MaxRequestBytes} bytes, ${single.WorstUsd:F4}), segmented {segmented.Requests} requests (covered {segmented.Covered}, max {segmented.MaxRequestBytes} bytes, ${segmented.WorstUsd:F4})");
     }
 
+    /// <summary>D4.3 size audit (offline): the V2 contract on every line of RFC 9113. Minimum calls and the worst case with retrieval and the
+    /// resolve pass, with request bytes built from real requests. Nothing is sent. The D4.1 audit file is left as it was.</summary>
+    public static void D43SizeAudit(string repoRoot, string artifactDir)
+    {
+        var (_, legacy) = Load(repoRoot);
+        var lines = legacy.AllLines
+            .Select(l => new P7F1V6Direct.Line(l.Alias, l.Page ?? 0, l.Text, P7F1QEvidenceTools.CompactLayout(l.Bbox, l.Typography))).ToList();
+        var sourceSha = Sha(File.ReadAllBytes(Path.Combine(repoRoot, Rel)));
+        var b = P7F1V6DirectV2.WorstCase(Instruction, sourceSha, lines);
+        var audit = new
+        {
+            artifact = "p7.f1.v6.d4.3-size-audit.v1",
+            document = Rel,
+            documentSha256 = sourceSha,
+            universeSha256 = legacy.SourceAliasUniverseSha256,
+            providerCalls = 0,
+            instruction = Instruction,
+            lineCount = lines.Count,
+            aliasSample = lines.Take(3).Select(l => l.Alias),
+            contract = new { request = P7F1V6DirectV2.RequestVersion, response = P7F1V6DirectV2.ResponseVersion, P7F1V6DirectV2.MaxRounds,
+                P7F1V6DirectV2.MaxRetrievePerRound, P7F1V6DirectV2.MaxRangeLines, P7F1V6DirectV2.MaxSearchHits, P7F1V6DirectV2.MaxAddedLinesPerUnit,
+                P7F1V6DirectV2.MaxResolveContextLines, overlapLines = P7F1V6Direct.DefaultOverlapLines, maxTokens = P7F1V6Protocol.MaxTokens },
+            bound = b,
+            note = "MinCalls/MinUsd: one call per segment, no retrieval, no resolve. WorstCalls/WorstUsd: every unit uses every round, every alias goes to the resolve pass, every request at its largest. Bytes bound prompt tokens from above; real tokens are not measured. Cost uses max_tokens 32,768 per attempt as the completion bound.",
+        };
+        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.3-size-audit.v1.json"), JsonSerializer.Serialize(audit, Indented) + "\n", new UTF8Encoding(false));
+        Console.WriteLine($"d4.3 size audit: {lines.Count} lines, {b.PerUnit} per unit, {b.Segments} segments, calls {b.MinCalls}..{b.WorstCalls}, round-1 max {b.Round1MaxBytes} B, worst segment {b.WorstSegmentRequestBytes} B, worst resolve {b.WorstResolveRequestBytes} B, ${b.MinUsd:F4}..${b.WorstUsd:F4}");
+    }
+
     /// <summary>D4.1 canary T1 (offline): writes the exact HTTP body and its audit record. Nothing is sent.</summary>
     public static void D4CanaryArtifact(string artifactDir, string generatedAtCommit)
     {
