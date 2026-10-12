@@ -1,0 +1,112 @@
+{
+  "artifact": "p7.f1.v6.d3.5-dryrun.v1",
+  "document": "073",
+  "provider": "none: dry-run, no request sent",
+  "route": {
+    "allow": "alibaba",
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "caps": {
+    "maxCalls": 6,
+    "maxRetries": 1,
+    "ceilingUsd": 0.3,
+    "payloadCapBytes": 131072,
+    "envelopeCapBytes": 147456,
+    "visibleResponseCapBytes": 16384
+  },
+  "plannedRequests": [
+    {
+      "Index": 0,
+      "EnvelopeBytes": 1883,
+      "Sha256": "4484830700fe12cb5231751368e51e1228a9c769d7f0d09238d9d5528de6eba0",
+      "worstUsd": 0.008576,
+      "reserveAfterUsd": 0.008576,
+      "withinCeiling": true
+    },
+    {
+      "Index": 1,
+      "EnvelopeBytes": 21636,
+      "Sha256": "d8390f24d251a913812f3a121d201785a13a6be170e1ee750770564fde5e4d75",
+      "worstUsd": 0.009169,
+      "reserveAfterUsd": 0.017745,
+      "withinCeiling": true
+    },
+    {
+      "Index": 2,
+      "EnvelopeBytes": 21812,
+      "Sha256": "addd1923f7edc158234c486073a4e4eb2fb3079033f9c0a4137b0cd7e4b4e98b",
+      "worstUsd": 0.009174,
+      "reserveAfterUsd": 0.026919,
+      "withinCeiling": true
+    },
+    {
+      "Index": 3,
+      "EnvelopeBytes": 10223,
+      "Sha256": "fcf9787378cf0fb1b6e27189f60d8ddc26fb71fbe6154dd701317487a8a25c27",
+      "worstUsd": 0.008826,
+      "reserveAfterUsd": 0.035745,
+      "withinCeiling": true
+    }
+  ],
+  "worstReserveUsd": 0.035745,
+  "gates": [
+    {
+      "Name": "CANDIDATE_PIN",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Name": "SOURCE_AUTHORIZED",
+      "Passed": false,
+      "Reason": "SOURCE_NOT_AUTHORIZED:public status not confirmed by the corpus owner"
+    },
+    {
+      "Name": "ROUTE_POLICY",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Name": "INVENTORY_FRESH",
+      "Passed": false,
+      "Reason": "INVENTORY_NOT_FRESH:no approved fresh metadata read"
+    },
+    {
+      "Name": "DATA_POLICY",
+      "Passed": false,
+      "Reason": "DATA_POLICY_UNVERIFIED:alibaba:training on request data,alibaba:retention period of request data,alibaba:logging of request content"
+    },
+    {
+      "Name": "RAW_STORE",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Name": "C0_REPLAY",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Name": "LIVE_AUTHORISATION",
+      "Passed": false,
+      "Reason": "LIVE_NOT_AUTHORISED"
+    },
+    {
+      "Name": "CALL_LIMIT",
+      "Passed": true,
+      "Reason": "OK: at most 6 attempts, at most 1 retry"
+    }
+  ],
+  "structuralMaxReserveUsd": 0.24576,
+  "costGate": {
+    "ceilingUsd": 0.3,
+    "passed": true,
+    "basis": "six attempts, each at the envelope cap, completion 65,536; includes one retry in the count"
+  },
+  "allGatesPassed": false,
+  "safeStoreRunDirectoryName": "run-d5d38a5bfbfd4564b43896a7b85afd3c",
+  "costNote": "Worst case per attempt: prompt tokens bounded by UTF-8 bytes, completion at 65,536. Not the billed amount; endpoint reasoning and token accounting are not verified."
+}

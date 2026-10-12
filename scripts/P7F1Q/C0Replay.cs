@@ -56,8 +56,9 @@ internal static class C0Replay
             SourceUniverseSha256: legacy.SourceAliasUniverseSha256, ParserVersion: P7F1QEvidenceTools.VersionV3, EvidenceStoreVersion: legacy.EvidenceStoreSha256,
             ExpectedCandidatesSha256: candidatesSha, RequirePinned: true, SafeStore: store, RequireSafeStore: true);
         var calls = 0;
+        var planned = new List<P7F1V6Protocol.PreparedRequest>();
         // Scripted decisions only: no network. Local decides by alias parity, reconcile and synthesis confirm what they were shown.
-        var run = P7F1V6Hier.Run(cands, opts, (P7F1V6Hier.PreparedNodeModel)((n, k, p, r) => { calls++; return Scripted(n, k, p); }));
+        var run = P7F1V6Hier.Run(cands, opts, (P7F1V6Hier.PreparedNodeModel)((n, k, p, r) => { calls++; planned.Add(r); return Scripted(n, k, p); }));
         var disk = store.VerifyOnDisk();
         var result = new
         {
@@ -80,7 +81,45 @@ internal static class C0Replay
             noteOnSourceGate = "The source gate checks the prefix and the pinned hash. It does not establish that the document is public.",
         };
         File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d3.4-c0-replay.v1.json"), JsonSerializer.Serialize(result, Indented) + "\n", new UTF8Encoding(false));
+        WriteDryRun(artifactDir, planned, candidatesSha, sourceSha, manifestSha, legacy, gate.Code, run.Summary.ProtocolResolved, store.RunDirectory);
         Console.WriteLine($"C0 replay: {run.RunStatus}, calls {calls}, provider calls 0, damaged items {disk.Count}");
+    }
+
+    /// <summary>The C1 dry-run (D3.5): every request the replay built, with bytes, hash, worst-case cost and every gate result. Nothing is sent.</summary>
+    static void WriteDryRun(string artifactDir, List<P7F1V6Protocol.PreparedRequest> planned, string candidatesSha, string sourceSha,
+        string manifestSha, P7F1QEvidenceTools legacy, string sourceGateCode, bool c0Passed, string safeRunDir)
+    {
+        var pins = new P7F1V6Runner.PinSet(sourceSha, legacy.SourceAliasUniverseSha256, candidatesSha, manifestSha);
+        var inventory = new[]
+        {
+            new P7F1V6Protocol.EndpointRecord("alibaba", "qwen/qwen3.7-flash", 1000000, 65536),
+            new P7F1V6Protocol.EndpointRecord("alibaba/us-east-1", "qwen/qwen3.7-flash", 1000000, 65536),
+        };
+        // Public status and a fresh inventory read are not established here: the gates report them as not met.
+        var inputs = new P7F1V6Runner.Inputs(pins, pins, sourceGateCode, PublicConfirmed: false, inventory, InventoryFresh: false,
+            SafeStore: true, C0Passed: c0Passed, LiveAuthorised: false);
+        var gates = P7F1V6Runner.Gates(inputs);
+        var lines = P7F1V6Runner.DryRun(planned);
+        var dry = new
+        {
+            artifact = "p7.f1.v6.d3.5-dryrun.v1",
+            document = "073",
+            provider = "none: dry-run, no request sent",
+            route = new { allow = "alibaba", ignore = P7F1V6Protocol.DefaultIgnore, allowFallbacks = false, requireParameters = true },
+            caps = new { maxCalls = P7F1V6Runner.MaxCalls, maxRetries = P7F1V6Runner.MaxRetries, ceilingUsd = (double)P7F1V6Runner.CeilingUsd,
+                payloadCapBytes = P7F1V6Protocol.PayloadCapBytes, envelopeCapBytes = P7F1V6Protocol.EnvelopeCapBytes, visibleResponseCapBytes = P7F1V6Protocol.VisibleResponseCapBytes },
+            plannedRequests = lines.Select(l => new { l.Index, l.EnvelopeBytes, l.Sha256, worstUsd = Math.Round(l.WorstUsd, 6),
+                reserveAfterUsd = Math.Round(l.ReserveAfterUsd, 6), withinCeiling = l.WithinCeiling }),
+            worstReserveUsd = lines.Count == 0 ? 0 : Math.Round(lines[^1].ReserveAfterUsd, 6),
+            gates = gates.Select(g => new { g.Name, g.Passed, g.Reason }),
+            structuralMaxReserveUsd = Math.Round(P7F1V6Runner.MaxCalls * P7F1V6Runner.WorstAttemptUsd(P7F1V6Protocol.EnvelopeCapBytes), 6),
+            costGate = new { ceilingUsd = (double)P7F1V6Runner.CeilingUsd, passed = P7F1V6Runner.MaxCalls * P7F1V6Runner.WorstAttemptUsd(P7F1V6Protocol.EnvelopeCapBytes) <= (double)P7F1V6Runner.CeilingUsd,
+                basis = "six attempts, each at the envelope cap, completion 65,536; includes one retry in the count" },
+            allGatesPassed = P7F1V6Runner.AllPassed(gates) && P7F1V6Runner.MaxCalls * P7F1V6Runner.WorstAttemptUsd(P7F1V6Protocol.EnvelopeCapBytes) <= (double)P7F1V6Runner.CeilingUsd,
+            safeStoreRunDirectoryName = Path.GetFileName(safeRunDir),
+            costNote = "Worst case per attempt: prompt tokens bounded by UTF-8 bytes, completion at 65,536. Not the billed amount; endpoint reasoning and token accounting are not verified.",
+        };
+        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d3.5-dryrun.v1.json"), JsonSerializer.Serialize(dry, Indented) + "\n", new UTF8Encoding(false));
     }
 
     static (List<P7F1V6Hier.Cand> Cands, P7F1QEvidenceTools Legacy) Load(string repoRoot)

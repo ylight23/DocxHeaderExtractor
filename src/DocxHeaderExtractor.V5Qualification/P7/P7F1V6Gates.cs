@@ -49,6 +49,22 @@ internal static class P7F1V6Retention
         return files.Length;
     }
 
+    /// <summary>The sweep (D3.5): deletes every owned run directory that the retention rule marks for deletion. Returns the directories removed.
+    /// The creation time of each run directory is its age; reviewCompletedUtc, when set, starts the seven-day clock.</summary>
+    public static IReadOnlyList<string> Sweep(string root, DateTime nowUtc, DateTime? reviewCompletedUtc)
+    {
+        if (!Directory.Exists(root)) return Array.Empty<string>();
+        var removed = new List<string>();
+        foreach (var d in Directory.EnumerateDirectories(root).Where(d => RunName.IsMatch(Path.GetFileName(d))).OrderBy(d => d, StringComparer.Ordinal))
+        {
+            if (!IsOwnedRun(d)) continue;
+            if (!P7F1V6RetentionPolicy.ShouldDelete(Directory.GetCreationTimeUtc(d), reviewCompletedUtc, nowUtc)) continue;
+            DeleteRun(d);
+            removed.Add(d);
+        }
+        return removed;
+    }
+
     static bool IsOwnedRun(string dir)
     {
         if ((File.GetAttributes(dir) & FileAttributes.ReparsePoint) != 0) return false;
@@ -76,12 +92,16 @@ internal static class P7F1V6RoutePolicy
             "Not on the OpenRouter page. Alibaba Model Studio documentation has not been read."),
         new("alibaba", "logging of request content", "UNKNOWN", null, null,
             "Not established."),
+        // A decision by the user, not a verified fact: the zero-data-retention requirement is waived for this route.
+        // The waiver removes that one requirement only; training, retention and logging stay UNKNOWN and keep the gate closed.
+        new("alibaba", "zero data retention (ZDR) requirement", "WAIVED_BY_USER", null, "2026-10-12",
+            "User decision: zdr=false accepted because Qwen3.7 Flash on this route is not configured with ZDR. The zdr request parameter is not added to the envelope (its official name and behaviour are not verified)."),
     ];
 
     /// <summary>True only when every fact for the route is VERIFIED. Any UNKNOWN fact closes the gate.</summary>
     public static (bool Allowed, IReadOnlyList<string> Blocking) RouteAllowed(string route)
     {
-        var blocking = Facts.Where(f => f.Route == route && f.Status != "VERIFIED").Select(f => f.Route + ":" + f.Subject).ToArray();
+        var blocking = Facts.Where(f => f.Route == route && f.Status is not ("VERIFIED" or "WAIVED_BY_USER")).Select(f => f.Route + ":" + f.Subject).ToArray();
         return (blocking.Length == 0 && Facts.Any(f => f.Route == route), blocking);
     }
 }
@@ -128,7 +148,8 @@ internal static class P7F1V6ProviderGuard
         {
             if (auth.CandidateSha256 != pinnedCandidateSha256) reasons.Add("CANDIDATE_SHA_NOT_PINNED");
             if (auth.Route != "alibaba") reasons.Add("ROUTE_NOT_LOCKED_TO_ALIBABA");
-            if (auth.Retries != 0) reasons.Add("RETRY_MUST_BE_ZERO");
+            // Approved for D3.5: at most one retry, and only of a request that produced no response; see P7F1V6Runner.
+            if (auth.Retries is < 0 or > P7F1V6Runner.MaxRetries) reasons.Add("RETRY_OUT_OF_RANGE");
             if (auth.MaxCalls < 1 || auth.MaxCalls > 6) reasons.Add("CALL_LIMIT_OUT_OF_RANGE");
             if (auth.CeilingUsd <= 0 || auth.CeilingUsd > 0.30m) reasons.Add("CEILING_OUT_OF_RANGE");
         }

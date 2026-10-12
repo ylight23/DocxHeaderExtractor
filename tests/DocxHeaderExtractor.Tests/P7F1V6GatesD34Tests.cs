@@ -163,9 +163,10 @@ public sealed class P7F1V6GatesD34Tests : IDisposable
     {
         Assert.All(P7F1V6RoutePolicy.Facts, f =>
         {
-            Assert.Contains(f.Status, new[] { "VERIFIED", "UNKNOWN" });
+            Assert.Contains(f.Status, new[] { "VERIFIED", "UNKNOWN", "WAIVED_BY_USER" });
             if (f.Status == "VERIFIED") Assert.False(string.IsNullOrEmpty(f.Source));
             if (f.Status == "UNKNOWN") Assert.Null(f.Source);
+            if (f.Status == "WAIVED_BY_USER") Assert.Contains("User decision", f.Note);
         });
     }
 
@@ -201,11 +202,11 @@ public sealed class P7F1V6GatesD34Tests : IDisposable
     [Fact] public void A_mismatched_pin_retries_and_ceiling_are_each_refused()
     {
         var auth = new P7F1V6ProviderGuard.AuthorisedRun("other-sha", "alibaba", "todo10_8/x.pdf", "src", MaxCalls: 6,
-            CeilingUsd: 0.5m, Retries: 1, ApprovedBy: "test");
+            CeilingUsd: 0.5m, Retries: 2, ApprovedBy: "test");
         var reasons = P7F1V6ProviderGuard.Refusals(auth, "pinned", true, null, true, "OK");
         Assert.Contains("CANDIDATE_SHA_NOT_PINNED", reasons);
         Assert.Contains("CEILING_OUT_OF_RANGE", reasons);
-        Assert.Contains("RETRY_MUST_BE_ZERO", reasons);
+        Assert.Contains("RETRY_OUT_OF_RANGE", reasons);
     }
 
     [Fact] public void A_directory_junction_in_place_of_the_raw_root_is_refused()
@@ -235,5 +236,15 @@ public sealed class P7F1V6GatesD34Tests : IDisposable
         var psi = new System.Diagnostics.ProcessStartInfo("cmd.exe", $"/c rmdir \"{link}\"") { UseShellExecute = false, CreateNoWindow = true };
         using var p = System.Diagnostics.Process.Start(psi)!;
         p.WaitForExit();
+    }
+
+    [Fact] public void The_zdr_waiver_is_recorded_but_does_not_open_the_route_gate()
+    {
+        var zdr = P7F1V6RoutePolicy.Facts.Single(f => f.Subject.StartsWith("zero data retention", StringComparison.Ordinal));
+        Assert.Equal("WAIVED_BY_USER", zdr.Status);
+        var (allowed, blocking) = P7F1V6RoutePolicy.RouteAllowed("alibaba");
+        Assert.False(allowed);
+        Assert.DoesNotContain(blocking, b => b.Contains("zero data retention", StringComparison.Ordinal));
+        Assert.Contains("alibaba:training on request data", blocking);
     }
 }
