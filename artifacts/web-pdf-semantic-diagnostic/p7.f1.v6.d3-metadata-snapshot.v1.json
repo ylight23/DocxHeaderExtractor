@@ -1,0 +1,45 @@
+{
+  "artifact": "p7.f1.v6.d3-metadata-snapshot.v1",
+  "status": "DRAFT_UNVERIFIED_NO_PROVIDER_CALL",
+  "purpose": "Record endpoint facts before any provider license. No inference call was made to produce this file.",
+  "baselineCommit": "81a1c86",
+  "modelLevel": {
+    "source": "OpenRouter model page for qwen/qwen3.7-flash, supplied by the user on 2026-10-12. Not re-fetched and not verified in this session.",
+    "modelId": "qwen/qwen3.7-flash",
+    "contextWindowTokens": 1000000,
+    "maxCompletionTokens": 65536,
+    "inputPriceUsdPerMillionTokens": 0.03,
+    "outputPriceUsdPerMillionTokens": 0.13,
+    "toolCallingSupported": true,
+    "jsonOutputSupported": true,
+    "verificationStatus": "USER_SUPPLIED_UNVERIFIED"
+  },
+  "endpointLevel": {
+    "providerRoute": { "value": null, "status": "REQUIRED_BEFORE_LICENSE", "note": "The route must be locked and recorded. Automatic provider fallback is not allowed in a frozen run." },
+    "providerId": { "value": null, "status": "REQUIRED_BEFORE_LICENSE" },
+    "endpointContextTokens": { "value": null, "status": "REQUIRED_BEFORE_LICENSE", "note": "Model-level 1M may not equal the endpoint limit." },
+    "endpointMaxCompletionTokens": { "value": null, "status": "REQUIRED_BEFORE_LICENSE" },
+    "supportedParameters": { "value": null, "status": "REQUIRED_BEFORE_LICENSE", "note": "Must include response_format json, tools, reasoning controls, temperature, max_tokens." },
+    "reasoningMode": { "value": null, "status": "REQUIRED_BEFORE_LICENSE", "note": "Whether thinking is on by default, whether its tokens count against max_tokens, and how usage reports them." },
+    "timeoutSeconds": { "value": null, "status": "REQUIRED_BEFORE_LICENSE" },
+    "pricingOnEndpoint": { "value": null, "status": "REQUIRED_BEFORE_LICENSE", "note": "Endpoint price may differ from the model-level price." },
+    "tokenizer": { "value": null, "status": "OPEN", "note": "No tokenizer on this machine. Bytes are an upper bound on tokens only. Pre-call gates may use bytes; post-call cost must use returned usage. Bytes/4 is not a gate." }
+  },
+  "internalBudgets": {
+    "inputBudgetBytes": 131072,
+    "inputBudgetStatus": "HARD_CAP_TEMPORARY_NOT_AN_ENDPOINT_LIMIT",
+    "outputBudgetBytesVisible": 16384,
+    "maxSynthesisInputMeasuredBytes": 119246,
+    "maxSynthesisInputMeasuredShard": 32,
+    "reasoningReserveTokens": null,
+    "reasoningReserveStatus": "OPEN"
+  },
+  "gatesStillOpen": [
+    "endpoint route and provider id locked",
+    "endpoint context and max completion confirmed through the provider metadata API",
+    "reasoning mode and its accounting confirmed",
+    "tokenizer or a sourced measurement of tokens",
+    "timeout and retry policy fixed",
+    "raw directory ACL and redaction policy implemented"
+  ]
+}

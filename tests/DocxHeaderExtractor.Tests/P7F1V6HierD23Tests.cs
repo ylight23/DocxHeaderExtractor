@@ -215,7 +215,7 @@ public sealed class P7F1V6HierD23Tests
         Assert.Equal(0, s.StoppedNodes);
         Assert.Equal(run.Nodes.Count(n => n.Status == "ACCEPTED"), s.AcceptedNodes);
         Assert.True(s.ProtocolResolved);
-        Assert.True(s.EvidenceComplete);
+        Assert.True(s.EvidenceRefsPresent);
     }
 
     [Fact] public void Global_review_coverage_is_reported_as_a_share_of_occurrences_not_as_a_status()
@@ -233,5 +233,52 @@ public sealed class P7F1V6HierD23Tests
         Assert.Equal(1, run.Summary.RejectedNodes);
         Assert.False(run.Summary.ProtocolResolved);
         Assert.NotEqual("PROTOCOL_RESOLVED", run.RunStatus);
+    }
+
+    [Fact] public void Unpaged_accounting_is_per_query_so_a_completed_query_cannot_hide_an_unread_one()
+    {
+        var c = Cands();
+        var captured = new List<string>();
+        var run = P7F1V6Hier.Run(c, Opts(), (nodeId, kind, payload) =>
+        {
+            captured.Add(payload);
+            if (nodeId != "L1-N0001") return Honest(nodeId, kind, payload);
+            var searches = Root(payload).GetProperty("retrieved").GetProperty("searches");
+            return searches.GetArrayLength() switch
+            {
+                0 => Retrieve(nodeId, "e"),        // many matches: only the first page is read
+                1 => Retrieve(nodeId, "HTTP"),     // a second query, possibly complete
+                _ => Node(nodeId, confirmed: Quoted(ShownIds(payload))),
+            };
+        });
+        Assert.Empty(run.Violations);
+        var finalSearches = Root(captured.Last(p => p.Contains("\"searches\":[{", StringComparison.Ordinal)))
+            .GetProperty("retrieved").GetProperty("searches");
+        var unread = finalSearches.EnumerateArray()
+            .Select(x => x.GetProperty("totalMatches").GetInt32() - (x.GetProperty("offset").GetInt32() + x.GetProperty("returned").GetInt32()))
+            .Where(u => u > 0).ToArray();
+        Assert.NotEmpty(unread);
+        Assert.Equal(unread.Length, run.Summary.UnpagedSearches);
+        Assert.Equal(unread.Sum(), run.Summary.UnreadMatches);
+    }
+
+    [Fact] public void Candidate_pin_covers_layout_and_is_reported_as_pinned_only_when_supplied()
+    {
+        var c = Cands();
+        var unpinned = P7F1V6Hier.Run(c, Opts(), Honest);
+        Assert.False(unpinned.Summary.CandidatesPinned);
+        var stripped = c.Select(x => new P7F1V6Hier.Cand(x.Alias, x.Page, x.Text)).ToArray();
+        Assert.NotEqual(P7F1V6Hier.CandidatesSha256(c), P7F1V6Hier.CandidatesSha256(stripped));
+        var pinned = P7F1V6Hier.Run(c, Opts() with { ExpectedCandidatesSha256 = P7F1V6Hier.CandidatesSha256(c) }, Honest);
+        Assert.True(pinned.Summary.CandidatesPinned);
+        Assert.Equal(P7F1V6Hier.CandidatesSha256(c), pinned.Summary.CandidatesSha256);
+    }
+
+    [Fact] public void Presented_share_counts_occurrences_shown_as_text_and_is_not_an_evidence_claim()
+    {
+        var run = P7F1V6Hier.Run(Cands(), Opts(), Honest);
+        Assert.Equal(run.Summary.Occurrences, run.Summary.PresentedOccurrences);
+        Assert.Equal(1.0, run.Summary.PresentedShare, 9);
+        Assert.True(run.Summary.EvidenceRefsPresent);
     }
 }

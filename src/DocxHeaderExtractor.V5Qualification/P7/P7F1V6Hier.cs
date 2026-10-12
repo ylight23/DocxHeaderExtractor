@@ -51,9 +51,13 @@ internal static class P7F1V6Hier
         int OutputBytes, string Status, string? FailureCode, int Revised, int PassUp);
 
     /// <summary>Protocol-level result, reported separately so that one word cannot stand for all of it.</summary>
-    public sealed record RunSummary(string ProtocolStatus, bool ProtocolResolved, bool EvidenceComplete, int Occurrences, int Decided,
-        int GlobalReviewed, double GlobalReviewCoverage, int AcceptedNodes, int RetrievalTurns, int RejectedNodes, int StoppedNodes,
-        int SearchPagesWithMore, int UnpagedSearches, string CandidatesSha256, string ManifestSha256);
+    /// <summary>EvidenceRefsPresent means each decided occurrence names an evidence reference; it is not a claim that the cited source,
+    /// or the whole source, was shown to the model. PresentedOccurrences counts occurrences that appeared in some payload as text.
+    /// UnpagedSearches counts (node, query) pairs with unread matches at node completion; UnreadMatches sums their unread matches.</summary>
+    public sealed record RunSummary(string ProtocolStatus, bool ProtocolResolved, bool EvidenceRefsPresent, int Occurrences, int Decided,
+        int PresentedOccurrences, double PresentedShare, int GlobalReviewed, double GlobalReviewCoverage, int AcceptedNodes, int RetrievalTurns,
+        int RejectedNodes, int StoppedNodes, int SearchPagesWithMore, int UnpagedSearches, int UnreadMatches, bool CandidatesPinned,
+        string CandidatesSha256, string ManifestSha256);
 
     public sealed record RunResult(string RunStatus, IReadOnlyDictionary<string, State> Final, IReadOnlyList<NodeRecord> Nodes,
         IReadOnlyList<string> Violations, string TranscriptSha256, IReadOnlyDictionary<string, string> IdByAlias, P7F1V6RawStore Raw,
@@ -138,6 +142,17 @@ internal static class P7F1V6Hier
         public HashSet<string> GlobalReviewed { get; } = new(StringComparer.Ordinal);
         public int SearchPagesWithMore { get; set; }
         public int UnpagedSearches { get; set; }
+        public int UnreadMatches { get; set; }
+        public HashSet<string> Presented { get; } = new(StringComparer.Ordinal);
+    }
+
+    /// <summary>Reading progress of one query in one node. ReadEnd is the contiguous prefix read so far; a page that starts beyond it is a gap,
+    /// and everything after the gap stays counted as unread (conservative).</summary>
+    sealed class Cursor
+    {
+        public int Total { get; set; }
+        public int ReadEnd { get; set; }
+        public bool Gap { get; set; }
     }
 
     /// <summary>What a node has been shown so far: its own ids, the retrieval results, and the aliases that may be cited as evidence.</summary>
@@ -148,14 +163,14 @@ internal static class P7F1V6Hier
         public HashSet<string> Citable { get; } = new(StringComparer.Ordinal); // aliases the model was shown (any role)
         public List<object> Searches { get; } = new();
         public List<object> Reopened { get; } = new();
-        public bool PendingMore { get; set; }                              // the last search page had more matches and was not continued
+        public Dictionary<string, Cursor> Cursors { get; } = new(StringComparer.Ordinal);  // one per query text, never shared between queries
         public int ReopenedCount => Reopened.Count;
     }
 
     public static RunResult Run(IReadOnlyList<Cand> ordered, Options o, NodeModel model)
     {
         Validate(o);
-        var candidatesSha = Sha(string.Join("\n", ordered.Select(c => $"{c.Alias}|{c.Page}|{c.Text}")));
+        var candidatesSha = CandidatesSha256(ordered);
         if (o.ExpectedCandidatesSha256 is not null && o.ExpectedCandidatesSha256 != candidatesSha)
             throw new ArgumentException("CANDIDATES_MISMATCH");
         var instructionSha = P7F1V6Core.InstructionSha256(o.Instruction);
@@ -217,13 +232,16 @@ internal static class P7F1V6Hier
             : !env.GlobalAccepted ? "NO_GLOBAL_REVIEW"
             : "PROTOCOL_RESOLVED";
         var sha = Sha(string.Join("\n", env.Transcript));
-        var evidenceComplete = open == 0 && env.States.Values.All(s => s.Decision == "UNRESOLVED" || (s.Evidence?.Count ?? 0) > 0);
+        var evidenceRefsPresent = open == 0 && env.States.Values.All(s => s.Decision == "UNRESOLVED" || (s.Evidence?.Count ?? 0) > 0);
         var globalReviewed = env.GlobalReviewed.Count(id => env.States.ContainsKey(id));
-        var summary = new RunSummary(status, status == "PROTOCOL_RESOLVED", evidenceComplete, ids.Count, env.States.Count, globalReviewed,
-            ids.Count == 0 ? 0 : globalReviewed / (double)ids.Count,
+        var presented = env.Presented.Count;
+        var summary = new RunSummary(status, status == "PROTOCOL_RESOLVED", evidenceRefsPresent, ids.Count, env.States.Count,
+            presented, ids.Count == 0 ? 0 : presented / (double)ids.Count,
+            globalReviewed, ids.Count == 0 ? 0 : globalReviewed / (double)ids.Count,
             env.Nodes.Count(n => n.Status == "ACCEPTED"), env.Nodes.Count(n => n.Status == "RETRIEVE"),
             env.Nodes.Count(n => n.Status == "REJECTED"), env.Nodes.Count(n => n.Status == "STOPPED"),
-            env.SearchPagesWithMore, env.UnpagedSearches, candidatesSha, manifestSha);
+            env.SearchPagesWithMore, env.UnpagedSearches, env.UnreadMatches, o.ExpectedCandidatesSha256 is not null,
+            candidatesSha, manifestSha);
         return new RunResult(status, env.States, env.Nodes, env.Violations, sha, ids, env.Raw, open, env.GlobalAccepted, env.GlobalShown,
             env.Reopened, env.GlobalReviewed, summary);
     }
@@ -244,6 +262,8 @@ internal static class P7F1V6Hier
     {
         var o = e.O;
         var ownedCands = owned.Select(id => (Id: id, C: e.ByAlias[e.IdToAlias[id]])).ToArray();
+        foreach (var (id, _) in ownedCands) e.Presented.Add(id);
+        foreach (var c in context) e.Presented.Add(e.Ids[c.Alias]);
         return PayloadJson(new
         {
             protocolVersion = NodeVersion, nodeId, kind = kind.ToString(), level, instruction = o.Instruction, instructionSha256 = e.InstructionSha,
@@ -275,6 +295,7 @@ internal static class P7F1V6Hier
     {
         var o = e.O;
         var shownCands = rs.Ids.Select(id => (Id: id, C: e.ByAlias[e.IdToAlias[id]])).ToArray();
+        foreach (var (id, _) in shownCands) e.Presented.Add(id);
         var pairs = shownCands.GroupBy(x => P7F1V6Tools.Normalize(x.C.Text)).Where(g => g.Count() > 1)
             .Select(g => g.Select(x => new { id = x.Id, sourceAlias = x.C.Alias }).ToArray()).ToArray();
         return PayloadJson(new
@@ -357,7 +378,8 @@ internal static class P7F1V6Hier
             }
             foreach (var id in pass.Confirmed)
                 if (e.States.TryGetValue(id, out var s)) e.States[id] = s with { Confirmations = s.Confirmations + 1 };
-            if (rs.PendingMore) e.UnpagedSearches++;   // a search page had more matches and the node finished without asking for the next page
+            foreach (var cur in rs.Cursors.Values)     // a query with unread matches when the node finished is reported, never silently treated as complete
+                if (cur.ReadEnd < cur.Total) { e.UnpagedSearches++; e.UnreadMatches += cur.Total - cur.ReadEnd; }
             if (kind == Kind.Global) e.GlobalAccepted = true;
             e.Nodes.Add(new NodeRecord(nodeId, kind.ToString(), level, inSha, inBytes.Length, outSha, outBytes.Length, "ACCEPTED", null,
                 pass.Items.Count + pass.Confirmed.Count, merged.Count));
@@ -401,8 +423,10 @@ internal static class P7F1V6Hier
                 query = q, offset = r.Offset, pageSize = e.O.MaxSearchResults, totalMatches = all.Length, returned = page.Length,
                 hasMore, nextOffset = hasMore ? (int?)next : null, scannedLines = e.Ordered.Count, matches = rows,
             });
-            foreach (var c in page) rs.Citable.Add(c.Alias);   // shown to the model, so citable as evidence
-            rs.PendingMore = hasMore;
+            foreach (var c in page) { rs.Citable.Add(c.Alias); e.Presented.Add(e.Ids[c.Alias]); }   // shown to the model, so citable as evidence
+            if (!rs.Cursors.TryGetValue(q, out var cur)) rs.Cursors[q] = cur = new Cursor();
+            cur.Total = all.Length;
+            if (r.Offset <= cur.ReadEnd) cur.ReadEnd = Math.Max(cur.ReadEnd, next); else cur.Gap = true;
             if (hasMore) e.SearchPagesWithMore++;
         }
         foreach (var id in r.Reopen)
@@ -629,6 +653,10 @@ internal static class P7F1V6Hier
     static readonly JsonSerializerOptions PayloadOptions = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
     static string PayloadJson(object value) => JsonSerializer.Serialize(value, PayloadOptions);
+
+    /// <summary>The candidate universe hash: alias, page, text and layout of every candidate, in order. This is the value to pin.</summary>
+    public static string CandidatesSha256(IReadOnlyList<Cand> cands) =>
+        Sha(string.Join("\n", cands.Select(c => $"{c.Alias}|{c.Page}|{c.Text}|{(c.Layout is null ? "" : PayloadJson(c.Layout))}")));
 
     static string Sha(string s) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(s)));
 
