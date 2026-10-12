@@ -22,7 +22,7 @@ internal static class P7F1V6Hier
     public static readonly string[] Decisions = ["SELECT", "NOT_SELECT", "UNRESOLVED"];
     public static readonly string[] TechnicalStatuses = ["COMPLETE", "RETRIEVE", "INCOMPLETE", "CLARIFICATION_REQUIRED", "NOT_ANSWERABLE"];
 
-    public enum Kind { Local, Reconcile, Synthesis, Global }
+    public enum Kind { Local, Reconcile, Synthesis, Global, Interpretation }
 
     /// <summary>One source line. Layout is the compact geometry and typography of the line, or null when the source has none.</summary>
     public sealed record Cand(string Alias, int Page, string Text, object? Layout = null);
@@ -64,7 +64,7 @@ internal static class P7F1V6Hier
     public sealed record RunResult(string RunStatus, IReadOnlyDictionary<string, State> Final, IReadOnlyList<NodeRecord> Nodes,
         IReadOnlyList<string> Violations, string TranscriptSha256, IReadOnlyDictionary<string, string> IdByAlias, P7F1V6RawStore Raw,
         int OpenUnresolved, bool GlobalAccepted, int GlobalShown, IReadOnlySet<string> ReopenedIds, IReadOnlySet<string> GlobalReviewedIds,
-        RunSummary Summary);
+        RunSummary Summary, P7F1V6Core.Interpretation? Interpretation = null);
 
     /// <summary>
     /// Provenance accounting, a partition of the final states. Source: LocalResolved (decided or revised by a local or reconcile node, not
@@ -131,6 +131,7 @@ internal static class P7F1V6Hier
         public required object Overview { get; init; }
         public required string InstructionSha { get; init; }
         public required object Manifest { get; init; }
+        public string InterpretationText { get; set; } = "";
         public required P7F1V6RawStore Raw { get; init; }
         public Dictionary<string, State> States { get; } = new(StringComparer.Ordinal);
         public List<NodeRecord> Nodes { get; } = new();
@@ -193,6 +194,16 @@ internal static class P7F1V6Hier
             Overview = P7F1V6Core.Overview(ordered.Select(c => new F1QSourceLine(c.Alias, 0, c.Page, c.Text, null, null)).ToArray()),
             InstructionSha = instructionSha, Manifest = manifest, Raw = new P7F1V6RawStore(o.RawDir),
         };
+        var (interp, interpFailure, _) = Interpret(env, model);
+        if (interpFailure is not null)
+        {
+            env.Violations.Add("INTERPRET:" + interpFailure);
+            return Stopped(env, "STOPPED_INTERPRETATION_INVALID", null, candidatesSha, manifestSha);
+        }
+        if (interp!.Status != "COMPLETE")
+            return Stopped(env, "STOPPED_INTERPRETATION_" + interp.Status, interp, candidatesSha, manifestSha);
+        env.InterpretationText = interp.Text;
+
         var shards = Shards(ordered, o.ShardSize, o.Context);
 
         // ---- level 0: a local pass decides the owned ids; a reconcile pass confirms them ----
@@ -247,7 +258,47 @@ internal static class P7F1V6Hier
             env.SearchPagesWithMore, env.UnpagedSearches, env.UnreadMatches, o.ExpectedCandidatesSha256 is not null,
             candidatesSha, manifestSha, env.AllCursors.Count, env.AllCursors.Count(x => x.Cursor.Gap));
         return new RunResult(status, env.States, env.Nodes, env.Violations, sha, ids, env.Raw, open, env.GlobalAccepted, env.GlobalShown,
-            env.Reopened, env.GlobalReviewed, summary);
+            env.Reopened, env.GlobalReviewed, summary, interp);
+    }
+
+    /// <summary>The interpretation request (D1 contract). Qwen states how it reads the instruction; C# checks only the shape and the budgets.</summary>
+    static (P7F1V6Core.Interpretation? Value, string? Failure, string OutputSha) Interpret(Env e, NodeModel model)
+    {
+        var payload = PayloadJson(new
+        {
+            protocolVersion = P7F1V6Core.InterpretVersion, requestId = "INTERPRET", instructionSha256 = e.InstructionSha,
+            originalUserInstruction = e.O.Instruction, systemPromptSha256 = P7F1V6Protocol.Sha(P7F1V6Protocol.InterpretPrompt), manifest = e.Manifest,
+        });
+        var inBytes = Encoding.UTF8.GetBytes(payload);
+        var inSha = e.Raw.Put(inBytes);
+        if (inBytes.Length > e.O.MaxInputBytes) return (null, "INPUT_OVER_BUDGET", "");
+        var response = model("INTERPRET", Kind.Interpretation, payload);
+        var outBytes = Encoding.UTF8.GetBytes(response);
+        var outSha = e.Raw.Put(outBytes);
+        e.Transcript.Add($"INTERPRET|r0|PAYLOAD|{inSha}|{inBytes.Length}");
+        e.Transcript.Add($"INTERPRET|r0|OUTPUT|{outSha}|{outBytes.Length}");
+        string? failure = null;
+        P7F1V6Core.Interpretation? value = null;
+        if (response.Contains("\\u", StringComparison.Ordinal)) failure = "ESCAPED_UNICODE_NOT_ALLOWED";
+        else if (outBytes.Length > e.O.OutputBudgetBytes) failure = "OUTPUT_OVER_BUDGET";
+        else
+        {
+            var parsed = P7F1V6Core.ParseInterpretation(response, "INTERPRET");
+            value = parsed.Value;
+            failure = parsed.FailureCode;
+        }
+        e.Nodes.Add(new NodeRecord("INTERPRET", Kind.Interpretation.ToString(), -1, inSha, inBytes.Length, outSha, outBytes.Length,
+            failure is not null ? "REJECTED" : value!.Status == "COMPLETE" ? "ACCEPTED" : "STOPPED", failure ?? (value!.Status == "COMPLETE" ? null : value.Status), 0, 0));
+        return (value, failure, outSha);
+    }
+
+    /// <summary>A run that ends before any node: no state, its own status, and the interpretation outcome kept whole.</summary>
+    static RunResult Stopped(Env e, string status, P7F1V6Core.Interpretation? interp, string candidatesSha, string manifestSha)
+    {
+        var summary = new RunSummary(status, false, false, e.Ids.Count, 0, 0, 0, 0, 0, e.Nodes.Count(n => n.Status == "ACCEPTED"), 0,
+            e.Nodes.Count(n => n.Status == "REJECTED"), e.Nodes.Count(n => n.Status == "STOPPED"), 0, 0, 0, false, candidatesSha, manifestSha, 0, 0);
+        return new RunResult(status, e.States, e.Nodes, e.Violations, Sha(string.Join("\n", e.Transcript)), e.Ids, e.Raw,
+            e.Ids.Count, false, 0, e.Reopened, e.GlobalReviewed, summary, interp);
     }
 
     // ------------------------------------------------------------------------------------------------------------------
@@ -271,7 +322,7 @@ internal static class P7F1V6Hier
         return PayloadJson(new
         {
             protocolVersion = NodeVersion, nodeId, kind = kind.ToString(), level, instruction = o.Instruction, instructionSha256 = e.InstructionSha,
-            manifest = e.Manifest, overview = e.Overview,
+            manifest = e.Manifest, overview = e.Overview, interpretation = e.InterpretationText, interpretationSha256 = Sha(e.InterpretationText),
             owned = Order(ownedCands, o.PromptOrder, x => x.C.Alias).Select(x => new { id = x.Id, sourceAlias = x.C.Alias, page = x.C.Page, text = x.C.Text,
                 layoutEvidence = LayoutEvidence(x.C), layout = x.C.Layout,
                 current = e.States.TryGetValue(x.Id, out var s) ? s.Decision : "NONE" }).ToArray(),
@@ -305,7 +356,8 @@ internal static class P7F1V6Hier
         return PayloadJson(new
         {
             protocolVersion = NodeVersion, nodeId, kind = kind.ToString(), level, instruction = o.Instruction, instructionSha256 = e.InstructionSha,
-            manifest = e.Manifest, overview = e.Overview,
+            manifest = e.Manifest, overview = e.Overview, interpretation = e.InterpretationText, interpretationSha256 = Sha(e.InterpretationText),
+            limits = new { passUpCap = o.PassUpCap, maxReopen = o.MaxReopen, maxSearchResults = o.MaxSearchResults, maxRetrievalRounds = o.MaxRetrievalRounds },
             // Access rule: synthesis and global nodes see text only. Geometry is sent with owned and context lines (local nodes), with
             // search pages and with reopened ids, so a node can always reach the source layout without carrying it for every shown id.
             shown = Order(shownCands, o.PromptOrder, x => x.C.Alias).Select(x => new { id = x.Id, sourceAlias = x.C.Alias, page = x.C.Page, text = x.C.Text,

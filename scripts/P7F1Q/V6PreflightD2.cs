@@ -105,6 +105,9 @@ internal static class V6PreflightD2
     {
         using var doc = JsonDocument.Parse(payload);
         var r = doc.RootElement;
+        if (kind == P7F1V6Hier.Kind.Interpretation)
+            return JsonSerializer.Serialize(new { protocolVersion = "P7_F1_V6_INTERPRET_V1", requestId = "INTERPRET", status = "COMPLETE",
+                interpretation = "Task: " + r.GetProperty("originalUserInstruction").GetString() }, new JsonSerializerOptions { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
         string Quoted(IEnumerable<string> ids) => string.Join(",", ids.Select(i => $"\"{i}\""));
         string Node(string items, string passUp = "", string confirmed = "") =>
             $"{{\"protocolVersion\":\"P7_F1_V6_HIER_NODE_V2\",\"nodeId\":\"{nodeId}\",\"status\":\"COMPLETE\",\"items\":[{items}]"

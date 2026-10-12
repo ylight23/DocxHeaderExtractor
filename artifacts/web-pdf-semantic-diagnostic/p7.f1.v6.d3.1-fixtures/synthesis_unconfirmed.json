@@ -1,0 +1,13 @@
+{
+  "name": "synthesis_unconfirmed",
+  "node": "L1-N0001",
+  "appliesTo": "Synthesis",
+  "expect": "REJECTED:UNCONFIRMED_SHOWN_IDS",
+  "response": {
+    "protocolVersion": "P7_F1_V6_HIER_NODE_V2",
+    "nodeId": "L1-N0001",
+    "status": "COMPLETE",
+    "items": [],
+    "confirmed": []
+  }
+}

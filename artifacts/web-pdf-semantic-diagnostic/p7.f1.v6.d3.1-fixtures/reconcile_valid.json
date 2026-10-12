@@ -1,0 +1,15 @@
+{
+  "name": "reconcile_valid",
+  "node": "L0R-S0000",
+  "appliesTo": "Reconcile",
+  "expect": "ACCEPTED",
+  "response": {
+    "protocolVersion": "P7_F1_V6_HIER_NODE_V2",
+    "nodeId": "L0R-S0000",
+    "status": "COMPLETE",
+    "confirmed": [
+      "$OWNED0",
+      "$OWNED1"
+    ]
+  }
+}

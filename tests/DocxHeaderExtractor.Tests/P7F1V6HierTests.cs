@@ -51,6 +51,7 @@ public sealed class P7F1V6HierTests
     /// every id they were shown, and pass up the first few selections. Global confirms everything it was shown.</summary>
     static string Honest(string nodeId, P7F1V6Hier.Kind kind, string payload, Func<string, string>? localRule = null)
     {
+        if (kind == P7F1V6Hier.Kind.Interpretation) return Interp(payload);
         if (kind == P7F1V6Hier.Kind.Local)
         {
             var items = Root(payload).GetProperty("owned").EnumerateArray().Select(o =>
@@ -70,6 +71,14 @@ public sealed class P7F1V6HierTests
         }
         return Node(nodeId, "COMPLETE", confirmed: Quoted(ShownIds(payload)));
     }
+
+    /// <summary>The scripted interpretation: a COMPLETE reply that restates the instruction it received, through the D1 contract.</summary>
+    static string Interp(string payload) =>
+        JsonSerializer.Serialize(new
+        {
+            protocolVersion = "P7_F1_V6_INTERPRET_V1", requestId = "INTERPRET", status = "COMPLETE",
+            interpretation = "Task: " + Root(payload).GetProperty("originalUserInstruction").GetString(),
+        }, Json);
 
     static string Id(string payload, string alias) =>
         Root(payload).GetProperty("shown").EnumerateArray().First(s => s.GetProperty("sourceAlias").GetString() == alias).GetProperty("id").GetString()!;
@@ -333,6 +342,7 @@ public sealed class P7F1V6HierTests
 
     static string RandomResponse(Random rng, string nodeId, P7F1V6Hier.Kind kind, string payload)
     {
+        if (kind == P7F1V6Hier.Kind.Interpretation) return Interp(payload);
         var r = Root(payload);
         var cands = new List<(string Id, string Alias)>();
         foreach (var p in new[] { "owned", "shown", "context" })
@@ -401,6 +411,7 @@ public sealed class P7F1V6HierTests
         var c = Cands();
         P7F1V6Hier.NodeModel byInstruction = (nodeId, kind, payload) =>
         {
+            if (kind == P7F1V6Hier.Kind.Interpretation) return Interp(payload);
             var instr = Root(payload).GetProperty("instruction").GetString();
             return instr == Instr ? Honest(nodeId, kind, payload) : Honest(nodeId, kind, payload, _ => "NOT_SELECT");
         };

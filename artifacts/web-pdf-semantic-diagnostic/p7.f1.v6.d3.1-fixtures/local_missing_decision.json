@@ -1,0 +1,20 @@
+{
+  "name": "local_missing_decision",
+  "node": "L0-S0000",
+  "appliesTo": "Local",
+  "expect": "REJECTED:LOCAL_NODE_UNDECIDED",
+  "response": {
+    "protocolVersion": "P7_F1_V6_HIER_NODE_V2",
+    "nodeId": "L0-S0000",
+    "status": "COMPLETE",
+    "items": [
+      {
+        "id": "$OWNED0",
+        "decision": "NOT_SELECT",
+        "evidenceRefs": [
+          "$ALIAS0"
+        ]
+      }
+    ]
+  }
+}

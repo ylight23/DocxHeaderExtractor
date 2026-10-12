@@ -1,0 +1,14 @@
+{
+  "name": "synthesis_valid",
+  "node": "L1-N0001",
+  "appliesTo": "Synthesis",
+  "expect": "ACCEPTED",
+  "response": {
+    "protocolVersion": "P7_F1_V6_HIER_NODE_V2",
+    "nodeId": "L1-N0001",
+    "status": "COMPLETE",
+    "items": [],
+    "confirmed": "$ALLSHOWN",
+    "passUp": []
+  }
+}

@@ -571,6 +571,11 @@ switch (args[0])
         if (args.Length is not (3 or 4) || (args.Length == 4 && args[3] != "retrieve")) throw new ArgumentException("preflight-d2 <docs.json> <out-dir> [retrieve]");
         V6PreflightD2.Run(args[1], args[2], args.Length == 4);
         break;
+    case "d31-snapshot":
+        // Issue #9 D3.1 candidate (offline): d31-snapshot <repo-root>. Writes the manifest and the candidate document. No network call.
+        if (args.Length != 2) throw new ArgumentException("d31-snapshot <repo-root>");
+        D31Snapshot.Run(args[1]);
+        break;
     default: throw new ArgumentException("UNKNOWN_MODE");
 }
 

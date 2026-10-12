@@ -1,0 +1,11 @@
+{
+  "name": "global_confirms_nothing",
+  "node": "GLOBAL",
+  "appliesTo": "Global",
+  "expect": "REJECTED:UNCONFIRMED_SHOWN_IDS",
+  "response": {
+    "protocolVersion": "P7_F1_V6_HIER_NODE_V2",
+    "nodeId": "GLOBAL",
+    "status": "COMPLETE"
+  }
+}

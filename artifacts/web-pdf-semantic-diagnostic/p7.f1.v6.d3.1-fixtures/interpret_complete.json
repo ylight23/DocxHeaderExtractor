@@ -1,0 +1,12 @@
+{
+  "name": "interpret_complete",
+  "node": "INTERPRET",
+  "appliesTo": "Interpretation",
+  "expect": "PROCEEDS",
+  "response": {
+    "protocolVersion": "P7_F1_V6_INTERPRET_V1",
+    "requestId": "INTERPRET",
+    "status": "COMPLETE",
+    "interpretation": "Restate the instruction in the reader's words."
+  }
+}

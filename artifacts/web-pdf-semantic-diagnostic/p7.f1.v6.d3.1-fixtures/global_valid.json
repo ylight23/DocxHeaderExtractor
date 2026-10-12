@@ -1,0 +1,13 @@
+{
+  "name": "global_valid",
+  "node": "GLOBAL",
+  "appliesTo": "Global",
+  "expect": "ACCEPTED",
+  "response": {
+    "protocolVersion": "P7_F1_V6_HIER_NODE_V2",
+    "nodeId": "GLOBAL",
+    "status": "COMPLETE",
+    "items": [],
+    "confirmed": "$ALLSHOWN"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "interpret_wrong_version",
+  "node": "INTERPRET",
+  "appliesTo": "Interpretation",
+  "expect": "STOPPED_INTERPRETATION_INVALID",
+  "response": {
+    "protocolVersion": "P7_F1_V6_INTERPRET_V0",
+    "requestId": "INTERPRET",
+    "status": "COMPLETE",
+    "interpretation": "x"
+  }
+}

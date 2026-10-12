@@ -25,6 +25,14 @@ public sealed class P7F1V6HierD23Tests
     static P7F1V6Hier.Options Opts() => new(Instr, "src-sha", ShardSize: 6, Context: 2, FanIn: 3, PassUpCap: 8,
         SourceUniverseSha256: "universe-sha", ParserVersion: "parser-v1", EvidenceStoreVersion: "store-v1");
 
+    /// <summary>The scripted interpretation: a COMPLETE reply that restates the instruction it received, through the D1 contract.</summary>
+    static string Interp(string payload) =>
+        JsonSerializer.Serialize(new
+        {
+            protocolVersion = "P7_F1_V6_INTERPRET_V1", requestId = "INTERPRET", status = "COMPLETE",
+            interpretation = "Task: " + Root(payload).GetProperty("originalUserInstruction").GetString(),
+        }, Json);
+
     static bool Even(string alias) => int.Parse(alias[1..5]) % 2 == 0;
 
     static JsonElement Root(string payload) => JsonDocument.Parse(payload).RootElement;
@@ -47,6 +55,7 @@ public sealed class P7F1V6HierD23Tests
     /// <summary>Local nodes decide by alias parity; reconcile, synthesis and global confirm everything they were shown.</summary>
     static string Honest(string nodeId, P7F1V6Hier.Kind kind, string payload)
     {
+        if (kind == P7F1V6Hier.Kind.Interpretation) return Interp(payload);
         var r = Root(payload);
         if (kind == P7F1V6Hier.Kind.Local)
         {

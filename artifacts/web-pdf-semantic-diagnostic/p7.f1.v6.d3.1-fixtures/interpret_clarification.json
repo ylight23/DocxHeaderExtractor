@@ -1,0 +1,15 @@
+{
+  "name": "interpret_clarification",
+  "node": "INTERPRET",
+  "appliesTo": "Interpretation",
+  "expect": "STOPPED_INTERPRETATION_CLARIFICATION_REQUIRED",
+  "response": {
+    "protocolVersion": "P7_F1_V6_INTERPRET_V1",
+    "requestId": "INTERPRET",
+    "status": "CLARIFICATION_REQUIRED",
+    "interpretation": "The instruction does not say which level counts.",
+    "openQuestions": [
+      "Which heading levels should be extracted?"
+    ]
+  }
+}

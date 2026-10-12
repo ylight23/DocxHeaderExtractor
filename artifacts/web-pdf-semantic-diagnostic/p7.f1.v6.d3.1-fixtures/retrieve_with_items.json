@@ -1,0 +1,23 @@
+{
+  "name": "retrieve_with_items",
+  "node": "L1-N0001",
+  "appliesTo": "Synthesis",
+  "expect": "REJECTED:RETRIEVE_WITH_ITEMS",
+  "response": {
+    "protocolVersion": "P7_F1_V6_HIER_NODE_V2",
+    "nodeId": "L1-N0001",
+    "status": "RETRIEVE",
+    "items": [
+      {
+        "id": "$SHOWN0",
+        "decision": "SELECT",
+        "evidenceRefs": [
+          "$SHOWNALIAS0"
+        ]
+      }
+    ],
+    "retrieve": {
+      "search": "Intro"
+    }
+  }
+}

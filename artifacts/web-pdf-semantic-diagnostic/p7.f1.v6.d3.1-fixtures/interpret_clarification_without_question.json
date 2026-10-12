@@ -1,0 +1,12 @@
+{
+  "name": "interpret_clarification_without_question",
+  "node": "INTERPRET",
+  "appliesTo": "Interpretation",
+  "expect": "STOPPED_INTERPRETATION_INVALID",
+  "response": {
+    "protocolVersion": "P7_F1_V6_INTERPRET_V1",
+    "requestId": "INTERPRET",
+    "status": "CLARIFICATION_REQUIRED",
+    "interpretation": "Unclear."
+  }
+}
