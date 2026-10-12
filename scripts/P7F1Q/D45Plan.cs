@@ -30,7 +30,7 @@ internal static class D45Plan
         var head = preview ? "PREVIEW_NOT_A_PLAN" : Git(repoRoot, "rev-parse HEAD");
 
         var planBytes = P7F1V6DirectD45.Serialize(P7F1V6DirectD45.PinnedValues(repoRoot, head));
-        var planPath = Path.Combine(artifactDir, "p7.f1.v6.d4.5-plan.v1.json");
+        var planPath = Path.Combine(artifactDir, "p7.f1.v6.d4.6-plan.v1.json");
         File.WriteAllBytes(planPath, planBytes);
         var planSha = Convert.ToHexStringLower(SHA256.HashData(planBytes));
         var verify = P7F1V6DirectD45.Verify(repoRoot, planPath, planSha, head);
@@ -68,7 +68,7 @@ internal static class D45Plan
 
         var report = new
         {
-            artifact = "p7.f1.v6.d4.5-dryrun.v1",
+            artifact = "p7.f1.v6.d4.6-dryrun.v1",
             providerCalls = 0,
             planFile = Path.GetFileName(planPath),
             planSha256 = planSha,
@@ -88,7 +88,7 @@ internal static class D45Plan
                 "A run that is refused by the budget is fail-closed: aliases stay UNRESOLVED, nothing is trimmed and no budget is raised.",
             },
         };
-        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.5-dryrun.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
+        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.6-dryrun.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
         Console.WriteLine($"plan {planSha} verifies={verify.Count == 0} commit={head}");
         foreach (var s in sims) Console.WriteLine(JsonSerializer.Serialize(s, new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }));
         foreach (var m in matrix) Console.WriteLine(JsonSerializer.Serialize(m));

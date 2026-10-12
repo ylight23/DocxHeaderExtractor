@@ -23,8 +23,10 @@ internal static class P7F1V6DirectV2
 {
     public const string RequestVersion = "P7_F1_V6_DIRECT_REQUEST_V2_1";
     public const string ResponseVersion = "P7_F1_V6_DIRECT_RESPONSE_V2";
-    public const string PromptVersion = "P7_F1_V6_DIRECT_PROMPT_V2_2";
-    public const string SystemPromptSha256 = "9dbd5d79a01747e297272ac61e0b093a4ef4b9877a89c383224f47dc9cf8a3c6";
+    // V2.3 (D4.6): the V2.2 sentence about navigation entries is removed; the system prompt carries protocol rules only. What counts as a
+    // heading comes from the user's instruction and Qwen's reading of the evidence, never from a fixed rule here.
+    public const string PromptVersion = "P7_F1_V6_DIRECT_PROMPT_V2_3";
+    public const string SystemPromptSha256 = "ed33c467b63ad5307f88557c7b3cbb61df1df7d0ce9c73b50a7b120da0c696b6";
     public const int MaxRounds = 3;                 // per unit: at most two retrieval rounds, then a final answer
     public const int MaxRetrievePerRound = 4;
     public const int MaxRangeLines = 60;
@@ -55,7 +57,7 @@ internal static class P7F1V6DirectV2
         "{\"protocolVersion\":\"P7_F1_V6_DIRECT_RESPONSE_V2\",\"status\":\"NEEDS_EVIDENCE\",\"retrieve\":[{\"kind\":\"RANGE\",\"fromAlias\":\"<alias>\",\"toAlias\":\"<alias>\"},{\"kind\":\"SEARCH\",\"text\":\"<literal text>\"}]}",
         "Status CLARIFICATION_REQUIRED: the instruction has more than one reasonable reading for this document. Give 2 to 5 readings and no decisions.",
         "{\"protocolVersion\":\"P7_F1_V6_DIRECT_RESPONSE_V2\",\"status\":\"CLARIFICATION_REQUIRED\",\"clarification\":{\"question\":\"<question to the user>\",\"interpretations\":[\"<reading>\",\"<reading>\"]}}",
-        "Rules: decide is the EXACT output universe: return one decision for each alias in decide, NO decisions for context-only aliases from lines, and NO duplicates. The key is \"alias\", not \"line\" or \"id\". SELECT requires evidenceRefs with 1 to 8 aliases shown in lines; NOT_SELECT permits evidenceRefs omitted, empty, or up to 8 shown aliases; UNRESOLVED requires 1 to 8 shown aliases and is only for INCOMPLETE. Every SELECT alias is in exactly one heading; heading parts may include shown context aliases but cannot exceed 8 parts and must be in document order. Do not group unrelated navigation entries into a heading. If a genuine heading exceeds 8 parts, report INCOMPLETE rather than truncate. Do not add levels, parents or other fields.");
+        "Rules: decide is the EXACT output universe: return one decision for each alias in decide, NO decisions for context-only aliases from lines, and NO duplicates. The key is \"alias\", not \"line\" or \"id\". SELECT requires evidenceRefs with 1 to 8 aliases shown in lines; NOT_SELECT permits evidenceRefs omitted, empty, or up to 8 shown aliases; UNRESOLVED requires 1 to 8 shown aliases and is only for INCOMPLETE. Every SELECT alias is in exactly one heading; heading parts may include shown context aliases but cannot exceed 8 parts and must be in document order. If a genuine heading exceeds 8 parts, report INCOMPLETE rather than truncate. Do not add levels, parents or other fields.");
 
     public static string ComputedSystemPromptSha256() => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(SystemPrompt)));
 
