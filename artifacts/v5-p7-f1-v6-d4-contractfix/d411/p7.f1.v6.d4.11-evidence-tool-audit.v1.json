@@ -1,0 +1,108 @@
+{
+  "artifact": "p7.f1.v6.d4.11-evidence-tool-audit.v1",
+  "issue": "#9 D4.11 (offline); Issue #5 MANDATORY IMPLEMENTATION GATE: parser-owned evidence tool library, not prompt-only",
+  "providerCalls": 0,
+  "scope": "Audit of the evidence-tool code already in the repository, what D4.11 reuses, what it does not reuse and why, and the V6 registry built from it. No model was called.",
+  "auditedComponents": [
+    {
+      "component": "P7F1QEvidenceTools (F1Q, Issue #5; tool sets V1/V2/V3)",
+      "file": "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QEvidenceTools.cs",
+      "tools": ["get_occurrence_context", "get_page_geometry", "get_source_span", "get_repeated_occurrences", "compare_occurrences (V2)"],
+      "reusedUnchanged": [
+        "parser line records (text, page, reading order, bbox, typography) loaded from PdfSourceEvidenceStore; the universe is rebuilt from the same object (P7F1V6Universe.Tools)",
+        "CompactLayout (bbox and font as in the request payload)",
+        "PageStats (line count, text extent, median font size)",
+        "Relation (same baseline, vertical offset, horizontal overlap, font-size delta), exposed as RelationOf without change",
+        "RepeatKey and RepeatNormalization",
+        "Bold, font size and left edge readers (exposed as FontSizeOf, LeftEdgeOf)"
+      ],
+      "notReused": [
+        {
+          "what": "tool descriptions of get_repeated_occurrences and compare_occurrences",
+          "why": "they name kinds of line to look for (\"running headers/footers or contents entries vs. body headings\"; \"a contents entry and the body line it may refer to, or a title and the line below it\"). That is a semantic hint in the tool contract; V6 descriptions say only what a tool returns. A test asserts that no V6 description names a kind of line."
+        },
+        {
+          "what": "Execute as the V6 dispatcher",
+          "why": "targets resolve issued O# ids; the universe instance issues O1 for its first line, so results would carry an \"occurrence\":\"O1\" field that means nothing in V6. Some tools (context, span) have no truncation path and throw when over the cap instead of cutting the result."
+        },
+        {
+          "what": "text clipping at 160 characters with an appended ellipsis",
+          "why": "it changes the text Qwen sees. V6 clips list results at 300 characters with explicit textTruncated and textChars and adds nothing; get_source_span returns up to 4,000 characters. The longest SRC-095 line is 103 characters, so no SRC-095 line is clipped."
+        }
+      ]
+    },
+    {
+      "component": "P7F1V6Tools (V6 D1 read tools V3)",
+      "file": "src/DocxHeaderExtractor.V5Qualification/P7/P7F1V6Tools.cs",
+      "tools": ["search_document_text", "get_page_text", "read_line_span"],
+      "reusedUnchanged": ["Normalize (diacritics, case and all whitespace removed) for search mode normalized"],
+      "notReused": [
+        {
+          "what": "the instance and its result format",
+          "why": "its 16 KB cap is measured on its own body; wrapping it in the V6 envelope (evidence id, provenance) could exceed the cap. V6 search applies the same matching rules and paginates on the exact V6 body."
+        },
+        {
+          "what": "read_line_span",
+          "why": "not needed for SRC-095 (no line over 103 characters); get_source_span returns up to 4,000 characters per line with an explicit cut marker."
+        }
+      ]
+    },
+    {
+      "component": "P7F1QConversationRunner and P7F1QSse (F1Q tool loop)",
+      "file": "src/DocxHeaderExtractor.V5Qualification/P7/P7F1QConversation.cs",
+      "reusedDesign": [
+        "assistant message carrying tool_calls, followed by one role tool message per call with that call's tool_call_id",
+        "tool_choice auto for a bounded number of rounds, then tool_choice none for the answer",
+        "a per-round call cap; a call over the cap is still answered (REJECTED), so every tool_call_id has a reply",
+        "mandatory-evidence arm: an answer with no successful tool call fails the contract"
+      ],
+      "notReused": [
+        {
+          "what": "the streaming transport and runner",
+          "why": "the V6 audit chain (prepared-body SHA at the HTTP boundary, safe raw store outside the repository, endpoint and model check, usage and finish audit, provider cost against the reserve, Budget.Admit before every POST, consecutive-contract-failure stop) is built on the non-streaming P7F1V6OpenRouterTransport. D4.11 extends that chain: the usage audit accepts finish_reason tool_calls only on agent turns."
+        }
+      ],
+      "priorEvidence": "F1Q 2026-10-09 on qwen/qwen3.7-flash via Alibaba: with tool_choice auto the tools reached the model but were called in 0/10 requests; the mandatory-evidence arm produced tool_call -> C# tool -> Qwen answer in 9/10; tool_choice required is not supported on the Alibaba route."
+    },
+    {
+      "component": "DIRECT NEEDS_EVIDENCE retrieval (RANGE / SEARCH)",
+      "file": "src/DocxHeaderExtractor.V5Qualification/P7/P7F1V6DirectV2.cs (Serve), P7F1V6DirectTwoStage.cs",
+      "finding": "prompt-only retrieval: Qwen asks in its JSON answer and C# adds lines to the next request's context. It is not a tool route. In agent mode a NEEDS_EVIDENCE reply is refused (NEEDS_EVIDENCE_NOT_IN_AGENT_MODE); evidence comes through native tool calls."
+    }
+  ],
+  "registry": {
+    "version": "P7_F1_V6_AGENT_TOOLS_V1",
+    "file": "src/DocxHeaderExtractor.V5Qualification/P7/P7F1V6AgentTools.cs",
+    "definitionsSha256": "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3",
+    "dispatch": "native OpenRouter tool_calls -> C# reads name and arguments as given -> strict argument check (known keys only, all required, types, ranges, aliases of this document, 2,048-byte arguments) -> the one handler the name selects -> exact JSON body <= 16,384 bytes -> role tool message with the call's tool_call_id. A bad call is answered with status INVALID_ARGUMENT or UNKNOWN_TOOL and a code, recorded, and observes nothing.",
+    "tools": [
+      { "name": "get_document_overview", "arguments": "none", "returns": "line and page counts; per page line count, text extent, median font size; font-size histogram (16 most used sizes)", "issue5": "new" },
+      { "name": "get_source_context", "arguments": "alias, before 0..6, after 0..6", "returns": "lines around one line with text, page, layout and relation to it; same-baseline peers; page statistics", "issue5": "get_occurrence_context" },
+      { "name": "get_page_layout", "arguments": "page, offset, limit 1..40", "returns": "page lines with text and layout; page statistics; hasMore/nextOffset", "issue5": "get_page_geometry" },
+      { "name": "get_source_span", "arguments": "aliases 1..8", "returns": "full parser record of each line (up to 4,000 characters of text)", "issue5": "get_source_span" },
+      { "name": "search_document_text", "arguments": "query 2..200 chars, mode literal|normalized, offset, limit 1..50", "returns": "matching lines of the whole document in reading order, with total and nextOffset", "issue5": "V6 D1 search" },
+      { "name": "get_repeated_occurrences", "arguments": "alias, maxResults 1..20", "returns": "other lines with the same normalized text, with page, layout and exact-match flag; an empty key reports no repeats", "issue5": "get_repeated_occurrences" },
+      { "name": "compare_source_locations", "arguments": "first, second, window 0..3", "returns": "both lines with their windows, layout and page statistics; page distance, reading-order distance, same normalized text, same exact text, font-size, bold-ratio and left-edge differences", "issue5": "compare_occurrences (F1Q V2)" }
+    ],
+    "getPageImage": "NOT_REGISTERED: the V6 evidence store holds no page image and image input on the pinned route is not verified",
+    "truncation": "A result that would exceed 16,384 bytes is cut by whole items and says so (truncated, returned, available, nextOffset); text is never shortened silently.",
+    "labels": "No result carries a heading, contents or role label; provenance says semanticLabels NONE.",
+    "ledger": "Every call is recorded: evidence id, tool, SHA-256 of the raw arguments, status, error code, content SHA-256 and bytes, truncated flag, aliases shown."
+  },
+  "agentLoop": {
+    "file": "src/DocxHeaderExtractor.V5Qualification/P7/P7F1V6DirectAgent.cs",
+    "answer": "arm B object reply (P7_F1_V6_SELECT_OBJECTS_V1), strict parser unchanged; no version field in the payload",
+    "turns": "1..3 tool_choice auto; 4 tool_choice none; a tool call on turn 4 fails (TOOL_CALL_AFTER_TOOL_CAP)",
+    "caps": { "callsPerTurn": 8, "toolResultBytesPerUnit": 65536, "postsPerUnit": 4 },
+    "withoutTools": "allowed in arm AUTO (Issue #9: the data shown may be enough); refused in the diagnostic arm EVIDENCE_FIRST",
+    "noUnobservedClaims": "evidenceRefs must be aliases Qwen saw in the request or in a successful tool result; any other alias is refused (EVIDENCE_NOT_SHOWN)",
+    "scopes": "evaluated (the unit's targets), observed (request lines plus tool-shown lines, with pages), whole document (all lines; observed in full or not) are reported separately; refs to lines seen only through tools are counted",
+    "neverDone": ["reading the reasoning", "changing a decision", "adding a call Qwen did not make", "any rule about which lines to select"]
+  },
+  "openItems": [
+    "The non-streaming tool_calls response shape of the Alibaba route has not been observed yet (F1Q used streaming). The canary is the first observation.",
+    "json_object together with tools was used by F1Q plan V3 on this route; whether json_object changes how often Qwen calls tools is unknown.",
+    "Assistant turns are sent back without their reasoning text. Whether Qwen 3.7 Flash expects its reasoning between tool turns is not documented.",
+    "Reasoning tokens are billed on every turn, tool turns included; the reserve covers max_tokens on every POST."
+  ]
+}

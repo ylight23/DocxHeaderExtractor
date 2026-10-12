@@ -616,6 +616,16 @@ switch (args[0])
         if (args.Length != 6) throw new ArgumentException("d410-run <repo-root> <plan> <confirmed-plan-sha> <authorization> <safe-root>");
         D410Plan.Live(args[1], args[2], args[3], args[4], args[5]);
         break;
+    case "d411-plan":
+        // Issue #9 D4.11 (offline): d411-plan <repo-root> <artifact-dir>. Pinned tool-calling canary plan and scripted dry-run. No network call.
+        if (args.Length != 3) throw new ArgumentException("d411-plan <repo-root> <artifact-dir>");
+        D411Plan.Plan(args[1], args[2]);
+        break;
+    case "d411-run":
+        // Issue #9 D4.11: d411-run <repo-root> <plan> <confirmed-plan-sha> <authorization> <safe-root>. Sends requests; needs an APPROVED authorization.
+        if (args.Length != 6) throw new ArgumentException("d411-run <repo-root> <plan> <confirmed-plan-sha> <authorization> <safe-root>");
+        D411Plan.Live(args[1], args[2], args[3], args[4], args[5]);
+        break;
     case "d49-dryrun":
         // Issue #9 D4.9 (offline): d49-dryrun <repo-root> <artifact-dir>. Variants A/B/C with scripted models. No network call.
         if (args.Length != 3) throw new ArgumentException("d49-dryrun <repo-root> <artifact-dir>");

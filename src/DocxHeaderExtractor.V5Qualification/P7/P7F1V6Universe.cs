@@ -11,8 +11,9 @@ namespace DocxHeaderExtractor.V5Qualification.P7;
 /// </summary>
 internal sealed class P7F1V6Universe
 {
-    private P7F1V6Universe(string rel, string sourceSha, string universeSha, string storeSha, IReadOnlyList<P7F1V6Direct.Line> lines)
+    private P7F1V6Universe(string rel, string sourceSha, string universeSha, string storeSha, IReadOnlyList<P7F1V6Direct.Line> lines, P7F1QEvidenceTools tools)
     {
+        Tools = tools;
         DocumentRelativePath = rel; SourceSha256 = sourceSha; UniverseSha256 = universeSha; EvidenceStoreSha256 = storeSha; Lines = lines;
         Aliases = lines.Select(l => l.Alias).ToArray();
     }
@@ -23,6 +24,8 @@ internal sealed class P7F1V6Universe
     public string EvidenceStoreSha256 { get; }
     public IReadOnlyList<P7F1V6Direct.Line> Lines { get; }
     public IReadOnlyList<string> Aliases { get; }
+    /// <summary>The parser evidence (text, page, bbox, typography) the universe was built from; read by the V6 evidence tools.</summary>
+    public P7F1QEvidenceTools Tools { get; }
 
     /// <summary>Reads the source through the source gate (prefix, path segments, pinned SHA), parses it, builds the evidence store, and
     /// checks that the store describes the same bytes. Returns null with a failure code on any mismatch.</summary>
@@ -47,6 +50,6 @@ internal sealed class P7F1V6Universe
             .Select(l => new P7F1V6Direct.Line(l.Alias, l.Page ?? 0, l.Text, P7F1QEvidenceTools.CompactLayout(l.Bbox, l.Typography))).ToArray();
         if (lines.Select(l => l.Alias).Distinct(StringComparer.Ordinal).Count() != lines.Length) { failure = "DUPLICATE_ALIAS"; return null; }
         failure = "OK";
-        return new P7F1V6Universe(relativePath, store.SourceSha256, store.SourceAliasUniverseSha256, store.StoreSha256, lines);
+        return new P7F1V6Universe(relativePath, store.SourceSha256, store.SourceAliasUniverseSha256, store.StoreSha256, lines, tools);
     }
 }

@@ -1,0 +1,17 @@
+{
+  "artifact": "p7.f1.v6.d4.11-version-counterfactual.v1",
+  "label": "COUNTERFACTUAL on recorded replies. The edited replies are not what Qwen sent; nothing here is an official Qwen result. No recorded file was changed.",
+  "providerCalls": 0,
+  "source": "artifacts/v5-p7-f1-v6-d4-contractfix/d410-canary/arm-B/raw (D4.10 arm B, plan 8beb3fd1)",
+  "test": "tests/DocxHeaderExtractor.Tests/P7F1V6DirectD411Tests.cs: Counterfactual_RecordedArmBReplies_FailOnTheCopiedVersionFieldsOnly",
+  "replies": [
+    { "segment": "SEG-008", "rawKey": "26922f43d610ebdc80206d5e0ec4e52d1ac524598aa9df8594ca66ab1689ce43",
+      "recordedRootKeys": { "protocolVersion": "P7_F1_V6_SELECT_REQUEST_V2", "responseVersion": "P7_F1_V6_SELECT_OBJECTS_V1" },
+      "asRecorded": "ROOT_KEYS_INVALID", "responseVersionRemoved": "PROTOCOL_VERSION_INVALID", "protocolVersionSetToReplyVersion": "OK (48 decisions)" },
+    { "segment": "SEG-009", "rawKey": "c00b214b80d97da8a7f4c9ddc881cda57ecd7925421c9950c613f166f2bfb7cb",
+      "recordedRootKeys": { "protocolVersion": "P7_F1_V6_SELECT_REQUEST_V2", "responseVersion": "P7_F1_V6_SELECT_OBJECTS_V1" },
+      "asRecorded": "ROOT_KEYS_INVALID", "responseVersionRemoved": "PROTOCOL_VERSION_INVALID", "protocolVersionSetToReplyVersion": "OK (48 decisions)" }
+  ],
+  "reading": "Both failures came only from the two version fields copied from the request. D4.11 removes both fields from the SELECT request (request version P7_F1_V6_SELECT_REQUEST_V3, pinned by code, plan and request SHA). The reply must still carry exactly protocolVersion P7_F1_V6_SELECT_OBJECTS_V1, and the parser is unchanged: an extra root key is ROOT_KEYS_INVALID, a wrong or missing version is PROTOCOL_VERSION_INVALID, and the extra key is reported first. Whether Qwen stops copying is only known from a new run.",
+  "armC": "paused (owner decision after D4.10)"
+}

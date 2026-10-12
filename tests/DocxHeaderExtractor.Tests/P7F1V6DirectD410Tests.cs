@@ -53,7 +53,8 @@ public sealed class P7F1V6DirectD410Tests : IDisposable
         ["decisions"] = new JsonArray(t.Select(a => (JsonNode)new JsonObject { ["alias"] = a, ["decision"] = "NOT_SELECT" }).ToArray()),
     }.ToJsonString();
 
-    static string ArmOf(string body) => Payload(body).GetProperty("responseVersion").GetString() == P7F1V6DirectTwoStage.SelectCompactVersion ? "C" : "B";
+    // Only the compact arm numbers its targets with i; the request carries no version field since D4.11.
+    static string ArmOf(string body) => Payload(body).GetProperty("targets")[0].TryGetProperty("i", out _) ? "C" : "B";
 
     static P7F1V6DirectV2.Budget Big() => new(100, 100, 2_000_000);
 

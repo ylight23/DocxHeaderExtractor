@@ -181,7 +181,8 @@ public sealed class P7F1V6DirectD49Tests
         var sel = BuildSelect(F.Compact, lines);
         var p = Payload(sel);
         Assert.Equal(Enumerable.Range(0, 10), p.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("i").GetInt32()));
-        Assert.Equal(P7F1V6DirectTwoStage.SelectCompactVersion, p.GetProperty("responseVersion").GetString());
+        Assert.False(p.TryGetProperty("responseVersion", out _));
+        Assert.False(p.TryGetProperty("protocolVersion", out _));
         Assert.False(Payload(BuildSelect(F.Objects, lines)).GetProperty("targets")[0].TryGetProperty("i", out _));
 
         var g = P7F1V6DirectTwoStage.BuildGroupRequest(Task, "sha", "GROUP-000", 1, new[] { A(9) }, lines.Take(12).ToArray(),

@@ -36,7 +36,8 @@ internal static class P7F1V6Usage
 
     /// <summary>Checks one response. requestBytes is the UTF-8 size of the prepared body that was sent; maxTokens is the max_tokens of that request.
     /// Tokens are at most bytes for UTF-8 text, so prompt_tokens above requestBytes is an inconsistency, not a large request.</summary>
-    public static Audit Check(string responseJson, int requestBytes, int maxTokens)
+    /// <summary>toolCallsAllowed (D4.11 agent turns only): finish_reason tool_calls is a normal end of a turn that asks for evidence.</summary>
+    public static Audit Check(string responseJson, int requestBytes, int maxTokens, bool toolCallsAllowed = false)
     {
         var codes = new List<string>();
         JsonDocument doc;
@@ -85,7 +86,7 @@ internal static class P7F1V6Usage
                 if (string.IsNullOrWhiteSpace(content) && reasoning is not null && completion is not null && reasoning >= completion - 1)
                     codes.Add("REASONING_EXHAUSTED");
             }
-            else if (finish != "stop") codes.Add("FINISH_REASON_UNEXPECTED");
+            else if (finish != "stop" && !(toolCallsAllowed && finish == "tool_calls")) codes.Add("FINISH_REASON_UNEXPECTED");
 
             double? cost = prompt is not null && completion is not null ? Cost(prompt.Value, completion.Value) : null;
             double? providerCost = usage.TryGetProperty("cost", out var pc) && pc.ValueKind == JsonValueKind.Number ? pc.GetDouble() : null;

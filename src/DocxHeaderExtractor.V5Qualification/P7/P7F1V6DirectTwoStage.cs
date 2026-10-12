@@ -20,7 +20,7 @@ namespace DocxHeaderExtractor.V5Qualification.P7;
 /// </summary>
 internal static class P7F1V6DirectTwoStage
 {
-    public const string SelectRequestVersion = "P7_F1_V6_SELECT_REQUEST_V2";   // D4.10: carries targetCount
+    public const string SelectRequestVersion = "P7_F1_V6_SELECT_REQUEST_V3";   // D4.11: no version fields in the payload (D4.10 replies copied them); pinned by code, plan and request SHA
     public const string GroupRequestVersion = "P7_F1_V6_GROUP_REQUEST_V1";
     public const string SelectObjectsVersion = "P7_F1_V6_SELECT_OBJECTS_V1";
     public const string SelectCompactVersion = "P7_F1_V6_SELECT_COMPACT_V1";
@@ -112,10 +112,10 @@ internal static class P7F1V6DirectTwoStage
     {
         if (stage is not ("SEGMENT" or "RESOLVE" or "FINALIZE")) throw new ArgumentException("STAGE_INVALID", nameof(stage));
         var (targets, context) = Split(decide, shownLines);
+        // No version field goes to Qwen: in D4.10 two replies copied protocolVersion and responseVersion from the request into the answer.
+        // The request version is pinned by code, plan and request SHA; the response version is stated by the pinned system prompt only.
         var payload = JsonSerializer.Serialize(new
         {
-            protocolVersion = SelectRequestVersion,
-            responseVersion = SelectVersion(format),
             instruction,
             instructionSha256 = P7F1V6Core.InstructionSha256(instruction),
             documentSha256,
@@ -157,7 +157,7 @@ internal static class P7F1V6DirectTwoStage
 
     public sealed record SelectReply(bool Ok, string? Failure, string? Status, IReadOnlyDictionary<string, string> Values,
         IReadOnlyList<P7F1V6DirectV2.RetrieveRequest> Retrieve, P7F1V6DirectV2.Clarification? Clarification, string? IncompleteReason,
-        IReadOnlyList<string> Missing);
+        IReadOnlyList<string> Missing, IReadOnlyDictionary<string, IReadOnlyList<string>>? Refs = null);
 
     public sealed record GroupReply(bool Ok, string? Failure, string? Status, IReadOnlyList<IReadOnlyList<string>> Groups,
         IReadOnlyList<(string Alias, string Reason)> ReviewRequests, IReadOnlyList<P7F1V6DirectV2.RetrieveRequest> Retrieve, string? IncompleteReason);
@@ -234,8 +234,11 @@ internal static class P7F1V6DirectTwoStage
         return refs;
     }
 
-    /// <summary>Checks a Stage 1 reply. decide is in target order (the order of positions in the compact format).</summary>
-    public static SelectReply ParseSelect(SelectFormat format, string reply, IReadOnlyDictionary<string, int> shownOrder, IReadOnlyList<string> decide)
+    /// <summary>Checks a Stage 1 reply. decide is in target order (the order of positions in the compact format). needsEvidenceAllowed is false
+    /// in agent mode (D4.11), where evidence comes through tool calls and a NEEDS_EVIDENCE reply is refused. Refs keeps each decision's
+    /// evidenceRefs as given (Objects format), for the scope report; it is never used to change a decision.</summary>
+    public static SelectReply ParseSelect(SelectFormat format, string reply, IReadOnlyDictionary<string, int> shownOrder, IReadOnlyList<string> decide,
+        bool needsEvidenceAllowed = true)
     {
         SelectReply Fail(string code, IReadOnlyList<string>? missing = null) => new(false, code, null, new Dictionary<string, string>(),
             Array.Empty<P7F1V6DirectV2.RetrieveRequest>(), null, null, missing ?? Array.Empty<string>());
@@ -253,6 +256,7 @@ internal static class P7F1V6DirectTwoStage
             var status = Str(root, "status");
             if (status is not ("COMPLETE" or "NEEDS_EVIDENCE" or "CLARIFICATION_REQUIRED" or "INCOMPLETE")) return Fail("STATUS_INVALID");
 
+            if (status == "NEEDS_EVIDENCE" && !needsEvidenceAllowed) return Fail("NEEDS_EVIDENCE_NOT_IN_AGENT_MODE");
             if (status is "NEEDS_EVIDENCE" or "CLARIFICATION_REQUIRED")
             {
                 var f = ParseNonDecision(root, status, decisionKeys, clarificationAllowed: true, out var retrieve, out var clarification);
@@ -270,6 +274,7 @@ internal static class P7F1V6DirectTwoStage
             else if (Has(root, "incompleteReason")) return Fail("INCOMPLETE_REASON_NOT_ALLOWED");
 
             var values = new Dictionary<string, string>(StringComparer.Ordinal);
+            var refsByAlias = new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal);
             if (format == SelectFormat.Objects)
             {
                 if (!root.TryGetProperty("decisions", out var ds) || ds.ValueKind != JsonValueKind.Array) return Fail("DECISIONS_MISSING");
@@ -285,9 +290,11 @@ internal static class P7F1V6DirectTwoStage
                     if (value == "UNRESOLVED" && status != "INCOMPLETE") return Fail("UNRESOLVED_ONLY_IN_INCOMPLETE");
                     var hasRefs = d.TryGetProperty("evidenceRefs", out var er);
                     if (!hasRefs && value == "SELECT") return Fail("EVIDENCE_REFS_INVALID");
-                    if (hasRefs && ReadRefs(er, shownOrder, value == "SELECT" ? 1 : 0, out var rf) is null) return Fail(rf!);
+                    List<string>? refs = null;
+                    if (hasRefs && (refs = ReadRefs(er, shownOrder, value == "SELECT" ? 1 : 0, out var rf)) is null) return Fail(rf!);
                     if (!decideSet.Contains(alias)) return Fail("UNEXPECTED_ALIAS");
                     if (!values.TryAdd(alias, value!)) return Fail("ALIAS_LISTED_TWICE");
+                    refsByAlias[alias] = (IReadOnlyList<string>?)refs ?? Array.Empty<string>();
                 }
                 var missing = decide.Where(a => !values.ContainsKey(a)).ToArray();
                 if (missing.Length > 0) return Fail("COVERAGE_INCOMPLETE", missing);
@@ -340,7 +347,7 @@ internal static class P7F1V6DirectTwoStage
                 }
             }
             if (status == "INCOMPLETE" && values.Values.All(v => v != "UNRESOLVED")) return Fail("INCOMPLETE_WITHOUT_UNRESOLVED");
-            return new SelectReply(true, null, status, values, Array.Empty<P7F1V6DirectV2.RetrieveRequest>(), null, reason, Array.Empty<string>());
+            return new SelectReply(true, null, status, values, Array.Empty<P7F1V6DirectV2.RetrieveRequest>(), null, reason, Array.Empty<string>(), refsByAlias);
         }
     }
 

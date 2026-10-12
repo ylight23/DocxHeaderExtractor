@@ -37,6 +37,21 @@ internal sealed class P7F1V6DirectAuditedModel
 
     public string Reply(string unitId, int round, P7F1V6Protocol.PreparedRequest request)
     {
+        var text = ReplyRaw(unitId, round, request, toolCallsAllowed: false);
+        var (content, failure) = P7F1V6ResponseAdapter.ExtractContent(text);
+        if (content is null)
+        {
+            Ledger[^1] = Ledger[^1] with { Verdict = "NO_CONTENT" };
+            throw new P7F1V6DirectV2.ReplyFailure("CONTENT:" + failure);
+        }
+        // Passing the audit is not acceptance: the contract parser decides next.
+        return content;
+    }
+
+    /// <summary>One audited call; returns the raw response text after the transport, key, store, endpoint and usage checks. The caller reads
+    /// the message. toolCallsAllowed (D4.11 agent turns) accepts finish_reason tool_calls; every other check is the same.</summary>
+    public string ReplyRaw(string unitId, int round, P7F1V6Protocol.PreparedRequest request, bool toolCallsAllowed)
+    {
         var seq = Ledger.Count + 1;
         var reserve = P7F1V6Direct.AttemptUsd(request.Bytes);
         string stage;
@@ -70,7 +85,7 @@ internal sealed class P7F1V6DirectAuditedModel
         var bytes = Encoding.UTF8.GetBytes(text);
         var responseSha = Convert.ToHexStringLower(SHA256.HashData(bytes));
         var rawKey = store.Put(bytes);
-        var audit = P7F1V6Usage.Check(text, request.Bytes, P7F1V6Protocol.MaxTokens);
+        var audit = P7F1V6Usage.Check(text, request.Bytes, P7F1V6Protocol.MaxTokens, toolCallsAllowed);
         budget.RecordActual(audit.ProviderCostUsd, reserve);
 
         string endpoint = "UNKNOWN", model = "UNKNOWN";
@@ -93,15 +108,8 @@ internal sealed class P7F1V6DirectAuditedModel
             Ledger.Add(Entry(r.Outcome, r.Status, responseSha, rawKey, audit, endpoint, model, "AUDIT_FAILED"));
             throw new P7F1V6DirectV2.ReplyFailure("AUDIT:" + string.Join(",", audit.Codes));
         }
-        var (content, failure) = P7F1V6ResponseAdapter.ExtractContent(text);
-        if (content is null)
-        {
-            Ledger.Add(Entry(r.Outcome, r.Status, responseSha, rawKey, audit, endpoint, model, "NO_CONTENT"));
-            throw new P7F1V6DirectV2.ReplyFailure("CONTENT:" + failure);
-        }
-        // Passing the audit is not acceptance: the contract parser decides next.
         Ledger.Add(Entry(r.Outcome, r.Status, responseSha, rawKey, audit, endpoint, model, "PASSED_AUDIT_TO_PARSER"));
-        return content;
+        return text;
     }
 }
 

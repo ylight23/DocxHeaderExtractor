@@ -1,0 +1,19 @@
+{
+  "artifact": "p7.f1.v6.d4.11-reasoning-switch-feasibility.v1",
+  "status": "DEFERRED by the owner: the evidence-agent tool route comes first; reasoning on/off and the reasoning/output mismatch are evaluated separately later",
+  "providerCalls": 0,
+  "question": "Can a request to qwen/qwen3.7-flash on the pinned Alibaba route turn reasoning off, and would the provider show that it did?",
+  "evidence": [
+    { "source": "OpenRouter endpoint inventory for qwen/qwen3.7-flash, recorded 2026-10-12", "fact": "supported_parameters lists reasoning and include_reasoning (also max_tokens, temperature, top_p, seed, presence_penalty, response_format, logprobs, top_logprobs, tools, tool_choice)" },
+    { "source": "OpenRouter reasoning-token documentation", "fact": "reasoning.effort \"none\" asks the provider to disable reasoning; reasoning.exclude only hides the reasoning text from the response and does not stop it; disabling is passed to the provider and is not guaranteed by OpenRouter" },
+    { "source": "Alibaba Model Studio documentation (updated 2026-10-11)", "fact": "qwen3.7-flash is a hybrid model with thinking on by default; enable_thinking=false turns it off. Whether reasoning tokens are reported as zero when it is off is not documented." },
+    { "source": "D4.10 canary ledger (this repository)", "fact": "reasoning tokens were 83.3% of the measured cost; every request had reasoning on (no reasoning field sent)" }
+  ],
+  "notVerified": [
+    "that OpenRouter maps reasoning.effort none (or enabled false) to enable_thinking=false on the Alibaba route",
+    "that usage.completion_tokens_details.reasoning_tokens is 0 when reasoning is off",
+    "that require_parameters=true still selects the Alibaba endpoint when a reasoning field is present"
+  ],
+  "whatAMeasurementWouldNeed": "a separate plan with its own SHA, budget and approval: the same pinned request with and without a reasoning field, judged only by provider-reported usage and finish fields. The reasoning text is never used to change an answer.",
+  "notInD411Canary": "The D4.11 tool canary sends no reasoning field (endpoint default), as D4.10 did."
+}
