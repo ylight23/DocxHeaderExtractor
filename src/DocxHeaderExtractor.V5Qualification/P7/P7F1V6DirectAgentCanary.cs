@@ -26,7 +26,9 @@ internal static class P7F1V6DirectAgentCanary
     public const int Retries = 0;
     /// <summary>D4.11b. Earlier plans, never run, are superseded: D4.11 (e3f8e57e) by the tool_call_id and finish_reason checks of D4.11a,
     /// and D4.11a (51daf941) by the hard tool-message byte cap and the split telemetry of D4.11b.</summary>
-    public const string PlanArtifact = "p7.f1.v6.d4.11b-tool-canary-plan.v1";
+    public const string PlanArtifact = "p7.f1.v6.d4.11c-tool-canary-plan.v1";
+    /// <summary>The D4.11b campaign that ran (plan consumed): non-streaming, no reasoning field; Qwen made 0 tool calls in 4/4 replies.</summary>
+    public const string PreviousCampaignPlanSha256 = "c50833bb0fe5ca8a609ee6d883e6c84dc86887a49ec0f4daebca26d494c83f08";
     public static readonly (string Sha256, string Reason)[] SupersededPlans =
     {
         ("e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf", "D4.11a review: tool_call_id integrity and finish_reason/tool_calls consistency"),
@@ -71,6 +73,10 @@ internal static class P7F1V6DirectAgentCanary
             ["artifact"] = PlanArtifact,
             ["approvalToSend"] = false,
             ["supersedes"] = SupersededPlans.Select(x => new { planSha256 = x.Sha256, run = false, reason = x.Reason }).ToArray(),
+            ["previousCampaign"] = new { planSha256 = PreviousCampaignPlanSha256, run = true, consumed = true,
+                outcome = "4 of 16 POSTs; Qwen emitted 0 tool calls in 4/4 replies (AUTO and EVIDENCE_FIRST); requests were non-streaming with no reasoning field" },
+            ["changeFromPreviousCampaign"] = "request shape only: \"stream\": true (SSE) and \"reasoning\": {\"enabled\": true} in every request; prompts, tools, instruction, arms, segments, caps and budget unchanged",
+            ["requestShapeEvidence"] = "F1Q raw (branch experiment/p7-f1-semantic-question-v1), verified from SSE, tool files and next-turn request bodies: every one of 1,422 F1Q turn requests was stream true with reasoning enabled true; all 45 turns with tool calls were tool_choice auto, finish_reason tool_calls, provider Alibaba; Issue #5 mandatory arm 9/10 requests with tool calls, 28/28 results OK and byte-identical in the next request under the same tool_call_id, final answer finish stop 10/10; optional arm 0/10. This is why the shape is changed; it is not evidence that V6 will get tool calls.",
             ["codeCommit"] = codeCommit,
             ["authorityId"] = P7F1V6DirectD45.AuthorityId,
             ["document"] = P7F1V6DirectD45.Document,
@@ -111,7 +117,8 @@ internal static class P7F1V6DirectAgentCanary
             ["zdr"] = "false (owner decision, to be accepted again in the authorization)",
             ["responseFormat"] = "json_object on every turn (as in F1Q plan V3 with tools on this route)",
             ["maxTokens"] = P7F1V6Protocol.MaxTokens,
-            ["reasoning"] = "not declared (endpoint default); reasoning on/off is deferred and not part of this canary",
+            ["reasoning"] = "enabled true, stated in every request (D4.11c); reasoning on/off is deferred and not part of this canary",
+            ["stream"] = "true: the reply is SSE; the raw SSE bytes are the stored response; a stream without [DONE], with an error event or a malformed event fails the call (TRANSPORT:STREAM_*); the audit reads the view assembled from the stream",
             ["reasoningUse"] = "never read to change an answer; stored with the raw response only",
             ["retries"] = Retries,
             ["unit"] = P7F1V6DirectCanary410.Unit,

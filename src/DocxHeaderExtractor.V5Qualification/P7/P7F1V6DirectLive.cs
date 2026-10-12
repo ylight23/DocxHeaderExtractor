@@ -48,16 +48,24 @@ internal sealed class P7F1V6DirectAuditedModel
         return content;
     }
 
-    /// <summary>One audited call; returns the raw response text after the transport, key, store, endpoint and usage checks. The caller reads
-    /// the message. toolCallsAllowed (D4.11 agent turns) accepts finish_reason tool_calls; every other check is the same.</summary>
+    /// <summary>One audited call; returns the response text after the transport, key, store, endpoint and usage checks. The caller reads
+    /// the message. toolCallsAllowed (D4.11 agent turns) accepts finish_reason tool_calls; every other check is the same.
+    /// A request with "stream": true (D4.11c) gets an SSE body: the raw SSE bytes are what the safe store keeps (the authority); the stream
+    /// must end with [DONE], carry no error event and no malformed event, or the call fails before any audit. The audit and the caller then
+    /// read a chat-completion view assembled from the stream by <see cref="P7F1QSse"/> (content, reasoning, tool_calls with id, name and
+    /// concatenated arguments, finish_reason, usage, provider, model); the view is derived and never stored as the response.</summary>
     public string ReplyRaw(string unitId, int round, P7F1V6Protocol.PreparedRequest request, bool toolCallsAllowed)
     {
         var seq = Ledger.Count + 1;
         var reserve = P7F1V6Direct.AttemptUsd(request.Bytes);
         string stage;
+        bool stream;
         using (var body = JsonDocument.Parse(request.Body))
         using (var payload = JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!))
+        {
             stage = payload.RootElement.GetProperty("stage").GetString()!;
+            stream = body.RootElement.TryGetProperty("stream", out var st) && st.ValueKind == JsonValueKind.True;
+        }
 
         LedgerEntry Entry(string transportOutcome, int? status, string? responseSha, string? rawKey, P7F1V6Usage.Audit? audit, string endpoint,
             string model, string verdict) => new(seq, unitId, stage, round, request.Sha256, request.Bytes, reserve, transportOutcome, status,
@@ -85,6 +93,18 @@ internal sealed class P7F1V6DirectAuditedModel
         var bytes = Encoding.UTF8.GetBytes(text);
         var responseSha = Convert.ToHexStringLower(SHA256.HashData(bytes));
         var rawKey = store.Put(bytes);
+        if (stream)
+        {
+            var asm = P7F1QSse.Parse(text);
+            var broken = asm.Error is not null ? "STREAM_ERROR" : !asm.Done ? "STREAM_INCOMPLETE" : asm.MalformedEvents.Count > 0 ? "STREAM_MALFORMED" : null;
+            if (broken is not null)
+            {
+                budget.RecordActual(P7F1QSse.Cost(asm.Usage) is { } c ? (double)c : null, reserve);
+                Ledger.Add(Entry(r.Outcome, r.Status, responseSha, rawKey, null, asm.Provider ?? "UNKNOWN", asm.Model ?? "UNKNOWN", broken));
+                throw new P7F1V6DirectV2.ReplyFailure("TRANSPORT:" + broken);
+            }
+            text = AssembledView(asm);
+        }
         var audit = P7F1V6Usage.Check(text, request.Bytes, P7F1V6Protocol.MaxTokens, toolCallsAllowed);
         budget.RecordActual(audit.ProviderCostUsd, reserve);
 
@@ -110,6 +130,34 @@ internal sealed class P7F1V6DirectAuditedModel
         }
         Ledger.Add(Entry(r.Outcome, r.Status, responseSha, rawKey, audit, endpoint, model, "PASSED_AUDIT_TO_PARSER"));
         return text;
+    }
+
+    /// <summary>The chat-completion view of one SSE stream, as the non-streaming reply would state it. Derived; the raw SSE is the authority.
+    /// content is null when the stream carried no content (a tool-call turn); tool_calls are listed in stream index order.</summary>
+    public static string AssembledView(F1QStreamAssembly asm)
+    {
+        var message = new System.Text.Json.Nodes.JsonObject
+        {
+            ["role"] = "assistant",
+            ["content"] = asm.Content.Length == 0 ? null : asm.Content,
+            ["reasoning"] = asm.Reasoning.Length == 0 ? null : asm.Reasoning,
+        };
+        if (asm.ToolCalls.Count > 0)
+            message["tool_calls"] = new System.Text.Json.Nodes.JsonArray(asm.ToolCalls.Select(t => (System.Text.Json.Nodes.JsonNode)new System.Text.Json.Nodes.JsonObject
+            {
+                ["id"] = t.Id, ["type"] = "function",
+                ["function"] = new System.Text.Json.Nodes.JsonObject { ["name"] = t.Name, ["arguments"] = t.Arguments },
+            }).ToArray());
+        return new System.Text.Json.Nodes.JsonObject
+        {
+            ["id"] = asm.GenerationId, ["provider"] = asm.Provider, ["model"] = asm.Model,
+            ["choices"] = new System.Text.Json.Nodes.JsonArray(new System.Text.Json.Nodes.JsonObject
+            {
+                ["index"] = 0, ["finish_reason"] = asm.FinishReason, ["native_finish_reason"] = asm.NativeFinishReason, ["message"] = message,
+            }),
+            ["usage"] = asm.Usage is { } u ? System.Text.Json.Nodes.JsonNode.Parse(u.GetRawText()) : null,
+            ["streamAssembled"] = true,
+        }.ToJsonString();
     }
 }
 

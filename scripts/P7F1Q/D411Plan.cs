@@ -89,7 +89,7 @@ internal static class D411Plan
 
         var report = new
         {
-            artifact = "p7.f1.v6.d4.11b-tool-canary-dryrun.v1",
+            artifact = "p7.f1.v6.d4.11c-tool-canary-dryrun.v1",
             providerCalls = 0,
             planFile = Path.GetFileName(planPath), planSha256 = planSha, planVerifiesNow = verify.Count == 0, codeCommit = head,
             firstRequests = P7F1V6DirectAgentCanary.Arms.SelectMany(a => P7F1V6DirectAgentCanary.Segments.Select(s =>
@@ -106,7 +106,7 @@ internal static class D411Plan
                 "Each arm has its own 8-post, $0.25 budget and early stop.",
             },
         };
-        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.11b-tool-canary-dryrun.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
+        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.11c-tool-canary-dryrun.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
         Console.WriteLine($"plan {planSha} verifies={verify.Count == 0} commit={head}");
         foreach (var f in report.firstRequests) Console.WriteLine(JsonSerializer.Serialize(f));
         foreach (var s in sims)

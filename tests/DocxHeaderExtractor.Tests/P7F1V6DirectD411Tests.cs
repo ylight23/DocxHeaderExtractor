@@ -715,7 +715,10 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         foreach (var field in new[] { "model", "response_format", "temperature", "max_tokens", "provider", "usage" })
             Assert.Equal(bb.GetProperty(field).GetRawText(), ab.GetProperty(field).GetRawText());
         Assert.Equal(P7F1V6AgentTools.Definitions().ToJsonString(), JsonNode.Parse(ab.GetProperty("tools").GetRawText())!.ToJsonString());
-        Assert.False(ab.TryGetProperty("reasoning", out _));
+        // D4.11c: the F1Q request shape under which Qwen made tool calls on this route.
+        Assert.Equal("{\"enabled\":true}", ab.GetProperty("reasoning").GetRawText());
+        Assert.True(ab.GetProperty("stream").GetBoolean());
+        Assert.False(bb.TryGetProperty("stream", out _));
         // Same targets and context as arm B.
         using var bp = JsonDocument.Parse(bb.GetProperty("messages")[1].GetProperty("content").GetString()!);
         using var ap = JsonDocument.Parse(payload);
@@ -724,6 +727,34 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
     }
 
     // ================= response reading and audit =================
+
+    /// <summary>An OpenRouter-style SSE body: role and reasoning, content in two chunks, each tool call announced with id and name and its
+    /// arguments split over two chunks, a finish chunk, a usage chunk, then [DONE]. done=false or error simulate a broken stream.</summary>
+    static string Sse(string requestBody, string? content, (string Id, string Name, string Args)[] calls, string finish, bool done = true, bool error = false)
+    {
+        var prompt = Encoding.UTF8.GetByteCount(requestBody) / 4;
+        var head = new { id = "gen-mock", provider = "Alibaba", model = "qwen/qwen3.7-flash" };
+        var sb = new StringBuilder();
+        void Data(object o) => sb.Append("data: ").Append(JsonSerializer.Serialize(o)).Append("\n\n");
+        Data(new { head.id, head.provider, head.model, choices = new[] { new { index = 0, delta = (object)new { role = "assistant", reasoning = "thinking about it" } } } });
+        if (content is not null)
+            foreach (var part in new[] { content[..(content.Length / 2)], content[(content.Length / 2)..] })
+                Data(new { head.id, head.provider, head.model, choices = new[] { new { index = 0, delta = (object)new { content = part } } } });
+        for (int i = 0; i < calls.Length; i++)
+        {
+            var (id, name, args) = calls[i];
+            Data(new { head.id, head.provider, head.model, choices = new[] { new { index = 0, delta = (object)new { tool_calls = new[] { new { index = i, id, type = "function", function = new { name, arguments = "" } } } } } } });
+            foreach (var part in new[] { args[..(args.Length / 2)], args[(args.Length / 2)..] })
+                Data(new { head.id, head.provider, head.model, choices = new[] { new { index = 0, delta = (object)new { tool_calls = new[] { new { index = i, function = new { arguments = part } } } } } } });
+        }
+        if (error) Data(new { head.id, error = new { code = 502, message = "upstream" } });
+        Data(new { head.id, head.provider, head.model, choices = new[] { new { index = 0, delta = (object)new { }, finish_reason = finish, native_finish_reason = finish } } });
+        Data(new { head.id, head.provider, head.model, choices = Array.Empty<object>(),
+            usage = new { prompt_tokens = prompt, completion_tokens = 300, cost = P7F1V6Usage.Cost(prompt, 300),
+                completion_tokens_details = new { reasoning_tokens = 200 }, prompt_tokens_details = new { cached_tokens = 0, cache_write_tokens = 0 } } });
+        if (done) sb.Append("data: [DONE]\n\n");
+        return sb.ToString();
+    }
 
     static string ChatToolCalls(string requestBody, params (string Id, string Name, string Args)[] calls)
     {
@@ -845,6 +876,81 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         return p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
     }
 
+    // ================= streaming (D4.11c) =================
+
+    P7F1V6AgentAuditedModel StreamModel(Func<string, string> respond, out Handler http, out P7F1V6DirectV2.Budget budget, out P7F1V6SafeRawStore store)
+    {
+        http = new Handler(respond);
+        budget = new P7F1V6DirectV2.Budget(100, 100, 2_000_000);
+        store = P7F1V6SafeRawStore.CreateRun(SafeRoot("stream-" + Guid.NewGuid().ToString("N")));
+        return new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(new P7F1V6OpenRouterTransport(http, TimeSpan.FromSeconds(30)), Key, store, budget));
+    }
+
+    [Fact]
+    public void Streaming_ToolCallsAreAssembledFromChunks_AnsweredByTheDispatcher_AndTheRawSseIsWhatIsStored()
+    {
+        var (t, o) = RepeatPairOutsideWindow();
+        var args = JsonSerializer.Serialize(new { first = L(t), second = L(o), window = 1 });
+        string? secondBody = null;
+        var model = StreamModel(body =>
+        {
+            if (TurnOf(body) == 1) return Sse(body, null, new[] { ("call_s1", P7F1V6AgentTools.Compare, args) }, "tool_calls");
+            secondBody = body;
+            return Sse(body, Final(TargetsOfBody(body), a => a == L(t) ? ("NOT_SELECT", new[] { L(o) }) : ("NOT_SELECT", null)), Array.Empty<(string, string, string)>(), "stop");
+        }, out var http, out _, out var store);
+        var outcome = Run(A.Arm.Auto, model.Turn);
+
+        Assert.True(outcome.Unit.Status == "COMPLETE", outcome.Unit.Failure);
+        Assert.Equal(2, http.Bodies.Count);
+        Assert.All(http.Bodies, b => Assert.Contains("\"stream\":true", b));
+        // The arguments split over two chunks reached the handler whole, and the result went back under Qwen's id.
+        var call = Assert.Single(outcome.ToolCalls);
+        Assert.Equal("OK", call.Status);
+        using var sent = JsonDocument.Parse(secondBody!);
+        var msgs = sent.RootElement.GetProperty("messages");
+        Assert.Equal("call_s1", msgs[2].GetProperty("tool_calls")[0].GetProperty("id").GetString());
+        Assert.Equal(args, msgs[2].GetProperty("tool_calls")[0].GetProperty("function").GetProperty("arguments").GetString());
+        Assert.Equal("call_s1", msgs[3].GetProperty("tool_call_id").GetString());
+        Assert.Equal(call.ContentSha256, Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(msgs[3].GetProperty("content").GetString()!))));
+        Assert.Equal(new[] { L(t) }, outcome.Evidence.EvidenceUsed);
+        // The store keeps the raw SSE bytes, not the assembled view.
+        Assert.All(model.Ledger, l =>
+        {
+            var raw = File.ReadAllText(Path.Combine(store.RunDirectory, l.RawStoreKey + ".bin"));
+            Assert.StartsWith("data: ", raw, StringComparison.Ordinal);
+            Assert.EndsWith("data: [DONE]\n\n", raw, StringComparison.Ordinal);
+        });
+        Assert.Equal(new[] { "tool_calls", "stop" }, model.Ledger.Select(l => l.FinishReason));
+    }
+
+    [Theory]
+    [InlineData(false, false, "CALL:TRANSPORT:STREAM_INCOMPLETE")]
+    [InlineData(true, true, "CALL:TRANSPORT:STREAM_ERROR")]
+    public void Streaming_ABrokenStream_FailsTheCall_ButItsRawIsKept(bool done, bool error, string failure)
+    {
+        var model = StreamModel(body => Sse(body, Final(TargetsOfBody(body)), Array.Empty<(string, string, string)>(), "stop", done, error),
+            out _, out var budget, out var store);
+        var outcome = Run(A.Arm.Auto, model.Turn);
+        Assert.Equal(failure, outcome.Unit.Failure);
+        var entry = Assert.Single(model.Ledger);
+        Assert.True(File.Exists(Path.Combine(store.RunDirectory, entry.RawStoreKey + ".bin")));
+        Assert.Equal(0, budget.ContractFailures);   // a broken stream is a transport outcome, not a contract failure
+    }
+
+    [Fact]
+    public void AssembledView_StatesWhatTheStreamCarried_AndNothingElse()
+    {
+        var sse = Sse("{}", null, new[] { ("a1", "get_document_overview", "{}"), ("a2", "get_source_span", "{\"aliases\":[\"L0042:S0\"]}") }, "tool_calls");
+        using var view = JsonDocument.Parse(P7F1V6DirectAuditedModel.AssembledView(P7F1QSse.Parse(sse)));
+        var m = view.RootElement.GetProperty("choices")[0].GetProperty("message");
+        Assert.Equal(JsonValueKind.Null, m.GetProperty("content").ValueKind);
+        Assert.Equal(new[] { "a1", "a2" }, m.GetProperty("tool_calls").EnumerateArray().Select(c => c.GetProperty("id").GetString()));
+        Assert.Equal("{\"aliases\":[\"L0042:S0\"]}", m.GetProperty("tool_calls")[1].GetProperty("function").GetProperty("arguments").GetString());
+        Assert.Equal("tool_calls", view.RootElement.GetProperty("choices")[0].GetProperty("finish_reason").GetString());
+        Assert.Equal("Alibaba", view.RootElement.GetProperty("provider").GetString());
+        Assert.Equal(0, view.RootElement.GetProperty("usage").GetProperty("prompt_tokens_details").GetProperty("cached_tokens").GetInt32());
+    }
+
     // ================= plan and execute =================
 
     static readonly Lazy<byte[]> PlanBytes = new(() => P7F1V6DirectAgentCanary.Serialize(P7F1V6DirectAgentCanary.PinnedValues(TestRepository.Root(), "TEST_COMMIT")));
@@ -856,6 +962,9 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         var p = doc.RootElement;
         Assert.Equal(P7F1V6DirectAgentCanary.PlanArtifact, p.GetProperty("artifact").GetString());
         Assert.False(p.GetProperty("approvalToSend").GetBoolean());
+        Assert.Equal(P7F1V6DirectAgentCanary.PreviousCampaignPlanSha256, p.GetProperty("previousCampaign").GetProperty("planSha256").GetString());
+        Assert.StartsWith("enabled true", p.GetProperty("reasoning").GetString(), StringComparison.Ordinal);
+        Assert.StartsWith("true", p.GetProperty("stream").GetString(), StringComparison.Ordinal);
         Assert.Equal(new[] { "e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf", "51daf9412732f9685b0d3ea36a7637a0e4d2b561ee7044d857c662c7fc2e6cfa" },
             p.GetProperty("supersedes").EnumerateArray().Select(x => x.GetProperty("planSha256").GetString()));
         Assert.All(p.GetProperty("supersedes").EnumerateArray(), x => Assert.False(x.GetProperty("run").GetBoolean()));
@@ -906,10 +1015,10 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         File.WriteAllBytes(plan, PlanBytes.Value);
         var sha = Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(PlanBytes.Value));
         var root = SafeRoot("safe");
-        // Turn 1: one tool call; turn 2: an answer.
+        // Streaming (D4.11c). Turn 1: one tool call; turn 2: an answer.
         var http = new Handler(body => TurnOf(body) == 1
-            ? ChatToolCalls(body, ("t1", P7F1V6AgentTools.DocumentOverview, "{}"))
-            : ChatStop(body, Final(TargetsOfBody(body))));
+            ? Sse(body, null, new[] { ("t1", P7F1V6AgentTools.DocumentOverview, "{}") }, "tool_calls")
+            : Sse(body, Final(TargetsOfBody(body)), Array.Empty<(string, string, string)>(), "stop"));
 
         Assert.StartsWith("AUTHORIZATION_REFUSED:", Assert.Throws<InvalidOperationException>(() =>
             P7F1V6DirectAgentCanary.Execute(TestRepository.Root(), plan, sha, "TEST_COMMIT", Path.Combine(scratch, "none.json"), Key, http, root)).Message,
@@ -928,7 +1037,7 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
             Assert.All(a.Units, x => Assert.Equal(1, x.SuccessfulToolCalls));
             Assert.Equal(new[] { "TOOL_CALLS_TO_DISPATCHER", "PASSED_AUDIT_TO_PARSER", "TOOL_CALLS_TO_DISPATCHER", "PASSED_AUDIT_TO_PARSER" }, a.Ledger.Select(l => l.Verdict));
             Assert.Equal(new[] { "tool_calls", "stop", "tool_calls", "stop" }, a.Ledger.Select(l => l.FinishReason));
-            Assert.All(a.Ledger, l => Assert.Equal("ABSENT", l.Cache!.CachedTokens.Status));   // the fake responses report no cache fields
+            Assert.All(a.Ledger, l => Assert.Equal("ZERO", l.Cache!.CachedTokens.Status));     // read from the SSE usage chunk
         });
         Assert.NotEqual(arms[0].SafeRunDirectory, arms[1].SafeRunDirectory);
         Assert.DoesNotContain(http.Bodies, b => b.Contains(Key, StringComparison.Ordinal));

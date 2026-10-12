@@ -94,7 +94,9 @@ internal static class P7F1V6DirectAgent
     }
 
     /// <summary>One POST body: the pinned envelope (model, json_object, temperature 0, max_tokens, locked provider block, usage) plus the
-    /// declared tools and this turn's tool_choice. history holds the assistant tool-call messages and the tool results, in order.</summary>
+    /// declared tools and this turn's tool_choice. history holds the assistant tool-call messages and the tool results, in order.
+    /// D4.11c: reasoning enabled true is stated explicitly and the reply is streamed (SSE), the request shape of every F1Q turn in which
+    /// Qwen made tool calls on this route (verified from the F1Q raw). The D4.11b canary sent neither and Qwen made no tool call.</summary>
     public static P7F1V6Protocol.PreparedRequest Build(string systemPrompt, string payload, JsonArray history, string toolChoice)
     {
         if (toolChoice is not ("auto" or "none")) throw new ArgumentException("TOOL_CHOICE_INVALID", nameof(toolChoice));
@@ -110,9 +112,11 @@ internal static class P7F1V6DirectAgent
             ["response_format"] = new JsonObject { ["type"] = spec.ResponseFormatType },
             ["temperature"] = spec.Temperature,
             ["max_tokens"] = spec.MaxTokens,
+            ["reasoning"] = new JsonObject { ["enabled"] = true },
             ["tools"] = P7F1V6AgentTools.Definitions(),
             ["tool_choice"] = toolChoice,
             ["provider"] = JsonSerializer.SerializeToNode(P7F1V6Protocol.ProviderBlock(spec.ProviderTag, spec.AllowFallbacks, spec.RequireParameters, spec.Ignore), Options),
+            ["stream"] = true,
             ["usage"] = new JsonObject { ["include"] = spec.IncludeUsage },
         };
         var text = body.ToJsonString(Options);
