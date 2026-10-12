@@ -1,0 +1,339 @@
+{
+  "artifact": "p7.f1.v6.d4.7-plan.v1",
+  "approvalToSend": false,
+  "codeCommit": "ac530eb10289e79083cbd889462a6e704a539454",
+  "authorityId": "SRC-095",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "universeSha256": "1eee2105941098eb50e79fd866fddeb36718c49ca02da9906aeaaf2ba3673ead",
+  "evidenceStoreSha256": "fb550ed7f4b9e95cb943be9fe358001d78cad5155cc109363001e1cb8927c569",
+  "atoms": 2302,
+  "evidenceParserVersion": "P7_F1Q_READ_ONLY_EVIDENCE_TOOLS_V3",
+  "goldForScorerOnly": {
+    "path": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+    "sha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+    "universeSha256": "1eee2105941098eb50e79fd866fddeb36718c49ca02da9906aeaaf2ba3673ead",
+    "sentToProvider": false
+  },
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "evaluationLabel": "Development evaluation — task clarification informed by previous model errors",
+  "notHeldOut": "The instruction was clarified after the D4.5 run's errors on SRC-095 were seen. Not held-out; F1 is not comparable with task A as an independent improvement.",
+  "historicalBaseline": {
+    "task": "A",
+    "instruction": "Trích xuất tất cả heading",
+    "instructionSha256": "1055842829c1e5eaa13bb8d005e8e67480bfbdfeabc079a55ece81d4a766b334",
+    "consumedPlanSha256": "340d7cbf5e8694ba411ec06aec6e6fe6a1db7082cf895a880c294f65e86978a6"
+  },
+  "instruction": "Trích xuất tất cả các heading thực sự tổ chức cấu trúc tài liệu, xét theo vai trò của từng lần xuất hiện tại chính vị trí đó.\nChọn những dòng hoặc nhóm dòng có chức năng đặt tên, mở đầu hoặc phân chia một phần nội dung của tài liệu.\nKhông chọn các dòng trong mục lục chỉ liệt kê hoặc dẫn chiếu đến heading xuất hiện ở vị trí khác. Tuy nhiên, vẫn xem xét các heading thực sự tổ chức chính mục lục, chỉ mục và những phần khác của tài liệu.\nSử dụng văn bản, bố cục và ngữ cảnh để xác định chức năng của từng lần xuất hiện. Khi chưa đủ bằng chứng, hãy yêu cầu thêm ngữ cảnh hoặc báo chưa thể quyết định thay vì suy đoán.",
+  "instructionSha256": "c0adeaa57a791fb57eb254f334435eaf29aa398da71a21f74159e72ecdac76ab",
+  "promptVersion": "P7_F1_V6_DIRECT_PROMPT_V2_3",
+  "systemPromptSha256": "ed33c467b63ad5307f88557c7b3cbb61df1df7d0ce9c73b50a7b120da0c696b6",
+  "requestVersion": "P7_F1_V6_DIRECT_REQUEST_V2_1",
+  "responseVersion": "P7_F1_V6_DIRECT_RESPONSE_V2",
+  "model": "qwen/qwen3.7-flash",
+  "route": {
+    "only": [
+      "alibaba"
+    ],
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "zdr": "false (user decision recorded as WAIVER_NOT_VERIFIED)",
+  "maxTokens": 32768,
+  "reasoning": "not declared (endpoint default)",
+  "retries": 0,
+  "unit": 48,
+  "overlap": 20,
+  "finalization": "REQUIRED",
+  "budget": {
+    "maxCalls": 100,
+    "maxRequestBytes": 131072,
+    "ceilingUsd": 1,
+    "promptTokenBudget": 900000,
+    "tokenBound": "request UTF-8 bytes bound prompt tokens from above"
+  },
+  "limits": {
+    "MaxRounds": 3,
+    "MaxRetrievePerRound": 4,
+    "MaxAddedLinesPerUnit": 300,
+    "MaxResolveContextLines": 600,
+    "MaxFinalizeOutlineLines": 1200
+  },
+  "rawResponses": "safe store outside the repository, per-run directory, retention policy; never committed",
+  "earlyStop": {
+    "consecutiveContractFailures": 3,
+    "counts": "parser failures, usage/finish audit failures and missing content; transport failures neither count nor reset"
+  },
+  "liveAuthorization": {
+    "required": true,
+    "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+    "status": "APPROVED",
+    "campaigns": 1,
+    "consumedMarker": "consumed-<planSha256>.json in the safe root"
+  },
+  "safeRootPolicy": {
+    "location": "%LOCALAPPDATA%\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
+    "mustExistBeforeRun": true,
+    "outsideRepository": true,
+    "fileSystem": "NTFS",
+    "noReparsePointsInPath": true,
+    "acl": "current user only, inheritance cut",
+    "runDirectories": "run-<32 hex>"
+  },
+  "retention": {
+    "files": [
+      "<sha256>.bin",
+      "<sha256>.<guid>.tmp",
+      "run.review.json",
+      "run-summary.json"
+    ],
+    "rawRetentionDays": 30
+  },
+  "segments": 48,
+  "firstRequests": [
+    {
+      "unitId": "SEG-000",
+      "sha256": "ad940ab4744732d5701e8dffa199d89d4a25dfe31ffefadee64fbb2ad390f92a",
+      "bytes": 23037
+    },
+    {
+      "unitId": "SEG-001",
+      "sha256": "7e22c0709cfb2c2f9419968546bab554492204562aa0d2f4ec7954756774bf5a",
+      "bytes": 27660
+    },
+    {
+      "unitId": "SEG-002",
+      "sha256": "40fdd4eb2024700fcf521501336eea2dc726e9dec71764d40725829916720847",
+      "bytes": 28808
+    },
+    {
+      "unitId": "SEG-003",
+      "sha256": "0a8d20fb94726a87388f454306fe7b55a8b6444538a7f2e86d19c6f40187da0c",
+      "bytes": 30825
+    },
+    {
+      "unitId": "SEG-004",
+      "sha256": "15f58c124df94760e9cd8ebb9477c4980b88e95175eb5971793919d40a30e176",
+      "bytes": 30676
+    },
+    {
+      "unitId": "SEG-005",
+      "sha256": "ede1c50ab65d1200cb07d319c2a95a21e45fe34ce610116bd10b82b51c732819",
+      "bytes": 31066
+    },
+    {
+      "unitId": "SEG-006",
+      "sha256": "a7352682161317c014148f0cab6fa3864bd799e35b84425dbac69822dd406dfb",
+      "bytes": 31812
+    },
+    {
+      "unitId": "SEG-007",
+      "sha256": "e0ca23bbbf3e1765eb18c12a04268cbd45b0faa1fd1f55fcfac6966ffca49e4e",
+      "bytes": 32013
+    },
+    {
+      "unitId": "SEG-008",
+      "sha256": "3aa55d875c44428b77fca5f04a814d986bb1f0ac390fbe2734f034b8589208b7",
+      "bytes": 31718
+    },
+    {
+      "unitId": "SEG-009",
+      "sha256": "7fb9861d87fbe0fe134ae5f399b1ef7ff730295e192f20b7be977e508c46c86f",
+      "bytes": 31632
+    },
+    {
+      "unitId": "SEG-010",
+      "sha256": "ff5613e018aeb293b0a2df8848c2c4c304adbe69c5263cd10db5b6c942cce32c",
+      "bytes": 31640
+    },
+    {
+      "unitId": "SEG-011",
+      "sha256": "a8dfcc301dfdcdb3e0796442a4d5387b31734355ec74bbeec86f00476bd1f967",
+      "bytes": 31441
+    },
+    {
+      "unitId": "SEG-012",
+      "sha256": "4053d15dd00e14877c0514afe88abfdfc298320266795ee48c76325c14a7aa8f",
+      "bytes": 31826
+    },
+    {
+      "unitId": "SEG-013",
+      "sha256": "14eb16913506a9fb495ca67e0b933c08962e371e51373602b0c6347183dc18a9",
+      "bytes": 31987
+    },
+    {
+      "unitId": "SEG-014",
+      "sha256": "438e9fcf83dd6ea32f8e6f1054b3c8e8ac172c3b4d4453379fc97f504aaac0d2",
+      "bytes": 31850
+    },
+    {
+      "unitId": "SEG-015",
+      "sha256": "de6df2388b982d9db9656ffbb540c9193dbb139cf49f8feb62418d711ea09b43",
+      "bytes": 31571
+    },
+    {
+      "unitId": "SEG-016",
+      "sha256": "94a4b5bf0a29541b69c5dbdd9508f5f9d108650bfc85af5bf328b4358878afc1",
+      "bytes": 31349
+    },
+    {
+      "unitId": "SEG-017",
+      "sha256": "8c82b72200d53b22c9dc9d4d1cd606605148d6aeff5c59e67d81328c66582cd9",
+      "bytes": 31673
+    },
+    {
+      "unitId": "SEG-018",
+      "sha256": "6b7a7be74a61838a9b993ee4667d568ba61d571a40d3061cbe6d2761637c32e8",
+      "bytes": 30803
+    },
+    {
+      "unitId": "SEG-019",
+      "sha256": "979ceba7bdeda94fed8a1b241ca10f87d75636dd60d68253650feedb646e8a65",
+      "bytes": 27655
+    },
+    {
+      "unitId": "SEG-020",
+      "sha256": "64c2dd03c8f07cec93366fd4c8be6b90d8d831c4ba0dd4bdf24a98b4729d8afe",
+      "bytes": 27648
+    },
+    {
+      "unitId": "SEG-021",
+      "sha256": "55d27420921edc1159bd4be83f39e076c494aa9db6994cf561e6dc33f1f22c49",
+      "bytes": 30300
+    },
+    {
+      "unitId": "SEG-022",
+      "sha256": "930d560445acbfd102d2d37da7620f76d88d6fac3b45a6e8b8b89ba7c51940cb",
+      "bytes": 30557
+    },
+    {
+      "unitId": "SEG-023",
+      "sha256": "7a08cee5e2f7f57f6df36f5d8e18b485dc0f485b0a5848c3aff8ed66aa9a6f3a",
+      "bytes": 30736
+    },
+    {
+      "unitId": "SEG-024",
+      "sha256": "a197f4eeffde8b497f1109bfa4789f8d3e5a78e296030c3791e7fe82d1a28686",
+      "bytes": 30978
+    },
+    {
+      "unitId": "SEG-025",
+      "sha256": "4ae1461c54621cc1cc0cb1546b5166a52968212db4904b8a653f12fc818dc851",
+      "bytes": 30957
+    },
+    {
+      "unitId": "SEG-026",
+      "sha256": "9f998bb6f96e95241117747f6449e5b09b45fe0afc8a7b96b16c1834aa31c06f",
+      "bytes": 30418
+    },
+    {
+      "unitId": "SEG-027",
+      "sha256": "5db13b9748e2156070738a17d224b62085e2fe2688e3a60bf6953fd7e369a8cb",
+      "bytes": 30497
+    },
+    {
+      "unitId": "SEG-028",
+      "sha256": "eca10a627c8dde0e0ad9c49e8863c28387db4c21e9875e748efae7466357897b",
+      "bytes": 31723
+    },
+    {
+      "unitId": "SEG-029",
+      "sha256": "6362521285a1cbb720e37bec51d4338dab8b9834456e3e09cabbeab3850b674e",
+      "bytes": 31574
+    },
+    {
+      "unitId": "SEG-030",
+      "sha256": "0ef75cec4e78c92b5d2a7a556a40979ba4444b228b6a8da92a74748c39eb899a",
+      "bytes": 31424
+    },
+    {
+      "unitId": "SEG-031",
+      "sha256": "755df639f21d07749b30c8a02be50dcea87db0ff2a0752c6b078de3983a89005",
+      "bytes": 31084
+    },
+    {
+      "unitId": "SEG-032",
+      "sha256": "b353cc25b5f9c3c1913b4255bb29a2176d66e16ff57b2d45f4e1e2b00093922a",
+      "bytes": 28418
+    },
+    {
+      "unitId": "SEG-033",
+      "sha256": "3bf02812231bbc481a90ba2bdaf9d180eb61e337e1e438003673e183a0969d4f",
+      "bytes": 27299
+    },
+    {
+      "unitId": "SEG-034",
+      "sha256": "73fc1891b57fd24d6d10de782c43c365c7b885d4ae9e08673ffdeedd783314a6",
+      "bytes": 27846
+    },
+    {
+      "unitId": "SEG-035",
+      "sha256": "d780a906378c93f9c8c7f5405ec43390bcca49eb0a139bcb78fde0d7aeca3765",
+      "bytes": 27384
+    },
+    {
+      "unitId": "SEG-036",
+      "sha256": "86c4a0e13b629f1a96b393d0b693e2f1073f0913b55836962a8a13fe18c2fdc3",
+      "bytes": 27392
+    },
+    {
+      "unitId": "SEG-037",
+      "sha256": "8c9b83569e577d50b604f38e2adb6572ea84361660066e14b30381d2a6f4b7b4",
+      "bytes": 29143
+    },
+    {
+      "unitId": "SEG-038",
+      "sha256": "3e553ce314b2a9d22741a25183f5bbe9f6982d97e850eab51b8353a93f54e83f",
+      "bytes": 30159
+    },
+    {
+      "unitId": "SEG-039",
+      "sha256": "418f5d46ac1b77b6ad18951a6b18ebc856e00f8366084696e542ce587c286173",
+      "bytes": 30804
+    },
+    {
+      "unitId": "SEG-040",
+      "sha256": "7faa85d4809cda869cf07af91a1b0bea1b8337f73c8daa09ca3a0bcb6cd70406",
+      "bytes": 31159
+    },
+    {
+      "unitId": "SEG-041",
+      "sha256": "ea15c391d294a9c4ccc68ea7153ca65b8495ce394026e64e6b9f1a2798784512",
+      "bytes": 31010
+    },
+    {
+      "unitId": "SEG-042",
+      "sha256": "57e1ece15132f541eac2a4d49bd58194e48e3937ef80b7ec5884c3d60fc793d3",
+      "bytes": 30616
+    },
+    {
+      "unitId": "SEG-043",
+      "sha256": "55a4bd744a3e60075109caf0d3648970437aa0479ac8d95bf93c536045984d88",
+      "bytes": 29036
+    },
+    {
+      "unitId": "SEG-044",
+      "sha256": "f9449878e10508084783d597ad0d75a76550934efbc3b820d62253fdba7c992a",
+      "bytes": 29382
+    },
+    {
+      "unitId": "SEG-045",
+      "sha256": "452d9122ae976af3416c35950bb0dfe6ff3d0db7f08407ba94549a605e695ec5",
+      "bytes": 30332
+    },
+    {
+      "unitId": "SEG-046",
+      "sha256": "53b2159b1c9cc8adfa046f96ad4d031d6d46201793d31e809d19dab368167bf6",
+      "bytes": 30649
+    },
+    {
+      "unitId": "SEG-047",
+      "sha256": "41aab2b5cf2219406c97e12f76b148347e5166e574319cc5bf2fa3b875ecaa81",
+      "bytes": 24294
+    }
+  ],
+  "firstRequestsSha256": "51864227d1ffc8e11cc636b9f93256e454fa12d746d2ccd49220f8c738c90cc8"
+}
