@@ -26,13 +26,14 @@ internal static class P7F1V6DirectAgentCanary
     public const int Retries = 0;
     /// <summary>D4.11b. Earlier plans, never run, are superseded: D4.11 (e3f8e57e) by the tool_call_id and finish_reason checks of D4.11a,
     /// and D4.11a (51daf941) by the hard tool-message byte cap and the split telemetry of D4.11b.</summary>
-    public const string PlanArtifact = "p7.f1.v6.d4.11c-tool-canary-plan.v1";
+    public const string PlanArtifact = "p7.f1.v6.d4.11d-tool-canary-plan.v1";
     /// <summary>The D4.11b campaign that ran (plan consumed): non-streaming, no reasoning field; Qwen made 0 tool calls in 4/4 replies.</summary>
     public const string PreviousCampaignPlanSha256 = "c50833bb0fe5ca8a609ee6d883e6c84dc86887a49ec0f4daebca26d494c83f08";
     public static readonly (string Sha256, string Reason)[] SupersededPlans =
     {
         ("e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf", "D4.11a review: tool_call_id integrity and finish_reason/tool_calls consistency"),
         ("51daf9412732f9685b0d3ea36a7637a0e4d2b561ee7044d857c662c7fc2e6cfa", "D4.11b review: 64 KB tool-message cap not enforced on rejected messages (68,938 B in the dry-run); ToolInvoked undercounted refused turns"),
+        ("9a6bcbd1aecd961a25e4a0c0c52359135750ab2f0ab4bc4642a9854634729697", "D4.11d review: 'event: error' with a payload lacking an error key passed the SSE check; the stored response was a decoded string encoded again, not the received bytes"),
     };
     public const string EvaluationLabel = "Development canary — tool-calling chain on segments chosen from previous errors; Stage 1 only; not an F1 estimate";
 
@@ -118,7 +119,7 @@ internal static class P7F1V6DirectAgentCanary
             ["responseFormat"] = "json_object on every turn (as in F1Q plan V3 with tools on this route)",
             ["maxTokens"] = P7F1V6Protocol.MaxTokens,
             ["reasoning"] = "enabled true, stated in every request (D4.11c); reasoning on/off is deferred and not part of this canary",
-            ["stream"] = "true: the reply is SSE; the raw SSE bytes are the stored response; a stream without [DONE], with an error event or a malformed event fails the call (TRANSPORT:STREAM_*); the audit reads the view assembled from the stream",
+            ["stream"] = "true: the reply is SSE. The stored response is the body exactly as received from HTTP (bytes, not a decoded string encoded again); a 2xx body that is not valid UTF-8 fails the call (RESPONSE_NOT_UTF8) and is kept as received. A stream fails the call (TRANSPORT:STREAM_*) if it lacks [DONE], has an error event in the payload (STREAM_ERROR), has \"event: error\" in any form (STREAM_ERROR_EVENT), any other named event (STREAM_NAMED_EVENT), a field other than data (STREAM_FIELD_UNKNOWN), data after [DONE] (STREAM_DATA_AFTER_DONE), a data event without choices or error (STREAM_EVENT_SHAPE_UNKNOWN) or a malformed event (STREAM_MALFORMED); comments and blank lines are allowed. The audit reads the view assembled from the stream.",
             ["reasoningUse"] = "never read to change an answer; stored with the raw response only",
             ["retries"] = Retries,
             ["unit"] = P7F1V6DirectCanary410.Unit,

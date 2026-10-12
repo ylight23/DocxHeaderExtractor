@@ -27,7 +27,12 @@ internal sealed class P7F1V6OpenRouterTransport
     public static HttpClientHandler CreateProductionHandler() => new() { AllowAutoRedirect = false, UseCookies = false };
 
     /// <summary>Outcome of one send. Outcome is always set; Body is the response text when a response arrived.</summary>
-    public sealed record SendResult(string Outcome, int? Status, string? Body, string? BoundarySha256, long? BoundaryBytes, int Attempts);
+    /// <summary>BodyBytes (D4.11d) are the response body exactly as received from HTTP, before any decoding; Body is their strict UTF-8
+    /// reading. A body that is not valid UTF-8 gives Body null and the outcome RESPONSE_NOT_UTF8 on a 2xx status: nothing is repaired or
+    /// replaced, and the bytes are still available to be kept.</summary>
+    public sealed record SendResult(string Outcome, int? Status, string? Body, string? BoundarySha256, long? BoundaryBytes, int Attempts, byte[]? BodyBytes = null);
+
+    static readonly UTF8Encoding StrictUtf8 = new(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
     public SendResult Send(P7F1V6Protocol.PreparedRequest request, string apiKey, CancellationToken ct = default)
     {
@@ -47,11 +52,15 @@ internal sealed class P7F1V6OpenRouterTransport
         using (response)
         {
             var status = (int)response.StatusCode;
-            var body = response.Content.ReadAsStringAsync(ct).GetAwaiter().GetResult();
+            var bodyBytes = response.Content.ReadAsByteArrayAsync(ct).GetAwaiter().GetResult();
+            string? body;
+            try { body = StrictUtf8.GetString(bodyBytes); }
+            catch (DecoderFallbackException) { body = null; }
             // The check that matters: the bytes that reached the stream are the prepared bytes.
             var boundaryOk = content.Written && content.Sha == request.Sha256 && content.Length == request.Bytes;
             var outcome = !boundaryOk ? "BOUNDARY_SHA_MISMATCH" : Classify(status);
-            return new SendResult(outcome, status, body, content.Sha, content.Length, 1);
+            if (outcome == "HTTP_OK" && body is null) outcome = "RESPONSE_NOT_UTF8";
+            return new SendResult(outcome, status, body, content.Sha, content.Length, 1, bodyBytes);
         }
     }
 

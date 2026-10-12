@@ -951,6 +951,153 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.Equal(0, view.RootElement.GetProperty("usage").GetProperty("prompt_tokens_details").GetProperty("cached_tokens").GetInt32());
     }
 
+    // ================= SSE guard and byte preservation (D4.11d) =================
+
+    static string GoodStream(string body) => Sse(body, Final(TargetsOfBody(body)), Array.Empty<(string, string, string)>(), "stop");
+
+    sealed class ByteHandler(Func<string, (byte[] Bytes, string ContentType)> respond) : HttpMessageHandler
+    {
+        public List<byte[]> Served { get; } = new();
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
+        {
+            var body = await request.Content!.ReadAsStringAsync(ct);
+            var (bytes, contentType) = respond(body);
+            Served.Add(bytes);
+            var content = new ByteArrayContent(bytes);
+            content.Headers.TryAddWithoutValidation("Content-Type", contentType);
+            return new HttpResponseMessage(HttpStatusCode.OK) { Content = content };
+        }
+    }
+
+    P7F1V6AgentAuditedModel BytesModel(Func<string, (byte[], string)> respond, out ByteHandler http, out P7F1V6SafeRawStore store)
+    {
+        http = new ByteHandler(respond);
+        store = P7F1V6SafeRawStore.CreateRun(SafeRoot("bytes-" + Guid.NewGuid().ToString("N")));
+        return new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(new P7F1V6OpenRouterTransport(http, TimeSpan.FromSeconds(30)), Key,
+            store, new P7F1V6DirectV2.Budget(100, 100, 2_000_000)));
+    }
+
+    [Theory]
+    [InlineData("event: error\ndata: {\"message\":\"upstream failure\"}\n\n", "STREAM_ERROR_EVENT")]
+    [InlineData("event:error\ndata: {\"message\":\"upstream failure\"}\n\n", "STREAM_ERROR_EVENT")]
+    [InlineData("event: error  \r\ndata: {\"choices\":[]}\r\n\r\n", "STREAM_ERROR_EVENT")]
+    [InlineData("event: ERROR\ndata: {\"choices\":[]}\n\n", "STREAM_ERROR_EVENT")]
+    [InlineData("event: ping\ndata: {\"choices\":[]}\n\n", "STREAM_NAMED_EVENT")]
+    [InlineData("event\ndata: {\"choices\":[]}\n\n", "STREAM_NAMED_EVENT")]
+    [InlineData("id: 7\ndata: {\"choices\":[]}\n\n", "STREAM_FIELD_UNKNOWN")]
+    [InlineData("retry: 10\ndata: {\"choices\":[]}\n\n", "STREAM_FIELD_UNKNOWN")]
+    [InlineData("Data: {\"choices\":[]}\n\n", "STREAM_FIELD_UNKNOWN")]
+    [InlineData("data: {\"message\":\"upstream failure\"}\n\n", "STREAM_EVENT_SHAPE_UNKNOWN")]
+    [InlineData("data: [1,2]\n\n", "STREAM_EVENT_SHAPE_UNKNOWN")]
+    [InlineData("data: \"text\"\n\n", "STREAM_EVENT_SHAPE_UNKNOWN")]
+    [InlineData("data: {\"choices\":[]}\n\ndata: [DONE]\n\ndata: {\"choices\":[]}\n\n", "STREAM_DATA_AFTER_DONE")]
+    public void SseGuard_RefusesWhatTheFqParserWouldLetPass(string raw, string code) => Assert.Equal(code, P7F1V6SseGuard.Check(raw));
+
+    [Fact]
+    public void SseGuard_AllowsTheShapesRealStreamsHave()
+    {
+        // Keep-alive comments, blank lines, CRLF, usage-only events with empty choices, error payloads (reported by the assembly), malformed JSON
+        // (reported by the assembly), and a body without [DONE] (reported by the assembly as STREAM_INCOMPLETE).
+        var ok = ": OPENROUTER PROCESSING\n\ndata: {\"choices\":[{\"delta\":{}}]}\n\r\ndata: {\"choices\":[],\"usage\":{}}\n\ndata: [DONE]\n\n";
+        Assert.Null(P7F1V6SseGuard.Check(ok));
+        Assert.Null(P7F1V6SseGuard.Check(ok.Replace("\n", "\r\n")));
+        Assert.Null(P7F1V6SseGuard.Check("data: {\"error\":{\"code\":502}}\n\n"));
+        Assert.Null(P7F1V6SseGuard.Check("data: {not json\n\n"));
+        Assert.Null(P7F1V6SseGuard.Check("data: {\"choices\":[]}\n\n"));
+        Assert.Null(P7F1V6SseGuard.Check(Sse("{}", "{\"status\":\"COMPLETE\"}", Array.Empty<(string, string, string)>(), "stop")));
+    }
+
+    [Fact]
+    public void ErrorEvent_WithoutAnErrorKey_IsRefused_EvenThoughTheRestOfTheStreamIsAValidAnswer()
+    {
+        string? sent = null;
+        var model = StreamModel(body =>
+        {
+            sent = body;
+            // Everything an answer needs, plus an error event whose payload has no "error" key.
+            return "event: error\ndata: {\"message\":\"upstream failure\"}\n\n" + GoodStream(body);
+        }, out _, out var budget, out var store);
+
+        // The historical F1Q parser alone accepts this stream: no error, [DONE] present, the answer assembled.
+        var raw = "event: error\ndata: {\"message\":\"upstream failure\"}\n\n" + Sse("{}", "{\"status\":\"COMPLETE\"}", Array.Empty<(string, string, string)>(), "stop");
+        var asm = P7F1QSse.Parse(raw);
+        Assert.Null(asm.Error);
+        Assert.True(asm.Done);
+
+        var outcome = Run(A.Arm.Auto, model.Turn);
+        Assert.NotNull(sent);
+        Assert.Equal("FAILED", outcome.Unit.Status);
+        Assert.Equal("CALL:TRANSPORT:STREAM_ERROR_EVENT", outcome.Unit.Failure);
+        Assert.All(outcome.Unit.Decisions.Values, v => Assert.Equal("UNRESOLVED", v));
+        var entry = Assert.Single(model.Ledger);
+        Assert.Equal("STREAM_ERROR_EVENT", entry.Verdict);
+        Assert.True(File.Exists(Path.Combine(store.RunDirectory, entry.RawStoreKey + ".bin")));   // the evidence is kept
+        Assert.Equal(0, budget.ContractFailures);
+    }
+
+    [Fact]
+    public void StoredResponse_IsTheBytesReceived_NotADecodedStringEncodedAgain()
+    {
+        // Non-ASCII text, CRLF line endings and a charset header that names another encoding: the old read-as-string path decoded by the header.
+        var vi = "Tiêu đề: Kết nối HTTP/3 — “đóng”";
+        string? bodyText = null;
+        var model = BytesModel(body =>
+        {
+            bodyText = body;
+            var sse = GoodStream(body).Replace("thinking about it", vi).Replace("\n", "\r\n");
+            return (Encoding.UTF8.GetBytes(sse), "text/event-stream; charset=iso-8859-1");
+        }, out var http, out var store);
+        var outcome = Run(A.Arm.Auto, model.Turn);
+        Assert.True(outcome.Unit.Status == "COMPLETE", outcome.Unit.Failure);
+        var entry = Assert.Single(model.Ledger);
+        var stored = File.ReadAllBytes(Path.Combine(store.RunDirectory, entry.RawStoreKey + ".bin"));
+        Assert.Equal(http.Served[0], stored);                                              // byte for byte
+        Assert.Equal(Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(http.Served[0])), entry.ResponseSha256);
+        Assert.Contains(vi, Encoding.UTF8.GetString(stored));
+        Assert.NotNull(bodyText);
+    }
+
+    [Fact]
+    public void ABomOnTheStream_IsKeptAsReceived_AndTheStreamIsRefused()
+    {
+        var model = BytesModel(body => (Encoding.UTF8.GetPreamble().Concat(Encoding.UTF8.GetBytes(GoodStream(body))).ToArray(), "text/event-stream"),
+            out var http, out var store);
+        var outcome = Run(A.Arm.Auto, model.Turn);
+        Assert.Equal("CALL:TRANSPORT:STREAM_FIELD_UNKNOWN", outcome.Unit.Failure);          // the first line no longer starts with "data"
+        var entry = Assert.Single(model.Ledger);
+        Assert.Equal(http.Served[0], File.ReadAllBytes(Path.Combine(store.RunDirectory, entry.RawStoreKey + ".bin")));
+        Assert.Equal(new byte[] { 0xEF, 0xBB, 0xBF }, http.Served[0][..3]);
+    }
+
+    [Fact]
+    public void InvalidUtf8_IsNeverRepaired_ItFailsTheCallAndTheBytesAreKept()
+    {
+        var model = BytesModel(body =>
+        {
+            var good = Encoding.UTF8.GetBytes(GoodStream(body));
+            var bad = good.Take(good.Length / 2).Concat(new byte[] { 0xFF, 0xFE, 0xC3 }).Concat(good.Skip(good.Length / 2)).ToArray();
+            return (bad, "text/event-stream");
+        }, out var http, out var store);
+        var outcome = Run(A.Arm.Auto, model.Turn);
+        Assert.Equal("FAILED", outcome.Unit.Status);
+        Assert.Equal("CALL:TRANSPORT:RESPONSE_NOT_UTF8", outcome.Unit.Failure);
+        var entry = Assert.Single(model.Ledger);
+        Assert.Equal("TRANSPORT_FAILED", entry.Verdict);
+        Assert.Equal(http.Served[0], File.ReadAllBytes(Path.Combine(store.RunDirectory, entry.RawStoreKey + ".bin")));   // 0xFF 0xFE 0xC3 still there
+        Assert.Equal(Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(http.Served[0])), entry.ResponseSha256);
+    }
+
+    [Fact]
+    public void NonStreamingBodies_AreStoredAsReceivedToo()
+    {
+        var model = BytesModel(body => (Encoding.UTF8.GetBytes(ChatStop(body, Final(TargetsOfBody(body))) + "\r\n"), "application/json"),
+            out var http, out var store);
+        var outcome = Run(A.Arm.Auto, model.Turn);
+        Assert.True(outcome.Unit.Status == "COMPLETE" || outcome.Unit.Failure is not null);
+        var entry = Assert.Single(model.Ledger);
+        Assert.Equal(http.Served[0], File.ReadAllBytes(Path.Combine(store.RunDirectory, entry.RawStoreKey + ".bin")));
+    }
+
     // ================= plan and execute =================
 
     static readonly Lazy<byte[]> PlanBytes = new(() => P7F1V6DirectAgentCanary.Serialize(P7F1V6DirectAgentCanary.PinnedValues(TestRepository.Root(), "TEST_COMMIT")));
@@ -965,7 +1112,8 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.Equal(P7F1V6DirectAgentCanary.PreviousCampaignPlanSha256, p.GetProperty("previousCampaign").GetProperty("planSha256").GetString());
         Assert.StartsWith("enabled true", p.GetProperty("reasoning").GetString(), StringComparison.Ordinal);
         Assert.StartsWith("true", p.GetProperty("stream").GetString(), StringComparison.Ordinal);
-        Assert.Equal(new[] { "e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf", "51daf9412732f9685b0d3ea36a7637a0e4d2b561ee7044d857c662c7fc2e6cfa" },
+        Assert.Equal(new[] { "e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf", "51daf9412732f9685b0d3ea36a7637a0e4d2b561ee7044d857c662c7fc2e6cfa",
+            "9a6bcbd1aecd961a25e4a0c0c52359135750ab2f0ab4bc4642a9854634729697" },
             p.GetProperty("supersedes").EnumerateArray().Select(x => x.GetProperty("planSha256").GetString()));
         Assert.All(p.GetProperty("supersedes").EnumerateArray(), x => Assert.False(x.GetProperty("run").GetBoolean()));
         Assert.Contains("rejected and invalid ones included", p.GetProperty("toolMessageBytes").GetString());

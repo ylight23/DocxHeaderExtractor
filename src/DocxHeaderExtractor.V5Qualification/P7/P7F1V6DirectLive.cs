@@ -79,7 +79,10 @@ internal sealed class P7F1V6DirectAuditedModel
             if (r.Outcome is "BOUNDARY_SHA_MISMATCH" or "PREPARED_SHA_MISMATCH") budget.Halt(r.Outcome);
             // No response means no usage: the cost of the attempt is unknown and stays reserved.
             budget.RecordActual(null, reserve);
-            Ledger.Add(Entry(r.Outcome, r.Status, null, null, null, "UNKNOWN", "UNKNOWN", "TRANSPORT_FAILED"));
+            // A 2xx body that is not valid UTF-8 is kept as received (never repaired) so the evidence is not lost.
+            var keptSha = r.Outcome == "RESPONSE_NOT_UTF8" && r.BodyBytes is { Length: > 0 } nb ? Convert.ToHexStringLower(SHA256.HashData(nb)) : null;
+            var keptKey = keptSha is not null ? store.Put(r.BodyBytes!) : null;
+            Ledger.Add(Entry(r.Outcome, r.Status, keptSha, keptKey, null, "UNKNOWN", "UNKNOWN", "TRANSPORT_FAILED"));
             throw new P7F1V6DirectV2.ReplyFailure("TRANSPORT:" + r.Outcome);
         }
         var text = r.Body ?? "";
@@ -90,13 +93,17 @@ internal sealed class P7F1V6DirectAuditedModel
             Ledger.Add(Entry(r.Outcome, r.Status, null, null, null, "UNKNOWN", "UNKNOWN", "KEY_ECHOED_NOT_STORED"));
             throw new P7F1V6DirectV2.ReplyFailure("API_KEY_ECHOED");
         }
-        var bytes = Encoding.UTF8.GetBytes(text);
+        // The stored response is the body as received from HTTP (D4.11d), not the decoded string encoded again.
+        var bytes = r.BodyBytes ?? Encoding.UTF8.GetBytes(text);
         var responseSha = Convert.ToHexStringLower(SHA256.HashData(bytes));
         var rawKey = store.Put(bytes);
         if (stream)
         {
             var asm = P7F1QSse.Parse(text);
-            var broken = asm.Error is not null ? "STREAM_ERROR" : !asm.Done ? "STREAM_INCOMPLETE" : asm.MalformedEvents.Count > 0 ? "STREAM_MALFORMED" : null;
+            // The guard reads the stream line by line before anything is trusted: an event: error, any named event, any field but data, data
+            // after [DONE] and a data event without choices or error are all refused, whatever their payload says.
+            var broken = P7F1V6SseGuard.Check(text)
+                ?? (asm.Error is not null ? "STREAM_ERROR" : !asm.Done ? "STREAM_INCOMPLETE" : asm.MalformedEvents.Count > 0 ? "STREAM_MALFORMED" : null);
             if (broken is not null)
             {
                 budget.RecordActual(P7F1QSse.Cost(asm.Usage) is { } c ? (double)c : null, reserve);
