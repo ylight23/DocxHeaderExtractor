@@ -1,0 +1,593 @@
+{
+  "artifact": "p7.f1.v6.d4.11-tool-canary-dryrun.v1",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11-tool-canary-plan.v1.json",
+  "planSha256": "e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf",
+  "planVerifiesNow": true,
+  "codeCommit": "406e4733a4d67d1a35e1d3f7bdaf9e48f69bfcb9",
+  "firstRequests": [
+    {
+      "arm": "AUTO",
+      "segment": "SEG-001",
+      "sha256": "e0a4560e55c8f70aeb76b082f1daed6c22ac9c47e00c3ee0bd69b24e9126a643",
+      "bytes": 31370,
+      "reserveUsd": 0.005201
+    },
+    {
+      "arm": "AUTO",
+      "segment": "SEG-008",
+      "sha256": "e99bad775234872f06c9e20c12f103f86482f82319b01adf7047ac9de687480a",
+      "bytes": 35428,
+      "reserveUsd": 0.01665
+    },
+    {
+      "arm": "EVIDENCE_FIRST",
+      "segment": "SEG-001",
+      "sha256": "6b01c3b4297d3e68939b608feb183dc55008e908acfa49be1913e1d5267846c7",
+      "bytes": 31493,
+      "reserveUsd": 0.005205
+    },
+    {
+      "arm": "EVIDENCE_FIRST",
+      "segment": "SEG-008",
+      "sha256": "6d8242675d4d8ec97b7a2da1419db2f124d05063445bd306398587231b953691",
+      "bytes": 35551,
+      "reserveUsd": 0.016662
+    }
+  ],
+  "worstCaseReservePerArmUsd": 0.209715,
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "AUTO",
+          "calls": 2,
+          "reservedUsd": 0.021851,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "requestBytes": [
+                31370
+              ],
+              "maxRequestBytes": 31370,
+              "toolCalls": 0,
+              "okToolCalls": 0,
+              "rejected": [],
+              "toolResultBytes": 0,
+              "truncatedResults": 0,
+              "scope": {
+                "EvaluatedTargets": 48,
+                "ShownInRequest": 88,
+                "ObservedThroughToolsOnly": 0,
+                "ObservedTotal": 88,
+                "ObservedPages": [
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "WholeDocumentLines": 2302,
+                "WholeDocumentObserved": false,
+                "RefsTotal": 0,
+                "RefsToToolOnlyLines": 0,
+                "DecisionsCitingToolOnlyLines": []
+              }
+            },
+            {
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "requestBytes": [
+                35428
+              ],
+              "maxRequestBytes": 35428,
+              "toolCalls": 0,
+              "okToolCalls": 0,
+              "rejected": [],
+              "toolResultBytes": 0,
+              "truncatedResults": 0,
+              "scope": {
+                "EvaluatedTargets": 48,
+                "ShownInRequest": 88,
+                "ObservedThroughToolsOnly": 0,
+                "ObservedTotal": 88,
+                "ObservedPages": [
+                  11,
+                  12,
+                  13
+                ],
+                "WholeDocumentLines": 2302,
+                "WholeDocumentObserved": false,
+                "RefsTotal": 0,
+                "RefsToToolOnlyLines": 0,
+                "DecisionsCitingToolOnlyLines": []
+              }
+            }
+          ]
+        },
+        {
+          "arm": "EVIDENCE_FIRST",
+          "calls": 2,
+          "reservedUsd": 0.021867,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "UnitId": "SEG-001",
+              "Status": "FAILED",
+              "Failure": "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED",
+              "posts": 1,
+              "requestBytes": [
+                31493
+              ],
+              "maxRequestBytes": 31493,
+              "toolCalls": 0,
+              "okToolCalls": 0,
+              "rejected": [],
+              "toolResultBytes": 0,
+              "truncatedResults": 0,
+              "scope": {
+                "EvaluatedTargets": 48,
+                "ShownInRequest": 88,
+                "ObservedThroughToolsOnly": 0,
+                "ObservedTotal": 88,
+                "ObservedPages": [
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "WholeDocumentLines": 2302,
+                "WholeDocumentObserved": false,
+                "RefsTotal": 0,
+                "RefsToToolOnlyLines": 0,
+                "DecisionsCitingToolOnlyLines": []
+              }
+            },
+            {
+              "UnitId": "SEG-008",
+              "Status": "FAILED",
+              "Failure": "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED",
+              "posts": 1,
+              "requestBytes": [
+                35551
+              ],
+              "maxRequestBytes": 35551,
+              "toolCalls": 0,
+              "okToolCalls": 0,
+              "rejected": [],
+              "toolResultBytes": 0,
+              "truncatedResults": 0,
+              "scope": {
+                "EvaluatedTargets": 48,
+                "ShownInRequest": 88,
+                "ObservedThroughToolsOnly": 0,
+                "ObservedTotal": 88,
+                "ObservedPages": [
+                  11,
+                  12,
+                  13
+                ],
+                "WholeDocumentLines": 2302,
+                "WholeDocumentObserved": false,
+                "RefsTotal": 0,
+                "RefsToToolOnlyLines": 0,
+                "DecisionsCitingToolOnlyLines": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "simulation": "REPEATS_OF_EVERY_TARGET (8 per turn, three turns, then answer)",
+      "arms": [
+        {
+          "arm": "AUTO",
+          "calls": 8,
+          "reservedUsd": 0.133861,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "requestBytes": [
+                31370,
+                42797,
+                54186,
+                67593
+              ],
+              "maxRequestBytes": 67593,
+              "toolCalls": 24,
+              "okToolCalls": 24,
+              "rejected": [],
+              "toolResultBytes": 28364,
+              "truncatedResults": 2,
+              "scope": {
+                "EvaluatedTargets": 48,
+                "ShownInRequest": 88,
+                "ObservedThroughToolsOnly": 27,
+                "ObservedTotal": 115,
+                "ObservedPages": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  19,
+                  20,
+                  21
+                ],
+                "WholeDocumentLines": 2302,
+                "WholeDocumentObserved": false,
+                "RefsTotal": 0,
+                "RefsToToolOnlyLines": 0,
+                "DecisionsCitingToolOnlyLines": []
+              }
+            },
+            {
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "requestBytes": [
+                35428,
+                44929,
+                57295,
+                66870
+              ],
+              "maxRequestBytes": 66870,
+              "toolCalls": 24,
+              "okToolCalls": 24,
+              "rejected": [],
+              "toolResultBytes": 24381,
+              "truncatedResults": 2,
+              "scope": {
+                "EvaluatedTargets": 48,
+                "ShownInRequest": 88,
+                "ObservedThroughToolsOnly": 10,
+                "ObservedTotal": 98,
+                "ObservedPages": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  11,
+                  12,
+                  13
+                ],
+                "WholeDocumentLines": 2302,
+                "WholeDocumentObserved": false,
+                "RefsTotal": 0,
+                "RefsToToolOnlyLines": 0,
+                "DecisionsCitingToolOnlyLines": []
+              }
+            }
+          ]
+        },
+        {
+          "arm": "EVIDENCE_FIRST",
+          "calls": 8,
+          "reservedUsd": 0.133951,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "requestBytes": [
+                31493,
+                42920,
+                54309,
+                67716
+              ],
+              "maxRequestBytes": 67716,
+              "toolCalls": 24,
+              "okToolCalls": 24,
+              "rejected": [],
+              "toolResultBytes": 28364,
+              "truncatedResults": 2,
+              "scope": {
+                "EvaluatedTargets": 48,
+                "ShownInRequest": 88,
+                "ObservedThroughToolsOnly": 27,
+                "ObservedTotal": 115,
+                "ObservedPages": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  19,
+                  20,
+                  21
+                ],
+                "WholeDocumentLines": 2302,
+                "WholeDocumentObserved": false,
+                "RefsTotal": 0,
+                "RefsToToolOnlyLines": 0,
+                "DecisionsCitingToolOnlyLines": []
+              }
+            },
+            {
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "requestBytes": [
+                35551,
+                45052,
+                57418,
+                66993
+              ],
+              "maxRequestBytes": 66993,
+              "toolCalls": 24,
+              "okToolCalls": 24,
+              "rejected": [],
+              "toolResultBytes": 24381,
+              "truncatedResults": 2,
+              "scope": {
+                "EvaluatedTargets": 48,
+                "ShownInRequest": 88,
+                "ObservedThroughToolsOnly": 10,
+                "ObservedTotal": 98,
+                "ObservedPages": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  11,
+                  12,
+                  13
+                ],
+                "WholeDocumentLines": 2302,
+                "WholeDocumentObserved": false,
+                "RefsTotal": 0,
+                "RefsToToolOnlyLines": 0,
+                "DecisionsCitingToolOnlyLines": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "simulation": "LARGEST_RESULTS (8 full page layouts per turn, three turns, then answer)",
+      "arms": [
+        {
+          "arm": "AUTO",
+          "calls": 8,
+          "reservedUsd": 0.166023,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "requestBytes": [
+                31370,
+                101318,
+                107185,
+                113052
+              ],
+              "maxRequestBytes": 113052,
+              "toolCalls": 24,
+              "okToolCalls": 5,
+              "rejected": [
+                {
+                  "code": "UNIT_TOOL_RESULT_BYTES_EXHAUSTED",
+                  "count": 19
+                }
+              ],
+              "toolResultBytes": 68938,
+              "truncatedResults": 0,
+              "scope": {
+                "EvaluatedTargets": 48,
+                "ShownInRequest": 88,
+                "ObservedThroughToolsOnly": 193,
+                "ObservedTotal": 281,
+                "ObservedPages": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13
+                ],
+                "WholeDocumentLines": 2302,
+                "WholeDocumentObserved": false,
+                "RefsTotal": 0,
+                "RefsToToolOnlyLines": 0,
+                "DecisionsCitingToolOnlyLines": []
+              }
+            },
+            {
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "requestBytes": [
+                35428,
+                105376,
+                111243,
+                117110
+              ],
+              "maxRequestBytes": 117110,
+              "toolCalls": 24,
+              "okToolCalls": 5,
+              "rejected": [
+                {
+                  "code": "UNIT_TOOL_RESULT_BYTES_EXHAUSTED",
+                  "count": 19
+                }
+              ],
+              "toolResultBytes": 68938,
+              "truncatedResults": 0,
+              "scope": {
+                "EvaluatedTargets": 48,
+                "ShownInRequest": 88,
+                "ObservedThroughToolsOnly": 107,
+                "ObservedTotal": 195,
+                "ObservedPages": [
+                  9,
+                  10,
+                  11,
+                  12,
+                  13
+                ],
+                "WholeDocumentLines": 2302,
+                "WholeDocumentObserved": false,
+                "RefsTotal": 0,
+                "RefsToToolOnlyLines": 0,
+                "DecisionsCitingToolOnlyLines": []
+              }
+            }
+          ]
+        },
+        {
+          "arm": "EVIDENCE_FIRST",
+          "calls": 8,
+          "reservedUsd": 0.166112,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "requestBytes": [
+                31493,
+                101441,
+                107308,
+                113175
+              ],
+              "maxRequestBytes": 113175,
+              "toolCalls": 24,
+              "okToolCalls": 5,
+              "rejected": [
+                {
+                  "code": "UNIT_TOOL_RESULT_BYTES_EXHAUSTED",
+                  "count": 19
+                }
+              ],
+              "toolResultBytes": 68938,
+              "truncatedResults": 0,
+              "scope": {
+                "EvaluatedTargets": 48,
+                "ShownInRequest": 88,
+                "ObservedThroughToolsOnly": 193,
+                "ObservedTotal": 281,
+                "ObservedPages": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13
+                ],
+                "WholeDocumentLines": 2302,
+                "WholeDocumentObserved": false,
+                "RefsTotal": 0,
+                "RefsToToolOnlyLines": 0,
+                "DecisionsCitingToolOnlyLines": []
+              }
+            },
+            {
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "requestBytes": [
+                35551,
+                105499,
+                111366,
+                117233
+              ],
+              "maxRequestBytes": 117233,
+              "toolCalls": 24,
+              "okToolCalls": 5,
+              "rejected": [
+                {
+                  "code": "UNIT_TOOL_RESULT_BYTES_EXHAUSTED",
+                  "count": 19
+                }
+              ],
+              "toolResultBytes": 68938,
+              "truncatedResults": 0,
+              "scope": {
+                "EvaluatedTargets": 48,
+                "ShownInRequest": 88,
+                "ObservedThroughToolsOnly": 107,
+                "ObservedTotal": 195,
+                "ObservedPages": [
+                  9,
+                  10,
+                  11,
+                  12,
+                  13
+                ],
+                "WholeDocumentLines": 2302,
+                "WholeDocumentObserved": false,
+                "RefsTotal": 0,
+                "RefsToToolOnlyLines": 0,
+                "DecisionsCitingToolOnlyLines": []
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call. They show the loop, the caps and the reserve, not what Qwen will do.",
+    "A unit stops calling tools when 64 KB of results is reached (UNIT_TOOL_RESULT_BYTES_EXHAUSTED), so its last turn stays under 131,072 bytes.",
+    "Each arm has its own 8-post, $0.25 budget and early stop."
+  ]
+}

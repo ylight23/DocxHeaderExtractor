@@ -1,0 +1,167 @@
+{
+  "artifact": "p7.f1.v6.d4.11-tool-canary-plan.v1",
+  "approvalToSend": false,
+  "codeCommit": "406e4733a4d67d1a35e1d3f7bdaf9e48f69bfcb9",
+  "authorityId": "SRC-095",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "universeSha256": "1eee2105941098eb50e79fd866fddeb36718c49ca02da9906aeaaf2ba3673ead",
+  "evidenceStoreSha256": "fb550ed7f4b9e95cb943be9fe358001d78cad5155cc109363001e1cb8927c569",
+  "atoms": 2302,
+  "evidenceParserVersion": "P7_F1Q_READ_ONLY_EVIDENCE_TOOLS_V3",
+  "goldForScorerOnly": {
+    "path": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+    "sha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+    "sentToProvider": false,
+    "use": "offline diagnostic on the 96 targets only"
+  },
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "evaluationLabel": "Development canary — tool-calling chain on segments chosen from previous errors; Stage 1 only; not an F1 estimate",
+  "instruction": "Trích xuất tất cả các heading thực sự tổ chức cấu trúc tài liệu, xét theo vai trò của từng lần xuất hiện tại chính vị trí đó.\nChọn những dòng hoặc nhóm dòng có chức năng đặt tên, mở đầu hoặc phân chia một phần nội dung của tài liệu.\nKhông chọn các dòng trong mục lục chỉ liệt kê hoặc dẫn chiếu đến heading xuất hiện ở vị trí khác. Tuy nhiên, vẫn xem xét các heading thực sự tổ chức chính mục lục, chỉ mục và những phần khác của tài liệu.\nSử dụng văn bản, bố cục và ngữ cảnh để xác định chức năng của từng lần xuất hiện. Khi chưa đủ bằng chứng, hãy yêu cầu thêm ngữ cảnh hoặc báo chưa thể quyết định thay vì suy đoán.",
+  "instructionSha256": "c0adeaa57a791fb57eb254f334435eaf29aa398da71a21f74159e72ecdac76ab",
+  "requestVersion": "P7_F1_V6_SELECT_AGENT_REQUEST_V1",
+  "promptVersion": "P7_F1_V6_SELECT_AGENT_PROMPT_V1",
+  "responseVersion": "P7_F1_V6_SELECT_OBJECTS_V1",
+  "versionFieldsInPayload": false,
+  "needsEvidenceStatus": "refused in agent mode (NEEDS_EVIDENCE_NOT_IN_AGENT_MODE); evidence comes through tool calls",
+  "tools": {
+    "version": "P7_F1_V6_AGENT_TOOLS_V1",
+    "definitionsSha256": "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3",
+    "names": [
+      "get_document_overview",
+      "get_source_context",
+      "get_page_layout",
+      "get_source_span",
+      "search_document_text",
+      "get_repeated_occurrences",
+      "compare_source_locations"
+    ],
+    "lineage": {
+      "get_document_overview": "NEW (D4.11): per-page counts and font-size histogram from P7F1QEvidenceTools.PageStats",
+      "get_source_context": "Issue #5 get_occurrence_context (F1Q tool set V2 context: layout, relation to target, same-baseline peers, page statistics)",
+      "get_page_layout": "Issue #5 get_page_geometry (F1Q get_page_geometry: page lines with bbox and font)",
+      "get_source_span": "Issue #5 get_source_span (F1Q get_source_span: full parser record per alias)",
+      "search_document_text": "V6 D1 search_document_text (P7F1V6Tools.Normalize for the normalized mode)",
+      "get_repeated_occurrences": "Issue #5 get_repeated_occurrences (F1Q RepeatKey normalisation; F1Q description not reused: it named the kinds of line to look for)",
+      "compare_source_locations": "F1Q V2 compare_occurrences (same sides and deltas; F1Q description not reused: it named the kinds of line to compare)"
+    },
+    "getPageImage": "NOT_REGISTERED: the V6 evidence store holds no page image and image input on the pinned route is not verified",
+    "resultCapBytes": 16384,
+    "argumentCapBytes": 2048,
+    "transport": "native OpenRouter tools/tool_calls; each result returned as role tool with the call's tool_call_id"
+  },
+  "toolChoice": {
+    "turns1To3": "auto",
+    "turn4": "none",
+    "required": "not used: unsupported on the Alibaba route (F1Q 2026-10-09)"
+  },
+  "limits": {
+    "MaxToolTurns": 3,
+    "MaxCallsPerTurn": 8,
+    "MaxPostsPerUnit": 4,
+    "MaxToolResultBytesPerUnit": 65536
+  },
+  "model": "qwen/qwen3.7-flash",
+  "route": {
+    "only": [
+      "alibaba"
+    ],
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "zdr": "false (owner decision, to be accepted again in the authorization)",
+  "responseFormat": "json_object on every turn (as in F1Q plan V3 with tools on this route)",
+  "maxTokens": 32768,
+  "reasoning": "not declared (endpoint default); reasoning on/off is deferred and not part of this canary",
+  "reasoningUse": "never read to change an answer; stored with the raw response only",
+  "retries": 0,
+  "unit": 48,
+  "overlap": 20,
+  "stages": "SELECT, stage SEGMENT only; no RESOLVE, FINALIZE or GROUP",
+  "segments": [
+    "SEG-001",
+    "SEG-008"
+  ],
+  "order": "per segment: arm AUTO, then arm EVIDENCE_FIRST",
+  "arms": [
+    {
+      "arm": "AUTO",
+      "promptSha256": "3ffe3356839b2c21540446ec2d0b6f95a31d88ee45b91f4d2942d15338a4f8cd",
+      "answerWithoutTools": "allowed",
+      "budget": {
+        "maxCalls": 8,
+        "ceilingUsd": 0.25,
+        "maxRequestBytes": 131072,
+        "worstCaseReserveUsd": 0.209715
+      },
+      "earlyStop": 3,
+      "firstRequests": [
+        {
+          "unitId": "SEG-001",
+          "turn": 1,
+          "sha256": "e0a4560e55c8f70aeb76b082f1daed6c22ac9c47e00c3ee0bd69b24e9126a643",
+          "bytes": 31370
+        },
+        {
+          "unitId": "SEG-008",
+          "turn": 1,
+          "sha256": "e99bad775234872f06c9e20c12f103f86482f82319b01adf7047ac9de687480a",
+          "bytes": 35428
+        }
+      ],
+      "requestPlanSha256": "b5e9c9402c7503ee71765b2a7bcf122a1c251fa51c450c4ab72e997e8e0e7939"
+    },
+    {
+      "arm": "EVIDENCE_FIRST",
+      "promptSha256": "f36f16ebd81814040eef4fff1c60764797cd814cb1b739f097f460da4bbd0b38",
+      "answerWithoutTools": "refused: TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED",
+      "budget": {
+        "maxCalls": 8,
+        "ceilingUsd": 0.25,
+        "maxRequestBytes": 131072,
+        "worstCaseReserveUsd": 0.209715
+      },
+      "earlyStop": 3,
+      "firstRequests": [
+        {
+          "unitId": "SEG-001",
+          "turn": 1,
+          "sha256": "6b01c3b4297d3e68939b608feb183dc55008e908acfa49be1913e1d5267846c7",
+          "bytes": 31493
+        },
+        {
+          "unitId": "SEG-008",
+          "turn": 1,
+          "sha256": "6d8242675d4d8ec97b7a2da1419db2f124d05063445bd306398587231b953691",
+          "bytes": 35551
+        }
+      ],
+      "requestPlanSha256": "85f0714044142fc4cce7ab6a9a28d284b399ac6070f35e9688514cb144b217b0"
+    }
+  ],
+  "budget": {
+    "maxCalls": 16,
+    "ceilingUsd": 0.5,
+    "maxRequestBytes": 131072,
+    "perArm": "each arm has its own budget and early stop; totals are the sum"
+  },
+  "measurements": [
+    "tool calls per arm, segment and tool name; invalid and rejected calls with their codes",
+    "chain proof: a tool_call answered by a role tool message with the same tool_call_id, followed by a final answer",
+    "use proof: final evidenceRefs that cite a line seen only through a tool result (RefsToToolOnlyLines)",
+    "scopes: evaluated targets, lines observed (request and tools), whole document observed or not",
+    "SEG-001: targets whose normalized text also occurs elsewhere, and whether a tool result showed that other occurrence before the answer",
+    "protocol outcome per unit; offline diagnostic against Gold on the 96 targets (not F1)",
+    "no-tool reference: the D4.10 arm B replies on the same segments (prompt differs; not a controlled comparison)"
+  ],
+  "rawResponses": "safe store outside the repository, one run directory per arm; tool results and request bodies kept with them",
+  "liveAuthorization": {
+    "required": true,
+    "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+    "status": "APPROVED",
+    "campaigns": 1
+  }
+}
