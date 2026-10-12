@@ -81,6 +81,20 @@ public sealed class P7F1V6DriverTests
         Assert.Empty(run.Violations);
     }
 
+    [Fact] public void A_full_document_run_covers_every_placed_line_of_the_real_RFC_document()
+    {
+        // The whole document, one decision pack per page, then one reconcile over every candidate. Scripted decisions.
+        var (legacy, tools) = Load();
+        var pages = legacy.AllLines.Where(l => l.Page is not null).Select(l => l.Page!.Value).Distinct().Order().ToArray();
+        var packs = pages.Select(pg => PackOfPage(legacy.AllLines, pg, $"pack-p{pg}")).ToArray();
+        var run = P7F1V6Driver.Run(Input(Instr, tools, legacy.SourceSha256, packs), Honest(Even));
+        var placed = legacy.AllLines.Count(l => l.Page is not null);
+        Assert.Equal(placed, run.Resolution!.Finals.Count);            // every placed line has an explicit final state
+        Assert.Equal("RESOLVED", run.RunStatus);
+        Assert.Equal(pages.Length + 1, run.Passes.Count);               // one pack per page, then reconcile
+        Assert.Empty(run.Violations);
+    }
+
     [Fact] public void The_transcript_is_deterministic_for_the_same_inputs_and_script()
     {
         var (legacy, tools) = Load();
