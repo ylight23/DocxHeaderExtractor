@@ -6,17 +6,17 @@ using System.Text.Json;
 namespace DocxHeaderExtractor.V5Qualification.P7;
 
 /// <summary>
-/// P7-F1 V6 hierarchical semantic reconciliation, D2.1 (Issue #9, offline). Qwen makes every semantic decision at every node.
+/// P7-F1 V6 hierarchical semantic reconciliation, D2.3 (Issue #9, offline). Qwen makes every semantic decision at every node.
 /// Local nodes decide their owned occurrences. Reconcile nodes confirm them. Synthesis and global nodes confirm or revise every
-/// occurrence they were shown, and may ask for retrieval: a search over the whole-document registry, or reopening a specific
-/// id, including ids that a local node decided NOT_SELECT. Retrieved text comes back to Qwen as evidence for the next round.
+/// occurrence they were shown, and may ask for retrieval: a page of a search over the whole-document registry, or reopening a
+/// specific id, including ids that a local node decided NOT_SELECT. Retrieved text and layout come back to Qwen as evidence.
 /// C# only forms shards and groups by position and count, looks up ids and text the model asked for, checks identity, evidence,
-/// scope, budgets and completeness, and records provenance. C# never selects a heading, never derives a hierarchy and never
-/// resolves a conflict. Dropping an id from passUp removes only its upward visibility; it never changes its decision.
+/// scope, budgets, manifest and completeness, and records provenance. C# never selects a heading, never derives a hierarchy and
+/// never resolves a conflict. Dropping an id from passUp removes only its upward visibility; it never changes its decision.
 /// </summary>
 internal static class P7F1V6Hier
 {
-    public const string Version = "P7_F1_V6_HIER_V2";
+    public const string Version = "P7_F1_V6_HIER_V3";
     public const string NodeVersion = "P7_F1_V6_HIER_NODE_V2";
     public const int MaxEvidenceRefs = 8, MaxSearchChars = 200, TextPreviewChars = 400;
     public static readonly string[] Decisions = ["SELECT", "NOT_SELECT", "UNRESOLVED"];
@@ -24,7 +24,8 @@ internal static class P7F1V6Hier
 
     public enum Kind { Local, Reconcile, Synthesis, Global }
 
-    public sealed record Cand(string Alias, int Page, string Text);
+    /// <summary>One source line. Layout is the compact geometry and typography of the line, or null when the source has none.</summary>
+    public sealed record Cand(string Alias, int Page, string Text, object? Layout = null);
 
     /// <summary>Owned candidates decide; Before/After are context only (read-only, never revisable by this shard).</summary>
     public sealed record Shard(int Index, IReadOnlyList<Cand> Owned, IReadOnlyList<Cand> Before, IReadOnlyList<Cand> After);
@@ -49,9 +50,15 @@ internal static class P7F1V6Hier
     public sealed record NodeRecord(string NodeId, string Kind, int Level, string InputSha256, int InputBytes, string? OutputSha256,
         int OutputBytes, string Status, string? FailureCode, int Revised, int PassUp);
 
+    /// <summary>Protocol-level result, reported separately so that one word cannot stand for all of it.</summary>
+    public sealed record RunSummary(string ProtocolStatus, bool ProtocolResolved, bool EvidenceComplete, int Occurrences, int Decided,
+        int GlobalReviewed, double GlobalReviewCoverage, int AcceptedNodes, int RetrievalTurns, int RejectedNodes, int StoppedNodes,
+        int SearchPagesWithMore, int UnpagedSearches, string CandidatesSha256, string ManifestSha256);
+
     public sealed record RunResult(string RunStatus, IReadOnlyDictionary<string, State> Final, IReadOnlyList<NodeRecord> Nodes,
         IReadOnlyList<string> Violations, string TranscriptSha256, IReadOnlyDictionary<string, string> IdByAlias, P7F1V6RawStore Raw,
-        int OpenUnresolved, bool GlobalAccepted, int GlobalShown, IReadOnlySet<string> ReopenedIds, IReadOnlySet<string> GlobalReviewedIds);
+        int OpenUnresolved, bool GlobalAccepted, int GlobalShown, IReadOnlySet<string> ReopenedIds, IReadOnlySet<string> GlobalReviewedIds,
+        RunSummary Summary);
 
     /// <summary>
     /// Provenance accounting, a partition of the final states. Source: LocalResolved (decided or revised by a local or reconcile node, not
@@ -84,12 +91,13 @@ internal static class P7F1V6Hier
 
     /// <summary>
     /// OutputBudgetBytes bounds the RAW bytes of any accepted node response. MaxInputBytes bounds every request. Retrieval limits bound
-    /// the rounds and the reopened ids of one node. PassUpCap bounds what a synthesis node passes up (mandatory ids are checked
-    /// against it, never added after the check).
+    /// the rounds, the reopened ids and the search page size of one node. PassUpCap bounds what a synthesis node passes up (mandatory ids
+    /// are checked against it, never added after the check). The manifest fields identify the source; they are part of every payload.
     /// </summary>
     public sealed record Options(string Instruction, string SourceSha256, int ShardSize, int Context, int FanIn, int PassUpCap,
         string? RawDir = null, int OutputBudgetBytes = 16384, string PromptOrder = "NORMAL", int MaxInputBytes = 131072,
-        int MaxRetrievalRounds = 2, int MaxSearchResults = 20, int MaxReopen = 8);
+        int MaxRetrievalRounds = 2, int MaxSearchResults = 20, int MaxReopen = 8,
+        string SourceUniverseSha256 = "", string ParserVersion = "", string EvidenceStoreVersion = "", string? ExpectedCandidatesSha256 = null);
 
     static void Validate(Options o)
     {
@@ -100,6 +108,10 @@ internal static class P7F1V6Hier
         if (o.OutputBudgetBytes < 1024) throw new ArgumentOutOfRangeException(nameof(o.OutputBudgetBytes));
         if (o.MaxInputBytes < 1024) throw new ArgumentOutOfRangeException(nameof(o.MaxInputBytes));
         if (o.MaxRetrievalRounds < 0 || o.MaxSearchResults < 1 || o.MaxReopen < 1) throw new ArgumentOutOfRangeException(nameof(o.MaxRetrievalRounds));
+        if (string.IsNullOrWhiteSpace(o.SourceSha256)) throw new ArgumentException("MANIFEST_INCOMPLETE:sourceSha256");
+        if (string.IsNullOrWhiteSpace(o.SourceUniverseSha256)) throw new ArgumentException("MANIFEST_INCOMPLETE:sourceUniverseSha256");
+        if (string.IsNullOrWhiteSpace(o.ParserVersion)) throw new ArgumentException("MANIFEST_INCOMPLETE:parserVersion");
+        if (string.IsNullOrWhiteSpace(o.EvidenceStoreVersion)) throw new ArgumentException("MANIFEST_INCOMPLETE:evidenceStoreVersion");
     }
 
     /// <summary>Per-run state shared by all nodes.</summary>
@@ -112,6 +124,7 @@ internal static class P7F1V6Hier
         public required IReadOnlyList<Cand> Ordered { get; init; }
         public required object Overview { get; init; }
         public required string InstructionSha { get; init; }
+        public required object Manifest { get; init; }
         public required P7F1V6RawStore Raw { get; init; }
         public Dictionary<string, State> States { get; } = new(StringComparer.Ordinal);
         public List<NodeRecord> Nodes { get; } = new();
@@ -123,6 +136,8 @@ internal static class P7F1V6Hier
         public int GlobalShown { get; set; }
         public HashSet<string> Reopened { get; } = new(StringComparer.Ordinal);
         public HashSet<string> GlobalReviewed { get; } = new(StringComparer.Ordinal);
+        public int SearchPagesWithMore { get; set; }
+        public int UnpagedSearches { get; set; }
     }
 
     /// <summary>What a node has been shown so far: its own ids, the retrieval results, and the aliases that may be cited as evidence.</summary>
@@ -133,19 +148,31 @@ internal static class P7F1V6Hier
         public HashSet<string> Citable { get; } = new(StringComparer.Ordinal); // aliases the model was shown (any role)
         public List<object> Searches { get; } = new();
         public List<object> Reopened { get; } = new();
+        public bool PendingMore { get; set; }                              // the last search page had more matches and was not continued
         public int ReopenedCount => Reopened.Count;
     }
 
     public static RunResult Run(IReadOnlyList<Cand> ordered, Options o, NodeModel model)
     {
         Validate(o);
+        var candidatesSha = Sha(string.Join("\n", ordered.Select(c => $"{c.Alias}|{c.Page}|{c.Text}")));
+        if (o.ExpectedCandidatesSha256 is not null && o.ExpectedCandidatesSha256 != candidatesSha)
+            throw new ArgumentException("CANDIDATES_MISMATCH");
+        var instructionSha = P7F1V6Core.InstructionSha256(o.Instruction);
+        var manifest = new
+        {
+            protocolVersion = Version, sourceSha256 = o.SourceSha256, sourceUniverseSha256 = o.SourceUniverseSha256,
+            parserVersion = o.ParserVersion, evidenceStoreVersion = o.EvidenceStoreVersion, candidatesSha256 = candidatesSha,
+            candidateCount = ordered.Count, instructionSha256 = instructionSha,
+        };
+        var manifestSha = Sha(PayloadJson(manifest));
         var ids = AssignIds(ordered.Select(c => c.Alias));
         var env = new Env
         {
             O = o, Ids = ids, IdToAlias = ids.ToDictionary(p => p.Value, p => p.Key, StringComparer.Ordinal),
             ByAlias = ordered.ToDictionary(c => c.Alias, c => c, StringComparer.Ordinal), Ordered = ordered,
             Overview = P7F1V6Core.Overview(ordered.Select(c => new F1QSourceLine(c.Alias, 0, c.Page, c.Text, null, null)).ToArray()),
-            InstructionSha = P7F1V6Core.InstructionSha256(o.Instruction), Raw = new P7F1V6RawStore(o.RawDir),
+            InstructionSha = instructionSha, Manifest = manifest, Raw = new P7F1V6RawStore(o.RawDir),
         };
         var shards = Shards(ordered, o.ShardSize, o.Context);
 
@@ -155,7 +182,6 @@ internal static class P7F1V6Hier
         {
             if (env.Stopped) break;
             var owned = sh.Owned.Select(c => ids[c.Alias]).ToList();
-            var ctxAliases = sh.Before.Concat(sh.After).Select(c => c.Alias).ToList();
             var local = $"L0-S{sh.Index:D4}";
             RunLocal(env, local, Kind.Local, 0, owned, sh.Before.Concat(sh.After).ToList(), model);
             var rec = $"L0R-S{sh.Index:D4}";
@@ -189,10 +215,17 @@ internal static class P7F1V6Hier
             : env.Violations.Count > 0 ? "COMPLETED_WITH_VIOLATIONS"
             : open > 0 ? "COMPLETED_OPEN_UNRESOLVED"
             : !env.GlobalAccepted ? "NO_GLOBAL_REVIEW"
-            : "RESOLVED";
-        var sha = Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(string.Join("\n", env.Transcript))));
+            : "PROTOCOL_RESOLVED";
+        var sha = Sha(string.Join("\n", env.Transcript));
+        var evidenceComplete = open == 0 && env.States.Values.All(s => s.Decision == "UNRESOLVED" || (s.Evidence?.Count ?? 0) > 0);
+        var globalReviewed = env.GlobalReviewed.Count(id => env.States.ContainsKey(id));
+        var summary = new RunSummary(status, status == "PROTOCOL_RESOLVED", evidenceComplete, ids.Count, env.States.Count, globalReviewed,
+            ids.Count == 0 ? 0 : globalReviewed / (double)ids.Count,
+            env.Nodes.Count(n => n.Status == "ACCEPTED"), env.Nodes.Count(n => n.Status == "RETRIEVE"),
+            env.Nodes.Count(n => n.Status == "REJECTED"), env.Nodes.Count(n => n.Status == "STOPPED"),
+            env.SearchPagesWithMore, env.UnpagedSearches, candidatesSha, manifestSha);
         return new RunResult(status, env.States, env.Nodes, env.Violations, sha, ids, env.Raw, open, env.GlobalAccepted, env.GlobalShown,
-            env.Reopened, env.GlobalReviewed);
+            env.Reopened, env.GlobalReviewed, summary);
     }
 
     // ------------------------------------------------------------------------------------------------------------------
@@ -214,10 +247,12 @@ internal static class P7F1V6Hier
         return PayloadJson(new
         {
             protocolVersion = NodeVersion, nodeId, kind = kind.ToString(), level, instruction = o.Instruction, instructionSha256 = e.InstructionSha,
-            overview = e.Overview,
+            manifest = e.Manifest, overview = e.Overview,
             owned = Order(ownedCands, o.PromptOrder, x => x.C.Alias).Select(x => new { id = x.Id, sourceAlias = x.C.Alias, page = x.C.Page, text = x.C.Text,
+                layoutEvidence = LayoutEvidence(x.C), layout = x.C.Layout,
                 current = e.States.TryGetValue(x.Id, out var s) ? s.Decision : "NONE" }).ToArray(),
-            context = context.Select(c => new { id = e.Ids[c.Alias], sourceAlias = c.Alias, page = c.Page, text = c.Text, role = "CONTEXT_ONLY" }).ToArray(),
+            context = context.Select(c => new { id = e.Ids[c.Alias], sourceAlias = c.Alias, page = c.Page, text = c.Text,
+                layoutEvidence = LayoutEvidence(c), layout = c.Layout, role = "CONTEXT_ONLY" }).ToArray(),
         });
     }
 
@@ -245,13 +280,18 @@ internal static class P7F1V6Hier
         return PayloadJson(new
         {
             protocolVersion = NodeVersion, nodeId, kind = kind.ToString(), level, instruction = o.Instruction, instructionSha256 = e.InstructionSha,
-            overview = e.Overview,
+            manifest = e.Manifest, overview = e.Overview,
+            // Access rule: synthesis and global nodes see text only. Geometry is sent with owned and context lines (local nodes), with
+            // search pages and with reopened ids, so a node can always reach the source layout without carrying it for every shown id.
             shown = Order(shownCands, o.PromptOrder, x => x.C.Alias).Select(x => new { id = x.Id, sourceAlias = x.C.Alias, page = x.C.Page, text = x.C.Text,
+                layoutEvidence = x.C.Layout is null ? "ABSENT" : "AVAILABLE_ON_REOPEN",
                 current = e.States.TryGetValue(x.Id, out var s) ? s.Decision : "NONE" }).ToArray(),
             pairObservations = pairs,
             retrieved = new { searches = rs.Searches, reopened = rs.Reopened },
         });
     }
+
+    static string LayoutEvidence(Cand c) => c.Layout is null ? "ABSENT" : "PRESENT";
 
     // ------------------------------------------------------------------------------------------------------------------
     // One node: model calls, retrieval rounds, binding, and the explicit stop cases. Returns the passUp list when accepted, null otherwise.
@@ -317,6 +357,7 @@ internal static class P7F1V6Hier
             }
             foreach (var id in pass.Confirmed)
                 if (e.States.TryGetValue(id, out var s)) e.States[id] = s with { Confirmations = s.Confirmations + 1 };
+            if (rs.PendingMore) e.UnpagedSearches++;   // a search page had more matches and the node finished without asking for the next page
             if (kind == Kind.Global) e.GlobalAccepted = true;
             e.Nodes.Add(new NodeRecord(nodeId, kind.ToString(), level, inSha, inBytes.Length, outSha, outBytes.Length, "ACCEPTED", null,
                 pass.Items.Count + pass.Confirmed.Count, merged.Count));
@@ -340,18 +381,29 @@ internal static class P7F1V6Hier
     }
 
     // ------------------------------------------------------------------------------------------------------------------
-    // Retrieval: a registry search or a reopen by id. Both are lookups the model asked for; C# does not judge the results.
+    // Retrieval: a page of a registry search, or a reopen by id. Both are lookups the model asked for; C# does not judge the results.
 
     static string? ApplyRetrieval(Env e, Shown rs, Retrieve r)
     {
         if (r.Search is { } q)
         {
             var needle = P7F1V6Tools.Normalize(q);
-            var hits = e.Ordered.Where(c => P7F1V6Tools.Normalize(c.Text).Contains(needle, StringComparison.Ordinal)).Take(e.O.MaxSearchResults).ToArray();
-            var rows = hits.Select(c => new { id = e.Ids[c.Alias], sourceAlias = c.Alias, page = c.Page,
-                decision = e.States.TryGetValue(e.Ids[c.Alias], out var s) ? s.Decision : "NONE", text = Preview(c.Text) }).ToArray();
-            rs.Searches.Add(new { query = q, shown = rows.Length, matches = rows });
-            foreach (var c in hits) rs.Citable.Add(c.Alias);   // shown to the model, so citable as evidence
+            var all = e.Ordered.Where(c => P7F1V6Tools.Normalize(c.Text).Contains(needle, StringComparison.Ordinal)).ToArray();
+            var page = all.Skip(r.Offset).Take(e.O.MaxSearchResults).ToArray();
+            int next = r.Offset + page.Length;
+            bool hasMore = next < all.Length;
+            var rows = page.Select(c => new { id = e.Ids[c.Alias], sourceAlias = c.Alias, page = c.Page,
+                decision = e.States.TryGetValue(e.Ids[c.Alias], out var s) ? s.Decision : "NONE", text = Preview(c.Text),
+                layoutEvidence = LayoutEvidence(c), layout = c.Layout }).ToArray();
+            // Nothing is cut silently: the model sees the total, whether more follows, and where the next page starts.
+            rs.Searches.Add(new
+            {
+                query = q, offset = r.Offset, pageSize = e.O.MaxSearchResults, totalMatches = all.Length, returned = page.Length,
+                hasMore, nextOffset = hasMore ? (int?)next : null, scannedLines = e.Ordered.Count, matches = rows,
+            });
+            foreach (var c in page) rs.Citable.Add(c.Alias);   // shown to the model, so citable as evidence
+            rs.PendingMore = hasMore;
+            if (hasMore) e.SearchPagesWithMore++;
         }
         foreach (var id in r.Reopen)
         {
@@ -363,11 +415,13 @@ internal static class P7F1V6Hier
             var neigh = e.Ordered.Skip(Math.Max(0, i - 2)).Take(5).Where(c => c.Alias != alias).ToArray();
             foreach (var n in neigh) rs.Citable.Add(n.Alias);
             var prev = e.States.TryGetValue(id, out var s) ? s : null;
+            var target = e.ByAlias[alias];
             rs.Reopened.Add(new
             {
-                id, sourceAlias = alias, page = e.ByAlias[alias].Page, text = e.ByAlias[alias].Text,
+                id, sourceAlias = alias, page = target.Page, text = target.Text, layoutEvidence = LayoutEvidence(target), layout = target.Layout,
                 decision = prev?.Decision ?? "NONE", sourceNode = prev?.SourceNode,
                 neighbours = neigh.Select(n => new { id = e.Ids[n.Alias], sourceAlias = n.Alias, page = n.Page, text = Preview(n.Text),
+                    layoutEvidence = LayoutEvidence(n), layout = n.Layout,
                     decision = e.States.TryGetValue(e.Ids[n.Alias], out var ns) ? ns.Decision : "NONE", role = "CONTEXT_ONLY" }).ToArray(),
             });
             rs.Ids.Add(id); rs.Revisable.Add(id); rs.Citable.Add(alias);
@@ -383,7 +437,7 @@ internal static class P7F1V6Hier
 
     public sealed record Item(string Id, string Decision, IReadOnlyList<string> Refs, string? Parent, string? Continues);
     public sealed record Complete(IReadOnlyList<Item> Items, IReadOnlyList<string> Confirmed, List<string> PassUp);
-    public sealed record Retrieve(string? Search, IReadOnlyList<string> Reopen);
+    public sealed record Retrieve(string? Search, IReadOnlyList<string> Reopen, int Offset);
     public sealed record ParseOut(Complete? Complete, Retrieve? Retrieve, string? Failure);
 
     static ParseOut Parse(string response, string nodeId, Kind kind, Shown rs, List<string>? owned, bool allowRetrieve, Env e)
@@ -413,6 +467,12 @@ internal static class P7F1V6Hier
                 if (root.TryGetProperty("items", out var its) && its.GetArrayLength() > 0) return Fail("RETRIEVE_WITH_ITEMS");
                 var search = Str(rt, "search");
                 if (search is not null && (search.Length == 0 || search.Length > MaxSearchChars)) return Fail("SEARCH_INVALID");
+                int offset = 0;
+                if (rt.TryGetProperty("offset", out var of))
+                {
+                    if (of.ValueKind != JsonValueKind.Number || !of.TryGetInt32(out offset) || offset < 0) return Fail("OFFSET_INVALID");
+                }
+                if (offset > 0 && search is null) return Fail("OFFSET_WITHOUT_SEARCH");
                 var reopen = new List<string>();
                 if (rt.TryGetProperty("reopen", out var ro))
                 {
@@ -421,7 +481,7 @@ internal static class P7F1V6Hier
                     reopen.AddRange(ro.EnumerateArray().Select(x => x.GetString()!));
                 }
                 if (search is null && reopen.Count == 0) return Fail("RETRIEVE_EMPTY");
-                return new(null, new Retrieve(search, reopen), null);
+                return new(null, new Retrieve(search, reopen, offset), null);
             }
             if (status != "COMPLETE") return Fail("NODE_" + status + "_CHANGES_NOTHING");
 
@@ -499,8 +559,8 @@ internal static class P7F1V6Hier
         }
     }
 
-    /// <summary>Order of items inside a prompt. NORMAL keeps reading order. REVERSED and SEEDED:n permute the same items.</summary>
-    /// <summary>TARGET:alias:HEAD|MIDDLE|TAIL moves one candidate (when it is in the list) to that position and keeps the rest in reading order.</summary>
+    /// <summary>Order of items inside a prompt. NORMAL keeps reading order. REVERSED and SEEDED:n permute the same items.
+    /// TARGET:alias:HEAD|MIDDLE|TAIL moves one candidate (when it is in the list) to that position and keeps the rest in reading order.</summary>
     public static IEnumerable<T> Order<T>(IEnumerable<T> xs, string mode, Func<T, string> alias)
     {
         var list = xs.ToList();
@@ -569,6 +629,8 @@ internal static class P7F1V6Hier
     static readonly JsonSerializerOptions PayloadOptions = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
     static string PayloadJson(object value) => JsonSerializer.Serialize(value, PayloadOptions);
+
+    static string Sha(string s) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(s)));
 
     /// <summary>A structural reference is valid only for an id the node was shown, context and retrieved ids included.</summary>
     static bool IsShown(Env e, Shown rs, string id) => e.IdToAlias.TryGetValue(id, out var alias) && rs.Citable.Contains(alias);

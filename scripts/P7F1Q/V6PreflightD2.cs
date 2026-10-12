@@ -49,10 +49,13 @@ internal static class V6PreflightD2
         var parsed = PdfSourceAdapter.BuildWithDetails(d.Path);
         var store = PdfSourceEvidenceStore.Build(parsed.Snapshot, parsed.Details);
         var legacy = P7F1QEvidenceTools.FromStore(store, new Dictionary<string, string> { ["O1"] = parsed.Snapshot.Atoms[0].Alias }, toolSet: 2);
-        var cands = legacy.AllLines.Where(l => l.Page is not null).Select(l => new P7F1V6Hier.Cand(l.Alias, l.Page!.Value, l.Text)).ToArray();
+        var cands = legacy.AllLines.Where(l => l.Page is not null)
+            .Select(l => new P7F1V6Hier.Cand(l.Alias, l.Page!.Value, l.Text, P7F1QEvidenceTools.CompactLayout(l.Bbox, l.Typography))).ToArray();
         var maxAlias = cands.Max(c => c.Alias.Length);
         var itemMax = ExactItemMaxBytes(maxAlias);
-        var opts = new P7F1V6Hier.Options("Trích xuất các heading chính", legacy.SourceSha256, shard, Context, FanIn, PassUpCap, null, OutputBudgetBytes);
+        var layoutBytes = cands.Sum(c => c.Layout is null ? 0 : Encoding.UTF8.GetByteCount(JsonSerializer.Serialize(c.Layout)));
+        var opts = new P7F1V6Hier.Options("Trích xuất các heading chính", legacy.SourceSha256, shard, Context, FanIn, PassUpCap, null, OutputBudgetBytes,
+            SourceUniverseSha256: legacy.SourceAliasUniverseSha256, ParserVersion: P7F1QEvidenceTools.VersionV3, EvidenceStoreVersion: legacy.EvidenceStoreSha256);
         var sw = Stopwatch.StartNew();
         var run = P7F1V6Hier.Run(cands, opts, Honest);
         var nodes = run.Nodes;
@@ -68,6 +71,15 @@ internal static class V6PreflightD2
             selected = run.Final.Values.Count(v => v.Decision == "SELECT"), confirmationsTotal = run.Final.Values.Sum(v => v.Confirmations),
             local = Kind("Local"), reconcile = Kind("Reconcile"), synthesis = Kind("Synthesis"), global = Kind("Global"),
             statusRun = run.RunStatus, accounting = P7F1V6Hier.Account(run),
+            protocol = new
+            {
+                // Reported apart: a protocol result is not a claim that Qwen re-reviewed every occurrence.
+                run.Summary.ProtocolStatus, run.Summary.ProtocolResolved, run.Summary.EvidenceComplete, run.Summary.Occurrences, run.Summary.Decided,
+                run.Summary.GlobalReviewed, run.Summary.GlobalReviewCoverage, run.Summary.AcceptedNodes, run.Summary.RetrievalTurns,
+                run.Summary.RejectedNodes, run.Summary.StoppedNodes, run.Summary.SearchPagesWithMore, run.Summary.UnpagedSearches,
+                run.Summary.CandidatesSha256, run.Summary.ManifestSha256,
+            },
+            layoutBytesTotal = layoutBytes, inputBudgetBytes = 131072,
             retrieval = new
             {
                 mode = retrieveMode ? "SEARCH_THEN_REOPEN" : "NONE",
@@ -146,6 +158,7 @@ internal static class V6PreflightD2
         var outp = ns.Select(n => (long)n.OutputBytes).OrderBy(x => x).ToArray();
         long P(long[] s, double q) => s[(int)Math.Min(s.Length - 1, Math.Ceiling(q * s.Length) - 1)];
         return new { n = ns.Length, inputMax = inp[^1], inputP50 = P(inp, 0.5), inputP95 = P(inp, 0.95), outputMax = outp[^1],
-            rejected = ns.Count(n => n.Status != "ACCEPTED") };
+            accepted = ns.Count(n => n.Status == "ACCEPTED"), retrievalTurns = ns.Count(n => n.Status == "RETRIEVE"),
+            rejected = ns.Count(n => n.Status == "REJECTED"), stopped = ns.Count(n => n.Status == "STOPPED") };
     }
 }

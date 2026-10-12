@@ -448,6 +448,15 @@ internal sealed class P7F1QEvidenceTools
     private static string Clip(string text) => text.Length <= MaxTextChars ? text : text[..MaxTextChars] + "…";
     private static double R(double v) => Math.Round(v, 1, MidpointRounding.AwayFromZero);
 
+    /// <summary>The compact layout of one source line for a semantic prompt: rounded box and font facts, or null when the source has neither.</summary>
+    public static object? CompactLayout(JsonElement? bbox, JsonElement? typography)
+    {
+        var b = Box(bbox);
+        var f = Font(typography);
+        if (b is null && f is null) return null;
+        return new { bbox = b is null ? null : new { left = R(b.Value.Left), right = R(b.Value.Right), bottom = R(b.Value.Bottom), top = R(b.Value.Top) }, font = f };
+    }
+
     private static (double Left, double Right, double Bottom, double Top)? Box(JsonElement? box) =>
         box is { ValueKind: JsonValueKind.Object } b
             ? (b.GetProperty("left").GetDouble(), b.GetProperty("right").GetDouble(), b.GetProperty("bottom").GetDouble(), b.GetProperty("top").GetDouble())

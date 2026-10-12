@@ -19,10 +19,10 @@ public sealed class P7F1V6HierTests
         var parsed = PdfSourceAdapter.BuildWithDetails(TestRepository.Path(Rfc));
         var store = PdfSourceEvidenceStore.Build(parsed.Snapshot, parsed.Details);
         var legacy = P7F1QEvidenceTools.FromStore(store, new Dictionary<string, string> { ["O1"] = parsed.Snapshot.Atoms[0].Alias }, toolSet: 2);
-        return legacy.AllLines.Where(l => l.Page is 1 or 2).Select(l => new P7F1V6Hier.Cand(l.Alias, l.Page!.Value, l.Text)).ToArray();
+        return legacy.AllLines.Where(l => l.Page is 1 or 2).Select(l => new P7F1V6Hier.Cand(l.Alias, l.Page!.Value, l.Text, P7F1QEvidenceTools.CompactLayout(l.Bbox, l.Typography))).ToArray();
     }
 
-    static P7F1V6Hier.Options Opts(string instr = Instr) => new(instr, "src-sha", ShardSize: 6, Context: 2, FanIn: 3, PassUpCap: 8);
+    static P7F1V6Hier.Options Opts(string instr = Instr) => new(instr, "src-sha", ShardSize: 6, Context: 2, FanIn: 3, PassUpCap: 8, SourceUniverseSha256: "universe-sha", ParserVersion: "parser-v1", EvidenceStoreVersion: "store-v1");
 
     static bool Even(string alias) => int.Parse(alias[1..5]) % 2 == 0;
 
@@ -83,7 +83,7 @@ public sealed class P7F1V6HierTests
         var c = Cands();
         var run = P7F1V6Hier.Run(c, Opts(), (a, b, c) => Honest(a, b, c));
         Assert.Empty(run.Violations);
-        Assert.Equal("RESOLVED", run.RunStatus);
+        Assert.Equal("PROTOCOL_RESOLVED", run.RunStatus);
         Assert.True(run.GlobalAccepted);
         Assert.Equal(c.Count, run.Final.Count);
         Assert.All(run.Final.Values, s => Assert.NotEqual("MISSING", s.Decision));
@@ -191,7 +191,7 @@ public sealed class P7F1V6HierTests
         Assert.True(run.GlobalShown > 0);
         Assert.Contains(run.Violations, v => v.StartsWith("GLOBAL:UNCONFIRMED_SHOWN_IDS", StringComparison.Ordinal));
         Assert.False(run.GlobalAccepted);
-        Assert.NotEqual("RESOLVED", run.RunStatus);
+        Assert.NotEqual("PROTOCOL_RESOLVED", run.RunStatus);
     }
 
     // ---------------- false-negative recovery: a middle NOT_SELECT is found by search and corrected after reopening ----------------
@@ -225,7 +225,7 @@ public sealed class P7F1V6HierTests
         });
 
         Assert.Empty(run.Violations);
-        Assert.Equal("RESOLVED", run.RunStatus);
+        Assert.Equal("PROTOCOL_RESOLVED", run.RunStatus);
         Assert.Equal("SELECT", run.Final[tId].Decision);
         Assert.Equal("L1-N0001", run.Final[tId].SourceNode);
         Assert.Equal(2, run.Nodes.Count(n => n.NodeId == "L1-N0001" && n.Status == "RETRIEVE"));
@@ -465,7 +465,7 @@ public sealed class P7F1V6HierTests
             return Node(nodeId, "COMPLETE", confirmed: Quoted(ShownIds(payload)));
         });
         Assert.Empty(run.Violations);
-        Assert.Equal("RESOLVED", run.RunStatus);
+        Assert.Equal("PROTOCOL_RESOLVED", run.RunStatus);
         Assert.Single(run.Nodes.Where(n => n.NodeId == "L1-N0001" && n.Status == "RETRIEVE"));
     }
 
@@ -521,7 +521,7 @@ public sealed class P7F1V6HierTests
             nodeId == "L1-N0001" ? "not json" : Honest(nodeId, kind, payload));
         Assert.Contains(run.Violations, v => v == "L1-N0001:RESPONSE_NOT_JSON");
         Assert.True(run.GlobalAccepted);
-        Assert.NotEqual("RESOLVED", run.RunStatus);
+        Assert.NotEqual("PROTOCOL_RESOLVED", run.RunStatus);
     }
 
     [Fact] public void Input_over_the_budget_stops_the_run_and_is_never_RESOLVED()
@@ -529,7 +529,7 @@ public sealed class P7F1V6HierTests
         var c = Cands();
         var run = P7F1V6Hier.Run(c, Opts() with { MaxInputBytes = 1024 }, (nodeId, kind, payload) => Honest(nodeId, kind, payload));
         Assert.StartsWith("STOPPED_INPUT_OVER_BUDGET", run.RunStatus, StringComparison.Ordinal);
-        Assert.NotEqual("RESOLVED", run.RunStatus);
+        Assert.NotEqual("PROTOCOL_RESOLVED", run.RunStatus);
     }
 
     [Fact] public void A_seeded_order_is_reproducible_and_changes_only_the_transcript_order()
