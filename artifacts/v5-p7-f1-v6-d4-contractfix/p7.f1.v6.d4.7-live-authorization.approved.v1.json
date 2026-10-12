@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "APPROVED",
+  "planFile": "p7.f1.v6.d4.7-plan.v1.json",
+  "planSha256": "fe378a6a0244f3d2f0614c7cfebbf3095ab24ad1fd0718f06841d153f203182a",
+  "codeCommit": "ac530eb10289e79083cbd889462a6e704a539454",
+  "authorityId": "SRC-095",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 100,
+  "ceilingUsd": 1,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
+  "dataSharing": {
+    "documentPublicity": "IETF RFC 9114, published publicly by the IETF",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "allow: the request does not declare data_collection (pinned configuration), so the OpenRouter default allow applies; public RFC 9114 (SRC-095) only. Accepted in the GPT-6 technical review and adopted by the repository owner's run authorization.",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ]
+  },
+  "approvedBy": "ylight23 (repository owner; run authorization in own words). Technical review: GPT-6 (AI reviewer), recorded in approvalText, not a signature.",
+  "approvedAtUtc": "2026-10-12T12:03:34.9550421Z",
+  "approvalText": "[Repository owner ylight23, own words, run authorization]\nSAU ĐÓ CHẠY LUÔN, CHO PHÉP RETRY =1\n(Recorded note: the plan pins retries=0 and the send path has no retry; the campaign runs with retry 0, which is within the permitted maximum of 1.)\n\n[AI technical review, GPT-6, verbatim; not a signature of the repository owner]\n**APPROVE D4.7 — TECHNICAL REVIEW**\n\nTôi, GPT-6, với vai trò người rà soát kỹ thuật bằng AI, chấp nhận thiết kế và kết quả kiểm toán offline của kế hoạch D4.7, Task A-STRUCTURAL-OCCURRENCES trên tài liệu công khai SRC-095.\n\nPlan SHA-256: `fe378a6a0244f3d2f0614c7cfebbf3095ab24ad1fd0718f06841d153f203182a`.\n\nCode commit: `ac530eb10289e79083cbd889462a6e704a539454`.\n\nPhạm vi dự kiến: một chiến dịch, tối đa 100 POST, reserve không vượt 1,00 USD, tối đa 131.072 byte mỗi request, retry 0, Qwen3.7 Flash qua Alibaba và không fallback.\n\nĐối với riêng dữ liệu RFC 9114 công khai, tôi chấp nhận để ghi nhận trong quá trình rà soát ba mục data policy còn mở: ZDR không được hỗ trợ; tình trạng waiver chưa được xác minh; và khả năng logging nội dung qua OpenRouter chưa được xác minh. Lựa chọn data_collection là allow theo cấu hình request hiện tại.\n\nĐây là quyết định rà soát kỹ thuật của AI, không phải chữ ký của chủ repository hoặc người duyệt độc lập.\n\nCho phép chuẩn bị và kiểm toán bản ghi authorization mới. Chưa cấp phép thực hiện d45-run; quyền chạy live phải được xác nhận riêng sau khi có authorization SHA và phê duyệt của người có thẩm quyền.",
+  "approvalSha256": "49dec0324f8fb45b843653f719f3dfe83611e8a2ec3c481650d2cb77faaa7929"
+}
