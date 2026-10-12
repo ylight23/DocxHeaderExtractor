@@ -130,11 +130,35 @@ internal static class P7F1V6Protocol
 
     public static EnvelopeSpec DefaultSpec() => new(ChatModel, 0, "json_object", ProviderTag, false, true, MaxTokens, DefaultIgnore, true);
 
-    /// <summary>Route policy: the decision on eligible endpoints. Fail-closed: any tag outside the approved inventory is not eligible.</summary>
-    public static (bool Eligible, IReadOnlyList<string> Unapproved) EvaluateInventory(IEnumerable<string> tags)
+    /// <summary>One endpoint row from a metadata response: the fields the route decision depends on.</summary>
+    public sealed record EndpointRecord(string Tag, string ModelId, int ContextLength, int MaxCompletionTokens);
+
+    /// <summary>Metadata of the endpoint approved in Gate E1. A change in any of these fields makes the endpoint ineligible.</summary>
+    public const string ExpectedModelId = "qwen/qwen3.7-flash";
+    public const int ExpectedContextLength = 1000000, ExpectedMaxCompletionTokens = 65536;
+
+    /// <summary>Route decision, fail-closed (D3.3). Eligible only when the route policy leaves exactly one endpoint, tagged alibaba, the
+    /// inventory is non-empty and approved, every endpoint has the expected model and metadata. Reasons name every refusal.</summary>
+    public sealed record RouteDecision(bool Eligible, string? Endpoint, IReadOnlyList<string> Reasons);
+
+    public static RouteDecision EvaluateRoute(IEnumerable<EndpointRecord> inventory)
     {
-        var unapproved = tags.Where(t => !ApprovedEndpointTags.Contains(t, StringComparer.Ordinal)).Distinct(StringComparer.Ordinal).ToArray();
-        return (unapproved.Length == 0, unapproved);
+        var rows = inventory.ToArray();
+        if (rows.Length == 0) return new RouteDecision(false, null, ["EMPTY_INVENTORY"]);
+        var reasons = new List<string>();
+        foreach (var e in rows)
+        {
+            if (!ApprovedEndpointTags.Contains(e.Tag, StringComparer.Ordinal)) reasons.Add("UNAPPROVED:" + e.Tag);
+            if (e.ModelId != ExpectedModelId) reasons.Add("MODEL_MISMATCH:" + e.Tag);
+            if (e.ContextLength != ExpectedContextLength) reasons.Add("METADATA_CHANGED:" + e.Tag + ":context");
+            if (e.MaxCompletionTokens != ExpectedMaxCompletionTokens) reasons.Add("METADATA_CHANGED:" + e.Tag + ":maxCompletion");
+        }
+        // Counted per row, not per tag: two rows with the same tag are two endpoints, and that is ambiguous.
+        var remaining = rows.Where(e => !DefaultIgnore.Contains(e.Tag, StringComparer.Ordinal)).Select(e => e.Tag).ToArray();
+        if (remaining.Length == 0) reasons.Add("NO_ELIGIBLE_ENDPOINT");
+        else if (remaining.Length > 1 || remaining[0] != ProviderTag) reasons.Add("AMBIGUOUS_OR_WRONG_ENDPOINT");
+        var eligible = reasons.Count == 0;
+        return new RouteDecision(eligible, eligible ? ProviderTag : null, reasons);
     }
 
     /// <summary>The provider block that locks the route. Fallback is off and parameters are required.</summary>

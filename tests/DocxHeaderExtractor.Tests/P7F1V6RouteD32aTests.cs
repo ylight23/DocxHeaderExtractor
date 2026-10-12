@@ -42,21 +42,67 @@ public sealed class P7F1V6RouteD32aTests
         Assert.NotEqual(P7F1V6Protocol.Sha(P7F1V6Protocol.TemplateEnvelope(d)), P7F1V6Protocol.Sha(P7F1V6Protocol.TemplateEnvelope(mutated)));
     }
 
-    [Fact] public void The_inventory_from_the_approved_metadata_is_eligible()
+    static P7F1V6Protocol.EndpointRecord Row(string tag, string model = "qwen/qwen3.7-flash", int ctx = 1000000, int maxOut = 65536) =>
+        new(tag, model, ctx, maxOut);
+
+    static IReadOnlyList<P7F1V6Protocol.EndpointRecord> E1Inventory()
     {
         var raw = Root(File.ReadAllText(TestRepository.Path(E1)));
-        var tags = raw.GetProperty("data").GetProperty("endpoints").EnumerateArray().Select(e => e.GetProperty("tag").GetString()!).ToArray();
-        Assert.Equal(2, tags.Length);
-        var (eligible, unapproved) = P7F1V6Protocol.EvaluateInventory(tags);
-        Assert.True(eligible);
-        Assert.Empty(unapproved);
+        return raw.GetProperty("data").GetProperty("endpoints").EnumerateArray().Select(e => new P7F1V6Protocol.EndpointRecord(
+            e.GetProperty("tag").GetString()!, e.GetProperty("model_id").GetString()!,
+            e.GetProperty("context_length").GetInt32(), e.GetProperty("max_completion_tokens").GetInt32())).ToArray();
+    }
+
+    [Fact] public void The_approved_metadata_leaves_exactly_one_eligible_endpoint_tagged_alibaba()
+    {
+        var d = P7F1V6Protocol.EvaluateRoute(E1Inventory());
+        Assert.True(d.Eligible);
+        Assert.Equal("alibaba", d.Endpoint);
+        Assert.Empty(d.Reasons);
+    }
+
+    [Fact] public void An_empty_inventory_is_never_eligible()
+    {
+        var d = P7F1V6Protocol.EvaluateRoute(Array.Empty<P7F1V6Protocol.EndpointRecord>());
+        Assert.False(d.Eligible);
+        Assert.Equal(new[] { "EMPTY_INVENTORY" }, d.Reasons);
+    }
+
+    [Fact] public void An_inventory_where_the_only_endpoint_is_the_ignored_variant_is_not_eligible()
+    {
+        var d = P7F1V6Protocol.EvaluateRoute(new[] { Row("alibaba/us-east-1") });
+        Assert.False(d.Eligible);
+        Assert.Contains("NO_ELIGIBLE_ENDPOINT", d.Reasons);
+        Assert.Null(d.Endpoint);
     }
 
     [Fact] public void An_endpoint_outside_the_approved_inventory_is_not_eligible_and_is_named()
     {
-        var (eligible, unapproved) = P7F1V6Protocol.EvaluateInventory(new[] { "alibaba", "alibaba/us-east-1", "alibaba/region-new" });
-        Assert.False(eligible);
-        Assert.Equal(new[] { "alibaba/region-new" }, unapproved);
+        var d = P7F1V6Protocol.EvaluateRoute(new[] { Row("alibaba"), Row("alibaba/us-east-1"), Row("alibaba/region-new") });
+        Assert.False(d.Eligible);
+        Assert.Contains("UNAPPROVED:alibaba/region-new", d.Reasons);
+    }
+
+    [Fact] public void A_changed_context_or_completion_limit_makes_the_endpoint_ineligible()
+    {
+        var d = P7F1V6Protocol.EvaluateRoute(new[] { Row("alibaba", ctx: 512000) });
+        Assert.False(d.Eligible);
+        Assert.Contains("METADATA_CHANGED:alibaba:context", d.Reasons);
+        var e = P7F1V6Protocol.EvaluateRoute(new[] { Row("alibaba", maxOut: 8192) });
+        Assert.Contains("METADATA_CHANGED:alibaba:maxCompletion", e.Reasons);
+    }
+
+    [Fact] public void A_different_model_on_the_approved_tag_is_not_eligible()
+    {
+        var d = P7F1V6Protocol.EvaluateRoute(new[] { Row("alibaba", model: "qwen/qwen3-32b") });
+        Assert.False(d.Eligible);
+        Assert.Contains("MODEL_MISMATCH:alibaba", d.Reasons);
+    }
+
+    [Fact] public void Two_eligible_alibaba_endpoints_are_ambiguous_and_not_eligible()
+    {
+        var d = P7F1V6Protocol.EvaluateRoute(new[] { Row("alibaba"), Row("alibaba") });
+        Assert.False(d.Eligible);
     }
 
     [Fact] public void The_manifest_records_the_route_policy_the_inventory_and_the_envelope_version()

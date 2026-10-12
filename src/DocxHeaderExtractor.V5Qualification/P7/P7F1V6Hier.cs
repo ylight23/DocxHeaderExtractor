@@ -98,6 +98,9 @@ internal static class P7F1V6Hier
     /// <summary>The scripted model: returns the node's raw response text for a node payload.</summary>
     public delegate string NodeModel(string nodeId, Kind kind, string payloadJson);
 
+    /// <summary>The model receives the prepared request itself: the adapter sends its bytes and does not serialize the request again.</summary>
+    public delegate string PreparedNodeModel(string nodeId, Kind kind, string payloadJson, P7F1V6Protocol.PreparedRequest request);
+
     /// <summary>
     /// OutputBudgetBytes bounds the RAW bytes of any accepted node response. MaxInputBytes bounds every request. Retrieval limits bound
     /// the rounds, the reopened ids and the search page size of one node. PassUpCap bounds what a synthesis node passes up (mandatory ids
@@ -135,6 +138,7 @@ internal static class P7F1V6Hier
         public required object Overview { get; init; }
         public required string InstructionSha { get; init; }
         public required object Manifest { get; init; }
+        public required Func<string, Kind, string, P7F1V6Protocol.PreparedRequest, string> Call { get; init; }
         public string InterpretationText { get; set; } = "";
         public required P7F1V6RawStore Raw { get; init; }
         public Dictionary<string, State> States { get; } = new(StringComparer.Ordinal);
@@ -177,7 +181,13 @@ internal static class P7F1V6Hier
         public int ReopenedCount => Reopened.Count;
     }
 
-    public static RunResult Run(IReadOnlyList<Cand> ordered, Options o, NodeModel model)
+    public static RunResult Run(IReadOnlyList<Cand> ordered, Options o, NodeModel model) =>
+        RunWith(ordered, o, (n, k, p, _) => model(n, k, p));
+
+    public static RunResult Run(IReadOnlyList<Cand> ordered, Options o, PreparedNodeModel model) =>
+        RunWith(ordered, o, (n, k, p, r) => model(n, k, p, r));
+
+    static RunResult RunWith(IReadOnlyList<Cand> ordered, Options o, Func<string, Kind, string, P7F1V6Protocol.PreparedRequest, string> call)
     {
         Validate(o);
         var candidatesSha = CandidatesSha256(ordered);
@@ -195,12 +205,12 @@ internal static class P7F1V6Hier
         var ids = AssignIds(ordered.Select(c => c.Alias));
         var env = new Env
         {
-            O = o, Ids = ids, IdToAlias = ids.ToDictionary(p => p.Value, p => p.Key, StringComparer.Ordinal),
+            O = o, Call = call, Ids = ids, IdToAlias = ids.ToDictionary(p => p.Value, p => p.Key, StringComparer.Ordinal),
             ByAlias = ordered.ToDictionary(c => c.Alias, c => c, StringComparer.Ordinal), Ordered = ordered,
             Overview = P7F1V6Core.Overview(ordered.Select(c => new F1QSourceLine(c.Alias, 0, c.Page, c.Text, null, null)).ToArray()),
             InstructionSha = instructionSha, Manifest = manifest, Raw = new P7F1V6RawStore(o.RawDir),
         };
-        var (interp, interpFailure, _) = Interpret(env, model);
+        var (interp, interpFailure, _) = Interpret(env);
         if (interpFailure == "ENVELOPE_OVER_BUDGET")
             return Stopped(env, "STOPPED_ENVELOPE_OVER_BUDGET:INTERPRET", null, candidatesSha, manifestSha);
         if (interpFailure is not null)
@@ -221,9 +231,9 @@ internal static class P7F1V6Hier
             if (env.Stopped) break;
             var owned = sh.Owned.Select(c => ids[c.Alias]).ToList();
             var local = $"L0-S{sh.Index:D4}";
-            RunLocal(env, local, Kind.Local, 0, owned, sh.Before.Concat(sh.After).ToList(), model);
+            RunLocal(env, local, Kind.Local, 0, owned, sh.Before.Concat(sh.After).ToList());
             var rec = $"L0R-S{sh.Index:D4}";
-            RunLocal(env, rec, Kind.Reconcile, 0, owned, sh.Before.Concat(sh.After).ToList(), model);
+            RunLocal(env, rec, Kind.Reconcile, 0, owned, sh.Before.Concat(sh.After).ToList());
             units.Add((local, owned, Forward(owned, env.States, o.Context)));
         }
 
@@ -237,7 +247,7 @@ internal static class P7F1V6Hier
                 var children = units.Skip(g).Take(o.FanIn).ToList();
                 var name = $"L{level}-N{next.Count + 1:D4}";
                 var baseShown = children.SelectMany(c => c.Up).Distinct(StringComparer.Ordinal).ToList();
-                var up = RunSynth(env, name, Kind.Synthesis, level, baseShown, model);
+                var up = RunSynth(env, name, Kind.Synthesis, level, baseShown);
                 next.Add((name, children.SelectMany(c => c.Subtree).ToList(), up));
             }
             units = next;
@@ -246,7 +256,7 @@ internal static class P7F1V6Hier
 
         // ---- global node over the root's passUp set ----
         if (units.Count == 1 && !env.Stopped)
-            RunSynth(env, "GLOBAL", Kind.Global, level, units[0].Up, model);
+            RunSynth(env, "GLOBAL", Kind.Global, level, units[0].Up);
 
         var open = env.Ids.Values.Count(id => !env.States.TryGetValue(id, out var s) || s.Decision == "UNRESOLVED");
         string status = env.StopReason is not null ? "STOPPED_" + env.StopReason
@@ -270,7 +280,7 @@ internal static class P7F1V6Hier
     }
 
     /// <summary>The interpretation request (D1 contract). Qwen states how it reads the instruction; C# checks only the shape and the budgets.</summary>
-    static (P7F1V6Core.Interpretation? Value, string? Failure, string OutputSha) Interpret(Env e, NodeModel model)
+    static (P7F1V6Core.Interpretation? Value, string? Failure, string OutputSha) Interpret(Env e)
     {
         var payload = PayloadJson(new
         {
@@ -285,7 +295,7 @@ internal static class P7F1V6Hier
         if (prepared.Bytes > e.O.MaxEnvelopeBytes) return (null, "ENVELOPE_OVER_BUDGET", "");
         e.Raw.Put(Encoding.UTF8.GetBytes(prepared.Body));
         e.Transcript.Add($"INTERPRET|r0|REQUEST|{prepared.Sha256}|{prepared.Bytes}");
-        var response = model("INTERPRET", Kind.Interpretation, payload);
+        var response = e.Call("INTERPRET", Kind.Interpretation, payload, prepared);
         var outBytes = Encoding.UTF8.GetBytes(response);
         var outSha = e.Raw.Put(outBytes);
         e.Transcript.Add($"INTERPRET|r0|PAYLOAD|{inSha}|{inBytes.Length}");
@@ -317,13 +327,13 @@ internal static class P7F1V6Hier
     // ------------------------------------------------------------------------------------------------------------------
     // Local and reconcile nodes: no retrieval; the owned ids come from the shard, and the context is read-only.
 
-    static void RunLocal(Env e, string nodeId, Kind kind, int level, List<string> owned, List<Cand> context, NodeModel model)
+    static void RunLocal(Env e, string nodeId, Kind kind, int level, List<string> owned, List<Cand> context)
     {
         var shown = new Shown();
         foreach (var id in owned) { shown.Ids.Add(id); shown.Revisable.Add(id); shown.Citable.Add(e.IdToAlias[id]); }
         foreach (var c in context) shown.Citable.Add(c.Alias);
         var payload = LocalPayload(e, nodeId, kind, level, owned, context);
-        Exec(e, nodeId, kind, level, shown, _ => payload, model, allowRetrieve: false, passUpCap: int.MaxValue, owned: owned);
+        Exec(e, nodeId, kind, level, shown, _ => payload, allowRetrieve: false, passUpCap: int.MaxValue, owned: owned);
     }
 
     static string LocalPayload(Env e, string nodeId, Kind kind, int level, List<string> owned, List<Cand> context)
@@ -347,13 +357,13 @@ internal static class P7F1V6Hier
     // ------------------------------------------------------------------------------------------------------------------
     // Synthesis and global nodes: retrieval allowed; the node confirms or revises every id it was shown.
 
-    static List<string> RunSynth(Env e, string nodeId, Kind kind, int level, List<string> baseShown, NodeModel model)
+    static List<string> RunSynth(Env e, string nodeId, Kind kind, int level, List<string> baseShown)
     {
         var shown = new Shown();
         foreach (var id in baseShown) { shown.Ids.Add(id); shown.Revisable.Add(id); shown.Citable.Add(e.IdToAlias[id]); }
         if (kind == Kind.Global) e.GlobalShown = baseShown.Count;
         var up = Exec(e, nodeId, kind, level, shown,
-            rs => SynthPayload(e, nodeId, kind, level, rs), model, allowRetrieve: true, passUpCap: e.O.PassUpCap, owned: null);
+            rs => SynthPayload(e, nodeId, kind, level, rs), allowRetrieve: true, passUpCap: e.O.PassUpCap, owned: null);
         // The global review covers every id it ended with, including ids reopened during the node.
         if (kind == Kind.Global && e.GlobalAccepted) e.GlobalReviewed.UnionWith(shown.Revisable);
         return up ?? Mandatory(e, baseShown);
@@ -386,7 +396,7 @@ internal static class P7F1V6Hier
     // ------------------------------------------------------------------------------------------------------------------
     // One node: model calls, retrieval rounds, binding, and the explicit stop cases. Returns the passUp list when accepted, null otherwise.
 
-    static List<string>? Exec(Env e, string nodeId, Kind kind, int level, Shown rs, Func<Shown, string> build, NodeModel model,
+    static List<string>? Exec(Env e, string nodeId, Kind kind, int level, Shown rs, Func<Shown, string> build,
         bool allowRetrieve, int passUpCap, List<string>? owned)
     {
         for (int round = 0; ; round++)
@@ -404,7 +414,7 @@ internal static class P7F1V6Hier
             if (prepared.Bytes > e.O.MaxEnvelopeBytes) { e.StopReason = "ENVELOPE_OVER_BUDGET:" + nodeId; return null; }
             e.Raw.Put(Encoding.UTF8.GetBytes(prepared.Body));
             e.Transcript.Add($"{nodeId}|r{round}|REQUEST|{prepared.Sha256}|{prepared.Bytes}");
-            var response = model(nodeId, kind, payload);
+            var response = e.Call(nodeId, kind, payload, prepared);
             var outBytes = Encoding.UTF8.GetBytes(response);
             var outSha = e.Raw.Put(outBytes);
             e.Transcript.Add($"{nodeId}|r{round}|PAYLOAD|{inSha}|{inBytes.Length}");
