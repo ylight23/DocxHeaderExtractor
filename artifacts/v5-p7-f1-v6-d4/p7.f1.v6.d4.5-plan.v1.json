@@ -1,7 +1,7 @@
 {
   "artifact": "p7.f1.v6.d4.5-plan.v1",
   "approvalToSend": false,
-  "codeCommit": "b7f16c0a27043cff228787f9f645d920f80aa628",
+  "codeCommit": "3331772b6ff7df3d8f4fca3d00faba2cdabed59e",
   "authorityId": "SRC-095",
   "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
   "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
@@ -41,7 +41,7 @@
   "overlap": 20,
   "finalization": "REQUIRED",
   "budget": {
-    "maxCalls": 64,
+    "maxCalls": 100,
     "maxRequestBytes": 131072,
     "ceilingUsd": 1,
     "promptTokenBudget": 900000,
@@ -55,6 +55,35 @@
     "MaxFinalizeOutlineLines": 1200
   },
   "rawResponses": "safe store outside the repository, per-run directory, retention policy; never committed",
+  "earlyStop": {
+    "consecutiveContractFailures": 3,
+    "counts": "parser failures, usage/finish audit failures and missing content; transport failures neither count nor reset"
+  },
+  "liveAuthorization": {
+    "required": true,
+    "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+    "status": "APPROVED",
+    "campaigns": 1,
+    "consumedMarker": "consumed-<planSha256>.json in the safe root"
+  },
+  "safeRootPolicy": {
+    "location": "%LOCALAPPDATA%\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
+    "mustExistBeforeRun": true,
+    "outsideRepository": true,
+    "fileSystem": "NTFS",
+    "noReparsePointsInPath": true,
+    "acl": "current user only, inheritance cut",
+    "runDirectories": "run-<32 hex>"
+  },
+  "retention": {
+    "files": [
+      "<sha256>.bin",
+      "<sha256>.<guid>.tmp",
+      "run.review.json",
+      "run-summary.json"
+    ],
+    "rawRetentionDays": 30
+  },
   "segments": 48,
   "firstRequests": [
     {

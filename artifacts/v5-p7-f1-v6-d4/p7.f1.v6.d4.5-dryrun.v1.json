@@ -2,12 +2,12 @@
   "artifact": "p7.f1.v6.d4.5-dryrun.v1",
   "providerCalls": 0,
   "planFile": "p7.f1.v6.d4.5-plan.v1.json",
-  "planSha256": "9e05c5255ac193d474c3343a0ec182352d74d91f17c97c0f7c66468774d075e6",
+  "planSha256": "340d7cbf5e8694ba411ec06aec6e6fe6a1db7082cf895a880c294f65e86978a6",
   "planVerifiesNow": true,
   "planVerifyFailures": [],
-  "codeCommit": "b7f16c0a27043cff228787f9f645d920f80aa628",
+  "codeCommit": "3331772b6ff7df3d8f4fca3d00faba2cdabed59e",
   "budget": {
-    "MaxCalls": 64,
+    "MaxCalls": 100,
     "MaxRequestBytes": 131072,
     "CeilingUsd": 1
   },
@@ -113,29 +113,29 @@
       "status": "INCOMPLETE",
       "finalization": "SKIPPED_OPEN_ALIASES",
       "assurance": "NONE",
-      "calls": 64,
-      "reservedUsd": 0.696492,
-      "unresolved": 766,
-      "headings": 74,
+      "calls": 93,
+      "reservedUsd": 0.997517,
+      "unresolved": 142,
+      "headings": 96,
       "budgetRefusals": [
         {
-          "code": "CALL_LIMIT",
-          "count": 32
+          "code": "RESERVE_OVER_CEILING",
+          "count": 6
         }
       ],
-      "refusedRequestMaxBytes": 30132,
+      "refusedRequestMaxBytes": 39152,
       "byStage": [
         {
           "stage": "SEGMENT",
-          "calls": 64,
+          "calls": 93,
           "minBytes": 22010,
           "maxBytes": 40490,
-          "reserveUsd": 0.696492
+          "reserveUsd": 0.997517
         }
       ],
       "score": {
         "Status": "REFUSED",
-        "Reason": "RUN_HAS_UNRESOLVED:766",
+        "Reason": "RUN_HAS_UNRESOLVED:142",
         "Official": false,
         "Label": null,
         "atomF1": null,
