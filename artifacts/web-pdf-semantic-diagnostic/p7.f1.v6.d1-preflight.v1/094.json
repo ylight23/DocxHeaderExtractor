@@ -1,0 +1,92 @@
+{
+  "version": "P7_F1_V6_PREFLIGHT_V1",
+  "document": "094",
+  "path": "094_RFC9113_HTTP_2.pdf",
+  "sourceSha256": "8314f1034854548baf26f9912f79c6207299cb0520b31ed25af64889bd1500bc",
+  "source": {
+    "pages": 78,
+    "maxPage": 78,
+    "lines": 2953,
+    "placedLines": 2953,
+    "unplacedLines": 0,
+    "atoms": 2953,
+    "candidates": 2953,
+    "packs": 81,
+    "linesOverCap": 0,
+    "maxLineBytes": 109
+  },
+  "interpretation": {
+    "requestBytes": 709,
+    "tokensUpperBound": 709
+  },
+  "packs": {
+    "count": 81,
+    "requestBytes": {
+      "min": 9017,
+      "p50": 12974,
+      "p95": 13965,
+      "max": 14200,
+      "n": 81
+    },
+    "outputBytes": {
+      "min": 420,
+      "p50": 2530,
+      "p95": 2972,
+      "max": 3178,
+      "n": 81
+    },
+    "maxRequestBytes": 14200
+  },
+  "reconcile": {
+    "candidates": 2953,
+    "requestBytes": 441046,
+    "tokensUpperBound": 441046,
+    "overviewBytes": 8049,
+    "worstOutputBytes": 1500324,
+    "observedOutputBytes": 189091,
+    "exceedsMaxTokensByBytes": true,
+    "segmented": {
+      "segmentCandidates": 200,
+      "segments": 15,
+      "requestBytes": {
+        "min": 27975,
+        "p50": 37283,
+        "p95": 40071,
+        "max": 40071,
+        "n": 15
+      },
+      "maxRequestBytes": 40071
+    }
+  },
+  "tools": {
+    "pageCalls": 159,
+    "pageBytes": 2125976,
+    "pageErrors": 0,
+    "partialLines": 0,
+    "spanCalls": 0,
+    "spanBytes": 0,
+    "spanErrors": 0,
+    "incompleteAfterCensus": 0,
+    "observedAll": 2953,
+    "lines": 2953
+  },
+  "transcript": {
+    "events": 249,
+    "sha256": "996d8c652ce026a8033b06ac8dd49d03620b772c60c958d92543e39e09baba2d",
+    "rawItems": 166,
+    "rawVerified": true
+  },
+  "coverage": {
+    "issued": 2953,
+    "evaluated": 2953,
+    "missing": 0,
+    "runStatus": "RESOLVED",
+    "assessment": "RESOLVED"
+  },
+  "cost": {
+    "promptBytes": 1473204,
+    "costUsdUpperBoundBytes": 2.470436,
+    "runnerFormulaUsdLargestRequest": 0.027634,
+    "note": "runner formula assumes bytes/2 prompt tokens; bytes is the proven upper bound"
+  }
+}

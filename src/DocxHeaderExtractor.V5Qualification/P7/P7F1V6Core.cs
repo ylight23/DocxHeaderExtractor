@@ -83,9 +83,10 @@ internal static class P7F1V6Core
     /// </summary>
     public static DecisionPass ParseDecisions(string name, string response, string requestId, IReadOnlyCollection<string> setIds,
         IReadOnlySet<string> shownAliases, IReadOnlyDictionary<string, string> aliasById, string expectedSourceSha256,
-        IReadOnlyList<P7F1V6Tools.Record> transcript)
+        IReadOnlyList<P7F1V6Tools.Record> transcript, IReadOnlySet<string>? incompleteAliases = null)
     {
         var set = setIds.ToHashSet(StringComparer.Ordinal);
+        var incomplete = incompleteAliases ?? new HashSet<string>(StringComparer.Ordinal);
         DecisionPass Fail(string code) => new(name, null, new Dictionary<string, Decision>(), code);
         JsonDocument doc;
         try { doc = JsonDocument.Parse(response); } catch (JsonException) { return Fail("RESPONSE_NOT_JSON"); }
@@ -129,6 +130,8 @@ internal static class P7F1V6Core
                 {
                     if (refs.Count == 0) return Fail("EVIDENCE_REQUIRED");
                     var subjectAlias = aliasById.TryGetValue(id, out var sa) ? sa : null;
+                    // A decision may not rest on source text that was not read to the end: a partial view is not evidence.
+                    if (subjectAlias is not null && incomplete.Contains(subjectAlias)) return Fail("SUBJECT_EVIDENCE_INCOMPLETE");
                     foreach (var r in refs)
                     {
                         if (ToolEvidence.IsMatch(r))
@@ -146,6 +149,7 @@ internal static class P7F1V6Core
                         // A source alias, or an id of this request, must have been SHOWN to the model in this run.
                         var alias = aliasById.TryGetValue(r, out var ra) ? ra : r;
                         if (!shownAliases.Contains(alias)) return Fail("EVIDENCE_NOT_SHOWN");
+                        if (incomplete.Contains(alias)) return Fail("EVIDENCE_INCOMPLETE");
                     }
                 }
                 var note = Str(d, "note");
@@ -189,8 +193,12 @@ internal static class P7F1V6Core
         return new Resolution(finals, failed, reconcileCompleted);
     }
 
-    public sealed record DocumentStatus(bool CoverageComplete, bool ResolvedComplete, int Selected, int NotSelected, int Unresolved, int Missing,
-        int FailedPasses, string Assessment);
+    /// <summary>
+    /// CoverageComplete and ResolvedComplete are DECISION facts. EvidenceComplete is an EVIDENCE fact: no evaluated line was
+    /// left only partly read. A RESOLVED decision set over incompletely read evidence is reported as EVIDENCE_INCOMPLETE.
+    /// </summary>
+    public sealed record DocumentStatus(bool CoverageComplete, bool ResolvedComplete, bool EvidenceComplete, int Selected, int NotSelected,
+        int Unresolved, int Missing, int FailedPasses, string Assessment);
 
     /// <summary>
     /// Separate facts, never merged. CoverageComplete: no pass failed and no id is MISSING. ResolvedComplete: coverage holds, every
@@ -198,17 +206,18 @@ internal static class P7F1V6Core
     /// INCOMPLETE if an id is missing; PARTIAL_UNRESOLVED if an id is unresolved; UNRECONCILED if the decisions are resolved but
     /// no reconcile completed; RESOLVED otherwise.
     /// </summary>
-    public static DocumentStatus Status(Resolution r)
+    public static DocumentStatus Status(Resolution r, int incompleteEvidenceLines = 0)
     {
         var f = r.Finals;
         int sel = f.Count(x => x.State == "SELECTED"), nsel = f.Count(x => x.State == "NOT_SELECTED");
         int unr = f.Count(x => x.State == "UNRESOLVED"), mis = f.Count(x => x.State == "MISSING");
         int failed = r.FailedPasses.Count;
         bool coverage = failed == 0 && mis == 0;
-        bool resolved = coverage && unr == 0 && r.ReconcileCompleted;
+        bool evidence = incompleteEvidenceLines == 0;
+        bool resolved = coverage && unr == 0 && r.ReconcileCompleted && evidence;
         var assessment = failed > 0 ? "PASS_FAILED" : mis > 0 ? "INCOMPLETE" : unr > 0 ? "PARTIAL_UNRESOLVED"
-            : r.ReconcileCompleted ? "RESOLVED" : "UNRECONCILED";
-        return new DocumentStatus(coverage, resolved, sel, nsel, unr, mis, failed, assessment);
+            : !r.ReconcileCompleted ? "UNRECONCILED" : !evidence ? "EVIDENCE_INCOMPLETE" : "RESOLVED";
+        return new DocumentStatus(coverage, resolved, evidence, sel, nsel, unr, mis, failed, assessment);
     }
 
     // ---------------- Scope ----------------

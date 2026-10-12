@@ -1,0 +1,92 @@
+{
+  "version": "P7_F1_V6_PREFLIGHT_V1",
+  "document": "009",
+  "path": "009_Luat_Giao_dich_dien_tu_20-2023-QH15.pdf",
+  "sourceSha256": "2458d01d6453cd11ab7aaddbae36e988110754bcb53a59eda729987a63882914",
+  "source": {
+    "pages": 30,
+    "maxPage": 30,
+    "lines": 927,
+    "placedLines": 927,
+    "unplacedLines": 0,
+    "atoms": 927,
+    "candidates": 927,
+    "packs": 30,
+    "linesOverCap": 0,
+    "maxLineBytes": 128
+  },
+  "interpretation": {
+    "requestBytes": 565,
+    "tokensUpperBound": 565
+  },
+  "packs": {
+    "count": 30,
+    "requestBytes": {
+      "min": 9089,
+      "p50": 10153,
+      "p95": 10910,
+      "max": 11334,
+      "n": 30
+    },
+    "outputBytes": {
+      "min": 1890,
+      "p50": 2080,
+      "p95": 2212,
+      "max": 2212,
+      "n": 30
+    },
+    "maxRequestBytes": 11334
+  },
+  "reconcile": {
+    "candidates": 927,
+    "requestBytes": 202424,
+    "tokensUpperBound": 202424,
+    "overviewBytes": 3841,
+    "worstOutputBytes": 471116,
+    "observedOutputBytes": 59427,
+    "exceedsMaxTokensByBytes": true,
+    "segmented": {
+      "segmentCandidates": 200,
+      "segments": 5,
+      "requestBytes": {
+        "min": 30502,
+        "p50": 45750,
+        "p95": 47687,
+        "max": 47687,
+        "n": 5
+      },
+      "maxRequestBytes": 47687
+    }
+  },
+  "tools": {
+    "pageCalls": 60,
+    "pageBytes": 742665,
+    "pageErrors": 0,
+    "partialLines": 0,
+    "spanCalls": 0,
+    "spanBytes": 0,
+    "spanErrors": 0,
+    "incompleteAfterCensus": 0,
+    "observedAll": 927,
+    "lines": 927
+  },
+  "transcript": {
+    "events": 96,
+    "sha256": "028af64cbf6c4fb9c38be46b609deaa7edfbb6ba03e128557f7418b0e4c2f0d1",
+    "rawItems": 64,
+    "rawVerified": true
+  },
+  "coverage": {
+    "issued": 927,
+    "evaluated": 927,
+    "missing": 0,
+    "runStatus": "RESOLVED",
+    "assessment": "RESOLVED"
+  },
+  "cost": {
+    "promptBytes": 510000,
+    "costUsdUpperBoundBytes": 0.940861,
+    "runnerFormulaUsdLargestRequest": 0.027348,
+    "note": "runner formula assumes bytes/2 prompt tokens; bytes is the proven upper bound"
+  }
+}

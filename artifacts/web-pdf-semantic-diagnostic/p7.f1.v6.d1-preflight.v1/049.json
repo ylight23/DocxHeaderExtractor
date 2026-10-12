@@ -1,0 +1,92 @@
+{
+  "version": "P7_F1_V6_PREFLIGHT_V1",
+  "document": "049",
+  "path": "049_IDA_Financial_Statements_September_2024.pdf",
+  "sourceSha256": "d8a58945a6bfea431724b24118af6adfdf63502d1f32db8d103b62530420a60a",
+  "source": {
+    "pages": 55,
+    "maxPage": 56,
+    "lines": 4071,
+    "placedLines": 4071,
+    "unplacedLines": 0,
+    "atoms": 4071,
+    "candidates": 4071,
+    "packs": 118,
+    "linesOverCap": 0,
+    "maxLineBytes": 147
+  },
+  "interpretation": {
+    "requestBytes": 641,
+    "tokensUpperBound": 641
+  },
+  "packs": {
+    "count": 118,
+    "requestBytes": {
+      "min": 8862,
+      "p50": 12101,
+      "p95": 14349,
+      "max": 16163,
+      "n": 118
+    },
+    "outputBytes": {
+      "min": 160,
+      "p50": 3150,
+      "p95": 3178,
+      "max": 3210,
+      "n": 118
+    },
+    "maxRequestBytes": 16163
+  },
+  "reconcile": {
+    "candidates": 4071,
+    "requestBytes": 477477,
+    "tokensUpperBound": 477477,
+    "overviewBytes": 8544,
+    "worstOutputBytes": 2068268,
+    "observedOutputBytes": 260434,
+    "exceedsMaxTokensByBytes": true,
+    "segmented": {
+      "segmentCandidates": 200,
+      "segments": 21,
+      "requestBytes": {
+        "min": 15912,
+        "p50": 30250,
+        "p95": 35099,
+        "max": 35960,
+        "n": 21
+      },
+      "maxRequestBytes": 35960
+    }
+  },
+  "tools": {
+    "pageCalls": 187,
+    "pageBytes": 2603505,
+    "pageErrors": 0,
+    "partialLines": 0,
+    "spanCalls": 0,
+    "spanBytes": 0,
+    "spanErrors": 0,
+    "incompleteAfterCensus": 0,
+    "observedAll": 4071,
+    "lines": 4071
+  },
+  "transcript": {
+    "events": 360,
+    "sha256": "d723537ffada8c28cacc8aaec3998646269fafa647d862175d33f0d2342744ad",
+    "rawItems": 240,
+    "rawVerified": true
+  },
+  "coverage": {
+    "issued": 4071,
+    "evaluated": 4071,
+    "missing": 0,
+    "runStatus": "RESOLVED",
+    "assessment": "RESOLVED"
+  },
+  "cost": {
+    "promptBytes": 1883736,
+    "costUsdUpperBoundBytes": 3.522475,
+    "runnerFormulaUsdLargestRequest": 0.027831,
+    "note": "runner formula assumes bytes/2 prompt tokens; bytes is the proven upper bound"
+  }
+}

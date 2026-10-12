@@ -1,0 +1,92 @@
+{
+  "version": "P7_F1_V6_PREFLIGHT_V1",
+  "document": "028",
+  "path": "028_WB_RFB_Works_Without_Prequal_2017.pdf",
+  "sourceSha256": "2dea390e45f4c07bc90d834be616cdbfc804db8c42e90b506d87bca037b29027",
+  "source": {
+    "pages": 306,
+    "maxPage": 314,
+    "lines": 10797,
+    "placedLines": 10797,
+    "unplacedLines": 0,
+    "atoms": 10797,
+    "candidates": 10797,
+    "packs": 336,
+    "linesOverCap": 0,
+    "maxLineBytes": 164
+  },
+  "interpretation": {
+    "requestBytes": 1604,
+    "tokensUpperBound": 1604
+  },
+  "packs": {
+    "count": 336,
+    "requestBytes": {
+      "min": 22587,
+      "p50": 26723,
+      "p95": 27753,
+      "max": 29557,
+      "n": 336
+    },
+    "outputBytes": {
+      "min": 160,
+      "p50": 2534,
+      "p95": 3171,
+      "max": 3186,
+      "n": 336
+    },
+    "maxRequestBytes": 29557
+  },
+  "reconcile": {
+    "candidates": 10797,
+    "requestBytes": 1469047,
+    "tokensUpperBound": 1469047,
+    "overviewBytes": 22252,
+    "worstOutputBytes": 5485076,
+    "observedOutputBytes": 691127,
+    "exceedsMaxTokensByBytes": true,
+    "segmented": {
+      "segmentCandidates": 200,
+      "segments": 54,
+      "requestBytes": {
+        "min": 42373,
+        "p50": 48819,
+        "p95": 51397,
+        "max": 52921,
+        "n": 54
+      },
+      "maxRequestBytes": 52921
+    }
+  },
+  "tools": {
+    "pageCalls": 580,
+    "pageBytes": 7248781,
+    "pageErrors": 0,
+    "partialLines": 0,
+    "spanCalls": 0,
+    "spanBytes": 0,
+    "spanErrors": 0,
+    "incompleteAfterCensus": 0,
+    "observedAll": 10797,
+    "lines": 10797
+  },
+  "transcript": {
+    "events": 1014,
+    "sha256": "a9705c2fe702363b4b3b217c32da20b7c97992b97b9483a58445568294735e48",
+    "rawItems": 676,
+    "rawVerified": true
+  },
+  "coverage": {
+    "issued": 10797,
+    "evaluated": 10797,
+    "missing": 0,
+    "runStatus": "RESOLVED",
+    "assessment": "RESOLVED"
+  },
+  "cost": {
+    "promptBytes": 10211153,
+    "costUsdUpperBoundBytes": 10.902698,
+    "runnerFormulaUsdLargestRequest": 0.029170,
+    "note": "runner formula assumes bytes/2 prompt tokens; bytes is the proven upper bound"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "version": "P7_F1_V6_PREFLIGHT_V1",
+  "document": "088",
+  "path": "088_ND_69-2018_Ngoai_thuong_EN.pdf",
+  "sourceSha256": "85e261f79c5e9360f3ca15f32929705b6635d66348d258e25de4287905ffe385",
+  "source": {
+    "pages": 81,
+    "maxPage": 81,
+    "lines": 3153,
+    "placedLines": 3153,
+    "unplacedLines": 0,
+    "atoms": 3153,
+    "candidates": 3153,
+    "packs": 97,
+    "linesOverCap": 0,
+    "maxLineBytes": 103
+  },
+  "interpretation": {
+    "requestBytes": 718,
+    "tokensUpperBound": 718
+  },
+  "packs": {
+    "count": 97,
+    "requestBytes": {
+      "min": 8609,
+      "p50": 12726,
+      "p95": 13395,
+      "max": 13599,
+      "n": 97
+    },
+    "outputBytes": {
+      "min": 160,
+      "p50": 2208,
+      "p95": 3182,
+      "max": 3194,
+      "n": 97
+    },
+    "maxRequestBytes": 13599
+  },
+  "reconcile": {
+    "candidates": 3153,
+    "requestBytes": 441626,
+    "tokensUpperBound": 441626,
+    "overviewBytes": 8286,
+    "worstOutputBytes": 1601924,
+    "observedOutputBytes": 201931,
+    "exceedsMaxTokensByBytes": true,
+    "segmented": {
+      "segmentCandidates": 200,
+      "segments": 16,
+      "requestBytes": {
+        "min": 26149,
+        "p50": 32846,
+        "p95": 39913,
+        "max": 39913,
+        "n": 16
+      },
+      "maxRequestBytes": 39913
+    }
+  },
+  "tools": {
+    "pageCalls": 175,
+    "pageBytes": 2115004,
+    "pageErrors": 0,
+    "partialLines": 0,
+    "spanCalls": 0,
+    "spanBytes": 0,
+    "spanErrors": 0,
+    "incompleteAfterCensus": 0,
+    "observedAll": 3153,
+    "lines": 3153
+  },
+  "transcript": {
+    "events": 297,
+    "sha256": "e15b9d749bea6331208107dd4ce0a4ea64adf4a916fe36c53a80c331f37bddbb",
+    "rawItems": 198,
+    "rawVerified": true
+  },
+  "coverage": {
+    "issued": 3153,
+    "evaluated": 3153,
+    "missing": 0,
+    "runStatus": "RESOLVED",
+    "assessment": "RESOLVED"
+  },
+  "cost": {
+    "promptBytes": 1624357,
+    "costUsdUpperBoundBytes": 2.920097,
+    "runnerFormulaUsdLargestRequest": 0.027574,
+    "note": "runner formula assumes bytes/2 prompt tokens; bytes is the proven upper bound"
+  }
+}

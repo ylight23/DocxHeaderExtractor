@@ -561,6 +561,11 @@ switch (args[0])
         Console.WriteLine(JsonSerializer.Serialize(new { status = "PREFLIGHT_WRITTEN", sha256 = SpatialCanonical.Hash(receipt), cases = results.Length, providerCalls = 0 }));
         break;
     }
+    case "preflight-v6":
+        // Issue #9 D1 preflight (offline): preflight-v6 <docs.json> <out-dir>. No provider call.
+        if (args.Length != 3) throw new ArgumentException("preflight-v6 <docs.json> <out-dir>");
+        V6Preflight.Run(args[1], args[2]);
+        break;
     default: throw new ArgumentException("UNKNOWN_MODE");
 }
 

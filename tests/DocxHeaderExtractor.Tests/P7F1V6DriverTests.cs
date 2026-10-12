@@ -170,7 +170,7 @@ public sealed class P7F1V6DriverTests
         P7F1V6Driver.ScriptedModel model = (phase, req, payload, results) => P7F1V6Driver.Turn.Final(
             $"{{\"protocolVersion\":\"P7_F1_V6_INTERPRET_V1\",\"requestId\":\"{req}\",\"status\":\"CLARIFICATION_REQUIRED\",\"interpretation\":\"Unclear scope.\",\"openQuestions\":[\"Which levels?\"]}}");
         var run = P7F1V6Driver.Run(Input(Instr, tools, legacy.SourceSha256, [PackOfPage(legacy.AllLines, 1, "pack-1")]), model);
-        Assert.Equal("CLARIFICATION_REQUIRED", run.RunStatus);
+        Assert.Equal("INTERPRETATION_CLARIFICATION_REQUIRED", run.RunStatus);
         Assert.Empty(run.Passes);
         Assert.Null(run.Resolution);
     }

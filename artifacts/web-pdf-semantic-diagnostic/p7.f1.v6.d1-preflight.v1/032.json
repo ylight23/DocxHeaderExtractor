@@ -1,0 +1,92 @@
+{
+  "version": "P7_F1_V6_PREFLIGHT_V1",
+  "document": "032",
+  "path": "032_WB_Plant_TwoStage_2020.pdf",
+  "sourceSha256": "5c9fe5ebe4a283233cfb1fb2438b87d7d7ea209062ce9d49db79c52d3183223c",
+  "source": {
+    "pages": 284,
+    "maxPage": 285,
+    "lines": 9893,
+    "placedLines": 9893,
+    "unplacedLines": 0,
+    "atoms": 9893,
+    "candidates": 9893,
+    "packs": 308,
+    "linesOverCap": 0,
+    "maxLineBytes": 219
+  },
+  "interpretation": {
+    "requestBytes": 1512,
+    "tokensUpperBound": 1512
+  },
+  "packs": {
+    "count": 308,
+    "requestBytes": {
+      "min": 21081,
+      "p50": 25435,
+      "p95": 26444,
+      "max": 29182,
+      "n": 308
+    },
+    "outputBytes": {
+      "min": 159,
+      "p50": 2589,
+      "p95": 3170,
+      "max": 3182,
+      "n": 308
+    },
+    "maxRequestBytes": 29182
+  },
+  "reconcile": {
+    "candidates": 9893,
+    "requestBytes": 1390080,
+    "tokensUpperBound": 1390080,
+    "overviewBytes": 20757,
+    "worstOutputBytes": 5025844,
+    "observedOutputBytes": 633239,
+    "exceedsMaxTokensByBytes": true,
+    "segmented": {
+      "segmentCandidates": 200,
+      "segments": 50,
+      "requestBytes": {
+        "min": 35691,
+        "p50": 47964,
+        "p95": 51292,
+        "max": 53840,
+        "n": 50
+      },
+      "maxRequestBytes": 53840
+    }
+  },
+  "tools": {
+    "pageCalls": 533,
+    "pageBytes": 6737538,
+    "pageErrors": 0,
+    "partialLines": 0,
+    "spanCalls": 0,
+    "spanBytes": 0,
+    "spanErrors": 0,
+    "incompleteAfterCensus": 0,
+    "observedAll": 9893,
+    "lines": 9893
+  },
+  "transcript": {
+    "events": 930,
+    "sha256": "0ab7d07d4609bab0deda2492ed4ea8c3b1f188b3c27f8745421d2dd6114d3803",
+    "rawItems": 620,
+    "rawVerified": true
+  },
+  "coverage": {
+    "issued": 9893,
+    "evaluated": 9893,
+    "missing": 0,
+    "runStatus": "RESOLVED",
+    "assessment": "RESOLVED"
+  },
+  "cost": {
+    "promptBytes": 8988298,
+    "costUsdUpperBoundBytes": 9.924124,
+    "runnerFormulaUsdLargestRequest": 0.029133,
+    "note": "runner formula assumes bytes/2 prompt tokens; bytes is the proven upper bound"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "version": "P7_F1_V6_PREFLIGHT_V1",
+  "document": "051",
+  "path": "051_WBG_Trust_Fund_FIS_June_2024.pdf",
+  "sourceSha256": "7fd684159939651921105dcc478b4cc145bac8e7810b4ee7b83f15aec7fa0622",
+  "source": {
+    "pages": 26,
+    "maxPage": 26,
+    "lines": 438,
+    "placedLines": 438,
+    "unplacedLines": 0,
+    "atoms": 438,
+    "candidates": 438,
+    "packs": 26,
+    "linesOverCap": 0,
+    "maxLineBytes": 788
+  },
+  "interpretation": {
+    "requestBytes": 553,
+    "tokensUpperBound": 553
+  },
+  "packs": {
+    "count": 26,
+    "requestBytes": {
+      "min": 5118,
+      "p50": 6456,
+      "p95": 8219,
+      "max": 9482,
+      "n": 26
+    },
+    "outputBytes": {
+      "min": 415,
+      "p50": 1060,
+      "p95": 2079,
+      "max": 2529,
+      "n": 26
+    },
+    "maxRequestBytes": 9482
+  },
+  "reconcile": {
+    "candidates": 438,
+    "requestBytes": 67255,
+    "tokensUpperBound": 67255,
+    "overviewBytes": 4441,
+    "worstOutputBytes": 222704,
+    "observedOutputBytes": 28137,
+    "exceedsMaxTokensByBytes": true,
+    "segmented": {
+      "segmentCandidates": 200,
+      "segments": 3,
+      "requestBytes": {
+        "min": 9782,
+        "p50": 31780,
+        "p95": 33341,
+        "max": 33341,
+        "n": 3
+      },
+      "maxRequestBytes": 33341
+    }
+  },
+  "tools": {
+    "pageCalls": 33,
+    "pageBytes": 310279,
+    "pageErrors": 0,
+    "partialLines": 0,
+    "spanCalls": 0,
+    "spanBytes": 0,
+    "spanErrors": 0,
+    "incompleteAfterCensus": 0,
+    "observedAll": 438,
+    "lines": 438
+  },
+  "transcript": {
+    "events": 84,
+    "sha256": "c3c57e8201936afc6f58bc49cea172489e3a2c829cbfeb7216cbf1542ed9d949",
+    "rawItems": 56,
+    "rawVerified": true
+  },
+  "coverage": {
+    "issued": 438,
+    "evaluated": 438,
+    "missing": 0,
+    "runStatus": "RESOLVED",
+    "assessment": "RESOLVED"
+  },
+  "cost": {
+    "promptBytes": 241220,
+    "costUsdUpperBoundBytes": 0.782247,
+    "runnerFormulaUsdLargestRequest": 0.027163,
+    "note": "runner formula assumes bytes/2 prompt tokens; bytes is the proven upper bound"
+  }
+}

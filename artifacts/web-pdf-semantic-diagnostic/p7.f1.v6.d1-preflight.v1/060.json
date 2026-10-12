@@ -1,0 +1,92 @@
+{
+  "version": "P7_F1_V6_PREFLIGHT_V1",
+  "document": "060",
+  "path": "060_Elements_of_Linear_Algebra_Lecture_Notes.pdf",
+  "sourceSha256": "b3bdfbece3c9df4409ac2012569553ac332dd35a6ca759571c0d74c9d06ccdb2",
+  "source": {
+    "pages": 45,
+    "maxPage": 45,
+    "lines": 1933,
+    "placedLines": 1933,
+    "unplacedLines": 0,
+    "atoms": 1933,
+    "candidates": 1933,
+    "packs": 54,
+    "linesOverCap": 0,
+    "maxLineBytes": 149
+  },
+  "interpretation": {
+    "requestBytes": 610,
+    "tokensUpperBound": 610
+  },
+  "packs": {
+    "count": 54,
+    "requestBytes": {
+      "min": 6041,
+      "p50": 10792,
+      "p95": 11647,
+      "max": 12058,
+      "n": 54
+    },
+    "outputBytes": {
+      "min": 164,
+      "p50": 2723,
+      "p95": 3174,
+      "max": 3178,
+      "n": 54
+    },
+    "maxRequestBytes": 12058
+  },
+  "reconcile": {
+    "candidates": 1933,
+    "requestBytes": 276896,
+    "tokensUpperBound": 276896,
+    "overviewBytes": 5685,
+    "worstOutputBytes": 982164,
+    "observedOutputBytes": 123795,
+    "exceedsMaxTokensByBytes": true,
+    "segmented": {
+      "segmentCandidates": 200,
+      "segments": 10,
+      "requestBytes": {
+        "min": 24064,
+        "p50": 32707,
+        "p95": 34965,
+        "max": 34965,
+        "n": 10
+      },
+      "maxRequestBytes": 34965
+    }
+  },
+  "tools": {
+    "pageCalls": 100,
+    "pageBytes": 1328525,
+    "pageErrors": 0,
+    "partialLines": 0,
+    "spanCalls": 0,
+    "spanBytes": 0,
+    "spanErrors": 0,
+    "incompleteAfterCensus": 0,
+    "observedAll": 1933,
+    "lines": 1933
+  },
+  "transcript": {
+    "events": 168,
+    "sha256": "fba98ac48ce9aeb9c0f9f58e80b076b9e0f497ed3ea8af771026d82f3eee58f9",
+    "rawItems": 112,
+    "rawVerified": true
+  },
+  "coverage": {
+    "issued": 1933,
+    "evaluated": 1933,
+    "missing": 0,
+    "runStatus": "RESOLVED",
+    "assessment": "RESOLVED"
+  },
+  "cost": {
+    "promptBytes": 823020,
+    "costUsdUpperBoundBytes": 1.632610,
+    "runnerFormulaUsdLargestRequest": 0.027420,
+    "note": "runner formula assumes bytes/2 prompt tokens; bytes is the proven upper bound"
+  }
+}

@@ -5,46 +5,53 @@ using System.Text.Json.Nodes;
 namespace DocxHeaderExtractor.V5Qualification.P7;
 
 /// <summary>
-/// P7_F1_V6_READ_TOOLS_V2 (Issue #9 D1). Two read-only tools over the parser source store, separate from the V2–V5 tools
-/// (which are not changed). <c>search_document_text</c> finds a literal or normalised string over the granted pages in source
-/// order. <c>get_page_text</c> returns every line of one page in reading order. Neither tool labels, ranks or filters by heading
-/// vocabulary. Every result is capped at <see cref="MaxResultBytes"/> UTF-8 bytes. Overflow is never silent: fewer items are
-/// returned with an explicit nextOffset, and a single line that alone exceeds the cap is cut and flagged as a partial view.
+/// P7_F1_V6_READ_TOOLS_V3 (Issue #9 D1). Three read-only tools over the parser source store, separate from the V2–V5 tools
+/// (which are not changed): <c>search_document_text</c> (literal or normalised, granted pages, source order),
+/// <c>get_page_text</c> (every line of one page in reading order) and <c>read_line_span</c> (the rest of one line, by character
+/// offset, contiguous from what was already read). None labels, ranks or filters by heading vocabulary.
+/// Every result is capped at <see cref="MaxResultBytes"/>: the cap is measured on the EXACT serialised body that is returned.
+/// Overflow is never silent: fewer items are returned with an explicit nextOffset. A single line that does not fit is cut and
+/// its read position is recorded, so the model can continue it with read_line_span. A line whose text was not read to the end is
+/// reported as an incomplete evidence line.
 /// </summary>
 internal sealed class P7F1V6Tools
 {
-    public const string Version = "P7_F1_V6_READ_TOOLS_V2";
-    public const int MaxLimit = 50, MaxQueryChars = 200, MaxResultBytes = 16384;
-    public static readonly string[] Names = ["search_document_text", "get_page_text"];
+    public const string Version = "P7_F1_V6_READ_TOOLS_V3";
+    public const int MaxLimit = 50, MaxQueryChars = 200, MaxResultBytes = 16384, MaxSpanChars = 20000;
+    public static readonly string[] Names = ["search_document_text", "get_page_text", "read_line_span"];
 
     /// <summary>One transcript record per call, errors included. The binder uses it to prove evidence ids.</summary>
     public sealed record Record(string EvidenceId, string RequestId, string Tool, string SourceSha256, string UniverseSha256, string StoreSha256,
         string Status, string? ErrorCode, string ContentSha256, IReadOnlySet<string> ReturnedAliases, string Version);
 
+    /// <summary>Content is the exact body returned to the model. Its SHA-256 is <see cref="Record.ContentSha256"/>.</summary>
     public sealed record Result(string Status, string? ErrorCode, byte[] Content, Record Record);
 
     /// <summary>
-    /// Four scopes, kept apart: ReturnedToModel (what the model was shown), ReturnedBySearch (matches the model received),
-    /// ScannedBySearch (every granted line a search examined, whether or not it was returned), PartialViews (lines shown only in
-    /// part because of the byte cap). Each is a snapshot.
+    /// Scopes kept apart: ReturnedToModel (what the model was shown), ReturnedBySearch (matches the model received), ScannedBySearch
+    /// (every granted line a search examined), PartialViews (lines ever shown in part), IncompleteEvidence (shown lines whose text
+    /// was not read to the end). Each is a snapshot.
     /// </summary>
     public sealed record Ledger(IReadOnlySet<string> ReturnedToModel, IReadOnlySet<int> ReturnedPages, IReadOnlySet<string> ReturnedBySearch,
-        IReadOnlySet<string> ScannedBySearch, IReadOnlySet<string> PartialViews);
+        IReadOnlySet<string> ScannedBySearch, IReadOnlySet<string> PartialViews, IReadOnlySet<string> IncompleteEvidence);
 
     readonly string sourceSha256, universeSha256, storeSha256;
     readonly IReadOnlyList<F1QSourceLine> lines;     // reading order
+    readonly Dictionary<string, F1QSourceLine> byAlias;
     readonly IReadOnlySet<int> grantedPages;         // the only pages this tool instance may read
     readonly HashSet<string> returnedToModel = new(StringComparer.Ordinal);
     readonly HashSet<int> returnedPages = new();
     readonly HashSet<string> returnedBySearch = new(StringComparer.Ordinal);
     readonly HashSet<string> scannedBySearch = new(StringComparer.Ordinal);
     readonly HashSet<string> partialViews = new(StringComparer.Ordinal);
+    readonly Dictionary<string, int> readUpTo = new(StringComparer.Ordinal);   // characters of each line read so far, from the start
     readonly int unplacedLines;
 
     public P7F1V6Tools(string sourceSha256, string universeSha256, string storeSha256, IReadOnlyList<F1QSourceLine> lines, IReadOnlySet<int>? grantedPages = null)
     {
         this.sourceSha256 = sourceSha256; this.universeSha256 = universeSha256; this.storeSha256 = storeSha256;
         this.lines = lines.OrderBy(l => l.Ordinal).ThenBy(l => l.Alias, StringComparer.Ordinal).ToArray();
+        byAlias = this.lines.ToDictionary(l => l.Alias, StringComparer.Ordinal);
         var allPages = this.lines.Where(l => l.Page is not null).Select(l => l.Page!.Value).ToHashSet();
         this.grantedPages = grantedPages is null ? allPages : grantedPages.Where(allPages.Contains).ToHashSet();
         unplacedLines = this.lines.Count(l => l.Page is null);
@@ -58,10 +65,17 @@ internal sealed class P7F1V6Tools
     /// <summary>Whole-document parser lines in reading order, read-only. Used for the overview observations only.</summary>
     public IReadOnlyList<F1QSourceLine> AllLines => lines;
 
-    /// <summary>Snapshot of all four scopes at the moment of the call.</summary>
-    public Ledger Scope => new(new HashSet<string>(returnedToModel, StringComparer.Ordinal), new HashSet<int>(returnedPages),
-        new HashSet<string>(returnedBySearch, StringComparer.Ordinal), new HashSet<string>(scannedBySearch, StringComparer.Ordinal),
-        new HashSet<string>(partialViews, StringComparer.Ordinal));
+    /// <summary>Snapshot of every scope at the moment of the call.</summary>
+    public Ledger Scope
+    {
+        get
+        {
+            var incomplete = returnedToModel.Where(a => readUpTo.GetValueOrDefault(a, 0) < byAlias[a].Text.Length).ToHashSet(StringComparer.Ordinal);
+            return new Ledger(new HashSet<string>(returnedToModel, StringComparer.Ordinal), new HashSet<int>(returnedPages),
+                new HashSet<string>(returnedBySearch, StringComparer.Ordinal), new HashSet<string>(scannedBySearch, StringComparer.Ordinal),
+                new HashSet<string>(partialViews, StringComparer.Ordinal), incomplete);
+        }
+    }
 
     // ---------------- search_document_text ----------------
 
@@ -76,14 +90,13 @@ internal sealed class P7F1V6Tools
         var granted = lines.Where(l => l.Page is not null && grantedPages.Contains(l.Page.Value)).ToArray();
         var matches = granted.Where(l => (mode == "normalized" ? Normalize(l.Text) : l.Text).Contains(needle, StringComparison.Ordinal)).ToArray();
         foreach (var l in granted) scannedBySearch.Add(l.Alias);
-        var page = Paginate(matches, offset, limit, out var partial);
         var header = new JsonObject
         {
             ["tool"] = "search_document_text", ["version"] = Version, ["query"] = query, ["mode"] = mode,
-            ["totalMatches"] = matches.Length, ["grantedPages"] = grantedPages.Count, ["unplacedLinesExcluded"] = unplacedLines,
+            ["grantedPages"] = grantedPages.Count, ["unplacedLinesExcluded"] = unplacedLines,
             ["sourceStatus"] = unplacedLines == 0 ? "COMPLETE_PLACEMENT" : "PARTIAL_PLACEMENT",
         };
-        return Finish(evidenceId, requestId, "search_document_text", header, "matches", page, matches.Length, offset, limit, partial, search: true);
+        return Paged(evidenceId, requestId, "search_document_text", header, "matches", matches, offset, limit, search: true);
     }
 
     // ---------------- get_page_text ----------------
@@ -94,98 +107,114 @@ internal sealed class P7F1V6Tools
         if (!grantedPages.Contains(page)) return Error(evidenceId, requestId, "get_page_text", "SCOPE_DENIED");
         if (offset < 0) return Error(evidenceId, requestId, "get_page_text", "OFFSET_INVALID");
         if (limit < 1 || limit > MaxLimit) return Error(evidenceId, requestId, "get_page_text", "LIMIT_INVALID");
-        var pageLines = lines.Where(l => l.Page == page).ToArray();
-        var slice = Paginate(pageLines, offset, limit, out var partial);
-        var header = new JsonObject
-        {
-            ["tool"] = "get_page_text", ["version"] = Version, ["page"] = page,
-            ["unplacedLinesExcluded"] = unplacedLines,
-        };
-        return Finish(evidenceId, requestId, "get_page_text", header, "lines", slice, pageLines.Length, offset, limit, partial, search: false);
+        var header = new JsonObject { ["tool"] = "get_page_text", ["version"] = Version, ["page"] = page, ["unplacedLinesExcluded"] = unplacedLines };
+        return Paged(evidenceId, requestId, "get_page_text", header, "lines", lines.Where(l => l.Page == page).ToArray(), offset, limit, search: false);
     }
 
-    // ---------------- pagination under the byte cap ----------------
+    // ---------------- read_line_span: the rest of one line ----------------
+
+    public Result ReadLineSpan(string evidenceId, string requestId, string alias, int offset, int limit)
+    {
+        if (!byAlias.TryGetValue(alias, out var line)) return Error(evidenceId, requestId, "read_line_span", "ALIAS_NOT_FOUND");
+        if (line.Page is null || !grantedPages.Contains(line.Page.Value)) return Error(evidenceId, requestId, "read_line_span", "SCOPE_DENIED");
+        if (offset < 0) return Error(evidenceId, requestId, "read_line_span", "OFFSET_INVALID");
+        if (limit < 1 || limit > MaxSpanChars) return Error(evidenceId, requestId, "read_line_span", "LIMIT_INVALID");
+        int upTo = readUpTo.GetValueOrDefault(alias, 0);
+        if (offset > upTo) return Error(evidenceId, requestId, "read_line_span", "SPAN_GAP");     // reading must be contiguous
+        var text = line.Text;
+        // The longest span from offset that keeps the exact body within the cap.
+        int lo = 0, hi = Math.Min(limit, text.Length - offset);
+        while (lo < hi)
+        {
+            int mid = (lo + hi + 1) / 2;
+            if (SpanBody(line, offset, mid, offset + mid < text.Length).Length <= MaxResultBytes) lo = mid; else hi = mid - 1;
+        }
+        if (lo == 0 && text.Length > offset) return Error(evidenceId, requestId, "read_line_span", "CAP_TOO_SMALL");
+        int end = offset + lo;
+        var body = SpanBody(line, offset, lo, end < text.Length);
+        readUpTo[alias] = Math.Max(upTo, end);
+        returnedToModel.Add(alias);
+        if (line.Page is not null) returnedPages.Add(line.Page.Value);
+        if (end < text.Length) partialViews.Add(alias);
+        var record = new Record(evidenceId, requestId, "read_line_span", sourceSha256, universeSha256, storeSha256, "OK", null,
+            SpatialCanonical.Hash(body), new HashSet<string>([alias], StringComparer.Ordinal), Version);
+        return new Result("OK", null, body, record);
+    }
+
+    byte[] SpanBody(F1QSourceLine line, int offset, int count, bool more)
+    {
+        var content = new JsonObject
+        {
+            ["tool"] = "read_line_span", ["version"] = Version, ["sourceAlias"] = line.Alias, ["page"] = line.Page,
+            ["offset"] = offset, ["returnedChars"] = count, ["fullChars"] = line.Text.Length,
+            ["text"] = line.Text.Substring(offset, count), ["hasMore"] = more, ["nextOffset"] = more ? offset + count : null,
+        };
+        return Encoding.UTF8.GetBytes(new JsonObject { ["status"] = "OK", ["errorCode"] = null, ["result"] = content }.ToJsonString());
+    }
+
+    // ---------------- pagination: the cap is measured on the exact body ----------------
 
     /// <summary>
-    /// Takes lines from <paramref name="all"/> starting at <paramref name="offset"/>, up to <paramref name="limit"/>, adding them
-    /// while the serialised result stays within the byte cap. If the first line alone does not fit, its text is cut to the longest
-    /// prefix that fits and it is reported as partial. Deterministic for the same input.
+    /// Takes items from <paramref name="all"/> starting at <paramref name="offset"/>, up to <paramref name="limit"/>, adding them
+    /// while the exact serialised body stays within the cap. If the first item alone does not fit, its text is cut to the longest
+    /// prefix whose exact body fits, and that line is reported as a partial view with its read position.
     /// </summary>
-    static F1QSourceLine[] Paginate(F1QSourceLine[] all, int offset, int limit, out (string? Alias, int FullBytes, int KeptBytes) partial)
+    Result Paged(string evidenceId, string requestId, string tool, JsonObject header, string itemsKey, F1QSourceLine[] all, int offset, int limit, bool search)
     {
-        partial = (null, 0, 0);
+        var candidates = all.Skip(offset).Take(limit).ToArray();
         var taken = new List<F1QSourceLine>();
-        foreach (var line in all.Skip(offset).Take(limit))
+        (string Alias, int Chars, int Full)? cut = null;
+        foreach (var line in candidates)
         {
-            taken.Add(line);
-            if (Bytes(taken.ToArray(), null) <= MaxResultBytes) continue;
-            taken.RemoveAt(taken.Count - 1);
+            var tentative = taken.Append(line).ToArray();
+            if (BodyOf(tool, header, itemsKey, tentative, null, all.Length, offset, limit).Length <= MaxResultBytes) { taken.Add(line); continue; }
             if (taken.Count > 0) break;
-            // The first line alone exceeds the cap: keep the longest prefix that fits, and say so.
+            // The first item alone does not fit: keep the longest prefix whose exact body fits, and say so.
             int lo = 0, hi = line.Text.Length;
             while (lo < hi)
             {
                 int mid = (lo + hi + 1) / 2;
-                if (Bytes([line], (line.Alias, mid)) <= MaxResultBytes) lo = mid; else hi = mid - 1;
+                if (BodyOf(tool, header, itemsKey, [line], (line.Alias, mid, line.Text.Length), all.Length, offset, limit).Length <= MaxResultBytes) lo = mid; else hi = mid - 1;
             }
-            partial = (line.Alias, Encoding.UTF8.GetByteCount(line.Text), Encoding.UTF8.GetByteCount(line.Text[..lo]));
+            if (lo == 0) return Error(evidenceId, requestId, tool, "CAP_TOO_SMALL");
+            cut = (line.Alias, lo, line.Text.Length);
             taken.Add(line);
             break;
         }
-        return taken.ToArray();
-    }
-
-    static int Bytes(F1QSourceLine[] items, (string Alias, int Chars)? cut) =>
-        Encoding.UTF8.GetByteCount(ItemsJson(items, cut).ToJsonString()) + 512;   // headroom for the header and footer
-
-    static JsonArray ItemsJson(F1QSourceLine[] items, (string Alias, int Chars)? cut)
-    {
-        var arr = new JsonArray();
-        foreach (var l in items)
-        {
-            var text = cut is { } c && c.Alias == l.Alias ? l.Text[..c.Chars] : l.Text;
-            var o = new JsonObject { ["sourceAlias"] = l.Alias, ["page"] = l.Page, ["ordinal"] = l.Ordinal, ["text"] = text, ["layout"] = Layout(l) };
-            if (cut is { } cc && cc.Alias == l.Alias) { o["textTruncated"] = true; o["textChars"] = l.Text.Length; }
-            arr.Add(o);
-        }
-        return arr;
-    }
-
-    // ---------------- result, provenance and ledger ----------------
-
-    Result Finish(string evidenceId, string requestId, string tool, JsonObject header, string itemsKey, F1QSourceLine[] items,
-        int total, int offset, int limit, (string? Alias, int FullBytes, int KeptBytes) partial, bool search)
-    {
-        var content = (JsonObject)header.DeepClone();
-        content[itemsKey] = ItemsJson(items, partial.Alias is null ? null : (partial.Alias, partial.KeptBytes > 0 ? CharsFor(items, partial) : 0));
-        content["total"] = total; content["offset"] = offset; content["limit"] = limit; content["returned"] = items.Length;
-        bool more = offset + items.Length < total;
-        content["hasMore"] = more; content["nextOffset"] = more ? offset + items.Length : null;
-        content["partialView"] = partial.Alias is null ? null : new JsonObject { ["sourceAlias"] = partial.Alias, ["fullBytes"] = partial.FullBytes, ["returnedBytes"] = partial.KeptBytes };
-        var body = Encoding.UTF8.GetBytes(new JsonObject { ["status"] = "OK", ["errorCode"] = null, ["result"] = content.DeepClone() }.ToJsonString());
-        var aliases = items.Select(l => l.Alias).ToArray();
-        foreach (var l in items)
+        var body = BodyOf(tool, header, itemsKey, taken.ToArray(), cut, all.Length, offset, limit);
+        foreach (var l in taken)
         {
             returnedToModel.Add(l.Alias);
             if (l.Page is not null) returnedPages.Add(l.Page.Value);
             if (search) returnedBySearch.Add(l.Alias);
+            if (cut is { } c && c.Alias == l.Alias) { partialViews.Add(l.Alias); readUpTo[l.Alias] = Math.Max(readUpTo.GetValueOrDefault(l.Alias, 0), c.Chars); }
+            else readUpTo[l.Alias] = l.Text.Length;
         }
-        if (partial.Alias is not null) partialViews.Add(partial.Alias);
         var record = new Record(evidenceId, requestId, tool, sourceSha256, universeSha256, storeSha256, "OK", null,
-            SpatialCanonical.Hash(body), aliases.ToHashSet(StringComparer.Ordinal), Version);
+            SpatialCanonical.Hash(body), taken.Select(l => l.Alias).ToHashSet(StringComparer.Ordinal), Version);
         return new Result("OK", null, body, record);
     }
 
-    static int CharsFor(F1QSourceLine[] items, (string? Alias, int FullBytes, int KeptBytes) partial)
+    /// <summary>The exact body for these items, with the same footer the caller would receive.</summary>
+    static byte[] BodyOf(string tool, JsonObject header, string itemsKey, F1QSourceLine[] items, (string Alias, int Chars, int Full)? cut,
+        int total, int offset, int limit)
     {
-        var line = items.First(l => l.Alias == partial.Alias);
-        int lo = 0, hi = line.Text.Length;
-        while (lo < hi)
+        var arr = new JsonArray();
+        foreach (var l in items)
         {
-            int mid = (lo + hi + 1) / 2;
-            if (Encoding.UTF8.GetByteCount(line.Text[..mid]) <= partial.KeptBytes) lo = mid; else hi = mid - 1;
+            bool isCut = cut is { } c && c.Alias == l.Alias;
+            var text = isCut ? l.Text[..cut!.Value.Chars] : l.Text;
+            var o = new JsonObject { ["sourceAlias"] = l.Alias, ["page"] = l.Page, ["ordinal"] = l.Ordinal, ["text"] = text, ["layout"] = Layout(l) };
+            if (isCut) { o["textTruncated"] = true; o["textChars"] = l.Text.Length; o["textCharsReturned"] = cut!.Value.Chars; }
+            arr.Add(o);
         }
-        return lo;
+        var content = (JsonObject)header.DeepClone();
+        content[itemsKey] = arr;
+        content["total"] = total; content["offset"] = offset; content["limit"] = limit; content["returned"] = items.Length;
+        bool more = offset + items.Length < total;
+        content["hasMore"] = more; content["nextOffset"] = more ? offset + items.Length : null;
+        content["partialView"] = cut is { } cc ? new JsonObject { ["sourceAlias"] = cc.Alias, ["fullChars"] = cc.Full, ["returnedChars"] = cc.Chars } : null;
+        return Encoding.UTF8.GetBytes(new JsonObject { ["status"] = "OK", ["errorCode"] = null, ["result"] = content }.ToJsonString());
     }
 
     Result Error(string evidenceId, string requestId, string tool, string code)
