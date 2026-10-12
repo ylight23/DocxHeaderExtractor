@@ -1,0 +1,213 @@
+{
+  "document": "028",
+  "sizes": [
+    {
+      "shardSize": 32,
+      "candidates": 10797,
+      "shards": 338,
+      "maxAliasChars": 8,
+      "itemMaxBytes": 186,
+      "shardOutputBoundBytes": 6208,
+      "visibleBudgetBytes": 16384,
+      "provablyWithinBudget": true,
+      "requests": 727,
+      "levels": 4,
+      "violations": 0,
+      "violationSample": [],
+      "coverageAllDecided": true,
+      "selected": 5394,
+      "confirmationsTotal": 20083,
+      "local": {
+        "n": 338,
+        "inputMax": 29301,
+        "inputP50": 27353,
+        "inputP95": 28196,
+        "outputMax": 2153,
+        "rejected": 0
+      },
+      "reconcile": {
+        "n": 338,
+        "inputMax": 29434,
+        "inputP50": 27486,
+        "inputP95": 28329,
+        "outputMax": 333,
+        "rejected": 0
+      },
+      "synthesis": {
+        "n": 50,
+        "inputMax": 85345,
+        "inputP50": 42540,
+        "inputP95": 83976,
+        "outputMax": 3773,
+        "rejected": 0
+      },
+      "global": {
+        "n": 1,
+        "inputMax": 30875,
+        "inputP50": 30875,
+        "inputP95": 30875,
+        "outputMax": 505,
+        "rejected": 0
+      },
+      "maxOutputBytesAccepted": 3773,
+      "seconds": 0.6,
+      "transcriptSha256": "af4a0485908d293ace925a68c5a3bfbb17a4f1cf4fdc34c50f7e94a5e518566b"
+    },
+    {
+      "shardSize": 48,
+      "candidates": 10797,
+      "shards": 225,
+      "maxAliasChars": 8,
+      "itemMaxBytes": 186,
+      "shardOutputBoundBytes": 9184,
+      "visibleBudgetBytes": 16384,
+      "provablyWithinBudget": true,
+      "requests": 485,
+      "levels": 4,
+      "violations": 0,
+      "violationSample": [],
+      "coverageAllDecided": true,
+      "selected": 5394,
+      "confirmationsTotal": 18812,
+      "local": {
+        "n": 225,
+        "inputMax": 31174,
+        "inputP50": 29381,
+        "inputP95": 30428,
+        "outputMax": 3181,
+        "rejected": 0
+      },
+      "reconcile": {
+        "n": 225,
+        "inputMax": 31375,
+        "inputP50": 29578,
+        "inputP95": 30625,
+        "outputMax": 445,
+        "rejected": 0
+      },
+      "synthesis": {
+        "n": 34,
+        "inputMax": 84280,
+        "inputP50": 50789,
+        "inputP95": 84021,
+        "outputMax": 3773,
+        "rejected": 0
+      },
+      "global": {
+        "n": 1,
+        "inputMax": 30875,
+        "inputP50": 30875,
+        "inputP95": 30875,
+        "outputMax": 505,
+        "rejected": 0
+      },
+      "maxOutputBytesAccepted": 3773,
+      "seconds": 0.5,
+      "transcriptSha256": "080d2538427cd70a27c81ee79e1fdc38c152fad67e2699bb45869a6d102a9adb"
+    },
+    {
+      "shardSize": 60,
+      "candidates": 10797,
+      "shards": 180,
+      "maxAliasChars": 8,
+      "itemMaxBytes": 186,
+      "shardOutputBoundBytes": 11416,
+      "visibleBudgetBytes": 16384,
+      "provablyWithinBudget": true,
+      "requests": 388,
+      "levels": 4,
+      "violations": 0,
+      "violationSample": [],
+      "coverageAllDecided": true,
+      "selected": 5394,
+      "confirmationsTotal": 18304,
+      "local": {
+        "n": 180,
+        "inputMax": 32893,
+        "inputP50": 30911,
+        "inputP95": 32138,
+        "outputMax": 3949,
+        "rejected": 0
+      },
+      "reconcile": {
+        "n": 180,
+        "inputMax": 33130,
+        "inputP50": 31156,
+        "inputP95": 32383,
+        "outputMax": 529,
+        "rejected": 0
+      },
+      "synthesis": {
+        "n": 27,
+        "inputMax": 82667,
+        "inputP50": 57135,
+        "inputP95": 81997,
+        "outputMax": 3773,
+        "rejected": 0
+      },
+      "global": {
+        "n": 1,
+        "inputMax": 30886,
+        "inputP50": 30886,
+        "inputP95": 30886,
+        "outputMax": 505,
+        "rejected": 0
+      },
+      "maxOutputBytesAccepted": 3949,
+      "seconds": 0.4,
+      "transcriptSha256": "8a68ba7e920cc88f7c68a7fb302d07d306e266849774378a15ff9da5a3011f11"
+    },
+    {
+      "shardSize": 80,
+      "candidates": 10797,
+      "shards": 135,
+      "maxAliasChars": 8,
+      "itemMaxBytes": 186,
+      "shardOutputBoundBytes": 15136,
+      "visibleBudgetBytes": 16384,
+      "provablyWithinBudget": true,
+      "requests": 292,
+      "levels": 4,
+      "violations": 0,
+      "violationSample": [],
+      "coverageAllDecided": true,
+      "selected": 5394,
+      "confirmationsTotal": 17815,
+      "local": {
+        "n": 135,
+        "inputMax": 35801,
+        "inputP50": 33421,
+        "inputP95": 34831,
+        "outputMax": 5225,
+        "rejected": 0
+      },
+      "reconcile": {
+        "n": 135,
+        "inputMax": 36130,
+        "inputP50": 33746,
+        "inputP95": 35160,
+        "outputMax": 669,
+        "rejected": 0
+      },
+      "synthesis": {
+        "n": 21,
+        "inputMax": 84986,
+        "inputP50": 67579,
+        "inputP95": 83932,
+        "outputMax": 3766,
+        "rejected": 0
+      },
+      "global": {
+        "n": 1,
+        "inputMax": 30886,
+        "inputP50": 30886,
+        "inputP95": 30886,
+        "outputMax": 505,
+        "rejected": 0
+      },
+      "maxOutputBytesAccepted": 5225,
+      "seconds": 0.3,
+      "transcriptSha256": "5ff839532f0ec931ce4dea296a6c09ff1ec0eea0c1d13bf6026589c6d880b4d3"
+    }
+  ]
+}

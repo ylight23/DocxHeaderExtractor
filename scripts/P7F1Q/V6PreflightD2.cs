@@ -61,20 +61,24 @@ internal static class V6PreflightD2
             provablyWithinBudget = shard * itemMax + HeaderBytes <= OutputBudgetBytes,
             requests = nodes.Count, levels, violations = run.Violations.Count, violationSample = run.Violations.Take(3).ToArray(),
             coverageAllDecided = run.Final.Count == cands.Length && run.Final.Values.All(v => v.Decision != "MISSING"),
-            selected = run.Final.Values.Count(v => v.Decision == "SELECT"), carriedTotal = run.Final.Values.Sum(v => v.Carried),
+            selected = run.Final.Values.Count(v => v.Decision == "SELECT"), confirmationsTotal = run.Final.Values.Sum(v => v.Confirmations),
             local = Kind("Local"), reconcile = Kind("Reconcile"), synthesis = Kind("Synthesis"), global = Kind("Global"),
             maxOutputBytesAccepted = nodes.Where(n => n.Status == "ACCEPTED").DefaultIfEmpty().Max(n => n?.OutputBytes ?? 0),
             seconds = Math.Round(sw.Elapsed.TotalSeconds, 1), transcriptSha256 = run.TranscriptSha256,
         };
     }
 
-    /// <summary>The scripted honest model. Local nodes decide every owned id (SELECT when the alias index is even), synthesis nodes
-    /// pass up their first PassUpCap selections, reconcile and global nodes change nothing.</summary>
+    /// <summary>The scripted honest model. Local nodes decide every owned id (SELECT when the alias index is even). Reconcile, synthesis
+    /// and global nodes confirm every id they were shown. Synthesis passes up its first selections, leaving room for the two boundary
+    /// windows so that the passUp cap is never exceeded.</summary>
     static string Honest(string nodeId, P7F1V6Hier.Kind kind, string payload)
     {
         using var doc = JsonDocument.Parse(payload);
         var r = doc.RootElement;
-        string Head(string status) => $"{{\"protocolVersion\":\"P7_F1_V6_HIER_NODE_V1\",\"nodeId\":\"{nodeId}\",\"status\":\"{status}\",\"items\":[";
+        string Quoted(IEnumerable<string> ids) => string.Join(",", ids.Select(i => $"\"{i}\""));
+        string Node(string items, string passUp = "", string confirmed = "") =>
+            $"{{\"protocolVersion\":\"P7_F1_V6_HIER_NODE_V2\",\"nodeId\":\"{nodeId}\",\"status\":\"COMPLETE\",\"items\":[{items}]"
+            + (passUp == "" ? "" : $",\"passUp\":[{passUp}]") + (confirmed == "" ? "" : $",\"confirmed\":[{confirmed}]") + "}";
         if (kind == P7F1V6Hier.Kind.Local)
         {
             var items = r.GetProperty("owned").EnumerateArray().Select(o =>
@@ -83,15 +87,18 @@ internal static class V6PreflightD2
                 var even = int.Parse(a[1..5]) % 2 == 0;
                 return $"{{\"id\":\"{o.GetProperty("id").GetString()}\",\"decision\":\"{(even ? "SELECT" : "NOT_SELECT")}\",\"evidenceRefs\":[\"{a}\"]}}";
             });
-            return Head("COMPLETE") + string.Join(",", items) + "]}";
+            return Node(string.Join(",", items));
         }
+        var shownIds = r.TryGetProperty("shown", out var shown) ? shown.EnumerateArray().Select(s => s.GetProperty("id").GetString()!).ToArray() : [];
+        if (kind == P7F1V6Hier.Kind.Reconcile)
+            return Node("", confirmed: Quoted(r.GetProperty("owned").EnumerateArray().Select(o => o.GetProperty("id").GetString()!)));
         if (kind == P7F1V6Hier.Kind.Synthesis)
         {
-            var up = r.GetProperty("shown").EnumerateArray().Where(s => s.GetProperty("current").GetString() == "SELECT")
-                .Take(PassUpCap).Select(s => $"\"{s.GetProperty("id").GetString()}\"");
-            return Head("COMPLETE") + "],\"passUp\":[" + string.Join(",", up) + "]}";
+            var up = shown.EnumerateArray().Where(s => s.GetProperty("current").GetString() == "SELECT")
+                .Take(PassUpCap - 2 * Context).Select(s => s.GetProperty("id").GetString()!);
+            return Node("", passUp: Quoted(up), confirmed: Quoted(shownIds));
         }
-        return Head("COMPLETE") + "]}";
+        return Node("", confirmed: Quoted(shownIds));
     }
 
     /// <summary>Exact UTF-8 bytes of the largest canonical item: every reference at the longest alias, and both optional references.</summary>
