@@ -94,9 +94,10 @@ public sealed class P7F1V6GatesD34Tests : IDisposable
         var fresh = P7F1V6SafeRawStore.CreateRun(root);
         fresh.Put(Encoding.UTF8.GetBytes("fresh"));
         Directory.SetLastWriteTimeUtc(old.RunDirectory, DateTime.UtcNow.AddDays(-60));
-        var expired = P7F1V6Retention.ExpiredRuns(root, DateTime.UtcNow, 30);
+        Directory.SetCreationTimeUtc(old.RunDirectory, DateTime.UtcNow.AddDays(-60));
+        var expired = P7F1V6Retention.Due(root, DateTime.UtcNow);
         Assert.Equal(new[] { old.RunDirectory }, expired);
-        Assert.Equal(1, P7F1V6Retention.DeleteRun(old.RunDirectory));
+        Assert.Equal(1, P7F1V6Retention.DeleteRun(root, old.RunDirectory));
         Assert.False(Directory.Exists(old.RunDirectory));
         Assert.True(Directory.Exists(fresh.RunDirectory));
     }
@@ -105,11 +106,11 @@ public sealed class P7F1V6GatesD34Tests : IDisposable
     {
         var store = P7F1V6SafeRawStore.CreateRun(root);
         Directory.CreateDirectory(Path.Combine(store.RunDirectory, "foreign"));
-        Assert.Throws<InvalidOperationException>(() => P7F1V6Retention.DeleteRun(store.RunDirectory));
+        Assert.Throws<InvalidOperationException>(() => P7F1V6Retention.DeleteRun(root, store.RunDirectory));
         Assert.True(Directory.Exists(store.RunDirectory));
         var plain = Path.Combine(root, "not-a-run");
         Directory.CreateDirectory(plain);
-        Assert.Throws<InvalidOperationException>(() => P7F1V6Retention.DeleteRun(plain));
+        Assert.Throws<InvalidOperationException>(() => P7F1V6Retention.DeleteRun(root, plain));
         Assert.True(Directory.Exists(plain));
     }
 
@@ -155,18 +156,20 @@ public sealed class P7F1V6GatesD34Tests : IDisposable
     {
         var (allowed, blocking) = P7F1V6RoutePolicy.RouteAllowed("alibaba");
         Assert.False(allowed);
-        Assert.Contains("alibaba:training on request data", blocking);
-        Assert.Contains("alibaba:retention period of request data", blocking);
+        Assert.Contains(blocking, b => b.Contains("logging of request content", StringComparison.Ordinal) && b.EndsWith(":UNKNOWN", StringComparison.Ordinal));
+        Assert.Contains(blocking, b => b.Contains("zero data retention for qwen3.7-flash", StringComparison.Ordinal) && b.EndsWith(":NOT_SUPPORTED", StringComparison.Ordinal));
+        Assert.Contains(blocking, b => b.Contains("ZDR decision by the user", StringComparison.Ordinal) && b.EndsWith(":WAIVER_NOT_VERIFIED", StringComparison.Ordinal));
+        Assert.DoesNotContain(blocking, b => b.Contains("training on request data", StringComparison.Ordinal));
     }
 
     [Fact] public void Every_policy_fact_records_its_status_and_no_unverified_fact_claims_a_source()
     {
         Assert.All(P7F1V6RoutePolicy.Facts, f =>
         {
-            Assert.Contains(f.Status, new[] { "VERIFIED", "UNKNOWN", "WAIVED_BY_USER" });
+            Assert.Contains(f.Status, new[] { "VERIFIED", "UNKNOWN", "NOT_SUPPORTED", "WAIVER_NOT_VERIFIED" });
             if (f.Status == "VERIFIED") Assert.False(string.IsNullOrEmpty(f.Source));
             if (f.Status == "UNKNOWN") Assert.Null(f.Source);
-            if (f.Status == "WAIVED_BY_USER") Assert.Contains("User decision", f.Note);
+            if (f.Status == "WAIVER_NOT_VERIFIED") Assert.Contains("not recorded", f.Note, StringComparison.Ordinal);
         });
     }
 
@@ -196,7 +199,7 @@ public sealed class P7F1V6GatesD34Tests : IDisposable
         Assert.Contains("SAFE_STORE_NOT_IN_USE", reasons);
         Assert.Contains("SOURCE_GATE:SOURCE_MISSING", reasons);
         Assert.Contains("C0_REPLAY_NOT_RUN", reasons);
-        Assert.Contains("DATA_POLICY_NOT_VERIFIED:alibaba:training on request data", reasons);
+        Assert.Contains(reasons, r => r.StartsWith("DATA_POLICY_NOT_VERIFIED:alibaba:logging", StringComparison.Ordinal));
     }
 
     [Fact] public void A_mismatched_pin_retries_and_ceiling_are_each_refused()
@@ -238,13 +241,12 @@ public sealed class P7F1V6GatesD34Tests : IDisposable
         p.WaitForExit();
     }
 
-    [Fact] public void The_zdr_waiver_is_recorded_but_does_not_open_the_route_gate()
+    [Fact] public void The_zdr_decision_is_not_recorded_and_keeps_the_route_gate_closed()
     {
-        var zdr = P7F1V6RoutePolicy.Facts.Single(f => f.Subject.StartsWith("zero data retention", StringComparison.Ordinal));
-        Assert.Equal("WAIVED_BY_USER", zdr.Status);
+        var zdr = P7F1V6RoutePolicy.Facts.Single(f => f.Subject.StartsWith("ZDR decision", StringComparison.Ordinal));
+        Assert.Equal("WAIVER_NOT_VERIFIED", zdr.Status);
         var (allowed, blocking) = P7F1V6RoutePolicy.RouteAllowed("alibaba");
         Assert.False(allowed);
-        Assert.DoesNotContain(blocking, b => b.Contains("zero data retention", StringComparison.Ordinal));
-        Assert.Contains("alibaba:training on request data", blocking);
+        Assert.Contains(blocking, b => b.Contains("ZDR decision", StringComparison.Ordinal));
     }
 }

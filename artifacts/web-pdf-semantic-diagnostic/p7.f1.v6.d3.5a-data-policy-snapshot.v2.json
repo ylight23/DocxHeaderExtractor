@@ -1,0 +1,71 @@
+{
+  "artifact": "p7.f1.v6.d3.5a-data-policy-snapshot.v2",
+  "supersedes": "p7.f1.v6.d3.4-data-policy-snapshot.v1.json",
+  "route": "alibaba",
+  "gateDecision": "CLOSED. Training and retention are VERIFIED. Zero data retention is NOT_SUPPORTED for qwen3.7-flash and needs a recorded user decision (WAIVER_NOT_VERIFIED). Logging through OpenRouter is UNKNOWN. No live request is authorised by this file.",
+  "facts": [
+    {
+      "route": "alibaba",
+      "subject": "training on request data",
+      "status": "VERIFIED",
+      "source": "https://www.alibabacloud.com/help/en/model-studio/data-retention-policy",
+      "section": "5.2",
+      "readOn": "2026-10-12",
+      "pageUpdated": "2026-10-11",
+      "statement": "Without separate consent, Alibaba Cloud will not use business data (inputs, outputs, files) to train any foundation model."
+    },
+    {
+      "route": "alibaba",
+      "subject": "retention period of request data",
+      "status": "VERIFIED",
+      "source": "https://www.alibabacloud.com/help/en/model-studio/data-retention-policy",
+      "section": "1",
+      "readOn": "2026-10-12",
+      "pageUpdated": "2026-10-11",
+      "statement": "Prompts and responses are retained for no longer than 30 days by default; longer where required by applicable law or for service security."
+    },
+    {
+      "route": "alibaba",
+      "subject": "zero data retention for qwen3.7-flash",
+      "status": "NOT_SUPPORTED",
+      "source": "https://www.alibabacloud.com/help/en/model-studio/data-retention-policy",
+      "section": "4.1",
+      "readOn": "2026-10-12",
+      "pageUpdated": "2026-10-11",
+      "statement": "The ZDR-supported model list includes qwen-plus from qwen3.7-plus; the flash entry begins at qwen3.8-flash. qwen3.7-flash is not listed."
+    },
+    {
+      "route": "alibaba",
+      "subject": "ZDR decision by the user",
+      "status": "WAIVER_NOT_VERIFIED",
+      "source": null,
+      "readOn": null,
+      "statement": "No written decision recorded. A request-level approval does not count. The gate stays closed until a decision names the risk."
+    },
+    {
+      "route": "alibaba",
+      "subject": "logging of request content through the OpenRouter endpoint",
+      "status": "UNKNOWN",
+      "source": "https://openrouter.ai/docs/guides/routing/provider-selection",
+      "section": "Provider Selection",
+      "readOn": "2026-10-12",
+      "statement": "NOT_ON_PAGE: the OpenRouter provider page does not state Alibaba's storage through OpenRouter. The statement that Alibaba stores prompts on OpenRouter has not been verified here."
+    },
+    {
+      "route": "openrouter",
+      "subject": "data_collection request preference",
+      "status": "VERIFIED",
+      "source": "https://openrouter.ai/docs/guides/routing/provider-selection",
+      "readOn": "2026-10-12",
+      "statement": "Values allow (default) and deny. The envelope does not set it; deny would restrict providers and is not decided."
+    },
+    {
+      "route": "openrouter",
+      "subject": "zdr request preference",
+      "status": "VERIFIED",
+      "source": "https://openrouter.ai/docs/guides/routing/provider-selection",
+      "readOn": "2026-10-12",
+      "statement": "A boolean; when true the request is routed only to endpoints with a Zero Data Retention policy. Not set by the envelope."
+    }
+  ]
+}

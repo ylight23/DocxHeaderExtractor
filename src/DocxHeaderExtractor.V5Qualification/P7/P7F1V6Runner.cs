@@ -1,11 +1,13 @@
 namespace DocxHeaderExtractor.V5Qualification.P7;
 
 /// <summary>
-/// The C1 runner (D3.5). Every condition is evaluated and reported; none is skipped. A send happens only through <see cref="Dispatch"/>,
-/// which re-checks the call limit and the cost reserve before every attempt. Retry is at most one, and only for a request that produced
-/// no response (transport failure or timeout); the retry sends the identical prepared body and counts against the call limit and the
-/// cost reserve. The reserve is the worst case per attempt: tokens are bounded by the UTF-8 bytes of the body, and completion by the
-/// largest completion cap the route allows. It is a ceiling under those assumptions, not a guarantee of the billed amount.
+/// The C1 runner (D3.5a). A send happens only through <see cref="RunState.Dispatch"/>, which accepts only a <see cref="P7F1V6Preflight.Result"/>
+/// that was built from evidence, and only through a port that matches the result's mode: a mock result goes only to a mock port, a live
+/// result only to a live port, and a live result only when every gate is met. Before each attempt the call limit and the cost reserve are
+/// checked. Retry is at most one, and only for a request that produced no response; it sends the identical prepared body.
+/// Every HTTP 200 is audited (usage present, completion not cut, usage consistent) before its text is returned, and the provider-reported
+/// cost, when present, is checked against the reserve. HTTP 200 is not taken to mean that inference succeeded.
+/// The reserve is a worst case under stated assumptions, not the billed amount.
 /// </summary>
 internal static class P7F1V6Runner
 {
@@ -14,80 +16,46 @@ internal static class P7F1V6Runner
     public const decimal CeilingUsd = 0.30m;
     public const int WorstCompletionTokens = 65536;
 
-    public sealed record PinSet(string SourceSha256, string UniverseSha256, string CandidatesSha256, string ManifestSha256);
-
-    public sealed record Inputs(PinSet Pins, PinSet Observed, string SourceGateCode, bool PublicConfirmed,
-        IReadOnlyList<P7F1V6Protocol.EndpointRecord> Inventory, bool InventoryFresh, bool SafeStore, bool C0Passed, bool LiveAuthorised);
-
+    /// <summary>Gate names and reasons for reporting. The send path does not use this list; it uses the evidence-built result.</summary>
     public sealed record Gate(string Name, bool Passed, string Reason);
 
-    /// <summary>All gates, each with its own result. Nothing short-circuits, so the report shows every refusal at once.</summary>
-    public static IReadOnlyList<Gate> Gates(Inputs i)
+    /// <summary>Port for one send. A mock port answers without any network and is the only port a mock result may use.</summary>
+    public interface ISendPort
     {
-        var gates = new List<Gate>();
-
-        var pinFailures = new List<string>();
-        if (i.Observed.CandidatesSha256 != i.Pins.CandidatesSha256) pinFailures.Add("CANDIDATES_NOT_PINNED");
-        if (i.Observed.SourceSha256 != i.Pins.SourceSha256) pinFailures.Add("SOURCE_NOT_PINNED");
-        if (i.Observed.UniverseSha256 != i.Pins.UniverseSha256) pinFailures.Add("UNIVERSE_NOT_PINNED");
-        if (i.Observed.ManifestSha256 != i.Pins.ManifestSha256) pinFailures.Add("MANIFEST_NOT_PINNED");
-        gates.Add(new Gate("CANDIDATE_PIN", pinFailures.Count == 0, pinFailures.Count == 0 ? "OK" : string.Join(",", pinFailures)));
-
-        var sourceOk = i.SourceGateCode == "OK" && i.PublicConfirmed;
-        gates.Add(new Gate("SOURCE_AUTHORIZED", sourceOk,
-            sourceOk ? "OK" : i.SourceGateCode != "OK" ? "SOURCE_GATE:" + i.SourceGateCode : "SOURCE_NOT_AUTHORIZED:public status not confirmed by the corpus owner"));
-
-        var route = P7F1V6Protocol.EvaluateRoute(i.Inventory);
-        var routeOk = route.Eligible && route.Endpoint == P7F1V6Protocol.ProviderTag;
-        gates.Add(new Gate("ROUTE_POLICY", routeOk, routeOk ? "OK" : "ROUTE_POLICY_UNKNOWN:" + string.Join(",", route.Reasons)));
-
-        gates.Add(new Gate("INVENTORY_FRESH", i.InventoryFresh, i.InventoryFresh ? "OK" : "INVENTORY_NOT_FRESH:no approved fresh metadata read"));
-
-        var data = P7F1V6RoutePolicy.RouteAllowed("alibaba");
-        gates.Add(new Gate("DATA_POLICY", data.Allowed, data.Allowed ? "OK" : "DATA_POLICY_UNVERIFIED:" + string.Join(",", data.Blocking)));
-
-        gates.Add(new Gate("RAW_STORE", i.SafeStore, i.SafeStore ? "OK" : "SAFE_STORE_REQUIRED"));
-        gates.Add(new Gate("C0_REPLAY", i.C0Passed, i.C0Passed ? "OK" : "C0_NOT_PASSED"));
-        gates.Add(new Gate("LIVE_AUTHORISATION", i.LiveAuthorised, i.LiveAuthorised ? "OK" : "LIVE_NOT_AUTHORISED"));
-        gates.Add(new Gate("CALL_LIMIT", true, $"OK: at most {MaxCalls} attempts, at most {MaxRetries} retry"));
-        return gates;
+        bool IsMock { get; }
+        P7F1V6OpenRouterTransport.SendResult Send(P7F1V6Protocol.PreparedRequest request);
     }
 
-    public static bool AllPassed(IEnumerable<Gate> gates) => gates.All(g => g.Passed);
-
-    /// <summary>Worst-case cost of one attempt: the envelope bytes bound the prompt tokens (tokens are at most bytes), the completion is the
-    /// largest cap. The tier is the one the byte count reaches, as in the cost bound.</summary>
+    /// <summary>Worst-case cost of one attempt: the envelope bytes bound the prompt tokens (tokens are at most bytes); the completion is the
+    /// largest cap; the tier is the one the byte count reaches.</summary>
     public static double WorstAttemptUsd(int envelopeBytes)
     {
         var tier = P7F1V6Usage.AlibabaTiers.Last(t => envelopeBytes >= t.MinPromptTokens);
         return envelopeBytes * tier.Prompt + WorstCompletionTokens * tier.Completion;
     }
 
-    /// <summary>Port for one send. The real port wraps the OpenRouter transport; tests supply a counting fake.</summary>
-    public interface ISendPort
-    {
-        P7F1V6OpenRouterTransport.SendResult Send(P7F1V6Protocol.PreparedRequest request);
-    }
-
     public sealed class RunState
     {
-        readonly IReadOnlyList<Gate> gates;
+        readonly P7F1V6Preflight.Result preflight;
 
-        /// <summary>The gates are fixed for the run. Dispatch refuses every send while any of them is not met, and names the ones that are not.</summary>
-        public RunState(IReadOnlyList<Gate> gates) { this.gates = gates; }
+        /// <summary>Only an evidence-built preflight result can start a run. There is no constructor that takes a list of gates.</summary>
+        public RunState(P7F1V6Preflight.Result preflight) { this.preflight = preflight; }
 
         public int Attempts { get; private set; }
         public int RetriesUsed { get; private set; }
         public double ReservedUsd { get; private set; }
+        public double ActualProviderUsd { get; private set; }
         public string? StopReason { get; private set; }
         public string? Content { get; private set; }
         public List<string> AttemptLog { get; } = new();
 
-        /// <summary>Sends one request, with the checks that apply before each attempt. Returns the assistant text, or null with StopReason set.</summary>
+        /// <summary>Sends one request, after every check that applies before an attempt. Returns the assistant text, or null with StopReason set.</summary>
         public string? Dispatch(P7F1V6Protocol.PreparedRequest request, ISendPort port)
         {
             if (StopReason is not null) return null;
-            if (!AllPassed(gates)) return Stop("GATES_NOT_PASSED:" + string.Join(",", gates.Where(g => !g.Passed).Select(g => g.Name)));
+            if (!preflight.Allowed) return Stop("PREFLIGHT_NOT_ALLOWED:" + string.Join(",", preflight.Gates.Where(g => !g.Passed).Select(g => g.Name)));
+            if (preflight.Mode == P7F1V6Preflight.RunMode.Mock && !port.IsMock) return Stop("MOCK_PREFLIGHT_WITH_LIVE_PORT");
+            if (preflight.Mode == P7F1V6Preflight.RunMode.Live && port.IsMock) return Stop("LIVE_PREFLIGHT_WITH_MOCK_PORT");
             if (Attempts >= MaxCalls) return Stop("CALL_LIMIT_EXCEEDED");
             var worst = WorstAttemptUsd(request.Bytes);
             if (ReservedUsd + worst > (double)CeilingUsd) return Stop("COST_CAP_EXCEEDED");
@@ -99,14 +67,9 @@ internal static class P7F1V6Runner
                 var sent = port.Send(request);
                 AttemptLog.Add($"{sent.Outcome}|{request.Sha256}|{request.Bytes}");
                 // The bytes that crossed the boundary must be the prepared bytes; a mismatch is never retried.
-                if (sent.Outcome == "BOUNDARY_SHA_MISMATCH" || sent.Outcome == "PREPARED_SHA_MISMATCH") return Stop(sent.Outcome);
-                if (sent.Outcome == "HTTP_OK")
-                {
-                    var (content, failure) = P7F1V6ResponseAdapter.ExtractContent(sent.Body ?? "");
-                    if (failure is not null) return Stop("RESPONSE_" + failure);
-                    Content = content;
-                    return content;
-                }
+                if (sent.Outcome is "BOUNDARY_SHA_MISMATCH" or "PREPARED_SHA_MISMATCH") return Stop(sent.Outcome);
+                if (sent.Outcome == "HTTP_OK") return Audit(request, sent.Body ?? "", worst);
+
                 // Retry only when no response arrived: transport failure or timeout. Never on any HTTP status.
                 var noResponse = sent.Outcome is "TRANSPORT_ERROR" or "TIMEOUT_OR_CANCELLED";
                 if (!noResponse) return Stop("HTTP_NOT_RETRIED:" + sent.Outcome);
@@ -115,6 +78,22 @@ internal static class P7F1V6Runner
                 if (ReservedUsd + worst > (double)CeilingUsd) return Stop("COST_CAP_EXCEEDED");
                 RetriesUsed++;
             }
+        }
+
+        /// <summary>The response audit that every HTTP 200 must pass before its text reaches the parser.</summary>
+        string? Audit(P7F1V6Protocol.PreparedRequest request, string body, double worst)
+        {
+            var audit = P7F1V6Usage.Check(body, request.Bytes, P7F1V6Protocol.MaxTokens);
+            if (audit.Codes.Count != 1 || audit.Codes[0] != "OK") return Stop("RESPONSE_AUDIT:" + string.Join("+", audit.Codes));
+            if (audit.ProviderCostUsd is { } paid)
+            {
+                ActualProviderUsd += paid;
+                if (paid > worst) return Stop("PROVIDER_COST_OVER_RESERVE");
+            }
+            var (content, failure) = P7F1V6ResponseAdapter.ExtractContent(body);
+            if (failure is not null) return Stop("RESPONSE_" + failure);
+            Content = content;
+            return content;
         }
 
         string? Stop(string reason) { StopReason ??= reason; return null; }
@@ -137,8 +116,7 @@ internal static class P7F1V6Runner
     }
 }
 
-/// <summary>Early deletion and retention decision (D3.5). A run is deleted at 30 days at most, and 7 days after its review is complete.
-/// Deletion touches only the run directory it is given, never the source corpus.</summary>
+/// <summary>Early deletion and retention rule (D3.5). A run is deleted at 30 days at most, and seven days after its own review.</summary>
 internal static class P7F1V6RetentionPolicy
 {
     public const int MaxRetentionDays = 30;

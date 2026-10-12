@@ -1,0 +1,118 @@
+{
+  "artifact": "p7.f1.v6.d3.5a-dryrun.v1",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf",
+  "provider": "none: dry-run, no request sent",
+  "mode": "MOCK requests recorded; live gates evaluated from evidence",
+  "route": {
+    "allow": "alibaba",
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "caps": {
+    "maxCalls": 6,
+    "maxRetries": 1,
+    "ceilingUsd": 0.3,
+    "payloadCapBytes": 131072,
+    "envelopeCapBytes": 147456,
+    "visibleResponseCapBytes": 16384
+  },
+  "plannedRequests": [
+    {
+      "Index": 0,
+      "EnvelopeBytes": 1883,
+      "Sha256": "b0391ee437d2f71410844bf0f7b530c170e2c5b9c3d0875341319934cc057b06",
+      "worstUsd": 0.008576,
+      "reserveAfterUsd": 0.008576,
+      "withinCeiling": true
+    },
+    {
+      "Index": 1,
+      "EnvelopeBytes": 16587,
+      "Sha256": "d1735dd5f54f13c2071ec91e3f7aa7bd145103dd314c5196c7afb3eb7fed49cf",
+      "worstUsd": 0.009017,
+      "reserveAfterUsd": 0.017593,
+      "withinCeiling": true
+    },
+    {
+      "Index": 2,
+      "EnvelopeBytes": 16719,
+      "Sha256": "11c5adcdbfd04b1ef26e9f227ccb867c57251ad1edca702a4d85ae9f03ade102",
+      "worstUsd": 0.009021,
+      "reserveAfterUsd": 0.026615,
+      "withinCeiling": true
+    },
+    {
+      "Index": 3,
+      "EnvelopeBytes": 8583,
+      "Sha256": "aa487e884d857e6cb89984c9718b1c0c3c6c5f7928b9555a35ec808422b125e6",
+      "worstUsd": 0.008777,
+      "reserveAfterUsd": 0.035392,
+      "withinCeiling": true
+    }
+  ],
+  "worstReserveUsd": 0.035392,
+  "structuralSixAttemptReserveUsd": 0.24576,
+  "costGate": {
+    "ceilingUsd": 0.3,
+    "passed": true
+  },
+  "c0Replay": "PASSED (mock)",
+  "liveGates": [
+    {
+      "Name": "CANDIDATE_PIN",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Name": "SOURCE_AUTHORIZED",
+      "Passed": false,
+      "Reason": "SOURCE_NOT_AUTHORIZED:public status not recorded by the corpus owner"
+    },
+    {
+      "Name": "ROUTE_POLICY",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Name": "INVENTORY_FRESH",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Name": "DATA_POLICY",
+      "Passed": false,
+      "Reason": "DATA_POLICY_UNVERIFIED:alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED,alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED,alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    },
+    {
+      "Name": "RAW_STORE",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Name": "C0_REPLAY",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Name": "COMMIT_RECORDED",
+      "Passed": true,
+      "Reason": "OK"
+    },
+    {
+      "Name": "LIVE_AUTHORISATION",
+      "Passed": false,
+      "Reason": "LIVE_NOT_AUTHORISED:NO_AUTHORISATION_RECORD"
+    },
+    {
+      "Name": "CALL_LIMIT",
+      "Passed": true,
+      "Reason": "OK: at most 6 attempts, at most 1 retry"
+    }
+  ],
+  "liveAllowed": false,
+  "safeStoreRunDirectoryName": "run-86754535e0e948ff8478d2b3c460571a",
+  "costNote": "Worst case per attempt: prompt tokens bounded by UTF-8 bytes, completion at 65,536. Not the billed amount; endpoint reasoning and token accounting are not verified."
+}

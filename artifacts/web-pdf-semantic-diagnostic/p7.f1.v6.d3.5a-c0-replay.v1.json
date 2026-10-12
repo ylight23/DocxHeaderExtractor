@@ -1,0 +1,33 @@
+{
+  "artifact": "p7.f1.v6.d3.5a-c0-replay.v1",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf",
+  "unit": "page 1 of the document (one shard)",
+  "documentPublicity": "IETF RFC 9113, a published document; the corpus owner's public-status record is not yet on file",
+  "status": "PROTOCOL_RESOLVED",
+  "runnerStopReason": null,
+  "protocolResolved": true,
+  "pins": {
+    "candidatesSha256": "40b1750f0aeeac9ecf793dbf89b1d5c6b8d8671154cc2f7c90ac76ca40e5cda9",
+    "sourceSha256": "8314f1034854548baf26f9912f79c6207299cb0520b31ed25af64889bd1500bc",
+    "universeSha256": "3d1d334b09b9a3fa5fc050a9f993b4f506dddfc8c0521c061f2972eb5fa36ad1",
+    "manifestSha256": "d1911921a4da3d7fee390d0b60d0eab5920db43bff9bb986fd491ac65bd8e889"
+  },
+  "pinsMatched": true,
+  "mode": "MOCK",
+  "providerCalls": 0,
+  "mockCalls": 4,
+  "attempts": 4,
+  "reservedUsd": 0.035392,
+  "occurrences": 36,
+  "decided": 36,
+  "maxEnvelopeBytes": 16719,
+  "rawItemsInSafeStore": 12,
+  "rawItemsOnDiskVerified": 12,
+  "safeStoreDamagedItems": 0,
+  "safeStoreRunDirectoryName": "run-86754535e0e948ff8478d2b3c460571a",
+  "violations": 0,
+  "sourceGate": {
+    "allowed": true,
+    "code": "OK"
+  }
+}
