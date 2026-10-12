@@ -1,0 +1,66 @@
+{
+  "artifact": "p7.f1.v6.d3-metadata-snapshot.v3",
+  "supersedes": "p7.f1.v6.d3-metadata-snapshot.v2.json",
+  "status": "ROUTE_LOCKED_INFERENCE_NOT_LICENSED",
+  "baselineCommit": "81a1c86",
+  "e1": {
+    "rawResponseFile": "p7.f1.v6.d3-gate-e1-endpoints.raw.json",
+    "rawResponseSha256": "021ffee89340bcb13d210f6b66dbe9578d34c97f1c05f89a37be3905e78c095c",
+    "retrievedAtUtc": "2026-10-12T04:21:51Z",
+    "httpStatus": 200
+  },
+  "model": {
+    "id": "qwen/qwen3.7-flash",
+    "decision": "kept; the route decision did not change the model"
+  },
+  "routeLock": {
+    "status": "LOCKED",
+    "providerTag": "alibaba",
+    "decidedBy": "user",
+    "decidedOn": "2026-10-12",
+    "decision": "use alibaba (not alibaba/us-east-1)",
+    "reason": "same parameters and uptime as us-east-1; about 15% cheaper on every price; lower median latency (676 ms against 956 ms)",
+    "endpointRow": {
+      "name": "Alibaba | qwen/qwen3.7-flash-20260727",
+      "contextLengthTokens": 1000000,
+      "maxPromptTokens": 983616,
+      "maxCompletionTokens": 65536,
+      "pricingUsdPerToken": { "prompt": 0.00000003, "completion": 0.00000013, "inputCacheRead": 0.000000006, "inputCacheWrite": 0.000000038 },
+      "pricingOverrides": [
+        { "minPromptTokens": 32000, "prompt": 0.0000001, "completion": 0.0000004 },
+        { "minPromptTokens": 256000, "prompt": 0.0000002, "completion": 0.0000008 }
+      ]
+    },
+    "requestProviderBlock": {
+      "only": ["alibaba"],
+      "allow_fallbacks": false,
+      "require_parameters": true
+    },
+    "requestProviderBlockStatus": "SPECIFIED_NOT_YET_VERIFIED_BY_A_CALL",
+    "notYetEstablished": [
+      "whether the 'only' value must be the tag exactly as shown in the metadata; to confirm in the request contract review, without a call",
+      "whether tiers apply per request on prompt size (planning rule assumes yes, conservative by bytes)",
+      "endpoint ID separate from the tag (none present in the metadata)"
+    ]
+  },
+  "costBound": {
+    "artifact": "p7.f1.v6.d3-cost-bound.v1.json",
+    "route": "alibaba",
+    "c1Run": { "structuralMaxCalls": 5, "usdAt32768Completion": 0.1311, "usdAt65536Completion": 0.1966 },
+    "usdCeilingForC1": null,
+    "usdCeilingStatus": "NOT_CHOSEN; to be proposed after gate T fixes the reasoning reserve"
+  },
+  "gates": {
+    "E_route": "PASSED for the route only (alibaba)",
+    "T_reasoning_tokenizer": "OPEN: reasoning mode, reserve inside max_tokens, usage accounting, tokenizer or sourced measurement",
+    "S_data_safety": "OPEN: raw directory ACL, redaction, retention, route data policy",
+    "protocolSnapshot": "OPEN: system prompt and request contract for hierarchical nodes, hashed and frozen",
+    "C0_offline_replay": "NOT RUN",
+    "C1_inference_073": "NOT LICENSED",
+    "protocolFreeze": "NOT LICENSED"
+  },
+  "budget": {
+    "inputBudgetBytes": 131072,
+    "statement": "internal cap, not an endpoint limit; unchanged"
+  }
+}
