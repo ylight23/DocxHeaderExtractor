@@ -3,7 +3,7 @@
   "nodeResponseVersion": "P7_F1_V6_HIER_NODE_V3",
   "platformVersion": "P7_F1_V6_PLATFORM_V2",
   "nodeSchemaVersion": "P7_F1_V6_HIER_NODE_SCHEMA_V2",
-  "envelopeVersion": "P7_F1_V6_REQUEST_ENVELOPE_V2",
+  "envelopeVersion": "P7_F1_V6_REQUEST_ENVELOPE_V3",
   "interpretContract": "P7_F1_V6_INTERPRET_V1",
   "model": "qwen/qwen3.7-flash",
   "providerTag": "alibaba",
@@ -11,8 +11,20 @@
   "platformSha256": "2bed537d2e97f9f2ff229a274d32e5ab34750bb6e8aa7670747b0809fe49e025",
   "interpretPromptSha256": "4c7b4eff68ac6d3587c063a46e8fa33fb791c2165b5fd1c2d31e558f85a185bd",
   "nodeResponseSchemaSha256": "0451ea379034fe46b95832c511a6c2206294f4a05b7e8fdf7d47e22378934f2d",
-  "providerBlockSha256": "b47a3b144cfaf6d53b90f9512ad96a1eabc45e05f1ac9ffcbb264ec64bcb605e",
-  "requestTemplateSha256": "25f8e40f9e8e682235cfbae9a65e6ac22cce75004497bdc26c5a9aad669ef07e",
+  "providerBlockSha256": "a6fc1d02d9c591c11d5d222a96166f5d6079a1dabf404d190343db41d0ad0b73",
+  "routePolicy": {
+    "allow": "alibaba",
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "endpointInventoryApproved": [
+    "alibaba",
+    "alibaba/us-east-1"
+  ],
+  "requestTemplateSha256": "ab91338c5584f24e78b04b1b8e2ed3fbef74918e14a7c473274ba541f634d91e",
   "payloadCapBytes": 131072,
   "envelopeCapBytes": 147456,
   "visibleResponseCapBytes": 16384,

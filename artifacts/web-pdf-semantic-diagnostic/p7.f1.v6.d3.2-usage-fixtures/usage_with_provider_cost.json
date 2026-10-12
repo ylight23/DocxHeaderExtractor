@@ -1,0 +1,31 @@
+{
+  "name": "usage_with_provider_cost",
+  "requestBytes": 20000,
+  "maxTokens": 32768,
+  "expectCodes": [
+    "OK"
+  ],
+  "response": {
+    "id": "fixture",
+    "object": "chat.completion",
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"status\":\"COMPLETE\"}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2000,
+      "completion_tokens": 300,
+      "total_tokens": 2300,
+      "cost": 0.0123,
+      "completion_tokens_details": {
+        "reasoning_tokens": 120
+      }
+    }
+  }
+}

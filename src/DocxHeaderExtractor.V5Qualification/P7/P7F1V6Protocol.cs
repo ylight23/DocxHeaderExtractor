@@ -17,10 +17,15 @@ internal static class P7F1V6Protocol
 {
     public const string PlatformVersion = "P7_F1_V6_PLATFORM_V2";
     public const string NodeSchemaVersion = "P7_F1_V6_HIER_NODE_SCHEMA_V2";
-    public const string EnvelopeVersion = "P7_F1_V6_REQUEST_ENVELOPE_V2";
+    public const string EnvelopeVersion = "P7_F1_V6_REQUEST_ENVELOPE_V3";
     public const string ChatModel = "qwen/qwen3.7-flash";
     /// <summary>The route locked by the user (Gate E). Fallback is off in every request.</summary>
     public const string ProviderTag = "alibaba";
+    /// <summary>Route policy (D3.2a). Allow the Alibaba provider; exclude the us-east-1 variant. A base slug in `only` matches every
+    /// variant of that provider, so the exclusion is stated in `ignore`. Fallback is off.</summary>
+    public static readonly string[] DefaultIgnore = ["alibaba/us-east-1"];
+    /// <summary>The endpoint inventory approved for this experiment (the E1 response, 2026-10-12). Any other tag is not eligible.</summary>
+    public static readonly string[] ApprovedEndpointTags = ["alibaba", "alibaba/us-east-1"];
     /// <summary>Visible output 16,384 plus an assumed reasoning reserve of 16,384. The reserve is not verified (Gate T).</summary>
     public const int MaxTokens = 32768;
     /// <summary>Caps for qualification (D3.1b). The payload cap bounds the user message only. The envelope cap bounds the whole serialized
@@ -121,13 +126,20 @@ internal static class P7F1V6Protocol
 
     /// <summary>Every field of the request body that the adapter could vary. Each one is pinned by the template fingerprint.</summary>
     public sealed record EnvelopeSpec(string Model, int Temperature, string ResponseFormatType, string ProviderTag, bool AllowFallbacks,
-        bool RequireParameters, int MaxTokens);
+        bool RequireParameters, int MaxTokens, string[] Ignore, bool IncludeUsage);
 
-    public static EnvelopeSpec DefaultSpec() => new(ChatModel, 0, "json_object", ProviderTag, false, true, MaxTokens);
+    public static EnvelopeSpec DefaultSpec() => new(ChatModel, 0, "json_object", ProviderTag, false, true, MaxTokens, DefaultIgnore, true);
+
+    /// <summary>Route policy: the decision on eligible endpoints. Fail-closed: any tag outside the approved inventory is not eligible.</summary>
+    public static (bool Eligible, IReadOnlyList<string> Unapproved) EvaluateInventory(IEnumerable<string> tags)
+    {
+        var unapproved = tags.Where(t => !ApprovedEndpointTags.Contains(t, StringComparer.Ordinal)).Distinct(StringComparer.Ordinal).ToArray();
+        return (unapproved.Length == 0, unapproved);
+    }
 
     /// <summary>The provider block that locks the route. Fallback is off and parameters are required.</summary>
-    public static object ProviderBlock(string providerTag, bool allowFallbacks = false, bool requireParameters = true) =>
-        new { only = new[] { providerTag }, allow_fallbacks = allowFallbacks, require_parameters = requireParameters };
+    public static object ProviderBlock(string providerTag, bool allowFallbacks = false, bool requireParameters = true, string[]? ignore = null) =>
+        new { only = new[] { providerTag }, ignore = ignore ?? Array.Empty<string>(), allow_fallbacks = allowFallbacks, require_parameters = requireParameters };
 
     /// <summary>The chat request body for a spec. Every field comes from the spec; nothing is chosen at run time.
     /// Reasoning is deliberately absent until gate T fixes its mode and accounting.</summary>
@@ -141,7 +153,8 @@ internal static class P7F1V6Protocol
             response_format = new { type = spec.ResponseFormatType },
             temperature = spec.Temperature,
             max_tokens = spec.MaxTokens,
-            provider = ProviderBlock(spec.ProviderTag, spec.AllowFallbacks, spec.RequireParameters),
+            provider = ProviderBlock(spec.ProviderTag, spec.AllowFallbacks, spec.RequireParameters, spec.Ignore),
+            usage = new { include = spec.IncludeUsage },
         }, Options);
     }
 
@@ -185,7 +198,9 @@ internal static class P7F1V6Protocol
             platformSha256 = Sha(PlatformPrompt),
             interpretPromptSha256 = Sha(InterpretPrompt),
             nodeResponseSchemaSha256 = Sha(NodeResponseSchema),
-            providerBlockSha256 = Sha(JsonSerializer.Serialize(ProviderBlock(providerTag), Options)),
+            providerBlockSha256 = Sha(JsonSerializer.Serialize(ProviderBlock(providerTag, false, true, DefaultIgnore), Options)),
+            routePolicy = new { allow = providerTag, ignore = DefaultIgnore, allowFallbacks = false, requireParameters = true },
+            endpointInventoryApproved = ApprovedEndpointTags,
             requestTemplateSha256 = Sha(TemplateEnvelope(spec)),
             payloadCapBytes = PayloadCapBytes,
             envelopeCapBytes = EnvelopeCapBytes,

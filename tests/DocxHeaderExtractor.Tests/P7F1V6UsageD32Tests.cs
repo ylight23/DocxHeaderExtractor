@@ -29,7 +29,8 @@ public sealed class P7F1V6UsageD32Tests
     {
         var audit = P7F1V6Usage.Check("not json", 1000, 32768);
         Assert.Equal(new[] { "RESPONSE_NOT_JSON" }, audit.Codes);
-        Assert.Null(audit.CostUsd);
+        Assert.Null(audit.ComputedCostUsd);
+        Assert.Null(audit.ProviderCostUsd);
     }
 
     [Fact] public void An_absent_reasoning_field_stays_null_and_is_not_assumed_to_be_zero()

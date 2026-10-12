@@ -21,8 +21,10 @@ internal static class P7F1V6Usage
         new(256000, 0.0000002, 0.0000008),
     ];
 
+    /// <summary>ComputedCostUsd is this audit's estimate from the route price table. ProviderCostUsd is usage.cost as the provider reported
+    /// it, when it did. The two are kept apart and never overwrite each other.</summary>
     public sealed record Audit(IReadOnlyList<string> Codes, int? PromptTokens, int? CompletionTokens, int? ReasoningTokens,
-        string? FinishReason, int? VisibleTokens, double? CostUsd);
+        string? FinishReason, int? VisibleTokens, double? ComputedCostUsd, double? ProviderCostUsd);
 
     /// <summary>The tier is chosen on the prompt tokens actually billed for the request, as the E1 metadata describes the override rule
     /// (its per-request application is still to be confirmed; the audit states it as an assumption).</summary>
@@ -39,7 +41,7 @@ internal static class P7F1V6Usage
         var codes = new List<string>();
         JsonDocument doc;
         try { doc = JsonDocument.Parse(responseJson); }
-        catch (JsonException) { return new Audit(["RESPONSE_NOT_JSON"], null, null, null, null, null, null); }
+        catch (JsonException) { return new Audit(["RESPONSE_NOT_JSON"], null, null, null, null, null, null, null); }
         using (doc)
         {
             var root = doc.RootElement;
@@ -56,7 +58,7 @@ internal static class P7F1V6Usage
             if (!root.TryGetProperty("usage", out var usage) || usage.ValueKind != JsonValueKind.Object)
             {
                 codes.Add("USAGE_MISSING");
-                return new Audit(codes, null, null, null, finish, null, null);
+                return new Audit(codes, null, null, null, finish, null, null, null);
             }
 
             int? prompt = IntOrNull(usage, "prompt_tokens");
@@ -86,8 +88,9 @@ internal static class P7F1V6Usage
             else if (finish != "stop") codes.Add("FINISH_REASON_UNEXPECTED");
 
             double? cost = prompt is not null && completion is not null ? Cost(prompt.Value, completion.Value) : null;
+            double? providerCost = usage.TryGetProperty("cost", out var pc) && pc.ValueKind == JsonValueKind.Number ? pc.GetDouble() : null;
             if (codes.Count == 0) codes.Add("OK");
-            return new Audit(codes, prompt, completion, reasoning, finish, visible, cost);
+            return new Audit(codes, prompt, completion, reasoning, finish, visible, cost, providerCost);
         }
     }
 

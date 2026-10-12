@@ -1,0 +1,58 @@
+{
+  "artifact": "p7.f1.v6.d3-metadata-snapshot.v4",
+  "supersedes": "p7.f1.v6.d3-metadata-snapshot.v3.json",
+  "status": "ROUTE_POLICY_SET_OFFLINE_NOT_VERIFIED_BY_A_REQUEST",
+  "baselineCommit": "849c14f",
+  "model": {
+    "id": "qwen/qwen3.7-flash"
+  },
+  "e1": {
+    "rawResponseFile": "p7.f1.v6.d3-gate-e1-endpoints.raw.json",
+    "rawResponseSha256": "021ffee89340bcb13d210f6b66dbe9578d34c97f1c05f89a37be3905e78c095c",
+    "retrievedAtUtc": "2026-10-12T04:21:51Z",
+    "httpStatus": 200
+  },
+  "routePolicy": {
+    "allow": "alibaba",
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true,
+    "explanation": "A base slug in only matches every variant of the provider (OpenRouter provider selection). The variant is excluded explicitly in ignore. The policy is fail-closed for tags outside the approved inventory."
+  },
+  "endpointInventory": {
+    "approved": [
+      "alibaba",
+      "alibaba/us-east-1"
+    ],
+    "source": "E1 raw response",
+    "unapprovedTagsRule": "not eligible; the qualification runner must stop before any inference when a tag outside this list appears in a fresh inventory",
+    "freshInventoryCheck": "NOT_PERFORMED (no metadata call approved)"
+  },
+  "usage": {
+    "includeRequested": true,
+    "providerCostHandling": "usage.cost, when present, is stored apart from the computed estimate"
+  },
+  "envelope": {
+    "version": "P7_F1_V6_REQUEST_ENVELOPE_V3",
+    "requestTemplateSha256": "ab91338c5584f24e78b04b1b8e2ed3fbef74918e14a7c473274ba541f634d91e",
+    "providerBlockSha256": "a6fc1d02d9c591c11d5d222a96166f5d6079a1dabf404d190343db41d0ad0b73"
+  },
+  "caps": {
+    "payloadCapBytes": 131072,
+    "envelopeCapBytes": 147456,
+    "visibleResponseCapBytes": 16384,
+    "maxTokensCandidate": 32768
+  },
+  "effortParameter": "NOT_DOCUMENTED_FOR_THIS_ROUTE",
+  "gates": {
+    "E_route": "POLICY SET; not confirmed by any response",
+    "T_reasoning_tokenizer": "OPEN",
+    "T0_offline_audit": "COMPLETE (dc4546f)",
+    "S_data_safety": "OPEN",
+    "C0_offline_replay": "NOT RUN",
+    "C1_inference": "NOT AUTHORISED",
+    "freeze": "NOT AUTHORISED"
+  }
+}

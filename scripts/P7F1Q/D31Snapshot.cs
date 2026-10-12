@@ -45,7 +45,8 @@ internal static class D31Snapshot
         sb.AppendLine("| `response_format` | `{\"type\":\"json_object\"}` |");
         sb.AppendLine("| `temperature` | `0` |");
         sb.AppendLine($"| `max_tokens` | `{MaxTokens}` (candidate; gate T may change it) |");
-        sb.AppendLine("| `provider` | `{\"only\":[\"alibaba\"],\"allow_fallbacks\":false,\"require_parameters\":true}` |");
+        sb.AppendLine("| `provider` | `{\"only\":[\"alibaba\"],\"ignore\":[\"alibaba/us-east-1\"],\"allow_fallbacks\":false,\"require_parameters\":true}`. A base slug in `only` matches every variant of the provider, so the us-east-1 variant is excluded explicitly. Eligible endpoints are the approved inventory only; any other tag is not eligible. |");
+        sb.AppendLine("| `usage` | `{\"include\":true}`, so the provider returns token counts and cost in the response |");
         sb.AppendLine("| `tools`, `tool_choice` | absent. Forced tool calling is not used; the endpoint does not support `required` or `function`. Retrieval is a RETRIEVE status in the JSON reply. |");
         sb.AppendLine("| `reasoning` | absent until gate T fixes its mode and accounting |");
         sb.AppendLine();
