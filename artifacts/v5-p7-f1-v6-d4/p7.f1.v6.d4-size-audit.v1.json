@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4-size-audit.v1",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf",
+  "documentSha256": "8314f1034854548baf26f9912f79c6207299cb0520b31ed25af64889bd1500bc",
+  "providerCalls": 0,
+  "instruction": "Trích xuất các heading chính",
+  "lineCount": 2953,
+  "pages": 78,
+  "linesWithLayout": 2953,
+  "maxAliasChars": 8,
+  "replyCapBytes": 16384,
+  "worstDecisionBytes": 150,
+  "decisionsPerReply": 107,
+  "replyPagesNeeded": 28,
+  "maxTokens": 32768,
+  "promptTokenBudget": 900000,
+  "endpointContextTokens": 1000000,
+  "tokenBoundNote": "Token counts are not measured. Every token covers at least one UTF-8 byte, so the request byte count bounds the prompt tokens from above. Cost uses that bound and the tier the bound reaches.",
+  "singleContext": {
+    "Name": "single-context",
+    "Covered": true,
+    "Note": null,
+    "Requests": 28,
+    "WorstUsd": 5.612282199999998,
+    "TotalRequestBytes": 24391395,
+    "MaxRequestBytes": 871122,
+    "ReplyPages": 28,
+    "Decided": 2953,
+    "ContextLinesResent": 79731
+  },
+  "segmented": {
+    "Name": "segmented",
+    "Covered": true,
+    "Note": null,
+    "Requests": 28,
+    "WorstUsd": 0.47831940000000006,
+    "TotalRequestBytes": 1219132,
+    "MaxRequestBytes": 46834,
+    "ReplyPages": 28,
+    "Decided": 2953,
+    "ContextLinesResent": 1080
+  }
+}

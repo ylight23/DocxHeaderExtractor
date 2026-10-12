@@ -581,6 +581,11 @@ switch (args[0])
         if (args.Length != 4) throw new ArgumentException("c0-replay <repo-root> <artifact-dir> <safe-root>");
         C0Replay.Replay(args[1], args[2], args[3]);
         break;
+    case "d4-size-audit":
+        // Issue #9 D4 (offline): d4-size-audit <repo-root> <artifact-dir>. Sizes the DIRECT-F1 requests for RFC 9113. No network call.
+        if (args.Length != 3) throw new ArgumentException("d4-size-audit <repo-root> <artifact-dir>");
+        C0Replay.D4SizeAudit(args[1], args[2]);
+        break;
     case "d31-snapshot":
         // Issue #9 D3.1 candidate (offline): d31-snapshot <repo-root>. Writes the manifest and the candidate document. No network call.
         if (args.Length != 2) throw new ArgumentException("d31-snapshot <repo-root>");

@@ -144,6 +144,43 @@ internal static class C0Replay
         File.WriteAllText(Path.Combine(artifactDir, DryRunFile), JsonSerializer.Serialize(dry, Indented) + "\n", new UTF8Encoding(false));
     }
 
+    /// <summary>D4 size audit (offline): sizes the DIRECT-F1 requests over every line of RFC 9113 with the approved instruction, single-context
+    /// and segmented. Nothing is sent; the sizes are byte upper bounds on tokens (no tokenizer is available here).</summary>
+    public static void D4SizeAudit(string repoRoot, string artifactDir)
+    {
+        var (_, legacy) = Load(repoRoot);
+        var lines = legacy.AllLines
+            .Select(l => new P7F1V6Direct.Line(l.Alias, l.Page ?? 0, l.Text, P7F1QEvidenceTools.CompactLayout(l.Bbox, l.Typography))).ToList();
+        var sourceSha = Sha(File.ReadAllBytes(Path.Combine(repoRoot, Rel)));
+        var maxAlias = lines.Max(l => l.Alias.Length);
+        var perReply = P7F1V6Direct.DecisionsPerReply(maxAlias);
+        var (single, segmented) = P7F1V6Direct.Compare(Instruction, sourceSha, lines);
+        var audit = new
+        {
+            artifact = "p7.f1.v6.d4-size-audit.v1",
+            document = Rel,
+            documentSha256 = sourceSha,
+            providerCalls = 0,
+            instruction = Instruction,
+            lineCount = lines.Count,
+            pages = lines.Select(l => l.Page).Distinct().Count(),
+            linesWithLayout = lines.Count(l => l.Layout is not null),
+            maxAliasChars = maxAlias,
+            replyCapBytes = P7F1V6Direct.VisibleResponseCapBytes,
+            worstDecisionBytes = P7F1V6Direct.WorstDecisionBytes(maxAlias),
+            decisionsPerReply = perReply,
+            replyPagesNeeded = (lines.Count + perReply - 1) / perReply,
+            maxTokens = P7F1V6Protocol.MaxTokens,
+            promptTokenBudget = P7F1V6Direct.PromptTokenBudget,
+            endpointContextTokens = P7F1V6Direct.EndpointContextTokens,
+            tokenBoundNote = "Token counts are not measured. Every token covers at least one UTF-8 byte, so the request byte count bounds the prompt tokens from above. Cost uses that bound and the tier the bound reaches.",
+            singleContext = single,
+            segmented,
+        };
+        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4-size-audit.v1.json"), JsonSerializer.Serialize(audit, Indented) + "\n", new UTF8Encoding(false));
+        Console.WriteLine($"d4 size audit: {lines.Count} lines, {perReply} decisions per reply, single {single.Requests} requests (covered {single.Covered}, max {single.MaxRequestBytes} bytes, ${single.WorstUsd:F4}), segmented {segmented.Requests} requests (covered {segmented.Covered}, max {segmented.MaxRequestBytes} bytes, ${segmented.WorstUsd:F4})");
+    }
+
     static (List<P7F1V6Hier.Cand> Cands, P7F1QEvidenceTools Legacy) Load(string repoRoot)
     {
         var parsed = PdfSourceAdapter.BuildWithDetails(Path.Combine(repoRoot, Rel));
