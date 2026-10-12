@@ -1,0 +1,105 @@
+{
+  "artifact": "p7.f1.v6.d4.5-offline-replay.v1",
+  "label": "OLD_CODE_3331772",
+  "providerCalls": 0,
+  "promptVersion": "P7_F1_V6_DIRECT_PROMPT_V2_1",
+  "systemPromptSha256": "b9e9bff868b72d5a1c502072453bbfcc44ae4155cb558f53aea9caa7757c2b25",
+  "recordedReplies": 12,
+  "consumedReplies": 12,
+  "haltReason": "CONSECUTIVE_CONTRACT_FAILURES",
+  "contractFailures": 7,
+  "unitsWithReplies": 11,
+  "passingUnits": 4,
+  "rows": [
+    {
+      "unit": "SEG-000",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": true,
+      "status": "FAILED",
+      "failure": "PROTOCOL:UNEXPECTED_ALIAS"
+    },
+    {
+      "unit": "SEG-001",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": true,
+      "status": "FAILED",
+      "failure": "PROTOCOL:HEADING_PARTS_INVALID"
+    },
+    {
+      "unit": "SEG-002",
+      "replyRounds": 2,
+      "consumedRounds": 2,
+      "requestsMatchLive": true,
+      "status": "COMPLETE",
+      "failure": null
+    },
+    {
+      "unit": "SEG-003",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": true,
+      "status": "FAILED",
+      "failure": "PROTOCOL:EVIDENCE_REFS_INVALID"
+    },
+    {
+      "unit": "SEG-004",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": true,
+      "status": "COMPLETE",
+      "failure": null
+    },
+    {
+      "unit": "SEG-005",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": true,
+      "status": "COMPLETE",
+      "failure": null
+    },
+    {
+      "unit": "SEG-006",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": true,
+      "status": "FAILED",
+      "failure": "PROTOCOL:EVIDENCE_REFS_INVALID"
+    },
+    {
+      "unit": "SEG-007",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": true,
+      "status": "COMPLETE",
+      "failure": null
+    },
+    {
+      "unit": "SEG-008",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": true,
+      "status": "FAILED",
+      "failure": "PROTOCOL:EVIDENCE_REFS_INVALID"
+    },
+    {
+      "unit": "SEG-009",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": true,
+      "status": "FAILED",
+      "failure": "PROTOCOL:EVIDENCE_REFS_INVALID"
+    },
+    {
+      "unit": "SEG-010",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": true,
+      "status": "FAILED",
+      "failure": "PROTOCOL:EVIDENCE_REFS_INVALID"
+    }
+  ],
+  "runStatus": "INCOMPLETE",
+  "note": "Units without a recorded reply end NO_RECORDED_REPLY; run status is therefore not a prediction of a live run."
+}

@@ -1,0 +1,131 @@
+{
+  "artifact": "p7.f1.v6.d4.5-reply-violations.v1",
+  "rules": "V2.2 contract (NOT_SELECT may omit evidenceRefs or give []); every violation, not only the first",
+  "rows": [
+    {
+      "unit": "SEG-000",
+      "round": 1,
+      "status": "COMPLETE",
+      "decisions": 68,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 0,
+      "notSelectEvidenceEmpty": 0,
+      "violations": [
+        "DECIDED_CONTEXT_ALIASES:20",
+        "HEADINGS_OVER_8_PARTS:1:sizes=[28]"
+      ]
+    },
+    {
+      "unit": "SEG-001",
+      "round": 1,
+      "status": "COMPLETE",
+      "decisions": 48,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 0,
+      "notSelectEvidenceEmpty": 0,
+      "violations": [
+        "HEADINGS_OVER_8_PARTS:2:sizes=[13, 11]"
+      ]
+    },
+    {
+      "unit": "SEG-002",
+      "round": 1,
+      "status": "NEEDS_EVIDENCE",
+      "violations": []
+    },
+    {
+      "unit": "SEG-002",
+      "round": 2,
+      "status": "COMPLETE",
+      "decisions": 48,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 0,
+      "notSelectEvidenceEmpty": 0,
+      "violations": []
+    },
+    {
+      "unit": "SEG-003",
+      "round": 1,
+      "status": "COMPLETE",
+      "decisions": 59,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 56,
+      "notSelectEvidenceEmpty": 0,
+      "violations": [
+        "DECIDED_CONTEXT_ALIASES:11"
+      ]
+    },
+    {
+      "unit": "SEG-004",
+      "round": 1,
+      "status": "COMPLETE",
+      "decisions": 48,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 0,
+      "notSelectEvidenceEmpty": 0,
+      "violations": []
+    },
+    {
+      "unit": "SEG-005",
+      "round": 1,
+      "status": "COMPLETE",
+      "decisions": 48,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 0,
+      "notSelectEvidenceEmpty": 0,
+      "violations": []
+    },
+    {
+      "unit": "SEG-006",
+      "round": 1,
+      "status": "COMPLETE",
+      "decisions": 48,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 45,
+      "notSelectEvidenceEmpty": 0,
+      "violations": []
+    },
+    {
+      "unit": "SEG-007",
+      "round": 1,
+      "status": "COMPLETE",
+      "decisions": 48,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 0,
+      "notSelectEvidenceEmpty": 0,
+      "violations": []
+    },
+    {
+      "unit": "SEG-008",
+      "round": 1,
+      "status": "COMPLETE",
+      "decisions": 47,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 46,
+      "notSelectEvidenceEmpty": 0,
+      "violations": [
+        "MISSING_DECISIONS:1:L0419:S0"
+      ]
+    },
+    {
+      "unit": "SEG-009",
+      "round": 1,
+      "status": "COMPLETE",
+      "decisions": 48,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 46,
+      "notSelectEvidenceEmpty": 0,
+      "violations": []
+    },
+    {
+      "unit": "SEG-010",
+      "round": 1,
+      "status": "COMPLETE",
+      "decisions": 48,
+      "decideSize": 48,
+      "notSelectEvidenceOmitted": 44,
+      "notSelectEvidenceEmpty": 0,
+      "violations": []
+    }
+  ]
+}
