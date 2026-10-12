@@ -24,7 +24,9 @@ internal static class P7F1V6DirectAgentCanary
     public const double CeilingUsdPerArm = 0.25;      // >= 8 posts x the worst-case reserve of one 131,072-byte request
     public const int MaxRequestBytes = 131072;
     public const int Retries = 0;
-    public const string PlanArtifact = "p7.f1.v6.d4.11-tool-canary-plan.v1";
+    /// <summary>D4.11a: the D4.11 plan (e3f8e57e, never run) is superseded after the tool_call_id and finish_reason checks changed the code.</summary>
+    public const string PlanArtifact = "p7.f1.v6.d4.11a-tool-canary-plan.v1";
+    public const string SupersededPlanSha256 = "e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf";
     public const string EvaluationLabel = "Development canary — tool-calling chain on segments chosen from previous errors; Stage 1 only; not an F1 estimate";
 
     static readonly JsonSerializerOptions Indented = new() { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -63,6 +65,7 @@ internal static class P7F1V6DirectAgentCanary
         {
             ["artifact"] = PlanArtifact,
             ["approvalToSend"] = false,
+            ["supersedes"] = new { planSha256 = SupersededPlanSha256, run = false, reason = "D4.11a review: tool_call_id integrity and finish_reason/tool_calls consistency" },
             ["codeCommit"] = codeCommit,
             ["authorityId"] = P7F1V6DirectD45.AuthorityId,
             ["document"] = P7F1V6DirectD45.Document,
@@ -92,6 +95,8 @@ internal static class P7F1V6DirectAgentCanary
                 argumentCapBytes = P7F1V6AgentTools.MaxArgumentBytes,
                 transport = "native OpenRouter tools/tool_calls; each result returned as role tool with the call's tool_call_id",
             },
+            ["toolCallIds"] = "Qwen's own ids only: every id non-empty and unique in the conversation; a missing or repeated id refuses the whole tool turn before any tool runs (TOOL_CALL_ID_MISSING, TOOL_CALL_ID_DUPLICATE); calls over a cap are answered REJECTED under their own id; C# never makes up an id",
+            ["finishReason"] = "tool calls only with finish_reason tool_calls (else TOOL_CALLS_WITH_FINISH_<x>); an answer only with stop (else ANSWER_WITH_FINISH_<x>); tool_calls without calls is refused",
             ["toolChoice"] = new { turns1To3 = "auto", turn4 = "none", required = "not used: unsupported on the Alibaba route (F1Q 2026-10-09)" },
             ["limits"] = new { P7F1V6DirectAgent.MaxToolTurns, P7F1V6DirectAgent.MaxCallsPerTurn, P7F1V6DirectAgent.MaxPostsPerUnit, P7F1V6DirectAgent.MaxToolResultBytesPerUnit },
             ["model"] = P7F1V6Protocol.ChatModel,
@@ -113,6 +118,8 @@ internal static class P7F1V6DirectAgentCanary
             ["measurements"] = new[]
             {
                 "tool calls per arm, segment and tool name; invalid and rejected calls with their codes",
+                "four levels kept apart per unit: tool_invoked, tool_succeeded, targets shown by a successful result (observation only), evidence_used (final refs to lines seen only through tools); relevant_evidence_observed is audited offline after the responses are frozen, not by C#",
+                "EVIDENCE_FIRST counts any successful call (an overview included) as meeting its requirement; the four levels show whether it was more than that",
                 "chain proof: a tool_call answered by a role tool message with the same tool_call_id, followed by a final answer",
                 "use proof: final evidenceRefs that cite a line seen only through a tool result (RefsToToolOnlyLines)",
                 "scopes: evaluated targets, lines observed (request and tools), whole document observed or not",

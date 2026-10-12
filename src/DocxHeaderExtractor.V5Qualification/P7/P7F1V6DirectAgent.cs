@@ -17,6 +17,8 @@ namespace DocxHeaderExtractor.V5Qualification.P7;
 /// answer before any successful tool result is refused (TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED), because the Alibaba route does not support
 /// tool_choice required (F1Q, 2026-10-09). evidenceRefs may cite targets, context or any alias a tool result showed; an alias Qwen never
 /// saw is refused (EVIDENCE_NOT_SHOWN), so an answer cannot claim to have checked a line it did not observe.
+/// Tool-call identity (D4.11a): every tool_call_id is Qwen's own, non-empty and unique in the conversation; a missing or repeated id
+/// refuses the whole turn before any tool runs. finish_reason must agree with the reply: tool_calls with tool calls, stop with an answer.
 /// C# never reads the reasoning, never changes a decision, never adds a call Qwen did not make, and holds no rule about which lines to
 /// select. Every POST is admitted by the budget first.
 /// </summary>
@@ -167,8 +169,17 @@ internal static class P7F1V6DirectAgent
         IReadOnlyList<int> ObservedPages, int WholeDocumentLines, bool WholeDocumentObserved, int RefsTotal, int RefsToToolOnlyLines,
         IReadOnlyList<string> DecisionsCitingToolOnlyLines);
 
+    /// <summary>Four levels kept apart (D4.11a). ToolInvoked: calls Qwen made. ToolSucceeded: calls that returned data. TargetsShownByTools:
+    /// targets of this unit that a successful result showed; an observation of scope, not a judgement that the result was relevant.
+    /// RelevantEvidenceObserved is left to an offline audit of the frozen responses; C# does not judge relevance. EvidenceUsed: decisions
+    /// whose final evidenceRefs cite a line Qwen saw only through a tool.</summary>
+    public sealed record EvidenceReport(int ToolInvoked, int ToolSucceeded, int SuccessfulResultsShowingATarget, IReadOnlyList<string> TargetsShownByTools,
+        string RelevantEvidenceObserved, IReadOnlyList<string> EvidenceUsed);
+
+    public const string RelevanceAuditedOffline = "OFFLINE_AUDIT_AFTER_FREEZE";
+
     public sealed record AgentUnitOutcome(string Arm, P7F1V6DirectV2.UnitOutcome Unit, IReadOnlyList<TurnRecord> Turns,
-        IReadOnlyList<P7F1V6AgentTools.CallRecord> ToolCalls, int SuccessfulToolCalls, ScopeReport Scope);
+        IReadOnlyList<P7F1V6AgentTools.CallRecord> ToolCalls, int SuccessfulToolCalls, ScopeReport Scope, EvidenceReport Evidence);
 
     public static AgentUnitOutcome RunUnit(Arm arm, string instruction, P7F1V6Universe universe, string unitId, IReadOnlyList<string> decide,
         IEnumerable<int> initialContext, AgentModel model, P7F1V6DirectV2.Budget budget)
@@ -184,6 +195,7 @@ internal static class P7F1V6DirectAgent
         var history = new JsonArray();
         var requests = new List<P7F1V6Protocol.PreparedRequest>();
         var turns = new List<TurnRecord>();
+        var issuedIds = new HashSet<string>(StringComparer.Ordinal);   // every tool_call_id Qwen used in this conversation
         int calls = 0, okCalls = 0, resultBytes = 0;
         IReadOnlyDictionary<string, IReadOnlyList<string>>? finalRefs = null;
 
@@ -200,7 +212,12 @@ internal static class P7F1V6DirectAgent
                 observedAll.Select(a => lines[tools.PositionOf(a)].Page).Distinct().Order().ToArray(), lines.Count, observedAll.Count == lines.Count,
                 refs.Values.Sum(r => r.Count), refs.Values.Sum(r => r.Count(toolOnly.Contains)),
                 refs.Where(kv => kv.Value.Any(toolOnly.Contains)).Select(kv => kv.Key).OrderBy(tools.PositionOf).ToArray());
-            return new AgentUnitOutcome(arm.ToString(), unit, turns, tools.Ledger.ToArray(), okCalls, scope);
+            var targetSet = ordered.ToHashSet(StringComparer.Ordinal);
+            var okRecords = tools.Ledger.Where(c => c.Status == "OK").ToArray();
+            var evidence = new EvidenceReport(tools.Ledger.Count, okRecords.Length, okRecords.Count(c => c.ReturnedAliases.Any(targetSet.Contains)),
+                ordered.Where(a => okRecords.Any(c => c.ReturnedAliases.Contains(a, StringComparer.Ordinal))).ToArray(),
+                RelevanceAuditedOffline, scope.DecisionsCitingToolOnlyLines);
+            return new AgentUnitOutcome(arm.ToString(), unit, turns, tools.Ledger.ToArray(), okCalls, scope, evidence);
         }
 
         for (int turn = 1; turn <= MaxPostsPerUnit; turn++)
@@ -226,19 +243,33 @@ internal static class P7F1V6DirectAgent
             }
             turns.Add(new TurnRecord(turn, toolChoice, req.Sha256, req.Bytes, reply.ToolCalls.Count, reply.FinishReason, reply.Content is not null));
 
+            // finish_reason and tool_calls must agree: tool calls only with finish_reason tool_calls, an answer only with stop. A stop reply
+            // that carries tool calls is not read as a tool turn: that shape is not a confirmed provider format.
+            if (reply.ToolCalls.Count > 0 && reply.FinishReason != "tool_calls")
+            { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_CALLS_WITH_FINISH_" + (reply.FinishReason ?? "NULL").ToUpperInvariant()); }
+            if (reply.ToolCalls.Count == 0 && reply.FinishReason != "stop")
+            { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:ANSWER_WITH_FINISH_" + (reply.FinishReason ?? "NULL").ToUpperInvariant()); }
+
             if (reply.ToolCalls.Count > 0)
             {
                 if (toolChoice == "none") { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP"); }
+                // Every tool_call_id is Qwen's own: non-empty and unique in the conversation. A missing or repeated id refuses the whole turn
+                // before any tool runs; C# never makes up an id in Qwen's place.
+                var turnIds = new HashSet<string>(StringComparer.Ordinal);
+                foreach (var c in reply.ToolCalls)
+                {
+                    if (string.IsNullOrEmpty(c.Id)) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_CALL_ID_MISSING"); }
+                    if (!turnIds.Add(c.Id) || issuedIds.Contains(c.Id)) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_CALL_ID_DUPLICATE"); }
+                }
+                issuedIds.UnionWith(turnIds);
                 var assistantCalls = new JsonArray();
                 var results = new List<JsonObject>();
-                var usedIds = new HashSet<string>(StringComparer.Ordinal);
                 for (int n = 1; n <= reply.ToolCalls.Count; n++)
                 {
                     var call = reply.ToolCalls[n - 1];
                     var evidenceId = $"E{turn}.{n:00}";
-                    // Every call gets an answer under its own id; an id that is missing or repeated is replaced, and the ledger keeps the call.
-                    var callId = !string.IsNullOrEmpty(call.Id) && usedIds.Add(call.Id) ? call.Id : $"v6_call_{turn}_{n}";
-                    usedIds.Add(callId);
+                    var callId = call.Id!;
+                    // A call over a cap is still answered, under its own id, with REJECTED.
                     var result = n > MaxCallsPerTurn ? tools.Reject(evidenceId, call.Name, call.Arguments, "PER_TURN_CALL_CAP_EXCEEDED")
                         : resultBytes + P7F1V6AgentTools.MaxResultBytes > MaxToolResultBytesPerUnit ? tools.Reject(evidenceId, call.Name, call.Arguments, "UNIT_TOOL_RESULT_BYTES_EXHAUSTED")
                         : tools.Execute(evidenceId, call.Name, call.Arguments);

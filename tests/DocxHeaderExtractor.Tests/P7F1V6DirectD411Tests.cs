@@ -489,10 +489,10 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
     }
 
     [Fact]
-    public void OverThePerTurnCap_EveryCallIsAnswered_UnderAUniqueId_AndTheExtraOnesAreRejected()
+    public void OverThePerTurnCap_EveryCallIsAnsweredUnderQwensOwnId_AndTheNinthIsRejected()
     {
         P7F1V6Protocol.PreparedRequest? second = null;
-        var nine = Enumerable.Range(1, 9).Select(k => ((string?)(k == 2 ? null : k == 3 ? "dup" : k == 4 ? "dup" : "id" + k), P7F1V6AgentTools.DocumentOverview, (object)new { })).ToArray();
+        var nine = Enumerable.Range(1, 9).Select(k => ((string?)("qwen_" + k), P7F1V6AgentTools.DocumentOverview, (object)new { })).ToArray();
         var outcome = Run(A.Arm.Auto, (unit, turn, req) =>
         {
             if (turn == 2) second = req;
@@ -500,12 +500,95 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         });
         Assert.Equal("COMPLETE", outcome.Unit.Status);
         var msgs = Body(second!).GetProperty("messages");
-        var ids = msgs[2].GetProperty("tool_calls").EnumerateArray().Select(c => c.GetProperty("id").GetString()!).ToArray();
-        Assert.Equal(9, ids.Length);
-        Assert.Equal(9, ids.Distinct().Count());
-        Assert.Equal(ids, Enumerable.Range(3, 9).Select(i => msgs[i].GetProperty("tool_call_id").GetString()!));
+        var expected = Enumerable.Range(1, 9).Select(k => "qwen_" + k).ToArray();
+        Assert.Equal(expected, msgs[2].GetProperty("tool_calls").EnumerateArray().Select(c => c.GetProperty("id").GetString()!));
+        Assert.Equal(expected, Enumerable.Range(3, 9).Select(i => msgs[i].GetProperty("tool_call_id").GetString()!));
         Assert.Equal(8, outcome.ToolCalls.Count(c => c.Status == "OK"));
         Assert.Equal("PER_TURN_CALL_CAP_EXCEEDED", outcome.ToolCalls.Last().ErrorCode);
+        Assert.Contains("\"status\":\"REJECTED\"", msgs[11].GetProperty("content").GetString());
+    }
+
+    public static TheoryData<string?, string?, string> BadIdTurns => new()
+    {
+        { null, "b", "PROTOCOL:TOOL_CALL_ID_MISSING" },
+        { "", "b", "PROTOCOL:TOOL_CALL_ID_MISSING" },
+        { "a", null, "PROTOCOL:TOOL_CALL_ID_MISSING" },
+        { "a", "a", "PROTOCOL:TOOL_CALL_ID_DUPLICATE" },
+    };
+
+    [Theory]
+    [MemberData(nameof(BadIdTurns))]
+    public void AMissingOrRepeatedId_RefusesTheWholeTurn_BeforeAnyToolRuns(string? first, string? second, string failure)
+    {
+        var posts = 0;
+        var outcome = Run(A.Arm.Auto, (unit, turn, req) =>
+        {
+            posts++;
+            return Call((first, P7F1V6AgentTools.DocumentOverview, new { }), (second, P7F1V6AgentTools.SourceContext, new { alias = L(48), before = 1, after = 1 }));
+        });
+        Assert.Equal("FAILED", outcome.Unit.Status);
+        Assert.Equal(failure, outcome.Unit.Failure);
+        Assert.Empty(outcome.ToolCalls);              // nothing was dispatched
+        Assert.Equal(0, outcome.Evidence.ToolSucceeded);
+        Assert.Equal(1, posts);
+    }
+
+    [Fact]
+    public void AnIdReusedInALaterTurn_IsADuplicate_AndOnlyTheFirstTurnRan()
+    {
+        var outcome = Run(A.Arm.Auto, (unit, turn, req) => Call(("same", P7F1V6AgentTools.DocumentOverview, new { })));
+        Assert.Equal("PROTOCOL:TOOL_CALL_ID_DUPLICATE", outcome.Unit.Failure);
+        Assert.Equal(2, outcome.Unit.Calls);
+        Assert.Single(outcome.ToolCalls);
+    }
+
+    [Fact]
+    public void ToolCallsWithFinishStop_AreNotReadAsAToolTurn()
+    {
+        var outcome = Run(A.Arm.Auto, (unit, turn, req) =>
+            new A.ModelTurn(null, new[] { new A.ToolCall("x1", P7F1V6AgentTools.DocumentOverview, "{}") }, "stop"));
+        Assert.Equal("PROTOCOL:TOOL_CALLS_WITH_FINISH_STOP", outcome.Unit.Failure);
+        Assert.Empty(outcome.ToolCalls);
+        var nullFinish = Run(A.Arm.Auto, (unit, turn, req) =>
+            new A.ModelTurn(null, new[] { new A.ToolCall("x1", P7F1V6AgentTools.DocumentOverview, "{}") }, null));
+        Assert.Equal("PROTOCOL:TOOL_CALLS_WITH_FINISH_NULL", nullFinish.Unit.Failure);
+    }
+
+    [Theory]
+    [InlineData("length", "PROTOCOL:ANSWER_WITH_FINISH_LENGTH")]
+    [InlineData("tool_calls", "PROTOCOL:ANSWER_WITH_FINISH_TOOL_CALLS")]
+    [InlineData(null, "PROTOCOL:ANSWER_WITH_FINISH_NULL")]
+    public void AnAnswerNeedsFinishStop(string? finish, string failure)
+    {
+        var outcome = Run(A.Arm.Auto, (unit, turn, req) => new A.ModelTurn(Final(Targets(req)), Array.Empty<A.ToolCall>(), finish));
+        Assert.Equal(failure, outcome.Unit.Failure);
+        Assert.All(outcome.Unit.Decisions.Values, v => Assert.Equal("UNRESOLVED", v));
+    }
+
+    [Fact]
+    public void EvidenceReport_KeepsInvokedSucceededShownAndUsedApart()
+    {
+        // An overview satisfies EVIDENCE_FIRST, but shows no target and is cited by no decision.
+        var overview = Run(A.Arm.EvidenceFirst, (unit, turn, req) => turn == 1
+            ? Call(("o1", P7F1V6AgentTools.DocumentOverview, new { }), ("o2", P7F1V6AgentTools.SourceContext, new { alias = "nope", before = 1, after = 1 }))
+            : Answer(Final(Targets(req))));
+        Assert.Equal("COMPLETE", overview.Unit.Status);
+        Assert.Equal(2, overview.Evidence.ToolInvoked);
+        Assert.Equal(1, overview.Evidence.ToolSucceeded);
+        Assert.Equal(0, overview.Evidence.SuccessfulResultsShowingATarget);
+        Assert.Empty(overview.Evidence.TargetsShownByTools);
+        Assert.Empty(overview.Evidence.EvidenceUsed);
+        Assert.Equal(A.RelevanceAuditedOffline, overview.Evidence.RelevantEvidenceObserved);
+
+        var (t, o) = RepeatPairOutsideWindow();
+        var used = Run(A.Arm.EvidenceFirst, (unit, turn, req) => turn == 1
+            ? Call(("c1", P7F1V6AgentTools.Compare, new { first = L(t), second = L(o), window = 0 }))
+            : Answer(Final(Targets(req), a => a == L(t) ? ("NOT_SELECT", new[] { L(o) }) : ("NOT_SELECT", null))));
+        Assert.Equal(1, used.Evidence.ToolSucceeded);
+        Assert.Equal(1, used.Evidence.SuccessfulResultsShowingATarget);
+        Assert.Contains(L(t), used.Evidence.TargetsShownByTools);
+        Assert.Equal(new[] { L(t) }, used.Evidence.EvidenceUsed);
+        Assert.Equal(A.RelevanceAuditedOffline, used.Evidence.RelevantEvidenceObserved);
     }
 
     [Fact]
@@ -650,6 +733,9 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         var p = doc.RootElement;
         Assert.Equal(P7F1V6DirectAgentCanary.PlanArtifact, p.GetProperty("artifact").GetString());
         Assert.False(p.GetProperty("approvalToSend").GetBoolean());
+        Assert.Equal(P7F1V6DirectAgentCanary.SupersededPlanSha256, p.GetProperty("supersedes").GetProperty("planSha256").GetString());
+        Assert.False(p.GetProperty("supersedes").GetProperty("run").GetBoolean());
+        Assert.Contains("never makes up an id", p.GetProperty("toolCallIds").GetString());
         Assert.Equal(new[] { "SEG-001", "SEG-008" }, p.GetProperty("segments").EnumerateArray().Select(x => x.GetString()));
         Assert.Equal(16, p.GetProperty("budget").GetProperty("maxCalls").GetInt32());
         Assert.Equal(0.50, p.GetProperty("budget").GetProperty("ceilingUsd").GetDouble(), 9);

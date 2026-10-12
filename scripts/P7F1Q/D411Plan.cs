@@ -43,7 +43,7 @@ internal static class D411Plan
         if (Git(repoRoot, "status --porcelain -- src scripts tests").Length > 0) { Console.WriteLine("D411 PLAN REFUSED: uncommitted code"); Environment.ExitCode = 2; return; }
         var head = Git(repoRoot, "rev-parse HEAD");
         var bytes = P7F1V6DirectAgentCanary.Serialize(P7F1V6DirectAgentCanary.PinnedValues(repoRoot, head));
-        var planPath = Path.Combine(artifactDir, "p7.f1.v6.d4.11-tool-canary-plan.v1.json");
+        var planPath = Path.Combine(artifactDir, P7F1V6DirectAgentCanary.PlanArtifact + ".json");
         File.WriteAllBytes(planPath, bytes);
         var planSha = Convert.ToHexStringLower(SHA256.HashData(bytes));
         var verify = P7F1V6DirectAgentCanary.Verify(repoRoot, planPath, planSha, head);
@@ -81,7 +81,7 @@ internal static class D411Plan
                         toolCalls = x.ToolCalls.Count, okToolCalls = x.SuccessfulToolCalls,
                         rejected = x.ToolCalls.Where(c => c.Status != "OK").GroupBy(c => c.ErrorCode).Select(g => new { code = g.Key, count = g.Count() }),
                         toolResultBytes = x.ToolCalls.Sum(c => c.ContentBytes), truncatedResults = x.ToolCalls.Count(c => c.Truncated),
-                        scope = x.Scope,
+                        scope = x.Scope, evidence = x.Evidence,
                     }),
                 }),
             };
@@ -89,7 +89,7 @@ internal static class D411Plan
 
         var report = new
         {
-            artifact = "p7.f1.v6.d4.11-tool-canary-dryrun.v1",
+            artifact = "p7.f1.v6.d4.11a-tool-canary-dryrun.v1",
             providerCalls = 0,
             planFile = Path.GetFileName(planPath), planSha256 = planSha, planVerifiesNow = verify.Count == 0, codeCommit = head,
             firstRequests = P7F1V6DirectAgentCanary.Arms.SelectMany(a => P7F1V6DirectAgentCanary.Segments.Select(s =>
@@ -106,7 +106,7 @@ internal static class D411Plan
                 "Each arm has its own 8-post, $0.25 budget and early stop.",
             },
         };
-        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.11-tool-canary-dryrun.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
+        File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.11a-tool-canary-dryrun.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
         Console.WriteLine($"plan {planSha} verifies={verify.Count == 0} commit={head}");
         foreach (var f in report.firstRequests) Console.WriteLine(JsonSerializer.Serialize(f));
         foreach (var s in sims)
@@ -142,7 +142,7 @@ internal static class D411Plan
                 units = a.Units.Select(x => new
                 {
                     x.Unit.UnitId, x.Unit.Status, x.Unit.Calls, x.Unit.Failure, x.Unit.IncompleteReason, decisions = x.Unit.Decisions,
-                    x.Turns, toolCalls = x.ToolCalls, x.SuccessfulToolCalls, x.Scope,
+                    x.Turns, toolCalls = x.ToolCalls, x.SuccessfulToolCalls, x.Scope, x.Evidence,
                 }),
                 ledger = a.Ledger,
             };
