@@ -1,0 +1,105 @@
+{
+  "artifact": "p7.f1.v6.d4.5-offline-replay.v1",
+  "label": "V3_ON_D45_REPLIES",
+  "providerCalls": 0,
+  "promptVersion": "P7_F1_V6_DIRECT_PROMPT_V2_4",
+  "systemPromptSha256": "bcc381e5645df30f8ea0fbe39a0df9b9499f076344dcb656c65cb53342ea9a0e",
+  "recordedReplies": 12,
+  "consumedReplies": 12,
+  "haltReason": null,
+  "contractFailures": 4,
+  "unitsWithReplies": 11,
+  "passingUnits": 7,
+  "rows": [
+    {
+      "unit": "SEG-000",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": false,
+      "status": "FAILED",
+      "failure": "PROTOCOL:UNEXPECTED_ALIAS"
+    },
+    {
+      "unit": "SEG-001",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": false,
+      "status": "FAILED",
+      "failure": "PROTOCOL:HEADING_PARTS_INVALID"
+    },
+    {
+      "unit": "SEG-002",
+      "replyRounds": 2,
+      "consumedRounds": 2,
+      "requestsMatchLive": false,
+      "status": "COMPLETE",
+      "failure": null
+    },
+    {
+      "unit": "SEG-003",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": false,
+      "status": "FAILED",
+      "failure": "PROTOCOL:UNEXPECTED_ALIAS"
+    },
+    {
+      "unit": "SEG-004",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": false,
+      "status": "COMPLETE",
+      "failure": null
+    },
+    {
+      "unit": "SEG-005",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": false,
+      "status": "COMPLETE",
+      "failure": null
+    },
+    {
+      "unit": "SEG-006",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": false,
+      "status": "COMPLETE",
+      "failure": null
+    },
+    {
+      "unit": "SEG-007",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": false,
+      "status": "COMPLETE",
+      "failure": null
+    },
+    {
+      "unit": "SEG-008",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": false,
+      "status": "FAILED",
+      "failure": "PROTOCOL:COVERAGE_INCOMPLETE"
+    },
+    {
+      "unit": "SEG-009",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": false,
+      "status": "COMPLETE",
+      "failure": null
+    },
+    {
+      "unit": "SEG-010",
+      "replyRounds": 1,
+      "consumedRounds": 1,
+      "requestsMatchLive": false,
+      "status": "COMPLETE",
+      "failure": null
+    }
+  ],
+  "runStatus": "INCOMPLETE",
+  "note": "Units without a recorded reply end NO_RECORDED_REPLY; run status is therefore not a prediction of a live run."
+}
