@@ -118,7 +118,7 @@ internal static class P7F1V6DirectD45
     public const string Registry = "eval/a99-closed-loop/gold-current/registry.v1.json";
     public const int Unit = 48;
     public const int Overlap = P7F1V6Direct.DefaultOverlapLines;
-    public const int MaxCalls = 64;
+    public const int MaxCalls = 100;   // D4.5a: raised from 64 by the user; the $1.00 ceiling is unchanged and may stop the run first
     public const int MaxRequestBytes = 131072;
     public const double CeilingUsd = 1.00;
     public const int Retries = 0;
@@ -195,6 +195,14 @@ internal static class P7F1V6DirectD45
             ["limits"] = new { P7F1V6DirectV2.MaxRounds, P7F1V6DirectV2.MaxRetrievePerRound, P7F1V6DirectV2.MaxAddedLinesPerUnit,
                 P7F1V6DirectV2.MaxResolveContextLines, P7F1V6DirectV2.MaxFinalizeOutlineLines },
             ["rawResponses"] = "safe store outside the repository, per-run directory, retention policy; never committed",
+            ["earlyStop"] = new { consecutiveContractFailures = P7F1V6DirectV2.MaxConsecutiveContractFailures,
+                counts = "parser failures, usage/finish audit failures and missing content; transport failures neither count nor reset" },
+            ["liveAuthorization"] = new { required = true, artifact = P7F1V6DirectAuthorization.Artifact, status = P7F1V6DirectAuthorization.Approved,
+                campaigns = 1, consumedMarker = "consumed-<planSha256>.json in the safe root" },
+            ["safeRootPolicy"] = new { location = "%LOCALAPPDATA%\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095", mustExistBeforeRun = true,
+                outsideRepository = true, fileSystem = "NTFS", noReparsePointsInPath = true, acl = "current user only, inheritance cut", runDirectories = "run-<32 hex>" },
+            ["retention"] = new { files = new[] { "<sha256>.bin", "<sha256>.<guid>.tmp", P7F1V6Retention.ReviewFile, P7F1V6Retention.SummaryFile },
+                rawRetentionDays = P7F1V6DataPolicy.RawRetentionDays },
             ["segments"] = first.Count,
             ["firstRequests"] = first.Select((r, i) => new { unitId = $"SEG-{i:000}", sha256 = r.Sha256, bytes = r.Bytes }).ToArray(),
             ["firstRequestsSha256"] = P7F1V6Protocol.Sha(string.Join("\n", first.Select(r => r.Sha256))),
@@ -222,13 +230,51 @@ internal static class P7F1V6DirectD45
     public sealed record LiveResult(P7F1V6DirectV2.RunOutcome Outcome, IReadOnlyList<P7F1V6DirectAuditedModel.LedgerEntry> Ledger,
         P7F1V6DirectScorer.Result Score, string SafeRunDirectory);
 
-    /// <summary>Verifies the plan, then runs it through the audited model and scores it (Gold read-only). With a production handler this
-    /// sends requests; it is not run in D4.5. Tests pass a fake handler.</summary>
-    public static LiveResult Execute(string repoRoot, string planPath, string confirmedSha256, string currentCommit, string apiKey,
-        HttpMessageHandler handler, string safeRoot)
+    /// <summary>What is wrong with a safe root (D4.5a): it must exist before the run, resolve outside the repository, sit on NTFS, have no
+    /// reparse point anywhere on its path, and be private to the current user. Empty means usable.</summary>
+    public static IReadOnlyList<string> SafeRootFailures(string repoRoot, string safeRoot)
+    {
+        var failures = new List<string>();
+        var full = Path.GetFullPath(safeRoot).TrimEnd(Path.DirectorySeparatorChar);
+        if (!Directory.Exists(full)) return new[] { "SAFE_ROOT_MISSING" };
+        var repo = Path.GetFullPath(repoRoot).TrimEnd(Path.DirectorySeparatorChar);
+        if (full.Equals(repo, StringComparison.OrdinalIgnoreCase) || full.StartsWith(repo + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase))
+            failures.Add("SAFE_ROOT_INSIDE_REPOSITORY");
+        for (var d = new DirectoryInfo(full); d is not null; d = d.Parent)
+            if (d.Parent is not null && (d.Attributes & FileAttributes.ReparsePoint) != 0) failures.Add("REPARSE_POINT_IN_PATH:" + d.FullName);
+        if (OperatingSystem.IsWindows())
+        {
+            var format = new DriveInfo(Path.GetPathRoot(full)!).DriveFormat;
+            if (!string.Equals(format, "NTFS", StringComparison.OrdinalIgnoreCase)) failures.Add("NOT_NTFS:" + format);
+            failures.AddRange(P7F1V6SafeRawStore.RootAccessFailures(full));
+        }
+        else failures.Add("NOT_WINDOWS_ACL_UNCHECKED");
+        return failures;
+    }
+
+    public static string ConsumedMarker(string safeRoot, string planSha256) => Path.Combine(Path.GetFullPath(safeRoot), "consumed-" + planSha256 + ".json");
+
+    /// <summary>Verifies the plan, the safe root and the live authorization, marks the campaign consumed, then runs the plan through the
+    /// audited model and scores it (Gold read-only). Any failure before the marker is written means no request. With a production handler
+    /// this sends requests and needs its own approval; tests pass a fake handler.</summary>
+    public static LiveResult Execute(string repoRoot, string planPath, string confirmedSha256, string currentCommit, string authorizationPath,
+        string apiKey, HttpMessageHandler handler, string safeRoot)
     {
         var failures = Verify(repoRoot, planPath, confirmedSha256, currentCommit);
         if (failures.Count > 0) throw new InvalidOperationException("PLAN_REFUSED:" + string.Join(",", failures));
+        var rootFailures = SafeRootFailures(repoRoot, safeRoot);
+        if (rootFailures.Count > 0) throw new InvalidOperationException("SAFE_ROOT_REFUSED:" + string.Join(",", rootFailures));
+        var authFailures = P7F1V6DirectAuthorization.Check(authorizationPath, planPath, confirmedSha256, safeRoot);
+        if (authFailures.Count > 0) throw new InvalidOperationException("AUTHORIZATION_REFUSED:" + string.Join(",", authFailures));
+        // One campaign per plan: the marker is created before the first request and never removed by this code.
+        var marker = ConsumedMarker(safeRoot, confirmedSha256);
+        try
+        {
+            using var fs = new FileStream(marker, FileMode.CreateNew, FileAccess.Write, FileShare.None);
+            fs.Write(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(new { planSha256 = confirmedSha256,
+                authorizationSha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(authorizationPath))), startedUtc = DateTime.UtcNow.ToString("O") }) + "\n"));
+        }
+        catch (IOException) when (File.Exists(marker)) { throw new InvalidOperationException("CAMPAIGN_ALREADY_CONSUMED"); }
         var gold = ReadGoldPin(repoRoot);
         var u = P7F1V6Universe.Rebuild(repoRoot, Document, gold.SourceSha256, out var why) ?? throw new InvalidOperationException(why);
         var budget = NewBudget();
@@ -237,5 +283,156 @@ internal static class P7F1V6DirectD45
         var outcome = P7F1V6DirectV2.Run(Instruction, u, model.Reply, budget, Overlap, Unit, finalize: true);
         var score = P7F1V6DirectScorer.Score(repoRoot, Registry, AuthorityId, P7F1V6DirectScorer.RunEvidence.From(u, outcome));
         return new LiveResult(outcome, model.Ledger, score, store.RunDirectory);
+    }
+}
+
+/// <summary>
+/// The live authorization record for one D4.5 campaign (D4.5a). A plan is not an approval; this record is. It binds the plan SHA and the
+/// values a reviewer approves: document and source, model and route, campaigns (one), posts, USD ceiling, request byte cap, retries, the safe
+/// root, and the data-sharing decisions. A draft is PENDING_USER_APPROVAL and is refused. <see cref="Approve"/> writes the approval only from
+/// values the user gave; the code never approves on its own. approvalSha256 is a SHA-256 over the record without that field: integrity,
+/// not a signature. Every data-policy fact that is not VERIFIED must be listed, word for word, in acceptedOpenItems; nothing is skipped.
+/// </summary>
+internal static class P7F1V6DirectAuthorization
+{
+    public const string Artifact = "p7.f1.v6.d4.5-live-authorization.v1";
+    public const string Pending = "PENDING_USER_APPROVAL";
+    public const string Approved = "APPROVED";
+    public const string PendingDecision = "PENDING_USER_DECISION";
+
+    static readonly JsonSerializerOptions Indented = new() { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+
+    static string Digest(System.Text.Json.Nodes.JsonObject o)
+    {
+        var copy = System.Text.Json.Nodes.JsonNode.Parse(o.ToJsonString())!.AsObject();
+        copy.Remove("approvalSha256");
+        return P7F1V6Protocol.Sha(copy.ToJsonString());
+    }
+
+    static byte[] Seal(System.Text.Json.Nodes.JsonObject o)
+    {
+        o.Remove("approvalSha256");
+        o["approvalSha256"] = Digest(o);
+        return Encoding.UTF8.GetBytes(o.ToJsonString(Indented) + "\n");
+    }
+
+    /// <summary>A draft for the reviewer, built from the plan file. Status PENDING_USER_APPROVAL; the data-collection decision is open.</summary>
+    public static byte[] Draft(string planPath, string safeRoot)
+    {
+        var planBytes = File.ReadAllBytes(planPath);
+        using var plan = JsonDocument.Parse(planBytes);
+        var p = plan.RootElement;
+        var budget = p.GetProperty("budget");
+        var o = new System.Text.Json.Nodes.JsonObject
+        {
+            ["artifact"] = Artifact,
+            ["status"] = Pending,
+            ["planFile"] = Path.GetFileName(planPath),
+            ["planSha256"] = Convert.ToHexStringLower(SHA256.HashData(planBytes)),
+            ["codeCommit"] = p.GetProperty("codeCommit").GetString(),
+            ["authorityId"] = p.GetProperty("authorityId").GetString(),
+            ["document"] = p.GetProperty("document").GetString(),
+            ["sourceSha256"] = p.GetProperty("sourceSha256").GetString(),
+            ["task"] = p.GetProperty("task").GetString(),
+            ["model"] = p.GetProperty("model").GetString(),
+            ["providerOnly"] = P7F1V6Protocol.ProviderTag,
+            ["providerIgnore"] = string.Join(",", P7F1V6Protocol.DefaultIgnore),
+            ["allowFallbacks"] = false,
+            ["campaigns"] = 1,
+            ["maxPosts"] = budget.GetProperty("maxCalls").GetInt32(),
+            ["ceilingUsd"] = budget.GetProperty("ceilingUsd").GetDouble(),
+            ["maxRequestBytes"] = budget.GetProperty("maxRequestBytes").GetInt32(),
+            ["retries"] = p.GetProperty("retries").GetInt32(),
+            ["safeRoot"] = Path.GetFullPath(safeRoot).TrimEnd(Path.DirectorySeparatorChar),
+            ["dataSharing"] = new System.Text.Json.Nodes.JsonObject
+            {
+                ["documentPublicity"] = "IETF RFC 9114, published publicly by the IETF",
+                ["zdr"] = false,
+                ["zdrDecision"] = "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+                ["dataCollection"] = "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+                ["dataCollectionDecision"] = PendingDecision,
+                ["loggingThroughOpenRouter"] = "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+                ["openItemsToAccept"] = new System.Text.Json.Nodes.JsonArray(P7F1V6RoutePolicy.RouteAllowed(P7F1V6Protocol.ProviderTag).Blocking
+                    .Select(b => (System.Text.Json.Nodes.JsonNode?)b).ToArray()),
+                ["acceptedOpenItems"] = new System.Text.Json.Nodes.JsonArray(),
+            },
+            ["approvedBy"] = null,
+            ["approvedAtUtc"] = null,
+            ["approvalText"] = null,
+        };
+        return Seal(o);
+    }
+
+    /// <summary>Turns a draft into an approved record with the user's own words and decisions. Called only on the user's explicit approval.</summary>
+    public static byte[] Approve(byte[] draft, string approvedBy, string approvalText, string dataCollectionDecision,
+        IReadOnlyList<string> acceptedOpenItems, DateTime approvedAtUtc)
+    {
+        if (string.IsNullOrWhiteSpace(approvedBy) || string.IsNullOrWhiteSpace(approvalText) || string.IsNullOrWhiteSpace(dataCollectionDecision)
+            || dataCollectionDecision == PendingDecision) throw new ArgumentException("APPROVAL_FIELDS_MISSING");
+        var o = System.Text.Json.Nodes.JsonNode.Parse(draft)!.AsObject();
+        if (o["status"]!.GetValue<string>() != Pending) throw new InvalidOperationException("NOT_A_DRAFT");
+        o["status"] = Approved;
+        o["approvedBy"] = approvedBy;
+        o["approvedAtUtc"] = approvedAtUtc.ToUniversalTime().ToString("O");
+        o["approvalText"] = approvalText;
+        var ds = o["dataSharing"]!.AsObject();
+        ds["dataCollectionDecision"] = dataCollectionDecision;
+        ds["acceptedOpenItems"] = new System.Text.Json.Nodes.JsonArray(acceptedOpenItems.Select(a => (System.Text.Json.Nodes.JsonNode?)a).ToArray());
+        return Seal(o);
+    }
+
+    /// <summary>Every reason the record does not authorize this plan now. Empty means one campaign may run.</summary>
+    public static IReadOnlyList<string> Check(string authorizationPath, string planPath, string planSha256, string safeRoot)
+    {
+        var f = new List<string>();
+        if (!File.Exists(authorizationPath)) return new[] { "AUTHORIZATION_MISSING" };
+        System.Text.Json.Nodes.JsonObject a;
+        try { a = System.Text.Json.Nodes.JsonNode.Parse(File.ReadAllBytes(authorizationPath))!.AsObject(); }
+        catch (JsonException) { return new[] { "AUTHORIZATION_NOT_JSON" }; }
+        string? S(System.Text.Json.Nodes.JsonNode? n) => n is System.Text.Json.Nodes.JsonValue v && v.TryGetValue<string>(out var s) ? s : null;
+
+        if (S(a["artifact"]) != Artifact) f.Add("AUTHORIZATION_ARTIFACT_INVALID");
+        if (S(a["approvalSha256"]) != Digest(a)) f.Add("AUTHORIZATION_DIGEST_MISMATCH");
+        if (S(a["status"]) != Approved) f.Add("AUTHORIZATION_NOT_APPROVED:" + S(a["status"]));
+        var planBytes = File.ReadAllBytes(planPath);
+        var actualPlanSha = Convert.ToHexStringLower(SHA256.HashData(planBytes));
+        if (S(a["planSha256"]) != planSha256 || actualPlanSha != planSha256) f.Add("AUTHORIZATION_PLAN_SHA_DIFFERS");
+        using var plan = JsonDocument.Parse(planBytes);
+        var p = plan.RootElement;
+        var budget = p.GetProperty("budget");
+        void Same(string field, string? expected) { if (S(a[field]) != expected) f.Add("AUTHORIZATION_FIELD_DIFFERS:" + field); }
+        Same("codeCommit", p.GetProperty("codeCommit").GetString());
+        Same("authorityId", p.GetProperty("authorityId").GetString());
+        Same("document", p.GetProperty("document").GetString());
+        Same("sourceSha256", p.GetProperty("sourceSha256").GetString());
+        Same("model", p.GetProperty("model").GetString());
+        Same("providerOnly", P7F1V6Protocol.ProviderTag);
+        Same("providerIgnore", string.Join(",", P7F1V6Protocol.DefaultIgnore));
+        Same("safeRoot", Path.GetFullPath(safeRoot).TrimEnd(Path.DirectorySeparatorChar));
+        int? I(string k) => a[k] is System.Text.Json.Nodes.JsonValue v && v.TryGetValue<int>(out var i) ? i : null;
+        double? D(string k) => a[k] is System.Text.Json.Nodes.JsonValue v && v.TryGetValue<double>(out var d) ? d : null;
+        bool? B(string k) => a[k] is System.Text.Json.Nodes.JsonValue v && v.TryGetValue<bool>(out var b) ? b : null;
+        if (I("campaigns") != 1) f.Add("AUTHORIZATION_CAMPAIGNS_NOT_ONE");
+        if (I("maxPosts") != budget.GetProperty("maxCalls").GetInt32()) f.Add("AUTHORIZATION_FIELD_DIFFERS:maxPosts");
+        if (D("ceilingUsd") != budget.GetProperty("ceilingUsd").GetDouble()) f.Add("AUTHORIZATION_FIELD_DIFFERS:ceilingUsd");
+        if (I("maxRequestBytes") != budget.GetProperty("maxRequestBytes").GetInt32()) f.Add("AUTHORIZATION_FIELD_DIFFERS:maxRequestBytes");
+        if (I("retries") != p.GetProperty("retries").GetInt32()) f.Add("AUTHORIZATION_FIELD_DIFFERS:retries");
+        if (B("allowFallbacks") != false) f.Add("AUTHORIZATION_FALLBACKS_NOT_FALSE");
+
+        var ds = a["dataSharing"] as System.Text.Json.Nodes.JsonObject;
+        if (ds is null) f.Add("AUTHORIZATION_DATA_SHARING_MISSING");
+        else
+        {
+            if (!(ds["zdr"] is System.Text.Json.Nodes.JsonValue z && z.TryGetValue<bool>(out var zv) && zv == false)) f.Add("AUTHORIZATION_ZDR_NOT_RECORDED_FALSE");
+            if (string.IsNullOrWhiteSpace(S(ds["zdrDecision"]))) f.Add("AUTHORIZATION_ZDR_DECISION_MISSING");
+            var dc = S(ds["dataCollectionDecision"]);
+            if (string.IsNullOrWhiteSpace(dc) || dc == PendingDecision) f.Add("AUTHORIZATION_DATA_COLLECTION_UNDECIDED");
+            var accepted = (ds["acceptedOpenItems"] as System.Text.Json.Nodes.JsonArray)?.Select(S).ToHashSet(StringComparer.Ordinal) ?? new HashSet<string?>();
+            foreach (var item in P7F1V6RoutePolicy.RouteAllowed(P7F1V6Protocol.ProviderTag).Blocking)
+                if (!accepted.Contains(item)) f.Add("AUTHORIZATION_OPEN_ITEM_NOT_ACCEPTED:" + item);
+        }
+        if (string.IsNullOrWhiteSpace(S(a["approvedBy"])) || string.IsNullOrWhiteSpace(S(a["approvedAtUtc"])) || string.IsNullOrWhiteSpace(S(a["approvalText"])))
+            f.Add("AUTHORIZATION_APPROVER_MISSING");
+        return f;
     }
 }

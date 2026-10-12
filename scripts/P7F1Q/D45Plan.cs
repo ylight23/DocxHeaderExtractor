@@ -97,8 +97,40 @@ internal static class D45Plan
     /// <summary>The live run of a confirmed plan. Not run in D4.5: it needs its own approval. Refuses when the code under src/, scripts/ or
     /// tests/ differs from the plan's commit, when the safe root is missing or inside the repository, or when the key is absent. The key is
     /// never printed. Raw responses and the ledger stay in the safe store; only a summary without source text is printed.</summary>
-    public static void Live(string repoRoot, string planPath, string confirmedSha, string safeRoot)
+    /// <summary>Creates the safe root if it is missing and restricts it to the current user, then reports every check. Never inside the repository.</summary>
+    public static void SafeRoot(string repoRoot, string safeRoot, bool prepare)
     {
+        var full = Path.GetFullPath(Environment.ExpandEnvironmentVariables(safeRoot));
+        if (full.StartsWith(Path.GetFullPath(repoRoot), StringComparison.OrdinalIgnoreCase)) { Console.WriteLine("REFUSED: inside the repository"); Environment.ExitCode = 2; return; }
+        if (prepare && OperatingSystem.IsWindows())
+        {
+            Directory.CreateDirectory(full);
+            P7F1V6SafeRawStore.RestrictRootToCurrentUser(full);
+        }
+        var failures = P7F1V6DirectD45.SafeRootFailures(repoRoot, full);
+        Console.WriteLine($"safe root {full}: {(failures.Count == 0 ? "OK" : string.Join(", ", failures))}");
+        if (failures.Count > 0) Environment.ExitCode = 2;
+    }
+
+    /// <summary>Writes the PENDING authorization draft for a plan. It authorizes nothing until the user approves it.</summary>
+    public static void AuthorizationDraft(string planPath, string safeRoot, string outPath)
+    {
+        var full = Path.GetFullPath(Environment.ExpandEnvironmentVariables(safeRoot));
+        File.WriteAllBytes(outPath, P7F1V6DirectAuthorization.Draft(planPath, full));
+        Console.WriteLine($"authorization draft written: {outPath} (status {P7F1V6DirectAuthorization.Pending})");
+    }
+
+    /// <summary>Records the user's approval in a new file. Run only on the user's explicit approval, with the user's own words and decisions.</summary>
+    public static void Approve(string draftPath, string outPath, string approvedBy, string approvalText, string dataCollectionDecision, bool acceptOpenItems)
+    {
+        var items = acceptOpenItems ? P7F1V6RoutePolicy.RouteAllowed(P7F1V6Protocol.ProviderTag).Blocking : Array.Empty<string>();
+        File.WriteAllBytes(outPath, P7F1V6DirectAuthorization.Approve(File.ReadAllBytes(draftPath), approvedBy, approvalText, dataCollectionDecision, items, DateTime.UtcNow));
+        Console.WriteLine($"authorization approved: {outPath}");
+    }
+
+    public static void Live(string repoRoot, string planPath, string confirmedSha, string authorizationPath, string safeRoot)
+    {
+        safeRoot = Path.GetFullPath(Environment.ExpandEnvironmentVariables(safeRoot));
         using var doc = JsonDocument.Parse(File.ReadAllBytes(planPath));
         var planCommit = doc.RootElement.GetProperty("codeCommit").GetString()!;
         var changed = Git(repoRoot, $"diff --name-only {planCommit} HEAD -- src scripts tests");
@@ -109,10 +141,10 @@ internal static class D45Plan
         var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
         if (string.IsNullOrWhiteSpace(key)) { Console.WriteLine("D45 RUN REFUSED: OPENROUTER_API_KEY not set"); Environment.ExitCode = 2; return; }
 
-        var result = P7F1V6DirectD45.Execute(repoRoot, planPath, confirmedSha, current, key, P7F1V6OpenRouterTransport.CreateProductionHandler(), safeRoot);
+        var result = P7F1V6DirectD45.Execute(repoRoot, planPath, confirmedSha, current, authorizationPath, key, P7F1V6OpenRouterTransport.CreateProductionHandler(), safeRoot);
         var summary = new
         {
-            artifact = "p7.f1.v6.d4.5-run-summary.v1",
+            artifact = P7F1V6Retention.SummaryArtifact,
             planSha256 = confirmedSha,
             result.Outcome.Status, result.Outcome.Finalization, result.Outcome.Assurance, result.Outcome.Calls,
             reservedUsd = result.Outcome.ReservedUsd, refusals = result.Outcome.BudgetRefusals,
@@ -122,7 +154,7 @@ internal static class D45Plan
             ledger = result.Ledger,
         };
         var text = JsonSerializer.Serialize(summary, Indented) + "\n";
-        File.WriteAllText(Path.Combine(result.SafeRunDirectory, "run-summary.json"), text, new UTF8Encoding(false));
+        File.WriteAllText(Path.Combine(result.SafeRunDirectory, P7F1V6Retention.SummaryFile), text, new UTF8Encoding(false));
         Console.WriteLine($"D45 run: {result.Outcome.Status} / {result.Outcome.Finalization}, calls {result.Outcome.Calls}, official {result.Score.Official}; summary in the safe store");
     }
 

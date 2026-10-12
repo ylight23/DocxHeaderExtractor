@@ -229,7 +229,10 @@ public sealed class P7F1V6DirectD45Tests : IDisposable
     {
         var (run, model, _, _) = RunMock(body => (HttpStatusCode.OK, Chat("{\"decisions\":[]}", body)));
         Assert.All(model.Ledger, e => Assert.Equal("PASSED_AUDIT_TO_PARSER", e.Verdict));
-        Assert.All(run.Units, u => Assert.StartsWith("PROTOCOL:", u.Failure, StringComparison.Ordinal));
+        // Three contract failures in a row stop the campaign: the rest are never sent.
+        Assert.Equal(P7F1V6DirectV2.MaxConsecutiveContractFailures, model.Ledger.Count);
+        Assert.All(run.Units.Take(3), u => Assert.StartsWith("PROTOCOL:", u.Failure, StringComparison.Ordinal));
+        Assert.All(run.Units.Skip(3), u => Assert.Equal("BUDGET:HALTED:CONSECUTIVE_CONTRACT_FAILURES", u.Failure));
         Assert.Equal("INCOMPLETE", run.Status);
     }
 
@@ -293,6 +296,25 @@ public sealed class P7F1V6DirectD45Tests : IDisposable
         return path;
     }
 
+    /// <summary>A safe root private to the current user, as an operator would prepare it.</summary>
+    string SafeRoot(string name)
+    {
+        var root = Path.Combine(scratch, name);
+        Directory.CreateDirectory(root);
+        if (OperatingSystem.IsWindows()) P7F1V6SafeRawStore.RestrictRootToCurrentUser(root);
+        return root;
+    }
+
+    /// <summary>A test approval: the test plays the user. Never written outside the scratch directory.</summary>
+    string Authorize(string planPath, string safeRoot, string? dataCollection = "TEST: allow accepted for a public RFC", bool acceptOpenItems = true)
+    {
+        var draft = P7F1V6DirectAuthorization.Draft(planPath, safeRoot);
+        var path = Path.Combine(scratch, "auth-" + Guid.NewGuid().ToString("N") + ".json");
+        File.WriteAllBytes(path, P7F1V6DirectAuthorization.Approve(draft, "TEST_USER", "TEST approval text", dataCollection!,
+            acceptOpenItems ? P7F1V6RoutePolicy.RouteAllowed(P7F1V6Protocol.ProviderTag).Blocking : Array.Empty<string>(), DateTime.UtcNow));
+        return path;
+    }
+
     static string Sha(string path) => Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(path)));
 
     [Fact]
@@ -317,7 +339,7 @@ public sealed class P7F1V6DirectD45Tests : IDisposable
         var sha = Sha(path);
         Assert.Contains("PLAN_SHA_NOT_CONFIRMED", P7F1V6DirectD45.Verify(TestRepository.Root(), path, new string('0', 64), "TEST_COMMIT"));
         Assert.Contains("CODE_COMMIT_DIFFERS", P7F1V6DirectD45.Verify(TestRepository.Root(), path, sha, "OTHER_COMMIT"));
-        File.WriteAllText(path, File.ReadAllText(path).Replace("\"maxCalls\": 64", "\"maxCalls\": 640"));
+        File.WriteAllText(path, File.ReadAllText(path).Replace("\"maxCalls\": 100", "\"maxCalls\": 1000"));
         var failures = P7F1V6DirectD45.Verify(TestRepository.Root(), path, Sha(path), "TEST_COMMIT");
         Assert.Contains("PINNED_VALUES_DIFFER", failures);
     }
@@ -327,8 +349,9 @@ public sealed class P7F1V6DirectD45Tests : IDisposable
     {
         var path = WritePlan("TEST_COMMIT");
         var http = new Handler(body => (HttpStatusCode.OK, Chat(OracleReply(DecideOf(body)), body)));
-        Directory.CreateDirectory(Path.Combine(scratch, "safe-plan"));
-        var result = P7F1V6DirectD45.Execute(TestRepository.Root(), path, Sha(path), "TEST_COMMIT", Key, http, Path.Combine(scratch, "safe-plan"));
+        var root = SafeRoot("safe-plan");
+        var auth = Authorize(path, root);
+        var result = P7F1V6DirectD45.Execute(TestRepository.Root(), path, Sha(path), "TEST_COMMIT", auth, Key, http, root);
 
         Assert.Equal("COMPLETE", result.Outcome.Status);
         Assert.Equal("DONE", result.Outcome.Finalization);
@@ -346,7 +369,7 @@ public sealed class P7F1V6DirectD45Tests : IDisposable
         var path = WritePlan("TEST_COMMIT");
         var http = new Handler(body => (HttpStatusCode.OK, "{}"));
         var e = Assert.Throws<InvalidOperationException>(() =>
-            P7F1V6DirectD45.Execute(TestRepository.Root(), path, new string('0', 64), "TEST_COMMIT", Key, http, Path.Combine(scratch, "safe-x")));
+            P7F1V6DirectD45.Execute(TestRepository.Root(), path, new string('0', 64), "TEST_COMMIT", Authorize(path, SafeRoot("safe-x")), Key, http, SafeRoot("safe-x")));
         Assert.StartsWith("PLAN_REFUSED:", e.Message, StringComparison.Ordinal);
         Assert.Equal(0, http.Calls);
     }

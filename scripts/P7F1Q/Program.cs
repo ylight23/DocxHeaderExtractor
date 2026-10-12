@@ -607,9 +607,24 @@ switch (args[0])
         D45Plan.Run(args[1], args[2]);
         break;
     case "d45-run":
-        // Issue #9 D4.5: d45-run <repo-root> <plan-path> <confirmed-plan-sha> <safe-root>. Sends requests. Not run in D4.5; needs its own approval.
-        if (args.Length != 5) throw new ArgumentException("d45-run <repo-root> <plan-path> <confirmed-plan-sha> <safe-root>");
-        D45Plan.Live(args[1], args[2], args[3], args[4]);
+        // Issue #9 D4.5: d45-run <repo-root> <plan-path> <confirmed-plan-sha> <authorization-path> <safe-root>. Sends requests; needs an APPROVED authorization.
+        if (args.Length != 6) throw new ArgumentException("d45-run <repo-root> <plan-path> <confirmed-plan-sha> <authorization-path> <safe-root>");
+        D45Plan.Live(args[1], args[2], args[3], args[4], args[5]);
+        break;
+    case "d45-safe-root":
+        // Issue #9 D4.5a: d45-safe-root <repo-root> <safe-root> prepare|check. Creates (prepare) and checks the safe root. No network call.
+        if (args.Length != 4 || args[3] is not ("prepare" or "check")) throw new ArgumentException("d45-safe-root <repo-root> <safe-root> prepare|check");
+        D45Plan.SafeRoot(args[1], args[2], args[3] == "prepare");
+        break;
+    case "d45-authorization-draft":
+        // Issue #9 D4.5a: d45-authorization-draft <plan-path> <safe-root> <out-path>. Writes a PENDING draft. No network call.
+        if (args.Length != 4) throw new ArgumentException("d45-authorization-draft <plan-path> <safe-root> <out-path>");
+        D45Plan.AuthorizationDraft(args[1], args[2], args[3]);
+        break;
+    case "d45-approve":
+        // Issue #9 D4.5a: d45-approve <draft> <out> <approved-by> <approval-text> <data-collection-decision> accept-open-items|no. Only on the user's explicit approval.
+        if (args.Length != 7) throw new ArgumentException("d45-approve <draft> <out> <approved-by> <approval-text> <data-collection-decision> accept-open-items|no");
+        D45Plan.Approve(args[1], args[2], args[3], args[4], args[5], args[6] == "accept-open-items");
         break;
     case "d45-preview":
         // Issue #9 D4.5 (offline): d45-preview <repo-root> <scratch-dir>. The same simulations on uncommitted code; writes outside the repo; not a plan.

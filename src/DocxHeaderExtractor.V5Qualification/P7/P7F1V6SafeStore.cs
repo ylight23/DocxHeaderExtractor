@@ -86,6 +86,25 @@ internal sealed class P7F1V6SafeRawStore
         if ((attrs & FileAttributes.ReparsePoint) != 0) throw new IOException(code);
     }
 
+    /// <summary>Restricts a raw root to the current user, as each run directory is (D4.5a). The operator prepares the root once.</summary>
+    [SupportedOSPlatform("windows")]
+    public static void RestrictRootToCurrentUser(string root) => RestrictToCurrentUser(Path.GetFullPath(root));
+
+    /// <summary>Every rule on the directory, inherited ones included, must be an Allow for the current user, with inheritance cut off.
+    /// Returns what is wrong; empty when the root is private to the current user.</summary>
+    [SupportedOSPlatform("windows")]
+    public static IReadOnlyList<string> RootAccessFailures(string root)
+    {
+        var failures = new List<string>();
+        var security = new DirectoryInfo(root).GetAccessControl();
+        if (!security.AreAccessRulesProtected) failures.Add("ACL_INHERITS_FROM_PARENT");
+        var user = WindowsIdentity.GetCurrent().User!.Value;
+        foreach (FileSystemAccessRule r in security.GetAccessRules(true, true, typeof(SecurityIdentifier)))
+            if (r.IdentityReference.Value != user || r.AccessControlType != AccessControlType.Allow)
+                failures.Add("ACL_OTHER_PRINCIPAL:" + r.IdentityReference.Value + ":" + r.AccessControlType);
+        return failures;
+    }
+
     [SupportedOSPlatform("windows")]
     static void RestrictToCurrentUser(string directory)
     {

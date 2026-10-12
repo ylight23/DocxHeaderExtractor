@@ -55,6 +55,10 @@ internal static class P7F1V6SourceGate
 internal static class P7F1V6Retention
 {
     public const string ReviewFile = "run.review.json";
+    /// <summary>The D4.5 run summary (D4.5a). Owned only when it is a JSON object whose artifact is the D4.5 summary and it is not oversized.</summary>
+    public const string SummaryFile = "run-summary.json";
+    public const string SummaryArtifact = "p7.f1.v6.d4.5-run-summary.v1";
+    const long MaxSummaryBytes = 16L * 1024 * 1024;
     static readonly Regex RunName = new("^run-[0-9a-f]{32}$", RegexOptions.CultureInvariant);
     static readonly Regex ItemName = new("^[0-9a-f]{64}\\.bin$", RegexOptions.CultureInvariant);
     static readonly Regex TempName = new("^[0-9a-f]{64}\\.[0-9a-f]{32}\\.tmp$", RegexOptions.CultureInvariant);
@@ -115,8 +119,21 @@ internal static class P7F1V6Retention
         {
             var name = Path.GetFileName(f);
             if ((File.GetAttributes(f) & FileAttributes.ReparsePoint) != 0) return false;
+            if (name == SummaryFile) return IsRunSummary(f);
             return name == ReviewFile || ItemName.IsMatch(name) || TempName.IsMatch(name);
         });
+    }
+
+    static bool IsRunSummary(string path)
+    {
+        if (new FileInfo(path).Length > MaxSummaryBytes) return false;
+        try
+        {
+            using var doc = JsonDocument.Parse(File.ReadAllBytes(path));
+            return doc.RootElement.ValueKind == JsonValueKind.Object
+                && doc.RootElement.TryGetProperty("artifact", out var a) && a.ValueKind == JsonValueKind.String && a.GetString() == SummaryArtifact;
+        }
+        catch (JsonException) { return false; }
     }
 }
 
