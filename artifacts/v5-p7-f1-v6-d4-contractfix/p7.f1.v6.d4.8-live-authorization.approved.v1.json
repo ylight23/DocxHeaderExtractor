@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "APPROVED",
+  "planFile": "p7.f1.v6.d4.8-plan.v1.json",
+  "planSha256": "8b13a1edc190cef053125365dba5e424ce678df52e9cf3d12b1367007645b0f6",
+  "codeCommit": "e9d0d220dc78268eb2fca41c67d126cd7b8c697b",
+  "authorityId": "SRC-095",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 100,
+  "ceilingUsd": 1,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
+  "dataSharing": {
+    "documentPublicity": "IETF RFC 9114, published publicly by the IETF",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "allow: the request does not declare data_collection (pinned configuration), so the OpenRouter default allow applies; public RFC 9114 (SRC-095) only. Accepted in the GPT-6 technical live gate and adopted by the repository owner's run approval.",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ]
+  },
+  "approvedBy": "ylight23 (repository owner; run approval in own words). Technical review: GPT-6 (AI reviewer), recorded in approvalText, not a signature.",
+  "approvedAtUtc": "2026-10-12T12:59:41.6434424Z",
+  "approvalText": "[Repository owner ylight23, own words, run authorization]\nCHO PHÉP =1 , CHẤP NHẬN ZDR KHÔNG SUPPORT, PUSH RAW RESPONSE\n(Recorded notes: the owner permits retry up to 1; plan 8b13a1ed pins retries=0 and the send path has no retry, so the campaign runs with 0, within the permitted maximum. The owner explicitly accepts that ZDR is not supported for qwen3.7-flash. The owner did not restate the other two open items or data_collection in these words; they are accepted in the GPT-6 technical live gate below and adopted by this run approval, as for plan fe378a6a. The owner permits pushing raw responses after the run.)\n\n[AI technical review, GPT-6, excerpt verbatim; not a signature of the repository owner]\nAPPROVE D4.8 — TECHNICAL LIVE GATE\nCho phép chuẩn bị authorization cho chính plan 8b13a1ed…; không cần sửa code hoặc sinh lại plan.\nĐối với tài liệu công khai này, phần rà soát kỹ thuật của tôi vẫn chấp nhận ba mục chính sách đang mở, ZDR=false và data_collection=allow như các lần trước. Tuy nhiên, người thực sự cho phép chi tiêu và chia sẻ dữ liệu phải được ghi đúng vào authorization. Không tự chuyển sự chấp thuận kỹ thuật của GPT-6 thành chữ ký của chủ repository.",
+  "approvalSha256": "04e9968009ad76ada2293e4329bc24f1d2b90da447d0f5329dac522bcf06f808"
+}
