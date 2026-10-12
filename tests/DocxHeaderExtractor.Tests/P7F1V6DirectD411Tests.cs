@@ -227,7 +227,54 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         var auto = A.AutoPrompt.Split('\n'); var first = A.EvidenceFirstPrompt.Split('\n');
         Assert.Equal(auto.Length + 1, first.Length);
         Assert.Single(first.Except(auto));
-        Assert.Contains($"At most {A.MaxToolTurns} rounds", A.AutoPrompt);
+        Assert.Contains($"at most {A.MaxToolTurns} rounds of tool calls", A.AutoPrompt);
+    }
+
+    static readonly Regex KindOfLine = new(@"\bb(toc|contents|table of contents|headers?|footers?|page numbers?|dot leaders?|index|indexes|entry|entries|navigation|furniture|metadata|letterhead|title|titles|subtitle|caption|chapter|section)\b|mục lục",
+        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+
+    [Fact]
+    public void AgentPrompt_TellsTheModelWhenAndHowToGatherEvidence_WithoutNamingAnyKindOfLine()
+    {
+        foreach (var arm in new[] { A.Arm.Auto, A.Arm.EvidenceFirst })
+        {
+            var prompt = A.Prompt(arm);
+            // What the tools read, that the view is partial, the procedure, the exit, and the limits.
+            Assert.Contains("read the parser's record of the whole document", prompt);
+            Assert.Contains("You see only the lines in this request", prompt);
+            Assert.Contains("ask for each target whether the lines shown are enough", prompt);
+            Assert.Contains("gather evidence first: reply with tool calls instead of the JSON answer", prompt);
+            Assert.Contains($"up to {A.MaxCallsPerTurn} calls in one reply", prompt);
+            Assert.Contains($"at most {A.MaxToolTurns} rounds of tool calls", prompt);
+            Assert.Contains("answer directly; do not call a tool for its own sake", prompt);
+            // References are aliases; an evidence id would be refused as not shown.
+            Assert.DoesNotContain("evidenceId", prompt);
+            Assert.DoesNotContain("evidence id", prompt, StringComparison.OrdinalIgnoreCase);
+            Assert.False(KindOfLine.IsMatch(prompt), KindOfLine.Match(prompt).Value);
+        }
+        Assert.Contains("your first reply must be a batch of tool calls", A.EvidenceFirstPrompt);
+        Assert.DoesNotContain("must be a batch of tool calls", A.AutoPrompt);
+        Assert.Equal("P7_F1_V6_SELECT_AGENT_PROMPT_V2", A.PromptVersion);
+    }
+
+    [Fact]
+    public void TheToolParagraph_MatchesTheRegistry_EveryCapabilityItNamesIsATool()
+    {
+        // Each capability the prompt names has a registered tool behind it.
+        var described = new Dictionary<string, string>
+        {
+            ["the lines before and after a line"] = P7F1V6AgentTools.SourceContext,
+            ["the lines of a page"] = P7F1V6AgentTools.PageLayout,
+            ["the full record of a line"] = P7F1V6AgentTools.SourceSpan,
+            ["a text search"] = P7F1V6AgentTools.SearchText,
+            ["the other lines with the same text"] = P7F1V6AgentTools.Repeated,
+            ["two lines side by side"] = P7F1V6AgentTools.Compare,
+        };
+        foreach (var (phrase, tool) in described)
+        {
+            Assert.Contains(phrase, A.AutoPrompt);
+            Assert.Contains(tool, P7F1V6AgentTools.Names);
+        }
     }
 
     [Fact]
@@ -1113,7 +1160,8 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.StartsWith("enabled true", p.GetProperty("reasoning").GetString(), StringComparison.Ordinal);
         Assert.StartsWith("true", p.GetProperty("stream").GetString(), StringComparison.Ordinal);
         Assert.Equal(new[] { "e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf", "51daf9412732f9685b0d3ea36a7637a0e4d2b561ee7044d857c662c7fc2e6cfa",
-            "9a6bcbd1aecd961a25e4a0c0c52359135750ab2f0ab4bc4642a9854634729697" },
+            "9a6bcbd1aecd961a25e4a0c0c52359135750ab2f0ab4bc4642a9854634729697",
+            "281ad5d0b99ce308e389121cf0c92b53521351b8858c1d0b34354f585610fadd" },
             p.GetProperty("supersedes").EnumerateArray().Select(x => x.GetProperty("planSha256").GetString()));
         Assert.All(p.GetProperty("supersedes").EnumerateArray(), x => Assert.False(x.GetProperty("run").GetBoolean()));
         Assert.Contains("rejected and invalid ones included", p.GetProperty("toolMessageBytes").GetString());

@@ -26,7 +26,7 @@ internal static class P7F1V6DirectAgentCanary
     public const int Retries = 0;
     /// <summary>D4.11b. Earlier plans, never run, are superseded: D4.11 (e3f8e57e) by the tool_call_id and finish_reason checks of D4.11a,
     /// and D4.11a (51daf941) by the hard tool-message byte cap and the split telemetry of D4.11b.</summary>
-    public const string PlanArtifact = "p7.f1.v6.d4.11d-tool-canary-plan.v1";
+    public const string PlanArtifact = "p7.f1.v6.d4.11e-tool-canary-plan.v1";
     /// <summary>The D4.11b campaign that ran (plan consumed): non-streaming, no reasoning field; Qwen made 0 tool calls in 4/4 replies.</summary>
     public const string PreviousCampaignPlanSha256 = "c50833bb0fe5ca8a609ee6d883e6c84dc86887a49ec0f4daebca26d494c83f08";
     public static readonly (string Sha256, string Reason)[] SupersededPlans =
@@ -34,6 +34,7 @@ internal static class P7F1V6DirectAgentCanary
         ("e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf", "D4.11a review: tool_call_id integrity and finish_reason/tool_calls consistency"),
         ("51daf9412732f9685b0d3ea36a7637a0e4d2b561ee7044d857c662c7fc2e6cfa", "D4.11b review: 64 KB tool-message cap not enforced on rejected messages (68,938 B in the dry-run); ToolInvoked undercounted refused turns"),
         ("9a6bcbd1aecd961a25e4a0c0c52359135750ab2f0ab4bc4642a9854634729697", "D4.11d review: 'event: error' with a payload lacking an error key passed the SSE check; the stored response was a decoded string encoded again, not the received bytes"),
+        ("281ad5d0b99ce308e389121cf0c92b53521351b8858c1d0b34354f585610fadd", "D4.11e: the agent prompt is rewritten so that the model is told when and how to gather evidence by tool calls (prompt V2)"),
     };
     public const string EvaluationLabel = "Development canary — tool-calling chain on segments chosen from previous errors; Stage 1 only; not an F1 estimate";
 
@@ -76,7 +77,15 @@ internal static class P7F1V6DirectAgentCanary
             ["supersedes"] = SupersededPlans.Select(x => new { planSha256 = x.Sha256, run = false, reason = x.Reason }).ToArray(),
             ["previousCampaign"] = new { planSha256 = PreviousCampaignPlanSha256, run = true, consumed = true,
                 outcome = "4 of 16 POSTs; Qwen emitted 0 tool calls in 4/4 replies (AUTO and EVIDENCE_FIRST); requests were non-streaming with no reasoning field" },
-            ["changeFromPreviousCampaign"] = "request shape only: \"stream\": true (SSE) and \"reasoning\": {\"enabled\": true} in every request; prompts, tools, instruction, arms, segments, caps and budget unchanged",
+            ["promptChange"] = new
+            {
+                from = "P7_F1_V6_SELECT_AGENT_PROMPT_V1 (AUTO 3ffe3356…, EVIDENCE_FIRST f36f16eb…)",
+                to = P7F1V6DirectAgent.PromptVersion,
+                what = "The tools paragraph now says what the tools read (neighbouring lines, a page, a line's full record, text search, same-text lines, two lines side by side; observations only), that the request shows only part of the document, that before answering the model asks for each target whether the lines shown are enough under the instruction, that if not it gathers evidence first by replying with tool calls instead of the JSON (up to 8 calls per reply, 3 rounds), and that if they are enough it answers directly. AUTO still allows an answer without tools. EVIDENCE_FIRST adds that the first reply must be a batch of tool calls and to aim them at the targets for which the lines shown are least sufficient. evidenceRefs cite aliases a result shows (not evidence ids).",
+                neverSays = "no kind of line is named and nothing says what any line is; what to select stays in the user's instruction; a regression bans structure vocabulary from the prompt",
+                evidenceBehind = "D4.11b: with the V1 wording Qwen made 0 tool calls in 4/4 requests. F1Q: the arm whose prompt required a first reply of tool calls had them in 9/10, the arm that said only to call a tool when ambiguous had 0/10. The F1Q prompts named kinds of line; this one does not. Whether this wording makes Qwen call tools is unknown until a run."
+            },
+            ["changeFromPreviousCampaign"] = "two changes together: the request shape (\"stream\": true (SSE) and \"reasoning\": {\"enabled\": true} in every request) and the agent prompt (V2, see promptChange); tools, instruction, arms, segments, caps and budget unchanged",
             ["requestShapeEvidence"] = "F1Q raw (branch experiment/p7-f1-semantic-question-v1), verified from SSE, tool files and next-turn request bodies: every one of 1,422 F1Q turn requests was stream true with reasoning enabled true; all 45 turns with tool calls were tool_choice auto, finish_reason tool_calls, provider Alibaba; Issue #5 mandatory arm 9/10 requests with tool calls, 28/28 results OK and byte-identical in the next request under the same tool_call_id, final answer finish stop 10/10; optional arm 0/10. This is why the shape is changed; it is not evidence that V6 will get tool calls.",
             ["codeCommit"] = codeCommit,
             ["authorityId"] = P7F1V6DirectD45.AuthorityId,
