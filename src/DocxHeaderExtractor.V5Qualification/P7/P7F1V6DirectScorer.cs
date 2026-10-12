@@ -19,13 +19,25 @@ internal static class P7F1V6DirectScorer
 {
     /// <summary>Universe is rebuilt from the pinned source by the run's parser and evidence store (<see cref="P7F1V6Universe.Rebuild"/>); a
     /// caller cannot declare it. Decisions is the run's final value per alias (SELECT, NOT_SELECT or UNRESOLVED). The scorer derives
-    /// coverage, UNRESOLVED and the selected atoms from these two itself. Headings are the run's accepted groups.</summary>
-    public sealed record RunEvidence(P7F1V6Universe Universe, IReadOnlyDictionary<string, string> Decisions, IReadOnlyList<IReadOnlyList<string>> Headings);
+    /// coverage, UNRESOLVED and the selected atoms from these two itself. Headings are the run's accepted groups.
+    /// RunStatus, Finalization and Assurance are the run's own outcome (<see cref="P7F1V6DirectV2.RunOutcome"/>): they decide whether a
+    /// score is the official end-to-end score or a provisional diagnostic.</summary>
+    public sealed record RunEvidence(P7F1V6Universe Universe, IReadOnlyDictionary<string, string> Decisions, IReadOnlyList<IReadOnlyList<string>> Headings,
+        string RunStatus, string Finalization, string Assurance)
+    {
+        public static RunEvidence From(P7F1V6Universe universe, P7F1V6DirectV2.RunOutcome outcome) =>
+            new(universe, outcome.Decisions, outcome.Headings, outcome.Status, outcome.Finalization, outcome.Assurance);
+    }
 
     public sealed record Counts(int TruePositive, int FalsePositive, int FalseNegative, string F1Exact, double F1);
 
+    /// <summary>Official is true only for a run that is COMPLETE with finalization DONE (assurance FINAL_SELECTION_REVIEWED). Every other
+    /// scorable run is labelled PROVISIONAL_DIAGNOSTIC with its status and finalization, and must not be reported as end-to-end F1.
+    /// Even an official score claims only FINAL_SELECTION_REVIEWED: finalization does not re-examine aliases every segment rejected.</summary>
     public sealed record Result(bool Scored, string Status, string? Reason, Counts? AtomMembership, Counts? HeadingOccurrence,
-        string? HeadingOccurrenceNotComparable, IReadOnlyList<string> Notes);
+        string? HeadingOccurrenceNotComparable, IReadOnlyList<string> Notes, bool Official = false, string? Label = null);
+
+    public const string OfficialLabel = "END_TO_END:FINAL_SELECTION_REVIEWED";
 
     static Result Refuse(string reason) => new(false, "REFUSED", reason, null, null, null, Array.Empty<string>());
 
@@ -168,6 +180,11 @@ internal static class P7F1V6DirectScorer
             var tp = predKeys.Count(goldKeys.Contains);
             headings = Count(tp, predKeys.Count - tp, goldKeys.Count - tp);
         }
-        return new Result(true, "SCORED", null, atoms, headings, notComparable, notes);
+        var official = run.RunStatus == "COMPLETE" && run.Finalization == "DONE" && run.Assurance == P7F1V6DirectV2.AssuranceFinalSelectionReviewed;
+        if (official)
+            return new Result(true, "SCORED", null, atoms, headings, notComparable, notes, true, OfficialLabel);
+        notes.Add("NOT_END_TO_END: run did not reach FINAL_SELECTION_REVIEWED; report only as a provisional diagnostic");
+        return new Result(true, "SCORED_PROVISIONAL", null, atoms, headings, notComparable, notes, false,
+            $"PROVISIONAL_DIAGNOSTIC:{run.RunStatus}/{run.Finalization}/{run.Assurance}");
     }
 }

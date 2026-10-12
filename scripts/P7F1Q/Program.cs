@@ -601,6 +601,22 @@ switch (args[0])
         if (args.Length != 3) throw new ArgumentException("d44-plan <repo-root> <artifact-dir>");
         C0Replay.D44Plan(args[1], args[2]);
         break;
+    case "d45-plan":
+        // Issue #9 D4.5 (offline): d45-plan <repo-root> <artifact-dir>. Writes the pinned plan and the dry-run report. No network call.
+        if (args.Length != 3) throw new ArgumentException("d45-plan <repo-root> <artifact-dir>");
+        D45Plan.Run(args[1], args[2]);
+        break;
+    case "d45-run":
+        // Issue #9 D4.5: d45-run <repo-root> <plan-path> <confirmed-plan-sha> <safe-root>. Sends requests. Not run in D4.5; needs its own approval.
+        if (args.Length != 5) throw new ArgumentException("d45-run <repo-root> <plan-path> <confirmed-plan-sha> <safe-root>");
+        D45Plan.Live(args[1], args[2], args[3], args[4]);
+        break;
+    case "d45-preview":
+        // Issue #9 D4.5 (offline): d45-preview <repo-root> <scratch-dir>. The same simulations on uncommitted code; writes outside the repo; not a plan.
+        if (args.Length != 3) throw new ArgumentException("d45-preview <repo-root> <scratch-dir>");
+        if (Path.GetFullPath(args[2]).StartsWith(Path.GetFullPath(args[1]), StringComparison.OrdinalIgnoreCase)) throw new ArgumentException("PREVIEW_MUST_BE_OUTSIDE_REPO");
+        D45Plan.Run(args[1], args[2], preview: true);
+        break;
     case "d4-canary-artifact":
         // Issue #9 D4.1 (offline): d4-canary-artifact <artifact-dir> <generated-at-commit>. Writes the canary T1 body and audit. No network call.
         if (args.Length != 3) throw new ArgumentException("d4-canary-artifact <artifact-dir> <generated-at-commit>");

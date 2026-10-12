@@ -89,18 +89,35 @@ internal static class P7F1V6DirectV2
         public int PromptTokenBudget { get; }
         public int Calls { get; private set; }
         public double ReservedUsd { get; private set; }
+        /// <summary>The provider-reported cost of completed calls, kept apart from the reserve; null costs are counted in UnknownCostCalls.</summary>
+        public double ActualUsd { get; private set; }
+        public int UnknownCostCalls { get; private set; }
+        public string? HaltReason { get; private set; }
         public List<string> Refusals { get; } = new();
+        public List<int> RefusedRequestBytes { get; } = new();
+
+        /// <summary>Stops every later request. Used when a response shows that the reserve or the route can no longer be trusted.</summary>
+        public void Halt(string reason) => HaltReason ??= reason;
+
+        /// <summary>Records what one admitted call actually cost. A cost above that call's reserve halts the run: the reserve was not a bound.</summary>
+        public void RecordActual(double? providerCostUsd, double attemptReserveUsd)
+        {
+            if (providerCostUsd is null) { UnknownCostCalls++; return; }
+            ActualUsd += providerCostUsd.Value;
+            if (providerCostUsd.Value > attemptReserveUsd) Halt("PROVIDER_COST_OVER_RESERVE");
+        }
 
         /// <summary>Returns null when the request may be sent (and reserves it), or the refusal code.</summary>
         public string? Admit(P7F1V6Protocol.PreparedRequest request)
         {
             string? refusal = null;
             var worst = P7F1V6Direct.AttemptUsd(request.Bytes);
-            if (Calls >= MaxCalls) refusal = "CALL_LIMIT";
+            if (HaltReason is not null) refusal = "HALTED:" + HaltReason;
+            else if (Calls >= MaxCalls) refusal = "CALL_LIMIT";
             else if (request.Bytes > MaxRequestBytes) refusal = "REQUEST_OVER_BYTE_CAP";
             else if (request.Bytes > PromptTokenBudget) refusal = "REQUEST_OVER_TOKEN_BUDGET";
             else if (ReservedUsd + worst > CeilingUsd) refusal = "RESERVE_OVER_CEILING";
-            if (refusal is not null) { Refusals.Add(refusal); return refusal; }
+            if (refusal is not null) { Refusals.Add(refusal); RefusedRequestBytes.Add(request.Bytes); return refusal; }
             Calls++;
             ReservedUsd += worst;
             return null;
@@ -335,6 +352,13 @@ internal static class P7F1V6DirectV2
 
     public delegate string ReplyModel(string unitId, int round, P7F1V6Protocol.PreparedRequest request);
 
+    /// <summary>Thrown by a reply model when a call produced no usable reply: a transport outcome other than HTTP_OK, a failed usage or
+    /// finish audit, an unexpected endpoint, or a missing content. The unit records the code and leaves its aliases UNRESOLVED.</summary>
+    public sealed class ReplyFailure(string code) : Exception(code)
+    {
+        public string Code { get; } = code;
+    }
+
     public sealed record UnitOutcome(string UnitId, string Stage, string Status, IReadOnlyDictionary<string, string> Decisions,
         IReadOnlyList<IReadOnlyList<string>> Headings, int Calls, IReadOnlyList<Retrieval> Retrievals, string? Failure,
         Clarification? Clarification, string? IncompleteReason, IReadOnlyList<P7F1V6Protocol.PreparedRequest> Requests);
@@ -364,6 +388,7 @@ internal static class P7F1V6DirectV2
             calls++;
             string text;
             try { text = model(unitId, round, req); }
+            catch (ReplyFailure f) { return Unresolved("FAILED", "CALL:" + f.Code); }
             catch (Exception e) when (e is not OutOfMemoryException) { return Unresolved("FAILED", "MODEL_CALL_FAILED"); }
             var shownOrder = context.ToDictionary(i => lines[i].Alias, i => i, StringComparer.Ordinal);
             var reply = Parse(text ?? "", shownOrder, decide);
@@ -400,10 +425,22 @@ internal static class P7F1V6DirectV2
 
     // ---------------- whole document ----------------
 
-    /// <summary>Finalization: DONE (every chunk COMPLETE and the groups consistent), NO_CANDIDATES (nothing was selected; there is nothing to
-    /// finalize), SKIPPED_OPEN_ALIASES (the run was already INCOMPLETE), OUTLINE_OVER_CAP (the whole-document view does not fit one request),
-    /// NOT_DONE (a chunk was refused by the budget, failed, or came back INCOMPLETE), DISABLED (offline design comparison only).</summary>
-    public sealed record RunOutcome(string Status, string Finalization, IReadOnlyDictionary<string, string> Decisions,
+    /// <summary>Finalization: DONE (every chunk COMPLETE and the groups consistent), NO_CANDIDATES (nothing was selected, so nothing was
+    /// reviewed), SKIPPED_OPEN_ALIASES (the run was already INCOMPLETE), OUTLINE_OVER_CAP (the whole-document view does not fit one request),
+    /// NOT_DONE (a chunk was refused by the budget, failed, or came back INCOMPLETE), DISABLED (offline design comparison only).
+    /// Assurance is what the run can claim, in increasing order:
+    ///   NONE: some alias is still open;
+    ///   SEGMENT_COMPLETE: every alias has a final SELECT or NOT_SELECT, but the selection was not reviewed against the whole document;
+    ///   FINAL_SELECTION_REVIEWED: Qwen reviewed the selected set against the whole document (finalization DONE).
+    ///   DOCUMENT_SEMANTICALLY_VERIFIED (whole-document evidence that confirms both the selections and that nothing was missed) is never
+    ///   produced by this code: finalization only reviews what was selected, so a heading every segment rejected is never re-examined.
+    /// Status COMPLETE means FINAL_SELECTION_REVIEWED, nothing more.</summary>
+    public const string AssuranceNone = "NONE";
+    public const string AssuranceSegmentComplete = "SEGMENT_COMPLETE";
+    public const string AssuranceFinalSelectionReviewed = "FINAL_SELECTION_REVIEWED";
+    public const string AssuranceDocumentVerified = "DOCUMENT_SEMANTICALLY_VERIFIED";
+
+    public sealed record RunOutcome(string Status, string Finalization, string Assurance, IReadOnlyDictionary<string, string> Decisions,
         IReadOnlyList<IReadOnlyList<string>> Headings, IReadOnlyList<string> Unresolved, IReadOnlyList<string> Conflicts, Clarification? Clarification,
         IReadOnlyList<UnitOutcome> Units, int Calls, double ReservedUsd, IReadOnlyList<string> BudgetRefusals);
 
@@ -424,7 +461,7 @@ internal static class P7F1V6DirectV2
             if (!index.TryAdd(lines[i].Alias, i)) throw new ArgumentException("DUPLICATE_ALIAS", nameof(lines));
         var size = perUnit ?? DecisionsPerReply(lines.Max(l => l.Alias.Length));
         var units = new List<UnitOutcome>();
-        RunOutcome Stop(UnitOutcome u) => new("CLARIFICATION_REQUIRED", "NOT_REACHED", new Dictionary<string, string>(), Array.Empty<IReadOnlyList<string>>(),
+        RunOutcome Stop(UnitOutcome u) => new("CLARIFICATION_REQUIRED", "NOT_REACHED", AssuranceNone, new Dictionary<string, string>(), Array.Empty<IReadOnlyList<string>>(),
             Array.Empty<string>(), Array.Empty<string>(), u.Clarification, units, budget.Calls, budget.ReservedUsd, budget.Refusals.ToArray());
 
         // Segments.
@@ -490,12 +527,16 @@ internal static class P7F1V6DirectV2
             }
         }
 
-        // A run without finalization is never reported COMPLETE: its segments may be complete, but nothing judged them against the document.
+        // COMPLETE only when Qwen reviewed the selection against the whole document. A run where nothing was selected, or where finalization
+        // was disabled, has every alias decided but no review: NOT_FINALIZED, never COMPLETE.
         var status = open.Count > 0 ? "INCOMPLETE"
-            : finalization is "DONE" or "NO_CANDIDATES" ? "COMPLETE"
-            : finalization == "DISABLED" ? "NOT_FINALIZED"
+            : finalization == "DONE" ? "COMPLETE"
+            : finalization is "NO_CANDIDATES" or "DISABLED" ? "NOT_FINALIZED"
             : "INCOMPLETE";
-        return new RunOutcome(status, finalization, decisions, accepted, open.OrderBy(a => index[a]).ToArray(), conflicts, null, units,
+        var assurance = open.Count > 0 ? AssuranceNone
+            : finalization == "DONE" ? AssuranceFinalSelectionReviewed
+            : AssuranceSegmentComplete;
+        return new RunOutcome(status, finalization, assurance, decisions, accepted, open.OrderBy(a => index[a]).ToArray(), conflicts, null, units,
             budget.Calls, budget.ReservedUsd, budget.Refusals.ToArray());
     }
 

@@ -395,7 +395,7 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
         var selected = hs.SelectMany(h => h).ToHashSet(StringComparer.Ordinal);
         var decisions = u.Aliases.ToDictionary(a => a, a => selected.Contains(a) ? "SELECT" : "NOT_SELECT", StringComparer.Ordinal);
         edit?.Invoke(decisions);
-        return new(u, decisions, hs);
+        return new(u, decisions, hs, "COMPLETE", "DONE", P7F1V6DirectV2.AssuranceFinalSelectionReviewed);
     }
 
     static P7F1V6DirectScorer.RunEvidence Perfect(string id) => RunOn(Universe(id), ReadGold(id).Claims);
@@ -495,7 +495,7 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
         Assert.Equal("COVERAGE_INCOMPLETE:missing=0,unexpected=1", Reason(RunOn(u, claims, d => d["QQQQ:S0"] = "NOT_SELECT")));
         Assert.Equal("DECISION_VALUE_INVALID", Reason(RunOn(u, claims, d => d["L0001:S0"] = "MAYBE")));
         Assert.StartsWith("PREDICTED_OUTSIDE_UNIVERSE:QQQQ:S0", Reason(new P7F1V6DirectScorer.RunEvidence(u, RunOn(u, claims).Decisions,
-            claims.Append(new[] { "QQQQ:S0" }).ToList())), StringComparison.Ordinal);
+            claims.Append(new[] { "QQQQ:S0" }).ToList(), "COMPLETE", "DONE", P7F1V6DirectV2.AssuranceFinalSelectionReviewed)), StringComparison.Ordinal);
         Assert.Equal("PREDICTION_INCONSISTENT", Reason(RunOn(u, claims, d => d[claims[0][0]] = "NOT_SELECT")));
         Assert.Equal("NO_APPROVED_GOLD_FOR_AUTHORITY", Reason(RunOn(u, claims), "DOC-0179"));
     }

@@ -228,8 +228,9 @@ public sealed class P7F1V6DirectD44Tests
     public void Finalization_WithNothingSelected_IsNotCalled()
     {
         var run = P7F1V6DirectV2.Run(TaskB, "sha", Lines(30), (u, r, req) => Complete(Decide(req), new HashSet<int>()), Gen(), perUnit: 10);
-        Assert.Equal("COMPLETE", run.Status);
+        Assert.Equal("NOT_FINALIZED", run.Status);
         Assert.Equal("NO_CANDIDATES", run.Finalization);
+        Assert.Equal(P7F1V6DirectV2.AssuranceSegmentComplete, run.Assurance);
         Assert.Equal(3, run.Calls);
     }
 
