@@ -76,7 +76,7 @@ public sealed class P7F1V6DirectD45aTests : IDisposable
     {
         using var doc = JsonDocument.Parse(requestBody);
         using var p = JsonDocument.Parse(doc.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
-        return p.RootElement.GetProperty("decide").EnumerateArray().Select(x => x.GetString()!).ToArray();
+        return p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
     }
 
     static string OracleChat(string requestBody)
@@ -296,7 +296,7 @@ public sealed class P7F1V6DirectD45aTests : IDisposable
             {
                 using var doc = JsonDocument.Parse(req.Body);
                 using var p = JsonDocument.Parse(doc.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
-                var d = p.RootElement.GetProperty("decide").EnumerateArray().Select(x => x.GetString()!).ToArray();
+                var d = p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
                 return JsonSerializer.Serialize(new { protocolVersion = P7F1V6DirectV2.ResponseVersion, status = "COMPLETE",
                     decisions = d.Select(a => new { alias = a, decision = "NOT_SELECT", evidenceRefs = new[] { a } }), headings = Array.Empty<object>() });
             }

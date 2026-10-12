@@ -58,10 +58,10 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
         return p.RootElement.Clone();
     }
 
-    static string[] Decide(P7F1V6Protocol.PreparedRequest req) => Payload(req).GetProperty("decide").EnumerateArray().Select(x => x.GetString()!).ToArray();
+    static string[] Decide(P7F1V6Protocol.PreparedRequest req) => Payload(req).GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
 
     static string[] Shown(P7F1V6Protocol.PreparedRequest req) =>
-        Payload(req).GetProperty("lines").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
+        Payload(req).GetProperty("targets").EnumerateArray().Concat(Payload(req).GetProperty("context").EnumerateArray()).Select(x => x.GetProperty("alias").GetString()!).ToArray();
 
     static int Idx(string alias) => int.Parse(alias.AsSpan(1, 4));
 
@@ -293,8 +293,8 @@ public sealed class P7F1V6DirectD43Tests : IDisposable
         for (int k = 0; k < tasks.Length; k++)
         {
             Assert.Equal(tasks[k], bodies[k].GetProperty("instruction").GetString());
-            Assert.Equal(bodies[0].GetProperty("lines").GetRawText(), bodies[k].GetProperty("lines").GetRawText());
-            Assert.Equal(bodies[0].GetProperty("decide").GetRawText(), bodies[k].GetProperty("decide").GetRawText());
+            Assert.Equal(bodies[0].GetProperty("context").GetRawText(), bodies[k].GetProperty("context").GetRawText());
+            Assert.Equal(bodies[0].GetProperty("targets").GetRawText(), bodies[k].GetProperty("targets").GetRawText());
         }
     }
 

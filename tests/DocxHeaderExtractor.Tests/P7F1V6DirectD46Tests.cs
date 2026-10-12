@@ -14,8 +14,8 @@ public sealed class P7F1V6DirectD46Tests
     [Fact]
     public void Prompt_V23_IsPinned_AndTheNavigationSentenceIsGone()
     {
-        Assert.Equal("P7_F1_V6_DIRECT_PROMPT_V2_3", P7F1V6DirectV2.PromptVersion);
-        Assert.Equal("ed33c467b63ad5307f88557c7b3cbb61df1df7d0ce9c73b50a7b120da0c696b6", P7F1V6DirectV2.SystemPromptSha256);
+        Assert.Equal("P7_F1_V6_DIRECT_PROMPT_V2_4", P7F1V6DirectV2.PromptVersion);
+        Assert.Equal("bcc381e5645df30f8ea0fbe39a0df9b9499f076344dcb656c65cb53342ea9a0e", P7F1V6DirectV2.SystemPromptSha256);
         Assert.Equal(P7F1V6DirectV2.SystemPromptSha256, P7F1V6DirectV2.ComputedSystemPromptSha256());
         Assert.DoesNotContain("navigation", Prompt, StringComparison.OrdinalIgnoreCase);
     }
@@ -40,7 +40,7 @@ public sealed class P7F1V6DirectD46Tests
 
     static readonly HashSet<string> Placeholders = new(StringComparer.Ordinal)
     {
-        "<alias from decide>", "<alias from lines>", "<alias>", "<why>", "<literal text>", "<question to the user>", "<reading>",
+        "<alias from targets>", "<alias from targets or context>", "<alias>", "<why>", "<literal text>", "<question to the user>", "<reading>",
     };
 
     static readonly HashSet<string> ProtocolValues = new(StringComparer.Ordinal)

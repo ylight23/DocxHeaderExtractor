@@ -174,7 +174,7 @@ internal static class P7F1V6DirectD45
         var first = FirstRequests(u);
         return new Dictionary<string, object?>
         {
-            ["artifact"] = "p7.f1.v6.d4.7-plan.v1",
+            ["artifact"] = "p7.f1.v6.d4.8-plan.v1",
             ["approvalToSend"] = false,
             ["codeCommit"] = codeCommit,
             ["authorityId"] = AuthorityId,

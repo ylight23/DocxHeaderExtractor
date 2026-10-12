@@ -45,7 +45,7 @@ public sealed class P7F1V6DirectD45Tests : IDisposable
         return p.RootElement.Clone();
     }
 
-    static string[] Decide(P7F1V6Protocol.PreparedRequest req) => Payload(req.Body).GetProperty("decide").EnumerateArray().Select(x => x.GetString()!).ToArray();
+    static string[] Decide(P7F1V6Protocol.PreparedRequest req) => Payload(req.Body).GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
     static string Stage(P7F1V6Protocol.PreparedRequest req) => Payload(req.Body).GetProperty("stage").GetString()!;
 
     static string Reply(IEnumerable<string> decide, ISet<string> select, IEnumerable<IReadOnlyList<string>> groups)
@@ -205,7 +205,7 @@ public sealed class P7F1V6DirectD45Tests : IDisposable
         return (run, model, http, budget);
     }
 
-    static string[] DecideOf(string requestBody) => Payload(requestBody).GetProperty("decide").EnumerateArray().Select(x => x.GetString()!).ToArray();
+    static string[] DecideOf(string requestBody) => Payload(requestBody).GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
 
     [Fact]
     public void Audited_GoodResponses_AreStoredInTheSafeStore_AndLedgered()

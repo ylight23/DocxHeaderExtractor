@@ -30,7 +30,7 @@ public sealed class P7F1V6DirectD47Tests
     public void Instruction_IsUserContent_NotPartOfTheSystemPrompt()
     {
         Assert.DoesNotContain("mục lục", P7F1V6DirectV2.SystemPrompt, StringComparison.Ordinal);
-        Assert.Equal("P7_F1_V6_DIRECT_PROMPT_V2_3", P7F1V6DirectV2.PromptVersion);
+        Assert.Equal("P7_F1_V6_DIRECT_PROMPT_V2_4", P7F1V6DirectV2.PromptVersion);
         Assert.Equal(P7F1V6DirectV2.SystemPromptSha256, P7F1V6DirectV2.ComputedSystemPromptSha256());
 
         var req = P7F1V6DirectV2.BuildRequest(P7F1V6DirectD45.Instruction, "sha", "SEGMENT", "SEG-000", 1, new[] { "L0000:S0" },
@@ -47,7 +47,7 @@ public sealed class P7F1V6DirectD47Tests
     public void Plan_PinsTheClarifiedTask_AndLabelsItDevelopment()
     {
         var p = Plan.Value;
-        Assert.Equal("p7.f1.v6.d4.7-plan.v1", p.GetProperty("artifact").GetString());
+        Assert.Equal("p7.f1.v6.d4.8-plan.v1", p.GetProperty("artifact").GetString());
         Assert.Equal("A-STRUCTURAL-OCCURRENCES", p.GetProperty("task").GetString());
         Assert.Equal(UserInstruction, p.GetProperty("instruction").GetString());
         Assert.Equal(P7F1V6Core.InstructionSha256(UserInstruction), p.GetProperty("instructionSha256").GetString());
@@ -63,7 +63,7 @@ public sealed class P7F1V6DirectD47Tests
     public void Plan_KeepsEverythingElseAsDecided()
     {
         var p = Plan.Value;
-        Assert.Equal("ed33c467b63ad5307f88557c7b3cbb61df1df7d0ce9c73b50a7b120da0c696b6", p.GetProperty("systemPromptSha256").GetString());
+        Assert.Equal("bcc381e5645df30f8ea0fbe39a0df9b9499f076344dcb656c65cb53342ea9a0e", p.GetProperty("systemPromptSha256").GetString());
         Assert.Equal("SRC-095", p.GetProperty("authorityId").GetString());
         Assert.Equal(48, p.GetProperty("unit").GetInt32());
         Assert.Equal(100, p.GetProperty("budget").GetProperty("maxCalls").GetInt32());

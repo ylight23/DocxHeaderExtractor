@@ -95,6 +95,6 @@ public sealed class P7F1V6DirectContractFixTests
     {
         Assert.Equal(P7F1V6DirectV2.SystemPromptSha256, P7F1V6DirectV2.ComputedSystemPromptSha256());
         Assert.Contains("NOT_SELECT may omit evidenceRefs", P7F1V6DirectV2.SystemPrompt, StringComparison.Ordinal);
-        Assert.Contains("NO decisions for context-only aliases", P7F1V6DirectV2.SystemPrompt, StringComparison.Ordinal);
+        Assert.Contains("NO decision for any alias in context", P7F1V6DirectV2.SystemPrompt, StringComparison.Ordinal);
     }
 }

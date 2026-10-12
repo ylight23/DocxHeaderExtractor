@@ -28,8 +28,8 @@ public sealed class P7F1V6DirectD44Tests
         return p.RootElement.Clone();
     }
 
-    static string[] Decide(P7F1V6Protocol.PreparedRequest req) => Payload(req).GetProperty("decide").EnumerateArray().Select(x => x.GetString()!).ToArray();
-    static string[] Shown(P7F1V6Protocol.PreparedRequest req) => Payload(req).GetProperty("lines").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
+    static string[] Decide(P7F1V6Protocol.PreparedRequest req) => Payload(req).GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
+    static string[] Shown(P7F1V6Protocol.PreparedRequest req) => Payload(req).GetProperty("targets").EnumerateArray().Concat(Payload(req).GetProperty("context").EnumerateArray()).Select(x => x.GetProperty("alias").GetString()!).ToArray();
     static string Stage(P7F1V6Protocol.PreparedRequest req) => Payload(req).GetProperty("stage").GetString()!;
 
     /// <summary>A COMPLETE reply: the aliases in select are SELECT, each its own heading unless groups say otherwise; the rest NOT_SELECT.</summary>
@@ -186,7 +186,8 @@ public sealed class P7F1V6DirectD44Tests
         Assert.Equal(new[] { A(3), A(15), A(27) }, Decide(final!));
         Assert.Contains(A(3), Shown(final!));
         Assert.Contains(A(27), Shown(final!));
-        Assert.Equal(3, Payload(final!).GetProperty("currentHeadings").GetArrayLength());
+        Assert.Equal(3, Payload(final!).GetProperty("targets").EnumerateArray().Concat(Payload(final!).GetProperty("context").EnumerateArray())
+            .Where(x => x.TryGetProperty("currentGroup", out _)).Select(x => x.GetProperty("currentGroup").GetString()).Distinct().Count());
         Assert.Equal("NOT_SELECT", run.Decisions[A(15)]);
         Assert.Equal(new[] { new[] { A(3) }, new[] { A(27) } }, run.Headings.Select(h => h.ToArray()));
     }
