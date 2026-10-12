@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "APPROVED",
+  "planFile": "p7.f1.v6.d4.5-plan.v1.json",
+  "planSha256": "340d7cbf5e8694ba411ec06aec6e6fe6a1db7082cf895a880c294f65e86978a6",
+  "codeCommit": "3331772b6ff7df3d8f4fca3d00faba2cdabed59e",
+  "authorityId": "SRC-095",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "task": "A",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 100,
+  "ceilingUsd": 1,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
+  "dataSharing": {
+    "documentPublicity": "IETF RFC 9114, published publicly by the IETF",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "allow: the request does not declare data_collection (pinned configuration), so the OpenRouter default allow applies; for the public document SRC-095 only (user decision 2026-10-12)",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ]
+  },
+  "approvedBy": "ylight23 (repository owner; approval given in the session)",
+  "approvedAtUtc": "2026-10-12T10:40:04.9493511Z",
+  "approvalText": "phê duyệt việc tạo bản ghi authorization cho đúng một chiến dịch DIRECT-F1 V6 trên tài liệu công khai IETF RFC 9114 (SRC-095).\n\nPhạm vi phê duyệt được giới hạn như sau:\n\nPlan SHA-256: 340d7cbf5e8694ba411ec06aec6e6fe6a1db7082cf895a880c294f65e86978a6.\n\nCode commit: 3331772b6ff7df3d8f4fca3d00faba2cdabed59e.\n\nTask A: “Trích xuất tất cả heading”.\n\nModel: qwen/qwen3.7-flash; provider mặc định alibaba; loại trừ alibaba/us-east-1; không fallback.\n\nTối đa một chiến dịch, 100 POST, ngân sách reserve tối đa 1,00 USD, kích thước mỗi request tối đa 131.072 byte, retry bằng 0.\n\nChấp nhận ZDR=false do model không hỗ trợ ZDR.\n\nChấp nhận tình trạng WAIVER_NOT_VERIFIED của bản ghi chính sách hiện tại trên cơ sở quyết định ZDR đã được nêu trong cuộc trò chuyện.\n\nChấp nhận rủi ro logging nội dung qua OpenRouter đang ở trạng thái UNKNOWN, không coi rủi ro này đã được xác minh hoặc loại bỏ.\n\nChọn data_collection=allow, giữ nguyên request không khai báo trường này theo cấu hình đã pin, chỉ cho tài liệu công khai SRC-095.\n\nGold chỉ sử dụng nội bộ để đánh giá; không gửi Gold tới provider.\n\nRaw response và nội dung reasoning chỉ lưu trong safe store đã kiểm tra, ngoài repository, theo chính sách retention.\n\nGiữ nguyên cơ chế fail-closed, giới hạn ngân sách và early-stop sau ba lỗi hợp đồng liên tiếp.\n\nPhê duyệt này không cho phép thay model, route, nguồn, Gold, instruction, prompt, giới hạn ngân sách hoặc tái chạy chiến dịch bằng một plan khác.\n\nCho phép tạo và kiểm toán authorization artifact ở trạng thái APPROVED. Chưa cho phép thực hiện d45-run cho đến khi SHA của authorization artifact được trình và xác nhận riêng.",
+  "approvalSha256": "f2440fe9aa576fa06c06ab1a07e399ffce35a10236cb22f71df70a8d5d4f8b3f"
+}
