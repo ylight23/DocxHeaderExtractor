@@ -1,0 +1,194 @@
+{
+  "artifact": "p7.f1.v6.d4.11c-tool-canary-plan.v1",
+  "approvalToSend": false,
+  "supersedes": [
+    {
+      "planSha256": "e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf",
+      "run": false,
+      "reason": "D4.11a review: tool_call_id integrity and finish_reason/tool_calls consistency"
+    },
+    {
+      "planSha256": "51daf9412732f9685b0d3ea36a7637a0e4d2b561ee7044d857c662c7fc2e6cfa",
+      "run": false,
+      "reason": "D4.11b review: 64 KB tool-message cap not enforced on rejected messages (68,938 B in the dry-run); ToolInvoked undercounted refused turns"
+    }
+  ],
+  "previousCampaign": {
+    "planSha256": "c50833bb0fe5ca8a609ee6d883e6c84dc86887a49ec0f4daebca26d494c83f08",
+    "run": true,
+    "consumed": true,
+    "outcome": "4 of 16 POSTs; Qwen emitted 0 tool calls in 4/4 replies (AUTO and EVIDENCE_FIRST); requests were non-streaming with no reasoning field"
+  },
+  "changeFromPreviousCampaign": "request shape only: \"stream\": true (SSE) and \"reasoning\": {\"enabled\": true} in every request; prompts, tools, instruction, arms, segments, caps and budget unchanged",
+  "requestShapeEvidence": "F1Q raw (branch experiment/p7-f1-semantic-question-v1), verified from SSE, tool files and next-turn request bodies: every one of 1,422 F1Q turn requests was stream true with reasoning enabled true; all 45 turns with tool calls were tool_choice auto, finish_reason tool_calls, provider Alibaba; Issue #5 mandatory arm 9/10 requests with tool calls, 28/28 results OK and byte-identical in the next request under the same tool_call_id, final answer finish stop 10/10; optional arm 0/10. This is why the shape is changed; it is not evidence that V6 will get tool calls.",
+  "codeCommit": "69f1086200c7dcc96f84f923e46b1250e4b67756",
+  "authorityId": "SRC-095",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "universeSha256": "1eee2105941098eb50e79fd866fddeb36718c49ca02da9906aeaaf2ba3673ead",
+  "evidenceStoreSha256": "fb550ed7f4b9e95cb943be9fe358001d78cad5155cc109363001e1cb8927c569",
+  "atoms": 2302,
+  "evidenceParserVersion": "P7_F1Q_READ_ONLY_EVIDENCE_TOOLS_V3",
+  "goldForScorerOnly": {
+    "path": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+    "sha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+    "sentToProvider": false,
+    "use": "offline diagnostic on the 96 targets only"
+  },
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "evaluationLabel": "Development canary — tool-calling chain on segments chosen from previous errors; Stage 1 only; not an F1 estimate",
+  "instruction": "Trích xuất tất cả các heading thực sự tổ chức cấu trúc tài liệu, xét theo vai trò của từng lần xuất hiện tại chính vị trí đó.\nChọn những dòng hoặc nhóm dòng có chức năng đặt tên, mở đầu hoặc phân chia một phần nội dung của tài liệu.\nKhông chọn các dòng trong mục lục chỉ liệt kê hoặc dẫn chiếu đến heading xuất hiện ở vị trí khác. Tuy nhiên, vẫn xem xét các heading thực sự tổ chức chính mục lục, chỉ mục và những phần khác của tài liệu.\nSử dụng văn bản, bố cục và ngữ cảnh để xác định chức năng của từng lần xuất hiện. Khi chưa đủ bằng chứng, hãy yêu cầu thêm ngữ cảnh hoặc báo chưa thể quyết định thay vì suy đoán.",
+  "instructionSha256": "c0adeaa57a791fb57eb254f334435eaf29aa398da71a21f74159e72ecdac76ab",
+  "requestVersion": "P7_F1_V6_SELECT_AGENT_REQUEST_V1",
+  "promptVersion": "P7_F1_V6_SELECT_AGENT_PROMPT_V1",
+  "responseVersion": "P7_F1_V6_SELECT_OBJECTS_V1",
+  "versionFieldsInPayload": false,
+  "needsEvidenceStatus": "refused in agent mode (NEEDS_EVIDENCE_NOT_IN_AGENT_MODE); evidence comes through tool calls",
+  "tools": {
+    "version": "P7_F1_V6_AGENT_TOOLS_V1",
+    "definitionsSha256": "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3",
+    "names": [
+      "get_document_overview",
+      "get_source_context",
+      "get_page_layout",
+      "get_source_span",
+      "search_document_text",
+      "get_repeated_occurrences",
+      "compare_source_locations"
+    ],
+    "lineage": {
+      "get_document_overview": "NEW (D4.11): per-page counts and font-size histogram from P7F1QEvidenceTools.PageStats",
+      "get_source_context": "Issue #5 get_occurrence_context (F1Q tool set V2 context: layout, relation to target, same-baseline peers, page statistics)",
+      "get_page_layout": "Issue #5 get_page_geometry (F1Q get_page_geometry: page lines with bbox and font)",
+      "get_source_span": "Issue #5 get_source_span (F1Q get_source_span: full parser record per alias)",
+      "search_document_text": "V6 D1 search_document_text (P7F1V6Tools.Normalize for the normalized mode)",
+      "get_repeated_occurrences": "Issue #5 get_repeated_occurrences (F1Q RepeatKey normalisation; F1Q description not reused: it named the kinds of line to look for)",
+      "compare_source_locations": "F1Q V2 compare_occurrences (same sides and deltas; F1Q description not reused: it named the kinds of line to compare)"
+    },
+    "getPageImage": "NOT_REGISTERED: the V6 evidence store holds no page image and image input on the pinned route is not verified",
+    "resultCapBytes": 16384,
+    "argumentCapBytes": 2048,
+    "transport": "native OpenRouter tools/tool_calls; each result returned as role tool with the call's tool_call_id"
+  },
+  "toolCallIds": "Qwen's own ids only: every id non-empty and unique in the conversation; a missing or repeated id refuses the whole tool turn before any tool runs (TOOL_CALL_ID_MISSING, TOOL_CALL_ID_DUPLICATE); calls over a cap are answered REJECTED under their own id; C# never makes up an id",
+  "finishReason": "tool calls only with finish_reason tool_calls (else TOOL_CALLS_WITH_FINISH_<x>); an answer only with stop (else ANSWER_WITH_FINISH_<x>); tool_calls without calls is refused",
+  "toolMessageBytes": "hard cap 65,536 content bytes per unit over every role tool message, rejected and invalid ones included; a rejection is reserved for each call before a turn runs; a call runs only if a full 16,384-byte result plus the reserve for the calls after it and for the rejections of up to 8 calls in each later tool turn fits (else UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED); a turn whose rejections alone do not fit is refused before dispatch (BUDGET:UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED, unit INCOMPLETE); an unregistered tool name is never echoed back",
+  "promptCache": "telemetry only: cached_tokens, cache_write_tokens and cache_discount are read from each response when present (ABSENT, ZERO or POSITIVE) and kept in the ledger; no cache_control, no session_id, no response caching; request bytes unchanged",
+  "toolChoice": {
+    "turns1To3": "auto",
+    "turn4": "none",
+    "required": "not used: unsupported on the Alibaba route (F1Q 2026-10-09)"
+  },
+  "limits": {
+    "MaxToolTurns": 3,
+    "MaxCallsPerTurn": 8,
+    "MaxPostsPerUnit": 4,
+    "MaxToolMessageBytesPerUnit": 65536
+  },
+  "model": "qwen/qwen3.7-flash",
+  "route": {
+    "only": [
+      "alibaba"
+    ],
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "zdr": "false (owner decision, to be accepted again in the authorization)",
+  "responseFormat": "json_object on every turn (as in F1Q plan V3 with tools on this route)",
+  "maxTokens": 32768,
+  "reasoning": "enabled true, stated in every request (D4.11c); reasoning on/off is deferred and not part of this canary",
+  "stream": "true: the reply is SSE; the raw SSE bytes are the stored response; a stream without [DONE], with an error event or a malformed event fails the call (TRANSPORT:STREAM_*); the audit reads the view assembled from the stream",
+  "reasoningUse": "never read to change an answer; stored with the raw response only",
+  "retries": 0,
+  "unit": 48,
+  "overlap": 20,
+  "stages": "SELECT, stage SEGMENT only; no RESOLVE, FINALIZE or GROUP",
+  "segments": [
+    "SEG-001",
+    "SEG-008"
+  ],
+  "order": "per segment: arm AUTO, then arm EVIDENCE_FIRST",
+  "arms": [
+    {
+      "arm": "AUTO",
+      "promptSha256": "3ffe3356839b2c21540446ec2d0b6f95a31d88ee45b91f4d2942d15338a4f8cd",
+      "answerWithoutTools": "allowed",
+      "budget": {
+        "maxCalls": 8,
+        "ceilingUsd": 0.25,
+        "maxRequestBytes": 131072,
+        "worstCaseReserveUsd": 0.209715
+      },
+      "earlyStop": 3,
+      "firstRequests": [
+        {
+          "unitId": "SEG-001",
+          "turn": 1,
+          "sha256": "324f5943da72d3aa28b5f3b689d5ffc90e7e3c0d3377e49d3a9f8d95def087f0",
+          "bytes": 31413
+        },
+        {
+          "unitId": "SEG-008",
+          "turn": 1,
+          "sha256": "894678310099dbcc5ed7d549616c1c2fffd5aac05783d9d2b879b4d36450f43d",
+          "bytes": 35471
+        }
+      ],
+      "requestPlanSha256": "6de8e50d51547b71a99e055779a4daee5fafa91926837ca16f156a9c8ec2027b"
+    },
+    {
+      "arm": "EVIDENCE_FIRST",
+      "promptSha256": "f36f16ebd81814040eef4fff1c60764797cd814cb1b739f097f460da4bbd0b38",
+      "answerWithoutTools": "refused: TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED",
+      "budget": {
+        "maxCalls": 8,
+        "ceilingUsd": 0.25,
+        "maxRequestBytes": 131072,
+        "worstCaseReserveUsd": 0.209715
+      },
+      "earlyStop": 3,
+      "firstRequests": [
+        {
+          "unitId": "SEG-001",
+          "turn": 1,
+          "sha256": "5fc96ee085ba463ef0c0186f1851126565d9989bb58a5a0b56c5ab43b4c44337",
+          "bytes": 31536
+        },
+        {
+          "unitId": "SEG-008",
+          "turn": 1,
+          "sha256": "ffeb85ad3d16abf00c573b1a4e2fc31b1d0815cae56efced2d978532f8ef248a",
+          "bytes": 35594
+        }
+      ],
+      "requestPlanSha256": "4833070f1547f6db9426bb047708bcf8c0bc3186db22c5fd1284e6fc7a94d5ee"
+    }
+  ],
+  "budget": {
+    "maxCalls": 16,
+    "ceilingUsd": 0.5,
+    "maxRequestBytes": 131072,
+    "perArm": "each arm has its own budget and early stop; totals are the sum"
+  },
+  "measurements": [
+    "tool calls per arm, segment and tool name; invalid and rejected calls with their codes",
+    "levels kept apart per unit: model_tool_calls_emitted (in Qwen's responses, refused turns included), tools_dispatched, tools_rejected_before_dispatch, tool_succeeded, tool_message_bytes, targets shown by a successful result (observation only), evidence_used (final refs to lines seen only through tools); relevant_evidence_observed is audited offline after the responses are frozen, not by C#",
+    "EVIDENCE_FIRST counts any successful call (an overview included) as meeting its requirement; the four levels show whether it was more than that",
+    "chain proof: a tool_call answered by a role tool message with the same tool_call_id, followed by a final answer",
+    "use proof: final evidenceRefs that cite a line seen only through a tool result (RefsToToolOnlyLines)",
+    "scopes: evaluated targets, lines observed (request and tools), whole document observed or not",
+    "SEG-001: targets whose normalized text also occurs elsewhere, and whether a tool result showed that other occurrence before the answer",
+    "protocol outcome per unit; offline diagnostic against Gold on the 96 targets (not F1)",
+    "no-tool reference: the D4.10 arm B replies on the same segments (prompt differs; not a controlled comparison)"
+  ],
+  "rawResponses": "safe store outside the repository, one run directory per arm; tool results and request bodies kept with them",
+  "liveAuthorization": {
+    "required": true,
+    "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+    "status": "APPROVED",
+    "campaigns": 1
+  }
+}

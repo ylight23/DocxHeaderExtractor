@@ -1,0 +1,127 @@
+{
+  "artifact": "p7.f1q.tool-chain-raw-verification.v1",
+  "method": "Read from raw files only (no report numbers): each turn's SSE (response.sse or .gz) is parsed into content, reasoning, tool_calls (id, name, concatenated arguments) and finish_reason; each tool file must carry the same provider id, name and arguments and a content SHA-256 that matches its content; the next turn's request.json must echo the same assistant tool_calls and carry one role tool message per call with the same tool_call_id and byte-identical content; the last turn must end finish stop with content equal to response.txt; request and response bytes are hashed against observation.json. Script: artifacts/v5-p7-f1-v6-d4-contractfix/tools/f1q_chain_verify.py.",
+  "source": "C:/dhx-f1q (branch experiment/p7-f1-semantic-question-v1), artifacts/web-pdf-semantic-diagnostic",
+  "groups": {
+    "p7.f1.direct.pilot-raw.v1/capture": {
+      "requestDirs": 199,
+      "withToolCalls": 2,
+      "chainVerified": 2,
+      "withProblems": 0,
+      "sseToolCalls": 3,
+      "toolResultsOk": 3
+    },
+    "p7.f1.direct.v11.raw.v1/rep-1": {
+      "requestDirs": 179,
+      "withToolCalls": 4,
+      "chainVerified": 4,
+      "withProblems": 0,
+      "sseToolCalls": 12,
+      "toolResultsOk": 3
+    },
+    "p7.f1.direct.v11.raw.v1/rep-2": {
+      "requestDirs": 181,
+      "withToolCalls": 7,
+      "chainVerified": 7,
+      "withProblems": 2,
+      "sseToolCalls": 21,
+      "toolResultsOk": 4
+    },
+    "p7.f1.direct.v42.raw.v1/run1": {
+      "requestDirs": 180,
+      "withToolCalls": 2,
+      "chainVerified": 2,
+      "withProblems": 0,
+      "sseToolCalls": 2,
+      "toolResultsOk": 2
+    },
+    "p7.f1.direct.v5.raw.v1/run2": {
+      "requestDirs": 195,
+      "withToolCalls": 0,
+      "chainVerified": 0,
+      "withProblems": 9,
+      "sseToolCalls": 0,
+      "toolResultsOk": 0
+    },
+    "p7.f1q.evidence-v2-raw.v1": {
+      "requestDirs": 23,
+      "withToolCalls": 0,
+      "chainVerified": 0,
+      "withProblems": 3,
+      "sseToolCalls": 0,
+      "toolResultsOk": 0
+    },
+    "p7.f1q.heldout-raw.v1/arm-a-p05": {
+      "requestDirs": 197,
+      "withToolCalls": 2,
+      "chainVerified": 2,
+      "withProblems": 0,
+      "sseToolCalls": 4,
+      "toolResultsOk": 4
+    },
+    "p7.f1q.heldout-raw.v1/arm-b-layout": {
+      "requestDirs": 190,
+      "withToolCalls": 3,
+      "chainVerified": 3,
+      "withProblems": 0,
+      "sseToolCalls": 7,
+      "toolResultsOk": 7
+    },
+    "p7.f1q.tool-augmented-raw.v1": {
+      "requestDirs": 33,
+      "withToolCalls": 9,
+      "chainVerified": 8,
+      "withProblems": 3,
+      "sseToolCalls": 28,
+      "toolResultsOk": 28
+    }
+  },
+  "issue5ToolAugmentedArms": {
+    "F1QNoTools": {
+      "requests": 10,
+      "requestsWithToolCalls": 0,
+      "chainVerified": 0,
+      "sseToolCalls": 0,
+      "toolResultsOk": 0,
+      "finalAnswerStop": 10
+    },
+    "F1QTools": {
+      "requests": 10,
+      "requestsWithToolCalls": 0,
+      "chainVerified": 0,
+      "sseToolCalls": 0,
+      "toolResultsOk": 0,
+      "finalAnswerStop": 10
+    },
+    "F1QToolsMandatory": {
+      "requests": 10,
+      "requestsWithToolCalls": 9,
+      "chainVerified": 8,
+      "sseToolCalls": 28,
+      "toolResultsOk": 28,
+      "finalAnswerStop": 10
+    },
+    "Control": {
+      "requests": 3,
+      "requestsWithToolCalls": 0,
+      "chainVerified": 0,
+      "sseToolCalls": 0,
+      "toolResultsOk": 0,
+      "finalAnswerStop": 3
+    }
+  },
+  "turnRequestsChecked": 1422,
+  "requestShapes": {
+    "stream=true, reasoning={\"enabled\": true}": 1422
+  },
+  "toolCallTurns": {
+    "tool_choice=auto, finish=tool_calls, provider=Alibaba": 45
+  },
+  "exceptions": [
+    {
+      "dir": "p7.f1q.tool-augmented-raw.v1/requests/D05-PACK_001.F1QToolsMandatory",
+      "finding": "request.json SHA differs from observation.json for turns 1-2; the directory holds request.redaction.json (approved PII redaction of D05 request bodies, 2026-10-10). Tool ids, arguments, tool-message content identity and the final answer all verify."
+    }
+  ],
+  "conclusion": "On qwen/qwen3.7-flash via Alibaba, with stream true and reasoning enabled true in every request, Qwen did emit native tool_calls (45 turns, all finish tool_calls, tool_choice auto); the C# handler ran (each call has a tool file); the next request carried every result under the same tool_call_id with byte-identical content; and the request ended with a stop answer. In the Issue #5 experiment this happened only in the mandatory-evidence arm (9/10 requests, 28/28 results OK); the optional-tools arm made 0 calls in 10 requests."
+}
