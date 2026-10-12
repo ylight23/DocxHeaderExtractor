@@ -1,0 +1,72 @@
+{
+  "artifact": "p7.f1.v6.d4.9-representation-replay.v1",
+  "label": "PARSER CONSISTENCY ONLY: recorded D4.8 decisions rewritten as B and C replies; not evidence of Qwen behaviour with B or C requests",
+  "rows": [
+    {
+      "unit": "SEG-000",
+      "recordedDecisions": 26,
+      "objectsVerdict": "COVERAGE_INCOMPLETE",
+      "compactVerdict": "BLOCK_COUNT_INVALID"
+    },
+    {
+      "unit": "SEG-001",
+      "recordedDecisions": 48,
+      "objectsVerdict": "OK",
+      "compactVerdict": "OK"
+    },
+    {
+      "unit": "SEG-002",
+      "recordedDecisions": 48,
+      "objectsVerdict": "OK",
+      "compactVerdict": "OK"
+    },
+    {
+      "unit": "SEG-003",
+      "recordedDecisions": 48,
+      "objectsVerdict": "OK",
+      "compactVerdict": "OK"
+    },
+    {
+      "unit": "SEG-004",
+      "recordedDecisions": 48,
+      "objectsVerdict": "OK",
+      "compactVerdict": "OK"
+    },
+    {
+      "unit": "SEG-005",
+      "recordedDecisions": 48,
+      "objectsVerdict": "OK",
+      "compactVerdict": "OK"
+    },
+    {
+      "unit": "SEG-006",
+      "recordedDecisions": 48,
+      "objectsVerdict": "OK",
+      "compactVerdict": "OK"
+    },
+    {
+      "unit": "SEG-007",
+      "recordedDecisions": 48,
+      "objectsVerdict": "OK",
+      "compactVerdict": "OK"
+    },
+    {
+      "unit": "SEG-008",
+      "recordedDecisions": 2,
+      "objectsVerdict": "EVIDENCE_REFS_INVALID",
+      "compactVerdict": "BLOCK_COUNT_INVALID"
+    },
+    {
+      "unit": "SEG-009",
+      "recordedDecisions": 2,
+      "objectsVerdict": "COVERAGE_INCOMPLETE",
+      "compactVerdict": "BLOCK_COUNT_INVALID"
+    },
+    {
+      "unit": "SEG-010",
+      "recordedDecisions": 48,
+      "objectsVerdict": "OK",
+      "compactVerdict": "OK"
+    }
+  ]
+}

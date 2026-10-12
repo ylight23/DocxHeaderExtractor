@@ -1,0 +1,214 @@
+{
+  "artifact": "p7.f1.v6.d4.9-dryrun.v1",
+  "providerCalls": 0,
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "unit": 48,
+  "budgetUnderStudy": {
+    "MaxCalls": 100,
+    "CeilingUsd": 1,
+    "MaxRequestBytes": 131072
+  },
+  "prompts": {
+    "selectObjects": "d8f48b49629f2d2befe5fb9256f909819b5925f8339f951957e3e49c11ff8130",
+    "selectCompact": "b8bc2aa9cdc7da5e50dbf61a5d11b3eab46cd73f128422cae3253f22fc1e1544",
+    "group": "ca0e2b773f7fbba716f893621bf7c9beda50af40fdcf18b4907865d7551ed83a",
+    "v3Combined": "bcc381e5645df30f8ea0fbe39a0df9b9499f076344dcb656c65cb53342ea9a0e"
+  },
+  "callCountModel": {
+    "segments": 48,
+    "minimumTwoStage": "48 SELECT + ceil(selected/48) FINALIZE + ceil(selected/48) GROUP; with the Gold-size selection (109 atoms): 48 + 3 + 3 = 54",
+    "worstTwoStage": "every unit uses 3 rounds: 3*48 SELECT + 3*48 RESOLVE + 3*25 FINALIZE + 3*ceil(selected/48) GROUP"
+  },
+  "simulations": [
+    {
+      "simulation": "A_V3_ORACLE",
+      "status": "COMPLETE",
+      "finalization": "DONE",
+      "grouping": null,
+      "assurance": "FINAL_SELECTION_REVIEWED",
+      "calls": 51,
+      "reservedUsd": 0.313871,
+      "refusals": [],
+      "headings": 103,
+      "byStage": [
+        {
+          "stage": "SEGMENT",
+          "calls": 48,
+          "minBytes": 22774,
+          "maxBytes": 31750,
+          "reserveUsd": 0.24741
+        },
+        {
+          "stage": "FINALIZE",
+          "calls": 3,
+          "minBytes": 90465,
+          "maxBytes": 90465,
+          "reserveUsd": 0.066461
+        }
+      ]
+    },
+    {
+      "simulation": "B_OBJECTS_ORACLE",
+      "status": "COMPLETE",
+      "finalization": "DONE",
+      "grouping": "DONE",
+      "assurance": "FINAL_SELECTION_REVIEWED",
+      "calls": 54,
+      "reservedUsd": 0.35773,
+      "refusals": [],
+      "headings": 103,
+      "byStage": [
+        {
+          "stage": "SEGMENT",
+          "calls": 48,
+          "minBytes": 22418,
+          "maxBytes": 31394,
+          "reserveUsd": 0.246898
+        },
+        {
+          "stage": "FINALIZE",
+          "calls": 3,
+          "minBytes": 87275,
+          "maxBytes": 87275,
+          "reserveUsd": 0.065504
+        },
+        {
+          "stage": "GROUP",
+          "calls": 3,
+          "minBytes": 23800,
+          "maxBytes": 72393,
+          "reserveUsd": 0.045328
+        }
+      ]
+    },
+    {
+      "simulation": "B_OBJECTS_ALL_NEGATIVE",
+      "status": "NOT_FINALIZED",
+      "finalization": "NO_CANDIDATES",
+      "grouping": "NOT_REACHED",
+      "assurance": "SEGMENT_COMPLETE",
+      "calls": 48,
+      "reservedUsd": 0.246898,
+      "refusals": [],
+      "headings": 0,
+      "byStage": [
+        {
+          "stage": "SEGMENT",
+          "calls": 48,
+          "minBytes": 22418,
+          "maxBytes": 31394,
+          "reserveUsd": 0.246898
+        }
+      ]
+    },
+    {
+      "simulation": "B_OBJECTS_RETRIEVAL_HEAVY",
+      "status": "INCOMPLETE",
+      "finalization": "SKIPPED_OPEN_ALIASES",
+      "grouping": "NOT_REACHED",
+      "assurance": "NONE",
+      "calls": 93,
+      "reservedUsd": 0.998216,
+      "refusals": [
+        {
+          "code": "RESERVE_OVER_CEILING",
+          "count": 6
+        }
+      ],
+      "headings": 0,
+      "byStage": [
+        {
+          "stage": "SEGMENT",
+          "calls": 93,
+          "minBytes": 22418,
+          "maxBytes": 40515,
+          "reserveUsd": 0.998216
+        }
+      ]
+    },
+    {
+      "simulation": "C_COMPACT_ORACLE",
+      "status": "COMPLETE",
+      "finalization": "DONE",
+      "grouping": "DONE",
+      "assurance": "FINAL_SELECTION_REVIEWED",
+      "calls": 54,
+      "reservedUsd": 0.437025,
+      "refusals": [],
+      "headings": 103,
+      "byStage": [
+        {
+          "stage": "SEGMENT",
+          "calls": 48,
+          "minBytes": 23357,
+          "maxBytes": 32333,
+          "reserveUsd": 0.325943
+        },
+        {
+          "stage": "FINALIZE",
+          "calls": 3,
+          "minBytes": 87899,
+          "maxBytes": 88214,
+          "reserveUsd": 0.065754
+        },
+        {
+          "stage": "GROUP",
+          "calls": 3,
+          "minBytes": 23800,
+          "maxBytes": 72393,
+          "reserveUsd": 0.045328
+        }
+      ]
+    },
+    {
+      "simulation": "C_COMPACT_ALL_NEGATIVE",
+      "status": "NOT_FINALIZED",
+      "finalization": "NO_CANDIDATES",
+      "grouping": "NOT_REACHED",
+      "assurance": "SEGMENT_COMPLETE",
+      "calls": 48,
+      "reservedUsd": 0.325943,
+      "refusals": [],
+      "headings": 0,
+      "byStage": [
+        {
+          "stage": "SEGMENT",
+          "calls": 48,
+          "minBytes": 23357,
+          "maxBytes": 32333,
+          "reserveUsd": 0.325943
+        }
+      ]
+    },
+    {
+      "simulation": "C_COMPACT_RETRIEVAL_HEAVY",
+      "status": "INCOMPLETE",
+      "finalization": "SKIPPED_OPEN_ALIASES",
+      "grouping": "NOT_REACHED",
+      "assurance": "NONE",
+      "calls": 84,
+      "reservedUsd": 0.999509,
+      "refusals": [
+        {
+          "code": "RESERVE_OVER_CEILING",
+          "count": 12
+        }
+      ],
+      "headings": 0,
+      "byStage": [
+        {
+          "stage": "SEGMENT",
+          "calls": 84,
+          "minBytes": 23357,
+          "maxBytes": 41454,
+          "reserveUsd": 0.999509
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; the oracle reads the Gold to play a perfect model so capacity can be checked. Not a model result.",
+    "Two-stage adds GROUP calls on top of SELECT and FINALIZE; whether 100 calls and $1.00 are enough depends on how many atoms Qwen selects and how often it asks for evidence."
+  ]
+}
