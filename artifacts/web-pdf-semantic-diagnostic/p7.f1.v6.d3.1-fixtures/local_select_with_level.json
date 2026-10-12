@@ -1,0 +1,25 @@
+{
+  "name": "local_select_with_level",
+  "node": "L0-S0000",
+  "appliesTo": "Local",
+  "expect": "ACCEPTED",
+  "response": {
+    "protocolVersion": "P7_F1_V6_HIER_NODE_V3",
+    "nodeId": "L0-S0000",
+    "status": "COMPLETE",
+    "items": [
+      {
+        "id": "$OWNED0",
+        "decision": "SELECT",
+        "evidenceRefs": [
+          "$ALIAS0"
+        ],
+        "level": 2
+      },
+      {
+        "id": "$OWNED1",
+        "decision": "UNRESOLVED"
+      }
+    ]
+  }
+}

@@ -1,21 +1,23 @@
 {
   "protocolVersion": "P7_F1_V6_HIER_V3",
-  "platformVersion": "P7_F1_V6_PLATFORM_V1",
-  "nodeSchemaVersion": "P7_F1_V6_HIER_NODE_SCHEMA_V1",
-  "envelopeVersion": "P7_F1_V6_REQUEST_ENVELOPE_V1",
+  "nodeResponseVersion": "P7_F1_V6_HIER_NODE_V3",
+  "platformVersion": "P7_F1_V6_PLATFORM_V2",
+  "nodeSchemaVersion": "P7_F1_V6_HIER_NODE_SCHEMA_V2",
+  "envelopeVersion": "P7_F1_V6_REQUEST_ENVELOPE_V2",
   "interpretContract": "P7_F1_V6_INTERPRET_V1",
   "model": "qwen/qwen3.7-flash",
   "providerTag": "alibaba",
   "maxTokens": 32768,
-  "platformSha256": "1447a9596a646d2ea49f6441aea5adec39e87e165edc18b76ed5bffd6dd2bacc",
+  "platformSha256": "2bed537d2e97f9f2ff229a274d32e5ab34750bb6e8aa7670747b0809fe49e025",
   "interpretPromptSha256": "4c7b4eff68ac6d3587c063a46e8fa33fb791c2165b5fd1c2d31e558f85a185bd",
-  "nodeResponseSchemaSha256": "e107755d1654c2215369d1464e87e6f3e6c9898f12cc010e0b9f624fcf03d39c",
+  "nodeResponseSchemaSha256": "0451ea379034fe46b95832c511a6c2206294f4a05b7e8fdf7d47e22378934f2d",
   "providerBlockSha256": "b47a3b144cfaf6d53b90f9512ad96a1eabc45e05f1ac9ffcbb264ec64bcb605e",
+  "requestTemplateSha256": "25f8e40f9e8e682235cfbae9a65e6ac22cce75004497bdc26c5a9aad669ef07e",
   "systemPromptSha256": {
-    "Local": "55bf5a7fc98cb4291c9fde3676373497155f0c786708f9db1adee354f90c8c2a",
-    "Reconcile": "36f7c5fd9ea25dd62de8e8bd7d92c69b2093eab03c5ffc2e8cf375d704ba8d78",
-    "Synthesis": "6049122f9d2c7c5283f86c630d6a86f4bfbda1d1b59aec17f77c80030efbfa78",
-    "Global": "e86a5a9b7fad9e589fc33e77b552908e9d808277f4e4e8f8f1b9f6eb405e0233"
+    "Local": "df5989a8ea4a796418a66f1267612cad863f52682526bfb590bd11fd3d37a618",
+    "Reconcile": "80b4e15a42375d61890e73c2c0c4c1423c47309c20378ed5265e63a27dd6af30",
+    "Synthesis": "a8886eb65116a1113592a57bc3c18cd694d8dc0ca118222c308e3b5e40ec8d87",
+    "Global": "573cb1a81b9426d6dd2bdc784866b3367d2255050946ae07f65a6122ca315861"
   },
   "kindPromptSha256": {
     "Local": "88bccc320d2b9ea34f2a2a47ea5cded8f4fd1f3e2552157b1cacb92ee6b68714",

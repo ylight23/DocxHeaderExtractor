@@ -17,7 +17,7 @@ namespace DocxHeaderExtractor.V5Qualification.P7;
 internal static class P7F1V6Hier
 {
     public const string Version = "P7_F1_V6_HIER_V3";
-    public const string NodeVersion = "P7_F1_V6_HIER_NODE_V2";
+    public const string NodeVersion = "P7_F1_V6_HIER_NODE_V3";
     public const int MaxEvidenceRefs = 8, MaxSearchChars = 200, TextPreviewChars = 400;
     public static readonly string[] Decisions = ["SELECT", "NOT_SELECT", "UNRESOLVED"];
     public static readonly string[] TechnicalStatuses = ["COMPLETE", "RETRIEVE", "INCOMPLETE", "CLARIFICATION_REQUIRED", "NOT_ANSWERABLE"];
@@ -45,10 +45,13 @@ internal static class P7F1V6Hier
 
     /// <summary>The state of one candidate in the registry: decision, the node that set it, its references, and how many later nodes confirmed it.</summary>
     public sealed record State(string Decision, string SourceNode, string SourceOutputSha256, string? ParentId, string? ContinuesFromId,
-        int Confirmations, IReadOnlyList<string>? Evidence = null);
+        int Confirmations, IReadOnlyList<string>? Evidence = null, int? HeadingLevel = null);
 
     public sealed record NodeRecord(string NodeId, string Kind, int Level, string InputSha256, int InputBytes, string? OutputSha256,
         int OutputBytes, string Status, string? FailureCode, int Revised, int PassUp);
+
+    /// <summary>A node that did not complete, with the reason and open questions it gave. The raw response is linked by hash.</summary>
+    public sealed record NodeStop(string NodeId, string Kind, string Status, string Reason, IReadOnlyList<string> OpenQuestions, string OutputSha256);
 
     /// <summary>Protocol-level result, reported separately so that one word cannot stand for all of it.</summary>
     /// <summary>EvidenceRefsPresent means each decided occurrence names an evidence reference; it is not a claim that the cited source,
@@ -59,12 +62,12 @@ internal static class P7F1V6Hier
     public sealed record RunSummary(string ProtocolStatus, bool ProtocolResolved, bool EvidenceRefsPresent, int Occurrences, int Decided,
         int PresentedOccurrences, double PresentedShare, int GlobalReviewed, double GlobalReviewCoverage, int AcceptedNodes, int RetrievalTurns,
         int RejectedNodes, int StoppedNodes, int SearchPagesWithMore, int UnpagedSearches, int UnreadMatches, bool CandidatesPinned,
-        string CandidatesSha256, string ManifestSha256, int SearchQueries, int SearchGapQueries);
+        string CandidatesSha256, string ManifestSha256, int SearchQueries, int SearchGapQueries, int MaxEnvelopeBytes);
 
     public sealed record RunResult(string RunStatus, IReadOnlyDictionary<string, State> Final, IReadOnlyList<NodeRecord> Nodes,
         IReadOnlyList<string> Violations, string TranscriptSha256, IReadOnlyDictionary<string, string> IdByAlias, P7F1V6RawStore Raw,
         int OpenUnresolved, bool GlobalAccepted, int GlobalShown, IReadOnlySet<string> ReopenedIds, IReadOnlySet<string> GlobalReviewedIds,
-        RunSummary Summary, P7F1V6Core.Interpretation? Interpretation = null);
+        RunSummary Summary, P7F1V6Core.Interpretation? Interpretation = null, IReadOnlyList<NodeStop>? Stops = null);
 
     /// <summary>
     /// Provenance accounting, a partition of the final states. Source: LocalResolved (decided or revised by a local or reconcile node, not
@@ -148,6 +151,8 @@ internal static class P7F1V6Hier
         public int UnreadMatches { get; set; }
         public HashSet<string> Presented { get; } = new(StringComparer.Ordinal);
         public List<(string Node, string Query, Cursor Cursor)> AllCursors { get; } = new();
+        public List<NodeStop> Stops { get; } = new();
+        public int MaxEnvelopeBytes { get; set; }
     }
 
     /// <summary>Reading progress of one query in one node. ReadEnd is the contiguous prefix read so far; a page that starts beyond it is a gap,
@@ -256,9 +261,9 @@ internal static class P7F1V6Hier
             env.Nodes.Count(n => n.Status == "ACCEPTED"), env.Nodes.Count(n => n.Status == "RETRIEVE"),
             env.Nodes.Count(n => n.Status == "REJECTED"), env.Nodes.Count(n => n.Status == "STOPPED"),
             env.SearchPagesWithMore, env.UnpagedSearches, env.UnreadMatches, o.ExpectedCandidatesSha256 is not null,
-            candidatesSha, manifestSha, env.AllCursors.Count, env.AllCursors.Count(x => x.Cursor.Gap));
+            candidatesSha, manifestSha, env.AllCursors.Count, env.AllCursors.Count(x => x.Cursor.Gap), env.MaxEnvelopeBytes);
         return new RunResult(status, env.States, env.Nodes, env.Violations, sha, ids, env.Raw, open, env.GlobalAccepted, env.GlobalShown,
-            env.Reopened, env.GlobalReviewed, summary, interp);
+            env.Reopened, env.GlobalReviewed, summary, interp, env.Stops);
     }
 
     /// <summary>The interpretation request (D1 contract). Qwen states how it reads the instruction; C# checks only the shape and the budgets.</summary>
@@ -272,6 +277,8 @@ internal static class P7F1V6Hier
         var inBytes = Encoding.UTF8.GetBytes(payload);
         var inSha = e.Raw.Put(inBytes);
         if (inBytes.Length > e.O.MaxInputBytes) return (null, "INPUT_OVER_BUDGET", "");
+        e.MaxEnvelopeBytes = Math.Max(e.MaxEnvelopeBytes,
+            Encoding.UTF8.GetByteCount(P7F1V6Protocol.Envelope(P7F1V6Protocol.InterpretPrompt, payload, P7F1V6Protocol.ProviderTag, P7F1V6Protocol.MaxTokens)));
         var response = model("INTERPRET", Kind.Interpretation, payload);
         var outBytes = Encoding.UTF8.GetBytes(response);
         var outSha = e.Raw.Put(outBytes);
@@ -296,9 +303,9 @@ internal static class P7F1V6Hier
     static RunResult Stopped(Env e, string status, P7F1V6Core.Interpretation? interp, string candidatesSha, string manifestSha)
     {
         var summary = new RunSummary(status, false, false, e.Ids.Count, 0, 0, 0, 0, 0, e.Nodes.Count(n => n.Status == "ACCEPTED"), 0,
-            e.Nodes.Count(n => n.Status == "REJECTED"), e.Nodes.Count(n => n.Status == "STOPPED"), 0, 0, 0, false, candidatesSha, manifestSha, 0, 0);
+            e.Nodes.Count(n => n.Status == "REJECTED"), e.Nodes.Count(n => n.Status == "STOPPED"), 0, 0, 0, false, candidatesSha, manifestSha, 0, 0, e.MaxEnvelopeBytes);
         return new RunResult(status, e.States, e.Nodes, e.Violations, Sha(string.Join("\n", e.Transcript)), e.Ids, e.Raw,
-            e.Ids.Count, false, 0, e.Reopened, e.GlobalReviewed, summary, interp);
+            e.Ids.Count, false, 0, e.Reopened, e.GlobalReviewed, summary, interp, e.Stops);
     }
 
     // ------------------------------------------------------------------------------------------------------------------
@@ -382,6 +389,8 @@ internal static class P7F1V6Hier
             var inBytes = Encoding.UTF8.GetBytes(payload);
             var inSha = e.Raw.Put(inBytes);
             if (inBytes.Length > e.O.MaxInputBytes) { e.StopReason = "INPUT_OVER_BUDGET:" + nodeId; return null; }
+            e.MaxEnvelopeBytes = Math.Max(e.MaxEnvelopeBytes,
+                Encoding.UTF8.GetByteCount(P7F1V6Protocol.Envelope(P7F1V6Protocol.SystemPrompt(kind), payload, P7F1V6Protocol.ProviderTag, P7F1V6Protocol.MaxTokens)));
             var response = model(nodeId, kind, payload);
             var outBytes = Encoding.UTF8.GetBytes(response);
             var outSha = e.Raw.Put(outBytes);
@@ -412,6 +421,7 @@ internal static class P7F1V6Hier
             }
             if (fail is not null)
             {
+                if (po?.Stop is { } stop) e.Stops.Add(stop with { OutputSha256 = outSha });
                 e.Violations.Add($"{nodeId}:{fail}");
                 e.Nodes.Add(new NodeRecord(nodeId, kind.ToString(), level, inSha, inBytes.Length, outSha, outBytes.Length, "REJECTED", fail, 0, 0));
                 return null;
@@ -430,7 +440,7 @@ internal static class P7F1V6Hier
             foreach (var it in pass.Items)
             {
                 var prev = e.States.TryGetValue(it.Id, out var p) ? p : null;
-                e.States[it.Id] = new State(it.Decision, nodeId, outSha, it.Parent, it.Continues, prev?.Confirmations ?? 0, it.Refs);
+                e.States[it.Id] = new State(it.Decision, nodeId, outSha, it.Parent, it.Continues, prev?.Confirmations ?? 0, it.Refs, it.Level);
             }
             foreach (var id in pass.Confirmed)
                 if (e.States.TryGetValue(id, out var s)) e.States[id] = s with { Confirmations = s.Confirmations + 1 };
@@ -515,10 +525,17 @@ internal static class P7F1V6Hier
     // ------------------------------------------------------------------------------------------------------------------
     // Parsing: the model's response is checked against what it was shown. Nothing is interpreted semantically.
 
-    public sealed record Item(string Id, string Decision, IReadOnlyList<string> Refs, string? Parent, string? Continues);
+    public sealed record Item(string Id, string Decision, IReadOnlyList<string> Refs, string? Parent, string? Continues, int? Level = null);
     public sealed record Complete(IReadOnlyList<Item> Items, IReadOnlyList<string> Confirmed, List<string> PassUp);
     public sealed record Retrieve(string? Search, IReadOnlyList<string> Reopen, int Offset);
-    public sealed record ParseOut(Complete? Complete, Retrieve? Retrieve, string? Failure);
+    public sealed record ParseOut(Complete? Complete, Retrieve? Retrieve, string? Failure, NodeStop? Stop = null);
+
+    public static readonly string[] RootKeys = ["protocolVersion", "nodeId", "status", "items", "confirmed", "passUp", "retrieve", "reason", "openQuestions"];
+    public static readonly string[] RootRequired = ["protocolVersion", "nodeId", "status"];
+    public static readonly string[] ItemKeys = ["id", "decision", "evidenceRefs", "parentId", "continuesFromId", "level"];
+    public static readonly string[] ItemRequired = ["id", "decision"];
+    public static readonly string[] RetrieveKeys = ["search", "offset", "reopen"];
+    public const int MaxNodeReasonChars = 500, MaxNodeQuestionChars = 300, MaxNodeQuestions = 5, MinLevel = 1, MaxLevel = 9;
 
     static ParseOut Parse(string response, string nodeId, Kind kind, Shown rs, List<string>? owned, bool allowRetrieve, Env e)
     {
@@ -532,18 +549,20 @@ internal static class P7F1V6Hier
             var root = doc.RootElement;
             if (root.ValueKind != JsonValueKind.Object) return Fail("ROOT_NOT_OBJECT");
             var names = root.EnumerateObject().Select(p => p.Name).ToArray();
-            string[] required = ["protocolVersion", "nodeId", "status"];
-            string[] allowed = ["protocolVersion", "nodeId", "status", "items", "confirmed", "passUp", "retrieve"];
-            if (required.Any(k => !names.Contains(k, StringComparer.Ordinal)) || names.Any(n => !allowed.Contains(n, StringComparer.Ordinal))) return Fail("ROOT_KEYS_INVALID");
+            if (RootRequired.Any(k => !names.Contains(k, StringComparer.Ordinal)) || names.Any(n => !RootKeys.Contains(n, StringComparer.Ordinal))) return Fail("ROOT_KEYS_INVALID");
             if (Str(root, "protocolVersion") != NodeVersion) return Fail("PROTOCOL_VERSION_INVALID");
             if (Str(root, "nodeId") != nodeId) return Fail("NODE_ID_MISMATCH");
             var status = Str(root, "status");
             if (status is null || !TechnicalStatuses.Contains(status, StringComparer.Ordinal)) return Fail("STATUS_INVALID");
+            // A reason belongs to a non-COMPLETE reply only; a reply with items or a search carries none.
+            if ((names.Contains("reason", StringComparer.Ordinal) || names.Contains("openQuestions", StringComparer.Ordinal))
+                && (status == "COMPLETE" || status == "RETRIEVE")) return Fail("REASON_NOT_ALLOWED");
 
             if (status == "RETRIEVE")
             {
                 if (!allowRetrieve) return Fail("RETRIEVE_NOT_ALLOWED");
                 if (!root.TryGetProperty("retrieve", out var rt) || rt.ValueKind != JsonValueKind.Object) return Fail("RETRIEVE_MISSING");
+                if (rt.EnumerateObject().Any(p => !RetrieveKeys.Contains(p.Name, StringComparer.Ordinal))) return Fail("RETRIEVE_KEYS_INVALID");
                 if (root.TryGetProperty("items", out var its) && its.GetArrayLength() > 0) return Fail("RETRIEVE_WITH_ITEMS");
                 var search = Str(rt, "search");
                 if (search is not null && (search.Length == 0 || search.Length > MaxSearchChars)) return Fail("SEARCH_INVALID");
@@ -563,7 +582,22 @@ internal static class P7F1V6Hier
                 if (search is null && reopen.Count == 0) return Fail("RETRIEVE_EMPTY");
                 return new(null, new Retrieve(search, reopen, offset), null);
             }
-            if (status != "COMPLETE") return Fail("NODE_" + status + "_CHANGES_NOTHING");
+            if (status != "COMPLETE")
+            {
+                // The reason and the open questions are kept whole: the run keeps them with the raw response hash.
+                var reason = Str(root, "reason");
+                if (reason is null || reason.Length == 0 || reason.Length > MaxNodeReasonChars) return Fail("REASON_REQUIRED");
+                var questions = new List<string>();
+                if (root.TryGetProperty("openQuestions", out var oq))
+                {
+                    if (oq.ValueKind != JsonValueKind.Array || oq.GetArrayLength() > MaxNodeQuestions
+                        || oq.EnumerateArray().Any(x => x.ValueKind != JsonValueKind.String || string.IsNullOrWhiteSpace(x.GetString()) || x.GetString()!.Length > MaxNodeQuestionChars))
+                        return Fail("OPEN_QUESTIONS_INVALID");
+                    questions.AddRange(oq.EnumerateArray().Select(x => x.GetString()!));
+                }
+                if (status == "CLARIFICATION_REQUIRED" && questions.Count == 0) return Fail("CLARIFICATION_WITHOUT_QUESTION");
+                return new(null, null, "NODE_" + status + "_CHANGES_NOTHING", new NodeStop(nodeId, kind.ToString(), status, reason, questions, ""));
+            }
 
             // Visibility for this node: revisable ids are the owned ids (local, reconcile) or every shown id (synthesis, global).
             var revisable = owned is not null ? owned.ToHashSet(StringComparer.Ordinal) : rs.Revisable;
@@ -575,6 +609,8 @@ internal static class P7F1V6Hier
                 foreach (var it in itemsEl.EnumerateArray())
                 {
                     if (it.ValueKind != JsonValueKind.Object) return Fail("ITEM_NOT_OBJECT");
+                    if (it.EnumerateObject().Any(p => !ItemKeys.Contains(p.Name, StringComparer.Ordinal)) || ItemRequired.Any(k => !it.TryGetProperty(k, out _)))
+                        return Fail("ITEM_KEYS_INVALID");
                     var id = Str(it, "id") ?? "";
                     if (!revisable.Contains(id)) return Fail("ID_NOT_REVISABLE_IN_THIS_NODE");
                     if (!seen.Add(id)) return Fail("ID_LISTED_TWICE");
@@ -596,11 +632,18 @@ internal static class P7F1V6Hier
                             if (!rs.Citable.Contains(alias)) return Fail("EVIDENCE_NOT_SHOWN");
                         }
                     }
+                    int? level = null;
+                    if (it.TryGetProperty("level", out var lv))
+                    {
+                        if (decision != "SELECT") return Fail("LEVEL_NOT_ALLOWED");
+                        if (lv.ValueKind != JsonValueKind.Number || !lv.TryGetInt32(out var lvi) || lvi < MinLevel || lvi > MaxLevel) return Fail("LEVEL_INVALID");
+                        level = lvi;
+                    }
                     var parent = Str(it, "parentId");
                     var cont = Str(it, "continuesFromId");
                     if (parent is not null && (parent == id || !IsShown(e, rs, parent))) return Fail("PARENT_NOT_SHOWN");
                     if (cont is not null && (cont == id || !IsShown(e, rs, cont))) return Fail("CONTINUES_NOT_SHOWN");
-                    items.Add(new Item(id, decision, refs, parent, cont));
+                    items.Add(new Item(id, decision, refs, parent, cont, level));
                 }
             }
             var confirmed = new List<string>();

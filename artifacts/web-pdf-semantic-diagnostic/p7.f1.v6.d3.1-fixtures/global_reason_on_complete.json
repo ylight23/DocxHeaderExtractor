@@ -1,0 +1,14 @@
+{
+  "name": "global_reason_on_complete",
+  "node": "GLOBAL",
+  "appliesTo": "Global",
+  "expect": "REJECTED:REASON_NOT_ALLOWED",
+  "response": {
+    "protocolVersion": "P7_F1_V6_HIER_NODE_V3",
+    "nodeId": "GLOBAL",
+    "status": "COMPLETE",
+    "items": [],
+    "confirmed": "$ALLSHOWN",
+    "reason": "a reason has no place on a COMPLETE reply"
+  }
+}

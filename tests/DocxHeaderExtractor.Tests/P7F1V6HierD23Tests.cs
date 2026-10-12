@@ -10,7 +10,7 @@ public sealed class P7F1V6HierD23Tests
 {
     const string Rfc = "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf";
     const string Instr = "Trích xuất các heading chính";
-    const string Proto = "P7_F1_V6_HIER_NODE_V2";
+    const string Proto = "P7_F1_V6_HIER_NODE_V3";
     static readonly JsonSerializerOptions Json = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
     static IReadOnlyList<P7F1V6Hier.Cand> Cands()

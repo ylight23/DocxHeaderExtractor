@@ -10,7 +10,7 @@ public sealed class P7F1V6HierTests
 {
     const string Rfc = "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf";
     const string Instr = "Trích xuất các heading chính";
-    const string Proto = "P7_F1_V6_HIER_NODE_V2";
+    const string Proto = "P7_F1_V6_HIER_NODE_V3";
     const int HonestPassUp = 4;   // PassUpCap 8 less two boundary windows of Context 2
     static readonly JsonSerializerOptions Json = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
@@ -33,7 +33,10 @@ public sealed class P7F1V6HierTests
     static string Node(string nodeId, string status, string items = "", string passUp = "", string confirmed = "") =>
         $"{{\"protocolVersion\":\"{Proto}\",\"nodeId\":\"{nodeId}\",\"status\":\"{status}\",\"items\":[{items}]"
         + (passUp == "" ? "" : $",\"passUp\":[{passUp}]")
-        + (confirmed == "" ? "" : $",\"confirmed\":[{confirmed}]") + "}";
+        + (confirmed == "" ? "" : $",\"confirmed\":[{confirmed}]")
+        // a reply that does not complete must give a reason, and a CLARIFICATION_REQUIRED reply an open question
+        + (status is "COMPLETE" or "RETRIEVE" ? "" : ",\"reason\":\"test reason\"" + (status == "CLARIFICATION_REQUIRED" ? ",\"openQuestions\":[\"test question\"]" : ""))
+        + "}";
 
     static string RetrieveJson(string nodeId, string? search = null, string? reopen = null)
     {

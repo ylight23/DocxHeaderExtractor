@@ -9,7 +9,7 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class P7F1V6ProtocolD31Tests
 {
     const string Instr = "Trích xuất các mục có tiêu đề theo yêu cầu này";
-    const string Proto = "P7_F1_V6_HIER_NODE_V2";
+    const string Proto = "P7_F1_V6_HIER_NODE_V3";
     const string Tag = "alibaba";
     const int MaxTokens = 32768;
     const string Dir = "artifacts/web-pdf-semantic-diagnostic/p7.f1.v6.d3.1-fixtures";
@@ -240,12 +240,18 @@ public sealed class P7F1V6ProtocolD31Tests
         Assert.Equal(0, P7F1V6Hier.SensitivityDiff(baseline, searched).Decisions);
     }
 
+    static string Incomplete(string status) => JsonSerializer.Serialize(new
+    {
+        protocolVersion = Proto, nodeId = "L1-N0001", status, reason = "test reason",
+        openQuestions = status == "CLARIFICATION_REQUIRED" ? new[] { "test question" } : Array.Empty<string>(),
+    }, Json);
+
     [Theory] [InlineData("INCOMPLETE")] [InlineData("CLARIFICATION_REQUIRED")] [InlineData("NOT_ANSWERABLE")]
     public void An_incomplete_reply_is_refused_as_a_whole_and_changes_no_decision(string status)
     {
         var baseline = P7F1V6Hier.Run(Four(), Opts(), Honest);
         var run = P7F1V6Hier.Run(Four(), Opts(), (n, k, p) =>
-            n == "L1-N0001" ? $"{{\"protocolVersion\":\"{Proto}\",\"nodeId\":\"L1-N0001\",\"status\":\"{status}\"}}" : Honest(n, k, p));
+            n == "L1-N0001" ? Incomplete(status) : Honest(n, k, p));
         Assert.Contains(run.Violations, v => v == $"L1-N0001:NODE_{status}_CHANGES_NOTHING");
         Assert.Equal(baseline.Final.Select(kv => (kv.Key, kv.Value.Decision)).OrderBy(x => x.Key),
                      run.Final.Select(kv => (kv.Key, kv.Value.Decision)).OrderBy(x => x.Key));

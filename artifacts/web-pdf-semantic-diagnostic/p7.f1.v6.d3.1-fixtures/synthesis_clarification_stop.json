@@ -1,0 +1,15 @@
+{
+  "name": "synthesis_clarification_stop",
+  "node": "L1-N0001",
+  "appliesTo": "Synthesis",
+  "expect": "REJECTED:NODE_CLARIFICATION_REQUIRED_CHANGES_NOTHING",
+  "response": {
+    "protocolVersion": "P7_F1_V6_HIER_NODE_V3",
+    "nodeId": "L1-N0001",
+    "status": "CLARIFICATION_REQUIRED",
+    "reason": "Two segments give different levels for the same heading text.",
+    "openQuestions": [
+      "Which of the two levels should the instruction keep?"
+    ]
+  }
+}

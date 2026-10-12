@@ -1,0 +1,22 @@
+{
+  "name": "local_item_extra_key",
+  "node": "L0-S0000",
+  "appliesTo": "Local",
+  "expect": "REJECTED:ITEM_KEYS_INVALID",
+  "response": {
+    "protocolVersion": "P7_F1_V6_HIER_NODE_V3",
+    "nodeId": "L0-S0000",
+    "status": "COMPLETE",
+    "items": [
+      {
+        "id": "$OWNED0",
+        "decision": "UNRESOLVED",
+        "confidence": "high"
+      },
+      {
+        "id": "$OWNED1",
+        "decision": "UNRESOLVED"
+      }
+    ]
+  }
+}
