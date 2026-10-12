@@ -281,4 +281,56 @@ public sealed class P7F1V6HierD23Tests
         Assert.Equal(1.0, run.Summary.PresentedShare, 9);
         Assert.True(run.Summary.EvidenceRefsPresent);
     }
+
+    [Fact] public void Candidate_hash_is_not_fooled_by_separators_inside_source_text()
+    {
+        var one = new[] { new P7F1V6Hier.Cand("A", 1, "x\nB|2|y") };
+        var two = new[] { new P7F1V6Hier.Cand("A", 1, "x"), new P7F1V6Hier.Cand("B", 2, "y") };
+        Assert.NotEqual(P7F1V6Hier.CandidatesSha256(one), P7F1V6Hier.CandidatesSha256(two));
+        var ambiguousFields = new[] { new P7F1V6Hier.Cand("A|1", 2, "t") };
+        var splitFields = new[] { new P7F1V6Hier.Cand("A", 1, "2|t") };
+        Assert.NotEqual(P7F1V6Hier.CandidatesSha256(ambiguousFields), P7F1V6Hier.CandidatesSha256(splitFields));
+        Assert.Equal(P7F1V6Hier.CandidatesSha256(two), P7F1V6Hier.CandidatesSha256(two.ToArray()));
+    }
+
+    [Fact] public void RequirePinned_refuses_an_unpinned_run_before_any_model_call()
+    {
+        int calls = 0;
+        var ex = Assert.Throws<ArgumentException>(() => P7F1V6Hier.Run(Cands(), Opts() with { RequirePinned = true },
+            (a, b, d) => { calls++; return Honest(a, b, d); }));
+        Assert.Contains("CANDIDATES_NOT_PINNED", ex.Message);
+        Assert.Equal(0, calls);
+    }
+
+    [Fact] public void A_page_that_skips_unread_matches_is_reported_as_a_gap()
+    {
+        var c = Cands();
+        var run = P7F1V6Hier.Run(c, Opts(), (nodeId, kind, payload) =>
+        {
+            if (nodeId != "L1-N0001") return Honest(nodeId, kind, payload);
+            var searches = Root(payload).GetProperty("retrieved").GetProperty("searches");
+            return searches.GetArrayLength() switch
+            {
+                0 => Retrieve(nodeId, "e"),        // reads offsets 0..20
+                1 => Retrieve(nodeId, "e", 40),    // starts beyond 20: a gap
+                _ => Node(nodeId, confirmed: Quoted(ShownIds(payload))),
+            };
+        });
+        Assert.Empty(run.Violations);
+        Assert.Equal(1, run.Summary.SearchQueries);
+        Assert.Equal(1, run.Summary.SearchGapQueries);
+    }
+
+    [Fact] public void Queries_of_rejected_nodes_are_still_counted_in_the_gap_report()
+    {
+        var c = Cands();
+        var run = P7F1V6Hier.Run(c, Opts(), (nodeId, kind, payload) =>
+        {
+            if (nodeId != "L1-N0001") return Honest(nodeId, kind, payload);
+            var searches = Root(payload).GetProperty("retrieved").GetProperty("searches");
+            return searches.GetArrayLength() == 0 ? Retrieve(nodeId, "e") : "not json";
+        });
+        Assert.Equal(1, run.Summary.SearchQueries);
+        Assert.Equal(1, run.Summary.RejectedNodes);
+    }
 }

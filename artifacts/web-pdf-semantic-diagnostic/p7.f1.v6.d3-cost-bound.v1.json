@@ -1,0 +1,130 @@
+{
+  "artifact": "p7.f1.v6.d3-cost-bound.v1",
+  "status": "PLANNING_AND_OPERATING_BOUNDS_NOT_A_PROVIDER_CALL",
+  "endpointTag": "alibaba",
+  "endpointSource": "p7.f1.v6.d3-gate-e1-endpoints.raw.json",
+  "endpointSourceSha256": "021ffee89340bcb13d210f6b66dbe9578d34c97f1c05f89a37be3905e78c095c",
+  "tiers": {
+    "base": {
+      "promptUsdPerToken": 3e-08,
+      "completionUsdPerToken": 1.3e-07
+    },
+    "overrides": [
+      {
+        "minPromptTokens": 32000,
+        "promptUsdPerToken": 1e-07,
+        "completionUsdPerToken": 4e-07
+      },
+      {
+        "minPromptTokens": 256000,
+        "promptUsdPerToken": 2e-07,
+        "completionUsdPerToken": 8e-07
+      }
+    ]
+  },
+  "inputBudgetBytes": 131072,
+  "retrievalRounds": 2,
+  "retries": 0,
+  "scenarios": [
+    {
+      "step": "C1",
+      "document": "073",
+      "shardSize": 60,
+      "scriptedRequests": 3,
+      "structuralMaxCalls": 5,
+      "completionTokensPerCall": 32768,
+      "maxInputBytesPerCall": 131072,
+      "usdPerCallWorst": 0.026214,
+      "usdRunOperatingBound": 0.1311,
+      "retriesIncluded": 0
+    },
+    {
+      "step": "C1",
+      "document": "073",
+      "shardSize": 60,
+      "scriptedRequests": 3,
+      "structuralMaxCalls": 5,
+      "completionTokensPerCall": 65536,
+      "maxInputBytesPerCall": 131072,
+      "usdPerCallWorst": 0.039322,
+      "usdRunOperatingBound": 0.1966,
+      "retriesIncluded": 0
+    },
+    {
+      "step": "C2",
+      "document": "094",
+      "shardSize": 60,
+      "scriptedRequests": 125,
+      "structuralMaxCalls": 175,
+      "completionTokensPerCall": 32768,
+      "maxInputBytesPerCall": 131072,
+      "usdPerCallWorst": 0.026214,
+      "usdRunOperatingBound": 4.5875,
+      "retriesIncluded": 0
+    },
+    {
+      "step": "C2",
+      "document": "094",
+      "shardSize": 60,
+      "scriptedRequests": 125,
+      "structuralMaxCalls": 175,
+      "completionTokensPerCall": 65536,
+      "maxInputBytesPerCall": 131072,
+      "usdPerCallWorst": 0.039322,
+      "usdRunOperatingBound": 6.8813,
+      "retriesIncluded": 0
+    },
+    {
+      "step": "C2",
+      "document": "024",
+      "shardSize": 60,
+      "scriptedRequests": 177,
+      "structuralMaxCalls": 251,
+      "completionTokensPerCall": 32768,
+      "maxInputBytesPerCall": 131072,
+      "usdPerCallWorst": 0.026214,
+      "usdRunOperatingBound": 6.5798,
+      "retriesIncluded": 0
+    },
+    {
+      "step": "C2",
+      "document": "024",
+      "shardSize": 60,
+      "scriptedRequests": 177,
+      "structuralMaxCalls": 251,
+      "completionTokensPerCall": 65536,
+      "maxInputBytesPerCall": 131072,
+      "usdPerCallWorst": 0.039322,
+      "usdRunOperatingBound": 9.8697,
+      "retriesIncluded": 0
+    },
+    {
+      "step": "C3",
+      "document": "028",
+      "shardSize": 60,
+      "scriptedRequests": 442,
+      "structuralMaxCalls": 606,
+      "completionTokensPerCall": 32768,
+      "maxInputBytesPerCall": 131072,
+      "usdPerCallWorst": 0.026214,
+      "usdRunOperatingBound": 15.8859,
+      "retriesIncluded": 0
+    },
+    {
+      "step": "C3",
+      "document": "028",
+      "shardSize": 60,
+      "scriptedRequests": 442,
+      "structuralMaxCalls": 606,
+      "completionTokensPerCall": 65536,
+      "maxInputBytesPerCall": 131072,
+      "usdPerCallWorst": 0.039322,
+      "usdRunOperatingBound": 23.8289,
+      "retriesIncluded": 0
+    }
+  ],
+  "c1Example": {
+    "structuralMaxCalls": 5,
+    "note": "local + reconcile + global with two retrieval rounds"
+  }
+}

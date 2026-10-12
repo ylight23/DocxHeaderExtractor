@@ -75,7 +75,7 @@ internal static class V6PreflightD2
             {
                 // Reported apart: a protocol result is not a claim that Qwen re-reviewed every occurrence.
                 run.Summary.ProtocolStatus, run.Summary.ProtocolResolved, run.Summary.EvidenceRefsPresent, run.Summary.Occurrences, run.Summary.Decided,
-                run.Summary.PresentedOccurrences, run.Summary.PresentedShare, run.Summary.UnreadMatches, run.Summary.CandidatesPinned,
+                run.Summary.PresentedOccurrences, run.Summary.PresentedShare, run.Summary.UnreadMatches, run.Summary.CandidatesPinned, run.Summary.SearchQueries, run.Summary.SearchGapQueries,
                 run.Summary.GlobalReviewed, run.Summary.GlobalReviewCoverage, run.Summary.AcceptedNodes, run.Summary.RetrievalTurns,
                 run.Summary.RejectedNodes, run.Summary.StoppedNodes, run.Summary.SearchPagesWithMore, run.Summary.UnpagedSearches,
                 run.Summary.CandidatesSha256, run.Summary.ManifestSha256,

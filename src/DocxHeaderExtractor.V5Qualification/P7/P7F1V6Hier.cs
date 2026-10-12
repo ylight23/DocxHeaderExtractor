@@ -54,10 +54,12 @@ internal static class P7F1V6Hier
     /// <summary>EvidenceRefsPresent means each decided occurrence names an evidence reference; it is not a claim that the cited source,
     /// or the whole source, was shown to the model. PresentedOccurrences counts occurrences that appeared in some payload as text.
     /// UnpagedSearches counts (node, query) pairs with unread matches at node completion; UnreadMatches sums their unread matches.</summary>
+    /// SearchQueries counts every (node, query) pair, including nodes that were later rejected or stopped; SearchGapQueries counts those
+    /// whose reading skipped a range (a page started beyond the contiguous prefix read so far).
     public sealed record RunSummary(string ProtocolStatus, bool ProtocolResolved, bool EvidenceRefsPresent, int Occurrences, int Decided,
         int PresentedOccurrences, double PresentedShare, int GlobalReviewed, double GlobalReviewCoverage, int AcceptedNodes, int RetrievalTurns,
         int RejectedNodes, int StoppedNodes, int SearchPagesWithMore, int UnpagedSearches, int UnreadMatches, bool CandidatesPinned,
-        string CandidatesSha256, string ManifestSha256);
+        string CandidatesSha256, string ManifestSha256, int SearchQueries, int SearchGapQueries);
 
     public sealed record RunResult(string RunStatus, IReadOnlyDictionary<string, State> Final, IReadOnlyList<NodeRecord> Nodes,
         IReadOnlyList<string> Violations, string TranscriptSha256, IReadOnlyDictionary<string, string> IdByAlias, P7F1V6RawStore Raw,
@@ -101,7 +103,7 @@ internal static class P7F1V6Hier
     public sealed record Options(string Instruction, string SourceSha256, int ShardSize, int Context, int FanIn, int PassUpCap,
         string? RawDir = null, int OutputBudgetBytes = 16384, string PromptOrder = "NORMAL", int MaxInputBytes = 131072,
         int MaxRetrievalRounds = 2, int MaxSearchResults = 20, int MaxReopen = 8,
-        string SourceUniverseSha256 = "", string ParserVersion = "", string EvidenceStoreVersion = "", string? ExpectedCandidatesSha256 = null);
+        string SourceUniverseSha256 = "", string ParserVersion = "", string EvidenceStoreVersion = "", string? ExpectedCandidatesSha256 = null, bool RequirePinned = false);
 
     static void Validate(Options o)
     {
@@ -144,6 +146,7 @@ internal static class P7F1V6Hier
         public int UnpagedSearches { get; set; }
         public int UnreadMatches { get; set; }
         public HashSet<string> Presented { get; } = new(StringComparer.Ordinal);
+        public List<(string Node, string Query, Cursor Cursor)> AllCursors { get; } = new();
     }
 
     /// <summary>Reading progress of one query in one node. ReadEnd is the contiguous prefix read so far; a page that starts beyond it is a gap,
@@ -171,6 +174,7 @@ internal static class P7F1V6Hier
     {
         Validate(o);
         var candidatesSha = CandidatesSha256(ordered);
+        if (o.RequirePinned && o.ExpectedCandidatesSha256 is null) throw new ArgumentException("CANDIDATES_NOT_PINNED");
         if (o.ExpectedCandidatesSha256 is not null && o.ExpectedCandidatesSha256 != candidatesSha)
             throw new ArgumentException("CANDIDATES_MISMATCH");
         var instructionSha = P7F1V6Core.InstructionSha256(o.Instruction);
@@ -241,7 +245,7 @@ internal static class P7F1V6Hier
             env.Nodes.Count(n => n.Status == "ACCEPTED"), env.Nodes.Count(n => n.Status == "RETRIEVE"),
             env.Nodes.Count(n => n.Status == "REJECTED"), env.Nodes.Count(n => n.Status == "STOPPED"),
             env.SearchPagesWithMore, env.UnpagedSearches, env.UnreadMatches, o.ExpectedCandidatesSha256 is not null,
-            candidatesSha, manifestSha);
+            candidatesSha, manifestSha, env.AllCursors.Count, env.AllCursors.Count(x => x.Cursor.Gap));
         return new RunResult(status, env.States, env.Nodes, env.Violations, sha, ids, env.Raw, open, env.GlobalAccepted, env.GlobalShown,
             env.Reopened, env.GlobalReviewed, summary);
     }
@@ -346,7 +350,7 @@ internal static class P7F1V6Hier
                 if (round >= e.O.MaxRetrievalRounds) fail = "RETRIEVAL_ROUNDS_EXCEEDED";
                 else
                 {
-                    fail = ApplyRetrieval(e, rs, r);
+                    fail = ApplyRetrieval(e, rs, r, nodeId);
                     if (fail is null)
                     {
                         e.Nodes.Add(new NodeRecord(nodeId, kind.ToString(), level, inSha, inBytes.Length, outSha, outBytes.Length, "RETRIEVE", null, 0, 0));
@@ -405,7 +409,7 @@ internal static class P7F1V6Hier
     // ------------------------------------------------------------------------------------------------------------------
     // Retrieval: a page of a registry search, or a reopen by id. Both are lookups the model asked for; C# does not judge the results.
 
-    static string? ApplyRetrieval(Env e, Shown rs, Retrieve r)
+    static string? ApplyRetrieval(Env e, Shown rs, Retrieve r, string nodeId)
     {
         if (r.Search is { } q)
         {
@@ -424,7 +428,7 @@ internal static class P7F1V6Hier
                 hasMore, nextOffset = hasMore ? (int?)next : null, scannedLines = e.Ordered.Count, matches = rows,
             });
             foreach (var c in page) { rs.Citable.Add(c.Alias); e.Presented.Add(e.Ids[c.Alias]); }   // shown to the model, so citable as evidence
-            if (!rs.Cursors.TryGetValue(q, out var cur)) rs.Cursors[q] = cur = new Cursor();
+            if (!rs.Cursors.TryGetValue(q, out var cur)) { rs.Cursors[q] = cur = new Cursor(); e.AllCursors.Add((nodeId, q, cur)); }
             cur.Total = all.Length;
             if (r.Offset <= cur.ReadEnd) cur.ReadEnd = Math.Max(cur.ReadEnd, next); else cur.Gap = true;
             if (hasMore) e.SearchPagesWithMore++;
@@ -655,8 +659,20 @@ internal static class P7F1V6Hier
     static string PayloadJson(object value) => JsonSerializer.Serialize(value, PayloadOptions);
 
     /// <summary>The candidate universe hash: alias, page, text and layout of every candidate, in order. This is the value to pin.</summary>
-    public static string CandidatesSha256(IReadOnlyList<Cand> cands) =>
-        Sha(string.Join("\n", cands.Select(c => $"{c.Alias}|{c.Page}|{c.Text}|{(c.Layout is null ? "" : PayloadJson(c.Layout))}")));
+    public static string CandidatesSha256(IReadOnlyList<Cand> cands)
+    {
+        // Every field is written as its UTF-8 byte length, a colon, and the value. A value cannot end early, so two different
+        // candidate lists cannot produce the same byte stream, whatever characters the source text contains.
+        var sb = new StringBuilder("P7_F1_V6_CANDIDATES_V1|").Append(cands.Count).Append('\n');
+        foreach (var c in cands)
+        {
+            var layout = c.Layout is null ? "" : PayloadJson(c.Layout);
+            foreach (var field in new[] { c.Alias, c.Page.ToString(System.Globalization.CultureInfo.InvariantCulture), c.Text, layout })
+                sb.Append(Encoding.UTF8.GetByteCount(field)).Append(':').Append(field);
+            sb.Append('\n');
+        }
+        return Sha(sb.ToString());
+    }
 
     static string Sha(string s) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(s)));
 

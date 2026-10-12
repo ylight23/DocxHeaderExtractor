@@ -1,0 +1,101 @@
+{
+  "artifact": "p7.f1.v6.d3-metadata-snapshot.v2",
+  "supersedes": "p7.f1.v6.d3-metadata-snapshot.v1.json",
+  "status": "E1_RECORDED_ROUTE_NOT_LOCKED",
+  "purpose": "What the Gate E1 read-only endpoint metadata GET proved. Fields the response did not provide are null. No inference call was made.",
+  "baselineCommit": "81a1c86",
+  "e1": {
+    "approvedBy": "user, one read-only metadata GET",
+    "request": {
+      "method": "GET",
+      "url": "https://openrouter.ai/api/v1/models/qwen/qwen3.7-flash/endpoints",
+      "authentication": "Bearer, key read from the environment and not stored in this artifact",
+      "bodySent": "none"
+    },
+    "retrievedAtUtc": "2026-10-12T04:21:51Z",
+    "httpStatus": 200,
+    "rawResponseFile": "p7.f1.v6.d3-gate-e1-endpoints.raw.json",
+    "rawResponseBytes": 3529,
+    "rawResponseSha256": "021ffee89340bcb13d210f6b66dbe9578d34c97f1c05f89a37be3905e78c095c"
+  },
+  "model": {
+    "id": "qwen/qwen3.7-flash",
+    "name": "Qwen: Qwen3.7 Flash",
+    "architectureTokenizerLabel": "Qwen",
+    "modalities": { "input": ["text", "image", "video"], "output": ["text"] },
+    "note": "The model page lists image and video input. This protocol uses text only."
+  },
+  "endpoints": [
+    {
+      "index": 0,
+      "name": "Alibaba | qwen/qwen3.7-flash-20260727",
+      "tag": "alibaba",
+      "providerName": "Alibaba",
+      "contextLengthTokens": 1000000,
+      "maxPromptTokens": 983616,
+      "maxCompletionTokens": 65536,
+      "quantization": "unknown",
+      "status": 0,
+      "pricingUsdPerToken": {
+        "prompt": 0.00000003, "completion": 0.00000013,
+        "inputCacheRead": 0.000000006, "inputCacheWrite": 0.000000038
+      },
+      "pricingOverrides": [
+        { "minPromptTokens": 32000, "prompt": 0.0000001, "completion": 0.0000004 },
+        { "minPromptTokens": 256000, "prompt": 0.0000002, "completion": 0.0000008 }
+      ],
+      "supportedParameters": ["reasoning", "include_reasoning", "max_tokens", "temperature", "top_p", "seed", "presence_penalty", "response_format", "logprobs", "top_logprobs", "tools", "tool_choice"],
+      "toolChoice": { "none": true, "auto": true, "required": false, "function": false },
+      "uptimeLast30mPercent": 100
+    },
+    {
+      "index": 1,
+      "name": "Alibaba | qwen/qwen3.7-flash-20260727",
+      "tag": "alibaba/us-east-1",
+      "providerName": "Alibaba",
+      "contextLengthTokens": 1000000,
+      "maxPromptTokens": 983616,
+      "maxCompletionTokens": 65536,
+      "quantization": "unknown",
+      "status": 0,
+      "pricingUsdPerToken": {
+        "prompt": 0.0000000345, "completion": 0.0000001495,
+        "inputCacheRead": 0.0000000069, "inputCacheWrite": null
+      },
+      "pricingOverrides": [
+        { "minPromptTokens": 32000, "prompt": 0.000000115, "completion": 0.00000046 },
+        { "minPromptTokens": 256000, "prompt": 0.00000023, "completion": 0.00000092 }
+      ],
+      "supportedParameters": ["reasoning", "include_reasoning", "max_tokens", "temperature", "top_p", "seed", "presence_penalty", "response_format", "logprobs", "top_logprobs", "tools", "tool_choice"],
+      "toolChoice": { "none": true, "auto": true, "required": false, "function": false },
+      "uptimeLast30mPercent": 100
+    }
+  ],
+  "routeLock": {
+    "status": "NOT_LOCKED",
+    "reason": "Two endpoints share the same display name and provider but have different tags, prices and tier thresholds. The approved rule keeps Gate E open when routes cannot be told apart by the decision the user must make. The tag distinguishes them, but the choice between them is the user's and has not been made.",
+    "candidates": ["alibaba", "alibaba/us-east-1"],
+    "fallbackPolicy": "must be disabled in the locked request (allow_fallbacks false, order or only set to the chosen tag); not yet set",
+    "requiredBeforeLicense": "user chooses one tag; the request will name that provider and disable fallback"
+  },
+  "budgetImplications": {
+    "priceTierRule": "The override applies at min_prompt_tokens. The metadata does not state whether the tier is chosen per request on prompt size. The planning rule charges a request at the highest tier its UTF-8 byte count reaches, which is conservative because tokens <= bytes.",
+    "inputBudgetBytes": 131072,
+    "maxTierReachedByInternalBudget": "the 32000 tier only; the 256000 tier is unreachable under the byte cap",
+    "costBoundArtifact": "p7.f1.v6.d3-cost-bound.v1.json"
+  },
+  "endpointLevelFieldsStillUnknown": {
+    "reasoningDefaultAndAccounting": null,
+    "timeoutSeconds": null,
+    "tokenizerMeasurement": null,
+    "dataPolicyOfRoute": null
+  },
+  "gatesStillOpen": [
+    "user choice of route tag, then locked provider request (gate E)",
+    "reasoning mode, whether reasoning counts toward max_tokens, and how usage reports it (gate T)",
+    "tokenizer or a sourced token measurement (gate T)",
+    "timeout and retry policy (gate T)",
+    "raw directory ACL, redaction and retention (gate S)",
+    "system prompt and request contract for hierarchical nodes, frozen with a hash (protocol snapshot)"
+  ]
+}
