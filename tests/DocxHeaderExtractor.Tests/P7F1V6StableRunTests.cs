@@ -120,4 +120,30 @@ public sealed class P7F1V6StableRunTests
         }
         finally { File.Delete(file); }
     }
+
+    [Fact]
+    public void SingleArmPlan_HasOnlyGeometry_WhoseRequestCarriesEveryObservation_AndVerifies()
+    {
+        var rel = "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        var bytes = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true));
+        using var d = JsonDocument.Parse(bytes);
+        Assert.True(T.SingleArmOf(d.RootElement));
+        var arms = d.RootElement.GetProperty("arms").EnumerateArray().ToList();
+        Assert.Single(arms);
+        Assert.Equal("GEOMETRY", arms[0].GetProperty("arm").GetString());
+        var u = T.Load(path, T.Sha256Of(path), P7F1V6Universe.LayoutSegmentation);
+        using var body = JsonDocument.Parse(C.FirstRequest(A.Arm.Geometry, u, "SEG-001", true).Body);
+        using var payload = JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        var obs = payload.RootElement.GetProperty("observations");
+        Assert.True(obs.TryGetProperty("targets", out _));          // repeated-text observations
+        Assert.True(obs.TryGetProperty("layoutFacts", out _));      // layout block, segments, shared left edge
+        var file = Path.Combine(Path.GetTempPath(), "dhx-single-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, bytes);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }

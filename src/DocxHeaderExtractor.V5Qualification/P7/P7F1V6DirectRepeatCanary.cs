@@ -31,6 +31,8 @@ internal static class P7F1V6DirectRepeatCanary
 
     public static readonly (string Arm, A.Arm Mode)[] Arms = { ("CONTROL", A.Arm.Auto), ("PREFETCH", A.Arm.Prefetch) };
     /// <summary>D4.12: the two arms plus GEOMETRY (PREFETCH and the layout facts of every shown line).</summary>
+    /// <summary>D4.12: only GEOMETRY - one request carrying every observation (repeated text, layout block, segments, shared left edge).</summary>
+    public static readonly (string Arm, A.Arm Mode)[] ArmsGeometryOnly = { ("GEOMETRY", A.Arm.Geometry) };
     public static readonly (string Arm, A.Arm Mode)[] ArmsWithGeometry = { ("CONTROL", A.Arm.Auto), ("PREFETCH", A.Arm.Prefetch), ("GEOMETRY", A.Arm.Geometry) };
     public const int Reps = 5;
     public const int MaxRequestBytes = 131072;
