@@ -193,4 +193,26 @@ public sealed class P7F1V6StableRunTests
         }
         finally { File.Delete(file); }
     }
+
+    [Fact]
+    public void FirstSegmentsPlan_RunsOnlyTheLeadingSegments_NamesTheCorpus_AndVerifies()
+    {
+        var rel = "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        Assert.True(T.InPublicCorpus(path));
+        Assert.False(T.InPublicCorpus(Path.Combine(Path.GetTempPath(), "x.pdf")));
+        var bytes = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1, firstSegments: 4));
+        using var d = JsonDocument.Parse(bytes);
+        Assert.Equal(4, T.FirstSegmentsOf(d.RootElement));
+        Assert.Equal(new[] { "SEG-000", "SEG-001", "SEG-002", "SEG-003" }, d.RootElement.GetProperty("segments").EnumerateArray().Select(x => x.GetString()));
+        Assert.StartsWith("A document of the repository's public heading corpus", d.RootElement.GetProperty("documentPublicity").GetString());
+        Assert.True(d.RootElement.GetProperty("ownerSupplied").GetProperty("publicCorpus").GetBoolean());
+        var file = Path.Combine(Path.GetTempPath(), "dhx-first-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, bytes);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }

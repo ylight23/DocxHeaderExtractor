@@ -648,15 +648,16 @@ switch (args[0])
         break;
     case "d411j-plan":
         // Issue #9 D4.11j (offline): d411j-plan <repo-root> <artifact-dir> <document.pdf>. Pinned owner-document trial plan and a scripted dry-run. No network call; no line text is written.
-        if (args.Length < 4) throw new ArgumentException("d411j-plan <repo-root> <artifact-dir> <document.pdf> [fixed|layout|layout96] [jsonall] [geometry] [unwrap] [single] [factsuse] [reps=N]");
+        if (args.Length < 4) throw new ArgumentException("d411j-plan <repo-root> <artifact-dir> <document.pdf> [fixed|layout|layout96] [jsonall] [geometry] [unwrap] [single] [factsuse] [reps=N] [segments=N]");
         {
             var opts = args.Skip(4).ToHashSet();
             var segPolicy = opts.Contains("layout96") ? P7F1V6Universe.LayoutSegmentation96 : opts.Contains("layout") ? P7F1V6Universe.LayoutSegmentation : P7F1V6Universe.FixedSegmentation;
             var repsArg = opts.FirstOrDefault(o => o.StartsWith("reps=", StringComparison.Ordinal));
+            var segsArg = opts.FirstOrDefault(o => o.StartsWith("segments=", StringComparison.Ordinal));
             var known = new HashSet<string> { "fixed", "layout", "layout96", "jsonall", "geometry", "unwrap", "single", "factsuse" };
-            if (opts.Any(o => !known.Contains(o) && o != repsArg)) throw new ArgumentException("unknown d411j-plan option");
+            if (opts.Any(o => !known.Contains(o) && o != repsArg && o != segsArg)) throw new ArgumentException("unknown d411j-plan option");
             D411jPlan.Plan(args[1], args[2], args[3], segPolicy, opts.Contains("jsonall"), opts.Contains("geometry"), opts.Contains("unwrap"), opts.Contains("single"), opts.Contains("factsuse"),
-                repsArg is null ? P7F1V6DirectRepeatCanary.Reps : int.Parse(repsArg[5..]));
+                repsArg is null ? P7F1V6DirectRepeatCanary.Reps : int.Parse(repsArg[5..]), segsArg is null ? 0 : int.Parse(segsArg[9..]));
         }
         break;
     case "d411j-run":

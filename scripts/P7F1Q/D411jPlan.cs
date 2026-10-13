@@ -37,12 +37,12 @@ internal static class D411jPlan
         ["decisions"] = new JsonArray(targets.Select(a => (JsonNode)new JsonObject { ["alias"] = a, ["decision"] = "NOT_SELECT" }).ToArray()),
     }.ToJsonString();
 
-    public static void Plan(string repoRoot, string artifactDir, string documentPath, string seg = P7F1V6Universe.FixedSegmentation, bool jsonAll = false, bool geometry = false, bool unwrap = false, bool single = false, bool factsUse = false, int reps = C.Reps)
+    public static void Plan(string repoRoot, string artifactDir, string documentPath, string seg = P7F1V6Universe.FixedSegmentation, bool jsonAll = false, bool geometry = false, bool unwrap = false, bool single = false, bool factsUse = false, int reps = C.Reps, int firstSegments = 0)
     {
         if (Git(repoRoot, "status --porcelain -- src scripts tests").Length > 0) { Console.WriteLine("D411j PLAN REFUSED: uncommitted code"); Environment.ExitCode = 2; return; }
         var head = Git(repoRoot, "rev-parse HEAD");
-        var tag = (seg == P7F1V6Universe.LayoutSegmentation96 ? ".layout96" : seg == P7F1V6Universe.LayoutSegmentation ? ".layout" : "") + (jsonAll ? ".json" : "") + (geometry ? ".geo" : "") + (unwrap ? ".unwrap" : "") + (single ? ".single" : "") + (factsUse ? ".facts" : "") + (reps != C.Reps ? $".r{reps}" : "");
-        var bytes = T.Serialize(T.PinnedValues(documentPath, head, seg, jsonAll, geometry, unwrapFence: unwrap, singleArm: single, factsUse: factsUse, reps: reps));
+        var tag = (seg == P7F1V6Universe.LayoutSegmentation96 ? ".layout96" : seg == P7F1V6Universe.LayoutSegmentation ? ".layout" : "") + (jsonAll ? ".json" : "") + (geometry ? ".geo" : "") + (unwrap ? ".unwrap" : "") + (single ? ".single" : "") + (factsUse ? ".facts" : "") + (reps != C.Reps ? $".r{reps}" : "") + (firstSegments > 0 ? $".first{firstSegments}" : "");
+        var bytes = T.Serialize(T.PinnedValues(documentPath, head, seg, jsonAll, geometry, unwrapFence: unwrap, singleArm: single, factsUse: factsUse, reps: reps, firstSegments: firstSegments));
         using var plan = JsonDocument.Parse(bytes);
         var authority = plan.RootElement.GetProperty("authorityId").GetString()!;
         var planPath = Path.Combine(artifactDir, $"{T.PlanArtifact.Replace(".v1", "")}.{authority}{tag}.v1.json");

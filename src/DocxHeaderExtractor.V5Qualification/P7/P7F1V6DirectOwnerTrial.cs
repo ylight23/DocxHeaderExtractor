@@ -36,6 +36,12 @@ internal static class P7F1V6DirectOwnerTrial
 
     public static int RepsOf(JsonElement plan) => plan.GetProperty("repetitions").GetProperty("perArmAndSegment").GetInt32();
 
+    /// <summary>The number of leading segments a plan runs; 0 means every segment.</summary>
+    public static int FirstSegmentsOf(JsonElement plan) => plan.TryGetProperty("firstSegmentsOnly", out var v) && v.ValueKind == JsonValueKind.Number ? v.GetInt32() : 0;
+
+    /// <summary>True when the file lies in the repository's public heading corpus (todo10_8/heading_corpus_100).</summary>
+    public static bool InPublicCorpus(string documentPath) => Path.GetFullPath(documentPath).Replace('\\', '/').Contains("/todo10_8/heading_corpus_100/", StringComparison.Ordinal);
+
     public static bool FactsUseOf(JsonElement plan) => plan.TryGetProperty("factsUseArm", out var v) && v.ValueKind == JsonValueKind.String;
 
     public static bool SingleArmOf(JsonElement plan) => plan.TryGetProperty("singleArm", out var v) && v.ValueKind == JsonValueKind.String;
@@ -49,11 +55,11 @@ internal static class P7F1V6DirectOwnerTrial
     public static string SegmentationOf(JsonElement plan) =>
         plan.TryGetProperty("segmentation", out var s) && s.ValueKind == JsonValueKind.Object ? s.GetProperty("policy").GetString()! : P7F1V6Universe.FixedSegmentation;
 
-    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation, bool jsonObjectAllTurns = false, bool geometryArm = false, bool unwrapFence = false, bool singleArm = false, bool factsUse = false, int reps = C.Reps)
+    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation, bool jsonObjectAllTurns = false, bool geometryArm = false, bool unwrapFence = false, bool singleArm = false, bool factsUse = false, int reps = C.Reps, int firstSegments = 0)
     {
         var fileSha = Sha256Of(documentPath);
         var u = Load(documentPath, fileSha, segmentation);
-        var segs = SegmentsOf(u);
+        var segs = firstSegments > 0 ? SegmentsOf(u).Take(firstSegments).ToArray() : SegmentsOf(u);
         var picks = segs.Select(s => new C.Pick(s, "ALL: every segment of the document", new C.SegStat(s, 0, 0, 0, 0, 0, 0))).ToArray();
         var armSet = ArmsOf(geometryArm, singleArm, factsUse);
         var ceilings = armSet.ToDictionary(a => a.Arm, a => C.CeilingUsd(u, picks, a.Mode, jsonObjectAllTurns, reps));
@@ -93,7 +99,9 @@ internal static class P7F1V6DirectOwnerTrial
             ["codeCommit"] = codeCommit,
             ["authorityId"] = authority,
             ["document"] = "owner-supplied (outside the repository): " + fileName,
-            ["documentPublicity"] = "NOT part of the repository's public corpus. A document supplied by the owner (" + fileName + "), read from outside the repository; whether it is public is not known to the program. "
+            ["documentPublicity"] = InPublicCorpus(documentPath)
+                ? "A document of the repository's public heading corpus (todo10_8/heading_corpus_100), whose README states the files are real documents downloaded from public sources (" + fileName + "); the origin is not independently verified here. Text is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed."
+                : "NOT part of the repository's public corpus. A document supplied by the owner (" + fileName + "), read from outside the repository; whether it is public is not known to the program. "
                 + "The owner decided that nothing is redacted: the text of every line, including any names, telephone numbers and e-mail addresses it contains, is sent as it is. "
                 + "Requests, raw responses and the analysis stay in the safe store and are not committed or pushed.",
             ["sourceSha256"] = fileSha,
@@ -103,7 +111,7 @@ internal static class P7F1V6DirectOwnerTrial
             ["ownerSupplied"] = new
             {
                 fileName, fileBytes = new FileInfo(documentPath).Length, fileSha256 = fileSha, pagesWithText = pages, lines = u.Lines.Count,
-                publicCorpus = false,
+                publicCorpus = InPublicCorpus(documentPath),
                 sourceGate = "the public-corpus source gate is not used; this plan pins the file hash and the loader refuses any other bytes",
                 pathNotPinned = "the file path is an argument of the plan check and of the run, not part of the plan",
                 redaction = "none: the owner chose to send the document text unchanged",
@@ -170,6 +178,8 @@ internal static class P7F1V6DirectOwnerTrial
             plan["fenceUnwrap"] = P7F1V6ReplyFence.Version + ": a final answer wrapped in exactly one markdown fence (optional json label) around exactly one JSON object is read from inside the fence and the object goes through the unchanged strict parser; prose outside the fence, a second fence or another label is still REPLY_NOT_JSON; a unit that used the unwrap is flagged FenceUnwrapped";
         if (factsUse)
             plan["factsUseArm"] = "only the FACTS arm is run: the same request as GEOMETRY (repeated-text observations, layout block, segments, shared left edge) with one more sentence in the system prompt telling the model to read the observations of a target and of the lines next to it and to compare the target with its neighbours; the sentence names no kind of line";
+        if (firstSegments > 0)
+            plan["firstSegmentsOnly"] = firstSegments;
         if (singleArm)
             plan["singleArm"] = "only the GEOMETRY arm is run: one request that carries every observation the program reads (repeated-text observations, layout block, segments on the visual line with gaps, shared left edge); no CONTROL and no PREFETCH arm";
         if (geometryArm)
@@ -202,7 +212,7 @@ internal static class P7F1V6DirectOwnerTrial
         var planCommit = doc.RootElement.GetProperty("codeCommit").GetString();
         if (planCommit != currentCommit) failures.Add("CODE_COMMIT_DIFFERS");
         if (doc.RootElement.GetProperty("sourceSha256").GetString() != Sha256Of(documentPath)) { failures.Add("OWNER_DOCUMENT_SHA_DIFFERS"); return failures; }
-        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement), JsonAllTurnsOf(doc.RootElement), GeometryArmOf(doc.RootElement), FenceUnwrapOf(doc.RootElement), SingleArmOf(doc.RootElement), FactsUseOf(doc.RootElement), RepsOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
+        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement), JsonAllTurnsOf(doc.RootElement), GeometryArmOf(doc.RootElement), FenceUnwrapOf(doc.RootElement), SingleArmOf(doc.RootElement), FactsUseOf(doc.RootElement), RepsOf(doc.RootElement), FirstSegmentsOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
         return failures;
     }
 
