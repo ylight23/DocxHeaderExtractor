@@ -203,6 +203,11 @@ internal static class P7F1V6DirectD45
         "Sử dụng văn bản, bố cục và ngữ cảnh để xác định chức năng của từng lần xuất hiện. Khi chưa đủ bằng chứng, hãy yêu cầu thêm ngữ cảnh hoặc báo chưa thể quyết định thay vì suy đoán.";
     /// <summary>D4.12c: the owner's plain request in English, for the corpus runs ("extract all headings", the all-heading Gold's own task, in English).</summary>
     public const string InstructionEnglishAll = "Extract all headings";
+    /// <summary>D4.12e: the owner asks for the main headings, those that carry the structure (outline) of the document; in English. The owner's words, not a
+    /// definition added by the program: it names no kind of line to include or to exclude.</summary>
+    public const string InstructionEnglishMain =
+        "Extract the main headings of the document: the headings that carry its structure, that is, the ones that give the document its outline.\n" +
+        "Use the text, the layout and the context to decide which lines are such headings.";
     public const string TaskId = "A-STRUCTURAL-OCCURRENCES";
     public const string EvaluationLabel = "Development evaluation — task clarification informed by previous model errors";
     public const string BaselineTaskId = "A";

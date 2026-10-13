@@ -381,4 +381,26 @@ public sealed class P7F1V6StableRunTests
         }
         finally { try { Directory.Delete(dir, true); } catch (IOException) { } }
     }
+
+    [Fact]
+    public void MainHeadingsInstruction_IsEnglish_NamesNoKindOfLine_AndPinsInAPlan()
+    {
+        var en = P7F1V6DirectD45.InstructionEnglishMain;
+        Assert.Contains("main headings", en);
+        Assert.Contains("structure", en);
+        foreach (var banned in new[] { "table", "footer", "running", "contents", "clause", "article", "chapter", "title" })
+            Assert.DoesNotContain(banned, en, StringComparison.OrdinalIgnoreCase);
+        var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        var bytes = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1, firstSegments: 2, instruction: en));
+        using var d = JsonDocument.Parse(bytes);
+        Assert.Equal(en, T.InstructionOf(d.RootElement));
+        var file = Path.Combine(Path.GetTempPath(), "dhx-main-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, bytes);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }

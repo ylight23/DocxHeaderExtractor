@@ -41,7 +41,7 @@ internal static class D411jPlan
     {
         if (Git(repoRoot, "status --porcelain -- src scripts tests").Length > 0) { Console.WriteLine("D411j PLAN REFUSED: uncommitted code"); Environment.ExitCode = 2; return; }
         var head = Git(repoRoot, "rev-parse HEAD");
-        var tag = (seg == P7F1V6Universe.LayoutSegmentation96 ? ".layout96" : seg == P7F1V6Universe.LayoutSegmentation ? ".layout" : "") + (jsonAll ? ".json" : "") + (geometry ? ".geo" : "") + (unwrap ? ".unwrap" : "") + (single ? ".single" : "") + (factsUse ? ".facts" : "") + (reps != C.Reps ? $".r{reps}" : "") + (firstSegments > 0 ? $".first{firstSegments}" : "") + (instruction == P7F1V6DirectD45.InstructionEnglishAll ? ".en" : "");
+        var tag = (seg == P7F1V6Universe.LayoutSegmentation96 ? ".layout96" : seg == P7F1V6Universe.LayoutSegmentation ? ".layout" : "") + (jsonAll ? ".json" : "") + (geometry ? ".geo" : "") + (unwrap ? ".unwrap" : "") + (single ? ".single" : "") + (factsUse ? ".facts" : "") + (reps != C.Reps ? $".r{reps}" : "") + (firstSegments > 0 ? $".first{firstSegments}" : "") + (instruction == P7F1V6DirectD45.InstructionEnglishAll ? ".en" : instruction == P7F1V6DirectD45.InstructionEnglishMain ? ".main" : "");
         var bytes = T.Serialize(T.PinnedValues(documentPath, head, seg, jsonAll, geometry, unwrapFence: unwrap, singleArm: single, factsUse: factsUse, reps: reps, firstSegments: firstSegments, instruction: instruction));
         using var plan = JsonDocument.Parse(bytes);
         var authority = plan.RootElement.GetProperty("authorityId").GetString()!;
