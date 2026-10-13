@@ -1,0 +1,134 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-dryrun.v1",
+  "authority": "OWNER-DOC-f427233d",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-f427233d.layout.json.geo.v1.json",
+  "planSha256": "79b66064a497ea4dc566a1e815d297359a4564d8d1572d83e9438843e8ac4646",
+  "planVerifiesNow": true,
+  "codeCommit": "fe210e0b8dd0431017452e4701d32e58c66d85b0",
+  "firstRequests": [
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-000",
+      "sha256": "6cf25339b33a46ec4457d8bc7bbf907e3555ec1f66e06791469e0a7b6c1fb907",
+      "bytes": 26082,
+      "reserveUsd": 0.005042
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-001",
+      "sha256": "debc676022beb718c1e93904855057f2af3995558408a19348cb516a6a2d861a",
+      "bytes": 26177,
+      "reserveUsd": 0.005045
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-000",
+      "sha256": "0bd12439e9e2d50c9b48e4971e88ef4c977bf9016722b0bd2881047935c8d290",
+      "bytes": 27259,
+      "reserveUsd": 0.005078
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-001",
+      "sha256": "56c94ca47a63cc7def5cc5ab51b307e9441c8fa0732804878a27e830f71c99a8",
+      "bytes": 36291,
+      "reserveUsd": 0.016736
+    },
+    {
+      "arm": "GEOMETRY",
+      "segment": "SEG-000",
+      "sha256": "7907f4687e789a8ba79c0fe4ce688598639c61b12d9e6020ce0343d25939beea",
+      "bytes": 36725,
+      "reserveUsd": 0.01678
+    },
+    {
+      "arm": "GEOMETRY",
+      "segment": "SEG-001",
+      "sha256": "c437a822cf28dd4344214b41b0850bb857d4284b114ee2da3bc7826f830554a3",
+      "bytes": 46542,
+      "reserveUsd": 0.017761
+    }
+  ],
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "CONTROL",
+          "posts": 10,
+          "reservedUsd": 0.0504,
+          "ceilingUsd": 0.15,
+          "halt": null,
+          "units": 10,
+          "complete": 10,
+          "stoppedByBudget": 0,
+          "maxRequestBytes": 26177
+        },
+        {
+          "arm": "PREFETCH",
+          "posts": 10,
+          "reservedUsd": 0.1091,
+          "ceilingUsd": 0.21,
+          "halt": null,
+          "units": 10,
+          "complete": 10,
+          "stoppedByBudget": 0,
+          "maxRequestBytes": 36291
+        },
+        {
+          "arm": "GEOMETRY",
+          "posts": 10,
+          "reservedUsd": 0.1727,
+          "ceilingUsd": 0.28,
+          "halt": null,
+          "units": 10,
+          "complete": 10,
+          "stoppedByBudget": 0,
+          "maxRequestBytes": 46542
+        }
+      ]
+    },
+    {
+      "simulation": "TOOL_CALL_ON_EVERY_TURN (an overview each of 3 turns, then answer)",
+      "arms": [
+        {
+          "arm": "CONTROL",
+          "posts": 13,
+          "reservedUsd": 0.0663,
+          "ceilingUsd": 0.15,
+          "halt": null,
+          "units": 10,
+          "complete": 3,
+          "stoppedByBudget": 7,
+          "maxRequestBytes": 30373
+        },
+        {
+          "arm": "PREFETCH",
+          "posts": 13,
+          "reservedUsd": 0.1256,
+          "ceilingUsd": 0.21,
+          "halt": null,
+          "units": 10,
+          "complete": 3,
+          "stoppedByBudget": 7,
+          "maxRequestBytes": 40487
+        },
+        {
+          "arm": "GEOMETRY",
+          "posts": 13,
+          "reservedUsd": 0.2255,
+          "ceilingUsd": 0.28,
+          "halt": null,
+          "units": 10,
+          "complete": 3,
+          "stoppedByBudget": 7,
+          "maxRequestBytes": 50738
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call; no line text is written to this report."
+  ]
+}
