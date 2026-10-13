@@ -1,0 +1,98 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-dryrun.v1",
+  "authority": "OWNER-DOC-f427233d",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-f427233d.layout.v1.json",
+  "planSha256": "0664875123251cd7cec5eae9aa3c9d03a486005f2a16fa037c662fcb6b01b807",
+  "planVerifiesNow": true,
+  "codeCommit": "bdfb429ab22066a75ac86f9b90dfbc8ee74cc74e",
+  "firstRequests": [
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-000",
+      "sha256": "5e30ea918bfec337ea8eeb07d238d0bba1a9de65213820574fcca5df76b7e3f6",
+      "bytes": 26041,
+      "reserveUsd": 0.005041
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-001",
+      "sha256": "a45eb72b14fc3442a6744ddaa65879efa50f79058ebeaa1ad815b432e7104f2f",
+      "bytes": 26136,
+      "reserveUsd": 0.005044
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-000",
+      "sha256": "e98ebc0e1feb369cab89fa82bc39cfe8dc79acdf3de14aafc124da96c2e40910",
+      "bytes": 27218,
+      "reserveUsd": 0.005076
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-001",
+      "sha256": "d4d90bc91fb0dd7f0ceb991cf8c36cbb5d39501c1196cb50dc9e5f6df271896e",
+      "bytes": 36250,
+      "reserveUsd": 0.016732
+    }
+  ],
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "CONTROL",
+          "posts": 10,
+          "reservedUsd": 0.0504,
+          "ceilingUsd": 0.15,
+          "halt": null,
+          "units": 10,
+          "complete": 10,
+          "stoppedByBudget": 0,
+          "maxRequestBytes": 26136
+        },
+        {
+          "arm": "PREFETCH",
+          "posts": 10,
+          "reservedUsd": 0.109,
+          "ceilingUsd": 0.21,
+          "halt": null,
+          "units": 10,
+          "complete": 10,
+          "stoppedByBudget": 0,
+          "maxRequestBytes": 36250
+        }
+      ]
+    },
+    {
+      "simulation": "TOOL_CALL_ON_EVERY_TURN (an overview each of 3 turns, then answer)",
+      "arms": [
+        {
+          "arm": "CONTROL",
+          "posts": 13,
+          "reservedUsd": 0.0663,
+          "ceilingUsd": 0.15,
+          "halt": null,
+          "units": 10,
+          "complete": 3,
+          "stoppedByBudget": 7,
+          "maxRequestBytes": 30373
+        },
+        {
+          "arm": "PREFETCH",
+          "posts": 13,
+          "reservedUsd": 0.1256,
+          "ceilingUsd": 0.21,
+          "halt": null,
+          "units": 10,
+          "complete": 3,
+          "stoppedByBudget": 7,
+          "maxRequestBytes": 40487
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call; no line text is written to this report."
+  ]
+}
