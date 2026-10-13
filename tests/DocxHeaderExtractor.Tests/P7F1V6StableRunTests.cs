@@ -1125,4 +1125,31 @@ public sealed class P7F1V6StableRunTests
         Assert.Equal(new[] { 1 }, Enumerable.Range(0, a.Length).Where(i => a[i] != b[i]));
         Assert.Equal(a[1].Replace("select the line where the heading itself stands,", "select the lines where the heading itself stands (all lines of a heading that runs over several lines),"), b[1]);
     }
+
+    [Fact]
+    public void V3_AnAliasShownInTheDocumentStyleTable_MayBeCitedAsEvidence()
+    {
+        var u = Universe().WithFactsVersion(3);
+        var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, "SEG-001");
+        var shown = decide.Concat(ctx.Select(i => u.Lines[i].Alias)).ToHashSet(StringComparer.Ordinal);
+        var styleLine = new P7F1V6AgentTools(u.Tools, u.LayoutFacts, factsVersion: 3).DocumentStyles()["styles"]!.AsArray()
+            .SelectMany(s => s!["firstLines"]!.AsArray().Select(l => l!["alias"]!.GetValue<string>())).First(a => !shown.Contains(a));
+        var n = 0;
+        A.AgentModel model = (unit, turn, req) =>
+        {
+            n++;
+            if (n == 1) return FactsTurn(req.Body);
+            var t = TargetsOf(req.Body);
+            return new A.ModelTurn(new JsonObject
+            {
+                ["protocolVersion"] = P7F1V6DirectTwoStage.SelectObjectsVersion, ["status"] = "COMPLETE",
+                ["decisions"] = new JsonArray(t.Select((a, i) => (JsonNode)(i == 0
+                    ? new JsonObject { ["alias"] = a, ["decision"] = "SELECT", ["evidenceRefs"] = new JsonArray(styleLine) }
+                    : new JsonObject { ["alias"] = a, ["decision"] = "NOT_SELECT" })).ToArray()),
+            }.ToJsonString(), Array.Empty<A.ToolCall>(), "stop");
+        };
+        var o = A.RunUnit(A.Arm.ToolFactsAnalysisV3, P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, u, "SEG-001", decide, ctx, model,
+            new P7F1V6DirectV2.Budget(10, 5, C.MaxRequestBytes), rangeStated: true, jsonObjectAllTurns: true, retryDelayMs: 0);
+        Assert.Equal("COMPLETE", o.Unit.Status);
+    }
 }

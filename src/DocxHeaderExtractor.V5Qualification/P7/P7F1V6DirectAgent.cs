@@ -365,6 +365,10 @@ internal static class P7F1V6DirectAgent
         // Lines the observations show are in the request: Qwen may cite them. Kept apart to report evidence taken from them.
         var observationOnly = (prefetch?.ShownAliases ?? Array.Empty<string>()).Where(a => !shownAliases.Contains(a)).ToHashSet(StringComparer.Ordinal);
         shownAliases.UnionWith(observationOnly);
+        // D4.12o: the document style table shows the first lines of each style (alias, page, text). They are in the request, so Qwen may cite them.
+        if (HidesLayout(arm))
+            shownAliases.UnionWith(tools.DocumentStyles()["styles"]!.AsArray()
+                .SelectMany(s => s!["firstLines"]!.AsArray().Select(l => l!["alias"]!.GetValue<string>())));
         var history = new JsonArray();
         var requests = new List<P7F1V6Protocol.PreparedRequest>();
         var turns = new List<TurnRecord>();
