@@ -1249,7 +1249,7 @@ public sealed class P7F1V6StableRunTests
             new JsonObject { ["role"] = "assistant", ["content"] = null, ["tool_calls"] = new JsonArray(new JsonObject { ["id"] = "c2", ["type"] = "function", ["function"] = new JsonObject { ["name"] = "get_line_facts", ["arguments"] = "{}" } }) },
             new JsonObject { ["role"] = "tool", ["tool_call_id"] = "c2", ["content"] = "{\"result\":2}" });
         var before = history.ToJsonString();
-        using var d = JsonDocument.Parse(A.Build("S", "{}", history, "auto", cacheMarkers: true).Body);
+        using var d = JsonDocument.Parse(A.Build("S", "{}", history, "auto", cacheMarkers: true, cacheHistoryMark: true).Body);
         var msgs = d.RootElement.GetProperty("messages");
         Assert.Equal(3, Marks(d.RootElement));
         Assert.Equal(JsonValueKind.String, msgs[3].GetProperty("content").ValueKind);            // the earlier tool result is not marked
@@ -1259,7 +1259,7 @@ public sealed class P7F1V6StableRunTests
         // A repair message after an answer is the last text message: it carries the third mark.
         history.Add(new JsonObject { ["role"] = "assistant", ["content"] = "answer" });
         history.Add(new JsonObject { ["role"] = "user", ["content"] = "Your answer was refused." });
-        using var r = JsonDocument.Parse(A.Build("S", "{}", history, "none", cacheMarkers: true).Body);
+        using var r = JsonDocument.Parse(A.Build("S", "{}", history, "none", cacheMarkers: true, cacheHistoryMark: true).Body);
         Assert.Equal(3, Marks(r.RootElement));
         Assert.Equal(JsonValueKind.Array, r.RootElement.GetProperty("messages")[7].GetProperty("content").ValueKind);
         // No history: two marks. No markers asked: none.
@@ -1267,6 +1267,9 @@ public sealed class P7F1V6StableRunTests
         Assert.Equal(2, Marks(first.RootElement));
         using var off = JsonDocument.Parse(A.Build("S", "{}", history, "auto").Body);
         Assert.Equal(0, Marks(off.RootElement));
+        // The default (D4.12s) is two marks, whatever the history.
+        using var two = JsonDocument.Parse(A.Build("S", "{}", history, "auto", cacheMarkers: true).Body);
+        Assert.Equal(2, Marks(two.RootElement));
     }
 
     [Fact]
