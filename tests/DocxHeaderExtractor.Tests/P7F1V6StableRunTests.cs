@@ -1152,4 +1152,60 @@ public sealed class P7F1V6StableRunTests
             new P7F1V6DirectV2.Budget(10, 5, C.MaxRequestBytes), rangeStated: true, jsonObjectAllTurns: true, retryDelayMs: 0);
         Assert.Equal("COMPLETE", o.Unit.Status);
     }
+
+    static A.AgentUnitOutcome RunRepairs(int failuresBeforeGood, int maxRepairs, int budgetCalls)
+    {
+        var u = Universe().WithFactsVersion(3);
+        var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, "SEG-001");
+        var n = 0;
+        A.AgentModel model = (unit, turn, req) =>
+        {
+            n++;
+            if (n == 1) return FactsTurn(req.Body);
+            return n - 1 <= failuresBeforeGood ? new A.ModelTurn("prose, not json", Array.Empty<A.ToolCall>(), "stop") : Answer(req.Body);
+        };
+        return A.RunUnit(A.Arm.ToolFactsAnalysisV3, P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, u, "SEG-001", decide, ctx, model,
+            new P7F1V6DirectV2.Budget(budgetCalls, 5, C.MaxRequestBytes), rangeStated: true, jsonObjectAllTurns: true, repairTurn: true, retryDelayMs: 0, maxRepairs: maxRepairs);
+    }
+
+    [Fact]
+    public void Repairs_WithNoLimitOfTheirOwn_KeepGoingUntilTheAnswerIsValid_AndTheArmCallLimitStopsAUnitThatNeverRecovers()
+    {
+        var ok = RunRepairs(failuresBeforeGood: 4, maxRepairs: -1, budgetCalls: 40);
+        Assert.Equal("COMPLETE", ok.Unit.Status);
+        Assert.Equal(4, ok.RepairsUsed);
+        Assert.Equal("PROTOCOL:REPLY_NOT_JSON", ok.RepairedFrom);
+        // The default is still one repair.
+        var one = RunRepairs(failuresBeforeGood: 4, maxRepairs: 1, budgetCalls: 40);
+        Assert.Equal("FAILED", one.Unit.Status);
+        Assert.Equal(1, one.RepairsUsed);
+        // A unit that never recovers is stopped by the call limit, not by a loop of its own.
+        var never = RunRepairs(failuresBeforeGood: 1000, maxRepairs: -1, budgetCalls: 12);
+        Assert.Equal("INCOMPLETE", never.Unit.Status);
+        Assert.StartsWith("BUDGET:", never.Unit.IncompleteReason ?? never.Unit.Failure);
+    }
+
+    [Fact]
+    public void UnlimitedRepairPlan_PinsMaxRepairs_AndVerifies_WhileAOneRepairPlanKeepsItsEarlierShape()
+    {
+        var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        Dictionary<string, object?> Pinned(int r, int m) => T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1,
+            firstSegments: 2, instruction: P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, fullToolRounds: true, toolFactsAnalysis: true, factsVersion: 3, hideLayout: true,
+            transportRetries: r, repairTurn: true, maxRepairs: m);
+        using var one = JsonDocument.Parse(T.Serialize(Pinned(1, 1)));
+        Assert.False(one.RootElement.GetProperty("failureHandling").TryGetProperty("maxRepairs", out _));
+        Assert.Equal(1, T.MaxRepairsOf(one.RootElement));
+        var bytes = T.Serialize(Pinned(3, -1));
+        using var all = JsonDocument.Parse(bytes);
+        Assert.Equal(-1, T.MaxRepairsOf(all.RootElement));
+        Assert.Equal(3, T.RetriesOf(all.RootElement));
+        var file = Path.Combine(Path.GetTempPath(), "dhx-all-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, bytes);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }

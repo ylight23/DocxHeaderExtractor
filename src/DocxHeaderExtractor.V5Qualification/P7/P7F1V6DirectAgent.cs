@@ -310,7 +310,7 @@ internal static class P7F1V6DirectAgent
 
     public sealed record AgentUnitOutcome(string Arm, P7F1V6DirectV2.UnitOutcome Unit, IReadOnlyList<TurnRecord> Turns,
         IReadOnlyList<P7F1V6AgentTools.CallRecord> ToolCalls, int SuccessfulToolCalls, ScopeReport Scope, EvidenceReport Evidence, bool FenceUnwrapped = false, string? Analysis = null, IReadOnlyDictionary<string, string>? Reasons = null,
-        string? RepairedFrom = null, int TransportRetries = 0);
+        string? RepairedFrom = null, int TransportRetries = 0, int RepairsUsed = 0);
 
     // D4.12m. Two fixes the owner asked for in the current contract, both off by default so every earlier plan runs as before.
     // transportRetries: a call that failed on the provider's side (an SSE error event, a 429, a 5xx, a broken connection) is sent again, at most
@@ -348,9 +348,11 @@ internal static class P7F1V6DirectAgent
 
     public static AgentUnitOutcome RunUnit(Arm arm, string instruction, P7F1V6Universe universe, string unitId, IReadOnlyList<string> decide,
         IEnumerable<int> initialContext, AgentModel model, P7F1V6DirectV2.Budget budget, bool rangeStated = false, bool jsonObjectAllTurns = false, bool unwrapSingleFence = false,
-        int transportRetries = 0, bool repairTurn = false, int retryDelayMs = 5000)
+        int transportRetries = 0, bool repairTurn = false, int retryDelayMs = 5000, int maxRepairs = 1)
     {
+        // maxRepairs (D4.12p): how many repair turns one unit may use; -1 is no limit of its own (the arm's call limit still stops a unit that keeps failing).
         string? repairedFrom = null;
+        int repairsUsed = 0;
         int retriesUsed = 0;
         var forcedChoices = new Queue<string>();
         bool fenceUnwrapped = false;
@@ -400,21 +402,23 @@ internal static class P7F1V6DirectAgent
                 RelevanceAuditedOffline, scope.DecisionsCitingToolOnlyLines, tools.CacheHits,
                 prefetch?.Listed ?? 0, prefetch?.Bytes ?? 0, prefetch is null || prefetch.Omitted == 0,
                 refs.Where(kv => kv.Value.Any(observationOnly.Contains)).Select(kv => kv.Key).OrderBy(tools.PositionOf).ToArray());
-            return new AgentUnitOutcome(arm.ToString(), unit, turns, tools.Ledger.ToArray(), okCalls, scope, evidence, fenceUnwrapped, finalAnalysis, finalReasons, repairedFrom, retriesUsed);
+            return new AgentUnitOutcome(arm.ToString(), unit, turns, tools.Ledger.ToArray(), okCalls, scope, evidence, fenceUnwrapped, finalAnalysis, finalReasons, repairedFrom, retriesUsed, repairsUsed);
         }
 
-        // A repair (at most one) may need two more posts: a tool round when the facts were not read, then the answer.
+        // A repair may need two more posts: a tool round when the facts were not read, then the answer.
+        bool CanRepair() => repairTurn && (maxRepairs < 0 || repairsUsed < maxRepairs);
         bool TryRepair(string failure, IReadOnlyList<string>? missing = null)
         {
-            if (!repairTurn || repairedFrom is not null) return false;
-            repairedFrom = failure;
+            if (!CanRepair()) return false;
+            repairedFrom ??= failure;
+            repairsUsed++;
             if (failure == "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED") { forcedChoices.Enqueue("auto"); forcedChoices.Enqueue("none"); }
             else forcedChoices.Enqueue("none");
             history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure, missing) });
             return true;
         }
 
-        for (int turn = 1; turn <= MaxPostsPerUnit + (repairedFrom is null ? 0 : 2); turn++)
+        for (int turn = 1; turn <= MaxPostsPerUnit + 2 * repairsUsed; turn++)
         {
             var toolChoice = forcedChoices.Count > 0 ? forcedChoices.Dequeue() : turn <= MaxToolTurns ? "auto" : "none";
             var req = Build(prompt, payload, history, toolChoice, jsonObjectAllTurns, factsTool: UsesFactsTool(arm));
@@ -464,7 +468,7 @@ internal static class P7F1V6DirectAgent
             {
                 if (toolChoice == "none")
                 {
-                    if (!repairTurn || repairedFrom is not null || reply.ToolCalls.Any(c => string.IsNullOrEmpty(c.Id))) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP"); }
+                    if (!CanRepair() || reply.ToolCalls.Any(c => string.IsNullOrEmpty(c.Id))) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP"); }
                     // Repair: the calls are answered under their own ids as not run, then the refusal message asks for the answer.
                     var notRun = new JsonArray(reply.ToolCalls.Select(c => (JsonNode)new JsonObject
                     {

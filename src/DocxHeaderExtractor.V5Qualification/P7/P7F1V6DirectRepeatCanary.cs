@@ -319,7 +319,7 @@ internal static class P7F1V6DirectRepeatCanary
     public static IReadOnlyList<(string Arm, List<RepUnit> Units, P7F1V6DirectV2.Budget Budget)> RunArms(
         P7F1V6Universe u, IReadOnlyList<string> segments, IReadOnlyDictionary<string, A.AgentModel> modelPerArm, IReadOnlyDictionary<string, P7F1V6DirectV2.Budget> budgetPerArm, bool jsonObjectAllTurns = false,
         (string Arm, A.Arm Mode)[]? arms = null, bool unwrapSingleFence = false, int reps = Reps, string instruction = P7F1V6DirectD45.Instruction, int parallelism = DefaultParallelism,
-        int transportRetries = 0, bool repairTurn = false)
+        int transportRetries = 0, bool repairTurn = false, int maxRepairs = 1)
     {
         if (parallelism < 1) throw new ArgumentOutOfRangeException(nameof(parallelism));
         var state = (arms ?? Arms).Select(a => (a.Arm, a.Mode, Units: new List<RepUnit>(), Budget: budgetPerArm[a.Arm])).ToList();
@@ -337,7 +337,7 @@ internal static class P7F1V6DirectRepeatCanary
             var model = modelPerArm[s.Arm];
             results[i] = new RepUnit(rep, A.RunUnit(s.Mode, instruction, u, segment, decide, ctx,
                 (unit, turn, req) => model(unit + "#r" + rep, turn, req), s.Budget, rangeStated: true, jsonObjectAllTurns: jsonObjectAllTurns, unwrapSingleFence: unwrapSingleFence,
-                transportRetries: transportRetries, repairTurn: repairTurn));
+                transportRetries: transportRetries, repairTurn: repairTurn, maxRepairs: maxRepairs));
         }
         var workers = Math.Min(parallelism, Math.Max(1, jobs.Count));
         if (workers == 1)
