@@ -723,4 +723,16 @@ public sealed class P7F1V6StableRunTests
         }
         finally { File.Delete(file); }
     }
+
+    [Fact]
+    public void MainPlainInstruction_IsTheOwnersThreeSentencesVerbatim()
+    {
+        Assert.Equal(
+            "Extract the main headings of the document: the headings that carry its structure (its outline).\n" +
+            "When you are unsure about how a line relates to other lines, use the tools to check that relationship.\n" +
+            "Do not guess: if the evidence does not settle a line, say that it is unresolved instead of choosing.",
+            P7F1V6DirectD45.InstructionEnglishMainPlain);
+        Assert.DoesNotContain("name or open", P7F1V6DirectD45.InstructionEnglishMainPlain);
+        Assert.DoesNotContain("how it looks", P7F1V6DirectD45.InstructionEnglishMainPlain);
+    }
 }
